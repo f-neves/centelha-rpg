@@ -27,7 +27,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/aasimar_criatura.webp",
+  "imagens": [
+   "bestiario/aasimar_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -168,7 +170,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/aboleth_criatura.webp",
+  "imagens": [
+   "bestiario/aboleth_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -320,7 +324,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/aguia-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/aguia-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -488,7 +494,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/aguia-real_criatura.webp",
+  "imagens": [
+   "bestiario/aguia-real_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -619,7 +627,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/alce_criatura.webp",
+  "imagens": [
+   "bestiario/alce_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -751,7 +761,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/ankheg_criatura.webp",
+  "imagens": [
+   "bestiario/ankheg_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -891,7 +903,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/anquilossauro_criatura.webp",
+  "imagens": [
+   "bestiario/anquilossauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -1018,7 +1032,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/aranha-das-fases_criatura.webp",
+  "imagens": [
+   "bestiario/aranha-das-fases_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -1151,7 +1167,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/aranha-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/aranha-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -1300,7 +1318,9 @@
     "Extraplanar"
    ]
   },
-  "imagem": "bestiario/arconte-cao_criatura.webp",
+  "imagens": [
+   "bestiario/arconte-cao_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -1471,7 +1491,9 @@
     "Extraplanar"
    ]
   },
-  "imagem": "bestiario/arconte-lanterna_criatura.webp",
+  "imagens": [
+   "bestiario/arconte-lanterna_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -1649,7 +1671,9 @@
     "Extraplanar"
    ]
   },
-  "imagem": "bestiario/arconte-trombeta_criatura.webp",
+  "imagens": [
+   "bestiario/arconte-trombeta_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -1788,7 +1812,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/arqueiro_pdm.webp",
+  "imagens": [
+   "bestiario/arqueiro_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -1935,7 +1961,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/assassino-das-sombras_pdm.webp",
+  "imagens": [
+   "bestiario/assassino-das-sombras_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -2092,7 +2120,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 0,
@@ -2250,7 +2278,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/auroque_criatura.webp",
+  "imagens": [
+   "bestiario/auroque_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -2392,7 +2422,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/babau_criatura.webp",
+  "imagens": [
+   "bestiario/babau_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -2588,7 +2620,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/balor_criatura.webp",
+  "imagens": [
+   "bestiario/balor_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -2792,7 +2826,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bandido-de-estrada_pdm.webp",
+  "imagens": [
+   "bestiario/bandido-de-estrada_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -2928,7 +2964,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/barghest_criatura.webp",
+  "imagens": [
+   "bestiario/barghest_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -3087,7 +3125,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/barghest-maior_criatura.webp",
+  "imagens": [
+   "bestiario/barghest-maior_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -3247,7 +3287,9 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/basidirond_criatura.webp",
+  "imagens": [
+   "bestiario/basidirond_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -3374,7 +3416,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/basilisco_criatura.webp",
+  "imagens": [
+   "bestiario/basilisco_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -3499,7 +3543,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/bebilith_criatura.webp",
+  "imagens": [
+   "bestiario/bebilith_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -3679,7 +3725,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/behir_criatura.webp",
+  "imagens": [
+   "bestiario/behir_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -3824,7 +3872,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/besouro-de-fogo_criatura.webp",
+  "imagens": [
+   "bestiario/besouro-de-fogo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 1,
@@ -3941,7 +3991,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 4,
@@ -4071,7 +4121,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -4228,7 +4278,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bisao_criatura.webp",
+  "imagens": [
+   "bestiario/bisao_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -4375,7 +4427,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/boca-tagarela_criatura.webp",
+  "imagens": [
+   "bestiario/boca-tagarela_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -4521,7 +4575,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bodak_criatura.webp",
+  "imagens": [
+   "bestiario/bodak_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -4666,7 +4722,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/boggard_criatura.webp",
+  "imagens": [
+   "bestiario/boggard_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -4798,7 +4856,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/boi_criatura.webp",
+  "imagens": [
+   "bestiario/boi_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -4937,7 +4997,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/bralani_criatura.webp",
+  "imagens": [
+   "bestiario/bralani_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -5088,7 +5150,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/braquiossauro_criatura.webp",
+  "imagens": [
+   "bestiario/braquiossauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 14,
@@ -5226,7 +5290,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bruto_pdm.webp",
+  "imagens": [
+   "bestiario/bruto_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -5365,7 +5431,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bruxa-do-mar_criatura.webp",
+  "imagens": [
+   "bestiario/bruxa-do-mar_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -5507,7 +5575,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/bruxa-noturna_criatura.webp",
+  "imagens": [
+   "bestiario/bruxa-noturna_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -5681,7 +5751,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bruxa-verde_criatura.webp",
+  "imagens": [
+   "bestiario/bruxa-verde_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -5829,7 +5901,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bugbear_criatura.webp",
+  "imagens": [
+   "bestiario/bugbear_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -5955,7 +6029,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/bulette_criatura.webp",
+  "imagens": [
+   "bestiario/bulette_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -6102,7 +6178,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/buscador_criatura.webp",
+  "imagens": [
+   "bestiario/buscador_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -6254,7 +6332,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/campeao_pdm.webp",
+  "imagens": [
+   "bestiario/campeao_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -6419,7 +6499,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/campeao-esqueletico_criatura.webp",
+  "imagens": [
+   "bestiario/campeao-esqueletico_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -6578,7 +6660,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/campones-assustado_pdm.webp",
+  "imagens": [
+   "bestiario/campones-assustado_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -6705,7 +6789,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 2,
@@ -6840,7 +6924,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 3,
@@ -6974,7 +7058,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/cao-de-guerra-nessiano_criatura.webp",
+  "imagens": [
+   "bestiario/cao-de-guerra-nessiano_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -7116,7 +7202,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/cao-infernal_criatura.webp",
+  "imagens": [
+   "bestiario/cao-infernal_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -7252,7 +7340,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/cao-yeth_criatura.webp",
+  "imagens": [
+   "bestiario/cao-yeth_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -7401,7 +7491,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/capa-sombria_criatura.webp",
+  "imagens": [
+   "bestiario/capa-sombria_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -7534,7 +7626,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/capitao-da-guarda_pdm.webp",
+  "imagens": [
+   "bestiario/capitao-da-guarda_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -7676,7 +7770,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/caranguejo-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/caranguejo-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -7802,7 +7898,7 @@
     "frio"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 2,
@@ -7937,7 +8033,7 @@
     "frio"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -8071,7 +8167,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/cauchemar_criatura.webp",
+  "imagens": [
+   "bestiario/cauchemar_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -8227,7 +8325,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/cavaleiro-de-elite_pdm.webp",
+  "imagens": [
+   "bestiario/cavaleiro-de-elite_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -8377,7 +8477,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/cavalo_criatura.webp",
+  "imagens": [
+   "bestiario/cavalo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -8516,7 +8618,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/centauro_criatura.webp",
+  "imagens": [
+   "bestiario/centauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -8669,7 +8773,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/centopeia-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/centopeia-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -8799,7 +8905,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/chuul_criatura.webp",
+  "imagens": [
+   "bestiario/chuul_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -8949,7 +9057,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ciclope_criatura.webp",
+  "imagens": [
+   "bestiario/ciclope_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -9096,7 +9206,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/cobra-de-ferro_criatura.webp",
+  "imagens": [
+   "bestiario/cobra-de-ferro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -9239,7 +9351,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/cocatriz_criatura.webp",
+  "imagens": [
+   "bestiario/cocatriz_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 1,
@@ -9371,7 +9485,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/comandante_pdm.webp",
+  "imagens": [
+   "bestiario/comandante_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -9535,7 +9651,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/corujurso_criatura.webp",
+  "imagens": [
+   "bestiario/corujurso_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -9687,7 +9805,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/corvo_criatura.webp",
+  "imagens": [
+   "bestiario/corvo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -9805,7 +9925,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/couatl_criatura.webp",
+  "imagens": [
+   "bestiario/couatl_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -9980,7 +10102,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/crocodilo-do-nilo_criatura.webp",
+  "imagens": [
+   "bestiario/crocodilo-do-nilo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -10116,7 +10240,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/crocodilo-do-nilo-femea_criatura.webp",
+  "imagens": [
+   "bestiario/crocodilo-do-nilo-femea_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -10238,7 +10364,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/cubo-gelatinoso_criatura.webp",
+  "imagens": [
+   "bestiario/cubo-gelatinoso_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -10372,7 +10500,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/cultista_pdm.webp",
+  "imagens": [
+   "bestiario/cultista_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -10517,7 +10647,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -10647,7 +10777,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/deinonico_criatura.webp",
+  "imagens": [
+   "bestiario/deinonico_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -10792,7 +10924,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/derro_criatura.webp",
+  "imagens": [
+   "bestiario/derro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -10939,7 +11073,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/deva-astral_criatura.webp",
+  "imagens": [
+   "bestiario/deva-astral_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -11097,7 +11233,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/devorador-de-intelecto_criatura.webp",
+  "imagens": [
+   "bestiario/devorador-de-intelecto_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -11256,7 +11394,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/diabo-barbado_criatura.webp",
+  "imagens": [
+   "bestiario/diabo-barbado_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -11421,7 +11561,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/diabo-chifrudo_criatura.webp",
+  "imagens": [
+   "bestiario/diabo-chifrudo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -11603,7 +11745,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/diabo-de-gelo_criatura.webp",
+  "imagens": [
+   "bestiario/diabo-de-gelo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -11795,7 +11939,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/diabo-do-fosso-pit-fiend_criatura.webp",
+  "imagens": [
+   "bestiario/diabo-do-fosso-pit-fiend_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 12,
@@ -12011,7 +12157,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/diabo-espinhoso_criatura.webp",
+  "imagens": [
+   "bestiario/diabo-espinhoso_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -12165,7 +12313,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/diabo-osseo_criatura.webp",
+  "imagens": [
+   "bestiario/diabo-osseo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -12335,7 +12485,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/diabrete-imp_criatura.webp",
+  "imagens": [
+   "bestiario/diabrete-imp_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -12498,7 +12650,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/djinn_criatura.webp",
+  "imagens": [
+   "bestiario/djinn_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -12649,7 +12803,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/doninha_criatura.webp",
+  "imagens": [
+   "bestiario/doninha_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -12775,7 +12931,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/doppelganger_criatura.webp",
+  "imagens": [
+   "bestiario/doppelganger_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -12916,7 +13074,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/dracolisk_criatura.webp",
+  "imagens": [
+   "bestiario/dracolisk_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -13065,7 +13225,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/dragao-azul-adulto_criatura.webp",
+  "imagens": [
+   "bestiario/dragao-azul-adulto_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -13261,7 +13423,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/dragao-branco-jovem_criatura.webp",
+  "imagens": [
+   "bestiario/dragao-branco-jovem_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -13451,7 +13615,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/dragao-dourado-adulto_criatura.webp",
+  "imagens": [
+   "bestiario/dragao-dourado-adulto_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 12,
@@ -13648,7 +13814,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/dragao-verde-adulto_criatura.webp",
+  "imagens": [
+   "bestiario/dragao-verde-adulto_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -13827,7 +13995,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/dragao-vermelho-adulto_criatura.webp",
+  "imagens": [
+   "bestiario/dragao-vermelho-adulto_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -14028,7 +14198,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/dragao-vermelho-anciao_criatura.webp",
+  "imagens": [
+   "bestiario/dragao-vermelho-anciao_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 14,
@@ -14241,7 +14413,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/dragao-vermelho-jovem_criatura.webp",
+  "imagens": [
+   "bestiario/dragao-vermelho-jovem_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -14427,7 +14601,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/varano_criatura.webp",
+  "imagens": [
+   "bestiario/varano_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -14563,7 +14739,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/varano-femea_criatura.webp",
+  "imagens": [
+   "bestiario/varano-femea_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -14686,7 +14864,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/dretch_criatura.webp",
+  "imagens": [
+   "bestiario/dretch_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -14845,7 +15025,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/driade_criatura.webp",
+  "imagens": [
+   "bestiario/driade_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -15014,7 +15196,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/drider_criatura.webp",
+  "imagens": [
+   "bestiario/drider_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -15152,7 +15336,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/drow_criatura.webp",
+  "imagens": [
+   "bestiario/drow_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -15288,7 +15474,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/duelista_pdm.webp",
+  "imagens": [
+   "bestiario/duelista_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -15442,7 +15630,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/duergar_criatura.webp",
+  "imagens": [
+   "bestiario/duergar_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -15576,7 +15766,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/efreeti_criatura.webp",
+  "imagens": [
+   "bestiario/efreeti_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -15733,7 +15925,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/elasmossauro_criatura.webp",
+  "imagens": [
+   "bestiario/elasmossauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -15855,7 +16049,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 10,
@@ -16018,7 +16212,7 @@
     "extraplanar"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 3,
@@ -16148,7 +16342,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/elemental-da-terra-grande_criatura.webp",
+  "imagens": [
+   "bestiario/elemental-da-terra-grande_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -16293,7 +16489,7 @@
     "extraplanar"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 5,
@@ -16424,7 +16620,7 @@
     "extraplanar"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 3,
@@ -16552,7 +16748,7 @@
     "extraplanar"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 1,
@@ -16686,7 +16882,9 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/enxame-de-aranhas_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-aranhas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -16809,7 +17007,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/enxame-de-caranguejos_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-caranguejos_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -16932,7 +17132,9 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/enxame-de-centopeias_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-centopeias_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -17050,7 +17252,9 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/enxame-de-formigas_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-formigas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -17183,7 +17387,9 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/enxame-de-morcegos_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-morcegos_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -17311,7 +17517,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/enxame-de-ratos_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-ratos_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -17444,7 +17652,9 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/enxame-de-sanguessugas_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-sanguessugas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -17570,7 +17780,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/enxame-de-vespas_criatura.webp",
+  "imagens": [
+   "bestiario/enxame-de-vespas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -17692,7 +17904,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/erinia_criatura.webp",
+  "imagens": [
+   "bestiario/erinia_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -17869,7 +18083,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/escorpiao-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/escorpiao-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -18011,7 +18227,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/esfinge-ginosfinge_criatura.webp",
+  "imagens": [
+   "bestiario/esfinge-ginosfinge_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -18168,7 +18386,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/espantalho-desperto_criatura.webp",
+  "imagens": [
+   "bestiario/espantalho-desperto_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -18280,7 +18500,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 0,
@@ -18446,7 +18666,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/espreitador-sombrio_criatura.webp",
+  "imagens": [
+   "bestiario/espreitador-sombrio_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -18581,7 +18803,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/esqueleto-humano_criatura.webp",
+  "imagens": [
+   "bestiario/esqueleto-humano_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -18729,7 +18953,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/estegossauro_criatura.webp",
+  "imagens": [
+   "bestiario/estegossauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -18856,7 +19082,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/estrangulador_criatura.webp",
+  "imagens": [
+   "bestiario/estrangulador_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -18989,7 +19217,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ettercap_criatura.webp",
+  "imagens": [
+   "bestiario/ettercap_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -19133,7 +19363,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ettin_criatura.webp",
+  "imagens": [
+   "bestiario/ettin_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -19270,7 +19502,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/falcao-peregrino_criatura.webp",
+  "imagens": [
+   "bestiario/falcao-peregrino_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 1,
@@ -19406,7 +19640,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/fantasma_criatura.webp",
+  "imagens": [
+   "bestiario/fantasma_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -19568,7 +19804,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/feiticeiro-menor_pdm.webp",
+  "imagens": [
+   "bestiario/feiticeiro-menor_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -19710,7 +19948,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/fenix_criatura.webp",
+  "imagens": [
+   "bestiario/fenix_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -19892,7 +20132,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/filhote-de-dragao-vermelho_criatura.webp",
+  "imagens": [
+   "bestiario/filhote-de-dragao-vermelho_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -20064,7 +20306,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/fogo-fatuo_criatura.webp",
+  "imagens": [
+   "bestiario/fogo-fatuo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -20202,7 +20446,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/formiga-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/formiga-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -20344,7 +20590,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/froghemoth_criatura.webp",
+  "imagens": [
+   "bestiario/froghemoth_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -20509,7 +20757,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/fungo-violeta_criatura.webp",
+  "imagens": [
+   "bestiario/fungo-violeta_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -20635,7 +20885,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/gargula_criatura.webp",
+  "imagens": [
+   "bestiario/gargula_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -20777,7 +21029,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/gato_criatura.webp",
+  "imagens": [
+   "bestiario/gato_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -20908,7 +21162,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/geleia-ocre_criatura.webp",
+  "imagens": [
+   "bestiario/geleia-ocre_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -21043,7 +21299,9 @@
     "Extraplanar"
    ]
   },
-  "imagem": "bestiario/ghaele-azata_criatura.webp",
+  "imagens": [
+   "bestiario/ghaele-azata_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -21225,7 +21483,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ghast_criatura.webp",
+  "imagens": [
+   "bestiario/ghast_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -21384,7 +21644,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ghoul_criatura.webp",
+  "imagens": [
+   "bestiario/ghoul_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -21548,7 +21810,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/gigante-da-colina_criatura.webp",
+  "imagens": [
+   "bestiario/gigante-da-colina_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -21699,7 +21963,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/gigante-da-pedra_criatura.webp",
+  "imagens": [
+   "bestiario/gigante-da-pedra_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -21844,7 +22110,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/gigante-da-tempestade_criatura.webp",
+  "imagens": [
+   "bestiario/gigante-da-tempestade_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -22000,7 +22268,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/gigante-das-nuvens_criatura.webp",
+  "imagens": [
+   "bestiario/gigante-das-nuvens_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 12,
@@ -22159,7 +22429,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/gigante-do-fogo_criatura.webp",
+  "imagens": [
+   "bestiario/gigante-do-fogo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -22329,7 +22601,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/gigante-do-gelo_criatura.webp",
+  "imagens": [
+   "bestiario/gigante-do-gelo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -22478,7 +22752,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/gigantopiteco_criatura.webp",
+  "imagens": [
+   "bestiario/gigantopiteco_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -22612,7 +22888,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/girallon_criatura.webp",
+  "imagens": [
+   "bestiario/girallon_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -22759,7 +23037,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/glabrezu_criatura.webp",
+  "imagens": [
+   "bestiario/glabrezu_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 12,
@@ -22963,7 +23243,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/gnoll_criatura.webp",
+  "imagens": [
+   "bestiario/gnoll_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -23101,7 +23383,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/goblin_criatura.webp",
+  "imagens": [
+   "bestiario/goblin_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -23222,7 +23506,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 8,
@@ -23371,7 +23655,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -23522,7 +23806,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 11,
@@ -23684,7 +23968,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/golem-de-gelo_criatura.webp",
+  "imagens": [
+   "bestiario/golem-de-gelo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -23834,7 +24120,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 10,
@@ -23981,7 +24267,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/golfinho_criatura.webp",
+  "imagens": [
+   "bestiario/golfinho_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -24115,7 +24403,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/gorgona-touro-de-ferro_criatura.webp",
+  "imagens": [
+   "bestiario/gorgona-touro-de-ferro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -24274,7 +24564,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -24413,7 +24703,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/grande-wyrm-vermelho_criatura.webp",
+  "imagens": [
+   "bestiario/grande-wyrm-vermelho_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 16,
@@ -24635,7 +24927,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/grifo_criatura.webp",
+  "imagens": [
+   "bestiario/grifo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -24798,7 +25092,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/guarda-da-cidade_pdm.webp",
+  "imagens": [
+   "bestiario/guarda-da-cidade_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -24942,7 +25238,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/guepardo_criatura.webp",
+  "imagens": [
+   "bestiario/guepardo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -25082,7 +25380,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/harpia_criatura.webp",
+  "imagens": [
+   "bestiario/harpia_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -25220,7 +25520,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/hezrou_criatura.webp",
+  "imagens": [
+   "bestiario/hezrou_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -25392,7 +25694,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/hidra-5-cabecas_criatura.webp",
+  "imagens": [
+   "bestiario/hidra-5-cabecas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -25535,7 +25839,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 4,
@@ -25666,7 +25970,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -25793,7 +26097,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/hipogrifo_criatura.webp",
+  "imagens": [
+   "bestiario/hipogrifo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -25950,7 +26256,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/hobgoblin_criatura.webp",
+  "imagens": [
+   "bestiario/hobgoblin_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -26077,7 +26385,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/homem-lagarto_criatura.webp",
+  "imagens": [
+   "bestiario/homem-lagarto_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -26213,7 +26523,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/homem-rato-forma-humana_criatura.webp",
+  "imagens": [
+   "bestiario/homem-rato-forma-humana_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -26369,7 +26681,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/homunculus_criatura.webp",
+  "imagens": [
+   "bestiario/homunculus_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -26505,7 +26819,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/janni_criatura.webp",
+  "imagens": [
+   "bestiario/janni_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -26643,7 +26959,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/jararaca_criatura.webp",
+  "imagens": [
+   "bestiario/jararaca_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -26763,7 +27081,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 5,
@@ -26914,7 +27232,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/jiboia_criatura.webp",
+  "imagens": [
+   "bestiario/jiboia_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -27047,7 +27367,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/kobold_criatura.webp",
+  "imagens": [
+   "bestiario/kobold_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -27172,7 +27494,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/kraken_criatura.webp",
+  "imagens": [
+   "bestiario/kraken_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 14,
@@ -27350,7 +27674,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/kyton_criatura.webp",
+  "imagens": [
+   "bestiario/kyton_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -27516,7 +27842,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/lacador_criatura.webp",
+  "imagens": [
+   "bestiario/lacador_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -27664,7 +27992,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/lagarto-eletrico_criatura.webp",
+  "imagens": [
+   "bestiario/lagarto-eletrico_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -27811,7 +28141,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/lagarto-de-gola-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/lagarto-de-gola-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -27946,7 +28278,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/lamia_criatura.webp",
+  "imagens": [
+   "bestiario/lamia_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -28079,7 +28413,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 6,
@@ -28226,7 +28560,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -28369,7 +28703,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 5,
@@ -28503,7 +28837,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/lemure_criatura.webp",
+  "imagens": [
+   "bestiario/lemure_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -28636,7 +28972,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/leopardo_criatura.webp",
+  "imagens": [
+   "bestiario/leopardo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -28780,7 +29118,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/lesma-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/lesma-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -28932,7 +29272,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/lich_criatura.webp",
+  "imagens": [
+   "bestiario/lich_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -29118,7 +29460,9 @@
     "Extraplanar"
    ]
   },
-  "imagem": "bestiario/lillend_criatura.webp",
+  "imagens": [
+   "bestiario/lillend_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -29253,7 +29597,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/limo-cinzento_criatura.webp",
+  "imagens": [
+   "bestiario/limo-cinzento_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -29383,7 +29729,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/linnorm-do-gelo_criatura.webp",
+  "imagens": [
+   "bestiario/linnorm-do-gelo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -29558,7 +29906,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/linnorm-dos-lagos_criatura.webp",
+  "imagens": [
+   "bestiario/linnorm-dos-lagos_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -29755,7 +30105,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/linnorm-dos-penhascos_criatura.webp",
+  "imagens": [
+   "bestiario/linnorm-dos-penhascos_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -29929,7 +30281,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/lobisomem_criatura.webp",
+  "imagens": [
+   "bestiario/lobisomem_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -30082,7 +30436,7 @@
     "frio"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 3,
@@ -30215,7 +30569,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 5,
@@ -30341,7 +30695,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/lobo-do-inverno_criatura.webp",
+  "imagens": [
+   "bestiario/lobo-do-inverno_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -30485,7 +30841,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 4,
@@ -30629,7 +30985,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 1,
@@ -30760,7 +31116,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 4,
@@ -30899,7 +31255,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/lula-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/lula-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -31046,7 +31404,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/macaco_criatura.webp",
+  "imagens": [
+   "bestiario/macaco_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -31163,7 +31523,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/mago-de-batalha_pdm.webp",
+  "imagens": [
+   "bestiario/mago-de-batalha_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -31315,7 +31677,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/mamute_criatura.webp",
+  "imagens": [
+   "bestiario/mamute_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -31446,7 +31810,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/manticora_criatura.webp",
+  "imagens": [
+   "bestiario/manticora_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -31601,7 +31967,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/manto-escuro_criatura.webp",
+  "imagens": [
+   "bestiario/manto-escuro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -31724,7 +32092,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/marid_criatura.webp",
+  "imagens": [
+   "bestiario/marid_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -31862,7 +32232,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/marilith_criatura.webp",
+  "imagens": [
+   "bestiario/marilith_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -32068,7 +32440,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/mastodonte_criatura.webp",
+  "imagens": [
+   "bestiario/mastodonte_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -32204,7 +32578,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/medusa_criatura.webp",
+  "imagens": [
+   "bestiario/medusa_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -32368,7 +32744,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/megalodonte_criatura.webp",
+  "imagens": [
+   "bestiario/megalodonte_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -32501,7 +32879,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/mephit_criatura.webp",
+  "imagens": [
+   "bestiario/mephit_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -32648,7 +33028,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/merfolk_criatura.webp",
+  "imagens": [
+   "bestiario/merfolk_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -32783,7 +33165,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/mimico_criatura.webp",
+  "imagens": [
+   "bestiario/mimico_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -32925,7 +33309,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/minotauro_criatura.webp",
+  "imagens": [
+   "bestiario/minotauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -33072,7 +33458,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/mite_criatura.webp",
+  "imagens": [
+   "bestiario/mite_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -33204,7 +33592,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/mohrg_criatura.webp",
+  "imagens": [
+   "bestiario/mohrg_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -33352,7 +33742,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/monstro-da-ferrugem_criatura.webp",
+  "imagens": [
+   "bestiario/monstro-da-ferrugem_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -33487,7 +33879,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/montao-tropecante_criatura.webp",
+  "imagens": [
+   "bestiario/montao-tropecante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -33627,7 +34021,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/morcego_criatura.webp",
+  "imagens": [
+   "bestiario/morcego_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -33755,7 +34151,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/morcego-atroz_criatura.webp",
+  "imagens": [
+   "bestiario/morcego-atroz_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -33886,7 +34284,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -34016,7 +34414,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/morlock_criatura.webp",
+  "imagens": [
+   "bestiario/morlock_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -34151,7 +34551,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/mosassauro_criatura.webp",
+  "imagens": [
+   "bestiario/mosassauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 12,
@@ -34264,7 +34666,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/mumia_criatura.webp",
+  "imagens": [
+   "bestiario/mumia_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -34409,7 +34813,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/nabasu_criatura.webp",
+  "imagens": [
+   "bestiario/nabasu_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -34592,7 +34998,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/naga-espirita_criatura.webp",
+  "imagens": [
+   "bestiario/naga-espirita_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -34760,7 +35168,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -34903,7 +35311,7 @@
     "temperado"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 5,
@@ -35060,7 +35468,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/serpente-venenosa_criatura.webp",
+  "imagens": [
+   "bestiario/serpente-venenosa_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 1,
@@ -35185,7 +35595,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/nalfeshnee_criatura.webp",
+  "imagens": [
+   "bestiario/nalfeshnee_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 12,
@@ -35375,7 +35787,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/neothelid_criatura.webp",
+  "imagens": [
+   "bestiario/neothelid_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -35533,8 +35947,10 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/ninfa_criatura.webp",
-  "imagem2": "bestiario/ninfa_criatura_2.webp",
+  "imagens": [
+   "bestiario/ninfa_criatura.webp",
+   "bestiario/ninfa_criatura_2.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -35709,7 +36125,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/nobre-drow_criatura.webp",
+  "imagens": [
+   "bestiario/nobre-drow_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -35847,7 +36265,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/objeto-animado_criatura.webp",
+  "imagens": [
+   "bestiario/objeto-animado_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -35978,7 +36398,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ogro_criatura.webp",
+  "imagens": [
+   "bestiario/ogro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -36112,7 +36534,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ogro-mago-oni_criatura.webp",
+  "imagens": [
+   "bestiario/ogro-mago-oni_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -36279,7 +36703,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/orc_criatura.webp",
+  "imagens": [
+   "bestiario/orc_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -36405,7 +36831,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/orca_criatura.webp",
+  "imagens": [
+   "bestiario/orca_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -36528,7 +36956,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/otyugh_criatura.webp",
+  "imagens": [
+   "bestiario/otyugh_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -36669,7 +37099,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/papa-moscas-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/papa-moscas-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -36796,7 +37228,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/pegaso_criatura.webp",
+  "imagens": [
+   "bestiario/pegaso_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -36945,7 +37379,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/perseguidor-invisivel_criatura.webp",
+  "imagens": [
+   "bestiario/perseguidor-invisivel_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -37076,7 +37512,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/pesadelo_criatura.webp",
+  "imagens": [
+   "bestiario/pesadelo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -37224,7 +37662,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/pescador-das-cavernas_criatura.webp",
+  "imagens": [
+   "bestiario/pescador-das-cavernas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -37354,7 +37794,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/pixie_criatura.webp",
+  "imagens": [
+   "bestiario/pixie_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -37515,7 +37957,9 @@
     "Extraplanar"
    ]
   },
-  "imagem": "bestiario/planetar_criatura.webp",
+  "imagens": [
+   "bestiario/planetar_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -37712,7 +38156,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/plesiossauro_criatura.webp",
+  "imagens": [
+   "bestiario/plesiossauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -37821,7 +38267,7 @@
     "frio"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 1,
@@ -37948,7 +38394,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/polvo-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/polvo-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -38086,7 +38534,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/ponei_criatura.webp",
+  "imagens": [
+   "bestiario/ponei_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -38224,7 +38674,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/poraque_criatura.webp",
+  "imagens": [
+   "bestiario/poraque_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -38362,7 +38814,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/pseudodragao_criatura.webp",
+  "imagens": [
+   "bestiario/pseudodragao_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 1,
@@ -38515,7 +38969,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/pteranodonte_criatura.webp",
+  "imagens": [
+   "bestiario/pteranodonte_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -38633,7 +39089,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/pudim-negro_criatura.webp",
+  "imagens": [
+   "bestiario/pudim-negro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -38761,7 +39219,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/quasit_criatura.webp",
+  "imagens": [
+   "bestiario/quasit_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -38929,7 +39389,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/quetzalcoatlo_criatura.webp",
+  "imagens": [
+   "bestiario/quetzalcoatlo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -39042,7 +39504,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/quimera_criatura.webp",
+  "imagens": [
+   "bestiario/quimera_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -39204,7 +39668,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/ra-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/ra-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -39347,7 +39813,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 0,
@@ -39460,7 +39926,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/rakshasa_criatura.webp",
+  "imagens": [
+   "bestiario/rakshasa_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -39637,7 +40105,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/rastejador-sombrio_criatura.webp",
+  "imagens": [
+   "bestiario/rastejador-sombrio_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -39766,7 +40236,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/rato-atroz_criatura.webp",
+  "imagens": [
+   "bestiario/rato-atroz_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -39893,7 +40365,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/rato-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/rato-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -40024,7 +40498,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/remorhaz_criatura.webp",
+  "imagens": [
+   "bestiario/remorhaz_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 9,
@@ -40163,7 +40639,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/rinoceronte_criatura.webp",
+  "imagens": [
+   "bestiario/rinoceronte_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -40314,7 +40792,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/roc_criatura.webp",
+  "imagens": [
+   "bestiario/roc_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -40474,7 +40954,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/sahuagin_criatura.webp",
+  "imagens": [
+   "bestiario/sahuagin_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -40613,7 +41095,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/salamandra_criatura.webp",
+  "imagens": [
+   "bestiario/salamandra_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -40772,7 +41256,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/sanguessuga-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/sanguessuga-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -40917,7 +41403,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 0,
@@ -41030,7 +41516,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/satiro_criatura.webp",
+  "imagens": [
+   "bestiario/satiro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -41185,7 +41673,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/serpente-marinha_criatura.webp",
+  "imagens": [
+   "bestiario/serpente-marinha_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -41327,7 +41817,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/shaitan_criatura.webp",
+  "imagens": [
+   "bestiario/shaitan_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -41469,7 +41961,9 @@
     "Cold"
    ]
   },
-  "imagem": "bestiario/shoggoth_criatura.webp",
+  "imagens": [
+   "bestiario/shoggoth_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -41610,7 +42104,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/skum-ulat-kini_criatura.webp",
+  "imagens": [
+   "bestiario/skum-ulat-kini_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,
@@ -41757,7 +42253,9 @@
     "Extraplanar"
    ]
   },
-  "imagem": "bestiario/solar_criatura.webp",
+  "imagens": [
+   "bestiario/solar_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -41968,7 +42466,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/soldado-veterano_pdm.webp",
+  "imagens": [
+   "bestiario/soldado-veterano_pdm.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -42144,7 +42644,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/sombra_criatura.webp",
+  "imagens": [
+   "bestiario/sombra_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 0,
@@ -42297,7 +42799,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/stirge_criatura.webp",
+  "imagens": [
+   "bestiario/stirge_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 1,
@@ -42420,7 +42924,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/sucubo_criatura.webp",
+  "imagens": [
+   "bestiario/sucubo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -42589,7 +43095,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/svirfneblin_criatura.webp",
+  "imagens": [
+   "bestiario/svirfneblin_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -42713,7 +43221,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/tarrasque_criatura.webp",
+  "imagens": [
+   "bestiario/tarrasque_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 16,
@@ -42890,7 +43400,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/tartaruga-dragao_criatura.webp",
+  "imagens": [
+   "bestiario/tartaruga-dragao_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 10,
@@ -43047,7 +43559,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/tengu_criatura.webp",
+  "imagens": [
+   "bestiario/tengu_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -43181,7 +43695,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/tiefling_criatura.webp",
+  "imagens": [
+   "bestiario/tiefling_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -43308,7 +43824,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/tigre_criatura.webp",
+  "imagens": [
+   "bestiario/tigre_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -43453,7 +43971,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/tigre-dentes-de-sabre_criatura.webp",
+  "imagens": [
+   "bestiario/tigre-dentes-de-sabre_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -43579,7 +44099,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/tiranossauro_criatura.webp",
+  "imagens": [
+   "bestiario/tiranossauro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 12,
@@ -43710,7 +44232,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/treant_criatura.webp",
+  "imagens": [
+   "bestiario/treant_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -43875,7 +44399,9 @@
     "Tropical"
    ]
   },
-  "imagem": "bestiario/trepadeira-de-almiscar-amarelo_criatura.webp",
+  "imagens": [
+   "bestiario/trepadeira-de-almiscar-amarelo_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -44008,7 +44534,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/triceratops_criatura.webp",
+  "imagens": [
+   "bestiario/triceratops_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 11,
@@ -44151,7 +44679,9 @@
     "tropical"
    ]
   },
-  "imagem": "bestiario/trogloditas_criatura.webp",
+  "imagens": [
+   "bestiario/trogloditas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -44290,7 +44820,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/trol_criatura.webp",
+  "imagens": [
+   "bestiario/trol_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -44457,7 +44989,7 @@
     "tropical"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 9,
@@ -44578,7 +45110,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/unicornio_criatura.webp",
+  "imagens": [
+   "bestiario/unicornio_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -44747,7 +45281,7 @@
     "Cold"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -44869,7 +45403,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/urso-das-cavernas_criatura.webp",
+  "imagens": [
+   "bestiario/urso-das-cavernas_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -45005,7 +45541,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/urso-negro_criatura.webp",
+  "imagens": [
+   "bestiario/urso-negro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -45128,7 +45666,7 @@
     "frio"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -45272,7 +45810,7 @@
     "frio"
    ]
   },
-  "imagem": null,
+  "imagens": [],
   "semImagem": true,
   "atributos": {
    "forca": 7,
@@ -45404,7 +45942,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/urso-polar_criatura.webp",
+  "imagens": [
+   "bestiario/urso-polar_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 8,
@@ -45531,7 +46071,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/vampiro_criatura.webp",
+  "imagens": [
+   "bestiario/vampiro_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -45712,7 +46254,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/vargouille_criatura.webp",
+  "imagens": [
+   "bestiario/vargouille_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -45841,7 +46385,9 @@
     "Temperate"
    ]
   },
-  "imagem": "bestiario/vegepygmy_criatura.webp",
+  "imagens": [
+   "bestiario/vegepygmy_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -45968,7 +46514,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/verme-purpura_criatura.webp",
+  "imagens": [
+   "bestiario/verme-purpura_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 13,
@@ -46115,7 +46663,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/vespa-gigante_criatura.webp",
+  "imagens": [
+   "bestiario/vespa-gigante_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 2,
@@ -46258,7 +46808,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/vinha-assassina_criatura.webp",
+  "imagens": [
+   "bestiario/vinha-assassina_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -46392,7 +46944,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/vrock_criatura.webp",
+  "imagens": [
+   "bestiario/vrock_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -46568,7 +47122,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/wight_criatura.webp",
+  "imagens": [
+   "bestiario/wight_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 3,
@@ -46710,7 +47266,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/worg_criatura.webp",
+  "imagens": [
+   "bestiario/worg_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -46836,7 +47394,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/wyvern_criatura.webp",
+  "imagens": [
+   "bestiario/wyvern_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -47010,7 +47570,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/xill_criatura.webp",
+  "imagens": [
+   "bestiario/xill_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 5,
@@ -47175,7 +47737,9 @@
     "extraplanar"
    ]
   },
-  "imagem": "bestiario/xorn_criatura.webp",
+  "imagens": [
+   "bestiario/xorn_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 6,
@@ -47326,7 +47890,9 @@
     "frio"
    ]
   },
-  "imagem": "bestiario/yeti_criatura.webp",
+  "imagens": [
+   "bestiario/yeti_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 7,
@@ -47463,7 +48029,9 @@
     "temperado"
    ]
   },
-  "imagem": "bestiario/zumbi-humano_criatura.webp",
+  "imagens": [
+   "bestiario/zumbi-humano_criatura.webp"
+  ],
   "semImagem": false,
   "atributos": {
    "forca": 4,

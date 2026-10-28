@@ -176,7 +176,7 @@ import MesaCab from '../../components/MesaCab.astro';
       if (q.length < 2) { res.hidden = true; return; }
       const hits = MON_LIST.filter((m) => m.busca.includes(q)).slice(0, 12);
       res.innerHTML = hits.length ? hits.map((m) => `<li data-mon="${m.id}">
-        ${avatarHTML(m.nome, m.imagem ? u(imagemDe(m) || m.imagem) : null, 'av-besta av-p')}
+        ${avatarHTML(m.nome, m.imagens?.[0] ? u(imagemDe(m) || m.imagens?.[0]) : null, 'av-besta av-p')}
         <span class="r-n">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted">(${esc(m.nomeIngles)})</span>` : ''}</span>
         <span class="r-m">A${m.ameaca} · PV ${m.pv ?? '—'} · Def ${defesaNaMesaDe(m.id) ?? m.defesa ?? '—'}${defesaOutraDe(m.id) != null ? ` <span class="muted" title="A outra Defesa: com ou sem o equipamento (D-206)">(${defesaOutraDe(m.id)})</span>` : ''}</span>
       </li>`).join('') : '<li class="muted vazio">nada encontrado</li>';
@@ -270,7 +270,7 @@ import MesaCab from '../../components/MesaCab.astro';
       const cb = m.combate || {};
       const pvv = c.dados?.pv ?? cb.pv;
       const variante = !!(c.apelido || (c.dados && Object.keys(c.dados).length));
-      const arte = m.imagem
+      const arte = m.imagens?.[0]
         ? `<figure class="cri-arte" data-mon="${m.id}"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}" loading="lazy" />
              <span class="cri-am" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>
              ${variante ? '<span class="cri-var">variante</span>' : ''}</figure>`
@@ -433,7 +433,7 @@ import MesaCab from '../../components/MesaCab.astro';
     const src = u(imagemDe(m)!);
     img.src = src;
     const selo = img.parentElement?.querySelector('.arte-selo');
-    if (selo) selo.textContent = `${n}/2`;
+    if (selo) selo.textContent = `${n}/${m.imagens.length}`;
     document.querySelectorAll<HTMLImageElement>(`.cri-arte[data-mon="${m.id}"] img`).forEach((i) => { i.src = src; });
   });
 

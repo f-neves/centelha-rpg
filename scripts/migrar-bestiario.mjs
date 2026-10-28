@@ -128,7 +128,7 @@ INIM.forEach((I, i) => {
     descricao: m.descricao,
     ...(I.descricao !== m.descricao ? { descricaoLegada: I.descricao } : {}),
     tags: I.tags,
-    imagem: m.imagem,
+    imagem: m.imagens?.[0],
     porte: m.tamanho,
     dimensoes: m.corpo,
     ...(cu?.material ? { material: cu.material } : {}),

@@ -22,25 +22,25 @@ function ler(): Record<string, number> {
 }
 
 /** 1 ou 2: qual das imagens da criatura está escolhida neste aparelho. */
-export function escolhaDe(id: string): 1 | 2 {
+export function escolhaDe(id: string): number {
   const v = id in MEMORIA ? MEMORIA[id] : ler()[id];
-  return v === 2 ? 2 : 1;
+  return Number.isInteger(v) && v > 0 ? v : 1;
 }
 
 /** O caminho da imagem a mostrar, ou null se a criatura não tem imagem. */
-export function imagemDe(m: { id: string; imagem?: string | null; imagem2?: string | null } | null | undefined): string | null {
-  if (!m?.imagem) return null;
-  return m.imagem2 && escolhaDe(m.id) === 2 ? m.imagem2 : m.imagem;
+export function imagemDe(m: { id: string; imagens?: (string | null)[] } | null | undefined): string | null {
+  if (!m?.imagens?.[0]) return null;
+  return m.imagens[escolhaDe(m.id) - 1] || m.imagens[0];
 }
 
 /** Troca a imagem escolhida e devolve a nova escolha. Sem segunda imagem, não faz nada. */
-export function alternarImagem(m: { id: string; imagem2?: string | null }): 1 | 2 {
-  if (!m.imagem2) return 1;
-  const nova: 1 | 2 = escolhaDe(m.id) === 2 ? 1 : 2;
+export function alternarImagem(m: { id: string; imagens?: (string | null)[] }): number {
+  if (!m.imagens?.[1]) return 1;
+  const nova = escolhaDe(m.id) % m.imagens.length + 1;
   MEMORIA[m.id] = nova;
   try {
     const o = ler();
-    if (nova === 2) o[m.id] = 2; else delete o[m.id];
+    if (nova > 1) o[m.id] = nova; else delete o[m.id];
     localStorage.setItem(CHAVE, JSON.stringify(o));
   } catch { /* sem armazenamento: a troca vale só até recarregar */ }
   return nova;

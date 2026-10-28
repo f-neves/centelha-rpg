@@ -87,15 +87,15 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
         prontidao: i.habilidades?.prontidao ?? 0,
         fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], imunidades: i.combate.imunidades || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
 
-        <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
-          {i.imagem
-            ? <img src={url(i.imagem)} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
-                   data-full={url(i.imagem)} data-nome={i.nome}
-                   {...(i.imagem2 ? { 'data-img1': url(i.imagem), 'data-img2': url(i.imagem2), title: 'Clique para ver a outra imagem' } : {})} />
+        <figure class={`arte${i.imagens?.[0] ? '' : ' sem-arte'}`} data-cent={i.centelha}>
+          {i.imagens?.[0]
+            ? <img src={url(i.imagens?.[0])} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
+                   data-full={url(i.imagens?.[0])} data-nome={i.nome}
+                   {...(i.imagens?.[1] ? { 'data-imagens': JSON.stringify(i.imagens.map(url)), title: 'Clique para ver a outra imagem' } : {})} />
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
           {/* Duas imagens (D-179, item 16): o clique na arte troca, a lupa abre a lightbox e o
               selo diz qual está à vista. A escolha mora em src/lib/imagem-escolhida.ts. */}
-          {i.imagem2 && (<>
+          {i.imagens?.[1] && (<>
             <span class="arte-selo" aria-hidden="true">1/2</span>
             <button class="arte-lupa" type="button" title="Ampliar" aria-label="Ampliar a imagem">⌕</button>
           </>)}

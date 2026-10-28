@@ -22,6 +22,7 @@
 import { periciasDe } from './lib-bestiario.mjs';
 import { carregarTS } from './lib-ts.mjs';
 const MOTOR = await carregarTS('src/lib/motor.ts');
+const IMAGENS = await carregarTS('src/lib/imagem-escolhida.ts');
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -35,6 +36,12 @@ const ok = (cond, msg) => {
   if (!cond) falhas.push(msg);
 };
 
+const exemploImagens = { id: '__a6_imagens__', imagens: ['a.png', 'b.png', 'c.png'] };
+ok(IMAGENS.imagemDe(exemploImagens) === 'a.png', 'imagem principal da lista');
+ok(IMAGENS.alternarImagem(exemploImagens) === 2 && IMAGENS.imagemDe(exemploImagens) === 'b.png', 'segunda imagem');
+ok(IMAGENS.alternarImagem(exemploImagens) === 3 && IMAGENS.imagemDe(exemploImagens) === 'c.png', 'terceira imagem');
+ok(IMAGENS.alternarImagem(exemploImagens) === 1 && IMAGENS.imagemDe(exemploImagens) === 'a.png', 'lista volta à principal');
+ok(IMAGENS.imagemDe({ id: '__sem_imagem__', imagens: [] }) === null, 'lista vazia sem imagem');
 const REGRAS = ler('regras.json');
 const CHEIO = ler('monsters.json');
 const MESA = ler('monsters-mesa.json');
@@ -52,6 +59,7 @@ const porId = Object.fromEntries(MESA.map((m) => [m.id, m]));
 for (const m of [...CHEIO, ...MESA]) {
   ok(typeof m.tamanho === 'string' && !('porte' in m), m.id + ': Tamanho no contrato');
   ok(m.corpo && !('dimensoes' in m), m.id + ': Corpo no contrato');
+  ok(Array.isArray(m.imagens) && !('imagem' in m) && !('imagem2' in m), m.id + ': lista de imagens no contrato');
   ok(!('pericias' in m), m.id + ': contrato sem pericias');
   ok(m.habilidadesSec && !Array.isArray(m.habilidadesSec), m.id + ': mapa secundário presente');
 }

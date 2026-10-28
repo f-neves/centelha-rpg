@@ -1734,7 +1734,7 @@ import CondDlg from '../../components/CondDlg.astro';
       const q = norm(busca.value.trim());
       const hits = (q ? fonte.filter((f: any) => (f.busca || norm(f.nome)).includes(q)) : fonte).slice(0, 60);
       el('add-lista').innerHTML = hits.length ? hits.map((f: any) => `<div class="add-item" data-k="${esc(f.id)}">
-        ${avatarHTML(f.nome, f.imagem ? u(imagemDe(f) || f.imagem) : (f.npc?.imagem && /^https?:/.test(f.npc.imagem) ? f.npc.imagem : null), f.imagem ? 'av-besta av-p' : 'av-p')}
+        ${avatarHTML(f.nome, f.imagens?.[0] ? u(imagemDe(f) || f.imagens[0]) : (f.npc?.imagem && /^https?:/.test(f.npc.imagem) ? f.npc.imagem : null), f.imagens?.[0] ? 'av-besta av-p' : 'av-p')}
         <span class="ai-n">${esc(f.nome)}${f.sep ? ' <small class="muted">· da campanha</small>' : ''}</span>
         <span class="ai-m">${f.ameaca != null ? `A${f.ameaca} · PV ${f.pv ?? '—'} · Def ${f.defesa ?? '—'}` : esc(f.npc?.resumo || '')}</span>
       </div>`).join('') : '<p class="vazio" style="padding:.5rem">nada encontrado</p>';
