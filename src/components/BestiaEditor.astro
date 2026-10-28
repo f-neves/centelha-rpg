@@ -140,8 +140,8 @@ const PORTES = Object.keys(PORTE_LBL);
 
       <section class="ed-painel" data-painel="mundo" hidden>
         <div class="ed-grid">
-          <label class="ed-f ed-wide">Medida <input type="text" data-ed="dimensoes.medida" placeholder="1,8 m de altura" /></label>
-          <label class="ed-f ed-wide">Peso <input type="text" data-ed="dimensoes.peso" placeholder="40 kg" /></label>
+          <label class="ed-f ed-wide">Medida <input type="text" data-ed="corpo.medida" placeholder="1,8 m de altura" /></label>
+          <label class="ed-f ed-wide">Peso <input type="text" data-ed="corpo.peso" placeholder="40 kg" /></label>
           <label class="ed-f ed-wide">Tipo (ecologia) <input type="text" data-ed="ecologia.tipo" list="ed-dl-ecotipos" placeholder="Construct" /></label>
         </div>
         <h4>Terreno</h4>
@@ -468,7 +468,7 @@ const PORTES = Object.keys(PORTE_LBL);
     const campos = () => $$('[data-ed]') as (HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement)[];
 
     function coletar(): CriaturaEdit {
-      const c: any = { ...(atual as any), atributos: {}, bonus: {}, dimensoes: {}, ecologia: {} };
+      const c: any = { ...(atual as any), atributos: {}, bonus: {}, corpo: {}, ecologia: {} };
       for (const el of campos()) {
         const ch = el.dataset.ed!;
         const v = (el as HTMLInputElement).type === 'number' ? num((el as HTMLInputElement).value) : (el as HTMLInputElement).value;

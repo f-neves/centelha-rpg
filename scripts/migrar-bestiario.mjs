@@ -130,7 +130,7 @@ INIM.forEach((I, i) => {
     tags: I.tags,
     imagem: m.imagem,
     porte: m.tamanho,
-    dimensoes: m.dimensoes,
+    dimensoes: m.corpo,
     ...(cu?.material ? { material: cu.material } : {}),
     locomocao: { [modoDe(ds?.nota)]: dm.batalha },
     centelha: I.centelha,

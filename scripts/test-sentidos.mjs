@@ -51,6 +51,7 @@ console.log('· os sentidos das criaturas: a Passiva, a tabela e a exceção');
 const porId = Object.fromEntries(MESA.map((m) => [m.id, m]));
 for (const m of [...CHEIO, ...MESA]) {
   ok(typeof m.tamanho === 'string' && !('porte' in m), m.id + ': Tamanho no contrato');
+  ok(m.corpo && !('dimensoes' in m), m.id + ': Corpo no contrato');
   ok(!('pericias' in m), m.id + ': contrato sem pericias');
   ok(m.habilidadesSec && !Array.isArray(m.habilidadesSec), m.id + ': mapa secundário presente');
 }

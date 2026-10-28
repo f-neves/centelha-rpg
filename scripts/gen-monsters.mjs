@@ -99,7 +99,7 @@ function build(c) {
     centelha: c.centelha,
     pendente: !!c.pendente,
     tamanho: f.porte || null,
-    dimensoes: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
+    corpo: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
     imagem: f.imagem || null, ...(f.imagem2 ? { imagem2: f.imagem2 } : {}),
     semImagem: !f.imagem,
@@ -170,7 +170,7 @@ for (const m of monsters) {
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);
   if (!m.habilidadesEspeciais.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
   if (!m.lore.length && !FICHA[m.id]?.motor) problemas.push(`${m.id}: sem lore`);
-  if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
+  if (!m.corpo.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
   // imagem opcional: criaturas sem arte ganham semImagem:true e o badge "Sem imagem"
 }
@@ -248,7 +248,7 @@ const CAMPOS_MESA = [
   // sem nada acusar, porque `null` e um valor que o contrato permite. Quem pega
   // isso agora e o `test-sentidos.mjs`.
   'habilidades', 'habilidadesSec',
-  'artes', 'tecnicas', 'combate', 'ecologia', 'dimensoes',
+  'artes', 'tecnicas', 'combate', 'ecologia', 'corpo',
 ];
 /**
  * O QUE FICA DE FORA DA MESA, DECLARADO, e esta lista é o conserto da CLASSE e
