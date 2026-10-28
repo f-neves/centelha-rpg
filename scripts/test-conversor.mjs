@@ -236,6 +236,15 @@ for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis perna
   if (r.paradas.length || r.criatura.formas.find(f=>f.id==='lobo')?.deslocamento?.terra?.corrida !== 16) falhas.push('deslocamento de Variante por marchas recusado');
 }
 
+// P15: terra condicional aceita a criatura que não anda, mas texto ilegível ainda para.
+{
+  const base = LOBO.replace('Batalha **3** · Arranque **5** · Corrida **7** (m por Tick)', 'não anda');
+  const semTerra = converterFicha(base, { site: SITE });
+  if (semTerra.paradas.length || semTerra.lacunas.some(x => x.includes('deslocamento.terra')) || semTerra.criatura.deslocamento.terra) falhas.push('P15: terra ausente ainda gera parada ou lacuna');
+  const ilegivel = converterFicha(base.replace('| Deslocamento em terra | não anda |', '| Deslocamento em terra | passo misterioso |'), { site: SITE });
+  if (!ilegivel.paradas.some(x => x.includes('Deslocamento em terra ilegível'))) falhas.push('P15: controle negativo de terra ilegível não parou');
+}
+
 for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:1.5,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:10,tamanhoEquivalente:'sem-tamanho'},{individuosPorQuadrado:10,tamanhoEquivalente:'pequeno',pv:24}]) {
   if (criaturaNovaSchema.shape.enxame.safeParse(invalido).success) falhas.push('P10: bloco inválido ou com PV gravado passou');
 }
