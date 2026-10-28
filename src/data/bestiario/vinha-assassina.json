@@ -235,7 +235,7 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "A fibra lenhosa que aperta como o músculo de um animal comum (escala da decisão 12)"
+      "motivo": "A fibra lenhosa que aperta como o músculo de um animal comum (escala da decisão 12); 2"
     },
     {
       "campo": "corpo.altura",
@@ -264,6 +264,10 @@
     {
       "campo": "corpo.area",
       "motivo": "a moita erguida, estimada"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "3 m na vinha"
     }
   ]
 }

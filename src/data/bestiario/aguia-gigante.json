@@ -258,6 +258,14 @@
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "Bico em gancho do tamanho de uma cabeça de cavalo, com o pescoço atrás: Média, como o bico do grifo e do roc; bico grande em N1 . Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande para Enorme em voo (9,68 m²), pelo método do grifo; em jogo, o humano ganha +6, e não +3, contra ela no ar"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 8,5, bico 10,5, garras em mergulho 20,0 (só descendo)"
     }
   ]
 }

@@ -258,7 +258,7 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site: \"Prontidão 3\"; o campo tinha 1. Como no wyvern do lote 24, que ficou com a Prontidão da nota. O tremor e o faro de tesouro vão em Sentidos e na Especialidade natural"
+      "motivo": "A nota do site: \"Prontidão 3\"; o campo tinha 1. Como no wyvern do lote 24, que ficou com a Prontidão da nota. O tremor e o faro de tesouro vão em Sentidos e na Especialidade natural; 3, a da nota do site; o campo tinha 1, como no wyvern do lote 24"
     },
     {
       "campo": "couraca",
@@ -271,6 +271,10 @@
     {
       "campo": "ataques.Mordida",
       "motivo": "\"A boca única e enorme\" (site), que mastiga pedra e metal: Média, golpe de boca, Força × 1. N1 pela boca que tritura metal (`regra-construcao.md` §7, mordida até 15.000 N) . Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6); N1 pela boca que come metal"
+    },
+    {
+      "campo": "artes",
+      "motivo": "a Arte Terra 3 do site sai, e fica o poder natural Deslizar pela pedra, de mesma base (C-037)"
     }
   ]
 }

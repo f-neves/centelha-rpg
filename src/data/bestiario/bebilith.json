@@ -311,7 +311,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de quitina de um artrópode de 2,7 t, como o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de quitina de um artrópode de 2,7 t, como o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); 5, carapaça de quitina, como o crocodilo"
     },
     {
       "campo": "comportamento.dianteDeGente",
@@ -328,6 +328,10 @@
     {
       "campo": "corpo.area",
       "motivo": "7,44 m² pelo método da aranha gigante (corpo de cima mais oito patas); patas de 2,0 × 0,2 m são estimativa"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 3 dados e 7 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida e as garras ficam Médias, e é aqui que a ficha mais perde dano (de 2d6 + 11 para 1d6 + 11)"
     }
   ]
 }

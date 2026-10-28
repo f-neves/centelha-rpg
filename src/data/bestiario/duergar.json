@@ -249,6 +249,18 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "machado do livro"
+    },
+    {
+      "campo": "virtudes.compaixao",
+      "motivo": "1; o site tinha 2"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Especialidade natural +2 em Atletismo"
     }
   ]
 }

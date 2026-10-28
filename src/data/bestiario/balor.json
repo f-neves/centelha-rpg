@@ -368,7 +368,7 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 3"
+      "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 3; 5 pela nota do site, e não o 3 do campo"
     },
     {
       "campo": "corpo.massa",
@@ -376,7 +376,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade e a fraqueza são as do site (\"imune a fogo; vulnerável a frio\"), pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade e a fraqueza são as do site (\"imune a fogo; vulnerável a frio\"), pela linha Elementos; 4, como o hezrou"
     },
     {
       "campo": "comportamento.dieta",
@@ -385,6 +385,14 @@
     {
       "campo": "aparencia",
       "motivo": "0, e não o −2 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as Garras ficam Médias; a espada é a do livro e o chicote, Leve; o livro não tem chicote; ataque da ficha, Leve, com o puxão de 9 m como habilidade (D-197)"
+    },
+    {
+      "campo": "elementos.fraquezas",
+      "motivo": "o site diz \"vulnerável a frio (sofre dano extra)\"; entrou como fraqueza a Gelo do vocabulário, que passa a Absorção"
     }
   ]
 }

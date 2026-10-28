@@ -353,6 +353,14 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma (site) muda o corpo; a mente, as Artes e os números ficam os dela"
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Potência 14, pool 3 de Força, fora do catálogo"
     }
   ]
 }

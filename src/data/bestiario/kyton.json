@@ -141,10 +141,10 @@
       "efeito": "a resistência da pele não vale contra arma de prata ou abençoada"
     },
     {
-      "nome": "resistência a magia",
+      "nome": "Resistência à magia 17",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "a Arte hostil enfrenta uma resistência natural antes de fazer efeito"
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     }
   ],
   "comoLuta": [
@@ -254,7 +254,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: a \"armadura de correntes\", que \"não pesa nem atrapalha\" (site), tratada como parte do corpo e não como equipamento (D-188), entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). A \"pele curtida\" do site (resiste a golpes comuns; imune ao frio), pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: a \"armadura de correntes\", que \"não pesa nem atrapalha\" (site), tratada como parte do corpo e não como equipamento (D-188), entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). A \"pele curtida\" do site (resiste a golpes comuns; imune ao frio), pela linha Elementos; Couraça 3, e não equipamento (D-188), porque o site diz que não pesa nem atrapalha; \"resiste a golpes comuns\" virou resistência a Corte, Perfuração e Impacto, como a pele do súcubo; a exceção da prata e da arma abençoada ficou sem regra ainda"
     },
     {
       "campo": "comportamento.dieta",
@@ -263,6 +263,10 @@
     {
       "campo": "ataques.Correntes",
       "motivo": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte) e as \"correntes farpadas que atacam como extensões de si mesmo\": o chicote da corrente com o corpo atrás, Média (`regra-construcao.md` §7) . Até três por ação pela Rajada (Manobras). Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8); ataque da ficha; o livro não tem corrente, e o alcance de 3 m é do corpo (D-180, ponto 19)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +8 corte\", dano médio 11,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as correntes ficam Médias, até três pela Rajada. Dano médio: 11,5 antes; depois, 11,5 (sem mudança)"
     }
   ]
 }

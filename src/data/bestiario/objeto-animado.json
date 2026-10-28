@@ -180,7 +180,7 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): caixa oca de tábuas, sem membro nem alavanca para erguer; bate com o peso, e não empurra com força"
+      "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): caixa oca de tábuas, sem membro nem alavanca para erguer; bate com o peso, e não empurra com força; 0, caixa oca de tábuas"
     },
     {
       "campo": "corpo.largura",
@@ -188,7 +188,11 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: tábua de carvalho de 3 cm, ao lado do couro do búfalo e do elefante (2 a 3); o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site (Elementos)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: tábua de carvalho de 3 cm, ao lado do couro do búfalo e do elefante (2 a 3); o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site (Elementos); 3, tábua de carvalho de 3 cm"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "o armário de carvalho, e não a jaula do exemplo do site, que pela área das barras ficaria abaixo do Médio"
     }
   ]
 }

@@ -931,7 +931,7 @@
   "nomeIngles": "Archon, Hound",
   "ameaca": 3,
   "centelha": 4,
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "tamanho": "Médio",
   "imagens": [
    "bestiario/arconte-cao_criatura.webp"
@@ -942,14 +942,15 @@
    "forca": 5,
    "destreza": 4,
    "vigor": 5,
-   "influencia": 3,
-   "perspicacia": 3,
-   "compostura": 3,
    "percepcao": 4,
    "inteligencia": 3,
-   "raciocinio": 4
+   "raciocinio": 4,
+   "influencia": 3,
+   "perspicacia": 3,
+   "compostura": 3
   },
   "virtudes": {
+   "bravura": 4,
    "compaixao": 5,
    "conviccao": 5,
    "temperanca": 4,
@@ -958,43 +959,38 @@
   "vontade": 9,
   "aparencia": 10,
   "habilidades": {
-   "prontidao": 2,
-   "furtividade": 2,
+   "prontidao": 3,
+   "furtividade": 0,
+   "briga": 4,
+   "bloqueio": 2,
    "esquiva": 1,
    "integridade": 3,
-   "sociabilidade": 0
+   "sobrevivencia": 2,
+   "sociabilidade": 0,
+   "armas": 4,
+   "atletismo": 2,
+   "empatia": 2
   },
-  "habilidadesSec": {},
-  "artes": [
-   {
-    "id": "fascinacao",
-    "nivel": 2
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 2
-   },
-   {
-    "id": "adivinhacao",
-    "nivel": 1
-   }
-  ],
+  "habilidadesSec": {
+   "musculatura": 0
+  },
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
-   "defesa": 12,
+   "defesa": 17,
    "defesaSocial": 6,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 9,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
     "profano"
    ],
-   "iniciativa": "1d6 + 6",
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
@@ -1002,27 +998,27 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
-     "pool": "4d6+2 +8",
-     "dano": "1d6 +9 corte",
+     "nome": "Espada longa",
+     "pool": "4d6+2 +9",
+     "dano": "1d6 +9 (C)",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Celestial",
+   "tipo": "celestial",
    "terreno": [
-    "Mountain",
-    "Any"
+    "montanha",
+    "qualquer"
    ],
    "clima": [
-    "Extraplanar"
+    "extraplanar"
    ]
   },
   "corpo": {
-   "medida": "1,8 m de altura",
+   "medida": "1.8 m de altura",
    "peso": "100 kg"
   }
  },
@@ -1032,8 +1028,8 @@
   "nomeIngles": "Archon, Lantern",
   "ameaca": 2,
   "centelha": 2,
-  "categoria": "Celestial",
-  "tamanho": "Pequeno",
+  "categoria": "celestial",
+  "tamanho": "Médio",
   "imagens": [
    "bestiario/arconte-lanterna_criatura.webp"
   ],
@@ -1043,14 +1039,15 @@
    "forca": 0,
    "destreza": 2,
    "vigor": 3,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2
   },
   "virtudes": {
+   "bravura": 4,
    "compaixao": 5,
    "conviccao": 5,
    "temperanca": 4,
@@ -1060,27 +1057,36 @@
   "aparencia": 10,
   "habilidades": {
    "prontidao": 1,
-   "furtividade": 3,
+   "furtividade": 0,
+   "briga": 0,
+   "bloqueio": 0,
    "esquiva": 0,
    "integridade": 2,
-   "sociabilidade": 0
+   "sobrevivencia": 0,
+   "sociabilidade": 1
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 0,
+   "disparo": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 26,
+   "pv": 42,
    "defesa": 4,
    "defesaSocial": 4,
    "defesaMental": 15,
    "absorcao": {
     "impacto": 5,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
     "profano"
+   ],
+   "imunidades": [
+    "raio"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -1090,29 +1096,28 @@
    },
    "ataques": [
     {
-     "nome": "Raios de luz",
-     "pool": "1d6",
-     "dano": "2d6 +2 impacto",
+     "nome": "Raio de luz",
+     "pool": "3d6 +4",
+     "dano": "2d6 +2 (fenomeno)",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve",
-     "notas": "luz; fenômeno"
+     "speed": 7,
+     "classe": "distancia"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Celestial",
+   "tipo": "celestial",
    "terreno": [
-    "Sky",
-    "Any"
+    "céu",
+    "qualquer"
    ],
    "clima": [
-    "Extraplanar"
+    "extraplanar"
    ]
   },
   "corpo": {
-   "medida": "1 m de diâmetro",
-   "peso": "desprezível"
+   "medida": "1 m de altura, 1 m de comprimento",
+   "peso": "sem massa"
   }
  },
  {
@@ -1121,7 +1126,7 @@
   "nomeIngles": "Archon, Trumpet",
   "ameaca": 6,
   "centelha": 6,
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "tamanho": "Médio",
   "imagens": [
    "bestiario/arconte-trombeta_criatura.webp"
@@ -1132,14 +1137,15 @@
    "forca": 6,
    "destreza": 5,
    "vigor": 8,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
    "percepcao": 6,
    "inteligencia": 5,
-   "raciocinio": 5
+   "raciocinio": 5,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5
   },
   "virtudes": {
+   "bravura": 5,
    "compaixao": 5,
    "conviccao": 5,
    "temperanca": 4,
@@ -1149,25 +1155,55 @@
   "aparencia": 12,
   "habilidades": {
    "prontidao": 3,
-   "furtividade": 2,
+   "furtividade": 0,
+   "briga": 0,
+   "bloqueio": 3,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0
+   "sobrevivencia": 0,
+   "sociabilidade": 4,
+   "armas": 5,
+   "ocultismo": 0
   },
-  "habilidadesSec": {},
-  "artes": [],
+  "habilidadesSec": {
+   "musculatura": 0,
+   "religiao": 4
+  },
+  "artes": [
+   {
+    "id": "cura",
+    "nivel": 4
+   },
+   {
+    "id": "protecao",
+    "nivel": 4
+   }
+  ],
   "tecnicas": [],
   "combate": {
    "pv": 49,
-   "defesa": 14,
-   "defesaSocial": 10,
+   "defesa": 22,
+   "defesaSocial": 26,
    "defesaMental": 31,
    "absorcao": {
     "impacto": 14,
-    "corte": 10,
-    "perfuracao": 10
+    "corte": 6,
+    "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "vestida": {
+    "esquiva": 12,
+    "bloqueio": 20,
+    "defesa": 20,
+    "contraTiro": 12,
+    "absorcao": {
+     "impacto": 15,
+     "corte": 12,
+     "perfuracao": 7
+    },
+    "nivel": 1,
+    "penalidade": 2
+   },
    "fraquezas": [
     "profano"
    ],
@@ -1179,29 +1215,28 @@
    },
    "ataques": [
     {
-     "nome": "Espadão de duas mãos",
+     "nome": "Montante",
      "pool": "5d6+2 +10",
-     "dano": "1d6 +18 corte",
+     "dano": "2d6 +18 (C)",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve",
-     "notas": "a trombeta que carrega vira a espada quando ele luta"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Celestial",
+   "tipo": "celestial",
    "terreno": [
-    "Sky",
-    "Any"
+    "céu",
+    "qualquer"
    ],
    "clima": [
-    "Extraplanar"
+    "extraplanar"
    ]
   },
   "corpo": {
    "medida": "2 m de altura",
-   "peso": "100 kg"
+   "peso": "110 kg"
   }
  },
  {
@@ -2256,8 +2291,8 @@
   "nomeIngles": "Basidirond",
   "ameaca": 4,
   "centelha": 0,
-  "categoria": "Planta",
-  "tamanho": "Médio",
+  "categoria": "planta",
+  "tamanho": "Grande",
   "imagens": [
    "bestiario/basidirond_criatura.webp"
   ],
@@ -2267,27 +2302,35 @@
    "forca": 6,
    "destreza": 3,
    "vigor": 5,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 0,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 2,
+   "bravura": 5,
+   "compaixao": 1,
+   "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 5
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 3,
   "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
-   "esquiva": 1
+   "briga": 5,
+   "bloqueio": 0,
+   "esquiva": 1,
+   "integridade": 0,
+   "sobrevivencia": 0,
+   "sociabilidade": 0
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -2297,8 +2340,8 @@
    "defesaMental": "-",
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -2306,6 +2349,9 @@
    ],
    "resistencias": [
     "perfuracao"
+   ],
+   "imunidades": [
+    "gelo"
    ],
    "iniciativa": "1d6 + 3",
    "deslocamento": {
@@ -2315,28 +2361,27 @@
    },
    "ataques": [
     {
-     "nome": "Pancada esporulenta",
+     "nome": "Golpe",
      "pool": "5d6+2",
-     "dano": "1d6 +6 impacto",
+     "dano": "1d6 +6 (I)",
      "perfArma": null,
-     "speed": 5,
-     "classe": "leve",
-     "notas": "acerto solta uma nuvem de esporos no golpe"
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Plant",
+   "tipo": "planta",
    "terreno": [
-    "Underground"
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "corpo": {
-   "medida": "2 m de altura",
+   "medida": "2 m de altura, 1.2 m de comprimento",
    "peso": "180 kg"
   }
  },
@@ -10485,7 +10530,7 @@
   "nomeIngles": "Dryad",
   "ameaca": 3,
   "centelha": 4,
-  "categoria": "Fada",
+  "categoria": "fada",
   "tamanho": "Médio",
   "imagens": [
    "bestiario/driade_criatura.webp"
@@ -10496,14 +10541,15 @@
    "forca": 2,
    "destreza": 5,
    "vigor": 3,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
    "percepcao": 4,
    "inteligencia": 4,
-   "raciocinio": 4
+   "raciocinio": 4,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5
   },
   "virtudes": {
+   "bravura": 3,
    "compaixao": 3,
    "conviccao": 3,
    "temperanca": 2,
@@ -10512,40 +10558,36 @@
   "vontade": 9,
   "aparencia": 8,
   "habilidades": {
-   "prontidao": 2,
-   "furtividade": 4,
+   "prontidao": 3,
+   "furtividade": 3,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0
+   "sociabilidade": 2,
+   "sobrevivencia": 3,
+   "persuasao": 3,
+   "empatia": 3
   },
-  "habilidadesSec": {},
-  "artes": [
-   {
-    "id": "fascinacao",
-    "nivel": 2
-   },
-   {
-    "id": "conjuracao",
-    "nivel": 2
-   },
-   {
-    "id": "materia",
-    "nivel": 2
-   }
-  ],
+  "habilidadesSec": {
+   "escalada": 2,
+   "carpintaria": 3,
+   "musculatura": 0
+  },
+  "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 34,
    "defesa": 14,
-   "defesaSocial": 10,
+   "defesaSocial": 18,
    "defesaMental": 26,
    "absorcao": {
     "impacto": 7,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 6",
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -10553,26 +10595,26 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "3d6 +8",
-     "dano": "1d6 +6 perfurante",
-     "perfArma": 0,
+     "nome": "Golpe desarmado",
+     "pool": "3d6+2 +5",
+     "dano": "1d6 +4 (I)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Fey",
+   "tipo": "fada",
    "terreno": [
-    "Forest"
+    "floresta"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "1,65 m de altura",
+   "medida": "1.65 m de altura",
    "peso": "50 kg"
   }
  },
@@ -12790,7 +12832,7 @@
   "nomeIngles": "Awakened Scarecrow",
   "ameaca": 2,
   "centelha": 1,
-  "categoria": "Construto",
+  "categoria": "construto",
   "tamanho": "Médio",
   "imagens": [
    "bestiario/espantalho-desperto_criatura.webp"
@@ -12801,15 +12843,16 @@
    "forca": 3,
    "destreza": 2,
    "vigor": 3,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
    "percepcao": 4,
    "inteligencia": 2,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2
   },
   "virtudes": {
-   "compaixao": 0,
+   "bravura": 3,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 3,
    "valor": 3
@@ -12818,12 +12861,18 @@
   "aparencia": 4,
   "habilidades": {
    "prontidao": 3,
-   "furtividade": 0,
+   "furtividade": 4,
+   "briga": 3,
+   "armas": 3,
+   "bloqueio": 1,
    "esquiva": 1,
    "integridade": 3,
+   "sobrevivencia": 0,
    "sociabilidade": 0
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -12833,8 +12882,8 @@
    "defesaMental": 12,
    "absorcao": {
     "impacto": 4,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -12852,8 +12901,8 @@
    "ataques": [
     {
      "nome": "Foice enferrujada",
-     "pool": "1d6+2",
-     "dano": "2d6 +4 corte",
+     "pool": "3d6 +2",
+     "dano": "2d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
      "classe": "media"
@@ -12861,16 +12910,16 @@
    ]
   },
   "ecologia": {
-   "tipo": "Construct",
+   "tipo": "construto",
    "terreno": [
-    "Plains"
+    "planície"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "1,8 m de altura",
+   "medida": "1.8 m de altura",
    "peso": "40 kg"
   }
  },
@@ -14430,7 +14479,7 @@
   "nomeIngles": "Violet Fungus",
   "ameaca": 3,
   "centelha": 0,
-  "categoria": "Planta",
+  "categoria": "planta",
   "tamanho": "Médio",
   "imagens": [
    "bestiario/fungo-violeta_criatura.webp"
@@ -14441,38 +14490,46 @@
    "forca": 3,
    "destreza": 2,
    "vigor": 5,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
    "percepcao": 2,
    "inteligencia": 0,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 2,
+   "bravura": 5,
+   "compaixao": 1,
+   "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 5
   },
-  "vontade": 5,
+  "vontade": 3,
   "aparencia": 3,
   "habilidades": {
    "prontidao": 1,
-   "furtividade": 0,
-   "esquiva": 0
+   "furtividade": 2,
+   "briga": 3,
+   "bloqueio": 0,
+   "esquiva": 0,
+   "integridade": 0,
+   "sobrevivencia": 0,
+   "sociabilidade": 0
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 40,
+   "pv": 30,
    "defesa": 4,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -14489,26 +14546,26 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "3d6",
-     "dano": "1d6 +3 perfurante",
-     "perfArma": 0,
+     "nome": "Tentáculo",
+     "pool": "3d6 +1",
+     "dano": "1d6 +1 (I)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Plant",
+   "tipo": "planta",
    "terreno": [
-    "Underground"
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "1,2 metro de altura",
+   "medida": "1.2 m de altura, 0.6 m de comprimento",
    "peso": "23 kg"
   }
  },
@@ -23297,7 +23354,7 @@
   "nomeIngles": "Mite",
   "ameaca": 1,
   "centelha": 1,
-  "categoria": "Fada",
+  "categoria": "fada",
   "tamanho": "Pequeno",
   "imagens": [
    "bestiario/mite_criatura.webp"
@@ -23305,46 +23362,56 @@
   "semImagem": false,
   "tipo": "capanga",
   "atributos": {
-   "forca": 2,
+   "forca": 1,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
    "percepcao": 3,
    "inteligencia": 2,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2
   },
   "virtudes": {
-   "compaixao": 3,
+   "bravura": 1,
+   "compaixao": 1,
    "conviccao": 3,
    "temperanca": 2,
-   "valor": 3
+   "valor": 1
   },
   "vontade": 6,
-  "aparencia": 8,
+  "aparencia": 2,
   "habilidades": {
-   "prontidao": 1,
-   "furtividade": 5,
+   "prontidao": 2,
+   "furtividade": 3,
+   "briga": 1,
+   "bloqueio": 0,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0
+   "sociabilidade": 1,
+   "sobrevivencia": 2,
+   "prestidigitacao": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "cavalgar": 2,
+   "adestramento": 2,
+   "escalada": 2,
+   "musculatura": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 24,
+   "pv": 12,
    "defesa": 10,
-   "defesaSocial": 4,
+   "defesaSocial": 8,
    "defesaMental": 12,
    "absorcao": {
     "impacto": 3,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -23352,9 +23419,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "2d6 +2",
-     "dano": "1d6 +3 perfurante",
+     "nome": "Mordida",
+     "pool": "2d6 +3",
+     "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -23362,17 +23429,17 @@
    ]
   },
   "ecologia": {
-   "tipo": "Fey",
+   "tipo": "fada",
    "terreno": [
-    "Underground"
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "60 cm de altura",
-   "peso": "9 kg"
+   "medida": "0.6 m de altura",
+   "peso": "5.3 kg"
   }
  },
  {
@@ -25022,11 +25089,10 @@
   "nomeIngles": "Nymph",
   "ameaca": 4,
   "centelha": 5,
-  "categoria": "Fada",
+  "categoria": "fada",
   "tamanho": "Médio",
   "imagens": [
-   "bestiario/ninfa_criatura.webp",
-   "bestiario/ninfa_criatura_2.webp"
+   "bestiario/ninfa_criatura.webp"
   ],
   "semImagem": false,
   "tipo": "elite",
@@ -25034,14 +25100,15 @@
    "forca": 2,
    "destreza": 6,
    "vigor": 3,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
    "percepcao": 5,
    "inteligencia": 5,
-   "raciocinio": 5
+   "raciocinio": 5,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5
   },
   "virtudes": {
+   "bravura": 3,
    "compaixao": 3,
    "conviccao": 3,
    "temperanca": 2,
@@ -25050,13 +25117,23 @@
   "vontade": 10,
   "aparencia": 8,
   "habilidades": {
-   "prontidao": 2,
+   "prontidao": 4,
    "furtividade": 4,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 2,
    "integridade": 5,
-   "sociabilidade": 0
+   "sociabilidade": 3,
+   "sobrevivencia": 3,
+   "persuasao": 3,
+   "empatia": 4,
+   "ocultismo": 3
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "cura": 2,
+   "natacao": 4,
+   "musculatura": 0
+  },
   "artes": [
    {
     "id": "agua",
@@ -25089,15 +25166,15 @@
   "combate": {
    "pv": 34,
    "defesa": 20,
-   "defesaSocial": 10,
+   "defesaSocial": 22,
    "defesaMental": 30,
    "absorcao": {
     "impacto": 8,
-    "corte": 6,
-    "perfuracao": 6
+    "corte": 5,
+    "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 7",
+   "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -25105,27 +25182,27 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "3d6+2 +10",
-     "dano": "1d6 +7 perfurante",
-     "perfArma": 0,
+     "nome": "Golpe desarmado",
+     "pool": "4d6 +5",
+     "dano": "1d6 +5 (I)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Fey",
+   "tipo": "fada",
    "terreno": [
-    "Forest",
-    "Water"
+    "floresta",
+    "aquático"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "1,7 m de altura",
+   "medida": "1.7 m de altura",
    "peso": "55 kg"
   }
  },
@@ -25806,7 +25883,7 @@
   "nomeIngles": "Giant Flytrap",
   "ameaca": 5,
   "centelha": 0,
-  "categoria": "Planta",
+  "categoria": "planta",
   "tamanho": "Enorme",
   "imagens": [
    "bestiario/papa-moscas-gigante_criatura.webp"
@@ -25817,44 +25894,53 @@
    "forca": 10,
    "destreza": 5,
    "vigor": 10,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
    "percepcao": 3,
    "inteligencia": 0,
-   "raciocinio": 1
+   "raciocinio": 1,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 2,
+   "bravura": 5,
+   "compaixao": 1,
+   "conviccao": 1,
    "temperanca": 1,
-   "valor": 3
+   "valor": 5
   },
-  "vontade": 5,
+  "vontade": 3,
   "aparencia": 3,
   "habilidades": {
    "prontidao": 1,
-   "furtividade": 0,
-   "esquiva": 1
+   "furtividade": 3,
+   "briga": 5,
+   "bloqueio": 0,
+   "esquiva": 1,
+   "integridade": 0,
+   "sobrevivencia": 0,
+   "sociabilidade": 0
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 85,
+   "pv": 70,
    "defesa": 12,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 10,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
    "fraquezas": [
     "fogo"
    ],
    "resistencias": [
+    "acido",
     "perfuracao"
    ],
    "iniciativa": "1d6 + 2",
@@ -25865,9 +25951,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Mordida",
      "pool": "7d6+2",
-     "dano": "3d6 +10 perfurante",
+     "dano": "2d6 +10 (P) · perf. 0",
      "perfArma": 0,
      "speed": 7,
      "classe": "pesada"
@@ -25875,17 +25961,17 @@
    ]
   },
   "ecologia": {
-   "tipo": "Plant",
+   "tipo": "planta",
    "terreno": [
-    "Swamp",
-    "Forest"
+    "pântano",
+    "floresta"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "4,5 m de altura",
+   "medida": "4.5 m de altura, 3 m de comprimento",
    "peso": "1000 kg"
   }
  },
@@ -26199,7 +26285,7 @@
   "nomeIngles": "Cave Fisher",
   "ameaca": 2,
   "centelha": 0,
-  "categoria": "Animal",
+  "categoria": "animal",
   "tamanho": "Médio",
   "imagens": [
    "bestiario/pescador-das-cavernas_criatura.webp"
@@ -26210,17 +26296,18 @@
    "forca": 5,
    "destreza": 3,
    "vigor": 5,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 2,
    "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
+   "conviccao": 1,
+   "temperanca": 1,
    "valor": 2
   },
   "vontade": 5,
@@ -26228,22 +26315,29 @@
   "habilidades": {
    "prontidao": 1,
    "furtividade": 3,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0
+   "sobrevivencia": 3,
+   "sociabilidade": 0,
+   "resistencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "escalada": 3,
+   "musculatura": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 40,
    "defesa": 8,
-   "defesaSocial": 2,
+   "defesaSocial": 8,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 3",
@@ -26254,9 +26348,9 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "3d6+2",
-     "dano": "1d6 +5 perfurante",
+     "nome": "Pinça",
+     "pool": "3d6+2 +1",
+     "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -26264,16 +26358,16 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Underground"
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "1,2 m de comprimento",
+   "medida": "0.35 m de altura, 1.2 m de comprimento",
    "peso": "40 kg"
   }
  },
@@ -26388,7 +26482,7 @@
   "nomeIngles": "Angel, Planetar",
   "ameaca": 6,
   "centelha": 7,
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "tamanho": "Grande",
   "imagens": [
    "bestiario/planetar_criatura.webp"
@@ -26399,14 +26493,15 @@
    "forca": 9,
    "destreza": 5,
    "vigor": 8,
-   "influencia": 7,
-   "perspicacia": 7,
-   "compostura": 8,
    "percepcao": 8,
    "inteligencia": 7,
-   "raciocinio": 7
+   "raciocinio": 7,
+   "influencia": 7,
+   "perspicacia": 7,
+   "compostura": 8
   },
   "virtudes": {
+   "bravura": 5,
    "compaixao": 5,
    "conviccao": 5,
    "temperanca": 4,
@@ -26415,13 +26510,21 @@
   "vontade": 12,
   "aparencia": 11,
   "habilidades": {
-   "prontidao": 4,
-   "furtividade": 1,
+   "prontidao": 5,
+   "furtividade": 0,
+   "briga": 3,
+   "bloqueio": 3,
    "esquiva": 1,
    "integridade": 8,
-   "sociabilidade": 0
+   "sobrevivencia": 0,
+   "sociabilidade": 4,
+   "armas": 5,
+   "ocultismo": 5,
+   "empatia": 4
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 1
+  },
   "artes": [
    {
     "id": "cura",
@@ -26444,28 +26547,30 @@
     "nivel": 5
    }
   ],
-  "tecnicas": [
-   {
-    "id": "regeneracao",
-    "nome": "Regeneração",
-    "caminho": "cerne-vital"
-   }
-  ],
+  "tecnicas": [],
   "combate": {
    "pv": 62,
-   "defesa": 14,
-   "defesaSocial": 16,
+   "defesa": 22,
+   "defesaSocial": 32,
    "defesaMental": 41,
    "absorcao": {
     "impacto": 15,
-    "corte": 13,
-    "perfuracao": 13
+    "corte": 7,
+    "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
     "profano"
    ],
-   "iniciativa": "1d6 + 11",
+   "resistencias": [
+    "fogo",
+    "raio"
+   ],
+   "imunidades": [
+    "acido",
+    "gelo"
+   ],
+   "iniciativa": "1d6 + 12",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -26473,26 +26578,26 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Montante",
      "pool": "7d6 +10",
-     "dano": "2d6 +16 corte",
+     "dano": "2d6 +25 (C)",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Celestial",
+   "tipo": "celestial",
    "terreno": [
-    "Any"
+    "qualquer"
    ],
    "clima": [
-    "Extraplanar"
+    "extraplanar"
    ]
   },
   "corpo": {
-   "medida": "2,7 m de altura, envergadura 6 m",
+   "medida": "2.7 m de altura",
    "peso": "225 kg"
   }
  },
@@ -27216,7 +27321,7 @@
   "nomeIngles": "Black Pudding",
   "ameaca": 4,
   "centelha": 0,
-  "categoria": "Limo",
+  "categoria": "limo",
   "tamanho": "Enorme",
   "imagens": [
    "bestiario/pudim-negro_criatura.webp"
@@ -27225,47 +27330,55 @@
   "tipo": "elite",
   "atributos": {
    "forca": 7,
-   "destreza": 0,
+   "destreza": 1,
    "vigor": 9,
-   "influencia": 0,
-   "perspicacia": 0,
-   "compostura": 0,
-   "percepcao": 0,
+   "percepcao": 1,
    "inteligencia": 0,
-   "raciocinio": 0
+   "raciocinio": 1,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
-   "compaixao": 0,
+   "bravura": 6,
+   "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 6
   },
-  "vontade": 6,
+  "vontade": 3,
   "aparencia": 1,
   "habilidades": {
    "prontidao": 0,
    "furtividade": 0,
-   "esquiva": 0
+   "briga": 5,
+   "bloqueio": 0,
+   "esquiva": 0,
+   "integridade": 0,
+   "sobrevivencia": 0,
+   "sociabilidade": 0
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 1
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 80,
-   "defesa": 0,
+   "defesa": 2,
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
     "impacto": 9,
-    "corte": 8,
-    "perfuracao": 8
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
    "resistencias": [
     "corte",
     "perfuracao"
    ],
-   "iniciativa": "1d6 + 0",
+   "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 2,
     "arranque": 3,
@@ -27275,7 +27388,7 @@
     {
      "nome": "Pseudópode",
      "pool": "6d6",
-     "dano": "3d6 +7 impacto",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -27283,17 +27396,17 @@
    ]
   },
   "ecologia": {
-   "tipo": "Ooze",
+   "tipo": "limo",
    "terreno": [
-    "Underground"
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "4,5 m de comprimento",
-   "peso": "cerca de 8.000 kg"
+   "medida": "0.75 m de altura, 4.5 m de comprimento",
+   "peso": "8000 kg"
   }
  },
  {
@@ -28948,7 +29061,7 @@
   "nomeIngles": "Satyr",
   "ameaca": 3,
   "centelha": 2,
-  "categoria": "Fada",
+  "categoria": "fada",
   "tamanho": "Médio",
   "imagens": [
    "bestiario/satiro_criatura.webp"
@@ -28959,14 +29072,15 @@
    "forca": 4,
    "destreza": 4,
    "vigor": 4,
-   "influencia": 5,
-   "perspicacia": 5,
-   "compostura": 5,
    "percepcao": 4,
    "inteligencia": 3,
-   "raciocinio": 3
+   "raciocinio": 3,
+   "influencia": 5,
+   "perspicacia": 5,
+   "compostura": 5
   },
   "virtudes": {
+   "bravura": 3,
    "compaixao": 3,
    "conviccao": 3,
    "temperanca": 2,
@@ -28975,54 +29089,63 @@
   "vontade": 7,
   "aparencia": 8,
   "habilidades": {
-   "prontidao": 2,
-   "furtividade": 4,
+   "prontidao": 4,
+   "furtividade": 3,
+   "briga": 3,
+   "bloqueio": 0,
    "esquiva": 1,
    "integridade": 5,
-   "sociabilidade": 0
+   "sociabilidade": 4,
+   "sobrevivencia": 2,
+   "persuasao": 4,
+   "oratoria": 3
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "tocar-instrumento": 4,
+   "labia": 3,
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 37,
    "defesa": 12,
-   "defesaSocial": 10,
+   "defesaSocial": 22,
    "defesaMental": 19,
    "absorcao": {
     "impacto": 6,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 2,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 5",
+   "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
-    "corrida": 9
+    "corrida": 10
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "4d6 +4",
-     "dano": "1d6 +6 perfurante",
-     "perfArma": 0,
-     "speed": 5,
-     "classe": "leve"
+     "nome": "Cabeçada",
+     "pool": "3d6+2 +4",
+     "dano": "1d6 +6 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Fey",
+   "tipo": "fada",
    "terreno": [
-    "Forest"
+    "floresta"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "1,5 m de altura",
+   "medida": "1.5 m de altura",
    "peso": "65 kg"
   }
  },
@@ -29236,7 +29359,7 @@
   "nomeIngles": "Shoggoth",
   "ameaca": 6,
   "centelha": 0,
-  "categoria": "Limo",
+  "categoria": "limo",
   "tamanho": "Enorme",
   "imagens": [
    "bestiario/shoggoth_criatura.webp"
@@ -29245,17 +29368,18 @@
   "tipo": "chefe",
   "atributos": {
    "forca": 13,
-   "destreza": 7,
+   "destreza": 6,
    "vigor": 11,
+   "percepcao": 6,
+   "inteligencia": 1,
+   "raciocinio": 4,
    "influencia": 3,
    "perspicacia": 2,
-   "compostura": 5,
-   "percepcao": 7,
-   "inteligencia": 1,
-   "raciocinio": 4
+   "compostura": 5
   },
   "virtudes": {
-   "compaixao": 0,
+   "bravura": 3,
+   "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
    "valor": 3
@@ -29263,31 +29387,44 @@
   "vontade": 5,
   "aparencia": 1,
   "habilidades": {
-   "prontidao": 3,
+   "prontidao": 4,
    "furtividade": 0,
+   "briga": 5,
+   "bloqueio": 0,
    "esquiva": 2,
    "integridade": 5,
+   "sobrevivencia": 3,
    "sociabilidade": 0
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "escalada": 3,
+   "natacao": 3,
+   "musculatura": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 90,
-   "defesa": 18,
-   "defesaSocial": 10,
+   "defesa": 16,
+   "defesaSocial": 16,
    "defesaMental": 14,
    "absorcao": {
     "impacto": 11,
-    "corte": 9,
-    "perfuracao": 9
+    "corte": 0,
+    "perfuracao": 0
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
    "resistencias": [
     "corte",
-    "perfuracao"
+    "perfuracao",
+    "acido",
+    "raio",
+    "fogo"
    ],
-   "iniciativa": "1d6 + 7",
+   "imunidades": [
+    "gelo"
+   ],
+   "iniciativa": "1d6 + 8",
    "deslocamento": {
     "batalha": 5,
     "arranque": 8,
@@ -29297,7 +29434,7 @@
     {
      "nome": "Pseudópode",
      "pool": "9d6",
-     "dano": "3d6 +13 impacto",
+     "dano": "2d6 +13 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada"
@@ -29305,19 +29442,19 @@
    ]
   },
   "ecologia": {
-   "tipo": "Ooze",
+   "tipo": "limo",
    "terreno": [
-    "Water",
-    "Underground",
-    "Cold"
+    "aquático",
+    "subterrâneo",
+    "gélido"
    ],
    "clima": [
-    "Cold"
+    "frio"
    ]
   },
   "corpo": {
-   "medida": "corpo de cerca de 4,5 metros de diâmetro, capaz de se esticar bem além disso",
-   "peso": "massa disforme de várias t"
+   "medida": "1.2 m de altura, 4.5 m de comprimento",
+   "peso": "12850 kg"
   }
  },
  {
@@ -29439,7 +29576,7 @@
   "nomeIngles": "Angel, Solar",
   "ameaca": 6,
   "centelha": 9,
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "tamanho": "Grande",
   "imagens": [
    "bestiario/solar_criatura.webp"
@@ -29450,14 +29587,15 @@
    "forca": 10,
    "destreza": 6,
    "vigor": 10,
-   "influencia": 8,
-   "perspicacia": 7,
-   "compostura": 8,
    "percepcao": 8,
    "inteligencia": 7,
-   "raciocinio": 8
+   "raciocinio": 8,
+   "influencia": 8,
+   "perspicacia": 7,
+   "compostura": 8
   },
   "virtudes": {
+   "bravura": 5,
    "compaixao": 5,
    "conviccao": 5,
    "temperanca": 4,
@@ -29466,13 +29604,22 @@
   "vontade": 12,
   "aparencia": 12,
   "habilidades": {
-   "prontidao": 4,
-   "furtividade": 1,
+   "prontidao": 5,
+   "furtividade": 0,
+   "briga": 3,
+   "bloqueio": 3,
    "esquiva": 2,
    "integridade": 8,
-   "sociabilidade": 0
+   "sobrevivencia": 5,
+   "sociabilidade": 4,
+   "armas": 5,
+   "ocultismo": 5,
+   "empatia": 4,
+   "atirador": 5
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 1
+  },
   "artes": [
    {
     "id": "cura",
@@ -29498,19 +29645,27 @@
   "tecnicas": [],
   "combate": {
    "pv": 70,
-   "defesa": 20,
-   "defesaSocial": 16,
+   "defesa": 24,
+   "defesaSocial": 32,
    "defesaMental": 44,
    "absorcao": {
     "impacto": 19,
-    "corte": 16,
-    "perfuracao": 16
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
     "profano"
    ],
-   "iniciativa": "1d6 + 12",
+   "resistencias": [
+    "fogo",
+    "raio"
+   ],
+   "imunidades": [
+    "acido",
+    "gelo"
+   ],
+   "iniciativa": "1d6 + 13",
    "deslocamento": {
     "batalha": 5,
     "arranque": 8,
@@ -29518,34 +29673,34 @@
    },
    "ataques": [
     {
-     "nome": "Golpe planar",
+     "nome": "Montante",
      "pool": "7d6+2 +10",
-     "dano": "2d6 +19 corte",
+     "dano": "2d6 +29 (C)",
      "perfArma": null,
-     "speed": 6,
-     "classe": "media"
+     "speed": 7,
+     "classe": "pesada"
     },
     {
-     "nome": "Arco de luz",
+     "nome": "Arco longo",
      "pool": "6d6+2 +10",
-     "dano": "2d6 +19 perfurante · perf. 2",
-     "perfArma": 2,
-     "speed": 6,
+     "dano": "1d6 +17 (P) · perf. 1",
+     "perfArma": 1,
+     "speed": 7,
      "classe": "distancia"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Celestial",
+   "tipo": "celestial",
    "terreno": [
-    "Any"
+    "qualquer"
    ],
    "clima": [
-    "Extraplanar"
+    "extraplanar"
    ]
   },
   "corpo": {
-   "medida": "3 m de altura, envergadura 7 m",
+   "medida": "3 m de altura",
    "peso": "320 kg"
   }
  },
@@ -30825,7 +30980,7 @@
   "nomeIngles": "Treant",
   "ameaca": 5,
   "centelha": 3,
-  "categoria": "Planta",
+  "categoria": "planta",
   "tamanho": "Enorme",
   "imagens": [
    "bestiario/treant_criatura.webp"
@@ -30836,14 +30991,15 @@
    "forca": 11,
    "destreza": 2,
    "vigor": 8,
-   "influencia": 3,
-   "perspicacia": 3,
-   "compostura": 4,
    "percepcao": 5,
    "inteligencia": 3,
-   "raciocinio": 4
+   "raciocinio": 4,
+   "influencia": 3,
+   "perspicacia": 3,
+   "compostura": 4
   },
   "virtudes": {
+   "bravura": 3,
    "compaixao": 0,
    "conviccao": 2,
    "temperanca": 1,
@@ -30853,31 +31009,32 @@
   "aparencia": 3,
   "habilidades": {
    "prontidao": 2,
-   "furtividade": 0,
+   "furtividade": 2,
+   "briga": 5,
+   "bloqueio": 0,
    "esquiva": 0,
    "integridade": 4,
-   "sociabilidade": 0
+   "sobrevivencia": 3,
+   "sociabilidade": 2,
+   "persuasao": 2,
+   "empatia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 3
+  },
   "artes": [],
-  "tecnicas": [
-   {
-    "id": "pele-de-pedra",
-    "nome": "Pele de Pedra",
-    "caminho": "pele-de-pedra"
-   }
-  ],
+  "tecnicas": [],
   "combate": {
    "pv": 75,
    "defesa": 4,
-   "defesaSocial": 8,
+   "defesaSocial": 16,
    "defesaMental": 22,
    "absorcao": {
     "impacto": 11,
-    "corte": 11,
-    "perfuracao": 11
+    "corte": 3,
+    "perfuracao": 3
    },
-   "resistenciaPerfuracao": 1,
+   "resistenciaPerfuracao": 0,
    "fraquezas": [
     "fogo"
    ],
@@ -30893,27 +31050,27 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
+     "nome": "Pancada",
      "pool": "8d6 +6",
-     "dano": "3d6 +14 perfurante",
-     "perfArma": 0,
+     "dano": "2d6 +14 (I)",
+     "perfArma": null,
      "speed": 7,
      "classe": "pesada"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Plant",
+   "tipo": "planta",
    "terreno": [
-    "Forest"
+    "floresta"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "7,5 m de altura",
-   "peso": "2 t"
+   "medida": "7.5 m de altura, 2.5 m de comprimento",
+   "peso": "2000 kg"
   }
  },
  {
@@ -30922,8 +31079,8 @@
   "nomeIngles": "Yellow Musk Creeper",
   "ameaca": 2,
   "centelha": 0,
-  "categoria": "Planta",
-  "tamanho": "Médio",
+  "categoria": "planta",
+  "tamanho": "Grande",
   "imagens": [
    "bestiario/trepadeira-de-almiscar-amarelo_criatura.webp"
   ],
@@ -30933,27 +31090,35 @@
    "forca": 5,
    "destreza": 4,
    "vigor": 5,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
    "percepcao": 2,
    "inteligencia": 0,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
-   "compaixao": 0,
-   "conviccao": 2,
+   "bravura": 5,
+   "compaixao": 1,
+   "conviccao": 1,
    "temperanca": 1,
-   "valor": 2
+   "valor": 5
   },
-  "vontade": 5,
+  "vontade": 3,
   "aparencia": 3,
   "habilidades": {
    "prontidao": 1,
    "furtividade": 0,
-   "esquiva": 1
+   "briga": 2,
+   "bloqueio": 0,
+   "esquiva": 1,
+   "integridade": 0,
+   "sobrevivencia": 0,
+   "sociabilidade": 0
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -30963,8 +31128,8 @@
    "defesaMental": "-",
    "absorcao": {
     "impacto": 5,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
@@ -30981,29 +31146,29 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "3d6+2",
-     "dano": "1d6 +5 perfurante",
-     "perfArma": 0,
+     "nome": "Tendrilho",
+     "pool": "3d6+2 +1",
+     "dano": "1d6 +3 (I)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Plant",
+   "tipo": "planta",
    "terreno": [
-    "Forest",
-    "Underground"
+    "floresta",
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "corpo": {
-   "medida": "trepadeira que se estende por até 3 m ao redor do caule central",
-   "peso": "100 kg de massa vegetal"
+   "medida": "0.6 m de altura, 3 m de comprimento",
+   "peso": "100 kg"
   }
  },
  {
@@ -31532,8 +31697,8 @@
   "nomeIngles": "Grizzly Bear",
   "ameaca": 3,
   "centelha": 0,
-  "categoria": "Animal",
-  "tamanho": "Grande",
+  "categoria": "animal",
+  "tamanho": "Médio",
   "imagens": [],
   "semImagem": true,
   "tipo": "fera",
@@ -31541,53 +31706,69 @@
    "forca": 7,
    "destreza": 3,
    "vigor": 6,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 2,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 1
+   "raciocinio": 1,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 2
   },
   "virtudes": {
+   "bravura": 3,
    "compaixao": 1,
-   "conviccao": 2,
-   "temperanca": 2,
-   "valor": 2
+   "conviccao": 1,
+   "temperanca": 1,
+   "valor": 3
   },
-  "vontade": 5,
+  "vontade": 4,
   "aparencia": 4,
   "habilidades": {
-   "prontidao": 1,
-   "furtividade": 2,
+   "prontidao": 2,
+   "furtividade": 1,
+   "briga": 4,
+   "bloqueio": 0,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0
+   "sobrevivencia": 3,
+   "sociabilidade": 0,
+   "resistencia": 3
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "natacao": 3,
+   "musculatura": 4
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 54,
+   "pv": 43,
    "defesa": 8,
-   "defesaSocial": 4,
-   "defesaMental": 8,
+   "defesaSocial": 10,
+   "defesaMental": 7,
    "absorcao": {
     "impacto": 6,
-    "corte": 5,
-    "perfuracao": 5
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
-   "iniciativa": "1d6 + 2",
+   "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
     "arranque": 6,
-    "corrida": 9
+    "corrida": 10
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "5d6",
-     "dano": "2d6 +7 perfurante",
+     "nome": "Garra",
+     "pool": "5d6+2",
+     "dano": "1d6 +7 (C)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media"
+    },
+    {
+     "nome": "Mordida",
+     "pool": "5d6+2",
+     "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
      "classe": "media"
@@ -31595,17 +31776,17 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Forest"
+    "floresta"
    ],
    "clima": [
-    "Cold"
+    "frio"
    ]
   },
   "corpo": {
-   "medida": "2,5 m de comprimento",
-   "peso": "380 kg"
+   "medida": "1.09 m de altura, 1.9 m de comprimento",
+   "peso": "170 kg"
   }
  },
  {
@@ -32353,7 +32534,7 @@
   "nomeIngles": "Vegepygmy",
   "ameaca": 1,
   "centelha": 0,
-  "categoria": "Planta",
+  "categoria": "planta",
   "tamanho": "Pequeno",
   "imagens": [
    "bestiario/vegepygmy_criatura.webp"
@@ -32364,15 +32545,16 @@
    "forca": 2,
    "destreza": 4,
    "vigor": 3,
-   "influencia": 2,
-   "perspicacia": 2,
-   "compostura": 2,
    "percepcao": 2,
    "inteligencia": 2,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 2,
+   "perspicacia": 2,
+   "compostura": 2
   },
   "virtudes": {
-   "compaixao": 0,
+   "bravura": 2,
+   "compaixao": 1,
    "conviccao": 2,
    "temperanca": 1,
    "valor": 2
@@ -32380,33 +32562,39 @@
   "vontade": 5,
   "aparencia": 3,
   "habilidades": {
-   "prontidao": 1,
-   "furtividade": 1,
+   "prontidao": 2,
+   "furtividade": 3,
+   "briga": 1,
+   "bloqueio": 0,
    "esquiva": 1,
    "integridade": 2,
-   "sociabilidade": 0
+   "sobrevivencia": 2,
+   "sociabilidade": 1
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
    "pv": 26,
    "defesa": 10,
-   "defesaSocial": 4,
+   "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
     "impacto": 3,
-    "corte": 1,
-    "perfuracao": 1
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "fraquezas": [
     "fogo"
    ],
    "resistencias": [
-    "perfuracao"
+    "perfuracao",
+    "raio"
    ],
-   "iniciativa": "1d6 + 3",
+   "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
     "arranque": 5,
@@ -32414,27 +32602,27 @@
    },
    "ataques": [
     {
-     "nome": "Garras e presas",
-     "pool": "1d6+2",
-     "dano": "1d6 +2 perfurante",
-     "perfArma": 0,
+     "nome": "Garra",
+     "pool": "2d6+2 +1",
+     "dano": "1d6 (C)",
+     "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
   "ecologia": {
-   "tipo": "Plant",
+   "tipo": "planta",
    "terreno": [
-    "Underground"
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "entre 60 centímetros e 1,2 metro de altura",
-   "peso": "entre 7 e 20 kg"
+   "medida": "1 m de altura, 0.25 m de comprimento",
+   "peso": "16 kg"
   }
  },
  {

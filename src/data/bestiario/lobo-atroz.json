@@ -237,11 +237,11 @@
     },
     {
       "campo": "habilidades.resistencia",
-      "motivo": "Etapa 2 (20/10/2026): Decisão 3 de 19/10/2026: o lobo-terrível fica acima do lobo (que o autor pôs em 3). Mais pesado e de mordida mais forte, como a versão maior da decisão 4 (mais Vigor e Resistência). Antes: Era sem linha (0). Sem a corrida (diretriz 2): os 200 km por dia do lobo, que o levantamento usava para dar 4, ficam na nota de pesquisa (jornada). Do animal não há dado de fome, sede, frio, veneno, doença ou dor (`lobo-terrivel.md`), então fica na régua do normal da espécie no próprio meio."
+      "motivo": "Etapa 2 (20/10/2026): Decisão 3 de 19/10/2026: o lobo-terrível fica acima do lobo (que o autor pôs em 3). Mais pesado e de mordida mais forte, como a versão maior da decisão 4 (mais Vigor e Resistência). Antes: Era sem linha (0). Sem a corrida (diretriz 2): os 200 km por dia do lobo, que o levantamento usava para dar 4, ficam na nota de pesquisa (jornada). Do animal não há dado de fome, sede, frio, veneno, doença ou dor (`lobo-terrivel.md`), então fica na régua do normal da espécie no próprio meio.; 4 (em vigor na Etapa 2, 20/10/2026); antes: 2, sem a corrida (diretriz 2),  por falta de qualquer dado do animal; o levantamento dava 4 só pelos 200 km por dia do lobo, que ficam na nota de pesquisa (jornada)"
     },
     {
       "campo": "habilidades.empatia",
-      "motivo": "Era sem linha. Lê o outro da própria espécie: matilha, pelo lobo e pela concentração de fósseis em La Brea (NPS; Wikipédia). ; a pesquisa não tem comportamento observado."
+      "motivo": "Era sem linha. Lê o outro da própria espécie: matilha, pelo lobo e pela concentração de fósseis em La Brea (NPS; Wikipédia). ; a pesquisa não tem comportamento observado.; 2, nova,  da matilha suposta pelos fósseis de La Brea"
     },
     {
       "campo": "habilidadesSec.escalada",

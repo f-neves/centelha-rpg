@@ -351,7 +351,7 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 3"
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 3; 4 pela nota do site, e não o 3 do campo"
     },
     {
       "campo": "corpo.massa",
@@ -359,11 +359,27 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos; 4, como o hezrou"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande pela área; o site dava Enorme, pela régua antiga"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 3 dados e 7 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as pinças ficam Médias e as garras dos braços menores, Leves; perde dano em relação ao site"
+    },
+    {
+      "campo": "artes",
+      "motivo": "Fortuna 6 (desejo), Fascinação 5 (confusão) e Proteção 5 (imagem espelhada) viraram bases (C-037); Forças 6 ficou sem poder próprio, e o teleporte, sem Arte de base no site, ficou sem regra ainda"
     }
   ]
 }

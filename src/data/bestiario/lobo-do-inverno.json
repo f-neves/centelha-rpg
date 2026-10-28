@@ -261,6 +261,22 @@
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pelagem densa de inverno sobre o couro, um acima do lobo atroz (0) . O nível fica fora da Absorção (decisoes-autor §16)"
     },
     {
+      "campo": "corpo.area",
+      "motivo": "Grande para Médio, pela área do lobo de 1,35 m de cernelha (1,13 m²). Em jogo: o humano perde os +3 de acerto que tinha contra ele"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição, subiu (robusto). Descendo seria 43"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição, subiu (robusto). Descendo seria 43"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +11 perfurante\", 6 Ticks, dano médio 18). A ficha fica com a mordida, Média, a do lobo atroz, e o frio vai na Mordida congelante. Dano médio: 18 antes; depois, mordida 14,5, mais 1d6 de gelo (média 3,5): 18 com o frio, sem mudança"
+    },
+    {
       "campo": "ataques.Sopro gélido",
       "motivo": "poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\""
     }

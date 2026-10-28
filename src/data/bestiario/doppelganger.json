@@ -236,7 +236,7 @@
     },
     {
       "campo": "habilidades.briga",
-      "motivo": "De mãos nuas, luta de rua"
+      "motivo": "De mãos nuas, luta de rua; 2; o site gravava 4, que era a Habilidade da arma"
     },
     {
       "campo": "comportamento.dieta",
@@ -245,6 +245,18 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma muda o rosto, o corpo, a voz e o cheiro; os números ficam os dele  Descrição anterior: Anatomia: a de qualquer humanoide de tamanho perto do dele que já tenha visto; Altura e Massa: as do disfarce, dentro do Tamanho Médio; Aparência: a da pessoa copiada; Equipamento: o que a pessoa usava; Camuflagem: passa pela pessoa copiada; o resto: o do doppelganger."
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201); o disfarce é Variante que muda o corpo e o rosto, e os números são os dele"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "a espada curta do livro no lugar da \"Arma\" de corte do site"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Bravura 2 e Temperança 3; o site tinha 3 e 2"
     }
   ]
 }

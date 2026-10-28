@@ -170,10 +170,10 @@
       "efeito": "encanto, medo e sono não a pegam"
     },
     {
-      "nome": "resistência a magia",
+      "nome": "Resistência à magia 24",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "a Arte hostil enfrenta uma resistência natural antes de fazer efeito"
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "assombrar sonhos",
@@ -298,7 +298,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 0: pele de gente, como a bruxa verde. O nível fica fora da Absorção (decisoes-autor §16). A \"Pele curtida\" do site (absorve golpes comuns) e a imunidade a fogo e frio, pela linha Elementos, como a pele do súcubo"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 0: pele de gente, como a bruxa verde. O nível fica fora da Absorção (decisoes-autor §16). A \"Pele curtida\" do site (absorve golpes comuns) e a imunidade a fogo e frio, pela linha Elementos, como a pele do súcubo; resistência a Corte, Perfuração e Impacto e imunidade a Fogo e Gelo; ferro frio, arma mágica, encanto, medo, sono e resistência à magia sem regra ficaram sem regra ainda"
     },
     {
       "campo": "comportamento.dieta",
@@ -307,6 +307,18 @@
     {
       "campo": "formas.disfarce",
       "motivo": "\"Pode assumir a forma de qualquer humanoide à vontade\" (site); a mente e os números ficam os dela, como no disfarce da bruxa verde e do doppelganger  A forma mantém os números da bruxa; o disfarce corporal é visual."
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +11 corte\", dano médio 14,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média e as garras Leves, em par, como na bruxa verde. Dano médio: 14,5 antes; depois, a mordida 14,5, as garras 12,5 cada"
+    },
+    {
+      "campo": "formas",
+      "motivo": "verdadeira e disfarce (D-201), como a bruxa verde"
+    },
+    {
+      "campo": "fisiologia",
+      "motivo": "resistência a Corte, Perfuração e Impacto e imunidade a Fogo e Gelo; ferro frio, arma mágica, encanto, medo, sono e resistência à magia sem regra ficaram sem regra ainda"
     }
   ]
 }

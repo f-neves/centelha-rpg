@@ -240,6 +240,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\", a mordida (`inimigos.json`: \"1d6 +4 perfurante\", 5 Ticks, dano médio 7,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 7,5 antes; depois, mordida 5,5, choque 5,5"
     }
   ]
 }

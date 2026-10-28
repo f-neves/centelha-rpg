@@ -240,7 +240,7 @@
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "Apara com os antebraços de pedra, que bloqueiam sem tomar dano (D-066), como o golem de pedra (2)"
+      "motivo": "Apara com os antebraços de pedra, que bloqueiam sem tomar dano (D-066), como o golem de pedra (2); 2, como o golem de pedra; o site não gravava Bloqueio"
     },
     {
       "campo": "couraca",
@@ -253,6 +253,10 @@
     {
       "campo": "ataques.Pancada de pedra",
       "motivo": "O \"Golpe planar\" do site (2 dados, corte, 6 Ticks) é o braço de pedra de 3 m que bate com o corpo atrás: Pesada, Velocidade 7 (`regra-construcao.md` §7), golpe de membro, Força × 1, o mesmo caminho dos golens e dos gigantes (D-241); os 2 dados ficam. O tipo passa a Impacto, porque é pedra que bate, e não lâmina. Bloqueia como arma: corpo de pedra (D-066), Defesa +1 . Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
     }
   ]
 }

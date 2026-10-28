@@ -238,11 +238,15 @@
     },
     {
       "campo": "habilidades.briga",
-      "motivo": "O pseudópode acerta o que encosta nela. O site tinha 5, que é a mão de quem treinou; a geleia só reage"
+      "motivo": "O pseudópode acerta o que encosta nela. O site tinha 5, que é a mão de quem treinou; a geleia só reage; 4; o site tinha 5"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "elementos.imunidades",
+      "motivo": "corte, perfuração e raio, pela Divisão; o site gravava `resistencias: corte, perfuracao` e não tinha raio no campo, só no texto. A perfuração está no texto do site e na fonte dele (Pathfinder); se o autor preferir a versão do 5e (corte e raio), a perfuração volta para resistência e sai da Divisão"
     }
   ]
 }

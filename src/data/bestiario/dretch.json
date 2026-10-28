@@ -275,7 +275,15 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e flácida de demônio, como o cavalo . O nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site, pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e flácida de demônio, como o cavalo . O nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site, pela linha Elementos; 1"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e mordida Leves, o gesto rápido de bicho pequeno, como os 5 Ticks do site"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o \"Enjoado\" do site não é condição do livro; fica Abalado, como no ghast do lote 30"
     }
   ]
 }

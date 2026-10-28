@@ -252,6 +252,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (pastoreia e caça)"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "2, a da nota do site; o campo dizia 1"
     }
   ]
 }

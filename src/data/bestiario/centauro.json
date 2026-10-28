@@ -236,6 +236,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada longa e azagaia do livro"
+    },
+    {
+      "campo": "aptidoes.carga",
+      "motivo": "20% da massa, a fração do cavalo"
     }
   ]
 }

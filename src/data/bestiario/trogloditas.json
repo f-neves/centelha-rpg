@@ -221,6 +221,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "martelo do livro, sem armadura"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "1; o site tinha 2"
     }
   ]
 }

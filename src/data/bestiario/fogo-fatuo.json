@@ -239,6 +239,10 @@
     {
       "campo": "corpo.volume",
       "motivo": "sem massa; o volume da esfera de 0,30 m (0,0141 m³) entra no PV e na faixa como 14,3 kg. Com os 0,5 kg do site como massa real, o PV seria 2"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Toque elétrico Leve, tipo raio, no lugar das \"Garras e presas\""
     }
   ]
 }

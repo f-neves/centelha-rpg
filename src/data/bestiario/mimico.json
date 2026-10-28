@@ -244,6 +244,10 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). A pele que imita madeira endurece um pouco ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Pseudópode Médio e Mordida Leve no lugar das \"Garras e presas\""
     }
   ]
 }

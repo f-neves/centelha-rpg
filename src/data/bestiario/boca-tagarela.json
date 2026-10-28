@@ -282,6 +282,10 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Bocas Leve no lugar das \"Garras e presas\""
     }
   ]
 }

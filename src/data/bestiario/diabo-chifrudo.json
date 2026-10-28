@@ -283,7 +283,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: pele escamosa de diabo maior, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: pele escamosa de diabo maior, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); 3, pelas escamas"
     },
     {
       "campo": "comportamento.dieta",
@@ -292,6 +292,10 @@
     {
       "campo": "aparencia",
       "motivo": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +16 corte\", dano médio 23). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a corrente é Haste de Guerra de duas mãos (Força × 2), e a mordida e a cauda ficam Médias. Dano médio: 23 antes; depois, 31,5 (a corrente; a mordida e a cauda ficam em 19,5)"
     },
     {
       "campo": "ataques.Corrente farpada",

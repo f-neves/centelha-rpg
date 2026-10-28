@@ -281,6 +281,26 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "corpo",
+      "motivo": "17 antes, 6 depois. O site dava 17; a tabela de PV pela massa dá 5 + 2 ÷ 2 = 6. A massa está na zona de transição (3 a 5 kg) e a faixa de cima daria 12; fica a de baixo, como o quasit, porque o corpo de 3,6 kg não é robusto"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "17 antes, 6 depois. O site dava 17; a tabela de PV pela massa dá 5 + 2 ÷ 2 = 6. A massa está na zona de transição (3 a 5 kg) e a faixa de cima daria 12; fica a de baixo, como o quasit, porque o corpo de 3,6 kg não é robusto"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site (\"paciente\"); `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +4 corte\", dano médio 7,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: o ferrão fica Leve, o gesto rápido de bicho pequeno, como os 5 Ticks do site. Dano médio: 7,5 antes; depois, 5,5"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "sem id no catálogo; os números são provisórios, os do quasit com a Força"
     }
   ]
 }

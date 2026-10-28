@@ -298,7 +298,7 @@
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "Apara pouco com as garras; prefere não lutar. \"até um humano sem treino pode ter 1\" (decisoes-autor §1). Com a Centelha 5, já dá Defesa 14"
+      "motivo": "Apara pouco com as garras; prefere não lutar. \"até um humano sem treino pode ter 1\" (decisoes-autor §1). Com a Centelha 5, já dá Defesa 14; 1; o site não gravava Bloqueio"
     },
     {
       "campo": "aparencia",
@@ -311,6 +311,10 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma muda o corpo, o rosto e a voz; os números ficam os dele, e só a magia vê a troca (site)  Descrição anterior: Anatomia: a de qualquer humanoide; Altura e Massa: as do disfarce, dentro do Tamanho Médio; Aparência: a do disfarce; Camuflagem: passa por qualquer humanoide, e só a magia vê a troca; o resto: o do rakshasa."
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201), como o deva astral e o doppelganger"
     }
   ]
 }

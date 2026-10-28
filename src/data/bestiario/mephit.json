@@ -285,6 +285,18 @@
       "motivo": ""
     },
     {
+      "campo": "elementos",
+      "motivo": "o de fogo como principal; o site é genérico"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "resistência a Corte, Perfuração e Impacto"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Bravura 2 e Temperança 2; o site tinha 4 e 3"
+    },
+    {
       "campo": "ataques.Sopro elemental",
       "motivo": "números sugeridos pela ficha (D-197)"
     }

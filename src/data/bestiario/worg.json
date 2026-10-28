@@ -194,6 +194,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (caça à noite)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"1d6 +6 perfurante\", 5 Ticks, dano médio 9,5). A ficha fica com a mordida, Média, a do lobo atroz. Dano médio: 9,5 antes; depois, mordida 9,5 (sem mudança)"
     }
   ]
 }

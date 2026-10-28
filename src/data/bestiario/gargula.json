@@ -240,7 +240,7 @@
     },
     {
       "campo": "corpo.area",
-      "motivo": "O corpo, 0,72 × 0,833² × 1,3 = 0,65 m²; as asas, (2,4 − 0,49) × 0,5 m de largura média = 0,96 m²  na largura da asa"
+      "motivo": "O corpo, 0,72 × 0,833² × 1,3 = 0,65 m²; as asas, (2,4 − 0,49) × 0,5 m de largura média = 0,96 m²  na largura da asa; Grande de asas abertas, Médio de pé  na largura da asa"
     },
     {
       "campo": "couraca",
@@ -249,6 +249,10 @@
     {
       "campo": "comportamento.social",
       "motivo": ""
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1, Convicção 4, Temperança 3; o site tinha 2, 3 e 2"
     }
   ]
 }

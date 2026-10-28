@@ -1134,10 +1134,7 @@
       "tamanho": "Médio"
      }
     }
-   },
-   "paradas": [
-    "Variantes, forma canina: campo \"Deslocamento em terra\" que o conversor não conhece"
-   ]
+   }
   },
   "arconte-lanterna": {
    "sha256": "515560d35fd5483b2f3d1262b8cc7abf34e1c639483403a10755676497faa2dd",
@@ -1171,6 +1168,7 @@
     "vontade": 7,
     "corpo": {
      "postura": "pairando em combate",
+     "apoio": "outro",
      "altura": 1,
      "largura": 1,
      "profundidade": 1,
@@ -1233,10 +1231,7 @@
       "danoMedio": 9
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"esfera luminosa sem membros pairando em combate\")"
-   ]
+   }
   },
   "arconte-trombeta": {
    "sha256": "cfea85c5d408f3d03b3ce037c899860ac81080602b248a9ab50350416781ce95",
@@ -13717,10 +13712,7 @@
       "danoMedio": 11
      }
     ]
-   },
-   "paradas": [
-    "Manobras, Imóvel: P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste"
-   ]
+   }
   },
   "espectro": {
    "sha256": "5d268191839f007f30dc76dd2c0df0e7657a5e4b32f93ef0d72ddc173821b882",
@@ -15964,7 +15956,8 @@
        "comprimentoSemCauda": 0.5542,
        "largura": 0.5542,
        "profundidade": 0.5542,
-       "area": 0.2412
+       "area": 0.2412,
+       "naoErgue": true
       },
       "equipamento": {
        "arsenal": []
@@ -15979,10 +15972,8 @@
     }
    },
    "paradas": [
-    "Variantes, globo de luz: \"Bloqueio 0\" fora do formato",
-    "Variantes, globo de luz: \"Musculatura 0\" fora do formato",
-    "Variantes, globo de luz: campo \"Deslocamento em terra\" que o conversor não conhece",
-    "Variantes, globo de luz: campo \"Escalada\" que o conversor não conhece",
+    "Variantes, globo de luz: Bloqueio 0 altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1",
+    "Variantes, globo de luz: Musculatura 0 altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1",
     "Variantes, globo de luz: o ataque \"Raio de luz\" ilegível"
    ]
   },
@@ -28243,6 +28234,7 @@
     "vontade": 5,
     "corpo": {
      "postura": "seis pernas apoiadas na rocha",
+     "apoio": "outro",
      "altura": 0.35,
      "largura": 0.7,
      "profundidade": 1.2,
@@ -28301,10 +28293,7 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"artrópode de seis pernas com pinças seis pernas apoiadas na rocha\")"
-   ]
+   }
   },
   "pixie": {
    "sha256": "eca41817b22a5e67dfe38499c2b1228c6ff5bb48dd649d623b4114ae0b322e57",
@@ -33421,6 +33410,7 @@
     "vontade": 3,
     "corpo": {
      "postura": "ramos espalhados no chão",
+     "apoio": "outro",
      "altura": 0.6,
      "largura": 3,
      "profundidade": 3,
@@ -33479,10 +33469,7 @@
       "danoMedio": 6.5
      }
     ]
-   },
-   "paradas": [
-    "apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede (\"vegetal ramificado ramos espalhados no chão\")"
-   ]
+   }
   },
   "triceratops": {
    "sha256": "54eafa26663f9e4816057f1c1c9ab47b6a6c4f5b3afba570eb82726990efb5ab",

@@ -155,10 +155,10 @@
       "limiteDeUso": "à vontade"
     },
     {
-      "nome": "resistência à magia",
+      "nome": "Resistência à magia",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "resiste melhor ao feitiço dirigido a ela"
+      "efeito": "resiste melhor aos feitiços dirigidos a ela"
     }
   ],
   "comoLuta": [
@@ -251,6 +251,14 @@
     {
       "campo": "corpo.massa",
       "motivo": "230 kg, a do site, lendo os 2,7 m do site como o corpo sem a cauda (fator 0,93 sobre os 246 kg do leão escalado). Lendo como o total com a cauda, o leão escalado daria 126 kg, e o fator 1,8 não caberia; a leitura fica"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande para Médio, pela área do leão escalado (1,32 m²). Em jogo: o humano perde os +3 de acerto que tinha contra ela"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +8 perfurante\", 6 Ticks, dano médio 15). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 15 antes; depois, tentáculo 12,5 (dois pela Rajada), mordida 12,5"
     }
   ]
 }

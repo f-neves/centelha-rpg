@@ -241,6 +241,14 @@
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "O \"bico cortante\" do site: bico de coruja do tamanho de uma cabeça de urso, com o pescoço atrás: Média; bico grande em N1 . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 0 e Briga 4 (0)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "em pé, Grande (1,53 m², 5,5% acima do corte); de quatro, Médio. O urso-pardo luta de quatro na ficha dele; o corujurso, pelo abraço do site, em pé"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 10,5 (duas pela Rajada), bico 10,5"
     }
   ]
 }

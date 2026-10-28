@@ -255,11 +255,15 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "Pelo corpo: músculo seco e encolhido, abaixo do corpo comum (2), acima do osso sem carne (0)"
+      "motivo": "Pelo corpo: músculo seco e encolhido, abaixo do corpo comum (2), acima do osso sem carne (0); 1, músculo seco abaixo do corpo comum"
     },
     {
       "campo": "comportamento.social",
       "motivo": "site (Comportamento)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe\" de impacto do site virou Garras Médias de Corte e uma Mordida Média; duas garras pela Rajada"
     }
   ]
 }

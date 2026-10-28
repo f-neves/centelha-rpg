@@ -209,6 +209,10 @@
     {
       "campo": "corpo.massa",
       "motivo": "1.094 kg pelo cubo da altura, com os ombros 25% mais largos para os dois pescoços; o site dizia 1,8 t (D-187). Na proporção humana, 875 kg"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "3, a da nota do site; o campo dizia 1"
     }
   ]
 }

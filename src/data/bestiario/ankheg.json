@@ -226,6 +226,10 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +8 perfurante\", 6 Ticks, dano médio 15). A ficha fica com as mandíbulas, Médias, e o ácido vai na Mordida ácida. Dano médio: 15 antes; depois, mandíbulas 11,5, mais 1d6 de ácido (média 3,5): 15 com o ácido, sem mudança; cuspe 9,0"
+    },
+    {
       "campo": "ataques.Cuspe ácido",
       "motivo": "números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     }

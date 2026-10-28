@@ -317,7 +317,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: couro grosso sob o pelo, como o cavalo (1) . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele Curtida\" do site (absorve golpes de armas comuns), pela linha Elementos, como a pele do súcubo e do kyton"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: couro grosso sob o pelo, como o cavalo (1) . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele Curtida\" do site (absorve golpes de armas comuns), pela linha Elementos, como a pele do súcubo e do kyton; resistência a Corte, Perfuração e Impacto, como a pele do súcubo e do kyton; a exceção da arma encantada ficou sem regra ainda"
     },
     {
       "campo": "comportamento.atividade",
@@ -334,6 +334,14 @@
     {
       "campo": "formas.lobo",
       "motivo": "Um lobo comum (site), com a massa dele: o corpo do lobo do molde (55 kg) levado a 90 kg, as medidas pela raiz cúbica da massa, × (90 ÷ 55)^(1/3) = 1,178, e a área pelo quadrado desse fator, 0,40 × 1,388 = 0,56 m², como a forma de lobo do lobisomem . Força, Vigor, PV e peso erguido ficam os da forma verdadeira, que tem a mesma massa"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +7 corte\", dano médio 10,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo, e as garras Leves, em par. Dano médio: 10,5 antes; depois, a mordida 10,5, as garras 8,5 cada"
+    },
+    {
+      "campo": "formas",
+      "motivo": "verdadeira, goblin e lobo (D-201); a forma de lobo é o lobo do molde levado à massa dele, como a do lobisomem; a de goblin guarda a massa e os números dele"
     }
   ]
 }

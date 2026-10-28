@@ -241,15 +241,27 @@
     },
     {
       "campo": "habilidades.armas",
-      "motivo": "O site gravava `briga` 5 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). O 5 se divide entre a lâmina e as serpentes"
+      "motivo": "O site gravava `briga` 5 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). O 5 se divide entre a lâmina e as serpentes; 3 e 3, o 5 do site dividido entre a lâmina e as serpentes"
     },
     {
       "campo": "habilidades.briga",
-      "motivo": "As serpentes do cabelo"
+      "motivo": "As serpentes do cabelo; 3 e 3, o 5 do site dividido entre a lâmina e as serpentes"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "arco curto e espada curta do livro"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Potência 12, pool 2, fora do catálogo"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
   ]
 }

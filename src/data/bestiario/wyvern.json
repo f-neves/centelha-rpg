@@ -308,6 +308,14 @@
       "motivo": ""
     },
     {
+      "campo": "corpo.area",
+      "motivo": "Grande pela silhueta de lado em formas simples, sem a cauda fina"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Peçonha de wyvern pelo padrão do \"Ferrão de gigante\""
+    },
+    {
       "campo": "ataques.Ferrão",
       "motivo": "números sugeridos pela ficha (D-197)"
     }

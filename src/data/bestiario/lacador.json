@@ -128,17 +128,10 @@
       "efeito": "o site diz \"lança até seis fios\". Pelos Filamentos pegajosos acima, a ficha lança um por ação; o lançamento de vários na mesma ação fica sem regra, porque a Rajada é só corpo a corpo. Os caminhos que o livro deixa abertos ao autor são o Poder Especial ou uma regra de disparo múltiplo"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 27",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes (\"proteção natural\", site)",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     }
   ],
   "comoLuta": [
@@ -232,10 +225,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 11. Com 1 t, ficaria acima de todo bicho do molde até 3 t (o tubarão-branco de 1,26 t e o elasmossauro de 2,1 t têm 9; o rinoceronte de 2,25 t, 8) e do aboleth de 2,7 t (10). Desce para 9, perto da Força de referência da massa (8,66, manual 3.9), pelo teste de ordem; 9; o site tinha 11"
     },
@@ -246,6 +235,18 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Pele pétrea ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 3"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "a fraqueza dos filamentos, Potência 16, pool 4 de Força"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Mordida Média no lugar das \"Garras e presas\""
     }
   ]
 }

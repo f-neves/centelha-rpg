@@ -218,6 +218,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "adaga do livro; os trapos não contam como armadura"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "1; o site tinha 2"
     }
   ]
 }

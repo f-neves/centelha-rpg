@@ -259,6 +259,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "os \"Cascos flamejantes\" do site (2 dados, 6 Ticks, `inimigos.json`: \"2d6 +10 impacto\", dano médio 17) ficam Pesados, como o coice do cavalo, e passam a 18,0 com a Força 7. A \"Mordida\" do site (1 dado, 5 Ticks, \"1d6 +10 perfurante\", 13,5) fica Leve, como a do cavalo: 12,5"
     }
   ]
 }

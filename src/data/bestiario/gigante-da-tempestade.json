@@ -286,6 +286,18 @@
     {
       "campo": "comportamento.caca",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "4, a da nota do site; o campo dizia 3"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a Pancada de 3 dados vira Pesada de 2 dados (perda de mecânica publicada, no relato)"
+    },
+    {
+      "campo": "fisiologia.tracos",
+      "motivo": "a cor da pele e do cabelo é leitura da ficha; o site não a descreve"
     }
   ]
 }

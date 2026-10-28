@@ -222,6 +222,22 @@
     {
       "campo": "comportamento.caca",
       "motivo": ""
+    },
+    {
+      "campo": "artes",
+      "motivo": "Proteção 4, Cura 4 e Forças 3, escolhidas pelo texto; o site não grava Arte"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 2 e Convicção 4; o site tinha 0 e 3"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Potência 16, pool 4 de Vigor"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Mordida Média no lugar das \"Garras e presas\""
     }
   ]
 }

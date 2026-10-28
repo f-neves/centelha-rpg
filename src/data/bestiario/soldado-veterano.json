@@ -258,7 +258,7 @@
   "revisao": [
     {
       "campo": "atributos.raciocinio",
-      "motivo": "Degrau 3. A ficha publicada diz que ele \"lê o combate e explora aberturas\" e \"nunca é pego de surpresa fácil\": decidir com o chão fugindo é Raciocínio (`atributos.md`). O site tinha 2"
+      "motivo": "Degrau 3. A ficha publicada diz que ele \"lê o combate e explora aberturas\" e \"nunca é pego de surpresa fácil\": decidir com o chão fugindo é Raciocínio (`atributos.md`). O site tinha 2; sobem de 2 para 3 pela descrição publicada. Se o autor quiser a ficha publicada intacta nos Atributos, voltam a 2 (a Defesa Social cai para 6, a Defesa Mental para 13, a Iniciativa para 1d6 + 5, a Energia para 6)"
     },
     {
       "campo": "atributos.compostura",
@@ -266,7 +266,7 @@
     },
     {
       "campo": "habilidadesSec.estrategia",
-      "motivo": "O site tinha `tatica` 2, que não existe no livro. A secundária mais perto é Estratégia (conhecimento). Ver as notas de observação"
+      "motivo": "O site tinha `tatica` 2, que não existe no livro. A secundária mais perto é Estratégia (conhecimento). Ver as notas de observação; o `tatica` do site não existe no livro; na tabela das Habilidades antigas (manual 3.5, D-190), `tatica` para Estratégia é provisório. Estratégia é conhecimento (planejar a campanha), e o que a ficha publicada descreve é ler a luta na hora, que já está em Raciocínio e Prontidão. Se o autor preferir, a linha sai e o 2 vira uma Especialidade de Prontidão"
     },
     {
       "campo": "comportamento.social",

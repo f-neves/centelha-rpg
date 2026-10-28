@@ -419,6 +419,14 @@
     {
       "campo": "formas.humana-ou-de-animal-pequeno",
       "motivo": "Mudar de forma (site) muda o corpo; a mente, as Artes e os números ficam os dele, como no disfarce da couatl"
+    },
+    {
+      "campo": "virtudes.compaixao",
+      "motivo": "4; o site tinha 2"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "9d6 + Centelha, cone de 12 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197)"
     }
   ]
 }

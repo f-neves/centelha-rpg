@@ -291,11 +291,11 @@
     },
     {
       "campo": "habilidades.atirador",
-      "motivo": "O arco das flechas do sono. O site gravava o ataque com Atirador, mas sem valor; fica com o valor que o site dava à Briga, que é a luta dela"
+      "motivo": "O arco das flechas do sono. O site gravava o ataque com Atirador, mas sem valor; fica com o valor que o site dava à Briga, que é a luta dela; 4 e 2; o site tinha só Briga 4"
     },
     {
       "campo": "habilidades.briga",
-      "motivo": "As garras e presas, de último recurso. O site tinha 4, a única Habilidade de luta gravada; a luta dela é de longe"
+      "motivo": "As garras e presas, de último recurso. O site tinha 4, a única Habilidade de luta gravada; a luta dela é de longe; 4 e 2; o site tinha só Briga 4"
     },
     {
       "campo": "corpo.envergadura",
@@ -308,6 +308,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "o arco curto do livro na escala dela"
     }
   ]
 }

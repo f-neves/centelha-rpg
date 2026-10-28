@@ -338,6 +338,10 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Tentáculo Pesado, Língua Leve e Bocada Média no lugar dos \"Tentáculos e língua\""
     }
   ]
 }

@@ -218,7 +218,7 @@
     },
     {
       "campo": "habilidades.resistencia",
-      "motivo": "Fixada em `valores.mjs`. Era sem linha (0). Régua da diretriz 2: 2 é o normal da espécie no próprio meio. A pesquisa não traz feito de frio, fome, sede, veneno, doença ou ferida; só que os jovens ficam quase sempre debaixo d'água e que respira pelo ar e pela pele (ADW, na rã-golias)."
+      "motivo": "Fixada em `valores.mjs`. Era sem linha (0). Régua da diretriz 2: 2 é o normal da espécie no próprio meio. A pesquisa não traz feito de frio, fome, sede, veneno, doença ou ferida; só que os jovens ficam quase sempre debaixo d'água e que respira pelo ar e pela pele (ADW, na rã-golias).; 2, o normal da espécie, ; falta o tempo submerso do adulto e qualquer dado de fome ou de ferida (D-174)"
     },
     {
       "campo": "corpo.altura",
@@ -239,6 +239,10 @@
     {
       "campo": "ataques.Língua",
       "motivo": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
+    },
+    {
+      "campo": "corpo",
+      "motivo": "gigante da D-105, escala × 3,56 da rã-golias típica (50,57 cm de comprimento total e 0,947 kg, os dois sexos de Camarões), até os 1,8 m do site lidos como comprimento total com as pernas esticadas. Era × 5,52 sobre o corpo, com o 1,20 m que os lotes antigos tinham escolhido para dar o porte Médio. Tudo  (D-105, D-174; `pedido-v6-site.md`)"
     }
   ]
 }

@@ -1,116 +1,230 @@
 {
-  "ordem": 102,
   "id": "arconte-cao",
   "idAntigo": "mon-archon-cao",
   "nome": "Arconte Cão",
   "nomeIngles": "Archon, Hound",
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "papel": "soldado",
-  "conceito": "exterior Médio (celestial)",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-    "celestial",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/arconte-cao_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "100 kg"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 3,
   "centelha": 4,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "guardiao",
+    "nome": "forma de guardião"
+  },
+  "corpo": {
+    "postura": "de pé, em combate",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.29,
+    "comprimento": null,
+    "massa": 100,
+    "area": 0.72,
+    "posturaDoTamanho": "de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 4,
     "vigor": 5,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 4,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 2,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 3
+    "prontidao": 3,
+    "integridade": 3,
+    "sobrevivencia": 2,
+    "sociabilidade": 0,
+    "armas": 4,
+    "atletismo": 2,
+    "empatia": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 5,
     "conviccao": 5,
-    "temperanca": 4,
-    "valor": 4
+    "temperanca": 4
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 10,
-  "arte": {
-    "fascinacao": 2,
-    "conjuracao": 2,
-    "adivinhacao": 1
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
   },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Espada longa",
+      "arma": "espada-longa",
+      "habilidade": "armas"
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "aura-de-menaca",
-      "nome": "Aura de menaça",
-      "tipo": "natural",
+      "nome": "Aura de ameaça",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
         "nivel": 2
       },
-      "resiste": "mente",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
-    }
-  ],
-  "fraquezas": [
-    "profano"
-  ],
-  "habilidades": [
-    {
-      "nome": "Aura de ameaça",
-      "descricao": "inimigos em 6m que falharem em Vontade ficam Abalados"
+      "ativacao": "nenhuma; ao entrar na aura",
+      "duracao": "até o fim da cena",
+      "alcance": "6 m",
+      "area": "inimigos no raio",
+      "efeito": "quem falha fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Integridade; quem passa ignora a aura nesta cena",
+      "limiteDeUso": "uma resistência por alvo por cena"
     },
     {
       "nome": "Teleporte",
-      "descricao": "desloca-se instantaneamente até 12m, 1x por cena"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "12 m visíveis",
+      "area": "o próprio arconte",
+      "efeito": "desaparece e reaparece no destino",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Farejar o mal",
-      "descricao": "detecta criaturas malignas em até 18m, mesmo ocultas"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "adivinhacao",
+        "nivel": 1
+      },
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "criaturas no raio",
+      "efeito": "percebe a presença de mal sobrenatural, mesmo atrás de cobertura; não lê pensamentos",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Forma canina",
-      "descricao": "vira cão ou lobo de guerra, trocando arma pela mordida e ganhando movimento extra"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "espirito",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até desfazer com outra ação",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "assume a forma canina da Variante ou retorna à forma de guardião",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Círculo protetor",
-      "descricao": "aliados a 3m ganham +1d de Absorção contra ataques malignos"
-    },
-    {
-      "nome": "Farejar o mal",
-      "descricao": "Sentido passivo."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "protecao",
+        "nivel": 2
+      },
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "3 m",
+      "area": "o próprio arconte e os aliados no raio",
+      "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "guarda celestial",
+      "formas": [
+        "guardiao"
+      ],
+      "texto": "mantém a formação, ameaça com a espada e usa o faro para vigiar as aproximações."
+    },
+    {
+      "nome": "combate na outra forma",
+      "formas": [
+        "canina"
+      ],
+      "texto": "morde e corre junto da matilha."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "observa e ouve o campo de batalha",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro celestial",
+      "descricao": "a detecção do mal está na habilidade Farejar o mal",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "inteligente, comprometida com seus protegidos",
+    "tracos": "cabeça de cão sobre corpo de guerreiro, espada na mão"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "matilha organizada",
+    "atividade": "qualquer hora",
+    "dieta": "sem dado",
+    "caca": "não se aplica",
+    "dianteDeGente": "socorre e protege"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Patrulheiro de cabeça canina que combate em formação e fareja o mal. Pode correr junto da matilha na forma de cão.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -129,43 +243,74 @@
       "texto": "Contido pela Lei que impede os deuses de agir direto, um archon cão só cruza ao mundo mortal em raros chamados desesperados, e mesmo assim evita ser visto: para o povo da Supressão, um anjo com cara de cão seria mais um monstro a temer do que um salvador."
     }
   ],
-  "ecologia": {
-    "tipo": "Celestial",
-    "terreno": [
-      "Mountain",
-      "Any"
+  "imagens": [
+    "bestiario/arconte-cao_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "canina",
+      "nome": "forma canina",
+      "equipamento": {
+        "arsenal": []
+      },
+      "deslocamento": {
+        "terra": {
+          "batalha": 5,
+          "arranque": 8,
+          "corrida": 12
+        }
+      },
+      "corpo": {
+        "altura": 0.9,
+        "comprimento": 1.8,
+        "largura": 0.35,
+        "area": 0.55
+      },
+      "fisiologia": {
+        "camuflagem": "passa por cão de guerra",
+        "tracos": "cão robusto de pelagem clara"
+      },
+      "ataques": []
+    }
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "profano",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Archon Cão",
-    "cr": "4",
-    "tipo": "exterior Médio (celestial)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 18,
-      "des": 14,
-      "con": 16,
-      "int": 13,
-      "sab": 14,
-      "car": 12
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Aura de ameaça",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Prontidão 3",
-      "Atletismo 2"
-    ],
-    "nota": "Teletransporte, aura de menaça: Centelha 3.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3
+    {
+      "campo": "habilidadesEspeciais.Farejar o mal",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma canina",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Círculo protetor",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "formas.canina",
+      "motivo": "Massa e mente preservadas, corpo mais baixo; movimento extra do corpo quadrúpede"
+    }
+  ]
 }

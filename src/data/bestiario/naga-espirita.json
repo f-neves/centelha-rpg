@@ -272,6 +272,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Potência 16, pool 4 de Vigor, com Abalado"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Mordida Média no lugar das \"Garras e presas\""
     }
   ]
 }

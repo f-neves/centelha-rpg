@@ -235,6 +235,14 @@
       "motivo": ""
     },
     {
+      "campo": "corpo.area",
+      "motivo": "Médio para Pequeno, pela área do lobo de 54 kg (0,40 m²), como o lobo (55 kg) e o cachorro de guarda (85 kg). Em jogo: o atirador humano perde 3 contra ele, e ele ganha +3 no corpo a corpo contra o humano"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +5 corte\", dano médio 8,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo. Dano médio: 8,5 antes; depois, 8,5 (sem mudança)"
+    },
+    {
       "campo": "ataques.Sopro de fogo",
       "motivo": "poder natural com números da ficha (D-197), base Fogo 3 (o leque de 2d6 da Labareda); o site não dava os números"
     }

@@ -225,19 +225,19 @@
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "As foices de quitina aparam às vezes (D-100, D-110)"
+      "motivo": "As foices de quitina aparam às vezes (D-100, D-110); 1, pelas foices; o site não gravava Bloqueio"
     },
     {
       "campo": "habilidadesSec.disparo",
-      "motivo": "A teia arremessada: \"Serve para qualquer disparo corporal (teia...)\" (decisoes-autor §14); um abaixo da aranha-gigante do molde (3)"
+      "motivo": "A teia arremessada: \"Serve para qualquer disparo corporal (teia...)\" (decisoes-autor §14); um abaixo da aranha-gigante do molde (3); 2, 2 e 1"
     },
     {
       "campo": "habilidadesSec.adestramento",
-      "motivo": "Doma aranhas gigantes como sentinelas (site)"
+      "motivo": "Doma aranhas gigantes como sentinelas (site); 2, 2 e 1"
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": ""
+      "motivo": "; 2, 2 e 1"
     },
     {
       "campo": "couraca",
@@ -254,6 +254,10 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Foices Média e Mordida Leve no lugar das \"Garras e presas\""
     }
   ]
 }

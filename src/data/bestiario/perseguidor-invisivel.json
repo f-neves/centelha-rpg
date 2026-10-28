@@ -222,6 +222,10 @@
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "os dois socos pela Rajada"
     }
   ]
 }

@@ -297,7 +297,7 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2"
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
     },
     {
       "campo": "habilidades.burocracia",
@@ -305,19 +305,27 @@
     },
     {
       "campo": "corpo.area",
-      "motivo": "A frente do corpo de base (0,72 m²) escalada pela altura ao quadrado (× 2,25) e estreitada 10%: 0,72 × 2,25 × 0,9 = 1,46, a 1% do corte de 1,45 m². A cauda de escorpião é grossa e conta (D-155): curvada sobre a cabeça, soma cerca de 0,25 m² à silhueta de frente , e o total é 1,71"
+      "motivo": "A frente do corpo de base (0,72 m²) escalada pela altura ao quadrado (× 2,25) e estreitada 10%: 0,72 × 2,25 × 0,9 = 1,46, a 1% do corte de 1,45 m². A cauda de escorpião é grossa e conta (D-155): curvada sobre a cabeça, soma cerca de 0,25 m² à silhueta de frente , e o total é 1,71; sem a cauda, a frente do corpo (1,46 m²) ficaria a 1% do corte de Médio para Grande; a cauda grossa de escorpião conta (D-155) e leva a 1,71 m², Grande, como o site"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de osso, a \"Absorção alta contra ataques físicos\" do site, como o crocodilo no alto (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Sangue infernal\"), pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de osso, a \"Absorção alta contra ataques físicos\" do site, como o crocodilo no alto (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Sangue infernal\"), pela linha Elementos; 5, pela carapaça de osso"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
     },
     {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +13 corte\", dano médio 20). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e ferrão ficam Médios (o golpe com o corpo atrás). Dano médio: 20 antes; depois, 16,5"
+    },
+    {
       "campo": "ataques.Ferrão",
       "motivo": "números da ficha com as bases do site (D-197). As três Artes do site viraram as bases dos três poderes"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "\"Enfraquecido\" do site virou o pool de Força do veneno, como na peçonha de drider; sem id no catálogo"
     }
   ]
 }

@@ -185,11 +185,19 @@
     },
     {
       "campo": "habilidadesSec.estrategia",
-      "motivo": "O site tinha `tatica` 3, que não existe no livro; a secundária mais perto é Estratégia (manual 3.5, D-190)"
+      "motivo": "O site tinha `tatica` 3, que não existe no livro; a secundária mais perto é Estratégia (manual 3.5, D-190); o `tatica` do site não existe no livro (manual 3.5, D-190)"
     },
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "equipamento.arsenal",
+      "motivo": "o heater do livro, sempre carregado, para o \"bônus adicional ao Bloqueio\" do site"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
   ]
 }

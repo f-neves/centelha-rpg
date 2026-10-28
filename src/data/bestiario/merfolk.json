@@ -221,6 +221,14 @@
     {
       "campo": "comportamento.caca",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "lança no lugar do tridente e besta média no lugar da besta pesada"
+    },
+    {
+      "campo": "deslocamento",
+      "motivo": "antes, Batalha 0,5 m/Tick apenas em texto, Arranque e Corrida ausentes; depois, terra 0,5 / 0,75 / 1,0 m/Tick. Preserva o arrastar publicado e distingue esforço breve e máximo, ambos limitados pela cauda sem pernas (36.2) ."
     }
   ]
 }

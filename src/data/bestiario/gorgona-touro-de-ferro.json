@@ -245,6 +245,18 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição, ficou na faixa de baixo (62, o do site), porque o peso a mais é ferro; subindo seria 75"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição, ficou na faixa de baixo (62, o do site), porque o peso a mais é ferro; subindo seria 75"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +11 perfurante\", 6 Ticks, dano médio 18). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 18 antes; depois, chifrada 14,5, investida 26,0 (só na carga corrida)"
     }
   ]
 }

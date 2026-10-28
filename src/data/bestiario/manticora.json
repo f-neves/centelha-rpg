@@ -241,6 +241,14 @@
     {
       "campo": "corpo.envergadura",
       "motivo": "Duas vezes o corpo sem a cauda: asa de morcego, larga e curta, como a do cão yeth. O site não dá a envergadura"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme em voo, de asas abertas, com a envergadura estimada em duas vezes o corpo"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 8,5, mordida 10,5; os espinhos de cauda ficam 10,5 (eram 10,5, sem mudança)"
     }
   ]
 }

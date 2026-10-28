@@ -239,6 +239,14 @@
     {
       "campo": "habilidadesEspeciais.Sentir o bem e o mal",
       "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme em voo, de asas abertas (17,0 m²), pelo método do grifo"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +10 perfurante\", 6 Ticks, dano médio 17). O pégaso não tem garra: a ficha usa o coice do site, Pesado, e a mordida, Leve, como no cavalo do molde. Dano médio: 17 antes; depois, coice 17,0 (sem mudança), mordida 11,5"
     }
   ]
 }

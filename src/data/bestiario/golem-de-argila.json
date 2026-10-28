@@ -254,15 +254,19 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): bloco de argila seca na forma de um homem, sem os ombros largos do golem de pedra (3) e de um material mais mole que o granito. Comum, 2"
+      "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): bloco de argila seca na forma de um homem, sem os ombros largos do golem de pedra (3) e de um material mais mole que o granito. Comum, 2; 2, pelo corpo de argila na proporção humana"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: argila endurecida, abaixo do granito do golem de pedra (9) e perto da tartaruga grande (cerca de 6); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: argila endurecida, abaixo do granito do golem de pedra (9) e perto da tartaruga grande (cerca de 6); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); 6, argila endurecida"
     },
     {
       "campo": "ataques.Punho de argila",
       "motivo": "A \"Arma\" do site (2 dados, corte, 6 Ticks) é o punho de barro: Média, como o Punho de pedra do golem de pedra (`regra-construcao.md` §7), golpe de membro, Força × 1; o segundo dado sai com a classe, e o tipo passa a Impacto, porque é punho, e não lâmina. Bloqueia como arma (D-066), Defesa +1 . Jogada: Força 8 + Briga 4 + 2 × o menor entre Centelha 3 e Briga 4 (6)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a \"Arma\" de 2 dados e corte vira o Punho de argila Média, de 1 dado e Impacto (perda de mecânica publicada, no relato)"
     }
   ]
 }

@@ -225,7 +225,7 @@
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "Apara pouco, com o braço de pedra, que bloqueia sem tomar dano (D-066); \"«Quase não bloqueia» é 1, e não 0\" (D-110)"
+      "motivo": "Apara pouco, com o braço de pedra, que bloqueia sem tomar dano (D-066); \"«Quase não bloqueia» é 1, e não 0\" (D-110); 1, braço de pedra; o site não gravava Bloqueio"
     },
     {
       "campo": "couraca",
@@ -242,6 +242,10 @@
     {
       "campo": "sentidos.tremor",
       "motivo": "o sentido é do site; os 18 m são sugestão da ficha"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
   ]
 }

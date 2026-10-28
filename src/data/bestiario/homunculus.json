@@ -241,6 +241,22 @@
     {
       "campo": "habilidadesEspeciais.Eco de dano",
       "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Pequeno de asas abertas (0,14 m², pela proporção da asa do morcego) e Miúdo pousado; o site dizia Miúdo"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "5, na zona de transição, pela faixa de baixo (corpinho de argila); pela de cima seria 11"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "5, na zona de transição, pela faixa de baixo (corpinho de argila); pela de cima seria 11"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o formato do veneno do sono do drow, Potência 12"
     }
   ]
 }

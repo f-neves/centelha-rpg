@@ -1,82 +1,176 @@
 {
-  "ordem": 155,
   "id": "urso-cinzento",
   "idAntigo": "mon-grizzly-bear",
   "nome": "Urso Cinzento",
   "nomeIngles": "Grizzly Bear",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Animal selvagem, perigo puro sem malícia.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,5 m de comprimento",
-    "peso": "380 kg"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.09,
+    "largura": 0.72,
+    "profundidade": 1.9,
+    "comprimento": 1.9,
+    "massa": 170,
+    "area": 0.97,
+    "posturaDoTamanho": "quatro patas",
+    "segundoTamanho": {
+      "area": 1.6,
+      "posturaDoTamanho": "erguido nas patas traseiras"
+    }
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 6,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
-    "briga": 3,
+  "habilidades": {
+    "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "prontidao": 2,
+    "integridade": 2,
+    "sobrevivencia": 3,
+    "sociabilidade": 0,
+    "resistencia": 3,
+    "furtividade": 1
   },
-  "virtues": {
+  "habilidadesSec": {
+    "natacao": 3,
+    "musculatura": 4
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
-    "conviccao": 2,
-    "temperanca": 2,
-    "valor": 2
+    "conviccao": 1,
+    "temperanca": 1
   },
-  "willpower": 5,
+  "vontade": 4,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 10
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Garra",
+      "parte": "pata-dianteira",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "mandibula",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Garras Esmagadoras",
-      "descricao": "Golpeia com as duas garras e pode prender o alvo em um abraço mortal, mantendo-o preso enquanto continua a dilacerá-lo."
-    },
-    {
-      "nome": "Faro Apurado",
-      "descricao": "Sente o cheiro de presas e intrusos a grande distância, mesmo sem poder vê-los."
-    },
-    {
-      "nome": "Visão Crepuscular",
-      "descricao": "Enxerga bem mesmo em pouca luz, como ao entardecer ou dentro de uma floresta densa."
-    },
-    {
-      "nome": "Nadadora Forte",
-      "descricao": "Atravessa rios e lagos com facilidade incomum para um animal de seu porte."
+      "nome": "Agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garra",
+      "regra": "agarrar",
+      "texto": "prende o alvo com as patas dianteiras"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Combate próximo",
+      "formas": "todas",
+      "texto": "usa uma garra ou a mordida por ação; pode usar Rajada."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +3 para notar presas e intrusos pelo cheiro",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "distingue movimentos na penumbra",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "instintiva",
+    "tracos": "Urso de pelagem castanha com pontas claras e ombros musculosos"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "amanhecer e entardecer",
+    "dieta": "raízes, frutos, insetos, peixe, carniça e caça",
+    "caca": "forrageia e caça de modo oportunista",
+    "dianteDeGente": "costuma evitar pessoas; defende alimento e filhotes se ameaçado"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Urso de pelagem castanha com pontas claras e ombros musculosos",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -87,38 +181,36 @@
       "texto": "Diante de uma ameaça, tenta subjugar ou matar com as garras; quando consegue agarrar um alvo, insiste nele até que fuja, desmaie ou morra."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Cold"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Grizzly Bear",
-    "cr": "4",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 13,
-      "con": 19,
-      "int": 2,
-      "sab": 12,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Patas dianteiras de cavador, como o urso-pardo"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Dimensões do urso-pardo de 200 kg × (170/200)^(1/3), para o grizzly típico pesquisado"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Dimensões do urso-pardo de 200 kg × (170/200)^(1/3), para o grizzly típico pesquisado"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Dimensões do urso-pardo de 200 kg × (170/200)^(1/3), para o grizzly típico pesquisado"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
+    },
+    {
+      "campo": "ataques.Garra",
+      "motivo": "Antes: ataque genérico 2d6 + 7, média 14; agora 1d6 + 7, média 10,5, Corte."
+    }
+  ]
 }

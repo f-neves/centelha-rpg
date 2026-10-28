@@ -215,17 +215,10 @@
       "efeito": "com as duas cabeças vigiando, não fica Flanqueado; a surpresa já está na Prontidão (surpresa) +3"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 31",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes (\"feitiços hostis enfrentam grande resistência\", site), como no dragão vermelho ancião",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Liberdade de movimento",
@@ -337,10 +330,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 16. Desce para 13 pelo teste de ordem (manual, Passo 7), o mesmo método que o autor mandou aplicar ao neothelid (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)): com 16, a serpente de 11 t passava o grande wyrm vermelho de 88 t (16), o ancião de 59 t (14), o braquiossauro de 31 t (14) e o megalodonte de 36 t (13). Fica acima do dragão dourado adulto de 9 t (12), mais leve, e igual ao megalodonte, sem passar ninguém mais pesado. É a Força de referência da massa arredondada (12,61, manual 3.9); 13, pelo teste de ordem; o site tinha 16 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro))"
     },
@@ -359,6 +348,22 @@
     {
       "campo": "ataques.Mordida",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), N3 como a dos dragões adultos. Golpe de boca: Força × 1. Inocula o veneno (Veneno e doença) . Jogada: Força 13 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme pela área do corpo de serpente; o site dizia Colossal"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "nenhuma, como o linnorm dos penhascos"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "9d6 + Centelha, linha de 18 m ou cone de 12 m, pela escada de Centelha do lote 23 (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "pelo padrão do \"Ferrão de gigante\""
     },
     {
       "campo": "habilidadesEspeciais.Regeneração 15",

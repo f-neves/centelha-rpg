@@ -1,56 +1,87 @@
 {
-  "ordem": 105,
   "id": "solar",
   "idAntigo": "mon-solar",
   "nome": "Solar",
   "nomeIngles": "Angel, Solar",
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "papel": "chefe",
-  "conceito": "exterior Grande (anjo)",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-    "celestial",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/solar_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3 m de altura, envergadura 7 m",
-    "peso": "320 kg"
-  },
-  "locomocao": {
-    "terra": 5,
-    "voo": 15
-  },
+  "ameaca": 6,
   "centelha": 9,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, asas recolhidas",
+    "apoio": "bipede",
+    "altura": 3,
+    "largura": 0.75,
+    "profundidade": 0.383,
+    "comprimento": null,
+    "massa": 320,
+    "area": 2.45,
+    "posturaDoTamanho": "de pé, asas recolhidas",
+    "segundoTamanho": {
+      "area": 9.25,
+      "posturaDoTamanho": "asas abertas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 10,
     "destreza": 6,
     "vigor": 10,
-    "influencia": 8,
-    "perspicacia": 7,
-    "compostura": 8,
     "percepcao": 8,
     "inteligencia": 7,
-    "raciocinio": 8
+    "raciocinio": 8,
+    "influencia": 8,
+    "perspicacia": 7,
+    "compostura": 8
   },
-  "skills": {
-    "briga": 5,
+  "habilidades": {
+    "briga": 3,
+    "bloqueio": 3,
     "esquiva": 2,
-    "prontidao": 4,
+    "prontidao": 5,
     "integridade": 8,
+    "sobrevivencia": 5,
+    "sociabilidade": 4,
+    "armas": 5,
+    "ocultismo": 5,
+    "empatia": 4,
     "atirador": 5
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 1
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 5,
     "conviccao": 5,
-    "temperanca": 4,
-    "valor": 5
+    "temperanca": 4
   },
-  "willpower": 12,
+  "vontade": 12,
   "aparencia": 12,
-  "arte": {
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    },
+    "voo": {
+      "batalha": 15
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:montante"
+      },
+      {
+        "ref": "a:arco-longo"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {
     "cura": 6,
     "fortuna": 6,
     "morte": 6,
@@ -59,94 +90,140 @@
   },
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "nome": "Montante",
+      "arma": "montante",
+      "habilidade": "armas"
     },
     {
-      "nome": "Arco de luz",
-      "atrib": "percepcao",
-      "pericia": "atirador",
-      "dado": 2,
-      "distancia": true,
-      "arremesso": true,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "perf": 2,
-      "ticks": 6
+      "nome": "Arco longo",
+      "arma": "arco-longo",
+      "habilidade": "atirador"
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "arco-que-mata",
-      "nome": "Efeito do arco (mata)",
-      "tipo": "natural",
+      "nome": "Aura protetora",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
-        "arte": "morte",
-        "nivel": 5
+        "arte": "protecao",
+        "nivel": 4
       },
-      "resiste": "corpo",
-      "efeito": "Alvo maligno que falha sofre dano letal imediato.",
-      "ataque": "Arco de luz",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 1
-      }
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "12 m",
+      "area": "a criatura e seus aliados no raio",
+      "efeito": "a criatura e seus aliados somam +4 em Esquiva, Bloqueio e Defesa Mental contra ataques e efeitos malignos",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "id": "convocar-anjos",
-      "nome": "Convocar anjos",
-      "tipo": "natural",
-      "base": {
-        "arte": "espirito",
-        "nivel": 5
-      },
-      "resiste": "nenhum",
-      "efeito": "Convocar anjos",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
-    }
-  ],
-  "fraquezas": [
-    "profano"
-  ],
-  "habilidades": [
+      "nome": "Regeneração 15",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "regeneração sobrenatural; interrompida por artefatos, efeitos e magias malignos"
+    },
+    {
+      "nome": "Resistência à magia 34",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
+    },
+    {
+      "nome": "Verbo verdadeiro",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "compreende e fala com criaturas de idiomas diferentes"
+    },
+    {
+      "nome": "Imunidades celestes",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não adoece, não é envenenado e resiste à transformação em pedra"
+    },
     {
       "nome": "Espada afiada",
-      "descricao": "crítico pode decepar um membro ou matar em um só golpe"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o gume pode amputar ou matar com um golpe decisivo"
+    },
+    {
+      "nome": "Flecha exterminadora",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o arco produz flechas capazes de extinguir a vida do alvo"
     },
     {
       "nome": "Ressurreição",
-      "descricao": "1x por história traz um aliado morto de volta à vida"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "devolve um aliado morto à vida"
     },
     {
-      "nome": "Aura protetora suprema",
-      "descricao": "aliados a 12m ganham +2d de Defesa contra o mal"
+      "nome": "Convocar anjos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "chama auxiliares celestes para a batalha"
     },
     {
-      "nome": "Feitiços supremos",
-      "descricao": "1x por cena lança qualquer feitiço divino"
-    },
-    {
-      "nome": "Regeneração",
-      "descricao": "recupera PV toda rodada; só dano sagrado oposto interrompe"
-    },
-    {
-      "nome": "Visão verdadeira e telepatia",
-      "descricao": "ignora ilusão e invisibilidade; lê pensamentos a distância"
-    },
-    {
-      "nome": "Voo",
-      "descricao": "desloca-se livremente pelos ares"
+      "nome": "Telepatia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "lê pensamentos e se comunica sem voz"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Feitiços sagrados",
+      "formas": "todas",
+      "texto": "usa as Artes para curar, proteger e enfrentar ameaças sobrenaturais."
+    },
+    {
+      "nome": "Guerreiro alado",
+      "formas": "todas",
+      "texto": "abre o combate voando e pousa para pressionar com a espada; volta ao ar para proteger aliados distantes."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "enxerga no escuro e sob luz fraca",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira · sem regra ainda",
+      "descricao": "percebe através de ilusões e ocultação mágica",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "inteligente",
+    "tracos": "Guerreiro celeste de pele metálica e três pares de asas brancas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "não se aplica",
+    "dianteDeGente": "enfrenta ameaças ao mundo e protege os mortais"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Guerreiro celeste de pele metálica e três pares de asas brancas",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -169,44 +246,53 @@
       "texto": "A Lei que barra os deuses de tocar mortais diretamente talvez nem alcance um solar, o que torna sua aparição um evento de era: as escrituras das igrejas supressoras falam de arautos de espada de luz vistos nos dias da Grande Guerra, e temem, ou rezam, para que um retorne."
     }
   ],
-  "ecologia": {
-    "tipo": "Celestial",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/solar_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "profano",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Oratória 5, Prontidão 5. Centelha acima do teto mortal (entidade).",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Solar",
-    "cr": "23",
-    "tipo": "exterior Grande (anjo)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 28,
-      "des": 20,
-      "con": 30,
-      "int": 23,
-      "sab": 27,
-      "car": 25
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Aura protetora",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Armas 5",
-      "Ocultismo 5",
-      "Oratória 5",
-      "Prontidão 5"
-    ],
-    "nota": "Anjo supremo: Centelha 8. Sab 27 → Percepção 8; Con 30 → Vigor 9 +1 = 10.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Corpo de guerreiro, força sobrenatural além do músculo"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6
+    {
+      "campo": "corpo.area",
+      "motivo": "Corpo: 0,72 × (3,0 ÷ 1,8)²; asas recolhidas completam 2,45 m². Asas abertas estimadas em 9,25 m²"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
+    }
+  ]
 }

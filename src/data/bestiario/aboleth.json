@@ -299,7 +299,7 @@
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "Os tentáculos desviam o golpe às vezes: \"«Quase não bloqueia» é 1, e não 0\" (D-110)"
+      "motivo": "Os tentáculos desviam o golpe às vezes: \"«Quase não bloqueia» é 1, e não 0\" (D-110); 1, pelos tentáculos; o site não gravava Bloqueio"
     },
     {
       "campo": "corpo.largura",
@@ -320,6 +320,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Tentáculo Pesado no lugar das \"Garras e presas\" de 3 dados; os quatro ataques viram a Rajada"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4; o site tinha 2. `compaixao`: 1, o piso da régua; o site tinha 0"
     }
   ]
 }

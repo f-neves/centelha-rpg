@@ -259,7 +259,7 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto, 4 a 6 excepcional): carne de pedra, metal e gema num corpo atarracado, que empurra com o peso da pedra. Robusto, 3, como o golem de pedra (3) e o elemental da terra grande (3). Não chega a excepcional: a forma é a de um homem, sem a alavanca de um corpo feito para erguer (D-117, D-184)"
+      "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto, 4 a 6 excepcional): carne de pedra, metal e gema num corpo atarracado, que empurra com o peso da pedra. Robusto, 3, como o golem de pedra (3) e o elemental da terra grande (3). Não chega a excepcional: a forma é a de um homem, sem a alavanca de um corpo feito para erguer (D-117, D-184); 3, pelo corpo de pedra atarracado, robusto, como o golem de pedra e o elemental da terra grande (tamanho-decisoes-3, item 12)"
     },
     {
       "campo": "corpo.largura",
@@ -280,6 +280,10 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": "site"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
     }
   ]
 }

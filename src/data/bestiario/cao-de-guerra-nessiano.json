@@ -241,6 +241,14 @@
       "motivo": ""
     },
     {
+      "campo": "corpo.area",
+      "motivo": "Grande para Médio, pela silhueta do mastim com 2,1 m de corpo (1,15 m², 21% abaixo do corte). Em jogo: o humano perde o +3 que tinha contra ele no corpo a corpo, e o atirador humano deixa de ganhar 3"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +14 corte\", dano médio 21). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo e a do cachorro de guarda. Dano médio: 21 antes; depois, 17,5"
+    },
+    {
       "campo": "ataques.Sopro de fogo",
       "motivo": "poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números"
     },

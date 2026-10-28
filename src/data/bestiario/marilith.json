@@ -352,7 +352,7 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2"
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
     },
     {
       "campo": "corpo.altura",
@@ -364,7 +364,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: as escamas da cauda de serpente grande, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: as escamas da cauda de serpente grande, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); a Arte do site ficou sem poder próprio; 3, escamas de serpente grande"
     },
     {
       "campo": "comportamento.dieta",
@@ -373,6 +373,18 @@
     {
       "campo": "aparencia",
       "motivo": "0, e não o −1 do site, fora da régua; o texto do site não descreve beleza"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as espadas são as do livro e a Cauda fica Média"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o site dizia \"depende do agarrão; engolir 1 alvo por vez\". A marilith não engole; a ficha guarda o limite de um alvo por vez na cauda e lê o \"engolir\" como resto de outro texto"
     },
     {
       "campo": "habilidadesEspeciais.Presença aterradora",

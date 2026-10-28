@@ -128,17 +128,10 @@
       "limiteDeUso": "uma vez por cena para cada pessoa"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 15",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Anfíbia",
@@ -246,10 +239,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesEspeciais.Anfíbia",
       "motivo": "números sugeridos pela ficha (D-197)"
     },
@@ -264,6 +253,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "virtudes.compaixao",
+      "motivo": "1; o site tinha 2"
     }
   ]
 }

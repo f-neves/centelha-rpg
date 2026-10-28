@@ -279,6 +279,14 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro nas alturas\" do site, como o couro grosso do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 2, couro grosso"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "3, a da nota do site; o campo dizia 2"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a Pancada e a rocha de 3 dados viram Pesadas de 2 dados (perda de mecânica publicada, no relato)"
     }
   ]
 }

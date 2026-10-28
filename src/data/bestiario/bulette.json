@@ -206,5 +206,14 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": []
+  "revisao": [
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme na borda de 5% (5,84 m²), pela crista"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +11 perfurante\", 7 Ticks, dano médio 21,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 21,5 antes; depois, mordida 14,5; o salto de emboscada 28,0, só ao sair da terra"
+    }
+  ]
 }

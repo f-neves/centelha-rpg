@@ -213,7 +213,7 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "Corpo sem músculo, julgado pelo material e pela forma (manual 3.5): massa baixa e mole"
+      "motivo": "Corpo sem músculo, julgado pelo material e pela forma (manual 3.5): massa baixa e mole; 1"
     },
     {
       "campo": "comportamento.social",
@@ -222,6 +222,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Pseudópode Leve de ácido; o site tinha tipo impacto"
     }
   ]
 }

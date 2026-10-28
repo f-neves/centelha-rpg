@@ -321,7 +321,7 @@
     },
     {
       "campo": "habilidadesSec.intimidacao",
-      "motivo": "O lamento e a fúria (site)"
+      "motivo": "O lamento e a fúria (site); 2, pelo lamento"
     },
     {
       "campo": "comportamento.social",
@@ -330,6 +330,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (fraqueza a luz)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o tipo impacto do site virou fenômeno (C-041)"
     }
   ]
 }

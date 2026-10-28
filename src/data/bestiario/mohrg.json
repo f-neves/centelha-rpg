@@ -246,7 +246,7 @@
     },
     {
       "campo": "habilidades.furtividade",
-      "motivo": "\"Prefere isolar suas vítimas\", \"caçador solitário\" (site)"
+      "motivo": "\"Prefere isolar suas vítimas\", \"caçador solitário\" (site); 2, pelo caçador que isola a vítima"
     },
     {
       "campo": "comportamento.social",
@@ -255,6 +255,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe\" do site ficou Mãos ossudas Médias, duas pela Rajada; a Língua entrou como ataque sem dano"
     }
   ]
 }

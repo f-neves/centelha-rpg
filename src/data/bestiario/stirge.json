@@ -205,6 +205,18 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "corpo",
+      "motivo": "17 para 2. Com 100 g, na zona de transição, a tabela dá o Vigor; descendo seria 1"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "17 para 2. Com 100 g, na zona de transição, a tabela dá o Vigor; descendo seria 1"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\", a probóscide (`inimigos.json`: \"1d6 +2 perfurante\", 5 Ticks, dano médio 5,5). A ficha fica com a probóscide, Leve. Dano médio: 5,5 antes; depois, probóscide 3,5, mais o Sangrando enquanto preso"
     }
   ]
 }

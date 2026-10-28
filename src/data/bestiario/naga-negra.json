@@ -251,6 +251,22 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "artes",
+      "motivo": "Raio 4, Forças 3 e Fascinação 3, escolhidas pelo texto; o site não grava Arte"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "1; o site tinha 2"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Potência 16, pool 4 de Vigor"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Ferrão Médio no lugar das \"Garras e presas\""
     }
   ]
 }

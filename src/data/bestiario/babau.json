@@ -328,7 +328,19 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele coriácea que absorve parte do golpe (site), entre o cavalo (1) e o elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele coriácea que absorve parte do golpe (site), entre o cavalo (1) e o elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos; 2, pela pele coriácea; a redução de dano contra arma comum do site ficou sem regra ainda"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não o 1 do site, pelo assassino \"paciente e metódico\" do texto; a `compaixão` 0 do site sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "a lança e a Habilidade Armas 4 entraram pelo texto do site, que não as tinha na ficha; sem a lança, ele luta com as garras"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as garras e a mordida ficam Médias (o golpe com o corpo atrás), e a Lança é a do livro"
     }
   ]
 }

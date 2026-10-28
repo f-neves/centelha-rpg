@@ -198,6 +198,14 @@
     {
       "campo": "comportamento.social",
       "motivo": ""
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Pequeno para Grande, pela postura de ataque (D-215). Em jogo: o humano ganha +3 contra ele, e não −3 de longe"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"1d6 +3 perfurante\", 5 Ticks, dano médio 6,5). A ficha fica com os tentáculos, Leves, como o braço do polvo. Dano médio: 6,5 antes; depois, tentáculos 4,5"
     }
   ]
 }

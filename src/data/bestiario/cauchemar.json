@@ -264,6 +264,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme para Grande, pela silhueta do cavalo com 4 m (4,99 m², 17% abaixo do corte do Enorme). Com 1.600 kg seria Grande também. Em jogo: o humano ganha +3 no acerto contra ele, e não +6"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "os \"Cascos flamejantes\" do site (3 dados, 7 Ticks, `inimigos.json`: \"3d6 +16 impacto\", dano médio 26,5) ficam Pesados, 2 dados: 23,0. A \"Mordida\" do site (2 dados, 6 Ticks, \"2d6 +16 perfurante\", 23) fica Leve, como a do cavalo: 17,5. A D-241 levou a Pesado de 2 dados só o golpe de cinco planares, e aqui a classe sai do gesto"
     }
   ]
 }

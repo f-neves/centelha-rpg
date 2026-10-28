@@ -298,8 +298,20 @@
       "motivo": "O \"bico de águia\" da ficha publicada: bico em gancho do tamanho de uma cabeça de leão, com o pescoço atrás: Média, como o bico do roc. Bico grande em N1"
     },
     {
+      "campo": "corpo",
+      "motivo": "na zona de transição, desceu (voador). Subindo seria 50"
+    },
+    {
       "campo": "atributos.vigor",
-      "motivo": "5, um abaixo do site, pela comparação com o leão e a tendência das aves"
+      "motivo": "na zona de transição, desceu (voador). Subindo seria 50; 5, um abaixo do site, pela comparação com o leão e a tendência das aves"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande por escolha de borda (4,8% abaixo do corte); Médio seria a leitura estrita da área, como o leão"
+    },
+    {
+      "campo": "aptidoes.carga",
+      "motivo": "10% do corpo, sem estrutura de carga, fator de porte 1 sem dado; um cavaleiro passa da Pesada. O texto do site diz que domar um adulto é \"tarefa de poucos\": montaria sim, com esse peso como limite"
     }
   ]
 }

@@ -237,7 +237,7 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "Pelo corpo: músculo seco e embalsamado, como o do ghoul (1). A força está na Força 7 (D-117, D-184)"
+      "motivo": "Pelo corpo: músculo seco e embalsamado, como o do ghoul (1). A força está na Força 7 (D-117, D-184); 1, músculo seco"
     },
     {
       "campo": "corpo.massa",
@@ -250,6 +250,10 @@
     {
       "campo": "comportamento.social",
       "motivo": "site (Sociedade)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Doente e sem cura mágica até um rito de nível 4 (Cura 4 tira doença no `artes.json`)"
     }
   ]
 }

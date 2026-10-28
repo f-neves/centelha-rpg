@@ -303,11 +303,11 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2"
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
     },
     {
       "campo": "corpo.area",
-      "motivo": "Voando, vista de cima ou de baixo: as duas asas, de 2,05 m cada da raiz à ponta ((4,5 − 0,41) ÷ 2) e corda média de 0,6 m, dão 2 × 2,05 × 0,6 = 2,46 m², somadas à frente do corpo (0,72 × 0,92 = 0,66 m²): 3,11 m²"
+      "motivo": "Voando, vista de cima ou de baixo: as duas asas, de 2,05 m cada da raiz à ponta ((4,5 − 0,41) ÷ 2) e corda média de 0,6 m, dão 2 × 2,05 × 0,6 = 2,46 m², somadas à frente do corpo (0,72 × 0,92 = 0,66 m²): 3,11 m²; Médio antes, Grande depois no principal. O site dava Médio, a silhueta de pé; ela luta voando (arco, combate aéreo), e com as asas abertas a silhueta é de 3,11 m². O Segundo Tamanho fica Médio, de pé. O humano passa a ter +3 no acerto contra ela no ar"
     },
     {
       "campo": "aparencia",
@@ -320,6 +320,14 @@
     {
       "campo": "ataques.Espada flamejante",
       "motivo": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com a corda na outra: Força × 1 . O fogo da lâmina vai nas Manobras. Jogada: Destreza 7 + Armas 4 + 2 × o menor entre Centelha 5 e Armas 4 (8)"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +11 corte\", dano médio 14,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as mãos ficam Leves; a espada é a do livro, em uma mão; o arco é o do livro, sem mudança (14,5). Dano médio: 14,5 antes; depois, 14,5 (a espada, mais 1d6 de fogo); as mãos ficam em 12,5"
     }
   ]
 }

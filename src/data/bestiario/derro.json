@@ -120,17 +120,10 @@
       "limiteDeUso": "três vezes por dia, somados"
     },
     {
-      "nome": "Resistência mágica",
+      "nome": "Resistência à magia 14",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Vulnerabilidade ao sol",
@@ -242,10 +235,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência mágica",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesEspeciais.Vulnerabilidade ao sol",
       "motivo": "números sugeridos pela ficha (D-197)"
     },
@@ -256,6 +245,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada curta do livro"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1 e Temperança 1; o site tinha 2 e 2"
     }
   ]
 }

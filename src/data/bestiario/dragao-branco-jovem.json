@@ -401,6 +401,10 @@
       "motivo": "8 por comparação; o site tinha 7"
     },
     {
+      "campo": "ataques",
+      "motivo": "6d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197: \"A Bestiarista sugere tudo... o autor revisa no fim\"). Os números do site ficam, porque o sopro tem de ser a arma mais forte do dragão (média 25, contra 15,5 da mordida); a base Gelo 3 (Rajada Gélida, 2d6) daria 11, abaixo da mordida. O chão de gelo é a parte da Rajada Gélida que desacelera"
+    },
+    {
       "campo": "corpo.massa",
       "motivo": "700 kg, a do site, conferida pelo crocodilo de mesmo comprimento (de memória, a conferir)"
     }

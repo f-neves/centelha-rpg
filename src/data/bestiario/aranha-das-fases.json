@@ -206,6 +206,10 @@
     {
       "campo": "habilidadesEspeciais.fio de teia",
       "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +9 perfurante\", 6 Ticks, dano médio 16). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 16 antes; depois, mordida 12,5"
     }
   ]
 }

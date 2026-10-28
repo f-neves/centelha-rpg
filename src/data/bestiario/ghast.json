@@ -251,7 +251,7 @@
     },
     {
       "campo": "habilidadesSec.estrategia",
-      "motivo": "Lidera a matilha em emboscada (site)"
+      "motivo": "Lidera a matilha em emboscada (site); 1, a liderança da matilha"
     },
     {
       "campo": "habilidadesSec.musculatura",
@@ -264,6 +264,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (criptas e ossários)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe\" de impacto do site virou Garras Médias de Corte e uma Mordida Média, como no ghoul"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o \"Enjoado\" do site ficou Abalado, a condição do livro que a ficha publicada já citava"
     }
   ]
 }

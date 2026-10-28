@@ -156,17 +156,10 @@
       "regra": "rajada"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 28",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes (\"feitiços hostis enfrentam grande resistência\", site), como no dragão vermelho ancião",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Liberdade de movimento",
@@ -283,10 +276,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "sentidos.visão verdadeira",
       "motivo": "sem regra ainda no livro"
     },
@@ -309,6 +298,26 @@
     {
       "campo": "ataques.Mordida",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), N3 como a dos dragões adultos. Golpe de boca: Força × 1. Inocula o veneno (Veneno e doença) . Jogada: Força 13 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme pela área do corpo de serpente; o site dizia Colossal"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição, robusto, sobe para a faixa de 14 a 110 t; nenhuma, como o linnorm dos penhascos"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição, robusto, sobe para a faixa de 14 a 110 t"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "9d6 + Centelha, cone de 12 m, Imobilizado no gelo, pela escada de Centelha do lote 23 (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "pelo padrão do \"Ferrão de gigante\""
     },
     {
       "campo": "habilidadesEspeciais.Regeneração 10",

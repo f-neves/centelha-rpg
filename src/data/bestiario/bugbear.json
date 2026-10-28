@@ -189,7 +189,7 @@
     },
     {
       "campo": "habilidades.armas",
-      "motivo": "O site gravava `briga` 2 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5)"
+      "motivo": "O site gravava `briga` 2 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5); 3; o site gravava `briga` 2 para a arma"
     },
     {
       "campo": "couraca",
@@ -206,6 +206,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "machado do livro, sem armadura"
+    },
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Especialidade natural +2 pelo passo leve"
     }
   ]
 }

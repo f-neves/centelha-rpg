@@ -213,5 +213,14 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": []
+  "revisao": [
+    {
+      "campo": "corpo",
+      "motivo": "6,85 kg (em vigor na Etapa 2, 20/10/2026); antes: 6,16 kg pela fórmula nova com a Força 1 (decisões 14 e 16; 6,46 kg na fêmea de 0,95 kg com a Força 0), provisório: quase oito vezes a massa e 62 vezes os 0,10 kg da conta antiga, porque o piso da curva vale para a massa pequena. Nenhuma presa levada em voo foi medida para conferir (D-174)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "6,85 kg (em vigor na Etapa 2, 20/10/2026); antes: 6,16 kg pela fórmula nova com a Força 1 (decisões 14 e 16; 6,46 kg na fêmea de 0,95 kg com a Força 0), provisório: quase oito vezes a massa e 62 vezes os 0,10 kg da conta antiga, porque o piso da curva vale para a massa pequena. Nenhuma presa levada em voo foi medida para conferir (D-174)"
+    }
+  ]
 }

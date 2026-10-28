@@ -233,6 +233,10 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça: a pele grossa do \"vigor ártico\" (site, \"Absorção alta\"), como o couro grosso do gigante da colina (2) ; o nível fica fora da Absorção (decisoes-autor §16). A imunidade é a da habilidade publicada (Elementos); 2, pele grossa"
+    },
+    {
+      "campo": "fisiologia.tracos",
+      "motivo": "a pele clara e o cabelo branco são leitura da ficha, pela camuflagem na neve"
     }
   ]
 }

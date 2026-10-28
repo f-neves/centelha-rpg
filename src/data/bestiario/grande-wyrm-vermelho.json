@@ -264,17 +264,10 @@
       "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 32",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +3 na Defesa Mental e nas resistências contra Artes (\"exige sucesso duplo para afetá-lo\", site)",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Vontade de wyrm",
@@ -393,20 +386,16 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "sentidos.sentidos supremos",
       "motivo": "sem regra ainda no livro"
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site dava \"Prontidão 6\"; a ficha fica no 5, o teto das Habilidades das outras fichas (o lich tem Ocultismo 5)"
+      "motivo": "A nota do site dava \"Prontidão 6\"; a ficha fica no 5, o teto das Habilidades das outras fichas (o lich tem Ocultismo 5); 5; o site dava 6 nas notas"
     },
     {
       "campo": "habilidades.ocultismo",
-      "motivo": "A nota do site dava \"Ocultismo 6\"; fica no 5, como a Prontidão"
+      "motivo": "A nota do site dava \"Ocultismo 6\"; fica no 5, como a Prontidão; 5; o site dava 6 nas notas"
     },
     {
       "campo": "corpo.altura",
@@ -431,6 +420,10 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "15d6 + Centelha, cone de 18 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197)"
     }
   ]
 }

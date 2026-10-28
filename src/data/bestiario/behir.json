@@ -229,6 +229,10 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +11 perfurante\", 7 Ticks, dano médio 21,5). A ficha fica com a mordida, Média, pelo gesto; a D-241 levou a Pesado de 2 dados só cinco planares. Dano médio: 21,5 antes; depois, mordida 14,5, sopro 8,0"
+    },
+    {
       "campo": "ataques.Sopro elétrico",
       "motivo": "poder natural com a base e os usos do site (Raio 3, a cada 24 Ticks) e números da ficha (D-197): o Relâmpago do livro dá 2d6"
     }

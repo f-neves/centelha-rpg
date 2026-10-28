@@ -43,9 +43,26 @@ const TERRENO_DO_SITE = { Cold: 'gélido', Desert: 'deserto', Forest: 'floresta'
   Sky: 'céu', Ruins: 'ruínas', Any: 'qualquer' };
 const CLIMA_DO_SITE = { Cold: 'frio', Temperate: 'temperado', Tropical: 'tropical', Extraplanar: 'extraplanar' };
 const TERRENO_SINONIMO = { frio: 'gélido', cidade: 'urbano', 'água': 'aquático', costa: 'litoral' };
+// Nomes soltos das notas de observação. Derivados apontam para suas entradas, nunca para número gravado.
+export const CAMPOS_NOTAS = {
+  ataque: 'ataques', ataques: 'ataques', equipamento: 'equipamento', tamanho: 'corpo.area', segundotamanho: 'corpo.area',
+  'segundo-tamanho': 'corpo.area', couracanivel: 'couraca', pv: ['corpo', 'atributos.vigor'], pesoerguido: ['corpo', 'atributos.forca'],
+  virtudes: 'virtudes', compaixao: 'virtudes.compaixao', conviccao: 'virtudes.conviccao', temperanca: 'virtudes.temperanca', bravura: 'virtudes.bravura',
+  formas: 'formas', artes: 'artes', centelha: 'centelha', elementos: 'elementos', elemento: 'elementos', imunidades: 'elementos.imunidades',
+  resistencia: 'elementos.resistencias', 'fraqueza-a-frio': 'elementos.fraquezas', corpo: 'corpo', medidas: 'corpo', profundidade: 'corpo.profundidade',
+  referencia: 'corpo', escala: 'corpo', tracos: 'fisiologia.tracos', deslocamento: 'deslocamento', velocidade: 'deslocamento',
+  voo: 'deslocamento', natacao: 'deslocamento', escalada: 'habilidadesSec.escalada', carga: 'aptidoes.carga',
+  armas: 'equipamento.arsenal', escudo: 'equipamento.arsenal', chicote: 'ataques', sopro: 'ataques', asas: 'corpo', alcance: 'ataques', 'dano-medio': 'ataques',
+  veneno: 'habilidadesEspeciais', 'veneno-das-serpentes': 'habilidadesEspeciais', dreno: 'habilidadesEspeciais', fedor: 'habilidadesEspeciais',
+  'pele-curtida': 'couraca', 'pele-curtida-maior': 'couraca', 'pele-resistente': 'couraca', 'pele-ao-vento': 'habilidadesEspeciais',
+  'pele-curtida-e-mente-imune': ['couraca', 'fisiologia'], 'firme-como-pedra': 'habilidadesEspeciais', 'magias-de-cura-e-fogo': 'habilidadesEspeciais',
+  poderes: 'habilidadesEspeciais', 'armadura-de-correntes': 'couraca', constricao: 'habilidadesEspeciais', 'protecao-3': 'couraca',
+  'corpo-semi-etereo': 'habilidadesEspeciais', 'casco-firme': 'couraca', podridao: 'habilidadesEspeciais', 'febre-do-lixo': 'habilidadesEspeciais',
+  tech: 'habilidadesEspeciais', grito: 'habilidadesEspeciais', convocar: 'habilidadesEspeciais',
+};
 // as regras do livro que a linha "livro:" nomeia e que o card escreve (D-221); a primeira palavra da linha
 const REGRAS_LIVRO = [[/^a Rajada\b/, 'rajada'], [/^(o )?Agarr(ar|ão)\b/i, 'agarrar'], [/^Investida\b/, 'investida'],
-  [/^Derrubar\b/, 'derrubar'], [/^Empurrar\b/, 'empurrar'], [/^a empunhadura dupla\b/, 'empunhadura-dupla'], [/^a Regra de Horda\b/, 'horda']];
+  [/^Furtividade\b/, 'furtividade'], [/^Derrubar\b/, 'derrubar'], [/^Empurrar\b/, 'empurrar'], [/^a empunhadura dupla\b/, 'empunhadura-dupla'], [/^a Regra de Horda\b/, 'horda']];
 // o texto de trabalho que não vai ao texto de jogo (manual 7.5; PERGUNTAS.md, pergunta 1, 26/10/2026)
 const TRABALHO = /\(site\)|autor decid\w*|\b[CD]-\d{2,4}\b/;
 const CAMPOS_HE = [['Ativação', 'ativacao'], ['Duração', 'duracao'], ['Alcance', 'alcance'], ['Área', 'area'], ['Efeito', 'efeito'],
@@ -117,7 +134,7 @@ export function converterFicha(texto, { site = null } = {}) {
   const anat = `${campo(I, 'Anatomia') || ''} ${corpo.postura}`;
   corpo.apoio = /quadrúpede|quatro patas/i.test(anat) ? 'quadrupede' : /bípede|de pé|duas pernas/i.test(anat) ? 'bipede' : undefined;
   if (!corpo.apoio) {
-    if (/serpente|sem pernas|sem patas|cobra|verme|limo|enxame|tentáculo|nada|voa|flutua|asas|peixe|incorpóreo|nuvem|redemoinho|hexápode|seis patas|oito patas|aracnídeo|inseto|caranguejo|crustáceo/i.test(anat)) corpo.apoio = 'outro';
+    if (/serpente|sem pernas|sem patas|cobra|verme|limo|enxame|tentáculo|nada|voa|flutua|asas|peixe|incorpóreo|nuvem|redemoinho|pairando|sem membros|seis pernas|vegetal ramificado|hexápode|seis patas|oito patas|aracnídeo|inseto|caranguejo|crustáceo/i.test(anat)) corpo.apoio = 'outro';
     else para(`apoio: a Anatomia e a Postura não dizem bípede nem quadrúpede ("${anat.trim().slice(0, 80)}")`);
   }
   corpo.altura = metros(campo(C, 'Altura'));
@@ -398,7 +415,7 @@ export function converterFicha(texto, { site = null } = {}) {
       const detalhe = semRajada !== t ? semRajada.trim() : r ? t.replace(r[0], '').replace(/^[\s,;:.]+/, '').trim() : t;
       const copiada = he.tecnica && TECNICAS_DADOS.find((x) => x.id === he.tecnica.id);
       const normal = (x) => jogo(String(x)).toLowerCase().replace(/[^a-zà-ú0-9]+/g, ' ').trim();
-      if (/\b(Elementos|Furtividade)\b/i.test(detalhe) || /(?:jogada|dano médio|Defesa (?:Social|Mental)|Esquiva|Bloqueio)\s*[:+]?\s*[+−-]?\d/i.test(detalhe))
+      if (/\bElementos\b/i.test(detalhe) || /\bFurtividade\s*[:+]?\s*\d/i.test(t) || /(?:jogada|dano médio|Defesa (?:Social|Mental)|Esquiva|Bloqueio)\s*[:+]?\s*[+−-]?\d/i.test(detalhe))
         para('Manobras, ' + nome + ': P7, texto repete outra parte da ficha ou número calculado; espera lote de ajuste');
       else if (copiada && normal(detalhe) && normal(copiada.texto).includes(normal(detalhe)))
         para('Manobras, ' + nome + ': P7, texto copia o efeito da Técnica; espera lote de ajuste');
@@ -496,6 +513,7 @@ export function converterFicha(texto, { site = null } = {}) {
         const at = t.match(/^(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura) (\d+)$/);
         if (at) { fa[idAtributo(at[1])] = Number(at[2]); continue; }
         if (/^PV \d+$/.test(t)) { pvForma = inteiro(t); continue; }
+        if (/^(Bloqueio|Musculatura) \d+$/.test(t)) { para('Variantes, ' + nomeF + ': ' + t + ' altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1'); continue; }
         const m = t.match(/^([^:]+):\s*(.*)$/) || t.match(/^(Couraça) nível (\d+)$/) || t.match(/^(Aparência) (\d+)$/);
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
         const [k, v] = [m[1].trim(), m[2].trim()];
@@ -521,14 +539,16 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Artes') f.artes = lerArtes(v, `Variantes, ${nomeF}`, true);
         else if (k === 'Aptidões') f.aptidoes = lerApt(v, `Variantes, ${nomeF}`);
         else if (k === 'Elementos') f._elementos = lerElem(v, `Variantes, ${nomeF}`);
-        else if (k === 'Deslocamento') { const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
+        else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = { batalha: 0, arranque: 0, corrida: 0 }; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
         else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
-        else if (k === 'Voo' || k === 'Nado') {
+        else if (k === 'Voo' || k === 'Nado' || k === 'Escalada') {
           const q = v.match(/Batalha \**(\d+(?:[.,]\d+)?)\**/) || v.match(/^(\d+(?:[.,]\d+)?)(?=\s|$)/);
-          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : 'nado'] = { batalha: numeroPasso(q[1]) };
-          else if (!/^não (voa|nada)/.test(v)) para(`Variantes, ${nomeF}: ${k} ilegível`);
+          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : 'escalada'] = { batalha: numeroPasso(q[1]) };
+          else if (/^não (voa|nada|escala)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : 'escalada'] = { batalha: 0 };
+          else para(`Variantes, ${nomeF}: ${k} ilegível`);
         }
+        else if (k === 'Peso erguido' && /^não ergue/.test(v)) fc.naoErgue = true;
         else if (k === 'PV') pvForma = inteiro(v);
         else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto', 'Mente', 'Respiração'].includes(k)) { /* conta do motor, ou texto que não é número */ }
         else para(`Variantes, ${nomeF}: campo "${k}" que o conversor não conhece`);
@@ -631,15 +651,19 @@ export function converterFicha(texto, { site = null } = {}) {
     const m = l.match(/^- ((?:`[^`]+`(?:,\s*|\s+e\s+)?)+):\s*(.*)$/);
     if (!m) continue;
     for (const nm of [...m[1].matchAll(/`([^`]+)`/g)].map((x) => x[1])) {
-      const s = slug(nm), aid = idAtributo(nm.charAt(0).toUpperCase() + nm.slice(1)) ?? ({ forca: 'forca' }[s]);
+      const s = slug(nm), aid = (Object.hasOwn(c.atributos, s) ? s : undefined) ?? idAtributo(nm.charAt(0).toUpperCase() + nm.slice(1)) ?? ({ forca: 'forca' }[s]);
       const fo = (c.formas || []).find((f) => slug(f.nome) === s || f.id === s);
       const atq = c.ataques.find((a) => slug(a.nome) === s);
       if (!atq && !marcada) continue;
       const he = c.habilidadesEspeciais.find((h) => slug(h.nome) === s);
       const se = c.sentidos.find((x) => slug(x.nome) === s);
-      const cp = NOTA[s] ?? (aid ? `atributos.${aid}` : fo ? `formas.${fo.id}` : atq ? `ataques.${atq.nome}` : he ? `habilidadesEspeciais.${he.nome}` : se ? `sentidos.${se.nome}` : null);
-      if (cp) revisao.push({ campo: cp, motivo: semMarcas(m[2]).replace(/\*\*/g, '') });
-      else avisos.push(`Notas de observação: "${nm}" não nomeia um campo do formato; a nota não entra na revisao`);
+      const h = idHabilidade(nm.charAt(0).toUpperCase() + nm.slice(1));
+      const habilidad = h ? (Object.hasOwn(c.habilidades, h.id) ? 'habilidades.' + h.id : Object.hasOwn(c.habilidadesSec, h.id) ? 'habilidadesSec.' + h.id : null) : null;
+      const especial = SO_DE_CRIATURA.has(s) && Object.hasOwn(c.habilidadesSec, s) ? 'habilidadesSec.' + s : null;
+      const cp = NOTA[s] ?? (aid ? 'atributos.' + aid : fo ? 'formas.' + fo.id : atq ? 'ataques.' + atq.nome : he ? 'habilidadesEspeciais.' + he.nome : se ? 'sentidos.' + se.nome : habilidad ?? especial ?? CAMPOS_NOTAS[s]);
+      const campos = (Array.isArray(cp) ? cp : cp ? [cp] : []).filter(campo => aponta(c, campo));
+      if (campos.length) for (const campo of campos) revisao.push({ campo, motivo: semMarcas(m[2]).replace(/\*\*/g, '') });
+      else avisos.push('Notas de observação: "' + nm + '" não nomeia um campo do formato; a nota não entra na revisao');
     }
   }
   // uma entrada por campo; duas dúvidas no mesmo campo vão no mesmo motivo

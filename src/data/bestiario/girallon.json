@@ -231,6 +231,10 @@
     {
       "campo": "ataques.Garras",
       "motivo": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava \"Quatro garras e mordida\" (`inimigos.json`: \"2d6 +7 corte\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto: garras Médias, até três pela Rajada, e mordida. Dano médio: 14 antes; depois, 12,5 por garra (até três por ação) e 12,5 na mordida"
     }
   ]
 }

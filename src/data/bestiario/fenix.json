@@ -243,10 +243,10 @@
       "efeito": "se morre, renasce das próprias cinzas, curada, uma vez por ano; cada renascimento custa parte da força vital"
     },
     {
-      "nome": "resistência à magia",
+      "nome": "Resistência à magia 26",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "resiste bem à maioria das magias"
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     }
   ],
   "comoLuta": [
@@ -362,6 +362,14 @@
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "Bico em gancho com o pescoço atrás: Média, como o bico do grifo; bico grande em N1 . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +17 perfurante\", 7 Ticks, dano médio 27,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 27,5 antes; depois, garras 18,5, bico 20,5, garras em mergulho 35,0 (só descendo), cada um com mais 1d6 de fogo pelo Manto de chamas"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o site diz \"comanda paredes e tempestades de fogo à vontade\"; a ficha as faz poderes naturais (Fogo 4, Fogo 5 e Cura 5) com números e limites da ficha (D-197), uma vez a cada 24 Ticks ou por cena, e não à vontade"
     }
   ]
 }

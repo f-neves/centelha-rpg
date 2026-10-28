@@ -219,6 +219,10 @@
     {
       "campo": "corpo.volume",
       "motivo": "sem massa; o volume do núcleo (o corpo de base escalado a 1,2 m, 0,0234 m³) entra no PV e na faixa como 23,6 kg, e a área é a do núcleo. O redemoinho inteiro, um cilindro de 1,2 m de diâmetro e 1,2 m de altura, daria 1,36 m³ e uma silhueta de mais de 0,7 m², Médio, contra o Pequeno do site. Pergunta ao autor no lote 25"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "sem massa; o volume do núcleo (o corpo de base escalado a 1,2 m, 0,0234 m³) entra no PV e na faixa como 23,6 kg, e a área é a do núcleo. O redemoinho inteiro, um cilindro de 1,2 m de diâmetro e 1,2 m de altura, daria 1,36 m³ e uma silhueta de mais de 0,7 m², Médio, contra o Pequeno do site. Pergunta ao autor no lote 25"
     }
   ]
 }

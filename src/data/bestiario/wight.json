@@ -230,7 +230,7 @@
     },
     {
       "campo": "habilidadesSec.intimidacao",
-      "motivo": "Comanda os servos pelo medo (site)"
+      "motivo": "Comanda os servos pelo medo (site); 1, o comando dos servos"
     },
     {
       "campo": "habilidadesSec.musculatura",
@@ -243,6 +243,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (morto que foge da luz)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe\" de impacto do site virou Garras Médias de Corte"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "tira PV máximo, como a habilidade do site; o espectro do lote 2 tira jogadas, e as duas fichas seguem o que o site dizia de cada uma"
     }
   ]
 }

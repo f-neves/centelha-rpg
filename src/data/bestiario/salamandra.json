@@ -251,7 +251,7 @@
     },
     {
       "campo": "habilidades.armas",
-      "motivo": "O site gravava `briga` 5 para o golpe de arma; no livro a arma branca é Armas (manual 3.5), como no janni. A nota do site dizia \"Armas 2\"; com 2, a jogada publicada do golpe cairia"
+      "motivo": "O site gravava `briga` 5 para o golpe de arma; no livro a arma branca é Armas (manual 3.5), como no janni. A nota do site dizia \"Armas 2\"; com 2, a jogada publicada do golpe cairia; 5, o `briga` do golpe de arma do site; a nota dizia \"Armas 2\""
     },
     {
       "campo": "habilidades.briga",
@@ -276,6 +276,18 @@
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "a lança do livro"
+    },
+    {
+      "campo": "elementos",
+      "motivo": "imunidade a fogo e fraqueza a gelo, pelas habilidades do site"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "1; o site tinha 2"
     }
   ]
 }

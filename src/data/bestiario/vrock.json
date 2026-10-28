@@ -323,11 +323,11 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2"
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: penas duras e pele grossa de ave grande . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: penas duras e pele grossa de ave grande . O nível fica fora da Absorção (decisoes-autor §16); 2"
     },
     {
       "campo": "ataques.Bico.nivelPerfuracao",
@@ -336,6 +336,22 @@
     {
       "campo": "corpo.massa",
       "motivo": "230 kg, na zona de transição; robusto, fica na linha de 220 kg a 1,8 t (66 PV), e não na de baixo (52)"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "230 kg, na zona de transição; robusto, fica na linha de 220 kg a 1,8 t (66 PV), e não na de baixo (52)"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "230 kg, na zona de transição; robusto, fica na linha de 220 kg a 1,8 t (66 PV), e não na de baixo (52)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e bico Médios"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "números da ficha (D-197); números da ficha (D-197)"
     }
   ]
 }

@@ -220,7 +220,7 @@
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "Apara com as duas lâminas"
+      "motivo": "Apara com as duas lâminas; 2; o site não gravava Bloqueio"
     },
     {
       "campo": "comportamento.social",
@@ -229,6 +229,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
   ]
 }

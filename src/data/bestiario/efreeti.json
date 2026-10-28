@@ -296,6 +296,18 @@
     {
       "campo": "comportamento.dieta",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "3, a da nota do site; o campo dizia 2 (o precedente do wyvern)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "0, corpo leve de fogo e carne, como o djinn; com Musculatura 2 o peso erguido seria maior, sem fato no site que o peça"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira o Punho em brasa Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
     }
   ]
 }

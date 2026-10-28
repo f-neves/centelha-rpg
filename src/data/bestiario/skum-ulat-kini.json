@@ -252,6 +252,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "lança no lugar do tridente"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1 e Convicção 2; o site tinha 2 e 3"
     }
   ]
 }

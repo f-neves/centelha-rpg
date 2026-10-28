@@ -314,6 +314,22 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "corpo",
+      "motivo": "17 antes, 6 depois. O site dava 17 (`inimigos.json`); a tabela de PV pela massa dá 5 + 2 ÷ 2 = 6. A massa (3,5 kg) está na zona de transição (3 a 5 kg) e a faixa de cima daria 12; fica a de baixo, porque o corpo de 3,5 kg não é robusto"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "17 antes, 6 depois. O site dava 17 (`inimigos.json`); a tabela de PV pela massa dá 5 + 2 ÷ 2 = 6. A massa (3,5 kg) está na zona de transição (3 a 5 kg) e a faixa de cima daria 12; fica a de baixo, porque o corpo de 3,5 kg não é robusto"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "7,5 antes, 5,5 depois nas Garras. O site dava \"1d6 +4 corte\" (`inimigos.json`), 1 dado; as Garras Leves dão 1d6 − 2 + 2 + 2 = 5,5; o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e mordida Leves, o gesto rápido de bicho pequeno, como os 5 Ticks do site"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "sem id no catálogo; os números são provisórios, abaixo da peçonha da aranha gigante (Potência 18)"
     }
   ]
 }

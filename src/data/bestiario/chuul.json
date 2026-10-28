@@ -263,7 +263,7 @@
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "As pinças de carapaça aparam (D-100)"
+      "motivo": "As pinças de carapaça aparam (D-100); 2, pelas pinças; o site não gravava Bloqueio"
     },
     {
       "campo": "corpo.altura",
@@ -284,6 +284,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Pinça Média e Mandíbulas Leve no lugar das \"Garras e presas\""
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "curare do livro, pelo toque"
     }
   ]
 }

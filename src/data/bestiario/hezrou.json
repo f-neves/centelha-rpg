@@ -287,11 +287,19 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: couro grosso e verrugoso de sapo gigante, como o rinoceronte (3 a 4); o nível fica fora da Absorção (decisoes-autor §16). As resistências são o \"sangue abissal\" da ficha publicada, pela regra do livro (Elementos); o ácido entrou no vocabulário dos elementos, com a resistência pela metade (C-039, decisão do autor desta rodada)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: couro grosso e verrugoso de sapo gigante, como o rinoceronte (3 a 4); o nível fica fora da Absorção (decisoes-autor §16). As resistências são o \"sangue abissal\" da ficha publicada, pela regra do livro (Elementos); o ácido entrou no vocabulário dos elementos, com a resistência pela metade (C-039, decisão do autor desta rodada); 4, como o rinoceronte; a pele de demônio não tem referência na escala"
     },
     {
       "campo": "comportamento.social",
       "motivo": "site (Sociedade)  no número"
+    },
+    {
+      "campo": "centelha",
+      "motivo": "5, a publicada; o texto põe o hezrou como músculo, abaixo de quem comanda. Se o autor rever, a Centelha mexe em todo o dano, nas Defesas e na Absorção"
+    },
+    {
+      "campo": "artes",
+      "motivo": "o site tinha `arte: vento 2, espirito 4` e um poder natural \"fedor nauseante\" com base Vento 2. Pela C-037 a Arte com Mana é só da lista de conjuradores (dragões, Lich, Couatl, Ninfa, Planetar, Solar, Ghaele, Rakshasa, Naga); o resto vira poder natural, \"com base e nível mantidos como parâmetro\". A ficha não tem Mana e guarda Vento 2 (fedor) e Espírito 4 (convocar e teleporte, ao que parece) só como parâmetro aqui"
     },
     {
       "campo": "aparencia",

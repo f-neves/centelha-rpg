@@ -237,11 +237,11 @@
   "revisao": [
     {
       "campo": "habilidades.resistencia",
-      "motivo": "Era sem linha (0). O normal da espécie no próprio meio: resistência e fôlego \"não procurados a fundo\" na pesquisa ; vive do nível do mar a 5.638 m no Kilimanjaro (ADW), o que mostra o meio largo, sem número de frio. A arrancada não entra (diretriz 2)."
+      "motivo": "Era sem linha (0). O normal da espécie no próprio meio: resistência e fôlego \"não procurados a fundo\" na pesquisa ; vive do nível do mar a 5.638 m no Kilimanjaro (ADW), o que mostra o meio largo, sem número de frio. A arrancada não entra (diretriz 2).; 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 , o normal da espécie; a pesquisa não procurou resistência a fundo (D-174)"
     },
     {
       "campo": "habilidadesSec.equilibrio",
-      "motivo": "Era sem linha. Anda no galho e se joga dele sobre a presa (Blanco e Luzardo-Vera 2021); guarda a presa no alto da árvore (Balme et al. 2017). Sem número de equilíbrio ."
+      "motivo": "Era sem linha. Anda no galho e se joga dele sobre a presa (Blanco e Luzardo-Vera 2021); guarda a presa no alto da árvore (Balme et al. 2017). Sem número de equilíbrio .; 2, novas,  do hábito de árvore; nenhum número de equilíbrio (D-174)"
     },
     {
       "campo": "corpo.altura",
@@ -262,6 +262,10 @@
     {
       "campo": "atributos.forca",
       "motivo": "5  por comparação, decisão do autor (D-178). O içar (a girafa jovem de quase 125 kg a 5,7 m, Hamilton 1976, lida só pela citação da Wikipédia; de 40% a 140% da própria massa em Sabi Sand, Balme et al. 2017) fica como contexto e não como base do número (D-159, D-118)"
+    },
+    {
+      "campo": "habilidadesSec.escalada",
+      "motivo": "2, novas,  do hábito de árvore; nenhum número de equilíbrio (D-174)"
     }
   ]
 }

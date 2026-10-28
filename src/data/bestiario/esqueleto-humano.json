@@ -219,6 +219,14 @@
     {
       "campo": "comportamento.social",
       "motivo": "site (guarda criptas)"
+    },
+    {
+      "campo": "centelha",
+      "motivo": "1, como o zumbi (morto-vivo é sobrenatural); o site tinha 0. Se o autor quiser o esqueleto sem Centelha, o dano e a Absorção perdem 1, e a Energia cai a 4"
+    },
+    {
+      "campo": "elementos",
+      "motivo": "a fraqueza a Impacto sai da habilidade \"ossos frágeis a impacto\" do site"
     }
   ]
 }

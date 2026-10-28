@@ -1,101 +1,169 @@
 {
-  "ordem": 70,
   "id": "treant",
   "idAntigo": "mon-treant",
   "nome": "Treant",
   "nomeIngles": "Treant",
-  "categoria": "Planta",
+  "categoria": "planta",
   "papel": "chefe",
-  "conceito": "planta Enorme",
-  "descricao": "Vegetal desperto, lento e implacável.",
-  "tags": [
-    "planta",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/treant_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "7,5 m de altura",
-    "peso": "2 t"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 5,
   "centelha": 3,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé",
+    "apoio": "bipede",
+    "altura": 7.5,
+    "largura": 2.5,
+    "profundidade": 1,
+    "comprimento": 2.5,
+    "massa": 2000,
+    "area": 8.5,
+    "posturaDoTamanho": "de pé"
+  },
+  "couraca": 5,
+  "atributos": {
     "forca": 11,
     "destreza": 2,
     "vigor": 8,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 4,
     "percepcao": 5,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 0,
     "prontidao": 2,
-    "integridade": 4
+    "integridade": 4,
+    "sobrevivencia": 3,
+    "sociabilidade": 2,
+    "persuasao": 2,
+    "empatia": 2,
+    "furtividade": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 0,
     "conviccao": 2,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 8,
+  "vontade": 8,
   "aparencia": 3,
-  "tech": {
-    "pele-de-pedra": true
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Pancada",
+      "parte": "ramo-ou-membro-natural",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "fogo"
-  ],
-  "resistencias": [
-    "impacto",
-    "perfuracao"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Animar árvores",
-      "descricao": "transforma árvores próximas em aliados temporários que lutam ao seu lado"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vida",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "uma cena",
+      "alcance": "18 m",
+      "area": "até duas árvores próximas",
+      "efeito": "desperta até duas árvores, que lutam com a Pancada e os valores desta criatura; elas não animam outras árvores e voltam a enraizar ao fim do efeito",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     },
     {
       "nome": "Casca reforçada",
-      "descricao": "Absorção alta contra golpes físicos"
-    },
-    {
-      "nome": "Braços longos",
-      "descricao": "alcance de 3m no ataque corpo a corpo; dano alto"
-    },
-    {
-      "nome": "Vulnerável ao fogo",
-      "descricao": "sofre dano adicional de ataques flamejantes"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a casca protege contra golpes; sua proteção adicional depende de como o golpe atravessa a madeira"
     },
     {
       "nome": "Guardião da floresta",
-      "descricao": "Persuasão 2 e Sobrevivência 3; negocia com plantas e animais"
-    },
-    {
-      "nome": "Confunde-se com a mata",
-      "descricao": "parece árvore comum quando imóvel, dificultando ser notado"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "conversa com plantas e compreende o estado da mata"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Braços longos",
+      "formas": "todas",
+      "texto": "alcança até 3 m com os galhos."
+    },
+    {
+      "nome": "Defesa das árvores",
+      "formas": "todas",
+      "texto": "parece árvore comum enquanto imóvel; golpeia quem corta ou queima a floresta."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "percebe movimentos sob luz fraca",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "trocas gasosas pela superfície",
+    "prendeRespiracao": "sem dado",
+    "camuflagem": "parece vegetação imóvel",
+    "mente": "inteligente",
+    "tracos": "Árvore desperta com braços de galhos e raízes móveis"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "água e nutrientes do solo",
+    "caca": "não se aplica",
+    "dianteDeGente": "protege o bosque"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Árvore desperta com braços de galhos e raízes móveis",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -114,65 +182,56 @@
       "texto": "Em Syl é reverenciado quase como um kami de carne e casca, guardião físico do que os espíritos protegem de forma sutil; sua ligação antiga com os elfos, povo nascido do véu feérico, faz dele um dos poucos seres que ainda lembra o mundo antes da Queda e da Supressão."
     }
   ],
-  "ecologia": {
-    "tipo": "Plant",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Persuasão 2, Sobrevivência 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Treant",
-    "cr": "8",
-    "tipo": "planta Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 29,
-      "des": 8,
-      "con": 21,
-      "int": 12,
-      "sab": 16,
-      "car": 13
-    },
-    "pericias": [
-      "Persuasão 2",
-      "Sobrevivência 3"
-    ],
-    "nota": "Animar árvores (Su): Centelha 2.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "proezaFutura": [
-    {
-      "caminho": "pele-de-pedra"
-    }
+  "imagens": [
+    "bestiario/treant_criatura.webp"
   ],
-  "poderes": [
-    {
-      "id": "animar-arvores",
-      "nome": "Animar árvores",
-      "tipo": "natural",
-      "base": {
-        "arte": "vida",
-        "nivel": 3
-      },
-      "resiste": "nenhum",
-      "efeito": "desperta uma ou duas árvores próximas para lutarem ao seu lado por uma cena, poucas vezes por dia",
-      "descricao": "O treant acorda uma ou duas árvores da floresta ao redor, que arrancam as raízes do chão e lutam como ele por uma cena, voltando a dormir depois.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
       }
+    ],
+    "resistencias": [
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
+  },
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Animar árvores",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Fibras móveis capazes de prender e deslocar presas"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "Dimensão principal publicada; largura e profundidade estimadas pelo corpo"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Dimensão principal publicada; largura e profundidade estimadas pelo corpo"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Dimensão principal publicada; largura e profundidade estimadas pelo corpo"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Silhueta útil estimada em 8,5 m², descontando vazios entre os ramos; o retângulo externo não é todo preenchido"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
     }
   ]
 }

@@ -205,6 +205,10 @@
     {
       "campo": "habilidadesEspeciais.Golpe certeiro",
       "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "sabre do livro"
     }
   ]
 }

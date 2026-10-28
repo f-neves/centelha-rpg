@@ -224,7 +224,11 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro: Vigor + Centelha contra Impacto, só a Centelha contra Corte e Perfuração (`combate.md`). Couraça: granito maciço, mais duro que qualquer carapaça da escala (anquilossauro 7 a 8); os níveis 9 a 12 ficam \"sem referência até entrarem\" (tamanho-decisoes-5, item 2). O nível fica fora da Absorção (decisoes-autor §16). As resistências são regra do livro (Elementos)"
+      "motivo": "Absorção natural do livro: Vigor + Centelha contra Impacto, só a Centelha contra Corte e Perfuração (`combate.md`). Couraça: granito maciço, mais duro que qualquer carapaça da escala (anquilossauro 7 a 8); os níveis 9 a 12 ficam \"sem referência até entrarem\" (tamanho-decisoes-5, item 2). O nível fica fora da Absorção (decisoes-autor §16). As resistências são regra do livro (Elementos); 9, o primeiro nível sem referência na escala. O autor ainda não deu exemplo de criatura sobrenatural na escala"
+    },
+    {
+      "campo": "centelha",
+      "motivo": "3, a publicada. O manual não diz como medir a Centelha de um construto (a magia é do criador, e não dele)"
     }
   ]
 }

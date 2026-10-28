@@ -194,6 +194,10 @@
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "o arco longo do livro no lugar do \"Arco\" de 2 dados e 6 Ticks; com o arco curto, Velocidade 6, Acerto +2 e dano 1d6 − 2 + Força"
     }
   ]
 }

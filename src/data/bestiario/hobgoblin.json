@@ -181,11 +181,11 @@
     },
     {
       "campo": "habilidades.armas",
-      "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). Soldado de linha"
+      "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). Soldado de linha; 3 e 2; o site tinha só Briga 1"
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "Apara com a espada, como soldado treinado em formação"
+      "motivo": "Apara com a espada, como soldado treinado em formação; 3 e 2; o site tinha só Briga 1"
     },
     {
       "campo": "comportamento.social",
@@ -198,6 +198,14 @@
     {
       "campo": "comportamento.caca",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada longa do livro, sem armadura"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
   ]
 }

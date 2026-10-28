@@ -253,6 +253,10 @@
     {
       "campo": "habilidadesEspeciais.Luz do dia",
       "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada longa do livro"
     }
   ]
 }

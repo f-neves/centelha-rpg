@@ -171,17 +171,10 @@
       "limiteDeUso": "três vezes por cena, somados"
     },
     {
-      "nome": "Resistência mágica",
+      "nome": "Resistência à magia 17",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     }
   ],
   "comoLuta": [
@@ -315,10 +308,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência mágica",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.armas",
       "motivo": "A lâmina da forma élfica (o site gravava tudo em `briga`)"
     },
@@ -341,6 +330,18 @@
     {
       "campo": "formas.elfica",
       "motivo": "O corpo élfico do site: luta com a lâmina e anda; voa e corta com o vento só na forma de vento"
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma de vento principal e forma élfica (D-201)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "resistência a Corte, Perfuração e Impacto"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "2; o site tinha 3"
     },
     {
       "campo": "ataques.Rajada cortante",

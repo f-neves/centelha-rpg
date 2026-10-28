@@ -70,6 +70,7 @@ const REVISAO = {
     'formas.lobo.aparencia': 'só no exemplo: a mesma nota desdobrada',
   },
   'dragao-branco-jovem': {
+    ataques: 'só no conversor: tabela de nomes soltos de 28/10 traduz a nota ataque para a lista de ataques, mantendo o texto da ficha',
     'ataques.Sopro de frio.dado': 'só no exemplo: a ficha não marca o dado do sopro; o exemplo tirou da Justificativa ("sugestão da ficha")',
     'habilidadesEspeciais.Multiataque': 'só no exemplo: a nota de trabalho do Multiataque vai às Notas de observação no lote de ajuste da pergunta 1 (AJUSTE)',
   },
@@ -166,6 +167,8 @@ if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || ap
   const h = a.criatura.habilidadesEspeciais.find((h) => h.nome === 'teste P7');
   if (h?.regra !== 'agarrar' || h?.texto !== 'segura a presa no chão com o pé') falhas.push('P7: complemento próprio perdido ou referência repetida');
   if (linha('Agarrar.').criatura.habilidadesEspeciais.find((h) => h.nome === 'teste P7')?.texto !== undefined) falhas.push('P7: nome da regra repetido no texto');
+  const referencia = linha('Furtividade; parado entre espantalhos comuns, disfarça sua natureza');
+  if (referencia.paradas.length || referencia.criatura.habilidadesEspeciais.find(h=>h.nome==='teste P7')?.regra !== 'furtividade') falhas.push('P7: referência sem número à Furtividade recusada');
   if (!linha('Furtividade 12.').paradas.some((p) => p.includes('P7'))) falhas.push('P7: resumo de Habilidade calculada passou');
   if (!linha('Esquiva 14.').paradas.some((p) => p.includes('P7'))) falhas.push('P7: Defesa calculada passou');
   if (!linha('a Rajada. Dois golpes, o segundo a −1d6.').paradas.some(p=>p.includes('P7'))) falhas.push('P7: cópia da penalidade da Rajada passou');
@@ -198,6 +201,29 @@ for (const [celula, esperado] of [['sim, +1',1], ['sim, Defesa +2',2], ['sim (+1
   }).join('\n');
   const r = converterFicha(texto, {site:SITE});
   if (r.paradas.length || r.criatura.ataques.find(a=>a.nome==='Mordida')?.bloqueiaComoArma !== esperado) falhas.push('bloqueio da célula não preservado: '+celula);
+}
+
+// Nomes soltos das notas viram caminhos existentes, sem alterar a ficha de entrada.
+{
+  const nomes = ['ataque', 'equipamento', 'tamanho', 'pv', 'couracaNivel', 'raciocinio', 'temperanca'];
+  for (const nome of nomes) {
+    const texto = LOBO.replace('## Notas de observação', '## Notas de observação\n\n- `' + nome + '`: teste de tradução a conferir');
+    const r = converterFicha(texto, { site: SITE });
+    if (r.paradas.length || r.avisos.some(a=>a.includes('"' + nome + '"')) || !r.criatura.revisao.some(x=>x.motivo.includes('teste de tradução') && aponta(r.criatura,x.campo))) falhas.push('nota não traduzida: ' + nome);
+  }
+  const texto = LOBO.replace('## Notas de observação', '## Notas de observação\n\n- `campo-inexistente-teste`: teste a conferir');
+  if (!converterFicha(texto, { site: SITE }).avisos.some(a=>a.includes('campo-inexistente-teste'))) falhas.push('nota desconhecida sumiu sem aviso');
+}
+
+// Anatomias do lote final usam o apoio outro já aprovado, sem criar anatomia nova.
+for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis pernas', 'vegetal ramificado']) {
+  const texto = LOBO.replace(/^(\| Anatomia \| )[^|]*/m, '$1' + anatomia + ' ').replace(/^(\| Postura \| )[^|]*/m, '$1pairando ');
+  const r = converterFicha(texto, { site: SITE });
+  if (r.paradas.length || r.criatura.corpo.apoio !== 'outro') falhas.push('apoio outro recusado: ' + anatomia);
+}
+{
+  const r = converterFicha(LOBO.replace('Deslocamento: o do lobo do molde (7 · 10 · 16)', 'Deslocamento em terra: Batalha 7, Arranque 10, Corrida 16'), { site: SITE });
+  if (r.paradas.length || r.criatura.formas.find(f=>f.id==='lobo')?.deslocamento?.terra?.corrida !== 16) falhas.push('deslocamento de Variante por marchas recusado');
 }
 
 if (falhas.length) {

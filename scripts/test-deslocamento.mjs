@@ -86,11 +86,12 @@ ok(Math.round(3 * frac) === 2, `baixa estatura sobre 3 deu ${Math.round(3 * frac
 // 20 ft com 2. Procuramos um exemplar real de cada, para a prova não virar
 // aritmética sobre si mesma.
 const de = (ft) => Object.entries(DESL).find(([, v]) => v.ft === ft && v.origem !== 'ficha'); // a ficha v3 não passa pela régua dos pés
-const trinta = de(30), vinte = de(20);
+const trinta = de(30);
+// Os últimos exemplares de 20 ft já têm deslocamento escrito nas 324 fichas; não há semente de 20 ft para conferir.
 ok(trinta && trinta[1].batalha === 3, `30 ft deveria dar batalha 3, veio ${trinta?.[1].batalha}`);
 ok(trinta && trinta[1].arranque === 5 && trinta[1].corrida === 7,
   `30 ft deveria dar 3 · 5 · 7 (o soldado), veio ${trinta && [trinta[1].batalha, trinta[1].arranque, trinta[1].corrida].join(' · ')}`);
-ok(vinte && vinte[1].batalha === 2, `20 ft deveria dar batalha 2, veio ${vinte?.[1].batalha}`);
+ok(!de(20), 'nenhuma criatura remanescente usa a semente de 20 ft');
 
 // -------------------------------------------------- o número em pés é plausível
 for (const [id, v] of Object.entries(DESL)) {

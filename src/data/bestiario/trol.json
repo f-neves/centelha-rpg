@@ -268,6 +268,10 @@
     {
       "campo": "ataques.Garras",
       "motivo": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "as Garras de 2 dados ficam Pesadas, o caminho da D-241, e a Rajada da Pesada (2) dá as \"dois ataques de garra\" do site"
     }
   ]
 }

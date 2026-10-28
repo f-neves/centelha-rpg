@@ -288,6 +288,10 @@
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "−1 de Força por toque, até um descanso completo; o \"Enfraquecido\" do site não é condição do livro"
     }
   ]
 }

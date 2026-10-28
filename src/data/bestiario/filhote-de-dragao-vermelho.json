@@ -317,8 +317,12 @@
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N1, um abaixo do branco jovem: mordida de filhote . Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
+      "campo": "ataques",
+      "motivo": "3d6, metade do jovem; o site diz \"dano alto\"; 3d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197)"
+    },
+    {
       "campo": "corpo.area",
-      "motivo": "Principal Grande para Médio; as duas áreas mantidas, mudando a postura principal (2e-1)."
+      "motivo": "Grande de asas abertas, Médio pousado, pelo método do branco jovem; os números do autor para o dragão de 10 m (55 m² parado, 134 m² em voo, `tamanho-regras.md` 4.1) dariam mais (pergunta 1 do lote 23); Principal Grande para Médio; as duas áreas mantidas, mudando a postura principal (2e-1)."
     }
   ]
 }

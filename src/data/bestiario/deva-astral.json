@@ -174,7 +174,7 @@
       "duracao": "permanente",
       "alcance": "6 m",
       "area": "esfera de 6 m em volta do deva",
-      "efeito": "os aliados dentro dela somam +2 nas Defesas contra golpe, Arte ou efeito de criatura maligna",
+      "efeito": "os aliados dentro dela somam +4 em Esquiva, Bloqueio e Defesa Mental contra golpe, Arte ou efeito de criatura maligna",
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"
@@ -319,15 +319,15 @@
     },
     {
       "campo": "habilidades.briga",
-      "motivo": "O site gravava `briga` 5 para o \"Golpe planar\", que é a maça (Armas); de mãos nuas, o anjo é guerreiro treinado, e não lutador"
+      "motivo": "O site gravava `briga` 5 para o \"Golpe planar\", que é a maça (Armas); de mãos nuas, o anjo é guerreiro treinado, e não lutador; 2 e 1; o site tinha Briga 5 e nenhum Bloqueio"
     },
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "Apara pouco: \"prefere curar e guiar a lutar\" (site). O site não gravava Bloqueio; \"até um humano sem treino pode ter 1\" (decisoes-autor §1). Com a Centelha 6, cada ponto de Bloqueio vale perto de 4 na Defesa"
+      "motivo": "Apara pouco: \"prefere curar e guiar a lutar\" (site). O site não gravava Bloqueio; \"até um humano sem treino pode ter 1\" (decisoes-autor §1). Com a Centelha 6, cada ponto de Bloqueio vale perto de 4 na Defesa; 2 e 1; o site tinha Briga 5 e nenhum Bloqueio"
     },
     {
       "campo": "corpo.area",
-      "motivo": "O corpo de frente, o do corpo de base escalado pela altura ao quadrado: 0,72 × (2,0 ÷ 1,8)² = 0,89 m²; mais as duas asas abertas: 3,6 − 0,5 = 3,1 m de asa, com 0,7 m de largura média (asa larga, de planar) = 2,17 m². Total 3,06 m²  na largura da asa"
+      "motivo": "O corpo de frente, o do corpo de base escalado pela altura ao quadrado: 0,72 × (2,0 ÷ 1,8)² = 0,89 m²; mais as duas asas abertas: 3,6 − 0,5 = 3,1 m de asa, com 0,7 m de largura média (asa larga, de planar) = 2,17 m². Total 3,06 m²  na largura da asa; Grande de asas abertas (3,06 m²), Médio de pé; a largura da asa é estimada"
     },
     {
       "campo": "comportamento.atividade",
@@ -340,6 +340,14 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma muda a aparência, a voz e o cheiro; os números ficam os do deva, e a maça e o que veste não acompanham a troca"
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma de anjo e disfarce (D-201); o disfarce é Variante que muda só a aparência, e os números são os do deva"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a maça do livro, com Armas; o site gravava \"Golpe planar\" de corte com Briga"
     }
   ]
 }

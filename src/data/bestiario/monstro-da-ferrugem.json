@@ -242,6 +242,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "1; o site tinha 2"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Antenas sem dano e Mordida Leve no lugar das \"Garras e presas\""
     }
   ]
 }

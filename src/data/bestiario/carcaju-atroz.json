@@ -230,7 +230,7 @@
     },
     {
       "campo": "habilidadesSec.escalada",
-      "motivo": "Era sem linha. O carcaju tem 2 pelas garras de grampo (Wikipédia); um corpo de 400 kg não sobe em árvore como o de 15 kg, mas as garras ainda o levam por terreno íngreme e rocha."
+      "motivo": "Era sem linha. O carcaju tem 2 pelas garras de grampo (Wikipédia); um corpo de 400 kg não sobe em árvore como o de 15 kg, mas as garras ainda o levam por terreno íngreme e rocha.; 1, nova, abaixo do carcaju (2) pelo corpo de 400 kg;"
     },
     {
       "campo": "corpo.altura",
@@ -259,6 +259,10 @@
     {
       "campo": "ataques.Mordida",
       "motivo": "Era 1d6 + 9, média 12,5. A mordida do carcaju (254 N) escalada pela área do músculo (× 3² = 9): cerca de 2.290 N , abaixo de 4.000 N: N0. Opção, não segundo golpe (D-097)."
+    },
+    {
+      "campo": "deslocamento",
+      "motivo": "congelada (decisão 23); 63 km/h, sem real para conferir"
     }
   ]
 }

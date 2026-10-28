@@ -172,17 +172,10 @@
       "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 12",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes (\"feitiços comuns lançados contra ele muitas vezes simplesmente falham\", site)",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Imune a paralisia e sono",
@@ -279,10 +272,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "As proporções do dragão branco jovem (1,3 m de cernelha em 2,3 m de corpo) escaladas pelo corpo do site (0,30 ÷ 2,3 = × 0,130)"
     },
@@ -308,7 +297,19 @@
     },
     {
       "campo": "corpo.area",
-      "motivo": "Principal Médio para Miúdo; as duas áreas mantidas, mudando a postura principal (2e-1)."
+      "motivo": "Médio de asas abertas, 3,8% acima do corte, pelo corpo, como a águia-real; Principal Médio para Miúdo; as duas áreas mantidas, mudando a postura principal (2e-1)."
+    },
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição, desce"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição, desce"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o do sono do drow"
     }
   ]
 }

@@ -267,6 +267,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande na borda de 5% (1,48 m², 2% acima do corte), pelas asas dobradas; Enorme em voo"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +12 perfurante\", 6 Ticks, dano médio 19). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 19 antes; depois, garras 13,5, duas pela Rajada"
     }
   ]
 }

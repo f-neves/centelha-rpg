@@ -280,7 +280,11 @@
     },
     {
       "campo": "corpo.area",
-      "motivo": "A área do tiranossauro (11,82 m²) escalada pelo quadrado da altura (174,8 m²) e encurtada pelo comprimento do site (27 contra 49 m: × 0,549): 96,0"
+      "motivo": "A área do tiranossauro (11,82 m²) escalada pelo quadrado da altura (174,8 m²) e encurtada pelo comprimento do site (27 contra 49 m: × 0,549): 96,0; Colossal na borda de 5% (96 m²), pela carapaça e pelos chifres"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"4d6 +26 perfurante\", 7 Ticks, dano médio 40). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 40 antes; depois, mordida 29,5, garras 29,5, cauda 49,0"
     }
   ]
 }

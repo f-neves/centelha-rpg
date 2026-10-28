@@ -197,7 +197,15 @@
   "revisao": [
     {
       "campo": "habilidades.bloqueio",
-      "motivo": "\"Vive do duelo: apara\" (site); as Técnicas Postura Fluida e Aparar são de quem apara"
+      "motivo": "\"Vive do duelo: apara\" (site); as Técnicas Postura Fluida e Aparar são de quem apara; 4; o site não gravava Bloqueio"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "a espada curta no lugar do florete do site; a estocada N1 do florete era o golpe principal, e na espada curta é o modo secundário (perda anotada no relato)"
+    },
+    {
+      "campo": "virtudes.conviccao",
+      "motivo": "4; o site tinha 3"
     }
   ]
 }

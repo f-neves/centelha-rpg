@@ -351,6 +351,18 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma (site): \"humano sedutor ou nobre elegante\". A mente e os números ficam os dele, como no disfarce do rakshasa e do marid"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira o Punho de ogro Pesado, de 2 dados (D-241), e de Impacto pelo gesto"
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201), como no rakshasa e no marid; todas as Manobras e os Sentidos em todas as formas, menos o Rosto humano (só no disfarce), o alvo grande (só na forma verdadeira) e o \"como luta\", em duas linhas. Aptidões iguais e nenhuma Arte nas duas"
+    },
+    {
+      "campo": "habilidadesSec.voo",
+      "motivo": "6, o congelado; a habilidade do site dizia 12 m"
     }
   ]
 }

@@ -148,10 +148,10 @@
       "efeito": "desliza do Plano Etéreo para o mundo num instante; a volta é lenta, deixa o corpo meio incorpóreo e difícil de acertar, e pode levar junto uma vítima indefesa"
     },
     {
-      "nome": "resistência a magia",
+      "nome": "Resistência à magia 17",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "a Arte hostil enfrenta uma resistência natural antes de fazer efeito"
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     }
   ],
   "comoLuta": [
@@ -230,7 +230,7 @@
   "revisao": [
     {
       "campo": "habilidades.armas",
-      "motivo": "\"Maestria com várias armas\" (site): as espadas curtas. O site não dava a Habilidade; leva a Briga dele"
+      "motivo": "\"Maestria com várias armas\" (site): as espadas curtas. O site não dava a Habilidade; leva a Briga dele; 5, a Briga do site levada às espadas"
     },
     {
       "campo": "habilidadesSec.estrategia",
@@ -243,6 +243,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +9 corte\", dano médio 12,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as espadas curtas do livro e as garras e a mordida Leves. Dano médio: 12,5 antes; depois, as espadas 10,5 cada, as garras 10,5, a mordida 10,5"
     }
   ]
 }

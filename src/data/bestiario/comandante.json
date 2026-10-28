@@ -243,7 +243,7 @@
     },
     {
       "campo": "habilidadesSec.estrategia",
-      "motivo": "O site tinha `tatica` 4, que não existe no livro; a secundária mais perto é Estratégia (manual 3.5, D-190)"
+      "motivo": "O site tinha `tatica` 4, que não existe no livro; a secundária mais perto é Estratégia (manual 3.5, D-190); o `tatica` do site não existe no livro (manual 3.5, D-190)"
     },
     {
       "campo": "comportamento.social",

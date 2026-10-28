@@ -418,19 +418,31 @@
     },
     {
       "campo": "habilidades.prontidao",
-      "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 4"
+      "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 4; 5 pela nota do site, e não o 4 do campo"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de diabo maior, como a do balor e do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade é a do site, pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de diabo maior, como a do balor e do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade é a do site, pela linha Elementos; 4, como o balor"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
     },
     {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site (\"calculista e paciente\"); `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
       "campo": "aparencia",
       "motivo": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +21 corte\", dano médio 28). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras, mordida e cauda ficam Médias (o golpe com o corpo atrás). Dano médio: 28 antes; depois, 24,5"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "sem id no catálogo; os números são provisórios"
     }
   ]
 }

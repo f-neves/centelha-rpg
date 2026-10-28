@@ -202,6 +202,14 @@
     {
       "campo": "comportamento.social",
       "motivo": "site (Comportamento)"
+    },
+    {
+      "campo": "equipamento.arsenal",
+      "motivo": "o hoplon do livro, sempre carregado, para o \"+2 ao Bloqueio\" do site"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
   ]
 }

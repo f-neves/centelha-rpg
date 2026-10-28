@@ -1,35 +1,4 @@
 {
- "arconte-cao": {
-  "fraquezas": [
-   "profano"
-  ]
- },
- "arconte-lanterna": {
-  "fraquezas": [
-   "profano"
-  ]
- },
- "arconte-trombeta": {
-  "fraquezas": [
-   "profano"
-  ]
- },
- "basidirond": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "fungo-violeta": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
  "ghaele-azata": {
   "fraquezas": [
    "profano"
@@ -38,61 +7,6 @@
  "lillend": {
   "fraquezas": [
    "profano"
-  ]
- },
- "papa-moscas-gigante": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "planetar": {
-  "fraquezas": [
-   "profano"
-  ]
- },
- "pudim-negro": {
-  "resistencias": [
-   "corte",
-   "perfuracao"
-  ]
- },
- "shoggoth": {
-  "resistencias": [
-   "corte",
-   "perfuracao"
-  ]
- },
- "solar": {
-  "fraquezas": [
-   "profano"
-  ]
- },
- "treant": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "impacto",
-   "perfuracao"
-  ]
- },
- "trepadeira-de-almiscar-amarelo": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "perfuracao"
-  ]
- },
- "vegepygmy": {
-  "fraquezas": [
-   "fogo"
-  ],
-  "resistencias": [
-   "perfuracao"
   ]
  }
 }

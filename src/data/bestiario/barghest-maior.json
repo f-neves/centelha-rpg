@@ -317,7 +317,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele nova, mais grossa que a do barghest (1), como a do elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele Curtida Maior\" do site, pela linha Elementos, como a do barghest; o \"ainda mais\" do site vai na Couraça 2"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele nova, mais grossa que a do barghest (1), como a do elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele Curtida Maior\" do site, pela linha Elementos, como a do barghest; o \"ainda mais\" do site vai na Couraça 2; resistência a Corte, Perfuração e Impacto, e Couraça 2 pelo \"ainda mais\""
     },
     {
       "campo": "comportamento.atividade",
@@ -334,6 +334,14 @@
     {
       "campo": "formas.lobo",
       "motivo": "O lobo do molde (55 kg) levado aos 350 kg dele: × (350 ÷ 55)^(1/3) = 1,853 nas medidas e × 3,43 na área: 0,40 × 3,43 = 1,37 m², 5,5% abaixo do corte do Grande, fora da borda de 5% . Força, Vigor, PV e peso erguido ficam os da forma verdadeira, que tem a mesma massa"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +12 corte\", dano médio 19). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo, e as garras Leves, em par. Dano médio: 19 antes; depois, a mordida 15,5, as garras 13,5 cada"
+    },
+    {
+      "campo": "formas",
+      "motivo": "verdadeira, goblin e lobo (D-201), como no barghest; a forma de lobo, com 350 kg, fica Média por 5,5%"
     }
   ]
 }

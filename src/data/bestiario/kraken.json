@@ -304,6 +304,14 @@
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "O bico de cefalópode do tamanho de um bote, com o corpo atrás, Média; bico grande em N1 . Jogada: Força 14 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"4d6 +21 perfurante\", 7 Ticks, dano médio 35). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 35 antes; depois, tentáculo 22,5 (até três pela Rajada), bico 24,5"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "nuvem de tinta (Água 4), tempestade de raios (Raio 4) e dominar bestas do mar (Fascinação 5), com as bases e os usos do site e números da ficha (D-197); o Cego e o Dominado são as condições que o site descreve (\"cegando\", \"domina a mente\")"
     }
   ]
 }

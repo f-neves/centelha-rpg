@@ -232,6 +232,10 @@
     {
       "campo": "corpo.massa",
       "motivo": "Era 870 kg. Gigante pelo cubo, com o tamanho da ficha e a massa saindo dele (sexta rodada, seção 3): massa típica da base × (L do gigante ÷ L da base)³ = 0,635 × (4 ÷ 0,85)³ = 0,635 × 104,2 = 66,175 kg, 66,2 na mesa; k = 4,71. Base típica: média simples do macho de 0,87 kg e da fêmea de 0,40 kg = 0,635 kg, com o comprimento médio de 0,85 m, tudo da mesma fonte (ADW: \"averaging 85 cm\"; macho \"at least 870 g\" com 290 mm rostro-cloacais, fêmea 400 g com 235 mm; citando Bustard 1970, Greer 1989 e Wilson e Knowles 1988). A massa do macho é um \"pelo menos\" dos maiores machos, e não média pesada; a Wikipédia dá \"pelo menos 600 g\" sem separar sexo. Faixa do adulto: 0,40 a 0,87 kg na base (fêmea a macho grande), que dá 41,7 a 90,7 kg no gigante. Sexos (mais de 20%): macho 0,87 kg na base, 90,7 kg no gigante; fêmea 0,40 kg na base, 41,7 kg no gigante (ADW). A ficha atual do Centelha diz 4 m e 900 kg: as duas medidas não fecham pela base (900 kg pediriam 9,5 m: 0,85 × (900 ÷ 0,635)^(1/3)), e vale o tamanho. Faixa 3 pela D-141, com o corte de 35 kg (decisão 22); a faixa decide só o PV"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "gigante da D-105, escala × 4,71 do adulto real típico (ADW), para dar os 4 m da ficha atual (decisão do Arquiteto, sexta rodada). Era × 10 do macho real. Tudo  (D-105, D-174)"
     }
   ]
 }

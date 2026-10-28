@@ -171,7 +171,7 @@
   "revisao": [
     {
       "campo": "habilidades.armas",
-      "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). Guerreiro de bando"
+      "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). Guerreiro de bando; 3 e 2; o site tinha só Briga 1"
     },
     {
       "campo": "couraca",
@@ -184,6 +184,18 @@
     {
       "campo": "comportamento.caca",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "machado do livro, sem armadura"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "3 e 2; o site tinha só Briga 1"
+    },
+    {
+      "campo": "virtudes.bravura",
+      "motivo": "4; o site tinha 3"
     }
   ]
 }

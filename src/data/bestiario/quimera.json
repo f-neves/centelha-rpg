@@ -267,6 +267,10 @@
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: couro de leão na frente e escamas de dragão no flanco, um acima do leão (1) . O nível fica fora da Absorção (decisoes-autor §16)"
     },
     {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +9 perfurante\", 6 Ticks, dano médio 16). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 16 antes; depois, cada cabeça 14,5 (uma por ação), sopro 10,0"
+    },
+    {
       "campo": "ataques.Sopro dracônico",
       "motivo": "poder natural com números da ficha (D-197), base Fogo 3 (a Labareda, o leque de 2d6), que é o nível do cone; o site dava a Arte Fogo 2 e a base Fogo 2 ao sopro"
     }

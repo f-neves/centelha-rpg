@@ -297,6 +297,10 @@
     {
       "campo": "atributos.forca",
       "motivo": "Degrau 7: For 18 no Pathfinder. Teste de ordem: igual ao cavalo do molde (7, 500 kg), que é mais leve, como o pesadelo (7, 800 kg, também For 18). O site tinha 6; 6 para 7, pelo teste de ordem com o cavalo do molde (7 com 500 kg), como o pesadelo"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +10 perfurante\", 6 Ticks, dano médio 17). O unicórnio não tem garra: a ficha usa o chifre, o coice e o chifre em investida do site. Dano médio: 17 antes; depois, chifre 14,5, coice 18,0, chifre em investida 25,0 (só depois de 6 m de corrida)"
     }
   ]
 }

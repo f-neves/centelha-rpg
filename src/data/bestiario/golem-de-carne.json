@@ -237,7 +237,7 @@
     },
     {
       "campo": "atributos.vigor",
-      "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): carne morta que não sangra, não sente dor e não cansa, presa por pontos grosseiros; abaixo do granito do golem de pedra (6). O site tinha 1; 5 por julgamento (carne morta que não sente dor); o site tinha 1"
+      "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): carne morta que não sangra, não sente dor e não cansa, presa por pontos grosseiros; abaixo do granito do golem de pedra (6). O site tinha 1; 50, na zona de transição, pela faixa de cima (corpo robusto que não sente dor); pela de baixo seria 40; 5 por julgamento (carne morta que não sente dor); o site tinha 1"
     },
     {
       "campo": "habilidades.briga",
@@ -254,6 +254,14 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele morta, grossa e costurada, um pouco acima da pele de gente; o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site; a imunidade, da habilidade publicada (Elementos)"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "50, na zona de transição, pela faixa de cima (corpo robusto que não sente dor); pela de baixo seria 40"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a \"Arma\" de 2 dados e corte vira o Punho Média, de 1 dado e Impacto (perda de mecânica publicada, no relato)"
     }
   ]
 }

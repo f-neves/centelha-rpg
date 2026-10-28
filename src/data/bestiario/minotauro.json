@@ -256,7 +256,7 @@
     },
     {
       "campo": "habilidades.briga",
-      "motivo": "Chifrada e luta corpo a corpo de quem vive brigando"
+      "motivo": "Chifrada e luta corpo a corpo de quem vive brigando; 3, para a Chifrada; o site gravava 4, que era a Habilidade da arma"
     },
     {
       "campo": "comportamento.social",
@@ -269,6 +269,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": "site"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Bravura 4 e Temperança 1; o site tinha 3 e 2"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Especialidade natural +2 em Atletismo"
     }
   ]
 }

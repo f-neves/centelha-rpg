@@ -191,6 +191,10 @@
     {
       "campo": "ataques.Montante",
       "motivo": "2d6 + Força × 2, o do livro; o site dava 3 dados"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
   ]
 }

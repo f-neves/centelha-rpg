@@ -261,7 +261,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: o couro duro coberto de espinhos, como o do elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Resistências Infernais\"), pela linha Elementos"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: o couro duro coberto de espinhos, como o do elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Resistências Infernais\"), pela linha Elementos; 2, pelo couro de espinhos"
     },
     {
       "campo": "comportamento.dieta",
@@ -270,6 +270,10 @@
     {
       "campo": "ataques.Garras",
       "motivo": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte): a garra que crava com o braço e o corpo atrás, Média (`regra-construcao.md` §7). Perfuração, pelos espinhos que entram (site, \"dano perfurante\") . Duas por ação pela Rajada (Manobras). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +12 corte\", dano médio 15,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as garras ficam Médias, de Perfuração pelos espinhos. Dano médio: 15,5 antes; depois, 15,5 (sem mudança)"
     }
   ]
 }

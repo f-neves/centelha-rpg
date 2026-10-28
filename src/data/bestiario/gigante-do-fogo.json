@@ -152,7 +152,7 @@
       "duracao": "até o fim da próxima ação de cada aliado",
       "alcance": "9 m",
       "area": "os aliados que ouvem a ordem a até 9 m",
-      "efeito": "comanda as tropas: cada aliado soma +1d6 na próxima jogada de ataque",
+      "efeito": "comanda as tropas: cada aliado soma +2 na próxima jogada de ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "uma vez por cena"

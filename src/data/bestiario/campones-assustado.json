@@ -173,11 +173,19 @@
   "revisao": [
     {
       "campo": "habilidades.armas",
-      "motivo": "O cajado, sem treino (\"Sem treino\", site). O site gravava o ataque com Briga 1; a arma pede Armas (manual 3.5)"
+      "motivo": "O cajado, sem treino (\"Sem treino\", site). O site gravava o ataque com Briga 1; a arma pede Armas (manual 3.5); 1; o site gravava o ataque com Briga"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "o bordão do livro no lugar do forcado do site"
+    },
+    {
+      "campo": "virtudes.bravura",
+      "motivo": "1; o site tinha 3"
     }
   ]
 }

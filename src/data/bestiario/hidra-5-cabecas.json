@@ -208,6 +208,10 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: escamas de réptil, abaixo do crocodilo (5), mais finas nos pescoços . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +9 perfurante\", 7 Ticks, dano médio 19,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 19,5 antes; depois, mordida 12,5, até três pela Rajada"
     }
   ]
 }

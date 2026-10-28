@@ -150,7 +150,7 @@
   "revisao": [
     {
       "campo": "atributos.forca",
-      "motivo": "Planador de 23,6 kg  e osso oco, abaixo da Força de referência da massa (4,46, `calc6.mjs`): o úmero robusto (Martin-Silverstone e colegas 2017) é músculo de voo, e não de agarrar ou rasgar. Bico longo e sem dentes, de pegar peixe; garras curtas da mão sem uso como arma (pesquisa, Armas naturais). Igual à águia-real (2), abaixo do lobo (3). Mordida e carga"
+      "motivo": "Planador de 23,6 kg  e osso oco, abaixo da Força de referência da massa (4,46, `calc6.mjs`): o úmero robusto (Martin-Silverstone e colegas 2017) é músculo de voo, e não de agarrar ou rasgar. Bico longo e sem dentes, de pegar peixe; garras curtas da mão sem uso como arma (pesquisa, Armas naturais). Igual à águia-real (2), abaixo do lobo (3). Mordida e carga; 68,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 65,98 kg pela fórmula nova (decisões 14 e 16), com os 23,605 kg, provisório: quase três vezes a massa, sem nenhum feito de carga para conferir. Era 69,77 kg pelos 27 kg de trabalho. Não é quadrúpede, então não tem `carga` (D-160, D-174)"
     },
     {
       "campo": "atributos.percepcao",
@@ -178,7 +178,7 @@
     },
     {
       "campo": "habilidadesSec.natacao",
-      "motivo": "Boiaria, e uma fêmea pequena alcançaria pelo menos 80 cm de profundidade com bico e pescoço; pescava nadando e mergulhando o bico, e talvez decolasse da água (Bennett 1994; Witton e Habib 2010). Um nível, para pousar e pescar na água. Não tinha (a ficha de hoje dizia que a anatomia de ave não nada)"
+      "motivo": "Boiaria, e uma fêmea pequena alcançaria pelo menos 80 cm de profundidade com bico e pescoço; pescava nadando e mergulhando o bico, e talvez decolasse da água (Bennett 1994; Witton e Habib 2010). Um nível, para pousar e pescar na água. Não tinha (a ficha de hoje dizia que a anatomia de ave não nada); 1, nova, provisória e : boiaria e pescaria nadando (Bennett 1994). A ficha de hoje dizia que a anatomia de ave não nada; a Habilidade não mexe no deslocamento, que está congelado (decisão 23, D-174)"
     },
     {
       "campo": "habilidadesSec.voo",
@@ -211,6 +211,10 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": "pela Integridade: foge voando"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "68,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 65,98 kg pela fórmula nova (decisões 14 e 16), com os 23,605 kg, provisório: quase três vezes a massa, sem nenhum feito de carga para conferir. Era 69,77 kg pelos 27 kg de trabalho. Não é quadrúpede, então não tem `carga` (D-160, D-174)"
     }
   ]
 }

@@ -280,7 +280,7 @@
     },
     {
       "campo": "habilidadesSec.musculatura",
-      "motivo": "Pelo corpo (tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): carne viva do porte do elefante, robusta como a do elefante (3)"
+      "motivo": "Pelo corpo (tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): carne viva do porte do elefante, robusta como a do elefante (3); 3, como o elefante"
     },
     {
       "campo": "corpo.massa",
@@ -288,7 +288,15 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: carne moldada de couro grosso, como o elefante (2 a 3); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: carne moldada de couro grosso, como o elefante (2 a 3); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); 3, couro grosso como o do elefante"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "os do elefante do molde (3.600 kg, 6,65 m² de lado), pelo \"tamanho de um elefante\" e pela \"carne viva\" do site"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a \"Arma\" de 3 dados vira as Patas-lâmina Pesadas, de 2 dados (perda de mecânica publicada, no relato)"
     }
   ]
 }

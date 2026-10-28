@@ -239,6 +239,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe\" de impacto do site virou Garras ressecadas Médias de Corte"
     }
   ]
 }

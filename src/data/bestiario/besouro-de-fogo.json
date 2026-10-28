@@ -205,6 +205,10 @@
     {
       "campo": "ataques.Mandíbulas",
       "motivo": "era 1d6 − 2 (média 1,5), com Força 0. Golpe de boca pequena, Força × 1 (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Mandíbula de inseto corta como pinça; mordida não medida"
+    },
+    {
+      "campo": "deslocamento",
+      "motivo": "congelada (decisão 23). A corrida de 2,4 m/s quase alcança o besouro mais rápido medido (besouro-tigre, 2,5 m/s), o que parece alto para um elaterídeo; o voo de 31 km/h não tem real para conferir (D-170)"
     }
   ]
 }

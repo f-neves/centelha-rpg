@@ -177,7 +177,7 @@
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "o vento em volta desvia o que vem de longe: +2 na Esquiva contra ataques à distância",
+      "efeito": "o domínio do ar concede +1 na Defesa Física (Esquiva e Bloqueio) contra quem ataca estando no ar",
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"
@@ -284,6 +284,22 @@
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "40, na zona de transição, pela faixa de baixo (corpo leve); pela de cima seria 50"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "40, na zona de transição, pela faixa de baixo (corpo leve); pela de cima seria 50"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "o tornado ativo dá 5,63 m², Grande, sem mudar a categoria (decisão do autor de 24/10/2026, D-213); com o cilindro, ou com o funil da largura da Área (3 m à volta), seria Enorme, e a linha passaria a `Enorme (..., com o redemoinho ativo)`"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 2, Convicção 4, Temperança 1; o site tinha 1, 3 e 2"
     }
   ]
 }

@@ -314,6 +314,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (fraqueza a luz)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "tira PV máximo e cura, como a habilidade do site; o espectro tira jogadas"
+    },
+    {
+      "campo": "habilidadesSec.intimidacao",
+      "motivo": "3, como no espectro, pela senhora da tumba"
     }
   ]
 }

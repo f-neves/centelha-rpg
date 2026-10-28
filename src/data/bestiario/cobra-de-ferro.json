@@ -118,17 +118,10 @@
       "limiteDeUso": "uma vez por dia"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 13",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 nas resistências contra Artes; a Defesa Mental já é imune",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     }
   ],
   "comoLuta": [
@@ -227,12 +220,8 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
-      "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): placas de ferro que não sangram nem cansam, num corpo pequeno. O site tinha 0; 4 por julgamento (placas de ferro num corpo pequeno); o site tinha 0"
+      "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): placas de ferro que não sangram nem cansam, num corpo pequeno. O site tinha 0; 28, na zona de transição, pela faixa de cima (corpo de ferro); pela de baixo seria 19; 4 por julgamento (placas de ferro num corpo pequeno); o site tinha 0"
     },
     {
       "campo": "habilidadesSec.musculatura",
@@ -244,7 +233,15 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: placas de ferro, como o granito do golem de pedra (9) e um nível abaixo do ferro maciço do golem de ferro (10); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos)"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: placas de ferro, como o granito do golem de pedra (9) e um nível abaixo do ferro maciço do golem de ferro (10); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); 9, placas de ferro"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "28, na zona de transição, pela faixa de cima (corpo de ferro); pela de baixo seria 19"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "os números da peçonha de víbora do livro"
     }
   ]
 }

@@ -213,6 +213,10 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a \"carapaça anelada\" do site, de anéis grossos . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +14 perfurante\", 7 Ticks, dano médio 24,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 24,5 antes; depois, mordida 17,5, ferrão 17,5"
     }
   ]
 }

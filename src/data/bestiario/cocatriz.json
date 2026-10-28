@@ -185,6 +185,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Pequeno para Médio (0,51 m²). Em jogo: o humano perde os +3 de acerto de longe e os −3 que tinha de perto contra ela"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\", a bicada (`inimigos.json`: \"1d6 +3 perfurante\", 5 Ticks, dano médio 6,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 6,5 antes; depois, bicada 4,5, duas pela Rajada"
     }
   ]
 }

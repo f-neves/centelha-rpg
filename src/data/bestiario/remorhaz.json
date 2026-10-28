@@ -219,6 +219,18 @@
     {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: placas grossas de artrópode gigante, como o crocodilo (5) . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição, subiu (robusto). Descendo seria 62"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição, subiu (robusto). Descendo seria 62"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +13 perfurante\", 7 Ticks, dano médio 23,5). A ficha fica com a mordida, Média, e o calor vai no Calor abrasador. Dano médio: 23,5 antes; depois, mordida 16,5, mais 2d6 de fogo (média 7): 23,5 com o calor, sem mudança"
     }
   ]
 }

@@ -179,5 +179,22 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": []
+  "revisao": [
+    {
+      "campo": "corpo.area",
+      "motivo": "Médio para Pequeno (0,30 m²). Em jogo: o atirador humano perde 3 contra ele, e ele ganha +3 no corpo a corpo contra o humano"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição (28 a 42 kg), ficou na faixa de cima, a do site; descendo seria 28"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição (28 a 42 kg), ficou na faixa de cima, a do site; descendo seria 28"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"1d6 +8 perfurante\", 5 Ticks, dano médio 11,5). A ficha fica com a mordida, Média. Dano médio: 11,5 antes; depois, mordida 11,5 (sem mudança)"
+    }
+  ]
 }

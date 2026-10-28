@@ -260,11 +260,19 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: couro de cão, um acima do lobo (0) pela pele de exterior . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele resistente a lâminas comuns\" do site, pela linha Elementos, como a pele do súcubo e do kyton"
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: couro de cão, um acima do lobo (0) pela pele de exterior . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele resistente a lâminas comuns\" do site, pela linha Elementos, como a pele do súcubo e do kyton; resistência a Corte, Perfuração e Impacto, como a do súcubo e do kyton; a prata ficou sem regra ainda"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +7 corte\", dano médio 10,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo. Dano médio: 10,5 antes; depois, 10,5 (sem mudança)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande de asas abertas, em voo, com a envergadura estimada em duas vezes o corpo"
     }
   ]
 }

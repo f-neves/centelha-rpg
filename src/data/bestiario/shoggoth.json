@@ -1,95 +1,191 @@
 {
-  "ordem": 285,
   "id": "shoggoth",
   "idAntigo": "mon-shoggoth",
   "nome": "Shoggoth",
   "nomeIngles": "Shoggoth",
-  "categoria": "Limo",
+  "categoria": "limo",
   "papel": "chefe",
-  "conceito": "limo Enorme",
-  "descricao": "Massa informe que digere tudo que toca.",
-  "tags": [
-    "limo"
-  ],
-  "imagem": "bestiario/shoggoth_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "corpo de cerca de 4,5 metros de diâmetro, capaz de se esticar bem além disso",
-    "peso": "massa disforme de várias t"
-  },
-  "locomocao": {
-    "terra": 5,
-    "natacao": 5,
-    "escalada": 2
-  },
+  "ameaca": 6,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "massa espalhada no chão",
+    "apoio": "outro",
+    "altura": 1.2,
+    "largura": 4.5,
+    "profundidade": 4.5,
+    "comprimento": 4.5,
+    "massa": 12850,
+    "area": 15.9,
+    "posturaDoTamanho": "massa espalhada no chão"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 13,
-    "destreza": 7,
+    "destreza": 6,
     "vigor": 11,
+    "percepcao": 6,
+    "inteligencia": 1,
+    "raciocinio": 4,
     "influencia": 3,
     "perspicacia": 2,
-    "compostura": 5,
-    "percepcao": 7,
-    "inteligencia": 1,
-    "raciocinio": 4
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 2,
-    "prontidao": 3,
-    "integridade": 5
+    "prontidao": 4,
+    "integridade": 5,
+    "sobrevivencia": 3,
+    "sociabilidade": 0
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "escalada": 3,
+    "natacao": 3,
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    },
+    "nado": {
+      "batalha": 5
+    },
+    "escalada": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pseudópode",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "massa-contratil",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     }
   ],
-  "resistencias": [
-    "corte",
-    "perfuracao"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "Agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pseudópode",
+      "regra": "agarrar",
+      "texto": "envolve a presa com a massa aderente"
+    },
     {
       "nome": "Cacofonia enlouquecedora",
-      "descricao": "Emite sons que a mente sã não deveria ouvir; quem falha num teste de Compostura numa área ampla fica confuso e sofre dano contínuo de Mente a cada rodada exposta."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "os sons confundem e ferem a mente de quem os ouve"
     },
     {
       "nome": "Tragar múltiplo",
-      "descricao": "Pode agarrar e tragar várias criaturas ao mesmo tempo, dissolvendo-as lentamente em ácido dentro de seu corpo amorfo."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "envolve várias presas e as dissolve no interior ácido"
     },
     {
       "nome": "Visão total",
-      "descricao": "Seus incontáveis olhos e órgãos sensoriais percebem tudo ao redor, tornando quase impossível pegá-lo desprevenido."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "os olhos distribuídos pelo corpo dificultam surpreendê-lo"
     },
     {
-      "nome": "Regeneração acelerada",
-      "descricao": "Cura ferimentos numa velocidade assombrosa, quase se recompondo diante dos olhos de quem o enfrenta."
+      "nome": "Regeneração 10",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "recompõe rapidamente os ferimentos"
     },
     {
-      "nome": "Imunidades e resistências",
-      "descricao": "Imune a cegueira, surdez, frio e efeitos de encantamento; resiste a ácido, eletricidade, fogo e é fortemente protegido contra magia."
+      "nome": "Resistência à magia 30",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "seu corpo resiste a efeitos mágicos"
     },
     {
-      "nome": "Anfíbio e multiforme",
-      "descricao": "Nada, escala e se desloca em qualquer terreno graças ao corpo maleável de limo."
+      "nome": "Imunidades sensoriais",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "cegueira, surdez e encantamentos não o afetam"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Corpo multiforme",
+      "formas": "todas",
+      "texto": "forma pseudópodes conforme a posição da presa; escolhe um golpe por ação ou usa Rajada."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "olhos em todas as direções, inclusive no escuro",
+      "formas": "todas"
+    },
+    {
+      "nome": "olfato",
+      "descricao": "percebe o cheiro das presas",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "trocas pela superfície",
+    "prendeRespiracao": "sem dado",
+    "camuflagem": "massa de lodo escuro",
+    "mente": "instintiva",
+    "tracos": "Massa escura que forma olhos, bocas e pseudópodes"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "carne e outros materiais orgânicos",
+    "caca": "persegue e traga",
+    "dianteDeGente": "tenta dissolver quem se aproxima"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "subterrâneo",
+      "gélido"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Massa escura que forma olhos, bocas e pseudópodes",
   "lore": [
     {
       "titulo": "Criação de eras esquecidas",
@@ -104,40 +200,64 @@
       "texto": "Sem forma fixa, gera olhos e bocas onde bem entende, um lembrete vivo de que nem tudo que existe deveria ter sido criado."
     }
   ],
-  "ecologia": {
-    "tipo": "Ooze",
-    "terreno": [
-      "Water",
-      "Underground",
-      "Cold"
+  "imagens": [
+    "bestiario/shoggoth_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      },
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      },
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Cold"
+    "imunidades": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Shoggoth",
-    "cr": "19",
-    "tipo": "limo Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 40,
-      "des": 24,
-      "con": 31,
-      "int": 5,
-      "sab": 22,
-      "car": 13
+  "revisao": [
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Massa capaz de criar membros e constrições potentes"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Comprimento ou diâmetro de 4,5 m publicado; espessura e largura da massa achatada estimadas"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Comprimento ou diâmetro de 4,5 m publicado; espessura e largura da massa achatada estimadas"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Comprimento ou diâmetro de 4,5 m publicado; espessura e largura da massa achatada estimadas"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
+    },
+    {
+      "campo": "ataques.Pseudópode",
+      "motivo": "Antes: 3d6 + Força, dano médio 23,5. Agora: 2d6 + Força, dano médio 20, pela classe Pesada."
+    }
+  ]
 }

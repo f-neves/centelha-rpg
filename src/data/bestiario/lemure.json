@@ -186,6 +186,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +4 corte\", dano médio 7,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as garras ficam Leves, o \"dano baixo\" do site. Dano médio: 7,5 antes; depois, 5,5"
     }
   ]
 }

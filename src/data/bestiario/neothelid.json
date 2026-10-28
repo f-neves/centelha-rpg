@@ -202,17 +202,10 @@
       "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Resistência a magia",
+      "nome": "Resistência à magia 26",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativa",
-      "duracao": "permanente",
-      "alcance": "o próprio corpo",
-      "area": "não se aplica",
-      "efeito": "soma +2 na Defesa Mental e nas resistências contra Artes (\"resiste à maioria das magias\", site)",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Casca contra armas comuns",
@@ -307,10 +300,6 @@
       "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "habilidadesEspeciais.Resistência a magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 12, acima dos dragões adultos de 7 a 7,5 t, mais pesados (o verde, 10; o vermelho e o azul, 11). Desce para 11 pelo teste de ordem (manual, Passo 7), como o chuul, a capa-sombria, o estrangulador e o laçador: não fica acima de quem é maior, e não fica abaixo do froghemoth de 3 t (11), mais leve. Abaixo da Força de referência da massa (11,61, manual 3.9): verme sem membros, que bate com as línguas e não tem alavanca. Pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro); 11, pelo teste de ordem; o site tinha 12 (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro))"
     },
@@ -329,6 +318,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "deslocamento",
+      "motivo": "pela Levitação; o site não grava voo"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Tentáculo Pesado no lugar das \"Garras e presas\""
     }
   ]
 }

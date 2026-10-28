@@ -164,5 +164,10 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": []
+  "revisao": [
+    {
+      "campo": "virtudes.bravura",
+      "motivo": "4; o site tinha 3"
+    }
+  ]
 }

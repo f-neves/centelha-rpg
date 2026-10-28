@@ -336,15 +336,19 @@
     },
     {
       "campo": "habilidades.atletismo",
-      "motivo": "\"Força sobre-humana: bônus em Atletismo e Acrobacia\" (site)"
+      "motivo": "\"Força sobre-humana: bônus em Atletismo e Acrobacia\" (site); pela \"força sobre-humana\" e pela vida na nobreza do site"
     },
     {
       "campo": "habilidades.sociabilidade",
-      "motivo": "Vive entre a nobreza e finge envelhecer como qualquer mortal (site)"
+      "motivo": "Vive entre a nobreza e finge envelhecer como qualquer mortal (site); pela \"força sobre-humana\" e pela vida na nobreza do site"
     },
     {
       "campo": "aparencia",
       "motivo": "Degrau 9, \"Beleza\": o nobre que seduz antes de atacar e é a figura \"mais temida ou mais fascinante\" dos salões (site). A Aparência mede a beleza, e não o medo (D-205). O site tinha 2, o número de todos os mortos-vivos dele, que não cabe em quem passa por vivo na alta sociedade; 9, a beleza do nobre que seduz; o site tinha 2 (D-205)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe\" do site ficou Pancada Média, e a \"Mordida drenante\" entrou como Mordida Leve"
     }
   ]
 }

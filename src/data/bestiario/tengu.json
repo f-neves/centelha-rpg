@@ -207,11 +207,15 @@
     },
     {
       "campo": "habilidades.armas",
-      "motivo": "O site gravava `briga` 2 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5), e o \"Talento com espadas\" (site) a sobe um degrau"
+      "motivo": "O site gravava `briga` 2 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5), e o \"Talento com espadas\" (site) a sobe um degrau; 3, um acima da Briga 2 do site, pelo \"Talento com espadas\""
     },
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada longa do livro"
     }
   ]
 }

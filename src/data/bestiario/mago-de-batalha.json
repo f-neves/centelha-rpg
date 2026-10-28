@@ -205,5 +205,14 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": []
+  "revisao": [
+    {
+      "campo": "artes",
+      "motivo": "Fogo 4, um acima do site, para a Bola de Fogo que o site já dava"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1 e Temperança 3; o site tinha 2 e 2"
+    }
+  ]
 }
