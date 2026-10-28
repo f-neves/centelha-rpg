@@ -1,38 +1,32 @@
 {
-  "ordem": 154,
   "id": "enxame-de-morcegos",
   "idAntigo": "mon-bat-swarm",
   "nome": "Enxame de morcegos",
   "nomeIngles": "Bat Swarm",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "A nuvem de morcegos que sai da caverna ao anoitecer e envolve quem está na boca dela; o perigo maior é o pó de guano da caverna.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/enxame-de-morcegos_criatura.webp",
-  "porte": "Minúsculo",
-  "dimensoes": {
-    "medida": "0,09 m de comprimento, 0,03 m de altura",
-    "peso": "0,011 kg",
-    "comprimento": 0.09,
-    "largura": 0.025,
-    "altura": 0.03,
-    "envergadura": 0.28
-  },
-  "locomocao": {
-    "voo": 5,
-    "terra": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 2
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "enxame": {
+    "individuosPorQuadrado": 20,
+    "tamanhoEquivalente": "medio"
+  },
+  "corpo": {
+    "postura": "voador",
+    "apoio": "outro",
+    "altura": 0.03,
+    "largura": 0.025,
+    "profundidade": null,
+    "comprimento": 0.09,
+    "comprimentoSemCauda": 0.054,
+    "caudaGrossa": false,
+    "envergadura": 0.28,
+    "massa": 0.011,
+    "area": 0.01,
+    "posturaDoTamanho": "de baixo, asas abertas"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 3,
@@ -43,70 +37,120 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 1,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 3,
     "furtividade": 2,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
-    "voo": 4
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 4,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "ecolocalização",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "ecolocalização",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 1,
+      "corrida": 2
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida do enxame",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [],
+  "comoLuta": [],
+  "sentidos": [
     {
-      "nome": "Sentidos",
-      "descricao": "ecolocalização: Prontidão (ecolocalização) +3. Chamados de 49 a 70 kHz no voo, que caem para 25 a 40 kHz ao achar o alvo. Vale no escuro. · visão e olfato: sem número."
-    }
-  ],
-  "doencas": [
+      "nome": "ecolocalização",
+      "descricao": "Prontidão (ecolocalização) +3 (Especialidade natural, era +4). Chamados de 49 a 70 kHz no voo, que caem para 25 a 40 kHz ao achar o alvo (ADW). Alcance: . Vale no escuro",
+      "formas": "todas"
+    },
     {
-      "nome": "Doença no jogo",
-      "texto": "Histoplasmose · Virulência 7 · dia · pelo pó de guano da caverna: quem passa a cena na caverna da colônia rola uma vez, Vigor + Resistência contra a Virulência inteira"
+      "nome": "visão e olfato",
+      "descricao": "sem número",
+      "formas": "todas"
     }
   ],
-  "enxame": [
-    {
-      "nome": "Enxame no jogo",
-      "texto": "20 morcegos por quadrado · voa, numa coluna do chão a 2,5 m · quem fere: só ataque em área (pá, capa ou tocha contam como área improvisada, pelo Mestre) · armadura: vale, só pega o rosto e as mãos expostos · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-    }
-  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "colônias de até 20 milhões em Bracken Cave (Bat Conservation International) ou cerca de 4 milhões nas seis grandes cavernas somadas pela contagem térmica (Betke et al. 2008); saem em um a três episódios ao anoitecer (Betke et al. 2008). A caverna da colônia tem o ar carregado de amônia e de pó de guano"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônia",
+    "atividade": "noturno; sai ao anoitecer",
+    "dieta": "insetívoro",
+    "caca": "caça no ar, de 6 a 15 m de altura",
+    "dianteDeGente": "foge; morde se pego na mão"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas",
+      "urbano"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "A nuvem de morcegos que sai da caverna ao anoitecer e envolve quem está na boca dela; o perigo maior é o pó de guano da caverna.",
   "lore": [
     {
       "titulo": "Habitat",
@@ -114,7 +158,7 @@
     },
     {
       "titulo": "Comportamento",
-      "texto": "Só saem em massa ao amanhecer e ao entardecer, ou quando são expulsos de seus covis por algum intruso ou incêndio. Social: colônia."
+      "texto": "Só saem em massa ao amanhecer e ao entardecer, ou quando são expulsos de seus covis por algum intruso ou incêndio."
     },
     {
       "titulo": "Caçada",
@@ -127,92 +171,15 @@
     {
       "titulo": "Enxame",
       "texto": "20 morcegos por quadrado · voa, numa coluna do chão a 2,5 m · quem fere: só ataque em área (pá, capa ou tocha contam como área improvisada, pelo Mestre) · armadura: vale, só pega o rosto e as mãos expostos · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Cada quadrado cheio tem 34 PV (20 morcegos), como uma criatura Média, e o PV cai com eles: metade, 17 PV. Só ataque em área alcança a coluna (pá, capa ou tocha contam como área improvisada, pelo Mestre). Não esquiva nem apara. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 1 pela Ameaça 2, provisório), e a armadura vale: a mordida pega só a pele exposta. Dentro, só fugir ou tirar os morcegos de cima sai sem teste. O perigo real é a caverna: a nuvem que sai ao anoitecer cega e desorienta, e o pó de guano passa a histoplasmose. Voa a 14 m por Tick."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Underground",
-      "Ruins",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/enxame-de-morcegos_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Bat Swarm",
-    "cr": "2",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 3,
-      "des": 15,
-      "con": 11,
-      "int": 2,
-      "sab": 14,
-      "car": 4
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte",
-      "nota": "voo 40: a nuvem de morcegos não pousa"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 6,
-    "bloqueio": 6,
-    "defesa": 6,
-    "defesaMental": 6,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 0,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 1,
-        "corrida": 2
-      },
-      "voo": {
-        "batalha": 5,
-        "cruzeiro": 14
-      }
-    }
-  },
-  "notasObservacao": [
-    "`anatomia`: morcego na anatomia ave, provisória (D-175)",
-    "`especie`: o Tadarida, e não o vampiro da ficha `morcego`, porque é o morcego das colônias de milhões; o enxame de vampiros fica como variante (D-174)",
-    "`pv`: 34 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Média, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 8 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo.",
-    "`pesoErguido`: 0,0038 kg pela fórmula nova, arredondado a 0 pelo `calc.mjs`; carga \"não (enxame)\" (D-101, D-174)",
-    "`vigor`: 3, o da ficha de hoje, sem dado que o sustente depois que o voo saiu da conta (diretriz 1). Eu daria 2, como o vampiro (2) e o corvo (2); fica o 3 proposto, e o desvio vai no resumo (D-174)",
-    "`resistencia`: 2, provisória. O levantamento propunha 3 (candidato a 4) pelos 54 a 160 km por noite; na v3 o voo fica na nota de pesquisa (jornada) (diretriz 2, D-174)",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): voa de 54 a 160 km acumulados por noite, a mais de 1 km de altura, com médias de 5,4 a 17 m/s (McCracken et al. 2016, rastreamento por avião, 7 fêmeas) [medido]; forrageia a 25 km do abrigo numa noite, com registros até 65 km (ADW); passa cerca de 60% do tempo ativo caçando no ar (Wikipédia).",
-    "`perspicacia`: 1 pela diretriz 1 (não é espécie social), apesar da colônia de milhões: dividir abrigo não é usar Atributos sociais entre os seus. Era 2 (D-174)",
-    "`empatia`: 0, provisória (D-174)",
-    "`furtividade`: 2, nova, do levantamento (D-174)",
-    "`especialidadesNaturais`: o eco desceu de +4 para +3 (decisão 3)",
-    "`porte`: o Minúsculo é o do morcego; o enxame usa o tamanho que apresenta no acerto (D-077), e o +9 não vale para o enxame inteiro (`passada-30.md` §2.1). Se o limite do Bloqueio também usa o tamanho apresentado fica para o Mestre (D-087)",
-    "`comportamento`: o ataque em grupo é extrapolação de RPG; a pesquisa não achou caso real (D-101)",
-    "fonte: a altura e a largura continuam só por estimativa (D-174)",
-    "`doenca`: histoplasmose e raiva como texto, sem id (D-112)"
-  ]
+  "revisao": []
 }

@@ -1,453 +1,5 @@
 [
   {
-    "id": "enxame-de-formigas",
-    "nome": "Enxame de formigas (formigas-de-correição)",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 4,
-    "centelha": 0,
-    "conceito": "praga Minúsculo",
-    "descricao": "A frente de uma marcha de formigas de correição, que cobre e desmancha o que não foge; quem está preso, caído ou imóvel sofre mais.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 26,
-    "defesa": 6,
-    "defesaSocial": 6,
-    "defesaMental": 6,
-    "vontade": 4,
-    "soak": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
-    "atributos": {
-      "forca": 0,
-      "destreza": 3,
-      "vigor": 3,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Mordida do enxame",
-        "pool": "3d6 +1",
-        "dano": "1d6 −2 corte",
-        "perfArma": null,
-        "ticks": 5,
-        "classe": "leve"
-      },
-      {
-        "nome": "Ferroada do enxame",
-        "pool": "3d6 +1",
-        "dano": "1d6 −2 perfurante · perf. 0",
-        "perfArma": 0,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 0,
-      "integridade": 0,
-      "sociabilidade": 2,
-      "furtividade": 0
-    }
-  },
-  {
-    "id": "enxame-de-morcegos",
-    "nome": "Enxame de morcegos",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 2,
-    "centelha": 0,
-    "conceito": "animal Minúsculo",
-    "descricao": "A nuvem de morcegos que sai da caverna ao anoitecer e envolve quem está na boca dela; o perigo maior é o pó de guano da caverna.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 34,
-    "defesa": 6,
-    "defesaSocial": 8,
-    "defesaMental": 6,
-    "vontade": 3,
-    "soak": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
-    "atributos": {
-      "forca": 0,
-      "destreza": 3,
-      "vigor": 3,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Mordida do enxame",
-        "pool": "2d6 +1",
-        "dano": "1d6 −2 perfurante · perf. 0",
-        "perfArma": 0,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 0,
-      "integridade": 1,
-      "sociabilidade": 3,
-      "furtividade": 2
-    }
-  },
-  {
-    "id": "enxame-de-centopeias",
-    "nome": "Enxame de centopeias",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 2,
-    "centelha": 0,
-    "conceito": "praga Minúsculo",
-    "descricao": "Lacraias que sozinhas quase não ferem gente, mas que aos centos cobrem quem cai entre elas de picadas que doem como de abelha.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 24,
-    "defesa": 6,
-    "defesaSocial": 6,
-    "defesaMental": 6,
-    "vontade": 3,
-    "soak": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 5",
-    "atributos": {
-      "forca": 0,
-      "destreza": 3,
-      "vigor": 2,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 3
-    },
-    "ataques": [
-      {
-        "nome": "Garra de veneno",
-        "pool": "2d6+2 +1",
-        "dano": "1d6 −2 perfurante · perf. 0",
-        "perfArma": 0,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 0,
-      "integridade": 0,
-      "sociabilidade": 2,
-      "furtividade": 2
-    }
-  },
-  {
-    "id": "enxame-de-caranguejos",
-    "nome": "Enxame de caranguejos",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 3,
-    "centelha": 0,
-    "conceito": "praga Minúsculo",
-    "descricao": "Uma maré de caranguejos que atravessa a praia num rumo só e belisca o que não sai do caminho; mais obstáculo do que caçador.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 26,
-    "defesa": 4,
-    "defesaSocial": 6,
-    "defesaMental": 6,
-    "vontade": 3,
-    "soak": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
-    "atributos": {
-      "forca": 0,
-      "destreza": 2,
-      "vigor": 3,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Pinça do enxame",
-        "pool": "2d6 +1",
-        "dano": "1d6 −2 corte",
-        "perfArma": null,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 0,
-      "integridade": 1,
-      "sociabilidade": 2,
-      "furtividade": 0
-    }
-  },
-  {
-    "id": "enxame-de-sanguessugas",
-    "nome": "Enxame de sanguessugas",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 3,
-    "centelha": 0,
-    "conceito": "praga Minúsculo",
-    "descricao": "Centenas de sanguessugas no fundo da lagoa parada, que acham quem entra pelo calor e pela onda; a ferida sangra por horas.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 26,
-    "defesa": 4,
-    "defesaSocial": 6,
-    "defesaMental": 5,
-    "vontade": 3,
-    "soak": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
-    "atributos": {
-      "forca": 0,
-      "destreza": 2,
-      "vigor": 3,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 2,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Mordida do enxame",
-        "pool": "2d6 +1",
-        "dano": "1d6 −2 corte",
-        "perfArma": null,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 0,
-      "integridade": 0,
-      "sociabilidade": 2,
-      "furtividade": 2
-    }
-  },
-  {
-    "id": "enxame-de-ratos",
-    "nome": "Enxame de ratos",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 2,
-    "centelha": 0,
-    "conceito": "animal Minúsculo",
-    "descricao": "Dezenas de ratos famintos que cercam quem dorme ou não se mexe; cada mordida tira pouco, e o perigo real é a doença.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 28,
-    "defesa": 6,
-    "defesaSocial": 10,
-    "defesaMental": 6,
-    "vontade": 3,
-    "soak": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
-    "atributos": {
-      "forca": 0,
-      "destreza": 3,
-      "vigor": 4,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Mordida do enxame",
-        "pool": "2d6+2 +1",
-        "dano": "1d6 −2 perfurante · perf. 0",
-        "perfArma": 0,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 0,
-      "integridade": 1,
-      "sociabilidade": 4,
-      "furtividade": 2
-    }
-  },
-  {
-    "id": "enxame-de-aranhas",
-    "nome": "Enxame de aranhas",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 2,
-    "centelha": 0,
-    "conceito": "praga Minúsculo",
-    "descricao": "Um tapete de milhares de aranhas pequenas, que sai da teia comum e cobre quem cai nela; cada picada é fraca, mas são muitas.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 24,
-    "defesa": 6,
-    "defesaSocial": 6,
-    "defesaMental": 5,
-    "vontade": 3,
-    "soak": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 4",
-    "atributos": {
-      "forca": 0,
-      "destreza": 3,
-      "vigor": 2,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Picada do enxame",
-        "pool": "2d6+2 +1",
-        "dano": "1d6 −2 perfurante · perf. 0",
-        "perfArma": 0,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 2,
-      "esquiva": 0,
-      "integridade": 0,
-      "sociabilidade": 2,
-      "furtividade": 4
-    }
-  },
-  {
-    "id": "enxame-de-vespas",
-    "nome": "Enxame de vespas",
-    "tipo": "fera",
-    "categoria": "Fera",
-    "ameaca": 3,
-    "centelha": 0,
-    "conceito": "praga Minúsculo",
-    "descricao": "A parte da colônia que sai na defesa do ninho e persegue quem mexeu nele; cada picada é pequena, mas são centenas.",
-    "tags": [
-      "fera"
-    ],
-    "pv": 24,
-    "defesa": 6,
-    "defesaSocial": 6,
-    "defesaMental": 6,
-    "vontade": 4,
-    "soak": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "resistPerf": 0,
-    "iniciativa": "1d6 + 5",
-    "atributos": {
-      "forca": 0,
-      "destreza": 3,
-      "vigor": 2,
-      "influencia": 1,
-      "perspicacia": 1,
-      "compostura": 1,
-      "percepcao": 3,
-      "inteligencia": 1,
-      "raciocinio": 2
-    },
-    "ataques": [
-      {
-        "nome": "Ferroada do enxame",
-        "pool": "3d6 +1",
-        "dano": "1d6 −2 perfurante · perf. 0",
-        "perfArma": 0,
-        "ticks": 5,
-        "classe": "leve"
-      }
-    ],
-    "tecnicas": [],
-    "artes": [],
-    "pericias": {
-      "prontidao": 3,
-      "esquiva": 0,
-      "integridade": 0,
-      "sociabilidade": 2,
-      "furtividade": 0
-    }
-  },
-  {
     "id": "aasimar",
     "nome": "Aasimar",
     "tipo": "capanga",
@@ -9067,6 +8619,581 @@
       "sobrevivencia": 1,
       "resistencia": 0,
       "musculatura": 0
+    }
+  },
+  {
+    "id": "enxame-de-aranhas",
+    "nome": "Enxame de aranhas",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "Um tapete de milhares de aranhas pequenas, que sai da teia comum e cobre quem cai nela; cada picada é fraca, mas são muitas.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 24,
+    "defesa": 6,
+    "defesaMental": 5,
+    "defesaSocial": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 2,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Picada do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "perfuracao",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "2d6+2 +1",
+        "dano": "1d6 −2 (P) · perf. 0",
+        "perfArma": 0
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 2,
+      "furtividade": 4,
+      "briga": 2,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 2,
+      "integridade": 0,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 2,
+      "equilibrio": 2,
+      "escalada": 2,
+      "natacao": 0,
+      "voo": 0,
+      "musculatura": 2
+    }
+  },
+  {
+    "id": "enxame-de-caranguejos",
+    "nome": "Enxame de caranguejos",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "Uma maré de caranguejos que atravessa a praia num rumo só e belisca o que não sai do caminho; mais obstáculo do que caçador.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 26,
+    "defesa": 4,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 0,
+      "destreza": 2,
+      "vigor": 3,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Pinça do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "corte",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "2d6 +1",
+        "dano": "1d6 −2 (C)",
+        "perfArma": null
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 2,
+      "furtividade": 0,
+      "briga": 2,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 1,
+      "integridade": 1,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 2,
+      "equilibrio": 0,
+      "escalada": 0,
+      "natacao": 0,
+      "voo": 0,
+      "musculatura": 3
+    }
+  },
+  {
+    "id": "enxame-de-centopeias",
+    "nome": "Enxame de centopeias",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "Lacraias que sozinhas quase não ferem gente, mas que aos centos cobrem quem cai entre elas de picadas que doem como de abelha.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 24,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 2,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 3,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Garra de veneno",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "perfuracao",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "2d6+2 +1",
+        "dano": "1d6 −2 (P) · perf. 0",
+        "perfArma": 0
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 2,
+      "furtividade": 2,
+      "briga": 2,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 3,
+      "integridade": 0,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 2,
+      "equilibrio": 1,
+      "escalada": 2,
+      "natacao": 0,
+      "voo": 0,
+      "musculatura": 2
+    }
+  },
+  {
+    "id": "enxame-de-formigas",
+    "nome": "Enxame de formigas (formigas-de-correição)",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 4,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "A frente de uma marcha de formigas de correição, que cobre e desmancha o que não foge; quem está preso, caído ou imóvel sofre mais.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 26,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "vontade": 4,
+    "soak": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 3,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Mordida do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "corte",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "3d6 +1",
+        "dano": "1d6 −2 (C)",
+        "perfArma": null
+      },
+      {
+        "nome": "Ferroada do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "perfuracao",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "3d6 +1",
+        "dano": "1d6 −2 (P) · perf. 0",
+        "perfArma": 0
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 2,
+      "furtividade": 0,
+      "briga": 3,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 2,
+      "integridade": 0,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 2,
+      "equilibrio": 1,
+      "escalada": 2,
+      "natacao": 0,
+      "voo": 0,
+      "musculatura": 5
+    }
+  },
+  {
+    "id": "enxame-de-morcegos",
+    "nome": "Enxame de morcegos",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "A nuvem de morcegos que sai da caverna ao anoitecer e envolve quem está na boca dela; o perigo maior é o pó de guano da caverna.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 34,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 8,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 3,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Mordida do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "perfuracao",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "2d6 +1",
+        "dano": "1d6 −2 (P) · perf. 0",
+        "perfArma": 0
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 2,
+      "furtividade": 2,
+      "briga": 1,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 3,
+      "integridade": 1,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 3,
+      "equilibrio": 0,
+      "escalada": 0,
+      "natacao": 0,
+      "voo": 4,
+      "musculatura": 0
+    }
+  },
+  {
+    "id": "enxame-de-ratos",
+    "nome": "Enxame de ratos",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 2,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "Dezenas de ratos famintos que cercam quem dorme ou não se mexe; cada mordida tira pouco, e o perigo real é a doença.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 28,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 10,
+    "vontade": 3,
+    "soak": {
+      "impacto": 4,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 4,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Mordida do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "perfuracao",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "2d6+2 +1",
+        "dano": "1d6 −2 (P) · perf. 0",
+        "perfArma": 0
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 2,
+      "furtividade": 2,
+      "briga": 2,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 2,
+      "integridade": 1,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 4,
+      "equilibrio": 2,
+      "escalada": 2,
+      "natacao": 2,
+      "voo": 0,
+      "corrida": 0,
+      "musculatura": 2
+    }
+  },
+  {
+    "id": "enxame-de-sanguessugas",
+    "nome": "Enxame de sanguessugas",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "Centenas de sanguessugas no fundo da lagoa parada, que acham quem entra pelo calor e pela onda; a ferida sangra por horas.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 26,
+    "defesa": 4,
+    "defesaMental": 5,
+    "defesaSocial": 6,
+    "vontade": 3,
+    "soak": {
+      "impacto": 3,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 4",
+    "atributos": {
+      "forca": 0,
+      "destreza": 2,
+      "vigor": 3,
+      "percepcao": 2,
+      "inteligencia": 1,
+      "raciocinio": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Mordida do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "corte",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "2d6 +1",
+        "dano": "1d6 −2 (C)",
+        "perfArma": null
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 2,
+      "furtividade": 2,
+      "briga": 2,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 1,
+      "integridade": 0,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 2,
+      "equilibrio": 0,
+      "escalada": 0,
+      "natacao": 0,
+      "voo": 0,
+      "corrida": 0,
+      "musculatura": 2
+    }
+  },
+  {
+    "id": "enxame-de-vespas",
+    "nome": "Enxame de vespas",
+    "tipo": "fera",
+    "categoria": "animal",
+    "ameaca": 3,
+    "centelha": 0,
+    "conceito": "",
+    "descricao": "A parte da colônia que sai na defesa do ninho e persegue quem mexeu nele; cada picada é pequena, mas são centenas.",
+    "tags": [
+      "animal"
+    ],
+    "pv": 24,
+    "defesa": 6,
+    "defesaMental": 6,
+    "defesaSocial": 6,
+    "vontade": 4,
+    "soak": {
+      "impacto": 2,
+      "corte": 0,
+      "perfuracao": 0
+    },
+    "resistPerf": 0,
+    "iniciativa": "1d6 + 5",
+    "atributos": {
+      "forca": 0,
+      "destreza": 3,
+      "vigor": 2,
+      "percepcao": 3,
+      "inteligencia": 1,
+      "raciocinio": 2,
+      "influencia": 1,
+      "perspicacia": 1,
+      "compostura": 1
+    },
+    "ataques": [
+      {
+        "nome": "Ferroada do enxame",
+        "atrib": "destreza",
+        "pericia": "briga",
+        "dado": 1,
+        "tipo": "perfuracao",
+        "classe": "leve",
+        "ticks": 5,
+        "acerto": 1,
+        "pool": "3d6 +1",
+        "dano": "1d6 −2 (P) · perf. 0",
+        "perfArma": 0
+      }
+    ],
+    "tecnicas": [],
+    "artes": [],
+    "pericias": {
+      "prontidao": 3,
+      "furtividade": 0,
+      "briga": 3,
+      "bloqueio": 0,
+      "esquiva": 0,
+      "atletismo": 2,
+      "integridade": 0,
+      "resistencia": 2,
+      "empatia": 0,
+      "sobrevivencia": 2,
+      "equilibrio": 0,
+      "escalada": 0,
+      "natacao": 0,
+      "voo": 0,
+      "musculatura": 2
     }
   },
   {

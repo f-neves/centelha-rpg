@@ -8,7 +8,7 @@ const nomes: Record<string,string> = {forca:'Força',destreza:'Destreza',vigor:'
   <p class="besta-porte"><b>{forma.nome}</b> · {i.tamanho} · {i.corpo.medida} · {i.corpo.peso}</p>
   {i.segundoTamanho && <p>Segundo Tamanho: {i.segundoTamanho}</p>}
   <dl class="besta-stats">
-    <div><dt>PV</dt><dd>{i.combate.pv}</dd></div><div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
+    <div><dt>{i.enxame ? 'PV por quadrado' : 'PV'}</dt><dd>{i.combate.pv}</dd></div><div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
     <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div><div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
     <div><dt>Absorção</dt><dd>{Object.values(i.combate.absorcao).join('/')}</dd></div><div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
   </dl>

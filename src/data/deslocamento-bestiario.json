@@ -798,21 +798,21 @@
   "batalha": 1,
   "arranque": 1,
   "corrida": 2,
-  "ft": 20,
+  "ft": 30,
   "origem": "ficha"
  },
  "enxame-de-centopeias": {
   "batalha": 1,
   "arranque": 2,
   "corrida": 3,
-  "ft": 20,
+  "ft": 30,
   "origem": "ficha"
  },
  "enxame-de-formigas": {
   "batalha": 1,
   "arranque": 2,
   "corrida": 3,
-  "ft": 20,
+  "ft": 30,
   "origem": "ficha"
  },
  "enxame-de-morcegos": {
@@ -831,9 +831,9 @@
   "origem": "ficha"
  },
  "enxame-de-sanguessugas": {
-  "batalha": 1,
-  "arranque": 1,
-  "corrida": 1,
+  "batalha": 0,
+  "arranque": 0,
+  "corrida": 0,
   "ft": 30,
   "origem": "ficha",
   "nota": "nado 30: o enxame de sanguessugas vive na água"

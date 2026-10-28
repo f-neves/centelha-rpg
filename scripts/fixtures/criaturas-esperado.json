@@ -12384,6 +12384,10 @@
   "enxame-de-aranhas": {
    "sha256": "c2e5014c20d899f27702bcb7c2c980708790d4f80d49eec41ad5cc15a44751b4",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 3500,
+     "tamanhoEquivalente": "pequeno"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -12476,19 +12480,15 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Pequena"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "enxame-de-caranguejos": {
    "sha256": "d07d26d4182b6fb95e104dec1c3c9fe3716dc0cb52b6d44d6df6153498542dc2",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 20,
+     "tamanhoEquivalente": "pequeno"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -12581,19 +12581,15 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Pequena"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "enxame-de-centopeias": {
    "sha256": "5319f991d66de04ca3e3ec15c7583c61aa69c62fbd23aaf074fc48799b69db68",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 250,
+     "tamanhoEquivalente": "pequeno"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -12686,19 +12682,15 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Pequena"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "enxame-de-formigas": {
    "sha256": "91e75af742d3fab72b2a8a3cd25b66e5e8ff7d9a326bc01442afed7904d2e5ba",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 7000,
+     "tamanhoEquivalente": "pequeno"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -12813,19 +12805,15 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Pequena"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "enxame-de-morcegos": {
    "sha256": "af449386eeeb9bc2b9582ff0765e1a62808b0891323fc0e505d6d73bc96879e1",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 20,
+     "tamanhoEquivalente": "medio"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -12921,19 +12909,15 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Média"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "enxame-de-ratos": {
    "sha256": "38b988da4f2f6204d64164dbcf9f88b92f360cc2a2ccd7a9af58f37394687fc3",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 40,
+     "tamanhoEquivalente": "pequeno"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -13029,19 +13013,15 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Pequena"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "enxame-de-sanguessugas": {
    "sha256": "c2e446c49935edd9d625e3cbffa15611310abc93493d687335ae02d9621b6a43",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 400,
+     "tamanhoEquivalente": "pequeno"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -13135,19 +13115,15 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Pequena"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "enxame-de-vespas": {
    "sha256": "e02e1c06ff95b63e3ef283efa8845d8ca65fbeb9a068053788cb7e5aea39637e",
    "entrada": {
+    "enxame": {
+     "individuosPorQuadrado": 300,
+     "tamanhoEquivalente": "pequeno"
+    },
     "categoria": "animal",
     "centelha": 0,
     "atributos": {
@@ -13241,15 +13217,7 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "ficha": {
-    "enxame": {
-     "contaComo": "Pequena"
-    }
-   },
-   "paradas": [
-    "enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)"
-   ]
+   }
   },
   "erinia": {
    "sha256": "039e84564ef68a3679c383b97b19ce1543d5ab335f0dc036e603efbe19622b64",

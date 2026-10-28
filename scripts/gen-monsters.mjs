@@ -142,6 +142,7 @@ function build(c, fonte) {
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao, ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}) })),
+    ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),
     comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
     ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),
     formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,criatura:build(fo.ficha.motor.stat,fo.ficha)})),
@@ -254,7 +255,7 @@ const CAMPOS_MESA = [
   // sem nada acusar, porque `null` e um valor que o contrato permite. Quem pega
   // isso agora e o `test-sentidos.mjs`.
   'habilidades', 'habilidadesSec',
-  'artes', 'tecnicas', 'combate', 'ecologia', 'corpo', 'formas', 'formaPrincipal', 'segundoTamanho',
+  'artes', 'tecnicas', 'combate', 'ecologia', 'corpo', 'formas', 'formaPrincipal', 'segundoTamanho', 'enxame',
 ];
 /**
  * O QUE FICA DE FORA DA MESA, DECLARADO, e esta lista é o conserto da CLASSE e

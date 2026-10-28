@@ -13,7 +13,7 @@ import ARMADURAS from '../data/armaduras.json';
 import ESCUDOS from '../data/escudos.json';
 import ARMAS from '../data/armas.json';
 import RACAS from '../data/racas.json';
-import { defesa, defesaMental as defMental, defesaSocial as defSocial, energia as energiaDe, mana as manaDe, iniciativa as iniciativaDe, centelhaNaJogada, pvPorte, comRequisitoDeForca, forcaNoArco, type Porte, ataqueCentelha, empilharArmaduras, forcaFaltando, deslocamento, MODO_SIGLA, MODO_ORDEM } from './calc';
+import { defesa, defesaMental as defMental, defesaSocial as defSocial, energia as energiaDe, mana as manaDe, iniciativa as iniciativaDe, centelhaNaJogada, pvPorte, pv as pvDoTamanho, comRequisitoDeForca, forcaNoArco, type Porte, ataqueCentelha, empilharArmaduras, forcaFaltando, deslocamento, MODO_SIGLA, MODO_ORDEM } from './calc';
 import { ARMA, ESCUDO as ESCUDO_EQUIP, armaDoSlot, escudoDoSlot, armadurasDe, armaComMod, escudoComMod } from './equip';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 export type Tamanho = Porte;
@@ -55,6 +55,7 @@ export interface EntradaCriatura {
     habilidadesSec: Num;
     vontade: number;
     corpo: CorpoEntrada;
+    enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Tamanho };
     bonusPV?: number;
     couraca?: number;
     artes?: Num;
@@ -192,8 +193,10 @@ export function criatura(e: EntradaCriatura) {
         : defSocial({ compostura: at.compostura ?? 0, sociabilidade: habDe(e, 'sociabilidade'), centelha: ce });
     const absorcao = { impacto: (at.vigor ?? 0) + ce, corte: ce, perfuracao: ce };
     const comArtes = Object.values(e.artes || {}).some((n) => n > 0);
+    const enxame = e.enxame ? enxamePorQuadrado(e) : null;
     const r: any = {
-        pv: kg === undefined ? null : pvDaMassa(kg, at.vigor ?? 0, ct.linhaPV) + (e.bonusPV ?? 0),
+        ...(enxame ? {enxame} : {}),
+        pv: enxame ? enxame.pvCheio : kg === undefined ? null : pvDaMassa(kg, at.vigor ?? 0, ct.linhaPV) + (e.bonusPV ?? 0),
         pesoErguido: ct.naoErgue || kg === undefined ? null
             : pesoErguido(kg, at.forca ?? 0, e.habilidadesSec.halterofilismo ?? 0, e.habilidadesSec.musculatura ?? 0),
         faixa: kg === undefined ? null : faixaDaMassa(kg),
@@ -340,7 +343,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     };
     Object.defineProperty(f, 'motor', { value: {
       stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
-      corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
+      enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
       comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
       sentidos: (c.sentidos || []).filter(vale).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
       formas: incluirFormas ? (original.formas || []).map((forma: any)=>({
@@ -599,4 +602,15 @@ export function tetoDaRajadaDaCriatura(a: AtaqueEntrada) {
 export function textoDaRajada() {
   const r = (regras as any).combate.pgr.reforma.rajada;
   return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. O limite depende da classe da arma.';
+}
+
+/** P10/P13, 28/10/2026: PV por Tamanho equivalente; a quantidade decide a proporção. */
+export function enxamePorQuadrado(e: EntradaCriatura, individuos?: number) {
+  if (!e.enxame) throw Error('entrada sem bloco enxame');
+  const cheio = e.enxame.individuosPorQuadrado, tamanho = e.enxame.tamanhoEquivalente;
+  if (!Number.isInteger(cheio) || cheio < 1 || !ORDEM.includes(tamanho)) throw Error('bloco enxame inválido');
+  const presentes = individuos ?? cheio;
+  if (!Number.isInteger(presentes) || presentes < 0 || presentes > cheio) throw Error('indivíduos fora do quadrado cheio');
+  const pvCheio = pvDoTamanho(e.atributos.vigor ?? 0, tamanho) + (e.bonusPV ?? 0);
+  return {pvCheio, pv:Math.floor(pvCheio * presentes / cheio), individuos:presentes, minimo:Math.ceil(cheio/4), aindaEnxame:presentes*4>=cheio};
 }

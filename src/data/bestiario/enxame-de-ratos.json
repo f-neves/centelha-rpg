@@ -1,38 +1,31 @@
 {
-  "ordem": 275,
   "id": "enxame-de-ratos",
   "idAntigo": "mon-rat-swarm",
   "nome": "Enxame de ratos",
   "nomeIngles": "Rat Swarm",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "Dezenas de ratos famintos que cercam quem dorme ou não se mexe; cada mordida tira pouco, e o perigo real é a doença.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/enxame-de-ratos_criatura.webp",
-  "porte": "Minúsculo",
-  "dimensoes": {
-    "medida": "0,4 m de comprimento, 0,08 m de altura",
-    "peso": "0,3 kg",
-    "comprimento": 0.4,
-    "largura": 0.06,
-    "altura": 0.08
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 2,
-    "escalada": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 4,
-    "corrida": 6
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "enxame": {
+    "individuosPorQuadrado": 40,
+    "tamanhoEquivalente": "pequeno"
+  },
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.08,
+    "largura": 0.06,
+    "profundidade": null,
+    "comprimento": 0.4,
+    "comprimentoSemCauda": 0.215,
+    "caudaGrossa": false,
+    "massa": 0.3,
+    "area": 0.01,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 4,
@@ -43,91 +36,147 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 2,
     "furtividade": 2,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 4
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 2,
     "escalada": 2,
     "natacao": 2,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "audição",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "doenças",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "sobre quem dorme",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      },
+      {
+        "foco": "audição",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "resistencia": [
+      {
+        "foco": "doenças",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "sobre quem dorme",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 4,
+      "corrida": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida do enxame",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [],
+  "comoLuta": [],
+  "sentidos": [
     {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +2 (Especialidade natural) · alcance · olfato muito desenvolvido. · audição: Prontidão (audição) +2 (Especialidade natural) · alcance · ouve ultrassom. · vibração: sem Especialidade · percebe vibrações mínimas. · visão: fraca, cerca de 20/600 no rato pigmentado; dicromata, enxerga ultravioleta. Texto."
-    }
-  ],
-  "doencas": [
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2 (Especialidade natural) · alcance · olfato muito desenvolvido (Wikipédia)",
+      "formas": "todas"
+    },
     {
-      "nome": "Doença no jogo",
-      "texto": "Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
-    }
-  ],
-  "enxame": [
+      "nome": "audição",
+      "descricao": "Prontidão (audição) +2 (Especialidade natural) · alcance · ouve ultrassom (Wikipédia)",
+      "formas": "todas"
+    },
     {
-      "nome": "Enxame no jogo",
-      "texto": "40 ratos por quadrado · cobre o chão, sobe e nada · quem fere: arma comum, um quadrado por golpe; fogo e área também · armadura: vale, mas a roupa comum não conta · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
+      "nome": "vibração",
+      "descricao": "sem Especialidade · percebe vibrações mínimas (ADW)",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "fraca, cerca de 20/600 no rato pigmentado; dicromata, enxerga ultravioleta (Wikipédia). Texto",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "(nada submerso, Wikipédia, sem tempo medido)",
+    "mente": "animal",
+    "tracos": "passa por fresta de cerca de 1,3 cm (UC IPM); rói plástico, espuma, madeira e massa de vedação (UC IPM)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônia (grupos hierárquicos em tocas extensas)",
+    "atividade": "noturno (e crepuscular)",
+    "dieta": "onívoro : a pesquisa não descreve a dieta; o predador oportunista da ficha antiga e o habitat de lixo e esgoto (ADW)",
+    "caca": "forrageio (de 30 a 150 m do ninho, à noite)",
+    "dianteDeGente": "foge; morde quem dorme e não se mexe, quase sempre à noite (72 a 100% dos casos), sobretudo bebês e acamados"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "subterrâneo",
+      "pântano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Dezenas de ratos famintos que cercam quem dorme ou não se mexe; cada mordida tira pouco, e o perigo real é a doença.",
   "lore": [
     {
       "titulo": "Fome que vira massacre",
@@ -142,93 +191,30 @@
       "texto": "Não há líder nem inteligência guiando o enxame, apenas fome coletiva e instinto, o que o torna ainda mais aterrorizante para quem se vê cercado."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: colônia (grupos hierárquicos em tocas extensas)."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Doença no jogo: Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
     },
     {
       "titulo": "Enxame",
       "texto": "40 ratos por quadrado · cobre o chão, sobe e nada · quem fere: arma comum, um quadrado por golpe; fogo e área também · armadura: vale, mas a roupa comum não conta · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Cada quadrado cheio tem 28 PV (40 ratos), e o PV cai com os ratos: metade dos ratos, metade do PV. Os ratos são do tamanho que aceita arma comum: espada e porrete acertam o quadrado, contra a Defesa 4 (a de um rato, menos 2, como na Regra de Horda). O enxame não esquiva nem apara, e se divide em quadrados que andam soltos; um bando inteiro ocupa vários quadrados. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 1 pela Ameaça 2, provisório), e a armadura vale, mas a roupa comum não. Dentro, só fugir ou tirar os ratos de cima sai sem teste. Contra quem dorme, entra com Furtividade (sobre quem dorme) 1. O perigo real continua sendo a doença (leptospirose) e a vítima que não se mexe."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Urban",
-      "Underground",
-      "Swamp"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/enxame-de-ratos_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Rat Swarm",
-    "cr": "2",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 2,
-      "des": 15,
-      "con": 13,
-      "int": 2,
-      "sab": 13,
-      "car": 2
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "a cernelha não foi achada; 8 cm é estimativa do Arquiteto (`dimensoes.md`)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 15,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 28,
-    "esquiva": 6,
-    "bloqueio": 6,
-    "defesa": 6,
-    "defesaMental": 6,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 1.4,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 4,
-        "corrida": 6
-      }
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "ficha antiga; ADW"
     }
-  },
-  "notasObservacao": [
-    "`forca`: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a mordida de 13 N fura e solta. O feito do rato (sobe escada com 1 kg preso à cauda depois de 8 semanas de treino, 0,32 kg sem treino; Kwon 2025, `enxame-de-ratos-carga.md`) agora fica na ordem do peso erguido provisório (1,40 kg), um pouco abaixo dele (D-162)",
-    "`pesoErguido` e `carga`: provisórios (decisões 14 e 16). A carga fica \"não (enxame)\", com a conta só de registro (D-162, D-169)",
-    "`pv`: 28 (em vigor na Etapa 2, 20/10/2026); antes: 9 na Faixa 1 pela decisão 21 (5 + Vigor); a outra proposta do autor daria 12. A vida é \"o maior problema\" e o autor vai voltar a ela (decisão 20) (D-174)",
-    "`velocidade`: congelada (decisão 23). Não bate com o real: 23 km/h contra 9,7 do rato (Garland 1983, método desconhecido), +137% (D-170)",
-    "`area`: 0,01 m² de lado pela conta nova, contra 0,02 da ficha de hoje; o Alvo segue Minúsculo (decisões 7 e 25)",
-    "`dimensoes.largura`: 0,06 m, estimada pelo Arquiteto, sem fonte; a altura de 0,08 m também é estimativa",
-    "`vigor`: 4 pela resistência geral do rato no esgoto e no lixo. A leptospirose saiu do Vigor e foi para Resistência (doenças) +2, como a D-157 pedia (D-157, D-174)",
-    "`atributosSociais`: Perspicácia de 2 para 1 pela diretriz 1, que trata o rato do enxame como não social; a pesquisa dá grupos hierárquicos em tocas (Wikipédia), e o rato gigante e o rato atroz, do mesmo Rattus norvegicus, ficam sociais. Ver os desvios (D-174)",
-    "`furtividade`: 2, e não o 3 de que o levantamento o dá como candidato: a mordida em quem dorme é hábito estreito, e vai na Especialidade (sobre quem dorme) 1 (D-174)",
-    "`natacao` e `escalada`: 2 cada, pelo \"nada bem\" (Wikipédia) e pelo \"escala\" (UC IPM), sem número medido (D-174)",
-    "`couraca`: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): forrageia de 30 a 150 m do ninho toda noite (UC IPM, [medido]); em esteira de laboratório, chega à exaustão a 1,0 a 1,1 km/h (Dellavechia-De-Carvalho 2025, teste aeróbico de rato sedentário, e não fuga).",
-    "`alvo`: o Minúsculo é o do rato; o enxame usa o tamanho que apresenta no acerto (D-077), e o +9 não vale para o enxame inteiro (`passada-30.md` §2.1). Se o limite de tamanho do Bloqueio (`combate.md`:333) também usa o tamanho apresentado fica para o Mestre (D-087)"
   ]
 }

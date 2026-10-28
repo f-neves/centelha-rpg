@@ -15675,14 +15675,15 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -15693,11 +15694,22 @@
   "habilidades": {
    "prontidao": 2,
    "furtividade": 4,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 2,
+   "escalada": 2,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15707,8 +15719,8 @@
    "defesaMental": 5,
    "absorcao": {
     "impacto": 2,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -15721,7 +15733,7 @@
     {
      "nome": "Picada do enxame",
      "pool": "2d6+2 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -15729,23 +15741,36 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Forest",
-    "Underground",
-    "Ruins"
+    "floresta",
+    "subterrâneo",
+    "ruínas"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "corpo": {
-   "medida": "0,0046 m de comprimento, 0,003 m de altura",
-   "peso": "0,000007 kg"
+   "postura": "oito patas",
+   "apoio": "outro",
+   "altura": 0.003,
+   "largura": 0.002,
+   "profundidade": null,
+   "comprimento": 0.0046,
+   "massa": 0.000007,
+   "area": 0,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.003 m de altura, 0.0046 m de comprimento",
+   "peso": "0.000007 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 3500,
+   "tamanhoEquivalente": "pequeno"
+  }
  },
  {
   "id": "enxame-de-caranguejos",
@@ -15765,14 +15790,15 @@
    "forca": 0,
    "destreza": 2,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 2,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -15783,11 +15809,22 @@
   "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 1,
    "integridade": 1,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 3
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15797,8 +15834,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -15811,7 +15848,7 @@
     {
      "nome": "Pinça do enxame",
      "pool": "2d6 +1",
-     "dano": "1d6 −2 corte",
+     "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -15819,21 +15856,34 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Water",
-    "Coast"
+    "aquático",
+    "litoral"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "0,067 m de comprimento, 0,04 m de altura",
-   "peso": "0,148 kg"
+   "postura": "oito patas e duas pinças",
+   "apoio": "outro",
+   "altura": 0.04,
+   "largura": 0.079,
+   "profundidade": null,
+   "comprimento": 0.067,
+   "massa": 0.148,
+   "area": 0.008,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.04 m de altura, 0.067 m de comprimento",
+   "peso": "0.148 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 20,
+   "tamanhoEquivalente": "pequeno"
+  }
  },
  {
   "id": "enxame-de-centopeias",
@@ -15853,14 +15903,15 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 3
+   "raciocinio": 3,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -15871,11 +15922,22 @@
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 3,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 1,
+   "escalada": 2,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15885,8 +15947,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 2,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -15899,7 +15961,7 @@
     {
      "nome": "Garra de veneno",
      "pool": "2d6+2 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -15907,22 +15969,35 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Forest",
-    "Underground"
+    "floresta",
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "corpo": {
-   "medida": "0,03 m de comprimento, 0,005 m de altura",
-   "peso": "0,0001 kg"
+   "postura": "quinze pares de patas",
+   "apoio": "outro",
+   "altura": 0.005,
+   "largura": 0.004,
+   "profundidade": null,
+   "comprimento": 0.03,
+   "massa": 0.0001,
+   "area": 0,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.005 m de altura, 0.03 m de comprimento",
+   "peso": "0.0001 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 250,
+   "tamanhoEquivalente": "pequeno"
+  }
  },
  {
   "id": "enxame-de-formigas",
@@ -15942,14 +16017,15 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 3,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -15960,11 +16036,22 @@
   "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
+   "briga": 3,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 1,
+   "escalada": 2,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 5
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -15974,8 +16061,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -15988,7 +16075,7 @@
     {
      "nome": "Mordida do enxame",
      "pool": "3d6 +1",
-     "dano": "1d6 −2 corte",
+     "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -15996,7 +16083,7 @@
     {
      "nome": "Ferroada do enxame",
      "pool": "3d6 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -16004,20 +16091,33 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Jungle"
+    "selva"
    ],
    "clima": [
-    "Tropical"
+    "tropical"
    ]
   },
   "corpo": {
-   "medida": "0,006 m de comprimento, 0,002 m de altura",
-   "peso": "0,000003 kg"
+   "postura": "seis patas",
+   "apoio": "outro",
+   "altura": 0.002,
+   "largura": 0.0015,
+   "profundidade": null,
+   "comprimento": 0.006,
+   "massa": 0.000003,
+   "area": 0,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.002 m de altura, 0.006 m de comprimento",
+   "peso": "0.000003 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 7000,
+   "tamanhoEquivalente": "pequeno"
+  }
  },
  {
   "id": "enxame-de-morcegos",
@@ -16037,14 +16137,15 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -16055,11 +16156,22 @@
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 1,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 3,
    "integridade": 1,
-   "sociabilidade": 3
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 3
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 4,
+   "musculatura": 0
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16069,8 +16181,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -16083,7 +16195,7 @@
     {
      "nome": "Mordida do enxame",
      "pool": "2d6 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -16091,23 +16203,39 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Underground",
-    "Ruins",
-    "Urban"
+    "subterrâneo",
+    "ruínas",
+    "urbano"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "corpo": {
-   "medida": "0,09 m de comprimento, 0,03 m de altura",
-   "peso": "0,011 kg"
+   "postura": "voador",
+   "apoio": "outro",
+   "altura": 0.03,
+   "largura": 0.025,
+   "profundidade": null,
+   "comprimento": 0.09,
+   "comprimentoSemCauda": 0.054,
+   "caudaGrossa": false,
+   "envergadura": 0.28,
+   "massa": 0.011,
+   "area": 0.01,
+   "posturaDoTamanho": "de baixo, asas abertas",
+   "medida": "0.03 m de altura, 0.09 m de comprimento",
+   "peso": "0.011 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 20,
+   "tamanhoEquivalente": "medio"
+  }
  },
  {
   "id": "enxame-de-ratos",
@@ -16127,14 +16255,15 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 4,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -16145,11 +16274,23 @@
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 1,
-   "sociabilidade": 4
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 4
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 2,
+   "escalada": 2,
+   "natacao": 2,
+   "voo": 0,
+   "corrida": 0,
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16159,8 +16300,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 4,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -16173,7 +16314,7 @@
     {
      "nome": "Mordida do enxame",
      "pool": "2d6+2 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -16181,22 +16322,37 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Urban",
-    "Underground",
-    "Swamp"
+    "urbano",
+    "subterrâneo",
+    "pântano"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "0,4 m de comprimento, 0,08 m de altura",
-   "peso": "0,3 kg"
+   "postura": "quatro patas",
+   "apoio": "quadrupede",
+   "altura": 0.08,
+   "largura": 0.06,
+   "profundidade": null,
+   "comprimento": 0.4,
+   "comprimentoSemCauda": 0.215,
+   "caudaGrossa": false,
+   "massa": 0.3,
+   "area": 0.01,
+   "posturaDoTamanho": "vista de lado",
+   "medida": "0.08 m de altura, 0.4 m de comprimento",
+   "peso": "0.3 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 40,
+   "tamanhoEquivalente": "pequeno"
+  }
  },
  {
   "id": "enxame-de-sanguessugas",
@@ -16216,14 +16372,15 @@
    "forca": 0,
    "destreza": 2,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -16234,11 +16391,23 @@
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 1,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 0,
+   "corrida": 0,
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16248,21 +16417,21 @@
    "defesaMental": 5,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 1
+    "batalha": 0,
+    "arranque": 0,
+    "corrida": 0
    },
    "ataques": [
     {
      "nome": "Mordida do enxame",
      "pool": "2d6 +1",
-     "dano": "1d6 −2 corte",
+     "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -16270,22 +16439,35 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Swamp",
-    "Water"
+    "pântano",
+    "aquático"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "corpo": {
-   "medida": "0,12 m de comprimento, 0,005 m de altura",
-   "peso": "0,004 kg"
+   "postura": "verme (corpo deitado)",
+   "apoio": "outro",
+   "altura": 0.005,
+   "largura": 0.01,
+   "profundidade": null,
+   "comprimento": 0.12,
+   "massa": 0.004,
+   "area": 0,
+   "posturaDoTamanho": "de cima",
+   "medida": "0.005 m de altura, 0.12 m de comprimento",
+   "peso": "0.004 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 400,
+   "tamanhoEquivalente": "pequeno"
+  }
  },
  {
   "id": "enxame-de-vespas",
@@ -16305,14 +16487,15 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "virtudes": {
+   "bravura": 3,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -16323,11 +16506,22 @@
   "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
+   "briga": 3,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 2
+  },
   "artes": [],
   "tecnicas": [],
   "combate": {
@@ -16337,8 +16531,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 2,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -16351,7 +16545,7 @@
     {
      "nome": "Ferroada do enxame",
      "pool": "3d6 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
@@ -16359,20 +16553,34 @@
    ]
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Forest"
+    "floresta"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "corpo": {
-   "medida": "0,015 m de comprimento, 0,005 m de altura",
-   "peso": "0,000084 kg"
+   "postura": "voador",
+   "apoio": "outro",
+   "altura": 0.005,
+   "largura": 0.004,
+   "profundidade": null,
+   "comprimento": 0.015,
+   "envergadura": 0.02,
+   "massa": 0.000084,
+   "area": 0,
+   "posturaDoTamanho": "de cima, asas abertas, o indivíduo",
+   "medida": "0.005 m de altura, 0.015 m de comprimento",
+   "peso": "0.000084 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": null,
+  "enxame": {
+   "individuosPorQuadrado": 300,
+   "tamanhoEquivalente": "pequeno"
+  }
  },
  {
   "id": "erinia",

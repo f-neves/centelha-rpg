@@ -187,7 +187,7 @@ if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || ap
   if (converterFicha(LOBO, {site:SITE}).criatura.idAntigo !== 'mon-werewolf') falhas.push('alias canônico foi perdido');
 }
 
-// Sem modelo de Vida por quadrado, o enxame permanece na fonte legada (plano, seção 4).
+// P10/P13: uma linha de enxame incompleta não permite inventar quantidade nem equivalência.
 {
   const enxame = LOBO.replace(/^(\| PV base \| )[^|]*/m, '$1Por quadrado cheio: **24** ');
   if (!converterFicha(enxame, {site:SITE}).paradas.some(x=>x.startsWith('enxame:'))) falhas.push('enxame sem formato foi convertido');
@@ -235,6 +235,11 @@ for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis perna
   const r = converterFicha(LOBO.replace('Deslocamento: o do lobo do molde (7 · 10 · 16)', 'Deslocamento em terra: Batalha 7, Arranque 10, Corrida 16'), { site: SITE });
   if (r.paradas.length || r.criatura.formas.find(f=>f.id==='lobo')?.deslocamento?.terra?.corrida !== 16) falhas.push('deslocamento de Variante por marchas recusado');
 }
+
+for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:1.5,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:10,tamanhoEquivalente:'sem-tamanho'},{individuosPorQuadrado:10,tamanhoEquivalente:'pequeno',pv:24}]) {
+  if (criaturaNovaSchema.shape.enxame.safeParse(invalido).success) falhas.push('P10: bloco inválido ou com PV gravado passou');
+}
+if (!criaturaNovaSchema.shape.enxame.safeParse({individuosPorQuadrado:3500,tamanhoEquivalente:'pequeno'}).success) falhas.push('P10: bloco aprovado foi recusado');
 
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);

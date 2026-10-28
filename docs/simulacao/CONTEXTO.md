@@ -236,7 +236,7 @@ Quem tiver escrito a explicação com outras palavras continua contado como aber
   chama `gravarVida` sem piso e `curarPv` (`src/pages/mesa/grid.astro:2682`) só tem teto. É o único caminho do
   projeto que atravessa o zero, e ninguém o desenhou assim;
 - **o servidor não conhece Centelha.** A tabela `combatentes` (`supabase/migracao-2.sql:128-142`)
-  não tem a coluna, e quem sabe é o cliente, que monta a peça com `centelha` (`src/lib/motor.ts:360`). Cobra
+  não tem a coluna, e quem sabe é o cliente, que monta a peça com `centelha` (`src/lib/motor.ts:363`). Cobra
   resposta quando a trava da cura chegar ao RPC.
 
 ## A frente do Grid, que a do jogador novo interrompeu

@@ -33,12 +33,12 @@ const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCa
 
 // As fichas corrigidas de P3/P4 são conferidas sem exceção numérica.
 
-async function carregarMotor() {
+async function carregarMotor(semEnxame = false) {
   const fonte = path.join(ROOT, 'src/lib/motor.ts');
   if (!fs.existsSync(fonte)) return null;
-  const saida = path.join(os.tmpdir(), `motor-test-${process.pid}.mjs`);
+  const saida = path.join(os.tmpdir(), `motor-test-${process.pid}${semEnxame ? '-sem-enxame' : ''}.mjs`);
   await build({
-    entryPoints: [fonte], outfile: saida, bundle: true, format: 'esm', platform: 'node',
+    ...(semEnxame ? { stdin: { contents: fs.readFileSync(fonte,'utf8').replace('pv: enxame ? enxame.pvCheio :', 'pv:'), resolveDir:path.dirname(fonte), sourcefile:fonte, loader:'ts' } } : {entryPoints:[fonte]}), outfile: saida, bundle: true, format: 'esm', platform: 'node',
     loader: { '.json': 'json' }, logLevel: 'error', define: { 'import.meta.env': 'globalThis.__ENV__' },
   });
   globalThis.__ENV__ = globalThis.__ENV__ || { BASE_URL: '/', MODE: 'test' };
@@ -67,8 +67,7 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
   // a entrada é a que o conversor escreve, com as escolhas da ficha (o Tamanho perto do corte, a linha de PV na zona)
   const e = c.entrada, x = c.esperado;
   const r = M.criatura(e);
-  if (c.ficha?.enxame) aceitas.push(`${id}.pv (o enxame não tem formato: formato-criatura.md, fim da seção 4)`);
-  else confere(id, 'pv', r.pv, x.pv);
+  confere(id, 'pv', r.pv, x.pv);
   if (x.pesoErguido === null) confere(id, 'pesoErguido', r.pesoErguido, null);
   else if (x.pesoErguido !== undefined) confere(id, 'pesoErguido', r.pesoErguido, x.pesoErguido, tolPeso(x.pesoErguido));
   confere(id, 'faixa', r.faixa, x.faixa);
@@ -159,6 +158,24 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   confere(c.id,'vista sem revisao',JSON.stringify(vista).includes('__REVISAO_PRIVADA_A5__'),false);
   for (const a of vista.motor.stat.ataques) if (['corte','impacto','perfuracao','perfurante'].includes(a.tipo)) confere(c.id,a.nome+' com tipo de dano legível',/\([CIP]\)/.test(a.dano),true);
 }
+// P10/P13: oito números escritos nas fichas, sem PV guardado no bloco enxame.
+const PV_ENXAMES = [['aranhas',24,12,6],['caranguejos',26,13,6],['centopeias',24,12,6],['formigas',26,13,6],['morcegos',34,17,8],['ratos',28,14,7],['sanguessugas',26,13,6],['vespas',24,12,6]];
+const controleSemEnxame = await carregarMotor(true);
+let negativasEnxame = 0;
+for (const [nome,cheio,metade,quarto] of PV_ENXAMES) {
+  const id = 'enxame-de-' + nome, e = FIX.criaturas[id].entrada;
+  confere(id,'P10 cheio',M.criatura(e).pv,cheio);
+  confere(id,'P10 metade',M.enxamePorQuadrado(e,e.enxame.individuosPorQuadrado/2).pv,metade);
+  const minimo = M.enxamePorQuadrado(e).minimo;
+  confere(id,'P10 mínimo',M.enxamePorQuadrado(e,minimo).pv,quarto);
+  confere(id,'P10 mínimo ainda é enxame',M.enxamePorQuadrado(e,minimo).aindaEnxame,true);
+  confere(id,'P10 abaixo do mínimo',M.enxamePorQuadrado(e,minimo-1).aindaEnxame,false);
+  confere(id,'P10 bloco sem PV',Object.keys(e.enxame).some(k=>/pv/i.test(k)),false);
+  if (controleSemEnxame.criatura(e).pv !== cheio) negativasEnxame++;
+}
+confere('P10','controle negativo sem ramo do enxame',negativasEnxame,8);
+console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativasEnxame + ' divergências de PV.');
+
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {
   const porConta = {};

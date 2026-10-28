@@ -134,7 +134,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
 
           <dl class="besta-stats">
-            <div><dt>PV</dt><dd>{i.combate.pv}</dd></div>
+            <div><dt>{i.enxame ? 'PV por quadrado' : 'PV'}</dt><dd>{i.combate.pv}</dd></div>
             <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
             <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>

@@ -23298,19 +23298,28 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,0046 m de comprimento, 0,003 m de altura",
-   "peso": "0,000007 kg"
+   "postura": "oito patas",
+   "apoio": "outro",
+   "altura": 0.003,
+   "largura": 0.002,
+   "profundidade": null,
+   "comprimento": 0.0046,
+   "massa": 0.000007,
+   "area": 0,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.003 m de altura, 0.0046 m de comprimento",
+   "peso": "0.000007 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Forest",
-    "Underground",
-    "Ruins"
+    "floresta",
+    "subterrâneo",
+    "ruínas"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "imagens": [
@@ -23321,24 +23330,36 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 2,
    "furtividade": 4,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 2,
+   "escalada": 2,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 2
+  },
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -23351,8 +23372,8 @@
    "defesaMental": 5,
    "absorcao": {
     "impacto": 2,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -23365,27 +23386,34 @@
     {
      "nome": "Picada do enxame",
      "pool": "2d6+2 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 3500,
+   "tamanhoEquivalente": "pequeno"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "vibração da teia: Prontidão (vibração da teia) +3, só sobre a teia. A colônia acha a presa pela vibração e avança em sincronia. Fora da teia, nada."
+    "nome": "vibração da teia",
+    "descricao": "Prontidão (vibração da teia) +3 , só sobre a teia. A colônia acha a presa pela vibração e avança em sincronia (Jeanson 2022, via National Geographic). Fora da teia, nada"
+   },
+   {
+    "nome": "visão e olfato",
+    "descricao": ""
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "terra": 1,
-   "escalada": 2
+   "terra": 1
   },
   "tecnicas": [],
   "artes": [],
@@ -23399,16 +23427,8 @@
     "texto": "As teias que produzem não prendem presas grandes, servem apenas de abrigo: o enxame caça pela quantidade, não pela armadilha."
    },
    {
-    "titulo": "Comportamento",
-    "texto": "Social: colônia permanente, de menos de 100 a mais de 20.000 aranhas."
-   },
-   {
     "titulo": "Enxame",
     "texto": "3.500 aranhas por quadrado · cobre o chão, a parede e a teia · quem fere: só ataque em área · armadura: ignora, entra pela gola, pela manga e pelas frestas · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 24 PV (3.500 aranhas), e o PV cai com as aranhas: metade delas, 12 PV. Só ataque em área alcança o enxame, porque cada aranha tem o tamanho de uma formiga. O enxame não esquiva nem apara. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 1 pela Ameaça 2, provisório), e ele entra por baixo da roupa e da armadura; a picada fraca já está no pulso. Dentro, só fugir ou tirar as aranhas de cima sai sem teste. Mente simples: não se convence nem se intimida, mas o medo e a magia mental pegam nele. Na teia, com Prontidão (vibração da teia) +3 e Furtividade (na teia) 1, o enxame não é surpreendido e pega de surpresa quem cai nos fios."
    }
   ]
  },
@@ -23428,17 +23448,26 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,067 m de comprimento, 0,04 m de altura",
-   "peso": "0,148 kg"
+   "postura": "oito patas e duas pinças",
+   "apoio": "outro",
+   "altura": 0.04,
+   "largura": 0.079,
+   "profundidade": null,
+   "comprimento": 0.067,
+   "massa": 0.148,
+   "area": 0.008,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.04 m de altura, 0.067 m de comprimento",
+   "peso": "0.148 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Water",
-    "Coast"
+    "aquático",
+    "litoral"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "imagens": [
@@ -23449,24 +23478,36 @@
    "forca": 0,
    "destreza": 2,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 1,
    "integridade": 1,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 3
+  },
   "vontade": 3,
   "aparencia": 6,
   "virtudes": {
+   "bravura": 2,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -23479,8 +23520,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -23493,21 +23534,29 @@
     {
      "nome": "Pinça do enxame",
      "pool": "2d6 +1",
-     "dano": "1d6 −2 corte",
+     "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 20,
+   "tamanhoEquivalente": "pequeno"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "orientação: anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde. Texto."
+    "nome": "orientação",
+    "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde (Adamczewska e Morris 2001; ABC Science). Texto"
+   },
+   {
+    "nome": "os outros",
+    "descricao": ""
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
@@ -23526,16 +23575,8 @@
     "texto": "Pescadores locais atribuem o fenômeno às fases da lua, jurando que certas marés trazem à superfície esse mar vivo de cascos e garras."
    },
    {
-    "titulo": "Comportamento",
-    "texto": "Social: agregação: 43,7 milhões de adultos na ilha, de 0,09 a 1,3 por m² (estimativas concorrentes)."
-   },
-   {
     "titulo": "Enxame",
     "texto": "20 caranguejos por quadrado · cobre o chão, numa maré que anda num rumo só · quem fere: só ataque em área (o caranguejo é menor que um rato) · armadura: vale, só pega o pé e a canela expostos · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 26 PV (20 caranguejos), e o PV cai com eles: metade, 13 PV. É lento e não esquiva nem apara, e só ataque em área o fere: o caranguejo é menor que um rato. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 3 pela Ameaça 3, provisório), e a armadura vale: a bota protege. Dentro, só fugir ou tirar os caranguejos de cima sai sem teste. Mente simples: não se convence nem se intimida, mas o medo e a magia mental pegam nele. Serve de obstáculo, de chão vivo que estraga a carroça, mais do que de inimigo, e não se esconde."
    }
   ]
  },
@@ -23555,18 +23596,27 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,03 m de comprimento, 0,005 m de altura",
-   "peso": "0,0001 kg"
+   "postura": "quinze pares de patas",
+   "apoio": "outro",
+   "altura": 0.005,
+   "largura": 0.004,
+   "profundidade": null,
+   "comprimento": 0.03,
+   "massa": 0.0001,
+   "area": 0,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.005 m de altura, 0.03 m de comprimento",
+   "peso": "0.0001 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Forest",
-    "Underground"
+    "floresta",
+    "subterrâneo"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "imagens": [
@@ -23577,24 +23627,36 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 3
+   "raciocinio": 3,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 3,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 1,
+   "escalada": 2,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 2
+  },
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -23607,8 +23669,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 2,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -23621,34 +23683,41 @@
     {
      "nome": "Garra de veneno",
      "pool": "2d6+2 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 250,
+   "tamanhoEquivalente": "pequeno"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "antenas (tato e olfato): Prontidão (antenas) +2 (Especialidade natural; o mesmo +2 de hoje, agora na lista do corpo). · visão: olhos compostos, sensíveis à luz do dia e muito ao ultravioleta. Texto."
+    "nome": "antenas (tato e olfato)",
+    "descricao": "Prontidão (antenas) +2 (Especialidade natural; o mesmo +2 de hoje, agora na lista do corpo)"
+   },
+   {
+    "nome": "visão",
+    "descricao": "olhos compostos, sensíveis à luz do dia e muito ao ultravioleta (Meyer-Rochow 2006, via Wikipédia). Texto"
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "terra": 1,
-   "escalada": 3
+   "terra": 1
   },
   "tecnicas": [],
   "artes": [],
   "lore": [
    {
     "titulo": "Comportamento",
-    "texto": "Uma massa ondulante de patas e mandíbulas venenosas avança pelo chão como uma onda só, pulsando com fome incessante. Social: solitária; nenhuma agregação achada."
+    "texto": "Uma massa ondulante de patas e mandíbulas venenosas avança pelo chão como uma onda só, pulsando com fome incessante."
    },
    {
     "titulo": "Habitat",
@@ -23657,10 +23726,6 @@
    {
     "titulo": "Enxame",
     "texto": "250 lacraias por quadrado · cobre o chão, a parede e o teto · quem fere: só ataque em área · armadura: ignora, entra por qualquer fresta · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 24 PV (250 lacraias), e o PV cai com elas: metade, 12 PV. Só ataque em área alcança o enxame. Rápido de reação (Iniciativa 1d6 + 5), mas não esquiva nem apara. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 1 pela Ameaça 2 proposta, provisório), e ele entra pelas frestas da roupa: cada picada só dói, mas são centenas. Dentro, só fugir ou tirar as lacraias de cima sai sem teste. Mente simples (Integridade 0): não se convence nem se intimida, e o medo e a magia mental pegam nele."
    }
   ]
  },
@@ -23680,16 +23745,25 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,006 m de comprimento, 0,002 m de altura",
-   "peso": "0,000003 kg"
+   "postura": "seis patas",
+   "apoio": "outro",
+   "altura": 0.002,
+   "largura": 0.0015,
+   "profundidade": null,
+   "comprimento": 0.006,
+   "massa": 0.000003,
+   "area": 0,
+   "posturaDoTamanho": "vista de cima",
+   "medida": "0.002 m de altura, 0.006 m de comprimento",
+   "peso": "0.000003 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Jungle"
+    "selva"
    ],
    "clima": [
-    "Tropical"
+    "tropical"
    ]
   },
   "imagens": [
@@ -23700,24 +23774,36 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 2,
    "furtividade": 0,
+   "briga": 3,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 1,
+   "escalada": 2,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 5
+  },
   "vontade": 4,
   "aparencia": 6,
   "virtudes": {
+   "bravura": 3,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -23730,8 +23816,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -23744,7 +23830,7 @@
     {
      "nome": "Mordida do enxame",
      "pool": "3d6 +1",
-     "dano": "1d6 −2 corte",
+     "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
@@ -23752,27 +23838,34 @@
     {
      "nome": "Ferroada do enxame",
      "pool": "3d6 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 7000,
+   "tamanhoEquivalente": "pequeno"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "feromônio: Prontidão (feromônio) +2 (Especialidade natural; o mesmo +2 de hoje, agora na lista do corpo); a trilha química organiza o ataque. · visão: quase cega, olhos de uma faceta. Texto."
+    "nome": "feromônio",
+    "descricao": "Prontidão (feromônio) +2 (Especialidade natural; o mesmo +2 de hoje, agora na lista do corpo); a trilha química organiza o ataque (Wikipédia)"
+   },
+   {
+    "nome": "visão",
+    "descricao": "quase cega, olhos de uma faceta (ADW). Texto"
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "terra": 1,
-   "escalada": 3
+   "terra": 1
   },
   "tecnicas": [],
   "artes": [],
@@ -23786,16 +23879,8 @@
     "texto": "Comum nas selvas quentes, o enxame se desloca em marchas constantes, obrigando comunidades próximas a fugir ou se trancar até a passagem da praga."
    },
    {
-    "titulo": "Comportamento",
-    "texto": "Social: colônia de 100 mil a 2 milhões (estimativas concorrentes); bivaque nômade."
-   },
-   {
     "titulo": "Enxame",
     "texto": "7.000 operárias por quadrado · cobre o chão e sobe em tudo · quem fere: só ataque em área · armadura: ignora · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 26 PV (7.000 operárias), e o PV cai com elas: metade, 13 PV. Só ataque em área alcança a frente. Não esquiva nem apara. Lenta de verdade (a frente anda 12 m por hora), mas a ficha corre a 10 km/h pela velocidade congelada: o Mestre que quiser o real move a frente devagar e deixa a vítima sair, ou não, se estiver presa. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 5 pela Ameaça 4, provisório), e a armadura não protege. Dentro, só fugir ou tirar as formigas de cima sai sem teste. Mente simples (Integridade 0): o que a mantém no ataque é a frente química, e não a coragem. Não se esconde: a frente se vê e se ouve chegando."
    }
   ]
  },
@@ -23815,19 +23900,31 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,09 m de comprimento, 0,03 m de altura",
-   "peso": "0,011 kg"
+   "postura": "voador",
+   "apoio": "outro",
+   "altura": 0.03,
+   "largura": 0.025,
+   "profundidade": null,
+   "comprimento": 0.09,
+   "comprimentoSemCauda": 0.054,
+   "caudaGrossa": false,
+   "envergadura": 0.28,
+   "massa": 0.011,
+   "area": 0.01,
+   "posturaDoTamanho": "de baixo, asas abertas",
+   "medida": "0.03 m de altura, 0.09 m de comprimento",
+   "peso": "0.011 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Underground",
-    "Ruins",
-    "Urban"
+    "subterrâneo",
+    "ruínas",
+    "urbano"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "imagens": [
@@ -23838,24 +23935,36 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 1,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 3,
    "integridade": 1,
-   "sociabilidade": 3
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 3
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 4,
+   "musculatura": 0
+  },
   "vontade": 3,
   "aparencia": 6,
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -23868,8 +23977,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -23882,27 +23991,35 @@
     {
      "nome": "Mordida do enxame",
      "pool": "2d6 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 20,
+   "tamanhoEquivalente": "medio"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "ecolocalização: Prontidão (ecolocalização) +3. Chamados de 49 a 70 kHz no voo, que caem para 25 a 40 kHz ao achar o alvo. Vale no escuro. · visão e olfato: sem número."
+    "nome": "ecolocalização",
+    "descricao": "Prontidão (ecolocalização) +3 (Especialidade natural, era +4). Chamados de 49 a 70 kHz no voo, que caem para 25 a 40 kHz ao achar o alvo (ADW). Alcance: . Vale no escuro"
+   },
+   {
+    "nome": "visão e olfato",
+    "descricao": "sem número"
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "voo": 5,
-   "terra": 1
+   "terra": 1,
+   "voo": 5
   },
   "tecnicas": [],
   "artes": [],
@@ -23913,7 +24030,7 @@
    },
    {
     "titulo": "Comportamento",
-    "texto": "Só saem em massa ao amanhecer e ao entardecer, ou quando são expulsos de seus covis por algum intruso ou incêndio. Social: colônia."
+    "texto": "Só saem em massa ao amanhecer e ao entardecer, ou quando são expulsos de seus covis por algum intruso ou incêndio."
    },
    {
     "titulo": "Caçada",
@@ -23926,10 +24043,6 @@
    {
     "titulo": "Enxame",
     "texto": "20 morcegos por quadrado · voa, numa coluna do chão a 2,5 m · quem fere: só ataque em área (pá, capa ou tocha contam como área improvisada, pelo Mestre) · armadura: vale, só pega o rosto e as mãos expostos · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 34 PV (20 morcegos), como uma criatura Média, e o PV cai com eles: metade, 17 PV. Só ataque em área alcança a coluna (pá, capa ou tocha contam como área improvisada, pelo Mestre). Não esquiva nem apara. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 1 pela Ameaça 2, provisório), e a armadura vale: a mordida pega só a pele exposta. Dentro, só fugir ou tirar os morcegos de cima sai sem teste. O perigo real é a caverna: a nuvem que sai ao anoitecer cega e desorienta, e o pó de guano passa a histoplasmose. Voa a 14 m por Tick."
    }
   ]
  },
@@ -23949,18 +24062,29 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,4 m de comprimento, 0,08 m de altura",
-   "peso": "0,3 kg"
+   "postura": "quatro patas",
+   "apoio": "quadrupede",
+   "altura": 0.08,
+   "largura": 0.06,
+   "profundidade": null,
+   "comprimento": 0.4,
+   "comprimentoSemCauda": 0.215,
+   "caudaGrossa": false,
+   "massa": 0.3,
+   "area": 0.01,
+   "posturaDoTamanho": "vista de lado",
+   "medida": "0.08 m de altura, 0.4 m de comprimento",
+   "peso": "0.3 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Urban",
-    "Underground",
-    "Swamp"
+    "urbano",
+    "subterrâneo",
+    "pântano"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "imagens": [
@@ -23971,24 +24095,37 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 4,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 1,
-   "sociabilidade": 4
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 4
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 2,
+   "escalada": 2,
+   "natacao": 2,
+   "voo": 0,
+   "corrida": 0,
+   "musculatura": 2
+  },
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -24001,8 +24138,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 4,
-    "corte": 4,
-    "perfuracao": 4
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
@@ -24015,28 +24152,42 @@
     {
      "nome": "Mordida do enxame",
      "pool": "2d6+2 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 40,
+   "tamanhoEquivalente": "pequeno"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "faro: Prontidão (faro) +2 (Especialidade natural) · alcance · olfato muito desenvolvido. · audição: Prontidão (audição) +2 (Especialidade natural) · alcance · ouve ultrassom. · vibração: sem Especialidade · percebe vibrações mínimas. · visão: fraca, cerca de 20/600 no rato pigmentado; dicromata, enxerga ultravioleta. Texto."
+    "nome": "faro",
+    "descricao": "Prontidão (faro) +2 (Especialidade natural) · alcance · olfato muito desenvolvido (Wikipédia)"
+   },
+   {
+    "nome": "audição",
+    "descricao": "Prontidão (audição) +2 (Especialidade natural) · alcance · ouve ultrassom (Wikipédia)"
+   },
+   {
+    "nome": "vibração",
+    "descricao": "sem Especialidade · percebe vibrações mínimas (ADW)"
+   },
+   {
+    "nome": "visão",
+    "descricao": "fraca, cerca de 20/600 no rato pigmentado; dicromata, enxerga ultravioleta (Wikipédia). Texto"
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "terra": 3,
-   "natacao": 2,
-   "escalada": 2
+   "terra": 3
   },
   "tecnicas": [],
   "artes": [],
@@ -24054,20 +24205,12 @@
     "texto": "Não há líder nem inteligência guiando o enxame, apenas fome coletiva e instinto, o que o torna ainda mais aterrorizante para quem se vê cercado."
    },
    {
-    "titulo": "Comportamento",
-    "texto": "Social: colônia (grupos hierárquicos em tocas extensas)."
-   },
-   {
     "titulo": "Veneno e doença",
     "texto": "Doença no jogo: Leptospirose · Virulência 10 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
    },
    {
     "titulo": "Enxame",
     "texto": "40 ratos por quadrado · cobre o chão, sobe e nada · quem fere: arma comum, um quadrado por golpe; fogo e área também · armadura: vale, mas a roupa comum não conta · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 28 PV (40 ratos), e o PV cai com os ratos: metade dos ratos, metade do PV. Os ratos são do tamanho que aceita arma comum: espada e porrete acertam o quadrado, contra a Defesa 4 (a de um rato, menos 2, como na Regra de Horda). O enxame não esquiva nem apara, e se divide em quadrados que andam soltos; um bando inteiro ocupa vários quadrados. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 1 pela Ameaça 2, provisório), e a armadura vale, mas a roupa comum não. Dentro, só fugir ou tirar os ratos de cima sai sem teste. Contra quem dorme, entra com Furtividade (sobre quem dorme) 1. O perigo real continua sendo a doença (leptospirose) e a vítima que não se mexe."
    }
   ]
  },
@@ -24087,18 +24230,27 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,12 m de comprimento, 0,005 m de altura",
-   "peso": "0,004 kg"
+   "postura": "verme (corpo deitado)",
+   "apoio": "outro",
+   "altura": 0.005,
+   "largura": 0.01,
+   "profundidade": null,
+   "comprimento": 0.12,
+   "massa": 0.004,
+   "area": 0,
+   "posturaDoTamanho": "de cima",
+   "medida": "0.005 m de altura, 0.12 m de comprimento",
+   "peso": "0.004 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Swamp",
-    "Water"
+    "pântano",
+    "aquático"
    ],
    "clima": [
-    "Temperate",
-    "Tropical"
+    "temperado",
+    "tropical"
    ]
   },
   "imagens": [
@@ -24109,24 +24261,37 @@
    "forca": 0,
    "destreza": 2,
    "vigor": 3,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 2,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 2,
    "furtividade": 2,
+   "briga": 2,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 1,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 0,
+   "corrida": 0,
+   "musculatura": 2
+  },
   "vontade": 3,
   "aparencia": 5,
   "virtudes": {
+   "bravura": 1,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -24139,38 +24304,54 @@
    "defesaMental": 5,
    "absorcao": {
     "impacto": 3,
-    "corte": 3,
-    "perfuracao": 3
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 1
+    "batalha": 0,
+    "arranque": 0,
+    "corrida": 0
    },
    "ataques": [
     {
      "nome": "Mordida do enxame",
      "pool": "2d6 +1",
-     "dano": "1d6 −2 corte",
+     "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 400,
+   "tamanhoEquivalente": "pequeno"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "onda na água: Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície (adultas preferem 8 a 12 Hz). · calor: Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão. · química e luz: o sal e a arginina disparam a mordida; cinco pares de olhos e sensilas que reagem à sombra, mais com fome. Texto."
+    "nome": "onda na água",
+    "descricao": "Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície (adultas preferem 8 a 12 Hz; Harley, Cienfuegos e Wagenaar 2011)"
+   },
+   {
+    "nome": "calor",
+    "descricao": "Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão (Lent 1985)"
+   },
+   {
+    "nome": "química e luz",
+    "descricao": "o sal e a arginina disparam a mordida (Elliott 1986); cinco pares de olhos e sensilas que reagem à sombra, mais com fome (ADW). Texto. Alcance em metros:"
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
+  "locomocao": {
+   "terra": 0,
+   "natacao": 0
+  },
   "tecnicas": [],
   "artes": [],
   "lore": [
@@ -24187,20 +24368,12 @@
     "texto": "Onde existe uma colônia raramente há apenas uma nuvem; várias se formam nos mesmos pântanos estagnados, alimentando-se juntas."
    },
    {
-    "titulo": "Comportamento",
-    "texto": "Social: solitária; populações de milhares numa lagoa."
-   },
-   {
     "titulo": "Veneno e doença",
     "texto": "Doença no jogo: Infecção por Aeromonas · Virulência 4 · dia · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
    },
    {
     "titulo": "Enxame",
     "texto": "400 sanguessugas por quadrado · nada, só na água e no fundo da lagoa · quem fere: só ataque em área · armadura: ignora, na água entram por baixo de tudo · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 26 PV (400 sanguessugas), e o PV cai com elas: metade, 13 PV. Só ataque em área alcança o enxame, e na água. Não esquiva nem apara. Em terra quase não anda; na água acha quem entra pela onda (Prontidão +3 natural) e pelo calor (+2), esperando no lodo (Furtividade 2 e +1 no lodo). Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 3 pela Ameaça 3, provisório), e na água elas entram por baixo de tudo. Dentro, só fugir ou tirar as sanguessugas de cima sai sem teste. Depois da cena, a ferida sangra por horas, e a infecção por Aeromonas pede uma jogada. Aguenta meses sem comer (Resistência +3 natural na fome): a lagoa parada pode estar cheia delas há um ano."
    }
   ]
  },
@@ -24220,16 +24393,26 @@
   "centelha": 0,
   "tamanho": "Minúsculo",
   "corpo": {
-   "medida": "0,015 m de comprimento, 0,005 m de altura",
-   "peso": "0,000084 kg"
+   "postura": "voador",
+   "apoio": "outro",
+   "altura": 0.005,
+   "largura": 0.004,
+   "profundidade": null,
+   "comprimento": 0.015,
+   "envergadura": 0.02,
+   "massa": 0.000084,
+   "area": 0,
+   "posturaDoTamanho": "de cima, asas abertas, o indivíduo",
+   "medida": "0.005 m de altura, 0.015 m de comprimento",
+   "peso": "0.000084 kg"
   },
   "ecologia": {
-   "tipo": "Animal",
+   "tipo": "animal",
    "terreno": [
-    "Forest"
+    "floresta"
    ],
    "clima": [
-    "Temperate"
+    "temperado"
    ]
   },
   "imagens": [
@@ -24240,24 +24423,36 @@
    "forca": 0,
    "destreza": 3,
    "vigor": 2,
-   "influencia": 1,
-   "perspicacia": 1,
-   "compostura": 1,
    "percepcao": 3,
    "inteligencia": 1,
-   "raciocinio": 2
+   "raciocinio": 2,
+   "influencia": 1,
+   "perspicacia": 1,
+   "compostura": 1
   },
   "habilidades": {
    "prontidao": 3,
    "furtividade": 0,
+   "briga": 3,
+   "bloqueio": 0,
    "esquiva": 0,
+   "atletismo": 2,
    "integridade": 0,
-   "sociabilidade": 2
+   "resistencia": 2,
+   "empatia": 0,
+   "sobrevivencia": 2
   },
-  "habilidadesSec": {},
+  "habilidadesSec": {
+   "equilibrio": 0,
+   "escalada": 0,
+   "natacao": 0,
+   "voo": 0,
+   "musculatura": 2
+  },
   "vontade": 4,
   "aparencia": 6,
   "virtudes": {
+   "bravura": 3,
    "compaixao": 1,
    "conviccao": 1,
    "temperanca": 1,
@@ -24270,8 +24465,8 @@
    "defesaMental": 6,
    "absorcao": {
     "impacto": 2,
-    "corte": 2,
-    "perfuracao": 2
+    "corte": 0,
+    "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 5",
@@ -24284,27 +24479,31 @@
     {
      "nome": "Ferroada do enxame",
      "pool": "3d6 +1",
-     "dano": "1d6 −2 perfurante · perf. 0",
+     "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
      "classe": "leve"
     }
    ]
   },
-  "habilidadesEspeciais": [
+  "habilidadesEspeciais": [],
+  "enxame": {
+   "individuosPorQuadrado": 300,
+   "tamanhoEquivalente": "pequeno"
+  },
+  "comoLuta": [],
+  "sentidos": [
    {
-    "nome": "Sentidos",
-    "descricao": "nada com número achado. Marca o agressor: texto. O alarme à entrada do ninho é a Especialidade Prontidão (à entrada do ninho) 1."
+    "nome": "nada com número achado. Marca o agressor (Wikipédia, Yellowjacket)",
+    "descricao": "texto. O alarme à entrada do ninho é a Especialidade Prontidão (à entrada do ninho) 1"
    }
   ],
-  "comoLuta": [],
-  "sentidos": [],
   "segundoTamanho": null,
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "voo": 5,
-   "terra": 1
+   "terra": 1,
+   "voo": 5
   },
   "tecnicas": [],
   "artes": [],
@@ -24318,16 +24517,8 @@
     "texto": "Um zumbido grave e constante anuncia a aproximação de milhares de vespas furiosas antes que alguém as veja."
    },
    {
-    "titulo": "Comportamento",
-    "texto": "Social: colônia de 3 mil a 8 mil larvas por ninho; pico de 1 mil a 3 mil operárias nas vespas-comuns de clima temperado."
-   },
-   {
     "titulo": "Enxame",
     "texto": "300 vespas por quadrado · voa · quem fere: só ataque em área · armadura: ignora, menos a vedação fechada (véu e luva de apicultor) · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-   },
-   {
-    "titulo": "No jogo",
-    "texto": "Cada quadrado cheio tem 24 PV (300 vespas), e o PV cai com elas: metade, 12 PV. Só ataque em área alcança a nuvem. Rápido no ar (10 m por Tick de cruzeiro), mas não esquiva nem apara. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 3 pela Ameaça 3, provisório), e a armadura não protege, menos a vedação fechada de apicultor; o veneno das picadas já está no pulso. Dentro, só fugir sai sem teste: as vespas não ficam em cima, picam e voltam ao ar. Mente simples (Integridade 0): o que a mantém no ataque é a defesa do ninho. Não se esconde: o zumbido avisa. Quem é alérgico fica ao critério do Mestre."
    }
   ]
  },

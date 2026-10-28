@@ -200,7 +200,15 @@ export function converterFicha(texto, { site = null } = {}) {
     const de = numBR(fx[1]) * UN[fx[2] || fx[4]], ate = numBR(fx[3]) * UN[fx[4]];
     if (kg > ate) corpo.linhaPV = 'abaixo'; else if (kg <= de) corpo.linhaPV = 'acima';
   }
-  if (/^Por quadrado cheio/.test(pvb)) para('enxame: a Vida por quadrado cheio não tem formato (formato-criatura.md, fim da seção 4)');
+  if (/^Por quadrado cheio/.test(pvb)) {
+    const enx = pvb.match(/^Por quadrado cheio \((\d+) [^)]*\): conta como criatura (\S+?),/);
+    if (!enx) para('enxame: PV base deve explicitar indivíduos por quadrado cheio e o Tamanho equivalente');
+    else {
+      const tamanhoEquivalente = {pequena:'pequeno',media:'medio',minuscula:'minusculo',miuda:'miudo',grande:'grande',enorme:'enorme',imensa:'imenso',colossal:'colossal'}[slug(enx[2])];
+      if (!tamanhoEquivalente || Number(enx[1]) < 1) para('enxame: indivíduos ou Tamanho equivalente inválidos');
+      else c.enxame = {individuosPorQuadrado:Number(enx[1]), tamanhoEquivalente};
+    }
+  }
   const carga = campo(MV, 'Carga') || '';
   const cm = carga.match(/\*\*Leve ([\d.,]+) kg\*\*/);
   if (cm && /medid/.test(carga)) corpo.cargaMedida = numBR(cm[1]);
