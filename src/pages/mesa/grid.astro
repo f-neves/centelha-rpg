@@ -3597,7 +3597,7 @@ const SETAS = [
       // de cena pode emprestar o retrato de um bicho do bestiário sem herdar o
       // bloco de combate dele.
       || (imagemDe(MON[c.monstro_id]) ? u(imagemDe(MON[c.monstro_id])!) : null);
-    const besta = MON[c.monstro_id]?.imagem && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
+    const besta = MON[c.monstro_id]?.imagens?.length && !(c.imagem && IMGS[c.imagem]) ? ' av-besta' : '';
     return avatarHTML(c.nome, src, (extra + besta).trim(), pctDe100(c));
   }
 

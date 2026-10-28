@@ -290,9 +290,13 @@ const rotulo = (s: string) => ({
     minusculo: 'Minúsculo', miudo: 'Miúdo', pequeno: 'Pequeno', medio: 'Médio', grande: 'Grande', enorme: 'Enorme', imenso: 'Imenso', colossal: 'Colossal'
 } as Record<string, string>)[s] ?? s;
 export const unificada = (c: any) => !!c.corpo && !!c.atributos;
-export function vistaPublicaCriatura(c: any) {
+export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     if (!unificada(c))
         return c;
+    const original = c;
+    const formaId = c.formaPrincipal?.id;
+    const vale = (item: any) => item.formas === 'todas' || item.formas?.includes(formaId);
+    c = { ...c, habilidadesEspeciais: c.habilidadesEspeciais.filter(vale) };
     const M = { criatura, ataqueDaArma, atributoDaJogada };
     const armas: any[] = ARMAS;
     const r = M.criatura(c);
@@ -327,14 +331,23 @@ export function vistaPublicaCriatura(c: any) {
     const v3 = {
         pv: r.pv, esquiva: r.esquiva, bloqueio: r.bloqueio, defesa, defesaMental: r.defesaMental === 'imune' ? null : r.defesaMental, defesaSocial: r.defesaSocial === 'imune' ? null : r.defesaSocial, absorcao: r.absorcao, couracaNivel: c.couraca, pesoErguido: r.pesoErguido, ...(bloqueioArma ? { bloqueioArma } : {}), ...(vestida ? { vestida } : {})
     };
-    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, descricao: [h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || h.tecnica?.id || h.arte?.id || '' }));
+    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), descricao: [h.regra === 'rajada' ? textoDaRajada() : null, h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || h.tecnica?.id || h.arte?.id || '' }));
     const f: any = {
         id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], v3, deslocamentoDeclarado: { batalha: principal.batalha, arranque: principal.arranque ?? principal.batalha, corrida: principal.corrida ?? principal.batalha }, locomocao: Object.fromEntries(Object.entries(d).map(([k, v]) => [k === 'nado' ? 'natacao' : k, (v as any).batalha])), ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
     };
     const stat = {
         id: c.id, nome: c.nome, tipo: c.papel, categoria: c.categoria, ameaca: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: f.tags, pv: r.pv, defesa, defesaMental: r.defesaMental === 'imune' ? '-' : r.defesaMental, defesaSocial: r.defesaSocial === 'imune' ? '-' : r.defesaSocial, vontade: c.vontade, soak: r.absorcao, resistPerf: 0, iniciativa: '1d6 + ' + r.iniciativa, atributos: c.atributos, ataques, tecnicas: Object.keys(f.tech), artes: Object.entries(c.artes).map(([id, nivel]) => ({ id, nivel })), notas: '', pendente: false, ...(vestida ? { vestida } : {})
     };
-    Object.defineProperty(f, 'motor', { value: { stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana } });
+    Object.defineProperty(f, 'motor', { value: {
+      stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
+      corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
+      comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
+      sentidos: (c.sentidos || []).filter(vale).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
+      formas: incluirFormas ? (original.formas || []).map((forma: any)=>({
+        id:forma.id, nome:forma.nome,
+        ficha:vistaPublicaCriatura({...comForma(original,forma), id:original.id, nome:original.nome, formaPrincipal:{id:forma.id,nome:forma.nome}},false),
+      })) : [],
+    } });
     return f;
 }
 // A5j: conjunto das mãos, comum à ficha e à mesa, sem DOM.
@@ -580,4 +593,10 @@ export { custoPontos } from './calc';
 export function tetoDaRajadaDaCriatura(a: AtaqueEntrada) {
   const classe = a.arma ? (ARMAS as any[]).find(w=>w.id===a.arma)?.arma?.classe : a.classe;
   return (regras as any).combate.pgr.reforma.rajada.teto[classe] ?? null;
+}
+
+/** Texto de jogo da Rajada, pelos parâmetros da regra comum. */
+export function textoDaRajada() {
+  const r = (regras as any).combate.pgr.reforma.rajada;
+  return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. O limite depende da classe da arma.';
 }

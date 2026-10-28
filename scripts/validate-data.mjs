@@ -90,7 +90,6 @@ const S = {
       }),
       z.object({ efeito: z.string(), tipo: z.enum(['proeza', 'feiticaria', 'natural']), alvo: z.string(), caminho: z.string().optional(), arte: z.string().optional() }),
     ])).optional(),
-    notas: z.string(), pendente: z.boolean(),
   }),
 };
 

@@ -159,7 +159,7 @@ let porRegra = 0, porMaterial = 0, porExcecao = 0;
 
 for (const m of M) {
   let f = [], r = [];
-  const cat = POR_CATEGORIA[m.categoria];
+  const cat = Object.entries(POR_CATEGORIA).find(([id]) => id.toLowerCase() === String(m.categoria).toLowerCase())?.[1];
   if (cat) { f = [...(cat.fraquezas || [])]; r = [...(cat.resistencias || [])]; }
   for (const t of m.tags || []) {
     const tg = POR_TAG[t];

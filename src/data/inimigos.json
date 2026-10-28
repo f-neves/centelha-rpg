@@ -68,8 +68,6 @@
         "nivel": 4
       }
     ],
-    "notas": "Habilidades notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
-    "pendente": true,
     "poderes": [
       {
         "id": "forma-de-globo-de-luz",
@@ -149,8 +147,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -206,8 +202,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 1,
@@ -263,8 +257,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -320,8 +312,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -377,8 +367,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -434,8 +422,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -491,8 +477,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -548,8 +532,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 2,
       "esquiva": 0,
@@ -605,8 +587,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": true,
     "pericias": {
       "prontidao": 3,
       "esquiva": 0,
@@ -667,8 +647,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -737,8 +715,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -834,8 +810,6 @@
       "sentidos-apurados"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -917,8 +891,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -1015,8 +987,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -1101,8 +1071,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -1170,8 +1138,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -1243,8 +1209,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -1313,8 +1277,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -1386,8 +1348,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -1455,8 +1415,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -1531,8 +1489,6 @@
         "nivel": 4
       }
     ],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 12,
       "bloqueio": 20,
@@ -1626,8 +1582,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 11,
       "bloqueio": 9,
@@ -1713,8 +1667,6 @@
       "bote-silencioso"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 23,
       "bloqueio": 13,
@@ -1795,8 +1747,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 4,
@@ -1876,8 +1826,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -1977,8 +1925,6 @@
       "visao-verdadeira"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 4,
@@ -2079,8 +2025,6 @@
       "visao-verdadeira"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 0,
@@ -2153,8 +2097,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 9,
       "bloqueio": 7,
@@ -2248,8 +2190,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -2333,8 +2273,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -2405,8 +2343,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -2471,8 +2407,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -2555,8 +2489,6 @@
       "faro"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -2638,8 +2570,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -2708,8 +2638,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -2780,8 +2708,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -2867,8 +2793,6 @@
       "imobilizar"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -2949,8 +2873,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -3022,8 +2944,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -3089,8 +3009,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -3153,8 +3071,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -3235,8 +3151,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -3321,8 +3235,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -3392,8 +3304,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 0,
@@ -3465,8 +3375,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 5,
       "bloqueio": 5,
@@ -3546,8 +3454,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -3627,8 +3533,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -3698,8 +3602,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -3767,8 +3669,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -3848,8 +3748,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -3916,8 +3814,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -3982,8 +3878,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -4055,8 +3949,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 3,
@@ -4145,8 +4037,6 @@
       "soco-trovejante"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 22,
       "bloqueio": 20,
@@ -4227,8 +4117,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 7,
       "bloqueio": 16,
@@ -4309,8 +4197,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -4392,8 +4278,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -4474,8 +4358,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -4543,8 +4425,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -4626,8 +4506,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -4693,8 +4571,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 11,
       "bloqueio": 16,
@@ -4777,8 +4653,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -4862,8 +4736,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -4948,8 +4820,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -5034,8 +4904,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -5108,8 +4976,6 @@
       "tensionar"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 11,
       "bloqueio": 11,
@@ -5202,8 +5068,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -5301,8 +5165,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -5371,8 +5233,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -5456,8 +5316,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -5537,8 +5395,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -5607,8 +5463,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -5672,8 +5526,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -5745,8 +5597,6 @@
       "tom-de-autoridade"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 13,
       "bloqueio": 13,
@@ -5843,8 +5693,6 @@
       "imobilizar"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -5912,8 +5760,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -6005,8 +5851,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 2,
@@ -6075,8 +5919,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -6148,8 +5990,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -6221,8 +6061,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 2,
@@ -6291,8 +6129,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -6360,8 +6196,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -6459,8 +6293,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -6531,8 +6363,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 3,
@@ -6601,8 +6431,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -6674,8 +6502,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 4,
@@ -6757,8 +6583,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -6854,8 +6678,6 @@
       "irradiar-temor"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -6955,8 +6777,6 @@
       "visao-verdadeira"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -7056,8 +6876,6 @@
       "visao-verdadeira"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 0,
@@ -7133,8 +6951,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -7216,8 +7032,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 3,
@@ -7289,8 +7103,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 4,
@@ -7362,8 +7174,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -7434,8 +7244,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -7507,8 +7315,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -7604,8 +7410,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -7723,8 +7527,6 @@
         "nivel": 3
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 4,
@@ -7829,8 +7631,6 @@
         "nivel": 3
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -7944,8 +7744,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 1,
@@ -8054,8 +7852,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -8188,8 +7984,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 1,
@@ -8320,8 +8114,6 @@
         "nivel": 4
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 1,
@@ -8430,8 +8222,6 @@
         "nivel": 1
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 1,
@@ -8515,8 +8305,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -8582,8 +8370,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -8652,8 +8438,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -8720,8 +8504,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -8792,8 +8574,6 @@
       "riposte"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 23,
       "bloqueio": 23,
@@ -8872,8 +8652,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -8941,8 +8719,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -9013,8 +8789,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -9098,8 +8872,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -9171,8 +8943,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -9240,8 +9010,6 @@
       "pele-de-pedra"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -9307,8 +9075,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -9373,8 +9139,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -9440,8 +9204,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -9536,8 +9298,6 @@
       "visao-verdadeira"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 2,
@@ -9625,8 +9385,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -9697,8 +9455,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 1,
@@ -9771,8 +9527,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 4,
@@ -9838,8 +9592,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 4,
@@ -9909,8 +9661,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -9991,8 +9741,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -10057,8 +9805,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -10130,8 +9876,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -10210,8 +9954,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -10279,8 +10021,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -10359,8 +10099,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -10431,8 +10169,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -10503,8 +10239,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -10599,8 +10333,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -10707,8 +10439,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -10779,8 +10509,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 5,
@@ -10860,8 +10588,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -10958,8 +10684,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -11026,8 +10750,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -11105,8 +10827,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -11184,8 +10904,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 4,
@@ -11257,8 +10975,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 2,
@@ -11336,8 +11052,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -11417,8 +11131,6 @@
       "faro"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -11495,8 +11207,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -11577,8 +11287,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -11644,8 +11352,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -11727,8 +11433,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -11809,8 +11513,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 1,
       "bloqueio": 5,
@@ -11904,8 +11606,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -11986,8 +11686,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -12071,8 +11769,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -12155,8 +11851,6 @@
       "visao-verdadeira"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -12240,8 +11934,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -12308,8 +12000,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -12375,8 +12065,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -12441,8 +12129,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -12507,8 +12193,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -12573,8 +12257,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -12639,8 +12321,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -12724,8 +12404,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 4,
@@ -12822,8 +12500,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 1,
@@ -12904,8 +12580,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -13049,8 +12723,6 @@
         "nivel": 5
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 1,
@@ -13148,8 +12820,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -13221,8 +12891,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 7,
       "bloqueio": 10,
@@ -13317,8 +12985,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -13390,8 +13056,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -13471,8 +13135,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -13546,8 +13208,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -13615,8 +13275,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -13688,8 +13346,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -13787,8 +13443,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -13857,8 +13511,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -13939,8 +13591,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -14022,8 +13672,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -14091,8 +13739,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -14157,8 +13803,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -14227,8 +13871,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -14312,8 +13954,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -14385,8 +14025,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -14457,8 +14095,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -14540,8 +14176,6 @@
       "abraco-do-tita"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 2,
@@ -14613,8 +14247,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -14684,8 +14316,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -14766,8 +14396,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -14852,8 +14480,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -14923,8 +14549,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -15004,8 +14628,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -15090,8 +14712,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -15176,8 +14796,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 3,
@@ -15251,8 +14869,6 @@
       "recuperacao-acelerada"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 0,
@@ -15330,8 +14946,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 4,
@@ -15403,8 +15017,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 2,
@@ -15494,8 +15106,6 @@
         "nivel": 4
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -15565,8 +15175,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 2,
@@ -15656,8 +15264,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -15763,8 +15369,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -15856,8 +15460,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -15936,8 +15538,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -16005,8 +15605,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -16078,8 +15676,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -16164,8 +15760,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -16246,8 +15840,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -16331,8 +15923,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -16417,8 +16007,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -16503,8 +16091,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -16576,8 +16162,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -16658,8 +16242,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -16739,8 +16321,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -16838,8 +16418,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -16909,8 +16487,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -16978,8 +16554,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -17068,8 +16642,6 @@
       "temor-reverente"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 1,
@@ -17155,8 +16727,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -17254,8 +16824,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -17324,8 +16892,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -17409,8 +16975,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -17490,8 +17054,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -17571,8 +17133,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 4,
@@ -17651,8 +17211,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -17720,8 +17278,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -17803,8 +17359,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -17880,8 +17434,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -17947,8 +17499,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -18014,8 +17564,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -18086,8 +17634,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -18158,8 +17704,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -18230,8 +17774,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -18298,8 +17840,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -18370,8 +17910,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -18447,8 +17985,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -18535,8 +18071,6 @@
         "nivel": 1
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 2,
@@ -18620,8 +18154,6 @@
         "nivel": 3
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -18704,8 +18236,6 @@
         "nivel": 3
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -18790,8 +18320,6 @@
       "visao-verdadeira"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -18864,8 +18392,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -18957,8 +18483,6 @@
         "nivel": 2
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 4,
@@ -19028,8 +18552,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -19100,8 +18622,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 0,
@@ -19165,8 +18685,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -19233,8 +18751,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -19304,8 +18820,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -19373,8 +18887,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -19458,8 +18970,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -19525,8 +19035,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -19604,8 +19112,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -19674,8 +19180,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -19756,8 +19260,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -19826,8 +19328,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -19907,8 +19407,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 5,
@@ -20001,8 +19499,6 @@
         "nivel": 5
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 0,
@@ -20070,8 +19566,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -20142,8 +19636,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 4,
@@ -20228,8 +19720,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 4,
@@ -20314,8 +19804,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 0,
@@ -20400,8 +19888,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -20499,8 +19985,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -20565,8 +20049,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -20637,8 +20119,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 0,
       "furtividade": 0,
@@ -20716,8 +20196,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 4,
@@ -20788,8 +20266,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -20899,8 +20375,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -20982,8 +20456,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -21040,8 +20512,6 @@
     "ataques": [],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -21129,8 +20599,6 @@
         "nivel": 4
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 4,
@@ -21202,8 +20670,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -21269,8 +20735,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -21342,8 +20806,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -21415,8 +20877,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -21496,8 +20956,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -21595,8 +21053,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -21680,8 +21136,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -21763,8 +21217,6 @@
       "imobilizar"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -21834,8 +21286,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -21893,8 +21343,6 @@
     "ataques": [],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -21965,8 +21413,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 3,
@@ -22035,8 +21481,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -22104,8 +21548,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -22176,8 +21618,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -22246,8 +21686,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -22340,8 +21778,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -22442,8 +21878,6 @@
         "nivel": 5
       }
     ],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 5,
       "furtividade": 0,
@@ -22538,8 +21972,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "vestida": {
       "esquiva": 12,
       "bloqueio": 10,
@@ -22628,8 +22060,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 4,
@@ -22694,8 +22124,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -22766,8 +22194,6 @@
       "charme"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -22841,8 +22267,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -22936,8 +22360,6 @@
       "imortalidade-tenue"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -23031,8 +22453,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -23111,8 +22531,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -23178,8 +22596,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -23259,8 +22675,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 4,
@@ -23345,8 +22759,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -23418,8 +22830,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -23490,8 +22900,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -23558,8 +22966,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -23637,8 +23043,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -23723,8 +23127,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -23804,8 +23206,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -23869,8 +23269,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -23969,8 +23367,6 @@
       "imunidade"
     ],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 1,
@@ -24052,8 +23448,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -24133,8 +23527,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -24219,8 +23611,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -24305,8 +23695,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -24391,8 +23779,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -24477,8 +23863,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -24563,8 +23947,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -24632,8 +24014,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -24705,8 +24085,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -24778,8 +24156,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -24846,8 +24222,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -24925,8 +24299,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -25006,8 +24378,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -25078,8 +24448,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 3,
@@ -25156,8 +24524,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 4,
       "furtividade": 0,
@@ -25229,8 +24595,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 3,
@@ -25294,8 +24658,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 2,
@@ -25402,8 +24764,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 2,
       "furtividade": 1,
@@ -25494,8 +24854,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -25578,8 +24936,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 3,
       "furtividade": 2,
@@ -25644,8 +25000,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 2,
@@ -25712,8 +25066,6 @@
     ],
     "tecnicas": [],
     "artes": [],
-    "notas": "",
-    "pendente": false,
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,

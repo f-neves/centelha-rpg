@@ -322,8 +322,6 @@ const inimigos = defineCollection({
         arte: z.string().optional(),
       }),
     ])).optional(),
-    notas: z.string(),
-    pendente: z.boolean(),
   }),
 });
 

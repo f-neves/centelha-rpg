@@ -13,6 +13,7 @@
  * Cortar de verdade tiraria 268 criaturas da busca do site.
  */
 import CentelhaSpark from './CentelhaSpark.astro';
+import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 
@@ -65,7 +66,7 @@ const usosTxt = (u: any) => {
 };
 const RESISTE: Record<string, string> = { esquiva: 'Esquiva', corpo: 'corpo', mente: 'mente', nenhum: 'nenhuma' };
 // tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
-const temMec = (x: any) => !!((x.habilidadesEspeciais?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length) || x.notas);
+const temMec = (x: any) => !!((x.habilidadesEspeciais?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length));
 // listas de poderes por criatura (ids p/ filtro)
 const caminhosDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
 const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'feiticaria' && p.arte).map((p: any) => p.arte))];
@@ -114,8 +115,10 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           <header class="besta-head">
             <span class="besta-nome cinzel">{i.nome}{i.nomeIngles && i.nomeIngles.toLowerCase() !== i.nome.toLowerCase() && <span class="besta-nome-en"> ({i.nomeIngles})</span>}</span>
           </header>
+          {i.formas?.length > 0 && <label>Forma <select class="besta-forma-escolha" aria-label={'Forma de '+i.nome}><option value={i.formaPrincipal.id}>{i.formaPrincipal.nome}</option>{i.formas.map((f:any)=><option value={f.id}>{f.nome}</option>)}</select></label>}
+          <section data-forma-painel={i.formaPrincipal?.id || 'principal'}>
           <div class="besta-badges">
-            {i.categoria && <span class="badge cat">{i.categoria}</span>}
+            {i.categoria && <span class="badge cat">{i.categoriaNome || i.categoria}</span>}
             {(i.ecologia?.terreno || []).map((t: string) => <span class="badge terr">{ECO_TERR[t] || t}</span>)}
             {(i.ecologia?.clima || []).map((c: string) => <span class="badge clima">{ECO_CLIMA[c] || c}</span>)}
             {i.semImagem && <span class="badge sem-img" title="Arte ainda não adicionada">Sem imagem</span>}
@@ -123,6 +126,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           {i.tamanho && (
             <p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">{i.tamanho}</span><span class="pt-sep">·</span>{i.corpo.medida}<span class="pt-sep">·</span>{i.corpo.peso}</p>
           )}
+          {i.segundoTamanho && <p class="besta-porte">Segundo Tamanho: {i.segundoTamanho}</p>}
           {locoDe(i).length > 0 && (
             <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{`${m.nome} ${m.v} m/Tick`}</span></>))}</p>
           )}
@@ -203,6 +207,10 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             </ul>
           )}
 
+          {(i.comoLuta || []).length > 0 && <><h4>Como luta</h4><ul>{i.comoLuta.map((x:any)=><li><b>{x.nome}:</b> {x.texto}</li>)}</ul></>}
+          {(i.sentidos || []).length > 0 && <><h4>Sentidos</h4><ul>{i.sentidos.map((x:any)=><li><b>{x.nome}:</b> {x.descricao}{x.classe ? ' ('+x.classe+')' : ''}</li>)}</ul></>}
+          </section>
+          {(i.formas || []).map((forma:any)=><FormaCriatura forma={forma}/>)}
           {(
             <div class="besta-foot">
               <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
@@ -224,7 +232,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                 <template class="mech-tpl">
                   {i.habilidadesEspeciais?.length > 0 && (<>
                     <h4>Habilidades</h4>
-                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}</li>))}</ul>
+                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}{h.base ? ` · base ${h.base.arte} ${h.base.nivel}` : ''}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
                   </>)}
                   {i.poderes?.length > 0 && (<>
                     <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>
@@ -232,12 +240,11 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                       ? (<li class={`pw-${p.tipo}`}><span class="pw-ef">{p.nome}</span> <span class="pw-arw">→</span> <span class="pw-alvo">{p.efeito}{p.resiste !== 'nenhum' ? ` (resiste ${p.resiste})` : ''}</span></li>)
                       : (<li class={`pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span> <span class="pw-arw">→</span> <span class="pw-alvo">{p.alvo}</span></li>))}</ul>
                   </>)}
-                  {(i.tecnicas.length > 0 || i.artes.length > 0 || i.notas) && (<>
-                    <h4>Técnicas, Artes &amp; Notas</h4>
+                  {(i.tecnicas.length > 0 || i.artes.length > 0) && (<>
+                    <h4>Técnicas &amp; Artes</h4>
                     {i.tecnicas.length > 0 && (<p class="ib-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>)}
                     {i.mana != null && (<p class="ib-ref"><b>Mana:</b> {i.mana}</p>)}
                     {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
-                    {i.notas && <p class="ib-notas">{i.notas}</p>}
                   </>)}
                 </template>
               )}
@@ -248,6 +255,17 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           )}
         </div>
       </article>
+
+<script>
+  document.addEventListener('change', e=>{
+    const seletor = (e.target as HTMLElement).closest<HTMLSelectElement>('.besta-forma-escolha');
+    if (!seletor) return;
+    const card = seletor.closest('.besta')!;
+    card.querySelectorAll<HTMLElement>('[data-forma-painel]').forEach(p=>p.hidden=p.dataset.formaPainel!==seletor.value);
+    const principal = seletor.selectedIndex === 0;
+    card.querySelectorAll<HTMLElement>('.besta-mech').forEach(b=>b.hidden=!principal);
+  });
+</script>
 
 <style is:global>
   /* Duas imagens (D-179, item 16). O selo fica no canto de baixo à direita, livre (a

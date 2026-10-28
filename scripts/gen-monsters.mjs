@@ -29,7 +29,7 @@ const FICHA = Object.fromEntries(lerCriaturas().map((f) => [f.id, f]));
 const DESL = read('deslocamento-bestiario.json');
 const PRIMARIAS = new Set(read('habilidades.json').map(h => h.id));
 function habilidadesPublicas(f, c) {
-  const todas = c.pericias || {};
+  const todas = c.pericias || f.motor?.pericias || {};
   return {
     habilidades: { prontidao: 0, furtividade: 0, ...Object.fromEntries(Object.entries(todas).filter(([k]) => PRIMARIAS.has(k))) },
     habilidadesSec: Object.fromEntries(Object.entries(todas).filter(([k]) => !PRIMARIAS.has(k))),
@@ -73,8 +73,13 @@ function classeDoAtaque(id, nome, ticks) {
   return v <= 5 ? 'leve' : v === 6 ? 'media' : 'pesada';
 }
 
-function build(c) {
-  const f = FICHA[c.id];
+const CATEGORIA_NOME = { animal:'Animal', aberracao:'Aberração', 'besta-magica':'Besta mágica', celestial:'Celestial', humanoide:'Humanoide', 'humanoide-monstruoso':'Humanoide monstruoso', 'morto-vivo':'Morto-vivo', corruptor:'Corruptor', planta:'Planta', construto:'Construto', gigante:'Gigante', limo:'Limo', elemental:'Elemental', dragao:'Dragão', fada:'Fada', outsider:'Extraplanar' };
+const idCategoria = v => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,'-');
+function build(c, fonte) {
+  const f = fonte || FICHA[c.id];
+  const categoria = idCategoria(f?.categoria || c.categoria);
+  const categoriaNome = CATEGORIA_NOME[categoria] || categoria;
+  const tags = [categoria, ...(c.centelha > 0 ? ['centelha'] : []), ...(c.artes?.some(a=>a.nivel > 0) ? ['mágico','arcano'] : [])];
   if (!f) throw new Error(`${c.id}: está no inimigos.json e não tem ficha (rode gen-bestiario.mjs)`);
   // Fraqueza e resistência, na ordem: o que a ficha declara vence o `material` dela.
   const doMat = elementosDoMaterial(f.material);
@@ -90,16 +95,15 @@ function build(c) {
     id: c.id,
     nome: c.nome,
     nomeIngles: f.nomeIngles || null,
-    categoria: f.categoria || c.categoria || null,
+    categoria, categoriaNome,
     tipo: c.tipo,
-    conceito: c.conceito,
+    conceito: [categoriaNome, f.porte].filter(Boolean).join(' '),
     descricao: f.descricao || '',
-    tags: c.tags || [],
+    tags,
     ameaca: c.ameaca,
     centelha: c.centelha,
-    pendente: !!c.pendente,
     tamanho: f.porte || null,
-    corpo: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
+    corpo: { ...f.motor?.corpo, medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
     imagens: [f.imagem, f.imagem2].filter(Boolean),
     semImagem: !f.imagem,
@@ -137,7 +141,10 @@ function build(c) {
       })(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
-    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
+    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao, ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}) })),
+    comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
+    ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),
+    formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,criatura:build(fo.ficha.motor.stat,fo.ficha)})),
     // Dois formatos de poder convivem desde o B14 fase 2 (ver criatura-schema.mjs,
     // poderSchema): o natural novo, com id/nome/resiste/usos/base/area/ataque, e o
     // legado (efeito/tipo/alvo/arte/caminho). Copiar só os campos do legado aqui
@@ -156,12 +163,11 @@ function build(c) {
     ...(f.locomocao && Object.keys(f.locomocao).length ? { locomocao: f.locomocao } : {}),
     tecnicas: c.tecnicas || [],
     artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })), ...((f.motor?.mana ?? f.mana) != null ? { mana: f.motor?.mana ?? f.mana } : {}), // a Mana da ficha (D-196)
-    notas: c.notas || '',
     lore: (f.lore || []).map((s) => ({ titulo: s.titulo, texto: s.texto })),
   };
 }
 
-const monsters = inim.map(build).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
+const monsters = inim.map(c=>build(c)).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
 
 // checagem de integridade: todas as fontes presentes por criatura
 const problemas = Object.keys(CLASSE_OVERRIDE).filter((id) => !inim.some((c) => c.id === id)).map((id) => `CLASSE_OVERRIDE para id inexistente: ${id}`); // a guarda de chave órfã dos outros satélites (D-179): sem ela, a exceção de um id trocado sumiria calada
@@ -240,7 +246,7 @@ const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
 });
 
 const CAMPOS_MESA = [
-  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'tamanho', 'imagens',
+  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'categoriaNome', 'tamanho', 'imagens',
   'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
   // `pericias` ENTROU EM 04/09/2026, e a ausencia dela aqui foi um zero ambiguo
   // de verdade: o bloco `sentidos` do ResumoCombate le `MON[id].pericias`, `MON`
@@ -248,7 +254,7 @@ const CAMPOS_MESA = [
   // sem nada acusar, porque `null` e um valor que o contrato permite. Quem pega
   // isso agora e o `test-sentidos.mjs`.
   'habilidades', 'habilidadesSec',
-  'artes', 'tecnicas', 'combate', 'ecologia', 'corpo',
+  'artes', 'tecnicas', 'combate', 'ecologia', 'corpo', 'formas', 'formaPrincipal', 'segundoTamanho',
 ];
 /**
  * O QUE FICA DE FORA DA MESA, DECLARADO, e esta lista é o conserto da CLASSE e
@@ -270,8 +276,7 @@ const FORA_DA_MESA = {
   habilidadesEspeciais: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',
   lore: 'prosa do card (24%)',
   poderes: 'prosa do card',
-  notas: 'caderno do mestre; não desce nem para a aba, quanto mais para o pacote',
-  pendente: 'marca de trabalho do bestiário, não é dado de jogo', mana: 'a Mana da ficha (D-196) só aparece no card; a mesa ainda não lê Mana de criatura, e levá-la ao Grid é decisão da frente da mesa',
+  comoLuta: 'descrição de combate', sentidos: 'descrição dos sentidos', mana: 'a Mana da ficha (D-196) só aparece no card; a mesa ainda não lê Mana de criatura, e levá-la ao Grid é decisão da frente da mesa',
   tags: 'usadas no editor e na busca do bestiário, não no tabuleiro',
   // O Grid anda pelo passo único de `combate.deslocamento` (já derivado, já em
   // CAMPOS_MESA); isto é só o detalhe por modo que o card mostra (B14 fase 4,

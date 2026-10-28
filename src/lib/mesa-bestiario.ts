@@ -331,7 +331,7 @@ export function cardCriaturaHTML(m: any): string {
   const arte = m.imagens?.[0]
     ? `<figure class="arte"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}"${m.imagens?.[1] ? ` data-troca="${esc(m.id)}"` : ''} />${m.imagens?.[1] ? `<span class="arte-selo">${escolhaDe(m.id)}/${m.imagens.length}</span>` : ''}<span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">${sparkSVG(true)} ${m.centelha}</span>` : ''}</figure>`
     : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${estrelas(m.ameaca)}</span></figure>`;
-  const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
+  const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoriaNome || m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
   const porte = m.tamanho ? `<p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">${esc(m.tamanho)}</span><span class="pt-sep">·</span>${esc(m.corpo?.medida || '')}<span class="pt-sep">·</span>${esc(m.corpo?.peso || '')}</p>` : '';
   const fAbs = (a: any, n: number) => `${a.impacto}/${a.corte}/${a.perfuracao}${n ? `·N${n}` : ''}`; const vEsc = escolhaVestidaDe(m.id, cb); const vMarca = (x: any, sim: boolean) => (sim ? `<b>${x}</b>` : `${x}`); const abs = cb.absorcao ? (cb.vestida ? `${vMarca(fAbs(cb.absorcao, cb.resistenciaPerfuracao), vEsc === 'sem')} · ${vMarca(fAbs(cb.vestida.absorcao, cb.vestida.nivel), vEsc === 'com')} <small>c/ equip.</small>` : fAbs(cb.absorcao, cb.resistenciaPerfuracao)) : '-'; // D-206: as duas, a da mesa em negrito
   const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
@@ -364,13 +364,12 @@ export function cardCriaturaHTML(m: any): string {
     }).join(' · ')}</p>` : '';
   const refArte = (m.artes || []).length ? `<p class="ib-ref"><b>Artes:</b> ${m.artes.map((a: any) => `<a href="${u('arcano')}#${a.id}">${esc(ARTE_NOME[a.id] || a.id)}</a> ${a.nivel}`).join(' · ')}</p>` : '';
   const refs = (refTec || refArte) ? `<h4 class="cc-h">Técnicas &amp; Artes</h4>${refTec}${refArte}` : '';
-  const notas = m.notas ? `<h4 class="cc-h">Notas</h4><p class="ib-notas">${esc(m.notas)}</p>` : '';
   const lore = (m.lore || []).length ? `<h4 class="cc-h">Informações</h4>${m.lore.map((s: any) => `<div class="ib-lore"><h5>${esc(s.titulo)}</h5><p>${esc(s.texto)}</p></div>`).join('')}` : '';
   return `<article class="besta cc-besta">${arte}<div class="besta-corpo">
     <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
     ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
     ${porte}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
-    ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${notas}${lore}
+    ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${lore}
   </div></article>`;
 }
 

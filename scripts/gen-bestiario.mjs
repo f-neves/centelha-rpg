@@ -23,7 +23,8 @@ const FICHAS = lerCriaturas();
 const inimigos = FICHAS.map((f) => {
   const b = paraStat(f);
   const x = stat(b);
-  return { ...x, pericias: periciasDe(x, b.porteSlug, b) };
+  const { notas, pendente, ...publicado } = x;
+  return { ...publicado, pericias: periciasDe(x, b.porteSlug, b) };
 });
 
 const ALVO = path.join(ROOT, 'src/data/inimigos.json');

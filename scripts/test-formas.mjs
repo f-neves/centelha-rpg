@@ -8,6 +8,7 @@
 // primeira forma e lista com uma forma só.
 //
 //   node scripts/test-formas.mjs
+import fs from 'node:fs';
 import { formasDaFicha, idDaForma } from './lib-ficha-v3.mjs';
 import { criaturaSchema } from './criatura-schema.mjs';
 
@@ -56,6 +57,27 @@ ok(!campo({ ...esperado, principal: 'humana' }), 'recusa `principal` que não é
 ok(!campo({ principal: 'hibrida', formas: [esperado.formas[0]] }), 'recusa uma forma só');
 ok(!campo({ ...esperado, formas: [...esperado.formas.slice(0, 2), { id: '', nome: 'x' }] }), 'recusa id vazio');
 ok(criaturaSchema.shape.transforma.safeParse(undefined).success, 'ausente é aceito (quem não muda de forma não leva o campo)');
+
+// A7: cada forma pública recebe os PV de referência da ficha e os itens da sua marca.
+const ref = JSON.parse(fs.readFileSync(new URL('./fixtures/criaturas-esperado.json',import.meta.url),'utf8'));
+const monstros = JSON.parse(fs.readFileSync(new URL('../src/data/monsters.json',import.meta.url),'utf8'));
+let formasConferidas = 0;
+for (const m of monstros) {
+  ok(!('notas' in m) && !('pendente' in m), m.id + ': notas de trabalho fora do público');
+  for (const f of m.formas || []) {
+    formasConferidas++;
+    const esperado = ref.criaturas[m.id]?.formas?.[f.id]?.esperado;
+    if (esperado?.pv !== undefined) ok(f.criatura.combate.pv === esperado.pv, m.id + '/' + f.id + ': PV da ficha');
+    ok(f.criatura.formaPrincipal.id === f.id, m.id + '/' + f.id + ': identidade da forma');
+    ok(!f.criatura.formas.length, m.id + '/' + f.id + ': sem recursão de formas');
+  }
+}
+const lobisomem = monstros.find(m=>m.id==='lobisomem');
+const humana = lobisomem.formas.find(f=>f.id==='humana').criatura;
+ok(humana.atributos.forca === 4 && humana.combate.pv === 37, 'forma humana: Força 4 e PV 37, escritos na ficha');
+ok(!humana.habilidadesEspeciais.some(h=>h.nome==='Mordida que derruba e amaldiçoa'), 'Mordida fora da forma humana');
+ok(lobisomem.habilidadesEspeciais.some(h=>h.nome==='Mordida que derruba e amaldiçoa'), 'Mordida presente na forma híbrida');
+ok(formasConferidas > 0, formasConferidas + ' formas geradas conferidas');
 
 if (falhas.length) { console.error(`\n✘ formas: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('\n✓ formas: o campo transforma sai da linha Formas, com os quatro erros e o esquema conferidos');
