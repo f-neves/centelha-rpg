@@ -121,6 +121,9 @@ const sql=fs.readFileSync('supabase/migracao-41.sql','utf8');const marker=sql.in
 cases.set('baixo-excecao', async () => {
 const md=raw.replace(/^(\| Tamanho \| )[^|]*\|[^|]*\|/m,'$1**Pequeno** (0,98 m², de frente) | decisão 7: quadrúpedes de 50 a 75 kg |');assert.ok(conv(md).paradas.some(x=>x.startsWith('Tamanho:')));const q=conv(md.replace(/^(\| Postura \| )[^|]+/m,'$1quadrúpede ').replace(/^(\| Massa \| )[^|]+/m,'$1**70 kg** '));assert.equal(q.criatura.corpo.tamanhoEscolhido,'pequeno');assert.ok(!q.paradas.some(x=>x.startsWith('Tamanho:')));
 });
+cases.set('baixo-comando', async () => {
+const t=fs.readFileSync('.claude/commands/arquiteto.md','utf8');const description=t.match(/^description: (.+)$/m)[1];assert.ok(!/Executora|Revisora/.test(description));assert.ok(description.includes('Leitora-novata'));assert.ok(t.includes('papel: "Arquiteto (RPG)"'));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

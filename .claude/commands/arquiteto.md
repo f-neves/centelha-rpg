@@ -1,5 +1,5 @@
 ---
-description: Abre o papel de Arquiteto e cria a equipe (Executora, Revisora e Leitora-novata)
+description: Abre o papel de Arquiteto e a Leitora-novata
 papel: "Arquiteto (RPG)"
 equipe: "Leitora-novata"
 ---
