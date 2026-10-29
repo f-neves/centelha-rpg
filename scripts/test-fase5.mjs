@@ -14,6 +14,9 @@ const cases = new Map();
 cases.set('11', async () => {
 const c=fresh(); delete c.corpo.massa; delete c.corpo.semMassa; assert.equal(schema.safeParse(c).success,false); assert.equal(schema.safeParse(fresh()).success,true);
 });
+cases.set('5', async () => {
+const r=conv(variant('Mente: raciocina como humano; Respiração: respira na água')); const f=r.criatura.formas.find(f=>f.id==='humana'); assert.equal(f.fisiologia.mente,'raciocina como humano'); assert.equal(f.fisiologia.respiracao,'respira na água'); assert.ok(!r.paradas.some(x=>/Mente|Respiração/.test(x)));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

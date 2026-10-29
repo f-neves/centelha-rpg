@@ -541,6 +541,8 @@ export function converterFicha(texto, { site = null } = {}) {
         }
         else if (k === 'Couraça') f.couraca = Number(v);
         else if (k === 'Aparência') f.aparencia = inteiro(v);
+        else if (k === 'Mente') ff.mente = v;
+        else if (k === 'Respiração') ff.respiracao = v;
         else if (k === 'Camuflagem') ff.camuflagem = v;
         else if (k === 'Traços') ff.tracos = v;
         else if (k === 'Equipamento') f.equipamento = lerEquip(v, `Variantes, ${nomeF}`);
@@ -558,7 +560,7 @@ export function converterFicha(texto, { site = null } = {}) {
         }
         else if (k === 'Peso erguido' && /^não ergue/.test(v)) fc.naoErgue = true;
         else if (k === 'PV') pvForma = inteiro(v);
-        else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto', 'Mente', 'Respiração'].includes(k)) { /* conta do motor, ou texto que não é número */ }
+        else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto'].includes(k)) { /* conta do motor, ou texto que não é número */ }
         else para(`Variantes, ${nomeF}: campo "${k}" que o conversor não conhece`);
       }
       // O PV explícito da Variante revela a escolha entre as duas linhas da transição.
