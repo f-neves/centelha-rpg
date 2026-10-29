@@ -272,7 +272,8 @@ export function converterFicha(texto, { site = null } = {}) {
   const dt = campo(MV, 'Deslocamento em terra') || '';
   const dtm = dt.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\* · Arranque \*\*(\d+(?:[.,]\d+)?)\*\* · Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
   if (dtm) c.deslocamento.terra = { batalha: numeroPasso(dtm[1]), arranque: numeroPasso(dtm[2]), corrida: numeroPasso(dtm[3]) };
-  else if (/^(não anda|não se aplica|\*\*\[sem dado\]\*\*)/.test(dt.trim())) { /* terra condicional, P15 */ }
+  else if (/\[sem dado\]/.test(dt)) para('Deslocamento em terra sem dado: não equivale a não anda');
+  else if (/^(não anda|não se aplica)/.test(dt.trim())) { /* terra condicional, P15 */ }
   else para('Deslocamento em terra ilegível');
   for (const [rot, k] of [['Voo', 'voo'], ['Nado', 'nado'], ['Escavação', 'escavacao'], ['Escalada', 'escalada']]) {
     const v = campo(MV, rot) || '';

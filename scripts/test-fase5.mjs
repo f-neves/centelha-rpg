@@ -65,6 +65,9 @@ const c=fresh();c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'reg
 cases.set('19', async () => {
 for(const mutate of [c=>delete c.formas,c=>delete c.formaPrincipal,c=>c.formas=[],c=>c.formas[0].id=c.formaPrincipal.id,c=>c.sentidos.push({nome:'sentido',descricao:'ouve',formas:['nao-existe']})]){const c=fresh();mutate(c);assert.equal(schema.safeParse(c).success,false);}const c=fresh();assert.equal(schema.safeParse(c).success,true);delete c.formas;delete c.formaPrincipal;for(const k of ['habilidadesEspeciais','comoLuta','sentidos'])c[k]=c[k].map(x=>({...x,formas:'todas'}));for(const k of ['fraquezas','resistencias','imunidades'])c.elementos[k]=c.elementos[k].map(x=>({...x,formas:'todas'}));assert.equal(schema.safeParse(c).success,true);
 });
+cases.set('1', async () => {
+const r=conv(raw.replace(/(\| Deslocamento em terra \| )[^|]+/,'$1**[sem dado]** '));assert.ok(r.paradas.some(x=>/sem dado/.test(x)));const q=conv(raw.replace(/(\| Deslocamento em terra \| )[^|]+/,'$1não anda ').replace('| Nado |','| Voo | Batalha **5** | |\n| Nado |'));assert.ok(!q.paradas.some(x=>/Deslocamento em terra/.test(x)));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
