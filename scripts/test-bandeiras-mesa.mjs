@@ -18,7 +18,7 @@
 // modo principal) contra três criaturas REAIS do bestiário, cada uma com o
 // golpe já agendado pro Tick 2 (como a cena `caido` já faz):
 //
-//   a0 → b0 · aguia-gigante, Grande,  resistPerf 0 · porte BÔNUS (+3) · gate ABRE
+//   a0 → b0 · aguia-gigante, Enorme, resistPerf 0 · porte BÔNUS (+6) · gate ABRE
 //   a1 → b1 · cachorro,           Pequeno, resistPerf 0 · porte ZERO (de perto o maior não perde, D-077)
 //   a2 → b2 · guarda-da-cidade,  Médio,   resistPerf 1, Absorção Perf. só 2 ·
 //            gate RESVALA (Perf. 0 < 1) — NÃO usa aboleth (Absorção 13):
@@ -85,18 +85,18 @@ try {
   await p.waitForFunction(() => window.__ESPELHO, { timeout: 20000 });
   ok(!erros.length, `a mesa rodou sem erro de página${erros.length ? `: ${erros[0]}` : ''}`);
 
-  let poolSemPorte = ''; // o pool do a0 sem o " +3", que é o que o a1 tem de mostrar
+  let poolSemPorte = ''; // o pool do a0 sem o " +6", que é o que o a1 tem de mostrar
   // -------------------------------------------------- 1 · porte, alvo MAIOR
-  console.log('\n· a0 ataca b0 (aguia-gigante, Grande) — porte tem de somar');
+  console.log('\n· a0 ataca b0 (aguia-gigante, Enorme): porte tem de somar');
   {
     const f = await abrirEFolhear(p, 'a0', 2);
     ok(!!f, 'a folha abriu contra o alvo agendado');
     ok(/b0/.test(f?.titulo || ''), `a folha é contra b0: "${f?.titulo}"`);
     // O modificador é o ÚLTIMO token do pool (nem ferimento nem condição
     // entram nestas fichas novas, e `ajAtq.dados` é zero: nada mais some
-    // depois dele). "+3" e não "3": o sinal É o que se está conferindo.
-    ok(/\s\+3$/.test((f?.pool || '').trim()), `o pool termina em " +3" (bônus de alvo maior): "${f?.pool}"`);
-    poolSemPorte = (f?.pool || '').trim().replace(/\s\+3$/, '');
+    // depois dele). "+6" e não "6": o sinal É o que se está conferindo.
+    ok(/\s\+6$/.test((f?.pool || '').trim()), `o pool termina em " +6" (bônus de alvo maior): "${f?.pool}"`);
+    poolSemPorte = (f?.pool || '').trim().replace(/\s\+6$/, '');
     const antes = await p.evaluate(() => window.__ESPELHO.pvDe('b0'));
     await decidir(p, 'al-sim');
     const depois = await p.evaluate(() => window.__ESPELHO.pvDe('b0'));
@@ -110,7 +110,7 @@ try {
     const f = await abrirEFolhear(p, 'a1', 2);
     ok(!!f, 'a folha abriu contra o alvo agendado');
     ok(/b1/.test(f?.titulo || ''), `a folha é contra b1: "${f?.titulo}"`);
-    // O mesmo PC com a mesma Adaga do a0: o pool tem de ser o dele SEM o " +3"
+    // O mesmo PC com a mesma Adaga do a0: o pool tem de ser o dele SEM o " +6"
     // do porte, e não com um "−3" nem com outro token no lugar.
     ok(!!poolSemPorte && (f?.pool || '').trim() === poolSemPorte,
       `o pool é o do a0 sem token de porte (o maior ataca o menor de perto sem penalidade): "${f?.pool}" contra "${poolSemPorte}"`);

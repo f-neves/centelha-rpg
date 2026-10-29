@@ -1,93 +1,233 @@
 {
-  "ordem": 48,
   "id": "aguia-gigante",
   "idAntigo": "mon-aguia-gigante",
   "nome": "Águia Gigante",
   "nomeIngles": "Giant Eagle",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/aguia-gigante_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "1,2 m de altura, envergadura 4,5 m",
-    "peso": "180 kg"
-  },
-  "locomocao": {
-    "voo": 8
-  },
+  "ameaca": 3,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "ave; voadora",
+    "apoio": "outro",
+    "altura": 2.82,
+    "largura": 1.02,
+    "profundidade": null,
+    "comprimento": 2.61,
+    "caudaGrossa": false,
+    "envergadura": 6.79,
+    "massa": 180,
+    "area": 9.68,
+    "posturaDoTamanho": "de baixo, asas abertas",
+    "segundoTamanho": {
+      "area": 4.38,
+      "posturaDoTamanho": "de lado, asas fechadas, pousada"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 4,
     "vigor": 5,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 4
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 4,
+    "prontidao": 3,
+    "resistencia": 3,
+    "empatia": 2,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "voo": 3,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
-  "aparencia": 5,
-  "tech": {
-    "sentidos-apurados": true
+  "vontade": 6,
+  "aparencia": 7,
+  "deslocamento": {
+    "voo": {
+      "batalha": 8,
+      "arranque": 13,
+      "corrida": 18
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Garras",
+      "parte": "garra-taloes",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Bico",
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras em mergulho",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Voo veloz",
-      "descricao": "desloca no ar com grande alcance e velocidade"
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "agarrar"
     },
     {
-      "nome": "Visão aguçada",
-      "descricao": "detecta alvos a centenas de metros, ignora penalidades de distância em Prontidão"
+      "nome": "mergulho predatório",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras em mergulho",
+      "regra": "investida",
+      "texto": "só descendo"
     },
     {
-      "nome": "Mergulho predatório",
-      "descricao": "ataque após mergulho de altura causa dano extra"
+      "nome": "garra e bico",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "na mesma ação, além das garras, ataca também com o bico"
     },
     {
-      "nome": "Garras que agarram",
-      "descricao": "ergue e carrega presas de tamanho Pequeno ou menor"
+      "nome": "erguer e levar",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Garras",
+      "efeito": "sobe com a presa que agarrou, de corpo menor que o de um humano, até o Peso erguido, e a solta do alto; a queda é a de Cair"
     },
     {
-      "nome": "Nobreza selvagem",
-      "descricao": "imune a Medo de criaturas menores que ela"
+      "nome": "nobreza selvagem",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o medo que vem de criatura menor que ela não a pega"
     },
     {
-      "nome": "Visão aguçada",
-      "descricao": "Sentido passivo."
+      "nome": "Sentidos Apurados",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "sentidos-apurados",
+        "nivel": 1
+      }
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caça em par",
+      "formas": "todas",
+      "texto": "mergulha de grande altura sobre a presa, um par de cada lado, e defende o ninho de penhasco contra qualquer invasor."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "Prontidão (visão) +3, de águia: nota alvo a centenas de metros, só com luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "Sentidos Apurados (Técnica)",
+      "descricao": "+3 na Percepção",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "não",
+    "mente": "inteligente; fala uma língua própria de gritos e assobios",
+    "tracos": "águia dourada do tamanho de um grifo, de bico em gancho e garras de agarrar um cavalo novo"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "par ou bando familiar, em ninhos-fortaleza no alto de penhascos",
+    "atividade": "diurna",
+    "dieta": "carnívora",
+    "caca": "mergulha de grande altura e arrebata a presa com as garras",
+    "dianteDeGente": "orgulhosa e territorial; não tolera invasor"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "céu"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Águia do tamanho de um grifo que caça em pares, mergulhando de grandes alturas para arrebatar a presa com as garras. Fala a própria língua de gritos e assobios e vive em ninhos-fortaleza no alto dos penhascos, em bandos familiares que duram gerações.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -106,49 +246,26 @@
       "texto": "Em Syl, onde tudo carrega um espírito, dizem que a águia gigante é kami de vento e altura em corpo de ave, e recusar-se a caçá-la é sinal comum de respeito local."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Mountain",
-      "Sky"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/aguia-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 3, Atletismo 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Águia Gigante",
-    "cr": "3",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 18,
-      "des": 15,
-      "con": 15,
-      "int": 10,
-      "sab": 14,
-      "car": 13
-    },
-    "pericias": [
-      "Prontidão 3",
-      "Atletismo 2"
-    ],
-    "nota": "Besta mágica inteligente: Centelha 1.",
-    "deslocamento": {
-      "ft": 80,
-      "origem": "fonte",
-      "nota": "voo 80; em terra a águia salta 10 ft"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "olho-agucado"
+      "campo": "ataques.Bico.nivelPerfuracao",
+      "motivo": "Bico em gancho do tamanho de uma cabeça de cavalo, com o pescoço atrás: Média, como o bico do grifo e do roc; bico grande em N1 . Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande para Enorme em voo (9,68 m²), pelo método do grifo; em jogo, o humano ganha +6, e não +3, contra ela no ar"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 8,5, bico 10,5, garras em mergulho 20,0 (só descendo)"
     }
   ]
 }

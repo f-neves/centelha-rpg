@@ -1,105 +1,176 @@
 {
-  "ordem": 115,
   "id": "satiro",
   "idAntigo": "mon-satiro",
   "nome": "Sátiro",
   "nomeIngles": "Satyr",
-  "categoria": "Fada",
+  "categoria": "fada",
   "papel": "soldado",
-  "conceito": "fada Médio",
-  "descricao": "Espírito da natureza, belo e caprichoso.",
-  "tags": [
-    "fada",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/satiro_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,5 m de altura",
-    "peso": "65 kg"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.5,
+    "largura": 0.43,
+    "profundidade": 0.235,
+    "comprimento": null,
+    "massa": 65,
+    "area": 0.58,
+    "posturaDoTamanho": "bípede, de pé"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 4,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
-    "briga": 4,
+  "habilidades": {
+    "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "prontidao": 4,
+    "integridade": 5,
+    "sociabilidade": 4,
+    "sobrevivencia": 2,
+    "furtividade": 3,
+    "persuasao": 4,
+    "oratoria": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "tocar-instrumento": 4,
+    "labia": 3,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 8,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 10
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Cabeçada",
+      "parte": "chifres",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "flautas-encantadas",
       "nome": "Flautas encantadas",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
         "nivel": 2
       },
-      "resiste": "mente",
-      "efeito": "a flauta encanta (fascina, aproxima) ou apavora quem ouvir e falhar em resistir, e pode também adormecer",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 1
-      },
-      "descricao": "O sátiro toca uma de duas flautas: uma encanta quem ouve, deixando a plateia fascinada e mais fácil de convencer (ou fazendo alguém fugir apavorado, se ele preferir a outra melodia); ambas podem, em vez disso, embalar o ouvinte até dormir."
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Flautas do medo",
-      "descricao": "quem ouvir e falhar em Vontade fica Abalado e foge"
-    },
-    {
-      "nome": "Flautas do encanto",
-      "descricao": "pode enfeitiçar ou acalmar ouvintes com a melodia certa"
-    },
-    {
-      "nome": "Chifres",
-      "descricao": "ataque de cabeçada corpo a corpo"
-    },
-    {
-      "nome": "Furtividade natural",
-      "descricao": "esconde-se facilmente em florestas"
+      "ativacao": "uma ação tocando a flauta, Velocidade 6",
+      "duracao": "uma cena, ou até parar de tocar; hostilidade rompe o encanto",
+      "alcance": "18 m",
+      "area": "ouvintes no alcance",
+      "efeito": "escolhe uma melodia: encanta e acalma, assusta deixando Abalado e fazendo fugir, ou embala até dormir; dano ou ser sacudido acorda quem dorme",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Tocar Instrumento; quem passa não sofre o efeito",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Passos ágeis",
-      "descricao": "+1d de Esquiva e sem penalidade em terreno difícil"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "recebe +1 na Esquiva",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Passos no mato",
+      "formas": "todas",
+      "texto": "move-se com facilidade entre raízes e pedras."
+    },
+    {
+      "nome": "Furtividade natural",
+      "formas": "todas",
+      "texto": "esconde-se na floresta para observar visitantes."
+    },
+    {
+      "nome": "Chifres",
+      "formas": "todas",
+      "texto": "desfere uma cabeçada quando encurralado."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "distingue movimentos sob a luz fraca do bosque",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "inteligente",
+    "tracos": "Fada de pernas caprinas, chifres curvos e flautas encantadas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bandos festivos",
+    "atividade": "qualquer hora",
+    "dieta": "frutos, água e alimentos do bosque",
+    "caca": "não se aplica",
+    "dianteDeGente": "recebe forasteiros com música e foge diante de perigo sério"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Fada de pernas caprinas, chifres curvos e flautas encantadas",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -122,48 +193,42 @@
       "texto": "Parente da mesma origem feérica que deu nascimento aos elfos, é tomado em Syl por travessura de algum kami da mata, e visto com desconfiança pelas ortodoxias de Calin como resquício pagão de antes da Supressão."
     }
   ],
-  "ecologia": {
-    "tipo": "Fey",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/satiro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Oratória 3, Persuasão 4, Furtividade 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Sátiro",
-    "cr": "4",
-    "tipo": "fada Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 14,
-      "des": 15,
-      "con": 15,
-      "int": 12,
-      "sab": 14,
-      "car": 19
-    },
-    "pericias": [
-      "Oratória 3",
-      "Persuasão 4",
-      "Furtividade 2"
-    ],
-    "nota": "Flautas encantadas (Su): Centelha 2.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "beleza-cativante"
+      "campo": "habilidadesEspeciais.Flautas encantadas",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Passos ágeis",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Compleição física, sem treino de levantar peso"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "80 × (1,5/1,8)³ = 46,3 kg; membros caprinos e tronco robusto, fator 1,4, dão 64,8 kg; mantém 65 kg publicados"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "0,72 × (1,5/1,8)², ajustado à compleição: 0,58 m²; largura e profundidade acompanham o corpo"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
+    },
+    {
+      "campo": "ataques.Cabeçada",
+      "motivo": "Antes: ataque genérico perfurante, Velocidade 5; agora Impacto, Velocidade 6, média 9,5 preservada."
     }
   ]
 }

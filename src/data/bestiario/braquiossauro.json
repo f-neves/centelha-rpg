@@ -1,37 +1,27 @@
 {
-  "ordem": 184,
   "id": "braquiossauro",
   "idAntigo": "mon-brachiosaurus",
   "nome": "Braquiossauro",
   "nomeIngles": "Brachiosaurus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Imenso",
-  "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/braquiossauro_criatura.webp",
-  "imagem2": "bestiario/braquiossauro_criatura_2.webp",
-  "porte": "Imenso",
-  "dimensoes": {
-    "medida": "20,52 m de comprimento, 11,29 m de altura",
-    "peso": "31.000 kg",
-    "comprimento": 20.52,
-    "largura": 3.08,
-    "altura": 11.29
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 6
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 11.29,
+    "largura": 3.08,
+    "profundidade": null,
+    "comprimento": 20.52,
+    "comprimentoSemCauda": 13.85,
+    "caudaGrossa": true,
+    "massa": 31000,
+    "area": 38.29,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 14,
     "destreza": 1,
     "vigor": 10,
@@ -42,70 +32,148 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
     "bloqueio": 2,
+    "esquiva": 0,
+    "atletismo": 0,
+    "furtividade": 0,
     "integridade": 2,
+    "prontidao": 0,
     "resistencia": 5,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pisão",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "corpo",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "empurrar",
-      "descricao": "pisão",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "empurrar"
     },
     {
       "nome": "atropelar",
-      "descricao": "Pisão: Investida.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pisão",
+      "regra": "investida"
     },
     {
       "nome": "pisoteio",
-      "descricao": "Pisão: ao avançar, esmaga quem estiver sob as patas; um teste de Vigor reduz o estrago.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Pisão",
+      "efeito": "ao avançar, esmaga quem estiver sob as patas; um teste de Vigor reduz o estrago"
     },
     {
       "nome": "rabada",
-      "descricao": "golpeia com a cauda longa a certa distância do corpo.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "golpeia com a cauda longa a certa distância do corpo"
     },
     {
       "nome": "corpo colossal",
-      "descricao": "quase impossível de derrubar ou de empurrar à força.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "Nada que passe do humano com número: para visão, faro e audição. · Narina na frente do focinho ou no alto da cabeça, nas duas."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quase impossível de derrubar ou de empurrar à força"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011)",
+      "formas": "todas",
+      "texto": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011): texto, não manobra.."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "Nada que passe do humano com número",
+      "descricao": "para visão, faro e audição",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentidos",
+      "descricao": "Narina na frente do focinho (Witmer 2001) ou no alto da cabeça (Hallett e Wedel 2016), nas duas",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "(pele não achada)",
+    "mente": "animal",
+    "tracos": "ossos pneumáticos, com sacos aéreos, que reduzem o peso (Taylor 2009; Sander e colegas 2010); coração de cerca de 400 kg, com o dobro da pressão de uma girafa (Fastovsky e Weishampel 2016); pescoço de postura debatida, quase vertical ou mais horizontal (Rieppel e Brochu 1999; Stevens e Parrish 1999)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "",
+    "atividade": "",
+    "dieta": "herbívoro",
+    "caca": "forrageio",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "planície"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento (Sander e colegas 2010).",
   "lore": [
     {
       "titulo": "Gigante pacífico",
@@ -114,88 +182,56 @@
     {
       "titulo": "Manadas errantes",
       "texto": "Vive solitário, em pares ou em manadas de até doze indivíduos, migrando entre florestas e planícies quentes."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Imenso: um humano Médio acerta com +9 no corpo a corpo. Fácil de acertar e lento de reagir. A pele é Couraça nível 3; quanto ela tira do golpe fica para depois. Ninguém de Alvo Médio apara o pisão, e a Força 14 também trava quem tem Força 7 ou menos (o dobro e ao menos 4 a mais). O pisão faz 35 em média. 90 PV."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Plains"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/braquiossauro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Brachiosaurus",
-    "cr": "10",
-    "tipo": "animal Imenso",
-    "tamanho": "imenso",
-    "valores": {
-      "for": 37,
-      "des": 10,
-      "con": 21,
-      "int": 2,
-      "sab": 13,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Fica. D-144 (\"pelo menos 10\") e D-164. Pelo corpo: o maior animal das 92 fichas, de 28,7 t , com coração estimado de cerca de 400 kg e o dobro da pressão de uma girafa  (Fastovsky e Weishampel 2016), provavelmente de sangue quente no crescimento (Sander e colegas 2010). O Vigor pesa aqui em PV e na absorção de Impacto. Não sai do forrageio (diretriz 2)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Era sem linha (0). O levantamento: nenhum fato (pele, cor e atividade não achadas). Régua: 1, não se esconde"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 90,
-    "esquiva": 2,
-    "bloqueio": 6,
-    "defesa": 6,
-    "defesaMental": 6,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 10,
-      "corte": 10,
-      "perfuracao": 10
+    {
+      "campo": "habilidades.integridade",
+      "motivo": "Grande demais para fugir de predador; defende o lugar. Degrau 2"
     },
-    "couracaNivel": 3,
-    "pesoErguido": 7272.38,
-    "carga": {
-      "leve": 3472,
-      "media": 6944,
-      "pesada": 10416,
-      "maxima": 13888
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era 0 (com Fôlego +2). Régua: o animal sem dado fica em 2, . Nenhum dado de frio, fome, sede, doença ou ferida; o Fôlego +2 de hoje se apoiava no consumo de 200 a 400 kg de planta por dia (Foster 2007), que não diz nada de resistência. Vivia num ambiente semiárido de estação seca marcada (Engelmann 2004), o normal da espécie"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 6
-      }
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 11,00 × 1,0260 = 11,286 . Antes: ponto médio de 9,4 (Foster 2007) a 13 m (Paul 1988), via Klein e colegas 2011 (`dimensoes.md`). A postura do pescoço é debatida (Corpo, abaixo). A altura do ombro é  na fonte"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 20,00 × 1,0260 = 20,521 . Antes: ponto médio de 18 a 22 m (Paul 1988; Seebacher 2001; Foster 2007)"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 13,50 × 1,0260 = 13,851 . Antes: do Arquiteto: \"20 m menos cerca de 6,5 de cauda\""
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 3,00 × 1,0260 = 3,078 . Antes: estimativa do Arquiteto (`porte-area.mjs`); a pesquisa não mediu largura"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107.  A pele e a cor não se conhecem; fica na maioria."
+    },
+    {
+      "campo": "ataques.Pisão",
+      "motivo": "Era 2d6 + 40, média 47. 7 + 28.  da Bestiarista-1. A pesquisa não acha arma especializada; o pisão é o golpe do corpo inteiro da seção 7 (Pesada, × 2, Impacto). A cauda era proporcionalmente curta para um saurópode (Taylor 2009), por isso não entra como ataque."
     }
-  },
-  "notasObservacao": [
-    "forca: 14 pela comparação com o mamute (13), proposta do Arquiteto; é o teto do autor para o mamute, aqui usado pelo maior. Se o mamute mudar, esta se refaz.",
-    "pesoErguido: 7.272,38 kg (em vigor na Etapa 2, 20/10/2026); antes: 6.903,5 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 28.700 kg. Era 8.638 kg (40.000 kg de trabalho) e, antes, 4.864 kg pela fórmula de FAH. Fica abaixo do piso de um quarto da massa (7.175 kg) porque a Força 14 está abaixo da Força de referência da massa (14,2).",
-    "carga: Leve 3.214,4 a Máxima 12.857,6 kg, provisória (era Leve 4.480 pelos 40.000 kg); sai da massa (o fator 0,56 da Faixa 6 é extrapolação de um animal só, o elefante).",
-    "velocidade: congelada (decisão 23). A corrida de 22 km/h fica 175% acima dos cerca de 8 km/h de andar do Argentinosaurus. Não corrigido.",
-    "area: 36,37 m², vista de lado, da medição da `tamanho-fichas-v2`; era 220 m² (retângulo cheio com a cabeça erguida). O Alvo segue Imenso. Decisão provisória: usar o número do `calc.mjs`.",
-    "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "massa: 31.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 28,7 t, a estimativa volumétrica do holótipo de *B. altithorax* (Taylor 2009, tabela 4, conferido que o número é do *Brachiosaurus* e não do *Giraffatitan*, que dá 23,3 t). Alternativas: 35 t (Paul 1988) e 56,3 t (Benson 2014, regressão com o úmero estimado). Era 40 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 28,7 t (faixa e PV não mudam).",
-    "jornada (nota de pesquisa, não é regra): sem dado do Brachiosaurus. De outro saurópode **[comparação]**: o Argentinosaurus de cerca de 80 t, em modelo musculoesquelético, anda a pouco mais de 2 m/s, cerca de 8 km/h (Sellers e colegas 2013, pelo ScienceDaily). Forrageio de 200 a 400 kg de planta por dia (Foster 2007) **[extrapolação]**, que é consumo, e não esforço. Era a Resistência (Fôlego) +2.",
-    "vigor: 10 é o número do autor (D-144, D-164); a pesquisa não traz ferida curada nem vida longa medida que o sustente por conta própria. A decisão 10 diz que répteis tendem a Vigor menor; o saurópode de sangue quente no crescimento (Sander 2010) não cai nessa regra com clareza.",
-    "influencia: 1 (não social); era 2 só pelo tamanho.",
-    "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2 **[extrapolação]**, sem dado; o Fôlego +2 saiu (diretriz 2).",
-    "musculatura: 2 (animal comum), provisória; sem medida de força.",
-    "dimensoes.largura: 3,0 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
   ]
 }

@@ -1,38 +1,28 @@
 {
-  "ordem": 127,
   "id": "bruxa-verde",
   "idAntigo": "mon-bruxa-verde-hag",
   "nome": "Bruxa Verde",
   "nomeIngles": "Hag, Green",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "elite",
-  "conceito": "humanoide monstruoso Médio",
-  "descricao": "Velha de pele verde dos pântanos que se disfarça de camponesa ou donzela e imita vozes para atrair vítimas. Revela as garras, enfraquece com o toque e lança feitiços de maldição e engano.",
-  "tags": [
-    "monstro",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/bruxa-verde_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,5 m de altura",
-    "peso": "80 kg",
-    "largura": 0.49,
-    "altura": 1.5
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "verdadeira",
+    "nome": "forma verdadeira"
+  },
+  "corpo": {
+    "postura": "bípede, curvada",
+    "apoio": "bipede",
+    "altura": 1.5,
+    "largura": 0.49,
+    "profundidade": 0.25,
+    "comprimento": null,
+    "massa": 80,
+    "area": 0.66
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 3,
     "vigor": 5,
@@ -43,7 +33,7 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
     "bloqueio": 1,
     "esquiva": 1,
@@ -54,124 +44,205 @@
     "ocultismo": 3,
     "manha": 3
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 2,
-    "herbologia": 2
+    "herbologia": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "manha",
-      "foco": "imitar uma voz já ouvida",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "pântano e floresta",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "garras",
-      "valor": 2,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "maldições",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
-    "compaixao": 1,
-    "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
-  },
-  "willpower": 9,
-  "aparencia": 2,
-  "ataques": [
-    {
-      "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
-    }
-  ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "transforma": {
-    "principal": "verdadeira",
-    "formas": [
+  "especialidades": {
+    "manha": [
       {
-        "id": "verdadeira",
-        "nome": "forma verdadeira"
-      },
+        "foco": "imitar uma voz já ouvida",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
       {
-        "id": "disfarce",
-        "nome": "disfarce"
+        "foco": "pântano e floresta",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "garras",
+        "valor": 2,
+        "origem": "livro"
       }
     ]
   },
-  "habilidades": [
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 1,
+    "conviccao": 3,
+    "temperanca": 2
+  },
+  "vontade": 9,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "nado": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
+  "ataques": [
+    {
+      "nome": "Garras",
+      "parte": "maos-de-garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
     {
       "nome": "Toque da fraqueza",
-      "descricao": "poder natural (base Morte 2): Ativação: as Garras que ferem, ou um toque (a jogada de Briga). Duração: até o fim da cena; acumula. Alcance: toque. Área: um alvo. Efeito: quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência contra a jogada do toque. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "ativacao": "as Garras que ferem, ou um toque (a jogada de Briga)",
+      "duracao": "até o fim da cena; acumula",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1",
+      "dano": "nenhum além do golpe",
+      "resistencia": "corpo, Vigor + Resistência contra a jogada do toque",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Disfarce ilusório",
-      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até ela desfazer, ou até atacar. Alcance: o próprio corpo. Área: não se aplica. Efeito: parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através. Dano: nenhum. Resistência: mente, contra Influência + Manha dela, só para quem desconfia. Limite de uso: à vontade.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ela desfazer, ou até atacar",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Manha dela, só para quem desconfia",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Feitiços de maldição",
-      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena. Alcance: 18 m. Área: um alvo. Efeito: à escolha: uma névoa de ilusão que tira o alvo do caminho (Confuso), ou uma ordem curta que ele cumpre. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela; quem passa fica imune a esse feitiço até o fim da cena. Limite de uso: três vezes por cena, somados.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "à escolha: uma névoa de ilusão que tira o alvo do caminho (Confuso), ou uma ordem curta que ele cumpre (\"vem\", \"dorme\", \"larga\")",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dela; quem passa fica imune a esse feitiço até o fim da cena",
+      "limiteDeUso": "três vezes por cena, somados"
     },
     {
       "nome": "Fôlego anfíbio",
-      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira e nada debaixo d'água sem penalidade. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "respira e nada debaixo d'água sem penalidade",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Garras",
-      "descricao": "as duas mãos de garra contam como par de armas leves e atacam pela empunhadura dupla, os dois golpes a −1d6.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Mímica de voz",
-      "descricao": "Manha, com a Especialidade natural (imitar uma voz já ouvida) +3.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos do pântano",
-      "descricao": "Prontidão, com a Especialidade natural (pântano e floresta) +2.",
-      "classe": "livro"
-    },
-    {
-      "nome": "velha do brejo",
-      "descricao": "disfarçada, chama a vítima com uma voz conhecida para dentro do pântano, revela as garras, enfraquece com o toque e foge pela água se a luta vira.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: enxerga no escuro do pântano. · audição e olfato: os de um humano; Prontidão (pântano e floresta) +2."
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "empunhadura-dupla"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "velha do brejo",
+      "formas": "todas",
+      "texto": "disfarçada, chama a vítima com uma voz conhecida para dentro do pântano, revela as garras, enfraquece com o toque e foge pela água se a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "enxerga no escuro do pântano",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano; Prontidão (pântano e floresta) +2",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água e ar (Fôlego anfíbio)",
+    "prendeRespiracao": "não precisa",
+    "mente": "humanoide; invejosa e cruel",
+    "tracos": "velha curvada de pele verde, cabelo como musgo, nariz longo, dentes podres, garras negras"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha, às vezes em coven",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "atrai vítimas para o pântano disfarçada",
+    "dianteDeGente": "engana com disfarce e voz; corrompe"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano",
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Velha de pele verde dos pântanos que se disfarça de camponesa ou donzela e imita vozes para atrair vítimas. Revela as garras, enfraquece com o toque e lança feitiços de maldição e engano.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Usa metamorfose para parecer uma velha camponesa ou donzela indefesa, atraindo vítimas para o pântano antes de revelar garras e magia sombria. Social: sozinha, às vezes em coven."
+      "texto": "Usa metamorfose para parecer uma velha camponesa ou donzela indefesa, atraindo vítimas para o pântano antes de revelar garras e magia sombria."
     },
     {
       "titulo": "Hábitat",
@@ -188,80 +259,66 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Figura do folclore rural em Syl e no Neck, confundida por camponeses supersticiosos com espírito maligno da mata; para as igrejas de Calin é prova viva de que magia sem lei corrompe quem a possui."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Média, 40 PV, Impacto 9, Corte e Perfuração 4. Esquiva e Bloqueio 10. Duas garras por ação a −1d6 (11,5 cada), e cada uma que fere pode baixar a Força do alvo um nível. Três vezes por cena confunde ou dá uma ordem curta. Disfarçada e imitando vozes, atrai a presa. Defesa Mental 24. Respira na água."
     }
   ],
-  "ecologia": {
-    "tipo": "Fey",
-    "terreno": [
-      "Swamp",
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Furtividade 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Bruxa Verde (Hag)",
-    "cr": "5",
-    "tipo": "humanoide monstruoso Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 21,
-      "des": 12,
-      "con": 18,
-      "int": 13,
-      "sab": 13,
-      "car": 14
-    },
-    "pericias": [
-      "Ocultismo 3",
-      "Manha 3",
-      "Furtividade 2"
-    ],
-    "nota": "Fraqueza mística, mímica, feitiços: Centelha 3.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 40,
-    "esquiva": 10,
-    "bloqueio": 10,
-    "defesa": 10,
-    "defesaMental": 24,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 9,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 238.85,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      },
-      "nado": 3
+  "imagens": [
+    "bestiario/bruxa-verde_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "disfarce",
+      "nome": "disfarce",
+      "aparencia": 8,
+      "fisiologia": {
+        "camuflagem": "passa por uma velha camponesa ou uma donzela comum"
+      }
     }
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`formas`: forma verdadeira e disfarce (D-201) **[provisório]**",
-    "`aparência`: 2 na forma verdadeira, 8 no disfarce; o site tinha 8 **[provisório]**",
-    "`compaixão`: 1; o site tinha 3 **[provisório]**",
-    "`mímica de voz`, `sentidos do pântano`: Especialidades naturais no teto; o site dava +3d6 e +2d6",
-    "`toque da fraqueza`, `disfarce ilusório`, `feitiços de maldição`, `fôlego anfíbio`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Toque da fraqueza",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Disfarce ilusório",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiços de maldição",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Fôlego anfíbio",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 2, \"Repulsivo\": a forma verdadeira é velha de pele verde e garras. O 8 do site é o do disfarce (\"parece bela\"), que vai na Variante; a Aparência mede a beleza do rosto e do corpo (D-205); 2 na forma verdadeira, 8 no disfarce; o site tinha 8"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "formas.disfarce",
+      "motivo": "\"parece bela ou inofensiva até revelar a forma verdadeira\" (site); é ilusão, e os números ficam os dela"
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201)"
+    },
+    {
+      "campo": "virtudes.compaixao",
+      "motivo": "1; o site tinha 3"
+    }
   ]
 }

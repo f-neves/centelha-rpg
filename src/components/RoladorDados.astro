@@ -37,7 +37,7 @@ const { compact = false } = Astro.props;
 </style>
 
 <script>
-  import { pool } from '../lib/calc';
+  import { pool } from '../lib/motor';
   document.querySelectorAll<HTMLElement>('.rolador').forEach((root) => {
     const get = (k: string) => root.querySelector<HTMLInputElement>(`[data-rd="${k}"]`);
     const num = (k: string) => Math.max(0, parseInt(get(k)?.value || '0') || 0);

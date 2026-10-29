@@ -1,37 +1,24 @@
 {
-  "ordem": 264,
   "id": "neothelid",
   "idAntigo": "mon-neothelid",
   "nome": "Neothelid",
   "nomeIngles": "Neothelid",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "chefe",
-  "conceito": "aberração Enorme",
-  "descricao": "Verme colossal que já governou impérios inteiros no fundo do mundo subterrâneo e hoje sobrevive em lendas de horror. Esmaga a mente de quem o enfrenta, cospe ácido, prende com as línguas tentaculares e engole a presa viva. Encanta, move as coisas com a mente e some por teletransporte.",
-  "tags": [
-    "aberracao",
-    "centelha"
-  ],
-  "imagem": "bestiario/neothelid_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "12 m de comprimento, 0,89 m de altura",
-    "peso": "6,0 t",
-    "comprimento": 12,
-    "largura": 0.89,
-    "altura": 0.89
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "verme; corpo no chão, frente erguida",
+    "apoio": "outro",
+    "altura": 0.89,
+    "largura": 0.89,
+    "profundidade": null,
+    "comprimento": 12,
+    "massa": 6000,
+    "area": 9.05
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 11,
     "destreza": 1,
     "vigor": 10,
@@ -42,8 +29,10 @@
     "perspicacia": 5,
     "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 1,
     "furtividade": 1,
     "prontidao": 2,
@@ -52,109 +41,225 @@
     "persuasao": 3,
     "sociabilidade": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 4,
     "disparo": 2,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "teletransporte",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "ocultismo": [
+      {
+        "foco": "teletransporte",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 11,
+  "vontade": 11,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Tentáculo",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "lingua-tentacular",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "línguas tentaculares",
-      "descricao": "Tentáculo: a Rajada: até dois golpes de Tentáculo na mesma ação, o teto da classe Pesada, o segundo a −1d6, e +1 Tick de Recuperação. O site publicou um ataque só.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculo",
+      "regra": "rajada"
     },
     {
       "nome": "agarrar",
-      "descricao": "Tentáculo: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Pela massa (Faixa 5), soma +6 contra o humano (Faixa 3).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculo",
+      "regra": "agarrar"
     },
     {
       "nome": "Engole inteiro",
-      "descricao": "Tentáculo: traga a presa agarrada; dentro, o ácido a dilacera.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Tentáculo",
+      "efeito": "traga a presa agarrada; dentro, o ácido a dilacera"
     },
     {
       "nome": "Sopro ácido",
-      "descricao": "boca: Ativação: uma ação, Velocidade 7. Duração: o ácido segue queimando por 12 Ticks. Alcance: cone de 9 m. Área: o cone. Efeito: o ácido corrói quem não escapa. Dano: 3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos. Resistência: esquiva, contra Vigor 10 + Disparo 2 + 2 × o menor entre Centelha 6 e Disparo 2 (4) = 16 mais a rolagem; quem passa leva metade e não segue queimando. Limite de uso: uma vez a cada 18 Ticks.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "o ácido segue queimando por 12 Ticks",
+      "alcance": "cone de 9 m",
+      "area": "o cone",
+      "efeito": "o ácido corrói quem não escapa",
+      "dano": "3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos",
+      "resistencia": "esquiva, contra Vigor 10 + Disparo 2 + 2 × o menor entre Centelha 6 e Disparo 2 (4) = 16 mais a rolagem; quem passa leva metade e não segue queimando",
+      "limiteDeUso": "uma vez a cada 18 Ticks"
     },
     {
       "nome": "Golpe mental",
-      "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 6. Duração: instantâneo. Alcance: 18 m. Área: um alvo que pense (Inteligência 1 ou mais). Efeito: uma rajada psíquica fere a mente. Dano: 3d6, fenômeno (a armadura não absorve, só a Centelha; C-041). Resistência: mente, contra Influência 6 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 18 mais a rolagem; quem passa leva metade. Limite de uso: três vezes por cena (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "instantâneo",
+      "alcance": "18 m",
+      "area": "um alvo que pense (Inteligência 1 ou mais)",
+      "efeito": "uma rajada psíquica fere a mente",
+      "dano": "3d6, fenômeno",
+      "resistencia": "mente, contra Influência 6 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 18 mais a rolagem; quem passa leva metade",
+      "limiteDeUso": "três vezes por cena (\"algumas vezes por cena\", site)"
     },
     {
       "nome": "Esmagamento da mente",
-      "descricao": "poder natural (base Fascinação 5): Ativação: uma ação, Velocidade 8. Duração: até alguém o estabilizar. Alcance: 18 m. Área: um alvo que pense. Efeito: a mente do alvo desmorona: fica Inconsciente e Morrendo. Dano: nenhum além do efeito. Resistência: mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até alguém o estabilizar",
+      "alcance": "18 m",
+      "area": "um alvo que pense",
+      "efeito": "a mente do alvo desmorona: fica Inconsciente e Morrendo (`condicoes.json`)",
+      "dano": "nenhum além do efeito",
+      "resistencia": "mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Poderes mentais",
-      "descricao": "poder natural (bases Fascinação 3, Forças 3, Conjuração 4): Ativação: uma ação, Velocidade 6. Duração: a do efeito. Alcance: 18 m. Área: a do efeito. Efeito: à escolha: encanto (o efeito de Fascinação 3, Encanto), telecinese (o de Forças 3, Telecinese) ou teletransporte para um lugar que ele conhece (o de Conjuração 4). Dano: nenhum. Resistência: mente, contra a jogada do Golpe mental, no encanto; nenhum nos outros. Limite de uso: à vontade (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "a do efeito",
+      "alcance": "18 m",
+      "area": "a do efeito",
+      "efeito": "à escolha: encanto (o efeito de Fascinação 3, Encanto), telecinese (o de Forças 3, Telecinese) ou teletransporte para um lugar que ele conhece (o de Conjuração 4)",
+      "dano": "nenhum",
+      "resistencia": "mente, contra a jogada do Golpe mental, no encanto; nenhum nos outros",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Levitação",
-      "descricao": "poder natural (base Forças 3): Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: voa sem esforço, na Batalha do deslocamento em terra (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "forcas",
+        "nivel": 3
+      },
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "voa sem esforço, na Batalha do deslocamento em terra (\"voa sem esforço\", site)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Resistência a magia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "nome": "Resistência à magia 26",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Casca contra armas comuns",
-      "descricao": "a pele absorve parte do golpe de arma comum, menos a de ferro frio.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "terror das profundezas",
-      "descricao": "esmaga a mente do mais perigoso, sopra ácido nos que vêm juntos, prende com as línguas e engole; quando perde, some por teletransporte.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "sentido cego: percebe tudo em volta sem visão (site). · rastro planar: sente por um instante o destino de quem se teleporta perto dele (site)."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a pele absorve parte do golpe de arma comum, menos a de ferro frio"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "terror das profundezas",
+      "formas": "todas",
+      "texto": "esmaga a mente do mais perigoso, sopra ácido nos que vêm juntos, prende com as línguas e engole; quando perde, some por teletransporte."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentido cego",
+      "descricao": "percebe tudo em volta sem visão",
+      "formas": "todas"
+    },
+    {
+      "nome": "rastro planar",
+      "descricao": "sente por um instante o destino de quem se teleporta perto dele",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um bicho grande",
+    "mente": "inteligente, antiga, imperial",
+    "tracos": "verme claro de 12 m, sem olhos, boca cercada de línguas tentaculares compridas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro; engole presas vivas",
+    "caca": "esmaga a mente e engole",
+    "dianteDeGente": "domina ou devora"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Verme colossal que já governou impérios inteiros no fundo do mundo subterrâneo e hoje sobrevive em lendas de horror. Esmaga a mente de quem o enfrenta, cospe ácido, prende com as línguas tentaculares e engole a presa viva. Encanta, move as coisas com a mente e some por teletransporte.",
   "lore": [
     {
       "titulo": "Império esquecido nas profundezas",
@@ -163,79 +268,64 @@
     {
       "titulo": "Terror sussurrado",
       "texto": "Poucos que cruzaram seu caminho viveram para contar, e mesmo esses carregam a marca da mente esmagada pela presença da criatura."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme, 85 PV, Impacto 16, Corte e Perfuração 6. Esquiva e Bloqueio 2: fácil de acertar. Tentáculo de dano médio 24, até dois por ação; agarra (+2, e +6 pela massa) e engole. Sopro ácido em cone de 9 m (3d6 e mais dois ciclos de 1d6). Golpe mental de 3d6 três vezes por cena; uma vez por cena, deixa um alvo Inconsciente e Morrendo. Encanta, move coisas e se teleporta à vontade; levita. Defesa Mental 31, 33 contra Artes."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/neothelid_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Neothelid",
-    "cr": "15",
-    "tipo": "aberração Imenso",
-    "tamanho": "imenso",
-    "valores": {
-      "for": 30,
-      "des": 7,
-      "con": 24,
-      "int": 16,
-      "sab": 15,
-      "car": 21
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Sopro ácido",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Golpe mental",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "v3": {
-    "pv": 85,
-    "esquiva": 2,
-    "bloqueio": 2,
-    "defesa": 2,
-    "defesaMental": 31,
-    "defesaSocial": 18,
-    "absorcao": {
-      "impacto": 16,
-      "corte": 6,
-      "perfuracao": 6
+    {
+      "campo": "habilidadesEspeciais.Esmagamento da mente",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 3,
-    "pesoErguido": 1329.54,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "habilidadesEspeciais.Poderes mentais",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Levitação",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "O site tinha 12, acima dos dragões adultos de 7 a 7,5 t, mais pesados (o verde, 10; o vermelho e o azul, 11). Desce para 11 pelo teste de ordem (manual, Passo 7), como o chuul, a capa-sombria, o estrangulador e o laçador: não fica acima de quem é maior, e não fica abaixo do froghemoth de 3 t (11), mais leve. Abaixo da Força de referência da massa (11,61, manual 3.9): verme sem membros, que bate com as línguas e não tem alavanca. Pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro); 11, pelo teste de ordem; o site tinha 12 (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro))"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Animal comum na escala da decisão 12"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). \"Casca resistente\" (site) ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 3"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "deslocamento",
+      "motivo": "pela Levitação; o site não grava voo"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Tentáculo Pesado no lugar das \"Garras e presas\""
     }
-  },
-  "notasObservacao": [
-    "`forca`: 11, pelo teste de ordem; o site tinha 12 (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**",
-    "`tamanho`: Enorme pela área; o site dizia Imenso **[conta]**",
-    "`couraca`: nível 3 **[provisório]**",
-    "`voo`: pela Levitação; o site não grava voo **[provisório]**",
-    "`ataques`: Tentáculo Pesado no lugar das \"Garras e presas\" **[provisório]**",
-    "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`sopro ácido`, `golpe mental`, `esmagamento da mente`, `poderes mentais`, `levitação`, `resistência a magia`: números sugeridos pela ficha (D-197)"
   ]
 }

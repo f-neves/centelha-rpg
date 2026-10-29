@@ -1,98 +1,222 @@
 {
-  "ordem": 277,
   "id": "buscador",
   "idAntigo": "mon-retriever",
   "nome": "Buscador",
   "nomeIngles": "Retriever",
-  "categoria": "Construto",
-  "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
+  "categoria": "construto",
   "papel": "chefe",
-  "conceito": "constructo Enorme",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
-  "descricaoLegada": "Aberração humanoide de lendas antigas.",
-  "tags": [
-    "monstro"
-  ],
-  "imagem": "bestiario/buscador_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "corpo do tamanho de um elefante, cerca de 4,5 metros de comprimento",
-    "peso": "várias t"
-  },
-  "locomocao": {
-    "terra": 5
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 2.65,
+    "largura": 1.44,
+    "profundidade": null,
+    "comprimento": 4.5,
+    "massa": 3600,
+    "area": 6.65,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 9,
     "destreza": 5,
-    "vigor": 2,
-    "influencia": 0,
-    "perspicacia": 1,
-    "compostura": 1,
+    "vigor": 8,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 0,
+    "perspicacia": 1,
+    "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "sobrevivencia": 3,
+    "resistencia": 0
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "musculatura": 3
+  },
+  "especialidades": {
+    "sobrevivencia": [
+      {
+        "foco": "rastrear o alvo designado",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
+    "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 4
+    "temperanca": 3
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Patas-lâmina",
+      "parte": "pata-de-lamina",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "raio"
-  ],
-  "resistencias": [
-    "corte",
-    "fogo",
-    "perfuracao"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Raios oculares",
-      "descricao": "Dispara um raio diferente a cada rodada (fogo, frio, eletricidade ou petrificação), cada um recarregando por alguns turnos; o alvo testa Vigor ou Compostura conforme o efeito."
+      "nome": "Raio de fogo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "dispara dos olhos um raio de fogo; um raio por ação, e cada um dos quatro recarrega à parte",
+      "dano": "3d6, fogo",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
-      "nome": "Corpo de construto",
-      "descricao": "Não respira, não come nem dorme, e é imune a doenças, venenos e à maioria dos efeitos que exigem Vontade."
+      "nome": "Raio de frio",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "gelo",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "dispara dos olhos um raio de frio; um raio por ação, e cada um dos quatro recarrega à parte",
+      "dano": "3d6, gelo",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
+    },
+    {
+      "nome": "Raio elétrico",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "raio",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "dispara dos olhos um raio de eletricidade; um raio por ação, e cada um dos quatro recarrega à parte",
+      "dano": "3d6, raio",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
+    },
+    {
+      "nome": "raio de pedra",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o quarto raio dos olhos transforma em pedra quem não resiste; o livro não tem a condição de petrificado. Recarrega à parte, como os outros"
     },
     {
       "nome": "Escalada e travessia da água",
-      "descricao": "Efeitos permanentes que não podem ser desfeitos lhe permitem subir qualquer superfície e caminhar sobre a água como se fosse terra firme."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativas",
+      "duracao": "permanente; não pode ser desfeita",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "sobe qualquer superfície à Batalha 5 e anda sobre a água como em terra firme",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "Enxerga no escuro e na penumbra, quase nunca perdendo o rastro de sua presa."
+      "nome": "presa implacável",
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Sobrevivência, com a Especialidade natural (rastrear o alvo designado) +3"
     },
     {
-      "nome": "Presa implacável",
-      "descricao": "Rastreia o alvo designado com determinação sobrenatural, sem desistir até completar sua tarefa."
+      "nome": "corpo de construto",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude; é imune a doença e veneno e à maioria dos efeitos que pedem Vontade; não cura sozinho"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçador do senhor",
+      "formas": "todas",
+      "texto": "persegue o fugitivo ou o objeto sem parar nem hesitar; dispara os raios de longe, corta com as patas quem fica no caminho e leva a presa de volta ao senhor demoníaco."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro e na penumbra, e quase nunca perde o rastro",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "astúcia de bicho, sem vontade própria; obedece ao senhor demoníaco",
+    "tracos": "corpo de carne moldada do tamanho de um elefante, sobre quatro patas longas de lâmina, com olhos que disparam raios"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário, a serviço de um demônio",
+    "atividade": "qualquer hora",
+    "dieta": "nenhuma",
+    "caca": "caça o fugitivo ou o objeto que o senhor manda buscar",
+    "dianteDeGente": "ataca quem está entre ele e a presa"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer",
+      "ruínas"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Caçador do tamanho de um elefante, de carne moldada no Abismo, servo perfeito dos senhores demoníacos. Sobe qualquer parede, anda sobre a água e não perde o rastro; dispara raios de fogo, frio, eletricidade e pedra pelos olhos, e corta com as patas-lâmina.",
   "lore": [
     {
       "titulo": "Carne moldada no Abismo",
@@ -107,39 +231,72 @@
       "texto": "A simples presença de um coletor no covil de um demônio já basta para manter súditos menores na linha, temerosos do que aguarda quem tenta desertar."
     }
   ],
-  "ecologia": {
-    "tipo": "Construct",
-    "terreno": [
-      "Any",
-      "Ruins"
+  "imagens": [
+    "bestiario/buscador_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Retriever",
-    "cr": "11",
-    "tipo": "constructo Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 22,
-      "des": 16,
-      "con": "-",
-      "int": 3,
-      "sab": 11,
-      "car": 1
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Raio de fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Raio de frio",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Raio elétrico",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Escalada e travessia da água",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): carne viva do porte do elefante, que não come, não dorme e não cansa; um degrau abaixo do elefante (9), porque é carne moldada, e não um corpo crescido. O site tinha 2; 8 por julgamento (carne do porte do elefante); o site tinha 2"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Pelo corpo (tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): carne viva do porte do elefante, robusta como a do elefante (3); 3, como o elefante"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "O site diz \"várias t\" e \"corpo do tamanho de um elefante\", e o lore diz \"carne viva\": a massa do elefante do molde (3.600 kg), de mesmo comprimento, na densidade da carne; os do elefante do molde (3.600 kg, 6,65 m² de lado), pelo \"tamanho de um elefante\" e pela \"carne viva\" do site"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: carne moldada de couro grosso, como o elefante (2 a 3); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); 3, couro grosso como o do elefante"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "os do elefante do molde (3.600 kg, 6,65 m² de lado), pelo \"tamanho de um elefante\" e pela \"carne viva\" do site"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a \"Arma\" de 3 dados vira as Patas-lâmina Pesadas, de 2 dados (perda de mecânica publicada, no relato)"
+    }
+  ]
 }

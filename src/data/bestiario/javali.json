@@ -1,36 +1,27 @@
 {
-  "ordem": 40,
   "id": "javali",
   "idAntigo": "mon-javali",
   "nome": "Javali",
   "nomeIngles": "Boar",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,04 m de comprimento, 0,74 m de altura",
-    "peso": "87 kg",
-    "comprimento": 2.04,
-    "largura": 0.41,
-    "altura": 0.74
-  },
-  "locomocao": {
-    "terra": 6
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 6,
-    "arranque": 9,
-    "corrida": 12
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.74,
+    "largura": 0.41,
+    "profundidade": null,
+    "comprimento": 2.04,
+    "comprimentoSemCauda": 1.55,
+    "caudaGrossa": false,
+    "massa": 87,
+    "area": 0.56,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 5,
     "destreza": 2,
     "vigor": 5,
@@ -41,110 +32,181 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 1,
     "esquiva": 2,
     "atletismo": 2,
+    "furtividade": 0,
     "integridade": 2,
     "prontidao": 2,
     "resistencia": 3,
+    "empatia": 0,
     "sobrevivencia": 4
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 2,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "audição",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "fuçar raiz e bolota",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      },
+      {
+        "foco": "audição",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "sobrevivencia": [
+      {
+        "foco": "fuçar raiz e bolota",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 6,
+      "arranque": 9,
+      "corrida": 12
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Presada (golpe de presa)",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "presa",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Investida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "corpo",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "investida (pelas pernas)",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar",
+      "texto": "pelas pernas"
     },
     {
       "nome": "investida",
-      "descricao": "Investida: Investida.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Investida",
+      "regra": "investida"
     },
     {
       "nome": "presas que sangram",
-      "descricao": "Presada: o corte da presa continua sangrando.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o corte da presa continua sangrando"
     },
     {
       "nome": "teimosia",
-      "descricao": "luta normalmente até ferido grave, sem se abalar.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "luta normalmente até ferido grave, sem se abalar"
+    }
+  ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2 (Especialidade natural); alcance . Wikipédia",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +2 (Especialidade natural); alcance. Wikipédia. · audição: Prontidão (audição) +2 (Especialidade natural); alcance. Wikipédia. · visão: fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m. Sem Especialidade."
-    }
-  ],
-  "doencas": [
+      "nome": "audição",
+      "descricao": "Prontidão (audição) +2 (Especialidade natural); alcance . Wikipédia",
+      "formas": "todas"
+    },
     {
-      "nome": "Doença no jogo (ao comer)",
-      "texto": "Triquinose · Virulência 7 · dia · quem come a carne mal cozida rola uma vez"
+      "nome": "visão",
+      "descricao": "fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m (Wikipédia). Sem Especialidade",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": ". Nada bem e longe (11 km de mar, Wikipédia)",
+    "mente": "animal",
+    "tracos": "escudo do ombro nos machos (camada subcutânea grossa, caráter sexual secundário; é o nível 2 de Couraça, ver Absorção e Variantes); salto de 140 a 150 cm (Wikipédia, sem método)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "macho: solitário; fêmeas: bando (vara de 6 a 20 fêmeas aparentadas, às vezes mais de 100 animais)",
+    "atividade": "noturno ou crepuscular, conforme a estação e a temperatura",
+    "dieta": "onívoro",
+    "caca": "forrageio",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé (Mayer 2013).",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Pouco medroso apesar do tamanho, carrega com agressividade direta quando se sente encurralado. Social: macho: solitário; fêmeas: bando (vara de 6 a 20 fêmeas aparentadas, às vezes mais de 100 animais)."
+      "texto": "Pouco medroso apesar do tamanho, carrega com agressividade direta quando se sente encurralado."
     },
     {
       "titulo": "Hábitos",
@@ -157,84 +219,30 @@
     {
       "titulo": "Veneno e doença",
       "texto": "Doença no jogo (ao comer): Triquinose · Virulência 7 · dia · quem come a carne mal cozida rola uma vez"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Defesa Mental 11: não se espanta. Com o escudo, a pele fica no nível 2 de Couraça; quanto ela tira do golpe fica para depois. Leva só 8,7 kg sem perder a corrida: não é bicho de carga. Médio contra um humano Médio, nenhum dos dois ganha bônus de Alvo no acerto. A Força 5 tira o Bloqueio de um humano de Força 1, e só uma Força 10 tiraria o dele. A investida (dano médio 17) é o golpe a temer. Ferido, segue atacando (Resistência 3)."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Javali",
-    "cr": "2",
-    "tipo": "animal Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 10,
-      "con": 17,
-      "int": 2,
-      "sab": 13,
-      "car": 4
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,72 × 1,0338 = 0,744 . Antes: Era 0,78 m, o ponto médio de 0,75 a 0,80 m dos machos da Europa (Wikipédia). Como era medida do macho, escalada pelo cubo da massa: 0,78 × (78,75 ÷ 100)^(1/3) = 0,720"
     },
-    "pericias": [
-      "Prontidão 1"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,97 × 1,0338 = 2,037 . Antes: ponto médio da espécie inteira, 1,53 a 2,40 m (ADW). Já é dos dois sexos juntos, e não do macho: não se escala"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 40,
-    "esquiva": 8,
-    "bloqueio": 6,
-    "defesa": 8,
-    "defesaMental": 9,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,50 × 1,0338 = 1,551 . Antes: o valor de `insumos-d132.json`, sem texto de estimativa; a faixa derivada da espécie inteira é 1,3 a 2,0 m (total menos cauda de 0,21 a 0,38, ADW). A cauda é fina e não conta (D-155). Não se escala: está dentro da faixa da espécie inteira, e não é medida do macho"
     },
-    "couracaNivel": 2,
-    "pesoErguido": 370.99,
-    "carga": {
-      "leve": 7.88,
-      "media": 15.75,
-      "pesada": 23.63,
-      "maxima": 31.5
-    },
-    "deslocamento": {
-      "terra": {
-        "batalha": 6,
-        "arranque": 9,
-        "corrida": 12
-      }
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,40 × 1,0338 = 0,414 . Antes: estimativa do Arquiteto, sem dizer de qual sexo; não se escala"
     }
-  },
-  "notasObservacao": [
-    "`pesoErguido`: 370,99 kg (em vigor na Etapa 2, 20/10/2026); antes: 350,9 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 78,75 kg), provisório até a fórmula fechar; a carga (7,88 kg de Leve) sai da regra sem dado medido e fica como está (D-160, D-169, D-174).",
-    "`velocidade`: congelada (decisão 23); 44 km/h contra 40 da Wikipédia (sem método), +10% (D-170).",
-    "`dimensoes.largura`: 0,40 m, estimada pelo Arquiteto, sem fonte; o Alvo sai da silhueta de lado (D-147, D-174).",
-    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois. O nível vem do escudo do ombro, que cobre só o ombro e o flanco do macho adulto e some no verão (3 mm) e no jovem; o Mestre desce ao nível 1 na fêmea, no jovem e no verão (Variantes).",
-    "jornada (nota de pesquisa, não é regra): nadou cerca de 11 km de mar, da França a Alderney, em 2013 (Wikipédia, sem tempo nem velocidade). Área de vida média de 1,1 a 3,9 km² (ADW). Sem distância por dia nem tempo de corrida.",
-    "`habilidades.resistencia`: 3 pelo animal ferido que segue atacando (Mayer 2013). A Resistência (dor) 1 do levantamento ficou fora, porque o mesmo fato já sustenta o 3 e contá-lo nos dois lugares seria contar duas vezes (D-174).",
-    "`habilidades.empatia`: 0 no macho solitário da ficha, 1 na fêmea de vara; a espécie é social, mas a referência não vive em grupo (D-174).",
-    "`habilidades.musculatura`: 3 sem peso medido, pelo fuçar e pela investida (decisão 12, D-174)."
   ]
 }

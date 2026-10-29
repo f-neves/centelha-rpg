@@ -1,36 +1,27 @@
 {
-  "ordem": 241,
   "id": "hienodonte",
   "idAntigo": "mon-dire-hyena-hyaenodon",
   "nome": "Hienodonte",
   "nomeIngles": "Dire Hyena",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Predador corredor da Mongólia do fim do Eoceno, maior que um leão, com cabeça grande e dentes de quebrar osso, numa paisagem que secava e se abria.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,79 m de comprimento, 1,24 m de altura",
-    "peso": "330 kg",
-    "comprimento": 2.79,
-    "largura": 0.57,
-    "altura": 1.24
-  },
-  "locomocao": {
-    "terra": 8
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 8,
-    "arranque": 13,
-    "corrida": 18
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.24,
+    "largura": 0.57,
+    "profundidade": null,
+    "comprimento": 2.79,
+    "comprimentoSemCauda": 2.27,
+    "caudaGrossa": false,
+    "massa": 330,
+    "area": 1.2,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 4,
@@ -41,60 +32,116 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 4,
     "atletismo": 2,
     "furtividade": 2,
     "integridade": 2,
     "prontidao": 2,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 8,
+      "arranque": 13,
+      "corrida": 18
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "Mordida (na perna da presa em corrida): pelo corredor.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar",
+      "texto": "na perna da presa em corrida"
     },
     {
       "nome": "agarrar",
-      "descricao": "Mordida",
-      "classe": "livro"
-    },
-    {
-      "nome": "tática de matilha",
-      "descricao": "caça em grupo que quase não para, cercando a presa; o flanco (−2 na Defesa do alvo) e a Pressão do livro dão o ganho do bando.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "tática de matilha",
+      "formas": "todas",
+      "texto": "caça em grupo que quase não para, cercando a presa."
+    }
+  ],
+  "sentidos": [],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "os carniceiros do Hyaenodon são o M2 e o m3, e não o P4 e o m1 como nos Carnivora; o desgaste do P4 do H. gigas indica que ele quebrava osso (Wang 2005, via Wikipédia). Há uma garra (falange ungueal) atribuída a cf. H. gigas, sem medidas no trecho lido (Morlo e Nagel 2007)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "",
+    "atividade": "",
+    "dieta": "carnívoro que come carne e osso",
+    "caca": "perseguição , pelo corpo de corredor",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "planície"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Predador corredor da Mongólia do fim do Eoceno, maior que um leão, com cabeça grande e dentes de quebrar osso, numa paisagem que secava e se abria.",
   "lore": [
     {
       "titulo": "Predador incansável",
@@ -103,84 +150,94 @@
     {
       "titulo": "Montaria selvagem",
       "texto": "Gnolls por vezes domam hienodontes para servir como guardiões de suas tocas ou montarias temíveis em batalha."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 7: quem tem Força 3 ou menos não apara a mordida. Médio como o humano, sem bônus de porte para nenhum dos dois. 46 PV, Impacto 4 e Couraça nível 1 (quanto o nível vale fica para depois); é o Vigor que o segura. A mordida N1 passa o couro e a malha, e dá 10,5 de média. Arrasta ou vira cerca de 851 kg."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Dire Hyena (Hyaenodon)",
-    "cr": "3",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 18,
-      "des": 15,
-      "con": 15,
-      "int": 2,
-      "sab": 13,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Era 8. Igual ao leão (7, 157,5 kg no típico da sexta rodada; 189 kg o macho), de quem seria \"maior que\" (Morlo e Nagel 2006, via Wikipédia), e um abaixo dos grandes felinos da mesma massa (tigre e tigre-dentes-de-sabre, 8): o dentes-de-sabre agarrava e derrubava com os antebraços, e o hienodonte era corredor (Morlo et al. 2010) e matava com a cabeça grande e os dentes de quebrar osso (Wang 2005), sem membro de agarrar conhecido. Nenhum feito medido."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "atributos.destreza",
+      "motivo": "Degrau 3, \"reflexo rápido\": morde a presa em corrida, como os canídeos de referência. Não manipula."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 46,
-    "esquiva": 14,
-    "bloqueio": 6,
-    "defesa": 14,
-    "defesaMental": 7,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "Teste de ordem: 2 para os extintos  (`regra-construcao.md` §13). Sentidos: não achados."
     },
-    "couracaNivel": 1,
-    "pesoErguido": 850.83,
-    "carga": {
-      "leve": 33,
-      "media": 66,
-      "pesada": 99,
-      "maxima": 132
+    {
+      "campo": "habilidades.briga",
+      "motivo": "Predador de presa grande: \"maior que um leão\", com dentes que quebram osso (Wang 2005), na guilda de Taatsiin Gol em que 24% dos carnívoros comiam osso e carne (Morlo e Nagel 2007). Degrau 4."
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 8,
-        "arranque": 13,
-        "corrida": 18
-      }
+    {
+      "campo": "habilidades.esquiva",
+      "motivo": "O ágil comum ."
+    },
+    {
+      "campo": "habilidades.atletismo",
+      "motivo": "Corredor (Morlo et al. 2010) , sem velocidade publicada. Degrau 2."
+    },
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Era sem linha (0). Levantamento : nenhum fato; predador corredor, no normal: 2, \"usa noite e cobertura\"."
+    },
+    {
+      "campo": "habilidades.integridade",
+      "motivo": "Predador grande de topo, como o dentes-de-sabre. Degrau 3."
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "Predador que caça. Degrau 2 ."
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era sem linha (0). Sem dado de fome, frio, doença, veneno ou dor (extinto, só dentes): fica no normal da espécie no próprio meio."
+    },
+    {
+      "campo": "habilidades.empatia",
+      "motivo": "Não usa até haver dado: vida em grupo não achada, e caça em bando seria  (`hienodonte.md`)."
+    },
+    {
+      "campo": "habilidadesSec.equilibrio",
+      "motivo": "Não usa: corredor de chão ."
+    },
+    {
+      "campo": "habilidadesSec.escalada",
+      "motivo": "Não usa: corredor de chão ."
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,20 × 1,0323 = 1,239 . Antes: pesquisa: 1,1 a 1,3 m, partindo de \"maior que um leão\" (Morlo e Nagel 2006, via Wikipédia) e do ombro do leão macho (1,20 m, `leao.md`)"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,70 × 1,0323 = 2,787 . Antes: o corpo mais uma cauda de cerca de 0,5 m, sem fonte"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,20 × 1,0323 = 2,271 . Antes: pesquisa: 2 a 2,5 m, descontada a cabeça grande dos hienodontes. A cauda conta como fina (D-155)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,55 × 1,0323 = 0,568 . Antes: entre o leão (0,50) e o tigre-dentes-de-sabre (0,60), as estimativas do Arquiteto"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 5 de 19/10/2026: a ficha principal usa uma versão um pouco acima da média da espécie, dentro da faixa real. 300 kg (meio da faixa estimada de 200 a 400 kg) mais 10% = 330 kg  , dentro da faixa. Antes: Referência: 300 kg, mantida. Não há estimativa publicada nem consenso: o *H. gigas* é conhecido só por dentes, um fragmento de maxila e uma garra, e Morlo e Nagel 2007 o põem só na classe \"mais de 100 kg\", de propósito, porque a massa pelo carniceiro erra demais (o carniceiro do *Hyaenodon* varia cerca de 30% dentro da espécie, Mellett 1977). As estimativas que existem: \"maior que um leão\", sem número (Morlo e Nagel 2006, via Wikipédia); 200 a 400 kg, conta da pesquisa pelo leão de 189 kg; cifras de 330 a 378 kg em resumo de busca atribuídas à Wikipédia, que não aparecem nas páginas \"Hyaenodon\" e \"Hyaenodonta\", lidas inteiras em 15/10/2026 (não usar); 400 a 500 kg no Pathfinder, na ficha de hoje do site e em sites de fã, sem base. Os 300 kg ficam no meio da faixa da pesquisa, um leão grande e meio. Faixa: 200 a 400 kg . Sexos: .  Fonte: Morlo e Nagel 2007; `hienodonte.md`. D-141, com o corte de 35 kg da decisão 22 (não muda de faixa); 330 kg (em vigor na Etapa 2, 20/10/2026); antes: 300 kg . Não há massa publicada para o H. gigas. Estimativas concorrentes: \"maior que um leão\", sem número (Morlo e Nagel 2006, via Wikipédia); 200 a 400 kg, conta da pesquisa sobre o leão de 189 kg; 408 kg no texto do Pathfinder e 400 kg na ficha atual, sem base científica; os parentes gigantes de outra subfamília (Hyainailouros, Megistotherium) mostram que a família chegava a esse tamanho"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107.  A pele e a cor não se conhecem; fica na maioria."
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": "Morlo et al. 2010, via Wikipédia"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 330 kg (em vigor na Etapa 2, 20/10/2026); antes: 300 kg **[extrapolação]**. Não há massa publicada para o H. gigas. Estimativas concorrentes: \"maior que um leão\", sem número (Morlo e Nagel 2006, via Wikipédia); 200 a 400 kg, conta da pesquisa sobre o leão de 189 kg; 408 kg no texto do Pathfinder e 400 kg na ficha atual, sem base científica; os parentes gigantes de outra subfamília (Hyainailouros, Megistotherium) mostram que a família chegava a esse tamanho",
-    "`alvo`: Médio pela silhueta (1,13 m²), era Grande na borda (4,08). Todas as medidas são extrapolação, e a silhueta também",
-    "`dimensoes`: altura, comprimento e largura são extrapolação, sem esqueleto: só há dentes, um fragmento de maxila e uma garra. O crânio de 60 cm da Wikipédia é dado ao H. gigas e ao H. mongoliensis juntos, o que não fecha com o primeiro ser \"claramente\" maior (Lange-Badré e Dashzeveg 1989)",
-    "`pesoErguido` e `carga`: 850,83 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (30 kg de Leve); o peso erguido sai de `calc.mjs` (848,4 kg), e era 554,66 kg pela fórmula da D-162 (decisões 14 e 16)",
-    "`velocidade`: congelada (decisão 23); 63 km/h, que saiu da Força 8 e do fator do Grande",
-    "`ataques.mordida`: N1 por extrapolação da hiena-malhada e da função de quebrar osso; sem estimativa própria",
-    "`vigor`: 4 pela comparação de massa com a hiena (3) e o leão (4), sem nenhum dado de corpo",
-    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "`musculatura`: 3 pela comparação com a hiena, de mesma função; era 0 por falta de dado",
-    "`social`: Influência, Compostura e Empatia em 1, 1 e 0 por não haver vida em grupo conhecida; se a pesquisa achar caça em bando, sobem"
   ]
 }

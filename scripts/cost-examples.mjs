@@ -1,3 +1,4 @@
+import { pvJogador } from './lib-criatura-motor.mjs';
 // cost-examples.mjs · recusteia os quatro personagens-exemplo do capítulo de
 // criação pela régua de verdade, e compara linha a linha com o que a tabela
 // publica.
@@ -17,7 +18,7 @@
 // E ELE DEIXOU DE TER RÉGUA PRÓPRIA. A versão antiga reimplementava o preço do
 // nível aqui dentro, o que a fazia uma SEGUNDA CÓPIA da regra: quando a fonte
 // mudasse, as duas divergiriam em silêncio, que foi exatamente o que aconteceu.
-// Agora ele empacota `src/lib/calc.ts` com o esbuild e chama as MESMAS funções
+// Agora ele empacota `src/lib/motor.ts` com o esbuild e chama as MESMAS funções
 // que a ficha usa. Se a régua mudar, este script muda junto ou quebra alto.
 //
 // NÃO É PORTÃO, E ISSO É DE PROPÓSITO. Ele sai com código 0 mesmo achando
@@ -36,7 +37,7 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const saida = path.join(os.tmpdir(), `cost-examples-${process.pid}.mjs`);
 await build({
   stdin: {
-    contents: "export { custoPontos, custoArte, custoEspecialidade, defesa, defesaMental, defesaSocial } from './src/lib/calc';",
+    contents: "export { custoPontos, custoArte, custoEspecialidade, defesa, defesaMental, defesaSocial } from './src/lib/motor';",
     resolveDir: ROOT,
     loader: 'ts',
   },
@@ -201,7 +202,7 @@ for (const [nome, e] of Object.entries(EXEMPLOS)) {
   // conferia os quatro exemplos pela regra de antes da Reforma). A Defesa física entrou na
   // conferência com a Esquiva que o capítulo lista (3 nos quatro).
   const a = e.atributos;
-  const pv = D.pv.base + (a.vigor || 0) * D.pv.vigorMult;
+  const pv = pvJogador(a.vigor || 0, e.raca || 'humano');
   const defF = C.defesa({ destreza: a.destreza || 0, habilidade: e.esquiva, centelha: e.centelha });
   const defM = C.defesaMental({ raciocinio: a.raciocinio || 0, integridade: e.integridade, vontade: e.vontade, centelha: e.centelha });
   const defS = e.sociabilidade == null ? null

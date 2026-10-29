@@ -11,6 +11,10 @@
     "descricao": "Versáteis e adaptáveis, sem extremos raciais. Sem inimizades naturais: partem do Neutro com todos os povos.",
     "tracos": [
       "Sem inimizades naturais: transita e negocia entre os povos onde outros não conseguem (valor de partida 0 na Régua de Relação com todos)."
+    ],
+    "massaKg": [
+      60,
+      80
     ]
   },
   {
@@ -18,14 +22,23 @@
     "porte": "medio",
     "nome": "Anão",
     "custo": 30,
-    "atributos": { "vigor": 1, "perspicacia": -1 },
+    "atributos": {
+      "vigor": 1,
+      "perspicacia": -1
+    },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
     "deslocamentoFrac": 0.667,
     "longevidade": "longa",
     "bonusCondicional": [
-      { "bonus": "+1d6", "escopo": "resistir a venenos" },
-      { "bonus": "+1d6", "escopo": "qualquer Ofício em que já tenha pontos" }
+      {
+        "bonus": "+1d6",
+        "escopo": "resistir a venenos"
+      },
+      {
+        "bonus": "+1d6",
+        "escopo": "qualquer Ofício em que já tenha pontos"
+      }
     ],
     "descricao": "Baixos e corpulentos, de vida longa (300+ anos). Mestres dos ofícios de pedra e metal.",
     "tracos": [
@@ -33,6 +46,10 @@
       "Visão no escuro (sem distinguir cores; leva um tempo para adaptar).",
       "Mestre dos ofícios: +1d6 em qualquer Ofício em que já tenha pontos.",
       "Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o Arranque, a Corrida e os Saltos. É a mesma proporção do andar (1 m/s contra 1,5), e a ficha já faz a conta."
+    ],
+    "massaKg": [
+      70,
+      100
     ]
   },
   {
@@ -40,19 +57,32 @@
     "porte": "medio",
     "nome": "Elfo",
     "custo": 50,
-    "atributos": { "destreza": 1, "vigor": -1 },
+    "atributos": {
+      "destreza": 1,
+      "vigor": -1
+    },
     "aparenciaMod": 0,
     "aparenciaUniversal": true,
     "longevidade": "muito-longa",
     "bonusCondicional": [
-      { "bonus": "+1d6", "escopo": "Percepção (visão/audição), em ambiente natural após concentrar-se por 6 Ticks" },
-      { "bonus": "+4 de Dificuldade ou +1d6", "escopo": "resistir a controle mental" }
+      {
+        "bonus": "+1d6",
+        "escopo": "Percepção (visão/audição), em ambiente natural após concentrar-se por 6 Ticks"
+      },
+      {
+        "bonus": "+4 de Dificuldade ou +1d6",
+        "escopo": "resistir a controle mental"
+      }
     ],
     "descricao": "Esguios e graciosos, ligados à natureza, de vida muito longa (600+ anos).",
     "tracos": [
       "Aparência Universal: descendentes das fadas, não sofrem penalidade de Aparência ao lidar com outros povos.",
       "Sentidos naturais aguçados: em ambiente natural, concentrando-se por 6 Ticks, +1d6 em Percepção (visão/audição) e enxerga o dobro, por uma cena.",
       "Resiliência Mental: controle mental contra o elfo tem +4 de dificuldade, ou o elfo recebe +1d6 para resistir."
+    ],
+    "massaKg": [
+      42,
+      65
     ]
   },
   {
@@ -60,14 +90,23 @@
     "porte": "pequeno",
     "nome": "Gnomo",
     "custo": 30,
-    "atributos": { "vigor": 1, "forca": -1 },
+    "atributos": {
+      "vigor": 1,
+      "forca": -1
+    },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
     "deslocamentoFrac": 0.667,
     "longevidade": "longa",
     "bonusCondicional": [
-      { "bonus": "+2", "escopo": "criar e detectar feitiçarias de ilusão" },
-      { "bonus": "+2", "escopo": "lidar com animais" }
+      {
+        "bonus": "+2",
+        "escopo": "criar e detectar feitiçarias de ilusão"
+      },
+      {
+        "bonus": "+2",
+        "escopo": "lidar com animais"
+      }
     ],
     "descricao": "Pequenos e resistentes, engenhosos e ilusionistas, de vida longa (300+ anos).",
     "tracos": [
@@ -75,6 +114,10 @@
       "Empatia com animais: +2 ao lidar com animais.",
       "Visão no escuro (sem distinguir cores).",
       "Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o Arranque, a Corrida e os Saltos. É a mesma proporção do andar (1 m/s contra 1,5), e a ficha já faz a conta."
+    ],
+    "massaKg": [
+      20,
+      30
     ]
   },
   {
@@ -82,18 +125,28 @@
     "porte": "pequeno",
     "nome": "Halfling",
     "custo": 30,
-    "atributos": { "destreza": 1, "forca": -1 },
+    "atributos": {
+      "destreza": 1,
+      "forca": -1
+    },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
     "deslocamentoFrac": 0.667,
     "longevidade": "longa",
     "bonusCondicional": [
-      { "bonus": "+1d6", "escopo": "Atletismo e habilidades secundárias correlatas" }
+      {
+        "bonus": "+1d6",
+        "escopo": "Atletismo e habilidades secundárias correlatas"
+      }
     ],
     "descricao": "Pequenos e ágeis, atléticos apesar do porte, de vida longa (cerca de 200 anos).",
     "tracos": [
       "Atletas: +1d6 em Atletismo e habilidades secundárias correlatas.",
       "Baixa estatura: todo deslocamento vale DOIS TERÇOS do de um humano · o passo em combate, o Arranque, a Corrida e os Saltos. É a mesma proporção do andar (1 m/s contra 1,5), e a ficha já faz a conta."
+    ],
+    "massaKg": [
+      20,
+      28
     ]
   },
   {
@@ -106,12 +159,19 @@
     "aparenciaUniversal": true,
     "longevidade": "padrao",
     "bonusCondicional": [
-      { "bonus": "+2", "escopo": "resistir a controle mental" }
+      {
+        "bonus": "+2",
+        "escopo": "resistir a controle mental"
+      }
     ],
     "descricao": "Filhos de humano e elfa, mais élficos na aparência; inférteis. Vivem até 200 anos.",
     "tracos": [
       "Aparência Universal: herda o fascínio élfico; não sofre penalidade de Aparência entre povos.",
       "Resiliência Mental (menor): +2 para resistir a controle mental."
+    ],
+    "massaKg": [
+      50,
+      90
     ]
   },
   {
@@ -119,13 +179,27 @@
     "porte": "medio",
     "nome": "Orc",
     "custo": 40,
-    "atributos": { "forca": 1, "vigor": 1, "perspicacia": -1, "compostura": -1, "inteligencia": -1 },
+    "atributos": {
+      "forca": 1,
+      "vigor": 1,
+      "perspicacia": -1,
+      "compostura": -1,
+      "inteligencia": -1
+    },
     "aparenciaMod": -1,
     "aparenciaUniversal": false,
     "longevidade": "curta",
     "bonusCondicional": [
-      { "bonus": "vigor", "campo": "pv", "escopo": "sempre", "nome": "Vitalidade" },
-      { "bonus": "+2d6", "escopo": "Intimidar, em Frenesi" }
+      {
+        "bonus": "vigor",
+        "campo": "pv",
+        "escopo": "sempre",
+        "nome": "Vitalidade"
+      },
+      {
+        "bonus": "+2d6",
+        "escopo": "Intimidar, em Frenesi"
+      }
     ],
     "descricao": "Altos, truculentos e de herança metamorfa, com constituição física superior a qualquer outra raça mediana; feições rudes e vida curta (60 anos). Mais bestial e menos temperado que o meio-orc.",
     "tracos": [
@@ -133,6 +207,10 @@
       "Frenesi: entra em fúria ao falhar num teste de Temperança; em fúria só faz ações físicas (+2 no teste), ignora as penalidades de ferimento até Incapacitado, tem −2 em Esquiva e Bloqueio, e Intimidar vira reflexo com +2d6 na parada. Regra inteira no capítulo Raças, seção Frenesi.",
       "Visão noturna: enxerga sem penalidade na penumbra, não na escuridão total.",
       "Aparência bruta: a Aparência efetiva de um Orc é 1 a menos do valor pago (já embutido na ficha)."
+    ],
+    "massaKg": [
+      80,
+      140
     ]
   },
   {
@@ -140,13 +218,26 @@
     "porte": "medio",
     "nome": "Meio-Orc",
     "custo": 40,
-    "atributos": { "forca": 1, "vigor": 1, "compostura": -1, "inteligencia": -1 },
+    "atributos": {
+      "forca": 1,
+      "vigor": 1,
+      "compostura": -1,
+      "inteligencia": -1
+    },
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
     "longevidade": "curta",
     "bonusCondicional": [
-      { "bonus": "vigor", "campo": "pv", "escopo": "sempre", "nome": "Vitalidade" },
-      { "bonus": "+2d6", "escopo": "Intimidar, em Frenesi Contido" }
+      {
+        "bonus": "vigor",
+        "campo": "pv",
+        "escopo": "sempre",
+        "nome": "Vitalidade"
+      },
+      {
+        "bonus": "+2d6",
+        "escopo": "Intimidar, em Frenesi Contido"
+      }
     ],
     "descricao": "Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Robustos e brutos, mas menos bestiais que um orc puro. Vida curta, pouco mais de 70 anos.",
     "tracos": [
@@ -154,6 +245,10 @@
       "Frenesi Contido: o Frenesi do orc com −2 na Dificuldade para entrar e para sair; ignora só Machucado e Grave, sai da fúria sozinho ao entrar em Crítico e só reentra quando a Vida voltar a Grave ou melhor. Regra inteira no capítulo Raças, seção Frenesi.",
       "Visão noturna: enxerga sem penalidade na penumbra, não na escuridão total.",
       "Sangue partido: não carrega inimizades naturais e parte do Neutro com os outros; em troca, os demais povos o recebem em Antipatia. Orcs e outros meio-orcs não têm essa reserva."
+    ],
+    "massaKg": [
+      70,
+      110
     ]
   }
 ]

@@ -1,93 +1,212 @@
 {
-  "ordem": 51,
   "id": "corujurso",
   "idAntigo": "mon-corujurso",
   "nome": "Corujurso",
   "nomeIngles": "Owlbear",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/corujurso_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,4 m de altura",
-    "peso": "cerca de 680 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; luta em pé",
+    "apoio": "quadrupede",
+    "altura": 2.4,
+    "largura": 1.02,
+    "profundidade": null,
+    "comprimento": 2.12,
+    "massa": 300,
+    "area": 1.53,
+    "posturaDoTamanho": "silhueta de frente, de pé",
+    "segundoTamanho": {
+      "area": 1.21,
+      "posturaDoTamanho": "de lado, de quatro, na corrida"
+    }
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 2,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "intimidacao": 1,
+    "musculatura": 4
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro e audição",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
-  "aparencia": 5,
-  "tech": {
-    "imobilizar": true
+  "vontade": 6,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Garras",
+      "parte": "garra-patas-da-frente",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Bico",
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
     {
       "nome": "Abraço esmagador",
-      "descricao": "após acertar com as duas garras, agarra o alvo e causa dano contínuo por rodada"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "agarrar",
+      "texto": "o abraço só vem depois que as duas garras acertam o mesmo alvo"
     },
     {
-      "nome": "Garras furiosas",
-      "descricao": "dois ataques de garra por rodada com dano alto"
+      "nome": "Imobilizar",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "imobilizar",
+        "nivel": 1
+      }
     },
     {
-      "nome": "Bico cortante",
-      "descricao": "ataque extra de bico quando o alvo já está agarrado"
-    },
-    {
-      "nome": "Sentidos apurados",
-      "descricao": "audição e olfato detectam presas escondidas mesmo contra Furtividade"
+      "nome": "bico no agarrado",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "além do abraço, bica o alvo que já está preso, na mesma ação"
     },
     {
       "nome": "Fúria descontrolada",
-      "descricao": "gravemente ferido, ganha bônus de dano mas ataca sem distinguir aliados"
-    },
-    {
-      "nome": "Abraço (agarrar)",
-      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "na primeira vez na cena em que cai abaixo da metade dos PV",
+      "duracao": "até o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Enfurecido, e ataca o que estiver mais perto, aliado ou não",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçador solitário",
+      "formas": "todas",
+      "texto": "ataca a presa assim que a percebe, corre de quatro, ergue-se, abraça e não recua até matar ou morrer."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro e audição",
+      "descricao": "Prontidão (faro e audição) +2; acha a presa escondida",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "de coruja, enxerga na penumbra",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "corpo de urso coberto de penas castanhas, cabeça de coruja de bico curvo e olhos redondos fixos; grito que mistura o da coruja ao rugido do urso"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "dia ou noite",
+    "dieta": "carnívoro; devora quase tudo que caça",
+    "caca": "ataca por instinto assim que percebe a presa",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Fera de temperamento péssimo e fome constante, com corpo de urso e cabeça de coruja. Ataca por instinto assim que percebe uma presa e não recua até matar ou ser morta; marca o território com garras nas árvores e uivos guturais.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -106,46 +225,30 @@
       "texto": "Ninguém sabe dizer se o corujurso nasceu da natureza ou de algum experimento arcano perdido da Grande Guerra; para o povo comum, pouco importa, é só mais uma fera tocada por magia a evitar."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/corujurso_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Corujurso",
-    "cr": "4",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 12,
-      "con": 18,
-      "int": 2,
-      "sab": 12,
-      "car": 10
-    },
-    "pericias": [
-      "Prontidão 4"
-    ],
-    "nota": "Besta mágica: Centelha 1.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "agarrao-do-urso"
+      "campo": "habilidadesEspeciais.Fúria descontrolada",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "ataques.Bico.nivelPerfuracao",
+      "motivo": "O \"bico cortante\" do site: bico de coruja do tamanho de uma cabeça de urso, com o pescoço atrás: Média; bico grande em N1 . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 0 e Briga 4 (0)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "em pé, Grande (1,53 m², 5,5% acima do corte); de quatro, Médio. O urso-pardo luta de quatro na ficha dele; o corujurso, pelo abraço do site, em pé"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 10,5 (duas pela Rajada), bico 10,5"
     }
   ]
 }

@@ -1,35 +1,25 @@
 {
-  "ordem": 19,
   "id": "orc",
   "idAntigo": "mon-orc",
   "nome": "Orc",
   "nomeIngles": "Orc",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Médio",
-  "descricao": "Guerreiro de pele esverdeada, alto e truculento, que bate com o machado e entra em fúria quando a luta aperta. Em fúria não sente as feridas, não recua e só para quando cai.",
-  "tags": [
-    "humanoide"
-  ],
-  "imagem": "bestiario/orc_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2 m de altura",
-    "peso": "110 kg",
-    "largura": 0.5,
-    "altura": 2
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 2,
+    "largura": 0.5,
+    "profundidade": 0.26,
+    "comprimento": null,
+    "massa": 110,
+    "area": 0.89
+  },
+  "couraca": 0,
+  "bonusPV": 5,
+  "atributos": {
     "forca": 5,
     "destreza": 3,
     "vigor": 5,
@@ -40,86 +30,122 @@
     "perspicacia": 2,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 2,
     "bloqueio": 1,
+    "esquiva": 0,
     "atletismo": 2,
     "prontidao": 1,
     "resistencia": 3,
     "integridade": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
-    "intimidacao": 2
+  "habilidadesSec": {
+    "intimidacao": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "machado",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "machado",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:machado"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Machado",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "machado",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Frenesi",
-      "descricao": "o Frenesi da raça: entra ao falhar num teste de Temperança; em fúria ignora a penalidade de ferimento até Incapacitado, soma +2 nas ações físicas, perde 2 em Esquiva e Bloqueio e intimida como reflexo com +2 dados; duas fúrias por cena (metade do Vigor 5); ressaca ao sair.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Vitalidade",
-      "descricao": "+Vigor de PV, no Bônus de PV.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Fúria de combate",
-      "descricao": "a Força 5 da raça no dano do machado.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Alerta",
-      "descricao": "Prontidão 1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "selvagem",
-      "descricao": "avança gritando, entra em fúria no primeiro golpe forte, luta até cair e não recua.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão noturna: enxerga sem penalidade na penumbra, mas não na escuridão total. · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Frenesi da raça Orc"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "selvagem",
+      "formas": "todas",
+      "texto": "avança gritando, entra em fúria no primeiro golpe forte, luta até cair e não recua."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão noturna",
+      "descricao": "enxerga sem penalidade na penumbra, mas não na escuridão total",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; bruta e orgulhosa",
+    "tracos": "pele do marrom ao verde, olhos e cabelos pretos, presas inferiores, feições rudes, corpo alto e pesado"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em bando, típico 4 a 12",
+    "atividade": "diurno e noturno",
+    "dieta": "onívoro",
+    "caca": "caça e saque",
+    "dianteDeGente": "ataca quem entende só a força; negocia com quem a respeita"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "montanha",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Guerreiro de pele esverdeada, alto e truculento, que bate com o machado e entra em fúria quando a luta aperta. Em fúria não sente as feridas, não recua e só para quando cai.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Guerreiros ferozes que só respeitam força bruta e coragem provada em combate, e desprezam abertamente qualquer sinal de fraqueza. Social: em bando, típico 4 a 12."
+      "texto": "Guerreiros ferozes que só respeitam força bruta e coragem provada em combate, e desprezam abertamente qualquer sinal de fraqueza."
     },
     {
       "titulo": "Sociedade",
@@ -132,78 +158,44 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Assim como os goblins, são filhos ásperos moldados pelos anões a partir da própria rocha da montanha; livres desde o nascimento, nunca escravizados, cresceram bárbaros e sem lugar fixo, e por isso vagam pelas fronteiras selvagens de Mére e do White Wall perdido."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 45 PV, Impacto 5. Defesa baixa (Bloqueio 8, Esquiva 6), e 2 a menos em fúria. O machado dá dano médio 8,5. Um golpe que tire 9 PV ou mais (20% da Vida) o obriga ao teste de Frenesi, e com Temperança 2 ele quase sempre entra: ignora as feridas até cair e intimida como reflexo."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Plains",
-      "Mountain",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/orc_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Orc",
-    "cr": "1/3",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 17,
-      "des": 11,
-      "con": 12,
-      "int": 7,
-      "sab": 8,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). Guerreiro de bando; 3 e 2; o site tinha só Briga 1"
     },
-    "pericias": [
-      "Prontidão 1"
-    ],
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). O \"couro grosso\" da raça já está na Vitalidade; a pele fica no nível 0, como a do humano; nível 0; o \"couro grosso\" da raça é a Vitalidade"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 45,
-    "esquiva": 6,
-    "bloqueio": 8,
-    "defesa": 8,
-    "defesaMental": 9,
-    "defesaSocial": 2,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 0,
-      "perfuracao": 0
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
     },
-    "couracaNivel": 0,
-    "pesoErguido": 232.98,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "comportamento.caca",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "machado do livro, sem armadura"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "3 e 2; o site tinha só Briga 1"
+    },
+    {
+      "campo": "virtudes.bravura",
+      "motivo": "4; o site tinha 3"
     }
-  },
-  "notasObservacao": [
-    "`massa`: 110 kg, a média da raça; o site tinha 95 kg (ordem do autor: partir da raça)",
-    "`sentidos`: visão noturna da raça; o site dava visão no escuro",
-    "`equipamento`: machado do livro, sem armadura **[provisório]**",
-    "`armas`, `briga`: 3 e 2; o site tinha só Briga 1 **[provisório]**",
-    "`bravura`: 4; o site tinha 3 **[provisório]**",
-    "`couraca`: nível 0; o \"couro grosso\" da raça é a Vitalidade **[provisório]**"
   ]
 }

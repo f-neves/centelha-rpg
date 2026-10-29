@@ -1,124 +1,264 @@
 {
-  "ordem": 122,
   "id": "ogro-mago-oni",
   "idAntigo": "mon-ogro-mago-oni",
   "nome": "Ogro Mago (Oni)",
-  "nomeIngles": "Ogre Mage (Oni)",
-  "categoria": "Gigante",
-  "categoriaLegada": "Exterior",
+  "nomeIngles": "Ogre Mage",
+  "categoria": "gigante",
   "papel": "chefe",
-  "conceito": "exterior Grande",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/ogro-mago-oni_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de altura",
-    "peso": "290 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 6
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "verdadeira",
+    "nome": "forma verdadeira"
+  },
+  "corpo": {
+    "postura": "bípede, de pé; voador",
+    "apoio": "bipede",
+    "altura": 2.7,
+    "largura": 0.68,
+    "profundidade": 0.35,
+    "comprimento": null,
+    "massa": 269,
+    "area": 1.62,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 4,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "arremesso": 2,
+    "bloqueio": 0,
     "esquiva": 1,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "manha": 3,
+    "persuasao": 3,
+    "sociabilidade": 2,
+    "ocultismo": 3
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "labia": 3,
+    "voo": 2,
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 10,
-  "aparencia": 0,
-  "arte": {
-    "vento": 5,
-    "fascinacao": 1,
-    "materia": 3,
-    "gelo": 2
+  "vontade": 10,
+  "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 6
+    }
   },
-  "tech": {
-    "regeneracao": true
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
   },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Punho de ogro",
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "regeneracao",
-      "nome": "Regeneração",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Regeneração",
-      "descricao": "recupera PV a cada rodada; só dano de fogo ou ácido impede a regeneração"
+      "nome": "Regeneração 5",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de fogo ou ácido"
     },
     {
-      "nome": "Voo",
-      "descricao": "desloca 12m voando"
-    },
-    {
-      "nome": "Invisibilidade à vontade",
-      "descricao": "1x por cena, some de vista por até uma cena inteira"
+      "nome": "fogo e ácido param a regeneração",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração. O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido"
     },
     {
       "nome": "Forma gasosa",
-      "descricao": "vira névoa por uma rodada, imune a dano físico e passa por frestas"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "6 Ticks",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
+      "nome": "Invisibilidade",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Invisível",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena; o site chamava a habilidade de \"à vontade\" e descrevia \"1x por cena\", e vale a descrição. O nível 3 da Ofuscação é o que some da vista mesmo andando"
     },
     {
       "nome": "Cone de frio",
-      "descricao": "cone de 9m; dano alto, metade se Esquivar"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "gelo",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "9 m à frente",
+      "area": "cone de 9 m",
+      "efeito": "um sopro de frio que queima a pele e cobre o chão de gelo fino",
+      "dano": "3d6 + Centelha, gelo (o site diz \"dano alto\", sem número)",
+      "resistencia": "esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Sono",
-      "descricao": "alvo em alcance falha em Vontade: cai Inconsciente"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6, à vista do alvo",
+      "duracao": "até o fim da cena, ou até o alvo levar dano ou alguém sacudi-lo",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "o alvo cai Inconsciente, dormindo",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica acordado",
+      "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Força de ogro",
-      "descricao": "dano corpo a corpo elevado, arremessa objetos pesados"
+      "nome": "Mudar de forma",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "metamorfose",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele desfazer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "assume a forma de um humano, sedutor ou nobre elegante (a Variante \"disfarce\"), e volta à forma verdadeira quando quer; a mente e os números ficam os dele",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Rosto humano",
-      "descricao": "+2d6 em Manha ao se passar por humano"
+      "formas": [
+        "disfarce"
+      ],
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale enquanto está disfarçado",
+      "duracao": "a do disfarce",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "+2d6 em Manha para se passar por humano (o número do site)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "senhor do bando",
+      "formas": [
+        "verdadeira"
+      ],
+      "texto": "manda os ogros e goblins na frente, voa por cima, abre com o cone de frio, põe para dormir quem é perigoso e esmaga com o punho quem sobra; ferido, fica invisível ou vira névoa e se refaz longe."
+    },
+    {
+      "nome": "nobre de mentira",
+      "formas": [
+        "disfarce"
+      ],
+      "texto": "evita a luta e prefere enganar; descoberto, põe para dormir quem o acusa e volta à forma verdadeira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente; cruel, orgulhosa da própria astúcia e paciente nos esquemas",
+    "tracos": "ogro de 2,7 m de pele azul, chifres curtos, presas e cabelo escuro, vestido como senhor"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "sozinho, ou senhor de um bando de ogros e goblins",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro; come gente",
+    "caca": "não caça: engana, junta riqueza e favores",
+    "dianteDeGente": "disfarçado, seduz e engana; na forma verdadeira, domina"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Ogro de outro plano, de pele azul e chifres, que se passa por humano sedutor ou nobre elegante e engana vilas inteiras por anos. Voa, fica invisível, vira névoa, sopra frio e põe gente para dormir; as feridas fecham, a não ser as do fogo e do ácido. Despreza a força bruta, mas bate como um ogro.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -139,51 +279,90 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Nativo de um plano distante, contido em teoria pela Lei que impede os deuses de agir direto, mas ele próprio escapa a essa contenção; sussurra-se que atravessa por rasgos como a Fenda, ou por portais mais antigos e esquecidos nas selvas de Mére."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Mountain",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Ocultismo 3, Manha 3, Persuasão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Ogro Mago (Oni)",
-    "cr": "8",
-    "tipo": "exterior Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 15,
-      "con": 16,
-      "int": 14,
-      "sab": 14,
-      "car": 18
-    },
-    "pericias": [
-      "Ocultismo 3",
-      "Manha 3",
-      "Persuasão 3"
-    ],
-    "nota": "Regeneração, voo, feitiços, mudar de forma: Centelha 4.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "tabela"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "proezaFutura": [
+  "imagens": [
+    "bestiario/ogro-mago-oni_criatura.webp"
+  ],
+  "formas": [
     {
-      "caminho": "cerne-vital"
+      "id": "disfarce",
+      "nome": "disfarce",
+      "aparencia": 8,
+      "corpo": {
+        "tamanhoEscolhido": "medio"
+      },
+      "fisiologia": {
+        "camuflagem": "passa por humano",
+        "tracos": "homem ou mulher bonito e bem vestido, de modos de nobre"
+      }
+    }
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
+  },
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Forma gasosa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cone de frio",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Sono",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Rosto humano",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 4, \"Feio\": na forma verdadeira, um ogro de pele azul, chifres e presas, de rosto de gigante, feio como o ogro (4), mas não disforme. O site tinha 0, o \"Monstruoso\" de quem não tem forma de gente (como o hezrou); a Aparência mede a beleza, e não o quanto assusta (D-205). No disfarce, 8 (Variantes); 4; o site tinha 0, e a Aparência mede a beleza (D-205)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa de ogro, como a do ogro (1) . O nível fica fora da Absorção (decisoes-autor §16); 1, pele grossa de ogro"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "formas.disfarce",
+      "motivo": "Mudar de forma (site): \"humano sedutor ou nobre elegante\". A mente e os números ficam os dele, como no disfarce do rakshasa e do marid"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira o Punho de ogro Pesado, de 2 dados (D-241), e de Impacto pelo gesto"
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201), como no rakshasa e no marid; todas as Manobras e os Sentidos em todas as formas, menos o Rosto humano (só no disfarce), o alvo grande (só na forma verdadeira) e o \"como luta\", em duas linhas. Aptidões iguais e nenhuma Arte nas duas"
+    },
+    {
+      "campo": "habilidadesSec.voo",
+      "motivo": "6, o congelado; a habilidade do site dizia 12 m"
     }
   ]
 }

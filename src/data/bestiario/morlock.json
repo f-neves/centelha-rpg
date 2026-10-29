@@ -1,37 +1,24 @@
 {
-  "ordem": 261,
   "id": "morlock",
   "idAntigo": "mon-morlock",
   "nome": "Morlock",
   "nomeIngles": "Morlock",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Médio",
-  "descricao": "Humano degenerado das profundezas que perdeu a fala e anda de quatro, escala paredes e tetos como aranha e ataca em bando, dois a dois em cada presa. Cultua as estátuas das cidades em ruínas e foge da luz.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/morlock_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,5 m de altura",
-    "peso": "68 kg",
-    "largura": 0.45,
-    "altura": 1.5
-  },
-  "locomocao": {
-    "terra": 4,
-    "escalada": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "de quatro membros, curvado",
+    "apoio": "quadrupede",
+    "altura": 1.5,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 68,
+    "area": 0.6
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 5,
     "vigor": 4,
@@ -42,9 +29,10 @@
     "perspicacia": 1,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 3,
     "furtividade": 3,
@@ -52,95 +40,176 @@
     "integridade": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
-    "escalada": 3
+  "habilidadesSec": {
+    "escalada": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "escalada",
-      "foco": "parede e teto de pedra com fendas",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "alvo desprevenido",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "alvo desprevenido",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "escalada": [
+      {
+        "foco": "parede e teto de pedra com fendas",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "escalada": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:bastao"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bastão",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "bastao",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Ataque furtivo",
-      "descricao": "Bastão: Ativação: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o golpe pega um ponto vital. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Bastão",
+      "ativacao": "o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o golpe pega um ponto vital",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Salto certeiro",
-      "descricao": "Ativação: um salto que o leva até o alvo, com o golpe. Duração: instantânea. Alcance: o salto (Atletismo). Área: um alvo. Efeito: golpeia no começo, no meio ou no fim do salto, e o movimento não abre a guarda dele a quem está no caminho. Dano: o do golpe. Resistência: nenhum. Limite de uso: a cada ação.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um salto que o leva até o alvo, com o golpe",
+      "duracao": "instantânea",
+      "alcance": "o salto (Atletismo)",
+      "area": "um alvo",
+      "efeito": "golpeia no começo, no meio ou no fim do salto, e o movimento não abre a guarda dele a quem está no caminho",
+      "dano": "o do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "a cada ação"
     },
     {
       "nome": "Luta em enxame",
-      "descricao": "Ativação: nenhuma; vale quando dois morlocks atacam o mesmo alvo. Duração: enquanto os dois estiverem juntos. Alcance: o do corpo a corpo. Área: o espaço de um, que os dois dividem. Efeito: os dois cabem no mesmo espaço apertado e o alvo conta como Flanqueado por eles. Dano: nenhum além dos golpes. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale quando dois morlocks atacam o mesmo alvo",
+      "duracao": "enquanto os dois estiverem juntos",
+      "alcance": "o do corpo a corpo",
+      "area": "o espaço de um, que os dois dividem",
+      "efeito": "os dois cabem no mesmo espaço apertado e o alvo conta como Flanqueado por eles",
+      "dano": "nenhum além dos golpes",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Cego pela luz",
-      "descricao": "Ativação: luz repentina e intensa (um clarão, uma tocha acesa de perto, o sol de repente). Duração: 6 Ticks. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Cego. Dano: nenhum. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; quem passa fica só Ofuscado. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Escalador perfeito",
-      "descricao": "Escalada 3 com a Especialidade natural (parede e teto de pedra com fendas) +3.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "luz repentina e intensa (um clarão, uma tocha acesa de perto, o sol de repente)",
+      "duracao": "6 Ticks",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Cego",
+      "dano": "nenhum",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa fica só Ofuscado",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Imune a veneno e doença",
-      "descricao": "toxinas e pragas não o pegam.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "bando nas ruínas",
-      "descricao": "cai do teto em bando, dois a dois em cada alvo, salta e golpeia, e foge da luz.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro a grande distância (site). · faro: localiza presa pelo cheiro; Prontidão (faro) +2."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "toxinas e pragas não o pegam"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "bando nas ruínas",
+      "formas": "todas",
+      "texto": "cai do teto em bando, dois a dois em cada alvo, salta e golpeia, e foge da luz."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro a grande distância",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "localiza presa pelo cheiro; Prontidão (faro) +2",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "simples, de fera",
+    "tracos": "corpo nodoso e pálido, olhos enormes, cabelo ralo, mãos e pés de dedos longos, anda de quatro"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em bando, típico 4 a 12",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "carnívoro",
+    "caca": "emboscada em bando",
+    "dianteDeGente": "ataca em bando e foge da luz"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Humano degenerado das profundezas que perdeu a fala e anda de quatro, escala paredes e tetos como aranha e ataca em bando, dois a dois em cada presa. Cultua as estátuas das cidades em ruínas e foge da luz.",
   "lore": [
     {
       "titulo": "Humanos degenerados",
@@ -149,78 +218,52 @@
     {
       "titulo": "Cultuam os próprios ancestrais",
       "texto": "Vivem nas ruínas de antigas cidades e veneram como deuses as estátuas deixadas por quem construiu aqueles salões, hoje esquecidos."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em bando, típico 4 a 12."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva 14, Bloqueio 10 (11 com o bastão). Bastão (dano médio 7,5), +1d6 contra quem se distrai; dois no mesmo alvo o flanqueiam. Escala parede e teto. Luz repentina o cega por 6 Ticks."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/morlock_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Morlock",
-    "cr": "2",
-    "tipo": "humanoide monstruoso Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 14,
-      "des": 19,
-      "con": 15,
-      "int": 5,
-      "sab": 14,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ataque furtivo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Salto certeiro",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 37,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 15,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "habilidadesEspeciais.Luta em enxame",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 146.73,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      }
+    {
+      "campo": "habilidadesEspeciais.Cego pela luz",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`raça parente`: Humano (D-207); o traço social do Humano não vale, pelo texto do site",
-    "`equipamento`: bastão do livro **[provisório]**",
-    "`virtudes`: Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**",
-    "`ataque furtivo`, `salto certeiro`, `luta em enxame`, `cego pela luz`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 3 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (grupo)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "bastão do livro"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1 e Temperança 1; o site tinha 2 e 2"
+    }
   ]
 }

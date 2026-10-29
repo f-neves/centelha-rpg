@@ -1,37 +1,24 @@
 {
-  "ordem": 280,
   "id": "bruxa-do-mar",
   "idAntigo": "mon-sea-hag",
   "nome": "Bruxa do Mar",
   "nomeIngles": "Hag, Sea",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Médio",
-  "descricao": "Velha horrenda das águas, cuja visão enfraquece quem a encara de perto e cujo olhar paralisa de terror. Vive em coven de três em enseadas afastadas e trama contra marinheiros e povoados da costa.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/bruxa-do-mar_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "68 kg",
-    "largura": 0.41,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvada",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.41,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 68,
+    "area": 0.66
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 5,
     "vigor": 5,
@@ -42,8 +29,9 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 2,
     "furtividade": 2,
@@ -51,85 +39,174 @@
     "integridade": 4,
     "ocultismo": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 3,
-    "intimidacao": 2
+    "intimidacao": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "briga",
-      "foco": "garras",
-      "valor": 2,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "maldições",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "briga": [
+      {
+        "foco": "garras",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "nado": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "maos-de-garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Olho maligno",
-      "descricao": "poder natural (base Fascinação 2): Ativação: uma ação, Velocidade 6, encarando o alvo. Duração: a paralisia, 12 Ticks; a maldição, até o fim do dia. Alcance: 9 m, à vista dela. Área: um alvo. Efeito: quem falha fica paralisado de terror (não age nem se move) e amaldiçoado; se ela o fere de novo enquanto a maldição dura, ele cai em coma (Inconsciente por 1d6 dias). Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dela; quem passa não fica paralisado, mas a maldição pega. Limite de uso: três vezes por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6, encarando o alvo",
+      "duracao": "a maldição, até o fim do dia",
+      "alcance": "9 m, à vista dela",
+      "area": "um alvo",
+      "efeito": "o alvo fica amaldiçoado; se ela o fere de novo enquanto a maldição dura, ele cai em coma (Inconsciente por 1d6 dias)",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dela; a maldição pega também em quem passa",
+      "limiteDeUso": "três vezes por cena"
     },
     {
       "nome": "Aparência horrenda",
-      "descricao": "Ativação: nenhuma; vale para quem a encara de perto pela primeira vez na cena. Duração: até o fim da cena. Alcance: 9 m. Área: cada um que a vê de perto. Efeito: quem falha fica enfraquecido: a Força conta um nível abaixo, com o dano e o peso que vêm dela. Dano: nenhum. Resistência: corpo, Vigor + Resistência contra Dificuldade 10. Limite de uso: uma vez por cena para cada pessoa.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale para quem a encara de perto pela primeira vez na cena",
+      "duracao": "até o fim da cena",
+      "alcance": "9 m",
+      "area": "cada um que a vê de perto",
+      "efeito": "quem falha fica enfraquecido: a Força conta um nível abaixo, com o dano e o peso que vêm dela",
+      "dano": "nenhum",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10",
+      "limiteDeUso": "uma vez por cena para cada pessoa"
     },
     {
-      "nome": "Resistência a magia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "nome": "Resistência à magia 15",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Anfíbia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira na água e no ar. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "respira na água e no ar",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Garras",
-      "descricao": "as duas mãos de garra contam como par de armas leves e atacam pela empunhadura dupla, os dois golpes a −1d6.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "empunhadura-dupla"
     },
     {
-      "nome": "coven da enseada",
-      "descricao": "deixa a presa vê-la de perto para enfraquecer, paralisa o mais forte com o olho maligno e rasga com as garras; foge para a água.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga perfeitamente no escuro (site). · audição e olfato: os de um humano."
+      "nome": "paralisia do olho maligno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o terror trava o corpo de quem encara o olhar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "coven da enseada",
+      "formas": "todas",
+      "texto": "deixa a presa vê-la de perto para enfraquecer, paralisa o mais forte com o olho maligno e rasga com as garras; foge para a água."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga perfeitamente no escuro",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água e ar (Anfíbia)",
+    "prendeRespiracao": "não precisa",
+    "mente": "humanoide; maligna e paciente",
+    "tracos": "velha descarnada de pele esverdeada e escamosa, cabelo como alga, dentes podres, garras longas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em coven de três",
+    "atividade": "noturna",
+    "dieta": "carnívora",
+    "caca": "trama contra marinheiros e povoados costeiros",
+    "dianteDeGente": "amaldiçoa e afoga"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "litoral"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Velha horrenda das águas, cuja visão enfraquece quem a encara de perto e cujo olhar paralisa de terror. Vive em coven de três em enseadas afastadas e trama contra marinheiros e povoados da costa.",
   "lore": [
     {
       "titulo": "O rosto que ninguém suporta ver",
@@ -142,77 +219,44 @@
     {
       "titulo": "Covens entre as ondas",
       "texto": "Como outras bruxas de sua laia, reúnem-se em conluios de três, escolhendo portos e enseadas afastadas para tramar contra marinheiros e povoados costeiros."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em coven de três."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Média, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva 14, Bloqueio 10. Duas garras por ação a −1d6 (8,5 cada). Quem a vê de perto testa contra 10 ou fica com a Força um nível abaixo; três vezes por cena o olho maligno paralisa, e ferir o amaldiçoado o põe em coma. +2 contra Artes. Respira na água."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Water",
-      "Coast"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/bruxa-do-mar_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Sea Hag",
-    "cr": "4",
-    "tipo": "humanoide monstruoso Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 19,
-      "des": 16,
-      "con": 18,
-      "int": 12,
-      "sab": 13,
-      "car": 15
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Olho maligno",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+    {
+      "campo": "habilidadesEspeciais.Aparência horrenda",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 40,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 18,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "habilidadesEspeciais.Anfíbia",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 178.64,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      },
-      "nado": 4
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 1, \"Deformado\": \"Tão repulsiva é a aparência da bruxa do mar\" (site). A Aparência mede a beleza (D-205), e aqui o rosto é de fato horrendo; o efeito em quem a vê é a habilidade \"Aparência horrenda\". O site tinha 4; 1 pela D-205; o site tinha 4"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "virtudes.compaixao",
+      "motivo": "1; o site tinha 2"
     }
-  },
-  "notasObservacao": [
-    "`aparência`: 1 pela D-205; o site tinha 4 **[provisório]**",
-    "`compaixão`: 1; o site tinha 2 **[provisório]**",
-    "`olho maligno`, `aparência horrenda`, `resistência a magia`, `anfíbia`: números sugeridos pela ficha (D-197)"
   ]
 }

@@ -1,125 +1,234 @@
 {
-  "ordem": 32,
   "id": "gigante-das-nuvens",
   "idAntigo": "mon-gigante-das-nuvens",
   "nome": "Gigante das Nuvens",
   "nomeIngles": "Giant, Cloud",
-  "categoria": "Gigante",
+  "categoria": "gigante",
   "papel": "chefe",
-  "conceito": "humanoide Enorme (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
-  "tags": [
-    "gigante",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/gigante-das-nuvens_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "7 m de altura",
-    "peso": "8 t"
-  },
-  "locomocao": {
-    "terra": 5
-  },
+  "ameaca": 5,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 7,
+    "largura": 1.75,
+    "profundidade": 0.89,
+    "comprimento": null,
+    "massa": 4692,
+    "area": 10.89,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 12,
     "destreza": 3,
     "vigor": 8,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "arremesso": 3,
+    "bloqueio": 1,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "atletismo": 2,
+    "integridade": 5,
+    "prontidao": 3,
+    "oficios-gerais": 2,
+    "sociabilidade": 1
   },
-  "virtues": {
+  "habilidadesSec": {
+    "etiqueta": 2,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "arremesso": [
+      {
+        "foco": "rocha",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 5
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada descomunal",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     },
     {
-      "nome": "Arremessar rocha",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "distancia": true,
-      "arremesso": true,
-      "tipo": "impacto",
+      "nome": "Rocha arremessada",
+      "parte": "mao",
+      "habilidade": "arremesso",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7,
-      "notas": "dado pelo porte Enorme"
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "levitar",
+      "nome": "Arremesso de rocha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Rocha arremessada",
+      "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+      "duracao": "instantânea",
+      "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+      "area": "um alvo",
+      "efeito": "a rocha derruba o alvo Grande ou menor que ela fere",
+      "dano": "2d6 + Força + Centelha, Impacto",
+      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
+      "limiteDeUso": "enquanto houver rocha por perto"
+    },
+    {
       "nome": "Levitar",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "Levita a si e até 900 kg, sem limite de tempo.",
-      "usos": {
-        "periodo": "avontade"
-      },
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "vento",
         "nivel": 4
       },
-      "descricao": "O gigante flutua à vontade, a si e a até mais 900 kg de carga ou de um companheiro, subindo e descendo devagar, sem precisar de asas."
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "enquanto quiser, sem limite de tempo",
+      "alcance": "o próprio corpo, e quem ou o que ele leva",
+      "area": "ele e até mais 900 kg de carga ou de um companheiro",
+      "efeito": "flutua, subindo e descendo devagar, sem asas; a Batalha no ar é a metade da de terra",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
-      "id": "nevoa",
       "nome": "Névoa",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "area": "raio de 9 m",
-      "efeito": "Névoa espessa que cobre a visão e concede Furtividade a aliados, dificultando Ataques à distância contra eles.",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 1
-      },
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "agua",
         "nivel": 3
       },
-      "descricao": "O gigante cobre uma área com névoa espessa, o bastante para encobrir a visão de quem estiver lá dentro."
-    }
-  ],
-  "habilidades": [
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena, ou até um vento forte dispersar",
+      "alcance": "18 m",
+      "area": "uma esfera de 9 m de raio",
+      "efeito": "névoa espessa que tapa a visão de quem está dentro: quem está dentro fica Na escuridão para ver, os aliados dele somam +2 em Furtividade, e o ataque à distância contra quem está dentro leva −2",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
+    },
     {
       "nome": "Telepatia",
-      "descricao": "comunica-se mentalmente com aliados a até 18m"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "os aliados que ele escolher",
+      "efeito": "fala com os aliados pela mente, sem língua em comum",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Couro nas alturas",
-      "descricao": "Absorção alta"
+      "nome": "servos alados",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "no próprio domínio, conhece as rotas do céu e chama os servos alados (águias gigantes) e os ogros que o servem (site, Castelo entre nuvens)"
     },
     {
-      "nome": "Castelo entre nuvens",
-      "descricao": "conhece rotas aéreas e pode convocar servos alados em seu domínio"
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçada do castelo",
+      "formas": "todas",
+      "texto": "trata a luta como um jogo; cobre o campo de névoa, arremessa rochas do alto e só desce para esmagar quem o diverte menos."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano atento; vê longe do alto das nuvens",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "dentro da própria névoa (Manobras)",
+    "mente": "humanoide, caprichosa e vaidosa",
+    "tracos": "gigante de 7 m de porte nobre e roupas finas, que flutua sem asas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "nobreza aérea, em castelos flutuantes servidos por ogros e águias gigantes",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro; banquetes suntuosos",
+    "caca": "caça por passatempo",
+    "dianteDeGente": "trata mortais como curiosidades ou peças de um jogo"
+  },
+  "ecologia": {
+    "terreno": [
+      "céu",
+      "montanha"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Nobre dos castelos que flutuam entre as nuvens, de 7 m, caprichoso e vaidoso. Levita com quem quiser levar, cobre o campo de névoa e arremessa rochas do alto; prefere enigmas e caçadas à guerra.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -136,50 +245,48 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Seus castelos no céu são relíquia viva de um tempo em que a magia domava até o vento, prova de que o mundo já foi diferente antes da Supressão. Poucos mortais os avistam, e quem avista raramente é acreditado."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
     }
   ],
-  "ecologia": {
-    "tipo": "Giant",
-    "terreno": [
-      "Sky",
-      "Mountain"
-    ],
-    "clima": [
-      "Cold"
-    ]
+  "imagens": [
+    "bestiario/gigante-das-nuvens_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 3, Ofícios 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Gigante das Nuvens",
-    "cr": "11",
-    "tipo": "humanoide Enorme (gigante)",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 35,
-      "des": 12,
-      "con": 21,
-      "int": 12,
-      "sab": 16,
-      "car": 15
-    },
-    "pericias": [
-      "Prontidão 3",
-      "Ofícios 2"
-    ],
-    "nota": "Poderes mágicos inatos (Sp): Centelha 1.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "atlas"
+      "campo": "habilidadesEspeciais.Arremesso de rocha",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Levitar",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Névoa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Telepatia",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro nas alturas\" do site, como o couro grosso do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 2, couro grosso"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "3, a da nota do site; o campo dizia 2"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a Pancada e a rocha de 3 dados viram Pesadas de 2 dados (perda de mecânica publicada, no relato)"
     }
   ]
 }

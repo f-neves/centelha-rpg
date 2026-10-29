@@ -65,8 +65,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
     if (!user) return;
     const ficha = lerFichaLocal();
     if (!ficha) { await uiAviso('Nenhuma ficha para salvar.'); return; }
-    const nome = (ficha.id?.nome || '').trim() || 'Personagem';
-    const conceito = (ficha.id?.conceito || '').trim();
+    const nome = ((ficha.nome ?? ficha.id?.nome) || '').trim() || 'Personagem';
+    const conceito = ((ficha.conceito ?? ficha.id?.conceito) || '').trim();
 
     const idSalvo = localStorage.getItem(KEY_PERS);
     if (idSalvo) {
@@ -117,8 +117,8 @@ import FichaSkeleton from '../components/FichaSkeleton.astro';
 
     const mesaId = await pedirMesa(mesas);
     if (!mesaId) return;
-    const nome = (ficha.id?.nome || '').trim() || 'Personagem';
-    const conceito = (ficha.id?.conceito || '').trim();
+    const nome = ((ficha.nome ?? ficha.id?.nome) || '').trim() || 'Personagem';
+    const conceito = ((ficha.conceito ?? ficha.id?.conceito) || '').trim();
     const { data: nova, error: e2 } = await sb
       .from('personagens')
       .insert({ dono_id: user.id, mesa_id: mesaId, nome, conceito, ficha })

@@ -1,37 +1,25 @@
 {
-  "ordem": 166,
   "id": "centauro",
   "idAntigo": "mon-centaur",
   "nome": "Centauro",
   "nomeIngles": "Centaur",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Grande",
-  "descricao": "Metade homem, metade cavalo: caçador lendário das fronteiras, que atira azagaias a galope, golpeia com a espada e escoiceia na mesma investida. Povo antigo e distante, que só aos poucos aceita o mundo de fora.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/centauro_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,9 m de comprimento, 2,1 m de altura",
-    "peso": "900 kg",
-    "comprimento": 2.9,
-    "largura": 0.74,
-    "altura": 2.1
-  },
-  "locomocao": {
-    "terra": 5
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas, torso ereto",
+    "apoio": "quadrupede",
+    "altura": 2.1,
+    "largura": 0.74,
+    "profundidade": null,
+    "comprimento": 2.9,
+    "massa": 900,
+    "area": 3.13,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 4,
     "vigor": 6,
@@ -42,7 +30,7 @@
     "perspicacia": 3,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "arremesso": 3,
     "briga": 3,
@@ -52,103 +40,152 @@
     "prontidao": 2,
     "integridade": 3,
     "sobrevivencia": 3,
-    "resistencia": 3
+    "resistencia": 3,
+    "sociabilidade": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "rastrear",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "sobrevivencia": [
+      {
+        "foco": "rastrear",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      },
+      {
+        "ref": "a:azagaia"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "espada-longa",
+      "habilidade": "armas"
     },
     {
       "nome": "Azagaia",
-      "atrib": "destreza",
-      "pericia": "arremesso",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 1,
-      "ticks": 6,
-      "classe": "arremesso",
-      "distancia": true,
-      "arremesso": true
+      "arma": "azagaia",
+      "habilidade": "arremesso"
     },
     {
       "nome": "Coice",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "cascos-traseiros",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Ataque duplo",
-      "descricao": "Espada longa e Coice: Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo, ou dois, um na frente e um atrás. Efeito: um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro). Dano: o de cada golpe. Resistência: nenhum. Limite de uso: a cada ação.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Lançador certeiro",
-      "descricao": "a Azagaia com Arremesso 3 e a Especialidade (azagaia a galope) +1; atira em movimento.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo, ou dois, um na frente e um atrás",
+      "efeito": "um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro)",
+      "dano": "o de cada golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "a cada ação"
     },
     {
       "nome": "Investida",
-      "descricao": "corre no Preparo do golpe, com −2 a mais na Defesa e +1d6 no dano.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "investida"
     },
     {
       "nome": "Armas de porte humano",
-      "descricao": "usa as armas do livro feitas para gente, sem perda.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Rastreador nato",
-      "descricao": "Sobrevivência 3 com a Especialidade (rastrear) +1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "tribo da fronteira",
-      "descricao": "atira azagaias a galope, investe com a espada e escoiceia quem passa por trás; recua para a mata se a luta vira.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga mesmo na escuridão total (site). · audição e olfato: os de um cavalo."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "usa as armas do livro feitas para gente, sem perda"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "tribo da fronteira",
+      "formas": "todas",
+      "texto": "atira azagaias a galope, investe com a espada e escoiceia quem passa por trás; recua para a mata se a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga mesmo na escuridão total",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um cavalo",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um cavalo",
+    "mente": "humanoide; desconfiada e altiva",
+    "tracos": "torso de homem forte sobre corpo de cavalo grande, cabelo e crina longos, espada e feixe de azagaias"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "em tribo, típico 4 a 12",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "caça a galope com azagaias",
+    "dianteDeGente": "distante; às vezes negocia ou se alia"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "planície"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Metade homem, metade cavalo: caçador lendário das fronteiras, que atira azagaias a galope, golpeia com a espada e escoiceia na mesma investida. Povo antigo e distante, que só aos poucos aceita o mundo de fora.",
   "lore": [
     {
       "titulo": "Sociedade",
@@ -156,7 +193,7 @@
     },
     {
       "titulo": "Comportamento",
-      "texto": "Distantes das outras raças e até mesmo entre si, são um povo antigo que só lentamente aceita o mundo moderno; alguns abandonam o isolamento ancestral para viver nas cidades mais cosmopolitas, tornando-se muitas vezes párias entre a própria tribo. Social: em tribo, típico 4 a 12."
+      "texto": "Distantes das outras raças e até mesmo entre si, são um povo antigo que só lentamente aceita o mundo moderno; alguns abandonam o isolamento ancestral para viver nas cidades mais cosmopolitas, tornando-se muitas vezes párias entre a própria tribo."
     },
     {
       "titulo": "Natureza",
@@ -165,80 +202,48 @@
     {
       "titulo": "Aptidões",
       "texto": "montaria não · carga sim · tração sim"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, 54 PV, Impacto 8, Corte e Perfuração 2. Esquiva e Bloqueio 12 (13 com a espada). Espada (dano médio 12,5), azagaia a 16 m (12,5) ou coice (16); em uma ação, espada e coice juntos a −1d6. Corre a 5 · 8 · 12 e investe."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Forest",
-      "Plains"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/centauro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Centaur",
-    "cr": "3",
-    "tipo": "humanoide monstruoso Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 15,
-      "des": 14,
-      "con": 15,
-      "int": 11,
-      "sab": 14,
-      "car": 12
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ataque duplo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima de 6 pela física (D-143): o corpo de cavalo de 900 kg empurra e coiceia como o cavalo do molde (Força 7, com 500 kg), e não fica abaixo dele; abaixo da Força de referência da massa (8,48). O site tinha 5 (a For 15 do Pathfinder, a dos braços); 7 e 6, pelo cavalo do molde; o site tinha 5 e 5"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 54,
-    "esquiva": 12,
-    "bloqueio": 12,
-    "defesa": 13,
-    "defesaMental": 17,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 8,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Degrau 6: o corpo de cavalo grande, como o cavalo do molde (6). O site tinha 5; 7 e 6, pelo cavalo do molde; o site tinha 5 e 5"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 662.03,
-    "carga": {
-      "leve": 180,
-      "media": 360,
-      "pesada": 540,
-      "maxima": 720
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 5,
-        "arranque": 8,
-        "corrida": 12
-      }
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`forca`, `vigor`: 7 e 6, pelo cavalo do molde; o site tinha 5 e 5 **[provisório]**",
-    "`equipamento`: espada longa e azagaia do livro **[provisório]**",
-    "`carga`: 20% da massa, a fração do cavalo **[provisório]**",
-    "`ataque duplo`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada longa e azagaia do livro"
+    },
+    {
+      "campo": "aptidoes.carga",
+      "motivo": "20% da massa, a fração do cavalo"
+    }
   ]
 }

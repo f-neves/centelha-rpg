@@ -1,36 +1,26 @@
 {
-  "ordem": 172,
   "id": "caranguejo-gigante",
   "idAntigo": "mon-giant-crab",
   "nome": "Caranguejo-gigante",
   "nomeIngles": "Giant Crab",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "praga Médio",
-  "descricao": "Passa a maré na toca da margem do mangue; sai com a água subindo para quebrar ostras e caranguejos menores com as pinças.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/caranguejo-gigante_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "0,7 m de comprimento, 0,41 m de altura",
-    "peso": "202,5 kg",
-    "comprimento": 0.7,
-    "largura": 1.03,
-    "altura": 0.41
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 6
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "patas dos lados, corpo baixo e largo; anda de lado",
+    "apoio": "outro",
+    "altura": 0.41,
+    "largura": 1.03,
+    "profundidade": null,
+    "comprimento": 0.7,
+    "massa": 202.5,
+    "area": 1.17,
+    "posturaDoTamanho": "de cima",
+    "linhaPV": "acima"
+  },
+  "couraca": 5,
+  "atributos": {
     "forca": 5,
     "destreza": 2,
     "vigor": 5,
@@ -41,7 +31,7 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 3,
     "esquiva": 1,
@@ -50,66 +40,123 @@
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 3,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 1,
+    "escalada": 0,
     "natacao": 2,
+    "voo": 0,
     "musculatura": 4
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "fora da água",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "na toca",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "fora da água",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "na toca",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pinça",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "pinca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Pinça: O \"Constrição\" da ficha atual é este Agarrão.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "puxar para a água",
-      "descricao": "Pinça: arrasta o que agarrou para a água, até o Peso erguido.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "nada achado com número."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Pinça",
+      "efeito": "arrasta o que agarrou para a água, até o Peso erguido"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "sentidos",
+      "descricao": "nada achado com número",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água, e aguenta horas no ar úmido (Resistência (fora da água) +3 , Especialidade natural, )",
+    "prendeRespiracao": "não se aplica (respira por brânquias); fora da água, a S. paramamosain aguenta 120 h (Cheng et al. 2019 e 2020), da própria espécie não achado",
+    "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Imunidade Mental: \"Por não possuir mente articulada, é imune a efeitos que dependem de compreensão ou emoção\")",
+    "tracos": "carapaça lisa, pinças enormes no macho; fica mole e vulnerável na muda, quando outros caranguejos o atacam (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário, canibal",
+    "atividade": "ligada à maré, de dia e de noite",
+    "dieta": "carnívoro e carniceiro: ostras, moluscos, crustáceos, vermes",
+    "caca": "forrageia no fundo na maré enchendo; 79% do tempo parado",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "litoral"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Passa a maré na toca da margem do mangue; sai com a água subindo para quebrar ostras e caranguejos menores com as pinças.",
   "lore": [
     {
       "titulo": "Predador Costeiro",
@@ -118,94 +165,32 @@
     {
       "titulo": "Variação da Espécie",
       "texto": "Existem variedades de todos os tamanhos, da pequena caranguejeira de coco ao monstruoso naufragador de navios, cada uma adaptando cor e força ao ambiente onde vive."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário, canibal."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio como o humano: sem bônus de Alvo. A Força 5 tira o Bloqueio de quem tem Força 1 ou menos (o dobro e ao menos 4 a mais: 5 contra 1). A pinça faz 8,5 em média e agarra (10 por Tick de agarrão). A carapaça é Couraça nível 5, ao lado do crocodilo; quanto ela tira da espada, da lança e da maça fica para depois. 50 PV (Vigor 5). Ele bloqueia como arma: o golpe que não passa do Bloqueio erra. Fora da água, não sufoca no tempo de uma luta."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water",
-      "Coast"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/caranguejo-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Crab",
-    "cr": "2",
-    "tipo": "praga Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 13,
-      "con": 14,
-      "int": "-",
-      "sab": 10,
-      "car": 2
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Era 9. Reanalisado na sétima rodada: fica, porque com 622 kg (era 540) a Força de referência da massa é 7,87, e os vizinhos de massa são o cavalo (470 kg, Força 7), o alce (407,5 kg, 7), o bisão (570 kg, 8), o daeodon (750 kg, 8) e o boi (788 kg, 8): o caranguejo fica com o cavalo e o alce, abaixo do topo, porque o corpo é de carapaça baixa e larga, que anda de lado e passa 79% do tempo parado (Hewitt et al. 2023), sem o músculo de tronco do boi ou do cavalo. O que ele tem de excepcional é a pinça, \"muito grande, forte e pesada\" no macho (fishconsult.org), e isso vai para a Musculatura. A pinça escalada pelo quadrado do tamanho daria cerca de 62.000 N (pela relação do caranguejo-dos-coqueiros, 1.765 N com 2,1 kg e expoente 0,82, Oka et al. 2016: cerca de 506 N na base de 0,461 kg, × 11,04²) , e não decide a Força. Continua acima da Scylla de base (Força 1 , pelo item 8; ver \"Comparação com o animal de base\"), como pede a D-176"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,60 × 0,6879 = 0,413 . Antes: O tamanho do site fica (passa no item 7). 0,4 vez a largura, a proporção estimada pela Bestiarista (0,10 m num caranguejo de 25 cm; o corpo achatado erguido sobre as patas); altura não achada"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 50,
-    "esquiva": 6,
-    "bloqueio": 10,
-    "defesa": 11,
-    "defesaMental": 6,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,50 × 0,6879 = 1,032 . Antes: A largura da carapaça da ficha atual (\"largura 1,5 m\"), que fica e decide a massa: 135,8 mm da base típica × 11,04. Passa no item 7 da `tamanho-decisoes-5.md` (Grande, quatro portes acima da base Minúscula)"
     },
-    "couracaNivel": 5,
-    "pesoErguido": 678.65,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 6
-      }
-    },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o do site (largura de carapaça de 1,5 m), que passa no item 7: Grande (2,47 m², de cima com as patas), quatro portes acima da Scylla de base (Minúscula, 0,020 m² no mesmo modo). A área fica 70% acima do corte do Médio (1,45 m²) e 59% abaixo do do Enorme (6 m²) (D-174)",
-    "`gigante`: escalado da Scylla serrata típica de Cochin (135,8 mm e 0,461 kg, os dois sexos) por k = 11,04 e k³ na massa; tudo do tamanho é [extrapolação]. A largura da ficha atual (1,5 m) fica e decide k. Era a de 25 cm e 2,5 kg por k = 6 (D-105, `pedido-lotes.md` §3)",
-    "`massa`: 202,5 kg (em vigor na Etapa 2, 20/10/2026); antes: 622 kg pelo cubo (621,6), mais de três vezes os 180 kg da ficha atual, que não fecham com 1,5 m; vale o tamanho (item 5); Faixa 4. Era 540 kg (D-174)",
-    "`dimensoes`: o tamanho do site fica; altura em 0,4 vez a largura (estimativa da Bestiarista); o comprimento usa a razão 0,68 dos machos medidos (Widigdo 2017; 0,67 em Cochin) (D-174)",
-    "`alvo`: Grande pela área de cima de 2,47 m², com as patas (decisões 7, 8 e 25); a ficha de hoje dava Médio pela R2, com 1,53 m² da carapaça (D-174)",
-    "`anatomia`: artrópode, provisória (D-175), sem nado. O caranguejo real nada e anda no fundo, e a ficha atual tinha natação 2: o nado fica como texto do Mestre, com Natação 2, até a anatomia ser revista (D-170, D-175)",
-    "`forca`: 5 (em vigor na Etapa 2, 20/10/2026); antes: 7, com o cavalo e o alce e abaixo do topo das âncoras de 500 a 800 kg (8), porque a força do caranguejo está na pinça e foi para a Musculatura 4; a pinça escalada (cerca de 62.000 N pela relação do caranguejo-dos-coqueiros, Oka et al. 2016, sobre a base típica de 0,461 kg e k = 11,04) é extrapolação e não decide a Força. Reanalisada na sétima rodada com 622 kg: fica (D-158, D-174)",
-    "`musculatura`: 4, e não 5 ou 6, porque a força da pinça da própria Scylla não foi achada; a comparação é com outra espécie (D-117, D-174)",
-    "`pesoErguido`: 678,65 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.019,12 kg pela fórmula provisória (decisões 14 e 16), com 622 kg; era 1.028,29 kg com 540 kg (D-162, D-169)",
-    "`velocidade`: congelada (decisão 23), 22 km/h; sem velocidade máxima real (D-170)",
-    "`ataque`: a pinça entrou como Impacto (esmaga), e não como Corte; a seção 7 diz \"garra e unha: Cortante\", e a pinça não corta. Escolha da Bestiarista (D-174)",
-    "`bloqueio`: a carapaça e a pinça bloqueiam como arma (+1), pela D-100; a pinça é coberta da mesma carapaça",
-    "`couraca`: nível 5 (faixa 5 a 6) pela escala da quinta rodada; carapaça mineralizada de 622 kg, ao lado do crocodilo e abaixo da tartaruga; o valor em absorção fica para depois.",
-    "`resistencia`: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2; a migração das fêmeas fica na nota de pesquisa (jornada) (decisão 5) (D-174)",
-    "jornada (nota de pesquisa, não é regra): as fêmeas da *S. serrata* migram de 54 a 106 km (Golfo de Carpentária) e de 11 a 387 km (costa leste) em 30 a 60 dias, nadando (Stratford et al. 2026, marcas de satélite, [medido] na S. serrata); trabalhos anteriores citam de 219 a 910 m por dia de deslocamento (via Hewitt et al. 2023).",
-    "`especialidades`: Resistência (fora da água) +3 pelo congênere S. paramamosain (120 h no ar); o tempo fora d'água da própria espécie não foi achado. O levantamento propunha nível 1; o +3 é pelos cinco dias medidos no congênere. O tempo fora da água é relógio de horas, e não cabe na conta do sufocamento (falta de regra) (D-174)",
-    "`vigor`: 5, revisto na oitava rodada pelo corpo e pela massa, e fica: +2 sobre o animal de base (Scylla serrata, Vigor 3, presumido), um acima do mínimo da D-176 pela massa de 622 kg, entre o cavalo (470 kg, 5), o bisão (570 kg, 6) e o boi (788 kg, 5); a carapaça está na Couraça e o ar na Especialidade natural, sem conta dupla. Era 4 na ficha de hoje (D-174)",
-    "`base`: o animal de base não tem ficha; massa, Alvo (Minúsculo, 0,020 m²), Força 1 (item 8: a pinça que prende e esmaga um dedo), Vigor 3 e PV 8 da seção \"Comparação com o animal de base\" vêm da ficha e do pedido do Arquiteto, e o Vigor 3 é presumido",
-    "`atributosSociais`: Influência de 2 para 1 pela diretriz 1; espécie solitária e canibal (D-174)",
-    "fonte: a base passou do adulto grande de 2,5 kg (meio da faixa do SeaLifeBase) ao adulto típico de Cochin, 0,461 kg com 135,8 mm, as médias dos dois sexos (Aneesa, Chaithanya e Varghese 2025, tabela 1); a relação largura-peso dos machos de Widigdo et al. 2017 não foi usada (D-174)"
+    {
+      "campo": "corpo.massa",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 6 de 19/10/2026: o tamanho do gigante é escolhido por criatura, e o caranguejo de 500 kg desceu porque não era condizente. O autor pôs nas Variantes o macho de 205 kg e a fêmea de 200 kg (escala × 1.000 sobre 205 e 200 g), Alvo Médio; a principal fica na média dos dois, 202,5 kg , e as medidas e a área descem pelo cubo da massa . Resposta do autor às dúvidas dos lotes 2 a 5 (20/10/2026, seção 13): a base é de 202,5 g, ampliada 1.000 vezes (a medida, 10 vezes). Fonte da base conferida: não achei estudo com exatamente 205 g no macho e 200 g na fêmea. O mais perto é a população de Karachi, no Paquistão (Khan, Khan e Mustaqeem 2014, 488 machos e 450 fêmeas): largura média da carapaça de 103,8 mm nos machos e 100,8 mm nas fêmeas (o resumo), e massa média de 203,44 g nos machos e 168,48 g nas fêmeas (a legenda de uma tabela do artigo, vista só pela busca; a página recusou o acesso). Em Cochin a média é bem maior (macho 513,5 g e fêmea 409,3 g, Aneesa e colegas 2025). A base de 202,5 g fica dentro da espécie, num caranguejo de cerca de 10 cm de carapaça, e o gigante, com a medida 10 vezes maior, fica com cerca de 1 m de carapaça. A faixa de manobra passa da 4 para a 3 (até 220 kg). Antes: Era 540 kg. Gigante pelo cubo, com o tamanho do site e a massa saindo dele (item 5 da `tamanho-decisoes-5.md`): massa típica da base × (largura do gigante ÷ largura da base)³ = 0,46143 × (1,5 ÷ 0,135815)³ = 0,46143 × 1.347,2 = 621,6 kg, 622 na mesa; k = 11,04. Base típica : machos 513,53 ± 365,99 g com 136,59 ± 30,29 mm de largura de carapaça (n = 2.048) e fêmeas 409,33 ± 250,85 g com 135,04 ± 28,75 mm (n = 1.974), estuário de Cochin, Índia, 2020 a 2023, caranguejos de desembarque de pesca (Aneesa, Chaithanya e Varghese 2025, Heliyon 11: e42829, tabela 1); média simples das duas massas, 461,43 g, e das duas larguras, 135,8 mm, da mesma fonte e da mesma população. A amostra inclui alguns jovens (a maturidade vem por volta de 90 mm, fishconsult.org). Era a *S. serrata* adulta grande de 2,5 kg (meio do \"peso entre 2 e 3 kg\" do SeaLifeBase) com 25 cm. Faixa do adulto: 50 a 1.955 g e 56 a 214 mm em Cochin; máximo publicado 3,0 kg (SeaLifeBase) ou 3,5 kg (Wikipédia); no gigante, pela mesma conta (× 1.347), a faixa de Cochin dá de 67 kg a 2,6 t. Sexos (a diferença é de 25% na massa e quase nula na largura): macho 513,5 g na base, 692 kg no gigante; fêmea 409,3 g na base, 551 kg no gigante. Os machos têm as pinças maiores (fishconsult.org). A largura de 1,5 m é a da ficha atual do Centelha, que diz 180 kg: as duas medidas não fecham pela base (180 kg pediriam cerca de 1,0 m de largura), e vale o tamanho (item 5). A Faixa 4 vem de `calc6.mjs` (o corte de 35 kg substitui o de 25 kg, decisão 22) e decide o PV, e não o Alvo"
+    }
   ]
 }

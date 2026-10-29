@@ -1,112 +1,195 @@
 {
-  "ordem": 113,
   "id": "driade",
   "idAntigo": "mon-driade",
   "nome": "Dríade",
   "nomeIngles": "Dryad",
-  "categoria": "Fada",
+  "categoria": "fada",
   "papel": "soldado",
-  "conceito": "fada Médio",
-  "descricao": "Espírito da natureza, belo e caprichoso.",
-  "tags": [
-    "fada",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/driade_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,65 m de altura",
-    "peso": "50 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 3,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.65,
+    "largura": 0.38,
+    "profundidade": 0.2,
+    "comprimento": null,
+    "massa": 50,
+    "area": 0.54,
+    "posturaDoTamanho": "bípede, de pé"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 2,
     "destreza": 5,
     "vigor": 3,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
-    "briga": 4,
+  "habilidades": {
+    "briga": 2,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "prontidao": 3,
+    "integridade": 5,
+    "sociabilidade": 2,
+    "sobrevivencia": 3,
+    "furtividade": 3,
+    "persuasao": 3,
+    "empatia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "escalada": 2,
+    "carpintaria": 3,
+    "musculatura": 0
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 8,
-  "arte": {
-    "fascinacao": 2,
-    "conjuracao": 2,
-    "materia": 2
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Golpe desarmado",
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "fundir-se-a-arvore",
+      "nome": "Enfeitiçar",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "uma cena, ou até ela hostilizá-lo",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "o alvo baixa a guarda, trata a dríade com boa vontade e aceita pedidos pacíficos",
+      "dano": "nenhum",
+      "resistencia": "mente, pela Defesa Social contra Influência + Persuasão; quem passa não é afetado",
+      "limiteDeUso": "três vezes por dia"
+    },
+    {
       "nome": "Fundir-se à árvore",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "materia",
         "nivel": 2
       },
-      "resiste": "nenhum",
-      "efeito": "Fundir-se à árvore",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Enfeitiçar",
-      "descricao": "alvo que falhar em Vontade fica Encantado e obedece ordens pacíficas"
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até sair com outra ação",
+      "alcance": "toque",
+      "area": "uma árvore que comporte seu corpo",
+      "efeito": "entra por completo no tronco vivo e fica oculta; sai por onde entrou, com os mesmos números",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Passo-arbóreo",
-      "descricao": "teleporta-se de árvore em árvore dentro da floresta"
-    },
-    {
-      "nome": "Fundir-se à árvore",
-      "descricao": "esconde-se por completo dentro do tronco de uma árvore"
+      "nome": "Passo arbóreo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "passa de uma árvore a outra sem atravessar o espaço entre elas"
     },
     {
       "nome": "Vínculo com a árvore-lar",
-      "descricao": "sofre dano se sua árvore for destruída"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "adoece longe da árvore e sofre quando ela é ferida ou destruída"
     },
     {
       "nome": "Furtividade natural",
-      "descricao": "+2d em Furtividade dentro de florestas"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "enquanto estiver na floresta",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "recebe +1d6 nas jogadas de Furtividade dentro de florestas",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Empatia selvagem",
-      "descricao": "acalma e comanda animais próximos"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "acalma animais e consegue conduzir seu comportamento"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "distingue movimentos sob a luz fraca do bosque",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "inteligente",
+    "tracos": "Fada de pele semelhante a madeira, ligada à árvore onde vive"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "qualquer hora",
+    "dieta": "frutos, água e alimentos do bosque",
+    "caca": "não se aplica",
+    "dianteDeGente": "afasta quem ameaça sua árvore e seduz viajantes para ajudá-la"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Fada de pele semelhante a madeira, ligada à árvore onde vive",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -129,43 +212,46 @@
       "texto": "As dríades carregam a marca da origem feérica dos elfos, sendo primas distantes desse povo caído; entre os animistas de Syl são veneradas como kami de carne e seiva, guardiãs vivas de bosques que a Supressão jamais conseguiu tornar mundanos."
     }
   ],
-  "ecologia": {
-    "tipo": "Fey",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/driade_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Persuasão 3, Furtividade 3, Sobrevivência 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Dríade",
-    "cr": "3",
-    "tipo": "fada Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 10,
-      "des": 19,
-      "con": 13,
-      "int": 14,
-      "sab": 15,
-      "car": 18
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Enfeitiçar",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Persuasão 3",
-      "Furtividade 3",
-      "Sobrevivência 3"
-    ],
-    "nota": "Naturalmente mágica, enfeitiçar: Centelha 3.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Fundir-se à árvore",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3
+    {
+      "campo": "habilidadesEspeciais.Furtividade natural",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Compleição física, sem treino de levantar peso"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Corpo esguio: 80 × (1,65/1,8)³ × 0,81, arredondado à massa publicada; fator da compleição"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "0,72 × (1,65/1,8)², ajustado à compleição: 0,54 m²; largura e profundidade acompanham o corpo"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
+    },
+    {
+      "campo": "ataques.Golpe desarmado",
+      "motivo": "Antes: ataque genérico perfurante 1d6 + 2 + 4, média 9,5; agora Impacto 1d6 − 2 + 2 + 4, média 7,5, Acerto 0 para +1."
+    }
+  ]
 }

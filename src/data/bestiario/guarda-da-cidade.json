@@ -1,34 +1,23 @@
 {
-  "ordem": 3,
   "id": "guarda-da-cidade",
   "nome": "Guarda da Cidade",
   "nomeIngles": "City Guard",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humano",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "milícia treinada",
-  "descricao": "Miliciano de cota de malha e escudo que patrulha em dupla e luta em formação fechada. Contém o problema até o reforço chegar e reporta qualquer sinal de magia à igreja.",
-  "tags": [
-    "humano"
-  ],
-  "imagem": "bestiario/guarda-da-cidade_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,75 m de altura",
-    "peso": "78 kg",
-    "largura": 0.45,
-    "altura": 1.75
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.75,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 78,
+    "area": 0.7
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 3,
     "vigor": 3,
@@ -39,7 +28,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "bloqueio": 2,
     "esquiva": 2,
@@ -51,83 +40,138 @@
     "investigacao": 1,
     "sociabilidade": 1
   },
-  "skills2": {
-    "intimidacao": 1
+  "habilidadesSec": {
+    "intimidacao": 1,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "em formação",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "bloqueio",
-      "foco": "com escudo",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "em formação",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      },
+      {
+        "ref": "e:redondo"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "malha",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "espada-curta",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Formação",
-      "descricao": "Ativação: nenhuma; vale enquanto luta ombro a ombro com outro guarda de escudo. Duração: enquanto a formação se mantiver. Alcance: 1 m, o companheiro ao lado. Área: ele e o companheiro. Efeito: soma +1 na Defesa e não pode ser flanqueado pelo lado do companheiro. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale enquanto luta ombro a ombro com outro guarda de escudo",
+      "duracao": "enquanto a formação se mantiver",
+      "alcance": "1 m, o companheiro ao lado",
+      "area": "ele e o companheiro",
+      "efeito": "soma +1 na Defesa e não pode ser flanqueado pelo lado do companheiro",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Chamar reforço",
-      "descricao": "Ativação: uma ação, Velocidade 3, gritando ou apitando. Duração: instantânea. Alcance: onde o grito ou o apito é ouvido, dentro da cidade. Área: não se aplica. Efeito: chegam 1d6 guardas da patrulha mais perto em 30 Ticks, se houver patrulha por perto (o Mestre decide). Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Malha e escudo",
-      "descricao": "a cota de malha e o hoplon na frase da linha Absorção.",
-      "classe": "livro"
-    },
-    {
-      "nome": "conter até o reforço",
-      "descricao": "fecha a formação, apara com o escudo, segura o problema e chama reforço; contra magia, recua e reporta à igreja.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 3, gritando ou apitando",
+      "duracao": "instantânea",
+      "alcance": "onde o grito ou o apito é ouvido, dentro da cidade",
+      "area": "não se aplica",
+      "efeito": "chegam 1d6 guardas da patrulha mais perto em 30 Ticks, se houver patrulha por perto (o Mestre decide)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "conter até o reforço",
+      "formas": "todas",
+      "texto": "fecha a formação, apara com o escudo, segura o problema e chama reforço; contra magia, recua e reporta à igreja."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana",
+    "tracos": "cota de malha com o brasão da cidade, escudo redondo, espada curta, apito no cinto"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em dupla ou pelotão, típico 2 a 6",
+    "atividade": "diurno e noturno, por turnos",
+    "dieta": "onívoro",
+    "caca": "não se aplica",
+    "dianteDeGente": "contém o problema e chama reforço; reporta qualquer sinal de magia à igreja"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Miliciano de cota de malha e escudo que patrulha em dupla e luta em formação fechada. Contém o problema até o reforço chegar e reporta qualquer sinal de magia à igreja.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço. Social: em dupla ou pelotão, típico 2 a 6."
+      "texto": "Patrulha em duplas ou pequenos pelotões, luta em formação fechada com escudo e lança curta, e prioriza conter o problema até chegar reforço."
     },
     {
       "titulo": "Sociedade",
@@ -136,73 +180,36 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É a disciplina greco-romana de Calin em carne e osso: milícia treinada, hierárquica, que enxerga em qualquer sinal de magia um problema a ser reportado à igreja antes de ser combatido."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, 34 PV, de malha e escudo (Impacto 4, Corte 6, Perfuração 1). Bloqueio 10 (11 com a espada), Esquiva 7, contra tiro 10; em formação, +1. A espada curta dá dano médio 4,5. Contém e chama reforço: 1d6 guardas em 30 Ticks."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/guarda-da-cidade_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Malha (Absorção +4, Esquiva −1) + escudo (+2 ao Bloqueio). Chama reforço.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Formação",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "cr": "1",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 10,
-    "bloqueio": 10,
-    "defesa": 11,
-    "defesaMental": 12,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 0,
-      "perfuracao": 0
+    {
+      "campo": "habilidadesEspeciais.Chamar reforço",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 130.48,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Comportamento)"
     },
-    "bloqueioArma": 1,
-    "vestida": {
-      "esquiva": 7,
-      "bloqueio": 10,
-      "defesa": 11,
-      "contraTiro": 10,
-      "absorcao": {
-        "impacto": 4,
-        "corte": 6,
-        "perfuracao": 1
-      },
-      "nivel": 1,
-      "penalidade": 2
+    {
+      "campo": "equipamento.arsenal",
+      "motivo": "o hoplon do livro, sempre carregado, para o \"+2 ao Bloqueio\" do site"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
-  },
-  "notasObservacao": [
-    "`escudo`: o hoplon do livro, sempre carregado, para o \"+2 ao Bloqueio\" do site **[provisório]**",
-    "`temperanca`: 3; o site tinha 2 **[provisório]**",
-    "`formação`, `chamar reforço`: números sugeridos pela ficha (D-197)",
-    "`card e equipamento`: a malha e o escudo estão sempre com ele (D-188); a frase da linha Absorção dá os números com eles"
   ]
 }

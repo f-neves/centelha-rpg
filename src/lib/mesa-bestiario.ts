@@ -23,13 +23,47 @@ export { imagemDe, alternarImagem } from './imagem-escolhida'; import { escolhaD
 
 export const MONSTROS = monstersData as any[];
 export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [m.id, m]));
+// A8: escolha local por instância; os ajustes guardados pelo Mestre continuam por cima.
+const CHAVE_FORMA = 'centelha:mesa:forma-criatura';
+const FORMAS_MEMORIA: Record<string,string> = {};
+export function formaEscolhidaDaPeca(c: any): string | null {
+  if (!c?.id) return null;
+  if (Object.hasOwn(FORMAS_MEMORIA,c.id)) return FORMAS_MEMORIA[c.id];
+  try { return JSON.parse(localStorage.getItem(CHAVE_FORMA) || '{}')[c.id] || null; } catch { return null; }
+}
+export function modeloNaForma(base: any, forma?: string | null): any {
+  return base?.formas?.find((f:any)=>f.id===forma)?.criatura || base;
+}
+export function modeloDaPeca(c: any): any {
+  const base = MON[c?.monstro_id];
+  const forma = formaEscolhidaDaPeca(c);
+  return modeloNaForma(base,forma);
+}
+export function escolherFormaDaPeca(c: any, forma: string) {
+  const base = MON[c?.monstro_id];
+  if (!c?.id || !base || (forma!==base.formaPrincipal?.id && !base.formas?.some((f:any)=>f.id===forma))) throw Error('forma inexistente para esta peça');
+  FORMAS_MEMORIA[c.id] = forma;
+  try { const o=JSON.parse(localStorage.getItem(CHAVE_FORMA) || '{}'); o[c.id]=forma; localStorage.setItem(CHAVE_FORMA,JSON.stringify(o)); } catch { /* a escolha continua na memória */ }
+  if (typeof window!=='undefined') window.dispatchEvent(new CustomEvent('centelha:forma',{detail:{id:c.id,monstro:c.monstro_id}}));
+}
+export function seletorFormaDaPecaHTML(c: any): string {
+  const base=MON[c?.monstro_id];
+  if (!c?.id || c.tipo==='custom' || !base?.formas?.length) return '';
+  const escolhida=formaEscolhidaDaPeca(c) || base.formaPrincipal.id;
+  return '<label>Forma <select data-forma-peca="'+esc(c.id)+'" data-forma-monstro="'+esc(c.monstro_id)+'">'+[base.formaPrincipal,...base.formas].map((f:any)=>'<option value="'+esc(f.id)+'"'+(f.id===escolhida?' selected':'')+'>'+esc(f.nome)+'</option>').join('')+'</select></label><span class="muted"> · PV da forma '+esc(c.dados?.pv ?? modeloDaPeca(c)?.combate?.pv ?? '-')+'</span>';
+}
+if (typeof document!=='undefined') document.addEventListener('change',event=>{
+  const el=(event.target as Element)?.closest<HTMLSelectElement>('select[data-forma-peca]');
+  if (el) escolherFormaDaPeca({id:el.dataset.formaPeca,monstro_id:el.dataset.formaMonstro},el.value);
+});
+
 export const ARTE_NOME: Record<string, string> = Object.fromEntries((artesData as any[]).map((a) => [a.id, a.nome]));
 
 /** Índice leve para busca e listagens (sem arrastar o objeto inteiro). */
 export const MON_LIST = MONSTROS.map((m) => ({
   id: m.id, nome: m.nome, nomeIngles: m.nomeIngles || '', ameaca: m.ameaca,
-  centelha: m.centelha, categoria: m.categoria || '', porte: m.porte || '',
-  imagem: m.imagem || '', imagem2: m.imagem2 || '', pv: m.combate?.pv ?? null, defesa: m.combate?.defesa ?? null,
+  centelha: m.centelha, categoria: m.categoria || '', tamanho: m.tamanho || '',
+  imagens: m.imagens || [], pv: m.combate?.pv ?? null, defesa: m.combate?.defesa ?? null,
   terreno: m.ecologia?.terreno || [], clima: m.ecologia?.clima || [],
   busca: norm(`${m.nome} ${m.nomeIngles || ''} ${m.categoria || ''}`),
 }));
@@ -76,10 +110,8 @@ export interface ResumoCombate {
    */
   classe?: string | null;
   /**
-   * As três velocidades em metros por Tick. Do PC saem da ficha (mesma régua
-   * que ela desenha); da criatura, do bloco `combate.deslocamento` que o
-   * `gen-deslocamento.mjs` semeia a partir da velocidade original dela. Sem
-   * isso o Grid oferecia 3 m/Tick para todo mundo, do caramujo ao guepardo.
+   * As três velocidades em metros por Tick. Do PC e da criatura vêm da ficha;
+   * a criatura declara cada modo no bloco deslocamento.
    */
   passo?: { batalha: number; arranque: number; corrida: number } | null;
   /**
@@ -103,11 +135,8 @@ export interface ResumoCombate {
    * das duas: **ele foi montado para o golpe**, então carrega os derivados de
    * combate e nenhuma perícia por nome.
    *
-   * OS DOIS LADOS VÊM DE LUGARES DIFERENTES e chegam aqui iguais, que é o que
-   * este contrato existe para fazer: do PC saem da ficha, que tem as perícias;
-   * da criatura saem do bloco `pericias` que o `gen-bestiario.mjs` passou a
-   * emitir (quatro pela conta invertida dos derivados e a Furtividade pela
-   * tabela `regras.furtividadeCriatura`).
+   * PC e criatura trazem as Habilidades escritas na fonte; o motor calcula
+   * os derivados que a mesa usa para os testes de oposição.
    *
    * `null` em qualquer um dos dois quer dizer "não dá para saber daqui", e não
    * "zero". Quem compara tem de tratar o nulo como recusa a responder, senão
@@ -145,6 +174,7 @@ export interface ResumoCombate {
    * (`valorPassivo`, em `calc.ts`). Um resumo que já traz a Passiva pronta volta
    * a ser um bloco por assunto, e foi disso que esta passada saiu.
    */
+  pv?: number | null;
   atributos?: Record<string, number> | null;
   pericias?: Record<string, number> | null;
 }
@@ -203,10 +233,12 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
     } catch { return null; }
   }
   if (c.tipo === 'criatura') {
-    const cb = combateNaEscolha(MON[c.monstro_id]?.combate || {}, escolhaVestidaDe(c.monstro_id, MON[c.monstro_id]?.combate)); // D-206: com ou sem o equipamento, pela escolha do Mestre (defesa-vestida.ts)
+    const m = modeloDaPeca(c);
+    const cb = combateNaEscolha(m?.combate || {}, escolhaVestidaDe(c.monstro_id, m?.combate)); // D-206: com ou sem o equipamento, pela escolha do Mestre (defesa-vestida.ts)
     const a0 = (cb.ataques || [])[0];
     const ab = cb.absorcao;
     return {
+      pv: cb.pv ?? null,
       arma: a0?.nome || '', ataque: a0?.pool || '', dano: a0 ? fmtDano(a0.dano) : '',
       defesa: cb.defesa ?? null, defesaSocial: cb.defesaSocial ?? null, defesaMental: cb.defesaMental ?? null,
       soak: ab ? { impacto: ab.impacto || 0, corte: ab.corte || 0, perfuracao: ab.perfuracao || 0 }
@@ -223,9 +255,9 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       // A ESPÉCIE inteira, como o verbete a publica. O `?? null` em vez de `|| {}`
       // é a regra da omissão: uma criatura sem bloco devolve nulo, e não um
       // objeto vazio que se leria como "tem atributos, todos zero".
-      atributos: MON[c.monstro_id]?.atributos ?? null,
-      pericias: MON[c.monstro_id]?.pericias ?? null,
-      centelha: MON[c.monstro_id]?.centelha || 0,
+      atributos: m?.atributos ?? null,
+      pericias: m ? { ...m.habilidadesSec, ...m.habilidades } : null,
+      centelha: m?.centelha || 0,
     };
   }
   return null;
@@ -242,6 +274,7 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
   if (!base && !Object.keys(ov).length) return null;
   const bs = base?.soak || ({} as any); const os = ov.soak || {};
   return {
+    pv: ov.pv ?? base?.pv ?? null,
     arma: ov.arma ?? base?.arma ?? '',
     ataque: ov.ataque ?? base?.ataque ?? '',
     dano: ov.dano ?? base?.dano ?? '',
@@ -294,6 +327,8 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
         ...(ov.qa || {}),
       };
     })(),
+    atributos: ov.atributos ?? base?.atributos ?? null,
+    pericias: ov.pericias ?? base?.pericias ?? null,
     centelha: ov.centelha ?? base?.centelha ?? 0,
   };
 }
@@ -328,21 +363,21 @@ export function cardCriaturaHTML(m: any): string {
   const cb = m.combate || {};
   const en = m.nomeIngles && m.nomeIngles.toLowerCase() !== m.nome.toLowerCase()
     ? ` <span class="besta-nome-en">(${esc(m.nomeIngles)})</span>` : '';
-  const arte = m.imagem
-    ? `<figure class="arte"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}"${m.imagem2 ? ` data-troca="${esc(m.id)}"` : ''} />${m.imagem2 ? `<span class="arte-selo">${escolhaDe(m.id)}/2</span>` : ''}<span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">${sparkSVG(true)} ${m.centelha}</span>` : ''}</figure>`
+  const arte = m.imagens?.[0]
+    ? `<figure class="arte"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}"${m.imagens?.[1] ? ` data-troca="${esc(m.id)}"` : ''} />${m.imagens?.[1] ? `<span class="arte-selo">${escolhaDe(m.id)}/${m.imagens.length}</span>` : ''}<span class="arte-ameaca" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>${m.centelha > 0 ? `<span class="arte-cent">${sparkSVG(true)} ${m.centelha}</span>` : ''}</figure>`
     : `<figure class="arte sem-arte"><span class="capitular cinzel">${esc((m.nome || '?').trim()[0])}</span><span class="arte-ameaca">${estrelas(m.ameaca)}</span></figure>`;
-  const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
-  const porte = m.porte ? `<p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">${esc(m.porte)}</span><span class="pt-sep">·</span>${esc(m.dimensoes?.medida || '')}<span class="pt-sep">·</span>${esc(m.dimensoes?.peso || '')}</p>` : '';
+  const badges = `${m.categoria ? `<span class="badge cat">${esc(m.categoriaNome || m.categoria)}</span>` : ''}${(m.ecologia?.terreno || []).map((t: string) => `<span class="badge terr">${esc(ECO_TERR[t] || t)}</span>`).join('')}${(m.ecologia?.clima || []).map((c: string) => `<span class="badge clima">${esc(ECO_CLIMA[c] || c)}</span>`).join('')}`;
+  const porte = m.tamanho ? `<p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">${esc(m.tamanho)}</span><span class="pt-sep">·</span>${esc(m.corpo?.medida || '')}<span class="pt-sep">·</span>${esc(m.corpo?.peso || '')}</p>` : '';
   const fAbs = (a: any, n: number) => `${a.impacto}/${a.corte}/${a.perfuracao}${n ? `·N${n}` : ''}`; const vEsc = escolhaVestidaDe(m.id, cb); const vMarca = (x: any, sim: boolean) => (sim ? `<b>${x}</b>` : `${x}`); const abs = cb.absorcao ? (cb.vestida ? `${vMarca(fAbs(cb.absorcao, cb.resistenciaPerfuracao), vEsc === 'sem')} · ${vMarca(fAbs(cb.vestida.absorcao, cb.vestida.nivel), vEsc === 'com')} <small>c/ equip.</small>` : fAbs(cb.absorcao, cb.resistenciaPerfuracao)) : '-'; // D-206: as duas, a da mesa em negrito
   const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
-  const stats = `<dl class="besta-stats">${stat('PV', cb.pv)}${stat('Defesa', cb.vestida ? `${vMarca(cb.defesa, vEsc === 'sem')} · ${vMarca(cb.vestida.defesa, vEsc === 'com')} <small>c/ equip.</small>` : cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}</dl>${cb.vestida ? `<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva ${cb.vestida.esquiva}, Bloqueio ${cb.vestida.bloqueio}, contra tiro ${cb.vestida.contraTiro}, Penalidade −${cb.vestida.penalidade}. <button type="button" class="btn-mini" data-vestida="${esc(m.id)}" title="A escolha do Mestre fica só neste aparelho (D-206)">A mesa usa: ${vEsc === 'com' ? 'com' : 'sem'} o equipamento · trocar</button></p>` : ''}`;
+  const stats = `<dl class="besta-stats">${stat(m.enxame ? 'PV por quadrado' : 'PV', cb.pv)}${stat('Defesa', cb.vestida ? `${vMarca(cb.defesa, vEsc === 'sem')} · ${vMarca(cb.vestida.defesa, vEsc === 'com')} <small>c/ equip.</small>` : cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}${cb.energia!=null ? stat('Energia',cb.energia) : ''}</dl>${cb.vestida ? `<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva ${cb.vestida.esquiva}, Bloqueio ${cb.vestida.bloqueio}, contra tiro ${cb.vestida.contraTiro}, Penalidade −${cb.vestida.penalidade}. <button type="button" class="btn-mini" data-vestida="${esc(m.id)}" title="A escolha do Mestre fica só neste aparelho (D-206)">A mesa usa: ${vEsc === 'com' ? 'com' : 'sem'} o equipamento · trocar</button></p>` : ''}`;
   const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
   const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Brav ${m.virtudes.valor}</span></div></div>` : '';
   const { fraquezas: elFraq, resistencias: elRes, imunidades: elImu } = elementosCombate(m);
   const elem = (elFraq.length || elRes.length || elImu.length)
     ? `<div class="besta-elem">${elFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${elRes.map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}${elImu.map((i: string) => `<span class="el el-imune" title="Imunidade">◆ ${esc(i)}</span>`).join('')}</div>` : '';
   const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: ${cb.vestida ? `${vMarca(esc(a.pool), vEsc === 'sem')} sem o equipamento · ${vMarca(esc(poolComPenalidade(a.pool, cb.vestida.penalidade)), vEsc === 'com')} com` : `<b>${esc(a.pool)}</b>`} · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
-  const habs = (m.habilidades || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidades.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
+  const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
     ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`
     : `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
@@ -364,13 +399,12 @@ export function cardCriaturaHTML(m: any): string {
     }).join(' · ')}</p>` : '';
   const refArte = (m.artes || []).length ? `<p class="ib-ref"><b>Artes:</b> ${m.artes.map((a: any) => `<a href="${u('arcano')}#${a.id}">${esc(ARTE_NOME[a.id] || a.id)}</a> ${a.nivel}`).join(' · ')}</p>` : '';
   const refs = (refTec || refArte) ? `<h4 class="cc-h">Técnicas &amp; Artes</h4>${refTec}${refArte}` : '';
-  const notas = m.notas ? `<h4 class="cc-h">Notas</h4><p class="ib-notas">${esc(m.notas)}</p>` : '';
   const lore = (m.lore || []).length ? `<h4 class="cc-h">Informações</h4>${m.lore.map((s: any) => `<div class="ib-lore"><h5>${esc(s.titulo)}</h5><p>${esc(s.texto)}</p></div>`).join('')}` : '';
   return `<article class="besta cc-besta">${arte}<div class="besta-corpo">
     <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
     ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
-    ${porte}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
-    ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${notas}${lore}
+    ${porte}${m.formaPrincipal ? '<p>Forma: '+esc(m.formaPrincipal.nome)+'</p>' : ''}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
+    ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${lore}
   </div></article>`;
 }
 

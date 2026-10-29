@@ -48,8 +48,10 @@ const lista = (d, k) => d[k] || d;
 const E = await carregar('src/lib/equip.ts');
 const CR = await carregar('src/lib/combate-resumo.ts');
 const MF = await carregar('src/lib/mesa-ficha.ts');
+const F41 = await carregar('src/lib/ficha-formato.ts');
 
 const S = ler('scripts/fixtures/kael.json');
+const S41 = F41.fichaParaGravar(S);
 const armas = achataCatalogo(lista(ler('src/data/armas.json'), 'armas'));
 const escudos = achataCatalogo(lista(ler('src/data/escudos.json'), 'escudos'));
 const armaduras = achataCatalogo(lista(ler('src/data/armaduras.json'), 'armaduras'));
@@ -66,6 +68,9 @@ ok(v.success, 'a ficha de fixação bate com o esquema'
 // ---------------------------------------- 2. as referências existem mesmo
 const orfas = refsExistem(S, { armas, escudos, armaduras });
 eq(orfas.join(' | ') || 'nenhuma', 'nenhuma', 'referência de equipamento sem peça no catálogo');
+eq(refsExistem(S41, { armas, escudos, armaduras }).join(' | ') || 'nenhuma', 'nenhuma', 'referência nova sem peça no catálogo');
+eq(MF.resumoFicha(S41).defBloqueio, MF.resumoFicha(S).defBloqueio, 'Bloqueio da ficha nova e antiga');
+eq(CR.resumoCombatePC(S41).ataque, CR.resumoCombatePC(S).ataque, 'ataque da ficha nova e antiga');
 
 // Vale para o catálogo INTEIRO, e não só para o que a fixação usa: toda arma e
 // todo escudo do catálogo têm de sobreviver a uma ida e volta pelo slot. É o que
@@ -147,10 +152,12 @@ eq(F.pv, 37, 'PV');
 eq(F.energia, 14, 'Energia');
 eq(F.mana, 13, 'Mana');
 eq(F.defEsquiva, 19, 'Defesa (Esquiva)');
-eq(F.defBloqueio, 7, 'Defesa (Bloqueio)');
+// A5j, D-237: soma +1 da espada e +1 do broquel ao Bloqueio 7.
+eq(F.defBloqueio, 9, 'Defesa (Bloqueio)');
 eq(F.defSocial, 4, 'Defesa Social');
 eq(F.defMental, 10, 'Defesa Mental pela ficha');
-eq(F.iniciativa, '3d6', 'Iniciativa');
+// A5j: a mesa usa a Iniciativa do livro, 1d6 + Raciocínio 3 + Prontidão 3.
+eq(F.iniciativa, '1d6 + 6', 'Iniciativa');
 eq(F.armaduras.join(', '), 'gambeson', 'armaduras vestidas no resumo');
 
 // O que vai para `personagens.resumo`, que é o que o colega de mesa enxerga.
@@ -184,7 +191,7 @@ eq(E.armaDoSlot({ ref: 'a:espada-lomga' }), null, 'id errado vira null, e é jus
 // `test-contrato` não pegava isto sozinho: a ficha de fixação usa espada longa e
 // arco longo, e nenhuma das duas tem `forcaMin`.
 {
-  const C = await carregar('src/lib/calc.ts');
+  const C = await carregar('src/lib/motor.ts');
   const composto = armas.find((a) => a.id === 'arco-composto');
   ok(composto, 'o Arco Composto sumiu do catálogo');
   eq(composto?.forcaMin, 4, 'o Arco Composto continua pedindo Força 4');

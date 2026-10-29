@@ -1,36 +1,27 @@
 {
-  "ordem": 206,
   "id": "mastodonte",
   "idAntigo": "mon-mastodon",
   "nome": "Mastodonte-americano",
   "nomeIngles": "American mastodon",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Enorme",
-  "descricao": "Primo distante do elefante, de outra família, que vivia nas florestas da América do Norte; caçado pelos paleoíndios, inclusive os de Clovis.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/mastodonte_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "5,8 m de comprimento, 2,8 m de altura",
-    "peso": "7.200 kg",
-    "comprimento": 5.8,
-    "largura": 1.94,
-    "altura": 2.8
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 2.8,
+    "largura": 1.94,
+    "profundidade": null,
+    "comprimento": 5.8,
+    "comprimentoSemCauda": 4.63,
+    "caudaGrossa": false,
+    "massa": 7200,
+    "area": 7.52,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 13,
     "destreza": 2,
     "vigor": 11,
@@ -41,69 +32,134 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 2,
     "esquiva": 1,
+    "atletismo": 0,
+    "furtividade": 0,
     "integridade": 2,
     "prontidao": 1,
     "resistencia": 4,
     "empatia": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Presada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "presa",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     },
     {
       "nome": "Pisão (ou investida)",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "corpo",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "tromba",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "atropelar",
-      "descricao": "Pisão: Investida.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "nada achado. O faro do elefante não foi passado ao mastodonte, que é de outra família."
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "investida"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "sentidos",
+      "descricao": "nada achado . O faro do elefante não foi passado ao mastodonte, que é de outra família",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "mais baixo que o mamute e mais maciço, de pelve muito larga; presas superiores longas e retas, as de baixo reduzidas ou ausentes; cauda relativamente longa; pelagem pouco conhecida (Larramendi; Wikipédia). Molares de cúspides em cone, para ramos e madeira (NPS)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "fêmeas e jovens em manada; machos adultos quase sempre sós",
+    "atividade": "",
+    "dieta": "herbívoro (folhas, ramos, frutos, madeira)",
+    "caca": "ramoneio",
+    "dianteDeGente": "defende a cria"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "planície"
+    ],
+    "clima": [
+      "frio",
+      "temperado"
+    ]
+  },
+  "descricao": "Primo distante do elefante, de outra família, que vivia nas florestas da América do Norte; caçado pelos paleoíndios, inclusive os de Clovis.",
   "lore": [
     {
       "titulo": "Gigante das eras frias",
@@ -112,94 +168,76 @@
     {
       "titulo": "Manada que não foge",
       "texto": "Vive em grandes rebanhos que enfrentam lobos, cultistas e até coisas piores sem recuar, protegendo os filhotes no centro do grupo."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: fêmeas e jovens em manada; machos adultos quase sempre sós."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo. Não se bloqueia pelo Alvo, e a Força 13 tira o Bloqueio de quem tem Força 6 ou menos. O couro é Couraça nível 3; quanto ele tira do golpe fica para depois. O pisão faz 33 em média e a presada 20; 90 PV. Mais pesado que o mamute e do mesmo perigo em combate; ergue um pouco mais (2.713,57 kg)."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Plains"
-    ],
-    "clima": [
-      "Cold",
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/mastodonte_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Mastodon",
-    "cr": "9",
-    "tipo": "animal Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 34,
-      "des": 12,
-      "con": 21,
-      "int": 2,
-      "sab": 13,
-      "car": 7
+  "revisao": [
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Etapa 2 (20/10/2026): Resposta do autor de 20/10/2026 (seção 14): o Vigor dos megaherbívoros fica na faixa de 8 a 11 (rinoceronte-branco 8, elefante 9, mastodonte-americano 11, mamute-lanoso 11), e os dinossauros grandes ficam com 10. O mastodonte fica com 11, igual ao mamute, pela resistência excepcional dos proboscídeos: corpo \"extraordinariamente maciço\" de 7,2 t (Larramendi 2016) e vida longa  pelos elefantes (60 a 70 anos, ADW). Fica acima do elefante (9) e dos dinossauros grandes (10). Antes: Fica (D-164). Pelo corpo: vida longa,  pelos elefantes (60 a 70 anos, máximo de 86, ADW; do mastodonte não há idade publicada), e o corpo \"extraordinariamente maciço\" (Larramendi; o macho, 8 t). O mesmo 6 do mamute. Não sai de marcha nem de fôlego (diretriz 2)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "Seção 13: 2 para o grande herbívoro e o extinto"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 90,
-    "esquiva": 6,
-    "bloqueio": 8,
-    "defesa": 9,
-    "defesaMental": 7,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 11,
-      "corte": 11,
-      "perfuracao": 11
+    {
+      "campo": "atributos.influencia",
+      "motivo": "Espécie social (diretriz 1): fêmeas e jovens em manada . Fica no 2 pelo tamanho, como o mamute. Como hoje"
     },
-    "couracaNivel": 3,
-    "pesoErguido": 2713.57,
-    "carga": {
-      "leve": 1080,
-      "media": 2160,
-      "pesada": 3240,
-      "maxima": 4320
+    {
+      "campo": "atributos.perspicacia",
+      "motivo": "Espécie social (diretriz 1): fêmeas e jovens em manada  (Wikipédia). Como hoje"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "atributos.compostura",
+      "motivo": "Espécie social (diretriz 1).  Como o mamute. Como hoje"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "forca: 13 igual ao mamute, proposta do Arquiteto. Alternativa: 14 pelo corpo mais pesado, que encostaria no braquiossauro (14, 28,7 t); fico no 13, e a massa maior entra só pelo peso erguido (2.585 kg contra 2.035 do mamute).",
-    "massa: 7.200 kg (em vigor na Etapa 2, 20/10/2026); antes: 6.700 kg, o adulto típico, com a fêmea pela razão do elefante-asiático (2,7 ÷ 4,0) sobre o macho de 8 t de Larramendi 2016, **[comparação]**; era o macho de 8 t (sexta rodada, item 4).",
-    "pesoErguido: 2.585 kg pelo `calc6.mjs` com a massa de 6.700 kg, provisório (decisões 14 e 16). Era 3.172 kg pela fórmula de FAH, e 2.914 kg com o macho de 8 t.",
-    "carga: Leve 1.005 a Máxima 4.020 kg, provisória; sai da massa, e não muda com a Força.",
-    "velocidade: congelada (decisão 23); 24 km/h, −4% do elefante-asiático; sem número do mastodonte.",
-    "area: 7,17 m², vista de lado: os 8,07 m² da medição da `tamanho-fichas-v2` (macho de 8 t) escalados pela massa, (6.700 ÷ 8.000)^(2/3); era 13,92 m² (retângulo cheio). O Alvo segue Enorme.",
-    "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 sem dado próprio; o Fôlego +2 do elefante saiu (diretriz 2).",
-    "jornada (nota de pesquisa, não é regra): sem dado do mastodonte. Pelo elefante de trabalho, de outra família **[comparação]**: marcha de até 25 km por dia no plano, com no máximo 3 marchas pesadas seguidas (MTE, em FAO). Era a Resistência (Fôlego) +2.",
-    "empatia: 2 nova, **[extrapolação pelo elefante]**.",
-    "musculatura: 3 (robusto) na escala nova, como o mamute; sem dado próprio.",
-    "vigor: 11 (em vigor na Etapa 2, 20/10/2026); antes: 6 pela vida longa, extrapolada dos elefantes (D-164).",
-    "dimensoes: comprimentos e largura são extrapolação da Bestiarista-3 para o macho, escalados com a altura pelo cubo da massa (fator 0,943); não decidem o Alvo, que vem do `calc.mjs`."
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com a cabeça e as presas; a presa bloqueia como arma, +1 (leitura do Arquiteto no mamute, D-087)"
+    },
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 8 de 19/10/2026: a Furtividade sai do comportamento, sem padrão por tamanho, e quem nunca tenta se esconder fica com 0. A penalidade do Alvo (R8) soma por cima. Nenhum fato de esconder-se; como o elefante (0, edição do autor) . Antes: Era sem linha (0). O levantamento: nenhum fato. Régua: 1, não se esconde"
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 3 de 19/10/2026: a Resistência mede o quanto a criatura aguenta veneno, doença, ferimentos, falta de fôlego e ficar muito tempo na mesma posição. Os maiores tendem a 3 ou 4. Igual ao mamute (4) e um abaixo do elefante (5, edição do autor): a ferida aguentada não tem dado próprio . Antes: Era 0 (com Fôlego +2). Régua: 2 é o normal da espécie no próprio meio (florestas e campos da América do Norte); sem dado próprio de frio, fome, doença ou ferida . O levantamento dava 3 pelo elefante de trabalho, de outra família, e o que ele mede (marcha, arrasto, nado) é dado de jornada: fica na nota de pesquisa (jornada) (diretriz 2)"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,73 × 1,0243 = 2,796 . Antes: Era 2,90 m, o ombro médio do macho (Larramendi 2016). Escalado pelo cubo da massa: 2,90 × (6.700 ÷ 8.000)^(1/3) = 2,90 × 0,943 = 2,73 m"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 5,66 × 1,0243 = 5,797 . Antes: Era 6,0 m, o corpo mais a cauda, \"relativamente longa, de até 27 vértebras\" (Haynes 1991, por Larramendi), sem medida, estimado para o macho; escalado pelo cubo da massa: 6,0 × (6.700 ÷ 8.000)^(1/3) = 5,66 m"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 4,52 × 1,0243 = 4,630 . Antes: Era 4,8 m, o mesmo do mamute macho de 3,15 m num animal 8% mais baixo, sem medida; escalado pelo cubo da massa: 4,8 × (6.700 ÷ 8.000)^(1/3) = 4,52 m"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,89 × 1,0243 = 1,936 . Antes: Era 2,0 m, acima dos 1,8 m do mamute macho, pela \"pelve extremamente larga\" (Larramendi), sem medida; escalado pelo cubo da massa: 2,0 × (6.700 ÷ 8.000)^(1/3) = 1,89 m"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Cobertura: couro de proboscídeo  pelo elefante (18 a 30 mm) e pelo mamute (1,25 a 2,5 cm); a pele do mastodonte não foi achada, e a pelagem espessa das reconstruções é \"provavelmente exagerada\" (Larramendi 2016). Razão do nível (`couraca.mjs`): \"couro grosso pelo elefante e pelo mamute; pele não achada\". Criatura de referência mais próxima: o elefante e o mamute (nível 3). Era Corte 2, Perfuração 2, Nível N0 na v3 (e Impacto 7, com o natural +1)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "Wikipédia, pelos elefantes"
+    },
+    {
+      "campo": "ataques.Pisão (ou investida)",
+      "motivo": "Era 2d6 + 36, média 43. 7 + 26. O corpo inteiro (seção 7, × 2) . O melhor ataque. Opção (D-097)"
+    }
   ]
 }

@@ -1,38 +1,26 @@
 {
-  "ordem": 117,
   "id": "fogo-fatuo",
   "idAntigo": "mon-fogo-fatuo",
   "nome": "Fogo-fátuo",
   "nomeIngles": "Will-o'-Wisp",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "elite",
-  "conceito": "aberração Miúdo",
-  "descricao": "Luz que paira sobre pântanos e charcos imitando uma fogueira distante ou uma lanterna amiga. Leva o viajante perdido para longe da segurança, saboreia o pânico de quem ainda acredita estar sendo salvo e o fere com um toque elétrico. Some de vista quando quer.",
-  "tags": [
-    "aberracao",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/fogo-fatuo_criatura.webp",
-  "porte": "Miúdo",
-  "dimensoes": {
-    "medida": "0,3 m de altura",
-    "peso": "sem massa (volume 0,0141 m³)",
-    "largura": 0.3,
-    "altura": 0.3
-  },
-  "locomocao": {
-    "voo": 5,
-    "terra": 5
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 5,
-    "arranque": 8,
-    "corrida": 12
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "flutua; voador",
+    "apoio": "outro",
+    "altura": 0.3,
+    "largura": 0.3,
+    "profundidade": null,
+    "comprimento": null,
+    "semMassa": true,
+    "volume": 0.0141,
+    "area": 0.07,
+    "naoErgue": true
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 9,
     "vigor": 2,
@@ -43,104 +31,167 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 3,
+    "atletismo": 0,
     "furtividade": 5,
     "prontidao": 2,
     "integridade": 4,
     "empatia": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
-    "voo": 4
+  "habilidadesSec": {
+    "voo": 4,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "no pântano",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "empatia",
-      "foco": "medo",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "no pântano",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Toque elétrico",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "raio",
+      "parte": "o-corpo-de-luz",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "raio",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [
-    "raio"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Invisibilidade natural",
-      "descricao": "poder natural (base Ofuscação 3, a do site): Ativação: uma ação, Velocidade 5. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até ele atacar ou desfazer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível"
     },
     {
       "nome": "Evasiva",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: +2 na Esquiva contra ataque a distância (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "corpo minúsculo",
-      "descricao": "o Alvo Miúdo pesa contra quem o ataca (R8).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "+2 na Esquiva contra ataque a distância",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Difícil de acertar por Arte",
-      "descricao": "Arte que mira um alvo raramente o alcança (site).",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "Arte que mira um alvo raramente o alcança (\"feitiços de mira raramente o alcançam\", site)"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "Luz enganosa",
-      "descricao": "brilha como uma tocha distante ou uma lanterna amiga e leva o viajante perdido para o atoleiro, a areia movediça ou a toca de outro predador.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "brilha como uma tocha distante ou uma lanterna amiga e leva o viajante perdido para o atoleiro, a areia movediça ou a toca de outro predador."
     },
     {
       "nome": "passa por frestas",
-      "descricao": "o corpo de 30 cm sem matéria passa por frestas e grades finas (site).",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "o corpo de 30 cm sem matéria passa por frestas e grades finas."
     },
     {
       "nome": "guia da morte",
-      "descricao": "espera o viajante se perder, puxa-o com a luz até o perigo, some quando ele percebe e só ataca quem já está preso ou ferido.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: a de quem enxerga no escuro do brejo."
+      "formas": "todas",
+      "texto": "espera o viajante se perder, puxa-o com a luz até o perigo, some quando ele percebe e só ataca quem já está preso ou ferido."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "a de quem enxerga no escuro do brejo",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma; é luz",
+    "prendeRespiracao": "não respira",
+    "camuflagem": "a invisibilidade, e a luz que se confunde com uma lanterna distante",
+    "mente": "inteligente, fria e paciente; vive do medo e da força vital das vítimas (site)",
+    "tracos": "orbe de luz pálida de 30 cm, que muda de azul a amarelo e pisca como chama"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, territorial no brejo dele",
+    "atividade": "noturno",
+    "dieta": "o medo e a força vital das vítimas",
+    "caca": "leva a presa ao perigo e espera",
+    "dianteDeGente": "finge socorro; ataca quem já caiu"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Luz que paira sobre pântanos e charcos imitando uma fogueira distante ou uma lanterna amiga. Leva o viajante perdido para longe da segurança, saboreia o pânico de quem ainda acredita estar sendo salvo e o fere com um toque elétrico. Some de vista quando quer.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Paira sobre pântanos e charcos imitando a luz de uma fogueira distante ou lanterna amiga, guiando viajantes perdidos para longe da segurança até a morte lenta. Social: sozinho, territorial no brejo dele."
+      "texto": "Paira sobre pântanos e charcos imitando a luz de uma fogueira distante ou lanterna amiga, guiando viajantes perdidos para longe da segurança até a morte lenta."
     },
     {
       "titulo": "Ecologia",
@@ -153,81 +204,45 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Diz-se que nasce de uma Centelha corrompida, quase uma ponta avançada do horror que vaza da Fenda; em Syl e Mére contam-se histórias de luzes que levam quem as segue para nunca mais voltar."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Miúdo, voa a 5, invisível à vontade. Esquiva 30 (32 contra ataque a distância), Bloqueio 18, Defesa Mental 26, 17 PV, Impacto 6, Corte e Perfuração 4. Toque elétrico de dano médio 5,5, de raio, sem Absorção natural contra ele (a da armadura, a decidir). Raio não o fere. Atrai os viajantes com a luz e só ataca quem já está em perigo."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Swamp"
-    ],
-    "clima": [
-      "Temperate"
+  "imagens": [
+    "bestiario/fogo-fatuo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Furtividade 5, Prontidão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Fogo-fátuo",
-    "cr": "6",
-    "tipo": "aberração Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 1,
-      "des": 29,
-      "con": 10,
-      "int": 15,
-      "sab": 16,
-      "car": 14
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade natural",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Furtividade 5",
-      "Prontidão 3"
-    ],
-    "nota": "Str 1 → Força 0. Dex 29 → Destreza 10. Ser de pura energia: Centelha 3.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte",
-      "nota": "voo 50 (perfeito): o fogo-fátuo não tem corpo que pise"
+    {
+      "campo": "habilidadesEspeciais.Evasiva",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 17,
-    "esquiva": 30,
-    "bloqueio": 18,
-    "defesa": 30,
-    "defesaMental": 26,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 5. O site tinha 1; a Aparência mede a beleza (D-205), e a luz do fogo-fátuo é bonita de ver: é o que atrai as vítimas. O mesmo 5 do elemental do fogo; 5; o site tinha 1 (D-205)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": null,
-    "deslocamento": {
-      "terra": {
-        "batalha": 5,
-        "arranque": 8,
-        "corrida": 12
-      },
-      "voo": {
-        "batalha": 5
-      }
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "corpo.volume",
+      "motivo": "sem massa; o volume da esfera de 0,30 m (0,0141 m³) entra no PV e na faixa como 14,3 kg. Com os 0,5 kg do site como massa real, o PV seria 2"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Toque elétrico Leve, tipo raio, no lugar das \"Garras e presas\""
     }
-  },
-  "notasObservacao": [
-    "`massa`: sem massa; o volume da esfera de 0,30 m (0,0141 m³) entra no PV e na faixa como 14,3 kg. Com os 0,5 kg do site como massa real, o PV seria 2 **[provisório]**",
-    "`aparencia`: 5; o site tinha 1 (D-205) **[provisório]**",
-    "`ataques`: Toque elétrico Leve, tipo raio, no lugar das \"Garras e presas\" **[provisório]**",
-    "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`invisibilidade natural`, `evasiva`: números sugeridos pela ficha (D-197)"
   ]
 }

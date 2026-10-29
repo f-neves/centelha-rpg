@@ -1,37 +1,29 @@
 {
-  "ordem": 214,
   "id": "jararaca",
   "idAntigo": "mon-viper",
   "nome": "Jararaca",
   "nomeIngles": null,
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Minúsculo",
-  "descricao": "De dia fica abrigada na folhagem; à noite espera a presa imóvel e dá o bote. Comum em zonas rurais e periferias urbanas.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/jararaca_criatura.webp",
-  "porte": "Minúsculo",
-  "dimensoes": {
-    "medida": "1,04 m de comprimento, 0,031 m de altura",
-    "peso": "0,38 kg",
-    "comprimento": 1.04,
-    "largura": 0.031,
-    "altura": 0.031
-  },
-  "locomocao": {
-    "terra": 1,
-    "escalada": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 1
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "serpente",
+    "apoio": "outro",
+    "altura": 0.031,
+    "largura": 0.031,
+    "profundidade": null,
+    "comprimento": 1.04,
+    "massa": 0.38,
+    "area": 0.012,
+    "posturaDoTamanho": "vista de cima, enrolada",
+    "segundoTamanho": {
+      "area": 0.032,
+      "posturaDoTamanho": "esticada"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 2,
@@ -42,76 +34,130 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 4,
+    "atletismo": 0,
     "furtividade": 3,
     "integridade": 2,
     "prontidao": 3,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "calor",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "camuflagem",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "imóvel no folhiço",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "calor",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "camuflagem",
+        "valor": 2,
+        "origem": "natural"
+      },
+      {
+        "foco": "imóvel no folhiço",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 1,
+      "corrida": 1
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bote",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [],
+  "comoLuta": [],
+  "sentidos": [
     {
-      "nome": "Sentidos",
-      "descricao": "calor: Prontidão (calor) +3, Especialidade natural · alcance · a fosseta loreal, órgão termorreceptor entre o olho e a narina. · Os outros sentidos: nada achado."
-    }
-  ],
-  "venenos": [
+      "nome": "calor",
+      "descricao": "Prontidão (calor) +3, Especialidade natural · alcance · a fosseta loreal, órgão termorreceptor entre o olho e a narina (Manual MS 2001)",
+      "formas": "todas"
+    },
     {
-      "nome": "Veneno no jogo",
-      "texto": "Peçonha de víbora · Potência 14 · minuto (sangue) · a cada 1 hora · pool 24 (PV) · Desgaste 1 · pelo Bote"
+      "nome": "Os outros sentidos",
+      "descricao": "nada achado",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "folhagem da mata (a defesa da espécie é a camuflagem; Wikipédia); Furtividade (camuflagem) +2, Especialidade natural",
+    "mente": "animal",
+    "tracos": "escamas dorsais quilhadas, 20 a 27 fileiras no meio do corpo (Wikipédia); o filhote tem a ponta da cauda branca, que usa como isca"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "noturno",
+    "dieta": "carnívoro (adultos: 80% roedores; filhotes: rãs e artrópodes)",
+    "caca": "emboscada",
+    "dianteDeGente": "ataca, quando pisada ou tocada; antes disso fica imóvel e camuflada"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "pântano",
+      "planície"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "De dia fica abrigada na folhagem; à noite espera a presa imóvel e dá o bote. Comum em zonas rurais e periferias urbanas.",
   "lore": [
     {
       "titulo": "Silêncio antes da mordida",
@@ -122,93 +168,34 @@
       "texto": "Camponeses supersticiosos evitam matar víboras dentro de casa, temendo que o veneno derramado atraia a atenção de espíritos famintos."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Peçonha de víbora · Potência 14 · minuto (sangue) · a cada 1 hora · pool 24 (PV) · Desgaste 1 · pelo Bote"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "- Minúscula (enrolada) contra um humano Médio, ela ganha +3 por categoria no acerto corpo a corpo, três categorias: +9; esticada, Miúda, +6. À distância vale o contrário: quem atira nela enrolada leva −9. O bote acerta quase sempre; o que decide é o veneno. - O dano do bote é só o dado (1,5 de média). O veneno, a Peçonha de víbora do livro, ignora a Absorção e entra se o bote fere: 1 de dano ou mais depois da Absorção, e o Nível do bote (N0) tem de passar o da armadura. A bota que o bote não fura segura o veneno. - Esquiva 14 contra o golpe de um humano: ela é difícil de acertar, o que é o que se vê no mato. Ela não bloqueia nenhum atacante Pequeno ou maior, nem quem tem Força 4 ou mais; ninguém perde o Bloqueio contra ela. - Parada no folhiço, é difícil de achar (Furtividade 3, +2 de camuflagem e +1 imóvel). Com 2 PV e 1 m por Tick, não foge de quem a acha: o perigo é não vê-la antes de pisar."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Swamp",
-      "Plains"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/jararaca_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Viper",
-    "cr": "1/2",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 4,
-      "des": 17,
-      "con": 8,
-      "int": 1,
-      "sab": 13,
-      "car": 2
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era sem linha (0). Pela régua, sem dado : a pesquisa não traz ferimento, dor, doença, jejum nem temperatura. Vive da mata atlântica às periferias urbanas, do nível do mar a mais de 1.000 m (Wikipédia; Manual MS 2001), o normal da espécie."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Resposta do autor às dúvidas dos lotes 2 a 5 (20/10/2026, seção 13): o comprimento da serpente acompanha a massa pelo cubo. O diâmetro acompanha o comprimento: 0,030 × (0,38 ÷ 0,3485)^(1/3) = 0,031 m . Antes: Era 0,035 m, o diâmetro da fêmea (cilindro de 0,576 kg em 1,2 m, estimativa do Arquiteto, `dimensoes.md`). Escalado pelo cubo da massa: 0,035 × (0,3485 ÷ 0,576)^(1/3) = 0,035 × 0,846 = 0,0296 m"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 2,
-    "esquiva": 14,
-    "bloqueio": 6,
-    "defesa": 14,
-    "defesaMental": 8,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Etapa 2 (20/10/2026): Resposta do autor às dúvidas dos lotes 2 a 5 (20/10/2026, seção 13): o comprimento da serpente acompanha a massa pelo cubo. 1,01 m (o da ficha, com 348,5 g) × (0,38 ÷ 0,3485)^(1/3) = 1,040 m . O 1,41 m da edição do autor sai. Antes: Era 1,20 m, o comprimento rostro-cloacal médio das fêmeas, de 1,02 a 1,32 m (Furtado et al. 2006, Tabela 1). Escalado pelo cubo da massa: 1,20 × (0,3485 ÷ 0,576)^(1/3) = 1,015 m. Fica entre o macho (0,70 a 0,82 m) e a fêmea, mesma fonte; o total máximo é de 1,60 m (Wikipédia), e o total típico selvagem não tem dado. Ver as notas de observação"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 1.94,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 1,
-        "corrida": 1
-      }
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Resposta do autor às dúvidas dos lotes 2 a 5 (20/10/2026, seção 13): o comprimento da serpente acompanha a massa pelo cubo. O diâmetro acompanha o comprimento: 0,030 × (0,38 ÷ 0,3485)^(1/3) = 0,031 m . Antes: igual ao diâmetro; era 0,035 m (a fêmea), escalado pelo cubo da massa como a altura"
     }
-  },
-  "notasObservacao": [
-    "`forca`: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): o corpo não segura e a picada vale pelo veneno; o dano do Bote perde a parte da Força e fica 1d6 − 2 (D-115)",
-    "pv: 2 (em vigor na Etapa 2, 20/10/2026); antes: faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 7 (decisão 21, delegada). Com 10 + metade do Vigor seriam 11. Era 17.",
-    "pesoErguido: 1,72 kg pelo `calc6.mjs`, provisório (decisões 14 e 16); era 3,41 kg (a fêmea) e, antes, 52 g. O piso de 0,25 × massa não pesa aqui: quem dá o número é a curva da massa, que no bicho de 350 g passa do próprio peso. Como ela não agarra, o número quase não entra em jogo.",
-    "velocidade: congelada (decisão 23); 5 km/h pela fórmula de hoje, contra 3,7 medidos numa víbora de outra espécie.",
-    "area: 0,011 m², enrolada, e 0,030 m² esticada, escaladas pela massa (`calc6.mjs`) a partir da medição da fêmea na `tamanho-fichas-v2` (0,016 e 0,042 m²); antes, 0,04 m² (altura × comprimento). Decisão provisória: usar o número do `calc6.mjs`, que é o mesmo para as 92 fichas.",
-    "musculatura: 2 (animal comum), provisória; víbora de bote.",
-    "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a imobilidade camuflada que a sustentava passou às duas Especialidades de Furtividade.",
-    "especialidades.furtividade: a camuflagem da cor ficou como natural (+1) e a espera imóvel como hábito (+1, dentro do limite do livro). Decisão provisória: separar o que é do corpo do que é hábito, como pede a decisão 3; somadas, dão o \"candidato a 4\" do levantamento só na situação certa.",
-    "resistencia: 2 pela régua, sem dado **[extrapolação]**.",
-    "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "massa: 0,38 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,3485 kg, a média simples da fêmea (576 g) e do macho (121 g) **[medido]**, mas em cativeiro (irmãos de 3 anos do Butantan, Furtado e colegas 2006); a massa do adulto selvagem falta (Sazima 1992 não foi aberto). Era 0,576 kg (a fêmea).",
-    "`veneno`: o veneno ignora a Absorção (`acoes-resistir.md`:43); se a picada que não fura a bota injeta o veneno é do Mestre (D-087)",
-    "`dimensoes.comprimento`: o bloco usa 1,01 m, o comprimento rostro-cloacal médio da fêmea (1,20 m) escalado pelo cubo da massa para o adulto típico, como comprimento total; o total máximo registrado é 1,60 m, e o típico não tem dado (D-174)",
-    "`dimensoes.largura`: 0,030 m, o diâmetro estimado pelo Arquiteto para a fêmea (0,035 m, cilindro de 0,576 kg em 1,2 m), escalado pelo cubo da massa, sem fonte",
-    "`especialidades`: a Prontidão (térmico) +4 virou Prontidão (calor) +3, Especialidade natural, pelo teto da decisão 3.",
-    "`sobrevivencia`: 3, ainda sem a régua da Sobrevivência do animal (D-109)"
   ]
 }

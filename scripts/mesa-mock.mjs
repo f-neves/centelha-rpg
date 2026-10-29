@@ -31,6 +31,7 @@ import EFEITOS_D from '../src/data/efeitos.json';
 // mesmo arquivo roda no Node e aqui.
 import { montarArquetipo, iniciativaDaPeca, tabuleiroDe } from './sim/elenco.mjs';
 import { resumoCombatePC } from '../src/lib/combate-resumo';
+import { numerosPersonagem } from '../src/lib/motor';
 // A NÉVOA DO MOCK USA AS FUNÇÕES DE VERDADE. Reimplementá-las aqui faria a
 // bancada concordar consigo mesma, que é a falha que este arquivo existe para
 // não ter: `token_visao` era cópia da escrita e o jogador recebia tudo.
@@ -284,7 +285,7 @@ const ENC = '00000000-0000-4000-8000-0000000000cc';
 
 // Ids reais do bestiário: o porte deles decide o tamanho da peça no tabuleiro, e
 // uma cena só de médios não exercitaria o empilhamento nem a regra de ocupação.
-const MONS = ['aasimar', 'aguia-gigante', 'aboleth'];
+const MONS = P.get('formas')==='1' ? ['lobisomem'] : ['aasimar', 'aguia-gigante', 'aboleth'];
 
 const offsetParaAxial = (col, row) => ({ q: col - Math.floor(row / 2), r: row });
 
@@ -424,8 +425,11 @@ if (LEMBRANCA) {
 
 const TOKENS = [];
 for (let i = 0; i < Math.min(POSTOS, COMBS.length); i++) {
-  const col = (i * 3) % COLS;
-  const row = Math.floor((i * 3) / COLS) % ROWS;
+  // No teste simultaneo, os corpos grandes da segunda fileira nao cercam c003.
+  // A nova medida da aguia ocupa mais espaco que a ficha anterior.
+  const afastar = P.get('espalhar') === '1' && (i === 10 || i === 11);
+  const col = afastar ? (i === 10 ? 18 : 21) : (i * 3) % COLS;
+  const row = afastar ? 7 : Math.floor((i * 3) / COLS) % ROWS;
   const h = offsetParaAxial(col, row);
   TOKENS.push({
     arena_id: ARENA, combatente_id: COMBS[i].id, q: h.q, r: h.r,
@@ -448,7 +452,7 @@ for (let i = 0; i < Math.min(POSTOS, COMBS.length); i++) {
  * `montarArquetipo`, sem passar por dois caminhos de resolução diferentes.
  */
 if (ESPELHO) {
-  const REGUA = { resumoCombatePC, armaDoCatalogo, classeDeTempo, velocidadeDaArma };
+  const REGUA = { resumoCombatePC, numerosPersonagem, armaDoCatalogo, classeDeTempo, velocidadeDaArma };
   COMBS.length = 0; TOKENS.length = 0;
   let ordinal = 0;
   for (const [i, lado] of ['a', 'b'].entries()) {
@@ -515,7 +519,7 @@ if (ESPELHO) {
  * cancelar) de "caiu agora" (só redirecionar).
  */
 if (CAIDO) {
-  const REGUA = { resumoCombatePC, armaDoCatalogo, classeDeTempo, velocidadeDaArma };
+  const REGUA = { resumoCombatePC, numerosPersonagem, armaDoCatalogo, classeDeTempo, velocidadeDaArma };
   const arq = montarArquetipo('escudeiro', REGUA);
   const numeros = {
     arma: arq.arma, ataque: arq.ataque, dano: arq.dano,
@@ -1381,7 +1385,7 @@ const TABELAS = {
     { id: 'aq-mapa-2', mesa_id: MESA, nome: 'A torre, em pé', categoria: 'mapa',
       bucket: 'mesa', tipo: 'image/png', storage_path: `${MESA}/mapas/2-em-pe.png` },
   ],
-  mesa_criaturas: [],
+  mesa_criaturas: P.get('formas')==='1' ? ['a','b'].map((n,i)=>({id:'mc-lobo-'+n,mesa_id:MESA,monstro_id:'lobisomem',apelido:'Lobisomem '+n,grupo:'teste',ordem:i,dados:{},notas:'',visivel_jogadores:true})) : [],
   mesa_codex: [],
   mesa_notas: [],
   mesa_sessoes: [],

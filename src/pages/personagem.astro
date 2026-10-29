@@ -150,6 +150,7 @@ import { resumoFicha, resumoParaBanco } from '../lib/mesa-ficha';
     const { data: pers, error } = await sb.from('personagens').select('*').eq('id', id).maybeSingle();
     if (error) return mostraErro('Erro: ' + error.message);
     if (!pers) return mostraErro('Personagem não encontrado ou você não tem acesso a ele.');
+    if (pers.ficha?.attrs) console.info('Ficha antiga legível. Migração pendente: supabase/migracao-41.sql');
 
     const ehDono = pers.dono_id === user.id;
     document.getElementById('carregando')!.hidden = true;
@@ -330,11 +331,11 @@ import { resumoFicha, resumoParaBanco } from '../lib/mesa-ficha';
       await sb.from('personagens').update({
         ficha: S,
         ...(resumo ? { resumo } : {}),
-        nome: (S.id?.nome || pers.nome || 'Personagem'),
-        conceito: (S.id?.conceito || ''),
+        nome: ((S.nome ?? S.id?.nome) || pers.nome || 'Personagem'),
+        conceito: ((S.conceito ?? S.id?.conceito) || ''),
         atualizado_em: new Date().toISOString(),
       }).eq('id', id);
-      const nomeAtual = S.id?.nome || pers.nome || 'Personagem';
+      const nomeAtual = (S.nome ?? S.id?.nome) || pers.nome || 'Personagem';
       document.getElementById('pers-nome')!.textContent = nomeAtual;
       atualizarUltimoCrumb(nomeAtual);
     }, 900);

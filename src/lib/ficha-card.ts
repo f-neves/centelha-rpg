@@ -1,3 +1,4 @@
+import { fichaParaLeitura } from './ficha-formato';
 // A ficha resumida: um card de leitura, no formato do card de criatura.
 //
 // A ficha completa é uma ferramenta de construção, com cada campo editável e
@@ -107,6 +108,7 @@ export function cardFichaHTML(
   S: any,
   opts: { retrato?: string | null; mesa?: string; nome?: string; pos?: { x?: number; y?: number; z?: number } | null } = {},
 ) {
+  S = fichaParaLeitura(S);
   const N = NOMES;
   const R = resumoFicha(S || {});
   const nome = opts.nome || S?.id?.nome || 'Personagem';
@@ -165,7 +167,7 @@ export function cardFichaHTML(
   </div>`;
 
   // ---- perícias: só as que ele tem ----
-  const espec = (lista: any) => (Array.isArray(lista) && lista.length ? lista.filter(Boolean).join(', ') : '');
+  const espec = (lista: any) => (Array.isArray(lista) && lista.length ? lista.filter(Boolean).map((e: any) => typeof e === 'object' ? `${e.s ?? e.foco}: ${e.v ?? e.valor}` : String(e)).join(', ') : '');
   const habs = (N?.hab || [])
     .filter(([id]) => (R.skills[id] || 0) > 0)
     .map(([id, rot]) => ({ nome: rot, v: R.skills[id], dica: espec(S?.spec?.[id]) ? `Especialidades: ${espec(S.spec[id])}` : '' }));

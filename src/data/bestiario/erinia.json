@@ -1,112 +1,250 @@
 {
-  "ordem": 97,
   "id": "erinia",
   "idAntigo": "mon-erinia",
   "nome": "Erínia",
-  "nomeIngles": "Erinyes",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Diabo",
+  "nomeIngles": "Devil, Erinyes",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Médio (diabo)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-    "diabo",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/erinia_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura (envergadura 4,5 m)",
-    "peso": "68 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 5
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, ereta; luta voando",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.41,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 68,
+    "area": 3.11,
+    "posturaDoTamanho": "voando, asas abertas",
+    "segundoTamanho": {
+      "area": 0.66,
+      "posturaDoTamanho": "de pé, asas fechadas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 7,
     "vigor": 6,
-    "influencia": 6,
-    "perspicacia": 5,
-    "compostura": 6,
     "percepcao": 5,
     "inteligencia": 4,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 6,
+    "perspicacia": 5,
+    "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "armas": 4,
+    "atirador": 4,
+    "arremesso": 3,
+    "bloqueio": 2,
     "esquiva": 2,
-    "prontidao": 2,
+    "atletismo": 3,
+    "furtividade": 2,
     "integridade": 6,
-    "atirador": 4
+    "prontidao": 4,
+    "resistencia": 3,
+    "empatia": 3,
+    "persuasao": 3,
+    "manha": 3,
+    "sociabilidade": 3,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "seducao": 3,
+    "voo": 4,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "atirador": [
+      {
+        "foco": "arco longo",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 4
   },
-  "willpower": 10,
-  "aparencia": 0,
-  "arte": {
-    "fascinacao": 2,
-    "conjuracao": 4
+  "vontade": 10,
+  "aparencia": 7,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 5
+    }
   },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:arco-longo"
+      },
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
-    },
-    {
       "nome": "Arco longo",
-      "atrib": "percepcao",
-      "pericia": "atirador",
-      "dado": 1,
-      "distancia": true,
-      "arremesso": true,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "perf": 1,
-      "ticks": 6,
-      "notas": "catálogo Arco Longo (armas.json); soma Força pela mesma regra do catálogo"
-    }
-  ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
-    {
-      "nome": "Corda de comando",
-      "descricao": "feitiçaria; à distância, Agarra o alvo e, se a Vontade falhar, o obriga a obedecer uma ordem simples"
+      "arma": "arco-longo",
+      "habilidade": "atirador"
     },
     {
       "nome": "Espada flamejante",
-      "descricao": "ataque corpo a corpo alternativo com dano extra"
+      "arma": "espada-longa",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Garras",
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Lâmina em chamas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Espada flamejante",
+      "ativacao": "o golpe da espada que acerta",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "a lâmina arde e queima a ferida",
+      "dano": "+1d6 de fogo, somado ao do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "Corda de comando",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6, a corda lançada (Destreza + Arremesso dela)",
+      "duracao": "até o alvo escapar ou ela soltar; a ordem, uma ação",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela",
+      "dano": "nenhum",
+      "resistencia": "esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado",
+      "limiteDeUso": "uma corda por vez, à vontade"
     },
     {
       "nome": "Teleporte",
-      "descricao": "feitiçaria, 1x por cena; desloca-se instantaneamente até 60m"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "60 m",
+      "area": "a própria erínia",
+      "efeito": "some e reaparece a até 60 m, sem precisar de caminho livre",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Voo",
-      "descricao": "asas emplumadas, deslocamento de voo alto e combate aéreo"
+      "nome": "Olho de alcance",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "olho-de-alcance",
+        "nivel": 1
+      }
     },
     {
-      "nome": "Visão verdadeira",
-      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+      "nome": "Ver o invisível",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "visao-verdadeira",
+        "nivel": 4
+      }
+    },
+    {
+      "nome": "visão verdadeira sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a erínia enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçadora de almas",
+      "formas": "todas",
+      "texto": "fica no ar, fora do alcance de quem luta no chão, atira com o arco e prende com a corda o alvo que rende mais como alma contratada; pousa para a espada só contra quem já caiu, e some pelo teleporte quando a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira",
+      "descricao": "pela Técnica (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, fria, vaidosa",
+    "tracos": "mulher de beleza terrível, de 1,8 m, olhos vermelhos e asas emplumadas de 4,5 m, de penas escuras; arco longo às costas e uma corda enrolada na cintura"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha, recrutando almas para o Inferno",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "caça almas por pacto e por corda",
+    "dianteDeGente": "seduz como anjo caído e fecha o acordo"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Celestial caída que ainda guarda um resto da glória que teve, de beleza terrível e asas emplumadas. Luta do ar com arco e uma corda que prende o corpo e a alma, elegante e calculista, e recruta mortais para o Inferno por pactos sedutores.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -125,48 +263,71 @@
       "texto": "As ortodoxias de Calin pregam que ela é a prova de que até um celestial pode ceder à tentação da Fenda, e usam sua lenda para justificar a desconfiança até dos anjos que dizem servir a Lei."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/erinia_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Atirador 4, Persuasão 3, Prontidão 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Erínia",
-    "cr": "8",
-    "tipo": "exterior Médio (diabo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 20,
-      "des": 23,
-      "con": 21,
-      "int": 14,
-      "sab": 18,
-      "car": 21
-    },
-    "pericias": [
-      "Atirador 4",
-      "Persuasão 3",
-      "Prontidão 4"
-    ],
-    "nota": "Corda de comando, teletransporte, voo: Centelha 4.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "olho-de-aguia"
+      "campo": "habilidadesEspeciais.Lâmina em chamas",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Corda de comando",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.armas",
+      "motivo": "A espada flamejante (site). O site não dava a Habilidade"
+    },
+    {
+      "campo": "habilidades.arremesso",
+      "motivo": "Lança a corda de comando com precisão (site)"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Voando, vista de cima ou de baixo: as duas asas, de 2,05 m cada da raiz à ponta ((4,5 − 0,41) ÷ 2) e corda média de 0,6 m, dão 2 × 2,05 × 0,6 = 2,46 m², somadas à frente do corpo (0,72 × 0,92 = 0,66 m²): 3,11 m²; Médio antes, Grande depois no principal. O site dava Médio, a silhueta de pé; ela luta voando (arco, combate aéreo), e com as asas abertas a silhueta é de 3,11 m². O Segundo Tamanho fica Médio, de pé. O humano passa a ter +3 no acerto contra ela no ar"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 7: \"anjo caído de beleza terrível\" (site), o que resta da glória celestial. Abaixo do súcubo (9), a beleza feita para seduzir. O site tinha 0; a Aparência mede a beleza (D-205); 0 antes, 7 depois, pelo \"anjo caído de beleza terrível\" do site (D-205)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Espada flamejante",
+      "motivo": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com a corda na outra: Força × 1 . O fogo da lâmina vai nas Manobras. Jogada: Destreza 7 + Armas 4 + 2 × o menor entre Centelha 5 e Armas 4 (8)"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +11 corte\", dano médio 14,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as mãos ficam Leves; a espada é a do livro, em uma mão; o arco é o do livro, sem mudança (14,5). Dano médio: 14,5 antes; depois, 14,5 (a espada, mais 1d6 de fogo); as mãos ficam em 12,5"
     }
   ]
 }

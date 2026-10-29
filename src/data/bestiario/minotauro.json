@@ -1,36 +1,24 @@
 {
-  "ordem": 52,
   "id": "minotauro",
   "idAntigo": "mon-minotauro",
   "nome": "Minotauro",
   "nomeIngles": "Minotaur",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Grande",
-  "descricao": "Homem de 2,4 m com cabeça de touro que guarda labirintos e ruínas. Investe com os chifres, racha com um machado de duas mãos e nunca se perde nos corredores que conhece de cor.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/minotauro_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,4 m de altura",
-    "peso": "250 kg",
-    "largura": 0.69,
-    "altura": 2.4
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 2.4,
+    "largura": 0.69,
+    "profundidade": 0.35,
+    "comprimento": null,
+    "massa": 250,
+    "area": 1.55
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 2,
     "vigor": 5,
@@ -41,10 +29,11 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "briga": 3,
     "bloqueio": 1,
+    "esquiva": 0,
     "atletismo": 3,
     "furtividade": 1,
     "prontidao": 3,
@@ -52,110 +41,180 @@
     "integridade": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 3,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "atletismo",
-      "foco": "ficar de pé",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "machado",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "intimidacao",
-      "foco": "urro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "atletismo": [
+      {
+        "foco": "ficar de pé",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "machado",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 1,
-    "valor": 4
+    "temperanca": 1
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:machado-pesado"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Machado pesado",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "corte",
-      "ticks": 7,
-      "classe": "pesada"
+      "arma": "machado-pesado",
+      "habilidade": "armas"
     },
     {
       "nome": "Chifrada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "chifres",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Investida",
-      "descricao": "corre no Preparo do golpe, com −2 a mais na Defesa e +1d6 no dano.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "investida"
     },
     {
       "nome": "Investida chifruda",
-      "descricao": "Chifrada: Ativação: a Investida com a Chifrada, depois de correr 4 m ou mais. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro. Dano: 1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração. Resistência: corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído. Limite de uso: uma por Investida.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Chifrada",
+      "ativacao": "a Investida com a Chifrada, depois de correr 4 m ou mais",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro",
+      "dano": "1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração",
+      "resistencia": "corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído",
+      "limiteDeUso": "uma por Investida"
     },
     {
       "nome": "Fúria de touro",
-      "descricao": "Ativação: ao ficar Abalado ou ao cair abaixo da metade dos PV. Duração: até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Enfurecido (+2 no ataque, −2 nas Defesas; ataca o mais perto, não recua) e soma +2 no dano dos golpes. Dano: +2 nos golpes. Resistência: nenhum. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "ao ficar Abalado ou ao cair abaixo da metade dos PV",
+      "duracao": "até o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Enfurecido (+2 no ataque, −2 nas Defesas; ataca o mais perto, não recua) e soma +2 no dano dos golpes",
+      "dano": "+2 nos golpes",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Faro no labirinto",
-      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: nunca se perde em passagens, túneis e labirintos e sempre sabe o caminho de volta. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Casco firme",
-      "descricao": "Atletismo, com a Especialidade natural (ficar de pé) +2, contra Derrubar e no terreno difícil.",
-      "classe": "livro"
-    },
-    {
-      "nome": "dono do labirinto",
-      "descricao": "espera numa curva, investe com os chifres e acaba com o machado; persegue quem foge pelos corredores e não recua.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: o de um touro; Prontidão (faro) +2. · visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "nunca se perde em passagens, túneis e labirintos e sempre sabe o caminho de volta",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "dono do labirinto",
+      "formas": "todas",
+      "texto": "espera numa curva, investe com os chifres e acaba com o machado; persegue quem foge pelos corredores e não recua."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "o de um touro; Prontidão (faro) +2",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "simples, de memória boa para lugares e rostos",
+    "tracos": "cabeça de touro com chifres largos, pescoço grosso, corpo de homem coberto de pelo, pernas que acabam em cascos; machado de duas mãos"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou em clã pequeno, típico 2 a 4",
+    "atividade": "qualquer hora, no escuro dos túneis",
+    "dieta": "carne",
+    "caca": "caça quem entra no labirinto",
+    "dianteDeGente": "ataca o intruso e guarda rancor de quem escapa"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Homem de 2,4 m com cabeça de touro que guarda labirintos e ruínas. Investe com os chifres, racha com um machado de duas mãos e nunca se perde nos corredores que conhece de cor.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse. Social: sozinho ou em clã pequeno, típico 2 a 4."
+      "texto": "Força bruta e fúria primitiva guiam o minotauro em combate; carrega machado enorme e não recua diante de nada, confiando no instinto e na violência para resolver qualquer impasse."
     },
     {
       "titulo": "Sociedade",
@@ -168,89 +227,56 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "As selvas de Mére escondem cidades e complexos labirínticos antigos demais para qualquer mapa comum, e é lá, entre pedra esquecida e cultos caídos, que os minotauros mais temidos ainda vivem, isolados do resto do mundo."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, 50 PV, Impacto 6, Corte e Perfuração 1. Defesa baixa (Bloqueio 8, 6 com o machado, 9 com os chifres; Esquiva 4): quem chega perto acerta, e leva o machado de dano médio 22. Investe de longe com os chifres e derruba. Abalado ou ferido pela metade, enfurece: bate mais e se defende pior. Nunca se perde no labirinto."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Prontidão 3, Sobrevivência 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Minotauro",
-    "cr": "4",
-    "tipo": "humanoide monstruoso Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 19,
-      "des": 10,
-      "con": 15,
-      "int": 7,
-      "sab": 10,
-      "car": 8
-    },
-    "pericias": [
-      "Prontidão 3",
-      "Sobrevivência 2"
-    ],
-    "nota": "Astúcia natural (labirinto, Su): Centelha 1.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
-    {
-      "caminho": "cacador"
-    },
-    {
-      "caminho": "sangue-fervente"
-    }
+  "imagens": [
+    "bestiario/minotauro_criatura.webp"
   ],
-  "v3": {
-    "pv": 50,
-    "esquiva": 4,
-    "bloqueio": 8,
-    "defesa": 9,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 1,
-    "pesoErguido": 840.51,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 1
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`tamanho`: Grande pelo corpo; sem os chifres, 1,47 m² passa o corte de 1,45 por 1,5% **[conta]**",
-    "`faixa`: 250 kg na zona de transição (187 a 253 kg); robusto, sobe. Na faixa de baixo seriam 40 PV",
-    "`forca`: 7; o site tinha 6 **[provisório]**",
-    "`briga`: 3, para a Chifrada; o site gravava 4, que era a Habilidade da arma **[provisório]**",
-    "`virtudes`: Bravura 4 e Temperança 1; o site tinha 3 e 2 **[provisório]**",
-    "`casco firme`: Especialidade natural +2 em Atletismo **[provisório]**",
-    "`investida chifruda`, `fúria de touro`, `faro no labirinto`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Investida chifruda",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Fúria de touro",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Faro no labirinto",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima de 6 pela física (D-143): 250 kg de homem e touro, acima da Força de referência da massa (6,37, manual 3.9) e acima do gorila de 180 kg (Força 7, D-117), que fica igual por ser bicho de braço. O site tinha 6; For 19 no Pathfinder, acima do ogro em músculo por quilo; 7; o site tinha 6"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "Chifrada e luta corpo a corpo de quem vive brigando; 3, para a Chifrada; o site gravava 4, que era a Habilidade da arma"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Bravura 4 e Temperança 1; o site tinha 3 e 2"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Especialidade natural +2 em Atletismo"
+    }
   ]
 }

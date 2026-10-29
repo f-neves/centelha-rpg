@@ -1,38 +1,30 @@
 {
-  "ordem": 256,
   "id": "louva-a-deus-gigante",
   "idAntigo": "mon-giant-mantis",
   "nome": "Louva-a-deus-gigante",
   "nomeIngles": "Giant Mantis",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "praga Médio",
-  "descricao": "Espera imóvel no mato, o tórax erguido e as patas dobradas; quando a presa entra no alcance, o golpe sai rápido demais para ser corrigido no meio, prende e ela come ali, viva.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "3 m de comprimento, 1 m de altura",
-    "peso": "15 kg",
-    "comprimento": 3,
-    "largura": 0.4,
-    "altura": 1,
-    "envergadura": 4.3
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 5
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 8
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas no chão, o tórax erguido e as patas raptoriais dobradas na frente; voadora",
+    "apoio": "quadrupede",
+    "altura": 1,
+    "largura": 0.4,
+    "profundidade": null,
+    "comprimento": 3,
+    "envergadura": 4.3,
+    "massa": 15,
+    "area": 0.81,
+    "posturaDoTamanho": "pousado, asas fechadas, em espreita",
+    "segundoTamanho": {
+      "area": 3.88,
+      "posturaDoTamanho": "de cima, asas abertas, em voo"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 4,
     "destreza": 4,
     "vigor": 4,
@@ -43,104 +35,173 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
     "bloqueio": 4,
     "esquiva": 4,
     "atletismo": 3,
     "furtividade": 2,
+    "integridade": 0,
     "prontidao": 3,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
     "escalada": 1,
+    "natacao": 0,
+    "voo": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "visão de movimento",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "camuflagem no mato",
-      "valor": 1,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "imóvel na folhagem",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "visão de movimento",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "camuflagem no mato",
+        "valor": 1,
+        "origem": "natural"
+      },
+      {
+        "foco": "imóvel na folhagem",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 8
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Patas raptoriais",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mandíbulas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Patas raptoriais: O golpe que agarra e a mordida na presa presa são dois ataques, um por ação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "bote",
-      "descricao": "Patas raptoriais: avança o corpo junto com o golpe.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "alcance estendido",
-      "descricao": "Patas raptoriais: ataca com as garras a até o dobro do alcance normal.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Patas raptoriais",
+      "efeito": "ataca com as garras a até o dobro do alcance normal"
     },
     {
       "nome": "golpe surpresa",
-      "descricao": "atacando de surpresa, faz mais do que uma ação normal permitiria; continua um ataque por ação, e o que a surpresa dá a mais fica com o Mestre.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão de movimento: Prontidão (visão de movimento) +2 (Especialidade natural), só a curta distância. · audição e olfato: não achados."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "atacando de surpresa, faz mais do que uma ação normal permitiria; continua um ataque por ação, e o que a surpresa dá a mais fica com o Mestre"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "bote",
+      "formas": "todas",
+      "texto": "avança o corpo junto com o golpe."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão de movimento",
+      "descricao": "Prontidão (visão de movimento) +2 (Especialidade natural), só a curta distância",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "não achados",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "generalista, no mato (Garikipati et al. 2025): Furtividade (camuflagem no mato) +1",
+    "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Mente de Inseto: \"Imune a efeitos que dependem de pensamento ou emoção, por não possuir intelecto como o conhecemos\")",
+    "tracos": "patas da frente raptoriais, com coxa longa e espinhos; cabeça que gira; canibalismo sexual em até 50% dos acasalamentos (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "",
+    "dieta": "carnívora: insetos grandes, aranhas, às vezes rãs, lagartos e aves pequenas",
+    "caca": "emboscada imóvel",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Espera imóvel no mato, o tórax erguido e as patas dobradas; quando a presa entra no alcance, o golpe sai rápido demais para ser corrigido no meio, prende e ela come ali, viva.",
   "lore": [
     {
       "titulo": "Mensageira da Morte",
@@ -153,95 +214,42 @@
     {
       "titulo": "Cultos da Louva-a-Deus",
       "texto": "Dizem existir seitas de assassinos que veneram uma mantis gigantesca como divindade, imitando seu estilo de emboscada mortal."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitária."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio parado em espreita, que é como ele caça e o Tamanho principal; Grande de asas abertas. A Força 4 tira o Bloqueio só de quem tem Força 0. Iniciativa 1d6 + 7, a mais alta do lote. O golpe faz 5,5 e agarra (8 por Tick). A cutícula é Couraça nível 1, e quanto ela tira do golpe fica para depois. 19 PV (Faixa 2 e Vigor 4), os de um corpo leve para o tamanho. O perigo é o golpe que sai do mato: Furtividade 2, mais 1 da camuflagem e mais 1 imóvel na folhagem."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Mantis",
-    "cr": "3",
-    "tipo": "praga Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 16,
-      "des": 13,
-      "con": 16,
-      "int": "-",
-      "sab": 14,
-      "car": 11
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "era sem linha (0).  O normal da espécie no próprio meio; a pesquisa só traz a vida de cerca de um ano (Wikipédia), sem jejum, frio, sede nem ferida"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesSec.escalada",
+      "motivo": "não tinha (era texto, \"sobe em planta\").  Espera no mato, sobre a planta (Wikipédia; Garikipati et al. 2025), sem dado de escalada; o Pathfinder dá escalar 30 pés"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 19,
-    "esquiva": 16,
-    "bloqueio": 16,
-    "defesa": 16,
-    "defesaMental": 7,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 1,20 m (3 cm da real × 40). Pela razão dos comprimentos: 1,20 × (3 ÷ 3,6) = 1,00 m; altura não achada, estimativa da postura de espreita, com o tórax erguido"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 143.21,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 8
-      },
-      "voo": {
-        "batalha": 5,
-        "cruzeiro": 11
-      }
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Era 3,60 m (9 cm × 40). O comprimento da ficha atual do Centelha; 85,79 mm do típico × 34,97"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Era 0,48 m. 0,48 × (3 ÷ 3,6) = 0,40 m; largura não achada, estimativa (o abdome da fêmea)"
+    },
+    {
+      "campo": "corpo.envergadura",
+      "motivo": "Era 5,2 m. 5,2 × (3 ÷ 3,6) = 4,33 m; envergadura não achada. Estimativa: a asa anterior da fêmea chega perto da ponta do abdome (Shim e Song 2024), cerca de 6 cm, duas asas mais o tórax"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 23 kg com o corpo de 3,6 m da v3 (24 kg com a fêmea; 202 kg, Faixa 3, na ficha de hoje). Referência 15 kg , adulto típico dos dois sexos, no tamanho da ficha atual do Centelha (3 m); os 200 kg do site não fecham com os 3 m por este método (passam até do cubo, 117,0 kg), e vale o tamanho. A massa da fêmea é : 3,16 g, desvio-padrão 0,95 g, 5 fêmeas adultas do campo pesadas em laboratório (Oufiero, Wood e McMillan 2026, Ecology and Evolution, Tabela 1), sem o comprimento delas. A do macho não foi achada (buscados, na sexta rodada, Brown e Barry 2016, que pesaram os dois sexos de T. sinensis mas não publicam a média no texto e cujos dados no Dryad não abriram; Oufiero et al. 2026, só fêmeas; outros louva-a-deus, sem massa por sexo): sai da própria espécie pelo cubo do comprimento, , com os meios das faixas de Shim e Song 2024 (fêmea 58,2 a 100,8 mm, meio 79,5; macho 54,2 a 89,1 mm, meio 71,65): 3,16 × (71,65 ÷ 79,5)³ = 3,16 × 0,7321 = 2,313 g; o macho é mais esguio, e o cubo do comprimento tende a dar a mais. Média simples: (3,16 + 2,313) ÷ 2 = 2,737 g. O comprimento da fêmea pesada fica nos 9 cm que a ficha já usava (Oufiero não o dá; massa e comprimento de fontes diferentes, ), e o típico, pelo cubo a partir dela, é um corpo de 90 × (2,737 ÷ 3,16)^(1/3) = 85,79 mm. As três contas, do comprimento da ficha (3 m, k = 34,97) e da envergadura de 4,33 m: pelo cubo, 117,0 kg (2,737 g × 34,97³), que não voaria; pela regra do roc, 9,05 kg (2,737 g × 34,97^2,28, o expoente da águia de 2 m e 5 kg ao roc de 18 m e 750 kg); pela reta dos voadores reais, 24,48 kg (0,533 × 4,33^2,61, o método das fichas do morcego-atroz e do roc). Os 15 kg são o meio das duas últimas em escala de log (decisão 13): √(9,05 × 24,48) = 14,89. Adultos de cerca de 4 a 24 kg na gigante, pelo cubo do comprimento real dos dois sexos, 54 a 101 mm, contra os 85,79 mm do típico. Sexos: na gigante, fêmea cerca de 17 kg e macho cerca de 13 kg (variantes, abaixo). O corte de 35 kg substitui o de 25 kg (decisão 22)"
     }
-  },
-  "notasObservacao": [
-    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: de asas abertas o gigante está 4 portes acima da Tenodera (Minúsculo para Grande) e de lado 3 (para Médio), e o critério pede 2. Longe dos cortes: 3,88 m² fica 168% acima do corte do Grande (1,45) e 35% abaixo do do Enorme (6); de lado, 0,81 m² fica 79% acima do corte do Médio (0,45) e 44% abaixo do do Grande. Pela D-215 (24/10/2026), o principal passou a ser o Médio de espreita, e o Grande de asas abertas ficou como segundo.",
-    "gigante: escalado aos 3 m de comprimento da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site); contra o adulto típico de 85,79 mm, k = 34,97 (era 3,6 m, k = 41,96, e k = 40 sobre a fêmea de 9 cm); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)",
-    "massa: 15 kg pela decisão 13 (meio em log de 9,05 kg pela regra do roc, com a base típica dos dois sexos de 2,737 g, e 24,48 kg pela reta dos voadores reais com a envergadura de 4,33 m), e não os 117,0 kg do cubo; era 23 kg com os 3,6 m. O macho (2,313 g) é pelo cubo do comprimento [comparação]; se a massa dele aparecer (Brown e Barry 2016 pesaram), a regra do roc se refaz. Se a fêmea pesada for posta nos 79,5 mm do meio da faixa, e não nos 9 cm, a conta dá 17,2 kg (D-174)",
-    "faixa: Faixa 2, a mesma; PV 28 com o Vigor 4 da oitava rodada (30 na sétima; 40 na ficha de hoje)",
-    "alvo: Grande de asas abertas (3,88 m²) e Médio de lado em espreita (0,81 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,6)² (decisão 8). O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada). A fêmea quase não voa (Shim e Song 2024), e o Alvo de asas abertas vale só quando ela as abre; no jogo, o Médio de espreita é o mais comum. O autor quis o principal pela postura de caça (D-215, 24/10/2026): inverteu, e o Médio de espreita é o principal (D-174)",
-    "dimensoes: altura (3 cm), largura (1,2 cm) e envergadura (13 cm) da real estimadas; o comprimento de referência (9 cm) é escolha dentro da faixa da fêmea",
-    "voo: a fêmea de referência quase não voa, e a ficha antiga diz \"voo trôpego\". A fórmula, com Voo 0 (o mínimo), dá 39 km/h, que parece alto; congelada (decisão 23). Se o autor quiser, a fêmea pode ficar sem voo e o macho com ele",
-    "anatomia: artrópode alado, provisória (D-175)",
-    "pesoErguido: 143,21 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga",
-    "velocidade: congelada (decisão 23); terra 30 km/h e voo 39 km/h, sem velocidade real (D-170)",
-    "forca: 4, com as patas de agarrar na Musculatura 3 (D-158). Reanalisada na sétima rodada com os 15 kg (referência 3,7) e os vizinhos de massa (carcaju 2, cão 2, centopeia-gigante 5, aranha-gigante 6), e mantida. A Tenodera de base fica com Força 0 pelo item 8 (a força dela não fere nem segura um humano), e não pela D-167 automática (D-174)",
-    "raciocinio: 4 pela duração do golpe medida em outras espécies, não na T. sinensis (D-174)",
-    "furtividade: o levantamento a dava como candidata a 4; ficou em 3, com Furtividade (camuflagem no mato) +1 natural e (imóvel na folhagem) 1. As duas se somam na espera parada no mato, o que dá o efeito do 4 só nessa situação (D-174)",
-    "escalada: 1, nova, sem dado da espécie [extrapolação]",
-    "compostura: 1 por não ser espécie social (diretriz 1); a espera de horas fica na Furtividade",
-    "couraca: nível 1 pela escala da quinta rodada, reanalisado na sétima com a massa de 15 kg e mantido; o valor em absorção fica para depois.",
-    "fonte: o comprimento de 9 cm para a fêmea de 3,16 g, a altura, a largura e a envergadura continuam só por estimativa (D-174)",
-    "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre o animal de base (Tenodera sinensis, Vigor 3, presumido), o mínimo da D-176; inseto leve de 15 kg (cutícula fina, abdome mole, traqueia), ao lado da aranha, da centopeia e da vespa gigantes (4) e do carcaju (11,75 kg, 4). Era 5 (D-174)",
-    "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
   ]
 }

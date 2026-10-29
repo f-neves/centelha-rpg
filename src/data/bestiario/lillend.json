@@ -1,90 +1,191 @@
 {
-  "ordem": 149,
   "id": "lillend",
   "idAntigo": "mon-lillend",
   "nome": "Lillend",
   "nomeIngles": "Lillend",
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "papel": "elite",
-  "conceito": "exterior (anjo) Grande",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-    "celestial",
-    "centelha"
-  ],
-  "imagem": "bestiario/lillend_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "6 m de comprimento",
-    "peso": "1.700 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 7
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "cauda enrolada, torso erguido",
+    "apoio": "outro",
+    "altura": 2.5,
+    "largura": 2.5,
+    "profundidade": 2.5,
+    "comprimento": 6,
+    "massa": 1700,
+    "area": 4.6,
+    "posturaDoTamanho": "cauda enrolada, torso erguido",
+    "segundoTamanho": {
+      "area": 8.6,
+      "posturaDoTamanho": "asas abertas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 7,
     "destreza": 5,
     "vigor": 7,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 5,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
-    "briga": 5,
+  "habilidades": {
+    "briga": 4,
+    "bloqueio": 2,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "prontidao": 3,
+    "integridade": 5,
+    "sobrevivencia": 3,
+    "sociabilidade": 3,
+    "armas": 4,
+    "empatia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "tocar-instrumento": 4,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 5,
     "conviccao": 5,
-    "temperanca": 4,
-    "valor": 4
+    "temperanca": 4
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 10,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {
+    "fascinacao": 3,
+    "cura": 3,
+    "luz": 1
+  },
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Espada longa",
+      "arma": "espada-longa",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "profano"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Canto Encantado",
-      "descricao": "Sua música pode inspirar coragem em aliados, prender a atenção de inimigos ou até convencê-los a agir contra a própria vontade, por um bom tempo a cada cena."
+      "nome": "Constrição",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Cauda",
+      "regra": "agarrar",
+      "texto": "envolve o adversário nas espiras"
     },
     {
-      "nome": "Cauda Constritora",
-      "descricao": "O corpo inferior serpentino termina numa cauda forte, capaz de golpear e depois esmagar quem for agarrado."
+      "nome": "Canto encantado",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a música inspira coragem, prende a atenção e sugere condutas aos ouvintes"
     },
     {
-      "nome": "Magias da Musa",
-      "descricao": "Domina pequenas magias de encantamento e cura, como enfeitiçar um alvo, conversar com animais e plantas, ou criar luz e escuridão à vontade."
+      "nome": "Conversar com animais e plantas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "faz-se entender por animais e vegetação"
     },
     {
-      "nome": "Corpo Resistente",
-      "descricao": "É imune a eletricidade, veneno e a efeitos que transformam em pedra."
-    },
-    {
-      "nome": "Voo Constante",
-      "descricao": "Voa com facilidade mesmo tendo um corpo longo e pesado."
+      "nome": "Imunidade a veneno e petrificação",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "toxinas e transformações em pedra não a afetam"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Magias da musa",
+      "formas": "todas",
+      "texto": "usa Fascinação para acalmar e distrair, Cura para socorrer e Luz para iluminar ou escurecer."
+    },
+    {
+      "nome": "Defesa da arte",
+      "formas": "todas",
+      "texto": "mantém a cauda enrolada ao lutar no chão; voa para interceptar ameaças e retorna ao alcance da espada."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "enxerga no escuro e sob luz fraca",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": "distingue melodias e vozes",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "inteligente",
+    "tracos": "Musa alada de torso humanoide e cauda serpentina espessa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "não se aplica",
+    "dianteDeGente": "conversa e ampara artistas; enfrenta quem os ameaça"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Guardiã de artistas e canções, mantém a harpa ao alcance das mãos. Enrola a cauda ao redor de quem ameaça seus protegidos.",
   "lore": [
     {
       "titulo": "Papel",
@@ -99,39 +200,56 @@
       "texto": "Não precisam de alimento mortal, mas se alimentam simbolicamente da alegria da música e da performance, visitando o mundo material para zelar por suas obras e artistas favoritos."
     }
   ],
-  "ecologia": {
-    "tipo": "Celestial",
-    "terreno": [
-      "Forest",
-      "Any"
+  "imagens": [
+    "bestiario/lillend_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Lillend",
-    "cr": "7",
-    "tipo": "exterior (anjo) Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 20,
-      "des": 17,
-      "con": 21,
-      "int": 14,
-      "sab": 16,
-      "car": 19
+  "revisao": [
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Cauda muscular capaz de constrição, sem hipertrofia extrema"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Comprimento publicado de 6 m; altura e espiras estimadas pelo torso e cauda"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Comprimento publicado de 6 m; altura e espiras estimadas pelo torso e cauda"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Comprimento publicado de 6 m; altura e espiras estimadas pelo torso e cauda"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Torso 1,0 m² + espiras visíveis 3,6 m² = 4,6; asas expostas acrescentam 4,0 m²"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesSec.tocar-instrumento",
+      "motivo": "Música 4 passa a Tocar Instrumento 4, Habilidade do catálogo que cobre a execução musical por instrumentos; nível conservado, pela D-231. a conferir."
+    }
+  ]
 }

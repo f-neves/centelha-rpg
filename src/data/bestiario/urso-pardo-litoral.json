@@ -2,31 +2,25 @@
   "id": "urso-pardo-litoral",
   "nome": "Urso-pardo",
   "nomeIngles": "Brown Bear",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Grande",
-  "descricao": "Solitário e onívoro, que foge de gente na maior parte das vezes. Ataca sobretudo a fêmea defendendo filhotes (47%), no encontro de surpresa (20%) ou quando é atacado (10%); 14,3% dos 664 ataques de 2000 a 2015 foram fatais.",
-  "tags": [],
-  "imagem": null,
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,35 m de comprimento, 1,34 m de altura",
-    "peso": "320 kg",
-    "comprimento": 2.35,
-    "largura": 0.89,
-    "altura": 1.34
-  },
-  "locomocao": {
-    "terra": 7
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 12,
-    "corrida": 16
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.34,
+    "largura": 0.89,
+    "profundidade": null,
+    "comprimento": 2.35,
+    "comprimentoSemCauda": 2.23,
+    "caudaGrossa": false,
+    "massa": 320,
+    "area": 1.48,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 6,
@@ -37,7 +31,7 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
     "bloqueio": 2,
     "esquiva": 1,
@@ -46,160 +40,185 @@
     "integridade": 3,
     "prontidao": 2,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 4
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "fome",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "pescar salmão",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "resistencia": [
+      {
+        "foco": "fome",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "sobrevivencia": [
+      {
+        "foco": "pescar salmão",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 4,
+  "vontade": 4,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 12,
+      "corrida": 16
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Patada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar (o \"abraço\")",
-      "descricao": "Patada",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "fúria ferida",
-      "descricao": "ferido grave, luta com mais força e fere mais.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ferido grave, luta com mais força e fere mais"
+    }
+  ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +3 (era +4; a decisão 3 põe o teto em +3); carcaça a mais de 3,2 km (ADW)",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +3; carcaça a mais de 3,2 km. · audição: nada que passe do humano. · visão: nada que passe do humano; as fontes divergem (comparável à humana)."
-    }
-  ],
-  "doencas": [
+      "nome": "audição",
+      "descricao": "nada que passe do humano (ADF&G; ADW)",
+      "formas": "todas"
+    },
     {
-      "nome": "Doença no jogo (ao comer)",
-      "texto": "Triquinose · Virulência 7 · dia · quem come a carne mal cozida rola uma vez"
+      "nome": "visão",
+      "descricao": "nada que passe do humano; as fontes divergem (comparável à humana, ADF&G; \"relativamente fraca\", ADW)",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "hiberna (de outubro a dezembro até março a maio; até 8 meses no norte; ADW; ADF&G); a massa varia com a estação, ganhando antes da hibernação e perdendo durante (Swenson 2007: machos do norte de 201 kg na primavera a 273 kg no outono). É o fato da Resistência (fome) +3"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário (áreas de vida que se sobrepõem muito)",
+    "atividade": "crepuscular (forrageia de manhã e ao entardecer, descansa no mato de dia)",
+    "dieta": "onívoro (capim, raízes, frutas, insetos, peixe, carniça e caça)",
+    "caca": "forrageio; caça filhotes de alce, caribu e wapiti (um urso pegou 5 filhotes de wapiti em 15 minutos)",
+    "dianteDeGente": "foge (80% saíram do lugar quando perceberam gente, nenhum agrediu); defende a cria (a fêmea com filhotes)"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "montanha"
+    ],
+    "clima": [
+      "temperado",
+      "frio"
+    ]
+  },
+  "descricao": "Solitário e onívoro, que foge de gente na maior parte das vezes. Ataca sobretudo a fêmea defendendo filhotes (47%), no encontro de surpresa (20%) ou quando é atacado (10%); 14,3% dos 664 ataques de 2000 a 2015 foram fatais.",
   "lore": [
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário (áreas de vida que se sobrepõem muito)."
-    },
     {
       "titulo": "Veneno e doença",
       "texto": "Doença no jogo (ao comer): Triquinose · Virulência 7 · dia · quem come a carne mal cozida rola uma vez"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 7: quem tem Força 3 ou menos não apara a patada. Grande (1,48 m², na borda), então o humano Médio ganha +3 no acerto corpo a corpo contra ele. Tem 54 PV pela massa (a principal, 50), e ergue ou arrasta até 1.035,06 kg; a pele fica no nível 2 de Couraça, e quanto ela tira do golpe fica para depois. O Vigor 6 segura o Impacto. O abraço tira 14 por manutenção. Ferido, segue atacando, e aguenta meses sem comer."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Mountain"
-    ],
-    "clima": [
-      "Temperate",
-      "Cold"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 54,
-    "esquiva": 8,
-    "bloqueio": 10,
-    "defesa": 10,
-    "defesaMental": 9,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 6,
-      "perfuracao": 6
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,31 × 1,0240 = 1,341 . Antes: Principal: 1,11 m. A ADW não dá dimensão do urso do litoral (só a da espécie inteira: cernelha 0,90 a 1,50 m, corpo 1,0 a 2,8 m); a pesquisa (`urso-pardo.md`) também não. Escalada pelo cubo da massa a partir da principal: 1,110 × (298 ÷ 182)^(1/3) = 1,110 × 1,1786 = 1,308. Fica dentro da faixa da espécie. Em pé, até 2,4 m (espécie)."
     },
-    "couracaNivel": 2,
-    "pesoErguido": 1035.06,
-    "carga": {
-      "leve": 32,
-      "media": 64,
-      "pesada": 96,
-      "maxima": 128
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,29 × 1,0240 = 2,345 . Antes: Principal: 1,94 m. Escalado pelo cubo da massa: 1,942 × 1,1786 = 2,289."
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 12,
-        "corrida": 16
-      }
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,18 × 1,0240 = 2,232 . Antes: Principal: 1,85 m (a estimativa do Arquiteto para o macho do interior, escalada). Escalado pelo cubo da massa: 1,850 × 1,1786 = 2,180, dentro da faixa da espécie (1,0 a 2,8 m, ADW)."
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,87 × 1,0240 = 0,891 . Antes: Principal: 0,74 m (estimada pelo Arquiteto, sem fonte). Escalada pelo cubo da massa: 0,740 × 1,1786 = 0,872."
     }
-  },
-  "notasObservacao": [
-    "pesoErguido: 1.032,64 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o urso do litoral de 298 kg e a Força, o Vigor e a Musculatura da principal), provisório até a fórmula fechar (D-169, D-174). Nenhum peso medido para conferir; a caçamba de 318 kg (não conferida) cabe com folga.",
-    "carga: 29,8 kg de Leve pela conta da D-122 (sem carga medida), provisória pela mesma razão (D-169, D-172).",
-    "velocidade: congelada (decisão 23); os números são os de 12/10, com a Força 8 de então, e batem com o real (57 km/h dentro dos 56 a 64 do NPS) (D-170).",
-    "dimensoes.largura: 0,87 m (a largura da principal, 0,74 m, estimada pelo Arquiteto sem fonte, escalada pelo cubo da massa, × 1,1786); o Alvo sai da silhueta de lado (D-147, D-174).",
-    "dimensoes.comprimento: o total (2,29) e o sem cauda (2,18) são os da principal (1,94 e 1,85) escalados pelo cubo da massa (× 1,1786), porque nem a ADW nem a pesquisa dão dimensão do urso do litoral, só a faixa da espécie inteira (1,0 a 2,8 m) (D-147, D-174). A altura (1,31 m) foi escalada junto.",
-    "alvo: Médio a 3% do corte do Grande (1,41 contra 1,45 m²); qualquer dimensão medida um pouco maior o põe no Grande (D-174).",
-    "segundoAlvo: \"não se aplica\" pelo `calc.mjs`; o urso em pé (até 2,4 m) seria Grande. Se o autor tratar o urso em pé como postura comum de combate (ele luta de pata), entra o segundo Alvo (decisão 8, D-174).",
-    "variantes.grizzlyDoInterior: leva os números do macho do interior (237 kg, Faixa 4, PV 50), e não mais os da ficha principal; entra para o `mon-grizzly-bear` apontar para a ficha principal (D-174).",
-    "variantes.femea: Médio pela área escalada (0,80 m² com 127 kg, `calc6.mjs`); variantes.grizzlyPequeno: Médio provável, [sem dado] até haver dimensões próprias (D-174).",
-    "variantes.kodiak: sem comprimento o Alvo fica [sem dado]; a massa não decide mais o Alvo (decisão 7, D-174).",
-    "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): deslocamento sazonal de centenas de quilômetros no outono (ADW), sem duração nem distância por dia. As arrancadas de até 64 km/h (ADF&G) e de 56 a 64 km/h (NPS) são de pico, sem tempo; cruzeiro não achado.",
-    "habilidades.resistencia: 3 pela ferida aguentada (Bombieri 2019); a hibernação foi só para a Especialidade natural (fome) +3, para não contar duas vezes (D-174).",
-    "habilidades.natacao: 0 por falta de dado; o urso-pardo nada (o Kodiak vive de salmão), mas a pesquisa não traz número (D-174).",
-    "habilidades.musculatura: 4 sem peso medido, pelos feitos de cavar e virar pedra; provisório até haver dado (D-174).",
-    "especialidades.sobrevivencia: a pesca de salmão é dado do Kodiak (USFWS), urso do litoral do Alasca como esta ficha; aqui ela cabe melhor que na principal. Fica igual (+1), provisório (D-174)."
   ]
 }

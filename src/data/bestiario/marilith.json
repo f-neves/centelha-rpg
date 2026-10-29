@@ -1,115 +1,307 @@
 {
-  "ordem": 92,
   "id": "marilith",
   "idAntigo": "mon-marilith",
   "nome": "Marilith",
   "nomeIngles": "Demon, Marilith",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Grande (demônio)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha"
-  ],
-  "imagem": "bestiario/marilith_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "6 m de comprimento",
-    "peso": "1,8 t"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 6,
   "centelha": 7,
-  "attrs": {
+  "corpo": {
+    "postura": "erguida sobre a cauda de serpente",
+    "apoio": "outro",
+    "altura": 2.7,
+    "largura": 0.68,
+    "profundidade": null,
+    "comprimento": 6,
+    "massa": 925,
+    "area": 3.5,
+    "posturaDoTamanho": "de lado, erguida"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 10,
     "destreza": 8,
     "vigor": 9,
-    "influencia": 8,
-    "perspicacia": 7,
-    "compostura": 7,
     "percepcao": 5,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 8,
+    "perspicacia": 7,
+    "compostura": 7
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "armas": 5,
+    "bloqueio": 4,
     "esquiva": 2,
-    "prontidao": 2,
-    "integridade": 7
+    "atletismo": 4,
+    "furtividade": 1,
+    "integridade": 7,
+    "prontidao": 4,
+    "resistencia": 5,
+    "empatia": 3,
+    "sociabilidade": 3,
+    "persuasao": 3,
+    "ocultismo": 3
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "lideranca": 4,
+    "estrategia": 5,
+    "intimidacao": 4,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "espada longa",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "estrategia": [
+      {
+        "foco": "hordas demoníacas",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 4
   },
-  "willpower": 12,
-  "aparencia": -1,
-  "tech": {
-    "aperto-esmagador": true
+  "vontade": 12,
+  "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
   },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Espada longa",
+      "arma": "espada-longa",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda-de-serpente",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Seis lâminas",
-      "descricao": "proeza; ataca com seis espadas na mesma rodada, um golpe independente por lâmina"
+      "nome": "Três lâminas",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Espada longa",
+      "regra": "rajada"
     },
     {
-      "nome": "Cauda constritora",
-      "descricao": "proeza; ataque de cauda que Agarra e esmaga o alvo a cada rodada de aperto"
+      "nome": "seis lâminas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ataca com as seis espadas na mesma rodada, um golpe independente por lâmina; por enquanto, até três pela Rajada"
     },
     {
-      "nome": "Feitiços",
-      "descricao": "feitiçaria; lança Teleporte, Telecinesia e Paralisar como conjuradora nata"
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Cauda",
+      "regra": "agarrar"
     },
     {
-      "nome": "Visão verdadeira",
-      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+      "nome": "Aperto esmagador",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "aperto-esmagador",
+        "nivel": 5
+      }
+    },
+    {
+      "nome": "Teleporte",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 6
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "qualquer lugar que ela conheça no mesmo plano",
+      "area": "a própria marilith",
+      "efeito": "some e reaparece no destino",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "Telecinese",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "forcas",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "enquanto se concentrar",
+      "alcance": "18 m",
+      "area": "um objeto ou uma pessoa",
+      "efeito": "move objetos ou uma pessoa sem tocá-los, com a força de um homem forte; arremessa o que move",
+      "dano": "o do objeto arremessado, a critério do Mestre",
+      "resistencia": "esquiva, contra o objeto arremessado; corpo, para quem é erguido; quem passa não sai do lugar",
+      "limiteDeUso": "nenhum"
+    },
+    {
+      "nome": "Paralisar",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o corpo do alvo trava e ele fica paralisado"
+    },
+    {
+      "nome": "Ver o invisível",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "visao-verdadeira",
+        "nivel": 4
+      }
+    },
+    {
+      "nome": "visão verdadeira sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a marilith enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
     },
     {
       "nome": "Tática de guerra",
-      "descricao": "concede Iniciativa extra a aliados demoníacos próximos"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "coordenar",
+        "nivel": 1
+      }
     },
     {
       "nome": "Corpo de serpente",
-      "descricao": "desloca-se sobre o chão ignorando terreno difícil"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "desliza sobre o chão sem perder deslocamento em Terreno difícil",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Regeneração",
-      "descricao": "recupera PV toda rodada, exceto se ferida por arma benta ou fogo"
+      "nome": "Regeneração 9",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de arma benta ou fogo"
+    },
+    {
+      "nome": "arma benta e fogo param a regeneração",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o dano de arma benta ou de fogo não se fecha pela Regeneração"
     },
     {
       "nome": "Presença aterradora",
-      "descricao": "falha no teste de Vontade = Abalado ao vê-la em combate"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "temor-reverente",
+        "nivel": 3
+      }
     },
     {
-      "nome": "Seis lâminas",
-      "descricao": "Manobra de combate, sem limite de uso."
-    },
-    {
-      "nome": "Constrição",
-      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê a marilith pela primeira vez sente o pavor dos seis braços armados sobre o corpo de serpente; o corpo quer recuar antes de qualquer golpe"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "um alvo por vez",
+      "formas": "todas",
+      "texto": "a cauda segura e esmaga um alvo por vez, enquanto as espadas trabalham nos outros."
+    },
+    {
+      "nome": "generala",
+      "formas": "todas",
+      "texto": "comanda a horda antes de entrar na luta; entra com as seis espadas em combinações que nenhum mortal treina para enfrentar, agarra o mais forte com a cauda e o esmaga, e trava com a magia quem tenta fugir."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira",
+      "descricao": "pela Técnica (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente, demoníaca, fria e disciplinada",
+    "tracos": "tronco de mulher de pele escura com seis braços, cada um com uma espada, sobre um corpo de serpente de escamas verdes e negras de 6 m"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "generala de exércitos demoníacos",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "conquista em campanha planejada",
+    "dianteDeGente": "massacra com ordem"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Generala dos exércitos do Abismo, de seis braços armados sobre um corpo de serpente. Despreza o caos dos demônios menores, impõe ordem tática às hordas e luta com seis espadas em combinações que nenhum mortal treina para enfrentar. Sonha em rivalizar com os senhores do Abismo.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -128,57 +320,75 @@
       "texto": "Contam os poucos sobreviventes de invasões vindas da Fenda que, entre o caos de horrores desgovernados, às vezes surge algo pior: uma vontade fria que organiza o massacre."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
-    ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "Habilidades notáveis: Armas 5, Prontidão 4, Liderança 4. Centelha acima do teto mortal (entidade).",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Marilith",
-    "cr": "17",
-    "tipo": "exterior Grande (demônio)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 29,
-      "des": 25,
-      "con": 25,
-      "int": 18,
-      "sab": 18,
-      "car": 25
-    },
-    "pericias": [
-      "Armas 5",
-      "Prontidão 4",
-      "Liderança 4"
-    ],
-    "nota": "General demoníaca de seis braços: Centelha 6. Dex 25 → Destreza 8.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "proezaFutura": [
-    {
-      "caminho": "danca-da-lamina"
-    },
-    {
-      "caminho": "agarrao-do-urso"
-    }
+  "imagens": [
+    "bestiario/marilith_criatura.webp"
   ],
-  "arte": {
-    "forcas": 4,
-    "fascinacao": 5,
-    "protecao": 3,
-    "conjuracao": 6
-  }
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
+    ],
+    "resistencias": [],
+    "imunidades": []
+  },
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Telecinese",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Corpo de serpente",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "O site só dá o comprimento; o tronco da cintura para cima é o de um corpo de 2,7 m"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Sem espécie medida: o tronco, metade de cima do corpo de base escalado a 2,7 m (80 × 3,375 ÷ 2 = 135 kg), com mais quatro braços (cerca de 20 kg), 155 kg; a cauda de 4,5 m e 0,6 m de diâmetro, afinando (60% do cilindro: π × 0,3² × 4,5 × 0,6 = 0,763 m³), com a densidade de carne e osso, 771 kg; soma 926 kg. O site dizia 1,8 t. Fica a calculada (D-187): as duas ficam na Faixa 4 e na mesma linha de PV; só o Peso erguido muda; 925 kg pelo tronco e pela cauda, contra os 1,8 t do site; a Faixa e o PV não mudam, só o Peso erguido"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: as escamas da cauda de serpente grande, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); a Arte do site ficou sem poder próprio; 3, escamas de serpente grande"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "0, e não o −1 do site, fora da régua; o texto do site não descreve beleza"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as espadas são as do livro e a Cauda fica Média"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o site dizia \"depende do agarrão; engolir 1 alvo por vez\". A marilith não engole; a ficha guarda o limite de um alvo por vez na cauda e lê o \"engolir\" como resto de outro texto"
+    },
+    {
+      "campo": "habilidadesEspeciais.Presença aterradora",
+      "motivo": "virou a Técnica temor-reverente; o site dizia \"falha no teste de Vontade = Abalado ao vê-la em combate\""
+    }
+  ]
 }

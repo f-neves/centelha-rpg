@@ -1,113 +1,260 @@
 {
-  "ordem": 121,
   "id": "unicornio",
   "idAntigo": "mon-unicornio",
   "nome": "Unicórnio",
   "nomeIngles": "Unicorn",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/unicornio_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "corpo 2,4 m, altura 1,7 m aos ombros",
-    "peso": "350 kg"
-  },
-  "locomocao": {
-    "terra": 6
-  },
+  "ameaca": 3,
   "centelha": 4,
-  "attrs": {
-    "forca": 6,
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.7,
+    "largura": 0.61,
+    "profundidade": null,
+    "comprimento": 2.67,
+    "massa": 550,
+    "area": 2.22,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 1,
+  "atributos": {
+    "forca": 7,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 7,
-    "perspicacia": 5,
-    "compostura": 7,
     "percepcao": 6,
     "inteligencia": 2,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 7,
+    "perspicacia": 5,
+    "compostura": 7
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 7,
     "prontidao": 3,
-    "integridade": 7
+    "resistencia": 3,
+    "empatia": 4,
+    "sociabilidade": 0,
+    "sobrevivencia": 4
   },
-  "virtues": {
+  "habilidadesSec": {
+    "cura": 2,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "sentidos aguçados",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 3,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 10,
-  "arte": {
-    "cura": 3,
-    "conjuracao": 2
+  "deslocamento": {
+    "terra": {
+      "batalha": 6,
+      "arranque": 10,
+      "corrida": 14
+    }
   },
-  "tech": {
-    "imunidade": true
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
   },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Chifre",
+      "parte": "chifre",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
       "acerto": 0,
-      "ticks": 6
-    }
-  ],
-  "poderes": [
+      "bloqueiaComoArma": 1
+    },
     {
-      "id": "imune-a-veneno-e-encanto",
-      "nome": "Imune a veneno e encanto",
-      "tipo": "natural",
-      "resiste": "corpo",
-      "efeito": "Só no golpe que fura; resistência de corpo (regra em auditoria).",
-      "usos": {
-        "periodo": "cena",
-        "quantidade": 3,
-        "recarga": "1 hora"
-      },
-      "ataque": "Garras e presas"
+      "nome": "Coice",
+      "parte": "casco",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Chifre em investida",
+      "parte": "chifre-e-corpo",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "chifre perfurante",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Chifre em investida",
+      "regra": "investida",
+      "texto": "só depois de correr ao menos 6 m em linha reta"
+    },
+    {
+      "nome": "chifre e cascos juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "chifra e escoiceia na mesma ação"
+    },
     {
       "nome": "Toque curativo do chifre",
-      "descricao": "toque, 1x por cena por alvo: remove uma condição negativa ou restaura PV"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "cura",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6, tocando o ferido com o chifre",
+      "duracao": "instantânea",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "fecha feridas e tira do corpo um veneno ou uma doença; ou desfaz uma condição de corpo (Envenenado, Doente, Sangrando)",
+      "dano": "nenhum; cura 3d6 PV",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena para cada alvo"
     },
     {
-      "nome": "Teleporte",
-      "descricao": "1x por cena, desloca-se instantaneamente até 12m ignorando obstáculos"
-    },
-    {
-      "nome": "Imune a veneno e encanto",
-      "descricao": "venenos e efeitos de encantamento não afetam o unicórnio"
-    },
-    {
-      "nome": "Chifre perfurante",
-      "descricao": "investida de ao menos 6m antes do golpe: dano alto"
-    },
-    {
-      "nome": "Sentidos aguçados",
-      "descricao": "+2d6 em Prontidão"
+      "nome": "Passo de luz",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "instantânea",
+      "alcance": "até 12 m, a um lugar que ele vê",
+      "area": "o próprio corpo",
+      "efeito": "some e aparece no outro ponto, sem passar pelo meio",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Presença pura",
-      "descricao": "criaturas de má índole falham em Vontade para se aproximar dela"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma, está sempre ligada",
+      "duracao": "contínua",
+      "alcance": "3 m",
+      "area": "esfera de 3 m em volta dele",
+      "efeito": "a criatura de má índole que falha não consegue chegar mais perto dele por vontade própria",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Empatia dele; quem passa se aproxima normalmente pela cena",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "Imunidade",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "imunidade",
+        "nivel": 4
+      }
+    },
+    {
+      "nome": "imune a veneno e encanto",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "veneno nenhum o afeta, mundano ou não, e nenhum encanto pega na mente dele"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "guardião da floresta",
+      "formas": "todas",
+      "texto": "foge ao primeiro sinal de corrupção ou mentira, mas defende com fúria quem está sob seu cuidado: corre, chifra e some num passo de luz."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentidos aguçados",
+      "descricao": "Prontidão +2",
+      "formas": "todas"
+    },
+    {
+      "nome": "julga o coração",
+      "descricao": "lê a intenção de quem se aproxima pela Empatia",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "não",
+    "camuflagem": "nenhuma; o branco brilha na mata",
+    "mente": "inteligente; entende a fala",
+    "tracos": "cavalo branco de 1,7 m de cernelha, crina longa e um chifre em espiral na testa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "herbívoro: ervas raras e água de nascente pura",
+    "caca": "pasta nas clareiras",
+    "dianteDeGente": "foge da corrupção e da mentira; protege quem está sob seu cuidado"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Cavalo branco de um chifre que guarda sozinho as florestas intocadas e foge ao mínimo sinal de corrupção ou mentira. Defende com fúria quem está sob seu cuidado, e o toque do chifre purifica o veneno e cura a doença.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -126,47 +273,34 @@
       "texto": "Encarna a pureza rara de uma Centelha alta; em Syl é quase reverenciado como um kami, e para as igrejas supressoras de Calin é uma prova incômoda de que nem toda magia é ameaça, prova que muitas vezes preferem esconder do povo."
     }
   ],
-  "ecologia": {
-    "tipo": "Fey",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/unicornio_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Sobrevivência 4, Prontidão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Unicórnio",
-    "cr": "3",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 18,
-      "des": 17,
-      "con": 16,
-      "int": 11,
-      "sab": 21,
-      "car": 24
-    },
-    "pericias": [
-      "Sobrevivência 4",
-      "Prontidão 3"
-    ],
-    "nota": "Cura, teletransporte, naturalmente mágico: Centelha 3. Sab 21 → Percepção 6; Car 24 → Influência 7.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "sangue-imune"
+      "campo": "habilidadesEspeciais.Toque curativo do chifre",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Passo de luz",
+      "motivo": "números sugeridos pela ficha (D-197); o \"teleporte\" do site, poder natural com base Conjuração 3 (Passo Brusco, o teletransporte curto do livro); o site dava a Arte Conjuração 2, que não teleporta"
+    },
+    {
+      "campo": "habilidadesEspeciais.Presença pura",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "Degrau 7: For 18 no Pathfinder. Teste de ordem: igual ao cavalo do molde (7, 500 kg), que é mais leve, como o pesadelo (7, 800 kg, também For 18). O site tinha 6; 6 para 7, pelo teste de ordem com o cavalo do molde (7 com 500 kg), como o pesadelo"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +10 perfurante\", 6 Ticks, dano médio 17). O unicórnio não tem garra: a ficha usa o chifre, o coice e o chifre em investida do site. Dano médio: 17 antes; depois, chifre 14,5, coice 18,0, chifre em investida 25,0 (só depois de 6 m de corrida)"
     }
   ]
 }

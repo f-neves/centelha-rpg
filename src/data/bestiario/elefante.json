@@ -1,37 +1,28 @@
 {
-  "ordem": 42,
   "id": "elefante",
   "idAntigo": "mon-elefante",
   "nome": "Elefante-asiático",
   "nomeIngles": "Asian elephant",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Enorme",
-  "descricao": "Domesticado há séculos para o transporte, a madeira e a guerra; um macho de trabalho arrasta toneladas de tora por dia. Vive 60 anos ou mais.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "5,8 m de comprimento, 2,65 m de altura",
-    "peso": "3.600 kg",
-    "comprimento": 5.8,
-    "largura": 1.44,
-    "altura": 2.65
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 2.65,
+    "largura": 1.44,
+    "profundidade": null,
+    "comprimento": 5.8,
+    "comprimentoSemCauda": 4.54,
+    "caudaGrossa": false,
+    "massa": 3600,
+    "area": 6.65,
+    "posturaDoTamanho": "vista de lado",
+    "cargaMedida": 540
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 10,
     "destreza": 1,
     "vigor": 9,
@@ -42,106 +33,188 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 2,
     "esquiva": 1,
+    "atletismo": 0,
+    "furtividade": 0,
     "integridade": 2,
     "prontidao": 1,
     "resistencia": 5,
     "empatia": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "nado": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Presada (só o macho com presa)",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "presa",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     },
     {
       "nome": "Pisão (ou investida)",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "corpo",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "tromba",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "empurrar",
-      "descricao": "corpo: (o empurrão é o modo comum de briga)",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "empurrar"
     },
     {
       "nome": "atropelar",
-      "descricao": "Pisão: Investida.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "investida"
     },
     {
       "nome": "arremessar o que agarrou",
-      "descricao": "tromba: lança o alvo que agarrou com a tromba.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "lança o alvo que agarrou com a tromba"
     },
     {
       "nome": "pisoteio em área",
-      "descricao": "Pisão: esmaga quem está sob as patas numa área de uns 3 m.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "esmaga quem está sob as patas numa área de uns 3 m"
     },
     {
       "nome": "investida que empurra",
-      "descricao": "Pisão: Investida e Empurrar.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "investida"
     },
     {
       "nome": "corpo enorme",
-      "descricao": "dificilmente cai Prono.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +3, Especialidade natural. \"Talvez quatro vezes maior que o de um cão de caça\", sem método claro: nota. · audição: texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância. Números: não achados. · visão: texto; enxerga bem na penumbra e mal na luz forte."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "dificilmente cai Prono"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +3, Especialidade natural. \"Talvez quatro vezes maior que o de um cão de caça\" (Wikipédia), sem método claro: nota",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": "texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância (Wikipédia). Números: não achados",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "texto; enxerga bem na penumbra e mal na luz forte (Wikipédia)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar (nada com a tromba de fora)",
+    "mente": "animal",
+    "tracos": "tromba sem osso, de até 150.000 feixes de músculo; presas só nos machos; pele de 18 a 30 mm; dorme 3 a 4 horas por dia; come até 150 kg de planta por dia (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": true,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "grupos de fêmeas e filhotes; machos sós ou em grupos de solteiros",
+    "atividade": "",
+    "dieta": "herbívoro (até 150 kg por dia)",
+    "caca": "pastagem e ramagem",
+    "dianteDeGente": "ameaça e ataca quando acuado, com cria, ou em musth"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "selva"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Domesticado há séculos para o transporte, a madeira e a guerra; um macho de trabalho arrasta toneladas de tora por dia. Vive 60 anos ou mais.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Vive em manadas matriarcais, com forte laço social entre fêmeas e crias e uma memória apurada para rotas e perigos. Social: grupos de fêmeas e filhotes; machos sós ou em grupos de solteiros."
+      "texto": "Vive em manadas matriarcais, com forte laço social entre fêmeas e crias e uma memória apurada para rotas e perigos."
     },
     {
       "titulo": "Ecologia",
@@ -154,103 +227,34 @@
     {
       "titulo": "Aptidões",
       "texto": "montaria: sim (turismo e trabalho na Tailândia). carga: sim (elefantes de bagagem de Mianmar). tração: sim (arrasto de tora)."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme: o humano Médio acerta com +6 no corpo a corpo. Não bloqueia o elefante pelo Alvo, e a Força 10 também tira o Bloqueio de quem tem Força 5 ou menos (o dobro e ao menos 4 a mais). O couro é Couraça nível 3; quanto ele tira do golpe fica para depois. O pisão faz 27 em média e a presada 17; 80 PV. Corre a 24 km/h, e leva cerca de 540 kg no lombo sem mudar a marcha. Fareja longe (+3)."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains",
-      "Jungle"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Elefante",
-    "cr": "9",
-    "tipo": "animal Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 30,
-      "des": 10,
-      "con": 21,
-      "int": 2,
-      "sab": 13,
-      "car": 7
-    },
-    "pericias": [
-      "Prontidão 2"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "quebra-muralhas"
+      "campo": "habilidades.furtividade",
+      "motivo": "Era sem linha (0). O levantamento: nenhum fato de esconder-se ou de andar em silêncio na pesquisa. Régua: 1, não se esconde"
     },
     {
-      "caminho": "agarrao-do-urso"
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,59 × 1,0243 = 2,653 . Antes: Era 2,75 m, o ombro médio do macho (Larramendi 2016; Wikipédia). Escalado pelo cubo da massa: 2,75 × (3.350 ÷ 4.000)^(1/3) = 2,75 × 0,943 = 2,59 m; o meio entre o macho (2,75) e a fêmea (2,40) seria 2,575 m, quase o mesmo. A fonte dá o ombro, como a do mamute"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 5,66 × 1,0243 = 5,797 . Antes: Era 6,0 m, o meio de \"5,5 a 6,5 m\" da tromba à cauda (Wikipédia), lido como do macho da ficha; escalado pelo cubo da massa: 6,0 × (3.350 ÷ 4.000)^(1/3) = 5,66 m"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 4,43 × 1,0243 = 4,538 . Antes: Era 4,7 m, o total de 6,0 m menos a cauda média de 1,3 m (1,2 a 1,5 m, Wikipédia), sem medida direta; escalado pelo cubo da massa: 4,7 × (3.350 ÷ 4.000)^(1/3) = 4,43 m"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,41 × 1,0243 = 1,444 . Antes: Era 1,5 m, estimada para o macho de 4 t (o asiático tem o corpo compacto e a pelve larga, Larramendi), sem medida; escalado pelo cubo da massa: 1,5 × (3.350 ÷ 4.000)^(1/3) = 1,41 m"
     }
-  ],
-  "v3": {
-    "pv": 80,
-    "esquiva": 4,
-    "bloqueio": 6,
-    "defesa": 7,
-    "defesaMental": 7,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 9,
-      "corte": 9,
-      "perfuracao": 9
-    },
-    "couracaNivel": 3,
-    "pesoErguido": 1047.77,
-    "carga": {
-      "leve": 540,
-      "media": 1080,
-      "pesada": 1620,
-      "maxima": 2160
-    },
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      },
-      "nado": 3
-    },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "forca: 10 pela âncora do autor (9 a 10), proposta do Arquiteto. O feito de arrasto (1 a 3 t, Htun) fica acima do peso erguido novo (1.074 kg), que só alcança o piso dele. O topo da âncora (10) foi escolhido para o macho de 4 t; com o adulto típico de 3,35 t, o argumento do topo enfraquece, e a Força fica pela regra da sexta rodada (ver desvios). Decisão provisória: manter a âncora e deixar a diferença à fórmula de P ou a uma leitura do arrasto (tora no chão, com corrente, não é peso erguido inteiro) (D-174).",
-    "massa: 3.600 kg (em vigor na Etapa 2, 20/10/2026); antes: 3.350 kg, a média simples do macho (4 t) e da fêmea (2,7 t) da tabela 8 de Larramendi 2016; era o macho de 4 t (sexta rodada, item 4).",
-    "pesoErguido: 1.074 kg pelo `calc6.mjs` com a massa de 3.350 kg, provisório (decisões 14 e 16). Era 2.050 kg pela fórmula de FAH, e 1.011 kg com o macho de 4 t.",
-    "carga: Leve 502,5 kg, os 15% da carga medida (Kongsawasdi 2021) sobre a massa de 3.350 kg; não sai da Força.",
-    "velocidade: congelada (decisão 23). O nado sai a 9 km/h contra 2,1 km/h do real (+330%); só anotado.",
-    "area: 6,34 m², vista de lado: os 7,13 m² da medição da `tamanho-fichas-v2` (macho de 4 t) escalados pela massa, (3.350 ÷ 4.000)^(2/3); era 12,93 m² (retângulo cheio). O Alvo segue Enorme, a 6% do corte; a fêmea (5,49 m²) cai no Grande.",
-    "inteligencia: 2 pela quinta rodada: reconhece-se no espelho (Plotnik, de Waal e Reiss 2006, PNAS 103: 17053-17057, elefante-asiático do zoológico do Bronx); usa ferramenta e tem memória longa.",
-    "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2; a marcha, o arrasto e o nado ficam na nota de pesquisa (jornada) (diretriz 2).",
-    "jornada (nota de pesquisa, não é regra): marcha de até 25 km por dia no plano e 16 km em trilha de montanha ou lama, com no máximo 3 marchas pesadas seguidas (MTE, em FAO) **[medido]**; arrasto de tora de 4 a 8 h por dia, 5 dias por semana, de junho a fevereiro (FAO) **[medido]**; turismo de 2 a 3 h e 4 a 5 km por dia (Kongsawasdi 2021); nado de até 6 h a 2,1 km/h e travessia de 48 km (Wikipédia, elefantes em geral) **[comparação]**. Era a Resistência (Fôlego) +2.",
-    "empatia: 2 nova, sem número na fonte: leitura do grupo e do cornaca.",
-    "musculatura: 3 (robusto) na escala nova; o 4 de hoje era da escala velha.",
-    "natacao: 0 mantida; o elefante nada bem, mas a velocidade está congelada e a distância fica na nota de pesquisa (jornada). Se o autor quiser Natação 1 para quem nada horas, esta é candidata.",
-    "sentidos: faro +3 pela decisão 3 (era +4); a fonte (\"quatro vezes o de um cão de caça\") é divulgação, sem método.",
-    "presada: N1 mantido como Nível da própria presa (tamanho do \"chifre\"), e não do porte, que saiu da absorção.",
-    "dimensoes: altura, comprimentos e largura eram do macho de 4 t e foram escalados pelo cubo da massa (fator 0,943); comprimento sem cauda (4,43 m) e largura (1,41 m) só pela estimativa; não decidem o Alvo, que vem do `calc.mjs`."
   ]
 }

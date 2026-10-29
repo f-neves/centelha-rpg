@@ -1,92 +1,232 @@
 {
-  "ordem": 221,
   "id": "marid",
   "idAntigo": "mon-marid",
   "nome": "Marid",
   "nomeIngles": "Marid",
-  "categoria": "Elemental",
+  "categoria": "elemental",
   "papel": "chefe",
-  "conceito": "exterior (água) Grande",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-    "elemental",
-    "centelha"
-  ],
-  "imagem": "bestiario/marid_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "4,9 m de altura",
-    "peso": "1130 kg"
-  },
-  "locomocao": {
-    "terra": 2,
-    "voo": 9,
-    "natacao": 6
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
-    "forca": 8,
+  "formaPrincipal": {
+    "id": "verdadeira",
+    "nome": "forma verdadeira"
+  },
+  "corpo": {
+    "postura": "bípede, de pé; voador e nadador",
+    "apoio": "bipede",
+    "altura": 4.9,
+    "largura": 1.23,
+    "profundidade": 0.63,
+    "comprimento": null,
+    "massa": 1130,
+    "area": 5.34,
+    "posturaDoTamanho": "de pé, sem o vórtice",
+    "segundoTamanho": {
+      "area": 15.01,
+      "posturaDoTamanho": "com o vórtice ativo, debaixo d'água"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
+    "forca": 9,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 5,
-    "perspicacia": 4,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 5,
+    "perspicacia": 4,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 2,
+    "integridade": 5,
     "prontidao": 2,
-    "integridade": 5
+    "persuasao": 2,
+    "sociabilidade": 2,
+    "ocultismo": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "natacao": 3,
+    "voo": 2,
+    "danca": 2,
+    "contacao-de-historias": 2,
+    "musculatura": 0
+  },
+  "especialidades": {
+    "persuasao": [
+      {
+        "foco": "barganhar",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 9
+    },
+    "nado": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Pancada de maré",
+      "parte": "braco",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "fogo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Domínio das Águas",
-      "descricao": "Golpeia com mais força quando ambos, ele e o inimigo, estão em contato com água, mas luta pior em terra firme."
+      "nome": "Domínio das águas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "golpeia com a força das correntes quando ele e o alvo estão na água ou tocando nela, e luta pior em terra firme: +2 no dano da Pancada de maré quando os dois tocam a água; −2 no ataque quando ele está em terra seca, longe da água",
+      "dano": "o +2 na Pancada",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Fúria das Marés",
-      "descricao": "Uma vez por cena, dispara um jato de água capaz de ferir e cegar temporariamente quem for atingido, a menos que resista com um teste de Reação."
+      "nome": "Fúria das marés",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "agua",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "o dano é instantâneo; a cegueira vai até o fim da próxima ação do alvo",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "dispara um jato de água que fere e cega; o alvo que não passa fica Cego",
+      "dano": "3d6 + Centelha, Impacto",
+      "resistencia": "esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa não leva o dano nem fica Cego",
+      "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Vórtice Aquático",
-      "descricao": "Uma vez por cena, transforma-se em um redemoinho de água turbulenta, mas só enquanto estiver submerso."
+      "nome": "Vórtice aquático",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "agua",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6, só debaixo d'água",
+      "duracao": "até 18 Ticks, ou até ele desfazer com outra ação",
+      "alcance": "o próprio corpo, que se move enquanto gira",
+      "area": "quem está a até 3 m dele",
+      "efeito": "vira um redemoinho de água turbulenta (Segundo Tamanho); quem está na área é puxado para dentro e fica Agarrado e Confuso enquanto estiver lá, até o redemoinho acabar ou até vencer a manobra para se soltar",
+      "dano": "2d6 + Centelha, Impacto, a cada 6 Ticks, a quem está dentro",
+      "resistencia": "esquiva, contra Força + Briga dele; quem passa não é puxado",
+      "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Forma Mutável",
-      "descricao": "Pode assumir a forma de um elemental de água, de um humano ou de um gigante, mudando de aparência à vontade."
-    },
-    {
-      "nome": "Nadador Incansável",
-      "descricao": "Move-se pela água com velocidade muito maior do que a maioria das criaturas em terra."
+      "nome": "Forma mutável",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "metamorfose",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele desfazer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "assume a forma de um elemental da água, de um humano ou de um gigante (a Variante \"disfarce\"), e muda de aparência à vontade; a mente e os números ficam os dele",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "senhor das correntes",
+      "formas": [
+        "verdadeira"
+      ],
+      "texto": "puxa a luta para o mar ou para o rio, cega com o jato, vira redemoinho debaixo d'água e esmaga com a pancada quem fica preso; em terra firme, voa e luta pouco."
+    },
+    {
+      "nome": "artista disfarçado",
+      "formas": [
+        "disfarce"
+      ],
+      "texto": "entre gente, como humano ou gigante, evita a briga e conta histórias; se precisa lutar, cega com o jato e volta à forma verdadeira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano; vê debaixo d'água como fora dela",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar e água",
+    "prendeRespiracao": "não precisa",
+    "mente": "inteligente; orgulhosa, caprichosa e artista",
+    "tracos": "gigante de 4,9 m de pele azul do mar, cabelo como espuma, dentes de pérola e voz que lembra a maré"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou em corte de artistas",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro",
+    "caca": "não caça",
+    "dianteDeGente": "orgulhoso; conversa, dança e conta histórias, e trata gente como plateia"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "O mais forte dos gênios, do plano da água: 4,9 m, dentes de pérola, a força das correntes no braço. Nada mais rápido do que anda, cega com um jato de água, vira redemoinho debaixo d'água e assume a forma de gente, de gigante ou de elemental. Muitos trocaram a guerra pela dança e pelas histórias.",
   "lore": [
     {
       "titulo": "Os mais poderosos gênios",
@@ -97,38 +237,72 @@
       "texto": "Muitos abandonam a guerra para se tornarem dançarinos, contadores de histórias e artistas, para desgosto dos gênios mais sóbrios da terra."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Water"
+  "imagens": [
+    "bestiario/marid_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "disfarce",
+      "nome": "disfarce",
+      "fisiologia": {
+        "camuflagem": "passa pela criatura que imita"
+      }
+    }
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Marid",
-    "cr": "9",
-    "tipo": "exterior (água) Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 23,
-      "des": 19,
-      "con": 18,
-      "int": 14,
-      "sab": 15,
-      "car": 16
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Domínio das águas",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Fúria das marés",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Vórtice aquático",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma mutável",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima do teto humano (6). O site gravava 8, a mesma do efreeti, e diz no texto que \"os marides são os mais fortes de todos os gênios conhecidos\" (site, \"Os mais poderosos gênios\"): a força das correntes vai na Força, um degrau acima do efreeti (8), e não na Musculatura, que é do corpo. Teste de ordem: acima do efreeti (8), do shaitan (7) e do djinn (6); igual ao gigante da colina do lote 3 (9, 1.305 kg), de massa parecida. No Pathfinder, For 23, a mesma do efreeti (só comparação); 9; o site tinha 8, a mesma do efreeti, e o texto do site o faz o mais forte dos gênios. Com 8, o dano médio seria 20 e o peso erguido 525,77 kg"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Almas de artista)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "formas.disfarce",
+      "motivo": "Forma mutável (site) muda o corpo e a aparência; a mente e os números ficam os dele, como no disfarce da couatl"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de maré Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme com o vórtice ativo, o funil de 15,01 m², pelo método do djinn e pela decisão do autor de 24/10/2026 (D-213)"
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201), como na couatl; todas as Manobras e os Sentidos em todas as formas, porque a mente e os números ficam os dele; o \"como luta\" em duas linhas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte nas duas"
+    }
+  ]
 }

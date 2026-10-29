@@ -1,34 +1,23 @@
 {
-  "ordem": 2,
   "id": "bandido-de-estrada",
   "nome": "Bandido de Estrada",
   "nomeIngles": "Highway Bandit",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humano",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "salteador oportunista",
-  "descricao": "Salteador de estrada que ataca em bando, de emboscada, carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, foge sem vergonha.",
-  "tags": [
-    "humano"
-  ],
-  "imagem": "bestiario/bandido-de-estrada_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,72 m de altura",
-    "peso": "70 kg",
-    "largura": 0.43,
-    "altura": 1.72
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.72,
+    "largura": 0.43,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "massa": 70,
+    "area": 0.66
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 3,
     "vigor": 3,
@@ -39,7 +28,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "esquiva": 2,
     "prontidao": 2,
@@ -51,77 +40,110 @@
     "sobrevivencia": 1,
     "manha": 1
   },
-  "skills2": {
-    "intimidacao": 1
+  "habilidadesSec": {
+    "intimidacao": 1,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "alvo isolado",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "alvo isolado",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 2
+    "temperanca": 2
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "couro",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Facão",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "espada-curta",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
-    {
-      "nome": "Emboscada",
-      "descricao": "ataque contra quem está Surpreso (Defesa zerada pela Vantagem tática), com Furtividade (emboscada na estrada) +1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Matar em bando",
-      "descricao": "flanquear (Flanqueado) e Armas (alvo isolado) +1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Couro leve",
-      "descricao": "a armadura de couro na linha Absorção.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Recuo oportunista",
-      "descricao": "foge da luta assim que ela vira contra o bando ou os companheiros caem.",
-      "classe": "como luta"
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Recuo oportunista",
+      "formas": "todas",
+      "texto": "foge da luta assim que ela vira contra o bando ou os companheiros caem."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana",
+    "tracos": "roupa de viagem rasgada, colete de couro, facão, lenço no rosto"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em quadrilha, típico 4 a 10",
+    "atividade": "diurno, nas estradas",
+    "dieta": "onívoro",
+    "caca": "rouba carroças e viajantes",
+    "dianteDeGente": "embosca o viajante isolado; foge do grupo armado"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Salteador de estrada que ataca em bando, de emboscada, carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, foge sem vergonha.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Ataca em bando, de emboscada, mirando carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, recua sem vergonha: prefere viver pobre a morrer rico. Social: em quadrilha, típico 4 a 10."
+      "texto": "Ataca em bando, de emboscada, mirando carroças isoladas e viajantes cansados. Se a luta emperra ou os companheiros caem, recua sem vergonha: prefere viver pobre a morrer rico."
     },
     {
       "titulo": "Sociedade",
@@ -130,72 +152,24 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Prospera nas estradas entre cidades de Calin e nos ermos de The Neck, onde a milícia é escassa e a fome empurra gente comum para o roubo."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, 34 PV, de couro (Impacto 5, Corte 2, Perfuração 1). Esquiva 9, Bloqueio 7 (8 com o facão). O facão dá dano médio 4,5. Vem em quadrilha, de emboscada; foge quando a luta vira."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Plains",
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/bandido-de-estrada_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Couro leve (Absorção +2). Tenta emboscar.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+  "revisao": [
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
     },
-    "cr": "1/2",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 10,
-    "bloqueio": 8,
-    "defesa": 10,
-    "defesaMental": 11,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 0,
-      "perfuracao": 0
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 122.59,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 1,
-    "vestida": {
-      "esquiva": 9,
-      "bloqueio": 7,
-      "defesa": 9,
-      "contraTiro": 9,
-      "absorcao": {
-        "impacto": 5,
-        "corte": 2,
-        "perfuracao": 1
-      },
-      "nivel": 1,
-      "penalidade": 1
+    {
+      "campo": "virtudes.bravura",
+      "motivo": "2; o site tinha 3"
     }
-  },
-  "notasObservacao": [
-    "`bravura`: 2; o site tinha 3 **[provisório]**",
-    "`card e equipamento`: o couro está sempre vestido (D-188); a frase da linha Absorção dá os números com ele"
   ]
 }

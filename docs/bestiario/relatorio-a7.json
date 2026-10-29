@@ -1,0 +1,56 @@
+{
+  "base": "eff36cb277ba4a41d3c82a67da7a2a6b766d0941",
+  "criaturas": 324,
+  "formas": 19,
+  "tagsRemovidas": [
+    {
+      "id": "enxame-de-aranhas",
+      "tags": [
+        "fera"
+      ]
+    },
+    {
+      "id": "enxame-de-caranguejos",
+      "tags": [
+        "fera"
+      ]
+    },
+    {
+      "id": "enxame-de-centopeias",
+      "tags": [
+        "fera"
+      ]
+    },
+    {
+      "id": "enxame-de-formigas",
+      "tags": [
+        "fera"
+      ]
+    },
+    {
+      "id": "enxame-de-morcegos",
+      "tags": [
+        "fera"
+      ]
+    },
+    {
+      "id": "enxame-de-ratos",
+      "tags": [
+        "fera"
+      ]
+    },
+    {
+      "id": "enxame-de-sanguessugas",
+      "tags": [
+        "fera"
+      ]
+    },
+    {
+      "id": "enxame-de-vespas",
+      "tags": [
+        "fera"
+      ]
+    }
+  ],
+  "notasEPendenteForaDoPublico": true
+}

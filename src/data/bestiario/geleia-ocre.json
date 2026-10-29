@@ -1,38 +1,30 @@
 {
-  "ordem": 268,
   "id": "geleia-ocre",
   "idAntigo": "mon-ochre-jelly",
   "nome": "Geleia Ocre",
   "nomeIngles": "Ochre Jelly",
-  "categoria": "Limo",
-  "categoriaLegada": "Limo",
+  "categoria": "limo",
   "papel": "elite",
-  "conceito": "limo Médio",
-  "descricao": "Massa amarelada que espera no escuro e cai sobre a presa: aperta, dissolve a carne e deixa os ossos limpos. Espada e lança só a dividem em duas.",
-  "tags": [
-    "limo",
-    "centelha"
-  ],
-  "imagem": "bestiario/geleia-ocre_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "0,76 m de comprimento, 0,76 m de altura",
-    "peso": "230 kg",
-    "comprimento": 0.76,
-    "largura": 0.76,
-    "altura": 0.76
-  },
-  "locomocao": {
-    "terra": 1,
-    "escalada": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 2
-  },
+  "ameaca": 4,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "ativa, enrolada numa bola trêmula que rola; em repouso, poça baixa",
+    "apoio": "outro",
+    "altura": 0.76,
+    "largura": 0.76,
+    "profundidade": null,
+    "comprimento": 0.76,
+    "massa": 230,
+    "area": 0.45,
+    "posturaDoTamanho": "a bola",
+    "tamanhoEscolhido": "medio",
+    "segundoTamanho": {
+      "area": 1.52,
+      "posturaDoTamanho": "em repouso, de cima"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 1,
     "vigor": 8,
@@ -43,80 +35,163 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
-    "furtividade": 2
+    "bloqueio": 0,
+    "esquiva": 0,
+    "integridade": 0,
+    "prontidao": 0,
+    "furtividade": 2,
+    "resistencia": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "escalada": 2,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 2,
+      "corrida": 2
+    },
+    "escalada": {
+      "batalha": 1
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pseudópode",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "acido",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "pseudopode",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "acido",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [
-    "raio",
-    "corte",
-    "perfuracao"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Pseudópode: Agarrar.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pseudópode",
+      "regra": "agarrar"
     },
     {
       "nome": "Abraço constritor",
-      "descricao": "Pseudópode: Ativação: a cada 6 Ticks em que mantém o agarrão. Duração: enquanto agarra. Alcance: toque. Área: quem está agarrado. Efeito: aperta e dissolve ao mesmo tempo, sem precisar de nova jogada de ataque. Dano: 1d6 + Força + Centelha, ácido. Resistência: nenhum; quem se solta do agarrão para de sofrer. Limite de uso: um alvo por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Pseudópode",
+      "ativacao": "a cada 6 Ticks em que mantém o agarrão",
+      "duracao": "enquanto agarra",
+      "alcance": "toque",
+      "area": "quem está agarrado",
+      "efeito": "aperta e dissolve ao mesmo tempo, sem precisar de nova jogada de ataque",
+      "dano": "1d6 + Força + Centelha, ácido",
+      "resistencia": "nenhum; quem se solta do agarrão para de sofrer",
+      "limiteDeUso": "um alvo por vez"
     },
     {
       "nome": "Ácido que só dissolve carne",
-      "descricao": "Ativação: o ácido dela em contato com o que for. Duração: enquanto toca. Alcance: toque. Área: o que ela toca. Efeito: dissolve pele, carne, couro e madeira viva; não corrói osso, pedra, metal nem pano seco, e a armadura de metal fica inteira. Dano: o do Pseudópode e o do Abraço constritor. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "o ácido dela em contato com o que for",
+      "duracao": "enquanto toca",
+      "alcance": "toque",
+      "area": "o que ela toca",
+      "efeito": "dissolve pele, carne, couro e madeira viva; não corrói osso, pedra, metal nem pano seco, e a armadura de metal fica inteira",
+      "dano": "o do Pseudópode e o do Abraço constritor",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Divisão",
-      "descricao": "Ativação: um golpe de corte, de perfuração ou de raio que a acertaria. Duração: permanente. Alcance: o próprio corpo. Área: ela mesma. Efeito: não sofre dano desse golpe e se racha em duas geleias iguais, cada uma com metade dos PV que tinha (arredondado para baixo), que agem cada uma na sua vez. Dano: nenhum. Resistência: nenhum. Limite de uso: não se divide com 10 PV ou menos; com isso, o golpe só não a fere.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "espera no teto",
-      "descricao": "sobe pela parede, se espalha no teto ou numa poça escura e cai sobre quem passa; não foge.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "sentido cego: percebe pelo tato e pela vibração tudo o que se move a até 18 m, sem olhos; não é enganada por escuro nem por invisibilidade."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um golpe de corte, de perfuração ou de raio que a acertaria",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "ela mesma",
+      "efeito": "não sofre dano desse golpe e se racha em duas geleias iguais, cada uma com metade dos PV que tinha (arredondado para baixo), que agem cada uma na sua vez",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "não se divide com 10 PV ou menos; com isso, o golpe só não a fere"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "espera no teto",
+      "formas": "todas",
+      "texto": "sobe pela parede, se espalha no teto ou numa poça escura e cai sobre quem passa; não foge."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentido cego",
+      "descricao": "percebe pelo tato e pela vibração tudo o que se move a até 18 m, sem olhos; não é enganada por escuro nem por invisibilidade",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "absorve o ar pela superfície",
+    "prendeRespiracao": "o Mestre decide; vive no fundo de poças rasas",
+    "camuflagem": "parece uma mancha de lodo amarelado no escuro",
+    "mente": "nenhuma; reage ao toque e à vibração",
+    "tracos": "massa amarelo-alaranjada que pulsa; deixa um rastro úmido e limpa os ossos que encontra"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "qualquer hora",
+    "dieta": "carne",
+    "caca": "espera e cai sobre a presa",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "pântano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Massa amarelada que espera no escuro e cai sobre a presa: aperta, dissolve a carne e deixa os ossos limpos. Espada e lança só a dividem em duas.",
   "lore": [
     {
       "titulo": "Massa amarelo-alaranjada",
@@ -125,78 +200,53 @@
     {
       "titulo": "Costume funerário sombrio",
       "texto": "Certos povos seguem um rito antigo de selar cadáveres com uma dessas criaturas dentro de sarcófagos, deixando-a dissolver a carne até restar apenas um esqueleto polido."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitária."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio quando rola, Grande quando se espalha. Lenta (1 m por Tick) e fácil de acertar (Esquiva e Bloqueio 2), mas espada, lança, flecha e raio não a ferem: a dividem em duas, cada uma com metade dos PV. Maça, fogo e gelo funcionam. Bate com ácido (dano médio 9,5), agarra e segue dissolvendo a cada 6 Ticks. O ácido não estraga metal nem osso. 62 PV, Impacto 9. Não tem mente: medo e conversa não servem."
     }
   ],
-  "ecologia": {
-    "tipo": "Ooze",
-    "terreno": [
-      "Underground",
-      "Swamp"
-    ],
-    "clima": [
-      "Temperate"
+  "imagens": [
+    "bestiario/geleia-ocre_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Ochre Jelly",
-    "cr": "5",
-    "tipo": "limo Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 14,
-      "des": 1,
-      "con": 22,
-      "int": "-",
-      "sab": 1,
-      "car": 1
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Abraço constritor",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 10,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Ácido que só dissolve carne",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 62,
-    "esquiva": 2,
-    "bloqueio": 2,
-    "defesa": 2,
-    "defesaMental": null,
-    "defesaSocial": null,
-    "absorcao": {
-      "impacto": 9,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "habilidadesEspeciais.Divisão",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 463,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 2,
-        "corrida": 2
-      }
+    {
+      "campo": "habilidades.briga",
+      "motivo": "O pseudópode acerta o que encosta nela. O site tinha 5, que é a mão de quem treinou; a geleia só reage; 4; o site tinha 5"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site"
+    },
+    {
+      "campo": "elementos.imunidades",
+      "motivo": "corte, perfuração e raio, pela Divisão; o site gravava `resistencias: corte, perfuracao` e não tinha raio no campo, só no texto. A perfuração está no texto do site e na fonte dele (Pathfinder); se o autor preferir a versão do 5e (corte e raio), a perfuração volta para resistência e sai da Divisão"
     }
-  },
-  "notasObservacao": [
-    "`tamanho`: Médio pela bola ativa, na borda de 5% do corte de 0,45 m²; Grande espalhada. O site dizia Grande **[conta]**",
-    "`pv`: 62 na zona de transição, pelo \"robusto sobe\"; com \"frágil desce\" seria 49",
-    "`imunidades`: corte, perfuração e raio, pela Divisão; o site gravava `resistencias: corte, perfuracao` e não tinha raio no campo, só no texto. A perfuração está no texto do site e na fonte dele (Pathfinder); se o autor preferir a versão do 5e (corte e raio), a perfuração volta para resistência e sai da Divisão **[provisório]**",
-    "`divisão`, `abraço constritor`, `ácido`: números sugeridos pela ficha (D-197). O piso de 10 PV para a Divisão é meu",
-    "`briga`: 4; o site tinha 5 **[provisório]**"
   ]
 }

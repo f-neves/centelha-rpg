@@ -1,95 +1,195 @@
 {
-  "ordem": 146,
   "id": "arconte-trombeta",
   "idAntigo": "mon-trumpet-archon",
   "nome": "Arconte Trombeta",
   "nomeIngles": "Archon, Trumpet",
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "papel": "chefe",
-  "conceito": "exterior (anjo) Médio",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-    "celestial",
-    "centelha"
-  ],
-  "imagem": "bestiario/arconte-trombeta_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2 m de altura",
-    "peso": "100 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 9
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, em combate",
+    "apoio": "bipede",
+    "altura": 2,
+    "largura": 0.5,
+    "profundidade": 0.26,
+    "comprimento": null,
+    "massa": 110,
+    "area": 0.89,
+    "posturaDoTamanho": "de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 5,
     "vigor": 8,
-    "influencia": 5,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 6,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 5,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
-    "briga": 5,
+  "habilidades": {
+    "briga": 0,
+    "bloqueio": 3,
     "esquiva": 1,
     "prontidao": 3,
-    "integridade": 5
+    "integridade": 5,
+    "sobrevivencia": 0,
+    "sociabilidade": 4,
+    "armas": 5,
+    "ocultismo": 0
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0,
+    "religiao": 4
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 5,
     "conviccao": 5,
-    "temperanca": 4,
-    "valor": 5
+    "temperanca": 4
   },
-  "willpower": 11,
+  "vontade": 11,
   "aparencia": 12,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:montante"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "malha",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {
+    "cura": 4,
+    "protecao": 4
+  },
   "ataques": [
     {
-      "nome": "Espadão de duas mãos",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 2,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5,
-      "notas": "a trombeta que carrega vira a espada quando ele luta"
+      "nome": "Montante",
+      "arma": "montante",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [
-    "profano"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Espadão Celestial",
-      "descricao": "Empunha uma espada de duas mãos abençoada, capaz de golpes devastadores contra qualquer inimigo."
+      "nome": "Trombeta paralisante",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o toque da trombeta paralisa os que a ouvem, poupando os aliados celestiais"
     },
     {
-      "nome": "Trombeta Paralisante",
-      "descricao": "Uma vez por cena, sopra sua trombeta mágica e todos ao redor, exceto seus aliados celestiais, devem passar num teste de Compostura ou ficam paralisados por alguns instantes."
+      "nome": "Trombeta e espada",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até a próxima transformação",
+      "alcance": "o objeto que segura",
+      "area": "a própria trombeta",
+      "efeito": "a trombeta toma a forma do montante ou retorna ao instrumento; os números da arma são os do catálogo",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Círculo Contra o Mal",
-      "descricao": "Está sempre envolto por uma proteção que dificulta ataques e possessões de criaturas malignas."
+      "nome": "Círculo contra o mal",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "protecao",
+        "nivel": 3
+      },
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "3 m",
+      "area": "o próprio arconte e os aliados no raio",
+      "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Resistência Mágica",
-      "descricao": "Feitiços hostis frequentemente falham ao atingi-lo, como se sua vontade repelisse a magia."
+      "nome": "Defesa contra possessão",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a proteção do círculo dificulta que entidades tomem o corpo dos protegidos"
     },
     {
-      "nome": "Voo Excelente",
-      "descricao": "Voa com grande velocidade e agilidade, mesmo carregando armadura e arma pesadas."
-    },
-    {
-      "nome": "Magias Sagradas",
-      "descricao": "Domina uma vasta gama de bênçãos e curas, lançando-as em batalha para apoiar aliados e afastar o mal."
+      "nome": "Resistência à magia 25",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Magias sagradas",
+      "formas": "todas",
+      "texto": "usa as Artes de Cura e Proteção para apoiar aliados e afastar ameaças."
+    },
+    {
+      "nome": "guarda celestial",
+      "formas": "todas",
+      "texto": "lidera a linha, protege aliados com as Artes e usa o montante quando o inimigo se aproxima."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "observa e ouve o campo de batalha",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "inteligente, comprometida com seus protegidos",
+    "tracos": "pele cor de mármore, olhos sem pupila, trombeta com brasão e malha"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou com companheiros",
+    "atividade": "qualquer hora",
+    "dieta": "sem dado",
+    "caca": "não se aplica",
+    "dianteDeGente": "socorre e protege"
+  },
+  "ecologia": {
+    "terreno": [
+      "céu",
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Arauto de voz cristalina e pele de mármore, que lidera os celestiais com uma trombeta capaz de virar espada.",
   "lore": [
     {
       "titulo": "Papel",
@@ -104,39 +204,31 @@
       "texto": "Todo arauto-trombeta carrega um chifre ou trombeta encantada, adornada com o brasão de seu senhor, usada tanto para comunicação quanto como arma."
     }
   ],
-  "ecologia": {
-    "tipo": "Celestial",
-    "terreno": [
-      "Sky",
-      "Any"
+  "imagens": [
+    "bestiario/arconte-trombeta_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "profano",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Trumpet Archon",
-    "cr": "14",
-    "tipo": "exterior (anjo) Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 20,
-      "des": 17,
-      "con": 25,
-      "int": 16,
-      "sab": 20,
-      "car": 17
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Trombeta e espada",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Círculo contra o mal",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    }
+  ]
 }

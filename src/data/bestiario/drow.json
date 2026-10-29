@@ -1,36 +1,24 @@
 {
-  "ordem": 197,
   "id": "drow",
   "idAntigo": "mon-drow",
   "nome": "Drow",
   "nomeIngles": "Drow",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Médio",
-  "descricao": "Elfo das profundezas, de pele escura e cabelo branco, servo das casas nobres governadas por matriarcas. Apaga a luz com trevas, marca o alvo com fogo feérico e o captura vivo com o veneno do sono na lâmina.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/drow_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,6 m de altura",
-    "peso": "55 kg",
-    "largura": 0.4,
-    "altura": 1.6
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.6,
+    "largura": 0.4,
+    "profundidade": 0.2,
+    "comprimento": null,
+    "massa": 55,
+    "area": 0.57
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 2,
@@ -41,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 1,
     "bloqueio": 1,
@@ -52,87 +40,154 @@
     "integridade": 2,
     "manha": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "espada curta",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "no escuro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "espada curta",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "espada-curta",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Feitiçaria inata",
-      "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca. Efeito: as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar. Dano: nenhum. Resistência: esquiva, contra Influência + Manha dele, só para o fogo feérico. Limite de uso: cada um, uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena, ou até ele desfazer",
+      "alcance": "18 m",
+      "area": "à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca",
+      "efeito": "as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar",
+      "dano": "nenhum",
+      "resistencia": "esquiva, contra Influência + Manha dele, só para o fogo feérico",
+      "limiteDeUso": "cada um, uma vez por cena"
     },
     {
       "nome": "Veneno do sono",
-      "descricao": "Espada curta: Ativação: o golpe envenenado que fere. Duração: 1 hora de sono, ou até alguém sacudir o alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência pela regra do veneno. Limite de uso: uma dose por lâmina, preparada antes da luta.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Espada curta",
+      "ativacao": "o golpe envenenado que fere",
+      "duracao": "1 hora de sono, ou até alguém sacudir o alvo",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar",
+      "dano": "nenhum além do golpe",
+      "resistencia": "corpo, Vigor + Resistência pela regra do veneno",
+      "limiteDeUso": "uma dose por lâmina, preparada antes da luta"
     },
     {
       "nome": "Sensibilidade à luz",
-      "descricao": "Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Ofuscado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
+      "duracao": "enquanto estiver na luz forte",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Ofuscado",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Resiliência mental",
-      "descricao": "a do Elfo, a raça parente: controle mental contra ele tem +4 de dificuldade, ou ele soma +1d6 para resistir, o que for melhor.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "Resiliência mental do Elfo"
     },
     {
       "nome": "Imune ao sono mágico",
-      "descricao": "Arte ou poder que faz dormir não o pega.",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "Arte ou poder que faz dormir não o pega"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "caçador de escravos",
-      "descricao": "apaga a luz com as trevas, marca o alvo com o fogo feérico e golpeia com a lâmina envenenada para levar o adormecido vivo.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "apaga a luz com as trevas, marca o alvo com o fogo feérico e golpeia com a lâmina envenenada para levar o adormecido vivo."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto a uma distância considerável",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro absoluto a uma distância considerável (site). · audição e olfato: os de um humano."
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
     }
   ],
-  "venenos": [
-    {
-      "nome": "Veneno no jogo",
-      "texto": "Veneno do sono drow · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Espada curta"
-    }
-  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; cruel e calculista",
+    "tracos": "pele preta ou cinza-escura, cabelo branco, orelhas pontudas, olhos vermelhos ou lilases, espada curta"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em patrulha de uma casa nobre, típico 4 a 12",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "onívoro",
+    "caca": "captura escravos",
+    "dianteDeGente": "captura vivo com o veneno do sono"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Elfo das profundezas, de pele escura e cabelo branco, servo das casas nobres governadas por matriarcas. Apaga a luz com trevas, marca o alvo com fogo feérico e o captura vivo com o veneno do sono na lâmina.",
   "lore": [
     {
       "titulo": "Primos sombrios",
@@ -143,80 +198,46 @@
       "texto": "Cidades subterrâneas são governadas por casas nobres rivais, chefiadas por matriarcas implacáveis que tramam umas contra as outras."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: em patrulha de uma casa nobre, típico 4 a 12."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Veneno do sono drow · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pela Espada curta"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 31 PV, Impacto 3, Corte e Perfuração 1. Esquiva e Bloqueio 12 (13 com a espada). A espada dá dano médio 4,5 e põe para dormir quem perde o pool do veneno. Cria trevas, luzes e fogo feérico; resiste a controle mental e não dorme por magia. A luz forte o ofusca."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/drow_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Drow",
-    "cr": "1/3",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 11,
-      "des": 15,
-      "con": 10,
-      "int": 10,
-      "sab": 9,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Feitiçaria inata",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Veneno do sono",
+      "motivo": "números sugeridos pela ficha (D-197); Potência 13, pool 2, fora do catálogo"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 31,
-    "esquiva": 12,
-    "bloqueio": 12,
-    "defesa": 13,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "habilidadesEspeciais.Sensibilidade à luz",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 89.56,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 4, \"Feio\", fica como no site. O Elfo parente tem a Aparência Universal, que é traço de raça e não passa ao drow pela D-207; 4, a do site; a Aparência Universal do Elfo não passa ao drow"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`raça parente`: Elfo (D-207); os números são os do site",
-    "`veneno do sono`: Potência 13, pool 2, fora do catálogo **[provisório]**",
-    "`aparência`: 4, a do site; a Aparência Universal do Elfo não passa ao drow **[provisório]**",
-    "`compaixão`: 1; o site tinha 2 **[provisório]**",
-    "`feitiçaria inata`, `veneno do sono`, `sensibilidade à luz`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade de matriarcas)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "virtudes.compaixao",
+      "motivo": "1; o site tinha 2"
+    }
   ]
 }

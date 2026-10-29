@@ -1,37 +1,24 @@
 {
-  "ordem": 287,
   "id": "skum-ulat-kini",
   "idAntigo": "mon-skum-ulat-kini",
   "nome": "Skum (Ulat-Kini)",
   "nomeIngles": "Skum",
-  "categoria": "Humanoide monstruoso",
-  "categoriaLegada": "Monstro",
+  "categoria": "humanoide-monstruoso",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Médio",
-  "descricao": "Homem-peixe anfíbio, escravo abandonado dos aboleths, que sobrevive em ruínas submersas e só se reproduz corrompendo humanos. Luta com tridente, garras e dentes, na água e fora dela.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": "bestiario/skum-ulat-kini_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "80 kg",
-    "largura": 0.45,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 2,
-    "natacao": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 80,
+    "area": 0.72
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 4,
     "destreza": 3,
     "vigor": 5,
@@ -42,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 2,
     "bloqueio": 1,
@@ -53,106 +40,167 @@
     "integridade": 2,
     "resistencia": 3
   },
-  "skills2": {
-    "natacao": 3
+  "habilidadesSec": {
+    "natacao": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "debaixo d'água",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "lança, debaixo d'água",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "debaixo d'água",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "lança, debaixo d'água",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 2,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 3,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:lanca"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 2,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 1,
-      "ticks": 6,
-      "classe": "haste"
+      "arma": "lanca",
+      "habilidade": "armas"
     },
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "boca-larga",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "maos-de-garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "gelo"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Multiataque aquático",
-      "descricao": "a lança, a mordida ou as garras, um ataque por ação; sem a lança, as duas garras contam como par de armas leves e atacam pela empunhadura dupla, os dois golpes a −1d6.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "empunhadura-dupla",
+      "texto": "só sem a lança"
     },
     {
       "nome": "Anfíbio",
-      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira ar e água igualmente bem. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Sentidos aguçados sob a água",
-      "descricao": "as Especialidades naturais de Prontidão e Furtividade (debaixo d'água) +2.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Resistência ao frio",
-      "descricao": "resistência a gelo (Elementos; metade do dano, C-039).",
-      "classe": "livro"
-    },
-    {
-      "nome": "servo das ruínas",
-      "descricao": "ataca em grupo da água escura, com a lança, e arrasta para o fundo quem cai no mar.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga em cavernas e profundezas sem luz (site). · debaixo d'água: Prontidão (debaixo d'água) +2."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "respira ar e água igualmente bem",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "servo das ruínas",
+      "formas": "todas",
+      "texto": "ataca em grupo da água escura, com a lança, e arrasta para o fundo quem cai no mar."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga em cavernas e profundezas sem luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "debaixo d'água",
+      "descricao": "Prontidão (debaixo d'água) +2",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água e ar (Anfíbio)",
+    "prendeRespiracao": "não precisa",
+    "camuflagem": "debaixo d'água; Especialidade natural",
+    "mente": "humanoide; servil e amarga",
+    "tracos": "pele escamosa cinza-esverdeada, cabeça de peixe de olhos saltados, boca larga de dentes finos, garras palmadas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em grupo, típico 4 a 12",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "carnívoro",
+    "caca": "caça nas ruínas submersas",
+    "dianteDeGente": "ataca; corrompe humanos para gerar novos skum"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "subterrâneo"
+    ],
+    "clima": [
+      "frio",
+      "temperado"
+    ]
+  },
+  "descricao": "Homem-peixe anfíbio, escravo abandonado dos aboleths, que sobrevive em ruínas submersas e só se reproduz corrompendo humanos. Luta com tridente, garras e dentes, na água e fora dela.",
   "lore": [
     {
       "titulo": "Escravos abandonados pelos criadores",
@@ -165,81 +213,53 @@
     {
       "titulo": "Nome perdido, identidade roubada",
       "texto": "Poucos lembram que já foram chamados de ulat-kini, pois o próprio nome de seu povo foi apagado junto com a glória que um dia tiveram."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em grupo, típico 4 a 12."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 40 PV, Impacto 7, Corte e Perfuração 2; o frio faz metade. Esquiva e Bloqueio 10 (12 com a lança). Lança (13,5), mordida ou garras (7,5); sem a lança, duas garras a −1d6. Respira na água; debaixo d'água vê e se esconde melhor."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Water",
-      "Underground"
+  "imagens": [
+    "bestiario/skum-ulat-kini_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Cold",
-      "Temperate"
-    ]
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Skum (Ulat-Kini)",
-    "cr": "2",
-    "tipo": "humanoide monstruoso Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 13,
-      "con": 17,
-      "int": 10,
-      "sab": 10,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Anfíbio",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 3, \"Muito feio\": a \"criatura hedionda\" do site. A Aparência mede a beleza (D-205). O site tinha 4; 3 pela D-205; o site tinha 4"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 40,
-    "esquiva": 10,
-    "bloqueio": 10,
-    "defesa": 12,
-    "defesaMental": 15,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Escamas de peixe: nível 1 . A \"Resistência ao frio\" do site vai em Elementos; nível 1 pelas escamas"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 161.14,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      },
-      "nado": 4
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
     },
-    "bloqueioArma": 2
-  },
-  "notasObservacao": [
-    "`equipamento`: lança no lugar do tridente **[provisório]**",
-    "`couraca`: nível 1 pelas escamas **[provisório]**",
-    "`aparência`: 3 pela D-205; o site tinha 4 **[provisório]**",
-    "`virtudes`: Compaixão 1 e Convicção 2; o site tinha 2 e 3 **[provisório]**",
-    "`anfíbio`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "lança no lugar do tridente"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1 e Convicção 2; o site tinha 2 e 3"
+    }
   ]
 }

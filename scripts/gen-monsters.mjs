@@ -1,19 +1,9 @@
-// Junta o stat block (src/data/inimigos.json, GERADO por gen-bestiario.mjs) com o
-// resto da ficha de cada criatura (src/data/bestiario/<id>.json) num único
-// src/data/monsters.json, e recorta dele o monsters-mesa.json.
-//
-// Desde o B14 (fase 1, 26/09/2026) o card não vem mais de satélite por id
-// (habilidades, dimensões, lore, imagens, ecologia, categoria-extra): vem da
-// ficha, que já traz a categoria, a descrição, a Aparência e as Virtudes
-// ESCRITAS, sem conta pelo desafio. As fraquezas e o deslocamento também vêm da
-// ficha; os satélites que os semeiam (gen-elementos, gen-deslocamento) continuam
-// e o validate confere que a ficha e a semente concordam.
-// Rodar: node scripts/gen-monsters.mjs   (rode gen-bestiario.mjs antes se mexeu nas fichas)
+// Gera o card e a vista da mesa a partir das 324 fontes unificadas e dos derivados do motor.
+// O deslocamento e os elementos são declarados pela ficha.
 import { readFileSync, writeFileSync, statSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { elementosDoMaterial } from './lib-materiais.mjs';
 import { achataCatalogo } from './lib-equip.mjs';
-import { lerCriaturas, passoDaPeca, tres } from './lib-bestiario.mjs';
+import { lerCriaturas } from './lib-bestiario.mjs';
 import { dirname, join } from 'node:path';
 
 const dir = dirname(fileURLToPath(import.meta.url));
@@ -22,11 +12,14 @@ const read = (f) => JSON.parse(readFileSync(join(data, f), 'utf8'));
 
 const inim = read('inimigos.json');
 const FICHA = Object.fromEntries(lerCriaturas().map((f) => [f.id, f]));
-// A semente do deslocamento, só para a criatura da caixa de entrada que não
-// declara o seu: ela ainda não tem `locomocao`, e o gen-deslocamento.mjs a semeia
-// pela tabela de tipo e porte, como antes do B14 (sem isto ela cairia no passo do
-// soldado e o test-deslocamento acusaria a diferença com a semente).
-const DESL = read('deslocamento-bestiario.json');
+const PRIMARIAS = new Set(read('habilidades.json').map(h => h.id));
+function habilidadesPublicas(f, c) {
+  const todas = c.pericias || f.motor?.pericias || {};
+  return {
+    habilidades: { prontidao: 0, furtividade: 0, ...Object.fromEntries(Object.entries(todas).filter(([k]) => PRIMARIAS.has(k))) },
+    habilidadesSec: Object.fromEntries(Object.entries(todas).filter(([k]) => !PRIMARIAS.has(k))),
+  };
+}
 
 // ------------------------------------------------- a classe de tempo do ataque
 // A régua P/G/R (e o sistema simultâneo) precisa saber COMO a criatura ataca:
@@ -65,48 +58,47 @@ function classeDoAtaque(id, nome, ticks) {
   return v <= 5 ? 'leve' : v === 6 ? 'media' : 'pesada';
 }
 
-function build(c) {
-  const f = FICHA[c.id];
+const CATEGORIA_NOME = { animal:'Animal', aberracao:'Aberração', 'besta-magica':'Besta mágica', celestial:'Celestial', humanoide:'Humanoide', 'humanoide-monstruoso':'Humanoide monstruoso', 'morto-vivo':'Morto-vivo', corruptor:'Corruptor', planta:'Planta', construto:'Construto', gigante:'Gigante', limo:'Limo', elemental:'Elemental', dragao:'Dragão', fada:'Fada', outsider:'Extraplanar' };
+const idCategoria = v => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,'-');
+function build(c, fonte) {
+  const f = fonte || FICHA[c.id];
+  const categoria = idCategoria(f?.categoria || c.categoria);
+  const categoriaNome = CATEGORIA_NOME[categoria] || categoria;
+  const tags = [categoria, ...(c.centelha > 0 ? ['centelha'] : []), ...(c.artes?.some(a=>a.nivel > 0) ? ['mágico','arcano'] : [])];
   if (!f) throw new Error(`${c.id}: está no inimigos.json e não tem ficha (rode gen-bestiario.mjs)`);
-  // Fraqueza e resistência, na ordem: o que a ficha declara vence o `material` dela.
-  const doMat = elementosDoMaterial(f.material);
+  // Fraqueza, resistência e imunidade saem da fonte unificada.
   const elem = {
-    fraquezas: f.fraquezas ?? doMat?.fraquezas ?? [],
-    resistencias: f.resistencias ?? doMat?.resistencias ?? [],
-    // Imunidade (B14 fase 4, 29/09/2026): sem fallback de material, ninguém a
-    // concede hoje; só o que a própria ficha escrever.
+    fraquezas: f.fraquezas ?? [],
+    resistencias: f.resistencias ?? [],
+    // A fonte marca cada elemento e suas formas.
     imunidades: f.imunidades ?? [],
   };
   const e = f.ecologia || {};
   return {
+    ...(f.motor?.edicao ? {edicao:f.motor.edicao} : {}),
     id: c.id,
     nome: c.nome,
     nomeIngles: f.nomeIngles || null,
-    categoria: f.categoria || c.categoria || null,
+    categoria, categoriaNome,
     tipo: c.tipo,
-    conceito: c.conceito,
+    conceito: [categoriaNome, f.porte].filter(Boolean).join(' '),
     descricao: f.descricao || '',
-    tags: c.tags || [],
+    tags,
     ameaca: c.ameaca,
     centelha: c.centelha,
-    pendente: !!c.pendente,
-    porte: f.porte || null,
-    dimensoes: { medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
+    tamanho: f.porte || null,
+    corpo: { ...f.motor?.corpo, medida: f.dimensoes?.medida || null, peso: f.dimensoes?.peso || null },
     ecologia: { tipo: e.tipo || null, terreno: e.terreno || [], clima: e.clima || [] },
-    imagem: f.imagem || null, ...(f.imagem2 ? { imagem2: f.imagem2 } : {}),
+    imagens: [f.imagem, f.imagem2].filter(Boolean),
     semImagem: !f.imagem,
     atributos: c.atributos,
-    // AS PERICIAS, desde 04/09/2026. Quatro vem da conta invertida dos derivados
-    // e a Furtividade vem da tabela por porte e categoria (lib-bestiario.mjs).
-    // Elas nao entram em conta nenhuma daqui: o motor continua lendo `defesa`,
-    // `defesaMental` e `iniciativa`. Existem para as catorze regras de oposicao
-    // que pedem a PERICIA pelo nome, e sao OMITIDAS quando a conta nao fecha.
-    ...(c.pericias && Object.keys(c.pericias).length ? { pericias: c.pericias } : {}),
+    // Habilidades de oposição publicadas pela fonte; o motor já calculou as Defesas.
+    ...habilidadesPublicas(f, c),
     vontade: c.vontade ?? 5,
     aparencia: f.aparencia,
     virtudes: f.virtues,
     combate: {
-      pv: c.pv,
+      pv: c.pv, energia: f.motor?.energia ?? null,
       defesa: c.defesa,
       defesaSocial: c.defesaSocial,
       defesaMental: c.defesaMental,
@@ -118,51 +110,35 @@ function build(c) {
       ...(elem.resistencias.length ? { resistencias: elem.resistencias } : {}),
       ...(elem.imunidades.length ? { imunidades: elem.imunidades } : {}),
       iniciativa: c.iniciativa,
-      // Quantos metros a criatura cobre em um Tick, nas três marchas, a partir do
-      // passo da `locomocao` da ficha. Sem ele (só a criatura da caixa), vale a
-      // semente do gen-deslocamento.mjs; sem nenhum dos dois, o passo do soldado
-      // (3 · 5 · 7), porque uma peça sem deslocamento não anda no Grid.
-      deslocamento: (() => {
-        const passo = passoDaPeca(f.locomocao);
-        const d = f.deslocamentoDeclarado ?? (passo ? tres(passo) : DESL[c.id] ?? { batalha: 3, arranque: 5, corrida: 7 });
-        return { batalha: d.batalha, arranque: d.arranque, corrida: d.corrida };
-      })(),
+      // As três velocidades vêm do modo de deslocamento declarado na fonte.
+      deslocamento: (()=>{const d=f.deslocamentoDeclarado;if(!d)throw Error(f.id+': deslocamento ausente');return {batalha:d.batalha,arranque:d.arranque,corrida:d.corrida};})(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
-    habilidades: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao })),
-    // Dois formatos de poder convivem desde o B14 fase 2 (ver criatura-schema.mjs,
-    // poderSchema): o natural novo, com id/nome/resiste/usos/base/area/ataque, e o
-    // legado (efeito/tipo/alvo/arte/caminho). Copiar só os campos do legado aqui
-    // apagava nome/resiste/usos/ataque de todo poder natural novo, calado; achado
-    // e corrigido na B14 fase 3.
-    poderes: (c.poderes || []).map((p) => (p.id
-      ? { id: p.id, nome: p.nome, tipo: p.tipo, resiste: p.resiste, efeito: p.efeito,
-          ...(p.base ? { base: p.base } : {}), ...(p.area ? { area: p.area } : {}),
-          ...(p.ataque ? { ataque: p.ataque } : {}), ...(p.descricao ? { descricao: p.descricao } : {}),
-          usos: p.usos }
-      : { efeito: p.efeito, tipo: p.tipo, alvo: p.alvo, ...(p.caminho ? { caminho: p.caminho } : {}), ...(p.arte ? { arte: p.arte } : {}) })),
+    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao, ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}) })),
+    ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),
+    comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
+    ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),
+    formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,criatura:build(fo.ficha.motor.stat,fo.ficha)})),
+    poderes: [],
     // Locomoção CRUA, por modo (B14 fase 4, item 5 do Adendo 3): o `deslocamento`
     // acima já é o passo único (m/Tick) que o Grid usa; isto é o detalhe por modo
     // (terra/voo/natação/escalada/escavação/jato) que o card exibe, e que até
-    // agora só alimentava `passoDaPeca` por baixo dos panos.
+    // a fonte declara em cada modo.
     ...(f.locomocao && Object.keys(f.locomocao).length ? { locomocao: f.locomocao } : {}),
     tecnicas: c.tecnicas || [],
-    artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })), ...(f.mana != null ? { mana: f.mana } : {}), // a Mana da ficha (D-196)
-    notas: c.notas || '',
+    artes: (c.artes || []).map((a) => ({ id: a.id && a.id.id ? a.id.id : a.id, nivel: a.nivel })), ...((f.motor?.mana ?? f.mana) != null ? { mana: f.motor?.mana ?? f.mana } : {}), // a Mana da ficha (D-196)
     lore: (f.lore || []).map((s) => ({ titulo: s.titulo, texto: s.texto })),
   };
 }
 
-const monsters = inim.map(build).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
+const monsters = inim.map(c=>build(c)).sort((a, b) => a.nome.localeCompare(b.nome, 'pt'));
 
 // checagem de integridade: todas as fontes presentes por criatura
 const problemas = Object.keys(CLASSE_OVERRIDE).filter((id) => !inim.some((c) => c.id === id)).map((id) => `CLASSE_OVERRIDE para id inexistente: ${id}`); // a guarda de chave órfã dos outros satélites (D-179): sem ela, a exceção de um id trocado sumiria calada
 for (const m of monsters) {
   if (!m.atributos) problemas.push(`${m.id}: sem atributos`);
   if (m.combate.pv == null) problemas.push(`${m.id}: sem combate.pv`);
-  if (!m.habilidades.length && !FICHA[m.id]?.v3) problemas.push(`${m.id}: sem habilidades`); // a ficha v3 pode não ter manobra nenhuma (o pteranodonte)
-  if (!m.lore.length) problemas.push(`${m.id}: sem lore`);
-  if (!m.dimensoes.medida) problemas.push(`${m.id}: sem dimensoes`);
+      if (!m.corpo.medida) problemas.push(`${m.id}: sem dimensoes`);
   if (!m.ecologia.tipo) problemas.push(`${m.id}: sem ecologia.tipo`);
   // imagem opcional: criaturas sem arte ganham semImagem:true e o badge "Sem imagem"
 }
@@ -232,15 +208,15 @@ const resolverTecnicas = (ids, catalogo) => (ids || []).map((t) => {
 });
 
 const CAMPOS_MESA = [
-  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'porte', 'imagem', 'imagem2',
-  'semImagem', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
+  'id', 'nome', 'nomeIngles', 'ameaca', 'centelha', 'categoria', 'categoriaNome', 'tamanho', 'imagens',
+  'semImagem', 'mana', 'tipo', 'atributos', 'virtudes', 'vontade', 'aparencia',
   // `pericias` ENTROU EM 04/09/2026, e a ausencia dela aqui foi um zero ambiguo
   // de verdade: o bloco `sentidos` do ResumoCombate le `MON[id].pericias`, `MON`
   // vem deste arquivo magro, e a Passiva de TODA criatura da mesa saia `null`
   // sem nada acusar, porque `null` e um valor que o contrato permite. Quem pega
   // isso agora e o `test-sentidos.mjs`.
-  'pericias',
-  'artes', 'tecnicas', 'combate', 'ecologia', 'dimensoes',
+  'habilidades', 'habilidadesSec',
+  'artes', 'tecnicas', 'combate', 'ecologia', 'corpo', 'formas', 'formaPrincipal', 'segundoTamanho', 'enxame',
 ];
 /**
  * O QUE FICA DE FORA DA MESA, DECLARADO, e esta lista é o conserto da CLASSE e
@@ -257,13 +233,13 @@ const CAMPOS_MESA = [
  * o dado, que é a direção certa do erro.
  */
 const FORA_DA_MESA = {
+  edicao: 'fonte do editor, sem revisão privada',
   descricao: 'prosa do card, e o card vem por arquivo separado',
   conceito: 'prosa do card',
-  habilidades: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',
+  habilidadesEspeciais: 'prosa do card, e é o maior pedaço dos 900 KB (27%)',
   lore: 'prosa do card (24%)',
   poderes: 'prosa do card',
-  notas: 'caderno do mestre; não desce nem para a aba, quanto mais para o pacote',
-  pendente: 'marca de trabalho do bestiário, não é dado de jogo', mana: 'a Mana da ficha (D-196) só aparece no card; a mesa ainda não lê Mana de criatura, e levá-la ao Grid é decisão da frente da mesa',
+  comoLuta: 'descrição de combate', sentidos: 'descrição dos sentidos',
   tags: 'usadas no editor e na busca do bestiário, não no tabuleiro',
   // O Grid anda pelo passo único de `combate.deslocamento` (já derivado, já em
   // CAMPOS_MESA); isto é só o detalhe por modo que o card mostra (B14 fase 4,
@@ -272,12 +248,14 @@ const FORA_DA_MESA = {
 };
 
 const TEC_POR_ID = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t]));
-const mesa = monsters.map((m) => {
+function recorteMesa(m) {
   const o = {};
   for (const k of CAMPOS_MESA) if (m[k] !== undefined) o[k] = m[k];
   if (o.tecnicas) o.tecnicas = resolverTecnicas(o.tecnicas, TEC_POR_ID);
+  if (o.formas) o.formas=o.formas.map(f=>({...f,criatura:recorteMesa(f.criatura)}));
   return o;
-});
+}
+const mesa = monsters.map(recorteMesa);
 // A TRAVA: toda chave produzida tem de estar numa das duas listas.
 {
   const conhecidas = new Set([...CAMPOS_MESA, ...Object.keys(FORA_DA_MESA)]);

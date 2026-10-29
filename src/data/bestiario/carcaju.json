@@ -1,38 +1,27 @@
 {
-  "ordem": 302,
   "id": "carcaju",
   "idAntigo": "mon-wolverine",
   "nome": "Carcaju",
   "nomeIngles": "Wolverine",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Mustelídeo do tamanho de um cão médio que vive de carniça no inverno ártico e mata caribu depois de persegui-lo por até 62 km. Esconde a comida para voltar a ela.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,05 m de comprimento, 0,4 m de altura",
-    "peso": "11,75 kg",
-    "comprimento": 1.05,
-    "largura": 0.25,
-    "altura": 0.4
-  },
-  "locomocao": {
-    "terra": 7,
-    "escalada": 1,
-    "escavacao": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 9,
-    "corrida": 15
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.4,
+    "largura": 0.25,
+    "profundidade": null,
+    "comprimento": 1.05,
+    "comprimentoSemCauda": 0.85,
+    "caudaGrossa": false,
+    "massa": 11.75,
+    "area": 0.24,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 3,
     "vigor": 4,
@@ -43,7 +32,7 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 1,
     "esquiva": 2,
@@ -52,107 +41,174 @@
     "integridade": 4,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
     "escalada": 2,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 4
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "frio",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "presa atolada na neve",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "esconder comida",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "frio",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "presa atolada na neve",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ],
+    "sobrevivencia": [
+      {
+        "foco": "esconder comida",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 4,
+  "vontade": 4,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 9,
+      "corrida": 15
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Garra",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
-    {
-      "nome": "perseguição longa",
-      "descricao": "segue a presa por quilômetros na neve até ela cansar.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "esconder comida",
-      "descricao": "esconde a sobra da caça para depois (Sobrevivência (esconder comida) 1).",
-      "classe": "como luta"
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "fúria ao ferimento",
-      "descricao": "ferido, entra em fúria na ação seguinte, lutando com mais força e resistência, e descuida da própria defesa até um dos lados cair.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ferido, entra em fúria na ação seguinte, lutando com mais força e resistência, e descuida da própria defesa até um dos lados cair"
     },
     {
       "nome": "corpo firme",
-      "descricao": "o corpo compacto é difícil de derrubar.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o corpo compacto é difícil de derrubar"
+    }
+  ],
+  "comoLuta": [
+    {
+      "nome": "perseguição longa",
+      "formas": "todas",
+      "texto": "segue a presa por quilômetros na neve até ela cansar."
+    },
+    {
+      "nome": "esconder comida",
+      "formas": "todas",
+      "texto": "esconde a sobra da caça para depois."
     },
     {
       "nome": "escala e escava",
-      "descricao": "sobe em tronco e rocha e abre caminho por baixo da terra.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +2; alcance. · visão e audição: nada que passe do humano com número."
+      "formas": "todas",
+      "texto": "sobe em tronco e rocha e abre caminho por baixo da terra."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2; alcance",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "nada que passe do humano com número",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "molar de cima virado 90 graus, para carne congelada; pelagem oleosa que não congela (Wikipédia; Resistência (frio) +2)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário (área do macho de 600 a 1.000 km²)",
+    "atividade": "",
+    "dieta": "carnívoro e carniceiro",
+    "caca": "carniça no inverno; caça ungulado vulnerável, às vezes depois de dezenas de quilômetros",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "montanha"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Mustelídeo do tamanho de um cão médio que vive de carniça no inverno ártico e mata caribu depois de persegui-lo por até 62 km. Esconde a comida para voltar a ela.",
   "lore": [
     {
       "titulo": "Território sagrado",
@@ -161,91 +217,13 @@
     {
       "titulo": "Cheiro de fúria",
       "texto": "Quando irritada, exala um odor forte e desagradável, aviso claro de que o ataque está próximo."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário (área do macho de 600 a 1.000 km²)."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno contra um humano Médio: o carcaju ganha +3 no corpo a corpo. Defesa Mental 10: não se espanta. A mordida tira 3,5 em média; o perigo é que não larga e não recua. 19 PV, Impacto 4 e Couraça nível 0 (quanto o nível vale fica para depois). Pela Musculatura 4, arrasta ou vira cerca de 104 kg, quase nove vezes o próprio peso, e passa o inverno onde o humano congela."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Mountain"
-    ],
-    "clima": [
-      "Cold"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Wolverine",
-    "cr": "2",
-    "tipo": "animal Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 15,
-      "con": 15,
-      "int": 2,
-      "sab": 12,
-      "car": 10
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 19,
-    "esquiva": 10,
-    "bloqueio": 8,
-    "defesa": 10,
-    "defesaMental": 10,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 103.75,
-    "carga": {
-      "leve": 1.56,
-      "media": 3.13,
-      "pesada": 4.69,
-      "maxima": 6.25
-    },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 9,
-        "corrida": 15
-      }
-    }
-  },
-  "notasObservacao": [
-    "`pesoErguido` e `carga`: provisórios. A carga sai da massa e da faixa (1,56 kg de Leve com 11,75 kg); o peso erguido sai de `calc6.mjs` (103,75 kg), e era 15,77 kg pela fórmula da D-162 (decisões 14 e 16)",
-    "`velocidade`: congelada (decisão 23); a ADW traz dois números que se contradizem (48 e 15 km/h)",
-    "`forca`: 2 pela mordida estimada (254 N, Christiansen e Wroe 2007, só por resumo de busca); se ela for maior, a Força pode ir a 3",
-    "`musculatura`: 4 sem nenhum feito com peso medido (a pata de wapiti e os pedaços a 1,1 km não têm o peso); ver os desvios",
-    "`resistencia`: 2, sem a corrida (diretriz 2); o levantamento dava 4 só pelas perseguições e pelos km por dia, que ficam na nota de pesquisa (jornada)",
-    "jornada (nota de pesquisa, não é regra): perseguiu caribus de 4 a 62 km na neve antes de matar, seis casos por rastro acompanhado de avião (Magoun 2018); viaja 10 a 15 km sem parar e até 45 km num dia (ADW); deslocamentos de 40 milhas (64 km) num dia documentados (ADF&G) **[medido]**.",
-    "`especialidades`: Resistência (frio) passa de Especialidade comum 2 para natural +2, sem temperatura medida; Briga (presa atolada na neve) 1 e Sobrevivência (esconder comida) 1, novas",
-    "`escalada`: 2, nova, só pela descrição das garras (Wikipédia), sem altura nem velocidade",
-    "`social`: Influência e Compostura descem a 1 pela diretriz 1 (solitário); a Defesa Social cai de 10 para 8 e a Energia de 6 para 5",
-    "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "`dimensoes.largura`: 0,25 m, estimada, sem fonte; não decide a área",
-    "`faixa`: o macho grande de 30 a 32 kg passa da Faixa 3 para a 2 com o corte de 35 kg"
-  ]
+  "revisao": []
 }

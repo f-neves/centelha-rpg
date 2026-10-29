@@ -1,37 +1,24 @@
 {
-  "ordem": 296,
   "id": "tiefling",
   "idAntigo": "mon-tiefling",
   "nome": "Tiefling",
   "nomeIngles": "Tiefling",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Exterior",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "exterior Médio",
-  "descricao": "Mortal marcado por sangue infernal, de chifres pequenos e cauda farpada, perseguido pela aparência e pela fama. Resiste a fogo, frio e raio, cria trevas uma vez por dia e golpeia quem se distrai.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/tiefling_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,75 m de altura",
-    "peso": "68 kg",
-    "largura": 0.42,
-    "altura": 1.75
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.75,
+    "largura": 0.42,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "massa": 68,
+    "area": 0.66
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 5,
     "vigor": 4,
@@ -42,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 1,
     "bloqueio": 1,
@@ -53,78 +40,132 @@
     "integridade": 2,
     "manha": 2
   },
-  "skills2": {
-    "disfarce": 1
+  "habilidadesSec": {
+    "disfarce": 1,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "alvo desprevenido",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "no escuro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "alvo desprevenido",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:sabre"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Sabre",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "sabre",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "fogo",
-    "gelo",
-    "raio"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Manto de trevas",
-      "descricao": "poder natural (base Sombra 1): Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: esfera de 6 m num ponto que ele vê. Efeito: escuridão sobrenatural que a luz comum não atravessa; ele enxerga nela. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena, ou até ele desfazer",
+      "alcance": "18 m",
+      "area": "esfera de 6 m num ponto que ele vê",
+      "efeito": "escuridão sobrenatural que a luz comum não atravessa; ele enxerga nela",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     },
     {
       "nome": "Golpe certeiro",
-      "descricao": "Sabre: Ativação: o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a lâmina entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Sangue resistente",
-      "descricao": "resistência a fogo, gelo e raio (Elementos; metade do dano, C-039).",
-      "classe": "livro"
-    },
-    {
-      "nome": "à margem",
-      "descricao": "evita a luta aberta; cria trevas para fugir ou emboscar e golpeia quem se distrai.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no breu quase tão bem quanto na penumbra (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Sabre",
+      "ativacao": "o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "a lâmina entra onde o alvo não guarda",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "à margem",
+      "formas": "todas",
+      "texto": "evita a luta aberta; cria trevas para fugir ou emboscar e golpeia quem se distrai."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no breu quase tão bem quanto na penumbra",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana; desconfiada",
+    "tracos": "chifres pequenos, cauda fina farpada, pupilas rasgadas, pele de tom avermelhado ou acinzentado"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, à margem",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro",
+    "caca": "não se aplica",
+    "dianteDeGente": "esconde a natureza; desconfia"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "planície",
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Mortal marcado por sangue infernal, de chifres pequenos e cauda farpada, perseguido pela aparência e pela fama. Resiste a fogo, frio e raio, cria trevas uma vez por dia e golpeia quem se distrai.",
   "lore": [
     {
       "titulo": "Marca do sangue estranho",
@@ -133,78 +174,41 @@
     {
       "titulo": "Vida à margem",
       "texto": "Perseguidos pela aparência e fama que não escolheram, muitos escondem sua natureza ou vivem nas franjas da sociedade."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho, à margem."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 37 PV, Impacto 5, Corte e Perfuração 1; fogo, gelo e raio fazem metade. Esquiva e Bloqueio 14 (15 com o sabre). O sabre dá dano médio 5,5, e +1d6 contra quem se distrai. Uma vez por dia cria uma esfera de trevas de 6 m."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban",
-      "Plains",
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Tiefling",
-    "cr": "1/2",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 13,
-      "des": 17,
-      "con": 14,
-      "int": 12,
-      "sab": 12,
-      "car": 6
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 37,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 15,
-    "defesaMental": 13,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 120.52,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
+  "imagens": [
+    "bestiario/tiefling_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "raio",
+        "formas": "todas"
       }
-    },
-    "bloqueioArma": 1
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`raça parente`: Humano (D-207); o traço social do Humano não vale, pelo texto do site",
-    "`equipamento`: sabre do livro **[provisório]**",
-    "`manto de trevas`, `golpe certeiro`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Manto de trevas",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Golpe certeiro",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "sabre do livro"
+    }
   ]
 }

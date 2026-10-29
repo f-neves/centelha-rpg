@@ -1,29 +1,13 @@
-// gen-bestiario.mjs · gera src/data/inimigos.json, o stat block de cada criatura
-// (PV/Defesa/Soak/Iniciativa/pools de ataque calculados pelas fórmulas de regras.json).
-//
-// A FONTE, desde o B14 (fase 1, 26/09/2026), é UMA FICHA POR CRIATURA em
-// src/data/bestiario/<id>.json, mais a caixa de entrada src/data/inimigos-custom.json
-// (o formato antigo que o editor do /bestiario ainda entrega). O formato da ficha
-// está em docs/bestiario/ficha-criatura.md, e a conta mora em lib-bestiario.mjs.
-// Antes a criatura morava em onze lugares: os builds inline daqui, o DATA e o
-// PODERES do conversao-monstros.html, o conversao-extra.json e oito satélites. A
-// migração que juntou tudo é o scripts/migrar-bestiario.mjs.
-//
-// NENHUMA LINHA DAQUI LÊ O DESAFIO PARA MONTAR A FICHA. O papel (capanga, soldado,
-// elite, fera, chefe), a Briga, a Esquiva, a Prontidão, a Integridade e a Vontade
-// que antes saíam do `ameaca` estão escritos na ficha; o `ameacaLegada` só é
-// copiado para o `ameaca` da saída, para exibir.
-//
-// uso: node scripts/gen-bestiario.mjs   |   node scripts/gen-bestiario.mjs --check
+// Gera inimigos.json com os derivados calculados pelo motor a partir das fontes unificadas.
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, lerCriaturas, paraStat, stat, periciasDe } from './lib-bestiario.mjs';
+import { ROOT, lerCriaturas } from './lib-bestiario.mjs';
 
 const FICHAS = lerCriaturas();
-const inimigos = FICHAS.map((f) => {
-  const b = paraStat(f);
-  const x = stat(b);
-  return { ...x, pericias: periciasDe(x, b.porteSlug, b) };
+const inimigos = FICHAS.map(f=>{
+  if(!f.motor)throw Error(f.id+': fonte sem motor');
+  const {notas,pendente,...publicado}=f.motor.stat;
+  return {...publicado,pericias:f.motor.pericias};
 });
 
 const ALVO = path.join(ROOT, 'src/data/inimigos.json');

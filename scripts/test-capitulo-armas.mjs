@@ -511,10 +511,10 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
 // "qual linha da tabela é a de cada arma" é escrita à mão abaixo (a medição de 10/10/2026 do plano, rodada 4d), de
 // propósito: se viesse de regras.json, a ficha e o teste leriam a mesma lista e concordariam errado.
 const LINHA_DA_ARMA = {
-  'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre'],
+  'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre', 'chicote'],
   'Média': ['espada-longa', 'machado', 'espada-serrilhada', 'maca', 'picareta-de-guerra', 'martelo', 'maca-estrela'],
   'Haste média': ['lanca', 'bordao'],
-  'Haste de Guerra': ['alabarda', 'lanca-longa'],
+  'Haste de Guerra': ['alabarda', 'glaive-serrilhada', 'lanca-longa', 'corrente-farpada'],
   'Pesada': ['montante', 'martelo-de-guerra', 'machado-pesado'],
   'Punhos': ['desarmado'],
   'Arremesso leve': ['shuriken', 'mini-faca', 'kunai'],
@@ -561,6 +561,8 @@ function conferirFicha(mostra, comb, armas) {
       vistas.add(id);
       const x = armas.find((y) => y.id === id);
       if (!x) { f.push(`ficha: "${id}" não existe no catálogo`); continue; }
+      // a arma no formato do motor novo guarda o pgr (PERGUNTAS.md, 33.2): ele tem de ser a linha do capítulo
+      if (x.arma.pgr && JSON.stringify(x.arma.pgr) !== JSON.stringify([P, G, R])) f.push(`ficha, ${id}: pgr ${x.arma.pgr.join('/')} no catálogo, ${P}/${G}/${R} na linha "${nome}" do capítulo`);
       if (x.arma.ticks !== V) f.push(`ficha, ${id}: Velocidade ${x.arma.ticks} no catálogo, ${V} na linha "${nome}" do capítulo`);
       const a = mostra({ id: x.id, nome: x.nome, ...x.arma });
       const vem = [a.preparo, a.golpes, a.recuperacao, a.ciclo], deve = [P, G, R, V];
@@ -572,7 +574,7 @@ function conferirFicha(mostra, comb, armas) {
 }
 {
   const catalogo = ARMAS.filter((x) => x.arma);
-  if (catalogo.length !== 41) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 41 (acrescente a nova em LINHA_DA_ARMA)`);
+  if (catalogo.length !== 44) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 44 (acrescente a nova em LINHA_DA_ARMA)`);
   const FP = await carregarTS('src/lib/ficha-pgr.ts');
   const CT = await carregarTS('src/lib/combate-tempo.ts');
   const dela = (R) => (w) => FP.anatomiaDaFicha(w, R);
@@ -1211,7 +1213,7 @@ function conferirNove(T) {
   if (/Ambidestria|apaga esse dado extra/.test(T.comb)) f.push('Combate (B2): sobrou a Ambidestria ou "apaga esse dado extra"');
   // a ficha: a mão inábil a −1d6 e sem ler a Técnica
   const FL = T.ficha.split('\n');
-  if (!FL.some((x) => /^\s*inabilPen: 1,$/.test(x))) f.push('ficha-engine.ts (B2): falta a linha "inabilPen: 1," (sem penalidade extra na inábil, D-091)');
+  if (!FL.some((x) => /^\s*inabilPen: 1,$/.test(x))) f.push('motor.ts (B2): falta a linha "inabilPen: 1," (sem penalidade extra na inábil, D-091)');
   if (/ambidestria/i.test(T.ficha) || /inabilPen: ambi/.test(T.ficha) || /c\.dupla\.ambi/.test(T.ficha)) f.push('ficha-engine.ts (B2): a ficha ainda lê a Ambidestria');
   // a Técnica fica na lista, com a descrição e "efeito em recalibração"
   const amb = (T.tecnicas || []).find((x) => x.id === 'ambidestria');
@@ -1233,7 +1235,7 @@ function conferirNove(T) {
   return f;
 }
 {
-  const T0 = { comb: COMB, ficha: ler('src/lib/ficha-engine.ts').replace(/\r\n/g, '\n'), tecnicas: JSON.parse(ler('src/data/tecnicas.json')), regras: REGRAS };
+  const T0 = { comb: COMB, ficha: ler('src/lib/motor.ts').replace(/\r\n/g, '\n'), tecnicas: JSON.parse(ler('src/data/tecnicas.json')), regras: REGRAS };
   const tec = Array.isArray(T0.tecnicas) ? T0.tecnicas : (T0.tecnicas.tecnicas || T0.tecnicas.itens || Object.values(T0.tecnicas).flat());
   T0.tecnicas = tec;
   const realN = conferirNove(T0);

@@ -1,39 +1,26 @@
 {
-  "ordem": 73,
   "id": "aboleth",
   "idAntigo": "mon-aboleth",
   "nome": "Aboleth",
   "nomeIngles": "Aboleth",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "elite",
-  "conceito": "aberração Enorme",
-  "descricao": "Peixe imenso das profundezas, mais velho que a memória dos povos, que fala dentro da cabeça das vítimas. Domina mentes, engana com ilusões e transforma quem toca com o muco dos tentáculos em escravo da água.",
-  "tags": [
-    "aberracao",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/aboleth_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "6,5 m de comprimento, 1,2 m de altura",
-    "peso": "2,7 t",
-    "comprimento": 6.5,
-    "largura": 0.85,
-    "altura": 1.2
-  },
-  "locomocao": {
-    "natacao": 6,
-    "terra": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 2
-  },
+  "ameaca": 4,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador; corpo na horizontal",
+    "apoio": "outro",
+    "altura": 1.2,
+    "largura": 0.85,
+    "profundidade": null,
+    "comprimento": 6.5,
+    "comprimentoSemCauda": 5,
+    "caudaGrossa": true,
+    "massa": 2700,
+    "area": 6.29
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 10,
     "destreza": 3,
     "vigor": 8,
@@ -44,7 +31,7 @@
     "perspicacia": 5,
     "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
     "bloqueio": 1,
     "esquiva": 1,
@@ -55,108 +42,214 @@
     "ocultismo": 3,
     "persuasao": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 3,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "conhecimentos",
-      "foco": "eras esquecidas",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "ocultismo",
-      "foco": "eras antigas",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "persuasao",
-      "foco": "escravos",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "conhecimentos": [
+      {
+        "foco": "eras esquecidas",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "ocultismo": [
+      {
+        "foco": "eras antigas",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "persuasao": [
+      {
+        "foco": "escravos",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 4,
-    "valor": 3
+    "temperanca": 4
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 2,
+      "corrida": 2
+    },
+    "nado": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Tentáculo",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "tentaculo-de-3-m",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Tentáculos múltiplos",
-      "descricao": "a Rajada: dois golpes de Tentáculo na mesma ação, o segundo a −1d6, e +1 Tick de Recuperação. O site dava \"até quatro ataques secundários na mesma rodada\"; o livro deixa vários ataques por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza (C-046), e a Rajada é o caminho que o autor deu ao golpe duplo do rakshasa e do campeão (23/10).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculo",
+      "regra": "rajada"
     },
     {
       "nome": "Muco transmutador",
-      "descricao": "poder natural (base Matéria 3) · Tentáculo: Ativação: o Tentáculo que fere (1 de dano ou mais depois da Absorção). Duração: permanente, até uma Arte de Cura ou de Matéria desfazer (o Mestre decide o nível). Alcance: o do Tentáculo. Área: um alvo. Efeito: a pele do alvo vira membrana viscosa: respira água como ar; fora d'água, cada hora sem molhar a pele dá Desgaste 1, até molhá-la. Dano: nenhum além do Tentáculo. Resistência: corpo, Vigor + Resistência contra a jogada do Tentáculo. Limite de uso: uma vez por Tentáculo que fere.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "ataque": "Tentáculo",
+      "ativacao": "o Tentáculo que fere (1 de dano ou mais depois da Absorção)",
+      "duracao": "permanente, até uma Arte de Cura ou de Matéria desfazer (o Mestre decide o nível)",
+      "alcance": "o do Tentáculo",
+      "area": "um alvo",
+      "efeito": "a pele do alvo vira membrana viscosa: respira água como ar; fora d'água, cada hora sem molhar a pele dá Desgaste 1, até molhá-la",
+      "dano": "nenhum além do Tentáculo",
+      "resistencia": "corpo, Vigor + Resistência contra a jogada do Tentáculo",
+      "limiteDeUso": "uma vez por Tentáculo que fere"
     },
     {
       "nome": "Domínio psíquico",
-      "descricao": "poder natural (base Fascinação 4): Ativação: uma ação, Velocidade 7, olhando ou tocando o alvo. Duração: até o fim da cena, enquanto ele mantiver o contato. Alcance: 18 m. Área: um alvo. Efeito: o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (site). Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele. Limite de uso: três vezes por dia.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 7, olhando ou tocando o alvo",
+      "duracao": "até o fim da cena, enquanto ele mantiver o contato",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site)",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele",
+      "limiteDeUso": "três vezes por dia"
     },
     {
       "nome": "Ilusões",
-      "descricao": "poder natural (base Fascinação 5): Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou enquanto ele mantiver. Alcance: 36 m. Área: uma cena de até 9 m de lado, projetada na mente de quem o encara. Efeito: vista e som que não existem: um caminho seguro que é precipício, um aliado que é ele, um perigo falso; quem toca ou desconfia e testa vê através dela. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, só para quem desconfia. Limite de uso: três vezes por dia.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 5
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até o fim da cena, ou enquanto ele mantiver",
+      "alcance": "36 m",
+      "area": "uma cena de até 9 m de lado, projetada na mente de quem o encara",
+      "efeito": "vista e som que não existem: um caminho seguro que é precipício, um aliado que é ele, um perigo falso; quem toca ou desconfia e testa vê através dela",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele, só para quem desconfia",
+      "limiteDeUso": "três vezes por dia"
     },
     {
       "nome": "Telepatia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 90 m (site). Área: quem ele escolher ao alcance. Efeito: fala com qualquer criatura pela mente, sem língua em comum e sem abrir a boca. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "90 m (\"alcance amplo\", site)",
+      "area": "quem ele escolher ao alcance",
+      "efeito": "fala com qualquer criatura pela mente, sem língua em comum e sem abrir a boca",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Preso à água",
-      "descricao": "Ativação: ficar fora d'água. Duração: até voltar à água. Alcance: o próprio corpo. Área: não se aplica. Efeito: a cada 10 minutos fora d'água, Desgaste 1 (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Memória ancestral",
-      "descricao": "as Especialidades naturais de Conhecimentos Gerais e Ocultismo.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Pele antiga e escamosa",
-      "descricao": "a Couraça nível 3.",
-      "classe": "livro"
-    },
-    {
-      "nome": "senhor do lago fundo",
-      "descricao": "não sobe à superfície; manda os escravos na frente, domina o mais forte do grupo, engana com ilusões e só agarra com os tentáculos quem chega perto da água.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga na água escura das profundezas. · telepatia: sente as mentes ao alcance dela (Manobras)."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "ficar fora d'água",
+      "duracao": "até voltar à água",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a cada 10 minutos fora d'água, Desgaste 1 (\"fora d'água por muito tempo fica Enfraquecido progressivamente\", site)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "senhor do lago fundo",
+      "formas": "todas",
+      "texto": "não sobe à superfície; manda os escravos na frente, domina o mais forte do grupo, engana com ilusões e só agarra com os tentáculos quem chega perto da água."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga na água escura das profundezas",
+      "formas": "todas"
+    },
+    {
+      "nome": "telepatia",
+      "descricao": "sente as mentes ao alcance dela (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água; fora d'água, a Manobra Preso à água",
+    "prendeRespiracao": "não respira ar",
+    "mente": "genial, antiga, arrogante",
+    "tracos": "peixe imenso cinza-azulado coberto de muco, três olhos em fileira, quatro tentáculos que saem de perto da cabeça e cauda de barbatana larga"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônias antigas, servidas por escravos transformados",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "não caça: os escravos trazem",
+    "dianteDeGente": "domina, escraviza e transforma"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "aquático"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Peixe imenso das profundezas, mais velho que a memória dos povos, que fala dentro da cabeça das vítimas. Domina mentes, engana com ilusões e transforma quem toca com o muco dos tentáculos em escravo da água.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Paciente além de qualquer medida mortal, prefere manipular e escravizar a atacar diretamente. Fala dentro da mente das vítimas, sem precisar abrir a boca. Social: colônias antigas, servidas por escravos transformados."
+      "texto": "Paciente além de qualquer medida mortal, prefere manipular e escravizar a atacar diretamente. Fala dentro da mente das vítimas, sem precisar abrir a boca."
     },
     {
       "titulo": "Sociedade",
@@ -173,82 +266,68 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Os aboleths parecem mais velhos que a própria Fenda, talvez até mais velhos que a divisão da Primeira Luz em Centelhas individuais. Os sábios de Syl sussurram que são restos de uma era que o mundo esqueceu de matar."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme, 75 PV, Impacto 13, Corte e Perfuração 5. Esquiva e Bloqueio 10. Tentáculo de 3 m, dano médio 22, dois por Rajada; quem é ferido ganha guelras e passa a depender da água. Três vezes por dia domina uma mente (Dominado e Abalado) e três vezes por dia cria ilusões. Nada a 6, em terra rasteja a 1 e se desgasta fora d'água. Defesa Mental 30."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Underground",
-      "Water"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/aboleth_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Conhecimentos 4, Ocultismo 3, Percepção 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Aboleth",
-    "cr": "7",
-    "tipo": "aberração Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 26,
-      "des": 12,
-      "con": 20,
-      "int": 18,
-      "sab": 17,
-      "car": 17
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Muco transmutador",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Conhecimentos 4",
-      "Ocultismo 3",
-      "Percepção 3"
-    ],
-    "nota": "Poderes psíquicos e magia ancestral: Centelha 4.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte",
-      "nota": "nado 60; em terra 10, e o aboleth não sai da água"
+    {
+      "campo": "habilidadesEspeciais.Domínio psíquico",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 75,
-    "esquiva": 10,
-    "bloqueio": 10,
-    "defesa": 10,
-    "defesaMental": 30,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 13,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "habilidadesEspeciais.Ilusões",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 3,
-    "pesoErguido": 943.76,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 2,
-        "corrida": 2
-      },
-      "nado": 6
+    {
+      "campo": "habilidadesEspeciais.Telepatia",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Preso à água",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Os tentáculos desviam o golpe às vezes: \"«Quase não bloqueia» é 1, e não 0\" (D-110); 1, pelos tentáculos; o site não gravava Bloqueio"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Elipsoide de 5,0 × 1,2 × 0,85 m. O comprimento dos tentáculos : o site diz só \"corpo alongado com tentáculos\""
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Corpo, elipse de 5,0 × 1,2 m = 4,71 m²; barbatana da cauda, 1,5 × 0,5 m × 0,5 = 0,38 m²; dois tentáculos à vista, 3 × 0,2 m cada = 1,20 m²  nas medidas da cauda e dos tentáculos; 6,29 m², 4,8% acima do corte de Enorme; as medidas da cauda e dos tentáculos são estimadas"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). \"Pele antiga e escamosa: Absorção alta\" (site): ao lado do hipopótamo da escala (tamanho-decisoes-5, item 2) ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 3 pela \"Absorção alta\" do site"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Tentáculo Pesado no lugar das \"Garras e presas\" de 3 dados; os quatro ataques viram a Rajada"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4; o site tinha 2. `compaixao`: 1, o piso da régua; o site tinha 0"
     }
-  },
-  "notasObservacao": [
-    "`area`: 6,29 m², 4,8% acima do corte de Enorme; as medidas da cauda e dos tentáculos são estimadas **[extrapolação]**",
-    "`couraca`: nível 3 pela \"Absorção alta\" do site **[provisório]**",
-    "`bloqueio`: 1, pelos tentáculos; o site não gravava Bloqueio **[provisório]**",
-    "`ataques`: Tentáculo Pesado no lugar das \"Garras e presas\" de 3 dados; os quatro ataques viram a Rajada **[provisório]**",
-    "`temperanca`: 4; o site tinha 2. `compaixao`: 1, o piso da régua; o site tinha 0 **[provisório]**",
-    "`muco transmutador`, `domínio psíquico`, `ilusões`, `telepatia`, `preso à água`: números sugeridos pela ficha (D-197)"
   ]
 }

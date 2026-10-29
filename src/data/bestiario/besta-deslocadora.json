@@ -1,113 +1,219 @@
 {
-  "ordem": 64,
   "id": "besta-deslocadora",
   "idAntigo": "mon-besta-deslocadora",
   "nome": "Besta Deslocadora",
   "nomeIngles": "Displacer Beast",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": null,
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de comprimento, cauda tentacular incluída",
-    "peso": "230 kg"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
-    "forca": 6,
+  "corpo": {
+    "postura": "seis patas",
+    "apoio": "outro",
+    "altura": 1.61,
+    "largura": 0.78,
+    "profundidade": null,
+    "comprimento": 3.38,
+    "comprimentoSemCauda": 2.7,
+    "caudaGrossa": false,
+    "massa": 230,
+    "area": 1.32,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 1,
+  "atributos": {
+    "forca": 7,
     "destreza": 4,
     "vigor": 6,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 3,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "atletismo": 3,
+    "furtividade": 3,
+    "integridade": 2,
+    "prontidao": 2,
+    "resistencia": 3,
+    "empatia": 2,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
-  "aparencia": 5,
-  "arte": {
-    "fascinacao": 1
+  "vontade": 7,
+  "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
   },
-  "tech": {
-    "imobilizar": true
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
   },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Tentáculo",
+      "parte": "tentaculo-ponta-cornea",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "deslocamento",
+      "nome": "Tentáculos gêmeos",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculo",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "tentáculos e mordida juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "chicoteia com os dois tentáculos e morde na mesma ação"
+    },
+    {
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculo",
+      "regra": "agarrar"
+    },
+    {
+      "nome": "Imobilizar",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "imobilizar",
+        "nivel": 1
+      }
+    },
+    {
       "nome": "Deslocamento",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
         "nivel": 1
       },
-      "resiste": "nenhum",
-      "efeito": "Deslocamento",
-      "usos": {
-        "periodo": "avontade"
-      }
+      "ativacao": "nenhuma, está sempre ligado",
+      "duracao": "contínua",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a luz em volta dela se dobra e mostra o corpo um passo fora de onde ele está; o primeiro ataque de cada oponente contra ela na cena erra",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem vê o invisível ou as ilusões não é enganado",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "Resistência a ataques à distância",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a imagem fora do lugar engana quem lança de longe: soma +2 na Defesa Mental contra Arte dirigida a ela à distância",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Deslocamento",
-      "descricao": "imagem ilusória faz o primeiro ataque de cada oponente contra ela errar automaticamente"
-    },
-    {
-      "nome": "Tentáculos gêmeos",
-      "descricao": "dois ataques de tentáculo além da mordida no mesmo turno"
-    },
-    {
-      "nome": "Resistência à magia",
-      "descricao": "vantagem em testes de Resistência contra feitiços dirigidos a ela"
-    },
-    {
-      "nome": "Emboscadora",
-      "descricao": "Furtividade 3; ataca das sombras antes de ser notada"
-    },
-    {
-      "nome": "Prontidão felina",
-      "descricao": "Prontidão 2"
-    },
-    {
-      "nome": "Tentáculos",
-      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
+      "nome": "caçada em bando",
+      "formas": "todas",
+      "texto": "o bando isola um alvo do grupo, cerca e ataca das sombras; o golpe certeiro vem do engano do deslocamento."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "de felino, enxerga na penumbra",
+      "formas": "todas"
+    },
+    {
+      "nome": "prontidão felina",
+      "descricao": "Prontidão 2",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nas sombras da mata; a distorção em volta do corpo esconde onde ela está",
+    "mente": "inteligente, cruel",
+    "tracos": "felino escuro de seis patas, com dois tentáculos de pontas córneas saindo dos ombros e olhos verdes"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando organizado",
+    "atividade": "noturna",
+    "dieta": "carnívora",
+    "caca": "isola um alvo do grupo e embosca das sombras",
+    "dianteDeGente": "caça"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Felino de seis patas e dois tentáculos nos ombros que caça em bando e parece estar sempre um passo fora de onde realmente está. Sorrateira, paciente e cruel, isola um alvo antes de atacar, e a distorção em volta do corpo a torna quase impossível de acertar no primeiro golpe.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -126,47 +232,44 @@
       "texto": "Sábios de Calin suspeitam que a besta deslocadora não é totalmente deste mundo, que carrega em si um resquício de outro plano, torto como os horrores da Fenda; ninguém provou a origem, mas o medo já bastou para render um lugar entre os monstros mais temidos dos ermos."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 3, Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Besta Deslocadora",
-    "cr": "4",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 18,
-      "des": 15,
-      "con": 16,
-      "int": 12,
-      "sab": 12,
-      "car": 8
-    },
-    "pericias": [
-      "Furtividade 3",
-      "Prontidão 2"
-    ],
-    "nota": "Deslocamento (Su): Centelha 2.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "agarrao-do-urso"
+      "campo": "habilidadesEspeciais.Deslocamento",
+      "motivo": "números sugeridos pela ficha (D-197); poder natural com a base do site (Fascinação 1) e o efeito que o site descreve (\"o primeiro ataque de cada oponente contra ela erra\"); o livro não tem regra de erro automático, e o efeito fica como regra da ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência a ataques à distância",
+      "motivo": "números sugeridos pela ficha (D-197); Antes: Resistência à magia, sem regra ainda e sem número. A exceção da fonte (o toque à distância) não tem par exato no livro: a Arte mirada já se esquiva, e o +2 fica na Defesa Mental"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "Degrau 7: For 18 no 3.5. Teste de ordem: como o tigre (7, 192 kg) e o leão-das-cavernas (7, 235 kg), um acima do leão (6, 173 kg), que é mais leve. O site tinha 6; 6 para 7, pelo teste de ordem com o tigre (7 com 192 kg) e o leão-das-cavernas (7 com 235 kg)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Tentáculo",
+      "motivo": "O chicote do tentáculo com o ombro atrás: Média; alcança até 1,8 m, o comprimento do tentáculo (D-180, ponto 19) . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "230 kg, a do site, lendo os 2,7 m do site como o corpo sem a cauda (fator 0,93 sobre os 246 kg do leão escalado). Lendo como o total com a cauda, o leão escalado daria 126 kg, e o fator 1,8 não caberia; a leitura fica"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Grande para Médio, pela área do leão escalado (1,32 m²). Em jogo: o humano perde os +3 de acerto que tinha contra ela"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +8 perfurante\", 6 Ticks, dano médio 15). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 15 antes; depois, tentáculo 12,5 (dois pela Rajada), mordida 12,5"
     }
   ]
 }

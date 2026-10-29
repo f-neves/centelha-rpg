@@ -1,3 +1,4 @@
+import { fichaParaLeitura } from './ficha-formato';
 // Catálogo de equipamento + os ajustes que o jogador faz por cima dele.
 //
 // A ficha guarda a peça escolhida por id (arma "a:adaga", escudo "e:broquel",
@@ -148,6 +149,7 @@ export function escudoDoSlot(slot: any) {
  *   novo:   equip.armaduras = [{ uid, base, nome?, mod?, img?, vestida }]  (o que o personagem POSSUI)
  */
 export function armadurasDe(S: any) {
+  S = fichaParaLeitura(S);
   const lista = S?.equip?.armaduras || [];
   const mods = S?.equip?.armMod || {};
   return lista

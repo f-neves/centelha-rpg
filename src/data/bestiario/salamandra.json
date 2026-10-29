@@ -1,118 +1,205 @@
 {
-  "ordem": 110,
   "id": "salamandra",
   "idAntigo": "mon-salamandra",
   "nome": "Salamandra",
   "nomeIngles": "Salamander",
-  "categoria": "Elemental",
+  "categoria": "elemental",
   "papel": "elite",
-  "conceito": "exterior Médio (fogo)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-    "elemental",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/salamandra_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,7 m de comprimento total",
-    "peso": "100 kg"
-  },
-  "locomocao": {
-    "terra": 2
-  },
+  "ameaca": 4,
   "centelha": 3,
-  "attrs": {
+  "corpo": {
+    "postura": "serpente; luta erguida, de lança na mão, e enrola a cauda em quem chega perto",
+    "apoio": "outro",
+    "altura": 0.28,
+    "largura": 0.28,
+    "profundidade": null,
+    "comprimento": 2.7,
+    "massa": 100,
+    "area": 0.57,
+    "posturaDoTamanho": "erguida",
+    "segundoTamanho": {
+      "area": 0.2,
+      "posturaDoTamanho": "enrolada"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 5,
     "destreza": 3,
     "vigor": 5,
-    "influencia": 3,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 3,
+    "perspicacia": 4,
+    "compostura": 4
   },
-  "skills": {
-    "briga": 5,
+  "habilidades": {
+    "armas": 5,
+    "briga": 4,
+    "bloqueio": 2,
     "esquiva": 1,
+    "atletismo": 1,
+    "integridade": 4,
     "prontidao": 2,
-    "integridade": 4
+    "resistencia": 2,
+    "sobrevivencia": 2,
+    "sociabilidade": 1,
+    "ocultismo": 1
   },
-  "virtues": {
+  "habilidadesSec": {
+    "ferreiro": 3,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "lança",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 8,
+  "vontade": 8,
   "aparencia": 5,
-  "tech": {
-    "imobilizar": true
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
   },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:lanca"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Lança",
+      "arma": "lanca",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "calor-corporal",
       "nome": "Calor corporal",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
         "nivel": 2
       },
-      "resiste": "nenhum",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      },
-      "descricao": "A pele da salamandra irradia calor o tempo todo, o bastante para queimar quem a segura ou a aperta num agarrão."
-    }
-  ],
-  "fraquezas": [
-    "agua"
-  ],
-  "resistencias": [
-    "fogo"
-  ],
-  "habilidades": [
-    {
-      "nome": "Calor corporal",
-      "descricao": "quem lutar corpo a corpo com ela sofre dano de fogo por rodada"
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "toque",
+      "area": "quem a toca com a pele, a segura ou está preso na cauda dela",
+      "efeito": "a pele irradia calor o bastante para queimar",
+      "dano": "1d6 + Centelha, fogo, a cada 6 Ticks a quem está no agarrão com ela, e uma vez a quem a toca com a pele nua",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Constrição de cauda",
-      "descricao": "agarra e esmaga o alvo, causando dano contínuo"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Cauda",
+      "regra": "agarrar",
+      "texto": "aperta a presa com o corpo"
     },
     {
-      "nome": "Lança flamejante",
-      "descricao": "ataque corpo a corpo com alcance estendido"
+      "nome": "Imobilizar",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "imobilizar",
+        "nivel": 1
+      }
     },
     {
-      "nome": "Imunidade a fogo",
-      "descricao": "sem efeito de dano de fogo; vulnerável a frio"
-    },
-    {
-      "nome": "Resistente a calor extremo",
-      "descricao": "move-se e sobrevive livremente em lava"
-    },
-    {
-      "nome": "Constrição de cauda",
-      "descricao": "Depende do agarrão; engolir 1 alvo por vez."
+      "nome": "Lança em brasa",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Lança",
+      "ativacao": "a Lança que fere",
+      "duracao": "instantânea",
+      "alcance": "o da lança",
+      "area": "um alvo",
+      "efeito": "a ponta, forjada no fogo dela e aquecida pelas mãos, queima por dentro",
+      "dano": "mais 1d6, fogo",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "guerreira do fogo",
+      "formas": "todas",
+      "texto": "segura o inimigo longe com a lança, enrola na cauda em brasa quem chega perto e aperta; luta mais cruel quanto mais quente fica a ira, e sempre a serviço de um senhor maior."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar quente; respira dentro da fumaça e do fogo",
+    "mente": "inteligente; cruel quando irada, leal a quem serve",
+    "tracos": "torso de gente com feições de réptil, pele vermelha e laranja, cauda de serpente que crepita como brasa; lança de ferro escuro"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em grupo, a serviço de um efreeti ou de um culto",
+    "atividade": "qualquer hora",
+    "dieta": "não se sabe",
+    "caca": "não caça: serve como soldado e artesã",
+    "dianteDeGente": "chega pela fresta aberta para o plano do fogo, sempre a mando de alguém"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "deserto"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Guerreira e ferreira do plano do fogo, torso de gente sobre corpo de serpente em brasa: luta de lança, enrola e queima quem chega perto, anda na lava e foge da água.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -131,48 +218,76 @@
       "texto": "Quando um culto ou um efreeti abre uma fresta para o plano do fogo, é comum que salamandras sejam as primeiras a atravessar, sempre a serviço de um senhor maior, nunca por conta própria."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Mountain",
-      "Desert"
+  "imagens": [
+    "bestiario/salamandra_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "agua",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Ofícios 3, Armas 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Salamandra",
-    "cr": "6",
-    "tipo": "exterior Médio (fogo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 16,
-      "des": 13,
-      "con": 18,
-      "int": 14,
-      "sab": 15,
-      "car": 13
-    },
-    "pericias": [
-      "Ofícios 3",
-      "Armas 2"
-    ],
-    "nota": "Calor corporal, linhagem elemental: Centelha 2.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "agarrao-do-urso"
+      "campo": "habilidadesEspeciais.Calor corporal",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Lança em brasa",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 5 para o golpe de arma; no livro a arma branca é Armas (manual 3.5), como no janni. A nota do site dizia \"Armas 2\"; com 2, a jogada publicada do golpe cairia; 5, o `briga` do golpe de arma do site; a nota dizia \"Armas 2\""
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "A cauda que enrola e esmaga (site, Constrição de cauda)"
+    },
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com a haste da lança, soldado treinado"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "O diâmetro que dá a massa do site (linha Massa). Erguida, levanta o torso e um pouco do corpo, como a naga"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Igual ao diâmetro; os ombros do torso, uns 0,40 m, ficam por cima do corpo"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: escama grossa e quente, acima da jararaca (0, no máximo 1); o nível fica fora da Absorção (decisoes-autor §16). A imunidade a fogo e as fraquezas vêm de Elementos"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "a lança do livro"
+    },
+    {
+      "campo": "elementos",
+      "motivo": "imunidade a fogo e fraqueza a gelo, pelas habilidades do site"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "1; o site tinha 2"
     }
   ]
 }

@@ -1,37 +1,29 @@
 {
-  "ordem": 263,
   "id": "naga-guardia",
   "idAntigo": "mon-guardian-naga",
   "nome": "Naga Guardiã",
   "nomeIngles": "Guardian Naga",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "chefe",
-  "conceito": "aberração Médio",
-  "descricao": "Serpente de escamas radiantes e capuz de cobra que protege cachoeiras, picos e templos dignos de reverência. Um casal se instala perto do lugar e cria a ninhada ali; os filhotes partem ou assumem a guarda. Morde e cospe veneno, e conjura proteção e cura.",
-  "tags": [
-    "aberracao",
-    "centelha"
-  ],
-  "imagem": null,
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "4,3 m de comprimento, 0,28 m de altura",
-    "peso": "159 kg",
-    "comprimento": 4.3,
-    "largura": 0.28,
-    "altura": 0.28
-  },
-  "locomocao": {
-    "terra": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "serpente; luta erguida",
+    "apoio": "outro",
+    "altura": 0.28,
+    "largura": 0.28,
+    "profundidade": null,
+    "comprimento": 4.3,
+    "massa": 159,
+    "area": 0.9,
+    "posturaDoTamanho": "erguida",
+    "segundoTamanho": {
+      "area": 0.32,
+      "posturaDoTamanho": "enrolada"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 7,
     "vigor": 7,
@@ -42,8 +34,9 @@
     "perspicacia": 5,
     "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 2,
     "atletismo": 2,
     "furtividade": 2,
@@ -54,86 +47,129 @@
     "persuasao": 2,
     "sociabilidade": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "disparo": 3,
     "acerto-arcano": 4,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "ocultismo",
-      "foco": "lugares sagrados",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "empatia",
-      "foco": "intenção",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "ocultismo": [
+      {
+        "foco": "lugares sagrados",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 2,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 6,
-  "ataques": [
-    {
-      "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
     }
-  ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "arte": {
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {
     "protecao": 4,
     "cura": 4,
     "forcas": 3
   },
-  "mana": 20,
-  "habilidades": [
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "parte": "presas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
     {
       "nome": "Mordida venenosa",
-      "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
     },
     {
       "nome": "Cuspe à distância",
-      "descricao": "boca: Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 7 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: a do veneno. Alcance: 9 m (site). Área: um alvo. Efeito: o cuspe mira os olhos e a boca; mucosa exposta conta como sangue, e o veneno da linha Veneno e doença entra. Dano: nenhum além do veneno. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno. Limite de uso: três vezes por cena, recarga de 1 hora, os usos do cuspe da naga espírita (o site não dá).",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Feitiços",
-      "descricao": "Artes do livro: Proteção até o 4 (Refúgio), Cura até o 4 (Restauração) e Forças até o 3 (Telecinese), com 20 de Mana. As Artes são escolha da ficha (Identidade)."
-    },
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 7 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6)",
+      "duracao": "a do veneno",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "o cuspe mira os olhos e a boca; mucosa exposta conta como sangue (`venenos.json`), e o veneno da linha Veneno e doença entra",
+      "dano": "nenhum além do veneno",
+      "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno",
+      "limiteDeUso": "três vezes por cena, recarga de 1 hora, os usos do cuspe da naga espírita (o site não dá)"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "sentinela do lugar sagrado",
-      "descricao": "avisa antes de atacar; protege o lugar com o Refúgio, cospe de longe, morde quem insiste e cura o par e a ninhada.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de uma serpente grande e atenta."
+      "formas": "todas",
+      "texto": "avisa antes de atacar; protege o lugar com o Refúgio, cospe de longe, morde quem insiste e cura o par e a ninhada."
     }
   ],
-  "venenos": [
+  "sentidos": [
     {
-      "nome": "Veneno no jogo",
-      "texto": "Peçonha de naga · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida e pelo Cuspe à distância. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o mesmo veneno das outras nagas do lote."
+      "nome": "visão e audição",
+      "descricao": "as de uma serpente grande e atenta",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de uma serpente grande",
+    "camuflagem": "nenhuma; as escamas brilham",
+    "mente": "inteligente, devota, paciente",
+    "tracos": "serpente de escamas radiantes, verdes e douradas, com capuz de cobra aberto atrás da cabeça"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em casal, com a ninhada",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "não caça no lugar que guarda",
+    "dianteDeGente": "avisa; luta contra quem profana o lugar"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Serpente de escamas radiantes e capuz de cobra que protege cachoeiras, picos e templos dignos de reverência. Um casal se instala perto do lugar e cria a ninhada ali; os filhotes partem ou assumem a guarda. Morde e cospe veneno, e conjura proteção e cura.",
   "lore": [
     {
       "titulo": "Guardiã de lugares sagrados",
@@ -144,83 +180,64 @@
       "texto": "Um casal costuma se instalar perto de um local que julga precisar de proteção, criando a ninhada ali; os filhotes escolhem partir ou assumir a guarda do ancestral."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: em casal, com a ninhada."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Peçonha de naga · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida e pelo Cuspe à distância. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o mesmo veneno das outras nagas do lote."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Média erguida, Pequena enrolada. 46 PV, Impacto 12, Corte e Perfuração 5. Esquiva 22, Bloqueio 14, Defesa Mental 30. Mordida de dano médio 15,5 e cuspe a 9 m, com veneno que tira o Vigor. Conjura com 20 de Mana: Refúgio, Restauração, Telecinese."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Plains",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Guardian Naga",
-    "cr": "10",
-    "tipo": "aberração Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 23,
-      "con": 20,
-      "int": 16,
-      "sab": 19,
-      "car": 18
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Cuspe à distância",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Animal comum na escala da decisão 12"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 46,
-    "esquiva": 22,
-    "bloqueio": 14,
-    "defesa": 22,
-    "defesaMental": 30,
-    "defesaSocial": 18,
-    "absorcao": {
-      "impacto": 12,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "corpo.altura",
+      "motivo": "O diâmetro que dá a massa do site (linha Massa). Erguida, levanta um terço do corpo"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 612.52,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      }
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 6. O site tinha 1; a Aparência mede a beleza (D-205), e o site descreve \"escamas radiantes e capuz de cobra\". As Aberrações do site vieram todas com 1, valor de importação; 6; o site tinha 1 (D-205)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Escamas de serpente ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": ""
+    },
+    {
+      "campo": "artes",
+      "motivo": "Proteção 4, Cura 4 e Forças 3, escolhidas pelo texto; o site não grava Arte"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 2 e Convicção 4; o site tinha 0 e 3"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Potência 16, pool 4 de Vigor"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Mordida Média no lugar das \"Garras e presas\""
     }
-  },
-  "notasObservacao": [
-    "`tamanho`: Médio erguida, Pequeno enrolada; o site tinha Grande; a postura erguida pela D-213",
-    "`artes`: Proteção 4, Cura 4 e Forças 3, escolhidas pelo texto; o site não grava Arte **[provisório]**",
-    "`aparencia`: 6; o site tinha 1 (D-205) **[provisório]**",
-    "`virtudes`: Compaixão 2 e Convicção 4; o site tinha 0 e 3 **[provisório]**",
-    "`couraca`: nível 1 **[provisório]**",
-    "`veneno`: Potência 16, pool 4 de Vigor **[provisório]**",
-    "`ataques`: Mordida Média no lugar das \"Garras e presas\" **[provisório]**",
-    "`cuspe à distância`: números sugeridos pela ficha (D-197)"
   ]
 }

@@ -1,31 +1,27 @@
 {
-  "ordem": 283,
   "id": "megalodonte",
   "idAntigo": "mon-dire-shark-megalodon",
   "nome": "Megalodonte",
   "nomeIngles": "Megalodon",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Imenso",
-  "descricao": "O maior tubarão predador conhecido: mordia o peito da baleia ou a nadadeira, para imobilizá-la, e nascia em berçários de água rasa e quente.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/megalodonte_criatura.webp",
-  "porte": "Imenso",
-  "dimensoes": {
-    "medida": "14,57 m de comprimento, 3,37 m de altura",
-    "peso": "36.000 kg",
-    "comprimento": 14.57,
-    "largura": 3.08,
-    "altura": 3.37
-  },
-  "locomocao": {
-    "natacao": 8
-  },
+  "ameaca": 5,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 3.37,
+    "largura": 3.08,
+    "profundidade": null,
+    "comprimento": 14.57,
+    "comprimentoSemCauda": 12.31,
+    "caudaGrossa": false,
+    "massa": 36000,
+    "area": 36.99,
+    "posturaDoTamanho": "de cima"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 13,
     "destreza": 2,
     "vigor": 8,
@@ -36,94 +32,164 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 0,
     "furtividade": 2,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 2,
+    "voo": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "eletrorrecepção",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "linha lateral e faro",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "presa grande: nadadeira e cauda",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "eletrorrecepção",
+        "valor": 3,
+        "origem": "natural"
+      },
+      {
+        "foco": "linha lateral e faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "presa grande: nadadeira e cauda",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 8
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 3,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 3,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "mordida",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "investida de baixo",
-      "descricao": "Mordida: Investida.",
-      "classe": "livro"
-    },
-    {
-      "nome": "morder a nadadeira",
-      "descricao": "morde a nadadeira ou a cauda da presa grande para imobilizá-la antes de matar (Especialidade Briga (presa grande: nadadeira e cauda) +1).",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "regra": "investida"
     },
     {
       "nome": "sangramento",
-      "descricao": "Mordida: a mordida abre ferida que continua sangrando.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Mordida",
+      "efeito": "a mordida abre ferida que continua sangrando"
     },
     {
       "nome": "engolir",
-      "descricao": "Mordida: traga a presa já agarrada, que segue ferida por dentro até escapar ou morrer.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "eletrorrecepção: Prontidão (eletrorrecepção) +3, Especialidade natural; alcance. · linha lateral e faro: Prontidão (linha lateral e faro) +2, Especialidade natural; alcance."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Mordida",
+      "efeito": "traga a presa já agarrada, que segue ferida por dentro até escapar ou morrer"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "morder a nadadeira",
+      "formas": "todas",
+      "texto": "morde a nadadeira ou a cauda da presa grande para imobilizá-la antes de matar."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "eletrorrecepção",
+      "descricao": "Prontidão (eletrorrecepção) +3 , Especialidade natural (era +4, bônus fixo de sentido) ; alcance",
+      "formas": "todas"
+    },
+    {
+      "nome": "linha lateral e faro",
+      "descricao": "Prontidão (linha lateral e faro) +2, Especialidade natural ; alcance",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água",
+    "mente": "animal",
+    "tracos": "endotermia regional (Wikipédia); crescia cerca de 16 cm por ano e vivia de 88 a 100 anos (Shimada e colegas 2021); nascia com cerca de 3,6 a 4 m (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "",
+    "atividade": "",
+    "dieta": "carnívoro",
+    "caca": "emboscada",
+    "dianteDeGente": "não se aplica"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "O maior tubarão predador conhecido: mordia o peito da baleia ou a nadadeira, para imobilizá-la, e nascia em berçários de água rasa e quente.",
   "lore": [
     {
       "titulo": "O terror ancestral do oceano",
@@ -132,81 +198,68 @@
     {
       "titulo": "Lendas de navios devorados",
       "texto": "Muitas histórias de embarcações que desaparecem no mar aberto encontram nesse gigante das profundezas sua explicação mais provável."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Imenso: o humano Médio acerta com +9 e não apara nada dele pelo porte; a Força 13 também tira o Bloqueio de quem tem Força 6 ou menos. A mordida faz 20 em média e fura placa (N3); o agarrão tira 26 por manutenção. 80 PV e Couraça nível 3 (pele de dentículos num corpo de 36 t); o quanto ela tira fica para depois. Na água, pela conta de hoje, chega a 8 m por Tick na arrancada."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/megalodonte_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Dire Shark (Megalodon)",
-    "cr": "9",
-    "tipo": "animal Imenso",
-    "tamanho": "imenso",
-    "valores": {
-      "for": 30,
-      "des": 15,
-      "con": 17,
-      "int": 1,
-      "sab": 12,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "Seção 13: 2 para os extintos. Os sentidos de tubarão vão nas Especialidades naturais."
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte",
-      "nota": "nado 60, como o tubarão comum"
+    {
+      "campo": "atributos.raciocinio",
+      "motivo": "Seção 13: 2 para os outros predadores."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 80,
-    "esquiva": 6,
-    "bloqueio": 4,
-    "defesa": 6,
-    "defesaMental": 6,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 8,
-      "corte": 8,
-      "perfuracao": 8
+    {
+      "campo": "habilidades.briga",
+      "motivo": "Degrau 5: predador de presa grande. Vértebras de baleia com mordidas fundas, costelas mordidas na região do coração e do pulmão, nadadeiras e caudas mordidas para imobilizar a baleia grande (Wikipédia). Acima do tubarão-branco (4)."
     },
-    "couracaNivel": 3,
-    "pesoErguido": 6608.02,
-    "deslocamento": {
-      "nado": 8
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "O levantamento : investida de baixo, pelas fraturas de compressão em cetáceos pequenos (Wikipédia), como o tubarão-branco. Régua: 2, usa a cobertura como hábito. Fica como hoje."
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "Degrau 2. Os sentidos vão nas Especialidades naturais."
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 3 de 19/10/2026: os muito grandes tendem a ter mais. Com 36 t e vida de 88 a 100 anos (Shimada e colegas 2021), fica com 4, igual à orca e acima do tubarão-branco (3) . Antes: Era 0. Régua da diretriz 2: 2 é o normal da espécie no próprio meio, . Mares quentes e temperados do mundo todo (Wikipédia), endotermia regional pelos isótopos (Wikipédia). Nenhum dado de fome, veneno, doença ou ferida acima do comum. O cruzeiro de modelo fica na nota de pesquisa (jornada)."
+    },
+    {
+      "campo": "habilidadesSec.natacao",
+      "motivo": "Etapa 2 (20/10/2026): Decisão de 20/10/2026: a Habilidade secundária de Natação vale nas jogadas (manobrar na água), e a velocidade continua congelada; o nado em m por Tick não muda. A decisão põe o megalodonte entre os nadadores que recebem a Habilidade pela pesquisa: \"em geral não um nadador rápido\" (Wikipédia), com cruzeiro estimado baixo (Cooper e colegas 2022) e corpo Imenso. Fica 2, bem abaixo do tubarão-branco (6) . Antes: Fica como hoje. Com o porte Imenso e o Vigor 8, o nado da conta já passa de todos os cruzeiros estimados."
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 3,28 × 1,0261 = 3,366 . Antes: Era 3,7 m, da Bestiarista-5, pela proporção do tubarão-branco da ficha (1,1 ÷ 4,7) em 16 m. Escalado pelo cubo da massa: 3,7 × (33.325 ÷ 48.000)^(1/3) = 3,7 × 0,885 = 3,28 m"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 14,20 × 1,0261 = 14,570 . Antes: Era 16 m (o tamanho de Cooper 2022, 15,9 m, e do espécime belga de Shimada 2025, 16,4 m), o animal dos 48 t. Escalado pelo cubo da massa: 16 × 0,885 = 14,17 m. Confere com Gottfried e colegas 1996: o meio das faixas de comprimento dos machos maduros (10,5 a 14,3 m, meio 12,4) e das fêmeas maduras (13,3 a 17 m, meio 15,15) dá 13,8 m"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 12,00 × 1,0261 = 12,313 . Antes: Era 13,6 m (proporção do tubarão-branco, 4,0 ÷ 4,7, em 16 m); escalado pelo cubo da massa: 13,6 × 0,885 = 12,04 m"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 3,00 × 1,0261 = 3,078 . Antes: Era 3,4 m (a mesma proporção, 1,0 ÷ 4,7, em 16 m; não preservada); escalado pelo cubo da massa: 3,4 × 0,885 = 3,01 m"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107: a maioria fica no 6.  A pele não se conhece."
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": "investida de baixo (Wikipédia)"
     }
-  },
-  "notasObservacao": [
-    "pesoErguido: 6.608,02 kg (em vigor na Etapa 2, 20/10/2026); antes: 8.024,9 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar.",
-    "carga: não se aplica (nadador).",
-    "massa: 36.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 33.325 kg, o adulto típico (sexta rodada): a média simples dos meios das faixas dos machos maduros (23,25 t) e das fêmeas maduras (43,4 t) de Gottfried e colegas 1996, com as dimensões do animal de 16 m escaladas pelo cubo da massa (× 0,885, 14,2 m). Era 48 t, o de 16 m pela mesma regressão (a que a Wikipédia dá a Prothero 2015). As estimativas primárias para cerca de 16 m vão de cerca de 30 t (Shimada e colegas 2025, corpo esguio) a 62 t (Cooper e colegas 2022, corpo de tubarão-branco); sem consenso entre os estudos. Toda a faixa fica na Faixa 6 (o mesmo PV).",
-    "dimensoes.altura, comprimentoSemCauda e largura: pela proporção do tubarão-branco [extrapolação]; se o corpo for esguio, serão menores. O Alvo (44,8 m²) fica longe das bordas.",
-    "velocidade: congelada (decisão 23). Os números publicados são de cruzeiro e de modelo (5 a 18 km/h); a ficha dá a arrancada (30 km/h).",
-    "forca: 13, igual ao mamute da régua nova (D-158); era 18 com o mamute em 18. Se o mamute mudar, esta se refaz.",
-    "vigor: 8 pela vida longa (Shimada e colegas 2021) e pela endotermia regional (D-164).",
-    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua, [extrapolação]; o cruzeiro de modelo ficou na nota de pesquisa (jornada).",
-    "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador.",
-    "especialidade Briga (presa grande: nadadeira e cauda) +1: nova, provisória (D-174), lida de marcas de mordida em osso [extrapolação].",
-    "sentidos: eletrorrecepção +3 e linha lateral +2 vêm do grupo dos tubarões, não medidos no megalodonte [extrapolação]. A eletrorrecepção desceu de +4 para +3 pelo teto da decisão 3.",
-    "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): só cruzeiro de modelo [extrapolação dos autores]: 18 km/h supondo 48 t (Jacoby e colegas 2015); cerca de 1,4 m/s, 5 km/h, para um de 16 m (Cooper e colegas 2022); 2,1 a 3,5 km/h para o de 24,3 m, pela forma das escamas (Shimada e colegas 2025). \"Em geral não um nadador rápido\" (Wikipédia).",
-    "fonte: os 48 t são a regressão de Gottfried e colegas 1996 (o artigo não foi lido; a atribuição vem de Shimada e colegas 2025 e a Wikipédia os dá a Prothero 2015), e a endotermia regional continuam só pela Wikipédia (D-174).",
-    "fonte: a mordida de Wroe e colegas 2008 foi conferida pelo resumo da busca (UNE, National Geographic), e não pelo artigo; o número não muda."
   ]
 }

@@ -1,130 +1,238 @@
 {
-  "ordem": 88,
   "id": "sucubo",
   "idAntigo": "mon-sucubo",
   "nome": "Súcubo",
   "nomeIngles": "Demon, Succubus",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Demônio",
+  "categoria": "corruptor",
   "papel": "elite",
-  "conceito": "exterior Médio (demônio)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Horror caótico do Abismo, feito de fúria e corrupção.",
-  "tags": [
-    "demonio",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/sucubo_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,75 m de altura",
-    "peso": "59 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 5
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto; voa",
+    "apoio": "bipede",
+    "altura": 1.75,
+    "largura": 0.44,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "massa": 59,
+    "area": 0.68,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 8,
-    "perspicacia": 7,
-    "compostura": 6,
     "percepcao": 4,
     "inteligencia": 5,
-    "raciocinio": 5
+    "raciocinio": 5,
+    "influencia": 8,
+    "perspicacia": 7,
+    "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 2,
+    "furtividade": 3,
+    "integridade": 6,
     "prontidao": 2,
-    "integridade": 6
+    "resistencia": 3,
+    "empatia": 3,
+    "persuasao": 4,
+    "manha": 4,
+    "sociabilidade": 4,
+    "politica": 2,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "seducao": 5,
+    "disfarce": 4,
+    "voo": 2,
+    "musculatura": 1
+  },
+  "especialidades": {
+    "persuasao": [
+      {
+        "foco": "seduzir",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+    "temperanca": 4
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 9,
-  "arte": {
-    "fascinacao": 4,
-    "materia": 2,
-    "conjuracao": 4
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 5
+    }
   },
-  "tech": {
-    "encanto-irresistivel": true
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
   },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Garras",
+      "parte": "unhas",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "mudar-de-forma",
+      "nome": "Beijo dreno",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6, o beijo em quem está Agarrado, Dominado ou se deixa beijar",
+      "duracao": "instantânea",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "bebe a vida da vítima com o beijo e se fecha com ela; deixa a vítima exausta",
+      "dano": "1d6 + Centelha, que ela recupera em PV",
+      "resistencia": "corpo, contra Influência + Sedução dela; quem passa não perde nada",
+      "limiteDeUso": "um por ação"
+    },
+    {
+      "nome": "Encanto",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "encantamento",
+        "nivel": 4
+      }
+    },
+    {
+      "nome": "Sedução",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "charme",
+        "nivel": 1
+      }
+    },
+    {
+      "nome": "aproximação livre",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a sedução que dá certo abre uma ação livre de aproximação ou de distração"
+    },
+    {
       "nome": "Mudar de forma",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "materia",
         "nivel": 2
       },
-      "resiste": "nenhum",
-      "efeito": "Mudar de forma",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
-    {
-      "nome": "Beijo dreno",
-      "descricao": "toque corpo a corpo; drena PV e, se a Vontade falhar, Enfeitiça o alvo por uma cena"
-    },
-    {
-      "nome": "Sedução",
-      "descricao": "proeza; teste de Persuasão ou Manha contra Vontade do alvo abre uma ação livre de aproximação ou distração"
-    },
-    {
-      "nome": "Mudar de forma",
-      "descricao": "feitiçaria; assume forma de qualquer humanoide Médio, indistinguível sem magia"
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ela desfazer com outra ação",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "assume o rosto, a voz e o corpo de qualquer humanoide Médio, sem diferença que se veja sem magia; os números ficam os dela, e as asas somem",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem tem visão verdadeira vê a forma real",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Teleporte",
-      "descricao": "feitiçaria; desloca-se instantaneamente até 60m, ignorando obstáculos"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "60 m",
+      "area": "o próprio súcubo",
+      "efeito": "some e reaparece a até 60 m, sem precisar de caminho livre",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Asas",
-      "descricao": "voo com deslocamento igual ao dobro do terrestre"
-    },
-    {
-      "nome": "Charme sobre-humano",
-      "descricao": "ganha bônus em testes de Persuasão e Manha contra alvos atraídos por ela"
-    },
-    {
-      "nome": "Pele resistente",
-      "descricao": "metade do dano de armas comuns não abençoadas"
-    },
-    {
-      "nome": "Sedução",
-      "descricao": "Traço social (não é poder de combate): Perícias sociais; o encanto mágico é Arte."
+      "nome": "arma abençoada fere inteira",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a resistência da pele não vale contra arma abençoada"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "sedutora paciente",
+      "formas": "todas",
+      "texto": "evita a luta; estuda a vítima, assume o rosto que ela deseja, encanta, beija e some pelo teleporte; quando luta, fica no ar e foge antes de cair."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano, mais finas",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "a forma humana que escolhe",
+    "mente": "inteligente, demoníaca, paciente e calculista",
+    "tracos": "mulher de beleza perfeita demais para ser natural, com pequenos chifres, asas de morcego e cauda fina, que ela esconde na forma humana"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha, ou a serviço de um senhor demoníaco",
+    "atividade": "noturna, de preferência",
+    "dieta": "a energia vital e as emoções roubadas",
+    "caca": "seduz e corrompe aos poucos",
+    "dianteDeGente": "seduz, espia e corrompe"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Demônio de beleza perfeita demais para ser natural, que estuda a vítima, assume o rosto e a voz de quem ela deseja e a conduz passo a passo até a ruína. Vive da vida roubada em beijos e infiltra cortes e conventos como espiã e corruptora.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -143,48 +251,68 @@
       "texto": "Nas ortodoxias supressoras de Calin ela é o rosto do pecado perfeito: bela demais para ser natural, prova viva de que a Fenda também sabe seduzir, não só aterrorizar."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/sucubo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
-  },
-  "notas": "Habilidades notáveis: Persuasão 4, Manha 4, Empatia 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Súcubo",
-    "cr": "7",
-    "tipo": "exterior Médio (demônio)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 13,
-      "des": 17,
-      "con": 20,
-      "int": 18,
-      "sab": 14,
-      "car": 27
-    },
-    "pericias": [
-      "Persuasão 4",
-      "Manha 4",
-      "Empatia 3"
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
     ],
-    "nota": "Enfeitiçar, mudar de forma, dreno: Centelha 3. Car 27 → Influência 8.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
+    "imunidades": []
   },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "beleza-cativante"
+      "campo": "habilidadesEspeciais.Beijo dreno",
+      "motivo": "números sugeridos pela ficha (D-197); 1d6 + Centelha com cura é número da ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 0: pele humana; a resistência a arma comum vai na linha Elementos. O nível fica fora da Absorção (decisoes-autor §16). A \"pele resistente\" do site (metade do dano de arma comum), pela linha Elementos; \"metade do dano de armas comuns não abençoadas\" virou resistência a Corte, Perfuração e Impacto; a exceção da arma abençoada ficou sem regra ainda"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as unhas ficam Leves, como os 5 Ticks do site"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o site tinha `encanto-irresistivel`, que não está no `tecnicas.json`; virou a Técnica encantamento (nível 4, Centelha 4)"
     }
   ]
 }

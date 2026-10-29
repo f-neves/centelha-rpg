@@ -1,137 +1,202 @@
 {
-  "ordem": 104,
   "id": "planetar",
   "idAntigo": "mon-planetar",
   "nome": "Planetar",
   "nomeIngles": "Angel, Planetar",
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "papel": "chefe",
-  "conceito": "exterior Grande (anjo)",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-    "celestial",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/planetar_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de altura, envergadura 6 m",
-    "peso": "225 kg"
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 9
-  },
+  "ameaca": 6,
   "centelha": 7,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé, asas recolhidas",
+    "apoio": "bipede",
+    "altura": 2.7,
+    "largura": 0.675,
+    "profundidade": 0.345,
+    "comprimento": null,
+    "massa": 225,
+    "area": 1.9,
+    "posturaDoTamanho": "de pé, asas recolhidas",
+    "segundoTamanho": {
+      "area": 7,
+      "posturaDoTamanho": "asas abertas"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 9,
     "destreza": 5,
     "vigor": 8,
-    "influencia": 7,
-    "perspicacia": 7,
-    "compostura": 8,
     "percepcao": 8,
     "inteligencia": 7,
-    "raciocinio": 7
+    "raciocinio": 7,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 8
   },
-  "skills": {
-    "briga": 5,
+  "habilidades": {
+    "briga": 3,
+    "bloqueio": 3,
     "esquiva": 1,
-    "prontidao": 4,
-    "integridade": 8
+    "prontidao": 5,
+    "integridade": 8,
+    "sobrevivencia": 0,
+    "sociabilidade": 4,
+    "armas": 5,
+    "ocultismo": 5,
+    "empatia": 4
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 1
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 5,
     "conviccao": 5,
-    "temperanca": 4,
-    "valor": 5
+    "temperanca": 4
   },
-  "willpower": 12,
+  "vontade": 12,
   "aparencia": 11,
-  "arte": {
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:montante"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {
     "cura": 6,
     "fogo": 5,
     "terra": 4,
     "protecao": 5,
     "fascinacao": 5
   },
-  "tech": {
-    "regeneracao": true
-  },
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 6
+      "nome": "Montante",
+      "arma": "montante",
+      "habilidade": "armas"
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "aura-sagrada",
-      "nome": "Aura sagrada",
-      "tipo": "natural",
+      "nome": "Aura protetora",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "protecao",
         "nivel": 4
       },
-      "resiste": "mente",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "9 m",
+      "area": "a criatura e seus aliados no raio",
+      "efeito": "a criatura e seus aliados somam +4 em Esquiva, Bloqueio e Defesa Mental contra ataques e efeitos malignos",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "id": "regeneracao",
-      "nome": "Regeneração",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
-    }
-  ],
-  "fraquezas": [
-    "profano"
-  ],
-  "habilidades": [
-    {
-      "nome": "Espada de luz cegante",
-      "descricao": "acerto forte pode cegar o alvo se falhar em Vontade"
+      "nome": "Regeneração 10",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "regeneração sobrenatural; interrompida por armas e efeitos malignos"
     },
     {
-      "nome": "Aura sagrada",
-      "descricao": "aliados a 9m ganham +1d de Absorção e Defesa contra malignos"
-    },
-    {
-      "nome": "Regeneração",
-      "descricao": "recupera PV toda rodada; só dano de origem maligna interrompe"
-    },
-    {
-      "nome": "Feitiços de clérigo supremo",
-      "descricao": "1x por cena cura em massa, dissipa magia ou concede proteção"
+      "nome": "Resistência à magia 27",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Verbo verdadeiro",
-      "descricao": "compreende e fala qualquer idioma, mesmo mensagens mentais"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "compreende e fala com criaturas de idiomas diferentes"
+    },
+    {
+      "nome": "Imunidades celestes",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não adoece, não é envenenado e resiste à transformação em pedra"
+    },
+    {
+      "nome": "Espada de luz cegante",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "um golpe forte pode cegar o adversário"
     },
     {
       "nome": "Teleporte instantâneo",
-      "descricao": "desloca-se sem gastar ação extra dentro da cena"
-    },
-    {
-      "nome": "Voo e imunidade",
-      "descricao": "voa livremente; imune a doença e veneno"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "muda de posição pelo espaço sem percorrer o caminho"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Feitiços sagrados",
+      "formas": "todas",
+      "texto": "usa as Artes para curar, proteger e enfrentar ameaças sobrenaturais."
+    },
+    {
+      "nome": "Guerreiro alado",
+      "formas": "todas",
+      "texto": "abre o combate voando e pousa para pressionar com a espada; volta ao ar para proteger aliados distantes."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "enxerga no escuro e sob luz fraca",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira · sem regra ainda",
+      "descricao": "percebe através de ilusões e ocultação mágica",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "mente": "inteligente",
+    "tracos": "Guerreiro celeste de pele verde e dois pares de asas brancas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "não se aplica",
+    "dianteDeGente": "enfrenta ameaças ao mundo e protege os mortais"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Guerreiro celeste de pele verde e dois pares de asas brancas",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -150,49 +215,53 @@
       "texto": "Um planetar só pisa em Uldun quando um mal antigo desperta, seja um horror vindo da Fenda ou um culto que rasga a Supressão; sua presença costuma ser o primeiro sinal de que a crise é grave demais para mortais resolverem sozinhos."
     }
   ],
-  "ecologia": {
-    "tipo": "Celestial",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/planetar_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "profano",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Armas 5, Ocultismo 5, Persuasão 4, Prontidão 5. Centelha acima do teto mortal (entidade).",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Planetar",
-    "cr": "16",
-    "tipo": "exterior Grande (anjo)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 27,
-      "des": 19,
-      "con": 24,
-      "int": 22,
-      "sab": 25,
-      "car": 24
-    },
-    "pericias": [
-      "Armas 5",
-      "Ocultismo 5",
-      "Persuasão 4",
-      "Prontidão 5"
-    ],
-    "nota": "Anjo guerreiro: Centelha 6.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "cerne-vital"
+      "campo": "habilidadesEspeciais.Aura protetora",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Corpo de guerreiro, força sobrenatural além do músculo"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Corpo: 0,72 × (2,7 ÷ 1,8)²; asas recolhidas completam 1,9 m². Asas abertas estimadas em 7,0 m²"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "Comportamento"
     }
   ]
 }

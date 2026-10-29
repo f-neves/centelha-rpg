@@ -17,7 +17,7 @@ em aberto está marcado como aberto, com o nome de quem decide.
 ## 0 · O fato que decide o tamanho de tudo
 
 **A conjuração de uma Arte pelo jogador é SÍNCRONA hoje.** `conjurar()`
-(`src/lib/artes-grid-mesa.ts:799-847` · `function conjurar`) abre a caixa, posiciona a figura, paga a Mana e declara o
+(`src/lib/artes-grid-mesa.ts:800-848` · `function conjurar`) abre a caixa, posiciona a figura, paga a Mana e declara o
 custo em Ticks · tudo no mesmo instante, num `finally` só. **Não existe hoje o estado "em Preparo,
 esperando o Tick de saída" para Arte lançada pela interface.**
 
@@ -168,7 +168,7 @@ Preparação, que se perdem.
 **O Abortar já existe, publicado e implementado**, e é ele que se estende: `regras.json:2497-2508`
 · só na fase de Preparo, custa 1 Tick por metro para a saída, e **perde o investido**
 (`perdeOInvestido: true`). O código é `podeAbortar`/`abrirAbortar` e o botão "✋ Abortar o gesto"
-(`grid.astro:7814` · `Abortar o gesto`).
+(`grid.astro:7815` · `Abortar o gesto`).
 
 **O que muda:** hoje o Abortar serve só a ação física, e a lista `nuncaPara: "atacar"` o proíbe
 para ataque. **A Preparação de Arte entra como fase abortável**, com a mesma regra de perder o
@@ -194,7 +194,7 @@ Golpe importa só para o gating do Efeito · o que a Arte consegue fazer.
 **A Mana é paga aqui, no Golpe, e não na declaração.**
 
 **Isto é sequência nova, e não um "quando" mudado.** Hoje `gastarMana` é chamada no mesmo `finally`
-da conjuração (`artes-grid-mesa.ts:844` · `ctx.gastarMana`). **Não existe hoje um intervalo em que a Mana esteja
+da conjuração (`artes-grid-mesa.ts:845` · `ctx.gastarMana`). **Não existe hoje um intervalo em que a Mana esteja
 comprometida e ainda não gasta**, e é esse intervalo que a régua cria.
 
 **Mana insuficiente no Golpe:**
@@ -347,7 +347,7 @@ a interface estaria oferecendo uma escolha vazia.**
 **O que o gating faz hoje com o nível efetivo, levantado em 10/09/2026:**
 
 - **o `nivel` gravado na linha do efeito É LIDO, e num lugar só:** `dissipar`
-  (`src/lib/artes-grid-mesa.ts:1053`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
+  (`src/lib/artes-grid-mesa.ts:1054`) · `const alcanca = (e.nivel || 1) <= meu;`. Um efeito de
   nível N só pode ser dissipado por quem investiu pelo menos N pontos na Dissipar. Quem não
   alcança recebe recusa com o motivo escrito no registro;
 - **portanto o gesto NÃO é vazio.** Baixar o nível efetivo no Golpe **torna o próprio efeito mais
@@ -394,7 +394,7 @@ Nesta ordem, e nenhuma parte começa antes de o humano aprovar a régua.
 |---|---|---|---|
 | 1 | ligar `reguaDaArte` ao fluxo real | `artes-grid-mesa.ts`, `conjurar()` | a fórmula existe e está morta · é chamada, não escrita |
 | 2 | abrir o estado "Arte em Preparo" | `conjurar()` deixa de ser síncrona | **é o grosso do trabalho**, e é estado novo no motor |
-| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:844` (`ctx.gastarMana`) | pequeno, e perigoso: é onde o gasto pode sumir |
+| 3 | a Mana sair da declaração para o Golpe | `artes-grid-mesa.ts:845` (`ctx.gastarMana`) | pequeno, e perigoso: é onde o gasto pode sumir |
 | 4 | a reabertura dos Parâmetros no Golpe | caixa nova, com o teto | médio |
 | 5 | caminhada automática na Preparação | `moverSimultaneo` | pequeno, se `D-C2` ficar de pé |
 | 6 | o Abortar aceitar Preparação de Arte | `podeAbortar` e a lista `nuncaPara` | pequeno |

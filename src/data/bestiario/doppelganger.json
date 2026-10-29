@@ -1,38 +1,28 @@
 {
-  "ordem": 119,
   "id": "doppelganger",
   "idAntigo": "mon-doppelganger",
   "nome": "Doppelganger",
   "nomeIngles": "Doppelganger",
-  "categoria": "Aberração",
-  "categoriaLegada": "Monstro",
+  "categoria": "aberracao",
   "papel": "soldado",
-  "conceito": "humanoide monstruoso Médio",
-  "descricao": "Coisa cinzenta de rosto liso que mata uma pessoa e vive anos com o rosto, a voz e as memórias dela. Lê o que os outros pensam e foge ao primeiro sinal de suspeita, para voltar com outro rosto.",
-  "descricaoLegada": "Aberração humanoide de lendas antigas.",
-  "tags": [
-    "monstro",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/doppelganger_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "70 kg",
-    "largura": 0.42,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "verdadeira",
+    "nome": "forma verdadeira"
+  },
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.42,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "massa": 70,
+    "area": 0.67
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 3,
     "vigor": 4,
@@ -43,7 +33,7 @@
     "perspicacia": 3,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "armas": 3,
     "briga": 2,
     "bloqueio": 1,
@@ -57,107 +47,149 @@
     "sociabilidade": 2,
     "investigacao": 2
   },
-  "skills2": {
-    "atuacao": 3
+  "habilidadesSec": {
+    "atuacao": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "manha",
-      "foco": "passar-se pela pessoa cujo rosto usa",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "empatia",
-      "foco": "ler a vítima",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "investigacao",
-      "foco": "rotina de uma pessoa",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
-    "compaixao": 2,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 2
-  },
-  "willpower": 7,
-  "aparencia": 4,
-  "ataques": [
-    {
-      "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
-    }
-  ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "transforma": {
-    "principal": "verdadeira",
-    "formas": [
+  "especialidades": {
+    "manha": [
       {
-        "id": "verdadeira",
-        "nome": "forma verdadeira"
-      },
+        "foco": "passar-se pela pessoa cujo rosto usa",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "empatia": [
       {
-        "id": "disfarce",
-        "nome": "disfarce"
+        "foco": "ler a vítima",
+        "valor": 1,
+        "origem": "livro"
       }
     ]
   },
-  "habilidades": [
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
+    "compaixao": 2,
+    "conviccao": 3,
+    "temperanca": 3
+  },
+  "vontade": 7,
+  "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
+  "ataques": [
+    {
+      "nome": "Espada curta",
+      "arma": "espada-curta",
+      "habilidade": "armas"
+    }
+  ],
+  "habilidadesEspeciais": [
     {
       "nome": "Mudar de forma",
-      "descricao": "poder natural (base Matéria 2): Ativação: uma ação, Velocidade 6. Duração: até ele desfazer, ou até cair inconsciente. Alcance: o próprio corpo. Área: não se aplica. Efeito: assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "materia",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele desfazer, ou até cair inconsciente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Ler pensamentos",
-      "descricao": "poder natural (base Adivinhação 1): Ativação: nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo. Duração: enquanto o alvo estiver perto. Alcance: 9 m. Área: um alvo por vez. Efeito: sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção. Dano: nenhum. Resistência: mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem. Limite de uso: a sondagem, uma vez por cena para cada alvo.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Mímica perfeita",
-      "descricao": "Manha, com a Especialidade natural (passar-se pela pessoa cujo rosto usa) +3.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Reflexos ágeis",
-      "descricao": "Esquiva 2.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "adivinhacao",
+        "nivel": 1
+      },
+      "ativacao": "nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo",
+      "duracao": "enquanto o alvo estiver perto",
+      "alcance": "9 m",
+      "area": "um alvo por vez",
+      "efeito": "sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem",
+      "limiteDeUso": "a sondagem, uma vez por cena para cada alvo"
     },
     {
       "nome": "Mente protegida",
-      "descricao": "leitura de mente e controle mental simples não o pegam.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "rosto roubado",
-      "descricao": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano. · mente: ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras)."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "leitura de mente e controle mental simples não o pegam"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "rosto roubado",
+      "formas": "todas",
+      "texto": "evita a luta; quando é descoberto, ataca com a espada para abrir caminho e foge; mais tarde volta com outro rosto."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    },
+    {
+      "nome": "mente",
+      "descricao": "ouve os pensamentos de superfície de quem está a 9 m (Ler pensamentos, nas Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "inteligente; fria e paciente",
+    "tracos": "pele cinzenta e lisa, corpo magro, olhos grandes e sem cor, rosto quase sem traços"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho",
+    "atividade": "qualquer hora; vive a rotina da vítima",
+    "dieta": "a de um humano",
+    "caca": "estuda uma vítima, mata ou some com ela e toma o lugar dela",
+    "dianteDeGente": "finge ser alguém conhecido; foge ao menor sinal de suspeita"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Coisa cinzenta de rosto liso que mata uma pessoa e vive anos com o rosto, a voz e as memórias dela. Lê o que os outros pensam e foge ao primeiro sinal de suspeita, para voltar com outro rosto.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Elimina ou substitui alguém e assume sua forma e memórias, infiltrando-se em vilas e cortes para viver anos a fio sem ser notado. Social: sozinho."
+      "texto": "Elimina ou substitui alguém e assume sua forma e memórias, infiltrando-se em vilas e cortes para viver anos a fio sem ser notado."
     },
     {
       "titulo": "Sociedade",
@@ -174,85 +206,57 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Prospera na desconfiança generalizada que a Supressão semeou, pois ninguém espera magia tão sutil e silenciosa; em Calin, onde caçam 'possuídos' com fervor, aprendeu a apontar o dedo primeiro para desviar suspeita de si."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Esquiva 14, Bloqueio 10 (11 com a espada). A espada curta dá dano médio 6,5. O perigo dele não é a luta: assume o rosto e a voz de quem já viu, ouve os pensamentos de quem está perto e passa por qualquer conhecido. Descoberto, foge. Defesa Mental 19."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Manha 4, Empatia 3, Furtividade 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Doppelganger",
-    "cr": "3",
-    "tipo": "humanoide monstruoso Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 12,
-      "des": 13,
-      "con": 14,
-      "int": 13,
-      "sab": 14,
-      "car": 13
-    },
-    "pericias": [
-      "Manha 4",
-      "Empatia 3",
-      "Furtividade 2"
-    ],
-    "nota": "Mudar de forma, ler a mente: Centelha 2.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
-    {
-      "caminho": "camaleao"
-    }
+  "imagens": [
+    "bestiario/doppelganger_criatura.webp"
   ],
-  "v3": {
-    "pv": 37,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 19,
-    "defesaSocial": 16,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 122.59,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
+  "formas": [
+    {
+      "id": "disfarce",
+      "nome": "disfarce",
+      "fisiologia": {
+        "camuflagem": "assume o corpo e a aparência de um humanoide, mantendo os números da ficha"
       }
-    },
-    "bloqueioArma": 1
+    }
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`formas`: forma verdadeira e disfarce (D-201); o disfarce é Variante que muda o corpo e o rosto, e os números são os dele **[provisório]**",
-    "`equipamento`: a espada curta do livro no lugar da \"Arma\" de corte do site **[provisório]**",
-    "`briga`: 2; o site gravava 4, que era a Habilidade da arma **[provisório]**",
-    "`virtudes`: Bravura 2 e Temperança 3; o site tinha 3 e 2 **[provisório]**",
-    "`mímica perfeita`: Especialidade natural +3, no teto; o site dava +3d6",
-    "`mudar de forma`, `ler pensamentos`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ler pensamentos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "De mãos nuas, luta de rua; 2; o site gravava 4, que era a Habilidade da arma"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "formas.disfarce",
+      "motivo": "Mudar de forma muda o rosto, o corpo, a voz e o cheiro; os números ficam os dele  Descrição anterior: Anatomia: a de qualquer humanoide de tamanho perto do dele que já tenha visto; Altura e Massa: as do disfarce, dentro do Tamanho Médio; Aparência: a da pessoa copiada; Equipamento: o que a pessoa usava; Camuflagem: passa pela pessoa copiada; o resto: o do doppelganger."
+    },
+    {
+      "campo": "formas",
+      "motivo": "forma verdadeira e disfarce (D-201); o disfarce é Variante que muda o corpo e o rosto, e os números são os dele"
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "a espada curta do livro no lugar da \"Arma\" de corte do site"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Bravura 2 e Temperança 3; o site tinha 3 e 2"
+    }
   ]
 }

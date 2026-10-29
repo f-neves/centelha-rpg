@@ -1,118 +1,288 @@
 {
-  "ordem": 107,
   "id": "ghaele-azata",
   "idAntigo": "mon-ghaele-azata",
   "nome": "Ghaele (azata)",
   "nomeIngles": "Ghaele",
-  "categoria": "Celestial",
+  "categoria": "celestial",
   "papel": "chefe",
-  "conceito": "exterior Médio (celestial)",
-  "descricao": "Servo do bem, luz encarnada em guerra contra as trevas.",
-  "tags": [
-    "celestial",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/ghaele-azata_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "90 kg"
-  },
-  "locomocao": {
-    "terra": 5,
-    "voo": 15
-  },
+  "ameaca": 5,
   "centelha": 6,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "humanoide",
+    "nome": "forma humanoide"
+  },
+  "corpo": {
+    "postura": "bípede, de pé, ereto",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.48,
+    "profundidade": 0.26,
+    "comprimento": null,
+    "massa": 90,
+    "area": 0.77,
+    "posturaDoTamanho": "de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 6,
     "destreza": 6,
     "vigor": 5,
-    "influencia": 7,
-    "perspicacia": 7,
-    "compostura": 7,
     "percepcao": 6,
     "inteligencia": 6,
-    "raciocinio": 6
+    "raciocinio": 6,
+    "influencia": 7,
+    "perspicacia": 7,
+    "compostura": 7
   },
-  "skills": {
-    "briga": 5,
+  "habilidades": {
+    "briga": 0,
+    "bloqueio": 3,
     "esquiva": 2,
-    "prontidao": 3,
-    "integridade": 7
+    "prontidao": 4,
+    "integridade": 7,
+    "sobrevivencia": 0,
+    "sociabilidade": 3,
+    "ocultismo": 4,
+    "oratoria": 0,
+    "empatia": 3,
+    "armas": 5
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0,
+    "disparo": 4
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 5,
     "conviccao": 5,
-    "temperanca": 4,
-    "valor": 5
+    "temperanca": 4
   },
-  "willpower": 11,
+  "vontade": 11,
   "aparencia": 12,
-  "arte": {
-    "raio": 4,
-    "luz": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    },
+    "voo": {
+      "batalha": 15
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {
+    "cura": 4,
     "protecao": 4,
+    "luz": 4,
     "fascinacao": 4,
-    "cura": 4
+    "raio": 4
   },
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Espada longa",
+      "arma": "espada-longa",
+      "habilidade": "armas"
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "forma-de-globo-de-luz",
+      "nome": "Aura sagrada",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "protecao",
+        "nivel": 4
+      },
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "6 m",
+      "area": "a própria ghaele e os aliados no raio",
+      "efeito": "soma +4 em Esquiva, Bloqueio e Defesa Mental",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    },
+    {
       "nome": "Forma de globo de luz",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "espirito",
         "nivel": 3
       },
-      "resiste": "nenhum",
-      "efeito": "Forma de globo de luz",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
-  "fraquezas": [
-    "profano"
-  ],
-  "habilidades": [
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até desfazer com outra ação",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "vira o globo da Variante ou retorna à forma humanoide desta ficha; o equipamento só existe na forma humanoide",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
+    },
     {
       "nome": "Raio de luz",
-      "descricao": "ataque a 9m que cega o alvo se falhar em Resistência"
+      "formas": [
+        "globo-de-luz"
+      ],
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "luz",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 7, Vigor + Disparo",
+      "duracao": "instantânea; a cegueira dura 12 Ticks",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "o raio fere se acertar e ofusca os olhos do atingido",
+      "dano": "2d6 + Centelha, fenômeno",
+      "resistencia": "corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Forma de globo de luz",
-      "descricao": "vira esfera luminosa, ganhando voo e Absorção alta contra ataques físicos"
+      "nome": "Sem membros para bloquear",
+      "formas": [
+        "globo-de-luz"
+      ],
+      "classe": "regra da ficha",
+      "ativacao": "passiva",
+      "duracao": "enquanto estiver na forma de globo",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "não pode bloquear nem aparar ataques, por não ter membros",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "contínuo"
     },
     {
-      "nome": "Feitiços feéricos",
-      "descricao": "lança livremente magias de ilusão, encantamento e proteção"
+      "nome": "Corpo de luz",
+      "formas": [
+        "globo-de-luz"
+      ],
+      "classe": "sem regra ainda",
+      "efeito": "na forma luminosa, o corpo incorpóreo atravessa matéria e resiste a ferimentos comuns"
     },
     {
       "nome": "Detectar pensamentos e o mal",
-      "descricao": "percebe intenções e alinhamento a até 18m"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "adivinhacao",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "até o fim da cena",
+      "alcance": "18 m",
+      "area": "uma criatura por ação",
+      "efeito": "sente intenção imediata e presença de mal sobrenatural, sem ler lembranças",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Perspicácia + Integridade; quem passa conserva a intenção oculta",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Resistência a magia",
-      "descricao": "chance de anular feitiços dirigidos a ela"
+      "nome": "Resistência à magia 25",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Aura de beleza",
-      "descricao": "quem a encarar e falhar em Vontade fica Abalado ou fascinado"
+      "formas": [
+        "humanoide"
+      ],
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "ativacao": "nenhuma; quando alguém a encara",
+      "duracao": "12 Ticks",
+      "alcance": "6 m",
+      "area": "um inimigo que a encare",
+      "efeito": "quem falha fica Abalado e hesita diante da beleza",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Oratória; quem passa ignora a aura nesta cena",
+      "limiteDeUso": "uma resistência por alvo por cena"
+    },
+    {
+      "nome": "Fascinar pela beleza",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem contempla a ghaele pode se esquecer da luta"
+    },
+    {
+      "nome": "Ilusões feéricas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "cria imagens ilusórias para confundir inimigos"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "Feitiços feéricos",
+      "formas": [
+        "humanoide"
+      ],
+      "texto": "combina Luz, Raio, Fascinação, Cura e Proteção para ocultar aliados, distrair perseguidores e manter seus protegidos vivos."
+    },
+    {
+      "nome": "guarda celestial",
+      "formas": [
+        "globo-de-luz"
+      ],
+      "texto": "luta como globo para sobrevoar o campo e cegar perseguidores; volta à forma humanoide quando precisa da espada."
+    },
+    {
+      "nome": "combate na outra forma",
+      "formas": [
+        "humanoide"
+      ],
+      "texto": "luta com a espada longa e conjura para proteger seus aliados."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "acompanha os movimentos e a luz do ambiente",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "sem dado",
+    "camuflagem": "passa por elfa",
+    "mente": "inteligente, comprometida com seus protegidos",
+    "tracos": "guerreira de beleza sobrenatural que assume forma luminosa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "cortejo de aliados",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "não se aplica",
+    "dianteDeGente": "socorre e protege"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Campeã celeste que socorre causas justas e desaparece antes dos agradecimentos. Alterna entre guerreira de beleza sobrenatural e globo luminoso.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -135,43 +305,109 @@
       "texto": "Por vir de um plano ligado ao véu feérico, uma ghaele às vezes é confundida com espírito da natureza pelos animistas de Syl, que a recebem com reverência sem saber que lidam com uma potência muito além dos kami locais."
     }
   ],
-  "ecologia": {
-    "tipo": "Celestial",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/ghaele-azata_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "globo-de-luz",
+      "nome": "globo de luz",
+      "equipamento": {
+        "arsenal": []
+      },
+      "deslocamento": {
+        "terra": {
+          "batalha": 0,
+          "arranque": 0,
+          "corrida": 0
+        },
+        "nado": {
+          "batalha": 0
+        },
+        "escalada": {
+          "batalha": 0
+        }
+      },
+      "corpo": {
+        "postura": "pairando",
+        "apoio": "outro",
+        "altura": 0.5542,
+        "comprimento": 0.5542,
+        "comprimentoSemCauda": 0.5542,
+        "largura": 0.5542,
+        "profundidade": 0.5542,
+        "semMassa": true,
+        "volume": 0.089109,
+        "area": 0.2412,
+        "naoErgue": true
+      },
+      "atributos": {
+        "forca": 0
+      },
+      "fisiologia": {
+        "prendeRespiracao": "não precisa",
+        "camuflagem": "nenhuma, emite luz",
+        "tracos": "globo luminoso sem membros"
+      },
+      "ataques": [
+        {
+          "nome": "Raio de luz",
+          "parte": "raio-de-luz",
+          "habilidade": "disparo",
+          "acerto": 0,
+          "bloqueiaComoArma": null,
+          "nivelPerfuracao": 0,
+          "classe": "distancia",
+          "pgr": [
+            3,
+            1,
+            3
+          ],
+          "dado": "2d6",
+          "multiplicadorForca": 0,
+          "tipoDano": "fenomeno"
+        }
+      ]
+    }
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "profano",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Ocultismo 4, Oratória 4, Prontidão 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Ghaele (azata)",
-    "cr": "13",
-    "tipo": "exterior Médio (celestial)",
-    "tamanho": "medio",
-    "valores": {
-      "for": 20,
-      "des": 21,
-      "con": 18,
-      "int": 20,
-      "sab": 20,
-      "car": 24
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Aura sagrada",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Ocultismo 4",
-      "Oratória 4",
-      "Prontidão 4"
-    ],
-    "nota": "Cavaleiro-estrela: Centelha 5.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Forma de globo de luz",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Raio de luz",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Detectar pensamentos e o mal",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Aura de beleza",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "formas.globo-de-luz",
+      "motivo": "Volume por equivalência ao corpo documentado: 90 ÷ 1.010 = 0,089109 m³. Diâmetro (6 × volume ÷ π)^(1/3) = 0,5542 m; área π × diâmetro² ÷ 4 = 0,2412 m². Tabela: 25 + 3 × Vigor 5 = 40 PV. Retirado o aumento obtido pela esfera arbitrária de 1 m. Ghaele, Light Form: luz voa e dispara, mas não conjura nem golpeia fisicamente; retirados Bloqueio 0 e Musculatura 0, pois as Habilidades são fixas entre formas; o Peso erguido não ergue exprime corpo.naoErgue e a proibição de bloquear fica na habilidade especial marcada da forma, sem alterar os níveis. a conferir."
+    }
+  ]
 }

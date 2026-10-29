@@ -1,83 +1,177 @@
 {
-  "ordem": 176,
   "id": "manto-escuro",
   "idAntigo": "mon-darkmantle",
   "nome": "Manto Escuro",
   "nomeIngles": "Darkmantle",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Pequeno",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/manto-escuro_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "envergadura de tentáculos 1,5 m",
-    "peso": "18 kg"
-  },
-  "locomocao": {
-    "terra": 2,
-    "voo": 3
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "pendurado no teto; abre os tentáculos ao cair",
+    "apoio": "outro",
+    "altura": 0.26,
+    "largura": 0.54,
+    "profundidade": null,
+    "comprimento": 1.65,
+    "massa": 18,
+    "area": 2.64,
+    "posturaDoTamanho": "tentáculos abertos",
+    "segundoTamanho": {
+      "area": 0.51,
+      "posturaDoTamanho": "de cima, tentáculos juntos, pendurado"
+    }
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 1,
+    "furtividade": 3,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 2,
+    "sociabilidade": 0,
+    "sobrevivencia": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "voo": 1,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "pendurado no teto",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
-  "aparencia": 5,
+  "vontade": 6,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 0,
-      "ticks": 5
+      "nome": "Tentáculos",
+      "parte": "tentaculos",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Constrição",
-      "descricao": "Envolve a presa com seus tentáculos membranosos e aperta continuamente, causando dano a cada instante que a mantém presa."
+      "nome": "constrição",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Tentáculos",
+      "regra": "agarrar",
+      "texto": "envolve a presa, de preferência pela cabeça, e aperta"
     },
     {
-      "nome": "Escuridão Instintiva",
-      "descricao": "Uma vez por dia, envolve a área ao redor em trevas mágicas, cegando a visão comum dos que dependem de luz."
-    },
-    {
-      "nome": "Camuflagem de Estalactite",
-      "descricao": "Pendurado no teto por ganchos nos tentáculos, confunde-se com uma estalactite comum até o momento de atacar."
-    },
-    {
-      "nome": "Ecolocalização",
-      "descricao": "Percebe o ambiente ao redor mesmo sem enxergar, detectando movimento por vibração no ar em curto alcance."
+      "nome": "Escuridão instintiva",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 4
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "18 Ticks",
+      "alcance": "o próprio corpo",
+      "area": "esfera de 6 m em volta dele",
+      "efeito": "trevas mágicas cobrem a área; quem depende de luz fica Na escuridão",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "emboscada do teto",
+      "formas": "todas",
+      "texto": "pendura-se no teto como estalactite, espera a presa passar, cai sobre a cabeça dela, envolve e aperta; chama a escuridão se a presa traz luz."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "ecolocalização",
+      "descricao": "percebe o ambiente em volta sem enxergar, pela vibração do ar, a curto alcance",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "no teto, como estalactite; Furtividade (pendurado no teto) +3",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "manto escuro e rugoso com tentáculos ligados por membrana e ganchos nas pontas; vive poucos meses"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando pequeno nas cavernas",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "carnívoro",
+    "caca": "emboscada do teto",
+    "dianteDeGente": "cai sobre quem passa"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas",
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Emboscador de caverna que se pendura no teto como um morcego gigante e se confunde com uma estalactite. Espera em silêncio a presa passar por baixo, solta-se, envolve-a nos tentáculos e aperta.",
   "lore": [
     {
       "titulo": "Emboscada do Teto",
@@ -88,40 +182,30 @@
       "texto": "Cresce e envelhece em poucos meses, e essa rapidez faz suas populações mudarem de geração em geração conforme o ambiente da caverna que habitam."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Underground",
-      "Ruins",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/manto-escuro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Darkmantle",
-    "cr": "1",
-    "tipo": "besta mágica Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 11,
-      "des": 15,
-      "con": 14,
-      "int": 2,
-      "sab": 11,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Escuridão instintiva",
+      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Sombra 4 (Escuridão Viva); o Na escuridão é a condição do livro para \"cegando a visão comum\" (site)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2
+    {
+      "campo": "corpo.area",
+      "motivo": "Pequeno para Grande, pela postura de ataque (D-215). Em jogo: o humano ganha +3 contra ele, e não −3 de longe"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"1d6 +3 perfurante\", 5 Ticks, dano médio 6,5). A ficha fica com os tentáculos, Leves, como o braço do polvo. Dano médio: 6,5 antes; depois, tentáculos 4,5"
+    }
+  ]
 }

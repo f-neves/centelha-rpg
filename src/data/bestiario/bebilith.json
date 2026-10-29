@@ -1,101 +1,258 @@
 {
-  "ordem": 157,
   "id": "bebilith",
   "idAntigo": "mon-bebilith",
   "nome": "Bebilith",
   "nomeIngles": "Bebilith",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Enorme",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/bebilith_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "7 m de comprimento",
-    "peso": "2.700 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "escalada": 2
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "sobre as patas; escala parede e teto",
+    "apoio": "outro",
+    "altura": 1.9,
+    "largura": 1.8,
+    "profundidade": null,
+    "comprimento": 3,
+    "massa": 2700,
+    "area": 7.44,
+    "posturaDoTamanho": "de cima, sobre as patas"
+  },
+  "couraca": 5,
+  "atributos": {
     "forca": 11,
     "destreza": 3,
     "vigor": 9,
-    "influencia": 3,
-    "perspicacia": 3,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 3,
+    "perspicacia": 3,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 2,
+    "integridade": 3,
     "prontidao": 1,
-    "integridade": 3
+    "resistencia": 5,
+    "sobrevivencia": 3,
+    "ocultismo": 1
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "disparo": 3,
+    "escalada": 5,
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {
+    "escalada": [
+      {
+        "foco": "parede e teto",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "escalada": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Mordida",
+      "parte": "queliceras",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 2,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras",
+      "parte": "patas-dianteiras-farpadas",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Teia Abissal",
-      "descricao": "Dispara um fio de teia grudenta a distância, prendendo a presa no lugar até que ela se liberte pela força."
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
     },
     {
-      "nome": "Mordida Apodrecedora",
-      "descricao": "A mordida injeta uma podridão que continua a consumir a carne e drenar o Vigor da vítima por várias rodadas após o ataque, um efeito que só cede a curas poderosas."
+      "nome": "garras e mordida juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga com as patas e morde na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a Mordida é outra ação"
     },
     {
-      "nome": "Desarme Brutal",
-      "descricao": "Acertando com as duas garras ao mesmo tempo, arranca e destroça a armadura e o escudo do inimigo, deixando-os quebrados no chão."
+      "nome": "Teia abissal",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância (Vigor + Disparo)",
+      "duracao": "até o alvo escapar",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "o fio grudento prende o alvo no lugar: não se desloca, mas age, como preso pela Rede do livro; escapa com Força + Atletismo contra o total do disparo, gastando a ação",
+      "dano": "nenhum",
+      "resistencia": "esquiva, contra a jogada do disparo; quem passa não fica preso",
+      "limiteDeUso": "um fio por ação"
     },
     {
-      "nome": "Golpe que Atravessa",
-      "descricao": "Suas garras e presas ultrapassam quase qualquer proteção sobrenatural comum, sendo especialmente devastadoras contra demônios."
+      "nome": "Mordida apodrecedora",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "a Mordida que fere",
+      "duracao": "18 Ticks",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "a podridão continua a comer a carne depois da mordida",
+      "dano": "1d6 a cada 6 Ticks, por 18 Ticks",
+      "resistencia": "corpo, contra a jogada da mordida; quem passa só leva a mordida",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Passagem entre Planos",
-      "descricao": "Uma vez por cena, pode abrir uma fenda para outro plano e desaparecer com o corpo inteiro, escapando ou emboscando à vontade."
+      "nome": "só cede a cura poderosa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a podridão da mordida não para com cura comum"
     },
     {
-      "nome": "Sentidos do Abismo",
-      "descricao": "Enxerga no escuro absoluto e fareja presas ocultas mesmo através de névoas e fumaças abissais."
+      "nome": "desarme brutal",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quando as duas garras da Rajada acertam o mesmo alvo, arranca e destroça a armadura e o escudo dele, que caem quebrados"
     },
     {
-      "nome": "Escalador Nato",
-      "descricao": "Sobe superfícies verticais e tetos com a mesma facilidade com que se move no chão."
+      "nome": "golpe que atravessa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "garras e presas passam pela proteção sobrenatural comum, e mais ainda contra demônios"
+    },
+    {
+      "nome": "passagem entre planos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma vez por cena, abre uma fenda para outro plano e some com o corpo inteiro, para fugir ou para emboscar"
+    },
+    {
+      "nome": "Escalador nato",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "andar-de-aranha",
+        "nivel": 4
+      }
+    },
+    {
+      "nome": "Faro",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "faro",
+        "nivel": 1
+      }
+    },
+    {
+      "nome": "medonho",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem vê a bebilith pela primeira vez sente o nojo e o pavor de uma aranha do tamanho de uma casa; o corpo quer recuar antes de qualquer golpe"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçadora de demônios",
+      "formas": "todas",
+      "texto": "tece a teia em fendas e cavernas e espera; prende de longe, cai sobre a presa, quebra a armadura com as patas e apodrece a carne com a mordida; abre uma fenda e some quando a caça não vale a pena."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "acha presa escondida pelo cheiro, mesmo através de névoa e fumaça (Técnica faro, Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "no escuro das fendas, com a Furtividade",
+    "mente": "inteligente, de caçador",
+    "tracos": "aranha verminosa de corpo escuro e brilhante, patas compridas e farpadas, quelíceras grossas e muitos olhos; não precisa comer, mas mastiga carne de demônio por gosto"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha",
+    "atividade": "qualquer hora",
+    "dieta": "carne de demônio, por gosto; não precisa comer",
+    "caca": "teia em fendas e cavernas, emboscada",
+    "dianteDeGente": "caça se for presa fácil; prefere demônios"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Predador que caça os próprios demônios no Abismo, aranha do tamanho de uma casa com teia, patas farpadas e uma mordida que apodrece. É mais esperta do que parece, e só não vira flagelo dos planos porque só quer caçar.",
   "lore": [
     {
       "titulo": "Natureza",
@@ -110,38 +267,71 @@
       "texto": "Não precisa se alimentar para sobreviver, mas mesmo assim aprecia mastigar carne demoníaca, tecendo suas teias em fendas e cavernas do Abismo à espera da próxima presa."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any"
+  "imagens": [
+    "bestiario/bebilith_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
-    ]
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Bebilith",
-    "cr": "10",
-    "tipo": "exterior Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 28,
-      "des": 12,
-      "con": 24,
-      "int": 11,
-      "sab": 13,
-      "car": 13
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Teia abissal",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Mordida apodrecedora",
+      "motivo": "números sugeridos pela ficha (D-197); 1d6 a cada 6 Ticks por 18 Ticks é número da ficha (D-197); \"drenar o Vigor\" do site ficou como dano, porque o livro não tem dreno de Atributo"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesSec.disparo",
+      "motivo": "O fio de teia lançado de longe: ataque natural a distância, Vigor + Disparo (decisoes-autor §14)"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "O site não dá; o corpo de 0,95 m de espessura erguido cerca de um metro sobre as patas"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Os 7 m do site são as patas abertas; o corpo é a medida da ficha, como na aranha gigante"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Cerca de 60% do comprimento do corpo"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de quitina de um artrópode de 2,7 t, como o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); 5, carapaça de quitina, como o crocodilo"
+    },
+    {
+      "campo": "comportamento.dianteDeGente",
+      "motivo": "site"
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "A \"Mordida Apodrecedora\" (site): as quelíceras que furam com a cabeça atrás, Média (`regra-construcao.md` §7). N2: presas de quitina de um bicho de 2,7 t . Leva a podridão (Manobras). Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "2,7 t, a do site, que fecha com o elipsoide do corpo; altura, comprimento do corpo e largura são da ficha, porque o site só dá os 7 m das patas"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "7,44 m² pelo método da aranha gigante (corpo de cima mais oito patas); patas de 2,0 × 0,2 m são estimativa"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 3 dados e 7 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida e as garras ficam Médias, e é aqui que a ficha mais perde dano (de 2d6 + 11 para 1d6 + 11)"
+    }
+  ]
 }

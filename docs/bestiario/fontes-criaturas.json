@@ -1,0 +1,6790 @@
+{
+  "aasimar": {
+    "livro": "PF Bestiary 1",
+    "nome": "Aasimar",
+    "cr": "1/2",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 8,
+      "des": 10,
+      "con": 14,
+      "int": 13,
+      "sab": 17,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "aboleth": {
+    "livro": "PF B1",
+    "nome": "Aboleth",
+    "cr": "7",
+    "tipo": "aberração Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 12,
+      "con": 20,
+      "int": 18,
+      "sab": 17,
+      "car": 17
+    },
+    "pericias": [
+      "Conhecimentos 4",
+      "Ocultismo 3",
+      "Percepção 3"
+    ],
+    "nota": "Poderes psíquicos e magia ancestral: Centelha 4.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60; em terra 10, e o aboleth não sai da água"
+    },
+    "crConf": "confirmado"
+  },
+  "aguia-gigante": {
+    "livro": "PF B1",
+    "nome": "Águia Gigante",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 15,
+      "int": 10,
+      "sab": 14,
+      "car": 13
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2"
+    ],
+    "nota": "Besta mágica inteligente: Centelha 1.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80; em terra a águia salta 10 ft"
+    },
+    "crConf": "confirmado"
+  },
+  "ankheg": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ankheg",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 10,
+      "con": 17,
+      "int": 1,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "anquilossauro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ankylosaurus",
+    "cr": "6",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "aranha-das-fases": {
+    "livro": "MM 3.5",
+    "nome": "Aranha das Fases",
+    "cr": "5",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 17,
+      "con": 16,
+      "int": 7,
+      "sab": 13,
+      "car": 11
+    },
+    "pericias": [
+      "Furtividade 3"
+    ],
+    "nota": "Salto etéreo: Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "aranha-gigante": {
+    "livro": "PF B1",
+    "nome": "Aranha Gigante",
+    "cr": "1",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 11,
+      "des": 17,
+      "con": 12,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atletismo 3"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "arconte-cao": {
+    "livro": "MM 3.5",
+    "nome": "Archon Cão",
+    "cr": "4",
+    "tipo": "exterior Médio (celestial)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 18,
+      "des": 14,
+      "con": 16,
+      "int": 13,
+      "sab": 14,
+      "car": 12
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2"
+    ],
+    "nota": "Teletransporte, aura de menaça: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "arconte-lanterna": {
+    "livro": "PF Bestiary 1",
+    "nome": "Lantern Archon",
+    "cr": "2",
+    "tipo": "exterior (anjo) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 1,
+      "des": 11,
+      "con": 12,
+      "int": 6,
+      "sab": 11,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60 (perfeito): a esfera de luz não tem passo"
+    },
+    "crConf": "confirmado"
+  },
+  "arconte-trombeta": {
+    "livro": "PF Bestiary 1",
+    "nome": "Trumpet Archon",
+    "cr": "14",
+    "tipo": "exterior (anjo) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 17,
+      "con": 25,
+      "int": 16,
+      "sab": 20,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "arqueiro": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "1",
+    "crConf": "estimado"
+  },
+  "assassino-das-sombras": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "10",
+    "crConf": "estimado"
+  },
+  "assombracao": {
+    "livro": "PF B1",
+    "nome": "Assombração (Wraith)",
+    "cr": "5",
+    "tipo": "morto-vivo Médio (incorpóreo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 16,
+      "con": "-",
+      "int": 14,
+      "sab": 14,
+      "car": 21
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Persuasão 3",
+      "Prontidão 3"
+    ],
+    "nota": "Dreno de Constituição, incorpóreo (Car 21 → Vigor 6): Centelha 2.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60: incorpórea, não pisa"
+    },
+    "crConf": "confirmado"
+  },
+  "auroque": {
+    "livro": "PF Bestiary 1",
+    "nome": "Aurochs",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "babau": {
+    "livro": "PF Bestiary 1",
+    "nome": "Babau",
+    "cr": "6",
+    "tipo": "exterior (demônio) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 13,
+      "con": 20,
+      "int": 14,
+      "sab": 13,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "balor": {
+    "livro": "PF B1",
+    "nome": "Balor",
+    "cr": "20",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 35,
+      "des": 25,
+      "con": 36,
+      "int": 24,
+      "sab": 24,
+      "car": 27
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 5",
+      "Prontidão 5",
+      "Liderança 5"
+    ],
+    "nota": "Senhor demoníaco: extrapola o teto mortal, Centelha 8. Str 35 → curva 10 +1 tamanho = Força 11; Con 36 → Vigor 11.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "bandido-de-estrada": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "1/2",
+    "crConf": "estimado"
+  },
+  "barghest": {
+    "livro": "PF Bestiary 1",
+    "nome": "Barghest",
+    "cr": "4",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 15,
+      "int": 14,
+      "sab": 14,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "barghest-maior": {
+    "livro": "PF Bestiary 1",
+    "nome": "Greater Barghest",
+    "cr": "7",
+    "tipo": "exterior Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 15,
+      "con": 19,
+      "int": 18,
+      "sab": 18,
+      "car": 18
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "basidirond": {
+    "livro": "PF Bestiary 1",
+    "nome": "Basidirond",
+    "cr": "5",
+    "tipo": "planta Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 13,
+      "con": 16,
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "basilisco": {
+    "livro": "PF B1",
+    "nome": "Basilisco",
+    "cr": "5",
+    "tipo": "besta mágica Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 8,
+      "con": 15,
+      "int": 2,
+      "sab": 13,
+      "car": 11
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Prontidão 3"
+    ],
+    "nota": "Naturalmente mágico, olhar petrificante: Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "bebilith": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bebilith",
+    "cr": "10",
+    "tipo": "exterior Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 28,
+      "des": 12,
+      "con": 24,
+      "int": 11,
+      "sab": 13,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "behir": {
+    "livro": "MM 3.5",
+    "nome": "Behir",
+    "cr": "8",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 13,
+      "con": 21,
+      "int": 7,
+      "sab": 14,
+      "car": 12
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 3"
+    ],
+    "nota": "Sopro elétrico: Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "besouro-de-fogo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Fire Beetle",
+    "cr": "1/3",
+    "tipo": "praga Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 11,
+      "con": 11,
+      "int": "-",
+      "sab": 10,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "besouro-veado-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Stag Beetle",
+    "cr": "4",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 10,
+      "con": 15,
+      "int": "-",
+      "sab": 10,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "besta-deslocadora": {
+    "livro": "MM 3.5",
+    "nome": "Besta Deslocadora",
+    "cr": "4",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 12,
+      "sab": 12,
+      "car": 8
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Deslocamento (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "estimado"
+  },
+  "bisao": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bison",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 10,
+      "con": 19,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "boca-tagarela": {
+    "livro": "PF Bestiary 1",
+    "nome": "Gibbering Mouther",
+    "cr": "5",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 24,
+      "int": 4,
+      "sab": 13,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "bodak": {
+    "livro": "MM 3.5",
+    "nome": "Bodak",
+    "cr": "8",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": "-",
+      "int": 6,
+      "sab": 12,
+      "car": 16
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 2"
+    ],
+    "nota": "Olhar mortal (Su): Centelha 3.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "boggard": {
+    "livro": "PF Bestiary 1",
+    "nome": "Boggard",
+    "cr": "2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 9,
+      "con": 14,
+      "int": 8,
+      "sab": 11,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "bralani": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bralani",
+    "cr": "6",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 18,
+      "con": 19,
+      "int": 13,
+      "sab": 14,
+      "car": 15
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "braquiossauro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Brachiosaurus",
+    "cr": "10",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 37,
+      "des": 10,
+      "con": 21,
+      "int": 2,
+      "sab": 13,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "bruto": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "1",
+    "crConf": "estimado"
+  },
+  "bruxa-do-mar": {
+    "livro": "PF Bestiary 1",
+    "nome": "Sea Hag",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 19,
+      "des": 16,
+      "con": 18,
+      "int": 12,
+      "sab": 13,
+      "car": 15
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "conhecido"
+  },
+  "bruxa-noturna": {
+    "livro": "PF Bestiary 1",
+    "nome": "Night Hag",
+    "cr": "9",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 19,
+      "con": 22,
+      "int": 18,
+      "sab": 16,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "bruxa-verde": {
+    "livro": "MM 3.5",
+    "nome": "Bruxa Verde (Hag)",
+    "cr": "5",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 12,
+      "con": 18,
+      "int": 13,
+      "sab": 13,
+      "car": 14
+    },
+    "pericias": [
+      "Ocultismo 3",
+      "Manha 3",
+      "Furtividade 2"
+    ],
+    "nota": "Fraqueza mística, mímica, feitiços: Centelha 3.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "bugbear": {
+    "livro": "PF B1",
+    "nome": "Bugbear",
+    "cr": "2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 13,
+      "con": 13,
+      "int": 10,
+      "sab": 10,
+      "car": 9
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "bulette": {
+    "livro": "PF B1",
+    "nome": "Bulette",
+    "cr": "7",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 13,
+      "con": 23,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "pericias": [
+      "Atletismo 3",
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "buscador": {
+    "livro": "PF Bestiary 1",
+    "nome": "Retriever",
+    "cr": "11",
+    "tipo": "constructo Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 22,
+      "des": 16,
+      "con": "-",
+      "int": 3,
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cachorro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dog",
+    "cr": "1/3",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 13,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cachorro-de-guarda": {
+    "livro": "PF Bestiary 1",
+    "nome": "Riding Dog",
+    "cr": "1",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "campeao": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "12",
+    "crConf": "estimado"
+  },
+  "campeao-esqueletico": {
+    "livro": "PF Bestiary 1",
+    "nome": "Skeletal Champion",
+    "cr": "2",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 13,
+      "con": "-",
+      "int": 9,
+      "sab": 10,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "conhecido"
+  },
+  "campones-assustado": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "1/2",
+    "crConf": "estimado"
+  },
+  "cao-de-guerra-nessiano": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nessian Warhound",
+    "cr": "9",
+    "tipo": "exterior (fogo) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 15,
+      "con": 21,
+      "int": 4,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cao-infernal": {
+    "livro": "PF Bestiary 1",
+    "nome": "Hell Hound",
+    "cr": "3",
+    "tipo": "exterior (fogo) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 13,
+      "con": 15,
+      "int": 6,
+      "sab": 10,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cao-yeth": {
+    "livro": "PF Bestiary 1",
+    "nome": "Yeth Hound",
+    "cr": "3",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 15,
+      "int": 6,
+      "sab": 14,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "capa-sombria": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cloaker",
+    "cr": "5",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 16,
+      "con": 19,
+      "int": 14,
+      "sab": 15,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 10, e o manto vive no ar"
+    },
+    "crConf": "confirmado"
+  },
+  "capitao-da-guarda": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "4",
+    "crConf": "estimado"
+  },
+  "caranguejo-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Crab",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 13,
+      "con": 14,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "carcaju": {
+    "livro": "PF Bestiary 1",
+    "nome": "Wolverine",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "carcaju-atroz": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Wolverine",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 17,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cauchemar": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cauchemar",
+    "cr": "11",
+    "tipo": "exterior Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 31,
+      "des": 15,
+      "con": 21,
+      "int": 16,
+      "sab": 12,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cavaleiro-de-elite": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "4",
+    "crConf": "estimado"
+  },
+  "cavalo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Horse",
+    "cr": "1",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 14,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "centauro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Centaur",
+    "cr": "3",
+    "tipo": "humanoide monstruoso Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 15,
+      "des": 14,
+      "con": 15,
+      "int": 11,
+      "sab": 14,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "centopeia-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Centipede",
+    "cr": "1/2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 9,
+      "des": 15,
+      "con": 12,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "chuul": {
+    "livro": "PF Bestiary 1",
+    "nome": "Chuul",
+    "cr": "7",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 16,
+      "con": 18,
+      "int": 10,
+      "sab": 14,
+      "car": 5
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ciclope": {
+    "livro": "PF B1",
+    "nome": "Ciclope",
+    "cr": "5",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 8,
+      "con": 18,
+      "int": 9,
+      "sab": 12,
+      "car": 9
+    },
+    "pericias": [
+      "Ofícios 2",
+      "Prontidão 2"
+    ],
+    "nota": "Lampejo de premonição (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cobra-de-ferro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Iron Cobra",
+    "cr": "2",
+    "tipo": "constructo Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 15,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cocatriz": {
+    "livro": "PF B1",
+    "nome": "Cocatriz",
+    "cr": "3",
+    "tipo": "besta mágica Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 6,
+      "des": 17,
+      "con": 11,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 2"
+    ],
+    "nota": "Toque que petrifica: Centelha 2.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20: a cocatriz é bicho de asa"
+    },
+    "crConf": "confirmado"
+  },
+  "comandante": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "4",
+    "crConf": "estimado"
+  },
+  "corujurso": {
+    "livro": "PF B1",
+    "nome": "Corujurso",
+    "cr": "4",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 12,
+      "con": 18,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 4"
+    ],
+    "nota": "Besta mágica: Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "corvo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Raven",
+    "cr": "1/6",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 2,
+      "des": 15,
+      "con": 8,
+      "int": 2,
+      "sab": 15,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 10"
+    },
+    "crConf": "conhecido"
+  },
+  "couatl": {
+    "livro": "PF B1",
+    "nome": "Couatl",
+    "cr": "10",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 21,
+      "con": 17,
+      "int": 18,
+      "sab": 20,
+      "car": 19
+    },
+    "pericias": [
+      "Ocultismo 4",
+      "Persuasão 3",
+      "Prontidão 4"
+    ],
+    "nota": "Serpente emplumada mágica: Centelha 4.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; a serpente alada rasteja 20 e não é assim que ela vai"
+    },
+    "crConf": "confirmado"
+  },
+  "crocodilo-do-nilo": {
+    "livro": "PF B1",
+    "nome": "Crocodilo",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 15,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cubo-gelatinoso": {
+    "livro": "PF B1",
+    "nome": "Cubo Gelatinoso",
+    "cr": "3",
+    "tipo": "limo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 10,
+      "des": 1,
+      "con": 26,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Mente vazia: Int/Rac 0. Con 26 + tamanho = Vigor 9. Centelha 1.",
+    "deslocamento": {
+      "ft": 15,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "cultista": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "2",
+    "crConf": "estimado"
+  },
+  "daeodon": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Boar (Daeodon)",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "deinonico": {
+    "livro": "PF Bestiary 1",
+    "nome": "Deinonychus",
+    "cr": "3",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "derro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Derro",
+    "cr": "3",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 15,
+      "con": 18,
+      "int": 10,
+      "sab": 5,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "deva-astral": {
+    "livro": "PF B1",
+    "nome": "Deva Astral",
+    "cr": "14",
+    "tipo": "exterior Médio (anjo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 26,
+      "des": 19,
+      "con": 21,
+      "int": 18,
+      "sab": 18,
+      "car": 23
+    },
+    "pericias": [
+      "Armas 4",
+      "Ocultismo 4",
+      "Persuasão 4",
+      "Prontidão 4"
+    ],
+    "nota": "Anjo mensageiro: Centelha 5.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "devorador-de-intelecto": {
+    "livro": "PF Bestiary 1",
+    "nome": "Intellect Devourer",
+    "cr": "8",
+    "tipo": "aberração Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 23,
+      "con": 21,
+      "int": 16,
+      "sab": 10,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "diabo-barbado": {
+    "livro": "MM 3.5",
+    "nome": "Diabo Barbado",
+    "cr": "5",
+    "tipo": "exterior Médio (diabo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 17,
+      "int": 6,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Armas 3",
+      "Prontidão 3"
+    ],
+    "nota": "Teletransporte, doença infernal: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "diabo-chifrudo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Horned Devil (Cornugon)",
+    "cr": "16",
+    "tipo": "exterior (diabo) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 31,
+      "des": 27,
+      "con": 28,
+      "int": 14,
+      "sab": 22,
+      "car": 23
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "diabo-de-gelo": {
+    "livro": "MM 3.5",
+    "nome": "Diabo de Gelo",
+    "cr": "13",
+    "tipo": "exterior Grande (diabo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 21,
+      "con": 25,
+      "int": 22,
+      "sab": 20,
+      "car": 20
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 4",
+      "Liderança 4"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "diabo-do-fosso-pit-fiend": {
+    "livro": "PF B1",
+    "nome": "Diabo do Fosso (Pit Fiend)",
+    "cr": "20",
+    "tipo": "exterior Grande (diabo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 37,
+      "des": 29,
+      "con": 35,
+      "int": 26,
+      "sab": 30,
+      "car": 26
+    },
+    "pericias": [
+      "Ocultismo 5",
+      "Liderança 5",
+      "Prontidão 5",
+      "Persuasão 5"
+    ],
+    "nota": "Príncipe infernal: Centelha 8. Str 37 → curva 11 +1 = Força 12; Con 35 → Vigor 11; Sab 30 → Percepção 9.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "diabo-espinhoso": {
+    "livro": "PF Bestiary 1",
+    "nome": "Barbed Devil (Hamatula)",
+    "cr": "11",
+    "tipo": "exterior (diabo) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 23,
+      "des": 23,
+      "con": 22,
+      "int": 12,
+      "sab": 15,
+      "car": 18
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "diabo-osseo": {
+    "livro": "MM 3.5",
+    "nome": "Diabo Ósseo",
+    "cr": "9",
+    "tipo": "exterior Grande (diabo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 19,
+      "con": 21,
+      "int": 16,
+      "sab": 18,
+      "car": 18
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Furtividade 3",
+      "Ocultismo 3"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "diabrete-imp": {
+    "livro": "PF B1",
+    "nome": "Diabrete (Imp)",
+    "cr": "2",
+    "tipo": "exterior Minúsculo (diabo)",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 10,
+      "int": 13,
+      "sab": 12,
+      "car": 14
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Manha 3"
+    ],
+    "nota": "Invisibilidade, adivinhação, forma alternativa: Centelha 2.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50 (perfeito); em terra 20"
+    },
+    "crConf": "confirmado"
+  },
+  "djinn": {
+    "livro": "PF B1",
+    "nome": "Djinn",
+    "cr": "5",
+    "tipo": "exterior Grande (ar)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 19,
+      "con": 14,
+      "int": 14,
+      "sab": 15,
+      "car": 15
+    },
+    "pericias": [
+      "Ofícios 3",
+      "Persuasão 3",
+      "Prontidão 2"
+    ],
+    "nota": "Gênio do ar, magia inata: Centelha 3.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "doninha": {
+    "livro": "PF Bestiary 1",
+    "nome": "Weasel",
+    "cr": "1/2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 15,
+      "con": 10,
+      "int": 2,
+      "sab": 12,
+      "car": 5
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "doppelganger": {
+    "livro": "PF B1",
+    "nome": "Doppelganger",
+    "cr": "3",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 13,
+      "con": 14,
+      "int": 13,
+      "sab": 14,
+      "car": 13
+    },
+    "pericias": [
+      "Manha 4",
+      "Empatia 3",
+      "Furtividade 2"
+    ],
+    "nota": "Mudar de forma, ler a mente: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dracolisk": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dracolisk",
+    "cr": "7",
+    "tipo": "dragão Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 24,
+      "des": 8,
+      "con": 21,
+      "int": 4,
+      "sab": 13,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dragao-azul-adulto": {
+    "livro": "PF B1",
+    "nome": "Dragão Azul Adulto",
+    "cr": "13",
+    "tipo": "dragão Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 29,
+      "des": 10,
+      "con": 23,
+      "int": 16,
+      "sab": 17,
+      "car": 16
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Prontidão 4",
+      "Manha 4"
+    ],
+    "nota": "Sopro elétrico, ilusionista do deserto: Centelha 5.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dragao-branco-jovem": {
+    "livro": "PF B1",
+    "nome": "Dragão Branco Jovem",
+    "cr": "6",
+    "tipo": "dragão Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 10,
+      "con": 17,
+      "int": 8,
+      "sab": 11,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 3"
+    ],
+    "nota": "Sopro de frio, o mais feral dos cromáticos: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dragao-dourado-adulto": {
+    "livro": "PF B1",
+    "nome": "Dragão Dourado Adulto",
+    "cr": "15",
+    "tipo": "dragão Enorme (metálico)",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 35,
+      "des": 10,
+      "con": 27,
+      "int": 22,
+      "sab": 21,
+      "car": 22
+    },
+    "pericias": [
+      "Ocultismo 5",
+      "Persuasão 5",
+      "Prontidão 5",
+      "Conhecimentos 5"
+    ],
+    "nota": "O mais nobre dos dragões: Centelha 6. Str 35 → curva 10 +2 = Força 12.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dragao-verde-adulto": {
+    "livro": "PF B1",
+    "nome": "Dragão Verde Adulto",
+    "cr": "12",
+    "tipo": "dragão Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 12,
+      "con": 21,
+      "int": 16,
+      "sab": 17,
+      "car": 16
+    },
+    "pericias": [
+      "Manha 4",
+      "Persuasão 4",
+      "Furtividade 3"
+    ],
+    "nota": "Sopro de gás, manipulador: Centelha 5.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dragao-vermelho-adulto": {
+    "livro": "PF B1",
+    "nome": "Dragão Vermelho Adulto",
+    "cr": "14",
+    "tipo": "dragão Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 31,
+      "des": 10,
+      "con": 23,
+      "int": 16,
+      "sab": 17,
+      "car": 16
+    },
+    "pericias": [
+      "Prontidão 5",
+      "Persuasão 4",
+      "Ocultismo 3"
+    ],
+    "nota": "Feiticeiro alado temível: Centelha 5. Str 31 → curva 9 +2 = Força 11.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dragao-vermelho-anciao": {
+    "livro": "PF B1",
+    "nome": "Dragão Vermelho Ancião",
+    "cr": "19",
+    "tipo": "dragão Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 39,
+      "des": 8,
+      "con": 27,
+      "int": 20,
+      "sab": 21,
+      "car": 20
+    },
+    "pericias": [
+      "Prontidão 5",
+      "Ocultismo 5",
+      "Persuasão 5",
+      "Conhecimentos 4"
+    ],
+    "nota": "Str 39 → curva 11 +3 tamanho = Força 14. Con 27 → curva 8 +3 = Vigor 11. Sab 21 → Percepção 6. Extrapola o mortal: Centelha 6.",
+    "exemplo": true,
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dragao-vermelho-jovem": {
+    "livro": "PF B1",
+    "nome": "Dragão Vermelho Jovem",
+    "cr": "10",
+    "tipo": "dragão Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 12,
+      "con": 19,
+      "int": 12,
+      "sab": 13,
+      "car": 12
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Manha 3",
+      "Ocultismo 2"
+    ],
+    "nota": "Sopro e feitiços iniciais: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "dretch": {
+    "livro": "PF B1",
+    "nome": "Dretch",
+    "cr": "2",
+    "tipo": "exterior Pequeno (demônio)",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 10,
+      "con": 14,
+      "int": 6,
+      "sab": 11,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "nota": "Poderes mágicos: Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "driade": {
+    "livro": "PF B1",
+    "nome": "Dríade",
+    "cr": "3",
+    "tipo": "fada Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 19,
+      "con": 13,
+      "int": 14,
+      "sab": 15,
+      "car": 18
+    },
+    "pericias": [
+      "Persuasão 3",
+      "Furtividade 3",
+      "Sobrevivência 3"
+    ],
+    "nota": "Naturalmente mágica, enfeitiçar: Centelha 3.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "drider": {
+    "livro": "PF Bestiary 1",
+    "nome": "Drider",
+    "cr": "7",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 18,
+      "int": 15,
+      "sab": 16,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "drow": {
+    "livro": "PF Bestiary 1",
+    "nome": "Drow",
+    "cr": "1/3",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 11,
+      "des": 15,
+      "con": 10,
+      "int": 10,
+      "sab": 9,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "duelista": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "9",
+    "crConf": "estimado"
+  },
+  "duergar": {
+    "livro": "PF Bestiary 1",
+    "nome": "Duergar",
+    "cr": "1/3",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 9,
+      "con": 15,
+      "int": 10,
+      "sab": 13,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "efreeti": {
+    "livro": "PF B1",
+    "nome": "Efreeti",
+    "cr": "8",
+    "tipo": "exterior Grande (fogo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 17,
+      "con": 18,
+      "int": 14,
+      "sab": 15,
+      "car": 15
+    },
+    "pericias": [
+      "Ofícios 4",
+      "Manha 3",
+      "Prontidão 3"
+    ],
+    "nota": "Gênio do fogo, desejos: Centelha 3.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "elasmossauro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Elasmosaurus",
+    "cr": "7",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 15,
+      "con": 20,
+      "int": 2,
+      "sab": 13,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "nado 50; em terra 20, e ele quase não sai da água"
+    },
+    "crConf": "confirmado"
+  },
+  "elefante": {
+    "livro": "PF B1",
+    "nome": "Elefante",
+    "cr": "9",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 30,
+      "des": 10,
+      "con": 21,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "pericias": [
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "elemental-da-agua-pequeno": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Water Elemental",
+    "cr": "1",
+    "tipo": "exterior (água) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 14,
+      "des": 10,
+      "con": 13,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "elemental-da-terra-grande": {
+    "livro": "PF B1",
+    "nome": "Elemental da Terra (Grande)",
+    "cr": "5",
+    "tipo": "exterior Grande (terra)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 26,
+      "des": 8,
+      "con": 21,
+      "int": 6,
+      "sab": 11,
+      "car": 11
+    },
+    "pericias": [
+      "Atletismo 2"
+    ],
+    "nota": "Ser de pura terra: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "elemental-da-terra-pequeno": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Earth Elemental",
+    "cr": "1",
+    "tipo": "exterior (terra) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 16,
+      "des": 8,
+      "con": 13,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "elemental-do-ar-pequeno": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Air Elemental",
+    "cr": "1",
+    "tipo": "exterior (ar) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 12,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 100,
+      "origem": "fonte",
+      "nota": "voo 100 (perfeito): o ar não tem pé"
+    },
+    "crConf": "conhecido"
+  },
+  "elemental-do-fogo-pequeno": {
+    "livro": "PF Bestiary 1",
+    "nome": "Small Fire Elemental",
+    "cr": "1",
+    "tipo": "exterior (fogo) Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 13,
+      "con": 10,
+      "int": 4,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "enxame-de-aranhas": {
+    "livro": "PF Bestiary 1",
+    "nome": "Spider Swarm",
+    "cr": "1",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 17,
+      "con": 10,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "enxame-de-caranguejos": {
+    "livro": "PF Bestiary 1",
+    "nome": "Crab Swarm",
+    "cr": "4",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 14,
+      "con": 13,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "enxame-de-centopeias": {
+    "livro": "PF Bestiary 1",
+    "nome": "Centipede Swarm",
+    "cr": "4",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 19,
+      "con": 8,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "enxame-de-formigas": {
+    "livro": "PF Bestiary 1",
+    "nome": "Army Ant Swarm",
+    "cr": "5",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 15,
+      "con": 10,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "enxame-de-morcegos": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bat Swarm",
+    "cr": "2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 15,
+      "con": 11,
+      "int": 2,
+      "sab": 14,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40: a nuvem de morcegos não pousa"
+    },
+    "crConf": "confirmado"
+  },
+  "enxame-de-ratos": {
+    "livro": "PF Bestiary 1",
+    "nome": "Rat Swarm",
+    "cr": "2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 2,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 15,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "enxame-de-sanguessugas": {
+    "livro": "PF Bestiary 1",
+    "nome": "Leech Swarm",
+    "cr": "4",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 18,
+      "con": 15,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "nado 30: o enxame de sanguessugas vive na água"
+    },
+    "crConf": "confirmado"
+  },
+  "enxame-de-vespas": {
+    "livro": "PF Bestiary 1",
+    "nome": "Wasp Swarm",
+    "cr": "3",
+    "tipo": "praga Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 13,
+      "con": 10,
+      "int": "-",
+      "sab": 12,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40: a nuvem de vespas não pousa"
+    },
+    "crConf": "confirmado"
+  },
+  "erinia": {
+    "livro": "PF B1",
+    "nome": "Erínia",
+    "cr": "8",
+    "tipo": "exterior Médio (diabo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 23,
+      "con": 21,
+      "int": 14,
+      "sab": 18,
+      "car": 21
+    },
+    "pericias": [
+      "Atirador 4",
+      "Persuasão 3",
+      "Prontidão 4"
+    ],
+    "nota": "Corda de comando, teletransporte, voo: Centelha 4.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "escorpiao-gigante": {
+    "livro": "PF B1",
+    "nome": "Escorpião Gigante",
+    "cr": "3",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 16,
+      "int": "-",
+      "sab": 10,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 1"
+    ],
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "esfinge-ginosfinge": {
+    "livro": "MM 3.5",
+    "nome": "Esfinge (Ginosfinge)",
+    "cr": "8",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 14,
+      "con": 19,
+      "int": 18,
+      "sab": 19,
+      "car": 19
+    },
+    "pericias": [
+      "Conhecimentos 5",
+      "Ocultismo 4",
+      "Prontidão 4"
+    ],
+    "nota": "Guardadora de enigmas, magia arcana: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "espantalho-desperto": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "4",
+    "crConf": "estimado"
+  },
+  "espectro": {
+    "livro": "MM 3.5",
+    "nome": "Espectro",
+    "cr": "7",
+    "tipo": "morto-vivo Médio (incorpóreo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 16,
+      "con": "-",
+      "int": 14,
+      "sab": 14,
+      "car": 17
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Prontidão 3"
+    ],
+    "nota": "Dreno de nível, voo, incorpóreo: Centelha 3.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80 (perfeito): incorpóreo"
+    },
+    "crConf": "confirmado"
+  },
+  "espreitador-sombrio": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dark Stalker",
+    "cr": "4",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 18,
+      "con": 14,
+      "int": 9,
+      "sab": 11,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "esqueleto-humano": {
+    "livro": "PF B1",
+    "nome": "Esqueleto Humano",
+    "cr": "1/3",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 14,
+      "con": "-",
+      "int": "-",
+      "sab": 10,
+      "car": 10
+    },
+    "nota": "Con — → Vigor vem do Carisma (2). Mente vazia: Int/Rac 0. Casca inerte: Centelha 0.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "estegossauro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Stegosaurus",
+    "cr": "7",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 14,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "estrangulador": {
+    "livro": "PF Bestiary 1",
+    "nome": "Choker",
+    "cr": "2",
+    "tipo": "aberração Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 16,
+      "des": 14,
+      "con": 13,
+      "int": 4,
+      "sab": 13,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ettercap": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ettercap",
+    "cr": "3",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 17,
+      "con": 17,
+      "int": 6,
+      "sab": 15,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ettin": {
+    "livro": "PF B1",
+    "nome": "Ettin",
+    "cr": "6",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 8,
+      "con": 15,
+      "int": 6,
+      "sab": 10,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Sobrevivência 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "falcao-peregrino": {
+    "livro": "PF Bestiary 1",
+    "nome": "Hawk",
+    "cr": "1/3",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 6,
+      "des": 17,
+      "con": 11,
+      "int": 2,
+      "sab": 14,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 10"
+    },
+    "crConf": "confirmado"
+  },
+  "fantasma": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ghost",
+    "cr": "7",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 12,
+      "con": "-",
+      "int": 10,
+      "sab": 11,
+      "car": 20
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "feiticeiro-menor": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "3",
+    "crConf": "estimado"
+  },
+  "fenix": {
+    "livro": "PF Bestiary 1",
+    "nome": "Phoenix",
+    "cr": "15",
+    "tipo": "besta mágica Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 27,
+      "des": 25,
+      "con": 20,
+      "int": 23,
+      "sab": 22,
+      "car": 22
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "filhote-de-dragao-vermelho": {
+    "livro": "PF B1",
+    "nome": "Filhote de Dragão Vermelho",
+    "cr": "6",
+    "tipo": "dragão Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 10,
+      "con": 19,
+      "int": 12,
+      "sab": 15,
+      "car": 12
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2",
+      "Manha 2"
+    ],
+    "nota": "Já nasce mágico, sopro de fogo: Centelha 3.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "fogo-fatuo": {
+    "livro": "PF B1",
+    "nome": "Fogo-fátuo",
+    "cr": "6",
+    "tipo": "aberração Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 1,
+      "des": 29,
+      "con": 10,
+      "int": 15,
+      "sab": 16,
+      "car": 14
+    },
+    "pericias": [
+      "Furtividade 5",
+      "Prontidão 3"
+    ],
+    "nota": "Str 1 → Força 0. Dex 29 → Destreza 10. Ser de pura energia: Centelha 3.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50 (perfeito): o fogo-fátuo não tem corpo que pise"
+    },
+    "crConf": "confirmado"
+  },
+  "formiga-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Ant",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 10,
+      "con": 17,
+      "int": "-",
+      "sab": 13,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "froghemoth": {
+    "livro": "PF Bestiary 1",
+    "nome": "Froghemoth",
+    "cr": "13",
+    "tipo": "aberração Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 30,
+      "des": 13,
+      "con": 24,
+      "int": 2,
+      "sab": 13,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "fungo-violeta": {
+    "livro": "PF Bestiary 1",
+    "nome": "Violet Fungus",
+    "cr": "3",
+    "tipo": "planta Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 8,
+      "con": 16,
+      "int": "-",
+      "sab": 11,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gargula": {
+    "livro": "PF B1",
+    "nome": "Gárgula",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 14,
+      "con": 18,
+      "int": 6,
+      "sab": 11,
+      "car": 7
+    },
+    "pericias": [
+      "Furtividade 3"
+    ],
+    "nota": "Congelar/RD mágica: Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gato": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cat",
+    "cr": "1/4",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 15,
+      "con": 8,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "geleia-ocre": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ochre Jelly",
+    "cr": "5",
+    "tipo": "limo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 14,
+      "des": 1,
+      "con": 22,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "ghaele-azata": {
+    "livro": "MM 3.5",
+    "nome": "Ghaele (azata)",
+    "cr": "13",
+    "tipo": "exterior Médio (celestial)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 20,
+      "des": 21,
+      "con": 18,
+      "int": 20,
+      "sab": 20,
+      "car": 24
+    },
+    "pericias": [
+      "Ocultismo 4",
+      "Oratória 4",
+      "Prontidão 4"
+    ],
+    "nota": "Cavaleiro-estrela: Centelha 5.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ghast": {
+    "livro": "PF B1",
+    "nome": "Ghast",
+    "cr": "2",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 17,
+      "con": "-",
+      "int": 13,
+      "sab": 14,
+      "car": 16
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Fedor e paralisia: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "ghoul": {
+    "livro": "PF B1",
+    "nome": "Ghoul",
+    "cr": "1",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": "-",
+      "int": 13,
+      "sab": 14,
+      "car": 14
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Prontidão 2"
+    ],
+    "nota": "Paralisia (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gigante-da-colina": {
+    "livro": "PF B1",
+    "nome": "Gigante da Colina",
+    "cr": "7",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 8,
+      "con": 19,
+      "int": 6,
+      "sab": 10,
+      "car": 7
+    },
+    "pericias": [
+      "Atletismo 2",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gigante-da-pedra": {
+    "livro": "PF B1",
+    "nome": "Gigante da Pedra",
+    "cr": "8",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 15,
+      "con": 19,
+      "int": 10,
+      "sab": 12,
+      "car": 11
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gigante-da-tempestade": {
+    "livro": "MM 3.5",
+    "nome": "Gigante da Tempestade",
+    "cr": "13",
+    "tipo": "humanoide Enorme (gigante)",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 39,
+      "des": 14,
+      "con": 23,
+      "int": 16,
+      "sab": 20,
+      "car": 15
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Conhecimentos 2"
+    ],
+    "nota": "Controle do clima e magia: Centelha 2.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gigante-das-nuvens": {
+    "livro": "MM 3.5",
+    "nome": "Gigante das Nuvens",
+    "cr": "11",
+    "tipo": "humanoide Enorme (gigante)",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 35,
+      "des": 12,
+      "con": 21,
+      "int": 12,
+      "sab": 16,
+      "car": 15
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Ofícios 2"
+    ],
+    "nota": "Poderes mágicos inatos (Sp): Centelha 1.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gigante-do-fogo": {
+    "livro": "MM 3.5",
+    "nome": "Gigante do Fogo",
+    "cr": "10",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 31,
+      "des": 9,
+      "con": 22,
+      "int": 10,
+      "sab": 14,
+      "car": 11
+    },
+    "pericias": [
+      "Ofícios 2",
+      "Prontidão 2"
+    ],
+    "nota": "Imunidade a fogo (Ex/Su) tênue: Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gigante-do-gelo": {
+    "livro": "MM 3.5",
+    "nome": "Gigante do Gelo",
+    "cr": "9",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 29,
+      "des": 9,
+      "con": 21,
+      "int": 10,
+      "sab": 12,
+      "car": 11
+    },
+    "pericias": [
+      "Atletismo 2",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gigantopiteco": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Ape (Gigantopithecus)",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 16,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "girallon": {
+    "livro": "PF Bestiary 1",
+    "nome": "Girallon",
+    "cr": "6",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 17,
+      "con": 18,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "glabrezu": {
+    "livro": "PF B1",
+    "nome": "Glabrezu",
+    "cr": "13",
+    "tipo": "exterior Enorme (demônio)",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 33,
+      "des": 14,
+      "con": 27,
+      "int": 18,
+      "sab": 20,
+      "car": 20
+    },
+    "pericias": [
+      "Ocultismo 4",
+      "Persuasão 4",
+      "Prontidão 4"
+    ],
+    "nota": "Realizar desejos traiçoeiros: Centelha 5.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gnoll": {
+    "livro": "PF B1",
+    "nome": "Gnoll",
+    "cr": "1",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 10,
+      "con": 13,
+      "int": 8,
+      "sab": 11,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "goblin": {
+    "livro": "PF B1",
+    "nome": "Goblin",
+    "cr": "1/3",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 15,
+      "con": 12,
+      "int": 10,
+      "sab": 9,
+      "car": 6
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Sobrevivência 1"
+    ],
+    "nota": "Mundano, sem nada sobrenatural: Centelha 0. O +4 racial em Furtividade vira especialidade.",
+    "exemplo": true,
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "golem-de-argila": {
+    "livro": "PF Bestiary 1",
+    "nome": "Clay Golem",
+    "cr": "10",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 24,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "golem-de-carne": {
+    "livro": "PF Bestiary 1",
+    "nome": "Flesh Golem",
+    "cr": "7",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "golem-de-ferro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Iron Golem",
+    "cr": "13",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 32,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "golem-de-gelo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ice Golem",
+    "cr": "5",
+    "tipo": "constructo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "golem-de-pedra": {
+    "livro": "PF Bestiary 1",
+    "nome": "Stone Golem",
+    "cr": "11",
+    "tipo": "constructo Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 28,
+      "des": 9,
+      "con": "-",
+      "int": "-",
+      "sab": 11,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "golfinho": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dolphin",
+    "cr": "1/2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "nado 80: sem velocidade em terra"
+    },
+    "crConf": "confirmado"
+  },
+  "gorgona-touro-de-ferro": {
+    "livro": "PF B1",
+    "nome": "Górgona (touro de ferro)",
+    "cr": "8",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 24,
+      "des": 10,
+      "con": 24,
+      "int": 2,
+      "sab": 16,
+      "car": 9
+    },
+    "pericias": [
+      "Prontidão 4"
+    ],
+    "nota": "Sopro que petrifica (Su): Centelha 2. Não confundir com a Medusa.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "gorila": {
+    "livro": "PF B1",
+    "nome": "Gorila",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 15,
+      "con": 14,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "pericias": [
+      "Atletismo 3"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "grande-wyrm-vermelho": {
+    "livro": "MM 3.5",
+    "nome": "Grande Wyrm Vermelho",
+    "cr": "22",
+    "tipo": "dragão Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 45,
+      "des": 10,
+      "con": 33,
+      "int": 22,
+      "sab": 25,
+      "car": 22
+    },
+    "pericias": [
+      "Prontidão 6",
+      "Ocultismo 6",
+      "Persuasão 5",
+      "Conhecimentos 5"
+    ],
+    "nota": "Lenda encarnada: Centelha 8. Str 45 → curva 12 +4 = Força 16; perícias podem passar de 5.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "grifo": {
+    "livro": "PF B1",
+    "nome": "Grifo",
+    "cr": "4",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 15,
+      "con": 16,
+      "int": 5,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "guarda-da-cidade": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "1",
+    "crConf": "estimado"
+  },
+  "guepardo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cheetah",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 19,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "harpia": {
+    "livro": "PF B1",
+    "nome": "Harpia",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 10,
+      "int": 7,
+      "sab": 12,
+      "car": 17
+    },
+    "pericias": [
+      "Oratória 2",
+      "Furtividade 2"
+    ],
+    "nota": "Canção cativante (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80; em terra 20, e a harpia caça no ar"
+    },
+    "crConf": "confirmado"
+  },
+  "hezrou": {
+    "livro": "PF B1",
+    "nome": "Hezrou",
+    "cr": "11",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 15,
+      "con": 25,
+      "int": 14,
+      "sab": 16,
+      "car": 18
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Atletismo 3"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "hidra-5-cabecas": {
+    "livro": "PF B1",
+    "nome": "Hidra (5 cabeças)",
+    "cr": "4",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 21,
+      "des": 12,
+      "con": 20,
+      "int": 2,
+      "sab": 10,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "nota": "Cabeças que rebrotam (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "hiena-malhada": {
+    "livro": "PF Bestiary 1",
+    "nome": "Hyena",
+    "cr": "1",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "hienodonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Hyena (Hyaenodon)",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "hipogrifo": {
+    "livro": "MM 3.5",
+    "nome": "Hipogrifo",
+    "cr": "2",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "hobgoblin": {
+    "livro": "PF B1",
+    "nome": "Hobgoblin",
+    "cr": "1/2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 16,
+      "int": 10,
+      "sab": 12,
+      "car": 8
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "homem-lagarto": {
+    "livro": "PF B1",
+    "nome": "Homem-lagarto",
+    "cr": "1",
+    "tipo": "humanoide Médio (reptiliano)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 10,
+      "con": 13,
+      "int": 9,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Atletismo 1",
+      "Sobrevivência 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "homem-rato-forma-humana": {
+    "livro": "PF Bestiary 1",
+    "nome": "Wererat (Human Form)",
+    "cr": "2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": 14,
+      "int": 10,
+      "sab": 16,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "homunculus": {
+    "livro": "PF Bestiary 1",
+    "nome": "Homunculus",
+    "cr": "1",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 8,
+      "des": 15,
+      "con": "-",
+      "int": 10,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50; em terra 20, e o bichinho é feito para voar"
+    },
+    "crConf": "confirmado"
+  },
+  "janni": {
+    "livro": "PF Bestiary 1",
+    "nome": "Janni",
+    "cr": "4",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 15,
+      "con": 12,
+      "int": 14,
+      "sab": 15,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "jararaca": {
+    "livro": "PF Bestiary 1",
+    "nome": "Viper",
+    "cr": "1/2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 4,
+      "des": 17,
+      "con": 8,
+      "int": 1,
+      "sab": 13,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "javali": {
+    "livro": "PF B1",
+    "nome": "Javali",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 10,
+      "con": 17,
+      "int": 2,
+      "sab": 13,
+      "car": 4
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "jiboia": {
+    "livro": "PF B1",
+    "nome": "Cobra Constritora",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 17,
+      "con": 13,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "kobold": {
+    "livro": "PF B1",
+    "nome": "Kobold",
+    "cr": "1/4",
+    "tipo": "humanoide Pequeno (reptiliano)",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 9,
+      "des": 13,
+      "con": 10,
+      "int": 10,
+      "sab": 9,
+      "car": 8
+    },
+    "pericias": [
+      "Ofícios 1",
+      "Furtividade 1",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "kraken": {
+    "livro": "MM 3.5",
+    "nome": "Kraken",
+    "cr": "18",
+    "tipo": "besta mágica Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 34,
+      "des": 10,
+      "con": 28,
+      "int": 21,
+      "sab": 20,
+      "car": 21
+    },
+    "pericias": [
+      "Prontidão 5",
+      "Ocultismo 4"
+    ],
+    "nota": "Leviatã dos mares, magia: Centelha 6. Str 34 → curva 10 +4 tamanho = Força 14.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "nado 40: em terra o kraken se arrasta 10 ft"
+    },
+    "crConf": "confirmado"
+  },
+  "kyton": {
+    "livro": "PF Bestiary 1",
+    "nome": "Kyton",
+    "cr": "6",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 17,
+      "con": 14,
+      "int": 11,
+      "sab": 12,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lacador": {
+    "livro": "PF Bestiary 1",
+    "nome": "Roper",
+    "cr": "12",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 34,
+      "des": 13,
+      "con": 29,
+      "int": 13,
+      "sab": 16,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lagarto-de-gola-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Frilled Lizard",
+    "cr": "5",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 13,
+      "con": 19,
+      "int": 2,
+      "sab": 14,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "lagarto-eletrico": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shocker Lizard",
+    "cr": "2",
+    "tipo": "besta mágica Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "conhecido"
+  },
+  "lamia": {
+    "livro": "MM 3.5",
+    "nome": "Lâmia",
+    "cr": "6",
+    "tipo": "humanoide monstruoso Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 21,
+      "con": 17,
+      "int": 13,
+      "sab": 20,
+      "car": 17
+    },
+    "pericias": [
+      "Manha 4",
+      "Furtividade 3",
+      "Ocultismo 2"
+    ],
+    "nota": "Dreno de Sabedoria, ilusões: Centelha 3.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "leao": {
+    "livro": "PF B1",
+    "nome": "Leão",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 17,
+      "con": 15,
+      "int": 2,
+      "sab": 15,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "leao-das-cavernas": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Lion (Spotted Lion)",
+    "cr": "5",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 25,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lemure": {
+    "livro": "PF B1",
+    "nome": "Lêmure",
+    "cr": "1",
+    "tipo": "exterior Médio (diabo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 10,
+      "con": 14,
+      "int": "-",
+      "sab": 5,
+      "car": 11
+    },
+    "nota": "Massa infernal sem mente: Int/Rac 0, mas natureza extraplanar dá Centelha 1.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "leopardo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Leopard",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 19,
+      "con": 15,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lesma-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Slug",
+    "cr": "8",
+    "tipo": "praga Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 2,
+      "con": 18,
+      "int": "-",
+      "sab": 10,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lich": {
+    "livro": "PF B1",
+    "nome": "Lich",
+    "cr": "12",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 14,
+      "con": "-",
+      "int": 22,
+      "sab": 14,
+      "car": 16
+    },
+    "pericias": [
+      "Ocultismo 5",
+      "Conhecimentos 5",
+      "Prontidão 3"
+    ],
+    "nota": "Arquimago imortal: Centelha 5. Int 20 → Inteligência 6.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lillend": {
+    "livro": "PF Bestiary 1",
+    "nome": "Lillend",
+    "cr": "7",
+    "tipo": "exterior (anjo) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 17,
+      "con": 21,
+      "int": 14,
+      "sab": 16,
+      "car": 19
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "limo-cinzento": {
+    "livro": "PF Bestiary 1",
+    "nome": "Gray Ooze",
+    "cr": "4",
+    "tipo": "limo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 1,
+      "con": 26,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "linnorm-do-gelo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Ice Linnorm",
+    "cr": "17",
+    "tipo": "dragão Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 38,
+      "des": 22,
+      "con": 29,
+      "int": 5,
+      "sab": 20,
+      "car": 23
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "linnorm-dos-lagos": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tarn Linnorm",
+    "cr": "20",
+    "tipo": "dragão Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 42,
+      "des": 26,
+      "con": 32,
+      "int": 7,
+      "sab": 25,
+      "car": 27
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "linnorm-dos-penhascos": {
+    "livro": "PF Bestiary 1",
+    "nome": "Crag Linnorm",
+    "cr": "14",
+    "tipo": "dragão Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 34,
+      "des": 18,
+      "con": 25,
+      "int": 5,
+      "sab": 18,
+      "car": 21
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "lobisomem": {
+    "livro": "PF Bestiary 1",
+    "nome": "WerewolF",
+    "cr": "2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 13,
+      "con": 14,
+      "int": 8,
+      "sab": 14,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "lobo": {
+    "livro": "PF B1",
+    "nome": "Lobo",
+    "cr": "1",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": 15,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Furtividade 2",
+      "Sobrevivência 2"
+    ],
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lobo-atroz": {
+    "livro": "PF B1",
+    "nome": "Lobo Atroz",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Furtividade 2"
+    ],
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lobo-do-inverno": {
+    "livro": "PF Bestiary 1",
+    "nome": "Winter Wolf",
+    "cr": "5",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 13,
+      "con": 18,
+      "int": 9,
+      "sab": 13,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "louva-a-deus-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Mantis",
+    "cr": "3",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 13,
+      "con": 16,
+      "int": "-",
+      "sab": 14,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "lula-de-humboldt-grande": {
+    "livro": "PF Bestiary 1",
+    "nome": "Squid",
+    "cr": "1",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 15,
+      "con": 11,
+      "int": 2,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60 (o jato de 240 é fuga, não deslocamento)"
+    },
+    "crConf": "conhecido"
+  },
+  "lula-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Squid",
+    "cr": "9",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 25,
+      "des": 17,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60 (o jato de 260 é fuga)"
+    },
+    "crConf": "confirmado"
+  },
+  "macaco": {
+    "livro": "PF Bestiary 1",
+    "nome": "Monkey",
+    "cr": "1/4",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 15,
+      "con": 10,
+      "int": 2,
+      "sab": 12,
+      "car": 5
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "mago-de-batalha": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "10",
+    "crConf": "estimado"
+  },
+  "manticora": {
+    "livro": "PF B1",
+    "nome": "Mantícora",
+    "cr": "5",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 15,
+      "con": 18,
+      "int": 7,
+      "sab": 12,
+      "car": 9
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Atletismo 1"
+    ],
+    "nota": "Espinhos de cauda: Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "manto-escuro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Darkmantle",
+    "cr": "1",
+    "tipo": "besta mágica Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 15,
+      "con": 14,
+      "int": 2,
+      "sab": 11,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "marid": {
+    "livro": "PF Bestiary 1",
+    "nome": "Marid",
+    "cr": "9",
+    "tipo": "exterior (água) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 19,
+      "con": 18,
+      "int": 14,
+      "sab": 15,
+      "car": 16
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "marilith": {
+    "livro": "PF B1",
+    "nome": "Marilith",
+    "cr": "17",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 29,
+      "des": 25,
+      "con": 25,
+      "int": 18,
+      "sab": 18,
+      "car": 25
+    },
+    "pericias": [
+      "Armas 5",
+      "Prontidão 4",
+      "Liderança 4"
+    ],
+    "nota": "General demoníaca de seis braços: Centelha 6. Dex 25 → Destreza 8.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "mastodonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mastodon",
+    "cr": "9",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 34,
+      "des": 12,
+      "con": 21,
+      "int": 2,
+      "sab": 13,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "medusa": {
+    "livro": "PF B1",
+    "nome": "Medusa",
+    "cr": "7",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 15,
+      "con": 18,
+      "int": 12,
+      "sab": 13,
+      "car": 15
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atirador 2",
+      "Manha 2"
+    ],
+    "nota": "Olhar petrificante (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "megalodonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Shark (Megalodon)",
+    "cr": "9",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 30,
+      "des": 15,
+      "con": 17,
+      "int": 1,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60, como o tubarão comum"
+    },
+    "crConf": "confirmado"
+  },
+  "mephit": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mephit",
+    "cr": "3",
+    "tipo": "exterior Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": 12,
+      "int": 6,
+      "sab": 11,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "merfolk": {
+    "livro": "PF Bestiary 1",
+    "nome": "Merfolk",
+    "cr": "1/3",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 13,
+      "con": 14,
+      "int": 10,
+      "sab": 9,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "nado 50: em terra o povo do mar se arrasta 5 ft"
+    },
+    "crConf": "confirmado"
+  },
+  "mimico": {
+    "livro": "MM 3.5",
+    "nome": "Mímico",
+    "cr": "4",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 17,
+      "int": 10,
+      "sab": 13,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 4"
+    ],
+    "nota": "Mudar de forma (disfarce): Centelha 1.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "minotauro": {
+    "livro": "PF B1",
+    "nome": "Minotauro",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 10,
+      "con": 15,
+      "int": 7,
+      "sab": 10,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Sobrevivência 2"
+    ],
+    "nota": "Astúcia natural (labirinto, Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "mite": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mite",
+    "cr": "1/4",
+    "tipo": "fada Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 8,
+      "des": 13,
+      "con": 11,
+      "int": 8,
+      "sab": 13,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    },
+    "crConf": "conhecido"
+  },
+  "mohrg": {
+    "livro": "PF Bestiary 1",
+    "nome": "Mohrg",
+    "cr": "8",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 19,
+      "con": "-",
+      "int": 11,
+      "sab": 10,
+      "car": 14
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "monstro-da-ferrugem": {
+    "livro": "PF B1",
+    "nome": "Monstro da Ferrugem",
+    "cr": "3",
+    "tipo": "aberração Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "nota": "Corrói metal (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "montao-tropecante": {
+    "livro": "PF B1",
+    "nome": "Montão Tropeçante",
+    "cr": "6",
+    "tipo": "planta Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 10,
+      "con": 17,
+      "int": 7,
+      "sab": 10,
+      "car": 9
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Absorve raio (Su): Centelha 1.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "morcego": {
+    "livro": "PF Bestiary 1",
+    "nome": "Bat",
+    "cr": "1/8",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 15,
+      "con": 6,
+      "int": 2,
+      "sab": 14,
+      "car": 5
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra o morcego se arrasta 5 ft"
+    },
+    "crConf": "confirmado"
+  },
+  "morcego-atroz": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Bat",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 13,
+      "int": 2,
+      "sab": 14,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 20"
+    },
+    "crConf": "confirmado"
+  },
+  "moreia-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Moray Eel",
+    "cr": "5",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 22,
+      "des": 14,
+      "con": 16,
+      "int": 1,
+      "sab": 12,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "nado 30: sem velocidade em terra"
+    },
+    "crConf": "confirmado"
+  },
+  "morlock": {
+    "livro": "PF Bestiary 1",
+    "nome": "Morlock",
+    "cr": "2",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 19,
+      "con": 15,
+      "int": 5,
+      "sab": 14,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "mumia": {
+    "livro": "PF B1",
+    "nome": "Múmia",
+    "cr": "5",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 24,
+      "des": 10,
+      "con": "-",
+      "int": 6,
+      "sab": 15,
+      "car": 15
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "nota": "Podridão e aura de desespero (Su): Centelha 3. Str 24 → Força 7.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "nabasu": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nabasu",
+    "cr": "8",
+    "tipo": "exterior (demônio) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 22,
+      "des": 17,
+      "con": 22,
+      "int": 15,
+      "sab": 16,
+      "car": 19
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "naga-espirita": {
+    "livro": "MM 3.5",
+    "nome": "Naga Espírita",
+    "cr": "9",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 13,
+      "con": 17,
+      "int": 16,
+      "sab": 19,
+      "car": 17
+    },
+    "pericias": [
+      "Ocultismo 4",
+      "Persuasão 3",
+      "Prontidão 4"
+    ],
+    "nota": "Olhar encantador e conjuração: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "naga-guardia": {
+    "livro": "PF Bestiary 1",
+    "nome": "Guardian Naga",
+    "cr": "10",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 23,
+      "con": 20,
+      "int": 16,
+      "sab": 19,
+      "car": 18
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "naga-negra": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dark Naga",
+    "cr": "8",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 14,
+      "des": 21,
+      "con": 18,
+      "int": 16,
+      "sab": 15,
+      "car": 17
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "nalfeshnee": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nalfeshnee",
+    "cr": "14",
+    "tipo": "exterior (demônio) Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 32,
+      "des": 13,
+      "con": 29,
+      "int": 23,
+      "sab": 22,
+      "car": 20
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "neothelid": {
+    "livro": "PF Bestiary 1",
+    "nome": "Neothelid",
+    "cr": "15",
+    "tipo": "aberração Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 30,
+      "des": 7,
+      "con": 24,
+      "int": 16,
+      "sab": 15,
+      "car": 21
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ninfa": {
+    "livro": "PF B1",
+    "nome": "Ninfa",
+    "cr": "7",
+    "tipo": "fada Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 10,
+      "des": 21,
+      "con": 13,
+      "int": 16,
+      "sab": 17,
+      "car": 19
+    },
+    "pericias": [
+      "Ocultismo 3",
+      "Furtividade 4",
+      "Persuasão 3"
+    ],
+    "nota": "Beleza cegante, magia druídica: Centelha 4.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "nobre-drow": {
+    "livro": "PF Bestiary 1",
+    "nome": "Drow Noble",
+    "cr": "3",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 12,
+      "int": 10,
+      "sab": 17,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "objeto-animado": {
+    "livro": "PF Bestiary 1",
+    "nome": "Animated Object",
+    "cr": "3",
+    "tipo": "constructo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 10,
+      "con": "-",
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ogro": {
+    "livro": "PF B1",
+    "nome": "Ogro",
+    "cr": "3",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 8,
+      "con": 15,
+      "int": 6,
+      "sab": 10,
+      "car": 7
+    },
+    "pericias": [
+      "Atletismo 1"
+    ],
+    "nota": "Força 21 dá curva 6; +1 de tamanho (Grande) = Força 7. É assim que o brutamontes fica acima do pico humano. Centelha 0: pura massa, nada mágico.",
+    "exemplo": true,
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "ogro-mago-oni": {
+    "livro": "MM 3.5",
+    "nome": "Ogro Mago (Oni)",
+    "cr": "8",
+    "tipo": "exterior Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 15,
+      "con": 16,
+      "int": 14,
+      "sab": 14,
+      "car": 18
+    },
+    "pericias": [
+      "Ocultismo 3",
+      "Manha 3",
+      "Persuasão 3"
+    ],
+    "nota": "Regeneração, voo, feitiços, mudar de forma: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "orc": {
+    "livro": "PF B1",
+    "nome": "Orc",
+    "cr": "1/3",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 11,
+      "con": 12,
+      "int": 7,
+      "sab": 8,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "orca": {
+    "livro": "PF Bestiary 1",
+    "nome": "Orca",
+    "cr": "5",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 15,
+      "con": 16,
+      "int": 2,
+      "sab": 15,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "nado 80: sem velocidade em terra"
+    },
+    "crConf": "conhecido"
+  },
+  "otyugh": {
+    "livro": "PF Bestiary 1",
+    "nome": "Otyugh",
+    "cr": "4",
+    "tipo": "aberração Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 10,
+      "con": 13,
+      "int": 5,
+      "sab": 13,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "papa-moscas-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Flytrap",
+    "cr": "10",
+    "tipo": "planta Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 25,
+      "des": 18,
+      "con": 25,
+      "int": 1,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 10,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "pegaso": {
+    "livro": "PF B1",
+    "nome": "Pégaso",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 10,
+      "sab": 13,
+      "car": 13
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Atletismo 2"
+    ],
+    "nota": "Naturalmente mágico, detectar o bem/mal (Su): Centelha 3.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "perseguidor-invisivel": {
+    "livro": "PF Bestiary 1",
+    "nome": "Invisible Stalker",
+    "cr": "7",
+    "tipo": "exterior (ar) Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 18,
+      "des": 19,
+      "con": 22,
+      "int": 14,
+      "sab": 15,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "pesadelo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Nightmare",
+    "cr": "5",
+    "tipo": "exterior Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 15,
+      "con": 16,
+      "int": 13,
+      "sab": 13,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "pescador-das-cavernas": {
+    "livro": "PF Bestiary 1",
+    "nome": "Cave Fisher",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 12,
+      "con": 17,
+      "int": "-",
+      "sab": 10,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "pixie": {
+    "livro": "PF B1",
+    "nome": "Pixie",
+    "cr": "4",
+    "tipo": "fada Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 7,
+      "des": 20,
+      "con": 11,
+      "int": 16,
+      "sab": 15,
+      "car": 16
+    },
+    "pericias": [
+      "Furtividade 5",
+      "Ocultismo 2"
+    ],
+    "nota": "Invisibilidade, flechas do sono: Centelha 3. Dex 20 → Destreza 6.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20"
+    },
+    "crConf": "conhecido"
+  },
+  "planetar": {
+    "livro": "PF B1",
+    "nome": "Planetar",
+    "cr": "16",
+    "tipo": "exterior Grande (anjo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 19,
+      "con": 24,
+      "int": 22,
+      "sab": 25,
+      "car": 24
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 5",
+      "Persuasão 4",
+      "Prontidão 5"
+    ],
+    "nota": "Anjo guerreiro: Centelha 6.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "polvo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Octopus",
+    "cr": "1",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 14,
+      "int": 2,
+      "sab": 13,
+      "car": 3
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "polvo-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Octopus",
+    "cr": "8",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 3
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ponei": {
+    "livro": "PF Bestiary 1",
+    "nome": "Pony",
+    "cr": "1/2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 13,
+      "con": 14,
+      "int": 2,
+      "sab": 11,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "poraque": {
+    "livro": "PF Bestiary 1",
+    "nome": "Electric Eel",
+    "cr": "2",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 14,
+      "con": 19,
+      "int": 1,
+      "sab": 10,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "nado 30; em terra a enguia se arrasta 5 ft"
+    },
+    "crConf": "confirmado"
+  },
+  "pseudodragao": {
+    "livro": "PF Bestiary 1",
+    "nome": "Pseudodragon",
+    "cr": "1",
+    "tipo": "dragão Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 7,
+      "des": 15,
+      "con": 13,
+      "int": 10,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 15"
+    },
+    "crConf": "conhecido"
+  },
+  "pteranodonte": {
+    "livro": "PF Bestiary 1",
+    "nome": "Pteranodon",
+    "cr": "3",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 16,
+      "des": 19,
+      "con": 15,
+      "int": 2,
+      "sab": 15,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50; em terra 10, e o pterossauro não caça a pé"
+    },
+    "crConf": "conhecido"
+  },
+  "pudim-negro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Black Pudding",
+    "cr": "7",
+    "tipo": "limo Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 16,
+      "des": 1,
+      "con": 22,
+      "int": "-",
+      "sab": 1,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "quasit": {
+    "livro": "PF B1",
+    "nome": "Quasit",
+    "cr": "2",
+    "tipo": "exterior Minúsculo (demônio)",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 8,
+      "des": 17,
+      "con": 11,
+      "int": 11,
+      "sab": 12,
+      "car": 14
+    },
+    "pericias": [
+      "Furtividade 4",
+      "Manha 2"
+    ],
+    "nota": "Invisibilidade, forma alternativa: Centelha 2.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte",
+      "nota": "voo 50 (perfeito); em terra 20"
+    },
+    "crConf": "conhecido"
+  },
+  "quimera": {
+    "livro": "PF B1",
+    "nome": "Quimera",
+    "cr": "7",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 13,
+      "con": 17,
+      "int": 4,
+      "sab": 13,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 1"
+    ],
+    "nota": "Sopro dracônico: Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "ra-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Frog",
+    "cr": "1",
+    "tipo": "monstro Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 13,
+      "con": 16,
+      "int": 1,
+      "sab": 8,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "ra-venenosa": {
+    "livro": "PF Bestiary 1",
+    "nome": "Poison Frog",
+    "cr": "1/2",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 2,
+      "des": 12,
+      "con": 11,
+      "int": 1,
+      "sab": 9,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "rakshasa": {
+    "livro": "PF B1",
+    "nome": "Rakshasa",
+    "cr": "10",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 18,
+      "con": 16,
+      "int": 13,
+      "sab": 13,
+      "car": 17
+    },
+    "pericias": [
+      "Manha 5",
+      "Furtividade 4",
+      "Persuasão 3"
+    ],
+    "nota": "Ilusões, mudar de forma, resistência à magia: Centelha 4.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "rastejador-sombrio": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dark Creeper",
+    "cr": "2",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 17,
+      "con": 14,
+      "int": 9,
+      "sab": 10,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "rato-atroz": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Rat",
+    "cr": "1/3",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "rato-gigante": {
+    "livro": "PF B1",
+    "nome": "Rato Gigante",
+    "cr": "1/3",
+    "tipo": "animal Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 17,
+      "con": 13,
+      "int": 2,
+      "sab": 13,
+      "car": 4
+    },
+    "pericias": [
+      "Furtividade 2",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado",
+    "nota": "Corrigido em 29/09/2026 (B14 fase 4): os valores gravados antes (For 2, Des 15, Con 11) eram do rato comum (Bestiary 1); o Rato Gigante de porte Pequeno é o Dire Rat (For 10, Des 17, Con 13), CR 1/3."
+  },
+  "remorhaz": {
+    "livro": "PF Bestiary 1",
+    "nome": "Remorhaz",
+    "cr": "7",
+    "tipo": "besta mágica Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 22,
+      "des": 13,
+      "con": 21,
+      "int": 5,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "rinoceronte": {
+    "livro": "PF B1",
+    "nome": "Rinoceronte",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 24,
+      "des": 12,
+      "con": 20,
+      "int": 2,
+      "sab": 13,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "roc": {
+    "livro": "PF B1",
+    "nome": "Roc",
+    "cr": "9",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 34,
+      "des": 13,
+      "con": 21,
+      "int": 2,
+      "sab": 15,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 3"
+    ],
+    "deslocamento": {
+      "ft": 80,
+      "origem": "fonte",
+      "nota": "voo 80; em terra 20"
+    },
+    "crConf": "confirmado"
+  },
+  "sahuagin": {
+    "livro": "PF Bestiary 1",
+    "nome": "Sahuagin",
+    "cr": "2",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 13,
+      "con": 14,
+      "int": 14,
+      "sab": 13,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "salamandra": {
+    "livro": "PF B1",
+    "nome": "Salamandra",
+    "cr": "6",
+    "tipo": "exterior Médio (fogo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 13,
+      "con": 18,
+      "int": 14,
+      "sab": 15,
+      "car": 13
+    },
+    "pericias": [
+      "Ofícios 3",
+      "Armas 2"
+    ],
+    "nota": "Calor corporal, linhagem elemental: Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "sanguessuga-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Leech",
+    "cr": "2",
+    "tipo": "praga Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 11,
+      "des": 12,
+      "con": 14,
+      "int": "-",
+      "sab": 10,
+      "car": 1
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte",
+      "nota": "nado 20; em terra a sanguessuga se arrasta 5"
+    },
+    "crConf": "confirmado"
+  },
+  "sapo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Toad",
+    "cr": "1/8",
+    "tipo": "animal Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 1,
+      "des": 12,
+      "con": 6,
+      "int": 1,
+      "sab": 15,
+      "car": 4
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 5,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "satiro": {
+    "livro": "PF B1",
+    "nome": "Sátiro",
+    "cr": "4",
+    "tipo": "fada Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 14,
+      "des": 15,
+      "con": 15,
+      "int": 12,
+      "sab": 14,
+      "car": 19
+    },
+    "pericias": [
+      "Oratória 3",
+      "Persuasão 4",
+      "Furtividade 2"
+    ],
+    "nota": "Flautas encantadas (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "serpente-marinha": {
+    "livro": "PF Bestiary 1",
+    "nome": "Sea Serpent",
+    "cr": "12",
+    "tipo": "besta mágica Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 34,
+      "des": 14,
+      "con": 25,
+      "int": 2,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60; em terra 20, e ela não sai do mar"
+    },
+    "crConf": "confirmado"
+  },
+  "serpente-venenosa": {
+    "livro": "PF Bestiary 1",
+    "nome": "Venomous Snake",
+    "cr": "1",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 8,
+      "des": 13,
+      "con": 14,
+      "int": 1,
+      "sab": 13,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "shaitan": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shaitan",
+    "cr": "7",
+    "tipo": "exterior (terra) Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 13,
+      "con": 19,
+      "int": 14,
+      "sab": 14,
+      "car": 15
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "shoggoth": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shoggoth",
+    "cr": "19",
+    "tipo": "limo Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 40,
+      "des": 24,
+      "con": 31,
+      "int": 5,
+      "sab": 22,
+      "car": 13
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "skum-ulat-kini": {
+    "livro": "PF Bestiary 1",
+    "nome": "Skum (Ulat-Kini)",
+    "cr": "2",
+    "tipo": "humanoide monstruoso Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 15,
+      "des": 13,
+      "con": 17,
+      "int": 10,
+      "sab": 10,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "solar": {
+    "livro": "PF B1",
+    "nome": "Solar",
+    "cr": "23",
+    "tipo": "exterior Grande (anjo)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 28,
+      "des": 20,
+      "con": 30,
+      "int": 23,
+      "sab": 27,
+      "car": 25
+    },
+    "pericias": [
+      "Armas 5",
+      "Ocultismo 5",
+      "Oratória 5",
+      "Prontidão 5"
+    ],
+    "nota": "Anjo supremo: Centelha 8. Sab 27 → Percepção 8; Con 30 → Vigor 9 +1 = 10.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "soldado-veterano": {
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "cr": "2",
+    "crConf": "estimado"
+  },
+  "sombra": {
+    "livro": "PF B1",
+    "nome": "Sombra",
+    "cr": "3",
+    "tipo": "morto-vivo Médio (incorpóreo)",
+    "tamanho": "medio",
+    "valores": {
+      "for": "-",
+      "des": 14,
+      "con": "-",
+      "int": 6,
+      "sab": 12,
+      "car": 15
+    },
+    "pericias": [
+      "Furtividade 4"
+    ],
+    "nota": "Str — → Força 0. Dreno de Força e incorpóreo: Centelha 2.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40: incorpórea"
+    },
+    "crConf": "conhecido"
+  },
+  "stirge": {
+    "livro": "PF Bestiary 1",
+    "nome": "Stirge",
+    "cr": "1/2",
+    "tipo": "besta mágica Minúsculo",
+    "tamanho": "minusculo",
+    "valores": {
+      "for": 3,
+      "des": 19,
+      "con": 10,
+      "int": 1,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte",
+      "nota": "voo 40; em terra 10"
+    },
+    "crConf": "conhecido"
+  },
+  "sucubo": {
+    "livro": "PF B1",
+    "nome": "Súcubo",
+    "cr": "7",
+    "tipo": "exterior Médio (demônio)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 17,
+      "con": 20,
+      "int": 18,
+      "sab": 14,
+      "car": 27
+    },
+    "pericias": [
+      "Persuasão 4",
+      "Manha 4",
+      "Empatia 3"
+    ],
+    "nota": "Enfeitiçar, mudar de forma, dreno: Centelha 3. Car 27 → Influência 8.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "svirfneblin": {
+    "livro": "PF Bestiary 1",
+    "nome": "Svirfneblin",
+    "cr": "1",
+    "tipo": "humanoide Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 13,
+      "des": 15,
+      "con": 14,
+      "int": 10,
+      "sab": 10,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "tarrasque": {
+    "livro": "MM 3.5",
+    "nome": "Tarrasque",
+    "cr": "25",
+    "tipo": "besta mágica Colossal",
+    "tamanho": "colossal",
+    "valores": {
+      "for": 45,
+      "des": 8,
+      "con": 35,
+      "int": 3,
+      "sab": 14,
+      "car": 14
+    },
+    "pericias": [
+      "Prontidão 4"
+    ],
+    "nota": "Cataclismo vivo, quase indestrutível: Centelha 9. Str 45 → curva 12 +4 = Força 16.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "tartaruga-dragao": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dragon Turtle",
+    "cr": "9",
+    "tipo": "dragão Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 27,
+      "des": 10,
+      "con": 19,
+      "int": 12,
+      "sab": 13,
+      "car": 12
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "tengu": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tengu",
+    "cr": "1/2",
+    "tipo": "humanoide Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 17,
+      "con": 12,
+      "int": 10,
+      "sab": 15,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "tiefling": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tiefling",
+    "cr": "1/2",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 17,
+      "con": 14,
+      "int": 12,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "tabela"
+    },
+    "crConf": "confirmado"
+  },
+  "tigre": {
+    "livro": "PF B1",
+    "nome": "Tigre",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 23,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 15,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Atletismo 2"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "tiranossauro": {
+    "livro": "PF Bestiary 1",
+    "nome": "Tyrannosaurus",
+    "cr": "9",
+    "tipo": "animal Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 32,
+      "des": 13,
+      "con": 19,
+      "int": 2,
+      "sab": 15,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "treant": {
+    "livro": "PF B1",
+    "nome": "Treant",
+    "cr": "8",
+    "tipo": "planta Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 29,
+      "des": 8,
+      "con": 21,
+      "int": 12,
+      "sab": 16,
+      "car": 13
+    },
+    "pericias": [
+      "Persuasão 2",
+      "Sobrevivência 3"
+    ],
+    "nota": "Animar árvores (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "trepadeira-de-almiscar-amarelo": {
+    "livro": "PF Bestiary 1",
+    "nome": "Yellow Musk Creeper",
+    "cr": "2",
+    "tipo": "planta Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 16,
+      "int": "-",
+      "sab": 11,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 5,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "triceratops": {
+    "livro": "PF Bestiary 1",
+    "nome": "Triceratops",
+    "cr": "8",
+    "tipo": "animal Enorme",
+    "tamanho": "enorme",
+    "valores": {
+      "for": 26,
+      "des": 9,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 7
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "trogloditas": {
+    "livro": "PF B1",
+    "nome": "Trogloditas",
+    "cr": "1",
+    "tipo": "humanoide Médio (reptiliano)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 13,
+      "des": 9,
+      "con": 14,
+      "int": 8,
+      "sab": 11,
+      "car": 10
+    },
+    "pericias": [
+      "Furtividade 1"
+    ],
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "trol": {
+    "livro": "PF B1",
+    "nome": "Trol",
+    "cr": "5",
+    "tipo": "humanoide Grande (gigante)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 14,
+      "con": 23,
+      "int": 6,
+      "sab": 9,
+      "car": 6
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "nota": "Regeneração sobrenatural desperta a Centelha 1.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "tubarao-branco": {
+    "livro": "PF Bestiary 1",
+    "nome": "Shark",
+    "cr": "2",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 17,
+      "des": 12,
+      "con": 13,
+      "int": 1,
+      "sab": 12,
+      "car": 2
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "nado 60: o tubarão não tem passo em terra"
+    },
+    "crConf": "conhecido"
+  },
+  "unicornio": {
+    "livro": "PF B1",
+    "nome": "Unicórnio",
+    "cr": "3",
+    "tipo": "besta mágica Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 17,
+      "con": 16,
+      "int": 11,
+      "sab": 21,
+      "car": 24
+    },
+    "pericias": [
+      "Sobrevivência 4",
+      "Prontidão 3"
+    ],
+    "nota": "Cura, teletransporte, naturalmente mágico: Centelha 3. Sab 21 → Percepção 6; Car 24 → Influência 7.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "urso-cinzento": {
+    "livro": "PF Bestiary 1",
+    "nome": "Grizzly Bear",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 13,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "urso-das-cavernas": {
+    "livro": "PF Bestiary 1",
+    "nome": "Dire Bear (Cave Bear)",
+    "cr": "7",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 25,
+      "des": 13,
+      "con": 21,
+      "int": 2,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "urso-pardo": {
+    "livro": "PF B1",
+    "nome": "Urso-pardo",
+    "cr": "4",
+    "tipo": "animal Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 27,
+      "des": 13,
+      "con": 19,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "pericias": [
+      "Atletismo 3",
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "vampiro": {
+    "livro": "PF B1",
+    "nome": "Vampiro",
+    "cr": "9",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 16,
+      "des": 18,
+      "con": "-",
+      "int": 14,
+      "sab": 16,
+      "car": 26
+    },
+    "pericias": [
+      "Manha 5",
+      "Persuasão 4",
+      "Furtividade 3"
+    ],
+    "nota": "Dominar, forma gasosa, filhos da noite: Centelha 4. Car 26 → Vigor 8, Influência 8.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "varano": {
+    "livro": "PF Bestiary 1",
+    "nome": "Monitor Lizard",
+    "cr": "2",
+    "tipo": "animal Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 17,
+      "int": 2,
+      "sab": 12,
+      "car": 6
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "conhecido"
+  },
+  "vargouille": {
+    "livro": "PF Bestiary 1",
+    "nome": "Vargouille",
+    "cr": "2",
+    "tipo": "exterior Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 10,
+      "des": 13,
+      "con": 13,
+      "int": 5,
+      "sab": 12,
+      "car": 8
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte",
+      "nota": "voo 30: a cabeça alada não tem passo"
+    },
+    "crConf": "confirmado"
+  },
+  "vegepygmy": {
+    "livro": "PF Bestiary 1",
+    "nome": "Vegepygmy",
+    "cr": "1/2",
+    "tipo": "planta Pequeno",
+    "tamanho": "pequeno",
+    "valores": {
+      "for": 11,
+      "des": 14,
+      "con": 12,
+      "int": 8,
+      "sab": 11,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "verme-purpura": {
+    "livro": "PF B1",
+    "nome": "Verme Púrpura",
+    "cr": "12",
+    "tipo": "besta mágica Imenso",
+    "tamanho": "imenso",
+    "valores": {
+      "for": 35,
+      "des": 10,
+      "con": 25,
+      "int": 1,
+      "sab": 8,
+      "car": 8
+    },
+    "pericias": [
+      "Prontidão 1"
+    ],
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "vespa-gigante": {
+    "livro": "PF Bestiary 1",
+    "nome": "Giant Wasp",
+    "cr": "3",
+    "tipo": "praga Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 18,
+      "des": 12,
+      "con": 18,
+      "int": "-",
+      "sab": 13,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20"
+    },
+    "crConf": "confirmado"
+  },
+  "vinha-assassina": {
+    "livro": "PF Bestiary 1",
+    "nome": "Assassin Vine",
+    "cr": "3",
+    "tipo": "planta Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 20,
+      "des": 10,
+      "con": 16,
+      "int": "-",
+      "sab": 13,
+      "car": 9
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 5,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "vrock": {
+    "livro": "PF B1",
+    "nome": "Vrock",
+    "cr": "9",
+    "tipo": "exterior Grande (demônio)",
+    "tamanho": "grande",
+    "valores": {
+      "for": 21,
+      "des": 15,
+      "con": 25,
+      "int": 14,
+      "sab": 16,
+      "car": 16
+    },
+    "pericias": [
+      "Prontidão 4",
+      "Atletismo 3"
+    ],
+    "nota": "Esporos, dança da ruína: Centelha 4.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "wight": {
+    "livro": "PF B1",
+    "nome": "Wight",
+    "cr": "3",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 12,
+      "des": 12,
+      "con": "-",
+      "int": 11,
+      "sab": 13,
+      "car": 15
+    },
+    "pericias": [
+      "Furtividade 3",
+      "Prontidão 2"
+    ],
+    "nota": "Dreno de energia (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "worg": {
+    "livro": "PF Bestiary 1",
+    "nome": "Worg",
+    "cr": "2",
+    "tipo": "besta mágica Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 15,
+      "con": 13,
+      "int": 6,
+      "sab": 14,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 50,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "wyvern": {
+    "livro": "PF B1",
+    "nome": "Wyvern",
+    "cr": "6",
+    "tipo": "dragão Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 17,
+      "int": 7,
+      "sab": 12,
+      "car": 11
+    },
+    "pericias": [
+      "Prontidão 2",
+      "Furtividade 1"
+    ],
+    "nota": "Veneno e linhagem dracônica: Centelha 2.",
+    "deslocamento": {
+      "ft": 60,
+      "origem": "fonte",
+      "nota": "voo 60; em terra 20"
+    },
+    "crConf": "confirmado"
+  },
+  "xill": {
+    "livro": "PF Bestiary 1",
+    "nome": "Xill",
+    "cr": "6",
+    "tipo": "exterior Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 18,
+      "con": 14,
+      "int": 15,
+      "sab": 12,
+      "car": 11
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "xorn": {
+    "livro": "MM 3.5",
+    "nome": "Xorn",
+    "cr": "6",
+    "tipo": "exterior Médio (terra)",
+    "tamanho": "medio",
+    "valores": {
+      "for": 21,
+      "des": 13,
+      "con": 21,
+      "int": 10,
+      "sab": 11,
+      "car": 10
+    },
+    "pericias": [
+      "Prontidão 3",
+      "Furtividade 2"
+    ],
+    "nota": "Deslizar pela pedra (Su): Centelha 2.",
+    "deslocamento": {
+      "ft": 20,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "yeti": {
+    "livro": "PF Bestiary 1",
+    "nome": "Yeti",
+    "cr": "4",
+    "tipo": "humanoide monstruoso Grande",
+    "tamanho": "grande",
+    "valores": {
+      "for": 19,
+      "des": 12,
+      "con": 15,
+      "int": 9,
+      "sab": 12,
+      "car": 10
+    },
+    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
+    "deslocamento": {
+      "ft": 40,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  },
+  "zumbi-humano": {
+    "livro": "PF B1",
+    "nome": "Zumbi Humano",
+    "cr": "1/2",
+    "tipo": "morto-vivo Médio",
+    "tamanho": "medio",
+    "valores": {
+      "for": 17,
+      "des": 10,
+      "con": "-",
+      "int": "-",
+      "sab": 10,
+      "car": 10
+    },
+    "deslocamento": {
+      "ft": 30,
+      "origem": "fonte"
+    },
+    "crConf": "confirmado"
+  }
+}

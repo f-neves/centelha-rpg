@@ -1,37 +1,29 @@
 {
-  "ordem": 39,
   "id": "tigre",
   "idAntigo": "mon-tigre",
   "nome": "Tigre",
   "nomeIngles": "Tiger",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Médio",
-  "descricao": "Emboscador solitário que mata presa maior que ele e a arrasta para o mato. Atravessa rios a nado. Evita gente onde pode; nos Sundarbans, caça gente.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/tigre_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2,91 m de comprimento, 1,07 m de altura",
-    "peso": "192 kg",
-    "comprimento": 2.91,
-    "largura": 0.39,
-    "altura": 1.07
-  },
-  "locomocao": {
-    "terra": 7,
-    "natacao": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 12,
-    "corrida": 16
-  },
+  "ameaca": 3,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 1.07,
+    "largura": 0.39,
+    "profundidade": null,
+    "comprimento": 2.91,
+    "comprimentoSemCauda": 1.91,
+    "caudaGrossa": false,
+    "massa": 192,
+    "area": 0.88,
+    "posturaDoTamanho": "de lado",
+    "linhaPV": "acima",
+    "cargaMedida": 68
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 5,
@@ -42,7 +34,7 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
     "bloqueio": 2,
     "esquiva": 3,
@@ -51,88 +43,165 @@
     "integridade": 3,
     "prontidao": 3,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
     "escalada": 1,
     "natacao": 2,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "penumbra",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "segurar pela garganta",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "penumbra",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "segurar pela garganta",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 7,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 12,
+      "corrida": 16
+    },
+    "nado": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Patada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Mordida (na garganta)",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar",
+      "texto": "na garganta"
     },
     {
       "nome": "derrubar",
-      "descricao": "Patada",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar"
     },
     {
       "nome": "bote",
-      "descricao": "Mordida: Investida.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "penumbra: Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\". · audição: em número; provavelmente usada na caça. · faro: sem indício de uso para achar presa viva; sem Especialidade."
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "regra": "investida"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "penumbra",
+      "descricao": "Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\" (San Diego Zoo, sem método)",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição",
+      "descricao": "em número; provavelmente usada na caça (Schaller 1967)",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "sem indício de uso para achar presa viva (Schaller 1967; Mazák 1981); sem Especialidade",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "pelagem listrada (texto)",
+    "mente": "animal",
+    "tracos": "caninos de 6,4 a 7,6 cm (Mazák 1981); garras de 7,5 a 10 cm (San Diego Zoo). Urso, javali, gauro e porco-espinho podem feri-lo de morte (Mazák 1981)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "noturno em Chitwan; crepuscular e noturno no nordeste da China",
+    "dieta": "carnívoro (cervos, javalis, gauro, búfalo)",
+    "caca": "emboscada: espreita de 20 a 30 minutos e ataca de até 30 m",
+    "dianteDeGente": "evita na maior parte da área; nos Sundarbans, comedor de gente (cerca de 20 mortos por ano registrados em Bangladesh, de 1935 a 2006)"
+  },
+  "ecologia": {
+    "terreno": [
+      "selva",
+      "floresta"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Emboscador solitário que mata presa maior que ele e a arrasta para o mato. Atravessa rios a nado. Evita gente onde pode; nos Sundarbans, caça gente.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Solitário e territorial, caça por emboscada silenciosa e evita confronto que não seja estritamente necessário. Social: solitário."
+      "texto": "Solitário e territorial, caça por emboscada silenciosa e evita confronto que não seja estritamente necessário."
     },
     {
       "titulo": "Hábitat",
@@ -141,96 +210,32 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Ronda as selvas mais fechadas de Mére, onde as histórias locais o descrevem quase como espírito da mata, muito por causa do respeito quase religioso da região aos grandes predadores, embora seja apenas um animal comum."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 7: quem tem Força 3 ou menos não apara a mordida, e nenhum humano tira o Bloqueio dele. Médio como o humano, sem bônus de Alvo. 50 PV, Impacto 5 e Couraça nível 1 (quanto ela vale fica para depois); o macho de 209 kg ou mais tem os mesmos 50 PV (Variantes). A mordida dá 10,5 de média e o agarrão 14 por manutenção (Força 7). Leva na boca uma presa de 68 kg sem perder o passo, e arrasta cerca de 811 kg. Com Furtividade 4, o primeiro sinal dele costuma ser o bote; e a água não salva ninguém, porque ele nada."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Jungle",
-      "Forest"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/tigre_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 3, Atletismo 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Tigre",
-    "cr": "4",
-    "tipo": "animal Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 23,
-      "des": 15,
-      "con": 17,
-      "int": 2,
-      "sab": 15,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,04 × 1,0324 = 1,074 . Antes: escalado pelo cubo da massa: 1,10 × (174,5 ÷ 209)^(1/3) = 1,04 m; era 1,10 m, a do macho. Panna mediu média de 1,20 m (113 a 128 cm, seis medidas de três machos), com o tigre deitado sob anestesia, sem dizer a postura da perna; a faixa em pé dada pela Wikipédia (Karanth 2003) vai de 0,90 a 1,10 m. A ficha fica entre as duas"
     },
-    "pericias": [
-      "Furtividade 3",
-      "Atletismo 2"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,82 × 1,0324 = 2,911 . Antes: escalado pelo cubo da massa: 3,00 × (174,5 ÷ 209)^(1/3) = 2,82 m; era 3,00 m, cerca de 300 cm nos machos de Panna (livreto da reserva); de 2,70 a 3,10 m no macho (Mazák 1981)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 50,
-    "esquiva": 12,
-    "bloqueio": 10,
-    "defesa": 12,
-    "defesaMental": 9,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,85 × 1,0324 = 1,910 . Antes: escalado pelo cubo da massa: 1,96 × (174,5 ÷ 209)^(1/3) = 1,85 m; era 1,96 m, média dos machos de Panna (livreto da reserva). A cauda é fina e não conta (D-155)"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 810.96,
-    "carga": {
-      "leve": 68,
-      "media": 136,
-      "pesada": 204,
-      "maxima": 272
-    },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 12,
-        "corrida": 16
-      },
-      "nado": 2
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,38 × 1,0324 = 0,392 . Antes: escalado pelo cubo da massa: 0,40 × (174,5 ÷ 209)^(1/3) = 0,38 m; era 0,40 m, pelo perímetro do peito medido em Panna (média de 129 cm): 41 cm de diâmetro se fosse redondo, e o tórax é mais alto que largo"
     }
-  },
-  "notasObservacao": [
-    "`forca`: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 ◆ (era 9), topo das âncoras (decisão 9: \"tigre com Força 5 ou mais\"), um acima do leão (7); nenhum feito pesado fixa o número (D-158, D-174)",
-    "`vigor`: 5 ◆ (era 4 pela D-164, que a decisão 10 desfaz); sobe pela ferida aguentada e pela longevidade selvagem de Panna, sem número de cura; provisório (D-174)",
-    "`resistencia`: 4 (em vigor na Etapa 2, 20/10/2026); antes: 3, acima do normal só pela necropsia da tigresa de Chitwan (Sunquist 1981), que não diz a idade das lesões; sem ela o 3 fica sem feito fora do nado e da distância, que a diretriz 2 tira da conta. Ver \"desvios\" no resumo do lote (D-174)",
-    "`massa` e `faixa`: 192 kg (em vigor na Etapa 2, 20/10/2026); antes: 174,5 kg, a média simples do macho (209 kg) e da fêmea (cerca de 140 kg) de Panna, a 45,5 kg do corte de 220 kg. O macho médio de Panna fica a 11 kg (5%) do corte; dois dos quatro machos de Panna passam dele e vão para a Faixa 4 com 50 PV (D-141, D-174)",
-    "`carga`: o piso de 68 kg vem de relato citado por Schaller 1967 (Smythies 1942), com massa do observador; provisório (D-122, D-169, D-174)",
-    "`pesoErguido`: 810,96 kg (em vigor na Etapa 2, 20/10/2026); antes: 946,88 kg pela fórmula nova (`calc6.mjs`, com 174,5 kg), provisório; era 648,44 kg pela D-162 (decisões 14 e 16)",
-    "`atributos.influencia` e `compostura`: descem a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 12 para 8 (D-174)",
-    "`escalada`: 1, nova, por um registro fotográfico só (Singh 1961, via Mazák); provisória (D-174)",
-    "`empatia` e `equilibrio`: 0, por espécie solitária e por falta de dado; provisórios (D-174)",
-    "`especialidades`: o \"Nado longo\" do levantamento não existe na v3 (diretriz 2); as travessias ficam na nota de pesquisa (jornada) (D-174)",
-    "`velocidade` e `nado`: congelados (decisão 23); 57 km/h contra 56 km/h do Schaller 1967, uma só estimativa a olho (D-170)",
-    "`variantes.tigreDeAmur`: a Resistência (frio) natural fica sem valor por falta de temperatura medida (D-174)",
-    "`dimensoes.altura`: 1,04 m, os 1,10 m do macho (entre a cernelha medida deitado em Panna, 1,20 m, e a faixa em pé de 0,90 a 1,10 m) escalados pelo cubo da massa (D-147, D-174)",
-    "`dimensoes.largura`: 0,38 m, os 0,40 m do macho, estimados pelo perímetro do peito de Panna (129 cm); não decide a área (D-147, D-174)",
-    "fonte: os números do tigre-de-amur (Slaght et al. 2005; Kerley et al. 2005) continuam só pela Wikipédia (D-174)",
-    "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): atravessa rios de 6 a 8 km a nado e, excepcionalmente, até 29 km (Mazák 1981, p. 5) **[medido]**; de 16 a 30 km numa noite na Índia (Schaller 1967, via Mazák) e de 50 a 60 km num dia no leste da Sibéria (Jankovskij, via Mazák); em Chitwan, 2,0 km em média entre localizações diárias (Sunquist 1981). Não persegue: desiste se a presa abre vantagem (Schaller 1967)."
   ]
 }

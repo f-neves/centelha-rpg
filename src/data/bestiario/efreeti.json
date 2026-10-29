@@ -1,148 +1,229 @@
 {
-  "ordem": 109,
   "id": "efreeti",
   "idAntigo": "mon-efreeti",
   "nome": "Efreeti",
   "nomeIngles": "Genie, Efreeti",
-  "categoria": "Elemental",
+  "categoria": "elemental",
   "papel": "chefe",
-  "conceito": "exterior Grande (fogo)",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-    "elemental",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/efreeti_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3,6 m de altura",
-    "peso": "320 kg"
-  },
-  "locomocao": {
-    "terra": 2,
-    "voo": 4
-  },
+  "ameaca": 5,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé; voador",
+    "apoio": "bipede",
+    "altura": 3.6,
+    "largura": 0.9,
+    "profundidade": 0.46,
+    "comprimento": null,
+    "massa": 320,
+    "area": 2.88,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 8,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 4
+    "atletismo": 2,
+    "integridade": 4,
+    "prontidao": 3,
+    "manha": 3,
+    "oficios-gerais": 4,
+    "persuasao": 2,
+    "ocultismo": 2,
+    "sociabilidade": 1
   },
-  "virtues": {
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "voo": 2,
+    "musculatura": 0
+  },
+  "especialidades": {
+    "oficios-gerais": [
+      {
+        "foco": "forja e fornalha",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Punho em brasa",
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "corpo-em-chamas",
       "nome": "Corpo em chamas",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
         "nivel": 4
       },
-      "resiste": "nenhum",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      },
-      "descricao": "O corpo do efreeti é fogo vivo: quem acerta um golpe corpo a corpo nele se queima de volta, e sua pele soca e machuca como brasa."
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "toque",
+      "area": "quem entra no alcance do corpo a corpo dele, quem o acerta com um golpe corpo a corpo, quem o toca, e o alvo do Punho em brasa",
+      "efeito": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa",
+      "dano": "1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele; quem passa não se queima ao entrar; quem o acerta ou o toca não resiste",
+      "limiteDeUso": "a queima ao entrar, uma vez por cena para cada criatura; o resto, sem limite"
     },
     {
-      "id": "muralha-de-fogo",
       "nome": "Muralha de fogo",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
         "nivel": 4
       },
-      "resiste": "esquiva",
-      "efeito": "ergue uma parede de fogo que bloqueia passagem e fere quem atravessa",
-      "descricao": "O efreeti ergue uma cortina de chamas que bloqueia um corredor ou porta; quem tenta atravessar se queima.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 3
-      }
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até o fim da cena, ou até ele desfazer",
+      "alcance": "18 m",
+      "area": "uma parede de até 6 m de comprimento e 3 m de altura",
+      "efeito": "ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima",
+      "dano": "3d6 + Centelha, fogo, a quem atravessa",
+      "resistencia": "esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade",
+      "limiteDeUso": "três vezes por dia"
     },
     {
-      "id": "conceder-desejos",
       "nome": "Conceder desejos",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "fortuna",
         "nivel": 6
       },
-      "resiste": "nenhum",
-      "efeito": "concede um pedido poderoso a quem o aprisiona ou barganha com ele, raramente e sempre com um preço",
-      "descricao": "Preso, subornado ou convencido, o efreeti pode realizar um pedido enorme. Ele cumpre a letra do pedido, nunca a intenção por trás dele, e cobra um preço à altura.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 1
-      }
+      "ativacao": "o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita",
+      "duracao": "a do pedido",
+      "alcance": "o que o pedido alcança",
+      "area": "a do pedido",
+      "efeito": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia, e raramente"
+    },
+    {
+      "nome": "Invisibilidade",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "fica Invisível; o calor do corpo continua",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "Viagem planar",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "outro plano ou realidade",
+      "area": "ele e quem ele toca e quer levar",
+      "efeito": "passa para outro plano e volta quando quiser",
+      "dano": "nenhum",
+      "resistencia": "nenhum; quem não quer ir não é levado",
+      "limiteDeUso": "uma vez por cena"
     }
   ],
-  "fraquezas": [
-    "agua"
-  ],
-  "resistencias": [
-    "fogo"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Corpo em chamas",
-      "descricao": "quem acertar em combate corpo a corpo sofre dano de fogo"
-    },
-    {
-      "nome": "Muralha de fogo",
-      "descricao": "cria parede que causa dano a quem a atravessa"
-    },
-    {
-      "nome": "Conceder desejos",
-      "descricao": "pode realizar um desejo poderoso como favor, com custo narrativo"
-    },
-    {
-      "nome": "Imunidade a fogo",
-      "descricao": "sem efeito de dano de fogo; vulnerável a frio (dano aumentado)"
-    },
-    {
-      "nome": "Invisibilidade e viagem planar",
-      "descricao": "some de vista ou desloca-se entre planos"
-    },
-    {
-      "nome": "Voo",
-      "descricao": "desloca-se livremente pelos ares"
+      "nome": "tirano do fogo",
+      "formas": "todas",
+      "texto": "manda os escravos na frente, ergue a muralha para dividir o grupo, voa por cima e esmaga com o punho em brasa quem o desafia; quando perde, some invisível ou sai para o plano do fogo."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "a Invisibilidade (nas Manobras)",
+    "mente": "inteligente; cruel, orgulhosa e sádica",
+    "tracos": "gigante de 3,6 m de pele vermelha como brasa, olhos que ardem e fumaça que sobe do corpo de fogo vivo"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em corte, com escravos e servos",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro",
+    "caca": "não caça",
+    "dianteDeGente": "escraviza quem pode, e barganha com quem não pode; cumpre o trato pela letra fria do acordo"
+  },
+  "ecologia": {
+    "terreno": [
+      "deserto"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Tirano do plano do fogo, de 3,6 m: o corpo é fogo vivo e queima quem o acerta. Voa, ergue muralhas de chamas, some da vista e viaja entre planos. Preso ou convencido, concede um desejo, sempre pela letra e com um preço.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -165,43 +246,68 @@
       "texto": "Efreets povoam as lendas de Mère como senhores de fornalhas antigas, e alguns forjadores desesperados ainda arriscam pactos com um deles para acender fornos que a Supressão proibiu de reacender por meios arcanos."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Desert"
+  "imagens": [
+    "bestiario/efreeti_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "agua",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Ofícios 4, Manha 3, Prontidão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Efreeti",
-    "cr": "8",
-    "tipo": "exterior Grande (fogo)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 23,
-      "des": 17,
-      "con": 18,
-      "int": 14,
-      "sab": 15,
-      "car": 15
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Corpo em chamas",
+      "motivo": "números sugeridos pela ficha (D-197); o efeito do site, \"Resiste ao entrar, 1 vez por cena\", fica como a queima de quem entra no alcance, com resistência de corpo uma vez por cena; o mesmo poder diz `resiste: nenhum`, que fica para quem o acerta ou o toca"
     },
-    "pericias": [
-      "Ofícios 4",
-      "Manha 3",
-      "Prontidão 3"
-    ],
-    "nota": "Gênio do fogo, desejos: Centelha 3.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Muralha de fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Conceder desejos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Viagem planar",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "habilidades.prontidao",
+      "motivo": "3, a da nota do site; o campo dizia 2 (o precedente do wyvern)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "0, corpo leve de fogo e carne, como o djinn; com Musculatura 2 o peso erguido seria maior, sem fato no site que o peça"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira o Punho em brasa Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
+    }
+  ]
 }

@@ -564,9 +564,11 @@ import CondDlg from '../../components/CondDlg.astro';
     classeDeTempo, velocidadeDaArma, tetoDaRajada, temGesto, FASE_ROTULO,
     type CombateMesa, type Manobra,
   } from '../../lib/combate-tempo';
-  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario'; import { dadosSemOsVaziosDaEscolha } from '../../lib/defesa-vestida';
+  import { modeloNaForma, modeloDaPeca, seletorFormaDaPecaHTML, MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario'; import { dadosSemOsVaziosDaEscolha } from '../../lib/defesa-vestida';
+  import { numerosPersonagem } from '../../lib/motor';
+  import { fichaParaLeitura } from '../../lib/ficha-formato';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
-  import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/calc';
+  import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/motor';
   import { armaDoSlot } from '../../lib/equip';
   import { rolarExpr, descreverRolada, tipoDeDano } from '../../lib/rolagem';
   import { uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
@@ -700,7 +702,7 @@ import CondDlg from '../../components/CondDlg.astro';
     const pcIds = [...new Set(COMBS.filter((c) => c.tipo === 'pc' && c.personagem_id).map((c) => c.personagem_id))];
     if (pcIds.length) {
       const { data: fichas } = await SB.from('personagens').select('id, ficha, imagem_path').in('id', pcIds);
-      FICHAS = Object.fromEntries((fichas || []).map((f: any) => [f.id, f.ficha]));
+      FICHAS = Object.fromEntries((fichas || []).map((f: any) => [f.id, fichaParaLeitura(f.ficha)]));
       const caminhos = (fichas || []).map((f: any) => f.imagem_path).filter(Boolean);
       const m1 = await urlsImagens(SB, caminhos, 'personagens');
       for (const f of fichas || []) if (f.imagem_path && m1[f.imagem_path]) IMGS['pc:' + f.id] = m1[f.imagem_path];
@@ -828,7 +830,7 @@ import CondDlg from '../../components/CondDlg.astro';
   const avatarDe = (c: any) => {
     const src = IMGS['own:' + c.id]
       || (c.tipo === 'pc' ? IMGS['pc:' + c.personagem_id] : null)
-      || (c.tipo === 'criatura' && imagemDe(MON[c.monstro_id]) ? u(imagemDe(MON[c.monstro_id])!) : null);
+      || (c.tipo === 'criatura' && imagemDe(modeloDaPeca(c)) ? u(imagemDe(modeloDaPeca(c))!) : null);
     const cls = c.tipo === 'criatura' && !IMGS['own:' + c.id] ? 'av-besta' : '';
     return avatarHTML(c.nome, src, cls, pctVida(c));
   };
@@ -891,7 +893,7 @@ import CondDlg from '../../components/CondDlg.astro';
    */
   const raciocinioDe = (c: any): number =>
     FICHAS[c.personagem_id]?.attrs?.raciocinio
-    ?? MON[c.monstro_id]?.atributos?.raciocinio
+    ?? modeloDaPeca(c)?.atributos?.raciocinio
     ?? -1;
 
   const ordenar = (a: any, b: any) => ordemDaFila(
@@ -1105,7 +1107,7 @@ import CondDlg from '../../components/CondDlg.astro';
     const pct = pctVida(c);
     const conds = verCond(c) ? condsDe(c) : [];
     const def = defesaAtual(c);
-    const tipoTxt = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? (MON[c.monstro_id]?.nome || 'Criatura') : 'NPC';
+    const tipoTxt = c.tipo === 'pc' ? 'PC' : c.tipo === 'criatura' ? (modeloDaPeca(c)?.nome || 'Criatura') : 'NPC';
     // A ordem segue a pergunta que se faz no meio da luta: primeiro o que
     // atrapalha quem bate NESTE card (as Defesas e a Absorção), depois o que
     // ele devolve no turno dele. Antes vinha ao contrário.
@@ -1156,9 +1158,9 @@ import CondDlg from '../../components/CondDlg.astro';
     // daqui: com a arte inteira clicável, virou um nono botão redundante numa
     // fileira que já tinha oito. Só para o mestre, porque `ligarCards` não liga
     // nada para o jogador, e um alvo que não responde é pior do que nenhum.
-    const abreCard = EH_MESTRE && c.tipo === 'criatura' && !!MON[c.monstro_id];
+    const abreCard = EH_MESTRE && c.tipo === 'criatura' && !!modeloDaPeca(c);
     const cCard = abreCard ? ' ver-card' : '';
-    const aCard = abreCard ? ` data-mon="${esc(c.monstro_id)}" title="Ver o card de ${esc(MON[c.monstro_id].nome)}"` : '';
+    const aCard = abreCard ? ` data-mon="${esc(c.monstro_id)}" data-forma-card="${esc(modeloDaPeca(c)?.formaPrincipal?.id || '')}" title="Ver o card de ${esc(modeloDaPeca(c).nome)}"` : '';
     return `<article class="cbt g-${esc(c.grupo || 'inimigo')}${atual ? ' atual' : ''}${c.ativo === false ? ' fora' : ''}${c.oculto ? ' oculto' : ''}${lembr ? ' lembr' : ''}" data-c="${c.id}">
       <header class="cbt-cab">
         ${lembr
@@ -1177,6 +1179,7 @@ import CondDlg from '../../components/CondDlg.astro';
           ? `Vida da última vez${vistoHora ? `, ${esc(vistoHora)}` : ''}`
           : `ini ${c.iniciativa ?? 0}`} · ${GRUPO_LBL[c.grupo] || 'Inimigo'}</span>
       </div>
+      ${EH_MESTRE ? seletorFormaDaPecaHTML(c) : ''}
       ${barras}${stats}${fitaDoCard(c)}
       ${conds.length ? `<div class="conds">${conds.map((x) => condChipHTML(x, EH_MESTRE, c.id)).join('')}</div>` : ''}
       ${acoes}
@@ -1671,11 +1674,11 @@ import CondDlg from '../../components/CondDlg.astro';
     // janela abre com o bloco de jogo e o texto entra quando a busca voltar.
     raiz.querySelectorAll<HTMLElement>('.ver-card').forEach((b) => b.addEventListener('click', async () => {
       const id = b.dataset.mon!;
-      const m = MON[id]; if (!m) return;
+      const m = modeloNaForma(MON[id],b.dataset.formaCard); if (!m) return;
       el('card-modal-body').innerHTML = cardCriaturaHTML(m);
       el('card-modal').hidden = false; document.body.style.overflow = 'hidden';
       const cheia = await criaturaCompleta(id);
-      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(cheia);
+      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(modeloNaForma(cheia,b.dataset.formaCard));
     }));
   }
 
@@ -1685,12 +1688,12 @@ import CondDlg from '../../components/CondDlg.astro';
     const jaTem = new Set(COMBS.map((c) => c.personagem_id).filter(Boolean));
     const novos = (pcs || []).filter((p: any) => !jaTem.has(p.id)).map((p: any) => {
       const S = p.ficha || {}; const at = S.attrs || {};
-      const pvv = pvDe(at.vigor || 0);
-      const en = (Math.floor(((at.vigor || 0) + (at.compostura || 0) + (at.raciocinio || 0) + (S.willpower || 0)) / 2) + (S.centelha || 0) * 2);
+      const nums = numerosPersonagem(S);
+      const pvv = nums.pv;
+      const en = nums.energia;
       // O mortal também tem Mana (F2, Adendo 2 de 02/10/2026): a Força de Vontade,
       // pela mesma `mana` de calc.ts. Todo personagem lida com Mana.
-      const mn = manaDe({ centelha: S.centelha || 0, vontade: S.willpower || 0,
-                          manipulacao: S?.arte?.['manipulacao-mana'] || 0 });
+      const mn = nums.mana;
       return {
         encontro_id: ENC.id, tipo: 'pc', personagem_id: p.id, nome: p.nome || 'PC',
         pv_max: pvv, pv_atual: pvv, energia_max: en, energia_atual: en,
@@ -1733,7 +1736,7 @@ import CondDlg from '../../components/CondDlg.astro';
       const q = norm(busca.value.trim());
       const hits = (q ? fonte.filter((f: any) => (f.busca || norm(f.nome)).includes(q)) : fonte).slice(0, 60);
       el('add-lista').innerHTML = hits.length ? hits.map((f: any) => `<div class="add-item" data-k="${esc(f.id)}">
-        ${avatarHTML(f.nome, f.imagem ? u(imagemDe(f) || f.imagem) : (f.npc?.imagem && /^https?:/.test(f.npc.imagem) ? f.npc.imagem : null), f.imagem ? 'av-besta av-p' : 'av-p')}
+        ${avatarHTML(f.nome, f.imagens?.[0] ? u(imagemDe(f) || f.imagens[0]) : (f.npc?.imagem && /^https?:/.test(f.npc.imagem) ? f.npc.imagem : null), f.imagens?.[0] ? 'av-besta av-p' : 'av-p')}
         <span class="ai-n">${esc(f.nome)}${f.sep ? ' <small class="muted">· da campanha</small>' : ''}</span>
         <span class="ai-m">${f.ameaca != null ? `A${f.ameaca} · PV ${f.pv ?? '—'} · Def ${f.defesa ?? '—'}` : esc(f.npc?.resumo || '')}</span>
       </div>`).join('') : '<p class="vazio" style="padding:.5rem">nada encontrado</p>';
@@ -2172,7 +2175,7 @@ import CondDlg from '../../components/CondDlg.astro';
         for (const c of COMBS) {
           ini[c.id] = c.tipo === 'pc' && FICHAS[c.personagem_id]
             ? rolarIniciativaPC(FICHAS[c.personagem_id])
-            : c.tipo === 'criatura' && MON[c.monstro_id] ? iniDeMonstro(MON[c.monstro_id]) : d6();
+            : c.tipo === 'criatura' && modeloDaPeca(c) ? iniDeMonstro(modeloDaPeca(c)) : d6();
         }
       }
       const ordem = COMBS.map((c) => c.id);
@@ -2281,5 +2284,11 @@ import CondDlg from '../../components/CondDlg.astro';
     dlg.showModal();
   }
 
+  window.addEventListener('centelha:forma', (e:Event)=>{
+    if (!EH_MESTRE) return;
+    const c=COMBS.find((x:any)=>x.id===(e as CustomEvent).detail?.id);
+    if(c) RESUMO[c.id]=resumoDe(c,FICHAS);
+    pintar();
+  });
   main();
 </script>

@@ -1,42 +1,32 @@
 {
-  "ordem": 135,
   "id": "dragao-branco-jovem",
   "idAntigo": "mon-dragao-branco-jovem",
   "nome": "Dragão Branco Jovem",
   "nomeIngles": "Dragon, Young White",
-  "categoria": "Dragão",
-  "categoriaLegada": "Dragão",
+  "categoria": "dragao",
   "papel": "elite",
-  "conceito": "dragão Enorme",
-  "descricao": "Predador alado das montanhas geladas: sopra frio de cima, desce para morder e some na neve. Orgulhoso e ganancioso, mais fera que os outros dragões.",
-  "tags": [
-    "dragao",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/dragao-branco-jovem_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "4,3 m de comprimento, 1,3 m de altura",
-    "peso": "700 kg",
-    "comprimento": 4.3,
-    "largura": 0.9,
-    "altura": 1.3,
-    "envergadura": 9
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 15,
-    "natacao": 6,
-    "escavacao": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; voador",
+    "apoio": "quadrupede",
+    "altura": 1.3,
+    "largura": 0.9,
+    "profundidade": null,
+    "comprimento": 4.3,
+    "comprimentoSemCauda": 2.3,
+    "caudaGrossa": true,
+    "envergadura": 9,
+    "massa": 700,
+    "area": 2.5,
+    "posturaDoTamanho": "de lado, pousado, asas fechadas",
+    "segundoTamanho": {
+      "area": 16.9,
+      "posturaDoTamanho": "de baixo, asas abertas"
+    }
+  },
+  "couraca": 6,
+  "atributos": {
     "forca": 8,
     "destreza": 2,
     "vigor": 6,
@@ -47,8 +37,10 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 2,
     "furtividade": 3,
     "integridade": 2,
@@ -56,7 +48,7 @@
     "sobrevivencia": 2,
     "sociabilidade": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 3,
     "voo": 2,
     "natacao": 2,
@@ -64,124 +56,261 @@
     "musculatura": 3,
     "disparo": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "na neve",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "na neve",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 2,
     "conviccao": 5,
-    "temperanca": 3,
-    "valor": 5
+    "temperanca": 3
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 8,
-  "ataques": [
-    {
-      "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 2,
-      "ticks": 6,
-      "classe": "media"
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
     },
-    {
-      "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+    "voo": {
+      "batalha": 15
     },
-    {
-      "nome": "Sopro de frio",
-      "atrib": "vigor",
-      "pericia": "disparo",
-      "dado": 6,
-      "mao": 1,
-      "tipo": "gelo",
-      "ticks": 7,
-      "forca": false,
-      "classe": "distancia",
-      "distancia": true
+    "nado": {
+      "batalha": 6
+    },
+    "escavacao": {
+      "batalha": 3
     }
-  ],
-  "fraquezas": [
-    "fogo"
-  ],
-  "resistencias": [],
-  "imunidades": [
-    "gelo"
-  ],
-  "arte": {
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {
     "gelo": 3,
     "morte": 3
   },
-  "mana": 17,
-  "habilidades": [
+  "ataques": [
+    {
+      "nome": "Mordida",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 2,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras",
+      "parte": "pata-dianteira",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    },
     {
       "nome": "Sopro de frio",
-      "descricao": "poder natural (base Gelo 3): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Efeito: o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair. Dano: 6d6 + Centelha, gelo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks.",
-      "classe": "regra da ficha"
+      "parte": "boca",
+      "habilidade": "disparo",
+      "classe": "distancia",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "6d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "gelo",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Sopro de frio",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "gelo",
+        "nivel": 3
+      },
+      "ataque": "Sopro de frio",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "9 m à frente",
+      "area": "cone de 9 m",
+      "efeito": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair",
+      "dano": "6d6 + Centelha, gelo",
+      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
       "nome": "garras em sequência",
-      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
-      "descricao": "garra, garra e mordida no mesmo turno (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
     },
     {
       "nome": "Presença",
-      "descricao": "poder natural (base Morte 3): Ativação: a primeira vez na cena em que ele ruge, ataca ou desce do céu. Duração: Abalado até o fim da cena. Alcance: 12 m. Área: esfera de 12 m em volta dele. Efeito: quem falha fica Abalado. Dano: nenhum. Resistência: mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "ativacao": "a primeira vez na cena em que ele ruge, ataca ou desce do céu",
+      "duracao": "Abalado até o fim da cena",
+      "alcance": "12 m",
+      "area": "esfera de 12 m em volta dele",
+      "efeito": "quem falha fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Andar no gelo",
-      "descricao": "poder natural (base Gelo 2): Ativação: nenhuma, sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: anda, corre e luta no gelo e na neve sem penalidade e sem cair. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "gelo",
+        "nivel": 2
+      },
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "anda, corre e luta no gelo e na neve sem penalidade e sem cair",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Nevasca",
-      "descricao": "poder natural (base Gelo 2): Ativação: uma ação, Velocidade 8. Duração: 24 Ticks. Alcance: 12 m. Área: esfera de 6 m. Efeito: neve fechada; quem está dentro tem −2 em Prontidão e nas jogadas de Percepção pela vista, e ele não sofre a penalidade. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "gelo",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "24 Ticks",
+      "alcance": "12 m",
+      "area": "esfera de 6 m",
+      "efeito": "neve fechada; quem está dentro tem −2 em Prontidão e nas jogadas de Percepção pela vista, e ele não sofre a penalidade",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Voo em mergulho",
-      "descricao": "Ativação: descer de pelo menos 6 m de altura direto sobre o alvo. Duração: instantânea. Alcance: o do voo. Área: um alvo. Efeito: +2 na Iniciativa da rodada do mergulho e +1 na jogada do primeiro golpe. Dano: o do golpe. Resistência: nenhum. Limite de uso: um mergulho a cada vez que sobe de novo a 6 m.",
-      "classe": "regra da ficha"
-    },
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "descer de pelo menos 6 m de altura direto sobre o alvo",
+      "duracao": "instantânea",
+      "alcance": "o do voo",
+      "area": "um alvo",
+      "efeito": "+2 na Iniciativa da rodada do mergulho e +1 na jogada do primeiro golpe",
+      "dano": "o do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "escava",
-      "descricao": "abre caminho na neve e no gelo, a 3 m por Tick, e espera enterrado.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "abre caminho na neve e no gelo, a 3 m por Tick, e espera enterrado."
     },
     {
       "nome": "caça do alto",
-      "descricao": "sopra primeiro, de cima, e desce para morder o que ficou de pé.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: vê sem luz (sem regra ainda). · faro: apurado. · sentidos no gelo: enxerga e fareja através da neve; ninguém o embosca debaixo dela."
+      "formas": "todas",
+      "texto": "sopra primeiro, de cima, e desce para morder o que ficou de pé."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "vê sem luz",
+      "formas": "todas",
+      "classe": "sem regra ainda"
+    },
+    {
+      "nome": "faro",
+      "descricao": "apurado",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentidos no gelo",
+      "descricao": "enxerga e fareja através da neve; ninguém o embosca debaixo dela",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "longa, de quem caça no mar gelado; quanto tempo, o Mestre decide",
+    "camuflagem": "escama branca e azulada, que some na neve",
+    "mente": "inteligente, feral, orgulhosa e gananciosa",
+    "tracos": "escamas brancas, crista de espinhos, asas de couro; o ar em volta esfria"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "caça do alto, com o sopro, e guarda tesouro",
+    "dianteDeGente": "ataca ou exige tributo"
+  },
+  "ecologia": {
+    "terreno": [
+      "gélido",
+      "montanha"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "Predador alado das montanhas geladas: sopra frio de cima, desce para morder e some na neve. Orgulhoso e ganancioso, mais fera que os outros dragões.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Menos astuto e mais selvagem que seus parentes, o dragão branco jovem caça por instinto puro, guiado pela fome e pelo território, atacando quase tudo o que se move em seu gelo sem muito cálculo. Social: solitário."
+      "texto": "Menos astuto e mais selvagem que seus parentes, o dragão branco jovem caça por instinto puro, guiado pela fome e pelo território, atacando quase tudo o que se move em seu gelo sem muito cálculo."
     },
     {
       "titulo": "Hábitat",
@@ -194,83 +323,90 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "No gelo do White Wall e nas ilhas do Neck, onde anões exilados e humanos supersticiosos já temem o que espreita sob a neve, um dragão branco jovem é mais uma prova de que aquelas terras continuam hostis, ainda que sua origem nada tenha a ver com os horrores que saíram da Fenda."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme no ar, Grande pousado. Abre com o sopro de frio (cone de 9 m, dano médio 25; esquivar leva metade) e repete a cada 24 Ticks. Morde e rasga com dano médio 15,5. Conjura Gelo e Morte até o nível 3, com 17 de Mana. Lento e fácil de acertar em terra (Esquiva 4, Bloqueio 4), mas tem 54 PV, Impacto 10, Corte e Perfuração 4 e couro de escama. Frio não o fere; fogo passa toda a Absorção. Uma vez por cena, quem está a 12 m testa a Vontade contra a presença dele."
     }
   ],
-  "ecologia": {
-    "tipo": "Dragon",
-    "terreno": [
-      "Cold",
-      "Mountain"
+  "imagens": [
+    "bestiario/dragao-branco-jovem_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Cold"
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Prontidão 3, Furtividade 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Dragão Branco Jovem",
-    "cr": "6",
-    "tipo": "dragão Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 10,
-      "con": 17,
-      "int": 8,
-      "sab": 11,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Sopro de frio",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Prontidão 3",
-      "Furtividade 3"
-    ],
-    "nota": "Sopro de frio, o mais feral dos cromáticos: Centelha 3.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Presença",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 54,
-    "esquiva": 4,
-    "bloqueio": 4,
-    "defesa": 4,
-    "defesaMental": 17,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "habilidadesEspeciais.Andar no gelo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 6,
-    "pesoErguido": 1009.15,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      },
-      "voo": {
-        "batalha": 15
-      },
-      "nado": 6
+    {
+      "campo": "habilidadesEspeciais.Nevasca",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Voo em mergulho",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "sentidos.visão no escuro",
+      "motivo": "sem regra ainda no livro"
+    },
+    {
+      "campo": "habilidadesSec.disparo",
+      "motivo": "O sopro é a arma principal dele: \"Serve para qualquer disparo corporal (... sopro)\" (decisoes-autor §14). A ficha usava o Disparo na jogada sem a linha"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "Sem espécie medida. Um quadrúpede de 700 kg de patas eretas fica entre o bisão (cerca de 1,8 m no cupim, de memória) e o crocodilo (baixo, de patas abertas); o dragão anda de patas meio eretas, com o peito largo e a cabeça alta"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "A cauda do lagarto e do crocodilo fica perto da metade do comprimento total (de memória); o dragão tem o pescoço longo no corpo: cauda de 2,0 m"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Peito largo de voador pesado: um pouco acima da largura do leão do molde (0,75 m) escalada pela massa ao cubo, que daria 1,1 m, porque o dragão é mais comprido e mais estreito que um felino"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: escama de dragão, \"acima do crocodilo\" (manual 4.2; crocodilo 4 a 5), como a tartaruga grande (cerca de 6); o jovem fica no começo da faixa, e os níveis 9 a 12 ficam para os adultos e anciões quando as sobrenaturais tiverem referência . O nível fica fora da Absorção (decisoes-autor §16). As \"escamas gélidas\" do site (Absorção +2d6) são esta Couraça; 6, \"acima do crocodilo\", no começo da faixa, para deixar espaço às idades maiores"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site"
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "Mordida de predador grande (`regra-construcao.md` §7). Golpe de boca: Força × 1. N2 pela proposta da seção 3.10 (até 30.000 N): a mordida de um réptil de 700 kg fica acima da do crocodilo (N1 a N2) . Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "8 por comparação; o site tinha 7"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "6d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197: \"A Bestiarista sugere tudo... o autor revisa no fim\"). Os números do site ficam, porque o sopro tem de ser a arma mais forte do dragão (média 25, contra 15,5 da mordida); a base Gelo 3 (Rajada Gélida, 2d6) daria 11, abaixo da mordida. O chão de gelo é a parte da Rajada Gélida que desacelera"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "700 kg, a do site, conferida pelo crocodilo de mesmo comprimento (de memória, a conferir)"
     }
-  },
-  "notasObservacao": [
-    "`forca`: 8 por comparação; o site tinha 7 **[provisório]**",
-    "`couraca`: 6, \"acima do crocodilo\", no começo da faixa, para deixar espaço às idades maiores **[provisório]**",
-    "`sopro`: 6d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197: \"A Bestiarista sugere tudo... o autor revisa no fim\"). Os números do site ficam, porque o sopro tem de ser a arma mais forte do dragão (média 25, contra 15,5 da mordida); a base Gelo 3 (Rajada Gélida, 2d6) daria 11, abaixo da mordida. O chão de gelo é a parte da Rajada Gélida que desacelera **[provisório]**",
-    "`envergadura` e `área`: escaladas do grifo pela mesma carga por área de asa; o grifo é a única criatura voadora grande com Centelha já feita **[conta]**",
-    "`multiataque`: sem regra ainda; garras pela Rajada (ajuste de 24/10/2026, no formato do lote 23)",
-    "`massa`: 700 kg, a do site, conferida pelo crocodilo de mesmo comprimento (de memória, a conferir)"
   ]
 }

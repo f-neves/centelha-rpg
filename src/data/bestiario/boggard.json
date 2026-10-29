@@ -1,37 +1,24 @@
 {
-  "ordem": 162,
   "id": "boggard",
   "idAntigo": "mon-boggard",
   "nome": "Boggard",
   "nomeIngles": "Boggard",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "humanoide Médio",
-  "descricao": "Homem-rã dos pântanos, de boca larga e olhos enormes, que vive em aldeias de lama. Prende a presa com a língua grudenta, apavora com um coaxar horrível e fica muito tempo debaixo d'água.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/boggard_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,5 m de altura",
-    "peso": "70 kg",
-    "largura": 0.46,
-    "altura": 1.5
-  },
-  "locomocao": {
-    "terra": 2,
-    "natacao": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, agachado",
+    "apoio": "bipede",
+    "altura": 1.5,
+    "largura": 0.46,
+    "profundidade": 0.24,
+    "comprimento": null,
+    "massa": 70,
+    "area": 0.61
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 2,
     "vigor": 4,
@@ -42,99 +29,167 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 3,
     "bloqueio": 1,
+    "esquiva": 0,
     "atletismo": 2,
     "prontidao": 1,
     "integridade": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 3,
-    "intimidacao": 2
+    "intimidacao": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "prender a respiração",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "maça",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "prender a respiração",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "armas": [
+      {
+        "foco": "maça",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:maca-estrela"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Maça estrela",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "maca-estrela",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Língua grudenta",
-      "descricao": "Ativação: uma ação, Velocidade 5, a jogada de Agarrar do livro com a língua (Força + Briga, mais a Centelha, contra a Defesa de agarrão do alvo). Duração: até a língua ser arrancada ou cortada, ou ele soltar. Alcance: 3 m. Área: um alvo. Efeito: o alvo fica Agarrado pela língua e não se afasta mais que 3 m dele; para soltar, escapa pela regra do Agarrar ou corta a língua (um golpe de arma de corte que fira 3 ou mais). Dano: nenhum. Resistência: corpo, pela regra do Agarrar, com o Agarrão +2 dele. Limite de uso: um alvo por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 5, a jogada de Agarrar do livro com a língua (Força + Briga, mais a Centelha, contra a Defesa de agarrão do alvo)",
+      "duracao": "até a língua ser arrancada ou cortada, ou ele soltar",
+      "alcance": "3 m",
+      "area": "um alvo",
+      "efeito": "o alvo fica Agarrado pela língua e não se afasta mais que 3 m dele; para soltar, escapa pela regra do Agarrar ou corta a língua (um golpe de arma de corte que fira 3 ou mais)",
+      "dano": "nenhum",
+      "resistencia": "corpo, pela regra do Agarrar, com o Agarrão +2 dele",
+      "limiteDeUso": "um alvo por vez"
     },
     {
       "nome": "Grito aterrorizante",
-      "descricao": "Ativação: uma ação, Velocidade 6, um coaxar alto e horrível. Duração: Amedrontado até o fim da próxima ação de cada alvo. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: quem não é boggard e falha fica Amedrontado (não avança na direção dele, −2 em tudo enquanto ele estiver à vista). Dano: nenhum. Resistência: mente, contra Influência + Intimidação dele; quem passa fica imune ao grito até o fim da cena. Limite de uso: uma vez por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, um coaxar alto e horrível",
+      "duracao": "Amedrontado até o fim da próxima ação de cada alvo",
+      "alcance": "9 m",
+      "area": "esfera de 9 m em volta dele",
+      "efeito": "quem não é boggard e falha fica Amedrontado (não avança na direção dele, −2 em tudo enquanto ele estiver à vista)",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune ao grito até o fim da cena",
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Andar do pântano",
-      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: a lama, a água rasa e a vegetação do pântano não são terreno difícil para ele. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Fôlego longo",
-      "descricao": "Vigor + Resistência, com a Especialidade natural (prender a respiração) +3.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Nadador ágil",
-      "descricao": "Natação 3 e o nado do site.",
-      "classe": "livro"
-    },
-    {
-      "nome": "emboscada do brejo",
-      "descricao": "espera dentro da água, prende o alvo com a língua, coaxa para apavorar o grupo e bate com a maça; recua para o fundo se a luta vira.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro e na penumbra (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a lama, a água rasa e a vegetação do pântano não são terreno difícil para ele",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "emboscada do brejo",
+      "formas": "todas",
+      "texto": "espera dentro da água, prende o alvo com a língua, coaxa para apavorar o grupo e bate com a maça; recua para o fundo se a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro e na penumbra",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar; fica muito tempo submerso",
+    "prendeRespiracao": "Vigor + Resistência, com a Especialidade natural +3",
+    "mente": "humanoide; tribal",
+    "tracos": "pele verde e úmida, olhos enormes, boca larga, mãos e pés palmados, língua longa e pegajosa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em clã, numa aldeia de lama, típico 4 a 12",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro: peixe, rã e o que cai na água",
+    "caca": "emboscada na água",
+    "dianteDeGente": "defende a aldeia; ataca quem entra no pântano"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano",
+      "aquático"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Homem-rã dos pântanos, de boca larga e olhos enormes, que vive em aldeias de lama. Prende a presa com a língua grudenta, apavora com um coaxar horrível e fica muito tempo debaixo d'água.",
   "lore": [
     {
       "titulo": "Aparência",
@@ -146,74 +201,53 @@
     },
     {
       "titulo": "Comportamento",
-      "texto": "A aceitação de um jovem no clã depende de como ele se desenvolve durante essa transformação, tornando a chegada à vida adulta um verdadeiro rito de passagem. Social: em clã, numa aldeia de lama, típico 4 a 12."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 37 PV, Impacto 6, Corte e Perfuração 2. Defesa baixa (Bloqueio 8, 9 com a maça; Esquiva 4). A maça dá dano médio 9,5. Prende a 3 m com a língua e, uma vez por cena, apavora quem está a 9 m. Na água e na lama, anda e nada sem atraso."
+      "texto": "A aceitação de um jovem no clã depende de como ele se desenvolve durante essa transformação, tornando a chegada à vida adulta um verdadeiro rito de passagem."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Swamp",
-      "Water"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/boggard_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Boggard",
-    "cr": "2",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 9,
-      "con": 14,
-      "int": 8,
-      "sab": 11,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Língua grudenta",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Grito aterrorizante",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 37,
-    "esquiva": 4,
-    "bloqueio": 8,
-    "defesa": 9,
-    "defesaMental": 15,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "habilidadesEspeciais.Andar do pântano",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 149.25,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      },
-      "nado": 3
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 3 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5)"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`equipamento`: maça estrela do livro, sem armadura **[provisório]**",
-    "`língua grudenta`, `grito aterrorizante`, `andar do pântano`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dianteDeGente",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "maça estrela do livro, sem armadura"
+    }
   ]
 }

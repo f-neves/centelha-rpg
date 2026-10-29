@@ -1,35 +1,23 @@
 {
-  "ordem": 8,
   "id": "assassino-das-sombras",
   "nome": "Assassino das Sombras",
   "nomeIngles": "Shadow Assassin",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humano",
+  "categoria": "humanoide",
   "papel": "elite",
-  "conceito": "lâmina silenciosa",
-  "descricao": "Matador de aluguel que estuda o alvo, espera o momento de menor atenção, golpeia uma vez das sombras e some antes que alguém reaja.",
-  "tags": [
-    "humano",
-    "centelha"
-  ],
-  "imagem": "bestiario/assassino-das-sombras_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,7 m de altura",
-    "peso": "65 kg",
-    "largura": 0.42,
-    "altura": 1.7
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 3,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.7,
+    "largura": 0.42,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 65,
+    "area": 0.63
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 5,
     "vigor": 3,
@@ -40,7 +28,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "furtividade": 5,
     "esquiva": 4,
@@ -53,91 +41,145 @@
     "investigacao": 2,
     "sociabilidade": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "adaga",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "armas",
-      "foco": "alvo que ainda não o viu",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "adaga",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+    "temperanca": 3
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:adaga"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "couro",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Adaga",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 2,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "adaga",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Pisar Leve",
-      "descricao": "Técnica pisar-leve, nível 1: +3 em Furtividade; move-se em silêncio mesmo em ritmo normal.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "pisar-leve",
+        "nivel": 1
+      }
     },
     {
       "nome": "Esgueirar",
-      "descricao": "Técnica esgueirar, nível 1: por 1 de Energia, some de vista ao quebrar a linha de visão e se reposiciona sem ser notado.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "esgueirar",
+        "nivel": 1
+      }
     },
     {
       "nome": "Manto de Sombras",
-      "descricao": "Técnica manto-de-sombras, nível 3: por 3 de Energia, nas sombras fica quase invisível enquanto anda devagar.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "manto-de-sombras",
+        "nivel": 3
+      }
     },
     {
       "nome": "Bote Silencioso",
-      "descricao": "Técnica bote-silencioso, nível 3: por 3 de Energia, ataque furtivo contra alvo desavisado com +2d6 de dano.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Lâmina precisa",
-      "descricao": "Armas 4 com a Especialidade (alvo que ainda não o viu) +1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "golpe e sumiço",
-      "descricao": "estuda o alvo, espera a distração, dá o Bote Silencioso e some com Esgueirar antes que alguém reaja; não fica para a luta aberta.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "bote-silencioso",
+        "nivel": 3
+      }
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "golpe e sumiço",
+      "formas": "todas",
+      "texto": "estuda o alvo, espera a distração, dá o Bote Silencioso e some com Esgueirar antes que alguém reaja; não fica para a luta aberta."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "camuflagem": "Pisar Leve e Manto de Sombras (Técnicas)",
+    "mente": "humana; fria e paciente",
+    "tracos": "roupa escura e justa, couro sem brilho, capuz, adaga na mão de dentro"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, ou para uma guilda",
+    "atividade": "noturno",
+    "dieta": "onívoro",
+    "caca": "contrato: estuda o alvo e mata",
+    "dianteDeGente": "some na multidão"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Matador de aluguel que estuda o alvo, espera o momento de menor atenção, golpeia uma vez das sombras e some antes que alguém reaja.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Estuda o alvo, espera o momento de menor atenção, ataca uma vez e desaparece antes que alguém reaja. Social: sozinho, ou para uma guilda."
+      "texto": "Estuda o alvo, espera o momento de menor atenção, ataca uma vez e desaparece antes que alguém reaja."
     },
     {
       "titulo": "Sociedade",
@@ -146,78 +188,24 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Carrega Centelha suficiente para se mover como sombra entre sombras, um talento raro que o torna valioso (e temido) tanto para nobres de Calin quanto para cultos escusos de Mére."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, Centelha 3, 34 PV, de couro (Impacto 8, Corte 5, Perfuração 4). Esquiva 23: quase não se acerta. A adaga dá dano médio 7,5, e o Bote Silencioso soma +2d6 contra quem não o viu. Some quando quebra a linha de visão. Tem 12 de Energia: dois botes, ou um bote e um sumiço."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/assassino-das-sombras_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Bote Silencioso: +2d6 de dano contra alvo desavisado (que já sofre a penalidade de Defesa por surpresa).",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+  "revisao": [
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
     },
-    "cr": "10",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 34,
-    "esquiva": 24,
-    "bloqueio": 14,
-    "defesa": 24,
-    "defesaMental": 18,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 117.34,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "bloqueioArma": 1,
-    "vestida": {
-      "esquiva": 23,
-      "bloqueio": 13,
-      "defesa": 23,
-      "contraTiro": 23,
-      "absorcao": {
-        "impacto": 8,
-        "corte": 5,
-        "perfuracao": 4
-      },
-      "nivel": 1,
-      "penalidade": 1
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1 e Temperança 3; o site tinha 2 e 2"
     }
-  },
-  "tech": {
-    "pisar-leve": true,
-    "esgueirar": true,
-    "manto-de-sombras": true,
-    "bote-silencioso": true
-  },
-  "notasObservacao": [
-    "`dano da adaga`: soma a Força 3; o site somava a Destreza 5 (\"Ágil\"); perda anotada no relato",
-    "`virtudes`: Compaixão 1 e Temperança 3; o site tinha 2 e 2 **[provisório]**",
-    "`card e equipamento`: o couro está sempre vestido (D-188)"
   ]
 }

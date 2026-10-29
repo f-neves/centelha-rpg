@@ -1,3 +1,4 @@
+import { pvJogador } from '../lib-criatura-motor.mjs';
 // desafio-bancada.mjs · a bancada de desafio da Fase 5 (B14).
 //
 // Roteiro PRÓPRIO da bancada (decisão do Arquiteto, 29/09/2026): não usa nem altera
@@ -58,7 +59,7 @@ import { fileURLToPath } from 'node:url';
 import REGRAS from '../../src/data/regras.json' with { type: 'json' };
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
-const BASE_PV = REGRAS.derivados.pv.base + 3 * REGRAS.derivados.pv.vigorMult;
+const BASE_PV = pvJogador(3);
 const TICKS_POR_TURNO = 6;
 
 // As criaturas que conjuram Arte de verdade "como classe" (item 3 do despacho da Fase 4).

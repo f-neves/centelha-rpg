@@ -1,37 +1,24 @@
 {
-  "ordem": 169,
   "id": "estrangulador",
   "idAntigo": "mon-choker",
   "nome": "Estrangulador",
   "nomeIngles": "Choker",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "soldado",
-  "conceito": "aberração Pequeno",
-  "descricao": "Coisa magra de braços longos de borracha que vive nas ruínas subterrâneas. Espera no escuro, enrosca a garganta de quem ficou para trás e aperta até a vítima parar. Enche o covil de anéis, broches e moedas das vítimas.",
-  "tags": [
-    "aberracao",
-    "centelha"
-  ],
-  "imagem": "bestiario/estrangulador_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1 m de altura",
-    "peso": "16 kg",
-    "largura": 0.25,
-    "altura": 1
-  },
-  "locomocao": {
-    "terra": 2,
-    "escalada": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado; agarra-se às paredes",
+    "apoio": "bipede",
+    "altura": 1,
+    "largura": 0.25,
+    "profundidade": 0.13,
+    "comprimento": null,
+    "massa": 16,
+    "area": 0.34
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 4,
     "vigor": 3,
@@ -42,8 +29,9 @@
     "perspicacia": 1,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 1,
     "furtividade": 3,
@@ -51,86 +39,163 @@
     "integridade": 2,
     "sobrevivencia": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "escalada": 2,
     "musculatura": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "no escuro",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "no escuro",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "escalada": {
+      "batalha": 1
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "maos-na-ponta-dos-bracos-longos",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Garras: o Agarrão, com a Especialidade natural Briga (Agarrão) +2. Contra o humano (Faixa 3), ele está uma faixa abaixo: o humano soma +3 na Defesa de agarrão (Massa nas Manobras).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "agarrar"
     },
     {
       "nome": "Constrição",
-      "descricao": "Garras: \"Constrição é Agarrão\". O aperto que cresce é o dano do agarrão do livro: 2 × Força + Centelha = 10, de Impacto, e +1d6 por Margem da manutenção, a cada 6 Ticks.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "agarrar",
+      "texto": "aperta a presa com o corpo"
     },
     {
       "nome": "Estrangulamento",
-      "descricao": "Garras: Ativação: o agarrão que dá certo; ele escolhe enroscar a garganta. Duração: enquanto mantém o agarrão. Alcance: o do corpo a corpo. Área: um alvo. Efeito: o alvo fica Agarrado e Sufocando, e não fala: não pede socorro nem usa Arte ou poder que precise de palavra. Dano: o do agarrão, e o do Sufocando. Resistência: para se soltar, a manutenção do agarrão do livro. Limite de uso: um alvo por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Garras",
+      "ativacao": "o agarrão que dá certo; ele escolhe enroscar a garganta",
+      "duracao": "enquanto mantém o agarrão",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "o alvo fica Agarrado e Sufocando (\"garganta presa\", `condicoes.json`), e não fala: não pede socorro nem usa Arte ou poder que precise de palavra",
+      "dano": "o do agarrão, e o do Sufocando",
+      "resistencia": "para se soltar, a manutenção do agarrão do livro",
+      "limiteDeUso": "um alvo por vez"
     },
     {
       "nome": "Rapidez sobrenatural",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: está sempre Acelerado. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno. Critério do manual: agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: quem age duas vezes sempre fica Acelerado o tempo todo.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "está sempre Acelerado (`condicoes.json`: as ações custam 2 Ticks a menos, mínimo 1)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno. Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: quem age duas vezes sempre fica Acelerado o tempo todo"
     },
     {
       "nome": "braços longos",
-      "descricao": "Garras: os braços passam do dobro do corpo e alcançam mais longe que o corpo a corpo de um bicho do porte dele.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "caçador das ruínas",
-      "descricao": "espera agarrado ao teto ou numa parede escura, escolhe o viajante que ficou para trás, enrosca a garganta para ele não gritar e o arrasta para o covil.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: \"enxerga perfeitamente na escuridão total\" (site)."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Garras",
+      "efeito": "os braços passam do dobro do corpo e alcançam mais longe que o corpo a corpo de um bicho do porte dele"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caçador das ruínas",
+      "formas": "todas",
+      "texto": "espera agarrado ao teto ou numa parede escura, escolhe o viajante que ficou para trás, enrosca a garganta para ele não gritar e o arrasta para o covil."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "\"enxerga perfeitamente na escuridão total\"",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um bicho do porte dele",
+    "camuflagem": "no escuro das ruínas; Furtividade (no escuro) +1",
+    "mente": "quase animal, com um fascínio estranho por objetos da civilização",
+    "tracos": "corpo cinzento e magro de 1 m, cabeça pequena, braços de borracha longos demais, dedos com garras"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "carnívoro",
+    "caca": "emboscada; isola a presa mais fraca",
+    "dianteDeGente": "ataca o viajante sozinho; foge do grupo"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Coisa magra de braços longos de borracha que vive nas ruínas subterrâneas. Espera no escuro, enrosca a garganta de quem ficou para trás e aperta até a vítima parar. Enche o covil de anéis, broches e moedas das vítimas.",
   "lore": [
     {
       "titulo": "Caçador das Sombras",
@@ -139,78 +204,44 @@
     {
       "titulo": "Fascínio Doentio",
       "texto": "Apesar da inteligência quase animal, guarda um fascínio estranho por objetos da civilização: anéis, broches e moedas roubadas de suas vítimas enchem seu covil."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno, 26 PV, Impacto 5, Corte e Perfuração 2. Esquiva 12, Bloqueio 8. Sempre Acelerado. Garras de dano médio 7,5 e o agarrão (+2) que enrosca a garganta: o alvo Agarrado fica Sufocando, não fala nem conjura com palavra e leva 10 de Impacto a cada manutenção. Sobe pelas paredes e vê no escuro."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Underground",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/estrangulador_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Choker",
-    "cr": "2",
-    "tipo": "aberração Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 16,
-      "des": 14,
-      "con": 13,
-      "int": 4,
-      "sab": 13,
-      "car": 7
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Estrangulamento",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Rapidez sobrenatural",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 26,
-    "esquiva": 12,
-    "bloqueio": 8,
-    "defesa": 12,
-    "defesaMental": 15,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "atributos.forca",
+      "motivo": "O site tinha 5. Com 16 kg, ficaria igual à jiboia e ao varano de 27 kg (Força 5) e muito acima do cão de 20 kg (2) e da Força de referência da massa (3,82, manual 3.9). Desce para 4 pelo teste de ordem: abaixo dos dois de 27 kg, acima do cão, porque os braços longos são feitos para apertar; 4; o site tinha 5"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 99.72,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      }
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Braços elásticos que apertam com força crescente (site); 1"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "O corpo de frente: 0,72 × 0,556² = 0,22 m²; o que os braços passam do braço humano, 1,0 m de cada lado com 0,06 m de grossura = 0,12 m²  nas medidas dos braços; 0,34 m², com os braços estimados"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
     }
-  },
-  "notasObservacao": [
-    "`forca`: 4; o site tinha 5 **[provisório]**",
-    "`area`: 0,34 m², com os braços estimados **[extrapolação]**",
-    "`musculatura`: 1 **[provisório]**",
-    "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`estrangulamento`, `rapidez sobrenatural`: números sugeridos pela ficha (D-197)"
   ]
 }

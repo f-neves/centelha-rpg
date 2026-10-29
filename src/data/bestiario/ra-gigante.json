@@ -1,38 +1,25 @@
 {
-  "ordem": 217,
   "id": "ra-gigante",
   "idAntigo": "mon-giant-frog",
   "nome": "Rã gigante",
   "nomeIngles": "Giant Frog",
-  "categoria": "Animal",
-  "categoriaLegada": "Monstro",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Fica parada nas pedras molhadas das corredeiras e abocanha o que passa. Ao menor sinal de gente, salta para a água. O macho cava uma poça na margem para os ovos, arrastando pedras.",
-  "descricaoLegada": "Aberração humanoide de lendas antigas.",
-  "tags": [
-    "monstro"
-  ],
-  "imagem": "bestiario/ra-gigante_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,8 m de comprimento, 0,31 m de altura",
-    "peso": "42,7 kg",
-    "comprimento": 1.8,
-    "largura": 0.39,
-    "altura": 0.31
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas (sentada)",
+    "apoio": "quadrupede",
+    "altura": 0.31,
+    "largura": 0.39,
+    "profundidade": null,
+    "comprimento": 1.8,
+    "massa": 42.7,
+    "area": 0.29,
+    "posturaDoTamanho": "vista de cima, agachada"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 2,
     "vigor": 3,
@@ -43,75 +30,165 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 2,
     "atletismo": 3,
     "furtividade": 2,
     "integridade": 1,
     "prontidao": 3,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 1,
+    "voo": 0,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "nado": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bocada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
-    }
-  ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
-    {
-      "nome": "Língua",
-      "descricao": "agarra, sem dano"
+      "bloqueiaComoArma": null
     },
     {
+      "nome": "Língua",
+      "parte": "lingua",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": null,
+      "multiplicadorForca": 0,
+      "tipoDano": "nao-se-aplica",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    }
+  ],
+  "habilidadesEspeciais": [
+    {
       "nome": "agarrar",
-      "descricao": "bocada: 2 × Força = 6 por manutenção.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "língua",
-      "descricao": "Língua: o ataque é com Briga, a três vezes o alcance normal do corpo a corpo, e não fere; a rã agarra o que acertar, mesmo se o golpe for bloqueado (fica agarrado o que bloqueou), e o agarrão segue o livro.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Língua",
+      "ativacao": "uma ação, o ataque de Língua com Briga",
+      "duracao": "até a presa se soltar",
+      "alcance": "três vezes o alcance normal do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "agarra o que acertar; se bloqueado, agarra o que bloqueou, seguindo o Agarrar do livro",
+      "dano": "nenhum",
+      "resistencia": "a Defesa contra o ataque; quem evita não é agarrado",
+      "limiteDeUso": "um alvo por vez"
     },
     {
       "nome": "puxão",
-      "descricao": "Língua: puxa o preso até a boca, até o Peso erguido.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Língua",
+      "efeito": "puxa o preso até a boca, até o Peso erguido"
     },
     {
       "nome": "engolir",
-      "descricao": "Bocada: engole inteira a presa que cabe na boca (um bicho Miúdo).",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: olhos grandes (quase 2,5 cm no real); sem número, sem Especialidade natural. · Os outros: nada achado."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Bocada",
+      "efeito": "engole inteira a presa que cabe na boca (um bicho Miúdo)"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "olhos grandes (quase 2,5 cm no real); sem número, sem Especialidade natural",
+      "formas": "todas"
+    },
+    {
+      "nome": "Os outros",
+      "descricao": "nada achado",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar e pele (anfíbio): respira pelo ar e pela pele (ADW, na rã-golias)",
+    "prendeRespiracao": "; os jovens ficam quase sempre debaixo d'água (ADW), o tempo do adulto não foi achado",
+    "camuflagem": "pedra da margem",
+    "mente": "animal",
+    "tracos": "dedos de trás todos palmados; olhos grandes; o macho cava a poça do ninho na margem (Wikipédia; Schäfer et al. 2019)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "noturno: \"mais ativa à noite, quando procura comida ao longo dos rios\"; de dia descansa nas pedras",
+    "dieta": "carnívoro (insetos, crustáceos, peixes, moluscos, pequenos mamíferos e anfíbios; e anelídeos, aracnídeos, miriápodes, répteis)",
+    "caca": "emboscada",
+    "dianteDeGente": "foge"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano",
+      "aquático"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Fica parada nas pedras molhadas das corredeiras e abocanha o que passa. Ao menor sinal de gente, salta para a água. O macho cava uma poça na margem para os ovos, arrastando pedras.",
   "lore": [
     {
       "titulo": "Bocada que prende",
@@ -120,94 +197,52 @@
     {
       "titulo": "Companheira de caçadores",
       "texto": "Alguns batedores de pântano domesticam filhotes de rã gigante como montaria de emboscada e guarda-costas anfíbio."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "- Pequena contra o humano Médio: ela ganha +3 no acerto corpo a corpo, e quem atira nela leva −3. A bocada dá 4,5 e agarra (6 por manutenção); a língua alcança três vezes mais longe, sem dano, e agarra mesmo se bloqueada (Briga); o perigo real é para o bicho Miúdo, que ela engole. - Ergue 181,6 kg: arrasta pedra grande e pode arrastar um humano agarrado, mas não o fere muito. - Corre 7 m por Tick no papel (congelado, provisório); na mesa ela salta, e o salto é do Mestre."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Swamp",
-      "Water"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/ra-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Frog",
-    "cr": "1",
-    "tipo": "monstro Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 13,
-      "con": 16,
-      "int": 1,
-      "sab": 8,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.língua",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "atributos.forca",
+      "motivo": "Fixada em `valores.mjs` (D-158, a v2: \"Rã de 192 kg sem arma além da boca; o salto vai para a Musculatura\"; a massa passou a 42,7 kg  com o tamanho do site). Pela pesquisa: a única arma é a boca, que engole a presa inteira (Wikipédia); não morde para ferir nem segura com as patas. O feito medido é o do ninho: o macho real move pedras de até 2 kg, sendo ele de até 3,3 kg (Schäfer et al. 2019, pelo comunicado da Taylor & Francis), o que no gigante de 42,7 kg dá uma pedra de cerca de 26 kg  (2 ÷ 3,3 × 42,7) . Na conta nova do peso erguido (decisão 14) o feito não separa as Forças: com a Musculatura 3, Força 3 ergue 181,6 kg  e Força 2 ergueria 149,2 . A Força 3 fica pela D-176 e abaixo dos predadores de 50 a 75 kg com arma (lobo-terrível e deinonico, 4). Reanalisado na sétima rodada: fica, porque com 42,7 kg (era 159,5 na v3) a Força de referência da massa é 5,44 e a rã não tem arma além da boca; os vizinhos de massa são o lobo (50 kg, Força 3), o rato-atroz (20 kg, 3) e a formiga gigante (41 kg, 3), com a hiena (50 kg, 4) e o leopardo (47,75 kg, 5) acima por terem mordida que mata, e o guepardo (53 kg, 2) abaixo; a força das pernas de salto já está na Musculatura 3. Continua acima da rã-golias de base (Força 0: abocanha e engole presa pequena, e a boca de 0,95 kg não fere nem segura um humano; item 8 da `tamanho-decisoes-5.md`), como pede a D-176."
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 8,
-    "bloqueio": 4,
-    "defesa": 8,
-    "defesaMental": 7,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Fixada em `valores.mjs`. Era sem linha (0). Régua da diretriz 2: 2 é o normal da espécie no próprio meio. A pesquisa não traz feito de frio, fome, sede, veneno, doença ou ferida; só que os jovens ficam quase sempre debaixo d'água e que respira pelo ar e pela pele (ADW, na rã-golias).; 2, o normal da espécie, ; falta o tempo submerso do adulto e qualquer dado de fome ou de ferida (D-174)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 181.64,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      },
-      "nado": 2
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 0,48 m. Pela razão do site sobre a v3, na mesma medida (corpo com corpo): 0,773 ÷ 1,20 = 0,644; 0,48 × 0,644 = 0,31. É 0,4 vez o corpo, a proporção estimada no real (0,12 m numa rã de 0,30 m)"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Era 1,20 m de corpo (cerca de 2,8 m com as pernas). O site diz só \"1,8 m de comprimento\"; lido como comprimento total com as pernas esticadas, porque é assim que se dá o tamanho grande da rã-golias (Colgan 1982, pela Wikipédia: \"em comprimento total, com as pernas esticadas, os maiores passam um pouco de 80 cm\"; os maiores verificados da mesma fonte têm 34,0 e 35,6 cm de corpo, razão de cerca de 2,2 a 2,4 , entre exemplares diferentes) e porque é a leitura que mais se aproxima dos 90 kg do site (a outra, 1,8 m de corpo, daria cerca de 540 kg; ver `desvios`). A proporção da perna sai da mesma fonte e da mesma população da base: comprimento total = 2,245 × rostro-cloacal + 1,791 cm (R² = 0,969, N = 139; Moumegni Monthe e colegas 2023, figura 3b; o artigo não define como o comprimento total foi medido). Na base típica, 2,245 × 21,73 + 1,791 = 50,57 cm; k = 1,80 ÷ 0,5057 = 3,56; o corpo do gigante é 0,2173 × 3,56 = 0,773 m. A razão da AmphibiaWeb (pata de trás de cerca de 150% do corpo, Sabater-Pi 1985) veio só de resumo de busca, não conferida"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Era 0,60 m. 0,60 × 0,644 = 0,39: 0,5 vez o corpo, a proporção estimada no real (0,15 m numa rã de 0,30 m)"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 159,5 kg (antes, 192). Gigante pelo cubo, com o tamanho do site e a massa saindo dele (`pedido-v6-site.md`): massa típica da base × (L do gigante ÷ L da base)³, comprimento total com comprimento total = 0,947225 × (1,80 ÷ 0,5057)³ = 0,947225 × 45,08 = 42,70 kg; k = 3,56. Base típica : machos 1.082,33 ± 576,91 g com 22,35 ± 4,60 cm rostro-cloacais (n = 55) e fêmeas 812,12 ± 285,57 g com 21,11 ± 3,09 cm (n = 55), 139 rãs trazidas por pescadores em três sítios do departamento de Moungo, Camarões, de outubro de 2021 a novembro de 2022 (Moumegni Monthe, Tekounegning Tiogue, Ngoula e Tchoumboue 2023, International Journal of Aquaculture Research and Development 1(3), tabela 1); média simples das duas massas, 947,2 g, e dos dois comprimentos, 21,73 cm, da mesma fonte e da mesma população (os 29 jovens de sexo indefinido ficam fora). Era a rã-golias grande de 3 kg (no alto da amostra de 15 animais de 0,6 a 3,25 kg; Wikipédia e ADW) com k = 4. Faixa do adulto: até 2.529 g e 33,5 cm na mesma amostra; 0,6 a 3,25 kg na amostra de 15 (Wikipédia), com o mais pesado verificado de 3,305 kg; no gigante (× 45,08), de 27 a 147 kg para 0,6 a 3,25 kg. Sexos (o macho pesa 33% mais que a fêmea na média de Camarões): macho 1,082 kg na base, 48,8 kg no gigante; fêmea 0,812 kg na base, 36,6 kg no gigante. A Wikipédia (\"mínima\") e a ADW (\"sexos iguais\") dão diferença pequena; a AmphibiaWeb, pelo resumo de busca, dá machos de 1,5 a 2,7 kg e fêmeas de 0,6 a 3,3 kg (Sabater-Pi 1985). `calc6.mjs`; o corte de 35 kg (decisão 22) fica 7,7 kg abaixo"
+    },
+    {
+      "campo": "ataques.Língua",
+      "motivo": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
+    },
+    {
+      "campo": "corpo",
+      "motivo": "gigante da D-105, escala × 3,56 da rã-golias típica (50,57 cm de comprimento total e 0,947 kg, os dois sexos de Camarões), até os 1,8 m do site lidos como comprimento total com as pernas esticadas. Era × 5,52 sobre o corpo, com o 1,20 m que os lotes antigos tinham escolhido para dar o porte Médio. Tudo  (D-105, D-174; `pedido-v6-site.md`)"
     }
-  },
-  "notasObservacao": [
-    "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o 1,8 m de comprimento total do site, Pequeno (0,29 m²), dois portes acima da rã-golias de base (Minúscula, 0,023 m² no mesmo modo). A base está 23% abaixo do corte do Miúdo, pela largura estimada; se ela for Miúda, o gigante passa ao Médio (1,20 m de corpo, 159,5 kg) (D-174)",
-    "`anatomia`: anfíbio saltador, anatomia provisória (D-175), não calibrada em animal medido",
-    "`escala`: gigante da D-105, escala × 3,56 da rã-golias típica (50,57 cm de comprimento total e 0,947 kg, os dois sexos de Camarões), até os 1,8 m do site lidos como comprimento total com as pernas esticadas. Era × 5,52 sobre o corpo, com o 1,20 m que os lotes antigos tinham escolhido para dar o porte Médio. Tudo **[extrapolação]** (D-105, D-174; `pedido-v6-site.md`)",
-    "`massa`: 42,7 kg, contra 90 da ficha antiga (1,8 m); na proporção do animal real, 90 kg dão cerca de 2,3 m de comprimento total, e 1,8 m de corpo dariam cerca de 540 kg. Era 159,5 kg, e antes 192 (D-105, D-174)",
-    "`dimensoes.comprimento`: a razão entre o comprimento total e o rostro-cloacal sai da regressão da mesma amostra da base (comprimento total = 2,245 × rostro-cloacal + 1,791 cm, N = 139, Moumegni Monthe e colegas 2023), que não diz como o total foi medido; Colgan 1982 (pela Wikipédia) dá razão parecida nos maiores (pouco mais de 80 cm no total; 34,0 e 35,6 cm de corpo nos maiores verificados, exemplares diferentes: cerca de 2,2 a 2,4, [comparação])",
-    "`dimensoes.altura` e `dimensoes.largura`: estimadas no animal real (0,12 e 0,15 m), sem fonte, e escaladas; a largura decide a área (D-147, D-174)",
-    "fonte: a largura (0,15 m) e a altura (0,12 m) do animal real continuam só pela estimativa (D-174)",
-    "fonte: o Vigor 2 da base continua sem dado de resistência; a ADW diz que a vida da rã-golias \"não é bem documentada\" (D-174)",
-    "`forca`: 3, fixada (v3). Na conta nova do peso erguido o feito do ninho (cerca de 26 kg no gigante de 42,7 kg) não separa a Força 2 (149,2 kg) da 3 (181,6 kg); a 3 fica pela D-176 e pela falta de arma além da boca. O artigo do feito não abriu, e o número vem do comunicado da editora (D-158, D-174)",
-    "`musculatura`: 3, robusta pelas pernas de salto e pelo feito do ninho (pedra de 2 kg com 3,3 kg de corpo), provisória (decisão 12, D-174). Era 0",
-    "`pesoErguido`: 181,64 kg pela decisão 14, provisório, com 42,7 kg; era 339,92 kg com 159,5 kg, 369,12 kg com 192 kg, e 143 antes (D-162). O salto vem da Musculatura, que entra no E (D-174)",
-    "`atributos.compostura`: 1 pela diretriz 1 (não social); era 2 pela espera parada. Se o autor quiser a espera do predador de emboscada na Compostura de animal solitário, ela volta a 2 (D-174)",
-    "`resistencia`: 2, o normal da espécie, **[extrapolação]**; falta o tempo submerso do adulto e qualquer dado de fome ou de ferida (D-174)",
-    "`vigor`: 3, revisto na oitava rodada pelo corpo e pela massa, e fica: o mínimo da D-176 sobre a rã-golias de base (2); anfíbio de pele nua de 42,7 kg, ao lado do lobo (50 kg, 3) e do varano (47,5 kg, 3) (D-174)",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "`massa` (sexta rodada, com o tamanho do site): base típica de 0,947 kg com 0,2173 m rostro-cloacais e 0,5057 m de comprimento total (machos 1.082,33 g e 22,35 cm, fêmeas 812,12 g e 21,11 cm; Moumegni Monthe e colegas 2023, 139 rãs de Moungo, Camarões) × (1,80 ÷ 0,5057)³ = 42,7 kg **[extrapolação]**. Antes, com o 1,20 m de corpo, 159,5 kg; na quinta rodada, a base de 3 kg da rã grande × 4³ = 192 kg. A faixa da base (0,6 a 3,25 kg) e os sexos da AmphibiaWeb (Sabater-Pi 1985) vieram de resumo de busca, porque a página pede verificação humana",
-    "`velocidade.terra`: 25 km/h, alto para uma rã; congelada pela decisão 23 (D-170)",
-    "`velocidade.nado`: 7 km/h pela anatomia provisória, sem real; congelada (D-170, D-175)",
-    "`ataques.bocada`: Impacto, e não Perfuração, porque os dentes não foram achados nas fontes lidas (D-174)"
   ]
 }

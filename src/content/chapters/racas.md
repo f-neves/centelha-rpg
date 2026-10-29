@@ -13,6 +13,8 @@ Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo
 
 ## O Humano: a régua do mundo
 
+A faixa normal de massa é de 60 a 80 kg.
+
 O **Humano** é o povo padrão: o mais numeroso, o mais espalhado e o mais inquieto. Não vive tanto quanto um elfo nem é tão resistente quanto um anão, mas compensa na **ambição** e na **adaptabilidade**: ergue cidades onde as outras raças apenas habitam, mistura culturas, inventa, conquista e reconstrói numa única geração curta. É a vara de medir: quando se diz que um anão é "mais forte" ou um elfo "mais ágil", é do humano que se está falando. Atinge a idade adulta aos **16 anos**, a maturidade plena por volta dos **30**, e vive em média **80 anos**.
 
 Em regra, o humano é o **baseline neutro**:
@@ -47,7 +49,7 @@ Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutr
 Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a idade adulta aos **20 anos**, a maturidade plena por volta dos **100**, e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
-- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3, a linha de 35 a 220 kg da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura). A baixa estatura já está paga no deslocamento, e não muda o tamanho.
+- **Vida pelo Tamanho Médio**: a Vida é 25 + Vigor × 3, pelo Tamanho da raça, qualquer que seja a massa. A baixa estatura já está paga no deslocamento, e não muda o tamanho.
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Corpulência de pedra.
 - **`−1` teto de Perspicácia** (máx 5, piso normal): arrogantes e prepotentes, pouco tato social.
 - **Baixa estatura**, pernas curtas: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -58,7 +60,7 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 
 ### Elfo
 
-Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana. Pesam **40–65 kg** e medem **1,40–1,70 m**. Atingem a idade adulta aos **25 anos**, a maturidade plena por volta dos **150**, e podem viver mais de **600 anos**.
+Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana. Pesam **42–65 kg** e medem **1,40–1,70 m**. Atingem a idade adulta aos **25 anos**, a maturidade plena por volta dos **150**, e podem viver mais de **600 anos**.
 
 - **Custo de XP:** 50
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Graça sobre-humana.
@@ -73,7 +75,7 @@ Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das ou
 Pequenos e resistentes. Pesam **20–30 kg** e medem **1,00–1,30 m**. Idade adulta aos 18 anos; podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30 <small>(provisório: desceu de 40 quando o Gnomo passou a ser de tamanho **Pequeno** e perdeu PV)</small>
-- **Vida pela massa** (de 15 a 35 kg): a Vida é 20 + Vigor × 2, a linha de 15 a 35 kg da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
+- **Vida pelo Tamanho Pequeno**: a Vida é 20 + Vigor × 2, pelo Tamanho da raça, qualquer que seja a massa.
 - **`+1` de Vigor**: começa em **2** e vai até **7**. Resistência teimosa num corpo pequeno.
 - **`−1` teto de Força** (máx 5, piso normal): pequenos demais para grande força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -84,10 +86,10 @@ Pequenos e resistentes. Pesam **20–30 kg** e medem **1,00–1,30 m**. Idade ad
 
 ### Halfling
 
-Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atingem a idade adulta por volta dos 18 anos e podem viver por volta de **200 anos**.
+Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–28 kg**. Atingem a idade adulta por volta dos 18 anos e podem viver por volta de **200 anos**.
 
 - **Custo de XP:** 30
-- **Vida pela massa** (de 15 a 35 kg): a Vida é **20 + Vigor × 2**, a linha de 15 a 35 kg da tabela de [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
+- **Vida pelo Tamanho Pequeno**: a Vida é **20 + Vigor × 2**, pelo Tamanho da raça, qualquer que seja a massa.
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Mãos e pés leves.
 - **`−1` teto de Força** (máx 5, piso normal): tamanho Pequeno, sem massa para força bruta.
 - **Baixa estatura**: **todo deslocamento vale dois terços** do de um humano, o passo em combate, o Arranque, a Corrida **e os Saltos**.
@@ -99,7 +101,7 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–35 kg**. Atinge
 Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se parece mais com um elfo do que com um humano, sem, contudo, herdar tudo. Altura e peso puxam ao elfo: **1,60–1,90 m** e **50–90 kg**. Têm poucos pelos, como os elfos, e vivem mais que humanos: até **200 anos**. Por serem híbridos, são **inférteis**.
 
 - **Custo de XP:** 20
-- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3.
+- **Vida pelo Tamanho Médio**: a Vida é 25 + Vigor × 3.
 - **Sem deslocamento de tetos**: herdam o equilíbrio físico humano.
 - **Aparência Universal**, o sangue feérico se reflete na aparência: ao lidar com outras raças humanoides, o modificador negativo de Aparência do meio-elfo (Aparência de 0 a 5) não conta: vale 0. É só a Aparência: as relações entre os povos, na Régua de Relação, abaixo, continuam como estão.
 - **Resiliência Mental**, versão mais branda da do ancestral élfico: **+2** para resistir a qualquer efeito de controle mental.
@@ -107,10 +109,12 @@ Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se 
 
 ### Meio-Orc
 
+A faixa normal de massa é de 70 a 110 kg.
+
 Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangue humano. Pele e pelos puxam ao marrom ou ao verde e as feições são rudes, mas menos que as de um orc puro. São altos e robustos. Atingem a idade adulta por volta dos 14 anos; vida curta, pouco mais de **70 anos**.
 
 - **Custo de XP:** 40
-- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
+- **Vida pelo Tamanho Médio**: a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. A compleição forte da herança orc.
 - **`−1` teto de Compostura e de Inteligência** (máx 5, piso normal): o temperamento bruto e a lógica mais curta que a humana; o sangue humano poupa o tato social (a Perspicácia) que um orc puro perderia.
 - **Vitalidade**, couro grosso: ganha **+Vigor** pontos de vida adicionais (PV = 25 + Vigor×3 + Vigor).
@@ -126,7 +130,7 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Idade adulta por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
 
 - **Custo de XP:** 40
-- **Vida pela massa** (de 35 a 220 kg): a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
+- **Vida pelo Tamanho Médio**: a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
 - **`+1` de Força e de Vigor**: os dois começam em **2** e vão até **7**. Criaturas poderosas e truculentas.
 - **`−1` teto de Perspicácia, Compostura e Inteligência** (máx 5, piso normal): a força não vem acompanhada de tato social nem de lógica fina.
 - **Aparência rebaixada**: a Aparência do orc vale **1 a menos** que o nível pago (paga Aparência 7, vale 6).

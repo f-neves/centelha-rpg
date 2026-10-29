@@ -1,37 +1,29 @@
 {
-  "ordem": 290,
   "id": "enxame-de-aranhas",
   "idAntigo": "mon-spider-swarm",
   "nome": "Enxame de aranhas",
   "nomeIngles": "Spider Swarm",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "praga Minúsculo",
-  "descricao": "Um tapete de milhares de aranhas pequenas, que sai da teia comum e cobre quem cai nela; cada picada é fraca, mas são muitas.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/enxame-de-aranhas_criatura.webp",
-  "porte": "Minúsculo",
-  "dimensoes": {
-    "medida": "0,0046 m de comprimento, 0,003 m de altura",
-    "peso": "0,000007 kg",
-    "comprimento": 0.0046,
-    "largura": 0.002,
-    "altura": 0.003
-  },
-  "locomocao": {
-    "terra": 1,
-    "escalada": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 3
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "enxame": {
+    "individuosPorQuadrado": 3500,
+    "tamanhoEquivalente": "pequeno"
+  },
+  "corpo": {
+    "postura": "oito patas",
+    "apoio": "outro",
+    "altura": 0.003,
+    "largura": 0.002,
+    "profundidade": null,
+    "comprimento": 0.0046,
+    "massa": 0.000007,
+    "area": 0,
+    "posturaDoTamanho": "vista de cima"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 2,
@@ -42,77 +34,132 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 2,
     "furtividade": 4,
+    "integridade": 0,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 2,
     "escalada": 2,
+    "natacao": 0,
+    "voo": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "vibração da teia",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "escalada",
-      "foco": "na teia",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "na teia",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "vibração da teia",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "na teia",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "escalada": [
+      {
+        "foco": "na teia",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 1,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 1
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 2,
+      "corrida": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Picada do enxame",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "queliceras",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [],
+  "comoLuta": [],
+  "sentidos": [
     {
-      "nome": "Sentidos",
-      "descricao": "vibração da teia: Prontidão (vibração da teia) +3, só sobre a teia. A colônia acha a presa pela vibração e avança em sincronia. Fora da teia, nada."
-    }
-  ],
-  "enxame": [
+      "nome": "vibração da teia",
+      "descricao": "Prontidão (vibração da teia) +3 , só sobre a teia. A colônia acha a presa pela vibração e avança em sincronia (Jeanson 2022, via National Geographic). Fora da teia, nada",
+      "formas": "todas"
+    },
     {
-      "nome": "Enxame no jogo",
-      "texto": "3.500 aranhas por quadrado · cobre o chão, a parede e a teia · quem fere: só ataque em área · armadura: ignora, entra pela gola, pela manga e pelas frestas · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
+      "nome": "visão e olfato",
+      "descricao": "",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Imune a efeitos mentais: \"Sem mente unificada, o enxame não pode ser enganado, amedrontado ou dominado por magias mentais\")",
+    "tracos": "teia comum de 20 a 28 m² (ADW), com fios de derrubada acima do lençol"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "colônia permanente, de menos de 100 a mais de 20.000 aranhas",
+    "atividade": "",
+    "dieta": "carnívoro: besouros, percevejos, baratas, formigas, mariposas e gafanhotos",
+    "caca": "emboscada na teia, ataque em grupo de 30 a 50 aranhas por inseto grande",
+    "dianteDeGente": ": nenhum registro de ataque a pessoa"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "subterrâneo",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Um tapete de milhares de aranhas pequenas, que sai da teia comum e cobre quem cai nela; cada picada é fraca, mas são muitas.",
   "lore": [
     {
       "titulo": "Tapete vivo",
@@ -123,91 +170,22 @@
       "texto": "As teias que produzem não prendem presas grandes, servem apenas de abrigo: o enxame caça pela quantidade, não pela armadilha."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: colônia permanente, de menos de 100 a mais de 20.000 aranhas."
-    },
-    {
       "titulo": "Enxame",
       "texto": "3.500 aranhas por quadrado · cobre o chão, a parede e a teia · quem fere: só ataque em área · armadura: ignora, entra pela gola, pela manga e pelas frestas · dentro: só foge ou tira os bichos de cima; qualquer outra ação pede Compostura + Integridade contra 10"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Cada quadrado cheio tem 24 PV (3.500 aranhas), e o PV cai com as aranhas: metade delas, 12 PV. Só ataque em área alcança o enxame, porque cada aranha tem o tamanho de uma formiga. O enxame não esquiva nem apara. Quem está cercado leva o pulso a cada 5 Ticks, sem rolar acerto (1d6 + 1 pela Ameaça 2, provisório), e ele entra por baixo da roupa e da armadura; a picada fraca já está no pulso. Dentro, só fugir ou tirar as aranhas de cima sai sem teste. Mente simples: não se convence nem se intimida, mas o medo e a magia mental pegam nele. Na teia, com Prontidão (vibração da teia) +3 e Furtividade (na teia) 1, o enxame não é surpreendido e pega de surpresa quem cai nos fios."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Underground",
-      "Ruins"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/enxame-de-aranhas_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Spider Swarm",
-    "cr": "1",
-    "tipo": "praga Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 1,
-      "des": 17,
-      "con": 10,
-      "int": "-",
-      "sab": 10,
-      "car": 2
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 24,
-    "esquiva": 6,
-    "bloqueio": 6,
-    "defesa": 6,
-    "defesaMental": 5,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 0,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 2,
-        "corrida": 3
-      }
+  "revisao": [
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era sem linha (0). Régua da v3: 2 é o normal da espécie no próprio meio. A pesquisa só dá a vida curta (76 dias, ADW) e nenhum feito de frio, fome, veneno ou ferida;; 2 ; nenhum feito de frio, fome, veneno ou ferida na pesquisa (D-174)"
     }
-  },
-  "notasObservacao": [
-    "`anatomia`: artrópode, anatomia provisória (D-175), não calibrada em animal medido (D-175)",
-    "`velocidade`: congelada (decisão 23); 10 km/h pela fórmula de hoje, sem velocidade real para comparar (D-170)",
-    "`pesoErguido`: 0,00 kg pela fórmula provisória (decisões 14 e 16); a carga fica \"não (enxame)\" (D-162, D-169)",
-    "`pv`: 24 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 7 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo.",
-    "`alvo`: o Minúsculo é o da aranha; o enxame usa o tamanho que apresenta no acerto (D-077, D-166)",
-    "`dimensoes`: altura (3 mm) e largura (2 mm) estimadas pela Bestiarista, sem fonte; o cefalotórax de 1,27 a 1,59 mm é piso (D-147, D-174)",
-    "`massa`: 7 mg, o meio da faixa medida da ADW (2,55 a 11,82 mg), e não uma média medida (D-174)",
-    "`veneno`: veneno sem id no catálogo; o efeito em humanos não foi achado (D-112)",
-    "`especie`: a aranha social foi escolhida pela Bestiarista; a ficha antiga não tinha espécie (D-174)",
-    "`atributosSociais`: Compostura de 2 para 1 pela diretriz 1. A colônia é \"social\" no sentido da biologia, mas a pesquisa não mostra uma aranha lendo, intimidando ou enganando a outra; lida como não social para a diretriz (D-174)",
-    "`resistencia`: 2 **[extrapolação]**; nenhum feito de frio, fome, veneno ou ferida na pesquisa (D-174)",
-    "`escalada`: Escalada 2 com a Especialidade natural (na teia) +2, escolha minha; a pesquisa dá a teia de até 20 m, sem número de escalada fora dela (D-174)",
-    "`couraca`: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "`vigor`: 2 se apoia na vida de 76 dias da ADW; nada melhor achado (D-174)"
   ]
 }

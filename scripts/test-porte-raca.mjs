@@ -33,7 +33,7 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const ler = (rel) => fs.readFileSync(path.join(ROOT, rel), 'utf8');
 const saida = path.join(os.tmpdir(), `calc-porte-${process.pid}.mjs`);
 await build({
-  entryPoints: [path.join(ROOT, 'src/lib/calc.ts')],
+  entryPoints: [path.join(ROOT, 'src/lib/motor.ts')],
   outfile: saida, bundle: true, format: 'esm', platform: 'node',
   loader: { '.json': 'json' }, logLevel: 'error',
   define: { 'import.meta.env': 'globalThis.__ENV__' },
@@ -115,7 +115,7 @@ eq(C.pv(3, 'Pequeno'), 34, 'porte escrito errado cai em Médio, calado: é por i
   ok(!/\bpv\(vig\)/.test(eng), 'a ficha voltou a chamar `pv(vig)` sem porte: a tabela deixa de ser alcançada');
   const mesa = ler('src/lib/mesa-ficha.ts');
   ok(!/\bpv\(vig\)(?!,)/.test(mesa), 'a ficha da mesa voltou a chamar `pv(vig)` sem porte');
-  ok(/porteDaRaca/.test(mesa), 'a ficha da mesa tem de resolver o porte da raça antes de chamar `pv()`');
+  ok(/numerosPersonagem/.test(mesa), 'a ficha da mesa tem de pedir o PV racial ao motor');
 }
 
 // ------------------------ 5. o capítulo das raças NÃO é gerado, e não acompanha

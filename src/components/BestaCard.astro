@@ -13,6 +13,7 @@
  * Cortar de verdade tiraria 268 criaturas da busca do site.
  */
 import CentelhaSpark from './CentelhaSpark.astro';
+import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 
@@ -52,7 +53,7 @@ const LOCO: [string, string][] = [
   ['terra', 'Terra'], ['voo', 'Voo'], ['natacao', 'Natação'],
   ['escalada', 'Escalada'], ['escavacao', 'Escavação'], ['jato', 'Jato'],
 ];
-const locoDe = (x: any) => LOCO.filter(([k]) => x.locomocao?.[k]).map(([k, nome]) => ({ nome, v: x.locomocao[k] }));
+const locoDe = (x: any) => [...(x.locomocao?.terra == null ? [{ nome: 'Terra', v: null }] : []), ...LOCO.filter(([k]) => x.locomocao?.[k] != null).map(([k, nome]) => ({ nome, v: x.locomocao[k] }))];
 // Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".
 const PERIODO: Record<string, string> = {
   ticks: 'Ticks', cena: 'cena', hora: 'hora', dia: 'dia', avontade: 'à vontade', passivo: 'passivo', golpe: 'por golpe',
@@ -65,37 +66,26 @@ const usosTxt = (u: any) => {
 };
 const RESISTE: Record<string, string> = { esquiva: 'Esquiva', corpo: 'corpo', mente: 'mente', nenhum: 'nenhuma' };
 // tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
-const temMec = (x: any) => !!((x.habilidades?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length) || x.notas);
+const temMec = (x: any) => !!((x.habilidadesEspeciais?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length));
 // listas de poderes por criatura (ids p/ filtro)
 const caminhosDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
 const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'feiticaria' && p.arte).map((p: any) => p.arte))];
 ---
 <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
-        data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem ? '1' : ''} data-porte={i.porte || ''}
+        data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem ? '1' : ''} data-porte={i.tamanho || ''}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
         data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
-        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidades || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.id ? (p.nome + ' ' + p.efeito) : (p.efeito + ' ' + p.alvo)).join(' ')).toLowerCase()}
-        data-besta={JSON.stringify({ id: i.id, nome: i.nome, conceito: i.conceito, ameaca: i.ameaca, centelha: i.centelha, porte: i.porte, atributos: i.atributos, vontade: i.vontade,
-        /* Esquiva, Integridade, Sociabilidade e Prontidão são ENTRADA do gerador e não
-           sobrevivem no monsters.json: FONTE ÚNICA da estimativa é `periciasDe()`
-           (scripts/lib-bestiario.mjs), a mesma que grava o campo `pericias` publicado aqui.
-           Antes este componente reimplementava a inversão da Integridade por conta própria,
-           com a fórmula antiga (flat), e foi a causa exata do `Def. Mental: card ≠ modal` que
-           o `test-editor-bestiario.mjs` pegou. */
-        pericias: i.pericias || {},
-        integridade: i.pericias?.integridade ?? 0,
-        prontidao: i.pericias?.prontidao ?? 0,
-        fraquezas: i.combate.fraquezas || [], resistencias: i.combate.resistencias || [], imunidades: i.combate.imunidades || [], notas: i.notas || '', armadura: 'nenhuma', ataquesLivro: (i.combate.ataques || []).map((x: any) => ({ nome: x.nome, pool: x.pool, dano: x.dano, speed: x.speed })) })}>
-
-        <figure class={`arte${i.imagem ? '' : ' sem-arte'}`} data-cent={i.centelha}>
-          {i.imagem
-            ? <img src={url(i.imagem)} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
-                   data-full={url(i.imagem)} data-nome={i.nome}
-                   {...(i.imagem2 ? { 'data-img1': url(i.imagem), 'data-img2': url(i.imagem2), title: 'Clique para ver a outra imagem' } : {})} />
+        data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidadesEspeciais || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.id ? (p.nome + ' ' + p.efeito) : (p.efeito + ' ' + p.alvo)).join(' ')).toLowerCase()}
+        data-besta={JSON.stringify({id:i.id})}>
+        <figure class={`arte${i.imagens?.[0] ? '' : ' sem-arte'}`} data-cent={i.centelha}>
+          {i.imagens?.[0]
+            ? <img src={url(i.imagens?.[0])} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
+                   data-full={url(i.imagens?.[0])} data-nome={i.nome}
+                   {...(i.imagens?.[1] ? { 'data-imagens': JSON.stringify(i.imagens.map(url)), title: 'Clique para ver a outra imagem' } : {})} />
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
           {/* Duas imagens (D-179, item 16): o clique na arte troca, a lupa abre a lightbox e o
               selo diz qual está à vista. A escolha mora em src/lib/imagem-escolhida.ts. */}
-          {i.imagem2 && (<>
+          {i.imagens?.[1] && (<>
             <span class="arte-selo" aria-hidden="true">1/2</span>
             <button class="arte-lupa" type="button" title="Ampliar" aria-label="Ampliar a imagem">⌕</button>
           </>)}
@@ -114,28 +104,32 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           <header class="besta-head">
             <span class="besta-nome cinzel">{i.nome}{i.nomeIngles && i.nomeIngles.toLowerCase() !== i.nome.toLowerCase() && <span class="besta-nome-en"> ({i.nomeIngles})</span>}</span>
           </header>
+          {i.formas?.length > 0 && <label>Forma <select class="besta-forma-escolha" aria-label={'Forma de '+i.nome}><option value={i.formaPrincipal.id}>{i.formaPrincipal.nome}</option>{i.formas.map((f:any)=><option value={f.id}>{f.nome}</option>)}</select></label>}
+          <section data-forma-painel={i.formaPrincipal?.id || 'principal'}>
           <div class="besta-badges">
-            {i.categoria && <span class="badge cat">{i.categoria}</span>}
+            {i.categoria && <span class="badge cat">{i.categoriaNome || i.categoria}</span>}
             {(i.ecologia?.terreno || []).map((t: string) => <span class="badge terr">{ECO_TERR[t] || t}</span>)}
             {(i.ecologia?.clima || []).map((c: string) => <span class="badge clima">{ECO_CLIMA[c] || c}</span>)}
             {i.semImagem && <span class="badge sem-img" title="Arte ainda não adicionada">Sem imagem</span>}
           </div>
-          {i.porte && (
-            <p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">{i.porte}</span><span class="pt-sep">·</span>{i.dimensoes.medida}<span class="pt-sep">·</span>{i.dimensoes.peso}</p>
+          {i.tamanho && (
+            <p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">{i.tamanho}</span><span class="pt-sep">·</span>{i.corpo.medida}<span class="pt-sep">·</span>{i.corpo.peso}</p>
           )}
+          {i.segundoTamanho && <p class="besta-porte">Segundo Tamanho: {i.segundoTamanho}</p>}
           {locoDe(i).length > 0 && (
-            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{`${m.nome} ${m.v} m/Tick`}</span></>))}</p>
+            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{m.v == null ? 'Terra: não anda' : `${m.nome} ${m.v} m/Tick`}</span></>))}</p>
           )}
 
           {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
 
           <dl class="besta-stats">
-            <div><dt>PV</dt><dd>{i.combate.pv}</dd></div>
+            <div><dt>{i.enxame ? 'PV por quadrado' : 'PV'}</dt><dd>{i.combate.pv}</dd></div>
             <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
             <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
             <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}{i.combate.vestida.nivel ? `·N${i.combate.vestida.nivel}` : ''}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
+            {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
           </dl>{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa (D-206).</p>)}
 
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length || i.combate.imunidades?.length) && (
@@ -203,6 +197,10 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             </ul>
           )}
 
+          {(i.comoLuta || []).length > 0 && <><h4>Como luta</h4><ul>{i.comoLuta.map((x:any)=><li><b>{x.nome}:</b> {x.texto}</li>)}</ul></>}
+          {(i.sentidos || []).length > 0 && <><h4>Sentidos</h4><ul>{i.sentidos.map((x:any)=><li><b>{x.nome}:</b> {x.descricao}{x.classe ? ' ('+x.classe+')' : ''}</li>)}</ul></>}
+          </section>
+          {(i.formas || []).map((forma:any)=><FormaCriatura forma={forma}/>)}
           {(
             <div class="besta-foot">
               <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
@@ -222,9 +220,9 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
 
               {temMec(i) && (
                 <template class="mech-tpl">
-                  {i.habilidades?.length > 0 && (<>
+                  {i.habilidadesEspeciais?.length > 0 && (<>
                     <h4>Habilidades</h4>
-                    <ul class="ib-hab">{i.habilidades.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}</li>))}</ul>
+                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}{h.base ? ` · base ${h.base.arte} ${h.base.nivel}` : ''}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
                   </>)}
                   {i.poderes?.length > 0 && (<>
                     <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>
@@ -232,12 +230,11 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                       ? (<li class={`pw-${p.tipo}`}><span class="pw-ef">{p.nome}</span> <span class="pw-arw">→</span> <span class="pw-alvo">{p.efeito}{p.resiste !== 'nenhum' ? ` (resiste ${p.resiste})` : ''}</span></li>)
                       : (<li class={`pw-${p.tipo}`}><span class="pw-ef">{p.efeito}</span> <span class="pw-arw">→</span> <span class="pw-alvo">{p.alvo}</span></li>))}</ul>
                   </>)}
-                  {(i.tecnicas.length > 0 || i.artes.length > 0 || i.notas) && (<>
-                    <h4>Técnicas, Artes &amp; Notas</h4>
+                  {(i.tecnicas.length > 0 || i.artes.length > 0) && (<>
+                    <h4>Técnicas &amp; Artes</h4>
                     {i.tecnicas.length > 0 && (<p class="ib-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>)}
                     {i.mana != null && (<p class="ib-ref"><b>Mana:</b> {i.mana}</p>)}
                     {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
-                    {i.notas && <p class="ib-notas">{i.notas}</p>}
                   </>)}
                 </template>
               )}
@@ -248,6 +245,17 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           )}
         </div>
       </article>
+
+<script>
+  document.addEventListener('change', e=>{
+    const seletor = (e.target as HTMLElement).closest<HTMLSelectElement>('.besta-forma-escolha');
+    if (!seletor) return;
+    const card = seletor.closest('.besta')!;
+    card.querySelectorAll<HTMLElement>('[data-forma-painel]').forEach(p=>p.hidden=p.dataset.formaPainel!==seletor.value);
+    const principal = seletor.selectedIndex === 0;
+    card.querySelectorAll<HTMLElement>('.besta-mech').forEach(b=>b.hidden=!principal);
+  });
+</script>
 
 <style is:global>
   /* Duas imagens (D-179, item 16). O selo fica no canto de baixo à direita, livre (a

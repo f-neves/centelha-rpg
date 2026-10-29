@@ -1,104 +1,162 @@
 {
-  "ordem": 61,
   "id": "basilisco",
   "idAntigo": "mon-basilisco",
   "nome": "Basilisco",
   "nomeIngles": "Basilisk",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Médio",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/basilisco_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de comprimento, do focinho à cauda",
-    "peso": "135 kg"
-  },
-  "locomocao": {
-    "terra": 2
-  },
+  "ameaca": 4,
   "centelha": 3,
-  "attrs": {
+  "corpo": {
+    "postura": "oito patas, rente ao chão",
+    "apoio": "outro",
+    "altura": 0.28,
+    "largura": 0.33,
+    "profundidade": null,
+    "comprimento": 1.8,
+    "comprimentoSemCauda": 0.9,
+    "caudaGrossa": false,
+    "massa": 36,
+    "area": 0.3,
+    "posturaDoTamanho": "silhueta vista de lado"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 5,
     "destreza": 2,
     "vigor": 4,
-    "influencia": 2,
-    "perspicacia": 1,
-    "compostura": 3,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 2,
+    "perspicacia": 1,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 0,
-    "prontidao": 1,
-    "integridade": 3
+    "atletismo": 1,
+    "furtividade": 2,
+    "integridade": 3,
+    "prontidao": 3,
+    "resistencia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 2
+  },
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "entre pedras",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 8,
-  "aparencia": 5,
+  "vontade": 8,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida",
+      "parte": "mandibula",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
-    {
-      "id": "olhar-petrificante",
-      "nome": "Olhar petrificante",
-      "tipo": "natural",
-      "base": {
-        "arte": "materia",
-        "nivel": 3
-      },
-      "resiste": "corpo",
-      "efeito": "Quem cruza o olhar resiste 1 vez por cena; desviar o rosto dá −4 no ataque.",
-      "usos": {
-        "periodo": "cena"
-      },
-      "descricao": "Quem cruza o olhar do basilisco tem de resistir, uma vez por cena: falhar começa a virar pedra, devagar, até a cura ou a magia certa reverter. Lutar sem olhar direto (de lado, de olhos fechados, por reflexo) evita o olhar, mas cobra −4 no próprio ataque."
-    }
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Olhar petrificante",
-      "descricao": "quem encara falha em Resistência vira pedra; sucesso causa Abalado"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o olhar transforma em pedra quem o encara"
     },
     {
-      "nome": "Mordida reptiliana",
-      "descricao": "ataque físico simples além do olhar"
-    },
-    {
-      "nome": "Emboscada nas pedras",
-      "descricao": "Furtividade 2; camufla-se entre rochas"
-    },
-    {
-      "nome": "Sentidos aguçados",
-      "descricao": "Prontidão 3 compensa a visão fraca"
-    },
-    {
-      "nome": "Reflexo traidor",
-      "descricao": "espelho ou superfície reflexiva pode virar o próprio olhar contra ele"
+      "nome": "reflexo traidor",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o espelho ou a superfície que reflete vira o olhar contra ele mesmo"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "emboscada na toca",
+      "formas": "todas",
+      "texto": "espera a presa chegar perto da toca, entre as estátuas, e encara antes de morder; não persegue longe."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "sentidos aguçados",
+      "descricao": "Prontidão 3; compensa a visão fraca",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "fraca fora da toca",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "entre rochas; Furtividade (entre pedras) +2",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "lagarto pardo de 1,8 m e oito patas, de ventre amarelado, cercado de estátuas na toca"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro; come devagar a presa petrificada",
+    "caca": "emboscada perto da toca",
+    "dianteDeGente": "encara e morde"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "planície"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Réptil de oito patas, solitário e paciente, que ataca de emboscada e depende do olhar petrificante para vencer presas maiores que ele. Faz toca em ruínas, cavernas e minas, cercado de estátuas que já foram gente ou animal.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -113,43 +171,30 @@
       "texto": "Muitas de suas tocas ficam em ruínas da Grande Guerra, e o povo comum jura que as estátuas ao redor são soldados daquele tempo, presos como aviso do preço de mexer com magia."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Underground",
-      "Plains"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/basilisco_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Furtividade 2, Prontidão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Basilisco",
-    "cr": "5",
-    "tipo": "besta mágica Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 16,
-      "des": 8,
-      "con": 15,
-      "int": 2,
-      "sab": 13,
-      "car": 11
+  "revisao": [
+    {
+      "campo": "corpo.area",
+      "motivo": "Médio para Pequeno (0,30 m²). Em jogo: o atirador humano perde 3 contra ele, e ele ganha +3 no corpo a corpo contra o humano"
     },
-    "pericias": [
-      "Furtividade 2",
-      "Prontidão 3"
-    ],
-    "nota": "Naturalmente mágico, olhar petrificante: Centelha 2.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição (28 a 42 kg), ficou na faixa de cima, a do site; descendo seria 28"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição (28 a 42 kg), ficou na faixa de cima, a do site; descendo seria 28"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"1d6 +8 perfurante\", 5 Ticks, dano médio 11,5). A ficha fica com a mordida, Média. Dano médio: 11,5 antes; depois, mordida 11,5 (sem mudança)"
+    }
+  ]
 }

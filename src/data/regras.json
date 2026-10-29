@@ -499,56 +499,7 @@
     "cargaCorteAgua": 0.5,
     "cargaExpoenteAgua": 2
   },
-  "furtividadeCriatura": {
-    "nota": "A Furtividade de uma criatura, por PORTE e CATEGORIA, sobre a Destreza. Existe porque o bestiário não guarda Habilidade nenhuma: das cinco que as regras de oposição pedem, quatro voltam invertendo a conta dos derivados (Prontidão de iniciativa - raciocínio, Esquiva da Defesa, Integridade da Defesa Mental, Sociabilidade da Defesa Social) e a Furtividade não volta de lugar nenhum: nada a consome. Sem ela não há comparação para o golpe vindo do escuro, e comparar contra um número fixo seria escrever a regra por omissão.",
-    "porQueTabelaEnaoUmNumeroPorCriatura": "A alternativa era escrever 309 Furtividades à mão. Trezentas e nove decisões de regra que ninguém toma com cuidado produzem números que PARECEM dado e não são, que é a forma de erro mais cara deste projeto. A tabela erra de um jeito que se vê (o assassino humano fica igual ao camponês humano) e a exceção escrita conserta esse caso quando ele aparecer na mesa, uma linha por vez. Mesma forma da couraça por porte (dano.couracaPorte), que é a forma da casa.",
-    "formula": "Furtividade = base do porte + ajuste da categoria + ajuste de tag, limitado a 0..6",
-    "porte": {
-      "nota": "Volume é o que denuncia: o que cabe atrás de um barril se esconde, e o que derruba o barril não. A base cai um degrau por passo de porte até o piso. As chaves sao as mesmas de dano.couracaPorte (minusculo..colossal; o Minusculo, oitavo porte da D-179, herda o valor do Miudo), e nao os rotulos do bestiario: escrevi \"miudo\" na primeira versao e 24 criaturas sairam SEM furtividade em vez de com a errada, porque a funcao omite quando nao acha em vez de zerar. O zero ambiguo do lado certo.",
-      "minusculo": 4,
-      "miudo": 4,
-      "pequeno": 3,
-      "medio": 2,
-      "grande": 1,
-      "enorme": 0,
-      "imenso": 0,
-      "colossal": 0
-    },
-    "categoria": {
-      "nota": "O ajuste do CORPO e do jeito de andar, e não da inteligência: a raposa se move calada por instinto, a armadura animada não tem como. Categoria não listada vale 0.",
-      "Fera": 1,
-      "Fada": 2,
-      "Aberração": 0,
-      "Besta mágica": 0,
-      "Celestial": 0,
-      "Conjurador": 0,
-      "Construto": -2,
-      "Demônio": 1,
-      "Diabo": 1,
-      "Dragão": 0,
-      "Elemental": -1,
-      "Exterior": 0,
-      "Gigante": -1,
-      "Humano": 0,
-      "Humanoide": 0,
-      "Limo": -1,
-      "Monstro": 0,
-      "Morto-vivo": -1,
-      "Planta": -2
-    },
-    "tags": {
-      "nota": "Somam sobre o resto. `incorpóreo` é o único que vira o jogo: quem atravessa a parede não tem passo para ouvir.",
-      "incorpóreo": 2
-    },
-    "excecoes": {
-      "nota": "O CAMINHO DA EXCECAO, e ele existe desde o primeiro dia de proposito: dar Furtividade propria a uma criatura e UMA LINHA aqui, no formato {\"valor\": n, \"porque\": \"...\"}. O porque e obrigatorio e nao e formalidade: sem ele, daqui a seis meses o numero e um palpite anonimo e ninguem sabe se pode mexer. O par valor/porque num objeto so, e nao duas chaves irmas, porque a segunda chave parecia um id de criatura e o portao a cobrou como tal (test-sentidos.mjs)."
-
-
-
-
-    }
-  },
-  "progressaoPorSessao": [
+"progressaoPorSessao": [
     10,
     20
   ],
@@ -799,7 +750,7 @@
         }
       },
       "massa": {
-        "nota": "Regra nova (decisoes-autor §9; D-180, ponto 9): a Vida pela massa. O motor ainda usa derivados.pv.porte até o código mudar.",
+        "nota": "Regra nova (decisoes-autor §9; D-180, ponto 9): a Vida pela massa, da criatura. O motor da criatura (src/lib/motor.ts) a lê pela `conta`, abaixo; a ficha do jogador usa derivados.pv.porte, pelo Tamanho da raça (D-234).",
         "linhas": [
           {
             "massa": "até 100 g",
@@ -867,6 +818,20 @@
             "comVigor3": 60,
             "transicao": ""
           }
+        ],
+        "notaConta": "A mesma tabela em número, a que o motor lê (src/lib/motor.ts, plano-conversao.md, A2): até `ateKg` (inclusive), PV = base + Vigor × vigorMult ÷ vigorDivisor (para baixo). `zonaKg` é a zona de transição do topo da linha: nela a ficha escolhe a linha pelo corpo (robusto sobe, frágil desce; decisoes-autor §13) e guarda a escolha em `corpo.linhaPV`. Vale para a criatura; o jogador usa `porte`, pelo Tamanho da raça (D-234).",
+        "conta": [
+          { "ateKg": 0.1, "base": 1, "vigorMult": 0, "vigorDivisor": 1, "zonaKg": [0.07, 0.13] },
+          { "ateKg": 1, "base": 0, "vigorMult": 1, "vigorDivisor": 1, "zonaKg": [0.7, 1.3] },
+          { "ateKg": 4, "base": 5, "vigorMult": 1, "vigorDivisor": 2, "zonaKg": [3, 5] },
+          { "ateKg": 8, "base": 10, "vigorMult": 1, "vigorDivisor": 1, "zonaKg": [6.4, 9.6] },
+          { "ateKg": 15, "base": 15, "vigorMult": 1, "vigorDivisor": 1, "zonaKg": [12, 18] },
+          { "ateKg": 35, "base": 20, "vigorMult": 2, "vigorDivisor": 1, "zonaKg": [28, 42] },
+          { "ateKg": 220, "base": 25, "vigorMult": 3, "vigorDivisor": 1, "zonaKg": [187, 253] },
+          { "ateKg": 1800, "base": 30, "vigorMult": 4, "vigorDivisor": 1, "zonaKg": [1620, 1980] },
+          { "ateKg": 14000, "base": 35, "vigorMult": 5, "vigorDivisor": 1, "zonaKg": [12600, 15400] },
+          { "ateKg": 110000, "base": 40, "vigorMult": 5, "vigorDivisor": 1, "zonaKg": [104500, 115500] },
+          { "ateKg": null, "base": 45, "vigorMult": 5, "vigorDivisor": 1, "zonaKg": null }
         ]
       }
     },
@@ -1016,42 +981,7 @@
       "perfuracao": "zero"
     },
     "centelhaNoSoak": 1,
-    "couracaPorte": {
-      "nota": "CONTA ANTIGA, que o bestiário ainda aplica às criaturas sem ficha nova até o código mudar (D-179, item 19). A regra nova (D-180, ponto 4): a Couraça vem só da pele, nível de 0 a 12 na ficha; quanto cada nível vale na Absorção está sem regra ainda, e por enquanto o nível não entra na Absorção. Os valores abaixo são os da conta antiga: Couraça pelo tamanho, somada SÓ a Corte e Perfuração; 'resistPerf' = gate natural de Perfuração (ataque Perfurante com Nível de Perfuração ABAIXO dele resvala); empilha com armadura (a couraça SOMA; o resistPerf pega o MAIOR). Tamanho lido do campo porte da ficha de criatura (src/data/bestiario/<id>.json); Médio e menores = 0.",
-      "minusculo": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "miudo": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "pequeno": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "medio": {
-        "couraca": 0,
-        "resistPerf": 0
-      },
-      "grande": {
-        "couraca": 2,
-        "resistPerf": 0
-      },
-      "enorme": {
-        "couraca": 4,
-        "resistPerf": 1
-      },
-      "imenso": {
-        "couraca": 7,
-        "resistPerf": 2
-      },
-      "colossal": {
-        "couraca": 10,
-        "resistPerf": 3
-      }
-    },
-    "gatePerfuracao": {
+"gatePerfuracao": {
       "nota": "Só para o modo Perfurante. Se o Nível de Perfuração da arma for MENOR que a Resistência à Perfuração (Nível) da armadura, o golpe RESVALA (dano 0, nem rola). Se for IGUAL OU MAIOR, o gate abre: rola o dano e subtrai a Absorção de Perfuração. Cortante e Impacto nunca passam pelo gate.",
       "modos": [
         "perfurante"
@@ -2724,10 +2654,10 @@
       "reforma": {
         "nota": "A reforma de P/G/R da D-082 (tiro e arremesso na rodada 4a, corpo a corpo na 4b, a Arte na 4c, 10/10/2026): Preparo = Velocidade − 1 − Recuperação, com o Golpe sempre em 1 Tick, e toda arma de tiro tem Recuperação. Fica numa chave à parte porque `preparo` (a fórmula por classe, acima) é lida pelo motor do Grid (combate-tempo.ts), congelado pela D-054: o motor passa a ler esta na passada do Grid (N22 em N-grid-pendencias.md). Os números são os da tabela 'Preparo, Golpe e Recuperação' do capítulo Combate Físico, e o test-capitulo-armas.mjs os prende nos dois lados. O corpo a corpo, a Investida, a Rajada e a dupla (rodada 4b) estão em `corpoACorpo`, `investida`, `rajada` e `dupla`, na mesma chave e com o mesmo motivo.",
         "corpoACorpo": [
-          { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre"] },
+          { "id": "leve", "nome": "Leve", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["adaga", "espada-curta", "machadinha", "bastao", "sabre", "chicote"] },
           { "id": "media", "nome": "Média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["espada-longa", "machado", "espada-serrilhada", "maca", "picareta-de-guerra", "martelo", "maca-estrela"] },
           { "id": "haste-media", "nome": "Haste média", "velocidade": 6, "preparo": 2, "golpe": 1, "recuperacao": 3, "armas": ["lanca", "bordao"] },
-          { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "lanca-longa"] },
+          { "id": "haste-guerra", "nome": "Haste de Guerra", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["alabarda", "glaive-serrilhada", "lanca-longa", "corrente-farpada"] },
           { "id": "pesada", "nome": "Pesada", "velocidade": 7, "preparo": 3, "golpe": 1, "recuperacao": 3, "armas": ["montante", "martelo-de-guerra", "machado-pesado"] },
           { "id": "punhos", "nome": "Punhos", "velocidade": 5, "preparo": 1, "golpe": 1, "recuperacao": 3, "armas": ["desarmado"] }
         ],
@@ -2934,6 +2864,31 @@
         "longa": { "multiplicador": 2, "exemplo": "anão, gnomo, halfling" },
         "muito-longa": { "multiplicador": 4, "exemplo": "elfo" }
       }
+    }
+  },
+  "criatura": {
+    "nota": "Os números das contas da criatura que o motor faz (src/lib/motor.ts; formato-criatura.md, seção 3; plano-conversao.md, A2). A Vida pela massa mora em derivados.pv.massa.conta. A fonte de cada um está na nota dele.",
+    "tamanho": {
+      "nota": "O Tamanho pela área da silhueta, na vista de maior área (D-155, D-183): até cada corte, em m², vale o id da mesma posição em porteAcerto.ordem; acima do último, Colossal. A menos de `folga` (5%) do corte, a ficha escolhe pelo corpo e justifica (decisoes-autor §13), e guarda a escolha em `corpo.tamanhoEscolhido` (D-216, D-225).",
+      "cortesM2": [0.03, 0.12, 0.45, 1.45, 6, 25, 100],
+      "folga": 0.05
+    },
+    "faixaMassa": {
+      "nota": "As 7 faixas de massa das manobras (decisoes-autor §9; D-180, ponto 10; D-141): até cada corte, em kg, a faixa da mesma posição mais um; acima do último, a 7. O incorpóreo usa o volume × `densidadeIncorporeoKgM3`, a carne e o osso (D-190).",
+      "cortesKg": [4, 35, 220, 1800, 14000, 110000],
+      "densidadeIncorporeoKgM3": 1010
+    },
+    "pesoErguido": {
+      "nota": "A R15 (D-184): P = max(curva(massa); piso × massa) × base^(E − E de referência); curva(m) = curvaA × 10^(curvaB × L − curvaC × L²), L = log10(m ÷ curvaMassaKg); E = (3 × Força + Halterofilismo + 3 × Musculatura) ÷ 4; E de referência = (3 × Força de referência + 6) ÷ 4; Força de referência = 6 + 3,8 × log10(m ÷ 60) abaixo de 60 kg, 6 de 60 a 200 kg, 6 + 3,8 × log10(m ÷ 200) acima, nunca abaixo de 0.",
+      "curvaA": 400, "curvaB": 0.53, "curvaC": 0.176, "curvaMassaKg": 100,
+      "piso": 0.25, "base": 1.3,
+      "eForca": 3, "eHalterofilismo": 1, "eMusculatura": 3, "eDivisor": 4,
+      "eRefForca": 3, "eRefSoma": 6,
+      "forcaRef": 6, "forcaRefInclinacao": 3.8, "forcaRefAbaixoKg": 60, "forcaRefAcimaKg": 200
+    },
+    "danoMedio": {
+      "nota": "A média de cada d6 no dano médio (manual-fichas-criatura.md, 5.3; o dado mais o resto: Força × multiplicador e a Centelha, D-209).",
+      "porDado": 3.5
     }
   }
 }

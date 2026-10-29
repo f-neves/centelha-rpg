@@ -125,7 +125,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
 <script>
   import { abrirMesa, u, esc, norm, avatarHTML, debounce, bancoAntigo, semMigracao14, elementosCombate } from '../../lib/mesa-core';
-  import { MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro, imagemDe, alternarImagem, defesaOutraDe, defesaNaMesaDe } from '../../lib/mesa-bestiario';
+  import { modeloNaForma, modeloDaPeca, seletorFormaDaPecaHTML, MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, estrelas, resumoDe, iniDeMonstro, imagemDe, alternarImagem, defesaOutraDe, defesaNaMesaDe } from '../../lib/mesa-bestiario';
   import { uiConfirmar, uiErro, uiAviso } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -176,7 +176,7 @@ import MesaCab from '../../components/MesaCab.astro';
       if (q.length < 2) { res.hidden = true; return; }
       const hits = MON_LIST.filter((m) => m.busca.includes(q)).slice(0, 12);
       res.innerHTML = hits.length ? hits.map((m) => `<li data-mon="${m.id}">
-        ${avatarHTML(m.nome, m.imagem ? u(imagemDe(m) || m.imagem) : null, 'av-besta av-p')}
+        ${avatarHTML(m.nome, m.imagens?.[0] ? u(imagemDe(m) || m.imagens?.[0]) : null, 'av-besta av-p')}
         <span class="r-n">${esc(m.nome)}${m.nomeIngles && m.nomeIngles !== m.nome ? ` <span class="muted">(${esc(m.nomeIngles)})</span>` : ''}</span>
         <span class="r-m">A${m.ameaca} · PV ${m.pv ?? '—'} · Def ${defesaNaMesaDe(m.id) ?? m.defesa ?? '—'}${defesaOutraDe(m.id) != null ? ` <span class="muted" title="A outra Defesa: com ou sem o equipamento (D-206)">(${defesaOutraDe(m.id)})</span>` : ''}</span>
       </li>`).join('') : '<li class="muted vazio">nada encontrado</li>';
@@ -213,7 +213,7 @@ import MesaCab from '../../components/MesaCab.astro';
     pintar();
   }
 
-  const nomeExibido = (c: any) => c.apelido || MON[c.monstro_id]?.nome || c.monstro_id;
+  const nomeExibido = (c: any) => c.apelido || modeloDaPeca(c)?.nome || c.monstro_id;
 
   function pintar() {
     const box = el('cri-grade');
@@ -229,7 +229,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
     const vis = VIS_CICLO[VIS].v;
     let itens = LISTA.filter((c: any) => {
-      const m = MON[c.monstro_id];
+      const m = modeloDaPeca(c);
       if (gFiltro && c.grupo !== gFiltro) return false;
       if (vis === 'sim' && !c.visivel_jogadores) return false;
       if (vis === 'nao' && c.visivel_jogadores) return false;
@@ -237,7 +237,7 @@ import MesaCab from '../../components/MesaCab.astro';
       return norm(`${nomeExibido(c)} ${m?.nomeIngles || ''} ${m?.categoria || ''} ${c.notas || ''} ${c.grupo || ''}`).includes(q);
     });
     const valor = (c: any, k: string) => {
-      const m = MON[c.monstro_id] || {};
+      const m = modeloDaPeca(c) || {};
       if (k === 'ameaca') return -(m.ameaca ?? 0);
       if (k === 'pv') return -(c.dados?.pv ?? m.combate?.pv ?? 0);
       if (k === 'grupo') return (c.grupo || 'zzz') + nomeExibido(c);
@@ -257,7 +257,7 @@ import MesaCab from '../../components/MesaCab.astro';
     }
     let ultimoGrupo: string | null = null;
     box.innerHTML = itens.map((c: any) => {
-      const m = MON[c.monstro_id];
+      const m = modeloDaPeca(c);
       let cabecalho = '';
       if (ordem === 'grupo' && (c.grupo || '') !== ultimoGrupo) {
         ultimoGrupo = c.grupo || '';
@@ -266,15 +266,15 @@ import MesaCab from '../../components/MesaCab.astro';
       if (!m) return `${cabecalho}<div class="cri-card"><div class="cri-corpo"><span class="muted">Criatura fora do bestiário (${esc(c.monstro_id)})</span>
         ${MESTRE ? `<div class="cri-acoes"><button class="btn mini perigo cri-rm" data-cr="${c.id}">Remover</button></div>` : ''}</div></div>`;
 
-      const r = resumoDe({ tipo: 'criatura', monstro_id: c.monstro_id, dados: c.dados || {} });
+      const r = resumoDe({ id:c.id, tipo: 'criatura', monstro_id: c.monstro_id, dados: c.dados || {} });
       const cb = m.combate || {};
       const pvv = c.dados?.pv ?? cb.pv;
       const variante = !!(c.apelido || (c.dados && Object.keys(c.dados).length));
-      const arte = m.imagem
-        ? `<figure class="cri-arte" data-mon="${m.id}"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}" loading="lazy" />
+      const arte = m.imagens?.[0]
+        ? `<figure class="cri-arte" data-mon="${m.id}" data-forma-card="${esc(m.formaPrincipal?.id || '')}"><img src="${u(imagemDe(m)!)}" alt="${esc(m.nome)}" loading="lazy" />
              <span class="cri-am" title="Ameaça ${m.ameaca}/6">${estrelas(m.ameaca)}</span>
              ${variante ? '<span class="cri-var">variante</span>' : ''}</figure>`
-        : `<figure class="cri-arte" data-mon="${m.id}"><span class="cap">${esc((m.nome || '?').trim()[0])}</span>
+        : `<figure class="cri-arte" data-mon="${m.id}" data-forma-card="${esc(m.formaPrincipal?.id || '')}"><span class="cap">${esc((m.nome || '?').trim()[0])}</span>
              <span class="cri-am">${estrelas(m.ameaca)}</span></figure>`;
       const { fraquezas: crFraq, resistencias: crRes, imunidades: crImu } = elementosCombate(m);
       const el2 = [...crFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`),
@@ -289,7 +289,7 @@ import MesaCab from '../../components/MesaCab.astro';
             ${m.centelha ? `<span class="cri-b">Cent ${m.centelha}</span>` : ''}
             <span class="cri-b">PV ${pvv ?? '—'}</span>
             <span class="cri-b">Def ${r?.defesa ?? '—'}${c.dados?.defesa == null && defesaOutraDe(c.monstro_id) != null ? ` <span class="muted" title="A outra Defesa: com ou sem o equipamento; troque no card (D-206)">(${defesaOutraDe(c.monstro_id)})</span>` : ''}</span>
-            ${m.porte ? `<span class="cri-b">${esc(m.porte)}</span>` : ''}
+            ${m.tamanho ? `<span class="cri-b">${esc(m.tamanho)}</span>` : ''}
           </div>
           ${r?.ataque ? `<div class="cri-atk">${esc(r.arma || 'Ataque')}: <b>${esc(r.ataque)}</b> · dano <b>${esc(r.dano)}</b>${r.velocidade != null ? ` · vel ${r.velocidade}` : ''}</div>` : ''}
           <div class="cri-atk">Abs <b>${r?.soak.impacto ?? 0}/${r?.soak.corte ?? 0}/${r?.soak.perfuracao ?? 0}</b>${r?.resistPerf ? ` · gate N${r.resistPerf}` : ''}</div>
@@ -297,8 +297,9 @@ import MesaCab from '../../components/MesaCab.astro';
           ${MESTRE
             ? `<textarea class="cri-notas" data-cr="${c.id}" rows="2" placeholder="Anotações do mestre">${esc(c.notas || '')}</textarea>`
             : ''}
+          ${MESTRE ? seletorFormaDaPecaHTML(c) : ''}
           <div class="cri-acoes">
-            <button class="btn mini ver-card" data-mon="${m.id}">Card ›</button>
+            <button class="btn mini ver-card" data-mon="${m.id}" data-forma-card="${esc(m.formaPrincipal?.id || '')}">Card ›</button>
             ${MESTRE ? `<button class="btn-fant cri-vis" data-cr="${c.id}" title="${c.visivel_jogadores ? 'Esconder dos jogadores' : 'Liberar para os jogadores'}">${c.visivel_jogadores ? '👁 liberada' : '🙈 só você'}</button>` : ''}
             ${MESTRE ? `<button class="btn mini cri-edit" data-cr="${c.id}">✎ variante</button>` : ''}
             ${(MESTRE && ENC) ? `<button class="btn mini cri-combate" data-cr="${c.id}">⚔ pro combate</button>` : ''}
@@ -312,11 +313,11 @@ import MesaCab from '../../components/MesaCab.astro';
     // janela abre com o bloco de jogo e o texto entra quando a busca voltar.
     box.querySelectorAll<HTMLElement>('.ver-card, .cri-arte').forEach((b) => b.addEventListener('click', async () => {
       const id = b.dataset.mon!;
-      const m = MON[id]; if (!m) return;
+      const m = modeloNaForma(MON[id],b.dataset.formaCard); if (!m) return;
       el('card-modal-body').innerHTML = cardCriaturaHTML(m);
       el('card-modal').hidden = false; document.body.style.overflow = 'hidden';
       const cheia = await criaturaCompleta(id);
-      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(cheia);
+      if (cheia && !el('card-modal').hidden) el('card-modal-body').innerHTML = cardCriaturaHTML(modeloNaForma(cheia,b.dataset.formaCard));
     }));
     if (!MESTRE) return;
 
@@ -343,7 +344,7 @@ import MesaCab from '../../components/MesaCab.astro';
     box.querySelectorAll<HTMLElement>('.cri-edit').forEach((b) => b.addEventListener('click', () => abrirVariante(b.dataset.cr!)));
     box.querySelectorAll<HTMLElement>('.cri-combate').forEach((b) => b.addEventListener('click', async () => {
       const c = LISTA.find((x: any) => x.id === b.dataset.cr); if (!c || !ENC) return;
-      const m = MON[c.monstro_id];
+      const m = modeloDaPeca(c);
       const r = resumoDe({ tipo: 'criatura', monstro_id: c.monstro_id, dados: c.dados || {} });
       const pvv = c.dados?.pv ?? m?.combate?.pv ?? null;
       const linha: any = {
@@ -360,7 +361,7 @@ import MesaCab from '../../components/MesaCab.astro';
 
   function abrirVariante(crId: string) {
     const c = LISTA.find((x: any) => x.id === crId); if (!c) return;
-    const m = MON[c.monstro_id] || {};
+    const m = modeloDaPeca(c) || {};
     const cb = m.combate || {};
     const d = c.dados || {};
     const dlg = el('cri-dlg') as HTMLDialogElement;
@@ -433,11 +434,12 @@ import MesaCab from '../../components/MesaCab.astro';
     const src = u(imagemDe(m)!);
     img.src = src;
     const selo = img.parentElement?.querySelector('.arte-selo');
-    if (selo) selo.textContent = `${n}/2`;
+    if (selo) selo.textContent = `${n}/${m.imagens.length}`;
     document.querySelectorAll<HTMLImageElement>(`.cri-arte[data-mon="${m.id}"] img`).forEach((i) => { i.src = src; });
   });
 
   // D-206: o Mestre trocou no card a Defesa com ou sem o equipamento; a lista se repinta com a escolha
   // (a escolha fica no aparelho, defesa-vestida.ts, e não vai ao banco).
   window.addEventListener('centelha:vestida', () => pintar());
+  window.addEventListener('centelha:forma', () => pintar());
 </script>

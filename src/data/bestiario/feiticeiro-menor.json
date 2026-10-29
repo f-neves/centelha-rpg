@@ -1,36 +1,24 @@
 {
-  "ordem": 10,
   "id": "feiticeiro-menor",
   "nome": "Feiticeiro Menor",
   "nomeIngles": "Minor Sorcerer",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Conjurador",
+  "categoria": "humanoide",
   "papel": "elite",
-  "conceito": "conjurador iniciante",
-  "descricao": "Conjurador iniciante, frágil de perto e perigoso de longe: abre distância e lança dardos de fogo antes que o inimigo o alcance.",
-  "tags": [
-    "humano",
-    "centelha",
-    "arcano"
-  ],
-  "imagem": "bestiario/feiticeiro-menor_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,68 m de altura",
-    "peso": "60 kg",
-    "largura": 0.42,
-    "altura": 1.68
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.68,
+    "largura": 0.42,
+    "profundidade": 0.21,
+    "comprimento": null,
+    "massa": 60,
+    "area": 0.63,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 3,
     "vigor": 2,
@@ -41,7 +29,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
+    "briga": 0,
+    "bloqueio": 0,
     "esquiva": 2,
     "atletismo": 1,
     "furtividade": 1,
@@ -51,86 +41,146 @@
     "sociabilidade": 1,
     "empatia": 1
   },
-  "skills2": {
-    "acerto-arcano": 3
+  "habilidadesSec": {
+    "acerto-arcano": 3,
+    "halterofilismo": 0,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "ocultismo",
-      "foco": "a Centelha",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "ocultismo": [
+      {
+        "foco": "a Centelha",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {
+    "fogo": 2
+  },
   "ataques": [
     {
       "nome": "Soco",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "arte": {
-    "fogo": 2
-  },
-  "mana": 8,
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "dardo flamejante",
-      "descricao": "Arte Fogo 1: Faísca, dardo flamejante de 1d6 num alvo a 1 m, por 1 Mana.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "arte": {
+        "id": "fogo",
+        "nivel": 1
+      }
     },
     {
       "nome": "chama que gruda",
-      "descricao": "Arte Fogo 2: Chama Aderente, dardo de fogo de 1d6 que gruda e queima por mais de 6 Ticks e acende à distância, por 2 Mana.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "arte": {
+        "id": "fogo",
+        "nivel": 2
+      }
     },
     {
       "nome": "acende e apaga",
-      "descricao": "Arte Fogo 1: acende ou apaga uma tocha com a mão, esquenta o corpo numa noite fria.",
-      "classe": "livro"
-    },
-    {
-      "nome": "mantém distância",
-      "descricao": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de quatro a oito vezes por cena.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "frágil no corpo a corpo",
-      "descricao": "Bloqueio 6, 31 PV e Absorção baixa; se alguém o alcança, foge ou se rende.",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "livro",
+      "arte": {
+        "id": "fogo",
+        "nivel": 1
+      }
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "mantém distância",
+      "formas": "todas",
+      "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de quatro a oito vezes por cena."
+    },
+    {
+      "nome": "frágil no corpo a corpo",
+      "formas": "todas",
+      "texto": "Bloqueio 6, 31 PV e Absorção baixa; se alguém o alcança, foge ou se rende."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "humana; inseguro quanto ao próprio poder",
+    "tracos": "magro, mãos marcadas de queimaduras pequenas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou com um grupo pequeno que o protege",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "não se aplica",
+    "dianteDeGente": "foge ou ataca de longe, conforme o medo"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Conjurador iniciante, frágil de perto e perigoso de longe: abre distância e lança dardos de fogo antes que o inimigo o alcance.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Evita o corpo a corpo, onde é frágil, e prefere abrir distância para golpear com fogo antes que o inimigo chegue perto. Social: sozinho ou com um grupo pequeno que o protege."
+      "texto": "Evita o corpo a corpo, onde é frágil, e prefere abrir distância para golpear com fogo antes que o inimigo chegue perto."
     },
     {
       "titulo": "Personalidade",
@@ -139,59 +189,20 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "É exatamente o tipo de figura que a Supressão ensinou o povo a temer: um conjurador iniciante, tocado por um poder que as igrejas ortodoxas de Calin chamam de herança da Tecelã e pregam contra."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, humano. De longe, lança um dardo de fogo de 1d6 por 1 Mana ou um que gruda e segue queimando por 2 Mana; tem 8 de Mana, então quatro a oito disparos por cena. De perto é fácil: Esquiva 12, Bloqueio 6, 31 PV, Impacto 3, Corte e Perfuração 1. Defesa Mental 15: a mente treinada resiste melhor que o corpo. Foge ou se rende quando alcançado."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/feiticeiro-menor_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Mana = Centelha×2 + Vontade = 8. Nível 2 (Labareda, 2d6) custa 2 Mana.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "cr": "3",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 31,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 15,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 91.85,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+  "revisao": [
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
     }
-  },
-  "notasObservacao": [
-    "`artes`: Fogo 2 pela C-043. O teto Centelha + 2 é, pela C-043, só da bancada, e o conferidor o confere; aqui não pesa, porque 2 fica abaixo de 3",
-    "`Artes`: fora da tabela de Ataques (D-196); a jogada da Arte depende do efeito e segue as regras das Artes do livro",
-    "`integridade`: 5, a do site, alta para um iniciante; fica como referência de jogo",
-    "`massa`: 60 kg, a do site, um pouco abaixo do corpo de base escalado (65 kg), pelo \"franzino\""
   ]
 }

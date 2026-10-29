@@ -1,151 +1,296 @@
 {
-  "ordem": 99,
   "id": "diabo-de-gelo",
   "idAntigo": "mon-diabo-de-gelo",
   "nome": "Diabo de Gelo",
-  "nomeIngles": "Devil, Ice (Gelugon)",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Diabo",
+  "nomeIngles": "Devil, Ice",
+  "categoria": "corruptor",
   "papel": "chefe",
-  "conceito": "exterior Grande (diabo)",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Tirano leal do Inferno, calculista e cruel.",
-  "tags": [
-    "diabo",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/diabo-de-gelo_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3,3 m de altura",
-    "peso": "360 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 6
-  },
+  "ameaca": 5,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, ereto; voa",
+    "apoio": "bipede",
+    "altura": 3.3,
+    "largura": 0.7,
+    "profundidade": 0.36,
+    "comprimento": null,
+    "massa": 360,
+    "area": 2.06,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 9,
     "destreza": 6,
     "vigor": 9,
-    "influencia": 6,
-    "perspicacia": 6,
-    "compostura": 6,
     "percepcao": 6,
     "inteligencia": 7,
-    "raciocinio": 6
+    "raciocinio": 6,
+    "influencia": 6,
+    "perspicacia": 6,
+    "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "armas": 5,
+    "bloqueio": 3,
     "esquiva": 2,
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 6,
     "prontidao": 3,
-    "integridade": 6
+    "resistencia": 4,
+    "sociabilidade": 2,
+    "ocultismo": 4
   },
-  "virtues": {
+  "habilidadesSec": {
+    "lideranca": 4,
+    "estrategia": 4,
+    "intimidacao": 3,
+    "voo": 2,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "lança",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "lideranca": [
+      {
+        "foco": "tropas infernais",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 5,
-    "valor": 5
+    "temperanca": 5
   },
-  "willpower": 11,
+  "vontade": 11,
   "aparencia": 0,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:lanca"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Lança de gelo",
+      "arma": "lanca",
+      "habilidade": "armas"
+    },
+    {
+      "nome": "Cauda",
+      "parte": "cauda-de-ferrao",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Garras",
+      "parte": "mao-de-garras",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "aura-de-frio",
+      "nome": "Lança gelada",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Lança de gelo",
+      "ativacao": "o golpe da lança que fere",
+      "duracao": "o frio é instantâneo; o Congelado vai até o fim do próximo intervalo de 6 Ticks",
+      "alcance": "o da lança",
+      "area": "um alvo",
+      "efeito": "a ponta de gelo queima de frio e enrijece o corpo; quem falha fica Congelado",
+      "dano": "+1d6 de gelo, somado ao do golpe",
+      "resistencia": "corpo, contra a jogada do golpe; quem passa leva o frio e não fica Congelado",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "Ferrão venenoso",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Cauda",
+      "ativacao": "o golpe da Cauda que fere",
+      "duracao": "a do veneno",
+      "alcance": "o da cauda",
+      "area": "um alvo",
+      "efeito": "o alvo fica Envenenado pelo veneno do diabo de gelo (Veneno e doença), que tira força",
+      "dano": "o do veneno",
+      "resistencia": "corpo, pelo veneno",
+      "limiteDeUso": "um por golpe"
+    },
+    {
+      "nome": "lança e ferrão juntos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "pica com a cauda na mesma ação do golpe da lança; por enquanto, um ataque por ação"
+    },
+    {
       "nome": "Aura de frio",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
         "nivel": 3
       },
-      "resiste": "nenhum",
-      "efeito": "Resiste ao entrar, 1 vez por cena.",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      },
-      "descricao": "Uma aura de frio cortante cerca o diabo o tempo todo; quem chega perto sente o gelo mesmo sem ser atacado."
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "3 m",
+      "area": "esfera de 3 m em volta dele",
+      "efeito": "um frio cortante cerca o diabo; chegar perto queima de gelo, mesmo sem ser atacado",
+      "dano": "1d6 de gelo a cada 6 Ticks em quem estiver dentro",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "id": "muralha-de-gelo",
       "nome": "Muralha de gelo",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
         "nivel": 5
       },
-      "resiste": "esquiva",
-      "efeito": "ergue uma parede de gelo ou lança uma nevasca em área, poucas vezes por dia",
-      "descricao": "O diabo ergue um paredão de gelo maciço para bloquear passagem, ou solta uma nevasca que cobre uma área inteira e fere quem não escapa a tempo.",
-      "usos": {
-        "periodo": "dia",
-        "quantidade": 3
-      }
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "até o fim da cena, ou até derreter",
+      "alcance": "30 m",
+      "area": "parede de 9 m de comprimento, 3 m de altura e 0,3 m de espessura; ou nevasca em esfera de 6 m",
+      "efeito": "a parede bloqueia a passagem e a visão; a nevasca deixa a área em Terreno difícil e fere quem está dentro",
+      "dano": "a parede, nenhum; a nevasca, 3d6 + Centelha de gelo",
+      "resistencia": "esquiva, contra a nevasca; quem passa leva metade",
+      "limiteDeUso": "uma vez por cena, até três por dia"
     },
     {
-      "id": "teleporte-de-gelo",
       "nome": "Teleporte",
-      "tipo": "natural",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
         "nivel": 6
       },
-      "resiste": "nenhum",
-      "efeito": "desloca-se a qualquer distância dentro do mesmo plano, à vontade",
-      "descricao": "Some numa nuvem gelada e reaparece em qualquer ponto que conheça no mesmo plano, sem limite de vezes.",
-      "usos": {
-        "periodo": "avontade"
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "qualquer ponto que ele conheça no mesmo plano",
+      "area": "o próprio diabo",
+      "efeito": "some numa nuvem gelada e reaparece no destino",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
+    },
+    {
+      "nome": "Ver o invisível",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "visao-verdadeira",
+        "nivel": 4
       }
+    },
+    {
+      "nome": "visão verdadeira sempre ativa",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o diabo de gelo enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+    },
+    {
+      "nome": "imune a veneno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega no corpo de diabo"
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "comoLuta": [
     {
-      "nome": "Lança de gelo",
-      "descricao": "ataque corpo a corpo com alcance, dano alto de frio"
-    },
-    {
-      "nome": "Aura de frio",
-      "descricao": "quem chega a até 3m sofre dano de frio automático toda rodada"
-    },
-    {
-      "nome": "Ferrão de cauda venenoso",
-      "descricao": "ataque extra na mesma ação; falha em Fortitude = Enfraquecido"
-    },
-    {
-      "nome": "Muralha de gelo",
-      "descricao": "feitiçaria, 1x por cena; ergue parede de 9m que bloqueia passagem"
-    },
-    {
-      "nome": "Feitiços",
-      "descricao": "feitiçaria; lança Teleporte e outros efeitos como conjurador experiente"
-    },
-    {
-      "nome": "Sangue infernal",
-      "descricao": "imune a frio, fogo e veneno; resistente a ácido"
-    },
-    {
-      "nome": "Visão verdadeira",
-      "descricao": "enxerga através de ilusões, disfarces e invisibilidade"
+      "nome": "general do frio",
+      "formas": "todas",
+      "texto": "comanda a tropa de trás, ergue a muralha para dividir o inimigo e entra na luta com a lança, que gela e enrijece, picando com a cauda quem chega perto; o frio chega antes dele."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão verdadeira",
+      "descricao": "pela Técnica (Manobras)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "no gelo e na neve",
+    "mente": "inteligente, disciplinada, militar",
+    "tracos": "diabo de 3,3 m com corpo de inseto gigante, carapaça azul-esbranquiçada, olhos compostos, mandíbulas e cauda comprida de ferrão; o ar em volta embranquece de frio"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "general das hostes infernais",
+    "atividade": "qualquer hora",
+    "dieta": "não precisa comer",
+    "caca": "comanda e conquista",
+    "dianteDeGente": "congela a vontade de lutar antes do combate"
+  },
+  "ecologia": {
+    "terreno": [
+      "gélido",
+      "qualquer"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "General das camadas geladas do Inferno, de corpo de inseto gigante, que comanda tropas com precisão militar. Luta com uma lança de gelo que enrijece quem fere e uma cauda de ferrão venenoso, e uma aura de frio cortante chega antes dele.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -164,43 +309,73 @@
       "texto": "No White Wall gelado, onde a Fenda mais se aproxima, os poucos que sobrevivem a um encontro com algo assim juram que o próprio ar ficou mais frio antes de vê lo, como se o gelo chegasse primeiro que o diabo."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Cold",
-      "Any"
+  "imagens": [
+    "bestiario/diabo-de-gelo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "acido",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      },
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "Habilidades notáveis: Armas 5, Ocultismo 4, Liderança 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Diabo de Gelo",
-    "cr": "13",
-    "tipo": "exterior Grande (diabo)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 27,
-      "des": 21,
-      "con": 25,
-      "int": 22,
-      "sab": 20,
-      "car": 20
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Lança gelada",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "pericias": [
-      "Armas 5",
-      "Ocultismo 4",
-      "Liderança 4"
-    ],
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Ferrão venenoso",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5
+    {
+      "campo": "habilidadesEspeciais.Aura de frio",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Muralha de gelo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a carapaça de inseto, como a do crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). A resistência e as imunidades são as do site (\"Sangue infernal\"), pela linha Elementos; 4, pela carapaça de inseto"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +15 corte\", dano médio 22). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a lança é a do livro, de duas mãos (Força × 2), e a cauda e as garras ficam Médias. Dano médio: 22 antes; depois, 27,5 (a lança, mais 1d6 de gelo; a cauda e as garras ficam em 18,5)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "\"Enfraquecido\" do site virou o pool de Força do veneno, como na peçonha de drider; sem id no catálogo"
+    }
+  ]
 }

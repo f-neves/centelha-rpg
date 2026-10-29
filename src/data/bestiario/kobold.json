@@ -1,36 +1,25 @@
 {
-  "ordem": 18,
   "id": "kobold",
   "idAntigo": "mon-kobold",
   "nome": "Kobold",
   "nomeIngles": "Kobold",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Pequeno (reptiliano)",
-  "descricao": "Réptil pequeno de cauda grossa que vive em túneis cheios de armadilhas. Covarde de frente, ataca em grupo com lanças de trás das engenhocas e venera qualquer dragão que o proteja.",
-  "tags": [
-    "humanoide"
-  ],
-  "imagem": "bestiario/kobold_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,1 m de comprimento, 0,75 m de altura",
-    "peso": "16 kg",
-    "comprimento": 1.1,
-    "largura": 0.26,
-    "altura": 0.75
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, o tronco inclinado e a cauda atrás",
+    "apoio": "bipede",
+    "altura": 0.75,
+    "largura": 0.26,
+    "profundidade": 0.13,
+    "comprimento": 1.1,
+    "massa": 16,
+    "area": 0.22,
+    "linhaPV": "abaixo"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 2,
     "destreza": 3,
     "vigor": 2,
@@ -41,7 +30,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "briga": 1,
     "bloqueio": 1,
@@ -53,74 +42,108 @@
     "oficios-gerais": 1,
     "sociabilidade": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "lança",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "musculatura": 0
+  },
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "lança",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 2
+    "temperanca": 3
   },
-  "willpower": 5,
+  "vontade": 5,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:lanca"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 2,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 1,
-      "ticks": 6,
-      "classe": "haste"
+      "arma": "lanca",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Armadilheiro",
-      "descricao": "Ofícios Gerais 1; monta armadilhas simples no túnel antes do combate, e o efeito de cada uma fica com o Mestre.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Corpo frágil",
-      "descricao": "a Vida pela linha de baixo da zona de transição (17 PV).",
-      "classe": "livro"
-    },
-    {
-      "nome": "Furtivo",
-      "descricao": "Furtividade 1 e o Tamanho Pequeno.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Alerta",
-      "descricao": "Prontidão 1.",
-      "classe": "livro"
-    },
-    {
-      "nome": "túnel armado",
-      "descricao": "não luta de frente; atrai o inimigo para a armadilha, ataca com a lança de trás do companheiro e foge pelos túneis se a luta vira.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga bem em túnel e caverna sem luz (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "monta armadilhas simples no túnel antes do combate; o efeito de cada uma fica com o Mestre"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "túnel armado",
+      "formas": "todas",
+      "texto": "não luta de frente; atrai o inimigo para a armadilha, ataca com a lança de trás do companheiro e foge pelos túneis se a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga bem em túnel e caverna sem luz",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; covarde, paciente e engenhosa",
+    "tracos": "escamas ferrugem ou pardas, focinho de lagarto, chifres curtos, cauda grossa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em clã, típico 4 a 12",
+    "atividade": "noturno, nos túneis",
+    "dieta": "onívoro",
+    "caca": "armadilha e emboscada",
+    "dianteDeGente": "foge do grupo forte; atrai o fraco para as armadilhas"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Réptil pequeno de cauda grossa que vive em túneis cheios de armadilhas. Covarde de frente, ataca em grupo com lanças de trás das engenhocas e venera qualquer dragão que o proteja.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Covardes em combate direto, letais quando podem escolher o momento, através de armadilhas, túneis colapsáveis e emboscadas planejadas com paciência. Social: em clã, típico 4 a 12."
+      "texto": "Covardes em combate direto, letais quando podem escolher o momento, através de armadilhas, túneis colapsáveis e emboscadas planejadas com paciência."
     },
     {
       "titulo": "Hábitos",
@@ -133,77 +156,48 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Primos distantes dos lagartos e trogloditas que povoam as profundezas de Mére e das ruínas do White Wall, os kobolds prosperam nos túneis abandonados desde que a Fenda expulsou os anões, ocupando galerias que ninguém mais ousa reclamar."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno, 17 PV, Impacto 2. Esquiva e Bloqueio 8 (10 com a lança). A lança a duas mãos dá dano médio 7,5, com alcance. Um golpe bom derruba um kobold; o perigo é o túnel armado e o grupo que ataca de trás das armadilhas."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/kobold_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Ofícios 1, Furtividade 1, Prontidão 1.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Kobold",
-    "cr": "1/4",
-    "tipo": "humanoide Pequeno (reptiliano)",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 9,
-      "des": 13,
-      "con": 10,
-      "int": 10,
-      "sab": 9,
-      "car": 8
+  "revisao": [
+    {
+      "campo": "habilidades.armas",
+      "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). A lança em grupo"
     },
-    "pericias": [
-      "Ofícios 1",
-      "Furtividade 1",
-      "Prontidão 1"
-    ],
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": ""
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 17,
-    "esquiva": 8,
-    "bloqueio": 8,
-    "defesa": 10,
-    "defesaMental": 9,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 0,
-      "perfuracao": 0
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Escamas finas, como a jararaca da escala, \"no máximo 1\" (tamanho-decisoes-5, item 2); nível 1 pelas escamas"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 55.26,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
     },
-    "bloqueioArma": 2
-  },
-  "notasObservacao": [
-    "`pv`: 17, a linha de baixo da zona de transição, pelo \"Corpo frágil\" do site; na de cima seriam 24",
-    "`equipamento`: lança do livro, sem armadura **[provisório]**",
-    "`couraca`: nível 1 pelas escamas **[provisório]**",
-    "`virtudes`: Bravura 2 e Temperança 3; o site tinha 3 e 2 **[provisório]**"
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "lança do livro, sem armadura"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Bravura 2 e Temperança 3; o site tinha 3 e 2"
+    }
   ]
 }

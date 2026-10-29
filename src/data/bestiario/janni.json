@@ -1,37 +1,24 @@
 {
-  "ordem": 220,
   "id": "janni",
   "idAntigo": "mon-janni",
   "nome": "Janni",
   "nomeIngles": "Janni",
-  "categoria": "Outsider",
-  "categoriaLegada": "Exterior",
+  "categoria": "outsider",
   "papel": "soldado",
-  "conceito": "exterior Médio",
-  "descricao": "O mais humano dos gênios, insulto que responde na ponta da espada: guarda poços e oásis no fundo do deserto, voa, some da vista, muda o tamanho do inimigo e abre passagem para os planos elementais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/janni_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "80 kg",
-    "largura": 0.45,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 3,
-    "voo": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé; voador",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "massa": 80,
+    "area": 0.72
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 4,
     "vigor": 3,
@@ -42,7 +29,7 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "briga": 2,
     "bloqueio": 2,
@@ -51,87 +38,166 @@
     "prontidao": 2,
     "integridade": 4,
     "sobrevivencia": 3,
-    "ocultismo": 2
+    "ocultismo": 2,
+    "sociabilidade": 1
   },
-  "skills2": {
-    "voo": 2
+  "habilidadesSec": {
+    "voo": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "espada",
-      "valor": 2,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "deserto",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "espada",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 2,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 4
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "voo": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-longa"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 1,
-      "ticks": 6,
-      "classe": "media"
+      "arma": "espada-longa",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [
-    "fogo"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Desaparecer",
-      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele atacar ou desfazer",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Mudar o tamanho",
-      "descricao": "poder natural (base Metamorfose 2): Ativação: uma ação, Velocidade 6, com um gesto. Duração: até o fim da cena. Alcance: 9 m. Área: um alvo, ou ele mesmo. Efeito: encolhe ou amplia o alvo: ampliado, um Tamanho acima, +1 na Força e −2 na Esquiva; encolhido, um Tamanho abaixo, −1 na Força e +2 na Esquiva. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, para quem não quer. Limite de uso: duas vezes por cena.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "metamorfose",
+        "nivel": 2
+      },
+      "ativacao": "uma ação, Velocidade 6, com um gesto",
+      "duracao": "até o fim da cena",
+      "alcance": "9 m",
+      "area": "um alvo, ou ele mesmo",
+      "efeito": "encolhe ou amplia o alvo: ampliado, um Tamanho acima, +1 na Força e −2 na Esquiva; encolhido, um Tamanho abaixo, −1 na Força e +2 na Esquiva",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele, para quem não quer",
+      "limiteDeUso": "duas vezes por cena"
     },
     {
       "nome": "Passagem entre mundos",
-      "descricao": "Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: um plano elemental ou o mundo material. Área: ele e quem estiver disposto a atravessar, até seis. Efeito: abre a passagem e atravessa com os que vão. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "um plano elemental ou o mundo material",
+      "area": "ele e quem estiver disposto a atravessar, até seis",
+      "efeito": "abre a passagem e atravessa com os que vão",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por dia"
     },
     {
       "nome": "Resistência do deserto",
-      "descricao": "Ativação: nenhuma; vale nos planos elementais. Duração: até 2 dias por visita. Alcance: o próprio corpo. Área: não se aplica. Efeito: não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material. Dano: nenhum. Resistência: nenhum. Limite de uso: uma visita por vez.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Sangue elemental",
-      "descricao": "resistência a fogo (Elementos; metade do dano, C-039).",
-      "classe": "livro"
-    },
-    {
-      "nome": "guardião do oásis",
-      "descricao": "avisa uma vez, luta de espada contra quem insiste, amplia a si mesmo ou encolhe o inimigo, e some se a luta está perdida.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga perfeitamente no escuro mais absoluto (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; vale nos planos elementais",
+      "duracao": "até 2 dias por visita",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma visita por vez"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "guardião do oásis",
+      "formas": "todas",
+      "texto": "avisa uma vez, luta de espada contra quem insiste, amplia a si mesmo ou encolhe o inimigo, e some se a luta está perdida."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga perfeitamente no escuro mais absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "o Desaparecer",
+    "mente": "inteligente; orgulhosa",
+    "tracos": "homem de pele bronzeada e olhos de brasa, turbante e roupas do deserto, espada longa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho ou em pequena família, típico 2 a 6",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "guarda poços e oásis",
+    "dianteDeGente": "protege o oásis de saqueadores e imprudentes"
+  },
+  "ecologia": {
+    "terreno": [
+      "deserto"
+    ],
+    "clima": [
+      "tropical",
+      "extraplanar"
+    ]
+  },
+  "descricao": "O mais humano dos gênios, insulto que responde na ponta da espada: guarda poços e oásis no fundo do deserto, voa, some da vista, muda o tamanho do inimigo e abre passagem para os planos elementais.",
   "lore": [
     {
       "titulo": "O mais humano dos gênios",
@@ -140,81 +206,57 @@
     {
       "titulo": "Guardiões do oásis",
       "texto": "Vivem isolados em desertos profundos, protegendo poços e oásis raros de saqueadores e viajantes imprudentes."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho ou em pequena família, típico 2 a 6."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 34 PV, Impacto 5, Corte e Perfuração 2; o fogo faz metade. Bloqueio 16 (17 com a espada), Esquiva 12. A espada dá dano médio 10,5. Some à vontade, muda o tamanho de um alvo duas vezes por cena e abre passagem para os planos uma vez por dia. Voa a 2."
     }
   ],
-  "ecologia": {
-    "tipo": "Monitor",
-    "terreno": [
-      "Desert"
-    ],
-    "clima": [
-      "Tropical",
-      "Extraplanar"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Janni",
-    "cr": "4",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 16,
-      "des": 15,
-      "con": 12,
-      "int": 14,
-      "sab": 15,
-      "car": 13
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 34,
-    "esquiva": 12,
-    "bloqueio": 16,
-    "defesa": 17,
-    "defesaMental": 19,
-    "defesaSocial": 12,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 196.19,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      },
-      "voo": {
-        "batalha": 2
+  "imagens": [
+    "bestiario/janni_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
       }
-    },
-    "bloqueioArma": 1
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`equipamento`: espada longa do livro **[provisório]**",
-    "`bloqueio`: 2; o site não gravava Bloqueio **[provisório]**",
-    "`temperança`: 2; o site tinha 3 **[provisório]**",
-    "`desaparecer`, `mudar o tamanho`, `passagem entre mundos`, `resistência do deserto`: números sugeridos pela ficha (D-197)"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Desaparecer",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar o tamanho",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Passagem entre mundos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência do deserto",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "Apara com a espada, guerreiro treinado; 2; o site não gravava Bloqueio"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada longa do livro"
+    },
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "2; o site tinha 3"
+    }
   ]
 }

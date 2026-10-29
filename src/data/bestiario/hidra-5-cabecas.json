@@ -1,96 +1,179 @@
 {
-  "ordem": 60,
   "id": "hidra-5-cabecas",
   "idAntigo": "mon-hidra-5-cabecas",
   "nome": "Hidra (5 cabeças)",
-  "nomeIngles": "Hydra (5-headed)",
-  "categoria": "Besta mágica",
+  "nomeIngles": "Hydra",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Enorme",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/hidra-5-cabecas_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "corpo e pescoços 9 m de comprimento",
-    "peso": "4 t"
-  },
-  "locomocao": {
-    "terra": 2,
-    "natacao": 2
-  },
+  "ameaca": 3,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; os pescoços erguidos",
+    "apoio": "quadrupede",
+    "altura": 1.17,
+    "largura": 1.49,
+    "profundidade": null,
+    "comprimento": 9,
+    "comprimentoSemCauda": 4.71,
+    "caudaGrossa": false,
+    "massa": 4000,
+    "area": 14.7,
+    "posturaDoTamanho": "vista de cima, os pescoços abertos"
+  },
+  "couraca": 3,
+  "atributos": {
     "forca": 8,
     "destreza": 3,
     "vigor": 8,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 2,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 1,
-    "integridade": 2
+    "atletismo": 2,
+    "furtividade": 1,
+    "integridade": 2,
+    "prontidao": 3,
+    "resistencia": 4,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "natacao": 2,
+    "musculatura": 2
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
-  "aparencia": 5,
+  "vontade": 6,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Garras e presas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 3,
-      "mao": 1,
-      "tipo": "perfurante",
+      "nome": "Mordida",
+      "parte": "cabeca-uma-das-cinco",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 7
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
-    {
-      "id": "cabecas-que-rebrotam",
-      "nome": "Cabeças que rebrotam",
-      "tipo": "natural",
-      "resiste": "nenhum",
-      "efeito": "PV por 6 Ticks; exceção por dano (fogo, ácido).",
-      "usos": {
-        "periodo": "passivo",
-        "recarga": "contínua"
-      }
-    }
-  ],
-  "habilidades": [
-    {
-      "nome": "Cabeças que rebrotam",
-      "descricao": "recupera PV perdidos a cada rodada, a menos que sofra dano de fogo na mesma rodada"
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "Cinco mordidas",
-      "descricao": "ataca com uma mordida por cabeça viva no mesmo turno"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "regra": "rajada"
     },
     {
-      "nome": "Muitos olhos",
-      "descricao": "Prontidão 3; quase impossível de surpreender"
+      "nome": "a quarta e a quinta cabeça",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "morde com uma cabeça por cabeça viva, na mesma ação; a Rajada leva só três golpes"
     },
     {
-      "nome": "Corpo descomunal",
-      "descricao": "porte Enorme; resiste a ser derrubado ou Abalado"
+      "nome": "Regeneração 5",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem natural; fecha as feridas, exceto o dano de fogo ou ácido"
+    },
+    {
+      "nome": "fogo e ácido param a regeneração",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração"
+    },
+    {
+      "nome": "cabeças que rebrotam",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a cabeça cortada sem cauterizar o coto rebrota em duas"
+    },
+    {
+      "nome": "corpo descomunal",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "resiste a ser derrubada ou Abalada"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "fome",
+      "formas": "todas",
+      "texto": "ataca tudo o que se move perto do território e não recua; embosca na água ou na lama, onde a fuga da presa é mais lenta."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "muitos olhos",
+      "descricao": "Prontidão 3; quase impossível de surpreender",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": ", embosca na água",
+    "camuflagem": "na lama e na água do pântano",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "réptil de corpo de crocodilo e 9 m, com cinco pescoços longos de 4 m e uma cabeça de dentes em cada um"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "caça por fome; embosca na água ou na lama",
+    "dianteDeGente": "ataca o que se move perto demais"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano",
+      "aquático"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Réptil de cinco cabeças que vive em pântanos, lagos e cavernas úmidas e caça por fome, e não por estratégia. Cada cabeça morde por conta própria, e cortar uma sem cauterizar o coto só multiplica o problema.",
   "lore": [
     {
       "titulo": "Ecologia",
@@ -105,47 +188,30 @@
       "texto": "É citada como prova de que a magia da era antiga ainda respira nos pântanos esquecidos; em Syl, quem se aventura perto de um covil de hidra deixa oferendas aos kami do lugar antes, achando que a besta é castigo por um espírito da água ofendido."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Swamp",
-      "Water"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/hidra-5-cabecas_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Hidra (5 cabeças)",
-    "cr": "4",
-    "tipo": "besta mágica Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 21,
-      "des": 12,
-      "con": 20,
-      "int": 2,
-      "sab": 10,
-      "car": 6
-    },
-    "pericias": [
-      "Prontidão 3"
-    ],
-    "nota": "Cabeças que rebrotam (Su): Centelha 1.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "cerne-vital"
+      "campo": "corpo.massa",
+      "motivo": "A do site. A regra de altura e massa dos lotes 32 e 33, mantida nos lotes 34 e 35: a medida do site manda, e a massa do site fica quando um fator de forma plausível sobre o animal de base a alcança: o crocodilo-do-nilo (215 kg, 3,84 m) escalado pelo cubo do comprimento do site (× 2,344) dá 2.769 kg, um quarto dele de cauda; sem a cauda, 2.077 kg; com cinco pescoços no lugar dela, cada um mais fino que a cauda (0,56 da massa dela, 385 kg), 2.077 + 5 × 385 = 4.002 kg, os 4 t do site; 4 t, a do site, pelo crocodilo escalado com cinco pescoços no lugar da cauda. Nada muda: Faixa, PV e Tamanho ficam os do site"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "A área do crocodilo-do-nilo (1,58 m², de cima) escalada pelo quadrado do comprimento (8,68 m², com um pescoço no lugar da cauda) mais quatro pescoços a mais, de 4,3 m por 0,35 m (1,5 m² cada): 14,7"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: escamas de réptil, abaixo do crocodilo (5), mais finas nos pescoços . O nível fica fora da Absorção (decisoes-autor §16)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +9 perfurante\", 7 Ticks, dano médio 19,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 19,5 antes; depois, mordida 12,5, até três pela Rajada"
     }
   ]
 }

@@ -1,130 +1,221 @@
 {
-  "ordem": 78,
   "id": "sombra",
   "idAntigo": "mon-sombra",
   "nome": "Sombra",
   "nomeIngles": "Shadow",
-  "categoria": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "soldado",
-  "conceito": "morto-vivo Médio (incorpóreo)",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
-  "tags": [
-    "morto-vivo",
-    "centelha",
-    "incorpóreo",
-    "mágico"
-  ],
-  "imagem": "bestiario/sombra_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura, silhueta humanoide difusa",
-    "peso": "sem peso, forma incorpórea sem massa"
-  },
-  "locomocao": {
-    "voo": 4
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé no ar, flutuando, sem pernas que pisem",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "semMassa": true,
+    "volume": 0.079,
+    "area": 0.72,
+    "posturaDoTamanho": "de frente",
+    "naoErgue": true
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 4,
-    "perspicacia": 2,
-    "compostura": 4,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 4,
+    "perspicacia": 2,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 1,
+    "furtividade": 4,
+    "integridade": 4,
     "prontidao": 1,
-    "integridade": 4
+    "resistencia": 0
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "voo": 3,
+    "musculatura": 0
+  },
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "no escuro",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 2,
+  "deslocamento": {
+    "voo": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Toque dilacerante",
-      "atrib": "influencia",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "necrótico (vs Def. Mental)",
-      "ticks": 5,
-      "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
+      "parte": "mao-de-treva",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "fenomeno",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "dreno-de-forca",
-      "nome": "Dreno de Força",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 2
-      },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      },
-      "ataque": "Toque dilacerante",
-      "descricao": "O toque gelado da sombra suga a força de quem ela alcança; quem morre esgotado por esse dreno vira uma sombra também, presa ao mesmo destino."
-    },
-    {
-      "id": "incorporeo",
-      "nome": "Incorpóreo",
-      "tipo": "natural",
+      "nome": "Incorpórea",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "espirito",
         "nivel": 2
       },
-      "resiste": "nenhum",
-      "efeito": "Incorpóreo",
-      "usos": {
-        "periodo": "avontade"
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "desliza sem ruído, atravessa paredes e portas fechadas e se achata para escoar por frestas mínimas; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    },
+    {
+      "nome": "Dreno de Força",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
       },
-      "descricao": "Sem corpo de verdade, a sombra atravessa paredes e portas fechadas e é imune a quase tudo que dependa de tocar carne, mas o dano físico ainda a alcança, reduzido pela metade (é incorpórea, não intangível)."
-    }
-  ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "corte",
-    "impacto",
-    "perfuracao"
-  ],
-  "habilidades": [
-    {
-      "nome": "Incorpórea",
-      "descricao": "atravessa paredes e objetos; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
+      "ativacao": "o Toque dilacerante que fere",
+      "duracao": "até um descanso completo",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "suga a força de quem toca; a Força do alvo cai 1, o efeito se acumula a cada toque que pega, e a sombra se fecha com o que roubou",
+      "dano": "nenhum além do toque; −1 na Força do alvo, e ela recupera 1d6 PV",
+      "resistencia": "corpo, contra a jogada do toque; quem passa não perde Força por aquele toque",
+      "limiteDeUso": "um por golpe"
     },
     {
-      "nome": "Toque drenante",
-      "descricao": "acerto reduz Atletismo/Força do alvo temporariamente (Enfraquecido) e cura a sombra"
-    },
-    {
-      "nome": "Camuflagem nas trevas",
-      "descricao": "bônus alto de Furtividade em ambientes escuros"
+      "nome": "Cria sombras",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "a vítima morre com a Força reduzida pelo Dreno de Força, ou cai a Força 0 por ele",
+      "duracao": "permanente",
+      "alcance": "o corpo da vítima",
+      "area": "um corpo",
+      "efeito": "a alma se ergue como sombra no fim da cena, presa ao mesmo destino",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por vítima"
     },
     {
       "nome": "Deslize silencioso",
-      "descricao": "move-se sem ruído, surpreende com bônus de Iniciativa"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "começar a cena escondida no escuro",
+      "duracao": "a primeira rodada",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "sai da treva sem ruído e pega a vítima de surpresa",
+      "dano": "nenhum; +2 na Iniciativa",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
     },
     {
-      "nome": "Reduzida à sombra",
-      "descricao": "pode se achatar e escoar por frestas mínimas"
+      "nome": "imune a veneno e doença",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não tem corpo que se envenene ou adoeça"
+    },
+    {
+      "nome": "sem corpo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come, não dorme e não se cansa"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "fome no escuro",
+      "formas": "todas",
+      "texto": "espera na treva, sai sem ruído, toca e volta para a parede; foge da luz."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "percepção dos vivos",
+      "descricao": "sente os vivos perto, pela fome",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga na treva total",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "camuflagem": "no escuro, some; Furtividade (no escuro) +3",
+    "mente": "quase nenhuma; não lembra quem foi, só tem fome",
+    "tracos": "sem peso e sem matéria; treva em forma vaga de gente, de bordas que se desfazem; o ar fica frio onde ela passa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha, ou com as sombras que criou",
+    "atividade": "noturno; lugares sem luz",
+    "dieta": "nenhuma",
+    "caca": "espera na treva e toca",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Resto escuro de uma alma apagada, sem memória de quem foi: desliza pela escuridão sem ruído, atravessa paredes e rouba a força com o toque. Quem morre esgotado por ela vira sombra também.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -143,43 +234,64 @@
       "texto": "Alguns eruditos de Syl dizem que a sombra é o que resta quando uma Centelha se apaga perto demais da Fenda, um resquício escuro do plano de pesadelo colado à alma extinta. Onde uma sombra aparece, os camponeses juram sentir o mesmo frio das histórias sobre a fenda do White Wall."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Ruins",
-      "Underground"
+  "imagens": [
+    "bestiario/sombra_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 4.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Sombra",
-    "cr": "3",
-    "tipo": "morto-vivo Médio (incorpóreo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": "-",
-      "des": 14,
-      "con": "-",
-      "int": 6,
-      "sab": 12,
-      "car": 15
-    },
-    "pericias": [
-      "Furtividade 4"
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
     ],
-    "nota": "Str — → Força 0. Dreno de Força e incorpóreo: Centelha 2.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte",
-      "nota": "voo 40: incorpórea"
-    },
-    "crConf": "conhecido"
+    "imunidades": []
   },
-  "variantes": [],
-  "ameacaLegada": 3
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Incorpórea",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dreno de Força",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cria sombras",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Deslize silencioso",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Para a alma sem corpo, o Vigor mede o quanto ela aguenta antes de se desfazer, como no espectro. Fica como no site; 4, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "−1 de Força por toque, até um descanso completo; o \"Enfraquecido\" do site não é condição do livro"
+    }
+  ]
 }

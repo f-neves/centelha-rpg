@@ -1,92 +1,208 @@
 {
-  "ordem": 222,
   "id": "shaitan",
   "idAntigo": "mon-shaitan",
   "nome": "Shaitan",
   "nomeIngles": "Shaitan",
-  "categoria": "Elemental",
+  "categoria": "elemental",
   "papel": "elite",
-  "conceito": "exterior (terra) Grande",
-  "descricao": "Ser de um único elemento, sem alma mortal.",
-  "tags": [
-    "elemental",
-    "centelha"
-  ],
-  "imagem": "bestiario/shaitan_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "3,4 m de altura",
-    "peso": "2270 kg"
-  },
-  "locomocao": {
-    "terra": 2
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 3.4,
+    "largura": 1.06,
+    "profundidade": 0.43,
+    "comprimento": null,
+    "massa": 2270,
+    "area": 3.21,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 7,
     "destreza": 3,
     "vigor": 6,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 2,
+    "integridade": 4,
     "prontidao": 2,
-    "integridade": 4
+    "persuasao": 2,
+    "sociabilidade": 1,
+    "ocultismo": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "etiqueta": 2,
+    "joalheria": 2,
+    "musculatura": 3
+  },
+  "especialidades": {},
+  "especialidadesSec": {
+    "joalheria": [
+      {
+        "foco": "avaliar metal e gema",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 5,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Pancada de pedra",
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "agua"
-  ],
-  "resistencias": [
-    "fogo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Domínio da Pedra",
-      "descricao": "Golpeia com mais força quando ambos, ele e o inimigo, tocam o solo, mas luta pior contra alvos no ar ou na água."
+      "nome": "Domínio da pedra",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "golpeia com mais força quando ele e o alvo tocam o chão, e luta pior contra quem está no ar ou na água: +2 no dano da Pancada de pedra quando os dois tocam o chão; −2 no ataque contra quem voa ou está na água",
+      "dano": "o +2 na Pancada",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Deslizar pela Rocha",
-      "descricao": "Atravessa pedra, terra, cristal e até metal como se fossem água, sem deixar rastro algum."
+      "nome": "Deslizar pela rocha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "terra",
+        "nivel": 3
+      },
+      "ativacao": "parte do movimento dele",
+      "duracao": "enquanto se move",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "atravessa pedra, terra, cristal e até metal como se fossem água, à Batalha dele em terra (2 m por Tick), sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Maldição da Pedra",
-      "descricao": "Ao vencer um embate de força e empurrar o inimigo contra uma parede de pedra, pode selá-lo dentro da própria rocha até que ele consiga um teste de Vigor para se libertar."
+      "nome": "Maldição da pedra",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "terra",
+        "nivel": 4
+      },
+      "ativacao": "vencer o Empurrar do livro (`combate.md`) contra um alvo e levá-lo até uma parede de pedra",
+      "duracao": "até o alvo se soltar",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "a pedra se fecha em volta do alvo e o sela dentro da parede; preso, não age nem se move",
+      "dano": "nenhum",
+      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), uma tentativa a cada 6 Ticks; quem passa sai da pedra",
+      "limiteDeUso": "um alvo selado por vez"
     },
     {
-      "nome": "Metamorfose do Metal",
-      "descricao": "Ao tocar um objeto de metal, pode transformá-lo em outro metal por um dia inteiro."
-    },
-    {
-      "nome": "Imune a Choques",
-      "descricao": "Absorve por completo qualquer dano elétrico que sofreria."
+      "nome": "Metamorfose do metal",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 8, tocando o objeto",
+      "duracao": "um dia",
+      "alcance": "toque",
+      "area": "um objeto de metal",
+      "efeito": "transforma o metal em outro metal (o aço em chumbo, o ouro em cobre, o ferro em prata); a arma de aço que vira chumbo entorta no primeiro golpe",
+      "dano": "nenhum",
+      "resistencia": "corpo, Vigor + Resistência de quem segura o objeto, contra Dificuldade 14 (10 + Centelha 4); o objeto solto não resiste",
+      "limiteDeUso": "três vezes por dia"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "nobre da pedra",
+      "formas": "todas",
+      "texto": "luta com os pés no chão; sai da rocha ao lado do alvo, empurra contra a parede e sela na pedra quem resiste, troca o aço das armas por chumbo e volta para dentro da rocha quando perde."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "some dentro da rocha (Deslizar pela rocha, nas Manobras)",
+    "mente": "inteligente; orgulhosa e vaidosa",
+    "tracos": "gigante atarracado de 3,4 m, de pele que lembra metal polido, pedra ou gemas cintilantes"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em corte subterrânea, sob um pashá",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro",
+    "caca": "não caça",
+    "dianteDeGente": "orgulhoso e vaidoso; negocia metal e gema, e despreza quem não tem o que oferecer"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "montanha"
+    ],
+    "clima": [
+      "extraplanar"
+    ]
+  },
+  "descricao": "Nobre do plano da terra, de 3,4 m e pele de metal polido, pedra ou gema. Atravessa a rocha como se fosse água, sela na pedra quem empurra contra a parede e troca um metal por outro com um toque. O raio não o fere.",
   "lore": [
     {
       "titulo": "Carne de pedra e gema",
@@ -97,39 +213,77 @@
       "texto": "Entre eles existem os chamados pashás, shaitans nobres muito mais poderosos, capazes de conceder desejos e abalar a terra a distância."
     }
   ],
-  "ecologia": {
-    "tipo": "Elemental",
-    "terreno": [
-      "Underground",
-      "Mountain"
+  "imagens": [
+    "bestiario/shaitan_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "agua",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Extraplanar"
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Shaitan",
-    "cr": "7",
-    "tipo": "exterior (terra) Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 20,
-      "des": 13,
-      "con": 19,
-      "int": 14,
-      "sab": 14,
-      "car": 15
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Domínio da pedra",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Deslizar pela rocha",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "habilidadesEspeciais.Maldição da pedra",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Metamorfose do metal",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima do teto humano (6): For 20 no Pathfinder, entre o djinn (For 18, Força 6) e o efreeti (For 23, Força 8). Teste de ordem: abaixo do efreeti (8) e do marid (9); abaixo do rinoceronte do molde (8, 2.250 kg, de massa parecida) e do elemental da terra grande do lote 25 (10, 1.234 kg), que são mais fortes pela descrição (no livro de origem, de memória, For 26 e 24): o shaitan é tão grande quanto eles, mas não mais forte, e a ordem não se quebra . Fica como no site; 7, a do site; abaixo do rinoceronte e do elemental da terra grande, que são mais fortes pela descrição"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto, 4 a 6 excepcional): carne de pedra, metal e gema num corpo atarracado, que empurra com o peso da pedra. Robusto, 3, como o golem de pedra (3) e o elemental da terra grande (3). Não chega a excepcional: a forma é a de um homem, sem a alavanca de um corpo feito para erguer (D-117, D-184); 3, pelo corpo de pedra atarracado, robusto, como o golem de pedra e o elemental da terra grande (tamanho-decisoes-3, item 12)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "O corpo de base (D-192, manual 4.2) escalado pela altura (3,4 ÷ 1,80 = × 1,889), com os ombros 25% mais largos, como o golem de pedra do exemplo do manual e os elementais da terra do lote 25: 0,45 × 1,889 × 1,25 = 1,06 m; 0,23 × 1,889 = 0,43 m. O site não diz o porte; o corpo atarracado é leitura da ficha para a carne de pedra; 25% mais largo, como o golem e os elementais da terra; sem isso, a massa do site daria 4.260 kg/m³"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele que lembra pedra polida e metal é mais dura que a de gente, mas é pele, e não a pedra maciça do elemental da terra e do golem (9); o nível fica fora da Absorção (decisoes-autor §16). A resistência e a imunidade são as do site (Elementos); nível 2, pele dura que lembra pedra e metal"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Nobreza subterrânea)"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.dianteDeGente",
+      "motivo": "site"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
+    }
+  ]
 }

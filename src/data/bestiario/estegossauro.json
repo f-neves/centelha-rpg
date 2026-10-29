@@ -1,37 +1,27 @@
 {
-  "ordem": 188,
   "id": "estegossauro",
   "idAntigo": "mon-stegosaurus",
   "nome": "Estegossauro",
   "nomeIngles": "Stegosaurus",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Enorme",
-  "descricao": "Presa provável do Allosaurus, e reage com a cauda. Talvez preferisse ambientes mais secos que os saurópodes da mesma região.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/estegossauro_criatura.webp",
-  "imagem2": "bestiario/estegossauro_criatura_2.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "7,18 m de comprimento, 2,97 m de altura",
-    "peso": "4.100 kg",
-    "comprimento": 7.18,
-    "largura": 1.64,
-    "altura": 2.97
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 6
-  },
+  "ameaca": 4,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 2.97,
+    "largura": 1.64,
+    "profundidade": null,
+    "comprimento": 7.18,
+    "comprimentoSemCauda": 4.31,
+    "caudaGrossa": true,
+    "massa": 4100,
+    "area": 8.71,
+    "posturaDoTamanho": "vista de lado"
+  },
+  "couraca": 4,
+  "atributos": {
     "forca": 11,
     "destreza": 1,
     "vigor": 10,
@@ -42,59 +32,115 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
     "bloqueio": 3,
     "esquiva": 1,
     "atletismo": 4,
+    "furtividade": 0,
     "integridade": 1,
     "prontidao": 1,
     "resistencia": 4,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Cauda de espinhos (thagomizer)",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "perfurante",
-      "perf": 1,
-      "ticks": 7,
-      "classe": "pesada"
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 2,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "Cauda de espinhos",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar"
     },
     {
       "nome": "atropelar",
-      "descricao": "corpo: Investida.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "nada com número; cabeça baixa, no máximo cerca de 1 m do chão."
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "investida"
     }
   ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "sentidos",
+      "descricao": "nada com número ; cabeça baixa, no máximo cerca de 1 m do chão (Carpenter 1998, via Wikipédia)",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "de 17 a 22 placas e espinhos achatados no dorso, em duas fileiras alternadas, as maiores sobre o quadril com mais de 60 cm de largura e 100 cm de altura, osteodermos sem ligação ao esqueleto (Wikipédia; Gilmore 1914); cobertura de queratina nas placas, no parente Hesperosaurus (Christiansen e Tschopp 2010); ossículos na pele da garganta; cérebro de cerca de 80 g (Wikipédia)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "manada",
+    "atividade": "",
+    "dieta": "herbívoro",
+    "caca": "forrageio",
+    "dianteDeGente": "ameaça"
+  },
+  "ecologia": {
+    "terreno": [
+      "planície"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Presa provável do Allosaurus, e reage com a cauda. Talvez preferisse ambientes mais secos que os saurópodes da mesma região (Dodson 1980, ).",
   "lore": [
     {
       "titulo": "Placas e espinhos",
@@ -103,90 +149,72 @@
     {
       "titulo": "Herbívoro imponente",
       "texto": "Vive em manadas nas planícies quentes, pastando tranquilo até ser provocado."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: manada."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme: um humano Médio acerta com +6 no corpo a corpo. Pelo Alvo, o Médio não bloqueia a cauda, e a Força 11 também tira o Bloqueio de quem tem Força 5 ou menos (o dobro e ao menos 4 a mais): contra a cauda, quase sempre só a Esquiva. As placas e o couro são Couraça nível 4; quanto tiram do golpe fica para depois. A cauda faz 29 em média e fura até N1. 85 PV; anda a 6 m por Tick."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Plains"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/estegossauro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Stegosaurus",
-    "cr": "7",
-    "tipo": "animal Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 27,
-      "des": 14,
-      "con": 17,
-      "int": 2,
-      "sab": 13,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "atributos.percepcao",
+      "motivo": "Seção 13: 2 para os grandes herbívoros e os extintos . Sentidos com número: não achado"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "atributos.influencia",
+      "motivo": "Era 2 (pela exibição das placas). Não é espécie social (diretriz 1): a vida em grupo é só leitura de pegadas ; ver desvios. A exibição das placas fica no texto"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 85,
-    "esquiva": 4,
-    "bloqueio": 8,
-    "defesa": 8,
-    "defesaMental": 5,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 10,
-      "corte": 10,
-      "perfuracao": 10
+    {
+      "campo": "atributos.perspicacia",
+      "motivo": "Era 2. Não é espécie social (diretriz 1); as pegadas de grupos de várias idades (Mossbrucker, Smithsonian Magazine 2008) são ; ver desvios"
     },
-    "couracaNivel": 4,
-    "pesoErguido": 1028.1,
-    "carga": {
-      "leve": 615,
-      "media": 1230,
-      "pesada": 1845,
-      "maxima": 2460
+    {
+      "campo": "habilidades.esquiva",
+      "motivo": "Etapa 2 (20/10/2026): Resposta do autor às dúvidas dos lotes 2 a 5 (20/10/2026, seção 13): a Esquiva dos colossos é caso a caso, pelo comportamento, sem corte de massa; vai a 0 quem não desvia (o anquilossauro, que se protege pela couraça; o braquiossauro), e fica com 1 ou mais quem se esquiva ou investe (o tricerátops, que carrega de frente). O estegossauro fica 1: defende-se girando o corpo para pôr a cauda de espinhos contra o predador (a vértebra de alossauro furada por espinho, Carpenter e colegas 2005), e esse giro também o tira da frente do golpe. Não é o caso do anquilossauro, que fica parado na couraça . Antes: Corpo pesado. Degrau 1"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 6
-      }
+    {
+      "campo": "habilidades.furtividade",
+      "motivo": "Era sem linha (0). O levantamento: nenhum fato; vira a cauda contra o predador, não se esconde. Régua: 1, não se esconde"
+    },
+    {
+      "campo": "habilidades.integridade",
+      "motivo": "Não foge: vira a cauda contra o predador, e os traumas curados mostram que o confronto se repetia. Degrau 3"
+    },
+    {
+      "campo": "habilidades.resistencia",
+      "motivo": "Era sem linha (0). Régua: 2 é o normal da espécie no próprio meio. Aguenta ferida (9,8% dos espinhos com trauma, McWhinney 2001) , e talvez preferisse ambientes mais secos que os saurópodes da região (Dodson 1980, ). Nada de duração, frio ou jejum"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 2,90 × 1,0257 = 2,974 . Antes: Maidment e colegas 2015 (`dimensoes.md`); a fonte não diz se os 2,9 m são do topo das placas ou do quadril (não conferido). Placas de até 1 m sobre o quadril"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 7,00 × 1,0257 = 7,180 . Antes: ponto médio (S. stenops até 6,5 m, S. ungulatus até 7, grandes de 7,5 a 9; Paul 2016 e Foster 2020 via Wikipédia; `dimensoes.md`)"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 4,20 × 1,0257 = 4,308 . Antes: do Arquiteto: \"corpo sem cauda (cerca de 60% de 7 m)\""
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,60 × 1,0257 = 1,641 . Antes: estimativa do Arquiteto (`porte-area.mjs`); a pesquisa não mediu largura"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "D-107.  A pele e a cor não se conhecem; fica na maioria."
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "pegadas de grupos de várias idades (Mossbrucker, Smithsonian Magazine 2008); a ficha trata a espécie como não social (diretriz 1), por ser só leitura de pegadas"
+    },
+    {
+      "campo": "comportamento.dianteDeGente",
+      "motivo": "extinto, sem gente; diante do predador não foge e vira a cauda contra ele (Integridade 3; Carpenter 2005)"
     }
-  },
-  "notasObservacao": [
-    "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz.",
-    "pesoErguido: 1.028,10 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.028,32 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 3.800 kg. Era 1.011 kg (4.000 kg de trabalho) e, antes, 1.988 kg pela fórmula de FAH.",
-    "carga: Leve 570 a Máxima 2.280 kg, provisória (era Leve 600 pelos 4.000 kg); sai da massa; a fração de 20% não tem análogo vivo citado.",
-    "velocidade: congelada (decisão 23). A corrida de 21 km/h fica de 17 a 37% acima da estimativa (secundária). Não corrigido.",
-    "area: 8,28 m², vista de lado, da medição da `tamanho-fichas-v2`; era 20,3 m² (retângulo cheio, com as placas e a cauda). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`.",
-    "couraca: nível 4 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "massa: 4.100 kg (em vigor na Etapa 2, 20/10/2026); antes: 3,8 t do *S. ungulatus* de 7 m (Paul 2016, via Wikipédia; método não conferido), sem consenso entre os estudos. Alternativas: 3,5 t (*S. stenops*, Paul 2016); Sophie 1,56 t volumétrico, subadulta (Brassey 2015); grandes 5,0 a 5,3 t; 6,95 t para o YPM 1853 por regressão (Benson 2014, Dataset S1, que bate de perto com o 6,9 t da Wikipédia). Era 4 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 3,8 t (faixa e PV não mudam).",
-    "social: tratado como não social (Influência e Perspicácia 1), embora haja pegadas de grupos de várias idades **[extrapolação]**; ver desvios.",
-    "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada dos espinhos, sem duração nem frio (diretriz 2).",
-    "musculatura: 2 (animal comum), provisória; sem medida de força.",
-    "dimensoes.altura: 2,9 m (a Sophie), que pode incluir as placas; não decide o Alvo, que vem do `calc.mjs`.",
-    "dimensoes.largura: 1,6 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
   ]
 }

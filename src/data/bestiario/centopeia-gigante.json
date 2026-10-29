@@ -1,37 +1,25 @@
 {
-  "ordem": 167,
   "id": "centopeia-gigante",
   "idAntigo": "mon-giant-centipede",
   "nome": "Centopeia-gigante",
   "nomeIngles": "Giant Centipede",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "praga Pequeno",
-  "descricao": "Pendura-se no teto da caverna pelos últimos pares de patas, agarra o morcego com os da frente e come ali mesmo, de cabeça para baixo; não larga a presa.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/centopeia-gigante_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,8 m de comprimento, 0,11 m de altura",
-    "peso": "17,5 kg",
-    "comprimento": 1.8,
-    "largura": 0.18,
-    "altura": 0.11
-  },
-  "locomocao": {
-    "terra": 3,
-    "escalada": 4
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "muitas patas, corpo baixo e comprido",
+    "apoio": "outro",
+    "altura": 0.11,
+    "largura": 0.18,
+    "profundidade": null,
+    "comprimento": 1.8,
+    "massa": 17.5,
+    "area": 0.4,
+    "posturaDoTamanho": "de cima"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 4,
     "destreza": 4,
     "vigor": 4,
@@ -42,81 +30,143 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 2,
+    "integridade": 0,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
     "escalada": 2,
+    "natacao": 0,
+    "voo": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "escalada",
-      "foco": "de cabeça para baixo",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "no teto da caverna",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "no teto da caverna",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {
+    "escalada": [
+      {
+        "foco": "de cabeça para baixo",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Forcípulas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 1,
       "acerto": 1,
-      "perf": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "patas da frente e o corpo que enrola: Segura com até 8 pares de patas.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "espinhos das patas de trás",
-      "descricao": "afastam quem a ataca por trás.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "afastam quem a ataca por trás"
+    }
+  ],
+  "comoLuta": [],
+  "sentidos": [
+    {
+      "nome": "tato e química pelas antenas longas (ADW)",
+      "descricao": "numérico, sem Especialidade natural",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "tato e química pelas antenas longas: numérico, sem Especialidade natural. · visão: olhos simples ou ausentes; nada acima do humano. · visão no escuro: \"Enxerga perfeitamente mesmo na escuridão total\"; texto do Mestre, sem Especialidade (a base real tem olhos simples ou nenhum)."
-    }
-  ],
-  "venenos": [
+      "nome": "visão",
+      "descricao": "olhos simples ou ausentes; nada acima do humano",
+      "formas": "todas"
+    },
     {
-      "nome": "Veneno no jogo",
-      "texto": "Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pelas Forcípulas"
+      "nome": "visão no escuro (monstro publicado, de volta pela decisão de 20/10/2026)",
+      "descricao": "\"Enxerga perfeitamente mesmo na escuridão total\"; texto do Mestre, sem Especialidade (a base real tem olhos simples ou nenhum)",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "a do monstro publicado, de volta pela decisão de 20/10/2026 (Camuflagem Natural: \"Sua coloração se mescla ao ambiente, tornando-a difícil de notar antes do ataque\"); texto do Mestre, sem bônus próprio (a espera no teto já está na Furtividade)",
+    "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Mente Vazia: \"Imune a efeitos que dependam de mente ou raciocínio\")",
+    "tracos": "21 a 23 pares de patas (ADW); patas de trás com espinhos; antenas longas; perde água pelos espiráculos e precisa de lugar úmido (ADW)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "",
+    "atividade": "dia e noite, na caverna estudada",
+    "dieta": "carnívora: come o que conseguir dominar, de baratas a morcegos",
+    "caca": "espera e agarra; caça morcegos no teto da caverna",
+    "dianteDeGente": ""
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Pendura-se no teto da caverna pelos últimos pares de patas, agarra o morcego com os da frente e come ali mesmo, de cabeça para baixo; não larga a presa.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -129,87 +179,36 @@
     {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Ferrão de gigante · Potência 16 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pelas Forcípulas"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequena contra um humano Médio: ganha +3 no corpo a corpo; 1,8 m de corpo e 17,5 kg. A Força 4 tira o Bloqueio só de quem tem Força 0. As forcípulas fazem 5,5 em média com o veneno; o agarrão segura e enrola (8 por Tick). A cutícula é Couraça nível 1, e quanto ela tira da espada, da lança e do golpe de Impacto fica para depois. 28 PV (Vigor 4), Resistência 2. O perigo é a centopeia no teto, sobre a cabeça de quem entra na caverna: Furtividade 2, mais 1 ali, e Escalada 2 mais 2 de cabeça para baixo."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/centopeia-gigante_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Giant Centipede",
-    "cr": "1/2",
-    "tipo": "praga Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 9,
-      "des": 15,
-      "con": 12,
-      "int": "-",
-      "sab": 10,
-      "car": 2
+  "revisao": [
+    {
+      "campo": "corpo.altura",
+      "motivo": "era 0,19 m. 0,19 × (1,8 ÷ 3,20) = 0,107 m (o mesmo que 12 mm da real × 9); altura não achada, estimativa da ficha de hoje"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "era 3,20 m na v3. O site dá só \"1,8 m\" (`mon-giant-centipede`), sem dizer a medida; lido como o comprimento do corpo, sem antenas nem o último par de patas, que é a mesma medida dos 20 cm da base e como a Scolopendra é medida: k = 1,8 ÷ 0,2 = 9. A real vai de 145 mm (medida) a mais de 30 cm (máximo)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 28,
-    "esquiva": 14,
-    "bloqueio": 8,
-    "defesa": 14,
-    "defesaMental": 6,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "corpo.largura",
+      "motivo": "era 0,32 m. 0,32 × (1,8 ÷ 3,20) = 0,18 m (2 cm × 9); cerca de um décimo do comprimento, o que bate com os 23 a 29 mm para 28 a 30 cm do dimensions.com (referência fraca, sem método)"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 126.73,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "corpo.massa",
+      "motivo": "Era 98 kg (3,20 m na v3, antes da correção do tamanho do site). Referência 17,5 kg : o exemplar de 20 cm e 24 g, levado ao 1,8 m do site, 0,024 × (1,8 ÷ 0,2)³ = 0,024 × 729 = 17,496 kg, 17,5 na mesa; k = 9. Os 15 kg do site pediriam 1,71 m; vale o tamanho. A massa de base vem de uma pesagem só, : a fêmea selvagem de 145 mm pesou 15,2 g logo depois de comer um morcego, e os autores estimam 9,0 a 9,5 g antes da refeição (Molinari et al. 2005, Caribbean J. Sci. 41: 340); os 24 g do exemplar de 20 cm saem dela pelo cubo do comprimento. Adultos de cerca de 6,7 a 60 kg na gigante, pelo cubo do comprimento real de 145 mm (o exemplar pesado, 9,25 g × 9³) a mais de 300 mm (o máximo, Shelley e Kiser 2000; 9,25 × (300 ÷ 145)³ = 81,9 g, × 9³): a faixa é larga porque a espécie cresce a vida toda. Sexos: . Nenhuma outra pesagem achada (buscados ADW, que tem o campo de massa vazio, Wikipédia e literatura). O corte de 35 kg substitui o de 25 kg (decisão 22); 17,5 kg fica na Faixa 2"
+    },
+    {
+      "campo": "ataques.Forcípulas",
+      "motivo": "era 1d6 − 2 + 5, média 6,5: segue a Força nova (D-115). As forcípulas são o primeiro par de patas, em garra de veneno (ADW); bote rápido (Leve), a primeira picada no pescoço da presa (Molinari et al. 2005). A ponta da gigante fura couro ; força não achada. Veneno sem id no catálogo"
     }
-  },
-  "notasObservacao": [
-    "gigante: escalada da S. gigantea de 20 cm ao 1,8 m do site por k = 9 e k³ na massa; tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3). Era k = 16 (3,20 m) na v3. O site não diz a medida do 1,8 m; lido como o comprimento do corpo, como a base",
-    "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; o 1,8 m do site passa no critério (a Scolopendra de base é Minúscula, cerca de 0,005 m² de cima, e a gigante é Pequena, duas categorias acima, o porte de cachorro que o item 7 admite) e fica; a área de 0,40 m² está 11% abaixo do corte do Médio e mais de três vezes o corte do Miúdo (0,12). O site e o d20 a dão como Média; se o Arquiteto quiser o Médio, o comprimento iria a cerca de 2,0 m, para ficar 10% acima do corte (1,8 × √(0,495 ÷ 0,4018) = 2,0 m; 0,024 × 10³ = 24 kg), e o Vigor ficaria em 4, porque não sai do porte (D-174; oitava rodada)",
-    "alvo: Pequeno pela área de cima (0,40 m², a da v2 × (1,8 ÷ 3,20)²), 11% abaixo do corte do Médio, dentro do erro do método; se a área subir, volta a Médio (D-174)",
-    "massa: 17,5 kg, o exemplar de 20 cm e 24 g levado ao 1,8 m do site (era 98 kg com os 3,20 m da v3); os 24 g são conta pelo cubo, a partir da fêmea de 145 mm e 9 a 9,5 g (Molinari et al. 2005); massa de adulto grande não achada",
-    "dimensoes: altura (12 mm) estimada sem fonte; largura (2 cm) com só a referência fraca do dimensions.com",
-    "anatomia: artrópode, provisória (D-175)",
-    "pesoErguido: 126,73 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga",
-    "velocidade: congelada (decisão 23); 26 km/h, sem velocidade real (D-170)",
-    "forca: 4, reanalisada na sétima rodada na referência dos 17,5 kg (3,97), pelo agarre documentado; era 5, escolhida com 98 kg (D-158, D-174); o feito do morcego de quase o dobro da massa não escala",
-    "resistencia: 2 pela régua; o dado é de parada e de agarrar, e não de jejum, frio ou ferida (D-174)",
-    "escalada: a Especialidade Atletismo (escalada) 2 de hoje virou Escalada 2 (secundária) mais Escalada (de cabeça para baixo) +2 natural, sem medida de aderência; decisão provisória (D-174)",
-    "furtividade: (no teto da caverna) 1 nova, pela caça de Molinari et al. 2005; o levantamento a dava como candidata a Furtividade 3, que fica para o autor (D-174)",
-    "compostura: 1 por não ser espécie social (diretriz 1); a espera de horas fica na Furtividade",
-    "couraca: nível 1 (faixa 1 a 2), reanalisado na sétima rodada com os 17,5 kg (era 2, posto com 98 kg); o valor em absorção fica para depois.",
-    "veneno: sem id no catálogo; o efeito real está na pesquisa, e quase todo é de outra espécie ou por gênero (D-112)",
-    "vigor: 4, revisto na oitava rodada pelo corpo e pela massa, e fica: +1 sobre o animal de base (Scolopendra gigantea, Vigor 3, presumido), o mínimo da D-176; placas dorsais na Couraça, juntas moles e traqueia, ao lado da aranha, do louva-a-deus e da vespa gigantes (4) e do carcaju (11,75 kg, 4). Era 5 na v3 (D-174)",
-    "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
   ]
 }

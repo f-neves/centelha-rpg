@@ -1,38 +1,29 @@
 {
-  "ordem": 212,
   "id": "corvo",
   "idAntigo": "mon-raven",
   "nome": "Corvo",
   "nomeIngles": "Raven",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Segue lobos no inverno até as carcaças e rouba o que outros corvos esconderam. Resolve problemas de ferramenta em laboratório.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/corvo_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "0,62 m de comprimento, 0,34 m de altura",
-    "peso": "1,25 kg",
-    "comprimento": 0.62,
-    "largura": 0.13,
-    "altura": 0.34,
-    "envergadura": 1.18
-  },
-  "locomocao": {
-    "voo": 5,
-    "terra": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 1,
-    "corrida": 1
-  },
+  "ameaca": 1,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "voador",
+    "apoio": "outro",
+    "altura": 0.34,
+    "largura": 0.13,
+    "profundidade": null,
+    "comprimento": 0.62,
+    "comprimentoSemCauda": 0.39,
+    "caudaGrossa": false,
+    "envergadura": 1.18,
+    "massa": 1.25,
+    "area": 0.29,
+    "posturaDoTamanho": "de baixo, asas abertas",
+    "linhaPV": "abaixo"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 3,
     "vigor": 2,
@@ -43,8 +34,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 1,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 2,
     "furtividade": 3,
@@ -54,73 +46,130 @@
     "empatia": 3,
     "sobrevivencia": 4
   },
-  "skills2": {
+  "habilidadesSec": {
     "equilibrio": 1,
+    "escalada": 0,
+    "natacao": 0,
     "voo": 5,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "frio",
-      "valor": 1,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "esconderijo alheio",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "seguir predadores até a carcaça",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "frio",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "esconderijo alheio",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ],
+    "sobrevivencia": [
+      {
+        "foco": "seguir predadores até a carcaça",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 1,
+      "corrida": 1
+    },
+    "voo": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bicada",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "bico",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 0,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [],
+  "comoLuta": [
     {
       "nome": "bicar o caído",
-      "descricao": "bica olhos e feridas de animal caído, leva comida no bico e a esconde.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "bica olhos e feridas de animal caído, leva comida no bico e a esconde."
     },
     {
       "nome": "não agarra",
-      "descricao": "carrega só no bico; não agarra com os pés.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "Nenhum sentido acima do humano com número na pesquisa (visão, audição, olfato: não achados). Sem Especialidade natural de sentido. · Imita sons, até a fala humana. Texto para o Mestre."
+      "formas": "todas",
+      "texto": "carrega só no bico; não agarra com os pés."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "Nenhum sentido acima do humano com número na pesquisa (visão, audição, olfato",
+      "descricao": "não achados). Sem Especialidade natural de sentido",
+      "formas": "todas"
+    },
+    {
+      "nome": "sentidos",
+      "descricao": "Imita sons, até a fala humana (National Zoo). Texto para o Mestre",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "mente": "animal",
+    "tracos": "bolsa sob a língua para levar comida (Wildlife Research Institute); vive até 13 anos na natureza e mais de 40 em cativeiro (ADW)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "par",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "forrageio e carniça; esconde comida",
+    "dianteDeGente": "tolera; vive em cidade; ataques a pessoas não achados"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Segue lobos no inverno até as carcaças e rouba o que outros corvos esconderam. Resolve problemas de ferramenta em laboratório.",
   "lore": [
     {
       "titulo": "Comedora de restos",
@@ -129,91 +178,15 @@
     {
       "titulo": "Presságio alado",
       "texto": "Muitos supersticiosos veem no corvo um mau agouro, sobretudo quando aparece em bandos sobre um campo de batalha."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: par."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Em voo e pousado é Pequeno contra um humano Médio: ganha +3 no acerto corpo a corpo e quem atira nele leva −3. O dano é pequeno (1,5) e os PV também (2). O perigo do corvo não é a bicada: é o olho que acha o que foi escondido, a fala imitada no escuro, a cabeça que guarda a ferramenta para depois e o bando que segue os lobos até o ferido. No chão anda devagar (1 m por Tick); no ar faz 14 m por Tick."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Any"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/corvo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Raven",
-    "cr": "1/6",
-    "tipo": "animal Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 2,
-      "des": 15,
-      "con": 8,
-      "int": 2,
-      "sab": 15,
-      "car": 7
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte",
-      "nota": "voo 40; em terra 10"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 2,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 8,
-    "defesaSocial": 12,
-    "absorcao": {
-      "impacto": 2,
-      "corte": 2,
-      "perfuracao": 2
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 9.04,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 1,
-        "corrida": 1
-      },
-      "voo": {
-        "batalha": 5,
-        "cruzeiro": 14
-      }
-    }
-  },
-  "notasObservacao": [
-    "`forca`: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): o bico corta, mas o pé não segura nada, e pela Força de referência da massa (0). O feito de levar 139 g no bico com facilidade e 209,5 g com dificuldade (relato de campo, corvo não pesado) vai para a outra frente como dado (D-162)",
-    "`inteligencia`: 2 pela lista fechada da diretriz 1 (corvo). O planejamento com ferramenta só foi lido em reportagem (Kabadayi e Osvath 2017, via NPR); o artigo original não foi lido (D-174)",
-    "`vigor`: 2, provisório: ave leve; a perseguição que o deixou exausto não decide o Vigor (decisão 5, D-174)",
-    "`pv`: 2 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela decisão 21 (5 + Vigor), contra 11 pela outra proposta do autor. Caiu de 18 para 7 (D-174)",
-    "`pesoErguido`: 9,04 kg (em vigor na Etapa 2, 20/10/2026); antes: 8,6 kg pela fórmula nova (decisões 14 e 16), provisório: sete vezes a massa e 40 vezes o que ele leva no bico (209,5 g). O piso da curva domina na massa pequena; anotado, não corrigido (D-174)",
-    "`musculatura`: 2, provisória: animal comum (D-174)",
-    "`alvo`: Pequeno de asas abertas (0,29 m²). Pousado (0,12 m²), a conta deixa igual ao principal, mas o falcão, com 0,11 m², fica Miúdo: o corvo pousado está em cima do corte. Se o corte mudar, o segundo Alvo vira Miúdo (D-174)",
-    "`empatia`: 1, nova, provisória: lê o outro corvo e o lobo, sem leitura do humano na pesquisa (D-174)",
-    "`equilibrio`: 1, nova, provisória (D-174)",
-    "`especialidades`: Prontidão (esconderijo alheio) 1 e Sobrevivência (seguir predadores até a carcaça) 1, provisórias. O levantamento chama o espiar e esconder de Prestidigitação; a ficha não abriu essa Habilidade e pôs o hábito na Prontidão (D-174)",
-    "`especialidadesNaturais`: Resistência (frio) +1, sem temperatura medida; era 2 como Especialidade comum (D-174)",
-    "fonte: a altura de 0,34 m, a largura de 0,13 m e a cauda de 20 a 26 cm continuam sem medida conferida (D-174)",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): perseguiu um lagópode por 900 m a cerca de 75 km/h e depois, \"exausto\", descansou vários minutos (Högstedt 2014, estimativa por observação) [medido]; cruzeiro de 14,3 m/s por radar (Alerstam et al. 2007); distância por dia e tempo de voo [sem dado]."
-  ]
+  "revisao": []
 }

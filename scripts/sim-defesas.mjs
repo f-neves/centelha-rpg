@@ -1,3 +1,4 @@
+import { pvJogador } from './lib-criatura-motor.mjs';
 // sim-defesas.mjs — Monte Carlo do combate do Centelha D6 para analisar a
 // influência do termo de Centelha na DEFESA (flat +C vs +⌈1.5C⌉ vs +2C),
 // sob ofensiva "as-is" (conteúdo atual, banda ≤5) e "projetada" (banda 7–15).
@@ -120,7 +121,7 @@ const BUILDS = {
   },
 };
 
-function pv(b) { return regras.derivados.pv.base + b.vigor * regras.derivados.pv.vigorMult; }
+function pv(b) { return pvJogador(b.vigor,b.raca || 'humano'); }
 
 // termo de Centelha na defesa por VARIANTE
 const DEFVAR = {

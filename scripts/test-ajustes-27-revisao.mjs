@@ -1,0 +1,23 @@
+// Distribuição de 27/10/2026: nome de ataque nas Notas aponta para o caminho existente.
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {pathToFileURL} from 'node:url';
+const modulo = process.env.CENTELHA_CONVERSOR_TESTE ? pathToFileURL(process.env.CENTELHA_CONVERSOR_TESTE).href : new URL('./conversor-criatura.mjs', import.meta.url).href;
+const {converterFicha, aponta} = await import(modulo);
+const original = fs.readFileSync(new URL('fixtures/conversor/lobisomem.md', import.meta.url), 'utf8').replaceAll('Mordida', 'Corrente farpada');
+const nota = '- `corrente farpada`: Antes: dano médio 31,5.\n- `ataque inexistente`: esta nota não tem destino. a conferir\n- `outra nota sem marca`: comportamento anterior preservado.\n';
+const texto = original.replace('## Bloco de conferência', nota+'\n## Bloco de conferência');
+assert.notEqual(texto, original);
+const r = converterFicha(texto), base = converterFicha(original);
+assert.deepEqual(r.paradas, []);
+const notas = r.criatura.revisao.filter(x => x.campo === 'ataques.Corrente farpada');
+assert.equal(notas.length, 1, 'uma entrada por campo');
+assert.ok(notas[0].motivo.includes('Antes: dano médio 31,5.'), 'a nota de ataque deve chegar à revisao');
+assert.ok(aponta(r.criatura, notas[0].campo));
+assert.ok(!r.avisos.some(x => x.includes('"corrente farpada"')));
+assert.ok(r.avisos.some(x => x.includes('"ataque inexistente"')), 'nome inexistente continua com aviso');
+assert.ok(!r.avisos.some(x => x.includes('outra nota sem marca')));
+assert.ok(!r.criatura.revisao.some(x => x.campo.includes('inexistente')));
+const semRevisao = x => { const {revisao, ...resto} = x; return resto; };
+assert.deepEqual(semRevisao(r.criatura), semRevisao(base.criatura), 'nota não altera os dados de jogo');
+console.log('Notas: ataque canônico reconhecido, campo existente e nomes inválidos recusados');

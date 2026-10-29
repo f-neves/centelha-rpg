@@ -1,90 +1,197 @@
 {
-  "ordem": 227,
   "id": "golem-de-carne",
   "idAntigo": "mon-flesh-golem",
   "nome": "Golem de Carne",
   "nomeIngles": "Golem, Flesh",
-  "categoria": "Construto",
-  "categoriaLegada": "Monstro",
-  "constructo": {
-    "semVida": true
-  },
+  "categoria": "construto",
   "papel": "elite",
-  "conceito": "constructo Grande",
-  "descricao": "Autômato sem vida, movido por magia alheia.",
-  "descricaoLegada": "Aberração humanoide de lendas antigas.",
-  "tags": [
-    "monstro",
-    "centelha"
-  ],
-  "imagem": null,
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,4 m de altura",
-    "peso": "225 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 4,
   "centelha": 3,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, travado",
+    "apoio": "bipede",
+    "altura": 2.4,
+    "largura": 0.75,
+    "profundidade": 0.31,
+    "comprimento": null,
+    "massa": 225,
+    "area": 1.6,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 7,
     "destreza": 2,
-    "vigor": 1,
-    "influencia": 0,
-    "perspicacia": 0,
-    "compostura": 1,
+    "vigor": 5,
     "percepcao": 2,
     "inteligencia": 0,
-    "raciocinio": 2
+    "raciocinio": 2,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 1
   },
-  "skills": {
-    "briga": 5,
+  "habilidades": {
+    "briga": 4,
+    "bloqueio": 0,
     "esquiva": 0,
+    "atletismo": 1,
+    "integridade": 0,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 0
   },
-  "virtues": {
-    "compaixao": 0,
-    "conviccao": 3,
-    "temperanca": 3,
-    "valor": 3
+  "habilidadesSec": {
+    "musculatura": 2
   },
-  "willpower": 8,
-  "aparencia": 4,
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
+    "compaixao": 1,
+    "conviccao": 1,
+    "temperanca": 1
+  },
+  "vontade": 3,
+  "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Arma",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Punho",
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "resistencias": [
-    "perfuracao"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Corpo Costurado",
-      "descricao": "Absorve parte de qualquer dano físico comum e é imune a quase toda magia que tentar afetá-lo diretamente."
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Punho",
+      "regra": "agarrar"
     },
     {
-      "nome": "Fúria Descontrolada",
-      "descricao": "A cada instante de combate, cresce a chance de seu espírito preso se libertar e ele atacar tudo ao redor sem distinção, entrando em uma fúria que só seu criador talvez consiga acalmar."
+      "nome": "derrubar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Punho",
+      "regra": "derrubar"
     },
     {
-      "nome": "Fraqueza ao Frio e ao Fogo",
-      "descricao": "Dano de frio ou fogo deixa seu corpo lento e desajeitado por vários instantes."
+      "nome": "sem vida",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto ou pelo raio; não sofre nada que se resista com o corpo"
     },
     {
-      "nome": "Vigor pela Centelha Elétrica",
-      "descricao": "Um choque elétrico bem direcionado na verdade restaura parte de sua vitalidade em vez de feri-lo."
+      "nome": "Fúria descontrolada",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "a cada 6 Ticks de combate, o Mestre rola 1d6; o espírito se liberta com 6 na primeira rolagem, com 5 ou 6 na segunda, e o número desce um a cada rolagem que não liberta",
+      "duracao": "até o fim da cena, ou até o criador o acalmar",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o golem ataca a criatura mais perto, amiga ou inimiga, e destrói o que encontra; só o criador pode acalmá-lo, com uma ação de fala a até 18 m e 4 ou mais em 1d6",
+      "dano": "nenhum além dos golpes",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    },
+    {
+      "nome": "Fraqueza ao frio e ao fogo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "leva dano de gelo ou de fogo (1 ou mais, depois da Absorção)",
+      "duracao": "18 Ticks",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o corpo fica lento e desajeitado: fica Retardado",
+      "dano": "nenhum além do que levou",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    },
+    {
+      "nome": "Vigor pela centelha elétrica",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um golpe ou efeito de raio o acerta",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o raio não o fere (Elementos) e devolve PV: recupera metade do dano que o raio daria",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    },
+    {
+      "nome": "imune à magia",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a maior parte das Artes não o afeta"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "obedece ao criador",
+      "formas": "todas",
+      "texto": "avança travado sobre quem a ordem manda, bate e agarra; a cada instante de luta o espírito pode se soltar, e daí só o criador o acalma."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "nenhuma; um espírito preso que obedece ao criador. Raramente guarda fragmentos da memória de quem deu a cabeça (site)",
+    "tracos": "corpo de 2,4 m costurado de partes de cadáveres, de pele amarelada, cicatrizes grosseiras e andar travado"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "nenhuma",
+    "caca": "não se aplica: guarda e obedece",
+    "dianteDeGente": "ataca quem a ordem manda atacar; na fúria, ataca todos"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "qualquer"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Corpo de 2,4 m costurado de partes de cadáveres roubados e movido por um espírito preso. Anda travado, bate com força e não sente dor; o raio o cura, e o frio e o fogo o deixam lento. A cada instante de luta, o espírito pode se soltar, e daí só o criador talvez o acalme.",
   "lore": [
     {
       "titulo": "Costurado da morte",
@@ -99,39 +206,62 @@
       "texto": "Raramente, rumores falam de golens de carne que guardam fragmentos da memória de quem forneceu a cabeça usada em sua criação."
     }
   ],
-  "ecologia": {
-    "tipo": "Construct",
-    "terreno": [
-      "Ruins",
-      "Any"
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
+    "imunidades": [
+      {
+        "tipo": "raio",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Flesh Golem",
-    "cr": "7",
-    "tipo": "constructo Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 20,
-      "des": 9,
-      "con": "-",
-      "int": "-",
-      "sab": 11,
-      "car": 1
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Fúria descontrolada",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Fraqueza ao frio e ao fogo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "habilidadesEspeciais.Vigor pela centelha elétrica",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): carne morta que não sangra, não sente dor e não cansa, presa por pontos grosseiros; abaixo do granito do golem de pedra (6). O site tinha 1; 50, na zona de transição, pela faixa de cima (corpo robusto que não sente dor); pela de baixo seria 40; 5 por julgamento (carne morta que não sente dor); o site tinha 1"
+    },
+    {
+      "campo": "habilidades.briga",
+      "motivo": "O combate de um guarda, como o golem de pedra: o site tinha 5, demais para quem não aprende"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Pelo corpo (tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): músculo de verdade, tirado de cadáveres e costurado, que puxa travado e sem a coordenação de um corpo vivo. Comum, 2"
+    },
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 2, repulsivo: \"um amálgama grotesco de partes de cadáveres... de pele amarelada e cicatrizes grosseiras\" (site). A Aparência mede a beleza (D-205), e esse corpo é feio. O site tinha 4; 2, o corpo de cadáveres costurados; o site tinha 4"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele morta, grossa e costurada, um pouco acima da pele de gente; o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site; a imunidade, da habilidade publicada (Elementos)"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "50, na zona de transição, pela faixa de cima (corpo robusto que não sente dor); pela de baixo seria 40"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "a \"Arma\" de 2 dados e corte vira o Punho Média, de 1 dado e Impacto (perda de mecânica publicada, no relato)"
+    }
+  ]
 }

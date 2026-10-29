@@ -1,38 +1,26 @@
 {
-  "ordem": 171,
   "id": "capa-sombria",
   "idAntigo": "mon-cloaker",
   "nome": "Capa Sombria",
   "nomeIngles": "Cloaker",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "elite",
-  "conceito": "aberração Grande",
-  "descricao": "Arraia de couro negro que desliza sem som pelos túneis e passa por manto pendurado até atacar. Envolve a vítima no próprio corpo, geme num lamento que apavora, derruba ou paralisa, e se multiplica nas sombras.",
-  "tags": [
-    "aberracao",
-    "centelha"
-  ],
-  "imagem": "bestiario/capa-sombria_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "1,8 m de comprimento, 0,15 m de altura",
-    "peso": "45 kg",
-    "comprimento": 1.8,
-    "largura": 2.4,
-    "altura": 0.15
-  },
-  "locomocao": {
-    "voo": 4,
-    "terra": 1
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 1,
-    "arranque": 2,
-    "corrida": 2
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "voadora, de abas abertas",
+    "apoio": "outro",
+    "altura": 0.15,
+    "largura": 2.4,
+    "profundidade": null,
+    "comprimento": 1.8,
+    "comprimentoSemCauda": 1.8,
+    "caudaGrossa": false,
+    "massa": 45,
+    "area": 2.16
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 5,
     "destreza": 5,
     "vigor": 6,
@@ -43,8 +31,9 @@
     "perspicacia": 4,
     "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 1,
     "furtividade": 3,
@@ -52,84 +41,176 @@
     "integridade": 4,
     "ocultismo": 1
   },
-  "skills2": {
-    "voo": 3
+  "habilidadesSec": {
+    "voo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "imóvel, como manto",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "imóvel, como manto",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 2,
+      "corrida": 2
+    },
+    "voo": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "boca-na-face-de-baixo",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Cauda",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "cauda-de-chicote",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Envolver",
-      "descricao": "Mordida: Ativação: uma ação, Velocidade 7, lançando-se sobre um alvo de Tamanho Grande ou menor. Duração: até o alvo se soltar ou ela soltar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: na jogada de Agarrar do livro que acerta, envolve o alvo no próprio corpo: ele fica Agarrado e Cego, e a Mordida acerta sem jogada a cada 6 Ticks; quem ataca a capa enquanto ela envolve alguém faz metade do dano nela e metade na vítima (site). Dano: o da Mordida. Resistência: corpo, para escapar, pela jogada de Agarrar do livro. Limite de uso: um alvo envolvido por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "ativacao": "uma ação, Velocidade 7, lançando-se sobre um alvo de Tamanho Grande ou menor",
+      "duracao": "até o alvo se soltar ou ela soltar",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "na jogada de Agarrar do livro que acerta, envolve o alvo no próprio corpo: ele fica Agarrado e Cego, e a Mordida acerta sem jogada a cada 6 Ticks; quem ataca a capa enquanto ela envolve alguém faz metade do dano nela e metade na vítima",
+      "dano": "o da Mordida",
+      "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro",
+      "limiteDeUso": "um alvo envolvido por vez"
     },
     {
       "nome": "Gemido sônico",
-      "descricao": "poder natural (base Fascinação 3): Ativação: uma ação, Velocidade 7. Duração: à escolha, abaixo. Alcance: 9 m em volta dela. Área: à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; torpor, um alvo fica Imobilizado por 12 Ticks; lamento, todos na área ficam Abalados até o fim da cena. Efeito: o lamento infrassônico não pega nela nem em outra capa sombria (site). Dano: nenhum. Resistência: mente, contra Influência + Integridade dela. Limite de uso: o pavor, uma vez por dia; os outros, um gemido a cada 12 Ticks.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "à escolha, abaixo",
+      "alcance": "9 m em volta dela",
+      "area": "à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; lamento, todos na área ficam Abalados até o fim da cena",
+      "efeito": "o lamento infrassônico não pega nela nem em outra capa sombria (\"Imune ao próprio gemido\", site)",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Integridade dela",
+      "limiteDeUso": "o pavor, uma vez por dia; os outros, um gemido a cada 12 Ticks"
     },
     {
       "nome": "Manipulação de sombras",
-      "descricao": "poder natural (base Ofuscação 3): Ativação: uma ação, Velocidade 6, só em penumbra ou escuridão. Duração: até o fim da cena, ou até ela desfazer. Alcance: o próprio corpo, ou 18 m para a imagem falsa. Área: à escolha: borrada, conta como em Cobertura parcial contra quem a ataca; duplicatas, três imagens dela, e quem a ataca escolhe uma ao acaso (uma em quatro é ela, e a imagem acertada some); imagem falsa, uma cena de sombras de até 6 m. Efeito: o descrito na escolha. Dano: nenhum. Resistência: mente, contra Influência + Integridade dela, só para quem desconfia da imagem falsa. Limite de uso: um efeito por vez, à vontade.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 6, só em penumbra ou escuridão",
+      "duracao": "até o fim da cena, ou até ela desfazer",
+      "alcance": "o próprio corpo, ou 18 m para a imagem falsa",
+      "area": "à escolha: borrada, conta como em Cobertura parcial contra quem a ataca; duplicatas, três imagens dela, e quem a ataca escolhe uma ao acaso (uma em quatro é ela, e a imagem acertada some); imagem falsa, uma cena de sombras de até 6 m",
+      "efeito": "o descrito na escolha",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Integridade dela, só para quem desconfia da imagem falsa",
+      "limiteDeUso": "um efeito por vez, à vontade"
     },
     {
-      "nome": "Camuflagem",
-      "descricao": "Furtividade, com a Especialidade natural (imóvel, como manto) +3.",
-      "classe": "livro"
-    },
-    {
-      "nome": "espreita do túnel",
-      "descricao": "espera imóvel como um manto pendurado, cai sobre o último do grupo e o envolve, geme para apavorar os outros e se esconde nas próprias sombras se a luta vira.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro dos túneis."
+      "nome": "torpor do gemido",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o gemido entorpece um alvo, que fica travado sem conseguir agir"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "espreita do túnel",
+      "formas": "todas",
+      "texto": "espera imóvel como um manto pendurado, cai sobre o último do grupo e o envolve, geme para apavorar os outros e se esconde nas próprias sombras se a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro dos túneis",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "imita um manto, lençol ou couro pendurado; Furtividade (imóvel, como manto) +3",
+    "mente": "inteligente; intenções obscuras; fala a língua das profundezas (site)",
+    "tracos": "arraia de couro negro, abas largas com garras de osso na borda (que parecem fivelas de manto), olhos vermelhos, boca de dentes por baixo e cauda de chicote"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinha",
+    "atividade": "qualquer hora, no escuro",
+    "dieta": "carnívora",
+    "caca": "emboscada, imitando um objeto inerte",
+    "dianteDeGente": "ataca o desavisado; raramente se associa a alguém"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Arraia de couro negro que desliza sem som pelos túneis e passa por manto pendurado até atacar. Envolve a vítima no próprio corpo, geme num lamento que apavora, derruba ou paralisa, e se multiplica nas sombras.",
   "lore": [
     {
       "titulo": "Terror das Profundezas",
@@ -138,81 +219,56 @@
     {
       "titulo": "Motivos Obscuros",
       "texto": "Suas intenções permanecem um mistério até para quem estuda a espécie; fala apenas a língua das profundezas e raramente se associa a outras criaturas."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinha."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Esquiva 14, Bloqueio 10. Mordida (12,5) ou cauda (10,5); envolve quem é Grande ou menor, cega e morde sem jogada, e metade do dano contra ela vai na vítima. Geme para apavorar, derrubar, imobilizar ou abalar; nas sombras, borra e se multiplica. Voa a 4. Defesa Mental 25."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/capa-sombria_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Cloaker",
-    "cr": "5",
-    "tipo": "aberração Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 21,
-      "des": 16,
-      "con": 19,
-      "int": 14,
-      "sab": 15,
-      "car": 14
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Envolver",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte",
-      "nota": "voo 40; em terra 10, e o manto vive no ar"
+    {
+      "campo": "habilidadesEspeciais.Gemido sônico",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 43,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 25,
-    "defesaSocial": 8,
-    "absorcao": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "habilidadesEspeciais.Manipulação de sombras",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 151.81,
-    "deslocamento": {
-      "terra": {
-        "batalha": 1,
-        "arranque": 2,
-        "corrida": 2
-      },
-      "voo": {
-        "batalha": 4
-      }
+    {
+      "campo": "atributos.forca",
+      "motivo": "O site tinha 7; com 45 kg, ficaria igual ao gorila (180 kg, Força 7) e muito acima da Força de referência da massa (5,53, manual 3.9). Desce para 5, pelo teste de ordem; 5; o site tinha 7"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "O site dá só a envergadura; 1,8 m de corpo e cauda de 1,2 m, estimados; o site dá só a envergadura"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Cauda",
+      "motivo": "Chicote rápido de membro, Leve (regra-construcao §7) . Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Mordida Média e Cauda Leve no lugar das \"Garras e presas\""
     }
-  },
-  "notasObservacao": [
-    "`forca`: 5; o site tinha 7 **[provisório]**",
-    "`comprimento`: 1,8 m de corpo e cauda de 1,2 m, estimados; o site dá só a envergadura **[extrapolação]**",
-    "`ataques`: Mordida Média e Cauda Leve no lugar das \"Garras e presas\" **[provisório]**",
-    "`compaixao`: 1, o piso da régua; o site tinha 0",
-    "`envolver`, `gemido sônico`, `manipulação de sombras`: números sugeridos pela ficha (D-197)"
   ]
 }

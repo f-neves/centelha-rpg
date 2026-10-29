@@ -19,6 +19,9 @@
 //
 // RODA NO `validate`, e não no smoke, de propósito: não precisa de navegador,
 // então continua respondendo numa máquina onde o Astro não compila.
+import { carregarTS } from './lib-ts.mjs';
+const MOTOR = await carregarTS('src/lib/motor.ts');
+const IMAGENS = await carregarTS('src/lib/imagem-escolhida.ts');
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -32,10 +35,14 @@ const ok = (cond, msg) => {
   if (!cond) falhas.push(msg);
 };
 
-const REGRAS = ler('regras.json');
+const exemploImagens = { id: '__a6_imagens__', imagens: ['a.png', 'b.png', 'c.png'] };
+ok(IMAGENS.imagemDe(exemploImagens) === 'a.png', 'imagem principal da lista');
+ok(IMAGENS.alternarImagem(exemploImagens) === 2 && IMAGENS.imagemDe(exemploImagens) === 'b.png', 'segunda imagem');
+ok(IMAGENS.alternarImagem(exemploImagens) === 3 && IMAGENS.imagemDe(exemploImagens) === 'c.png', 'terceira imagem');
+ok(IMAGENS.alternarImagem(exemploImagens) === 1 && IMAGENS.imagemDe(exemploImagens) === 'a.png', 'lista volta à principal');
+ok(IMAGENS.imagemDe({ id: '__sem_imagem__', imagens: [] }) === null, 'lista vazia sem imagem');
 const CHEIO = ler('monsters.json');
 const MESA = ler('monsters-mesa.json');
-const FURT = REGRAS.furtividadeCriatura || {};
 
 console.log('· os sentidos das criaturas: a Passiva, a tabela e a exceção');
 
@@ -46,11 +53,18 @@ console.log('· os sentidos das criaturas: a Passiva, a tabela e a exceção');
 // vai para o navegador tem". São dois arquivos e o segundo é um recorte do
 // primeiro.
 const porId = Object.fromEntries(MESA.map((m) => [m.id, m]));
-const semPericias = MESA.filter((m) => !m.pericias || !Object.keys(m.pericias).length);
+for (const m of [...CHEIO, ...MESA]) {
+  ok(typeof m.tamanho === 'string' && !('porte' in m), m.id + ': Tamanho no contrato');
+  ok(m.corpo && !('dimensoes' in m), m.id + ': Corpo no contrato');
+  ok(Array.isArray(m.imagens) && !('imagem' in m) && !('imagem2' in m), m.id + ': lista de imagens no contrato');
+  ok(!('pericias' in m), m.id + ': contrato sem pericias');
+  ok(m.habilidadesSec && !Array.isArray(m.habilidadesSec), m.id + ': mapa secundário presente');
+}
+const semPericias = MESA.filter((m) => !m.habilidades || !Object.keys(m.habilidades).length);
 ok(semPericias.length === 0,
   `a versão MAGRA do bestiário leva as perícias (${MESA.length - semPericias.length} de ${MESA.length})`);
 
-const semProntidao = MESA.filter((m) => m.pericias?.prontidao == null);
+const semProntidao = MESA.filter((m) => m.habilidades?.prontidao == null);
 ok(semProntidao.length === 0,
   `e a Prontidão está em todas, que é o que a Passiva precisa (${MESA.length - semProntidao.length} de ${MESA.length})`);
 
@@ -64,19 +78,19 @@ ok(semProntidao.length === 0,
 // que sairia sem a Prontidão, em quantidade de criaturas que não dá para
 // confundir com acaso (a gêmea). Zerar a Prontidão na fonte derruba a segunda.
 // o bônus de Centelha da Reforma (28/09/2026, confirmado no Adendo 1 de 02/10/2026): 2 × mín(Centelha, Prontidão)
-const bonusC = (c, pr) => 2 * Math.min(c, pr);
-const passiva = (p, pr, c = 0) => (p == null || pr == null ? null : (p + pr) * 2 + bonusC(c, pr));
+const passiva = MOTOR.valorPassivo;
+for (const [a,h,c,esperado] of [[3,2,1,12],[3,0,3,6],[6,3,2,22]]) ok(passiva(a,h,c) === esperado, 'Passiva de referência: '+[a,h,c]+' resulta em '+esperado);
 let batem = 0;
 let mexem = 0;
 for (const m of MESA) {
   const p = m.atributos?.percepcao;
-  const pr = m.pericias?.prontidao;
+  const pr = m.habilidades?.prontidao;
   const c = m.centelha || 0;
   const v = passiva(p, pr, c);
-  if (v === (p + pr) * 2 + bonusC(c, pr)) batem += 1;
+  if (Number.isFinite(v)) batem += 1;
   if (v !== passiva(p, 0, c)) mexem += 1;
 }
-ok(batem === MESA.length, `a Passiva sai da fórmula em todas (${batem} de ${MESA.length})`);
+ok(batem === MESA.length, `o motor calcula a Passiva em todas (${batem} de ${MESA.length})`);
 ok(mexem > MESA.length * 0.7,
   `E A PRONTIDÃO MOVE O NÚMERO em ${mexem} das ${MESA.length}:`
   + ' zerá-la mudaria a Passiva da maioria, então ela não é enfeite na fórmula');
@@ -86,77 +100,25 @@ ok(mexem > MESA.length * 0.7,
 // A segunda previsão: a fórmula devolvendo o mesmo número para portes
 // diferentes. Uma tabela que não separa nada é uma constante com cara de regra,
 // e ela passa em qualquer conferência que só olhe se o campo existe.
-const porPorte = {};
+// A6: o vetor especial tem nome próprio; Habilidades será o mapa de níveis.
 for (const m of CHEIO) {
-  const k = m.porte || '(sem)';
-  (porPorte[k] ||= new Set()).add(m.pericias?.furtividade);
+  ok(Array.isArray(m.habilidadesEspeciais), m.id + ': especiais no contrato público');
+  ok(!Array.isArray(m.habilidades), m.id + ': nome antigo das especiais ausente');
 }
-const medias = {};
-for (const m of CHEIO) {
-  const k = m.porte || '(sem)';
-  (medias[k] ||= []).push(m.pericias?.furtividade ?? 0);
+// D-226: as fichas novas usam a Habilidade escrita, sem ajuste de Tamanho.
+let fontesNovas=0;
+for(const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
+  const c=JSON.parse(fs.readFileSync(path.join(ROOT,'src/data/bestiario',arquivo),'utf8'));
+  if(!c.corpo)continue;
+  fontesNovas++;
+  const m=CHEIO.find(x=>x.id===c.id);
+  ok((m?.habilidades?.furtividade ?? m?.habilidadesSec?.furtividade)===(c.habilidades.furtividade ?? c.habilidadesSec.furtividade ?? 0),c.id+': Furtividade escrita, sem ajuste por porte');
 }
-const media = (a) => a.reduce((x, y) => x + y, 0) / a.length;
-const miudo = medias['Miúdo'] ? media(medias['Miúdo']) : null;
-const colossal = medias['Colossal'] ? media(medias['Colossal']) : null;
-ok(miudo != null && colossal != null && miudo > colossal + 2,
-  `o porte separa: Miúdo tem Furtividade média ${miudo?.toFixed(1)} contra ${colossal?.toFixed(1)} do Colossal`);
-
-const valores = new Set(CHEIO.map((m) => m.pericias?.furtividade));
-ok(valores.size >= 4,
-  `e a tabela produz ${valores.size} valores diferentes nas ${CHEIO.length}, e não uma constante`);
-
-// A CATEGORIA também tem de mexer, senão metade da tabela é enfeite. Duas do
-// MESMO porte e categorias opostas: a Fada some, o Construto não.
-const doPorte = (porte, cat) => CHEIO.filter((m) => m.porte === porte && m.categoria === cat);
-const cmp = [['Fada', 'Construto'], ['Fera', 'Planta'], ['Fada', 'Planta']]
-  .map(([a, b]) => {
-    const A = CHEIO.filter((m) => m.categoria === a);
-    const B = CHEIO.filter((m) => m.categoria === b);
-    if (!A.length || !B.length) return null;
-    return { a, b, ma: media(A.map((m) => m.pericias?.furtividade ?? 0)), mb: media(B.map((m) => m.pericias?.furtividade ?? 0)) };
-  }).filter(Boolean);
-const catMexe = cmp.some((x) => x.ma > x.mb);
-ok(catMexe, `a categoria separa: ${cmp.map((x) => `${x.a} ${x.ma.toFixed(1)} > ${x.b} ${x.mb.toFixed(1)}`).join(' · ')}`);
-
-// ------------------------------------------------------- 4 · a exceção RODA
-//
-// A terceira previsão: a exceção existir e nunca ser exercida. Um caminho que
-// nenhum teste percorre é um caminho que ninguém sabe se funciona, e este em
-// particular é a válvula que justifica a tabela ter sido escolhida no lugar de
-// 309 números à mão. Se ele estiver quebrado, a escolha perde o argumento.
-const exc = FURT.excecoes || {};
-// O VALOR pode vir solto ou como { valor, porque }, e o `porque` e cobrado
-// abaixo: exceçao sem motivo escrito vira palpite anonimo em seis meses.
-const valorDa = (v) => (typeof v === 'number' ? v : v?.valor);
-const ids = Object.keys(exc).filter((k) => k !== 'nota');
-// SEM EXCEÇÃO NENHUMA HOJE, e isso é certo (Arquiteto, 23/10/2026): a única, a do assassino-das-sombras (6),
-// saiu quando a ficha v3 dele entrou. A régua e a exceção só valem para quem não tem Habilidade guardada ("Existe
-// porque o bestiário não guarda Habilidade nenhuma", a nota da furtividadeCriatura), e a ficha v3 guarda a
-// Furtividade (5). Quando houver exceção, o laço abaixo cobra que ela vença a tabela; sem nenhuma, não há o que cobrar.
-ok(true, ids.length ? `a exceção por criatura é EXERCIDA, e não só declarada (${ids.length} verbete(s))` : 'nenhuma exceção declarada hoje (a do assassino saiu com a ficha v3 dele): o laço abaixo não tem o que cobrar');
-for (const id of ids) {
-  const m = CHEIO.find((x) => x.id === id);
-  ok(!!m, `  a criatura "${id}" da exceção existe no bestiário`);
-  if (!m) continue;
-  ok(m.pericias?.furtividade === valorDa(exc[id]),
-    `  e a exceção VENCE a tabela em ${m.nome}: ${m.pericias?.furtividade} (a tabela daria outro)`);
-  // A GÊMEA: se a exceção desse o mesmo número da tabela, a asserção acima
-  // passaria sem provar nada. Esta cobra que os dois sejam diferentes.
-  const base = (FURT.porte || {})[String(m.porte || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()];
-  const daTabela = base == null ? null
-    : Math.max(0, Math.min(6, base + ((FURT.categoria || {})[m.categoria] || 0)
-      + (m.tags || []).reduce((s, t) => s + ((FURT.tags || {})[t] || 0), 0)));
-  ok(typeof exc[id] === 'object' && String(exc[id]?.porque || '').length > 20,
-    `  e o MOTIVO da exceçao esta escrito (${String(exc[id]?.porque || '').length} caracteres)`);
-  ok(daTabela != null && daTabela !== valorDa(exc[id]),
-    `  e o número da exceção (${valorDa(exc[id])}) É DIFERENTE do que a tabela daria (${daTabela}), senão ela não provaria nada`);
-}
+ok(fontesNovas===324,'324 fontes guardam a Habilidade Furtividade, sem tabela de semente');
 
 if (falhas.length) {
   console.error(`\n✘ Sentidos FALHOU (${falhas.length}):`);
   for (const f of falhas) console.error('  • ' + f);
   process.exit(1);
 }
-console.log('✓ Sentidos OK · a Passiva chega à mesa, a Prontidão move o número,'
-  + ' a tabela separa por porte e categoria, e ' + (ids.length ? 'a exceção vence de verdade' : 'não há exceção declarada hoje'));
+console.log('✓ Sentidos OK · Passiva e Furtividade escrita nas 324 fontes');

@@ -1,88 +1,221 @@
 {
-  "ordem": 150,
   "id": "barghest",
   "idAntigo": "mon-barghest",
   "nome": "Barghest",
   "nomeIngles": "Barghest",
-  "categoria": "Corruptor",
-  "categoriaLegada": "Exterior",
+  "categoria": "corruptor",
   "papel": "soldado",
-  "conceito": "exterior Médio",
-  "descricao": "Nativo dos planos infernais, feito de crueldade e corrupção.",
-  "descricaoLegada": "Nativo de outro plano, alheio às leis mortais.",
-  "tags": [
-    "exterior",
-    "centelha"
-  ],
-  "imagem": "bestiario/barghest_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "90 kg"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "formaPrincipal": {
+    "id": "verdadeira",
+    "nome": "forma verdadeira"
+  },
+  "corpo": {
+    "postura": "bípede, de pé, curvado para a frente",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.48,
+    "profundidade": 0.24,
+    "comprimento": null,
+    "massa": 90,
+    "area": 0.76,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 5,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 2,
+    "integridade": 4,
     "prontidao": 2,
-    "integridade": 4
+    "resistencia": 2,
+    "empatia": 2,
+    "sociabilidade": 0,
+    "manha": 2,
+    "sobrevivencia": 2,
+    "ocultismo": 2
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "musculatura": 2
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
+    "compaixao": 1,
     "conviccao": 5,
-    "temperanca": 1,
-    "valor": 5
+    "temperanca": 1
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe planar",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras",
+      "parte": "maos-de-garra",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "mandibula-de-lobo",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Metamorfose",
-      "descricao": "Pode assumir a forma de um goblin ou de um lobo comum, além de sua forma verdadeira."
+      "nome": "Garras",
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "empunhadura-dupla"
     },
     {
-      "nome": "Devorar Almas",
-      "descricao": "Uma vez por mês, ao devorar o corpo de um humanoide não maligno, o barghest ganha um ponto de crescimento permanente, tornando-se cada vez mais forte, resistente e perigoso a cada refeição."
+      "nome": "garras e mordida juntas",
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "sem regra ainda",
+      "efeito": "na mesma ação, além das duas garras, morde"
     },
     {
-      "nome": "Pele Curtida",
-      "descricao": "Sua carne absorve parte de golpes de armas comuns, exigindo algo enfeitiçado para feri-lo com força total."
+      "nome": "Mudar de forma",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até ele voltar à forma verdadeira",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "vira um goblin ou um lobo grande (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "à vontade"
     },
     {
-      "nome": "Truques Sombrios",
-      "descricao": "Pode piscar entre sombras, levitar, confundir sobre sua real localização e, ocasionalmente, encantar um inimigo, espalhar desespero ou se teleportar por curtas distâncias."
+      "nome": "arma enfeitiçada fere inteira",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a resistência da pele não vale contra arma encantada"
+    },
+    {
+      "nome": "truques sombrios",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "pisca entre as sombras, levita, confunde onde está de verdade e, de vez em quando, encanta um inimigo, espalha desespero ou salta para perto como num teleporte"
+    },
+    {
+      "nome": "devorar almas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma vez por mês, ao devorar o corpo de uma vítima inocente, cresce de forma permanente; com fome bastante, troca de pele e vira um barghest maior"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "tirano dos goblins",
+      "formas": "todas",
+      "texto": "manda a tribo na frente, entra disfarçado de goblin ou de lobo, rasga com as garras e a mordida e some nas sombras quando a luta vira."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "de lobo; Prontidão (faro) +2",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "entre goblins ou lobos, numa das outras formas",
+    "mente": "inteligente, cruel, faminta",
+    "tracos": "corpo de 1,8 m meio lobo, meio goblin, de pelo escuro, cabeça de lobo com presas, mãos de garra e olhos que brilham"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, à frente de uma tribo de goblins ou criaturas parecidas",
+    "atividade": "noturno",
+    "dieta": "carnívoro",
+    "caca": "caça e devora vítimas inocentes",
+    "dianteDeGente": "devora; governa os goblinoides pelo medo"
+  },
+  "ecologia": {
+    "terreno": [
+      "qualquer",
+      "montanha"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Parente demoníaco dos povos goblinoides, que vem ao mundo material para devorar inocentes e cresce a cada vítima. Anda como goblin ou como lobo entre as tribos que governa e, com fome bastante, troca de pele e vira um barghest maior.",
   "lore": [
     {
       "titulo": "Origem",
@@ -93,39 +226,122 @@
       "texto": "Ao acumular crescimento suficiente, o barghest troca de pele e se torna um barghest maior, geralmente assumindo o comando de uma tribo de goblins ou criaturas semelhantes."
     }
   ],
-  "ecologia": {
-    "tipo": "Fiend",
-    "terreno": [
-      "Any",
-      "Mountain"
+  "imagens": [
+    "bestiario/barghest_criatura.webp"
+  ],
+  "formas": [
+    {
+      "id": "goblin",
+      "nome": "forma de goblin",
+      "aparencia": 4,
+      "corpo": {
+        "altura": 0.95,
+        "area": 0.25
+      },
+      "fisiologia": {
+        "camuflagem": "passa por um goblin da tribo",
+        "tracos": "goblin grande, de olhos que brilham no escuro"
+      }
+    },
+    {
+      "id": "lobo",
+      "nome": "forma de lobo",
+      "aparencia": 6,
+      "corpo": {
+        "postura": "quadrúpede",
+        "apoio": "quadrupede",
+        "altura": 0.99,
+        "comprimento": 2.2,
+        "comprimentoSemCauda": 1.4,
+        "largura": 0.37,
+        "profundidade": null,
+        "area": 0.56,
+        "posturaDoTamanho": "de lado"
+      },
+      "fisiologia": {
+        "camuflagem": "passa por um lobo grande",
+        "tracos": "lobo grande de pelo escuro e olhos que brilham"
+      },
+      "ataques": [
+        {
+          "nome": "Mordida",
+          "parte": "mandibula-de-lobo",
+          "habilidade": "briga",
+          "classe": "media",
+          "pgr": [
+            2,
+            1,
+            3
+          ],
+          "dado": "1d6",
+          "multiplicadorForca": 1,
+          "tipoDano": "perfuracao",
+          "nivelPerfuracao": 0,
+          "acerto": 0,
+          "bloqueiaComoArma": null
+        }
+      ]
+    }
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Barghest",
-    "cr": "4",
-    "tipo": "exterior Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 19,
-      "des": 15,
-      "con": 15,
-      "int": 14,
-      "sab": 14,
-      "car": 14
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: couro grosso sob o pelo, como o cavalo (1) . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele Curtida\" do site (absorve golpes de armas comuns), pela linha Elementos, como a pele do súcubo e do kyton; resistência a Corte, Perfuração e Impacto, como a pele do súcubo e do kyton; a exceção da arma encantada ficou sem regra ainda"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "formas.goblin",
+      "motivo": "A forma que ele usa entre os goblins que governa (site). A altura, a área e a Aparência são as do goblin do livro (ficha `goblin`); a massa, os números e a mente ficam os dele, como no disfarce do doppelganger"
+    },
+    {
+      "campo": "formas.lobo",
+      "motivo": "Um lobo comum (site), com a massa dele: o corpo do lobo do molde (55 kg) levado a 90 kg, as medidas pela raiz cúbica da massa, × (90 ÷ 55)^(1/3) = 1,178, e a área pelo quadrado desse fator, 0,40 × 1,388 = 0,56 m², como a forma de lobo do lobisomem . Força, Vigor, PV e peso erguido ficam os da forma verdadeira, que tem a mesma massa"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +7 corte\", dano médio 10,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo, e as garras Leves, em par. Dano médio: 10,5 antes; depois, a mordida 10,5, as garras 8,5 cada"
+    },
+    {
+      "campo": "formas",
+      "motivo": "verdadeira, goblin e lobo (D-201); a forma de lobo é o lobo do molde levado à massa dele, como a do lobisomem; a de goblin guarda a massa e os números dele"
+    }
+  ]
 }

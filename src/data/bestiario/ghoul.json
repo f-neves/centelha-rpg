@@ -1,116 +1,213 @@
 {
-  "ordem": 76,
   "id": "ghoul",
   "idAntigo": "mon-ghoul",
   "nome": "Ghoul",
   "nomeIngles": "Ghoul",
-  "categoria": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "soldado",
-  "conceito": "morto-vivo Médio",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
-  "tags": [
-    "morto-vivo",
-    "centelha",
-    "mágico"
-  ],
-  "imagem": "bestiario/ghoul_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,7 m de altura",
-    "peso": "60 kg, corpo ressecado"
-  },
-  "locomocao": {
-    "terra": 3
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, curvado, de mãos à frente",
+    "apoio": "bipede",
+    "altura": 1.7,
+    "largura": 0.43,
+    "profundidade": 0.22,
+    "comprimento": null,
+    "massa": 60,
+    "area": 0.64,
+    "posturaDoTamanho": "de pé"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 4,
     "vigor": 4,
-    "influencia": 4,
-    "perspicacia": 4,
-    "compostura": 4,
     "percepcao": 4,
     "inteligencia": 3,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 4,
+    "perspicacia": 4,
+    "compostura": 4
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
+    "furtividade": 2,
+    "integridade": 4,
     "prontidao": 2,
-    "integridade": 4
+    "sobrevivencia": 1
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "musculatura": 1
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 2,
-  "arte": {
-    "morte": 1
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
   },
-  "tech": {
-    "faro": true
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
   },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Golpe",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
+      "nome": "Garras",
+      "parte": "unhas-compridas-das-maos",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 5
-    }
-  ],
-  "poderes": [
+      "bloqueiaComoArma": null
+    },
     {
-      "id": "paralisia",
-      "nome": "Paralisia",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 2
-      },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      }
+      "nome": "Mordida",
+      "parte": "boca-de-dentes-de-comer-carne",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "perfuracao"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
+    {
+      "nome": "Duas garras",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada",
+      "texto": "Até dois golpes por ação"
+    },
+    {
+      "nome": "garras e mordida juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga com as duas garras e morde na mesma ação; por enquanto, as duas garras vão juntas pela Rajada, e a Mordida é outra ação"
+    },
     {
       "nome": "Toque paralisante",
-      "descricao": "acerto de garra exige teste de Vontade; falha torna o alvo Paralisado por rodadas"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a garra paralisa a vítima, impedindo-a de agir e se mover"
+    },
+    {
+      "nome": "Faro",
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "faro",
+        "nivel": 1
+      }
     },
     {
       "nome": "Faro do carniçal",
-      "descricao": "detecta cadáveres e feridos graves a distância; bônus de Iniciativa contra alvos debilitados"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o do faro",
+      "area": "não se aplica",
+      "efeito": "sente cadáver e ferido grave de longe e cai primeiro sobre o mais fraco",
+      "dano": "nenhum; +2 na Iniciativa contra quem está abaixo da metade do PV",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Garras e mordida",
-      "descricao": "dois ataques na mesma ação"
+      "nome": "imune a veneno",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno não pega no corpo morto, e o que pede a resistência do corpo pega menos"
     },
     {
-      "nome": "Constituição de morto-vivo",
-      "descricao": "imune a veneno e resistente a efeitos que exijam Fortitude"
-    },
-    {
-      "nome": "Faro do carniçal",
-      "descricao": "Sentido passivo."
+      "nome": "corpo morto",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não dorme e não se cansa; come carne por fome, e não para viver"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "matilha faminta",
+      "formas": "todas",
+      "texto": "a matilha cerca a presa, paralisa com as garras quem chega perto e arrasta o paralisado para longe para comer; foge da luz do dia."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "apurado; acha cadáver, sangue e ferido grave pelo cheiro",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro da cripta",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "inteira, mas presa à fome",
+    "tracos": "corpo humano ressecado, cinzento, de unhas compridas e língua de bicho; cheira a cova aberta"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "matilha",
+    "atividade": "noturno",
+    "dieta": "carne, viva ou morta",
+    "caca": "matilha que paralisa e arrasta a presa",
+    "dianteDeGente": "ataca por fome"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo",
+      "ruínas"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Morto ressecado que caça em matilha em cemitérios e catacumbas: a garra paralisa quem toca, e a matilha come a presa viva ou morta. Foge do sol e acha cadáver e ferido pelo cheiro.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -129,48 +226,44 @@
       "texto": "Dizem os sacerdotes de Syl que o ghoul nasce quando a Centelha de alguém se recusa a seguir aos ancestrais e se torna apenas apetite. Profanar um túmulo é um dos piores pecados contra os mortos, e é por isso que os ghouls são caçados sem piedade por guardiões de santuário."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Underground",
-      "Ruins"
+  "imagens": [
+    "bestiario/ghoul_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 2, Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Ghoul",
-    "cr": "1",
-    "tipo": "morto-vivo Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 13,
-      "des": 15,
-      "con": "-",
-      "int": 13,
-      "sab": 14,
-      "car": 14
-    },
-    "pericias": [
-      "Furtividade 2",
-      "Prontidão 2"
+    "resistencias": [
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
     ],
-    "nota": "Paralisia (Su): Centelha 1.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
+    "imunidades": []
   },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "cacador"
+      "campo": "habilidadesEspeciais.Faro do carniçal",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "Pelo corpo: músculo seco e encolhido, abaixo do corpo comum (2), acima do osso sem carne (0); 1, músculo seco abaixo do corpo comum"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Comportamento)"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o \"Golpe\" de impacto do site virou Garras Médias de Corte e uma Mordida Média; duas garras pela Rajada"
     }
   ]
 }

@@ -8,7 +8,7 @@ const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 const FILES = [
   'src/content/chapters/combate.md',
   'src/content/chapters/coracao-do-sistema.md',
-  'src/lib/calc.ts',
+  'src/lib/motor.ts',
   'src/data/glossario.json',
   'src/data/regras.json',
   'src/pages/rolador.astro',

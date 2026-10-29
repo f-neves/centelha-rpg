@@ -1,36 +1,28 @@
 {
-  "ordem": 35,
   "id": "lobo",
   "idAntigo": "mon-lobo",
   "nome": "Lobo",
   "nomeIngles": "Wolf",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Caça em matilha e cerca a presa grande; sozinho, pega castor e lebre. Defende território de 130 a 13.000 km² por uivo e cheiro, e ataca gente raramente, quase sempre com raiva.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,87 m de comprimento, 0,84 m de altura",
-    "peso": "55 kg",
-    "comprimento": 1.87,
-    "largura": 0.31,
-    "altura": 0.84
-  },
-  "locomocao": {
-    "terra": 7
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 7,
-    "arranque": 10,
-    "corrida": 16
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas",
+    "apoio": "quadrupede",
+    "altura": 0.84,
+    "largura": 0.31,
+    "profundidade": null,
+    "comprimento": 1.87,
+    "comprimentoSemCauda": 1.19,
+    "caudaGrossa": false,
+    "massa": 55,
+    "area": 0.4,
+    "posturaDoTamanho": "de lado",
+    "cargaMedida": 13.6
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 3,
     "vigor": 3,
@@ -41,8 +33,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
     "atletismo": 3,
     "furtividade": 2,
@@ -52,82 +45,149 @@
     "empatia": 2,
     "sobrevivencia": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "faro",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "audição",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "frio",
-      "valor": 1,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "escolher a presa fraca do rebanho",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "corrida": 0,
+    "musculatura": 0
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 3,
+        "origem": "natural"
+      },
+      {
+        "foco": "audição",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "resistencia": [
+      {
+        "foco": "frio",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ],
+    "sobrevivencia": [
+      {
+        "foco": "escolher a presa fraca do rebanho",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "terra": {
+      "batalha": 7,
+      "arranque": 10,
+      "corrida": 16
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 0,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
-      "descricao": "Mordida (na perna): A matilha derruba a presa pelas patas.",
-      "classe": "livro"
-    },
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "derrubar",
+      "texto": "na perna"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "caça em matilha",
-      "descricao": "ataca em grupo e cerca a presa; o flanco (−2 na Defesa do alvo) e a Pressão do livro (−2 a cada ataque recebido) dão o ganho do bando.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "ataca em grupo e cerca a presa."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +3 (era +4; teto da decisão 3); presa a 275 m, até 2,4 km com vento a favor (International Wolf Center, fonte infantil, marcada como fraca)",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "faro: Prontidão (faro) +3; presa a 275 m, até 2,4 km com vento a favor. · audição: Prontidão (audição) +2; uivos a cerca de 10 km. O alcance do uivo, 11 a 16 km, é até onde o som chega, e não a audição. · penumbra: texto; ativo de dia e de noite."
-    }
-  ],
-  "doencas": [
+      "nome": "audição",
+      "descricao": "Prontidão (audição) +2; uivos a cerca de 10 km (mesma fonte). O alcance do uivo, 11 a 16 km (NPS), é até onde o som chega, e não a audição",
+      "formas": "todas"
+    },
     {
-      "nome": "Variante lobo raivoso",
-      "texto": "Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
+      "nome": "penumbra",
+      "descricao": "texto; ativo de dia e de noite (ADW). Acuidade:",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "(a cor vai do branco puro ao preto, ADW)",
+    "mente": "animal",
+    "tracos": "pelagem dupla, com subpelo denso que isola do frio (ADW; Resistência (frio) +1); come até 9 kg numa refeição (ADW)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "matilha (2 a 36, típico 5 a 9; até 37 em Yellowstone; 2 a 5% vivem sozinhos)",
+    "atividade": "catemeral (ativo de dia e de noite; os grandes deslocamentos costumam ser à noite)",
+    "dieta": "carnívoro",
+    "caca": "perseguição (em matilha, escolhendo o fraco, o velho ou o jovem; presa pequena sozinho)",
+    "dianteDeGente": "foge (afasta-se a 17 a 310 m, média 106 m, de pessoa andando)"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta",
+      "montanha",
+      "planície"
+    ],
+    "clima": [
+      "temperado",
+      "frio"
+    ]
+  },
+  "descricao": "Caça em matilha e cerca a presa grande; sozinho, pega castor e lebre. Defende território de 130 a 13.000 km² por uivo e cheiro, e ataca gente raramente, quase sempre com raiva.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Caça em matilha, quase sempre uma família de 5 a 9, que coordena cercos e emboscadas contra presas maiores que um lobo sozinho. Social: matilha (2 a 36, típico 5 a 9; até 37 em Yellowstone; 2 a 5% vivem sozinhos)."
+      "texto": "Caça em matilha, quase sempre uma família de 5 a 9, que coordena cercos e emboscadas contra presas maiores que um lobo sozinho."
     },
     {
       "titulo": "Hábitat",
@@ -140,95 +200,34 @@
     {
       "titulo": "Veneno e doença",
       "texto": "Variante lobo raivoso: Raiva · Virulência 14 · dia · só no animal raivoso, ao critério do Mestre, e nunca no comum · contágio por ferida: quem levou dano que passou da Absorção rola uma vez por cena, Vigor + Resistência contra a Virulência inteira"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Força 3: o lobo sozinho não derruba um humano forte no braço, e nenhum humano perde o Bloqueio contra a mordida. Pequeno, ele ganha +3 no corpo a corpo contra o humano Médio; à distância, quem atira nele leva −3. Arrasta ou vira cerca de 109 kg. O perigo é a matilha, e o faro +3 que acha quem se esconde. 34 PV, Impacto 3 e Couraça nível 0 (quanto o nível vale fica para depois)."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Forest",
-      "Mountain",
-      "Plains"
-    ],
-    "clima": [
-      "Temperate",
-      "Cold"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Habilidades notáveis: Prontidão 2, Furtividade 2, Sobrevivência 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Lobo",
-    "cr": "1",
-    "tipo": "animal Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 13,
-      "des": 15,
-      "con": 15,
-      "int": 2,
-      "sab": 12,
-      "car": 6
-    },
-    "pericias": [
-      "Prontidão 2",
-      "Furtividade 2",
-      "Sobrevivência 2"
-    ],
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "cacador"
-    }
-  ],
-  "v3": {
-    "pv": 34,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 7,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
+      "campo": "habilidades.empatia",
+      "motivo": "Era sem linha. Lê o outro da própria espécie: vive em matilha com hierarquia e caça em grupo, escolhendo o fraco, o velho ou o jovem do rebanho (ADW).  da vida em matilha; a pesquisa não mede leitura de humano.; 2, nova,  da vida em matilha; a pesquisa não mede leitura de humano nem de outro lobo"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 109.04,
-    "carga": {
-      "leve": 13.6,
-      "media": 27.2,
-      "pesada": 40.8,
-      "maxima": 54.4
+    {
+      "campo": "corpo.altura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,81 × 1,0323 = 0,836 . Antes: cernelha média do macho, NPS Yellowstone; faixa 0,60 a 0,90 (ADW)"
     },
-    "deslocamento": {
-      "terra": {
-        "batalha": 7,
-        "arranque": 10,
-        "corrida": 16
-      }
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,81 × 1,0323 = 1,868 . Antes: média de Yellowstone, com cauda (NPS); cauda de 0,35 a 0,52 (ADW)"
+    },
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,15 × 1,0323 = 1,187 . Antes: ponto médio de 1,00 a 1,30 do macho (ADW). A cauda é fina e não conta (D-155)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,30 × 1,0323 = 0,310 . Antes: estimativa do Arquiteto"
     }
-  },
-  "notasObservacao": [
-    "`pesoErguido` e `carga`: 109,04 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga é o piso medido (castor de 13,6 kg); o peso erguido sai de `calc.mjs` (105,92 kg), e era 75,42 kg pela fórmula da D-162 (decisões 14 e 16)",
-    "`velocidade`: congelada (decisão 23); 58 km/h, dentro dos 55 a 70 da ADW",
-    "`alvo`: 0,38 m², 15% abaixo do corte de 0,45 m² entre Pequeno e Médio, dentro do erro do método (15% a 30%, pela Veterana); a decisão 7 o põe Pequeno",
-    "`dimensoes.largura`: 0,30 m, estimada pelo Arquiteto, sem fonte",
-    "`resistencia`: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2, sem a corrida (diretriz 2); o levantamento dava 4 só pelos 200 km por dia, que ficam na nota de pesquisa (jornada)",
-    "jornada (nota de pesquisa, não é regra): até 200 km por dia, em cruzeiro de cerca de 8 km/h (ADW; NPS) **[medido]**; carne levada à toca por mais de 19 km (Murie 1944, estimativa do observador).",
-    "`empatia`: 2, nova, **[extrapolação]** da vida em matilha; a pesquisa não mede leitura de humano nem de outro lobo",
-    "`especialidades`: Prontidão (faro) desce de +4 para +3 pelo teto da decisão 3, e deixa de ser \"bônus fixo de sentido\" da D-150; Resistência (frio) +1 sem temperatura medida",
-    "`musculatura`: 0, corpo de resistência; com Força 3 e Musculatura 0 o peso erguido fica abaixo da metade do típico de 50 kg (267 kg)"
   ]
 }

@@ -1,37 +1,24 @@
 {
-  "ordem": 207,
   "id": "ettercap",
   "idAntigo": "mon-ettercap",
   "nome": "Ettercap",
   "nomeIngles": "Ettercap",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "soldado",
-  "conceito": "aberração Médio",
-  "descricao": "Figura quase humana de rosto de aranha e mãos em foice, que vive sozinho nas copas das florestas. Arma armadilhas de teia, prende de longe, morde com um veneno que tira a destreza e cria aranhas gigantes como sentinelas.",
-  "tags": [
-    "aberracao",
-    "centelha"
-  ],
-  "imagem": "bestiario/ettercap_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "90 kg",
-    "largura": 0.48,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "terra": 3,
-    "escalada": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.48,
+    "profundidade": 0.24,
+    "comprimento": null,
+    "massa": 90,
+    "area": 0.78
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 4,
     "destreza": 5,
     "vigor": 5,
@@ -42,7 +29,7 @@
     "perspicacia": 1,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 4,
     "bloqueio": 1,
     "esquiva": 1,
@@ -52,99 +39,163 @@
     "integridade": 3,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
     "escalada": 3,
     "disparo": 2,
     "adestramento": 2,
     "musculatura": 1
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "na teia",
-      "valor": 1,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "sobrevivencia",
-      "foco": "armadilhas de teia",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "na teia",
+        "valor": 1,
+        "origem": "natural"
+      }
+    ],
+    "sobrevivencia": [
+      {
+        "foco": "armadilhas de teia",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "escalada": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Foices",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "maos-em-foice-de-quitina",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     },
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "queliceras",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "teia",
-      "descricao": "fieiras: a da aranha-gigante do molde: ataque a distância, Vigor + Disparo (Vigor 5 + Disparo 2 + 2 × o menor entre Centelha 2 e Disparo 2, 4), até 6 m, 3 vezes por cena (recarga de 1 hora), Velocidade 6, tipo do ataque teia. Não causa dano. Acerto: o alvo fica Preso pela teia, como Preso pela Rede: não se desloca, mas age, com −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento. Para se soltar: Força + Atletismo contra o total do lançamento, uma tentativa por ação.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6; dispara pelas fieiras com Vigor + Disparo",
+      "duracao": "até o alvo se soltar",
+      "alcance": "6 m",
+      "area": "um alvo",
+      "efeito": "o acerto deixa Preso pela Rede do livro; a teia serve para prender, não para sustentar a aranha",
+      "dano": "nenhum",
+      "resistencia": "nenhum teste adicional; para sair, a regra da Rede contra o total do disparo",
+      "limiteDeUso": "três vezes por cena, recarga de uma hora"
     },
     {
       "nome": "Mordida venenosa",
-      "descricao": "Mordida: a regra do veneno, com o veneno da linha Veneno e doença.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Mordida",
+      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
     },
     {
       "nome": "Mestre de armadilhas",
-      "descricao": "arma armadilhas de teia (fossos cobertos, laços, lanças escondidas) só com tempo e paciência, sem ferramenta. O livro não tem regra de armadilha.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "arma armadilhas de teia (fossos cobertos, laços, lanças escondidas) só com tempo e paciência, sem ferramenta"
     },
     {
       "nome": "Empatia com aranhas",
-      "descricao": "fala com aranhas e manda nas aranhas gigantes, que lhe servem de sentinela e de guarda do covil.",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "fala com aranhas e manda nas aranhas gigantes, que lhe servem de sentinela e de guarda do covil"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "tecelão das copas",
-      "descricao": "espera nas copas, deixa a presa cair no fosso ou no laço, prende de longe com a teia, desce e morde; as aranhas que ele cria fecham o caminho.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro e com pouca luz: \"enxerga no escuro e com pouca luz, e raramente é pego de surpresa\" (site); a surpresa vai na Prontidão."
+      "formas": "todas",
+      "texto": "espera nas copas, deixa a presa cair no fosso ou no laço, prende de longe com a teia, desce e morde; as aranhas que ele cria fecham o caminho."
     }
   ],
-  "venenos": [
+  "sentidos": [
     {
-      "nome": "Veneno no jogo",
-      "texto": "Peçonha de aranha gigante · Potência 18 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Mordida. É o veneno do livro que tira a Destreza; os \"dois testes de Vigor seguidos\" do site viram o pool do livro."
+      "nome": "visão no escuro e com pouca luz",
+      "descricao": "\"enxerga no escuro e com pouca luz, e raramente é pego de surpresa\"; a surpresa vai na Prontidão",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nas copas, ao lado da teia; Furtividade (na teia) +1",
+    "mente": "pouco inteligente, solitário, cuida das aranhas como de um rebanho",
+    "tracos": "corpo ereto e peludo de 1,8 m, abdome inchado, rosto de aranha com olhos pretos e quelíceras, mãos em foice de quitina"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho, com as aranhas que doma",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "armadilhas de teia e emboscada nas copas",
+    "dianteDeGente": "caça quem entra no bosque dele"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Figura quase humana de rosto de aranha e mãos em foice, que vive sozinho nas copas das florestas. Arma armadilhas de teia, prende de longe, morde com um veneno que tira a destreza e cria aranhas gigantes como sentinelas.",
   "lore": [
     {
       "titulo": "Rosto de aranha",
@@ -155,81 +206,58 @@
       "texto": "Vive isolado nas copas das florestas, longe até dos de sua espécie, cercado apenas pelas teias e pelas aranhas que domestica."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho, com as aranhas que doma."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Peçonha de aranha gigante · Potência 18 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Mordida. É o veneno do livro que tira a Destreza; os \"dois testes de Vigor seguidos\" do site viram o pool do livro."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva 14, Bloqueio 14 (15 com as foices). Teia a 6 m que prende (três vezes por cena); Foices de dano médio 9,5 e Mordida de 7,5 com a peçonha de aranha gigante do livro, que tira a Destreza. Sobe nas árvores a 3. Arma armadilhas e cria aranhas."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/ettercap_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Ettercap",
-    "cr": "3",
-    "tipo": "aberração Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 14,
-      "des": 17,
-      "con": 17,
-      "int": 6,
-      "sab": 15,
-      "car": 8
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.teia",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "As foices de quitina aparam às vezes (D-100, D-110); 1, pelas foices; o site não gravava Bloqueio"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 40,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 15,
-    "defesaMental": 16,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "habilidadesSec.disparo",
+      "motivo": "A teia arremessada: \"Serve para qualquer disparo corporal (teia...)\" (decisoes-autor §14); um abaixo da aranha-gigante do molde (3); 2, 2 e 1"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 209.44,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
+    {
+      "campo": "habilidadesSec.adestramento",
+      "motivo": "Doma aranhas gigantes como sentinelas (site); 2, 2 e 1"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`area`: escalada do corpo de base pela massa **[conta]**",
-    "`couraca`: nível 1 **[provisório]**",
-    "`bloqueio`: 1, pelas foices; o site não gravava Bloqueio **[provisório]**",
-    "`ataques`: Foices Média e Mordida Leve no lugar das \"Garras e presas\" **[provisório]**",
-    "`disparo`, `adestramento`, `musculatura`: 2, 2 e 1 **[provisório]**",
-    "`compaixao`: 1, o piso da régua; o site tinha 0"
+    {
+      "campo": "habilidadesSec.musculatura",
+      "motivo": "; 2, 2 e 1"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couro grosso e peludo, quitina nas mãos e no rosto ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dianteDeGente",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Foices Média e Mordida Leve no lugar das \"Garras e presas\""
+    }
   ]
 }

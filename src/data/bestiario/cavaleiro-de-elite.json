@@ -1,35 +1,23 @@
 {
-  "ordem": 11,
   "id": "cavaleiro-de-elite",
   "nome": "Cavaleiro de Elite",
   "nomeIngles": "Elite Knight",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humano",
+  "categoria": "humanoide",
   "papel": "elite",
-  "conceito": "tanque tocado pela Centelha",
-  "descricao": "Cavaleiro de placa completa e montante, tocado pela Centelha a ponto de a pele resistir como pedra. Avança como muralha, aguenta golpes que derrubariam outro soldado e segura a posição.",
-  "tags": [
-    "humano",
-    "centelha"
-  ],
-  "imagem": "bestiario/cavaleiro-de-elite_pdm.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,85 m de altura",
-    "peso": "95 kg",
-    "largura": 0.48,
-    "altura": 1.85
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 5,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 1.85,
+    "largura": 0.48,
+    "profundidade": 0.25,
+    "comprimento": null,
+    "massa": 95,
+    "area": 0.8
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 3,
     "vigor": 5,
@@ -40,7 +28,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "esquiva": 3,
     "bloqueio": 3,
@@ -50,102 +38,137 @@
     "briga": 2,
     "atletismo": 2
   },
-  "skills2": {
-    "cavalgar": 2
+  "habilidadesSec": {
+    "cavalgar": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "montante",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "luta longa",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "integridade",
-      "foco": "medo na batalha",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "montante",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 4,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 3,
-    "valor": 4
+    "temperanca": 3
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:montante"
+      }
+    ],
+    "armaduras": [
+      {
+        "base": "placa-completa",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Montante",
-      "atrib": "forca",
-      "pericia": "armas",
-      "dado": 2,
-      "mao": 2,
-      "tipo": "corte",
-      "ticks": 7,
-      "classe": "pesada"
+      "arma": "montante",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Pele Curtida",
-      "descricao": "Técnica pele-curtida, nível 1: +2 de Absorção contra Impacto.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "pele-curtida",
+        "nivel": 1
+      }
     },
     {
       "nome": "Aguentar o Tranco",
-      "descricao": "Técnica aguentar-o-tranco, nível 1: ignora a penalidade do estado Machucado.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "aguentar-o-tranco",
+        "nivel": 1
+      }
     },
     {
       "nome": "Tensionar",
-      "descricao": "Técnica tensionar, nível 1: por 1 de Energia, ao ser atingido, +2 de Absorção contra aquele golpe.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Placa e Pele de Pedra",
-      "descricao": "a placa completa (Corte 9 vestido) e as Técnicas do caminho Pele de Pedra.",
-      "classe": "livro"
-    },
-    {
-      "nome": "Falha de Impacto",
-      "descricao": "a placa segura pouco Impacto (Impacto 4 da armadura, 10 vestido com a natural).",
-      "classe": "livro"
-    },
-    {
-      "nome": "Falha de perfuração",
-      "descricao": "a placa completa é N3; só perfuração N3 ou acima passa o gate (o site dizia N2).",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "tecnica": {
+        "id": "tensionar",
+        "nivel": 1
+      }
     },
     {
       "nome": "Sem inimizades naturais",
-      "descricao": "o traço social do Humano; parte do Neutro com os outros povos na Régua de Relação.",
-      "classe": "livro"
-    },
-    {
-      "nome": "muralha de aço",
-      "descricao": "avança devagar à frente da linha, absorve os golpes e segura a posição; não recua.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão, audição, olfato: humanos."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "o traço social do Humano"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "muralha de aço",
+      "formas": "todas",
+      "texto": "avança devagar à frente da linha, absorve os golpes e segura a posição; não recua."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão, audição, olfato",
+      "descricao": "humanos",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humana; disciplinada",
+    "tracos": "armadura de placas completa, montante nas costas, pele curtida de cicatrizes"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "à frente da linha, com um comandante",
+    "atividade": "diurno",
+    "dieta": "onívoro",
+    "caca": "não se aplica",
+    "dianteDeGente": "segura a posição; obedece ao comandante"
+  },
+  "ecologia": {
+    "terreno": [
+      "urbano",
+      "planície"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Cavaleiro de placa completa e montante, tocado pela Centelha a ponto de a pele resistir como pedra. Avança como muralha, aguenta golpes que derrubariam outro soldado e segura a posição.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Avança como muralha, absorve golpes que derrubariam outro soldado e segura posições que ninguém mais aguentaria segurar. Social: à frente da linha, com um comandante."
+      "texto": "Avança como muralha, absorve golpes que derrubariam outro soldado e segura posições que ninguém mais aguentaria segurar."
     },
     {
       "titulo": "Personalidade",
@@ -154,78 +177,24 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Foi tocado pela Centelha o bastante para que sua pele resista como pedra, um dom raro entre humanos que o eleva acima da tropa comum e desperta tanto respeito quanto desconfiança."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Humano Médio, Centelha 1, 40 PV, de placa (Impacto 10, Corte 9, Perfuração 5, N3), mais +2 contra Impacto da Pele Curtida e +2 contra um golpe do Tensionar. Esquiva e Bloqueio 11. O montante dá dano médio 16. Vença-o com maça e martelo ou com perfuração N3."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Urban",
-      "Plains"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/cavaleiro-de-elite_pdm.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "Placa + Pele de Pedra: Absorção altíssima contra corte. Vença-o com Impacto (a placa quase não absorve), perfuração nível 2+ ou Proeza.",
-  "pendente": false,
-  "fonte": {
-    "deslocamento": {
-      "ft": 30,
-      "origem": "tabela"
+  "revisao": [
+    {
+      "campo": "ataques.Montante",
+      "motivo": "2d6 + Força × 2, o do livro; o site dava 3 dados"
     },
-    "cr": "4",
-    "crConf": "estimado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 40,
-    "esquiva": 14,
-    "bloqueio": 14,
-    "defesa": 14,
-    "defesaMental": 17,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 6,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 177.15,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      }
-    },
-    "vestida": {
-      "esquiva": 11,
-      "bloqueio": 11,
-      "defesa": 11,
-      "contraTiro": 11,
-      "absorcao": {
-        "impacto": 10,
-        "corte": 9,
-        "perfuracao": 5
-      },
-      "nivel": 3,
-      "penalidade": 3
+    {
+      "campo": "virtudes.temperanca",
+      "motivo": "3; o site tinha 2"
     }
-  },
-  "tech": {
-    "pele-curtida": true,
-    "aguentar-o-tranco": true,
-    "tensionar": true
-  },
-  "notasObservacao": [
-    "`montante`: 2d6 + Força × 2, o do livro; o site dava 3 dados",
-    "`absorcao`: a Pele Curtida (+2 contra Impacto) não entra no número da linha Absorção, que segue a conta do livro; fica nas Manobras",
-    "`temperanca`: 3; o site tinha 2 **[provisório]**",
-    "`card e equipamento`: a placa está sempre vestida (D-188)"
   ]
 }

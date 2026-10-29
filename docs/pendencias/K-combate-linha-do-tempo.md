@@ -354,7 +354,7 @@ revistos por ela.
 
 - [ ] **K25 · [DECIDIR] A Defesa da arma e a do escudo somam, e o escudeiro vira parede.** A
   `defesas.md` escreve "**+ defesa da arma/escudo**", no singular, mas a ficha **soma as duas**
-  (`ficha-engine.ts:1570`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
+  (`ficha-engine.ts:1472`, `Bloqueio soma a Defesa das armas/escudos do conjunto EM USO`). Com
   espada longa (+1) e heater (+3) dá **+4** sobre a Defesa nua 21, e o acerto contra guarda cheia
   desaba: espada longa **6%**, adaga 10%, montante **3%** (com Centelha ×1, pool 5d6). Contra
   guarda comida pela Pressão (−4) o mesmo par vai a 40%, ou seja: **o combate contra escudeiro
@@ -544,7 +544,7 @@ revistos por ela.
   Esquiva e Bloqueio em −2". `defesaPerdida()`, `src/lib/combate-tempo.ts:696`: `pressao = (acao?.pressao || 0) * pressaoPorAtaque`.
   Os dois lugares que incrementam a pressão só somam no ALVO do golpe, nunca em quem ataca:
   `scripts/sim/motor.mjs:437`: `(base.pressao || 0) + 1`.
-  Na mesa, `src/pages/mesa/grid.astro:9068`: `pressao: (antes.pressao || 0) + golpes` (repete em `:9150`).
+  Na mesa, `src/pages/mesa/grid.astro:9069`: `pressao: (antes.pressao || 0) + golpes` (repete em `:9150`).
   O Grid hoje cobra MENOS do que o livro escreve. Achado comparando a
   bancada da Fase 5b (que soma os dois lados, por decisão explícita do autor nesta rodada)
   com o comportamento real do Grid. **Não mexi no Grid nem no `motor.mjs`** (fora de

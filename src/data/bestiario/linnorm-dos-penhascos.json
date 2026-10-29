@@ -1,39 +1,29 @@
 {
-  "ordem": 248,
   "id": "linnorm-dos-penhascos",
   "idAntigo": "mon-crag-linnorm",
   "nome": "Linnorm dos Penhascos",
   "nomeIngles": "Crag Linnorm",
-  "categoria": "Dragão",
-  "categoriaLegada": "Dragão",
+  "categoria": "dragao",
   "papel": "chefe",
-  "conceito": "dragão Enorme",
-  "descricao": "O menor dos linnorms, serpente-dragão sem asas de 18 m e sangue vulcânico. Cospe lava, morde com veneno que arde por dentro e fecha as próprias feridas; quem o mata carrega a maldição do fogo.",
-  "tags": [
-    "dragao",
-    "centelha"
-  ],
-  "imagem": "bestiario/linnorm-dos-penhascos_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "18 m de comprimento, 0,79 m de altura",
-    "peso": "5,4 t",
-    "comprimento": 18,
-    "largura": 0.79,
-    "altura": 0.79
-  },
-  "locomocao": {
-    "terra": 4,
-    "voo": 10,
-    "natacao": 6
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 4,
-    "arranque": 6,
-    "corrida": 9
-  },
+  "ameaca": 6,
   "centelha": 6,
-  "attrs": {
+  "corpo": {
+    "postura": "serpente com duas patas dianteiras; sem asas; voa",
+    "apoio": "outro",
+    "altura": 0.79,
+    "largura": 0.79,
+    "profundidade": null,
+    "comprimento": 18,
+    "massa": 5400,
+    "area": 10.7,
+    "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
+    "segundoTamanho": {
+      "area": 3.86,
+      "posturaDoTamanho": "enrolado"
+    }
+  },
+  "couraca": 9,
+  "atributos": {
     "forca": 11,
     "destreza": 5,
     "vigor": 11,
@@ -44,123 +34,211 @@
     "perspicacia": 3,
     "compostura": 6
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 2,
     "integridade": 6,
     "prontidao": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 3,
     "disparo": 4,
     "musculatura": 3
   },
-  "virtues": {
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
     "compaixao": 2,
     "conviccao": 5,
-    "temperanca": 3,
-    "valor": 6
+    "temperanca": 3
   },
-  "willpower": 11,
+  "vontade": 11,
   "aparencia": 9,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "voo": {
+      "batalha": 10
+    },
+    "nado": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 3,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 3,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "pata-dianteira",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Sopro de magma",
-      "atrib": "vigor",
-      "pericia": "disparo",
-      "dado": 9,
-      "mao": 1,
-      "tipo": "fogo",
-      "ticks": 7,
-      "forca": false,
+      "parte": "boca",
+      "habilidade": "disparo",
       "classe": "distancia",
-      "distancia": true
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "9d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "fogo",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [
-    "fogo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Sopro de magma",
-      "descricao": "poder natural (base Fogo 4, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Efeito: a lava queima tudo na linha. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 4
+      },
+      "ataque": "Sopro de magma",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "18 m à frente",
+      "area": "linha de 18 m",
+      "efeito": "a lava queima tudo na linha",
+      "dano": "9d6 + Centelha, fogo",
+      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks (\"a cada poucos rounds\", site)"
     },
     {
       "nome": "rastro de lava",
-      "descricao": "a linha do sopro continua ardendo e fere de novo quem passa por cima logo depois (site).",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a linha do sopro continua ardendo e fere de novo quem passa por cima logo depois"
     },
     {
       "nome": "garras em sequência",
-      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada"
     },
     {
-      "nome": "Resistência a magia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site), como no dragão vermelho ancião. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "nome": "Resistência à magia 25",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Liberdade de movimento",
-      "descricao": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá (site).",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá"
     },
     {
-      "nome": "Regeneração",
-      "descricao": "fecha as feridas sem parar; só o ferimento de ferro frio não fecha (site). O vocabulário de Elementos não tem ferro frio, e o livro não tem regra de regeneração.",
-      "classe": "sem regra ainda"
+      "nome": "Regeneração 10",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de ferro frio"
     },
     {
       "nome": "Maldição da morte",
-      "descricao": "quem o mata passa a arder por dentro e fica vulnerável ao fogo para sempre (site).",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "quem o mata passa a arder por dentro e fica vulnerável ao fogo para sempre"
     },
     {
       "nome": "Imune a veneno, sono, paralisia e maldições comuns",
-      "descricao": "nada disso o pega (site).",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "nada disso o pega"
+    }
+  ],
+  "comoLuta": [
+    {
+      "nome": "fera do norte",
+      "formas": "todas",
+      "texto": "cospe lava sobre quem se aproxima, desce sobre o mais forte com mordida e garras, e não recua: as feridas fecham sozinhas."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão verdadeira",
+      "descricao": "enxerga através de ilusão, disfarce e escuridão (site; sem regra ainda)",
+      "formas": "todas",
       "classe": "sem regra ainda"
     },
     {
-      "nome": "fera do norte",
-      "descricao": "cospe lava sobre quem se aproxima, desce sobre o mais forte com mordida e garras, e não recua: as feridas fecham sozinhas.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão verdadeira: enxerga através de ilusão, disfarce e escuridão (site; sem regra ainda). · visão no escuro: vê sem luz."
+      "nome": "visão no escuro",
+      "descricao": "vê sem luz",
+      "formas": "todas"
     }
   ],
-  "venenos": [
-    {
-      "nome": "Veneno no jogo",
-      "texto": "Peçonha de linnorm dos penhascos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o fogo que arde por dentro fica descrito, sem número (sem regra ainda)."
-    }
-  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um bicho grande; quanto tempo, o Mestre decide",
+    "camuflagem": "escamas escuras contra a rocha",
+    "mente": "Inteligência 1; fera primeva",
+    "tracos": "escamas escuras, calor vulcânico sob a pele; por onde se arrasta, a terra racha e fumega"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "reina sobre as colinas geladas e caça o que entra nelas",
+    "dianteDeGente": "ataca quem se estabelece no território"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha"
+    ],
+    "clima": [
+      "frio"
+    ]
+  },
+  "descricao": "O menor dos linnorms, serpente-dragão sem asas de 18 m e sangue vulcânico. Cospe lava, morde com veneno que arde por dentro e fecha as próprias feridas; quem o mata carrega a maldição do fogo.",
   "lore": [
     {
       "titulo": "Fera Primeva do Norte",
@@ -175,85 +253,71 @@
       "texto": "Lendas dizem que quem mata um linorme carrega para sempre uma centelha de sua fúria ardente, lembrete do preço daquela morte."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Peçonha de linnorm dos penhascos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o fogo que arde por dentro fica descrito, sem número (sem regra ainda)."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme esticado, Grande enrolado. 90 PV, Impacto 17, Corte e Perfuração 6, Couraça 9. Esquiva 14, Bloqueio 10. Sopro de lava em linha de 18 m a cada 24 Ticks. Mordida venenosa e garras até três por ação. Ninguém o prende, e as feridas fecham (sem regra ainda). +2 contra Artes. Fogo não o fere."
     }
   ],
-  "ecologia": {
-    "tipo": "Dragon",
-    "terreno": [
-      "Mountain"
-    ],
-    "clima": [
-      "Cold"
+  "imagens": [
+    "bestiario/linnorm-dos-penhascos_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Crag Linnorm",
-    "cr": "14",
-    "tipo": "dragão Imenso",
-    "tamanho": "imenso",
-    "valores": {
-      "for": 34,
-      "des": 18,
-      "con": 25,
-      "int": 5,
-      "sab": 18,
-      "car": 21
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Sopro de magma",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "tabela"
+    {
+      "campo": "sentidos.visão verdadeira",
+      "motivo": "sem regra ainda no livro"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 6,
-  "v3": {
-    "pv": 90,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 32,
-    "defesaSocial": 12,
-    "absorcao": {
-      "impacto": 17,
-      "corte": 6,
-      "perfuracao": 6
+    {
+      "campo": "atributos.forca",
+      "motivo": "O site tinha 13. Desce para 11 pelo teste de ordem (manual, Passo 7), o mesmo método que o autor mandou aplicar ao neothelid (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)): com 13, a serpente de 5,4 t passava os dragões adultos, mais pesados (o verde de 7 t, 10; o vermelho e o azul, 11), e o neothelid de 6 t (11). Não fica abaixo do anquilossauro de 5,2 t (11), mais leve. O mamute de 5 t do molde tem 13, mas a Força dele vem da tromba e do corpo de elefante; \"corpo de serpente, todo músculo\" já está na Musculatura e não resiste ao teste contra os dragões. Perto da Força de referência da massa (11,44, manual 3.9); 11, pelo teste de ordem; o site tinha 13 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro))"
     },
-    "couracaNivel": 9,
-    "pesoErguido": 1507.51,
-    "deslocamento": {
-      "terra": {
-        "batalha": 4,
-        "arranque": 6,
-        "corrida": 9
-      },
-      "voo": {
-        "batalha": 10
-      },
-      "nado": 6
+    {
+      "campo": "corpo.altura",
+      "motivo": "O diâmetro que dá a massa do site (linha Massa). Erguida, levanta um quinto do corpo"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). \"Escamas grossas absorvem grande parte do dano físico\" (site): a Couraça dos dragões adultos (9), para o mais fraco dos linnorms . O nível fica fora da Absorção (decisoes-autor §16); nível 9"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Mordida",
+      "motivo": "Mordida de predador grande (`regra-construcao.md` §7), N3 como a dos dragões adultos. Golpe de boca: Força × 1. Inocula o veneno (Veneno e doença) . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Enorme esticado, Grande enrolado, pela área do corpo de serpente; o site dizia Imenso"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "nenhuma, pela fonte"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "9d6 + Centelha, linha de 18 m, pela escada de Centelha do lote 23 (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "pelo padrão do \"Ferrão de gigante\""
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 10",
+      "motivo": "Antes: sem regra e sem nível. N 10 pela referência Crag Linnorm (Archives of Nethys)."
     }
-  },
-  "notasObservacao": [
-    "`forca`: 11, pelo teste de ordem; o site tinha 13 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**",
-    "`tamanho`: Enorme esticado, Grande enrolado, pela área do corpo de serpente; o site dizia Imenso **[provisório]**",
-    "`asas`: nenhuma, pela fonte **[provisório]**",
-    "`couraca`: nível 9 **[provisório]**",
-    "`sopro`: 9d6 + Centelha, linha de 18 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**",
-    "`veneno`: pelo padrão do \"Ferrão de gigante\" **[provisório]**",
-    "`resistência a magia`: +2 contra Artes, sugestão da ficha (D-197)"
   ]
 }

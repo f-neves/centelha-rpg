@@ -1,100 +1,211 @@
 {
-  "ordem": 30,
   "id": "gigante-do-fogo",
   "idAntigo": "mon-gigante-do-fogo",
   "nome": "Gigante do Fogo",
   "nomeIngles": "Giant, Fire",
-  "categoria": "Gigante",
+  "categoria": "gigante",
   "papel": "chefe",
-  "conceito": "humanoide Grande (gigante)",
-  "descricao": "Colosso humanoide, força bruta em escala descomunal.",
-  "tags": [
-    "gigante",
-    "centelha"
-  ],
-  "imagem": "bestiario/gigante-do-fogo_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "4,5 m de altura",
-    "peso": "3,2 t"
-  },
-  "locomocao": {
-    "terra": 4
-  },
+  "ameaca": 5,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé",
+    "apoio": "bipede",
+    "altura": 4.5,
+    "largura": 1.13,
+    "profundidade": 0.58,
+    "comprimento": null,
+    "massa": 1247,
+    "area": 4.5,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 2,
+  "atributos": {
     "forca": 10,
     "destreza": 2,
     "vigor": 8,
-    "influencia": 2,
-    "perspicacia": 2,
-    "compostura": 3,
     "percepcao": 4,
     "inteligencia": 2,
-    "raciocinio": 3
+    "raciocinio": 3,
+    "influencia": 2,
+    "perspicacia": 2,
+    "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "arremesso": 3,
+    "bloqueio": 1,
     "esquiva": 0,
+    "atletismo": 1,
+    "integridade": 3,
     "prontidao": 2,
-    "integridade": 3
+    "oficios-gerais": 2
   },
-  "virtues": {
+  "habilidadesSec": {
+    "lideranca": 2,
+    "intimidacao": 3,
+    "musculatura": 3
+  },
+  "especialidades": {
+    "oficios-gerais": [
+      {
+        "foco": "forja",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 5
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": [
+      {
+        "base": "placa-municao",
+        "vestida": true
+      }
+    ]
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada descomunal",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "impacto",
+      "parte": "punho",
+      "habilidade": "briga",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     },
     {
-      "nome": "Arremessar rocha",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "distancia": true,
-      "arremesso": true,
-      "tipo": "impacto",
+      "nome": "Rocha arremessada",
+      "parte": "mao",
+      "habilidade": "arremesso",
+      "classe": "pesada",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6,
-      "notas": "dado pelo porte Grande"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "gelo"
-  ],
-  "resistencias": [
-    "fogo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Armadura da forja",
-      "descricao": "Absorção muito alta com armadura pesada forjada por eles mesmos"
-    },
-    {
-      "nome": "Golpe de espadão",
-      "descricao": "dano altíssimo corpo a corpo, mas ataque mais lento (perde a Iniciativa no turno seguinte)"
+      "nome": "Arremesso de rocha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Rocha arremessada",
+      "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+      "duracao": "instantânea",
+      "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+      "area": "um alvo",
+      "efeito": "a rocha derruba o alvo Médio ou menor que ela fere",
+      "dano": "2d6 + Força + Centelha, Impacto",
+      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
+      "limiteDeUso": "enquanto houver rocha por perto"
     },
     {
       "nome": "Sangue de forja",
-      "descricao": "Vontade alta, resiste a Abalado"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "um efeito que deixaria Abalado",
+      "duracao": "a do efeito",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "a disciplina de forja resiste ao medo: +2 na Defesa Mental contra o que deixa Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, com o +2",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Presença marcial",
-      "descricao": "comanda tropas próximas; aliados a até 9m ganham +1d em Ataque"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "uma ação, Velocidade 6, uma ordem gritada",
+      "duracao": "até o fim da próxima ação de cada aliado",
+      "alcance": "9 m",
+      "area": "os aliados que ouvem a ordem a até 9 m",
+      "efeito": "comanda as tropas: cada aliado soma +2 na próxima jogada de ataque",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "uma vez por cena"
+    },
+    {
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada descomunal",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "comandante da forja",
+      "formas": "todas",
+      "texto": "luta em formação, com os escravos e os ogros na frente; grita a ordem que fortalece a tropa, atira rochas e entra de espadão onde a linha cede."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar; o calor das fornalhas e da lava não o incomoda (site)",
+    "mente": "humanoide, disciplinada e militarista",
+    "tracos": "gigante de 4,5 m em armadura de placas grosseiras forjada por ele mesmo"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": true,
+    "tracao": true
+  },
+  "comportamento": {
+    "social": "hierarquia militar rígida, em fortalezas, com escravos (orcs e ogros)",
+    "atividade": "qualquer hora",
+    "dieta": "onívoro",
+    "caca": "saqueia e escraviza",
+    "dianteDeGente": "escraviza o mais fraco; obedece ao mais forte"
+  },
+  "ecologia": {
+    "terreno": [
+      "montanha",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Gigante de 4,5 m, disciplinado e militarista, que vive em fortalezas sobre fendas vulcânicas e forja a própria armadura de placas. Comanda tropas e escravos, atira rochas e corta com o espadão; o fogo pouco o fere, e o gelo, mais.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -111,53 +222,50 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Sua forja é vista como um eco grosseiro e violento da tradição sagrada do Forjador, uma cópia bárbara do ofício dos anões feita a fogo e chicote. Para o povo comum, é lenda de fornalha de uma era mais mágica que a Supressão preferiria esquecida."
+    },
+    {
+      "titulo": "Aptidões",
+      "texto": "montaria não · carga sim · tração sim"
     }
   ],
-  "ecologia": {
-    "tipo": "Giant",
-    "terreno": [
-      "Mountain",
-      "Underground"
+  "imagens": [
+    "bestiario/gigante-do-fogo_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "gelo",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Ofícios 2, Prontidão 2.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Gigante do Fogo",
-    "cr": "10",
-    "tipo": "humanoide Grande (gigante)",
-    "tamanho": "grande",
-    "valores": {
-      "for": 31,
-      "des": 9,
-      "con": 22,
-      "int": 10,
-      "sab": 14,
-      "car": 11
-    },
-    "pericias": [
-      "Ofícios 2",
-      "Prontidão 2"
+    "resistencias": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ],
-    "nota": "Imunidade a fogo (Ex/Su) tênue: Centelha 1.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
+    "imunidades": []
   },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "proezaFutura": [
+  "revisao": [
     {
-      "caminho": "sangue-imune"
+      "campo": "habilidadesEspeciais.Arremesso de rocha",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
     {
-      "caminho": "quebra-muralhas"
+      "campo": "habilidadesEspeciais.Sangue de forja",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Presença marcial",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Couraça: pele grossa de gigante, como o gigante da colina (2) ; o nível fica fora da Absorção (decisoes-autor §16). Vestido, pelas regras do personagem (`armas-e-armaduras.md`; manual 5.2): a placa de munição (`placa-municao`: Impacto 4, Corte 7, Perfuração 4, N2, Penalidade 3) soma por cima da natural (D-188). A resistência é a do site (Elementos); 2, pele grossa de gigante"
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": "site"
     }
   ]
 }

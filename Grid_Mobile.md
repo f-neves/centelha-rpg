@@ -64,7 +64,7 @@ mas só 388 deles estão na tela quando a página abre. A página inteira mede *
 - **`.al-sec` quebra em 4 fileiras** ("O acerto" e "O dano"), o rótulo quebra em duas linhas, e o
   campo do motivo corta o texto no meio ("por quê (vai para o registr…").
 - **O menu da peça mede 439px de altura**, 10 itens de 36px. Em retrato passa raspando; em
-  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7852` (`innerHeight - r.height - 8`)
+  **paisagem** (390px de altura) não cabe, e o encaixe de `grid.astro:7853` (`innerHeight - r.height - 8`)
   devolve um topo **negativo**: o menu sai pela borda de cima e não há rolagem
   dentro dele.
 - **`.rg-acs` (`grid.astro:1961`) nasce com `opacity: 0` e só acende no `:hover`.** No dedo não há
@@ -100,10 +100,10 @@ Três regras que decorrem disso, e que valem para cada fase adiante:
 
 Já existem dois precedentes prontos no repositório, e o plano os copia em vez de inventar:
 
-- **A ficha em abas** (`FichaSkeleton.astro:1129-1291`): `body.ficha-abas` ligada por
+- **A ficha em abas** (`FichaSkeleton.astro:1130-1292`): `body.ficha-abas` ligada por
   `matchMedia('(max-width: 900px)')`, painel por aba, barra fixa no pé com
   `env(safe-area-inset-bottom)`, folha de ações atrás do ⋯, e linhas de 48px.
-- **A mira no dedo** (`artes-grid-mesa.ts:537-542`): a pergunta certa é `pointer: coarse`, e não a
+- **A mira no dedo** (`artes-grid-mesa.ts:538-543`): a pergunta certa é `pointer: coarse`, e não a
   largura, e o gesto sem hover ganha um passo de confirmação em vez de confirmar no primeiro toque.
 
 ---

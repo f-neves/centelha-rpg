@@ -1,39 +1,32 @@
 {
-  "ordem": 273,
   "id": "pseudodragao",
   "idAntigo": "mon-pseudodragon",
   "nome": "Pseudodragão",
   "nomeIngles": "Pseudodragon",
-  "categoria": "Dragão",
-  "categoriaLegada": "Dragão",
+  "categoria": "dragao",
   "papel": "soldado",
-  "conceito": "dragão Médio",
-  "descricao": "Primo pequeno dos dragões, do tamanho de um gato com asas. Tímido e brincalhão, fala pela mente e por ronronados, e segue de bom grado quem o trata como igual. Quando precisa, crava o ferrão da cauda, que faz dormir.",
-  "tags": [
-    "dragao",
-    "centelha"
-  ],
-  "imagem": "bestiario/pseudodragao_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "0,9 m de comprimento, 0,17 m de altura",
-    "peso": "3,2 kg",
-    "comprimento": 0.9,
-    "largura": 0.12,
-    "altura": 0.17,
-    "envergadura": 1.5
-  },
-  "locomocao": {
-    "voo": 6,
-    "terra": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 2,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro patas; voador",
+    "apoio": "quadrupede",
+    "altura": 0.17,
+    "largura": 0.12,
+    "profundidade": null,
+    "comprimento": 0.9,
+    "comprimentoSemCauda": 0.3,
+    "caudaGrossa": false,
+    "envergadura": 1.5,
+    "massa": 3.2,
+    "area": 0.07,
+    "posturaDoTamanho": "de lado, pousado, asas fechadas",
+    "segundoTamanho": {
+      "area": 0.47,
+      "posturaDoTamanho": "de baixo, asas abertas"
+    }
+  },
+  "couraca": 1,
+  "atributos": {
     "forca": 1,
     "destreza": 4,
     "vigor": 3,
@@ -44,8 +37,9 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 1,
     "furtividade": 2,
@@ -53,110 +47,199 @@
     "prontidao": 1,
     "empatia": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "voo": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "vista e presença",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "vista e presença",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 5,
     "compaixao": 2,
     "conviccao": 5,
-    "temperanca": 3,
-    "valor": 5
+    "temperanca": 3
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 8,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "voo": {
+      "batalha": 6
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Garras",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "pata-dianteira",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Ferrão",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "cauda",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "garras em sequência",
-      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Leve, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada"
     },
     {
       "nome": "Ferrão sonífero",
-      "descricao": "Ferrão: Ativação: o Ferrão que fere (1 de dano ou mais depois da Absorção). Duração: o sono, alguns minutos (site), ou até alguém sacudir o alvo. Alcance: o do corpo a corpo. Área: um alvo. Efeito: quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo, como no veneno do sono do drow. Dano: nenhum além do Ferrão. Resistência: corpo, Vigor + Resistência pela regra do veneno. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Ferrão",
+      "ativacao": "o Ferrão que fere (1 de dano ou mais depois da Absorção)",
+      "duracao": "o sono, alguns minutos (\"vários minutos\", site), ou até alguém sacudir o alvo",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo, como no veneno do sono do drow",
+      "dano": "nenhum além do Ferrão",
+      "resistencia": "corpo, Vigor + Resistência pela regra do veneno",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Telepatia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: 18 m, como a da couatl. Área: quem ele escolher ao alcance. Efeito: fala com qualquer criatura inteligente pela mente, sem língua em comum e sem abrir a boca. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativa",
+      "duracao": "permanente",
+      "alcance": "18 m, como a da couatl",
+      "area": "quem ele escolher ao alcance",
+      "efeito": "fala com qualquer criatura inteligente pela mente, sem língua em comum e sem abrir a boca",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Resistência a magia",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes (site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "nome": "Resistência à magia 12",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Imune a paralisia e sono",
-      "descricao": "nenhum efeito que paralise ou faça dormir o pega (site).",
-      "classe": "sem regra ainda"
-    },
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "nenhum efeito que paralise ou faça dormir o pega"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "tímido",
-      "descricao": "foge para o alto; encurralado, ou defendendo quem o trata como igual, crava o ferrão e espera o alvo dormir.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "foge para o alto; encurralado, ou defendendo quem o trata como igual, crava o ferrão e espera o alvo dormir."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "vê sem luz",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: vê sem luz (site). · visão na penumbra: enxerga com pouca luz (site). · sentido cego: sente presença próxima mesmo sem ver (site). · telepatia: sente e fala com as mentes a 18 m (Manobras)."
-    }
-  ],
-  "venenos": [
+      "nome": "visão na penumbra",
+      "descricao": "enxerga com pouca luz",
+      "formas": "todas"
+    },
     {
-      "nome": "Veneno no jogo",
-      "texto": "Veneno de pseudodragão · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pelo Ferrão. Os números do veneno do sono do drow; não está em venenos.json."
+      "nome": "sentido cego",
+      "descricao": "sente presença próxima mesmo sem ver",
+      "formas": "todas"
+    },
+    {
+      "nome": "telepatia",
+      "descricao": "sente e fala com as mentes a 18 m (Manobras)",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "a de um bicho pequeno; quanto tempo, o Mestre decide",
+    "mente": "inteligente; tímido e brincalhão, fala por gestos, ronronados e pela mente",
+    "tracos": "dragão em miniatura de escamas avermelhadas, asas de couro, cauda longa com ferrão"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário, ou ao lado de quem o trata como igual, às vezes pela vida inteira",
+    "atividade": "de dia",
+    "dieta": "carnívoro: insetos e bichos pequenos",
+    "caca": "no mato",
+    "dianteDeGente": "tímido; não aceita ser bicho de estimação, mas segue quem o trata como igual"
+  },
+  "ecologia": {
+    "terreno": [
+      "floresta"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Primo pequeno dos dragões, do tamanho de um gato com asas. Tímido e brincalhão, fala pela mente e por ronronados, e segue de bom grado quem o trata como igual. Quando precisa, crava o ferrão da cauda, que faz dormir.",
   "lore": [
     {
       "titulo": "Primo pequeno dos dragões",
@@ -167,83 +250,66 @@
       "texto": "Recusa ser tratado como animal domesticado, mas segue de bom grado quem o trata como igual, às vezes por uma vida inteira."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário, ou ao lado de quem o trata como igual, às vezes pela vida inteira."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Veneno de pseudodragão · Potência 13 · 1 minuto (sangue) · a cada 1 minuto · pool 2 (sono) · Desgaste 1 · pelo Ferrão. Os números do veneno do sono do drow; não está em venenos.json."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio no ar, Miúdo pousado. 6 PV, Impacto 4, Corte e Perfuração 1. Esquiva 12, Bloqueio 8. Mordida, garras e Ferrão leves; o Ferrão faz dormir. Fala pela mente a 18 m. +2 contra Artes. Foge para o alto."
     }
   ],
-  "ecologia": {
-    "tipo": "Dragon",
-    "terreno": [
-      "Forest"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/pseudodragao_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Pseudodragon",
-    "cr": "1",
-    "tipo": "dragão Minúsculo",
-    "tamanho": "minusculo",
-    "valores": {
-      "for": 7,
-      "des": 15,
-      "con": 13,
-      "int": 10,
-      "sab": 12,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ferrão sonífero",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte",
-      "nota": "voo 60; em terra 15"
+    {
+      "campo": "habilidadesEspeciais.Telepatia",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 6,
-    "esquiva": 12,
-    "bloqueio": 8,
-    "defesa": 12,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "corpo.altura",
+      "motivo": "As proporções do dragão branco jovem (1,3 m de cernelha em 2,3 m de corpo) escaladas pelo corpo do site (0,30 ÷ 2,3 = × 0,130)"
     },
-    "couracaNivel": 1,
-    "pesoErguido": 17.05,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      },
-      "voo": {
-        "batalha": 6
-      }
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,9 m do branco jovem × 0,130"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). Escama miúda de dragão, que só tira o arranhão . O nível fica fora da Absorção (decisoes-autor §16); nível 1"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": ""
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Médio de asas abertas, 3,8% acima do corte, pelo corpo, como a águia-real; Principal Médio para Miúdo; as duas áreas mantidas, mudando a postura principal (2e-1)."
+    },
+    {
+      "campo": "corpo",
+      "motivo": "na zona de transição, desce"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "na zona de transição, desce"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "o do sono do drow"
     }
-  },
-  "notasObservacao": [
-    "`tamanho`: Médio de asas abertas, 3,8% acima do corte, pelo corpo, como a águia-real **[provisório]**",
-    "`pv`: na zona de transição, desce **[provisório]**",
-    "`couraca`: nível 1 **[provisório]**",
-    "`veneno`: o do sono do drow **[provisório]**",
-    "`telepatia`, `resistência a magia`, `ferrão sonífero`: números sugeridos pela ficha (D-197)"
   ]
 }

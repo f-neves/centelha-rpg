@@ -1,83 +1,202 @@
 {
-  "ordem": 225,
   "id": "girallon",
   "idAntigo": "mon-girallon",
   "nome": "Girallon",
   "nomeIngles": "Girallon",
-  "categoria": "Besta mágica",
+  "categoria": "besta-magica",
   "papel": "fera",
-  "conceito": "besta mágica Grande",
-  "descricao": "Fera tocada pela magia, além do reino natural.",
-  "tags": [
-    "besta-magica",
-    "centelha"
-  ],
-  "imagem": "bestiario/girallon_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,4 m de altura",
-    "peso": "360 kg"
-  },
-  "locomocao": {
-    "terra": 4,
-    "escalada": 4
-  },
+  "ameaca": 4,
   "centelha": 1,
-  "attrs": {
-    "forca": 6,
+  "corpo": {
+    "postura": "ereto; anda também de quatro e de seis",
+    "apoio": "bipede",
+    "altura": 2.4,
+    "largura": 1.2,
+    "profundidade": null,
+    "comprimento": null,
+    "massa": 360,
+    "area": 1.85,
+    "posturaDoTamanho": "silhueta de frente, de pé"
+  },
+  "couraca": 1,
+  "atributos": {
+    "forca": 8,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 1,
-    "perspicacia": 1,
-    "compostura": 2,
     "percepcao": 3,
     "inteligencia": 1,
-    "raciocinio": 1
+    "raciocinio": 1,
+    "influencia": 1,
+    "perspicacia": 1,
+    "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 1,
     "esquiva": 1,
+    "atletismo": 3,
+    "furtividade": 1,
+    "integridade": 2,
     "prontidao": 1,
-    "integridade": 2
+    "resistencia": 3,
+    "sociabilidade": 0,
+    "sobrevivencia": 3
   },
-  "virtues": {
+  "habilidadesSec": {
+    "escalada": 3,
+    "musculatura": 4
+  },
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "faro",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
-  "aparencia": 5,
+  "vontade": 9,
+  "aparencia": 3,
+  "deslocamento": {
+    "terra": {
+      "batalha": 4,
+      "arranque": 6,
+      "corrida": 9
+    },
+    "escalada": {
+      "batalha": 4
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
-      "nome": "Quatro garras e mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "corte",
+      "nome": "Garras",
+      "parte": "garra-quatro-maos",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": -1,
+      "bloqueiaComoArma": null
+    },
+    {
+      "nome": "Mordida",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 0,
-      "ticks": 6
+      "bloqueiaComoArma": null
     }
   ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
-      "nome": "Quatro Braços Ferozes",
-      "descricao": "Ataca com quatro garras musculosas ao mesmo tempo, cada uma capaz de rasgar profundamente a carne da presa."
+      "nome": "Quatro braços ferozes",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada"
     },
     {
-      "nome": "Garras que Dilaceram",
-      "descricao": "Ao acertar múltiplas garras no mesmo alvo, causa dano contínuo adicional pelo rasgo profundo dos ferimentos."
+      "nome": "a quarta garra",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "ataca com os quatro braços ao mesmo tempo; a Rajada leva só três golpes"
     },
     {
-      "nome": "Sentidos da Selva",
-      "descricao": "Enxerga no escuro, sente o cheiro da presa a distância e se move com perfeita agilidade entre galhos e trepadeiras."
+      "nome": "garras e mordida juntas",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "rasga com as garras e morde na mesma ação"
     },
     {
-      "nome": "Trepador Nato",
-      "descricao": "Escala árvores e paredes com a mesma velocidade com que corre em terreno aberto."
+      "nome": "garras que dilaceram",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "texto": "a tag Sangramento"
+    },
+    {
+      "nome": "agarrar",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "agarrar"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "território",
+      "formas": "todas",
+      "texto": "ataca tudo o que invade o domínio dele, até outro girallon; desce das árvores sobre a presa."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro absoluto",
+      "formas": "todas"
+    },
+    {
+      "nome": "faro",
+      "descricao": "Prontidão (faro) +2; sente a presa a distância",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "camuflagem": "nenhuma; o branco aparece na selva",
+    "mente": "animal (fera de Inteligência 1)",
+    "tracos": "grande macaco de 2,4 m, pelo branco espesso, quatro braços musculosos de garras e presas à mostra"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário e territorial",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "desce das árvores sobre a presa",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "selva",
+      "floresta"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Grande macaco de pelo branco e quatro braços que ataca tudo o que invade o domínio dele, até outros da mesma espécie. Escala árvore e parede tão rápido quanto corre, e antigos entalhes dizem que os primeiros eram homens que trocaram a humanidade pela força.",
   "lore": [
     {
       "titulo": "Fera branca da selva",
@@ -92,39 +211,30 @@
       "texto": "Diz a lenda que alguns girallons mantiveram a inteligência antiga e se tornaram líderes cruéis, escondidos nas partes mais fundas da selva."
     }
   ],
-  "ecologia": {
-    "tipo": "Beast",
-    "terreno": [
-      "Jungle",
-      "Forest"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/girallon_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Girallon",
-    "cr": "6",
-    "tipo": "besta mágica Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 19,
-      "des": 17,
-      "con": 18,
-      "int": 2,
-      "sab": 12,
-      "car": 7
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Acima do teto humano (For 19 no Pathfinder). Teste de ordem: entre o gorila (7, 206 kg) e o gigantopiteco (9, 300 kg); mais pesado que os dois, mas a força se divide em quatro braços, cada um mais fino que o do gorila. O site tinha 6, um abaixo do gorila mais leve; 6 para 8, pelo teste de ordem com o gorila (7 com 206 kg) e o gigantopiteco (9 com 300 kg)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 40,
-      "origem": "fonte"
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4
+    {
+      "campo": "ataques.Garras",
+      "motivo": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "o site gravava \"Quatro garras e mordida\" (`inimigos.json`: \"2d6 +7 corte\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto: garras Médias, até três pela Rajada, e mordida. Dano médio: 14 antes; depois, 12,5 por garra (até três por ação) e 12,5 na mordida"
+    }
+  ]
 }

@@ -10,7 +10,7 @@
 import ARTES_D from '../data/artes.json';
 import EFEITOS_D from '../data/efeitos.json';
 import COND_D from '../data/condicoes.json';
-import { regras } from './calc';
+import { regras } from './motor';
 import { centroHex, distanciaHex, dentro, vizinhos, type Hex } from './hex';
 import { acaso } from './acaso';
 
@@ -1906,7 +1906,7 @@ export function aguentouFicarParado(total: number, d: Desvio): boolean {
 export function opcoesDeFicarParado(quem: { virtudes?: Record<string, number> }): { chave: 'valor' | 'temperanca'; rotulo: string; soma: number }[] {
   const v = quem.virtudes || {};
   return [
-    { chave: 'valor', rotulo: 'Bravura', soma: Number(v.valor || 0) },
+    { chave: 'valor', rotulo: 'Bravura', soma: Number(v.bravura ?? v.valor ?? 0) },
     { chave: 'temperanca', rotulo: 'Temperança', soma: Number(v.temperanca || 0) },
   ];
 }

@@ -1,225 +1,42 @@
-// Núcleo do editor de criaturas do bestiário: vocabulário, derivados e persistência.
-// Fica fora do .astro para poder ser importado tanto no servidor (montar o form)
-// quanto no cliente (recalcular ao vivo), sem duplicar número nenhum.
-import { pv, defesa, defesaMental, defesaSocial, ataqueCentelha, regras } from './calc';
-import type { Porte } from './calc';
-import vocab from '../data/elementos-vocab.json';
-// Via `equip.ts`, e não `armaduras.json` direto: o JSON guarda o envelope aninhado
-// (`armadura: {...}`), e `ARMADURAS` já vem achatado (`soak`/`penalidade` na raiz),
-// o mesmo formato que este arquivo sempre leu. Ler o JSON direto aqui de novo reabriria
-// o mesmo jeito de quebrar em silêncio que a migração do catálogo já resolveu em `equip.ts`.
-import { ARMADURAS as armaduras } from './equip';
+// Editor de fonte unificada. A validação e todas as contas vêm dos módulos comuns.
+import { criatura, vistaPublicaCriatura, type EntradaCriatura, type AtaqueEntrada } from './motor';
+import { criaturaNovaSchema } from '../../scripts/criatura-schema.mjs';
 
-/** Vocabulário de fraqueza e resistência, agrupado, vindo de `elementos-vocab.json`,
- *  que é a fonte única dele (o validador e o gen-elementos leem o mesmo arquivo).
- *  Palavra nova oficial entra LÁ; palavra avulsa pode entrar direto na criatura. */
-export const GRUPOS_ELEM = vocab.grupos as { nome: string; palavras: string[] }[];
-export const ROTULO_ELEM = vocab.rotulos as Record<string, string>;
-export const VOCAB_ELEM = GRUPOS_ELEM.flatMap((g) => g.palavras);
-export const rotuloElem = (k: string) => ROTULO_ELEM[k] ?? k;
-
-/** O bestiário guarda o porte como RÓTULO ("Enorme", "Miúdo") e o `calc.ts` espera
- *  slug ("enorme", "miudo"). Sem esta ponte o porte cai no padrão Médio em
- *  silêncio, e um Treant perde 26 PV sem ninguém perceber. */
-export const PORTE_LBL: Record<string, string> = {
-  minusculo: 'Minúsculo', miudo: 'Miúdo', pequeno: 'Pequeno', medio: 'Médio', grande: 'Grande',
-  enorme: 'Enorme', imenso: 'Imenso', colossal: 'Colossal',
-};
-const PORTE_SLUG: Record<string, Porte> = Object.fromEntries(
-  Object.entries(PORTE_LBL).map(([slug, lbl]) => [lbl.toLowerCase(), slug as Porte]),
-) as Record<string, Porte>;
-
-export function porteSlug(v: string | undefined): Porte {
-  if (!v) return 'medio';
-  const k = String(v).toLowerCase();
-  if (k in PORTE_LBL) return k as Porte;      // já é slug
-  return PORTE_SLUG[k] ?? 'medio';            // é rótulo
+export type CriaturaEdit = EntradaCriatura & Record<string, any>;
+export type Ataque = AtaqueEntrada;
+export function validarFonte(c: unknown): CriaturaEdit {
+  return criaturaNovaSchema.parse(c) as CriaturaEdit;
 }
-
-export const TIPOS_INIMIGO = ['capanga', 'soldado', 'elite', 'fera', 'chefe'];
-export const ARMADURAS = (armaduras as { id: string; nome: string }[]).map((a) => ({ id: a.id, nome: a.nome }));
-export const MATERIAIS = [
-  'pedra', 'metal', 'madeira', 'planta', 'carne', 'carne animada',
-  'gosma', 'gelo', 'agua', 'fogo', 'terra', 'ar',
-];
-export const TIPOS_DANO = ['corte', 'perfurante', 'impacto'];
-
-export interface Ataque {
-  nome: string;
-  atrib: string;
-  pericia: string;
-  dado: number;
-  mao: number;          // 1 ou 2; ignorado quando `distancia`
-  distancia?: boolean;
-  arremesso?: boolean;  // à distância mas soma Força (pedra, lança), ao contrário de um disparo comum
-  tipo: string;         // corte | perfurante | impacto
-  acerto: number;
-  perf: number;
-  ticks: number;        // a Velocidade da arma
-  distMax?: number;     // alcance máximo, em metros, nas de distância
-  defesaArma?: number;
-  notas?: string;
-}
-
-/** Bônus somados ao que a fórmula calculou. Nunca substituem: assim a criatura
- *  continua ancorada na régua e a diferença fica visível para quem reequilibrar. */
-export interface Bonus {
-  pv?: number; defesa?: number; defesaSocial?: number; defesaMental?: number;
-  vontade?: number; absorcao?: number; resistPerf?: number; iniciativa?: number;
-}
-
-export interface CriaturaEdit {
-  id: string;
-  nome: string;
-  nomeIngles?: string;
-  conceito: string;
-  descricao?: string;
-  categoria?: string;
-  tipo?: string;
-  tags?: string[];
-  ameaca: number;
-  centelha: number;
-  porte: string;
-  atributos: Record<string, number>;
-  pericias?: Record<string, number>;
-  vontade: number;
-  integridade: number;
-  prontidao: number;
-  armadura?: string;
-  material?: string;
-  fraquezas: string[];
-  resistencias: string[];
-  imunidades?: string[];
-  bonus?: Bonus;
-  ataques?: Ataque[];
-  habilidades?: { nome: string; descricao: string }[];
-  lore?: { titulo: string; texto: string }[];
-  dimensoes?: { medida?: string; peso?: string };
-  ecologia?: { tipo?: string; terreno?: string[]; clima?: string[] };
-  imagem?: string;
-  notas: string;
-}
-
-const nz = (v: unknown) => Number(v ?? 0) || 0;
-
-/** Os derivados, pelas mesmas fórmulas dos personagens, com os bônus por cima. */
 export function derivados(c: CriaturaEdit) {
-  const a = c.atributos || {}, pe = c.pericias || {};
-  const n = (k: string) => nz(a[k]);
-  const sk = (k: string) => nz(pe[k]);
-  const cent = nz(c.centelha);
-  const vig = n('vigor');
-  const b = c.bonus || {};
-  const soakCent = (regras as any).dano?.centelhaNoSoak ?? 1;
-  const arm = (armaduras as any[]).find((x) => x.id === (c.armadura || 'nenhuma')) || { soak: {}, penalidade: 0, resistPerf: 0 };
-  const soakDe = (m: string) => vig + cent * soakCent + nz(arm.soak?.[m]) + nz(b.absorcao);
-
-  const int = n('inteligencia');
-  // Int 0 não tem trato social nenhum ("-"); Int 1 (feras) troca Sociabilidade por
-  // Sobrevivência; Int ≥ 2 usa Sociabilidade (B14 fase 2, item C.7).
-  const social = int >= 2
-    ? (pe?.sociabilidade ?? Math.max(0, sk('oratoria'), sk('manha'), sk('persuasao'), sk('lideranca'), sk('politica')))
-    : sk('sobrevivencia');
-
-  return {
-    pv: pv(vig, porteSlug(c.porte)) + nz(b.pv),
-    defesa: defesa({ destreza: n('destreza'), habilidade: sk('esquiva'), centelha: cent }) - nz(arm.penalidade) + nz(b.defesa),
-    defesaSocial: int >= 1 ? defesaSocial({ compostura: n('compostura'), sociabilidade: nz(social), centelha: cent }) + nz(b.defesaSocial) : '-',
-    defesaMental: int >= 1 ? defesaMental({ raciocinio: n('raciocinio'), integridade: nz(c.integridade), vontade: nz(c.vontade), centelha: cent }) + nz(b.defesaMental) : '-',
-    absorcao: { impacto: soakDe('impacto'), corte: soakDe('corte'), perfuracao: soakDe('perfuracao') },
-    resistPerf: nz(arm.resistPerf) + nz(b.resistPerf),
-    vontade: nz(c.vontade) + nz(b.vontade),
-    iniciativa: `1d6 + ${n('raciocinio') + nz(c.prontidao) + nz(b.iniciativa)}`,
-  };
+  const entrada = validarFonte(c), r = criatura(entrada), v = vistaPublicaCriatura(entrada);
+  return { ...r, defesa: v.motor.stat.defesa, vontade: entrada.vontade };
 }
-
-/** Pool e dano de um ataque, pelas mesmas contas do gerador. */
-export function rolagemAtaque(c: CriaturaEdit, a: Ataque) {
-  const at = c.atributos || {}, pe = c.pericias || {};
-  const habilidade = nz(pe[a.pericia]);
-  const soma = nz(at[a.atrib]) + habilidade;
-  const dados = Math.floor(soma / 2), mais = soma % 2 === 1 ? 2 : 0;
-  const acerto = nz(a.acerto) + ataqueCentelha(nz(c.centelha), habilidade);
-  const fm = (regras as any).derivados.danoForca;
-  const forca = (a.distancia && !a.arremesso) ? 0 : nz(at.forca) * (Number(a.mao) === 2 ? fm.duasMaos : fm.umaMao);
-  // A Centelha do atacante soma inteira, sem teto, no dano (Reforma da Centelha, 28/09/2026).
-  const ap = forca + nz(c.centelha);
-  return {
-    pool: `${dados}d6${mais ? '+2' : ''}${acerto ? ` +${acerto}` : ''}`,
-    dano: `${nz(a.dado)}d6${ap ? ` +${ap}` : ''} ${a.tipo}${nz(a.perf) ? ` · perf. ${nz(a.perf)}` : ''}`,
-  };
+export function rolagemAtaque(c: CriaturaEdit, a: AtaqueEntrada) {
+  const ataque = vistaPublicaCriatura(validarFonte(c)).motor.stat.ataques.find((x: any) => x.nome === a.nome);
+  if (!ataque) throw Error('Ataque não encontrado na fonte');
+  return { pool: ataque.pool, dano: ataque.dano };
 }
-
-const CHAVE = 'centelha:bestiario:edicoes';
-
-export function lerEdicoes(): Record<string, Partial<CriaturaEdit>> {
-  try { return migrarPorte(JSON.parse(localStorage.getItem(CHAVE) || '{}')); } catch { return {}; }
+export function paraJson(c: CriaturaEdit) { return JSON.stringify(validarFonte(c), null, 2); }
+const CHAVE = 'centelha:bestiario:edicoes-v3';
+export function lerEdicoes(): Record<string, CriaturaEdit> {
+  try { return JSON.parse(localStorage.getItem(CHAVE) || '{}'); } catch { return {}; }
 }
-export function salvarEdicao(id: string, dados: Partial<CriaturaEdit>) {
-  const todas = lerEdicoes();
-  todas[id] = dados;
-  localStorage.setItem(CHAVE, JSON.stringify(todas));
+export function salvarEdicao(id: string, c: CriaturaEdit) {
+  const todas = lerEdicoes(); todas[id] = validarFonte(c); localStorage.setItem(CHAVE, JSON.stringify(todas));
 }
 export function apagarEdicao(id: string) {
-  const todas = lerEdicoes();
-  delete todas[id];
-  localStorage.setItem(CHAVE, JSON.stringify(todas));
+  const todas = lerEdicoes(); delete todas[id]; localStorage.setItem(CHAVE, JSON.stringify(todas));
 }
-
-const semVazio = (o: Record<string, unknown>) =>
-  Object.fromEntries(Object.entries(o).filter(([, v]) => v !== '' && v != null && v !== 0 && v !== false && !(Array.isArray(v) && !v.length)));
-
-/** O bloco no formato que o `inimigos-custom.json` espera, pronto para colar. */
-export function paraJson(c: CriaturaEdit) {
-  const out: Record<string, unknown> = {
-    id: c.id,
-    nome: c.nome,
-    ...(c.nomeIngles ? { nomeIngles: c.nomeIngles } : {}),
-    tipo: c.tipo || 'soldado',
-    ...(c.categoria ? { categoria: c.categoria } : {}),
-    ameaca: nz(c.ameaca) || 1,
-    centelha: nz(c.centelha),
-    porte: PORTE_LBL[porteSlug(c.porte)],
-    conceito: c.conceito || '',
-    ...(c.descricao ? { descricao: c.descricao } : {}),
-    ...(c.tags?.length ? { tags: c.tags } : {}),
-    attrs: Object.fromEntries(Object.entries(c.atributos || {}).filter(([, v]) => nz(v) > 0).map(([k, v]) => [k, nz(v)])),
-    pericias: Object.fromEntries(Object.entries({ ...(c.pericias || {}), prontidao: nz(c.prontidao) }).filter(([, v]) => nz(v) > 0).map(([k, v]) => [k, nz(v)])),
-    vontade: nz(c.vontade),
-    integridade: nz(c.integridade),
-  };
-  if (c.armadura && c.armadura !== 'nenhuma') out.armadura = c.armadura;
-  if (c.material) out.material = c.material;
-  if (c.fraquezas?.length) out.fraquezas = [...c.fraquezas].sort();
-  if (c.resistencias?.length) out.resistencias = [...c.resistencias].sort();
-  if (c.imunidades?.length) out.imunidades = [...c.imunidades].sort();
-  // `Bonus` é uma interface de campos nomeados, e `semVazio` só quer um objeto
-  // para varrer: o cast é a ponte entre as duas leituras do mesmo dado.
-  const bn = semVazio((c.bonus || {}) as unknown as Record<string, unknown>);
-  if (Object.keys(bn).length) out.bonus = bn;
-  if (c.ataques?.length) out.ataques = c.ataques.filter((a) => a.nome).map((a) => semVazio(a as unknown as Record<string, unknown>));
-  if (c.habilidades?.length) out.habilidades = c.habilidades.filter((h) => h.nome);
-  if (c.dimensoes?.medida || c.dimensoes?.peso) out.dimensoes = semVazio(c.dimensoes as Record<string, unknown>);
-  if (c.ecologia?.tipo || c.ecologia?.terreno?.length || c.ecologia?.clima?.length) out.ecologia = semVazio(c.ecologia as Record<string, unknown>);
-  if (c.imagem) out.imagem = c.imagem;
-  if (c.lore?.length) out.lore = c.lore.filter((s) => s.titulo || s.texto);
-  if (c.notas) out.notas = c.notas;
-  return JSON.stringify(out, null, 2);
-}
-
-// A D-179 deu ao slug "minusculo" outro porte (o oitavo, Minúsculo), e o Miúdo
-// passou a "miudo". Edição salva antes disso não tem a marca de versão e guarda
-// "minusculo" querendo dizer Miúdo: sem esta migração ela abriria Minúscula.
-// Migra uma vez, regrava e marca; sem armazenamento, devolve migrado em memória.
-const VERSAO = 'centelha:bestiario:edicoes:versao';
-const VERSAO_ATUAL = '2';
-function migrarPorte(todas: Record<string, Partial<CriaturaEdit>>): Record<string, Partial<CriaturaEdit>> {
-  try {
-    if (localStorage.getItem(VERSAO) === VERSAO_ATUAL) return todas;
-    let mudou = false;
-    for (const e of Object.values(todas)) if (e && e.porte === 'minusculo') { e.porte = 'miudo'; mudou = true; }
-    if (mudou) localStorage.setItem(CHAVE, JSON.stringify(todas));
-    localStorage.setItem(VERSAO, VERSAO_ATUAL);
-  } catch { /* sem armazenamento: a migração vale só nesta leitura */ }
-  return todas;
+export function novaCriatura(): CriaturaEdit {
+  return validarFonte({
+    id:'criatura-nova', nome:'Nova criatura', nomeIngles:null, categoria:'humanoide', papel:'soldado', ameaca:1, centelha:0,
+    corpo:{postura:'de pé',apoio:'bipede',altura:1.8,largura:0.45,profundidade:0.23,comprimento:null,massa:80,area:0.72}, couraca:0,
+    atributos:{forca:2,destreza:2,vigor:2,percepcao:2,inteligencia:2,raciocinio:2,influencia:2,perspicacia:2,compostura:2},
+    habilidades:{prontidao:1,integridade:1}, habilidadesSec:{}, especialidades:{}, especialidadesSec:{},
+    virtudes:{bravura:1,compaixao:1,conviccao:1,temperanca:1}, vontade:3, aparencia:5,
+    deslocamento:{terra:{batalha:3,arranque:5,corrida:7}}, equipamento:{arsenal:[],armaduras:[]}, artes:{}, ataques:[],
+    habilidadesEspeciais:[], comoLuta:[], sentidos:[], elementos:{fraquezas:[],resistencias:[],imunidades:[]}, fisiologia:{},
+    aptidoes:{montaria:false,carga:false,tracao:false}, comportamento:{social:'',atividade:'',dieta:'',caca:'',dianteDeGente:''},
+    ecologia:{terreno:[],clima:[]}, descricao:'', lore:[], imagens:[], revisao:[],
+  });
 }

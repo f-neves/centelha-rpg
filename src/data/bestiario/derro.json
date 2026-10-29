@@ -1,36 +1,24 @@
 {
-  "ordem": 180,
   "id": "derro",
   "idAntigo": "mon-derro",
   "nome": "Derro",
   "nomeIngles": "Derro",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "soldado",
-  "conceito": "humanoide Pequeno",
-  "descricao": "Humanoide pequeno e louco das profundezas, que o sol queima e que sequestra gente da superfície para experimentos cruéis. Atordoa e cria trevas com poderes menores e golpeia com a espada envenenada.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/derro_criatura.webp",
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "1,2 m de altura",
-    "peso": "36 kg",
-    "largura": 0.37,
-    "altura": 1.2
-  },
-  "locomocao": {
-    "terra": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 3,
   "centelha": 2,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, curvado",
+    "apoio": "bipede",
+    "altura": 1.2,
+    "largura": 0.37,
+    "profundidade": 0.19,
+    "comprimento": null,
+    "massa": 36,
+    "area": 0.39
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 2,
     "destreza": 4,
     "vigor": 5,
@@ -41,107 +29,180 @@
     "perspicacia": 3,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 4,
     "briga": 1,
     "bloqueio": 1,
     "esquiva": 1,
     "atletismo": 1,
     "furtividade": 3,
+    "prontidao": 0,
     "integridade": 2,
     "ocultismo": 2,
     "manha": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "alquimia": 2,
-    "intimidacao": 2
+    "intimidacao": 2,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "alvo desprevenido",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "alquimia",
-      "foco": "venenos",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "alvo desprevenido",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 7,
+  "vontade": 7,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:espada-curta"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "acerto": 2,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "arma": "espada-curta",
+      "habilidade": "armas"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Ataque furtivo",
-      "descricao": "Espada curta: Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Efeito: a lâmina entra onde o alvo não guarda. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Espada curta",
+      "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "a lâmina entra onde o alvo não guarda",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Poderes menores",
-      "descricao": "poder natural (base Ofuscação 1): Ativação: uma ação, Velocidade 6. Duração: as trevas e os sons, até o fim da cena; o atordoamento, até o fim da próxima ação do alvo. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; sons ilusórios num ponto que ele vê; um alvo atordoado; ou um estrondo numa esfera de 3 m. Efeito: as trevas apagam a luz comum (ele enxerga nelas); os sons enganam quem ouve; o alvo atordoado perde a próxima ação; o estrondo atordoa quem está na esfera. Dano: o estrondo, 1d6 + Centelha, Impacto; os outros, nenhum. Resistência: mente, contra Influência + Ocultismo dele, para o atordoamento e os sons; corpo, Vigor + Resistência contra Dificuldade 10, para o estrondo. Limite de uso: três vezes por dia, somados.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 1
+      },
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "as trevas e os sons, até o fim da cena",
+      "alcance": "18 m",
+      "area": "à escolha: trevas numa esfera de 6 m; sons ilusórios num ponto que ele vê; ou um estrondo numa esfera de 3 m",
+      "efeito": "as trevas apagam a luz comum (ele enxerga nelas); os sons enganam quem ouve",
+      "dano": "o estrondo, 1d6 + Centelha, Impacto; os outros, nenhum",
+      "resistencia": "mente, contra Influência + Ocultismo dele, para os sons; corpo, Vigor + Resistência contra Dificuldade 10, para o estrondo",
+      "limiteDeUso": "três vezes por dia, somados"
     },
     {
-      "nome": "Resistência mágica",
-      "descricao": "Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: soma +2 na Defesa Mental e nas resistências contra Artes. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "nome": "Resistência à magia 14",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "sua natureza dificulta o efeito de magia hostil"
     },
     {
       "nome": "Vulnerabilidade ao sol",
-      "descricao": "Ativação: cada hora inteira à luz do sol. Duração: enquanto estiver ao sol. Alcance: o próprio corpo. Área: não se aplica. Efeito: o sol queima a pele e enfraquece o corpo. Dano: 1d6 por hora, que a Absorção não segura. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "cada hora inteira à luz do sol",
+      "duracao": "enquanto estiver ao sol",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "o sol queima a pele e enfraquece o corpo",
+      "dano": "1d6 por hora, que a Absorção não segura",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Loucura inata",
-      "descricao": "a mente já fraturada o deixa imune a efeitos de insanidade e de confusão (a condição Confuso não o pega).",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a mente já fraturada o deixa imune a efeitos de insanidade e de confusão (a condição Confuso não o pega)"
     },
     {
       "nome": "Uso de veneno",
-      "descricao": "a Peçonha de aranha gigante na espada (Veneno e doença); aplica sem risco de se envenenar.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "a Peçonha de aranha gigante na espada (Veneno e doença); aplica sem risco de se envenenar"
     },
+    {
+      "nome": "atordoamento dos poderes menores",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "os truques mentais e o estrondo deixam a vítima zonza"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "caçador da superfície",
-      "descricao": "sobe à noite, atordoa e envenena um alvo isolado e o arrasta para baixo; foge do sol e da luz.",
-      "classe": "como luta"
+      "formas": "todas",
+      "texto": "sobe à noite, atordoa e envenena um alvo isolado e o arrasta para baixo; foge do sol e da luz."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro das profundezas",
+      "formas": "todas"
     },
     {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga no escuro das profundezas (site). · audição e olfato: os de um humano."
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
     }
   ],
-  "venenos": [
-    {
-      "nome": "Veneno no jogo",
-      "texto": "Peçonha de aranha gigante · Potência 18 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Espada curta"
-    }
-  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "pela regra do personagem",
+    "mente": "humanoide; louca e cruel",
+    "tracos": "corpo pequeno e atarracado, pele pálida azulada, olhos brancos sem pupila, cabelo ralo, espada curta envenenada"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em bando, típico 3 a 8",
+    "atividade": "noturno; o sol o queima",
+    "dieta": "onívoro",
+    "caca": "sequestra gente da superfície",
+    "dianteDeGente": "atordoa, envenena e leva para os experimentos"
+  },
+  "ecologia": {
+    "terreno": [
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Humanoide pequeno e louco das profundezas, que o sol queima e que sequestra gente da superfície para experimentos cruéis. Atordoa e cria trevas com poderes menores e golpeia com a espada envenenada.",
   "lore": [
     {
       "titulo": "Loucura Ancestral",
@@ -152,79 +213,46 @@
       "texto": "Sequestram moradores da superfície para experimentos macabros na eterna e fútil busca por entender o que protege os outros da morte solar, condenados sempre ao fracasso por sua própria insanidade."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: em bando, típico 3 a 8."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Peçonha de aranha gigante · Potência 18 · Tick (sangue) · a cada 1 minuto · pool 4 (Destreza) · Desgaste 1 · pela Espada curta"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequeno, 40 PV, Impacto 7, Corte e Perfuração 2. Esquiva e Bloqueio 12 (13 com a espada). A espada dá dano médio 5,5 e envenena (Peçonha de aranha gigante, Potência 18); +1d6 contra quem não o viu. Três vezes por dia cria trevas, sons, atordoa ou solta um estrondo. Ao sol, perde 1d6 PV por hora."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/derro_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Derro",
-    "cr": "3",
-    "tipo": "humanoide Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 11,
-      "des": 15,
-      "con": 18,
-      "int": 10,
-      "sab": 5,
-      "car": 16
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Ataque furtivo",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Poderes menores",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 3,
-  "v3": {
-    "pv": 40,
-    "esquiva": 12,
-    "bloqueio": 12,
-    "defesa": 13,
-    "defesaMental": 15,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 7,
-      "corte": 2,
-      "perfuracao": 2
+    {
+      "campo": "habilidadesEspeciais.Vulnerabilidade ao sol",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 77.9,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      }
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`pv`: 40, a linha de cima da zona de transição, pelo Vigor 5; na de baixo seriam 30",
-    "`equipamento`: espada curta do livro **[provisório]**",
-    "`virtudes`: Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**",
-    "`poderes menores`, `resistência mágica`, `vulnerabilidade ao sol`, `ataque furtivo`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "espada curta do livro"
+    },
+    {
+      "campo": "virtudes",
+      "motivo": "Compaixão 1 e Temperança 1; o site tinha 2 e 2"
+    }
   ]
 }

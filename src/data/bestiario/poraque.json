@@ -1,31 +1,25 @@
 {
-  "ordem": 200,
   "id": "poraque",
   "idAntigo": "mon-electric-eel",
   "nome": "Poraquê",
   "nomeIngles": "Electric eel",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Miúdo",
-  "descricao": "Quem pisa na água dele leva o choque; quem o tira da água leva o pior, porque o ar não deixa a corrente fugir.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": "bestiario/poraque_criatura.webp",
-  "porte": "Miúdo",
-  "dimensoes": {
-    "medida": "1,55 m de comprimento, 0,09 m de altura",
-    "peso": "4,75 kg",
-    "comprimento": 1.55,
-    "largura": 0.07,
-    "altura": 0.09
-  },
-  "locomocao": {
-    "natacao": 3
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 0.09,
+    "largura": 0.07,
+    "profundidade": null,
+    "comprimento": 1.55,
+    "massa": 4.75,
+    "area": 0.12,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 2,
     "vigor": 3,
@@ -36,95 +30,184 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 0,
     "furtividade": 2,
     "integridade": 1,
     "prontidao": 2,
     "resistencia": 2,
+    "empatia": 0,
     "sobrevivencia": 2
   },
-  "skills2": {
-    "natacao": 1
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 1,
+    "voo": 0,
+    "corrida": 0,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "prontidao",
-      "foco": "eletrorrecepção",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "hipóxia",
-      "valor": 2,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "prontidao": [
+      {
+        "foco": "eletrorrecepção",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "resistencia": [
+      {
+        "foco": "hipóxia",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 2,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 2
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Descarga elétrica",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "eletricidade",
+      "parte": "corpo-orgaos-eletricos",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "2d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "eletricidade",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Mordida",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
-    {
-      "nome": "salto com descarga",
-      "descricao": "Descarga elétrica: salta parcialmente fora da água, encosta o queixo na ameaça e descarrega.",
-      "classe": "como luta"
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "choque na água",
-      "descricao": "Descarga elétrica: na água, a descarga atinge uma área de 2 m de raio: 1d6 de eletricidade, e não há Absorção natural contra ela (a da armadura fica a decidir); sair da área evita.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Descarga elétrica",
+      "ativacao": "a descarga na água",
+      "duracao": "instantânea",
+      "alcance": "2 m",
+      "area": "raio de 2 m",
+      "efeito": "a corrente se espalha pela água; sair da área evita",
+      "dano": "1d6 de raio; sem Absorção natural contra o elemento",
+      "resistencia": "nenhum teste adicional",
+      "limiteDeUso": "o da Descarga elétrica"
     },
     {
       "nome": "descarga elétrica",
-      "descricao": "Descarga elétrica: quem leva a descarga rola Vigor + Resistência contra 12; falhou, cai Prono e perde 6 Ticks.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Descarga elétrica",
+      "ativacao": "a descarga que atinge",
+      "duracao": "instantânea",
+      "alcance": "o da Descarga elétrica",
+      "area": "um alvo atingido",
+      "efeito": "quem falha cai no chão, Caído",
+      "dano": "o da Descarga elétrica",
+      "resistencia": "corpo, Vigor + Resistência contra 12; quem passa não cai",
+      "limiteDeUso": "um por descarga"
+    },
+    {
+      "nome": "atordoamento da descarga",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o choque deixa a vítima zonza, incapaz de agir por um instante"
+    }
+  ],
+  "comoLuta": [
+    {
+      "nome": "salto com descarga",
+      "formas": "todas",
+      "texto": "salta parcialmente fora da água, encosta o queixo na ameaça e descarrega."
     },
     {
       "nome": "respira ar",
-      "descricao": "sobe à tona de tempos em tempos para respirar.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "eletrorrecepção: Especialidade natural Prontidão (eletrorrecepção) +3 (achar presa e se orientar pelas descargas fracas do órgão de Sachs, cerca de 10 V); alcance. · visão: fraca, olhos pequenos; sem penalidade escrita, só a Percepção 2."
+      "formas": "todas",
+      "texto": "sobe à tona de tempos em tempos para respirar."
     }
   ],
+  "sentidos": [
+    {
+      "nome": "eletrorrecepção",
+      "descricao": "Especialidade natural Prontidão (eletrorrecepção) +3 (achar presa e se orientar pelas descargas fracas do órgão de Sachs, cerca de 10 V); alcance",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão",
+      "descricao": "fraca, olhos pequenos (Wikipédia); sem penalidade escrita, só a Percepção 2",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar (tira a maior parte do oxigênio do ar e sobe à tona cerca de cada dois minutos, Wikipédia)",
+    "prendeRespiracao": "para a apneia máxima; os cerca de dois minutos (Wikipédia) são o intervalo entre uma subida e outra, e não o máximo que aguenta. A tolerância à água sem oxigênio está na Especialidade natural de hipóxia",
+    "mente": "animal",
+    "tracos": "órgãos elétricos ao longo de quase todo o corpo; descarga de ao menos 600 V em E. electricus, cerca de 1 A a 500 V, pulsos de 2 ms a até 500 Hz (Wikipédia, citando Catania 2015 e Kramer 2008); descarga fraca de cerca de 10 V e forte de cerca de 500 V (FishBase); idade máxima de 6 anos em cativeiro pelo FishBase, \"mais de 20 anos em cativeiro\" pela Wikipédia; os machos são bem maiores que as fêmeas (FishBase)"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário",
+    "atividade": "noturno",
+    "dieta": "piscívoro",
+    "caca": "emboscada",
+    "dianteDeGente": "defende"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático"
+    ],
+    "clima": [
+      "tropical"
+    ]
+  },
+  "descricao": "Quem pisa na água dele leva o choque; quem o tira da água leva o pior, porque o ar não deixa a corrente fugir.",
   "lore": [
     {
       "titulo": "Rio que morde e queima",
@@ -133,84 +216,44 @@
     {
       "titulo": "Curiosidade traiçoeira",
       "texto": "Apesar do temperamento curioso, poucos predadores se arriscam a perturbá-lo duas vezes."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitário."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Miúdo: ganha +6 de acerto contra um humano Médio no corpo a corpo, e quem atira nele leva −6. Não morde nada que importe; a arma é a descarga: 2d6 de eletricidade (não há Absorção natural contra eletricidade; a da armadura fica a decidir), e quem a leva rola Vigor + Resistência contra 12 ou cai Prono e perde 6 Ticks. Na água, o choque se espalha por 2 m de raio (1d6). Acha quem está na água turva sem ver (Prontidão +3 natural na eletrorrecepção) e aguenta a água parada sem oxigênio. 13 PV, Impacto 3, Couraça nível 0 (o valor do nível fica para depois)."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water"
-    ],
-    "clima": [
-      "Tropical"
-    ]
+  "imagens": [
+    "bestiario/poraque_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Electric Eel",
-    "cr": "2",
-    "tipo": "animal Pequeno",
-    "tamanho": "pequeno",
-    "valores": {
-      "for": 13,
-      "des": 14,
-      "con": 19,
-      "int": 1,
-      "sab": 10,
-      "car": 6
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.choque na água",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte",
-      "nota": "nado 30; em terra a enguia se arrasta 5 ft"
+    {
+      "campo": "habilidadesEspeciais.descarga elétrica",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 13,
-    "esquiva": 6,
-    "bloqueio": 4,
-    "defesa": 6,
-    "defesaMental": 6,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
+    {
+      "campo": "habilidadesSec.natacao",
+      "motivo": "Etapa 2 (20/10/2026): Decisão de 20/10/2026: a Habilidade secundária de Natação vale nas jogadas (manobrar na água), e a velocidade continua congelada; o nado em m por Tick não muda. A decisão manda dar a Habilidade ao poraquê pela pesquisa, e a pesquisa não achou velocidade nem manobra medida: nada ondulando a nadadeira de baixo, para a frente e para trás, no fundo turvo (o grupo dos peixes-faca, Wikipédia), e sobe à tona a cada dois minutos para respirar. Fica 1 . Antes: Sem velocidade achada; o nado sai da anatomia."
     },
-    "couracaNivel": 0,
-    "pesoErguido": 18.47,
-    "deslocamento": {
-      "nado": 3
+    {
+      "campo": "corpo.altura",
+      "motivo": "Era 0,15 m (da Bestiarista-5, para o de 2,5 m; corpo cilíndrico, nenhuma fonte mediu). Escalado pelo cubo da massa: 0,15 × (4,32 ÷ 20)^(1/3) = 0,15 × 0,6 = 0,09 m"
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 1,50 × 1,0321 = 1,548 . Antes: Era 2,5 m, o máximo de E. electricus (FishBase, comprimento padrão). Comprimento típico : 1,5 m é escolha, explicada na linha Massa; é também o 2,5 m escalado pelo cubo da massa (× 0,6)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,07 × 1,0321 = 0,074 . Antes: Era 0,12 m (da Bestiarista-5, para o de 2,5 m); escalado pelo cubo da massa: 0,12 × 0,6"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "Etapa 2 (20/10/2026): Decisão 5 de 19/10/2026: a ficha principal usa uma versão um pouco acima da média da espécie, dentro da faixa real. 4,32 kg mais 10% = 4,75 kg , dentro da faixa real (até 20 kg, FishBase); a média medida continua . Antes: Era 20 kg, o máximo publicado de E. electricus (FishBase, com 250 cm de comprimento padrão; Wikipédia: \"até 2 m e 20 kg\"). Média do adulto, mínimo do adulto e comprimento típico  (buscados na pesquisa de 12/10, no FishBase e na web em 15 e 16/10/2026: só os máximos; o FishBase não dá \"common length\" para E. electricus, nem para os parentes Gymnotus carapo e Rhamphichthys rostratus, abertos em 16/10). A conta, passo a passo: (1) comprimento típico de 1,5 m, escolhido: fica entre o único adulto do gênero com comprimento publicado (o E. voltai de 121,9 cm do recorde de 860 V, FishBase, de Santana e colegas 2019) e os máximos das duas espécies descritas em 2019 (E. varii 149 cm e E. voltai 171 cm de comprimento total, FishBase), que a cobertura da descrição diz terem o mesmo porte de E. electricus; é 60% do máximo de 250 cm. (2) Relação comprimento e massa: a lei do cubo sobre o par dos máximos do FishBase (250 cm e 20 kg, a mesma referência, Ref. 27188): 20 × (150 ÷ 250)³ = 20 × 0,216 = 4,32 kg. Esse par trata dois máximos como um animal só, o que a nota `dimensoes` já diz que eles não são. (3) Testada e posta de lado: a relação bayesiana do FishBase para o corpo da espécie (a = 0,00389, b = 3,12, em comprimento total) dá cerca de 118 kg a 250 cm, seis vezes os 20 kg publicados na mesma página, e 24 kg a 150 cm; ela é de forma de corpo genérica, e não da espécie. Sexos: os machos são bem maiores que as fêmeas (FishBase), sem massa por sexo . Faixa 2 (até 35 kg) pela D-141, a 8% do corte de 4 kg: abaixo de 1,46 m de comprimento escolhido, o típico cairia na Faixa 1"
     }
-  },
-  "notasObservacao": [
-    "pesoErguido: 18,47 kg (em vigor na Etapa 2, 20/10/2026); antes: 17,32 kg pelo `calc6.mjs`, provisório (decisões 14 e 16); era 41,39 kg (o de 20 kg). A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar. Carga continua não se aplicando.",
-    "alvo: Miúdo pela área de lado do adulto típico (0,108 m², a de 0,30 m² do de 2,5 m escalada pela massa); era Pequeno (0,30 m², e 0,38 m² pela conta de hoje). O resultado depende do comprimento típico escolhido (1,5 m): acima de 1,58 m volta a Pequeno. Provisório até os cortes fecharem (D-174).",
-    "massa: 4,75 kg (em vigor na Etapa 2, 20/10/2026); antes: 4,32 kg **[extrapolação]**, a lei do cubo sobre o par dos máximos do FishBase (250 cm e 20 kg) com o comprimento típico escolhido de 1,5 m, porque não há média nem comprimento comum publicados. Era 20 kg, o máximo.",
-    "velocidade: congelada (decisão 23). Sem velocidade real achada; 3,4 m/s (12 km/h) parece alto para um peixe descrito como lento. Não corrigido.",
-    "ataques.descarga: vai como ataque com o efeito do Mestre. O dano não tem dado, o tipo (eletricidade) não é dos três do livro, e o Grid não lê ataque sem dado (N22). Os números medidos (Catania 2016 e 2017) são de animais jovens e de laboratório.",
-    "especie: a ficha é de E. electricus pelo tamanho; o choque de 860 V é de E. voltai, e a espécie dos poraquês de Catania não foi conferida.",
-    "forca: 0 num bicho de 4,3 kg (era Pequeno de 20 kg), revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a força dele não fere nem segura nada que importe a um humano; o perigo é o choque (D-174).",
-    "musculatura: 0 pelo corpo tomado pelos órgãos elétricos; sem medida da fração de músculo.",
-    "compostura: desce de 2 para 1 por não ser espécie social (diretriz 1).",
-    "resistencia: 2 pela régua; a hipóxia fica na Especialidade natural +2, que era o \"Fôlego\" comum de hoje.",
-    "especialidades: a eletrorrecepção desce de +4 para +3 pelo teto da decisão 3 e passa a natural.",
-    "prendeRespiracao: os 2 min da ficha de hoje são o intervalo entre subidas, e não a apneia máxima, que não foi achada.",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "elementos: a \"resistência a eletricidade\" da ficha atual e do PF não tem fonte na pesquisa; ficou fora.",
-    "dimensoes: altura (0,09 m) e largura (0,072 m) são as estimativas da Bestiarista-5 para o de 2,5 m (0,15 e 0,12 m) escaladas pelo cubo da massa; 20 kg e 2,5 m são os máximos do FishBase, e não um par medido no mesmo animal, e a massa típica sai desse par (D-174)."
   ]
 }

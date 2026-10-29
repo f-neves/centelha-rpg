@@ -1,38 +1,27 @@
 {
-  "ordem": 195,
   "id": "tartaruga-dragao",
   "idAntigo": "mon-dragon-turtle",
   "nome": "Tartaruga-Dragão",
   "nomeIngles": "Dragon Turtle",
-  "categoria": "Dragão",
-  "categoriaLegada": "Dragão",
+  "categoria": "dragao",
   "papel": "chefe",
-  "conceito": "dragão Enorme",
-  "descricao": "Tartaruga-dragão de casco lendário que reivindica vastos territórios de mar. Chega sem ruído por baixo dos navios, sopra vapor fervente sobre o convés e vira o barco de quem não pagou tributo; no covil, guarda a carga de todos os navios que afundou.",
-  "tags": [
-    "dragao",
-    "centelha"
-  ],
-  "imagem": "bestiario/tartaruga-dragao_criatura.webp",
-  "porte": "Enorme",
-  "dimensoes": {
-    "medida": "9 m de comprimento, 0,93 m de altura",
-    "peso": "4,0 t",
-    "comprimento": 9,
-    "largura": 2.33,
-    "altura": 0.93
-  },
-  "locomocao": {
-    "terra": 2,
-    "natacao": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 2,
-    "arranque": 3,
-    "corrida": 5
-  },
+  "ameaca": 5,
   "centelha": 5,
-  "attrs": {
+  "corpo": {
+    "postura": "quatro nadadeiras; nadadora",
+    "apoio": "outro",
+    "altura": 0.93,
+    "largura": 2.33,
+    "profundidade": null,
+    "comprimento": 9,
+    "comprimentoSemCauda": 5.3,
+    "caudaGrossa": true,
+    "massa": 4000,
+    "area": 9.56,
+    "posturaDoTamanho": "de cima"
+  },
+  "couraca": 8,
+  "atributos": {
     "forca": 10,
     "destreza": 2,
     "vigor": 7,
@@ -43,110 +32,193 @@
     "perspicacia": 3,
     "compostura": 3
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
+    "esquiva": 0,
     "atletismo": 2,
     "furtividade": 1,
     "integridade": 3,
     "prontidao": 1
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 4,
     "disparo": 3,
     "musculatura": 3
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "na água",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "na água",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
     "compaixao": 2,
     "conviccao": 5,
-    "temperanca": 3,
-    "valor": 6
+    "temperanca": 3
   },
-  "willpower": 10,
+  "vontade": 10,
   "aparencia": 9,
+  "deslocamento": {
+    "terra": {
+      "batalha": 2,
+      "arranque": 3,
+      "corrida": 5
+    },
+    "nado": {
+      "batalha": 3
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Mordida",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "perf": 2,
-      "ticks": 6,
-      "classe": "media"
+      "parte": "boca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 2,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Garras",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "nadadeira-dianteira",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Sopro de vapor",
-      "atrib": "vigor",
-      "pericia": "disparo",
-      "dado": 6,
-      "mao": 1,
-      "tipo": "fogo",
-      "ticks": 7,
-      "forca": false,
+      "parte": "boca",
+      "habilidade": "disparo",
       "classe": "distancia",
-      "distancia": true
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "6d6",
+      "multiplicadorForca": 0,
+      "tipoDano": "fogo",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [
-    "fogo"
-  ],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Sopro de vapor escaldante",
-      "descricao": "poder natural (base Fogo 3, sugestão da ficha): Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m, na superfície ou debaixo d'água (site). Efeito: o vapor fervente queima quem está na nuvem. Dano: 6d6 + Centelha, fogo. Resistência: corpo, contra a jogada do sopro (site: \"teste de Vigor\"); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (site).",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fogo",
+        "nivel": 3
+      },
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "duracao": "instantânea",
+      "alcance": "9 m à frente",
+      "area": "cone de 9 m, na superfície ou debaixo d'água",
+      "efeito": "o vapor fervente queima quem está na nuvem",
+      "dano": "6d6 + Centelha, fogo",
+      "resistencia": "corpo, contra a jogada do sopro; quem passa leva metade",
+      "limiteDeUso": "uma vez a cada 24 Ticks (\"não pode repetir o sopro em sequência\", site)"
     },
     {
       "nome": "garras em sequência",
-      "descricao": "Garras: a Rajada: até três golpes de Garras na mesma ação, o teto da classe Média, o segundo a −1d6 e o terceiro a −2d6, e +1 Tick de Recuperação por golpe a mais.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Garras",
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
-      "descricao": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa (site). A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial (C-046), que o autor decide. A ficha ataca com uma parte por ação, ou pela Rajada.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
     },
     {
       "nome": "Afunda embarcações",
-      "descricao": "investe contra um barco ou navio para virá-lo, e leva tripulação e carga para o fundo (site).",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "investe contra um barco ou navio para virá-lo, e leva tripulação e carga para o fundo"
     },
     {
       "nome": "Firme contra o sono, a paralisia e o domínio da mente",
-      "descricao": "não pode ser posta para dormir nem paralisada, e efeito que domina a mente não a pega (site: \"Imune a fogo e a efeitos que dominam a mente\"; o fogo está nos Elementos).",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "senhora dos mares",
-      "descricao": "chega por baixo sem ruído, sopra vapor sobre o convés, vira o barco e morde quem cai na água.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão: enxerga debaixo d'água."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não pode ser posta para dormir nem paralisada, e efeito que domina a mente não a pega"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "senhora dos mares",
+      "formas": "todas",
+      "texto": "chega por baixo sem ruído, sopra vapor sobre o convés, vira o barco e morde quem cai na água."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão",
+      "descricao": "enxerga debaixo d'água",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "ar",
+    "prendeRespiracao": "muito tempo; ataca e sopra submersa (site)",
+    "camuflagem": "o casco no fundo do mar",
+    "mente": "Inteligência 3; cobra tributo de quem navega",
+    "tracos": "casco de marrom-ferrugem a verde-azulado com reflexos de prata; cabeça e cauda com estrias douradas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitária; reivindica territórios de mar",
+    "atividade": "qualquer hora",
+    "dieta": "carnívora",
+    "caca": "afunda navios e guarda no covil a carga e os destroços",
+    "dianteDeGente": "afunda quem navega sem pagar tributo"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "litoral"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Tartaruga-dragão de casco lendário que reivindica vastos territórios de mar. Chega sem ruído por baixo dos navios, sopra vapor fervente sobre o convés e vira o barco de quem não pagou tributo; no covil, guarda a carga de todos os navios que afundou.",
   "lore": [
     {
       "titulo": "Senhora dos mares",
@@ -159,78 +231,61 @@
     {
       "titulo": "Carapaça lendária",
       "texto": "O casco varia de marrom ferrugem a verde-azulado com reflexos prateados, e a cabeça e a cauda mostram estrias douradas."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: solitária; reivindica territórios de mar."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Enorme. 70 PV, Impacto 12, Corte e Perfuração 5, Couraça 8. Esquiva 4, Bloqueio 4: fácil de acertar, difícil de ferir. Sopro de vapor em cone de 9 m a cada 24 Ticks, na superfície ou submersa. Mordida e garras; garras até três por ação. Vira barcos (sem regra ainda). Fogo não a fere."
     }
   ],
-  "ecologia": {
-    "tipo": "Dragon",
-    "terreno": [
-      "Water",
-      "Coast"
-    ],
-    "clima": [
-      "Temperate"
+  "imagens": [
+    "bestiario/tartaruga-dragao_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": [
+      {
+        "tipo": "fogo",
+        "formas": "todas"
+      }
     ]
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Dragon Turtle",
-    "cr": "9",
-    "tipo": "dragão Enorme",
-    "tamanho": "enorme",
-    "valores": {
-      "for": 27,
-      "des": 10,
-      "con": 19,
-      "int": 12,
-      "sab": 13,
-      "car": 12
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Sopro de vapor escaldante",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 20,
-      "origem": "fonte"
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "Da ficha publicada : cabeça e pescoço de 2,2 m, casco de 3,1 m e cauda de 3,7 m"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 5,
-  "v3": {
-    "pv": 70,
-    "esquiva": 4,
-    "bloqueio": 4,
-    "defesa": 4,
-    "defesaMental": 22,
-    "defesaSocial": 6,
-    "absorcao": {
-      "impacto": 12,
-      "corte": 5,
-      "perfuracao": 5
+    {
+      "campo": "corpo.comprimentoSemCauda",
+      "motivo": "Cabeça, pescoço e casco"
     },
-    "couracaNivel": 8,
-    "pesoErguido": 1011.1,
-    "deslocamento": {
-      "terra": {
-        "batalha": 2,
-        "arranque": 3,
-        "corrida": 5
-      },
-      "nado": 3
+    {
+      "campo": "corpo.area",
+      "motivo": "Casco em elipse, π ÷ 4 × 3,1 × 2,33 = 5,67 m²; cabeça e pescoço, 2,2 × 0,6 × 0,8 = 1,06 m²; cauda que afina, 3,7 × 0,5 × 0,5 = 0,93 m²; quatro nadadeiras, cerca de 1,9 m² : 9,56 m²"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). O casco: acima da escama do dragão jovem (6) e abaixo dos adultos (9) (\"carapaça lendária\", site) . O nível fica fora da Absorção (decisoes-autor §16); nível 8"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques.Mordida.nivelPerfuracao",
+      "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como a dos dragões. Golpe de boca: Força × 1. N2, a do branco jovem . Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "corpo",
+      "motivo": "casco de 3,1 m pela massa do site; pescoço e cauda completam os 9 m"
+    },
+    {
+      "campo": "ataques",
+      "motivo": "6d6 + Centelha, cone de 9 m, pela escada de Centelha do lote 23 (D-197)"
     }
-  },
-  "notasObservacao": [
-    "`medidas`: casco de 3,1 m pela massa do site; pescoço e cauda completam os 9 m **[extrapolação]**",
-    "`couraca`: nível 8 **[provisório]**",
-    "`sopro`: 6d6 + Centelha, cone de 9 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**",
-    "`multiataque`: sem regra ainda; garras pela Rajada"
   ]
 }

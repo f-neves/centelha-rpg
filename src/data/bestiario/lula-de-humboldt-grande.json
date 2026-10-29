@@ -1,31 +1,25 @@
 {
-  "ordem": 291,
   "id": "lula-de-humboldt-grande",
   "idAntigo": "mon-squid",
   "nome": "Lula-de-humboldt",
   "nomeIngles": "Humboldt squid",
-  "categoria": "Animal",
-  "categoriaLegada": "Fera",
+  "categoria": "animal",
   "papel": "fera",
-  "conceito": "animal Pequeno",
-  "descricao": "Sobe da escuridão à noite em cardume, piscando vermelho e branco, e cerca o que se move.",
-  "tags": [
-    "fera"
-  ],
-  "imagem": null,
-  "porte": "Pequeno",
-  "dimensoes": {
-    "medida": "3,2 m de comprimento, 0,25 m de altura",
-    "peso": "68 kg",
-    "comprimento": 3.2,
-    "largura": 0.25,
-    "altura": 0.25
-  },
-  "locomocao": {
-    "natacao": 5
-  },
+  "ameaca": 2,
   "centelha": 0,
-  "attrs": {
+  "corpo": {
+    "postura": "nadador",
+    "apoio": "outro",
+    "altura": 0.25,
+    "largura": 0.25,
+    "profundidade": null,
+    "comprimento": 3.2,
+    "massa": 68,
+    "area": 0.38,
+    "posturaDoTamanho": "de lado"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 3,
     "vigor": 3,
@@ -36,9 +30,11 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 3,
+    "bloqueio": 0,
     "esquiva": 3,
+    "atletismo": 0,
     "furtividade": 1,
     "integridade": 2,
     "prontidao": 2,
@@ -46,93 +42,162 @@
     "empatia": 1,
     "sobrevivencia": 3
   },
-  "skills2": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
     "natacao": 4,
+    "voo": 0,
+    "corrida": 0,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "resistencia",
-      "foco": "hipóxia",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "prontidao",
-      "foco": "visão na penumbra",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "resistencia": [
+      {
+        "foco": "hipóxia",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "prontidao": [
+      {
+        "foco": "visão na penumbra",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 3
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 6,
+  "deslocamento": {
+    "nado": {
+      "batalha": 5
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Bico",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "mordida",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     },
     {
       "nome": "Braços e tentáculos",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "corte",
+      "parte": "braco",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "corte",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Braços e tentáculos: Agarrada, a presa vai ao bico.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "regra": "agarrar"
     },
     {
       "nome": "arrastar para o fundo",
-      "descricao": "Braços e tentáculos: leva o que agarrou para o fundo, até o Peso erguido.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "jato para trás",
-      "descricao": "foge em jato (a Esquiva e o nado).",
-      "classe": "como luta"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Braços e tentáculos",
+      "efeito": "leva o que agarrou para o fundo, até o Peso erguido"
     },
     {
       "nome": "nuvem de tinta",
-      "descricao": "solta uma nuvem de tinta que esconde a fuga.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão em pouca luz: Especialidade natural Prontidão (visão na penumbra) +2; olhos grandes de predadora visual (guia da Hopkins/NOAA); alcance."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "solta uma nuvem de tinta que esconde a fuga"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "jato para trás",
+      "formas": "todas",
+      "texto": "foge em jato (a Esquiva e o nado)."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão em pouca luz",
+      "descricao": "Especialidade natural Prontidão (visão na penumbra) +2; olhos grandes de predadora visual (guia da Hopkins/NOAA); alcance",
+      "formas": "todas"
+    },
+    {
+      "nome": "estatocisto, quimiorrecepção",
+      "descricao": "",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água",
+    "prendeRespiracao": "não se aplica (brânquias). A tolerância à hipóxia está na Especialidade natural",
+    "camuflagem": "cromatóforos; pisca vermelho e branco a 2 a 4 Hz (Wikipédia); fotóforos sob a pele no corpo todo, de luz amarelo-esverdeada (Rev. Biol. Mar. Oceanogr. 2008). Sem Especialidade de Furtividade: a cor serve de sinal, e não de esconderijo, na caça em grupo",
+    "mente": "animal",
+    "tracos": "sem esqueleto, só o gládio (0,7 a 1% da massa, Wikipédia); vive cerca de 1 ano, no máximo 2 (ADW); aguenta hipóxia"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "cardume",
+    "atividade": "noturno",
+    "dieta": "carnívoro",
+    "caca": "caça ativa em grupo",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "litoral"
+    ],
+    "clima": [
+      "temperado",
+      "tropical"
+    ]
+  },
+  "descricao": "Sobe da escuridão à noite em cardume, piscando vermelho e branco, e cerca o que se move.",
   "lore": [
     {
       "titulo": "Predador oceânico",
@@ -141,85 +206,18 @@
     {
       "titulo": "Sombra na água",
       "texto": "Marinheiros contam histórias de vultos vermelhos que cruzam sob os barcos antes de uma tempestade, sinal de que as lulas se aproximam."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: cardume."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Pequena: ganha +3 no acerto corpo a corpo contra um humano Médio. Força 4 não tira o Bloqueio de ninguém. O perigo é o cardume: cada uma morde a 5,5 e agarra a 8 (com a Briga (Agarrão) +3), e o grupo cerca quem está na água. 34 PV, Impacto 3, Couraça nível 0 (o valor do nível fica para depois). Chega a 5 m por Tick; fora d'água não anda. Aguenta a água sem oxigênio do fundo (Resistência 2 e +2 natural na hipóxia), onde quem a persegue não aguenta. A tinta e o jato são a fuga, pelo Mestre."
     }
   ],
-  "ecologia": {
-    "tipo": "Animal",
-    "terreno": [
-      "Water",
-      "Coast"
-    ],
-    "clima": [
-      "Temperate",
-      "Tropical"
-    ]
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Squid",
-    "cr": "1",
-    "tipo": "animal Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 15,
-      "des": 15,
-      "con": 11,
-      "int": 2,
-      "sab": 12,
-      "car": 2
-    },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte",
-      "nota": "nado 60 (o jato de 240 é fuga, não deslocamento)"
-    },
-    "crConf": "conhecido"
-  },
-  "variantes": [],
-  "ameacaLegada": 2,
-  "v3": {
-    "pv": 34,
-    "esquiva": 12,
-    "bloqueio": 6,
-    "defesa": 12,
-    "defesaMental": 8,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 3,
-      "corte": 3,
-      "perfuracao": 3
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 217.49,
-    "deslocamento": {
-      "nado": 5
+  "revisao": [
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "pela proporção do máximo da FAO (4 m de total para 1,5 m de manto, cerca de 2,7 vezes o manto): 1,2 × 2,7 = 3,2"
     }
-  },
-  "notasObservacao": [
-    "pesoErguido: provisório, 217,49 kg pela fórmula das decisões 14 e 16; cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir.",
-    "anatomia: cefalópode, anatomia provisória (D-175), fixada pelo Arquiteto e não calibrada em animal medido.",
-    "velocidade: congelada (decisão 23). 4,6 m/s contra 6,7 m/s sem método (−31%) e 3 m/s de subida medida (+54%).",
-    "alvo: Pequeno pela área de lado (0,38 m²) da tamanho-fichas-v2; era 0,45 m² pela conta de hoje, com o mesmo resultado. Provisório até os cortes fecharem (D-174).",
-    "dimensoes: altura, largura e comprimento sem tentáculos estimados, sem fonte; o comprimento total vem da proporção do máximo da FAO (D-174). Os dois tentáculos e a nadadeira ficam fora da área.",
-    "referencia e massa: 68 kg pela relação manto e massa da Universidad de Concepción; a própria página dá um exemplo que não fecha com a fórmula (manto de 80 cm com \"perto de 10 kg\", e a fórmula dá 18,6). O adulto comum (2 a 3 kg, FAO) é outra criatura de jogo, nas variantes (D-174).",
-    "forca: 4, comparação com o lobo-terrível e a jiboia, sem feito com massa; [provisório] (D-158, D-174).",
-    "musculatura: 2 (comum), sem medida; o manto é músculo de jato, sem osso de alavanca.",
-    "resistencia: 2 pela régua da v3; o levantamento dava 3, mas com a migração e a distância, que ficam na nota de pesquisa (jornada) (decisão 5). A hipóxia fica na Especialidade natural +2.",
-    "empatia: 1, nova, pela sinalização de cor dentro do cardume; sem dado de leitura de outro bicho ou de gente. Escolha provisória (D-174).",
-    "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois.",
-    "jornada (nota de pesquisa, não é regra): migração vertical diária de 0 a 200 m à noite e 800 a 1.000 m de dia (SeaLifeBase); deslocamento horizontal de até 100 km em 3 a 4 dias (ADW) **[medido]**; em hipóxia o jato rápido cai (Gilly 2012, trecho de busca, não conferido).",
-    "especialidades: o Fôlego +2 de hoje virou Resistência (hipóxia) +2 natural, e a penumbra +2 virou natural; os valores não mudam.",
-    "fonte: o \"até 1,2 m de manto e 65 kg\" continua só pelo resumo de busca (Aquatic Living Resources 2019; a página deu 403) (D-174)."
   ]
 }

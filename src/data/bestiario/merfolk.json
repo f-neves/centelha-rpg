@@ -1,32 +1,26 @@
 {
-  "ordem": 258,
   "id": "merfolk",
   "idAntigo": "mon-merfolk",
   "nome": "Merfolk",
   "nomeIngles": "Merfolk",
-  "categoria": "Humanoide",
-  "categoriaLegada": "Humanoide",
+  "categoria": "humanoide",
   "papel": "capanga",
-  "conceito": "humanoide Médio",
-  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
-  "tags": [
-    "humanoide",
-    "centelha"
-  ],
-  "imagem": "bestiario/merfolk_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "2 m de comprimento, 0,9 m de altura",
-    "peso": "90 kg",
-    "comprimento": 2,
-    "largura": 0.45,
-    "altura": 0.9
-  },
-  "locomocao": {
-    "natacao": 5
-  },
+  "ameaca": 1,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "deitado na água, nadando; de pé na cauda, à tona",
+    "apoio": "bipede",
+    "altura": 0.9,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": 2,
+    "comprimentoSemCauda": 0.9,
+    "caudaGrossa": true,
+    "massa": 90,
+    "area": 0.7
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 3,
     "destreza": 3,
     "vigor": 4,
@@ -37,7 +31,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "armas": 2,
     "atirador": 2,
     "briga": 1,
@@ -47,90 +41,132 @@
     "integridade": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
-    "natacao": 4
+  "habilidadesSec": {
+    "natacao": 4,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "armas",
-      "foco": "lança, debaixo d'água",
-      "valor": 1,
-      "origem": "livro"
-    },
-    {
-      "habilidade": "atirador",
-      "foco": "besta",
-      "valor": 1,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "armas": [
+      {
+        "foco": "lança, debaixo d'água",
+        "valor": 1,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 2,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 6,
+  "vontade": 6,
   "aparencia": 4,
+  "deslocamento": {
+    "terra": {
+      "batalha": 0.5,
+      "arranque": 0.75,
+      "corrida": 1
+    },
+    "nado": {
+      "batalha": 5,
+      "arranque": 8,
+      "corrida": 12
+    }
+  },
+  "equipamento": {
+    "arsenal": [
+      {
+        "ref": "a:lanca"
+      },
+      {
+        "ref": "a:besta-media"
+      }
+    ],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "atrib": "destreza",
-      "pericia": "armas",
-      "dado": 1,
-      "mao": 2,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 1,
-      "ticks": 6,
-      "classe": "haste"
+      "arma": "lanca",
+      "habilidade": "armas"
     },
     {
       "nome": "Besta média",
-      "atrib": "percepcao",
-      "pericia": "atirador",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
-      "acerto": 1,
-      "perf": 1,
-      "ticks": 12,
-      "danoBonus": 4,
-      "forca": false,
-      "classe": "distancia",
-      "distancia": true,
-      "arma": "besta-media"
+      "arma": "besta-media",
+      "habilidade": "atirador"
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "Anfíbio",
-      "descricao": "Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: respira na água e no ar; fora d'água só se arrasta. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
-    },
-    {
-      "nome": "Nadador nato",
-      "descricao": "Natação 4 e o nado do site.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma; sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "respira na água e no ar; fora d'água só se arrasta",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Guerreiro do mar",
-      "descricao": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água).",
-      "classe": "livro"
-    },
-    {
-      "nome": "guarda do segredo",
-      "descricao": "atira com a besta da água, chega perto com a lança só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão na penumbra: enxerga bem com pouca luz, nas profundezas (site). · audição e olfato: os de um humano."
+      "formas": "todas",
+      "classe": "livro",
+      "texto": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "guarda do segredo",
+      "formas": "todas",
+      "texto": "atira com a besta da água, chega perto com a lança só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão na penumbra",
+      "descricao": "enxerga bem com pouca luz, nas profundezas",
+      "formas": "todas"
+    },
+    {
+      "nome": "audição e olfato",
+      "descricao": "os de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "água e ar (Anfíbio)",
+    "prendeRespiracao": "não precisa",
+    "mente": "humanoide; desconfiada de forasteiros",
+    "tracos": "torso de gente, pele azulada ou esverdeada, cauda de peixe escamosa, cabelo longo, lança e besta"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "em grupo, típico 4 a 12",
+    "atividade": "diurno, na água",
+    "dieta": "peixe e frutos do mar",
+    "caca": "pesca com a lança",
+    "dianteDeGente": "evita forasteiros; às vezes ataca navegantes"
+  },
+  "ecologia": {
+    "terreno": [
+      "aquático",
+      "litoral"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
   "lore": [
     {
       "titulo": "Segredo nas Profundezas",
@@ -143,79 +179,56 @@
     {
       "titulo": "Sussurros de Corrupção",
       "texto": "Sábios e marinheiros falam de merfolk degenerados nas águas mais isoladas, corrompidos por poderes sombrios que talvez controlem até os que se julgam livres."
-    },
-    {
-      "titulo": "Comportamento",
-      "texto": "Social: em grupo, típico 4 a 12."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, 37 PV, Impacto 5. Esquiva e Bloqueio 10 (12 com a lança). Na água nada rápido (5 · 8 · 12); em terra só se arrasta. Lança a duas mãos (dano médio 10,5) ou besta (8,5, a cada 12 Ticks). Respira na água e no ar."
     }
   ],
-  "ecologia": {
-    "tipo": "Humanoid",
-    "terreno": [
-      "Water",
-      "Coast"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/merfolk_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Merfolk",
-    "cr": "1/3",
-    "tipo": "humanoide Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 13,
-      "des": 13,
-      "con": 14,
-      "int": 10,
-      "sab": 9,
-      "car": 10
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Anfíbio",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 50,
-      "origem": "fonte",
-      "nota": "nado 50: em terra o povo do mar se arrasta 5 ft"
+    {
+      "campo": "corpo.altura",
+      "motivo": "O tronco e a cabeça do corpo de base"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 37,
-    "esquiva": 10,
-    "bloqueio": 10,
-    "defesa": 12,
-    "defesaMental": 12,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 5,
-      "corte": 1,
-      "perfuracao": 1
+    {
+      "campo": "corpo.area",
+      "motivo": "Na água, deitado, a vista de lado mostra mais área: corpo de 2,0 m com 0,3 m de altura média = 0,60 m², mais os braços e a nadadeira, 0,10 m²; de lado, nadando; as medidas são estimadas"
     },
-    "couracaNivel": 0,
-    "pesoErguido": 141.3,
-    "deslocamento": {
-      "nado": {
-        "batalha": 5,
-        "arranque": 8,
-        "corrida": 12
-      }
+    {
+      "campo": "aparencia",
+      "motivo": "Degrau 4, \"Feio\", fica como no site. O site fala de \"Beleza\" do povo do mar; a Aparência mede a beleza (D-205), mas o número publicado fica sem outra base; 4, a do site; o texto fala de beleza"
     },
-    "bloqueioArma": 2
-  },
-  "notasObservacao": [
-    "`equipamento`: lança no lugar do tridente e besta média no lugar da besta pesada **[provisório]**",
-    "`area`: de lado, nadando; as medidas são estimadas **[extrapolação]**",
-    "`aparência`: 4, a do site; o texto fala de beleza **[provisório]**",
-    "`anfíbio`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.caca",
+      "motivo": ""
+    },
+    {
+      "campo": "equipamento",
+      "motivo": "lança no lugar do tridente e besta média no lugar da besta pesada"
+    },
+    {
+      "campo": "deslocamento",
+      "motivo": "antes, Batalha 0,5 m/Tick apenas em texto, Arranque e Corrida ausentes; depois, terra 0,5 / 0,75 / 1,0 m/Tick. Preserva o arrastar publicado e distingue esforço breve e máximo, ambos limitados pela cauda sem pernas (36.2) ."
+    }
   ]
 }

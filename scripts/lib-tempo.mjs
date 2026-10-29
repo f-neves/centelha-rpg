@@ -338,7 +338,7 @@ export function atacar(A, D, R, rnd, log = null) {
     const gateFechado = A.arma.modo === 'perfurante' && A.arma.perf < D.armadura.resistPerf;
     if (!gateFechado) {
       // SEM A FORÇA, A ARMA RENDE O PATAMAR COMUM (`M-32`): `×1` e `+0`. É a
-      // mesma regra de `comRequisitoDeForca` (`src/lib/calc.ts`), escrita de novo
+      // mesma regra de `comRequisitoDeForca` (`src/lib/motor.ts`), escrita de novo
       // aqui porque este arquivo é INLINADO dentro do `combate-tempo-bench.html`
       // e não pode importar de `src/lib`. Quem mantém as duas honestas é o
       // `test-espelho`: se divergirem, ele fica vermelho.

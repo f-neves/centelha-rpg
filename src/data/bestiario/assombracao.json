@@ -1,136 +1,241 @@
 {
-  "ordem": 80,
   "id": "assombracao",
   "idAntigo": "mon-assombracao-wraith",
   "nome": "Assombração",
   "nomeIngles": "Wraith",
-  "categoria": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "elite",
-  "conceito": "morto-vivo Médio (incorpóreo)",
-  "descricao": "Um morto que não descansa, movido por magia ou ódio.",
-  "tags": [
-    "morto-vivo",
-    "centelha",
-    "incorpóreo",
-    "mágico"
-  ],
-  "imagem": null,
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura, silhueta humanoide flutuante",
-    "peso": "sem peso, forma incorpórea"
-  },
-  "locomocao": {
-    "voo": 6
-  },
+  "ameaca": 4,
   "centelha": 3,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé no ar, flutuando, sem pernas que pisem",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "semMassa": true,
+    "volume": 0.079,
+    "area": 0.72,
+    "posturaDoTamanho": "de frente",
+    "naoErgue": true
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 5,
     "vigor": 6,
-    "influencia": 6,
-    "perspicacia": 5,
-    "compostura": 5,
     "percepcao": 4,
     "inteligencia": 4,
-    "raciocinio": 4
+    "raciocinio": 4,
+    "influencia": 6,
+    "perspicacia": 5,
+    "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
-    "prontidao": 2,
-    "integridade": 5
+    "furtividade": 4,
+    "integridade": 5,
+    "persuasao": 3,
+    "prontidao": 3,
+    "resistencia": 0
   },
-  "virtues": {
-    "compaixao": 0,
+  "habilidadesSec": {
+    "intimidacao": 3,
+    "voo": 3,
+    "musculatura": 0
+  },
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "voando em silêncio",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
+    "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 8,
+  "vontade": 8,
   "aparencia": 2,
-  "arte": {
-    "morte": 2,
-    "espirito": 3
+  "deslocamento": {
+    "voo": {
+      "batalha": 6,
+      "arranque": 10,
+      "corrida": 14
+    }
   },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Toque dilacerante",
-      "atrib": "influencia",
-      "pericia": "briga",
-      "dado": 2,
-      "mao": 1,
-      "tipo": "necrótico (vs Def. Mental)",
-      "ticks": 5,
-      "notas": "atravessa matéria; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "fenomeno",
+      "nivelPerfuracao": null,
+      "acerto": 1,
+      "bloqueiaComoArma": null
     }
   ],
-  "poderes": [
+  "habilidadesEspeciais": [
     {
-      "id": "dreno-de-constituicao",
-      "nome": "Dreno de Constituição",
-      "tipo": "natural",
-      "base": {
-        "arte": "morte",
-        "nivel": 2
-      },
-      "resiste": "corpo",
-      "efeito": "resistência de corpo (regra em auditoria); efeito acumula.",
-      "usos": {
-        "periodo": "golpe"
-      },
-      "ataque": "Toque dilacerante"
-    },
-    {
-      "id": "incorporeo",
-      "nome": "Incorpóreo",
-      "tipo": "natural",
+      "nome": "Voo e incorpóreo",
+      "formas": "todas",
+      "classe": "regra da ficha",
       "base": {
         "arte": "espirito",
         "nivel": 3
       },
-      "resiste": "nenhum",
-      "efeito": "Incorpóreo",
-      "usos": {
-        "periodo": "avontade"
-      }
-    }
-  ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "corte",
-    "impacto",
-    "perfuracao"
-  ],
-  "habilidades": [
-    {
-      "nome": "Incorpórea",
-      "descricao": "atravessa paredes e objetos; resiste a corte, impacto e perfuração (dano pela metade), arma comum ainda fere"
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "voa sem ruído e atravessa paredes, portas e objetos; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
-      "nome": "Toque drenante",
-      "descricao": "reduz Constituição/PV máximo do alvo e cura a Assombração pelo valor drenado"
-    },
-    {
-      "nome": "Voo silencioso",
-      "descricao": "desloca-se voando sem ruído, bônus de Furtividade"
-    },
-    {
-      "nome": "Presença sepulcral",
-      "descricao": "quem se aproxima faz teste de Vontade; falha deixa Abalado"
+      "nome": "Dreno de vida",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "ativacao": "o Toque dilacerante que fere",
+      "duracao": "até um descanso completo",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "rouba a vida do alvo; o PV máximo dele cai, o efeito se acumula a cada toque que pega, e a assombração se fecha com o que roubou",
+      "dano": "nenhum além do toque; o PV máximo do alvo cai 1d6, e ela recupera o mesmo tanto de PV",
+      "resistencia": "corpo, contra a jogada do toque; quem passa não perde PV máximo por aquele toque",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Cria súditos",
-      "descricao": "vítima morta pelo dreno pode ressurgir como Assombração subordinada"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "a vítima morre com o PV máximo reduzido pelo Dreno de vida",
+      "duracao": "permanente",
+      "alcance": "o corpo da vítima",
+      "area": "um corpo",
+      "efeito": "a alma se ergue como assombração no fim da cena, sob o comando dela, até ela ser destruída; então fica livre",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por vítima"
+    },
+    {
+      "nome": "Presença sepulcral",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma, sempre ativa",
+      "duracao": "Abalado até o fim da cena",
+      "alcance": "9 m",
+      "area": "esfera de 9 m em volta dela",
+      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dela; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena para cada pessoa"
     },
     {
       "nome": "Frio da morte",
-      "descricao": "o ar ao redor esfria, delatando sua presença a quem for sensível"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "enquanto ela estiver perto",
+      "alcance": "9 m",
+      "area": "esfera de 9 m em volta dela",
+      "efeito": "o ar esfria de repente e denuncia a presença dela a quem for sensível",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
+    },
+    {
+      "nome": "imune a veneno e doença",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não tem corpo que se envenene ou adoeça"
+    },
+    {
+      "nome": "sem corpo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come, não dorme e não se cansa"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "senhora da tumba",
+      "formas": "todas",
+      "texto": "paira sobre a vítima como uma capa negra, toca e recua para dentro da parede; manda as sombras que comanda na frente."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "percepção dos vivos",
+      "descricao": "sente os vivos a até 30 m, através de paredes, pelo ódio que tem deles",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão no escuro",
+      "descricao": "enxerga no escuro",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "camuflagem": "nenhuma; no escuro é uma capa negra quase invisível",
+    "mente": "inteira, cruel e voltada contra a vida",
+    "tracos": "sem peso e sem matéria; uma capa negra com a sombra de um rosto e dois olhos de brasa fria"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "senhora de sombras e mortos menores",
+    "atividade": "noturno",
+    "dieta": "nenhuma",
+    "caca": "rouba a vida dos vivos",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Alma de quem morreu de morte cruel, que se voltou contra a vida: paira sobre a vítima como uma capa negra e rouba a vida com um toque gelado. Comanda sombras e mortos menores nas ruínas onde muitos morreram.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -149,45 +254,74 @@
       "texto": "Uma assombração é uma Centelha que não apenas se recusou a partir, mas se voltou contra a própria vida. Ruínas de batalhas da Grande Guerra, onde milhares morreram de uma só vez, são os lugares onde mais se relatam essas presenças."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Ruins",
-      "Underground"
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
+      }
     ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 4, Persuasão 3, Prontidão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Assombração (Wraith)",
-    "cr": "5",
-    "tipo": "morto-vivo Médio (incorpóreo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": "-",
-      "des": 16,
-      "con": "-",
-      "int": 14,
-      "sab": 14,
-      "car": 21
-    },
-    "pericias": [
-      "Furtividade 4",
-      "Persuasão 3",
-      "Prontidão 3"
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
     ],
-    "nota": "Dreno de Constituição, incorpóreo (Car 21 → Vigor 6): Centelha 2.",
-    "deslocamento": {
-      "ft": 60,
-      "origem": "fonte",
-      "nota": "voo 60: incorpórea, não pisa"
-    },
-    "crConf": "confirmado"
+    "imunidades": []
   },
-  "variantes": [],
-  "ameacaLegada": 4
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Voo e incorpóreo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dreno de vida",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cria súditos",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Presença sepulcral",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Frio da morte",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Para a alma sem corpo, o Vigor mede o quanto ela aguenta antes de se desfazer, como no espectro. O site o tirou do Carisma 21 (nota da fonte). Fica como no site; 6, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Sociedade)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (fraqueza a luz)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "tira PV máximo e cura, como a habilidade do site; o espectro tira jogadas"
+    },
+    {
+      "campo": "habilidadesSec.intimidacao",
+      "motivo": "3, como no espectro, pela senhora da tumba"
+    }
+  ]
 }

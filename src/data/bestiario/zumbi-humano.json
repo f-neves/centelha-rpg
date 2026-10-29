@@ -1,36 +1,25 @@
 {
-  "ordem": 75,
   "id": "zumbi-humano",
   "idAntigo": "mon-zumbi-humano",
   "nome": "Zumbi Humano",
   "nomeIngles": "Human Zombie",
-  "categoria": "Morto-vivo",
-  "categoriaLegada": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "capanga",
-  "conceito": "morto-vivo Médio",
-  "descricao": "Morto que não descansa: lento, desajeitado e incansável, avança direto sobre o vivo mais próximo. Não sente dor nem medo e só para quando o corpo se desfaz.",
-  "tags": [
-    "morto-vivo",
-    "centelha"
-  ],
-  "imagem": "bestiario/zumbi-humano_criatura.webp",
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,7 m de altura",
-    "peso": "70 kg",
-    "largura": 0.45,
-    "altura": 1.7
-  },
-  "locomocao": {
-    "terra": 3
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 1,
   "centelha": 1,
-  "attrs": {
+  "corpo": {
+    "postura": "bípede, de pé, curvado",
+    "apoio": "bipede",
+    "altura": 1.7,
+    "largura": 0.45,
+    "profundidade": 0.28,
+    "comprimento": null,
+    "massa": 70,
+    "area": 0.58,
+    "posturaDoTamanho": "de frente"
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 4,
     "destreza": 1,
     "vigor": 3,
@@ -41,83 +30,145 @@
     "perspicacia": 1,
     "compostura": 1
   },
-  "skills": {
+  "habilidades": {
     "briga": 2,
-    "prontidao": 1
+    "bloqueio": 0,
+    "esquiva": 0,
+    "atletismo": 0,
+    "furtividade": 0,
+    "integridade": 0,
+    "prontidao": 1,
+    "resistencia": 0,
+    "empatia": 0,
+    "sobrevivencia": 0
   },
-  "virtues": {
+  "habilidadesSec": {
+    "equilibrio": 0,
+    "escalada": 0,
+    "natacao": 0,
+    "voo": 0,
+    "musculatura": 0
+  },
+  "especialidades": {},
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 6,
     "compaixao": 1,
     "conviccao": 1,
-    "temperanca": 1,
-    "valor": 6
+    "temperanca": 1
   },
-  "willpower": 3,
+  "vontade": 3,
   "aparencia": 2,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pancada",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "braco",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "perfuracao"
-  ],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Pancada: Agarrar.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pancada",
+      "regra": "agarrar"
     },
     {
       "nome": "imune a veneno e doença",
-      "descricao": "veneno e doença não o afetam; o corpo morto não tem o que envenenar nem infectar.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "veneno e doença não o afetam; o corpo morto não tem o que envenenar nem infectar"
     },
     {
       "nome": "corpo morto",
-      "descricao": "não respira, não come, não bebe, não dorme e não se cansa; fica parado o tempo que for preciso.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come, não bebe, não dorme e não se cansa; fica parado o tempo que for preciso"
     },
     {
       "nome": "sem dor",
-      "descricao": "não sente dor; as penalidades de ferimento não o atrasam.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não sente dor; as penalidades de ferimento não o atrasam"
     },
     {
       "nome": "últimos estertores",
-      "descricao": "uma vez por cena, o golpe que o derrubaria o deixa de pé com 1 PV.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "avança sem tática",
-      "descricao": "vai direto ao vivo mais próximo, sem medo nem hesitação, e não larga o alvo.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "golpe pesado e lento",
-      "descricao": "bate forte (Pancada Média) e age tarde (Iniciativa baixa).",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão e audição: as de um humano, embotadas; acha o vivo mais próximo."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "uma vez por cena, o golpe que o derrubaria o deixa de pé com 1 PV"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "avança sem tática",
+      "formas": "todas",
+      "texto": "vai direto ao vivo mais próximo, sem medo nem hesitação, e não larga o alvo."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano, embotadas; acha o vivo mais próximo",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "mente": "nenhuma; obedece a uma compulsão imposta de fora",
+    "tracos": "carne que apodrece aos poucos; o zumbi mal nota o próprio corpo se desfazendo. Não come, não dorme, não sente dor nem frio"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "bando (típico 3 a 12)",
+    "atividade": "qualquer hora",
+    "dieta": "nenhuma",
+    "caca": "avança sobre o vivo mais próximo",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "urbano"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Morto que não descansa: lento, desajeitado e incansável, avança direto sobre o vivo mais próximo. Não sente dor nem medo e só para quando o corpo se desfaz.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Lento, desajeitado e obtuso, mas incansável: avança direto ao alvo mais próximo, sem tática, medo ou hesitação. Social: bando (típico 3 a 12)."
+      "texto": "Lento, desajeitado e obtuso, mas incansável: avança direto ao alvo mais próximo, sem tática, medo ou hesitação."
     },
     {
       "titulo": "Ecologia",
@@ -130,76 +181,46 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "A Centelha da pessoa já partiu; o que ergue o cadáver é a magia de quem o reanimou, uma compulsão bruta imposta de fora, e é ela que dá ao corpo morto a pouca força sobrenatural que ele tem. Erguer um zumbi é um dos atos mais reprimidos pelas ortodoxias de Calin, prova imediata de necromancia ativa numa comunidade."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio como o humano. Lento: age tarde (Iniciativa 1d6 + 2) e não desvia nem apara (Esquiva 2, Bloqueio 2), então quase todo golpe acerta. Bate forte para um capanga (dano médio 8,5) e agarra. Não adianta assustar, convencer nem encantar: não tem mente. A lança, a flecha e a estocada fazem metade do dano depois da armadura; o machado e a maça, o dano inteiro. Luz e golpe sagrado passam toda a Absorção. 34 PV, Impacto 4, Corte e Perfuração 1. Uma vez por cena, fica de pé com 1 PV no golpe que o derrubaria. O perigo é o bando."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Ruins",
-      "Urban"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF B1",
-    "nome": "Zumbi Humano",
-    "cr": "1/2",
-    "tipo": "morto-vivo Médio",
-    "tamanho": "medio",
-    "valores": {
-      "for": 17,
-      "des": 10,
-      "con": "-",
-      "int": "-",
-      "sab": 10,
-      "car": 10
-    },
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 1,
-  "v3": {
-    "pv": 34,
-    "esquiva": 2,
-    "bloqueio": 2,
-    "defesa": 2,
-    "defesaMental": null,
-    "defesaSocial": null,
-    "absorcao": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
-    },
-    "couracaNivel": 0,
-    "pesoErguido": 149.25,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
+  "imagens": [
+    "bestiario/zumbi-humano_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
       }
-    }
+    ],
+    "resistencias": [
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`centelha`: 1, decidida pelo autor (D-185). O texto do site foi adaptado na linha \"Ambientação: No mundo de Centelha\"",
-    "`forca`: 4 por julgamento (o corpo comum sem freio de dor); o site tinha 5 **[provisório]**",
-    "`vigor`: 3 por julgamento; o site tinha 2 **[provisório]**",
-    "`atributos sociais`, `vontade`, `virtudes`: sociais em 1, Vontade 3 e Virtudes pelo método do animal, decididos pelo autor para toda criatura de Inteligência 0 (D-186)",
-    "`massa`: 70 kg, a do vivo menos cerca de 7% de água; não há dado de zumbi, e a fonte de decomposição é de cadáver parado, não de corpo animado **[extrapolação]**",
-    "`deslocamento`: o do site, congelado; o \"lento\" do texto fica na Iniciativa e na Velocidade do golpe, e não na velocidade",
-    "`couraca`: 0, pele humana podre; nada a comparar na escala além do humano",
-    "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 4, Corte e Perfuração 1) passa sem mudança"
+  "revisao": [
+    {
+      "campo": "atributos.forca",
+      "motivo": "Degrau 4, \"excepcional\", no corpo de um homem comum (Força 2): o morto não poupa o músculo, porque não sente dor nem cansaço, e golpeia com tudo. O site tinha 5 (a For 17 do Pathfinder convertida); o 5, \"pico humano, dos maiores que já viveram\", é demais para o morto de uma vila. Força passa do humano pela física; aqui não passa; 4 por julgamento (o corpo comum sem freio de dor); o site tinha 5"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "Degrau 3. O Vigor do morto-vivo mede o quanto o corpo aguenta (manual 4.2): não sente dor, fome, frio nem cansaço, mas a carne apodrece. Fica no 3, um acima do humano comum. O site tinha 2; 3 por julgamento; o site tinha 2"
+    },
+    {
+      "campo": "corpo.massa",
+      "motivo": "O manual: a massa do morto-vivo sai \"do corpo de que veio... o zumbi, quase o humano\" (4.2). O site dá 75 kg ao homem vivo de 1,70 m; o corpo morto perde água e fluidos enquanto apodrece (em estudos de decomposição o cadáver perde metade ou mais da massa em semanas a meses, e a perda é mais rápida no começo), e o zumbi que ainda anda guarda quase todo o corpo: cerca de 7% a menos, 70 kg. Faixa 3 pela tabela das 7 faixas; 70 kg, a do vivo menos cerca de 7% de água; não há dado de zumbi, e a fonte de decomposição é de cadáver parado, não de corpo animado"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Hábitat: acumula-se onde os mortos não foram enterrados)"
+    }
   ]
 }

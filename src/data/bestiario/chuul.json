@@ -1,38 +1,24 @@
 {
-  "ordem": 170,
   "id": "chuul",
   "idAntigo": "mon-chuul",
   "nome": "Chuul",
   "nomeIngles": "Chuul",
-  "categoria": "Aberração",
-  "categoriaLegada": "Aberração",
+  "categoria": "aberracao",
   "papel": "elite",
-  "conceito": "aberração Grande",
-  "descricao": "Crustáceo blindado como um caranguejo gigante, que espreita sob a água dos charcos. Agarra com as pinças, passa a presa para os tentáculos da boca, que paralisam, e a devora ou a arrasta para o fundo. Fala e guarda troféus.",
-  "tags": [
-    "aberracao",
-    "centelha"
-  ],
-  "imagem": "bestiario/chuul_criatura.webp",
-  "porte": "Grande",
-  "dimensoes": {
-    "medida": "2,7 m de comprimento, 0,6 m de altura",
-    "peso": "160 kg",
-    "comprimento": 2.7,
-    "largura": 0.8,
-    "altura": 0.6
-  },
-  "locomocao": {
-    "terra": 3,
-    "natacao": 2
-  },
-  "deslocamentoDeclarado": {
-    "batalha": 3,
-    "arranque": 5,
-    "corrida": 7
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "oito patas, corpo baixo",
+    "apoio": "outro",
+    "altura": 0.6,
+    "largura": 0.8,
+    "profundidade": null,
+    "comprimento": 2.7,
+    "massa": 160,
+    "area": 1.9
+  },
+  "couraca": 5,
+  "atributos": {
     "forca": 7,
     "destreza": 5,
     "vigor": 6,
@@ -43,7 +29,7 @@
     "perspicacia": 2,
     "compostura": 2
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
     "bloqueio": 2,
     "esquiva": 1,
@@ -54,113 +40,192 @@
     "integridade": 2,
     "sobrevivencia": 2
   },
-  "skills2": {
+  "habilidadesSec": {
     "natacao": 2,
     "musculatura": 2
   },
-  "especialidades": [
-    {
-      "habilidade": "briga",
-      "foco": "Agarrão",
-      "valor": 2,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "furtividade",
-      "foco": "sob a água rasa",
-      "valor": 3,
-      "origem": "natural"
-    },
-    {
-      "habilidade": "resistencia",
-      "foco": "venenos",
-      "valor": 3,
-      "origem": "natural"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "briga": [
+      {
+        "foco": "Agarrão",
+        "valor": 2,
+        "origem": "natural"
+      }
+    ],
+    "furtividade": [
+      {
+        "foco": "sob a água rasa",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ],
+    "resistencia": [
+      {
+        "foco": "venenos",
+        "valor": 3,
+        "origem": "natural"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 3,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 1,
+  "deslocamento": {
+    "terra": {
+      "batalha": 3,
+      "arranque": 5,
+      "corrida": 7
+    },
+    "nado": {
+      "batalha": 2
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Pinça",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "impacto",
-      "ticks": 6,
-      "classe": "media"
+      "parte": "pinca",
+      "habilidade": "briga",
+      "classe": "media",
+      "pgr": [
+        2,
+        1,
+        3
+      ],
+      "dado": "1d6",
+      "multiplicadorForca": 1,
+      "tipoDano": "impacto",
+      "nivelPerfuracao": null,
+      "acerto": 0,
+      "bloqueiaComoArma": 1
     },
     {
       "nome": "Mandíbulas",
-      "atrib": "forca",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "perfurante",
+      "parte": "mandibulas-entre-os-tentaculos",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "perfuracao",
+      "nivelPerfuracao": 0,
       "acerto": 1,
-      "perf": 0,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [],
-  "resistencias": [],
-  "imunidades": [],
-  "habilidades": [
+  "habilidadesEspeciais": [
     {
       "nome": "agarrar",
-      "descricao": "Pinça: o Agarrão, com a Especialidade natural Briga (Agarrão) +2.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pinça",
+      "regra": "agarrar"
     },
     {
       "nome": "Tentáculos paralisantes",
-      "descricao": "Mandíbulas: Ativação: uma ação, Velocidade 6, contra quem já está Agarrado na Pinça. Duração: até o alvo se soltar ou ele soltar. Alcance: o do corpo a corpo. Área: um alvo. Efeito: passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa. Dano: nenhum. Resistência: corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2. Limite de uso: um alvo nos tentáculos por vez.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mandíbulas",
+      "ativacao": "uma ação, Velocidade 6, contra quem já está Agarrado na Pinça",
+      "duracao": "até o alvo se soltar ou ele soltar",
+      "alcance": "o do corpo a corpo",
+      "area": "um alvo",
+      "efeito": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa",
+      "dano": "nenhum",
+      "resistencia": "corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2",
+      "limiteDeUso": "um alvo nos tentáculos por vez"
     },
     {
       "nome": "Mandíbulas devoradoras",
-      "descricao": "Mandíbulas: Ativação: a cada 6 Ticks em que segura a presa nos tentáculos. Duração: enquanto segura. Alcance: o do corpo a corpo. Área: quem está nos tentáculos. Efeito: crava as Mandíbulas sem nova jogada de ataque. Dano: o das Mandíbulas. Resistência: nenhum; quem se solta para de sofrer. Limite de uso: um por presa nos tentáculos.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mandíbulas",
+      "ativacao": "a cada 6 Ticks em que segura a presa nos tentáculos",
+      "duracao": "enquanto segura",
+      "alcance": "o do corpo a corpo",
+      "area": "quem está nos tentáculos",
+      "efeito": "crava as Mandíbulas sem nova jogada de ataque",
+      "dano": "o das Mandíbulas",
+      "resistencia": "nenhum; quem se solta para de sofrer",
+      "limiteDeUso": "um por presa nos tentáculos"
     },
     {
       "nome": "Imune a veneno",
-      "descricao": "veneno nenhum pega nele; a Resistência (venenos) +3 fica para o que o Mestre quiser rolar.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "Anfíbio",
-      "descricao": "respira na água e no ar (linha Corpo) e nada a 2.",
-      "classe": "livro"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "veneno nenhum pega nele; a Resistência (venenos) +3 fica para o que o Mestre quiser rolar"
     },
     {
       "nome": "arrastar para o fundo",
-      "descricao": "Pinça: arrasta o que agarrou para dentro da água, para afogar, até o Peso erguido. O mesmo \"puxar para a água\" do caranguejo-gigante do molde.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "ataque": "Pinça",
+      "efeito": "arrasta o que agarrou para dentro da água, para afogar, até o Peso erguido. O mesmo \"puxar para a água\" do caranguejo-gigante do molde"
     },
+    {
+      "nome": "paralisia dos tentáculos",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "o veneno dos tentáculos paralisa a presa que segura"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "emboscada no charco",
-      "descricao": "espera submerso na água rasa, explode da margem, agarra com a Pinça, passa a presa para os tentáculos e arrasta para o fundo; leva troféus para o covil.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "visão no escuro: enxerga na água turva."
+      "formas": "todas",
+      "texto": "espera submerso na água rasa, explode da margem, agarra com a Pinça, passa a presa para os tentáculos e arrasta para o fundo; leva troféus para o covil."
     }
   ],
-  "venenos": [
+  "sentidos": [
     {
-      "nome": "Veneno no jogo",
-      "texto": "Curare · Potência 14 · 1 Tick (toque) · efeito único · pool 3 (Destreza) · Desgaste 1 · pelos Tentáculos paralisantes. Pelo toque em pele intacta, a Potência cai 4; a cada 6 Ticks preso, uma nova jogada. Quem perde os 3 pontos de Destreza fica Imobilizado até o fim da cena (o curare dura 1 cena)"
+      "nome": "visão no escuro",
+      "descricao": "enxerga na água turva",
+      "formas": "todas"
     }
   ],
+  "fisiologia": {
+    "respiracao": "água e ar",
+    "prendeRespiracao": "não precisa",
+    "camuflagem": "sob a água rasa; Furtividade (sob a água rasa) +3",
+    "mente": "inteligente; fala uma língua gutural própria",
+    "tracos": "carapaça verde-amarelada de lagosta, duas pinças enormes, oito patas, um tufo de tentáculos finos em volta das mandíbulas"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "sozinho",
+    "atividade": "qualquer hora",
+    "dieta": "carnívoro",
+    "caca": "emboscada da margem",
+    "dianteDeGente": "agarra quem chega perto da água; guarda troféus"
+  },
+  "ecologia": {
+    "terreno": [
+      "pântano",
+      "aquático"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Crustáceo blindado como um caranguejo gigante, que espreita sob a água dos charcos. Agarra com as pinças, passa a presa para os tentáculos da boca, que paralisam, e a devora ou a arrasta para o fundo. Fala e guarda troféus.",
   "lore": [
     {
       "titulo": "Emboscada nos Pântanos",
@@ -171,84 +236,62 @@
       "texto": "Ao contrário de meras bestas, fala uma língua gutural própria e decora seu covil com troféus das presas devoradas, alimentando especulações sobre sua origem."
     },
     {
-      "titulo": "Comportamento",
-      "texto": "Social: sozinho."
-    },
-    {
       "titulo": "Veneno e doença",
       "texto": "Veneno no jogo: Curare · Potência 14 · 1 Tick (toque) · efeito único · pool 3 (Destreza) · Desgaste 1 · pelos Tentáculos paralisantes. Pelo toque em pele intacta, a Potência cai 4; a cada 6 Ticks preso, uma nova jogada. Quem perde os 3 pontos de Destreza fica Imobilizado até o fim da cena (o curare dura 1 cena)"
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Grande, 43 PV, Impacto 10, Corte e Perfuração 4. Bloqueio 18 (19 com a pinça), Esquiva 14. Pinça de dano médio 14,5, que agarra; passa a presa para os tentáculos, que envenenam (curare, a cada 6 Ticks) e deixam as mandíbulas morderem sem jogada (12,5). Veneno não o pega. Nada e respira na água."
     }
   ],
-  "ecologia": {
-    "tipo": "Aberration",
-    "terreno": [
-      "Swamp",
-      "Water"
-    ],
-    "clima": [
-      "Temperate"
-    ]
+  "imagens": [
+    "bestiario/chuul_criatura.webp"
+  ],
+  "elementos": {
+    "fraquezas": [],
+    "resistencias": [],
+    "imunidades": []
   },
-  "notas": "",
-  "pendente": true,
-  "fonte": {
-    "livro": "PF Bestiary 1",
-    "nome": "Chuul",
-    "cr": "7",
-    "tipo": "aberração Grande",
-    "tamanho": "grande",
-    "valores": {
-      "for": 25,
-      "des": 16,
-      "con": 18,
-      "int": 10,
-      "sab": 14,
-      "car": 5
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Tentáculos paralisantes",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "nota": "Importado do Bestiary 1 (PF). Poderes a mapear.",
-    "deslocamento": {
-      "ft": 30,
-      "origem": "fonte"
+    {
+      "campo": "habilidadesEspeciais.Mandíbulas devoradoras",
+      "motivo": "números sugeridos pela ficha (D-197)"
     },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 43,
-    "esquiva": 14,
-    "bloqueio": 18,
-    "defesa": 19,
-    "defesaMental": 18,
-    "defesaSocial": 4,
-    "absorcao": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+    {
+      "campo": "atributos.forca",
+      "motivo": "O site tinha 9; com 160 kg, ficaria muito acima do gorila (180 kg, Força 7) e da Força de referência da massa (6, manual 3.9). Desce para 7, a do gorila, pelo teste de ordem, como o caranguejo-gigante desceu de 9 para 7 (D-115); 7; o site tinha 9"
     },
-    "couracaNivel": 5,
-    "pesoErguido": 614.28,
-    "deslocamento": {
-      "terra": {
-        "batalha": 3,
-        "arranque": 5,
-        "corrida": 7
-      },
-      "nado": 2
+    {
+      "campo": "habilidades.bloqueio",
+      "motivo": "As pinças de carapaça aparam (D-100); 2, pelas pinças; o site não gravava Bloqueio"
     },
-    "bloqueioArma": 1
-  },
-  "notasObservacao": [
-    "`forca`: 7; o site tinha 9 **[provisório]**",
-    "`area`: 1,90 m², de cima; medidas das partes estimadas **[extrapolação]**",
-    "`couraca`: nível 5, o do caranguejo-gigante **[provisório]**",
-    "`bloqueio`: 2, pelas pinças; o site não gravava Bloqueio **[provisório]**",
-    "`ataques`: Pinça Média e Mandíbulas Leve no lugar das \"Garras e presas\" **[provisório]**",
-    "`veneno`: curare do livro, pelo toque **[provisório]**",
-    "`tentáculos paralisantes`, `mandíbulas devoradoras`: números sugeridos pela ficha (D-197)"
+    {
+      "campo": "corpo.altura",
+      "motivo": "Corpo de 0,25 m de espessura sobre patas de 0,35 m"
+    },
+    {
+      "campo": "corpo.area",
+      "motivo": "Corpo, elipse de 1,6 × 0,8 m = 1,01 m²; duas pinças, braço de 1,0 × 0,2 m e pinça de 0,5 × 0,25 m cada = 0,65 m²; oito patas, 0,6 × 0,05 m cada = 0,24 m²  nas medidas das partes; 1,90 m², de cima; medidas das partes estimadas"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "Absorção natural do livro (`combate.md`). \"Blindado como um caranguejo gigante\" (site): o nível do caranguejo-gigante do molde (5) ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 5, o do caranguejo-gigante"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": ""
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": ""
+    },
+    {
+      "campo": "ataques",
+      "motivo": "Pinça Média e Mandíbulas Leve no lugar das \"Garras e presas\""
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "curare do livro, pelo toque"
+    }
   ]
 }

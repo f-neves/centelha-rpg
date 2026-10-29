@@ -1,33 +1,27 @@
 {
-  "ordem": 81,
   "id": "espectro",
   "idAntigo": "mon-espectro",
   "nome": "Espectro",
   "nomeIngles": "Spectre",
-  "categoria": "Morto-vivo",
-  "categoriaLegada": "Morto-vivo",
+  "categoria": "morto-vivo",
   "papel": "elite",
-  "conceito": "morto-vivo Médio (incorpóreo)",
-  "descricao": "Alma presa ao mundo pelo próprio ódio: voa através das paredes, persegue os vivos sem descanso e drena a força de quem toca. As armas comuns mal o ferem.",
-  "tags": [
-    "morto-vivo",
-    "centelha",
-    "incorpóreo",
-    "mágico"
-  ],
-  "imagem": null,
-  "porte": "Médio",
-  "dimensoes": {
-    "medida": "1,8 m de altura",
-    "peso": "sem massa (volume 0,079 m³)",
-    "largura": 0.45,
-    "altura": 1.8
-  },
-  "locomocao": {
-    "voo": 8
-  },
+  "ameaca": 4,
   "centelha": 4,
-  "attrs": {
+  "corpo": {
+    "postura": "de pé no ar, flutuando, sem pernas que pisem",
+    "apoio": "bipede",
+    "altura": 1.8,
+    "largura": 0.45,
+    "profundidade": 0.23,
+    "comprimento": null,
+    "semMassa": true,
+    "volume": 0.079,
+    "area": 0.72,
+    "posturaDoTamanho": "de frente",
+    "naoErgue": true
+  },
+  "couraca": 0,
+  "atributos": {
     "forca": 0,
     "destreza": 5,
     "vigor": 5,
@@ -38,117 +32,225 @@
     "perspicacia": 5,
     "compostura": 5
   },
-  "skills": {
+  "habilidades": {
     "briga": 5,
+    "bloqueio": 0,
     "esquiva": 1,
+    "atletismo": 0,
     "furtividade": 4,
     "integridade": 5,
-    "prontidao": 3
+    "prontidao": 3,
+    "resistencia": 0,
+    "sociabilidade": 0,
+    "empatia": 0,
+    "sobrevivencia": 0
   },
-  "skills2": {
+  "habilidadesSec": {
     "intimidacao": 3,
-    "voo": 3
+    "voo": 3,
+    "musculatura": 0
   },
-  "especialidades": [
-    {
-      "habilidade": "furtividade",
-      "foco": "atravessando paredes",
-      "valor": 2,
-      "origem": "livro"
-    }
-  ],
-  "virtues": {
+  "especialidades": {
+    "furtividade": [
+      {
+        "foco": "atravessando paredes",
+        "valor": 2,
+        "origem": "livro"
+      }
+    ]
+  },
+  "especialidadesSec": {},
+  "virtudes": {
+    "bravura": 3,
     "compaixao": 1,
     "conviccao": 4,
-    "temperanca": 2,
-    "valor": 3
+    "temperanca": 2
   },
-  "willpower": 9,
+  "vontade": 9,
   "aparencia": 2,
+  "deslocamento": {
+    "voo": {
+      "batalha": 8,
+      "arranque": 13,
+      "corrida": 18
+    }
+  },
+  "equipamento": {
+    "arsenal": [],
+    "armaduras": []
+  },
+  "artes": {},
   "ataques": [
     {
       "nome": "Toque dilacerante",
-      "atrib": "destreza",
-      "pericia": "briga",
-      "dado": 1,
-      "mao": 1,
-      "tipo": "fenomeno",
+      "parte": "mao",
+      "habilidade": "briga",
+      "classe": "leve",
+      "pgr": [
+        1,
+        1,
+        3
+      ],
+      "dado": "1d6-2",
+      "multiplicadorForca": 1,
+      "tipoDano": "fenomeno",
+      "nivelPerfuracao": null,
       "acerto": 1,
-      "ticks": 5,
-      "danoBonus": -2,
-      "classe": "leve"
+      "bloqueiaComoArma": null
     }
   ],
-  "fraquezas": [
-    "luz",
-    "sagrado"
-  ],
-  "resistencias": [
-    "corte",
-    "perfuracao",
-    "impacto"
-  ],
-  "imunidades": [],
-  "habilidades": [
-    {
-      "nome": "toque que atravessa",
-      "descricao": "Toque dilacerante: o dano é fenômeno; a armadura do alvo não absorve, só a Centelha dele.",
-      "classe": "regra da ficha"
-    },
+  "habilidadesEspeciais": [
     {
       "nome": "Voo e incorpóreo",
-      "descricao": "poder natural (base Espírito 3): Ativação: nenhuma, sempre ativo. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Efeito: voa e atravessa paredes, portas e obstáculos; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "espirito",
+        "nivel": 3
+      },
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "não se aplica",
+      "efeito": "voa e atravessa paredes, portas e obstáculos; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos)",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "Dreno de nível",
-      "descricao": "poder natural (base Morte 3): Ativação: o Toque dilacerante que fere. Duração: até ser tirado por magia de Morte ou de Proteção de nível 3 ou mais. Alcance: toque. Área: um alvo. Efeito: −1 em todas as jogadas do alvo a cada dreno que pega, até −4. Dano: nenhum além do toque. Resistência: corpo, contra a jogada do toque; quem passa não sofre o dreno daquele toque. Limite de uso: um por golpe.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 3
+      },
+      "ativacao": "o Toque dilacerante que fere",
+      "duracao": "até ser tirado por magia de Morte ou de Proteção de nível 3 ou mais",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "−1 em todas as jogadas do alvo a cada dreno que pega, até −4",
+      "dano": "nenhum além do toque",
+      "resistencia": "corpo, contra a jogada do toque; quem passa não sofre o dreno daquele toque",
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "Regenera com o dreno",
-      "descricao": "Ativação: o Dreno de nível que pega. Duração: instantânea. Alcance: toque. Área: ele mesmo. Efeito: a força roubada fecha as feridas dele. Dano: nenhum; cura 1d6 PV do espectro. Resistência: nenhum. Limite de uso: um por dreno.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "o Dreno de nível que pega",
+      "duracao": "instantânea",
+      "alcance": "toque",
+      "area": "ele mesmo",
+      "efeito": "a força roubada fecha as feridas dele",
+      "dano": "nenhum; cura 1d6 PV do espectro",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por dreno"
     },
     {
       "nome": "Cria espectros",
-      "descricao": "Ativação: a vítima morre com pelo menos um dreno de nível. Duração: permanente. Alcance: o corpo da vítima. Área: um corpo. Efeito: a alma se ergue como espectro no fim da cena, sob o comando dele, até ele ser destruído; então fica livre. Dano: nenhum. Resistência: nenhum. Limite de uso: um por vítima.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "a vítima morre com pelo menos um dreno de nível",
+      "duracao": "permanente",
+      "alcance": "o corpo da vítima",
+      "area": "um corpo",
+      "efeito": "a alma se ergue como espectro no fim da cena, sob o comando dele, até ele ser destruído; então fica livre",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "um por vítima"
     },
     {
       "nome": "Terror sepulcral",
-      "descricao": "Ativação: nenhuma, sempre ativo. Duração: Abalado até o fim da cena. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado. Dano: nenhum. Resistência: mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena. Limite de uso: uma vez por cena para cada pessoa.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "Abalado até o fim da cena",
+      "alcance": "9 m",
+      "area": "esfera de 9 m em volta dele",
+      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado",
+      "dano": "nenhum",
+      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena para cada pessoa"
     },
     {
       "nome": "Frio sobrenatural",
-      "descricao": "Ativação: nenhuma, sempre ativo. Duração: enquanto ele estiver perto. Alcance: 9 m. Área: esfera de 9 m em volta dele. Efeito: o ar esfria de repente, a respiração vira vapor e as chamas pequenas tremem; é o aviso de que ele chegou. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum.",
-      "classe": "regra da ficha"
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ativacao": "nenhuma, sempre ativo",
+      "duracao": "enquanto ele estiver perto",
+      "alcance": "9 m",
+      "area": "esfera de 9 m em volta dele",
+      "efeito": "o ar esfria de repente, a respiração vira vapor e as chamas pequenas tremem; é o aviso de que ele chegou",
+      "dano": "nenhum",
+      "resistencia": "nenhum",
+      "limiteDeUso": "nenhum"
     },
     {
       "nome": "imune a veneno e doença",
-      "descricao": "não tem corpo que se envenene ou adoeça.",
-      "classe": "sem regra ainda"
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não tem corpo que se envenene ou adoeça"
     },
     {
       "nome": "sem corpo",
-      "descricao": "não respira, não come, não dorme e não se cansa.",
-      "classe": "sem regra ainda"
-    },
-    {
-      "nome": "caça pela parede",
-      "descricao": "atravessa a parede, toca e volta para dentro dela; persegue quem foge, voando mais rápido que qualquer corredor.",
-      "classe": "como luta"
-    },
-    {
-      "nome": "Sentidos",
-      "descricao": "percepção dos vivos: sente os vivos a até 30 m, através de paredes, pelo ódio que tem deles. · visão e audição: as de um humano."
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "efeito": "não respira, não come, não dorme e não se cansa"
     }
   ],
+  "comoLuta": [
+    {
+      "nome": "caça pela parede",
+      "formas": "todas",
+      "texto": "atravessa a parede, toca e volta para dentro dela; persegue quem foge, voando mais rápido que qualquer corredor."
+    }
+  ],
+  "sentidos": [
+    {
+      "nome": "percepção dos vivos",
+      "descricao": "sente os vivos a até 30 m, através de paredes, pelo ódio que tem deles",
+      "formas": "todas"
+    },
+    {
+      "nome": "visão e audição",
+      "descricao": "as de um humano",
+      "formas": "todas"
+    }
+  ],
+  "fisiologia": {
+    "respiracao": "nenhuma",
+    "prendeRespiracao": "não respira",
+    "camuflagem": "nenhuma; no escuro é uma silhueta apagada",
+    "mente": "inteira, mas fixa num ódio só",
+    "tracos": "sem peso e sem matéria; o ar esfria onde ele passa"
+  },
+  "aptidoes": {
+    "montaria": false,
+    "carga": false,
+    "tracao": false
+  },
+  "comportamento": {
+    "social": "solitário, ou com os espectros que criou",
+    "atividade": "noturno",
+    "dieta": "nenhuma",
+    "caca": "persegue o vivo até alcançá-lo",
+    "dianteDeGente": "ataca"
+  },
+  "ecologia": {
+    "terreno": [
+      "ruínas",
+      "subterrâneo"
+    ],
+    "clima": [
+      "temperado"
+    ]
+  },
+  "descricao": "Alma presa ao mundo pelo próprio ódio: voa através das paredes, persegue os vivos sem descanso e drena a força de quem toca. As armas comuns mal o ferem.",
   "lore": [
     {
       "titulo": "Comportamento",
-      "texto": "Incorpóreo e implacável, persegue os vivos com uma velocidade e um ódio que não conhecem descanso nem piedade. Social: solitário, ou com os espectros que criou."
+      "texto": "Incorpóreo e implacável, persegue os vivos com uma velocidade e um ódio que não conhecem descanso nem piedade."
     },
     {
       "titulo": "Personalidade",
@@ -161,78 +263,72 @@
     {
       "titulo": "No mundo de Centelha",
       "texto": "Os sacerdotes da Ceifadora ensinam que um espectro nasce quando uma alma morre com tanto ódio que a própria deusa da morte se recusa a recebê-la, deixando-a presa entre o mundo e o além. É considerada a mais pura expressão de uma Centelha que apodreceu por dentro."
-    },
-    {
-      "titulo": "No jogo",
-      "texto": "Médio, voa a 8 m por Tick e atravessa paredes. Acerta o toque com facilidade e a armadura não ajuda: só a Centelha de quem é tocado absorve (dano médio 5,5). Cada toque que fere deixa uma penalidade que se acumula e não sai sem magia. Esquiva 14, Bloqueio 10; Defesa Mental 26: quase não se assusta nem se engana. Corte, perfuração e impacto fazem metade, depois da armadura; luz e golpe sagrado passam toda a Absorção. 40 PV, Impacto 9, Corte e Perfuração 4. Quem chega perto testa a Vontade contra o terror. Quem morre pelo dreno pode voltar como espectro."
     }
   ],
-  "ecologia": {
-    "tipo": "Undead",
-    "terreno": [
-      "Ruins",
-      "Underground"
-    ],
-    "clima": [
-      "Temperate"
-    ]
-  },
-  "notas": "Habilidades notáveis: Furtividade 4, Prontidão 3.",
-  "pendente": true,
-  "fonte": {
-    "livro": "MM 3.5",
-    "nome": "Espectro",
-    "cr": "7",
-    "tipo": "morto-vivo Médio (incorpóreo)",
-    "tamanho": "medio",
-    "valores": {
-      "for": "-",
-      "des": 16,
-      "con": "-",
-      "int": 14,
-      "sab": 14,
-      "car": 17
-    },
-    "pericias": [
-      "Furtividade 4",
-      "Prontidão 3"
-    ],
-    "nota": "Dreno de nível, voo, incorpóreo: Centelha 3.",
-    "deslocamento": {
-      "ft": 80,
-      "origem": "fonte",
-      "nota": "voo 80 (perfeito): incorpóreo"
-    },
-    "crConf": "confirmado"
-  },
-  "variantes": [],
-  "ameacaLegada": 4,
-  "v3": {
-    "pv": 40,
-    "esquiva": 14,
-    "bloqueio": 10,
-    "defesa": 14,
-    "defesaMental": 26,
-    "defesaSocial": 10,
-    "absorcao": {
-      "impacto": 9,
-      "corte": 4,
-      "perfuracao": 4
-    },
-    "couracaNivel": 0,
-    "pesoErguido": null,
-    "deslocamento": {
-      "voo": {
-        "batalha": 8,
-        "arranque": 13,
-        "corrida": 18
+  "imagens": [],
+  "elementos": {
+    "fraquezas": [
+      {
+        "tipo": "luz",
+        "formas": "todas"
+      },
+      {
+        "tipo": "sagrado",
+        "formas": "todas"
       }
-    }
+    ],
+    "resistencias": [
+      {
+        "tipo": "corte",
+        "formas": "todas"
+      },
+      {
+        "tipo": "perfuracao",
+        "formas": "todas"
+      },
+      {
+        "tipo": "impacto",
+        "formas": "todas"
+      }
+    ],
+    "imunidades": []
   },
-  "notasObservacao": [
-    "`massa`: sem massa; o volume do corpo de base (0,079 m³) entra no PV e nas faixas como 80 kg. Com qualquer volume humano (de 0,06 a 0,10 m³) o PV seria o mesmo (Faixa de 35 a 220 kg) **[conta]**",
-    "`vigor`: 5, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer **[provisório]**",
-    "`ataque`: o \"vs Def. Mental\" e a Influência do site saíram; a jogada é a comum. Se o autor quiser o toque contra a Defesa Mental, é regra nova",
-    "`tipo do dano`: \"fenômeno\" não é um dos três tipos (Impacto, Corte, Perfuração); o card pode não saber ler. Ver o relato"
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Voo e incorpóreo",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dreno de nível",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Regenera com o dreno",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cria espectros",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Terror sepulcral",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Frio sobrenatural",
+      "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "atributos.vigor",
+      "motivo": "O Vigor do morto-vivo mede o quanto o corpo aguenta (manual 4.2); o espectro não tem corpo, e o Vigor mede aqui o quanto a alma aguenta antes de se desfazer. O 3.5 escreve Con \"-\". Acima de 6 só com Centelha (D-143); 5 fica dentro. Fica como no site; 5, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
+    },
+    {
+      "campo": "comportamento.social",
+      "motivo": "site (Ecologia)"
+    },
+    {
+      "campo": "comportamento.atividade",
+      "motivo": "site (morto que não descansa; foge da luz, fraqueza a luz)"
+    }
   ]
 }
