@@ -77,7 +77,7 @@ const REVISAO = {
 };
 const PARADAS = {
   lobisomem: [],
-  'dragao-branco-jovem': ['Ataques, Garras: Habilidade ausente na frase Jogada', 'Manobras, Multiataque: texto de trabalho no texto de jogo ("(site)"; manual 7.5)'],
+  'dragao-branco-jovem': ['Manobras, Multiataque: texto de trabalho no texto de jogo ("(site)"; manual 7.5)'],
 };
 // o exemplo do lobisomem não passa no esquema novo: falta o `apoio`, que o formato diz obrigatório
 const EXEMPLO_FORA_DO_ESQUEMA = { lobisomem: ['corpo.apoio'] };
@@ -104,8 +104,8 @@ for (const id of Object.keys(DIFERENCAS)) {
   const ex = JSON.parse(ler(`${id}-exemplo.json`));
   if (JSON.stringify(paradas) !== JSON.stringify(PARADAS[id])) falhas.push(`${id}: paradas ${JSON.stringify(paradas)}, esperadas ${JSON.stringify(PARADAS[id])}`);
   const { revisao: rc, ...c } = criatura, { revisao: re, ...e } = ex;
-  // A fonte omite a Jogada das Garras: o resultado é recusado, não um JSON publicável.
-  // Só esse campo ausente sai da comparação; a parada exata acima e a ausência abaixo são obrigatórias.
+  // D-208: a fonte omite a Jogada das Garras. Em corpo a corpo isso deixa a escolha
+  // Briga ou Armas para o motor e não deve impedir a conversão.
   if (id === 'dragao-branco-jovem') {
     if (c.ataques.find(a=>a.nome==='Garras').habilidade !== undefined) falhas.push('Garras: Habilidade foi inferida sem Jogada');
     e.ataques=structuredClone(e.ataques);

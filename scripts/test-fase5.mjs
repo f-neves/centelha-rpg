@@ -72,7 +72,7 @@ cases.set('13', async () => {
 const c=fresh();delete c.corpo.posturaDoTamanho;assert.equal(schema.safeParse(c).success,false);c.corpo.posturaDoTamanho=' ';assert.equal(schema.safeParse(c).success,false);const r=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (0,98 m²) '));assert.ok(r.criatura.corpo.posturaDoTamanho?.trim());
 });
 cases.set('20', async () => {
-const a=conv(raw.replace(/Jogada:/g,'Conta:'));assert.ok(a.paradas.some(x=>/Jogada|habilidade/i.test(x)));const b=conv(raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[9]=' ';return a.join('|');}));assert.ok(b.paradas.some(x=>/Acerto/.test(x)));
+const a=conv(raw.replace(/Jogada:/g,'Conta:'));assert.ok(!a.paradas.some(x=>/Jogada|habilidade/i.test(x)));const b=conv(raw.replace('| Mordida | boca | Média |','| Mordida | boca | Distância |').replace(/Jogada:/g,'Conta:'));assert.ok(b.paradas.some(x=>/Jogada|habilidade/i.test(x)));const c=conv(raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[9]=' ';return a.join('|');}));assert.ok(c.paradas.some(x=>/Acerto/.test(x)));
 });
 cases.set('23', async () => {
 for(const regra of ['agarrar','investida','furtividade','derrubar','empurrar','empunhadura-dupla','horda']){const c=fresh();c.habilidadesEspeciais=[{nome:'teste',classe:'livro',formas:'todas',regra,texto:'somente neste gesto'}];const h=M.vistaPublicaCriatura(c).habilidades[0];assert.ok(h.descricao.length>50,regra);assert.ok(h.descricao.includes('somente neste gesto'));assert.ok(!h.descricao.startsWith(regra+'.'));}

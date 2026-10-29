@@ -601,6 +601,14 @@ export function atributoDaJogada(habilidade: string, at: Num): number {
         return at.destreza ?? 0;
     return Math.max(at.forca ?? 0, at.destreza ?? 0);
 }
+/** D-208: corpo a corpo sem Habilidade declarada escolhe a melhor entre Briga e Armas. */
+export function habilidadeDaJogada(ataque: AtaqueEntrada, habilidades: Num, habilidadesSec: Num): string | null {
+    if (ataque.habilidade) return ataque.habilidade;
+    if (ataque.classe === 'distancia' || ataque.classe === 'arremesso') return null;
+    const briga = habilidades.briga ?? habilidadesSec.briga ?? 0;
+    const armas = habilidades.armas ?? habilidadesSec.armas ?? 0;
+    return armas > briga ? 'armas' : 'briga';
+}
 const habDe = (e: EntradaCriatura, id: string) => e.habilidades[id] ?? e.habilidadesSec[id] ?? 0;
 // ----- A criatura -----
 export function criatura(e: EntradaCriatura) {
@@ -634,7 +642,7 @@ export function criatura(e: EntradaCriatura) {
         mana: comArtes ? manaDe({ centelha: ce, vontade: e.vontade ?? 0 }) : null,
         absorcao,
         ataques: e.ataques.map((a) => {
-            const h = a.habilidade;
+            const h = habilidadeDaJogada(a, e.habilidades, e.habilidadesSec);
             const hv = h ? habDe(e, h) : 0;
             const w = a.arma ? ataqueDaArma(a.arma, at.forca ?? 0) : null;
             const acerto = w ? w.acerto : (a.acerto ?? 0);
@@ -722,7 +730,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const formaId = c.formaPrincipal?.id;
     const vale = (item: any) => item.formas === 'todas' || item.formas?.includes(formaId);
     c = { ...c, habilidadesEspeciais: c.habilidadesEspeciais.filter(vale) };
-    const M = { criatura, ataqueDaArma, atributoDaJogada };
+    const M = { criatura, ataqueDaArma, atributoDaJogada, habilidadeDaJogada };
     const armas: any[] = ARMAS;
     const r = M.criatura(c);
     const armaDe = (a: any) => armas.find((w: any) => w.id === a.arma)?.arma;
@@ -733,9 +741,9 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         esquiva: vest.esquiva, bloqueio: vest.bloqueio, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
     } : undefined;
     const ataques = c.ataques.map((a: any, i: number) => {
-        const w: any = armaDe(a), h = a.habilidade, hv = c.habilidades[h] ?? c.habilidadesSec[h] ?? 0;
+        const w: any = armaDe(a), h = M.habilidadeDaJogada(a, c.habilidades, c.habilidadesSec), hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
         const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? 'percepcao' : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
-        const soma = M.atributoDaJogada(h, c.atributos) + hv;
+        const soma = h ? M.atributoDaJogada(h, c.atributos) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);
         const wd = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca) : null;
         const dado = wd?.dado ?? a.dado;

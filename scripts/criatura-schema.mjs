@@ -28,7 +28,7 @@ const equipamentoNovo = z.object({
   armaduras: z.array(z.object({ base: id, vestida: z.boolean() }).strict()),
 }).strict();
 const ataqueNatural = z.object({
-  nome: texto, parte: id, habilidade: id, classe: z.enum(['leve','media','pesada','haste','haste-media','haste-guerra','distancia','arremesso']), pgr: z.tuple([naoNeg, z.literal(1), naoNeg]),
+  nome: texto, parte: id, habilidade: id.optional(), classe: z.enum(['leve','media','pesada','haste','haste-media','haste-guerra','distancia','arremesso']), pgr: z.tuple([naoNeg, z.literal(1), naoNeg]),
   dado: z.string().regex(/^\d+d6([+-]\d+)?$/).nullable(), multiplicadorForca: z.union([z.literal(0), z.literal(1), z.literal(2)]),
   tipoDano: z.enum([...elementosVocab.grupos.flatMap(g=>g.palavras),'fenomeno','eletricidade','nao-se-aplica']), nivelPerfuracao: naoNeg.nullable(), acerto: inteiro, bloqueiaComoArma: inteiro.nullable(),
 }).strict();

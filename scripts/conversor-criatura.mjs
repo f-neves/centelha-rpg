@@ -342,7 +342,9 @@ export function converterFicha(texto, { site = null } = {}) {
     const a = { nome, parte: slug(semMarcas(r['Parte'] ?? '').split(',')[0]) };
     const cls = slug(semMarcas(r['Classe'] ?? ''));
     if (jog) a.habilidade = slug(jog[1]);
-    else para(`${onde}, ${nome}: Habilidade ausente na frase Jogada`);
+    // D-208: golpes naturais corpo a corpo usam a maior entre Briga e Armas; a ficha
+    // não repete essa escolha no JSON. Tiro e arremesso continuam exigindo a Habilidade.
+    else if (cls === 'distancia' || cls === 'arremesso') para(`${onde}, ${nome}: Habilidade ausente na frase Jogada`);
     a.classe = cls;
     const pgr = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/);
     if (!pgr) para(`${onde}, ${nome}: P/G/R ilegível`);

@@ -158,6 +158,18 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   confere(c.id,'vista sem revisao',JSON.stringify(vista).includes('__REVISAO_PRIVADA_A5__'),false);
   for (const a of vista.motor.stat.ataques) if (['corte','impacto','perfuracao','perfurante'].includes(a.tipo)) confere(c.id,a.nome+' com tipo de dano legível',/\([CIP]\)/.test(a.dano),true);
 }
+// Item 20, D-208: um golpe corpo a corpo sem Habilidade guardada escolhe a maior entre Briga e Armas.
+{
+  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  entrada.habilidades.briga = 2;
+  entrada.habilidades.armas = 5;
+  entrada.ataques = [{ nome: 'Golpe', parte: 'mao', classe: 'media', pgr: [2,1,3], dado: '1d6', multiplicadorForca: 1, tipoDano: 'impacto', nivelPerfuracao: null, acerto: 0, bloqueiaComoArma: null }];
+  const conta = M.criatura(entrada).ataques[0];
+  confere('Item 20', 'sem Habilidade usa Armas maior', conta.jogada, Math.max(entrada.atributos.forca, entrada.atributos.destreza) + 5 + 2 * Math.min(entrada.centelha, 5));
+  entrada.ataques[0].classe = 'distancia';
+  confere('Item 20', 'controle negativo, tiro sem Habilidade não ganha jogada', M.criatura(entrada).ataques[0].jogada, null);
+}
+
 // P10/P13: oito números escritos nas fichas, sem PV guardado no bloco enxame.
 const PV_ENXAMES = [['aranhas',24,12,6],['caranguejos',26,13,6],['centopeias',24,12,6],['formigas',26,13,6],['morcegos',34,17,8],['ratos',28,14,7],['sanguessugas',26,13,6],['vespas',24,12,6]];
 const controleSemEnxame = await carregarMotor(true);
