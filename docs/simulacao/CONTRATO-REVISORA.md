@@ -425,6 +425,23 @@ que nasceu.
 **O que esta linha não é:** conferir o CI não substitui o veredito sobre a árvore, e o veredito sobre
 a árvore não substitui o CI. São duas medidas, e o veredito diz as duas.
 
+## 12 · Toda revisão roda o `npm run smoke` inteiro
+
+**Acrescentado em 29/10/2026, por decisão do autor (R3 da Fase 4 do bestiário).** No merge do
+`b3fcb9cd` no `main` local, o `test-grid-simultaneo` deu 2 falhas em 79, e a revisão que tinha dado
+PROCEDE não as viu: o smoke da mesa não estava no `validate`. A Executora pôs o smoke dentro do
+`validate` (`2dd55db7`), e o gancho de `pre-commit` passou de cerca de 15 s para cerca de 6 min,
+abrindo navegador. O autor tirou o smoke do `validate` de novo e trouxe a conferência para cá.
+
+**A regra:** toda revisão roda, no pino, o `validate` **e** o `npm run smoke` inteiro, e o veredito
+traz o resultado dos dois (exit e contagem de falhas, com o log em `../tmp/revisora/`). Smoke que
+falha por causa da rodada é BLOQUEIA. Smoke que já falhava antes da faixa é ESCALA, com a prova de
+que já falhava (o mesmo teste na base da faixa). Se a máquina não conseguir rodar o smoke (navegador
+ausente, porta ocupada), o veredito diz isso e não diz PROCEDE sobre o que o smoke cobre.
+
+**O que esta regra não é:** o CI continua rodando o smoke à parte (seção 11), e a linha do CI não
+substitui o smoke local, nem o contrário.
+
 ## Como isto cresce
 
 Cada rodada de revisão pode render um item novo aqui, do mesmo jeito que
