@@ -190,6 +190,7 @@ import FichaResumo from '../../components/FichaResumo.astro';
 <script>
   import { abrirMesa, copiarTexto, u, esc, avatarHTML, urlsImagens, nomesDe, semMigracao14 } from '../../lib/mesa-core';
   import { resumoFicha, resumoParaBanco } from '../../lib/mesa-ficha';
+  import { avisoDosFisicosCompartilhados } from '../../lib/grupo-visivel';
   import { uiAviso, uiConfirmar, uiErro, uiPerguntar } from '../../lib/ui-dialog';
 
   const el = (i: string) => document.getElementById(i)!;
@@ -515,6 +516,7 @@ import FichaResumo from '../../components/FichaResumo.astro';
    */
   function cardDeFora(p: any, nomes: Record<string, string>, imgs: Record<string, string>) {
     const d = p.dados || {};
+    const avisoFisico = avisoDosFisicosCompartilhados(p.nivel, d);
     const n = (k: string) => parseInt(d[k], 10) || 0;
     const fis = p.nivel === 'fisico'
       ? [['Força', n('forca')], ['Destreza', n('destreza')], ['Vigor', n('vigor')], ['Aparência', n('aparencia')]] as [string, number][]
@@ -552,6 +554,7 @@ import FichaResumo from '../../components/FichaResumo.astro';
         ${fis.length ? `<div class="atr-linha atr-fora">
           ${fis.map(([r, v]) => `<span class="atr-cel"><span>${esc(r)}</span><b>${v}</b></span>`).join('')}
         </div>` : ''}
+        ${avisoFisico ? `<p class="muted" role="status">${esc(avisoFisico)}</p>` : ''}
         ${pil.length ? `<div class="pilha pc-nums">${pil.join('')}</div>` : ''}
       </div>
     </article>`;
