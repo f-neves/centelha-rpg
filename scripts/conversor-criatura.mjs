@@ -281,12 +281,20 @@ export function converterFicha(texto, { site = null } = {}) {
   else if (/\[sem dado\]/.test(dt)) para('Deslocamento em terra sem dado: não equivale a não anda');
   else if (/^(não anda|não se aplica)/.test(dt.trim())) { /* terra condicional, P15 */ }
   else para('Deslocamento em terra ilegível');
+  const movimento = (rot) => {
+    const linha = MV.find((r) => {
+      const nome = Object.values(r)[0];
+      return nome === rot || (rot === 'Nado' && nome === 'Natação');
+    });
+    return linha ? Object.values(linha)[1] : '';
+  };
   for (const [rot, k] of [['Voo', 'voo'], ['Nado', 'nado'], ['Escavação', 'escavacao'], ['Escalada', 'escalada']]) {
     // As fichas antigas chamam o meio de Natação e escrevem só o número. É o mesmo
     // deslocamento declarado, não a Habilidade secundária de manobrar na água.
-    const v = campo(MV, rot) || (rot === 'Nado' ? campo(MV, 'Natação') : '') || '';
-    const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/) || v.match(/^\s*\**(\d+(?:[.,]\d+)?)\**(?:\s*m por Tick)?(?:\s|$)/);
-    if (!b) { if (/\d/.test(v)) para(rot + ': deslocamento numérico ilegível'); continue; }
+    const v = movimento(rot);
+    const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/\bBatalha\s+\**(\d+(?:[.,]\d+)?)\**/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/) || v.match(/^\s*\**(\d+(?:[.,]\d+)?)\**(?:\s*m por Tick)?(?:\s|$)/) || v.match(new RegExp('locomocao\\.' + k + '`?\\s+(\\d+(?:[.,]\\d+)?)', 'i'));
+    const pelaRegra = /^\s*pela regra do personagem\b/i.test(v) || new RegExp('^\\s*' + rot + '\\s+\\d+(?:[.,]\\d+)?(?:\\s|$)', 'i').test(v);
+    if (!b) { if (/\d/.test(v) && !pelaRegra) para(rot + ': deslocamento numérico ilegível'); continue; }
     c.deslocamento[k] = { batalha: numeroPasso(b[1]) };
     const a2 = v.match(/Arranque \*\*(\d+(?:[.,]\d+)?)\*\*/), c2 = v.match(/Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
     if (a2) c.deslocamento[k].arranque = numeroPasso(a2[1]);
