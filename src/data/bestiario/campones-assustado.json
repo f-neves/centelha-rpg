@@ -72,19 +72,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:bordao"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Bordão",
-      "arma": "bordao",
-      "habilidade": "armas"
+      "arma": "bordao"
     }
   ],
   "habilidadesEspeciais": [

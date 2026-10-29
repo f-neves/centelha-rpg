@@ -72,27 +72,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      },
-      {
-        "ref": "a:azagaia"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Azagaia",
-      "arma": "azagaia",
-      "habilidade": "arremesso"
+      "arma": "azagaia"
     },
     {
       "nome": "Coice",

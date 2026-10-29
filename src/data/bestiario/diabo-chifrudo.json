@@ -79,19 +79,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:corrente-farpada"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Corrente farpada",
-      "arma": "corrente-farpada",
-      "habilidade": "armas"
+      "arma": "corrente-farpada"
     },
     {
       "nome": "Mordida",

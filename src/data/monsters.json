@@ -74,19 +74,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -3726,19 +3721,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -4891,11 +4881,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:montante"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "malha",
@@ -4910,8 +4896,7 @@
    "ataques": [
     {
      "nome": "Montante",
-     "arma": "montante",
-     "habilidade": "armas"
+     "arma": "montante"
     }
    ],
    "habilidadesEspeciais": [
@@ -5327,11 +5312,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:arco-longo"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "couro",
@@ -5343,8 +5324,7 @@
    "ataques": [
     {
      "nome": "Arco longo",
-     "arma": "arco-longo",
-     "habilidade": "atirador"
+     "arma": "arco-longo"
     },
     {
      "nome": "Punhos",
@@ -5700,11 +5680,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:adaga"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "couro",
@@ -5716,8 +5692,7 @@
    "ataques": [
     {
      "nome": "Adaga",
-     "arma": "adaga",
-     "habilidade": "armas"
+     "arma": "adaga"
     }
    ],
    "habilidadesEspeciais": [
@@ -6959,19 +6934,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:lanca"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Lança",
-     "arma": "lanca",
-     "habilidade": "armas"
+     "arma": "lanca"
     },
     {
      "nome": "Garras",
@@ -7522,27 +7492,18 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     },
-     {
-      "ref": "a:chicote"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada flamejante",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Chicote de chamas",
-     "arma": "chicote",
-     "habilidade": "armas"
+     "arma": "chicote"
     },
     {
      "nome": "Garras",
@@ -8109,11 +8070,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "couro",
@@ -8125,8 +8082,7 @@
    "ataques": [
     {
      "nome": "Facão",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -14219,19 +14175,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:maca-estrela"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Maça estrela",
-     "arma": "maca-estrela",
-     "habilidade": "armas"
+     "arma": "maca-estrela"
     }
    ],
    "habilidadesEspeciais": [
@@ -15147,11 +15098,7 @@
      "id": "elfica",
      "nome": "forma élfica",
      "equipamento": {
-      "arsenal": [
-       {
-        "ref": "a:espada-longa"
-       }
-      ]
+      "arsenal": []
      },
      "deslocamento": {
       "voo": {
@@ -15166,8 +15113,7 @@
      "ataques": [
       {
        "nome": "Espada longa",
-       "arma": "espada-longa",
-       "habilidade": "armas"
+       "arma": "espada-longa"
       }
      ]
     }
@@ -16007,11 +15953,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:martelo-de-guerra"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "couro",
@@ -16023,8 +15965,7 @@
    "ataques": [
     {
      "nome": "Martelo de guerra",
-     "arma": "martelo-de-guerra",
-     "habilidade": "armas"
+     "arma": "martelo-de-guerra"
     }
    ],
    "habilidadesEspeciais": [
@@ -18145,19 +18086,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:machado"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Machado",
-     "arma": "machado",
-     "habilidade": "armas"
+     "arma": "machado"
     }
    ],
    "habilidadesEspeciais": [
@@ -19326,11 +19262,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "malha",
@@ -19342,8 +19274,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Espada longa a duas mãos",
@@ -19742,9 +19673,6 @@
    "equipamento": {
     "arsenal": [
      {
-      "ref": "a:espada-longa"
-     },
-     {
       "ref": "e:heater"
      }
     ],
@@ -19759,8 +19687,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -20165,19 +20092,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:bordao"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Bordão",
-     "arma": "bordao",
-     "habilidade": "armas"
+     "arma": "bordao"
     }
    ],
    "habilidadesEspeciais": [
@@ -22909,9 +22831,6 @@
    "equipamento": {
     "arsenal": [
      {
-      "ref": "a:espada-longa"
-     },
-     {
       "ref": "e:heater"
      }
     ],
@@ -22926,8 +22845,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -24807,11 +24725,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:montante"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "placa-completa",
@@ -24823,8 +24737,7 @@
    "ataques": [
     {
      "nome": "Montante",
-     "arma": "montante",
-     "habilidade": "armas"
+     "arma": "montante"
     }
    ],
    "habilidadesEspeciais": [
@@ -25583,27 +25496,18 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     },
-     {
-      "ref": "a:azagaia"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Azagaia",
-     "arma": "azagaia",
-     "habilidade": "arremesso"
+     "arma": "azagaia"
     },
     {
      "nome": "Coice",
@@ -27917,11 +27821,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "placa-completa",
@@ -27933,8 +27833,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -32118,19 +32017,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -32549,19 +32443,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:maca"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Maça",
-     "arma": "maca",
-     "habilidade": "armas"
+     "arma": "maca"
     }
    ],
    "habilidadesEspeciais": [
@@ -33747,19 +33636,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:glaive-serrilhada"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Glaive serrilhada",
-     "arma": "glaive-serrilhada",
-     "habilidade": "armas"
+     "arma": "glaive-serrilhada"
     },
     {
      "nome": "Mordida",
@@ -34232,19 +34116,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:corrente-farpada"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Corrente farpada",
-     "arma": "corrente-farpada",
-     "habilidade": "armas"
+     "arma": "corrente-farpada"
     },
     {
      "nome": "Mordida",
@@ -34728,19 +34607,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:lanca"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Lança de gelo",
-     "arma": "lanca",
-     "habilidade": "armas"
+     "arma": "lanca"
     },
     {
      "nome": "Cauda",
@@ -38190,19 +38064,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -45613,19 +45482,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -46000,11 +45864,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "couro",
@@ -46016,8 +45876,7 @@
    "ataques": [
     {
      "nome": "Lâmina leve",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -46394,19 +46253,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:machado"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Machado",
-     "arma": "machado",
-     "habilidade": "armas"
+     "arma": "machado"
     }
    ],
    "habilidadesEspeciais": [
@@ -52651,27 +52505,18 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:arco-longo"
-     },
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Arco longo",
-     "arma": "arco-longo",
-     "habilidade": "atirador"
+     "arma": "arco-longo"
     },
     {
      "nome": "Espada flamejante",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Garras",
@@ -54839,19 +54684,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -55207,19 +55047,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     },
     {
      "nome": "Pancada",
@@ -62269,11 +62104,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {
@@ -62286,8 +62117,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -68046,19 +67876,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:machado"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Machado",
-     "arma": "machado",
-     "habilidade": "armas"
+     "arma": "machado"
     },
     {
      "nome": "Mordida",
@@ -68423,19 +68248,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [],
@@ -73188,9 +73008,6 @@
    "equipamento": {
     "arsenal": [
      {
-      "ref": "a:espada-curta"
-     },
-     {
       "ref": "e:redondo"
      }
     ],
@@ -73205,8 +73022,7 @@
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -76340,19 +76156,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -76693,19 +76504,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:maca-estrela"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Maça estrela",
-     "arma": "maca-estrela",
-     "habilidade": "armas"
+     "arma": "maca-estrela"
     },
     {
      "nome": "Rabada",
@@ -77052,19 +76858,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     },
     {
      "nome": "Mordida",
@@ -77236,8 +77037,7 @@
      "ataques": [
       {
        "nome": "Espada curta",
-       "arma": "espada-curta",
-       "habilidade": "armas"
+       "arma": "espada-curta"
       }
      ]
     },
@@ -78376,19 +78176,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     }
    ],
    "habilidadesEspeciais": [
@@ -79905,19 +79700,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:lanca"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Lança",
-     "arma": "lanca",
-     "habilidade": "armas"
+     "arma": "lanca"
     }
    ],
    "habilidadesEspeciais": [
@@ -85608,11 +85398,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {
@@ -85623,8 +85409,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Cauda",
@@ -88162,11 +87947,7 @@
      "id": "humana",
      "nome": "forma humana",
      "equipamento": {
-      "arsenal": [
-       {
-        "ref": "a:espada-curta"
-       }
-      ]
+      "arsenal": []
      },
      "couraca": 0,
      "aparencia": 4,
@@ -88188,8 +87969,7 @@
      "ataques": [
       {
        "nome": "Espada curta",
-       "arma": "espada-curta",
-       "habilidade": "armas"
+       "arma": "espada-curta"
       }
      ]
     },
@@ -94141,19 +93921,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Cauda",
@@ -95075,27 +94850,18 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:arco-curto"
-     },
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Arco curto",
-     "arma": "arco-curto",
-     "habilidade": "atirador"
+     "arma": "arco-curto"
     },
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     },
     {
      "nome": "Serpentes",
@@ -96330,27 +96096,18 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:lanca"
-     },
-     {
-      "ref": "a:besta-media"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Lança",
-     "arma": "lanca",
-     "habilidade": "armas"
+     "arma": "lanca"
     },
     {
      "nome": "Besta média",
-     "arma": "besta-media",
-     "habilidade": "atirador"
+     "arma": "besta-media"
     }
    ],
    "habilidadesEspeciais": [
@@ -97100,19 +96857,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:machado-pesado"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Machado pesado",
-     "arma": "machado-pesado",
-     "habilidade": "armas"
+     "arma": "machado-pesado"
     },
     {
      "nome": "Chifrada",
@@ -100209,19 +99961,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:bastao"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Bastão",
-     "arma": "bastao",
-     "habilidade": "armas"
+     "arma": "bastao"
     }
    ],
    "habilidadesEspeciais": [
@@ -104957,19 +104704,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     }
    ],
    "habilidadesEspeciais": [
@@ -106823,19 +106565,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:machado"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Machado",
-     "arma": "machado",
-     "habilidade": "armas"
+     "arma": "machado"
     }
    ],
    "habilidadesEspeciais": [
@@ -109898,19 +109635,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:arco-curto"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Flecha",
-     "arma": "arco-curto",
-     "habilidade": "atirador"
+     "arma": "arco-curto"
     },
     {
      "nome": "Garras e presas",
@@ -110362,11 +110094,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:montante"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {
@@ -110379,8 +110107,7 @@
    "ataques": [
     {
      "nome": "Montante",
-     "arma": "montante",
-     "habilidade": "armas"
+     "arma": "montante"
     }
    ],
    "habilidadesEspeciais": [
@@ -116459,19 +116186,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:adaga"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Adaga",
-     "arma": "adaga",
-     "habilidade": "armas"
+     "arma": "adaga"
     }
    ],
    "habilidadesEspeciais": [
@@ -118834,19 +118556,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:lanca"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Lança",
-     "arma": "lanca",
-     "habilidade": "armas"
+     "arma": "lanca"
     },
     {
      "nome": "Garras",
@@ -119230,19 +118947,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:lanca"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Lança",
-     "arma": "lanca",
-     "habilidade": "armas"
+     "arma": "lanca"
     },
     {
      "nome": "Cauda",
@@ -121958,19 +121670,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:lanca"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Lança",
-     "arma": "lanca",
-     "habilidade": "armas"
+     "arma": "lanca"
     },
     {
      "nome": "Mordida",
@@ -122360,14 +122067,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:montante"
-     },
-     {
-      "ref": "a:arco-longo"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {
@@ -122380,13 +122080,11 @@
    "ataques": [
     {
      "nome": "Montante",
-     "arma": "montante",
-     "habilidade": "armas"
+     "arma": "montante"
     },
     {
      "nome": "Arco longo",
-     "arma": "arco-longo",
-     "habilidade": "atirador"
+     "arma": "arco-longo"
     }
    ],
    "habilidadesEspeciais": [
@@ -122930,11 +122628,7 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": [
      {
       "base": "malha",
@@ -122946,8 +122640,7 @@
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Espada longa a duas mãos",
@@ -124709,19 +124402,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:picareta-de-guerra"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Picareta de guerra",
-     "arma": "picareta-de-guerra",
-     "habilidade": "armas"
+     "arma": "picareta-de-guerra"
     }
    ],
    "habilidadesEspeciais": [
@@ -125989,19 +125677,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-longa"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada longa",
-     "arma": "espada-longa",
-     "habilidade": "armas"
+     "arma": "espada-longa"
     },
     {
      "nome": "Bico",
@@ -126353,19 +126036,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:sabre"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Sabre",
-     "arma": "sabre",
-     "habilidade": "armas"
+     "arma": "sabre"
     }
    ],
    "habilidadesEspeciais": [
@@ -128939,19 +128617,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:martelo"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Martelo",
-     "arma": "martelo",
-     "habilidade": "armas"
+     "arma": "martelo"
     },
     {
      "nome": "Garras",
@@ -136996,19 +136669,14 @@
     }
    },
    "equipamento": {
-    "arsenal": [
-     {
-      "ref": "a:espada-curta"
-     }
-    ],
+    "arsenal": [],
     "armaduras": []
    },
    "artes": {},
    "ataques": [
     {
      "nome": "Espada curta",
-     "arma": "espada-curta",
-     "habilidade": "armas"
+     "arma": "espada-curta"
     },
     {
      "nome": "Garras",

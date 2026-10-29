@@ -90,19 +90,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:maca-estrela"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Maça estrela",
-      "arma": "maca-estrela",
-      "habilidade": "armas"
+      "arma": "maca-estrela"
     },
     {
       "nome": "Rabada",

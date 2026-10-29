@@ -72,19 +72,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:lanca"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
     }
   ],
   "habilidadesEspeciais": [

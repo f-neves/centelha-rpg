@@ -71,11 +71,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:arco-longo"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "couro",
@@ -87,8 +83,7 @@
   "ataques": [
     {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
     },
     {
       "nome": "Punhos",

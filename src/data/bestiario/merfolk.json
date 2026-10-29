@@ -77,27 +77,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:lanca"
-      },
-      {
-        "ref": "a:besta-media"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
     },
     {
       "nome": "Besta média",
-      "arma": "besta-media",
-      "habilidade": "atirador"
+      "arma": "besta-media"
     }
   ],
   "habilidadesEspeciais": [

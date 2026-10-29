@@ -440,7 +440,7 @@ export const valorPassivo = (
 
 export type Tamanho = Porte;
 type Num = Record<string, number>;
-/** O ataque natural guarda tudo o que não é conta; o com arma do livro, só `nome`, `arma` e `habilidade` (D-220). */
+/** O ataque natural guarda tudo o que não é conta; o com arma do livro guarda só nome e id (D-220, D-258). */
 export interface AtaqueEntrada {
     nome: string;
     classe?: string;
@@ -588,7 +588,7 @@ export function ataqueDaArma(id: string, forca: number, duasMaos = false) {
     const bonus = w.danoBonus || 0;
     return {
         dado: `${w.dado}d6${bonus ? (bonus > 0 ? `+${bonus}` : `${bonus}`) : ''}`, forca: capF, multiplicadorForca: mult,
-        acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks,
+        acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks, habilidade: w.pericia,
     };
 }
 /** O Atributo da jogada pela Habilidade: Disparo, Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208). */
@@ -642,9 +642,9 @@ export function criatura(e: EntradaCriatura) {
         mana: comArtes ? manaDe({ centelha: ce, vontade: e.vontade ?? 0 }) : null,
         absorcao,
         ataques: e.ataques.map((a) => {
-            const h = habilidadeDaJogada(a, e.habilidades, e.habilidadesSec);
-            const hv = h ? habDe(e, h) : 0;
             const w = a.arma ? ataqueDaArma(a.arma, at.forca ?? 0) : null;
+            const h = w?.habilidade ?? habilidadeDaJogada(a, e.habilidades, e.habilidadesSec);
+            const hv = h ? habDe(e, h) : 0;
             const acerto = w ? w.acerto : (a.acerto ?? 0);
             return {
                 nome: a.nome, acerto,
@@ -741,7 +741,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         esquiva: vest.esquiva, bloqueio: vest.bloqueio, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
     } : undefined;
     const ataques = c.ataques.map((a: any, i: number) => {
-        const w: any = armaDe(a), h = M.habilidadeDaJogada(a, c.habilidades, c.habilidadesSec), hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
+        const w: any = armaDe(a), catalogo = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca) : null, h = catalogo?.habilidade ?? M.habilidadeDaJogada(a, c.habilidades, c.habilidadesSec), hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
         const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? 'percepcao' : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
         const soma = h ? M.atributoDaJogada(h, c.atributos) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);

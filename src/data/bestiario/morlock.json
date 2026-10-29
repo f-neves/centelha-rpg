@@ -89,19 +89,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:bastao"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Bastão",
-      "arma": "bastao",
-      "habilidade": "armas"
+      "arma": "bastao"
     }
   ],
   "habilidadesEspeciais": [

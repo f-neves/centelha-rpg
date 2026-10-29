@@ -73,9 +73,6 @@
   "equipamento": {
     "arsenal": [
       {
-        "ref": "a:espada-curta"
-      },
-      {
         "ref": "e:redondo"
       }
     ],
@@ -90,8 +87,7 @@
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
     }
   ],
   "habilidadesEspeciais": [

@@ -86,19 +86,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:machado-pesado"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Machado pesado",
-      "arma": "machado-pesado",
-      "habilidade": "armas"
+      "arma": "machado-pesado"
     },
     {
       "nome": "Chifrada",

@@ -71,19 +71,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:sabre"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Sabre",
-      "arma": "sabre",
-      "habilidade": "armas"
+      "arma": "sabre"
     }
   ],
   "habilidadesEspeciais": [

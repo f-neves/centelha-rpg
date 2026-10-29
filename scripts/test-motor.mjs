@@ -170,6 +170,16 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   confere('Item 20', 'controle negativo, tiro sem Habilidade não ganha jogada', M.criatura(entrada).ataques[0].jogada, null);
 }
 
+// D-258/A4: arma do catálogo não repete a Habilidade, e a troca no catálogo muda a jogada.
+{
+  const entrada = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/aasimar.json'), 'utf8'));
+  const ataque = entrada.ataques.find((a) => a.arma);
+  confere('D-258', 'arma sem Habilidade repetida', Object.hasOwn(ataque, 'habilidade'), false);
+  const antes = M.criatura(entrada).ataques.find((a) => a.nome === ataque.nome).jogada;
+  entrada.habilidades.armas += 1;
+  confere('D-258', 'controle negativo, alterar a Habilidade do catálogo hipotético muda a jogada', M.criatura(entrada).ataques.find((a) => a.nome === ataque.nome).jogada, antes + 1);
+}
+
 // Item 2: quando terra falta, o leitor preserva a ausência e o card pode escrever "não anda".
 {
   const entrada = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));

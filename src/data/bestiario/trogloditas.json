@@ -78,19 +78,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:martelo"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Martelo",
-      "arma": "martelo",
-      "habilidade": "armas"
+      "arma": "martelo"
     },
     {
       "nome": "Garras",

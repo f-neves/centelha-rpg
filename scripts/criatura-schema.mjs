@@ -32,7 +32,7 @@ const ataqueNatural = z.object({
   dado: z.string().regex(/^\d+d6([+-]\d+)?$/).nullable(), multiplicadorForca: z.union([z.literal(0), z.literal(1), z.literal(2)]),
   tipoDano: z.enum([...elementosVocab.grupos.flatMap(g=>g.palavras),'fenomeno','eletricidade','nao-se-aplica']), nivelPerfuracao: naoNeg.nullable(), acerto: inteiro, bloqueiaComoArma: inteiro.nullable(),
 }).strict();
-const ataqueComArma = z.object({ nome: texto, arma: id, habilidade: id }).strict();
+const ataqueComArma = z.object({ nome: texto, arma: id }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };
 const habilidadeEspecial = z.object({

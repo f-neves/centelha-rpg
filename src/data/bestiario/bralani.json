@@ -252,11 +252,7 @@
       "id": "elfica",
       "nome": "forma élfica",
       "equipamento": {
-        "arsenal": [
-          {
-            "ref": "a:espada-longa"
-          }
-        ]
+        "arsenal": []
       },
       "deslocamento": {
         "voo": {
@@ -271,8 +267,7 @@
       "ataques": [
         {
           "nome": "Espada longa",
-          "arma": "espada-longa",
-          "habilidade": "armas"
+          "arma": "espada-longa"
         }
       ]
     }

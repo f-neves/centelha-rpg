@@ -87,19 +87,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:maca"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Maça",
-      "arma": "maca",
-      "habilidade": "armas"
+      "arma": "maca"
     }
   ],
   "habilidadesEspeciais": [

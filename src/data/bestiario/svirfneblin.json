@@ -77,19 +77,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:picareta-de-guerra"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Picareta de guerra",
-      "arma": "picareta-de-guerra",
-      "habilidade": "armas"
+      "arma": "picareta-de-guerra"
     }
   ],
   "habilidadesEspeciais": [

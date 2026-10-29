@@ -71,11 +71,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "placa-completa",
@@ -87,8 +83,7 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     }
   ],
   "habilidadesEspeciais": [

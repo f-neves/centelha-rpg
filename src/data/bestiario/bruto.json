@@ -68,11 +68,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:martelo-de-guerra"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "couro",
@@ -84,8 +80,7 @@
   "ataques": [
     {
       "nome": "Martelo de guerra",
-      "arma": "martelo-de-guerra",
-      "habilidade": "armas"
+      "arma": "martelo-de-guerra"
     }
   ],
   "habilidadesEspeciais": [

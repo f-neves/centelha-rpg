@@ -72,19 +72,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:machado"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
     }
   ],
   "habilidadesEspeciais": [

@@ -70,8 +70,8 @@
       "atributos": { "forca": 4, "vigor": 4 },
       "aparencia": 4,
       "fisiologia": { "camuflagem": "passa por gente comum" },
-      "equipamento": { "arsenal": [ { "ref": "a:espada-curta" } ] },
-      "ataques": [ { "nome": "Espada curta", "arma": "espada-curta", "habilidade": "armas" } ]
+      "equipamento": { "arsenal": [] },
+      "ataques": [ { "nome": "Espada curta", "arma": "espada-curta" } ]
     },
     {
       "id": "lobo",

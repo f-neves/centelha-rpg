@@ -72,19 +72,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:glaive-serrilhada"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Glaive serrilhada",
-      "arma": "glaive-serrilhada",
-      "habilidade": "armas"
+      "arma": "glaive-serrilhada"
     },
     {
       "nome": "Mordida",

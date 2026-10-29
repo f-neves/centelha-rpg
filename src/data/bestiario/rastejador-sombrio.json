@@ -71,19 +71,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:adaga"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Adaga",
-      "arma": "adaga",
-      "habilidade": "armas"
+      "arma": "adaga"
     }
   ],
   "habilidadesEspeciais": [

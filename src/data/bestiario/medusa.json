@@ -73,27 +73,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:arco-curto"
-      },
-      {
-        "ref": "a:espada-curta"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Arco curto",
-      "arma": "arco-curto",
-      "habilidade": "atirador"
+      "arma": "arco-curto"
     },
     {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
     },
     {
       "nome": "Serpentes",

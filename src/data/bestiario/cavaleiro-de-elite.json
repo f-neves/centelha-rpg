@@ -69,11 +69,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:montante"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "placa-completa",
@@ -85,8 +81,7 @@
   "ataques": [
     {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
     }
   ],
   "habilidadesEspeciais": [

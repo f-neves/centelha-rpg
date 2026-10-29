@@ -77,19 +77,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Bico",

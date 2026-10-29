@@ -346,7 +346,7 @@ export function converterFicha(texto, { site = null } = {}) {
       const w = ARMAS.find((x) => x.id === arma);
       const pgrCol = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/), vel = inteiro(r['Velocidade']);
       if (pgrCol && vel !== undefined && +pgrCol[1] + +pgrCol[2] + +pgrCol[3] !== vel) avisos.push(`${onde}, ${nome}: a coluna P/G/R (${pgrCol.slice(1).join('/')}) não soma a Velocidade ${vel}; a arma do livro usa a do catálogo (${w.arma.ticks})`);
-      return { nome, arma, habilidade: jog ? slug(jog[1]) : w.arma.pericia };
+      return { nome, arma };
     }
     // a parte é o pedaço do corpo; o resto da célula diz como o golpe sai ("boca, à distância")
     const a = { nome, parte: slug(semMarcas(r['Parte'] ?? '').split(',')[0]) };
@@ -630,7 +630,7 @@ export function converterFicha(texto, { site = null } = {}) {
         for (const m of f._ataques.matchAll(/([^,(]+?) \(([^)]*)\)/g)) {
           const nomeA = m[1].trim(), det = m[2].split(',').map((x) => x.trim());
           const arma = ARMAS.find((w) => eqArmas.includes(w.id) && w.nome.toLowerCase() === nomeA.toLowerCase());
-          if (arma) { f.ataques.push({ nome: nomeA, arma: arma.id, habilidade: arma.arma.pericia }); continue; }
+          if (arma) { f.ataques.push({ nome: nomeA, arma: arma.id }); continue; }
           let base = c.ataques.find((a) => a.nome === nomeA);
           const pgr = (det[1] || '').match(/^(\d+)\/(\d+)\/(\d+)$/), dd = (det[3] || '').match(/^(\d+)d6(?:\s*([+−-])\s*(\d+))?/);
           if (!base && pgr && dd) {
@@ -681,6 +681,10 @@ export function converterFicha(texto, { site = null } = {}) {
       if (!Object.keys(f[k]).length) delete f[k];
     }
   }
+  // D-258/A4: o ataque já identifica a arma do catálogo. O arsenal da criatura
+  // fica só com escudos, sem uma segunda cópia da mesma arma.
+  for (const ficha of [c, ...(c.formas || [])]) if (ficha.equipamento?.arsenal)
+    ficha.equipamento.arsenal = ficha.equipamento.arsenal.filter((p) => !p.ref.startsWith('a:'));
 
   // ----- a revisao (formato-criatura.md, seção 7): as duas marcas de dúvida (a do número sugerido e a da extrapolação) das tabelas e das notas
   const MARCA = /\*\*\[(provis[óo]rio|extrapolação)\]\*\*/;

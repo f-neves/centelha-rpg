@@ -18,7 +18,7 @@
     "largura": 0.002,
     "profundidade": null,
     "comprimento": 0.0046,
-    "massa": 7e-06,
+    "massa": 0.000007,
     "area": 0,
     "posturaDoTamanho": "vista de cima"
   },

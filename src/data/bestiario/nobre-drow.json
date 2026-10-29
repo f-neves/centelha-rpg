@@ -75,19 +75,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-curta"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
     }
   ],
   "habilidadesEspeciais": [

@@ -68,11 +68,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-curta"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "couro",
@@ -84,8 +80,7 @@
   "ataques": [
     {
       "nome": "Lâmina leve",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
     }
   ],
   "habilidadesEspeciais": [

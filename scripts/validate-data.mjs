@@ -1041,7 +1041,7 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
     for(const k of Object.keys(c.artes))if(!ART.has(k))fail(onde+': Arte inexistente '+k);
     for(const a of c.ataques){
       if(a.arma&&!ARMAS.has(a.arma))fail(onde+': arma inexistente '+a.arma);
-      if(!H.has(a.habilidade)&&!SEC.has(a.habilidade)&&!extras.has(a.habilidade))fail(onde+': Habilidade de ataque inexistente '+a.habilidade);
+      if(a.habilidade!==undefined&&!H.has(a.habilidade)&&!SEC.has(a.habilidade)&&!extras.has(a.habilidade))fail(onde+': Habilidade de ataque inexistente '+a.habilidade);
     }
     for(const imagem of c.imagens)if(!fs.existsSync(path.join(DIR,'..','..','public',imagem)))fail(onde+': imagem inexistente '+imagem);
     for(const h of c.habilidadesEspeciais){

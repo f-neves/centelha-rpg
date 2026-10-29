@@ -86,27 +86,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:arco-longo"
-      },
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
     },
     {
       "nome": "Espada flamejante",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Garras",

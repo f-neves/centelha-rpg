@@ -88,27 +88,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      },
-      {
-        "ref": "a:chicote"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada flamejante",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Chicote de chamas",
-      "arma": "chicote",
-      "habilidade": "armas"
+      "arma": "chicote"
     },
     {
       "nome": "Garras",
