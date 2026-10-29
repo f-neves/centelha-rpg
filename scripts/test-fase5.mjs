@@ -118,6 +118,9 @@ const sql=fs.readFileSync('supabase/migracao-41.sql','utf8');const ante=sql.spli
 cases.set('baixo-volta', async () => {
 const sql=fs.readFileSync('supabase/migracao-41.sql','utf8');const marker=sql.indexOf('-- >>> carimbo');assert.ok(marker>0);assert.ok(!/^commit;/m.test(sql.slice(0,marker)),'o commit não pode preceder o carimbo');assert.ok(sql.slice(marker).trimEnd().endsWith('commit;'));const volta=fs.readFileSync('supabase/migracao-41-volta.sql','utf8');assert.match(volta,/delete from public\.migracoes where numero = 41;/i);assert.ok(volta.indexOf('delete from public.migracoes')<volta.lastIndexOf('commit;'));
 });
+cases.set('baixo-excecao', async () => {
+const md=raw.replace(/^(\| Tamanho \| )[^|]*\|[^|]*\|/m,'$1**Pequeno** (0,98 m², de frente) | decisão 7: quadrúpedes de 50 a 75 kg |');assert.ok(conv(md).paradas.some(x=>x.startsWith('Tamanho:')));const q=conv(md.replace(/^(\| Postura \| )[^|]+/m,'$1quadrúpede ').replace(/^(\| Massa \| )[^|]+/m,'$1**70 kg** '));assert.equal(q.criatura.corpo.tamanhoEscolhido,'pequeno');assert.ok(!q.paradas.some(x=>x.startsWith('Tamanho:')));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

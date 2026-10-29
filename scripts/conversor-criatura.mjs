@@ -180,7 +180,7 @@ export function converterFicha(texto, { site = null } = {}) {
     if (!t || area === undefined) return undefined;
     const aceita = M.tamanhosDaArea(area);
     if (aceita[0] === slug(t)) return undefined;
-    if (aceita.includes(slug(t)) || /decisão 7.*quadrúpedes de 50 a 75 kg/.test(cel)) return slug(t);
+    if (aceita.includes(slug(t)) || (t === 'Pequeno' && corpo.apoio === 'quadrupede' && corpo.massa >= 50 && corpo.massa <= 75 && /decisão 7.*quadrúpedes de 50 a 75 kg/.test(cel))) return slug(t);
     para(`${rotulo}: a ficha diz ${t}, e a área de ${area} m² dá ${aceita.join(' ou ')}`);
     return undefined;
   };
