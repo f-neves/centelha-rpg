@@ -29,6 +29,9 @@ for(const [rot,id] of [['Voo','voo'],['Nado','nado'],['Escalada','escalada'],['E
 cases.set('6', async () => {
 const c=fresh(); c.formas[0].bolsas=[{nome:'sacola',itens:[{item:'corda',peso:1,preco:2}]}]; assert.equal(schema.safeParse(c).success,true);const f=M.comForma(c,c.formas[0]);assert.deepEqual(f.bolsas,c.formas[0].bolsas);c.formas[0].bolsas[0].itens[0].peso='um';assert.equal(schema.safeParse(c).success,false);
 });
+cases.set('8', async () => {
+for(const attrs of [{froca:3},{forca:-1}]){const c=fresh();c.formas[0].atributos=attrs;assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.formas[0].atributos={forca:0};assert.equal(schema.safeParse(c).success,true);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
