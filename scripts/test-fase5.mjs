@@ -26,6 +26,9 @@ const r=conv(variant('Escavação: Batalha 2'));assert.equal(r.criatura.formas.f
 cases.set('4', async () => {
 for(const [rot,id] of [['Voo','voo'],['Nado','nado'],['Escalada','escalada'],['Escavação','escavacao']]){const r=conv(variant(rot+': Batalha 2, Arranque 4, Corrida 6'));assert.deepEqual(r.criatura.formas.find(f=>f.id==='humana').deslocamento[id],{batalha:2,arranque:4,corrida:6});}
 });
+cases.set('2', async () => {
+const simples=conv(raw.replace('| Nado | o de um humano | |','| Natação | **3** m por Tick | deslocamento antigo |'));assert.equal(simples.criatura.deslocamento.nado.batalha,3);assert.ok(!simples.paradas.some(x=>/Nado|Natação/.test(x)));const ruim=conv(raw.replace('| Nado | o de um humano | |','| Natação | rápida 3 | deslocamento antigo |'));assert.ok(ruim.paradas.some(x=>/Nado/.test(x)));
+});
 cases.set('6', async () => {
 const c=fresh(); c.formas[0].bolsas=[{nome:'sacola',itens:[{item:'corda',peso:1,preco:2}]}]; assert.equal(schema.safeParse(c).success,true);const f=M.comForma(c,c.formas[0]);assert.deepEqual(f.bolsas,c.formas[0].bolsas);c.formas[0].bolsas[0].itens[0].peso='um';assert.equal(schema.safeParse(c).success,false);
 });

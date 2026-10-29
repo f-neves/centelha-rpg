@@ -282,8 +282,10 @@ export function converterFicha(texto, { site = null } = {}) {
   else if (/^(não anda|não se aplica)/.test(dt.trim())) { /* terra condicional, P15 */ }
   else para('Deslocamento em terra ilegível');
   for (const [rot, k] of [['Voo', 'voo'], ['Nado', 'nado'], ['Escavação', 'escavacao'], ['Escalada', 'escalada']]) {
-    const v = campo(MV, rot) || '';
-    const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/);
+    // As fichas antigas chamam o meio de Natação e escrevem só o número. É o mesmo
+    // deslocamento declarado, não a Habilidade secundária de manobrar na água.
+    const v = campo(MV, rot) || (rot === 'Nado' ? campo(MV, 'Natação') : '') || '';
+    const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/) || v.match(/^\s*\**(\d+(?:[.,]\d+)?)\**(?:\s*m por Tick)?(?:\s|$)/);
     if (!b) { if (/\d/.test(v)) para(rot + ': deslocamento numérico ilegível'); continue; }
     c.deslocamento[k] = { batalha: numeroPasso(b[1]) };
     const a2 = v.match(/Arranque \*\*(\d+(?:[.,]\d+)?)\*\*/), c2 = v.match(/Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
