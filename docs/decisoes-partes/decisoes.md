@@ -3099,6 +3099,53 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: P10 de `../tmp/arquiteto/PERGUNTAS.md`; P13 de `../tmp/executora/fase3/perguntas.md` (a contradição entre a massa física e o Tamanho equivalente); o texto do formato em `../tmp/executora/fase3/pedidos-formato.md`; a ordem do autor ao Arquiteto, 28/10/2026, para aplicar e registrar. A decisão de 20/10 mora em `../tmp/arquiteto/bestiario/decisoes-autor-2026-10-19.md` e não tinha entrada própria no registro até esta. As aspas internas do autor vão como «».
 - Estado: **implementada** na branch `bestiario-implementacao` (`1a3074a0`), fora do site até a Fase 4; a parte da P13 (`tamanhoEquivalente` no lugar da massa) é **provisória** e vai à confirmação do autor na Fase 5; formato em `../tmp/arquiteto/bestiario/formato-json/formato-criatura.md` (seções 1, 2.2, 2.6 e 3). As oito fichas de enxame já escrevem a quantidade e o Tamanho equivalente na linha `PV base`; nenhum lote de ajuste.
 - Fase 4: **no ar em 29/10/2026** (merge `4cb057fb` no `main`, deploy verde; migração 41 rodada no banco no mesmo dia). O que dela estava nas 324 fichas e no código da branch foi publicado junto. **A parte da P13 (`tamanhoEquivalente`) continua provisória e vai à Fase 5** (PLANO-FASE4, F4.6).
+- Fase 5: **a P13 deixa de ser provisória** (F5.26, confirmada pelo autor em 29/10/2026, D-263); o Tamanho equivalente fica limitado a Pequeno e Médio até nova decisão (F5.3).
+
+### D-258 · O JSON guarda dados, o site faz as contas (criatura e ficha do personagem); complemento da D-208 [tags: formato, json, criatura, ficha, motor, conta, d-208, d-216]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026): "É MUITO importante separar o que o json precisa guardar de informações e o que o site vai pegar de informação para os cálculos. Isso serve também para json de ficha de personagem." Complemento da D-208, do autor: "no corpo a corpo, o card calcula pelo maior entre Força e Destreza e a maior Habilidade entre Briga e Armas, mais o termo da Centelha; o JSON não guarda a Habilidade do corpo a corpo."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, "Princípio do autor, 29/10/2026"; auditoria do Arquiteto em `../tmp/arquiteto/json-guarda-calcula.md` (com as tabelas chave a chave em `json-guarda-calcula-tabelas.md`).
+- Estado: **a implementar** (Fase 5, Executora). Estende a D-216 ("nenhum número que o motor calcula fica no JSON") à ficha do personagem. Na criatura, a `habilidade` do ataque corpo a corpo sai do JSON pela D-208 completada. As decisões A1 a A4 (D-259 a D-262) aplicam o princípio.
+
+### D-259 · A1: a ficha do personagem guarda o item inteiro, com todos os números [tags: ficha, personagem, equipamento, arma, armadura, escudo, item, d-258]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, A1, opção a, ampliada): "vale para todo item com estatística (arma, armadura, escudo e outros). A ficha guarda o item inteiro, com todos os números, editáveis; o site soma na conta (ex.: `armas.espada.acerto = 1` soma 1 na jogada quando o personagem usa essa arma). O item do personagem não muda se o do livro mudar. O id do catálogo pode ficar só como origem."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, A1. Motivo: a auditoria (`json-guarda-calcula.md`, seção 2) achou que a ficha guarda a referência ao catálogo e só os campos trocados, e o resto muda quando o catálogo muda.
+- Estado: **a implementar**, com migração da ficha (42 fichas) e mudança na `/ficha`, no `equip.ts` e na mesa. **Substitui, para o personagem, o modelo "referência + ajuste"** do `equip.ts` (`mod`/`ajuste`). Não vale para a criatura (D-262).
+
+### D-260 · A2: a massa do personagem só fica guardada quando o jogador a escreve [tags: ficha, personagem, massa, corpo, migracao, d-234, d-258]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, A2, opção a): "a massa só fica guardada quando o jogador a escreve; vazia, o site calcula pelo padrão da raça. As 36 fichas que a migração 41 preencheu com o padrão voltam a ficar vazias (migração 42, junto com a próxima publicação; o estado de antes está no ficha-real.json)."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, A2.
+- Estado: **a implementar**: migração 42 (as 36 fichas da lista de revisão da conferência da 41, `../tmp/arquiteto/passo6/04-confere-3.json`) e a `/ficha` calculando a massa vazia pelo padrão da raça.
+
+### D-261 · A3: nenhuma ficha guarda combate; o resumo do banco perde as contas prontas [tags: ficha, personagem, criatura, combate, resumo, banco, d-190, d-258]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, A3): "nenhuma ficha (personagem ou criatura) guarda combate. Ticks, posição, quem está no combate e condições do combate ficam só nas tabelas do combate. Condições duradouras (cansado, doente, ferido, envenenado) talvez um dia na ficha, hoje não existem. O resumo do banco perde as contas prontas; Defesas, Iniciativa, deslocamento do personagem e as demais contas o site calcula. O deslocamento da criatura continua dado (D-190)."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, A3.
+- Estado: **a implementar**: `personagens.resumo` sem contas prontas (migração), e a aba Grupo e o combate calculando a partir da ficha.
+
+### D-262 · A4: a criatura continua guardando a arma do livro pelo id; arma própria de criatura vira item do catálogo [tags: criatura, bestiario, equipamento, arma, catalogo, d-220, d-249]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, A4, opção a): "a ficha de criatura muda com a mudança do catálogo; continua guardando a arma do livro pelo id (D-220). Arma própria de criatura vira item do catálogo, como a glaive serrilhada."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, A4.
+- Estado: **a implementar**. Confirma a D-220 para a criatura (e a diferença com o personagem, D-259). As armas próprias de criatura entram no `armas.json`, como a D-249 fez com a glaive serrilhada.
+
+### D-263 · Fase 5: as 86 perguntas, e as 9 que ficam como estão nas fichas [tags: bestiario, criatura, fase5, regra-da-ficha, lacunas-do-livro, d-081, d-087, d-243]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026): as 86 perguntas de `../tmp/bestiarista-fichas/fase5-perguntas-final.md` pela opção recomendada, com uma exceção na F5.1: "um valor próprio de não tem (nulo no JSON) cancela o meio herdado; a ficha e o card escrevem não anda, como na principal". Sobre o filtro do Arquiteto (`../tmp/arquiteto/fase5-filtro.md`), opção a: "as 9 ficam como estão nas fichas; as regras o autor cria depois, na trilha do livro (cada uma vai como proposta ao lacunas-do-livro.md). Na F5.34, a ficha segue a D-081 («o agarrado não age, não rola, e só se solta quando quem controla erra»), com o escape corrigido no texto das fichas de agarrar. As outras 77 vão pela recomendada; a F5.1 pela (b)."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, "F5-filtro"; o cabeçalho de `fase5-perguntas-final.md`.
+- As regras gerais que saem das 77 e valem para várias criaturas:
+  - **Forma que perde um meio** (F5.1, b): o nulo no JSON cancela o meio herdado da principal; a ficha e o card escrevem "não anda/voa/nada/escala", como na principal. Completa a D-217 e a nota da P15 na D-254.
+  - **Área da forma** (F5.2): a forma que declara outro Tamanho declara a própria Área.
+  - **Tamanho equivalente do enxame** (F5.3 e F5.26): só Pequeno e Médio, até nova decisão; a D-257 deixa de ser provisória na P13.
+  - **`bonusPV` comum às formas** (F5.4): não muda entre formas.
+  - **PV na troca de forma** (F5.15, a P14): a troca mantém o dano corrente e os ajustes salvos do encontro; o Mestre ajusta na mesa (D-087).
+  - **Vigor do construto pelo material** (F5.28): confirmado (C-002, C-040).
+  - **Classe do golpe natural pelo gesto** (F5.50) e **mergulho como ataque próprio, só descendo** (F5.54): confirmados.
+  - **Zona de transição da tabela de PV** (F5.83): as escolhas das fichas confirmadas.
+  - Os padrões de regra da ficha das outras perguntas ficam como estão nas fichas ("manter o efeito atual").
+- Estado: **a aplicar** nas fichas, pelos lotes de `../tmp/bestiarista-fichas/plano-ajustes-fase5.md` (só os itens que mudam ficha: F5.1, F5.2, F5.34 e F5.84); no formato (F5.1 a F5.4); e no código, pela Executora (F5.1 e o nulo).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
