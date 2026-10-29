@@ -4,6 +4,7 @@ const inteiro=z.number().int(),naoNeg=inteiro.nonnegative(),texto=z.string();
 export const HABILIDADES_DE_CRIATURA=['musculatura','corrida','voo','disparo'];
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 const numero = z.number();
+const tamanho = z.enum(['minusculo','miudo','pequeno','medio','grande','enorme','imenso','colossal']);
 const formasMarca = z.union([z.literal('todas'), z.array(id).min(1)]);
 const corpoNovo = z.object({
   postura: texto, apoio: z.enum(['bipede', 'quadrupede', 'outro']),
@@ -13,8 +14,8 @@ const corpoNovo = z.object({
   // P5, 26/10/2026: só em quem escreve "não ergue", independente de semMassa.
   naoErgue: z.literal(true).optional(),
   area: numero, posturaDoTamanho: texto.optional(),
-  segundoTamanho: z.object({ area: numero, posturaDoTamanho: texto, tamanhoEscolhido: id.optional() }).strict().optional(),
-  tamanhoEscolhido: id.optional(), linhaPV: z.enum(['acima', 'abaixo']).optional(), cargaMedida: numero.optional(),
+  segundoTamanho: z.object({ area: numero, posturaDoTamanho: texto, tamanhoEscolhido: tamanho.optional() }).strict().optional(),
+  tamanhoEscolhido: tamanho.optional(), linhaPV: z.enum(['acima', 'abaixo']).optional(), cargaMedida: numero.optional(),
 }).strict();
 const especialidadesNovo = z.record(id, z.array(z.object({ foco: texto, valor: naoNeg, origem: z.enum(['natural', 'livro']) }).strict()));
 const numeroPasso = numero.finite().nonnegative();
