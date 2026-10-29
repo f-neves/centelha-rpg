@@ -52,7 +52,7 @@ language sql immutable as $$
 $$;
 create or replace function public.ficha41_numero(s text) returns numeric
 language sql immutable as $$
- select nullif(substring(replace(coalesce(s,''), ',', '.') from '[0-9]+(\.[0-9]+)?'), '')::numeric;
+ select nullif(substring(replace(coalesce(s,''), ',', '.') from '[0-9]+(?:\.[0-9]+)?'), '')::numeric;
 $$;
 create or replace function public.ficha41_massa_padrao(r text) returns numeric
 language sql immutable as $$
@@ -103,7 +103,7 @@ end;
 $$;
 
 insert into public.personagens_ficha_backup_41(id,ficha_antiga)
- select id,ficha from public.personagens where ficha ? 'attrs'
+ select id,ficha from public.personagens
  on conflict (id) do nothing;
 update public.personagens set ficha=public.ficha41_converter(ficha) where ficha ? 'attrs';
 
@@ -476,6 +476,6 @@ commit;
 -- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
 -- rerodou sabe mais do que quem escreveu a carga de memória.
 insert into public.migracoes (numero, arquivo, sha256, a_mao) values
-  (41, 'migracao-41.sql', 'b4da98ef171ae7a9', false)
+  (41, 'migracao-41.sql', 'de8d7707c1134b08', false)
   on conflict (numero) do update set arquivo = excluded.arquivo,
     sha256 = excluded.sha256, a_mao = false, aplicada_em = now();
