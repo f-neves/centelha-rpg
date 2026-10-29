@@ -20,6 +20,9 @@ const r=conv(variant('Mente: raciocina como humano; Respiração: respira na ág
 cases.set('7', async () => {
 for(const second of [false,true]){const c=fresh(); if(second)c.corpo.segundoTamanho={area:1,posturaDoTamanho:'de frente',tamanhoEscolhido:'medium'};else c.corpo.tamanhoEscolhido='medium'; assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.corpo.tamanhoEscolhido='medio';assert.equal(schema.safeParse(c).success,true);
 });
+cases.set('3', async () => {
+const r=conv(variant('Escavação: Batalha 2'));assert.equal(r.criatura.formas.find(f=>f.id==='humana').deslocamento?.escavacao?.batalha,2); assert.ok(!r.paradas.some(x=>/Escavação/.test(x)));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

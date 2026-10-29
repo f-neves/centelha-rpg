@@ -552,10 +552,10 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = { batalha: 0, arranque: 0, corrida: 0 }; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
         else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
-        else if (k === 'Voo' || k === 'Nado' || k === 'Escalada') {
+        else if (k === 'Voo' || k === 'Nado' || k === 'Escalada' || k === 'Escavação') {
           const q = v.match(/Batalha \**(\d+(?:[.,]\d+)?)\**/) || v.match(/^(\d+(?:[.,]\d+)?)(?=\s|$)/);
-          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : 'escalada'] = { batalha: numeroPasso(q[1]) };
-          else if (/^não (voa|nada|escala)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : 'escalada'] = { batalha: 0 };
+          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = { batalha: numeroPasso(q[1]) };
+          else if (/^não (voa|nada|escala|escava)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = { batalha: 0 };
           else para(`Variantes, ${nomeF}: ${k} ilegível`);
         }
         else if (k === 'Peso erguido' && /^não ergue/.test(v)) fc.naoErgue = true;
