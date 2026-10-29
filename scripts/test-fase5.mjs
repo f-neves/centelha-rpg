@@ -62,6 +62,9 @@ const r=conv(variant('Postura: indescritível'));assert.ok(r.paradas.some(x=>/ap
 cases.set('18', async () => {
 const c=fresh();c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'regra da ficha',efeito:'algo'}];assert.equal(schema.safeParse(c).success,false);c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'sem regra ainda',efeito:'algo',tecnica:{id:'teste',nivel:1}}];assert.equal(schema.safeParse(c).success,false);c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'livro',regra:'agarrar',dano:'1d6'}];assert.equal(schema.safeParse(c).success,false);c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'sem regra ainda',efeito:'sem número'}];assert.equal(schema.safeParse(c).success,true);
 });
+cases.set('19', async () => {
+for(const mutate of [c=>delete c.formas,c=>delete c.formaPrincipal,c=>c.formas=[],c=>c.formas[0].id=c.formaPrincipal.id,c=>c.sentidos.push({nome:'sentido',descricao:'ouve',formas:['nao-existe']})]){const c=fresh();mutate(c);assert.equal(schema.safeParse(c).success,false);}const c=fresh();assert.equal(schema.safeParse(c).success,true);delete c.formas;delete c.formaPrincipal;for(const k of ['habilidadesEspeciais','comoLuta','sentidos'])c[k]=c[k].map(x=>({...x,formas:'todas'}));for(const k of ['fraquezas','resistencias','imunidades'])c.elementos[k]=c.elementos[k].map(x=>({...x,formas:'todas'}));assert.equal(schema.safeParse(c).success,true);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

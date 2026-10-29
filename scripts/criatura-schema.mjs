@@ -74,7 +74,7 @@ export const criaturaNovaSchema = z.object({
   vontade: naoNeg, aparencia: z.number().int().min(0).max(12),
   deslocamento: deslocamentoNovo, equipamento: equipamentoNovo, artes: artesNova,
   bolsas: bolsasNova.optional(),
-  ataques: z.array(ataqueNovo), formas: z.array(formaNova).optional(),
+  ataques: z.array(ataqueNovo), formas: z.array(formaNova).min(1).optional(),
   habilidadesEspeciais: z.array(habilidadeEspecial),
   comoLuta: z.array(z.object({ nome: texto, formas: formasMarca, texto }).strict()),
   sentidos: z.array(z.object({ nome: texto, descricao: texto, formas: formasMarca, classe: z.literal('sem regra ainda').optional() }).strict()),
@@ -84,4 +84,11 @@ export const criaturaNovaSchema = z.object({
   ecologia: z.object({ terreno: z.array(texto), clima: z.array(texto) }).strict(),
   descricao: texto.trim().min(1), lore: z.array(z.object({ titulo: texto, texto }).strict()), imagens: z.array(texto),
   revisao: z.array(z.object({ campo: texto, motivo: texto }).strict()),
-}).strict();
+ }).strict().superRefine((c, ctx) => {
+  const erro=(path,message)=>ctx.addIssue({code:'custom',path,message});
+  if (Boolean(c.formaPrincipal) !== Boolean(c.formas)) erro(['formas'],'formaPrincipal e formas devem existir juntas');
+  const ids=[...(c.formaPrincipal ? [c.formaPrincipal.id] : []),...(c.formas || []).map(f=>f.id)];
+  if (new Set(ids).size !== ids.length) erro(['formas'],'ids de formas devem ser únicos');
+  const listas=[['habilidadesEspeciais',c.habilidadesEspeciais],['comoLuta',c.comoLuta],['sentidos',c.sentidos],...Object.entries(c.elementos).map(([k,v])=>['elementos.'+k,v])];
+  for (const [lista,itens] of listas) for (const [i,item] of itens.entries()) if (item.formas !== 'todas') for (const id of item.formas) if (!ids.includes(id)) erro([lista,i,'formas'],'marca aponta para forma inexistente: '+id);
+});

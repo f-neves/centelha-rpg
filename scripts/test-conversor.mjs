@@ -264,9 +264,9 @@ for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis perna
 }
 
 for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:1.5,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:10,tamanhoEquivalente:'sem-tamanho'},{individuosPorQuadrado:10,tamanhoEquivalente:'pequeno',pv:24}]) {
-  if (criaturaNovaSchema.shape.enxame.safeParse(invalido).success) falhas.push('P10: bloco inválido ou com PV gravado passou');
+  if (criaturaNovaSchema.innerType().shape.enxame.safeParse(invalido).success) falhas.push('P10: bloco inválido ou com PV gravado passou');
 }
-if (!criaturaNovaSchema.shape.enxame.safeParse({individuosPorQuadrado:3500,tamanhoEquivalente:'pequeno'}).success) falhas.push('P10: bloco aprovado foi recusado');
+if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:3500,tamanhoEquivalente:'pequeno'}).success) falhas.push('P10: bloco aprovado foi recusado');
 
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
