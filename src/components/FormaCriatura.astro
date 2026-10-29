@@ -17,7 +17,7 @@ const nomes: Record<string,string> = {forca:'Força',destreza:'Destreza',vigor:'
   <p>{['fraquezas','resistencias','imunidades'].filter(k=>i.combate[k]?.length).map(k=>k+': '+i.combate[k].join(', ')).join(' · ')}</p>
   <p>{Object.entries(i.atributos).map(([k,v])=>nomes[k]+': '+v).join(' · ')}</p>
   <p>Aparência: {i.aparencia} · Vontade: {i.vontade}{i.mana != null ? ' · Mana: '+i.mana : ''}</p>
-  <p>Deslocamento: {Object.entries(i.locomocao || {}).map(([k,v])=>k+': '+v+' m/Tick').join(' · ')}</p>
+  <p>Deslocamento: {Object.entries(i.locomocao || {}).map(([k,v])=>k === 'terra' && v == null ? 'Terra: não anda' : k+': '+v+' m/Tick').join(' · ')}</p>
   <p>{(i.artes || []).filter((a:any)=>a.nivel>0).map((a:any)=>a.id+' '+a.nivel).join(' · ')}</p>
   <ul class="besta-atk">{i.combate.ataques.map((a:any)=><li><b>{a.nome}</b> · Ataque {a.pool} · Dano {a.dano} · Velocidade {a.speed}</li>)}</ul>
   {(i.comoLuta || []).length > 0 && <><h4>Como luta</h4><ul>{i.comoLuta.map((x:any)=><li><b>{x.nome}:</b> {x.texto}</li>)}</ul></>}

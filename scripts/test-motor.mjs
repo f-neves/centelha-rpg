@@ -160,7 +160,7 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
 }
 // Item 20, D-208: um golpe corpo a corpo sem Habilidade guardada escolhe a maior entre Briga e Armas.
 {
-  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  const entrada = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
   entrada.habilidades.briga = 2;
   entrada.habilidades.armas = 5;
   entrada.ataques = [{ nome: 'Golpe', parte: 'mao', classe: 'media', pgr: [2,1,3], dado: '1d6', multiplicadorForca: 1, tipoDano: 'impacto', nivelPerfuracao: null, acerto: 0, bloqueiaComoArma: null }];
@@ -168,6 +168,17 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   confere('Item 20', 'sem Habilidade usa Armas maior', conta.jogada, Math.max(entrada.atributos.forca, entrada.atributos.destreza) + 5 + 2 * Math.min(entrada.centelha, 5));
   entrada.ataques[0].classe = 'distancia';
   confere('Item 20', 'controle negativo, tiro sem Habilidade não ganha jogada', M.criatura(entrada).ataques[0].jogada, null);
+}
+
+// Item 2: quando terra falta, o leitor preserva a ausência e o card pode escrever "não anda".
+{
+  const entrada = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  delete entrada.deslocamento.terra;
+  entrada.deslocamento.voo = { batalha: 5 };
+  const vista = M.vistaPublicaCriatura(entrada);
+  confere('Item 2', 'terra ausente vira não anda no card', vista.locomocao.terra, null);
+  const antiga = structuredClone(entrada); antiga.deslocamento.terra = { batalha: 3, arranque: 5, corrida: 7 };
+  confere('Item 2', 'controle negativo, terra declarada não vira nula', M.vistaPublicaCriatura(antiga).locomocao.terra, 3);
 }
 
 // P10/P13: oito números escritos nas fichas, sem PV guardado no bloco enxame.

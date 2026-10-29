@@ -1355,6 +1355,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "voo": 8
   },
   "tecnicas": [
@@ -4805,6 +4806,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "voo": 6
   },
   "tecnicas": [],
@@ -6483,6 +6485,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "voo": 6
   },
   "tecnicas": [],
@@ -47491,6 +47494,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 4
   },
   "tecnicas": [],
@@ -49453,6 +49457,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "voo": 10
   },
   "tecnicas": [],
@@ -54735,6 +54740,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "voo": 8
   },
   "tecnicas": [],
@@ -71122,6 +71128,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 6
   },
   "tecnicas": [],
@@ -90751,6 +90758,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 5
   },
   "tecnicas": [],
@@ -91130,6 +91138,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 5
   },
   "tecnicas": [],
@@ -91544,6 +91553,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 5
   },
   "tecnicas": [],
@@ -95789,6 +95799,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 8
   },
   "tecnicas": [],
@@ -100086,6 +100097,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 5
   },
   "tecnicas": [],
@@ -100821,6 +100833,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 7
   },
   "tecnicas": [],
@@ -107427,6 +107440,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 8
   },
   "tecnicas": [],
@@ -111042,6 +111056,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 4
   },
   "tecnicas": [],
@@ -111412,6 +111427,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 1
   },
   "tecnicas": [],
@@ -111818,6 +111834,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 4
   },
   "tecnicas": [],
@@ -112595,6 +112612,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 3
   },
   "tecnicas": [],
@@ -123725,6 +123743,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "voo": 4
   },
   "tecnicas": [],
@@ -130005,6 +130024,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "natacao": 6
   },
   "tecnicas": [],
@@ -133604,6 +133624,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
+   "terra": null,
    "voo": 3
   },
   "tecnicas": [],
