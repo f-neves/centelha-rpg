@@ -5,6 +5,7 @@ Do Arquiteto. Segue as decisões do autor de 24/10/2026, registradas como D-216 
 ## 1. As regras de leitura
 
 - **Só entrada e escolha.** Nenhum número que o motor calcula fica no JSON (D-216). A seção 3 lista as contas. Isso inclui a `velocidade` do ataque, que é a soma do `pgr` (D-221).
+- **O JSON guarda dados, o site faz as contas** (D-258, 29/10/2026): vale para a criatura e para a ficha do personagem. Chave que se deduz de outra chave ou do catálogo não fica no JSON.
 - **Formas** (D-217). A principal é o corpo do arquivo, e cada outra forma, em `formas`, guarda só o que muda:
   - **objeto substituído** (`atributos`, `corpo`, `deslocamento`, `equipamento`, `artes`, `fisiologia`, `aptidoes`): troca chave por chave, e a chave que a forma não diz vem da principal. É a leitura do exemplo: a forma humana só traz Força e Vigor, e da `fisiologia` só a `camuflagem` (D-230). A forma que não diz `artes` herda as da principal; a que não conjura (a névoa do vampiro) diz o nível 0 em cada Arte da principal;
   - **lista substituída** (`ataques`, `bolsas`; e `equipamento.arsenal` e `.armaduras` dentro do objeto): trocada inteira;
@@ -63,17 +64,17 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `corpo.massa` | número (kg) | sim | S | `Massa` |
 | `corpo.semMassa` e `corpo.volume` | `true` (sem massa; a chave falta quando há massa); número (m³) | cond. (incorpóreo) | S | `Massa`, "**sem massa** · volume" (D-190; D-225) |
 | `corpo.naoErgue` | `true` | cond., só quando a ficha escreve "não ergue" | S | Peso erguido (D-252, pergunta P5 de 26/10/2026). Independente de `semMassa`: o elemental do ar não tem massa e ergue 80,32 kg. |
-| `corpo.area` | número (m²) | sim | S | `Área` |
+| `corpo.area` | número (m²) | sim | S | `Área`. A forma que declara outro Tamanho declara a própria Área (F5.2, D-263) |
 | `corpo.posturaDoTamanho` | texto | sim | S | `Tamanho`, o parêntese da postura (D-213) |
 | `corpo.segundoTamanho` | `{area, posturaDoTamanho}`, e `tamanhoEscolhido` quando a ficha escolhe perto do corte, como no primeiro Tamanho | cond. | S | `Segundo Tamanho` (D-213, D-215; a escolha guardada pela D-216) |
 | `corpo.tamanhoEscolhido` | id do Tamanho | cond. (só quando a ficha escolhe) | S | `Tamanho`, quando a área fica a menos de 5% do corte e a ficha "escolhe pelo corpo" (decisoes-autor §13; a escolha é guardada pela D-216, o nome pela D-225) |
 | `corpo.linhaPV` | `acima` ou `abaixo` | cond. (só quando a ficha escolhe) | S | `PV base`, na zona de transição ("robusto sobe, frágil desce", §13; guardada pela D-216, o nome pela D-225) |
 | `corpo.cargaMedida` | número (kg) | cond. (quadrúpede de carga com medida) | S | `Carga` (D-122: "o fim da faixa Leve é a carga medida, quando houver") |
 | `couraca` | inteiro 0 a 12 | sim | S | Absorção, "Couraça nível N" |
-| `bonusPV` | inteiro | não (falta = 0) | S | `Bônus de PV` (D-135, com a justificativa na ficha) |
+| `bonusPV` | inteiro | não (falta = 0) | F | `Bônus de PV` (D-135, com a justificativa na ficha). Comum a todas as formas: a forma não tem `bonusPV` próprio (F5.4, D-263) |
 | `enxame` | objeto | cond. (só em enxames; na raiz, antes de `corpo`) | · | Corpo e movimento, `PV base`, "Por quadrado cheio (...)" (D-257). Descreve um quadrado cheio; corpo, Atributos e Habilidades continuam sendo os do indivíduo |
 | `enxame.individuosPorQuadrado` | inteiro positivo | sim, no bloco | · | `PV base`, a quantidade do quadrado cheio ("3500 aranhas") |
-| `enxame.tamanhoEquivalente` | id do Tamanho | sim, no bloco | · | `PV base`, "conta como criatura Pequena": o Tamanho da criatura equivalente ao quadrado cheio, dado explícito da ficha. A massa entre parênteses não entra |
+| `enxame.tamanhoEquivalente` | id do Tamanho: `pequeno` ou `medio`, até nova decisão (F5.3, D-263) | sim, no bloco | · | `PV base`, "conta como criatura Pequena": o Tamanho da criatura equivalente ao quadrado cheio, dado explícito da ficha. A massa entre parênteses não entra |
 
 ### 2.3 Números da criatura
 
@@ -87,7 +88,7 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `virtudes` | `{bravura, compaixao, conviccao, temperanca}` | sim | F | `Virtudes` |
 | `vontade` | inteiro | sim | F | `Vontade` |
 | `aparencia` | inteiro 0 a 12 | sim | S | `Aparência` |
-| `deslocamento` | objeto por meio | sim | S | Corpo e movimento: `Deslocamento em terra`, `Voo`, `Nado`, `Escavação` (D-190, congelado) |
+| `deslocamento` | objeto por meio | sim | S | Corpo e movimento: `Deslocamento em terra`, `Voo`, `Nado`, `Escavação` (D-190, congelado). Na forma, o meio que ela não diz vem da principal; **o meio com valor `null` cancela o herdado**, e a ficha e o card escrevem "não anda/voa/nada/escala", como na principal (F5.1, opção b, D-263) |
 | `deslocamento.terra` | `{batalha, arranque, corrida}` | cond. | S | `Deslocamento em terra`. Ausente quer dizer "não anda", e o card escreve isso; a criatura sem `terra` declara ao menos um outro meio (P15, nota na D-254). Os números de todos os meios podem ser decimais, como 0,5 (D-254) |
 | `deslocamento.voo`, `.nado`, `.escavacao`, `.escalada` | `{batalha}` (e `arranque`, `corrida` quando a ficha os tem) | cond. | S | as linhas de mesmo nome, só com número em m por Tick; `escavacao` aprovada pela D-221 |
 
@@ -106,7 +107,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 |---|---|---|
 | `nome` | texto | `Nome` |
 | `parte` | id | `Parte` |
-| `habilidade` | id | a Habilidade da frase "Jogada:" (Briga, Disparo...) |
+| `habilidade` | id | a Habilidade da frase "Jogada:" (Disparo, Atirador, Arremesso...). **No corpo a corpo não é guardada:** o card calcula pela maior entre Briga e Armas (complemento da D-208, D-258) |
 | `classe` | id | `Classe` |
 | `pgr` | `[Preparo, Golpe, Recuperação]`, em Ticks | `P/G/R` (seção 6) |
 | `dado` | texto (`1d6`, `1d6-2`, `6d6`), ou null no golpe sem dano (agarra, enferruja, petrifica) | `Dano`, o dado; "nenhum" grava null |
@@ -120,7 +121,9 @@ A coluna `Velocidade` da ficha não vai: é P + G + R, e o motor soma (D-221). O
 
 O ataque com arma do livro guarda só `nome`, `arma` (o id de `armas.json`) e `habilidade`; o resto vem do catálogo, como na ficha do jogador (D-220).
 
-Não há `atrib`: o motor tira o Atributo da Habilidade. Disparo usa Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208; decisoes-autor §14; `combate.md:156`).
+Não há `atrib`: o motor tira o Atributo da Habilidade. Disparo usa Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza e a maior Habilidade entre Briga e Armas, mais o termo da Centelha (D-208 com o complemento de 29/10/2026, D-258; decisoes-autor §14; `combate.md:156`).
+
+**A arma do livro na criatura** (D-262): a criatura guarda a arma do livro pelo id (D-220) e muda quando o catálogo muda. Arma própria de criatura vira item do catálogo, como a glaive serrilhada (D-249), e não ataque com números próprios.
 
 ### 2.5 Habilidades especiais e o resto
 
@@ -343,7 +346,7 @@ O que a ficha tem e o exemplo não leva:
 **O que muda na criatura por isso:**
 - `especialidades` e `especialidadesSec` agrupadas por Habilidade (D-231): `"especialidades": {"sobrevivencia": [{"foco": "rastrear pelo faro", "valor": 1, "origem": "livro"}]}`. A `origem` só a criatura tem: é a leitura do Arquiteto de "o que mais for só de criatura", que não teve resposta própria; com o formato fechado, fica, e o autor confirma ou desfaz (D-238, Estado).
 - `artes` é objeto id → nível, como o `arte` do jogador (D-238).
-- `equipamento` tem as peças do jogador (D-238): `arsenal` (armas e escudos, cada peça com o `ref` de hoje do jogador, `a:<id>` ou `e:<id>`) e `armaduras` (`{base, vestida}`). A criatura não tem `conjuntos`, porque o ataque dela já diz a arma (D-220).
+- `equipamento` tem as peças do jogador (D-238): `arsenal` (armas e escudos, cada peça com o `ref` de hoje do jogador, `a:<id>` ou `e:<id>`) e `armaduras` (`{base, vestida}`). A criatura não tem `conjuntos`, porque o ataque dela já diz a arma (D-220). **Aqui as duas fichas se separam** (D-259 e D-262): a criatura guarda a peça pelo id e acompanha o catálogo; o personagem guarda o item inteiro (seção 9, "Os itens do personagem").
 - Os objetos que a criatura carrega e que não são arma, escudo nem armadura vão em `bolsas`, como no jogador (D-238; "objetos", leitura do Arquiteto). Nenhuma das 202 fichas de hoje guarda objeto em campo próprio, e os dois exemplos não têm `bolsas`.
 
 **As chaves do JSON, por dono:**
@@ -351,7 +354,13 @@ O que a ficha tem e o exemplo não leva:
 - **só do jogador:** `conceito`, `jogador`, `titulo`, `idade`, `raca`, as três livres dentro de `habilidadesSec`, `proezas`, `efeitos`, `antecedentes`, `antecedentesNomeados`, `xpTotal`, `cargaAtual`, `equipamento.conjuntos`;
 - **só da criatura:** as seções 2.1 a 2.5 menos as comuns.
 
-**A massa e o Tamanho do jogador** (D-234). `corpo.massa` é um número em kg, escolhido pelo jogador; a ficha nova começa no meio da faixa da raça. A faixa é o normal da raça (tamanho-decisoes-3, item 18): halfling 20 a 28 kg, gnomo 20 a 30, elfo 42 a 65, humano 60 a 80, meio-elfo 50 a 90, anão 70 a 100, orc 80 a 140, meio-orc 70 a 110. A massa fora da faixa é aceita. O Tamanho e o PV não saem dela: vêm da raça (D-140), e o JSON não guarda nenhum dos dois. A massa entra no peso erguido e na faixa de massa das manobras.
+**A massa e o Tamanho do jogador** (D-234). `corpo.massa` é um número em kg, escolhido pelo jogador; vazia, o site usa o meio da faixa da raça (D-260). A faixa é o normal da raça (tamanho-decisoes-3, item 18): halfling 20 a 28 kg, gnomo 20 a 30, elfo 42 a 65, humano 60 a 80, meio-elfo 50 a 90, anão 70 a 100, orc 80 a 140, meio-orc 70 a 110. A massa fora da faixa é aceita. O Tamanho e o PV não saem dela: vêm da raça (D-140), e o JSON não guarda nenhum dos dois. A massa entra no peso erguido e na faixa de massa das manobras.
+
+**Os itens do personagem (D-259, 29/10/2026).** Todo item com estatística (arma, armadura, escudo e outros) fica na ficha inteiro, com todos os números, editáveis; o site soma na conta (por exemplo, `acerto: 1` numa espada soma 1 na jogada quando o personagem a usa). O item do personagem não muda se o do livro mudar, e o id do catálogo pode ficar só como origem. Substitui, para o personagem, o modelo "referência ao catálogo + ajuste" de hoje (`ref` + `ajuste`).
+
+**A massa do personagem (D-260).** `corpo.massa` só fica guardada quando o jogador a escreve; vazia, o site calcula pelo padrão da raça. As 36 fichas que a migração 41 preencheu com o padrão voltam a ficar vazias (migração 42).
+
+**Combate e contas prontas (D-261).** Nenhuma ficha, de personagem ou de criatura, guarda combate: Ticks, posição, quem está no combate e as condições do combate ficam só nas tabelas do combate. O resumo do banco (`personagens.resumo`) perde as contas prontas; Defesas, Iniciativa, deslocamento do personagem e as demais contas o site calcula. O deslocamento da criatura continua dado (D-190).
 
 **As secundárias livres (D-233, D-236): dentro de `habilidadesSec`, e as Especialidades delas em `especialidadesSec`, pela mesma chave.**
 
