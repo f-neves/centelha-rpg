@@ -337,7 +337,8 @@ export function converterFicha(texto, { site = null } = {}) {
     // a parte é o pedaço do corpo; o resto da célula diz como o golpe sai ("boca, à distância")
     const a = { nome, parte: slug(semMarcas(r['Parte'] ?? '').split(',')[0]) };
     const cls = slug(semMarcas(r['Classe'] ?? ''));
-    a.habilidade = jog ? slug(jog[1]) : cls === 'distancia' ? 'disparo' : cls === 'arremesso' ? 'arremesso' : 'briga';
+    if (jog) a.habilidade = slug(jog[1]);
+    else para(`${onde}, ${nome}: Habilidade ausente na frase Jogada`);
     a.classe = cls;
     const pgr = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/);
     if (!pgr) para(`${onde}, ${nome}: P/G/R ilegível`);
@@ -361,7 +362,8 @@ export function converterFicha(texto, { site = null } = {}) {
     a.tipoDano = tp === 'nao-se-aplica' ? 'nao-se-aplica' : (ID_ELEM[tp] ?? tp);
     const np = String(r['Nível de Perfuração'] ?? r['Nível'] ?? '').match(/N(\d)/);
     a.nivelPerfuracao = np ? Number(np[1]) : null;
-    a.acerto = inteiro(r['Acerto']) ?? 0;
+    a.acerto = inteiro(r['Acerto']);
+    if (a.acerto === undefined) para(`${onde}, ${nome}: Acerto ausente ou ilegível`);
     const bloqueia = String(r['Bloqueia como arma'] ?? '').trim();
     const bl = /^(sim\b|o mesmo chifre\b)/i.test(bloqueia) ? bloqueia.match(/([+−-])\s*(\d+)/) : null;
     if (!/^não\b/i.test(bloqueia) && !bl) para(`${onde}, ${nome}: Bloqueia como arma ilegível`);

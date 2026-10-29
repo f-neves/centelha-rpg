@@ -71,6 +71,9 @@ const r=conv(raw.replace(/(\| Deslocamento em terra \| )[^|]+/,'$1**[sem dado]**
 cases.set('13', async () => {
 const c=fresh();delete c.corpo.posturaDoTamanho;assert.equal(schema.safeParse(c).success,false);c.corpo.posturaDoTamanho=' ';assert.equal(schema.safeParse(c).success,false);const r=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (0,98 m²) '));assert.ok(r.criatura.corpo.posturaDoTamanho?.trim());
 });
+cases.set('20', async () => {
+const a=conv(raw.replace(/Jogada:/g,'Conta:'));assert.ok(a.paradas.some(x=>/Jogada|habilidade/i.test(x)));const b=conv(raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[9]=' ';return a.join('|');}));assert.ok(b.paradas.some(x=>/Acerto/.test(x)));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
