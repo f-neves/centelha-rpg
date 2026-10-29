@@ -194,13 +194,19 @@ if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || ap
 }
 
 // A5: as células de bloqueio já aprovadas pelo leitor da ficha continuam válidas.
-for (const [celula, esperado] of [['sim, +1',1], ['sim, Defesa +2',2], ['sim (+1; galhada)',1], ['o mesmo chifre (+1)',null], ['sim (carapaça)',null]]) {
+for (const [celula, esperado] of [['sim, +1',1], ['sim, Defesa +2',2], ['sim (+1; galhada)',1], ['o mesmo chifre (+1)',1]]) {
   const texto = LOBO.split('\n').map(l=>{
     if (!l.startsWith('| Mordida |')) return l;
     const colunas=l.split('|'); colunas[10]=' '+celula+' '; return colunas.join('|');
   }).join('\n');
   const r = converterFicha(texto, {site:SITE});
   if (r.paradas.length || r.criatura.ataques.find(a=>a.nome==='Mordida')?.bloqueiaComoArma !== esperado) falhas.push('bloqueio da célula não preservado: '+celula);
+}
+
+// Dizer que bloqueia sem o número nunca vira o null de não bloquear.
+for (const celula of ['sim','sim (carapaça)']) {
+  const texto=LOBO.split('\n').map(l=>{if(!l.startsWith('| Mordida |'))return l;const a=l.split('|');a[10]=' '+celula+' ';return a.join('|');}).join('\n');
+  if (!converterFicha(texto,{site:SITE}).paradas.some(p=>p.includes('Bloqueia como arma'))) falhas.push('bloqueio afirmativo sem número passou: '+celula);
 }
 
 // Variante com ataque próprio, volume incorpóreo e Habilidades fixas, lote autorizado de 28/10.

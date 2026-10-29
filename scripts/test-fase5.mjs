@@ -53,6 +53,9 @@ for(const k of ['social','atividade','dieta','caca','dianteDeGente']){const c=fr
 cases.set('17', async () => {
 for(const k of ['arranque','corrida']){const c=fresh();delete c.deslocamento.terra[k];assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.deslocamento={voo:{batalha:2}};assert.equal(schema.safeParse(c).success,true);
 });
+cases.set('21', async () => {
+for(const v of ['sim','sim (-2)']){const md=raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[10]=' '+v+' ';return a.join('|');});const r=conv(md);if(v==='sim')assert.ok(r.paradas.some(x=>/Bloqueia como arma/.test(x)));else assert.equal(r.criatura.ataques.find(x=>x.nome==='Garras').bloqueiaComoArma,-2);}
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

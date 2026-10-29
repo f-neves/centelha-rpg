@@ -356,8 +356,9 @@ export function converterFicha(texto, { site = null } = {}) {
     a.nivelPerfuracao = np ? Number(np[1]) : null;
     a.acerto = inteiro(r['Acerto']) ?? 0;
     const bloqueia = String(r['Bloqueia como arma'] ?? '').trim();
-    const bl = /^sim\b/i.test(bloqueia) ? bloqueia.match(/\+\s*(\d+)/) : null;
-    a.bloqueiaComoArma = bl ? Number(bl[1]) : null;
+    const bl = /^(sim\b|o mesmo chifre\b)/i.test(bloqueia) ? bloqueia.match(/([+−-])\s*(\d+)/) : null;
+    if (!/^não\b/i.test(bloqueia) && !bl) para(`${onde}, ${nome}: Bloqueia como arma ilegível`);
+    a.bloqueiaComoArma = bl ? Number((bl[1] === '+' ? '' : '-') + bl[2]) : null;
     return a;
   };
   c.ataques = (T['Ataques'] || []).filter((r) => { const n = semMarcas(r['Nome'] ?? r['Ataque'] ?? ''); return n && n !== 'Nome' && n !== 'Ataque'; })
