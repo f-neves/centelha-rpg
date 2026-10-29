@@ -238,11 +238,23 @@ for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis perna
 
 // P15: terra condicional aceita a criatura que não anda, mas texto ilegível ainda para.
 {
-  const base = LOBO.replace('Batalha **3** · Arranque **5** · Corrida **7** (m por Tick)', 'não anda');
+  const base = LOBO.replace('Batalha **3** · Arranque **5** · Corrida **7** (m por Tick)', 'não anda')
+    .replace('| Nado |', '| Voo | Batalha **5** (m por Tick) | |\n| Nado |');
   const semTerra = converterFicha(base, { site: SITE });
   if (semTerra.paradas.length || semTerra.lacunas.some(x => x.includes('deslocamento.terra')) || semTerra.criatura.deslocamento.terra) falhas.push('P15: terra ausente ainda gera parada ou lacuna');
   const ilegivel = converterFicha(base.replace('| Deslocamento em terra | não anda |', '| Deslocamento em terra | passo misterioso |'), { site: SITE });
   if (!ilegivel.paradas.some(x => x.includes('Deslocamento em terra ilegível'))) falhas.push('P15: controle negativo de terra ilegível não parou');
+}
+
+// M1: terra é opcional, mas um bloco declarado precisa conter pelo menos um meio.
+{
+  const semTerra = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/arconte-lanterna.json'), 'utf8'));
+  if (!criaturaNovaSchema.safeParse(semTerra).success) falhas.push('M1: criatura sem terra e com voo foi recusada');
+  const vazio = structuredClone(semTerra); vazio.deslocamento = {};
+  if (criaturaNovaSchema.safeParse(vazio).success) falhas.push('M1: controle negativo, deslocamento principal vazio aceito');
+  const variante = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  variante.formas.find(f => f.id === 'lobo').deslocamento = {};
+  if (criaturaNovaSchema.safeParse(variante).success) falhas.push('M1: controle negativo, deslocamento de forma vazio aceito');
 }
 
 for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:1.5,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:10,tamanhoEquivalente:'sem-tamanho'},{individuosPorQuadrado:10,tamanhoEquivalente:'pequeno',pv:24}]) {

@@ -2426,6 +2426,7 @@ const SETAS = [
   } from '../../lib/mesa-tempo-real';
   import { modeloNaForma, modeloDaPeca, seletorFormaDaPecaHTML, MON, resumoDe, iniDeMonstro, d6, cardCriaturaHTML, criaturaCompleta, imagemDe } from '../../lib/mesa-bestiario';
   import { rolarIniciativaPC, resumoFicha } from '../../lib/mesa-ficha';
+  import { fichaParaLeitura } from '../../lib/ficha-formato';
   import { mana as manaDaFicha, modificadorPorte, porteDeRotulo, gatePerfuracaoAbre, limiteDaMorte, passouDoLimite } from '../../lib/motor';
   import {
     centroHex, verticesHex, tabuleiro, medidaTabuleiro, margemTabuleiro,
@@ -3267,7 +3268,7 @@ const SETAS = [
       const fichas: Record<string, any> = {};
       for (const p of meus || []) {
         if (p.imagem_path) PC_IMG[p.id] = p.imagem_path;
-        if (p.ficha) fichas[p.id] = p.ficha;
+        if (p.ficha) fichas[p.id] = fichaParaLeitura(p.ficha);
       }
       for (const c of COMBS) {
         if (!c.personagem_id || !fichas[c.personagem_id]) continue;
@@ -3283,7 +3284,7 @@ const SETAS = [
         const { data: ps } = await SB.from('personagens').select('id, imagem_path, ficha').in('id', ids);
         for (const p of ps || []) {
           if (p.imagem_path) PC_IMG[p.id] = p.imagem_path;
-          if (p.ficha) fichas[p.id] = p.ficha;
+          if (p.ficha) fichas[p.id] = fichaParaLeitura(p.ficha);
         }
       }
       // As mesmas contas do rastreador: Defesa, Absorção e o resto saem de
@@ -5475,7 +5476,7 @@ const SETAS = [
     const ids = [...new Set(fila.map((c: any) => c.personagem_id).filter(Boolean))];
     if (ids.length) {
       const { data } = await SB.from('personagens').select('id, ficha').in('id', ids);
-      for (const p of data || []) fichas[p.id] = p.ficha;
+      for (const p of data || []) fichas[p.id] = fichaParaLeitura(p.ficha);
     }
     const rolado: { c: any; v: number }[] = [];
     for (const c of fila) {

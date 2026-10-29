@@ -566,6 +566,7 @@ import CondDlg from '../../components/CondDlg.astro';
   } from '../../lib/combate-tempo';
   import { modeloNaForma, modeloDaPeca, seletorFormaDaPecaHTML, MON, MON_LIST, cardCriaturaHTML, criaturaCompleta, resumoDe, iniDeMonstro, d6, imagemDe } from '../../lib/mesa-bestiario'; import { dadosSemOsVaziosDaEscolha } from '../../lib/defesa-vestida';
   import { numerosPersonagem } from '../../lib/motor';
+  import { fichaParaLeitura } from '../../lib/ficha-formato';
   import { rolarIniciativaPC } from '../../lib/mesa-ficha';
   import { pv as pvDe, mana as manaDe, limiteDaMorte, passouDoLimite } from '../../lib/motor';
   import { armaDoSlot } from '../../lib/equip';
@@ -701,7 +702,7 @@ import CondDlg from '../../components/CondDlg.astro';
     const pcIds = [...new Set(COMBS.filter((c) => c.tipo === 'pc' && c.personagem_id).map((c) => c.personagem_id))];
     if (pcIds.length) {
       const { data: fichas } = await SB.from('personagens').select('id, ficha, imagem_path').in('id', pcIds);
-      FICHAS = Object.fromEntries((fichas || []).map((f: any) => [f.id, f.ficha]));
+      FICHAS = Object.fromEntries((fichas || []).map((f: any) => [f.id, fichaParaLeitura(f.ficha)]));
       const caminhos = (fichas || []).map((f: any) => f.imagem_path).filter(Boolean);
       const m1 = await urlsImagens(SB, caminhos, 'personagens');
       for (const f of fichas || []) if (f.imagem_path && m1[f.imagem_path]) IMGS['pc:' + f.id] = m1[f.imagem_path];
