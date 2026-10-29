@@ -15,7 +15,7 @@ const corpoNovo = z.object({
   // P5, 26/10/2026: só em quem escreve "não ergue", independente de semMassa.
   naoErgue: z.literal(true).optional(),
   area: numero, posturaDoTamanho: texto.optional(),
-  segundoTamanho: z.object({ area: numero, posturaDoTamanho: texto, tamanhoEscolhido: tamanho.optional() }).strict().optional(),
+  segundoTamanho: z.object({ area: numero, posturaDoTamanho: texto.trim().min(1), tamanhoEscolhido: tamanho.optional() }).strict().optional(),
   tamanhoEscolhido: tamanho.optional(), linhaPV: z.enum(['acima', 'abaixo']).optional(), cargaMedida: numero.optional(),
 }).strict();
 const especialidadesNovo = z.record(id, z.array(z.object({ foco: texto, valor: naoNeg, origem: z.enum(['natural', 'livro']) }).strict()));

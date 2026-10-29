@@ -188,6 +188,7 @@ export function converterFicha(texto, { site = null } = {}) {
     if (!sa) para('Segundo Tamanho sem a área');
     else {
       corpo.segundoTamanho = { area: numBR(sa[1]), posturaDoTamanho: (sa[2] || '').trim() };
+      if (!corpo.segundoTamanho.posturaDoTamanho) para('Segundo Tamanho sem posturaDoTamanho');
       const s2 = escolha(corpo.segundoTamanho.area, seg, 'Segundo Tamanho', ls);
       if (s2) corpo.segundoTamanho.tamanhoEscolhido = s2;
     }

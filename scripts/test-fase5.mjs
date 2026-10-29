@@ -41,6 +41,9 @@ for(const form of [false,true])for(const arts of [{'arte-inventada':2},{fogo:-1}
 cases.set('12', async () => {
 for(const change of [{semMassa:true},{volume:1}]){const c=fresh();if(change.semMassa)delete c.corpo.massa;Object.assign(c.corpo,change);assert.equal(schema.safeParse(c).success,false);}const c=fresh();delete c.corpo.massa;Object.assign(c.corpo,{semMassa:true,volume:1});assert.equal(schema.safeParse(c).success,true);
 });
+cases.set('14', async () => {
+const c=fresh();c.corpo.segundoTamanho={area:2,posturaDoTamanho:''};assert.equal(schema.safeParse(c).success,false);c.corpo.segundoTamanho.posturaDoTamanho='   ';assert.equal(schema.safeParse(c).success,false);c.corpo.segundoTamanho.posturaDoTamanho='de lado';assert.equal(schema.safeParse(c).success,true);const r=conv(raw.replace(/(\| Segundo Tamanho \| )[^|]+/,'$1**Grande** (2 m²) '));assert.ok(r.paradas.some(x=>/postura|posturaDoTamanho/i.test(x)));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
