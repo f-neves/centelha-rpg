@@ -21,7 +21,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { converterFicha, aponta } from './conversor-criatura.mjs';
-import { criaturaNovaSchema } from './criatura-schema.mjs';
+import { criaturaNovaSchema, criaturaParaLeituraSchema } from './criatura-schema.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const FIX = path.join(ROOT, 'scripts/fixtures/conversor');
@@ -280,6 +280,19 @@ for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis perna
   if (!criaturaNovaSchema.safeParse(c).success) falhas.push('F5.1: zero explícito deixou de ser deslocamento válido');
   const principal = structuredClone(c); principal.deslocamento.terra = null;
   if (criaturaNovaSchema.safeParse(principal).success) falhas.push('F5.1: controle negativo, null na principal foi aceito');
+}
+
+// F5.2: Tamanho próprio sem área não entra no JSON e não passa pelo esquema.
+{
+  const c = structuredClone(lobo);
+  const forma = c.formas.find(f => f.id === 'lobo');
+  forma.corpo = { tamanhoEscolhido: 'grande' };
+  if (criaturaNovaSchema.safeParse(c).success) falhas.push('F5.2: controle negativo, Tamanho próprio sem área passou');
+  if (!criaturaParaLeituraSchema.safeParse(c).success) falhas.push('F5.2: leitor não aceitou a ficha antiga enquanto aguarda o ajuste');
+  forma.corpo.area = 6;
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('F5.2: Tamanho próprio com área foi recusado');
+  const texto = LOBO.replace('Área: 0,51 m², silhueta vista de lado; ', '').replace('Tamanho: Médio (0,51 m², de lado)', 'Tamanho: Pequeno');
+  if (!converterFicha(texto, { site: SITE }).paradas.some(p => p.includes('Tamanho próprio exige Área própria'))) falhas.push('F5.2: conversor aceitou Variante com Tamanho sem área');
 }
 
 for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:1.5,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:10,tamanhoEquivalente:'sem-tamanho'},{individuosPorQuadrado:10,tamanhoEquivalente:'pequeno',pv:24}]) {

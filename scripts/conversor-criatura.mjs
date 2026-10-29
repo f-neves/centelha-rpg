@@ -532,7 +532,7 @@ export function converterFicha(texto, { site = null } = {}) {
       if (!r) { para(`a forma "${nomeF}" não tem linha em Variantes`); continue; }
       const f = { id: idForma(nomeF), nome: nomeF };
       const fc = {}, fa = {}, ff = {};
-      let pvForma;
+      let pvForma, tamanhoDeclarado;
       for (const p of String(Object.values(r)[1]).split(/;\s+(?![^(]*\))/)) {
         const t = p.trim().replace(/\.$/, '');
         const at = t.match(/^(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura) (\d+)$/);
@@ -559,8 +559,8 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Área') fc.area = n(v);
         else if (k === 'Tamanho') {
           const q = v.match(new RegExp(`^(${TAMANHOS})(?:\\s*\\(([\\d.,]+) m²,\\s*([^)]*)\\))?`));
-          if (q?.[3]) fc.posturaDoTamanho = q[3].trim();
-          else if (q && fc.area === undefined) fc.tamanhoEscolhido = slug(q[1]);
+          if (q?.[3]) { fc.area ??= numBR(q[2]); fc.posturaDoTamanho = q[3].trim(); }
+          else if (q) tamanhoDeclarado = slug(q[1]);
         }
         else if (k === 'Couraça') f.couraca = Number(v);
         else if (k === 'Aparência') f.aparencia = inteiro(v);
@@ -593,6 +593,8 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto'].includes(k)) { /* conta do motor, ou texto que não é número */ }
         else para(`Variantes, ${nomeF}: campo "${k}" que o conversor não conhece`);
       }
+      if (tamanhoDeclarado !== undefined && tamanhoDeclarado !== slug(tam) && fc.area === undefined)
+        para(`Variantes, ${nomeF}: Tamanho próprio exige Área própria`);
       // O PV explícito da Variante revela a escolha entre as duas linhas da transição.
       if (pvForma !== undefined) {
         const kgForma = M.massaDaConta({ ...corpo, ...fc });

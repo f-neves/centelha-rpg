@@ -92,6 +92,8 @@ export const criaturaNovaSchema = z.object({
   if (Boolean(c.formaPrincipal) !== Boolean(c.formas)) erro(['formas'],'formaPrincipal e formas devem existir juntas');
   const ids=[...(c.formaPrincipal ? [c.formaPrincipal.id] : []),...(c.formas || []).map(f=>f.id)];
   if (new Set(ids).size !== ids.length) erro(['formas'],'ids de formas devem ser únicos');
+  for (const [i, forma] of (c.formas || []).entries()) if (forma.corpo?.tamanhoEscolhido !== undefined && forma.corpo.area === undefined)
+    erro(['formas',i,'corpo','tamanhoEscolhido'],'Tamanho próprio da forma exige área própria');
   // Um elemento não pode repetir nem se contradizer na mesma forma da fonte.
   for (const forma of (ids.length ? ids : ['principal'])) {
     const vistos = new Map();
@@ -103,3 +105,26 @@ export const criaturaNovaSchema = z.object({
   const listas=[['habilidadesEspeciais',c.habilidadesEspeciais],['comoLuta',c.comoLuta],['sentidos',c.sentidos],...Object.entries(c.elementos).map(([k,v])=>['elementos.'+k,v])];
   for (const [lista,itens] of listas) for (const [i,item] of itens.entries()) if (item.formas !== 'todas') for (const id of item.formas) if (!ids.includes(id)) erro([lista,i,'formas'],'marca aponta para forma inexistente: '+id);
 });
+
+// As fontes publicadas antes da F5.2 ainda podem trazer a escolha de Tamanho da
+// forma sem a área. O leitor as mantém até o lote da Bestiarista, mas o esquema
+// de entrada, o conversor e o editor continuam recusando esse formato antigo.
+export const criaturaParaLeituraSchema = {
+  safeParse(c) {
+    const estrito = criaturaNovaSchema.safeParse(c);
+    if (estrito.success) return estrito;
+    const legado = structuredClone(c);
+    let mudou = false;
+    for (const forma of legado.formas || []) if (forma.corpo?.tamanhoEscolhido !== undefined && forma.corpo.area === undefined) {
+      delete forma.corpo.tamanhoEscolhido;
+      mudou = true;
+    }
+    if (!mudou || !criaturaNovaSchema.safeParse(legado).success) return estrito;
+    return { success: true, data: c };
+  },
+  parse(c) {
+    const r = this.safeParse(c);
+    if (r.success) return r.data;
+    throw r.error;
+  },
+};

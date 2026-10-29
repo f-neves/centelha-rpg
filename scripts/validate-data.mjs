@@ -1023,7 +1023,7 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
 //
 // As 324 fontes usam o contrato unificado e os catálogos vigentes.
 {
-  const {criaturaNovaSchema,HABILIDADES_DE_CRIATURA}=await import('./criatura-schema.mjs');
+  const {criaturaParaLeituraSchema,HABILIDADES_DE_CRIATURA}=await import('./criatura-schema.mjs');
   const PASTA=path.join(DIR,'bestiario');
   const SEC=new Set((data['habilidades-secundarias']||[]).map(x=>x.id));
   const ARMD=new Set((data.armaduras||[]).map(x=>x.id));
@@ -1033,7 +1033,7 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
   for(const f of arqs){
     const onde='bestiario/'+f;let c;
     try{c=JSON.parse(fs.readFileSync(path.join(PASTA,f),'utf8'))}catch(e){fail(onde+': JSON inválido ('+e.message+')');continue}
-    const r=criaturaNovaSchema.safeParse(c);
+    const r=criaturaParaLeituraSchema.safeParse(c);
     if(!r.success){for(const i of r.error.issues)fail(onde+': '+(i.path.join('.')||'(raiz)')+' · '+i.message);continue}
     if(c.id+'.json'!==f)fail(onde+': id diferente do arquivo');
     for(const k of Object.keys(c.habilidades))if(!H.has(k)&&!extras.has(k))fail(onde+': Habilidade inexistente '+k);

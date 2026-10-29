@@ -188,6 +188,13 @@ console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativa
   confere('F5.1', 'card conserva terra nula', vista.motor.formas.find(f => f.id === 'sem-terra').ficha.locomocao.terra, null);
 }
 
+// F5.2: com a área própria, a forma pode escolher o Tamanho que o motor apresenta.
+{
+  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  const forma = { corpo: { area: 6, tamanhoEscolhido: 'grande' } };
+  confere('F5.2', 'motor usa Tamanho com área', M.criatura(M.comForma(entrada, forma)).tamanho, 'grande');
+}
+
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {
   const porConta = {};
