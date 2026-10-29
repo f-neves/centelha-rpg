@@ -572,7 +572,7 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Artes') f.artes = lerArtes(v, `Variantes, ${nomeF}`, true);
         else if (k === 'Aptidões') f.aptidoes = lerApt(v, `Variantes, ${nomeF}`);
         else if (k === 'Elementos') f._elementos = lerElem(v, `Variantes, ${nomeF}`);
-        else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = { batalha: 0, arranque: 0, corrida: 0 }; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
+        else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = null; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
         else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
         else if (k === 'Voo' || k === 'Nado' || k === 'Escalada' || k === 'Escavação') {
@@ -585,7 +585,7 @@ export function converterFicha(texto, { site = null } = {}) {
             }
             (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = passo;
           }
-          else if (/^não (voa|nada|escala|escava)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = { batalha: 0 };
+          else if (/^não (voa|nada|escala|escava)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = null;
           else para(`Variantes, ${nomeF}: ${k} ilegível`);
         }
         else if (k === 'Peso erguido' && /^não ergue/.test(v)) fc.naoErgue = true;

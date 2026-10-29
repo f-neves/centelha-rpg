@@ -270,6 +270,18 @@ for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis perna
   if (criaturaNovaSchema.safeParse(variante).success) falhas.push('M1: controle negativo, deslocamento de forma vazio aceito');
 }
 
+// F5.1: null em uma forma cancela só o meio herdado e o zero continua sendo deslocamento real.
+{
+  const c = structuredClone(lobo);
+  const forma = c.formas.find(f => f.id === 'lobo');
+  forma.deslocamento = { terra: null, voo: null };
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('F5.1: null na forma foi recusado');
+  forma.deslocamento.terra = { batalha: 0, arranque: 0, corrida: 0 };
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('F5.1: zero explícito deixou de ser deslocamento válido');
+  const principal = structuredClone(c); principal.deslocamento.terra = null;
+  if (criaturaNovaSchema.safeParse(principal).success) falhas.push('F5.1: controle negativo, null na principal foi aceito');
+}
+
 for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:1.5,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:10,tamanhoEquivalente:'sem-tamanho'},{individuosPorQuadrado:10,tamanhoEquivalente:'pequeno',pv:24}]) {
   if (criaturaNovaSchema.innerType().shape.enxame.safeParse(invalido).success) falhas.push('P10: bloco inválido ou com PV gravado passou');
 }

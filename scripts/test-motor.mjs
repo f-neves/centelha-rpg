@@ -176,6 +176,18 @@ for (const [nome,cheio,metade,quarto] of PV_ENXAMES) {
 confere('P10','controle negativo sem ramo do enxame',negativasEnxame,8);
 console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativasEnxame + ' divergências de PV.');
 
+// F5.1: só a forma pode cancelar um meio herdado; o card recebe o nulo para escrever o "não".
+{
+  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  const forma = { id: 'sem-terra', deslocamento: { terra: null, voo: null } };
+  const lida = M.comForma(entrada, forma);
+  confere('F5.1', 'terra cancelada', lida.deslocamento.terra, null);
+  confere('F5.1', 'voo cancelado', lida.deslocamento.voo, null);
+  const card = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  const vista = M.vistaPublicaCriatura({ ...card, formas: [...card.formas, { ...forma, nome: 'sem terra' }] });
+  confere('F5.1', 'card conserva terra nula', vista.motor.formas.find(f => f.id === 'sem-terra').ficha.locomocao.terra, null);
+}
+
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {
   const porConta = {};

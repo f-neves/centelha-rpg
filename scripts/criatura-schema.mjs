@@ -23,6 +23,8 @@ const especialidadesNovo = z.record(id, z.array(z.object({ foco: texto, valor: n
 const numeroPasso = numero.finite().nonnegative();
 const passo = z.object({ batalha: numeroPasso, arranque: numeroPasso.optional(), corrida: numeroPasso.optional() }).strict();
 const deslocamentoNovo = z.object({ terra: passo.required().optional(), voo: passo.optional(), nado: passo.optional(), escavacao: passo.optional(), escalada: passo.optional() }).strict().refine(d => Object.keys(d).length > 0, 'deslocamento precisa declarar ao menos um meio');
+// Na forma, a omissão herda. `null` é a escolha explícita de não ter aquele meio (F5.1).
+const deslocamentoForma = z.object({ terra: passo.nullable().optional(), voo: passo.nullable().optional(), nado: passo.nullable().optional(), escavacao: passo.nullable().optional(), escalada: passo.nullable().optional() }).strict().refine(d => Object.keys(d).length > 0, 'deslocamento da forma precisa declarar ao menos um meio');
 const equipamentoNovo = z.object({
   arsenal: z.array(z.object({ ref: z.string().regex(/^[ae]:[a-z0-9-]+$/) }).strict()),
   armaduras: z.array(z.object({ base: id, vestida: z.boolean() }).strict()),
@@ -60,7 +62,7 @@ const artesNova = z.record(z.enum(artesCatalogo.map(a => a.id)), naoNeg);
 const bolsasNova = z.array(z.object({ nome: texto, itens: z.array(z.object({ item: texto, peso: numero, preco: numero }).strict()) }).strict());
 const formaNova = z.object({
   id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
-  deslocamento: deslocamentoNovo.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
+  deslocamento: deslocamentoForma.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
   fisiologia: fisiologiaNovo.optional(), aptidoes: aptidoesNovo.optional(), ataques: z.array(ataqueNovo).optional(),
 }).strict();
 export const criaturaNovaSchema = z.object({
