@@ -77,6 +77,38 @@ const a=conv(raw.replace(/Jogada:/g,'Conta:'));assert.ok(a.paradas.some(x=>/Joga
 cases.set('23', async () => {
 for(const regra of ['agarrar','investida','furtividade','derrubar','empurrar','empunhadura-dupla','horda']){const c=fresh();c.habilidadesEspeciais=[{nome:'teste',classe:'livro',formas:'todas',regra,texto:'somente neste gesto'}];const h=M.vistaPublicaCriatura(c).habilidades[0];assert.ok(h.descricao.length>50,regra);assert.ok(h.descricao.includes('somente neste gesto'));assert.ok(!h.descricao.startsWith(regra+'.'));}
 });
+cases.set('M2', async () => {
+const c=fresh();c.habilidades.esquiva=0;c.habilidades.bloqueio=10;
+const modelo=c.ataques.find(a=>!a.arma);c.ataques=[{...modelo,nome:'primeira',bloqueiaComoArma:2},{...modelo,nome:'segunda',bloqueiaComoArma:5}];
+assert.equal(M.vistaPublicaCriatura(c).motor.stat.defesa,M.criatura(c).bloqueio+5,'a maior arma conta uma vez');
+const B=await carregarTS('scripts/fixtures/fase5-mesa.ts');const store=new Map();
+globalThis.localStorage={getItem:k=>store.get(k)??null,setItem:(k,v)=>store.set(k,String(v))};
+assert.equal(B.escolhaPadrao({defesa:20,vestida:{defesa:10}}),'sem');assert.equal(B.escolhaPadrao({defesa:20,vestida:{defesa:20}}),'com');
+const cb=B.MON['campeao-esqueletico'].combate;const peca=dados=>({id:'f5',tipo:'criatura',monstro_id:'campeao-esqueletico',dados:dados||{}});
+const inicial=B.escolhaDe('campeao-esqueletico',cb);const original=peca();const antes=JSON.stringify(original);
+const troca=B.alternarVestida('campeao-esqueletico',cb);assert.notEqual(troca,inicial);assert.equal(B.escolhaDe('campeao-esqueletico',cb),troca);
+assert.equal(B.resumoDe(original).defesa,troca==='com'?cb.vestida.defesa:cb.defesa);assert.equal(B.resumoDe(peca({defesa:99})).defesa,99);assert.equal(JSON.stringify(original),antes);
+assert.deepEqual([...store.keys()],['centelha:mesa:vestida']);assert.equal(JSON.parse(store.get('centelha:mesa:vestida'))['campeao-esqueletico'],troca);
+const vazios={ataque:'',defesa:'',absI:'',absC:'',absP:'',rperf:''};const gravado=B.dadosSemOsVaziosDaEscolha({defesa:0,ataque:'',soak:{impacto:0,corte:0,perfuracao:0},resistPerf:0,dano:'1d6'},vazios);
+assert.deepEqual(gravado,{dano:'1d6'});const digitado=B.dadosSemOsVaziosDaEscolha({defesa:99,soak:{impacto:9,corte:0,perfuracao:0}}, {...vazios,defesa:'99',absI:'9'});assert.equal(B.resumoDe(peca(digitado)).defesa,99);assert.equal(B.resumoDe(peca(digitado)).soak.impacto,9);
+B.alternarVestida('campeao-esqueletico',cb);assert.ok(!('campeao-esqueletico' in JSON.parse(store.get('centelha:mesa:vestida'))));
+for(const mutate of [x=>x.elementos.fraquezas.push({tipo:'fogo',formas:'todas'})&&x.elementos.imunidades.push({tipo:'fogo',formas:'todas'}),x=>x.elementos.resistencias.push({tipo:'fogo',formas:'todas'},{tipo:'fogo',formas:'todas'})]){const x=fresh();mutate(x);assert.equal(schema.safeParse(x).success,false,'choque ou repetição de elemento');}
+const disjuntas=fresh();disjuntas.elementos.fraquezas.push({tipo:'fogo',formas:[disjuntas.formaPrincipal.id]});disjuntas.elementos.imunidades.push({tipo:'fogo',formas:[disjuntas.formas[0].id]});assert.equal(schema.safeParse(disjuntas).success,true,'formas distintas não colidem');
+assert.equal(conv(raw).paradas.length,0,'fonte base do controle deve passar');
+assert.equal(conv(raw.replace(/^(\| Social \| )[^|]+/m,'$1**[sem dado]** ')).criatura.comportamento.social,'sem dado','marcador explícito não pode virar vazio');
+for(const tipo of ['prata','sol']){const x=fresh();const a=x.ataques.find(a=>!a.arma);a.tipoDano=tipo;assert.equal(schema.safeParse(x).success,true,'vocabulário aprovado: '+tipo);}
+const mutants=[];
+for(const rot of ['Força','Destreza','Vigor','Percepção','Inteligência','Raciocínio','Influência','Perspicácia','Compostura']){
+ mutants.push([rot+' ausente',raw.split('\n').filter(l=>!l.startsWith('| '+rot+' |')).join('\n')]);
+ mutants.push([rot+' negativo',raw.replace(new RegExp('^(\\| '+rot+' \\| )[^|]+','m'),'$1-1 ')]);
+}
+for(const [i,value] of [[3,'Classe Inventada'],[4,'2/2/3'],[5,'rápida'],[6,'dano indefinido'],[7,'dano inventado'],[9,'bom'],[10,'talvez']])mutants.push(['ataque coluna '+i,raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[i]=' '+value+' ';return a.join('|');})]);
+for(const campo of ['Ativação','Duração','Alcance','Área','Efeito','Dano','Resistência','Limite de uso'])mutants.push(['poder sem '+campo,raw.replace(campo+':','Campo retirado:')]);
+mutants.push(['seção nova',raw+'\n## Secao desconhecida\ntexto'],['Atributo desconhecido',raw.replace('| Compostura |','| Sorte |')],['Habilidade desconhecida',raw.replace('| Briga |','| Habilidade inexistente |')],['Arte desconhecida',raw.replace(/^(\| Artes \| )[^|]+/m,'$1arte-inventada 2 ')],['Mana sem número',raw.replace(/^(\| Mana \| )[^|]+/m,'$1indefinida ')],['coluna nova',raw.replace('| Dano médio | Justificativa |','| Dano extra | Justificativa |')]);
+for(const meio of ['Voo','Nado','Escavação','Escalada'])mutants.push([meio+' ilegível',raw.replace('| Deslocamento em terra |','| '+meio+' | rápida 3 | |\n| Deslocamento em terra |')]);
+for(const [label,md] of mutants){assert.notEqual(md,raw,'controle não plantado: '+label);assert.ok(conv(md).paradas.length>0,label);}
+console.log('M2: '+mutants.length+' entradas inválidas recusadas, defesa e mesa conferidas');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

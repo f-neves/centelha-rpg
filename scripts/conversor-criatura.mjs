@@ -284,7 +284,7 @@ export function converterFicha(texto, { site = null } = {}) {
   for (const [rot, k] of [['Voo', 'voo'], ['Nado', 'nado'], ['Escavação', 'escavacao'], ['Escalada', 'escalada']]) {
     const v = campo(MV, rot) || '';
     const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/);
-    if (!b) continue;
+    if (!b) { if (/\d/.test(v)) para(rot + ': deslocamento numérico ilegível'); continue; }
     c.deslocamento[k] = { batalha: numeroPasso(b[1]) };
     const a2 = v.match(/Arranque \*\*(\d+(?:[.,]\d+)?)\*\*/), c2 = v.match(/Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
     if (a2) c.deslocamento[k].arranque = numeroPasso(a2[1]);
@@ -320,8 +320,12 @@ export function converterFicha(texto, { site = null } = {}) {
     return out;
   };
   c.artes = lerArtes(campo(I, 'Artes'), 'Identidade', false);
+  const manaDeclarada = campo(I,'Mana');
+  if (manaDeclarada && !/não tem|nenhuma|sem Mana|\d/.test(manaDeclarada)) para('Mana ilegível na ficha');
   const armasDaFicha = (eq) => eq.arsenal.filter((x) => x.ref.startsWith('a:')).map((x) => x.ref.slice(2));
   const lerAtaque = (r, armasEq, onde) => {
+    const colunas = new Set(['Nome','Ataque','Parte','Classe','P/G/R','Velocidade','Dano','Tipo','Nível de Perfuração','Nível','Acerto','Bloqueia como arma','Dano médio','Justificativa']);
+    for (const col of Object.keys(r)) if (!colunas.has(col)) para(`${onde}: coluna desconhecida ${col}`);
     const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? '');
     const just = r['Justificativa'] ?? '';
     const citada = just.match(/`armas\.json`, `([a-z0-9-]+)`/)?.[1];
@@ -345,6 +349,7 @@ export function converterFicha(texto, { site = null } = {}) {
     else {
       a.pgr = pgr.slice(1).map(Number);
       const vel = inteiro(r['Velocidade']);
+      if (vel === undefined) para(`${onde}, ${nome}: Velocidade ilegível`);
       if (vel !== undefined && a.pgr[0] + a.pgr[1] + a.pgr[2] !== vel) para(`${onde}, ${nome}: o pgr ${a.pgr.join('/')} não soma a Velocidade ${vel} (D-221)`);
     }
     let d = semMarcas(r['Dano'] ?? '').replace(/\*\*/g, '').replace(/PROVIS\S*/g, '').trim();

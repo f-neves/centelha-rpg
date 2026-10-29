@@ -1,6 +1,7 @@
 // Contrato unificado da fonte da criatura. Só entradas e escolhas, sem derivados.
 import { z } from 'zod';
 import artesCatalogo from '../src/data/artes.json' with { type: 'json' };
+import elementosVocab from '../src/data/elementos-vocab.json' with { type: 'json' };
 const inteiro=z.number().int(),naoNeg=inteiro.nonnegative(),texto=z.string();
 export const HABILIDADES_DE_CRIATURA=['musculatura','corrida','voo','disparo'];
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
@@ -27,9 +28,9 @@ const equipamentoNovo = z.object({
   armaduras: z.array(z.object({ base: id, vestida: z.boolean() }).strict()),
 }).strict();
 const ataqueNatural = z.object({
-  nome: texto, parte: id, habilidade: id, classe: id, pgr: z.tuple([naoNeg, z.literal(1), naoNeg]),
+  nome: texto, parte: id, habilidade: id, classe: z.enum(['leve','media','pesada','haste','haste-media','haste-guerra','distancia','arremesso']), pgr: z.tuple([naoNeg, z.literal(1), naoNeg]),
   dado: z.string().regex(/^\d+d6([+-]\d+)?$/).nullable(), multiplicadorForca: z.union([z.literal(0), z.literal(1), z.literal(2)]),
-  tipoDano: id, nivelPerfuracao: naoNeg.nullable(), acerto: inteiro, bloqueiaComoArma: inteiro.nullable(),
+  tipoDano: z.enum([...elementosVocab.grupos.flatMap(g=>g.palavras),'fenomeno','eletricidade','nao-se-aplica']), nivelPerfuracao: naoNeg.nullable(), acerto: inteiro, bloqueiaComoArma: inteiro.nullable(),
 }).strict();
 const ataqueComArma = z.object({ nome: texto, arma: id, habilidade: id }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
@@ -89,6 +90,14 @@ export const criaturaNovaSchema = z.object({
   if (Boolean(c.formaPrincipal) !== Boolean(c.formas)) erro(['formas'],'formaPrincipal e formas devem existir juntas');
   const ids=[...(c.formaPrincipal ? [c.formaPrincipal.id] : []),...(c.formas || []).map(f=>f.id)];
   if (new Set(ids).size !== ids.length) erro(['formas'],'ids de formas devem ser únicos');
+  // Um elemento não pode repetir nem se contradizer na mesma forma da fonte.
+  for (const forma of (ids.length ? ids : ['principal'])) {
+    const vistos = new Map();
+    for (const [grupo,itens] of Object.entries(c.elementos)) for (const item of itens) if (item.formas === 'todas' || item.formas.includes(forma)) {
+      if (vistos.has(item.tipo)) erro(['elementos',grupo], 'elemento repetido ou conflitante na forma '+forma+': '+item.tipo);
+      vistos.set(item.tipo,grupo);
+    }
+  }
   const listas=[['habilidadesEspeciais',c.habilidadesEspeciais],['comoLuta',c.comoLuta],['sentidos',c.sentidos],...Object.entries(c.elementos).map(([k,v])=>['elementos.'+k,v])];
   for (const [lista,itens] of listas) for (const [i,item] of itens.entries()) if (item.formas !== 'todas') for (const id of item.formas) if (!ids.includes(id)) erro([lista,i,'formas'],'marca aponta para forma inexistente: '+id);
 });
