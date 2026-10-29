@@ -1,5 +1,6 @@
 // Contrato unificado da fonte da criatura. Só entradas e escolhas, sem derivados.
 import { z } from 'zod';
+import artesCatalogo from '../src/data/artes.json' with { type: 'json' };
 const inteiro=z.number().int(),naoNeg=inteiro.nonnegative(),texto=z.string();
 export const HABILIDADES_DE_CRIATURA=['musculatura','corrida','voo','disparo'];
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
@@ -44,10 +45,11 @@ const elementoNovo = z.array(z.object({ tipo: id, formas: formasMarca }).strict(
 const fisiologiaNovo = z.object({ respiracao: texto.optional(), prendeRespiracao: texto.optional(), camuflagem: texto.optional(), mente: texto.optional(), tracos: texto.optional() }).strict();
 const aptidoesNovo = z.object({ montaria: z.boolean(), carga: z.boolean(), tracao: z.boolean() }).strict();
 const numeros = z.record(id, inteiro);
+const artesNova = z.record(z.enum(artesCatalogo.map(a => a.id)), naoNeg);
 const bolsasNova = z.array(z.object({ nome: texto, itens: z.array(z.object({ item: texto, peso: numero, preco: numero }).strict()) }).strict());
 const formaNova = z.object({
   id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
-  deslocamento: deslocamentoNovo.optional(), equipamento: equipamentoNovo.partial().optional(), artes: numeros.optional(),
+  deslocamento: deslocamentoNovo.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
   fisiologia: fisiologiaNovo.optional(), aptidoes: aptidoesNovo.optional(), ataques: z.array(ataqueNovo).optional(),
 }).strict();
 export const criaturaNovaSchema = z.object({
@@ -60,7 +62,7 @@ export const criaturaNovaSchema = z.object({
   habilidades: numeros, habilidadesSec: numeros, especialidades: especialidadesNovo, especialidadesSec: especialidadesNovo,
   virtudes: z.object({ bravura: naoNeg, compaixao: naoNeg, conviccao: naoNeg, temperanca: naoNeg }).strict(),
   vontade: naoNeg, aparencia: z.number().int().min(0).max(12),
-  deslocamento: deslocamentoNovo, equipamento: equipamentoNovo, artes: numeros,
+  deslocamento: deslocamentoNovo, equipamento: equipamentoNovo, artes: artesNova,
   bolsas: bolsasNova.optional(),
   ataques: z.array(ataqueNovo), formas: z.array(formaNova).optional(),
   habilidadesEspeciais: z.array(habilidadeEspecial),

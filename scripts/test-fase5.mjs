@@ -35,6 +35,9 @@ for(const attrs of [{froca:3},{forca:-1}]){const c=fresh();c.formas[0].atributos
 cases.set('9', async () => {
 for(const k of ['couraca','aparencia']){const c=fresh();c.formas[0][k]=13;assert.equal(schema.safeParse(c).success,false);c.formas[0][k]=12;assert.equal(schema.safeParse(c).success,true);}
 });
+cases.set('10', async () => {
+for(const form of [false,true])for(const arts of [{'arte-inventada':2},{fogo:-1}]){const c=fresh();(form?c.formas[0]:c).artes=arts;assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.formas[0].artes={fogo:0};assert.equal(schema.safeParse(c).success,true);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
