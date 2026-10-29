@@ -30,5 +30,11 @@ try {
   ok(solar.ataques.find(a=>a.nome==='Arco longo')?.danoMedio===20.5,'Solar no editor respeita o teto do arco, 20,5');
   ok(await p.$eval('#ed-fonte',e=>JSON.parse(e.value).revisao.length===0),'fonte pública não traz a revisão privada');
   ok(erros.length===0,'nenhum erro de página: '+erros.join('; '));
+  await p.goto(dev.url+'/artes',{waitUntil:'domcontentloaded'});
+  await p.waitForFunction(()=>location.pathname.endsWith('/artes/regras'),{timeout:30000});
+  const ico=await p.$eval('link[rel=icon][sizes=any]',el=>el.href);
+  ok(ico.includes('/centelha-rpg/favicon.ico'),'Artes: favicon usa o base');
+  const icone=await p.evaluate(async u=>(await fetch(u)).status,ico);
+  ok(icone===200,'Artes: favicon responde 200 depois do redirecionamento');
 } finally {await browser.close();await dev.parar();}
 if(falhas.length)process.exitCode=1;else{carimbar('test-editor-bestiario');console.log('✓ editor unificado OK');}

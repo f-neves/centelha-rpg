@@ -124,6 +124,9 @@ const md=raw.replace(/^(\| Tamanho \| )[^|]*\|[^|]*\|/m,'$1**Pequeno** (0,98 m²
 cases.set('baixo-comando', async () => {
 const t=fs.readFileSync('.claude/commands/arquiteto.md','utf8');const description=t.match(/^description: (.+)$/m)[1];assert.ok(!/Executora|Revisora/.test(description));assert.ok(description.includes('Leitora-novata'));assert.ok(t.includes('papel: "Arquiteto (RPG)"'));
 });
+cases.set('favicon', async () => {
+const page=fs.readFileSync('src/pages/artes/index.astro','utf8');assert.ok(page.includes("url('favicon.ico')"));assert.ok(page.includes("url('artes/regras')"));assert.ok(page.includes('http-equiv="refresh"'));assert.ok(!fs.readFileSync('astro.config.mjs','utf8').includes("redirects: { '/artes':"));assert.ok(fs.statSync('public/favicon.ico').size>0);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
