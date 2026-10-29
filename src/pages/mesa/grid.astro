@@ -5918,11 +5918,6 @@ const SETAS = [
       const { error } = await SB.from('encontros').update({ tick_atual: T }).eq('id', ENC.id);
       if (!error) ENC.tick_atual = T;
     }
-    // A MARCA DA INVESTIDA VENCE COM O PREPARO, e quem a tira é o relógio.
-    // Antes do passo, porque a peça que atravessa o alvo neste Tick já não está
-    // mais preparando · o `varrerCondicoesVencidas` também a pegaria pelo `ate`,
-    // mas só no fim do Tick, e tarde demais para o passo.
-    await varrerInvestida(T);
     const escala = Number(ARENA?.escala_m) || 1;
     for (const c of naFila()) {
       if (foraDaFila(c)) continue;
@@ -6065,6 +6060,11 @@ const SETAS = [
           if (!error) {
             c.acao = nova; c.tick = nova.livre;
             const depois = proximoGolpe(nova);
+            // O prazo da Investida acompanha o golpe quando a viagem aumenta.
+            // Sem isso a varredura geral tira a marca no Tick original.
+            if (depois != null && (c.condicoes || []).some((k: any) => k.id === 'investindo' && k.auto && k.ate !== depois)) {
+              await marcarInvestida(c, true, depois);
+            }
             const quem = mov.alvo ? (COMBS.find((z: any) => z.id === mov.alvo)?.nome || 'o alvo') : 'o ponto';
             await logar(c, `${c.nome} ainda não alcança ${quem}`
               + ` · golpe adiado do Tick ${antes} para o ${depois}`, { acao: null });
@@ -6072,6 +6072,8 @@ const SETAS = [
         }
       }
     }
+    // A agenda pode mudar durante o passo. A marca vence pela fase final deste Tick.
+    await varrerInvestida(T);
     await decidirAutomaticas(T);
     pintarTokens(); pintarIniciativa(); pintarAlcance();
     avisarAgora('tokens'); avisarAgora('combatentes');
@@ -6496,9 +6498,9 @@ const SETAS = [
    * A VARREDURA ABAIXO NÃO FICOU REDUNDANTE, por duas razões, e as duas são de
    * ordem e não de número. A primeira é que `ateTick` pode vir NULO (declaração
    * sem golpe agendado), e prazo que não existe não vence. A segunda é o
-   * MOMENTO: a marca tem de sair antes do passo do Tick, porque a peça que
-   * atravessa o alvo neste Tick já não está preparando, e o
-   * `varrerCondicoesVencidas` só roda no fim, junto dos efeitos.
+   * MOMENTO: a marca sai depois do passo, quando a agenda já reflete o caminho
+   * real deste Tick. Se a peça não alcançou o alvo, o Preparo continua e o
+   * prazo acompanha o novo Tick do golpe antes da varredura geral.
    *
    * L87 (docs/pendencias/L-simulacao-simultaneo.md, rodada 51): esta função nunca avisou a campainha
    * sozinha, e um dos dois chamadores (`declararAtaqueSimultaneo`) também

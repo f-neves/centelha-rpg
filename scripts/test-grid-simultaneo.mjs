@@ -68,7 +68,7 @@ async function cena(br, url) {
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
   p.on('pageerror', (e) => erros.push(e.message));
-  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo`,
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo&espalhar=1`,
     { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
   await espera(700);
@@ -724,13 +724,13 @@ async function cenaAlvoQueFoge(br, url) {
  *   3. o Tick TIRA a condicao         · senao ela ficaria grudada para sempre,
  *      penalizando em silencio, que e pior que a dupla cobranca que ela conserta
  */
-async function cenaInvestidaUmaVez(br, url) {
+async function cenaInvestidaUmaVez(br, url, reprojecao = false) {
   console.log('\n· a Investida cobra uma vez so, e quem cobra e a condicao');
   const p = await br.newPage();
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
   p.on('pageerror', (e) => erros.push(e.message));
-  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo`,
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo${reprojecao ? '&tetoAvanco=1' : '&espalhar=1'}`,
     { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
   await espera(700);
@@ -810,6 +810,26 @@ async function cenaInvestidaUmaVez(br, url) {
     return cs.length;
   });
   ok(soma === 1, `e UMA condicao so, nao duas: e a dupla cobranca que nao pode voltar (${soma})`);
+
+  if (reprojecao) {
+    let estado = null;
+    for (let i = 0; i < 3; i++) {
+      await p.click('#ini-prox');
+      await espera(350);
+      estado = await p.evaluate(() => {
+        const c = window.__SB?.tabelas?.combatentes?.find((x) => x.id === 'c002');
+        return { golpe: c?.acao?.golpes?.[0], prazo: c?.condicoes?.find((x) => x.id === 'investindo' && x.auto)?.ate };
+      });
+      if (estado?.golpe > decl.tick) break;
+    }
+    ok(estado?.golpe > decl.tick,
+      `o obstaculo reprojeta o golpe da Investida (${decl.tick} para ${estado?.golpe})`);
+    ok(estado?.prazo === estado?.golpe,
+      `a marca acompanha o Preparo reprojetado (prazo ${estado?.prazo}, golpe ${estado?.golpe})`);
+    ok(erros.length === 0, `nenhum erro de pagina na reprojecao (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
+    await p.close();
+    return;
+  }
 
   // 3. O TICK TIRA A CONDICAO quando o Preparo acaba. Sem isto ela ficaria
   //    grudada para sempre, penalizando em silencio.
@@ -1148,6 +1168,7 @@ try {
   await cenaAlvoQueFoge(br, dev.url);
   await cenaFichaDoLance(br, dev.url);
   await cenaInvestidaUmaVez(br, dev.url);
+  await cenaInvestidaUmaVez(br, dev.url, true);
   await cenaCondicaoQueVence(br, dev.url);
   await cenaAvancoParaSozinho(br, dev.url);
   await cenaTetoForcado(br, dev.url);

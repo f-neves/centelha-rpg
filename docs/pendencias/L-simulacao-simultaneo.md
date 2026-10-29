@@ -3602,11 +3602,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O defeito visto na mesa:** o atacante que persegue um inimigo grande não para na borda dele,
   entra no corpo dele. **O achado é maior que o defeito:** ele TERMINA lá, e a mesa grava.
 
-  **A cadeia, e são dois mecanismos onde o segundo dispara por causa do primeiro:**
+  **A cadeia antes da correção L67, com o segundo mecanismo acionado pelo primeiro:**
 
-  - o alcance de perseguição é medido de CENTRO A CENTRO e nunca soma o raio do alvo ·
-    `src/pages/mesa/grid.astro:5938` · `const pararA = mov.alvo ? alcanceDaPeca(c) : 0;`. A régua
-    que ele usa compara distância crua contra 1 ou 2 hexágonos, e o porte do alvo não entra na
+  - o alcance de perseguição era medido de CENTRO A CENTRO e não somava o raio do alvo.
+    A linha atual contém a correção: `src/pages/mesa/grid.astro:5934` · `const pararA = mov.alvo ? alcanceDaPeca(c, alvoC) : 0;`.
+    Antes, a régua
+    comparava distância crua contra 1 ou 2 hexágonos, e o porte do alvo não entrava na
     conta em lugar nenhum · `src/lib/alcance.ts:102` · `return hexagonos <=`. Para um Enorme, que
     mede 4 m em `src/pages/mesa/grid.astro:3433` · `'Enorme': 4, 'Imenso': 8, 'Colossal': 16,`,
     numa arena de 1 m por hexágono, "distância 1 do centro" É dentro do corpo. **O destino que a
@@ -3614,7 +3615,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   - a primeira caminhada veta certo (ela evita as casas ocupadas pelo círculo do inimigo), então
     ela NÃO CONSEGUE chegar nesse destino. Não ter aproximado é justamente o gatilho da repetição
     que afrouxa o veto para a casa exata do outro token ·
-    `src/pages/mesa/grid.astro:5979` · `novo = caminharHex`
+    `src/pages/mesa/grid.astro:5975` · `novo = caminharHex`
     . A casa exata de uma criatura grande é só o centro dela, e o resto do
     corpo fica livre. **A peça entra.**
 
