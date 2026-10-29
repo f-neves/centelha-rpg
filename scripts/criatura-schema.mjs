@@ -44,8 +44,9 @@ const elementoNovo = z.array(z.object({ tipo: id, formas: formasMarca }).strict(
 const fisiologiaNovo = z.object({ respiracao: texto.optional(), prendeRespiracao: texto.optional(), camuflagem: texto.optional(), mente: texto.optional(), tracos: texto.optional() }).strict();
 const aptidoesNovo = z.object({ montaria: z.boolean(), carga: z.boolean(), tracao: z.boolean() }).strict();
 const numeros = z.record(id, inteiro);
+const bolsasNova = z.array(z.object({ nome: texto, itens: z.array(z.object({ item: texto, peso: numero, preco: numero }).strict()) }).strict());
 const formaNova = z.object({
-  id, nome: texto, corpo: corpoNovo.partial().optional(), couraca: naoNeg.optional(), atributos: numeros.optional(), aparencia: naoNeg.optional(),
+  id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.optional(), atributos: numeros.optional(), aparencia: naoNeg.optional(),
   deslocamento: deslocamentoNovo.optional(), equipamento: equipamentoNovo.partial().optional(), artes: numeros.optional(),
   fisiologia: fisiologiaNovo.optional(), aptidoes: aptidoesNovo.optional(), ataques: z.array(ataqueNovo).optional(),
 }).strict();
@@ -60,7 +61,7 @@ export const criaturaNovaSchema = z.object({
   virtudes: z.object({ bravura: naoNeg, compaixao: naoNeg, conviccao: naoNeg, temperanca: naoNeg }).strict(),
   vontade: naoNeg, aparencia: z.number().int().min(0).max(12),
   deslocamento: deslocamentoNovo, equipamento: equipamentoNovo, artes: numeros,
-  bolsas: z.array(z.object({ nome: texto, itens: z.array(z.object({ item: texto, peso: numero, preco: numero }).strict()) }).strict()).optional(),
+  bolsas: bolsasNova.optional(),
   ataques: z.array(ataqueNovo), formas: z.array(formaNova).optional(),
   habilidadesEspeciais: z.array(habilidadeEspecial),
   comoLuta: z.array(z.object({ nome: texto, formas: formasMarca, texto }).strict()),
