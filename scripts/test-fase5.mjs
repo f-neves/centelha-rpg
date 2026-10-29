@@ -32,6 +32,9 @@ const c=fresh(); c.formas[0].bolsas=[{nome:'sacola',itens:[{item:'corda',peso:1,
 cases.set('8', async () => {
 for(const attrs of [{froca:3},{forca:-1}]){const c=fresh();c.formas[0].atributos=attrs;assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.formas[0].atributos={forca:0};assert.equal(schema.safeParse(c).success,true);
 });
+cases.set('9', async () => {
+for(const k of ['couraca','aparencia']){const c=fresh();c.formas[0][k]=13;assert.equal(schema.safeParse(c).success,false);c.formas[0][k]=12;assert.equal(schema.safeParse(c).success,true);}
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
