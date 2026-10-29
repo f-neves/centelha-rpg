@@ -18,7 +18,7 @@
     "largura": 0.002,
     "profundidade": null,
     "comprimento": 0.0046,
-    "massa": 0.000007,
+    "massa": 7e-06,
     "area": 0,
     "posturaDoTamanho": "vista de cima"
   },
@@ -143,7 +143,7 @@
   },
   "comportamento": {
     "social": "colônia permanente, de menos de 100 a mais de 20.000 aranhas",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro: besouros, percevejos, baratas, formigas, mariposas e gafanhotos",
     "caca": "emboscada na teia, ataque em grupo de 30 a 50 aranhas por inseto grande",
     "dianteDeGente": ": nenhum registro de ataque a pessoa"

@@ -188,10 +188,10 @@
   },
   "comportamento": {
     "social": "solitária",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívora: insetos grandes, aranhas, às vezes rãs, lagartos e aves pequenas",
     "caca": "emboscada imóvel",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [

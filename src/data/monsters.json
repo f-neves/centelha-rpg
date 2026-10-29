@@ -1568,7 +1568,7 @@
     "atividade": "diurno",
     "dieta": "carnívoro",
     "caca": "caça mergulhando",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -2693,8 +2693,8 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "ameaça"
@@ -6666,7 +6666,7 @@
    },
    "comportamento": {
     "social": "rebanho pequeno no inverno; sozinho ou em grupos menores no verão",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro (pastador, depois alimentação mista)",
     "caca": "pastagem",
     "dianteDeGente": "ameaça; ataca se provocado"
@@ -13034,7 +13034,7 @@
    },
    "comportamento": {
     "social": "manada; machos em grupos de até 30",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem; no inverno varre a neve com a cabeça",
     "dianteDeGente": "ameaça e investe quando o humano chega perto"
@@ -15707,11 +15707,11 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "forrageio",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -20936,7 +20936,7 @@
    },
    "comportamento": {
     "social": "vive com a família que cuida dele",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "o que recebe",
     "caca": "não caça; guarda",
     "dianteDeGente": "indiferente a estranhos, protetor dos seus; guarda noturno de propriedade desde por volta de 1500"
@@ -23296,7 +23296,7 @@
     "atividade": "ligada à maré, de dia e de noite",
     "dieta": "carnívoro e carniceiro: ostras, moluscos, crustáceos, vermes",
     "caca": "forrageia no fundo na maré enchendo; 79% do tempo parado",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -23673,10 +23673,10 @@
    },
    "comportamento": {
     "social": "solitário (área do macho de 600 a 1.000 km²)",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro e carniceiro",
     "caca": "carniça no inverno; caça ungulado vulnerável, às vezes depois de dezenas de quilômetros",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -24065,7 +24065,7 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro e carniceiro",
     "caca": "carniça e caça",
     "dianteDeGente": ": não recua"
@@ -26025,11 +26025,11 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "",
+    "social": "sem dado",
     "atividade": "dia e noite, na caverna estudada",
     "dieta": "carnívora: come o que conseguir dominar, de baratas a morcegos",
     "caca": "espera e agarra; caça morcegos no teto da caverna",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -29929,7 +29929,7 @@
    },
    "comportamento": {
     "social": "solitário na caça; agrega-se no sol e na carcaça grande, com hierarquia rígida por tamanho, e anda centenas de metros até ela",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro (até 70% de peixe no adulto)",
     "caca": "emboscada",
     "dianteDeGente": "ataca"
@@ -30324,7 +30324,7 @@
    },
    "comportamento": {
     "social": "solitário na caça; agrega-se no sol e na carcaça grande, com hierarquia rígida por tamanho, e anda centenas de metros até ela",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro (até 70% de peixe no adulto)",
     "caca": "emboscada",
     "dianteDeGente": "ataca"
@@ -31404,7 +31404,7 @@
    },
    "comportamento": {
     "social": "; machos brigavam pelo domínio",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "onívoro (castanha, raiz, cipó, carne e osso)",
     "caca": "forrageio e carniça; talvez caça de herbívoros grandes",
     "dianteDeGente": "não se aplica (extinto antes dos humanos); : ataca"
@@ -31788,9 +31788,9 @@
    },
    "comportamento": {
     "social": "solitário , com agrupamento na carcaça; caça em grupo em disputa",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "",
+    "caca": "sem dado",
     "dianteDeGente": "não se aplica"
    },
    "ecologia": {
@@ -37869,10 +37869,10 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro (quase só roedor quando há muitos)",
     "caca": "caça dentro da galeria; mata coelho de 5 a 10 vezes o próprio peso",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -47268,8 +47268,8 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"
@@ -47648,7 +47648,7 @@
    },
    "comportamento": {
     "social": "grupos de fêmeas e filhotes; machos sós ou em grupos de solteiros",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro (até 150 kg por dia)",
     "caca": "pastagem e ramagem",
     "dianteDeGente": "ameaça e ataca quando acuado, com cria, ou em musth"
@@ -49920,7 +49920,7 @@
    },
    "comportamento": {
     "social": "colônia permanente, de menos de 100 a mais de 20.000 aranhas",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro: besouros, percevejos, baratas, formigas, mariposas e gafanhotos",
     "caca": "emboscada na teia, ataque em grupo de 30 a 50 aranhas por inseto grande",
     "dianteDeGente": ": nenhum registro de ataque a pessoa"
@@ -50561,7 +50561,7 @@
     "atividade": "noturna",
     "dieta": "carnívora: traças, baratas, aranhas, larvas",
     "caca": "emboscada e arrancada",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -51978,7 +51978,7 @@
    },
    "comportamento": {
     "social": "solitária; populações de milhares numa lagoa",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "sangue: mamíferos, peixes, aves aquáticas, anfíbios",
     "caca": "emboscada e busca ativa pela onda",
     "dianteDeGente": "morde quem entra na água; não ataca em grupo"
@@ -55601,7 +55601,7 @@
    },
    "comportamento": {
     "social": "manada",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "forrageio",
     "dianteDeGente": "ameaça"
@@ -58506,8 +58506,8 @@
    "comportamento": {
     "social": "solitária",
     "atividade": "qualquer hora",
-    "dieta": "",
-    "caca": "",
+    "dieta": "sem dado",
+    "caca": "sem dado",
     "dianteDeGente": "associada às forças do bem; quase sagrada para quem a avista"
    },
    "ecologia": {
@@ -70866,10 +70866,10 @@
    },
    "comportamento": {
     "social": "bando",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "perseguição",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -73582,7 +73582,7 @@
     "atividade": "catemeral",
     "dieta": "carnívoro",
     "caca": "perseguição",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -75571,11 +75571,11 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "carnívoro que come carne e osso",
     "caca": "perseguição , pelo corpo de corredor",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -89250,10 +89250,10 @@
    },
    "comportamento": {
     "social": "matilha",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "perseguição",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -90088,10 +90088,10 @@
    },
    "comportamento": {
     "social": "solitária",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívora: insetos grandes, aranhas, às vezes rãs, lagartos e aves pequenas",
     "caca": "emboscada imóvel",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -91252,10 +91252,10 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "caça ativa",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -91620,7 +91620,7 @@
     "atividade": "diurno",
     "dieta": "onívoro (frutas, coco, insetos, pequenos vertebrados)",
     "caca": "forrageio; quebra coco com pedra",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -92340,7 +92340,7 @@
    },
    "comportamento": {
     "social": "manada",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "defende a cria"
@@ -94703,7 +94703,7 @@
    },
    "comportamento": {
     "social": "fêmeas e jovens em manada; machos adultos quase sempre sós",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro (folhas, ramos, frutos, madeira)",
     "caca": "ramoneio",
     "dianteDeGente": "defende a cria"
@@ -95503,8 +95503,8 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"
@@ -99809,7 +99809,7 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "emboscada",
     "dianteDeGente": "defende"
@@ -100551,10 +100551,10 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "emboscada",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -107132,7 +107132,7 @@
    },
    "comportamento": {
     "social": "bando",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "perseguição",
     "dianteDeGente": "evita"
@@ -110776,8 +110776,8 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"
@@ -111510,10 +111510,10 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "emboscada",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -111885,7 +111885,7 @@
    },
    "comportamento": {
     "social": "bando",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "doméstico; foge do que assusta"
@@ -113086,7 +113086,7 @@
    },
    "comportamento": {
     "social": "colônia",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "forrageio",
     "dianteDeGente": "foge"
@@ -114243,10 +114243,10 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "espreita",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -117957,7 +117957,7 @@
    },
    "comportamento": {
     "social": "machos solitários e territoriais (0,7 a 3 km²); fêmeas com cria",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro (capim baixo)",
     "caca": "pastagem",
     "dianteDeGente": "raramente ataca; a fêmea com filhote pequeno, sim"
@@ -119629,7 +119629,7 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "sangue",
     "caca": "espera e vai ao calor",
     "dianteDeGente": "ataca"
@@ -127053,10 +127053,10 @@
    },
    "comportamento": {
     "social": "solitário : a vida em grupo está em debate (PMC2657756; Science News; o Florida Museum não conclui)",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro (presas grandes)",
     "caca": "emboscada dos autores (as lesões na linha média do corpo)",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -127399,8 +127399,8 @@
     "social": "solitário",
     "atividade": "diurno",
     "dieta": "carnívoro (também carniceiro)",
-    "caca": "",
-    "dianteDeGente": ""
+    "caca": "sem dado",
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -128501,10 +128501,10 @@
    },
    "comportamento": {
     "social": "família",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "forrageio",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
    },
    "ecologia": {
     "terreno": [
@@ -130899,7 +130899,7 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro, com onivoria em algumas populações",
     "caca": "forrageio (folhas, caules e o que a região desse)",
     "dianteDeGente": ": defende a toca"

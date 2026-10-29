@@ -491,7 +491,7 @@ export function converterFicha(texto, { site = null } = {}) {
   };
   c.aptidoes = lerApt((S['Aptidões'] || []).find((l) => l.trim()), 'Aptidões');
   const CO = T['Comportamento'] || [];
-  const valorCo = (rot) => { const v = jogo(campo(CO, rot) || ''); if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`); return v; };
+  const valorCo = (rot) => { const valor = campo(CO, rot); if (valor === undefined) return undefined; if (/\[sem dado\]/.test(valor)) return 'sem dado'; const v = jogo(valor); if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`); return v; };
   c.comportamento = { social: valorCo('Social'), atividade: valorCo('Atividade'), dieta: valorCo('Dieta'), caca: valorCo('Caça ou forrageio'), dianteDeGente: valorCo('Diante de gente') };
   const ter = campo(I, 'Terreno'), cli = campo(I, 'Clima');
   const pal = (s, sin) => jogo(s).split(',').map((x) => x.trim().toLowerCase()).filter(Boolean).map((x) => sin[x] ?? x);

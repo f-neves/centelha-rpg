@@ -158,11 +158,11 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "forrageio",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [

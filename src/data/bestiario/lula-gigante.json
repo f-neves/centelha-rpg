@@ -192,10 +192,10 @@
   },
   "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "caça ativa",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [

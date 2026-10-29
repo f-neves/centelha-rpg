@@ -149,10 +149,10 @@
   },
   "comportamento": {
     "social": "matilha",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "perseguição",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [

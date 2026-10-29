@@ -127,11 +127,11 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "carnívoro que come carne e osso",
     "caca": "perseguição , pelo corpo de corredor",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [

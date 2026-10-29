@@ -174,8 +174,8 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
-    "atividade": "",
+    "social": "sem dado",
+    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"

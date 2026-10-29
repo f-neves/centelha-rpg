@@ -150,11 +150,11 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
+    "social": "sem dado",
     "atividade": "dia e noite, na caverna estudada",
     "dieta": "carnívora: come o que conseguir dominar, de baratas a morcegos",
     "caca": "espera e agarra; caça morcegos no teto da caverna",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [

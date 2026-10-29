@@ -167,10 +167,10 @@
   },
   "comportamento": {
     "social": "família",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "forrageio",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [

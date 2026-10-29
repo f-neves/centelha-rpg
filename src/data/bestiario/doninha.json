@@ -143,10 +143,10 @@
   },
   "comportamento": {
     "social": "solitário",
-    "atividade": "",
+    "atividade": "sem dado",
     "dieta": "carnívoro (quase só roedor quando há muitos)",
     "caca": "caça dentro da galeria; mata coelho de 5 a 10 vezes o próprio peso",
-    "dianteDeGente": ""
+    "dianteDeGente": "sem dado"
   },
   "ecologia": {
     "terreno": [
