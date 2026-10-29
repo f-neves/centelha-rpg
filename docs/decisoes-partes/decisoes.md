@@ -3147,6 +3147,19 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - Os padrões de regra da ficha das outras perguntas ficam como estão nas fichas ("manter o efeito atual").
 - Estado: **a aplicar** nas fichas, pelos lotes de `../tmp/bestiarista-fichas/plano-ajustes-fase5.md` (só os itens que mudam ficha: F5.1, F5.2, F5.34 e F5.84); no formato (F5.1 a F5.4); e no código, pela Executora (F5.1 e o nulo).
 
+### D-264 · R5: a migração 41 roda de novo, com o arquivo novo, para o carimbo bater [tags: banco, migracao, supabase, carimbo, migracao-41, fase5]
+- Data: 2026-10-29
+- Contexto: os commits `f20f1716` e `4d0230e5` da `fase5-correcoes` mudaram o `migracao-41.sql` depois de ele rodar em produção (29/10/2026). Os dados não divergem (a Revisora provou que o SQL novo dá o mesmo resultado), mas o carimbo gravado no banco (`de8d7707c1134b08`) não bate com o do arquivo novo (`9bca48e52d9c4711`).
+- Decisão (autor, 29/10/2026, R5, opção c): "rodar a 41 de novo, com o arquivo novo, para o carimbo bater." Condições (do coordenador, sem objeção do autor): "1) antes, a Executora prova no Postgres local, sobre o estado de depois da primeira 41 aplicada ao ficha-real.json, que a segunda rodada não regrava a tabela de backup e não muda nenhuma das 42 fichas; se regravar, o SQL se conserta para não regravar; 2) só roda junto com a publicação da fase5-correcoes, depois do PROCEDE, para o banco não ter o carimbo de um arquivo que ainda não está no main; 3) quem roda é o Arquiteto, pelo roteiro do passo 6, com o token em arquivo naquele dia."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, "R5. A migração 41, que já rodou e cujo arquivo mudou na fase5-correcoes".
+- Estado: **a implementar**, com a publicação da `fase5-correcoes`: a prova local da Executora (condição 1), o PROCEDE (condição 2), e a segunda rodada pelo Arquiteto pelo `../tmp/arquiteto/passo6-arquiteto.md` (condição 3). Não substitui a regra de não mexer em migração aplicada sem decisão: é a decisão.
+
+### D-265 · F5.2-b: o disfarce de tamanho variável ganha uma forma fixa, a humana [tags: bestiario, criatura, formas, variantes, tamanho, area, fase5, d-087, d-263]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, F5.2-b, opção a): "cada uma ganha uma forma de disfarce fixa e típica, a humana (Média, com a medida de um humano), com Área própria; o card diz que o Mestre pode escolher outra forma."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, "F5.2-b". Vale para o deva-astral, o dragão dourado adulto, o marid e a couatl, cujo disfarce imitava "a forma assumida". Completa a F5.2 da D-263 (a forma que declara outro Tamanho declara a própria Área).
+- Estado: **a aplicar** nas quatro fichas, pelo lote `fase5-18` do `../tmp/bestiarista-fichas/plano-ajustes-fase5.md`.
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
