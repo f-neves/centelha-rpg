@@ -670,9 +670,12 @@ export function criatura(e: EntradaCriatura) {
  * A entrada de uma forma, montada por cima da principal (D-217, D-230): o objeto troca chave por chave (o que a forma
  * não diz vem da principal), a lista troca inteira e o valor troca.
  */
-export function comForma(principal: EntradaCriatura, muda: Partial<EntradaCriatura>): EntradaCriatura {
+export function comForma(principal: EntradaCriatura, muda: Omit<Partial<EntradaCriatura>, 'bonusPV'>): EntradaCriatura {
     const out: any = structuredClone(principal);
     for (const [k, v] of Object.entries(muda || {})) {
+        // O bônus de PV pertence à criatura, e não a uma forma (F5.4). A guarda também protege
+        // a leitura de uma fonte antiga que tenha sido escrita fora do esquema.
+        if (k === 'bonusPV') continue;
         if (v && typeof v === 'object' && !Array.isArray(v) && out[k] && typeof out[k] === 'object' && !Array.isArray(out[k]))
             out[k] = { ...out[k], ...v };
         else

@@ -304,6 +304,15 @@ if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrad
 if (criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:10,tamanhoEquivalente:'grande'}).success) falhas.push('F5.3: controle negativo, enxame Grande passou');
 if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:10,tamanhoEquivalente:'medio'}).success) falhas.push('F5.3: enxame Médio foi recusado');
 
+// F5.4: o bônus de PV é da criatura toda e não pode entrar em uma Variante.
+{
+  const c = structuredClone(lobo);
+  c.formas.find(f => f.id === 'lobo').bonusPV = 1;
+  if (criaturaNovaSchema.safeParse(c).success) falhas.push('F5.4: controle negativo, bonusPV da forma passou no esquema');
+  const texto = LOBO.replace('| forma de lobo |', '| forma de lobo | Bônus de PV: 1; ');
+  if (!converterFicha(texto, { site: SITE }).paradas.some(p => p.includes('Bônus de PV é comum'))) falhas.push('F5.4: conversor aceitou bonusPV na Variante');
+}
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);

@@ -543,6 +543,7 @@ export function converterFicha(texto, { site = null } = {}) {
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
         const [k, v] = [m[1].trim(), m[2].trim()];
         const n = (s) => numBR((s.match(/([\d.,]+)/) || [])[1]);
+        if (k === 'Bônus de PV') { para(`Variantes, ${nomeF}: Bônus de PV é comum a todas as formas`); continue; }
         if (k === 'Postura') {
           fc.postura = v;
           if (/quadrúpede|quatro patas/i.test(v)) fc.apoio = 'quadrupede';

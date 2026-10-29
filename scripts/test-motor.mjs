@@ -203,6 +203,18 @@ console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativa
   confere('F5.3', 'controle negativo, motor recusa enxame Grande', recusou, true);
 }
 
+// F5.4: mesmo uma fonte antiga, fora do esquema, não muda o PV por forma.
+{
+  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  const principal = M.criatura(entrada).pv;
+  const forma = M.comForma(entrada, { id: 'bonus-proibido', bonusPV: 20 });
+  confere('F5.4', 'motor ignora bonusPV da forma', M.criatura(forma).pv, principal);
+  const card = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  const vista = M.vistaPublicaCriatura({ ...card, formas: [...card.formas, { id: 'bonus-proibido', nome: 'bonus proibido', bonusPV: 20 }] });
+  const lida = vista.motor.formas.find(f => f.id === 'bonus-proibido').ficha.motor.stat.pv;
+  confere('F5.4', 'card ignora bonusPV da forma', lida, vista.motor.stat.pv);
+}
+
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {
   const porConta = {};
