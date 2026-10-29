@@ -1,6 +1,6 @@
 # O formato do JSON da criatura, no JSON unificado (24/10/2026, quinta versão: fechado)
 
-Do Arquiteto. Segue as decisões do autor de 24/10/2026, registradas como D-216 a D-220 (o formato), D-221 a D-223 (as decisões 66 a 68: as chaves do dragão, a lista `revisao` e o arquivo de fontes) D-224 a D-226 (as decisões 69 a 71: a `revisao` fora do público, as chaves propostas aprovadas e o Tamanho fora da ficha nas jogadas que não são de ataque), D-227 a D-233 (as decisões 72 a 79: as 122 com ficha nova, o motor único, o PV e o peso erguido do jogador, as formas, o JSON unificado com a ficha do jogador de base, o `defSpec` e as livres) e D-234 a D-239 (as decisões 80 a 85: a massa do personagem, o `defSpec` que só sai, as livres dentro de `habilidadesSec`, a troca no mesmo dia, as Artes, os objetos e o equipamento da criatura no formato do jogador, e o arquivo morto). **Com as 80 a 85, o autor deu o formato unificado por fechado:** "Com isso o formato unificado fica fechado." Os dois exemplos, `lobisomem-exemplo.json` e `dragao-branco-jovem-exemplo.json`, seguem as vinte e quatro. A primeira versão de tudo está em `..\arquivo-morto\formato-json\v1-antes-66-68\`, a segunda em `..\arquivo-morto\formato-json\v2-antes-69-71\`, a terceira em `v3-antes-72-79\` e a quarta em `v4-antes-80-85\`. Nada aqui é código: é o formato, para a conversão de todas as fichas de uma vez.
+Do Arquiteto. Segue as decisões do autor de 24/10/2026, registradas como D-216 a D-220 (o formato), D-221 a D-223 (as decisões 66 a 68: as chaves do dragão, a lista `revisao` e o arquivo de fontes) D-224 a D-226 (as decisões 69 a 71: a `revisao` fora do público, as chaves propostas aprovadas e o Tamanho fora da ficha nas jogadas que não são de ataque), D-227 a D-233 (as decisões 72 a 79: as 122 com ficha nova, o motor único, o PV e o peso erguido do jogador, as formas, o JSON unificado com a ficha do jogador de base, o `defSpec` e as livres) e D-234 a D-239 (as decisões 80 a 85: a massa do personagem, o `defSpec` que só sai, as livres dentro de `habilidadesSec`, a troca no mesmo dia, as Artes, os objetos e o equipamento da criatura no formato do jogador, e o arquivo morto). **Com as 80 a 85, o autor deu o formato unificado por fechado:** "Com isso o formato unificado fica fechado." Os dois exemplos, `lobisomem-exemplo.json` e `dragao-branco-jovem-exemplo.json`, seguem as vinte e quatro. A primeira versão de tudo está em `..\arquivo-morto\formato-json\v1-antes-66-68\`, a segunda em `..\arquivo-morto\formato-json\v2-antes-69-71\`, a terceira em `v3-antes-72-79\` e a quarta em `v4-antes-80-85\`. Em 28/10/2026, as regras D-246 a D-256 (as respostas do autor de 26 a 28/10) entraram onde tocam o formato: `naoErgue` (D-252), as chaves da linha `livro:` (D-253) e o deslocamento decimal (D-254); as outras são da ficha e estão no guia. No mesmo dia, o bloco `enxame` (D-257, perguntas P10 e P13; texto da Executora em `executora\fase3\pedidos-formato.md`). Nada aqui é código: é o formato, para a conversão de todas as fichas de uma vez.
 
 ## 1. As regras de leitura
 
@@ -17,9 +17,10 @@ Do Arquiteto. Segue as decisões do autor de 24/10/2026, registradas como D-216 
   - a falta de regra vai na `classe` (`"sem regra ainda"`), nas habilidades especiais e nos sentidos;
   - a dúvida, a extrapolação e o motivo de um número vão na `revisao` (seção 7).
   - O que fala com quem joga fica. No dragão, "quanto tempo, o Mestre decide" (D-087) é regra de jogo, e não nota de trabalho; só saiu do parêntese.
-- **Valores que são ids** (`categoria`, `papel`, `classe`, `tipoDano`, `parte`, as chaves de `habilidades`): minúsculas, sem acento, com hífen entre palavras (`pata-dianteira`). Os textos (`postura`, `descricao`, os campos das habilidades especiais, a `ecologia`) ficam em português, com acento.
+- **Valores que são ids** (`categoria`, `papel`, a `classe` do ataque, `tipoDano`, `parte`, as chaves de `habilidades`): minúsculas, sem acento, com hífen entre palavras (`pata-dianteira`). A `classe` das habilidades especiais e dos sentidos não é id: é um dos três textos da tabela 2.5 (`livro`, `regra da ficha`, `sem regra ainda`), com espaço (D-225). Os textos (`postura`, `descricao`, os campos das habilidades especiais, a `ecologia`) ficam em português, com acento.
 - **null** quer dizer "não se aplica" (o `comprimento` do bípede). Quando a ficha não tem o dado, o campo falta, e isso não é o mesmo que null.
 - **Unidades:** metro, quilo e metro quadrado, em número com ponto decimal.
+- **Enxame** (D-257): o PV do quadrado cheio é calculado pelo motor como o de uma criatura de `tamanhoEquivalente`, com o Vigor do indivíduo e o bônus de PV declarado. O PV acompanha a proporção de indivíduos presentes no quadrado, arredondado para baixo. A quantidade mínima para continuar sendo enxame é um quarto do cheio, arredondada para cima quando necessário; abaixo dela deixa de ser enxame. O card mostra PV por quadrado. O bloco `enxame` não guarda PV, fração, quantidade mínima nem outros resultados calculados. A massa em `corpo` continua sendo a do indivíduo e não determina essa equivalência. As chaves permitidas em `enxame` são somente `individuosPorQuadrado` e `tamanhoEquivalente`.
 
 ## 2. As chaves
 
@@ -37,12 +38,13 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `id` | texto (id) | sim | · | Identidade, `id` |
 | `idAntigo` | texto | cond. (quem tinha card) | · | Identidade, `id antigo do bestiário` |
 | `nome` | texto | sim | · | Identidade, `Nome` |
-| `nomeIngles` | texto | sim | · | Identidade, `Nome em inglês` |
+| `nomeIngles` | texto, ou null quando a criatura não tem nome em inglês | sim | · | Identidade, `Nome em inglês` |
 | `categoria` | id | sim | · | Identidade, `Categoria · papel · Centelha`, o primeiro |
 | `papel` | id | sim | · | a mesma linha, o do meio |
 | `ameaca` | inteiro 1 a 6 | sim | · | Identidade, `Ameaça`; sem a linha, o `ameacaLegada` do site |
 | `centelha` | inteiro 0 a 12 | sim | F | a mesma linha, o último |
 | `formaPrincipal` | `{id, nome}` | cond. (quem muda de forma) | · | Identidade, `Formas`, a que diz "(esta ficha)"; o id pela regra da D-201 |
+| `formas` | lista de objetos, cada um com `id` e `nome` (obrigatórios) e só as chaves que a forma substitui (seção 1) | cond. (quem muda de forma) | · | Identidade, `Formas`, as outras, e a seção Variantes; o id pela regra da D-201 (D-217) |
 
 ### 2.2 Corpo
 
@@ -59,16 +61,19 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `corpo.envergadura` | número (m) | cond. (voador) | S | `Envergadura` |
 | `corpo.caudaGrossa` | sim ou não | cond. (quem tem cauda) | S | `Cauda grossa` (D-155) |
 | `corpo.massa` | número (kg) | sim | S | `Massa` |
-| `corpo.semMassa` e `corpo.volume` | sim ou não; número (m³) | cond. (incorpóreo) | S | `Massa`, "**sem massa** · volume" (D-190; D-225) |
-| `corpo.naoErgue` | `true` | cond., só quando a ficha escreve "não ergue" | S | Peso erguido (P5, 26/10/2026). Independente de `semMassa`: o elemental do ar não tem massa e ergue 80,32 kg. |
+| `corpo.semMassa` e `corpo.volume` | `true` (sem massa; a chave falta quando há massa); número (m³) | cond. (incorpóreo) | S | `Massa`, "**sem massa** · volume" (D-190; D-225) |
+| `corpo.naoErgue` | `true` | cond., só quando a ficha escreve "não ergue" | S | Peso erguido (D-252, pergunta P5 de 26/10/2026). Independente de `semMassa`: o elemental do ar não tem massa e ergue 80,32 kg. |
 | `corpo.area` | número (m²) | sim | S | `Área` |
 | `corpo.posturaDoTamanho` | texto | sim | S | `Tamanho`, o parêntese da postura (D-213) |
-| `corpo.segundoTamanho` | `{area, posturaDoTamanho}` | cond. | S | `Segundo Tamanho` (D-213, D-215) |
+| `corpo.segundoTamanho` | `{area, posturaDoTamanho}`, e `tamanhoEscolhido` quando a ficha escolhe perto do corte, como no primeiro Tamanho | cond. | S | `Segundo Tamanho` (D-213, D-215; a escolha guardada pela D-216) |
 | `corpo.tamanhoEscolhido` | id do Tamanho | cond. (só quando a ficha escolhe) | S | `Tamanho`, quando a área fica a menos de 5% do corte e a ficha "escolhe pelo corpo" (decisoes-autor §13; a escolha é guardada pela D-216, o nome pela D-225) |
 | `corpo.linhaPV` | `acima` ou `abaixo` | cond. (só quando a ficha escolhe) | S | `PV base`, na zona de transição ("robusto sobe, frágil desce", §13; guardada pela D-216, o nome pela D-225) |
 | `corpo.cargaMedida` | número (kg) | cond. (quadrúpede de carga com medida) | S | `Carga` (D-122: "o fim da faixa Leve é a carga medida, quando houver") |
 | `couraca` | inteiro 0 a 12 | sim | S | Absorção, "Couraça nível N" |
 | `bonusPV` | inteiro | não (falta = 0) | S | `Bônus de PV` (D-135, com a justificativa na ficha) |
+| `enxame` | objeto | cond. (só em enxames; na raiz, antes de `corpo`) | · | Corpo e movimento, `PV base`, "Por quadrado cheio (...)" (D-257). Descreve um quadrado cheio; corpo, Atributos e Habilidades continuam sendo os do indivíduo |
+| `enxame.individuosPorQuadrado` | inteiro positivo | sim, no bloco | · | `PV base`, a quantidade do quadrado cheio ("3500 aranhas") |
+| `enxame.tamanhoEquivalente` | id do Tamanho | sim, no bloco | · | `PV base`, "conta como criatura Pequena": o Tamanho da criatura equivalente ao quadrado cheio, dado explícito da ficha. A massa entre parênteses não entra |
 
 ### 2.3 Números da criatura
 
@@ -83,7 +88,7 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `vontade` | inteiro | sim | F | `Vontade` |
 | `aparencia` | inteiro 0 a 12 | sim | S | `Aparência` |
 | `deslocamento` | objeto por meio | sim | S | Corpo e movimento: `Deslocamento em terra`, `Voo`, `Nado`, `Escavação` (D-190, congelado) |
-| `deslocamento.terra` | `{batalha, arranque, corrida}` | condicional | S | `Deslocamento em terra` |
+| `deslocamento.terra` | `{batalha, arranque, corrida}` | cond. | S | `Deslocamento em terra`. Ausente quer dizer "não anda", e o card escreve isso; a criatura sem `terra` declara ao menos um outro meio (P15, nota na D-254). Os números de todos os meios podem ser decimais, como 0,5 (D-254) |
 | `deslocamento.voo`, `.nado`, `.escavacao`, `.escalada` | `{batalha}` (e `arranque`, `corrida` quando a ficha os tem) | cond. | S | as linhas de mesmo nome, só com número em m por Tick; `escavacao` aprovada pela D-221 |
 
 ### 2.4 Equipamento, Artes e ataques
@@ -104,7 +109,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 | `habilidade` | id | a Habilidade da frase "Jogada:" (Briga, Disparo...) |
 | `classe` | id | `Classe` |
 | `pgr` | `[Preparo, Golpe, Recuperação]`, em Ticks | `P/G/R` (seção 6) |
-| `dado` | texto (`1d6`, `1d6-2`, `6d6`) | `Dano`, o dado |
+| `dado` | texto (`1d6`, `1d6-2`, `6d6`), ou null no golpe sem dano (agarra, enferruja, petrifica) | `Dano`, o dado; "nenhum" grava null |
 | `multiplicadorForca` | 0, 1 ou 2 | `Dano`, "Força × N"; 0 quando o dano não leva Força (o sopro) |
 | `tipoDano` | id | `Tipo` |
 | `nivelPerfuracao` | inteiro ou null | `Nível de Perfuração` |
@@ -142,9 +147,9 @@ Cada item de `habilidadesEspeciais`:
 | `ataque` | quando a habilidade sai de um ataque (D-220) | o segundo campo da linha |
 | `base` | poder natural (D-221) | "poder natural (base Gelo 3)": `{arte, nivel}` (C-037) |
 | `regra` | classe `livro` (D-221) | o id da regra do livro (`rajada`), e o card escreve o texto da regra |
-| `tecnica` | classe `livro`, condicional | `{id, nivel}`, referência à Técnica (P7, 26/10/2026) |
-| `arte` | classe `livro`, condicional | `{id, nivel}`, referência à Arte (P7, 26/10/2026) |
-| `texto` | classe `livro`, condicional | Só o que a criatura acrescenta: detalhe próprio e limite de jogo, como "segura a presa no chão com o pé" e "só descendo". Não repete o livro, outra parte da ficha ou número calculado pelo motor (P7, 26/10/2026). |
+| `tecnica` | classe `livro`, condicional | `{id, nivel}`, referência à Técnica (D-253, pergunta P7 de 26/10/2026) |
+| `arte` | classe `livro`, condicional | `{id, nivel}`, referência à Arte (D-253) |
+| `texto` | classe `livro`, condicional | Só o que a criatura acrescenta: detalhe próprio e limite de jogo, como "segura a presa no chão com o pé" e "só descendo". Não repete o livro, outra parte da ficha ou número calculado pelo motor (D-253). |
 | `ativacao`, `duracao`, `alcance`, `area`, `efeito`, `dano`, `resistencia`, `limiteDeUso` | classe `regra da ficha`; em `sem regra ainda`, só `efeito` | os oito campos da D-197 |
 
 O "PROVISÓRIO" da linha não vira campo: a habilidade entra na `revisao` com o motivo (D-222).
@@ -158,6 +163,7 @@ O "PROVISÓRIO" da linha não vira campo: a habilidade entra na `revisao` com o 
 - `imagem` vira `imagens`.
 - `porte`, `mana`, as Defesas e a `velocidade` dos ataques são contas do motor, e saem também (D-216, D-221).
 - A `fonte` vai para o arquivo de fontes, à parte (D-223, D-225; seção 8).
+- No enxame, o PV do quadrado, a fração de indivíduos e a quantidade mínima são contas do motor e não entram no bloco `enxame` (D-257, D-216). A `massaQuadradoCheio` da primeira resposta à P10 foi trocada pelo `tamanhoEquivalente` na P13 e não existe.
 - A `revisao` fica no JSON-fonte e não chega ao JSON público nem ao card (D-224; seção 7).
 - O texto `No jogo` da ficha não vai: tem os números escritos à mão. Se o card precisar de um parágrafo para o Mestre, ele tem de vir sem número, e o card escreve os números pelo motor. Isso fica para o autor.
 
@@ -172,11 +178,12 @@ Um motor só para o card, a mesa, o Grid, o editor e a ficha do jogador (D-216).
 | Tamanho | pela `area`, nos cortes 0,03 · 0,12 · 0,45 · 1,45 · 6 · 25 · 100 m² (Minúsculo a Colossal); `tamanhoEscolhido` vence; o Segundo Tamanho, pela `segundoTamanho.area` | tamanho-decisoes-3, itens 7, 8 e 25; D-183; D-213; D-215; decisoes-autor §13 | **o da raça, e não o da massa nem o da área** (D-140, D-234): gnomo e halfling Pequenos, as outras Médias, qualquer que seja a massa |
 | Faixa de massa (7 faixas) | cortes 4 kg, 35 kg, 220 kg, 1,8 t, 14 t, 110 t; o incorpóreo usa volume × 1.010 kg/m³ | decisoes-autor §9; tamanho-decisoes-3, item 22; D-141; D-190 | a mesma, pela `corpo.massa` do personagem (D-234, "usada nas contas correspondentes"; leitura do Arquiteto, aplicada) |
 | PV | a tabela de PV pela massa (11 linhas, de "até 100 g: 1" a "acima de 110 t: 45 + Vigor × 5"), mais `bonusPV`; na zona de transição, `linhaPV` | decisoes-autor §9 (D-180, ponto 9); D-135; D-144; C-046 (não cresce com a Centelha) | **pelo Tamanho da raça, e não pela massa** (D-234): Pequeno 20 + Vigor × 2, Médio 25 + Vigor × 3, e a Vitalidade por cima no meio-orc e no orc. É o número do livro e da ficha de hoje (`calc.ts:38-46`); a mesa diverge, e o motor a corrige (plano, A5j) |
+| PV do enxame | o PV de uma criatura do `enxame.tamanhoEquivalente` (Pequeno 20 + Vigor × 2; Médio 25 + Vigor × 3), com o Vigor do indivíduo, mais `bonusPV`; vezes a proporção de indivíduos presentes, para baixo; abaixo de um quarto do cheio deixa de ser enxame. O card mostra "PV por quadrado" | D-257; decisão de 20/10/2026 (decisoes-autor §11 e §13) | · |
 | Esquiva | (Destreza + Esquiva) × 2 + 2 × o menor entre Centelha e Esquiva | `defesas.md`; `centelha.md`; manual 5.3 | a conferir |
 | Bloqueio | (Destreza + Bloqueio) × 2 + 2 × o menor entre Centelha e Bloqueio; a arma que bloqueia soma `bloqueiaComoArma`, nunca negativa | D-190; D-065; D-206 | a conferir |
 | Defesa do card | as duas, com e sem o equipamento; por padrão a maior, e a escolha é do Mestre | D-206; D-208; D-188 | · |
 | Defesa Mental | Raciocínio + Integridade + Vontade + 2 × o menor entre Centelha e Integridade; Inteligência 0: imune | `defesas.md`; C-006; D-186 | a conferir |
-| Defesa Social | Animal ou Inteligência 1, em toda criatura: (Compostura + Sobrevivência) × 2 + 2 × o menor entre Centelha e Sobrevivência; as outras de Inteligência 2 ou mais: (Compostura + Sociabilidade) × 2 + 2 × o menor entre Centelha e Sociabilidade; Inteligência 0: imune | C-006; D-109; resposta P4 de 26/10/2026; `defesas.md` | a do personagem |
+| Defesa Social | Animal ou Inteligência 1, em toda criatura: (Compostura + Sobrevivência) × 2 + 2 × o menor entre Centelha e Sobrevivência; as outras de Inteligência 2 ou mais: (Compostura + Sociabilidade) × 2 + 2 × o menor entre Centelha e Sociabilidade; Inteligência 0: imune | C-006 (confirmada pela resposta P4 de 26/10/2026); D-109; `defesas.md` | a do personagem |
 | Iniciativa | 1d6 + Raciocínio + Prontidão | manual 5.3 | a conferir |
 | Energia | (Vigor + Compostura + Raciocínio + Vontade) ÷ 2, para baixo, + Centelha × 2 | `centelha.md`; manual 5.3 | a conferir |
 | Mana | Centelha × 2 + Vontade, só com `artes` | manual 5.3 e 4.2; C-037 | a conferir |
@@ -363,6 +370,6 @@ O que a ficha tem e o exemplo não leva:
 ```
 
 O que isso pede, e entra no plano (A5j e B2):
-- o esquema da ficha do jogador aceita, em `habilidadesSec`, as três chaves com `{nome, valor}` ao lado das de número; o da criatura continua id → número, porque a criatura não tem livre (a secundária que ela usa é sempre do catálogo);
+- o esquema da ficha do jogador aceita, em `habilidadesSec`, as três chaves com `{nome, valor}` ao lado das de número; o da criatura continua id → número, porque a criatura não tem livre (a secundária que ela usa é do catálogo, mais as quatro de criatura que o catálogo não tem: `musculatura`, `voo`, `corrida` e `disparo`);
 - quem soma as secundárias (o XP, o card do personagem, o resumo da mesa) lê o `valor` dessas três chaves;
 - a Especialidade da livre fica em `especialidadesSec.habilidadeSecLivreN` pelo agrupamento por Habilidade da D-231 (consequência direta, aplicada).
