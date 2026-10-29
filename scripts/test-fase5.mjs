@@ -115,6 +115,9 @@ const page=fs.readFileSync('src/pages/mesa/grupo.astro','utf8');const ini=page.i
 cases.set('baixo-sql', async () => {
 const sql=fs.readFileSync('supabase/migracao-41.sql','utf8');const ante=sql.split('function public.ficha41_ante')[1].split('$$;')[0];assert.ok(ante.includes("coalesce(e->'u', e->'uid')"));assert.ok(ante.includes("coalesce(e->'n', e->'nome')"));assert.ok(ante.includes("coalesce(e->'v', e->'valor')"));const spec=sql.split('function public.ficha41_especialidades')[1].split('$$;')[0];assert.ok(!spec.includes("(e - 's' - 'v') ||"));assert.ok(sql.includes("case when f ? 'budget' then jsonb_build_object('xpTotal'"));const F=await carregarTS('src/lib/ficha-formato.ts');const old=JSON.parse(fs.readFileSync('scripts/fixtures/kael.json','utf8'));delete old.budget;old.anteNom={contatos:[{uid:'um',nome:'Ana',valor:2}]};old.spec={briga:[{s:'garra',v:1,extra:'ignorar'}]};const got=JSON.parse(JSON.stringify(F.fichaParaGravar(old)));assert.ok(!('xpTotal'in got));assert.deepEqual(got.antecedentesNomeados.contatos,[{uid:'um',nome:'Ana',valor:2}]);assert.deepEqual(got.especialidades.briga,[{foco:'garra',valor:1}]);
 });
+cases.set('baixo-volta', async () => {
+const sql=fs.readFileSync('supabase/migracao-41.sql','utf8');const marker=sql.indexOf('-- >>> carimbo');assert.ok(marker>0);assert.ok(!/^commit;/m.test(sql.slice(0,marker)),'o commit não pode preceder o carimbo');assert.ok(sql.slice(marker).trimEnd().endsWith('commit;'));const volta=fs.readFileSync('supabase/migracao-41-volta.sql','utf8');assert.match(volta,/delete from public\.migracoes where numero = 41;/i);assert.ok(volta.indexOf('delete from public.migracoes')<volta.lastIndexOf('commit;'));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

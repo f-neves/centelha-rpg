@@ -469,7 +469,7 @@ grant execute on function public.grupo_visivel(uuid) to authenticated;
 
 
 -- Deixar o conversor para conferencia da ficha antes/depois; nao e usado pelo site.
-commit;
+-- carimbo transacional
 
 -- >>> carimbo (gerado por scripts/gen-carimbo-migracoes.mjs · não editar à mão)
 --
@@ -477,6 +477,8 @@ commit;
 -- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
 -- rerodou sabe mais do que quem escreveu a carga de memória.
 insert into public.migracoes (numero, arquivo, sha256, a_mao) values
-  (41, 'migracao-41.sql', '6f1fd0de0ab2450d', false)
+  (41, 'migracao-41.sql', '9bca48e52d9c4711', false)
   on conflict (numero) do update set arquivo = excluded.arquivo,
     sha256 = excluded.sha256, a_mao = false, aplicada_em = now();
+
+commit;

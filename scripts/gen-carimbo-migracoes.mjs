@@ -70,7 +70,8 @@ for (const { f, n } of arquivos) {
   const i = txt.indexOf(MARCA);
   const corpo = (i === -1 ? txt : txt.slice(0, i)).replace(/\r\n/g, '\n').replace(/\s+$/, '') + '\n';
   const hash = crypto.createHash('sha256').update(corpo, 'utf8').digest('hex').slice(0, 16);
-  const novo = corpo + '\n' + carimbo(n, f, hash);
+  const fim = corpo.includes('-- carimbo transacional') ? '\ncommit;\n' : '';
+  const novo = corpo + '\n' + carimbo(n, f, hash) + fim;
   if (novo === txt) continue;
   if (process.argv.includes('--check')) { velhos.push(f); continue; }
   fs.writeFileSync(p, novo, 'utf8');
