@@ -21,7 +21,7 @@ const corpoNovo = z.object({
 const especialidadesNovo = z.record(id, z.array(z.object({ foco: texto, valor: naoNeg, origem: z.enum(['natural', 'livro']) }).strict()));
 const numeroPasso = numero.finite().nonnegative();
 const passo = z.object({ batalha: numeroPasso, arranque: numeroPasso.optional(), corrida: numeroPasso.optional() }).strict();
-const deslocamentoNovo = z.object({ terra: passo.optional(), voo: passo.optional(), nado: passo.optional(), escavacao: passo.optional(), escalada: passo.optional() }).strict().refine(d => Object.keys(d).length > 0, 'deslocamento precisa declarar ao menos um meio');
+const deslocamentoNovo = z.object({ terra: passo.required().optional(), voo: passo.optional(), nado: passo.optional(), escavacao: passo.optional(), escalada: passo.optional() }).strict().refine(d => Object.keys(d).length > 0, 'deslocamento precisa declarar ao menos um meio');
 const equipamentoNovo = z.object({
   arsenal: z.array(z.object({ ref: z.string().regex(/^[ae]:[a-z0-9-]+$/) }).strict()),
   armaduras: z.array(z.object({ base: id, vestida: z.boolean() }).strict()),

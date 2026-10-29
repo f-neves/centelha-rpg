@@ -50,6 +50,9 @@ for(const k of ['respiracao','mente','tracos']){const c=fresh();delete c.fisiolo
 cases.set('16', async () => {
 for(const k of ['social','atividade','dieta','caca','dianteDeGente']){const c=fresh();c.comportamento[k]=' ';assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.descricao='';assert.equal(schema.safeParse(c).success,false);const r=conv(raw.split('\n').filter(l=>!l.startsWith('| Texto curto |')).join('\n'));assert.ok(r.paradas.some(x=>/descricao/.test(x)));assert.equal(r.criatura.descricao,undefined);
 });
+cases.set('17', async () => {
+for(const k of ['arranque','corrida']){const c=fresh();delete c.deslocamento.terra[k];assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.deslocamento={voo:{batalha:2}};assert.equal(schema.safeParse(c).success,true);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
