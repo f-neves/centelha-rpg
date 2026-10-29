@@ -1,11 +1,11 @@
 // Editor de fonte unificada. A validação e todas as contas vêm dos módulos comuns.
 import { criatura, vistaPublicaCriatura, type EntradaCriatura, type AtaqueEntrada } from './motor';
-import { criaturaNovaSchema } from '../../scripts/criatura-schema.mjs';
+import { criaturaParaLeituraSchema } from '../../scripts/criatura-schema.mjs';
 
 export type CriaturaEdit = EntradaCriatura & Record<string, any>;
 export type Ataque = AtaqueEntrada;
 export function validarFonte(c: unknown): CriaturaEdit {
-  return criaturaNovaSchema.parse(c) as CriaturaEdit;
+  return criaturaParaLeituraSchema.parse(c) as CriaturaEdit;
 }
 export function derivados(c: CriaturaEdit) {
   const entrada = validarFonte(c), r = criatura(entrada), v = vistaPublicaCriatura(entrada);

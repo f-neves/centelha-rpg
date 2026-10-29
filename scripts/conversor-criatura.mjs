@@ -212,7 +212,7 @@ export function converterFicha(texto, { site = null } = {}) {
     if (!enx) para('enxame: PV base deve explicitar indivíduos por quadrado cheio e o Tamanho equivalente');
     else {
       const tamanhoEquivalente = {pequena:'pequeno',media:'medio',minuscula:'minusculo',miuda:'miudo',grande:'grande',enorme:'enorme',imensa:'imenso',colossal:'colossal'}[slug(enx[2])];
-      if (!tamanhoEquivalente || Number(enx[1]) < 1) para('enxame: indivíduos ou Tamanho equivalente inválidos');
+      if (!tamanhoEquivalente || !['pequeno','medio'].includes(tamanhoEquivalente) || Number(enx[1]) < 1) para('enxame: indivíduos ou Tamanho equivalente inválidos; só Pequeno ou Médio');
       else c.enxame = {individuosPorQuadrado:Number(enx[1]), tamanhoEquivalente};
     }
   }
@@ -545,7 +545,7 @@ export function converterFicha(texto, { site = null } = {}) {
       if (!r) { para(`a forma "${nomeF}" não tem linha em Variantes`); continue; }
       const f = { id: idForma(nomeF), nome: nomeF };
       const fc = {}, fa = {}, ff = {};
-      let pvForma;
+      let pvForma, tamanhoDeclarado;
       for (const p of String(Object.values(r)[1]).split(/;\s+(?![^(]*\))/)) {
         const t = p.trim().replace(/\.$/, '');
         const at = t.match(/^(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura) (\d+)$/);
@@ -556,6 +556,7 @@ export function converterFicha(texto, { site = null } = {}) {
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
         const [k, v] = [m[1].trim(), m[2].trim()];
         const n = (s) => numBR((s.match(/([\d.,]+)/) || [])[1]);
+        if (k === 'Bônus de PV') { para(`Variantes, ${nomeF}: Bônus de PV é comum a todas as formas`); continue; }
         if (k === 'Postura') {
           fc.postura = v;
           if (/quadrúpede|quatro patas/i.test(v)) fc.apoio = 'quadrupede';
@@ -572,8 +573,8 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Área') fc.area = n(v);
         else if (k === 'Tamanho') {
           const q = v.match(new RegExp(`^(${TAMANHOS})(?:\\s*\\(([\\d.,]+) m²,\\s*([^)]*)\\))?`));
-          if (q?.[3]) fc.posturaDoTamanho = q[3].trim();
-          else if (q && fc.area === undefined) fc.tamanhoEscolhido = slug(q[1]);
+          if (q?.[3]) { fc.area ??= numBR(q[2]); fc.posturaDoTamanho = q[3].trim(); }
+          else if (q) tamanhoDeclarado = slug(q[1]);
         }
         else if (k === 'Couraça') f.couraca = Number(v);
         else if (k === 'Aparência') f.aparencia = inteiro(v);
@@ -585,7 +586,7 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Artes') f.artes = lerArtes(v, `Variantes, ${nomeF}`, true);
         else if (k === 'Aptidões') f.aptidoes = lerApt(v, `Variantes, ${nomeF}`);
         else if (k === 'Elementos') f._elementos = lerElem(v, `Variantes, ${nomeF}`);
-        else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = { batalha: 0, arranque: 0, corrida: 0 }; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
+        else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = null; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
         else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
         else if (k === 'Voo' || k === 'Nado' || k === 'Escalada' || k === 'Escavação') {
@@ -598,7 +599,7 @@ export function converterFicha(texto, { site = null } = {}) {
             }
             (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = passo;
           }
-          else if (/^não (voa|nada|escala|escava)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = { batalha: 0 };
+          else if (/^não (voa|nada|escala|escava)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = null;
           else para(`Variantes, ${nomeF}: ${k} ilegível`);
         }
         else if (k === 'Peso erguido' && /^não ergue/.test(v)) fc.naoErgue = true;
@@ -606,6 +607,8 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto'].includes(k)) { /* conta do motor, ou texto que não é número */ }
         else para(`Variantes, ${nomeF}: campo "${k}" que o conversor não conhece`);
       }
+      if (tamanhoDeclarado !== undefined && tamanhoDeclarado !== slug(tam) && fc.area === undefined)
+        para(`Variantes, ${nomeF}: Tamanho próprio exige Área própria`);
       // O PV explícito da Variante revela a escolha entre as duas linhas da transição.
       if (pvForma !== undefined) {
         const kgForma = M.massaDaConta({ ...corpo, ...fc });

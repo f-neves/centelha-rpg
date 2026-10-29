@@ -53,7 +53,8 @@ const LOCO: [string, string][] = [
   ['terra', 'Terra'], ['voo', 'Voo'], ['natacao', 'Natação'],
   ['escalada', 'Escalada'], ['escavacao', 'Escavação'], ['jato', 'Jato'],
 ];
-const locoDe = (x: any) => [...(x.locomocao?.terra == null ? [{ nome: 'Terra', v: null }] : []), ...LOCO.filter(([k]) => x.locomocao?.[k] != null).map(([k, nome]) => ({ nome, v: x.locomocao[k] }))];
+const SEM_LOCOMOCAO: Record<string, string> = { terra: 'não anda', voo: 'não voa', natacao: 'não nada', escalada: 'não escala', escavacao: 'não escava', jato: 'não usa jato' };
+const locoDe = (x: any) => LOCO.filter(([k]) => k === 'terra' || Object.hasOwn(x.locomocao || {}, k)).map(([k, nome]) => ({ nome, k, v: x.locomocao?.[k] }));
 // Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".
 const PERIODO: Record<string, string> = {
   ticks: 'Ticks', cena: 'cena', hora: 'hora', dia: 'dia', avontade: 'à vontade', passivo: 'passivo', golpe: 'por golpe',
@@ -117,7 +118,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           )}
           {i.segundoTamanho && <p class="besta-porte">Segundo Tamanho: {i.segundoTamanho}</p>}
           {locoDe(i).length > 0 && (
-            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{m.v == null ? 'Terra: não anda' : `${m.nome} ${m.v} m/Tick`}</span></>))}</p>
+            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{m.v == null ? `${m.nome}: ${SEM_LOCOMOCAO[m.k]}` : `${m.nome} ${m.v} m/Tick`}</span></>))}</p>
           )}
 
           {i.descricao && <p class="besta-con muted">{i.descricao}</p>}

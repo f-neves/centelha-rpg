@@ -477,7 +477,7 @@ export interface EntradaCriatura {
     habilidadesSec: Num;
     vontade: number;
     corpo: CorpoEntrada;
-    enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Tamanho };
+    enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Extract<Tamanho, 'pequeno' | 'medio'> };
     bonusPV?: number;
     couraca?: number;
     artes?: Num;
@@ -687,14 +687,20 @@ export function criatura(e: EntradaCriatura) {
  * A entrada de uma forma, montada por cima da principal (D-217, D-230): o objeto troca chave por chave (o que a forma
  * não diz vem da principal), a lista troca inteira e o valor troca.
  */
-export function comForma(principal: EntradaCriatura, muda: Partial<EntradaCriatura>): EntradaCriatura {
+export function comForma(principal: EntradaCriatura, muda: Omit<Partial<EntradaCriatura>, 'bonusPV'>): EntradaCriatura {
     const out: any = structuredClone(principal);
     for (const [k, v] of Object.entries(muda || {})) {
+        // O bônus de PV pertence à criatura, e não a uma forma (F5.4). A guarda também protege
+        // a leitura de uma fonte antiga que tenha sido escrita fora do esquema.
+        if (k === 'bonusPV') continue;
         if (v && typeof v === 'object' && !Array.isArray(v) && out[k] && typeof out[k] === 'object' && !Array.isArray(out[k]))
             out[k] = { ...out[k], ...v };
         else
             out[k] = structuredClone(v);
     }
+    // A ausência do meio herda, mas null na forma cancela o meio da principal (F5.1).
+    if ((muda as any)?.deslocamento)
+        out.deslocamento = { ...(principal as any).deslocamento, ...(muda as any).deslocamento };
     // a área e a massa da forma valem por si: a escolha do Tamanho e da linha de PV era da principal
     if (muda?.corpo) {
         if ('area' in muda.corpo && !('tamanhoEscolhido' in muda.corpo))
@@ -767,12 +773,10 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
             dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf
         };
     });
-    const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[])[0];
-    if (!principal)
-        throw Error(c.id + ': não há deslocamento para o gerado');
+    const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[]).find(Boolean);
     const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), descricao: [textoDaRegraDaCriatura(h.regra), h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || h.tecnica?.id || h.arte?.id || '' }));
     const f: any = {
-        id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], deslocamentoDeclarado: { batalha: principal.batalha, arranque: principal.arranque ?? principal.batalha, corrida: principal.corrida ?? principal.batalha }, locomocao: { terra: d.terra?.batalha ?? null, ...Object.fromEntries(Object.entries(d).filter(([k]) => k !== 'terra').map(([k, v]) => [k === 'nado' ? 'natacao' : k, (v as any).batalha])) }, ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
+        id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], deslocamentoDeclarado: { batalha: principal?.batalha ?? 0, arranque: principal?.arranque ?? principal?.batalha ?? 0, corrida: principal?.corrida ?? principal?.batalha ?? 0 }, locomocao: { terra: d.terra?.batalha ?? null, ...Object.fromEntries(Object.entries(d).filter(([k]) => k !== 'terra').map(([k, v]) => [k === 'nado' ? 'natacao' : k, v == null ? null : (v as any).batalha])) }, ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
     };
     const stat = {
         id: c.id, nome: c.nome, tipo: c.papel, categoria: c.categoria, ameaca: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: f.tags, pv: r.pv, defesa, defesaMental: r.defesaMental === 'imune' ? '-' : r.defesaMental, defesaSocial: r.defesaSocial === 'imune' ? '-' : r.defesaSocial, vontade: c.vontade, soak: r.absorcao, resistPerf: 0, iniciativa: '1d6 + ' + r.iniciativa, atributos: c.atributos, ataques, tecnicas: Object.keys(f.tech), artes: Object.entries(c.artes).map(([id, nivel]) => ({ id, nivel })), notas: '', pendente: false, ...(vestida ? { vestida } : {})
@@ -1064,7 +1068,7 @@ export function textoDaRegraDaCriatura(id?: string): string | null {
 export function enxamePorQuadrado(e: EntradaCriatura, individuos?: number) {
   if (!e.enxame) throw Error('entrada sem bloco enxame');
   const cheio = e.enxame.individuosPorQuadrado, tamanho = e.enxame.tamanhoEquivalente;
-  if (!Number.isInteger(cheio) || cheio < 1 || !ORDEM.includes(tamanho)) throw Error('bloco enxame inválido');
+    if (!Number.isInteger(cheio) || cheio < 1 || !['pequeno', 'medio'].includes(tamanho)) throw Error('bloco enxame inválido: só Pequeno ou Médio');
   const presentes = individuos ?? cheio;
   if (!Number.isInteger(presentes) || presentes < 0 || presentes > cheio) throw Error('indivíduos fora do quadrado cheio');
   const pvCheio = pvDoTamanho(e.atributos.vigor ?? 0, tamanho) + (e.bonusPV ?? 0);

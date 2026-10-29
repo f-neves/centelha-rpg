@@ -23,6 +23,8 @@ const especialidadesNovo = z.record(id, z.array(z.object({ foco: texto, valor: n
 const numeroPasso = numero.finite().nonnegative();
 const passo = z.object({ batalha: numeroPasso, arranque: numeroPasso.optional(), corrida: numeroPasso.optional() }).strict();
 const deslocamentoNovo = z.object({ terra: passo.required().optional(), voo: passo.optional(), nado: passo.optional(), escavacao: passo.optional(), escalada: passo.optional() }).strict().refine(d => Object.keys(d).length > 0, 'deslocamento precisa declarar ao menos um meio');
+// Na forma, a omissão herda. `null` é a escolha explícita de não ter aquele meio (F5.1).
+const deslocamentoForma = z.object({ terra: passo.nullable().optional(), voo: passo.nullable().optional(), nado: passo.nullable().optional(), escavacao: passo.nullable().optional(), escalada: passo.nullable().optional() }).strict().refine(d => Object.keys(d).length > 0, 'deslocamento da forma precisa declarar ao menos um meio');
 const equipamentoNovo = z.object({
   arsenal: z.array(z.object({ ref: z.string().regex(/^[ae]:[a-z0-9-]+$/) }).strict()),
   armaduras: z.array(z.object({ base: id, vestida: z.boolean() }).strict()),
@@ -60,14 +62,14 @@ const artesNova = z.record(z.enum(artesCatalogo.map(a => a.id)), naoNeg);
 const bolsasNova = z.array(z.object({ nome: texto, itens: z.array(z.object({ item: texto, peso: numero, preco: numero }).strict()) }).strict());
 const formaNova = z.object({
   id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
-  deslocamento: deslocamentoNovo.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
+  deslocamento: deslocamentoForma.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
   fisiologia: fisiologiaNovo.optional(), aptidoes: aptidoesNovo.optional(), ataques: z.array(ataqueNovo).optional(),
 }).strict();
 export const criaturaNovaSchema = z.object({
   id, idAntigo: texto.optional(), nome: texto, nomeIngles: texto.nullable(), categoria: id, papel: id,
   ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(12),
   formaPrincipal: z.object({ id, nome: texto }).strict().optional(),
-  enxame: z.object({ individuosPorQuadrado: z.number().int().positive(), tamanhoEquivalente: z.enum(['minusculo','miudo','pequeno','medio','grande','enorme','imenso','colossal']) }).strict().optional(),
+  enxame: z.object({ individuosPorQuadrado: z.number().int().positive(), tamanhoEquivalente: z.enum(['pequeno','medio']) }).strict().optional(),
   corpo: corpoNovo.refine(c => c.massa !== undefined || c.semMassa === true, {message:'corpo exige massa ou semMassa',path:['massa']}).refine(c => (c.semMassa === true) === (c.volume !== undefined), {message:'semMassa e volume devem ser declarados juntos',path:['volume']}), couraca: z.number().int().min(0).max(12), bonusPV: inteiro.optional(),
   atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict(),
   habilidades: numeros, habilidadesSec: numeros, especialidades: especialidadesNovo, especialidadesSec: especialidadesNovo,
@@ -90,6 +92,8 @@ export const criaturaNovaSchema = z.object({
   if (Boolean(c.formaPrincipal) !== Boolean(c.formas)) erro(['formas'],'formaPrincipal e formas devem existir juntas');
   const ids=[...(c.formaPrincipal ? [c.formaPrincipal.id] : []),...(c.formas || []).map(f=>f.id)];
   if (new Set(ids).size !== ids.length) erro(['formas'],'ids de formas devem ser únicos');
+  for (const [i, forma] of (c.formas || []).entries()) if (forma.corpo?.tamanhoEscolhido !== undefined && forma.corpo.area === undefined)
+    erro(['formas',i,'corpo','tamanhoEscolhido'],'Tamanho próprio da forma exige área própria');
   // Um elemento não pode repetir nem se contradizer na mesma forma da fonte.
   for (const forma of (ids.length ? ids : ['principal'])) {
     const vistos = new Map();
@@ -101,3 +105,26 @@ export const criaturaNovaSchema = z.object({
   const listas=[['habilidadesEspeciais',c.habilidadesEspeciais],['comoLuta',c.comoLuta],['sentidos',c.sentidos],...Object.entries(c.elementos).map(([k,v])=>['elementos.'+k,v])];
   for (const [lista,itens] of listas) for (const [i,item] of itens.entries()) if (item.formas !== 'todas') for (const id of item.formas) if (!ids.includes(id)) erro([lista,i,'formas'],'marca aponta para forma inexistente: '+id);
 });
+
+// As fontes publicadas antes da F5.2 ainda podem trazer a escolha de Tamanho da
+// forma sem a área. O leitor as mantém até o lote da Bestiarista, mas o esquema
+// de entrada, o conversor e o editor continuam recusando esse formato antigo.
+export const criaturaParaLeituraSchema = {
+  safeParse(c) {
+    const estrito = criaturaNovaSchema.safeParse(c);
+    if (estrito.success) return estrito;
+    const legado = structuredClone(c);
+    let mudou = false;
+    for (const forma of legado.formas || []) if (forma.corpo?.tamanhoEscolhido !== undefined && forma.corpo.area === undefined) {
+      delete forma.corpo.tamanhoEscolhido;
+      mudou = true;
+    }
+    if (!mudou || !criaturaNovaSchema.safeParse(legado).success) return estrito;
+    return { success: true, data: c };
+  },
+  parse(c) {
+    const r = this.safeParse(c);
+    if (r.success) return r.data;
+    throw r.error;
+  },
+};

@@ -21,7 +21,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { converterFicha, aponta } from './conversor-criatura.mjs';
-import { criaturaNovaSchema } from './criatura-schema.mjs';
+import { criaturaNovaSchema, criaturaParaLeituraSchema } from './criatura-schema.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const FIX = path.join(ROOT, 'scripts/fixtures/conversor');
@@ -270,10 +270,48 @@ for (const anatomia of ['esfera luminosa sem membros', 'artrópode de seis perna
   if (criaturaNovaSchema.safeParse(variante).success) falhas.push('M1: controle negativo, deslocamento de forma vazio aceito');
 }
 
+// F5.1: null em uma forma cancela só o meio herdado e o zero continua sendo deslocamento real.
+{
+  const c = structuredClone(lobo);
+  const forma = c.formas.find(f => f.id === 'lobo');
+  forma.deslocamento = { terra: null, voo: null };
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('F5.1: null na forma foi recusado');
+  forma.deslocamento.terra = { batalha: 0, arranque: 0, corrida: 0 };
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('F5.1: zero explícito deixou de ser deslocamento válido');
+  const principal = structuredClone(c); principal.deslocamento.terra = null;
+  if (criaturaNovaSchema.safeParse(principal).success) falhas.push('F5.1: controle negativo, null na principal foi aceito');
+}
+
+// F5.2: Tamanho próprio sem área não entra no JSON e não passa pelo esquema.
+{
+  const c = structuredClone(lobo);
+  const forma = c.formas.find(f => f.id === 'lobo');
+  forma.corpo = { tamanhoEscolhido: 'grande' };
+  if (criaturaNovaSchema.safeParse(c).success) falhas.push('F5.2: controle negativo, Tamanho próprio sem área passou');
+  if (!criaturaParaLeituraSchema.safeParse(c).success) falhas.push('F5.2: leitor não aceitou a ficha antiga enquanto aguarda o ajuste');
+  forma.corpo.area = 6;
+  if (!criaturaNovaSchema.safeParse(c).success) falhas.push('F5.2: Tamanho próprio com área foi recusado');
+  const texto = LOBO.replace('Área: 0,51 m², silhueta vista de lado; ', '').replace('Tamanho: Médio (0,51 m², de lado)', 'Tamanho: Pequeno');
+  if (!converterFicha(texto, { site: SITE }).paradas.some(p => p.includes('Tamanho próprio exige Área própria'))) falhas.push('F5.2: conversor aceitou Variante com Tamanho sem área');
+}
+
 for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:1.5,tamanhoEquivalente:'pequeno'},{individuosPorQuadrado:10,tamanhoEquivalente:'sem-tamanho'},{individuosPorQuadrado:10,tamanhoEquivalente:'pequeno',pv:24}]) {
   if (criaturaNovaSchema.innerType().shape.enxame.safeParse(invalido).success) falhas.push('P10: bloco inválido ou com PV gravado passou');
 }
 if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:3500,tamanhoEquivalente:'pequeno'}).success) falhas.push('P10: bloco aprovado foi recusado');
+
+// F5.3: a equivalência de enxame fica só em Pequeno ou Médio até outra decisão.
+if (criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:10,tamanhoEquivalente:'grande'}).success) falhas.push('F5.3: controle negativo, enxame Grande passou');
+if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:10,tamanhoEquivalente:'medio'}).success) falhas.push('F5.3: enxame Médio foi recusado');
+
+// F5.4: o bônus de PV é da criatura toda e não pode entrar em uma Variante.
+{
+  const c = structuredClone(lobo);
+  c.formas.find(f => f.id === 'lobo').bonusPV = 1;
+  if (criaturaNovaSchema.safeParse(c).success) falhas.push('F5.4: controle negativo, bonusPV da forma passou no esquema');
+  const texto = LOBO.replace('| forma de lobo |', '| forma de lobo | Bônus de PV: 1; ');
+  if (!converterFicha(texto, { site: SITE }).paradas.some(p => p.includes('Bônus de PV é comum'))) falhas.push('F5.4: conversor aceitou bonusPV na Variante');
+}
 
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
