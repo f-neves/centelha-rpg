@@ -156,7 +156,7 @@ if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || ap
   if (!criaturaNovaSchema.safeParse(c).success) falhas.push('P5: naoErgue true recusado');
   c.corpo.naoErgue = false;
   if (criaturaNovaSchema.safeParse(c).success) falhas.push('P5: naoErgue false aceito');
-  delete c.corpo.naoErgue; c.corpo.semMassa = true;
+  delete c.corpo.naoErgue; c.corpo.semMassa = true; c.corpo.volume = 0.1;
   if (!criaturaNovaSchema.safeParse(c).success) falhas.push('P5: semMassa sem naoErgue recusado');
 }
 
