@@ -56,6 +56,9 @@ for(const k of ['arranque','corrida']){const c=fresh();delete c.deslocamento.ter
 cases.set('21', async () => {
 for(const v of ['sim','sim (-2)']){const md=raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[10]=' '+v+' ';return a.join('|');});const r=conv(md);if(v==='sim')assert.ok(r.paradas.some(x=>/Bloqueia como arma/.test(x)));else assert.equal(r.criatura.ataques.find(x=>x.nome==='Garras').bloqueiaComoArma,-2);}
 });
+cases.set('22', async () => {
+const r=conv(variant('Postura: indescritível'));assert.ok(r.paradas.some(x=>/apoio/.test(x)));const q=conv(variant('Postura: serpente sem pernas'));assert.equal(q.criatura.formas.find(f=>f.id==='humana').corpo.apoio,'outro');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

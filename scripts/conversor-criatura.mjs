@@ -529,7 +529,13 @@ export function converterFicha(texto, { site = null } = {}) {
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
         const [k, v] = [m[1].trim(), m[2].trim()];
         const n = (s) => numBR((s.match(/([\d.,]+)/) || [])[1]);
-        if (k === 'Postura') { fc.postura = v; fc.apoio = /quadrúpede/.test(v) ? 'quadrupede' : /bípede/.test(v) ? 'bipede' : 'outro'; }
+        if (k === 'Postura') {
+          fc.postura = v;
+          if (/quadrúpede|quatro patas/i.test(v)) fc.apoio = 'quadrupede';
+          else if (/bípede|de pé|duas pernas/i.test(v)) fc.apoio = 'bipede';
+          else if (/apoio outro|serpente|sem pernas|sem patas|cobra|verme|limo|enxame|tentáculo|nada|voa|flutua|asas|peixe|incorpóreo|nuvem|redemoinho|pairando|sem membros|seis pernas|vegetal ramificado|hexápode|seis patas|oito patas|aracnídeo|inseto|caranguejo|crustáceo/i.test(v)) fc.apoio = 'outro';
+          else para(`Variantes, ${nomeF}: apoio ilegível na Postura`);
+        }
         else if (k === 'Altura') fc.altura = n(v);
         else if (k === 'Largura') { fc.largura = n(v); const q = v.match(/profundidade ([\d.,]+) m/); fc.profundidade = q ? numBR(q[1]) : (fc.apoio === 'quadrupede' ? null : undefined); if (fc.profundidade === undefined) delete fc.profundidade; }
         else if (k === 'Comprimento total' || k === 'Comprimento') fc.comprimento = n(v);
