@@ -1304,13 +1304,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "mergulho predatório",
-    "descricao": "só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -1725,13 +1725,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "talões",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. talões",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -2117,7 +2117,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    }
@@ -2492,7 +2492,7 @@
    },
    {
     "nome": "prensa",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -2847,7 +2847,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -3593,7 +3593,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -6829,19 +6829,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "pisotear",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -8804,7 +8804,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Garras",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -9697,7 +9697,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Garras",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -11687,7 +11687,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "enroscar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -12362,19 +12362,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -12780,7 +12780,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -13201,25 +13201,25 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "pisotear",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "arremessar com os chifres",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
@@ -13639,13 +13639,13 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "Sugar o sangue",
-    "descricao": "as bocas presas drenam o sangue",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. as bocas presas drenam o sangue",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -14837,19 +14837,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "pisotear",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -15872,13 +15872,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -16633,7 +16633,7 @@
    },
    {
     "nome": "Garras",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -17106,7 +17106,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Garras",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -17814,7 +17814,7 @@
    },
    {
     "nome": "Garras",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    }
@@ -18733,13 +18733,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "salto de emboscada",
-    "descricao": "só ao sair da terra",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só ao sair da terra",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "mordida trituradora",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -20372,7 +20372,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Horda",
-    "descricao": "o camponês é capanga Comum",
+    "descricao": "Trate o bando de capangas iguais como um esquadrão. A quantidade determina a Magnitude, que sobe um degrau a cada dobra do grupo; resolva os golpes pela Regra de Horda do livro.. o camponês é capanga Comum",
     "classe": "livro",
     "regra": "horda"
    },
@@ -20744,13 +20744,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "segura e sacode",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. segura e sacode",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "na perna, em grupo",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.. na perna, em grupo",
     "classe": "livro",
     "regra": "derrubar"
    }
@@ -21115,13 +21115,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -23472,7 +23472,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -25445,7 +25445,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -25853,7 +25853,7 @@
    },
    {
     "nome": "Investida",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -26212,7 +26212,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -26630,7 +26630,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -27065,7 +27065,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -28633,7 +28633,7 @@
    },
    {
     "nome": "Abraço esmagador",
-    "descricao": "o abraço só vem depois que as duas garras acertam o mesmo alvo",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. o abraço só vem depois que as duas garras acertam o mesmo alvo",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -29466,7 +29466,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -30121,13 +30121,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "rolamento (giro da morte)",
-    "descricao": "é a manutenção do agarrão, rolando na água",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. é a manutenção do agarrão, rolando na água",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -30502,13 +30502,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "rolamento (giro da morte)",
-    "descricao": "é a manutenção do agarrão, rolando na água",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. é a manutenção do agarrão, rolando na água",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -31595,7 +31595,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "pela perna",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.. pela perna",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -31992,19 +31992,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "puxam a presa",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. puxam a presa",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "prender com o peso do corpo",
-    "descricao": "segura a presa no chão com o pé e come viva",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. segura a presa no chão com o pé e come viva",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "investida saltada",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -43869,13 +43869,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "fisgar com a boca",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -44230,13 +44230,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "fisgar com a boca",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -47867,19 +47867,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -47895,7 +47895,7 @@
    },
    {
     "nome": "investida que empurra",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -53409,7 +53409,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -55078,7 +55078,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas lâminas",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -55807,13 +55807,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -56171,13 +56171,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "Constrição",
-    "descricao": "aperta a presa com o corpo",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. aperta a presa com o corpo",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -56935,7 +56935,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -57331,13 +57331,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -58758,7 +58758,7 @@
    },
    {
     "nome": "mergulho",
-    "descricao": "só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -60100,7 +60100,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -60585,13 +60585,13 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "Tentáculos constritores",
-    "descricao": "aperta a presa com o corpo",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. aperta a presa com o corpo",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -61333,7 +61333,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Garras e chifres",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -61744,7 +61744,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar com as quatro patas",
-    "descricao": "o gato que se pendura no braço e morde",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. o gato que se pendura no braço e morde",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -62136,7 +62136,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -64352,7 +64352,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -64764,7 +64764,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -65225,7 +65225,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -65688,7 +65688,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -66138,7 +66138,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -66546,7 +66546,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -66908,7 +66908,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "a mão",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. a mão",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -67314,7 +67314,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -67847,7 +67847,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -69002,19 +69002,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
@@ -69412,13 +69412,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -69854,19 +69854,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
@@ -70290,13 +70290,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -70691,19 +70691,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
@@ -71093,7 +71093,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de baixo",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -71504,13 +71504,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de chifre",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -71902,7 +71902,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "a mão",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. a mão",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -73031,19 +73031,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -73807,13 +73807,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "a pata na perna da presa em corrida",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.. a pata na perna da presa em corrida",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "agarrar",
-    "descricao": "na garganta",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. na garganta",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -74229,7 +74229,7 @@
    },
    {
     "nome": "Garras aviformes",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -74692,7 +74692,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -75459,13 +75459,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "na perna da presa em fuga",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.. na perna da presa em fuga",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -75788,13 +75788,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "na perna da presa em corrida",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.. na perna da presa em corrida",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -76193,13 +76193,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "investida em mergulho",
-    "descricao": "só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -79379,13 +79379,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "pelas pernas",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.. pelas pernas",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "investida",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -79765,7 +79765,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "constrição = agarrar",
-    "descricao": "bote para agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. bote para agarrar",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -80569,7 +80569,7 @@
    },
    {
     "nome": "constrição",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -83065,19 +83065,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "bote",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -83440,19 +83440,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "na garganta",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. na garganta",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -83788,19 +83788,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "na garganta",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. na garganta",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -84532,19 +84532,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "na garganta ou na nuca",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. na garganta ou na nuca",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "investida retalhadora",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -85885,7 +85885,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Constrição",
-    "descricao": "envolve o adversário nas espiras",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. envolve o adversário nas espiras",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -86289,7 +86289,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -87315,7 +87315,7 @@
    },
    {
     "nome": "agarrar e constringir",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -89134,7 +89134,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "na perna",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.. na perna",
     "classe": "livro",
     "regra": "derrubar"
    }
@@ -89928,7 +89928,7 @@
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -90333,7 +90333,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -90716,7 +90716,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -91095,7 +91095,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -91495,7 +91495,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -92583,13 +92583,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -93354,7 +93354,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "constrição",
-    "descricao": "envolve a presa, de preferência pela cabeça, e aperta",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. envolve a presa, de preferência pela cabeça, e aperta",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -94521,7 +94521,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -94952,13 +94952,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -95744,13 +95744,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "investida de baixo",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -97360,7 +97360,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Investida",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -98178,7 +98178,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -99712,7 +99712,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -100055,13 +100055,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "mandíbulas da garganta",
-    "descricao": "a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -100792,7 +100792,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -104332,7 +104332,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -105580,7 +105580,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
@@ -105928,7 +105928,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -107386,7 +107386,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -108171,7 +108171,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Agarrar",
-    "descricao": "fecha as fauces em volta da presa",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. fecha as fauces em volta da presa",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -111374,7 +111374,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -111779,7 +111779,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "constrição = agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -112159,7 +112159,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -113665,7 +113665,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Agarrar",
-    "descricao": "envolve a presa com a massa aderente",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. envolve a presa com a massa aderente",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -114924,7 +114924,7 @@
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -115314,7 +115314,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -117828,7 +117828,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -118235,31 +118235,31 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "arremessar com o chifre",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "pisotear",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "investida que derruba",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -118676,13 +118676,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "talões",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. talões",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -119516,7 +119516,7 @@
    },
    {
     "nome": "Constrição de cauda",
-    "descricao": "aperta a presa com o corpo",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. aperta a presa com o corpo",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -119905,7 +119905,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "fixar = agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -120941,7 +120941,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "constrição",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -121780,7 +121780,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Agarrar",
-    "descricao": "envolve a presa com a massa aderente",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. envolve a presa com a massa aderente",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -122218,7 +122218,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Multiataque aquático",
-    "descricao": "só sem a lança",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.. só sem a lança",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -123216,19 +123216,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -124062,7 +124062,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "fixação",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -126974,19 +126974,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "na garganta",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. na garganta",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "bote",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -127330,13 +127330,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "os antebraços seguram a presa",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. os antebraços seguram a presa",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    }
@@ -127672,7 +127672,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -128783,19 +128783,19 @@
   "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
    {
     "nome": "empurrar",
-    "descricao": "empurrar",
+    "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
     "nome": "atropelar",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -129619,7 +129619,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -129977,7 +129977,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "bote vertical",
-    "descricao": "investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -130431,7 +130431,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "chifre perfurante",
-    "descricao": "só depois de correr ao menos 6 m em linha reta",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só depois de correr ao menos 6 m em linha reta",
     "classe": "livro",
     "regra": "investida"
    },
@@ -130827,7 +130827,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Agarrar",
-    "descricao": "prende o alvo com as patas dianteiras",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. prende o alvo com as patas dianteiras",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -131189,7 +131189,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar (o \"abraço\")",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    }
@@ -131934,7 +131934,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar (o \"abraço\")",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -132315,7 +132315,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar (o \"abraço\")",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -132693,7 +132693,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "segura a presa com a pata",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.. segura a presa com a pata",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -134281,7 +134281,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -134676,7 +134676,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -136355,7 +136355,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Mordida derrubadora",
-    "descricao": "derrubar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.",
     "classe": "livro",
     "regra": "derrubar"
    },
@@ -136838,7 +136838,7 @@
    },
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },
@@ -137270,7 +137270,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas espadas",
-    "descricao": "empunhadura-dupla",
+    "descricao": "Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.",
     "classe": "livro",
     "regra": "empunhadura-dupla"
    },
@@ -138489,7 +138489,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "agarrar",
-    "descricao": "agarrar",
+    "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.",
     "classe": "livro",
     "regra": "agarrar"
    },

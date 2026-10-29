@@ -74,6 +74,9 @@ const c=fresh();delete c.corpo.posturaDoTamanho;assert.equal(schema.safeParse(c)
 cases.set('20', async () => {
 const a=conv(raw.replace(/Jogada:/g,'Conta:'));assert.ok(a.paradas.some(x=>/Jogada|habilidade/i.test(x)));const b=conv(raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[9]=' ';return a.join('|');}));assert.ok(b.paradas.some(x=>/Acerto/.test(x)));
 });
+cases.set('23', async () => {
+for(const regra of ['agarrar','investida','furtividade','derrubar','empurrar','empunhadura-dupla','horda']){const c=fresh();c.habilidadesEspeciais=[{nome:'teste',classe:'livro',formas:'todas',regra,texto:'somente neste gesto'}];const h=M.vistaPublicaCriatura(c).habilidades[0];assert.ok(h.descricao.length>50,regra);assert.ok(h.descricao.includes('somente neste gesto'));assert.ok(!h.descricao.startsWith(regra+'.'));}
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

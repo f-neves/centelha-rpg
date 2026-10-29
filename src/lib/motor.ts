@@ -753,7 +753,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[])[0];
     if (!principal)
         throw Error(c.id + ': não há deslocamento para o gerado');
-    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), descricao: [h.regra === 'rajada' ? textoDaRajada() : null, h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || h.tecnica?.id || h.arte?.id || '' }));
+    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), descricao: [textoDaRegraDaCriatura(h.regra), h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || h.tecnica?.id || h.arte?.id || '' }));
     const f: any = {
         id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], deslocamentoDeclarado: { batalha: principal.batalha, arranque: principal.arranque ?? principal.batalha, corrida: principal.corrida ?? principal.batalha }, locomocao: Object.fromEntries(Object.entries(d).map(([k, v]) => [k === 'nado' ? 'natacao' : k, (v as any).batalha])), ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
     };
@@ -1026,6 +1026,21 @@ export function tetoDaRajadaDaCriatura(a: AtaqueEntrada) {
 export function textoDaRajada() {
   const r = (regras as any).combate.pgr.reforma.rajada;
   return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. O limite depende da classe da arma.';
+}
+
+/** Resumos das manobras do livro para o card; o detalhe da criatura vem depois. */
+export function textoDaRegraDaCriatura(id?: string): string | null {
+  if (id === 'rajada') return textoDaRajada();
+  const textos: Record<string,string> = {
+    agarrar: 'Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.',
+    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.',
+    furtividade: 'A aproximação escondida usa Furtividade contra a Percepção Passiva de quem pode perceber. O Mestre aplica as circunstâncias e o Tamanho na mesa.',
+    derrubar: 'Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.',
+    empurrar: 'Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.',
+    'empunhadura-dupla': 'Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.',
+    horda: 'Trate o bando de capangas iguais como um esquadrão. A quantidade determina a Magnitude, que sobe um degrau a cada dobra do grupo; resolva os golpes pela Regra de Horda do livro.',
+  };
+  return id ? textos[id] ?? null : null;
 }
 
 /** P10/P13, 28/10/2026: PV por Tamanho equivalente; a quantidade decide a proporção. */
