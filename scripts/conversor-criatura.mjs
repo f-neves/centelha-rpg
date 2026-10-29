@@ -554,7 +554,14 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
         else if (k === 'Voo' || k === 'Nado' || k === 'Escalada' || k === 'Escavação') {
           const q = v.match(/Batalha \**(\d+(?:[.,]\d+)?)\**/) || v.match(/^(\d+(?:[.,]\d+)?)(?=\s|$)/);
-          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = { batalha: numeroPasso(q[1]) };
+          if (q) {
+            const passo = { batalha: numeroPasso(q[1]) };
+            for (const [rot, chave] of [['Arranque','arranque'],['Corrida','corrida']]) {
+              const extra = v.match(new RegExp(rot + ' \\**(\\d+(?:[.,]\\d+)?)\\**'));
+              if (extra) passo[chave] = numeroPasso(extra[1]);
+            }
+            (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = passo;
+          }
           else if (/^não (voa|nada|escala|escava)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = { batalha: 0 };
           else para(`Variantes, ${nomeF}: ${k} ilegível`);
         }

@@ -23,6 +23,9 @@ for(const second of [false,true]){const c=fresh(); if(second)c.corpo.segundoTama
 cases.set('3', async () => {
 const r=conv(variant('Escavação: Batalha 2'));assert.equal(r.criatura.formas.find(f=>f.id==='humana').deslocamento?.escavacao?.batalha,2); assert.ok(!r.paradas.some(x=>/Escavação/.test(x)));
 });
+cases.set('4', async () => {
+for(const [rot,id] of [['Voo','voo'],['Nado','nado'],['Escalada','escalada'],['Escavação','escavacao']]){const r=conv(variant(rot+': Batalha 2, Arranque 4, Corrida 6'));assert.deepEqual(r.criatura.formas.find(f=>f.id==='humana').deslocamento[id],{batalha:2,arranque:4,corrida:6});}
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
