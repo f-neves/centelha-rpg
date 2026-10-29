@@ -510,8 +510,9 @@ export function converterFicha(texto, { site = null } = {}) {
   };
   c.aptidoes = lerApt((S['Aptidões'] || []).find((l) => l.trim()), 'Aptidões');
   const CO = T['Comportamento'] || [];
-  const valorCo = (rot) => { const valor = campo(CO, rot); if (valor === undefined) return undefined; if (/\[sem dado\]/.test(valor)) return 'sem dado'; const v = jogo(valor); if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`); return v; };
-  c.comportamento = { social: valorCo('Social'), atividade: valorCo('Atividade'), dieta: valorCo('Dieta'), caca: valorCo('Caça ou forrageio'), dianteDeGente: valorCo('Diante de gente') };
+  // "sem dado" é a ausência de informação, nunca texto de jogo que o card possa exibir.
+  const valorCo = (rot) => { const valor = campo(CO, rot); if (valor === undefined || /\[sem dado\]/.test(valor)) return undefined; const v = jogo(valor); if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`); return v; };
+  c.comportamento = Object.fromEntries([['social','Social'], ['atividade','Atividade'], ['dieta','Dieta'], ['caca','Caça ou forrageio'], ['dianteDeGente','Diante de gente']].flatMap(([k, rot]) => { const valor = valorCo(rot); return valor === undefined ? [] : [[k, valor]]; }));
   const ter = campo(I, 'Terreno'), cli = campo(I, 'Clima');
   const pal = (s, sin) => jogo(s).split(',').map((x) => x.trim().toLowerCase()).filter(Boolean).map((x) => sin[x] ?? x);
   c.ecologia = {

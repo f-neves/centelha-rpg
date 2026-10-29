@@ -81,7 +81,7 @@ export const criaturaNovaSchema = z.object({
   sentidos: z.array(z.object({ nome: texto, descricao: texto, formas: formasMarca, classe: z.literal('sem regra ainda').optional() }).strict()),
   elementos: z.object({ fraquezas: elementoNovo, resistencias: elementoNovo, imunidades: elementoNovo }).strict(),
   fisiologia: fisiologiaNovo.extend({respiracao:texto.trim().min(1),mente:texto.trim().min(1),tracos:texto.trim().min(1)}), aptidoes: aptidoesNovo,
-  comportamento: z.object({ social: texto.trim().min(1), atividade: texto.trim().min(1), dieta: texto.trim().min(1), caca: texto.trim().min(1), dianteDeGente: texto.trim().min(1) }).strict(),
+  comportamento: z.object({ social: texto.trim().min(1).optional(), atividade: texto.trim().min(1).optional(), dieta: texto.trim().min(1).optional(), caca: texto.trim().min(1).optional(), dianteDeGente: texto.trim().min(1).optional() }).strict(),
   ecologia: z.object({ terreno: z.array(texto), clima: z.array(texto) }).strict(),
   descricao: texto.trim().min(1), lore: z.array(z.object({ titulo: texto, texto }).strict()), imagens: z.array(texto),
   revisao: z.array(z.object({ campo: texto, motivo: texto }).strict()),

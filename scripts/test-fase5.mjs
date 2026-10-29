@@ -98,7 +98,7 @@ B.alternarVestida('campeao-esqueletico',cb);assert.ok(!('campeao-esqueletico' in
 for(const mutate of [x=>x.elementos.fraquezas.push({tipo:'fogo',formas:'todas'})&&x.elementos.imunidades.push({tipo:'fogo',formas:'todas'}),x=>x.elementos.resistencias.push({tipo:'fogo',formas:'todas'},{tipo:'fogo',formas:'todas'})]){const x=fresh();mutate(x);assert.equal(schema.safeParse(x).success,false,'choque ou repetição de elemento');}
 const disjuntas=fresh();disjuntas.elementos.fraquezas.push({tipo:'fogo',formas:[disjuntas.formaPrincipal.id]});disjuntas.elementos.imunidades.push({tipo:'fogo',formas:[disjuntas.formas[0].id]});assert.equal(schema.safeParse(disjuntas).success,true,'formas distintas não colidem');
 assert.equal(conv(raw).paradas.length,0,'fonte base do controle deve passar');
-assert.equal(conv(raw.replace(/^(\| Social \| )[^|]+/m,'$1**[sem dado]** ')).criatura.comportamento.social,'sem dado','marcador explícito não pode virar vazio');
+const semDadoSocial=conv(raw.replace(/^(\| Social \| )[^|]+/m,'$1**[sem dado]** '));assert.ok(!('social' in semDadoSocial.criatura.comportamento),'marcador explícito não é valor');assert.equal(schema.safeParse(semDadoSocial.criatura).success,true,'campo ausente passa no esquema');
 for(const tipo of ['prata','sol']){const x=fresh();const a=x.ataques.find(a=>!a.arma);a.tipoDano=tipo;assert.equal(schema.safeParse(x).success,true,'vocabulário aprovado: '+tipo);}
 const mutants=[];
 for(const rot of ['Força','Destreza','Vigor','Percepção','Inteligência','Raciocínio','Influência','Perspicácia','Compostura']){
