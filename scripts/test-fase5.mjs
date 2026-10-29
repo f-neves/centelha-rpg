@@ -59,6 +59,9 @@ for(const v of ['sim','sim (-2)']){const md=raw.replace(/^(\| Garras \|[^\n]+)/m
 cases.set('22', async () => {
 const r=conv(variant('Postura: indescritível'));assert.ok(r.paradas.some(x=>/apoio/.test(x)));const q=conv(variant('Postura: serpente sem pernas'));assert.equal(q.criatura.formas.find(f=>f.id==='humana').corpo.apoio,'outro');
 });
+cases.set('18', async () => {
+const c=fresh();c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'regra da ficha',efeito:'algo'}];assert.equal(schema.safeParse(c).success,false);c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'sem regra ainda',efeito:'algo',tecnica:{id:'teste',nivel:1}}];assert.equal(schema.safeParse(c).success,false);c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'livro',regra:'agarrar',dano:'1d6'}];assert.equal(schema.safeParse(c).success,false);c.habilidadesEspeciais=[{nome:'teste',formas:'todas',classe:'sem regra ainda',efeito:'sem número'}];assert.equal(schema.safeParse(c).success,true);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

@@ -40,7 +40,17 @@ const habilidadeEspecial = z.object({
   // P7, 26/10/2026: referências ao livro; texto só acrescenta detalhe ou limite próprio da criatura.
   tecnica: z.object({ id, nivel: naoNeg }).strict().optional(), arte: z.object({ id, nivel: naoNeg }).strict().optional(), texto: texto.optional(),
   ...Object.fromEntries(Object.entries(oitoCampos).map(([k, v]) => [k, v.optional()])),
-}).strict();
+}).strict().superRefine((h, ctx) => {
+  const problema = (k, mensagem) => ctx.addIssue({code:'custom',path:[k],message:mensagem});
+  const oito = Object.keys(oitoCampos);
+  if (h.classe === 'regra da ficha') for (const k of oito) { if (!h[k]?.trim()) problema(k,'regra da ficha exige os oito campos preenchidos'); }
+  if (h.classe === 'livro') for (const k of oito) { if (h[k] !== undefined) problema(k,'campo de efeito próprio não pertence à classe livro'); }
+  if (h.classe !== 'livro') for (const k of ['regra','tecnica','arte','texto']) { if (h[k] !== undefined) problema(k,'referência ao livro exige classe livro'); }
+  if (h.classe === 'sem regra ainda') {
+    if (!h.efeito?.trim()) problema('efeito','sem regra ainda exige efeito');
+    for (const k of oito.filter(k => k !== 'efeito')) if (h[k] !== undefined) problema(k,'sem regra ainda guarda somente efeito');
+  }
+});
 const elementoNovo = z.array(z.object({ tipo: id, formas: formasMarca }).strict());
 const fisiologiaNovo = z.object({ respiracao: texto.optional(), prendeRespiracao: texto.optional(), camuflagem: texto.optional(), mente: texto.optional(), tracos: texto.optional() }).strict();
 const aptidoesNovo = z.object({ montaria: z.boolean(), carga: z.boolean(), tracao: z.boolean() }).strict();
