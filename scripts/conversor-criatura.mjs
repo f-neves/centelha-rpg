@@ -212,7 +212,7 @@ export function converterFicha(texto, { site = null } = {}) {
     if (!enx) para('enxame: PV base deve explicitar indivíduos por quadrado cheio e o Tamanho equivalente');
     else {
       const tamanhoEquivalente = {pequena:'pequeno',media:'medio',minuscula:'minusculo',miuda:'miudo',grande:'grande',enorme:'enorme',imensa:'imenso',colossal:'colossal'}[slug(enx[2])];
-      if (!tamanhoEquivalente || Number(enx[1]) < 1) para('enxame: indivíduos ou Tamanho equivalente inválidos');
+      if (!tamanhoEquivalente || !['pequeno','medio'].includes(tamanhoEquivalente) || Number(enx[1]) < 1) para('enxame: indivíduos ou Tamanho equivalente inválidos; só Pequeno ou Médio');
       else c.enxame = {individuosPorQuadrado:Number(enx[1]), tamanhoEquivalente};
     }
   }

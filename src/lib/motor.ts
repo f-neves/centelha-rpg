@@ -477,7 +477,7 @@ export interface EntradaCriatura {
     habilidadesSec: Num;
     vontade: number;
     corpo: CorpoEntrada;
-    enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Tamanho };
+    enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Extract<Tamanho, 'pequeno' | 'medio'> };
     bonusPV?: number;
     couraca?: number;
     artes?: Num;
@@ -1048,7 +1048,7 @@ export function textoDaRegraDaCriatura(id?: string): string | null {
 export function enxamePorQuadrado(e: EntradaCriatura, individuos?: number) {
   if (!e.enxame) throw Error('entrada sem bloco enxame');
   const cheio = e.enxame.individuosPorQuadrado, tamanho = e.enxame.tamanhoEquivalente;
-  if (!Number.isInteger(cheio) || cheio < 1 || !ORDEM.includes(tamanho)) throw Error('bloco enxame inválido');
+    if (!Number.isInteger(cheio) || cheio < 1 || !['pequeno', 'medio'].includes(tamanho)) throw Error('bloco enxame inválido: só Pequeno ou Médio');
   const presentes = individuos ?? cheio;
   if (!Number.isInteger(presentes) || presentes < 0 || presentes > cheio) throw Error('indivíduos fora do quadrado cheio');
   const pvCheio = pvDoTamanho(e.atributos.vigor ?? 0, tamanho) + (e.bonusPV ?? 0);

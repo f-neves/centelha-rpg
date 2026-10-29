@@ -195,6 +195,14 @@ console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativa
   confere('F5.2', 'motor usa Tamanho com área', M.criatura(M.comForma(entrada, forma)).tamanho, 'grande');
 }
 
+// F5.3: o motor não amplia a decisão para outro Tamanho quando recebe um objeto fora do esquema.
+{
+  const entrada = structuredClone(FIX.criaturas['enxame-de-aranhas'].entrada);
+  entrada.enxame.tamanhoEquivalente = 'grande';
+  let recusou = false; try { M.enxamePorQuadrado(entrada); } catch { recusou = true; }
+  confere('F5.3', 'controle negativo, motor recusa enxame Grande', recusou, true);
+}
+
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {
   const porConta = {};

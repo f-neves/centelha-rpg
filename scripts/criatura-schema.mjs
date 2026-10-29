@@ -69,7 +69,7 @@ export const criaturaNovaSchema = z.object({
   id, idAntigo: texto.optional(), nome: texto, nomeIngles: texto.nullable(), categoria: id, papel: id,
   ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(12),
   formaPrincipal: z.object({ id, nome: texto }).strict().optional(),
-  enxame: z.object({ individuosPorQuadrado: z.number().int().positive(), tamanhoEquivalente: z.enum(['minusculo','miudo','pequeno','medio','grande','enorme','imenso','colossal']) }).strict().optional(),
+  enxame: z.object({ individuosPorQuadrado: z.number().int().positive(), tamanhoEquivalente: z.enum(['pequeno','medio']) }).strict().optional(),
   corpo: corpoNovo.refine(c => c.massa !== undefined || c.semMassa === true, {message:'corpo exige massa ou semMassa',path:['massa']}).refine(c => (c.semMassa === true) === (c.volume !== undefined), {message:'semMassa e volume devem ser declarados juntos',path:['volume']}), couraca: z.number().int().min(0).max(12), bonusPV: inteiro.optional(),
   atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict(),
   habilidades: numeros, habilidadesSec: numeros, especialidades: especialidadesNovo, especialidadesSec: especialidadesNovo,

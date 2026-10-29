@@ -300,6 +300,10 @@ for (const invalido of [{individuosPorQuadrado:0,tamanhoEquivalente:'pequeno'},{
 }
 if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:3500,tamanhoEquivalente:'pequeno'}).success) falhas.push('P10: bloco aprovado foi recusado');
 
+// F5.3: a equivalência de enxame fica só em Pequeno ou Médio até outra decisão.
+if (criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:10,tamanhoEquivalente:'grande'}).success) falhas.push('F5.3: controle negativo, enxame Grande passou');
+if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrado:10,tamanhoEquivalente:'medio'}).success) falhas.push('F5.3: enxame Médio foi recusado');
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);
