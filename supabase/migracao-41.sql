@@ -19,7 +19,7 @@ create or replace function public.ficha41_especialidades(o jsonb) returns jsonb
 language sql immutable as $$
   select coalesce(jsonb_object_agg(k, case when jsonb_typeof(v) = 'array' then
     (select coalesce(jsonb_agg(case when jsonb_typeof(e) = 'object' then
-      (e - 's' - 'v') || jsonb_build_object('foco', coalesce(e->>'s', e->>'foco', ''), 'valor', coalesce(e->'v', e->'valor', '0'::jsonb))
+      jsonb_build_object('foco', coalesce(e->>'s', e->>'foco', ''), 'valor', coalesce(e->'v', e->'valor', '0'::jsonb))
       else e end order by ord), '[]'::jsonb) from jsonb_array_elements(v) with ordinality t(e,ord))
     else v end), '{}'::jsonb) from jsonb_each(coalesce(o, '{}'::jsonb)) t(k,v);
 $$;
@@ -46,7 +46,7 @@ $$;
 create or replace function public.ficha41_ante(o jsonb) returns jsonb
 language sql immutable as $$
  select coalesce(jsonb_object_agg(k, case when jsonb_typeof(v)='array' then
-   (select coalesce(jsonb_agg((e - 'u' - 'n' - 'v') || jsonb_build_object('uid', e->'u', 'nome', e->'n', 'valor', e->'v') order by ord), '[]'::jsonb)
+   (select coalesce(jsonb_agg((e - 'u' - 'n' - 'v') || jsonb_build_object('uid', coalesce(e->'u', e->'uid'), 'nome', coalesce(e->'n', e->'nome'), 'valor', coalesce(e->'v', e->'valor')) order by ord), '[]'::jsonb)
     from jsonb_array_elements(v) with ordinality t(e,ord)) else v end), '{}'::jsonb)
  from jsonb_each(coalesce(o, '{}'::jsonb)) t(k,v);
 $$;
@@ -96,9 +96,10 @@ begin
    'vontade',coalesce(f->'willpower','0'::jsonb), 'proezas',proezas,
    'artes',coalesce(f->'arte','{}'::jsonb), 'efeitos',efeitos,
    'antecedentes',coalesce(f->'ante','{}'::jsonb), 'antecedentesNomeados',public.ficha41_ante(f->'anteNom'),
-   'xpTotal',f->'budget', 'equipamento', (eq - 'armaduras') || jsonb_build_object(
+   'equipamento', (eq - 'armaduras') || jsonb_build_object(
      'armaduras',public.ficha41_pecas(eq->'armaduras'), 'arsenal',public.ficha41_pecas(f->'arsenal'),
-     'conjuntos',public.ficha41_conjuntos(f->'conjuntos')));
+     'conjuntos',public.ficha41_conjuntos(f->'conjuntos')))
+  || case when f ? 'budget' then jsonb_build_object('xpTotal', f->'budget') else '{}'::jsonb end;
 end;
 $$;
 
@@ -476,6 +477,6 @@ commit;
 -- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
 -- rerodou sabe mais do que quem escreveu a carga de memória.
 insert into public.migracoes (numero, arquivo, sha256, a_mao) values
-  (41, 'migracao-41.sql', 'de8d7707c1134b08', false)
+  (41, 'migracao-41.sql', '6f1fd0de0ab2450d', false)
   on conflict (numero) do update set arquivo = excluded.arquivo,
     sha256 = excluded.sha256, a_mao = false, aplicada_em = now();
