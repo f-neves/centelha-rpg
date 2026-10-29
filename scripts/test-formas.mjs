@@ -53,6 +53,10 @@ ok(mesa.resumoDe(a).pv===principal.pv, 'retorna à forma principal');
 // A9: fonte exportada pelo editor é a mesma entrada do motor, sem derivados gravados.
 const editor = await carregarTS('src/lib/bestia-editor.ts');
 const nova = editor.novaCriatura();
+// O editor abre rascunho sem texto inventado. A conta começa depois de quem edita preencher os obrigatórios.
+nova.fisiologia={respiracao:'respira ar',mente:'raciocina',tracos:'corpo de teste'};
+nova.comportamento={social:'sozinho',atividade:'diurna',dieta:'onívora',caca:'não caça',dianteDeGente:'cauteloso'};
+nova.descricao='Criatura de teste.';
 ok(editor.derivados(nova).pv===31, 'editor: corpo humano de 80 kg e Vigor 2 tem 31 PV');
 nova.atributos.vigor=4;
 ok(editor.derivados(nova).pv===37, 'editor: Vigor 4 recalcula 37 PV pelo motor');

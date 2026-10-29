@@ -51,7 +51,7 @@ interface Props { opcoes?: unknown }
     catch(e) { previa.textContent=''; saida.value=''; status.textContent=String((e as Error).message); }
   }
   function preencher(c:CriaturaEdit) {
-    atualId=c.id; fonte.value=paraJson(c); document.getElementById('ed-titulo')!.textContent='Editar '+c.nome;
+    atualId=c.id; fonte.value=JSON.stringify(c,null,2); document.getElementById('ed-titulo')!.textContent='Editar '+c.nome;
     box.hidden=false; document.body.style.overflow='hidden'; recalcular(); fonte.focus();
   }
   const fechar=()=>{box.hidden=true;document.body.style.overflow='';};

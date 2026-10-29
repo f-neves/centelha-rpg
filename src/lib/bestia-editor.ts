@@ -28,15 +28,16 @@ export function apagarEdicao(id: string) {
   const todas = lerEdicoes(); delete todas[id]; localStorage.setItem(CHAVE, JSON.stringify(todas));
 }
 export function novaCriatura(): CriaturaEdit {
-  return validarFonte({
+  // Rascunho novo não recebe fisiologia, comportamento nem descrição inventados.
+  // Salvar e exportar continuam passando pelo contrato completo em validarFonte().
+  return {
     id:'criatura-nova', nome:'Nova criatura', nomeIngles:null, categoria:'humanoide', papel:'soldado', ameaca:1, centelha:0,
     corpo:{postura:'de pé',apoio:'bipede',altura:1.8,largura:0.45,profundidade:0.23,comprimento:null,massa:80,area:0.72,posturaDoTamanho:'de pé'}, couraca:0,
     atributos:{forca:2,destreza:2,vigor:2,percepcao:2,inteligencia:2,raciocinio:2,influencia:2,perspicacia:2,compostura:2},
     habilidades:{prontidao:1,integridade:1}, habilidadesSec:{}, especialidades:{}, especialidadesSec:{},
     virtudes:{bravura:1,compaixao:1,conviccao:1,temperanca:1}, vontade:3, aparencia:5,
     deslocamento:{terra:{batalha:3,arranque:5,corrida:7}}, equipamento:{arsenal:[],armaduras:[]}, artes:{}, ataques:[],
-    habilidadesEspeciais:[], comoLuta:[], sentidos:[], elementos:{fraquezas:[],resistencias:[],imunidades:[]}, fisiologia:{respiracao:'respira ar',mente:'raciocina como humano',tracos:'humanoide bípede'},
-    aptidoes:{montaria:false,carga:false,tracao:false}, comportamento:{social:'solitário',atividade:'diurna',dieta:'onívora',caca:'não caça',dianteDeGente:'cauteloso'},
-    ecologia:{terreno:[],clima:[]}, descricao:'Humanoide de aparência comum.', lore:[], imagens:[], revisao:[],
-  });
+    habilidadesEspeciais:[], comoLuta:[], sentidos:[], elementos:{fraquezas:[],resistencias:[],imunidades:[]},
+    aptidoes:{montaria:false,carga:false,tracao:false}, ecologia:{terreno:[],clima:[]}, lore:[], imagens:[], revisao:[],
+  } as CriaturaEdit;
 }
