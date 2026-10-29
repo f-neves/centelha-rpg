@@ -17,7 +17,8 @@
     "comprimentoSemCauda": 0.9,
     "caudaGrossa": true,
     "massa": 90,
-    "area": 0.7
+    "area": 0.7,
+    "posturaDoTamanho": "de lado, nadando"
   },
   "couraca": 0,
   "atributos": {

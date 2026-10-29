@@ -17,7 +17,8 @@
     "comprimentoSemCauda": 1.8,
     "caudaGrossa": false,
     "massa": 45,
-    "area": 2.16
+    "area": 2.16,
+    "posturaDoTamanho": "de cima, abas abertas"
   },
   "couraca": 0,
   "atributos": {

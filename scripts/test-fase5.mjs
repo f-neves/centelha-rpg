@@ -68,6 +68,9 @@ for(const mutate of [c=>delete c.formas,c=>delete c.formaPrincipal,c=>c.formas=[
 cases.set('1', async () => {
 const r=conv(raw.replace(/(\| Deslocamento em terra \| )[^|]+/,'$1**[sem dado]** '));assert.ok(r.paradas.some(x=>/sem dado/.test(x)));const q=conv(raw.replace(/(\| Deslocamento em terra \| )[^|]+/,'$1não anda ').replace('| Nado |','| Voo | Batalha **5** | |\n| Nado |'));assert.ok(!q.paradas.some(x=>/Deslocamento em terra/.test(x)));
 });
+cases.set('13', async () => {
+const c=fresh();delete c.corpo.posturaDoTamanho;assert.equal(schema.safeParse(c).success,false);c.corpo.posturaDoTamanho=' ';assert.equal(schema.safeParse(c).success,false);const r=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (0,98 m²) '));assert.ok(r.criatura.corpo.posturaDoTamanho?.trim());
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

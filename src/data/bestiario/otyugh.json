@@ -15,7 +15,8 @@
     "profundidade": null,
     "comprimento": null,
     "massa": 500,
-    "area": 1.87
+    "area": 1.87,
+    "posturaDoTamanho": "de frente, tentáculos erguidos"
   },
   "couraca": 2,
   "atributos": {

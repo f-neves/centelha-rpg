@@ -17,7 +17,8 @@
     "semMassa": true,
     "volume": 0.0141,
     "area": 0.07,
-    "naoErgue": true
+    "naoErgue": true,
+    "posturaDoTamanho": "flutua; voador"
   },
   "couraca": 0,
   "atributos": {

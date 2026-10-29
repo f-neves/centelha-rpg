@@ -17,7 +17,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 70,
-    "area": 0.67
+    "area": 0.67,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -264,6 +265,7 @@
    "comprimento": null,
    "massa": 70,
    "area": 0.67,
+   "posturaDoTamanho": "de frente",
    "medida": "1.75 m de altura",
    "peso": "70 kg"
   },
@@ -448,7 +450,8 @@
     "comprimentoSemCauda": 5,
     "caudaGrossa": true,
     "massa": 2700,
-    "area": 6.29
+    "area": 6.29,
+    "posturaDoTamanho": "de lado"
    },
    "couraca": 3,
    "atributos": {
@@ -734,6 +737,7 @@
    "caudaGrossa": true,
    "massa": 2700,
    "area": 6.29,
+   "posturaDoTamanho": "de lado",
    "medida": "1.2 m de altura, 6.5 m de comprimento",
    "peso": "2700 kg"
   },
@@ -5264,7 +5268,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 70,
-    "area": 0.67
+    "area": 0.67,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -5464,6 +5469,7 @@
    "comprimento": null,
    "massa": 70,
    "area": 0.67,
+   "posturaDoTamanho": "de frente",
    "medida": "1.73 m de altura",
    "peso": "70 kg"
   },
@@ -5635,7 +5641,8 @@
     "profundidade": 0.21,
     "comprimento": null,
     "massa": 65,
-    "area": 0.63
+    "area": 0.63,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -5844,6 +5851,7 @@
    "comprimento": null,
    "massa": 65,
    "area": 0.63,
+   "posturaDoTamanho": "de frente",
    "medida": "1.7 m de altura",
    "peso": "65 kg"
   },
@@ -8041,7 +8049,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 70,
-    "area": 0.66
+    "area": 0.66,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -8213,6 +8222,7 @@
    "comprimento": null,
    "massa": 70,
    "area": 0.66,
+   "posturaDoTamanho": "de frente",
    "medida": "1.72 m de altura",
    "peso": "70 kg"
   },
@@ -14133,7 +14143,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 70,
-    "area": 0.61
+    "area": 0.61,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -14355,6 +14366,7 @@
    "comprimento": null,
    "massa": 70,
    "area": 0.61,
+   "posturaDoTamanho": "de frente",
    "medida": "1.5 m de altura",
    "peso": "70 kg"
   },
@@ -14899,7 +14911,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 80,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -15199,6 +15212,7 @@
    "comprimento": null,
    "massa": 80,
    "area": 0.72,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "80 kg"
   },
@@ -15372,6 +15386,7 @@
       "comprimento": null,
       "massa": 80,
       "area": 0.72,
+      "posturaDoTamanho": "de frente",
       "medida": "1.8 m de altura",
       "peso": "80 kg"
      },
@@ -15935,7 +15950,8 @@
     "profundidade": 0.26,
     "comprimento": null,
     "massa": 110,
-    "area": 0.87
+    "area": 0.87,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -16109,6 +16125,7 @@
    "comprimento": null,
    "massa": 110,
    "area": 0.87,
+   "posturaDoTamanho": "de frente",
    "medida": "1.9 m de altura",
    "peso": "110 kg"
   },
@@ -16267,7 +16284,8 @@
     "profundidade": 0.21,
     "comprimento": null,
     "massa": 68,
-    "area": 0.66
+    "area": 0.66,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -16506,6 +16524,7 @@
    "comprimento": null,
    "massa": 68,
    "area": 0.66,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "68 kg"
   },
@@ -17391,7 +17410,8 @@
     "profundidade": 0.25,
     "comprimento": null,
     "massa": 80,
-    "area": 0.66
+    "area": 0.66,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -17676,6 +17696,7 @@
    "comprimento": null,
    "massa": 80,
    "area": 0.66,
+   "posturaDoTamanho": "de frente",
    "medida": "1.5 m de altura",
    "peso": "80 kg"
   },
@@ -17848,6 +17869,7 @@
       "comprimento": null,
       "massa": 80,
       "area": 0.66,
+      "posturaDoTamanho": "de frente",
       "medida": "1.5 m de altura",
       "peso": "80 kg"
      },
@@ -18057,7 +18079,8 @@
     "profundidade": 0.25,
     "comprimento": null,
     "massa": 113,
-    "area": 0.93
+    "area": 0.93,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -18248,6 +18271,7 @@
    "comprimento": null,
    "massa": 113,
    "area": 0.93,
+   "posturaDoTamanho": "de frente",
    "medida": "2.15 m de altura",
    "peso": "113 kg"
   },
@@ -19243,7 +19267,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 90,
-    "area": 0.78
+    "area": 0.78,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -19467,6 +19492,7 @@
    "comprimento": null,
    "massa": 90,
    "area": 0.78,
+   "posturaDoTamanho": "de frente",
    "medida": "1.9 m de altura",
    "peso": "90 kg"
   },
@@ -20079,7 +20105,8 @@
     "profundidade": 0.21,
     "comprimento": null,
     "massa": 65,
-    "area": 0.61
+    "area": 0.61,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -20258,6 +20285,7 @@
    "comprimento": null,
    "massa": 65,
    "area": 0.61,
+   "posturaDoTamanho": "de frente",
    "medida": "1.65 m de altura",
    "peso": "65 kg"
   },
@@ -22411,7 +22439,8 @@
     "comprimentoSemCauda": 1.8,
     "caudaGrossa": false,
     "massa": 45,
-    "area": 2.16
+    "area": 2.16,
+    "posturaDoTamanho": "de cima, abas abertas"
    },
    "couraca": 0,
    "atributos": {
@@ -22650,6 +22679,7 @@
    "caudaGrossa": false,
    "massa": 45,
    "area": 2.16,
+   "posturaDoTamanho": "de cima, abas abertas",
    "medida": "0.15 m de altura, 1.8 m de comprimento",
    "peso": "45 kg"
   },
@@ -22816,7 +22846,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 85,
-    "area": 0.74
+    "area": 0.74,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -23005,6 +23036,7 @@
    "comprimento": null,
    "massa": 85,
    "area": 0.74,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "85 kg"
   },
@@ -24717,7 +24749,8 @@
     "profundidade": 0.25,
     "comprimento": null,
     "massa": 95,
-    "area": 0.8
+    "area": 0.8,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -24915,6 +24948,7 @@
    "comprimento": null,
    "massa": 95,
    "area": 0.8,
+   "posturaDoTamanho": "de frente",
    "medida": "1.85 m de altura",
    "peso": "95 kg"
   },
@@ -26244,7 +26278,8 @@
     "profundidade": null,
     "comprimento": 2.7,
     "massa": 160,
-    "area": 1.9
+    "area": 1.9,
+    "posturaDoTamanho": "de cima"
    },
    "couraca": 5,
    "atributos": {
@@ -26502,6 +26537,7 @@
    "comprimento": 2.7,
    "massa": 160,
    "area": 1.9,
+   "posturaDoTamanho": "de cima",
    "medida": "0.6 m de altura, 2.7 m de comprimento",
    "peso": "160 kg"
   },
@@ -27821,7 +27857,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 88,
-    "area": 0.76
+    "area": 0.76,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -28060,6 +28097,7 @@
    "comprimento": null,
    "massa": 88,
    "area": 0.76,
+   "posturaDoTamanho": "de frente",
    "medida": "1.85 m de altura",
    "peso": "88 kg"
   },
@@ -30529,7 +30567,8 @@
     "profundidade": null,
     "comprimento": 3,
     "massa": 27300,
-    "area": 9
+    "area": 9,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -30745,6 +30784,7 @@
    "comprimento": 3,
    "massa": 27300,
    "area": 9,
+   "posturaDoTamanho": "de frente",
    "medida": "3 m de altura, 3 m de comprimento",
    "peso": "27300 kg"
   },
@@ -30899,7 +30939,8 @@
     "profundidade": 0.21,
     "comprimento": null,
     "massa": 62,
-    "area": 0.62
+    "area": 0.62,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -31112,6 +31153,7 @@
    "comprimento": null,
    "massa": 62,
    "area": 0.62,
+   "posturaDoTamanho": "de frente",
    "medida": "1.7 m de altura",
    "peso": "62 kg"
   },
@@ -32015,7 +32057,8 @@
     "profundidade": 0.19,
     "comprimento": null,
     "massa": 36,
-    "area": 0.39
+    "area": 0.39,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -32250,6 +32293,7 @@
    "comprimento": null,
    "massa": 36,
    "area": 0.39,
+   "posturaDoTamanho": "de frente",
    "medida": "1.2 m de altura",
    "peso": "36 kg"
   },
@@ -33147,7 +33191,8 @@
     "profundidade": null,
     "comprimento": 0.45,
     "massa": 18,
-    "area": 0.18
+    "area": 0.18,
+    "posturaDoTamanho": "de cima"
    },
    "couraca": 0,
    "atributos": {
@@ -33439,6 +33484,7 @@
    "comprimento": 0.45,
    "massa": 18,
    "area": 0.18,
+   "posturaDoTamanho": "de cima",
    "medida": "0.6 m de altura, 0.45 m de comprimento",
    "peso": "18 kg"
   },
@@ -38075,7 +38121,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 70,
-    "area": 0.67
+    "area": 0.67,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -38306,6 +38353,7 @@
    "comprimento": null,
    "massa": 70,
    "area": 0.67,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "70 kg"
   },
@@ -38464,6 +38512,7 @@
       "comprimento": null,
       "massa": 70,
       "area": 0.67,
+      "posturaDoTamanho": "de frente",
       "medida": "1.8 m de altura",
       "peso": "70 kg"
      },
@@ -45119,7 +45168,8 @@
     "profundidade": null,
     "comprimento": 1.22,
     "massa": 180,
-    "area": 2.07
+    "area": 2.07,
+    "posturaDoTamanho": "de cima"
    },
    "couraca": 1,
    "atributos": {
@@ -45339,6 +45389,7 @@
    "comprimento": 1.22,
    "massa": 180,
    "area": 2.07,
+   "posturaDoTamanho": "de cima",
    "medida": "1.5 m de altura, 1.22 m de comprimento",
    "peso": "180 kg"
   },
@@ -45504,7 +45555,8 @@
     "profundidade": 0.2,
     "comprimento": null,
     "massa": 55,
-    "area": 0.57
+    "area": 0.57,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -45724,6 +45776,7 @@
    "comprimento": null,
    "massa": 55,
    "area": 0.57,
+   "posturaDoTamanho": "de frente",
    "medida": "1.6 m de altura",
    "peso": "55 kg"
   },
@@ -45890,7 +45943,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 70,
-    "area": 0.67
+    "area": 0.67,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -46095,6 +46149,7 @@
    "comprimento": null,
    "massa": 70,
    "area": 0.67,
+   "posturaDoTamanho": "de frente",
    "medida": "1.75 m de altura",
    "peso": "70 kg"
   },
@@ -46272,7 +46327,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 55,
-    "area": 0.49
+    "area": 0.49,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -46507,6 +46563,7 @@
    "comprimento": null,
    "massa": 55,
    "area": 0.49,
+   "posturaDoTamanho": "de frente",
    "medida": "1.2 m de altura",
    "peso": "55 kg"
   },
@@ -54719,7 +54776,8 @@
     "profundidade": 0.17,
     "comprimento": null,
     "massa": 45,
-    "area": 0.54
+    "area": 0.54,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -54934,6 +54992,7 @@
    "comprimento": null,
    "massa": 45,
    "area": 0.54,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "45 kg"
   },
@@ -55803,7 +55862,8 @@
     "profundidade": 0.13,
     "comprimento": null,
     "massa": 16,
-    "area": 0.34
+    "area": 0.34,
+    "posturaDoTamanho": "de frente, braços abertos"
    },
    "couraca": 0,
    "atributos": {
@@ -56027,6 +56087,7 @@
    "comprimento": null,
    "massa": 16,
    "area": 0.34,
+   "posturaDoTamanho": "de frente, braços abertos",
    "medida": "1 m de altura",
    "peso": "16 kg"
   },
@@ -56186,7 +56247,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 90,
-    "area": 0.78
+    "area": 0.78,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -56414,6 +56476,7 @@
    "comprimento": null,
    "massa": 90,
    "area": 0.78,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "90 kg"
   },
@@ -59331,7 +59394,8 @@
     "semMassa": true,
     "volume": 0.0141,
     "area": 0.07,
-    "naoErgue": true
+    "naoErgue": true,
+    "posturaDoTamanho": "flutua; voador"
    },
    "couraca": 0,
    "atributos": {
@@ -59560,6 +59624,7 @@
    "volume": 0.0141,
    "area": 0.07,
    "naoErgue": true,
+   "posturaDoTamanho": "flutua; voador",
    "medida": "0.3 m de altura",
    "peso": "sem massa"
   },
@@ -60102,7 +60167,8 @@
     "profundidade": null,
     "comprimento": 7.4,
     "massa": 3000,
-    "area": 8.6
+    "area": 8.6,
+    "posturaDoTamanho": "de cima"
    },
    "couraca": 2,
    "atributos": {
@@ -60409,6 +60475,7 @@
    "comprimento": 7.4,
    "massa": 3000,
    "area": 8.6,
+   "posturaDoTamanho": "de cima",
    "medida": "2.3 m de altura, 7.4 m de comprimento",
    "peso": "3000 kg"
   },
@@ -67910,7 +67977,8 @@
     "profundidade": 0.27,
     "comprimento": null,
     "massa": 135,
-    "area": 1.03
+    "area": 1.03,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -68123,6 +68191,7 @@
    "comprimento": null,
    "massa": 135,
    "area": 1.03,
+   "posturaDoTamanho": "de frente",
    "medida": "2.15 m de altura",
    "peso": "135 kg"
   },
@@ -68286,7 +68355,8 @@
     "profundidade": 0.15,
     "comprimento": null,
     "massa": 18,
-    "area": 0.25
+    "area": 0.25,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -68461,6 +68531,7 @@
    "comprimento": null,
    "massa": 18,
    "area": 0.25,
+   "posturaDoTamanho": "de frente",
    "medida": "0.95 m de altura",
    "peso": "18 kg"
   },
@@ -73051,7 +73122,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 78,
-    "area": 0.7
+    "area": 0.7,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -73251,6 +73323,7 @@
    "comprimento": null,
    "massa": 78,
    "area": 0.7,
+   "posturaDoTamanho": "de frente",
    "medida": "1.75 m de altura",
    "peso": "78 kg"
   },
@@ -76203,7 +76276,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 73,
-    "area": 0.67
+    "area": 0.67,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -76386,6 +76460,7 @@
    "comprimento": null,
    "massa": 73,
    "area": 0.67,
+   "posturaDoTamanho": "de frente",
    "medida": "1.7 m de altura",
    "peso": "73 kg"
   },
@@ -76536,7 +76611,8 @@
     "profundidade": 0.23,
     "comprimento": 2.4,
     "massa": 90,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 2,
    "atributos": {
@@ -76744,6 +76820,7 @@
    "comprimento": 2.4,
    "massa": 90,
    "area": 0.72,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura, 2.4 m de comprimento",
    "peso": "90 kg"
   },
@@ -76904,7 +76981,8 @@
     "profundidade": 0.21,
     "comprimento": null,
     "massa": 65,
-    "area": 0.63
+    "area": 0.63,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -77267,6 +77345,7 @@
    "comprimento": null,
    "massa": 65,
    "area": 0.63,
+   "posturaDoTamanho": "de frente",
    "medida": "1.7 m de altura",
    "peso": "65 kg"
   },
@@ -77441,6 +77520,7 @@
       "comprimento": null,
       "massa": 65,
       "area": 0.63,
+      "posturaDoTamanho": "de frente",
       "medida": "1.7 m de altura",
       "peso": "65 kg"
      },
@@ -77619,8 +77699,8 @@
       "comprimento": 1.4,
       "massa": 12.38,
       "area": 0.1475,
-      "comprimentoSemCauda": 0.75,
       "posturaDoTamanho": "de lado",
+      "comprimentoSemCauda": 0.75,
       "linhaPV": "acima",
       "medida": "0.28 m de altura, 1.4 m de comprimento",
       "peso": "12.38 kg"
@@ -78229,7 +78309,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 80,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -78460,6 +78541,7 @@
    "comprimento": null,
    "massa": 80,
    "area": 0.72,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "80 kg"
   },
@@ -79760,7 +79842,8 @@
     "comprimento": 1.1,
     "massa": 16,
     "area": 0.22,
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -79935,6 +80018,7 @@
    "massa": 16,
    "area": 0.22,
    "linhaPV": "abaixo",
+   "posturaDoTamanho": "de frente",
    "medida": "0.75 m de altura, 1.1 m de comprimento",
    "peso": "16 kg"
   },
@@ -81051,7 +81135,8 @@
     "profundidade": null,
     "comprimento": null,
     "massa": 1000,
-    "area": 1.68
+    "area": 1.68,
+    "posturaDoTamanho": "de lado"
    },
    "couraca": 3,
    "atributos": {
@@ -81280,6 +81365,7 @@
    "comprimento": null,
    "massa": 1000,
    "area": 1.68,
+   "posturaDoTamanho": "de lado",
    "medida": "3 m de altura",
    "peso": "1000 kg"
   },
@@ -85895,7 +85981,8 @@
     "profundidade": null,
     "comprimento": 1,
     "massa": 150,
-    "area": 0.79
+    "area": 0.79,
+    "posturaDoTamanho": "de cima"
    },
    "couraca": 0,
    "atributos": {
@@ -86111,6 +86198,7 @@
    "comprimento": 1,
    "massa": 150,
    "area": 0.79,
+   "posturaDoTamanho": "de cima",
    "medida": "0.19 m de altura, 1 m de comprimento",
    "peso": "150 kg"
   },
@@ -91812,7 +91900,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 75,
-    "area": 0.7
+    "area": 0.7,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -92030,6 +92119,7 @@
    "comprimento": null,
    "massa": 75,
    "area": 0.7,
+   "posturaDoTamanho": "de frente",
    "medida": "1.75 m de altura",
    "peso": "75 kg"
   },
@@ -94917,7 +95007,8 @@
     "profundidade": 0.19,
     "comprimento": null,
     "massa": 55,
-    "area": 0.59
+    "area": 0.59,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -95157,6 +95248,7 @@
    "comprimento": null,
    "massa": 55,
    "area": 0.59,
+   "posturaDoTamanho": "de frente",
    "medida": "1.75 m de altura",
    "peso": "55 kg"
   },
@@ -96167,7 +96259,8 @@
     "comprimentoSemCauda": 0.9,
     "caudaGrossa": true,
     "massa": 90,
-    "area": 0.7
+    "area": 0.7,
+    "posturaDoTamanho": "de lado, nadando"
    },
    "couraca": 0,
    "atributos": {
@@ -96366,6 +96459,7 @@
    "caudaGrossa": true,
    "massa": 90,
    "area": 0.7,
+   "posturaDoTamanho": "de lado, nadando",
    "medida": "0.9 m de altura, 2 m de comprimento",
    "peso": "90 kg"
   },
@@ -96525,7 +96619,8 @@
     "profundidade": null,
     "comprimento": 1.2,
     "massa": 150,
-    "area": 0.6
+    "area": 0.6,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -96759,6 +96854,7 @@
    "comprimento": 1.2,
    "massa": 150,
    "area": 0.6,
+   "posturaDoTamanho": "de frente",
    "medida": "0.5 m de altura, 1.2 m de comprimento",
    "peso": "150 kg"
   },
@@ -96922,7 +97018,8 @@
     "profundidade": 0.35,
     "comprimento": null,
     "massa": 250,
-    "area": 1.55
+    "area": 1.55,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -97169,6 +97266,7 @@
    "comprimento": null,
    "massa": 250,
    "area": 1.55,
+   "posturaDoTamanho": "de frente",
    "medida": "2.4 m de altura",
    "peso": "250 kg"
   },
@@ -98164,7 +98262,8 @@
     "comprimentoSemCauda": 1.05,
     "caudaGrossa": false,
     "massa": 120,
-    "area": 0.48
+    "area": 0.48,
+    "posturaDoTamanho": "de cima"
    },
    "couraca": 2,
    "atributos": {
@@ -98384,6 +98483,7 @@
    "caudaGrossa": false,
    "massa": 120,
    "area": 0.48,
+   "posturaDoTamanho": "de cima",
    "medida": "0.7 m de altura, 1.5 m de comprimento",
    "peso": "120 kg"
   },
@@ -100023,7 +100123,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 68,
-    "area": 0.6
+    "area": 0.6,
+    "posturaDoTamanho": "de frente, de pé"
    },
    "couraca": 0,
    "atributos": {
@@ -100261,6 +100362,7 @@
    "comprimento": null,
    "massa": 68,
    "area": 0.6,
+   "posturaDoTamanho": "de frente, de pé",
    "medida": "1.5 m de altura",
    "peso": "68 kg"
   },
@@ -103849,7 +103951,8 @@
     "profundidade": null,
     "comprimento": 12,
     "massa": 6000,
-    "area": 9.05
+    "area": 9.05,
+    "posturaDoTamanho": "de lado"
    },
    "couraca": 3,
    "atributos": {
@@ -104137,6 +104240,7 @@
    "comprimento": 12,
    "massa": 6000,
    "area": 9.05,
+   "posturaDoTamanho": "de lado",
    "medida": "0.89 m de altura, 12 m de comprimento",
    "peso": "6000 kg"
   },
@@ -104780,7 +104884,8 @@
     "profundidade": 0.2,
     "comprimento": null,
     "massa": 55,
-    "area": 0.57
+    "area": 0.57,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -105026,6 +105131,7 @@
    "comprimento": null,
    "massa": 55,
    "area": 0.57,
+   "posturaDoTamanho": "de frente",
    "medida": "1.6 m de altura",
    "peso": "55 kg"
   },
@@ -106647,7 +106753,8 @@
     "profundidade": 0.26,
     "comprimento": null,
     "massa": 110,
-    "area": 0.89
+    "area": 0.89,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "bonusPV": 5,
@@ -106824,6 +106931,7 @@
    "comprimento": null,
    "massa": 110,
    "area": 0.89,
+   "posturaDoTamanho": "de frente",
    "medida": "2 m de altura",
    "peso": "110 kg"
   },
@@ -107352,7 +107460,8 @@
     "profundidade": null,
     "comprimento": null,
     "massa": 500,
-    "area": 1.87
+    "area": 1.87,
+    "posturaDoTamanho": "de frente, tentáculos erguidos"
    },
    "couraca": 2,
    "atributos": {
@@ -107613,6 +107722,7 @@
    "comprimento": null,
    "massa": 500,
    "area": 1.87,
+   "posturaDoTamanho": "de frente, tentáculos erguidos",
    "medida": "2.4 m de altura",
    "peso": "500 kg"
   },
@@ -115273,7 +115383,8 @@
     "profundidade": null,
     "comprimento": 0.042,
     "massa": 0.0085,
-    "area": 0.0009
+    "area": 0.0009,
+    "posturaDoTamanho": "quatro patas (sentada)"
    },
    "couraca": 0,
    "atributos": {
@@ -115410,6 +115521,7 @@
    "comprimento": 0.042,
    "massa": 0.0085,
    "area": 0.0009,
+   "posturaDoTamanho": "quatro patas (sentada)",
    "medida": "0.022 m de altura, 0.042 m de comprimento",
    "peso": "0.0085 kg"
   },
@@ -115537,7 +115649,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 80,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -115824,6 +115937,7 @@
    "comprimento": null,
    "massa": 80,
    "area": 0.72,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "80 kg"
   },
@@ -116008,6 +116122,7 @@
       "comprimento": null,
       "massa": 80,
       "area": 0.72,
+      "posturaDoTamanho": "de frente",
       "medida": "1.8 m de altura",
       "peso": "80 kg"
      },
@@ -116271,7 +116386,8 @@
     "comprimento": null,
     "massa": 36,
     "area": 0.39,
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -116479,6 +116595,7 @@
    "massa": 36,
    "area": 0.39,
    "linhaPV": "abaixo",
+   "posturaDoTamanho": "de frente",
    "medida": "1.2 m de altura",
    "peso": "36 kg"
   },
@@ -118633,7 +118750,8 @@
     "profundidade": 0.25,
     "comprimento": null,
     "massa": 113,
-    "area": 0.92
+    "area": 0.92,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -118866,6 +118984,7 @@
    "comprimento": null,
    "massa": 113,
    "area": 0.92,
+   "posturaDoTamanho": "de frente",
    "medida": "2.1 m de altura",
    "peso": "113 kg"
   },
@@ -121755,7 +121874,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 80,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -121993,6 +122113,7 @@
    "comprimento": null,
    "massa": 80,
    "area": 0.72,
+   "posturaDoTamanho": "de frente",
    "medida": "1.8 m de altura",
    "peso": "80 kg"
   },
@@ -124507,7 +124628,8 @@
     "profundidade": 0.15,
     "comprimento": null,
     "massa": 18,
-    "area": 0.24
+    "area": 0.24,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -124704,6 +124826,7 @@
    "comprimento": null,
    "massa": 18,
    "area": 0.24,
+   "posturaDoTamanho": "de frente",
    "medida": "0.9 m de altura",
    "peso": "18 kg"
   },
@@ -125785,7 +125908,8 @@
     "profundidade": 0.19,
     "comprimento": null,
     "massa": 55,
-    "area": 0.59
+    "area": 0.59,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -125995,6 +126119,7 @@
    "comprimento": null,
    "massa": 55,
    "area": 0.59,
+   "posturaDoTamanho": "de frente",
    "medida": "1.75 m de altura",
    "peso": "55 kg"
   },
@@ -126153,7 +126278,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 68,
-    "area": 0.66
+    "area": 0.66,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 0,
    "atributos": {
@@ -126360,6 +126486,7 @@
    "comprimento": null,
    "massa": 68,
    "area": 0.66,
+   "posturaDoTamanho": "de frente",
    "medida": "1.75 m de altura",
    "peso": "68 kg"
   },
@@ -128730,7 +128857,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 75,
-    "area": 0.68
+    "area": 0.68,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 2,
    "atributos": {
@@ -128944,6 +129072,7 @@
    "comprimento": null,
    "massa": 75,
    "area": 0.68,
+   "posturaDoTamanho": "de frente",
    "medida": "1.7 m de altura",
    "peso": "75 kg"
   },
@@ -137668,7 +137797,8 @@
     "profundidade": 0.4,
     "comprimento": null,
     "massa": 360,
-    "area": 1.87
+    "area": 1.87,
+    "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
    "atributos": {
@@ -137889,6 +138019,7 @@
    "comprimento": null,
    "massa": 360,
    "area": 1.87,
+   "posturaDoTamanho": "de frente",
    "medida": "2.7 m de altura",
    "peso": "360 kg"
   },

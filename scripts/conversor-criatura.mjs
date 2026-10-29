@@ -168,6 +168,12 @@ export function converterFicha(texto, { site = null } = {}) {
   if (!tam) para('Tamanho ilegível');
   const pp = lt.match(/\([\d.,]+ m²,\s*([^)]*)\)/);
   if (pp) corpo.posturaDoTamanho = pp[1].trim();
+  else {
+    const medida = String(la || '').match(/m²\*\*\s*,\s*(.+)$/);
+    // A linha Área também declara a vista da medição; sem ela, usa a Postura explícita do corpo.
+    corpo.posturaDoTamanho = medida ? jogo(medida[1]) : corpo.postura;
+    if (!corpo.posturaDoTamanho) para('Tamanho sem postura de medição na ficha');
+  }
   // a escolha do Tamanho (D-216, D-225): só quando a ficha ficou com o vizinho do corte, a menos de 5% (decisoes-autor
   // §13), ou pela decisão 7 (os quadrúpedes de 50 a 75 kg são Pequenos), a exceção que o confere_etapa2.py aceita
   const escolha = (area, t, rotulo, cel) => {

@@ -14,7 +14,7 @@ const corpoNovo = z.object({
   massa: numero.optional(), semMassa: z.literal(true).optional(), volume: numero.optional(),
   // P5, 26/10/2026: só em quem escreve "não ergue", independente de semMassa.
   naoErgue: z.literal(true).optional(),
-  area: numero, posturaDoTamanho: texto.optional(),
+  area: numero, posturaDoTamanho: texto.trim().min(1),
   segundoTamanho: z.object({ area: numero, posturaDoTamanho: texto.trim().min(1), tamanhoEscolhido: tamanho.optional() }).strict().optional(),
   tamanhoEscolhido: tamanho.optional(), linhaPV: z.enum(['acima', 'abaixo']).optional(), cargaMedida: numero.optional(),
 }).strict();

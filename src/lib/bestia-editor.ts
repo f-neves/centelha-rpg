@@ -30,7 +30,7 @@ export function apagarEdicao(id: string) {
 export function novaCriatura(): CriaturaEdit {
   return validarFonte({
     id:'criatura-nova', nome:'Nova criatura', nomeIngles:null, categoria:'humanoide', papel:'soldado', ameaca:1, centelha:0,
-    corpo:{postura:'de pé',apoio:'bipede',altura:1.8,largura:0.45,profundidade:0.23,comprimento:null,massa:80,area:0.72}, couraca:0,
+    corpo:{postura:'de pé',apoio:'bipede',altura:1.8,largura:0.45,profundidade:0.23,comprimento:null,massa:80,area:0.72,posturaDoTamanho:'de pé'}, couraca:0,
     atributos:{forca:2,destreza:2,vigor:2,percepcao:2,inteligencia:2,raciocinio:2,influencia:2,perspicacia:2,compostura:2},
     habilidades:{prontidao:1,integridade:1}, habilidadesSec:{}, especialidades:{}, especialidadesSec:{},
     virtudes:{bravura:1,compaixao:1,conviccao:1,temperanca:1}, vontade:3, aparencia:5,

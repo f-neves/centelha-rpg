@@ -15,7 +15,8 @@
     "profundidade": 0.21,
     "comprimento": null,
     "massa": 68,
-    "area": 0.66
+    "area": 0.66,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {

@@ -15,7 +15,8 @@
     "profundidade": 0.13,
     "comprimento": null,
     "massa": 16,
-    "area": 0.34
+    "area": 0.34,
+    "posturaDoTamanho": "de frente, braços abertos"
   },
   "couraca": 0,
   "atributos": {

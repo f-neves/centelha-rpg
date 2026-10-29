@@ -15,7 +15,8 @@
     "profundidade": null,
     "comprimento": null,
     "massa": 1000,
-    "area": 1.68
+    "area": 1.68,
+    "posturaDoTamanho": "de lado"
   },
   "couraca": 3,
   "atributos": {

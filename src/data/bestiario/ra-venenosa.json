@@ -15,7 +15,8 @@
     "profundidade": null,
     "comprimento": 0.042,
     "massa": 0.0085,
-    "area": 0.0009
+    "area": 0.0009,
+    "posturaDoTamanho": "quatro patas (sentada)"
   },
   "couraca": 0,
   "atributos": {
