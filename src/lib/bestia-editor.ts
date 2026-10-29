@@ -35,7 +35,7 @@ export function novaCriatura(): CriaturaEdit {
     habilidades:{prontidao:1,integridade:1}, habilidadesSec:{}, especialidades:{}, especialidadesSec:{},
     virtudes:{bravura:1,compaixao:1,conviccao:1,temperanca:1}, vontade:3, aparencia:5,
     deslocamento:{terra:{batalha:3,arranque:5,corrida:7}}, equipamento:{arsenal:[],armaduras:[]}, artes:{}, ataques:[],
-    habilidadesEspeciais:[], comoLuta:[], sentidos:[], elementos:{fraquezas:[],resistencias:[],imunidades:[]}, fisiologia:{},
+    habilidadesEspeciais:[], comoLuta:[], sentidos:[], elementos:{fraquezas:[],resistencias:[],imunidades:[]}, fisiologia:{respiracao:'respira ar',mente:'raciocina como humano',tracos:'humanoide bípede'},
     aptidoes:{montaria:false,carga:false,tracao:false}, comportamento:{social:'',atividade:'',dieta:'',caca:'',dianteDeGente:''},
     ecologia:{terreno:[],clima:[]}, descricao:'', lore:[], imagens:[], revisao:[],
   });

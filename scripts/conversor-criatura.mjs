@@ -476,13 +476,14 @@ export function converterFicha(texto, { site = null } = {}) {
 
   // ----- fisiologia, aptidões, comportamento, ecologia
   const corpoSec = Object.fromEntries((S['Corpo'] || []).filter((l) => l.startsWith('- ')).map((l) => { const m = l.slice(2).match(/^([^:]+):\s*(.*)$/); return m ? [m[1].trim(), jogo(m[2])] : [l, '']; }));
-  c.fisiologia = { respiracao: semPonto(corpoSec['Respiração'] || '') };
+  c.fisiologia = {};
+  if (corpoSec['Respiração'] !== undefined) c.fisiologia.respiracao = semPonto(corpoSec['Respiração']);
   const prende = semPonto((corpoSec['Prende a respiração'] || '').replace(/\s*\(o Mestre decide quanto\)/, '; quanto tempo, o Mestre decide'));
   if (prende && !/^(a de um humano|comum|não se aplica|nenhuma)$/.test(prende)) c.fisiologia.prendeRespiracao = prende;
   const camu = semPonto(corpoSec['Camuflagem'] || '');
   if (camu && !/^nenhuma$/.test(camu)) c.fisiologia.camuflagem = camu;
-  c.fisiologia.mente = semPonto(corpoSec['Mente'] || '');
-  c.fisiologia.tracos = semPonto(corpoSec['Traços'] || '');
+  if (corpoSec['Mente'] !== undefined) c.fisiologia.mente = semPonto(corpoSec['Mente']);
+  if (corpoSec['Traços'] !== undefined) c.fisiologia.tracos = semPonto(corpoSec['Traços']);
   const lerApt = (t, onde) => {
     const m = String(t || '').replace(/`/g, '').trim().match(/^montaria (sim|não) · carga (sim|não) · tração (sim|não)\.?$/);
     if (!m) { para(`${onde}: Aptidões fora do formato`); return undefined; }

@@ -44,6 +44,9 @@ for(const change of [{semMassa:true},{volume:1}]){const c=fresh();if(change.semM
 cases.set('14', async () => {
 const c=fresh();c.corpo.segundoTamanho={area:2,posturaDoTamanho:''};assert.equal(schema.safeParse(c).success,false);c.corpo.segundoTamanho.posturaDoTamanho='   ';assert.equal(schema.safeParse(c).success,false);c.corpo.segundoTamanho.posturaDoTamanho='de lado';assert.equal(schema.safeParse(c).success,true);const r=conv(raw.replace(/(\| Segundo Tamanho \| )[^|]+/,'$1**Grande** (2 m²) '));assert.ok(r.paradas.some(x=>/postura|posturaDoTamanho/i.test(x)));
 });
+cases.set('15', async () => {
+for(const k of ['respiracao','mente','tracos']){const c=fresh();delete c.fisiologia[k];assert.equal(schema.safeParse(c).success,false);c.fisiologia[k]='';assert.equal(schema.safeParse(c).success,false);}const c=fresh();c.formas[0].fisiologia={mente:'humana'};assert.equal(schema.safeParse(c).success,true);for(const rot of ['Respiração','Mente','Traços']){const md=raw.split('\n').filter(l=>!l.startsWith('- '+rot+':')).join('\n');assert.ok(conv(md).paradas.some(x=>/fisiologia/.test(x)));}
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
