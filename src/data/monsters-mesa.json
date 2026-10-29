@@ -2131,7 +2131,7 @@
    "ataques": [
     {
      "nome": "Lança",
-     "pool": "5d6 +9",
+     "pool": "5d6+2 +9",
      "dano": "1d6 +16 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
@@ -4460,7 +4460,7 @@
    "ataques": [
     {
      "nome": "Maça estrela",
-     "pool": "3d6 +5",
+     "pool": "3d6+2 +5",
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 6,
@@ -4818,7 +4818,7 @@
       "ataques": [
        {
         "nome": "Espada longa",
-        "pool": "4d6+2 +7",
+        "pool": "5d6+2 +9",
         "dano": "1d6 +10 (C)",
         "perfArma": null,
         "speed": 6,
@@ -8063,7 +8063,7 @@
     },
     {
      "nome": "Coice",
-     "pool": "5d6 +4",
+     "pool": "5d6+2 +4",
      "dano": "2d6 +9 (I)",
      "perfArma": null,
      "speed": 7,
@@ -10532,7 +10532,7 @@
    "ataques": [
     {
      "nome": "Glaive serrilhada",
-     "pool": "3d6+2 +5",
+     "pool": "4d6+2 +7",
      "dano": "1d6 +14 (C)",
      "perfArma": null,
      "speed": 7,
@@ -16039,7 +16039,7 @@
     },
     {
      "nome": "Espada flamejante",
-     "pool": "5d6+2 +9",
+     "pool": "6d6 +11",
      "dano": "1d6 +11 (C)",
      "perfArma": null,
      "speed": 6,
@@ -26332,7 +26332,7 @@
       "ataques": [
        {
         "nome": "Espada curta",
-        "pool": "3d6 +6",
+        "pool": "3d6+2 +6",
         "dano": "1d6 +4 (C)",
         "perfArma": null,
         "speed": 5,
@@ -29102,7 +29102,7 @@
     },
     {
      "nome": "Chifrada",
-     "pool": "5d6 +2",
+     "pool": "5d6+2 +2",
      "dano": "1d6 +8 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
@@ -35569,7 +35569,7 @@
     },
     {
      "nome": "Garras",
-     "pool": "3d6 +5",
+     "pool": "3d6+2 +5",
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
@@ -35700,7 +35700,7 @@
     },
     {
      "nome": "Cauda",
-     "pool": "4d6+2 +6",
+     "pool": "5d6 +6",
      "dano": "1d6 +13 (I)",
      "perfArma": null,
      "speed": 6,
@@ -36487,7 +36487,7 @@
     },
     {
      "nome": "Mordida",
-     "pool": "3d6 +5",
+     "pool": "3d6+2 +5",
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
@@ -36495,7 +36495,7 @@
     },
     {
      "nome": "Garras",
-     "pool": "3d6 +5",
+     "pool": "3d6+2 +5",
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
@@ -36784,7 +36784,7 @@
     },
     {
      "nome": "Espada longa a duas mãos",
-     "pool": "3d6 +1",
+     "pool": "4d6 +1",
      "dano": "1d6 +6 (C)",
      "perfArma": null,
      "speed": 6,
@@ -36792,7 +36792,7 @@
     },
     {
      "nome": "Punhos",
-     "pool": "3d6 +1",
+     "pool": "4d6 +1",
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
@@ -37625,7 +37625,7 @@
     },
     {
      "nome": "Bico",
-     "pool": "3d6+2 +3",
+     "pool": "4d6 +3",
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,

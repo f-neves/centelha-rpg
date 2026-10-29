@@ -1288,13 +1288,13 @@
       {
         "nome": "Lança",
         "atrib": "forca",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "perfurante",
         "classe": "haste",
         "ticks": 6,
         "acerto": 1,
-        "pool": "5d6 +9",
+        "pool": "5d6+2 +9",
         "dano": "1d6 +16 (P) · perf. 1",
         "perfArma": 1
       },
@@ -2462,13 +2462,13 @@
       {
         "nome": "Maça estrela",
         "atrib": "forca",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "impacto",
         "classe": "media",
         "ticks": 6,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +6 (I)",
         "perfArma": null
       }
@@ -4556,13 +4556,13 @@
       {
         "nome": "Coice",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 2,
         "tipo": "impacto",
         "classe": "pesada",
         "ticks": 7,
         "acerto": 0,
-        "pool": "5d6 +4",
+        "pool": "5d6+2 +4",
         "dano": "2d6 +9 (I)",
         "perfArma": null
       }
@@ -5961,13 +5961,13 @@
       {
         "nome": "Glaive serrilhada",
         "atrib": "forca",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "corte",
         "classe": "haste",
         "ticks": 7,
         "acerto": -1,
-        "pool": "3d6+2 +5",
+        "pool": "4d6+2 +7",
         "dano": "1d6 +14 (C)",
         "perfArma": null
       },
@@ -9248,13 +9248,13 @@
       {
         "nome": "Espada flamejante",
         "atrib": "destreza",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "corte",
         "classe": "media",
         "ticks": 6,
         "acerto": 1,
-        "pool": "5d6+2 +9",
+        "pool": "6d6 +11",
         "dano": "1d6 +11 (C)",
         "perfArma": null
       },
@@ -17360,13 +17360,13 @@
       {
         "nome": "Chifrada",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "perfuracao",
         "classe": "media",
         "ticks": 6,
         "acerto": 0,
-        "pool": "5d6 +2",
+        "pool": "5d6+2 +2",
         "dano": "1d6 +8 (P) · perf. 1",
         "perfArma": 1
       }
@@ -21285,13 +21285,13 @@
       {
         "nome": "Garras",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "corte",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +4 (C)",
         "perfArma": null
       }
@@ -21364,13 +21364,13 @@
       {
         "nome": "Cauda",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "impacto",
         "classe": "media",
         "ticks": 6,
         "acerto": 0,
-        "pool": "4d6+2 +6",
+        "pool": "5d6 +6",
         "dano": "1d6 +13 (I)",
         "perfArma": null
       }
@@ -21914,26 +21914,26 @@
       {
         "nome": "Mordida",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "perfuracao",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +4 (P) · perf. 0",
         "perfArma": 0
       },
       {
         "nome": "Garras",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "corte",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +4 (C)",
         "perfArma": null
       }
@@ -22108,26 +22108,26 @@
       {
         "nome": "Espada longa a duas mãos",
         "atrib": "destreza",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "corte",
         "classe": "media",
         "ticks": 6,
         "acerto": 1,
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +6 (C)",
         "perfArma": null
       },
       {
         "nome": "Punhos",
         "atrib": "destreza",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "impacto",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +1 (I)",
         "perfArma": null
       }
@@ -22680,13 +22680,13 @@
       {
         "nome": "Bico",
         "atrib": "destreza",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "perfuracao",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6+2 +3",
+        "pool": "4d6 +3",
         "dano": "1d6 +2 (P) · perf. 0",
         "perfArma": 0
       }

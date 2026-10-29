@@ -601,12 +601,21 @@ export function atributoDaJogada(habilidade: string, at: Num): number {
         return at.destreza ?? 0;
     return Math.max(at.forca ?? 0, at.destreza ?? 0);
 }
-/** D-208: corpo a corpo sem Habilidade declarada escolhe a melhor entre Briga e Armas. */
+const HAB_DE_LONGE = new Set(['disparo', 'atirador', 'arremesso']);
+/**
+ * A Habilidade da jogada de ataque da criatura (D-208 completada pela D-258). Tiro e arremesso seguem o livro: a da
+ * arma vem do catálogo (`arma.pericia`), a do ataque natural vem da ficha. Todo o resto é corpo a corpo e rola pela
+ * maior entre Briga e Armas, e a Habilidade que estiver gravada no JSON ou no catálogo não conta. A distância vem da
+ * Habilidade, e não da `classe`: a rocha arremessada dos gigantes é `pesada` e sai pelo Arremesso.
+ */
 export function habilidadeDaJogada(ataque: AtaqueEntrada, habilidades: Num, habilidadesSec: Num): string | null {
-    if (ataque.habilidade) return ataque.habilidade;
-    if (ataque.classe === 'distancia' || ataque.classe === 'arremesso') return null;
+    const gravada = ataque.arma ? (ARMAS as any[]).find((a) => a.id === ataque.arma)?.arma?.pericia : ataque.habilidade;
+    if (gravada && HAB_DE_LONGE.has(gravada)) return gravada;
+    if (!ataque.arma && (ataque.classe === 'distancia' || ataque.classe === 'arremesso')) return null;
     const briga = habilidades.briga ?? habilidadesSec.briga ?? 0;
     const armas = habilidades.armas ?? habilidadesSec.armas ?? 0;
+    // no empate a conta é a mesma; a arma mostra a Habilidade do catálogo dela
+    if (armas === briga && ataque.arma && (gravada === 'armas' || gravada === 'briga')) return gravada;
     return armas > briga ? 'armas' : 'briga';
 }
 const habDe = (e: EntradaCriatura, id: string) => e.habilidades[id] ?? e.habilidadesSec[id] ?? 0;
@@ -643,11 +652,11 @@ export function criatura(e: EntradaCriatura) {
         absorcao,
         ataques: e.ataques.map((a) => {
             const w = a.arma ? ataqueDaArma(a.arma, at.forca ?? 0) : null;
-            const h = w?.habilidade ?? habilidadeDaJogada(a, e.habilidades, e.habilidadesSec);
+            const h = habilidadeDaJogada(a, e.habilidades, e.habilidadesSec);
             const hv = h ? habDe(e, h) : 0;
             const acerto = w ? w.acerto : (a.acerto ?? 0);
             return {
-                nome: a.nome, acerto,
+                nome: a.nome, acerto, habilidade: h,
                 velocidade: w ? w.velocidade : a.pgr ? a.pgr[0] + a.pgr[1] + a.pgr[2] : null,
                 danoMedio: w ? danoMedio(w.dado, w.forca, w.multiplicadorForca, ce) : danoMedio(a.dado ?? null, at.forca ?? 0, a.multiplicadorForca ?? 0, ce),
                 jogada: h ? atributoDaJogada(h, at) + hv + centelhaNaJogada(ce, hv) + acerto : null,
@@ -741,7 +750,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         esquiva: vest.esquiva, bloqueio: vest.bloqueio, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
     } : undefined;
     const ataques = c.ataques.map((a: any, i: number) => {
-        const w: any = armaDe(a), catalogo = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca) : null, h = catalogo?.habilidade ?? M.habilidadeDaJogada(a, c.habilidades, c.habilidadesSec), hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
+        const w: any = armaDe(a), h = r.ataques[i].habilidade, hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
         const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? 'percepcao' : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
         const soma = h ? M.atributoDaJogada(h, c.atributos) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);
