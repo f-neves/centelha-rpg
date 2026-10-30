@@ -3183,7 +3183,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, P20, opção b): "a Investida soma mais uma vez a Força. Uma mão ou o corpo: de × 1 para × 2. Arma de duas mãos (montante, martelo de guerra, versátil com as duas): de × 2 para × 3. O +1d6 da Investida continua. Vale para criatura e jogador (complementa a V1). O Grid passa a aplicar a Força a mais da Investida (hoje soma só o +1d6): conserto."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, P20 (da Executora). Completa a D-266.
-- Estado: **a implementar** na fase5-correcoes: o Grid, o texto da V1 no livro e o card.
+- Estado: **a implementar** na fase5-correcoes: o Grid, o texto da V1 no livro e o card. **Em parte substituída pela D-272** (30/10/2026): o +1d6 da Investida sai; a Força a mais continua.
 
 ### D-270 · L1: o card da criatura separa "Poderes" de "Habilidades" [tags: bestiario, card, habilidades, poderes, vocabulario, leitora]
 - Data: 2026-10-29
@@ -3196,6 +3196,20 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 29/10/2026, P18): "pode descartar; essas fichas são só teste. A migração 42 não cria item para a peça órfã."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, P18 (da Executora).
 - Estado: **a implementar** na migração 42 (fase5-correcoes).
+
+### D-272 · P20-b: a Investida perde o +1d6 e soma só mais uma Força [tags: combate, investida, forca, dano, grid, d-269, d-266]
+- Data: 2026-10-30
+- Decisão (autor, 30/10/2026, P20-b): "a Investida deixa de somar +1d6; soma só mais uma Força (uma mão ou o corpo: × 1 vira × 2; duas mãos: × 2 vira × 3). Motor, card, Grid e o texto da Investida no livro."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md` (fim), respostas do autor de 30/10/2026.
+- Substitui: a frase "O +1d6 da Investida continua" da D-269. O resto da D-269 vale.
+- Estado: **aplicada** na fase5-correcoes (`e15e8995`, `d27d8734`), a publicar.
+
+### D-273 · P23: o chifre do minotauro soma com as duas mãos ocupadas; o solar de arco não leva o −2 [tags: bestiario, criatura, bloqueio, defesa, g4, d-262]
+- Data: 2026-10-30
+- Decisão (autor, 30/10/2026, P23): "o chifre do minotauro soma mesmo com as duas mãos ocupadas (−2 da arma e +1 do chifre: −1, Defesa 9 vira 8); o solar só leva o −2 com o montante em uso, não de arco."
+- Conferência (autor, 30/10/2026): a Defesa do minotauro fica 7, e não 8, porque o 9 de antes já tinha o +1 do chifre (8 − 2 + 1). Pela mesma regra, o merfolk fica 12 com a lança e 10 com a besta.
+- Origem: `../tmp/executora/fase3/perguntas.md`, P23; respostas do autor de 30/10/2026.
+- Estado: **aplicada** na fase5-correcoes (`fe832a44`), a publicar.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
