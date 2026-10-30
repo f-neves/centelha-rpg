@@ -98,10 +98,9 @@
     "nome": "Arremesso",
     "grupo": "combate",
     "atributos": [
-      "destreza",
-      "forca"
+      "destreza"
     ],
-    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador.",
+    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador. A jogada de arremesso vai sempre pela Destreza, e não pela Força: o braço forte joga mais longe e machuca mais, mas quem põe o objeto no lugar certo é a mão precisa.",
     "niveis": [
       {
         "nivel": 0,

@@ -259,6 +259,16 @@ for(const [n,s] of [['BestaCard',card],['FormaCriatura',forma]]){assert.match(s,
 assert.ok(!/k\+': '\+i\.combate\[k\]\.join/.test(forma)&&!/nomes\[k\]\+': '\+v/.test(forma),'a forma ainda escreve em linha corrida');assert.match(forma,/ELEM\[x\] \?\? x/);assert.match(forma,/class="atr-grid"/);
 const L=await carregarTS('src/lib/besta-card.ts');assert.equal(L.ELEM.perfuracao,'Perfuração');assert.equal(L.locoTxt({nome:'Natação',k:'natacao',v:4}),'Natação 4 m/Tick');
 });
+// P21 (do coordenador, 29/10/2026: "arremesso pela Destreza (combate.md:156)"): o texto do Arremesso e o da Força
+// deixam de oferecer a Força à jogada, como o M11 fez com o Atirador; o motor já jogava pela Destreza.
+cases.set('P21', async () => {
+const H=JSON.parse(fs.readFileSync('src/data/habilidades.json','utf8'));const ar=H.find(h=>h.id==='arremesso');assert.deepEqual(ar.atributos,['destreza']);assert.match(ar.descricao,/vai sempre pela Destreza, e não pela Força/);
+const cap=fs.readFileSync('src/content/chapters/habilidades.md','utf8');const l=cap.split('\n').find(x=>x.startsWith('- **Arremesso** ·'));assert.ok(l.endsWith('*(Destreza)*'),'o capítulo gerado dá só a Destreza');
+const atr=fs.readFileSync('src/content/chapters/atributos.md','utf8');const fo=atr.split('**Força** ·')[1].split('\n\n')[0];const de=atr.split('**Destreza** ·')[1].split('\n\n')[0];
+assert.ok(!/Principais Habilidades:\*[^.\n]*Arremesso/.test(fo),'a Força ainda lista o Arremesso');assert.match(fo,/não a jogada, que vai pela Destreza/);assert.match(de,/Principais Habilidades:\*[^\n]*Arremesso/);
+assert.match(fs.readFileSync('src/content/chapters/combate.md','utf8'),/Para <strong>arremessos<\/strong>, sempre Destreza/);
+assert.equal(M.atributoDaJogada('arremesso',{forca:5,destreza:1}),1,'o motor joga o arremesso pela Destreza');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
