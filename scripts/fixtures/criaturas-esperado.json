@@ -1748,7 +1748,7 @@
    }
   },
   "babau": {
-   "sha256": "38cab44bf4c9e7ac6b6084e98e982a84ffadfde89a91e5bc13b17e85373ec05a",
+   "sha256": "7168426139ace2fd72be9cd84dc26ac47b8d3145d706502e1610ad998c9119c8",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -1862,7 +1862,7 @@
       "nome": "Lança",
       "velocidade": 6,
       "danoMedio": 19.5,
-      "jogada": 18
+      "jogada": 19
      },
      {
       "nome": "Garras",
@@ -3505,7 +3505,7 @@
    }
   },
   "boggard": {
-   "sha256": "e5280beb9339aed96d628835861a85e33ce4e630159f1a4ea369b8281ab5258b",
+   "sha256": "adcf44f54fe10dded717479a2b5f4356d4c8fab55f72ff3570546dea3a7b7da3",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -3582,7 +3582,7 @@
       "nome": "Maça estrela",
       "velocidade": 6,
       "danoMedio": 9.5,
-      "jogada": 10
+      "jogada": 11
      }
     ]
    }
@@ -6374,7 +6374,7 @@
    }
   },
   "centauro": {
-   "sha256": "3b784b87058526e752d763475216c944c60b44a503e149cd023d4245cb7b8a81",
+   "sha256": "4a8f86ec8d71b3bbacb2042c6c1a271c5188d45eecb77713553b0673605eb486",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -6484,7 +6484,7 @@
       "nome": "Coice",
       "velocidade": 7,
       "danoMedio": 16,
-      "jogada": 14
+      "jogada": 15
      }
     ]
    }
@@ -8173,7 +8173,7 @@
    }
   },
   "deva-astral": {
-   "sha256": "0b8ccbf0878e347538f5f8d16cf86ba68d24926512dec74218c29cf4c5b54938",
+   "sha256": "61002be9afbead225bed26dbedd365c419d405415390bd692c06c6c86dea1041",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -8276,7 +8276,8 @@
       },
       "equipamento": {
        "arsenal": []
-      }
+      },
+      "ataques": []
      },
      "esperado": {
       "tamanho": "Médio"
@@ -8382,7 +8383,7 @@
    }
   },
   "diabo-barbado": {
-   "sha256": "b2cbac7eae4b97bf901291e7073d379f1a5ba3208ef77d77b06ea9c43413d6d4",
+   "sha256": "becd86fe2e99baa76f6785227cc570acca5bc9db9bc12cf86feb77a03ae8a3ff",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -8476,7 +8477,7 @@
       "nome": "Glaive serrilhada",
       "velocidade": 7,
       "danoMedio": 17.5,
-      "jogada": 13
+      "jogada": 17
      },
      {
       "nome": "Mordida",
@@ -13021,7 +13022,7 @@
    }
   },
   "erinia": {
-   "sha256": "039e84564ef68a3679c383b97b19ce1543d5ab335f0dc036e603efbe19622b64",
+   "sha256": "936f2ae4b097e0412f86b9f48271df3d3b9a53a51c31df6313432c9512cd00aa",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -13137,7 +13138,7 @@
       "nome": "Espada flamejante",
       "velocidade": 6,
       "danoMedio": 14.5,
-      "jogada": 19
+      "jogada": 22
      },
      {
       "nome": "Garras",
@@ -24765,7 +24766,7 @@
    }
   },
   "minotauro": {
-   "sha256": "b06dad42e9d97fc654443f299e99bfa414230d4aea67c1c5bd381c3623a2ef4c",
+   "sha256": "f4c936603694c49d1a0da1095dc1c90731ec587aeb1a142be2cc6d5427f0df1f",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 1,
@@ -24865,7 +24866,7 @@
       "nome": "Chifrada",
       "velocidade": 6,
       "danoMedio": 11.5,
-      "jogada": 12
+      "jogada": 13
      }
     ]
    }
@@ -30281,7 +30282,7 @@
    }
   },
   "sahuagin": {
-   "sha256": "c0be334cafcc433465af87f415f7cd38f67e3e1bae636edf6ab8418741ba0ab6",
+   "sha256": "83dfde7311b5f118078abb26c31cecbb5f1b07083507884d581d8663bfd25d1a",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -30380,13 +30381,13 @@
       "nome": "Garras",
       "velocidade": 5,
       "danoMedio": 7.5,
-      "jogada": 10
+      "jogada": 11
      }
     ]
    }
   },
   "salamandra": {
-   "sha256": "c280c40d72786a8bab0177e2b4fff21d0c56183e0ff03a2ca4715bffa62d2c6d",
+   "sha256": "ab2cd27b0938261609646b65a77aeec39f338462a05e8f7ebac5833134b22f1e",
    "entrada": {
     "categoria": "elemental",
     "centelha": 3,
@@ -30492,7 +30493,7 @@
       "nome": "Cauda",
       "velocidade": 6,
       "danoMedio": 16.5,
-      "jogada": 15
+      "jogada": 16
      }
     ]
    }
@@ -31150,7 +31151,7 @@
    }
   },
   "skum-ulat-kini": {
-   "sha256": "08b656035a309c2712cf95482f71a27603fb726d2b9c7c1d62634568e855eb1a",
+   "sha256": "57e1c4dd778c7001c1e414323b58064984ef3a42459b5db9d96983d42998cf19",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -31265,13 +31266,13 @@
       "nome": "Mordida",
       "velocidade": 5,
       "danoMedio": 7.5,
-      "jogada": 10
+      "jogada": 11
      },
      {
       "nome": "Garras",
       "velocidade": 5,
       "danoMedio": 7.5,
-      "jogada": 10
+      "jogada": 11
      }
     ]
    }
@@ -32194,7 +32195,7 @@
    }
   },
   "tengu": {
-   "sha256": "86469d8448fc1fa5ac270eaefffb9812ba370637d4281c06c91ceb16578e0936",
+   "sha256": "da2226291b47d766bb46bd12400a4f29d2066a7ea09616cf6577d5c150c30da1",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -32292,7 +32293,7 @@
       "nome": "Bico",
       "velocidade": 5,
       "danoMedio": 5.5,
-      "jogada": 9
+      "jogada": 10
      }
     ]
    }

@@ -28,13 +28,26 @@ export const MON: Record<string, any> = Object.fromEntries(MONSTROS.map((m) => [
 // A8: escolha local por instância; os ajustes guardados pelo Mestre continuam por cima.
 const CHAVE_FORMA = 'centelha:mesa:forma-criatura';
 const FORMAS_MEMORIA: Record<string,string> = {};
+/**
+ * Formas que mudaram de id, por criatura: a escolha guardada neste aparelho com o id antigo vai à forma nova, e não
+ * cai na principal. Como o RENOMES da ficha e o RENOMES_ARMA (ficha-migra.ts). A escolha mora no localStorage
+ * (CHAVE_FORMA), e não no banco, então não há migração. Ids de antes tirados do JSON publicado antes do merge 6f67500e.
+ */
+export const RENOMES_FORMA: Record<string, Record<string, string>> = {
+  // lote fase5-18 (D-265): a forma "humana ou de animal pequeno" virou a forma fixa "humana"
+  'dragao-dourado-adulto': { 'humana-ou-de-animal-pequeno': 'humana' },
+};
+export function formaRenomeada(monstro: string | null | undefined, forma: string | null): string | null {
+  return (forma && monstro && RENOMES_FORMA[monstro]?.[forma]) || forma;
+}
 export function formaEscolhidaDaPeca(c: any): string | null {
   if (!c?.id) return null;
-  if (Object.hasOwn(FORMAS_MEMORIA,c.id)) return FORMAS_MEMORIA[c.id];
-  try { return JSON.parse(localStorage.getItem(CHAVE_FORMA) || '{}')[c.id] || null; } catch { return null; }
+  if (Object.hasOwn(FORMAS_MEMORIA,c.id)) return formaRenomeada(c.monstro_id, FORMAS_MEMORIA[c.id]);
+  try { return formaRenomeada(c.monstro_id, JSON.parse(localStorage.getItem(CHAVE_FORMA) || '{}')[c.id] || null); } catch { return null; }
 }
 export function modeloNaForma(base: any, forma?: string | null): any {
-  return base?.formas?.find((f:any)=>f.id===forma)?.criatura || base;
+  const id = formaRenomeada(base?.id, forma ?? null);
+  return base?.formas?.find((f:any)=>f.id===id)?.criatura || base;
 }
 export function modeloDaPeca(c: any): any {
   const base = MON[c?.monstro_id];
@@ -106,9 +119,10 @@ export interface ResumoCombate {
   resistPerf: number; perfArma?: number | null; velocidade?: number | null;
   /**
    * A classe de tempo do ataque (leve · media · pesada · haste · distancia ·
-   * arremesso · arte), estimada pelo `gen-monsters.mjs` para criatura. O PC não
-   * a carrega: a dele sai da arma do catálogo, pelo id. Nula, a mesa cai no
-   * atalho pela Velocidade, como sempre caiu.
+   * arremesso · arte), estimada pelo `gen-monsters.mjs` para criatura. Do PC,
+   * a do item que a ficha guarda (D-259; ponta 4, 30/10/2026), e ela vem antes
+   * do catálogo no `classeDeTempo`. Nula, a mesa cai no catálogo pelo nome e
+   * depois no atalho pela Velocidade, como sempre caiu.
    */
   classe?: string | null;
   /**

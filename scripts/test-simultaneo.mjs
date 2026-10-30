@@ -155,8 +155,10 @@ eq(T.previsaoDeEncontro(1, 3, 0, 1), 0, 'já no alcance: zero Ticks');
   eq(de('Feiticeiro Menor'), 'leve', 'o Feiticeiro Menor da ficha v3 só soca: o Dardo flamejante foi para a linha Artes (D-196)');
   eq(de('Cultista Sombrio'), 'leve', 'o Cultista da ficha v3 só soca: o Toque mórbido foi para a linha Artes (D-196), Mana 9');
 
-  // A precedência: catálogo > classe explícita > velocidade.
-  eq(T.classeDeTempo('espada-longa', 5, 'pesada'), 'media', 'a arma do catálogo vence a estimativa');
+  // A precedência: classe explícita > catálogo > velocidade (ponta 4, 30/10/2026). A explícita é a do item da ficha
+  // do PC (D-259) ou a do gen-monsters.mjs, que para a arma do livro já é a do catálogo.
+  eq(T.classeDeTempo('espada-longa', 5, 'pesada'), 'pesada', 'a classe explícita (o item da ficha) vence o catálogo');
+  eq(T.classeDeTempo('espada-longa', 5, null), 'media', 'sem a explícita, o catálogo');
   eq(T.classeDeTempo('Garras', 6, 'haste'), 'haste', 'a estimativa vence o atalho da velocidade');
   eq(T.classeDeTempo('Garras', 6, null), 'media', 'sem estimativa, o atalho de sempre');
   // E a régua da arte-como-ataque: sai no último Tick, como distância.

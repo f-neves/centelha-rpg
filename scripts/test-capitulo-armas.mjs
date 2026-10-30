@@ -612,7 +612,9 @@ function conferirFicha(mostra, comb, armas) {
     const f = [];
     for (const [desc, id, ticks, esp] of FALLBACK) {
       const x = catalogo.find((y) => y.id === id);
-      const w = x ? { id: x.id, nome: x.nome, ...x.arma, ticks } : { id, nome: 'Arma inventada', ticks, classe: 'arremesso' };
+      // a arma inventada vem sem classe, como a peça personalizada (ARMA_LIVRE, equip.ts): a classe sai da Velocidade.
+      // Com a classe no item, ela vence (D-259; ponta 4, 30/10/2026): o caso fica abaixo, à parte.
+      const w = x ? { id: x.id, nome: x.nome, ...x.arma, ticks } : { id, nome: 'Arma inventada', ticks };
       const a = mostra(w);
       const vem = [a.preparo, a.golpes, a.recuperacao, a.ciclo], deve = esp === 'motor' ? motor(w.id, ticks) : esp;
       if (JSON.stringify(vem) !== JSON.stringify(deve)) f.push(`ficha, fallback (${desc}): mostra ${vem.join('/')}, devia mostrar ${deve.join('/')}`);
@@ -620,6 +622,13 @@ function conferirFicha(mostra, comb, armas) {
     return f;
   }
   for (const x of conferirFallback(dela(REGRAS))) falhas.push(x);
+  // ponta 4 (30/10/2026): o item que traz a classe (D-259) é lido por ela, e não pela Velocidade nem pelo catálogo
+  {
+    const a = dela(REGRAS)({ id: 'arma-inventada', nome: 'Arma inventada', ticks: 5, classe: 'arremesso' });
+    if (JSON.stringify([a.preparo, a.golpes, a.recuperacao, a.ciclo]) !== JSON.stringify([3, 1, 1, 5])) falhas.push(`ficha: a arma inventada com classe arremesso no item, V5, devia pegar o Arremesso médio (3/1/1/5), mostra ${[a.preparo, a.golpes, a.recuperacao, a.ciclo].join('/')}`);
+    const b = dela(REGRAS)({ ...ARMAS.find((y) => y.id === 'espada-longa').arma, id: 'espada-longa', nome: 'Espada Longa', ticks: 6, classe: 'distancia' });
+    if (b.preparo === dela(REGRAS)({ ...ARMAS.find((y) => y.id === 'espada-longa').arma, id: 'espada-longa', nome: 'Espada Longa', ticks: 6 }).preparo) falhas.push('ficha: a classe do item (distancia) não venceu a do catálogo (media) na espada longa');
+  }
   // controle negativo: cada mutante de ficha-pgr.ts tem de ser acusado pelo fallback
   const FONTE = ler('src/lib/ficha-pgr.ts');
   const mutantesFP = {

@@ -541,7 +541,7 @@ revistos por ela.
 - [ ] **K37 · [DECIDIR] `defesaPerdida` só soma o ataque RECEBIDO; `combate.md:405` cobra
   também o FEITO.** Registrado em 01/10/2026, B14 Fase 5b, Adendo 2, rodando a bancada de
   desafio. A Guarda sob pressão escrita diz "cada ataque que você FAZ OU RECEBE reduz sua
-  Esquiva e Bloqueio em −2". `defesaPerdida()`, `src/lib/combate-tempo.ts:696`: `pressao = (acao?.pressao || 0) * pressaoPorAtaque`.
+  Esquiva e Bloqueio em −2". `defesaPerdida()`, `src/lib/combate-tempo.ts:699`: `pressao = (acao?.pressao || 0) * pressaoPorAtaque`.
   Os dois lugares que incrementam a pressão só somam no ALVO do golpe, nunca em quem ataca:
   `scripts/sim/motor.mjs:437`: `(base.pressao || 0) + 1`.
   Na mesa, `src/pages/mesa/grid.astro:9076`: `pressao: (antes.pressao || 0) + golpes` (repete em `:9150`).

@@ -389,6 +389,37 @@ assert.equal(M.comForma(p,{corpo:{area:1}}).corpo.linhaPVMotivo,'da principal','
 for(const f of ['src/components/BestaCard.astro','src/components/FormaCriatura.astro'])assert.match(fs.readFileSync(f,'utf8'),/linhaPVTxt\([^;]*i\.corpo\.linhaPVMotivo\)/,f);
 assert.match(fs.readFileSync('src/lib/mesa-bestiario.ts','utf8'),/linhaPVTxt\([^;]*m\.corpo\.linhaPVMotivo\)/);
 });
+// Pontas, 2(a) (30/10/2026): o disfarce do deva astral diz "Equipamento: nenhum" e "a maça não acompanha a troca", e
+// herdava a Maça da principal (card com a Maça e Defesa 15). A linha da ficha ganhou "Ataques: os de um humano, com os
+// números dele", como a couatl e o dragão dourado. Guarda geral: forma com equipamento próprio e sem ataques próprios
+// não herda arma do livro da principal (antes do conserto, só o deva).
+cases.set('pontas-2a', async () => {
+const herda=[];for(const f of fs.readdirSync('src/data/bestiario').filter(x=>x.endsWith('.json'))){const c=JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8'));
+for(const fo of c.formas||[])if(fo.equipamento&&!('ataques' in fo)&&(M.comForma(c,fo).ataques||[]).some(a=>a.arma))herda.push(f+'/'+fo.id);}
+assert.deepEqual(herda,[],'forma com equipamento próprio herdando arma do livro: '+herda.join(' '));
+const d=JSON.parse(fs.readFileSync('src/data/bestiario/deva-astral.json','utf8'));const fo=d.formas.find(f=>f.id==='disfarce');assert.deepEqual(fo.ataques,[]);
+const v=M.vistaPublicaCriatura(d).motor.formas.find(f=>f.id==='disfarce').ficha.motor.stat;assert.equal(v.defesa,14,'o disfarce sem a Maça');assert.deepEqual(v.ataques,[]);
+const dm=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8')).find(x=>x.id==='deva-astral').formas.find(f=>f.id==='disfarce').criatura.combate;
+assert.equal(dm.defesa,14,'a mesa: o disfarce sem a Maça');assert.deepEqual(dm.ataques,[],'a mesa: o disfarce sem a Maça');
+});
+// Pontas, 3 (30/10/2026): a chave corpo.linhaPVMotivo (db208549) é chave aceita do formato, e não "a confirmar". Guarda
+// geral: toda chave de corpo que um dos 324 JSON grava (principal e formas) tem linha no formato-criatura.md, e nenhuma
+// linha de chave do formato fica "a confirmar".
+cases.set('pontas-3', async () => {
+const doc=fs.readFileSync('docs/bestiario/formato-criatura.md','utf8');const ks=new Set();
+for(const f of fs.readdirSync('src/data/bestiario').filter(x=>x.endsWith('.json'))){const c=JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8'));for(const o of [c,...(c.formas||[])])for(const k of Object.keys(o.corpo||{}))ks.add(k);}
+assert.ok(ks.has('linhaPVMotivo'),'algum JSON grava o porquê da linha de PV');
+const doc1=new Set(doc.split('\n').filter(l=>l.startsWith('| `')).flatMap(l=>[...l.split('|')[1].matchAll(/`corpo\.(\w+)`/g)].map(m=>m[1])));
+const falta=[...ks].filter(k=>!doc1.has(k));assert.deepEqual(falta,[],'chave de corpo sem linha no formato: '+falta.join(' '));
+const pend=doc.split('\n').filter(l=>/^\| `[^`]+` \|/.test(l)&&/a confirmar/i.test(l));assert.deepEqual(pend,[],'linha de chave "a confirmar": '+pend.map(l=>l.slice(0,40)).join(' · '));
+});
+// Pontas, 4, complemento (30/10/2026): a aba Combate passa a classe do item do PC ao classeDeTempo nos dois lugares
+// (o Preparo de quem age e a escolha de manobra); a criatura, nesta aba, continua sem a classe explícita.
+cases.set('pontas-4-combate', async () => {
+const src=fs.readFileSync('src/pages/mesa/combate.astro','utf8');const chamadas=[...src.matchAll(/classeDeTempo\(([^;\n]*)\)/g)].map(m=>m[1]).filter(a=>!/^\s*$/.test(a)&&!a.startsWith('classeDeTempo'));
+assert.ok(chamadas.length>=2,'as chamadas do classeDeTempo na aba Combate');
+for(const a of chamadas)assert.match(a,/tipo === 'pc' \? [^:]*\?\.classe : null/,'chamada sem a classe do item do PC: '+a);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

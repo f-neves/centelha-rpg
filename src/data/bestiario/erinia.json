@@ -309,7 +309,7 @@
     },
     {
       "campo": "ataques.Espada flamejante",
-      "motivo": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com a corda na outra: Força × 1 . O fogo da lâmina vai nas Manobras. Jogada: Destreza 7 + Armas 4 + 2 × o menor entre Centelha 5 e Armas 4 (8)"
+      "motivo": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com a corda na outra: Força × 1 . O fogo da lâmina vai nas Manobras. Jogada: Destreza 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "campo": "virtudes.temperanca",

@@ -234,13 +234,16 @@ export function classeDaArma(idOuNome?: string | null): ClasseArma {
 export function classeDeTempo(
   arma?: string | null, velocidade?: number | null, explicita?: string | null,
 ): ClasseArma {
-  if (armaDoCatalogo(arma)) return classeDaArma(arma);
-  // A classe estimada pelo bestiário (`gen-monsters.mjs`), quando existe: é ela
-  // que sabe que o Arqueiro atira e o forcado alcança dois hexágonos. O
-  // catálogo vem antes porque o id de arma da FICHA é dado, não estimativa.
+  // A classe explícita vem primeiro (ponta 4, 30/10/2026). Do PC, é a do ITEM que a ficha guarda (D-259: "o item do
+  // personagem não muda se o do livro mudar"), e não a do catálogo achado pelo nome ou pela origem. Da criatura, é a
+  // que o `gen-monsters.mjs` escreve: a do catálogo, no build, para a arma do livro (D-262), e a da ficha para o ataque
+  // natural, que é dado e não arma do livro. Antes o catálogo vinha primeiro, porque o id de arma da ficha era o dado;
+  // medido em 30/10/2026: nenhum dos 24 ataques de criatura com nome do catálogo tem classe diferente da dele, e
+  // nenhuma das 65 armas das fichas reais muda de classe nem de Preparo.
   if (explicita && ['leve', 'media', 'haste', 'pesada', 'distancia', 'arremesso', 'arte'].includes(explicita)) {
     return explicita as ClasseArma;
   }
+  if (armaDoCatalogo(arma)) return classeDaArma(arma);
   const v = velocidade ?? 5;
   return v <= 5 ? 'leve' : v === 6 ? 'media' : 'pesada';
 }

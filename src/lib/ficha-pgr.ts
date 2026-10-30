@@ -17,7 +17,7 @@ const ARREMESSO = /^(arremesso|funda)/;
 /** A anatomia que a ficha mostra para uma arma: a do livro quando a arma tem linha na tabela, a do motor quando não tem. */
 export function anatomiaDaFicha(w: any, regras: any): Anatomia {
   const velocidade = w?.ticks ?? 5;
-  const cls = classeDeTempo(w?.id || w?.nome, w?.ticks);
+  const cls = classeDeTempo(w?.id || w?.nome, w?.ticks, w?.classe); // a classe do item (D-259)
   const a = anatomiaTempo({ classe: cls, velocidade, sistema: 'pgr' });
   const ref = regras?.combate?.pgr?.reforma || {};
   // A linha do livro: primeiro a que cita a arma pelo id (com a Velocidade batendo, para a arma editada

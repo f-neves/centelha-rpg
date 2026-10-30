@@ -21,7 +21,7 @@ const eq = (a, b, m) => ok(JSON.stringify(a) === JSON.stringify(b), `${m}${JSON.
 
 // O catálogo trocado: tudo o que a ficha usa muda de número.
 const TROCAS = {
-  'armas.json': (l) => { for (const a of l) if (a.id === 'espada-longa') Object.assign(a.arma, { acerto: 5, dado: 3, danoBonus: 4, ticks: 9, defesaArma: 4, maos: 2, pericia: 'briga' }); },
+  'armas.json': (l) => { for (const a of l) if (a.id === 'espada-longa') Object.assign(a.arma, { acerto: 5, dado: 3, danoBonus: 4, ticks: 9, defesaArma: 4, maos: 2, pericia: 'briga', classe: 'distancia' }); },
   'escudos.json': (l) => { for (const e of l) if (e.id === 'broquel') Object.assign(e.escudo, { bloqCaC: 6, penalidade: 4 }); },
   'armaduras.json': (l) => { for (const a of l) if (a.id === 'gambeson') { a.armadura.soak = { impacto: 9, corte: 9, perfuracao: 9 }; a.armadura.penalidade = 5; } },
 };
@@ -39,8 +39,9 @@ async function monta(rel, trocado) {
   globalThis.__ENV__ = globalThis.__ENV__ || { BASE_URL: '/', MODE: 'test' };
   try { return await import(pathToFileURL(saida).href); } finally { try { fs.unlinkSync(saida); } catch { /* o sistema limpa */ } }
 }
-const real = { M: await monta('src/lib/motor.ts', false), E: await monta('src/lib/equip.ts', false), F: await monta('src/lib/ficha-formato.ts', false), R: await monta('src/lib/mesa-ficha.ts', false) };
-const trocado = { M: await monta('src/lib/motor.ts', true), E: await monta('src/lib/equip.ts', true), F: await monta('src/lib/ficha-formato.ts', true), R: await monta('src/lib/mesa-ficha.ts', true) };
+const real = { M: await monta('src/lib/motor.ts', false), E: await monta('src/lib/equip.ts', false), F: await monta('src/lib/ficha-formato.ts', false), R: await monta('src/lib/mesa-ficha.ts', false), T: await monta('src/lib/combate-tempo.ts', false), P: await monta('src/lib/ficha-pgr.ts', false) };
+const trocado = { M: await monta('src/lib/motor.ts', true), E: await monta('src/lib/equip.ts', true), F: await monta('src/lib/ficha-formato.ts', true), R: await monta('src/lib/mesa-ficha.ts', true), T: await monta('src/lib/combate-tempo.ts', true), P: await monta('src/lib/ficha-pgr.ts', true) };
+const REGRAS = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/regras.json'), 'utf8'));
 
 const kael = JSON.parse(fs.readFileSync(path.join(RAIZ, 'scripts/fixtures/kael.json'), 'utf8'));
 // Kael empunha espada longa e broquel e veste gambeson: as três peças que o catálogo trocado muda.
@@ -50,7 +51,11 @@ const numeros = (X, f) => {
   const c = X.M.combatePersonagem(L), n = X.M.numerosPersonagem(L), R = X.R.resumoFicha(f);
   return { arma: [w.ticks, w.acerto, w.dado, w.danoBonus, w.defesaArma, w.maos, w.pericia], escudo: [s.bloqCaC, s.penalidade],
     armadura: arm.map((a) => [a.soak, a.penalidade]), ataque: c.ataque, dano: c.dano, defesa: c.defesa, velocidade: c.velocidade,
-    esquiva: n.esquiva, bloqueio: n.bloqueio, absorcao: n.absorcao, resumo: [R.ataque, R.dano, R.defEsquiva, R.defBloqueio] };
+    esquiva: n.esquiva, bloqueio: n.bloqueio, absorcao: n.absorcao, resumo: [R.ataque, R.dano, R.defEsquiva, R.defBloqueio],
+    // ponta 4 (30/10/2026): a classe de tempo e o Preparo saem do item (D-259), na mesa (o resumo, como o Grid o lê) e na
+    // ficha (a anatomia que a /ficha mostra); o catálogo trocado põe a espada longa em `distancia`
+    tempo: (() => { const cl = X.T.classeDeTempo(c.arma, c.velocidade, c.classe), a = X.P.anatomiaDaFicha(w, REGRAS);
+      return { classe: c.classe, mesa: [cl, X.T.preparoDe(cl, c.velocidade, 'pgr')], ficha: [a.preparo, a.golpes, a.recuperacao] }; })() };
 };
 
 console.log('1. o item gravado não segue o catálogo');
@@ -67,6 +72,8 @@ eq(depois, antes, 'catálogo trocado (espada, broquel, gambeson): a ficha gravad
 const crua = numeros(trocado, kael);
 ok(JSON.stringify(crua.arma) !== JSON.stringify(antes.arma) && JSON.stringify(crua.escudo) !== JSON.stringify(antes.escudo),
   'controle: a ficha antiga (ref sem item) lida pelo catálogo trocado muda de número');
+ok(JSON.stringify(crua.tempo) !== JSON.stringify(antes.tempo) && antes.tempo.classe === 'media' && antes.tempo.mesa[0] === 'media',
+  'controle: o catálogo trocado muda a classe de tempo da ficha antiga; a gravada fica com a do item (media)');
 
 console.log('2. a ficha da 41 (ref + ajuste) vira item na leitura, pela conta de antes');
 const f41 = real.F.fichaParaGravar(kael);
