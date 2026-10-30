@@ -36451,7 +36451,8 @@
      },
      "fisiologia": {
       "camuflagem": "passa por um humano"
-     }
+     },
+     "ataques": []
     }
    ],
    "elementos": {
@@ -36904,7 +36905,7 @@
      "combate": {
       "pv": 43,
       "energia": 26,
-      "defesa": 15,
+      "defesa": 14,
       "defesaSocial": 24,
       "defesaMental": 34,
       "absorcao": {
@@ -36922,17 +36923,7 @@
        "arranque": 8,
        "corrida": 12
       },
-      "ataques": [
-       {
-        "nome": "Maça",
-        "pool": "6d6 +9",
-        "dano": "1d6 +14 (I)",
-        "perfArma": null,
-        "speed": 6,
-        "classe": "media",
-        "forcaInvestida": 8
-       }
-      ]
+      "ataques": []
      },
      "habilidadesEspeciais": [
       {

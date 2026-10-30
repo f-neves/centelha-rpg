@@ -4,7 +4,7 @@
 // Absorção, peso erguido, Tamanho, faixa, Energia, Iniciativa, Mana e, por ataque, a jogada, o dano médio e a
 // Velocidade). O gen-criaturas-esperado.mjs os copia para scripts/fixtures/criaturas-esperado.json junto com as entradas,
 // e este teste pede cada conta ao motor e compara número por número. Acusa a criatura, a conta e os dois números.
-// Uma diferença só se aceita com o motivo escrito em ACEITAS, abaixo.
+// Nenhuma diferença se aceita: a lista de exceção (ACEITAS_JOGADA) saiu em 30/10/2026, com as 11 fichas corrigidas.
 //
 // O jogador também tem números esperados, escritos aqui com a procedência (D-234; plano-conversao.md, seção 0).
 //
@@ -52,7 +52,7 @@ if (!M) {
   process.exit(1);
 }
 
-const falhas = [], aceitas = [];
+const falhas = [];
 let contas = 0;
 const confere = (id, conta, vem, deve, tol = 0) => {
   contas++;
@@ -60,19 +60,10 @@ const confere = (id, conta, vem, deve, tol = 0) => {
   if (igual) return;
   falhas.push({ id, conta, vem, deve });
 };
-// ACEITAS. D-208 completada pela D-258 (29/10/2026): no corpo a corpo a criatura rola pela maior entre Briga e Armas.
-// Estas fichas .md (tmp/arquiteto/bestiario/fichas-v3) escreveram a frase "Jogada:" pela Habilidade do catálogo
-// (arma) ou pela gravada (ataque natural), com a outra maior. A ficha .md é que se corrige; até lá, a diferença só
-// passa se o número da ficha for exatamente a conta pela Habilidade antiga.
-// A reconversão de 30/10/2026 (P17, fase5-01 a fase5-18) não as resolve, porque não muda a ficha .md: as 11 estão com
-// o número novo para a Bestiarista em tmp/bestiarista-fichas/ajustes-parecer-f4.md, seção 7. A entrada que deixar de
-// ser usada (a ficha corrigida entrou e o fixture foi regenerado) falha, para a lista encolher junto com o problema.
-const ACEITAS_JOGADA = Object.fromEntries([
-  ['babau', 'Lança', 'armas', true], ['boggard', 'Maça estrela', 'armas', true], ['diabo-barbado', 'Glaive serrilhada', 'armas', true],
-  ['erinia', 'Espada flamejante', 'armas', true], ['centauro', 'Coice', 'briga', false], ['minotauro', 'Chifrada', 'briga', false],
-  ['sahuagin', 'Garras', 'briga', false], ['salamandra', 'Cauda', 'briga', false], ['skum-ulat-kini', 'Mordida', 'briga', false],
-  ['skum-ulat-kini', 'Garras', 'briga', false], ['tengu', 'Bico', 'briga', false],
-].map(([id, nome, antiga, arma]) => [id + ' · ' + nome, { antiga, arma }]));
+// A frase "Jogada:" da ficha é cobrada pela regra de hoje, sem exceção: D-208 completada pela D-258, no corpo a corpo
+// o maior entre Força e Destreza e a maior Habilidade entre Briga e Armas. As 11 frases da regra antiga (babau,
+// boggard, diabo-barbado, erínia, centauro, minotauro, sahuagin, salamandra, skum-ulat-kini duas vezes e tengu)
+// foram reescritas nas fichas no lote ajuste-pontas de 30/10/2026, e a lista de exceção ACEITAS_JOGADA saiu.
 // o peso erguido da ficha vem com duas casas, e o conferidor confere a 1% (GUIA-FICHA.md, seção 7)
 const tolPeso = (p) => Math.max(0.02, Math.abs(p) * 0.01);
 
@@ -95,19 +86,7 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
     if (a.velocidade !== undefined) confere(id, `${a.nome}.velocidade`, ra.velocidade, a.velocidade);
     if (a.danoMedio !== undefined) confere(id, `${a.nome}.danoMedio`, ra.danoMedio, a.danoMedio);
     // a frase "Jogada:" da ficha soma o Atributo, a Habilidade e a Centelha, sem o Acerto da coluna
-    if (a.jogada !== undefined) {
-      const aceita = ACEITAS_JOGADA[id + ' · ' + a.nome];
-      if (aceita && ra.jogada - (ra.acerto || 0) !== a.jogada) {
-        // a ficha só passa se o número dela for a conta pela Habilidade antiga, e o motor a conta pela maior
-        const ea = e.ataques.find((y) => y.nome === a.nome), hv = (h) => e.habilidades[h] ?? e.habilidadesSec[h] ?? 0;
-        const velha = hv(aceita.antiga), nova = hv(ra.habilidade);
-        const atr = Math.max(e.atributos.forca ?? 0, e.atributos.destreza ?? 0), ce = e.centelha ?? 0;
-        confere(id, `${a.nome}.jogada pela Habilidade antiga (${aceita.antiga})`, atr + velha + 2 * Math.min(ce, velha), a.jogada);
-        confere(id, `${a.nome}.jogada pela maior entre Briga e Armas`, ra.jogada - (ra.acerto || 0), atr + nova + 2 * Math.min(ce, nova));
-        confere(id, `${a.nome}.a maior é maior que a antiga`, nova > velha && !ea?.arma === !aceita.arma, true);
-        aceitas.push(id + ' · ' + a.nome);
-      } else confere(id, `${a.nome}.jogada`, ra.jogada - (ra.acerto || 0), a.jogada);
-    }
+    if (a.jogada !== undefined) confere(id, `${a.nome}.jogada`, ra.jogada - (ra.acerto || 0), a.jogada);
   }
   for (const [fid, fo] of Object.entries(c.formas || {})) {
     const rf = M.criatura(M.comForma(c.entrada, fo.entrada));
@@ -117,8 +96,6 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
     }
   }
 }
-// a lista de exceção encolhe com o problema: a entrada que nenhuma ficha usou é velha
-for (const k of Object.keys(ACEITAS_JOGADA)) if (!aceitas.includes(k)) confere(k, 'ACEITAS_JOGADA sem uso (a ficha já foi corrigida: tire a linha)', 'sem uso', 'usada');
 
 // P4: o critério é Inteligência, inclusive fora dos animais; Int 0 continua imune.
 for (const categoria of ['animal', 'fera-magica', 'humanoide']) {
@@ -332,5 +309,4 @@ if (falhas.length) {
   }
   process.exit(1);
 }
-console.log(`✓ test-motor · ${contas} contas de ${nC} criaturas e ${JOGADOR.length} referências de jogador e 5 casos raciais batem com as fichas`
-  + (aceitas.length ? ` · ${aceitas.length} aceitas com motivo` : ''));
+console.log(`✓ test-motor · ${contas} contas de ${nC} criaturas e ${JOGADOR.length} referências de jogador e 5 casos raciais batem com as fichas`);

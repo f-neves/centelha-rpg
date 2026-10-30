@@ -389,6 +389,19 @@ assert.equal(M.comForma(p,{corpo:{area:1}}).corpo.linhaPVMotivo,'da principal','
 for(const f of ['src/components/BestaCard.astro','src/components/FormaCriatura.astro'])assert.match(fs.readFileSync(f,'utf8'),/linhaPVTxt\([^;]*i\.corpo\.linhaPVMotivo\)/,f);
 assert.match(fs.readFileSync('src/lib/mesa-bestiario.ts','utf8'),/linhaPVTxt\([^;]*m\.corpo\.linhaPVMotivo\)/);
 });
+// Pontas, 2(a) (30/10/2026): o disfarce do deva astral diz "Equipamento: nenhum" e "a maça não acompanha a troca", e
+// herdava a Maça da principal (card com a Maça e Defesa 15). A linha da ficha ganhou "Ataques: os de um humano, com os
+// números dele", como a couatl e o dragão dourado. Guarda geral: forma com equipamento próprio e sem ataques próprios
+// não herda arma do livro da principal (antes do conserto, só o deva).
+cases.set('pontas-2a', async () => {
+const herda=[];for(const f of fs.readdirSync('src/data/bestiario').filter(x=>x.endsWith('.json'))){const c=JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8'));
+for(const fo of c.formas||[])if(fo.equipamento&&!('ataques' in fo)&&(M.comForma(c,fo).ataques||[]).some(a=>a.arma))herda.push(f+'/'+fo.id);}
+assert.deepEqual(herda,[],'forma com equipamento próprio herdando arma do livro: '+herda.join(' '));
+const d=JSON.parse(fs.readFileSync('src/data/bestiario/deva-astral.json','utf8'));const fo=d.formas.find(f=>f.id==='disfarce');assert.deepEqual(fo.ataques,[]);
+const v=M.vistaPublicaCriatura(d).motor.formas.find(f=>f.id==='disfarce').ficha.motor.stat;assert.equal(v.defesa,14,'o disfarce sem a Maça');assert.deepEqual(v.ataques,[]);
+const dm=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8')).find(x=>x.id==='deva-astral').formas.find(f=>f.id==='disfarce').criatura.combate;
+assert.equal(dm.defesa,14,'a mesa: o disfarce sem a Maça');assert.deepEqual(dm.ataques,[],'a mesa: o disfarce sem a Maça');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
