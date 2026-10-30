@@ -11,6 +11,9 @@
 // por um texto que talvez ninguém abra na sessão inteira.
 import MONSTROS from '../../../data/monsters.json';
 import TECNICAS from '../../../data/tecnicas.json';
+import HAB from '../../../data/habilidades.json';
+import SEC from '../../../data/habilidades-secundarias.json';
+import { habilidadesDeTreino } from '../../../lib/besta-card';
 
 // A MESMA RESOLUÇÃO DO `gen-monsters.mjs`, e ela precisa acontecer nos dois
 // lugares porque o card é montado com QUALQUER um dos dois: a versão magra
@@ -28,6 +31,12 @@ const comTecnicas = (m: any) => (m.tecnicas || []).length
     }) }
   : m;
 
+// As Habilidades de treino com o nome do livro (D-270), resolvidas aqui pelo mesmo motivo das Técnicas: os catálogos
+// ficam no build, e o card da mesa ganha o painel "Habilidades" quando a criatura inteira chega.
+const NOMES_HAB: Record<string, string> = Object.fromEntries([...(HAB as any[]), ...(SEC as any[])].map((h) => [h.id, h.nome]));
+const comTreino = (m: any) => ({ ...m, treino: habilidadesDeTreino(m, NOMES_HAB),
+  ...(m.formas?.length ? { formas: m.formas.map((f: any) => ({ ...f, criatura: f.criatura ? { ...f.criatura, treino: habilidadesDeTreino(f.criatura, NOMES_HAB) } : f.criatura })) } : {}) });
+
 export const prerender = true;
 
 export function getStaticPaths() {
@@ -35,7 +44,7 @@ export function getStaticPaths() {
 }
 
 export function GET({ props }: { props: { m: any } }) {
-  return new Response(JSON.stringify(comTecnicas(props.m)), {
+  return new Response(JSON.stringify(comTreino(comTecnicas(props.m))), {
     headers: { 'Content-Type': 'application/json; charset=utf-8' },
   });
 }

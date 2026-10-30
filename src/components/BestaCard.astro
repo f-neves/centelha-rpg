@@ -16,7 +16,9 @@ import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
-import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano } from '../lib/besta-card';
+import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt } from '../lib/besta-card';
+import HAB from '../data/habilidades.json';
+import SEC from '../data/habilidades-secundarias.json';
 
 interface Props { i: any }
 const { i } = Astro.props;
@@ -30,6 +32,10 @@ const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado'
 const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
 const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
+// As Habilidades de treino (D-270): o painel "Habilidades" do card, com o nome do livro.
+const NOMES_HAB: Record<string, string> = Object.fromEntries([...(HAB as any[]), ...(SEC as any[])].map((h) => [h.id, h.nome]));
+const treino = habilidadesDeTreino(i, NOMES_HAB);
+const temTreino = treino.primarias.length + treino.secundarias.length > 0;
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 // Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".
@@ -43,7 +49,8 @@ const usosTxt = (u: any) => {
   return u.recarga ? `${base} (${u.recarga})` : base;
 };
 const RESISTE: Record<string, string> = { esquiva: 'Esquiva', corpo: 'corpo', mente: 'mente', nenhum: 'nenhuma' };
-// tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
+// tem conteúdo mecânico (Poderes / Técnicas / Artes) → botão "Poderes" do card flutuante (D-270: o que se chamava
+// "Habilidades" eram os poderes; as Habilidades de treino têm o botão delas)
 const temMec = (x: any) => !!((x.habilidadesEspeciais?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length));
 // listas de poderes por criatura (ids p/ filtro)
 const caminhosDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
@@ -184,7 +191,10 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             <div class="besta-foot">
               <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
               {temMec(i) && (
-                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades</button>
+                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✦</span> Poderes</button>
+              )}
+              {temTreino && (
+                <button class="besta-info besta-treino" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades</button>
               )}
               {i.lore?.length > 0 && (
                 <button class="besta-info" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">ⓘ</span> Informações</button>
@@ -200,7 +210,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
               {temMec(i) && (
                 <template class="mech-tpl">
                   {i.habilidadesEspeciais?.length > 0 && (<>
-                    <h4>Habilidades</h4>
+                    <h4>Poderes</h4>
                     <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.campos ? <>{h.texto}<ul class="hab-campos">{h.campos.map((x: any) => <li><span class="hc-rot">{x.rotulo}:</span> {x.valor}</li>)}</ul></> : h.descricao}{h.base ? ` · base ${h.base.arte} ${h.base.nivel}` : ''}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
                   </>)}
                   {i.poderes?.length > 0 && (<>
@@ -215,6 +225,14 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                     {i.mana != null && (<p class="ib-ref"><b>Mana:</b> {i.mana}</p>)}
                     {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
                   </>)}
+                </template>
+              )}
+              {temTreino && (
+                <template class="treino-tpl">
+                  <h4>Habilidades</h4>
+                  <p class="ib-ref muted">O treino da criatura, que se soma ao Atributo na jogada, como no livro (Cap. II).</p>
+                  {treino.primarias.length > 0 && <p class="ib-ref"><b>Habilidades:</b> {treinoTxt(treino.primarias)}</p>}
+                  {treino.secundarias.length > 0 && <p class="ib-ref"><b>Secundárias:</b> {treinoTxt(treino.secundarias)}</p>}
                 </template>
               )}
               {i.lore?.length > 0 && (
@@ -232,7 +250,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
     const card = seletor.closest('.besta')!;
     card.querySelectorAll<HTMLElement>('[data-forma-painel]').forEach(p=>p.hidden=p.dataset.formaPainel!==seletor.value);
     const principal = seletor.selectedIndex === 0;
-    card.querySelectorAll<HTMLElement>('.besta-mech').forEach(b=>b.hidden=!principal);
+    card.querySelectorAll<HTMLElement>('.besta-mech, .besta-treino').forEach(b=>b.hidden=!principal);
   });
 </script>
 

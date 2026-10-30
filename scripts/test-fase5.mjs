@@ -269,6 +269,23 @@ assert.ok(!/Principais Habilidades:\*[^.\n]*Arremesso/.test(fo),'a Força ainda 
 assert.match(fs.readFileSync('src/content/chapters/combate.md','utf8'),/Para <strong>arremessos<\/strong>, sempre Destreza/);
 assert.equal(M.atributoDaJogada('arremesso',{forca:5,destreza:1}),1,'o motor joga o arremesso pela Destreza');
 });
+// L1 (D-270): o card separa "Poderes" (os poderes da criatura, o que se chamava "Habilidades") de "Habilidades" (as de
+// treino, com o nome do livro): no /bestiario, nas outras formas e no card da mesa.
+cases.set('L1', async () => {
+const B=await carregarTS('src/lib/besta-card.ts');const H=JSON.parse(fs.readFileSync('src/data/habilidades.json','utf8')),S=JSON.parse(fs.readFileSync('src/data/habilidades-secundarias.json','utf8'));
+const nomes=Object.fromEntries([...H,...S].map(h=>[h.id,h.nome]));const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));
+const ban=mon.find(m=>m.id==='bandido-de-estrada');const t=B.habilidadesDeTreino(ban,nomes);
+assert.equal(t.primarias.length,Object.keys(ban.habilidades).length);assert.ok(t.primarias.some(h=>h.nome==='Furtividade'&&h.valor===ban.habilidades.furtividade),'a Furtividade do bandido');
+const semNome=mon.flatMap(m=>[m,...(m.formas||[]).map(f=>f.criatura)]).flatMap(x=>{const r=B.habilidadesDeTreino(x,nomes);return [...r.primarias,...r.secundarias].filter(h=>h.nome===h.id)});assert.deepEqual(semNome,[],'Habilidade sem o nome do livro');
+const card=fs.readFileSync('src/components/BestaCard.astro','utf8');assert.match(card,/besta-mech[^>]*>.*✦<\/span> Poderes<\/button>/);assert.match(card,/besta-treino[^>]*>.*☰<\/span> Habilidades<\/button>/);
+assert.ok(!/<h4>Habilidades<\/h4>\s*<ul class="ib-hab">/.test(card),'os poderes ainda sob "Habilidades"');assert.match(card,/<h4>Poderes<\/h4>\s*<ul class="ib-hab">/);assert.match(card,/<template class="treino-tpl">/);
+assert.match(fs.readFileSync('src/pages/bestiario.astro','utf8'),/besta-treino'\) \? '\.treino-tpl'/);
+const forma=fs.readFileSync('src/components/FormaCriatura.astro','utf8');assert.ok(!/Habilidades especiais/.test(forma));assert.match(forma,/<h4>Habilidades<\/h4>/);
+const MB=await carregarTS('src/lib/mesa-bestiario.ts');const html=MB.cardCriaturaHTML({...ban,treino:t});
+assert.match(html,/<h4 class="cc-h">Habilidades<\/h4><p class="ib-ref"><b>Habilidades:<\/b> [^<]*Furtividade \d/);assert.match(html,/<h4 class="cc-h">Poderes<\/h4><ul class="ib-hab">/);assert.ok(!/<h4 class="cc-h">Habilidades<\/h4><ul/.test(html));
+const EP=await carregarTS('src/pages/dados/criatura/[id].json.ts');const lob=mon.find(m=>m.id==='lobisomem');const r=await EP.GET({props:{m:lob}}).json();
+assert.ok(r.treino.primarias.length>0);assert.ok(r.formas.every(f=>f.criatura.treino&&f.criatura.treino.primarias.length>0),'a forma sem o treino');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

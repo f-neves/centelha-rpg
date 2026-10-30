@@ -63,7 +63,7 @@ const opcoesEditor = {
   <h1>Bestiário & NPCs</h1>
   <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens (PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados). Os poderes especiais aparecem como <strong>poderes naturais</strong> (com usos por dia, por cena ou à vontade) ou como <strong>Artes</strong> de verdade, quando a criatura conjura como um personagem conjuraria.</p>
 
-  <div class="callout regra"><span class="lbl">Informações</span>O bloco traz o <strong>Ataque</strong> (o pool, já com o Acerto) e o <strong>Dano</strong> prontos para rolar. O tipo de dano vem em sigla: <strong>Impacto (I)</strong>, <strong>Corte (C)</strong>, <strong>Perfuração (P)</strong>. <strong>Ameaça</strong> (◆) é o desafio publicado até hoje; está em recalibração, e os losangos continuam mostrando o valor antigo até a bancada medir de novo. A lista de <strong>Poderes</strong> mostra o efeito, os usos e o que o alvo resiste, quando a criatura tiver algum. Toque na arte para ampliar.</div>
+  <div class="callout regra"><span class="lbl">Informações</span>O bloco traz o <strong>Ataque</strong> (o pool, já com o Acerto) e o <strong>Dano</strong> prontos para rolar. O tipo de dano vem em sigla: <strong>Impacto (I)</strong>, <strong>Corte (C)</strong>, <strong>Perfuração (P)</strong>. <strong>Ameaça</strong> (◆) é o desafio publicado até hoje; está em recalibração, e os losangos continuam mostrando o valor antigo até a bancada medir de novo. O botão <strong>Poderes</strong> mostra os poderes da criatura (o efeito, os usos e o que o alvo resiste), e o botão <strong>Habilidades</strong>, as Habilidades de treino dela (Armas, Esquiva, Furtividade...), com o valor que se soma ao Atributo na jogada, como no livro. Toque na arte para ampliar.</div>
 
   <div class="callout"><span class="lbl">Dano</span>O golpe comum de uma criatura soma a <strong>Força uma vez</strong> ao dano (um só membro: garra, presa, braço ou tentáculo), e isso vale também para a marrada, o pisão e o mergulho. A Força só entra <strong>em dobro</strong> em dois casos: quando se empunha uma <strong>arma</strong> com mais de um membro (as duas mãos num montante, por exemplo), e na <strong>cauda que varre com o giro do corpo inteiro</strong>, que o card já mostra com a Força em dobro. Na <strong>ação de <a href={url('regras/combate') + '#investida'}>Investida</a></strong>, como o personagem, o golpe que fecha a corrida soma a Força <strong>mais uma vez</strong> e o +1d6: de × 1 para × 2 com um membro, de × 2 para × 3 com a arma de duas mãos; o card diz o dano investindo de quem tem Investida. Uma criatura com muitos membros ataca <strong>várias vezes</strong> (um golpe por membro), não com mais Força por golpe.</div>
 
@@ -736,7 +736,7 @@ const opcoesEditor = {
     const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.besta-foot .besta-info:not(.besta-editar)');
     if (!b) return;
     const card = b.closest('.besta') as HTMLElement;
-    if (card) abrirModal(card, b.classList.contains('besta-mech') ? '.mech-tpl' : '.lore-tpl');
+    if (card) abrirModal(card, b.classList.contains('besta-mech') ? '.mech-tpl' : b.classList.contains('besta-treino') ? '.treino-tpl' : '.lore-tpl');
   });
   ib.addEventListener('click', (e) => { if (e.target === ib || (e.target as HTMLElement).classList.contains('ib-fechar')) fecharInfo(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ib.hidden) fecharInfo(); });

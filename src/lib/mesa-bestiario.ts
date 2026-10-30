@@ -386,7 +386,12 @@ export function cardCriaturaHTML(m: any): string {
   const elem = (elFraq.length || elRes.length || elImu.length)
     ? `<div class="besta-elem">${elFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${elRes.map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}${elImu.map((i: string) => `<span class="el el-imune" title="Imunidade">◆ ${esc(i)}</span>`).join('')}</div>` : '';
   const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: ${cb.vestida ? `${vMarca(esc(a.pool), vEsc === 'sem')} sem o equipamento · ${vMarca(esc(poolComPenalidade(a.pool, cb.vestida.penalidade)), vEsc === 'com')} com` : `<b>${esc(a.pool)}</b>`} · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
-  const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
+  // D-270 (L1): "Poderes" são os poderes da criatura (o que se chamava "Habilidades"); "Habilidades" são as de treino,
+  // com o nome do livro, que chegam resolvidas com a criatura inteira (`/dados/criatura/<id>.json`, campo `treino`).
+  const tr = m.treino;
+  const linhaTr = (rot: string, l: any[]) => (l?.length ? `<p class="ib-ref"><b>${rot}:</b> ${l.map((h: any) => `${esc(h.nome)} ${h.valor}`).join(' · ')}</p>` : '');
+  const treino = tr && (tr.primarias?.length || tr.secundarias?.length) ? `<h4 class="cc-h">Habilidades</h4>${linhaTr('Habilidades', tr.primarias)}${linhaTr('Secundárias', tr.secundarias)}` : '';
+  const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Poderes</h4><ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
     ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`
     : `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
@@ -413,7 +418,7 @@ export function cardCriaturaHTML(m: any): string {
     <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
     ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
     ${porte}${m.formaPrincipal ? '<p>Forma: '+esc(m.formaPrincipal.nome)+'</p>' : ''}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
-    ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${lore}
+    ${stats}${elem}${atrib}${tracos}${atk}${treino}${habs}${pods}${refs}${lore}
   </div></article>`;
 }
 
