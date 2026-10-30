@@ -290,7 +290,7 @@ assert.ok(r.treino.primarias.length>0);assert.ok(r.formas.every(f=>f.criatura.tr
 // quer dizer pela C-037), achado 9 (por que a linha de PV na zona de transição) e achado 14 (quantos tentáculos).
 cases.set('leitora-card', async () => {
 const B=await carregarTS('src/lib/besta-card.ts');const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));
-assert.equal(B.baseTxt({arte:'fascinacao',nivel:4},{fascinacao:'Fascinação'}),' · base: Fascinação 4');assert.match(B.BASE_NOTA,/não gasta Mana nem depende da Centelha/);
+assert.equal(B.baseTxt({arte:'fascinacao',nivel:4},{fascinacao:'Fascinação'}),' · base: Fascinação 4');assert.match(B.BASE_NOTA,/não gasta Mana nem pede Centelha mínima/);assert.ok(!/depende da Centelha/.test(B.BASE_NOTA),'a nota diz mais que a C-037');
 const ar=mon.find(m=>m.id==='aguia-real');const z=M.linhaPVNaZona(ar.corpo.massa,ar.atributos.vigor,ar.corpo.linhaPV);
 assert.equal(B.linhaPVTxt(z,ar.combate.pv),'PV pela linha de baixo da zona de transição (3 kg a 5 kg): a ficha escolheu pelo corpo, frágil, que desce; a linha de cima daria 12.');
 assert.equal(ar.combate.pv,6);assert.equal(M.linhaPVNaZona(70,3,'acima'),null,'fora da zona não há nota');assert.equal(M.linhaPVNaZona(4.6,2,undefined),null);

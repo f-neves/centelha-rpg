@@ -58,9 +58,9 @@ export const treinoTxt = (l: Treino['primarias']) => l.map((h) => `${h.nome} ${h
 /**
  * O "base <Arte> <nível>" do poder natural, por extenso (parecer da Leitora-novata, achado 6). O poder inato com usos é
  * poder natural, "com base e nível mantidos como parâmetro", sem portão de Centelha e com os usos da fonte (C-037): a
- * Arte e o nível medem o efeito, e o poder não gasta Mana.
+ * Arte e o nível medem o efeito, e o poder não gasta Mana nem tem o portão de Centelha das Artes.
  */
-export const BASE_NOTA = 'Base: a Arte e o nível que medem um poder natural. Ele não é Arte conjurada: não gasta Mana nem depende da Centelha, e os usos e a resistência são os escritos no poder.';
+export const BASE_NOTA = 'Base: a Arte e o nível que medem um poder natural. Ele não é Arte conjurada: não gasta Mana nem pede Centelha mínima, e os usos e a resistência são os escritos no poder.';
 export const baseTxt = (b: { arte: string; nivel: number } | undefined, arteNome: Record<string, string>) => (b ? ` · base: ${arteNome[b.arte] ?? b.arte} ${b.nivel}` : '');
 
 /** A massa por extenso, como a tabela do Cap. IV: g abaixo de 1 kg, t de 1.000 kg para cima, vírgula decimal. */
