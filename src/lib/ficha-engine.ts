@@ -26,8 +26,8 @@ import { sparkSVG } from './centelha-spark';
 import { url } from './site';
 import {
   ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS, ID_ARMADURA_LIVRE, baseArmadura,
-  CAMPOS_ARMA, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
-  armaComMod, armaduraComMod, escudoComMod, armadurasDe, baseCampo, valorCampo, temMod,
+  CAMPOS_ARMA, CAMPOS_ARMA_MAIS, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
+  armadurasDe, baseCampo, itemDaPeca, origemDaPeca, restaurarItem, escreveCampo, congelarItens,
   danoStr, statsArma, statsArmadura, statsEscudo, sinalNum,
 } from './equip';
 import { uiConfirmar, uiErro, uiEscolher, uiFormulario, uiPainel } from './ui-dialog';
@@ -246,6 +246,7 @@ export function montarFicha(opts: FichaOpts) {
     const o: any = { ref: String(s?.ref || dflt) };
     if (s?.nome != null) o.nome = String(s.nome);
     for (const k of ['dado', 'danoBonus', 'acerto']) if (Number.isFinite(Number(s?.[k]))) o[k] = Number(s[k]);
+    if (s?.item && typeof s.item === 'object') o.item = s.item;
     if (s?.mod && typeof s.mod === 'object') {
       const m: Record<string, number> = {};
       for (const [k, v] of Object.entries(s.mod)) if (Number.isFinite(Number(v))) m[k] = Number(v);
@@ -259,7 +260,7 @@ export function montarFicha(opts: FichaOpts) {
   const novoUid = () => 'p' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-3);
   /** Duas peças são a mesma coisa se têm o mesmo item, os mesmos ajustes e o mesmo nome. */
   const assinaturaPeca = (p: any) =>
-    [p?.ref, p?.nome || '', JSON.stringify(p?.mod || null), p?.dado ?? '', p?.danoBonus ?? '', p?.acerto ?? ''].join('|');
+    [p?.ref, p?.nome || '', JSON.stringify(p?.mod || null), JSON.stringify(p?.item || null), p?.dado ?? '', p?.danoBonus ?? '', p?.acerto ?? ''].join('|');
   const pecaArsenal = (uid: string) => (S.arsenal || []).find((p: any) => p.uid === uid) || null;
   /**
    * Copia os dados da peça do arsenal para dentro do slot da mão.
@@ -270,11 +271,15 @@ export function montarFicha(opts: FichaOpts) {
    * esta função é o único lugar que as reconcilia.
    */
   function sincronizarSlots() {
+    // D-259: toda peça nova ganha aqui a cópia inteira do item (do catálogo, ou o padrão
+    // da peça personalizada), e o slot leva a mesma cópia: a mesa lê o slot.
+    congelarItens(S);
     (S.conjuntos || []).forEach((cj: any) => (['habil', 'inabil'] as const).forEach((hand) => {
       const s = cj[hand]; if (!s?.uid) return;
       const p = pecaArsenal(s.uid);
       if (!p) { cj[hand] = { ref: hand === 'habil' ? 'a:desarmado' : 'nada' }; return; }
       cj[hand] = { uid: p.uid, ref: p.ref, ...(p.nome != null ? { nome: p.nome } : {}), ...(p.mod ? { mod: p.mod } : {}),
+        ...(p.item ? { item: structuredClone(p.item) } : {}),
         ...(p.dado != null ? { dado: p.dado } : {}), ...(p.danoBonus != null ? { danoBonus: p.danoBonus } : {}),
         ...(p.acerto != null ? { acerto: p.acerto } : {}) };
     }));
@@ -399,8 +404,8 @@ export function montarFicha(opts: FichaOpts) {
     S.equip.armaduras = S.equip.armaduras.map((p: any) => (typeof p === 'string'
       ? { uid: novoUid(), base: p, mod: modsAntigos[p] ? { ...modsAntigos[p] } : undefined, vestida: true }
       : { uid: p?.uid || novoUid(), base: p?.base, nome: p?.nome || undefined, mod: p?.mod || undefined,
-          img: p?.img || undefined, enq: p?.enq || undefined, vestida: p?.vestida !== false })
-    ).filter((p: any) => baseArmadura(p.base));
+          item: p?.item || undefined, img: p?.img || undefined, enq: p?.enq || undefined, vestida: p?.vestida !== false })
+    ).filter((p: any) => p.item || baseArmadura(p.base));
     delete S.equip.armMod;
 
     // Arsenal: as armas e escudos que o personagem possui. Nasce do que já estava nos
@@ -411,7 +416,7 @@ export function montarFicha(opts: FichaOpts) {
       if (!s || s.ref === 'nada' || s.ref === 'a:desarmado') return;
       const achado = S.arsenal.find((p: any) => assinaturaPeca(p) === assinaturaPeca(s));
       if (achado) { s.uid = achado.uid; return; }
-      const nova = { uid: novoUid(), ref: s.ref, nome: s.nome, mod: s.mod, dado: s.dado, danoBonus: s.danoBonus, acerto: s.acerto };
+      const nova = { uid: novoUid(), ref: s.ref, nome: s.nome, mod: s.mod, item: s.item, dado: s.dado, danoBonus: s.danoBonus, acerto: s.acerto };
       S.arsenal.push(nova); s.uid = nova.uid;
     }));
     sincronizarSlots();
@@ -822,12 +827,8 @@ export function montarFicha(opts: FichaOpts) {
     const m = String(s ?? '').replace(',', '.').match(/\d+(?:\.\d+)?/);
     return m ? parseFloat(m[0]) : 0;
   };
-  /** Peso de catálogo de uma peça do arsenal, que guarda armas e escudos no mesmo lugar. */
-  const pesoRef = (ref: any) => {
-    const r = String(ref || '');
-    const b = r.startsWith('a:') ? ARMA[r.slice(2)] : r.startsWith('e:') ? ESCUDO[r.slice(2)] : null;
-    return Number(b?.peso) || 0;
-  };
+  /** Peso de uma peça (arma, escudo ou armadura): o do item que a ficha guarda (D-259). */
+  const pesoPeca = (p: any) => Number(itemDaPeca(p)?.peso) || 0;
   /** Soma das linhas de uma bolsa, ou o total que o jogador escreveu no lugar dela. */
   const pesoBolsa = (b: any) => {
     const escrito = String(b?.pesoTotal ?? '').trim();
@@ -837,10 +838,10 @@ export function montarFicha(opts: FichaOpts) {
   /** As três bolsas, mais o arsenal inteiro, mais a armadura VESTIDA. */
   const cargaCalculada = () =>
     (S.bolsas || []).reduce((s: number, b: any) => s + pesoBolsa(b), 0)
-    + (S.arsenal || []).reduce((s: number, p: any) => s + pesoRef(p?.ref), 0)
+    + (S.arsenal || []).reduce((s: number, p: any) => s + pesoPeca(p), 0)
     + (S.equip?.armaduras || []).reduce((s: number, p: any) => typeof p === 'string'
       ? s + (Number(baseArmadura(p)?.peso) || 0)
-      : p?.vestida === false ? s : s + (Number(baseArmadura(p?.base)?.peso) || 0), 0);
+      : p?.vestida === false ? s : s + pesoPeca(p), 0);
   const cargaAtual = () => {
     const escrito = String(S.cargaAtual ?? '').trim();
     return escrito ? numPeso(escrito) : cargaCalculada();
@@ -1226,7 +1227,7 @@ export function montarFicha(opts: FichaOpts) {
     return 'nada';
   }
   const ehDuasMaos = (p: any) => {
-    const w = p?.ref?.startsWith('a:') ? ARMA[p.ref.slice(2)] : null;
+    const w = p?.ref?.startsWith('a:') || p?.ref === REF_ARMA_LIVRE ? itemDaPeca(p) : null;
     return !!w && w.maos === 2;
   };
   /**
@@ -1263,7 +1264,7 @@ export function montarFicha(opts: FichaOpts) {
       const it = itemDe(p), chave = `ars:${p.uid}`;
       const papel = papelDaPeca(p.uid), duasMaos = ehDuasMaos(p);
       const campos = it.kind === 'nada' ? null : camposItem(it);
-      const ajustada = campos ? temMod(it.base, p.mod, campos) : false;
+      const ajustada = campos ? difereDaOrigem(p, campos) : false;
       const marca = (v: 'nada' | 'habil' | 'inabil', rot: string, off = false) =>
         `<label class="eq-uso-op${papel === v ? ' on' : ''}${off ? ' off' : ''}">
           <input type="radio" name="uso-${p.uid}" data-uso="${p.uid}:${v}"${papel === v ? ' checked' : ''}${(ro || off) ? ' disabled' : ''} />
@@ -1285,7 +1286,7 @@ export function montarFicha(opts: FichaOpts) {
             <button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(nomePeca(p))}">Excluir</button>
           </div>`}
         </div>
-        ${campos ? painelMod(chave, it.base, p.mod, campos, ro, {
+        ${campos ? painelMod(chave, itemDaPeca(p), origemDaPeca(p), campos, ro, {
           nome: ehLivre(p) ? campoNome('ars-nome', p.uid, p.nome || '', it.base.nome, ro) : '',
           img: p.img, enq: p.enq,
         }) : ''}
@@ -1303,7 +1304,8 @@ export function montarFicha(opts: FichaOpts) {
   function limparArsenal() {
     const usados = new Set<string>();
     (S.conjuntos || []).forEach((cj: any) => { if (cj.habil?.uid) usados.add(cj.habil.uid); if (cj.inabil?.uid) usados.add(cj.inabil.uid); });
-    S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod || (ehLivre(p) && p.nome));
+    S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod
+      || difereDaOrigem(p, camposItem(itemDe(p))) || (ehLivre(p) && p.nome));
   }
   /** Os quatro números da arma como blocos, no lugar da linha "5/+2/1d6/+1". */
   /**
@@ -1354,10 +1356,33 @@ export function montarFicha(opts: FichaOpts) {
   // Serve para a variação de qualidade (uma Espada Longa Ótima, um gambeson puído):
   // a peça continua sendo a do catálogo, só com os valores trocados na ficha.
   const modAberto = new Set<string>();   // painéis abertos, por chave ("0:habil", "arm:couro")
-  function campoMod(chave: string, c: CampoEquip, base: any, mod: any, ro: boolean) {
-    const v = valorCampo(base, mod, c), orig = baseCampo(base, c);
-    return `<label class="eqm-c${v !== orig ? ' dif' : ''}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
-      `<input type="number" data-eqm="${chave}:${c.k}" value="${v}" min="${c.min}" max="${c.max}" step="1"${ro ? ' disabled' : ''} title="catálogo: ${c.sinal ? sgn(orig) : orig}" /></label>`;
+  // D-259: o painel edita o item que a ficha guarda, campo a campo; a origem (o item
+  // do livro, quando ele existe) só serve para marcar o que difere e para o "restaurar".
+  const mostraCampo = (c: CampoEquip, v: any) => c.tipo === 'lista' ? (Array.isArray(v) ? v.join(', ') : '') : (v ?? '');
+  const igualCampo = (a: any, b: any) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+  function difereDaOrigem(p: any, campos: CampoEquip[] | null) {
+    if (!campos) return false;
+    const it = itemDaPeca(p), orig = origemDaPeca(p);
+    if (!it || !orig) return false;
+    return campos.some((c) => !igualCampo(baseCampo(it, c), baseCampo(orig, c)));
+  }
+  function campoMod(chave: string, c: CampoEquip, item: any, origem: any, ro: boolean) {
+    const v = baseCampo(item, c), orig = origem ? baseCampo(origem, c) : v;
+    const dif = !igualCampo(v, orig) ? ' dif' : '';
+    const dica = `catálogo: ${orig == null || orig === '' ? 'nenhum' : c.tipo === 'lista' ? mostraCampo(c, orig) : c.sinal ? sgn(orig) : orig}`;
+    const dis = ro ? ' disabled' : '';
+    if (c.tipo === 'opcao') {
+      const ops = (c.opcional ? [`<option value=""${v == null ? ' selected' : ''}>nenhum</option>`] : [])
+        .concat((c.opcoes || []).map((o) => `<option value="${o.v}"${v === o.v ? ' selected' : ''}>${escapeHtml(o.rot)}</option>`));
+      return `<label class="eqm-c${dif}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
+        `<select data-eqm="${chave}:${c.k}"${dis} title="${escapeHtml(dica)}">${ops.join('')}</select></label>`;
+    }
+    if (c.tipo === 'lista') {
+      return `<label class="eqm-c eqm-lista${dif}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
+        `<input type="text" data-eqm="${chave}:${c.k}" value="${escapeHtml(mostraCampo(c, v))}"${dis} title="${escapeHtml(dica)}" placeholder="separadas por vírgula" /></label>`;
+    }
+    return `<label class="eqm-c${dif}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
+      `<input type="number" data-eqm="${chave}:${c.k}" value="${v ?? ''}" min="${c.min}" max="${c.max}" step="${c.passo ?? 1}"${dis} title="${escapeHtml(dica)}" /></label>`;
   }
   /**
    * Enquadramento da foto do jogador: uma barra de zoom e o arrasto na própria
@@ -1385,16 +1410,16 @@ export function montarFicha(opts: FichaOpts) {
       </div>
     </div>`;
   }
-  function painelMod(chave: string, base: any, mod: any, campos: CampoEquip[], ro: boolean,
+  function painelMod(chave: string, item: any, origem: any, campos: CampoEquip[], ro: boolean,
                      extra: { nome?: string; img?: string; enq?: any } = {}) {
     return `<div class="eq-mod" data-eq-pan="${chave}"${modAberto.has(chave) ? '' : ' hidden'}>` +
       `${extra.nome || ''}` +
-      `${campos.map((c) => campoMod(chave, c, base, mod, ro)).join('')}` +
+      `${campos.map((c) => campoMod(chave, c, item, origem, ro)).join('')}` +
       `${ro ? '' : `<button type="button" class="eqm-reset" data-eqm-reset="${chave}">restaurar</button>`}` +
       `${blocoEnquadra(chave, extra.img, extra.enq, ro)}</div>`;
   }
   // o item personalizado é uma arma para todos os efeitos: mesmos campos ajustáveis
-  const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : CAMPOS_ARMA);
+  const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : [...CAMPOS_ARMA, ...CAMPOS_ARMA_MAIS]);
   function statsConj(c: any, trava: boolean) {
     const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
     const dano = c.atk.semDano ? 'não causa dano' : c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
@@ -1968,9 +1993,9 @@ export function montarFicha(opts: FichaOpts) {
   function renderArmaduras() {
     const ro = !!opts.readOnly;
     const cards = (S.equip.armaduras || []).map((p: any) => {
-      const base = baseArmadura(p.base); if (!base) return '';
-      const chave = `arm:${p.uid}`, a = armaduraComMod(base, p.mod);
-      return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${temMod(base, p.mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}"${ordenavel(ro, p.nome || base.nome)}>
+      const a = itemDaPeca(p); if (!a) return '';
+      const base = a, chave = `arm:${p.uid}`;
+      return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${difereDaOrigem(p, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}"${ordenavel(ro, p.nome || base.nome)}>
         ${imgSlot(chave, p.img, 'armadura', ro, p.nome || base.nome, idDeArte(p), p.enq)}
         <div class="eq-peca-corpo">
           <div class="eq-peca-nome">${escapeHtml(p.nome || base.nome)}</div>
@@ -1986,7 +2011,7 @@ export function montarFicha(opts: FichaOpts) {
             <button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(p.nome || base.nome)}">Excluir</button>
           </div>`}
         </div>
-        ${painelMod(chave, base, p.mod, CAMPOS_ARMADURA, ro, {
+        ${painelMod(chave, a, origemDaPeca(p), CAMPOS_ARMADURA, ro, {
           nome: campoNome('arm-nome', p.uid, p.nome || '', base.nome, ro),
           img: p.img, enq: p.enq,
         })}
@@ -2018,13 +2043,12 @@ export function montarFicha(opts: FichaOpts) {
   }
   /** Atualiza só os números de uma peça de armadura (sem refazer o HTML). */
   function refreshArm(uid: string) {
-    const p = pecaArm(uid); const base = p && baseArmadura(p.base); if (!p || !base) return;
-    const a = armaduraComMod(base, p.mod);
+    const p = pecaArm(uid); const a = p && itemDaPeca(p); if (!p || !a) return;
     const nums = el('eq-armaduras').querySelector(`[data-arm-nums="${uid}"]`);
     if (nums) nums.innerHTML = `<span class="eq-n"><b>Imp</b>${a.soak.impacto}</span><span class="eq-n"><b>Cor</b>${a.soak.corte}</span>` +
       `<span class="eq-n"><b>Perf</b>${a.soak.perfuracao}<i>N${a.resistPerf || 0}</i></span><span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>`;
     const item = el('eq-armaduras').querySelector(`[data-arm-peca="${uid}"]`);
-    if (item) item.classList.toggle('ajustado', temMod(base, p.mod, CAMPOS_ARMADURA));
+    if (item) item.classList.toggle('ajustado', difereDaOrigem(p, CAMPOS_ARMADURA));
     renderAbsorcao();
   }
   function populateEquip() {
@@ -2636,9 +2660,9 @@ export function montarFicha(opts: FichaOpts) {
         // uma peça é um objeto só: se já estava na outra mão deste conjunto, sai de lá
         if (cj[outra]?.uid === p.uid) cj[outra] = { ref: outra === 'habil' ? 'a:desarmado' : 'nada' };
         cj[hand] = { uid: p.uid, ref: p.ref };
-        const w = p.ref.startsWith('a:') ? ARMA[p.ref.slice(2)] : null;
+        congelarItens(S);
         // arma de duas mãos ocupa as duas: sobe para a hábil e libera a inábil
-        if (w && w.maos === 2) { if (hand === 'inabil') cj.habil = { uid: p.uid, ref: p.ref }; cj.inabil = { ref: 'nada' }; }
+        if (ehDuasMaos(p)) { if (hand === 'inabil') cj.habil = { uid: p.uid, ref: p.ref }; cj.inabil = { ref: 'nada' }; }
       }
       limparArsenal(); sincronizarSlots(); renderConjuntos(); renderDerived(); renderCombate(); save(); return;
     }
@@ -2676,7 +2700,7 @@ export function montarFicha(opts: FichaOpts) {
     // o nome agora é texto na face do card: atualiza sem redesenhar, senão o
     // campo perderia o foco a cada tecla
     const t = nm.closest('.eq-peca')?.querySelector('.eq-peca-nome');
-    if (t) t.textContent = p.nome || baseArmadura(p.base)?.nome || '';
+    if (t) t.textContent = p.nome || itemDaPeca(p)?.nome || '';
     save();
   });
   el('eq-armaduras').addEventListener('click', async (e) => {
@@ -2691,7 +2715,7 @@ export function montarFicha(opts: FichaOpts) {
     if (!rm) return;
     const p = pecaArm(rm.dataset.armRm!); if (!p) return;
     const ok = await uiConfirmar(
-      `Descartar ${p.nome || baseArmadura(p.base)?.nome || 'esta armadura'}?`,
+      `Descartar ${p.nome || itemDaPeca(p)?.nome || 'esta armadura'}?`,
       { titulo: 'Descartar peça', ok: 'Descartar', perigo: true },
     );
     if (!ok) return;
@@ -2704,21 +2728,22 @@ export function montarFicha(opts: FichaOpts) {
   // carrega os mesmos números, que é o ponto de a peça ter identidade própria.
   function alvoMod(chave: string) {
     const [a, uid] = chave.split(':');
-    const guarda = (p: any, base: any, campos: CampoEquip[], redesenha: () => void) => ({
-      base, campos,
-      mod: () => p.mod,
-      escreve: (k: string, v: number | null) => {
-        const m = (p.mod ||= {});
-        if (v == null) delete m[k]; else m[k] = v;
-        if (!Object.keys(m).length) delete p.mod;
+    // D-259: escrever é mudar o item que a ficha guarda; "restaurar" copia de novo o do livro.
+    const guarda = (p: any, campos: CampoEquip[], redesenha: () => void) => ({
+      campos,
+      item: () => itemDaPeca(p), origem: () => origemDaPeca(p),
+      escreve: (c: CampoEquip, v: any) => {
+        if (!p.item) congelarItens(S);
+        if (!p.item) return;
+        escreveCampo(p.item, c, v);
         sincronizarSlots();
       },
-      limpa: () => { delete p.mod; sincronizarSlots(); },
+      limpa: () => { delete p.mod; restaurarItem(p); sincronizarSlots(); },
       redesenha,
     });
     if (a === 'arm') {
-      const p = pecaArm(uid); const base = p && baseArmadura(p.base); if (!p || !base) return null;
-      return guarda(p, base, CAMPOS_ARMADURA, () => refreshArm(uid));
+      const p = pecaArm(uid); if (!p || !itemDaPeca(p)) return null;
+      return guarda(p, CAMPOS_ARMADURA, () => refreshArm(uid));
     }
     if (a === 'ars') {
       const p = pecaArsenal(uid); if (!p) return null;
@@ -2726,7 +2751,7 @@ export function montarFicha(opts: FichaOpts) {
       // 'custom' entra aqui junto com 'arma' e 'escudo': a peça personalizada é
       // justamente a que só tem números porque alguém os ajustou
       if (it.kind === 'nada') return null;
-      return guarda(p, it.base, camposItem(it), () => { renderArsenal(); renderConjuntos(); });
+      return guarda(p, camposItem(it), () => { renderArsenal(); renderConjuntos(); });
     }
     return null;
   }
@@ -2752,19 +2777,31 @@ export function montarFicha(opts: FichaOpts) {
         alvo.limpa(); populateEquip(); renderDerived(); renderCombate(); save();
       }
     });
-    box.addEventListener('input', (e) => {
+    const aoEditar = (e: Event) => {
       if (opts.readOnly) return;
-      const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-eqm]');
+      const inp = (e.target as HTMLElement).closest<HTMLInputElement | HTMLSelectElement>('input[data-eqm], select[data-eqm]');
       if (!inp) return;
       const partes = inp.dataset.eqm!.split(':'), k = partes.pop()!;
       const alvo = alvoMod(partes.join(':')); if (!alvo) return;
       const campo = alvo.campos.find((c) => c.k === k); if (!campo) return;
       const bruto = inp.value.trim();
-      alvo.escreve(k, bruto === '' ? null : Math.max(campo.min, Math.min(campo.max, Math.round(Number(bruto) || 0))));
+      let v: any;
+      if (campo.tipo === 'lista') v = bruto.split(',').map((t) => t.trim()).filter(Boolean);
+      else if (campo.tipo === 'opcao') { if (bruto === '' && !campo.opcional) return; v = bruto === '' ? null : bruto; }
+      else if (bruto === '') { if (!campo.opcional) return; v = null; }
+      else {
+        const n = Number(bruto.replace(',', '.')); if (!Number.isFinite(n)) return;
+        const passo = campo.passo ?? 1;
+        v = Math.max(campo.min, Math.min(campo.max, Math.round(n / passo) * passo));
+      }
+      alvo.escreve(campo, v);
       const lab = inp.closest('.eqm-c');
-      if (lab) lab.classList.toggle('dif', valorCampo(alvo.base, alvo.mod(), campo) !== baseCampo(alvo.base, campo));
+      const orig = alvo.origem();
+      if (lab) lab.classList.toggle('dif', !!orig && JSON.stringify(baseCampo(alvo.item(), campo) ?? null) !== JSON.stringify(baseCampo(orig, campo) ?? null));
       alvo.redesenha(); renderDerived(); renderCombate(); save();
-    });
+    };
+    box.addEventListener('input', (e) => { if (!(e.target as HTMLElement).closest('select')) aoEditar(e); });
+    box.addEventListener('change', (e) => { if ((e.target as HTMLElement).closest('select[data-eqm]')) aoEditar(e); });
   }
   ligarAjustes(el('eq-arsenal'));
   ligarAjustes(el('eq-armaduras'));

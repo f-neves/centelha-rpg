@@ -28,7 +28,7 @@ const armas = achataCatalogo(JSON.parse(readFileSync('src/data/armas.json', 'utf
 const escudos = achataCatalogo(JSON.parse(readFileSync('src/data/escudos.json', 'utf8')));
 const armaduras = achataCatalogo(JSON.parse(readFileSync('src/data/armaduras.json', 'utf8')));
 assert.deepEqual(refsExistem(novo, { armas, escudos, armaduras }), []);
-const ruim = structuredClone(novo); ruim.equipamento.conjuntos[0].maoHabil.ref = 'a:arma-que-nao-existe';
+const ruim = structuredClone(novo); ruim.equipamento.conjuntos[0].maoHabil.ref = 'a:arma-que-nao-existe'; delete ruim.equipamento.conjuntos[0].maoHabil.item;
 assert.ok(refsExistem(ruim, { armas, escudos, armaduras }).length > 0);
 assert.equal(fichaParaGravar({ ...old, id: { ...old.id, altura: '1,85 m', peso: '90 kg' } }).corpo.altura, 1.85);
 assert.equal(fichaParaGravar({ ...old, id: { ...old.id, altura: '1,85 m', peso: '90 kg' }, corpo: {} }).corpo.massa, 90);

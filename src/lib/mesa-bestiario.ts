@@ -229,7 +229,8 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
   if (c.tipo === 'pc' && fichaPorId[c.personagem_id]) {
     try {
       const r = resumoCombatePC(fichaPorId[c.personagem_id]) as any;
-      return { ...r, velocidade: null, centelha: fichaPorId[c.personagem_id]?.centelha || 0 };
+      // A Velocidade é a do item que a ficha guarda (D-259), e não a do catálogo pelo nome.
+      return { ...r, velocidade: r.velocidade ?? null, centelha: fichaPorId[c.personagem_id]?.centelha || 0 };
     } catch { return null; }
   }
   if (c.tipo === 'criatura') {

@@ -14,7 +14,7 @@ import ARMAS from '../data/armas.json';
 import RACAS from '../data/racas.json';
 // Nucleo de contas do jogador e da criatura, reunido neste motor.
 const defMental=defesaMental, defSocial=defesaSocial, energiaDe=energia, manaDe=mana, iniciativaDe=iniciativa, pvDoTamanho=pv;
-import { ARMA, ESCUDO as ESCUDO_EQUIP, armaDoSlot, escudoDoSlot, armadurasDe, armaComMod, escudoComMod } from './equip';
+import { ARMA, armadurasDe, itemDaPeca, origemDaPeca, tipoDaPeca, REF_ESCUDO_LIVRE } from './equip';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 export { regras };
 
@@ -880,54 +880,25 @@ export function conjuntoPersonagem(S: any, cj: any, entrada?: any) {
     };
 }
 export function itemDoJogador(slot: any) {
-    const ESCUDO = ESCUDO_EQUIP;
-    const REF_ESCUDO_LIVRE = 'ce';
-    const ESCUDO_LIVRE = { nome: 'Escudo personalizado', bloqCaC: 0, penalidade: 0, vsProjetilRapido: { bloqueia: false, bonus: 0 } };
-    const IMPROV = {
-        nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1
-    };
-    const clampImprov = (v: any, lo: number, hi: number, dflt: number) => { const n = Number(v); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, Math.round(n))) : dflt; };
+    // D-259: o item vem da peça (a cópia inteira que a ficha guarda); a peça gravada
+    // no modelo antigo (ref + ajuste) é lida pela conta de antes em `itemDaPeca`.
     const ref = (slot && slot.ref) || 'nada';
-    if (ref === REF_ESCUDO_LIVRE) {
-        const base = { ...ESCUDO_LIVRE, nome: (slot && slot.nome) || ESCUDO_LIVRE.nome };
-        const s = escudoComMod(base, slot?.mod);
-        return {
-            kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s
-        };
+    const t = tipoDaPeca(slot);
+    if (!t) return { kind: 'nada', nome: '', def: 0, pen: 0 };
+    const it = itemDaPeca(slot);
+    if (!it) return { kind: 'nada', nome: '', def: 0, pen: 0 };
+    const base = origemDaPeca(slot) ?? it;
+    if (t.tipo === 'escudo') {
+        const nome = ref === REF_ESCUDO_LIVRE ? ((slot && slot.nome) || it.nome) : it.nome;
+        const s = { ...it, nome };
+        return { kind: 'escudo', nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s };
     }
-    if (ref === 'c') {
-        // O item personalizado passou a usar o mesmo "ajustar" das peças de catálogo,
-        // em vez de três campos próprios. A base continua sendo o que a peça guardou
-        // (fichas antigas não perdem nada); o `mod` entra por cima, como em qualquer
-        // outra peça, e com ele vêm Velocidade e Defesa, que antes não dava para mexer.
-        const base = {
-            ...IMPROV, nome: (slot && slot.nome) || IMPROV.nome,
-            dado: clampImprov(slot?.dado, 1, 2, IMPROV.dado),
-            danoBonus: clampImprov(slot?.danoBonus, -2, 2, IMPROV.danoBonus),
-            acerto: clampImprov(slot?.acerto, -6, 6, IMPROV.acerto)
-        };
-        const w = armaComMod(base, slot?.mod);
-        return {
-            kind: 'custom', nome: w.nome, def: w.defesaArma || 0, pen: 0, w, base
-        };
-    }
-    if (ref.startsWith('e:')) {
-        const base = ESCUDO[ref.slice(2)];
-        if (base) {
-            const s = escudoComMod(base, slot?.mod);
-            return {
-                kind: 'escudo', nome: base.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s
-            };
+    if (t.tipo === 'arma') {
+        if (t.livre) {
+            const w = { ...it, nome: (slot && slot.nome) || it.nome };
+            return { kind: 'custom', nome: w.nome, def: w.defesaArma || 0, pen: 0, w, base };
         }
-    }
-    if (ref.startsWith('a:')) {
-        const base = ARMA[ref.slice(2)];
-        if (base) {
-            const w = armaComMod(base, slot?.mod);
-            return {
-                kind: 'arma', nome: base.nome, def: w.defesaArma || 0, pen: 0, w, base
-            };
-        }
+        return { kind: 'arma', nome: it.nome, def: it.defesaArma || 0, pen: 0, w: it, base };
     }
     return { kind: 'nada', nome: '', def: 0, pen: 0 };
 }
@@ -1012,7 +983,11 @@ export interface ResumoCombate {
      */
     atributos: Record<string, number>;
     pericias: Record<string, number>;
+    /** A Velocidade da arma em uso, do item que a ficha guarda (D-259). */
+    velocidade?: number | null;
 }
+/** O dano da própria arma, para a classe do Quase-Acerto sair do item e não do catálogo (D-259). */
+const exprDaArma = (w: any) => `${w.dado}d6${w.danoBonus ? (w.danoBonus > 0 ? '+' : '-') + Math.abs(w.danoBonus) : ''}`;
 export function combatePersonagem(S: any): ResumoCombate {
     const n = numerosPersonagem(S), a = n.act, w = a.atk;
     const sig = (n: number) => (n >= 0 ? '+' : '−') + Math.abs(n);
@@ -1026,7 +1001,7 @@ export function combatePersonagem(S: any): ResumoCombate {
     const dz = deslocamento({ forca: at.forca || 0, destreza: at.destreza || 0, atletismo: hab.atletismo || sec.atletismo || 0, centelha: S.centelha || 0 }, RACA[S.raca]?.deslocamentoFrac ?? 1);
     const pen = Math.floor((a.armorPen + a.penSum) / 2), passo = { batalha: Math.max(0, dz.normal - pen), arranque: Math.max(0, dz.arranque - pen), corrida: Math.max(0, dz.corrida - pen) };
     return {
-        arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.id || w.nome, dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }
+        arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.origem ? '' : (w.id || w.nome), w.origem && Number(w.dado) > 0 ? exprDaArma(w) : dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }, velocidade: Number.isFinite(Number(w.ticks)) ? Number(w.ticks) : null
     };
 }
 

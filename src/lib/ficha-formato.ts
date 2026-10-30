@@ -1,4 +1,7 @@
 // Forma persistida da ficha e ponte para os leitores anteriores à migração 41.
+// D-259: toda peça com estatística sai da leitura e entra na gravação com o item
+// inteiro (`congelarItens`, em equip.ts); a ficha da 41 (ref + ajuste) vira item na leitura.
+import { congelarItens } from './equip';
 const livre = (i: number) => `livre-${i}`;
 const livreNovo = (i: number) => `habilidadeSecLivre${i}`;
 const copia = (v: any) => v == null ? v : structuredClone(v);
@@ -42,7 +45,7 @@ export function fichaParaLeitura(entrada: any): any {
   if (!fichaNova(entrada)) {
     const v = copia(entrada);
     if (v?.virtues?.valor !== undefined && v.virtues.bravura === undefined) { v.virtues.bravura = v.virtues.valor; delete v.virtues.valor; }
-    return v;
+    return congelarItens(v);
   }
   const f = copia(entrada);
   const e = f.equipamento || {};
@@ -58,19 +61,20 @@ export function fichaParaLeitura(entrada: any): any {
   if (virtues.valor !== undefined && virtues.bravura === undefined) { virtues.bravura = virtues.valor; delete virtues.valor; }
   const antigos = ['nome','conceito','jogador','titulo','idade','atributos','habilidades','especialidades','habilidadesSec','especialidadesSec','virtudes','vontade','proezas','artes','efeitos','antecedentes','antecedentesNomeados','xpTotal','equipamento'];
   for (const k of antigos) delete f[k];
-  return { ...f, id, attrs: entrada.atributos, skills: entrada.habilidades, spec: specsVelhas(entrada.especialidades),
+  return congelarItens({ ...f, id, attrs: entrada.atributos, skills: entrada.habilidades, spec: specsVelhas(entrada.especialidades),
     skills2: hs, spec2: specsVelhas(sp2), livreNome, virtues, willpower: entrada.vontade,
     tech: Object.fromEntries((entrada.proezas || []).map((x: string) => [x, true])), arte: entrada.artes || {},
     efeito: Object.fromEntries((entrada.efeitos || []).map((x: string) => [x, true])), ante: entrada.antecedentes || {},
     anteNom: anteVelho(entrada.antecedentesNomeados), budget: entrada.xpTotal,
     equip: { ...e, armaduras: (e.armaduras || []).map(pecaVelha) }, arsenal: (e.arsenal || []).map(pecaVelha),
-    conjuntos: (e.conjuntos || []).map(conjuntoVelho) };
+    conjuntos: (e.conjuntos || []).map(conjuntoVelho) });
 }
 
 /** Escrita canônica. Também aceita uma ficha que já foi convertida. */
 export function fichaParaGravar(entrada: any): any {
-  if (fichaNova(entrada)) return copia(entrada);
+  if (fichaNova(entrada)) return congelarItens(copia(entrada), true);
   if (!entrada || typeof entrada !== 'object') return entrada;
+  entrada = congelarItens(copia(entrada));
   const f = copia(entrada);
   const id = f.id || {};
   const hs = { ...(f.skills2 || {}) };
