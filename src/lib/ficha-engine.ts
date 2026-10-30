@@ -209,7 +209,7 @@ export function montarFicha(opts: FichaOpts) {
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
     massaEscolhida = false;
-    S = { id: {}, corpo:{massa:massaDoJogador({raca:'humano'})}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, corpo: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoAttr(a.id)));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
@@ -304,7 +304,8 @@ export function montarFicha(opts: FichaOpts) {
   function normalize() {
     S = fichaParaLeitura(S);
     massaEscolhida = typeof S.corpo?.massa === 'number' || !!S.id?.peso;
-    S.corpo ??= {massa:massaDoJogador(S)};
+    // D-260: a massa vazia não se grava; o leitor (`massaDoJogador`) dá o padrão da raça.
+    S.corpo ??= {};
     S.id ??= {}; if (S.virtues?.valor !== undefined && S.virtues?.bravura === undefined) { S.virtues.bravura = S.virtues.valor; delete S.virtues.valor; } S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.efeito ??= {}; S.secCol ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
     // Migração: a Habilidade "Escudos" virou "Bloqueio" (id escudos -> bloqueio); carrega pontos e especialidade antigos.
@@ -1605,7 +1606,12 @@ export function montarFicha(opts: FichaOpts) {
   function renderForca() {
     const box = el('forca-arremesso'); if (!box) return;
     const massaInput = document.getElementById('corpo-massa') as HTMLInputElement | null;
-    if (massaInput) { if (document.activeElement !== massaInput) massaInput.value = String(massaDoJogador(S)); massaInput.readOnly = !!opts.readOnly; }
+    if (massaInput) {
+      // D-260: a massa escrita aparece como valor; a vazia, como o padrão da raça em placeholder.
+      if (document.activeElement !== massaInput) massaInput.value = massaEscolhida && typeof S.corpo?.massa === 'number' ? String(S.corpo.massa) : '';
+      massaInput.placeholder = `${massaDoJogador({ raca: S.raca })} (padrão da raça)`;
+      massaInput.readOnly = !!opts.readOnly;
+    }
     const F = (regras as any).forca; if (!F) { box.innerHTML = ''; return; }
     const forca = A('forca'), atl = SK('atletismo'), halt = S.skills2['halterofilismo'] || 0, arr = SK('arremesso');
     // Atletismo não entra no levantamento: erguer o máximo é contração estática, e Atletismo
@@ -2313,10 +2319,12 @@ export function montarFicha(opts: FichaOpts) {
   document.getElementById('corpo-massa')?.addEventListener('input', (e) => {
     if (opts.readOnly) return;
     const massa = (e.target as HTMLInputElement).valueAsNumber;
+    // apagar o campo devolve a conta: a massa sai da ficha e o padrão da raça volta
+    if ((e.target as HTMLInputElement).value.trim() === '') { massaEscolhida = false; if (S.corpo) delete S.corpo.massa; if (S.id) delete S.id.peso; const pesoAntigo = document.querySelector<HTMLInputElement>('.idrow .txt[data-id="peso"]'); if (pesoAntigo) pesoAntigo.value = ''; renderForca(); save(); return; }
     if (Number.isFinite(massa) && massa > 0) { massaEscolhida = true; S.corpo ??= {}; S.corpo.massa = massa; S.id ??= {}; S.id.peso = String(massa) + ' kg'; const pesoAntigo = document.querySelector<HTMLInputElement>('.idrow .txt[data-id="peso"]'); if (pesoAntigo) pesoAntigo.value = S.id.peso; renderForca(); save(); }
   });
   // idrow + budget
-  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; if (inp.dataset.id === 'peso') { const massa = Number(inp.value.replace(',', '.').match(/\d+(?:\.\d+)?/)?.[0]); if (massa > 0) { S.corpo ??= {}; S.corpo.massa = massa; massaEscolhida = true; renderForca(); } } save(); }));
+  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; if (inp.dataset.id === 'peso') { const massa = Number(inp.value.replace(',', '.').match(/\d+(?:\.\d+)?/)?.[0]); if (massa > 0) { S.corpo ??= {}; S.corpo.massa = massa; massaEscolhida = true; renderForca(); } else if (!inp.value.trim()) { if (S.corpo) delete S.corpo.massa; massaEscolhida = false; renderForca(); } } save(); }));
   // Delegado, porque renderSecondary() refaz o painel a cada mudança de bolinha. Só salva:
   // re-renderizar aqui tiraria o foco do campo no meio da digitação.
   el('secondary').addEventListener('input', (e) => {
@@ -2857,7 +2865,8 @@ export function montarFicha(opts: FichaOpts) {
   el('raca-sel').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     S.raca = (e.target as HTMLSelectElement).value;
-    if (!massaEscolhida) S.corpo = {...S.corpo,massa:massaDoJogador({raca:S.raca})};
+    // D-260: sem massa escrita, nada se grava; o leitor refaz o padrão pela raça nova.
+    if (!massaEscolhida && S.corpo) delete S.corpo.massa;
     // A troca de raça mexe nos DOIS lados agora (`M-30b`): o teto pode ter
     // descido (e o que passou dele desce junto) e o PISO pode ter subido (e o que
     // ficou abaixo sobe, porque aquele ponto passou a ser de graça).

@@ -88,9 +88,13 @@ export function fichaParaGravar(entrada: any): any {
   if (virtues.valor !== undefined) { virtues.bravura = virtues.valor; delete virtues.valor; }
   const corpo = { ...(f.corpo || {}) };
   if (corpo.altura === undefined) { const h = numero(id.altura); if (h !== undefined) corpo.altura = h; }
-  if (!Number.isFinite(corpo.massa)) {
-    const faixas: Record<string, number> = { halfling: 24, gnomo: 25, elfo: 53.5, 'meio-elfo': 70, anao: 85, orc: 110, 'meio-orc': 90, humano: 70 };
-    corpo.massa = numero(id.peso) ?? faixas[f.raca] ?? 70;
+  // D-260 (A2): a massa só fica guardada quando o jogador a escreve (aqui, o "peso" que
+  // ele escreveu na identidade). Vazia, o leitor calcula pelo padrão da raça
+  // (`massaDoJogador`, motor.ts), e refaz quando a raça muda. Nada de padrão gravado.
+  if (!(Number.isFinite(corpo.massa) && corpo.massa > 0)) {
+    delete corpo.massa;
+    const escrita = numero(id.peso);
+    if (escrita !== undefined && escrita > 0) corpo.massa = escrita;
   }
   const antigos = ['id','attrs','skills','spec','skills2','spec2','livreNome','virtues','willpower','tech','arte','efeito','ante','anteNom','budget','equip','arsenal','conjuntos','defSpec','derivCol','secCol'];
   for (const k of antigos) delete f[k];

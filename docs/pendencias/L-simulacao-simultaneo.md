@@ -5701,7 +5701,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `×7 − 2`, que faz os seis níveis de Arte varrerem a faixa humana inteira e encostarem no teto no
   nível 6. A faixa humana do FAH é 3 a 40 e a do FAA é 2 a 24:
   `const fah = Math.max(3, Math.min(40` na versão de `ficha-engine.ts` anterior à A5j (a A5j removeu o FAH do jogador) e
-  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1615`. O mesmo princípio, aplicado
+  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1621`. O mesmo princípio, aplicado
   à segunda tabela. **O conserto é dos dois lados:** o `parametros` do `empurrao-elemental` em
   `src/data/efeitos.json` muda junto com o código, senão o dado fica mandando o contrário e a
   próxima pessoa conserta o código "de volta" para o errado. → `CATALOGO`, a forma que saiu daqui.

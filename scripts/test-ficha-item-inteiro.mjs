@@ -37,6 +37,22 @@ try {
   ok(!JSON.stringify(salva.equipamento).includes('"ajuste"') && !JSON.stringify(salva.equipamento).includes('"mod"'), 'salva: nenhum ajuste nem mod na ficha');
   ok((salva.equipamento.armaduras || []).every((a) => a.item?.armadura?.soak), 'salva: as armaduras com o item inteiro');
   ok(salva.equipamento.conjuntos.find((c) => c.ativo).maoInabil.item?.origem === 'broquel', 'salva: o broquel inteiro na mão inábil');
+  // Item 10 (D-260, A2): a massa só fica guardada quando o jogador a escreve.
+  const semMassa = JSON.parse(fs.readFileSync('scripts/fixtures/kael.json', 'utf8'));
+  await p.evaluate((f) => localStorage.setItem('centelha:ficha', JSON.stringify(f)), semMassa);
+  await p.reload({ waitUntil: 'domcontentloaded' });
+  await p.waitForSelector('#corpo-massa', { timeout: 60000 });
+  await p.waitForFunction(() => document.getElementById('corpo-massa').placeholder.length > 0 || document.getElementById('corpo-massa').value !== '', { timeout: 30000 });
+  ok(await p.$eval('#corpo-massa', (e) => e.value === '' && e.placeholder.startsWith('70')), 'massa vazia: o campo mostra o padrão do humano (70) só como sugestão');
+  await p.$eval('#raca-sel', (e) => { e.value = 'anao'; e.dispatchEvent(new Event('change', { bubbles: true })); });
+  ok(await p.$eval('#corpo-massa', (e) => e.value === '' && e.placeholder.startsWith('85')), 'trocar a raça para anão refaz o padrão (85)');
+  const lida = () => p.evaluate(() => JSON.parse(localStorage.getItem('centelha:ficha')));
+  ok(!('massa' in ((await lida()).corpo || {})), 'salva: sem massa escrita, nenhuma massa na ficha');
+  await p.$eval('#corpo-massa', (e) => { e.value = '95'; e.dispatchEvent(new Event('input', { bubbles: true })); });
+  ok((await lida()).corpo?.massa === 95, 'salva: a massa escrita (95) fica');
+  await p.$eval('#corpo-massa', (e) => { e.value = ''; e.dispatchEvent(new Event('input', { bubbles: true })); });
+  const apagada = await lida();
+  ok(!('massa' in (apagada.corpo || {})), 'salva: apagar o campo tira a massa e devolve o padrão');
   ok(erros.length === 0, 'nenhum erro de página: ' + erros.join('; '));
 } finally { await browser.close(); await dev.parar(); }
 if (falhas.length) process.exitCode = 1; else { carimbar('test-ficha-item-inteiro'); console.log('✓ ficha: item inteiro OK'); }
