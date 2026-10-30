@@ -178,6 +178,14 @@ assert.match(fs.readFileSync('src/data/regras.json','utf8'),/"jogada": "Destreza
 const best=fs.readFileSync('src/pages/bestiario.astro','utf8');const s=best.split('<span class="lbl">Sopro e área</span>')[1]?.split('</div>')[0];assert.ok(s,'falta o callout do sopro no cabeçalho');
 assert.match(s,/#contra-area'\}>Contra área, a saída é sair<\/a>/);assert.match(s,/5 \+ 5 × os metros/);assert.ok(!/contra a jogada do sopro/.test(s));
 });
+// V4 (decisão 80 do autor, D-234): a Vida da criatura vem da massa; a do personagem, do Tamanho da raça; a massa padrão
+// de cada raça cai na mesma linha da tabela da massa (Vigor 0 a 12, sem a Vitalidade).
+cases.set('parecer-V4', async () => {
+const R=JSON.parse(fs.readFileSync('src/data/racas.json','utf8'));const racas=(Array.isArray(R)?R:Object.values(R)).filter(r=>r&&r.massaKg);assert.equal(racas.length,8);
+for(const r of racas){const m=M.massaDoJogador({raca:r.id});const l=M.pvPorte(r.porte);for(let v=0;v<=12;v++)assert.equal(M.pvDaMassa(m,v),l.base+v*l.vigorMult,r.id+' '+m+' kg, Vigor '+v);}
+const vida=fs.readFileSync('src/content/chapters/vida-ferimentos-cura.md','utf8');assert.ok(!/ainda dão a Vida pelo tamanho/.test(vida),'sobrou a frase velha');assert.match(vida,/A Vida da \*\*criatura\*\* vem da \*\*massa\*\*/);assert.match(vida,/\*\*O personagem é a exceção: a Vida dele sai do Tamanho da raça\*\*/);
+const rac=fs.readFileSync('src/content/chapters/racas.md','utf8');assert.match(rac,/<strong>massa padrão<\/strong> de cada raça, o meio da faixa normal dela, cai na mesma linha/);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
