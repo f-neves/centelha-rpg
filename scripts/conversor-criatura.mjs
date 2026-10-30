@@ -170,13 +170,16 @@ export function converterFicha(texto, { site = null } = {}) {
   if (ar) corpo.area = numBR(ar[1]); else para('Área ilegível');
   const tam = (lt.match(new RegExp(`^\\s*\\*\\*(${TAMANHOS})\\b`)) || [])[1];
   if (!tam) para('Tamanho ilegível');
-  const pp = lt.match(/\([\d.,]+ m²,\s*([^)]*)\)/);
+  // A postura da medição (D-213, D-216) vem do parêntese do Tamanho, com a área ("(0,40 m², de lado)") ou com a área
+  // por extenso ("(área 0, vista de cima, agachada)", a rã venenosa, abaixo do começo da escala), ou da linha Área
+  // ("**0,98 m²**, silhueta de frente"). A linha Postura NÃO a substitui: é a postura de sempre, e não a da medição;
+  // usá-la era completar o que a ficha não diz (formato-x-codigo.md, item 13; revisão de af3697c7, C2). Sem nenhuma, para.
+  const pp = lt.match(/\((?:[\d.,]+ m²|área [\d.,]+),\s*([^)]*)\)/);
   if (pp) corpo.posturaDoTamanho = pp[1].trim();
   else {
     const medida = String(la || '').match(/m²\*\*\s*,\s*(.+)$/);
-    // A linha Área também declara a vista da medição; sem ela, usa a Postura explícita do corpo.
-    corpo.posturaDoTamanho = medida ? jogo(medida[1]) : corpo.postura;
-    if (!corpo.posturaDoTamanho) para('Tamanho sem postura de medição na ficha');
+    if (medida) corpo.posturaDoTamanho = jogo(medida[1]);
+    if (!corpo.posturaDoTamanho) para('Tamanho sem postura de medição na ficha (nem no parêntese do Tamanho, nem na linha Área)');
   }
   // a escolha do Tamanho (D-216, D-225): só quando a ficha ficou com o vizinho do corte, a menos de 5% (decisoes-autor
   // §13), ou pela decisão 7 (os quadrúpedes de 50 a 75 kg são Pequenos), a exceção que o confere_etapa2.py aceita

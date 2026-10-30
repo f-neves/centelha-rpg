@@ -72,7 +72,12 @@ cases.set('1', async () => {
 const r=conv(raw.replace(/(\| Deslocamento em terra \| )[^|]+/,'$1**[sem dado]** '));assert.ok(r.paradas.some(x=>/sem dado/.test(x)));const q=conv(raw.replace(/(\| Deslocamento em terra \| )[^|]+/,'$1não anda ').replace('| Nado |','| Voo | Batalha **5** | |\n| Nado |'));assert.ok(!q.paradas.some(x=>/Deslocamento em terra/.test(x)));
 });
 cases.set('13', async () => {
-const c=fresh();delete c.corpo.posturaDoTamanho;assert.equal(schema.safeParse(c).success,false);c.corpo.posturaDoTamanho=' ';assert.equal(schema.safeParse(c).success,false);const r=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (0,98 m²) '));assert.ok(r.criatura.corpo.posturaDoTamanho?.trim());
+const c=fresh();delete c.corpo.posturaDoTamanho;assert.equal(schema.safeParse(c).success,false);c.corpo.posturaDoTamanho=' ';assert.equal(schema.safeParse(c).success,false);const r=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (0,98 m²) '));assert.equal(r.criatura.corpo.posturaDoTamanho,'silhueta de frente, de pé','sem a postura no Tamanho, vale a da linha Área');
+// C2 (revisão de af3697c7): a postura da medição com a área por extenso (a rã venenosa) vai para posturaDoTamanho, e não
+// a linha Postura; sem postura da medição em lugar nenhum, a ficha para (formato-x-codigo.md, item 13), sem completar.
+const ra=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (área 0, vista de cima, agachada) '));assert.equal(ra.criatura.corpo.posturaDoTamanho,'vista de cima, agachada');
+const sem=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (0,98 m²) ').replace(/(\| Área \| )[^|]+/,'$1**0,98 m²** '));assert.ok(sem.paradas.some(x=>/postura de medição/.test(x)),'parada: '+JSON.stringify(sem.paradas));assert.notEqual(sem.criatura.corpo.posturaDoTamanho,'bípede, de pé, um pouco curvado','a linha Postura não completa');
+const rv=JSON.parse(fs.readFileSync('src/data/bestiario/ra-venenosa.json','utf8'));assert.equal(rv.corpo.posturaDoTamanho,'vista de cima, agachada');
 });
 cases.set('20', async () => {
 const a=conv(raw.replace(/Jogada:/g,'Conta:'));assert.ok(!a.paradas.some(x=>/Jogada|habilidade/i.test(x)));const b=conv(raw.replace('| Mordida | boca | Média |','| Mordida | boca | Distância |').replace(/Jogada:/g,'Conta:'));assert.ok(b.paradas.some(x=>/Jogada|habilidade/i.test(x)));const c=conv(raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[9]=' ';return a.join('|');}));assert.ok(c.paradas.some(x=>/Acerto/.test(x)));

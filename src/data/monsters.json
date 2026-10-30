@@ -129849,7 +129849,7 @@
     "comprimento": 0.042,
     "massa": 0.0085,
     "area": 0.0009,
-    "posturaDoTamanho": "quatro patas (sentada)"
+    "posturaDoTamanho": "vista de cima, agachada"
    },
    "couraca": 0,
    "atributos": {
@@ -129986,7 +129986,7 @@
    "comprimento": 0.042,
    "massa": 0.0085,
    "area": 0.0009,
-   "posturaDoTamanho": "quatro patas (sentada)",
+   "posturaDoTamanho": "vista de cima, agachada",
    "medida": "0.022 m de altura, 0.042 m de comprimento",
    "peso": "0.0085 kg"
   },
