@@ -108483,6 +108483,12 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "defesaOutraArma": {
+    "arma": "Besta média",
+    "armaPrincipal": "Lança",
+    "bloqueio": 10,
+    "defesa": 10
+   },
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 0.5,
@@ -109403,7 +109409,7 @@
   "combate": {
    "pv": 50,
    "energia": 9,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 10,
    "defesaMental": 12,
    "absorcao": {
@@ -137834,6 +137840,12 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "defesaOutraArma": {
+    "arma": "Arco longo",
+    "armaPrincipal": "Montante",
+    "bloqueio": 24,
+    "defesa": 24
+   },
    "fraquezas": [
     "profano"
    ],

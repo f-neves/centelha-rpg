@@ -115,7 +115,7 @@ function build(c, fonte) {
       defesaSocial: c.defesaSocial,
       defesaMental: c.defesaMental,
       absorcao: { impacto: c.soak.impacto, corte: c.soak.corte, perfuracao: c.soak.perfuracao },
-      resistenciaPerfuracao: c.resistPerf || 0, ...(f.motor?.couraca ? { couraca: f.motor.couraca } : {}), /* o nível de Couraça, à vista no card (M6); ainda não entra na Absorção */ ...(c.vestida ? { vestida: c.vestida } : {}), // D-206: com o equipamento; a mesa escolhe (defesa-vestida.ts)
+      resistenciaPerfuracao: c.resistPerf || 0, ...(f.motor?.couraca ? { couraca: f.motor.couraca } : {}), /* o nível de Couraça, à vista no card (M6); ainda não entra na Absorção */ ...(c.vestida ? { vestida: c.vestida } : {}), ...(c.defesaOutraArma ? { defesaOutraArma: c.defesaOutraArma } : {}), /* P23: a Defesa com a outra arma (o solar de arco) */ // D-206: com o equipamento; a mesa escolhe (defesa-vestida.ts)
       // Fraqueza e resistência a elemento, tipo de dano ou natureza. A maioria das
       // criaturas não tem nenhuma, então os campos só aparecem em quem tem.
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),

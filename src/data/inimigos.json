@@ -17575,6 +17575,12 @@
     ],
     "tecnicas": [],
     "artes": [],
+    "defesaOutraArma": {
+      "arma": "Besta média",
+      "armaPrincipal": "Lança",
+      "bloqueio": 10,
+      "defesa": 10
+    },
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -17682,7 +17688,7 @@
       "humanoide-monstruoso"
     ],
     "pv": 50,
-    "defesa": 6,
+    "defesa": 7,
     "defesaMental": 12,
     "defesaSocial": 10,
     "vontade": 6,
@@ -22489,6 +22495,12 @@
         "nivel": 5
       }
     ],
+    "defesaOutraArma": {
+      "arma": "Arco longo",
+      "armaPrincipal": "Montante",
+      "bloqueio": 24,
+      "defesa": 24
+    },
     "pericias": {
       "prontidao": 5,
       "furtividade": 0,

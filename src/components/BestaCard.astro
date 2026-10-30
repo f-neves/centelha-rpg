@@ -112,7 +112,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
 
           <dl class="besta-stats">
             <div><dt>{i.enxame ? 'PV por quadrado' : 'PV'}</dt><dd>{i.combate.pv}</dd></div>
-            <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
+            <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.defesaOutraArma && <><small> c/ {i.combate.defesaOutraArma.armaPrincipal}</small> · {i.combate.defesaOutraArma.defesa}<small> c/ {i.combate.defesaOutraArma.arma}</small></>}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
             <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
             <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}{i.combate.vestida.nivel ? `·N${i.combate.vestida.nivel}` : ''}<small> c/ equip.</small></>}</dd></div>

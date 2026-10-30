@@ -309,12 +309,12 @@ assert.match(MB.cardCriaturaHTML(ar),/PV pela linha de baixo da zona de transiç
 // G4 nas criaturas (consequência direta da D-262, a criatura acompanha o catálogo): a arma de duas mãos de corpo a corpo
 // ocupa as mãos e o −2 de Bloqueio do Montante, do Martelo de Guerra e do Machado Pesado entra, como na ficha (90429be9).
 cases.set('G4-criaturas', async () => {
-const esperado={'arconte-trombeta':[20,18],'bruto':[6,5],'cavaleiro-de-elite':[14,11],'minotauro':[6,null],'planetar':[20,null],'solar':[22,null]};
-const bloq={'arconte-trombeta':20,'bruto':4,'cavaleiro-de-elite':12,'minotauro':6,'planetar':20,'solar':22};
+const esperado={'arconte-trombeta':[20,18],'bruto':[6,5],'cavaleiro-de-elite':[14,11],'minotauro':[7,null],'planetar':[20,null],'solar':[22,null]};
+const bloq={'arconte-trombeta':20,'bruto':4,'cavaleiro-de-elite':12,'minotauro':7,'planetar':20,'solar':22};
 for(const [id,[def,vest]] of Object.entries(esperado)){const c=JSON.parse(fs.readFileSync(`src/data/bestiario/${id}.json`,'utf8'));const r=M.criatura(c),st=M.vistaPublicaCriatura(c).motor.stat;
  assert.equal(st.defesa,def,id+' Defesa');assert.equal(st.vestida?.defesa??null,vest,id+' Defesa com o equipamento');assert.equal(Math.max(r.esquiva,bloq[id]),def,id+' Bloqueio com a arma');}
 const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));for(const [id,[def]] of Object.entries(esperado))assert.equal(mesa.find(m=>m.id===id).combate.defesa,def,id+' na mesa');
-// O chifre do minotauro bloqueia como arma (+1), mas com o machado pesado nas duas mãos o corpo não entra.
+// O chifre do minotauro bloqueia como arma (+1), e desde a P23 (30/10/2026) soma mesmo com o machado nas duas mãos.
 const mino=JSON.parse(fs.readFileSync('src/data/bestiario/minotauro.json','utf8'));assert.equal(mino.ataques.find(a=>a.nome==='Chifrada').bloqueiaComoArma,1);
 // E só as seis: nenhuma outra criatura empunha arma de duas mãos de corpo a corpo com Defesa da arma negativa.
 const A=JSON.parse(fs.readFileSync('src/data/armas.json','utf8'));const W=Object.fromEntries(A.map(w=>[w.id,w.arma]));
@@ -338,6 +338,18 @@ const grid=fs.readFileSync('src/pages/mesa/grid.astro','utf8');assert.ok(!/INVES
 const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const todas=mon.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida').map(h=>[m.id,h.descricao]));assert.equal(todas.length,37);
 const comDado=todas.filter(([,d])=>/\+1d6|o \+\d+d6/.test(d));assert.deepEqual(comDado,[],'card com o +1d6');
 const txt=(id)=>todas.find(([i])=>i===id)[1];assert.match(txt('aguia-gigante'),/Garras em mergulho investindo: 2d6 \+19 \(C\) \(a Força 6 mais uma vez\)/);assert.match(txt('minotauro'),/Nesta criatura: a Força 7 mais uma vez no dano do golpe/);
+});
+// P23 (decisão do autor de 30/10/2026): (a) o chifre do minotauro soma com as duas mãos ocupadas (−2 do machado e +1
+// do chifre); (b) o solar só leva o −2 com o montante em uso, e não de arco: o card mostra as duas Defesas.
+cases.set('P23', async () => {
+const vista=(id)=>{const c=JSON.parse(fs.readFileSync(`src/data/bestiario/${id}.json`,'utf8'));return [M.criatura(c),M.vistaPublicaCriatura(c).motor.stat];};
+const [rm,mi]=vista('minotauro');assert.equal(rm.bloqueio,8);assert.equal(mi.defesa,rm.bloqueio-2+1,'minotauro: Bloqueio 8, −2 do machado, +1 do chifre');assert.equal(mi.defesa,7);assert.equal(mi.defesaOutraArma,undefined,'o minotauro não tem outra arma do catálogo');
+const [rs,so]=vista('solar');assert.equal(rs.bloqueio,24);assert.equal(so.defesa,22,'solar com o montante');assert.deepEqual(so.defesaOutraArma,{arma:'Arco longo',armaPrincipal:'Montante',bloqueio:24,defesa:24},'solar de arco, sem o −2');
+for(const id of ['arconte-trombeta','planetar','cavaleiro-de-elite','bruto'])assert.equal(vista(id)[1].defesaOutraArma,undefined,id);
+const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const outras=mon.filter(m=>m.combate.defesaOutraArma).map(m=>m.id).sort();assert.deepEqual(outras,['merfolk','solar'],'as criaturas com duas Defesas por arma');
+const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));assert.equal(mesa.find(m=>m.id==='solar').combate.defesa,22,'a mesa usa a do primeiro ataque, o montante');assert.equal(mesa.find(m=>m.id==='minotauro').combate.defesa,7);
+for(const f of ['src/components/BestaCard.astro','src/components/FormaCriatura.astro'])assert.match(fs.readFileSync(f,'utf8'),/\{i\.combate\.defesaOutraArma && <><small> c\/ \{i\.combate\.defesaOutraArma\.armaPrincipal\}<\/small> · \{i\.combate\.defesaOutraArma\.defesa\}<small> c\/ \{i\.combate\.defesaOutraArma\.arma\}<\/small><\/>\}/,f);
+const MB=await carregarTS('src/lib/mesa-bestiario.ts');const h=MB.cardCriaturaHTML(mon.find(m=>m.id==='solar'));assert.match(h,/<dt>Defesa<\/dt><dd>22 <small>\(c\/ Montante; c\/ Arco longo: 24\)<\/small><\/dd>/);
 });
 // C1 (revisão de af3697c7): "sem dado" na linha "Prende a respiração" não chega ao JSON, na principal e na forma, com a
 // marca ou sem ela; e nenhum valor de texto dos 324 JSON nem dos três gerados é só "sem dado", em campo nenhum.

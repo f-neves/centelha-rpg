@@ -763,13 +763,25 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const armaDe = (a: any) => armas.find((w: any) => w.id === a.arma)?.arma;
     // O BLOQUEIO DA ARMA, pela regra do jogador (`conjuntoPersonagem`, parecer da Veterana, G4): a arma de duas mãos de
     // corpo a corpo ocupa as mãos, e aí vale o que está nelas, com o −2 do Montante, do Martelo de Guerra e do Machado
-    // Pesado; o corpo (o chifre que bloqueia como arma, inclusive) não entra. Sem ela, o melhor entre as armas e o corpo,
-    // como antes. A criatura acompanha o catálogo (D-262). Antes o `Math.max(0, ...)` engolia o negativo.
+    // Pesado. A criatura acompanha o catálogo (D-262). Antes o `Math.max(0, ...)` engolia o negativo.
+    // P23 (decisão do autor de 30/10/2026): (a) o corpo que bloqueia como arma (o chifre do minotauro, +1) SOMA mesmo com
+    // as duas mãos ocupadas, porque não está nelas; (b) o −2 só vale com a arma de duas mãos em uso: a criatura que tem
+    // também outra arma do catálogo (o solar, com o arco longo) tem a Defesa sem o −2 quando usa a outra, e o card mostra
+    // as duas (`defesaOutraArma`). A Defesa principal é a da arma de duas mãos, que é a do primeiro ataque nas seis.
     const duasMaos = c.ataques.map(armaDe).filter((w: any) => w && w.maos === 2 && w.classe !== 'distancia');
+    const corpoBloqueia = Math.max(0, ...c.ataques.filter((a: any) => !a.arma).map((a: any) => a.bloqueiaComoArma ?? 0));
+    const semDuasMaos = (ataques: any[]) => Math.max(0, ...ataques.map((a: any) => a.arma ? armaDe(a)?.defesaArma ?? 0 : a.bloqueiaComoArma ?? 0));
     const bloqueioArma = duasMaos.length
-        ? Math.max(...duasMaos.map((w: any) => w.defesaArma ?? 0))
-        : Math.max(0, ...c.ataques.map((a: any) => a.arma ? armaDe(a)?.defesaArma ?? 0 : a.bloqueiaComoArma ?? 0));
+        ? Math.max(...duasMaos.map((w: any) => w.defesaArma ?? 0)) + corpoBloqueia
+        : semDuasMaos(c.ataques);
     const defesa = Math.max(r.esquiva, r.bloqueio + bloqueioArma);
+    const outraArma = duasMaos.length ? c.ataques.find((a: any) => a.arma && !duasMaos.includes(armaDe(a))) : undefined;
+    const principalArma = duasMaos.length ? c.ataques.find((a: any) => duasMaos.includes(armaDe(a))) : undefined;
+    const bloqueioOutra = outraArma ? semDuasMaos(c.ataques.filter((a: any) => !duasMaos.includes(armaDe(a)))) : 0;
+    const defesaOutraArma = outraArma ? {
+        arma: outraArma.nome, armaPrincipal: principalArma.nome, bloqueio: r.bloqueio + bloqueioOutra, defesa: Math.max(r.esquiva, r.bloqueio + bloqueioOutra),
+        ...(r.comEquipamento ? { vestida: Math.max(r.comEquipamento.esquiva, r.comEquipamento.bloqueio + bloqueioOutra) } : {})
+    } : undefined;
     const vest = r.comEquipamento;
     // O Bloqueio da linha "Com o equipamento" leva a arma das mãos, como a Defesa ao lado (G4): sem isso o card dizia
     // "Bloqueio 20" e "Defesa 18" no arconte-trombeta, e quem lê pegava o maior.
@@ -815,7 +827,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], deslocamentoDeclarado: { batalha: principal?.batalha ?? 0, arranque: principal?.arranque ?? principal?.batalha ?? 0, corrida: principal?.corrida ?? principal?.batalha ?? 0 }, locomocao: { terra: d.terra?.batalha ?? null, ...Object.fromEntries(Object.entries(d).filter(([k]) => k !== 'terra').map(([k, v]) => [k === 'nado' ? 'natacao' : k, v == null ? null : (v as any).batalha])) }, ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
     };
     const stat = {
-        id: c.id, nome: c.nome, tipo: c.papel, categoria: c.categoria, ameaca: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: f.tags, pv: r.pv, defesa, defesaMental: r.defesaMental === 'imune' ? '-' : r.defesaMental, defesaSocial: r.defesaSocial === 'imune' ? '-' : r.defesaSocial, vontade: c.vontade, soak: r.absorcao, resistPerf: 0, iniciativa: '1d6 + ' + r.iniciativa, atributos: c.atributos, ataques, tecnicas: Object.keys(f.tech), artes: Object.entries(c.artes).map(([id, nivel]) => ({ id, nivel })), notas: '', pendente: false, ...(vestida ? { vestida } : {})
+        id: c.id, nome: c.nome, tipo: c.papel, categoria: c.categoria, ameaca: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: f.tags, pv: r.pv, defesa, defesaMental: r.defesaMental === 'imune' ? '-' : r.defesaMental, defesaSocial: r.defesaSocial === 'imune' ? '-' : r.defesaSocial, vontade: c.vontade, soak: r.absorcao, resistPerf: 0, iniciativa: '1d6 + ' + r.iniciativa, atributos: c.atributos, ataques, tecnicas: Object.keys(f.tech), artes: Object.entries(c.artes).map(([id, nivel]) => ({ id, nivel })), notas: '', pendente: false, ...(vestida ? { vestida } : {}), ...(defesaOutraArma ? { defesaOutraArma } : {})
     };
     const edicao = incluirFormas ? structuredClone(original) : undefined;
     if (edicao) delete edicao.revisao;
