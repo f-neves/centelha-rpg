@@ -159,6 +159,16 @@ const R=JSON.parse(fs.readFileSync('src/data/regras.json','utf8'));assert.match(
 const best=fs.readFileSync('src/pages/bestiario.astro','utf8');const dano=best.split('<span class="lbl">Dano</span>')[1].split('</div>')[0];
 assert.match(dano,/ação de <a [^>]*#investida'\}>Investida<\/a>/);assert.match(dano,/cauda que varre com o giro do corpo inteiro/);assert.ok(!/usam sempre <strong>uma vez a Força/.test(dano),'sobrou a frase de antes');
 });
+// V2 (D-267): o peso erguido do livro é o da D-184 (a R15, pela massa), em tabela gerada do motor; a tabela por FAH sai.
+cases.set('parecer-V2', async () => {
+const cap=fs.readFileSync('src/content/chapters/acoes-corpo-e-movimento.md','utf8');const lp=cap.split('## Levantar Peso')[1].split('\n## ')[0];
+assert.ok(!/\| FAH \|/.test(lp),'sobrou a tabela por FAH');assert.ok(!/FAH = Força × 3 \+ Halterofilismo/.test(lp),'sobrou a reserva FAH');assert.ok(!/tabela do FAH/.test(cap),'sobrou o ponteiro para a tabela do FAH');
+assert.match(lp,/R15 é o nome desta regra/);assert.match(lp,/massa padrão da raça/);assert.match(lp,/<!-- gen:peso-erguido -->/);
+const cel=(raca,f)=>{const l=lp.split('\n').find(x=>x.startsWith('| **'+raca+'** |'));assert.ok(l,raca);return Number(l.split('|')[3+f].replace(/[^\d]/g,''));};
+for(const [raca,id] of [['Humano','humano'],['Gnomo','gnomo'],['Orc','orc']])for(const f of [1,3,4]){
+ const ficha=Math.round(M.numerosPersonagem({raca:id,attrs:{forca:f},skills:{},skills2:{}}).pesoErguido);assert.equal(cel(raca,f),ficha,raca+' Força '+f+': livro e ficha');}
+assert.equal(cel('Humano',1),83,'o Humano de 70 kg e Força 1 do parecer');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

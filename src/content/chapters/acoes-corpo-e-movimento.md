@@ -188,7 +188,42 @@ Como o teto mortal de Atributo + Habilidade é 12, **Dificuldade 20 é o limite 
 
 Não se rola. O peso máximo do personagem já está calculado, e ou o objeto está dentro dele, ou não está. O que a mesa decide é **até que altura** o peso precisa ir, porque é a altura que manda.
 
-**Reserva** · **FAH = Força × 3 + Halterofilismo**, de 3 a 24. Atletismo não entra: erguer o máximo é contração estática, e Atletismo é mobilidade e fôlego.
+**O peso máximo, P** · sai da **massa do corpo**, da **Força** e do **Halterofilismo**, pela mesma conta para o personagem e para a criatura. Atletismo não entra: erguer o máximo é contração estática, e Atletismo é mobilidade e fôlego.
+
+A **massa** é a do personagem: a que o jogador escreve na ficha, ou, se o campo ficar vazio, a massa padrão da raça (o meio da faixa dela, em [Raças](/regras/racas)). Ela pesa porque corpo maior tem mais músculo: com a mesma Força, quem pesa mais ergue mais. A massa muda o peso máximo e as contas que dependem dele; o Tamanho e a Vida continuam os da raça.
+
+A ficha mostra a conta na linha **Levantamento de Peso** (massa, Força e Halterofilismo) com a marca **(R15)**: R15 é o nome desta regra, a do peso erguido, que o bestiário usa para as criaturas com os mesmos números. A ficha faz a conta sozinha; a fórmula fica aqui para quem quiser conferir, e as tabelas logo abaixo dão os valores mais comuns.
+
+<!-- gen:peso-erguido -->
+
+<p class="formula">P = máx(curva da massa ; 0,25 × massa) × 1,3<sup>(E − E típica)</sup></p>
+
+- **E**, a força do corpo: (Força × 3 + Halterofilismo × 1 + Musculatura × 3) ÷ 4.
+- **E típica**, a de um corpo comum daquela massa: (Força de referência × 3 + 6) ÷ 4. A Força de referência é **6** de 60 a 200 kg; abaixo de 60 kg, 6 + 3,8 × log₁₀(massa ÷ 60); acima de 200 kg, 6 + 3,8 × log₁₀(massa ÷ 200); nunca abaixo de 0.
+- **A curva da massa**, o que um corpo comum daquela massa ergue: 400 × 10<sup>(0,53 × L − 0,176 × L²)</sup> kg, com L = log₁₀(massa ÷ 100). O piso de 0,25 × a massa vale antes do multiplicador.
+
+Cada ponto de Força acima ou abaixo da referência vale cerca de **22%** de P; cada ponto de Halterofilismo, cerca de **7%**. A **Musculatura** vale o mesmo que um ponto de Força, e é só de criatura: aparece no bestiário, e o personagem não a tem.
+
+O peso máximo do chão (**P**), com Halterofilismo 0, na massa padrão de cada raça. Acima da cabeça vale metade, e arremessar, um quarto (as três alturas, abaixo).
+
+| Raça | Massa padrão | Força 0 | Força 1 | Força 2 | Força 3 | Força 4 | Força 5 | Força 6 |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| **Humano** | 70 kg | 68 kg | 83 kg | 101 kg | 123 kg | 149 kg | 182 kg | 221 kg |
+| **Anão** | 85 kg | 76 kg | 92 kg | 112 kg | 137 kg | 167 kg | 203 kg | 247 kg |
+| **Elfo** | 53,5 kg | 60 kg | 73 kg | 89 kg | 108 kg | 132 kg | 160 kg | 195 kg |
+| **Gnomo** | 25 kg | 46 kg | 56 kg | 68 kg | 82 kg | 100 kg | 122 kg | 149 kg |
+| **Halfling** | 24 kg | 45 kg | 55 kg | 66 kg | 81 kg | 98 kg | 120 kg | 146 kg |
+| **Meio-Elfo** | 70 kg | 68 kg | 83 kg | 101 kg | 123 kg | 149 kg | 182 kg | 221 kg |
+| **Orc** | 110 kg | 87 kg | 106 kg | 129 kg | 157 kg | 191 kg | 233 kg | 284 kg |
+| **Meio-Orc** | 90 kg | 78 kg | 95 kg | 116 kg | 141 kg | 172 kg | 209 kg | 255 kg |
+
+O mesmo humano de 70 kg com Força 3, por Halterofilismo:
+
+| Halterofilismo | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|:--:|:--:|:--:|:--:|:--:|:--:|:--:|
+| **Do chão** | 123 kg | 131 kg | 140 kg | 149 kg | 159 kg | 170 kg | 182 kg |
+
+<!-- /gen:peso-erguido -->
 
 ### As três alturas
 
@@ -201,36 +236,6 @@ O mesmo corpo levanta pesos diferentes conforme a altura que o peso precisa venc
 | **Arremessar** | **um quarto de P** | acima disso o objeto sai da mão sem ir a lugar nenhum |
 
 Isso não é convenção de mesa: é o que os recordes mostram. O maior levantamento terra registrado é 510 kg e o maior peso já erguido do chão até acima da cabeça é 267 kg, quase exatamente metade. E a pedra mais pesada que um humano já **arremessou** tem 83,5 kg, um sexto do recorde de levantamento. O quarto é folga por cima disso.
-
-<figure class="grafico">
-<svg viewBox="0 0 700 340" role="img" aria-label="Peso máximo por FAH, do chão e acima da cabeça" style="width:100%;height:auto;display:block;font-family:'EB Garamond',Georgia,serif;font-size:11px;fill:var(--ink-soft)"><rect x="0" y="0" width="700" height="340" rx="8" fill="var(--panel)"/><line x1="52" y1="300.0" x2="682" y2="300.0" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="45" y="303.5" text-anchor="end">0</text><line x1="52" y1="243.2" x2="682" y2="243.2" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="45" y="246.7" text-anchor="end">100</text><line x1="52" y1="186.4" x2="682" y2="186.4" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="45" y="189.9" text-anchor="end">200</text><line x1="52" y1="129.6" x2="682" y2="129.6" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="45" y="133.1" text-anchor="end">300</text><line x1="52" y1="72.8" x2="682" y2="72.8" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="45" y="76.3" text-anchor="end">400</text><line x1="52" y1="16.0" x2="682" y2="16.0" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="45" y="19.5" text-anchor="end">500</text><line x1="52.0" y1="16" x2="52.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="52.0" y="315" text-anchor="middle">3</text><line x1="142.0" y1="16" x2="142.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="142.0" y="315" text-anchor="middle">6</text><line x1="232.0" y1="16" x2="232.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="232.0" y="315" text-anchor="middle">9</text><line x1="322.0" y1="16" x2="322.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="322.0" y="315" text-anchor="middle">12</text><line x1="412.0" y1="16" x2="412.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="412.0" y="315" text-anchor="middle">15</text><line x1="502.0" y1="16" x2="502.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="502.0" y="315" text-anchor="middle">18</text><line x1="592.0" y1="16" x2="592.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="592.0" y="315" text-anchor="middle">21</text><line x1="682.0" y1="16" x2="682.0" y2="300" stroke="var(--rule)" stroke-width=".5" opacity=".45"/><text x="682.0" y="315" text-anchor="middle">24</text><polyline points="52.0,283.0 82.0,275.0 112.0,265.9 142.0,256.8 172.0,246.6 202.0,234.7 232.0,223.3 262.0,212.0 292.0,200.6 322.0,189.2 352.0,175.0 382.0,163.7 412.0,152.3 442.0,135.3 472.0,123.9 502.0,106.9 532.0,95.5 562.0,78.5 592.0,61.4 622.0,50.1 652.0,33.0 682.0,16.0" fill="none" stroke="var(--accent)" stroke-width="2.5" stroke-linejoin="round"/><polyline points="52.0,291.5 82.0,287.5 112.0,283.0 142.0,278.4 172.0,273.3 202.0,267.3 232.0,261.7 262.0,256.0 292.0,250.3 322.0,244.6 352.0,237.5 382.0,231.8 412.0,226.2 442.0,217.6 472.0,212.0 502.0,203.4 532.0,197.8 562.0,189.2 592.0,180.7 622.0,175.0 652.0,166.5 682.0,158.0" fill="none" stroke="var(--accent)" stroke-width="2" stroke-dasharray="6 4" opacity=".75" stroke-linejoin="round"/><circle cx="52.0" cy="283.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="52.0" cy="291.5" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="82.0" cy="275.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="82.0" cy="287.5" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="112.0" cy="265.9" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="112.0" cy="283.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="142.0" cy="256.8" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="142.0" cy="278.4" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="172.0" cy="246.6" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="172.0" cy="273.3" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="202.0" cy="234.7" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="202.0" cy="267.3" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="232.0" cy="223.3" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="232.0" cy="261.7" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="262.0" cy="212.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="262.0" cy="256.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="292.0" cy="200.6" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="292.0" cy="250.3" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="322.0" cy="189.2" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="322.0" cy="244.6" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="352.0" cy="175.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="352.0" cy="237.5" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="382.0" cy="163.7" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="382.0" cy="231.8" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="412.0" cy="152.3" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="412.0" cy="226.2" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="442.0" cy="135.3" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="442.0" cy="217.6" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="472.0" cy="123.9" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="472.0" cy="212.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="502.0" cy="106.9" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="502.0" cy="203.4" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="532.0" cy="95.5" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="532.0" cy="197.8" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="562.0" cy="78.5" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="562.0" cy="189.2" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="592.0" cy="61.4" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="592.0" cy="180.7" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="622.0" cy="50.1" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="622.0" cy="175.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="652.0" cy="33.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="652.0" cy="166.5" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="682.0" cy="16.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><circle cx="682.0" cy="158.0" r="2.4" fill="var(--accent-strong)" stroke="var(--panel)" stroke-width="1"/><text x="388.0" y="154.7" fill="var(--accent-strong)" font-family="Cinzel,Georgia,serif" font-size="12">do chão</text><text x="388.0" y="222.8" fill="var(--accent-strong)" font-family="Cinzel,Georgia,serif" font-size="12">acima da cabeça</text><line x1="52" y1="16" x2="52" y2="300" stroke="var(--rule)"/><line x1="52" y1="300" x2="682" y2="300" stroke="var(--rule)"/><text x="367.0" y="334" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="11">FAH</text><text transform="rotate(-90 13 158)" x="13" y="158" text-anchor="middle" font-family="Cinzel,Georgia,serif" font-size="11">Peso máximo (kg)</text></svg>
-<figcaption>No eixo, a reserva <strong>FAH</strong>. A curva cheia é o que sai do chão. A tracejada é o que passa da cabeça. Cada ponto é um valor de FAH, porque a reserva é inteira: entre um ponto e o outro não existe nada.</figcaption>
-</figure>
-
-| FAH | Do chão | Acima da cabeça | Arremessa até |
-|:--:|---|---|---|
-| **3** | 30 kg | 15 kg | 8 kg |
-| **4** | 44 kg | 22 kg | 11 kg |
-| **5** | 60 kg | 30 kg | 15 kg |
-| **6** | 76 kg | 38 kg | 19 kg |
-| **7** | 94 kg | 47 kg | 24 kg |
-| **8** | 115 kg | 58 kg | 29 kg |
-| **9** | 135 kg | 68 kg | 34 kg |
-| **10** | 155 kg | 78 kg | 39 kg |
-| **11** | 175 kg | 88 kg | 44 kg |
-| **12** | 195 kg | 98 kg | 49 kg |
-| **13** | 220 kg | 110 kg | 55 kg |
-| **14** | 240 kg | 120 kg | 60 kg |
-| **15** | 260 kg | 130 kg | 65 kg |
-| **16** | 290 kg | 145 kg | 72 kg |
-| **17** | 310 kg | 155 kg | 78 kg |
-| **18** | 340 kg | 170 kg | 85 kg |
-| **19** | 360 kg | 180 kg | 90 kg |
-| **20** | 390 kg | 195 kg | 98 kg |
-| **21** | 420 kg | 210 kg | 105 kg |
-| **22** | 440 kg | 220 kg | 110 kg |
-| **23** | 470 kg | 235 kg | 118 kg |
-| **24** | 500 kg | 250 kg | 125 kg |
 
 ### Quando a mesa rola alguma coisa
 
@@ -262,7 +267,7 @@ Repare que a régua de carga e a de altura se encontram: a **Leve** termina exat
 
 ### Arremessar: o FAA
 
-**FAA = Força × 2 + Atletismo + Arremesso**, de 2 a 24. A **Máxima**, na melhor situação possível (correndo e girando), é **7 × FAA^0,7 ÷ peso^0,4** metros, com o peso em kg. Só se arremessa o que cabe na coluna "Arremessa até" da tabela do FAH, e a partir de 80% desse teto a distância cai em linha reta até zero. A fórmula vale de 100 g para cima: abaixo disso a distância cai com o peso (o ápice é 100 g, como diz "O que o motor já responde"). A **Funda** e o **atlatl** dobram a Máxima final: calcula-se a Máxima normal pela fórmula e dobra-se (a pedra de 100 g de uma Funda vai a 93, 176, 245 e 325 m com FAA 4, 10, 16 e 24). O peso de cada arma de Arremesso está na coluna Peso da tabela de [Armas & Armaduras](/regras/armas-e-armaduras).
+**FAA = Força × 2 + Atletismo + Arremesso**, de 2 a 24. A **Máxima**, na melhor situação possível (correndo e girando), é **7 × FAA^0,7 ÷ peso^0,4** metros, com o peso em kg. Só se arremessa até um quarto de P (a terceira das três alturas), e a partir de 80% desse teto a distância cai em linha reta até zero. A fórmula vale de 100 g para cima: abaixo disso a distância cai com o peso (o ápice é 100 g, como diz "O que o motor já responde"). A **Funda** e o **atlatl** dobram a Máxima final: calcula-se a Máxima normal pela fórmula e dobra-se (a pedra de 100 g de uma Funda vai a 93, 176, 245 e 325 m com FAA 4, 10, 16 e 24). O peso de cada arma de Arremesso está na coluna Peso da tabela de [Armas & Armaduras](/regras/armas-e-armaduras).
 
 | FAA | 0,5 kg | 1 kg | 2 kg | 5 kg |
 | --- | --- | --- | --- | --- |
