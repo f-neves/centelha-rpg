@@ -50,6 +50,31 @@ ok(erro(()=>mesa.escolherFormaDaPeca(a,'forma-inexistente'))!==null, 'recusa for
 mesa.escolherFormaDaPeca(a,'hibrida');
 ok(mesa.resumoDe(a).pv===principal.pv, 'retorna à forma principal');
 
+// Pontas, 2(b) (30/10/2026): a forma do dragão dourado mudou de id no lote fase5-18 ("humana-ou-de-animal-pequeno"
+// para "humana"); a peça guardada neste aparelho com o id antigo vai à forma nova (RENOMES_FORMA), e não à principal.
+{
+  const guardado = { __ren_dd: 'humana-ou-de-animal-pequeno' };
+  const ls0 = Object.getOwnPropertyDescriptor(globalThis, 'localStorage');
+  Object.defineProperty(globalThis, 'localStorage', { configurable: true, value: { getItem: () => JSON.stringify(guardado), setItem() {} } });
+  try {
+    const velha = { id: '__ren_dd', tipo: 'criatura', monstro_id: 'dragao-dourado-adulto', dados: {} };
+    const nova = { ...velha, id: '__ren_dd_nova' };
+    mesa.escolherFormaDaPeca(nova, 'humana');
+    const dd = mesa.MON['dragao-dourado-adulto'];
+    ok(mesa.formaEscolhidaDaPeca(velha) === 'humana', 'peça com o id antigo da forma: lê "humana"');
+    ok(mesa.modeloDaPeca(velha)?.formaPrincipal?.id === 'humana', 'peça com o id antigo da forma: o modelo é o da forma humana');
+    ok(JSON.stringify(mesa.resumoDe(velha)) === JSON.stringify(mesa.resumoDe(nova)), 'peça com o id antigo: o mesmo resumo da forma nova');
+    ok(JSON.stringify(mesa.resumoDe(velha)) !== JSON.stringify(mesa.resumoDe({ ...velha, id: '__ren_dd_principal' })), 'e não o da principal');
+    ok(mesa.modeloNaForma(dd, 'humana-ou-de-animal-pequeno')?.formaPrincipal?.id === 'humana', 'card aberto com o id antigo: a forma humana');
+    for (const [mid, mapa] of Object.entries(mesa.RENOMES_FORMA)) for (const [de, para] of Object.entries(mapa)) {
+      ok(!mesa.MON[mid]?.formas?.some((f) => f.id === de), `RENOMES_FORMA ${mid}: o id antigo ${de} não existe mais`);
+      ok(mesa.MON[mid]?.formas?.some((f) => f.id === para), `RENOMES_FORMA ${mid}: o id novo ${para} existe`);
+    }
+  } finally {
+    if (ls0) Object.defineProperty(globalThis, 'localStorage', ls0); else delete globalThis.localStorage;
+  }
+}
+
 // A9: fonte exportada pelo editor é a mesma entrada do motor, sem derivados gravados.
 const editor = await carregarTS('src/lib/bestia-editor.ts');
 const nova = editor.novaCriatura();
