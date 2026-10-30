@@ -67,6 +67,7 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `corpo.segundoTamanho` | `{area, posturaDoTamanho}` | cond. | S | `Segundo Tamanho` (D-213, D-215) |
 | `corpo.tamanhoEscolhido` | id do Tamanho | cond. (só quando a ficha escolhe) | S | `Tamanho`, quando a área fica a menos de 5% do corte e a ficha "escolhe pelo corpo" (decisoes-autor §13; a escolha é guardada pela D-216, o nome pela D-225) |
 | `corpo.linhaPV` | `acima` ou `abaixo` | cond. (só quando a ficha escolhe) | S | `PV base`, na zona de transição ("robusto sobe, frágil desce", §13; guardada pela D-216, o nome pela D-225) |
+| `corpo.linhaPVMotivo` | texto | cond. (só junto de `linhaPV`, e só quando a ficha diz o porquê) | S | `PV base`, a frase "PV na linha de cima: ..." (na forma, a justificativa da Variante); o card a escreve na nota da linha de PV (Cap. IV: a ficha "escolhe a linha pelo corpo ... e diz por quê"). Chave nova da reconversão 5d, 30/10/2026, a confirmar pelo Arquiteto |
 | `corpo.cargaMedida` | número (kg) | cond. (quadrúpede de carga com medida) | S | `Carga` (D-122: "o fim da faixa Leve é a carga medida, quando houver") |
 | `couraca` | inteiro 0 a 12 | sim | S | Absorção, "Couraça nível N" |
 | `bonusPV` | inteiro | não (falta = 0) | S | `Bônus de PV` (D-135, com a justificativa na ficha) |

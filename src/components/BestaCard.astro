@@ -38,7 +38,7 @@ const NOMES_HAB: Record<string, string> = Object.fromEntries([...(HAB as any[]),
 const treino = habilidadesDeTreino(i, NOMES_HAB);
 const temTreino = treino.primarias.length + treino.secundarias.length > 0;
 // Por que a linha de PV, quando a massa cai na zona de transição (parecer da Leitora-novata, achado 9).
-const notaPV = i.enxame || !i.corpo ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(i.corpo), i.atributos?.vigor ?? 0, i.corpo.linhaPV), i.combate.pv);
+const notaPV = i.enxame || !i.corpo ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(i.corpo), i.atributos?.vigor ?? 0, i.corpo.linhaPV), i.combate.pv, i.corpo.linhaPVMotivo);
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 // Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".

@@ -83,6 +83,11 @@ const jogo = (s) => semMarcas(String(s ?? '').replace(/\s*\*\*\[formas:[^\]]*\]\
 const semPonto = (s) => s.replace(/\s*\.\s*$/, '').trim();
 // a célula que só diz que não há dado: a marca `**[sem dado]**` ou a palavra sem ela, com o ponto final ou sem
 const SEM_DADO = /^\s*(\*\*\[sem dado\]\*\*|\[sem dado\]|sem dado)\s*\.?\s*$/i;
+// "PV na linha de cima: inseto de casca." · a linha que a ficha escolheu na zona de transição e o porquê, até o ponto
+const motivoDaLinhaPV = (s) => {
+  const m = String(s ?? '').replace(/\*\*/g, '').match(/PV na linha de (cima|baixo):\s*([^.|]+?)\s*(?:\.|\||$)/);
+  return m && m[2] ? { linha: m[1] === 'cima' ? 'acima' : 'abaixo', motivo: m[2] } : null;
+};
 const idForma = (nome) => slug(String(nome).replace(/^forma (de |d[ao] )?/, ''));
 
 export function converterFicha(texto, { site = null } = {}) {
@@ -213,6 +218,15 @@ export function converterFicha(texto, { site = null } = {}) {
   if (fx && kg !== undefined) {
     const de = numBR(fx[1]) * UN[fx[2] || fx[4]], ate = numBR(fx[3]) * UN[fx[4]];
     if (kg > ate) corpo.linhaPV = 'abaixo'; else if (kg <= de) corpo.linhaPV = 'acima';
+  }
+  // o porquê da linha, nas palavras da ficha ("PV na linha de cima: inseto de casca."), para o card dizer (Cap. IV:
+  // "a ficha da criatura escolhe a linha pelo corpo ... e diz por quê"). A frase tem de concordar com a linha que os
+  // limites dão; se não concordar, ou se a ficha não escolhe linha, é a ficha que está errada, e o conversor para.
+  const motivoPV = motivoDaLinhaPV(semMarcas(pvb));
+  if (motivoPV) {
+    if (!corpo.linhaPV) para(`PV base: a ficha diz "PV na linha de ${motivoPV.linha === 'acima' ? 'cima' : 'baixo'}", e a massa não cai na zona de transição da faixa`);
+    else if (motivoPV.linha !== corpo.linhaPV) para(`PV base: a ficha diz "PV na linha de ${motivoPV.linha === 'acima' ? 'cima' : 'baixo'}", e a massa dá a linha de ${corpo.linhaPV === 'acima' ? 'cima' : 'baixo'}`);
+    else corpo.linhaPVMotivo = motivoPV.motivo;
   }
   if (/^Por quadrado cheio/.test(pvb)) {
     const enx = pvb.match(/^Por quadrado cheio \((\d+) [^)]*\): conta como criatura (\S+?),/);
@@ -650,6 +664,13 @@ export function converterFicha(texto, { site = null } = {}) {
             else avisos.push(`Variantes, ${nomeF}: PV ${pvForma} não coincide com as linhas de PV da massa e do Vigor`);
           }
         }
+      }
+      // o porquê da linha da forma: na Variante, a frase mora na justificativa (o texto junto do "PV N" pararia a forma)
+      const motivoF = motivoDaLinhaPV(Object.values(r).slice(1).join(' | '));
+      if (motivoF) {
+        if (!fc.linhaPV) para(`Variantes, ${nomeF}: a ficha diz "PV na linha de ${motivoF.linha === 'acima' ? 'cima' : 'baixo'}", e o PV da forma não escolhe linha na zona de transição`);
+        else if (motivoF.linha !== fc.linhaPV) para(`Variantes, ${nomeF}: a ficha diz "PV na linha de ${motivoF.linha === 'acima' ? 'cima' : 'baixo'}", e o PV da forma é o da linha de ${fc.linhaPV === 'acima' ? 'cima' : 'baixo'}`);
+        else fc.linhaPVMotivo = motivoF.motivo;
       }
       if (Object.keys(fc).length) f.corpo = fc;
       if (Object.keys(fa).length) f.atributos = fa;

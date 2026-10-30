@@ -66,8 +66,10 @@ export const baseTxt = (b: { arte: string; nivel: number } | undefined, arteNome
 /** A massa por extenso, como a tabela do Cap. IV: g abaixo de 1 kg, t de 1.000 kg para cima, vírgula decimal. */
 const massaTxt = (kg: number) => (kg < 1 ? `${Math.round(kg * 1000)} g` : kg >= 1000 ? `${String(+(kg / 1000).toFixed(2)).replace('.', ',')} t` : `${String(+kg.toFixed(2)).replace('.', ',')} kg`);
 /** Por que a ficha escolheu a linha de PV na zona de transição (achado 9). `pv` é o do card, já com o `bonusPV`. */
-export function linhaPVTxt(z: { zonaKg: [number, number]; linha: 'acima' | 'abaixo'; pvAcima: number; pvAbaixo: number } | null, pv: number): string {
+export function linhaPVTxt(z: { zonaKg: [number, number]; linha: 'acima' | 'abaixo'; pvAcima: number; pvAbaixo: number } | null, pv: number, motivo?: string): string {
   if (!z) return '';
   const cima = z.linha === 'acima', outro = pv - (cima ? z.pvAcima : z.pvAbaixo) + (cima ? z.pvAbaixo : z.pvAcima);
-  return `PV pela linha de ${cima ? 'cima' : 'baixo'} da zona de transição (${massaTxt(z.zonaKg[0])} a ${massaTxt(z.zonaKg[1])}): a ficha escolheu pelo corpo, ${cima ? 'robusto, que sobe' : 'frágil, que desce'}; a linha de ${cima ? 'baixo' : 'cima'} daria ${outro}.`;
+  // com o porquê da ficha (`corpo.linhaPVMotivo`), as palavras dela; sem ele, o critério do livro
+  const porque = motivo ? `${motivo} (${cima ? 'o robusto sobe' : 'o frágil desce'})` : cima ? 'robusto, que sobe' : 'frágil, que desce';
+  return `PV pela linha de ${cima ? 'cima' : 'baixo'} da zona de transição (${massaTxt(z.zonaKg[0])} a ${massaTxt(z.zonaKg[1])}): a ficha escolheu pelo corpo, ${porque}; a linha de ${cima ? 'baixo' : 'cima'} daria ${outro}.`;
 }

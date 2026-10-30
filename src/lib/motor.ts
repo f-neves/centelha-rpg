@@ -464,6 +464,8 @@ export interface CorpoEntrada {
     naoErgue?: boolean;
     tamanhoEscolhido?: Tamanho;
     linhaPV?: 'acima' | 'abaixo';
+    /** o porquê da linha, nas palavras da ficha ("inseto de casca"); só junto da `linhaPV` */
+    linhaPVMotivo?: string;
     segundoTamanho?: {
         area: number;
         tamanhoEscolhido?: Tamanho;
@@ -719,6 +721,9 @@ export function comForma(principal: EntradaCriatura, muda: Omit<Partial<EntradaC
             delete out.corpo.tamanhoEscolhido;
         if ('massa' in muda.corpo && !('linhaPV' in muda.corpo))
             delete out.corpo.linhaPV;
+        // o porquê da linha é da linha: a forma que escolhe a própria (ou que perde a da principal) não herda o da principal
+        if (('massa' in muda.corpo || 'linhaPV' in muda.corpo) && !('linhaPVMotivo' in muda.corpo))
+            delete out.corpo.linhaPVMotivo;
     }
     return out;
 }

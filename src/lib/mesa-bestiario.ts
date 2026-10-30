@@ -396,7 +396,7 @@ export function cardCriaturaHTML(m: any): string {
   // O "base <Arte> <nível>" por extenso e a nota do que ele quer dizer (parecer da Leitora-novata, achado 6).
   const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Poderes</h4>${m.habilidadesEspeciais.some((h: any) => h.base) ? `<p class="ib-ref muted">${esc(BASE_NOTA)}</p>` : ''}<ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}${esc(baseTxt(h.base, ARTE_NOME))}</li>`).join('')}</ul>` : '';
   // Por que a linha de PV na zona de transição (achado 9); a versão magra da mesa não tem o corpo inteiro e fica sem.
-  const notaPV = m.enxame || !m.corpo || m.corpo.massa === undefined && !m.corpo.semMassa ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(m.corpo), m.atributos?.vigor ?? 0, m.corpo.linhaPV), cb.pv);
+  const notaPV = m.enxame || !m.corpo || m.corpo.massa === undefined && !m.corpo.semMassa ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(m.corpo), m.atributos?.vigor ?? 0, m.corpo.linhaPV), cb.pv, m.corpo.linhaPVMotivo);
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
     ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`
     : `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';

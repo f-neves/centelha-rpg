@@ -363,6 +363,28 @@ if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrad
   if (criaturaNovaSchema.safeParse(vazia).success) falhas.push('P17, D-265: controle, outraForma vazia passou no esquema');
 }
 
+{
+  // Reconversão 5d (30/10/2026): o porquê da linha de PV que a ficha escreve ("PV na linha de cima: inseto de casca.")
+  // chega ao JSON (`corpo.linhaPVMotivo`), na principal pelo valor do PV base e na forma pela justificativa da Variante;
+  // e não vaza para o número. Frase que contradiz a linha dos limites, ou sem zona de transição, para.
+  const pvb = (cel) => LOBO.replace(/^(\| PV base \| )[^|]*/m, '$1' + cel + ' ');
+  const r = converterFicha(pvb('Faixa de PV de 105 kg a 1,8 t (massa 105 kg): 25 + 3 × 5 = **40**; PV na linha de cima: teste robusto.'), { site: SITE });
+  if (r.paradas.length || r.criatura.corpo.linhaPV !== 'acima' || r.criatura.corpo.linhaPVMotivo !== 'teste robusto') falhas.push('linhaPVMotivo: o porquê da principal não chegou ao JSON: ' + JSON.stringify([r.paradas, r.criatura.corpo]));
+  if (!converterFicha(pvb('Faixa de PV de 105 kg a 1,8 t (massa 105 kg): **40**; PV na linha de baixo: teste.'), { site: SITE }).paradas.some((p) => p.includes('PV na linha de baixo'))) falhas.push('linhaPVMotivo: a frase que contradiz a linha passou');
+  if (!converterFicha(pvb('Faixa de PV de 35 a 220 kg (massa 105 kg): **40**; PV na linha de cima: teste.'), { site: SITE }).paradas.some((p) => p.includes('zona de transição'))) falhas.push('linhaPVMotivo: a frase fora da zona passou');
+  if (converterFicha(LOBO, { site: SITE }).criatura.corpo.linhaPVMotivo !== undefined) falhas.push('linhaPVMotivo: inventado sem a frase');
+  // a forma: a forma de lobo com 36 kg cai na zona de 28 a 42 kg; PV 37 é a linha de cima
+  const lobo = LOBO.split('\n').find((l) => l.startsWith('| forma de lobo |'));
+  const forma = (frase, pv = 'PV 37') => { const a = lobo.split('|'); a[2] = a[2].replace('Massa: 80 kg (Faixa 3)', 'Massa: 36 kg').replace('PV 37', pv); a[3] = a[3].trimEnd() + ' ' + frase + ' '; return converterFicha(LOBO.replace(lobo, a.join('|')), { site: SITE }); };
+  const rf = forma('PV na linha de cima: teste de lobo. A escolha está na zona de transição.');
+  const fl = rf.criatura.formas?.find((f) => f.id === 'lobo');
+  if (rf.paradas.length || fl?.corpo?.linhaPV !== 'acima' || fl.corpo.linhaPVMotivo !== 'teste de lobo') falhas.push('linhaPVMotivo: o porquê da forma não chegou ao JSON: ' + JSON.stringify([rf.paradas, fl?.corpo]));
+  if (rf.criatura.corpo.linhaPVMotivo !== undefined) falhas.push('linhaPVMotivo: o porquê da forma subiu para a principal');
+  if (!forma('PV na linha de cima: teste.', 'PV 28').paradas.some((p) => p.includes('forma de lobo') && p.includes('PV na linha de cima'))) falhas.push('linhaPVMotivo: a forma com a frase contrária ao PV passou');
+  const sem = structuredClone(r.criatura); delete sem.corpo.linhaPV;
+  if (criaturaNovaSchema.safeParse(sem).success) falhas.push('linhaPVMotivo: o esquema aceitou o porquê sem a linha');
+}
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);

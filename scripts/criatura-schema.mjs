@@ -18,6 +18,8 @@ const corpoNovo = z.object({
   area: numero, posturaDoTamanho: texto.trim().min(1),
   segundoTamanho: z.object({ area: numero, posturaDoTamanho: texto.trim().min(1), tamanhoEscolhido: tamanho.optional() }).strict().optional(),
   tamanhoEscolhido: tamanho.optional(), linhaPV: z.enum(['acima', 'abaixo']).optional(), cargaMedida: numero.optional(),
+  // o porquê da linha de PV, nas palavras da ficha ("inseto de casca"); só junto da linhaPV
+  linhaPVMotivo: texto.trim().min(1).optional(),
 }).strict();
 const especialidadesNovo = z.record(id, z.array(z.object({ foco: texto, valor: naoNeg, origem: z.enum(['natural', 'livro']) }).strict()));
 const numeroPasso = numero.finite().nonnegative();
@@ -97,6 +99,10 @@ export const criaturaNovaSchema = z.object({
   if (new Set(ids).size !== ids.length) erro(['formas'],'ids de formas devem ser únicos');
   for (const [i, forma] of (c.formas || []).entries()) if (forma.corpo?.tamanhoEscolhido !== undefined && forma.corpo.area === undefined)
     erro(['formas',i,'corpo','tamanhoEscolhido'],'Tamanho próprio da forma exige área própria');
+  // o porquê da linha de PV só existe junto da escolha da linha, na principal e em cada forma
+  if (c.corpo?.linhaPVMotivo !== undefined && c.corpo.linhaPV === undefined) erro(['corpo','linhaPVMotivo'],'linhaPVMotivo exige linhaPV');
+  for (const [i, forma] of (c.formas || []).entries()) if (forma.corpo?.linhaPVMotivo !== undefined && forma.corpo.linhaPV === undefined)
+    erro(['formas',i,'corpo','linhaPVMotivo'],'linhaPVMotivo exige linhaPV');
   // Um elemento não pode repetir nem se contradizer na mesma forma da fonte.
   for (const forma of (ids.length ? ids : ['principal'])) {
     const vistos = new Map();

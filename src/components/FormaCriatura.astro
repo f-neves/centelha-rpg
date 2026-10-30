@@ -18,7 +18,7 @@ const d = await loadData();
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
 const artes = (i.artes || []).filter((a: any) => a.nivel > 0);
 // As Habilidades de treino da forma (D-270): os botões do card ficam escondidos nas outras formas, então elas vão aqui.
-const notaPV = i.enxame || !i.corpo ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(i.corpo), i.atributos?.vigor ?? 0, i.corpo.linhaPV), i.combate.pv);
+const notaPV = i.enxame || !i.corpo ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(i.corpo), i.atributos?.vigor ?? 0, i.corpo.linhaPV), i.combate.pv, i.corpo.linhaPVMotivo);
 const treino = habilidadesDeTreino(i, Object.fromEntries([...(HAB as any[]), ...(SEC as any[])].map((h) => [h.id, h.nome])));
 const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-fra'], ['resistencias', 'Resiste', 'el-res'], ['imunidades', 'Imune', 'el-imu']];
 ---

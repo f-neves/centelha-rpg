@@ -367,6 +367,20 @@ for(const f of arqs)anda(JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf
 for(const f of ['monsters.json','monsters-mesa.json','inimigos.json'])anda(JSON.parse(fs.readFileSync('src/data/'+f,'utf8')),'',f);
 assert.deepEqual(achados,[],'valores "sem dado" gravados: '+achados.length+' '+achados.slice(0,5).join(' '));
 });
+// Reconversão 5d (30/10/2026): o card diz o porquê da linha de PV com as palavras da ficha (`corpo.linhaPVMotivo`), e não
+// só o critério do livro; a forma não herda o porquê da principal quando escolhe a própria linha ou tem massa própria.
+cases.set('linhaPV-motivo', async () => {
+const B=await carregarTS('src/lib/besta-card.ts');const z={zonaKg:[70/1000,130/1000],linha:'acima',pvAcima:2,pvAbaixo:1};
+assert.equal(B.linhaPVTxt(z,2,'inseto de casca'),'PV pela linha de cima da zona de transição (70 g a 130 g): a ficha escolheu pelo corpo, inseto de casca (o robusto sobe); a linha de baixo daria 1.');
+assert.equal(B.linhaPVTxt(z,2),'PV pela linha de cima da zona de transição (70 g a 130 g): a ficha escolheu pelo corpo, robusto, que sobe; a linha de baixo daria 1.','sem o porquê, o critério do livro');
+const p={corpo:{massa:0.1,linhaPV:'acima',linhaPVMotivo:'da principal'}};
+assert.equal(M.comForma(p,{corpo:{massa:36}}).corpo.linhaPVMotivo,undefined,'a forma de massa própria herdou o porquê');
+assert.equal(M.comForma(p,{corpo:{massa:36,linhaPV:'abaixo'}}).corpo.linhaPVMotivo,undefined,'a forma de linha própria herdou o porquê');
+assert.equal(M.comForma(p,{corpo:{massa:36,linhaPV:'acima',linhaPVMotivo:'da forma'}}).corpo.linhaPVMotivo,'da forma');
+assert.equal(M.comForma(p,{corpo:{area:1}}).corpo.linhaPVMotivo,'da principal','a forma que não muda a massa fica com a linha e o porquê');
+for(const f of ['src/components/BestaCard.astro','src/components/FormaCriatura.astro'])assert.match(fs.readFileSync(f,'utf8'),/linhaPVTxt\([^;]*i\.corpo\.linhaPVMotivo\)/,f);
+assert.match(fs.readFileSync('src/lib/mesa-bestiario.ts','utf8'),/linhaPVTxt\([^;]*m\.corpo\.linhaPVMotivo\)/);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
