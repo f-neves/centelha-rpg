@@ -79,6 +79,10 @@ const ra=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (área 0, vista 
 const sem=conv(raw.replace(/(\| Tamanho \| )[^|]+/,'$1**Médio** (0,98 m²) ').replace(/(\| Área \| )[^|]+/,'$1**0,98 m²** '));assert.ok(sem.paradas.some(x=>/postura de medição/.test(x)),'parada: '+JSON.stringify(sem.paradas));assert.notEqual(sem.criatura.corpo.posturaDoTamanho,'bípede, de pé, um pouco curvado','a linha Postura não completa');
 const rv=JSON.parse(fs.readFileSync('src/data/bestiario/ra-venenosa.json','utf8'));assert.equal(rv.corpo.posturaDoTamanho,'vista de cima, agachada');
 });
+// Revisão de d765fe8d (decisão do autor de 30/10/2026): o braquiossauro não tem sentido de descrição vazia nem a linha das narinas.
+cases.set('braquiossauro-sentidos', async () => {
+const b=JSON.parse(fs.readFileSync('src/data/bestiario/braquiossauro.json','utf8'));assert.ok(!(b.sentidos||[]).some(s=>!String(s.descricao||'').trim()),'sentido sem descrição');assert.ok(!JSON.stringify(b.sentidos||[]).includes('Narina'));
+});
 cases.set('20', async () => {
 const a=conv(raw.replace(/Jogada:/g,'Conta:'));assert.ok(!a.paradas.some(x=>/Jogada|habilidade/i.test(x)));const b=conv(raw.replace('| Mordida | boca | Média |','| Mordida | boca | Distância |').replace(/Jogada:/g,'Conta:'));assert.ok(b.paradas.some(x=>/Jogada|habilidade/i.test(x)));const c=conv(raw.replace(/^(\| Garras \|[^\n]+)/m,l=>{const a=l.split('|');a[9]=' ';return a.join('|');}));assert.ok(c.paradas.some(x=>/Acerto/.test(x)));
 });

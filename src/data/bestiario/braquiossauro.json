@@ -133,18 +133,7 @@
       "texto": "machos podem disputar em duas patas, embora o corpo seja mal adaptado para ficar de pé."
     }
   ],
-  "sentidos": [
-    {
-      "nome": "Nada que passe do humano com número",
-      "descricao": "",
-      "formas": "todas"
-    },
-    {
-      "nome": "sentidos",
-      "descricao": "Narina na frente do focinho ou no alto da cabeça, nas duas",
-      "formas": "todas"
-    }
-  ],
+  "sentidos": [],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
