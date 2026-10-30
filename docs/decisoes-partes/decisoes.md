@@ -3106,30 +3106,35 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 29/10/2026): "É MUITO importante separar o que o json precisa guardar de informações e o que o site vai pegar de informação para os cálculos. Isso serve também para json de ficha de personagem." Complemento da D-208, do autor: "no corpo a corpo, o card calcula pelo maior entre Força e Destreza e a maior Habilidade entre Briga e Armas, mais o termo da Centelha; o JSON não guarda a Habilidade do corpo a corpo."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, "Princípio do autor, 29/10/2026"; auditoria do Arquiteto em `../tmp/arquiteto/json-guarda-calcula.md` (com as tabelas chave a chave em `json-guarda-calcula-tabelas.md`).
 - Estado: **a implementar** (Fase 5, Executora). Estende a D-216 ("nenhum número que o motor calcula fica no JSON") à ficha do personagem. Na criatura, a `habilidade` do ataque corpo a corpo sai do JSON pela D-208 completada. As decisões A1 a A4 (D-259 a D-262) aplicam o princípio.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026): na criatura, a Habilidade do corpo a corpo saiu do JSON; na ficha, pela D-259 a D-261.
 
 ### D-259 · A1: a ficha do personagem guarda o item inteiro, com todos os números [tags: ficha, personagem, equipamento, arma, armadura, escudo, item, d-258]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, A1, opção a, ampliada): "vale para todo item com estatística (arma, armadura, escudo e outros). A ficha guarda o item inteiro, com todos os números, editáveis; o site soma na conta (ex.: `armas.espada.acerto = 1` soma 1 na jogada quando o personagem usa essa arma). O item do personagem não muda se o do livro mudar. O id do catálogo pode ficar só como origem."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, A1. Motivo: a auditoria (`json-guarda-calcula.md`, seção 2) achou que a ficha guarda a referência ao catálogo e só os campos trocados, e o resto muda quando o catálogo muda.
 - Estado: **a implementar**, com migração da ficha (42 fichas) e mudança na `/ficha`, no `equip.ts` e na mesa. **Substitui, para o personagem, o modelo "referência + ajuste"** do `equip.ts` (`mod`/`ajuste`). Não vale para a criatura (D-262).
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026); a migração 42 rodou em produção em 30/10/2026 (carimbo `c5b845f7aa03a935`, 42 de 42 batem com o conversor, 0 peças sem item).
 
 ### D-260 · A2: a massa do personagem só fica guardada quando o jogador a escreve [tags: ficha, personagem, massa, corpo, migracao, d-234, d-258]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, A2, opção a): "a massa só fica guardada quando o jogador a escreve; vazia, o site calcula pelo padrão da raça. As 36 fichas que a migração 41 preencheu com o padrão voltam a ficar vazias (migração 42, junto com a próxima publicação; o estado de antes está no ficha-real.json)."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, A2.
 - Estado: **a implementar**: migração 42 (as 36 fichas da lista de revisão da conferência da 41, `../tmp/arquiteto/passo6/04-confere-3.json`) e a `/ficha` calculando a massa vazia pelo padrão da raça.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026); a 42 apagou as 36 massas em produção em 30/10/2026.
 
 ### D-261 · A3: nenhuma ficha guarda combate; o resumo do banco perde as contas prontas [tags: ficha, personagem, criatura, combate, resumo, banco, d-190, d-258]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, A3): "nenhuma ficha (personagem ou criatura) guarda combate. Ticks, posição, quem está no combate e condições do combate ficam só nas tabelas do combate. Condições duradouras (cansado, doente, ferido, envenenado) talvez um dia na ficha, hoje não existem. O resumo do banco perde as contas prontas; Defesas, Iniciativa, deslocamento do personagem e as demais contas o site calcula. O deslocamento da criatura continua dado (D-190)."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, A3.
 - Estado: **a implementar**: `personagens.resumo` sem contas prontas (migração), e a aba Grupo e o combate calculando a partir da ficha.
+- Fase 5: **no ar na parte da ficha** (merge `6f67500e`, publicado em 30/10/2026): nenhuma ficha guarda combate. O `personagens.resumo` e as duas views ficam como estavam (P19: área do Mestre, fora desta fase).
 
 ### D-262 · A4: a criatura continua guardando a arma do livro pelo id; arma própria de criatura vira item do catálogo [tags: criatura, bestiario, equipamento, arma, catalogo, d-220, d-249]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, A4, opção a): "a ficha de criatura muda com a mudança do catálogo; continua guardando a arma do livro pelo id (D-220). Arma própria de criatura vira item do catálogo, como a glaive serrilhada."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, A4.
 - Estado: **a implementar**. Confirma a D-220 para a criatura (e a diferença com o personagem, D-259). As armas próprias de criatura entram no `armas.json`, como a D-249 fez com a glaive serrilhada.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
 
 ### D-263 · Fase 5: as 86 perguntas, e as 9 que ficam como estão nas fichas [tags: bestiario, criatura, fase5, regra-da-ficha, lacunas-do-livro, d-081, d-087, d-243]
 - Data: 2026-10-29
@@ -3146,6 +3151,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - **Zona de transição da tabela de PV** (F5.83): as escolhas das fichas confirmadas.
   - Os padrões de regra da ficha das outras perguntas ficam como estão nas fichas ("manter o efeito atual").
 - Estado: **a aplicar** nas fichas, pelos lotes de `../tmp/bestiarista-fichas/plano-ajustes-fase5.md` (só os itens que mudam ficha: F5.1, F5.2, F5.34 e F5.84); no formato (F5.1 a F5.4); e no código, pela Executora (F5.1 e o nulo).
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026), com as fichas dos lotes fase5-01 a fase5-18.
 
 ### D-264 · R5: a migração 41 roda de novo, com o arquivo novo, para o carimbo bater [tags: banco, migracao, supabase, carimbo, migracao-41, fase5]
 - Data: 2026-10-29
@@ -3153,18 +3159,21 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 29/10/2026, R5, opção c): "rodar a 41 de novo, com o arquivo novo, para o carimbo bater." Condições (do coordenador, sem objeção do autor): "1) antes, a Executora prova no Postgres local, sobre o estado de depois da primeira 41 aplicada ao ficha-real.json, que a segunda rodada não regrava a tabela de backup e não muda nenhuma das 42 fichas; se regravar, o SQL se conserta para não regravar; 2) só roda junto com a publicação da fase5-correcoes, depois do PROCEDE, para o banco não ter o carimbo de um arquivo que ainda não está no main; 3) quem roda é o Arquiteto, pelo roteiro do passo 6, com o token em arquivo naquele dia."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, "R5. A migração 41, que já rodou e cujo arquivo mudou na fase5-correcoes".
 - Estado: **a implementar**, com a publicação da `fase5-correcoes`: a prova local da Executora (condição 1), o PROCEDE (condição 2), e a segunda rodada pelo Arquiteto pelo `../tmp/arquiteto/passo6-arquiteto.md` (condição 3). Não substitui a regra de não mexer em migração aplicada sem decisão: é a decisão.
+- **Cumprida** em 30/10/2026: PROCEDE da Revisora, publicação (merge `6f67500e`, publicado em 30/10/2026), e a 41 rodada de novo pelo Arquiteto. Nenhuma ficha, backup, id de criatura nem `grupo_visivel` mudou; só o carimbo, de `de8d7707c1134b08` para `9bca48e52d9c4711`.
 
 ### D-265 · F5.2-b: o disfarce de tamanho variável ganha uma forma fixa, a humana [tags: bestiario, criatura, formas, variantes, tamanho, area, fase5, d-087, d-263]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, F5.2-b, opção a): "cada uma ganha uma forma de disfarce fixa e típica, a humana (Média, com a medida de um humano), com Área própria; o card diz que o Mestre pode escolher outra forma."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, "F5.2-b". Vale para o deva-astral, o dragão dourado adulto, o marid e a couatl, cujo disfarce imitava "a forma assumida". Completa a F5.2 da D-263 (a forma que declara outro Tamanho declara a própria Área).
 - Estado: **a aplicar** nas quatro fichas, pelo lote `fase5-18` do `../tmp/bestiarista-fichas/plano-ajustes-fase5.md`.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
 
 ### D-266 · V1: a Força dobrada só na ação de Investida, e não no golpe comum (criatura e jogador) [tags: bestiario, criatura, ficha, ataque, forca, investida, mergulho, dano, veterana]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, V1, opção c): "a Força dobrada só quando a criatura usa a ação de Investida, e não no golpe comum. Vale para a Investida do livro (também do jogador). Os 21 ataques que somavam a Força duas vezes no golpe comum passam a Força × 1; na ação de Investida, Força × 2. A linha 104 do GUIA-FICHA («× 2 quando o corpo inteiro empurra») muda para isso."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, V1, do parecer da Veterana sobre o site no ar (`../tmp/veterana/parecer-f4.md`, G2).
 - Estado: **no guia** (`../tmp/arquiteto/GUIA-FICHA.md`, linha 104, 29/10/2026); **a implementar** no texto do livro e no cabeçalho do bestiário (fase5-correcoes) e nas 21 fichas, pela Bestiarista (`../tmp/bestiarista-fichas/ajustes-parecer-f4.md`).
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026): o livro, o card e as 21 fichas.
 - Completada pelo autor em 29/10/2026: as caudas e rabadas que varrem com o giro do corpo inteiro ficam com Força × 2 (como a F5.46 do tarrasque); só os 21 de investida e mergulho passam a Força × 1.
 
 ### D-267 · V2: o peso erguido do livro passa à fórmula da D-184 [tags: livro, corpo, peso-erguido, massa, r15, d-184, d-229, veterana]
@@ -3172,30 +3181,35 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 29/10/2026, V2, opção a): "vale a D-184. A página do livro troca a tabela antiga pela fórmula (ou por uma tabela gerada dela), e explica a massa e o que é a R15."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, V2 (parecer da Veterana, G3).
 - Estado: **a implementar** no livro (fase5-correcoes).
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
 
 ### D-268 · V3: o sopro segue a regra do livro de desviar de área [tags: bestiario, criatura, sopro, area, esquiva, veterana, d-263]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, V3): "o livro já tem a regra de desviar de ataque em área: a criatura se desloca para fora da área enquanto faz um teste. O sopro segue essa regra, como qualquer área; sai o «esquiva contra a jogada do sopro; quem passa leva metade» dos 24 cards, e o texto deixa de citar «a tabela» do guia. O Arquiteto localiza a regra no livro e cita o lugar."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, V3 (parecer da Veterana, M4). Não contradiz a D-263: lá o molde do Sopro ficou fora do livro; aqui o sopro só passa a usar uma regra de área que o livro já tem.
 - Estado: **a implementar** nos 24 sopros, pela Bestiarista (`../tmp/bestiarista-fichas/ajustes-parecer-f4.md`, com o lugar da regra no livro).
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026): os 24 sopros.
 
 ### D-269 · P20: a Investida soma mais uma vez a Força (uma mão × 2, duas mãos × 3), com o +1d6; criatura e jogador [tags: combate, investida, forca, dano, arma, duas-maos, grid, d-266]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, P20, opção b): "a Investida soma mais uma vez a Força. Uma mão ou o corpo: de × 1 para × 2. Arma de duas mãos (montante, martelo de guerra, versátil com as duas): de × 2 para × 3. O +1d6 da Investida continua. Vale para criatura e jogador (complementa a V1). O Grid passa a aplicar a Força a mais da Investida (hoje soma só o +1d6): conserto."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, P20 (da Executora). Completa a D-266.
 - Estado: **a implementar** na fase5-correcoes: o Grid, o texto da V1 no livro e o card. **Em parte substituída pela D-272** (30/10/2026): o +1d6 da Investida sai; a Força a mais continua.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026), com a D-272.
 
 ### D-270 · L1: o card da criatura separa "Poderes" de "Habilidades" [tags: bestiario, card, habilidades, poderes, vocabulario, leitora]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, L1, opção a): "o card ganha dois painéis, um «Poderes» (os poderes da criatura, o que hoje aparece em «Habilidades») e um «Habilidades» (as Habilidades de treino: Armas, Esquiva, Furtividade...), para a palavra querer dizer no card o mesmo que no livro."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, L1, do parecer da Leitora-novata (`../tmp/leitora/parecer-f4.md`, achado 5).
 - Estado: **a implementar** na fase5-correcoes.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
 
 ### D-271 · P18: a peça órfã "cota-de-malha" sai das 4 fichas de teste [tags: ficha, personagem, armadura, migracao-42, d-259]
 - Data: 2026-10-29
 - Decisão (autor, 29/10/2026, P18): "pode descartar; essas fichas são só teste. A migração 42 não cria item para a peça órfã."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, P18 (da Executora).
 - Estado: **a implementar** na migração 42 (fase5-correcoes).
+- Fase 5: **no ar**: a 42 descartou as 4 `cota-de-malha` em produção em 30/10/2026.
 
 ### D-272 · P20-b: a Investida perde o +1d6 e soma só mais uma Força [tags: combate, investida, forca, dano, grid, d-269, d-266]
 - Data: 2026-10-30
@@ -3203,6 +3217,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/arquiteto/PERGUNTAS.md` (fim), respostas do autor de 30/10/2026.
 - Substitui: a frase "O +1d6 da Investida continua" da D-269. O resto da D-269 vale.
 - Estado: **aplicada** na fase5-correcoes (`e15e8995`, `d27d8734`), a publicar.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
 
 ### D-273 · P23: o chifre do minotauro soma com as duas mãos ocupadas; o solar de arco não leva o −2 [tags: bestiario, criatura, bloqueio, defesa, g4, d-262]
 - Data: 2026-10-30
@@ -3210,6 +3225,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Conferência (autor, 30/10/2026): a Defesa do minotauro fica 7, e não 8, porque o 9 de antes já tinha o +1 do chifre (8 − 2 + 1). Pela mesma regra, o merfolk fica 12 com a lança e 10 com a besta.
 - Origem: `../tmp/executora/fase3/perguntas.md`, P23; respostas do autor de 30/10/2026.
 - Estado: **aplicada** na fase5-correcoes (`fe832a44`), a publicar.
+- Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
