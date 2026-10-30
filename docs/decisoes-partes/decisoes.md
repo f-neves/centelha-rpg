@@ -3165,6 +3165,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 29/10/2026, V1, opção c): "a Força dobrada só quando a criatura usa a ação de Investida, e não no golpe comum. Vale para a Investida do livro (também do jogador). Os 21 ataques que somavam a Força duas vezes no golpe comum passam a Força × 1; na ação de Investida, Força × 2. A linha 104 do GUIA-FICHA («× 2 quando o corpo inteiro empurra») muda para isso."
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, V1, do parecer da Veterana sobre o site no ar (`../tmp/veterana/parecer-f4.md`, G2).
 - Estado: **no guia** (`../tmp/arquiteto/GUIA-FICHA.md`, linha 104, 29/10/2026); **a implementar** no texto do livro e no cabeçalho do bestiário (fase5-correcoes) e nas 21 fichas, pela Bestiarista (`../tmp/bestiarista-fichas/ajustes-parecer-f4.md`).
+- Completada pelo autor em 29/10/2026: as caudas e rabadas que varrem com o giro do corpo inteiro ficam com Força × 2 (como a F5.46 do tarrasque); só os 21 de investida e mergulho passam a Força × 1.
 
 ### D-267 · V2: o peso erguido do livro passa à fórmula da D-184 [tags: livro, corpo, peso-erguido, massa, r15, d-184, d-229, veterana]
 - Data: 2026-10-29
