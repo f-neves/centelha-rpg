@@ -15,7 +15,7 @@ O tipo do golpe importa, e importa **antes**: é ele que escolhe a Absorção co
 
 <p class="formula">PV = 25 + (Vigor × 3)</p>
 
-Essa é a Vida de quem pesa **de 35 a 220 kg**, como os humanoides e os personagens. A Vida vem da **massa**, e não do tamanho: quem pesa mais aguenta mais, e quem pesa menos aguenta bem menos, mesmo com o mesmo Vigor. A base sobe com a massa, e o multiplicador do Vigor também, até × 5. Um urso de 400 kg com Vigor 5 tem 30 + 5 × 4 = 50 PV; um elfo de 55 kg com o mesmo Vigor tem 40.
+Essa é a Vida de quem pesa **de 35 a 220 kg**, como os humanoides. A Vida da **criatura** vem da **massa**, e não do tamanho: quem pesa mais aguenta mais, e quem pesa menos aguenta bem menos, mesmo com o mesmo Vigor. A base sobe com a massa, e o multiplicador do Vigor também, até × 5. Um urso de 400 kg com Vigor 5 tem 30 + 5 × 4 = 50 PV; um elfo de 55 kg com o mesmo Vigor tem 40.
 
 | Massa | PV | Com Vigor 3 | Zona de transição |
 |---|---|---|---|
@@ -33,7 +33,7 @@ Essa é a Vida de quem pesa **de 35 a 220 kg**, como os humanoides e os personag
 
 Na **zona de transição**, perto de um corte, a ficha da criatura escolhe a linha pelo corpo (o robusto sobe, o frágil desce) e diz por quê. Criaturas sem massa de verdade (um elemental, um fantasma, uma geleia) usam o volume no lugar da massa. Esta tabela é só da Vida: as Manobras e o Bloqueio usam sete faixas de massa (ver [Combate](/regras/combate#massa-nas-manobras)).
 
-<p class="muted">O bestiário e a mesa ainda dão a Vida pelo tamanho (a tabela antiga, de 15 + Vigor no Minúsculo e no Miúdo a 45 + Vigor × 5 no Colossal) às criaturas sem ficha nova, até o código mudar.</p>
+**O personagem é a exceção: a Vida dele sai do Tamanho da raça**, e não da massa. O gnomo e o halfling, que são Pequenos, usam a linha de 15 a 35 kg (20 + Vigor × 2); as outras raças, que são Médias, a de 35 a 220 kg (25 + Vigor × 3); o orc e o meio-orc somam a Vitalidade por cima. Vale qualquer que seja a massa que o jogador escreve na ficha: um elfo de 25 kg continua Médio, e um orc de 500 kg também. A massa padrão de cada raça cai nessa mesma linha (ver [Raças](/regras/racas)), então, na massa padrão, as duas contas dão o mesmo número.
 
 A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcentagem dela que diz em que estado você está, na tabela abaixo.
 

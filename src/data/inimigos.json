@@ -46,7 +46,8 @@
         "acerto": 1,
         "pool": "2d6 +3",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -114,7 +115,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "2d6 +15 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [],
@@ -181,7 +183,8 @@
         "acerto": 1,
         "pool": "5d6 +3",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Bico",
@@ -194,7 +197,8 @@
         "acerto": 0,
         "pool": "5d6 +2",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras em mergulho",
@@ -206,8 +210,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6 +2",
-        "dano": "2d6 +13 (C)",
-        "perfArma": null
+        "dano": "2d6 +7 (C)",
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [
@@ -277,7 +282,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       },
       {
         "nome": "Bico",
@@ -290,7 +296,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -360,7 +367,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Pisão (ergue-se e pisoteia)",
@@ -372,8 +380,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6",
-        "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "dano": "2d6 +7 (I)",
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Galhada (só macho)",
@@ -386,7 +395,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -457,7 +467,8 @@
         "acerto": 0,
         "pool": "5d6 +4",
         "dano": "1d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Cuspe ácido",
@@ -470,7 +481,8 @@
         "acerto": 0,
         "pool": "4d6 +4",
         "dano": "2d6 +2 (acido)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -537,7 +549,8 @@
         "acerto": 0,
         "pool": "7d6",
         "dano": "2d6 +22 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -608,7 +621,8 @@
         "acerto": 0,
         "pool": "5d6+2 +6",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -676,7 +690,8 @@
         "acerto": 0,
         "pool": "3d6",
         "dano": "1d6 +3 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -747,7 +762,8 @@
         "acerto": 1,
         "pool": "4d6+2 +9",
         "dano": "1d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -779,7 +795,7 @@
     "tags": [
       "celestial"
     ],
-    "pv": 42,
+    "pv": 34,
     "defesa": 4,
     "defesaMental": 15,
     "defesaSocial": 4,
@@ -814,7 +830,8 @@
         "acerto": 0,
         "pool": "3d6 +4",
         "dano": "2d6 +2 (fenomeno)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -845,7 +862,7 @@
       "celestial"
     ],
     "pv": 49,
-    "defesa": 22,
+    "defesa": 20,
     "defesaMental": 31,
     "defesaSocial": 26,
     "vontade": 11,
@@ -879,7 +896,8 @@
         "acerto": 0,
         "pool": "5d6+2 +10",
         "dano": "2d6 +18 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -895,8 +913,8 @@
     ],
     "vestida": {
       "esquiva": 12,
-      "bloqueio": 20,
-      "defesa": 20,
+      "bloqueio": 18,
+      "defesa": 18,
       "contraTiro": 12,
       "absorcao": {
         "impacto": 15,
@@ -968,7 +986,8 @@
         "acerto": 0,
         "pool": "3d6+2",
         "dano": "1d6 +2 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       },
       {
         "nome": "Punhos",
@@ -981,14 +1000,15 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
     "artes": [],
     "vestida": {
       "esquiva": 11,
-      "bloqueio": 9,
+      "bloqueio": 10,
       "defesa": 11,
       "contraTiro": 11,
       "absorcao": {
@@ -1061,7 +1081,8 @@
         "acerto": 2,
         "pool": "4d6+2 +8",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [
@@ -1073,7 +1094,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 23,
-      "bloqueio": 13,
+      "bloqueio": 14,
       "defesa": 23,
       "contraTiro": 23,
       "absorcao": {
@@ -1146,7 +1167,8 @@
         "acerto": 1,
         "pool": "5d6 +7",
         "dano": "1d6 +1 (fenomeno)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -1212,7 +1234,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       },
       {
         "nome": "Investida (marrada)",
@@ -1224,8 +1247,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6",
-        "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "dano": "2d6 +7 (I)",
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -1288,15 +1312,16 @@
       {
         "nome": "Lança",
         "atrib": "forca",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "perfurante",
         "classe": "haste",
         "ticks": 6,
         "acerto": 1,
-        "pool": "5d6 +9",
+        "pool": "5d6+2 +9",
         "dano": "1d6 +16 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras",
@@ -1309,7 +1334,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +10 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Mordida",
@@ -1322,7 +1348,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +10 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [
@@ -1395,7 +1422,8 @@
         "acerto": 1,
         "pool": "8d6 +11",
         "dano": "1d6 +20 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Chicote de chamas",
@@ -1408,7 +1436,8 @@
         "acerto": 1,
         "pool": "8d6 +11",
         "dano": "1d6 +18 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Garras",
@@ -1421,7 +1450,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +20 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [
@@ -1496,14 +1526,15 @@
         "acerto": 2,
         "pool": "2d6+2 +2",
         "dano": "1d6 +1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
     "artes": [],
     "vestida": {
       "esquiva": 9,
-      "bloqueio": 7,
+      "bloqueio": 8,
       "defesa": 9,
       "contraTiro": 9,
       "absorcao": {
@@ -1576,7 +1607,8 @@
         "acerto": 1,
         "pool": "4d6+2 +5",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Mordida",
@@ -1589,7 +1621,8 @@
         "acerto": 0,
         "pool": "4d6+2 +4",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -1659,7 +1692,8 @@
         "acerto": 1,
         "pool": "6d6+2 +9",
         "dano": "1d6 +10 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Mordida",
@@ -1672,7 +1706,8 @@
         "acerto": 0,
         "pool": "6d6+2 +8",
         "dano": "1d6 +12 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -1742,7 +1777,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -1806,7 +1842,8 @@
         "acerto": 0,
         "pool": "5d6 +6",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -1872,7 +1909,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +16 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 11
       },
       {
         "nome": "Garras",
@@ -1885,7 +1923,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +16 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [
@@ -1956,7 +1995,8 @@
         "acerto": 0,
         "pool": "7d6+2 +2",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 10
       },
       {
         "nome": "Sopro elétrico",
@@ -1969,7 +2009,8 @@
         "acerto": 0,
         "pool": "5d6 +2",
         "dano": "2d6 +1 (raio)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -2037,7 +2078,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 −1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -2107,7 +2149,8 @@
         "acerto": 0,
         "pool": "3d6+2",
         "dano": "1d6 +4 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -2177,7 +2220,8 @@
         "acerto": 0,
         "pool": "5d6+2 +4",
         "dano": "1d6 +9 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -2190,7 +2234,8 @@
         "acerto": 0,
         "pool": "5d6+2 +4",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [
@@ -2259,7 +2304,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       },
       {
         "nome": "Investida (marrada)",
@@ -2271,8 +2317,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6+2",
-        "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "dano": "2d6 +7 (I)",
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -2343,7 +2390,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -2408,7 +2456,8 @@
         "acerto": 0,
         "pool": "4d6+2 +8",
         "dano": "1d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -2462,15 +2511,16 @@
       {
         "nome": "Maça estrela",
         "atrib": "forca",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "impacto",
         "classe": "media",
         "ticks": 6,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -2537,7 +2587,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       },
       {
         "nome": "Investida (marrada)",
@@ -2549,8 +2600,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6+2",
-        "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "dano": "2d6 +7 (I)",
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -2621,7 +2673,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Rajada cortante",
@@ -2634,7 +2687,8 @@
         "acerto": 0,
         "pool": "4d6 +6",
         "dano": "3d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -2664,7 +2718,7 @@
     "ameaca": 5,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento (Sander e colegas 2010).",
+    "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento.",
     "tags": [
       "animal"
     ],
@@ -2702,8 +2756,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6",
-        "dano": "2d6 +28 (I)",
-        "perfArma": null
+        "dano": "2d6 +14 (I)",
+        "perfArma": null,
+        "forcaInvestida": 14
       }
     ],
     "tecnicas": [],
@@ -2774,14 +2829,15 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
     "artes": [],
     "vestida": {
       "esquiva": 5,
-      "bloqueio": 5,
+      "bloqueio": 3,
       "defesa": 5,
       "contraTiro": 5,
       "absorcao": {
@@ -2853,7 +2909,8 @@
         "acerto": 1,
         "pool": "4d6+2 +5",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -2919,7 +2976,8 @@
         "acerto": 1,
         "pool": "5d6+2 +11",
         "dano": "1d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Mordida",
@@ -2932,7 +2990,8 @@
         "acerto": 0,
         "pool": "5d6+2 +10",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -3001,7 +3060,8 @@
         "acerto": 1,
         "pool": "5d6+2 +9",
         "dano": "1d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -3068,7 +3128,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -3134,7 +3195,8 @@
         "acerto": 0,
         "pool": "7d6+2 +2",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 10
       },
       {
         "nome": "Salto de emboscada",
@@ -3146,8 +3208,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "7d6+2 +2",
-        "dano": "2d6 +21 (P) · perf. 1",
-        "perfArma": 1
+        "dano": "2d6 +11 (P) · perf. 1",
+        "perfArma": 1,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [],
@@ -3213,7 +3276,8 @@
         "acerto": 0,
         "pool": "7d6",
         "dano": "2d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -3277,7 +3341,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -3348,7 +3413,8 @@
         "acerto": 0,
         "pool": "3d6",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -3419,7 +3485,8 @@
         "acerto": 1,
         "pool": "5d6 +7",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       },
       {
         "nome": "Espada longa a duas mãos",
@@ -3432,7 +3499,8 @@
         "acerto": 1,
         "pool": "5d6 +7",
         "dano": "1d6 +11 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [
@@ -3443,7 +3511,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 22,
-      "bloqueio": 20,
+      "bloqueio": 21,
       "defesa": 22,
       "contraTiro": 22,
       "absorcao": {
@@ -3516,14 +3584,15 @@
         "acerto": 1,
         "pool": "3d6+2 +5",
         "dano": "1d6 +6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
     "artes": [],
     "vestida": {
       "esquiva": 7,
-      "bloqueio": 16,
+      "bloqueio": 17,
       "defesa": 17,
       "contraTiro": 16,
       "absorcao": {
@@ -3596,7 +3665,8 @@
         "acerto": 1,
         "pool": "1d6+2 +1",
         "dano": "1d6 +4 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -3664,7 +3734,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +14 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 9
       },
       {
         "nome": "Sopro de fogo",
@@ -3677,7 +3748,8 @@
         "acerto": 0,
         "pool": "5d6 +6",
         "dano": "3d6 +5 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -3744,7 +3816,8 @@
         "acerto": 0,
         "pool": "3d6+2 +4",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       },
       {
         "nome": "Sopro de fogo",
@@ -3757,7 +3830,8 @@
         "acerto": 0,
         "pool": "3d6 +4",
         "dano": "2d6 +2 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -3824,7 +3898,8 @@
         "acerto": 0,
         "pool": "4d6+2 +4",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -3892,7 +3967,8 @@
         "acerto": 0,
         "pool": "5d6 +8",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       },
       {
         "nome": "Cauda",
@@ -3905,7 +3981,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -3970,14 +4047,15 @@
         "acerto": 1,
         "pool": "4d6 +3",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
     "artes": [],
     "vestida": {
       "esquiva": 11,
-      "bloqueio": 16,
+      "bloqueio": 17,
       "defesa": 17,
       "contraTiro": 16,
       "absorcao": {
@@ -4052,7 +4130,8 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "1d6 +5 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -4122,7 +4201,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       },
       {
         "nome": "Garra",
@@ -4135,7 +4215,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -4206,7 +4287,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -4219,7 +4301,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -4290,7 +4373,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "2d6 +16 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Mordida",
@@ -4303,7 +4387,8 @@
         "acerto": 1,
         "pool": "8d6 +11",
         "dano": "1d6 +14 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -4371,7 +4456,8 @@
         "acerto": 0,
         "pool": "4d6 +2",
         "dano": "2d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [
@@ -4382,7 +4468,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 11,
-      "bloqueio": 11,
+      "bloqueio": 9,
       "defesa": 11,
       "contraTiro": 11,
       "absorcao": {
@@ -4454,7 +4540,8 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "2d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -4467,7 +4554,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -4538,7 +4626,8 @@
         "acerto": 1,
         "pool": "5d6+2 +5",
         "dano": "1d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Azagaia",
@@ -4551,20 +4640,22 @@
         "acerto": 1,
         "pool": "3d6+2 +5",
         "dano": "1d6 +9 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       },
       {
         "nome": "Coice",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 2,
         "tipo": "impacto",
         "classe": "pesada",
         "ticks": 7,
         "acerto": 0,
-        "pool": "5d6 +4",
+        "pool": "5d6+2 +4",
         "dano": "2d6 +9 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -4632,7 +4723,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +2 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -4702,7 +4794,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "1d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mandíbulas",
@@ -4715,7 +4808,8 @@
         "acerto": 1,
         "pool": "6d6 +9",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -4781,7 +4875,8 @@
         "acerto": 0,
         "pool": "7d6 +2",
         "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       },
       {
         "nome": "Rocha arremessada",
@@ -4794,7 +4889,8 @@
         "acerto": 0,
         "pool": "2d6+2 +2",
         "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -4862,7 +4958,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 +1 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -4925,7 +5022,8 @@
         "acerto": 1,
         "pool": "4d6+2 +5",
         "dano": "1d6 +1 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -4992,7 +5090,8 @@
         "acerto": 1,
         "pool": "4d6 +3",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [
@@ -5003,7 +5102,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 13,
-      "bloqueio": 13,
+      "bloqueio": 14,
       "defesa": 14,
       "contraTiro": 13,
       "absorcao": {
@@ -5077,7 +5176,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Bico",
@@ -5090,7 +5190,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [
@@ -5159,7 +5260,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -5229,7 +5331,8 @@
         "acerto": 1,
         "pool": "5d6+2 +11",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -5318,7 +5421,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "2d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -5350,7 +5454,7 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça . Quantos leva de uma vez: confiável.",
+    "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça. Quantos leva de uma vez: confiável.",
     "tags": [
       "animal"
     ],
@@ -5389,7 +5493,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "2d6 +6 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -5460,7 +5565,8 @@
         "acerto": 0,
         "pool": "3d6+2 +2",
         "dano": "1d6 +4 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -5523,7 +5629,8 @@
         "acerto": 1,
         "pool": "1d6+2 +1",
         "dano": "1d6 +1 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -5595,7 +5702,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "2d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -5666,7 +5774,8 @@
         "acerto": 0,
         "pool": "3d6+2",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 4
       },
       {
         "nome": "Mordida",
@@ -5679,7 +5788,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 4
       },
       {
         "nome": "Garras da mão",
@@ -5692,7 +5802,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -5762,7 +5873,8 @@
         "acerto": 2,
         "pool": "4d6 +6",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -5830,7 +5942,8 @@
         "acerto": 1,
         "pool": "6d6 +9",
         "dano": "1d6 +14 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -5901,7 +6014,8 @@
         "acerto": 1,
         "pool": "6d6 +9",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -5961,15 +6075,16 @@
       {
         "nome": "Glaive serrilhada",
         "atrib": "forca",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "corte",
         "classe": "haste",
         "ticks": 7,
         "acerto": -1,
-        "pool": "3d6+2 +5",
+        "pool": "4d6+2 +7",
         "dano": "1d6 +14 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       },
       {
         "nome": "Mordida",
@@ -5982,7 +6097,8 @@
         "acerto": 1,
         "pool": "4d6+2 +9",
         "dano": "1d6 +6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -6049,7 +6165,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +26 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       },
       {
         "nome": "Mordida",
@@ -6062,7 +6179,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +16 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 10
       },
       {
         "nome": "Cauda",
@@ -6075,7 +6193,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +16 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [
@@ -6148,7 +6267,8 @@
         "acerto": 1,
         "pool": "7d6 +11",
         "dano": "1d6 +24 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 9
       },
       {
         "nome": "Cauda",
@@ -6161,7 +6281,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +15 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 9
       },
       {
         "nome": "Garras",
@@ -6174,7 +6295,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +15 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [
@@ -6247,7 +6369,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +21 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 12
       },
       {
         "nome": "Mordida",
@@ -6260,7 +6383,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +21 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 12
       },
       {
         "nome": "Cauda",
@@ -6273,7 +6397,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +21 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 12
       }
     ],
     "tecnicas": [
@@ -6350,7 +6475,8 @@
         "acerto": 0,
         "pool": "6d6 +10",
         "dano": "1d6 +12 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -6418,7 +6544,8 @@
         "acerto": 0,
         "pool": "6d6+2 +10",
         "dano": "1d6 +13 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Ferrão",
@@ -6431,7 +6558,8 @@
         "acerto": 0,
         "pool": "6d6+2 +10",
         "dano": "1d6 +13 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -6502,7 +6630,8 @@
         "acerto": 1,
         "pool": "4d6 +5",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -6573,7 +6702,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "2d6 +10 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -6643,7 +6773,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -6714,7 +6845,8 @@
         "acerto": 2,
         "pool": "3d6 +6",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -6783,7 +6915,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "1d6 +11 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       },
       {
         "nome": "Garras",
@@ -6796,7 +6929,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "1d6 +11 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Sopro ácido",
@@ -6809,7 +6943,8 @@
         "acerto": 0,
         "pool": "4d6+2 +6",
         "dano": "3d6 +4 (acido)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -6874,7 +7009,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +17 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 11
       },
       {
         "nome": "Garras",
@@ -6887,7 +7023,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +17 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Cauda",
@@ -6900,7 +7037,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "2d6 +28 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Sopro elétrico",
@@ -6913,7 +7051,8 @@
         "acerto": 0,
         "pool": "6d6+2 +8",
         "dano": "9d6 +6 (raio)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -6995,7 +7134,8 @@
         "acerto": 0,
         "pool": "6d6+2 +8",
         "dano": "1d6 +12 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 8
       },
       {
         "nome": "Garras",
@@ -7008,7 +7148,8 @@
         "acerto": 0,
         "pool": "6d6+2 +8",
         "dano": "1d6 +12 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Sopro de frio",
@@ -7021,7 +7162,8 @@
         "acerto": 0,
         "pool": "4d6+2 +6",
         "dano": "6d6 +4 (gelo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -7100,7 +7242,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +19 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 12
       },
       {
         "nome": "Garras",
@@ -7113,7 +7256,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +19 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 12
       },
       {
         "nome": "Sopro de fogo",
@@ -7126,7 +7270,8 @@
         "acerto": 0,
         "pool": "7d6 +8",
         "dano": "9d6 +7 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -7216,7 +7361,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +16 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 10
       },
       {
         "nome": "Garras",
@@ -7229,7 +7375,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +16 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       },
       {
         "nome": "Sopro ácido",
@@ -7242,7 +7389,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "9d6 +6 (acido)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -7323,7 +7471,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +17 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 11
       },
       {
         "nome": "Garras",
@@ -7336,7 +7485,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +17 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Cauda",
@@ -7349,7 +7499,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "2d6 +28 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Sopro de fogo",
@@ -7362,7 +7513,8 @@
         "acerto": 0,
         "pool": "6d6+2 +8",
         "dano": "9d6 +6 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -7453,7 +7605,8 @@
         "acerto": 0,
         "pool": "9d6+2 +10",
         "dano": "1d6 +21 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 14
       },
       {
         "nome": "Garras",
@@ -7466,7 +7619,8 @@
         "acerto": 0,
         "pool": "9d6+2 +10",
         "dano": "1d6 +21 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 14
       },
       {
         "nome": "Cauda",
@@ -7479,7 +7633,8 @@
         "acerto": 0,
         "pool": "9d6+2 +10",
         "dano": "2d6 +35 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 14
       },
       {
         "nome": "Sopro de fogo",
@@ -7492,7 +7647,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "12d6 +7 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -7584,7 +7740,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +14 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 9
       },
       {
         "nome": "Garras",
@@ -7597,7 +7754,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +14 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       },
       {
         "nome": "Sopro de fogo",
@@ -7610,7 +7768,8 @@
         "acerto": 0,
         "pool": "4d6+2 +6",
         "dano": "6d6 +5 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [
@@ -7691,7 +7850,8 @@
         "acerto": 1,
         "pool": "3d6 +5",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Mordida",
@@ -7704,7 +7864,8 @@
         "acerto": 1,
         "pool": "3d6 +5",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -7769,7 +7930,8 @@
         "acerto": 1,
         "pool": "3d6+2 +5",
         "dano": "1d6 +4 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -7837,7 +7999,8 @@
         "acerto": 0,
         "pool": "5d6 +8",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -7903,7 +8066,8 @@
         "acerto": 2,
         "pool": "3d6 +4",
         "dano": "1d6 +1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -7968,7 +8132,8 @@
         "acerto": 2,
         "pool": "5d6 +8",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [
@@ -7980,7 +8145,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 23,
-      "bloqueio": 23,
+      "bloqueio": 24,
       "defesa": 24,
       "contraTiro": 23,
       "absorcao": {
@@ -8051,7 +8216,8 @@
         "acerto": 1,
         "pool": "2d6+2 +3",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -8118,7 +8284,8 @@
         "acerto": 0,
         "pool": "6d6+2 +8",
         "dano": "2d6 +12 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -8188,7 +8355,8 @@
         "acerto": 1,
         "pool": "5d6+2 +1",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -8258,7 +8426,8 @@
         "acerto": 0,
         "pool": "6d6+2",
         "dano": "2d6 +10 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 10
       },
       {
         "nome": "Pisão (ou investida)",
@@ -8270,8 +8439,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "6d6+2",
-        "dano": "2d6 +20 (I)",
-        "perfArma": null
+        "dano": "2d6 +10 (I)",
+        "perfArma": null,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [],
@@ -8342,7 +8512,8 @@
         "acerto": 1,
         "pool": "3d6 +3",
         "dano": "1d6 +2 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -8407,7 +8578,8 @@
         "acerto": 0,
         "pool": "7d6+2 +6",
         "dano": "2d6 +13 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [
@@ -8474,7 +8646,8 @@
         "acerto": 1,
         "pool": "4d6 +3",
         "dano": "1d6 +4 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -8538,7 +8711,8 @@
         "acerto": 1,
         "pool": "4d6 +3",
         "dano": "1d6 +2 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -8603,7 +8777,8 @@
         "acerto": 1,
         "pool": "3d6 +3",
         "dano": "1d6 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -8668,7 +8843,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -8738,7 +8914,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 −2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -8808,7 +8985,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -8878,7 +9056,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       },
       {
         "nome": "Ferroada do enxame",
@@ -8891,7 +9070,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -8961,7 +9141,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -9031,7 +9212,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -9102,7 +9284,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 −2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -9173,7 +9356,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -9243,20 +9427,22 @@
         "acerto": 0,
         "pool": "4d6+2 +8",
         "dano": "1d6 +11 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       },
       {
         "nome": "Espada flamejante",
         "atrib": "destreza",
-        "pericia": "armas",
+        "pericia": "briga",
         "dado": 1,
         "tipo": "corte",
         "classe": "media",
         "ticks": 6,
         "acerto": 1,
-        "pool": "5d6+2 +9",
+        "pool": "6d6 +11",
         "dano": "1d6 +11 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras",
@@ -9269,7 +9455,8 @@
         "acerto": 1,
         "pool": "6d6 +11",
         "dano": "1d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [
@@ -9346,7 +9533,8 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "1d6 +5 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Ferrão",
@@ -9359,7 +9547,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +3 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -9429,7 +9618,8 @@
         "acerto": 1,
         "pool": "6d6 +11",
         "dano": "1d6 +10 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -9501,7 +9691,8 @@
         "acerto": 0,
         "pool": "3d6 +2",
         "dano": "2d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -9566,7 +9757,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +2 (fenomeno)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -9635,7 +9827,8 @@
         "acerto": 2,
         "pool": "4d6+2 +6",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -9702,7 +9895,8 @@
         "acerto": 2,
         "pool": "2d6+2 +4",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       },
       {
         "nome": "Pancada",
@@ -9715,7 +9909,8 @@
         "acerto": 1,
         "pool": "2d6+2 +3",
         "dano": "1d6 +3 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -9779,7 +9974,8 @@
         "acerto": 0,
         "pool": "7d6",
         "dano": "2d6 +22 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -9850,7 +10046,8 @@
         "acerto": 1,
         "pool": "3d6+2 +5",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -9915,7 +10112,8 @@
         "acerto": 0,
         "pool": "4d6+2 +4",
         "dano": "1d6 +6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       },
       {
         "nome": "Mordida",
@@ -9928,7 +10126,8 @@
         "acerto": 1,
         "pool": "4d6+2 +5",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -9995,7 +10194,8 @@
         "acerto": 0,
         "pool": "6d6",
         "dano": "2d6 +8 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -10060,7 +10260,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 −1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 1
       },
       {
         "nome": "Bico (dente tomial)",
@@ -10073,7 +10274,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -10143,7 +10345,8 @@
         "acerto": 1,
         "pool": "4d6 +9",
         "dano": "1d6 +2 (fenomeno)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -10208,7 +10411,8 @@
         "acerto": 1,
         "pool": "1d6+2 +1",
         "dano": "1d6 +1 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -10281,7 +10485,8 @@
         "acerto": 1,
         "pool": "8d6 +11",
         "dano": "1d6 +15 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Bico",
@@ -10294,7 +10499,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +17 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 11
       },
       {
         "nome": "Garras em mergulho",
@@ -10306,8 +10512,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6 +10",
-        "dano": "2d6 +28 (C)",
-        "perfArma": null
+        "dano": "2d6 +17 (C)",
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -10378,7 +10585,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +10 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras",
@@ -10391,7 +10599,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +10 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Sopro de fogo",
@@ -10404,7 +10613,8 @@
         "acerto": 0,
         "pool": "3d6+2 +4",
         "dano": "3d6 +4 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -10483,7 +10693,8 @@
         "acerto": 1,
         "pool": "7d6 +9",
         "dano": "1d6 +2 (raio)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -10549,7 +10760,8 @@
         "acerto": 0,
         "pool": "3d6",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       },
       {
         "nome": "Ferrão",
@@ -10562,7 +10774,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 +1 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -10632,7 +10845,8 @@
         "acerto": 0,
         "pool": "8d6",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Língua",
@@ -10645,7 +10859,8 @@
         "acerto": 1,
         "pool": "8d6 +1",
         "dano": "nenhum",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       },
       {
         "nome": "Bocada",
@@ -10658,7 +10873,8 @@
         "acerto": 0,
         "pool": "8d6",
         "dano": "1d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -10724,7 +10940,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 +1 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -10788,7 +11005,8 @@
         "acerto": 1,
         "pool": "4d6 +3",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       },
       {
         "nome": "Chifres",
@@ -10801,7 +11019,8 @@
         "acerto": 0,
         "pool": "4d6 +2",
         "dano": "1d6 +5 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -10865,7 +11084,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       },
       {
         "nome": "Mordida",
@@ -10878,7 +11098,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -10949,7 +11170,8 @@
         "acerto": 0,
         "pool": "4d6+2 +2",
         "dano": "1d6 +6 (acido)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -11013,7 +11235,8 @@
         "acerto": 1,
         "pool": "5d6+2 +11",
         "dano": "1d6 +12 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -11103,7 +11326,8 @@
         "acerto": 0,
         "pool": "4d6 +4",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Mordida",
@@ -11116,7 +11340,8 @@
         "acerto": 0,
         "pool": "4d6 +4",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -11180,7 +11405,8 @@
         "acerto": 0,
         "pool": "3d6+2 +2",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Mordida",
@@ -11193,7 +11419,8 @@
         "acerto": 0,
         "pool": "3d6+2 +2",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [
@@ -11258,7 +11485,8 @@
         "acerto": 0,
         "pool": "7d6 +2",
         "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       },
       {
         "nome": "Rocha arremessada",
@@ -11271,7 +11499,8 @@
         "acerto": 0,
         "pool": "2d6+2 +2",
         "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -11338,7 +11567,8 @@
         "acerto": 0,
         "pool": "7d6",
         "dano": "2d6 +9 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       },
       {
         "nome": "Rocha arremessada",
@@ -11351,7 +11581,8 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "2d6 +9 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -11416,7 +11647,8 @@
         "acerto": 0,
         "pool": "9d6 +8",
         "dano": "2d6 +17 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 13
       }
     ],
     "tecnicas": [],
@@ -11484,7 +11716,8 @@
         "acerto": 0,
         "pool": "8d6+2 +4",
         "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 12
       },
       {
         "nome": "Rocha arremessada",
@@ -11497,7 +11730,8 @@
         "acerto": 0,
         "pool": "3d6 +4",
         "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -11564,7 +11798,8 @@
         "acerto": 0,
         "pool": "7d6+2 +2",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       },
       {
         "nome": "Rocha arremessada",
@@ -11577,7 +11812,8 @@
         "acerto": 0,
         "pool": "2d6+2 +2",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -11657,7 +11893,8 @@
         "acerto": 0,
         "pool": "7d6+2 +2",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       },
       {
         "nome": "Rocha arremessada",
@@ -11670,7 +11907,8 @@
         "acerto": 0,
         "pool": "2d6+2 +2",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -11737,7 +11975,8 @@
         "acerto": 0,
         "pool": "7d6",
         "dano": "1d6 +9 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       },
       {
         "nome": "Mordida",
@@ -11750,7 +11989,8 @@
         "acerto": 0,
         "pool": "7d6",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -11820,7 +12060,8 @@
         "acerto": -1,
         "pool": "6d6+2 +1",
         "dano": "1d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Mordida",
@@ -11833,7 +12074,8 @@
         "acerto": 0,
         "pool": "6d6+2 +2",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -11900,7 +12142,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +18 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 12
       },
       {
         "nome": "Garras",
@@ -11913,7 +12156,8 @@
         "acerto": 1,
         "pool": "8d6+2 +11",
         "dano": "1d6 +16 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 12
       }
     ],
     "tecnicas": [
@@ -11985,7 +12229,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       },
       {
         "nome": "Mordida",
@@ -11998,7 +12243,8 @@
         "acerto": 0,
         "pool": "3d6",
         "dano": "1d6 +4 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -12064,7 +12310,8 @@
         "acerto": 2,
         "pool": "3d6 +2",
         "dano": "1d6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -12129,7 +12376,8 @@
         "acerto": 0,
         "pool": "6d6 +6",
         "dano": "1d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -12193,7 +12441,8 @@
         "acerto": 0,
         "pool": "5d6+2 +6",
         "dano": "1d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -12257,7 +12506,8 @@
         "acerto": 0,
         "pool": "7d6+2 +8",
         "dano": "2d6 +15 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -12321,7 +12571,8 @@
         "acerto": 0,
         "pool": "4d6+2 +2",
         "dano": "1d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -12385,7 +12636,8 @@
         "acerto": 0,
         "pool": "7d6 +6",
         "dano": "1d6 +13 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [],
@@ -12416,7 +12668,7 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas (ADW).",
+    "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas.",
     "tags": [
       "animal"
     ],
@@ -12454,8 +12706,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6",
-        "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "dano": "2d6 +5 (I)",
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Mordida",
@@ -12468,7 +12721,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -12538,7 +12792,8 @@
         "acerto": 0,
         "pool": "6d6+2 +6",
         "dano": "1d6 +11 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 8
       },
       {
         "nome": "Investida (marrada)",
@@ -12550,8 +12805,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "6d6+2 +6",
-        "dano": "2d6 +19 (I)",
-        "perfArma": null
+        "dano": "2d6 +11 (I)",
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Sopro petrificante",
@@ -12564,7 +12820,8 @@
         "acerto": 0,
         "pool": "5d6 +4",
         "dano": "nenhum",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -12631,7 +12888,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -12644,7 +12902,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -12714,7 +12973,8 @@
         "acerto": 0,
         "pool": "10d6+2 +10",
         "dano": "1d6 +25 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 16
       },
       {
         "nome": "Garras",
@@ -12727,7 +12987,8 @@
         "acerto": 0,
         "pool": "10d6+2 +10",
         "dano": "1d6 +25 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 16
       },
       {
         "nome": "Cauda",
@@ -12740,7 +13001,8 @@
         "acerto": 0,
         "pool": "10d6+2 +10",
         "dano": "2d6 +41 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 16
       },
       {
         "nome": "Asas",
@@ -12753,7 +13015,8 @@
         "acerto": 0,
         "pool": "10d6+2 +10",
         "dano": "1d6 +25 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 16
       },
       {
         "nome": "Sopro cataclísmico",
@@ -12766,7 +13029,8 @@
         "acerto": 0,
         "pool": "9d6+2 +10",
         "dano": "15d6 +9 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -12858,7 +13122,8 @@
         "acerto": 1,
         "pool": "5d6 +3",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Bico",
@@ -12871,7 +13136,8 @@
         "acerto": 0,
         "pool": "5d6 +2",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras em mergulho",
@@ -12883,8 +13149,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6 +2",
-        "dano": "2d6 +13 (C)",
-        "perfArma": null
+        "dano": "2d6 +7 (C)",
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -12955,14 +13222,15 @@
         "acerto": 2,
         "pool": "3d6 +2",
         "dano": "1d6 +1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
     "artes": [],
     "vestida": {
       "esquiva": 7,
-      "bloqueio": 10,
+      "bloqueio": 11,
       "defesa": 11,
       "contraTiro": 10,
       "absorcao": {
@@ -13036,7 +13304,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +1 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       },
       {
         "nome": "Patada com o ergot",
@@ -13049,7 +13318,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -13120,7 +13390,8 @@
         "acerto": 1,
         "pool": "4d6+2 +5",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -13186,7 +13457,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +14 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 9
       },
       {
         "nome": "Garras",
@@ -13199,7 +13471,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +14 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -13272,7 +13545,8 @@
         "acerto": 0,
         "pool": "6d6 +2",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -13339,7 +13613,8 @@
         "acerto": 0,
         "pool": "3d6+2",
         "dano": "1d6 +4 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -13410,7 +13685,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -13481,7 +13757,8 @@
         "acerto": 1,
         "pool": "4d6+2 +3",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Bico",
@@ -13494,7 +13771,8 @@
         "acerto": 0,
         "pool": "4d6+2 +2",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras em mergulho",
@@ -13506,8 +13784,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6+2 +2",
-        "dano": "2d6 +13 (C)",
-        "perfArma": null
+        "dano": "2d6 +7 (C)",
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -13575,7 +13854,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -13642,7 +13922,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 +3 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Rabada",
@@ -13655,7 +13936,8 @@
         "acerto": 0,
         "pool": "2d6+2",
         "dano": "1d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -13723,7 +14005,8 @@
         "acerto": 2,
         "pool": "4d6 +6",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Mordida",
@@ -13736,7 +14019,8 @@
         "acerto": 1,
         "pool": "4d6 +5",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -13803,7 +14087,8 @@
         "acerto": 1,
         "pool": "3d6+2 +3",
         "dano": "1d6 +1 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -13867,7 +14152,8 @@
         "acerto": 1,
         "pool": "4d6+2 +5",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -13935,7 +14221,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -13966,7 +14253,7 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "",
-    "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé (Mayer 2013).",
+    "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé.",
     "tags": [
       "animal"
     ],
@@ -14005,7 +14292,8 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       },
       {
         "nome": "Investida",
@@ -14017,8 +14305,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6",
-        "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "dano": "2d6 +5 (I)",
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -14089,7 +14378,8 @@
         "acerto": 1,
         "pool": "4d6+2 +1",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -14159,7 +14449,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 +4 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -14225,7 +14516,8 @@
         "acerto": 1,
         "pool": "9d6+2 +11",
         "dano": "1d6 +19 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 14
       },
       {
         "nome": "Bico",
@@ -14238,7 +14530,8 @@
         "acerto": 0,
         "pool": "9d6+2 +10",
         "dano": "1d6 +21 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 14
       }
     ],
     "tecnicas": [
@@ -14311,7 +14604,8 @@
         "acerto": 0,
         "pool": "5d6 +8",
         "dano": "1d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -14380,7 +14674,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "1d6 +14 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -14447,7 +14742,8 @@
         "acerto": 0,
         "pool": "2d6+2",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       },
       {
         "nome": "Chicotada de cauda",
@@ -14460,7 +14756,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 +1 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -14531,7 +14828,8 @@
         "acerto": 1,
         "pool": "3d6+2 +5",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       },
       {
         "nome": "Choque",
@@ -14544,7 +14842,8 @@
         "acerto": 0,
         "pool": "2d6+2 +4",
         "dano": "1d6 +2 (raio)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -14613,7 +14912,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +10 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -14679,7 +14979,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       },
       {
         "nome": "Patada",
@@ -14692,7 +14993,8 @@
         "acerto": 1,
         "pool": "5d6 +1",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -14763,7 +15065,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       },
       {
         "nome": "Patada",
@@ -14776,7 +15079,8 @@
         "acerto": 1,
         "pool": "5d6+2 +1",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -14847,7 +15151,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       },
       {
         "nome": "Patada",
@@ -14860,7 +15165,8 @@
         "acerto": 1,
         "pool": "4d6+2 +1",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -14931,7 +15237,8 @@
         "acerto": 1,
         "pool": "3d6 +3",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [
@@ -14997,7 +15304,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       },
       {
         "nome": "Patada",
@@ -15010,7 +15318,8 @@
         "acerto": 1,
         "pool": "4d6+2 +1",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -15081,7 +15390,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -15153,7 +15463,8 @@
         "acerto": 1,
         "pool": "4d6+2 +11",
         "dano": "1d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -15239,7 +15550,8 @@
         "acerto": 1,
         "pool": "5d6+2 +9",
         "dano": "1d6 +11 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Cauda",
@@ -15252,7 +15564,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -15332,7 +15645,8 @@
         "acerto": 1,
         "pool": "4d6+2 +3",
         "dano": "1d6 +4 (acido)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -15395,7 +15709,8 @@
         "acerto": 0,
         "pool": "9d6 +10",
         "dano": "1d6 +19 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 13
       },
       {
         "nome": "Garras",
@@ -15408,7 +15723,8 @@
         "acerto": 0,
         "pool": "9d6 +10",
         "dano": "1d6 +19 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 13
       },
       {
         "nome": "Sopro gélido",
@@ -15421,7 +15737,8 @@
         "acerto": 0,
         "pool": "8d6+2 +8",
         "dano": "9d6 +6 (gelo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -15487,7 +15804,8 @@
         "acerto": 0,
         "pool": "9d6 +10",
         "dano": "1d6 +19 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 13
       },
       {
         "nome": "Garras",
@@ -15500,7 +15818,8 @@
         "acerto": 0,
         "pool": "9d6 +10",
         "dano": "1d6 +19 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 13
       },
       {
         "nome": "Cauda",
@@ -15513,7 +15832,8 @@
         "acerto": 0,
         "pool": "9d6 +10",
         "dano": "2d6 +32 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 13
       },
       {
         "nome": "Sopro ácido",
@@ -15526,7 +15846,8 @@
         "acerto": 0,
         "pool": "9d6+2 +10",
         "dano": "9d6 +6 (acido)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -15591,7 +15912,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +17 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 11
       },
       {
         "nome": "Garras",
@@ -15604,7 +15926,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "1d6 +17 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       },
       {
         "nome": "Sopro de magma",
@@ -15617,7 +15940,8 @@
         "acerto": 0,
         "pool": "7d6+2 +8",
         "dano": "9d6 +6 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -15682,7 +16006,8 @@
         "acerto": 0,
         "pool": "4d6+2 +4",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras",
@@ -15695,7 +16020,8 @@
         "acerto": 0,
         "pool": "4d6+2 +4",
         "dano": "1d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -15762,7 +16088,8 @@
         "acerto": 0,
         "pool": "3d6",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -15833,7 +16160,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -15904,7 +16232,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       },
       {
         "nome": "Sopro gélido",
@@ -15917,7 +16246,8 @@
         "acerto": 0,
         "pool": "4d6 +4",
         "dano": "2d6 +4 (gelo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -15984,7 +16314,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 4
       },
       {
         "nome": "Mandíbulas",
@@ -15997,7 +16328,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -16067,7 +16399,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 1
       },
       {
         "nome": "Braços e tentáculos",
@@ -16080,7 +16413,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -16151,7 +16485,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       },
       {
         "nome": "Braços e tentáculos",
@@ -16164,7 +16499,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -16235,7 +16571,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Tentáculos",
@@ -16248,7 +16585,8 @@
         "acerto": 1,
         "pool": "5d6 +1",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -16319,7 +16657,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -16390,7 +16729,8 @@
         "acerto": 1,
         "pool": "1d6+2 +1",
         "dano": "1d6 +3 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -16465,7 +16805,8 @@
         "acerto": 0,
         "pool": "8d6",
         "dano": "2d6 +13 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 13
       },
       {
         "nome": "Pisão (ou investida)",
@@ -16477,8 +16818,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6",
-        "dano": "2d6 +26 (I)",
-        "perfArma": null
+        "dano": "2d6 +13 (I)",
+        "perfArma": null,
+        "forcaInvestida": 13
       }
     ],
     "tecnicas": [],
@@ -16549,7 +16891,8 @@
         "acerto": 1,
         "pool": "6d6 +1",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -16562,7 +16905,8 @@
         "acerto": 0,
         "pool": "6d6",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       },
       {
         "nome": "Espinhos de cauda",
@@ -16575,7 +16919,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -16644,7 +16989,8 @@
         "acerto": 1,
         "pool": "3d6+2 +3",
         "dano": "1d6 +1 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -16711,7 +17057,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -16781,7 +17128,8 @@
         "acerto": 1,
         "pool": "7d6+2 +11",
         "dano": "1d6 +17 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       },
       {
         "nome": "Cauda",
@@ -16794,7 +17142,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +17 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [
@@ -16871,7 +17220,8 @@
         "acerto": 0,
         "pool": "8d6",
         "dano": "2d6 +13 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 13
       },
       {
         "nome": "Pisão (ou investida)",
@@ -16883,8 +17233,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6",
-        "dano": "2d6 +26 (I)",
-        "perfArma": null
+        "dano": "2d6 +13 (I)",
+        "perfArma": null,
+        "forcaInvestida": 13
       }
     ],
     "tecnicas": [],
@@ -16955,7 +17306,8 @@
         "acerto": 2,
         "pool": "2d6+2 +6",
         "dano": "1d6 +3 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       },
       {
         "nome": "Espada curta",
@@ -16968,7 +17320,8 @@
         "acerto": 2,
         "pool": "3d6+2 +8",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       },
       {
         "nome": "Serpentes",
@@ -16981,7 +17334,8 @@
         "acerto": 1,
         "pool": "3d6+2 +7",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -17049,7 +17403,8 @@
         "acerto": 0,
         "pool": "9d6",
         "dano": "2d6 +13 (P) · perf. 3",
-        "perfArma": 3
+        "perfArma": 3,
+        "forcaInvestida": 13
       }
     ],
     "tecnicas": [],
@@ -17119,7 +17474,8 @@
         "acerto": 1,
         "pool": "4d6 +5",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Sopro elemental",
@@ -17132,7 +17488,8 @@
         "acerto": 0,
         "pool": "2d6+2 +4",
         "dano": "2d6 +2 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -17198,7 +17555,8 @@
         "acerto": 1,
         "pool": "2d6+2 +3",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 3
       },
       {
         "nome": "Besta média",
@@ -17211,11 +17569,18 @@
         "acerto": 1,
         "pool": "2d6 +3",
         "dano": "1d6 +5 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
     "artes": [],
+    "defesaOutraArma": {
+      "arma": "Besta média",
+      "armaPrincipal": "Lança",
+      "bloqueio": 10,
+      "defesa": 10
+    },
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -17277,7 +17642,8 @@
         "acerto": 0,
         "pool": "4d6+2 +2",
         "dano": "1d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Mordida",
@@ -17290,7 +17656,8 @@
         "acerto": 1,
         "pool": "4d6+2 +3",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -17321,7 +17688,7 @@
       "humanoide-monstruoso"
     ],
     "pv": 50,
-    "defesa": 9,
+    "defesa": 7,
     "defesaMental": 12,
     "defesaSocial": 10,
     "vontade": 6,
@@ -17355,20 +17722,22 @@
         "acerto": 0,
         "pool": "5d6+2 +2",
         "dano": "2d6 +15 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Chifrada",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "perfuracao",
         "classe": "media",
         "ticks": 6,
         "acerto": 0,
-        "pool": "5d6 +2",
+        "pool": "5d6+2 +2",
         "dano": "1d6 +8 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -17435,7 +17804,8 @@
         "acerto": 1,
         "pool": "2d6 +3",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -17503,7 +17873,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Língua",
@@ -17516,7 +17887,8 @@
         "acerto": 1,
         "pool": "5d6+2 +9",
         "dano": "nenhum",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -17578,7 +17950,8 @@
         "acerto": 1,
         "pool": "4d6+2 +3",
         "dano": "nenhum",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       },
       {
         "nome": "Mordida",
@@ -17591,7 +17964,8 @@
         "acerto": 1,
         "pool": "4d6+2 +3",
         "dano": "1d6 +1 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -17656,7 +18030,8 @@
         "acerto": 0,
         "pool": "6d6",
         "dano": "2d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -17721,7 +18096,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -17752,7 +18128,7 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa) .",
+    "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa).",
     "tags": [
       "animal"
     ],
@@ -17791,7 +18167,8 @@
         "acerto": 0,
         "pool": "2d6+2",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -17861,7 +18238,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -17931,7 +18309,8 @@
         "acerto": 2,
         "pool": "3d6+2 +6",
         "dano": "1d6 +4 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -17997,7 +18376,8 @@
         "acerto": 0,
         "pool": "8d6",
         "dano": "2d6 +12 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 12
       }
     ],
     "tecnicas": [],
@@ -18067,7 +18447,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "1d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -18129,7 +18510,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "1d6 +11 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -18142,7 +18524,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -18211,7 +18594,8 @@
         "acerto": 0,
         "pool": "5d6+2 +10",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -18298,7 +18682,8 @@
         "acerto": 0,
         "pool": "6d6 +10",
         "dano": "1d6 +12 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -18380,7 +18765,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -18462,7 +18848,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +18 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 12
       },
       {
         "nome": "Mordida",
@@ -18475,7 +18862,8 @@
         "acerto": 0,
         "pool": "8d6+2 +10",
         "dano": "1d6 +18 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 12
       }
     ],
     "tecnicas": [
@@ -18549,7 +18937,8 @@
         "acerto": 0,
         "pool": "8d6 +10",
         "dano": "2d6 +17 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -18617,7 +19006,8 @@
         "acerto": 1,
         "pool": "4d6 +5",
         "dano": "1d6 +5 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [
@@ -18709,7 +19099,8 @@
         "acerto": 2,
         "pool": "4d6+2 +6",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -18779,7 +19170,8 @@
         "acerto": 0,
         "pool": "4d6 +2",
         "dano": "1d6 +5 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -18842,7 +19234,8 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "2d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -18908,7 +19301,8 @@
         "acerto": 0,
         "pool": "6d6 +10",
         "dano": "2d6 +12 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -18977,7 +19371,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -19044,7 +19439,8 @@
         "acerto": 0,
         "pool": "7d6+2",
         "dano": "2d6 +10 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [],
@@ -19114,7 +19510,8 @@
         "acerto": 0,
         "pool": "5d6 +4",
         "dano": "2d6 +8 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       },
       {
         "nome": "Tentáculo",
@@ -19127,7 +19524,8 @@
         "acerto": 0,
         "pool": "5d6 +4",
         "dano": "1d6 +8 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -19192,7 +19590,8 @@
         "acerto": 0,
         "pool": "7d6+2",
         "dano": "2d6 +10 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 10
       }
     ],
     "tecnicas": [],
@@ -19256,7 +19655,8 @@
         "acerto": 0,
         "pool": "5d6 +8",
         "dano": "2d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Mordida",
@@ -19269,7 +19669,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -19337,7 +19738,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -19404,7 +19806,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -19417,7 +19820,8 @@
         "acerto": 1,
         "pool": "6d6 +9",
         "dano": "1d6 +9 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -19485,7 +19889,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -19551,7 +19956,8 @@
         "acerto": 2,
         "pool": "4d6 +10",
         "dano": "1d6 +2 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       },
       {
         "nome": "Garras e presas",
@@ -19564,7 +19970,8 @@
         "acerto": 0,
         "pool": "4d6 +4",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -19601,7 +20008,7 @@
       "celestial"
     ],
     "pv": 62,
-    "defesa": 22,
+    "defesa": 20,
     "defesaMental": 41,
     "defesaSocial": 32,
     "vontade": 12,
@@ -19635,7 +20042,8 @@
         "acerto": 0,
         "pool": "7d6 +10",
         "dano": "2d6 +25 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -19723,7 +20131,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +3 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -19793,7 +20202,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -19864,7 +20274,8 @@
         "acerto": 1,
         "pool": "5d6 +1",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Braços",
@@ -19877,7 +20288,8 @@
         "acerto": 1,
         "pool": "5d6 +1",
         "dano": "1d6 +5 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -19948,7 +20360,8 @@
         "acerto": 0,
         "pool": "3d6+2",
         "dano": "2d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Mordida",
@@ -19961,7 +20374,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -20032,7 +20446,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "2d6 (eletricidade)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       },
       {
         "nome": "Mordida",
@@ -20045,7 +20460,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 −2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -20116,7 +20532,8 @@
         "acerto": 1,
         "pool": "3d6+2 +3",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 1
       },
       {
         "nome": "Garras",
@@ -20129,7 +20546,8 @@
         "acerto": 1,
         "pool": "3d6+2 +3",
         "dano": "1d6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 1
       },
       {
         "nome": "Ferrão",
@@ -20142,7 +20560,8 @@
         "acerto": 1,
         "pool": "3d6+2 +3",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -20206,7 +20625,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -20276,7 +20696,8 @@
         "acerto": 0,
         "pool": "6d6",
         "dano": "2d6 +7 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -20340,7 +20761,8 @@
         "acerto": 1,
         "pool": "4d6 +5",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       },
       {
         "nome": "Mordida",
@@ -20353,7 +20775,8 @@
         "acerto": 1,
         "pool": "4d6 +5",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -20423,7 +20846,8 @@
         "acerto": 0,
         "pool": "3d6+2",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -20493,7 +20917,8 @@
         "acerto": 0,
         "pool": "6d6+2 +6",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       },
       {
         "nome": "Chifrada de cabra",
@@ -20506,7 +20931,8 @@
         "acerto": 0,
         "pool": "6d6+2 +6",
         "dano": "1d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Mordida de dragão",
@@ -20519,7 +20945,8 @@
         "acerto": 0,
         "pool": "6d6+2 +6",
         "dano": "1d6 +11 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       },
       {
         "nome": "Sopro dracônico",
@@ -20532,7 +20959,8 @@
         "acerto": 0,
         "pool": "4d6 +4",
         "dano": "2d6 +3 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -20600,7 +21028,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 +1 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Língua",
@@ -20613,7 +21042,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "nenhum",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -20739,7 +21169,8 @@
         "acerto": 1,
         "pool": "5d6 +11",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -20827,7 +21258,8 @@
         "acerto": 2,
         "pool": "4d6 +6",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -20892,7 +21324,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 +1 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -20963,7 +21396,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -21034,7 +21468,8 @@
         "acerto": 0,
         "pool": "7d6 +8",
         "dano": "1d6 +13 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -21100,7 +21535,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +8 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 8
       },
       {
         "nome": "Investida",
@@ -21112,8 +21548,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2",
-        "dano": "2d6 +16 (P) · perf. 1",
-        "perfArma": 1
+        "dano": "2d6 +8 (P) · perf. 1",
+        "perfArma": 1,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -21184,7 +21621,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Bico",
@@ -21197,7 +21635,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       },
       {
         "nome": "Garras em mergulho",
@@ -21209,8 +21648,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2",
-        "dano": "2d6 +14 (C)",
-        "perfArma": null
+        "dano": "2d6 +7 (C)",
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -21280,20 +21720,22 @@
         "acerto": 1,
         "pool": "3d6+2 +5",
         "dano": "1d6 +10 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 4
       },
       {
         "nome": "Garras",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "corte",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -21359,20 +21801,22 @@
         "acerto": 1,
         "pool": "5d6 +7",
         "dano": "1d6 +13 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 5
       },
       {
         "nome": "Cauda",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "impacto",
         "classe": "media",
         "ticks": 6,
         "acerto": 0,
-        "pool": "4d6+2 +6",
+        "pool": "5d6 +6",
         "dano": "1d6 +13 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [
@@ -21443,7 +21887,8 @@
         "acerto": 1,
         "pool": "2d6 +1",
         "dano": "1d6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -21570,7 +22015,8 @@
         "acerto": 0,
         "pool": "3d6+2 +4",
         "dano": "1d6 +6 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -21638,7 +22084,8 @@
         "acerto": 0,
         "pool": "9d6 +10",
         "dano": "1d6 +18 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 13
       }
     ],
     "tecnicas": [],
@@ -21705,7 +22152,8 @@
         "acerto": 1,
         "pool": "3d6 +1",
         "dano": "1d6 −1 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -21775,7 +22223,8 @@
         "acerto": 0,
         "pool": "6d6 +8",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -21843,7 +22292,8 @@
         "acerto": 0,
         "pool": "9d6",
         "dano": "2d6 +13 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 13
       }
     ],
     "tecnicas": [],
@@ -21909,33 +22359,36 @@
         "acerto": 1,
         "pool": "3d6+2 +5",
         "dano": "1d6 +10 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 4
       },
       {
         "nome": "Mordida",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "perfuracao",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +4 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 4
       },
       {
         "nome": "Garras",
         "atrib": "forca",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "corte",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +5",
+        "pool": "3d6+2 +5",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],
@@ -21967,7 +22420,7 @@
       "celestial"
     ],
     "pv": 70,
-    "defesa": 24,
+    "defesa": 22,
     "defesaMental": 44,
     "defesaSocial": 32,
     "vontade": 12,
@@ -22001,7 +22454,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "2d6 +29 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       },
       {
         "nome": "Arco longo",
@@ -22014,7 +22468,8 @@
         "acerto": 0,
         "pool": "6d6+2 +10",
         "dano": "1d6 +17 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -22040,6 +22495,12 @@
         "nivel": 5
       }
     ],
+    "defesaOutraArma": {
+      "arma": "Arco longo",
+      "armaPrincipal": "Montante",
+      "bloqueio": 24,
+      "defesa": 24
+    },
     "pericias": {
       "prontidao": 5,
       "furtividade": 0,
@@ -22103,40 +22564,43 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 +3 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Espada longa a duas mãos",
         "atrib": "destreza",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "corte",
         "classe": "media",
         "ticks": 6,
         "acerto": 1,
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Punhos",
         "atrib": "destreza",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "impacto",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6 +1",
+        "pool": "4d6 +1",
         "dano": "1d6 +1 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
     "artes": [],
     "vestida": {
       "esquiva": 12,
-      "bloqueio": 10,
+      "bloqueio": 11,
       "defesa": 12,
       "contraTiro": 12,
       "absorcao": {
@@ -22217,7 +22681,8 @@
         "acerto": 1,
         "pool": "4d6 +5",
         "dano": "1d6 (fenomeno)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -22281,7 +22746,8 @@
         "acerto": 1,
         "pool": "3d6+2 +3",
         "dano": "1d6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 1
       }
     ],
     "tecnicas": [],
@@ -22348,7 +22814,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [
@@ -22424,7 +22891,8 @@
         "acerto": 1,
         "pool": "3d6+2 +3",
         "dano": "1d6 +4 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -22489,7 +22957,8 @@
         "acerto": 0,
         "pool": "10d6+2 +10",
         "dano": "1d6 +26 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 16
       },
       {
         "nome": "Garras",
@@ -22502,7 +22971,8 @@
         "acerto": 0,
         "pool": "10d6+2 +10",
         "dano": "1d6 +26 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 16
       },
       {
         "nome": "Cauda",
@@ -22515,7 +22985,8 @@
         "acerto": 0,
         "pool": "10d6+2 +10",
         "dano": "2d6 +42 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 16
       }
     ],
     "tecnicas": [
@@ -22584,7 +23055,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +15 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 10
       },
       {
         "nome": "Garras",
@@ -22597,7 +23069,8 @@
         "acerto": 0,
         "pool": "7d6+2 +10",
         "dano": "1d6 +15 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 10
       },
       {
         "nome": "Sopro de vapor",
@@ -22610,7 +23083,8 @@
         "acerto": 0,
         "pool": "5d6 +6",
         "dano": "6d6 +5 (fogo)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 0
       }
     ],
     "tecnicas": [],
@@ -22675,20 +23149,22 @@
         "acerto": 1,
         "pool": "4d6 +3",
         "dano": "1d6 +4 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Bico",
         "atrib": "destreza",
-        "pericia": "briga",
+        "pericia": "armas",
         "dado": 1,
         "tipo": "perfuracao",
         "classe": "leve",
         "ticks": 5,
         "acerto": 1,
-        "pool": "3d6+2 +3",
+        "pool": "4d6 +3",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -22753,7 +23229,8 @@
         "acerto": 2,
         "pool": "3d6+2 +4",
         "dano": "1d6 +2 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -22819,7 +23296,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       },
       {
         "nome": "Patada",
@@ -22832,7 +23310,8 @@
         "acerto": 1,
         "pool": "5d6+2 +1",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -22903,7 +23382,8 @@
         "acerto": 0,
         "pool": "6d6",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       },
       {
         "nome": "Patada",
@@ -22916,7 +23396,8 @@
         "acerto": 1,
         "pool": "6d6 +1",
         "dano": "1d6 +6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -22987,7 +23468,8 @@
         "acerto": 0,
         "pool": "8d6",
         "dano": "2d6 +12 (P) · perf. 2",
-        "perfArma": 2
+        "perfArma": 2,
+        "forcaInvestida": 12
       }
     ],
     "tecnicas": [],
@@ -23057,7 +23539,8 @@
         "acerto": 0,
         "pool": "8d6 +6",
         "dano": "2d6 +14 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -23123,7 +23606,8 @@
         "acerto": 1,
         "pool": "3d6+2 +1",
         "dano": "1d6 +3 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -23187,7 +23671,8 @@
         "acerto": 0,
         "pool": "7d6",
         "dano": "1d6 +11 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 11
       },
       {
         "nome": "Investida de chifre",
@@ -23199,8 +23684,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "7d6",
-        "dano": "2d6 +22 (P) · perf. 1",
-        "perfArma": 1
+        "dano": "2d6 +11 (P) · perf. 1",
+        "perfArma": 1,
+        "forcaInvestida": 11
       }
     ],
     "tecnicas": [],
@@ -23271,7 +23757,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 +3 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       },
       {
         "nome": "Garras",
@@ -23284,7 +23771,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 +1 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -23350,7 +23838,8 @@
         "acerto": -1,
         "pool": "6d6 +1",
         "dano": "2d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -23363,7 +23852,8 @@
         "acerto": 0,
         "pool": "6d6 +2",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -23426,7 +23916,8 @@
         "acerto": 0,
         "pool": "6d6+2",
         "dano": "2d6 +9 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 9
       }
     ],
     "tecnicas": [],
@@ -23496,7 +23987,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "1d6 +11 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       },
       {
         "nome": "Coice",
@@ -23509,7 +24001,8 @@
         "acerto": 0,
         "pool": "5d6+2 +8",
         "dano": "2d6 +11 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Chifre em investida",
@@ -23521,8 +24014,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2 +8",
-        "dano": "2d6 +18 (P) · perf. 1",
-        "perfArma": 1
+        "dano": "2d6 +11 (P) · perf. 1",
+        "perfArma": 1,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [
@@ -23592,7 +24086,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -23605,7 +24100,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -23671,7 +24167,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Mordida",
@@ -23684,7 +24181,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -23755,7 +24253,8 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "1d6 +6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Mordida",
@@ -23768,7 +24267,8 @@
         "acerto": 0,
         "pool": "4d6",
         "dano": "1d6 +6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -23839,7 +24339,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -23852,7 +24353,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -23923,7 +24425,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Mordida",
@@ -23936,7 +24439,8 @@
         "acerto": 0,
         "pool": "5d6+2",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -24007,7 +24511,8 @@
         "acerto": 0,
         "pool": "6d6",
         "dano": "1d6 +8 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 8
       },
       {
         "nome": "Mordida",
@@ -24020,7 +24525,8 @@
         "acerto": 0,
         "pool": "6d6",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 8
       }
     ],
     "tecnicas": [],
@@ -24091,7 +24597,8 @@
         "acerto": 0,
         "pool": "5d6 +10",
         "dano": "1d6 +10 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Mordida",
@@ -24104,7 +24611,8 @@
         "acerto": 1,
         "pool": "5d6 +11",
         "dano": "1d6 +8 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -24171,7 +24679,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -24242,7 +24751,8 @@
         "acerto": 0,
         "pool": "4d6+2",
         "dano": "1d6 +5 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -24313,7 +24823,8 @@
         "acerto": 1,
         "pool": "3d6 +5",
         "dano": "1d6 +2 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -24379,7 +24890,8 @@
         "acerto": 1,
         "pool": "2d6+2 +1",
         "dano": "1d6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -24443,7 +24955,8 @@
         "acerto": 0,
         "pool": "9d6 +2",
         "dano": "1d6 +14 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 13
       },
       {
         "nome": "Ferrão de cauda",
@@ -24456,7 +24969,8 @@
         "acerto": 0,
         "pool": "9d6 +2",
         "dano": "1d6 +14 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 13
       }
     ],
     "tecnicas": [],
@@ -24522,7 +25036,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 2
       },
       {
         "nome": "Mandíbulas",
@@ -24535,7 +25050,8 @@
         "acerto": 1,
         "pool": "4d6 +1",
         "dano": "1d6 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 2
       }
     ],
     "tecnicas": [],
@@ -24605,7 +25121,8 @@
         "acerto": 0,
         "pool": "5d6+2 +2",
         "dano": "2d6 +8 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -24668,7 +25185,8 @@
         "acerto": 0,
         "pool": "6d6 +10",
         "dano": "1d6 +12 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       },
       {
         "nome": "Bico",
@@ -24681,7 +25199,8 @@
         "acerto": 0,
         "pool": "6d6 +10",
         "dano": "1d6 +12 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -24752,7 +25271,8 @@
         "acerto": 0,
         "pool": "3d6+2 +4",
         "dano": "1d6 +5 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 3
       }
     ],
     "tecnicas": [],
@@ -24815,7 +25335,8 @@
         "acerto": 0,
         "pool": "4d6 +2",
         "dano": "1d6 +6 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -24882,7 +25403,8 @@
         "acerto": 0,
         "pool": "5d6+2 +6",
         "dano": "1d6 +9 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras",
@@ -24895,7 +25417,8 @@
         "acerto": 1,
         "pool": "5d6+2 +7",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Garras em mergulho",
@@ -24907,8 +25430,9 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2 +6",
-        "dano": "2d6 +15 (C)",
-        "perfArma": null
+        "dano": "2d6 +9 (C)",
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Ferrão",
@@ -24921,7 +25445,8 @@
         "acerto": 1,
         "pool": "5d6+2 +7",
         "dano": "1d6 +7 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -24985,7 +25510,8 @@
         "acerto": 2,
         "pool": "5d6 +10",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Garras",
@@ -24998,7 +25524,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +7 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 5
       },
       {
         "nome": "Mordida",
@@ -25011,7 +25538,8 @@
         "acerto": 1,
         "pool": "5d6 +9",
         "dano": "1d6 +7 (P) · perf. 0",
-        "perfArma": 0
+        "perfArma": 0,
+        "forcaInvestida": 5
       }
     ],
     "tecnicas": [],
@@ -25080,7 +25608,8 @@
         "acerto": 0,
         "pool": "5d6+2 +6",
         "dano": "1d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 6
       },
       {
         "nome": "Mordida",
@@ -25093,7 +25622,8 @@
         "acerto": 0,
         "pool": "5d6+2 +6",
         "dano": "1d6 +9 (P) · perf. 1",
-        "perfArma": 1
+        "perfArma": 1,
+        "forcaInvestida": 6
       }
     ],
     "tecnicas": [],
@@ -25157,7 +25687,8 @@
         "acerto": 0,
         "pool": "5d6+2 +4",
         "dano": "1d6 +9 (C)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 7
       }
     ],
     "tecnicas": [],
@@ -25223,7 +25754,8 @@
         "acerto": 0,
         "pool": "3d6 +2",
         "dano": "1d6 +5 (I)",
-        "perfArma": null
+        "perfArma": null,
+        "forcaInvestida": 4
       }
     ],
     "tecnicas": [],

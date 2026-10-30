@@ -83,7 +83,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -124,8 +123,6 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
-    "atividade": "",
     "dieta": "piscívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"

@@ -15,7 +15,8 @@
     "profundidade": null,
     "comprimento": 1.22,
     "massa": 180,
-    "area": 2.07
+    "area": 2.07,
+    "posturaDoTamanho": "de cima"
   },
   "couraca": 1,
   "atributos": {
@@ -81,7 +82,6 @@
     {
       "nome": "Mordida",
       "parte": "queliceras-da-aranha",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

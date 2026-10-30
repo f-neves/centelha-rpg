@@ -98,10 +98,9 @@
     "nome": "Arremesso",
     "grupo": "combate",
     "atributos": [
-      "destreza",
-      "forca"
+      "destreza"
     ],
-    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador.",
+    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador. A jogada de arremesso vai sempre pela Destreza, e não pela Força: o braço forte joga mais longe e machuca mais, mas quem põe o objeto no lugar certo é a mão precisa.",
     "niveis": [
       {
         "nivel": 0,
@@ -145,10 +144,9 @@
     "nome": "Atirador",
     "grupo": "combate",
     "atributos": [
-      "percepcao",
-      "destreza"
+      "percepcao"
     ],
-    "descricao": "O tiro com arma de disparo: arco curto, arco longo, besta e o que mais se aponte e solte. É a Habilidade da paciência e da mira, de julgar a distância, o vento e o instante, e soltar quando o alvo está onde deveria estar. Rende o melhor do jogo quando você tem tempo e posição, e sofre muito quando o inimigo encosta. Lançar com o braço é Arremesso; a briga de perto é Armas ou Briga.",
+    "descricao": "O tiro com arma de disparo: arco curto, arco longo, besta e o que mais se aponte e solte. É a Habilidade da paciência e da mira, de julgar a distância, o vento e o instante, e soltar quando o alvo está onde deveria estar. Rende o melhor do jogo quando você tem tempo e posição, e sofre muito quando o inimigo encosta. Lançar com o braço é Arremesso; a briga de perto é Armas ou Briga. O tiro de arco e de besta vai sempre pela Percepção, e não pela Destreza: acertar longe é antes de tudo enxergar direito.",
     "niveis": [
       {
         "nivel": 0,

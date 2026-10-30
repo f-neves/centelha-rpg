@@ -68,7 +68,6 @@
     {
       "nome": "Golpe",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -119,7 +118,6 @@
   ],
   "fisiologia": {
     "respiracao": "trocas gasosas pela superfície",
-    "prendeRespiracao": "sem dado",
     "camuflagem": "parece vegetação imóvel",
     "mente": "sem mente",
     "tracos": "Fungo de campânula invertida sobre hastes móveis"

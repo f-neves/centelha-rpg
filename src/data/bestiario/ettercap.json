@@ -15,7 +15,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 90,
-    "area": 0.78
+    "area": 0.78,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
   "atributos": {
@@ -89,7 +90,6 @@
     {
       "nome": "Foices",
       "parte": "maos-em-foice-de-quitina",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -106,7 +106,6 @@
     {
       "nome": "Mordida",
       "parte": "queliceras",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

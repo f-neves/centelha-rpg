@@ -77,7 +77,6 @@
     {
       "nome": "Mordida",
       "parte": "dentes",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -163,7 +162,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "mente": "inteligente",
     "tracos": "Fada azulada de cabeça larga, que vive em cavernas e monta artrópodes"
   },

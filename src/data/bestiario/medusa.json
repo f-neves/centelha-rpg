@@ -15,7 +15,8 @@
     "profundidade": 0.19,
     "comprimento": null,
     "massa": 55,
-    "area": 0.59
+    "area": 0.59,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -72,32 +73,22 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:arco-curto"
-      },
-      {
-        "ref": "a:espada-curta"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Arco curto",
-      "arma": "arco-curto",
-      "habilidade": "atirador"
+      "arma": "arco-curto"
     },
     {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
     },
     {
       "nome": "Serpentes",
       "parte": "cabelos-serpente",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

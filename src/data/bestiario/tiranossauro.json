@@ -90,7 +90,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -169,9 +168,7 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "diurno",
-    "dieta": "carnívoro (também carniceiro)",
-    "caca": "",
-    "dianteDeGente": ""
+    "dieta": "carnívoro (também carniceiro)"
   },
   "ecologia": {
     "terreno": [

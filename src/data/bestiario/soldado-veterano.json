@@ -98,11 +98,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "malha",
@@ -114,13 +110,11 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Espada longa a duas mãos",
       "parte": "espada-longa-duas-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -137,7 +131,6 @@
     {
       "nome": "Punhos",
       "parte": "punhos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

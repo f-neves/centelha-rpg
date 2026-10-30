@@ -10,6 +10,7 @@ Do Arquiteto. Segue as decisões do autor de 24/10/2026, registradas como D-216 
   - **objeto substituído** (`atributos`, `corpo`, `deslocamento`, `equipamento`, `artes`, `fisiologia`, `aptidoes`): troca chave por chave, e a chave que a forma não diz vem da principal. É a leitura do exemplo: a forma humana só traz Força e Vigor, e da `fisiologia` só a `camuflagem` (D-230). A forma que não diz `artes` herda as da principal; a que não conjura (a névoa do vampiro) diz o nível 0 em cada Arte da principal;
   - **lista substituída** (`ataques`, `bolsas`; e `equipamento.arsenal` e `.armaduras` dentro do objeto): trocada inteira;
   - **valor substituído** (`aparencia`, `couraca`): troca;
+  - **só da forma** (`outraForma`, D-265): no disfarce fixo (o humano), as outras formas que o Mestre pode escolher no lugar dele, no texto da ficha ("um animal comum"); o card escreve a regra em volta ("O Mestre pode escolher outra forma (...); então valem a medida e o Tamanho dela."). Vem do trecho "o Mestre pode escolher outra forma (...), e então valem a medida e o Tamanho dela" da linha da forma em Variantes;
   - **marcado**: cada item diz `"formas": "todas"` ou uma lista de ids. Vale para `habilidadesEspeciais`, `comoLuta` (D-230), `sentidos` e os três de `elementos`;
   - **fixo**: igual em todas as formas (`habilidades`, `habilidadesSec`, `especialidades`, `especialidadesSec`, `virtudes`, `vontade`, `centelha`).
   - Criatura de uma forma só não tem `formaPrincipal` nem `formas`. Os itens marcados levam `"formas": "todas"`, para o formato ser um só.
@@ -69,6 +70,7 @@ Todas as chaves estão aprovadas: as que o dragão pediu pela D-221, e as que er
 | `corpo.segundoTamanho` | `{area, posturaDoTamanho}`, e `tamanhoEscolhido` quando a ficha escolhe perto do corte, como no primeiro Tamanho | cond. | S | `Segundo Tamanho` (D-213, D-215; a escolha guardada pela D-216) |
 | `corpo.tamanhoEscolhido` | id do Tamanho | cond. (só quando a ficha escolhe) | S | `Tamanho`, quando a área fica a menos de 5% do corte e a ficha "escolhe pelo corpo" (decisoes-autor §13; a escolha é guardada pela D-216, o nome pela D-225) |
 | `corpo.linhaPV` | `acima` ou `abaixo` | cond. (só quando a ficha escolhe) | S | `PV base`, na zona de transição ("robusto sobe, frágil desce", §13; guardada pela D-216, o nome pela D-225) |
+| `corpo.linhaPVMotivo` | texto | cond. (só junto de `linhaPV`, e só quando a ficha diz o porquê) | S | `PV base`, a frase "PV na linha de cima: ..." (na forma, a justificativa da Variante); o card a escreve na nota da linha de PV (Cap. IV: a ficha "escolhe a linha pelo corpo ... e diz por quê"). Chave nova da reconversão 5d, 30/10/2026, a confirmar pelo Arquiteto |
 | `corpo.cargaMedida` | número (kg) | cond. (quadrúpede de carga com medida) | S | `Carga` (D-122: "o fim da faixa Leve é a carga medida, quando houver") |
 | `couraca` | inteiro 0 a 12 | sim | S | Absorção, "Couraça nível N" |
 | `bonusPV` | inteiro | não (falta = 0) | F | `Bônus de PV` (D-135, com a justificativa na ficha). Comum a todas as formas: a forma não tem `bonusPV` próprio (F5.4, D-263) |
@@ -107,7 +109,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 |---|---|---|
 | `nome` | texto | `Nome` |
 | `parte` | id | `Parte` |
-| `habilidade` | id | a Habilidade da frase "Jogada:" (Disparo, Atirador, Arremesso...). **No corpo a corpo não é guardada:** o card calcula pela maior entre Briga e Armas (complemento da D-208, D-258) |
+| `habilidade` | `disparo`, `atirador` ou `arremesso`; cond. (só no tiro e no arremesso) | a Habilidade da frase "Jogada:". No corpo a corpo não vai: o motor rola pela maior entre Briga e Armas, com o maior entre Força e Destreza e o termo da Centelha (D-208 completada pela D-258) |
 | `classe` | id | `Classe` |
 | `pgr` | `[Preparo, Golpe, Recuperação]`, em Ticks | `P/G/R` (seção 6) |
 | `dado` | texto (`1d6`, `1d6-2`, `6d6`), ou null no golpe sem dano (agarra, enferruja, petrifica) | `Dano`, o dado; "nenhum" grava null |
@@ -119,7 +121,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 
 A coluna `Velocidade` da ficha não vai: é P + G + R, e o motor soma (D-221). O conversor confere a soma e para se ela não bater.
 
-O ataque com arma do livro guarda só `nome`, `arma` (o id de `armas.json`) e `habilidade`; o resto vem do catálogo, como na ficha do jogador (D-220).
+O ataque com arma do livro guarda só `nome` e `arma` (o id de `armas.json`); o resto vem do catálogo, como na ficha do jogador (D-220). A Habilidade também: a de tiro e arremesso é a `pericia` do catálogo, e a de corpo a corpo é a maior entre Briga e Armas, qualquer que seja a do catálogo (D-258).
 
 Não há `atrib`: o motor tira o Atributo da Habilidade. Disparo usa Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza e a maior Habilidade entre Briga e Armas, mais o termo da Centelha (D-208 com o complemento de 29/10/2026, D-258; decisoes-autor §14; `combate.md:156`).
 

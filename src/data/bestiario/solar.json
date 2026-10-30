@@ -71,14 +71,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:montante"
-      },
-      {
-        "ref": "a:arco-longo"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {
@@ -91,13 +84,11 @@
   "ataques": [
     {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
     },
     {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
     }
   ],
   "habilidadesEspeciais": [
@@ -199,7 +190,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "mente": "inteligente",
     "tracos": "Guerreiro celeste de pele metálica e três pares de asas brancas"
   },

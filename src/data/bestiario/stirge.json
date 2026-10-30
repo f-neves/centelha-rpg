@@ -23,7 +23,8 @@
       "area": 0.005,
       "posturaDoTamanho": "asas fechadas, preso ao alvo"
     },
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "inseto de casca"
   },
   "couraca": 0,
   "atributos": {
@@ -90,7 +91,6 @@
     {
       "nome": "Probóscide",
       "parte": "proboscide",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

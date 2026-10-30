@@ -97,7 +97,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -172,7 +171,6 @@
   },
   "comportamento": {
     "social": "bando",
-    "atividade": "",
     "dieta": "carnívoro",
     "caca": "perseguição",
     "dianteDeGente": "evita"

@@ -108,7 +108,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -125,7 +124,6 @@
     {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -169,13 +167,13 @@
         "nivel": 4
       },
       "ataque": "Sopro de fogo",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "12 m à frente",
       "area": "cone de 12 m",
       "efeito": "o fogo queima tudo no cone",
       "dano": "9d6 + Centelha, fogo",
-      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -193,7 +191,7 @@
         "verdadeira"
       ],
       "classe": "sem regra ainda",
-      "efeito": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+      "efeito": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
       "nome": "Presença",
@@ -228,9 +226,9 @@
       "duracao": "até o fim da próxima ação do alvo",
       "alcance": "12 m à frente",
       "area": "cone de 12 m",
-      "efeito": "gás sem dano que enfraquece: o alvo fica com Desgaste 1 (`condicoes.json`); o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto",
+      "efeito": "gás sem dano que enfraquece: o alvo fica com Desgaste 1",
       "dano": "nenhum",
-      "resistencia": "corpo, contra a jogada do sopro",
+      "resistencia": "sair da área pela regra do livro (Combate, \"Contra área, a saída é sair\"); para evitar o gás sem dano, rola Destreza + Esquiva contra o dobro de (5 + 5 × os metros que faltam para ficar fora). Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "dividido com o Sopro de fogo, uma vez a cada 24 Ticks"
     },
     {
@@ -275,7 +273,7 @@
     {
       "nome": "viajante disfarçado",
       "formas": [
-        "humana-ou-de-animal-pequeno"
+        "humana"
       ],
       "texto": "evita lutar e observa; protege e cura com as Artes, e volta à forma verdadeira quando a luta pede."
     }
@@ -352,11 +350,18 @@
   ],
   "formas": [
     {
-      "id": "humana-ou-de-animal-pequeno",
-      "nome": "forma humana ou de animal pequeno",
+      "id": "humana",
+      "nome": "forma humana",
+      "outraForma": "um animal pequeno",
+      "corpo": {
+        "altura": 1.78,
+        "largura": 0.48,
+        "profundidade": 0.3,
+        "area": 0.64
+      },
       "fisiologia": {
-        "prendeRespiracao": "a da forma assumida",
-        "camuflagem": "passa por um humano ou um animal pequeno comum"
+        "prendeRespiracao": "a de um humano",
+        "camuflagem": "passa por um humano"
       },
       "ataques": []
     }
@@ -417,7 +422,7 @@
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
     },
     {
-      "campo": "formas.humana-ou-de-animal-pequeno",
+      "campo": "formas.humana",
       "motivo": "Mudar de forma (site) muda o corpo; a mente, as Artes e os números ficam os dele, como no disfarce da couatl"
     },
     {

@@ -1,4 +1,7 @@
 // Forma persistida da ficha e ponte para os leitores anteriores à migração 41.
+// D-259: toda peça com estatística sai da leitura e entra na gravação com o item
+// inteiro (`congelarItens`, em equip.ts); a ficha da 41 (ref + ajuste) vira item na leitura.
+import { congelarItens } from './equip';
 const livre = (i: number) => `livre-${i}`;
 const livreNovo = (i: number) => `habilidadeSecLivre${i}`;
 const copia = (v: any) => v == null ? v : structuredClone(v);
@@ -42,7 +45,7 @@ export function fichaParaLeitura(entrada: any): any {
   if (!fichaNova(entrada)) {
     const v = copia(entrada);
     if (v?.virtues?.valor !== undefined && v.virtues.bravura === undefined) { v.virtues.bravura = v.virtues.valor; delete v.virtues.valor; }
-    return v;
+    return congelarItens(v);
   }
   const f = copia(entrada);
   const e = f.equipamento || {};
@@ -58,19 +61,20 @@ export function fichaParaLeitura(entrada: any): any {
   if (virtues.valor !== undefined && virtues.bravura === undefined) { virtues.bravura = virtues.valor; delete virtues.valor; }
   const antigos = ['nome','conceito','jogador','titulo','idade','atributos','habilidades','especialidades','habilidadesSec','especialidadesSec','virtudes','vontade','proezas','artes','efeitos','antecedentes','antecedentesNomeados','xpTotal','equipamento'];
   for (const k of antigos) delete f[k];
-  return { ...f, id, attrs: entrada.atributos, skills: entrada.habilidades, spec: specsVelhas(entrada.especialidades),
+  return congelarItens({ ...f, id, attrs: entrada.atributos, skills: entrada.habilidades, spec: specsVelhas(entrada.especialidades),
     skills2: hs, spec2: specsVelhas(sp2), livreNome, virtues, willpower: entrada.vontade,
     tech: Object.fromEntries((entrada.proezas || []).map((x: string) => [x, true])), arte: entrada.artes || {},
     efeito: Object.fromEntries((entrada.efeitos || []).map((x: string) => [x, true])), ante: entrada.antecedentes || {},
     anteNom: anteVelho(entrada.antecedentesNomeados), budget: entrada.xpTotal,
     equip: { ...e, armaduras: (e.armaduras || []).map(pecaVelha) }, arsenal: (e.arsenal || []).map(pecaVelha),
-    conjuntos: (e.conjuntos || []).map(conjuntoVelho) };
+    conjuntos: (e.conjuntos || []).map(conjuntoVelho) });
 }
 
 /** Escrita canônica. Também aceita uma ficha que já foi convertida. */
 export function fichaParaGravar(entrada: any): any {
-  if (fichaNova(entrada)) return copia(entrada);
+  if (fichaNova(entrada)) return congelarItens(copia(entrada), true);
   if (!entrada || typeof entrada !== 'object') return entrada;
+  entrada = congelarItens(copia(entrada));
   const f = copia(entrada);
   const id = f.id || {};
   const hs = { ...(f.skills2 || {}) };
@@ -84,9 +88,13 @@ export function fichaParaGravar(entrada: any): any {
   if (virtues.valor !== undefined) { virtues.bravura = virtues.valor; delete virtues.valor; }
   const corpo = { ...(f.corpo || {}) };
   if (corpo.altura === undefined) { const h = numero(id.altura); if (h !== undefined) corpo.altura = h; }
-  if (!Number.isFinite(corpo.massa)) {
-    const faixas: Record<string, number> = { halfling: 24, gnomo: 25, elfo: 53.5, 'meio-elfo': 70, anao: 85, orc: 110, 'meio-orc': 90, humano: 70 };
-    corpo.massa = numero(id.peso) ?? faixas[f.raca] ?? 70;
+  // D-260 (A2): a massa só fica guardada quando o jogador a escreve (aqui, o "peso" que
+  // ele escreveu na identidade). Vazia, o leitor calcula pelo padrão da raça
+  // (`massaDoJogador`, motor.ts), e refaz quando a raça muda. Nada de padrão gravado.
+  if (!(Number.isFinite(corpo.massa) && corpo.massa > 0)) {
+    delete corpo.massa;
+    const escrita = numero(id.peso);
+    if (escrita !== undefined && escrita > 0) corpo.massa = escrita;
   }
   const antigos = ['id','attrs','skills','spec','skills2','spec2','livreNome','virtues','willpower','tech','arte','efeito','ante','anteNom','budget','equip','arsenal','conjuntos','defSpec','derivCol','secCol'];
   for (const k of antigos) delete f[k];

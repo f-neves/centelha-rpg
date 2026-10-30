@@ -80,7 +80,6 @@
     {
       "nome": "Garras",
       "parte": "garras-dos-tres-bracos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -97,7 +96,6 @@
     {
       "nome": "Mordida",
       "parte": "boca-no-alto-do-corpo",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

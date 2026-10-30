@@ -73,7 +73,6 @@
     {
       "nome": "Cabeçada",
       "parte": "chifres",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -146,7 +145,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "mente": "inteligente",
     "tracos": "Fada de pernas caprinas, chifres curvos e flautas encantadas"
   },

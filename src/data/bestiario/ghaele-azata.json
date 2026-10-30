@@ -72,11 +72,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {
@@ -89,8 +85,7 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     }
   ],
   "habilidadesEspeciais": [
@@ -257,7 +252,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "camuflagem": "passa por elfa",
     "mente": "inteligente, comprometida com seus protegidos",
     "tracos": "guerreira de beleza sobrenatural que assume forma luminosa"
@@ -316,17 +310,9 @@
         "arsenal": []
       },
       "deslocamento": {
-        "terra": {
-          "batalha": 0,
-          "arranque": 0,
-          "corrida": 0
-        },
-        "nado": {
-          "batalha": 0
-        },
-        "escalada": {
-          "batalha": 0
-        }
+        "terra": null,
+        "nado": null,
+        "escalada": null
       },
       "corpo": {
         "postura": "pairando",
@@ -345,6 +331,7 @@
         "forca": 0
       },
       "fisiologia": {
+        "respiracao": "não precisa",
         "prendeRespiracao": "não precisa",
         "camuflagem": "nenhuma, emite luz",
         "tracos": "globo luminoso sem membros"

@@ -76,7 +76,6 @@
     {
       "nome": "Pancada de água",
       "parte": "braco-de-agua",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

@@ -71,7 +71,6 @@
     {
       "nome": "Pancada",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -138,7 +137,6 @@
   ],
   "fisiologia": {
     "respiracao": "trocas gasosas pela superfície",
-    "prendeRespiracao": "sem dado",
     "camuflagem": "parece vegetação imóvel",
     "mente": "inteligente",
     "tracos": "Árvore desperta com braços de galhos e raízes móveis"

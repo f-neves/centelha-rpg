@@ -14,7 +14,8 @@
     "profundidade": 0.26,
     "comprimento": null,
     "massa": 110,
-    "area": 0.87
+    "area": 0.87,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -67,11 +68,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:martelo-de-guerra"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "couro",
@@ -83,8 +80,7 @@
   "ataques": [
     {
       "nome": "Martelo de guerra",
-      "arma": "martelo-de-guerra",
-      "habilidade": "armas"
+      "arma": "martelo-de-guerra"
     }
   ],
   "habilidadesEspeciais": [

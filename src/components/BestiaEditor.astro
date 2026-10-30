@@ -36,7 +36,7 @@ interface Props { opcoes?: unknown }
   @media(max-width:700px) { .ed-colunas { grid-template-columns:1fr; } #ed-fonte { min-height:45vh; } }
 </style>
 <script>
-  import { derivados, validarFonte, paraJson, novaCriatura, lerEdicoes, salvarEdicao, apagarEdicao, type CriaturaEdit } from '../lib/bestia-editor';
+  import { derivados, validarFonte, validarRascunho, faltasDoRascunho, paraJson, novaCriatura, lerEdicoes, salvarEdicao, apagarEdicao, type CriaturaEdit } from '../lib/bestia-editor';
   import { ehAdmin } from '../lib/auth';
   import { url } from '../lib/site';
   const box=document.getElementById('editbox')!;
@@ -47,11 +47,16 @@ interface Props { opcoes?: unknown }
   let atualId='';
   const ler=()=>validarFonte(JSON.parse(fonte.value));
   function recalcular() {
-    try { const c=ler(); previa.textContent=JSON.stringify(derivados(c),null,2); saida.value=paraJson(c); status.textContent='Fonte válida.'; }
+    try {
+      const c=validarRascunho(JSON.parse(fonte.value)); previa.textContent=JSON.stringify(derivados(c),null,2);
+      const faltas=faltasDoRascunho(c);
+      if(faltas.length){ saida.value=''; status.textContent='Rascunho incompleto: faltam '+faltas.join(', ')+'. Preencha para salvar ou exportar.'; }
+      else { saida.value=paraJson(c); status.textContent='Fonte válida.'; }
+    }
     catch(e) { previa.textContent=''; saida.value=''; status.textContent=String((e as Error).message); }
   }
   function preencher(c:CriaturaEdit) {
-    atualId=c.id; fonte.value=paraJson(c); document.getElementById('ed-titulo')!.textContent='Editar '+c.nome;
+    atualId=c.id; fonte.value=JSON.stringify(c,null,2); document.getElementById('ed-titulo')!.textContent='Editar '+c.nome;
     box.hidden=false; document.body.style.overflow='hidden'; recalcular(); fonte.focus();
   }
   const fechar=()=>{box.hidden=true;document.body.style.overflow='';};

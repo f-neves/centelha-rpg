@@ -74,7 +74,6 @@
     {
       "nome": "Pinça",
       "parte": "pinca-dianteira",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -125,7 +124,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "mente": "instintiva",
     "tracos": "Artrópode cavernícola de pinças fortes e um filamento adesivo"
   },

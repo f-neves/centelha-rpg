@@ -15,7 +15,8 @@
     "profundidade": 0.27,
     "comprimento": null,
     "massa": 135,
-    "area": 1.03
+    "area": 1.03,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -77,24 +78,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:machado"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
     },
     {
       "nome": "Mordida",
       "parte": "focinho-de-hiena",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

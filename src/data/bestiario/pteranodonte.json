@@ -85,7 +85,6 @@
     {
       "nome": "Bicada",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -115,7 +114,6 @@
   },
   "comportamento": {
     "social": "colônia",
-    "atividade": "",
     "dieta": "piscívoro",
     "caca": "forrageio",
     "dianteDeGente": "foge"

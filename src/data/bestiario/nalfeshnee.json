@@ -88,7 +88,6 @@
     {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -105,7 +104,6 @@
     {
       "nome": "Mordida",
       "parte": "presas-de-javali",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

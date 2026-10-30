@@ -67,7 +67,6 @@
     {
       "nome": "Pancada",
       "parte": "o-corpo-do-movel",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

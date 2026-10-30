@@ -26,6 +26,8 @@ const M = await carregarTS('src/lib/motor.ts');
 const UN = { g: 0.001, kg: 1, t: 1000 };
 const TAMANHOS = 'Minúsculo|Miúdo|Pequeno|Médio|Grande|Enorme|Imenso|Colossal';
 const ARMAS = dado('armas.json').filter((a) => a.arma);
+// a Habilidade que o ataque natural guarda: só a de tiro e arremesso (D-258); a de corpo a corpo o motor calcula
+const HAB_DE_LONGE = new Set(['disparo', 'atirador', 'arremesso']);
 const IDS_ANTIGOS = dado('ids-antigos.json');
 const ARMADURAS = new Set(dado('armaduras.json').filter((a) => a.armadura).map((a) => a.id));
 const ESCUDOS = new Set(dado('escudos.json').filter((a) => a.escudo).map((a) => a.id));
@@ -79,6 +81,13 @@ const metros = (s) => { const m = String(s ?? '').match(/\*\*([\d.,]+) m\*\*/) |
 const jogo = (s) => semMarcas(String(s ?? '').replace(/\s*\*\*\[formas:[^\]]*\]\*\*\s*$/, '').replace(/\bPROVIS[ÓO]RIO\.?\s*/g, ''))
   .replace(/\*\*/g, '').replace(/\s{2,}/g, ' ').trim();
 const semPonto = (s) => s.replace(/\s*\.\s*$/, '').trim();
+// a célula que só diz que não há dado: a marca `**[sem dado]**` ou a palavra sem ela, com o ponto final ou sem
+const SEM_DADO = /^\s*(\*\*\[sem dado\]\*\*|\[sem dado\]|sem dado)\s*\.?\s*$/i;
+// "PV na linha de cima: inseto de casca." · a linha que a ficha escolheu na zona de transição e o porquê, até o ponto
+const motivoDaLinhaPV = (s) => {
+  const m = String(s ?? '').replace(/\*\*/g, '').match(/PV na linha de (cima|baixo):\s*([^.|]+?)\s*(?:\.|\||$)/);
+  return m && m[2] ? { linha: m[1] === 'cima' ? 'acima' : 'abaixo', motivo: m[2] } : null;
+};
 const idForma = (nome) => slug(String(nome).replace(/^forma (de |d[ao] )?/, ''));
 
 export function converterFicha(texto, { site = null } = {}) {
@@ -166,15 +175,24 @@ export function converterFicha(texto, { site = null } = {}) {
   if (ar) corpo.area = numBR(ar[1]); else para('Área ilegível');
   const tam = (lt.match(new RegExp(`^\\s*\\*\\*(${TAMANHOS})\\b`)) || [])[1];
   if (!tam) para('Tamanho ilegível');
-  const pp = lt.match(/\([\d.,]+ m²,\s*([^)]*)\)/);
+  // A postura da medição (D-213, D-216) vem do parêntese do Tamanho, com a área ("(0,40 m², de lado)") ou com a área
+  // por extenso ("(área 0, vista de cima, agachada)", a rã venenosa, abaixo do começo da escala), ou da linha Área
+  // ("**0,98 m²**, silhueta de frente"). A linha Postura NÃO a substitui: é a postura de sempre, e não a da medição;
+  // usá-la era completar o que a ficha não diz (formato-x-codigo.md, item 13; revisão de af3697c7, C2). Sem nenhuma, para.
+  const pp = lt.match(/\((?:[\d.,]+ m²|área [\d.,]+),\s*([^)]*)\)/);
   if (pp) corpo.posturaDoTamanho = pp[1].trim();
+  else {
+    const medida = String(la || '').match(/m²\*\*\s*,\s*(.+)$/);
+    if (medida) corpo.posturaDoTamanho = jogo(medida[1]);
+    if (!corpo.posturaDoTamanho) para('Tamanho sem postura de medição na ficha (nem no parêntese do Tamanho, nem na linha Área)');
+  }
   // a escolha do Tamanho (D-216, D-225): só quando a ficha ficou com o vizinho do corte, a menos de 5% (decisoes-autor
   // §13), ou pela decisão 7 (os quadrúpedes de 50 a 75 kg são Pequenos), a exceção que o confere_etapa2.py aceita
   const escolha = (area, t, rotulo, cel) => {
     if (!t || area === undefined) return undefined;
     const aceita = M.tamanhosDaArea(area);
     if (aceita[0] === slug(t)) return undefined;
-    if (aceita.includes(slug(t)) || /decisão 7.*quadrúpedes de 50 a 75 kg/.test(cel)) return slug(t);
+    if (aceita.includes(slug(t)) || (t === 'Pequeno' && corpo.apoio === 'quadrupede' && corpo.massa >= 50 && corpo.massa <= 75 && /decisão 7.*quadrúpedes de 50 a 75 kg/.test(cel))) return slug(t);
     para(`${rotulo}: a ficha diz ${t}, e a área de ${area} m² dá ${aceita.join(' ou ')}`);
     return undefined;
   };
@@ -188,6 +206,7 @@ export function converterFicha(texto, { site = null } = {}) {
     if (!sa) para('Segundo Tamanho sem a área');
     else {
       corpo.segundoTamanho = { area: numBR(sa[1]), posturaDoTamanho: (sa[2] || '').trim() };
+      if (!corpo.segundoTamanho.posturaDoTamanho) para('Segundo Tamanho sem posturaDoTamanho');
       const s2 = escolha(corpo.segundoTamanho.area, seg, 'Segundo Tamanho', ls);
       if (s2) corpo.segundoTamanho.tamanhoEscolhido = s2;
     }
@@ -200,12 +219,21 @@ export function converterFicha(texto, { site = null } = {}) {
     const de = numBR(fx[1]) * UN[fx[2] || fx[4]], ate = numBR(fx[3]) * UN[fx[4]];
     if (kg > ate) corpo.linhaPV = 'abaixo'; else if (kg <= de) corpo.linhaPV = 'acima';
   }
+  // o porquê da linha, nas palavras da ficha ("PV na linha de cima: inseto de casca."), para o card dizer (Cap. IV:
+  // "a ficha da criatura escolhe a linha pelo corpo ... e diz por quê"). A frase tem de concordar com a linha que os
+  // limites dão; se não concordar, ou se a ficha não escolhe linha, é a ficha que está errada, e o conversor para.
+  const motivoPV = motivoDaLinhaPV(semMarcas(pvb));
+  if (motivoPV) {
+    if (!corpo.linhaPV) para(`PV base: a ficha diz "PV na linha de ${motivoPV.linha === 'acima' ? 'cima' : 'baixo'}", e a massa não cai na zona de transição da faixa`);
+    else if (motivoPV.linha !== corpo.linhaPV) para(`PV base: a ficha diz "PV na linha de ${motivoPV.linha === 'acima' ? 'cima' : 'baixo'}", e a massa dá a linha de ${corpo.linhaPV === 'acima' ? 'cima' : 'baixo'}`);
+    else corpo.linhaPVMotivo = motivoPV.motivo;
+  }
   if (/^Por quadrado cheio/.test(pvb)) {
     const enx = pvb.match(/^Por quadrado cheio \((\d+) [^)]*\): conta como criatura (\S+?),/);
     if (!enx) para('enxame: PV base deve explicitar indivíduos por quadrado cheio e o Tamanho equivalente');
     else {
       const tamanhoEquivalente = {pequena:'pequeno',media:'medio',minuscula:'minusculo',miuda:'miudo',grande:'grande',enorme:'enorme',imensa:'imenso',colossal:'colossal'}[slug(enx[2])];
-      if (!tamanhoEquivalente || Number(enx[1]) < 1) para('enxame: indivíduos ou Tamanho equivalente inválidos');
+      if (!tamanhoEquivalente || !['pequeno','medio'].includes(tamanhoEquivalente) || Number(enx[1]) < 1) para('enxame: indivíduos ou Tamanho equivalente inválidos; só Pequeno ou Médio');
       else c.enxame = {individuosPorQuadrado:Number(enx[1]), tamanhoEquivalente};
     }
   }
@@ -271,12 +299,23 @@ export function converterFicha(texto, { site = null } = {}) {
   const dt = campo(MV, 'Deslocamento em terra') || '';
   const dtm = dt.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\* · Arranque \*\*(\d+(?:[.,]\d+)?)\*\* · Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
   if (dtm) c.deslocamento.terra = { batalha: numeroPasso(dtm[1]), arranque: numeroPasso(dtm[2]), corrida: numeroPasso(dtm[3]) };
-  else if (/^(não anda|não se aplica|\*\*\[sem dado\]\*\*)/.test(dt.trim())) { /* terra condicional, P15 */ }
+  else if (/\[sem dado\]/.test(dt)) para('Deslocamento em terra sem dado: não equivale a não anda');
+  else if (/^(não anda|não se aplica)/.test(dt.trim())) { /* terra condicional, P15 */ }
   else para('Deslocamento em terra ilegível');
+  const movimento = (rot) => {
+    const linha = MV.find((r) => {
+      const nome = Object.values(r)[0];
+      return nome === rot || (rot === 'Nado' && nome === 'Natação');
+    });
+    return linha ? Object.values(linha)[1] : '';
+  };
   for (const [rot, k] of [['Voo', 'voo'], ['Nado', 'nado'], ['Escavação', 'escavacao'], ['Escalada', 'escalada']]) {
-    const v = campo(MV, rot) || '';
-    const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/);
-    if (!b) continue;
+    // As fichas antigas chamam o meio de Natação e escrevem só o número. É o mesmo
+    // deslocamento declarado, não a Habilidade secundária de manobrar na água.
+    const v = movimento(rot);
+    const b = v.match(/Batalha \*\*(\d+(?:[.,]\d+)?)\*\*/) || v.match(/\bBatalha\s+\**(\d+(?:[.,]\d+)?)\**/) || v.match(/^\s*\*\*(\d+(?:[.,]\d+)?)\*\* m por Tick/) || v.match(/^\s*\**(\d+(?:[.,]\d+)?)\**(?:\s*m por Tick)?(?:\s|$)/) || v.match(new RegExp('locomocao\\.' + k + '`?\\s+(\\d+(?:[.,]\\d+)?)', 'i'));
+    const pelaRegra = /^\s*pela regra do personagem\b/i.test(v) || new RegExp('^\\s*' + rot + '\\s+\\d+(?:[.,]\\d+)?(?:\\s|$)', 'i').test(v);
+    if (!b) { if (/\d/.test(v) && !pelaRegra) para(rot + ': deslocamento numérico ilegível'); continue; }
     c.deslocamento[k] = { batalha: numeroPasso(b[1]) };
     const a2 = v.match(/Arranque \*\*(\d+(?:[.,]\d+)?)\*\*/), c2 = v.match(/Corrida \*\*(\d+(?:[.,]\d+)?)\*\*/);
     if (a2) c.deslocamento[k].arranque = numeroPasso(a2[1]);
@@ -312,30 +351,40 @@ export function converterFicha(texto, { site = null } = {}) {
     return out;
   };
   c.artes = lerArtes(campo(I, 'Artes'), 'Identidade', false);
+  const manaDeclarada = campo(I,'Mana');
+  if (manaDeclarada && !/não tem|nenhuma|sem Mana|\d/.test(manaDeclarada)) para('Mana ilegível na ficha');
   const armasDaFicha = (eq) => eq.arsenal.filter((x) => x.ref.startsWith('a:')).map((x) => x.ref.slice(2));
   const lerAtaque = (r, armasEq, onde) => {
+    const colunas = new Set(['Nome','Ataque','Parte','Classe','P/G/R','Velocidade','Dano','Tipo','Nível de Perfuração','Nível','Acerto','Bloqueia como arma','Dano médio','Justificativa']);
+    for (const col of Object.keys(r)) if (!colunas.has(col)) para(`${onde}: coluna desconhecida ${col}`);
     const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? '');
     const just = r['Justificativa'] ?? '';
     const citada = just.match(/`armas\.json`, `([a-z0-9-]+)`/)?.[1];
     const arma = armasEq.includes(citada) ? citada : ARMAS.find((w) => armasEq.includes(w.id) && w.nome.toLowerCase() === nome.toLowerCase())?.id;
-    const jog = just.match(/Jogada:[^|]*?\+\s*(Briga|Armas|Disparo|Atirador|Arremesso)\b/) || just.match(/Jogada:[^|]*?(Briga|Armas|Disparo|Atirador|Arremesso)\b/);
+    // e a frase em minúscula, sem os dois-pontos, quando ela escreve a soma: "jogada Vigor 3 + Disparo 3" (arconte-lanterna)
+    const jog = just.match(/Jogada:[^|]*?\+\s*(Briga|Armas|Disparo|Atirador|Arremesso)\b/) || just.match(/Jogada:[^|]*?(Briga|Armas|Disparo|Atirador|Arremesso)\b/)
+      || just.match(/\bjogada:? (?:Força|Destreza|Vigor|Percepção) \d+ \+ (Disparo|Atirador|Arremesso) \d+/);
     if (arma) {
       // a arma do livro guarda só o nome, a arma e a Habilidade (D-220); o resto vem do catálogo
       const w = ARMAS.find((x) => x.id === arma);
       const pgrCol = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/), vel = inteiro(r['Velocidade']);
       if (pgrCol && vel !== undefined && +pgrCol[1] + +pgrCol[2] + +pgrCol[3] !== vel) avisos.push(`${onde}, ${nome}: a coluna P/G/R (${pgrCol.slice(1).join('/')}) não soma a Velocidade ${vel}; a arma do livro usa a do catálogo (${w.arma.ticks})`);
-      return { nome, arma, habilidade: jog ? slug(jog[1]) : w.arma.pericia };
+      return { nome, arma };
     }
     // a parte é o pedaço do corpo; o resto da célula diz como o golpe sai ("boca, à distância")
     const a = { nome, parte: slug(semMarcas(r['Parte'] ?? '').split(',')[0]) };
     const cls = slug(semMarcas(r['Classe'] ?? ''));
-    a.habilidade = jog ? slug(jog[1]) : cls === 'distancia' ? 'disparo' : cls === 'arremesso' ? 'arremesso' : 'briga';
+    // D-208 completada pela D-258: o corpo a corpo rola pela maior entre Briga e Armas, que o
+    // motor calcula; o JSON só guarda a Habilidade de tiro e arremesso, que escolhe o Atributo.
+    if (jog && HAB_DE_LONGE.has(slug(jog[1]))) a.habilidade = slug(jog[1]);
+    else if (cls === 'distancia' || cls === 'arremesso') para(`${onde}, ${nome}: Habilidade de tiro ou arremesso ausente na frase Jogada`);
     a.classe = cls;
     const pgr = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/);
     if (!pgr) para(`${onde}, ${nome}: P/G/R ilegível`);
     else {
       a.pgr = pgr.slice(1).map(Number);
       const vel = inteiro(r['Velocidade']);
+      if (vel === undefined) para(`${onde}, ${nome}: Velocidade ilegível`);
       if (vel !== undefined && a.pgr[0] + a.pgr[1] + a.pgr[2] !== vel) para(`${onde}, ${nome}: o pgr ${a.pgr.join('/')} não soma a Velocidade ${vel} (D-221)`);
     }
     let d = semMarcas(r['Dano'] ?? '').replace(/\*\*/g, '').replace(/PROVIS\S*/g, '').trim();
@@ -353,10 +402,13 @@ export function converterFicha(texto, { site = null } = {}) {
     a.tipoDano = tp === 'nao-se-aplica' ? 'nao-se-aplica' : (ID_ELEM[tp] ?? tp);
     const np = String(r['Nível de Perfuração'] ?? r['Nível'] ?? '').match(/N(\d)/);
     a.nivelPerfuracao = np ? Number(np[1]) : null;
-    a.acerto = inteiro(r['Acerto']) ?? 0;
+    a.acerto = inteiro(r['Acerto']);
+    if (a.acerto === undefined) para(`${onde}, ${nome}: Acerto ausente ou ilegível`);
+    // o número de decisão citado na célula ("carapaça e pinça, D-100") não é o bônus: o sinal colado a uma letra não conta
     const bloqueia = String(r['Bloqueia como arma'] ?? '').trim();
-    const bl = /^sim\b/i.test(bloqueia) ? bloqueia.match(/\+\s*(\d+)/) : null;
-    a.bloqueiaComoArma = bl ? Number(bl[1]) : null;
+    const bl = /^(sim\b|o mesmo chifre\b)/i.test(bloqueia) ? bloqueia.match(/(?<![A-Za-z])([+−-])\s*(\d+)/) : null;
+    if (!/^não\b/i.test(bloqueia) && !bl) para(`${onde}, ${nome}: Bloqueia como arma ilegível`);
+    a.bloqueiaComoArma = bl ? Number((bl[1] === '+' ? '' : '-') + bl[2]) : null;
     return a;
   };
   c.ataques = (T['Ataques'] || []).filter((r) => { const n = semMarcas(r['Nome'] ?? r['Ataque'] ?? ''); return n && n !== 'Nome' && n !== 'Ataque'; })
@@ -475,13 +527,17 @@ export function converterFicha(texto, { site = null } = {}) {
 
   // ----- fisiologia, aptidões, comportamento, ecologia
   const corpoSec = Object.fromEntries((S['Corpo'] || []).filter((l) => l.startsWith('- ')).map((l) => { const m = l.slice(2).match(/^([^:]+):\s*(.*)$/); return m ? [m[1].trim(), jogo(m[2])] : [l, '']; }));
-  c.fisiologia = { respiracao: semPonto(corpoSec['Respiração'] || '') };
+  c.fisiologia = {};
+  if (corpoSec['Respiração'] !== undefined) c.fisiologia.respiracao = semPonto(corpoSec['Respiração']);
   const prende = semPonto((corpoSec['Prende a respiração'] || '').replace(/\s*\(o Mestre decide quanto\)/, '; quanto tempo, o Mestre decide'));
-  if (prende && !/^(a de um humano|comum|não se aplica|nenhuma)$/.test(prende)) c.fisiologia.prendeRespiracao = prende;
+  // "sem dado" é a ausência de informação, como no Comportamento (ee7028f7): o campo fica ausente, e não vira texto do
+  // card. A marca `**[sem dado]**` o `jogo` já apagava; a palavra sem a marca ("sem dado.", solar, planetar e mais 19)
+  // passava (revisão da Revisora de af3697c7, C1).
+  if (prende && !SEM_DADO.test(prende) && !/^(a de um humano|comum|não se aplica|nenhuma)$/.test(prende)) c.fisiologia.prendeRespiracao = prende;
   const camu = semPonto(corpoSec['Camuflagem'] || '');
   if (camu && !/^nenhuma$/.test(camu)) c.fisiologia.camuflagem = camu;
-  c.fisiologia.mente = semPonto(corpoSec['Mente'] || '');
-  c.fisiologia.tracos = semPonto(corpoSec['Traços'] || '');
+  if (corpoSec['Mente'] !== undefined) c.fisiologia.mente = semPonto(corpoSec['Mente']);
+  if (corpoSec['Traços'] !== undefined) c.fisiologia.tracos = semPonto(corpoSec['Traços']);
   const lerApt = (t, onde) => {
     const m = String(t || '').replace(/`/g, '').trim().match(/^montaria (sim|não) · carga (sim|não) · tração (sim|não)\.?$/);
     if (!m) { para(`${onde}: Aptidões fora do formato`); return undefined; }
@@ -489,8 +545,20 @@ export function converterFicha(texto, { site = null } = {}) {
   };
   c.aptidoes = lerApt((S['Aptidões'] || []).find((l) => l.trim()), 'Aptidões');
   const CO = T['Comportamento'] || [];
-  const valorCo = (rot) => { const v = jogo(campo(CO, rot) || ''); if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`); return v; };
-  c.comportamento = { social: valorCo('Social'), atividade: valorCo('Atividade'), dieta: valorCo('Dieta'), caca: valorCo('Caça ou forrageio'), dianteDeGente: valorCo('Diante de gente') };
+  // "sem dado" é a ausência de informação, nunca texto de jogo que o card possa exibir. A marca `**[sem dado]**` sai, e
+  // o campo só fica ausente quando nada sobra ao lado dela: "solitário **[sem dado]**" é "solitário" sem fonte, e não a
+  // falta do campo (P17, decisão do autor de 29/10/2026: a perda era defeito do conversor). A pontuação que a marca
+  // deixava solta (": não recua", "solitário , com") sai junto, só aqui, e não no texto do resto da ficha.
+  const limpaCo = (s) => s.replace(/\s+([,;:.])/g, '$1').replace(/([,;:])(?:\s*[,;:])+/g, '$1').replace(/^[\s,;:.]+/, '').replace(/[\s,;:]+$/, '').trim();
+  const valorCo = (rot) => {
+    const valor = campo(CO, rot);
+    if (valor === undefined || /^\s*(\*\*\[sem dado\]\*\*|sem dado)\s*$/.test(valor)) return undefined;
+    const v = limpaCo(jogo(valor));
+    if (!v) return undefined;
+    if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`);
+    return v;
+  };
+  c.comportamento = Object.fromEntries([['social','Social'], ['atividade','Atividade'], ['dieta','Dieta'], ['caca','Caça ou forrageio'], ['dianteDeGente','Diante de gente']].flatMap(([k, rot]) => { const valor = valorCo(rot); return valor === undefined ? [] : [[k, valor]]; }));
   const ter = campo(I, 'Terreno'), cli = campo(I, 'Clima');
   const pal = (s, sin) => jogo(s).split(',').map((x) => x.trim().toLowerCase()).filter(Boolean).map((x) => sin[x] ?? x);
   c.ecologia = {
@@ -515,18 +583,29 @@ export function converterFicha(texto, { site = null } = {}) {
       if (!r) { para(`a forma "${nomeF}" não tem linha em Variantes`); continue; }
       const f = { id: idForma(nomeF), nome: nomeF };
       const fc = {}, fa = {}, ff = {};
-      let pvForma;
+      let pvForma, tamanhoDeclarado;
       for (const p of String(Object.values(r)[1]).split(/;\s+(?![^(]*\))/)) {
         const t = p.trim().replace(/\.$/, '');
         const at = t.match(/^(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura) (\d+)$/);
         if (at) { fa[idAtributo(at[1])] = Number(at[2]); continue; }
         if (/^PV \d+$/.test(t)) { pvForma = inteiro(t); continue; }
+        // D-265: o disfarce fixo (o humano) e a escolha do Mestre; o JSON guarda só as formas que a ficha lista, e o
+        // card escreve a regra ("o Mestre pode escolher outra forma ...; então valem a medida e o Tamanho dela")
+        const om = t.match(/^o Mestre pode escolher outra forma \(([^)]+)\), e então valem a medida e o Tamanho dela$/);
+        if (om) { f.outraForma = om[1].trim(); continue; }
         if (/^(Bloqueio|Musculatura) \d+$/.test(t)) { para('Variantes, ' + nomeF + ': ' + t + ' altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1'); continue; }
         const m = t.match(/^([^:]+):\s*(.*)$/) || t.match(/^(Couraça) nível (\d+)$/) || t.match(/^(Aparência) (\d+)$/);
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
         const [k, v] = [m[1].trim(), m[2].trim()];
         const n = (s) => numBR((s.match(/([\d.,]+)/) || [])[1]);
-        if (k === 'Postura') { fc.postura = v; fc.apoio = /quadrúpede/.test(v) ? 'quadrupede' : /bípede/.test(v) ? 'bipede' : 'outro'; }
+        if (k === 'Bônus de PV') { para(`Variantes, ${nomeF}: Bônus de PV é comum a todas as formas`); continue; }
+        if (k === 'Postura') {
+          fc.postura = v;
+          if (/quadrúpede|quatro patas/i.test(v)) fc.apoio = 'quadrupede';
+          else if (/bípede|de pé|duas pernas/i.test(v)) fc.apoio = 'bipede';
+          else if (/apoio outro|serpente|sem pernas|sem patas|cobra|verme|limo|enxame|tentáculo|nada|voa|flutua|asas|peixe|incorpóreo|nuvem|redemoinho|pairando|sem membros|seis pernas|vegetal ramificado|hexápode|seis patas|oito patas|aracnídeo|inseto|caranguejo|crustáceo/i.test(v)) fc.apoio = 'outro';
+          else para(`Variantes, ${nomeF}: apoio ilegível na Postura`);
+        }
         else if (k === 'Altura') fc.altura = n(v);
         else if (k === 'Largura') { fc.largura = n(v); const q = v.match(/profundidade ([\d.,]+) m/); fc.profundidade = q ? numBR(q[1]) : (fc.apoio === 'quadrupede' ? null : undefined); if (fc.profundidade === undefined) delete fc.profundidade; }
         else if (k === 'Comprimento total' || k === 'Comprimento') fc.comprimento = n(v);
@@ -536,31 +615,42 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Área') fc.area = n(v);
         else if (k === 'Tamanho') {
           const q = v.match(new RegExp(`^(${TAMANHOS})(?:\\s*\\(([\\d.,]+) m²,\\s*([^)]*)\\))?`));
-          if (q?.[3]) fc.posturaDoTamanho = q[3].trim();
-          else if (q && fc.area === undefined) fc.tamanhoEscolhido = slug(q[1]);
+          if (q?.[3]) { fc.area ??= numBR(q[2]); fc.posturaDoTamanho = q[3].trim(); }
+          else if (q) tamanhoDeclarado = slug(q[1]);
         }
         else if (k === 'Couraça') f.couraca = Number(v);
         else if (k === 'Aparência') f.aparencia = inteiro(v);
+        else if (k === 'Mente') ff.mente = v;
+        else if (k === 'Respiração') ff.respiracao = v;
         else if (k === 'Camuflagem') ff.camuflagem = v;
         else if (k === 'Traços') ff.tracos = v;
         else if (k === 'Equipamento') f.equipamento = lerEquip(v, `Variantes, ${nomeF}`);
         else if (k === 'Artes') f.artes = lerArtes(v, `Variantes, ${nomeF}`, true);
         else if (k === 'Aptidões') f.aptidoes = lerApt(v, `Variantes, ${nomeF}`);
         else if (k === 'Elementos') f._elementos = lerElem(v, `Variantes, ${nomeF}`);
-        else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = { batalha: 0, arranque: 0, corrida: 0 }; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
+        else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = null; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
-        else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
-        else if (k === 'Voo' || k === 'Nado' || k === 'Escalada') {
+        else if (k === 'Prende a respiração') { if (!SEM_DADO.test(v)) ff.prendeRespiracao = v; }
+        else if (k === 'Voo' || k === 'Nado' || k === 'Escalada' || k === 'Escavação') {
           const q = v.match(/Batalha \**(\d+(?:[.,]\d+)?)\**/) || v.match(/^(\d+(?:[.,]\d+)?)(?=\s|$)/);
-          if (q) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : 'escalada'] = { batalha: numeroPasso(q[1]) };
-          else if (/^não (voa|nada|escala)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : 'escalada'] = { batalha: 0 };
+          if (q) {
+            const passo = { batalha: numeroPasso(q[1]) };
+            for (const [rot, chave] of [['Arranque','arranque'],['Corrida','corrida']]) {
+              const extra = v.match(new RegExp(rot + ' \\**(\\d+(?:[.,]\\d+)?)\\**'));
+              if (extra) passo[chave] = numeroPasso(extra[1]);
+            }
+            (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = passo;
+          }
+          else if (/^não (voa|nada|escala|escava)/.test(v)) (f.deslocamento ??= {})[k === 'Voo' ? 'voo' : k === 'Nado' ? 'nado' : k === 'Escavação' ? 'escavacao' : 'escalada'] = null;
           else para(`Variantes, ${nomeF}: ${k} ilegível`);
         }
         else if (k === 'Peso erguido' && /^não ergue/.test(v)) fc.naoErgue = true;
         else if (k === 'PV') pvForma = inteiro(v);
-        else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto', 'Mente', 'Respiração'].includes(k)) { /* conta do motor, ou texto que não é número */ }
+        else if (['Peso erguido', 'Espaço', 'Anatomia', 'o resto'].includes(k)) { /* conta do motor, ou texto que não é número */ }
         else para(`Variantes, ${nomeF}: campo "${k}" que o conversor não conhece`);
       }
+      if (tamanhoDeclarado !== undefined && tamanhoDeclarado !== slug(tam) && fc.area === undefined)
+        para(`Variantes, ${nomeF}: Tamanho próprio exige Área própria`);
       // O PV explícito da Variante revela a escolha entre as duas linhas da transição.
       if (pvForma !== undefined) {
         const kgForma = M.massaDaConta({ ...corpo, ...fc });
@@ -575,6 +665,13 @@ export function converterFicha(texto, { site = null } = {}) {
           }
         }
       }
+      // o porquê da linha da forma: na Variante, a frase mora na justificativa (o texto junto do "PV N" pararia a forma)
+      const motivoF = motivoDaLinhaPV(Object.values(r).slice(1).join(' | '));
+      if (motivoF) {
+        if (!fc.linhaPV) para(`Variantes, ${nomeF}: a ficha diz "PV na linha de ${motivoF.linha === 'acima' ? 'cima' : 'baixo'}", e o PV da forma não escolhe linha na zona de transição`);
+        else if (motivoF.linha !== fc.linhaPV) para(`Variantes, ${nomeF}: a ficha diz "PV na linha de ${motivoF.linha === 'acima' ? 'cima' : 'baixo'}", e o PV da forma é o da linha de ${fc.linhaPV === 'acima' ? 'cima' : 'baixo'}`);
+        else fc.linhaPVMotivo = motivoF.motivo;
+      }
       if (Object.keys(fc).length) f.corpo = fc;
       if (Object.keys(fa).length) f.atributos = fa;
       if (Object.keys(ff).length) f.fisiologia = ff;
@@ -585,7 +682,7 @@ export function converterFicha(texto, { site = null } = {}) {
         for (const m of f._ataques.matchAll(/([^,(]+?) \(([^)]*)\)/g)) {
           const nomeA = m[1].trim(), det = m[2].split(',').map((x) => x.trim());
           const arma = ARMAS.find((w) => eqArmas.includes(w.id) && w.nome.toLowerCase() === nomeA.toLowerCase());
-          if (arma) { f.ataques.push({ nome: nomeA, arma: arma.id, habilidade: arma.arma.pericia }); continue; }
+          if (arma) { f.ataques.push({ nome: nomeA, arma: arma.id }); continue; }
           let base = c.ataques.find((a) => a.nome === nomeA);
           const pgr = (det[1] || '').match(/^(\d+)\/(\d+)\/(\d+)$/), dd = (det[3] || '').match(/^(\d+)d6(?:\s*([+−-])\s*(\d+))?/);
           if (!base && pgr && dd) {
@@ -594,7 +691,7 @@ export function converterFicha(texto, { site = null } = {}) {
             const habilidade = poder?.ativacao?.match(/(?:Força|Destreza|Vigor|Percepção) \+ (Briga|Armas|Disparo|Atirador|Arremesso)/)?.[1];
             const acerto = det.find(x=>/^Acerto [ +−-]*\d+$/.test(x))?.match(/[+−-]?\d+/)?.[0];
             if (habilidade && acerto !== undefined && det.some(x=>/^não bloqueia$/.test(x)) && Number(det[2])===pgr.slice(1).reduce((n,x)=>n+Number(x),0)) {
-              base = {nome:nomeA, parte:slug(nomeA), habilidade:slug(habilidade), acerto:Number(acerto.replace('−','-')), bloqueiaComoArma:null, nivelPerfuracao:null};
+              base = {nome:nomeA, parte:slug(nomeA), ...(HAB_DE_LONGE.has(slug(habilidade)) ? {habilidade:slug(habilidade)} : {}), acerto:Number(acerto.replace('−','-')), bloqueiaComoArma:null, nivelPerfuracao:null};
             }
           }
           if (!base || !pgr || !dd) { para(`Variantes, ${nomeF}: o ataque "${nomeA}" ilegível`); continue; }
@@ -636,6 +733,10 @@ export function converterFicha(texto, { site = null } = {}) {
       if (!Object.keys(f[k]).length) delete f[k];
     }
   }
+  // D-258/A4: o ataque já identifica a arma do catálogo. O arsenal da criatura
+  // fica só com escudos, sem uma segunda cópia da mesma arma.
+  for (const ficha of [c, ...(c.formas || [])]) if (ficha.equipamento?.arsenal)
+    ficha.equipamento.arsenal = ficha.equipamento.arsenal.filter((p) => !p.ref.startsWith('a:'));
 
   // ----- a revisao (formato-criatura.md, seção 7): as duas marcas de dúvida (a do número sugerido e a da extrapolação) das tabelas e das notas
   const MARCA = /\*\*\[(provis[óo]rio|extrapolação)\]\*\*/;
@@ -647,7 +748,8 @@ export function converterFicha(texto, { site = null } = {}) {
   for (const r of VVA) { const k = { Aparência: 'aparencia', Vontade: 'vontade' }[Object.values(r)[0]]; if (k) marcaLinha('VVA', k, r); }
   const abs = MV.find((r) => Object.values(r)[0] === 'Absorção');
   if (abs && MARCA.test(Object.values(abs).join(' '))) revisao.push({ campo: 'couraca', motivo: semMarcas(Object.values(abs).slice(-1)[0]).replace(/\*\*/g, '') });
-  for (const r of CO) { const k = { Social: 'social', Atividade: 'atividade', Dieta: 'dieta', 'Caça ou forrageio': 'caca', 'Diante de gente': 'dianteDeGente' }[Object.values(r)[0]]; if (k) marcaLinha('Comportamento', `comportamento.${k}`, r); }
+  // como no Corpo: a marca de dúvida só entra para o campo que existe (o campo só com "sem dado" fica ausente)
+  for (const r of CO) { const k = { Social: 'social', Atividade: 'atividade', Dieta: 'dieta', 'Caça ou forrageio': 'caca', 'Diante de gente': 'dianteDeGente' }[Object.values(r)[0]]; if (k && k in c.comportamento) marcaLinha('Comportamento', `comportamento.${k}`, r); }
   for (const r of T['Ataques'] || []) {
     const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? '');
     if (!nomesAtaques.has(nome) || !MARCA.test(r['Justificativa'] ?? '')) continue;

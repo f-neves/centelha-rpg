@@ -87,7 +87,6 @@
     {
       "nome": "Pancada de pedra",
       "parte": "braco-de-pedra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

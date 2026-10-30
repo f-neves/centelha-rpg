@@ -15,7 +15,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 68,
-    "area": 0.66
+    "area": 0.66,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -70,19 +71,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:sabre"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Sabre",
-      "arma": "sabre",
-      "habilidade": "armas"
+      "arma": "sabre"
     }
   ],
   "habilidadesEspeciais": [

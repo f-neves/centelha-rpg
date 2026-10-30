@@ -14,7 +14,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 85,
-    "area": 0.74
+    "area": 0.74,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -73,9 +74,6 @@
   "equipamento": {
     "arsenal": [
       {
-        "ref": "a:espada-longa"
-      },
-      {
         "ref": "e:heater"
       }
     ],
@@ -90,8 +88,7 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     }
   ],
   "habilidadesEspeciais": [

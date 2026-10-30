@@ -69,6 +69,9 @@
       "batalha": 3,
       "arranque": 5,
       "corrida": 7
+    },
+    "escalada": {
+      "batalha": 2
     }
   },
   "equipamento": {
@@ -80,7 +83,6 @@
     {
       "nome": "Pancada",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -97,7 +99,6 @@
     {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

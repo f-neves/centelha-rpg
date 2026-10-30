@@ -19,7 +19,8 @@
     "massa": 220,
     "area": 1.17,
     "posturaDoTamanho": "vista de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "corpo rústico e robusto"
   },
   "couraca": 1,
   "atributos": {
@@ -87,7 +88,6 @@
     {
       "nome": "Coice",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -104,7 +104,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -150,7 +149,7 @@
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "cernelha de 1,02 a 1,22 m na raça de Yonaguni (Porter 2016)"
+    "tracos": "cernelha de 1,02 a 1,22 m na raça de Yonaguni"
   },
   "aptidoes": {
     "montaria": true,
@@ -159,7 +158,6 @@
   },
   "comportamento": {
     "social": "bando",
-    "atividade": "",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "doméstico; foge do que assusta"

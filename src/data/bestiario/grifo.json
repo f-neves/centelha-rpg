@@ -25,7 +25,8 @@
       "posturaDoTamanho": "de lado, asas fechadas, pousado",
       "tamanhoEscolhido": "grande"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "voador, meio ave de osso oco"
   },
   "couraca": 1,
   "atributos": {
@@ -110,7 +111,6 @@
     {
       "nome": "Garras",
       "parte": "garra-patas-da-frente",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -127,7 +127,6 @@
     {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -144,7 +143,6 @@
     {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -152,7 +150,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,

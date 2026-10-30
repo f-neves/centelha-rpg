@@ -83,7 +83,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -100,7 +99,6 @@
     {
       "nome": "Garras",
       "parte": "nadadeira-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -141,13 +139,13 @@
         "arte": "fogo",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "cone de 9 m, na superfície ou debaixo d'água",
       "efeito": "o vapor fervente queima quem está na nuvem",
       "dano": "6d6 + Centelha, fogo",
-      "resistencia": "corpo, contra a jogada do sopro; quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez a cada 24 Ticks (\"não pode repetir o sopro em sequência\", site)"
     },
     {
@@ -161,7 +159,7 @@
       "nome": "Multiataque",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+      "efeito": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
       "nome": "Afunda embarcações",
@@ -192,7 +190,7 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "muito tempo; ataca e sopra submersa (site)",
+    "prendeRespiracao": "muito tempo; ataca e sopra submersa",
     "camuflagem": "o casco no fundo do mar",
     "mente": "Inteligência 3; cobra tributo de quem navega",
     "tracos": "casco de marrom-ferrugem a verde-azulado com reflexos de prata; cabeça e cauda com estrias douradas"

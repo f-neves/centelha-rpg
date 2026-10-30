@@ -16,6 +16,10 @@ import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
+import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt } from '../lib/besta-card';
+import { linhaPVNaZona, massaDaConta } from '../lib/motor';
+import HAB from '../data/habilidades.json';
+import SEC from '../data/habilidades-secundarias.json';
 
 interface Props { i: any }
 const { i } = Astro.props;
@@ -23,37 +27,20 @@ const d = await loadData();
 
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
 const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
-// Fraquezas e resistências: a palavra-chave crua vira rótulo de leitura. O vocabulário
-// mistura três eixos de propósito (elemento das Artes, tipo de dano físico, natureza).
-const ELEM: Record<string, string> = {
-  fogo: 'Fogo', agua: 'Água', gelo: 'Gelo', raio: 'Raio', vento: 'Vento', terra: 'Terra',
-  luz: 'Luz', sombra: 'Sombra', acido: 'Ácido', corte: 'Corte', perfuracao: 'Perfuração', impacto: 'Impacto',
-  sagrado: 'Sagrado', profano: 'Profano', prata: 'Prata', sol: 'Sol',
-};
-// Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
-const ATR: [string, string, string][] = [
-  ['forca', 'For', 'Força'], ['destreza', 'Des', 'Destreza'], ['vigor', 'Vig', 'Vigor'],
-  ['influencia', 'Inf', 'Influência'], ['perspicacia', 'Psp', 'Perspicácia'], ['compostura', 'Cmp', 'Compostura'],
-  ['percepcao', 'Per', 'Percepção'], ['inteligencia', 'Int', 'Inteligência'], ['raciocinio', 'Rac', 'Raciocínio'],
-];
+// Os rótulos (elementos, atributos, locomoção) e os formatos do ataque e do dano moram em src/lib/besta-card.ts, para
+// as outras formas (FormaCriatura.astro) terem o mesmo desenho (parecer da Veterana, M9).
 // Modificador social da Aparência (curva do sistema, extrapolada além de 1–10 para criaturas extremas).
 const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
 const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
+// As Habilidades de treino (D-270): o painel "Habilidades" do card, com o nome do livro.
+const NOMES_HAB: Record<string, string> = Object.fromEntries([...(HAB as any[]), ...(SEC as any[])].map((h) => [h.id, h.nome]));
+const treino = habilidadesDeTreino(i, NOMES_HAB);
+const temTreino = treino.primarias.length + treino.secundarias.length > 0;
+// Por que a linha de PV, quando a massa cai na zona de transição (parecer da Leitora-novata, achado 9).
+const notaPV = i.enxame || !i.corpo ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(i.corpo), i.atributos?.vigor ?? 0, i.corpo.linhaPV), i.combate.pv, i.corpo.linhaPVMotivo);
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
-// ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)
-const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
-const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
-// o Tipo fora dos três (manual §5.2, item 8): "fenômeno" e a palavra do vocabulário, pelo rótulo ("Ácido", "Fogo")
-const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m])
-  .replace(/\b(fenomeno|[a-z]+)$/, (m) => (m === 'fenomeno' ? 'fenômeno' : ELEM[m] ?? m));
-// Locomoção (B14 fase 4, Adendo 3 item 5): só os modos que a criatura tem, m/Tick.
-const LOCO: [string, string][] = [
-  ['terra', 'Terra'], ['voo', 'Voo'], ['natacao', 'Natação'],
-  ['escalada', 'Escalada'], ['escavacao', 'Escavação'], ['jato', 'Jato'],
-];
-const locoDe = (x: any) => [...(x.locomocao?.terra == null ? [{ nome: 'Terra', v: null }] : []), ...LOCO.filter(([k]) => x.locomocao?.[k] != null).map(([k, nome]) => ({ nome, v: x.locomocao[k] }))];
 // Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".
 const PERIODO: Record<string, string> = {
   ticks: 'Ticks', cena: 'cena', hora: 'hora', dia: 'dia', avontade: 'à vontade', passivo: 'passivo', golpe: 'por golpe',
@@ -65,7 +52,8 @@ const usosTxt = (u: any) => {
   return u.recarga ? `${base} (${u.recarga})` : base;
 };
 const RESISTE: Record<string, string> = { esquiva: 'Esquiva', corpo: 'corpo', mente: 'mente', nenhum: 'nenhuma' };
-// tem conteúdo mecânico (Habilidades / Poderes / Técnicas / Artes / Notas) → botão do card flutuante
+// tem conteúdo mecânico (Poderes / Técnicas / Artes) → botão "Poderes" do card flutuante (D-270: o que se chamava
+// "Habilidades" eram os poderes; as Habilidades de treino têm o botão delas)
 const temMec = (x: any) => !!((x.habilidadesEspeciais?.length) || (x.poderes?.length) || (x.tecnicas?.length) || (x.artes?.length));
 // listas de poderes por criatura (ids p/ filtro)
 const caminhosDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'proeza' && p.caminho).map((p: any) => p.caminho))];
@@ -117,20 +105,21 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           )}
           {i.segundoTamanho && <p class="besta-porte">Segundo Tamanho: {i.segundoTamanho}</p>}
           {locoDe(i).length > 0 && (
-            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{m.v == null ? 'Terra: não anda' : `${m.nome} ${m.v} m/Tick`}</span></>))}</p>
+            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{locoTxt(m)}</span></>))}</p>
           )}
 
           {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
 
           <dl class="besta-stats">
             <div><dt>{i.enxame ? 'PV por quadrado' : 'PV'}</dt><dd>{i.combate.pv}</dd></div>
-            <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
+            <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.defesaOutraArma && <><small> c/ {i.combate.defesaOutraArma.armaPrincipal}</small> · {i.combate.defesaOutraArma.defesa}<small> c/ {i.combate.defesaOutraArma.arma}</small></>}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
             <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
             <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}{i.combate.vestida.nivel ? `·N${i.combate.vestida.nivel}` : ''}<small> c/ equip.</small></>}</dd></div>
+            {i.combate.couraca > 0 && <div title="O nível de Couraça da pele (0 a 12). Quanto cada nível vale na Absorção ainda não tem regra, e por isso ele não entra na conta."><dt>Couraça</dt><dd>{i.combate.couraca}</dd></div>}
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
             {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
-          </dl>{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa (D-206).</p>)}
+          </dl>{notaPV && <p class="ib-ref muted besta-linhapv">{notaPV}</p>}{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa.</p>)}
 
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length || i.combate.imunidades?.length) && (
             <div class="besta-elem">
@@ -205,7 +194,10 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             <div class="besta-foot">
               <button class="besta-info besta-editar" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✎</span> Editar</button>
               {temMec(i) && (
-                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades</button>
+                <button class="besta-info besta-mech" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">✦</span> Poderes</button>
+              )}
+              {temTreino && (
+                <button class="besta-info besta-treino" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">☰</span> Habilidades</button>
               )}
               {i.lore?.length > 0 && (
                 <button class="besta-info" type="button" aria-haspopup="dialog"><span class="i-ic" aria-hidden="true">ⓘ</span> Informações</button>
@@ -221,8 +213,9 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
               {temMec(i) && (
                 <template class="mech-tpl">
                   {i.habilidadesEspeciais?.length > 0 && (<>
-                    <h4>Habilidades</h4>
-                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}{h.base ? ` · base ${h.base.arte} ${h.base.nivel}` : ''}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
+                    <h4>Poderes</h4>
+                    {i.habilidadesEspeciais.some((h: any) => h.base) && <p class="ib-ref muted">{BASE_NOTA}</p>}
+                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.campos ? <>{h.texto}<ul class="hab-campos">{h.campos.map((x: any) => <li><span class="hc-rot">{x.rotulo}:</span> {x.valor}</li>)}</ul></> : h.descricao}{baseTxt(h.base, arteNome)}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
                   </>)}
                   {i.poderes?.length > 0 && (<>
                     <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>
@@ -236,6 +229,14 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                     {i.mana != null && (<p class="ib-ref"><b>Mana:</b> {i.mana}</p>)}
                     {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
                   </>)}
+                </template>
+              )}
+              {temTreino && (
+                <template class="treino-tpl">
+                  <h4>Habilidades</h4>
+                  <p class="ib-ref muted">O treino da criatura, que se soma ao Atributo na jogada, como no livro (Cap. II).</p>
+                  {treino.primarias.length > 0 && <p class="ib-ref"><b>Habilidades:</b> {treinoTxt(treino.primarias)}</p>}
+                  {treino.secundarias.length > 0 && <p class="ib-ref"><b>Secundárias:</b> {treinoTxt(treino.secundarias)}</p>}
                 </template>
               )}
               {i.lore?.length > 0 && (
@@ -253,7 +254,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
     const card = seletor.closest('.besta')!;
     card.querySelectorAll<HTMLElement>('[data-forma-painel]').forEach(p=>p.hidden=p.dataset.formaPainel!==seletor.value);
     const principal = seletor.selectedIndex === 0;
-    card.querySelectorAll<HTMLElement>('.besta-mech').forEach(b=>b.hidden=!principal);
+    card.querySelectorAll<HTMLElement>('.besta-mech, .besta-treino').forEach(b=>b.hidden=!principal);
   });
 </script>
 

@@ -91,7 +91,6 @@
     {
       "nome": "Forcípulas",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -150,11 +149,9 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
     "atividade": "dia e noite, na caverna estudada",
     "dieta": "carnívora: come o que conseguir dominar, de baratas a morcegos",
-    "caca": "espera e agarra; caça morcegos no teto da caverna",
-    "dianteDeGente": ""
+    "caca": "espera e agarra; caça morcegos no teto da caverna"
   },
   "ecologia": {
     "terreno": [

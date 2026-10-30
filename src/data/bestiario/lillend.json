@@ -70,11 +70,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {
@@ -85,13 +81,11 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -160,7 +154,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "mente": "inteligente",
     "tracos": "Musa alada de torso humanoide e cauda serpentina espessa"
   },

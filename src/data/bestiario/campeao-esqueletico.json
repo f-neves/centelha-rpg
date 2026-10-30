@@ -73,9 +73,6 @@
   "equipamento": {
     "arsenal": [
       {
-        "ref": "a:espada-longa"
-      },
-      {
         "ref": "e:heater"
       }
     ],
@@ -90,8 +87,7 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     }
   ],
   "habilidadesEspeciais": [

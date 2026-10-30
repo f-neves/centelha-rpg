@@ -15,7 +15,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 70,
-    "area": 0.61
+    "area": 0.61,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -87,19 +88,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:maca-estrela"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Maça estrela",
-      "arma": "maca-estrela",
-      "habilidade": "armas"
+      "arma": "maca-estrela"
     }
   ],
   "habilidadesEspeciais": [

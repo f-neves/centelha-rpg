@@ -16,7 +16,9 @@
     "comprimento": 1.1,
     "massa": 16,
     "area": 0.22,
-    "linhaPV": "abaixo"
+    "posturaDoTamanho": "de frente",
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "corpo frágil"
   },
   "couraca": 1,
   "atributos": {
@@ -71,19 +73,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:lanca"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
     }
   ],
   "habilidadesEspeciais": [

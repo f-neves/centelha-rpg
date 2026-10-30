@@ -17,7 +17,8 @@
     "comprimentoSemCauda": 5,
     "caudaGrossa": true,
     "massa": 2700,
-    "area": 6.29
+    "area": 6.29,
+    "posturaDoTamanho": "de lado"
   },
   "couraca": 3,
   "atributos": {
@@ -97,7 +98,6 @@
     {
       "nome": "Tentáculo",
       "parte": "tentaculo-de-3-m",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

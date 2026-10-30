@@ -87,7 +87,6 @@
     {
       "nome": "Garras ósseas",
       "parte": "mao-de-garras-de-osso",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -104,7 +103,6 @@
     {
       "nome": "Ferrão",
       "parte": "cauda-de-escorpiao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

@@ -97,7 +97,6 @@
     {
       "nome": "Investida de focinho",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -105,7 +104,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
@@ -114,7 +113,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -149,12 +147,12 @@
   "sentidos": [
     {
       "nome": "ecolocalização",
-      "descricao": "Prontidão (ecolocalização) +3 , Especialidade natural ; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance (ADW)",
+      "descricao": "Prontidão (ecolocalização) +3 , Especialidade natural; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "até cerca de 120 kHz (Wikipédia); cobre o mesmo uso da ecolocalização, sem Especialidade à parte",
+      "descricao": "até cerca de 120 kHz; cobre o mesmo uso da ecolocalização, sem Especialidade à parte",
       "formas": "todas"
     },
     {
@@ -165,9 +163,9 @@
   ],
   "fisiologia": {
     "respiracao": "ar (mamífero)",
-    "prendeRespiracao": "até cerca de 4,5 minutos (ADW), medido; respira a cada 1 a 2 minutos em água funda. A Especialidade natural Resistência (apneia) +3 não troca este campo",
+    "prendeRespiracao": "até cerca de 4,5 minutos, medido; respira a cada 1 a 2 minutos em água funda. A Especialidade natural Resistência (apneia) +3 não troca este campo",
     "mente": "animal",
-    "tracos": "assobio próprio de cada indivíduo, mantido a vida toda (ADW); vive de 25 a 35 anos na natureza, a mais velha registrada com 53 (ADW)"
+    "tracos": "assobio próprio de cada indivíduo, mantido a vida toda; vive de 25 a 35 anos na natureza, a mais velha registrada com 53"
   },
   "aptidoes": {
     "montaria": false,
@@ -176,10 +174,8 @@
   },
   "comportamento": {
     "social": "bando",
-    "atividade": "",
     "dieta": "carnívoro",
-    "caca": "perseguição",
-    "dianteDeGente": ""
+    "caca": "perseguição"
   },
   "ecologia": {
     "terreno": [
@@ -190,7 +186,7 @@
       "tropical"
     ]
   },
-  "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas (ADW).",
+  "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas.",
   "lore": [
     {
       "titulo": "Predadora social",

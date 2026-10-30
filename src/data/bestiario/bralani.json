@@ -19,7 +19,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 80,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -87,7 +88,6 @@
     {
       "nome": "Golpe de vento",
       "parte": "o-proprio-redemoinho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -251,18 +251,13 @@
       "id": "elfica",
       "nome": "forma élfica",
       "equipamento": {
-        "arsenal": [
-          {
-            "ref": "a:espada-longa"
-          }
-        ]
+        "arsenal": []
       },
       "deslocamento": {
-        "voo": {
-          "batalha": 0
-        }
+        "voo": null
       },
       "fisiologia": {
+        "respiracao": "ar",
         "prendeRespiracao": "a de um elfo",
         "camuflagem": "passa por um elfo",
         "tracos": "elfo alto de cabelo prateado"
@@ -270,8 +265,7 @@
       "ataques": [
         {
           "nome": "Espada longa",
-          "arma": "espada-longa",
-          "habilidade": "armas"
+          "arma": "espada-longa"
         }
       ]
     }

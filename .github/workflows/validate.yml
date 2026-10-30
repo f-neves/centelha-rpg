@@ -112,6 +112,7 @@ jobs:
           - test-etapa0
           - test-bench-tempo
           - test-editor-bestiario
+          - test-ficha-item-inteiro
           - test-luas
     steps:
       - uses: actions/checkout@v4

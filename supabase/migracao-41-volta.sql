@@ -50,4 +50,6 @@ $$;
 revoke all on function public.grupo_visivel(uuid) from public;
 grant execute on function public.grupo_visivel(uuid) to authenticated;
 
+-- A volta também desfaz o registro de aplicação da 41.
+delete from public.migracoes where numero = 41;
 commit;

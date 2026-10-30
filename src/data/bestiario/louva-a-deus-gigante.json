@@ -103,7 +103,6 @@
     {
       "nome": "Patas raptoriais",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -120,7 +119,6 @@
     {
       "nome": "Mandíbulas",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -188,10 +186,8 @@
   },
   "comportamento": {
     "social": "solitária",
-    "atividade": "",
     "dieta": "carnívora: insetos grandes, aranhas, às vezes rãs, lagartos e aves pequenas",
-    "caca": "emboscada imóvel",
-    "dianteDeGente": ""
+    "caca": "emboscada imóvel"
   },
   "ecologia": {
     "terreno": [

@@ -99,7 +99,6 @@
     {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -116,7 +115,6 @@
     {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -133,7 +131,6 @@
     {
       "nome": "Cauda",
       "parte": "cauda-de-ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

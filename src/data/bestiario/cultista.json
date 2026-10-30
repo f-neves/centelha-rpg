@@ -14,7 +14,8 @@
     "profundidade": 0.21,
     "comprimento": null,
     "massa": 62,
-    "area": 0.62
+    "area": 0.62,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -80,7 +81,6 @@
     {
       "nome": "Soco",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

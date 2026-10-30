@@ -78,7 +78,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -127,11 +126,8 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
-    "atividade": "",
     "dieta": "carnívoro que come carne e osso",
-    "caca": "perseguição , pelo corpo de corredor",
-    "dianteDeGente": ""
+    "caca": "perseguição, pelo corpo de corredor"
   },
   "ecologia": {
     "terreno": [

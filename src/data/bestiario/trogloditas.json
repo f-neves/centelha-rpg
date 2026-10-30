@@ -15,7 +15,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 75,
-    "area": 0.68
+    "area": 0.68,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
   "atributos": {
@@ -77,24 +78,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:martelo"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Martelo",
-      "arma": "martelo",
-      "habilidade": "armas"
+      "arma": "martelo"
     },
     {
       "nome": "Garras",
       "parte": "maos-de-garras",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

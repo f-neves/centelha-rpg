@@ -98,7 +98,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -158,7 +157,6 @@
   },
   "comportamento": {
     "social": "vive com a família que cuida dele",
-    "atividade": "",
     "dieta": "o que recebe",
     "caca": "não caça; guarda",
     "dianteDeGente": "indiferente a estranhos, protetor dos seus; guarda noturno de propriedade desde por volta de 1500"

@@ -15,7 +15,8 @@
     "profundidade": 0.19,
     "comprimento": null,
     "massa": 36,
-    "area": 0.39
+    "area": 0.39,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -72,19 +73,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-curta"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
     }
   ],
   "habilidadesEspeciais": [

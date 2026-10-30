@@ -26,8 +26,8 @@ import { sparkSVG } from './centelha-spark';
 import { url } from './site';
 import {
   ARMA, ARMADURA, ESCUDO, ARMAS, ARMADURAS, ESCUDOS, ID_ARMADURA_LIVRE, baseArmadura,
-  CAMPOS_ARMA, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
-  armaComMod, armaduraComMod, escudoComMod, armadurasDe, baseCampo, valorCampo, temMod,
+  CAMPOS_ARMA, CAMPOS_ARMA_MAIS, CAMPOS_ARMADURA, CAMPOS_ESCUDO, type CampoEquip,
+  armadurasDe, baseCampo, itemDaPeca, origemDaPeca, restaurarItem, escreveCampo, congelarItens,
   danoStr, statsArma, statsArmadura, statsEscudo, sinalNum,
 } from './equip';
 import { uiConfirmar, uiErro, uiEscolher, uiFormulario, uiPainel } from './ui-dialog';
@@ -209,7 +209,7 @@ export function montarFicha(opts: FichaOpts) {
   function fresh() {
     // Ficha nova nasce no piso de cada trilha: custo zero até o jogador comprar algo.
     massaEscolhida = false;
-    S = { id: {}, corpo:{massa:massaDoJogador({raca:'humano'})}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
+    S = { id: {}, corpo: {}, attrs: {}, skills: {}, spec: {}, skills2: {}, spec2: {}, virtues: {}, willpower: pisoXp('vontade'), aparencia: pisoXp('aparencia'), centelha: 0, raca: 'humano', tech: {}, arte: {}, efeito: {}, ante: {}, anteNom: {}, budget: 1500, equip: { armaduras: [] }, arsenal: [], conjuntos: mkConjuntos(), bolsas: mkBolsas(), defSpec: { esquiva: [], bloqueio: [], social: [], mental: [] } };
     (ATTRS_D as any[]).forEach((a) => (S.attrs[a.id] = pisoAttr(a.id)));
     (HAB_D as any[]).forEach((h) => { S.skills[h.id] = pisoXp('habilidadePrimaria'); S.spec[h.id] = []; });
     (VIRT_D as any[]).forEach((v) => (S.virtues[v.id] = pisoXp('virtude')));
@@ -246,6 +246,7 @@ export function montarFicha(opts: FichaOpts) {
     const o: any = { ref: String(s?.ref || dflt) };
     if (s?.nome != null) o.nome = String(s.nome);
     for (const k of ['dado', 'danoBonus', 'acerto']) if (Number.isFinite(Number(s?.[k]))) o[k] = Number(s[k]);
+    if (s?.item && typeof s.item === 'object') o.item = s.item;
     if (s?.mod && typeof s.mod === 'object') {
       const m: Record<string, number> = {};
       for (const [k, v] of Object.entries(s.mod)) if (Number.isFinite(Number(v))) m[k] = Number(v);
@@ -259,7 +260,7 @@ export function montarFicha(opts: FichaOpts) {
   const novoUid = () => 'p' + Math.random().toString(36).slice(2, 9) + Date.now().toString(36).slice(-3);
   /** Duas peças são a mesma coisa se têm o mesmo item, os mesmos ajustes e o mesmo nome. */
   const assinaturaPeca = (p: any) =>
-    [p?.ref, p?.nome || '', JSON.stringify(p?.mod || null), p?.dado ?? '', p?.danoBonus ?? '', p?.acerto ?? ''].join('|');
+    [p?.ref, p?.nome || '', JSON.stringify(p?.mod || null), JSON.stringify(p?.item || null), p?.dado ?? '', p?.danoBonus ?? '', p?.acerto ?? ''].join('|');
   const pecaArsenal = (uid: string) => (S.arsenal || []).find((p: any) => p.uid === uid) || null;
   /**
    * Copia os dados da peça do arsenal para dentro do slot da mão.
@@ -270,11 +271,15 @@ export function montarFicha(opts: FichaOpts) {
    * esta função é o único lugar que as reconcilia.
    */
   function sincronizarSlots() {
+    // D-259: toda peça nova ganha aqui a cópia inteira do item (do catálogo, ou o padrão
+    // da peça personalizada), e o slot leva a mesma cópia: a mesa lê o slot.
+    congelarItens(S);
     (S.conjuntos || []).forEach((cj: any) => (['habil', 'inabil'] as const).forEach((hand) => {
       const s = cj[hand]; if (!s?.uid) return;
       const p = pecaArsenal(s.uid);
       if (!p) { cj[hand] = { ref: hand === 'habil' ? 'a:desarmado' : 'nada' }; return; }
       cj[hand] = { uid: p.uid, ref: p.ref, ...(p.nome != null ? { nome: p.nome } : {}), ...(p.mod ? { mod: p.mod } : {}),
+        ...(p.item ? { item: structuredClone(p.item) } : {}),
         ...(p.dado != null ? { dado: p.dado } : {}), ...(p.danoBonus != null ? { danoBonus: p.danoBonus } : {}),
         ...(p.acerto != null ? { acerto: p.acerto } : {}) };
     }));
@@ -299,7 +304,8 @@ export function montarFicha(opts: FichaOpts) {
   function normalize() {
     S = fichaParaLeitura(S);
     massaEscolhida = typeof S.corpo?.massa === 'number' || !!S.id?.peso;
-    S.corpo ??= {massa:massaDoJogador(S)};
+    // D-260: a massa vazia não se grava; o leitor (`massaDoJogador`) dá o padrão da raça.
+    S.corpo ??= {};
     S.id ??= {}; if (S.virtues?.valor !== undefined && S.virtues?.bravura === undefined) { S.virtues.bravura = S.virtues.valor; delete S.virtues.valor; } S.attrs ??= {}; S.skills ??= {}; S.spec ??= {}; S.skills2 ??= {}; S.spec2 ??= {}; S.virtues ??= {}; S.tech ??= {}; S.arte ??= {}; S.efeito ??= {}; S.secCol ??= {};
     S.defSpec ??= {}; for (const k of ['esquiva', 'bloqueio', 'social', 'mental']) S.defSpec[k] ??= [];
     // Migração: a Habilidade "Escudos" virou "Bloqueio" (id escudos -> bloqueio); carrega pontos e especialidade antigos.
@@ -399,8 +405,8 @@ export function montarFicha(opts: FichaOpts) {
     S.equip.armaduras = S.equip.armaduras.map((p: any) => (typeof p === 'string'
       ? { uid: novoUid(), base: p, mod: modsAntigos[p] ? { ...modsAntigos[p] } : undefined, vestida: true }
       : { uid: p?.uid || novoUid(), base: p?.base, nome: p?.nome || undefined, mod: p?.mod || undefined,
-          img: p?.img || undefined, enq: p?.enq || undefined, vestida: p?.vestida !== false })
-    ).filter((p: any) => baseArmadura(p.base));
+          item: p?.item || undefined, img: p?.img || undefined, enq: p?.enq || undefined, vestida: p?.vestida !== false })
+    ).filter((p: any) => p.item || baseArmadura(p.base));
     delete S.equip.armMod;
 
     // Arsenal: as armas e escudos que o personagem possui. Nasce do que já estava nos
@@ -411,7 +417,7 @@ export function montarFicha(opts: FichaOpts) {
       if (!s || s.ref === 'nada' || s.ref === 'a:desarmado') return;
       const achado = S.arsenal.find((p: any) => assinaturaPeca(p) === assinaturaPeca(s));
       if (achado) { s.uid = achado.uid; return; }
-      const nova = { uid: novoUid(), ref: s.ref, nome: s.nome, mod: s.mod, dado: s.dado, danoBonus: s.danoBonus, acerto: s.acerto };
+      const nova = { uid: novoUid(), ref: s.ref, nome: s.nome, mod: s.mod, item: s.item, dado: s.dado, danoBonus: s.danoBonus, acerto: s.acerto };
       S.arsenal.push(nova); s.uid = nova.uid;
     }));
     sincronizarSlots();
@@ -796,7 +802,6 @@ export function montarFicha(opts: FichaOpts) {
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   // ===== Equipamento: conjuntos de armas (mão hábil / inábil) =====
-  const IMPROV = { nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
   // Peça fora do catálogo, nos dois lados do arsenal. São duas porque uma arma e
   // um escudo não têm os mesmos números: a arma pede Velocidade/Acerto/Dano/Defesa,
   // o escudo pede Defesa/Penalidade. Uma opção só obrigava o escudo a nascer arma
@@ -822,12 +827,8 @@ export function montarFicha(opts: FichaOpts) {
     const m = String(s ?? '').replace(',', '.').match(/\d+(?:\.\d+)?/);
     return m ? parseFloat(m[0]) : 0;
   };
-  /** Peso de catálogo de uma peça do arsenal, que guarda armas e escudos no mesmo lugar. */
-  const pesoRef = (ref: any) => {
-    const r = String(ref || '');
-    const b = r.startsWith('a:') ? ARMA[r.slice(2)] : r.startsWith('e:') ? ESCUDO[r.slice(2)] : null;
-    return Number(b?.peso) || 0;
-  };
+  /** Peso de uma peça (arma, escudo ou armadura): o do item que a ficha guarda (D-259). */
+  const pesoPeca = (p: any) => Number(itemDaPeca(p)?.peso) || 0;
   /** Soma das linhas de uma bolsa, ou o total que o jogador escreveu no lugar dela. */
   const pesoBolsa = (b: any) => {
     const escrito = String(b?.pesoTotal ?? '').trim();
@@ -837,10 +838,10 @@ export function montarFicha(opts: FichaOpts) {
   /** As três bolsas, mais o arsenal inteiro, mais a armadura VESTIDA. */
   const cargaCalculada = () =>
     (S.bolsas || []).reduce((s: number, b: any) => s + pesoBolsa(b), 0)
-    + (S.arsenal || []).reduce((s: number, p: any) => s + pesoRef(p?.ref), 0)
+    + (S.arsenal || []).reduce((s: number, p: any) => s + pesoPeca(p), 0)
     + (S.equip?.armaduras || []).reduce((s: number, p: any) => typeof p === 'string'
       ? s + (Number(baseArmadura(p)?.peso) || 0)
-      : p?.vestida === false ? s : s + (Number(baseArmadura(p?.base)?.peso) || 0), 0);
+      : p?.vestida === false ? s : s + pesoPeca(p), 0);
   const cargaAtual = () => {
     const escrito = String(S.cargaAtual ?? '').trim();
     return escrito ? numPeso(escrito) : cargaCalculada();
@@ -851,6 +852,11 @@ export function montarFicha(opts: FichaOpts) {
     return conjuntoPersonagem(S, cj, {habil:itemDe(cj.habil),inabil:itemDe(cj.inabil),armorPen:empilharArmaduras(pecasArmadura()).penalidade || 0,atributos:Object.fromEntries((ATTRS_D as any[]).map((a: any) => [a.id,A(a.id)]))});
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
+  // O pool sem dado nenhum se escreve como o Cap. I o chama ("nenhum dado, total fixo 2"), e não "0d6+2", que parece
+  // defeito (parecer da Leitora-novata, achado 12).
+  const poolTxt = (dados: number, bonus: number, flat: number) => (dados > 0
+    ? `${dados}d6${bonus ? '+2' : ''}`
+    : bonus ? 'nenhum dado, total fixo 2' : 'nada, total fixo 0') + (flat ? ' ' + sgn(flat) : '');
   // Cada arma da lista já mostra os próprios números: Velocidade / Acerto / Dano / Defesa.
   function optsItens(sel: string, semVazio = false) {
     const armas = ARMAS.map((w) => `<option value="a:${w.id}"${sel === 'a:' + w.id ? ' selected' : ''}>${w.nome}: ${statsArma(w)}</option>`).join('');
@@ -1226,7 +1232,7 @@ export function montarFicha(opts: FichaOpts) {
     return 'nada';
   }
   const ehDuasMaos = (p: any) => {
-    const w = p?.ref?.startsWith('a:') ? ARMA[p.ref.slice(2)] : null;
+    const w = p?.ref?.startsWith('a:') || p?.ref === REF_ARMA_LIVRE ? itemDaPeca(p) : null;
     return !!w && w.maos === 2;
   };
   /**
@@ -1263,7 +1269,7 @@ export function montarFicha(opts: FichaOpts) {
       const it = itemDe(p), chave = `ars:${p.uid}`;
       const papel = papelDaPeca(p.uid), duasMaos = ehDuasMaos(p);
       const campos = it.kind === 'nada' ? null : camposItem(it);
-      const ajustada = campos ? temMod(it.base, p.mod, campos) : false;
+      const ajustada = campos ? difereDaOrigem(p, campos) : false;
       const marca = (v: 'nada' | 'habil' | 'inabil', rot: string, off = false) =>
         `<label class="eq-uso-op${papel === v ? ' on' : ''}${off ? ' off' : ''}">
           <input type="radio" name="uso-${p.uid}" data-uso="${p.uid}:${v}"${papel === v ? ' checked' : ''}${(ro || off) ? ' disabled' : ''} />
@@ -1285,7 +1291,7 @@ export function montarFicha(opts: FichaOpts) {
             <button type="button" class="eq-rm" data-ars-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(nomePeca(p))}">Excluir</button>
           </div>`}
         </div>
-        ${campos ? painelMod(chave, it.base, p.mod, campos, ro, {
+        ${campos ? painelMod(chave, itemDaPeca(p), origemDaPeca(p), campos, ro, {
           nome: ehLivre(p) ? campoNome('ars-nome', p.uid, p.nome || '', it.base.nome, ro) : '',
           img: p.img, enq: p.enq,
         }) : ''}
@@ -1303,7 +1309,8 @@ export function montarFicha(opts: FichaOpts) {
   function limparArsenal() {
     const usados = new Set<string>();
     (S.conjuntos || []).forEach((cj: any) => { if (cj.habil?.uid) usados.add(cj.habil.uid); if (cj.inabil?.uid) usados.add(cj.inabil.uid); });
-    S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod || (ehLivre(p) && p.nome));
+    S.arsenal = (S.arsenal || []).filter((p: any) => usados.has(p.uid) || p.img || p.mod
+      || difereDaOrigem(p, camposItem(itemDe(p))) || (ehLivre(p) && p.nome));
   }
   /** Os quatro números da arma como blocos, no lugar da linha "5/+2/1d6/+1". */
   /**
@@ -1354,10 +1361,33 @@ export function montarFicha(opts: FichaOpts) {
   // Serve para a variação de qualidade (uma Espada Longa Ótima, um gambeson puído):
   // a peça continua sendo a do catálogo, só com os valores trocados na ficha.
   const modAberto = new Set<string>();   // painéis abertos, por chave ("0:habil", "arm:couro")
-  function campoMod(chave: string, c: CampoEquip, base: any, mod: any, ro: boolean) {
-    const v = valorCampo(base, mod, c), orig = baseCampo(base, c);
-    return `<label class="eqm-c${v !== orig ? ' dif' : ''}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
-      `<input type="number" data-eqm="${chave}:${c.k}" value="${v}" min="${c.min}" max="${c.max}" step="1"${ro ? ' disabled' : ''} title="catálogo: ${c.sinal ? sgn(orig) : orig}" /></label>`;
+  // D-259: o painel edita o item que a ficha guarda, campo a campo; a origem (o item
+  // do livro, quando ele existe) só serve para marcar o que difere e para o "restaurar".
+  const mostraCampo = (c: CampoEquip, v: any) => c.tipo === 'lista' ? (Array.isArray(v) ? v.join(', ') : '') : (v ?? '');
+  const igualCampo = (a: any, b: any) => JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+  function difereDaOrigem(p: any, campos: CampoEquip[] | null) {
+    if (!campos) return false;
+    const it = itemDaPeca(p), orig = origemDaPeca(p);
+    if (!it || !orig) return false;
+    return campos.some((c) => !igualCampo(baseCampo(it, c), baseCampo(orig, c)));
+  }
+  function campoMod(chave: string, c: CampoEquip, item: any, origem: any, ro: boolean) {
+    const v = baseCampo(item, c), orig = origem ? baseCampo(origem, c) : v;
+    const dif = !igualCampo(v, orig) ? ' dif' : '';
+    const dica = `catálogo: ${orig == null || orig === '' ? 'nenhum' : c.tipo === 'lista' ? mostraCampo(c, orig) : c.sinal ? sgn(orig) : orig}`;
+    const dis = ro ? ' disabled' : '';
+    if (c.tipo === 'opcao') {
+      const ops = (c.opcional ? [`<option value=""${v == null ? ' selected' : ''}>nenhum</option>`] : [])
+        .concat((c.opcoes || []).map((o) => `<option value="${o.v}"${v === o.v ? ' selected' : ''}>${escapeHtml(o.rot)}</option>`));
+      return `<label class="eqm-c${dif}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
+        `<select data-eqm="${chave}:${c.k}"${dis} title="${escapeHtml(dica)}">${ops.join('')}</select></label>`;
+    }
+    if (c.tipo === 'lista') {
+      return `<label class="eqm-c eqm-lista${dif}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
+        `<input type="text" data-eqm="${chave}:${c.k}" value="${escapeHtml(mostraCampo(c, v))}"${dis} title="${escapeHtml(dica)}" placeholder="separadas por vírgula" /></label>`;
+    }
+    return `<label class="eqm-c${dif}" data-eqm-c="${chave}:${c.k}"><span>${c.rot}</span>` +
+      `<input type="number" data-eqm="${chave}:${c.k}" value="${v ?? ''}" min="${c.min}" max="${c.max}" step="${c.passo ?? 1}"${dis} title="${escapeHtml(dica)}" /></label>`;
   }
   /**
    * Enquadramento da foto do jogador: uma barra de zoom e o arrasto na própria
@@ -1385,18 +1415,18 @@ export function montarFicha(opts: FichaOpts) {
       </div>
     </div>`;
   }
-  function painelMod(chave: string, base: any, mod: any, campos: CampoEquip[], ro: boolean,
+  function painelMod(chave: string, item: any, origem: any, campos: CampoEquip[], ro: boolean,
                      extra: { nome?: string; img?: string; enq?: any } = {}) {
     return `<div class="eq-mod" data-eq-pan="${chave}"${modAberto.has(chave) ? '' : ' hidden'}>` +
       `${extra.nome || ''}` +
-      `${campos.map((c) => campoMod(chave, c, base, mod, ro)).join('')}` +
+      `${campos.map((c) => campoMod(chave, c, item, origem, ro)).join('')}` +
       `${ro ? '' : `<button type="button" class="eqm-reset" data-eqm-reset="${chave}">restaurar</button>`}` +
       `${blocoEnquadra(chave, extra.img, extra.enq, ro)}</div>`;
   }
   // o item personalizado é uma arma para todos os efeitos: mesmos campos ajustáveis
-  const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : CAMPOS_ARMA);
+  const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : [...CAMPOS_ARMA, ...CAMPOS_ARMA_MAIS]);
   function statsConj(c: any, trava: boolean) {
-    const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
+    const atk = poolTxt(c.dados, c.bonus, c.flat);
     const dano = c.atk.semDano ? 'não causa dano' : c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     return `<b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}` +
       `${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}` +
@@ -1405,7 +1435,7 @@ export function montarFicha(opts: FichaOpts) {
   function duplaConj(c: any) {
     if (!c.dupla) return '';
     const p0 = (n: number) => Math.max(0, n);
-    const pool = (d: number, b: number, f: number) => `${p0(d)}d6${b ? '+2' : ''}${f ? ' ' + sgn(f) : ''}`;
+    const pool = (d: number, b: number, f: number) => poolTxt(p0(d), b, f);
     const dm = (dado: number, ap: number) => `${dado}d6${ap ? ' ' + sgn(ap) : ''}`;
     return `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −${c.dupla.inabilPen}d6: ${pool(c.dupla.inabilDados - c.dupla.inabilPen, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno</span></div>`;
   }
@@ -1556,7 +1586,7 @@ export function montarFicha(opts: FichaOpts) {
   function renderCombate() {
     const act = calcConj(conjAtivo());
     const w = act.atk, C = S.centelha || 0, armorPen = act.armorPen;
-    const atk = `${act.dados}d6${act.bonus ? '+2' : ''}${act.flat ? ' ' + sgn(act.flat) : ''}`;
+    const atk = poolTxt(act.dados, act.bonus, act.flat);
     const dano = w.semDano ? 'não causa dano' : act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
@@ -1567,7 +1597,7 @@ export function montarFicha(opts: FichaOpts) {
     const pecas = pecasArmadura();
     el('combate').innerHTML =
       `<div class="cmb"><b>Conjunto em uso</b>: ${nomeSet}</div>` +
-      `<div class="cmb"><b>Ataque</b>: ${w.nome}, rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
+      `<div class="cmb"><b>Ataque</b>: ${w.nome}, ${act.dados > 0 ? 'rola ' : ''}<b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
       (w.semDano ? '' : `<div class="cmb"><b>Modos</b>: ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>`) +
       linhaPGR(w) +
       (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b>: <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
@@ -1580,7 +1610,24 @@ export function montarFicha(opts: FichaOpts) {
   function renderForca() {
     const box = el('forca-arremesso'); if (!box) return;
     const massaInput = document.getElementById('corpo-massa') as HTMLInputElement | null;
-    if (massaInput) { if (document.activeElement !== massaInput) massaInput.value = String(massaDoJogador(S)); massaInput.readOnly = !!opts.readOnly; }
+    if (massaInput) {
+      // D-260: a massa escrita aparece como valor; a vazia, como o padrão da raça em placeholder.
+      if (document.activeElement !== massaInput) massaInput.value = massaEscolhida && typeof S.corpo?.massa === 'number' ? String(S.corpo.massa) : '';
+      massaInput.placeholder = `${massaDoJogador({ raca: S.raca })} (padrão da raça)`;
+      massaInput.readOnly = !!opts.readOnly;
+    }
+    // O AVISO DA MASSA (parecer da Leitora-novata, achado 12): o campo vazio não é zero, é o padrão da raça, e a
+    // ficha diz isso por escrito, e não só no placeholder (que some quando o campo tem foco ou valor).
+    const massaNota = document.getElementById('corpo-massa-nota');
+    if (massaNota) {
+      const nomeRaca = (RACA_D as any[]).find((r: any) => r.id === S.raca)?.nome;
+      const padrao = massaDoJogador({ raca: S.raca }), usada = massaDoJogador(S);
+      massaNota.textContent = massaEscolhida && typeof S.corpo?.massa === 'number'
+        ? 'Massa escrita por você. Apague o campo para voltar à massa padrão da raça.'
+        : usada === padrao
+          ? `Campo vazio: as contas usam a massa padrão da raça${nomeRaca ? ` (${nomeRaca})` : ''}, ${String(padrao).replace('.', ',')} kg, o meio da faixa normal dela. Escreva a massa para usar outra.`
+          : `Campo vazio: as contas usam ${String(usada).replace('.', ',')} kg, o peso escrito na identificação do personagem.`;
+    }
     const F = (regras as any).forca; if (!F) { box.innerHTML = ''; return; }
     const forca = A('forca'), atl = SK('atletismo'), halt = S.skills2['halterofilismo'] || 0, arr = SK('arremesso');
     // Atletismo não entra no levantamento: erguer o máximo é contração estática, e Atletismo
@@ -1968,9 +2015,9 @@ export function montarFicha(opts: FichaOpts) {
   function renderArmaduras() {
     const ro = !!opts.readOnly;
     const cards = (S.equip.armaduras || []).map((p: any) => {
-      const base = baseArmadura(p.base); if (!base) return '';
-      const chave = `arm:${p.uid}`, a = armaduraComMod(base, p.mod);
-      return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${temMod(base, p.mod, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}"${ordenavel(ro, p.nome || base.nome)}>
+      const a = itemDaPeca(p); if (!a) return '';
+      const base = a, chave = `arm:${p.uid}`;
+      return `<div class="eq-peca arm${p.vestida ? ' vestida' : ''}${difereDaOrigem(p, CAMPOS_ARMADURA) ? ' ajustado' : ''}" data-arm-peca="${p.uid}"${ordenavel(ro, p.nome || base.nome)}>
         ${imgSlot(chave, p.img, 'armadura', ro, p.nome || base.nome, idDeArte(p), p.enq)}
         <div class="eq-peca-corpo">
           <div class="eq-peca-nome">${escapeHtml(p.nome || base.nome)}</div>
@@ -1986,7 +2033,7 @@ export function montarFicha(opts: FichaOpts) {
             <button type="button" class="eq-rm" data-arm-rm="${p.uid}" title="Descartar esta peça" aria-label="Excluir ${escapeHtml(p.nome || base.nome)}">Excluir</button>
           </div>`}
         </div>
-        ${painelMod(chave, base, p.mod, CAMPOS_ARMADURA, ro, {
+        ${painelMod(chave, a, origemDaPeca(p), CAMPOS_ARMADURA, ro, {
           nome: campoNome('arm-nome', p.uid, p.nome || '', base.nome, ro),
           img: p.img, enq: p.enq,
         })}
@@ -2018,13 +2065,12 @@ export function montarFicha(opts: FichaOpts) {
   }
   /** Atualiza só os números de uma peça de armadura (sem refazer o HTML). */
   function refreshArm(uid: string) {
-    const p = pecaArm(uid); const base = p && baseArmadura(p.base); if (!p || !base) return;
-    const a = armaduraComMod(base, p.mod);
+    const p = pecaArm(uid); const a = p && itemDaPeca(p); if (!p || !a) return;
     const nums = el('eq-armaduras').querySelector(`[data-arm-nums="${uid}"]`);
     if (nums) nums.innerHTML = `<span class="eq-n"><b>Imp</b>${a.soak.impacto}</span><span class="eq-n"><b>Cor</b>${a.soak.corte}</span>` +
       `<span class="eq-n"><b>Perf</b>${a.soak.perfuracao}<i>N${a.resistPerf || 0}</i></span><span class="eq-n pen"><b>Pen</b>${a.penalidade ? '−' + a.penalidade : '0'}</span>`;
     const item = el('eq-armaduras').querySelector(`[data-arm-peca="${uid}"]`);
-    if (item) item.classList.toggle('ajustado', temMod(base, p.mod, CAMPOS_ARMADURA));
+    if (item) item.classList.toggle('ajustado', difereDaOrigem(p, CAMPOS_ARMADURA));
     renderAbsorcao();
   }
   function populateEquip() {
@@ -2289,10 +2335,12 @@ export function montarFicha(opts: FichaOpts) {
   document.getElementById('corpo-massa')?.addEventListener('input', (e) => {
     if (opts.readOnly) return;
     const massa = (e.target as HTMLInputElement).valueAsNumber;
+    // apagar o campo devolve a conta: a massa sai da ficha e o padrão da raça volta
+    if ((e.target as HTMLInputElement).value.trim() === '') { massaEscolhida = false; if (S.corpo) delete S.corpo.massa; if (S.id) delete S.id.peso; const pesoAntigo = document.querySelector<HTMLInputElement>('.idrow .txt[data-id="peso"]'); if (pesoAntigo) pesoAntigo.value = ''; renderForca(); save(); return; }
     if (Number.isFinite(massa) && massa > 0) { massaEscolhida = true; S.corpo ??= {}; S.corpo.massa = massa; S.id ??= {}; S.id.peso = String(massa) + ' kg'; const pesoAntigo = document.querySelector<HTMLInputElement>('.idrow .txt[data-id="peso"]'); if (pesoAntigo) pesoAntigo.value = S.id.peso; renderForca(); save(); }
   });
   // idrow + budget
-  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; if (inp.dataset.id === 'peso') { const massa = Number(inp.value.replace(',', '.').match(/\d+(?:\.\d+)?/)?.[0]); if (massa > 0) { S.corpo ??= {}; S.corpo.massa = massa; massaEscolhida = true; renderForca(); } } save(); }));
+  document.querySelectorAll<HTMLInputElement>('.idrow .txt').forEach((inp) => inp.addEventListener('input', () => { if (opts.readOnly) return; S.id[inp.dataset.id!] = inp.value; if (inp.dataset.id === 'peso') { const massa = Number(inp.value.replace(',', '.').match(/\d+(?:\.\d+)?/)?.[0]); if (massa > 0) { S.corpo ??= {}; S.corpo.massa = massa; massaEscolhida = true; renderForca(); } else if (!inp.value.trim()) { if (S.corpo) delete S.corpo.massa; massaEscolhida = false; renderForca(); } } save(); }));
   // Delegado, porque renderSecondary() refaz o painel a cada mudança de bolinha. Só salva:
   // re-renderizar aqui tiraria o foco do campo no meio da digitação.
   el('secondary').addEventListener('input', (e) => {
@@ -2636,9 +2684,9 @@ export function montarFicha(opts: FichaOpts) {
         // uma peça é um objeto só: se já estava na outra mão deste conjunto, sai de lá
         if (cj[outra]?.uid === p.uid) cj[outra] = { ref: outra === 'habil' ? 'a:desarmado' : 'nada' };
         cj[hand] = { uid: p.uid, ref: p.ref };
-        const w = p.ref.startsWith('a:') ? ARMA[p.ref.slice(2)] : null;
+        congelarItens(S);
         // arma de duas mãos ocupa as duas: sobe para a hábil e libera a inábil
-        if (w && w.maos === 2) { if (hand === 'inabil') cj.habil = { uid: p.uid, ref: p.ref }; cj.inabil = { ref: 'nada' }; }
+        if (ehDuasMaos(p)) { if (hand === 'inabil') cj.habil = { uid: p.uid, ref: p.ref }; cj.inabil = { ref: 'nada' }; }
       }
       limparArsenal(); sincronizarSlots(); renderConjuntos(); renderDerived(); renderCombate(); save(); return;
     }
@@ -2676,7 +2724,7 @@ export function montarFicha(opts: FichaOpts) {
     // o nome agora é texto na face do card: atualiza sem redesenhar, senão o
     // campo perderia o foco a cada tecla
     const t = nm.closest('.eq-peca')?.querySelector('.eq-peca-nome');
-    if (t) t.textContent = p.nome || baseArmadura(p.base)?.nome || '';
+    if (t) t.textContent = p.nome || itemDaPeca(p)?.nome || '';
     save();
   });
   el('eq-armaduras').addEventListener('click', async (e) => {
@@ -2691,7 +2739,7 @@ export function montarFicha(opts: FichaOpts) {
     if (!rm) return;
     const p = pecaArm(rm.dataset.armRm!); if (!p) return;
     const ok = await uiConfirmar(
-      `Descartar ${p.nome || baseArmadura(p.base)?.nome || 'esta armadura'}?`,
+      `Descartar ${p.nome || itemDaPeca(p)?.nome || 'esta armadura'}?`,
       { titulo: 'Descartar peça', ok: 'Descartar', perigo: true },
     );
     if (!ok) return;
@@ -2704,21 +2752,22 @@ export function montarFicha(opts: FichaOpts) {
   // carrega os mesmos números, que é o ponto de a peça ter identidade própria.
   function alvoMod(chave: string) {
     const [a, uid] = chave.split(':');
-    const guarda = (p: any, base: any, campos: CampoEquip[], redesenha: () => void) => ({
-      base, campos,
-      mod: () => p.mod,
-      escreve: (k: string, v: number | null) => {
-        const m = (p.mod ||= {});
-        if (v == null) delete m[k]; else m[k] = v;
-        if (!Object.keys(m).length) delete p.mod;
+    // D-259: escrever é mudar o item que a ficha guarda; "restaurar" copia de novo o do livro.
+    const guarda = (p: any, campos: CampoEquip[], redesenha: () => void) => ({
+      campos,
+      item: () => itemDaPeca(p), origem: () => origemDaPeca(p),
+      escreve: (c: CampoEquip, v: any) => {
+        if (!p.item) congelarItens(S);
+        if (!p.item) return;
+        escreveCampo(p.item, c, v);
         sincronizarSlots();
       },
-      limpa: () => { delete p.mod; sincronizarSlots(); },
+      limpa: () => { delete p.mod; restaurarItem(p); sincronizarSlots(); },
       redesenha,
     });
     if (a === 'arm') {
-      const p = pecaArm(uid); const base = p && baseArmadura(p.base); if (!p || !base) return null;
-      return guarda(p, base, CAMPOS_ARMADURA, () => refreshArm(uid));
+      const p = pecaArm(uid); if (!p || !itemDaPeca(p)) return null;
+      return guarda(p, CAMPOS_ARMADURA, () => refreshArm(uid));
     }
     if (a === 'ars') {
       const p = pecaArsenal(uid); if (!p) return null;
@@ -2726,7 +2775,7 @@ export function montarFicha(opts: FichaOpts) {
       // 'custom' entra aqui junto com 'arma' e 'escudo': a peça personalizada é
       // justamente a que só tem números porque alguém os ajustou
       if (it.kind === 'nada') return null;
-      return guarda(p, it.base, camposItem(it), () => { renderArsenal(); renderConjuntos(); });
+      return guarda(p, camposItem(it), () => { renderArsenal(); renderConjuntos(); });
     }
     return null;
   }
@@ -2752,19 +2801,31 @@ export function montarFicha(opts: FichaOpts) {
         alvo.limpa(); populateEquip(); renderDerived(); renderCombate(); save();
       }
     });
-    box.addEventListener('input', (e) => {
+    const aoEditar = (e: Event) => {
       if (opts.readOnly) return;
-      const inp = (e.target as HTMLElement).closest<HTMLInputElement>('input[data-eqm]');
+      const inp = (e.target as HTMLElement).closest<HTMLInputElement | HTMLSelectElement>('input[data-eqm], select[data-eqm]');
       if (!inp) return;
       const partes = inp.dataset.eqm!.split(':'), k = partes.pop()!;
       const alvo = alvoMod(partes.join(':')); if (!alvo) return;
       const campo = alvo.campos.find((c) => c.k === k); if (!campo) return;
       const bruto = inp.value.trim();
-      alvo.escreve(k, bruto === '' ? null : Math.max(campo.min, Math.min(campo.max, Math.round(Number(bruto) || 0))));
+      let v: any;
+      if (campo.tipo === 'lista') v = bruto.split(',').map((t) => t.trim()).filter(Boolean);
+      else if (campo.tipo === 'opcao') { if (bruto === '' && !campo.opcional) return; v = bruto === '' ? null : bruto; }
+      else if (bruto === '') { if (!campo.opcional) return; v = null; }
+      else {
+        const n = Number(bruto.replace(',', '.')); if (!Number.isFinite(n)) return;
+        const passo = campo.passo ?? 1;
+        v = Math.max(campo.min, Math.min(campo.max, Math.round(n / passo) * passo));
+      }
+      alvo.escreve(campo, v);
       const lab = inp.closest('.eqm-c');
-      if (lab) lab.classList.toggle('dif', valorCampo(alvo.base, alvo.mod(), campo) !== baseCampo(alvo.base, campo));
+      const orig = alvo.origem();
+      if (lab) lab.classList.toggle('dif', !!orig && JSON.stringify(baseCampo(alvo.item(), campo) ?? null) !== JSON.stringify(baseCampo(orig, campo) ?? null));
       alvo.redesenha(); renderDerived(); renderCombate(); save();
-    });
+    };
+    box.addEventListener('input', (e) => { if (!(e.target as HTMLElement).closest('select')) aoEditar(e); });
+    box.addEventListener('change', (e) => { if ((e.target as HTMLElement).closest('select[data-eqm]')) aoEditar(e); });
   }
   ligarAjustes(el('eq-arsenal'));
   ligarAjustes(el('eq-armaduras'));
@@ -2820,7 +2881,8 @@ export function montarFicha(opts: FichaOpts) {
   el('raca-sel').addEventListener('change', (e) => {
     if (opts.readOnly) return;
     S.raca = (e.target as HTMLSelectElement).value;
-    if (!massaEscolhida) S.corpo = {...S.corpo,massa:massaDoJogador({raca:S.raca})};
+    // D-260: sem massa escrita, nada se grava; o leitor refaz o padrão pela raça nova.
+    if (!massaEscolhida && S.corpo) delete S.corpo.massa;
     // A troca de raça mexe nos DOIS lados agora (`M-30b`): o teto pode ter
     // descido (e o que passou dele desce junto) e o PISO pode ter subido (e o que
     // ficou abaixo sobe, porque aquele ponto passou a ser de graça).

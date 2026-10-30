@@ -59,7 +59,7 @@
     {
       "id": "investindo", "nome": "Investindo", "icone": "⇨", "grupo": "posicao", "cor": "alerta",
       "defesa": -2,
-      "nota": "Atravessou o Preparo correndo em vez de andando: −2 de Defesa além do que o Preparo já cobra, e +1d6 no dano do golpe (o dado o mestre soma à mão, como o resto do que é situacional).",
+      "nota": "Atravessou o Preparo correndo em vez de andando: −2 de Defesa além do que o Preparo já cobra, e no dano do golpe a Força mais uma vez, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; duas mãos, de × 2 para × 3). No Grid, a folha do golpe a soma; na aba Combate, o mestre soma à mão.",
       "fonte": "combate · movimento"
     },
     {

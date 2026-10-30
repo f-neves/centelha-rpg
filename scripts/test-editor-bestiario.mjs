@@ -14,9 +14,16 @@ try {
   await p.waitForSelector('#besta-nova',{timeout:60000});
   await p.evaluate(()=>{document.body.classList.add('pode-editar');document.querySelectorAll('template.besta-adiada').forEach(t=>t.replaceWith(t.content.cloneNode(true)));});
   await p.click('#besta-nova');
-  await p.waitForFunction(()=>!document.getElementById('editbox').hidden&&document.getElementById('ed-json').value.length>0);
+  await p.waitForFunction(()=>!document.getElementById('editbox').hidden&&document.getElementById('ed-der').textContent.length>0,{timeout:30000}).catch(async e=>{console.log(await p.$eval('#ed-status',x=>x.textContent));throw e;});
   ok(await p.$eval('#ed-der',e=>JSON.parse(e.textContent).pv===31),'nova criatura: 31 PV pelo motor');
-  await p.$eval('#ed-fonte',e=>{const c=JSON.parse(e.value);c.atributos.vigor=4;e.value=JSON.stringify(c);e.dispatchEvent(new Event('input',{bubbles:true}));});
+  // O item 4 (2d982ceb): o rascunho novo não inventa texto, e fica marcado incompleto até quem edita escrever.
+  const rascunho=await p.$eval('#ed-fonte',e=>JSON.parse(e.value));
+  ok(['fisiologia','comportamento','descricao'].every(k=>!(k in rascunho)),'nova criatura: nenhum texto inventado (fisiologia, comportamento, descrição)');
+  ok(await p.$eval('#ed-json',e=>e.value===''),'nova criatura: rascunho incompleto não sai para exportar');
+  ok(await p.$eval('#ed-status',e=>/incompleto/.test(e.textContent)&&/fisiologia/.test(e.textContent)&&/comportamento/.test(e.textContent)&&/descricao/.test(e.textContent)),'nova criatura: o status diz o que falta');
+  await p.click('#ed-salvar');
+  ok(await p.evaluate(()=>!(JSON.parse(localStorage.getItem('centelha:bestiario:edicoes-v3')||'{}')['criatura-nova'])),'nova criatura: rascunho incompleto não é salvo');
+  await p.$eval('#ed-fonte',e=>{const c=JSON.parse(e.value);c.atributos.vigor=4;c.fisiologia={respiracao:'respira ar',mente:'raciocina',tracos:'corpo de teste'};c.comportamento={social:'sozinho'};c.descricao='Criatura de teste.';e.value=JSON.stringify(c);e.dispatchEvent(new Event('input',{bubbles:true}));});
   ok(await p.$eval('#ed-der',e=>JSON.parse(e.textContent).pv===37),'editar Vigor recalcula 37 PV');
   const fonte=await p.$eval('#ed-json',e=>JSON.parse(e.value));
   ok(fonte.atributos.vigor===4&&fonte.virtudes.bravura===1&&!('pv'in fonte)&&!('attrs'in fonte),'exportação usa nomes unificados e não grava PV');
@@ -30,5 +37,11 @@ try {
   ok(solar.ataques.find(a=>a.nome==='Arco longo')?.danoMedio===20.5,'Solar no editor respeita o teto do arco, 20,5');
   ok(await p.$eval('#ed-fonte',e=>JSON.parse(e.value).revisao.length===0),'fonte pública não traz a revisão privada');
   ok(erros.length===0,'nenhum erro de página: '+erros.join('; '));
+  await p.goto(dev.url+'/artes',{waitUntil:'domcontentloaded'});
+  await p.waitForFunction(()=>location.pathname.endsWith('/artes/regras'),{timeout:30000});
+  const ico=await p.$eval('link[rel=icon][sizes=any]',el=>el.href);
+  ok(ico.includes('/centelha-rpg/favicon.ico'),'Artes: favicon usa o base');
+  const icone=await p.evaluate(async u=>(await fetch(u)).status,ico);
+  ok(icone===200,'Artes: favicon responde 200 depois do redirecionamento');
 } finally {await browser.close();await dev.parar();}
 if(falhas.length)process.exitCode=1;else{carimbar('test-editor-bestiario');console.log('✓ editor unificado OK');}

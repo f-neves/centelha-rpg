@@ -15,7 +15,8 @@
     "profundidade": 0.15,
     "comprimento": null,
     "massa": 18,
-    "area": 0.24
+    "area": 0.24,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -76,19 +77,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:picareta-de-guerra"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Picareta de guerra",
-      "arma": "picareta-de-guerra",
-      "habilidade": "armas"
+      "arma": "picareta-de-guerra"
     }
   ],
   "habilidadesEspeciais": [

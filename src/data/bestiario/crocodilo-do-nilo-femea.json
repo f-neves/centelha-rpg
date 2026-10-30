@@ -102,7 +102,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -178,7 +177,6 @@
   },
   "comportamento": {
     "social": "solitário na caça; agrega-se no sol e na carcaça grande, com hierarquia rígida por tamanho, e anda centenas de metros até ela",
-    "atividade": "",
     "dieta": "carnívoro (até 70% de peixe no adulto)",
     "caca": "emboscada",
     "dianteDeGente": "ataca"
@@ -192,7 +190,7 @@
       "tropical"
     ]
   },
-  "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça . Quantos leva de uma vez: confiável.",
+  "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça. Quantos leva de uma vez: confiável.",
   "lore": [],
   "imagens": [
     "bestiario/crocodilo-do-nilo-femea_criatura.webp"

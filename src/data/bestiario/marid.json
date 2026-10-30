@@ -96,7 +96,6 @@
     {
       "nome": "Pancada de maré",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -244,8 +243,15 @@
     {
       "id": "disfarce",
       "nome": "disfarce",
+      "outraForma": "um elemental da água ou um gigante",
+      "corpo": {
+        "altura": 1.78,
+        "largura": 0.48,
+        "profundidade": 0.3,
+        "area": 0.64
+      },
       "fisiologia": {
-        "camuflagem": "passa pela criatura que imita"
+        "camuflagem": "passa por um humano"
       }
     }
   ],

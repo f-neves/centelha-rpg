@@ -16,7 +16,9 @@
     "comprimento": null,
     "massa": 36,
     "area": 0.39,
-    "linhaPV": "abaixo"
+    "posturaDoTamanho": "de frente",
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "corpo magro, parte do peso é pano"
   },
   "couraca": 0,
   "atributos": {
@@ -70,19 +72,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:adaga"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Adaga",
-      "arma": "adaga",
-      "habilidade": "armas"
+      "arma": "adaga"
     }
   ],
   "habilidadesEspeciais": [

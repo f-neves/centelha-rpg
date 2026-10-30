@@ -17,7 +17,8 @@
     "comprimentoSemCauda": 1.05,
     "caudaGrossa": false,
     "massa": 120,
-    "area": 0.48
+    "area": 0.48,
+    "posturaDoTamanho": "de cima"
   },
   "couraca": 2,
   "atributos": {
@@ -82,7 +83,6 @@
     {
       "nome": "Antenas",
       "parte": "antenas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -99,7 +99,6 @@
     {
       "nome": "Mordida",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

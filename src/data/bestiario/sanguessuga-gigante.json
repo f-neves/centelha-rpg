@@ -94,7 +94,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -173,7 +172,6 @@
   },
   "comportamento": {
     "social": "solitário",
-    "atividade": "",
     "dieta": "sangue",
     "caca": "espera e vai ao calor",
     "dianteDeGente": "ataca"

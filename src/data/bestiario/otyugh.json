@@ -15,7 +15,8 @@
     "profundidade": null,
     "comprimento": null,
     "massa": 500,
-    "area": 1.87
+    "area": 1.87,
+    "posturaDoTamanho": "de frente, tentáculos erguidos"
   },
   "couraca": 2,
   "atributos": {
@@ -98,7 +99,6 @@
     {
       "nome": "Mordida",
       "parte": "boca-larga-de-dentes",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -115,7 +115,6 @@
     {
       "nome": "Tentáculo",
       "parte": "tentaculo-de-ponta-dura",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -142,7 +141,7 @@
       "area": "um alvo por tentáculo",
       "efeito": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca",
       "dano": "o do Tentáculo",
-      "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2",
+      "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o otyugh erra o Manter do Agarrar do livro (Força 6 + Briga 4, com o Agarrão +2)",
       "limiteDeUso": "dois alvos agarrados, um em cada tentáculo"
     },
     {
@@ -201,7 +200,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "camuflagem": "some no próprio lixo; Furtividade (enterrado no próprio lixo) +3",
     "mente": "simples; guarda o covil e faz acordo com quem o alimenta",
     "tracos": "corpo redondo de couro rugoso coberto de crosta de lodo, três pernas curtas, talo com os olhos, dois tentáculos de ponta dura e uma boca larga cheia de dentes"

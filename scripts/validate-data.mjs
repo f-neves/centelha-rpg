@@ -586,19 +586,22 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
       fail(`a condição "investindo" (Defesa ${cond.defesa}) discorda de `
         + `combate.movimento.investida.defesaExtra (${inv.defesaExtra}) no regras.json`);
     }
-    if (!temNum(cond.nota, inv.defesaExtra) || !temNum(cond.nota, `+${inv.danoDados}d6`)) {
-      fail(`a nota da condição "investindo" não repete os números da régua `
-        + `(${inv.defesaExtra} de Defesa e +${inv.danoDados}d6): "${String(cond.nota).slice(0, 60)}…"`);
+    // O dano da Investida é a Força mais uma vez, e nenhum dado a mais (P20-b, decisão do autor de 30/10/2026: o
+    // +1d6 saiu). O texto tem de dizer a Força a mais e não pode voltar a prometer dado.
+    if (!temNum(cond.nota, inv.defesaExtra) || !/Força mais uma vez/.test(cond.nota) || /d6/.test(cond.nota)) {
+      fail(`a nota da condição "investindo" não repete a régua `
+        + `(${inv.defesaExtra} de Defesa, a Força mais uma vez, sem dado): "${String(cond.nota).slice(0, 60)}…"`);
     }
   }
 
   const cap = fs.readFileSync(path.join(RAIZ, 'src/content/chapters/combate.md'), 'utf8');
   const linha = cap.split('\n').find((l) => /Preparo investindo/.test(l));
   if (!linha) fail('o capítulo de combate perdeu a linha "Preparo investindo" da tabela da Investida');
-  else if (!temNum(linha, inv.defesaExtra) || !temNum(linha, `+${inv.danoDados}d6`)) {
+  else if (!temNum(linha, inv.defesaExtra) || !/mais uma vez/.test(linha) || /d6/.test(linha)) {
     fail(`a tabela do capítulo discorda da régua da Investida `
-      + `(esperado ${inv.defesaExtra} e +${inv.danoDados}d6): "${linha.trim()}"`);
+      + `(esperado ${inv.defesaExtra} e a Força mais uma vez, sem dado): "${linha.trim()}"`);
   }
+  if ('danoDados' in inv) fail('regras.json: combate.movimento.investida voltou a ter danoDados; a Investida não soma dado (P20-b)');
 
   // E O QUARTO NÚMERO NÃO VOLTA. O −6 morava na `travessiaNota` e só fechava se
   // a Investida carregasse o −4 da Corrida MAIS o −2 dela. Decidido em
@@ -1023,7 +1026,7 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
 //
 // As 324 fontes usam o contrato unificado e os catálogos vigentes.
 {
-  const {criaturaNovaSchema,HABILIDADES_DE_CRIATURA}=await import('./criatura-schema.mjs');
+  const {criaturaParaLeituraSchema,HABILIDADES_DE_CRIATURA}=await import('./criatura-schema.mjs');
   const PASTA=path.join(DIR,'bestiario');
   const SEC=new Set((data['habilidades-secundarias']||[]).map(x=>x.id));
   const ARMD=new Set((data.armaduras||[]).map(x=>x.id));
@@ -1033,7 +1036,7 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
   for(const f of arqs){
     const onde='bestiario/'+f;let c;
     try{c=JSON.parse(fs.readFileSync(path.join(PASTA,f),'utf8'))}catch(e){fail(onde+': JSON inválido ('+e.message+')');continue}
-    const r=criaturaNovaSchema.safeParse(c);
+    const r=criaturaParaLeituraSchema.safeParse(c);
     if(!r.success){for(const i of r.error.issues)fail(onde+': '+(i.path.join('.')||'(raiz)')+' · '+i.message);continue}
     if(c.id+'.json'!==f)fail(onde+': id diferente do arquivo');
     for(const k of Object.keys(c.habilidades))if(!H.has(k)&&!extras.has(k))fail(onde+': Habilidade inexistente '+k);
@@ -1041,7 +1044,7 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
     for(const k of Object.keys(c.artes))if(!ART.has(k))fail(onde+': Arte inexistente '+k);
     for(const a of c.ataques){
       if(a.arma&&!ARMAS.has(a.arma))fail(onde+': arma inexistente '+a.arma);
-      if(!H.has(a.habilidade)&&!SEC.has(a.habilidade)&&!extras.has(a.habilidade))fail(onde+': Habilidade de ataque inexistente '+a.habilidade);
+      if(a.habilidade!==undefined&&!H.has(a.habilidade)&&!SEC.has(a.habilidade)&&!extras.has(a.habilidade))fail(onde+': Habilidade de ataque inexistente '+a.habilidade);
     }
     for(const imagem of c.imagens)if(!fs.existsSync(path.join(DIR,'..','..','public',imagem)))fail(onde+': imagem inexistente '+imagem);
     for(const h of c.habilidadesEspeciais){

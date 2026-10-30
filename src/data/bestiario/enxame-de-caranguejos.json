@@ -79,7 +79,6 @@
     {
       "nome": "Pinça do enxame",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -99,7 +98,7 @@
   "sentidos": [
     {
       "nome": "orientação",
-      "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde (Adamczewska e Morris 2001; ABC Science). Texto",
+      "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde. Texto",
       "formas": "todas"
     },
     {
@@ -112,7 +111,7 @@
     "respiracao": "ar (pulmões e brânquias; precisa de umidade)",
     "prendeRespiracao": "não se aplica (terrestre)",
     "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Imunidade Mental: \"Não possui mente unificada, sendo imune a efeitos que dependem de compreensão ou emoção\")",
-    "tracos": "carapaça que fura pneu de carro (Wikipédia, citando Parks Australia)"
+    "tracos": "carapaça que fura pneu de carro"
   },
   "aptidoes": {
     "montaria": false,
@@ -121,7 +120,7 @@
   },
   "comportamento": {
     "social": "agregação: 43,7 milhões de adultos na ilha, de 0,09 a 1,3 por m² (estimativas concorrentes)",
-    "atividade": "de horário; ativo na estação chuvosa, recolhido na seca",
+    "atividade": "ativo na estação chuvosa, recolhido na seca",
     "dieta": "onívoro e detritívoro: folha caída, fruto, flor, animal morto, lixo",
     "caca": "forrageio no chão da floresta; migração anual até o litoral, até 1.460 m por dia",
     "dianteDeGente": "não foge em massa nem ataca; morre esmagado por carro"

@@ -76,24 +76,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:lanca"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
     },
     {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -110,7 +104,6 @@
     {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

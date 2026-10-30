@@ -22,7 +22,8 @@
       "area": 0.26,
       "posturaDoTamanho": "asas fechadas"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "matéria elemental leve"
   },
   "couraca": 0,
   "atributos": {
@@ -88,7 +89,6 @@
     {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -130,13 +130,13 @@
         "nivel": 2
       },
       "ataque": "Sopro elemental",
-      "ativacao": "uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "3 m à frente",
       "area": "cone de 3 m",
       "efeito": "um jato do elemento dele queima todos no cone",
       "dano": "2d6 + Centelha, fogo (na Variante, o tipo do elemento)",
-      "resistencia": "esquiva, contra a jogada; quem se abaixa a tempo leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {

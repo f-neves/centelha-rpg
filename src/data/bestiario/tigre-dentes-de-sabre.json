@@ -85,7 +85,6 @@
     {
       "nome": "Mordida de sabre",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -102,7 +101,6 @@
     {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -146,11 +144,9 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "solitário : a vida em grupo está em debate (PMC2657756; Science News; o Florida Museum não conclui)",
-    "atividade": "",
+    "social": "solitário: a vida em grupo está em debate (PMC2657756; Science News; o Florida Museum não conclui)",
     "dieta": "carnívoro (presas grandes)",
-    "caca": "emboscada dos autores (as lesões na linha média do corpo)",
-    "dianteDeGente": ""
+    "caca": "emboscada dos autores (as lesões na linha média do corpo)"
   },
   "ecologia": {
     "terreno": [

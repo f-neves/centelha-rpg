@@ -71,7 +71,6 @@
     {
       "nome": "Pseudópode",
       "parte": "massa-contratil",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -130,7 +129,6 @@
   ],
   "fisiologia": {
     "respiracao": "trocas pela superfície",
-    "prendeRespiracao": "sem dado",
     "camuflagem": "massa de lodo escuro",
     "mente": "sem mente",
     "tracos": "Massa negra ácida que adere a paredes e tetos"

@@ -104,7 +104,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -181,7 +180,7 @@
       "tropical"
     ]
   },
-  "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa) .",
+  "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa).",
   "lore": [
     {
       "titulo": "Habitat",

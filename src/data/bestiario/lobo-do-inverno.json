@@ -19,7 +19,8 @@
     "massa": 200,
     "area": 1.13,
     "posturaDoTamanho": "silhueta vista de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "pelagem densa, corpo robusto"
   },
   "couraca": 1,
   "atributos": {
@@ -90,7 +91,6 @@
     {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -153,13 +153,13 @@
         "nivel": 3
       },
       "ataque": "Sopro gélido",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "4,5 m à frente",
       "area": "cone de 4,5 m",
       "efeito": "um vento congelante que cobre o chão de geada",
       "dano": "2d6 + Centelha, gelo",
-      "resistencia": "corpo, Vigor + Resistência contra a jogada do sopro; quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     }
   ],

@@ -19,7 +19,8 @@
     "profundidade": 0.23,
     "comprimento": null,
     "massa": 80,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -92,7 +93,6 @@
     {
       "nome": "Garras",
       "parte": "maos-de-tigre",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

@@ -106,7 +106,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -123,7 +122,6 @@
     {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -165,13 +163,13 @@
         "nivel": 2
       },
       "ataque": "Sopro de fogo",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "cone de 9 m",
       "efeito": "o fogo queima tudo no cone",
       "dano": "3d6 + Centelha, fogo",
-      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -185,7 +183,7 @@
       "nome": "Multiataque",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+      "efeito": "garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
       "nome": "Presença",

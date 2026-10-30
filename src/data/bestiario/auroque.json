@@ -86,7 +86,6 @@
     {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -103,7 +102,6 @@
     {
       "nome": "Investida (marrada)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -111,7 +109,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -149,14 +147,14 @@
   "sentidos": [
     {
       "nome": "sentidos",
-      "descricao": "nada achado . A visão de 300° fica pela Especialidade natural, pelo boi",
+      "descricao": "nada achado A visão de 300° fica pela Especialidade natural, pelo boi",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "chifres longos nos dois sexos, curvos em três direções, a 60° do focinho; pernas longas; dianteira maior que a traseira (Wikipédia)"
+    "tracos": "chifres longos nos dois sexos, curvos em três direções, a 60° do focinho; pernas longas; dianteira maior que a traseira"
   },
   "aptidoes": {
     "montaria": false,
@@ -165,7 +163,6 @@
   },
   "comportamento": {
     "social": "rebanho pequeno no inverno; sozinho ou em grupos menores no verão",
-    "atividade": "",
     "dieta": "herbívoro (pastador, depois alimentação mista)",
     "caca": "pastagem",
     "dianteDeGente": "ameaça; ataca se provocado"

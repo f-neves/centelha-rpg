@@ -18,6 +18,8 @@ import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import { imagemDe, escolhaDe } from './imagem-escolhida';
+import { BASE_NOTA, baseTxt, linhaPVTxt } from './besta-card';
+import { linhaPVNaZona, massaDaConta } from './motor';
 export { imagemDe, alternarImagem } from './imagem-escolhida'; import { escolhaDe as escolhaVestidaDe, combateNaEscolha, poolComPenalidade, alternarVestida as alternarVestidaAqui } from './defesa-vestida'; /** D-206: a Defesa do OUTRO estado (a que a mesa não usa agora), para listas que mostram as duas; null sem equipamento. */ export const defesaOutraDe = (id: string): number | null => { const cb = MON[id]?.combate; const e = escolhaVestidaDe(id, cb); return e == null ? null : e === 'com' ? cb.defesa : cb.vestida.defesa; }; /** D-206: a Defesa que a mesa usa para a criatura, pela escolha deste aparelho. */ export const defesaNaMesaDe = (id: string): number | null => combateNaEscolha(MON[id]?.combate || {}, escolhaVestidaDe(id, MON[id]?.combate)).defesa ?? null; export { alternarVestida } from './defesa-vestida';
 
 
@@ -128,6 +130,12 @@ export interface ResumoCombate {
    */
   centelha?: number;
   /**
+   * A Força que a ação de Investida soma mais uma vez no dano do golpe (D-269), calculada pelo motor (PC:
+   * `conjuntoPersonagem`; criatura: `vistaPublicaCriatura`). `0` por omissão, como a Centelha: o golpe de longe e a
+   * peça de cena não investem com Força nenhuma a mais.
+   */
+  forcaInvestida?: number;
+  /**
    * OS SENTIDOS, e este bloco é de 04/09/2026, para o golpe vindo do escuro.
    *
    * A régua compara a Furtividade de quem ataca com a Percepção Passiva do
@@ -229,7 +237,8 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
   if (c.tipo === 'pc' && fichaPorId[c.personagem_id]) {
     try {
       const r = resumoCombatePC(fichaPorId[c.personagem_id]) as any;
-      return { ...r, velocidade: null, centelha: fichaPorId[c.personagem_id]?.centelha || 0 };
+      // A Velocidade é a do item que a ficha guarda (D-259), e não a do catálogo pelo nome.
+      return { ...r, velocidade: r.velocidade ?? null, centelha: fichaPorId[c.personagem_id]?.centelha || 0 };
     } catch { return null; }
   }
   if (c.tipo === 'criatura') {
@@ -258,6 +267,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       atributos: m?.atributos ?? null,
       pericias: m ? { ...m.habilidadesSec, ...m.habilidades } : null,
       centelha: m?.centelha || 0,
+      forcaInvestida: a0?.forcaInvestida ?? 0,
     };
   }
   return null;
@@ -330,6 +340,7 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
     atributos: ov.atributos ?? base?.atributos ?? null,
     pericias: ov.pericias ?? base?.pericias ?? null,
     centelha: ov.centelha ?? base?.centelha ?? 0,
+    forcaInvestida: ov.forcaInvestida ?? base?.forcaInvestida ?? 0,
   };
 }
 
@@ -370,14 +381,22 @@ export function cardCriaturaHTML(m: any): string {
   const porte = m.tamanho ? `<p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">${esc(m.tamanho)}</span><span class="pt-sep">·</span>${esc(m.corpo?.medida || '')}<span class="pt-sep">·</span>${esc(m.corpo?.peso || '')}</p>` : '';
   const fAbs = (a: any, n: number) => `${a.impacto}/${a.corte}/${a.perfuracao}${n ? `·N${n}` : ''}`; const vEsc = escolhaVestidaDe(m.id, cb); const vMarca = (x: any, sim: boolean) => (sim ? `<b>${x}</b>` : `${x}`); const abs = cb.absorcao ? (cb.vestida ? `${vMarca(fAbs(cb.absorcao, cb.resistenciaPerfuracao), vEsc === 'sem')} · ${vMarca(fAbs(cb.vestida.absorcao, cb.vestida.nivel), vEsc === 'com')} <small>c/ equip.</small>` : fAbs(cb.absorcao, cb.resistenciaPerfuracao)) : '-'; // D-206: as duas, a da mesa em negrito
   const stat = (dt: string, dd: any) => `<div><dt>${dt}</dt><dd>${dd ?? '-'}</dd></div>`;
-  const stats = `<dl class="besta-stats">${stat(m.enxame ? 'PV por quadrado' : 'PV', cb.pv)}${stat('Defesa', cb.vestida ? `${vMarca(cb.defesa, vEsc === 'sem')} · ${vMarca(cb.vestida.defesa, vEsc === 'com')} <small>c/ equip.</small>` : cb.defesa)}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}${cb.energia!=null ? stat('Energia',cb.energia) : ''}</dl>${cb.vestida ? `<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva ${cb.vestida.esquiva}, Bloqueio ${cb.vestida.bloqueio}, contra tiro ${cb.vestida.contraTiro}, Penalidade −${cb.vestida.penalidade}. <button type="button" class="btn-mini" data-vestida="${esc(m.id)}" title="A escolha do Mestre fica só neste aparelho (D-206)">A mesa usa: ${vEsc === 'com' ? 'com' : 'sem'} o equipamento · trocar</button></p>` : ''}`;
+  const stats = `<dl class="besta-stats">${stat(m.enxame ? 'PV por quadrado' : 'PV', cb.pv)}${stat('Defesa', (cb.vestida ? `${vMarca(cb.defesa, vEsc === 'sem')} · ${vMarca(cb.vestida.defesa, vEsc === 'com')} <small>c/ equip.</small>` : cb.defesa) + (cb.defesaOutraArma ? ` <small>(c/ ${esc(cb.defesaOutraArma.armaPrincipal)}; c/ ${esc(cb.defesaOutraArma.arma)}: ${cb.defesaOutraArma.defesa})</small>` : ''))}${stat('Def. Social', cb.defesaSocial)}${stat('Def. Mental', cb.defesaMental)}${stat('Absorção', abs)}${stat('Iniciativa', esc(cb.iniciativa || '-'))}${cb.energia!=null ? stat('Energia',cb.energia) : ''}</dl>${cb.vestida ? `<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva ${cb.vestida.esquiva}, Bloqueio ${cb.vestida.bloqueio}, contra tiro ${cb.vestida.contraTiro}, Penalidade −${cb.vestida.penalidade}. <button type="button" class="btn-mini" data-vestida="${esc(m.id)}" title="A escolha do Mestre fica só neste aparelho (D-206)">A mesa usa: ${vEsc === 'com' ? 'com' : 'sem'} o equipamento · trocar</button></p>` : ''}`;
   const atrib = m.atributos ? `<div class="besta-atrib"><span class="atr-lbl">Atributos</span><div class="atr-grid">${ATR.map(([k, full]) => `<span class="atr"><span class="atr-nm">${full}</span><span class="atr-v">${m.atributos[k] ?? 0}</span></span>`).join('')}</div></div>` : '';
   const tracos = m.virtudes ? `<div class="besta-tracos"><div class="tr-linha"><span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">${m.vontade ?? '-'}</span></span><span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">${m.aparencia ?? '-'} <small class="tr-mod">(${apMod(m.aparencia) >= 0 ? '+' : ''}${apMod(m.aparencia)})</small></span></span></div><div class="tr-virt"><span class="tr-nm">Virtudes</span><span class="tr-vv">Comp ${m.virtudes.compaixao} · Conv ${m.virtudes.conviccao} · Temp ${m.virtudes.temperanca} · Brav ${m.virtudes.valor}</span></div></div>` : '';
   const { fraquezas: elFraq, resistencias: elRes, imunidades: elImu } = elementosCombate(m);
   const elem = (elFraq.length || elRes.length || elImu.length)
     ? `<div class="besta-elem">${elFraq.map((f: string) => `<span class="el el-fraco" title="Fraqueza">▼ ${esc(f)}</span>`).join('')}${elRes.map((r: string) => `<span class="el el-forte" title="Resistência">▲ ${esc(r)}</span>`).join('')}${elImu.map((i: string) => `<span class="el el-imune" title="Imunidade">◆ ${esc(i)}</span>`).join('')}</div>` : '';
   const atk = (cb.ataques || []).length ? `<ul class="besta-atk">${cb.ataques.map((a: any) => `<li><span class="atk-nome">${esc(a.nome)}</span><span class="atk-rolls">Ataque: ${cb.vestida ? `${vMarca(esc(a.pool), vEsc === 'sem')} sem o equipamento · ${vMarca(esc(poolComPenalidade(a.pool, cb.vestida.penalidade)), vEsc === 'com')} com` : `<b>${esc(a.pool)}</b>`} · Dano <b>${fmtDano(esc(a.dano))}</b> · Velocidade ${a.speed}</span>${a.notas ? `<span class="atk-nota muted">${esc(a.notas)}</span>` : ''}</li>`).join('')}</ul>` : '';
-  const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Habilidades</h4><ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
+  // D-270 (L1): "Poderes" são os poderes da criatura (o que se chamava "Habilidades"); "Habilidades" são as de treino,
+  // com o nome do livro, que chegam resolvidas com a criatura inteira (`/dados/criatura/<id>.json`, campo `treino`).
+  const tr = m.treino;
+  const linhaTr = (rot: string, l: any[]) => (l?.length ? `<p class="ib-ref"><b>${rot}:</b> ${l.map((h: any) => `${esc(h.nome)} ${h.valor}`).join(' · ')}</p>` : '');
+  const treino = tr && (tr.primarias?.length || tr.secundarias?.length) ? `<h4 class="cc-h">Habilidades</h4>${linhaTr('Habilidades', tr.primarias)}${linhaTr('Secundárias', tr.secundarias)}` : '';
+  // O "base <Arte> <nível>" por extenso e a nota do que ele quer dizer (parecer da Leitora-novata, achado 6).
+  const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Poderes</h4>${m.habilidadesEspeciais.some((h: any) => h.base) ? `<p class="ib-ref muted">${esc(BASE_NOTA)}</p>` : ''}<ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}${esc(baseTxt(h.base, ARTE_NOME))}</li>`).join('')}</ul>` : '';
+  // Por que a linha de PV na zona de transição (achado 9); a versão magra da mesa não tem o corpo inteiro e fica sem.
+  const notaPV = m.enxame || !m.corpo || m.corpo.massa === undefined && !m.corpo.semMassa ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(m.corpo), m.atributos?.vigor ?? 0, m.corpo.linhaPV), cb.pv, m.corpo.linhaPVMotivo);
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
     ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`
     : `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
@@ -404,7 +423,7 @@ export function cardCriaturaHTML(m: any): string {
     <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
     ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
     ${porte}${m.formaPrincipal ? '<p>Forma: '+esc(m.formaPrincipal.nome)+'</p>' : ''}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
-    ${stats}${elem}${atrib}${tracos}${atk}${habs}${pods}${refs}${lore}
+    ${stats}${notaPV ? `<p class="ib-ref muted">${esc(notaPV)}</p>` : ''}${elem}${atrib}${tracos}${atk}${treino}${habs}${pods}${refs}${lore}
   </div></article>`;
 }
 

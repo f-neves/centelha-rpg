@@ -86,7 +86,6 @@
     {
       "nome": "Clava da cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -151,8 +150,6 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "",
-    "atividade": "",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "ameaça"

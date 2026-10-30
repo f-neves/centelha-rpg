@@ -73,7 +73,6 @@
     {
       "nome": "Golpe desarmado",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -165,7 +164,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "mente": "inteligente",
     "tracos": "Fada de pele semelhante a madeira, ligada à árvore onde vive"
   },

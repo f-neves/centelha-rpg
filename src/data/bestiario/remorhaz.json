@@ -17,7 +17,8 @@
     "massa": 1650,
     "area": 9,
     "posturaDoTamanho": "vista de cima",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "placas grossas, corpo robusto"
   },
   "couraca": 5,
   "atributos": {
@@ -75,7 +76,6 @@
     {
       "nome": "Mordida",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

@@ -15,7 +15,8 @@
     "profundidade": 0.23,
     "comprimento": 2.4,
     "massa": 90,
-    "area": 0.72
+    "area": 0.72,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
   "atributos": {
@@ -89,24 +90,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:maca-estrela"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Maça estrela",
-      "arma": "maca-estrela",
-      "habilidade": "armas"
+      "arma": "maca-estrela"
     },
     {
       "nome": "Rabada",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

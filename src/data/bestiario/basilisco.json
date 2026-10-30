@@ -81,7 +81,6 @@
     {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

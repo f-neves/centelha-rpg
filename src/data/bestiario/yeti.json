@@ -15,7 +15,8 @@
     "profundidade": 0.4,
     "comprimento": null,
     "massa": 360,
-    "area": 1.87
+    "area": 1.87,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
   "atributos": {
@@ -88,7 +89,6 @@
     {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

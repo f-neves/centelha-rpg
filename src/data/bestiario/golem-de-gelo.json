@@ -68,7 +68,6 @@
     {
       "nome": "Punho gelado",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -131,7 +130,7 @@
       "area": "cone de 6 m",
       "efeito": "um sopro de frio brutal castiga todos à frente",
       "dano": "3d6 + Centelha, gelo",
-      "resistencia": "esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {

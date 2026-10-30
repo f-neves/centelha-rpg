@@ -95,7 +95,6 @@
     {
       "nome": "Garras (talões)",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -112,7 +111,6 @@
     {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -129,7 +127,6 @@
     {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -137,7 +134,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -178,14 +175,14 @@
   "sentidos": [
     {
       "nome": "visão",
-      "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), com luz, herdado da águia . Com pouca luz não vale",
+      "descricao": "Prontidão (visão) +3 , com luz, herdado da águia . Com pouca luz não vale",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "corpo de águia na escala de 9 vezes. Não voaria por músculo: 750 kg é cerca de 10 vezes o Argentavis, que a 70 kg já não batia asa sem parar (Chatterjee et al. 2007), e cerca de 18 vezes o teto de 41 kg para planador de Sato et al. 2009. O voo do roc é dado de fantasia (D-105)"
+    "tracos": "corpo de águia na escala de 9 vezes; o voo é sobrenatural, pois o músculo não sustentaria este corpo"
   },
   "aptidoes": {
     "montaria": false,

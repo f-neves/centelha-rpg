@@ -14,7 +14,8 @@
     "profundidade": 0.25,
     "comprimento": null,
     "massa": 95,
-    "area": 0.8
+    "area": 0.8,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -68,11 +69,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:montante"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "placa-completa",
@@ -84,8 +81,7 @@
   "ataques": [
     {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
     }
   ],
   "habilidadesEspeciais": [

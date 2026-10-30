@@ -107,7 +107,6 @@
     {
       "nome": "Garras (golpe do mergulho)",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -124,7 +123,6 @@
     {
       "nome": "Bico (dente tomial)",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

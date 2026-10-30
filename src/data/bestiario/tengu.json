@@ -15,7 +15,8 @@
     "profundidade": 0.19,
     "comprimento": null,
     "massa": 55,
-    "area": 0.59
+    "area": 0.59,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -76,24 +77,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Bico",
       "parte": "bico-de-corvo",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

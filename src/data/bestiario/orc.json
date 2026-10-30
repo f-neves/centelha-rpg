@@ -15,7 +15,8 @@
     "profundidade": 0.26,
     "comprimento": null,
     "massa": 110,
-    "area": 0.89
+    "area": 0.89,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "bonusPV": 5,
@@ -71,19 +72,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:machado"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
     }
   ],
   "habilidadesEspeciais": [

@@ -107,7 +107,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -124,7 +123,6 @@
     {
       "nome": "Garra",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -194,10 +192,8 @@
   },
   "comportamento": {
     "social": "solitário (área do macho de 600 a 1.000 km²)",
-    "atividade": "",
     "dieta": "carnívoro e carniceiro",
-    "caca": "carniça no inverno; caça ungulado vulnerável, às vezes depois de dezenas de quilômetros",
-    "dianteDeGente": ""
+    "caca": "carniça no inverno; caça ungulado vulnerável, às vezes depois de dezenas de quilômetros"
   },
   "ecologia": {
     "terreno": [

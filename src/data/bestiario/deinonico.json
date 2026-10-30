@@ -85,7 +85,6 @@
     {
       "nome": "Garra em foice do pé",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -102,7 +101,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -119,7 +117,6 @@
     {
       "nome": "Garras da mão",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -182,10 +179,8 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "solitário , com agrupamento na carcaça; caça em grupo em disputa",
-    "atividade": "",
+    "social": "solitário, com agrupamento na carcaça; caça em grupo em disputa",
     "dieta": "carnívoro",
-    "caca": "",
     "dianteDeGente": "não se aplica"
   },
   "ecologia": {
@@ -255,10 +250,6 @@
     {
       "campo": "comportamento.social",
       "motivo": "Roach e Brinkman 2007 (agrupamento na carcaça) e Frederickson e colegas 2020 (convivência tolerante, sem bando de lobo) contra Ostrom e Maxwell 1995 e Brinkman 1998 (caça em grupo). A ficha segue a leitura solitária (diretriz 1)."
-    },
-    {
-      "campo": "comportamento.caca",
-      "motivo": "o modo de caça não se conhece; prender a presa no chão com o pé e comer viva é  de Fowler e colegas 2011."
     }
   ]
 }

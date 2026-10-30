@@ -19,7 +19,8 @@
     "massa": 215,
     "area": 1.58,
     "posturaDoTamanho": "vista de cima",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "couraça de osteodermos"
   },
   "couraca": 5,
   "atributos": {
@@ -104,7 +105,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -152,7 +152,7 @@
   "sentidos": [
     {
       "nome": "vibração",
-      "descricao": "Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance . Órgãos tegumentares (Wikipédia)",
+      "descricao": "Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance Órgãos tegumentares",
       "formas": "todas"
     },
     {
@@ -168,10 +168,10 @@
   ],
   "fisiologia": {
     "respiracao": "ar; vive entre a água e a margem",
-    "prendeRespiracao": "até 2 horas submerso em repouso total; mergulhos comuns de poucos minutos; até 30 minutos nadando submerso se ameaçado (Wikipédia). A Resistência (apneia) +3 não troca este campo",
-    "camuflagem": "água (fica com o corpo quase todo submerso até a presa chegar perto, Wikipédia)",
+    "prendeRespiracao": "até 2 horas submerso em repouso total; mergulhos comuns de poucos minutos; até 30 minutos nadando submerso se ameaçado. A Resistência (apneia) +3 não troca este campo",
+    "camuflagem": "água",
     "mente": "animal",
-    "tracos": "dependência de água (não se afasta muito dela para caçar em terra: até cerca de 50 m da margem, Wikipédia); fôlego curto em terra (\"fica exausto fácil em terra\", SDZG); os músculos que abrem a boca são muito fracos (Wikipédia), o que fica para o Mestre"
+    "tracos": "dependência de água; fôlego curto em terra (\"fica exausto fácil em terra\", SDZG); os músculos que abrem a boca são muito fracos, o que fica para o Mestre"
   },
   "aptidoes": {
     "montaria": false,
@@ -180,7 +180,6 @@
   },
   "comportamento": {
     "social": "solitário na caça; agrega-se no sol e na carcaça grande, com hierarquia rígida por tamanho, e anda centenas de metros até ela",
-    "atividade": "",
     "dieta": "carnívoro (até 70% de peixe no adulto)",
     "caca": "emboscada",
     "dianteDeGente": "ataca"

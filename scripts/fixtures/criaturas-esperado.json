@@ -1,7 +1,7 @@
 {
  "fonte": {
   "pasta": "tmp/arquiteto/bestiario/fichas-v3",
-  "data": "2026-10-28",
+  "data": "2026-10-30",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
  },
@@ -47,23 +47,19 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -136,7 +132,8 @@
      "comprimentoSemCauda": 5,
      "caudaGrossa": true,
      "massa": 2700,
-     "area": 6.29
+     "area": 6.29,
+     "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
     "artes": {},
@@ -148,7 +145,6 @@
      {
       "nome": "Tentáculo",
       "parte": "tentaculo-de-3-m",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -192,7 +188,7 @@
    }
   },
   "aguia-gigante": {
-   "sha256": "ea51a88584b134c49d4b705c6597e37100bba989cd109f539812d85b16425dc5",
+   "sha256": "c1465cfaed8597c9d700c7bb0cbc17b577412b13faddab50bbd59b4694eb920d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -252,7 +248,6 @@
      {
       "nome": "Garras",
       "parte": "garra-taloes",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -269,7 +264,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -286,7 +280,6 @@
      {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -294,7 +287,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -336,14 +329,14 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 20,
+      "danoMedio": 14,
       "jogada": 12
      }
     ]
    }
   },
   "aguia-real": {
-   "sha256": "22dcaf7c6265ccb4ef7f0fe842ccbe975003c8db31a78c6e72f3ee874e97d38a",
+   "sha256": "bdc89c0e1f5edcc26c921a0e584a60156893d7dfd3e861eb5cfde2523422ae01",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -394,7 +387,8 @@
       "area": 0.38,
       "posturaDoTamanho": "asas fechadas, de lado, pousada"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "ave de osso oco, corpo leve"
     },
     "couraca": 0,
     "artes": {},
@@ -406,7 +400,6 @@
      {
       "nome": "Garras (talões)",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -423,7 +416,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -470,7 +462,7 @@
    }
   },
   "alce": {
-   "sha256": "d2bd5aa532f341773221291ffa6b3c6b84774bab6d17cd44b98f08169f7a03a9",
+   "sha256": "a1194fe5261f18e319cfb3a44df0f0901f4751613d7aed18d6079c7273969c90",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -529,7 +521,6 @@
      {
       "nome": "Coice (pata dianteira)",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -546,7 +537,6 @@
      {
       "nome": "Pisão (ergue-se e pisoteia)",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -554,7 +544,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -563,7 +553,6 @@
      {
       "nome": "Galhada (só macho)",
       "parte": "galhada",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -603,7 +592,7 @@
      {
       "nome": "Pisão (ergue-se e pisoteia)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      },
      {
       "nome": "Galhada (só macho)",
@@ -614,7 +603,7 @@
    }
   },
   "ankheg": {
-   "sha256": "858d9e2a8ef85f349eef07fd1fe9987c0a43bc94db4c59ad8b57ce86e1cacadb",
+   "sha256": "9f420ab585ab7a26a373fb6a7315153b18acdd1e793ac0841a843bf652b5a1b1",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -667,7 +656,6 @@
      {
       "nome": "Mandíbulas",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -793,7 +781,6 @@
      {
       "nome": "Clava da cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -888,7 +875,6 @@
      {
       "nome": "Mordida",
       "parte": "queliceras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -989,7 +975,6 @@
      {
       "nome": "Presas (quelíceras)",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -1075,18 +1060,13 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -1137,7 +1117,7 @@
    }
   },
   "arconte-lanterna": {
-   "sha256": "27f0d3de8e809b81bc01a99b6aaa3134bf5019e2da1b35111dcc1d2a7c4c3f6d",
+   "sha256": "82e14dd8f1e9c3e74220ff87abc9dd75c23260f33605d017a190c5910e2f3037",
    "entrada": {
     "categoria": "celestial",
     "centelha": 2,
@@ -1169,15 +1149,15 @@
     "corpo": {
      "postura": "pairando em combate, apoio outro",
      "apoio": "outro",
-     "altura": 1,
-     "largura": 1,
-     "profundidade": 1,
-     "comprimento": 1,
-     "comprimentoSemCauda": 1,
+     "altura": 0.6,
+     "largura": 0.6,
+     "profundidade": 0.6,
+     "comprimento": 0.6,
+     "comprimentoSemCauda": 0.6,
      "caudaGrossa": false,
      "semMassa": true,
-     "volume": 0.523599,
-     "area": 0.79,
+     "volume": 0.113097,
+     "area": 0.28,
      "posturaDoTamanho": "pairando",
      "naoErgue": true
     },
@@ -1208,10 +1188,10 @@
     ]
    },
    "esperado": {
-    "pv": 42,
+    "pv": 34,
     "pesoErguido": null,
-    "faixa": 4,
-    "tamanho": "Médio",
+    "faixa": 3,
+    "tamanho": "Pequeno",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 11,
@@ -1282,11 +1262,7 @@
      "protecao": 4
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "malha",
@@ -1297,8 +1273,7 @@
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      }
     ]
    },
@@ -1378,16 +1353,13 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-longo"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -1398,13 +1370,11 @@
     "ataques": [
      {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
      },
      {
       "nome": "Punhos",
       "parte": "punhos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -1503,16 +1473,13 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 65,
-     "area": 0.63
+     "area": 0.63,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:adaga"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -1523,8 +1490,7 @@
     "ataques": [
      {
       "nome": "Adaga",
-      "arma": "adaga",
-      "habilidade": "armas"
+      "arma": "adaga"
      }
     ]
    },
@@ -1619,7 +1585,6 @@
      {
       "nome": "Toque dilacerante",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -1663,7 +1628,7 @@
    }
   },
   "auroque": {
-   "sha256": "3d365fa8f85431cea130d3f080f71447ff633f48407da0001bbf0441e227e6b4",
+   "sha256": "01fa959d0a4b1529fbf02e69ab807ad4d9e748d11f5e657e91ca78b91f7ad046",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -1722,7 +1687,6 @@
      {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -1739,7 +1703,6 @@
      {
       "nome": "Investida (marrada)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -1747,7 +1710,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -1779,7 +1742,7 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
@@ -1835,23 +1798,17 @@
     "couraca": 2,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -1868,7 +1825,6 @@
      {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -1975,31 +1931,21 @@
     "couraca": 4,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      },
-      {
-       "ref": "a:chicote"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada flamejante",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Chicote de chamas",
-      "arma": "chicote",
-      "habilidade": "armas"
+      "arma": "chicote"
      },
      {
       "nome": "Garras",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -2094,16 +2040,13 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -2114,8 +2057,7 @@
     "ataques": [
      {
       "nome": "Facão",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -2212,7 +2154,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -2229,7 +2170,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula-de-lobo",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -2308,7 +2248,6 @@
        {
         "nome": "Mordida",
         "parte": "mandibula-de-lobo",
-        "habilidade": "briga",
         "classe": "media",
         "pgr": [
          2,
@@ -2389,7 +2328,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -2406,7 +2344,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula-de-lobo",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -2485,7 +2422,6 @@
        {
         "nome": "Mordida",
         "parte": "mandibula-de-lobo",
-        "habilidade": "briga",
         "classe": "media",
         "pgr": [
          2,
@@ -2559,7 +2495,6 @@
      {
       "nome": "Golpe",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -2656,7 +2591,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -2754,7 +2688,6 @@
      {
       "nome": "Mordida",
       "parte": "queliceras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -2771,7 +2704,6 @@
      {
       "nome": "Garras",
       "parte": "patas-dianteiras-farpadas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -2821,7 +2753,7 @@
    }
   },
   "behir": {
-   "sha256": "11484b1d93f9d96c6af3c36a9b42e37a1da74d24d9c076f9eed0bf2c0f37db71",
+   "sha256": "ff03fdebc86455a78b362af0afd24f20bd02ece5e91c8fa458d99a630e9e73c4",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -2877,7 +2809,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3006,7 +2937,6 @@
      {
       "nome": "Mandíbulas",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -3105,7 +3035,6 @@
      {
       "nome": "Mandíbulas",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3201,7 +3130,6 @@
      {
       "nome": "Tentáculo",
       "parte": "tentaculo-ponta-cornea",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3218,7 +3146,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3268,7 +3195,7 @@
    }
   },
   "bisao": {
-   "sha256": "df865523ce8b96d85de5355068cf3ae39564c2efa030d0564e451133b7ca61b5",
+   "sha256": "d7678e9e9dffefb54ada1b9c51cec31412750b92b21747eff8292b9c3e8516a4",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3327,7 +3254,6 @@
      {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3344,7 +3270,6 @@
      {
       "nome": "Investida (marrada)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -3352,7 +3277,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -3384,7 +3309,7 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
@@ -3445,7 +3370,6 @@
      {
       "nome": "Bocas",
       "parte": "bocas-na-superficie-da-massa",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -3538,7 +3462,6 @@
      {
       "nome": "Garras ressecadas",
       "parte": "unhas-longas-das-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3621,23 +3544,19 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 70,
-     "area": 0.61
+     "area": 0.61,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:maca-estrela"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Maça estrela",
-      "arma": "maca-estrela",
-      "habilidade": "armas"
+      "arma": "maca-estrela"
      }
     ]
    },
@@ -3669,7 +3588,7 @@
    }
   },
   "boi": {
-   "sha256": "e116803d9c4e080aa77ddb42068753af0ede5af06ef32da936390f6388b37b30",
+   "sha256": "7ee97b71b2d81631efaa469cf88a484b3c183d27c974551dd0e67612f090e6b8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3728,7 +3647,6 @@
      {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3745,7 +3663,6 @@
      {
       "nome": "Investida (marrada)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -3753,7 +3670,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -3785,13 +3702,13 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
   },
   "bralani": {
-   "sha256": "17c2cabff5c83419767b3abbd7b1606fb4302c8241b1c53b918461302ac9f10b",
+   "sha256": "f934dc93e9dd59db849bd2d9dae9a0d5a90d4178bbd0feffff0f5ebe1be7d849",
    "entrada": {
     "categoria": "outsider",
     "centelha": 4,
@@ -3832,7 +3749,8 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -3844,7 +3762,6 @@
      {
       "nome": "Golpe de vento",
       "parte": "o-proprio-redemoinho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -3911,7 +3828,7 @@
    }
   },
   "braquiossauro": {
-   "sha256": "9ee70e617de78f6e6af4f3913a077fbc340d60db7b991e0704c89109a44b9f56",
+   "sha256": "b34e8f81614569caac3fdaa9d29a47754a3ff398cb4497cefe8103d2dfd70028",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3970,7 +3887,6 @@
      {
       "nome": "Pisão",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -3978,7 +3894,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -4005,7 +3921,7 @@
      {
       "nome": "Pisão",
       "velocidade": 7,
-      "danoMedio": 35
+      "danoMedio": 21
      }
     ]
    }
@@ -4048,16 +3964,13 @@
      "profundidade": 0.26,
      "comprimento": null,
      "massa": 110,
-     "area": 0.87
+     "area": 0.87,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:martelo-de-guerra"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -4068,8 +3981,7 @@
     "ataques": [
      {
       "nome": "Martelo de guerra",
-      "arma": "martelo-de-guerra",
-      "habilidade": "armas"
+      "arma": "martelo-de-guerra"
      }
     ]
    },
@@ -4149,7 +4061,8 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 68,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -4161,7 +4074,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -4260,7 +4172,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -4277,7 +4188,6 @@
      {
       "nome": "Mordida",
       "parte": "dentes-negros",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -4367,7 +4277,8 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 80,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -4379,7 +4290,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -4462,23 +4372,19 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 113,
-     "area": 0.93
+     "area": 0.93,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      }
     ]
    },
@@ -4510,7 +4416,7 @@
    }
   },
   "bulette": {
-   "sha256": "73647850d4e9583d90256205e12074dae4a67fa14fa72f18ce6691e8c8025e27",
+   "sha256": "2725ad7adae790ee2e1f45d3e3d3ff8b1487dd70aa3ea60442bf283d07fe2111",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -4565,7 +4471,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -4582,7 +4487,6 @@
      {
       "nome": "Salto de emboscada",
       "parte": "corpo-e-boca",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -4590,7 +4494,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -4625,7 +4529,7 @@
      {
       "nome": "Salto de emboscada",
       "velocidade": 7,
-      "danoMedio": 28,
+      "danoMedio": 18,
       "jogada": 17
      }
     ]
@@ -4681,7 +4585,6 @@
      {
       "nome": "Patas-lâmina",
       "parte": "pata-de-lamina",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -4784,7 +4687,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -4884,7 +4786,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -4972,9 +4873,6 @@
     "equipamento": {
      "arsenal": [
       {
-       "ref": "a:espada-longa"
-      },
-      {
        "ref": "e:heater"
       }
      ],
@@ -4988,8 +4886,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -5070,16 +4967,13 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 90,
-     "area": 0.78
+     "area": 0.78,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "malha",
@@ -5090,13 +4984,11 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Espada longa a duas mãos",
       "parte": "espada-longa-duas-maos",
-      "habilidade": "armas",
       "classe": "media",
       "pgr": [
        2,
@@ -5195,23 +5087,19 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 65,
-     "area": 0.61
+     "area": 0.61,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:bordao"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Bordão",
-      "arma": "bordao",
-      "habilidade": "armas"
+      "arma": "bordao"
      }
     ]
    },
@@ -5243,7 +5131,7 @@
    }
   },
   "cao-de-guerra-nessiano": {
-   "sha256": "cf8c350c82a97f2ca851714d631940b3e14528686627e9d3c7fd44d26fb685ff",
+   "sha256": "fedf6f40040fb6fd21e90a0c4f1c445b747e5b5f9fafad211d4ff60470ad9a22",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -5298,7 +5186,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula-de-mastim",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -5365,7 +5252,7 @@
    }
   },
   "cao-infernal": {
-   "sha256": "72dfe1860f2df6ba62782dedd849bf4c11f74117f5e68e5a4f96b271f3bedf25",
+   "sha256": "9039a1cb552b33b876582407437f9b8301b191679a9eb25173aadfd934837ec3",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5420,7 +5307,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -5548,7 +5434,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -5633,7 +5518,8 @@
      "comprimentoSemCauda": 1.8,
      "caudaGrossa": false,
      "massa": 45,
-     "area": 2.16
+     "area": 2.16,
+     "posturaDoTamanho": "de cima, abas abertas"
     },
     "couraca": 0,
     "artes": {},
@@ -5645,7 +5531,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-na-face-de-baixo",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -5662,7 +5547,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda-de-chicote",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -5753,15 +5637,13 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 85,
-     "area": 0.74
+     "area": 0.74,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
      "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      },
       {
        "ref": "e:heater"
       }
@@ -5776,8 +5658,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -5819,7 +5700,7 @@
    }
   },
   "caranguejo-gigante": {
-   "sha256": "d1aadb4cf19c22eea37408fe2dab69caace653aaa4a2833ea6dbe1751321579a",
+   "sha256": "df434e9a6415c3f0933268e33c8802f3b7e801416c40400d36156c0bc0a37d7d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -5864,7 +5745,8 @@
      "massa": 202.5,
      "area": 1.17,
      "posturaDoTamanho": "de cima",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "carapaça mineralizada"
     },
     "couraca": 5,
     "artes": {},
@@ -5876,7 +5758,6 @@
      {
       "nome": "Pinça",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -5976,7 +5857,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -5993,7 +5873,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -6098,7 +5977,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -6115,7 +5993,6 @@
      {
       "nome": "Garra",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -6215,7 +6092,6 @@
      {
       "nome": "Cascos flamejantes",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -6232,7 +6108,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -6320,16 +6195,13 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 95,
-     "area": 0.8
+     "area": 0.8,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "placa-completa",
@@ -6340,8 +6212,7 @@
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      }
     ]
    },
@@ -6442,7 +6313,6 @@
      {
       "nome": "Coice",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -6459,7 +6329,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -6551,31 +6420,21 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      },
-      {
-       "ref": "a:azagaia"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Azagaia",
-      "arma": "azagaia",
-      "habilidade": "arremesso"
+      "arma": "azagaia"
      },
      {
       "nome": "Coice",
       "parte": "cascos-traseiros",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -6687,7 +6546,6 @@
      {
       "nome": "Forcípulas",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -6767,7 +6625,8 @@
      "profundidade": null,
      "comprimento": 2.7,
      "massa": 160,
-     "area": 1.9
+     "area": 1.9,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 5,
     "artes": {},
@@ -6779,7 +6638,6 @@
      {
       "nome": "Pinça",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -6796,7 +6654,6 @@
      {
       "nome": "Mandíbulas",
       "parte": "mandibulas-entre-os-tentaculos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -6899,7 +6756,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -7015,7 +6871,6 @@
      {
       "nome": "Mordida",
       "parte": "presas-de-ferro",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -7113,7 +6968,6 @@
      {
       "nome": "Bicada",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -7197,16 +7051,13 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 88,
-     "area": 0.76
+     "area": 0.76,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "placa-completa",
@@ -7217,8 +7068,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -7316,7 +7166,6 @@
      {
       "nome": "Garras",
       "parte": "garra-patas-da-frente",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -7333,7 +7182,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -7384,7 +7232,7 @@
    }
   },
   "corvo": {
-   "sha256": "166f4774fef6d7936f24e8f2014b7cd72ae2d1e2dba22f6eefcb87e2b988ca14",
+   "sha256": "4529f0f2707dcceaabc7842f9d2be10eaad86457def5c30cf9c0e9d3022754fa",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7432,7 +7280,8 @@
      "massa": 1.25,
      "area": 0.29,
      "posturaDoTamanho": "de baixo, asas abertas",
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "ave de osso oco, corpo leve"
     },
     "couraca": 0,
     "artes": {},
@@ -7444,7 +7293,6 @@
      {
       "nome": "Bicada",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -7485,7 +7333,7 @@
    }
   },
   "couatl": {
-   "sha256": "ba0c33f3e077db4e62862de3a79c644d6d2c5490b4c502a1214ebd3a9640fb15",
+   "sha256": "2a8b62bc40285dcdd026b897fdb9d60e3bd96f4903ddc09ea9fdbaee8a121ac9",
    "entrada": {
     "categoria": "outsider",
     "centelha": 5,
@@ -7550,7 +7398,6 @@
      {
       "nome": "Mordida venenosa",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -7592,6 +7439,23 @@
       "jogada": 21
      }
     ]
+   },
+   "formas": {
+    "disfarce": {
+     "nome": "disfarce",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      },
+      "ataques": []
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "crocodilo-do-nilo-femea": {
@@ -7654,7 +7518,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -7695,7 +7558,7 @@
    }
   },
   "crocodilo-do-nilo": {
-   "sha256": "a3c897ccecba3b877fbdc07b3597b17f11d1f458eb92436f0dd33bf0639e6fcd",
+   "sha256": "b1a8b7b92088e508940807a5db8b868fb07a80a9357673b498ac533b37282378",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7743,7 +7606,8 @@
      "massa": 215,
      "area": 1.58,
      "posturaDoTamanho": "vista de cima",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "couraça de osteodermos"
     },
     "couraca": 5,
     "artes": {},
@@ -7755,7 +7619,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -7832,7 +7695,8 @@
      "profundidade": null,
      "comprimento": 3,
      "massa": 27300,
-     "area": 9
+     "area": 9,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -7844,7 +7708,6 @@
      {
       "nome": "Pseudópode",
       "parte": "pseudopode",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -7928,7 +7791,8 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 62,
-     "area": 0.62
+     "area": 0.62,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {
@@ -7942,7 +7806,6 @@
      {
       "nome": "Soco",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -8045,7 +7908,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -8144,7 +8006,6 @@
      {
       "nome": "Garra em foice do pé",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -8161,7 +8022,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -8178,7 +8038,6 @@
      {
       "nome": "Garras da mão",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -8270,23 +8129,19 @@
      "profundidade": 0.19,
      "comprimento": null,
      "massa": 36,
-     "area": 0.39
+     "area": 0.39,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -8318,7 +8173,7 @@
    }
   },
   "deva-astral": {
-   "sha256": "ac608e1319fcf4afa06bddf2f8725a057ab2106303b2500f85410c41a8b37572",
+   "sha256": "0b8ccbf0878e347538f5f8d16cf86ba68d24926512dec74218c29cf4c5b54938",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -8372,18 +8227,13 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:maca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Maça",
-      "arma": "maca",
-      "habilidade": "armas"
+      "arma": "maca"
      }
     ]
    },
@@ -8413,6 +8263,25 @@
       "jogada": 20
      }
     ]
+   },
+   "formas": {
+    "disfarce": {
+     "nome": "disfarce",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      },
+      "equipamento": {
+       "arsenal": []
+      }
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "devorador-de-intelecto": {
@@ -8457,7 +8326,8 @@
      "profundidade": null,
      "comprimento": 0.45,
      "massa": 18,
-     "area": 0.18
+     "area": 0.18,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 0,
     "artes": {},
@@ -8469,7 +8339,6 @@
      {
       "nome": "Garras",
       "parte": "garras-das-patas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -8559,23 +8428,17 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:glaive-serrilhada"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Glaive serrilhada",
-      "arma": "glaive-serrilhada",
-      "habilidade": "armas"
+      "arma": "glaive-serrilhada"
      },
      {
       "nome": "Mordida",
       "parte": "boca-de-dentes-finos-sob-a-barba",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -8675,23 +8538,17 @@
     "couraca": 3,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:corrente-farpada"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Corrente farpada",
-      "arma": "corrente-farpada",
-      "habilidade": "armas"
+      "arma": "corrente-farpada"
      },
      {
       "nome": "Mordida",
       "parte": "boca-de-presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -8708,7 +8565,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda-de-ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -8813,23 +8669,17 @@
     "couraca": 4,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança de gelo",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Cauda",
       "parte": "cauda-de-ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -8846,7 +8696,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -8963,7 +8812,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -8980,7 +8828,6 @@
      {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -8997,7 +8844,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda-de-ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9107,7 +8953,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras-espinhosas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9208,7 +9053,6 @@
      {
       "nome": "Garras ósseas",
       "parte": "mao-de-garras-de-osso",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9225,7 +9069,6 @@
      {
       "nome": "Ferrão",
       "parte": "cauda-de-escorpiao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9332,7 +9175,6 @@
      {
       "nome": "Ferrão",
       "parte": "cauda-de-ferrao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -9431,7 +9273,6 @@
      {
       "nome": "Golpe de vento",
       "parte": "braco-envolto-em-vento-cortante",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -9534,7 +9375,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -9617,23 +9457,19 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -9665,7 +9501,7 @@
    }
   },
   "dracolisk": {
-   "sha256": "e143b5c4acefa5a3225edfc0f227a96b84bc70bb75cd52f385272863b577f8f7",
+   "sha256": "7630e5e8d878c093932eacae0c8bafffeb156b349099160588bb5cdc50e21ca1",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9723,7 +9559,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9740,7 +9575,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9814,7 +9648,7 @@
    }
   },
   "dragao-azul-adulto": {
-   "sha256": "a380188f28e8007f2260db423a919b53b716c536835fa2505414d162bd661779",
+   "sha256": "176fa64b8fad1de5443824931e4b1b6a93b236e17840e2e400c7d2915a7efe8c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -9880,7 +9714,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9897,7 +9730,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -9914,7 +9746,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -9994,7 +9825,7 @@
    }
   },
   "dragao-branco-jovem": {
-   "sha256": "a051c339a8338268436c513cae54663d8d100597ffcf366463efa7c47290147a",
+   "sha256": "520fcd97f9b31cbbd26317bd36b96ae09e00df40a428d58b503500f496c1c9f8",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -10060,7 +9891,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10077,7 +9907,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10150,7 +9979,7 @@
    }
   },
   "dragao-dourado-adulto": {
-   "sha256": "2fd0f8e945e844665d8c8b0ceb7c89c767ce0913023b7b75a560a89828be1545",
+   "sha256": "3e90f9951eeb5e2b083ba2aa4f96e020badf100124dd396c7c0ffe0f0d1f078c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10221,7 +10050,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10238,7 +10066,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10309,10 +10136,27 @@
       "jogada": 22
      }
     ]
+   },
+   "formas": {
+    "humana": {
+     "nome": "forma humana",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      },
+      "ataques": []
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "dragao-verde-adulto": {
-   "sha256": "11befbd8fae60694f7bac71f294fa031c72fe8e74fabd225fa9021d15bcf37bf",
+   "sha256": "3e880023b60b6261e8ffa094d9a943534c8de802fb8ca45b49daa26486a27b47",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10380,7 +10224,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10397,7 +10240,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10471,7 +10313,7 @@
    }
   },
   "dragao-vermelho-adulto": {
-   "sha256": "f80314a1a4971664550e0fbb08a7797cfb789d6db383b6d4ca4ff2cf7d326222",
+   "sha256": "11794594babf6dfd3451934bb57c1a56d6af30daaae0a74e8c9e69ba8f494eca",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10540,7 +10382,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10557,7 +10398,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10574,7 +10414,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -10654,7 +10493,7 @@
    }
   },
   "dragao-vermelho-anciao": {
-   "sha256": "b56dc2ded369d54aeda89017e22e6881683f240daf10bbcb5bec92f64659c3d3",
+   "sha256": "d9520b06fecccc1cccafda88fd8988cedbfc8829f71460bf465b71680290075c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10724,7 +10563,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10741,7 +10579,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10758,7 +10595,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -10838,7 +10674,7 @@
    }
   },
   "dragao-vermelho-jovem": {
-   "sha256": "c86110db52e9e7f1307865d018710d1317ac22346855aebcb7ba240b18eb3db3",
+   "sha256": "6b300ee6159d7019aa4a963af4c1dd5f1b085cc3fa613598a695b1aca9bf1cb9",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -10904,7 +10740,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -10921,7 +10756,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -11046,7 +10880,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras-curtas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -11063,7 +10896,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-de-dentes",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -11167,7 +10999,6 @@
      {
       "nome": "Golpe desarmado",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -11249,7 +11080,8 @@
      "profundidade": null,
      "comprimento": 1.22,
      "massa": 180,
-     "area": 2.07
+     "area": 2.07,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 1,
     "artes": {},
@@ -11261,7 +11093,6 @@
      {
       "nome": "Mordida",
       "parte": "queliceras-da-aranha",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -11343,23 +11174,19 @@
      "profundidade": 0.2,
      "comprimento": null,
      "massa": 55,
-     "area": 0.57
+     "area": 0.57,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -11428,16 +11255,13 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -11448,8 +11272,7 @@
     "ataques": [
      {
       "nome": "Lâmina leve",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -11530,23 +11353,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 55,
-     "area": 0.49
+     "area": 0.49,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      }
     ]
    },
@@ -11633,7 +11452,6 @@
      {
       "nome": "Punho em brasa",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -11735,7 +11553,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -11776,7 +11593,7 @@
    }
   },
   "elefante": {
-   "sha256": "327d247501bf3cbea4b8f65e64794b04ef262f9cdf1baf90717611e0418e45db",
+   "sha256": "198ad419c554a623f53c7545ed10de478ec00c7c391583d626d5d5736ce87c1e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -11836,7 +11653,6 @@
      {
       "nome": "Presada (só o macho com presa)",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -11853,7 +11669,6 @@
      {
       "nome": "Pisão (ou investida)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -11861,7 +11676,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -11893,7 +11708,7 @@
      {
       "nome": "Pisão (ou investida)",
       "velocidade": 7,
-      "danoMedio": 27
+      "danoMedio": 17
      }
     ]
    }
@@ -11953,7 +11768,6 @@
      {
       "nome": "Pancada de água",
       "parte": "braco-de-agua",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12048,7 +11862,6 @@
      {
       "nome": "Pancada de pedra",
       "parte": "braco-de-pedra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -12142,7 +11955,6 @@
      {
       "nome": "Pancada de pedra",
       "parte": "braco-de-pedra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12241,7 +12053,6 @@
      {
       "nome": "Pancada de vento",
       "parte": "rajada-do-redemoinho",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12338,7 +12149,6 @@
      {
       "nome": "Pancada flamejante",
       "parte": "braco-de-chama",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12442,7 +12252,6 @@
      {
       "nome": "Picada do enxame",
       "parte": "queliceras",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12483,7 +12292,7 @@
    }
   },
   "enxame-de-caranguejos": {
-   "sha256": "d07d26d4182b6fb95e104dec1c3c9fe3716dc0cb52b6d44d6df6153498542dc2",
+   "sha256": "7bf1ddf8e0db0961f936d9412fb80c4225829ba305ba0aaa9b992a44a5f98e01",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 20,
@@ -12543,7 +12352,6 @@
      {
       "nome": "Pinça do enxame",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12584,7 +12392,7 @@
    }
   },
   "enxame-de-centopeias": {
-   "sha256": "5319f991d66de04ca3e3ec15c7583c61aa69c62fbd23aaf074fc48799b69db68",
+   "sha256": "0c8f38a1e612be2af999103122ea892941935411e47642e844a0f733b52e85c0",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 250,
@@ -12644,7 +12452,6 @@
      {
       "nome": "Garra de veneno",
       "parte": "forcipulas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12745,7 +12552,6 @@
      {
       "nome": "Mordida do enxame",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12762,7 +12568,6 @@
      {
       "nome": "Ferroada do enxame",
       "parte": "ferrao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12871,7 +12676,6 @@
      {
       "nome": "Mordida do enxame",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -12975,7 +12779,6 @@
      {
       "nome": "Mordida do enxame",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -13016,7 +12819,7 @@
    }
   },
   "enxame-de-sanguessugas": {
-   "sha256": "c2e446c49935edd9d625e3cbffa15611310abc93493d687335ae02d9621b6a43",
+   "sha256": "f2f94be95aa356bdd2d5e2f258b5f4932ac97e60d9fb2515715a0c0b7da332cf",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 400,
@@ -13077,7 +12880,6 @@
      {
       "nome": "Mordida do enxame",
       "parte": "ventosa-com-tres-mandibulas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -13179,7 +12981,6 @@
      {
       "nome": "Ferroada do enxame",
       "parte": "ferrao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -13277,31 +13078,21 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-longo"
-      },
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
      },
      {
       "nome": "Espada flamejante",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Garras",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -13416,7 +13207,6 @@
      {
       "nome": "Pinça",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -13433,7 +13223,6 @@
      {
       "nome": "Ferrão",
       "parte": "ferrao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -13544,7 +13333,6 @@
      {
       "nome": "Garras",
       "parte": "garra-patas-da-frente",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -13640,7 +13428,6 @@
      {
       "nome": "Foice enferrujada",
       "parte": "ferramenta-na-mao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -13740,7 +13527,6 @@
      {
       "nome": "Toque dilacerante",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -13824,23 +13610,19 @@
      "profundidade": 0.17,
      "comprimento": null,
      "massa": 45,
-     "area": 0.54
+     "area": 0.54,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -13914,23 +13696,17 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Pancada",
       "parte": "mao-de-osso",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14039,7 +13815,6 @@
      {
       "nome": "Cauda de espinhos (thagomizer)",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -14118,7 +13893,8 @@
      "profundidade": 0.13,
      "comprimento": null,
      "massa": 16,
-     "area": 0.34
+     "area": 0.34,
+     "posturaDoTamanho": "de frente, braços abertos"
     },
     "couraca": 0,
     "artes": {},
@@ -14130,7 +13906,6 @@
      {
       "nome": "Garras",
       "parte": "maos-na-ponta-dos-bracos-longos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14214,7 +13989,8 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 90,
-     "area": 0.78
+     "area": 0.78,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
@@ -14226,7 +14002,6 @@
      {
       "nome": "Foices",
       "parte": "maos-em-foice-de-quitina",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -14243,7 +14018,6 @@
      {
       "nome": "Mordida",
       "parte": "queliceras",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14343,7 +14117,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -14450,7 +14223,6 @@
      {
       "nome": "Garras (golpe do mergulho)",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14467,7 +14239,6 @@
      {
       "nome": "Bico (dente tomial)",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14566,7 +14337,6 @@
      {
       "nome": "Toque corrupto",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14666,7 +14436,6 @@
      {
       "nome": "Soco",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14710,7 +14479,7 @@
    }
   },
   "fenix": {
-   "sha256": "5688fc80e1bad44db8704ec99788e8f4a45f3dab848df7daf40f4ee762d7d091",
+   "sha256": "678c049f85896c928a8cc50a60dffd5f268707b2822f29327118d004f7e02d67",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 6,
@@ -14772,7 +14541,6 @@
      {
       "nome": "Garras",
       "parte": "garra-taloes",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -14789,7 +14557,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -14806,7 +14573,6 @@
      {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -14814,7 +14580,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -14856,14 +14622,14 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 35,
+      "danoMedio": 24,
       "jogada": 26
      }
     ]
    }
   },
   "filhote-de-dragao-vermelho": {
-   "sha256": "c48c2808340c180b17d88e424377d35253285bc99daf1bed84055a318b89a0f6",
+   "sha256": "28c7f6fd966943299e8ad9f0a0607495517a7af4fcd7a693f056792a87ea7977",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -14929,7 +14695,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -14946,7 +14711,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -15020,7 +14784,7 @@
    }
   },
   "fogo-fatuo": {
-   "sha256": "e6f01e60161402e762087b005ec67071def680c272bccc826cde2dd34d8cee12",
+   "sha256": "82b158852e5384094e6c7269f22d810a3673834d0035be4560c38c81fd4deba2",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -15061,6 +14825,7 @@
      "semMassa": true,
      "volume": 0.0141,
      "area": 0.07,
+     "posturaDoTamanho": "vista de frente, flutuando",
      "naoErgue": true
     },
     "couraca": 0,
@@ -15073,7 +14838,6 @@
      {
       "nome": "Toque elétrico",
       "parte": "o-corpo-de-luz",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -15173,7 +14937,6 @@
      {
       "nome": "Mandíbulas",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -15190,7 +14953,6 @@
      {
       "nome": "Ferrão",
       "parte": "ferrao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -15275,7 +15037,8 @@
      "profundidade": null,
      "comprimento": 7.4,
      "massa": 3000,
-     "area": 8.6
+     "area": 8.6,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
     "artes": {},
@@ -15287,7 +15050,6 @@
      {
       "nome": "Tentáculo",
       "parte": "tentaculo-dos-ombros",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -15304,7 +15066,6 @@
      {
       "nome": "Língua",
       "parte": "lingua",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -15321,7 +15082,6 @@
      {
       "nome": "Bocada",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -15427,7 +15187,6 @@
      {
       "nome": "Tentáculo",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -15525,7 +15284,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-pedra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -15542,7 +15300,6 @@
      {
       "nome": "Chifres",
       "parte": "chifres-de-pedra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -15593,7 +15350,7 @@
    }
   },
   "gato": {
-   "sha256": "cca18232210487c85eb1fd119fceba825ac593056ad059fc7e79cfe9ea2051b5",
+   "sha256": "6e70febfcab29f6e8b0a4bbca4ea2125e1a74d0099e3a6615ab428a71fa08576",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -15641,7 +15398,8 @@
      "massa": 4.2,
      "area": 0.063,
      "posturaDoTamanho": "de lado",
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "corpo leve"
     },
     "couraca": 0,
     "artes": {},
@@ -15653,7 +15411,6 @@
      {
       "nome": "Garra",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -15670,7 +15427,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -15771,7 +15527,6 @@
      {
       "nome": "Pseudópode",
       "parte": "pseudopode",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -15869,18 +15624,13 @@
      "raio": 4
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -16011,7 +15761,6 @@
      {
       "nome": "Garras",
       "parte": "unhas-compridas-das-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -16028,7 +15777,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-de-dentes-de-comer-carne",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -16127,7 +15875,6 @@
      {
       "nome": "Garras",
       "parte": "unhas-compridas-das-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -16144,7 +15891,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-de-dentes-de-comer-carne",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -16246,7 +15992,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -16364,7 +16109,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -16484,7 +16228,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -16580,7 +16323,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -16704,7 +16446,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -16833,7 +16574,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -16956,7 +16696,6 @@
      {
       "nome": "Pancada",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -16973,7 +16712,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17072,7 +16810,6 @@
      {
       "nome": "Garras",
       "parte": "garra-quatro-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17089,7 +16826,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17194,7 +16930,6 @@
      {
       "nome": "Pinças",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17211,7 +16946,6 @@
      {
       "nome": "Garras",
       "parte": "mao-menor-de-garras",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -17300,28 +17034,23 @@
      "profundidade": 0.27,
      "comprimento": null,
      "massa": 135,
-     "area": 1.03
+     "area": 1.03,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      },
      {
       "nome": "Mordida",
       "parte": "focinho-de-hiena",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17409,23 +17138,19 @@
      "profundidade": 0.15,
      "comprimento": null,
      "massa": 18,
-     "area": 0.25
+     "area": 0.25,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -17506,7 +17231,6 @@
      {
       "nome": "Punho de argila",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17599,7 +17323,6 @@
      {
       "nome": "Punho",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17692,7 +17415,6 @@
      {
       "nome": "Punho de ferro",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -17736,7 +17458,7 @@
    }
   },
   "golem-de-gelo": {
-   "sha256": "8d6d5e08c981df75f56e0cb94e74ff1a965a66d5a9c48d7ba9645f2d434239f2",
+   "sha256": "a054f20cd2a6c88da2f0e1025670b29c9ab34375cc2402112eaaedcf9f30331e",
    "entrada": {
     "categoria": "construto",
     "centelha": 1,
@@ -17785,7 +17507,6 @@
      {
       "nome": "Punho gelado",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17885,7 +17606,6 @@
      {
       "nome": "Punho de pedra",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -17929,7 +17649,7 @@
    }
   },
   "golfinho": {
-   "sha256": "cdfde5db6c6421887d835b61f53cfedb4bcdadc9d7d7e3b7b5d578bb381116fd",
+   "sha256": "bb86f4340190d493a91b3baa0f975240da704bb87f0704ec381fbb3fd6f6edcc",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -17987,7 +17707,6 @@
      {
       "nome": "Investida de focinho",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -17995,7 +17714,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
@@ -18004,7 +17723,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -18039,7 +17757,7 @@
      {
       "nome": "Investida de focinho",
       "velocidade": 7,
-      "danoMedio": 17
+      "danoMedio": 12
      },
      {
       "nome": "Mordida",
@@ -18050,7 +17768,7 @@
    }
   },
   "gorgona-touro-de-ferro": {
-   "sha256": "8f921aa5952abee69a43914b2b0971bbae065dda562f4890d70938038787e5c7",
+   "sha256": "6b02c5096a65df163e99b2f702eef84916b64f47aedb045a8c465834aef62152",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -18103,7 +17821,6 @@
      {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -18120,7 +17837,6 @@
      {
       "nome": "Investida (marrada)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -18128,7 +17844,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -18180,7 +17896,7 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 26,
+      "danoMedio": 18,
       "jogada": 19
      },
      {
@@ -18193,7 +17909,7 @@
    }
   },
   "gorila": {
-   "sha256": "e7447ed4182dba3e4d61f0e33e05538aa16fe79c692f6d6f000d42384fa1d8f5",
+   "sha256": "40f0c8104f0c5415d514e5e219cfd3dc790afb0ca3a725225bed3559df54f781",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -18239,7 +17955,8 @@
      "massa": 206,
      "area": 0.89,
      "posturaDoTamanho": "de frente, em pé",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "primata robusto"
     },
     "couraca": 1,
     "artes": {},
@@ -18251,7 +17968,6 @@
      {
       "nome": "Pancada",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -18268,7 +17984,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -18314,7 +18029,7 @@
    }
   },
   "grande-wyrm-vermelho": {
-   "sha256": "132878566bc3ee406282c11a283a3144f7ab6e09c3ae19b1f77bff339395f7b8",
+   "sha256": "2d261d7a7ae60fa88ea00b757416ac9efe1aa47ded6c4227dd71f62085eaac2c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 9,
@@ -18384,7 +18099,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -18401,7 +18115,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -18418,7 +18131,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -18435,7 +18147,6 @@
      {
       "nome": "Asas",
       "parte": "asa",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -18521,7 +18232,7 @@
    }
   },
   "grifo": {
-   "sha256": "038331da5390eec8fb461a0023e2f3ae926e9bda00be5e201fc124b9fac68cb5",
+   "sha256": "bd18d1aea9f1bae3633f4e38110ca46316dc5b1623f3c6868ed730143d984312",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -18575,7 +18286,8 @@
       "posturaDoTamanho": "de lado, asas fechadas, pousado",
       "tamanhoEscolhido": "grande"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "voador, meio ave de osso oco"
     },
     "couraca": 1,
     "artes": {},
@@ -18587,7 +18299,6 @@
      {
       "nome": "Garras",
       "parte": "garra-patas-da-frente",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -18604,7 +18315,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -18621,7 +18331,6 @@
      {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -18629,7 +18338,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -18670,7 +18379,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 20
+      "danoMedio": 14
      }
     ]
    }
@@ -18716,15 +18425,13 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 78,
-     "area": 0.7
+     "area": 0.7,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
      "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      },
       {
        "ref": "e:redondo"
       }
@@ -18739,8 +18446,7 @@
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -18841,7 +18547,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -18858,7 +18563,6 @@
      {
       "nome": "Patada com o ergot",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -18961,7 +18665,6 @@
      {
       "nome": "Garras",
       "parte": "pes-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -19065,7 +18768,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -19082,7 +18784,6 @@
      {
       "nome": "Garras",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -19186,7 +18887,6 @@
      {
       "nome": "Mordida",
       "parte": "cabeca-uma-das-cinco",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -19290,7 +18990,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -19390,7 +19089,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -19431,7 +19129,7 @@
    }
   },
   "hipogrifo": {
-   "sha256": "e64b86b483256fc3a25c3dc2e342efb98389c6b7477050b3b95e7404449c25ab",
+   "sha256": "a725175d5c90ea662c9c94a35dafa919a0ca3f93b99ca91dd56eb62d17e6c186",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -19490,7 +19188,6 @@
      {
       "nome": "Garras",
       "parte": "garra-patas-da-frente",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -19507,7 +19204,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -19524,7 +19220,6 @@
      {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -19532,7 +19227,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -19574,7 +19269,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 20,
+      "danoMedio": 14,
       "jogada": 11
      }
     ]
@@ -19621,23 +19316,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 73,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -19710,28 +19401,23 @@
      "profundidade": 0.23,
      "comprimento": 2.4,
      "massa": 90,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:maca-estrela"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Maça estrela",
-      "arma": "maca-estrela",
-      "habilidade": "armas"
+      "arma": "maca-estrela"
      },
      {
       "nome": "Rabada",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -19781,7 +19467,7 @@
    }
   },
   "homem-rato-forma-humana": {
-   "sha256": "24d0990a184abcb21c4ccd738b5fa8013b64e6de2888214b52e0e4b906ef81a0",
+   "sha256": "419bf422aa32867f2fbac60bd74ca9145803fce0b5b8293fad4a50b13400e457",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -19821,28 +19507,23 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 65,
-     "area": 0.63
+     "area": 0.63,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Mordida",
       "parte": "dentes-de-rato",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -19910,7 +19591,8 @@
        "massa": 12.38,
        "area": 0.1475,
        "posturaDoTamanho": "de lado",
-       "linhaPV": "acima"
+       "linhaPV": "acima",
+       "linhaPVMotivo": "corpo resistente de rato gigante"
       },
       "couraca": 0,
       "equipamento": {
@@ -19920,7 +19602,6 @@
        {
         "nome": "Mordida",
         "parte": "dentes-de-rato",
-        "habilidade": "briga",
         "classe": "leve",
         "pgr": [
          1,
@@ -20000,7 +19681,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-de-presas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -20085,23 +19765,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -20193,7 +19869,6 @@
      {
       "nome": "Bote",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -20235,7 +19910,7 @@
    }
   },
   "javali": {
-   "sha256": "c30120b2e700a9d738697890e0b87e4ba3d0d767084c45af52f17efc35abbf2d",
+   "sha256": "d6b4d9e64a81c3ed9e7f5d073469c56fab8760bcf58ec2adb009d5aaf49ef037",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20294,7 +19969,6 @@
      {
       "nome": "Presada (golpe de presa)",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -20311,7 +19985,6 @@
      {
       "nome": "Investida",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -20319,7 +19992,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -20351,7 +20024,7 @@
      {
       "nome": "Investida",
       "velocidade": 7,
-      "danoMedio": 17
+      "danoMedio": 12
      }
     ]
    }
@@ -20417,7 +20090,6 @@
      {
       "nome": "Mordida (bote para agarrar)",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -20459,7 +20131,7 @@
    }
   },
   "kobold": {
-   "sha256": "5d0d093db6e6c6f08361e944b0c97ada93ecab0a27bd2a84db8a83abea52483d",
+   "sha256": "62d8e580eeaeb9fbc23bf0b0fce264f338f35bfa90fc185d66600240a0068d7e",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -20499,23 +20171,20 @@
      "comprimento": 1.1,
      "massa": 16,
      "area": 0.22,
-     "linhaPV": "abaixo"
+     "posturaDoTamanho": "de frente",
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "corpo frágil"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      }
     ]
    },
@@ -20604,7 +20273,6 @@
      {
       "nome": "Tentáculo",
       "parte": "tentaculo",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -20621,7 +20289,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -20726,7 +20393,6 @@
      {
       "nome": "Correntes",
       "parte": "corrente-farpada",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -20770,7 +20436,7 @@
    }
   },
   "lacador": {
-   "sha256": "069b0b4cc6e11cad1e3b81c7ba0cef2f16779a1ebc9caba60e3c9aeea2256bdb",
+   "sha256": "2fb3c8b8f70c96c037b12048c83ec3f93e78219606df774194de23cba5f5356e",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -20810,7 +20476,8 @@
      "profundidade": null,
      "comprimento": null,
      "massa": 1000,
-     "area": 1.68
+     "area": 1.68,
+     "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
     "artes": {},
@@ -20822,7 +20489,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-dentada-na-base",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -20929,7 +20595,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -20946,7 +20611,6 @@
      {
       "nome": "Chicotada de cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -21050,7 +20714,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -21169,7 +20832,6 @@
      {
       "nome": "Garras",
       "parte": "patas-de-leao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -21272,7 +20934,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -21289,7 +20950,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -21394,7 +21054,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -21411,7 +21070,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -21516,7 +21174,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -21533,7 +21190,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -21629,7 +21285,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras-rudimentares",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -21732,7 +21387,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -21749,7 +21403,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -21853,7 +21506,6 @@
      {
       "nome": "Rádula",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -21954,7 +21606,6 @@
      {
       "nome": "Toque",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -22051,23 +21702,17 @@
      "luz": 1
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -22152,7 +21797,8 @@
      "profundidade": null,
      "comprimento": 1,
      "massa": 150,
-     "area": 0.79
+     "area": 0.79,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 0,
     "artes": {},
@@ -22164,7 +21810,6 @@
      {
       "nome": "Pseudópode",
       "parte": "pseudopode",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -22208,7 +21853,7 @@
    }
   },
   "linnorm-do-gelo": {
-   "sha256": "dc1b5a0df742dd9b29cc138416bc4f29ceef0bc361a85957cc9334844c544f59",
+   "sha256": "b53948b0bdf4cae037064d46c58f886de945557ab1e1e39c1e665cca80c34f70",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22248,7 +21893,8 @@
      "massa": 14000,
      "area": 19.9,
      "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "serpente maciça que fecha as feridas"
     },
     "couraca": 10,
     "artes": {},
@@ -22260,7 +21906,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22277,7 +21922,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22350,7 +21994,7 @@
    }
   },
   "linnorm-dos-lagos": {
-   "sha256": "7a4d5e1ba2686ac5fae6b8611753454417d3fd82ee5773db4e977e1de2ecda58",
+   "sha256": "0a85365def8fa5d3b0df18ec0308618a1ee632f9915b4f5ec59567aaaafafd39",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22400,7 +22044,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-cada-cabeca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22417,7 +22060,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22434,7 +22076,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -22513,7 +22154,7 @@
    }
   },
   "linnorm-dos-penhascos": {
-   "sha256": "ebc48e2102d6580b45fb509cbb994b5380bab91be1c2ef83afd1c2ffe25b3d7a",
+   "sha256": "cfad9bce1a4a6dc9a04b072b484e8d960383a010df4213000a1ab9371ac2eee0",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22567,7 +22208,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22584,7 +22224,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22711,7 +22350,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22728,7 +22366,6 @@
      {
       "nome": "Garras",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22793,17 +22430,12 @@
       },
       "couraca": 0,
       "equipamento": {
-       "arsenal": [
-        {
-         "ref": "a:espada-curta"
-        }
-       ]
+       "arsenal": []
       },
       "ataques": [
        {
         "nome": "Espada curta",
-        "arma": "espada-curta",
-        "habilidade": "armas"
+        "arma": "espada-curta"
        }
       ]
      },
@@ -22839,7 +22471,6 @@
        {
         "nome": "Mordida",
         "parte": "boca",
-        "habilidade": "briga",
         "classe": "media",
         "pgr": [
          2,
@@ -22925,7 +22556,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -22966,7 +22596,7 @@
    }
   },
   "lobo-do-inverno": {
-   "sha256": "4ede7c29ca90db904ca692e07503991df31572f2a8d988a45418bb68e9f3c39f",
+   "sha256": "b5f9b40a0dd5e7f654983787bdfec437a2d282fc32d161f57b15077697fc6c77",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -23010,7 +22640,8 @@
      "massa": 200,
      "area": 1.13,
      "posturaDoTamanho": "silhueta vista de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "pelagem densa, corpo robusto"
     },
     "couraca": 1,
     "artes": {},
@@ -23022,7 +22653,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -23149,7 +22779,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -23251,7 +22880,6 @@
      {
       "nome": "Patas raptoriais",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23268,7 +22896,6 @@
      {
       "nome": "Mandíbulas",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23372,7 +22999,6 @@
      {
       "nome": "Bico",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23389,7 +23015,6 @@
      {
       "nome": "Braços e tentáculos",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23492,7 +23117,6 @@
      {
       "nome": "Bico",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23509,7 +23133,6 @@
      {
       "nome": "Braços e tentáculos",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23612,7 +23235,6 @@
      {
       "nome": "Bico",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -23629,7 +23251,6 @@
      {
       "nome": "Tentáculos",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23734,7 +23355,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23813,7 +23433,8 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 75,
-     "area": 0.7
+     "area": 0.7,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {
@@ -23828,7 +23449,6 @@
      {
       "nome": "Soco",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -23872,7 +23492,7 @@
    }
   },
   "mamute": {
-   "sha256": "8de556310480f448a30a8f8bd340be9f602192f26aedadb13be65f937c0dc1e0",
+   "sha256": "3bc0f2ba1743e77f49e0c41b7a03fa63abe56ef34f20b7db38c39edb99c014df",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23931,7 +23551,6 @@
      {
       "nome": "Presada",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -23948,7 +23567,6 @@
      {
       "nome": "Pisão (ou investida)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -23956,7 +23574,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -23988,7 +23606,7 @@
      {
       "nome": "Pisão (ou investida)",
       "velocidade": 7,
-      "danoMedio": 33
+      "danoMedio": 20
      }
     ]
    }
@@ -24056,7 +23674,6 @@
      {
       "nome": "Garras",
       "parte": "garra-patas-da-frente",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -24073,7 +23690,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -24204,7 +23820,6 @@
      {
       "nome": "Tentáculos",
       "parte": "tentaculos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -24249,7 +23864,7 @@
    }
   },
   "marid": {
-   "sha256": "c855fc2fb9d3490f955cce6e3a2eebe0133e03a36340447dc7dbd3026cc1ec11",
+   "sha256": "27a3bedae9adf96b6a2df40b49cd56cffcd40a7ee8ce17a49fd3b7ad69b53364",
    "entrada": {
     "categoria": "elemental",
     "centelha": 5,
@@ -24308,7 +23923,6 @@
      {
       "nome": "Pancada de maré",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -24350,6 +23964,22 @@
       "jogada": 24
      }
     ]
+   },
+   "formas": {
+    "disfarce": {
+     "nome": "disfarce",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      }
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "marilith": {
@@ -24404,23 +24034,17 @@
     "couraca": 3,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Cauda",
       "parte": "cauda-de-serpente",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -24470,7 +24094,7 @@
    }
   },
   "mastodonte": {
-   "sha256": "433c8e3e7437fa56d5ef8e9944a0b6adebc335069ea6a36cedefbff9b093341f",
+   "sha256": "b08de78339fc2a6d8815e052f7fde319e33c13d3f3f35f395185955acd590d35",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -24529,7 +24153,6 @@
      {
       "nome": "Presada",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -24546,7 +24169,6 @@
      {
       "nome": "Pisão (ou investida)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -24554,7 +24176,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -24586,7 +24208,7 @@
      {
       "nome": "Pisão (ou investida)",
       "velocidade": 7,
-      "danoMedio": 33
+      "danoMedio": 20
      }
     ]
    }
@@ -24633,36 +24255,27 @@
      "profundidade": 0.19,
      "comprimento": null,
      "massa": 55,
-     "area": 0.59
+     "area": 0.59,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-curto"
-      },
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Arco curto",
-      "arma": "arco-curto",
-      "habilidade": "atirador"
+      "arma": "arco-curto"
      },
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Serpentes",
       "parte": "cabelos-serpente",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -24776,7 +24389,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -24817,7 +24429,7 @@
    }
   },
   "mephit": {
-   "sha256": "30ab152a474b9d43a3f4eb12889a1566d6c9d693cbbe92c6946bf28eefe649b4",
+   "sha256": "b8ab8ada272977a031b350abcb0589f9c6ef2c74dc551daceb719355a4da5144",
    "entrada": {
     "categoria": "outsider",
     "centelha": 2,
@@ -24863,7 +24475,8 @@
       "area": 0.26,
       "posturaDoTamanho": "asas fechadas"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "matéria elemental leve"
     },
     "couraca": 0,
     "artes": {},
@@ -24875,7 +24488,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -24983,31 +24595,23 @@
      "comprimentoSemCauda": 0.9,
      "caudaGrossa": true,
      "massa": 90,
-     "area": 0.7
+     "area": 0.7,
+     "posturaDoTamanho": "de lado, nadando"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      },
-      {
-       "ref": "a:besta-media"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Besta média",
-      "arma": "besta-media",
-      "habilidade": "atirador"
+      "arma": "besta-media"
      }
     ]
    },
@@ -25045,7 +24649,7 @@
    }
   },
   "mimico": {
-   "sha256": "b012c63025c3cf9677e72eb612b2a0d45e32d364f856600912ed7dd6a2ae0065",
+   "sha256": "50322c5cd1ae563dc0338986fc560be1ae24330a14a4508c3d9aad4e4d9ccedc",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 1,
@@ -25083,7 +24687,8 @@
      "profundidade": null,
      "comprimento": 1.2,
      "massa": 150,
-     "area": 0.6
+     "area": 0.6,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
@@ -25095,7 +24700,6 @@
      {
       "nome": "Pseudópode",
       "parte": "braco-de-carne-grudenta",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -25112,7 +24716,6 @@
      {
       "nome": "Mordida",
       "parte": "a-boca-no-lugar-da-tampa",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -25162,7 +24765,7 @@
    }
   },
   "minotauro": {
-   "sha256": "7e24520086f1d4356cfaed92eb3bbcfd844db6d44c83ac229614982c3f033f96",
+   "sha256": "b06dad42e9d97fc654443f299e99bfa414230d4aea67c1c5bd381c3623a2ef4c",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 1,
@@ -25202,28 +24805,23 @@
      "profundidade": 0.35,
      "comprimento": null,
      "massa": 250,
-     "area": 1.55
+     "area": 1.55,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado-pesado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado pesado",
-      "arma": "machado-pesado",
-      "habilidade": "armas"
+      "arma": "machado-pesado"
      },
      {
       "nome": "Chifrada",
       "parte": "chifres",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -25328,7 +24926,6 @@
      {
       "nome": "Mordida",
       "parte": "dentes",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -25419,7 +25016,6 @@
      {
       "nome": "Mãos ossudas",
       "parte": "maos-de-osso",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -25436,7 +25032,6 @@
      {
       "nome": "Língua",
       "parte": "lingua-apodrecida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -25526,7 +25121,8 @@
      "comprimentoSemCauda": 1.05,
      "caudaGrossa": false,
      "massa": 120,
-     "area": 0.48
+     "area": 0.48,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
     "artes": {},
@@ -25538,7 +25134,6 @@
      {
       "nome": "Antenas",
       "parte": "antenas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -25555,7 +25150,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -25605,7 +25199,7 @@
    }
   },
   "montao-tropecante": {
-   "sha256": "7fc1fc45e5350c7d61a230d0cf8a372cd9d8d1de8e4f469bb3d2efa8911631b6",
+   "sha256": "5a42a21123500880e7a3922fd9d77d2e0f375cbf47877058559257b4c72cd34b",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -25656,7 +25250,6 @@
      {
       "nome": "Duas pancadas",
       "parte": "bracos-de-galhos",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -25762,7 +25355,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -25862,7 +25454,6 @@
      {
       "nome": "Mordida (incisivos)",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -25959,7 +25550,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26039,23 +25629,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 68,
-     "area": 0.6
+     "area": 0.6,
+     "posturaDoTamanho": "de frente, de pé"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:bastao"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Bastão",
-      "arma": "bastao",
-      "habilidade": "armas"
+      "arma": "bastao"
      }
     ]
    },
@@ -26145,7 +25731,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -26233,7 +25818,6 @@
      {
       "nome": "Golpe esmagador",
       "parte": "punho-enrolado-em-ataduras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26332,7 +25916,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26349,7 +25932,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-de-presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26464,7 +26046,6 @@
      {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26572,7 +26153,6 @@
      {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26680,7 +26260,6 @@
      {
       "nome": "Ferrão",
       "parte": "ferrao-da-cauda",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26783,7 +26362,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26800,7 +26378,6 @@
      {
       "nome": "Mordida",
       "parte": "presas-de-javali",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -26850,7 +26427,7 @@
    }
   },
   "neothelid": {
-   "sha256": "7021b852552e7af8175def4d2d96a60e8e70d6046f827209706db4898517543f",
+   "sha256": "45a9249da691068a2b7c721691a61d1b8dc079a09a77b7bb805e5dea70f1648c",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 6,
@@ -26891,7 +26468,8 @@
      "profundidade": null,
      "comprimento": 12,
      "massa": 6000,
-     "area": 9.05
+     "area": 9.05,
+     "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
     "artes": {},
@@ -26903,7 +26481,6 @@
      {
       "nome": "Tentáculo",
       "parte": "lingua-tentacular",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -27008,7 +26585,6 @@
      {
       "nome": "Golpe desarmado",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -27094,23 +26670,19 @@
      "profundidade": 0.2,
      "comprimento": null,
      "massa": 55,
-     "area": 0.57
+     "area": 0.57,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -27190,7 +26762,6 @@
      {
       "nome": "Pancada",
       "parte": "o-corpo-do-movel",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -27234,7 +26805,7 @@
    }
   },
   "ogro-mago-oni": {
-   "sha256": "aad8368259ecdc3a5d4ecb302f91825beaf4f70ac7b58fd335e64e190107bc9c",
+   "sha256": "4dc076b3807540d34b691adaf0638ca01437f4ade858278cadf6a375c5ccf1c1",
    "entrada": {
     "categoria": "gigante",
     "centelha": 5,
@@ -27288,7 +26859,6 @@
      {
       "nome": "Punho de ogro",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -27335,7 +26905,7 @@
      "nome": "disfarce",
      "entrada": {
       "corpo": {
-       "tamanhoEscolhido": "medio"
+       "area": 0.64
       }
      },
      "esperado": {
@@ -27396,7 +26966,6 @@
      {
       "nome": "Pancada descomunal",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -27479,24 +27048,20 @@
      "profundidade": 0.26,
      "comprimento": null,
      "massa": 110,
-     "area": 0.89
+     "area": 0.89,
+     "posturaDoTamanho": "de frente"
     },
     "bonusPV": 5,
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      }
     ]
    },
@@ -27586,7 +27151,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -27627,7 +27191,7 @@
    }
   },
   "otyugh": {
-   "sha256": "e04776b12c8c55fd1fe7e89387525ec1caa005f2e51508aa67fa1e3584de72ab",
+   "sha256": "c16406f8fb7d63c1d75d04bb25114776224668cdbf4628339315444601536cb7",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -27665,7 +27229,8 @@
      "profundidade": null,
      "comprimento": null,
      "massa": 500,
-     "area": 1.87
+     "area": 1.87,
+     "posturaDoTamanho": "de frente, tentáculos erguidos"
     },
     "couraca": 2,
     "artes": {},
@@ -27677,7 +27242,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-larga-de-dentes",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -27694,7 +27258,6 @@
      {
       "nome": "Tentáculo",
       "parte": "tentaculo-de-ponta-dura",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -27794,7 +27357,6 @@
      {
       "nome": "Mordida",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -27896,7 +27458,6 @@
      {
       "nome": "Coice",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -27913,7 +27474,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28017,7 +27577,6 @@
      {
       "nome": "Soco",
       "parte": "punho-de-ar",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28115,7 +27674,6 @@
      {
       "nome": "Cascos flamejantes",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -28132,7 +27690,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28234,7 +27791,6 @@
      {
       "nome": "Pinça",
       "parte": "pinca-dianteira",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28332,23 +27888,17 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-curto"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Flecha",
-      "arma": "arco-curto",
-      "habilidade": "atirador"
+      "arma": "arco-curto"
      },
      {
       "nome": "Garras e presas",
       "parte": "maos-e-dentes",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28454,18 +28004,13 @@
      "fascinacao": 5
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      }
     ]
    },
@@ -28556,7 +28101,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28658,7 +28202,6 @@
      {
       "nome": "Bico",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28675,7 +28218,6 @@
      {
       "nome": "Braços",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28784,7 +28326,6 @@
      {
       "nome": "Bico",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -28826,7 +28367,7 @@
    }
   },
   "ponei": {
-   "sha256": "a8b2ea07a1d5ef118a51b70597afce55a475d3b8e52f4d7035a1697c5f56fda7",
+   "sha256": "78031595d578b8ffea16ffdfb6537467ebda83c8f83466d0d80e28f3bb0b6f79",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28874,7 +28415,8 @@
      "massa": 220,
      "area": 1.17,
      "posturaDoTamanho": "vista de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "corpo rústico e robusto"
     },
     "couraca": 1,
     "artes": {},
@@ -28886,7 +28428,6 @@
      {
       "nome": "Coice",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -28903,7 +28444,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29006,7 +28546,6 @@
      {
       "nome": "Descarga elétrica",
       "parte": "corpo-orgaos-eletricos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29023,7 +28562,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29126,7 +28664,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29143,7 +28680,6 @@
      {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29160,7 +28696,6 @@
      {
       "nome": "Ferrão",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29280,7 +28815,6 @@
      {
       "nome": "Bicada",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29371,7 +28905,6 @@
      {
       "nome": "Pseudópode",
       "parte": "massa-contratil",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -29470,7 +29003,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras-venenosas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29487,7 +29019,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-de-dentes-finos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29537,7 +29068,7 @@
    }
   },
   "quetzalcoatlo": {
-   "sha256": "7ad132bcb346ec754b001e59ab05e94ebf7666c8a117270b3c4fa94913b7fdd8",
+   "sha256": "ea5e3b4e13eac3b5507a40dba8eabd23338a38a4fa82613a47ff288562867714",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29588,7 +29119,8 @@
       "area": 13.38,
       "posturaDoTamanho": "de baixo, asas abertas, em voo"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "ossos ocos de parede fina"
     },
     "couraca": 0,
     "artes": {},
@@ -29600,7 +29132,6 @@
      {
       "nome": "Bicada",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -29642,7 +29173,7 @@
    }
   },
   "quimera": {
-   "sha256": "6f7aac6b0ab2b9ef8709bebfb9d5e2c7313a13788aead7ba1e13e4f3fc6baa56",
+   "sha256": "4e54ae1785b04a59750fcead5f300e83ab4a82d125b7a7ac1135d7361222943c",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -29703,7 +29234,6 @@
      {
       "nome": "Mordida de leão",
       "parte": "cabeca-de-leao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -29720,7 +29250,6 @@
      {
       "nome": "Chifrada de cabra",
       "parte": "cabeca-de-cabra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -29737,7 +29266,6 @@
      {
       "nome": "Mordida de dragão",
       "parte": "cabeca-de-dragao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -29873,7 +29401,6 @@
      {
       "nome": "Bocada",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29890,7 +29417,6 @@
      {
       "nome": "Língua",
       "parte": "lingua",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -29979,7 +29505,8 @@
      "profundidade": null,
      "comprimento": 0.042,
      "massa": 0.0085,
-     "area": 0.0009
+     "area": 0.0009,
+     "posturaDoTamanho": "vista de cima, agachada"
     },
     "couraca": 0,
     "artes": {},
@@ -30052,7 +29579,8 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {
@@ -30069,7 +29597,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-tigre",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -30113,7 +29640,7 @@
    }
   },
   "rastejador-sombrio": {
-   "sha256": "3cdc6fa6ee5ad8eb5e4eaf07e38279fbaab6c9694ca6aa0aa0991d10f11b1340",
+   "sha256": "1c3b41cd9b6019dec96bee5e4143f75e6eca3a0f102d35406f634a83ba7eb2b9",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -30152,23 +29679,20 @@
      "comprimento": null,
      "massa": 36,
      "area": 0.39,
-     "linhaPV": "abaixo"
+     "posturaDoTamanho": "de frente",
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "corpo magro, parte do peso é pano"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:adaga"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Adaga",
-      "arma": "adaga",
-      "habilidade": "armas"
+      "arma": "adaga"
      }
     ]
    },
@@ -30259,7 +29783,6 @@
      {
       "nome": "Mordida",
       "parte": "incisivos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -30300,7 +29823,7 @@
    }
   },
   "rato-gigante": {
-   "sha256": "d4f888528ef54765bd707858b0b75d80c81f3b53fda8c26c963efd0e79f466f2",
+   "sha256": "501da423ad7444b53262a3d06e0017188923a554fd2f04f1c220aaa6c0e3429e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30348,7 +29871,8 @@
      "massa": 12.38,
      "area": 0.1475,
      "posturaDoTamanho": "vista de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "duro para o tamanho"
     },
     "couraca": 0,
     "artes": {},
@@ -30360,7 +29884,6 @@
      {
       "nome": "Mordida",
       "parte": "incisivos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -30401,7 +29924,7 @@
    }
   },
   "remorhaz": {
-   "sha256": "d0b17458b585d10f2691c84edf9df635334888568903a52751b5287c59b7d9f6",
+   "sha256": "0a755b10d9a2d6b5230383a57e138c973884747ce349e6febe6f169a6aed9f79",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -30442,7 +29965,8 @@
      "massa": 1650,
      "area": 9,
      "posturaDoTamanho": "vista de cima",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "placas grossas, corpo robusto"
     },
     "couraca": 5,
     "artes": {},
@@ -30454,7 +29978,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -30498,7 +30021,7 @@
    }
   },
   "rinoceronte": {
-   "sha256": "98e71c2ffc4602eff27ee1092203cf4ce5b39572f7e1136da0a82613e20273cf",
+   "sha256": "733d01c9d4b0c9d7b753117ece3cfc372961f638bd1d9cf91f9c58baa6c25524",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30557,7 +30080,6 @@
      {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -30574,7 +30096,6 @@
      {
       "nome": "Investida",
       "parte": "chifre-e-corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -30582,7 +30103,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -30614,13 +30135,13 @@
      {
       "nome": "Investida",
       "velocidade": 7,
-      "danoMedio": 23
+      "danoMedio": 15
      }
     ]
    }
   },
   "roc": {
-   "sha256": "e025f066dd0f02b596a3fc1b489365f453171e3868d66bf6e891cb93995c4a72",
+   "sha256": "1747faa725578194c0fe99dad937ff687101a13467868a63fd8b4e4a2b15bf5d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30678,7 +30199,6 @@
      {
       "nome": "Garras (talões)",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -30695,7 +30215,6 @@
      {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -30712,7 +30231,6 @@
      {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -30720,7 +30238,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -30757,7 +30275,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
@@ -30802,28 +30320,23 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 113,
-     "area": 0.92
+     "area": 0.92,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -30924,23 +30437,17 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -31048,7 +30555,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -31216,7 +30722,6 @@
      {
       "nome": "Cabeçada",
       "parte": "chifres",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -31312,7 +30817,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -31416,7 +30920,6 @@
      {
       "nome": "Bote",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -31511,7 +31014,6 @@
      {
       "nome": "Pancada de pedra",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -31606,7 +31108,6 @@
      {
       "nome": "Pseudópode",
       "parte": "massa-contratil",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -31688,28 +31189,23 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Mordida",
       "parte": "boca-larga",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -31726,7 +31222,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -31838,26 +31333,17 @@
      "protecao": 5
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      },
-      {
-       "ref": "a:arco-longo"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      },
      {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
      }
     ]
    },
@@ -31948,11 +31434,7 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "malha",
@@ -31963,13 +31445,11 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Espada longa a duas mãos",
       "parte": "espada-longa-duas-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -31986,7 +31466,6 @@
      {
       "nome": "Punhos",
       "parte": "punhos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -32101,7 +31580,6 @@
      {
       "nome": "Toque dilacerante",
       "parte": "mao-de-treva",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -32145,7 +31623,7 @@
    }
   },
   "stirge": {
-   "sha256": "1748f777bab12f4d13a62f75530af48da7c4d555188b63d743f7a99179375651",
+   "sha256": "6d61ffc87ee9767c88b10842ae1bbf1f1a82e6e887d3d3d01f6e43351aadc2de",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -32193,7 +31671,8 @@
       "area": 0.005,
       "posturaDoTamanho": "asas fechadas, preso ao alvo"
      },
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "inseto de casca"
     },
     "couraca": 0,
     "artes": {},
@@ -32205,7 +31684,6 @@
      {
       "nome": "Probóscide",
       "parte": "proboscide",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -32309,7 +31787,6 @@
      {
       "nome": "Garras",
       "parte": "unhas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -32391,23 +31868,19 @@
      "profundidade": 0.15,
      "comprimento": null,
      "massa": 18,
-     "area": 0.24
+     "area": 0.24,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:picareta-de-guerra"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Picareta de guerra",
-      "arma": "picareta-de-guerra",
-      "habilidade": "armas"
+      "arma": "picareta-de-guerra"
      }
     ]
    },
@@ -32493,7 +31966,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -32510,7 +31982,6 @@
      {
       "nome": "Garras",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -32527,7 +31998,6 @@
      {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -32583,7 +32053,7 @@
    }
   },
   "tartaruga-dragao": {
-   "sha256": "33d1e219190c7d1e3ce33b1fab9d83433aa2237952fda85374557a80f41bba95",
+   "sha256": "9b92c4a10fe8a19ef1dff6b7630cbf1ab18e8ab5f4d80a2c6c1a2b0db77c2b86",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -32636,7 +32106,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -32653,7 +32122,6 @@
      {
       "nome": "Garras",
       "parte": "nadadeira-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -32764,28 +32232,23 @@
      "profundidade": 0.19,
      "comprimento": null,
      "massa": 55,
-     "area": 0.59
+     "area": 0.59,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Bico",
       "parte": "bico-de-corvo",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -32874,23 +32337,19 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 68,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:sabre"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Sabre",
-      "arma": "sabre",
-      "habilidade": "armas"
+      "arma": "sabre"
      }
     ]
    },
@@ -32981,7 +32440,6 @@
      {
       "nome": "Mordida de sabre",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -32998,7 +32456,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -33044,7 +32501,7 @@
    }
   },
   "tigre": {
-   "sha256": "8877ee3f76d6f5b5ee99923c8d5bdabfa456a5fb3799e5646e0ebf27264a9390",
+   "sha256": "de4429324eefea24b7e3c16e75eaf326f25afdc4b3b5e048225c1210f56a759b",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33093,6 +32550,7 @@
      "area": 0.88,
      "posturaDoTamanho": "de lado",
      "linhaPV": "acima",
+     "linhaPVMotivo": "felino grande e robusto",
      "cargaMedida": 68
     },
     "couraca": 1,
@@ -33105,7 +32563,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -33122,7 +32579,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -33226,7 +32682,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -33319,7 +32774,6 @@
      {
       "nome": "Pancada",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -33411,7 +32865,6 @@
      {
       "nome": "Tendrilho",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -33454,7 +32907,7 @@
    }
   },
   "triceratops": {
-   "sha256": "54eafa26663f9e4816057f1c1c9ab47b6a6c4f5b3afba570eb82726990efb5ab",
+   "sha256": "04fb63700c92cf9c3e0f985002ef0fa33b5205d244f2a97802c31e2100fe6806",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33513,7 +32966,6 @@
      {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -33530,7 +32982,6 @@
      {
       "nome": "Investida de chifre",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -33538,11 +32989,11 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      }
     ]
    },
@@ -33570,7 +33021,7 @@
      {
       "nome": "Investida de chifre",
       "velocidade": 7,
-      "danoMedio": 29
+      "danoMedio": 18
      }
     ]
    }
@@ -33615,28 +33066,23 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 75,
-     "area": 0.68
+     "area": 0.68,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:martelo"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Martelo",
-      "arma": "martelo",
-      "habilidade": "armas"
+      "arma": "martelo"
      },
      {
       "nome": "Garras",
       "parte": "maos-de-garras",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -33735,7 +33181,6 @@
      {
       "nome": "Garras",
       "parte": "garras-das-maos",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -33752,7 +33197,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-de-dentes-tortos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -33859,7 +33303,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -33900,7 +33343,7 @@
    }
   },
   "unicornio": {
-   "sha256": "d4b01e3b8a93c5c81c83ee98dea7156e11fa7deea7ba67402e619d13e5258f69",
+   "sha256": "3e12112ff20342f76942da28c131e4d9a85138a147bbd5470ba203e94d1845cd",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -33954,7 +33397,6 @@
      {
       "nome": "Chifre",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -33971,7 +33413,6 @@
      {
       "nome": "Coice",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -33988,7 +33429,6 @@
      {
       "nome": "Chifre em investida",
       "parte": "chifre-e-corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -33996,7 +33436,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -34037,7 +33477,7 @@
      {
       "nome": "Chifre em investida",
       "velocidade": 7,
-      "danoMedio": 25,
+      "danoMedio": 18,
       "jogada": 19
      }
     ]
@@ -34100,7 +33540,6 @@
      {
       "nome": "Garra",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34117,7 +33556,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34225,7 +33663,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34242,7 +33679,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34347,7 +33783,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34364,7 +33799,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34469,7 +33903,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34486,7 +33919,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34532,7 +33964,7 @@
    }
   },
   "urso-pardo": {
-   "sha256": "c48e92d10879d05aaa2717877ecf82ced339480194be2f0d67f8dc23df177a0c",
+   "sha256": "257b0a482de774e8dd9ca758033c763899e848a013590d123c426e4e8dbcafb0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -34580,7 +34012,8 @@
      "massa": 200,
      "area": 1.08,
      "posturaDoTamanho": "de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "gordura e pelo grossos"
     },
     "couraca": 2,
     "artes": {},
@@ -34592,7 +34025,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34609,7 +34041,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34714,7 +34145,6 @@
      {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34731,7 +34161,6 @@
      {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34830,7 +34259,6 @@
      {
       "nome": "Pancada",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -34847,7 +34275,6 @@
      {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -34956,7 +34383,6 @@
      {
       "nome": "Mordida (morde e rasga)",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35056,7 +34482,6 @@
      {
       "nome": "Mordida (morde e rasga)",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35150,7 +34575,6 @@
      {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -35244,7 +34668,6 @@
      {
       "nome": "Garra",
       "parte": "ramo-ou-membro-natural",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -35339,7 +34762,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35356,7 +34778,6 @@
      {
       "nome": "Ferrão de cauda",
       "parte": "ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35467,7 +34888,6 @@
      {
       "nome": "Ferrão",
       "parte": "ferrao",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -35484,7 +34904,6 @@
      {
       "nome": "Mandíbulas",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -35531,7 +34950,7 @@
    }
   },
   "vinha-assassina": {
-   "sha256": "aa634228d2d6cad6acd0725fd779371397c1d3747c417afe586d47def324f8ad",
+   "sha256": "1de20876e841ba44ba17ac049dfece28455846d7933df2263562c43ff7133746",
    "entrada": {
     "categoria": "planta",
     "centelha": 1,
@@ -35580,7 +34999,6 @@
      {
       "nome": "Vinha constritora",
       "parte": "vinha",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -35681,7 +35099,6 @@
      {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35698,7 +35115,6 @@
      {
       "nome": "Bico",
       "parte": "bico-de-abutre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35797,7 +35213,6 @@
      {
       "nome": "Garras",
       "parte": "unhas-das-maos-secas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35896,7 +35311,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibula",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -35940,7 +35354,7 @@
    }
   },
   "wyvern": {
-   "sha256": "f45649918e76b23fa4a51fceaf6908f0b1c73ec20e70525f61e8648257918c35",
+   "sha256": "54e27610dccf8619dd39b8952a7728955fd8075778f2b6a17c9b4741cb4ef54e",
    "entrada": {
     "categoria": "dragao",
     "centelha": 3,
@@ -35986,7 +35400,8 @@
       "area": 1.9,
       "posturaDoTamanho": "de lado, pousado, asas fechadas"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "voador de cauda fina"
     },
     "couraca": 3,
     "artes": {},
@@ -35998,7 +35413,6 @@
      {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -36015,7 +35429,6 @@
      {
       "nome": "Garras",
       "parte": "pata",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -36032,7 +35445,6 @@
      {
       "nome": "Garras em mergulho",
       "parte": "pata",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
        3,
@@ -36040,7 +35452,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -36049,7 +35461,6 @@
      {
       "nome": "Ferrão",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -36099,7 +35510,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 22,
+      "danoMedio": 16,
       "jogada": 17
      },
      {
@@ -36160,23 +35571,17 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Garras",
       "parte": "maos-de-baixo",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -36193,7 +35598,6 @@
      {
       "nome": "Mordida",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
        1,
@@ -36299,7 +35703,6 @@
      {
       "nome": "Garras",
       "parte": "garras-dos-tres-bracos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -36316,7 +35719,6 @@
      {
       "nome": "Mordida",
       "parte": "boca-no-alto-do-corpo",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -36405,7 +35807,8 @@
      "profundidade": 0.4,
      "comprimento": null,
      "massa": 360,
-     "area": 1.87
+     "area": 1.87,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
@@ -36417,7 +35820,6 @@
      {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,
@@ -36517,7 +35919,6 @@
      {
       "nome": "Pancada",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
        2,

@@ -22,7 +22,8 @@
       "area": 0.38,
       "posturaDoTamanho": "asas fechadas, de lado, pousada"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "ave de osso oco, corpo leve"
   },
   "couraca": 0,
   "atributos": {
@@ -99,7 +100,6 @@
     {
       "nome": "Garras (talões)",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -116,7 +116,6 @@
     {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -165,19 +164,19 @@
   "sentidos": [
     {
       "nome": "visão",
-      "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe)",
+      "descricao": "Prontidão (visão) +3 , notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe)",
       "formas": "todas"
     },
     {
       "nome": "sentidos",
-      "descricao": "Gira a cabeça cerca de 270° (San Diego Zoo)",
+      "descricao": "Gira a cabeça cerca de 270°",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "pernas emplumadas até os dedos; enxerga pior que o humano na penumbra (Reymond e Wolfe). No mergulho, encolhe as pernas contra a cauda e fecha as asas em parte (Wikipédia)"
+    "tracos": "pernas emplumadas até os dedos; enxerga pior que o humano na penumbra (Reymond e Wolfe). No mergulho, encolhe as pernas contra a cauda e fecha as asas em parte"
   },
   "aptidoes": {
     "montaria": false,
@@ -188,8 +187,7 @@
     "social": "par",
     "atividade": "diurno",
     "dieta": "carnívoro",
-    "caca": "caça mergulhando",
-    "dianteDeGente": ""
+    "caca": "caça mergulhando"
   },
   "ecologia": {
     "terreno": [

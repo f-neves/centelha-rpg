@@ -86,7 +86,7 @@ export default defineConfig({
   trailingSlash: 'ignore',
   // O capítulo XV virou três páginas; quem tinha /artes salvo cai na primeira delas.
   // (o destino leva o base na mão: o Astro não o prefixa no valor do redirect)
-  redirects: { '/artes': BASE + '/artes/regras' },
+  // /artes tem página própria de redirecionamento, com favicon explícito sob o base.
   build: { format: 'directory' },
   markdown: {
     shikiConfig: { theme: 'css-variables' },

@@ -92,7 +92,6 @@
     {
       "nome": "Garras",
       "parte": "maos-de-pedra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -109,7 +108,6 @@
     {
       "nome": "Chifres",
       "parte": "chifres-de-pedra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

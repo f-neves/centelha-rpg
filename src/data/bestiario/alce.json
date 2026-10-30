@@ -100,7 +100,6 @@
     {
       "nome": "Coice (pata dianteira)",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -117,7 +116,6 @@
     {
       "nome": "Pisão (ergue-se e pisoteia)",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -125,7 +123,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -134,7 +132,6 @@
     {
       "nome": "Galhada (só macho)",
       "parte": "galhada",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -161,25 +158,25 @@
   "sentidos": [
     {
       "nome": "faro",
-      "descricao": "Prontidão (faro) +2, natural; alcance . Olfato \"excepcional\" (ADW)",
+      "descricao": "Prontidão (faro) +2, natural; olfato \"excepcional\"",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "Prontidão (audição) +2, natural; alcance . Orelhas que giram de forma independente (ADW)",
+      "descricao": "Prontidão (audição) +2, natural; orelhas que giram de forma independente",
       "formas": "todas"
     },
     {
       "nome": "visão",
-      "descricao": "fraca (ADW), sem número",
+      "descricao": "fraca, sem número",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "até 50 s submerso, comendo plantas aquáticas (Franzmann e Schwartz 2007)",
+    "prendeRespiracao": "até 50 s submerso, comendo plantas aquáticas",
     "mente": "animal",
-    "tracos": "galhada só nos machos, renovada todo ano, de até 35 kg e 2,048 m de envergadura (ADW); pelagem de dourado a quase preto, conforme a estação e a idade (ADF&G)"
+    "tracos": "galhada só nos machos, renovada todo ano, de até 35 kg e 2,048 m de envergadura; pelagem de dourado a quase preto, conforme a estação e a idade"
   },
   "aptidoes": {
     "montaria": false,

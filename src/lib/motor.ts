@@ -14,7 +14,7 @@ import ARMAS from '../data/armas.json';
 import RACAS from '../data/racas.json';
 // Nucleo de contas do jogador e da criatura, reunido neste motor.
 const defMental=defesaMental, defSocial=defesaSocial, energiaDe=energia, manaDe=mana, iniciativaDe=iniciativa, pvDoTamanho=pv;
-import { ARMA, ESCUDO as ESCUDO_EQUIP, armaDoSlot, escudoDoSlot, armadurasDe, armaComMod, escudoComMod } from './equip';
+import { ARMA, armadurasDe, itemDaPeca, origemDaPeca, tipoDaPeca, REF_ESCUDO_LIVRE } from './equip';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 export { regras };
 
@@ -440,7 +440,7 @@ export const valorPassivo = (
 
 export type Tamanho = Porte;
 type Num = Record<string, number>;
-/** O ataque natural guarda tudo o que não é conta; o com arma do livro, só `nome`, `arma` e `habilidade` (D-220). */
+/** O ataque natural guarda tudo o que não é conta; o com arma do livro guarda só nome e id (D-220, D-258). */
 export interface AtaqueEntrada {
     nome: string;
     classe?: string;
@@ -464,6 +464,8 @@ export interface CorpoEntrada {
     naoErgue?: boolean;
     tamanhoEscolhido?: Tamanho;
     linhaPV?: 'acima' | 'abaixo';
+    /** o porquê da linha, nas palavras da ficha ("inseto de casca"); só junto da `linhaPV` */
+    linhaPVMotivo?: string;
     segundoTamanho?: {
         area: number;
         tamanhoEscolhido?: Tamanho;
@@ -477,7 +479,7 @@ export interface EntradaCriatura {
     habilidadesSec: Num;
     vontade: number;
     corpo: CorpoEntrada;
-    enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Tamanho };
+    enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Extract<Tamanho, 'pequeno' | 'medio'> };
     bonusPV?: number;
     couraca?: number;
     artes?: Num;
@@ -548,6 +550,18 @@ export function pvDaMassa(kg: number, vigor: number, linhaPV?: 'acima' | 'abaixo
     const l = LINHAS_PV[i];
     return l.base + Math.floor((vigor * l.vigorMult) / l.vigorDivisor);
 }
+/**
+ * A escolha da linha de PV na zona de transição, para o card dizer por quê (Cap. IV: "a ficha da criatura escolhe a
+ * linha pelo corpo (o robusto sobe, o frágil desce) e diz por quê"; parecer da Leitora-novata, achado 9). Nulo fora
+ * da zona ou sem escolha. Os dois PV são os da tabela, sem o `bonusPV`.
+ */
+export function linhaPVNaZona(kg: number | undefined, vigor: number, linhaPV?: 'acima' | 'abaixo') {
+    if (kg === undefined || !linhaPV) return null;
+    const z = LINHAS_PV.findIndex((l) => l.zonaKg && kg >= l.zonaKg[0] && kg <= l.zonaKg[1]);
+    if (z < 0 || !LINHAS_PV[z + 1]) return null;
+    const pv = (i: number) => LINHAS_PV[i].base + Math.floor((vigor * LINHAS_PV[i].vigorMult) / LINHAS_PV[i].vigorDivisor);
+    return { zonaKg: LINHAS_PV[z].zonaKg as [number, number], linha: linhaPV, pvAcima: pv(z + 1), pvAbaixo: pv(z) };
+}
 /** O peso erguido pela R15 (D-184), em kg, com duas casas. */
 export function pesoErguido(kg: number, forca: number, halterofilismo = 0, musculatura = 0): number {
     const P = C.pesoErguido, L = Math.log10(kg / P.curvaMassaKg);
@@ -588,7 +602,7 @@ export function ataqueDaArma(id: string, forca: number, duasMaos = false) {
     const bonus = w.danoBonus || 0;
     return {
         dado: `${w.dado}d6${bonus ? (bonus > 0 ? `+${bonus}` : `${bonus}`) : ''}`, forca: capF, multiplicadorForca: mult,
-        acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks,
+        acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks, habilidade: w.pericia,
     };
 }
 /** O Atributo da jogada pela Habilidade: Disparo, Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208). */
@@ -600,6 +614,23 @@ export function atributoDaJogada(habilidade: string, at: Num): number {
     if (habilidade === 'arremesso')
         return at.destreza ?? 0;
     return Math.max(at.forca ?? 0, at.destreza ?? 0);
+}
+const HAB_DE_LONGE = new Set(['disparo', 'atirador', 'arremesso']);
+/**
+ * A Habilidade da jogada de ataque da criatura (D-208 completada pela D-258). Tiro e arremesso seguem o livro: a da
+ * arma vem do catálogo (`arma.pericia`), a do ataque natural vem da ficha. Todo o resto é corpo a corpo e rola pela
+ * maior entre Briga e Armas, e a Habilidade que estiver gravada no JSON ou no catálogo não conta. A distância vem da
+ * Habilidade, e não da `classe`: a rocha arremessada dos gigantes é `pesada` e sai pelo Arremesso.
+ */
+export function habilidadeDaJogada(ataque: AtaqueEntrada, habilidades: Num, habilidadesSec: Num): string | null {
+    const gravada = ataque.arma ? (ARMAS as any[]).find((a) => a.id === ataque.arma)?.arma?.pericia : ataque.habilidade;
+    if (gravada && HAB_DE_LONGE.has(gravada)) return gravada;
+    if (!ataque.arma && (ataque.classe === 'distancia' || ataque.classe === 'arremesso')) return null;
+    const briga = habilidades.briga ?? habilidadesSec.briga ?? 0;
+    const armas = habilidades.armas ?? habilidadesSec.armas ?? 0;
+    // no empate a conta é a mesma; a arma mostra a Habilidade do catálogo dela
+    if (armas === briga && ataque.arma && (gravada === 'armas' || gravada === 'briga')) return gravada;
+    return armas > briga ? 'armas' : 'briga';
 }
 const habDe = (e: EntradaCriatura, id: string) => e.habilidades[id] ?? e.habilidadesSec[id] ?? 0;
 // ----- A criatura -----
@@ -634,12 +665,12 @@ export function criatura(e: EntradaCriatura) {
         mana: comArtes ? manaDe({ centelha: ce, vontade: e.vontade ?? 0 }) : null,
         absorcao,
         ataques: e.ataques.map((a) => {
-            const h = a.habilidade;
-            const hv = h ? habDe(e, h) : 0;
             const w = a.arma ? ataqueDaArma(a.arma, at.forca ?? 0) : null;
+            const h = habilidadeDaJogada(a, e.habilidades, e.habilidadesSec);
+            const hv = h ? habDe(e, h) : 0;
             const acerto = w ? w.acerto : (a.acerto ?? 0);
             return {
-                nome: a.nome, acerto,
+                nome: a.nome, acerto, habilidade: h,
                 velocidade: w ? w.velocidade : a.pgr ? a.pgr[0] + a.pgr[1] + a.pgr[2] : null,
                 danoMedio: w ? danoMedio(w.dado, w.forca, w.multiplicadorForca, ce) : danoMedio(a.dado ?? null, at.forca ?? 0, a.multiplicadorForca ?? 0, ce),
                 jogada: h ? atributoDaJogada(h, at) + hv + centelhaNaJogada(ce, hv) + acerto : null,
@@ -670,20 +701,29 @@ export function criatura(e: EntradaCriatura) {
  * A entrada de uma forma, montada por cima da principal (D-217, D-230): o objeto troca chave por chave (o que a forma
  * não diz vem da principal), a lista troca inteira e o valor troca.
  */
-export function comForma(principal: EntradaCriatura, muda: Partial<EntradaCriatura>): EntradaCriatura {
+export function comForma(principal: EntradaCriatura, muda: Omit<Partial<EntradaCriatura>, 'bonusPV'>): EntradaCriatura {
     const out: any = structuredClone(principal);
     for (const [k, v] of Object.entries(muda || {})) {
+        // O bônus de PV pertence à criatura, e não a uma forma (F5.4). A guarda também protege
+        // a leitura de uma fonte antiga que tenha sido escrita fora do esquema.
+        if (k === 'bonusPV') continue;
         if (v && typeof v === 'object' && !Array.isArray(v) && out[k] && typeof out[k] === 'object' && !Array.isArray(out[k]))
             out[k] = { ...out[k], ...v };
         else
             out[k] = structuredClone(v);
     }
+    // A ausência do meio herda, mas null na forma cancela o meio da principal (F5.1).
+    if ((muda as any)?.deslocamento)
+        out.deslocamento = { ...(principal as any).deslocamento, ...(muda as any).deslocamento };
     // a área e a massa da forma valem por si: a escolha do Tamanho e da linha de PV era da principal
     if (muda?.corpo) {
         if ('area' in muda.corpo && !('tamanhoEscolhido' in muda.corpo))
             delete out.corpo.tamanhoEscolhido;
         if ('massa' in muda.corpo && !('linhaPV' in muda.corpo))
             delete out.corpo.linhaPV;
+        // o porquê da linha é da linha: a forma que escolhe a própria (ou que perde a da principal) não herda o da principal
+        if (('massa' in muda.corpo || 'linhaPV' in muda.corpo) && !('linhaPVMotivo' in muda.corpo))
+            delete out.corpo.linhaPVMotivo;
     }
     return out;
 }
@@ -722,20 +762,42 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const formaId = c.formaPrincipal?.id;
     const vale = (item: any) => item.formas === 'todas' || item.formas?.includes(formaId);
     c = { ...c, habilidadesEspeciais: c.habilidadesEspeciais.filter(vale) };
-    const M = { criatura, ataqueDaArma, atributoDaJogada };
+    const M = { criatura, ataqueDaArma, atributoDaJogada, habilidadeDaJogada };
     const armas: any[] = ARMAS;
     const r = M.criatura(c);
     const armaDe = (a: any) => armas.find((w: any) => w.id === a.arma)?.arma;
-    const bloqueioArma = Math.max(0, ...c.ataques.map((a: any) => a.arma ? armaDe(a)?.defesaArma ?? 0 : a.bloqueiaComoArma ?? 0));
+    // O BLOQUEIO DA ARMA, pela regra do jogador (`conjuntoPersonagem`, parecer da Veterana, G4): a arma de duas mãos de
+    // corpo a corpo ocupa as mãos, e aí vale o que está nelas, com o −2 do Montante, do Martelo de Guerra e do Machado
+    // Pesado. A criatura acompanha o catálogo (D-262). Antes o `Math.max(0, ...)` engolia o negativo.
+    // P23 (decisão do autor de 30/10/2026): (a) o corpo que bloqueia como arma (o chifre do minotauro, +1) SOMA mesmo com
+    // as duas mãos ocupadas, porque não está nelas; (b) o −2 só vale com a arma de duas mãos em uso: a criatura que tem
+    // também outra arma do catálogo (o solar, com o arco longo) tem a Defesa sem o −2 quando usa a outra, e o card mostra
+    // as duas (`defesaOutraArma`). A Defesa principal é a da arma de duas mãos, que é a do primeiro ataque nas seis.
+    const duasMaos = c.ataques.map(armaDe).filter((w: any) => w && w.maos === 2 && w.classe !== 'distancia');
+    const corpoBloqueia = Math.max(0, ...c.ataques.filter((a: any) => !a.arma).map((a: any) => a.bloqueiaComoArma ?? 0));
+    const semDuasMaos = (ataques: any[]) => Math.max(0, ...ataques.map((a: any) => a.arma ? armaDe(a)?.defesaArma ?? 0 : a.bloqueiaComoArma ?? 0));
+    const bloqueioArma = duasMaos.length
+        ? Math.max(...duasMaos.map((w: any) => w.defesaArma ?? 0)) + corpoBloqueia
+        : semDuasMaos(c.ataques);
     const defesa = Math.max(r.esquiva, r.bloqueio + bloqueioArma);
-    const vest = r.comEquipamento;
-    const vestida = vest ? {
-        esquiva: vest.esquiva, bloqueio: vest.bloqueio, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
+    const outraArma = duasMaos.length ? c.ataques.find((a: any) => a.arma && !duasMaos.includes(armaDe(a))) : undefined;
+    const principalArma = duasMaos.length ? c.ataques.find((a: any) => duasMaos.includes(armaDe(a))) : undefined;
+    const bloqueioOutra = outraArma ? semDuasMaos(c.ataques.filter((a: any) => !duasMaos.includes(armaDe(a)))) : 0;
+    const defesaOutraArma = outraArma ? {
+        arma: outraArma.nome, armaPrincipal: principalArma.nome, bloqueio: r.bloqueio + bloqueioOutra, defesa: Math.max(r.esquiva, r.bloqueio + bloqueioOutra),
+        ...(r.comEquipamento ? { vestida: Math.max(r.comEquipamento.esquiva, r.comEquipamento.bloqueio + bloqueioOutra) } : {})
     } : undefined;
+    const vest = r.comEquipamento;
+    // O Bloqueio da linha "Com o equipamento" leva a arma das mãos, como a Defesa ao lado (G4): sem isso o card dizia
+    // "Bloqueio 20" e "Defesa 18" no arconte-trombeta, e quem lê pegava o maior.
+    const vestida = vest ? {
+        esquiva: vest.esquiva, bloqueio: vest.bloqueio + bloqueioArma, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
+    } : undefined;
+    const pecas: any[] = [];
     const ataques = c.ataques.map((a: any, i: number) => {
-        const w: any = armaDe(a), h = a.habilidade, hv = c.habilidades[h] ?? c.habilidadesSec[h] ?? 0;
+        const w: any = armaDe(a), h = r.ataques[i].habilidade, hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
         const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? 'percepcao' : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
-        const soma = M.atributoDaJogada(h, c.atributos) + hv;
+        const soma = h ? M.atributoDaJogada(h, c.atributos) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);
         const wd = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca) : null;
         const dado = wd?.dado ?? a.dado;
@@ -744,32 +806,45 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         const tipo = modo?.tipo ?? w?.tipoDano ?? a.tipoDano;
         const tipoExpr = (MODO_SIGLA as any)[tipo === 'perfuracao' ? 'perfurante' : tipo] ?? '(' + tipo + ')';
         const perf = tipo === 'perfuracao' || tipo === 'perfurante' ? (modo?.perf ?? w?.pen ?? a.nivelPerfuracao ?? 0) : null;
+        const forcaInvestida = forcaDaInvestida(wd ? wd.forca : (c.atributos.forca ?? 0), wd ? wd.multiplicadorForca : (a.multiplicadorForca ?? 0), ['disparo', 'atirador', 'arremesso'].includes(h));
+        pecas[i] = { nome: a.nome, dado: Number(dado?.match(/^\d+/)?.[0] ?? 0), extra, forcaInvestida, tipoExpr, perfTxt: perf !== null ? ' · perf. ' + perf : '', semDano: dado === null };
         return {
             nome: a.nome, atrib, pericia: h, dado: Number(dado?.match(/^\d+/)?.[0] ?? 0), tipo, classe: w?.classe ?? a.classe, ticks: r.ataques[i].velocidade, acerto: r.ataques[i].acerto,
             pool: Math.floor(soma / 2) + 'd6' + (soma % 2 ? '+2' : '') + (acerto ? (acerto > 0 ? ' +' : ' −') + Math.abs(acerto) : ''),
-            dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf
+            dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf, forcaInvestida
         };
     });
-    const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[])[0];
-    if (!principal)
-        throw Error(c.id + ': não há deslocamento para o gerado');
-    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), descricao: [h.regra === 'rajada' ? textoDaRajada() : null, h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || h.tecnica?.id || h.arte?.id || '' }));
+    const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[]).find(Boolean);
+    // Os campos da habilidade saem um por linha, com o rótulo de leitura ("Ativação", e não "ativacao:"; parecer da
+    // Veterana, M9): `texto` é a prosa, `campos` a lista; a `descricao` junta os dois para a busca e a mesa. A Rajada
+    // diz o teto do golpe ligado a ela (M8), e o agarrão e a derrubada dizem a jogada desta criatura (M2).
+    const habilidades = c.habilidadesEspeciais.map((h: any) => {
+        const ligado = h.ataque ? c.ataques.find((a: any) => a.nome === h.ataque) : undefined;
+        const pecaLigada = ligado ? pecas[c.ataques.indexOf(ligado)] : undefined;
+        const prosa = [textoDaRegraDaCriatura(h.regra, ligado ? tetoDaRajadaDaCriatura(ligado) : null, ligado?.nome), jogadaDaManobra(h.regra, c), danoDaInvestidaNoCard(h.regra, pecaLigada?.semDano ? undefined : pecaLigada, c.atributos.forca ?? 0), h.texto, h.efeito].filter(Boolean).map((s) => String(s).trim().replace(/\.$/, '')).join('. ');
+        const campos = CAMPOS_HABILIDADE.filter(([k]) => h[k]).map(([k, rotulo]) => ({ rotulo, valor: String(h[k]) }));
+        const descricao = [prosa, ...campos.map((x) => x.rotulo + ': ' + x.valor.trim().replace(/\.$/, ''))].filter(Boolean).join('. ') || h.regra || '';
+        return { nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), ...(h.tecnica ? {tecnica:h.tecnica} : {}), ...(h.arte ? {arte:h.arte} : {}), descricao, ...(campos.length ? { texto: prosa, campos } : {}) };
+    });
+    // A Técnica e a Arte sem texto não viram o id cru no card ("visao-verdadeira"; parecer da Veterana, M2): a vista
+    // leva a referência, e o gerador do card (gen-monsters.mjs) escreve o nome do catálogo.
     const f: any = {
-        id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], deslocamentoDeclarado: { batalha: principal.batalha, arranque: principal.arranque ?? principal.batalha, corrida: principal.corrida ?? principal.batalha }, locomocao: Object.fromEntries(Object.entries(d).map(([k, v]) => [k === 'nado' ? 'natacao' : k, (v as any).batalha])), ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
+        id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], deslocamentoDeclarado: { batalha: principal?.batalha ?? 0, arranque: principal?.arranque ?? principal?.batalha ?? 0, corrida: principal?.corrida ?? principal?.batalha ?? 0 }, locomocao: { terra: d.terra?.batalha ?? null, ...Object.fromEntries(Object.entries(d).filter(([k]) => k !== 'terra').map(([k, v]) => [k === 'nado' ? 'natacao' : k, v == null ? null : (v as any).batalha])) }, ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
     };
     const stat = {
-        id: c.id, nome: c.nome, tipo: c.papel, categoria: c.categoria, ameaca: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: f.tags, pv: r.pv, defesa, defesaMental: r.defesaMental === 'imune' ? '-' : r.defesaMental, defesaSocial: r.defesaSocial === 'imune' ? '-' : r.defesaSocial, vontade: c.vontade, soak: r.absorcao, resistPerf: 0, iniciativa: '1d6 + ' + r.iniciativa, atributos: c.atributos, ataques, tecnicas: Object.keys(f.tech), artes: Object.entries(c.artes).map(([id, nivel]) => ({ id, nivel })), notas: '', pendente: false, ...(vestida ? { vestida } : {})
+        id: c.id, nome: c.nome, tipo: c.papel, categoria: c.categoria, ameaca: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: f.tags, pv: r.pv, defesa, defesaMental: r.defesaMental === 'imune' ? '-' : r.defesaMental, defesaSocial: r.defesaSocial === 'imune' ? '-' : r.defesaSocial, vontade: c.vontade, soak: r.absorcao, resistPerf: 0, iniciativa: '1d6 + ' + r.iniciativa, atributos: c.atributos, ataques, tecnicas: Object.keys(f.tech), artes: Object.entries(c.artes).map(([id, nivel]) => ({ id, nivel })), notas: '', pendente: false, ...(vestida ? { vestida } : {}), ...(defesaOutraArma ? { defesaOutraArma } : {})
     };
     const edicao = incluirFormas ? structuredClone(original) : undefined;
     if (edicao) delete edicao.revisao;
     Object.defineProperty(f, 'motor', { value: {
       edicao,
       energia: r.energia, stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
-      enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
+      couraca: c.couraca ?? 0, enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
       comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
-      sentidos: (c.sentidos || []).filter(vale).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
+      // o sentido sem dado nenhum ("faro:" vazio no card; parecer da Veterana, m1) não vai à vista
+      sentidos: (c.sentidos || []).filter(vale).filter((s: any) => s.descricao).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
       formas: incluirFormas ? (original.formas || []).map((forma: any)=>({
-        id:forma.id, nome:forma.nome,
+        id:forma.id, nome:forma.nome, ...(forma.outraForma ? { outraForma: forma.outraForma } : {}),
         ficha:vistaPublicaCriatura({...comForma(original,forma), id:original.id, nome:original.nome, formaPrincipal:{id:forma.id,nome:forma.nome}},false),
       })) : [],
     } });
@@ -853,60 +928,38 @@ export function conjuntoPersonagem(S: any, cj: any, entrada?: any) {
     const nasMaos = [ehCorpo(cj.habil) ? null : habil, inabilCorpo ? null : inabil].filter((it: any) => it && it.kind !== 'nada');
     const defMaos = nasMaos.reduce((s: number, it: any) => s + (it.def || 0), 0);
     const defCorpo = maosLivres * (ARMA['desarmado']?.defesaArma ?? 1);
-    const defSum = nasMaos.length ? Math.max(defMaos, defCorpo) : defCorpo;
+    // Sem mão livre (a arma de duas mãos, ou arma e escudo), não há corpo a escolher: vale o que está nas mãos, e o
+    // −2 do Montante, do Martelo de Guerra e do Machado Pesado entra (parecer da Veterana, G4). Antes o `Math.max`
+    // com o corpo (0, sem mão livre) engolia o negativo.
+    const defSum = nasMaos.length ? (maosLivres ? Math.max(defMaos, defCorpo) : defMaos) : defCorpo;
+    // A Força a mais da Investida (D-269), pela Força e pelo multiplicador que a arma da mão hábil já usa.
+    const multHabil = !dist && itVers(habil) ? (inabil.kind !== 'nada' ? (atk.forcaMult ?? fm.umaMao) : fm.duasMaos)
+        : dist ? (atk.forcaMult ?? 1) : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
+    const forcaInvestida = forcaDaInvestida(!dist && itVers(habil) ? forca : capF, multHabil, dist);
     return {
-        habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum, penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen
+        habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum, penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen, forcaInvestida
     };
 }
 export function itemDoJogador(slot: any) {
-    const ESCUDO = ESCUDO_EQUIP;
-    const REF_ESCUDO_LIVRE = 'ce';
-    const ESCUDO_LIVRE = { nome: 'Escudo personalizado', bloqCaC: 0, penalidade: 0, vsProjetilRapido: { bloqueia: false, bonus: 0 } };
-    const IMPROV = {
-        nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1
-    };
-    const clampImprov = (v: any, lo: number, hi: number, dflt: number) => { const n = Number(v); return Number.isFinite(n) ? Math.max(lo, Math.min(hi, Math.round(n))) : dflt; };
+    // D-259: o item vem da peça (a cópia inteira que a ficha guarda); a peça gravada
+    // no modelo antigo (ref + ajuste) é lida pela conta de antes em `itemDaPeca`.
     const ref = (slot && slot.ref) || 'nada';
-    if (ref === REF_ESCUDO_LIVRE) {
-        const base = { ...ESCUDO_LIVRE, nome: (slot && slot.nome) || ESCUDO_LIVRE.nome };
-        const s = escudoComMod(base, slot?.mod);
-        return {
-            kind: 'escudo', nome: s.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s
-        };
+    const t = tipoDaPeca(slot);
+    if (!t) return { kind: 'nada', nome: '', def: 0, pen: 0 };
+    const it = itemDaPeca(slot);
+    if (!it) return { kind: 'nada', nome: '', def: 0, pen: 0 };
+    const base = origemDaPeca(slot) ?? it;
+    if (t.tipo === 'escudo') {
+        const nome = ref === REF_ESCUDO_LIVRE ? ((slot && slot.nome) || it.nome) : it.nome;
+        const s = { ...it, nome };
+        return { kind: 'escudo', nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s };
     }
-    if (ref === 'c') {
-        // O item personalizado passou a usar o mesmo "ajustar" das peças de catálogo,
-        // em vez de três campos próprios. A base continua sendo o que a peça guardou
-        // (fichas antigas não perdem nada); o `mod` entra por cima, como em qualquer
-        // outra peça, e com ele vêm Velocidade e Defesa, que antes não dava para mexer.
-        const base = {
-            ...IMPROV, nome: (slot && slot.nome) || IMPROV.nome,
-            dado: clampImprov(slot?.dado, 1, 2, IMPROV.dado),
-            danoBonus: clampImprov(slot?.danoBonus, -2, 2, IMPROV.danoBonus),
-            acerto: clampImprov(slot?.acerto, -6, 6, IMPROV.acerto)
-        };
-        const w = armaComMod(base, slot?.mod);
-        return {
-            kind: 'custom', nome: w.nome, def: w.defesaArma || 0, pen: 0, w, base
-        };
-    }
-    if (ref.startsWith('e:')) {
-        const base = ESCUDO[ref.slice(2)];
-        if (base) {
-            const s = escudoComMod(base, slot?.mod);
-            return {
-                kind: 'escudo', nome: base.nome, def: s.bloqCaC || 0, pen: s.penalidade || 0, vsProjetilRapido: s.vsProjetilRapido || { bloqueia: false, bonus: 0 }, base, s
-            };
+    if (t.tipo === 'arma') {
+        if (t.livre) {
+            const w = { ...it, nome: (slot && slot.nome) || it.nome };
+            return { kind: 'custom', nome: w.nome, def: w.defesaArma || 0, pen: 0, w, base };
         }
-    }
-    if (ref.startsWith('a:')) {
-        const base = ARMA[ref.slice(2)];
-        if (base) {
-            const w = armaComMod(base, slot?.mod);
-            return {
-                kind: 'arma', nome: base.nome, def: w.defesaArma || 0, pen: 0, w, base
-            };
-        }
+        return { kind: 'arma', nome: it.nome, def: it.defesaArma || 0, pen: 0, w: it, base };
     }
     return { kind: 'nada', nome: '', def: 0, pen: 0 };
 }
@@ -991,7 +1044,13 @@ export interface ResumoCombate {
      */
     atributos: Record<string, number>;
     pericias: Record<string, number>;
+    /** A Velocidade da arma em uso, do item que a ficha guarda (D-259). */
+    velocidade?: number | null;
+    /** A Força que a ação de Investida soma mais uma vez no dano deste golpe (D-269); 0 no golpe de longe. */
+    forcaInvestida?: number;
 }
+/** O dano da própria arma, para a classe do Quase-Acerto sair do item e não do catálogo (D-259). */
+const exprDaArma = (w: any) => `${w.dado}d6${w.danoBonus ? (w.danoBonus > 0 ? '+' : '-') + Math.abs(w.danoBonus) : ''}`;
 export function combatePersonagem(S: any): ResumoCombate {
     const n = numerosPersonagem(S), a = n.act, w = a.atk;
     const sig = (n: number) => (n >= 0 ? '+' : '−') + Math.abs(n);
@@ -1005,7 +1064,7 @@ export function combatePersonagem(S: any): ResumoCombate {
     const dz = deslocamento({ forca: at.forca || 0, destreza: at.destreza || 0, atletismo: hab.atletismo || sec.atletismo || 0, centelha: S.centelha || 0 }, RACA[S.raca]?.deslocamentoFrac ?? 1);
     const pen = Math.floor((a.armorPen + a.penSum) / 2), passo = { batalha: Math.max(0, dz.normal - pen), arranque: Math.max(0, dz.arranque - pen), corrida: Math.max(0, dz.corrida - pen) };
     return {
-        arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.id || w.nome, dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }
+        arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.origem ? '' : (w.id || w.nome), w.origem && Number(w.dado) > 0 ? exprDaArma(w) : dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }, velocidade: Number.isFinite(Number(w.ticks)) ? Number(w.ticks) : null, forcaInvestida: a.forcaInvestida
     };
 }
 
@@ -1022,17 +1081,69 @@ export function tetoDaRajadaDaCriatura(a: AtaqueEntrada) {
   return (regras as any).combate.pgr.reforma.rajada.teto[classe] ?? null;
 }
 
-/** Texto de jogo da Rajada, pelos parâmetros da regra comum. */
-export function textoDaRajada() {
+/** Texto de jogo da Rajada, pelos parâmetros da regra comum; com o teto do golpe ligado, o número dele (M8). */
+export function textoDaRajada(teto?: number | null, ataque?: string) {
   const r = (regras as any).combate.pgr.reforma.rajada;
-  return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. O limite depende da classe da arma.';
+  return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. '
+    // o nome do golpe ligado diz com o quê (o aboleth: "Até 2 golpes por ação (Tentáculo)"; parecer da Leitora, achado 14)
+    + (teto ? 'Até ' + teto + ' golpes por ação' + (ataque ? ' (' + ataque + ')' : '') + '.' : 'O limite depende da classe da arma.');
+}
+
+/** Os campos da habilidade especial, na ordem da ficha, com o rótulo de leitura. */
+export const CAMPOS_HABILIDADE: [string, string][] = [
+  ['ativacao', 'Ativação'], ['duracao', 'Duração'], ['alcance', 'Alcance'], ['area', 'Área'],
+  ['dano', 'Dano'], ['resistencia', 'Resistência'], ['limiteDeUso', 'Limite de uso'],
+];
+
+/** A jogada do agarrão e da derrubada desta criatura: o maior entre Força e Destreza, mais a Briga, pela fórmula do ataque. */
+export function jogadaDaManobra(regra: string | undefined, c: { atributos: Num; habilidades: Num; centelha: number }): string | null {
+  if (regra !== 'agarrar' && regra !== 'derrubar') return null;
+  const forca = c.atributos.forca ?? 0, destreza = c.atributos.destreza ?? 0, briga = c.habilidades.briga ?? 0;
+  const [nome, valor] = forca >= destreza ? ['Força', forca] : ['Destreza', destreza];
+  const soma = valor + briga, bonus = (soma % 2 ? 2 : 0) + 2 * Math.min(c.centelha ?? 0, briga);
+  return 'Nesta criatura: ' + Math.floor(soma / 2) + 'd6' + (bonus ? ' +' + bonus : '') + ' (' + nome + ' ' + valor + ' + Briga ' + briga + ').';
+}
+
+/**
+ * A Força a mais da ação de Investida (D-269; o +1d6 saiu pela P20-b, decisão do autor de 30/10/2026): a Investida soma
+ * a Força mais uma vez no dano, e nenhum dado a mais (uma mão ou o corpo, de × 1 para × 2; duas mãos, de × 2 para × 3), para o personagem e para a criatura. O golpe de longe não
+ * investe, e o golpe que não soma a Força (× 0) não ganha Força nenhuma: a decisão fala de × 1 e × 2, e não o cria.
+ * `forca` é a Força que a arma já usa (com o teto dela, quando tem).
+ */
+export function forcaDaInvestida(forca: number, multiplicador: number, distancia: boolean): number {
+  const extra = (regras as any).combate?.movimento?.investida?.forcaExtra ?? 1;
+  return distancia || !(multiplicador > 0) ? 0 : Math.max(0, forca) * extra;
+}
+
+/** O dano do golpe ligado à Investida desta criatura, já com a Força a mais (D-269, P20-b: sem o +1d6), para o card. */
+export function danoDaInvestidaNoCard(regra: string | undefined, a: { nome: string; dado: number; extra: number; forcaInvestida: number; tipoExpr: string; perfTxt: string } | undefined, forca: number): string | null {
+  if (regra !== 'investida') return null;
+  if (!a) return 'Nesta criatura: a Força ' + forca + ' mais uma vez no dano do golpe.';
+  const fixo = a.extra + a.forcaInvestida;
+  return 'Nesta criatura, ' + a.nome + ' investindo: ' + a.dado + 'd6' + (fixo > 0 ? ' +' + fixo : fixo < 0 ? ' −' + (-fixo) : '') + ' ' + a.tipoExpr + a.perfTxt
+    + ' (a Força ' + a.forcaInvestida + ' mais uma vez).';
+}
+
+/** Resumos das manobras do livro para o card; o detalhe da criatura vem depois. */
+export function textoDaRegraDaCriatura(id?: string, tetoRajada?: number | null, ataque?: string): string | null {
+  if (id === 'rajada') return textoDaRajada(tetoRajada, ataque);
+  const textos: Record<string,string> = {
+    agarrar: 'Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.',
+    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo.',
+    furtividade: 'A aproximação escondida usa Furtividade contra a Percepção Passiva de quem pode perceber. O Mestre aplica as circunstâncias e o Tamanho na mesa.',
+    derrubar: 'Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.',
+    empurrar: 'Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.',
+    'empunhadura-dupla': 'Um golpe com cada mão na mesma ação, ambos a −1d6, cada um com seu acerto e dano. Só as mãos fazem par; o ciclo depende das classes das armas. Não acumula com Rajada.',
+    horda: 'Trate o bando de capangas iguais como um esquadrão. A quantidade determina a Magnitude, que sobe um degrau a cada dobra do grupo; resolva os golpes pela Regra de Horda do livro.',
+  };
+  return id ? textos[id] ?? null : null;
 }
 
 /** P10/P13, 28/10/2026: PV por Tamanho equivalente; a quantidade decide a proporção. */
 export function enxamePorQuadrado(e: EntradaCriatura, individuos?: number) {
   if (!e.enxame) throw Error('entrada sem bloco enxame');
   const cheio = e.enxame.individuosPorQuadrado, tamanho = e.enxame.tamanhoEquivalente;
-  if (!Number.isInteger(cheio) || cheio < 1 || !ORDEM.includes(tamanho)) throw Error('bloco enxame inválido');
+    if (!Number.isInteger(cheio) || cheio < 1 || !['pequeno', 'medio'].includes(tamanho)) throw Error('bloco enxame inválido: só Pequeno ou Médio');
   const presentes = individuos ?? cheio;
   if (!Number.isInteger(presentes) || presentes < 0 || presentes > cheio) throw Error('indivíduos fora do quadrado cheio');
   const pvCheio = pvDoTamanho(e.atributos.vigor ?? 0, tamanho) + (e.bonusPV ?? 0);

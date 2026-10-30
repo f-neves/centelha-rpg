@@ -20,7 +20,8 @@
     "massa": 1.25,
     "area": 0.29,
     "posturaDoTamanho": "de baixo, asas abertas",
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "ave de osso oco, corpo leve"
   },
   "couraca": 0,
   "atributos": {
@@ -104,7 +105,6 @@
     {
       "nome": "Bicada",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -140,14 +140,14 @@
     },
     {
       "nome": "sentidos",
-      "descricao": "Imita sons, até a fala humana (National Zoo). Texto para o Mestre",
+      "descricao": "Imita sons, até a fala humana. Texto para o Mestre",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "bolsa sob a língua para levar comida (Wildlife Research Institute); vive até 13 anos na natureza e mais de 40 em cativeiro (ADW)"
+    "tracos": "bolsa sob a língua para levar comida (Wildlife Research Institute); vive até 13 anos na natureza e mais de 40 em cativeiro"
   },
   "aptidoes": {
     "montaria": false,

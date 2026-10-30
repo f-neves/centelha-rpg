@@ -60,6 +60,19 @@ const confere = (id, conta, vem, deve, tol = 0) => {
   if (igual) return;
   falhas.push({ id, conta, vem, deve });
 };
+// ACEITAS. D-208 completada pela D-258 (29/10/2026): no corpo a corpo a criatura rola pela maior entre Briga e Armas.
+// Estas fichas .md (tmp/arquiteto/bestiario/fichas-v3) escreveram a frase "Jogada:" pela Habilidade do catálogo
+// (arma) ou pela gravada (ataque natural), com a outra maior. A ficha .md é que se corrige; até lá, a diferença só
+// passa se o número da ficha for exatamente a conta pela Habilidade antiga.
+// A reconversão de 30/10/2026 (P17, fase5-01 a fase5-18) não as resolve, porque não muda a ficha .md: as 11 estão com
+// o número novo para a Bestiarista em tmp/bestiarista-fichas/ajustes-parecer-f4.md, seção 7. A entrada que deixar de
+// ser usada (a ficha corrigida entrou e o fixture foi regenerado) falha, para a lista encolher junto com o problema.
+const ACEITAS_JOGADA = Object.fromEntries([
+  ['babau', 'Lança', 'armas', true], ['boggard', 'Maça estrela', 'armas', true], ['diabo-barbado', 'Glaive serrilhada', 'armas', true],
+  ['erinia', 'Espada flamejante', 'armas', true], ['centauro', 'Coice', 'briga', false], ['minotauro', 'Chifrada', 'briga', false],
+  ['sahuagin', 'Garras', 'briga', false], ['salamandra', 'Cauda', 'briga', false], ['skum-ulat-kini', 'Mordida', 'briga', false],
+  ['skum-ulat-kini', 'Garras', 'briga', false], ['tengu', 'Bico', 'briga', false],
+].map(([id, nome, antiga, arma]) => [id + ' · ' + nome, { antiga, arma }]));
 // o peso erguido da ficha vem com duas casas, e o conferidor confere a 1% (GUIA-FICHA.md, seção 7)
 const tolPeso = (p) => Math.max(0.02, Math.abs(p) * 0.01);
 
@@ -82,7 +95,19 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
     if (a.velocidade !== undefined) confere(id, `${a.nome}.velocidade`, ra.velocidade, a.velocidade);
     if (a.danoMedio !== undefined) confere(id, `${a.nome}.danoMedio`, ra.danoMedio, a.danoMedio);
     // a frase "Jogada:" da ficha soma o Atributo, a Habilidade e a Centelha, sem o Acerto da coluna
-    if (a.jogada !== undefined) confere(id, `${a.nome}.jogada`, ra.jogada - (ra.acerto || 0), a.jogada);
+    if (a.jogada !== undefined) {
+      const aceita = ACEITAS_JOGADA[id + ' · ' + a.nome];
+      if (aceita && ra.jogada - (ra.acerto || 0) !== a.jogada) {
+        // a ficha só passa se o número dela for a conta pela Habilidade antiga, e o motor a conta pela maior
+        const ea = e.ataques.find((y) => y.nome === a.nome), hv = (h) => e.habilidades[h] ?? e.habilidadesSec[h] ?? 0;
+        const velha = hv(aceita.antiga), nova = hv(ra.habilidade);
+        const atr = Math.max(e.atributos.forca ?? 0, e.atributos.destreza ?? 0), ce = e.centelha ?? 0;
+        confere(id, `${a.nome}.jogada pela Habilidade antiga (${aceita.antiga})`, atr + velha + 2 * Math.min(ce, velha), a.jogada);
+        confere(id, `${a.nome}.jogada pela maior entre Briga e Armas`, ra.jogada - (ra.acerto || 0), atr + nova + 2 * Math.min(ce, nova));
+        confere(id, `${a.nome}.a maior é maior que a antiga`, nova > velha && !ea?.arma === !aceita.arma, true);
+        aceitas.push(id + ' · ' + a.nome);
+      } else confere(id, `${a.nome}.jogada`, ra.jogada - (ra.acerto || 0), a.jogada);
+    }
   }
   for (const [fid, fo] of Object.entries(c.formas || {})) {
     const rf = M.criatura(M.comForma(c.entrada, fo.entrada));
@@ -92,6 +117,8 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
     }
   }
 }
+// a lista de exceção encolhe com o problema: a entrada que nenhuma ficha usou é velha
+for (const k of Object.keys(ACEITAS_JOGADA)) if (!aceitas.includes(k)) confere(k, 'ACEITAS_JOGADA sem uso (a ficha já foi corrigida: tire a linha)', 'sem uso', 'usada');
 
 // P4: o critério é Inteligência, inclusive fora dos animais; Int 0 continua imune.
 for (const categoria of ['animal', 'fera-magica', 'humanoide']) {
@@ -158,6 +185,85 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   confere(c.id,'vista sem revisao',JSON.stringify(vista).includes('__REVISAO_PRIVADA_A5__'),false);
   for (const a of vista.motor.stat.ataques) if (['corte','impacto','perfuracao','perfurante'].includes(a.tipo)) confere(c.id,a.nome+' com tipo de dano legível',/\([CIP]\)/.test(a.dano),true);
 }
+// Item 20, D-208: um golpe corpo a corpo sem Habilidade guardada escolhe a maior entre Briga e Armas.
+{
+  const entrada = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  entrada.habilidades.briga = 2;
+  entrada.habilidades.armas = 5;
+  entrada.ataques = [{ nome: 'Golpe', parte: 'mao', classe: 'media', pgr: [2,1,3], dado: '1d6', multiplicadorForca: 1, tipoDano: 'impacto', nivelPerfuracao: null, acerto: 0, bloqueiaComoArma: null }];
+  const conta = M.criatura(entrada).ataques[0];
+  confere('Item 20', 'sem Habilidade usa Armas maior', conta.jogada, Math.max(entrada.atributos.forca, entrada.atributos.destreza) + 5 + 2 * Math.min(entrada.centelha, 5));
+  entrada.ataques[0].classe = 'distancia';
+  confere('Item 20', 'controle negativo, tiro sem Habilidade não ganha jogada', M.criatura(entrada).ataques[0].jogada, null);
+}
+
+// D-258/A4: arma do catálogo não repete a Habilidade, e a troca no catálogo muda a jogada.
+{
+  const entrada = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/aasimar.json'), 'utf8'));
+  const ataque = entrada.ataques.find((a) => a.arma);
+  confere('D-258', 'arma sem Habilidade repetida', Object.hasOwn(ataque, 'habilidade'), false);
+  const antes = M.criatura(entrada).ataques.find((a) => a.nome === ataque.nome).jogada;
+  entrada.habilidades.armas += 1;
+  confere('D-258', 'controle negativo, alterar a Habilidade do catálogo hipotético muda a jogada', M.criatura(entrada).ataques.find((a) => a.nome === ataque.nome).jogada, antes + 1);
+}
+
+// D-208 completada pela D-258: no corpo a corpo a criatura rola pela maior entre Briga e Armas, mais o maior entre
+// Força e Destreza e o termo da Centelha, com a arma ou sem ela; a Habilidade gravada (no JSON ou no catálogo) não
+// conta. Tiro e arremesso seguem a Habilidade do catálogo (arma) ou da ficha (ataque natural).
+{
+  const ler = (id) => JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario', id + '.json'), 'utf8'));
+  const jog = (Mx, c, nome) => Mx.criatura(c).ataques.find((a) => a.nome === nome);
+  // babau: Briga 5, Armas 4, Força 6, Centelha 4; a lança do catálogo diz Armas
+  const babau = ler('babau');
+  confere('D-258', 'babau, lança do catálogo Armas rola pela Briga maior', jog(M, babau, 'Lança').jogada, 6 + 5 + 2 * 4 + 1);
+  confere('D-258', 'babau, lança diz a Habilidade usada', jog(M, babau, 'Lança').habilidade, 'briga');
+  // a cópia antiga gravada no JSON não manda no corpo a corpo, nem na arma nem no ataque natural
+  const copia = ler('babau');
+  copia.ataques.find((a) => a.nome === 'Lança').habilidade = 'armas';
+  copia.ataques.find((a) => a.nome === 'Garras').habilidade = 'armas';
+  confere('D-258', 'babau, cópia antiga Armas na lança é ignorada', jog(M, copia, 'Lança').jogada, 6 + 5 + 2 * 4 + 1);
+  confere('D-258', 'babau, cópia antiga Armas nas garras é ignorada', jog(M, copia, 'Garras').jogada, 6 + 5 + 2 * 4 + 0);
+  const aasimar = ler('aasimar');
+  aasimar.ataques[0].habilidade = 'arremesso';
+  confere('D-258', 'aasimar, cópia antiga Arremesso na espada não a faz de arremesso', jog(M, aasimar, 'Espada longa').jogada, 2 + 2 + 2 * 1 + 1);
+  // e o tiro e o arremesso seguem a Habilidade de cada um
+  const gigante = ler('gigante-da-colina');
+  confere('D-258', 'gigante, rocha arremessada (classe pesada) sai pela Destreza e Arremesso', jog(M, gigante, 'Rocha arremessada').jogada, 2 + 3 + 2 * 1 + 0);
+  confere('D-258', 'gigante, pancada pela Briga e Força', jog(M, gigante, 'Pancada descomunal').jogada, 9 + 5 + 2 * 1 + 0);
+  const erinia = ler('erinia');
+  confere('D-258', 'erínia, arco longo pela Percepção e Atirador do catálogo', jog(M, erinia, 'Arco longo').jogada, 5 + 4 + 2 * 4 + 0);
+  // o catálogo trocado: a Habilidade de corpo a corpo dele é ignorada; a de tiro e arremesso é respeitada
+  const plugin = { name: 'armas-trocadas', setup(b) {
+    b.onLoad({ filter: /[\\/]armas\.json$/ }, (args) => {
+      const armas = JSON.parse(fs.readFileSync(args.path, 'utf8'));
+      for (const a of armas) {
+        if (a.id === 'espada-longa') a.arma.pericia = 'briga';
+        if (a.id === 'arco-longo') a.arma.pericia = 'arremesso';
+      }
+      return { contents: JSON.stringify(armas), loader: 'json' };
+    });
+  } };
+  const saida = path.join(os.tmpdir(), `motor-test-${process.pid}-armas.mjs`);
+  await build({ entryPoints: [path.join(ROOT, 'src/lib/motor.ts')], outfile: saida, bundle: true, format: 'esm', platform: 'node', loader: { '.json': 'json' }, logLevel: 'error', define: { 'import.meta.env': 'globalThis.__ENV__' }, plugins: [plugin] });
+  const MT = await import(pathToFileURL(saida).href);
+  try { fs.unlinkSync(saida); } catch { /* o sistema limpa */ }
+  confere('D-258', 'catálogo trocado, espada longa Briga: aasimar continua pela Armas maior', jog(MT, ler('aasimar'), 'Espada longa').jogada, 2 + 2 + 2 * 1 + 1);
+  confere('D-258', 'catálogo trocado, arco longo Arremesso: a erínia rola Destreza e Arremesso', jog(MT, ler('erinia'), 'Arco longo').jogada, 7 + 3 + 2 * 3 + 0);
+  confere('D-258', 'catálogo trocado, o card mostra o Arremesso', MT.vistaPublicaCriatura(ler('erinia')).motor.stat.ataques.find((a) => a.nome === 'Arco longo').pericia, 'arremesso');
+  confere('D-258', 'o card mostra a Briga da lança do babau', M.vistaPublicaCriatura(ler('babau')).motor.stat.ataques.find((a) => a.nome === 'Lança').pericia, 'briga');
+}
+
+// Item 2: quando terra falta, o leitor preserva a ausência e o card pode escrever "não anda".
+{
+  const entrada = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  delete entrada.deslocamento.terra;
+  entrada.deslocamento.voo = { batalha: 5 };
+  const vista = M.vistaPublicaCriatura(entrada);
+  confere('Item 2', 'terra ausente vira não anda no card', vista.locomocao.terra, null);
+  const antiga = structuredClone(entrada); antiga.deslocamento.terra = { batalha: 3, arranque: 5, corrida: 7 };
+  confere('Item 2', 'controle negativo, terra declarada não vira nula', M.vistaPublicaCriatura(antiga).locomocao.terra, 3);
+}
+
 // P10/P13: oito números escritos nas fichas, sem PV guardado no bloco enxame.
 const PV_ENXAMES = [['aranhas',24,12,6],['caranguejos',26,13,6],['centopeias',24,12,6],['formigas',26,13,6],['morcegos',34,17,8],['ratos',28,14,7],['sanguessugas',26,13,6],['vespas',24,12,6]];
 const controleSemEnxame = await carregarMotor(true);
@@ -175,6 +281,45 @@ for (const [nome,cheio,metade,quarto] of PV_ENXAMES) {
 }
 confere('P10','controle negativo sem ramo do enxame',negativasEnxame,8);
 console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativasEnxame + ' divergências de PV.');
+
+// F5.1: só a forma pode cancelar um meio herdado; o card recebe o nulo para escrever o "não".
+{
+  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  const forma = { id: 'sem-terra', deslocamento: { terra: null, voo: null } };
+  const lida = M.comForma(entrada, forma);
+  confere('F5.1', 'terra cancelada', lida.deslocamento.terra, null);
+  confere('F5.1', 'voo cancelado', lida.deslocamento.voo, null);
+  const card = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  const vista = M.vistaPublicaCriatura({ ...card, formas: [...card.formas, { ...forma, nome: 'sem terra' }] });
+  confere('F5.1', 'card conserva terra nula', vista.motor.formas.find(f => f.id === 'sem-terra').ficha.locomocao.terra, null);
+}
+
+// F5.2: com a área própria, a forma pode escolher o Tamanho que o motor apresenta.
+{
+  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  const forma = { corpo: { area: 6, tamanhoEscolhido: 'grande' } };
+  confere('F5.2', 'motor usa Tamanho com área', M.criatura(M.comForma(entrada, forma)).tamanho, 'grande');
+}
+
+// F5.3: o motor não amplia a decisão para outro Tamanho quando recebe um objeto fora do esquema.
+{
+  const entrada = structuredClone(FIX.criaturas['enxame-de-aranhas'].entrada);
+  entrada.enxame.tamanhoEquivalente = 'grande';
+  let recusou = false; try { M.enxamePorQuadrado(entrada); } catch { recusou = true; }
+  confere('F5.3', 'controle negativo, motor recusa enxame Grande', recusou, true);
+}
+
+// F5.4: mesmo uma fonte antiga, fora do esquema, não muda o PV por forma.
+{
+  const entrada = structuredClone(FIX.criaturas.lobisomem.entrada);
+  const principal = M.criatura(entrada).pv;
+  const forma = M.comForma(entrada, { id: 'bonus-proibido', bonusPV: 20 });
+  confere('F5.4', 'motor ignora bonusPV da forma', M.criatura(forma).pv, principal);
+  const card = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  const vista = M.vistaPublicaCriatura({ ...card, formas: [...card.formas, { id: 'bonus-proibido', nome: 'bonus proibido', bonusPV: 20 }] });
+  const lida = vista.motor.formas.find(f => f.id === 'bonus-proibido').ficha.motor.stat.pv;
+  confere('F5.4', 'card ignora bonusPV da forma', lida, vista.motor.stat.pv);
+}
 
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {

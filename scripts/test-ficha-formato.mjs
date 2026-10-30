@@ -28,9 +28,14 @@ const armas = achataCatalogo(JSON.parse(readFileSync('src/data/armas.json', 'utf
 const escudos = achataCatalogo(JSON.parse(readFileSync('src/data/escudos.json', 'utf8')));
 const armaduras = achataCatalogo(JSON.parse(readFileSync('src/data/armaduras.json', 'utf8')));
 assert.deepEqual(refsExistem(novo, { armas, escudos, armaduras }), []);
-const ruim = structuredClone(novo); ruim.equipamento.conjuntos[0].maoHabil.ref = 'a:arma-que-nao-existe';
+const ruim = structuredClone(novo); ruim.equipamento.conjuntos[0].maoHabil.ref = 'a:arma-que-nao-existe'; delete ruim.equipamento.conjuntos[0].maoHabil.item;
 assert.ok(refsExistem(ruim, { armas, escudos, armaduras }).length > 0);
 assert.equal(fichaParaGravar({ ...old, id: { ...old.id, altura: '1,85 m', peso: '90 kg' } }).corpo.altura, 1.85);
 assert.equal(fichaParaGravar({ ...old, id: { ...old.id, altura: '1,85 m', peso: '90 kg' }, corpo: {} }).corpo.massa, 90);
+// Item 10 (D-260, A2): a massa só fica guardada quando o jogador a escreve.
+assert.ok(!('massa' in (novo.corpo || {})), 'D-260: ficha sem massa escrita não grava a massa padrão');
+assert.ok(!('massa' in (fichaParaGravar({ ...old, raca: 'anao' }).corpo || {})), 'D-260: nem com outra raça');
+assert.equal(fichaParaGravar({ ...old, corpo: { massa: 95 } }).corpo.massa, 95, 'D-260: a massa escrita fica');
+assert.ok(!('massa' in (fichaParaGravar({ ...novo, corpo: {} }).corpo || {})), 'D-260: ficha nova sem massa continua sem');
 unlinkSync(out);
 console.log('Ficha 41: formatos velho e novo, ida e volta, Bravura, equipamento e controles negativos OK');

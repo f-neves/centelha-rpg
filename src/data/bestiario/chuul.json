@@ -15,7 +15,8 @@
     "profundidade": null,
     "comprimento": 2.7,
     "massa": 160,
-    "area": 1.9
+    "area": 1.9,
+    "posturaDoTamanho": "de cima"
   },
   "couraca": 5,
   "atributos": {
@@ -95,7 +96,6 @@
     {
       "nome": "Pinça",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -112,7 +112,6 @@
     {
       "nome": "Mandíbulas",
       "parte": "mandibulas-entre-os-tentaculos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

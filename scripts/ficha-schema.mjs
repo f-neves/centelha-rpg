@@ -15,6 +15,21 @@
 // existir por escrito, e `test-contrato.mjs` é quem a cobra.
 import { z } from 'zod';
 
+/**
+ * O item inteiro que a ficha do personagem guarda (D-259): o envelope do catálogo
+ * (`arma`, `escudo` ou `armadura` com todos os números), com `origem` no lugar do `id`
+ * (null na peça personalizada). O item não segue o catálogo: é o que a ficha diz.
+ */
+export const itemSchema = z.object({
+  origem: z.string().nullable(),
+  nome: z.string(),
+  tipo: z.enum(['arma', 'escudo', 'armadura']),
+  tags: z.array(z.string()).optional(),
+  arma: z.object({ dado: z.number(), acerto: z.number(), ticks: z.number(), maos: z.number(), pericia: z.string(), tipoDano: z.string() }).passthrough().optional(),
+  escudo: z.object({ bloqCaC: z.number(), penalidade: z.number() }).passthrough().optional(),
+  armadura: z.object({ soak: z.object({ impacto: z.number(), corte: z.number(), perfuracao: z.number() }), penalidade: z.number() }).passthrough().optional(),
+}).passthrough().refine((i) => i[i.tipo] != null, { message: 'o item precisa do bloco do próprio tipo' });
+
 /** Uma peça escolhida num slot de mão. `ref` é "a:<arma>", "e:<escudo>" ou "nada". */
 export const slotSchema = z.object({
   ref: z.string().regex(/^(a:[a-z0-9-]+|e:[a-z0-9-]+|c|ce|nada)$/,
@@ -24,6 +39,8 @@ export const slotSchema = z.object({
   // Liga o slot à peça do arsenal, para a mesma espada em dois conjuntos mostrar a
   // mesma foto. A mesa não lê, mas a ficha depende.
   uid: z.string().optional(),
+  // D-259: o item inteiro. Com ele, `ref` só diz o tipo e a origem.
+  item: itemSchema.optional(),
 }).passthrough();
 
 /** Um conjunto de mãos. Exatamente um deles é o `ativo`, e é o que a mesa usa. */
@@ -45,6 +62,7 @@ export const pecaArmaduraSchema = z.union([
     vestida: z.boolean().optional(),
     mod: z.record(z.string(), z.union([z.number(), z.string(), z.null()])).optional(),
     img: z.string().optional(),
+    item: itemSchema.optional(),
   }).passthrough(),
 ]);
 
@@ -81,8 +99,8 @@ export const fichaAntigaSchema = z.object({
 const slotNovoSchema = slotSchema.omit({ mod: true }).extend({ ajuste: z.record(z.string(), z.union([z.number(), z.string(), z.null()])).optional() });
 const conjuntoNovoSchema = z.object({ ativo: z.boolean(), maoHabil: slotNovoSchema, maoInabil: slotNovoSchema.nullable().optional() }).passthrough();
 const equipamentoNovoSchema = z.object({
-  armaduras: z.array(z.union([z.string(), z.object({ base: z.string(), vestida: z.boolean().optional(), ajuste: z.record(z.string(), z.any()).optional() }).passthrough()])).optional(),
-  arsenal: z.array(z.object({ ref: z.string() }).passthrough()).optional(),
+  armaduras: z.array(z.union([z.string(), z.object({ base: z.string(), vestida: z.boolean().optional(), ajuste: z.record(z.string(), z.any()).optional(), item: itemSchema.optional() }).passthrough()])).optional(),
+  arsenal: z.array(z.object({ ref: z.string(), item: itemSchema.optional() }).passthrough()).optional(),
   conjuntos: z.array(conjuntoNovoSchema).min(1).optional(),
 }).passthrough();
 export const fichaNovaSchema = z.object({
@@ -97,6 +115,9 @@ export const fichaSchema = z.union([fichaAntigaSchema, fichaNovaSchema]);
 /**
  * Confere que toda `ref` de um conjunto aponta para peça que existe no catálogo.
  *
+ * Só vale para a peça SEM item inteiro (o modelo de antes, ref + ajuste): a peça com
+ * `item` (D-259) não depende do catálogo, e a origem dela pode até ter saído dele.
+ *
  * É a metade que o esquema sozinho não pega: `a:espada-lomga` tem a forma certa e
  * vira `null` em silêncio no `armaDoSlot`. Recebe os catálogos de fora para não
  * duplicar aqui a leitura dos JSON.
@@ -108,14 +129,16 @@ export function refsExistem(ficha, { armas, escudos, armaduras }) {
   const idsArmadura = new Set(armaduras.map((a) => a.id));
   (ficha.equipamento?.conjuntos || ficha.conjuntos || []).forEach((cj, i) => {
     for (const mao of ['habil', 'inabil']) {
-      const ref = (cj[mao === 'habil' ? 'maoHabil' : 'maoInabil'] || cj[mao])?.ref;
-      if (!ref || ref === 'nada' || ref === 'c' || ref === 'ce') continue;
+      const slot = cj[mao === 'habil' ? 'maoHabil' : 'maoInabil'] || cj[mao];
+      const ref = slot?.ref;
+      if (!ref || ref === 'nada' || ref === 'c' || ref === 'ce' || slot?.item) continue;
       const [tipo, id] = [ref.slice(0, 1), ref.slice(2)];
       if (tipo === 'a' && !idsArma.has(id)) erros.push(`conjunto ${i}, mão ${mao}: arma "${id}" não existe no catálogo`);
       if (tipo === 'e' && !idsEscudo.has(id)) erros.push(`conjunto ${i}, mão ${mao}: escudo "${id}" não existe no catálogo`);
     }
   });
   for (const p of ficha.equipamento?.armaduras || ficha.equip?.armaduras || []) {
+    if (p && typeof p === 'object' && p.item) continue;
     const base = typeof p === 'string' ? p : p?.base;
     // 'c' é a peça livre (ID_ARMADURA_LIVRE), que de propósito não está no catálogo.
     if (base && base !== 'c' && !idsArmadura.has(base)) erros.push(`armadura "${base}" não existe no catálogo`);

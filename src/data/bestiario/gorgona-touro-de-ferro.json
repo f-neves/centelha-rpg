@@ -72,7 +72,6 @@
     {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -89,7 +88,6 @@
     {
       "nome": "Investida (marrada)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -97,7 +95,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,

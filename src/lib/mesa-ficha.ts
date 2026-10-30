@@ -126,6 +126,9 @@ export function resumoFicha(S: any): ResumoFicha {
  * Quem escreve é quem já tem a ficha em mãos: a página do personagem ao salvar,
  * e a aba Grupo do mestre, que recalcula e corrige o que estiver velho.
  */
+// D-261 diz que nenhuma ficha guarda contas prontas, mas este cache é o canal dos números do
+// colega (grupo_visivel.extra, combate_visao.resumo_pc). O autor deixou para a área do Mestre
+// (P19, 29/10/2026, tmp/executora/fase3/perguntas.md): fica como está nesta fase. Sem Fôlego.
 export function resumoParaBanco(R: ResumoFicha) {
   return {
     pv: R.pv, energia: R.energia, mana: R.mana,

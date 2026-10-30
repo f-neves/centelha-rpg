@@ -67,19 +67,14 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     }
   ],
   "habilidadesEspeciais": [
@@ -199,7 +194,6 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "sem dado",
     "mente": "inteligente, comprometida com seus protegidos",
     "tracos": "cabeça de cão sobre corpo de guerreiro, espada na mão"
   },
@@ -211,7 +205,6 @@
   "comportamento": {
     "social": "matilha organizada",
     "atividade": "qualquer hora",
-    "dieta": "sem dado",
     "caca": "não se aplica",
     "dianteDeGente": "socorre e protege"
   },

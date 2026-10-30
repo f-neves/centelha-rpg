@@ -110,7 +110,6 @@
     {
       "nome": "Patada",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -127,7 +126,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -185,7 +183,7 @@
   },
   "comportamento": {
     "social": "solitário (exceto a mãe com filhotes e os casais no acasalamento)",
-    "atividade": ": 66,6% do tempo inativo e 29,1% em deslocamento; descansa até 20 horas por dia fora da caça",
+    "atividade": "66,6% do tempo inativo e 29,1% em deslocamento; descansa até 20 horas por dia fora da caça",
     "dieta": "carnívoro (foca-anelada sobretudo; também outras focas, morsa, aves marinhas, carniça de baleia)",
     "caca": "emboscada (espera no respiradouro, a mais comum) e espreita (rastejando ou nadando pelas fendas)",
     "dianteDeGente": "ataca (o macho adulto faminto) · defende a cria (a fêmea)"

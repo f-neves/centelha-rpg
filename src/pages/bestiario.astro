@@ -63,9 +63,11 @@ const opcoesEditor = {
   <h1>Bestiário & NPCs</h1>
   <p class="lead">Adversários prontos para a mesa, do camponês ao dragão ancião. Os números seguem as mesmas fórmulas dos personagens (PV, Defesa, Absorção, Iniciativa e pools de ataque já calculados). Os poderes especiais aparecem como <strong>poderes naturais</strong> (com usos por dia, por cena ou à vontade) ou como <strong>Artes</strong> de verdade, quando a criatura conjura como um personagem conjuraria.</p>
 
-  <div class="callout regra"><span class="lbl">Informações</span>O bloco traz o <strong>Ataque</strong> (o pool, já com o Acerto) e o <strong>Dano</strong> prontos para rolar. O tipo de dano vem em sigla: <strong>Impacto (I)</strong>, <strong>Corte (C)</strong>, <strong>Perfuração (P)</strong>. <strong>Ameaça</strong> (◆) é o desafio publicado até hoje; está em recalibração, e os losangos continuam mostrando o valor antigo até a bancada medir de novo. A lista de <strong>Poderes</strong> mostra o efeito, os usos e o que o alvo resiste, quando a criatura tiver algum. Toque na arte para ampliar.</div>
+  <div class="callout regra"><span class="lbl">Informações</span>O bloco traz o <strong>Ataque</strong> (o pool, já com o Acerto) e o <strong>Dano</strong> prontos para rolar. O tipo de dano vem em sigla: <strong>Impacto (I)</strong>, <strong>Corte (C)</strong>, <strong>Perfuração (P)</strong>. <strong>Ameaça</strong> (◆) é o desafio publicado até hoje; está em recalibração, e os losangos continuam mostrando o valor antigo até a bancada medir de novo. O botão <strong>Poderes</strong> mostra os poderes da criatura (o efeito, os usos e o que o alvo resiste), e o botão <strong>Habilidades</strong>, as Habilidades de treino dela (Armas, Esquiva, Furtividade...), com o valor que se soma ao Atributo na jogada, como no livro. Toque na arte para ampliar.</div>
 
-  <div class="callout"><span class="lbl">Dano</span>O golpe de uma criatura soma a <strong>Força uma vez</strong> ao dano (um só membro: garra, presa, braço ou tentáculo). A Força só entra <strong>em dobro</strong> quando se empunha uma <strong>arma</strong> com mais de um membro (as duas mãos num montante, por exemplo), então os ataques naturais do bestiário usam sempre <strong>uma vez a Força</strong>. Uma criatura com muitos membros ataca <strong>várias vezes</strong> (um golpe por membro), não com mais Força por golpe.</div>
+  <div class="callout"><span class="lbl">Dano</span>O golpe comum de uma criatura soma a <strong>Força uma vez</strong> ao dano (um só membro: garra, presa, braço ou tentáculo), e isso vale também para a marrada, o pisão e o mergulho. A Força só entra <strong>em dobro</strong> em dois casos: quando se empunha uma <strong>arma</strong> com mais de um membro (as duas mãos num montante, por exemplo), e na <strong>cauda que varre com o giro do corpo inteiro</strong>, que o card já mostra com a Força em dobro. Na <strong>ação de <a href={url('regras/combate') + '#investida'}>Investida</a></strong>, como o personagem, o golpe que fecha a corrida soma a Força <strong>mais uma vez</strong>, sem dado a mais: de × 1 para × 2 com um membro, de × 2 para × 3 com a arma de duas mãos; o card diz o dano investindo de quem tem Investida. Uma criatura com muitos membros ataca <strong>várias vezes</strong> (um golpe por membro), não com mais Força por golpe.</div>
+
+  <div class="callout"><span class="lbl">Sopro e área</span>O sopro de uma criatura (fogo, gelo, ácido, raio, gás) é <strong>área</strong>, como qualquer outra: não se esquiva nem se bloqueia. Quem está nela <strong>sai</strong>, pela regra do livro (<a href={url('regras/combate') + '#contra-area'}>Contra área, a saída é sair</a>): Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, e leva metade; contra o dobro disso, não leva nada.</div>
 
   <div class="callout"><span class="lbl">Valores médios</span>Atributos, Habilidades, Proezas e dimensões (tamanho e peso) são a <strong>média da espécie</strong>: um indivíduo pode ser maior, mais forte ou mais fraco. Ajuste à vontade para dar cara a um chefe nomeado ou a um espécime fora da curva. Os números derivados (PV, Defesa, Absorção, Iniciativa) seguem as mesmas fórmulas dos personagens.</div>
 
@@ -490,6 +492,10 @@ const opcoesEditor = {
   .infobox .ib-hab li { padding-left: .7rem; border-left: 2px solid color-mix(in srgb, var(--gold) 55%, transparent); line-height: 1.4; color: var(--ink-soft); }
   .infobox .ib-hab li b { font-family: 'Cinzel'; font-size: var(--fs-rotulo); font-weight: 600; color: var(--ink); }
   .infobox .ib-hab li b::after { content: ': '; color: var(--ink-soft); font-family: 'EB Garamond'; font-weight: 400; }
+  /* os campos da habilidade, um por linha (Ativação, Duração...; parecer M9), aqui e nas outras formas */
+  .hab-campos { list-style: none; padding: 0; margin: .2rem 0 0; display: flex; flex-direction: column; gap: .08rem; }
+  .hab-campos li, .infobox .ib-hab .hab-campos li { padding-left: 0; border-left: none; }
+  .hab-campos .hc-rot { font-weight: 600; color: var(--ink); }
   .infobox .ib-pod { list-style: none; padding: 0; margin: .35rem 0 0; font-size: var(--fs-rotulo); display: flex; flex-direction: column; gap: .22rem; }
   .infobox .ib-pod li { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem; }
   .infobox .ib-pod .pw-arw { color: var(--ink-soft); }
@@ -730,7 +736,7 @@ const opcoesEditor = {
     const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.besta-foot .besta-info:not(.besta-editar)');
     if (!b) return;
     const card = b.closest('.besta') as HTMLElement;
-    if (card) abrirModal(card, b.classList.contains('besta-mech') ? '.mech-tpl' : '.lore-tpl');
+    if (card) abrirModal(card, b.classList.contains('besta-mech') ? '.mech-tpl' : b.classList.contains('besta-treino') ? '.treino-tpl' : '.lore-tpl');
   });
   ib.addEventListener('click', (e) => { if (e.target === ib || (e.target as HTMLElement).classList.contains('ib-fechar')) fecharInfo(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !ib.hidden) fecharInfo(); });

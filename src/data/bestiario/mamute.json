@@ -85,7 +85,6 @@
     {
       "nome": "Presada",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -102,7 +101,6 @@
     {
       "nome": "Pisão (ou investida)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -110,7 +108,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -135,14 +133,14 @@
   "sentidos": [
     {
       "nome": "sentidos",
-      "descricao": "nada achado . Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura (Wikipédia), adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio",
+      "descricao": "nada achado Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura, adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "pelos de cobertura de 30 cm no dorso e até 90 cm nos flancos, subpelo de até 8 cm; gordura de até 10 cm sob a pele; pele de 1,25 a 2,5 cm; cauda curta, de 36 cm; orelhas pequenas (Wikipédia). Pelo de cerca de 3 kg/m² de pele na forma europeia (Larramendi 2016). Presas em espiral, com as pontas voltadas uma para a outra. Tromba que manipula"
+    "tracos": "pelos de cobertura de 30 cm no dorso e até 90 cm nos flancos, subpelo de até 8 cm; gordura de até 10 cm sob a pele; pele de 1,25 a 2,5 cm; cauda curta, de 36 cm; orelhas pequenas. Pelo de cerca de 3 kg/m² de pele na forma europeia. Presas em espiral, com as pontas voltadas uma para a outra. Tromba que manipula"
   },
   "aptidoes": {
     "montaria": false,
@@ -151,7 +149,6 @@
   },
   "comportamento": {
     "social": "manada",
-    "atividade": "",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "defende a cria"
@@ -240,10 +237,6 @@
     {
       "campo": "ataques.Presada",
       "motivo": "Era 2d6 + 18, média 25. 7 + 13. Presas de 2,4 a 2,7 m e cerca de 45 kg cada no macho (Wikipédia): golpe da cabeça inteira, lento e preparado, Pesado; × 1. N1 é o da própria presa (\"chifre fica em N0 ou N1, pelo tamanho\"), e não do porte. Uso em luta  pelo elefante"
-    },
-    {
-      "campo": "ataques.Pisão (ou investida)",
-      "motivo": "Era 2d6 + 36, média 43. 7 + 26. O corpo inteiro desce (seção 7, × 2) . O melhor ataque. Opção, não golpe somado (D-097)"
     }
   ]
 }

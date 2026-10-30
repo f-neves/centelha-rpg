@@ -14,7 +14,8 @@
     "profundidade": 0.22,
     "comprimento": null,
     "massa": 70,
-    "area": 0.67
+    "area": 0.67,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -70,11 +71,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:arco-longo"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "couro",
@@ -86,13 +83,11 @@
   "ataques": [
     {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
     },
     {
       "nome": "Punhos",
       "parte": "punhos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

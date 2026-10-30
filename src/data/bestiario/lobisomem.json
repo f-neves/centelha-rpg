@@ -84,7 +84,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -101,7 +100,6 @@
     {
       "nome": "Garras",
       "parte": "mao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -258,11 +256,7 @@
       "id": "humana",
       "nome": "forma humana",
       "equipamento": {
-        "arsenal": [
-          {
-            "ref": "a:espada-curta"
-          }
-        ]
+        "arsenal": []
       },
       "couraca": 0,
       "aparencia": 4,
@@ -284,8 +278,7 @@
       "ataques": [
         {
           "nome": "Espada curta",
-          "arma": "espada-curta",
-          "habilidade": "armas"
+          "arma": "espada-curta"
         }
       ]
     },
@@ -326,7 +319,6 @@
         {
           "nome": "Mordida",
           "parte": "boca",
-          "habilidade": "briga",
           "classe": "media",
           "pgr": [
             2,

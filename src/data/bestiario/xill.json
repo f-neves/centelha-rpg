@@ -66,24 +66,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-curta"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
     },
     {
       "nome": "Garras",
       "parte": "maos-de-baixo",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -100,7 +94,6 @@
     {
       "nome": "Mordida",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

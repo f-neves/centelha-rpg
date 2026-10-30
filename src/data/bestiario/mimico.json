@@ -15,7 +15,8 @@
     "profundidade": null,
     "comprimento": 1.2,
     "massa": 150,
-    "area": 0.6
+    "area": 0.6,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
   "atributos": {
@@ -80,7 +81,6 @@
     {
       "nome": "Pseudópode",
       "parte": "braco-de-carne-grudenta",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -97,7 +97,6 @@
     {
       "nome": "Mordida",
       "parte": "a-boca-no-lugar-da-tampa",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -137,7 +136,7 @@
       "area": "quem tocou",
       "efeito": "fica Agarrado, colado; a arma que tocou fica presa nele",
       "dano": "nenhum",
-      "resistencia": "esquiva, contra a jogada do Pseudópode, para não grudar; para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação",
+      "resistencia": "esquiva, contra a jogada do Pseudópode, para não grudar; colado, o agarrado não age nem rola para se soltar: só se solta quando o mímico erra o Manter do Agarrar do livro, ou quando ele o solta",
       "limiteDeUso": "três vezes por cena, recarga de 1 hora"
     },
     {

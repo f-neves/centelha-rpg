@@ -72,24 +72,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:glaive-serrilhada"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Glaive serrilhada",
-      "arma": "glaive-serrilhada",
-      "habilidade": "armas"
+      "arma": "glaive-serrilhada"
     },
     {
       "nome": "Mordida",
       "parte": "boca-de-dentes-finos-sob-a-barba",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

@@ -87,24 +87,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:lanca"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Lança de gelo",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
     },
     {
       "nome": "Cauda",
       "parte": "cauda-de-ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -121,7 +115,6 @@
     {
       "nome": "Garras",
       "parte": "mao-de-garras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

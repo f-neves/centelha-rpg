@@ -14,7 +14,8 @@
     "profundidade": 0.24,
     "comprimento": null,
     "massa": 90,
-    "area": 0.78
+    "area": 0.78,
+    "posturaDoTamanho": "de frente"
   },
   "couraca": 0,
   "atributos": {
@@ -69,11 +70,7 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:espada-longa"
-      }
-    ],
+    "arsenal": [],
     "armaduras": [
       {
         "base": "malha",
@@ -85,13 +82,11 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
     },
     {
       "nome": "Espada longa a duas mãos",
       "parte": "espada-longa-duas-maos",
-      "habilidade": "armas",
       "classe": "media",
       "pgr": [
         2,

@@ -98,7 +98,6 @@
     {
       "nome": "Presada (golpe de presa)",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -115,7 +114,6 @@
     {
       "nome": "Investida",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -123,7 +121,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -162,25 +160,25 @@
   "sentidos": [
     {
       "nome": "faro",
-      "descricao": "Prontidão (faro) +2 (Especialidade natural); alcance . Wikipédia",
+      "descricao": "Prontidão (faro) +2 (Especialidade natural)",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "Prontidão (audição) +2 (Especialidade natural); alcance . Wikipédia",
+      "descricao": "Prontidão (audição) +2 (Especialidade natural)",
       "formas": "todas"
     },
     {
       "nome": "visão",
-      "descricao": "fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m (Wikipédia). Sem Especialidade",
+      "descricao": "fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m. Sem Especialidade",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": ". Nada bem e longe (11 km de mar, Wikipédia)",
+    "prendeRespiracao": "Nada bem e longe",
     "mente": "animal",
-    "tracos": "escudo do ombro nos machos (camada subcutânea grossa, caráter sexual secundário; é o nível 2 de Couraça, ver Absorção e Variantes); salto de 140 a 150 cm (Wikipédia, sem método)"
+    "tracos": "escudo do ombro nos machos (camada subcutânea grossa, caráter sexual secundário; é o nível 2 de Couraça, ver Absorção e Variantes); salto de 140 a 150 cm"
   },
   "aptidoes": {
     "montaria": false,
@@ -202,7 +200,7 @@
       "temperado"
     ]
   },
-  "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé (Mayer 2013).",
+  "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé.",
   "lore": [
     {
       "titulo": "Comportamento",

@@ -326,6 +326,7 @@ import { resumoFicha, resumoParaBanco } from '../lib/mesa-ficha';
       // `resumo` é o cache dos derivados (Vida, ataque, defesas): é por ele que
       // os companheiros de mesa veem os números uns dos outros sem que a ficha
       // inteira precise viajar. Gravado junto com a ficha para nascer em dia.
+      // Fica como está nesta fase: P19 (29/10/2026), área do Mestre.
       let resumo: any = undefined;
       try { resumo = resumoParaBanco(resumoFicha(S)); } catch {}
       await sb.from('personagens').update({

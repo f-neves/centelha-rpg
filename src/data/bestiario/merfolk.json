@@ -17,7 +17,8 @@
     "comprimentoSemCauda": 0.9,
     "caudaGrossa": true,
     "massa": 90,
-    "area": 0.7
+    "area": 0.7,
+    "posturaDoTamanho": "de lado, nadando"
   },
   "couraca": 0,
   "atributos": {
@@ -76,27 +77,18 @@
     }
   },
   "equipamento": {
-    "arsenal": [
-      {
-        "ref": "a:lanca"
-      },
-      {
-        "ref": "a:besta-media"
-      }
-    ],
+    "arsenal": [],
     "armaduras": []
   },
   "artes": {},
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
     },
     {
       "nome": "Besta média",
-      "arma": "besta-media",
-      "habilidade": "atirador"
+      "arma": "besta-media"
     }
   ],
   "habilidadesEspeciais": [

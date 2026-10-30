@@ -78,7 +78,6 @@
     {
       "nome": "Presada",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -95,7 +94,6 @@
     {
       "nome": "Pisão (ou investida)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -103,7 +101,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -128,14 +126,14 @@
   "sentidos": [
     {
       "nome": "sentidos",
-      "descricao": "nada achado . O faro do elefante não foi passado ao mastodonte, que é de outra família",
+      "descricao": "nada achado O faro do elefante não foi passado ao mastodonte, que é de outra família",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "mais baixo que o mamute e mais maciço, de pelve muito larga; presas superiores longas e retas, as de baixo reduzidas ou ausentes; cauda relativamente longa; pelagem pouco conhecida (Larramendi; Wikipédia). Molares de cúspides em cone, para ramos e madeira (NPS)"
+    "tracos": "mais baixo que o mamute e mais maciço, de pelve muito larga; presas superiores longas e retas, as de baixo reduzidas ou ausentes; cauda relativamente longa; pelagem pouco conhecida. Molares de cúspides em cone, para ramos e madeira"
   },
   "aptidoes": {
     "montaria": false,
@@ -144,7 +142,6 @@
   },
   "comportamento": {
     "social": "fêmeas e jovens em manada; machos adultos quase sempre sós",
-    "atividade": "",
     "dieta": "herbívoro (folhas, ramos, frutos, madeira)",
     "caca": "ramoneio",
     "dianteDeGente": "defende a cria"
@@ -234,10 +231,6 @@
     {
       "campo": "comportamento.social",
       "motivo": "Wikipédia, pelos elefantes"
-    },
-    {
-      "campo": "ataques.Pisão (ou investida)",
-      "motivo": "Era 2d6 + 36, média 43. 7 + 26. O corpo inteiro (seção 7, × 2) . O melhor ataque. Opção (D-097)"
     }
   ]
 }

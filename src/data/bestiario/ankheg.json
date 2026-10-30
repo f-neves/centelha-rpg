@@ -75,7 +75,6 @@
     {
       "nome": "Mandíbulas",
       "parte": "mandibulas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -140,13 +139,13 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Cuspe ácido",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "linha de 9 m",
       "efeito": "um jato de ácido em linha reta",
       "dano": "2d6 + Centelha, ácido",
-      "resistencia": "corpo, Vigor + Resistência contra a jogada do cuspe; quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o cuspe não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez por cena"
     }
   ],

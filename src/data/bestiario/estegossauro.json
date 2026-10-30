@@ -78,7 +78,6 @@
     {
       "nome": "Cauda de espinhos (thagomizer)",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -127,7 +126,6 @@
   },
   "comportamento": {
     "social": "manada",
-    "atividade": "",
     "dieta": "herbívoro",
     "caca": "forrageio",
     "dianteDeGente": "ameaça"

@@ -1,0 +1,16 @@
+---
+import { url } from '../../lib/site';
+const destino = url('artes/regras');
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href={url('favicon.ico')} sizes="any" />
+    <link rel="icon" href={url('favicon.svg')} type="image/svg+xml" />
+    <meta http-equiv="refresh" content={`0;url=${destino}`} />
+    <link rel="canonical" href={destino} />
+    <title>As Artes · Centelha</title>
+  </head>
+  <body><p><a href={destino}>Abrir as regras das Artes</a></p></body>
+</html>
