@@ -81,6 +81,8 @@ const metros = (s) => { const m = String(s ?? '').match(/\*\*([\d.,]+) m\*\*/) |
 const jogo = (s) => semMarcas(String(s ?? '').replace(/\s*\*\*\[formas:[^\]]*\]\*\*\s*$/, '').replace(/\bPROVIS[ÓO]RIO\.?\s*/g, ''))
   .replace(/\*\*/g, '').replace(/\s{2,}/g, ' ').trim();
 const semPonto = (s) => s.replace(/\s*\.\s*$/, '').trim();
+// a célula que só diz que não há dado: a marca `**[sem dado]**` ou a palavra sem ela, com o ponto final ou sem
+const SEM_DADO = /^\s*(\*\*\[sem dado\]\*\*|\[sem dado\]|sem dado)\s*\.?\s*$/i;
 const idForma = (nome) => slug(String(nome).replace(/^forma (de |d[ao] )?/, ''));
 
 export function converterFicha(texto, { site = null } = {}) {
@@ -511,7 +513,10 @@ export function converterFicha(texto, { site = null } = {}) {
   c.fisiologia = {};
   if (corpoSec['Respiração'] !== undefined) c.fisiologia.respiracao = semPonto(corpoSec['Respiração']);
   const prende = semPonto((corpoSec['Prende a respiração'] || '').replace(/\s*\(o Mestre decide quanto\)/, '; quanto tempo, o Mestre decide'));
-  if (prende && !/^(a de um humano|comum|não se aplica|nenhuma)$/.test(prende)) c.fisiologia.prendeRespiracao = prende;
+  // "sem dado" é a ausência de informação, como no Comportamento (ee7028f7): o campo fica ausente, e não vira texto do
+  // card. A marca `**[sem dado]**` o `jogo` já apagava; a palavra sem a marca ("sem dado.", solar, planetar e mais 19)
+  // passava (revisão da Revisora de af3697c7, C1).
+  if (prende && !SEM_DADO.test(prende) && !/^(a de um humano|comum|não se aplica|nenhuma)$/.test(prende)) c.fisiologia.prendeRespiracao = prende;
   const camu = semPonto(corpoSec['Camuflagem'] || '');
   if (camu && !/^nenhuma$/.test(camu)) c.fisiologia.camuflagem = camu;
   if (corpoSec['Mente'] !== undefined) c.fisiologia.mente = semPonto(corpoSec['Mente']);
@@ -608,7 +613,7 @@ export function converterFicha(texto, { site = null } = {}) {
         else if (k === 'Elementos') f._elementos = lerElem(v, `Variantes, ${nomeF}`);
         else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = null; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
-        else if (k === 'Prende a respiração') ff.prendeRespiracao = v;
+        else if (k === 'Prende a respiração') { if (!SEM_DADO.test(v)) ff.prendeRespiracao = v; }
         else if (k === 'Voo' || k === 'Nado' || k === 'Escalada' || k === 'Escavação') {
           const q = v.match(/Batalha \**(\d+(?:[.,]\d+)?)\**/) || v.match(/^(\d+(?:[.,]\d+)?)(?=\s|$)/);
           if (q) {

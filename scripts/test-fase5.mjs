@@ -321,6 +321,19 @@ const vest=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8')).filter(m
 for(const m of vest){const v=m.combate.vestida;assert.equal(v.defesa,Math.max(v.esquiva,v.bloqueio),m.id+': a Defesa com o equipamento não é o maior entre Esquiva e Bloqueio');}
 const arc=vest.find(m=>m.id==='arconte-trombeta').combate.vestida;assert.deepEqual([arc.esquiva,arc.bloqueio,arc.defesa],[12,18,18]);
 });
+// C1 (revisão de af3697c7): "sem dado" na linha "Prende a respiração" não chega ao JSON, na principal e na forma, com a
+// marca ou sem ela; e nenhum valor de texto dos 324 JSON nem dos três gerados é só "sem dado", em campo nenhum.
+cases.set('C1-sem-dado', async () => {
+for(const cel of ['sem dado.','sem dado','**[sem dado]**.']){const r=conv(raw.replace('- Prende a respiração: a de um humano.','- Prende a respiração: '+cel));assert.ok(!('prendeRespiracao' in r.criatura.fisiologia),'principal, "'+cel+'": '+JSON.stringify(r.criatura.fisiologia.prendeRespiracao));}
+const v=conv(variant('Prende a respiração: sem dado.'));const fh=v.criatura.formas.find(f=>f.id==='humana');assert.ok(fh,'a forma humana existe');assert.ok(!('prendeRespiracao' in (fh.fisiologia||{})),'forma: '+JSON.stringify(fh.fisiologia?.prendeRespiracao));
+const ok=conv(raw.replace('- Prende a respiração: a de um humano.','- Prende a respiração: 2 minutos.'));assert.equal(ok.criatura.fisiologia.prendeRespiracao,'2 minutos','o valor de verdade continua');
+const SD=/^\s*(\*\*\[)?sem dado(\]\*\*)?\.?\s*$/i;const achados=[];
+const anda=(x,p,f)=>{if(typeof x==='string'){if(SD.test(x))achados.push(f+':'+p);}else if(Array.isArray(x))x.forEach((y,i)=>anda(y,p+'['+i+']',f));else if(x&&typeof x==='object')for(const [k,y] of Object.entries(x))anda(y,p+'.'+k,f);};
+const arqs=fs.readdirSync('src/data/bestiario').filter(f=>f.endsWith('.json'));assert.equal(arqs.length,324);
+for(const f of arqs)anda(JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8')),'',f);
+for(const f of ['monsters.json','monsters-mesa.json','inimigos.json'])anda(JSON.parse(fs.readFileSync('src/data/'+f,'utf8')),'',f);
+assert.deepEqual(achados,[],'valores "sem dado" gravados: '+achados.length+' '+achados.slice(0,5).join(' '));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
