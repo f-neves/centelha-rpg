@@ -121,6 +121,24 @@ const sql=fs.readFileSync('supabase/migracao-41.sql','utf8');const ante=sql.spli
 cases.set('baixo-volta', async () => {
 const sql=fs.readFileSync('supabase/migracao-41.sql','utf8');const marker=sql.indexOf('-- >>> carimbo');assert.ok(marker>0);assert.ok(!/^commit;/m.test(sql.slice(0,marker)),'o commit não pode preceder o carimbo');assert.ok(sql.slice(marker).trimEnd().endsWith('commit;'));const volta=fs.readFileSync('supabase/migracao-41-volta.sql','utf8');assert.match(volta,/delete from public\.migracoes where numero = 41;/i);assert.ok(volta.indexOf('delete from public.migracoes')<volta.lastIndexOf('commit;'));
 });
+// Migração 42 (D-259, D-260, P19): a forma do arquivo. A prova de que o SQL dá a conta do
+// site mora no teste local do Postgres (tmp/executora/teste-sql42/), e não aqui.
+cases.set('migracao-42', async () => {
+const sql=fs.readFileSync('supabase/migracao-42.sql','utf8');const marker=sql.indexOf('-- >>> carimbo');assert.ok(marker>0,'sem carimbo');const corpo=sql.slice(0,marker);
+assert.ok(!/^commit;/m.test(corpo),'o commit não pode preceder o carimbo');assert.ok(sql.slice(marker).trimEnd().endsWith('commit;'));
+const bk=corpo.indexOf('insert into public.personagens_ficha_backup_42'),up=corpo.indexOf('update public.personagens p set ficha');assert.ok(bk>0&&up>bk,'o backup vem antes da escrita');
+assert.match(corpo.slice(bk,up),/on conflict \(id\) do nothing/,'rodar de novo não regrava o backup');
+assert.match(corpo.slice(up),/is distinct from p\.ficha/,'só escreve ficha que muda');
+const executavel=corpo.split('\n').filter((l)=>!l.trimStart().startsWith('--')).join('\n');
+assert.ok(!/resumo/i.test(executavel),'a 42 não toca no resumo (P19)');assert.ok(!/grupo_visivel|combate_visao/i.test(executavel),'a 42 não toca nas views (P19)');
+assert.match(corpo,/floor\(v \+ 0\.5\)/,'arredonda como o Math.round do site');
+const cat=JSON.parse(corpo.split('$c42$')[1]);const chaves=Object.keys(cat);assert.ok(chaves.length>0);
+for(const k of chaves){const [tipo,id]=k.split(':');const it=cat[k];assert.equal(it.origem,id,k);assert.equal(it.tipo,tipo,k);assert.ok(!('id' in it),k);
+ for(const b of ['arma','escudo','armadura','municao'])assert.ok(it[b]!==null,k+' com bloco nulo');assert.ok(!(it.arma&&'folego' in it.arma),k+' com Fôlego');}
+const volta=fs.readFileSync('supabase/migracao-42-volta.sql','utf8');assert.match(volta,/personagens_ficha_backup_42/);assert.match(volta,/delete from public\.migracoes where numero = 42;/);
+for(const f of ['migracao-42.sql','migracao-42-confere.sql','migracao-42-volta.sql'])assert.ok(!/[–—]/.test(fs.readFileSync('supabase/'+f,'utf8')),f+' com travessão');
+const confere=fs.readFileSync('supabase/migracao-42-confere.sql','utf8');assert.ok(!/\b(update|insert|delete|create|drop|alter)\b/i.test(confere.split('\n').filter((l)=>!l.trimStart().startsWith('--')).join('\n')),'a conferência é só leitura');
+});
 cases.set('baixo-excecao', async () => {
 const md=raw.replace(/^(\| Tamanho \| )[^|]*\|[^|]*\|/m,'$1**Pequeno** (0,98 m², de frente) | decisão 7: quadrúpedes de 50 a 75 kg |');assert.ok(conv(md).paradas.some(x=>x.startsWith('Tamanho:')));const q=conv(md.replace(/^(\| Postura \| )[^|]+/m,'$1quadrúpede ').replace(/^(\| Massa \| )[^|]+/m,'$1**70 kg** '));assert.equal(q.criatura.corpo.tamanhoEscolhido,'pequeno');assert.ok(!q.paradas.some(x=>x.startsWith('Tamanho:')));
 });
