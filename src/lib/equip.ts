@@ -69,7 +69,7 @@ export const ARMADURA_LIVRE = {
 /** A arma e o escudo fora do catálogo, como nascem na ficha. */
 export const REF_ARMA_LIVRE = 'c', REF_ESCUDO_LIVRE = 'ce';
 export const ARMA_LIVRE = {
-  nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0,
+  nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5,
   atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1,
 };
 export const ESCUDO_LIVRE = { nome: 'Escudo personalizado', bloqCaC: 0, penalidade: 0, vsProjetilRapido: { bloqueia: false, bonus: 0 } };
@@ -193,14 +193,21 @@ export function tipoDaPeca(p: any): TipoDaPeca | null {
   return null;
 }
 
-/** O envelope do catálogo, copiado: `origem` no lugar do `id`, sem os blocos vazios. */
+/**
+ * O envelope do catálogo, copiado: `origem` no lugar do `id`, sem os blocos vazios.
+ * D-261: o Fôlego sai da ficha do personagem. O campo `folego` das armas fica no
+ * catálogo, oculto e inerte (D-016), mas não entra na cópia que a ficha guarda.
+ */
 export function copiaDoCatalogo(tipo: TipoItem, origem: string): any | null {
   const bruto = BRUTO[tipo][origem];
   if (!bruto) return null;
   const { id, ...resto } = structuredClone(bruto);
   for (const k of ['arma', 'escudo', 'armadura', 'municao']) if (resto[k] == null) delete resto[k];
+  semFolego(resto);
   return { origem: id, ...resto };
 }
+/** Tira o Fôlego (módulo que saiu, D-016) de um item que a ficha guarda (D-261). */
+function semFolego(item: any) { if (item?.arma && typeof item.arma === 'object') delete item.arma.folego; return item; }
 /** O envelope da peça livre (sem origem), a partir dos números achatados dela. */
 function envelopeLivre(tipo: TipoItem, plano: any): any {
   const { nome, tags, notas, id, ...bloco } = plano;
@@ -293,7 +300,8 @@ export function congelarItens(S: any, novo = false): any {
   if (!S || typeof S !== 'object') return S;
   const chave = novo ? 'ajuste' : 'mod';
   const fix = (p: any, extra?: any) => {
-    if (!p || typeof p !== 'object' || (p.item && typeof p.item === 'object')) return;
+    if (!p || typeof p !== 'object') return;
+    if (p.item && typeof p.item === 'object') { semFolego(p.item); return; }
     const item = materializa(p, chave, extra); if (!item) return;
     p.item = item; delete p[chave];
     if (p.ref === REF_ARMA_LIVRE) { delete p.dado; delete p.danoBonus; delete p.acerto; }

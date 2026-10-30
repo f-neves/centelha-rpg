@@ -802,7 +802,6 @@ export function montarFicha(opts: FichaOpts) {
   }
   const A = (id: string) => S.attrs[id] || 0, SK = (id: string) => S.skills[id] || 0, VI = (id: string) => S.virtues[id] || 0;
   // ===== Equipamento: conjuntos de armas (mão hábil / inábil) =====
-  const IMPROV = { nome: 'Arma personalizada', dado: 1, danoBonus: 0, acerto: -2, defesaArma: 0, maos: 1, ticks: 5, folego: 0, atrib: 'forca', pericia: 'briga', tags: [] as string[], tipoDano: 'impacto', forcaMult: 1 };
   // Peça fora do catálogo, nos dois lados do arsenal. São duas porque uma arma e
   // um escudo não têm os mesmos números: a arma pede Velocidade/Acerto/Dano/Defesa,
   // o escudo pede Defesa/Penalidade. Uma opção só obrigava o escudo a nascer arma

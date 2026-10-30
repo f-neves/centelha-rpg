@@ -79,7 +79,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   bandeira desligada é inerte compara ruído. Junto vêm a **branch congelada** (que deixa de ser
   criável assim que a primeira bandeira entra), o caminho do driver até a semente, e o despejo por
   Tick do que a folha calculou. `rolagem.ts:15` é `Math.random` e é a única fonte de acaso
-  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:138` · `rolarIniciativaPC` e
+  do combate. Ganha ponto de injeção, e `mesa-ficha.ts:143` · `rolarIniciativaPC` e
   `artes-grid.ts:1501` · `acaso()` precisam do mesmo
   tratamento. É o que permite o teste-espelho comparar as rolagens.
 - [x] **L6 · [O ESQUELETO FEITO em 02/09] O harness.** `scripts/sim/` com o laço do Tick, o elenco
@@ -358,7 +358,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   - o item no menu da peça: `condicoes', '◈ Condições'` (`grid.astro:7807`);
   - o selo de ícones na lista lateral, que custa zero gestos: `const selo` (`grid.astro:6787`);
-  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1878`), para
+  - e a aba Combate chamando o mesmo módulo: `function abrirCondicoes` (`combate.astro:1880`), para
     não haver duas cópias divergindo no primeiro conserto que só uma receber.
 
   Asserção em par, em `cenaCondicaoAMao` (`scripts/test-grid.mjs`): a mesma folha do golpe aberta
@@ -897,14 +897,14 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   real, não só teórica: sonda com a bancada (`?tick=5&tempo=simultaneo`) mostrou `#enc-tick` em
   0 com a arena em 5, para mestre E jogador · `AGORA = emCampo[0]?.tick ?? 0` lia o Tick
   individual de uma peça `livre`, que fica parado enquanto `tick_atual` anda. Corrigido: no
-  Simultâneo o relógio agora lê `ENC?.tick_atual` (`combate.astro:940`), igual ao Grid; normal
+  Simultâneo o relógio agora lê `ENC?.tick_atual` (`combate.astro:942`), igual ao Grid; normal
   e P/G/R não mudaram. E a lacuna de prova no P/G/R fechou com um par de asserção novo
   (`test-grid.mjs:1625`, knob `?deslocafila=N` em `mesa-mock.mjs`): o jogador calcula o
   mesmo relógio que o mestre, e o número muda junto com o deslocamento, em vez de ficar parado
   em Tick 0 (que era indistinguível de máscara quebrada antes deste teste existir).
 
   **Veredito SEGUE em 07/09/2026 (rodada 25, `docs/simulacao/caixa/25-revisora.md`).** A
-  revisora refez a prova de regressão por conta própria (reverteu `combate.astro:940` (`ENC?.tick_atual`),
+  revisora refez a prova de regressão por conta própria (reverteu `combate.astro:942` (`ENC?.tick_atual`),
   viu as duas asserções falharem em `(0)`, restaurou) e rodou o par do P/G/R e a suíte
   completa sem reversão, tudo verde; confirmou que `?tick=` e `?deslocafila=` não se
   pisam, linha a linha em `mesa-mock.mjs`. Nada a corrigir. Item 1 do lote 2 fechado.
@@ -1818,7 +1818,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11955`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
-  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2201`), na caixa de reiniciar
+  (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2202`), na caixa de reiniciar
   combate, e lá não há escritor concorrente. **Zerar não precisa de caminho novo:** precisa ficar
   onde está.
 
@@ -3057,7 +3057,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 - [ ] **L96 · [ESCALA 1 da Revisora na rodada 75, 15/09/2026] Duas varreduras de dano contínuo
   escrevem a Vida por motores diferentes, e só uma tem piso.** O tique de condição contínua do
   Grid chama `gravarVida`, que é `curarPv` (`src/pages/mesa/grid.astro:2682`) e só tem TETO, nunca piso; a aba
-  Combate faz a MESMA varredura por `mexerVida` (`src/pages/mesa/combate.astro:1337`), e o piso dela está em `:1338`, que tem
+  Combate faz a MESMA varredura por `mexerVida` (`src/pages/mesa/combate.astro:1339`), e o piso dela está em `:1338`, que tem
   `Math.max(0, …)`. Com as duas abertas, **quem varre primeiro decide** se a peça vai a −1 ou para
   em 0, e isso é anterior à regra nova da morte: é o único caminho do projeto que já atravessava o
   zero, e atravessava por acidente. Conferido pela Revisora na cadeia inteira, **sem exercitar em
@@ -5500,7 +5500,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **A ESCALA QUE A REVISORA ACHOU, e eu a reenquadro depois de conferir no disco, porque do jeito que
   ela saiu manda alguém caçar um defeito que não existe.** Ela achou duas outras contas de teto fora do
   alcance do teste (que confere só o corpo do `curar()`), e leu a primeira como divergência de
-  comportamento: `mexerVida` (`src/pages/mesa/combate.astro:1337`) teria piso em zero e o `curarPv`
+  comportamento: `mexerVida` (`src/pages/mesa/combate.astro:1339`) teria piso em zero e o `curarPv`
   não. **As duas contas existem e isso está certo. A divergência de comportamento não existe onde se
   pode chegar jogando**, e o motivo é que `mexerVida` recebe delta dos DOIS sinais, então o piso dela
   é a trava de dano da aba Combate, não uma regra de cura diferente. Curar nunca precisa de piso.
@@ -5511,7 +5511,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `Math.max(0, (alvo.pv_atual ?? 0) - golpe.liquido)` (`src/lib/artes-grid-mesa.ts:1869`) (citação histórica),
   o mesmo em `src/lib/artes-grid-mesa.ts:1905` (citação histórica),
   `const pv = Math.max(0, antes - quanto);` (`src/pages/mesa/grid.astro:11211`) (citação histórica),
-  `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1361`) e, no banco,
+  `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1363`) e, no banco,
   `set pv_atual = greatest(0, coalesce(pv_atual, 0) - p_quanto)` (`supabase/migracao-22.sql:146`).
   **O resíduo verdadeiro não é "dois tetos que discordam", é que a Vida tem quatro escritores e
   nenhuma régua comum**, que é a família do `L87` no eixo do PV em vez do eixo da condição.
@@ -5522,12 +5522,12 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   agora descem até o limite de M-21 (−PV máximo ÷ 2). Continuam travando em zero, fora do escopo
   deste despacho (o rastreador de combate antigo não estava entre os "5 pontos" que a conferência
   prévia levantou, e o banco exigiria migração, que não roda sozinha aqui):
-  `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1361`) e
+  `Math.max(0, Math.min(c.pv_max, c.pv_atual + delta))` (`src/pages/mesa/combate.astro:1363`) e
   `set pv_atual = greatest(0, coalesce(pv_atual, 0) - p_quanto)` (`supabase/migracao-22.sql:146`).
 
   **E UM ACHADO QUE SAIU DESSA CONFERÊNCIA, sem relação com a cura:** existe exatamente UM caminho que
   escreve Vida negativa, e é a caixa de editar peça do mestre:
-  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1832`) grampeia o teto e não grampeia
+  `pvat = Math.min(pvat, pvmax)` (`src/pages/mesa/combate.astro:1834`) grampeia o teto e não grampeia
   o piso, enquanto o campo do relógio, duas linhas abaixo, ganha o grampo de baixo que falta a este.
   Pode ser liberdade de mestre deliberada e pode ser
   descuido, e **não decido isto aqui**: fica anotado com o vizinho que o denuncia.
@@ -5584,7 +5584,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
 
   **O contraste é a melhor parte, porque os dois já existem no produto, escritos por mãos diferentes,
   e um dos dois já explicou por escrito por que está certo.**
-  `async function upComb` (`src/pages/mesa/combate.astro:611`) é o escritor único da aba Combate
+  `async function upComb` (`src/pages/mesa/combate.astro:612`) é o escritor único da aba Combate
   e toca a campainha ele
   mesmo, com o comentário dizendo o porquê: todo dano, toda condição e todo tick daquela aba passam
   por ali, e é o lugar de tocar **uma vez só** em vez de espalhar o aviso por vinte chamadas. O
@@ -5701,7 +5701,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `×7 − 2`, que faz os seis níveis de Arte varrerem a faixa humana inteira e encostarem no teto no
   nível 6. A faixa humana do FAH é 3 a 40 e a do FAA é 2 a 24:
   `const fah = Math.max(3, Math.min(40` na versão de `ficha-engine.ts` anterior à A5j (a A5j removeu o FAH do jogador) e
-  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1621`. O mesmo princípio, aplicado
+  `const faa = Math.max(2, Math.min(24` em `ficha-engine.ts:1620`. O mesmo princípio, aplicado
   à segunda tabela. **O conserto é dos dois lados:** o `parametros` do `empurrao-elemental` em
   `src/data/efeitos.json` muda junto com o código, senão o dado fica mandando o contrário e a
   próxima pessoa conserta o código "de volta" para o errado. → `CATALOGO`, a forma que saiu daqui.

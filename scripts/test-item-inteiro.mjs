@@ -120,5 +120,17 @@ eq(refsExistem(semOrigem, { armas, escudos, armaduras }), [], 'peça com item n�
 const quebrado = structuredClone(gravada); delete quebrado.equipamento.conjuntos[0].maoHabil.item.arma;
 ok(!fichaSchema.safeParse(quebrado).success, 'controle: item de arma sem o bloco arma é recusado');
 
+console.log('6. item 11 (D-261): nenhuma ficha guarda combate; o Fôlego sai');
+const PROIBIDAS = /"(folego|combate|tick|ticks?Atual|posicao|condicoes|pv_atual|pvAtual|iniciativaAtual)"\s*:/;
+const temFolego = (o) => /"folego"\s*:/.test(JSON.stringify(o));
+ok(!temFolego(gravada) && !temFolego(real.F.fichaParaGravar(f41)), 'a ficha gravada não traz Fôlego (nem no item copiado das armas)');
+const livreGravada = real.F.fichaParaGravar({ ...kael, arsenal: [{ ref: 'c', uid: 'x', nome: 'Poste' }], conjuntos: [{ ativo: true, habil: { ref: 'c', uid: 'x' }, inabil: { ref: 'nada' } }] });
+ok(!temFolego(livreGravada), 'nem a arma personalizada');
+const comFolegoVelho = structuredClone(gravada); comFolegoVelho.equipamento.conjuntos[0].maoHabil.item.arma.folego = 15;
+ok(!temFolego(real.F.fichaParaGravar(comFolegoVelho)), 'item gravado com Fôlego perde o Fôlego ao regravar');
+const raiz = Object.keys(gravada).filter((k) => PROIBIDAS.test(JSON.stringify({ [k]: 0 })));
+eq(raiz, [], 'a raiz da ficha gravada não tem chave de combate');
+ok(!('folego' in real.R.resumoParaBanco(real.R.resumoFicha(kael))), 'o resumo do banco não tem Fôlego');
+
 if (falhas.length) { console.error(`✘ item inteiro: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('✓ item inteiro (D-259) · a ficha guarda arma, escudo e armadura inteiros; catálogo trocado não muda nada gravado; a 41 vira item na leitura');

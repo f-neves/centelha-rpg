@@ -732,6 +732,7 @@ import CondDlg from '../../components/CondDlg.astro';
       // Do companheiro o jogador não tem a ficha, e sem ficha não há conta: o
       // bloco dele vem pronto do cache de derivados, que a view manda quando a
       // mesa abre "Status". `dados` do combatente continua mandando por cima.
+      // Fica como está nesta fase: P19 (29/10/2026), área do Mestre.
       const r = resumoDe(c, FICHAS) || (c.resumo_pc ? resumoDe({ ...c, dados: { ...c.resumo_pc, ...(c.dados || {}) } }) : null);
       if (r) RESUMO[c.id] = r;
     }
