@@ -7,8 +7,27 @@ export type Ataque = AtaqueEntrada;
 export function validarFonte(c: unknown): CriaturaEdit {
   return criaturaParaLeituraSchema.parse(c) as CriaturaEdit;
 }
+// Textos que só quem escreve a criatura pode dar. O rascunho novo nasce sem eles.
+export const TEXTOS_DO_RASCUNHO = ['fisiologia', 'comportamento', 'descricao'] as const;
+export function faltasDoRascunho(c: Record<string, any>): string[] {
+  return TEXTOS_DO_RASCUNHO.filter(k => c[k] === undefined);
+}
+// O rascunho incompleto pode ser calculado: confere o resto do contrato numa cópia
+// com marcadores no lugar dos textos que faltam, e devolve o rascunho original,
+// sem os marcadores. Salvar e exportar continuam exigindo o contrato inteiro.
+export function validarRascunho(c: unknown): CriaturaEdit {
+  const faltas = faltasDoRascunho(c as Record<string, any>);
+  if (!faltas.length) return validarFonte(c);
+  const copia: Record<string, any> = structuredClone(c as Record<string, any>);
+  const marca = '(falta)';
+  if (faltas.includes('fisiologia')) copia.fisiologia = { respiracao: marca, mente: marca, tracos: marca };
+  if (faltas.includes('comportamento')) copia.comportamento = {};
+  if (faltas.includes('descricao')) copia.descricao = marca;
+  validarFonte(copia);
+  return c as CriaturaEdit;
+}
 export function derivados(c: CriaturaEdit) {
-  const entrada = validarFonte(c), r = criatura(entrada), v = vistaPublicaCriatura(entrada);
+  const entrada = validarRascunho(c), r = criatura(entrada), v = vistaPublicaCriatura(entrada);
   return { ...r, defesa: v.motor.stat.defesa, vontade: entrada.vontade };
 }
 export function rolagemAtaque(c: CriaturaEdit, a: AtaqueEntrada) {
