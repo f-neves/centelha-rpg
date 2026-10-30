@@ -1301,7 +1301,7 @@
    },
    {
     "nome": "mergulho predatório",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -1721,7 +1721,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -6802,7 +6802,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -12300,7 +12300,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -13135,7 +13135,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -14762,7 +14762,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -15784,7 +15784,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -18623,7 +18623,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "salto de emboscada",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só ao sair da terra",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só ao sair da terra",
     "classe": "livro",
     "regra": "investida"
    },
@@ -25294,7 +25294,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -25692,7 +25692,7 @@
    },
    {
     "nome": "Investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -31820,7 +31820,7 @@
    },
    {
     "nome": "investida saltada",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -47607,7 +47607,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -47623,7 +47623,7 @@
    },
    {
     "nome": "investida que empurra",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -55502,7 +55502,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -57014,7 +57014,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -58436,7 +58436,7 @@
    },
    {
     "nome": "mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -70718,7 +70718,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de baixo",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -71128,7 +71128,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de chifre",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -72652,7 +72652,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -75799,7 +75799,7 @@
    },
    {
     "nome": "investida em mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -78957,7 +78957,7 @@
    },
    {
     "nome": "investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -82633,7 +82633,7 @@
    },
    {
     "nome": "bote",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -83006,7 +83006,7 @@
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -83352,7 +83352,7 @@
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -84093,7 +84093,7 @@
    },
    {
     "nome": "investida retalhadora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -92102,7 +92102,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -94459,7 +94459,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -95240,7 +95240,7 @@
    },
    {
     "nome": "investida de baixo",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -96833,7 +96833,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -111572,7 +111572,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -117641,13 +117641,13 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "investida que derruba",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -118067,7 +118067,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -126306,7 +126306,7 @@
    },
    {
     "nome": "bote",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -128108,7 +128108,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    },
@@ -129281,7 +129281,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "bote vertical",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.",
     "classe": "livro",
     "regra": "investida"
    }
@@ -129733,7 +129733,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "chifre perfurante",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.. só depois de correr ao menos 6 m em linha reta",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.. só depois de correr ao menos 6 m em linha reta",
     "classe": "livro",
     "regra": "investida"
    },

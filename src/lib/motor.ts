@@ -1029,7 +1029,7 @@ export function textoDaRegraDaCriatura(id?: string): string | null {
   if (id === 'rajada') return textoDaRajada();
   const textos: Record<string,string> = {
     agarrar: 'Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.',
-    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e aplica −2 adicionais na Defesa durante o Preparo.',
+    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.',
     furtividade: 'A aproximação escondida usa Furtividade contra a Percepção Passiva de quem pode perceber. O Mestre aplica as circunstâncias e o Tamanho na mesa.',
     derrubar: 'Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.',
     empurrar: 'Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.',

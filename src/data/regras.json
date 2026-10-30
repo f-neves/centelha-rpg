@@ -2604,7 +2604,7 @@
         "titulo": "Investida",
         "danoDados": 1,
         "defesaExtra": -2,
-        "texto": "Gastar o Preparo CORRENDO em vez de andando: o golpe cobre a distância da Corrida em vez da de Batalha, a Defesa cai −2 além do que o Preparo já cobra, e o golpe sai com +1d6 de dano. Não é regra nova: é o Preparo que a arma já tem, atravessado a outra velocidade."
+        "texto": "Gastar o Preparo CORRENDO em vez de andando: o golpe cobre a distância da Corrida em vez da de Batalha, a Defesa cai −2 além do que o Preparo já cobra, e o golpe sai com +1d6 de dano e a Força em dobro (só na ação de Investida; o mesmo golpe, sem investir, soma a Força uma vez). Não é regra nova: é o Preparo que a arma já tem, atravessado a outra velocidade."
       },
       "recarga": {
         "titulo": "Recarga",

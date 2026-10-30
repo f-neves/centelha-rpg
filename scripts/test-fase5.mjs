@@ -148,6 +148,17 @@ const t=fs.readFileSync('.claude/commands/arquiteto.md','utf8');const descriptio
 cases.set('favicon', async () => {
 const page=fs.readFileSync('src/pages/artes/index.astro','utf8');assert.ok(page.includes("url('favicon.ico')"));assert.ok(page.includes("url('artes/regras')"));assert.ok(page.includes('http-equiv="refresh"'));assert.ok(!fs.readFileSync('astro.config.mjs','utf8').includes("redirects: { '/artes':"));assert.ok(fs.statSync('public/favicon.ico').size>0);
 });
+// Parecer da Veterana (F4), V1 (D-266): a Força em dobro é da ação de Investida, e não do golpe comum; a cauda que
+// varre com o corpo inteiro fica com Força × 2 (complemento da D-266). O livro, o regras.json, o card e o cabeçalho.
+cases.set('parecer-V1', async () => {
+const card=M.textoDaRegraDaCriatura('investida');assert.match(card,/\+1d6/);assert.match(card,/Força em dobro/);assert.match(card,/golpe comum[^.]*uma vez/);
+const comb=fs.readFileSync('src/content/chapters/combate.md','utf8');const inv=comb.split('### Investida')[1].split('\n### ')[0];
+assert.match(inv,/\| \*\*Preparo investindo\*\* \|[^\n]*\| \*\*\+1d6\*\*, e a Força \*\*× 2\*\* \|/,'a tabela da Investida dá a Força × 2');
+assert.match(inv,/A Força em dobro é da ação de Investida, e não do golpe/);assert.match(inv,/o personagem e para a criatura/);
+const R=JSON.parse(fs.readFileSync('src/data/regras.json','utf8'));assert.match(R.combate.movimento.investida.texto,/Força em dobro/);
+const best=fs.readFileSync('src/pages/bestiario.astro','utf8');const dano=best.split('<span class="lbl">Dano</span>')[1].split('</div>')[0];
+assert.match(dano,/ação de <a [^>]*#investida'\}>Investida<\/a>/);assert.match(dano,/cauda que varre com o giro do corpo inteiro/);assert.ok(!/usam sempre <strong>uma vez a Força/.test(dano),'sobrou a frase de antes');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

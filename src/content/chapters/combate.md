@@ -409,9 +409,11 @@ Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
 | | distância coberta | Defesa | dano |
 |---|---|---|---|
 | **Preparo andando** | Deslocamento de Batalha por Tick | o −2 do Preparo | — |
-| **Preparo investindo** | velocidade atual da Corrida por Tick (Arranque nos 3 primeiros Ticks, Corrida depois, como no Salto correndo) | −2 **a mais** | **+1d6** |
+| **Preparo investindo** | velocidade atual da Corrida por Tick (Arranque nos 3 primeiros Ticks, Corrida depois, como no Salto correndo) | −2 **a mais** | **+1d6**, e a Força **× 2** |
 
-Como toda arma tem ao menos 1 Tick de Preparo, **toda arma investe**, a leve também, com o +1d6. O que se cobre depende do Preparo, e a Sora (4 m por Tick andando, 7 m por Tick no Arranque) mostra a escala:
+**A Força em dobro é da ação de Investida, e não do golpe.** Quem investe soma a Força duas vezes no dano do golpe que fecha a corrida; o mesmo golpe, dado parado ou andando, soma a Força uma vez. Vale para o personagem e para a criatura: a marrada do touro, o pisão do elefante e o mergulho da águia somam a Força uma vez no golpe comum e duas quando ele vem numa Investida.
+
+Como toda arma tem ao menos 1 Tick de Preparo, **toda arma investe**, a leve também, com o +1d6 e a Força em dobro. O que se cobre depende do Preparo, e a Sora (4 m por Tick andando, 7 m por Tick no Arranque) mostra a escala:
 
 | Arma | Preparo | Andando | Investindo |
 |---|:---:|:---:|:---:|
