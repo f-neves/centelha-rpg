@@ -1088,8 +1088,8 @@ export function jogadaDaManobra(regra: string | undefined, c: { atributos: Num; 
 }
 
 /**
- * A Força a mais da ação de Investida (D-269): a Investida soma a Força mais uma vez no dano, além do +1d6 (uma mão
- * ou o corpo, de × 1 para × 2; duas mãos, de × 2 para × 3), para o personagem e para a criatura. O golpe de longe não
+ * A Força a mais da ação de Investida (D-269; o +1d6 saiu pela P20-b, decisão do autor de 30/10/2026): a Investida soma
+ * a Força mais uma vez no dano, e nenhum dado a mais (uma mão ou o corpo, de × 1 para × 2; duas mãos, de × 2 para × 3), para o personagem e para a criatura. O golpe de longe não
  * investe, e o golpe que não soma a Força (× 0) não ganha Força nenhuma: a decisão fala de × 1 e × 2, e não o cria.
  * `forca` é a Força que a arma já usa (com o teto dela, quando tem).
  */
@@ -1098,14 +1098,13 @@ export function forcaDaInvestida(forca: number, multiplicador: number, distancia
   return distancia || !(multiplicador > 0) ? 0 : Math.max(0, forca) * extra;
 }
 
-/** O dano do golpe ligado à Investida desta criatura, já com o +1d6 e a Força a mais (D-269), para o card. */
+/** O dano do golpe ligado à Investida desta criatura, já com a Força a mais (D-269, P20-b: sem o +1d6), para o card. */
 export function danoDaInvestidaNoCard(regra: string | undefined, a: { nome: string; dado: number; extra: number; forcaInvestida: number; tipoExpr: string; perfTxt: string } | undefined, forca: number): string | null {
   if (regra !== 'investida') return null;
-  const dados = (regras as any).combate?.movimento?.investida?.danoDados ?? 1;
-  if (!a) return 'Nesta criatura: +' + dados + 'd6 e a Força ' + forca + ' mais uma vez no dano do golpe.';
+  if (!a) return 'Nesta criatura: a Força ' + forca + ' mais uma vez no dano do golpe.';
   const fixo = a.extra + a.forcaInvestida;
-  return 'Nesta criatura, ' + a.nome + ' investindo: ' + (a.dado + dados) + 'd6' + (fixo > 0 ? ' +' + fixo : fixo < 0 ? ' −' + (-fixo) : '') + ' ' + a.tipoExpr + a.perfTxt
-    + ' (o +' + dados + 'd6 e a Força ' + a.forcaInvestida + ' mais uma vez).';
+  return 'Nesta criatura, ' + a.nome + ' investindo: ' + a.dado + 'd6' + (fixo > 0 ? ' +' + fixo : fixo < 0 ? ' −' + (-fixo) : '') + ' ' + a.tipoExpr + a.perfTxt
+    + ' (a Força ' + a.forcaInvestida + ' mais uma vez).';
 }
 
 /** Resumos das manobras do livro para o card; o detalhe da criatura vem depois. */
@@ -1113,7 +1112,7 @@ export function textoDaRegraDaCriatura(id?: string, tetoRajada?: number | null, 
   if (id === 'rajada') return textoDaRajada(tetoRajada, ataque);
   const textos: Record<string,string> = {
     agarrar: 'Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.',
-    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo.',
+    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo.',
     furtividade: 'A aproximação escondida usa Furtividade contra a Percepção Passiva de quem pode perceber. O Mestre aplica as circunstâncias e o Tamanho na mesa.',
     derrubar: 'Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.',
     empurrar: 'Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.',

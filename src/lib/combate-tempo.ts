@@ -969,8 +969,9 @@ export const ehSimultaneo = (c: CombateMesa | null | undefined): boolean =>
 /**
  * A INVESTIDA, tirada do `regras.json` e não escrita aqui.
  *
- * `combate.movimento.investida`: `danoDados: 1`, `forcaExtra: 1` (a Força mais uma
- * vez no dano, D-269) e `defesaExtra: -2`. A régua
+ * `combate.movimento.investida`: `forcaExtra: 1` (a Força mais uma vez no dano,
+ * D-269; o +1d6 de antes saiu pela decisão do autor de 30/10/2026, P20-b) e
+ * `defesaExtra: -2`. A régua
  * estava escrita desde sempre, com número, no capítulo (§ Investida do
  * `combate.md`) e no catálogo de condições (`investindo`, Defesa −2), e o motor
  * não a conhecia: `ModoMov` tinha três modos e a palavra "investida" aparecia
@@ -1008,7 +1009,7 @@ export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: stri
   // gastar o Preparo correndo em vez de andando, e não uma quarta velocidade.
   { id: 'investida', nome: 'Investida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
     nota: `Defesa ${CORRIDA.defesa ?? -4} no Preparo (a mesma da Corrida, e o tabuleiro `
-      + `põe a condição sozinho), e +${INVESTIDA.danoDados ?? 1}d6 e a Força mais uma vez no dano do golpe` },
+      + `põe a condição sozinho), e a Força mais uma vez no dano do golpe` },
 ];
 
 /**

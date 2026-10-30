@@ -111,7 +111,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   `resumoCombatePC`, as criaturas trazem o bloco pronto do `monsters-mesa.json` e não passam por
   lá. Riscos **F3** e **F2**.
 - [x] **L11 · [FEITO em 02/09] O golpe da rajada não pagava a penalidade dele.**
-  `rolarAcerto` (`grid.astro:11015`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
+  `rolarAcerto` (`grid.astro:11017`) sempre usa `linhas[0]`, e desde `f8459e6` (23/08) a folha é
   aberta **uma por golpe** por `resolverGolpeNoAr`. Resultado: os golpes 2 e 3 de uma rajada saem
   com penalidade **zero** em vez de −1 e −2, e a rajada, cujo preço inteiro é essa penalidade, sai
   de graça. Está no **único** caminho que o Simultâneo usa (`adiaGolpe` é sempre true lá), as duas
@@ -257,7 +257,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   que fazia o carimbo valer: alguém que leia o perfil na hora de aplicar a regra.**
 
   O perfil é gravado, viaja no encontro, aparece na tela, é comparável e é recarimbável. E é lido
-  em **um** lugar do código de produção, `grid.astro:10414` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
+  em **um** lugar do código de produção, `grid.astro:10416` (`perfil: { ...REGRAS_CENA }`), onde ele é copiado para dentro da
   entrada do lance, para o oráculo. `entrada.perfil` **não é consultado em lugar nenhum**: nem em
   `resolverGolpe`, nem em `quase-acerto.ts`, nem em `calc.ts`, nem no harness. Nenhuma das quinze
   bandeiras faz o motor tomar um caminho diferente.
@@ -347,7 +347,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   - o catálogo, 55 verbetes com número, em `src/data/condicoes.json`;
   - a soma: `export function somarCondicoes` (`src/lib/mesa-core.ts:218`);
   - a leitura na folha do lance: `const cd = somarCondicoes` (`grid.astro:10061`);
-  - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:169`);
+  - o desconto chegando à Defesa: `alvo.condicoesDefesa` (`src/lib/lance.ts:171`);
   - a coluna: `add column if not exists condicoes` (`supabase/migracao-11.sql:25`);
   - e o RPC do jogador aceitando a chave: `condicoes` (`supabase/migracao-22.sql:125`).
 
@@ -547,7 +547,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   3. **A DUPLA COBRANÇA DO −2 É DE OUTRO FEITIO, e é pior.** Não é texto discordando: são **dois
      mecanismos cobrando**, e eles se somam sem se conhecer, porque a `defesaEfetiva` empilha
      `condicoesDefesa` e `defesaPerdida` como duas parcelas independentes
-     (`return alvo.defesaBase`, `src/lib/lance.ts:169`). **RESOLVIDA no mesmo dia**, e a seção
+     (`return alvo.defesaBase`, `src/lib/lance.ts:171`). **RESOLVIDA no mesmo dia**, e a seção
      própria conta como: **L37**. O número passou a morar só na condição, e o tabuleiro a alimenta.
 
   ### 6 · Interpor e desviar · RÉGUA FECHADA em 07/09/2026, pronta para a Executora
@@ -1344,7 +1344,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O defeito, em uma linha:** quem declara Investida no Grid **e** liga a condição `investindo` à
   mão paga **−6**, e a régua diz −4. As duas cobranças se somam sem se conhecer, porque a
   `defesaEfetiva` empilha `condicoesDefesa` e `defesaPerdida` como parcelas independentes
-  (`return alvo.defesaBase`, `src/lib/lance.ts:169`). Nenhuma das quatro fontes diz −6, e ninguém
+  (`return alvo.defesaBase`, `src/lib/lance.ts:171`). Nenhuma das quatro fontes diz −6, e ninguém
   decidiu esse total.
 
   **O QUE O LEVANTAMENTO MUDOU NA PERGUNTA, e é por isso que ela voltou para a mesa em vez de virar
@@ -1380,7 +1380,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **E o que sobra para a fase 3 é a Corrida, pelo mesmo desenho.** Ela tem hoje o defeito oposto e
   mais antigo: **nenhuma cobrança automática nenhuma** · o −4 dela em `MODOS_MOV` é só o texto da
-  nota (`enquanto corre e até se recompor`, `src/lib/combate-tempo.ts:1006`), e quem cobra é só a
+  nota (`enquanto corre e até se recompor`, `src/lib/combate-tempo.ts:1007`), e quem cobra é só a
   condição `correndo`, à mão. É o defeito nomeado no cabeçalho do `src/lib/mesa-condicoes.ts`, e o
   `marcarInvestida` é o molde pronto do conserto dele.
 
@@ -1767,9 +1767,9 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   **O DEFEITO.** No Grid os dois papéis escrevem o mesmo campo por caminhos que não se conhecem.
 
   O jogador acrescenta pelo banco, e o banco lê a coluna e concatena lá dentro:
-  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11694`.
+  `SB.rpc('jogador_registra', { p_arena: ARENA.id, p_linha: linha })`, `grid.astro:11696`.
   O mestre grava o vetor inteiro da memória dele:
-  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11726`. **A linha que o jogador acabou de
+  `await SB.from('mesa_arenas').update({ log: LOG }).eq('id', ARENA.id);`, `grid.astro:11728`. **A linha que o jogador acabou de
   registrar some se o `LOG` do mestre for anterior a ela, sem erro nenhum.** É o caminho normal dos
   dois durante uma cena.
 
@@ -1812,10 +1812,10 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   | gesto | o que faz hoje |
   |---|---|
   | `logar()` | empurra uma linha e grava o vetor |
-  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11829`) e grava o vetor |
+  | `desfazer()` | tira a última linha com `acao` (`LOG.splice(idx, 1);`, `grid.astro:11831`) e grava o vetor |
   | `editarLinha(id)` | muda `txt`/`pub` de uma linha, e grava o vetor |
-  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11924`) e grava o vetor |
-  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11975`) e empurra N linhas novas |
+  | `excluirLinha(id)` | tira por id (`LOG.splice(i, 1);`, `grid.astro:11926`) e grava o vetor |
+  | `refazerLogDosEfeitos()` | `LOG = LOG.filter((e: any) => !minha(e));` (`grid.astro:11977`) e empurra N linhas novas |
 
   **E UMA CORREÇÃO AO ENUNCIADO: não existe zerar no Grid.** O `LOG = []` é do `combate.astro`
   (`if (zLog) { LOG = []; await persistLog(); }`, `combate.astro:2202`), na caixa de reiniciar
@@ -2411,10 +2411,10 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `opts.modo === 'investida'`, e o harness **nunca** produz esse valor: `motor.mjs` só escreve
   `modo: 'corrida'` (fuga, L249) ou `modo: 'batalha'` (aproximação, L281); `grep` por
   `investida` no arquivo inteiro não acha nada. E o harness já chama `L.passoDoGolpe` (`motor.mjs:102`), que usa
-  `modoCorre` por dentro (`combate-tempo.ts:1023`): a função É exercitada, só não por nome. `adiaGolpe(c)` pergunta se o sistema da MESA adia o golpe
+  `modoCorre` por dentro (`combate-tempo.ts:1024`): a função É exercitada, só não por nome. `adiaGolpe(c)` pergunta se o sistema da MESA adia o golpe
   (`c.sistema === 'simultaneo' || ...`), e o harness não tem esse objeto de configuração porque
   ele SEMPRE roda simultâneo, com o adiamento já embutido em `decideEmValeDepois()`
-  (`combate-tempo.ts:1079`, `decideEmValeDepois`), que está na lista dos 20 chamados pelos dois. As duas perguntas já
+  (`combate-tempo.ts:1080`, `decideEmValeDepois`), que está na lista dos 20 chamados pelos dois. As duas perguntas já
   estão respondidas do jeito que `adiaGolpe` responderia; wire-las não muda um Tick.
 
   **O TAMANHO DO BALDE C, medido em 06/09/2026 antes de construir nada** (a régua do L30: o
@@ -2838,7 +2838,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
     - `src/lib/combate-tempo.ts:696` · `export function defesaPerdida(`, esta com comentário
       próprio na linha de cima dizendo que acumula sem teto e só zera quando o ciclo fecha.
 
-    Os dois se juntam em `src/lib/lance.ts:167` · `export function defesaEfetiva(`;
+    Os dois se juntam em `src/lib/lance.ts:169` · `export function defesaEfetiva(`;
   - **o que NÃO foi achado:** um campo que hoje carregue OU sentinela OU magnitude conforme o
     caso, que é o que a frase descreve. Os dois candidatos mais próximos não batem limpo. O
     primeiro é o campo declarado em `src/lib/mesa-core.ts:174` · `defesa?: number;`, lido com
@@ -3846,7 +3846,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **O caso concreto:** o status que diz qual modo está ouvindo é escrito em
   `src/pages/mesa/grid.astro:9823` · `vozStatus(textoOuvindo(ditado))`, e essa linha só é alcançada
   depois de o modelo de 31 MB estar carregado, o que um teste headless não faz. Então a costura
-  exposta para o teste (`src/pages/mesa/grid.astro:11166` · `__TEXTO_OUVINDO`) chama a mesma função
+  exposta para o teste (`src/pages/mesa/grid.astro:11168` · `__TEXTO_OUVINDO`) chama a mesma função
   por fora e devolve o texto **recomputado**, em vez de ler o que a tela de fato exibiu.
 
   **A prova não é raciocínio, é experimento.** A Revisora reverteu a linha real para o
@@ -5165,7 +5165,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   **Conferido pelo outro lado também:** toda escrita de `pv_atual` no módulo das Artes é subtração
   (`pv_atual: pv` em `src/lib/artes-grid-mesa.ts:1874`, com `pv` já calculado como
   `max(0, atual − líquido)`). Não existe soma de Vida em lugar nenhum de `src/lib`. Curar existe como
-  ação do mestre, no menu (`async function curar`, `src/pages/mesa/grid.astro:11392`); **nenhuma Arte
+  ação do mestre, no menu (`async function curar`, `src/pages/mesa/grid.astro:11394`); **nenhuma Arte
   cura pelo tabuleiro**.
 
   **A Revisora contou seis e são sete**, e ela escreveu "pelo menos 6", que é a forma honesta de dar
@@ -5627,7 +5627,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `jogador_dano` direto, e o ramo do mestre que grava `mana_max` e `mana_atual` juntos. **O terceiro a
   Revisora achou fora do que eu pedi**, lendo em volta.
   `async function alternarAuto` (`src/pages/mesa/grid.astro:6286`) e
-  `async function devolverAuto` (`src/pages/mesa/grid.astro:11790`)
+  `async function devolverAuto` (`src/pages/mesa/grid.astro:11792`)
   escrevem `dados` direto, repintam **só o próprio cliente** e
   nunca tocam a campainha, nem antes nem depois desta rodada. É simétrico (a ida e o desfazer calam
   igual), pré-existente, e nunca passou pelos nove auditados, que é por isso que ficou de fora do

@@ -439,7 +439,8 @@ const alem = { ...base, golpeIndice: 9 };
 const r3 = L.resolverGolpe(alem, L.fonteFixa({ acerto: [4, 4], dano: [3] }));
 ok(Number.isFinite(r3.total), 'um golpeIndice além do fim de penDados cai no zero e não quebra');
 
-// O +1d6 DA INVESTIDA, que é o `danoDados` novo (05/09/2026).
+// O `danoDados` (05/09/2026). Nasceu para o +1d6 da Investida, que saiu pela P20-b (decisão do autor de
+// 30/10/2026: a Investida soma só a Força a mais, o `danoFlat` abaixo); o campo do lance fica genérico.
 //
 // A FONTE ROLADA, e não a fixa, e é o único jeito de provar isto: a `fonteFixa`
 // devolve os dados que já caíram e IGNORA `extraDados` de propósito (a lista
@@ -454,9 +455,9 @@ ok(Number.isFinite(r3.total), 'um golpeIndice além do fim de penDados cai no ze
   };
   const sem = L.resolverGolpe(acerta, L.fonteRolada);
   const com = L.resolverGolpe({ ...acerta, atacante: { ...acerta.atacante, danoDados: 1 } }, L.fonteRolada);
-  ok(sem.veredito === 'acerto' && com.veredito === 'acerto', 'a cena do +1d6 acerta dos dois lados');
-  ok(sem.rolls.dano.length === 1, `sem Investida, um dado de dano (${sem.rolls.dano.length})`);
-  ok(com.rolls.dano.length === 2, `investindo, DOIS dados de dano (${com.rolls.dano.length})`);
+  ok(sem.veredito === 'acerto' && com.veredito === 'acerto', 'a cena do dado a mais acerta dos dois lados');
+  ok(sem.rolls.dano.length === 1, `sem dado a mais, um dado de dano (${sem.rolls.dano.length})`);
+  ok(com.rolls.dano.length === 2, `com danoDados 1, DOIS dados de dano (${com.rolls.dano.length})`);
   // O par que fecha: o campo ausente é zero, e não "algum dado a mais".
   const nulo = L.resolverGolpe({ ...acerta, atacante: { ...acerta.atacante, danoDados: 0 } }, L.fonteRolada);
   ok(nulo.rolls.dano.length === 1, 'e `danoDados: 0` rola o mesmo que não ter o campo');

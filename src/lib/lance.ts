@@ -90,7 +90,9 @@ export interface EntradaLance {
     /** A penalidade de dados por golpe, uma entrada por golpe da agenda. */
     penDados: number[];
     /**
-     * DADOS A MAIS NO DANO, e hoje quem os põe é a Investida (+1d6).
+     * DADOS A MAIS NO DANO. Quem os punha era a Investida (+1d6), que desde a
+     * decisão do autor de 30/10/2026 (P20-b) soma só a Força a mais (`danoFlat`);
+     * o campo fica para o dado a mais que outra regra vier a pôr.
      *
      * Separado do `ajusteDados`, que é do ACERTO: são duas rolagens diferentes e
      * a régua mexe numa sem mexer na outra (a Investida cobra Defesa e paga em

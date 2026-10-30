@@ -586,19 +586,22 @@ if(fs.existsSync(path.join(DIR,'inimigos-custom.json'))){
       fail(`a condição "investindo" (Defesa ${cond.defesa}) discorda de `
         + `combate.movimento.investida.defesaExtra (${inv.defesaExtra}) no regras.json`);
     }
-    if (!temNum(cond.nota, inv.defesaExtra) || !temNum(cond.nota, `+${inv.danoDados}d6`)) {
-      fail(`a nota da condição "investindo" não repete os números da régua `
-        + `(${inv.defesaExtra} de Defesa e +${inv.danoDados}d6): "${String(cond.nota).slice(0, 60)}…"`);
+    // O dano da Investida é a Força mais uma vez, e nenhum dado a mais (P20-b, decisão do autor de 30/10/2026: o
+    // +1d6 saiu). O texto tem de dizer a Força a mais e não pode voltar a prometer dado.
+    if (!temNum(cond.nota, inv.defesaExtra) || !/Força mais uma vez/.test(cond.nota) || /d6/.test(cond.nota)) {
+      fail(`a nota da condição "investindo" não repete a régua `
+        + `(${inv.defesaExtra} de Defesa, a Força mais uma vez, sem dado): "${String(cond.nota).slice(0, 60)}…"`);
     }
   }
 
   const cap = fs.readFileSync(path.join(RAIZ, 'src/content/chapters/combate.md'), 'utf8');
   const linha = cap.split('\n').find((l) => /Preparo investindo/.test(l));
   if (!linha) fail('o capítulo de combate perdeu a linha "Preparo investindo" da tabela da Investida');
-  else if (!temNum(linha, inv.defesaExtra) || !temNum(linha, `+${inv.danoDados}d6`)) {
+  else if (!temNum(linha, inv.defesaExtra) || !/mais uma vez/.test(linha) || /d6/.test(linha)) {
     fail(`a tabela do capítulo discorda da régua da Investida `
-      + `(esperado ${inv.defesaExtra} e +${inv.danoDados}d6): "${linha.trim()}"`);
+      + `(esperado ${inv.defesaExtra} e a Força mais uma vez, sem dado): "${linha.trim()}"`);
   }
+  if ('danoDados' in inv) fail('regras.json: combate.movimento.investida voltou a ter danoDados; a Investida não soma dado (P20-b)');
 
   // E O QUARTO NÚMERO NÃO VOLTA. O −6 morava na `travessiaNota` e só fechava se
   // a Investida carregasse o −4 da Corrida MAIS o −2 dela. Decidido em

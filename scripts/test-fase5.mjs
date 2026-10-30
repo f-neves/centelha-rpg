@@ -167,9 +167,9 @@ const page=fs.readFileSync('src/pages/artes/index.astro','utf8');assert.ok(page.
 // varre com o corpo inteiro fica com Força × 2 (complemento da D-266). O livro, o regras.json, o card e o cabeçalho.
 cases.set('parecer-V1', async () => {
 // Com a P20 (D-269), a Força em dobro da V1 virou "a Força mais uma vez": × 1 para × 2, × 2 para × 3.
-const card=M.textoDaRegraDaCriatura('investida');assert.match(card,/\+1d6/);assert.match(card,/Força mais uma vez/);assert.match(card,/de × 1 para × 2/);assert.match(card,/de × 2 para × 3/);assert.match(card,/golpe comum[^.]*a Força como sempre/);assert.ok(!/Força em dobro/.test(card),'sobrou a Força em dobro');
+const card=M.textoDaRegraDaCriatura('investida');assert.ok(!/d6/.test(card),'P20-b: o +1d6 saiu');assert.match(card,/sem dado a mais/);assert.match(card,/Força mais uma vez/);assert.match(card,/de × 1 para × 2/);assert.match(card,/de × 2 para × 3/);assert.match(card,/golpe comum[^.]*a Força como sempre/);assert.ok(!/Força em dobro/.test(card),'sobrou a Força em dobro');
 const comb=fs.readFileSync('src/content/chapters/combate.md','utf8');const inv=comb.split('### Investida')[1].split('\n### ')[0];
-assert.match(inv,/\| \*\*Preparo investindo\*\* \|[^\n]*\| \*\*\+1d6\*\*, e a Força \*\*mais uma vez\*\* \|/,'a tabela da Investida dá a Força mais uma vez');
+assert.match(inv,/\| \*\*Preparo investindo\*\* \|[^\n]*\| a Força \*\*mais uma vez\*\*, sem dado a mais \|/,'a tabela da Investida dá a Força mais uma vez, sem o +1d6 (P20-b)');
 assert.match(inv,/A Força a mais é da ação de Investida, e não do golpe/);assert.match(inv,/de \*\*× 1 para × 2\*\*/);assert.match(inv,/de \*\*× 2 para × 3\*\*/);assert.match(inv,/o personagem e para a criatura/);assert.ok(!/Força em dobro|Força \*\*× 2\*\* \|/.test(inv),'sobrou a regra da V1 sem a P20');
 const R=JSON.parse(fs.readFileSync('src/data/regras.json','utf8'));assert.match(R.combate.movimento.investida.texto,/Força mais uma vez/);assert.equal(R.combate.movimento.investida.forcaExtra,1);
 const best=fs.readFileSync('src/pages/bestiario.astro','utf8');const dano=best.split('<span class="lbl">Dano</span>')[1].split('</div>')[0];
@@ -185,8 +185,8 @@ const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));con
 assert.deepEqual(mi.combate.ataques.map(a=>[a.nome,a.forcaInvestida]),[['Machado pesado',7],['Chifrada',7]]);
 const naoInveste=mesa.filter(m=>m.combate.ataques.some(a=>['distancia','arremesso'].includes(a.classe)&&a.forcaInvestida!==0));assert.equal(naoInveste.length,0,'golpe de longe com Força a mais: '+naoInveste.map(m=>m.id));
 const best=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const au=best.find(m=>m.id==='auroque').habilidadesEspeciais.find(h=>h.regra==='investida');
-assert.match(au.texto||au.descricao,/Nesta criatura, Investida \(marrada\) investindo: 3d6 \+21 \(I\) \(o \+1d6 e a Força 7 mais uma vez\)/);
-const semLiga=best.find(m=>m.id==='besouro-veado-gigante').habilidadesEspeciais.find(h=>h.regra==='investida');assert.match(semLiga.texto||semLiga.descricao,/Nesta criatura: \+1d6 e a Força 4 mais uma vez no dano do golpe/);
+assert.match(au.texto||au.descricao,/Nesta criatura, Investida \(marrada\) investindo: 2d6 \+21 \(I\) \(a Força 7 mais uma vez\)/);
+const semLiga=best.find(m=>m.id==='besouro-veado-gigante').habilidadesEspeciais.find(h=>h.regra==='investida');assert.match(semLiga.texto||semLiga.descricao,/Nesta criatura: a Força 4 mais uma vez no dano do golpe/);
 const todas=best.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida'));assert.equal(todas.length,37);assert.ok(todas.every(h=>/Nesta criatura/.test(h.texto||h.descricao)),'Investida sem o dano desta criatura');
 });
 // V2 (D-267): o peso erguido do livro é o da D-184 (a R15, pela massa), em tabela gerada do motor; a tabela por FAH sai.
@@ -325,6 +325,19 @@ assert.deepEqual(com,Object.keys(esperado).sort());
 const vest=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8')).filter(m=>m.combate.vestida);assert.equal(vest.length,14);
 for(const m of vest){const v=m.combate.vestida;assert.equal(v.defesa,Math.max(v.esquiva,v.bloqueio),m.id+': a Defesa com o equipamento não é o maior entre Esquiva e Bloqueio');}
 const arc=vest.find(m=>m.id==='arconte-trombeta').combate.vestida;assert.deepEqual([arc.esquiva,arc.bloqueio,arc.defesa],[12,18,18]);
+});
+// P20-b (decisão do autor de 30/10/2026, substitui a parte "O +1d6 da Investida continua" da D-269): a Investida não
+// soma dado nenhum; soma só a Força mais uma vez. Motor, card, Grid (a folha e o lance) e o livro.
+cases.set('P20-b', async () => {
+const R=JSON.parse(fs.readFileSync('src/data/regras.json','utf8')).combate.movimento.investida;assert.ok(!('danoDados' in R),'regras.json ainda tem o danoDados da Investida');assert.equal(R.forcaExtra,1);assert.ok(!/d6/.test(R.texto),R.texto);
+const C=JSON.parse(fs.readFileSync('src/data/condicoes.json','utf8')).lista.find(c=>c.id==='investindo');assert.ok(!/d6/.test(C.nota),C.nota);
+const comb=fs.readFileSync('src/content/chapters/combate.md','utf8');const inv=comb.split('### Investida')[1].split('\n### ')[0];assert.ok(!/d6/.test(inv),'o livro ainda diz dado na Investida');assert.match(inv,/martelo[^<]*cai com a Força <strong>× 3<\/strong> em vez de × 2/);
+const best=fs.readFileSync('src/pages/bestiario.astro','utf8').split('<span class="lbl">Dano</span>')[1].split('</div>')[0];assert.ok(!/d6/.test(best),'callout Dano do bestiário');
+const T=await carregarTS('src/lib/combate-tempo.ts');const mi=T.MODOS_MOV.find(m=>m.id==='investida');assert.ok(!/d6/.test(mi.nota),mi.nota);assert.match(mi.nota,/Força mais uma vez/);
+const grid=fs.readFileSync('src/pages/mesa/grid.astro','utf8');assert.ok(!/INVESTIDA\.danoDados/.test(grid),'o Grid ainda lê o danoDados da Investida');assert.match(grid,/\? \{ dados: 0, flat: ra\?\.forcaInvestida \?\? 0 \}/);
+const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const todas=mon.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida').map(h=>[m.id,h.descricao]));assert.equal(todas.length,37);
+const comDado=todas.filter(([,d])=>/\+1d6|o \+\d+d6/.test(d));assert.deepEqual(comDado,[],'card com o +1d6');
+const txt=(id)=>todas.find(([i])=>i===id)[1];assert.match(txt('aguia-gigante'),/Garras em mergulho investindo: 2d6 \+19 \(C\) \(a Força 6 mais uma vez\)/);assert.match(txt('minotauro'),/Nesta criatura: a Força 7 mais uma vez no dano do golpe/);
 });
 // C1 (revisão de af3697c7): "sem dado" na linha "Prende a respiração" não chega ao JSON, na principal e na forma, com a
 // marca ou sem ela; e nenhum valor de texto dos 324 JSON nem dos três gerados é só "sem dado", em campo nenhum.

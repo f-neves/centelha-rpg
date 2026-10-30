@@ -411,11 +411,11 @@ Preparo que a sua arma já tem, atravessado à velocidade de Corrida.
 | | distância coberta | Defesa | dano |
 |---|---|---|---|
 | **Preparo andando** | Deslocamento de Batalha por Tick | o −2 do Preparo | — |
-| **Preparo investindo** | velocidade atual da Corrida por Tick (Arranque nos 3 primeiros Ticks, Corrida depois, como no Salto correndo) | −2 **a mais** | **+1d6**, e a Força **mais uma vez** |
+| **Preparo investindo** | velocidade atual da Corrida por Tick (Arranque nos 3 primeiros Ticks, Corrida depois, como no Salto correndo) | −2 **a mais** | a Força **mais uma vez**, sem dado a mais |
 
-**A Força a mais é da ação de Investida, e não do golpe.** Quem investe soma a Força **mais uma vez** no dano do golpe que fecha a corrida, com o +1d6: com uma mão ou com o corpo, a Força vai de **× 1 para × 2**; com arma de duas mãos (o montante, o martelo de guerra, a versátil empunhada com as duas), de **× 2 para × 3**. O mesmo golpe, dado parado ou andando, soma a Força como sempre. Vale para o personagem e para a criatura: a marrada do touro, o pisão do elefante e o mergulho da águia somam a Força uma vez no golpe comum e duas quando ele vem numa Investida.
+**A Força a mais é da ação de Investida, e não do golpe.** Quem investe soma a Força **mais uma vez** no dano do golpe que fecha a corrida, e nenhum dado a mais: com uma mão ou com o corpo, a Força vai de **× 1 para × 2**; com arma de duas mãos (o montante, o martelo de guerra, a versátil empunhada com as duas), de **× 2 para × 3**. O mesmo golpe, dado parado ou andando, soma a Força como sempre. Vale para o personagem e para a criatura: a marrada do touro, o pisão do elefante e o mergulho da águia somam a Força uma vez no golpe comum e duas quando ele vem numa Investida.
 
-Como toda arma tem ao menos 1 Tick de Preparo, **toda arma investe**, a leve também, com o +1d6 e a Força mais uma vez. O que se cobre depende do Preparo, e a Sora (4 m por Tick andando, 7 m por Tick no Arranque) mostra a escala:
+Como toda arma tem ao menos 1 Tick de Preparo, **toda arma investe**, a leve também, com a Força mais uma vez. O que se cobre depende do Preparo, e a Sora (4 m por Tick andando, 7 m por Tick no Arranque) mostra a escala:
 
 | Arma | Preparo | Andando | Investindo |
 |---|:---:|:---:|:---:|
@@ -423,7 +423,7 @@ Como toda arma tem ao menos 1 Tick de Preparo, **toda arma investe**, a leve tam
 | Média e Haste média | 2 | 8 m | 14 m |
 | Haste de Guerra e Pesada | 3 | 12 m | 21 m |
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora, de martelo (Preparo 3), anda 4 m por Tick e corre 7 no Arranque. Fechando a distância no Preparo ela cobre <strong>12 metros</strong> com a Defesa em −2. Investindo, cobre <strong>21</strong>, com a Defesa em −4, e o martelo cai com <strong>+1d6</strong>; se for o martelo de guerra, de duas mãos, com a Força <strong>× 3</strong> em vez de × 2.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora, de martelo (Preparo 3), anda 4 m por Tick e corre 7 no Arranque. Fechando a distância no Preparo ela cobre <strong>12 metros</strong> com a Defesa em −2. Investindo, cobre <strong>21</strong>, com a Defesa em −4, e o martelo, que é o de guerra (o pesado, de duas mãos), cai com a Força <strong>× 3</strong> em vez de × 2, sem dado a mais. Com uma arma de uma mão, a Força iria de × 1 para × 2.</div>
 
 Quanto maior o Preparo, mais longe e mais forte vai o golpe que investe, e a pesada, com Preparo 3, é a que investe melhor, que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
 

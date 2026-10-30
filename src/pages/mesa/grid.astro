@@ -2482,7 +2482,7 @@ const SETAS = [
     rolaNoSite, ticksDeDeslocamento, armaDoCatalogo, ticksDeEntrada,
     contrapeEm, contrapeDe, faseDeQuemVaiAgir, preparoDe, ordemDaFila,
     adiaGolpe, agendar, golpesNoAr, golpeResolvido, proximoGolpe,
-    podeSerInterrompido, atrasarGesto, modoCorre, INVESTIDA, foraDeHora,
+    podeSerInterrompido, atrasarGesto, modoCorre, foraDeHora,
     ehSimultaneo, agendaSimultanea, ticksDeViagem, decideEmValeDepois, comOverride,
     passoDoGolpe, reprojetarAgenda,
     decisaoAutomatica, MODOS_MOV,
@@ -6358,7 +6358,7 @@ const SETAS = [
     // A INVESTIDA FICA DE FORA DESTA CAIXA, e é a diferença entre ela e a
     // Corrida: investir é gastar o PREPARO correndo, então só existe dentro de
     // uma declaração de ataque. Um deslocamento solto não tem Preparo para
-    // gastar, e oferecer a Investida aqui prometeria o +1d6 de um golpe que
+    // gastar, e oferecer a Investida aqui prometeria a Força a mais de um golpe que
     // ninguém declarou. Ela está na caixa do ataque, que é onde cabe.
     sel.innerHTML = MODOS_MOV.filter((m) => m.id !== 'investida').map((m) =>
       `<option value="${m.id}"${m.id === 'batalha' ? ' selected' : ''}>${m.nome} · ${
@@ -6583,7 +6583,7 @@ const SETAS = [
       acao.mov = { alvo: alvo.id, modo: modo.id, porTick, auto: opts.auto ?? true } as Mov;
       // A INVESTIDA FICA NA AÇÃO até o golpe cair (D-269): o `mov` sai quando a peça chega (é trajeto, e não
       // regra), e a marca `investindo` sai quando o Preparo acaba, que é o Tick em que a folha do golpe abre.
-      // Sem isto a folha não sabia mais que a corrida foi uma Investida, e o dano saía sem o +1d6 e sem a Força.
+      // Sem isto a folha não sabia mais que a corrida foi uma Investida, e o dano saía sem a Força a mais.
       if (modo.id === 'investida') acao.investida = true;
     }
     acao = agendar(acao, T);
@@ -10336,14 +10336,14 @@ let roladoDano = '';
      * se refaz em cima do valor corrigido. Quem lê tem de ler o corrigido, e é
      * por isso que isto é função e não constante.
      */
-    // A INVESTIDA NO DANO (D-269): o +1d6 e a Força mais uma vez, lidos do modo declarado. Antes o +1d6 só entrava
-    // no objeto do lance (o oráculo), e a rolagem de verdade (`rolarDano`, a digitação, o `fim`) rolava a expressão
-    // crua da arma; a Força a mais não existia em lugar nenhum. Uma função só, para os cinco lugares lerem o mesmo.
+    // A INVESTIDA NO DANO (D-269, P20-b de 30/10/2026): a Força mais uma vez, e nenhum dado a mais (o +1d6 saiu),
+    // lida do modo declarado. Antes do 82f13372 a rolagem de verdade (`rolarDano`, a digitação, o `fim`) rolava a
+    // expressão crua da arma. Uma função só, para os cinco lugares lerem o mesmo.
     // Só o golpe que fecha a corrida (`combate.md`, Investida): o segundo golpe de uma Rajada já não vem correndo.
     const investindo = () => IDX === 0
       && (!!(acaoNo(atacante) as any)?.investida || acaoNo(atacante)?.mov?.modo === 'investida');
     const danoExtra = () => (investindo()
-      ? { dados: INVESTIDA.danoDados ?? 1, flat: ra?.forcaInvestida ?? 0 }
+      ? { dados: 0, flat: ra?.forcaInvestida ?? 0 }
       : { dados: 0, flat: 0 });
     const entradaDoLance = (idx = IDX) => ({
       aid: AID,
@@ -10354,7 +10354,9 @@ let roladoDano = '';
         penDados: (anat().penDados || []).slice(),
         qaArmaBonus: ra?.qa?.armaBonus ?? 0, qaArmaDano: ra?.qa?.armaDano ?? 0,
         centelha: ra?.centelha ?? 0,
-        // O +1d6 DA INVESTIDA, lido do modo declarado e não somado à mão.
+        // A INVESTIDA NO DANO, lida do modo declarado e não somada à mão. Era o
+        // +1d6; desde a P20-b (30/10/2026) é só a Força a mais (`danoFlat`), e o
+        // `danoDados` fica 0.
         //
         // A régua tem três metades (`combate.movimento.investida`) e a mesa
         // cumpria uma: a marca `Investindo` do catálogo de condições dá o −2 de
@@ -10367,7 +10369,7 @@ let roladoDano = '';
         // condição na peça: assim ele vale pelo gesto que a declarou e acaba
         // com ele, sem lifecycle nenhum para manter.
         danoDados: danoExtra().dados,
-        // E a Força mais uma vez (D-269), pelo mesmo modo declarado.
+        // A Força mais uma vez (D-269), pelo mesmo modo declarado.
         danoFlat: danoExtra().flat,
       },
       alvo: {
@@ -10539,7 +10541,7 @@ let roladoDano = '';
     const pintarPoolDano = () => {
       const x = danoExtra();
       (el('al-dn-pool') as HTMLElement).innerHTML = esc(ra?.dano || '—')
-        + (x.dados || x.flat ? ` <i class="al-nota">· Investida: +${x.dados}d6${x.flat ? ` +${x.flat} (a Força mais uma vez)` : ''}</i>` : '');
+        + (investindo() ? ` <i class="al-nota">· Investida: ${x.flat ? `+${x.flat} (a Força mais uma vez)` : 'sem Força a mais neste golpe'}</i>` : '');
     };
     const pintarPool = () => { pintarPoolAcerto(); pintarPoolDano(); };
     const pintarVeredito = () => {

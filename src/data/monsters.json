@@ -1586,7 +1586,7 @@
    },
    {
     "nome": "mergulho predatório",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +19 (C) (a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -2007,7 +2007,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras (talões) investindo: 2d6 +2 (C) (o +1d6 e a Força 2 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras (talões) investindo: 1d6 +2 (C) (a Força 2 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -7910,7 +7910,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +21 (I) (o +1d6 e a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +21 (I) (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -13942,7 +13942,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 4 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 4 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -14844,7 +14844,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +21 (I) (o +1d6 e a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +21 (I) (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -16726,7 +16726,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +21 (I) (o +1d6 e a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +21 (I) (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -17904,7 +17904,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão investindo: 3d6 +42 (I) (o +1d6 e a Força 14 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão investindo: 2d6 +42 (I) (a Força 14 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -21189,7 +21189,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "salto de emboscada",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Salto de emboscada investindo: 3d6 +31 (P) · perf. 1 (o +1d6 e a Força 10 mais uma vez). só ao sair da terra",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Salto de emboscada investindo: 2d6 +31 (P) · perf. 1 (a Força 10 mais uma vez). só ao sair da terra",
     "classe": "livro",
     "regra": "investida"
    },
@@ -28419,7 +28419,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 3d6 +14 (I) (o +1d6 e a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -28852,7 +28852,7 @@
    },
    {
     "nome": "Investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 7 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 7 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -35631,7 +35631,7 @@
    },
    {
     "nome": "investida saltada",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garra em foice do pé investindo: 2d6 +8 (P) · perf. 0 (o +1d6 e a Força 4 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garra em foice do pé investindo: 1d6 +8 (P) · perf. 0 (a Força 4 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -54493,7 +54493,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 10 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 10 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -54509,7 +54509,7 @@
    },
    {
     "nome": "investida que empurra",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 10 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 10 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -63215,7 +63215,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 11 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 11 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -64859,7 +64859,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras (golpe do mergulho) investindo: 2d6 (C) (o +1d6 e a Força 1 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras (golpe do mergulho) investindo: 1d6 (C) (a Força 1 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -66440,7 +66440,7 @@
    },
    {
     "nome": "mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +39 (C) (o +1d6 e a Força 11 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +39 (C) (a Força 11 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -80638,7 +80638,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de baixo",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida de focinho investindo: 3d6 +15 (I) (o +1d6 e a Força 5 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida de focinho investindo: 2d6 +15 (I) (a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -81048,7 +81048,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de chifre",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +27 (I) (o +1d6 e a Força 8 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +27 (I) (a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -82678,7 +82678,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +19 (C) (a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -85961,7 +85961,7 @@
    },
    {
     "nome": "investida em mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +19 (C) (a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -89816,7 +89816,7 @@
    },
    {
     "nome": "investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 3d6 +15 (I) (o +1d6 e a Força 5 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +15 (I) (a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -93762,7 +93762,7 @@
    },
    {
     "nome": "bote",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +12 (P) · perf. 0 (o +1d6 e a Força 6 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 1d6 +12 (P) · perf. 0 (a Força 6 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -94138,7 +94138,7 @@
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +14 (P) · perf. 0 (o +1d6 e a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 1d6 +14 (P) · perf. 0 (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -94487,7 +94487,7 @@
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +10 (P) · perf. 0 (o +1d6 e a Força 5 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 1d6 +10 (P) · perf. 0 (a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -95231,7 +95231,7 @@
    },
    {
     "nome": "investida retalhadora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +10 (P) · perf. 0 (o +1d6 e a Força 5 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 1d6 +10 (P) · perf. 0 (a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -104001,7 +104001,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 13 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 13 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -106781,7 +106781,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 13 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 13 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -107627,7 +107627,7 @@
    },
    {
     "nome": "investida de baixo",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 3d6 +26 (P) · perf. 3 (o +1d6 e a Força 13 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +26 (P) · perf. 3 (a Força 13 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -109443,7 +109443,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 7 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 7 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -126314,7 +126314,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 3d6 +12 (I) (o +1d6 e a Força 6 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 2d6 +12 (I) (a Força 6 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -133088,13 +133088,13 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 3d6 +24 (P) · perf. 1 (o +1d6 e a Força 8 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +24 (P) · perf. 1 (a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "investida que derruba",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 3d6 +24 (P) · perf. 1 (o +1d6 e a Força 8 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +24 (P) · perf. 1 (a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -133518,7 +133518,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +21 (C) (o +1d6 e a Força 7 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +21 (C) (a Força 7 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -142662,7 +142662,7 @@
    },
    {
     "nome": "bote",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +14 (P) · perf. 0 (o +1d6 e a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 1d6 +14 (P) · perf. 0 (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -144499,7 +144499,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 11 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 11 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -145742,7 +145742,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "bote vertical",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 3d6 +18 (P) · perf. 1 (o +1d6 e a Força 9 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +18 (P) · perf. 1 (a Força 9 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -146198,7 +146198,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "chifre perfurante",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Chifre em investida investindo: 3d6 +25 (P) · perf. 1 (o +1d6 e a Força 7 mais uma vez). só depois de correr ao menos 6 m em linha reta",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Chifre em investida investindo: 2d6 +25 (P) · perf. 1 (a Força 7 mais uma vez). só depois de correr ao menos 6 m em linha reta",
     "classe": "livro",
     "regra": "investida"
    },

@@ -878,10 +878,10 @@ async function cenaInvestidaUmaVez(br, url, reprojecao = false) {
     `e o relogio TIRA a marca exatamente quando o Preparo acaba (saiu no Tick ${tickSaida}, `
     + `agenda ao vivo do golpe ${golpeVivo}, declaração original ${decl.tick})`);
 
-  // 4. O DANO DA INVESTIDA NA FOLHA DE VERDADE (D-269): o +1d6 e a Força mais uma
-  //    vez. Antes o +1d6 só existia no objeto do lance (o oráculo), e o botão de
-  //    rolar, a digitação e o `fim` rolavam a expressão crua da arma. Medido aqui
-  //    na folha que o cartão da faixa abre, contra o resumo da peça.
+  // 4. O DANO DA INVESTIDA NA FOLHA DE VERDADE (D-269, com a P20-b de 30/10/2026):
+  //    a Força mais uma vez, e nenhum dado a mais (o +1d6 saiu). O botão de rolar
+  //    rola os dados da arma e só eles, e a digitação soma a Força a mais. Medido
+  //    aqui na folha que o cartão da faixa abre, contra o resumo da peça.
   const folhaInv = await p.evaluate(async () => {
     // A Força de quem investe, lida da fonte da peça (a ficha do PC na bancada), e não do resumo.
     const T = window.__SB?.tabelas || {};
@@ -905,7 +905,7 @@ async function cenaInvestidaUmaVez(br, url, reprojecao = false) {
     document.getElementById('al-nao')?.click();
     await new Promise((x) => setTimeout(x, 900));
     const arma = pool.split(' · Investida')[0].trim();
-    const extra = pool.match(/Investida: \+1d6 \+(\d+) \(a Força mais uma vez\)/);
+    const extra = pool.match(/Investida: \+(\d+) \(a Força mais uma vez\)/);
     return { abriu: true, tipo: c?.tipo, dano: arma, forca: extra ? Number(extra[1]) : null, forcaFonte, pool, faces, descrito };
   });
   ok(folhaInv.abriu, 'o cartão da faixa abre a folha do golpe da Investida');
@@ -915,11 +915,12 @@ async function cenaInvestidaUmaVez(br, url, reprojecao = false) {
       .reduce((s, m) => s + parseInt(m.replace(/[\s−]/g, (c) => (c === '−' ? '-' : '')), 10), 0);
     ok(folhaInv.forcaFonte > 0 && folhaInv.forca === folhaInv.forcaFonte,
       `a folha mostra o dano da Investida ao lado da arma, com a Força da peça (${folhaInv.tipo}, Força ${folhaInv.forcaFonte}: "${folhaInv.pool.trim()}")`);
-    ok(folhaInv.faces === base + 1,
-      `o botão de rolar rola o +1d6 (${folhaInv.faces} dados, a arma tem ${base}: ${folhaInv.dano})`);
+    ok(!/d6/.test(folhaInv.pool.split(' · Investida')[1] || ''), `a nota da Investida não promete dado (P20-b): "${folhaInv.pool.trim()}"`);
+    ok(folhaInv.faces === base,
+      `o botão de rolar rola só os dados da arma, sem o +1d6 (P20-b; ${folhaInv.faces} dados, a arma tem ${base}: ${folhaInv.dano})`);
     const total = (folhaInv.descrito.match(/=\s*(-?\d+)/) || [])[1];
-    ok(Number(total) === base + 1 + fixo + folhaInv.forca,
-      `e a soma das faces leva a Força mais uma vez (${folhaInv.descrito.trim()}; esperado ${base + 1} + ${fixo} + ${folhaInv.forca})`);
+    ok(Number(total) === base + fixo + folhaInv.forca,
+      `e a soma das faces leva a Força mais uma vez (${folhaInv.descrito.trim()}; esperado ${base} + ${fixo} + ${folhaInv.forca})`);
   }
 
   ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
