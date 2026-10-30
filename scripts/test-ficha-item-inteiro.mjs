@@ -44,15 +44,27 @@ try {
   await p.waitForSelector('#corpo-massa', { timeout: 60000 });
   await p.waitForFunction(() => document.getElementById('corpo-massa').placeholder.length > 0 || document.getElementById('corpo-massa').value !== '', { timeout: 30000 });
   ok(await p.$eval('#corpo-massa', (e) => e.value === '' && e.placeholder.startsWith('70')), 'massa vazia: o campo mostra o padrão do humano (70) só como sugestão');
+  // Parecer da Leitora-novata, achado 12: a ficha avisa por escrito que a massa vazia é a padrão da raça.
+  const nota = () => p.$eval('#corpo-massa-nota', (e) => e.textContent || '');
+  ok(/Campo vazio: as contas usam a massa padrão da raça \(Humano\), 70 kg/.test(await nota()), 'massa vazia: o aviso diz que é a padrão da raça (' + (await nota()) + ')');
   await p.$eval('#raca-sel', (e) => { e.value = 'anao'; e.dispatchEvent(new Event('change', { bubbles: true })); });
   ok(await p.$eval('#corpo-massa', (e) => e.value === '' && e.placeholder.startsWith('85')), 'trocar a raça para anão refaz o padrão (85)');
   const lida = () => p.evaluate(() => JSON.parse(localStorage.getItem('centelha:ficha')));
   ok(!('massa' in ((await lida()).corpo || {})), 'salva: sem massa escrita, nenhuma massa na ficha');
   await p.$eval('#corpo-massa', (e) => { e.value = '95'; e.dispatchEvent(new Event('input', { bubbles: true })); });
   ok((await lida()).corpo?.massa === 95, 'salva: a massa escrita (95) fica');
+  ok(/^Massa escrita por você/.test(await nota()), 'com a massa escrita, o aviso diz que é a do jogador (' + (await nota()) + ')');
   await p.$eval('#corpo-massa', (e) => { e.value = ''; e.dispatchEvent(new Event('input', { bubbles: true })); });
   const apagada = await lida();
   ok(!('massa' in (apagada.corpo || {})), 'salva: apagar o campo tira a massa e devolve o padrão');
+  ok(/massa padrão da raça \(Anão\), 85 kg/.test(await nota()), 'apagar devolve o aviso do padrão (' + (await nota()) + ')');
+  // Achado 12, o "0d6": a ficha vazia ataca de Punhos com Força 1 e Briga 0, soma 1, e o Cap. I chama isso de
+  // "nenhum dado, total fixo 2".
+  await p.evaluate(() => localStorage.removeItem('centelha:ficha'));
+  await p.reload({ waitUntil: 'domcontentloaded' });
+  await p.waitForFunction(() => /Ataque/.test(document.getElementById('combate')?.textContent || ''), { timeout: 60000 });
+  const cmb = await p.$eval('#combate', (e) => e.textContent.replace(/\s+/g, ' '));
+  ok(/Ataque: Punhos, nenhum dado, total fixo 2 \+1/.test(cmb) && !/0d6/.test(cmb), 'ficha vazia: o ataque sem dado diz "nenhum dado, total fixo 2" (' + (cmb.match(/Ataque:[^·]*/) || [''])[0] + ')');
   ok(erros.length === 0, 'nenhum erro de página: ' + erros.join('; '));
 } finally { await browser.close(); await dev.parar(); }
 if (falhas.length) process.exitCode = 1; else { carimbar('test-ficha-item-inteiro'); console.log('✓ ficha: item inteiro OK'); }

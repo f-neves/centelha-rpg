@@ -852,6 +852,11 @@ export function montarFicha(opts: FichaOpts) {
     return conjuntoPersonagem(S, cj, {habil:itemDe(cj.habil),inabil:itemDe(cj.inabil),armorPen:empilharArmaduras(pecasArmadura()).penalidade || 0,atributos:Object.fromEntries((ATTRS_D as any[]).map((a: any) => [a.id,A(a.id)]))});
   }
   const sgn = (n: number) => `${n >= 0 ? '+' : '−'}${Math.abs(n)}`;
+  // O pool sem dado nenhum se escreve como o Cap. I o chama ("nenhum dado, total fixo 2"), e não "0d6+2", que parece
+  // defeito (parecer da Leitora-novata, achado 12).
+  const poolTxt = (dados: number, bonus: number, flat: number) => (dados > 0
+    ? `${dados}d6${bonus ? '+2' : ''}`
+    : bonus ? 'nenhum dado, total fixo 2' : 'nada, total fixo 0') + (flat ? ' ' + sgn(flat) : '');
   // Cada arma da lista já mostra os próprios números: Velocidade / Acerto / Dano / Defesa.
   function optsItens(sel: string, semVazio = false) {
     const armas = ARMAS.map((w) => `<option value="a:${w.id}"${sel === 'a:' + w.id ? ' selected' : ''}>${w.nome}: ${statsArma(w)}</option>`).join('');
@@ -1421,7 +1426,7 @@ export function montarFicha(opts: FichaOpts) {
   // o item personalizado é uma arma para todos os efeitos: mesmos campos ajustáveis
   const camposItem = (it: any) => (it.kind === 'escudo' ? CAMPOS_ESCUDO : [...CAMPOS_ARMA, ...CAMPOS_ARMA_MAIS]);
   function statsConj(c: any, trava: boolean) {
-    const atk = `${c.dados}d6${c.bonus ? '+2' : ''}${c.flat ? ' ' + sgn(c.flat) : ''}`;
+    const atk = poolTxt(c.dados, c.bonus, c.flat);
     const dano = c.atk.semDano ? 'não causa dano' : c.versoes.map((v: any) => `${v.rot ? v.rot + ': ' : ''}${c.atk.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     return `<b>Acerto</b> ${atk} · <b>Dano</b> ${dano} · <b>Defesa</b> ${sgn(c.defSum)}` +
       `${trava ? ' <span class="muted">(2 mãos: inábil travada)</span>' : ''}` +
@@ -1430,7 +1435,7 @@ export function montarFicha(opts: FichaOpts) {
   function duplaConj(c: any) {
     if (!c.dupla) return '';
     const p0 = (n: number) => Math.max(0, n);
-    const pool = (d: number, b: number, f: number) => `${p0(d)}d6${b ? '+2' : ''}${f ? ' ' + sgn(f) : ''}`;
+    const pool = (d: number, b: number, f: number) => poolTxt(p0(d), b, f);
     const dm = (dado: number, ap: number) => `${dado}d6${ap ? ' ' + sgn(ap) : ''}`;
     return `<div class="conj-dupla"><b>Ataque duplo</b> hábil −1d6: ${pool(c.dados - 1, c.bonus, c.flat)} (${dm(c.atk.dado, c.dupla.habilAp)}) · inábil −${c.dupla.inabilPen}d6: ${pool(c.dupla.inabilDados - c.dupla.inabilPen, c.dupla.inabilBonus, c.dupla.inabilFlat)} (${dm(c.dupla.inabilDado, c.dupla.inabilAp)}) <span class="muted">· guarda −4 até seu turno</span></div>`;
   }
@@ -1581,7 +1586,7 @@ export function montarFicha(opts: FichaOpts) {
   function renderCombate() {
     const act = calcConj(conjAtivo());
     const w = act.atk, C = S.centelha || 0, armorPen = act.armorPen;
-    const atk = `${act.dados}d6${act.bonus ? '+2' : ''}${act.flat ? ' ' + sgn(act.flat) : ''}`;
+    const atk = poolTxt(act.dados, act.bonus, act.flat);
     const dano = w.semDano ? 'não causa dano' : act.versoes.map((v) => `${v.rot ? v.rot + ': ' : ''}${w.dado}d6${v.ap ? ' ' + sgn(v.ap) : ''}`).join(' · ');
     const modos = ((w.modos ?? [{ tipo: w.tipoDano, perf: w.pen, principal: true }]) as any[]).slice().sort((a, b) => ((MODO_ORDEM as any)[a.tipo] ?? 9) - ((MODO_ORDEM as any)[b.tipo] ?? 9));
     const modoStr = modos.map((m) => `${MODO_NOME[m.tipo as keyof typeof MODO_NOME]}${m.perf != null ? ` (N${m.perf})` : ''}${m.principal ? '' : ' *'}`).join(' · ');
@@ -1592,7 +1597,7 @@ export function montarFicha(opts: FichaOpts) {
     const pecas = pecasArmadura();
     el('combate').innerHTML =
       `<div class="cmb"><b>Conjunto em uso</b>: ${nomeSet}</div>` +
-      `<div class="cmb"><b>Ataque</b>: ${w.nome}, rola <b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
+      `<div class="cmb"><b>Ataque</b>: ${w.nome}, ${act.dados > 0 ? 'rola ' : ''}<b>${atk}</b> · dano <b>${dano}</b> · Velocidade ${w.ticks}</div>` +
       (w.semDano ? '' : `<div class="cmb"><b>Modos</b>: ${modoStr}${temSec ? ' <span class="muted">(* secundário: −2 acerto e −1d6 de dano)</span>' : ''}</div>`) +
       linhaPGR(w) +
       (act.dist ? '' : `<div class="cmb"><b>Defesa por Bloqueio</b>: <b>${blk}</b> <span class="muted">(inclui a Defesa das armas do conjunto)</span></div>`) +
@@ -1610,6 +1615,18 @@ export function montarFicha(opts: FichaOpts) {
       if (document.activeElement !== massaInput) massaInput.value = massaEscolhida && typeof S.corpo?.massa === 'number' ? String(S.corpo.massa) : '';
       massaInput.placeholder = `${massaDoJogador({ raca: S.raca })} (padrão da raça)`;
       massaInput.readOnly = !!opts.readOnly;
+    }
+    // O AVISO DA MASSA (parecer da Leitora-novata, achado 12): o campo vazio não é zero, é o padrão da raça, e a
+    // ficha diz isso por escrito, e não só no placeholder (que some quando o campo tem foco ou valor).
+    const massaNota = document.getElementById('corpo-massa-nota');
+    if (massaNota) {
+      const nomeRaca = (RACA_D as any[]).find((r: any) => r.id === S.raca)?.nome;
+      const padrao = massaDoJogador({ raca: S.raca }), usada = massaDoJogador(S);
+      massaNota.textContent = massaEscolhida && typeof S.corpo?.massa === 'number'
+        ? 'Massa escrita por você. Apague o campo para voltar à massa padrão da raça.'
+        : usada === padrao
+          ? `Campo vazio: as contas usam a massa padrão da raça${nomeRaca ? ` (${nomeRaca})` : ''}, ${String(padrao).replace('.', ',')} kg, o meio da faixa normal dela. Escreva a massa para usar outra.`
+          : `Campo vazio: as contas usam ${String(usada).replace('.', ',')} kg, o peso escrito na identificação do personagem.`;
     }
     const F = (regras as any).forca; if (!F) { box.innerHTML = ''; return; }
     const forca = A('forca'), atl = SK('atletismo'), halt = S.skills2['halterofilismo'] || 0, arr = SK('arremesso');
