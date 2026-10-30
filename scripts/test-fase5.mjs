@@ -169,6 +169,15 @@ for(const [raca,id] of [['Humano','humano'],['Gnomo','gnomo'],['Orc','orc']])for
  const ficha=Math.round(M.numerosPersonagem({raca:id,attrs:{forca:f},skills:{},skills2:{}}).pesoErguido);assert.equal(cel(raca,f),ficha,raca+' Força '+f+': livro e ficha');}
 assert.equal(cel('Humano',1),83,'o Humano de 70 kg e Força 1 do parecer');
 });
+// V3 (D-268): o sopro segue a regra do livro de desviar de área (combate.md, "Contra área, a saída é sair"); o livro e o
+// cabeçalho do bestiário citam a regra. As 24 fichas de sopro são da Bestiarista.
+cases.set('parecer-V3', async () => {
+const comb=fs.readFileSync('src/content/chapters/combate.md','utf8');assert.match(comb,/<span id="contra-area"><\/span>\*\*Contra área, a saída é sair\.\*\*/);
+const area=comb.split('<span id="contra-area">')[1].split('\n## ')[0];assert.match(area,/\*\*O sopro das criaturas é área, e segue esta regra\.\*\*/);assert.match(area,/Destreza \+ Esquiva/);
+assert.match(fs.readFileSync('src/data/regras.json','utf8'),/"jogada": "Destreza \+ Esquiva",\s*"jogadaParado"/,'a jogada do livro é a do regras.json (área, desvio)');
+const best=fs.readFileSync('src/pages/bestiario.astro','utf8');const s=best.split('<span class="lbl">Sopro e área</span>')[1]?.split('</div>')[0];assert.ok(s,'falta o callout do sopro no cabeçalho');
+assert.match(s,/#contra-area'\}>Contra área, a saída é sair<\/a>/);assert.match(s,/5 \+ 5 × os metros/);assert.ok(!/contra a jogada do sopro/.test(s));
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

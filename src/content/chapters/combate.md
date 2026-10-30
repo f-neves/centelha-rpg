@@ -357,12 +357,14 @@ A **Centelha rompe o limite mortal:** cada ponto de Centelha do defensor **sobe 
 
 Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche e uma onda de fogo cobram outra saída.
 
-**Contra área, a saída é sair.** Área não vem de uma direção, ela ocupa o espaço, então não há número de Esquiva nem de Bloqueio a opor. Sair tem duas versões e **nenhuma delas é de graça**: as duas gastam Tick e as duas pedem a mesma jogada, porque a área pegou os dois.
+<span id="contra-area"></span>**Contra área, a saída é sair.** Área não vem de uma direção, ela ocupa o espaço, então não há número de Esquiva nem de Bloqueio a opor. Sair tem duas versões e **nenhuma delas é de graça**: as duas gastam Tick e as duas pedem a mesma jogada, porque a área pegou os dois.
 
 - **Livre**, com a vez ainda na mão: você sai pelas próprias pernas, um Tick de **Deslocamento de Batalha** (ou o Arranque da Corrida, que rende mais). O Tick é gasto, porque aqui sair *é* o movimento e não o passo de brinde que acompanha outra ação, mas ele cobre vários metros de uma vez, a rolagem sai limpa e depois você continua livre para agir.
 - **Fora da vez**, no meio de um Preparo, de um Golpe ou de uma Recuperação: é o **desvio de emergência**, a **1 Tick por metro** que falte para o corpo sair, e esses Ticks empurram a próxima ação para frente. Você já agiu, então não tem Tick na mão: empresta do próprio futuro, e ainda rola com a escada aberta em cima dos dados.
 
-A Dificuldade é a mesma nos dois casos, e sai da distância: **5 + 5 × os metros** que faltam para ficar fora, para sofrer metade; o **dobro** disso, para não sofrer nada. A regra inteira está em [O tempo da Arte](/artes/regras#tempo).
+A Dificuldade é a mesma nos dois casos, e sai da distância: **5 + 5 × os metros** que faltam para ficar fora, para sofrer metade; o **dobro** disso, para não sofrer nada. A jogada é **Destreza + Esquiva**. A regra inteira está em [O tempo da Arte](/artes/regras#tempo).
+
+**O sopro das criaturas é área, e segue esta regra.** O fogo do dragão, o gelo do linnorm, o ácido do behir e todo cone, linha ou nuvem que uma criatura cospe não têm jogada de ataque a esquivar: quem está na área sai dela como acima, contra a mesma Dificuldade da distância, e quem não sai leva o dano inteiro. O card do bestiário diz a área, o alcance e o dano de cada sopro.
 
 ## Movimento: Deslocamento, Corrida e Salto
 
