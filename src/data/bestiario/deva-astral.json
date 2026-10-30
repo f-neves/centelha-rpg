@@ -275,10 +275,16 @@
       "equipamento": {
         "arsenal": []
       },
-      "fisiologia": {
-        "camuflagem": "passa por um humano ou um animal comum"
+      "outraForma": "um animal comum",
+      "corpo": {
+        "altura": 1.78,
+        "largura": 0.48,
+        "profundidade": 0.3,
+        "area": 0.64
       },
-      "ataques": []
+      "fisiologia": {
+        "camuflagem": "passa por um humano"
+      }
     }
   ],
   "elementos": {

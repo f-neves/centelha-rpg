@@ -182,10 +182,9 @@
   },
   "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro e carniceiro",
     "caca": "carniça e caça",
-    "dianteDeGente": ": não recua"
+    "dianteDeGente": "não recua"
   },
   "ecologia": {
     "terreno": [
@@ -261,10 +260,6 @@
     {
       "campo": "deslocamento",
       "motivo": "congelada (decisão 23); 63 km/h, sem real para conferir"
-    },
-    {
-      "campo": "comportamento.atividade",
-      "motivo": "A ficha não declara Atividade. Sem dado conserva a ausência de informação, sem atribuir horário à criatura; o conversor agora para nessa omissão."
     }
   ]
 }

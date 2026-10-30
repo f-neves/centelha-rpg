@@ -288,9 +288,16 @@
     {
       "id": "disfarce",
       "nome": "disfarce",
+      "outraForma": "outro humanoide ou um animal comum",
+      "corpo": {
+        "altura": 1.78,
+        "largura": 0.48,
+        "profundidade": 0.3,
+        "area": 0.64
+      },
       "fisiologia": {
-        "prendeRespiracao": "a da forma assumida",
-        "camuflagem": "passa pelo humanoide ou animal comum que imita"
+        "prendeRespiracao": "a de um humano",
+        "camuflagem": "passa por um humano"
       },
       "ataques": []
     }

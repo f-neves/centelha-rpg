@@ -142,10 +142,8 @@
   },
   "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "emboscada",
-    "dianteDeGente": "sem dado"
+    "caca": "emboscada"
   },
   "ecologia": {
     "terreno": [

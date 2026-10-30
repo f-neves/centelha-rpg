@@ -152,11 +152,11 @@
     "tracao": false
   },
   "comportamento": {
-    "social": ": bando, como o gorila",
-    "atividade": ": diurno",
+    "social": "bando, como o gorila",
+    "atividade": "diurno",
     "dieta": "herbívoro (frutas, figos, caules, raízes e tubérculos; comida fibrosa na estação ruim)",
     "caca": "forrageio",
-    "dianteDeGente": ": ameaça, como o gorila"
+    "dianteDeGente": "ameaça, como o gorila"
   },
   "ecologia": {
     "terreno": [

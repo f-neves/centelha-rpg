@@ -779,7 +779,7 @@
     "tags": [
       "celestial"
     ],
-    "pv": 42,
+    "pv": 34,
     "defesa": 4,
     "defesaMental": 15,
     "defesaSocial": 4,
@@ -5350,7 +5350,7 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça . Quantos leva de uma vez: confiável.",
+    "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça. Quantos leva de uma vez: confiável.",
     "tags": [
       "animal"
     ],
@@ -17752,7 +17752,7 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa) .",
+    "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa).",
     "tags": [
       "animal"
     ],

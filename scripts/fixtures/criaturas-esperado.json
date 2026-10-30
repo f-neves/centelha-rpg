@@ -1,7 +1,7 @@
 {
  "fonte": {
   "pasta": "tmp/arquiteto/bestiario/fichas-v3",
-  "data": "2026-10-28",
+  "data": "2026-10-30",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
  },
@@ -47,23 +47,19 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -136,7 +132,8 @@
      "comprimentoSemCauda": 5,
      "caudaGrossa": true,
      "massa": 2700,
-     "area": 6.29
+     "area": 6.29,
+     "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
     "artes": {},
@@ -336,7 +333,10 @@
       "jogada": 12
      }
     ]
-   }
+   },
+   "paradas": [
+    "Deslocamento em terra sem dado: não equivale a não anda"
+   ]
   },
   "aguia-real": {
    "sha256": "22dcaf7c6265ccb4ef7f0fe842ccbe975003c8db31a78c6e72f3ee874e97d38a",
@@ -549,7 +549,6 @@
       "multiplicadorForca": 2,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
-      "acerto": 0,
       "bloqueiaComoArma": null
      },
      {
@@ -565,7 +564,6 @@
       "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
-      "acerto": 0,
       "bloqueiaComoArma": 2
      }
     ]
@@ -602,7 +600,11 @@
       "danoMedio": 10.5
      }
     ]
-   }
+   },
+   "paradas": [
+    "Ataques, Pisão (ergue-se e pisoteia): Acerto ausente ou ilegível",
+    "Ataques, Galhada (só macho): Acerto ausente ou ilegível"
+   ]
   },
   "ankheg": {
    "sha256": "858d9e2a8ef85f349eef07fd1fe9987c0a43bc94db4c59ad8b57ce86e1cacadb",
@@ -1062,18 +1064,13 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -1124,7 +1121,7 @@
    }
   },
   "arconte-lanterna": {
-   "sha256": "27f0d3de8e809b81bc01a99b6aaa3134bf5019e2da1b35111dcc1d2a7c4c3f6d",
+   "sha256": "82e14dd8f1e9c3e74220ff87abc9dd75c23260f33605d017a190c5910e2f3037",
    "entrada": {
     "categoria": "celestial",
     "centelha": 2,
@@ -1156,15 +1153,15 @@
     "corpo": {
      "postura": "pairando em combate, apoio outro",
      "apoio": "outro",
-     "altura": 1,
-     "largura": 1,
-     "profundidade": 1,
-     "comprimento": 1,
-     "comprimentoSemCauda": 1,
+     "altura": 0.6,
+     "largura": 0.6,
+     "profundidade": 0.6,
+     "comprimento": 0.6,
+     "comprimentoSemCauda": 0.6,
      "caudaGrossa": false,
      "semMassa": true,
-     "volume": 0.523599,
-     "area": 0.79,
+     "volume": 0.113097,
+     "area": 0.28,
      "posturaDoTamanho": "pairando",
      "naoErgue": true
     },
@@ -1195,10 +1192,10 @@
     ]
    },
    "esperado": {
-    "pv": 42,
+    "pv": 34,
     "pesoErguido": null,
-    "faixa": 4,
-    "tamanho": "Médio",
+    "faixa": 3,
+    "tamanho": "Pequeno",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 11,
@@ -1269,11 +1266,7 @@
      "protecao": 4
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "malha",
@@ -1284,8 +1277,7 @@
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      }
     ]
    },
@@ -1365,16 +1357,13 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-longo"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -1385,8 +1374,7 @@
     "ataques": [
      {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
      },
      {
       "nome": "Punhos",
@@ -1489,16 +1477,13 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 65,
-     "area": 0.63
+     "area": 0.63,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:adaga"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -1509,8 +1494,7 @@
     "ataques": [
      {
       "nome": "Adaga",
-      "arma": "adaga",
-      "habilidade": "armas"
+      "arma": "adaga"
      }
     ]
    },
@@ -1818,18 +1802,13 @@
     "couraca": 2,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Garras",
@@ -1956,26 +1935,17 @@
     "couraca": 4,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      },
-      {
-       "ref": "a:chicote"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada flamejante",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Chicote de chamas",
-      "arma": "chicote",
-      "habilidade": "armas"
+      "arma": "chicote"
      },
      {
       "nome": "Garras",
@@ -2074,16 +2044,13 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -2094,8 +2061,7 @@
     "ataques": [
      {
       "nome": "Facão",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -3582,23 +3548,19 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 70,
-     "area": 0.61
+     "area": 0.61,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:maca-estrela"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Maça estrela",
-      "arma": "maca-estrela",
-      "habilidade": "armas"
+      "arma": "maca-estrela"
      }
     ]
    },
@@ -3750,7 +3712,7 @@
    }
   },
   "bralani": {
-   "sha256": "17c2cabff5c83419767b3abbd7b1606fb4302c8241b1c53b918461302ac9f10b",
+   "sha256": "f934dc93e9dd59db849bd2d9dae9a0d5a90d4178bbd0feffff0f5ebe1be7d849",
    "entrada": {
     "categoria": "outsider",
     "centelha": 4,
@@ -3791,7 +3753,8 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -4005,16 +3968,13 @@
      "profundidade": 0.26,
      "comprimento": null,
      "massa": 110,
-     "area": 0.87
+     "area": 0.87,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:martelo-de-guerra"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -4025,8 +3985,7 @@
     "ataques": [
      {
       "nome": "Martelo de guerra",
-      "arma": "martelo-de-guerra",
-      "habilidade": "armas"
+      "arma": "martelo-de-guerra"
      }
     ]
    },
@@ -4106,7 +4065,8 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 68,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -4321,7 +4281,8 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 80,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -4415,23 +4376,19 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 113,
-     "area": 0.93
+     "area": 0.93,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      }
     ]
    },
@@ -4920,9 +4877,6 @@
     "equipamento": {
      "arsenal": [
       {
-       "ref": "a:espada-longa"
-      },
-      {
        "ref": "e:heater"
       }
      ],
@@ -4936,8 +4890,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -5018,16 +4971,13 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 90,
-     "area": 0.78
+     "area": 0.78,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "malha",
@@ -5038,8 +4988,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Espada longa a duas mãos",
@@ -5142,23 +5091,19 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 65,
-     "area": 0.61
+     "area": 0.61,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:bordao"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Bordão",
-      "arma": "bordao",
-      "habilidade": "armas"
+      "arma": "bordao"
      }
     ]
    },
@@ -5577,7 +5522,8 @@
      "comprimentoSemCauda": 1.8,
      "caudaGrossa": false,
      "massa": 45,
-     "area": 2.16
+     "area": 2.16,
+     "posturaDoTamanho": "de cima, abas abertas"
     },
     "couraca": 0,
     "artes": {},
@@ -5695,15 +5641,13 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 85,
-     "area": 0.74
+     "area": 0.74,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
      "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      },
       {
        "ref": "e:heater"
       }
@@ -5718,8 +5662,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -6255,16 +6198,13 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 95,
-     "area": 0.8
+     "area": 0.8,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "placa-completa",
@@ -6275,8 +6215,7 @@
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      }
     ]
    },
@@ -6484,26 +6423,17 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      },
-      {
-       "ref": "a:azagaia"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Azagaia",
-      "arma": "azagaia",
-      "habilidade": "arremesso"
+      "arma": "azagaia"
      },
      {
       "nome": "Coice",
@@ -6698,7 +6628,8 @@
      "profundidade": null,
      "comprimento": 2.7,
      "massa": 160,
-     "area": 1.9
+     "area": 1.9,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 5,
     "artes": {},
@@ -7123,16 +7054,13 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 88,
-     "area": 0.76
+     "area": 0.76,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "placa-completa",
@@ -7143,8 +7071,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -7408,7 +7335,7 @@
    }
   },
   "couatl": {
-   "sha256": "ba0c33f3e077db4e62862de3a79c644d6d2c5490b4c502a1214ebd3a9640fb15",
+   "sha256": "2a8b62bc40285dcdd026b897fdb9d60e3bd96f4903ddc09ea9fdbaee8a121ac9",
    "entrada": {
     "categoria": "outsider",
     "centelha": 5,
@@ -7514,6 +7441,23 @@
       "jogada": 21
      }
     ]
+   },
+   "formas": {
+    "disfarce": {
+     "nome": "disfarce",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      },
+      "ataques": []
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "crocodilo-do-nilo-femea": {
@@ -7752,7 +7696,8 @@
      "profundidade": null,
      "comprimento": 3,
      "massa": 27300,
-     "area": 9
+     "area": 9,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
@@ -7847,7 +7792,8 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 62,
-     "area": 0.62
+     "area": 0.62,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {
@@ -8184,23 +8130,19 @@
      "profundidade": 0.19,
      "comprimento": null,
      "massa": 36,
-     "area": 0.39
+     "area": 0.39,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -8232,7 +8174,7 @@
    }
   },
   "deva-astral": {
-   "sha256": "ac608e1319fcf4afa06bddf2f8725a057ab2106303b2500f85410c41a8b37572",
+   "sha256": "0b8ccbf0878e347538f5f8d16cf86ba68d24926512dec74218c29cf4c5b54938",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -8286,18 +8228,13 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:maca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Maça",
-      "arma": "maca",
-      "habilidade": "armas"
+      "arma": "maca"
      }
     ]
    },
@@ -8327,6 +8264,25 @@
       "jogada": 20
      }
     ]
+   },
+   "formas": {
+    "disfarce": {
+     "nome": "disfarce",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      },
+      "equipamento": {
+       "arsenal": []
+      }
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "devorador-de-intelecto": {
@@ -8371,7 +8327,8 @@
      "profundidade": null,
      "comprimento": 0.45,
      "massa": 18,
-     "area": 0.18
+     "area": 0.18,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 0,
     "artes": {},
@@ -8472,18 +8429,13 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:glaive-serrilhada"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Glaive serrilhada",
-      "arma": "glaive-serrilhada",
-      "habilidade": "armas"
+      "arma": "glaive-serrilhada"
      },
      {
       "nome": "Mordida",
@@ -8587,18 +8539,13 @@
     "couraca": 3,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:corrente-farpada"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Corrente farpada",
-      "arma": "corrente-farpada",
-      "habilidade": "armas"
+      "arma": "corrente-farpada"
      },
      {
       "nome": "Mordida",
@@ -8723,18 +8670,13 @@
     "couraca": 4,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança de gelo",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Cauda",
@@ -9516,23 +9458,19 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -10042,7 +9980,7 @@
    }
   },
   "dragao-dourado-adulto": {
-   "sha256": "2fd0f8e945e844665d8c8b0ceb7c89c767ce0913023b7b75a560a89828be1545",
+   "sha256": "6ef4822a5881ca9079ff82ff7878b78baec99fcc515f7f1f6c109f41e60fada3",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10199,6 +10137,23 @@
       "jogada": 22
      }
     ]
+   },
+   "formas": {
+    "humana": {
+     "nome": "forma humana",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      },
+      "ataques": []
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "dragao-verde-adulto": {
@@ -11126,7 +11081,8 @@
      "profundidade": null,
      "comprimento": 1.22,
      "massa": 180,
-     "area": 2.07
+     "area": 2.07,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 1,
     "artes": {},
@@ -11219,23 +11175,19 @@
      "profundidade": 0.2,
      "comprimento": null,
      "massa": 55,
-     "area": 0.57
+     "area": 0.57,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -11304,16 +11256,13 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 70,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "couro",
@@ -11324,8 +11273,7 @@
     "ataques": [
      {
       "nome": "Lâmina leve",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -11406,23 +11354,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 55,
-     "area": 0.49
+     "area": 0.49,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      }
     ]
    },
@@ -12446,7 +12390,10 @@
       "danoMedio": 1.5
      }
     ]
-   }
+   },
+   "paradas": [
+    "Ataques, Pinça do enxame: Bloqueia como arma ilegível"
+   ]
   },
   "enxame-de-centopeias": {
    "sha256": "5319f991d66de04ca3e3ec15c7583c61aa69c62fbd23aaf074fc48799b69db68",
@@ -13135,26 +13082,17 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-longo"
-      },
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
      },
      {
       "nome": "Espada flamejante",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Garras",
@@ -13676,23 +13614,19 @@
      "profundidade": 0.17,
      "comprimento": null,
      "massa": 45,
-     "area": 0.54
+     "area": 0.54,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -13766,18 +13700,13 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Pancada",
@@ -13968,7 +13897,8 @@
      "profundidade": 0.13,
      "comprimento": null,
      "massa": 16,
-     "area": 0.34
+     "area": 0.34,
+     "posturaDoTamanho": "de frente, braços abertos"
     },
     "couraca": 0,
     "artes": {},
@@ -14063,7 +13993,8 @@
      "profundidade": 0.24,
      "comprimento": null,
      "massa": 90,
-     "area": 0.78
+     "area": 0.78,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
@@ -14898,6 +14829,7 @@
      "semMassa": true,
      "volume": 0.0141,
      "area": 0.07,
+     "posturaDoTamanho": "flutua; voador",
      "naoErgue": true
     },
     "couraca": 0,
@@ -15109,7 +15041,8 @@
      "profundidade": null,
      "comprimento": 7.4,
      "massa": 3000,
-     "area": 8.6
+     "area": 8.6,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
     "artes": {},
@@ -15694,18 +15627,13 @@
      "raio": 4
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -17109,23 +17037,19 @@
      "profundidade": 0.27,
      "comprimento": null,
      "massa": 135,
-     "area": 1.03
+     "area": 1.03,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      },
      {
       "nome": "Mordida",
@@ -17217,23 +17141,19 @@
      "profundidade": 0.15,
      "comprimento": null,
      "massa": 18,
-     "area": 0.25
+     "area": 0.25,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -18506,15 +18426,13 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 78,
-     "area": 0.7
+     "area": 0.7,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
      "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      },
       {
        "ref": "e:redondo"
       }
@@ -18529,8 +18447,7 @@
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -19400,23 +19317,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 73,
-     "area": 0.67
+     "area": 0.67,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -19489,23 +19402,19 @@
      "profundidade": 0.23,
      "comprimento": 2.4,
      "massa": 90,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:maca-estrela"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Maça estrela",
-      "arma": "maca-estrela",
-      "habilidade": "armas"
+      "arma": "maca-estrela"
      },
      {
       "nome": "Rabada",
@@ -19599,23 +19508,19 @@
      "profundidade": 0.21,
      "comprimento": null,
      "massa": 65,
-     "area": 0.63
+     "area": 0.63,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Mordida",
@@ -19860,23 +19765,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      }
     ]
    },
@@ -20270,23 +20171,19 @@
      "comprimento": 1.1,
      "massa": 16,
      "area": 0.22,
+     "posturaDoTamanho": "de frente",
      "linhaPV": "abaixo"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      }
     ]
    },
@@ -20538,7 +20435,7 @@
    }
   },
   "lacador": {
-   "sha256": "069b0b4cc6e11cad1e3b81c7ba0cef2f16779a1ebc9caba60e3c9aeea2256bdb",
+   "sha256": "2fb3c8b8f70c96c037b12048c83ec3f93e78219606df774194de23cba5f5356e",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -20578,7 +20475,8 @@
      "profundidade": null,
      "comprimento": null,
      "massa": 1000,
-     "area": 1.68
+     "area": 1.68,
+     "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
     "artes": {},
@@ -21803,18 +21701,13 @@
      "luz": 1
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Cauda",
@@ -21903,7 +21796,8 @@
      "profundidade": null,
      "comprimento": 1,
      "massa": 150,
-     "area": 0.79
+     "area": 0.79,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 0,
     "artes": {},
@@ -22534,17 +22428,12 @@
       },
       "couraca": 0,
       "equipamento": {
-       "arsenal": [
-        {
-         "ref": "a:espada-curta"
-        }
-       ]
+       "arsenal": []
       },
       "ataques": [
        {
         "nome": "Espada curta",
-        "arma": "espada-curta",
-        "habilidade": "armas"
+        "arma": "espada-curta"
        }
       ]
      },
@@ -23541,7 +23430,8 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 75,
-     "area": 0.7
+     "area": 0.7,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {
@@ -23971,7 +23861,7 @@
    }
   },
   "marid": {
-   "sha256": "c855fc2fb9d3490f955cce6e3a2eebe0133e03a36340447dc7dbd3026cc1ec11",
+   "sha256": "27a3bedae9adf96b6a2df40b49cd56cffcd40a7ee8ce17a49fd3b7ad69b53364",
    "entrada": {
     "categoria": "elemental",
     "centelha": 5,
@@ -24071,6 +23961,22 @@
       "jogada": 24
      }
     ]
+   },
+   "formas": {
+    "disfarce": {
+     "nome": "disfarce",
+     "entrada": {
+      "corpo": {
+       "altura": 1.78,
+       "largura": 0.48,
+       "profundidade": 0.3,
+       "area": 0.64
+      }
+     },
+     "esperado": {
+      "tamanho": "Médio"
+     }
+    }
    }
   },
   "marilith": {
@@ -24125,18 +24031,13 @@
     "couraca": 3,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Cauda",
@@ -24351,31 +24252,23 @@
      "profundidade": 0.19,
      "comprimento": null,
      "massa": 55,
-     "area": 0.59
+     "area": 0.59,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-curto"
-      },
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Arco curto",
-      "arma": "arco-curto",
-      "habilidade": "atirador"
+      "arma": "arco-curto"
      },
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Serpentes",
@@ -24698,31 +24591,23 @@
      "comprimentoSemCauda": 0.9,
      "caudaGrossa": true,
      "massa": 90,
-     "area": 0.7
+     "area": 0.7,
+     "posturaDoTamanho": "de lado, nadando"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      },
-      {
-       "ref": "a:besta-media"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Besta média",
-      "arma": "besta-media",
-      "habilidade": "atirador"
+      "arma": "besta-media"
      }
     ]
    },
@@ -24760,7 +24645,7 @@
    }
   },
   "mimico": {
-   "sha256": "b012c63025c3cf9677e72eb612b2a0d45e32d364f856600912ed7dd6a2ae0065",
+   "sha256": "50322c5cd1ae563dc0338986fc560be1ae24330a14a4508c3d9aad4e4d9ccedc",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 1,
@@ -24798,7 +24683,8 @@
      "profundidade": null,
      "comprimento": 1.2,
      "massa": 150,
-     "area": 0.6
+     "area": 0.6,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
@@ -24915,23 +24801,19 @@
      "profundidade": 0.35,
      "comprimento": null,
      "massa": 250,
-     "area": 1.55
+     "area": 1.55,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado-pesado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado pesado",
-      "arma": "machado-pesado",
-      "habilidade": "armas"
+      "arma": "machado-pesado"
      },
      {
       "nome": "Chifrada",
@@ -25235,7 +25117,8 @@
      "comprimentoSemCauda": 1.05,
      "caudaGrossa": false,
      "massa": 120,
-     "area": 0.48
+     "area": 0.48,
+     "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
     "artes": {},
@@ -25312,7 +25195,7 @@
    }
   },
   "montao-tropecante": {
-   "sha256": "7fc1fc45e5350c7d61a230d0cf8a372cd9d8d1de8e4f469bb3d2efa8911631b6",
+   "sha256": "5a42a21123500880e7a3922fd9d77d2e0f375cbf47877058559257b4c72cd34b",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -25742,23 +25625,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 68,
-     "area": 0.6
+     "area": 0.6,
+     "posturaDoTamanho": "de frente, de pé"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:bastao"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Bastão",
-      "arma": "bastao",
-      "habilidade": "armas"
+      "arma": "bastao"
      }
     ]
    },
@@ -26585,7 +26464,8 @@
      "profundidade": null,
      "comprimento": 12,
      "massa": 6000,
-     "area": 9.05
+     "area": 9.05,
+     "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
     "artes": {},
@@ -26786,23 +26666,19 @@
      "profundidade": 0.2,
      "comprimento": null,
      "massa": 55,
-     "area": 0.57
+     "area": 0.57,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      }
     ]
    },
@@ -26925,7 +26801,7 @@
    }
   },
   "ogro-mago-oni": {
-   "sha256": "aad8368259ecdc3a5d4ecb302f91825beaf4f70ac7b58fd335e64e190107bc9c",
+   "sha256": "dbdd1ba6c8389a6a20d586da18664317df1b121f91fad87e80b4f242ea508407",
    "entrada": {
     "categoria": "gigante",
     "centelha": 5,
@@ -27025,7 +26901,7 @@
      "nome": "disfarce",
      "entrada": {
       "corpo": {
-       "tamanhoEscolhido": "medio"
+       "area": 0.64
       }
      },
      "esperado": {
@@ -27168,24 +27044,20 @@
      "profundidade": 0.26,
      "comprimento": null,
      "massa": 110,
-     "area": 0.89
+     "area": 0.89,
+     "posturaDoTamanho": "de frente"
     },
     "bonusPV": 5,
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:machado"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Machado",
-      "arma": "machado",
-      "habilidade": "armas"
+      "arma": "machado"
      }
     ]
    },
@@ -27315,7 +27187,7 @@
    }
   },
   "otyugh": {
-   "sha256": "e04776b12c8c55fd1fe7e89387525ec1caa005f2e51508aa67fa1e3584de72ab",
+   "sha256": "c16406f8fb7d63c1d75d04bb25114776224668cdbf4628339315444601536cb7",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -27353,7 +27225,8 @@
      "profundidade": null,
      "comprimento": null,
      "massa": 500,
-     "area": 1.87
+     "area": 1.87,
+     "posturaDoTamanho": "de frente, tentáculos erguidos"
     },
     "couraca": 2,
     "artes": {},
@@ -28011,18 +27884,13 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:arco-curto"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Flecha",
-      "arma": "arco-curto",
-      "habilidade": "atirador"
+      "arma": "arco-curto"
      },
      {
       "nome": "Garras e presas",
@@ -28132,18 +28000,13 @@
      "fascinacao": 5
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      }
     ]
    },
@@ -29636,7 +29499,8 @@
      "profundidade": null,
      "comprimento": 0.042,
      "massa": 0.0085,
-     "area": 0.0009
+     "area": 0.0009,
+     "posturaDoTamanho": "quatro patas (sentada)"
     },
     "couraca": 0,
     "artes": {},
@@ -29709,7 +29573,8 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {
@@ -29808,23 +29673,19 @@
      "comprimento": null,
      "massa": 36,
      "area": 0.39,
+     "posturaDoTamanho": "de frente",
      "linhaPV": "abaixo"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:adaga"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Adaga",
-      "arma": "adaga",
-      "habilidade": "armas"
+      "arma": "adaga"
      }
     ]
    },
@@ -30450,23 +30311,19 @@
      "profundidade": 0.25,
      "comprimento": null,
      "massa": 113,
-     "area": 0.92
+     "area": 0.92,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Garras",
@@ -30571,18 +30428,13 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Cauda",
@@ -31328,23 +31180,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 80,
-     "area": 0.72
+     "area": 0.72,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:lanca"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Lança",
-      "arma": "lanca",
-      "habilidade": "armas"
+      "arma": "lanca"
      },
      {
       "nome": "Mordida",
@@ -31476,26 +31324,17 @@
      "protecao": 5
     },
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:montante"
-      },
-      {
-       "ref": "a:arco-longo"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Montante",
-      "arma": "montante",
-      "habilidade": "armas"
+      "arma": "montante"
      },
      {
       "nome": "Arco longo",
-      "arma": "arco-longo",
-      "habilidade": "atirador"
+      "arma": "arco-longo"
      }
     ]
    },
@@ -31586,11 +31425,7 @@
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": [
       {
        "base": "malha",
@@ -31601,8 +31436,7 @@
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Espada longa a duas mãos",
@@ -32024,23 +31858,19 @@
      "profundidade": 0.15,
      "comprimento": null,
      "massa": 18,
-     "area": 0.24
+     "area": 0.24,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:picareta-de-guerra"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Picareta de guerra",
-      "arma": "picareta-de-guerra",
-      "habilidade": "armas"
+      "arma": "picareta-de-guerra"
      }
     ]
    },
@@ -32392,23 +32222,19 @@
      "profundidade": 0.19,
      "comprimento": null,
      "massa": 55,
-     "area": 0.59
+     "area": 0.59,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-longa"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada longa",
-      "arma": "espada-longa",
-      "habilidade": "armas"
+      "arma": "espada-longa"
      },
      {
       "nome": "Bico",
@@ -32501,23 +32327,19 @@
      "profundidade": 0.22,
      "comprimento": null,
      "massa": 68,
-     "area": 0.66
+     "area": 0.66,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 0,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:sabre"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Sabre",
-      "arma": "sabre",
-      "habilidade": "armas"
+      "arma": "sabre"
      }
     ]
    },
@@ -33160,7 +32982,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
      }
     ]
    },
@@ -33233,23 +33055,19 @@
      "profundidade": 0.23,
      "comprimento": null,
      "massa": 75,
-     "area": 0.68
+     "area": 0.68,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:martelo"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Martelo",
-      "arma": "martelo",
-      "habilidade": "armas"
+      "arma": "martelo"
      },
      {
       "nome": "Garras",
@@ -35120,7 +34938,7 @@
    }
   },
   "vinha-assassina": {
-   "sha256": "aa634228d2d6cad6acd0725fd779371397c1d3747c417afe586d47def324f8ad",
+   "sha256": "1de20876e841ba44ba17ac049dfece28455846d7933df2263562c43ff7133746",
    "entrada": {
     "categoria": "planta",
     "centelha": 1,
@@ -35740,18 +35558,13 @@
     "couraca": 1,
     "artes": {},
     "equipamento": {
-     "arsenal": [
-      {
-       "ref": "a:espada-curta"
-      }
-     ],
+     "arsenal": [],
      "armaduras": []
     },
     "ataques": [
      {
       "nome": "Espada curta",
-      "arma": "espada-curta",
-      "habilidade": "armas"
+      "arma": "espada-curta"
      },
      {
       "nome": "Garras",
@@ -35981,7 +35794,8 @@
      "profundidade": 0.4,
      "comprimento": null,
      "massa": 360,
-     "area": 1.87
+     "area": 1.87,
+     "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
     "artes": {},

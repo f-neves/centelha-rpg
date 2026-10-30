@@ -293,7 +293,7 @@
       "nome": "disfarce",
       "aparencia": 8,
       "corpo": {
-        "tamanhoEscolhido": "medio"
+        "area": 0.64
       },
       "fisiologia": {
         "camuflagem": "passa por humano",

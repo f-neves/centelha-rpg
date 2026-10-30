@@ -150,8 +150,6 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "sem dado",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "ameaça"

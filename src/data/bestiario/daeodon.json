@@ -137,11 +137,10 @@
     "tracao": false
   },
   "comportamento": {
-    "social": "; machos brigavam pelo domínio",
-    "atividade": "sem dado",
+    "social": "machos brigavam pelo domínio",
     "dieta": "onívoro (castanha, raiz, cipó, carne e osso)",
     "caca": "forrageio e carniça; talvez caça de herbívoros grandes",
-    "dianteDeGente": "não se aplica (extinto antes dos humanos); : ataca"
+    "dianteDeGente": "não se aplica (extinto antes dos humanos); ataca"
   },
   "ecologia": {
     "terreno": [

@@ -1841,8 +1841,7 @@
     "social": "par",
     "atividade": "diurno",
     "dieta": "carnívoro",
-    "caca": "caça mergulhando",
-    "dianteDeGente": "sem dado"
+    "caca": "caça mergulhando"
    },
    "ecologia": {
     "terreno": [
@@ -3026,8 +3025,6 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "sem dado",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "ameaça"
@@ -4287,7 +4284,6 @@
    "comportamento": {
     "social": "matilha organizada",
     "atividade": "qualquer hora",
-    "dieta": "sem dado",
     "caca": "não se aplica",
     "dianteDeGente": "socorre e protege"
    },
@@ -5088,15 +5084,15 @@
    "corpo": {
     "postura": "pairando em combate, apoio outro",
     "apoio": "outro",
-    "altura": 1,
-    "largura": 1,
-    "profundidade": 1,
-    "comprimento": 1,
-    "comprimentoSemCauda": 1,
+    "altura": 0.6,
+    "largura": 0.6,
+    "profundidade": 0.6,
+    "comprimento": 0.6,
+    "comprimentoSemCauda": 0.6,
     "caudaGrossa": false,
     "semMassa": true,
-    "volume": 0.523599,
-    "area": 0.79,
+    "volume": 0.113097,
+    "area": 0.28,
     "posturaDoTamanho": "pairando",
     "naoErgue": true
    },
@@ -5286,7 +5282,7 @@
     "prendeRespiracao": "não precisa",
     "camuflagem": "nenhuma; emite luz",
     "mente": "instintiva; entende pedidos simples",
-    "tracos": "globo de luz pálida de 1 m, sem membros"
+    "tracos": "globo de luz pálida de 0,6 m, sem membros"
    },
    "aptidoes": {
     "montaria": false,
@@ -5345,7 +5341,7 @@
   "categoria": "celestial",
   "categoriaNome": "Celestial",
   "tipo": "soldado",
-  "conceito": "Celestial Médio",
+  "conceito": "Celestial Pequeno",
   "descricao": "Globo de luz curioso e amistoso, que guia viajantes e protege seus companheiros enquanto lança feixes luminosos.",
   "tags": [
    "celestial",
@@ -5353,22 +5349,22 @@
   ],
   "ameaca": 2,
   "centelha": 2,
-  "tamanho": "Médio",
+  "tamanho": "Pequeno",
   "corpo": {
    "postura": "pairando em combate, apoio outro",
    "apoio": "outro",
-   "altura": 1,
-   "largura": 1,
-   "profundidade": 1,
-   "comprimento": 1,
-   "comprimentoSemCauda": 1,
+   "altura": 0.6,
+   "largura": 0.6,
+   "profundidade": 0.6,
+   "comprimento": 0.6,
+   "comprimentoSemCauda": 0.6,
    "caudaGrossa": false,
    "semMassa": true,
-   "volume": 0.523599,
-   "area": 0.79,
+   "volume": 0.113097,
+   "area": 0.28,
    "posturaDoTamanho": "pairando",
    "naoErgue": true,
-   "medida": "1 m de altura, 1 m de comprimento",
+   "medida": "0.6 m de altura, 0.6 m de comprimento",
    "peso": "sem massa"
   },
   "ecologia": {
@@ -5420,7 +5416,7 @@
    "valor": 4
   },
   "combate": {
-   "pv": 42,
+   "pv": 34,
    "energia": 11,
    "defesa": 4,
    "defesaSocial": 4,
@@ -5847,7 +5843,6 @@
    "comportamento": {
     "social": "sozinho ou com companheiros",
     "atividade": "qualquer hora",
-    "dieta": "sem dado",
     "caca": "não se aplica",
     "dianteDeGente": "socorre e protege"
    },
@@ -7726,7 +7721,6 @@
    },
    "comportamento": {
     "social": "rebanho pequeno no inverno; sozinho ou em grupos menores no verão",
-    "atividade": "sem dado",
     "dieta": "herbívoro (pastador, depois alimentação mista)",
     "caca": "pastagem",
     "dianteDeGente": "ameaça; ataca se provocado"
@@ -14631,7 +14625,6 @@
    },
    "comportamento": {
     "social": "manada; machos em grupos de até 30",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem; no inverno varre a neve com a cabeça",
     "dianteDeGente": "ameaça e investe quando o humano chega perto"
@@ -16975,11 +16968,10 @@
       "arsenal": []
      },
      "deslocamento": {
-      "voo": {
-       "batalha": 0
-      }
+      "voo": null
      },
      "fisiologia": {
+      "respiracao": "ar",
       "prendeRespiracao": "a de um elfo",
       "camuflagem": "passa por um elfo",
       "tracos": "elfo alto de cabelo prateado"
@@ -17496,7 +17488,7 @@
      "poderes": [],
      "locomocao": {
       "terra": 4,
-      "voo": 0
+      "voo": null
      },
      "tecnicas": [],
      "artes": [],
@@ -17699,11 +17691,8 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "sem dado",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
-    "caca": "forrageio",
-    "dianteDeGente": "sem dado"
+    "caca": "forrageio"
    },
    "ecologia": {
     "terreno": [
@@ -21259,6 +21248,9 @@
      "batalha": 5,
      "arranque": 8,
      "corrida": 12
+    },
+    "escalada": {
+     "batalha": 5
     }
    },
    "equipamento": {
@@ -21752,7 +21744,8 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "terra": 5
+   "terra": 5,
+   "escalada": 5
   },
   "tecnicas": [],
   "artes": [],
@@ -23530,7 +23523,6 @@
    },
    "comportamento": {
     "social": "vive com a família que cuida dele",
-    "atividade": "sem dado",
     "dieta": "o que recebe",
     "caca": "não caça; guarda",
     "dianteDeGente": "indiferente a estranhos, protetor dos seus; guarda noturno de propriedade desde por volta de 1500"
@@ -26134,8 +26126,7 @@
     "social": "solitário, canibal",
     "atividade": "ligada à maré, de dia e de noite",
     "dieta": "carnívoro e carniceiro: ostras, moluscos, crustáceos, vermes",
-    "caca": "forrageia no fundo na maré enchendo; 79% do tempo parado",
-    "dianteDeGente": "sem dado"
+    "caca": "forrageia no fundo na maré enchendo; 79% do tempo parado"
    },
    "ecologia": {
     "terreno": [
@@ -26511,10 +26502,8 @@
    },
    "comportamento": {
     "social": "solitário (área do macho de 600 a 1.000 km²)",
-    "atividade": "sem dado",
     "dieta": "carnívoro e carniceiro",
-    "caca": "carniça no inverno; caça ungulado vulnerável, às vezes depois de dezenas de quilômetros",
-    "dianteDeGente": "sem dado"
+    "caca": "carniça no inverno; caça ungulado vulnerável, às vezes depois de dezenas de quilômetros"
    },
    "ecologia": {
     "terreno": [
@@ -26901,10 +26890,9 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro e carniceiro",
     "caca": "carniça e caça",
-    "dianteDeGente": ": não recua"
+    "dianteDeGente": "não recua"
    },
    "ecologia": {
     "terreno": [
@@ -28971,11 +28959,9 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "sem dado",
     "atividade": "dia e noite, na caverna estudada",
     "dieta": "carnívora: come o que conseguir dominar, de baratas a morcegos",
-    "caca": "espera e agarra; caça morcegos no teto da caverna",
-    "dianteDeGente": "sem dado"
+    "caca": "espera e agarra; caça morcegos no teto da caverna"
    },
    "ecologia": {
     "terreno": [
@@ -32579,9 +32565,16 @@
     {
      "id": "disfarce",
      "nome": "disfarce",
+     "outraForma": "outro humanoide ou um animal comum",
+     "corpo": {
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
+      "area": 0.64
+     },
      "fisiologia": {
-      "prendeRespiracao": "a da forma assumida",
-      "camuflagem": "passa pelo humanoide ou animal comum que imita"
+      "prendeRespiracao": "a de um humano",
+      "camuflagem": "passa por um humano"
      },
      "ataques": []
     }
@@ -32889,6 +32882,7 @@
    {
     "id": "disfarce",
     "nome": "disfarce",
+    "outraForma": "outro humanoide ou um animal comum",
     "criatura": {
      "id": "couatl",
      "nome": "Couatl",
@@ -32896,7 +32890,7 @@
      "categoria": "outsider",
      "categoriaNome": "Extraplanar",
      "tipo": "chefe",
-     "conceito": "Extraplanar Grande",
+     "conceito": "Extraplanar Médio",
      "descricao": "Serpente emplumada, guardiã antiga e telepata de templos esquecidos, que fala por imagens na mente de quem se aproxima com respeito. Conjura portais, barreiras e encantos, muda de forma e, quando precisa, morde com veneno e esmaga.",
      "tags": [
       "outsider",
@@ -32906,23 +32900,23 @@
      ],
      "ameaca": 5,
      "centelha": 5,
-     "tamanho": "Grande",
+     "tamanho": "Médio",
      "corpo": {
       "postura": "serpente; voadora",
       "apoio": "outro",
-      "altura": 0.3,
-      "largura": 0.3,
-      "profundidade": null,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": 3.7,
       "envergadura": 4.6,
       "massa": 270,
-      "area": 4.55,
+      "area": 0.64,
       "posturaDoTamanho": "asas abertas",
       "segundoTamanho": {
        "area": 1.11,
        "posturaDoTamanho": "asas fechadas"
       },
-      "medida": "0.3 m de altura, 3.7 m de comprimento",
+      "medida": "1.78 m de altura, 3.7 m de comprimento",
       "peso": "270 kg"
      },
      "ecologia": {
@@ -33429,7 +33423,6 @@
    },
    "comportamento": {
     "social": "solitário na caça; agrega-se no sol e na carcaça grande, com hierarquia rígida por tamanho, e anda centenas de metros até ela",
-    "atividade": "sem dado",
     "dieta": "carnívoro (até 70% de peixe no adulto)",
     "caca": "emboscada",
     "dianteDeGente": "ataca"
@@ -33824,7 +33817,6 @@
    },
    "comportamento": {
     "social": "solitário na caça; agrega-se no sol e na carcaça grande, com hierarquia rígida por tamanho, e anda centenas de metros até ela",
-    "atividade": "sem dado",
     "dieta": "carnívoro (até 70% de peixe no adulto)",
     "caca": "emboscada",
     "dianteDeGente": "ataca"
@@ -33838,7 +33830,7 @@
      "tropical"
     ]
    },
-   "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça . Quantos leva de uma vez: confiável.",
+   "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça. Quantos leva de uma vez: confiável.",
    "lore": [],
    "imagens": [
     "bestiario/crocodilo-do-nilo-femea_criatura.webp"
@@ -33856,7 +33848,7 @@
   "categoriaNome": "Animal",
   "tipo": "fera",
   "conceito": "Animal Médio",
-  "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça . Quantos leva de uma vez: confiável.",
+  "descricao": "Espera na margem o mamífero que vem beber, agarra, arrasta para a água e gira. Come até 20% da própria massa numa refeição (SDZG); a fêmea guarda o ninho e leva os filhotes na boca até a água: abre a boca, abaixa a língua para dar espaço, junta os filhotes, leva-os do ninho até a água e lá os solta balançando a cabeça. Quantos leva de uma vez: confiável.",
   "tags": [
    "animal"
   ],
@@ -34967,11 +34959,10 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "; machos brigavam pelo domínio",
-    "atividade": "sem dado",
+    "social": "machos brigavam pelo domínio",
     "dieta": "onívoro (castanha, raiz, cipó, carne e osso)",
     "caca": "forrageio e carniça; talvez caça de herbívoros grandes",
-    "dianteDeGente": "não se aplica (extinto antes dos humanos); : ataca"
+    "dianteDeGente": "não se aplica (extinto antes dos humanos); ataca"
    },
    "ecologia": {
     "terreno": [
@@ -35349,10 +35340,8 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "solitário , com agrupamento na carcaça; caça em grupo em disputa",
-    "atividade": "sem dado",
+    "social": "solitário, com agrupamento na carcaça; caça em grupo em disputa",
     "dieta": "carnívoro",
-    "caca": "sem dado",
     "dianteDeGente": "não se aplica"
    },
    "ecologia": {
@@ -36342,10 +36331,16 @@
      "equipamento": {
       "arsenal": []
      },
-     "fisiologia": {
-      "camuflagem": "passa por um humano ou um animal comum"
+     "outraForma": "um animal comum",
+     "corpo": {
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
+      "area": 0.64
      },
-     "ataques": []
+     "fisiologia": {
+      "camuflagem": "passa por um humano"
+     }
     }
    ],
    "elementos": {
@@ -36706,6 +36701,7 @@
    {
     "id": "disfarce",
     "nome": "disfarce",
+    "outraForma": "um animal comum",
     "criatura": {
      "id": "deva-astral",
      "nome": "Deva Astral",
@@ -36713,7 +36709,7 @@
      "categoria": "celestial",
      "categoriaNome": "Celestial",
      "tipo": "chefe",
-     "conceito": "Celestial Grande",
+     "conceito": "Celestial Médio",
      "descricao": "Anjo de asas brancas que anda disfarçado de peregrina entre os mortais: cura, aconselha e protege. Quando o mal ataca primeiro, luta com a maça, e a luz do golpe queima demônios e mortos-vivos.",
      "tags": [
       "celestial",
@@ -36721,23 +36717,23 @@
      ],
      "ameaca": 6,
      "centelha": 6,
-     "tamanho": "Grande",
+     "tamanho": "Médio",
      "corpo": {
       "postura": "bípede, de pé; voador",
       "apoio": "bipede",
-      "altura": 2,
-      "largura": 0.5,
-      "profundidade": 0.26,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": null,
       "envergadura": 3.6,
       "massa": 90,
-      "area": 3.06,
+      "area": 0.64,
       "posturaDoTamanho": "asas abertas",
       "segundoTamanho": {
        "area": 0.98,
        "posturaDoTamanho": "de pé, asas fechadas"
       },
-      "medida": "2 m de altura",
+      "medida": "1.78 m de altura",
       "peso": "90 kg"
      },
      "ecologia": {
@@ -36796,7 +36792,7 @@
      "combate": {
       "pv": 43,
       "energia": 26,
-      "defesa": 14,
+      "defesa": 15,
       "defesaSocial": 24,
       "defesaMental": 34,
       "absorcao": {
@@ -36814,7 +36810,16 @@
        "arranque": 8,
        "corrida": 12
       },
-      "ataques": []
+      "ataques": [
+       {
+        "nome": "Maça",
+        "pool": "6d6 +9",
+        "dano": "1d6 +14 (I)",
+        "perfArma": null,
+        "speed": 6,
+        "classe": "media"
+       }
+      ]
      },
      "habilidadesEspeciais": [
       {
@@ -42858,10 +42863,8 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro (quase só roedor quando há muitos)",
-    "caca": "caça dentro da galeria; mata coelho de 5 a 10 vezes o próprio peso",
-    "dianteDeGente": "sem dado"
+    "caca": "caça dentro da galeria; mata coelho de 5 a 10 vezes o próprio peso"
    },
    "ecologia": {
     "terreno": [
@@ -46008,7 +46011,7 @@
     {
      "nome": "viajante disfarçado",
      "formas": [
-      "humana-ou-de-animal-pequeno"
+      "humana"
      ],
      "texto": "evita lutar e observa; protege e cura com as Artes, e volta à forma verdadeira quando a luta pede."
     }
@@ -46085,11 +46088,18 @@
    ],
    "formas": [
     {
-     "id": "humana-ou-de-animal-pequeno",
-     "nome": "forma humana ou de animal pequeno",
+     "id": "humana",
+     "nome": "forma humana",
+     "outraForma": "um animal pequeno",
+     "corpo": {
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
+      "area": 0.64
+     },
      "fisiologia": {
-      "prendeRespiracao": "a da forma assumida",
-      "camuflagem": "passa por um humano ou um animal pequeno comum"
+      "prendeRespiracao": "a de um humano",
+      "camuflagem": "passa por um humano"
      },
      "ataques": []
     }
@@ -46458,8 +46468,9 @@
   },
   "formas": [
    {
-    "id": "humana-ou-de-animal-pequeno",
-    "nome": "forma humana ou de animal pequeno",
+    "id": "humana",
+    "nome": "forma humana",
+    "outraForma": "um animal pequeno",
     "criatura": {
      "id": "dragao-dourado-adulto",
      "nome": "Dragão Dourado Adulto",
@@ -46467,7 +46478,7 @@
      "categoria": "dragao",
      "categoriaNome": "Dragão",
      "tipo": "chefe",
-     "conceito": "Dragão Imenso",
+     "conceito": "Dragão Médio",
      "descricao": "Dragão dourado adulto de 9,5 m, o mais nobre dos dragões. Anda entre as pessoas em forma humana, cura e protege os aliados, enfraquece com um sopro de gás quem pode ser poupado e queima com fogo quem não pode.",
      "tags": [
       "dragao",
@@ -46477,25 +46488,25 @@
      ],
      "ameaca": 6,
      "centelha": 7,
-     "tamanho": "Imenso",
+     "tamanho": "Médio",
      "corpo": {
       "postura": "quatro patas; voador",
       "apoio": "quadrupede",
-      "altura": 3.05,
-      "largura": 2.11,
-      "profundidade": null,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": 9.5,
       "comprimentoSemCauda": 5.39,
       "caudaGrossa": true,
       "envergadura": 21,
       "massa": 9000,
-      "area": 93,
+      "area": 0.64,
       "posturaDoTamanho": "de baixo, asas abertas",
       "segundoTamanho": {
        "area": 13.94,
        "posturaDoTamanho": "de lado, pousado, asas fechadas"
       },
-      "medida": "3.05 m de altura, 9.5 m de comprimento",
+      "medida": "1.78 m de altura, 9.5 m de comprimento",
       "peso": "9000 kg"
      },
      "ecologia": {
@@ -46645,8 +46656,8 @@
      ],
      "segundoTamanho": "Enorme",
      "formaPrincipal": {
-      "id": "humana-ou-de-animal-pequeno",
-      "nome": "forma humana ou de animal pequeno"
+      "id": "humana",
+      "nome": "forma humana"
      },
      "formas": [],
      "poderes": [],
@@ -53754,8 +53765,6 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "sem dado",
-    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"
@@ -54130,7 +54139,6 @@
    },
    "comportamento": {
     "social": "grupos de fêmeas e filhotes; machos sós ou em grupos de solteiros",
-    "atividade": "sem dado",
     "dieta": "herbívoro (até 150 kg por dia)",
     "caca": "pastagem e ramagem",
     "dianteDeGente": "ameaça e ataca quando acuado, com cria, ou em musth"
@@ -56741,10 +56749,9 @@
    },
    "comportamento": {
     "social": "colônia permanente, de menos de 100 a mais de 20.000 aranhas",
-    "atividade": "sem dado",
     "dieta": "carnívoro: besouros, percevejos, baratas, formigas, mariposas e gafanhotos",
     "caca": "emboscada na teia, ataque em grupo de 30 a 50 aranhas por inseto grande",
-    "dianteDeGente": ": nenhum registro de ataque a pessoa"
+    "dianteDeGente": "nenhum registro de ataque a pessoa"
    },
    "ecologia": {
     "terreno": [
@@ -57372,8 +57379,7 @@
     "social": "solitária; nenhuma agregação achada",
     "atividade": "noturna",
     "dieta": "carnívora: traças, baratas, aranhas, larvas",
-    "caca": "emboscada e arrancada",
-    "dianteDeGente": "sem dado"
+    "caca": "emboscada e arrancada"
    },
    "ecologia": {
     "terreno": [
@@ -57714,7 +57720,7 @@
     "atividade": "ataca de dia; muda de bivaque à noite",
     "dieta": "carnívora: artrópodes, larvas e pupas de vespa",
     "caca": "ataque em frente, ligado ao bivaque por uma coluna de mais de 200 m; cerca de um terço da colônia por ataque",
-    "dianteDeGente": "; quem se mexe sai da frente"
+    "dianteDeGente": "quem se mexe sai da frente"
    },
    "ecologia": {
     "terreno": [
@@ -58413,7 +58419,7 @@
    "comportamento": {
     "social": "colônia (grupos hierárquicos em tocas extensas)",
     "atividade": "noturno (e crepuscular)",
-    "dieta": "onívoro : a pesquisa não descreve a dieta; o predador oportunista da ficha antiga e o habitat de lixo e esgoto (ADW)",
+    "dieta": "onívoro: a pesquisa não descreve a dieta; o predador oportunista da ficha antiga e o habitat de lixo e esgoto (ADW)",
     "caca": "forrageio (de 30 a 150 m do ninho, à noite)",
     "dianteDeGente": "foge; morde quem dorme e não se mexe, quase sempre à noite (72 a 100% dos casos), sobretudo bebês e acamados"
    },
@@ -58785,7 +58791,6 @@
    },
    "comportamento": {
     "social": "solitária; populações de milhares numa lagoa",
-    "atividade": "sem dado",
     "dieta": "sangue: mamíferos, peixes, aves aquáticas, anfíbios",
     "caca": "emboscada e busca ativa pela onda",
     "dianteDeGente": "morde quem entra na água; não ataca em grupo"
@@ -62851,7 +62856,6 @@
    },
    "comportamento": {
     "social": "manada",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "forrageio",
     "dianteDeGente": "ameaça"
@@ -66031,8 +66035,6 @@
    "comportamento": {
     "social": "solitária",
     "atividade": "qualquer hora",
-    "dieta": "sem dado",
-    "caca": "sem dado",
     "dianteDeGente": "associada às forças do bem; quase sagrada para quem a avista"
    },
    "ecologia": {
@@ -67042,8 +67044,8 @@
     "semMassa": true,
     "volume": 0.0141,
     "area": 0.07,
-    "naoErgue": true,
-    "posturaDoTamanho": "flutua; voador"
+    "posturaDoTamanho": "flutua; voador",
+    "naoErgue": true
    },
    "couraca": 0,
    "atributos": {
@@ -67270,8 +67272,8 @@
    "semMassa": true,
    "volume": 0.0141,
    "area": 0.07,
-   "naoErgue": true,
    "posturaDoTamanho": "flutua; voador",
+   "naoErgue": true,
    "medida": "0.3 m de altura",
    "peso": "sem massa"
   },
@@ -67652,7 +67654,7 @@
     "atividade": "diurna, de manhã cedo e à tarde",
     "dieta": "invertebrados mortos, presas vivas, sementes e frutos",
     "caca": "forrageia sozinha, sem recrutar companheiras",
-    "dianteDeGente": "; a picada dói (Veneno)"
+    "dianteDeGente": "a picada dói (Veneno)"
    },
    "ecologia": {
     "terreno": [
@@ -70420,17 +70422,9 @@
       "arsenal": []
      },
      "deslocamento": {
-      "terra": {
-       "batalha": 0,
-       "arranque": 0,
-       "corrida": 0
-      },
-      "nado": {
-       "batalha": 0
-      },
-      "escalada": {
-       "batalha": 0
-      }
+      "terra": null,
+      "nado": null,
+      "escalada": null
      },
      "corpo": {
       "postura": "pairando",
@@ -70449,6 +70443,7 @@
       "forca": 0
      },
      "fisiologia": {
+      "respiracao": "não precisa",
       "prendeRespiracao": "não precisa",
       "camuflagem": "nenhuma, emite luz",
       "tracos": "globo luminoso sem membros"
@@ -70903,9 +70898,9 @@
       ],
       "iniciativa": "1d6 + 10",
       "deslocamento": {
-       "batalha": 0,
-       "arranque": 0,
-       "corrida": 0
+       "batalha": 15,
+       "arranque": 15,
+       "corrida": 15
       },
       "ataques": [
        {
@@ -71156,10 +71151,10 @@
      "formas": [],
      "poderes": [],
      "locomocao": {
-      "terra": 0,
+      "terra": null,
       "voo": 15,
-      "natacao": 0,
-      "escalada": 0
+      "natacao": null,
+      "escalada": null
      },
      "tecnicas": [],
      "artes": [
@@ -75557,11 +75552,11 @@
     "tracao": false
    },
    "comportamento": {
-    "social": ": bando, como o gorila",
-    "atividade": ": diurno",
+    "social": "bando, como o gorila",
+    "atividade": "diurno",
     "dieta": "herbívoro (frutas, figos, caules, raízes e tubérculos; comida fibrosa na estação ruim)",
     "caca": "forrageio",
-    "dianteDeGente": ": ameaça, como o gorila"
+    "dianteDeGente": "ameaça, como o gorila"
    },
    "ecologia": {
     "terreno": [
@@ -80225,10 +80220,8 @@
    },
    "comportamento": {
     "social": "bando",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "perseguição",
-    "dianteDeGente": "sem dado"
+    "caca": "perseguição"
    },
    "ecologia": {
     "terreno": [
@@ -83082,8 +83075,7 @@
     "social": "solitário",
     "atividade": "catemeral",
     "dieta": "carnívoro",
-    "caca": "perseguição",
-    "dianteDeGente": "sem dado"
+    "caca": "perseguição"
    },
    "ecologia": {
     "terreno": [
@@ -85130,11 +85122,8 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "sem dado",
-    "atividade": "sem dado",
     "dieta": "carnívoro que come carne e osso",
-    "caca": "perseguição , pelo corpo de corredor",
-    "dianteDeGente": "sem dado"
+    "caca": "perseguição, pelo corpo de corredor"
    },
    "ecologia": {
     "terreno": [
@@ -89984,8 +89973,8 @@
     "comprimento": 1.1,
     "massa": 16,
     "area": 0.22,
-    "linhaPV": "abaixo",
-    "posturaDoTamanho": "de frente"
+    "posturaDoTamanho": "de frente",
+    "linhaPV": "abaixo"
    },
    "couraca": 1,
    "atributos": {
@@ -90154,8 +90143,8 @@
    "comprimento": 1.1,
    "massa": 16,
    "area": 0.22,
-   "linhaPV": "abaixo",
    "posturaDoTamanho": "de frente",
+   "linhaPV": "abaixo",
    "medida": "0.75 m de altura, 1.1 m de comprimento",
    "peso": "16 kg"
   },
@@ -91493,7 +91482,7 @@
      "area": "um alvo por ação",
      "efeito": "o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença)",
      "dano": "nenhum",
-     "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno; para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre)",
+     "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno; o agarrado não age nem rola para se soltar: solta-se quando o laçador erra o Manter do Agarrar do livro, ou quando alguém corta o filamento (um golpe de Corte que fira, a critério do Mestre)",
      "limiteDeUso": "até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo"
     },
     {
@@ -91722,7 +91711,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Filamentos pegajosos",
-    "descricao": "o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença). Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 10 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: até o alvo se soltar ou o filamento ser cortado. Alcance: 15 m. Área: um alvo por ação. Dano: nenhum. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno; para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre). Limite de uso: até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo",
+    "descricao": "o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença). Ativação: uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 10 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6). Duração: até o alvo se soltar ou o filamento ser cortado. Alcance: 15 m. Área: um alvo por ação. Dano: nenhum. Resistência: esquiva, contra o ataque; corpo, pela regra do veneno; o agarrado não age nem rola para se soltar: solta-se quando o laçador erra o Manter do Agarrar do livro, ou quando alguém corta o filamento (um golpe de Corte que fira, a critério do Mestre). Limite de uso: até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo",
     "classe": "regra da ficha",
     "texto": "o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença)",
     "campos": [
@@ -91748,7 +91737,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra o ataque; corpo, pela regra do veneno; para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre)"
+      "valor": "esquiva, contra o ataque; corpo, pela regra do veneno; o agarrado não age nem rola para se soltar: solta-se quando o laçador erra o Manter do Agarrar do livro, ou quando alguém corta o filamento (um golpe de Corte que fira, a critério do Mestre)"
      },
      {
       "rotulo": "Limite de uso",
@@ -93663,11 +93652,11 @@
     "tracao": false
    },
    "comportamento": {
-    "social": ": solitário ou em pequeno grupo pelos isótopos; bando pelo painel de Chauvet",
+    "social": "solitário ou em pequeno grupo pelos isótopos; bando pelo painel de Chauvet",
     "atividade": "talvez diurno",
     "dieta": "carnívoro: rena sobretudo, cavalo selvagem, filhote de urso-das-cavernas",
     "caca": "emboscada e perseguição curta pelo leão",
-    "dianteDeGente": ": conviveu com o humano do Paleolítico, que o pintou e esculpiu; ataque a gente não achado"
+    "dianteDeGente": "conviveu com o humano do Paleolítico, que o pintou e esculpiu; ataque a gente não achado"
    },
    "ecologia": {
     "terreno": [
@@ -94018,11 +94007,11 @@
     "tracao": false
    },
    "comportamento": {
-    "social": ": solitário ou em pequeno grupo pelos isótopos; bando pelo painel de Chauvet",
+    "social": "solitário ou em pequeno grupo pelos isótopos; bando pelo painel de Chauvet",
     "atividade": "talvez diurno",
     "dieta": "carnívoro: rena sobretudo, cavalo selvagem, filhote de urso-das-cavernas",
     "caca": "emboscada e perseguição curta pelo leão",
-    "dianteDeGente": ": conviveu com o humano do Paleolítico, que o pintou e esculpiu; ataque a gente não achado"
+    "dianteDeGente": "conviveu com o humano do Paleolítico, que o pintou e esculpiu; ataque a gente não achado"
    },
    "ecologia": {
     "terreno": [
@@ -100372,10 +100361,8 @@
    },
    "comportamento": {
     "social": "matilha",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "perseguição",
-    "dianteDeGente": "sem dado"
+    "caca": "perseguição"
    },
    "ecologia": {
     "terreno": [
@@ -101270,10 +101257,8 @@
    },
    "comportamento": {
     "social": "solitária",
-    "atividade": "sem dado",
     "dieta": "carnívora: insetos grandes, aranhas, às vezes rãs, lagartos e aves pequenas",
-    "caca": "emboscada imóvel",
-    "dianteDeGente": "sem dado"
+    "caca": "emboscada imóvel"
    },
    "ecologia": {
     "terreno": [
@@ -102423,10 +102408,8 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "caça ativa",
-    "dianteDeGente": "sem dado"
+    "caca": "caça ativa"
    },
    "ecologia": {
     "terreno": [
@@ -102786,8 +102769,7 @@
     "social": "bando (8 a 15, com macho dominante)",
     "atividade": "diurno",
     "dieta": "onívoro (frutas, coco, insetos, pequenos vertebrados)",
-    "caca": "forrageio; quebra coco com pedra",
-    "dianteDeGente": "sem dado"
+    "caca": "forrageio; quebra coco com pedra"
    },
    "ecologia": {
     "terreno": [
@@ -103506,7 +103488,6 @@
    },
    "comportamento": {
     "social": "manada",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "defende a cria"
@@ -104783,8 +104764,15 @@
     {
      "id": "disfarce",
      "nome": "disfarce",
+     "outraForma": "um elemental da água ou um gigante",
+     "corpo": {
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
+      "area": 0.64
+     },
      "fisiologia": {
-      "camuflagem": "passa pela criatura que imita"
+      "camuflagem": "passa por um humano"
      }
     }
    ],
@@ -105094,6 +105082,7 @@
    {
     "id": "disfarce",
     "nome": "disfarce",
+    "outraForma": "um elemental da água ou um gigante",
     "criatura": {
      "id": "marid",
      "nome": "Marid",
@@ -105101,7 +105090,7 @@
      "categoria": "elemental",
      "categoriaNome": "Elemental",
      "tipo": "chefe",
-     "conceito": "Elemental Grande",
+     "conceito": "Elemental Médio",
      "descricao": "O mais forte dos gênios, do plano da água: 4,9 m, dentes de pérola, a força das correntes no braço. Nada mais rápido do que anda, cega com um jato de água, vira redemoinho debaixo d'água e assume a forma de gente, de gigante ou de elemental. Muitos trocaram a guerra pela dança e pelas histórias.",
      "tags": [
       "elemental",
@@ -105109,22 +105098,22 @@
      ],
      "ameaca": 5,
      "centelha": 5,
-     "tamanho": "Grande",
+     "tamanho": "Médio",
      "corpo": {
       "postura": "bípede, de pé; voador e nadador",
       "apoio": "bipede",
-      "altura": 4.9,
-      "largura": 1.23,
-      "profundidade": 0.63,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": null,
       "massa": 1130,
-      "area": 5.34,
+      "area": 0.64,
       "posturaDoTamanho": "de pé, sem o vórtice",
       "segundoTamanho": {
        "area": 15.01,
        "posturaDoTamanho": "com o vórtice ativo, debaixo d'água"
       },
-      "medida": "4.9 m de altura",
+      "medida": "1.78 m de altura",
       "peso": "1130 kg"
      },
      "ecologia": {
@@ -106263,7 +106252,6 @@
    },
    "comportamento": {
     "social": "fêmeas e jovens em manada; machos adultos quase sempre sós",
-    "atividade": "sem dado",
     "dieta": "herbívoro (folhas, ramos, frutos, madeira)",
     "caca": "ramoneio",
     "dianteDeGente": "defende a cria"
@@ -107117,8 +107105,6 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "sem dado",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"
@@ -108374,7 +108360,7 @@
      "area": "quem tocou",
      "efeito": "fica Agarrado, colado; a arma que tocou fica presa nele",
      "dano": "nenhum",
-     "resistencia": "esquiva, contra a jogada do Pseudópode, para não grudar; para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação",
+     "resistencia": "esquiva, contra a jogada do Pseudópode, para não grudar; colado, o agarrado não age nem rola para se soltar: só se solta quando o mímico erra o Manter do Agarrar do livro, ou quando ele o solta",
      "limiteDeUso": "três vezes por cena, recarga de 1 hora"
     },
     {
@@ -108615,7 +108601,7 @@
    },
    {
     "nome": "Cola aderente",
-    "descricao": "fica Agarrado, colado; a arma que tocou fica presa nele. Ativação: o Pseudópode que acerta, ou alguém que toca nele com a mão ou com uma arma. Duração: até se soltar. Alcance: o corpo dele. Área: quem tocou. Dano: nenhum. Resistência: esquiva, contra a jogada do Pseudópode, para não grudar; para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação. Limite de uso: três vezes por cena, recarga de 1 hora",
+    "descricao": "fica Agarrado, colado; a arma que tocou fica presa nele. Ativação: o Pseudópode que acerta, ou alguém que toca nele com a mão ou com uma arma. Duração: até se soltar. Alcance: o corpo dele. Área: quem tocou. Dano: nenhum. Resistência: esquiva, contra a jogada do Pseudópode, para não grudar; colado, o agarrado não age nem rola para se soltar: só se solta quando o mímico erra o Manter do Agarrar do livro, ou quando ele o solta. Limite de uso: três vezes por cena, recarga de 1 hora",
     "classe": "regra da ficha",
     "texto": "fica Agarrado, colado; a arma que tocou fica presa nele",
     "campos": [
@@ -108641,7 +108627,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do Pseudópode, para não grudar; para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação"
+      "valor": "esquiva, contra a jogada do Pseudópode, para não grudar; colado, o agarrado não age nem rola para se soltar: só se solta quando o mímico erra o Manter do Agarrar do livro, ou quando ele o solta"
      },
      {
       "rotulo": "Limite de uso",
@@ -110712,7 +110698,7 @@
      "area": "um alvo",
      "efeito": "o alvo fica Agarrado, sem jogada de Agarrar",
      "dano": "o das Duas pancadas",
-     "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 5 dele",
+     "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o montão erra o Manter do Agarrar do livro (Força 7 + Briga 5)",
      "limiteDeUso": "um alvo agarrado por vez"
     },
     {
@@ -110966,7 +110952,7 @@
    },
    {
     "nome": "Agarra no golpe",
-    "descricao": "o alvo fica Agarrado, sem jogada de Agarrar. Ativação: as Duas pancadas que acertam, se ele quiser. Duração: até o alvo se soltar ou ele soltar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o das Duas pancadas. Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 5 dele. Limite de uso: um alvo agarrado por vez",
+    "descricao": "o alvo fica Agarrado, sem jogada de Agarrar. Ativação: as Duas pancadas que acertam, se ele quiser. Duração: até o alvo se soltar ou ele soltar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o das Duas pancadas. Resistência: nenhuma do agarrado: ele não age nem rola, e só se solta quando o montão erra o Manter do Agarrar do livro (Força 7 + Briga 5). Limite de uso: um alvo agarrado por vez",
     "classe": "regra da ficha",
     "texto": "o alvo fica Agarrado, sem jogada de Agarrar",
     "campos": [
@@ -110992,7 +110978,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 5 dele"
+      "valor": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o montão erra o Manter do Agarrar do livro (Força 7 + Briga 5)"
      },
      {
       "rotulo": "Limite de uso",
@@ -111626,7 +111612,7 @@
      "tropical"
     ]
    },
-   "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa) .",
+   "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa).",
    "lore": [
     {
      "titulo": "Habitat",
@@ -111657,7 +111643,7 @@
   "categoriaNome": "Animal",
   "tipo": "fera",
   "conceito": "Animal Grande",
-  "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa) .",
+  "descricao": "Mora em caverna e sai à noite atrás de gado; numa refeição levaria de 5 a 8 kg de sangue, se seguisse o vampiro (20 a 30% da massa).",
   "tags": [
    "animal"
   ],
@@ -111965,7 +111951,6 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "emboscada",
     "dianteDeGente": "defende"
@@ -112829,10 +112814,8 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "emboscada",
-    "dianteDeGente": "sem dado"
+    "caca": "emboscada"
    },
    "ecologia": {
     "terreno": [
@@ -119247,7 +119230,7 @@
      "nome": "disfarce",
      "aparencia": 8,
      "corpo": {
-      "tamanhoEscolhido": "medio"
+      "area": 0.64
      },
      "fisiologia": {
       "camuflagem": "passa por humano",
@@ -119628,9 +119611,8 @@
       "profundidade": 0.35,
       "comprimento": null,
       "massa": 269,
-      "area": 1.62,
+      "area": 0.64,
       "posturaDoTamanho": "de frente",
-      "tamanhoEscolhido": "medio",
       "medida": "2.7 m de altura",
       "peso": "269 kg"
      },
@@ -120551,7 +120533,6 @@
    },
    "comportamento": {
     "social": "bando",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
     "caca": "perseguição",
     "dianteDeGente": "evita"
@@ -120899,7 +120880,7 @@
      "area": "um alvo por tentáculo",
      "efeito": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca",
      "dano": "o do Tentáculo",
-     "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2",
+     "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o otyugh erra o Manter do Agarrar do livro (Força 6 + Briga 4, com o Agarrão +2)",
      "limiteDeUso": "dois alvos agarrados, um em cada tentáculo"
     },
     {
@@ -121127,7 +121108,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Tentáculos que agarram",
-    "descricao": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca. Ativação: o Tentáculo que acerta, se ele quiser. Duração: até o alvo se soltar ou ele soltar. Alcance: 4,5 m. Área: um alvo por tentáculo. Dano: o do Tentáculo. Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2. Limite de uso: dois alvos agarrados, um em cada tentáculo",
+    "descricao": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca. Ativação: o Tentáculo que acerta, se ele quiser. Duração: até o alvo se soltar ou ele soltar. Alcance: 4,5 m. Área: um alvo por tentáculo. Dano: o do Tentáculo. Resistência: nenhuma do agarrado: ele não age nem rola, e só se solta quando o otyugh erra o Manter do Agarrar do livro (Força 6 + Briga 4, com o Agarrão +2). Limite de uso: dois alvos agarrados, um em cada tentáculo",
     "classe": "regra da ficha",
     "texto": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca",
     "campos": [
@@ -121153,7 +121134,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2"
+      "valor": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o otyugh erra o Manter do Agarrar do livro (Força 6 + Briga 4, com o Agarrão +2)"
      },
      {
       "rotulo": "Limite de uso",
@@ -124648,8 +124629,6 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "sem dado",
-    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "emboscada",
     "dianteDeGente": "não se aplica"
@@ -125382,10 +125361,8 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "emboscada",
-    "dianteDeGente": "sem dado"
+    "caca": "emboscada"
    },
    "ecologia": {
     "terreno": [
@@ -125756,7 +125733,6 @@
    },
    "comportamento": {
     "social": "bando",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
     "caca": "pastagem",
     "dianteDeGente": "doméstico; foge do que assusta"
@@ -127078,7 +127054,6 @@
    },
    "comportamento": {
     "social": "colônia",
-    "atividade": "sem dado",
     "dieta": "piscívoro",
     "caca": "forrageio",
     "dianteDeGente": "foge"
@@ -128355,10 +128330,8 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "carnívoro",
-    "caca": "espreita",
-    "dianteDeGente": "sem dado"
+    "caca": "espreita"
    },
    "ecologia": {
     "terreno": [
@@ -130693,8 +130666,8 @@
     "comprimento": null,
     "massa": 36,
     "area": 0.39,
-    "linhaPV": "abaixo",
-    "posturaDoTamanho": "de frente"
+    "posturaDoTamanho": "de frente",
+    "linhaPV": "abaixo"
    },
    "couraca": 0,
    "atributos": {
@@ -130896,8 +130869,8 @@
    "comprimento": null,
    "massa": 36,
    "area": 0.39,
-   "linhaPV": "abaixo",
    "posturaDoTamanho": "de frente",
+   "linhaPV": "abaixo",
    "medida": "1.2 m de altura",
    "peso": "36 kg"
   },
@@ -132496,7 +132469,6 @@
    },
    "comportamento": {
     "social": "machos solitários e territoriais (0,7 a 3 km²); fêmeas com cria",
-    "atividade": "sem dado",
     "dieta": "herbívoro (capim baixo)",
     "caca": "pastagem",
     "dianteDeGente": "raramente ataca; a fêmea com filhote pequeno, sim"
@@ -134313,7 +134285,6 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "sangue",
     "caca": "espera e vai ao calor",
     "dianteDeGente": "ataca"
@@ -142410,11 +142381,9 @@
     "tracao": false
    },
    "comportamento": {
-    "social": "solitário : a vida em grupo está em debate (PMC2657756; Science News; o Florida Museum não conclui)",
-    "atividade": "sem dado",
+    "social": "solitário: a vida em grupo está em debate (PMC2657756; Science News; o Florida Museum não conclui)",
     "dieta": "carnívoro (presas grandes)",
-    "caca": "emboscada dos autores (as lesões na linha média do corpo)",
-    "dianteDeGente": "sem dado"
+    "caca": "emboscada dos autores (as lesões na linha média do corpo)"
    },
    "ecologia": {
     "terreno": [
@@ -142756,9 +142725,7 @@
    "comportamento": {
     "social": "solitário",
     "atividade": "diurno",
-    "dieta": "carnívoro (também carniceiro)",
-    "caca": "sem dado",
-    "dianteDeGente": "sem dado"
+    "dieta": "carnívoro (também carniceiro)"
    },
    "ecologia": {
     "terreno": [
@@ -143829,7 +143796,7 @@
      "tipoDano": "perfuracao",
      "nivelPerfuracao": 1,
      "acerto": 0,
-     "bloqueiaComoArma": null
+     "bloqueiaComoArma": 1
     }
    ],
    "habilidadesEspeciais": [
@@ -143889,10 +143856,8 @@
    },
    "comportamento": {
     "social": "família",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
-    "caca": "forrageio",
-    "dianteDeGente": "sem dado"
+    "caca": "forrageio"
    },
    "ecologia": {
     "terreno": [
@@ -146435,10 +146400,9 @@
    },
    "comportamento": {
     "social": "solitário",
-    "atividade": "sem dado",
     "dieta": "herbívoro, com onivoria em algumas populações",
     "caca": "forrageio (folhas, caules e o que a região desse)",
-    "dianteDeGente": ": defende a toca"
+    "dianteDeGente": "defende a toca"
    },
    "ecologia": {
     "terreno": [
@@ -147946,7 +147910,7 @@
    },
    "comportamento": {
     "social": "solitário (exceto a mãe com filhotes e os casais no acasalamento)",
-    "atividade": ": 66,6% do tempo inativo e 29,1% em deslocamento; descansa até 20 horas por dia fora da caça",
+    "atividade": "66,6% do tempo inativo e 29,1% em deslocamento; descansa até 20 horas por dia fora da caça",
     "dieta": "carnívoro (foca-anelada sobretudo; também outras focas, morsa, aves marinhas, carniça de baleia)",
     "caca": "emboscada (espera no respiradouro, a mais comum) e espreita (rastejando ou nadando pelas fendas)",
     "dianteDeGente": "ataca (o macho adulto faminto) · defende a cria (a fêmea)"
@@ -148201,6 +148165,9 @@
      "batalha": 3,
      "arranque": 5,
      "corrida": 7
+    },
+    "escalada": {
+     "batalha": 2
     }
    },
    "equipamento": {
@@ -148785,7 +148752,8 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "terra": 3
+   "terra": 3,
+   "escalada": 2
   },
   "tecnicas": [],
   "artes": [],
@@ -150355,7 +150323,7 @@
      "area": "um alvo",
      "efeito": "o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule",
      "dano": "o da Vinha",
-     "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 4 dela",
+     "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando a vinha erra o Manter do Agarrar do livro (Força 7 + Briga 4)",
      "limiteDeUso": "um alvo agarrado por vez"
     },
     {
@@ -150588,7 +150556,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Vinha que agarra",
-    "descricao": "o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule. Ativação: a Vinha constritora que acerta. Duração: até o alvo se soltar ou a vinha soltar. Alcance: 3 m. Área: um alvo. Dano: o da Vinha. Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 4 dela. Limite de uso: um alvo agarrado por vez",
+    "descricao": "o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule. Ativação: a Vinha constritora que acerta. Duração: até o alvo se soltar ou a vinha soltar. Alcance: 3 m. Área: um alvo. Dano: o da Vinha. Resistência: nenhuma do agarrado: ele não age nem rola, e só se solta quando a vinha erra o Manter do Agarrar do livro (Força 7 + Briga 4). Limite de uso: um alvo agarrado por vez",
     "classe": "regra da ficha",
     "texto": "o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule",
     "campos": [
@@ -150614,7 +150582,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 4 dela"
+      "valor": "nenhuma do agarrado: ele não age nem rola, e só se solta quando a vinha erra o Manter do Agarrar do livro (Força 7 + Briga 4)"
      },
      {
       "rotulo": "Limite de uso",

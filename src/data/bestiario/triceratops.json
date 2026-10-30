@@ -105,7 +105,7 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": 1
     }
   ],
   "habilidadesEspeciais": [
@@ -165,10 +165,8 @@
   },
   "comportamento": {
     "social": "família",
-    "atividade": "sem dado",
     "dieta": "herbívoro",
-    "caca": "forrageio",
-    "dianteDeGente": "sem dado"
+    "caca": "forrageio"
   },
   "ecologia": {
     "terreno": [

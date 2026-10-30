@@ -141,7 +141,7 @@
       "area": "um alvo por tentáculo",
       "efeito": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca",
       "dano": "o do Tentáculo",
-      "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2",
+      "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o otyugh erra o Manter do Agarrar do livro (Força 6 + Briga 4, com o Agarrão +2)",
       "limiteDeUso": "dois alvos agarrados, um em cada tentáculo"
     },
     {

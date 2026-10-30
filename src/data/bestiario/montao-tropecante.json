@@ -120,7 +120,7 @@
       "area": "um alvo",
       "efeito": "o alvo fica Agarrado, sem jogada de Agarrar",
       "dano": "o das Duas pancadas",
-      "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 5 dele",
+      "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o montão erra o Manter do Agarrar do livro (Força 7 + Briga 5)",
       "limiteDeUso": "um alvo agarrado por vez"
     },
     {

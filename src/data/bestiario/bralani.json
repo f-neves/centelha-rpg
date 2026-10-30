@@ -254,11 +254,10 @@
         "arsenal": []
       },
       "deslocamento": {
-        "voo": {
-          "batalha": 0
-        }
+        "voo": null
       },
       "fisiologia": {
+        "respiracao": "ar",
         "prendeRespiracao": "a de um elfo",
         "camuflagem": "passa por um elfo",
         "tracos": "elfo alto de cabelo prateado"

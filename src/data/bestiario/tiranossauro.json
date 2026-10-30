@@ -168,9 +168,7 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "diurno",
-    "dieta": "carnívoro (também carniceiro)",
-    "caca": "sem dado",
-    "dianteDeGente": "sem dado"
+    "dieta": "carnívoro (também carniceiro)"
   },
   "ecologia": {
     "terreno": [

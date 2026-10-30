@@ -112,7 +112,7 @@
       "area": "um alvo por ação",
       "efeito": "o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença)",
       "dano": "nenhum",
-      "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno; para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre)",
+      "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno; o agarrado não age nem rola para se soltar: solta-se quando o laçador erra o Manter do Agarrar do livro, ou quando alguém corta o filamento (um golpe de Corte que fira, a critério do Mestre)",
       "limiteDeUso": "até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo"
     },
     {

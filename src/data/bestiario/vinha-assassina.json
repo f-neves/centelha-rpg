@@ -102,7 +102,7 @@
       "area": "um alvo",
       "efeito": "o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule",
       "dano": "o da Vinha",
-      "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 4 dela",
+      "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando a vinha erra o Manter do Agarrar do livro (Força 7 + Briga 4)",
       "limiteDeUso": "um alvo agarrado por vez"
     },
     {

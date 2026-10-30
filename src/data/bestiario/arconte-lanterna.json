@@ -10,15 +10,15 @@
   "corpo": {
     "postura": "pairando em combate, apoio outro",
     "apoio": "outro",
-    "altura": 1,
-    "largura": 1,
-    "profundidade": 1,
-    "comprimento": 1,
-    "comprimentoSemCauda": 1,
+    "altura": 0.6,
+    "largura": 0.6,
+    "profundidade": 0.6,
+    "comprimento": 0.6,
+    "comprimentoSemCauda": 0.6,
     "caudaGrossa": false,
     "semMassa": true,
-    "volume": 0.523599,
-    "area": 0.79,
+    "volume": 0.113097,
+    "area": 0.28,
     "posturaDoTamanho": "pairando",
     "naoErgue": true
   },
@@ -208,7 +208,7 @@
     "prendeRespiracao": "não precisa",
     "camuflagem": "nenhuma; emite luz",
     "mente": "instintiva; entende pedidos simples",
-    "tracos": "globo de luz pálida de 1 m, sem membros"
+    "tracos": "globo de luz pálida de 0,6 m, sem membros"
   },
   "aptidoes": {
     "montaria": false,
@@ -276,6 +276,10 @@
     {
       "campo": "habilidadesEspeciais.Teleporte",
       "motivo": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "A bola de luz do tamanho de uma cabeça grande (Fase 5, F5.84); o site dava 1 m"
     },
     {
       "campo": "comportamento.atividade",

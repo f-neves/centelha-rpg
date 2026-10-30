@@ -273,7 +273,7 @@
     {
       "nome": "viajante disfarçado",
       "formas": [
-        "humana-ou-de-animal-pequeno"
+        "humana"
       ],
       "texto": "evita lutar e observa; protege e cura com as Artes, e volta à forma verdadeira quando a luta pede."
     }
@@ -350,11 +350,18 @@
   ],
   "formas": [
     {
-      "id": "humana-ou-de-animal-pequeno",
-      "nome": "forma humana ou de animal pequeno",
+      "id": "humana",
+      "nome": "forma humana",
+      "outraForma": "um animal pequeno",
+      "corpo": {
+        "altura": 1.78,
+        "largura": 0.48,
+        "profundidade": 0.3,
+        "area": 0.64
+      },
       "fisiologia": {
-        "prendeRespiracao": "a da forma assumida",
-        "camuflagem": "passa por um humano ou um animal pequeno comum"
+        "prendeRespiracao": "a de um humano",
+        "camuflagem": "passa por um humano"
       },
       "ataques": []
     }
@@ -415,7 +422,7 @@
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
     },
     {
-      "campo": "formas.humana-ou-de-animal-pequeno",
+      "campo": "formas.humana",
       "motivo": "Mudar de forma (site) muda o corpo; a mente, as Artes e os números ficam os dele, como no disfarce da couatl"
     },
     {

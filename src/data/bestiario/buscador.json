@@ -65,6 +65,9 @@
       "batalha": 5,
       "arranque": 8,
       "corrida": 12
+    },
+    "escalada": {
+      "batalha": 5
     }
   },
   "equipamento": {

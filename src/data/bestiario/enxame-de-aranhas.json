@@ -142,10 +142,9 @@
   },
   "comportamento": {
     "social": "colônia permanente, de menos de 100 a mais de 20.000 aranhas",
-    "atividade": "sem dado",
     "dieta": "carnívoro: besouros, percevejos, baratas, formigas, mariposas e gafanhotos",
     "caca": "emboscada na teia, ataque em grupo de 30 a 50 aranhas por inseto grande",
-    "dianteDeGente": ": nenhum registro de ataque a pessoa"
+    "dianteDeGente": "nenhum registro de ataque a pessoa"
   },
   "ecologia": {
     "terreno": [

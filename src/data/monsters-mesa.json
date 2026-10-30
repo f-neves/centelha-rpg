@@ -1299,7 +1299,7 @@
   "centelha": 2,
   "categoria": "celestial",
   "categoriaNome": "Celestial",
-  "tamanho": "Médio",
+  "tamanho": "Pequeno",
   "imagens": [
    "bestiario/arconte-lanterna_criatura.webp"
   ],
@@ -1342,7 +1342,7 @@
   "artes": [],
   "tecnicas": [],
   "combate": {
-   "pv": 42,
+   "pv": 34,
    "energia": 11,
    "defesa": 4,
    "defesaSocial": 4,
@@ -1389,18 +1389,18 @@
   "corpo": {
    "postura": "pairando em combate, apoio outro",
    "apoio": "outro",
-   "altura": 1,
-   "largura": 1,
-   "profundidade": 1,
-   "comprimento": 1,
-   "comprimentoSemCauda": 1,
+   "altura": 0.6,
+   "largura": 0.6,
+   "profundidade": 0.6,
+   "comprimento": 0.6,
+   "comprimentoSemCauda": 0.6,
    "caudaGrossa": false,
    "semMassa": true,
-   "volume": 0.523599,
-   "area": 0.79,
+   "volume": 0.113097,
+   "area": 0.28,
    "posturaDoTamanho": "pairando",
    "naoErgue": true,
-   "medida": "1 m de altura, 1 m de comprimento",
+   "medida": "0.6 m de altura, 0.6 m de comprimento",
    "peso": "sem massa"
   },
   "formas": [],
@@ -9207,6 +9207,7 @@
    {
     "id": "disfarce",
     "nome": "disfarce",
+    "outraForma": "outro humanoide ou um animal comum",
     "criatura": {
      "id": "couatl",
      "nome": "Couatl",
@@ -9215,7 +9216,7 @@
      "centelha": 5,
      "categoria": "outsider",
      "categoriaNome": "Extraplanar",
-     "tamanho": "Grande",
+     "tamanho": "Médio",
      "imagens": [
       "bestiario/couatl_criatura.webp"
      ],
@@ -9316,19 +9317,19 @@
      "corpo": {
       "postura": "serpente; voadora",
       "apoio": "outro",
-      "altura": 0.3,
-      "largura": 0.3,
-      "profundidade": null,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": 3.7,
       "envergadura": 4.6,
       "massa": 270,
-      "area": 4.55,
+      "area": 0.64,
       "posturaDoTamanho": "asas abertas",
       "segundoTamanho": {
        "area": 1.11,
        "posturaDoTamanho": "asas fechadas"
       },
-      "medida": "0.3 m de altura, 3.7 m de comprimento",
+      "medida": "1.78 m de altura, 3.7 m de comprimento",
       "peso": "270 kg"
      },
      "formas": [],
@@ -10258,6 +10259,7 @@
    {
     "id": "disfarce",
     "nome": "disfarce",
+    "outraForma": "um animal comum",
     "criatura": {
      "id": "deva-astral",
      "nome": "Deva Astral",
@@ -10266,7 +10268,7 @@
      "centelha": 6,
      "categoria": "celestial",
      "categoriaNome": "Celestial",
-     "tamanho": "Grande",
+     "tamanho": "Médio",
      "imagens": [
       "bestiario/deva-astral_criatura.webp"
      ],
@@ -10317,7 +10319,7 @@
      "combate": {
       "pv": 43,
       "energia": 26,
-      "defesa": 14,
+      "defesa": 15,
       "defesaSocial": 24,
       "defesaMental": 34,
       "absorcao": {
@@ -10335,7 +10337,16 @@
        "arranque": 8,
        "corrida": 12
       },
-      "ataques": []
+      "ataques": [
+       {
+        "nome": "Maça",
+        "pool": "6d6 +9",
+        "dano": "1d6 +14 (I)",
+        "perfArma": null,
+        "speed": 6,
+        "classe": "media"
+       }
+      ]
      },
      "ecologia": {
       "tipo": "celestial",
@@ -10349,19 +10360,19 @@
      "corpo": {
       "postura": "bípede, de pé; voador",
       "apoio": "bipede",
-      "altura": 2,
-      "largura": 0.5,
-      "profundidade": 0.26,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": null,
       "envergadura": 3.6,
       "massa": 90,
-      "area": 3.06,
+      "area": 0.64,
       "posturaDoTamanho": "asas abertas",
       "segundoTamanho": {
        "area": 0.98,
        "posturaDoTamanho": "de pé, asas fechadas"
       },
-      "medida": "2 m de altura",
+      "medida": "1.78 m de altura",
       "peso": "90 kg"
      },
      "formas": [],
@@ -12470,8 +12481,9 @@
   },
   "formas": [
    {
-    "id": "humana-ou-de-animal-pequeno",
-    "nome": "forma humana ou de animal pequeno",
+    "id": "humana",
+    "nome": "forma humana",
+    "outraForma": "um animal pequeno",
     "criatura": {
      "id": "dragao-dourado-adulto",
      "nome": "Dragão Dourado Adulto",
@@ -12480,7 +12492,7 @@
      "centelha": 7,
      "categoria": "dragao",
      "categoriaNome": "Dragão",
-     "tamanho": "Imenso",
+     "tamanho": "Médio",
      "imagens": [
       "bestiario/dragao-dourado-adulto_criatura.webp"
      ],
@@ -12586,27 +12598,27 @@
      "corpo": {
       "postura": "quatro patas; voador",
       "apoio": "quadrupede",
-      "altura": 3.05,
-      "largura": 2.11,
-      "profundidade": null,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": 9.5,
       "comprimentoSemCauda": 5.39,
       "caudaGrossa": true,
       "envergadura": 21,
       "massa": 9000,
-      "area": 93,
+      "area": 0.64,
       "posturaDoTamanho": "de baixo, asas abertas",
       "segundoTamanho": {
        "area": 13.94,
        "posturaDoTamanho": "de lado, pousado, asas fechadas"
       },
-      "medida": "3.05 m de altura, 9.5 m de comprimento",
+      "medida": "1.78 m de altura, 9.5 m de comprimento",
       "peso": "9000 kg"
      },
      "formas": [],
      "formaPrincipal": {
-      "id": "humana-ou-de-animal-pequeno",
-      "nome": "forma humana ou de animal pequeno"
+      "id": "humana",
+      "nome": "forma humana"
      },
      "segundoTamanho": "Enorme"
     }
@@ -18034,8 +18046,8 @@
    "semMassa": true,
    "volume": 0.0141,
    "area": 0.07,
-   "naoErgue": true,
    "posturaDoTamanho": "flutua; voador",
+   "naoErgue": true,
    "medida": "0.3 m de altura",
    "peso": "sem massa"
   },
@@ -18978,9 +18990,9 @@
       ],
       "iniciativa": "1d6 + 10",
       "deslocamento": {
-       "batalha": 0,
-       "arranque": 0,
-       "corrida": 0
+       "batalha": 15,
+       "arranque": 15,
+       "corrida": 15
       },
       "ataques": [
        {
@@ -24028,8 +24040,8 @@
    "comprimento": 1.1,
    "massa": 16,
    "area": 0.22,
-   "linhaPV": "abaixo",
    "posturaDoTamanho": "de frente",
+   "linhaPV": "abaixo",
    "medida": "0.75 m de altura, 1.1 m de comprimento",
    "peso": "16 kg"
   },
@@ -28161,6 +28173,7 @@
    {
     "id": "disfarce",
     "nome": "disfarce",
+    "outraForma": "um elemental da água ou um gigante",
     "criatura": {
      "id": "marid",
      "nome": "Marid",
@@ -28169,7 +28182,7 @@
      "centelha": 5,
      "categoria": "elemental",
      "categoriaNome": "Elemental",
-     "tamanho": "Grande",
+     "tamanho": "Médio",
      "imagens": [
       "bestiario/marid_criatura.webp"
      ],
@@ -28260,18 +28273,18 @@
      "corpo": {
       "postura": "bípede, de pé; voador e nadador",
       "apoio": "bipede",
-      "altura": 4.9,
-      "largura": 1.23,
-      "profundidade": 0.63,
+      "altura": 1.78,
+      "largura": 0.48,
+      "profundidade": 0.3,
       "comprimento": null,
       "massa": 1130,
-      "area": 5.34,
+      "area": 0.64,
       "posturaDoTamanho": "de pé, sem o vórtice",
       "segundoTamanho": {
        "area": 15.01,
        "posturaDoTamanho": "com o vórtice ativo, debaixo d'água"
       },
-      "medida": "4.9 m de altura",
+      "medida": "1.78 m de altura",
       "peso": "1130 kg"
      },
      "formas": [],
@@ -31942,9 +31955,8 @@
       "profundidade": 0.35,
       "comprimento": null,
       "massa": 269,
-      "area": 1.62,
+      "area": 0.64,
       "posturaDoTamanho": "de frente",
-      "tamanhoEscolhido": "medio",
       "medida": "2.7 m de altura",
       "peso": "269 kg"
      },
@@ -35051,8 +35063,8 @@
    "comprimento": null,
    "massa": 36,
    "area": 0.39,
-   "linhaPV": "abaixo",
    "posturaDoTamanho": "de frente",
+   "linhaPV": "abaixo",
    "medida": "1.2 m de altura",
    "peso": "36 kg"
   },

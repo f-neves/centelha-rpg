@@ -16,8 +16,8 @@
     "comprimento": null,
     "massa": 36,
     "area": 0.39,
-    "linhaPV": "abaixo",
-    "posturaDoTamanho": "de frente"
+    "posturaDoTamanho": "de frente",
+    "linhaPV": "abaixo"
   },
   "couraca": 0,
   "atributos": {

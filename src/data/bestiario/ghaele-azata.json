@@ -311,17 +311,9 @@
         "arsenal": []
       },
       "deslocamento": {
-        "terra": {
-          "batalha": 0,
-          "arranque": 0,
-          "corrida": 0
-        },
-        "nado": {
-          "batalha": 0
-        },
-        "escalada": {
-          "batalha": 0
-        }
+        "terra": null,
+        "nado": null,
+        "escalada": null
       },
       "corpo": {
         "postura": "pairando",
@@ -340,6 +332,7 @@
         "forca": 0
       },
       "fisiologia": {
+        "respiracao": "não precisa",
         "prendeRespiracao": "não precisa",
         "camuflagem": "nenhuma, emite luz",
         "tracos": "globo luminoso sem membros"
