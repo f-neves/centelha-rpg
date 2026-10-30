@@ -7,7 +7,8 @@
  * principal do BestaCard.astro, com os mesmos rótulos e formatos (src/lib/besta-card.ts).
  */
 import { loadData } from '../lib/data';
-import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt } from '../lib/besta-card';
+import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt } from '../lib/besta-card';
+import { linhaPVNaZona, massaDaConta } from '../lib/motor';
 import HAB from '../data/habilidades.json';
 import SEC from '../data/habilidades-secundarias.json';
 interface Props { forma: any }
@@ -17,6 +18,7 @@ const d = await loadData();
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
 const artes = (i.artes || []).filter((a: any) => a.nivel > 0);
 // As Habilidades de treino da forma (D-270): os botões do card ficam escondidos nas outras formas, então elas vão aqui.
+const notaPV = i.enxame || !i.corpo ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(i.corpo), i.atributos?.vigor ?? 0, i.corpo.linhaPV), i.combate.pv);
 const treino = habilidadesDeTreino(i, Object.fromEntries([...(HAB as any[]), ...(SEC as any[])].map((h) => [h.id, h.nome])));
 const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-fra'], ['resistencias', 'Resiste', 'el-res'], ['imunidades', 'Imune', 'el-imu']];
 ---
@@ -37,6 +39,7 @@ const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-f
     <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
     {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
   </dl>
+  {notaPV && <p class="ib-ref muted besta-linhapv">{notaPV}</p>}
   {ELEM_LINHAS.some(([k]) => i.combate[k]?.length) && (
     <div class="besta-elem">
       {ELEM_LINHAS.filter(([k]) => i.combate[k]?.length).map(([k, rot, cls]) => (
@@ -70,5 +73,5 @@ const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-f
   {(i.comoLuta || []).length > 0 && <><h4>Como luta</h4><ul>{i.comoLuta.map((x:any)=><li><b>{x.nome}:</b> {x.texto}</li>)}</ul></>}
   {(i.sentidos || []).length > 0 && <><h4>Sentidos</h4><ul>{i.sentidos.map((x:any)=><li><b>{x.nome}:</b> {x.descricao}{x.classe ? ' ('+x.classe+')' : ''}</li>)}</ul></>}
   {treino.primarias.length + treino.secundarias.length > 0 && <><h4>Habilidades</h4>{treino.primarias.length > 0 && <p class="ib-ref"><b>Habilidades:</b> {treinoTxt(treino.primarias)}</p>}{treino.secundarias.length > 0 && <p class="ib-ref"><b>Secundárias:</b> {treinoTxt(treino.secundarias)}</p>}</>}
-  {(i.habilidadesEspeciais || []).length > 0 && <><h4>Poderes</h4><ul>{i.habilidadesEspeciais.map((x:any)=><li><b>{x.nome}:</b> {x.campos ? <>{x.texto}<ul class="hab-campos">{x.campos.map((c: any) => <li><span class="hc-rot">{c.rotulo}:</span> {c.valor}</li>)}</ul></> : x.descricao}{x.base ? ' · base '+x.base.arte+' '+x.base.nivel : ''}{x.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>)}</ul></>}
+  {(i.habilidadesEspeciais || []).length > 0 && <><h4>Poderes</h4>{i.habilidadesEspeciais.some((x: any) => x.base) && <p class="ib-ref muted">{BASE_NOTA}</p>}<ul>{i.habilidadesEspeciais.map((x:any)=><li><b>{x.nome}:</b> {x.campos ? <>{x.texto}<ul class="hab-campos">{x.campos.map((c: any) => <li><span class="hc-rot">{c.rotulo}:</span> {c.valor}</li>)}</ul></> : x.descricao}{baseTxt(x.base, arteNome)}{x.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>)}</ul></>}
 </section>

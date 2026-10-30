@@ -16,7 +16,8 @@ import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
-import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt } from '../lib/besta-card';
+import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt } from '../lib/besta-card';
+import { linhaPVNaZona, massaDaConta } from '../lib/motor';
 import HAB from '../data/habilidades.json';
 import SEC from '../data/habilidades-secundarias.json';
 
@@ -36,6 +37,8 @@ const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [
 const NOMES_HAB: Record<string, string> = Object.fromEntries([...(HAB as any[]), ...(SEC as any[])].map((h) => [h.id, h.nome]));
 const treino = habilidadesDeTreino(i, NOMES_HAB);
 const temTreino = treino.primarias.length + treino.secundarias.length > 0;
+// Por que a linha de PV, quando a massa cai na zona de transição (parecer da Leitora-novata, achado 9).
+const notaPV = i.enxame || !i.corpo ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(i.corpo), i.atributos?.vigor ?? 0, i.corpo.linhaPV), i.combate.pv);
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
 // Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".
@@ -116,7 +119,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             {i.combate.couraca > 0 && <div title="O nível de Couraça da pele (0 a 12). Quanto cada nível vale na Absorção ainda não tem regra, e por isso ele não entra na conta."><dt>Couraça</dt><dd>{i.combate.couraca}</dd></div>}
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
             {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
-          </dl>{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa.</p>)}
+          </dl>{notaPV && <p class="ib-ref muted besta-linhapv">{notaPV}</p>}{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa.</p>)}
 
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length || i.combate.imunidades?.length) && (
             <div class="besta-elem">
@@ -211,7 +214,8 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                 <template class="mech-tpl">
                   {i.habilidadesEspeciais?.length > 0 && (<>
                     <h4>Poderes</h4>
-                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.campos ? <>{h.texto}<ul class="hab-campos">{h.campos.map((x: any) => <li><span class="hc-rot">{x.rotulo}:</span> {x.valor}</li>)}</ul></> : h.descricao}{h.base ? ` · base ${h.base.arte} ${h.base.nivel}` : ''}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
+                    {i.habilidadesEspeciais.some((h: any) => h.base) && <p class="ib-ref muted">{BASE_NOTA}</p>}
+                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.campos ? <>{h.texto}<ul class="hab-campos">{h.campos.map((x: any) => <li><span class="hc-rot">{x.rotulo}:</span> {x.valor}</li>)}</ul></> : h.descricao}{baseTxt(h.base, arteNome)}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
                   </>)}
                   {i.poderes?.length > 0 && (<>
                     <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>

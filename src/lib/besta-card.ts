@@ -54,3 +54,20 @@ export function habilidadesDeTreino(x: any, nomes: Record<string, string>): Trei
   return { primarias: lista(x.habilidades), secundarias: lista(x.habilidadesSec) };
 }
 export const treinoTxt = (l: Treino['primarias']) => l.map((h) => `${h.nome} ${h.valor}`).join(' · ');
+
+/**
+ * O "base <Arte> <nível>" do poder natural, por extenso (parecer da Leitora-novata, achado 6). O poder inato com usos é
+ * poder natural, "com base e nível mantidos como parâmetro", sem portão de Centelha e com os usos da fonte (C-037): a
+ * Arte e o nível medem o efeito, e o poder não gasta Mana.
+ */
+export const BASE_NOTA = 'Base: a Arte e o nível que medem um poder natural. Ele não é Arte conjurada: não gasta Mana nem depende da Centelha, e os usos e a resistência são os escritos no poder.';
+export const baseTxt = (b: { arte: string; nivel: number } | undefined, arteNome: Record<string, string>) => (b ? ` · base: ${arteNome[b.arte] ?? b.arte} ${b.nivel}` : '');
+
+/** A massa por extenso, como a tabela do Cap. IV: g abaixo de 1 kg, t de 1.000 kg para cima, vírgula decimal. */
+const massaTxt = (kg: number) => (kg < 1 ? `${Math.round(kg * 1000)} g` : kg >= 1000 ? `${String(+(kg / 1000).toFixed(2)).replace('.', ',')} t` : `${String(+kg.toFixed(2)).replace('.', ',')} kg`);
+/** Por que a ficha escolheu a linha de PV na zona de transição (achado 9). `pv` é o do card, já com o `bonusPV`. */
+export function linhaPVTxt(z: { zonaKg: [number, number]; linha: 'acima' | 'abaixo'; pvAcima: number; pvAbaixo: number } | null, pv: number): string {
+  if (!z) return '';
+  const cima = z.linha === 'acima', outro = pv - (cima ? z.pvAcima : z.pvAbaixo) + (cima ? z.pvAbaixo : z.pvAcima);
+  return `PV pela linha de ${cima ? 'cima' : 'baixo'} da zona de transição (${massaTxt(z.zonaKg[0])} a ${massaTxt(z.zonaKg[1])}): a ficha escolheu pelo corpo, ${cima ? 'robusto, que sobe' : 'frágil, que desce'}; a linha de ${cima ? 'baixo' : 'cima'} daria ${outro}.`;
+}

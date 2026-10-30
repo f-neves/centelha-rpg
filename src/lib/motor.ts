@@ -548,6 +548,18 @@ export function pvDaMassa(kg: number, vigor: number, linhaPV?: 'acima' | 'abaixo
     const l = LINHAS_PV[i];
     return l.base + Math.floor((vigor * l.vigorMult) / l.vigorDivisor);
 }
+/**
+ * A escolha da linha de PV na zona de transição, para o card dizer por quê (Cap. IV: "a ficha da criatura escolhe a
+ * linha pelo corpo (o robusto sobe, o frágil desce) e diz por quê"; parecer da Leitora-novata, achado 9). Nulo fora
+ * da zona ou sem escolha. Os dois PV são os da tabela, sem o `bonusPV`.
+ */
+export function linhaPVNaZona(kg: number | undefined, vigor: number, linhaPV?: 'acima' | 'abaixo') {
+    if (kg === undefined || !linhaPV) return null;
+    const z = LINHAS_PV.findIndex((l) => l.zonaKg && kg >= l.zonaKg[0] && kg <= l.zonaKg[1]);
+    if (z < 0 || !LINHAS_PV[z + 1]) return null;
+    const pv = (i: number) => LINHAS_PV[i].base + Math.floor((vigor * LINHAS_PV[i].vigorMult) / LINHAS_PV[i].vigorDivisor);
+    return { zonaKg: LINHAS_PV[z].zonaKg as [number, number], linha: linhaPV, pvAcima: pv(z + 1), pvAbaixo: pv(z) };
+}
 /** O peso erguido pela R15 (D-184), em kg, com duas casas. */
 export function pesoErguido(kg: number, forca: number, halterofilismo = 0, musculatura = 0): number {
     const P = C.pesoErguido, L = Math.log10(kg / P.curvaMassaKg);
@@ -783,7 +795,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const habilidades = c.habilidadesEspeciais.map((h: any) => {
         const ligado = h.ataque ? c.ataques.find((a: any) => a.nome === h.ataque) : undefined;
         const pecaLigada = ligado ? pecas[c.ataques.indexOf(ligado)] : undefined;
-        const prosa = [textoDaRegraDaCriatura(h.regra, ligado ? tetoDaRajadaDaCriatura(ligado) : null), jogadaDaManobra(h.regra, c), danoDaInvestidaNoCard(h.regra, pecaLigada?.semDano ? undefined : pecaLigada, c.atributos.forca ?? 0), h.texto, h.efeito].filter(Boolean).map((s) => String(s).trim().replace(/\.$/, '')).join('. ');
+        const prosa = [textoDaRegraDaCriatura(h.regra, ligado ? tetoDaRajadaDaCriatura(ligado) : null, ligado?.nome), jogadaDaManobra(h.regra, c), danoDaInvestidaNoCard(h.regra, pecaLigada?.semDano ? undefined : pecaLigada, c.atributos.forca ?? 0), h.texto, h.efeito].filter(Boolean).map((s) => String(s).trim().replace(/\.$/, '')).join('. ');
         const campos = CAMPOS_HABILIDADE.filter(([k]) => h[k]).map(([k, rotulo]) => ({ rotulo, valor: String(h[k]) }));
         const descricao = [prosa, ...campos.map((x) => x.rotulo + ': ' + x.valor.trim().replace(/\.$/, ''))].filter(Boolean).join('. ') || h.regra || '';
         return { nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), ...(h.tecnica ? {tecnica:h.tecnica} : {}), ...(h.arte ? {arte:h.arte} : {}), descricao, ...(campos.length ? { texto: prosa, campos } : {}) };
@@ -1044,10 +1056,11 @@ export function tetoDaRajadaDaCriatura(a: AtaqueEntrada) {
 }
 
 /** Texto de jogo da Rajada, pelos parâmetros da regra comum; com o teto do golpe ligado, o número dele (M8). */
-export function textoDaRajada(teto?: number | null) {
+export function textoDaRajada(teto?: number | null, ataque?: string) {
   const r = (regras as any).combate.pgr.reforma.rajada;
   return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. '
-    + (teto ? 'Até ' + teto + ' golpes por ação.' : 'O limite depende da classe da arma.');
+    // o nome do golpe ligado diz com o quê (o aboleth: "Até 2 golpes por ação (Tentáculo)"; parecer da Leitora, achado 14)
+    + (teto ? 'Até ' + teto + ' golpes por ação' + (ataque ? ' (' + ataque + ')' : '') + '.' : 'O limite depende da classe da arma.');
 }
 
 /** Os campos da habilidade especial, na ordem da ficha, com o rótulo de leitura. */
@@ -1087,8 +1100,8 @@ export function danoDaInvestidaNoCard(regra: string | undefined, a: { nome: stri
 }
 
 /** Resumos das manobras do livro para o card; o detalhe da criatura vem depois. */
-export function textoDaRegraDaCriatura(id?: string, tetoRajada?: number | null): string | null {
-  if (id === 'rajada') return textoDaRajada(tetoRajada);
+export function textoDaRegraDaCriatura(id?: string, tetoRajada?: number | null, ataque?: string): string | null {
+  if (id === 'rajada') return textoDaRajada(tetoRajada, ataque);
   const textos: Record<string,string> = {
     agarrar: 'Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.',
     investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo.',

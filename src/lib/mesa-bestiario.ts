@@ -18,6 +18,8 @@ import { sparkSVG } from './centelha-spark';
 import { d6 } from './rolagem';
 import { qaDaPeca, type QACombate } from './quase-acerto';
 import { imagemDe, escolhaDe } from './imagem-escolhida';
+import { BASE_NOTA, baseTxt, linhaPVTxt } from './besta-card';
+import { linhaPVNaZona, massaDaConta } from './motor';
 export { imagemDe, alternarImagem } from './imagem-escolhida'; import { escolhaDe as escolhaVestidaDe, combateNaEscolha, poolComPenalidade, alternarVestida as alternarVestidaAqui } from './defesa-vestida'; /** D-206: a Defesa do OUTRO estado (a que a mesa não usa agora), para listas que mostram as duas; null sem equipamento. */ export const defesaOutraDe = (id: string): number | null => { const cb = MON[id]?.combate; const e = escolhaVestidaDe(id, cb); return e == null ? null : e === 'com' ? cb.defesa : cb.vestida.defesa; }; /** D-206: a Defesa que a mesa usa para a criatura, pela escolha deste aparelho. */ export const defesaNaMesaDe = (id: string): number | null => combateNaEscolha(MON[id]?.combate || {}, escolhaVestidaDe(id, MON[id]?.combate)).defesa ?? null; export { alternarVestida } from './defesa-vestida';
 
 
@@ -391,7 +393,10 @@ export function cardCriaturaHTML(m: any): string {
   const tr = m.treino;
   const linhaTr = (rot: string, l: any[]) => (l?.length ? `<p class="ib-ref"><b>${rot}:</b> ${l.map((h: any) => `${esc(h.nome)} ${h.valor}`).join(' · ')}</p>` : '');
   const treino = tr && (tr.primarias?.length || tr.secundarias?.length) ? `<h4 class="cc-h">Habilidades</h4>${linhaTr('Habilidades', tr.primarias)}${linhaTr('Secundárias', tr.secundarias)}` : '';
-  const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Poderes</h4><ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}</li>`).join('')}</ul>` : '';
+  // O "base <Arte> <nível>" por extenso e a nota do que ele quer dizer (parecer da Leitora-novata, achado 6).
+  const habs = (m.habilidadesEspeciais || []).length ? `<h4 class="cc-h">Poderes</h4>${m.habilidadesEspeciais.some((h: any) => h.base) ? `<p class="ib-ref muted">${esc(BASE_NOTA)}</p>` : ''}<ul class="ib-hab">${m.habilidadesEspeciais.map((h: any) => `<li><b>${esc(h.nome)}</b> ${esc(h.descricao)}${esc(baseTxt(h.base, ARTE_NOME))}</li>`).join('')}</ul>` : '';
+  // Por que a linha de PV na zona de transição (achado 9); a versão magra da mesa não tem o corpo inteiro e fica sem.
+  const notaPV = m.enxame || !m.corpo || m.corpo.massa === undefined && !m.corpo.semMassa ? '' : linhaPVTxt(linhaPVNaZona(massaDaConta(m.corpo), m.atributos?.vigor ?? 0, m.corpo.linhaPV), cb.pv);
   const pods = (m.poderes || []).length ? `<h4 class="cc-h">Poderes <span class="muted">(sistema)</span></h4><ul class="ib-pod">${m.poderes.map((p: any) => p.id
     ? `<li><span class="pw-ef">${esc(p.nome)}</span> → <span class="pw-alvo">${esc(p.efeito)}${p.resiste !== 'nenhum' ? ` (resiste ${esc(p.resiste)})` : ''}</span></li>`
     : `<li><span class="pw-ef">${esc(p.efeito)}</span> → <span class="pw-alvo">${esc(p.alvo)}</span></li>`).join('')}</ul>` : '';
@@ -418,7 +423,7 @@ export function cardCriaturaHTML(m: any): string {
     <header class="besta-head"><span class="besta-nome cinzel">${esc(m.nome)}${en}</span></header>
     ${badges ? `<div class="besta-badges">${badges}</div>` : ''}
     ${porte}${m.formaPrincipal ? '<p>Forma: '+esc(m.formaPrincipal.nome)+'</p>' : ''}${m.descricao ? `<p class="besta-con muted">${esc(m.descricao)}</p>` : ''}
-    ${stats}${elem}${atrib}${tracos}${atk}${treino}${habs}${pods}${refs}${lore}
+    ${stats}${notaPV ? `<p class="ib-ref muted">${esc(notaPV)}</p>` : ''}${elem}${atrib}${tracos}${atk}${treino}${habs}${pods}${refs}${lore}
   </div></article>`;
 }
 

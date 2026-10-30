@@ -944,7 +944,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Tentáculos múltiplos",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Tentáculo)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -8399,7 +8399,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -12715,7 +12715,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -14341,7 +14341,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Tentáculos gêmeos",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Tentáculo). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -15267,7 +15267,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "muitas bocas",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Bocas)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -22183,7 +22183,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Golpe duplo",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Espada longa). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -31011,7 +31011,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Bicadas rápidas",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Bicada). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -31939,7 +31939,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -40225,7 +40225,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -40923,7 +40923,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -41501,7 +41501,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras ósseas). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -44336,7 +44336,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -44929,13 +44929,13 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
    {
     "nome": "cauda em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Cauda)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -45658,7 +45658,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -46458,7 +46458,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -47408,7 +47408,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -48080,13 +48080,13 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
    {
     "nome": "cauda em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Cauda)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -48792,13 +48792,13 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
    {
     "nome": "cauda em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Cauda)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -49437,7 +49437,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -50708,7 +50708,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -60882,7 +60882,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Garras devastadoras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -64425,7 +64425,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas cabeças, dois ataques",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Pancada descomunal)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -67143,7 +67143,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -68517,7 +68517,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Tentáculos",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Tentáculo)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -71865,7 +71865,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -72350,7 +72350,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -76351,7 +76351,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Quatro braços ferozes",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -76889,13 +76889,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas pinças",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Pinças). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -82075,13 +82075,13 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
    {
     "nome": "cauda em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Cauda)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -84847,7 +84847,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Cinco mordidas",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Mordida)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -90994,7 +90994,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Tentáculos múltiplos",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Tentáculo)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -91568,7 +91568,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Três correntes",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Correntes)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -97715,7 +97715,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -98302,13 +98302,13 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
    {
     "nome": "cauda em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Cauda)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -98850,7 +98850,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -106247,7 +106247,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Três lâminas",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Espada longa)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -110418,7 +110418,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas mãos",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Mãos ossudas). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -114309,7 +114309,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -116737,7 +116737,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -117291,7 +117291,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "línguas tentaculares",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Tentáculo)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -122848,7 +122848,7 @@
    },
    {
     "nome": "Dois socos",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Soco). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -127237,7 +127237,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -128424,7 +128424,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -130511,7 +130511,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Garras traiçoeiras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -141441,7 +141441,7 @@
    },
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -145340,7 +145340,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 2 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -151657,7 +151657,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Duas garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação. Até dois golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras). Até dois golpes por ação",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -153161,7 +153161,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "garras em sequência",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },
@@ -154136,7 +154136,7 @@
    },
    {
     "nome": "Três garras",
-    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação",
+    "descricao": "Só corpo a corpo. Cada golpe além do primeiro soma 1 Tick de Golpe e 1 de Recuperação, com -1d6 acumulativo no acerto. Até 3 golpes por ação (Garras)",
     "classe": "livro",
     "regra": "rajada"
    },

@@ -278,13 +278,28 @@ const ban=mon.find(m=>m.id==='bandido-de-estrada');const t=B.habilidadesDeTreino
 assert.equal(t.primarias.length,Object.keys(ban.habilidades).length);assert.ok(t.primarias.some(h=>h.nome==='Furtividade'&&h.valor===ban.habilidades.furtividade),'a Furtividade do bandido');
 const semNome=mon.flatMap(m=>[m,...(m.formas||[]).map(f=>f.criatura)]).flatMap(x=>{const r=B.habilidadesDeTreino(x,nomes);return [...r.primarias,...r.secundarias].filter(h=>h.nome===h.id)});assert.deepEqual(semNome,[],'Habilidade sem o nome do livro');
 const card=fs.readFileSync('src/components/BestaCard.astro','utf8');assert.match(card,/besta-mech[^>]*>.*✦<\/span> Poderes<\/button>/);assert.match(card,/besta-treino[^>]*>.*☰<\/span> Habilidades<\/button>/);
-assert.ok(!/<h4>Habilidades<\/h4>\s*<ul class="ib-hab">/.test(card),'os poderes ainda sob "Habilidades"');assert.match(card,/<h4>Poderes<\/h4>\s*<ul class="ib-hab">/);assert.match(card,/<template class="treino-tpl">/);
+assert.ok(!/<h4>Habilidades<\/h4>\s*<ul class="ib-hab">/.test(card),'os poderes ainda sob "Habilidades"');assert.match(card,/<h4>Poderes<\/h4>\s*(\{[^\n]*BASE_NOTA[^\n]*\}\s*)?<ul class="ib-hab">/);assert.match(card,/<template class="treino-tpl">/);
 assert.match(fs.readFileSync('src/pages/bestiario.astro','utf8'),/besta-treino'\) \? '\.treino-tpl'/);
 const forma=fs.readFileSync('src/components/FormaCriatura.astro','utf8');assert.ok(!/Habilidades especiais/.test(forma));assert.match(forma,/<h4>Habilidades<\/h4>/);
 const MB=await carregarTS('src/lib/mesa-bestiario.ts');const html=MB.cardCriaturaHTML({...ban,treino:t});
 assert.match(html,/<h4 class="cc-h">Habilidades<\/h4><p class="ib-ref"><b>Habilidades:<\/b> [^<]*Furtividade \d/);assert.match(html,/<h4 class="cc-h">Poderes<\/h4><ul class="ib-hab">/);assert.ok(!/<h4 class="cc-h">Habilidades<\/h4><ul/.test(html));
 const EP=await carregarTS('src/pages/dados/criatura/[id].json.ts');const lob=mon.find(m=>m.id==='lobisomem');const r=await EP.GET({props:{m:lob}}).json();
 assert.ok(r.treino.primarias.length>0);assert.ok(r.formas.every(f=>f.criatura.treino&&f.criatura.treino.primarias.length>0),'a forma sem o treino');
+});
+// Parecer da Leitora-novata (sem decisão nova), o card: achado 6 (o "base <Arte> <nível>" por extenso, com o que ele
+// quer dizer pela C-037), achado 9 (por que a linha de PV na zona de transição) e achado 14 (quantos tentáculos).
+cases.set('leitora-card', async () => {
+const B=await carregarTS('src/lib/besta-card.ts');const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));
+assert.equal(B.baseTxt({arte:'fascinacao',nivel:4},{fascinacao:'Fascinação'}),' · base: Fascinação 4');assert.match(B.BASE_NOTA,/não gasta Mana nem depende da Centelha/);
+const ar=mon.find(m=>m.id==='aguia-real');const z=M.linhaPVNaZona(ar.corpo.massa,ar.atributos.vigor,ar.corpo.linhaPV);
+assert.equal(B.linhaPVTxt(z,ar.combate.pv),'PV pela linha de baixo da zona de transição (3 kg a 5 kg): a ficha escolheu pelo corpo, frágil, que desce; a linha de cima daria 12.');
+assert.equal(ar.combate.pv,6);assert.equal(M.linhaPVNaZona(70,3,'acima'),null,'fora da zona não há nota');assert.equal(M.linhaPVNaZona(4.6,2,undefined),null);
+const comZona=mon.filter(m=>!m.enxame&&M.linhaPVNaZona(M.massaDaConta(m.corpo),m.atributos.vigor,m.corpo.linhaPV));assert.equal(comZona.length,20,'as fichas que escolhem a linha: '+comZona.length);
+const ab=mon.find(m=>m.id==='aboleth').habilidadesEspeciais.find(h=>h.regra==='rajada');assert.match(ab.descricao,/Até 2 golpes por ação \(Tentáculo\)$/);
+const card=fs.readFileSync('src/components/BestaCard.astro','utf8');assert.match(card,/\{baseTxt\(h\.base, arteNome\)\}/);assert.match(card,/\{BASE_NOTA\}/);assert.match(card,/besta-linhapv/);assert.ok(!/· base \$\{h\.base\.arte\}/.test(card));
+const forma=fs.readFileSync('src/components/FormaCriatura.astro','utf8');assert.match(forma,/baseTxt\(x\.base, arteNome\)/);assert.match(forma,/besta-linhapv/);
+const MB=await carregarTS('src/lib/mesa-bestiario.ts');const abo=mon.find(m=>m.id==='aboleth');const h1=MB.cardCriaturaHTML(abo);assert.match(h1,/Domínio psíquico<\/b>[^<]* · base: Fascinação 4<\/li>/);assert.match(h1,/não gasta Mana/);
+assert.match(MB.cardCriaturaHTML(ar),/PV pela linha de baixo da zona de transição/);
 });
 // CASES
 let failures=0;
