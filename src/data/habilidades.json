@@ -145,10 +145,9 @@
     "nome": "Atirador",
     "grupo": "combate",
     "atributos": [
-      "percepcao",
-      "destreza"
+      "percepcao"
     ],
-    "descricao": "O tiro com arma de disparo: arco curto, arco longo, besta e o que mais se aponte e solte. É a Habilidade da paciência e da mira, de julgar a distância, o vento e o instante, e soltar quando o alvo está onde deveria estar. Rende o melhor do jogo quando você tem tempo e posição, e sofre muito quando o inimigo encosta. Lançar com o braço é Arremesso; a briga de perto é Armas ou Briga.",
+    "descricao": "O tiro com arma de disparo: arco curto, arco longo, besta e o que mais se aponte e solte. É a Habilidade da paciência e da mira, de julgar a distância, o vento e o instante, e soltar quando o alvo está onde deveria estar. Rende o melhor do jogo quando você tem tempo e posição, e sofre muito quando o inimigo encosta. Lançar com o braço é Arremesso; a briga de perto é Armas ou Briga. O tiro de arco e de besta vai sempre pela Percepção, e não pela Destreza: acertar longe é antes de tudo enxergar direito.",
     "niveis": [
       {
         "nivel": 0,

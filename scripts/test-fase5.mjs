@@ -186,6 +186,15 @@ for(const r of racas){const m=M.massaDoJogador({raca:r.id});const l=M.pvPorte(r.
 const vida=fs.readFileSync('src/content/chapters/vida-ferimentos-cura.md','utf8');assert.ok(!/ainda dão a Vida pelo tamanho/.test(vida),'sobrou a frase velha');assert.match(vida,/A Vida da \*\*criatura\*\* vem da \*\*massa\*\*/);assert.match(vida,/\*\*O personagem é a exceção: a Vida dele sai do Tamanho da raça\*\*/);
 const rac=fs.readFileSync('src/content/chapters/racas.md','utf8');assert.match(rac,/<strong>massa padrão<\/strong> de cada raça, o meio da faixa normal dela, cai na mesma linha/);
 });
+// M11 (combate.md, O ataque: "para atirar (arco ou besta), sempre Percepção"): o texto do Atirador e o da Destreza
+// deixam de oferecer a Destreza ao tiro, e dizem por quê; o motor já jogava pela Percepção.
+cases.set('parecer-M11', async () => {
+const H=JSON.parse(fs.readFileSync('src/data/habilidades.json','utf8'));const at=H.find(h=>h.id==='atirador');assert.deepEqual(at.atributos,['percepcao']);assert.match(at.descricao,/vai sempre pela Percepção, e não pela Destreza/);
+const cap=fs.readFileSync('src/content/chapters/habilidades.md','utf8');const l=cap.split('\n').find(x=>x.startsWith('- **Atirador** ·'));assert.ok(l.endsWith('*(Percepção)*'),'o capítulo gerado dá só a Percepção');
+const atr=fs.readFileSync('src/content/chapters/atributos.md','utf8');const des=atr.split('**Destreza** ·')[1].split('\n\n')[0];assert.ok(!/Principais Habilidades:\*[^\n]*Atirador/.test(des),'a Destreza ainda lista o Atirador');assert.match(des,/sim pela Percepção/);
+assert.match(fs.readFileSync('src/content/chapters/combate.md','utf8'),/para <strong>atirar<\/strong> \(arco ou besta\), sempre Percepção/);
+assert.equal(M.atributoDaJogada('atirador',{percepcao:1,destreza:5}),1,'o motor joga o tiro pela Percepção');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
