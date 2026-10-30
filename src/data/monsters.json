@@ -5984,7 +5984,7 @@
   "combate": {
    "pv": 49,
    "energia": 26,
-   "defesa": 22,
+   "defesa": 20,
    "defesaSocial": 26,
    "defesaMental": 31,
    "absorcao": {
@@ -5996,7 +5996,7 @@
    "vestida": {
     "esquiva": 12,
     "bloqueio": 20,
-    "defesa": 20,
+    "defesa": 18,
     "contraTiro": 12,
     "absorcao": {
      "impacto": 15,
@@ -109410,7 +109410,7 @@
   "combate": {
    "pv": 50,
    "energia": 9,
-   "defesa": 9,
+   "defesa": 6,
    "defesaSocial": 10,
    "defesaMental": 12,
    "absorcao": {
@@ -124747,7 +124747,7 @@
   "combate": {
    "pv": 62,
    "energia": 31,
-   "defesa": 22,
+   "defesa": 20,
    "defesaSocial": 32,
    "defesaMental": 41,
    "absorcao": {
@@ -137842,7 +137842,7 @@
   "combate": {
    "pv": 70,
    "energia": 37,
-   "defesa": 24,
+   "defesa": 22,
    "defesaSocial": 32,
    "defesaMental": 44,
    "absorcao": {

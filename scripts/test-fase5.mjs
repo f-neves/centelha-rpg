@@ -301,6 +301,21 @@ const forma=fs.readFileSync('src/components/FormaCriatura.astro','utf8');assert.
 const MB=await carregarTS('src/lib/mesa-bestiario.ts');const abo=mon.find(m=>m.id==='aboleth');const h1=MB.cardCriaturaHTML(abo);assert.match(h1,/Domínio psíquico<\/b>[^<]* · base: Fascinação 4<\/li>/);assert.match(h1,/não gasta Mana/);
 assert.match(MB.cardCriaturaHTML(ar),/PV pela linha de baixo da zona de transição/);
 });
+// G4 nas criaturas (consequência direta da D-262, a criatura acompanha o catálogo): a arma de duas mãos de corpo a corpo
+// ocupa as mãos e o −2 de Bloqueio do Montante, do Martelo de Guerra e do Machado Pesado entra, como na ficha (90429be9).
+cases.set('G4-criaturas', async () => {
+const esperado={'arconte-trombeta':[20,18],'bruto':[6,5],'cavaleiro-de-elite':[14,11],'minotauro':[6,null],'planetar':[20,null],'solar':[22,null]};
+const bloq={'arconte-trombeta':20,'bruto':4,'cavaleiro-de-elite':12,'minotauro':6,'planetar':20,'solar':22};
+for(const [id,[def,vest]] of Object.entries(esperado)){const c=JSON.parse(fs.readFileSync(`src/data/bestiario/${id}.json`,'utf8'));const r=M.criatura(c),st=M.vistaPublicaCriatura(c).motor.stat;
+ assert.equal(st.defesa,def,id+' Defesa');assert.equal(st.vestida?.defesa??null,vest,id+' Defesa com o equipamento');assert.equal(Math.max(r.esquiva,bloq[id]),def,id+' Bloqueio com a arma');}
+const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));for(const [id,[def]] of Object.entries(esperado))assert.equal(mesa.find(m=>m.id===id).combate.defesa,def,id+' na mesa');
+// O chifre do minotauro bloqueia como arma (+1), mas com o machado pesado nas duas mãos o corpo não entra.
+const mino=JSON.parse(fs.readFileSync('src/data/bestiario/minotauro.json','utf8'));assert.equal(mino.ataques.find(a=>a.nome==='Chifrada').bloqueiaComoArma,1);
+// E só as seis: nenhuma outra criatura empunha arma de duas mãos de corpo a corpo com Defesa da arma negativa.
+const A=JSON.parse(fs.readFileSync('src/data/armas.json','utf8'));const W=Object.fromEntries(A.map(w=>[w.id,w.arma]));
+const com=fs.readdirSync('src/data/bestiario').map(f=>JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8'))).filter(c=>[c.ataques,...(c.formas||[]).map(f=>f.ataques||[])].some(l=>l.some(a=>a.arma&&W[a.arma]?.maos===2&&W[a.arma]?.classe!=='distancia'&&W[a.arma].defesaArma<0))).map(c=>c.id).sort();
+assert.deepEqual(com,Object.keys(esperado).sort());
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

@@ -761,7 +761,14 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const armas: any[] = ARMAS;
     const r = M.criatura(c);
     const armaDe = (a: any) => armas.find((w: any) => w.id === a.arma)?.arma;
-    const bloqueioArma = Math.max(0, ...c.ataques.map((a: any) => a.arma ? armaDe(a)?.defesaArma ?? 0 : a.bloqueiaComoArma ?? 0));
+    // O BLOQUEIO DA ARMA, pela regra do jogador (`conjuntoPersonagem`, parecer da Veterana, G4): a arma de duas mãos de
+    // corpo a corpo ocupa as mãos, e aí vale o que está nelas, com o −2 do Montante, do Martelo de Guerra e do Machado
+    // Pesado; o corpo (o chifre que bloqueia como arma, inclusive) não entra. Sem ela, o melhor entre as armas e o corpo,
+    // como antes. A criatura acompanha o catálogo (D-262). Antes o `Math.max(0, ...)` engolia o negativo.
+    const duasMaos = c.ataques.map(armaDe).filter((w: any) => w && w.maos === 2 && w.classe !== 'distancia');
+    const bloqueioArma = duasMaos.length
+        ? Math.max(...duasMaos.map((w: any) => w.defesaArma ?? 0))
+        : Math.max(0, ...c.ataques.map((a: any) => a.arma ? armaDe(a)?.defesaArma ?? 0 : a.bloqueiaComoArma ?? 0));
     const defesa = Math.max(r.esquiva, r.bloqueio + bloqueioArma);
     const vest = r.comEquipamento;
     const vestida = vest ? {

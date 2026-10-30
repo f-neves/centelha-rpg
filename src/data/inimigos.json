@@ -862,7 +862,7 @@
       "celestial"
     ],
     "pv": 49,
-    "defesa": 22,
+    "defesa": 20,
     "defesaMental": 31,
     "defesaSocial": 26,
     "vontade": 11,
@@ -914,7 +914,7 @@
     "vestida": {
       "esquiva": 12,
       "bloqueio": 20,
-      "defesa": 20,
+      "defesa": 18,
       "contraTiro": 12,
       "absorcao": {
         "impacto": 15,
@@ -17682,7 +17682,7 @@
       "humanoide-monstruoso"
     ],
     "pv": 50,
-    "defesa": 9,
+    "defesa": 6,
     "defesaMental": 12,
     "defesaSocial": 10,
     "vontade": 6,
@@ -20002,7 +20002,7 @@
       "celestial"
     ],
     "pv": 62,
-    "defesa": 22,
+    "defesa": 20,
     "defesaMental": 41,
     "defesaSocial": 32,
     "vontade": 12,
@@ -22414,7 +22414,7 @@
       "celestial"
     ],
     "pv": 70,
-    "defesa": 24,
+    "defesa": 22,
     "defesaMental": 44,
     "defesaSocial": 32,
     "vontade": 12,
