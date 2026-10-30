@@ -195,6 +195,13 @@ const atr=fs.readFileSync('src/content/chapters/atributos.md','utf8');const des=
 assert.match(fs.readFileSync('src/content/chapters/combate.md','utf8'),/para <strong>atirar<\/strong> \(arco ou besta\), sempre Percepção/);
 assert.equal(M.atributoDaJogada('atirador',{percepcao:1,destreza:5}),1,'o motor joga o tiro pela Percepção');
 });
+// G4: a ficha do jogador aplica o −2 de Bloqueio das armas pesadas de duas mãos (armas.json, defesaArma); sem mão
+// livre não há corpo a escolher. Destreza 3 e Bloqueio 2 dão 10 sem bônus de arma (o exemplo do parecer).
+cases.set('parecer-G4', async () => {
+const blq=(habil,inabil='nada')=>M.numerosPersonagem({raca:'humano',attrs:{destreza:3},skills:{bloqueio:2},skills2:{},conjuntos:[{ativo:true,habil:{ref:'a:'+habil},inabil:{ref:inabil}}]}).bloqueio;
+for(const [a,n] of [['montante',8],['martelo-de-guerra',8],['machado-pesado',8],['alabarda',10],['lanca',12],['espada-longa',11]])assert.equal(blq(a),n,a);
+assert.equal(M.numerosPersonagem({raca:'humano',attrs:{destreza:3},skills:{bloqueio:0},skills2:{},conjuntos:[{ativo:true,habil:{ref:'a:montante'},inabil:{ref:'nada'}}]}).bloqueio,4,'Bloqueio 0 com Montante: 4, como o livro');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

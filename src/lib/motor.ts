@@ -874,7 +874,10 @@ export function conjuntoPersonagem(S: any, cj: any, entrada?: any) {
     const nasMaos = [ehCorpo(cj.habil) ? null : habil, inabilCorpo ? null : inabil].filter((it: any) => it && it.kind !== 'nada');
     const defMaos = nasMaos.reduce((s: number, it: any) => s + (it.def || 0), 0);
     const defCorpo = maosLivres * (ARMA['desarmado']?.defesaArma ?? 1);
-    const defSum = nasMaos.length ? Math.max(defMaos, defCorpo) : defCorpo;
+    // Sem mão livre (a arma de duas mãos, ou arma e escudo), não há corpo a escolher: vale o que está nas mãos, e o
+    // −2 do Montante, do Martelo de Guerra e do Machado Pesado entra (parecer da Veterana, G4). Antes o `Math.max`
+    // com o corpo (0, sem mão livre) engolia o negativo.
+    const defSum = nasMaos.length ? (maosLivres ? Math.max(defMaos, defCorpo) : defMaos) : defCorpo;
     return {
         habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum, penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen
     };
