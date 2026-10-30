@@ -96,7 +96,6 @@
     {
       "nome": "Pinça",
       "parte": "pinca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -113,7 +112,6 @@
     {
       "nome": "Mandíbulas",
       "parte": "mandibulas-entre-os-tentaculos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

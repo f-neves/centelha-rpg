@@ -83,7 +83,6 @@
     {
       "nome": "Mordida",
       "parte": "boca-na-face-de-baixo",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -100,7 +99,6 @@
     {
       "nome": "Cauda",
       "parte": "cauda-de-chicote",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

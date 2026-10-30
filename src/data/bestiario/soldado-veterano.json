@@ -115,7 +115,6 @@
     {
       "nome": "Espada longa a duas mãos",
       "parte": "espada-longa-duas-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -132,7 +131,6 @@
     {
       "nome": "Punhos",
       "parte": "punhos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

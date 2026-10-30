@@ -74,7 +74,6 @@
     {
       "nome": "Tentáculo",
       "parte": "tentaculo-ponta-cornea",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -91,7 +90,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

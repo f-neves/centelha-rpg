@@ -80,7 +80,6 @@
     {
       "nome": "Pancada",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -97,7 +96,6 @@
     {
       "nome": "Mordida",
       "parte": "presas",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

@@ -68,7 +68,6 @@
     {
       "nome": "Garras",
       "parte": "garras-das-maos",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -85,7 +84,6 @@
     {
       "nome": "Mordida",
       "parte": "boca-de-dentes-tortos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

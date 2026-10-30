@@ -83,7 +83,6 @@
     {
       "nome": "Mordida de leão",
       "parte": "cabeca-de-leao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -100,7 +99,6 @@
     {
       "nome": "Chifrada de cabra",
       "parte": "cabeca-de-cabra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -117,7 +115,6 @@
     {
       "nome": "Mordida de dragão",
       "parte": "cabeca-de-dragao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

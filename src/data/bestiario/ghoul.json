@@ -68,7 +68,6 @@
     {
       "nome": "Garras",
       "parte": "unhas-compridas-das-maos",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -85,7 +84,6 @@
     {
       "nome": "Mordida",
       "parte": "boca-de-dentes-de-comer-carne",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

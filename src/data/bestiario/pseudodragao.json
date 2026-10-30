@@ -87,7 +87,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -104,7 +103,6 @@
     {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -121,7 +119,6 @@
     {
       "nome": "Ferrão",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

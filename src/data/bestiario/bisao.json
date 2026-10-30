@@ -96,7 +96,6 @@
     {
       "nome": "Chifrada",
       "parte": "chifre",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -113,7 +112,6 @@
     {
       "nome": "Investida (marrada)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

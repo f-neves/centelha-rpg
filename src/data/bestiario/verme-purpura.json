@@ -77,7 +77,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -94,7 +93,6 @@
     {
       "nome": "Ferrão de cauda",
       "parte": "ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

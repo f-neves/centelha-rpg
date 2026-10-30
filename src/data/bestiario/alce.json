@@ -100,7 +100,6 @@
     {
       "nome": "Coice (pata dianteira)",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -117,7 +116,6 @@
     {
       "nome": "Pisão (ergue-se e pisoteia)",
       "parte": "casco",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -134,7 +132,6 @@
     {
       "nome": "Galhada (só macho)",
       "parte": "galhada",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

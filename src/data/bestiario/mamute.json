@@ -85,7 +85,6 @@
     {
       "nome": "Presada",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -102,7 +101,6 @@
     {
       "nome": "Pisão (ou investida)",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

@@ -77,7 +77,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -94,7 +93,6 @@
     {
       "nome": "Salto de emboscada",
       "parte": "corpo-e-boca",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

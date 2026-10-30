@@ -96,7 +96,6 @@
     {
       "nome": "Tentáculo",
       "parte": "tentaculo-dos-ombros",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -113,7 +112,6 @@
     {
       "nome": "Língua",
       "parte": "lingua",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -130,7 +128,6 @@
     {
       "nome": "Bocada",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

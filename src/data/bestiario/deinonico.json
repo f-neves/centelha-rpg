@@ -85,7 +85,6 @@
     {
       "nome": "Garra em foice do pé",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -102,7 +101,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -119,7 +117,6 @@
     {
       "nome": "Garras da mão",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

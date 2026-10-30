@@ -98,7 +98,6 @@
     {
       "nome": "Presada (golpe de presa)",
       "parte": "presa",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -115,7 +114,6 @@
     {
       "nome": "Investida",
       "parte": "corpo",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

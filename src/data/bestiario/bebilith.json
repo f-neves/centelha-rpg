@@ -84,7 +84,6 @@
     {
       "nome": "Mordida",
       "parte": "queliceras",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -101,7 +100,6 @@
     {
       "nome": "Garras",
       "parte": "patas-dianteiras-farpadas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

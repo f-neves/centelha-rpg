@@ -101,7 +101,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 |---|---|---|
 | `nome` | texto | `Nome` |
 | `parte` | id | `Parte` |
-| `habilidade` | id | a Habilidade da frase "Jogada:" (Briga, Disparo...) |
+| `habilidade` | `disparo`, `atirador` ou `arremesso`; cond. (só no tiro e no arremesso) | a Habilidade da frase "Jogada:". No corpo a corpo não vai: o motor rola pela maior entre Briga e Armas, com o maior entre Força e Destreza e o termo da Centelha (D-208 completada pela D-258) |
 | `classe` | id | `Classe` |
 | `pgr` | `[Preparo, Golpe, Recuperação]`, em Ticks | `P/G/R` (seção 6) |
 | `dado` | texto (`1d6`, `1d6-2`, `6d6`) | `Dano`, o dado |
@@ -113,7 +113,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 
 A coluna `Velocidade` da ficha não vai: é P + G + R, e o motor soma (D-221). O conversor confere a soma e para se ela não bater.
 
-O ataque com arma do livro guarda só `nome`, `arma` (o id de `armas.json`) e `habilidade`; o resto vem do catálogo, como na ficha do jogador (D-220).
+O ataque com arma do livro guarda só `nome` e `arma` (o id de `armas.json`); o resto vem do catálogo, como na ficha do jogador (D-220). A Habilidade também: a de tiro e arremesso é a `pericia` do catálogo, e a de corpo a corpo é a maior entre Briga e Armas, qualquer que seja a do catálogo (D-258).
 
 Não há `atrib`: o motor tira o Atributo da Habilidade. Disparo usa Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208; decisoes-autor §14; `combate.md:156`).
 

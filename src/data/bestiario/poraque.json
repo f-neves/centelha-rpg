@@ -89,7 +89,6 @@
     {
       "nome": "Descarga elétrica",
       "parte": "corpo-orgaos-eletricos",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -106,7 +105,6 @@
     {
       "nome": "Mordida",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

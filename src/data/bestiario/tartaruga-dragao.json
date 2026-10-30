@@ -83,7 +83,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -100,7 +99,6 @@
     {
       "nome": "Garras",
       "parte": "nadadeira-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

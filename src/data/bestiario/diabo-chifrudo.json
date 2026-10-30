@@ -91,7 +91,6 @@
     {
       "nome": "Mordida",
       "parte": "boca-de-presas",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -108,7 +107,6 @@
     {
       "nome": "Cauda",
       "parte": "cauda-de-ferrao",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

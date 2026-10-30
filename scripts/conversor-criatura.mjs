@@ -26,6 +26,8 @@ const M = await carregarTS('src/lib/motor.ts');
 const UN = { g: 0.001, kg: 1, t: 1000 };
 const TAMANHOS = 'Minúsculo|Miúdo|Pequeno|Médio|Grande|Enorme|Imenso|Colossal';
 const ARMAS = dado('armas.json').filter((a) => a.arma);
+// a Habilidade que o ataque natural guarda: só a de tiro e arremesso (D-258); a de corpo a corpo o motor calcula
+const HAB_DE_LONGE = new Set(['disparo', 'atirador', 'arremesso']);
 const IDS_ANTIGOS = dado('ids-antigos.json');
 const ARMADURAS = new Set(dado('armaduras.json').filter((a) => a.armadura).map((a) => a.id));
 const ESCUDOS = new Set(dado('escudos.json').filter((a) => a.escudo).map((a) => a.id));
@@ -351,10 +353,10 @@ export function converterFicha(texto, { site = null } = {}) {
     // a parte é o pedaço do corpo; o resto da célula diz como o golpe sai ("boca, à distância")
     const a = { nome, parte: slug(semMarcas(r['Parte'] ?? '').split(',')[0]) };
     const cls = slug(semMarcas(r['Classe'] ?? ''));
-    if (jog) a.habilidade = slug(jog[1]);
-    // D-208: golpes naturais corpo a corpo usam a maior entre Briga e Armas; a ficha
-    // não repete essa escolha no JSON. Tiro e arremesso continuam exigindo a Habilidade.
-    else if (cls === 'distancia' || cls === 'arremesso') para(`${onde}, ${nome}: Habilidade ausente na frase Jogada`);
+    // D-208 completada pela D-258: o corpo a corpo rola pela maior entre Briga e Armas, que o
+    // motor calcula; o JSON só guarda a Habilidade de tiro e arremesso, que escolhe o Atributo.
+    if (jog && HAB_DE_LONGE.has(slug(jog[1]))) a.habilidade = slug(jog[1]);
+    else if (cls === 'distancia' || cls === 'arremesso') para(`${onde}, ${nome}: Habilidade de tiro ou arremesso ausente na frase Jogada`);
     a.classe = cls;
     const pgr = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/);
     if (!pgr) para(`${onde}, ${nome}: P/G/R ilegível`);
@@ -642,7 +644,7 @@ export function converterFicha(texto, { site = null } = {}) {
             const habilidade = poder?.ativacao?.match(/(?:Força|Destreza|Vigor|Percepção) \+ (Briga|Armas|Disparo|Atirador|Arremesso)/)?.[1];
             const acerto = det.find(x=>/^Acerto [ +−-]*\d+$/.test(x))?.match(/[+−-]?\d+/)?.[0];
             if (habilidade && acerto !== undefined && det.some(x=>/^não bloqueia$/.test(x)) && Number(det[2])===pgr.slice(1).reduce((n,x)=>n+Number(x),0)) {
-              base = {nome:nomeA, parte:slug(nomeA), habilidade:slug(habilidade), acerto:Number(acerto.replace('−','-')), bloqueiaComoArma:null, nivelPerfuracao:null};
+              base = {nome:nomeA, parte:slug(nomeA), ...(HAB_DE_LONGE.has(slug(habilidade)) ? {habilidade:slug(habilidade)} : {}), acerto:Number(acerto.replace('−','-')), bloqueiaComoArma:null, nivelPerfuracao:null};
             }
           }
           if (!base || !pgr || !dd) { para(`Variantes, ${nomeF}: o ataque "${nomeA}" ilegível`); continue; }

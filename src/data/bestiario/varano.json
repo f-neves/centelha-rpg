@@ -89,7 +89,6 @@
     {
       "nome": "Mordida (morde e rasga)",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

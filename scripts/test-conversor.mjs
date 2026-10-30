@@ -104,13 +104,11 @@ for (const id of Object.keys(DIFERENCAS)) {
   const ex = JSON.parse(ler(`${id}-exemplo.json`));
   if (JSON.stringify(paradas) !== JSON.stringify(PARADAS[id])) falhas.push(`${id}: paradas ${JSON.stringify(paradas)}, esperadas ${JSON.stringify(PARADAS[id])}`);
   const { revisao: rc, ...c } = criatura, { revisao: re, ...e } = ex;
-  // D-208: a fonte omite a Jogada das Garras. Em corpo a corpo isso deixa a escolha
-  // Briga ou Armas para o motor e não deve impedir a conversão.
-  if (id === 'dragao-branco-jovem') {
-    if (c.ataques.find(a=>a.nome==='Garras').habilidade !== undefined) falhas.push('Garras: Habilidade foi inferida sem Jogada');
-    e.ataques=structuredClone(e.ataques);
-    delete e.ataques.find(a=>a.nome==='Garras').habilidade;
-  }
+  // D-208 completada pela D-258: o ataque natural de corpo a corpo não guarda Habilidade, nem quando a frase
+  // Jogada a escreve (a Mordida do lobisomem diz Briga), nem quando a omite (as Garras do dragão); o de tiro guarda.
+  for (const f of [c, ...(c.formas || [])]) for (const a of f.ataques || [])
+    if (!a.arma && a.habilidade !== undefined && !['disparo', 'atirador', 'arremesso'].includes(a.habilidade)) falhas.push(`${id}, ${a.nome}: Habilidade de corpo a corpo gravada (${a.habilidade})`);
+  if (id === 'dragao-branco-jovem' && c.ataques.find(a=>a.nome==='Sopro de frio')?.habilidade !== 'disparo') falhas.push('dragão: o Sopro de frio perdeu o Disparo');
   const out = [];
   dif(c, e, '', out);
   const usadas = new Set();

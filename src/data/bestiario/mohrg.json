@@ -75,7 +75,6 @@
     {
       "nome": "Mãos ossudas",
       "parte": "maos-de-osso",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -92,7 +91,6 @@
     {
       "nome": "Língua",
       "parte": "lingua-apodrecida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

@@ -84,7 +84,6 @@
     {
       "nome": "Garras",
       "parte": "garra-patas-da-frente",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -101,7 +100,6 @@
     {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

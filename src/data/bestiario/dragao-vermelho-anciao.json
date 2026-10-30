@@ -107,7 +107,6 @@
     {
       "nome": "Mordida",
       "parte": "boca",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -124,7 +123,6 @@
     {
       "nome": "Garras",
       "parte": "pata-dianteira",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -141,7 +139,6 @@
     {
       "nome": "Cauda",
       "parte": "cauda",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

@@ -99,7 +99,6 @@
     {
       "nome": "Mordida",
       "parte": "boca-larga-de-dentes",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,
@@ -116,7 +115,6 @@
     {
       "nome": "Tentáculo",
       "parte": "tentaculo-de-ponta-dura",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

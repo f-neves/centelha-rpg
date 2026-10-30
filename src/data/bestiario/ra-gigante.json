@@ -78,7 +78,6 @@
     {
       "nome": "Bocada",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -95,7 +94,6 @@
     {
       "nome": "Língua",
       "parte": "lingua",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

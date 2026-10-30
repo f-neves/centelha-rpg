@@ -50,12 +50,12 @@
 
   "ataques": [
     {
-      "nome": "Mordida", "parte": "boca", "habilidade": "briga", "classe": "media",
+      "nome": "Mordida", "parte": "boca", "classe": "media",
       "pgr": [2, 1, 3], "dado": "1d6", "multiplicadorForca": 1,
       "tipoDano": "perfuracao", "nivelPerfuracao": 0, "acerto": 0, "bloqueiaComoArma": null
     },
     {
-      "nome": "Garras", "parte": "mao", "habilidade": "briga", "classe": "media",
+      "nome": "Garras", "parte": "mao", "classe": "media",
       "pgr": [2, 1, 3], "dado": "1d6", "multiplicadorForca": 1,
       "tipoDano": "corte", "nivelPerfuracao": 0, "acerto": 0, "bloqueiaComoArma": null
     }
@@ -94,7 +94,7 @@
       "deslocamento": { "terra": { "batalha": 7, "arranque": 10, "corrida": 16 } },
       "ataques": [
         {
-          "nome": "Mordida", "parte": "boca", "habilidade": "briga", "classe": "media",
+          "nome": "Mordida", "parte": "boca", "classe": "media",
           "pgr": [2, 1, 3], "dado": "1d6", "multiplicadorForca": 1,
           "tipoDano": "perfuracao", "nivelPerfuracao": 0, "acerto": 0, "bloqueiaComoArma": null
         }

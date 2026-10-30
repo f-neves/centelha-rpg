@@ -81,7 +81,6 @@
     {
       "nome": "Pseudópode",
       "parte": "braco-de-carne-grudenta",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -98,7 +97,6 @@
     {
       "nome": "Mordida",
       "parte": "a-boca-no-lugar-da-tampa",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

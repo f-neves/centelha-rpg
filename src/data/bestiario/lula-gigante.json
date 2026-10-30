@@ -89,7 +89,6 @@
     {
       "nome": "Bico",
       "parte": "mordida",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -106,7 +105,6 @@
     {
       "nome": "Tentáculos",
       "parte": "braco",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,

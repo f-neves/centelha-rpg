@@ -92,7 +92,6 @@
     {
       "nome": "Garras",
       "parte": "garra-taloes",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -109,7 +108,6 @@
     {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
@@ -126,7 +124,6 @@
     {
       "nome": "Garras em mergulho",
       "parte": "garra",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

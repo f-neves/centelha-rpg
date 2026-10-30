@@ -78,7 +78,6 @@
     {
       "nome": "Garras",
       "parte": "maos-de-garra",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -95,7 +94,6 @@
     {
       "nome": "Mordida",
       "parte": "dentes-negros",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,

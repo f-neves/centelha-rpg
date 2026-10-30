@@ -80,7 +80,6 @@
     {
       "nome": "Pancada de pedra",
       "parte": "punho",
-      "habilidade": "briga",
       "classe": "pesada",
       "pgr": [
         3,

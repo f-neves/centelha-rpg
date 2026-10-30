@@ -79,7 +79,6 @@
     {
       "nome": "Tentáculo",
       "parte": "tentaculo",
-      "habilidade": "briga",
       "classe": "leve",
       "pgr": [
         1,
@@ -96,7 +95,6 @@
     {
       "nome": "Bico",
       "parte": "bico",
-      "habilidade": "briga",
       "classe": "media",
       "pgr": [
         2,
