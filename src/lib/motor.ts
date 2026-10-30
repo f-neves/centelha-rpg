@@ -755,6 +755,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const vestida = vest ? {
         esquiva: vest.esquiva, bloqueio: vest.bloqueio, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
     } : undefined;
+    const pecas: any[] = [];
     const ataques = c.ataques.map((a: any, i: number) => {
         const w: any = armaDe(a), h = r.ataques[i].habilidade, hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
         const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? 'percepcao' : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
@@ -767,10 +768,12 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         const tipo = modo?.tipo ?? w?.tipoDano ?? a.tipoDano;
         const tipoExpr = (MODO_SIGLA as any)[tipo === 'perfuracao' ? 'perfurante' : tipo] ?? '(' + tipo + ')';
         const perf = tipo === 'perfuracao' || tipo === 'perfurante' ? (modo?.perf ?? w?.pen ?? a.nivelPerfuracao ?? 0) : null;
+        const forcaInvestida = forcaDaInvestida(wd ? wd.forca : (c.atributos.forca ?? 0), wd ? wd.multiplicadorForca : (a.multiplicadorForca ?? 0), ['disparo', 'atirador', 'arremesso'].includes(h));
+        pecas[i] = { nome: a.nome, dado: Number(dado?.match(/^\d+/)?.[0] ?? 0), extra, forcaInvestida, tipoExpr, perfTxt: perf !== null ? ' · perf. ' + perf : '', semDano: dado === null };
         return {
             nome: a.nome, atrib, pericia: h, dado: Number(dado?.match(/^\d+/)?.[0] ?? 0), tipo, classe: w?.classe ?? a.classe, ticks: r.ataques[i].velocidade, acerto: r.ataques[i].acerto,
             pool: Math.floor(soma / 2) + 'd6' + (soma % 2 ? '+2' : '') + (acerto ? (acerto > 0 ? ' +' : ' −') + Math.abs(acerto) : ''),
-            dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf
+            dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf, forcaInvestida
         };
     });
     const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[]).find(Boolean);
@@ -779,7 +782,8 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     // diz o teto do golpe ligado a ela (M8), e o agarrão e a derrubada dizem a jogada desta criatura (M2).
     const habilidades = c.habilidadesEspeciais.map((h: any) => {
         const ligado = h.ataque ? c.ataques.find((a: any) => a.nome === h.ataque) : undefined;
-        const prosa = [textoDaRegraDaCriatura(h.regra, ligado ? tetoDaRajadaDaCriatura(ligado) : null), jogadaDaManobra(h.regra, c), h.texto, h.efeito].filter(Boolean).map((s) => String(s).trim().replace(/\.$/, '')).join('. ');
+        const pecaLigada = ligado ? pecas[c.ataques.indexOf(ligado)] : undefined;
+        const prosa = [textoDaRegraDaCriatura(h.regra, ligado ? tetoDaRajadaDaCriatura(ligado) : null), jogadaDaManobra(h.regra, c), danoDaInvestidaNoCard(h.regra, pecaLigada?.semDano ? undefined : pecaLigada, c.atributos.forca ?? 0), h.texto, h.efeito].filter(Boolean).map((s) => String(s).trim().replace(/\.$/, '')).join('. ');
         const campos = CAMPOS_HABILIDADE.filter(([k]) => h[k]).map(([k, rotulo]) => ({ rotulo, valor: String(h[k]) }));
         const descricao = [prosa, ...campos.map((x) => x.rotulo + ': ' + x.valor.trim().replace(/\.$/, ''))].filter(Boolean).join('. ') || h.regra || '';
         return { nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), ...(h.tecnica ? {tecnica:h.tecnica} : {}), ...(h.arte ? {arte:h.arte} : {}), descricao, ...(campos.length ? { texto: prosa, campos } : {}) };
@@ -890,8 +894,12 @@ export function conjuntoPersonagem(S: any, cj: any, entrada?: any) {
     // −2 do Montante, do Martelo de Guerra e do Machado Pesado entra (parecer da Veterana, G4). Antes o `Math.max`
     // com o corpo (0, sem mão livre) engolia o negativo.
     const defSum = nasMaos.length ? (maosLivres ? Math.max(defMaos, defCorpo) : defMaos) : defCorpo;
+    // A Força a mais da Investida (D-269), pela Força e pelo multiplicador que a arma da mão hábil já usa.
+    const multHabil = !dist && itVers(habil) ? (inabil.kind !== 'nada' ? (atk.forcaMult ?? fm.umaMao) : fm.duasMaos)
+        : dist ? (atk.forcaMult ?? 1) : (atk.maos === 2 ? (atk.forcaMult ?? fm.duasMaos) : (atk.forcaMult ?? fm.umaMao));
+    const forcaInvestida = forcaDaInvestida(!dist && itVers(habil) ? forca : capF, multHabil, dist);
     return {
-        habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum, penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen
+        habil, inabil, atk, dados, bonus, flat, dist, versoes, reqForca, dupla, defSum, penSum: (habil.pen || 0) + (inabil.pen || 0), armorPen, forcaInvestida
     };
 }
 export function itemDoJogador(slot: any) {
@@ -1000,6 +1008,8 @@ export interface ResumoCombate {
     pericias: Record<string, number>;
     /** A Velocidade da arma em uso, do item que a ficha guarda (D-259). */
     velocidade?: number | null;
+    /** A Força que a ação de Investida soma mais uma vez no dano deste golpe (D-269); 0 no golpe de longe. */
+    forcaInvestida?: number;
 }
 /** O dano da própria arma, para a classe do Quase-Acerto sair do item e não do catálogo (D-259). */
 const exprDaArma = (w: any) => `${w.dado}d6${w.danoBonus ? (w.danoBonus > 0 ? '+' : '-') + Math.abs(w.danoBonus) : ''}`;
@@ -1016,7 +1026,7 @@ export function combatePersonagem(S: any): ResumoCombate {
     const dz = deslocamento({ forca: at.forca || 0, destreza: at.destreza || 0, atletismo: hab.atletismo || sec.atletismo || 0, centelha: S.centelha || 0 }, RACA[S.raca]?.deslocamentoFrac ?? 1);
     const pen = Math.floor((a.armorPen + a.penSum) / 2), passo = { batalha: Math.max(0, dz.normal - pen), arranque: Math.max(0, dz.arranque - pen), corrida: Math.max(0, dz.corrida - pen) };
     return {
-        arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.origem ? '' : (w.id || w.nome), w.origem && Number(w.dado) > 0 ? exprDaArma(w) : dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }, velocidade: Number.isFinite(Number(w.ticks)) ? Number(w.ticks) : null
+        arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.origem ? '' : (w.id || w.nome), w.origem && Number(w.dado) > 0 ? exprDaArma(w) : dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }, velocidade: Number.isFinite(Number(w.ticks)) ? Number(w.ticks) : null, forcaInvestida: a.forcaInvestida
     };
 }
 
@@ -1055,12 +1065,33 @@ export function jogadaDaManobra(regra: string | undefined, c: { atributos: Num; 
   return 'Nesta criatura: ' + Math.floor(soma / 2) + 'd6' + (bonus ? ' +' + bonus : '') + ' (' + nome + ' ' + valor + ' + Briga ' + briga + ').';
 }
 
+/**
+ * A Força a mais da ação de Investida (D-269): a Investida soma a Força mais uma vez no dano, além do +1d6 (uma mão
+ * ou o corpo, de × 1 para × 2; duas mãos, de × 2 para × 3), para o personagem e para a criatura. O golpe de longe não
+ * investe, e o golpe que não soma a Força (× 0) não ganha Força nenhuma: a decisão fala de × 1 e × 2, e não o cria.
+ * `forca` é a Força que a arma já usa (com o teto dela, quando tem).
+ */
+export function forcaDaInvestida(forca: number, multiplicador: number, distancia: boolean): number {
+  const extra = (regras as any).combate?.movimento?.investida?.forcaExtra ?? 1;
+  return distancia || !(multiplicador > 0) ? 0 : Math.max(0, forca) * extra;
+}
+
+/** O dano do golpe ligado à Investida desta criatura, já com o +1d6 e a Força a mais (D-269), para o card. */
+export function danoDaInvestidaNoCard(regra: string | undefined, a: { nome: string; dado: number; extra: number; forcaInvestida: number; tipoExpr: string; perfTxt: string } | undefined, forca: number): string | null {
+  if (regra !== 'investida') return null;
+  const dados = (regras as any).combate?.movimento?.investida?.danoDados ?? 1;
+  if (!a) return 'Nesta criatura: +' + dados + 'd6 e a Força ' + forca + ' mais uma vez no dano do golpe.';
+  const fixo = a.extra + a.forcaInvestida;
+  return 'Nesta criatura, ' + a.nome + ' investindo: ' + (a.dado + dados) + 'd6' + (fixo > 0 ? ' +' + fixo : fixo < 0 ? ' −' + (-fixo) : '') + ' ' + a.tipoExpr + a.perfTxt
+    + ' (o +' + dados + 'd6 e a Força ' + a.forcaInvestida + ' mais uma vez).';
+}
+
 /** Resumos das manobras do livro para o card; o detalhe da criatura vem depois. */
 export function textoDaRegraDaCriatura(id?: string, tetoRajada?: number | null): string | null {
   if (id === 'rajada') return textoDaRajada(tetoRajada);
   const textos: Record<string,string> = {
     agarrar: 'Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.',
-    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.',
+    investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo.',
     furtividade: 'A aproximação escondida usa Furtividade contra a Percepção Passiva de quem pode perceber. O Mestre aplica as circunstâncias e o Tamanho na mesa.',
     derrubar: 'Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3.',
     empurrar: 'Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra.',

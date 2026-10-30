@@ -544,7 +544,7 @@ revistos por ela.
   Esquiva e Bloqueio em −2". `defesaPerdida()`, `src/lib/combate-tempo.ts:696`: `pressao = (acao?.pressao || 0) * pressaoPorAtaque`.
   Os dois lugares que incrementam a pressão só somam no ALVO do golpe, nunca em quem ataca:
   `scripts/sim/motor.mjs:437`: `(base.pressao || 0) + 1`.
-  Na mesa, `src/pages/mesa/grid.astro:9069`: `pressao: (antes.pressao || 0) + golpes` (repete em `:9150`).
+  Na mesa, `src/pages/mesa/grid.astro:9076`: `pressao: (antes.pressao || 0) + golpes` (repete em `:9150`).
   O Grid hoje cobra MENOS do que o livro escreve. Achado comparando a
   bancada da Fase 5b (que soma os dois lados, por decisão explícita do autor nesta rodada)
   com o comportamento real do Grid. **Não mexi no Grid nem no `motor.mjs`** (fora de

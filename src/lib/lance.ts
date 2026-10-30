@@ -102,6 +102,12 @@ export interface EntradaLance {
      * existia quando foram colhidos.
      */
     danoDados?: number;
+    /**
+     * O FIXO A MAIS NO DANO, e hoje quem o põe é a Investida: a Força mais uma vez
+     * (D-269: uma mão ou o corpo, de × 1 para × 2; duas mãos, de × 2 para × 3).
+     * Opcional e zero por omissão, pelo mesmo motivo do `danoDados`.
+     */
+    danoFlat?: number;
     /** As duas metades do Quase-Acerto que vêm da arma. */
     qaArmaBonus: number; qaArmaDano: number;
     /** A Centelha do atacante, que SOMA ao raspão (Reforma da Centelha, 28/09/2026). */
@@ -202,7 +208,7 @@ export function resolverGolpe(entrada: EntradaLance, fonte: FonteDeDados = fonte
   let absorcao = 0;
   let liquido = 0;
   if (veredito === 'acerto') {
-    const d = fonte.rolar(entrada.atacante.dano, entrada.atacante.danoDados || 0);
+    const d = fonte.rolar(entrada.atacante.dano, entrada.atacante.danoDados || 0, entrada.atacante.danoFlat || 0);
     bruto = Math.max(0, d.total);
     rollsDano = d.rolls;
     absorcao = Math.min(bruto, entrada.alvo.soak);

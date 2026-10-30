@@ -730,7 +730,7 @@ async function cenaInvestidaUmaVez(br, url, reprojecao = false) {
   await p.setViewport({ width: 1400, height: 950 });
   const erros = [];
   p.on('pageerror', (e) => erros.push(e.message));
-  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo${reprojecao ? '&tetoAvanco=1' : '&espalhar=1'}`,
+  await p.goto(`${url}/mesa/grid?id=${MESA}&bench=12&cols=24&rows=16&nevoa=0&tempo=simultaneo${reprojecao ? '&tetoAvanco=1' : '&espalhar=1&forca=3'}`,
     { waitUntil: 'networkidle0', timeout: 60000 });
   await p.waitForSelector('#gr-tokens .gr-token', { timeout: 30000 });
   await espera(700);
@@ -877,6 +877,50 @@ async function cenaInvestidaUmaVez(br, url, reprojecao = false) {
   ok(tickSaida != null && golpeVivo != null && tickSaida === golpeVivo,
     `e o relogio TIRA a marca exatamente quando o Preparo acaba (saiu no Tick ${tickSaida}, `
     + `agenda ao vivo do golpe ${golpeVivo}, declaração original ${decl.tick})`);
+
+  // 4. O DANO DA INVESTIDA NA FOLHA DE VERDADE (D-269): o +1d6 e a Força mais uma
+  //    vez. Antes o +1d6 só existia no objeto do lance (o oráculo), e o botão de
+  //    rolar, a digitação e o `fim` rolavam a expressão crua da arma. Medido aqui
+  //    na folha que o cartão da faixa abre, contra o resumo da peça.
+  const folhaInv = await p.evaluate(async () => {
+    // A Força de quem investe, lida da fonte da peça (a ficha do PC na bancada), e não do resumo.
+    const T = window.__SB?.tabelas || {};
+    const c = (T.combatentes || []).find((x) => x.id === 'c002');
+    const pj = (T.personagens || []).find((x) => x.id === c?.personagem_id);
+    const forcaFonte = pj?.ficha?.attrs?.forca ?? null;
+    document.querySelector('#gr-ar .ar-item')?.click();
+    await new Promise((x) => setTimeout(x, 1100));
+    const folha = document.getElementById('alvo-dlg');
+    if (!folha?.open) return { abriu: false };
+    const pool = document.getElementById('al-dn-pool')?.textContent || '';
+    document.getElementById('al-dn-rolar')?.click();
+    await new Promise((x) => setTimeout(x, 300));
+    const faces = (document.getElementById('al-dn')?.value || '').split(/[,\s]+/).filter(Boolean).length;
+    // As faces digitadas à mão somam o fixo da Investida também.
+    const dn = document.getElementById('al-dn');
+    const umas = Array.from({ length: faces }, () => '1').join(',');
+    dn.value = umas; dn.dispatchEvent(new Event('input', { bubbles: true }));
+    await new Promise((x) => setTimeout(x, 250));
+    const descrito = document.getElementById('al-dn-pool')?.textContent || '';
+    document.getElementById('al-nao')?.click();
+    await new Promise((x) => setTimeout(x, 900));
+    const arma = pool.split(' · Investida')[0].trim();
+    const extra = pool.match(/Investida: \+1d6 \+(\d+) \(a Força mais uma vez\)/);
+    return { abriu: true, tipo: c?.tipo, dano: arma, forca: extra ? Number(extra[1]) : null, forcaFonte, pool, faces, descrito };
+  });
+  ok(folhaInv.abriu, 'o cartão da faixa abre a folha do golpe da Investida');
+  if (folhaInv.abriu) {
+    const base = parseInt((folhaInv.dano.match(/(\d+)d6/) || [])[1] || '0', 10);
+    const fixo = (folhaInv.dano.replace(/\([^)]*\)/g, ' ').replace(/\d*d6/g, ' ').match(/[+\-−]\s*\d+/g) || [])
+      .reduce((s, m) => s + parseInt(m.replace(/[\s−]/g, (c) => (c === '−' ? '-' : '')), 10), 0);
+    ok(folhaInv.forcaFonte > 0 && folhaInv.forca === folhaInv.forcaFonte,
+      `a folha mostra o dano da Investida ao lado da arma, com a Força da peça (${folhaInv.tipo}, Força ${folhaInv.forcaFonte}: "${folhaInv.pool.trim()}")`);
+    ok(folhaInv.faces === base + 1,
+      `o botão de rolar rola o +1d6 (${folhaInv.faces} dados, a arma tem ${base}: ${folhaInv.dano})`);
+    const total = (folhaInv.descrito.match(/=\s*(-?\d+)/) || [])[1];
+    ok(Number(total) === base + 1 + fixo + folhaInv.forca,
+      `e a soma das faces leva a Força mais uma vez (${folhaInv.descrito.trim()}; esperado ${base + 1} + ${fixo} + ${folhaInv.forca})`);
+  }
 
   ok(erros.length === 0, `nenhum erro de pagina (${erros.slice(0, 2).join(' | ') || 'nenhum'})`);
   await p.close();

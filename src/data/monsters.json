@@ -344,7 +344,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -935,7 +936,8 @@
      "dano": "2d6 +15 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -1552,7 +1554,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     },
     {
      "nome": "Bico",
@@ -1560,7 +1563,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras em mergulho",
@@ -1568,7 +1572,8 @@
      "dano": "2d6 +13 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -1581,7 +1586,7 @@
    },
    {
     "nome": "mergulho predatório",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -1979,7 +1984,8 @@
      "dano": "1d6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     },
     {
      "nome": "Bico",
@@ -1987,7 +1993,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -2000,7 +2007,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras (talões) investindo: 2d6 +2 (C) (o +1d6 e a Força 2 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -2361,7 +2368,8 @@
      "dano": "1d6 +7 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Pisão (ergue-se e pisoteia)",
@@ -2369,7 +2377,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     },
     {
      "nome": "Galhada (só macho)",
@@ -2377,7 +2386,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -2739,7 +2749,8 @@
      "dano": "1d6 +8 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Cuspe ácido",
@@ -2747,7 +2758,8 @@
      "dano": "2d6 +2 (acido)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -3167,7 +3179,8 @@
      "dano": "2d6 +22 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -3529,7 +3542,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -3975,7 +3989,8 @@
      "dano": "1d6 +3 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -4462,7 +4477,8 @@
      "dano": "1d6 +9 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -5446,7 +5462,8 @@
      "dano": "2d6 +2 (fenomeno)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -6005,7 +6022,8 @@
      "dano": "2d6 +18 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -6460,7 +6478,8 @@
      "dano": "1d6 +2 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     },
     {
      "nome": "Punhos",
@@ -6468,7 +6487,8 @@
      "dano": "1d6 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -6836,7 +6856,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -7303,7 +7324,8 @@
      "dano": "1d6 +1 (fenomeno)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -7861,7 +7883,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Investida (marrada)",
@@ -7869,7 +7892,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -7888,7 +7912,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +21 (I) (o +1d6 e a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -8349,7 +8373,8 @@
      "dano": "1d6 +16 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras",
@@ -8357,7 +8382,8 @@
      "dano": "1d6 +10 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Mordida",
@@ -8365,7 +8391,8 @@
      "dano": "1d6 +10 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -8986,7 +9013,8 @@
      "dano": "1d6 +20 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Chicote de chamas",
@@ -8994,7 +9022,8 @@
      "dano": "1d6 +18 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 11
     },
     {
      "nome": "Garras",
@@ -9002,7 +9031,8 @@
      "dano": "1d6 +20 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -9558,7 +9588,8 @@
      "dano": "1d6 +1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -10031,7 +10062,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     },
     {
      "nome": "Mordida",
@@ -10039,7 +10071,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -10249,7 +10282,8 @@
         "dano": "1d6 +5 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 5
        },
        {
         "nome": "Mordida",
@@ -10257,7 +10291,8 @@
         "dano": "1d6 +7 (P) · perf. 0",
         "perfArma": 0,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 5
        }
       ]
      },
@@ -10475,7 +10510,8 @@
         "dano": "1d6 +7 (P) · perf. 0",
         "perfArma": 0,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 5
        }
       ]
      },
@@ -11017,7 +11053,8 @@
      "dano": "1d6 +10 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 8
     },
     {
      "nome": "Mordida",
@@ -11025,7 +11062,8 @@
      "dano": "1d6 +12 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -11235,7 +11273,8 @@
         "dano": "1d6 +10 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 8
        },
        {
         "nome": "Mordida",
@@ -11243,7 +11282,8 @@
         "dano": "1d6 +12 (P) · perf. 0",
         "perfArma": 0,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 8
        }
       ]
      },
@@ -11461,7 +11501,8 @@
         "dano": "1d6 +12 (P) · perf. 0",
         "perfArma": 0,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 8
        }
       ]
      },
@@ -11867,7 +11908,8 @@
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -12206,7 +12248,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -12655,7 +12698,8 @@
      "dano": "1d6 +16 (P) · perf. 2",
      "perfArma": 2,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Garras",
@@ -12663,7 +12707,8 @@
      "dano": "1d6 +16 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -13163,7 +13208,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Sopro elétrico",
@@ -13171,7 +13217,8 @@
      "dano": "2d6 +1 (raio)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -13552,7 +13599,8 @@
      "dano": "1d6 −1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -13877,7 +13925,8 @@
      "dano": "1d6 +4 (P) · perf. 2",
      "perfArma": 2,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -13896,7 +13945,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 4 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -14275,7 +14324,8 @@
      "dano": "1d6 +9 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -14283,7 +14333,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -14767,7 +14818,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Investida (marrada)",
@@ -14775,7 +14827,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -14794,7 +14847,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +21 (I) (o +1d6 e a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -15206,7 +15259,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -15720,7 +15774,8 @@
      "dano": "1d6 +8 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -16175,7 +16230,8 @@
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -16644,7 +16700,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Investida (marrada)",
@@ -16652,7 +16709,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -16671,7 +16729,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +21 (I) (o +1d6 e a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -17113,7 +17171,8 @@
      "dano": "1d6 +10 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Rajada cortante",
@@ -17121,7 +17180,8 @@
      "dano": "3d6 +4 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -17380,7 +17440,8 @@
         "dano": "1d6 +10 (C)",
         "perfArma": null,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 6
        }
       ]
      },
@@ -17832,7 +17893,8 @@
      "dano": "2d6 +28 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 14
     }
    ]
   },
@@ -17845,7 +17907,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão investindo: 3d6 +42 (I) (o +1d6 e a Força 14 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -18177,7 +18239,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -18563,7 +18626,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -19143,7 +19207,8 @@
      "dano": "1d6 +9 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     },
     {
      "nome": "Mordida",
@@ -19151,7 +19216,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -19404,7 +19470,8 @@
         "dano": "1d6 +9 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 6
        },
        {
         "nome": "Mordida",
@@ -19412,7 +19479,8 @@
         "dano": "1d6 +11 (P) · perf. 0",
         "perfArma": 0,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 6
        }
       ]
      },
@@ -19919,7 +19987,8 @@
      "dano": "1d6 +8 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -20216,7 +20285,8 @@
         "dano": "1d6 +8 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 6
        }
       ]
      },
@@ -20705,7 +20775,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -21104,7 +21175,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Salto de emboscada",
@@ -21112,14 +21184,15 @@
      "dano": "2d6 +21 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "salto de emboscada",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só ao sair da terra",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Salto de emboscada investindo: 3d6 +31 (P) · perf. 1 (o +1d6 e a Força 10 mais uma vez). só ao sair da terra",
     "classe": "livro",
     "regra": "investida"
    },
@@ -21551,7 +21624,8 @@
      "dano": "2d6 +9 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -22092,7 +22166,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     },
     {
      "nome": "Espada longa a duas mãos",
@@ -22100,7 +22175,8 @@
      "dano": "1d6 +11 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -22526,7 +22602,8 @@
      "dano": "1d6 +6 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -22926,7 +23003,8 @@
      "dano": "1d6 +4 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -23297,7 +23375,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -23666,7 +23745,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -24069,7 +24149,8 @@
      "dano": "1d6 +14 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     },
     {
      "nome": "Sopro de fogo",
@@ -24077,7 +24158,8 @@
      "dano": "3d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -24505,7 +24587,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Sopro de fogo",
@@ -24513,7 +24596,8 @@
      "dano": "2d6 +2 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -24968,7 +25052,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -25435,7 +25520,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Cauda",
@@ -25443,7 +25529,8 @@
      "dano": "1d6 +7 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -25898,7 +25985,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -26264,7 +26352,8 @@
      "dano": "1d6 +5 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -26638,7 +26727,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     },
     {
      "nome": "Garra",
@@ -26646,7 +26736,8 @@
      "dano": "1d6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -27028,7 +27119,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -27036,7 +27128,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -27444,7 +27537,8 @@
      "dano": "2d6 +16 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     },
     {
      "nome": "Mordida",
@@ -27452,7 +27546,8 @@
      "dano": "1d6 +14 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -27919,7 +28014,8 @@
      "dano": "2d6 +9 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -28309,7 +28405,8 @@
      "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -28317,14 +28414,15 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 3d6 +14 (I) (o +1d6 e a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -28695,7 +28793,8 @@
      "dano": "1d6 +9 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Azagaia",
@@ -28703,7 +28802,8 @@
      "dano": "1d6 +9 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "arremesso"
+     "classe": "arremesso",
+     "forcaInvestida": 0
     },
     {
      "nome": "Coice",
@@ -28711,7 +28811,8 @@
      "dano": "2d6 +9 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -28754,7 +28855,7 @@
    },
    {
     "nome": "Investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 7 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -29104,7 +29205,8 @@
      "dano": "1d6 +2 (P) · perf. 1",
      "perfArma": 1,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -29513,7 +29615,8 @@
      "dano": "1d6 +11 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mandíbulas",
@@ -29521,7 +29624,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -29995,7 +30099,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 9
     },
     {
      "nome": "Rocha arremessada",
@@ -30003,7 +30108,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -30485,7 +30591,8 @@
      "dano": "1d6 +1 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -30896,7 +31003,8 @@
      "dano": "1d6 +1 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -31299,7 +31407,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -31813,7 +31922,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Bico",
@@ -31821,7 +31931,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -32229,7 +32340,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -32697,7 +32809,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -33570,7 +33683,8 @@
      "dano": "2d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -33950,7 +34064,8 @@
      "dano": "2d6 +6 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -34315,7 +34430,8 @@
      "dano": "1d6 +4 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -34747,7 +34863,8 @@
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -35102,7 +35219,8 @@
      "dano": "2d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -35478,7 +35596,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     },
     {
      "nome": "Mordida",
@@ -35486,7 +35605,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     },
     {
      "nome": "Garras da mão",
@@ -35494,7 +35614,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -35513,7 +35634,7 @@
    },
    {
     "nome": "investida saltada",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garra em foice do pé investindo: 2d6 +8 (P) · perf. 0 (o +1d6 e a Força 4 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -35876,7 +35997,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -36468,7 +36590,8 @@
      "dano": "1d6 +14 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -36817,7 +36940,8 @@
         "dano": "1d6 +14 (I)",
         "perfArma": null,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 8
        }
       ]
      },
@@ -37457,7 +37581,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -38091,7 +38216,8 @@
      "dano": "1d6 +14 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 4
     },
     {
      "nome": "Mordida",
@@ -38099,7 +38225,8 @@
      "dano": "1d6 +6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -38683,7 +38810,8 @@
      "dano": "1d6 +26 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 10
     },
     {
      "nome": "Mordida",
@@ -38691,7 +38819,8 @@
      "dano": "1d6 +16 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Cauda",
@@ -38699,7 +38828,8 @@
      "dano": "1d6 +16 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -39276,7 +39406,8 @@
      "dano": "1d6 +24 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 9
     },
     {
      "nome": "Cauda",
@@ -39284,7 +39415,8 @@
      "dano": "1d6 +15 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     },
     {
      "nome": "Garras",
@@ -39292,7 +39424,8 @@
      "dano": "1d6 +15 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -40066,7 +40199,8 @@
      "dano": "1d6 +21 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     },
     {
      "nome": "Mordida",
@@ -40074,7 +40208,8 @@
      "dano": "1d6 +21 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     },
     {
      "nome": "Cauda",
@@ -40082,7 +40217,8 @@
      "dano": "1d6 +21 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     }
    ]
   },
@@ -40779,7 +40915,8 @@
      "dano": "1d6 +12 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -41347,7 +41484,8 @@
      "dano": "1d6 +13 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Ferrão",
@@ -41355,7 +41493,8 @@
      "dano": "1d6 +13 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -41922,7 +42061,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -42476,7 +42616,8 @@
      "dano": "2d6 +10 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -43003,7 +43144,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -43374,7 +43516,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -43595,7 +43738,8 @@
         "dano": "1d6 +3 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 3
        }
       ]
      },
@@ -44126,7 +44270,8 @@
      "dano": "1d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Garras",
@@ -44134,7 +44279,8 @@
      "dano": "1d6 +11 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Sopro ácido",
@@ -44142,7 +44288,8 @@
      "dano": "3d6 +4 (acido)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -44707,7 +44854,8 @@
      "dano": "1d6 +17 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Garras",
@@ -44715,7 +44863,8 @@
      "dano": "1d6 +17 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Cauda",
@@ -44723,7 +44872,8 @@
      "dano": "2d6 +28 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     },
     {
      "nome": "Sopro elétrico",
@@ -44731,7 +44881,8 @@
      "dano": "9d6 +6 (raio)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -45441,7 +45592,8 @@
      "dano": "1d6 +12 (P) · perf. 2",
      "perfArma": 2,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Garras",
@@ -45449,7 +45601,8 @@
      "dano": "1d6 +12 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Sopro de frio",
@@ -45457,7 +45610,8 @@
      "dano": "6d6 +4 (gelo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -46238,7 +46392,8 @@
      "dano": "1d6 +19 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     },
     {
      "nome": "Garras",
@@ -46246,7 +46401,8 @@
      "dano": "1d6 +19 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     },
     {
      "nome": "Sopro de fogo",
@@ -46254,7 +46410,8 @@
      "dano": "9d6 +7 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -47185,7 +47342,8 @@
      "dano": "1d6 +16 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Garras",
@@ -47193,7 +47351,8 @@
      "dano": "1d6 +16 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Sopro ácido",
@@ -47201,7 +47360,8 @@
      "dano": "9d6 +6 (acido)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -47845,7 +48005,8 @@
      "dano": "1d6 +17 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Garras",
@@ -47853,7 +48014,8 @@
      "dano": "1d6 +17 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Cauda",
@@ -47861,7 +48023,8 @@
      "dano": "2d6 +28 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     },
     {
      "nome": "Sopro de fogo",
@@ -47869,7 +48032,8 @@
      "dano": "9d6 +6 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -48553,7 +48717,8 @@
      "dano": "1d6 +21 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 14
     },
     {
      "nome": "Garras",
@@ -48561,7 +48726,8 @@
      "dano": "1d6 +21 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 14
     },
     {
      "nome": "Cauda",
@@ -48569,7 +48735,8 @@
      "dano": "2d6 +35 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 14
     },
     {
      "nome": "Sopro de fogo",
@@ -48577,7 +48744,8 @@
      "dano": "12d6 +7 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -49203,7 +49371,8 @@
      "dano": "1d6 +14 (P) · perf. 2",
      "perfArma": 2,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     },
     {
      "nome": "Garras",
@@ -49211,7 +49380,8 @@
      "dano": "1d6 +14 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     },
     {
      "nome": "Sopro de fogo",
@@ -49219,7 +49389,8 @@
      "dano": "6d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -49731,7 +49902,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -50092,7 +50264,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -50518,7 +50691,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     },
     {
      "nome": "Mordida",
@@ -50526,7 +50700,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -50998,7 +51173,8 @@
      "dano": "1d6 +4 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -51489,7 +51665,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -51932,7 +52109,8 @@
      "dano": "1d6 +1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -52406,7 +52584,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -52804,7 +52983,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -53385,7 +53565,8 @@
      "dano": "2d6 +12 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -53904,7 +54085,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -54286,7 +54468,8 @@
      "dano": "2d6 +10 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     },
     {
      "nome": "Pisão (ou investida)",
@@ -54294,7 +54477,8 @@
      "dano": "2d6 +20 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -54313,7 +54497,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 10 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -54329,7 +54513,7 @@
    },
    {
     "nome": "investida que empurra",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 10 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -54686,7 +54870,8 @@
      "dano": "1d6 +2 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -55176,7 +55361,8 @@
      "dano": "2d6 +13 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -55632,7 +55818,8 @@
      "dano": "1d6 +4 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -56061,7 +56248,8 @@
      "dano": "1d6 +2 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -56490,7 +56678,8 @@
      "dano": "1d6 (fogo)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -56895,7 +57084,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -57201,7 +57391,8 @@
      "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -57521,7 +57712,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -57858,7 +58050,8 @@
      "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     },
     {
      "nome": "Ferroada do enxame",
@@ -57866,7 +58059,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -58203,7 +58397,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -58574,7 +58769,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -58944,7 +59140,8 @@
      "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -59271,7 +59468,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -59702,7 +59900,8 @@
      "dano": "1d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     },
     {
      "nome": "Espada flamejante",
@@ -59710,7 +59909,8 @@
      "dano": "1d6 +11 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras",
@@ -59718,7 +59918,8 @@
      "dano": "1d6 +9 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -60230,7 +60431,8 @@
      "dano": "1d6 +5 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Ferrão",
@@ -60238,7 +60440,8 @@
      "dano": "1d6 +3 (P) · perf. 1",
      "perfArma": 1,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -60671,7 +60874,8 @@
      "dano": "1d6 +10 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -61136,7 +61340,8 @@
      "dano": "2d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -61589,7 +61794,8 @@
      "dano": "1d6 +2 (fenomeno)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -62181,7 +62387,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -62655,7 +62862,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     },
     {
      "nome": "Pancada",
@@ -62663,7 +62871,8 @@
      "dano": "1d6 +3 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -62996,7 +63205,8 @@
      "dano": "2d6 +22 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -63009,7 +63219,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 11 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -63359,7 +63569,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -63810,7 +64021,8 @@
      "dano": "1d6 +6 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     },
     {
      "nome": "Mordida",
@@ -63818,7 +64030,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -64204,7 +64417,8 @@
      "dano": "2d6 +8 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -64632,7 +64846,8 @@
      "dano": "1d6 −1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     },
     {
      "nome": "Bico (dente tomial)",
@@ -64640,14 +64855,15 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras (golpe do mergulho) investindo: 2d6 (C) (o +1d6 e a Força 1 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -65099,7 +65315,8 @@
      "dano": "1d6 +2 (fenomeno)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -65672,7 +65889,8 @@
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -66195,7 +66413,8 @@
      "dano": "1d6 +15 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 11
     },
     {
      "nome": "Bico",
@@ -66203,7 +66422,8 @@
      "dano": "1d6 +17 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Garras em mergulho",
@@ -66211,7 +66431,8 @@
      "dano": "2d6 +28 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -66223,7 +66444,7 @@
    },
    {
     "nome": "mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +39 (C) (o +1d6 e a Força 11 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -66856,7 +67077,8 @@
      "dano": "1d6 +10 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras",
@@ -66864,7 +67086,8 @@
      "dano": "1d6 +10 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Sopro de fogo",
@@ -66872,7 +67095,8 @@
      "dano": "3d6 +4 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -67353,7 +67577,8 @@
      "dano": "1d6 +2 (raio)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -67795,7 +68020,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Ferrão",
@@ -67803,7 +68029,8 @@
      "dano": "1d6 +1 (P) · perf. 1",
      "perfArma": 1,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -68264,7 +68491,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     },
     {
      "nome": "Língua",
@@ -68272,7 +68500,8 @@
      "dano": "nenhum",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     },
     {
      "nome": "Bocada",
@@ -68280,7 +68509,8 @@
      "dano": "1d6 +11 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -68737,7 +68967,8 @@
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -69117,7 +69348,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     },
     {
      "nome": "Chifres",
@@ -69125,7 +69357,8 @@
      "dano": "1d6 +5 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -69557,7 +69790,8 @@
      "dano": "1d6 −2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     },
     {
      "nome": "Mordida",
@@ -69565,7 +69799,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -69956,7 +70191,8 @@
      "dano": "1d6 +6 (acido)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -70589,7 +70825,8 @@
      "dano": "1d6 +12 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -70909,7 +71146,8 @@
         "dano": "2d6 +6 (fenomeno)",
         "perfArma": null,
         "speed": 7,
-        "classe": "distancia"
+        "classe": "distancia",
+        "forcaInvestida": 0
        }
       ]
      },
@@ -71610,7 +71848,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Mordida",
@@ -71618,7 +71857,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -72093,7 +72333,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Mordida",
@@ -72101,7 +72342,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -72567,7 +72809,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 9
     },
     {
      "nome": "Rocha arremessada",
@@ -72575,7 +72818,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -73077,7 +73321,8 @@
      "dano": "2d6 +9 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 9
     },
     {
      "nome": "Rocha arremessada",
@@ -73085,7 +73330,8 @@
      "dano": "2d6 +9 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -73581,7 +73827,8 @@
      "dano": "2d6 +17 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     }
    ]
   },
@@ -74195,7 +74442,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 12
     },
     {
      "nome": "Rocha arremessada",
@@ -74203,7 +74451,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -74787,7 +75036,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     },
     {
      "nome": "Rocha arremessada",
@@ -74795,7 +75045,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -75293,7 +75544,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     },
     {
      "nome": "Rocha arremessada",
@@ -75301,7 +75553,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -75695,7 +75948,8 @@
      "dano": "1d6 +9 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     },
     {
      "nome": "Mordida",
@@ -75703,7 +75957,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -76079,7 +76334,8 @@
      "dano": "1d6 +9 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Mordida",
@@ -76087,7 +76343,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -76615,7 +76872,8 @@
      "dano": "1d6 +18 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     },
     {
      "nome": "Garras",
@@ -76623,7 +76881,8 @@
      "dano": "1d6 +16 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 12
     }
    ]
   },
@@ -77157,7 +77416,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     },
     {
      "nome": "Mordida",
@@ -77165,7 +77425,8 @@
      "dano": "1d6 +4 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -77521,7 +77782,8 @@
      "dano": "1d6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -77908,7 +78170,8 @@
      "dano": "1d6 +11 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -78411,7 +78674,8 @@
      "dano": "1d6 +10 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -78946,7 +79210,8 @@
      "dano": "2d6 +15 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -79475,7 +79740,8 @@
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -79969,7 +80235,8 @@
      "dano": "1d6 +13 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -80360,7 +80627,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 5
     },
     {
      "nome": "Mordida",
@@ -80368,14 +80636,15 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "investida de baixo",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida de focinho investindo: 3d6 +15 (I) (o +1d6 e a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -80759,7 +81028,8 @@
      "dano": "1d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Investida (marrada)",
@@ -80767,7 +81037,8 @@
      "dano": "2d6 +19 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 8
     },
     {
      "nome": "Sopro petrificante",
@@ -80775,14 +81046,15 @@
      "dano": "nenhum",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "investida de chifre",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 3d6 +27 (I) (o +1d6 e a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -81164,7 +81436,8 @@
      "dano": "1d6 +7 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -81172,7 +81445,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -81717,7 +81991,8 @@
      "dano": "1d6 +25 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 16
     },
     {
      "nome": "Garras",
@@ -81725,7 +82000,8 @@
      "dano": "1d6 +25 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 16
     },
     {
      "nome": "Cauda",
@@ -81733,7 +82009,8 @@
      "dano": "2d6 +41 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 16
     },
     {
      "nome": "Asas",
@@ -81741,7 +82018,8 @@
      "dano": "1d6 +25 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 16
     },
     {
      "nome": "Sopro cataclísmico",
@@ -81749,7 +82027,8 @@
      "dano": "15d6 +9 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -82373,7 +82652,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     },
     {
      "nome": "Bico",
@@ -82381,7 +82661,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras em mergulho",
@@ -82389,7 +82670,8 @@
      "dano": "2d6 +13 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -82402,7 +82684,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -82776,7 +83058,8 @@
      "dano": "1d6 +1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -83212,7 +83495,8 @@
      "dano": "1d6 +1 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     },
     {
      "nome": "Patada com o ergot",
@@ -83220,7 +83504,8 @@
      "dano": "1d6 +1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -83623,7 +83908,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -84157,7 +84443,8 @@
      "dano": "1d6 +14 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     },
     {
      "nome": "Garras",
@@ -84165,7 +84452,8 @@
      "dano": "1d6 +14 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -84551,7 +84839,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -84931,7 +85220,8 @@
      "dano": "1d6 +4 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -85257,7 +85547,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -85644,7 +85935,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     },
     {
      "nome": "Bico",
@@ -85652,7 +85944,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras em mergulho",
@@ -85660,7 +85953,8 @@
      "dano": "2d6 +13 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -85673,7 +85967,7 @@
    },
    {
     "nome": "investida em mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -86008,7 +86302,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -86395,7 +86690,8 @@
      "dano": "1d6 +3 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Rabada",
@@ -86403,7 +86699,8 @@
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -86919,7 +87216,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     },
     {
      "nome": "Mordida",
@@ -86927,7 +87225,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -87244,7 +87543,8 @@
         "dano": "1d6 +3 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 3
        }
       ]
      },
@@ -87549,7 +87849,8 @@
         "dano": "1d6 +2 (P) · perf. 0",
         "perfArma": 0,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 2
        }
       ]
      },
@@ -88142,7 +88443,8 @@
      "dano": "1d6 +1 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -88633,7 +88935,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -89121,7 +89424,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -89495,7 +89799,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Investida",
@@ -89503,7 +89808,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -89516,7 +89822,7 @@
    },
    {
     "nome": "investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 3d6 +15 (I) (o +1d6 e a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -89889,7 +90195,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -90222,7 +90529,8 @@
      "dano": "1d6 +4 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -90669,7 +90977,8 @@
      "dano": "1d6 +19 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 14
     },
     {
      "nome": "Bico",
@@ -90677,7 +90986,8 @@
      "dano": "1d6 +21 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 14
     }
    ]
   },
@@ -91250,7 +91560,8 @@
      "dano": "1d6 +8 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -91704,7 +92015,8 @@
      "dano": "1d6 +14 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -92138,7 +92450,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     },
     {
      "nome": "Choque",
@@ -92146,7 +92459,8 @@
      "dano": "1d6 +2 (raio)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -92575,7 +92889,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Chicotada de cauda",
@@ -92583,7 +92898,8 @@
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -92965,7 +93281,8 @@
      "dano": "1d6 +10 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -93422,7 +93739,8 @@
      "dano": "1d6 +6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Patada",
@@ -93430,7 +93748,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -93449,7 +93768,7 @@
    },
    {
     "nome": "bote",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +12 (P) · perf. 0 (o +1d6 e a Força 6 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -93796,7 +94115,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Patada",
@@ -93804,7 +94124,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -93823,7 +94144,7 @@
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +14 (P) · perf. 0 (o +1d6 e a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -94143,7 +94464,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Patada",
@@ -94151,7 +94473,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -94170,7 +94493,7 @@
    },
    {
     "nome": "investida avassaladora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +10 (P) · perf. 0 (o +1d6 e a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -94483,7 +94806,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -94884,7 +95208,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Patada",
@@ -94892,7 +95217,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -94911,7 +95237,7 @@
    },
    {
     "nome": "investida retalhadora",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +10 (P) · perf. 0 (o +1d6 e a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -95311,7 +95637,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -95844,7 +96171,8 @@
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -96442,7 +96770,8 @@
      "dano": "1d6 +11 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Cauda",
@@ -96450,7 +96779,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -96853,7 +97183,8 @@
      "dano": "1d6 +4 (acido)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -97318,7 +97649,8 @@
      "dano": "1d6 +19 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 13
     },
     {
      "nome": "Garras",
@@ -97326,7 +97658,8 @@
      "dano": "1d6 +19 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 13
     },
     {
      "nome": "Sopro gélido",
@@ -97334,7 +97667,8 @@
      "dano": "9d6 +6 (gelo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -97888,7 +98222,8 @@
      "dano": "1d6 +19 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 13
     },
     {
      "nome": "Garras",
@@ -97896,7 +98231,8 @@
      "dano": "1d6 +19 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 13
     },
     {
      "nome": "Cauda",
@@ -97904,7 +98240,8 @@
      "dano": "2d6 +32 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     },
     {
      "nome": "Sopro ácido",
@@ -97912,7 +98249,8 @@
      "dano": "9d6 +6 (acido)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -98441,7 +98779,8 @@
      "dano": "1d6 +17 (P) · perf. 3",
      "perfArma": 3,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Garras",
@@ -98449,7 +98788,8 @@
      "dano": "1d6 +17 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Sopro de magma",
@@ -98457,7 +98797,8 @@
      "dano": "9d6 +6 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -99065,7 +99406,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras",
@@ -99073,7 +99415,8 @@
      "dano": "1d6 +8 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -99355,7 +99698,8 @@
         "dano": "1d6 +4 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 4
        }
       ]
      },
@@ -99615,7 +99959,8 @@
         "dano": "1d6 +6 (P) · perf. 0",
         "perfArma": 0,
         "speed": 6,
-        "classe": "media"
+        "classe": "media",
+        "forcaInvestida": 4
        }
       ]
      },
@@ -100151,7 +100496,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -100510,7 +100856,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -100929,7 +101276,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Sopro gélido",
@@ -100937,7 +101285,8 @@
      "dano": "2d6 +4 (gelo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -101398,7 +101747,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     },
     {
      "nome": "Mandíbulas",
@@ -101406,7 +101756,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -101779,7 +102130,8 @@
      "dano": "1d6 −1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     },
     {
      "nome": "Braços e tentáculos",
@@ -101787,7 +102139,8 @@
      "dano": "1d6 −1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -102153,7 +102506,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     },
     {
      "nome": "Braços e tentáculos",
@@ -102161,7 +102515,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -102546,7 +102901,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Tentáculos",
@@ -102554,7 +102910,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -102908,7 +103265,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -103256,7 +103614,8 @@
      "dano": "1d6 +3 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -103626,7 +103985,8 @@
      "dano": "2d6 +13 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     },
     {
      "nome": "Pisão (ou investida)",
@@ -103634,7 +103994,8 @@
      "dano": "2d6 +26 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     }
    ]
   },
@@ -103647,7 +104008,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 13 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -104021,7 +104382,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -104029,7 +104391,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Espinhos de cauda",
@@ -104037,7 +104400,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -104434,7 +104798,8 @@
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -104899,7 +105264,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -105196,7 +105562,8 @@
         "dano": "2d6 +14 (I)",
         "perfArma": null,
         "speed": 7,
-        "classe": "pesada"
+        "classe": "pesada",
+        "forcaInvestida": 9
        }
       ]
      },
@@ -105863,7 +106230,8 @@
      "dano": "1d6 +17 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Cauda",
@@ -105871,7 +106239,8 @@
      "dano": "1d6 +17 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -106396,7 +106765,8 @@
      "dano": "2d6 +13 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     },
     {
      "nome": "Pisão (ou investida)",
@@ -106404,7 +106774,8 @@
      "dano": "2d6 +26 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     }
    ]
   },
@@ -106417,7 +106788,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 13 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    }
@@ -106778,7 +107149,8 @@
      "dano": "1d6 +3 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     },
     {
      "nome": "Espada curta",
@@ -106786,7 +107158,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     },
     {
      "nome": "Serpentes",
@@ -106794,7 +107167,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -107246,7 +107620,8 @@
      "dano": "2d6 +13 (P) · perf. 3",
      "perfArma": 3,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     }
    ]
   },
@@ -107259,7 +107634,7 @@
    },
    {
     "nome": "investida de baixo",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 3d6 +26 (P) · perf. 3 (o +1d6 e a Força 13 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -107675,7 +108050,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     },
     {
      "nome": "Sopro elemental",
@@ -107683,7 +108059,8 @@
      "dano": "2d6 +2 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -108126,7 +108503,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 3
     },
     {
      "nome": "Besta média",
@@ -108134,7 +108512,8 @@
      "dano": "1d6 +5 (P) · perf. 1",
      "perfArma": 1,
      "speed": 12,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -108550,7 +108929,8 @@
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Mordida",
@@ -108558,7 +108938,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -109052,7 +109433,8 @@
      "dano": "2d6 +15 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     },
     {
      "nome": "Chifrada",
@@ -109060,14 +109442,15 @@
      "dano": "1d6 +8 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "Investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 7 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -109537,7 +109920,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -110017,7 +110401,8 @@
      "dano": "1d6 +10 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Língua",
@@ -110025,7 +110410,8 @@
      "dano": "nenhum",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -110449,7 +110835,8 @@
      "dano": "nenhum",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     },
     {
      "nome": "Mordida",
@@ -110457,7 +110844,8 @@
      "dano": "1d6 +1 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -110909,7 +111297,8 @@
      "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -111374,7 +111763,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -111748,7 +112138,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -112090,7 +112481,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -112478,7 +112870,8 @@
      "dano": "1d6 +4 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -112945,7 +113338,8 @@
      "dano": "2d6 +12 (P) · perf. 2",
      "perfArma": 2,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 12
     }
    ]
   },
@@ -113324,7 +113718,8 @@
      "dano": "1d6 +11 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -113897,7 +114292,8 @@
      "dano": "1d6 +11 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -113905,7 +114301,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -114500,7 +114897,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -114960,7 +115358,8 @@
      "dano": "1d6 +12 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -115388,7 +115787,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -115840,7 +116240,8 @@
      "dano": "1d6 −1 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -116319,7 +116720,8 @@
      "dano": "1d6 +18 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     },
     {
      "nome": "Mordida",
@@ -116327,7 +116729,8 @@
      "dano": "1d6 +18 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 12
     }
    ]
   },
@@ -116880,7 +117283,8 @@
      "dano": "2d6 +17 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -117475,7 +117879,8 @@
      "dano": "1d6 +5 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -117984,7 +118389,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -118500,7 +118906,8 @@
      "dano": "1d6 +5 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -118843,7 +119250,8 @@
      "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -119350,7 +119758,8 @@
      "dano": "2d6 +12 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -119694,7 +120103,8 @@
         "dano": "2d6 +12 (I)",
         "perfArma": null,
         "speed": 7,
-        "classe": "pesada"
+        "classe": "pesada",
+        "forcaInvestida": 7
        }
       ]
      },
@@ -120305,7 +120715,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -120672,7 +121083,8 @@
      "dano": "2d6 +10 (P) · perf. 2",
      "perfArma": 2,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -121093,7 +121505,8 @@
      "dano": "2d6 +8 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     },
     {
      "nome": "Tentáculo",
@@ -121101,7 +121514,8 @@
      "dano": "1d6 +8 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -121550,7 +121964,8 @@
      "dano": "2d6 +10 (P) · perf. 0",
      "perfArma": 0,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     }
    ]
   },
@@ -121951,7 +122366,8 @@
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     },
     {
      "nome": "Mordida",
@@ -121959,7 +122375,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -122383,7 +122800,8 @@
      "dano": "1d6 +7 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -122861,7 +123279,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -122869,7 +123288,8 @@
      "dano": "1d6 +9 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -123309,7 +123729,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -123743,7 +124164,8 @@
      "dano": "1d6 +2 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     },
     {
      "nome": "Garras e presas",
@@ -123751,7 +124173,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -124357,7 +124780,8 @@
      "dano": "2d6 +25 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -124764,7 +125188,8 @@
      "dano": "1d6 +3 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -125109,7 +125534,8 @@
      "dano": "1d6 −1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -125503,7 +125929,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     },
     {
      "nome": "Braços",
@@ -125511,7 +125938,8 @@
      "dano": "1d6 +5 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -125882,7 +126310,8 @@
      "dano": "2d6 +6 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     },
     {
      "nome": "Mordida",
@@ -125890,14 +126319,15 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 3d6 +12 (I) (o +1d6 e a Força 6 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -126278,7 +126708,8 @@
      "dano": "2d6 (eletricidade)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     },
     {
      "nome": "Mordida",
@@ -126286,7 +126717,8 @@
      "dano": "1d6 −2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -126779,7 +127211,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     },
     {
      "nome": "Garras",
@@ -126787,7 +127220,8 @@
      "dano": "1d6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     },
     {
      "nome": "Ferrão",
@@ -126795,7 +127229,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -127199,7 +127634,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -127514,7 +127950,8 @@
      "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -127970,7 +128407,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     },
     {
      "nome": "Mordida",
@@ -127978,7 +128416,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -128467,7 +128906,8 @@
      "dano": "1d6 +5 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -128861,7 +129301,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Chifrada de cabra",
@@ -128869,7 +129310,8 @@
      "dano": "1d6 +11 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Mordida de dragão",
@@ -128877,7 +129319,8 @@
      "dano": "1d6 +11 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Sopro dracônico",
@@ -128885,7 +129328,8 @@
      "dano": "2d6 +3 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -129301,7 +129745,8 @@
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     },
     {
      "nome": "Língua",
@@ -129309,7 +129754,8 @@
      "dano": "nenhum",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -130057,7 +130503,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -130366,7 +130813,8 @@
         "dano": "1d6 +7 (C)",
         "perfArma": null,
         "speed": 5,
-        "classe": "leve"
+        "classe": "leve",
+        "forcaInvestida": 4
        }
       ]
      },
@@ -130947,7 +131395,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -131411,7 +131860,8 @@
      "dano": "1d6 +1 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -131789,7 +132239,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -132173,7 +132624,8 @@
      "dano": "1d6 +13 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 9
     }
    ]
   },
@@ -132615,7 +133067,8 @@
      "dano": "1d6 +8 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Investida",
@@ -132623,7 +133076,8 @@
      "dano": "2d6 +16 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -132648,13 +133102,13 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 3d6 +24 (P) · perf. 1 (o +1d6 e a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "investida que derruba",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 3d6 +24 (P) · perf. 1 (o +1d6 e a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -133046,7 +133500,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Bico",
@@ -133054,7 +133509,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Garras em mergulho",
@@ -133062,7 +133518,8 @@
      "dano": "2d6 +14 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -133075,7 +133532,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 3d6 +21 (C) (o +1d6 e a Força 7 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -133451,7 +133908,8 @@
      "dano": "1d6 +10 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 4
     },
     {
      "nome": "Garras",
@@ -133459,7 +133917,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -133968,7 +134427,8 @@
      "dano": "1d6 +13 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 5
     },
     {
      "nome": "Cauda",
@@ -133976,7 +134436,8 @@
      "dano": "1d6 +13 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -134434,7 +134895,8 @@
      "dano": "1d6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -135089,7 +135551,8 @@
      "dano": "1d6 +6 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -135532,7 +135995,8 @@
      "dano": "1d6 +18 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 13
     }
    ]
   },
@@ -135952,7 +136416,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -136494,7 +136959,8 @@
      "dano": "2d6 +13 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 13
     }
    ]
   },
@@ -136910,7 +137376,8 @@
      "dano": "1d6 +10 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "haste"
+     "classe": "haste",
+     "forcaInvestida": 4
     },
     {
      "nome": "Mordida",
@@ -136918,7 +137385,8 @@
      "dano": "1d6 +4 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     },
     {
      "nome": "Garras",
@@ -136926,7 +137394,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 4
     }
    ]
   },
@@ -137406,7 +137875,8 @@
      "dano": "2d6 +29 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 10
     },
     {
      "nome": "Arco longo",
@@ -137414,7 +137884,8 @@
      "dano": "1d6 +17 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -137954,7 +138425,8 @@
      "dano": "1d6 +3 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Espada longa a duas mãos",
@@ -137962,7 +138434,8 @@
      "dano": "1d6 +6 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Punhos",
@@ -137970,7 +138443,8 @@
      "dano": "1d6 +1 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -138421,7 +138895,8 @@
      "dano": "1d6 (fenomeno)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -138939,7 +139414,8 @@
      "dano": "1d6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 1
     }
    ]
   },
@@ -139424,7 +139900,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -139904,7 +140381,8 @@
      "dano": "1d6 +4 (P) · perf. 2",
      "perfArma": 2,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -140365,7 +140843,8 @@
      "dano": "1d6 +26 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 16
     },
     {
      "nome": "Garras",
@@ -140373,7 +140852,8 @@
      "dano": "1d6 +26 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 16
     },
     {
      "nome": "Cauda",
@@ -140381,7 +140861,8 @@
      "dano": "2d6 +42 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 16
     }
    ]
   },
@@ -140894,7 +141375,8 @@
      "dano": "1d6 +15 (P) · perf. 2",
      "perfArma": 2,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Garras",
@@ -140902,7 +141384,8 @@
      "dano": "1d6 +15 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 10
     },
     {
      "nome": "Sopro de vapor",
@@ -140910,7 +141393,8 @@
      "dano": "6d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
-     "classe": "distancia"
+     "classe": "distancia",
+     "forcaInvestida": 0
     }
    ]
   },
@@ -141313,7 +141797,8 @@
      "dano": "1d6 +4 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Bico",
@@ -141321,7 +141806,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -141713,7 +142199,8 @@
      "dano": "1d6 +2 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -142163,7 +142650,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Patada",
@@ -142171,7 +142659,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -142190,7 +142679,7 @@
    },
    {
     "nome": "bote",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 2d6 +14 (P) · perf. 0 (o +1d6 e a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -142516,7 +143005,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Patada",
@@ -142524,7 +143014,8 @@
      "dano": "1d6 +6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -142864,7 +143355,8 @@
      "dano": "2d6 +12 (P) · perf. 2",
      "perfArma": 2,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 12
     }
    ]
   },
@@ -143244,7 +143736,8 @@
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -143632,7 +144125,8 @@
      "dano": "1d6 +3 (I)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -143995,7 +144489,8 @@
      "dano": "1d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 11
     },
     {
      "nome": "Investida de chifre",
@@ -144003,7 +144498,8 @@
      "dano": "2d6 +22 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 11
     }
    ]
   },
@@ -144022,7 +144518,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: +1d6 e a Força 11 mais uma vez no dano do golpe",
     "classe": "livro",
     "regra": "investida"
    },
@@ -144372,7 +144868,8 @@
      "dano": "1d6 +3 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     },
     {
      "nome": "Garras",
@@ -144380,7 +144877,8 @@
      "dano": "1d6 +1 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -144825,7 +145323,8 @@
      "dano": "2d6 +8 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -144833,7 +145332,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -145253,14 +145753,15 @@
      "dano": "2d6 +9 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 9
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "bote vertical",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Mordida investindo: 3d6 +18 (P) · perf. 1 (o +1d6 e a Força 9 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -145690,7 +146191,8 @@
      "dano": "1d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Coice",
@@ -145698,7 +146200,8 @@
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     },
     {
      "nome": "Chifre em investida",
@@ -145706,14 +146209,15 @@
      "dano": "2d6 +18 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
   "habilidadesEspeciais": [
    {
     "nome": "chifre perfurante",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo. só depois de correr ao menos 6 m em linha reta",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano e a Força mais uma vez (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Chifre em investida investindo: 3d6 +25 (P) · perf. 1 (o +1d6 e a Força 7 mais uma vez). só depois de correr ao menos 6 m em linha reta",
     "classe": "livro",
     "regra": "investida"
    },
@@ -146186,7 +146690,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -146194,7 +146699,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -146546,7 +147052,8 @@
      "dano": "1d6 +8 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Mordida",
@@ -146554,7 +147061,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -146916,7 +147424,8 @@
      "dano": "1d6 +6 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Mordida",
@@ -146924,7 +147433,8 @@
      "dano": "1d6 +6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -147289,7 +147799,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -147297,7 +147808,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -147669,7 +148181,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Mordida",
@@ -147677,7 +148190,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -148046,7 +148560,8 @@
      "dano": "1d6 +8 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     },
     {
      "nome": "Mordida",
@@ -148054,7 +148569,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
@@ -148528,7 +149044,8 @@
      "dano": "1d6 +10 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     },
     {
      "nome": "Mordida",
@@ -148536,7 +149053,8 @@
      "dano": "1d6 +8 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -149060,7 +149578,8 @@
      "dano": "1d6 +2 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -149394,7 +149913,8 @@
      "dano": "1d6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -149754,7 +150274,8 @@
      "dano": "1d6 +14 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 13
     },
     {
      "nome": "Ferrão de cauda",
@@ -149762,7 +150283,8 @@
      "dano": "1d6 +14 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 13
     }
    ]
   },
@@ -150153,7 +150675,8 @@
      "dano": "1d6 (P) · perf. 1",
      "perfArma": 1,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     },
     {
      "nome": "Mandíbulas",
@@ -150161,7 +150684,8 @@
      "dano": "1d6 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 2
     }
    ]
   },
@@ -150549,7 +151073,8 @@
      "dano": "2d6 +8 (I)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -151115,7 +151640,8 @@
      "dano": "1d6 +12 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     },
     {
      "nome": "Bico",
@@ -151123,7 +151649,8 @@
      "dano": "1d6 +12 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -151710,7 +152237,8 @@
      "dano": "1d6 +5 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 3
     }
    ]
   },
@@ -152147,7 +152675,8 @@
      "dano": "1d6 +6 (P) · perf. 0",
      "perfArma": 0,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -152597,7 +153126,8 @@
      "dano": "1d6 +9 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras",
@@ -152605,7 +153135,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     },
     {
      "nome": "Garras em mergulho",
@@ -152613,7 +153144,8 @@
      "dano": "2d6 +15 (C)",
      "perfArma": null,
      "speed": 7,
-     "classe": "pesada"
+     "classe": "pesada",
+     "forcaInvestida": 6
     },
     {
      "nome": "Ferrão",
@@ -152621,7 +153153,8 @@
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -153099,7 +153632,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     },
     {
      "nome": "Garras",
@@ -153107,7 +153641,8 @@
      "dano": "1d6 +7 (C)",
      "perfArma": null,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     },
     {
      "nome": "Mordida",
@@ -153115,7 +153650,8 @@
      "dano": "1d6 +7 (P) · perf. 0",
      "perfArma": 0,
      "speed": 5,
-     "classe": "leve"
+     "classe": "leve",
+     "forcaInvestida": 5
     }
    ]
   },
@@ -153543,7 +154079,8 @@
      "dano": "1d6 +9 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     },
     {
      "nome": "Mordida",
@@ -153551,7 +154088,8 @@
      "dano": "1d6 +9 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 6
     }
    ]
   },
@@ -154016,7 +154554,8 @@
      "dano": "1d6 +9 (C)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 7
     }
    ]
   },
@@ -154456,7 +154995,8 @@
      "dano": "1d6 +5 (I)",
      "perfArma": null,
      "speed": 6,
-     "classe": "media"
+     "classe": "media",
+     "forcaInvestida": 4
     }
    ]
   },

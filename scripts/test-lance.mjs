@@ -462,6 +462,22 @@ ok(Number.isFinite(r3.total), 'um golpeIndice além do fim de penDados cai no ze
   ok(nulo.rolls.dano.length === 1, 'e `danoDados: 0` rola o mesmo que não ter o campo');
 }
 
+// A FORÇA MAIS UMA VEZ DA INVESTIDA (D-269), que é o `danoFlat`. Aqui a fonte fixa
+// serve: ela soma o `extraFlat` (só os dados vêm de fora), então o fixo a mais se
+// prova com dado conhecido.
+{
+  const acerta = {
+    ...base, margemQA: 0, modManual: 0,
+    atacante: { ...base.atacante, ataque: '1d6', dano: '2d6 +15 (C)', ajusteFlat: 0, ajusteDados: 0, penDados: [0] },
+    alvo: { ...base.alvo, soak: 0, defesaBase: 1, ferimento: 0, condicoesDefesa: 0, defesaPerdida: 0, pv: 999 },
+    golpeIndice: 0,
+  };
+  const sem = L.resolverGolpe(acerta, L.fonteFixa({ acerto: [6], dano: [3, 4] }));
+  const com = L.resolverGolpe({ ...acerta, atacante: { ...acerta.atacante, danoFlat: 7 } }, L.fonteFixa({ acerto: [6], dano: [3, 4] }));
+  ok(sem.danoBruto === 22, `sem Investida, 3 + 4 + 15 = 22 (${sem.danoBruto})`);
+  ok(com.danoBruto === 29, `investindo com Força 7, a Força mais uma vez: 22 + 7 = 29 (${com.danoBruto})`);
+}
+
 // quaseAcertoDoEncontro, que é função exportada e precisa de execução.
 //
 // A FIXTURE NÃO TEM `alvo.centelha` (ela foi colhida antes da Regra do

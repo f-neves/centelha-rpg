@@ -6581,6 +6581,10 @@ const SETAS = [
     acao.golpes = ag.golpes; acao.livre = ag.livre;
     if (viagem > 0) {
       acao.mov = { alvo: alvo.id, modo: modo.id, porTick, auto: opts.auto ?? true } as Mov;
+      // A INVESTIDA FICA NA AÇÃO até o golpe cair (D-269): o `mov` sai quando a peça chega (é trajeto, e não
+      // regra), e a marca `investindo` sai quando o Preparo acaba, que é o Tick em que a folha do golpe abre.
+      // Sem isto a folha não sabia mais que a corrida foi uma Investida, e o dano saía sem o +1d6 e sem a Força.
+      if (modo.id === 'investida') acao.investida = true;
     }
     acao = agendar(acao, T);
     if (!await gravarRelogio(atacante, acao.livre, acao, alvo, 0)) return false;
@@ -10332,6 +10336,15 @@ let roladoDano = '';
      * se refaz em cima do valor corrigido. Quem lê tem de ler o corrigido, e é
      * por isso que isto é função e não constante.
      */
+    // A INVESTIDA NO DANO (D-269): o +1d6 e a Força mais uma vez, lidos do modo declarado. Antes o +1d6 só entrava
+    // no objeto do lance (o oráculo), e a rolagem de verdade (`rolarDano`, a digitação, o `fim`) rolava a expressão
+    // crua da arma; a Força a mais não existia em lugar nenhum. Uma função só, para os cinco lugares lerem o mesmo.
+    // Só o golpe que fecha a corrida (`combate.md`, Investida): o segundo golpe de uma Rajada já não vem correndo.
+    const investindo = () => IDX === 0
+      && (!!(acaoNo(atacante) as any)?.investida || acaoNo(atacante)?.mov?.modo === 'investida');
+    const danoExtra = () => (investindo()
+      ? { dados: INVESTIDA.danoDados ?? 1, flat: ra?.forcaInvestida ?? 0 }
+      : { dados: 0, flat: 0 });
     const entradaDoLance = (idx = IDX) => ({
       aid: AID,
       atacante: {
@@ -10353,8 +10366,9 @@ let roladoDano = '';
         // Sai do `mov.modo`, que é onde a Investida foi declarada, e não de uma
         // condição na peça: assim ele vale pelo gesto que a declarou e acaba
         // com ele, sem lifecycle nenhum para manter.
-        danoDados: acaoNo(atacante)?.mov?.modo === 'investida'
-          ? (INVESTIDA.danoDados ?? 1) : 0,
+        danoDados: danoExtra().dados,
+        // E a Força mais uma vez (D-269), pelo mesmo modo declarado.
+        danoFlat: danoExtra().flat,
       },
       alvo: {
         id: alvo.id, nome: alvo.nome,
@@ -10466,7 +10480,7 @@ let roladoDano = '';
       // o golpe erra (o mestre rolou antes de saber), e no raspão o que se
       // aplica é o dano fixo do Quase-Acerto e não o que foi rolado. Registrar
       // só o campo faria o oráculo mentir em dois dos três vereditos.
-      const rdDano = roladaManual(dnInp.value, e.atacante.dano, 0);
+      const rdDano = roladaManual(dnInp.value, e.atacante.dano, e.atacante.danoFlat || 0, e.atacante.danoDados || 0);
       const noCampo = Math.max(0, rdDano ? rdDano.total : 0);
       let bruto = veredito === 'acerto' ? noCampo
         : veredito === 'raspao' ? Math.max(0, e.danoQA) : 0;
@@ -10523,7 +10537,9 @@ let roladoDano = '';
       (el('al-pool') as HTMLElement).innerHTML = partes.join(' ');
     };
     const pintarPoolDano = () => {
-      (el('al-dn-pool') as HTMLElement).innerHTML = esc(ra?.dano || '—');
+      const x = danoExtra();
+      (el('al-dn-pool') as HTMLElement).innerHTML = esc(ra?.dano || '—')
+        + (x.dados || x.flat ? ` <i class="al-nota">· Investida: +${x.dados}d6${x.flat ? ` +${x.flat} (a Força mais uma vez)` : ''}</i>` : '');
     };
     const pintarPool = () => { pintarPoolAcerto(); pintarPoolDano(); };
     const pintarVeredito = () => {
@@ -10925,7 +10941,8 @@ let roladoDano = '';
       pintarVeredito();
     };
     const rolarDano = () => {
-      const d = rolarExpr(ra?.dano || '0d6');
+      const x = danoExtra();
+      const d = rolarExpr(ra?.dano || '0d6', x.dados, x.flat);
       sorteio.dano = (d.rolls || []).slice();
       dnInp.value = d.rolls.length ? d.rolls.join(',') : String(d.total);
       roladoDano = descreverRolada(d);
@@ -10957,7 +10974,7 @@ let roladoDano = '';
     modInp.oninput = pintarVeredito;
     qaMargemInp.oninput = pintarVeredito; qaDanoInp.oninput = pintarVeredito;
     dnInp.oninput = () => {
-      const rd = roladaManual(dnInp.value, ra?.dano || '0d6', 0);
+      const rd = roladaManual(dnInp.value, ra?.dano || '0d6', danoExtra().flat, danoExtra().dados);
       if (rd) { roladoDano = descreverRolada(rd); (el('al-dn-pool') as HTMLElement).textContent = roladoDano; }
       else { roladoDano = ''; pintarPoolDano(); }
       dnInp.classList.toggle('aviso-contagem', !!rd && rd.bateContagem === false);
@@ -11003,7 +11020,7 @@ let roladoDano = '';
         // que ela está resolvendo. Passar `0` aqui era o que achatava o campo e
         // deixava o caminho do índice sem cobertura.
         registrarLance(contaDoLance(), sorteio, { acertou: v, raspou, rolado, adiada });
-        const rdDanoFim = roladaManual(dnInp.value, ra?.dano || '0d6', 0);
+        const rdDanoFim = roladaManual(dnInp.value, ra?.dano || '0d6', danoExtra().flat, danoExtra().dados);
         // O GATE ZERA AQUI TAMBÉM, e não só em `contaDoLance`: é ESTE `dano`
         // que `resolverGolpeNoAr` passa para `aplicarDano`, e é `aplicarDano`
         // quem de fato desce a Vida do alvo. `contaDoLance` alimenta o oráculo

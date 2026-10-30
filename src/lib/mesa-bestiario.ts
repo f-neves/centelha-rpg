@@ -128,6 +128,12 @@ export interface ResumoCombate {
    */
   centelha?: number;
   /**
+   * A Força que a ação de Investida soma mais uma vez no dano do golpe (D-269), calculada pelo motor (PC:
+   * `conjuntoPersonagem`; criatura: `vistaPublicaCriatura`). `0` por omissão, como a Centelha: o golpe de longe e a
+   * peça de cena não investem com Força nenhuma a mais.
+   */
+  forcaInvestida?: number;
+  /**
    * OS SENTIDOS, e este bloco é de 04/09/2026, para o golpe vindo do escuro.
    *
    * A régua compara a Furtividade de quem ataca com a Percepção Passiva do
@@ -259,6 +265,7 @@ export function baseResumo(c: any, fichaPorId: Record<string, any> = {}): Resumo
       atributos: m?.atributos ?? null,
       pericias: m ? { ...m.habilidadesSec, ...m.habilidades } : null,
       centelha: m?.centelha || 0,
+      forcaInvestida: a0?.forcaInvestida ?? 0,
     };
   }
   return null;
@@ -331,6 +338,7 @@ export function resumoDe(c: any, fichaPorId: Record<string, any> = {}): ResumoCo
     atributos: ov.atributos ?? base?.atributos ?? null,
     pericias: ov.pericias ?? base?.pericias ?? null,
     centelha: ov.centelha ?? base?.centelha ?? 0,
+    forcaInvestida: ov.forcaInvestida ?? base?.forcaInvestida ?? 0,
   };
 }
 

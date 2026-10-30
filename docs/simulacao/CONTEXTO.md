@@ -155,9 +155,9 @@ Estado em 10/09/2026:
 **O levantamento que dimensionou a frente** (10/09/2026): não existe ponto único por onde toda
 ação passe; das dezesseis ações do menu, **cinco são chamáveis direto** com objeto pronto e as
 outras oito misturam coleta (`uiFormulario`) ou dependem de diálogo com callback. **O desfazer
-cobre só posição e Vida** (`grid.astro:11780` · `function desfazer`), não cobre Mana, a declaração do golpe, o
+cobre só posição e Vida** (`grid.astro:11800` · `function desfazer`), não cobre Mana, a declaração do golpe, o
 Tick nem a agenda. **"Escolher arma" não existe** como verbo. **Mana não distingue dar de
-tirar** (`ajustarMana`, `grid.astro:11457`, uma função só).
+tirar** (`ajustarMana`, `grid.astro:11477`, uma função só).
 
 **A regra de ação nova continua valendo:** toda ação NOVA do Grid separa a função que decide o
 efeito (recebe objeto, nunca lê `el(...)`/`.value`) da caixa de diálogo que coleta o clique.
@@ -233,10 +233,10 @@ Quem tiver escrito a explicação com outras palavras continua contado como aber
 **Duas coisas que a rodada 75 mediu e que valem fora dela:**
 
 - **o Sangramento já escreve Vida negativa hoje**, por acidente: o tique da condição contínua
-  chama `gravarVida` sem piso e `curarPv` (`src/pages/mesa/grid.astro:2682`) só tem teto. É o único caminho do
+  chama `gravarVida` sem piso e `curarPv` (`src/pages/mesa/grid.astro:2683`) só tem teto. É o único caminho do
   projeto que atravessa o zero, e ninguém o desenhou assim;
 - **o servidor não conhece Centelha.** A tabela `combatentes` (`supabase/migracao-2.sql:128-142`)
-  não tem a coluna, e quem sabe é o cliente, que monta a peça com `centelha` (`src/lib/mesa-bestiario.ts:233`). Cobra
+  não tem a coluna, e quem sabe é o cliente, que monta a peça com `centelha` (`src/lib/mesa-bestiario.ts:239`). Cobra
   resposta quando a trava da cura chegar ao RPC.
 
 ## A frente do Grid, que a do jogador novo interrompeu

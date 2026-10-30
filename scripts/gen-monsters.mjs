@@ -124,7 +124,7 @@ function build(c, fonte) {
       iniciativa: c.iniciativa,
       // As três velocidades vêm do modo de deslocamento declarado na fonte.
       deslocamento: (()=>{const d=f.deslocamentoDeclarado;if(!d)throw Error(f.id+': deslocamento ausente');return {batalha:d.batalha,arranque:d.arranque,corrida:d.corrida};})(),
-      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
+      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), forcaInvestida: a.forcaInvestida ?? 0, ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao || descricaoDaRef(x), ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}), ...(x.campos ? {texto:x.texto, campos:x.campos} : {}) })),
     ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),

@@ -313,6 +313,9 @@ const FICHA_PC = {
     : {}),
   arte: { fogo: 5, terra: 4, vento: 5, protecao: 3, cura: 2 },
   efeito: Object.fromEntries(EFEITOS_D.map((e) => [e.id, true])),
+  // A FORÇA DOS PCs, só com `?forca=N`: a ficha da bancada não tem atributo nenhum, e a Força a mais da
+  // Investida (D-269) sairia zero, que é o número que não prova nada.
+  ...(P.get('forca') ? { attrs: { forca: parseInt(P.get('forca'), 10) || 0 } } : {}),
 };
 
 /**

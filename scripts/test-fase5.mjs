@@ -151,13 +151,28 @@ const page=fs.readFileSync('src/pages/artes/index.astro','utf8');assert.ok(page.
 // Parecer da Veterana (F4), V1 (D-266): a Força em dobro é da ação de Investida, e não do golpe comum; a cauda que
 // varre com o corpo inteiro fica com Força × 2 (complemento da D-266). O livro, o regras.json, o card e o cabeçalho.
 cases.set('parecer-V1', async () => {
-const card=M.textoDaRegraDaCriatura('investida');assert.match(card,/\+1d6/);assert.match(card,/Força em dobro/);assert.match(card,/golpe comum[^.]*uma vez/);
+// Com a P20 (D-269), a Força em dobro da V1 virou "a Força mais uma vez": × 1 para × 2, × 2 para × 3.
+const card=M.textoDaRegraDaCriatura('investida');assert.match(card,/\+1d6/);assert.match(card,/Força mais uma vez/);assert.match(card,/de × 1 para × 2/);assert.match(card,/de × 2 para × 3/);assert.match(card,/golpe comum[^.]*a Força como sempre/);assert.ok(!/Força em dobro/.test(card),'sobrou a Força em dobro');
 const comb=fs.readFileSync('src/content/chapters/combate.md','utf8');const inv=comb.split('### Investida')[1].split('\n### ')[0];
-assert.match(inv,/\| \*\*Preparo investindo\*\* \|[^\n]*\| \*\*\+1d6\*\*, e a Força \*\*× 2\*\* \|/,'a tabela da Investida dá a Força × 2');
-assert.match(inv,/A Força em dobro é da ação de Investida, e não do golpe/);assert.match(inv,/o personagem e para a criatura/);
-const R=JSON.parse(fs.readFileSync('src/data/regras.json','utf8'));assert.match(R.combate.movimento.investida.texto,/Força em dobro/);
+assert.match(inv,/\| \*\*Preparo investindo\*\* \|[^\n]*\| \*\*\+1d6\*\*, e a Força \*\*mais uma vez\*\* \|/,'a tabela da Investida dá a Força mais uma vez');
+assert.match(inv,/A Força a mais é da ação de Investida, e não do golpe/);assert.match(inv,/de \*\*× 1 para × 2\*\*/);assert.match(inv,/de \*\*× 2 para × 3\*\*/);assert.match(inv,/o personagem e para a criatura/);assert.ok(!/Força em dobro|Força \*\*× 2\*\* \|/.test(inv),'sobrou a regra da V1 sem a P20');
+const R=JSON.parse(fs.readFileSync('src/data/regras.json','utf8'));assert.match(R.combate.movimento.investida.texto,/Força mais uma vez/);assert.equal(R.combate.movimento.investida.forcaExtra,1);
 const best=fs.readFileSync('src/pages/bestiario.astro','utf8');const dano=best.split('<span class="lbl">Dano</span>')[1].split('</div>')[0];
-assert.match(dano,/ação de <a [^>]*#investida'\}>Investida<\/a>/);assert.match(dano,/cauda que varre com o giro do corpo inteiro/);assert.ok(!/usam sempre <strong>uma vez a Força/.test(dano),'sobrou a frase de antes');
+assert.match(dano,/ação de <a [^>]*#investida'\}>Investida<\/a>/);assert.match(dano,/de × 2 para × 3 com a arma de duas mãos/);assert.match(dano,/cauda que varre com o giro do corpo inteiro/);assert.ok(!/usam sempre <strong>uma vez a Força/.test(dano),'sobrou a frase de antes');
+});
+// P20 (D-269): a Investida soma a Força mais uma vez no dano, com o +1d6, para o personagem e para a criatura; o
+// golpe de longe e o golpe de Força × 0 não ganham Força. O resumo da mesa leva o número, e o card diz o dano investindo.
+cases.set('P20', async () => {
+const S=(ref,inabil='nada')=>({attrs:{forca:4,destreza:2},skills:{armas:2},skills2:{},centelha:0,conjuntos:[{ativo:true,habil:{ref},inabil:{ref:inabil}}]});
+for(const [ref,inab,fi] of [['a:montante','nada',4],['a:espada-longa','nada',4],['a:espada-longa','e:broquel',4],['a:desarmado','a:desarmado',4],['a:arco-longo','nada',0]]) assert.equal(M.combatePersonagem(S(ref,inab)).forcaInvestida,fi,ref+' '+inab);
+assert.equal(M.forcaDaInvestida(7,1,false),7);assert.equal(M.forcaDaInvestida(7,2,false),7);assert.equal(M.forcaDaInvestida(7,0,false),0);assert.equal(M.forcaDaInvestida(7,1,true),0);
+const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));const mi=mesa.find(m=>m.id==='minotauro');
+assert.deepEqual(mi.combate.ataques.map(a=>[a.nome,a.forcaInvestida]),[['Machado pesado',7],['Chifrada',7]]);
+const naoInveste=mesa.filter(m=>m.combate.ataques.some(a=>['distancia','arremesso'].includes(a.classe)&&a.forcaInvestida!==0));assert.equal(naoInveste.length,0,'golpe de longe com Força a mais: '+naoInveste.map(m=>m.id));
+const best=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const au=best.find(m=>m.id==='auroque').habilidadesEspeciais.find(h=>h.regra==='investida');
+assert.match(au.texto||au.descricao,/Nesta criatura, Investida \(marrada\) investindo: 3d6 \+21 \(I\) \(o \+1d6 e a Força 7 mais uma vez\)/);
+const semLiga=best.find(m=>m.id==='besouro-veado-gigante').habilidadesEspeciais.find(h=>h.regra==='investida');assert.match(semLiga.texto||semLiga.descricao,/Nesta criatura: \+1d6 e a Força 4 mais uma vez no dano do golpe/);
+const todas=best.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida'));assert.equal(todas.length,37);assert.ok(todas.every(h=>/Nesta criatura/.test(h.texto||h.descricao)),'Investida sem o dano desta criatura');
 });
 // V2 (D-267): o peso erguido do livro é o da D-184 (a R15, pela massa), em tabela gerada do motor; a tabela por FAH sai.
 cases.set('parecer-V2', async () => {
