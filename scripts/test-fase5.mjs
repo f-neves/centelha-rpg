@@ -336,7 +336,10 @@ const best=fs.readFileSync('src/pages/bestiario.astro','utf8').split('<span clas
 const T=await carregarTS('src/lib/combate-tempo.ts');const mi=T.MODOS_MOV.find(m=>m.id==='investida');assert.ok(!/d6/.test(mi.nota),mi.nota);assert.match(mi.nota,/Força mais uma vez/);
 const grid=fs.readFileSync('src/pages/mesa/grid.astro','utf8');assert.ok(!/INVESTIDA\.danoDados/.test(grid),'o Grid ainda lê o danoDados da Investida');assert.match(grid,/\? \{ dados: 0, flat: ra\?\.forcaInvestida \?\? 0 \}/);
 const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const todas=mon.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida').map(h=>[m.id,h.descricao]));assert.equal(todas.length,37);
-const comDado=todas.filter(([,d])=>/\+1d6|o \+\d+d6/.test(d));assert.deepEqual(comDado,[],'card com o +1d6');
+// O dado a mais, e não a palavra: a ficha pode dizer "sem +1d6" (o lote da Bestiarista de 30/10 já escreve assim na
+// justificativa), e isso não é o card prometendo dado.
+const DADO_A_MAIS=/(?<!sem )\+\d*d6/;assert.ok(DADO_A_MAIS.test('investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez)'));assert.ok(DADO_A_MAIS.test('Nesta criatura: +1d6 e a Força 4'));assert.ok(!DADO_A_MAIS.test('soma mais uma Força, sem +1d6 (P20-b)'));assert.ok(!DADO_A_MAIS.test('investindo: 2d6 +19 (C)'));
+const comDado=todas.filter(([,d])=>DADO_A_MAIS.test(d));assert.deepEqual(comDado,[],'card com o +1d6');
 const txt=(id)=>todas.find(([i])=>i===id)[1];assert.match(txt('aguia-gigante'),/Garras em mergulho investindo: 2d6 \+19 \(C\) \(a Força 6 mais uma vez\)/);assert.match(txt('minotauro'),/Nesta criatura: a Força 7 mais uma vez no dano do golpe/);
 });
 // P23 (decisão do autor de 30/10/2026): (a) o chifre do minotauro soma com as duas mãos ocupadas (−2 do machado e +1
