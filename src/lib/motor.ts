@@ -771,8 +771,10 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         : Math.max(0, ...c.ataques.map((a: any) => a.arma ? armaDe(a)?.defesaArma ?? 0 : a.bloqueiaComoArma ?? 0));
     const defesa = Math.max(r.esquiva, r.bloqueio + bloqueioArma);
     const vest = r.comEquipamento;
+    // O Bloqueio da linha "Com o equipamento" leva a arma das mãos, como a Defesa ao lado (G4): sem isso o card dizia
+    // "Bloqueio 20" e "Defesa 18" no arconte-trombeta, e quem lê pegava o maior.
     const vestida = vest ? {
-        esquiva: vest.esquiva, bloqueio: vest.bloqueio, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
+        esquiva: vest.esquiva, bloqueio: vest.bloqueio + bloqueioArma, defesa: Math.max(vest.esquiva, vest.bloqueio + bloqueioArma), contraTiro: vest.contraTiro ?? vest.esquiva, absorcao: { impacto: vest.impacto, corte: vest.corte, perfuracao: vest.perfuracao }, nivel: vest.nivelPerfuracao ?? 0, penalidade: vest.penalidade
     } : undefined;
     const pecas: any[] = [];
     const ataques = c.ataques.map((a: any, i: number) => {

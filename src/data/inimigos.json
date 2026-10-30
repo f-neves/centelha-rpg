@@ -913,7 +913,7 @@
     ],
     "vestida": {
       "esquiva": 12,
-      "bloqueio": 20,
+      "bloqueio": 18,
       "defesa": 18,
       "contraTiro": 12,
       "absorcao": {
@@ -1008,7 +1008,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 11,
-      "bloqueio": 9,
+      "bloqueio": 10,
       "defesa": 11,
       "contraTiro": 11,
       "absorcao": {
@@ -1094,7 +1094,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 23,
-      "bloqueio": 13,
+      "bloqueio": 14,
       "defesa": 23,
       "contraTiro": 23,
       "absorcao": {
@@ -1534,7 +1534,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 9,
-      "bloqueio": 7,
+      "bloqueio": 8,
       "defesa": 9,
       "contraTiro": 9,
       "absorcao": {
@@ -2837,7 +2837,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 5,
-      "bloqueio": 5,
+      "bloqueio": 3,
       "defesa": 5,
       "contraTiro": 5,
       "absorcao": {
@@ -3511,7 +3511,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 22,
-      "bloqueio": 20,
+      "bloqueio": 21,
       "defesa": 22,
       "contraTiro": 22,
       "absorcao": {
@@ -3592,7 +3592,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 7,
-      "bloqueio": 16,
+      "bloqueio": 17,
       "defesa": 17,
       "contraTiro": 16,
       "absorcao": {
@@ -4055,7 +4055,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 11,
-      "bloqueio": 16,
+      "bloqueio": 17,
       "defesa": 17,
       "contraTiro": 16,
       "absorcao": {
@@ -4468,7 +4468,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 11,
-      "bloqueio": 11,
+      "bloqueio": 9,
       "defesa": 11,
       "contraTiro": 11,
       "absorcao": {
@@ -5102,7 +5102,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 13,
-      "bloqueio": 13,
+      "bloqueio": 14,
       "defesa": 14,
       "contraTiro": 13,
       "absorcao": {
@@ -8145,7 +8145,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 23,
-      "bloqueio": 23,
+      "bloqueio": 24,
       "defesa": 24,
       "contraTiro": 23,
       "absorcao": {
@@ -13230,7 +13230,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 7,
-      "bloqueio": 10,
+      "bloqueio": 11,
       "defesa": 11,
       "contraTiro": 10,
       "absorcao": {
@@ -22588,7 +22588,7 @@
     "artes": [],
     "vestida": {
       "esquiva": 12,
-      "bloqueio": 10,
+      "bloqueio": 11,
       "defesa": 12,
       "contraTiro": 12,
       "absorcao": {

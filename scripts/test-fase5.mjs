@@ -315,6 +315,11 @@ const mino=JSON.parse(fs.readFileSync('src/data/bestiario/minotauro.json','utf8'
 const A=JSON.parse(fs.readFileSync('src/data/armas.json','utf8'));const W=Object.fromEntries(A.map(w=>[w.id,w.arma]));
 const com=fs.readdirSync('src/data/bestiario').map(f=>JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8'))).filter(c=>[c.ataques,...(c.formas||[]).map(f=>f.ataques||[])].some(l=>l.some(a=>a.arma&&W[a.arma]?.maos===2&&W[a.arma]?.classe!=='distancia'&&W[a.arma].defesaArma<0))).map(c=>c.id).sort();
 assert.deepEqual(com,Object.keys(esperado).sort());
+// O Bloqueio da linha "Com o equipamento" leva a arma das mãos, como a Defesa ao lado: o arconte não diz mais
+// "Bloqueio 20" ao lado de "Defesa 18"; e em todo card com equipamento a Defesa é o maior dos dois números à vista.
+const vest=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8')).filter(m=>m.combate.vestida);assert.equal(vest.length,14);
+for(const m of vest){const v=m.combate.vestida;assert.equal(v.defesa,Math.max(v.esquiva,v.bloqueio),m.id+': a Defesa com o equipamento não é o maior entre Esquiva e Bloqueio');}
+const arc=vest.find(m=>m.id==='arconte-trombeta').combate.vestida;assert.deepEqual([arc.esquiva,arc.bloqueio,arc.defesa],[12,18,18]);
 });
 // CASES
 let failures=0;
