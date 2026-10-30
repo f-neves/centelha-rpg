@@ -23,8 +23,16 @@ select b.id, b.ficha_antiga as antes, p.ficha as depois,
 from public.personagens_ficha_backup_42 b join public.personagens p using(id)
 left join public.personagens_ficha_backup_41 b41 using(id)
 order by b.id;
--- 3. Peças com estatística que ficaram sem item (origem fora do catálogo; P18, a `cota-de-malha`).
+-- 3. Peças com estatística que ficaram sem item. Esperado: nenhuma (a órfã sai pela D-271, item 4).
 select p.id, x->>'ref' as ref, x->>'base' as base, x->>'uid' as uid, x->'ajuste' as ajuste
 from public.personagens p cross join lateral public.ficha42_pecas_de(p.ficha) x
 where public.ficha42_sem_item(x)
 order by p.id, x->>'uid';
+-- 4. As armaduras órfãs que a 42 descartou (D-271, P18): estão no backup e não estão mais na ficha.
+--    Esperado: as 4 `cota-de-malha` das fichas de teste.
+select b.id, x->>'base' as base, x->>'uid' as uid
+from public.personagens_ficha_backup_42 b
+cross join lateral jsonb_array_elements(case when jsonb_typeof(b.ficha_antiga->'equipamento'->'armaduras') = 'array'
+  then b.ficha_antiga->'equipamento'->'armaduras' else '[]'::jsonb end) x
+where public.ficha42_orfa(x)
+order by b.id, x->>'uid';

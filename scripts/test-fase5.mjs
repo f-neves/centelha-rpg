@@ -139,6 +139,16 @@ const volta=fs.readFileSync('supabase/migracao-42-volta.sql','utf8');assert.matc
 for(const f of ['migracao-42.sql','migracao-42-confere.sql','migracao-42-volta.sql'])assert.ok(!/[–—]/.test(fs.readFileSync('supabase/'+f,'utf8')),f+' com travessão');
 const confere=fs.readFileSync('supabase/migracao-42-confere.sql','utf8');assert.ok(!/\b(update|insert|delete|create|drop|alter)\b/i.test(confere.split('\n').filter((l)=>!l.trimStart().startsWith('--')).join('\n')),'a conferência é só leitura');
 });
+// P18 (D-271): a armadura órfã (a `cota-de-malha` das 4 fichas de teste) sai da lista, sem item; o site já a descartava.
+cases.set('P18', async () => {
+const sql=fs.readFileSync('supabase/migracao-42.sql','utf8');const corpo=sql.slice(0,sql.indexOf('-- >>> carimbo'));
+const cat=JSON.parse(corpo.split('$c42$')[1]);assert.ok(!('armadura:cota-de-malha' in cat),'a 42 não cria item para a órfã');
+const arm=corpo.split('create or replace function public.ficha42_armaduras')[1].split('$$;')[0];assert.match(arm,/where not public\.ficha42_orfa\(p\)/,'a lista de armaduras tira a órfã');
+const orfa=corpo.split('create or replace function public.ficha42_orfa')[1].split('$$;')[0];assert.match(orfa,/public\.ficha42_item\(p\) is null/);assert.match(orfa,/'base'\) = 'string'/);
+assert.match(corpo,/D-271/);assert.ok(!/fica como está, sem item/.test(corpo),'sobrou a frase de antes da D-271');
+const confere=fs.readFileSync('supabase/migracao-42-confere.sql','utf8');assert.match(confere,/-- 4\. As armaduras órfãs que a 42 descartou/);assert.match(confere,/where public\.ficha42_orfa\(x\)/);
+const E=await carregarTS('src/lib/equip.ts');const f={atributos:{},equipamento:{armaduras:[{uid:'a1',base:'cota-de-malha',vestida:true}]}};assert.deepEqual(E.armadurasDe(f),[],'o site já descartava a órfã na leitura');
+});
 cases.set('baixo-excecao', async () => {
 const md=raw.replace(/^(\| Tamanho \| )[^|]*\|[^|]*\|/m,'$1**Pequeno** (0,98 m², de frente) | decisão 7: quadrúpedes de 50 a 75 kg |');assert.ok(conv(md).paradas.some(x=>x.startsWith('Tamanho:')));const q=conv(md.replace(/^(\| Postura \| )[^|]+/m,'$1quadrúpede ').replace(/^(\| Massa \| )[^|]+/m,'$1**70 kg** '));assert.equal(q.criatura.corpo.tamanhoEscolhido,'pequeno');assert.ok(!q.paradas.some(x=>x.startsWith('Tamanho:')));
 });

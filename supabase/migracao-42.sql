@@ -13,9 +13,11 @@
 --    `valorCampo` (src/lib/equip.ts) e sai da peça. As peças livres (`ref` "c" e "ce",
 --    armadura `base` "c") nascem do padrão do site, e a arma livre perde `dado`,
 --    `danoBonus` e `acerto` da raiz (vão para o item). `a:desarmado` e `nada` não mudam.
---    Peça que já tem `item` fica como está (só perde `item.arma.folego`). Peça cuja origem
---    não está no catálogo (a armadura `cota-de-malha`, P18) fica como está, sem item:
---    a 42 não inventa números, e a conferência lista essas fichas.
+--    Peça que já tem `item` fica como está (só perde `item.arma.folego`). A armadura cuja
+--    origem não está no catálogo (a `cota-de-malha` das 4 fichas de teste, P18) SAI da lista,
+--    sem item: D-271, decisão do autor de 29/10/2026 ("pode descartar; essas fichas são só
+--    teste. A migração 42 não cria item para a peça órfã"). O site já a descartava na leitura,
+--    então nenhum número muda; o backup a guarda, e a conferência lista as descartadas.
 -- 2. D-260 (A2): a massa que a 41 preencheu com o padrão da raça sai (`corpo.massa`),
 --    e só se o valor ainda for o que a 41 escreveu. A ficha é achada pelo backup da 41
 --    (ficha antiga com `attrs`, `peso` sem número e sem massa numérica no `corpo`), e
@@ -257,6 +259,13 @@ language sql immutable as $$
    from jsonb_array_elements(a) with ordinality t(c, ord)) end;
 $$;
 -- Armadura gravada como texto (formato antigo, nenhuma nas fichas de hoje) vira peça vestida.
+-- A peça órfã (objeto sem item, com `base` fora do catálogo) sai da lista (D-271).
+create or replace function public.ficha42_orfa(p jsonb) returns boolean
+language sql immutable as $$
+ select jsonb_typeof(p) = 'object' and coalesce(jsonb_typeof(p->'item'), '') not in ('object', 'array')
+  and coalesce(p->>'ref', '') = '' and jsonb_typeof(p->'base') = 'string'
+  and public.ficha42_item(p) is null;
+$$;
 create or replace function public.ficha42_armaduras(a jsonb) returns jsonb
 language sql immutable as $$
  select case when jsonb_typeof(a) <> 'array' then a else
@@ -264,7 +273,8 @@ language sql immutable as $$
        case when public.ficha42_item(jsonb_build_object('base', p)) is null then p
          else public.ficha42_peca(jsonb_build_object('base', p, 'vestida', true)) end
      else public.ficha42_peca(p) end order by ord), '[]'::jsonb)
-   from jsonb_array_elements(a) with ordinality t(p, ord)) end;
+   from jsonb_array_elements(a) with ordinality t(p, ord)
+   where not public.ficha42_orfa(p)) end;
 $$;
 
 -- A massa que a 41 escreveu pelo padrão da raça, lida da ficha de antes da 41 (o backup),
@@ -323,7 +333,7 @@ $$;
 revoke all on function public.ficha42_catalogo(), public.ficha42_num(jsonb), public.ficha42_lim(numeric, numeric, numeric),
   public.ficha42_ajusta(jsonb, jsonb), public.ficha42_livre(jsonb, text, numeric, numeric, numeric),
   public.ficha42_item(jsonb), public.ficha42_peca(jsonb), public.ficha42_lista(jsonb), public.ficha42_conjuntos(jsonb),
-  public.ficha42_armaduras(jsonb), public.ficha42_massa41(jsonb), public.ficha42_converter(jsonb, jsonb),
+  public.ficha42_orfa(jsonb), public.ficha42_armaduras(jsonb), public.ficha42_massa41(jsonb), public.ficha42_converter(jsonb, jsonb),
   public.ficha42_pecas_de(jsonb), public.ficha42_sem_item(jsonb)
   from public, anon, authenticated;
 
@@ -344,7 +354,7 @@ update public.personagens p set ficha = n.ficha
 -- corrigir o hash e tirar o `a_mao` da carga histórica da migração 36. Quem
 -- rerodou sabe mais do que quem escreveu a carga de memória.
 insert into public.migracoes (numero, arquivo, sha256, a_mao) values
-  (42, 'migracao-42.sql', 'c1c25f4cc1ab7911', false)
+  (42, 'migracao-42.sql', 'c5b845f7aa03a935', false)
   on conflict (numero) do update set arquivo = excluded.arquivo,
     sha256 = excluded.sha256, a_mao = false, aplicada_em = now();
 
