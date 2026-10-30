@@ -3179,6 +3179,24 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, V3 (parecer da Veterana, M4). Não contradiz a D-263: lá o molde do Sopro ficou fora do livro; aqui o sopro só passa a usar uma regra de área que o livro já tem.
 - Estado: **a implementar** nos 24 sopros, pela Bestiarista (`../tmp/bestiarista-fichas/ajustes-parecer-f4.md`, com o lugar da regra no livro).
 
+### D-269 · P20: a Investida soma mais uma vez a Força (uma mão × 2, duas mãos × 3), com o +1d6; criatura e jogador [tags: combate, investida, forca, dano, arma, duas-maos, grid, d-266]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, P20, opção b): "a Investida soma mais uma vez a Força. Uma mão ou o corpo: de × 1 para × 2. Arma de duas mãos (montante, martelo de guerra, versátil com as duas): de × 2 para × 3. O +1d6 da Investida continua. Vale para criatura e jogador (complementa a V1). O Grid passa a aplicar a Força a mais da Investida (hoje soma só o +1d6): conserto."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, P20 (da Executora). Completa a D-266.
+- Estado: **a implementar** na fase5-correcoes: o Grid, o texto da V1 no livro e o card.
+
+### D-270 · L1: o card da criatura separa "Poderes" de "Habilidades" [tags: bestiario, card, habilidades, poderes, vocabulario, leitora]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, L1, opção a): "o card ganha dois painéis, um «Poderes» (os poderes da criatura, o que hoje aparece em «Habilidades») e um «Habilidades» (as Habilidades de treino: Armas, Esquiva, Furtividade...), para a palavra querer dizer no card o mesmo que no livro."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, L1, do parecer da Leitora-novata (`../tmp/leitora/parecer-f4.md`, achado 5).
+- Estado: **a implementar** na fase5-correcoes.
+
+### D-271 · P18: a peça órfã "cota-de-malha" sai das 4 fichas de teste [tags: ficha, personagem, armadura, migracao-42, d-259]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, P18): "pode descartar; essas fichas são só teste. A migração 42 não cria item para a peça órfã."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, P18 (da Executora).
+- Estado: **a implementar** na migração 42 (fase5-correcoes).
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
