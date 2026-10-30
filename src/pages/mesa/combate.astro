@@ -863,7 +863,8 @@ import CondDlg from '../../components/CondDlg.astro';
     // até a próxima ação. Ver `combate-tempo.ts` e Combate_Tempo.md §14.11.
     // Onde o golpe de quem ataca cai, e o que o alvo estará fazendo lá.
     const pre = (x: any) => preparoDe(
-      classeDeTempo(RESUMO[x.id]?.arma, RESUMO[x.id]?.velocidade),
+      // do PC, a classe do item da ficha (D-259; ponta 4); a criatura segue como antes, nesta aba
+      classeDeTempo(RESUMO[x.id]?.arma, RESUMO[x.id]?.velocidade, x.tipo === 'pc' ? RESUMO[x.id]?.classe : null),
       RESUMO[x.id]?.velocidade ?? velocidadeDaArma(RESUMO[x.id]?.arma, 5), TEMPO.sistema);
     const tGolpe = contra ? (contra.tick ?? AGORA) + pre(contra) : AGORA;
     const presumida = contra && !temGesto(c.acao)
@@ -1923,7 +1924,7 @@ import CondDlg from '../../components/CondDlg.astro';
     // não há régua escrita à mão.
     const manSel = el('acao-manobra') as HTMLSelectElement;
     const golpesInp = el('acao-golpes') as HTMLInputElement;
-    const classe = classeDeTempo(r?.arma, r?.velocidade);
+    const classe = classeDeTempo(r?.arma, r?.velocidade, ator.tipo === 'pc' ? r?.classe : null); // do PC, a classe do item (D-259)
     const velBase = r?.velocidade ?? velocidadeDaArma(r?.arma, 5);
     // SÓ OFERECE O QUE CABE. A rajada é corpo a corpo (não se dispara duas
     // flechas no mesmo gesto), e a dupla precisa de arma na mão inábil. Deixar

@@ -413,6 +413,13 @@ const doc1=new Set(doc.split('\n').filter(l=>l.startsWith('| `')).flatMap(l=>[..
 const falta=[...ks].filter(k=>!doc1.has(k));assert.deepEqual(falta,[],'chave de corpo sem linha no formato: '+falta.join(' '));
 const pend=doc.split('\n').filter(l=>/^\| `[^`]+` \|/.test(l)&&/a confirmar/i.test(l));assert.deepEqual(pend,[],'linha de chave "a confirmar": '+pend.map(l=>l.slice(0,40)).join(' · '));
 });
+// Pontas, 4, complemento (30/10/2026): a aba Combate passa a classe do item do PC ao classeDeTempo nos dois lugares
+// (o Preparo de quem age e a escolha de manobra); a criatura, nesta aba, continua sem a classe explícita.
+cases.set('pontas-4-combate', async () => {
+const src=fs.readFileSync('src/pages/mesa/combate.astro','utf8');const chamadas=[...src.matchAll(/classeDeTempo\(([^;\n]*)\)/g)].map(m=>m[1]).filter(a=>!/^\s*$/.test(a)&&!a.startsWith('classeDeTempo'));
+assert.ok(chamadas.length>=2,'as chamadas do classeDeTempo na aba Combate');
+for(const a of chamadas)assert.match(a,/tipo === 'pc' \? [^:]*\?\.classe : null/,'chamada sem a classe do item do PC: '+a);
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
