@@ -131,7 +131,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}{i.combate.vestida.nivel ? `·N${i.combate.vestida.nivel}` : ''}<small> c/ equip.</small></>}</dd></div>
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
             {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
-          </dl>{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa (D-206).</p>)}
+          </dl>{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa.</p>)}
 
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length || i.combate.imunidades?.length) && (
             <div class="besta-elem">

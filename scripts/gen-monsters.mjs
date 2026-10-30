@@ -13,6 +13,18 @@ const read = (f) => JSON.parse(readFileSync(join(data, f), 'utf8'));
 const inim = read('inimigos.json');
 const FICHA = Object.fromEntries(lerCriaturas().map((f) => [f.id, f]));
 const PRIMARIAS = new Set(read('habilidades.json').map(h => h.id));
+// A Técnica ou a Arte do livro que a ficha cita sem texto próprio: o card diz o nome do catálogo e o nível, e não o id
+// do arquivo ("visao-verdadeira"; parecer da Veterana, M2).
+const NOME_TEC = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t.nome]));
+const NOME_ARTE = Object.fromEntries(read('artes.json').map((a) => [a.id, a.nome]));
+const mesmo = (a, b) => String(a).localeCompare(String(b), 'pt', { sensitivity: 'base' }) === 0;
+function descricaoDaRef(x) {
+  const ref = x.tecnica ? ['Técnica', NOME_TEC[x.tecnica.id], x.tecnica] : x.arte ? ['Arte', NOME_ARTE[x.arte.id], x.arte] : null;
+  if (!ref) return x.descricao;
+  const [tipo, nome, r] = ref;
+  if (!nome) throw Error(`${x.nome}: ${tipo} ${r.id} não está no catálogo`);
+  return `${tipo}${mesmo(nome, x.nome) ? '' : ' ' + nome} do livro, nível ${r.nivel}`;
+}
 function habilidadesPublicas(f, c) {
   const todas = c.pericias || f.motor?.pericias || {};
   return {
@@ -114,7 +126,7 @@ function build(c, fonte) {
       deslocamento: (()=>{const d=f.deslocamentoDeclarado;if(!d)throw Error(f.id+': deslocamento ausente');return {batalha:d.batalha,arranque:d.arranque,corrida:d.corrida};})(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), ...(a.notas ? { notas: a.notas } : {}) })),
     },
-    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao, ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}) })),
+    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao || descricaoDaRef(x), ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}) })),
     ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),
     comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
     ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),

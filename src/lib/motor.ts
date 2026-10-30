@@ -774,7 +774,9 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         };
     });
     const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[]).find(Boolean);
-    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), descricao: [textoDaRegraDaCriatura(h.regra), h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || h.tecnica?.id || h.arte?.id || '' }));
+    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), ...(h.tecnica ? {tecnica:h.tecnica} : {}), ...(h.arte ? {arte:h.arte} : {}), descricao: [textoDaRegraDaCriatura(h.regra), h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || '' }));
+    // A Técnica e a Arte sem texto não viram o id cru no card ("visao-verdadeira"; parecer da Veterana, M2): a vista
+    // leva a referência, e o gerador do card (gen-monsters.mjs) escreve o nome do catálogo.
     const f: any = {
         id: c.id, idAntigo: c.idAntigo, nome: c.nome, nomeIngles: c.nomeIngles, categoria: c.categoria, papel: c.papel, ameacaLegada: c.ameaca, centelha: c.centelha, conceito: '', descricao: c.descricao, tags: [c.categoria], imagem: c.imagens[0] ?? null, ...(c.imagens[1] ? { imagem2: c.imagens[1] } : {}), porte: rotulo(r.tamanho), dimensoes: { medida: [c.corpo.altura + ' m de altura', c.corpo.comprimento ? c.corpo.comprimento + ' m de comprimento' : null].filter(Boolean).join(', '), peso: c.corpo.semMassa ? 'sem massa' : c.corpo.massa + ' kg' }, attrs: c.atributos, skills: c.habilidades, skills2: c.habilidadesSec, virtues: { ...c.virtudes, valor: c.virtudes.bravura }, willpower: c.vontade, aparencia: c.aparencia, arte: c.artes, tech: Object.fromEntries(c.habilidadesEspeciais.filter((h: any) => h.tecnica).map((h: any) => [h.tecnica.id, true])), ataques, habilidades, lore: c.lore, ecologia: { tipo: c.categoria, terreno: c.ecologia.terreno, clima: c.ecologia.clima }, notas: '', pendente: false, variantes: [], deslocamentoDeclarado: { batalha: principal?.batalha ?? 0, arranque: principal?.arranque ?? principal?.batalha ?? 0, corrida: principal?.corrida ?? principal?.batalha ?? 0 }, locomocao: { terra: d.terra?.batalha ?? null, ...Object.fromEntries(Object.entries(d).filter(([k]) => k !== 'terra').map(([k, v]) => [k === 'nado' ? 'natacao' : k, v == null ? null : (v as any).batalha])) }, ...Object.fromEntries(['fraquezas', 'resistencias', 'imunidades'].map(k => [k, c.elementos[k].filter((x: any) => x.formas === 'todas' || x.formas.includes(c.formaPrincipal?.id)).map((x: any) => x.tipo)]))
     };
@@ -788,7 +790,8 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
       energia: r.energia, stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
       enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
       comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
-      sentidos: (c.sentidos || []).filter(vale).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
+      // o sentido sem dado nenhum ("faro:" vazio no card; parecer da Veterana, m1) não vai à vista
+      sentidos: (c.sentidos || []).filter(vale).filter((s: any) => s.descricao).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
       formas: incluirFormas ? (original.formas || []).map((forma: any)=>({
         id:forma.id, nome:forma.nome,
         ficha:vistaPublicaCriatura({...comForma(original,forma), id:original.id, nome:original.nome, formaPrincipal:{id:forma.id,nome:forma.nome}},false),

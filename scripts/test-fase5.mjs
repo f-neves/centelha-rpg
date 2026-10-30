@@ -202,6 +202,20 @@ const blq=(habil,inabil='nada')=>M.numerosPersonagem({raca:'humano',attrs:{destr
 for(const [a,n] of [['montante',8],['martelo-de-guerra',8],['machado-pesado',8],['alabarda',10],['lanca',12],['espada-longa',11]])assert.equal(blq(a),n,a);
 assert.equal(M.numerosPersonagem({raca:'humano',attrs:{destreza:3},skills:{bloqueio:0},skills2:{},conjuntos:[{ativo:true,habil:{ref:'a:montante'},inabil:{ref:'nada'}}]}).bloqueio,4,'Bloqueio 0 com Montante: 4, como o livro');
 });
+// Card, item 7 (parecer m1, m2 e M2): nenhuma nota de trabalho que o código do card escreva: código de decisão no
+// texto do componente, o id cru da Técnica ou da Arte sem texto, o sentido sem dado ("faro:" vazio). A nota que vem
+// do texto da ficha é da Bestiarista (ajustes-parecer-f4.md), e a entrada das fichas a recusa.
+cases.set('parecer-7', async () => {
+const semComentario=(s)=>s.replace(/\{\/\*[\s\S]*?\*\/\}/g,'').replace(/\/\*[\s\S]*?\*\//g,'').replace(/^\s*\/\/.*$/gm,'').replace(/<!--[\s\S]*?-->/g,'');
+for(const f of ['src/components/BestaCard.astro','src/components/FormaCriatura.astro']){const cod=semComentario(fs.readFileSync(f,'utf8'));assert.ok(!/\b[CD]-\d{2,4}\b/.test(cod),f+': código de decisão no texto do card');}
+const MON=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const NT=Object.fromEntries(JSON.parse(fs.readFileSync('src/data/tecnicas.json','utf8')).map(t=>[t.id,t]));
+const vistas=MON.flatMap(m=>[m,...(m.formas||[]).map(f=>f.criatura)]);let refs=0;
+for(const c of vistas){for(const h of c.habilidadesEspeciais||[]){assert.ok(h.descricao,c.id+' · '+h.nome+': habilidade sem texto');assert.ok(!/^[a-z0-9]+(?:-[a-z0-9]+)+$/.test(h.descricao)&&!NT[h.descricao],c.id+' · '+h.nome+': id cru "'+h.descricao+'"');if(/ do livro, nível \d$/.test(h.descricao))refs++;}
+ for(const s of c.sentidos||[])assert.ok(s.descricao,c.id+' · sentido '+s.nome+' sem texto');
+ for(const t of [c.descricao,...(c.habilidadesEspeciais||[]).map(h=>h.descricao),...(c.sentidos||[]).map(s=>s.descricao),...(c.lore||[]).map(l=>l.texto)])assert.ok(!/\b[CD]-\d{3}\b/.test(t||''),c.id+': código de decisão no card: '+t);}
+assert.ok(refs>=50,'as Técnicas e Artes do livro sem texto ganham o nome do catálogo ('+refs+')');
+const mesa=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8')).find(m=>m.id==='babau').habilidadesEspeciais.find(h=>h.nome==='Ver o invisível');assert.equal(mesa.descricao,'Técnica Visão Verdadeira do livro, nível 4');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {

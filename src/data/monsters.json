@@ -1322,7 +1322,7 @@
    },
    {
     "nome": "Sentidos Apurados",
-    "descricao": "sentidos-apurados",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    }
   ],
@@ -5912,22 +5912,22 @@
   "habilidadesEspeciais": [
    {
     "nome": "Pisar Leve",
-    "descricao": "pisar-leve",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Esgueirar",
-    "descricao": "esgueirar",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Manto de Sombras",
-    "descricao": "manto-de-sombras",
+    "descricao": "Técnica do livro, nível 3",
     "classe": "livro"
    },
    {
     "nome": "Bote Silencioso",
-    "descricao": "bote-silencioso",
+    "descricao": "Técnica do livro, nível 3",
     "classe": "livro"
    },
    {
@@ -7311,7 +7311,7 @@
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -7901,7 +7901,7 @@
    },
    {
     "nome": "Comandar legiões",
-    "descricao": "coordenar",
+    "descricao": "Técnica Coordenar do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -7911,7 +7911,7 @@
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -11211,12 +11211,12 @@
    },
    {
     "nome": "Escalador nato",
-    "descricao": "andar-de-aranha",
+    "descricao": "Técnica Andar de Aranha do livro, nível 4",
     "classe": "livro"
    },
    {
     "nome": "Faro",
-    "descricao": "faro",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -12710,7 +12710,7 @@
    },
    {
     "nome": "Imobilizar",
-    "descricao": "imobilizar",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -19488,17 +19488,17 @@
    },
    {
     "nome": "Golpe Pesado",
-    "descricao": "golpe-pesado",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Quebrar Guarda",
-    "descricao": "quebrar-guarda",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Soco Trovejante",
-    "descricao": "soco-trovejante",
+    "descricao": "Técnica do livro, nível 3",
     "classe": "livro"
    },
    {
@@ -24897,17 +24897,17 @@
   "habilidadesEspeciais": [
    {
     "nome": "Pele Curtida",
-    "descricao": "pele-curtida",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Aguentar o Tranco",
-    "descricao": "aguentar-o-tranco",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Tensionar",
-    "descricao": "tensionar",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -28025,17 +28025,17 @@
   "habilidadesEspeciais": [
    {
     "nome": "Voz de Líder",
-    "descricao": "voz-de-lider",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Coordenar",
-    "descricao": "coordenar",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Tom de Autoridade",
-    "descricao": "tom-de-autoridade",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -28465,7 +28465,7 @@
    },
    {
     "nome": "Imobilizar",
-    "descricao": "imobilizar",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -31059,17 +31059,17 @@
   "habilidadesEspeciais": [
    {
     "nome": "Drenar vida",
-    "descricao": "morte",
+    "descricao": "Arte Morte do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Maldição do apodrecer",
-    "descricao": "morte",
+    "descricao": "Arte Morte do livro, nível 2",
     "classe": "livro"
    },
    {
     "nome": "Podridão",
-    "descricao": "morte",
+    "descricao": "Arte Morte do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -34364,7 +34364,7 @@
    },
    {
     "nome": "Aura de pavor",
-    "descricao": "irradiar-temor",
+    "descricao": "Técnica Irradiar Temor do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -34947,7 +34947,7 @@
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -35610,7 +35610,7 @@
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -43231,7 +43231,7 @@
    },
    {
     "nome": "Temor Reverente",
-    "descricao": "temor-reverente",
+    "descricao": "Técnica do livro, nível 3",
     "classe": "livro"
    },
    {
@@ -45981,22 +45981,22 @@
   "habilidadesEspeciais": [
    {
     "nome": "Postura Fluida",
-    "descricao": "postura-fluida",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Aparar",
-    "descricao": "aparar",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Finta",
-    "descricao": "finta",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Riposte",
-    "descricao": "riposte",
+    "descricao": "Técnica do livro, nível 3",
     "classe": "livro"
    },
    {
@@ -47210,10 +47210,6 @@
    {
     "nome": "visão",
     "descricao": "Prontidão (visão) +2, Especialidade natural (era Especialidade comum, com o mesmo valor); via diretamente para cima (Wikipédia, \"Plesiosaur\")"
-   },
-   {
-    "nome": "faro",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -48397,7 +48393,7 @@
    },
    {
     "nome": "Pele de Pedra",
-    "descricao": "pele-de-pedra",
+    "descricao": "Técnica do livro, nível 3",
     "classe": "livro"
    },
    {
@@ -49861,10 +49857,6 @@
    {
     "nome": "vibração da teia",
     "descricao": "Prontidão (vibração da teia) +3 , só sobre a teia. A colônia acha a presa pela vibração e avança em sincronia (Jeanson 2022, via National Geographic). Fora da teia, nada"
-   },
-   {
-    "nome": "visão e olfato",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -50170,10 +50162,6 @@
    {
     "nome": "orientação",
     "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde (Adamczewska e Morris 2001; ABC Science). Texto"
-   },
-   {
-    "nome": "os outros",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -52709,12 +52697,12 @@
    },
    {
     "nome": "Olho de alcance",
-    "descricao": "olho-de-alcance",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -57891,17 +57879,17 @@
   "habilidadesEspeciais": [
    {
     "nome": "dardo flamejante",
-    "descricao": "fogo",
+    "descricao": "Arte Fogo do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "chama que gruda",
-    "descricao": "fogo",
+    "descricao": "Arte Fogo do livro, nível 2",
     "classe": "livro"
    },
    {
     "nome": "acende e apaga",
-    "descricao": "fogo",
+    "descricao": "Arte Fogo do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -63565,7 +63553,7 @@
    },
    {
     "nome": "Faro",
-    "descricao": "faro",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -67533,7 +67521,7 @@
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -70737,10 +70725,6 @@
    {
     "nome": "audição",
     "descricao": "até cerca de 120 kHz (Wikipédia); cobre o mesmo uso da ecolocalização, sem Especialidade à parte"
-   },
-   {
-    "nome": "visão",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -80139,7 +80123,7 @@
    },
    {
     "nome": "Abraço do Titã",
-    "descricao": "abraco-do-tita",
+    "descricao": "Técnica do livro, nível 6",
     "classe": "livro"
    },
    {
@@ -83672,7 +83656,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Recuperação acelerada",
-    "descricao": "recuperacao-acelerada",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -84112,10 +84096,6 @@
    {
     "nome": "penumbra",
     "descricao": "Prontidão (penumbra) +2 ; \"seis a oito vezes melhor que a do humano\" (SANBI, sem método)"
-   },
-   {
-    "nome": "faro",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -90259,10 +90239,6 @@
    {
     "nome": "visão em pouca luz",
     "descricao": "Especialidade natural Prontidão (visão na penumbra) +2; olhos grandes de predadora visual (guia da Hopkins/NOAA); alcance"
-   },
-   {
-    "nome": "estatocisto, quimiorrecepção",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -90637,10 +90613,6 @@
    {
     "nome": "visão em pouca luz",
     "descricao": "Especialidade natural Prontidão (visão na penumbra) +2; olhos grandes de predadora visual (guia da Hopkins/NOAA); alcance"
-   },
-   {
-    "nome": "estatocisto, quimiorrecepção",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -91050,10 +91022,6 @@
    {
     "nome": "visão no escuro",
     "descricao": "Especialidade natural Prontidão (visão no escuro) +3; o olho real de 27 cm detecta um cachalote a mais de 120 m abaixo de 600 m (Nilsson 2012, modelo óptico). Na escala o olho teria cerca de 59 cm , sem número de alcance"
-   },
-   {
-    "nome": "estatocisto, quimiorrecepção",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -91718,22 +91686,22 @@
   "habilidadesEspeciais": [
    {
     "nome": "Bola de fogo",
-    "descricao": "fogo",
+    "descricao": "Arte Fogo do livro, nível 4",
     "classe": "livro"
    },
    {
     "nome": "Raio de energia",
-    "descricao": "fogo",
+    "descricao": "Arte Fogo do livro, nível 1",
     "classe": "livro"
    },
    {
     "nome": "Labareda",
-    "descricao": "fogo",
+    "descricao": "Arte Fogo do livro, nível 3",
     "classe": "livro"
    },
    {
     "nome": "Escudo de força",
-    "descricao": "forcas",
+    "descricao": "Arte Forças do livro, nível 2",
     "classe": "livro"
    },
    {
@@ -94030,7 +93998,7 @@
    },
    {
     "nome": "Aperto esmagador",
-    "descricao": "aperto-esmagador",
+    "descricao": "Técnica do livro, nível 5",
     "classe": "livro"
    },
    {
@@ -94058,7 +94026,7 @@
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -94068,7 +94036,7 @@
    },
    {
     "nome": "Tática de guerra",
-    "descricao": "coordenar",
+    "descricao": "Técnica Coordenar do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -94088,7 +94056,7 @@
    },
    {
     "nome": "Presença aterradora",
-    "descricao": "temor-reverente",
+    "descricao": "Técnica Temor Reverente do livro, nível 3",
     "classe": "livro"
    },
    {
@@ -95269,10 +95237,6 @@
    {
     "nome": "linha lateral e faro",
     "descricao": "Prontidão (linha lateral e faro) +2, Especialidade natural ; alcance"
-   },
-   {
-    "nome": "visão",
-    "descricao": ""
    }
   ],
   "segundoTamanho": null,
@@ -103322,7 +103286,7 @@
    },
    {
     "nome": "Ver o invisível",
-    "descricao": "visao-verdadeira",
+    "descricao": "Técnica Visão Verdadeira do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -104230,7 +104194,7 @@
    },
    {
     "nome": "Fascínio",
-    "descricao": "beleza-inebriante",
+    "descricao": "Técnica Beleza Inebriante do livro, nível 4",
     "classe": "livro"
    },
    {
@@ -118895,7 +118859,7 @@
    },
    {
     "nome": "Imobilizar",
-    "descricao": "imobilizar",
+    "descricao": "Técnica do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -123869,12 +123833,12 @@
    },
    {
     "nome": "Encanto",
-    "descricao": "encantamento",
+    "descricao": "Técnica Encantamento do livro, nível 4",
     "classe": "livro"
    },
    {
     "nome": "Sedução",
-    "descricao": "charme",
+    "descricao": "Técnica Charme do livro, nível 1",
     "classe": "livro"
    },
    {
@@ -124712,7 +124676,7 @@
    },
    {
     "nome": "Imortalidade Tênue",
-    "descricao": "imortalidade-tenue",
+    "descricao": "Técnica do livro, nível 6",
     "classe": "livro"
    },
    {
@@ -129767,7 +129731,7 @@
    },
    {
     "nome": "Imunidade",
-    "descricao": "imunidade",
+    "descricao": "Técnica do livro, nível 4",
     "classe": "livro"
    },
    {
