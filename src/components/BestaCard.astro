@@ -16,6 +16,7 @@ import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
+import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano } from '../lib/besta-card';
 
 interface Props { i: any }
 const { i } = Astro.props;
@@ -23,38 +24,14 @@ const d = await loadData();
 
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
 const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
-// Fraquezas e resistências: a palavra-chave crua vira rótulo de leitura. O vocabulário
-// mistura três eixos de propósito (elemento das Artes, tipo de dano físico, natureza).
-const ELEM: Record<string, string> = {
-  fogo: 'Fogo', agua: 'Água', gelo: 'Gelo', raio: 'Raio', vento: 'Vento', terra: 'Terra',
-  luz: 'Luz', sombra: 'Sombra', acido: 'Ácido', corte: 'Corte', perfuracao: 'Perfuração', impacto: 'Impacto',
-  sagrado: 'Sagrado', profano: 'Profano', prata: 'Prata', sol: 'Sol',
-};
-// Atributos (ordem canônica: físico · social · mental) com rótulo curto e nome cheio
-const ATR: [string, string, string][] = [
-  ['forca', 'For', 'Força'], ['destreza', 'Des', 'Destreza'], ['vigor', 'Vig', 'Vigor'],
-  ['influencia', 'Inf', 'Influência'], ['perspicacia', 'Psp', 'Perspicácia'], ['compostura', 'Cmp', 'Compostura'],
-  ['percepcao', 'Per', 'Percepção'], ['inteligencia', 'Int', 'Inteligência'], ['raciocinio', 'Rac', 'Raciocínio'],
-];
+// Os rótulos (elementos, atributos, locomoção) e os formatos do ataque e do dano moram em src/lib/besta-card.ts, para
+// as outras formas (FormaCriatura.astro) terem o mesmo desenho (parecer da Veterana, M9).
 // Modificador social da Aparência (curva do sistema, extrapolada além de 1–10 para criaturas extremas).
 const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
 const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
 const tecLink = (id: string) => url(`caminhos/${d.T[id]?.caminho?.id ?? ''}`) + '#' + id;
 const stars = (n: number) => '◆'.repeat(n) + '◇'.repeat(6 - n);
-// ataque: "7d6+2 +8" → "7d6 +2 +8"; dano: tipo por extenso → sigla (I)/(C)/(P)
-const DANO_AB: Record<string, string> = { impacto: '(I)', corte: '(C)', perfurante: '(P)' };
-const fmtPool = (s: string) => String(s || '').replace(/(\d+d6)\+/, '$1 +');
-// o Tipo fora dos três (manual §5.2, item 8): "fenômeno" e a palavra do vocabulário, pelo rótulo ("Ácido", "Fogo")
-const fmtDano = (s: string) => String(s || '').replace(/\b(impacto|corte|perfurante)\b/g, (m) => DANO_AB[m])
-  .replace(/\b(fenomeno|[a-z]+)$/, (m) => (m === 'fenomeno' ? 'fenômeno' : ELEM[m] ?? m));
-// Locomoção (B14 fase 4, Adendo 3 item 5): só os modos que a criatura tem, m/Tick.
-const LOCO: [string, string][] = [
-  ['terra', 'Terra'], ['voo', 'Voo'], ['natacao', 'Natação'],
-  ['escalada', 'Escalada'], ['escavacao', 'Escavação'], ['jato', 'Jato'],
-];
-const SEM_LOCOMOCAO: Record<string, string> = { terra: 'não anda', voo: 'não voa', natacao: 'não nada', escalada: 'não escala', escavacao: 'não escava', jato: 'não usa jato' };
-const locoDe = (x: any) => LOCO.filter(([k]) => k === 'terra' || Object.hasOwn(x.locomocao || {}, k)).map(([k, nome]) => ({ nome, k, v: x.locomocao?.[k] }));
 // Uso de um poder natural, por extenso: "1×/dia", "à vontade", "passivo", "por golpe".
 const PERIODO: Record<string, string> = {
   ticks: 'Ticks', cena: 'cena', hora: 'hora', dia: 'dia', avontade: 'à vontade', passivo: 'passivo', golpe: 'por golpe',
@@ -118,7 +95,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           )}
           {i.segundoTamanho && <p class="besta-porte">Segundo Tamanho: {i.segundoTamanho}</p>}
           {locoDe(i).length > 0 && (
-            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{m.v == null ? `${m.nome}: ${SEM_LOCOMOCAO[m.k]}` : `${m.nome} ${m.v} m/Tick`}</span></>))}</p>
+            <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{locoTxt(m)}</span></>))}</p>
           )}
 
           {i.descricao && <p class="besta-con muted">{i.descricao}</p>}
@@ -129,6 +106,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
             <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
             <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.resistenciaPerfuracao ? `·N${i.combate.resistenciaPerfuracao}` : ''}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}{i.combate.vestida.nivel ? `·N${i.combate.vestida.nivel}` : ''}<small> c/ equip.</small></>}</dd></div>
+            {i.combate.couraca > 0 && <div title="O nível de Couraça da pele (0 a 12). Quanto cada nível vale na Absorção ainda não tem regra, e por isso ele não entra na conta."><dt>Couraça</dt><dd>{i.combate.couraca}</dd></div>}
             <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
             {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
           </dl>{i.combate.vestida && (<p class="ib-ref besta-vestida"><b>Com o equipamento:</b> Esquiva {i.combate.vestida.esquiva}, Bloqueio {i.combate.vestida.bloqueio}, contra tiro {i.combate.vestida.contraTiro}, Penalidade −{i.combate.vestida.penalidade}. Na mesa, o Mestre escolhe qual usar; sem escolha, vale a maior Defesa.</p>)}
@@ -223,7 +201,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                 <template class="mech-tpl">
                   {i.habilidadesEspeciais?.length > 0 && (<>
                     <h4>Habilidades</h4>
-                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.descricao}{h.base ? ` · base ${h.base.arte} ${h.base.nivel}` : ''}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
+                    <ul class="ib-hab">{i.habilidadesEspeciais.map((h: any) => (<li><b>{h.nome}</b> {h.campos ? <>{h.texto}<ul class="hab-campos">{h.campos.map((x: any) => <li><span class="hc-rot">{x.rotulo}:</span> {x.valor}</li>)}</ul></> : h.descricao}{h.base ? ` · base ${h.base.arte} ${h.base.nivel}` : ''}{h.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>))}</ul>
                   </>)}
                   {i.poderes?.length > 0 && (<>
                     <h4>Poderes <span class="ib-sub-lbl">(sistema)</span></h4>

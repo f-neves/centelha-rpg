@@ -175,6 +175,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 8",
    "deslocamento": {
     "batalha": 1,
@@ -551,6 +552,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -677,6 +679,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -797,6 +800,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 8,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -907,6 +911,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -1018,6 +1023,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -1984,6 +1990,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 7,
@@ -2110,6 +2117,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -2260,6 +2268,7 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "fraquezas": [
     "gelo",
     "luz",
@@ -2513,6 +2522,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -2641,6 +2651,7 @@
        "perfuracao": 2
       },
       "resistenciaPerfuracao": 0,
+      "couraca": 1,
       "fraquezas": [
        "luz",
        "sagrado"
@@ -2776,6 +2787,7 @@
        "perfuracao": 2
       },
       "resistenciaPerfuracao": 0,
+      "couraca": 1,
       "fraquezas": [
        "luz",
        "sagrado"
@@ -2908,6 +2920,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -3036,6 +3049,7 @@
        "perfuracao": 4
       },
       "resistenciaPerfuracao": 0,
+      "couraca": 2,
       "fraquezas": [
        "luz",
        "sagrado"
@@ -3171,6 +3185,7 @@
        "perfuracao": 4
       },
       "resistenciaPerfuracao": 0,
+      "couraca": 2,
       "fraquezas": [
        "luz",
        "sagrado"
@@ -3297,6 +3312,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "fogo"
    ],
@@ -3412,6 +3428,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 2,
@@ -3533,6 +3550,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -3652,6 +3670,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -3772,6 +3791,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 1,
@@ -3886,6 +3906,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -3997,6 +4018,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -4117,6 +4139,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -4337,6 +4360,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -4562,6 +4586,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 5,
@@ -4932,6 +4957,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 3,
@@ -5868,6 +5894,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 7,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 4,
@@ -5983,6 +6010,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "fraquezas": [
     "raio"
    ],
@@ -6702,6 +6730,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "gelo",
     "luz",
@@ -6826,6 +6855,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "gelo",
     "luz",
@@ -6951,6 +6981,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -7313,6 +7344,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -7542,6 +7574,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 8,
@@ -7660,6 +7693,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -7920,6 +7954,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -8038,6 +8073,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 5,
@@ -8164,6 +8200,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -8271,6 +8308,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -8387,6 +8425,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -8497,6 +8536,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "fraquezas": [
     "raio"
    ],
@@ -8862,6 +8902,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -9116,6 +9157,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 2,
@@ -9252,6 +9294,7 @@
        "perfuracao": 5
       },
       "resistenciaPerfuracao": 0,
+      "couraca": 1,
       "iniciativa": "1d6 + 9",
       "deslocamento": {
        "batalha": 2,
@@ -9371,6 +9414,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
@@ -9485,6 +9529,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
@@ -9814,6 +9859,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -10512,6 +10558,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -10647,6 +10694,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -10783,6 +10831,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -10931,6 +10980,7 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -11061,6 +11111,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -11182,6 +11233,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -11882,6 +11934,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "imunidades": [
     "acido"
    ],
@@ -12031,6 +12084,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "imunidades": [
     "raio"
    ],
@@ -12185,6 +12239,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 6,
    "fraquezas": [
     "fogo"
    ],
@@ -12345,6 +12400,7 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "imunidades": [
     "fogo"
    ],
@@ -12504,6 +12560,7 @@
        "perfuracao": 7
       },
       "resistenciaPerfuracao": 0,
+      "couraca": 9,
       "imunidades": [
        "fogo"
       ],
@@ -12640,6 +12697,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "imunidades": [
     "acido"
    ],
@@ -12799,6 +12857,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "imunidades": [
     "fogo"
    ],
@@ -12966,6 +13025,7 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 11,
    "imunidades": [
     "fogo"
    ],
@@ -13127,6 +13187,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 6,
    "imunidades": [
     "fogo"
    ],
@@ -13264,6 +13325,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 2,
@@ -13377,6 +13439,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 2,
@@ -13484,6 +13547,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -13608,6 +13672,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
@@ -13713,6 +13778,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
@@ -14286,6 +14352,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 4,
@@ -14396,6 +14463,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -14624,6 +14692,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "resistencias": [
     "fogo",
     "corte",
@@ -14731,6 +14800,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "fraquezas": [
     "agua"
    ],
@@ -15186,6 +15256,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 1,
@@ -16151,6 +16222,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -16272,6 +16344,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 4,
@@ -16384,6 +16457,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "fogo"
    ],
@@ -16846,6 +16920,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -17059,6 +17134,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -17171,6 +17247,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -17637,6 +17714,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "gelo"
    ],
@@ -17784,6 +17862,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "imunidades": [
     "fogo"
    ],
@@ -18030,6 +18109,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -18144,6 +18224,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "resistencias": [
     "raio"
    ],
@@ -18376,6 +18457,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -19259,6 +19341,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -19372,6 +19455,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -19488,6 +19572,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "imunidades": [
     "raio"
    ],
@@ -19598,6 +19683,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 5,
@@ -19713,6 +19799,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "vestida": {
     "esquiva": 1,
     "bloqueio": 5,
@@ -19847,6 +19934,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "imunidades": [
     "gelo"
    ],
@@ -19968,6 +20056,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 2,
@@ -20082,6 +20171,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 4,
@@ -20206,6 +20296,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -20546,6 +20637,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 6,
    "resistencias": [
     "corte",
     "perfuracao",
@@ -20654,6 +20746,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "resistencias": [
     "perfuracao"
    ],
@@ -20762,6 +20855,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 10,
    "fraquezas": [
     "raio"
    ],
@@ -20877,6 +20971,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "fraquezas": [
     "fogo"
    ],
@@ -20994,6 +21089,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "resistencias": [
     "corte",
     "perfuracao",
@@ -21110,6 +21206,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 6,
@@ -21227,6 +21324,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "resistencias": [
     "corte",
     "perfuracao"
@@ -21355,6 +21453,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -21498,6 +21597,7 @@
     "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 12,
    "imunidades": [
     "fogo"
    ],
@@ -21652,6 +21752,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 3,
@@ -22143,6 +22244,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -22267,6 +22369,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
@@ -22489,6 +22592,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 8,
@@ -22598,6 +22702,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 4,
@@ -22834,6 +22939,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -22949,6 +23055,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "prata"
    ],
@@ -23654,6 +23761,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 6,
@@ -23773,6 +23881,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 1,
@@ -23883,6 +23992,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -24000,6 +24110,7 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 11",
    "deslocamento": {
     "batalha": 1,
@@ -24116,6 +24227,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -24235,6 +24347,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "fraquezas": [
     "fogo"
    ],
@@ -24354,6 +24467,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "imunidades": [
     "raio"
    ],
@@ -24478,6 +24592,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 2,
@@ -24599,6 +24714,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 8",
    "deslocamento": {
     "batalha": 6,
@@ -24708,6 +24824,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -24826,6 +24943,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -24945,6 +25063,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 7,
@@ -25808,6 +25927,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 10,
    "fraquezas": [
     "fogo"
    ],
@@ -25935,6 +26055,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 11,
    "imunidades": [
     "acido"
    ],
@@ -26067,6 +26188,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 9,
    "imunidades": [
     "fogo"
    ],
@@ -26196,6 +26318,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "prata"
    ],
@@ -26789,6 +26912,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "fogo"
    ],
@@ -26914,6 +27038,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
@@ -27620,6 +27745,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -27739,6 +27865,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -28252,6 +28379,7 @@
     "perfuracao": 7
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -28374,6 +28502,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -28620,6 +28749,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 8,
@@ -28970,6 +29100,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 1,
@@ -29085,6 +29216,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -29201,6 +29333,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
@@ -29424,6 +29557,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -29538,6 +29672,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "resistencias": [
     "fogo",
     "raio",
@@ -29882,6 +30017,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 5,
@@ -30098,6 +30234,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -30202,6 +30339,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "fogo",
     "luz",
@@ -30319,6 +30457,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -30466,6 +30605,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 9",
    "deslocamento": {
     "batalha": 4,
@@ -30592,6 +30732,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
@@ -30717,6 +30858,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
@@ -30955,6 +31097,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -31082,6 +31225,7 @@
     "perfuracao": 6
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 3,
@@ -31430,6 +31574,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "resistencias": [
     "perfuracao"
    ],
@@ -31539,6 +31684,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -31649,6 +31795,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 4,
@@ -31759,6 +31906,7 @@
        "perfuracao": 5
       },
       "resistenciaPerfuracao": 0,
+      "couraca": 1,
       "iniciativa": "1d6 + 6",
       "deslocamento": {
        "batalha": 4,
@@ -31990,6 +32138,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 8,
@@ -32096,6 +32245,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -32209,6 +32359,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "fraquezas": [
     "fogo"
    ],
@@ -32324,6 +32475,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 6,
@@ -32553,6 +32705,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -32670,6 +32823,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -33045,6 +33199,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 4,
@@ -33398,6 +33553,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -33630,6 +33786,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 2,
@@ -34223,6 +34380,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -35192,6 +35350,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "imunidades": [
     "fogo",
     "gelo"
@@ -35308,6 +35467,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 4,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -35428,6 +35588,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 2,
@@ -35552,6 +35713,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 3,
@@ -35676,6 +35838,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "agua",
     "gelo"
@@ -36015,6 +36178,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 7",
    "deslocamento": {
     "batalha": 4,
@@ -36121,6 +36285,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "resistencias": [
     "fogo"
    ],
@@ -36235,6 +36400,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "agua"
    ],
@@ -36467,6 +36633,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "resistencias": [
     "gelo"
    ],
@@ -37361,6 +37528,7 @@
     "perfuracao": 10
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 12,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 4,
@@ -37482,6 +37650,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 8,
    "imunidades": [
     "fogo"
    ],
@@ -37839,6 +38008,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
     "batalha": 7,
@@ -37962,6 +38132,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 6,
@@ -38083,6 +38254,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -38191,6 +38363,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "fraquezas": [
     "fogo"
    ],
@@ -38301,6 +38474,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "fogo"
    ],
@@ -38419,6 +38593,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -38534,6 +38709,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -38645,6 +38821,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "fogo",
     "acido"
@@ -38766,6 +38943,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 6,
@@ -38882,6 +39060,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 8",
    "deslocamento": {
     "batalha": 6,
@@ -39001,6 +39180,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -39123,6 +39303,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -39244,6 +39425,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 6,
@@ -39364,6 +39546,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -39485,6 +39668,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -39607,6 +39791,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -39958,6 +40143,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "fogo"
    ],
@@ -40070,6 +40256,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 5,
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 2,
@@ -40187,6 +40374,7 @@
     "perfuracao": 0
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 4,
@@ -40302,6 +40490,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "resistencias": [
     "fogo",
     "gelo",
@@ -40421,6 +40610,7 @@
     "perfuracao": 5
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 2,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -40755,6 +40945,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 3,
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 2,
@@ -40895,6 +41086,7 @@
     "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "luz",
     "sagrado"
@@ -41020,6 +41212,7 @@
     "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 7,
    "fraquezas": [
     "agua"
    ],
@@ -41140,6 +41333,7 @@
     "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
+   "couraca": 1,
    "fraquezas": [
     "fogo"
    ],

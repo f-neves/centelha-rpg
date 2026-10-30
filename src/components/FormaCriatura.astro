@@ -1,27 +1,68 @@
 ---
+/**
+ * Uma forma da criatura além da principal (o lobo e o híbrido do lobisomem, a forma de goblin do barghest).
+ *
+ * Tinha desenho próprio, em linha corrida e com as chaves cruas ("Força: 5 · Destreza: 4", "resistencias: corte,
+ * perfuracao", "natacao: 4 m/Tick"; parecer da Veterana sobre o site da Fase 4, M9). Passa a usar o desenho da forma
+ * principal do BestaCard.astro, com os mesmos rótulos e formatos (src/lib/besta-card.ts).
+ */
+import { loadData } from '../lib/data';
+import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano } from '../lib/besta-card';
 interface Props { forma: any }
 const {forma} = Astro.props;
 const i = forma.criatura;
-const nomes: Record<string,string> = {forca:'Força',destreza:'Destreza',vigor:'Vigor',influencia:'Influência',perspicacia:'Perspicácia',compostura:'Compostura',percepcao:'Percepção',inteligencia:'Inteligência',raciocinio:'Raciocínio'};
-const semLocomocao: Record<string,string> = {terra:'não anda',voo:'não voa',natacao:'não nada',escalada:'não escala',escavacao:'não escava',jato:'não usa jato'};
+const d = await loadData();
+const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
+const artes = (i.artes || []).filter((a: any) => a.nivel > 0);
+const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-fra'], ['resistencias', 'Resiste', 'el-res'], ['imunidades', 'Imune', 'el-imu']];
 ---
 <section data-forma-painel={forma.id} hidden>
-  <p class="besta-porte"><b>{forma.nome}</b> · {i.tamanho} · {i.corpo.medida} · {i.corpo.peso}</p>
-  {i.segundoTamanho && <p>Segundo Tamanho: {i.segundoTamanho}</p>}
+  <p class="besta-porte"><span class="pt-lbl">{forma.nome}</span><span class="pt-cat">{i.tamanho}</span><span class="pt-sep">·</span>{i.corpo.medida}<span class="pt-sep">·</span>{i.corpo.peso}</p>
+  {i.segundoTamanho && <p class="besta-porte">Segundo Tamanho: {i.segundoTamanho}</p>}
+  {locoDe(i).length > 0 && (
+    <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{locoTxt(m)}</span></>))}</p>
+  )}
   <dl class="besta-stats">
-    <div><dt>{i.enxame ? 'PV por quadrado' : 'PV'}</dt><dd>{i.combate.pv}</dd></div><div><dt>Defesa</dt><dd>{i.combate.defesa}</dd></div>
-    <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div><div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
-    <div><dt>Absorção</dt><dd>{Object.values(i.combate.absorcao).join('/')}</dd></div><div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
-            {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
+    <div><dt>{i.enxame ? 'PV por quadrado' : 'PV'}</dt><dd>{i.combate.pv}</dd></div>
+    <div><dt>Defesa</dt><dd>{i.combate.defesa}{i.combate.vestida && <> · {i.combate.vestida.defesa}<small> c/ equip.</small></>}</dd></div>
+    <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
+    <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
+    <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}<small> c/ equip.</small></>}</dd></div>
+    {i.combate.couraca > 0 && <div title="O nível de Couraça da pele (0 a 12). Quanto cada nível vale na Absorção ainda não tem regra, e por isso ele não entra na conta."><dt>Couraça</dt><dd>{i.combate.couraca}</dd></div>}
+    <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
+    {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
   </dl>
-  {i.combate.vestida && <p>Com equipamento: Defesa {i.combate.vestida.defesa} · Absorção {Object.values(i.combate.vestida.absorcao).join('/')}</p>}
-  <p>{['fraquezas','resistencias','imunidades'].filter(k=>i.combate[k]?.length).map(k=>k+': '+i.combate[k].join(', ')).join(' · ')}</p>
-  <p>{Object.entries(i.atributos).map(([k,v])=>nomes[k]+': '+v).join(' · ')}</p>
-  <p>Aparência: {i.aparencia} · Vontade: {i.vontade}{i.mana != null ? ' · Mana: '+i.mana : ''}</p>
-  <p>Deslocamento: {Object.entries(i.locomocao || {}).map(([k,v])=>k+': '+(v == null ? semLocomocao[k] : v+' m/Tick')).join(' · ')}</p>
-  <p>{(i.artes || []).filter((a:any)=>a.nivel>0).map((a:any)=>a.id+' '+a.nivel).join(' · ')}</p>
-  <ul class="besta-atk">{i.combate.ataques.map((a:any)=><li><b>{a.nome}</b> · Ataque {a.pool} · Dano {a.dano} · Velocidade {a.speed}</li>)}</ul>
+  {ELEM_LINHAS.some(([k]) => i.combate[k]?.length) && (
+    <div class="besta-elem">
+      {ELEM_LINHAS.filter(([k]) => i.combate[k]?.length).map(([k, rot, cls]) => (
+        <span class="el-linha"><span class="el-lbl">{rot}</span>{i.combate[k].map((x: string) => <span class={`el ${cls}`}>{ELEM[x] ?? x}</span>)}</span>
+      ))}
+    </div>
+  )}
+  {i.atributos && (
+    <div class="besta-atrib">
+      <span class="atr-lbl">Atributos</span>
+      <div class="atr-grid">
+        {ATR.map(([k, ab, full]) => (
+          <span class="atr" title={full}><span class="atr-nm"><span class="atr-ab">{ab}</span><span class="atr-full">{full}</span></span><span class="atr-v">{(i.atributos as any)[k]}</span></span>
+        ))}
+      </div>
+    </div>
+  )}
+  <div class="besta-tracos">
+    <div class="tr-linha">
+      <span class="tr"><span class="tr-nm">Vontade</span><span class="tr-v">{i.vontade}</span></span>
+      <span class="tr"><span class="tr-nm">Aparência</span><span class="tr-v">{i.aparencia}</span></span>
+      {i.mana != null && <span class="tr"><span class="tr-nm">Mana</span><span class="tr-v">{i.mana}</span></span>}
+    </div>
+  </div>
+  {artes.length > 0 && <p class="ib-ref"><b>Artes:</b> {artes.map((a: any) => `${arteNome[a.id] ?? a.id} ${a.nivel}`).join(' · ')}</p>}
+  <ul class="besta-atk">
+    {i.combate.ataques.map((a: any) => (
+      <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">Ataque: <b>{fmtPool(a.pool)}</b> · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+    ))}
+  </ul>
   {(i.comoLuta || []).length > 0 && <><h4>Como luta</h4><ul>{i.comoLuta.map((x:any)=><li><b>{x.nome}:</b> {x.texto}</li>)}</ul></>}
   {(i.sentidos || []).length > 0 && <><h4>Sentidos</h4><ul>{i.sentidos.map((x:any)=><li><b>{x.nome}:</b> {x.descricao}{x.classe ? ' ('+x.classe+')' : ''}</li>)}</ul></>}
-  {(i.habilidadesEspeciais || []).length > 0 && <><h4>Habilidades especiais</h4><ul>{i.habilidadesEspeciais.map((x:any)=><li><b>{x.nome}:</b> {x.descricao}{x.base ? ' · base '+x.base.arte+' '+x.base.nivel : ''}{x.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>)}</ul></>}
+  {(i.habilidadesEspeciais || []).length > 0 && <><h4>Habilidades especiais</h4><ul>{i.habilidadesEspeciais.map((x:any)=><li><b>{x.nome}:</b> {x.campos ? <>{x.texto}<ul class="hab-campos">{x.campos.map((c: any) => <li><span class="hc-rot">{c.rotulo}:</span> {c.valor}</li>)}</ul></> : x.descricao}{x.base ? ' · base '+x.base.arte+' '+x.base.nivel : ''}{x.classe === 'sem regra ainda' ? ' (sem regra ainda)' : ''}</li>)}</ul></>}
 </section>

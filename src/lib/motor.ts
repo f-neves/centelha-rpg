@@ -774,7 +774,16 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         };
     });
     const d = c.deslocamento, principal = d.terra ?? (Object.values(d) as any[]).find(Boolean);
-    const habilidades = c.habilidadesEspeciais.map((h: any) => ({ nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), ...(h.tecnica ? {tecnica:h.tecnica} : {}), ...(h.arte ? {arte:h.arte} : {}), descricao: [textoDaRegraDaCriatura(h.regra), h.texto, h.efeito, ...['ativacao', 'duracao', 'alcance', 'area', 'dano', 'resistencia', 'limiteDeUso'].filter(k => h[k]).map(k => k + ': ' + h[k])].filter(Boolean).join('. ') || h.regra || '' }));
+    // Os campos da habilidade saem um por linha, com o rótulo de leitura ("Ativação", e não "ativacao:"; parecer da
+    // Veterana, M9): `texto` é a prosa, `campos` a lista; a `descricao` junta os dois para a busca e a mesa. A Rajada
+    // diz o teto do golpe ligado a ela (M8), e o agarrão e a derrubada dizem a jogada desta criatura (M2).
+    const habilidades = c.habilidadesEspeciais.map((h: any) => {
+        const ligado = h.ataque ? c.ataques.find((a: any) => a.nome === h.ataque) : undefined;
+        const prosa = [textoDaRegraDaCriatura(h.regra, ligado ? tetoDaRajadaDaCriatura(ligado) : null), jogadaDaManobra(h.regra, c), h.texto, h.efeito].filter(Boolean).map((s) => String(s).trim().replace(/\.$/, '')).join('. ');
+        const campos = CAMPOS_HABILIDADE.filter(([k]) => h[k]).map(([k, rotulo]) => ({ rotulo, valor: String(h[k]) }));
+        const descricao = [prosa, ...campos.map((x) => x.rotulo + ': ' + x.valor.trim().replace(/\.$/, ''))].filter(Boolean).join('. ') || h.regra || '';
+        return { nome: h.nome, classe: h.classe, ...(h.base ? {base:h.base} : {}), ...(h.regra ? {regra:h.regra} : {}), ...(h.tecnica ? {tecnica:h.tecnica} : {}), ...(h.arte ? {arte:h.arte} : {}), descricao, ...(campos.length ? { texto: prosa, campos } : {}) };
+    });
     // A Técnica e a Arte sem texto não viram o id cru no card ("visao-verdadeira"; parecer da Veterana, M2): a vista
     // leva a referência, e o gerador do card (gen-monsters.mjs) escreve o nome do catálogo.
     const f: any = {
@@ -788,7 +797,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     Object.defineProperty(f, 'motor', { value: {
       edicao,
       energia: r.energia, stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
-      enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
+      couraca: c.couraca ?? 0, enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
       comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
       // o sentido sem dado nenhum ("faro:" vazio no card; parecer da Veterana, m1) não vai à vista
       sentidos: (c.sentidos || []).filter(vale).filter((s: any) => s.descricao).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
@@ -1024,15 +1033,31 @@ export function tetoDaRajadaDaCriatura(a: AtaqueEntrada) {
   return (regras as any).combate.pgr.reforma.rajada.teto[classe] ?? null;
 }
 
-/** Texto de jogo da Rajada, pelos parâmetros da regra comum. */
-export function textoDaRajada() {
+/** Texto de jogo da Rajada, pelos parâmetros da regra comum; com o teto do golpe ligado, o número dele (M8). */
+export function textoDaRajada(teto?: number | null) {
   const r = (regras as any).combate.pgr.reforma.rajada;
-  return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. O limite depende da classe da arma.';
+  return 'Só corpo a corpo. Cada golpe além do primeiro soma ' + r.golpeExtraTicksDeGolpe + ' Tick de Golpe e ' + r.golpeExtraTicksDeRecuperacao + ' de Recuperação, com ' + r.penDadosPorGolpeExtra + 'd6 acumulativo no acerto. '
+    + (teto ? 'Até ' + teto + ' golpes por ação.' : 'O limite depende da classe da arma.');
+}
+
+/** Os campos da habilidade especial, na ordem da ficha, com o rótulo de leitura. */
+export const CAMPOS_HABILIDADE: [string, string][] = [
+  ['ativacao', 'Ativação'], ['duracao', 'Duração'], ['alcance', 'Alcance'], ['area', 'Área'],
+  ['dano', 'Dano'], ['resistencia', 'Resistência'], ['limiteDeUso', 'Limite de uso'],
+];
+
+/** A jogada do agarrão e da derrubada desta criatura: o maior entre Força e Destreza, mais a Briga, pela fórmula do ataque. */
+export function jogadaDaManobra(regra: string | undefined, c: { atributos: Num; habilidades: Num; centelha: number }): string | null {
+  if (regra !== 'agarrar' && regra !== 'derrubar') return null;
+  const forca = c.atributos.forca ?? 0, destreza = c.atributos.destreza ?? 0, briga = c.habilidades.briga ?? 0;
+  const [nome, valor] = forca >= destreza ? ['Força', forca] : ['Destreza', destreza];
+  const soma = valor + briga, bonus = (soma % 2 ? 2 : 0) + 2 * Math.min(c.centelha ?? 0, briga);
+  return 'Nesta criatura: ' + Math.floor(soma / 2) + 'd6' + (bonus ? ' +' + bonus : '') + ' (' + nome + ' ' + valor + ' + Briga ' + briga + ').';
 }
 
 /** Resumos das manobras do livro para o card; o detalhe da criatura vem depois. */
-export function textoDaRegraDaCriatura(id?: string): string | null {
-  if (id === 'rajada') return textoDaRajada();
+export function textoDaRegraDaCriatura(id?: string, tetoRajada?: number | null): string | null {
+  if (id === 'rajada') return textoDaRajada(tetoRajada);
   const textos: Record<string,string> = {
     agarrar: 'Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão.',
     investida: 'Gaste o Preparo correndo em vez de andando. A Investida soma +1d6 ao dano, soma a Força em dobro (o golpe comum, sem investir, soma uma vez) e aplica −2 adicionais na Defesa durante o Preparo.',

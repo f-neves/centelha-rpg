@@ -216,6 +216,24 @@ for(const c of vistas){for(const h of c.habilidadesEspeciais||[]){assert.ok(h.de
 assert.ok(refs>=50,'as Técnicas e Artes do livro sem texto ganham o nome do catálogo ('+refs+')');
 const mesa=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8')).find(m=>m.id==='babau').habilidadesEspeciais.find(h=>h.nome==='Ver o invisível');assert.equal(mesa.descricao,'Técnica Visão Verdadeira do livro, nível 4');
 });
+// Card, item 8 (parecer M9, M8, M2, M6): os campos da habilidade com rótulo de leitura, um por linha; a Rajada com o
+// teto do golpe ligado; o agarrão e a derrubada com a jogada da criatura; as formas 2 e 3 com o desenho da principal;
+// o nível de Couraça à vista.
+cases.set('parecer-8', async () => {
+const MON=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const vistas=MON.flatMap(m=>[m,...(m.formas||[]).map(f=>f.criatura)]);let campos=0,teto=0,manobra=0;
+for(const c of vistas)for(const h of c.habilidadesEspeciais||[]){assert.ok(!/\b(?:ativacao|duracao|limiteDeUso|resistencia|area|alcance|dano): /.test(h.descricao),c.id+' · '+h.nome+': campo cru');
+ if(h.campos){campos++;for(const x of h.campos)assert.ok(['Ativação','Duração','Alcance','Área','Dano','Resistência','Limite de uso'].includes(x.rotulo),x.rotulo);}
+ if(h.regra==='rajada'){assert.ok(!/O limite depende da classe/.test(h.descricao),c.id+' · '+h.nome+': Rajada sem teto');teto++;}
+ if(h.regra==='agarrar'||h.regra==='derrubar'){assert.match(h.descricao,/Nesta criatura: \d+d6( \+\d+)? \((Força|Destreza) \d+ \+ Briga \d+\)/);manobra++;}}
+assert.ok(campos>=500&&teto>=50&&manobra>=100,`campos ${campos}, rajadas ${teto}, manobras ${manobra}`);
+const dv=MON.find(m=>m.id==='dragao-vermelho-adulto');assert.match(dv.habilidadesEspeciais.find(h=>h.nome==='garras em sequência').descricao,/Até 3 golpes por ação/);assert.match(dv.habilidadesEspeciais.find(h=>h.nome==='cauda em sequência').descricao,/Até 2 golpes por ação/);
+const gf=MON.find(m=>m.id==='golem-de-ferro').habilidadesEspeciais.find(h=>h.nome==='agarrar');assert.match(gf.descricao,/Nesta criatura: \d+d6/);
+assert.equal(MON.find(m=>m.id==='anquilossauro').combate.couraca,8);
+const card=fs.readFileSync('src/components/BestaCard.astro','utf8'),forma=fs.readFileSync('src/components/FormaCriatura.astro','utf8');
+for(const [n,s] of [['BestaCard',card],['FormaCriatura',forma]]){assert.match(s,/from '\.\.\/lib\/besta-card'/,n);assert.match(s,/class="hab-campos"/,n);assert.match(s,/<dt>Couraça<\/dt>/,n);}
+assert.ok(!/k\+': '\+i\.combate\[k\]\.join/.test(forma)&&!/nomes\[k\]\+': '\+v/.test(forma),'a forma ainda escreve em linha corrida');assert.match(forma,/ELEM\[x\] \?\? x/);assert.match(forma,/class="atr-grid"/);
+const L=await carregarTS('src/lib/besta-card.ts');assert.equal(L.ELEM.perfuracao,'Perfuração');assert.equal(L.locoTxt({nome:'Natação',k:'natacao',v:4}),'Natação 4 m/Tick');
+});
 // CASES
 let failures=0;
 for(const [id,test] of cases) {
