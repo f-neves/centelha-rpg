@@ -3160,6 +3160,24 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, "F5.2-b". Vale para o deva-astral, o dragão dourado adulto, o marid e a couatl, cujo disfarce imitava "a forma assumida". Completa a F5.2 da D-263 (a forma que declara outro Tamanho declara a própria Área).
 - Estado: **a aplicar** nas quatro fichas, pelo lote `fase5-18` do `../tmp/bestiarista-fichas/plano-ajustes-fase5.md`.
 
+### D-266 · V1: a Força dobrada só na ação de Investida, e não no golpe comum (criatura e jogador) [tags: bestiario, criatura, ficha, ataque, forca, investida, mergulho, dano, veterana]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, V1, opção c): "a Força dobrada só quando a criatura usa a ação de Investida, e não no golpe comum. Vale para a Investida do livro (também do jogador). Os 21 ataques que somavam a Força duas vezes no golpe comum passam a Força × 1; na ação de Investida, Força × 2. A linha 104 do GUIA-FICHA («× 2 quando o corpo inteiro empurra») muda para isso."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, V1, do parecer da Veterana sobre o site no ar (`../tmp/veterana/parecer-f4.md`, G2).
+- Estado: **no guia** (`../tmp/arquiteto/GUIA-FICHA.md`, linha 104, 29/10/2026); **a implementar** no texto do livro e no cabeçalho do bestiário (fase5-correcoes) e nas 21 fichas, pela Bestiarista (`../tmp/bestiarista-fichas/ajustes-parecer-f4.md`).
+
+### D-267 · V2: o peso erguido do livro passa à fórmula da D-184 [tags: livro, corpo, peso-erguido, massa, r15, d-184, d-229, veterana]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, V2, opção a): "vale a D-184. A página do livro troca a tabela antiga pela fórmula (ou por uma tabela gerada dela), e explica a massa e o que é a R15."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, V2 (parecer da Veterana, G3).
+- Estado: **a implementar** no livro (fase5-correcoes).
+
+### D-268 · V3: o sopro segue a regra do livro de desviar de área [tags: bestiario, criatura, sopro, area, esquiva, veterana, d-263]
+- Data: 2026-10-29
+- Decisão (autor, 29/10/2026, V3): "o livro já tem a regra de desviar de ataque em área: a criatura se desloca para fora da área enquanto faz um teste. O sopro segue essa regra, como qualquer área; sai o «esquiva contra a jogada do sopro; quem passa leva metade» dos 24 cards, e o texto deixa de citar «a tabela» do guia. O Arquiteto localiza a regra no livro e cita o lugar."
+- Origem: `../tmp/arquiteto/PERGUNTAS.md`, V3 (parecer da Veterana, M4). Não contradiz a D-263: lá o molde do Sopro ficou fora do livro; aqui o sopro só passa a usar uma regra de área que o livro já tem.
+- Estado: **a implementar** nos 24 sopros, pela Bestiarista (`../tmp/bestiarista-fichas/ajustes-parecer-f4.md`, com o lugar da regra no livro).
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
