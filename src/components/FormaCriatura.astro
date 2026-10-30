@@ -19,6 +19,7 @@ const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-f
 <section data-forma-painel={forma.id} hidden>
   <p class="besta-porte"><span class="pt-lbl">{forma.nome}</span><span class="pt-cat">{i.tamanho}</span><span class="pt-sep">·</span>{i.corpo.medida}<span class="pt-sep">·</span>{i.corpo.peso}</p>
   {i.segundoTamanho && <p class="besta-porte">Segundo Tamanho: {i.segundoTamanho}</p>}
+  {forma.outraForma && <p class="ib-ref">O Mestre pode escolher outra forma ({forma.outraForma}); então valem a medida e o Tamanho dela.</p>}
   {locoDe(i).length > 0 && (
     <p class="besta-porte besta-loco"><span class="pt-lbl">Desloc.</span>{locoDe(i).map((m, n) => (<>{n > 0 && <span class="pt-sep">·</span>}<span>{locoTxt(m)}</span></>))}</p>
   )}

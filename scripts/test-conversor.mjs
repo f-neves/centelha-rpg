@@ -311,6 +311,58 @@ if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrad
   if (!converterFicha(texto, { site: SITE }).paradas.some(p => p.includes('Bônus de PV é comum'))) falhas.push('F5.4: conversor aceitou bonusPV na Variante');
 }
 
+// P17 (decisão do autor de 29/10/2026: a perda na reconversão é defeito do conversor). Cada caso é a célula de uma ficha
+// real de fichas-v3 plantada na cópia do lobisomem; o controle negativo é o conversor de antes, que perde o dado.
+{
+  const celula = (txt, rot, valor) => txt.replace(new RegExp('^(\\| ' + rot + ' \\| )[^|]*\\|[^|]*\\|', 'm'), '$1' + valor + ' | |');
+  // doninha, lesma, lula e sanguessuga: "solitário **[sem dado]**" é o texto sem fonte, e não a falta do campo
+  let t = celula(LOBO, 'Social', 'solitário **[sem dado]**');
+  t = celula(t, 'Atividade', '**[sem dado]**');                                  // a marca sozinha: o campo fica ausente
+  t = celula(t, 'Dieta', 'sem dado');                                            // arconte-cão: a palavra sem a marca, a mesma ausência
+  t = celula(t, 'Diante de gente', '**[extrapolação]**: não recua');               // carcaju-atroz: a pontuação solta sai
+  t = celula(t, 'Caça ou forrageio', '**[sem dado]**; machos brigavam pelo domínio'); // daeodon
+  t = t.replace(/^(\| Caça ou forrageio \| [^|]*\| )\|/m, '$1o modo de caça não se conhece **[extrapolação]** |');
+  let r = converterFicha(t, { site: SITE });
+  const co = r.criatura.comportamento;
+  if (r.paradas.length) falhas.push('P17, Comportamento: parou: ' + JSON.stringify(r.paradas));
+  if (co.social !== 'solitário') falhas.push('P17: "solitário **[sem dado]**" perdeu o texto: ' + JSON.stringify(co.social));
+  if ('atividade' in co || 'dieta' in co) falhas.push('P17: a marca sozinha não deixou o campo ausente: ' + JSON.stringify(co));
+  if (co.dianteDeGente !== 'não recua') falhas.push('P17: a pontuação da marca ficou solta: ' + JSON.stringify(co.dianteDeGente));
+  if (co.caca !== 'machos brigavam pelo domínio') falhas.push('P17: o texto depois da marca se perdeu: ' + JSON.stringify(co.caca));
+  // deinonico: a marca de dúvida na Fonte de um campo ausente não vira revisao que não aponta (era parada)
+  r = converterFicha(t.replace(/^(\| Caça ou forrageio \| )[^|]*/m, '$1**[sem dado]** '), { site: SITE });
+  if (r.paradas.length || 'caca' in r.criatura.comportamento || r.criatura.revisao.some((x) => x.campo === 'comportamento.caca'))
+    falhas.push('P17, deinonico: revisao de campo ausente: ' + JSON.stringify(r.paradas));
+  // crocodilo-do-nilo-fêmea: a marca no meio do Texto curto não apaga a descrição inteira (era "descricao: Required")
+  r = converterFicha(celula(LOBO, 'Texto curto', 'Homem-lobo de pé. Quantos dentes: **[sem dado]** confiável.'), { site: SITE });
+  if (r.paradas.length || !/^Homem-lobo de pé\./.test(r.criatura.descricao ?? '')) falhas.push('P17, Texto curto com a marca: ' + JSON.stringify(r.paradas));
+}
+{
+  // enxame-de-caranguejos: o "D-100" da célula não é o bônus -100; sem número, a afirmação para (como "sim (carapaça)")
+  const bloq = (cel) => converterFicha(LOBO.split('\n').map((l) => { if (!l.startsWith('| Mordida |')) return l; const a = l.split('|'); a[10] = ' ' + cel + ' '; return a.join('|'); }).join('\n'), { site: SITE });
+  const r1 = bloq('sim (carapaça e pinça, D-100)');
+  if (r1.criatura.ataques.find((a) => a.nome === 'Mordida')?.bloqueiaComoArma === -100 || !r1.paradas.some((p) => p.includes('Bloqueia como arma'))) falhas.push('P17: o número da decisão virou o bônus do bloqueio');
+  const r2 = bloq('sim (+1; a galhada, D-100)');
+  if (r2.paradas.length || r2.criatura.ataques.find((a) => a.nome === 'Mordida')?.bloqueiaComoArma !== 1) falhas.push('P17: o bônus antes do número da decisão se perdeu');
+}
+{
+  // arconte-lanterna: a frase "jogada Vigor 3 + Disparo 3" (minúscula, sem dois-pontos) diz a Habilidade do tiro
+  const tiro = (just) => converterFicha(LOBO.split('\n').map((l) => { if (!l.startsWith('| Mordida |')) return l; const a = l.split('|'); a[3] = ' Distância '; a[12] = ' ' + just + ' '; return a.join('|'); }).join('\n'), { site: SITE });
+  const r = tiro('Feixe natural (base Luz 3); jogada Vigor 3 + Disparo 3 + 2 × o menor entre Centelha 2 e Disparo 3.');
+  if (r.paradas.length || r.criatura.ataques.find((a) => a.nome === 'Mordida')?.habilidade !== 'disparo') falhas.push('P17, arconte-lanterna: a jogada minúscula não deu a Habilidade: ' + JSON.stringify(r.paradas));
+  if (!tiro('Feixe natural; pela jogada de Agarrar do livro.').paradas.some((p) => p.includes('Habilidade de tiro'))) falhas.push('P17: controle, o tiro sem Habilidade escrita passou');
+}
+{
+  // D-265 (lote fase5-18): o disfarce fixo diz que o Mestre pode escolher outra forma; o JSON guarda quais
+  const linha = LOBO.split('\n').find((l) => l.startsWith('| forma humana |'));
+  const cols = linha.split('|'); cols[2] = cols[2].trimEnd() + '; o Mestre pode escolher outra forma (um animal comum), e então valem a medida e o Tamanho dela ';
+  const r = converterFicha(LOBO.replace(linha, cols.join('|')), { site: SITE });
+  const humana = r.criatura.formas?.find((f) => f.id === 'humana');
+  if (r.paradas.length || humana?.outraForma !== 'um animal comum') falhas.push('P17, D-265: a escolha do Mestre no disfarce não foi lida: ' + JSON.stringify(r.paradas));
+  const vazia = structuredClone(r.criatura); vazia.formas.find((f) => f.id === 'humana').outraForma = ' ';
+  if (criaturaNovaSchema.safeParse(vazia).success) falhas.push('P17, D-265: controle, outraForma vazia passou no esquema');
+}
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);

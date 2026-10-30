@@ -65,6 +65,8 @@ const formaNova = z.object({
   id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
   deslocamento: deslocamentoForma.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
   fisiologia: fisiologiaNovo.optional(), aptidoes: aptidoesNovo.optional(), ataques: z.array(ataqueNovo).optional(),
+  // D-265: as outras formas que o Mestre pode escolher no lugar do disfarce fixo ("um animal comum"); o card escreve a regra
+  outraForma: texto.trim().min(1).optional(),
 }).strict();
 export const criaturaNovaSchema = z.object({
   id, idAntigo: texto.optional(), nome: texto, nomeIngles: texto.nullable(), categoria: id, papel: id,

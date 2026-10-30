@@ -802,7 +802,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
       // o sentido sem dado nenhum ("faro:" vazio no card; parecer da Veterana, m1) não vai à vista
       sentidos: (c.sentidos || []).filter(vale).filter((s: any) => s.descricao).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),
       formas: incluirFormas ? (original.formas || []).map((forma: any)=>({
-        id:forma.id, nome:forma.nome,
+        id:forma.id, nome:forma.nome, ...(forma.outraForma ? { outraForma: forma.outraForma } : {}),
         ficha:vistaPublicaCriatura({...comForma(original,forma), id:original.id, nome:original.nome, formaPrincipal:{id:forma.id,nome:forma.nome}},false),
       })) : [],
     } });

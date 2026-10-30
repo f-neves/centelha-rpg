@@ -130,7 +130,7 @@ function build(c, fonte) {
     ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),
     comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
     ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),
-    formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,criatura:build(fo.ficha.motor.stat,fo.ficha)})),
+    formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,...(fo.outraForma?{outraForma:fo.outraForma}:{}),criatura:build(fo.ficha.motor.stat,fo.ficha)})),
     poderes: [],
     // Locomoção CRUA, por modo (B14 fase 4, item 5 do Adendo 3): o `deslocamento`
     // acima já é o passo único (m/Tick) que o Grid usa; isto é o detalhe por modo

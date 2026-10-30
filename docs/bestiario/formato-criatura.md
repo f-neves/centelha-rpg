@@ -9,6 +9,7 @@ Do Arquiteto. Segue as decisões do autor de 24/10/2026, registradas como D-216 
   - **objeto substituído** (`atributos`, `corpo`, `deslocamento`, `equipamento`, `artes`, `fisiologia`, `aptidoes`): troca chave por chave, e a chave que a forma não diz vem da principal. É a leitura do exemplo: a forma humana só traz Força e Vigor, e da `fisiologia` só a `camuflagem` (D-230). A forma que não diz `artes` herda as da principal; a que não conjura (a névoa do vampiro) diz o nível 0 em cada Arte da principal;
   - **lista substituída** (`ataques`, `bolsas`; e `equipamento.arsenal` e `.armaduras` dentro do objeto): trocada inteira;
   - **valor substituído** (`aparencia`, `couraca`): troca;
+  - **só da forma** (`outraForma`, D-265): no disfarce fixo (o humano), as outras formas que o Mestre pode escolher no lugar dele, no texto da ficha ("um animal comum"); o card escreve a regra em volta ("O Mestre pode escolher outra forma (...); então valem a medida e o Tamanho dela."). Vem do trecho "o Mestre pode escolher outra forma (...), e então valem a medida e o Tamanho dela" da linha da forma em Variantes;
   - **marcado**: cada item diz `"formas": "todas"` ou uma lista de ids. Vale para `habilidadesEspeciais`, `comoLuta` (D-230), `sentidos` e os três de `elementos`;
   - **fixo**: igual em todas as formas (`habilidades`, `habilidadesSec`, `especialidades`, `especialidadesSec`, `virtudes`, `vontade`, `centelha`).
   - Criatura de uma forma só não tem `formaPrincipal` nem `formas`. Os itens marcados levam `"formas": "todas"`, para o formato ser um só.

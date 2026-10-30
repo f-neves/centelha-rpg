@@ -342,7 +342,9 @@ export function converterFicha(texto, { site = null } = {}) {
     const just = r['Justificativa'] ?? '';
     const citada = just.match(/`armas\.json`, `([a-z0-9-]+)`/)?.[1];
     const arma = armasEq.includes(citada) ? citada : ARMAS.find((w) => armasEq.includes(w.id) && w.nome.toLowerCase() === nome.toLowerCase())?.id;
-    const jog = just.match(/Jogada:[^|]*?\+\s*(Briga|Armas|Disparo|Atirador|Arremesso)\b/) || just.match(/Jogada:[^|]*?(Briga|Armas|Disparo|Atirador|Arremesso)\b/);
+    // e a frase em minúscula, sem os dois-pontos, quando ela escreve a soma: "jogada Vigor 3 + Disparo 3" (arconte-lanterna)
+    const jog = just.match(/Jogada:[^|]*?\+\s*(Briga|Armas|Disparo|Atirador|Arremesso)\b/) || just.match(/Jogada:[^|]*?(Briga|Armas|Disparo|Atirador|Arremesso)\b/)
+      || just.match(/\bjogada:? (?:Força|Destreza|Vigor|Percepção) \d+ \+ (Disparo|Atirador|Arremesso) \d+/);
     if (arma) {
       // a arma do livro guarda só o nome, a arma e a Habilidade (D-220); o resto vem do catálogo
       const w = ARMAS.find((x) => x.id === arma);
@@ -383,8 +385,9 @@ export function converterFicha(texto, { site = null } = {}) {
     a.nivelPerfuracao = np ? Number(np[1]) : null;
     a.acerto = inteiro(r['Acerto']);
     if (a.acerto === undefined) para(`${onde}, ${nome}: Acerto ausente ou ilegível`);
+    // o número de decisão citado na célula ("carapaça e pinça, D-100") não é o bônus: o sinal colado a uma letra não conta
     const bloqueia = String(r['Bloqueia como arma'] ?? '').trim();
-    const bl = /^(sim\b|o mesmo chifre\b)/i.test(bloqueia) ? bloqueia.match(/([+−-])\s*(\d+)/) : null;
+    const bl = /^(sim\b|o mesmo chifre\b)/i.test(bloqueia) ? bloqueia.match(/(?<![A-Za-z])([+−-])\s*(\d+)/) : null;
     if (!/^não\b/i.test(bloqueia) && !bl) para(`${onde}, ${nome}: Bloqueia como arma ilegível`);
     a.bloqueiaComoArma = bl ? Number((bl[1] === '+' ? '' : '-') + bl[2]) : null;
     return a;
@@ -520,8 +523,19 @@ export function converterFicha(texto, { site = null } = {}) {
   };
   c.aptidoes = lerApt((S['Aptidões'] || []).find((l) => l.trim()), 'Aptidões');
   const CO = T['Comportamento'] || [];
-  // "sem dado" é a ausência de informação, nunca texto de jogo que o card possa exibir.
-  const valorCo = (rot) => { const valor = campo(CO, rot); if (valor === undefined || /\[sem dado\]/.test(valor)) return undefined; const v = jogo(valor); if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`); return v; };
+  // "sem dado" é a ausência de informação, nunca texto de jogo que o card possa exibir. A marca `**[sem dado]**` sai, e
+  // o campo só fica ausente quando nada sobra ao lado dela: "solitário **[sem dado]**" é "solitário" sem fonte, e não a
+  // falta do campo (P17, decisão do autor de 29/10/2026: a perda era defeito do conversor). A pontuação que a marca
+  // deixava solta (": não recua", "solitário , com") sai junto, só aqui, e não no texto do resto da ficha.
+  const limpaCo = (s) => s.replace(/\s+([,;:.])/g, '$1').replace(/([,;:])(?:\s*[,;:])+/g, '$1').replace(/^[\s,;:.]+/, '').replace(/[\s,;:]+$/, '').trim();
+  const valorCo = (rot) => {
+    const valor = campo(CO, rot);
+    if (valor === undefined || /^\s*(\*\*\[sem dado\]\*\*|sem dado)\s*$/.test(valor)) return undefined;
+    const v = limpaCo(jogo(valor));
+    if (!v) return undefined;
+    if (TRABALHO.test(v)) para(`Comportamento, ${rot}: texto de trabalho ("${v.match(TRABALHO)[0]}")`);
+    return v;
+  };
   c.comportamento = Object.fromEntries([['social','Social'], ['atividade','Atividade'], ['dieta','Dieta'], ['caca','Caça ou forrageio'], ['dianteDeGente','Diante de gente']].flatMap(([k, rot]) => { const valor = valorCo(rot); return valor === undefined ? [] : [[k, valor]]; }));
   const ter = campo(I, 'Terreno'), cli = campo(I, 'Clima');
   const pal = (s, sin) => jogo(s).split(',').map((x) => x.trim().toLowerCase()).filter(Boolean).map((x) => sin[x] ?? x);
@@ -553,6 +567,10 @@ export function converterFicha(texto, { site = null } = {}) {
         const at = t.match(/^(Força|Destreza|Vigor|Percepção|Inteligência|Raciocínio|Influência|Perspicácia|Compostura) (\d+)$/);
         if (at) { fa[idAtributo(at[1])] = Number(at[2]); continue; }
         if (/^PV \d+$/.test(t)) { pvForma = inteiro(t); continue; }
+        // D-265: o disfarce fixo (o humano) e a escolha do Mestre; o JSON guarda só as formas que a ficha lista, e o
+        // card escreve a regra ("o Mestre pode escolher outra forma ...; então valem a medida e o Tamanho dela")
+        const om = t.match(/^o Mestre pode escolher outra forma \(([^)]+)\), e então valem a medida e o Tamanho dela$/);
+        if (om) { f.outraForma = om[1].trim(); continue; }
         if (/^(Bloqueio|Musculatura) \d+$/.test(t)) { para('Variantes, ' + nomeF + ': ' + t + ' altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1'); continue; }
         const m = t.match(/^([^:]+):\s*(.*)$/) || t.match(/^(Couraça) nível (\d+)$/) || t.match(/^(Aparência) (\d+)$/);
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
@@ -701,7 +719,8 @@ export function converterFicha(texto, { site = null } = {}) {
   for (const r of VVA) { const k = { Aparência: 'aparencia', Vontade: 'vontade' }[Object.values(r)[0]]; if (k) marcaLinha('VVA', k, r); }
   const abs = MV.find((r) => Object.values(r)[0] === 'Absorção');
   if (abs && MARCA.test(Object.values(abs).join(' '))) revisao.push({ campo: 'couraca', motivo: semMarcas(Object.values(abs).slice(-1)[0]).replace(/\*\*/g, '') });
-  for (const r of CO) { const k = { Social: 'social', Atividade: 'atividade', Dieta: 'dieta', 'Caça ou forrageio': 'caca', 'Diante de gente': 'dianteDeGente' }[Object.values(r)[0]]; if (k) marcaLinha('Comportamento', `comportamento.${k}`, r); }
+  // como no Corpo: a marca de dúvida só entra para o campo que existe (o campo só com "sem dado" fica ausente)
+  for (const r of CO) { const k = { Social: 'social', Atividade: 'atividade', Dieta: 'dieta', 'Caça ou forrageio': 'caca', 'Diante de gente': 'dianteDeGente' }[Object.values(r)[0]]; if (k && k in c.comportamento) marcaLinha('Comportamento', `comportamento.${k}`, r); }
   for (const r of T['Ataques'] || []) {
     const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? '');
     if (!nomesAtaques.has(nome) || !MARCA.test(r['Justificativa'] ?? '')) continue;
