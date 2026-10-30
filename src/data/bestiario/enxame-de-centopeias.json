@@ -118,14 +118,14 @@
     },
     {
       "nome": "visão",
-      "descricao": "olhos compostos, sensíveis à luz do dia e muito ao ultravioleta (Meyer-Rochow 2006, via Wikipédia). Texto",
+      "descricao": "olhos compostos, sensíveis à luz do dia e muito ao ultravioleta. Texto",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "solta a pata presa para fugir (autotomia; Wikipédia)"
+    "tracos": "solta a pata presa para fugir"
   },
   "aptidoes": {
     "montaria": false,

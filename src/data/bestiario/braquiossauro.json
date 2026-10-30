@@ -85,7 +85,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -128,28 +128,27 @@
   ],
   "comoLuta": [
     {
-      "nome": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011)",
+      "nome": "disputa de machos",
       "formas": "todas",
-      "texto": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011): texto, não manobra.."
+      "texto": "machos podem disputar em duas patas, embora o corpo seja mal adaptado para ficar de pé."
     }
   ],
   "sentidos": [
     {
       "nome": "Nada que passe do humano com número",
-      "descricao": "para visão, faro e audição",
+      "descricao": "",
       "formas": "todas"
     },
     {
       "nome": "sentidos",
-      "descricao": "Narina na frente do focinho (Witmer 2001) ou no alto da cabeça (Hallett e Wedel 2016), nas duas",
+      "descricao": "Narina na frente do focinho ou no alto da cabeça, nas duas",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "camuflagem": "(pele não achada)",
     "mente": "animal",
-    "tracos": "ossos pneumáticos, com sacos aéreos, que reduzem o peso (Taylor 2009; Sander e colegas 2010); coração de cerca de 400 kg, com o dobro da pressão de uma girafa (Fastovsky e Weishampel 2016); pescoço de postura debatida, quase vertical ou mais horizontal (Rieppel e Brochu 1999; Stevens e Parrish 1999)"
+    "tracos": "ossos pneumáticos, com sacos aéreos, que reduzem o peso; coração de cerca de 400 kg, com o dobro da pressão de uma girafa ; pescoço de postura debatida, quase vertical ou mais horizontal"
   },
   "aptidoes": {
     "montaria": false,
@@ -169,7 +168,7 @@
       "tropical"
     ]
   },
-  "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento (Sander e colegas 2010).",
+  "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento.",
   "lore": [
     {
       "titulo": "Gigante pacífico",
@@ -224,10 +223,6 @@
     {
       "campo": "aparencia",
       "motivo": "D-107.  A pele e a cor não se conhecem; fica na maioria."
-    },
-    {
-      "campo": "ataques.Pisão",
-      "motivo": "Era 2d6 + 40, média 47. 7 + 28.  da Bestiarista-1. A pesquisa não acha arma especializada; o pisão é o golpe do corpo inteiro da seção 7 (Pesada, × 2, Impacto). A cauda era proporcionalmente curta para um saurópode (Taylor 2009), por isso não entra como ataque."
     }
   ]
 }

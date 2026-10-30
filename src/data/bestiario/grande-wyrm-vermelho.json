@@ -196,13 +196,13 @@
         "nivel": 5
       },
       "ataque": "Sopro cataclísmico",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "18 m à frente",
       "area": "cone de 18 m",
       "efeito": "o fogo queima tudo no cone e deixa Abalado até quem escapa",
       "dano": "15d6 + Centelha, fogo",
-      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade; mesmo quem passa fica Abalado até o fim da cena",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; mesmo quem evita o dano fica Abalado até o fim da cena",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -223,7 +223,7 @@
       "nome": "Multiataque",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "garra, garra, mordida, cauda e golpe de asas no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+      "efeito": "garra, garra, mordida, cauda e golpe de asas no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
       "nome": "Presença",
@@ -254,7 +254,7 @@
       "duracao": "12 Ticks",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Acelerado (`condicoes.json`: as ações custam 2 Ticks a menos). O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra do site",
+      "efeito": "fica Acelerado. O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra",
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "uma vez por cena"

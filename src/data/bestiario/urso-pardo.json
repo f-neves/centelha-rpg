@@ -19,7 +19,8 @@
     "massa": 200,
     "area": 1.08,
     "posturaDoTamanho": "de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "gordura e pelo grossos"
   },
   "couraca": 2,
   "atributos": {
@@ -149,24 +150,24 @@
   "sentidos": [
     {
       "nome": "faro",
-      "descricao": "Prontidão (faro) +3 (era +4; a decisão 3 põe o teto em +3); carcaça a mais de 3,2 km (ADW)",
+      "descricao": "Prontidão (faro) +3 ; carcaça a mais de 3,2 km",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "nada que passe do humano (ADF&G; ADW)",
+      "descricao": "nada que passe do humano",
       "formas": "todas"
     },
     {
       "nome": "visão",
-      "descricao": "nada que passe do humano; as fontes divergem (comparável à humana, ADF&G; \"relativamente fraca\", ADW)",
+      "descricao": "nada que passe do humano; as fontes divergem",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "hiberna (de outubro a dezembro até março a maio; até 8 meses no norte; ADW; ADF&G); a massa varia com a estação, ganhando antes da hibernação e perdendo durante (Swenson 2007: machos do norte de 201 kg na primavera a 273 kg no outono). É o fato da Resistência (fome) +3"
+    "tracos": "hiberna; a massa varia com a estação, ganhando antes da hibernação e perdendo durante. É o fato da Resistência (fome) +3"
   },
   "aptidoes": {
     "montaria": false,

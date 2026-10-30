@@ -134,7 +134,7 @@
       "area": "o cone",
       "efeito": "o ácido corrói quem não escapa",
       "dano": "3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos",
-      "resistencia": "esquiva, contra Vigor 10 + Disparo 2 + 2 × o menor entre Centelha 6 e Disparo 2 (4) = 16 mais a rolagem; quem passa leva metade e não segue queimando",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não segue queimando",
       "limiteDeUso": "uma vez a cada 18 Ticks"
     },
     {
@@ -166,7 +166,7 @@
       "duracao": "até alguém o estabilizar",
       "alcance": "18 m",
       "area": "um alvo que pense",
-      "efeito": "a mente do alvo desmorona: fica Inconsciente e Morrendo (`condicoes.json`)",
+      "efeito": "a mente do alvo desmorona: fica Inconsciente e Morrendo",
       "dano": "nenhum além do efeito",
       "resistencia": "mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena",
       "limiteDeUso": "uma vez por cena"

@@ -20,6 +20,7 @@
     "area": 0.88,
     "posturaDoTamanho": "de lado",
     "linhaPV": "acima",
+    "linhaPVMotivo": "felino grande e robusto",
     "cargaMedida": 68
   },
   "couraca": 1,
@@ -154,17 +155,17 @@
   "sentidos": [
     {
       "nome": "penumbra",
-      "descricao": "Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\" (San Diego Zoo, sem método)",
+      "descricao": "Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\"",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "em número; provavelmente usada na caça (Schaller 1967)",
+      "descricao": "provavelmente usada na caça",
       "formas": "todas"
     },
     {
       "nome": "faro",
-      "descricao": "sem indício de uso para achar presa viva (Schaller 1967; Mazák 1981); sem Especialidade",
+      "descricao": "sem indício de uso para achar presa viva; sem Especialidade",
       "formas": "todas"
     }
   ],
@@ -172,7 +173,7 @@
     "respiracao": "ar",
     "camuflagem": "pelagem listrada (texto)",
     "mente": "animal",
-    "tracos": "caninos de 6,4 a 7,6 cm (Mazák 1981); garras de 7,5 a 10 cm (San Diego Zoo). Urso, javali, gauro e porco-espinho podem feri-lo de morte (Mazák 1981)"
+    "tracos": "caninos de 6,4 a 7,6 cm; garras de 7,5 a 10 cm. Urso, javali, gauro e porco-espinho podem feri-lo de morte"
   },
   "aptidoes": {
     "montaria": false,

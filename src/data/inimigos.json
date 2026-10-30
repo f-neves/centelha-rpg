@@ -210,7 +210,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6 +2",
-        "dano": "2d6 +13 (C)",
+        "dano": "2d6 +7 (C)",
         "perfArma": null,
         "forcaInvestida": 6
       }
@@ -380,7 +380,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6",
-        "dano": "2d6 +14 (I)",
+        "dano": "2d6 +7 (I)",
         "perfArma": null,
         "forcaInvestida": 7
       },
@@ -1247,7 +1247,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6",
-        "dano": "2d6 +14 (I)",
+        "dano": "2d6 +7 (I)",
         "perfArma": null,
         "forcaInvestida": 7
       }
@@ -2317,7 +2317,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6+2",
-        "dano": "2d6 +14 (I)",
+        "dano": "2d6 +7 (I)",
         "perfArma": null,
         "forcaInvestida": 7
       }
@@ -2600,7 +2600,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6+2",
-        "dano": "2d6 +14 (I)",
+        "dano": "2d6 +7 (I)",
         "perfArma": null,
         "forcaInvestida": 7
       }
@@ -2718,7 +2718,7 @@
     "ameaca": 5,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento (Sander e colegas 2010).",
+    "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento.",
     "tags": [
       "animal"
     ],
@@ -2756,7 +2756,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6",
-        "dano": "2d6 +28 (I)",
+        "dano": "2d6 +14 (I)",
         "perfArma": null,
         "forcaInvestida": 14
       }
@@ -3208,7 +3208,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "7d6+2 +2",
-        "dano": "2d6 +21 (P) · perf. 1",
+        "dano": "2d6 +11 (P) · perf. 1",
         "perfArma": 1,
         "forcaInvestida": 10
       }
@@ -8439,7 +8439,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "6d6+2",
-        "dano": "2d6 +20 (I)",
+        "dano": "2d6 +10 (I)",
         "perfArma": null,
         "forcaInvestida": 10
       }
@@ -10512,7 +10512,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6 +10",
-        "dano": "2d6 +28 (C)",
+        "dano": "2d6 +17 (C)",
         "perfArma": null,
         "forcaInvestida": 11
       }
@@ -12668,7 +12668,7 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas (ADW).",
+    "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas.",
     "tags": [
       "animal"
     ],
@@ -12706,7 +12706,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6",
-        "dano": "2d6 +10 (I)",
+        "dano": "2d6 +5 (I)",
         "perfArma": null,
         "forcaInvestida": 5
       },
@@ -12805,7 +12805,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "6d6+2 +6",
-        "dano": "2d6 +19 (I)",
+        "dano": "2d6 +11 (I)",
         "perfArma": null,
         "forcaInvestida": 8
       },
@@ -13149,7 +13149,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6 +2",
-        "dano": "2d6 +13 (C)",
+        "dano": "2d6 +7 (C)",
         "perfArma": null,
         "forcaInvestida": 6
       }
@@ -13784,7 +13784,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6+2 +2",
-        "dano": "2d6 +13 (C)",
+        "dano": "2d6 +7 (C)",
         "perfArma": null,
         "forcaInvestida": 6
       }
@@ -14253,7 +14253,7 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "",
-    "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé (Mayer 2013).",
+    "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé.",
     "tags": [
       "animal"
     ],
@@ -14305,7 +14305,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "4d6",
-        "dano": "2d6 +10 (I)",
+        "dano": "2d6 +5 (I)",
         "perfArma": null,
         "forcaInvestida": 5
       }
@@ -16818,7 +16818,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6",
-        "dano": "2d6 +26 (I)",
+        "dano": "2d6 +13 (I)",
         "perfArma": null,
         "forcaInvestida": 13
       }
@@ -17233,7 +17233,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "8d6",
-        "dano": "2d6 +26 (I)",
+        "dano": "2d6 +13 (I)",
         "perfArma": null,
         "forcaInvestida": 13
       }
@@ -21548,7 +21548,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2",
-        "dano": "2d6 +16 (P) · perf. 1",
+        "dano": "2d6 +8 (P) · perf. 1",
         "perfArma": 1,
         "forcaInvestida": 8
       }
@@ -21648,7 +21648,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2",
-        "dano": "2d6 +14 (C)",
+        "dano": "2d6 +7 (C)",
         "perfArma": null,
         "forcaInvestida": 7
       }
@@ -23684,7 +23684,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "7d6",
-        "dano": "2d6 +22 (P) · perf. 1",
+        "dano": "2d6 +11 (P) · perf. 1",
         "perfArma": 1,
         "forcaInvestida": 11
       }
@@ -24014,7 +24014,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2 +8",
-        "dano": "2d6 +18 (P) · perf. 1",
+        "dano": "2d6 +11 (P) · perf. 1",
         "perfArma": 1,
         "forcaInvestida": 7
       }
@@ -25430,7 +25430,7 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "5d6+2 +6",
-        "dano": "2d6 +15 (C)",
+        "dano": "2d6 +9 (C)",
         "perfArma": null,
         "forcaInvestida": 6
       },

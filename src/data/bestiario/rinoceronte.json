@@ -109,7 +109,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -161,24 +161,24 @@
   "sentidos": [
     {
       "nome": "faro",
-      "descricao": "Prontidão (faro) +2, natural; \"apurado\" (ADW)",
+      "descricao": "Prontidão (faro) +2, natural; \"apurado\"",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "\"apurada\" (ADW). Texto",
+      "descricao": "\"apurada\". Texto",
       "formas": "todas"
     },
     {
       "nome": "visão",
-      "descricao": "míope (ADW). Texto: o Mestre pode dificultar notar o que está parado a distância",
+      "descricao": "míope. Texto: o Mestre pode dificultar notar o que está parado a distância",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "dois chifres de queratina; pele de até 45 mm, mais grossa na corcova da nuca (até 49 mm); boca larga e chata de pastador (Plochocki 2017; Wikipédia)"
+    "tracos": "dois chifres de queratina; pele de até 45 mm, mais grossa na corcova da nuca (até 49 mm); boca larga e chata de pastador"
   },
   "aptidoes": {
     "montaria": false,

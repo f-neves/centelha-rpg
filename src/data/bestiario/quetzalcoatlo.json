@@ -22,7 +22,8 @@
       "area": 13.38,
       "posturaDoTamanho": "de baixo, asas abertas, em voo"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "ossos ocos de parede fina"
   },
   "couraca": 0,
   "atributos": {
@@ -118,7 +119,7 @@
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "ossos ocos com trabéculas, muito finos (parede do esterno de 1,5 mm no Q. lawsoni, Hone e colegas 2023); com a cabeça erguida passa de 4 m, \"como uma girafa\" (Wikipédia); picnofibras:"
+    "tracos": "ossos ocos com trabéculas, muito finos; com a cabeça erguida passa de 4 m, \"como uma girafa\"; picnofibras:"
   },
   "aptidoes": {
     "montaria": false,

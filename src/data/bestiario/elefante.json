@@ -113,7 +113,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -168,24 +168,24 @@
   "sentidos": [
     {
       "nome": "faro",
-      "descricao": "Prontidão (faro) +3, Especialidade natural. \"Talvez quatro vezes maior que o de um cão de caça\" (Wikipédia), sem método claro: nota",
+      "descricao": "Prontidão (faro) +3, Especialidade natural",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância (Wikipédia). Números: não achados",
+      "descricao": "texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância. Números: não achados",
       "formas": "todas"
     },
     {
       "nome": "visão",
-      "descricao": "texto; enxerga bem na penumbra e mal na luz forte (Wikipédia)",
+      "descricao": "texto; enxerga bem na penumbra e mal na luz forte",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar (nada com a tromba de fora)",
     "mente": "animal",
-    "tracos": "tromba sem osso, de até 150.000 feixes de músculo; presas só nos machos; pele de 18 a 30 mm; dorme 3 a 4 horas por dia; come até 150 kg de planta por dia (Wikipédia)"
+    "tracos": "tromba sem osso, de até 150.000 feixes de músculo; presas só nos machos; pele de 18 a 30 mm; dorme 3 a 4 horas por dia; come até 150 kg de planta por dia"
   },
   "aptidoes": {
     "montaria": true,

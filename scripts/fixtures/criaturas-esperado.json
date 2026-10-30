@@ -188,7 +188,7 @@
    }
   },
   "aguia-gigante": {
-   "sha256": "ea51a88584b134c49d4b705c6597e37100bba989cd109f539812d85b16425dc5",
+   "sha256": "c1465cfaed8597c9d700c7bb0cbc17b577412b13faddab50bbd59b4694eb920d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -287,7 +287,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -329,17 +329,14 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 20,
+      "danoMedio": 14,
       "jogada": 12
      }
     ]
-   },
-   "paradas": [
-    "Deslocamento em terra sem dado: não equivale a não anda"
-   ]
+   }
   },
   "aguia-real": {
-   "sha256": "22dcaf7c6265ccb4ef7f0fe842ccbe975003c8db31a78c6e72f3ee874e97d38a",
+   "sha256": "bdc89c0e1f5edcc26c921a0e584a60156893d7dfd3e861eb5cfde2523422ae01",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -390,7 +387,8 @@
       "area": 0.38,
       "posturaDoTamanho": "asas fechadas, de lado, pousada"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "ave de osso oco, corpo leve"
     },
     "couraca": 0,
     "artes": {},
@@ -464,7 +462,7 @@
    }
   },
   "alce": {
-   "sha256": "d2bd5aa532f341773221291ffa6b3c6b84774bab6d17cd44b98f08169f7a03a9",
+   "sha256": "a1194fe5261f18e319cfb3a44df0f0901f4751613d7aed18d6079c7273969c90",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -546,9 +544,10 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
+      "acerto": 0,
       "bloqueiaComoArma": null
      },
      {
@@ -564,6 +563,7 @@
       "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
+      "acerto": 0,
       "bloqueiaComoArma": 2
      }
     ]
@@ -592,7 +592,7 @@
      {
       "nome": "Pisão (ergue-se e pisoteia)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      },
      {
       "nome": "Galhada (só macho)",
@@ -600,14 +600,10 @@
       "danoMedio": 10.5
      }
     ]
-   },
-   "paradas": [
-    "Ataques, Pisão (ergue-se e pisoteia): Acerto ausente ou ilegível",
-    "Ataques, Galhada (só macho): Acerto ausente ou ilegível"
-   ]
+   }
   },
   "ankheg": {
-   "sha256": "858d9e2a8ef85f349eef07fd1fe9987c0a43bc94db4c59ad8b57ce86e1cacadb",
+   "sha256": "9f420ab585ab7a26a373fb6a7315153b18acdd1e793ac0841a843bf652b5a1b1",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -1632,7 +1628,7 @@
    }
   },
   "auroque": {
-   "sha256": "3d365fa8f85431cea130d3f080f71447ff633f48407da0001bbf0441e227e6b4",
+   "sha256": "01fa959d0a4b1529fbf02e69ab807ad4d9e748d11f5e657e91ca78b91f7ad046",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -1714,7 +1710,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -1746,7 +1742,7 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
@@ -2757,7 +2753,7 @@
    }
   },
   "behir": {
-   "sha256": "11484b1d93f9d96c6af3c36a9b42e37a1da74d24d9c076f9eed0bf2c0f37db71",
+   "sha256": "ff03fdebc86455a78b362af0afd24f20bd02ece5e91c8fa458d99a630e9e73c4",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -3199,7 +3195,7 @@
    }
   },
   "bisao": {
-   "sha256": "df865523ce8b96d85de5355068cf3ae39564c2efa030d0564e451133b7ca61b5",
+   "sha256": "d7678e9e9dffefb54ada1b9c51cec31412750b92b21747eff8292b9c3e8516a4",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3281,7 +3277,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -3313,7 +3309,7 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
@@ -3592,7 +3588,7 @@
    }
   },
   "boi": {
-   "sha256": "e116803d9c4e080aa77ddb42068753af0ede5af06ef32da936390f6388b37b30",
+   "sha256": "7ee97b71b2d81631efaa469cf88a484b3c183d27c974551dd0e67612f090e6b8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3674,7 +3670,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -3706,7 +3702,7 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
@@ -3832,7 +3828,7 @@
    }
   },
   "braquiossauro": {
-   "sha256": "9ee70e617de78f6e6af4f3913a077fbc340d60db7b991e0704c89109a44b9f56",
+   "sha256": "925f60087174356442ae5af12ea03d2f41708d0ea0f3cb58357a4e9c2dcb1c91",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -3898,7 +3894,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -3925,7 +3921,7 @@
      {
       "nome": "Pisão",
       "velocidade": 7,
-      "danoMedio": 35
+      "danoMedio": 21
      }
     ]
    }
@@ -4420,7 +4416,7 @@
    }
   },
   "bulette": {
-   "sha256": "73647850d4e9583d90256205e12074dae4a67fa14fa72f18ce6691e8c8025e27",
+   "sha256": "2725ad7adae790ee2e1f45d3e3d3ff8b1487dd70aa3ea60442bf283d07fe2111",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -4498,7 +4494,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -4533,7 +4529,7 @@
      {
       "nome": "Salto de emboscada",
       "velocidade": 7,
-      "danoMedio": 28,
+      "danoMedio": 18,
       "jogada": 17
      }
     ]
@@ -5135,7 +5131,7 @@
    }
   },
   "cao-de-guerra-nessiano": {
-   "sha256": "cf8c350c82a97f2ca851714d631940b3e14528686627e9d3c7fd44d26fb685ff",
+   "sha256": "fedf6f40040fb6fd21e90a0c4f1c445b747e5b5f9fafad211d4ff60470ad9a22",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -5256,7 +5252,7 @@
    }
   },
   "cao-infernal": {
-   "sha256": "72dfe1860f2df6ba62782dedd849bf4c11f74117f5e68e5a4f96b271f3bedf25",
+   "sha256": "9039a1cb552b33b876582407437f9b8301b191679a9eb25173aadfd934837ec3",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5704,7 +5700,7 @@
    }
   },
   "caranguejo-gigante": {
-   "sha256": "d1aadb4cf19c22eea37408fe2dab69caace653aaa4a2833ea6dbe1751321579a",
+   "sha256": "df434e9a6415c3f0933268e33c8802f3b7e801416c40400d36156c0bc0a37d7d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -5749,7 +5745,8 @@
      "massa": 202.5,
      "area": 1.17,
      "posturaDoTamanho": "de cima",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "carapaça mineralizada"
     },
     "couraca": 5,
     "artes": {},
@@ -7235,7 +7232,7 @@
    }
   },
   "corvo": {
-   "sha256": "166f4774fef6d7936f24e8f2014b7cd72ae2d1e2dba22f6eefcb87e2b988ca14",
+   "sha256": "4529f0f2707dcceaabc7842f9d2be10eaad86457def5c30cf9c0e9d3022754fa",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7283,7 +7280,8 @@
      "massa": 1.25,
      "area": 0.29,
      "posturaDoTamanho": "de baixo, asas abertas",
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "ave de osso oco, corpo leve"
     },
     "couraca": 0,
     "artes": {},
@@ -7560,7 +7558,7 @@
    }
   },
   "crocodilo-do-nilo": {
-   "sha256": "a3c897ccecba3b877fbdc07b3597b17f11d1f458eb92436f0dd33bf0639e6fcd",
+   "sha256": "b1a8b7b92088e508940807a5db8b868fb07a80a9357673b498ac533b37282378",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7608,7 +7606,8 @@
      "massa": 215,
      "area": 1.58,
      "posturaDoTamanho": "vista de cima",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "couraça de osteodermos"
     },
     "couraca": 5,
     "artes": {},
@@ -9502,7 +9501,7 @@
    }
   },
   "dracolisk": {
-   "sha256": "e143b5c4acefa5a3225edfc0f227a96b84bc70bb75cd52f385272863b577f8f7",
+   "sha256": "7630e5e8d878c093932eacae0c8bafffeb156b349099160588bb5cdc50e21ca1",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9649,7 +9648,7 @@
    }
   },
   "dragao-azul-adulto": {
-   "sha256": "a380188f28e8007f2260db423a919b53b716c536835fa2505414d162bd661779",
+   "sha256": "176fa64b8fad1de5443824931e4b1b6a93b236e17840e2e400c7d2915a7efe8c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -9826,7 +9825,7 @@
    }
   },
   "dragao-branco-jovem": {
-   "sha256": "a051c339a8338268436c513cae54663d8d100597ffcf366463efa7c47290147a",
+   "sha256": "520fcd97f9b31cbbd26317bd36b96ae09e00df40a428d58b503500f496c1c9f8",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9980,7 +9979,7 @@
    }
   },
   "dragao-dourado-adulto": {
-   "sha256": "6ef4822a5881ca9079ff82ff7878b78baec99fcc515f7f1f6c109f41e60fada3",
+   "sha256": "3e90f9951eeb5e2b083ba2aa4f96e020badf100124dd396c7c0ffe0f0d1f078c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10157,7 +10156,7 @@
    }
   },
   "dragao-verde-adulto": {
-   "sha256": "11befbd8fae60694f7bac71f294fa031c72fe8e74fabd225fa9021d15bcf37bf",
+   "sha256": "3e880023b60b6261e8ffa094d9a943534c8de802fb8ca45b49daa26486a27b47",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10314,7 +10313,7 @@
    }
   },
   "dragao-vermelho-adulto": {
-   "sha256": "f80314a1a4971664550e0fbb08a7797cfb789d6db383b6d4ca4ff2cf7d326222",
+   "sha256": "11794594babf6dfd3451934bb57c1a56d6af30daaae0a74e8c9e69ba8f494eca",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10494,7 +10493,7 @@
    }
   },
   "dragao-vermelho-anciao": {
-   "sha256": "b56dc2ded369d54aeda89017e22e6881683f240daf10bbcb5bec92f64659c3d3",
+   "sha256": "d9520b06fecccc1cccafda88fd8988cedbfc8829f71460bf465b71680290075c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10675,7 +10674,7 @@
    }
   },
   "dragao-vermelho-jovem": {
-   "sha256": "c86110db52e9e7f1307865d018710d1317ac22346855aebcb7ba240b18eb3db3",
+   "sha256": "6b300ee6159d7019aa4a963af4c1dd5f1b085cc3fa613598a695b1aca9bf1cb9",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -11594,7 +11593,7 @@
    }
   },
   "elefante": {
-   "sha256": "327d247501bf3cbea4b8f65e64794b04ef262f9cdf1baf90717611e0418e45db",
+   "sha256": "198ad419c554a623f53c7545ed10de478ec00c7c391583d626d5d5736ce87c1e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -11677,7 +11676,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -11709,7 +11708,7 @@
      {
       "nome": "Pisão (ou investida)",
       "velocidade": 7,
-      "danoMedio": 27
+      "danoMedio": 17
      }
     ]
    }
@@ -12293,7 +12292,7 @@
    }
   },
   "enxame-de-caranguejos": {
-   "sha256": "d07d26d4182b6fb95e104dec1c3c9fe3716dc0cb52b6d44d6df6153498542dc2",
+   "sha256": "7bf1ddf8e0db0961f936d9412fb80c4225829ba305ba0aaa9b992a44a5f98e01",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 20,
@@ -12390,13 +12389,10 @@
       "danoMedio": 1.5
      }
     ]
-   },
-   "paradas": [
-    "Ataques, Pinça do enxame: Bloqueia como arma ilegível"
-   ]
+   }
   },
   "enxame-de-centopeias": {
-   "sha256": "5319f991d66de04ca3e3ec15c7583c61aa69c62fbd23aaf074fc48799b69db68",
+   "sha256": "0c8f38a1e612be2af999103122ea892941935411e47642e844a0f733b52e85c0",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 250,
@@ -12823,7 +12819,7 @@
    }
   },
   "enxame-de-sanguessugas": {
-   "sha256": "c2e446c49935edd9d625e3cbffa15611310abc93493d687335ae02d9621b6a43",
+   "sha256": "f2f94be95aa356bdd2d5e2f258b5f4932ac97e60d9fb2515715a0c0b7da332cf",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 400,
@@ -14483,7 +14479,7 @@
    }
   },
   "fenix": {
-   "sha256": "5688fc80e1bad44db8704ec99788e8f4a45f3dab848df7daf40f4ee762d7d091",
+   "sha256": "678c049f85896c928a8cc50a60dffd5f268707b2822f29327118d004f7e02d67",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 6,
@@ -14584,7 +14580,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -14626,14 +14622,14 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 35,
+      "danoMedio": 24,
       "jogada": 26
      }
     ]
    }
   },
   "filhote-de-dragao-vermelho": {
-   "sha256": "c48c2808340c180b17d88e424377d35253285bc99daf1bed84055a318b89a0f6",
+   "sha256": "28c7f6fd966943299e8ad9f0a0607495517a7af4fcd7a693f056792a87ea7977",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -14788,7 +14784,7 @@
    }
   },
   "fogo-fatuo": {
-   "sha256": "e6f01e60161402e762087b005ec67071def680c272bccc826cde2dd34d8cee12",
+   "sha256": "82b158852e5384094e6c7269f22d810a3673834d0035be4560c38c81fd4deba2",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -14829,7 +14825,7 @@
      "semMassa": true,
      "volume": 0.0141,
      "area": 0.07,
-     "posturaDoTamanho": "flutua; voador",
+     "posturaDoTamanho": "vista de frente, flutuando",
      "naoErgue": true
     },
     "couraca": 0,
@@ -15354,7 +15350,7 @@
    }
   },
   "gato": {
-   "sha256": "cca18232210487c85eb1fd119fceba825ac593056ad059fc7e79cfe9ea2051b5",
+   "sha256": "6e70febfcab29f6e8b0a4bbca4ea2125e1a74d0099e3a6615ab428a71fa08576",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -15402,7 +15398,8 @@
      "massa": 4.2,
      "area": 0.063,
      "posturaDoTamanho": "de lado",
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "corpo leve"
     },
     "couraca": 0,
     "artes": {},
@@ -17461,7 +17458,7 @@
    }
   },
   "golem-de-gelo": {
-   "sha256": "8d6d5e08c981df75f56e0cb94e74ff1a965a66d5a9c48d7ba9645f2d434239f2",
+   "sha256": "a054f20cd2a6c88da2f0e1025670b29c9ab34375cc2402112eaaedcf9f30331e",
    "entrada": {
     "categoria": "construto",
     "centelha": 1,
@@ -17652,7 +17649,7 @@
    }
   },
   "golfinho": {
-   "sha256": "cdfde5db6c6421887d835b61f53cfedb4bcdadc9d7d7e3b7b5d578bb381116fd",
+   "sha256": "bb86f4340190d493a91b3baa0f975240da704bb87f0704ec381fbb3fd6f6edcc",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -17717,7 +17714,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
@@ -17760,7 +17757,7 @@
      {
       "nome": "Investida de focinho",
       "velocidade": 7,
-      "danoMedio": 17
+      "danoMedio": 12
      },
      {
       "nome": "Mordida",
@@ -17771,7 +17768,7 @@
    }
   },
   "gorgona-touro-de-ferro": {
-   "sha256": "8f921aa5952abee69a43914b2b0971bbae065dda562f4890d70938038787e5c7",
+   "sha256": "6b02c5096a65df163e99b2f702eef84916b64f47aedb045a8c465834aef62152",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -17847,7 +17844,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -17899,7 +17896,7 @@
      {
       "nome": "Investida (marrada)",
       "velocidade": 7,
-      "danoMedio": 26,
+      "danoMedio": 18,
       "jogada": 19
      },
      {
@@ -17912,7 +17909,7 @@
    }
   },
   "gorila": {
-   "sha256": "e7447ed4182dba3e4d61f0e33e05538aa16fe79c692f6d6f000d42384fa1d8f5",
+   "sha256": "40f0c8104f0c5415d514e5e219cfd3dc790afb0ca3a725225bed3559df54f781",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -17958,7 +17955,8 @@
      "massa": 206,
      "area": 0.89,
      "posturaDoTamanho": "de frente, em pé",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "primata robusto"
     },
     "couraca": 1,
     "artes": {},
@@ -18031,7 +18029,7 @@
    }
   },
   "grande-wyrm-vermelho": {
-   "sha256": "132878566bc3ee406282c11a283a3144f7ab6e09c3ae19b1f77bff339395f7b8",
+   "sha256": "2d261d7a7ae60fa88ea00b757416ac9efe1aa47ded6c4227dd71f62085eaac2c",
    "entrada": {
     "categoria": "dragao",
     "centelha": 9,
@@ -18234,7 +18232,7 @@
    }
   },
   "grifo": {
-   "sha256": "038331da5390eec8fb461a0023e2f3ae926e9bda00be5e201fc124b9fac68cb5",
+   "sha256": "bd18d1aea9f1bae3633f4e38110ca46316dc5b1623f3c6868ed730143d984312",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -18288,7 +18286,8 @@
       "posturaDoTamanho": "de lado, asas fechadas, pousado",
       "tamanhoEscolhido": "grande"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "voador, meio ave de osso oco"
     },
     "couraca": 1,
     "artes": {},
@@ -18339,7 +18338,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -18380,7 +18379,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 20
+      "danoMedio": 14
      }
     ]
    }
@@ -19130,7 +19129,7 @@
    }
   },
   "hipogrifo": {
-   "sha256": "e64b86b483256fc3a25c3dc2e342efb98389c6b7477050b3b95e7404449c25ab",
+   "sha256": "a725175d5c90ea662c9c94a35dafa919a0ca3f93b99ca91dd56eb62d17e6c186",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -19228,7 +19227,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -19270,7 +19269,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 20,
+      "danoMedio": 14,
       "jogada": 11
      }
     ]
@@ -19468,7 +19467,7 @@
    }
   },
   "homem-rato-forma-humana": {
-   "sha256": "24d0990a184abcb21c4ccd738b5fa8013b64e6de2888214b52e0e4b906ef81a0",
+   "sha256": "419bf422aa32867f2fbac60bd74ca9145803fce0b5b8293fad4a50b13400e457",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -19592,7 +19591,8 @@
        "massa": 12.38,
        "area": 0.1475,
        "posturaDoTamanho": "de lado",
-       "linhaPV": "acima"
+       "linhaPV": "acima",
+       "linhaPVMotivo": "corpo resistente de rato gigante"
       },
       "couraca": 0,
       "equipamento": {
@@ -19910,7 +19910,7 @@
    }
   },
   "javali": {
-   "sha256": "c30120b2e700a9d738697890e0b87e4ba3d0d767084c45af52f17efc35abbf2d",
+   "sha256": "d6b4d9e64a81c3ed9e7f5d073469c56fab8760bcf58ec2adb009d5aaf49ef037",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19992,7 +19992,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -20024,7 +20024,7 @@
      {
       "nome": "Investida",
       "velocidade": 7,
-      "danoMedio": 17
+      "danoMedio": 12
      }
     ]
    }
@@ -20131,7 +20131,7 @@
    }
   },
   "kobold": {
-   "sha256": "5d0d093db6e6c6f08361e944b0c97ada93ecab0a27bd2a84db8a83abea52483d",
+   "sha256": "62d8e580eeaeb9fbc23bf0b0fce264f338f35bfa90fc185d66600240a0068d7e",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -20172,7 +20172,8 @@
      "massa": 16,
      "area": 0.22,
      "posturaDoTamanho": "de frente",
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "corpo frágil"
     },
     "couraca": 1,
     "artes": {},
@@ -21852,7 +21853,7 @@
    }
   },
   "linnorm-do-gelo": {
-   "sha256": "dc1b5a0df742dd9b29cc138416bc4f29ceef0bc361a85957cc9334844c544f59",
+   "sha256": "b53948b0bdf4cae037064d46c58f886de945557ab1e1e39c1e665cca80c34f70",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -21892,7 +21893,8 @@
      "massa": 14000,
      "area": 19.9,
      "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "serpente maciça que fecha as feridas"
     },
     "couraca": 10,
     "artes": {},
@@ -21992,7 +21994,7 @@
    }
   },
   "linnorm-dos-lagos": {
-   "sha256": "7a4d5e1ba2686ac5fae6b8611753454417d3fd82ee5773db4e977e1de2ecda58",
+   "sha256": "0a85365def8fa5d3b0df18ec0308618a1ee632f9915b4f5ec59567aaaafafd39",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22152,7 +22154,7 @@
    }
   },
   "linnorm-dos-penhascos": {
-   "sha256": "ebc48e2102d6580b45fb509cbb994b5380bab91be1c2ef83afd1c2ffe25b3d7a",
+   "sha256": "cfad9bce1a4a6dc9a04b072b484e8d960383a010df4213000a1ab9371ac2eee0",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22594,7 +22596,7 @@
    }
   },
   "lobo-do-inverno": {
-   "sha256": "4ede7c29ca90db904ca692e07503991df31572f2a8d988a45418bb68e9f3c39f",
+   "sha256": "b5f9b40a0dd5e7f654983787bdfec437a2d282fc32d161f57b15077697fc6c77",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -22638,7 +22640,8 @@
      "massa": 200,
      "area": 1.13,
      "posturaDoTamanho": "silhueta vista de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "pelagem densa, corpo robusto"
     },
     "couraca": 1,
     "artes": {},
@@ -23489,7 +23492,7 @@
    }
   },
   "mamute": {
-   "sha256": "8de556310480f448a30a8f8bd340be9f602192f26aedadb13be65f937c0dc1e0",
+   "sha256": "3bc0f2ba1743e77f49e0c41b7a03fa63abe56ef34f20b7db38c39edb99c014df",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23571,7 +23574,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -23603,7 +23606,7 @@
      {
       "nome": "Pisão (ou investida)",
       "velocidade": 7,
-      "danoMedio": 33
+      "danoMedio": 20
      }
     ]
    }
@@ -24091,7 +24094,7 @@
    }
   },
   "mastodonte": {
-   "sha256": "433c8e3e7437fa56d5ef8e9944a0b6adebc335069ea6a36cedefbff9b093341f",
+   "sha256": "b08de78339fc2a6d8815e052f7fde319e33c13d3f3f35f395185955acd590d35",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -24173,7 +24176,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -24205,7 +24208,7 @@
      {
       "nome": "Pisão (ou investida)",
       "velocidade": 7,
-      "danoMedio": 33
+      "danoMedio": 20
      }
     ]
    }
@@ -24426,7 +24429,7 @@
    }
   },
   "mephit": {
-   "sha256": "30ab152a474b9d43a3f4eb12889a1566d6c9d693cbbe92c6946bf28eefe649b4",
+   "sha256": "b8ab8ada272977a031b350abcb0589f9c6ef2c74dc551daceb719355a4da5144",
    "entrada": {
     "categoria": "outsider",
     "centelha": 2,
@@ -24472,7 +24475,8 @@
       "area": 0.26,
       "posturaDoTamanho": "asas fechadas"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "matéria elemental leve"
     },
     "couraca": 0,
     "artes": {},
@@ -24761,7 +24765,7 @@
    }
   },
   "minotauro": {
-   "sha256": "7e24520086f1d4356cfaed92eb3bbcfd844db6d44c83ac229614982c3f033f96",
+   "sha256": "b06dad42e9d97fc654443f299e99bfa414230d4aea67c1c5bd381c3623a2ef4c",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 1,
@@ -26423,7 +26427,7 @@
    }
   },
   "neothelid": {
-   "sha256": "7021b852552e7af8175def4d2d96a60e8e70d6046f827209706db4898517543f",
+   "sha256": "45a9249da691068a2b7c721691a61d1b8dc079a09a77b7bb805e5dea70f1648c",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 6,
@@ -26801,7 +26805,7 @@
    }
   },
   "ogro-mago-oni": {
-   "sha256": "dbdd1ba6c8389a6a20d586da18664317df1b121f91fad87e80b4f242ea508407",
+   "sha256": "4dc076b3807540d34b691adaf0638ca01437f4ade858278cadf6a375c5ccf1c1",
    "entrada": {
     "categoria": "gigante",
     "centelha": 5,
@@ -28363,7 +28367,7 @@
    }
   },
   "ponei": {
-   "sha256": "a8b2ea07a1d5ef118a51b70597afce55a475d3b8e52f4d7035a1697c5f56fda7",
+   "sha256": "78031595d578b8ffea16ffdfb6537467ebda83c8f83466d0d80e28f3bb0b6f79",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28411,7 +28415,8 @@
      "massa": 220,
      "area": 1.17,
      "posturaDoTamanho": "vista de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "corpo rústico e robusto"
     },
     "couraca": 1,
     "artes": {},
@@ -29063,7 +29068,7 @@
    }
   },
   "quetzalcoatlo": {
-   "sha256": "7ad132bcb346ec754b001e59ab05e94ebf7666c8a117270b3c4fa94913b7fdd8",
+   "sha256": "ea5e3b4e13eac3b5507a40dba8eabd23338a38a4fa82613a47ff288562867714",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29114,7 +29119,8 @@
       "area": 13.38,
       "posturaDoTamanho": "de baixo, asas abertas, em voo"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "ossos ocos de parede fina"
     },
     "couraca": 0,
     "artes": {},
@@ -29167,7 +29173,7 @@
    }
   },
   "quimera": {
-   "sha256": "6f7aac6b0ab2b9ef8709bebfb9d5e2c7313a13788aead7ba1e13e4f3fc6baa56",
+   "sha256": "4e54ae1785b04a59750fcead5f300e83ab4a82d125b7a7ac1135d7361222943c",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -29500,7 +29506,7 @@
      "comprimento": 0.042,
      "massa": 0.0085,
      "area": 0.0009,
-     "posturaDoTamanho": "quatro patas (sentada)"
+     "posturaDoTamanho": "vista de cima, agachada"
     },
     "couraca": 0,
     "artes": {},
@@ -29634,7 +29640,7 @@
    }
   },
   "rastejador-sombrio": {
-   "sha256": "3cdc6fa6ee5ad8eb5e4eaf07e38279fbaab6c9694ca6aa0aa0991d10f11b1340",
+   "sha256": "1c3b41cd9b6019dec96bee5e4143f75e6eca3a0f102d35406f634a83ba7eb2b9",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -29674,7 +29680,8 @@
      "massa": 36,
      "area": 0.39,
      "posturaDoTamanho": "de frente",
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "corpo magro, parte do peso é pano"
     },
     "couraca": 0,
     "artes": {},
@@ -29816,7 +29823,7 @@
    }
   },
   "rato-gigante": {
-   "sha256": "d4f888528ef54765bd707858b0b75d80c81f3b53fda8c26c963efd0e79f466f2",
+   "sha256": "501da423ad7444b53262a3d06e0017188923a554fd2f04f1c220aaa6c0e3429e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29864,7 +29871,8 @@
      "massa": 12.38,
      "area": 0.1475,
      "posturaDoTamanho": "vista de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "duro para o tamanho"
     },
     "couraca": 0,
     "artes": {},
@@ -29916,7 +29924,7 @@
    }
   },
   "remorhaz": {
-   "sha256": "d0b17458b585d10f2691c84edf9df635334888568903a52751b5287c59b7d9f6",
+   "sha256": "0a755b10d9a2d6b5230383a57e138c973884747ce349e6febe6f169a6aed9f79",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -29957,7 +29965,8 @@
      "massa": 1650,
      "area": 9,
      "posturaDoTamanho": "vista de cima",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "placas grossas, corpo robusto"
     },
     "couraca": 5,
     "artes": {},
@@ -30012,7 +30021,7 @@
    }
   },
   "rinoceronte": {
-   "sha256": "98e71c2ffc4602eff27ee1092203cf4ce5b39572f7e1136da0a82613e20273cf",
+   "sha256": "733d01c9d4b0c9d7b753117ece3cfc372961f638bd1d9cf91f9c58baa6c25524",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30094,7 +30103,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -30126,13 +30135,13 @@
      {
       "nome": "Investida",
       "velocidade": 7,
-      "danoMedio": 23
+      "danoMedio": 15
      }
     ]
    }
   },
   "roc": {
-   "sha256": "e025f066dd0f02b596a3fc1b489365f453171e3868d66bf6e891cb93995c4a72",
+   "sha256": "1747faa725578194c0fe99dad937ff687101a13467868a63fd8b4e4a2b15bf5d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30229,7 +30238,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -30266,7 +30275,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 21
+      "danoMedio": 14
      }
     ]
    }
@@ -31614,7 +31623,7 @@
    }
   },
   "stirge": {
-   "sha256": "1748f777bab12f4d13a62f75530af48da7c4d555188b63d743f7a99179375651",
+   "sha256": "6d61ffc87ee9767c88b10842ae1bbf1f1a82e6e887d3d3d01f6e43351aadc2de",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -31662,7 +31671,8 @@
       "area": 0.005,
       "posturaDoTamanho": "asas fechadas, preso ao alvo"
      },
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "inseto de casca"
     },
     "couraca": 0,
     "artes": {},
@@ -32043,7 +32053,7 @@
    }
   },
   "tartaruga-dragao": {
-   "sha256": "33d1e219190c7d1e3ce33b1fab9d83433aa2237952fda85374557a80f41bba95",
+   "sha256": "9b92c4a10fe8a19ef1dff6b7630cbf1ab18e8ab5f4d80a2c6c1a2b0db77c2b86",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -32491,7 +32501,7 @@
    }
   },
   "tigre": {
-   "sha256": "8877ee3f76d6f5b5ee99923c8d5bdabfa456a5fb3799e5646e0ebf27264a9390",
+   "sha256": "de4429324eefea24b7e3c16e75eaf326f25afdc4b3b5e048225c1210f56a759b",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32540,6 +32550,7 @@
      "area": 0.88,
      "posturaDoTamanho": "de lado",
      "linhaPV": "acima",
+     "linhaPVMotivo": "felino grande e robusto",
      "cargaMedida": 68
     },
     "couraca": 1,
@@ -32896,7 +32907,7 @@
    }
   },
   "triceratops": {
-   "sha256": "54eafa26663f9e4816057f1c1c9ab47b6a6c4f5b3afba570eb82726990efb5ab",
+   "sha256": "04fb63700c92cf9c3e0f985002ef0fa33b5205d244f2a97802c31e2100fe6806",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32978,7 +32989,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -33010,7 +33021,7 @@
      {
       "nome": "Investida de chifre",
       "velocidade": 7,
-      "danoMedio": 29
+      "danoMedio": 18
      }
     ]
    }
@@ -33332,7 +33343,7 @@
    }
   },
   "unicornio": {
-   "sha256": "d4b01e3b8a93c5c81c83ee98dea7156e11fa7deea7ba67402e619d13e5258f69",
+   "sha256": "3e12112ff20342f76942da28c131e4d9a85138a147bbd5470ba203e94d1845cd",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -33425,7 +33436,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -33466,7 +33477,7 @@
      {
       "nome": "Chifre em investida",
       "velocidade": 7,
-      "danoMedio": 25,
+      "danoMedio": 18,
       "jogada": 19
      }
     ]
@@ -33953,7 +33964,7 @@
    }
   },
   "urso-pardo": {
-   "sha256": "c48e92d10879d05aaa2717877ecf82ced339480194be2f0d67f8dc23df177a0c",
+   "sha256": "257b0a482de774e8dd9ca758033c763899e848a013590d123c426e4e8dbcafb0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -34001,7 +34012,8 @@
      "massa": 200,
      "area": 1.08,
      "posturaDoTamanho": "de lado",
-     "linhaPV": "acima"
+     "linhaPV": "acima",
+     "linhaPVMotivo": "gordura e pelo grossos"
     },
     "couraca": 2,
     "artes": {},
@@ -35342,7 +35354,7 @@
    }
   },
   "wyvern": {
-   "sha256": "f45649918e76b23fa4a51fceaf6908f0b1c73ec20e70525f61e8648257918c35",
+   "sha256": "54e27610dccf8619dd39b8952a7728955fd8075778f2b6a17c9b4741cb4ef54e",
    "entrada": {
     "categoria": "dragao",
     "centelha": 3,
@@ -35388,7 +35400,8 @@
       "area": 1.9,
       "posturaDoTamanho": "de lado, pousado, asas fechadas"
      },
-     "linhaPV": "abaixo"
+     "linhaPV": "abaixo",
+     "linhaPVMotivo": "voador de cauda fina"
     },
     "couraca": 3,
     "artes": {},
@@ -35439,7 +35452,7 @@
        3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -35497,7 +35510,7 @@
      {
       "nome": "Garras em mergulho",
       "velocidade": 7,
-      "danoMedio": 22,
+      "danoMedio": 16,
       "jogada": 17
      },
      {

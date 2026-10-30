@@ -119,7 +119,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -164,24 +164,24 @@
   "sentidos": [
     {
       "nome": "faro",
-      "descricao": "Prontidão (faro) +2, natural; \"essencial para notar o perigo\" (ADW)",
+      "descricao": "Prontidão (faro) +2, natural; \"essencial para notar o perigo\"",
       "formas": "todas"
     },
     {
       "nome": "visão",
-      "descricao": "distingue objetos grandes a 1 km e em movimento a 2 km (ADW). Texto",
+      "descricao": "distingue objetos grandes a 1 km e em movimento a 2 km. Texto",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "\"ouve muito bem\" (ADW). Texto",
+      "descricao": "\"ouve muito bem\". Texto",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "corcova de músculo e vértebras longas sobre o ombro; pele grossa, subpelo e pelos longos com gordura (NPS); chifres curtos nos dois sexos"
+    "tracos": "corcova de músculo e vértebras longas sobre o ombro; pele grossa, subpelo e pelos longos com gordura; chifres curtos nos dois sexos"
   },
   "aptidoes": {
     "montaria": false,

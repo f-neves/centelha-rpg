@@ -72,6 +72,11 @@
   "vontade": 6,
   "aparencia": 7,
   "deslocamento": {
+    "terra": {
+      "batalha": 1,
+      "arranque": 2,
+      "corrida": 3
+    },
     "voo": {
       "batalha": 8,
       "arranque": 13,
@@ -126,7 +131,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,

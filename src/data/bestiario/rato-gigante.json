@@ -19,7 +19,8 @@
     "massa": 12.38,
     "area": 0.1475,
     "posturaDoTamanho": "vista de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "duro para o tamanho"
   },
   "couraca": 0,
   "atributos": {
@@ -148,7 +149,7 @@
     },
     {
       "nome": "vibração",
-      "descricao": "percebe vibrações mínimas (ADW). Texto",
+      "descricao": "percebe vibrações mínimas. Texto",
       "formas": "todas"
     },
     {
@@ -159,9 +160,8 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "(o rato nada submerso, Wikipédia, sem tempo medido)",
     "mente": "animal",
-    "tracos": "rói madeira e massa de vedação (os do rato, UC IPM). A fresta de 1,3 cm do rato vira cerca de 4,6 cm no gigante (1,3 × 3,5; era 2,9)"
+    "tracos": "rói madeira e massa de vedação (os do rato, UC IPM). A fresta de 1,3 cm do rato vira cerca de 4,6 cm no gigante"
   },
   "aptidoes": {
     "montaria": false,

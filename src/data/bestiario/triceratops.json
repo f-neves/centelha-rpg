@@ -101,7 +101,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
@@ -138,25 +138,24 @@
   "sentidos": [
     {
       "nome": "faro",
-      "descricao": "fraco, sem Especialidade (Sakagami e Kawabe 2020)",
+      "descricao": "fraco, sem Especialidade",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "de baixa frequência (cóclea curta), sem Especialidade; texto (Sakagami e Kawabe 2020)",
+      "descricao": "de baixa frequência (cóclea curta), sem Especialidade; texto",
       "formas": "todas"
     },
     {
       "nome": "sentidos",
-      "descricao": "Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão (Sakagami e Kawabe 2020)",
+      "descricao": "Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "camuflagem": "(cor não conhecida)",
     "mente": "animal",
-    "tracos": "gola curta e maciça, sem janelas, de osso fibrolamelar que cicatriza rápido (Horner e Lamm 2011); placa óssea sobre o sacro, da fusão das espinhas vertebrais (Dodson e colegas 2004, via Wikipédia); conchas nasais respiratórias prováveis, para resfriar o sangue do cérebro e dos olhos (Tada e colegas 2026); côndilo occipital de até 106 mm, crânio muito pesado (Dodson e colegas 2004, via Wikipédia); escamas de base de até 90 mm, as maiores conhecidas em ceratopsianos (Bell e colegas 2022)"
+    "tracos": "gola curta e maciça, sem janelas, de osso fibrolamelar que cicatriza rápido; placa óssea sobre o sacro, da fusão das espinhas vertebrais; conchas nasais respiratórias prováveis, para resfriar o sangue do cérebro e dos olhos; côndilo occipital de até 106 mm, crânio muito pesado; escamas de base de até 90 mm, as maiores conhecidas em ceratopsianos"
   },
   "aptidoes": {
     "montaria": false,

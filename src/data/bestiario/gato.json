@@ -19,7 +19,8 @@
     "massa": 4.2,
     "area": 0.063,
     "posturaDoTamanho": "de lado",
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "corpo leve"
   },
   "couraca": 0,
   "atributos": {
@@ -155,17 +156,17 @@
   "sentidos": [
     {
       "nome": "audição",
-      "descricao": "Prontidão (audição) +3 (era +4); de 48 Hz a 85 kHz (Heffner e Heffner 1985); as orelhas giram 180° (ADW)",
+      "descricao": "Prontidão (audição) +3 ; de 48 Hz a 85 kHz; as orelhas giram 180°",
       "formas": "todas"
     },
     {
       "nome": "penumbra",
-      "descricao": "Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa (Case 2003, via Wikipédia); tapetum lucidum (ADW). Vê mal de perto, a menos de cerca de 60 cm (ADW)",
+      "descricao": "Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa; tapetum lucidum. Vê mal de perto, a menos de cerca de 60 cm",
       "formas": "todas"
     },
     {
       "nome": "faro",
-      "descricao": "Prontidão (faro) +2; cerca de 30 vezes o humano (ADW, sem método)",
+      "descricao": "Prontidão (faro) +2; cerca de 30 vezes o humano",
       "formas": "todas"
     },
     {
@@ -176,9 +177,8 @@
   ],
   "fisiologia": {
     "respiracao": "ar",
-    "camuflagem": "(a cor varia com a raça)",
     "mente": "animal",
-    "tracos": "garras retráteis; coluna que gira metade do corpo 180° e o reflexo de cair em pé (ADW); pouso de 1 m com pico de 149% do peso nas patas dianteiras (Lascelles et al. 2007)"
+    "tracos": "garras retráteis; coluna que gira metade do corpo 180° e o reflexo de cair em pé; pouso de 1 m com pico de 149% do peso nas patas dianteiras"
   },
   "aptidoes": {
     "montaria": false,
@@ -187,7 +187,6 @@
   },
   "comportamento": {
     "social": "solitário quando solto; vive em colônia perto de comida humana",
-    "atividade": "em fonte conferida",
     "dieta": "carnívoro (aves e pequenos mamíferos)",
     "caca": "emboscada",
     "dianteDeGente": "foge ou ignora; o doméstico convive"

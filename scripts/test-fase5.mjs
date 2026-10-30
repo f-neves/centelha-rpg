@@ -185,7 +185,7 @@ const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));con
 assert.deepEqual(mi.combate.ataques.map(a=>[a.nome,a.forcaInvestida]),[['Machado pesado',7],['Chifrada',7]]);
 const naoInveste=mesa.filter(m=>m.combate.ataques.some(a=>['distancia','arremesso'].includes(a.classe)&&a.forcaInvestida!==0));assert.equal(naoInveste.length,0,'golpe de longe com Força a mais: '+naoInveste.map(m=>m.id));
 const best=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const au=best.find(m=>m.id==='auroque').habilidadesEspeciais.find(h=>h.regra==='investida');
-assert.match(au.texto||au.descricao,/Nesta criatura, Investida \(marrada\) investindo: 2d6 \+21 \(I\) \(a Força 7 mais uma vez\)/);
+assert.match(au.texto||au.descricao,/Nesta criatura, Investida \(marrada\) investindo: 2d6 \+14 \(I\) \(a Força 7 mais uma vez\)/,'o golpe comum soma a Força uma vez (ficha de 30/10, D-269); investindo, duas');
 const semLiga=best.find(m=>m.id==='besouro-veado-gigante').habilidadesEspeciais.find(h=>h.regra==='investida');assert.match(semLiga.texto||semLiga.descricao,/Nesta criatura: a Força 4 mais uma vez no dano do golpe/);
 const todas=best.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida'));assert.equal(todas.length,37);assert.ok(todas.every(h=>/Nesta criatura/.test(h.texto||h.descricao)),'Investida sem o dano desta criatura');
 });
@@ -297,14 +297,18 @@ cases.set('leitora-card', async () => {
 const B=await carregarTS('src/lib/besta-card.ts');const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));
 assert.equal(B.baseTxt({arte:'fascinacao',nivel:4},{fascinacao:'Fascinação'}),' · base: Fascinação 4');assert.match(B.BASE_NOTA,/não gasta Mana nem pede Centelha mínima/);assert.ok(!/depende da Centelha/.test(B.BASE_NOTA),'a nota diz mais que a C-037');
 const ar=mon.find(m=>m.id==='aguia-real');const z=M.linhaPVNaZona(ar.corpo.massa,ar.atributos.vigor,ar.corpo.linhaPV);
-assert.equal(B.linhaPVTxt(z,ar.combate.pv),'PV pela linha de baixo da zona de transição (3 kg a 5 kg): a ficha escolheu pelo corpo, frágil, que desce; a linha de cima daria 12.');
+assert.equal(B.linhaPVTxt(z,ar.combate.pv,ar.corpo.linhaPVMotivo),'PV pela linha de baixo da zona de transição (3 kg a 5 kg): a ficha escolheu pelo corpo, ave de osso oco, corpo leve (o frágil desce); a linha de cima daria 12.');
 assert.equal(ar.combate.pv,6);assert.equal(M.linhaPVNaZona(70,3,'acima'),null,'fora da zona não há nota');assert.equal(M.linhaPVNaZona(4.6,2,undefined),null);
 const comZona=mon.filter(m=>!m.enxame&&M.linhaPVNaZona(M.massaDaConta(m.corpo),m.atributos.vigor,m.corpo.linhaPV));assert.equal(comZona.length,20,'as fichas que escolhem a linha: '+comZona.length);
+// reconversão 5d: as 20 e a forma de rato do homem-rato trazem o porquê da ficha, e o card o escreve
+assert.deepEqual(comZona.filter(m=>!m.corpo.linhaPVMotivo).map(m=>m.id),[],'escolhe a linha sem o porquê da ficha');assert.equal(mon.filter(m=>m.corpo?.linhaPVMotivo).length,20);
+const rato=JSON.parse(fs.readFileSync('src/data/bestiario/homem-rato-forma-humana.json','utf8'));assert.equal(rato.formas.find(f=>f.id==='rato').corpo.linhaPVMotivo,'corpo resistente de rato gigante');
+const st=mon.find(m=>m.id==='stirge');assert.equal(B.linhaPVTxt(M.linhaPVNaZona(M.massaDaConta(st.corpo),st.atributos.vigor,st.corpo.linhaPV),st.combate.pv,st.corpo.linhaPVMotivo),'PV pela linha de cima da zona de transição (70 g a 130 g): a ficha escolheu pelo corpo, inseto de casca (o robusto sobe); a linha de baixo daria 1.');
 const ab=mon.find(m=>m.id==='aboleth').habilidadesEspeciais.find(h=>h.regra==='rajada');assert.match(ab.descricao,/Até 2 golpes por ação \(Tentáculo\)$/);
 const card=fs.readFileSync('src/components/BestaCard.astro','utf8');assert.match(card,/\{baseTxt\(h\.base, arteNome\)\}/);assert.match(card,/\{BASE_NOTA\}/);assert.match(card,/besta-linhapv/);assert.ok(!/· base \$\{h\.base\.arte\}/.test(card));
 const forma=fs.readFileSync('src/components/FormaCriatura.astro','utf8');assert.match(forma,/baseTxt\(x\.base, arteNome\)/);assert.match(forma,/besta-linhapv/);
 const MB=await carregarTS('src/lib/mesa-bestiario.ts');const abo=mon.find(m=>m.id==='aboleth');const h1=MB.cardCriaturaHTML(abo);assert.match(h1,/Domínio psíquico<\/b>[^<]* · base: Fascinação 4<\/li>/);assert.match(h1,/não gasta Mana/);
-assert.match(MB.cardCriaturaHTML(ar),/PV pela linha de baixo da zona de transição/);
+assert.match(MB.cardCriaturaHTML(ar),/PV pela linha de baixo da zona de transição \(3 kg a 5 kg\): a ficha escolheu pelo corpo, ave de osso oco, corpo leve/);
 });
 // G4 nas criaturas (consequência direta da D-262, a criatura acompanha o catálogo): a arma de duas mãos de corpo a corpo
 // ocupa as mãos e o −2 de Bloqueio do Montante, do Martelo de Guerra e do Machado Pesado entra, como na ficha (90429be9).
@@ -340,7 +344,7 @@ const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const tod
 // justificativa), e isso não é o card prometendo dado.
 const DADO_A_MAIS=/(?<!sem )\+\d*d6/;assert.ok(DADO_A_MAIS.test('investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez)'));assert.ok(DADO_A_MAIS.test('Nesta criatura: +1d6 e a Força 4'));assert.ok(!DADO_A_MAIS.test('soma mais uma Força, sem +1d6 (P20-b)'));assert.ok(!DADO_A_MAIS.test('investindo: 2d6 +19 (C)'));
 const comDado=todas.filter(([,d])=>DADO_A_MAIS.test(d));assert.deepEqual(comDado,[],'card com o +1d6');
-const txt=(id)=>todas.find(([i])=>i===id)[1];assert.match(txt('aguia-gigante'),/Garras em mergulho investindo: 2d6 \+19 \(C\) \(a Força 6 mais uma vez\)/);assert.match(txt('minotauro'),/Nesta criatura: a Força 7 mais uma vez no dano do golpe/);
+const txt=(id)=>todas.find(([i])=>i===id)[1];assert.match(txt('aguia-gigante'),/Garras em mergulho investindo: 2d6 \+13 \(C\) \(a Força 6 mais uma vez\)/);assert.match(txt('minotauro'),/Nesta criatura: a Força 7 mais uma vez no dano do golpe/);
 });
 // P23 (decisão do autor de 30/10/2026): (a) o chifre do minotauro soma com as duas mãos ocupadas (−2 do machado e +1
 // do chifre); (b) o solar só leva o −2 com o montante em uso, e não de arco: o card mostra as duas Defesas.

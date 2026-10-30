@@ -155,7 +155,7 @@
       "area": "cone de 9 m",
       "efeito": "um sopro de frio que queima a pele e cobre o chão de gelo fino",
       "dano": "3d6 + Centelha, gelo (o site diz \"dano alto\", sem número)",
-      "resistencia": "esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez por cena"
     },
     {
@@ -202,7 +202,7 @@
       "duracao": "a do disfarce",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "+2d6 em Manha para se passar por humano (o número do site)",
+      "efeito": "+2d6 em Manha para se passar por humano",
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "nenhum"

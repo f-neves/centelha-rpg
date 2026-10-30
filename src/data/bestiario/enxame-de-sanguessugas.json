@@ -98,7 +98,7 @@
       "corrida": 0
     },
     "nado": {
-      "batalha": 0
+      "batalha": 0.4
     }
   },
   "equipamento": {
@@ -129,22 +129,22 @@
   "sentidos": [
     {
       "nome": "onda na água",
-      "descricao": "Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície (adultas preferem 8 a 12 Hz; Harley, Cienfuegos e Wagenaar 2011)",
+      "descricao": "Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície",
       "formas": "todas"
     },
     {
       "nome": "calor",
-      "descricao": "Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão (Lent 1985)",
+      "descricao": "Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão",
       "formas": "todas"
     },
     {
       "nome": "química e luz",
-      "descricao": "o sal e a arginina disparam a mordida (Elliott 1986); cinco pares de olhos e sensilas que reagem à sombra, mais com fome (ADW). Texto. Alcance em metros:",
+      "descricao": "o sal e a arginina disparam a mordida; cinco pares de olhos e sensilas que reagem à sombra, mais com fome. Texto. Alcance em metros:",
       "formas": "todas"
     }
   ],
   "fisiologia": {
-    "respiracao": "pela pele, na água. Sensível a ressecamento (ADW)",
+    "respiracao": "pela pele, na água. Sensível a ressecamento",
     "mente": "animal",
     "tracos": "refeição de 5 a 15 mL, de 5 a 9 vezes a própria massa (estimativas concorrentes); fica de 6 a 18 meses sem comer (pesquisa). O sal como fraqueza (Pathfinder) não foi achado em fonte científica"
   },

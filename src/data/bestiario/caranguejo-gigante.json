@@ -17,7 +17,8 @@
     "massa": 202.5,
     "area": 1.17,
     "posturaDoTamanho": "de cima",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "carapaça mineralizada"
   },
   "couraca": 5,
   "atributos": {
@@ -130,9 +131,9 @@
   ],
   "fisiologia": {
     "respiracao": "água, e aguenta horas no ar úmido (Resistência (fora da água) +3 , Especialidade natural, )",
-    "prendeRespiracao": "não se aplica (respira por brânquias); fora da água, a S. paramamosain aguenta 120 h (Cheng et al. 2019 e 2020), da própria espécie não achado",
+    "prendeRespiracao": "não se aplica (respira por brânquias); fora da água, a S. paramamosain aguenta 120 h, da própria espécie não achado",
     "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Imunidade Mental: \"Por não possuir mente articulada, é imune a efeitos que dependem de compreensão ou emoção\")",
-    "tracos": "carapaça lisa, pinças enormes no macho; fica mole e vulnerável na muda, quando outros caranguejos o atacam (Wikipédia)"
+    "tracos": "carapaça lisa, pinças enormes no macho; fica mole e vulnerável na muda, quando outros caranguejos o atacam"
   },
   "aptidoes": {
     "montaria": false,

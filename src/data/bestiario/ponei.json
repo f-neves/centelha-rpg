@@ -19,7 +19,8 @@
     "massa": 220,
     "area": 1.17,
     "posturaDoTamanho": "vista de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "corpo rústico e robusto"
   },
   "couraca": 1,
   "atributos": {
@@ -148,7 +149,7 @@
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "cernelha de 1,02 a 1,22 m na raça de Yonaguni (Porter 2016)"
+    "tracos": "cernelha de 1,02 a 1,22 m na raça de Yonaguni"
   },
   "aptidoes": {
     "montaria": true,

@@ -290,7 +290,8 @@
         "massa": 12.38,
         "area": 0.1475,
         "posturaDoTamanho": "de lado",
-        "linhaPV": "acima"
+        "linhaPV": "acima",
+        "linhaPVMotivo": "corpo resistente de rato gigante"
       },
       "atributos": {
         "forca": 2,
@@ -393,7 +394,7 @@
     },
     {
       "campo": "formas.rato",
-      "motivo": "A referência genérica ao rato gigante foi explicitada. Medidas, Força, Destreza, Vigor e Couraça são os do molde; a mente, o treino e Musculatura 0 ficam os do homem, pelo mesmo critério das formas do lobisomem. Centelha 2. PV 30 pela linha superior da zona de transição, como o corpo resistente do rato gigante. Peso pela R15 com Musculatura 0, 48,55 kg, em vez dos 71,96 kg do rato de Musculatura 2; Referência antes implícita; escolhas físicas explícitas na Variante. A escolha da linha superior de PV precisa ser lida na forma, como na principal."
+      "motivo": "A referência genérica ao rato gigante foi explicitada. Medidas, Força, Destreza, Vigor e Couraça são os do molde; a mente, o treino e Musculatura 0 ficam os do homem, pelo mesmo critério das formas do lobisomem. Centelha 2. PV 30. PV na linha de cima: corpo resistente de rato gigante. A escolha está na zona de transição. Peso pela R15 com Musculatura 0, 48,55 kg, em vez dos 71,96 kg do rato de Musculatura 2; Referência antes implícita; escolhas físicas explícitas na Variante. A escolha da linha superior de PV precisa ser lida na forma, como na principal."
     }
   ]
 }

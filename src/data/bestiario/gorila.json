@@ -18,7 +18,8 @@
     "massa": 206,
     "area": 0.89,
     "posturaDoTamanho": "de frente, em pé",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "primata robusto"
   },
   "couraca": 1,
   "atributos": {
@@ -156,14 +157,14 @@
   "sentidos": [
     {
       "nome": "sentidos",
-      "descricao": "Nada que passe do humano com número. Olhos pequenos (ADW); números de visão, audição e olfato não achados . Sem Especialidade natural de sentido",
+      "descricao": "Nada que passe do humano com número. Olhos pequenos; números de visão, audição e olfato não achados Sem Especialidade natural de sentido",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "o \"tambor\" no peito do macho é sinal honesto de tamanho (o macho maior soa mais grave; Wright 2021); o macho estressado solta cheiro forte das axilas (ADW, gorila-das-montanhas); anda de quatro sobre os nós dos dedos e fica de pé com frequência (ADW); pelo mais longo no gorila-das-montanhas, o fato da Resistência (frio) +1 (ADW)"
+    "tracos": "o \"tambor\" no peito do macho é sinal honesto de tamanho; o macho estressado solta cheiro forte das axilas; anda de quatro sobre os nós dos dedos e fica de pé com frequência; pelo mais longo no gorila-das-montanhas, o fato da Resistência (frio) +1"
   },
   "aptidoes": {
     "montaria": false,

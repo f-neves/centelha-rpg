@@ -17,7 +17,7 @@
     "semMassa": true,
     "volume": 0.0141,
     "area": 0.07,
-    "posturaDoTamanho": "flutua; voador",
+    "posturaDoTamanho": "vista de frente, flutuando",
     "naoErgue": true
   },
   "couraca": 0,
@@ -114,7 +114,7 @@
       "efeito": "fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível"
+      "limiteDeUso": "à vontade"
     },
     {
       "nome": "Evasiva",
@@ -133,7 +133,7 @@
       "nome": "Difícil de acertar por Arte",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "Arte que mira um alvo raramente o alcança (\"feitiços de mira raramente o alcançam\", site)"
+      "efeito": "Arte que mira um alvo raramente o alcança"
     }
   ],
   "comoLuta": [
@@ -164,7 +164,7 @@
     "respiracao": "nenhuma; é luz",
     "prendeRespiracao": "não respira",
     "camuflagem": "a invisibilidade, e a luz que se confunde com uma lanterna distante",
-    "mente": "inteligente, fria e paciente; vive do medo e da força vital das vítimas (site)",
+    "mente": "inteligente, fria e paciente; vive do medo e da força vital das vítimas",
     "tracos": "orbe de luz pálida de 30 cm, que muda de azul a amarelo e pisca como chama"
   },
   "aptidoes": {

@@ -24,7 +24,8 @@
       "area": 1.9,
       "posturaDoTamanho": "de lado, pousado, asas fechadas"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "voador de cauda fina"
   },
   "couraca": 3,
   "atributos": {
@@ -127,7 +128,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,

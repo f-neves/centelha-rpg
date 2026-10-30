@@ -123,13 +123,13 @@
         "nivel": 4
       },
       "ataque": "Sopro de fogo",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "6 m à frente",
       "area": "cone de 6 m",
       "efeito": "o cão expele um cone de fogo devastador",
       "dano": "3d6 + Centelha, fogo",
-      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -142,7 +142,7 @@
       "nome": "couraça chamuscada",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "veste uma couraça de metal enegrecido feita para o corpo de cão; o livro não tem armadura de criatura"
+      "efeito": "veste uma couraça de metal enegrecido feita para o corpo de cão; ainda sem regra para armadura de criatura"
     }
   ],
   "comoLuta": [

@@ -17,7 +17,8 @@
     "massa": 14000,
     "area": 19.9,
     "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "serpente maciça que fecha as feridas"
   },
   "couraca": 10,
   "atributos": {
@@ -137,13 +138,13 @@
         "nivel": 4
       },
       "ataque": "Sopro gélido",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "o dano, instantâneo; o gelo, até o alvo se soltar",
       "alcance": "12 m à frente",
       "area": "cone de 12 m",
-      "efeito": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra a jogada do sopro, uma tentativa por ação",
+      "efeito": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra Dificuldade 16, uma tentativa por ação",
       "dano": "9d6 + Centelha, gelo",
-      "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade e não fica preso",
+      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não fica preso",
       "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {

@@ -296,9 +296,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
-    "batalha": 8,
-    "arranque": 13,
-    "corrida": 18
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 3
    },
    "ataques": [
     {
@@ -322,7 +322,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6 +2",
-     "dano": "2d6 +13 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -485,6 +485,7 @@
     "posturaDoTamanho": "asas fechadas, de lado, pousada"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "ave de osso oco, corpo leve",
    "medida": "0.83 m de altura, 0.77 m de comprimento",
    "peso": "4.6 kg"
   },
@@ -579,7 +580,7 @@
     {
      "nome": "Pisão (ergue-se e pisoteia)",
      "pool": "5d6",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -2032,7 +2033,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "5d6",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -4210,7 +4211,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "4d6+2",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -4662,7 +4663,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "4d6+2",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -5029,7 +5030,7 @@
     {
      "nome": "Pisão",
      "pool": "8d6",
-     "dano": "2d6 +28 (I)",
+     "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -5985,7 +5986,7 @@
     {
      "nome": "Salto de emboscada",
      "pool": "7d6+2 +2",
-     "dano": "2d6 +21 (P) · perf. 1",
+     "dano": "2d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -7472,6 +7473,7 @@
    "area": 1.17,
    "posturaDoTamanho": "de cima",
    "linhaPV": "acima",
+   "linhaPVMotivo": "carapaça mineralizada",
    "medida": "0.41 m de altura, 0.7 m de comprimento",
    "peso": "202.5 kg"
   },
@@ -9176,6 +9178,7 @@
    "area": 0.29,
    "posturaDoTamanho": "de baixo, asas abertas",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "ave de osso oco, corpo leve",
    "medida": "0.34 m de altura, 0.62 m de comprimento",
    "peso": "1.25 kg"
   },
@@ -9570,6 +9573,7 @@
    "area": 1.58,
    "posturaDoTamanho": "vista de cima",
    "linhaPV": "acima",
+   "linhaPVMotivo": "couraça de osteodermos",
    "medida": "0.5 m de altura, 3.84 m de comprimento",
    "peso": "215 kg"
   },
@@ -14677,7 +14681,7 @@
     {
      "nome": "Pisão (ou investida)",
      "pool": "6d6+2",
-     "dano": "2d6 +20 (I)",
+     "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -17979,7 +17983,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "8d6 +10",
-     "dano": "2d6 +28 (C)",
+     "dano": "2d6 +17 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -18271,7 +18275,7 @@
    "semMassa": true,
    "volume": 0.0141,
    "area": 0.07,
-   "posturaDoTamanho": "flutua; voador",
+   "posturaDoTamanho": "vista de frente, flutuando",
    "naoErgue": true,
    "medida": "0.3 m de altura",
    "peso": "sem massa"
@@ -18878,6 +18882,7 @@
    "area": 0.063,
    "posturaDoTamanho": "de lado",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "corpo leve",
    "medida": "0.27 m de altura, 0.84 m de comprimento",
    "peso": "4.2 kg"
   },
@@ -21496,7 +21501,7 @@
     {
      "nome": "Investida de focinho",
      "pool": "4d6",
-     "dano": "2d6 +10 (I)",
+     "dano": "2d6 +5 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -21629,7 +21634,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "6d6+2 +6",
-     "dano": "2d6 +19 (I)",
+     "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -21787,6 +21792,7 @@
    "area": 0.89,
    "posturaDoTamanho": "de frente, em pé",
    "linhaPV": "acima",
+   "linhaPVMotivo": "primata robusto",
    "medida": "1.72 m de altura, 0.55 m de comprimento",
    "peso": "206 kg"
   },
@@ -22072,7 +22078,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6 +2",
-     "dano": "2d6 +13 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -22110,6 +22116,7 @@
     "tamanhoEscolhido": "grande"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "voador, meio ave de osso oco",
    "medida": "1.32 m de altura, 3.2 m de comprimento",
    "peso": "230 kg"
   },
@@ -23034,7 +23041,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "4d6+2 +2",
-     "dano": "2d6 +13 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -23650,6 +23657,7 @@
       "posturaDoTamanho": "de lado",
       "comprimentoSemCauda": 0.75,
       "linhaPV": "acima",
+      "linhaPVMotivo": "corpo resistente de rato gigante",
       "medida": "0.28 m de altura, 1.4 m de comprimento",
       "peso": "12.38 kg"
      },
@@ -24097,7 +24105,7 @@
     {
      "nome": "Investida",
      "pool": "4d6",
-     "dano": "2d6 +10 (I)",
+     "dano": "2d6 +5 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -24350,6 +24358,7 @@
    "area": 0.22,
    "posturaDoTamanho": "de frente",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "corpo frágil",
    "medida": "0.75 m de altura, 1.1 m de comprimento",
    "peso": "16 kg"
   },
@@ -26333,6 +26342,7 @@
    "area": 19.9,
    "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
    "linhaPV": "acima",
+   "linhaPVMotivo": "serpente maciça que fecha as feridas",
    "medida": "1.11 m de altura, 24 m de comprimento",
    "peso": "14000 kg"
   },
@@ -27328,6 +27338,7 @@
    "area": 1.13,
    "posturaDoTamanho": "silhueta vista de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "pelagem densa, corpo robusto",
    "medida": "1.35 m de altura, 3 m de comprimento",
    "peso": "200 kg"
   },
@@ -28136,7 +28147,7 @@
     {
      "nome": "Pisão (ou investida)",
      "pool": "8d6",
-     "dano": "2d6 +26 (I)",
+     "dano": "2d6 +13 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -28904,7 +28915,7 @@
     {
      "nome": "Pisão (ou investida)",
      "pool": "8d6",
-     "dano": "2d6 +26 (I)",
+     "dano": "2d6 +13 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -29306,6 +29317,7 @@
     "posturaDoTamanho": "asas fechadas"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "matéria elemental leve",
    "medida": "1 m de altura",
    "peso": "18 kg"
   },
@@ -34049,6 +34061,7 @@
    "area": 1.17,
    "posturaDoTamanho": "vista de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "corpo rústico e robusto",
    "medida": "1.48 m de altura, 2.34 m de comprimento",
    "peso": "220 kg"
   },
@@ -34767,6 +34780,7 @@
     "posturaDoTamanho": "de baixo, asas abertas, em voo"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "ossos ocos de parede fina",
    "medida": "5 m de altura, 5 m de comprimento",
    "peso": "245 kg"
   },
@@ -35520,6 +35534,7 @@
    "area": 0.39,
    "posturaDoTamanho": "de frente",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "corpo magro, parte do peso é pano",
    "medida": "1.2 m de altura",
    "peso": "36 kg"
   },
@@ -35750,6 +35765,7 @@
    "area": 0.1475,
    "posturaDoTamanho": "vista de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "duro para o tamanho",
    "medida": "0.28 m de altura, 1.4 m de comprimento",
    "peso": "12.38 kg"
   },
@@ -35863,6 +35879,7 @@
    "area": 9,
    "posturaDoTamanho": "vista de cima",
    "linhaPV": "acima",
+   "linhaPVMotivo": "placas grossas, corpo robusto",
    "medida": "0.6 m de altura, 7.5 m de comprimento",
    "peso": "1650 kg"
   },
@@ -35957,7 +35974,7 @@
     {
      "nome": "Investida",
      "pool": "5d6+2",
-     "dano": "2d6 +16 (P) · perf. 1",
+     "dano": "2d6 +8 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -36089,7 +36106,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6+2",
-     "dano": "2d6 +14 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -37716,6 +37733,7 @@
     "posturaDoTamanho": "asas fechadas, preso ao alvo"
    },
    "linhaPV": "acima",
+   "linhaPVMotivo": "inseto de casca",
    "medida": "0.06 m de altura, 0.3 m de comprimento",
    "peso": "0.1 kg"
   },
@@ -38570,6 +38588,7 @@
    "area": 0.88,
    "posturaDoTamanho": "de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "felino grande e robusto",
    "cargaMedida": 68,
    "medida": "1.07 m de altura, 2.91 m de comprimento",
    "peso": "192 kg"
@@ -39131,7 +39150,7 @@
     {
      "nome": "Investida de chifre",
      "pool": "7d6",
-     "dano": "2d6 +22 (P) · perf. 1",
+     "dano": "2d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -39614,7 +39633,7 @@
     {
      "nome": "Chifre em investida",
      "pool": "5d6+2 +8",
-     "dano": "2d6 +18 (P) · perf. 1",
+     "dano": "2d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -40132,6 +40151,7 @@
    "area": 1.08,
    "posturaDoTamanho": "de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "gordura e pelo grossos",
    "medida": "1.15 m de altura, 2 m de comprimento",
    "peso": "200 kg"
   },
@@ -41527,7 +41547,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6+2 +6",
-     "dano": "2d6 +15 (C)",
+     "dano": "2d6 +9 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -41571,6 +41591,7 @@
     "posturaDoTamanho": "de lado, pousado, asas fechadas"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "voador de cauda fina",
    "medida": "1.5 m de altura, 5.5 m de comprimento",
    "peso": "250 kg"
   },

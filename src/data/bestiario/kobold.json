@@ -17,7 +17,8 @@
     "massa": 16,
     "area": 0.22,
     "posturaDoTamanho": "de frente",
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "corpo frágil"
   },
   "couraca": 1,
   "atributos": {

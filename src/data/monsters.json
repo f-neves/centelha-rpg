@@ -1264,6 +1264,11 @@
    "vontade": 6,
    "aparencia": 7,
    "deslocamento": {
+    "terra": {
+     "batalha": 1,
+     "arranque": 2,
+     "corrida": 3
+    },
     "voo": {
      "batalha": 8,
      "arranque": 13,
@@ -1318,7 +1323,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "corte",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -1543,9 +1548,9 @@
    "resistenciaPerfuracao": 0,
    "iniciativa": "1d6 + 6",
    "deslocamento": {
-    "batalha": 8,
-    "arranque": 13,
-    "corrida": 18
+    "batalha": 1,
+    "arranque": 2,
+    "corrida": 3
    },
    "ataques": [
     {
@@ -1569,7 +1574,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6 +2",
-     "dano": "2d6 +13 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -1586,7 +1591,7 @@
    },
    {
     "nome": "mergulho predatório",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +19 (C) (a Força 6 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +13 (C) (a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -1631,7 +1636,7 @@
   "formas": [],
   "poderes": [],
   "locomocao": {
-   "terra": null,
+   "terra": 1,
    "voo": 8
   },
   "tecnicas": [
@@ -1682,7 +1687,8 @@
      "area": 0.38,
      "posturaDoTamanho": "asas fechadas, de lado, pousada"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "ave de osso oco, corpo leve"
    },
    "couraca": 0,
    "atributos": {
@@ -1823,19 +1829,19 @@
    "sentidos": [
     {
      "nome": "visão",
-     "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe)",
+     "descricao": "Prontidão (visão) +3 , notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe)",
      "formas": "todas"
     },
     {
      "nome": "sentidos",
-     "descricao": "Gira a cabeça cerca de 270° (San Diego Zoo)",
+     "descricao": "Gira a cabeça cerca de 270°",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "pernas emplumadas até os dedos; enxerga pior que o humano na penumbra (Reymond e Wolfe). No mergulho, encolhe as pernas contra a cauda e fecha as asas em parte (Wikipédia)"
+    "tracos": "pernas emplumadas até os dedos; enxerga pior que o humano na penumbra (Reymond e Wolfe). No mergulho, encolhe as pernas contra a cauda e fecha as asas em parte"
    },
    "aptidoes": {
     "montaria": false,
@@ -1901,6 +1907,7 @@
     "posturaDoTamanho": "asas fechadas, de lado, pousada"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "ave de osso oco, corpo leve",
    "medida": "0.83 m de altura, 0.77 m de comprimento",
    "peso": "4.6 kg"
   },
@@ -2026,11 +2033,11 @@
   "sentidos": [
    {
     "nome": "visão",
-    "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe)"
+    "descricao": "Prontidão (visão) +3 , notar e mirar de longe, com luz; com pouca luz não vale (Reymond e Wolfe)"
    },
    {
     "nome": "sentidos",
-    "descricao": "Gira a cabeça cerca de 270° (San Diego Zoo)"
+    "descricao": "Gira a cabeça cerca de 270°"
    }
   ],
   "segundoTamanho": "Pequeno",
@@ -2170,7 +2177,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -2205,25 +2212,25 @@
    "sentidos": [
     {
      "nome": "faro",
-     "descricao": "Prontidão (faro) +2, natural; alcance . Olfato \"excepcional\" (ADW)",
+     "descricao": "Prontidão (faro) +2, natural; olfato \"excepcional\"",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "Prontidão (audição) +2, natural; alcance . Orelhas que giram de forma independente (ADW)",
+     "descricao": "Prontidão (audição) +2, natural; orelhas que giram de forma independente",
      "formas": "todas"
     },
     {
      "nome": "visão",
-     "descricao": "fraca (ADW), sem número",
+     "descricao": "fraca, sem número",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "até 50 s submerso, comendo plantas aquáticas (Franzmann e Schwartz 2007)",
+    "prendeRespiracao": "até 50 s submerso, comendo plantas aquáticas",
     "mente": "animal",
-    "tracos": "galhada só nos machos, renovada todo ano, de até 35 kg e 2,048 m de envergadura (ADW); pelagem de dourado a quase preto, conforme a estação e a idade (ADF&G)"
+    "tracos": "galhada só nos machos, renovada todo ano, de até 35 kg e 2,048 m de envergadura; pelagem de dourado a quase preto, conforme a estação e a idade"
    },
    "aptidoes": {
     "montaria": false,
@@ -2374,7 +2381,7 @@
     {
      "nome": "Pisão (ergue-se e pisoteia)",
      "pool": "5d6",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -2403,15 +2410,15 @@
   "sentidos": [
    {
     "nome": "faro",
-    "descricao": "Prontidão (faro) +2, natural; alcance . Olfato \"excepcional\" (ADW)"
+    "descricao": "Prontidão (faro) +2, natural; olfato \"excepcional\""
    },
    {
     "nome": "audição",
-    "descricao": "Prontidão (audição) +2, natural; alcance . Orelhas que giram de forma independente (ADW)"
+    "descricao": "Prontidão (audição) +2, natural; orelhas que giram de forma independente"
    },
    {
     "nome": "visão",
-    "descricao": "fraca (ADW), sem número"
+    "descricao": "fraca, sem número"
    }
   ],
   "segundoTamanho": null,
@@ -2567,13 +2574,13 @@
      "formas": "todas",
      "classe": "regra da ficha",
      "ataque": "Cuspe ácido",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "9 m à frente",
      "area": "linha de 9 m",
      "efeito": "um jato de ácido em linha reta",
      "dano": "2d6 + Centelha, ácido",
-     "resistencia": "corpo, Vigor + Resistência contra a jogada do cuspe; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o cuspe não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez por cena"
     }
    ],
@@ -2813,13 +2820,13 @@
    },
    {
     "nome": "Cuspe ácido",
-    "descricao": "um jato de ácido em linha reta. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: linha de 9 m. Dano: 2d6 + Centelha, ácido. Resistência: corpo, Vigor + Resistência contra a jogada do cuspe; quem passa leva metade. Limite de uso: uma vez por cena",
+    "descricao": "um jato de ácido em linha reta. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: linha de 9 m. Dano: 2d6 + Centelha, ácido. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o cuspe não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez por cena",
     "classe": "regra da ficha",
     "texto": "um jato de ácido em linha reta",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -2839,7 +2846,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, Vigor + Resistência contra a jogada do cuspe; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o cuspe não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -7687,7 +7694,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -7725,14 +7732,14 @@
    "sentidos": [
     {
      "nome": "sentidos",
-     "descricao": "nada achado . A visão de 300° fica pela Especialidade natural, pelo boi",
+     "descricao": "nada achado A visão de 300° fica pela Especialidade natural, pelo boi",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "chifres longos nos dois sexos, curvos em três direções, a 60° do focinho; pernas longas; dianteira maior que a traseira (Wikipédia)"
+    "tracos": "chifres longos nos dois sexos, curvos em três direções, a 60° do focinho; pernas longas; dianteira maior que a traseira"
    },
    "aptidoes": {
     "montaria": false,
@@ -7887,7 +7894,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "5d6",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -7910,7 +7917,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +21 (I) (a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -7924,7 +7931,7 @@
   "sentidos": [
    {
     "nome": "sentidos",
-    "descricao": "nada achado . A visão de 300° fica pela Especialidade natural, pelo boi"
+    "descricao": "nada achado A visão de 300° fica pela Especialidade natural, pelo boi"
    }
   ],
   "segundoTamanho": null,
@@ -13009,13 +13016,13 @@
       "nivel": 3
      },
      "ataque": "Sopro elétrico",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "18 m à frente",
      "area": "linha de 18 m",
      "efeito": "um relâmpago sai da boca em linha reta",
      "dano": "2d6 + Centelha, raio",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -13228,7 +13235,7 @@
    },
    {
     "nome": "Sopro elétrico",
-    "descricao": "um relâmpago sai da boca em linha reta. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 2d6 + Centelha, raio. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "um relâmpago sai da boca em linha reta. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 2d6 + Centelha, raio. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "raio",
@@ -13238,7 +13245,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -13258,7 +13265,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -14602,7 +14609,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -14647,24 +14654,24 @@
    "sentidos": [
     {
      "nome": "faro",
-     "descricao": "Prontidão (faro) +2, natural; \"essencial para notar o perigo\" (ADW)",
+     "descricao": "Prontidão (faro) +2, natural; \"essencial para notar o perigo\"",
      "formas": "todas"
     },
     {
      "nome": "visão",
-     "descricao": "distingue objetos grandes a 1 km e em movimento a 2 km (ADW). Texto",
+     "descricao": "distingue objetos grandes a 1 km e em movimento a 2 km. Texto",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "\"ouve muito bem\" (ADW). Texto",
+     "descricao": "\"ouve muito bem\". Texto",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "corcova de músculo e vértebras longas sobre o ombro; pele grossa, subpelo e pelos longos com gordura (NPS); chifres curtos nos dois sexos"
+    "tracos": "corcova de músculo e vértebras longas sobre o ombro; pele grossa, subpelo e pelos longos com gordura; chifres curtos nos dois sexos"
    },
    "aptidoes": {
     "montaria": false,
@@ -14821,7 +14828,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "4d6+2",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -14844,7 +14851,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +21 (I) (a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -14864,15 +14871,15 @@
   "sentidos": [
    {
     "nome": "faro",
-    "descricao": "Prontidão (faro) +2, natural; \"essencial para notar o perigo\" (ADW)"
+    "descricao": "Prontidão (faro) +2, natural; \"essencial para notar o perigo\""
    },
    {
     "nome": "visão",
-    "descricao": "distingue objetos grandes a 1 km e em movimento a 2 km (ADW). Texto"
+    "descricao": "distingue objetos grandes a 1 km e em movimento a 2 km. Texto"
    },
    {
     "nome": "audição",
-    "descricao": "\"ouve muito bem\" (ADW). Texto"
+    "descricao": "\"ouve muito bem\". Texto"
    }
   ],
   "segundoTamanho": null,
@@ -16493,7 +16500,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -16532,24 +16539,24 @@
    "sentidos": [
     {
      "nome": "visão",
-     "descricao": "campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás (Penn State Extension)",
+     "descricao": "campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação (Penn State Extension). Faixa em Hz: (Heffner e Heffner 1983 não conferido). Texto",
+     "descricao": "mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação. Faixa em Hz: Texto",
      "formas": "todas"
     },
     {
      "nome": "faro",
-     "descricao": "evita lugares e objetos marcados com urina de vaca estressada (Penn State Extension). Texto",
+     "descricao": "evita lugares e objetos marcados com urina de vaca estressada. Texto",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "dois chifres ocos; sem dentes da frente em cima (almofada dental), a mordida não é arma; pelo curto (ADW)"
+    "tracos": "dois chifres ocos; sem dentes da frente em cima (almofada dental), a mordida não é arma; pelo curto"
    },
    "aptidoes": {
     "montaria": false,
@@ -16703,7 +16710,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "4d6+2",
-     "dano": "2d6 +14 (I)",
+     "dano": "2d6 +7 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -16726,7 +16733,7 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +21 (I) (a Força 7 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -16740,15 +16747,15 @@
   "sentidos": [
    {
     "nome": "visão",
-    "descricao": "campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás (Penn State Extension)"
+    "descricao": "campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás"
    },
    {
     "nome": "audição",
-    "descricao": "mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação (Penn State Extension). Faixa em Hz: (Heffner e Heffner 1983 não conferido). Texto"
+    "descricao": "mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação. Faixa em Hz: Texto"
    },
    {
     "nome": "faro",
-    "descricao": "evita lugares e objetos marcados com urina de vaca estressada (Penn State Extension). Texto"
+    "descricao": "evita lugares e objetos marcados com urina de vaca estressada. Texto"
    }
   ],
   "segundoTamanho": null,
@@ -17677,7 +17684,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -17720,28 +17727,27 @@
    ],
    "comoLuta": [
     {
-     "nome": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011)",
+     "nome": "disputa de machos",
      "formas": "todas",
-     "texto": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011): texto, não manobra.."
+     "texto": "machos podem disputar em duas patas, embora o corpo seja mal adaptado para ficar de pé."
     }
    ],
    "sentidos": [
     {
      "nome": "Nada que passe do humano com número",
-     "descricao": "para visão, faro e audição",
+     "descricao": "",
      "formas": "todas"
     },
     {
      "nome": "sentidos",
-     "descricao": "Narina na frente do focinho (Witmer 2001) ou no alto da cabeça (Hallett e Wedel 2016), nas duas",
+     "descricao": "Narina na frente do focinho ou no alto da cabeça, nas duas",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
-    "camuflagem": "(pele não achada)",
     "mente": "animal",
-    "tracos": "ossos pneumáticos, com sacos aéreos, que reduzem o peso (Taylor 2009; Sander e colegas 2010); coração de cerca de 400 kg, com o dobro da pressão de uma girafa (Fastovsky e Weishampel 2016); pescoço de postura debatida, quase vertical ou mais horizontal (Rieppel e Brochu 1999; Stevens e Parrish 1999)"
+    "tracos": "ossos pneumáticos, com sacos aéreos, que reduzem o peso; coração de cerca de 400 kg, com o dobro da pressão de uma girafa ; pescoço de postura debatida, quase vertical ou mais horizontal"
    },
    "aptidoes": {
     "montaria": false,
@@ -17761,7 +17767,7 @@
      "tropical"
     ]
    },
-   "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento (Sander e colegas 2010).",
+   "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento.",
    "lore": [
     {
      "titulo": "Gigante pacífico",
@@ -17788,7 +17794,7 @@
   "categoriaNome": "Animal",
   "tipo": "fera",
   "conceito": "Animal Imenso",
-  "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento (Sander e colegas 2010).",
+  "descricao": "Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento.",
   "tags": [
    "animal"
   ],
@@ -17887,7 +17893,7 @@
     {
      "nome": "Pisão",
      "pool": "8d6",
-     "dano": "2d6 +28 (I)",
+     "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -17904,7 +17910,7 @@
    },
    {
     "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão investindo: 2d6 +42 (I) (a Força 14 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão investindo: 2d6 +28 (I) (a Força 14 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -17926,18 +17932,14 @@
   ],
   "comoLuta": [
    {
-    "nome": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011)",
-    "texto": "A disputa de machos em duas patas é , e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011): texto, não manobra.."
+    "nome": "disputa de machos",
+    "texto": "machos podem disputar em duas patas, embora o corpo seja mal adaptado para ficar de pé."
    }
   ],
   "sentidos": [
    {
-    "nome": "Nada que passe do humano com número",
-    "descricao": "para visão, faro e audição"
-   },
-   {
     "nome": "sentidos",
-    "descricao": "Narina na frente do focinho (Witmer 2001) ou no alto da cabeça (Hallett e Wedel 2016), nas duas"
+    "descricao": "Narina na frente do focinho ou no alto da cabeça, nas duas"
    }
   ],
   "segundoTamanho": null,
@@ -20961,7 +20963,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "perfuracao",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -21178,7 +21180,7 @@
     {
      "nome": "Salto de emboscada",
      "pool": "7d6+2 +2",
-     "dano": "2d6 +21 (P) · perf. 1",
+     "dano": "2d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -21189,7 +21191,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "salto de emboscada",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Salto de emboscada investindo: 2d6 +31 (P) · perf. 1 (a Força 10 mais uma vez). só ao sair da terra",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Salto de emboscada investindo: 2d6 +21 (P) · perf. 1 (a Força 10 mais uma vez). só ao sair da terra",
     "classe": "livro",
     "regra": "investida"
    },
@@ -23929,13 +23931,13 @@
       "nivel": 4
      },
      "ataque": "Sopro de fogo",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "6 m à frente",
      "area": "cone de 6 m",
      "efeito": "o cão expele um cone de fogo devastador",
      "dano": "3d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -23948,7 +23950,7 @@
      "nome": "couraça chamuscada",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "veste uma couraça de metal enegrecido feita para o corpo de cão; o livro não tem armadura de criatura"
+     "efeito": "veste uma couraça de metal enegrecido feita para o corpo de cão; ainda sem regra para armadura de criatura"
     }
    ],
    "comoLuta": [
@@ -24163,7 +24165,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "o cão expele um cone de fogo devastador. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 6 m à frente. Área: cone de 6 m. Dano: 3d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o cão expele um cone de fogo devastador. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 6 m à frente. Área: cone de 6 m. Dano: 3d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -24173,7 +24175,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -24193,7 +24195,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -24208,7 +24210,7 @@
    },
    {
     "nome": "couraça chamuscada",
-    "descricao": "veste uma couraça de metal enegrecido feita para o corpo de cão; o livro não tem armadura de criatura",
+    "descricao": "veste uma couraça de metal enegrecido feita para o corpo de cão; ainda sem regra para armadura de criatura",
     "classe": "sem regra ainda"
    }
   ],
@@ -24373,13 +24375,13 @@
       "nivel": 3
      },
      "ataque": "Sopro de fogo",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "3 m à frente",
      "area": "cone de 3 m",
      "efeito": "o cão cospe um leque de chamas",
      "dano": "2d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     }
    ],
@@ -24601,7 +24603,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "o cão cospe um leque de chamas. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 3 m à frente. Área: cone de 3 m. Dano: 2d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o cão cospe um leque de chamas. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 3 m à frente. Área: cone de 3 m. Dano: 2d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -24611,7 +24613,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -24631,7 +24633,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -26085,7 +26087,8 @@
     "massa": 202.5,
     "area": 1.17,
     "posturaDoTamanho": "de cima",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "carapaça mineralizada"
    },
    "couraca": 5,
    "atributos": {
@@ -26198,9 +26201,9 @@
    ],
    "fisiologia": {
     "respiracao": "água, e aguenta horas no ar úmido (Resistência (fora da água) +3 , Especialidade natural, )",
-    "prendeRespiracao": "não se aplica (respira por brânquias); fora da água, a S. paramamosain aguenta 120 h (Cheng et al. 2019 e 2020), da própria espécie não achado",
+    "prendeRespiracao": "não se aplica (respira por brânquias); fora da água, a S. paramamosain aguenta 120 h, da própria espécie não achado",
     "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Imunidade Mental: \"Por não possuir mente articulada, é imune a efeitos que dependem de compreensão ou emoção\")",
-    "tracos": "carapaça lisa, pinças enormes no macho; fica mole e vulnerável na muda, quando outros caranguejos o atacam (Wikipédia)"
+    "tracos": "carapaça lisa, pinças enormes no macho; fica mole e vulnerável na muda, quando outros caranguejos o atacam"
    },
    "aptidoes": {
     "montaria": false,
@@ -26267,6 +26270,7 @@
    "area": 1.17,
    "posturaDoTamanho": "de cima",
    "linhaPV": "acima",
+   "linhaPVMotivo": "carapaça mineralizada",
    "medida": "0.41 m de altura, 0.7 m de comprimento",
    "peso": "202.5 kg"
   },
@@ -32061,7 +32065,8 @@
     "massa": 1.25,
     "area": 0.29,
     "posturaDoTamanho": "de baixo, asas abertas",
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "ave de osso oco, corpo leve"
    },
    "couraca": 0,
    "atributos": {
@@ -32180,14 +32185,14 @@
     },
     {
      "nome": "sentidos",
-     "descricao": "Imita sons, até a fala humana (National Zoo). Texto para o Mestre",
+     "descricao": "Imita sons, até a fala humana. Texto para o Mestre",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "bolsa sob a língua para levar comida (Wildlife Research Institute); vive até 13 anos na natureza e mais de 40 em cativeiro (ADW)"
+    "tracos": "bolsa sob a língua para levar comida (Wildlife Research Institute); vive até 13 anos na natureza e mais de 40 em cativeiro"
    },
    "aptidoes": {
     "montaria": false,
@@ -32257,6 +32262,7 @@
    "area": 0.29,
    "posturaDoTamanho": "de baixo, asas abertas",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "ave de osso oco, corpo leve",
    "medida": "0.34 m de altura, 0.62 m de comprimento",
    "peso": "1.25 kg"
   },
@@ -32360,7 +32366,7 @@
    },
    {
     "nome": "sentidos",
-    "descricao": "Imita sons, até a fala humana (National Zoo). Texto para o Mestre"
+    "descricao": "Imita sons, até a fala humana. Texto para o Mestre"
    }
   ],
   "segundoTamanho": null,
@@ -33373,7 +33379,8 @@
     "massa": 215,
     "area": 1.58,
     "posturaDoTamanho": "vista de cima",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "couraça de osteodermos"
    },
    "couraca": 5,
    "atributos": {
@@ -33505,7 +33512,7 @@
    "sentidos": [
     {
      "nome": "vibração",
-     "descricao": "Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance . Órgãos tegumentares (Wikipédia)",
+     "descricao": "Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance Órgãos tegumentares",
      "formas": "todas"
     },
     {
@@ -33521,10 +33528,10 @@
    ],
    "fisiologia": {
     "respiracao": "ar; vive entre a água e a margem",
-    "prendeRespiracao": "até 2 horas submerso em repouso total; mergulhos comuns de poucos minutos; até 30 minutos nadando submerso se ameaçado (Wikipédia). A Resistência (apneia) +3 não troca este campo",
-    "camuflagem": "água (fica com o corpo quase todo submerso até a presa chegar perto, Wikipédia)",
+    "prendeRespiracao": "até 2 horas submerso em repouso total; mergulhos comuns de poucos minutos; até 30 minutos nadando submerso se ameaçado. A Resistência (apneia) +3 não troca este campo",
+    "camuflagem": "água",
     "mente": "animal",
-    "tracos": "dependência de água (não se afasta muito dela para caçar em terra: até cerca de 50 m da margem, Wikipédia); fôlego curto em terra (\"fica exausto fácil em terra\", SDZG); os músculos que abrem a boca são muito fracos (Wikipédia), o que fica para o Mestre"
+    "tracos": "dependência de água; fôlego curto em terra (\"fica exausto fácil em terra\", SDZG); os músculos que abrem a boca são muito fracos, o que fica para o Mestre"
    },
    "aptidoes": {
     "montaria": false,
@@ -33597,6 +33604,7 @@
    "area": 1.58,
    "posturaDoTamanho": "vista de cima",
    "linhaPV": "acima",
+   "linhaPVMotivo": "couraça de osteodermos",
    "medida": "0.5 m de altura, 3.84 m de comprimento",
    "peso": "215 kg"
   },
@@ -33713,7 +33721,7 @@
   "sentidos": [
    {
     "nome": "vibração",
-    "descricao": "Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance . Órgãos tegumentares (Wikipédia)"
+    "descricao": "Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance Órgãos tegumentares"
    },
    {
     "nome": "visão",
@@ -44049,13 +44057,13 @@
       "nivel": 2
      },
      "ataque": "Sopro ácido",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "9 m à frente",
      "area": "linha de 9 m",
      "efeito": "o ácido castiga todos na linha",
      "dano": "3d6 + Centelha, ácido",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks, como nos dragões"
     },
     {
@@ -44293,7 +44301,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro ácido",
-    "descricao": "o ácido castiga todos na linha. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: linha de 9 m. Dano: 3d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks, como nos dragões",
+    "descricao": "o ácido castiga todos na linha. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: linha de 9 m. Dano: 3d6 + Centelha, ácido. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks, como nos dragões",
     "classe": "regra da ficha",
     "base": {
      "arte": "agua",
@@ -44303,7 +44311,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -44323,7 +44331,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -44570,13 +44578,13 @@
       "nivel": 4
      },
      "ataque": "Sopro elétrico",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "18 m à frente",
      "area": "linha de 18 m",
      "efeito": "o relâmpago atravessa todos na linha",
      "dano": "9d6 + Centelha, raio",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -44597,7 +44605,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -44886,7 +44894,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro elétrico",
-    "descricao": "o relâmpago atravessa todos na linha. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 9d6 + Centelha, raio. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o relâmpago atravessa todos na linha. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 9d6 + Centelha, raio. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "raio",
@@ -44896,7 +44904,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -44916,7 +44924,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -44938,7 +44946,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -45284,13 +45292,13 @@
       "nivel": 3
      },
      "ataque": "Sopro de frio",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "9 m à frente",
      "area": "cone de 9 m",
      "efeito": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair",
      "dano": "6d6 + Centelha, gelo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -45304,7 +45312,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -45615,7 +45623,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de frio",
-    "descricao": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 6d6 + Centelha, gelo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 6d6 + Centelha, gelo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "gelo",
@@ -45625,7 +45633,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -45645,7 +45653,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -45661,7 +45669,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -46056,13 +46064,13 @@
       "nivel": 4
      },
      "ataque": "Sopro de fogo",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "12 m à frente",
      "area": "cone de 12 m",
      "efeito": "o fogo queima tudo no cone",
      "dano": "9d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -46080,7 +46088,7 @@
       "verdadeira"
      ],
      "classe": "sem regra ainda",
-     "efeito": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -46115,9 +46123,9 @@
      "duracao": "até o fim da próxima ação do alvo",
      "alcance": "12 m à frente",
      "area": "cone de 12 m",
-     "efeito": "gás sem dano que enfraquece: o alvo fica com Desgaste 1 (`condicoes.json`); o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto",
+     "efeito": "gás sem dano que enfraquece: o alvo fica com Desgaste 1",
      "dano": "nenhum",
-     "resistencia": "corpo, contra a jogada do sopro",
+     "resistencia": "sair da área pela regra do livro (Combate, \"Contra área, a saída é sair\"); para evitar o gás sem dano, rola Destreza + Esquiva contra o dobro de (5 + 5 × os metros que faltam para ficar fora). Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "dividido com o Sopro de fogo, uma vez a cada 24 Ticks"
     },
     {
@@ -46415,7 +46423,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -46425,7 +46433,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -46445,7 +46453,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -46461,7 +46469,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -46506,13 +46514,13 @@
    },
    {
     "nome": "Sopro debilitante",
-    "descricao": "gás sem dano que enfraquece: o alvo fica com Desgaste 1 (`condicoes.json`); o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Dano: nenhum. Resistência: corpo, contra a jogada do sopro. Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks",
+    "descricao": "gás sem dano que enfraquece: o alvo fica com Desgaste 1. Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Dano: nenhum. Resistência: sair da área pela regra do livro (Combate, \"Contra área, a saída é sair\"); para evitar o gás sem dano, rola Destreza + Esquiva contra o dobro de (5 + 5 × os metros que faltam para ficar fora). Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 3
     },
-    "texto": "gás sem dano que enfraquece: o alvo fica com Desgaste 1 (`condicoes.json`); o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto",
+    "texto": "gás sem dano que enfraquece: o alvo fica com Desgaste 1",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -46536,7 +46544,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, contra a jogada do sopro"
+      "valor": "sair da área pela regra do livro (Combate, \"Contra área, a saída é sair\"); para evitar o gás sem dano, rola Destreza + Esquiva contra o dobro de (5 + 5 × os metros que faltam para ficar fora). Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -47074,13 +47082,13 @@
       "nivel": 3
      },
      "ataque": "Sopro ácido",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "12 m à frente",
      "area": "cone de 12 m",
      "efeito": "o gás ácido corrói quem está no cone",
      "dano": "9d6 + Centelha, ácido",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -47094,7 +47102,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -47365,7 +47373,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro ácido",
-    "descricao": "o gás ácido corrói quem está no cone. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o gás ácido corrói quem está no cone. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, ácido. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "agua",
@@ -47375,7 +47383,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -47395,7 +47403,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -47411,7 +47419,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -47729,13 +47737,13 @@
       "nivel": 4
      },
      "ataque": "Sopro de fogo",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "12 m à frente",
      "area": "cone de 12 m",
      "efeito": "o fogo queima tudo no cone",
      "dano": "9d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -47756,7 +47764,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -48037,7 +48045,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -48047,7 +48055,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -48067,7 +48075,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -48089,7 +48097,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -48431,13 +48439,13 @@
       "nivel": 5
      },
      "ataque": "Sopro de fogo",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "15 m à frente",
      "area": "cone de 15 m",
      "efeito": "o fogo queima tudo no cone",
      "dano": "12d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -48458,7 +48466,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -48749,7 +48757,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 15 m à frente. Área: cone de 15 m. Dano: 12d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 15 m à frente. Área: cone de 15 m. Dano: 12d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -48759,7 +48767,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -48779,7 +48787,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -48801,7 +48809,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -49096,13 +49104,13 @@
       "nivel": 3
      },
      "ataque": "Sopro de fogo",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "9 m à frente",
      "area": "cone de 9 m",
      "efeito": "o fogo queima tudo no cone",
      "dano": "6d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -49116,7 +49124,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -49394,7 +49402,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 6d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 6d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -49404,7 +49412,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -49424,7 +49432,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -49440,7 +49448,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -54236,7 +54244,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -54291,24 +54299,24 @@
    "sentidos": [
     {
      "nome": "faro",
-     "descricao": "Prontidão (faro) +3, Especialidade natural. \"Talvez quatro vezes maior que o de um cão de caça\" (Wikipédia), sem método claro: nota",
+     "descricao": "Prontidão (faro) +3, Especialidade natural",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância (Wikipédia). Números: não achados",
+     "descricao": "texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância. Números: não achados",
      "formas": "todas"
     },
     {
      "nome": "visão",
-     "descricao": "texto; enxerga bem na penumbra e mal na luz forte (Wikipédia)",
+     "descricao": "texto; enxerga bem na penumbra e mal na luz forte",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar (nada com a tromba de fora)",
     "mente": "animal",
-    "tracos": "tromba sem osso, de até 150.000 feixes de músculo; presas só nos machos; pele de 18 a 30 mm; dorme 3 a 4 horas por dia; come até 150 kg de planta por dia (Wikipédia)"
+    "tracos": "tromba sem osso, de até 150.000 feixes de músculo; presas só nos machos; pele de 18 a 30 mm; dorme 3 a 4 horas por dia; come até 150 kg de planta por dia"
    },
    "aptidoes": {
     "montaria": true,
@@ -54470,7 +54478,7 @@
     {
      "nome": "Pisão (ou investida)",
      "pool": "6d6+2",
-     "dano": "2d6 +20 (I)",
+     "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -54523,15 +54531,15 @@
   "sentidos": [
    {
     "nome": "faro",
-    "descricao": "Prontidão (faro) +3, Especialidade natural. \"Talvez quatro vezes maior que o de um cão de caça\" (Wikipédia), sem método claro: nota"
+    "descricao": "Prontidão (faro) +3, Especialidade natural"
    },
    {
     "nome": "audição",
-    "descricao": "texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância (Wikipédia). Números: não achados"
+    "descricao": "texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância. Números: não achados"
    },
    {
     "nome": "visão",
-    "descricao": "texto; enxerga bem na penumbra e mal na luz forte (Wikipédia)"
+    "descricao": "texto; enxerga bem na penumbra e mal na luz forte"
    }
   ],
   "segundoTamanho": null,
@@ -57221,7 +57229,7 @@
    "sentidos": [
     {
      "nome": "orientação",
-     "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde (Adamczewska e Morris 2001; ABC Science). Texto",
+     "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde. Texto",
      "formas": "todas"
     },
     {
@@ -57234,7 +57242,7 @@
     "respiracao": "ar (pulmões e brânquias; precisa de umidade)",
     "prendeRespiracao": "não se aplica (terrestre)",
     "mente": "animal, de mente simples: imune à influência social (não entende a influência) e vulnerável a medo e a magia mental (decisão 7 de 19/10/2026 e resposta do autor ao lote 1, 20/10/2026). A imunidade a efeitos mentais do livro publicado sai (Imunidade Mental: \"Não possui mente unificada, sendo imune a efeitos que dependem de compreensão ou emoção\")",
-    "tracos": "carapaça que fura pneu de carro (Wikipédia, citando Parks Australia)"
+    "tracos": "carapaça que fura pneu de carro"
    },
    "aptidoes": {
     "montaria": false,
@@ -57243,7 +57251,7 @@
    },
    "comportamento": {
     "social": "agregação: 43,7 milhões de adultos na ilha, de 0,09 a 1,3 por m² (estimativas concorrentes)",
-    "atividade": "de horário; ativo na estação chuvosa, recolhido na seca",
+    "atividade": "ativo na estação chuvosa, recolhido na seca",
     "dieta": "onívoro e detritívoro: folha caída, fruto, flor, animal morto, lixo",
     "caca": "forrageio no chão da floresta; migração anual até o litoral, até 1.460 m por dia",
     "dianteDeGente": "não foge em massa nem ataca; morre esmagado por carro"
@@ -57401,7 +57409,7 @@
   "sentidos": [
    {
     "nome": "orientação",
-    "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde (Adamczewska e Morris 2001; ABC Science). Texto"
+    "descricao": "anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde. Texto"
    }
   ],
   "segundoTamanho": null,
@@ -57548,14 +57556,14 @@
     },
     {
      "nome": "visão",
-     "descricao": "olhos compostos, sensíveis à luz do dia e muito ao ultravioleta (Meyer-Rochow 2006, via Wikipédia). Texto",
+     "descricao": "olhos compostos, sensíveis à luz do dia e muito ao ultravioleta. Texto",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "solta a pata presa para fugir (autotomia; Wikipédia)"
+    "tracos": "solta a pata presa para fugir"
    },
    "aptidoes": {
     "montaria": false,
@@ -57726,7 +57734,7 @@
    },
    {
     "nome": "visão",
-    "descricao": "olhos compostos, sensíveis à luz do dia e muito ao ultravioleta (Meyer-Rochow 2006, via Wikipédia). Texto"
+    "descricao": "olhos compostos, sensíveis à luz do dia e muito ao ultravioleta. Texto"
    }
   ],
   "segundoTamanho": null,
@@ -58926,7 +58934,7 @@
      "corrida": 0
     },
     "nado": {
-     "batalha": 0
+     "batalha": 0.4
     }
    },
    "equipamento": {
@@ -58957,22 +58965,22 @@
    "sentidos": [
     {
      "nome": "onda na água",
-     "descricao": "Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície (adultas preferem 8 a 12 Hz; Harley, Cienfuegos e Wagenaar 2011)",
+     "descricao": "Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície",
      "formas": "todas"
     },
     {
      "nome": "calor",
-     "descricao": "Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão (Lent 1985)",
+     "descricao": "Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão",
      "formas": "todas"
     },
     {
      "nome": "química e luz",
-     "descricao": "o sal e a arginina disparam a mordida (Elliott 1986); cinco pares de olhos e sensilas que reagem à sombra, mais com fome (ADW). Texto. Alcance em metros:",
+     "descricao": "o sal e a arginina disparam a mordida; cinco pares de olhos e sensilas que reagem à sombra, mais com fome. Texto. Alcance em metros:",
      "formas": "todas"
     }
    ],
    "fisiologia": {
-    "respiracao": "pela pele, na água. Sensível a ressecamento (ADW)",
+    "respiracao": "pela pele, na água. Sensível a ressecamento",
     "mente": "animal",
     "tracos": "refeição de 5 a 15 mL, de 5 a 9 vezes a própria massa (estimativas concorrentes); fica de 6 a 18 meses sem comer (pesquisa). O sal como fraqueza (Pathfinder) não foi achado em fonte científica"
    },
@@ -59150,15 +59158,15 @@
   "sentidos": [
    {
     "nome": "onda na água",
-    "descricao": "Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície (adultas preferem 8 a 12 Hz; Harley, Cienfuegos e Wagenaar 2011)"
+    "descricao": "Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície"
    },
    {
     "nome": "calor",
-    "descricao": "Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão (Lent 1985)"
+    "descricao": "Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão"
    },
    {
     "nome": "química e luz",
-    "descricao": "o sal e a arginina disparam a mordida (Elliott 1986); cinco pares de olhos e sensilas que reagem à sombra, mais com fome (ADW). Texto. Alcance em metros:"
+    "descricao": "o sal e a arginina disparam a mordida; cinco pares de olhos e sensilas que reagem à sombra, mais com fome. Texto. Alcance em metros:"
    }
   ],
   "segundoTamanho": null,
@@ -59166,7 +59174,7 @@
   "poderes": [],
   "locomocao": {
    "terra": 0,
-   "natacao": 0
+   "natacao": 0.4
   },
   "tecnicas": [],
   "artes": [],
@@ -66091,7 +66099,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "corte",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -66424,7 +66432,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "8d6 +10",
-     "dano": "2d6 +28 (C)",
+     "dano": "2d6 +17 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -66440,7 +66448,7 @@
    },
    {
     "nome": "mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +39 (C) (a Força 11 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +28 (C) (a Força 11 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -66835,13 +66843,13 @@
       "nivel": 2
      },
      "ataque": "Sopro de fogo",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "9 m à frente",
      "area": "cone de 9 m",
      "efeito": "o fogo queima tudo no cone",
      "dano": "3d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -66855,7 +66863,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -67099,7 +67107,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de fogo",
-    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 3d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o fogo queima tudo no cone. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 3d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -67109,7 +67117,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -67129,7 +67137,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -67145,7 +67153,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -67264,7 +67272,7 @@
     "semMassa": true,
     "volume": 0.0141,
     "area": 0.07,
-    "posturaDoTamanho": "flutua; voador",
+    "posturaDoTamanho": "vista de frente, flutuando",
     "naoErgue": true
    },
    "couraca": 0,
@@ -67361,7 +67369,7 @@
      "efeito": "fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível"
+     "limiteDeUso": "à vontade"
     },
     {
      "nome": "Evasiva",
@@ -67380,7 +67388,7 @@
      "nome": "Difícil de acertar por Arte",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "Arte que mira um alvo raramente o alcança (\"feitiços de mira raramente o alcançam\", site)"
+     "efeito": "Arte que mira um alvo raramente o alcança"
     }
    ],
    "comoLuta": [
@@ -67411,7 +67419,7 @@
     "respiracao": "nenhuma; é luz",
     "prendeRespiracao": "não respira",
     "camuflagem": "a invisibilidade, e a luz que se confunde com uma lanterna distante",
-    "mente": "inteligente, fria e paciente; vive do medo e da força vital das vítimas (site)",
+    "mente": "inteligente, fria e paciente; vive do medo e da força vital das vítimas",
     "tracos": "orbe de luz pálida de 30 cm, que muda de azul a amarelo e pisca como chama"
    },
    "aptidoes": {
@@ -67492,7 +67500,7 @@
    "semMassa": true,
    "volume": 0.0141,
    "area": 0.07,
-   "posturaDoTamanho": "flutua; voador",
+   "posturaDoTamanho": "vista de frente, flutuando",
    "naoErgue": true,
    "medida": "0.3 m de altura",
    "peso": "sem massa"
@@ -67581,7 +67589,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Invisibilidade natural",
-    "descricao": "fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe. Ativação: uma ação, Velocidade 5. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível",
+    "descricao": "fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe. Ativação: uma ação, Velocidade 5. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade",
     "classe": "regra da ficha",
     "base": {
      "arte": "ofuscacao",
@@ -67615,7 +67623,7 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível"
+      "valor": "à vontade"
      }
     ]
    },
@@ -67657,7 +67665,7 @@
    },
    {
     "nome": "Difícil de acertar por Arte",
-    "descricao": "Arte que mira um alvo raramente o alcança (\"feitiços de mira raramente o alcançam\", site)",
+    "descricao": "Arte que mira um alvo raramente o alcança",
     "classe": "sem regra ainda"
    }
   ],
@@ -69472,7 +69480,8 @@
     "massa": 4.2,
     "area": 0.063,
     "posturaDoTamanho": "de lado",
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "corpo leve"
    },
    "couraca": 0,
    "atributos": {
@@ -69608,17 +69617,17 @@
    "sentidos": [
     {
      "nome": "audição",
-     "descricao": "Prontidão (audição) +3 (era +4); de 48 Hz a 85 kHz (Heffner e Heffner 1985); as orelhas giram 180° (ADW)",
+     "descricao": "Prontidão (audição) +3 ; de 48 Hz a 85 kHz; as orelhas giram 180°",
      "formas": "todas"
     },
     {
      "nome": "penumbra",
-     "descricao": "Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa (Case 2003, via Wikipédia); tapetum lucidum (ADW). Vê mal de perto, a menos de cerca de 60 cm (ADW)",
+     "descricao": "Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa; tapetum lucidum. Vê mal de perto, a menos de cerca de 60 cm",
      "formas": "todas"
     },
     {
      "nome": "faro",
-     "descricao": "Prontidão (faro) +2; cerca de 30 vezes o humano (ADW, sem método)",
+     "descricao": "Prontidão (faro) +2; cerca de 30 vezes o humano",
      "formas": "todas"
     },
     {
@@ -69629,9 +69638,8 @@
    ],
    "fisiologia": {
     "respiracao": "ar",
-    "camuflagem": "(a cor varia com a raça)",
     "mente": "animal",
-    "tracos": "garras retráteis; coluna que gira metade do corpo 180° e o reflexo de cair em pé (ADW); pouso de 1 m com pico de 149% do peso nas patas dianteiras (Lascelles et al. 2007)"
+    "tracos": "garras retráteis; coluna que gira metade do corpo 180° e o reflexo de cair em pé; pouso de 1 m com pico de 149% do peso nas patas dianteiras"
    },
    "aptidoes": {
     "montaria": false,
@@ -69640,7 +69648,6 @@
    },
    "comportamento": {
     "social": "solitário quando solto; vive em colônia perto de comida humana",
-    "atividade": "em fonte conferida",
     "dieta": "carnívoro (aves e pequenos mamíferos)",
     "caca": "emboscada",
     "dianteDeGente": "foge ou ignora; o doméstico convive"
@@ -69702,6 +69709,7 @@
    "area": 0.063,
    "posturaDoTamanho": "de lado",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "corpo leve",
    "medida": "0.27 m de altura, 0.84 m de comprimento",
    "peso": "4.2 kg"
   },
@@ -69816,15 +69824,15 @@
   "sentidos": [
    {
     "nome": "audição",
-    "descricao": "Prontidão (audição) +3 (era +4); de 48 Hz a 85 kHz (Heffner e Heffner 1985); as orelhas giram 180° (ADW)"
+    "descricao": "Prontidão (audição) +3 ; de 48 Hz a 85 kHz; as orelhas giram 180°"
    },
    {
     "nome": "penumbra",
-    "descricao": "Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa (Case 2003, via Wikipédia); tapetum lucidum (ADW). Vê mal de perto, a menos de cerca de 60 cm (ADW)"
+    "descricao": "Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa; tapetum lucidum. Vê mal de perto, a menos de cerca de 60 cm"
    },
    {
     "nome": "faro",
-    "descricao": "Prontidão (faro) +2; cerca de 30 vezes o humano (ADW, sem método)"
+    "descricao": "Prontidão (faro) +2; cerca de 30 vezes o humano"
    },
    {
     "nome": "vibrissas",
@@ -79524,7 +79532,7 @@
      "area": "cone de 6 m",
      "efeito": "um sopro de frio brutal castiga todos à frente",
      "dano": "3d6 + Centelha, gelo",
-     "resistencia": "esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -79795,7 +79803,7 @@
    },
    {
     "nome": "Sopro congelante",
-    "descricao": "um sopro de frio brutal castiga todos à frente. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 6 m à frente. Área: cone de 6 m. Dano: 3d6 + Centelha, gelo. Resistência: esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "um sopro de frio brutal castiga todos à frente. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 6 m à frente. Área: cone de 6 m. Dano: 3d6 + Centelha, gelo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "gelo",
@@ -79825,7 +79833,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -80411,7 +80419,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": 0,
      "acerto": 0,
@@ -80454,12 +80462,12 @@
    "sentidos": [
     {
      "nome": "ecolocalização",
-     "descricao": "Prontidão (ecolocalização) +3 , Especialidade natural ; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance (ADW)",
+     "descricao": "Prontidão (ecolocalização) +3 , Especialidade natural; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "até cerca de 120 kHz (Wikipédia); cobre o mesmo uso da ecolocalização, sem Especialidade à parte",
+     "descricao": "até cerca de 120 kHz; cobre o mesmo uso da ecolocalização, sem Especialidade à parte",
      "formas": "todas"
     },
     {
@@ -80470,9 +80478,9 @@
    ],
    "fisiologia": {
     "respiracao": "ar (mamífero)",
-    "prendeRespiracao": "até cerca de 4,5 minutos (ADW), medido; respira a cada 1 a 2 minutos em água funda. A Especialidade natural Resistência (apneia) +3 não troca este campo",
+    "prendeRespiracao": "até cerca de 4,5 minutos, medido; respira a cada 1 a 2 minutos em água funda. A Especialidade natural Resistência (apneia) +3 não troca este campo",
     "mente": "animal",
-    "tracos": "assobio próprio de cada indivíduo, mantido a vida toda (ADW); vive de 25 a 35 anos na natureza, a mais velha registrada com 53 (ADW)"
+    "tracos": "assobio próprio de cada indivíduo, mantido a vida toda; vive de 25 a 35 anos na natureza, a mais velha registrada com 53"
    },
    "aptidoes": {
     "montaria": false,
@@ -80493,7 +80501,7 @@
      "tropical"
     ]
    },
-   "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas (ADW).",
+   "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas.",
    "lore": [
     {
      "titulo": "Predadora social",
@@ -80520,7 +80528,7 @@
   "categoriaNome": "Animal",
   "tipo": "fera",
   "conceito": "Animal Médio",
-  "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas (ADW).",
+  "descricao": "Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas.",
   "tags": [
    "animal"
   ],
@@ -80618,7 +80626,7 @@
     {
      "nome": "Investida de focinho",
      "pool": "4d6",
-     "dano": "2d6 +10 (I)",
+     "dano": "2d6 +5 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -80638,7 +80646,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de baixo",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida de focinho investindo: 2d6 +15 (I) (a Força 5 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida de focinho investindo: 2d6 +10 (I) (a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -80652,11 +80660,11 @@
   "sentidos": [
    {
     "nome": "ecolocalização",
-    "descricao": "Prontidão (ecolocalização) +3 , Especialidade natural ; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance (ADW)"
+    "descricao": "Prontidão (ecolocalização) +3 , Especialidade natural; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance"
    },
    {
     "nome": "audição",
-    "descricao": "até cerca de 120 kHz (Wikipédia); cobre o mesmo uso da ecolocalização, sem Especialidade à parte"
+    "descricao": "até cerca de 120 kHz; cobre o mesmo uso da ecolocalização, sem Especialidade à parte"
    }
   ],
   "segundoTamanho": null,
@@ -80777,7 +80785,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -81028,7 +81036,7 @@
     {
      "nome": "Investida (marrada)",
      "pool": "6d6+2 +6",
-     "dano": "2d6 +19 (I)",
+     "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -81048,7 +81056,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "investida de chifre",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +27 (I) (a Força 8 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +19 (I) (a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -81134,7 +81142,8 @@
     "massa": 206,
     "area": 0.89,
     "posturaDoTamanho": "de frente, em pé",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "primata robusto"
    },
    "couraca": 1,
    "atributos": {
@@ -81272,14 +81281,14 @@
    "sentidos": [
     {
      "nome": "sentidos",
-     "descricao": "Nada que passe do humano com número. Olhos pequenos (ADW); números de visão, audição e olfato não achados . Sem Especialidade natural de sentido",
+     "descricao": "Nada que passe do humano com número. Olhos pequenos; números de visão, audição e olfato não achados Sem Especialidade natural de sentido",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "o \"tambor\" no peito do macho é sinal honesto de tamanho (o macho maior soa mais grave; Wright 2021); o macho estressado solta cheiro forte das axilas (ADW, gorila-das-montanhas); anda de quatro sobre os nós dos dedos e fica de pé com frequência (ADW); pelo mais longo no gorila-das-montanhas, o fato da Resistência (frio) +1 (ADW)"
+    "tracos": "o \"tambor\" no peito do macho é sinal honesto de tamanho; o macho estressado solta cheiro forte das axilas; anda de quatro sobre os nós dos dedos e fica de pé com frequência; pelo mais longo no gorila-das-montanhas, o fato da Resistência (frio) +1"
    },
    "aptidoes": {
     "montaria": false,
@@ -81350,6 +81359,7 @@
    "area": 0.89,
    "posturaDoTamanho": "de frente, em pé",
    "linhaPV": "acima",
+   "linhaPVMotivo": "primata robusto",
    "medida": "1.72 m de altura, 0.55 m de comprimento",
    "peso": "206 kg"
   },
@@ -81466,7 +81476,7 @@
   "sentidos": [
    {
     "nome": "sentidos",
-    "descricao": "Nada que passe do humano com número. Olhos pequenos (ADW); números de visão, audição e olfato não achados . Sem Especialidade natural de sentido"
+    "descricao": "Nada que passe do humano com número. Olhos pequenos; números de visão, audição e olfato não achados Sem Especialidade natural de sentido"
    }
   ],
   "segundoTamanho": null,
@@ -81691,13 +81701,13 @@
       "nivel": 5
      },
      "ataque": "Sopro cataclísmico",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "18 m à frente",
      "area": "cone de 18 m",
      "efeito": "o fogo queima tudo no cone e deixa Abalado até quem escapa",
      "dano": "15d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade; mesmo quem passa fica Abalado até o fim da cena",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; mesmo quem evita o dano fica Abalado até o fim da cena",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -81718,7 +81728,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "garra, garra, mordida, cauda e golpe de asas no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "garra, garra, mordida, cauda e golpe de asas no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Presença",
@@ -81749,7 +81759,7 @@
      "duracao": "12 Ticks",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "fica Acelerado (`condicoes.json`: as ações custam 2 Ticks a menos). O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra do site",
+     "efeito": "fica Acelerado. O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra",
      "dano": "nenhum",
      "resistencia": "nenhum",
      "limiteDeUso": "uma vez por cena"
@@ -82029,7 +82039,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro cataclísmico",
-    "descricao": "o fogo queima tudo no cone e deixa Abalado até quem escapa. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: cone de 18 m. Dano: 15d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade; mesmo quem passa fica Abalado até o fim da cena. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o fogo queima tudo no cone e deixa Abalado até quem escapa. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m à frente. Área: cone de 18 m. Dano: 15d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; mesmo quem evita o dano fica Abalado até o fim da cena. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -82039,7 +82049,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -82059,7 +82069,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade; mesmo quem passa fica Abalado até o fim da cena"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; mesmo quem evita o dano fica Abalado até o fim da cena"
      },
      {
       "rotulo": "Limite de uso",
@@ -82081,7 +82091,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "garra, garra, mordida, cauda e golpe de asas no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "garra, garra, mordida, cauda e golpe de asas no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -82126,13 +82136,13 @@
    },
    {
     "nome": "Dobrar o tempo",
-    "descricao": "fica Acelerado (`condicoes.json`: as ações custam 2 Ticks a menos). O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra do site. Ativação: nenhuma ação, no começo de uma ação dele. Duração: 12 Ticks. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena",
+    "descricao": "fica Acelerado. O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra. Ativação: nenhuma ação, no começo de uma ação dele. Duração: 12 Ticks. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena",
     "classe": "regra da ficha",
     "base": {
      "arte": "tempo",
      "nivel": 6
     },
-    "texto": "fica Acelerado (`condicoes.json`: as ações custam 2 Ticks a menos). O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra do site",
+    "texto": "fica Acelerado. O site dizia \"age duas vezes na mesma rodada, uma ação extra completa (1x por cena)\". Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: com ação extra e limite de uso, fica Acelerado pelos Ticks que rendem uma ação a mais, T = V × (V − 2) ÷ 2, com V a Velocidade do ataque mais usado (a Mordida, 6): 6 × 4 ÷ 2 = 12 Ticks. Em 12 Ticks ele faz 2 ações sem o Acelerado e 3 com ele, a ação extra",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -82283,7 +82293,8 @@
      "posturaDoTamanho": "de lado, asas fechadas, pousado",
      "tamanhoEscolhido": "grande"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "voador, meio ave de osso oco"
    },
    "couraca": 1,
    "atributos": {
@@ -82407,7 +82418,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "corte",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -82562,6 +82573,7 @@
     "tamanhoEscolhido": "grande"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "voador, meio ave de osso oco",
    "medida": "1.32 m de altura, 3.2 m de comprimento",
    "peso": "230 kg"
   },
@@ -82661,7 +82673,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6 +2",
-     "dano": "2d6 +13 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -82678,7 +82690,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +19 (C) (a Força 6 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +13 (C) (a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -85709,7 +85721,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "corte",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -85944,7 +85956,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "4d6+2 +2",
-     "dano": "2d6 +13 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -85961,7 +85973,7 @@
    },
    {
     "nome": "investida em mergulho",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +19 (C) (a Força 6 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +13 (C) (a Força 6 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -87038,7 +87050,8 @@
       "massa": 12.38,
       "area": 0.1475,
       "posturaDoTamanho": "de lado",
-      "linhaPV": "acima"
+      "linhaPV": "acima",
+      "linhaPVMotivo": "corpo resistente de rato gigante"
      },
      "atributos": {
       "forca": 2,
@@ -87763,6 +87776,7 @@
       "posturaDoTamanho": "de lado",
       "comprimentoSemCauda": 0.75,
       "linhaPV": "acima",
+      "linhaPVMotivo": "corpo resistente de rato gigante",
       "medida": "0.28 m de altura, 1.4 m de comprimento",
       "peso": "12.38 kg"
      },
@@ -89582,7 +89596,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -89621,25 +89635,25 @@
    "sentidos": [
     {
      "nome": "faro",
-     "descricao": "Prontidão (faro) +2 (Especialidade natural); alcance . Wikipédia",
+     "descricao": "Prontidão (faro) +2 (Especialidade natural)",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "Prontidão (audição) +2 (Especialidade natural); alcance . Wikipédia",
+     "descricao": "Prontidão (audição) +2 (Especialidade natural)",
      "formas": "todas"
     },
     {
      "nome": "visão",
-     "descricao": "fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m (Wikipédia). Sem Especialidade",
+     "descricao": "fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m. Sem Especialidade",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": ". Nada bem e longe (11 km de mar, Wikipédia)",
+    "prendeRespiracao": "Nada bem e longe",
     "mente": "animal",
-    "tracos": "escudo do ombro nos machos (camada subcutânea grossa, caráter sexual secundário; é o nível 2 de Couraça, ver Absorção e Variantes); salto de 140 a 150 cm (Wikipédia, sem método)"
+    "tracos": "escudo do ombro nos machos (camada subcutânea grossa, caráter sexual secundário; é o nível 2 de Couraça, ver Absorção e Variantes); salto de 140 a 150 cm"
    },
    "aptidoes": {
     "montaria": false,
@@ -89661,7 +89675,7 @@
      "temperado"
     ]
    },
-   "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé (Mayer 2013).",
+   "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé.",
    "lore": [
     {
      "titulo": "Comportamento",
@@ -89694,7 +89708,7 @@
   "categoriaNome": "Animal",
   "tipo": "fera",
   "conceito": "Animal Médio",
-  "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé (Mayer 2013).",
+  "descricao": "O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé.",
   "tags": [
    "animal"
   ],
@@ -89799,7 +89813,7 @@
     {
      "nome": "Investida",
      "pool": "4d6",
-     "dano": "2d6 +10 (I)",
+     "dano": "2d6 +5 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -89816,7 +89830,7 @@
    },
    {
     "nome": "investida",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +15 (I) (a Força 5 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +10 (I) (a Força 5 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
@@ -89835,15 +89849,15 @@
   "sentidos": [
    {
     "nome": "faro",
-    "descricao": "Prontidão (faro) +2 (Especialidade natural); alcance . Wikipédia"
+    "descricao": "Prontidão (faro) +2 (Especialidade natural)"
    },
    {
     "nome": "audição",
-    "descricao": "Prontidão (audição) +2 (Especialidade natural); alcance . Wikipédia"
+    "descricao": "Prontidão (audição) +2 (Especialidade natural)"
    },
    {
     "nome": "visão",
-    "descricao": "fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m (Wikipédia). Sem Especialidade"
+    "descricao": "fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m. Sem Especialidade"
    }
   ],
   "segundoTamanho": null,
@@ -90275,7 +90289,8 @@
     "massa": 16,
     "area": 0.22,
     "posturaDoTamanho": "de frente",
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "corpo frágil"
    },
    "couraca": 1,
    "atributos": {
@@ -90446,6 +90461,7 @@
    "area": 0.22,
    "posturaDoTamanho": "de frente",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "corpo frágil",
    "medida": "0.75 m de altura, 1.1 m de comprimento",
    "peso": "16 kg"
   },
@@ -97281,7 +97297,8 @@
     "massa": 14000,
     "area": 19.9,
     "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "serpente maciça que fecha as feridas"
    },
    "couraca": 10,
    "atributos": {
@@ -97401,13 +97418,13 @@
       "nivel": 4
      },
      "ataque": "Sopro gélido",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "o dano, instantâneo; o gelo, até o alvo se soltar",
      "alcance": "12 m à frente",
      "area": "cone de 12 m",
-     "efeito": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra a jogada do sopro, uma tentativa por ação",
+     "efeito": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra Dificuldade 16, uma tentativa por ação",
      "dano": "9d6 + Centelha, gelo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade e não fica preso",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não fica preso",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -97559,6 +97576,7 @@
    "area": 19.9,
    "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
    "linhaPV": "acima",
+   "linhaPVMotivo": "serpente maciça que fecha as feridas",
    "medida": "1.11 m de altura, 24 m de comprimento",
    "peso": "14000 kg"
   },
@@ -97668,17 +97686,17 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro gélido",
-    "descricao": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra a jogada do sopro, uma tentativa por ação. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: o dano, instantâneo; o gelo, até o alvo se soltar. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, gelo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade e não fica preso. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra Dificuldade 16, uma tentativa por ação. Ativação: uma ação, Velocidade 7. Duração: o dano, instantâneo; o gelo, até o alvo se soltar. Alcance: 12 m à frente. Área: cone de 12 m. Dano: 9d6 + Centelha, gelo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não fica preso. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "gelo",
      "nivel": 4
     },
-    "texto": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra a jogada do sopro, uma tentativa por ação",
+    "texto": "uma geleia congelante gruda e endurece em gelo: quem falha fica Imobilizado e leva 1d6 de gelo a cada 6 Ticks enquanto estiver preso; para se soltar, Força + Atletismo contra Dificuldade 16, uma tentativa por ação",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -97698,7 +97716,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade e não fica preso"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não fica preso"
      },
      {
       "rotulo": "Limite de uso",
@@ -97951,13 +97969,13 @@
       "nivel": 4
      },
      "ataque": "Sopro ácido",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "18 m à frente",
      "area": "linha de 18 m ou cone de 12 m, à escolha",
      "efeito": "o ácido corrói tudo o que toca",
      "dano": "9d6 + Centelha, ácido",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -97991,7 +98009,7 @@
      "nome": "Duas cabeças",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "as duas cabeças mordem na mesma ação, e com elas as garras e a cauda, no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "as duas cabeças mordem na mesma ação, e com elas as garras e a cauda, no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Nunca cercado",
@@ -98250,7 +98268,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro ácido",
-    "descricao": "o ácido corrói tudo o que toca. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m ou cone de 12 m, à escolha. Dano: 9d6 + Centelha, ácido. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "o ácido corrói tudo o que toca. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m ou cone de 12 m, à escolha. Dano: 9d6 + Centelha, ácido. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "agua",
@@ -98260,7 +98278,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -98280,7 +98298,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -98313,7 +98331,7 @@
    },
    {
     "nome": "Duas cabeças",
-    "descricao": "as duas cabeças mordem na mesma ação, e com elas as garras e a cauda, no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "as duas cabeças mordem na mesma ação, e com elas as garras e a cauda, no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -98531,13 +98549,13 @@
       "nivel": 4
      },
      "ataque": "Sopro de magma",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "18 m à frente",
      "area": "linha de 18 m",
      "efeito": "a lava queima tudo na linha",
      "dano": "9d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks (\"a cada poucos rounds\", site)"
     },
     {
@@ -98798,7 +98816,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de magma",
-    "descricao": "a lava queima tudo na linha. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 9d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (\"a cada poucos rounds\", site)",
+    "descricao": "a lava queima tudo na linha. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 9d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks (\"a cada poucos rounds\", site)",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -98808,7 +98826,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -98828,7 +98846,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -100928,7 +100946,8 @@
     "massa": 200,
     "area": 1.13,
     "posturaDoTamanho": "silhueta vista de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "pelagem densa, corpo robusto"
    },
    "couraca": 1,
    "atributos": {
@@ -101061,13 +101080,13 @@
       "nivel": 3
      },
      "ataque": "Sopro gélido",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "4,5 m à frente",
      "area": "cone de 4,5 m",
      "efeito": "um vento congelante que cobre o chão de geada",
      "dano": "2d6 + Centelha, gelo",
-     "resistencia": "corpo, Vigor + Resistência contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     }
    ],
@@ -101184,6 +101203,7 @@
    "area": 1.13,
    "posturaDoTamanho": "silhueta vista de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "pelagem densa, corpo robusto",
    "medida": "1.35 m de altura, 3 m de comprimento",
    "peso": "200 kg"
   },
@@ -101328,7 +101348,7 @@
    },
    {
     "nome": "Sopro gélido",
-    "descricao": "um vento congelante que cobre o chão de geada. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 4,5 m à frente. Área: cone de 4,5 m. Dano: 2d6 + Centelha, gelo. Resistência: corpo, Vigor + Resistência contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "um vento congelante que cobre o chão de geada. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 4,5 m à frente. Área: cone de 4,5 m. Dano: 2d6 + Centelha, gelo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "gelo",
@@ -101338,7 +101358,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -101358,7 +101378,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, Vigor + Resistência contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -103799,7 +103819,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -103824,14 +103844,14 @@
    "sentidos": [
     {
      "nome": "sentidos",
-     "descricao": "nada achado . Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura (Wikipédia), adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio",
+     "descricao": "nada achado Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura, adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "pelos de cobertura de 30 cm no dorso e até 90 cm nos flancos, subpelo de até 8 cm; gordura de até 10 cm sob a pele; pele de 1,25 a 2,5 cm; cauda curta, de 36 cm; orelhas pequenas (Wikipédia). Pelo de cerca de 3 kg/m² de pele na forma europeia (Larramendi 2016). Presas em espiral, com as pontas voltadas uma para a outra. Tromba que manipula"
+    "tracos": "pelos de cobertura de 30 cm no dorso e até 90 cm nos flancos, subpelo de até 8 cm; gordura de até 10 cm sob a pele; pele de 1,25 a 2,5 cm; cauda curta, de 36 cm; orelhas pequenas. Pelo de cerca de 3 kg/m² de pele na forma europeia. Presas em espiral, com as pontas voltadas uma para a outra. Tromba que manipula"
    },
    "aptidoes": {
     "montaria": false,
@@ -103984,7 +104004,7 @@
     {
      "nome": "Pisão (ou investida)",
      "pool": "8d6",
-     "dano": "2d6 +26 (I)",
+     "dano": "2d6 +13 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -104010,7 +104030,7 @@
   "sentidos": [
    {
     "nome": "sentidos",
-    "descricao": "nada achado . Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura (Wikipédia), adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio"
+    "descricao": "nada achado Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura, adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio"
    }
   ],
   "segundoTamanho": null,
@@ -106573,7 +106593,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "impacto",
      "nivelPerfuracao": null,
      "acerto": 0,
@@ -106598,14 +106618,14 @@
    "sentidos": [
     {
      "nome": "sentidos",
-     "descricao": "nada achado . O faro do elefante não foi passado ao mastodonte, que é de outra família",
+     "descricao": "nada achado O faro do elefante não foi passado ao mastodonte, que é de outra família",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "mais baixo que o mamute e mais maciço, de pelve muito larga; presas superiores longas e retas, as de baixo reduzidas ou ausentes; cauda relativamente longa; pelagem pouco conhecida (Larramendi; Wikipédia). Molares de cúspides em cone, para ramos e madeira (NPS)"
+    "tracos": "mais baixo que o mamute e mais maciço, de pelve muito larga; presas superiores longas e retas, as de baixo reduzidas ou ausentes; cauda relativamente longa; pelagem pouco conhecida. Molares de cúspides em cone, para ramos e madeira"
    },
    "aptidoes": {
     "montaria": false,
@@ -106764,7 +106784,7 @@
     {
      "nome": "Pisão (ou investida)",
      "pool": "8d6",
-     "dano": "2d6 +26 (I)",
+     "dano": "2d6 +13 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -106790,7 +106810,7 @@
   "sentidos": [
    {
     "nome": "sentidos",
-    "descricao": "nada achado . O faro do elefante não foi passado ao mastodonte, que é de outra família"
+    "descricao": "nada achado O faro do elefante não foi passado ao mastodonte, que é de outra família"
    }
   ],
   "segundoTamanho": null,
@@ -107703,7 +107723,8 @@
      "area": 0.26,
      "posturaDoTamanho": "asas fechadas"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "matéria elemental leve"
    },
    "couraca": 0,
    "atributos": {
@@ -107810,13 +107831,13 @@
       "nivel": 2
      },
      "ataque": "Sopro elemental",
-     "ativacao": "uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "3 m à frente",
      "area": "cone de 3 m",
      "efeito": "um jato do elemento dele queima todos no cone",
      "dano": "2d6 + Centelha, fogo (na Variante, o tipo do elemento)",
-     "resistencia": "esquiva, contra a jogada; quem se abaixa a tempo leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     },
     {
@@ -107959,6 +107980,7 @@
     "posturaDoTamanho": "asas fechadas"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "matéria elemental leve",
    "medida": "1 m de altura",
    "peso": "18 kg"
   },
@@ -108060,7 +108082,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro elemental",
-    "descricao": "um jato do elemento dele queima todos no cone. Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 3 m à frente. Área: cone de 3 m. Dano: 2d6 + Centelha, fogo (na Variante, o tipo do elemento). Resistência: esquiva, contra a jogada; quem se abaixa a tempo leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "um jato do elemento dele queima todos no cone. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 3 m à frente. Área: cone de 3 m. Dano: 2d6 + Centelha, fogo (na Variante, o tipo do elemento). Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -108070,7 +108092,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -108090,7 +108112,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada; quem se abaixa a tempo leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -109224,7 +109246,7 @@
      "alcance": "o do corpo a corpo",
      "area": "um alvo",
      "efeito": "o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro",
-     "dano": "1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração",
+     "dano": "1d6 + Força × 2 + Centelha, Perfuração",
      "resistencia": "corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído",
      "limiteDeUso": "uma por Investida"
     },
@@ -109455,7 +109477,7 @@
    },
    {
     "nome": "Investida chifruda",
-    "descricao": "o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro. Ativação: a Investida com a Chifrada, depois de correr 4 m ou mais. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Dano: 1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração. Resistência: corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído. Limite de uso: uma por Investida",
+    "descricao": "o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro. Ativação: a Investida com a Chifrada, depois de correr 4 m ou mais. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Dano: 1d6 + Força × 2 + Centelha, Perfuração. Resistência: corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído. Limite de uso: uma por Investida",
     "classe": "regra da ficha",
     "texto": "o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro",
     "campos": [
@@ -109477,7 +109499,7 @@
      },
      {
       "rotulo": "Dano",
-      "valor": "1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração"
+      "valor": "1d6 + Força × 2 + Centelha, Perfuração"
      },
      {
       "rotulo": "Resistência",
@@ -117032,7 +117054,7 @@
      "area": "o cone",
      "efeito": "o ácido corrói quem não escapa",
      "dano": "3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos",
-     "resistencia": "esquiva, contra Vigor 10 + Disparo 2 + 2 × o menor entre Centelha 6 e Disparo 2 (4) = 16 mais a rolagem; quem passa leva metade e não segue queimando",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não segue queimando",
      "limiteDeUso": "uma vez a cada 18 Ticks"
     },
     {
@@ -117064,7 +117086,7 @@
      "duracao": "até alguém o estabilizar",
      "alcance": "18 m",
      "area": "um alvo que pense",
-     "efeito": "a mente do alvo desmorona: fica Inconsciente e Morrendo (`condicoes.json`)",
+     "efeito": "a mente do alvo desmorona: fica Inconsciente e Morrendo",
      "dano": "nenhum além do efeito",
      "resistencia": "mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena",
      "limiteDeUso": "uma vez por cena"
@@ -117306,7 +117328,7 @@
    },
    {
     "nome": "Sopro ácido",
-    "descricao": "o ácido corrói quem não escapa. Ativação: uma ação, Velocidade 7. Duração: o ácido segue queimando por 12 Ticks. Alcance: cone de 9 m. Área: o cone. Dano: 3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos. Resistência: esquiva, contra Vigor 10 + Disparo 2 + 2 × o menor entre Centelha 6 e Disparo 2 (4) = 16 mais a rolagem; quem passa leva metade e não segue queimando. Limite de uso: uma vez a cada 18 Ticks",
+    "descricao": "o ácido corrói quem não escapa. Ativação: uma ação, Velocidade 7. Duração: o ácido segue queimando por 12 Ticks. Alcance: cone de 9 m. Área: o cone. Dano: 3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não segue queimando. Limite de uso: uma vez a cada 18 Ticks",
     "classe": "regra da ficha",
     "texto": "o ácido corrói quem não escapa",
     "campos": [
@@ -117332,7 +117354,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra Vigor 10 + Disparo 2 + 2 × o menor entre Centelha 6 e Disparo 2 (4) = 16 mais a rolagem; quem passa leva metade e não segue queimando"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não segue queimando"
      },
      {
       "rotulo": "Limite de uso",
@@ -117382,13 +117404,13 @@
    },
    {
     "nome": "Esmagamento da mente",
-    "descricao": "a mente do alvo desmorona: fica Inconsciente e Morrendo (`condicoes.json`). Ativação: uma ação, Velocidade 8. Duração: até alguém o estabilizar. Alcance: 18 m. Área: um alvo que pense. Dano: nenhum além do efeito. Resistência: mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena. Limite de uso: uma vez por cena",
+    "descricao": "a mente do alvo desmorona: fica Inconsciente e Morrendo. Ativação: uma ação, Velocidade 8. Duração: até alguém o estabilizar. Alcance: 18 m. Área: um alvo que pense. Dano: nenhum além do efeito. Resistência: mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena. Limite de uso: uma vez por cena",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 5
     },
-    "texto": "a mente do alvo desmorona: fica Inconsciente e Morrendo (`condicoes.json`)",
+    "texto": "a mente do alvo desmorona: fica Inconsciente e Morrendo",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -119497,7 +119519,7 @@
      "area": "cone de 9 m",
      "efeito": "um sopro de frio que queima a pele e cobre o chão de gelo fino",
      "dano": "3d6 + Centelha, gelo (o site diz \"dano alto\", sem número)",
-     "resistencia": "esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez por cena"
     },
     {
@@ -119544,7 +119566,7 @@
      "duracao": "a do disfarce",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "+2d6 em Manha para se passar por humano (o número do site)",
+     "efeito": "+2d6 em Manha para se passar por humano",
      "dano": "nenhum",
      "resistencia": "nenhum",
      "limiteDeUso": "nenhum"
@@ -119853,7 +119875,7 @@
    },
    {
     "nome": "Cone de frio",
-    "descricao": "um sopro de frio que queima a pele e cobre o chão de gelo fino. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 3d6 + Centelha, gelo (o site diz \"dano alto\", sem número). Resistência: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade. Limite de uso: uma vez por cena",
+    "descricao": "um sopro de frio que queima a pele e cobre o chão de gelo fino. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 3d6 + Centelha, gelo (o site diz \"dano alto\", sem número). Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez por cena",
     "classe": "regra da ficha",
     "base": {
      "arte": "gelo",
@@ -119883,7 +119905,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -120198,7 +120220,7 @@
       },
       {
        "nome": "Cone de frio",
-       "descricao": "um sopro de frio que queima a pele e cobre o chão de gelo fino. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 3d6 + Centelha, gelo (o site diz \"dano alto\", sem número). Resistência: esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade. Limite de uso: uma vez por cena",
+       "descricao": "um sopro de frio que queima a pele e cobre o chão de gelo fino. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 3d6 + Centelha, gelo (o site diz \"dano alto\", sem número). Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez por cena",
        "classe": "regra da ficha",
        "base": {
         "arte": "gelo",
@@ -120228,7 +120250,7 @@
         },
         {
          "rotulo": "Resistência",
-         "valor": "esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa leva metade"
+         "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
         },
         {
          "rotulo": "Limite de uso",
@@ -120318,9 +120340,9 @@
       },
       {
        "nome": "Rosto humano",
-       "descricao": "+2d6 em Manha para se passar por humano (o número do site). Ativação: nenhuma; vale enquanto está disfarçado. Duração: a do disfarce. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum",
+       "descricao": "+2d6 em Manha para se passar por humano. Ativação: nenhuma; vale enquanto está disfarçado. Duração: a do disfarce. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum",
        "classe": "regra da ficha",
-       "texto": "+2d6 em Manha para se passar por humano (o número do site)",
+       "texto": "+2d6 em Manha para se passar por humano",
        "campos": [
         {
          "rotulo": "Ativação",
@@ -126016,7 +126038,8 @@
     "massa": 220,
     "area": 1.17,
     "posturaDoTamanho": "vista de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "corpo rústico e robusto"
    },
    "couraca": 1,
    "atributos": {
@@ -126145,7 +126168,7 @@
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "cernelha de 1,02 a 1,22 m na raça de Yonaguni (Porter 2016)"
+    "tracos": "cernelha de 1,02 a 1,22 m na raça de Yonaguni"
    },
    "aptidoes": {
     "montaria": true,
@@ -126221,6 +126244,7 @@
    "area": 1.17,
    "posturaDoTamanho": "vista de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "corpo rústico e robusto",
    "medida": "1.48 m de altura, 2.34 m de comprimento",
    "peso": "220 kg"
   },
@@ -128656,7 +128680,8 @@
      "area": 13.38,
      "posturaDoTamanho": "de baixo, asas abertas, em voo"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "ossos ocos de parede fina"
    },
    "couraca": 0,
    "atributos": {
@@ -128752,7 +128777,7 @@
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "ossos ocos com trabéculas, muito finos (parede do esterno de 1,5 mm no Q. lawsoni, Hone e colegas 2023); com a cabeça erguida passa de 4 m, \"como uma girafa\" (Wikipédia); picnofibras:"
+    "tracos": "ossos ocos com trabéculas, muito finos; com a cabeça erguida passa de 4 m, \"como uma girafa\"; picnofibras:"
    },
    "aptidoes": {
     "montaria": false,
@@ -128816,6 +128841,7 @@
     "posturaDoTamanho": "de baixo, asas abertas, em voo"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "ossos ocos de parede fina",
    "medida": "5 m de altura, 5 m de comprimento",
    "peso": "245 kg"
   },
@@ -129100,13 +129126,13 @@
       "nivel": 3
      },
      "ataque": "Sopro dracônico",
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "9 m à frente",
      "area": "cone de 9 m",
      "efeito": "a cabeça de dragão cospe um leque de fogo",
      "dano": "2d6 + Centelha, fogo",
-     "resistencia": "esquiva, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks"
     }
    ],
@@ -129339,7 +129365,7 @@
    },
    {
     "nome": "Sopro dracônico",
-    "descricao": "a cabeça de dragão cospe um leque de fogo. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 2d6 + Centelha, fogo. Resistência: esquiva, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "a cabeça de dragão cospe um leque de fogo. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m. Dano: 2d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -129349,7 +129375,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -129369,7 +129395,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "esquiva, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -131107,7 +131133,8 @@
     "massa": 36,
     "area": 0.39,
     "posturaDoTamanho": "de frente",
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "corpo magro, parte do peso é pano"
    },
    "couraca": 0,
    "atributos": {
@@ -131311,6 +131338,7 @@
    "area": 0.39,
    "posturaDoTamanho": "de frente",
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "corpo magro, parte do peso é pano",
    "medida": "1.2 m de altura",
    "peso": "36 kg"
   },
@@ -131927,7 +131955,8 @@
     "massa": 12.38,
     "area": 0.1475,
     "posturaDoTamanho": "vista de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "duro para o tamanho"
    },
    "couraca": 0,
    "atributos": {
@@ -132056,7 +132085,7 @@
     },
     {
      "nome": "vibração",
-     "descricao": "percebe vibrações mínimas (ADW). Texto",
+     "descricao": "percebe vibrações mínimas. Texto",
      "formas": "todas"
     },
     {
@@ -132067,9 +132096,8 @@
    ],
    "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "(o rato nada submerso, Wikipédia, sem tempo medido)",
     "mente": "animal",
-    "tracos": "rói madeira e massa de vedação (os do rato, UC IPM). A fresta de 1,3 cm do rato vira cerca de 4,6 cm no gigante (1,3 × 3,5; era 2,9)"
+    "tracos": "rói madeira e massa de vedação (os do rato, UC IPM). A fresta de 1,3 cm do rato vira cerca de 4,6 cm no gigante"
    },
    "aptidoes": {
     "montaria": false,
@@ -132148,6 +132176,7 @@
    "area": 0.1475,
    "posturaDoTamanho": "vista de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "duro para o tamanho",
    "medida": "0.28 m de altura, 1.4 m de comprimento",
    "peso": "12.38 kg"
   },
@@ -132260,7 +132289,7 @@
    },
    {
     "nome": "vibração",
-    "descricao": "percebe vibrações mínimas (ADW). Texto"
+    "descricao": "percebe vibrações mínimas. Texto"
    },
    {
     "nome": "visão",
@@ -132314,7 +132343,8 @@
     "massa": 1650,
     "area": 9,
     "posturaDoTamanho": "vista de cima",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "placas grossas, corpo robusto"
    },
    "couraca": 5,
    "atributos": {
@@ -132534,6 +132564,7 @@
    "area": 9,
    "posturaDoTamanho": "vista de cima",
    "linhaPV": "acima",
+   "linhaPVMotivo": "placas grossas, corpo robusto",
    "medida": "0.6 m de altura, 7.5 m de comprimento",
    "peso": "1650 kg"
   },
@@ -132835,7 +132866,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "perfuracao",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -132887,24 +132918,24 @@
    "sentidos": [
     {
      "nome": "faro",
-     "descricao": "Prontidão (faro) +2, natural; \"apurado\" (ADW)",
+     "descricao": "Prontidão (faro) +2, natural; \"apurado\"",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "\"apurada\" (ADW). Texto",
+     "descricao": "\"apurada\". Texto",
      "formas": "todas"
     },
     {
      "nome": "visão",
-     "descricao": "míope (ADW). Texto: o Mestre pode dificultar notar o que está parado a distância",
+     "descricao": "míope. Texto: o Mestre pode dificultar notar o que está parado a distância",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "dois chifres de queratina; pele de até 45 mm, mais grossa na corcova da nuca (até 49 mm); boca larga e chata de pastador (Plochocki 2017; Wikipédia)"
+    "tracos": "dois chifres de queratina; pele de até 45 mm, mais grossa na corcova da nuca (até 49 mm); boca larga e chata de pastador"
    },
    "aptidoes": {
     "montaria": false,
@@ -133065,7 +133096,7 @@
     {
      "nome": "Investida",
      "pool": "5d6+2",
-     "dano": "2d6 +16 (P) · perf. 1",
+     "dano": "2d6 +8 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -133094,13 +133125,13 @@
    },
    {
     "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +24 (P) · perf. 1 (a Força 8 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +16 (P) · perf. 1 (a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "investida que derruba",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +24 (P) · perf. 1 (a Força 8 mais uma vez)",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +16 (P) · perf. 1 (a Força 8 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    }
@@ -133114,15 +133145,15 @@
   "sentidos": [
    {
     "nome": "faro",
-    "descricao": "Prontidão (faro) +2, natural; \"apurado\" (ADW)"
+    "descricao": "Prontidão (faro) +2, natural; \"apurado\""
    },
    {
     "nome": "audição",
-    "descricao": "\"apurada\" (ADW). Texto"
+    "descricao": "\"apurada\". Texto"
    },
    {
     "nome": "visão",
-    "descricao": "míope (ADW). Texto: o Mestre pode dificultar notar o que está parado a distância"
+    "descricao": "míope. Texto: o Mestre pode dificultar notar o que está parado a distância"
    }
   ],
   "segundoTamanho": null,
@@ -133285,7 +133316,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "corte",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -133326,14 +133357,14 @@
    "sentidos": [
     {
      "nome": "visão",
-     "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), com luz, herdado da águia . Com pouca luz não vale",
+     "descricao": "Prontidão (visão) +3 , com luz, herdado da águia . Com pouca luz não vale",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "corpo de águia na escala de 9 vezes. Não voaria por músculo: 750 kg é cerca de 10 vezes o Argentavis, que a 70 kg já não batia asa sem parar (Chatterjee et al. 2007), e cerca de 18 vezes o teto de 41 kg para planador de Sato et al. 2009. O voo do roc é dado de fantasia (D-105)"
+    "tracos": "corpo de águia na escala de 9 vezes; o voo é sobrenatural, pois o músculo não sustentaria este corpo"
    },
    "aptidoes": {
     "montaria": false,
@@ -133507,7 +133538,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6+2",
-     "dano": "2d6 +14 (C)",
+     "dano": "2d6 +7 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -133524,7 +133555,7 @@
    },
    {
     "nome": "mergulho sobre a presa",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +21 (C) (a Força 7 mais uma vez). só descendo",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Garras em mergulho investindo: 2d6 +14 (C) (a Força 7 mais uma vez). só descendo",
     "classe": "livro",
     "regra": "investida"
    },
@@ -133543,7 +133574,7 @@
   "sentidos": [
    {
     "nome": "visão",
-    "descricao": "Prontidão (visão) +3 (Especialidade natural, era +4), com luz, herdado da águia . Com pouca luz não vale"
+    "descricao": "Prontidão (visão) +3 , com luz, herdado da águia . Com pouca luz não vale"
    }
   ],
   "segundoTamanho": null,
@@ -139129,7 +139160,8 @@
      "area": 0.005,
      "posturaDoTamanho": "asas fechadas, preso ao alvo"
     },
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "inseto de casca"
    },
    "couraca": 0,
    "atributos": {
@@ -139331,6 +139363,7 @@
     "posturaDoTamanho": "asas fechadas, preso ao alvo"
    },
    "linhaPV": "acima",
+   "linhaPVMotivo": "inseto de casca",
    "medida": "0.06 m de altura, 0.3 m de comprimento",
    "peso": "0.1 kg"
   },
@@ -141157,13 +141190,13 @@
       "arte": "fogo",
       "nivel": 3
      },
-     "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+     "ativacao": "uma ação, Velocidade 7",
      "duracao": "instantânea",
      "alcance": "9 m à frente",
      "area": "cone de 9 m, na superfície ou debaixo d'água",
      "efeito": "o vapor fervente queima quem está na nuvem",
      "dano": "6d6 + Centelha, fogo",
-     "resistencia": "corpo, contra a jogada do sopro; quem passa leva metade",
+     "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
      "limiteDeUso": "uma vez a cada 24 Ticks (\"não pode repetir o sopro em sequência\", site)"
     },
     {
@@ -141177,7 +141210,7 @@
      "nome": "Multiataque",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada"
+     "efeito": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
      "nome": "Afunda embarcações",
@@ -141208,7 +141241,7 @@
    ],
    "fisiologia": {
     "respiracao": "ar",
-    "prendeRespiracao": "muito tempo; ataca e sopra submersa (site)",
+    "prendeRespiracao": "muito tempo; ataca e sopra submersa",
     "camuflagem": "o casco no fundo do mar",
     "mente": "Inteligência 3; cobra tributo de quem navega",
     "tracos": "casco de marrom-ferrugem a verde-azulado com reflexos de prata; cabeça e cauda com estrias douradas"
@@ -141396,7 +141429,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Sopro de vapor escaldante",
-    "descricao": "o vapor fervente queima quem está na nuvem. Ativação: uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m, na superfície ou debaixo d'água. Dano: 6d6 + Centelha, fogo. Resistência: corpo, contra a jogada do sopro; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks (\"não pode repetir o sopro em sequência\", site)",
+    "descricao": "o vapor fervente queima quem está na nuvem. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: 9 m à frente. Área: cone de 9 m, na superfície ou debaixo d'água. Dano: 6d6 + Centelha, fogo. Resistência: sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: uma vez a cada 24 Ticks (\"não pode repetir o sopro em sequência\", site)",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
@@ -141406,7 +141439,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 7"
      },
      {
       "rotulo": "Duração",
@@ -141426,7 +141459,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, contra a jogada do sopro; quem passa leva metade"
+      "valor": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste"
      },
      {
       "rotulo": "Limite de uso",
@@ -141442,7 +141475,7 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada",
+    "descricao": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte",
     "classe": "sem regra ainda"
    },
    {
@@ -142335,6 +142368,7 @@
     "area": 0.88,
     "posturaDoTamanho": "de lado",
     "linhaPV": "acima",
+    "linhaPVMotivo": "felino grande e robusto",
     "cargaMedida": 68
    },
    "couraca": 1,
@@ -142469,17 +142503,17 @@
    "sentidos": [
     {
      "nome": "penumbra",
-     "descricao": "Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\" (San Diego Zoo, sem método)",
+     "descricao": "Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\"",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "em número; provavelmente usada na caça (Schaller 1967)",
+     "descricao": "provavelmente usada na caça",
      "formas": "todas"
     },
     {
      "nome": "faro",
-     "descricao": "sem indício de uso para achar presa viva (Schaller 1967; Mazák 1981); sem Especialidade",
+     "descricao": "sem indício de uso para achar presa viva; sem Especialidade",
      "formas": "todas"
     }
    ],
@@ -142487,7 +142521,7 @@
     "respiracao": "ar",
     "camuflagem": "pelagem listrada (texto)",
     "mente": "animal",
-    "tracos": "caninos de 6,4 a 7,6 cm (Mazák 1981); garras de 7,5 a 10 cm (San Diego Zoo). Urso, javali, gauro e porco-espinho podem feri-lo de morte (Mazák 1981)"
+    "tracos": "caninos de 6,4 a 7,6 cm; garras de 7,5 a 10 cm. Urso, javali, gauro e porco-espinho podem feri-lo de morte"
    },
    "aptidoes": {
     "montaria": false,
@@ -142561,6 +142595,7 @@
    "area": 0.88,
    "posturaDoTamanho": "de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "felino grande e robusto",
    "cargaMedida": 68,
    "medida": "1.07 m de altura, 2.91 m de comprimento",
    "peso": "192 kg"
@@ -142683,15 +142718,15 @@
   "sentidos": [
    {
     "nome": "penumbra",
-    "descricao": "Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\" (San Diego Zoo, sem método)"
+    "descricao": "Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\""
    },
    {
     "nome": "audição",
-    "descricao": "em número; provavelmente usada na caça (Schaller 1967)"
+    "descricao": "provavelmente usada na caça"
    },
    {
     "nome": "faro",
-    "descricao": "sem indício de uso para achar presa viva (Schaller 1967; Mazák 1981); sem Especialidade"
+    "descricao": "sem indício de uso para achar presa viva; sem Especialidade"
    }
   ],
   "segundoTamanho": null,
@@ -144279,7 +144314,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "perfuracao",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -144316,25 +144351,24 @@
    "sentidos": [
     {
      "nome": "faro",
-     "descricao": "fraco, sem Especialidade (Sakagami e Kawabe 2020)",
+     "descricao": "fraco, sem Especialidade",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "de baixa frequência (cóclea curta), sem Especialidade; texto (Sakagami e Kawabe 2020)",
+     "descricao": "de baixa frequência (cóclea curta), sem Especialidade; texto",
      "formas": "todas"
     },
     {
      "nome": "sentidos",
-     "descricao": "Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão (Sakagami e Kawabe 2020)",
+     "descricao": "Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
-    "camuflagem": "(cor não conhecida)",
     "mente": "animal",
-    "tracos": "gola curta e maciça, sem janelas, de osso fibrolamelar que cicatriza rápido (Horner e Lamm 2011); placa óssea sobre o sacro, da fusão das espinhas vertebrais (Dodson e colegas 2004, via Wikipédia); conchas nasais respiratórias prováveis, para resfriar o sangue do cérebro e dos olhos (Tada e colegas 2026); côndilo occipital de até 106 mm, crânio muito pesado (Dodson e colegas 2004, via Wikipédia); escamas de base de até 90 mm, as maiores conhecidas em ceratopsianos (Bell e colegas 2022)"
+    "tracos": "gola curta e maciça, sem janelas, de osso fibrolamelar que cicatriza rápido; placa óssea sobre o sacro, da fusão das espinhas vertebrais; conchas nasais respiratórias prováveis, para resfriar o sangue do cérebro e dos olhos; côndilo occipital de até 106 mm, crânio muito pesado; escamas de base de até 90 mm, as maiores conhecidas em ceratopsianos"
    },
    "aptidoes": {
     "montaria": false,
@@ -144488,7 +144522,7 @@
     {
      "nome": "Investida de chifre",
      "pool": "7d6",
-     "dano": "2d6 +22 (P) · perf. 1",
+     "dano": "2d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -144525,15 +144559,15 @@
   "sentidos": [
    {
     "nome": "faro",
-    "descricao": "fraco, sem Especialidade (Sakagami e Kawabe 2020)"
+    "descricao": "fraco, sem Especialidade"
    },
    {
     "nome": "audição",
-    "descricao": "de baixa frequência (cóclea curta), sem Especialidade; texto (Sakagami e Kawabe 2020)"
+    "descricao": "de baixa frequência (cóclea curta), sem Especialidade; texto"
    },
    {
     "nome": "sentidos",
-    "descricao": "Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão (Sakagami e Kawabe 2020)"
+    "descricao": "Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão"
    }
   ],
   "segundoTamanho": null,
@@ -145921,7 +145955,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "perfuracao",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -146199,7 +146233,7 @@
     {
      "nome": "Chifre em investida",
      "pool": "5d6+2 +8",
-     "dano": "2d6 +18 (P) · perf. 1",
+     "dano": "2d6 +11 (P) · perf. 1",
      "perfArma": 1,
      "speed": 7,
      "classe": "pesada",
@@ -146210,7 +146244,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "chifre perfurante",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Chifre em investida investindo: 2d6 +25 (P) · perf. 1 (a Força 7 mais uma vez). só depois de correr ao menos 6 m em linha reta",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Chifre em investida investindo: 2d6 +18 (P) · perf. 1 (a Força 7 mais uma vez). só depois de correr ao menos 6 m em linha reta",
     "classe": "livro",
     "regra": "investida"
    },
@@ -147485,7 +147519,8 @@
     "massa": 200,
     "area": 1.08,
     "posturaDoTamanho": "de lado",
-    "linhaPV": "acima"
+    "linhaPV": "acima",
+    "linhaPVMotivo": "gordura e pelo grossos"
    },
    "couraca": 2,
    "atributos": {
@@ -147615,24 +147650,24 @@
    "sentidos": [
     {
      "nome": "faro",
-     "descricao": "Prontidão (faro) +3 (era +4; a decisão 3 põe o teto em +3); carcaça a mais de 3,2 km (ADW)",
+     "descricao": "Prontidão (faro) +3 ; carcaça a mais de 3,2 km",
      "formas": "todas"
     },
     {
      "nome": "audição",
-     "descricao": "nada que passe do humano (ADF&G; ADW)",
+     "descricao": "nada que passe do humano",
      "formas": "todas"
     },
     {
      "nome": "visão",
-     "descricao": "nada que passe do humano; as fontes divergem (comparável à humana, ADF&G; \"relativamente fraca\", ADW)",
+     "descricao": "nada que passe do humano; as fontes divergem",
      "formas": "todas"
     }
    ],
    "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "hiberna (de outubro a dezembro até março a maio; até 8 meses no norte; ADW; ADF&G); a massa varia com a estação, ganhando antes da hibernação e perdendo durante (Swenson 2007: machos do norte de 201 kg na primavera a 273 kg no outono). É o fato da Resistência (fome) +3"
+    "tracos": "hiberna; a massa varia com a estação, ganhando antes da hibernação e perdendo durante. É o fato da Resistência (fome) +3"
    },
    "aptidoes": {
     "montaria": false,
@@ -147709,6 +147744,7 @@
    "area": 1.08,
    "posturaDoTamanho": "de lado",
    "linhaPV": "acima",
+   "linhaPVMotivo": "gordura e pelo grossos",
    "medida": "1.15 m de altura, 2 m de comprimento",
    "peso": "200 kg"
   },
@@ -147822,15 +147858,15 @@
   "sentidos": [
    {
     "nome": "faro",
-    "descricao": "Prontidão (faro) +3 (era +4; a decisão 3 põe o teto em +3); carcaça a mais de 3,2 km (ADW)"
+    "descricao": "Prontidão (faro) +3 ; carcaça a mais de 3,2 km"
    },
    {
     "nome": "audição",
-    "descricao": "nada que passe do humano (ADF&G; ADW)"
+    "descricao": "nada que passe do humano"
    },
    {
     "nome": "visão",
-    "descricao": "nada que passe do humano; as fontes divergem (comparável à humana, ADF&G; \"relativamente fraca\", ADW)"
+    "descricao": "nada que passe do humano; as fontes divergem"
    }
   ],
   "segundoTamanho": null,
@@ -152758,7 +152794,8 @@
      "area": 1.9,
      "posturaDoTamanho": "de lado, pousado, asas fechadas"
     },
-    "linhaPV": "abaixo"
+    "linhaPV": "abaixo",
+    "linhaPVMotivo": "voador de cauda fina"
    },
    "couraca": 3,
    "atributos": {
@@ -152861,7 +152898,7 @@
       3
      ],
      "dado": "2d6",
-     "multiplicadorForca": 2,
+     "multiplicadorForca": 1,
      "tipoDano": "corte",
      "nivelPerfuracao": 1,
      "acerto": 0,
@@ -153042,6 +153079,7 @@
     "posturaDoTamanho": "de lado, pousado, asas fechadas"
    },
    "linhaPV": "abaixo",
+   "linhaPVMotivo": "voador de cauda fina",
    "medida": "1.5 m de altura, 5.5 m de comprimento",
    "peso": "250 kg"
   },
@@ -153132,7 +153170,7 @@
     {
      "nome": "Garras em mergulho",
      "pool": "5d6+2 +6",
-     "dano": "2d6 +15 (C)",
+     "dano": "2d6 +9 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",

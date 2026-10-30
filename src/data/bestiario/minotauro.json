@@ -129,7 +129,7 @@
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
       "efeito": "o corpo inteiro entra no golpe, e o alvo atingido pode cair, pelas travas de massa do livro",
-      "dano": "1d6 + 1d6 da Investida + Força × 2 + Centelha, Perfuração",
+      "dano": "1d6 + Força × 2 + Centelha, Perfuração",
       "resistencia": "corpo, Força + Atletismo do alvo contra a jogada do golpe; quem falha fica Caído",
       "limiteDeUso": "uma por Investida"
     },

@@ -108,7 +108,7 @@
         3
       ],
       "dado": "2d6",
-      "multiplicadorForca": 2,
+      "multiplicadorForca": 1,
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
@@ -147,24 +147,24 @@
   "sentidos": [
     {
       "nome": "visão",
-      "descricao": "campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás (Penn State Extension)",
+      "descricao": "campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás",
       "formas": "todas"
     },
     {
       "nome": "audição",
-      "descricao": "mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação (Penn State Extension). Faixa em Hz: (Heffner e Heffner 1983 não conferido). Texto",
+      "descricao": "mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação. Faixa em Hz: Texto",
       "formas": "todas"
     },
     {
       "nome": "faro",
-      "descricao": "evita lugares e objetos marcados com urina de vaca estressada (Penn State Extension). Texto",
+      "descricao": "evita lugares e objetos marcados com urina de vaca estressada. Texto",
       "formas": "todas"
     }
   ],
   "fisiologia": {
     "respiracao": "ar",
     "mente": "animal",
-    "tracos": "dois chifres ocos; sem dentes da frente em cima (almofada dental), a mordida não é arma; pelo curto (ADW)"
+    "tracos": "dois chifres ocos; sem dentes da frente em cima (almofada dental), a mordida não é arma; pelo curto"
   },
   "aptidoes": {
     "montaria": false,
