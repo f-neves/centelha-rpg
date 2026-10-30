@@ -64,6 +64,9 @@ const confere = (id, conta, vem, deve, tol = 0) => {
 // Estas fichas .md (tmp/arquiteto/bestiario/fichas-v3) escreveram a frase "Jogada:" pela Habilidade do catálogo
 // (arma) ou pela gravada (ataque natural), com a outra maior. A ficha .md é que se corrige; até lá, a diferença só
 // passa se o número da ficha for exatamente a conta pela Habilidade antiga.
+// A reconversão de 30/10/2026 (P17, fase5-01 a fase5-18) não as resolve, porque não muda a ficha .md: as 11 estão com
+// o número novo para a Bestiarista em tmp/bestiarista-fichas/ajustes-parecer-f4.md, seção 7. A entrada que deixar de
+// ser usada (a ficha corrigida entrou e o fixture foi regenerado) falha, para a lista encolher junto com o problema.
 const ACEITAS_JOGADA = Object.fromEntries([
   ['babau', 'Lança', 'armas', true], ['boggard', 'Maça estrela', 'armas', true], ['diabo-barbado', 'Glaive serrilhada', 'armas', true],
   ['erinia', 'Espada flamejante', 'armas', true], ['centauro', 'Coice', 'briga', false], ['minotauro', 'Chifrada', 'briga', false],
@@ -114,6 +117,8 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
     }
   }
 }
+// a lista de exceção encolhe com o problema: a entrada que nenhuma ficha usou é velha
+for (const k of Object.keys(ACEITAS_JOGADA)) if (!aceitas.includes(k)) confere(k, 'ACEITAS_JOGADA sem uso (a ficha já foi corrigida: tire a linha)', 'sem uso', 'usada');
 
 // P4: o critério é Inteligência, inclusive fora dos animais; Int 0 continua imune.
 for (const categoria of ['animal', 'fera-magica', 'humanoide']) {
