@@ -854,7 +854,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
   ESPÉCIE e INSTÂNCIA: o bestiário é livro publicado, e o que a `combate_visao` esconde é a
   Vida daquele ogro agora. A peça `custom` sai com os dois NULOS, e a ausência é informação.
 
-  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:294`)
+  **4 · O `ResumoCombate` NÃO CARREGA NENHUMA DAS TRÊS.** `resumoDe` (`src/lib/mesa-bestiario.ts:295`)
   devolve arma, ataque, dano, as três Defesas, absorção, resistência à perfuração, velocidade,
   classe, passo, pgr e Quase-Acerto. Não há Percepção, nem Prontidão, nem Furtividade: **o
   modelo de combate da mesa não conhece nenhuma perícia por nome**, só os derivados delas. Seja
@@ -1380,7 +1380,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **E o que sobra para a fase 3 é a Corrida, pelo mesmo desenho.** Ela tem hoje o defeito oposto e
   mais antigo: **nenhuma cobrança automática nenhuma** · o −4 dela em `MODOS_MOV` é só o texto da
-  nota (`enquanto corre e até se recompor`, `src/lib/combate-tempo.ts:1007`), e quem cobra é só a
+  nota (`enquanto corre e até se recompor`, `src/lib/combate-tempo.ts:1010`), e quem cobra é só a
   condição `correndo`, à mão. É o defeito nomeado no cabeçalho do `src/lib/mesa-condicoes.ts`, e o
   `marcarInvestida` é o molde pronto do conserto dele.
 
@@ -2411,10 +2411,10 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `opts.modo === 'investida'`, e o harness **nunca** produz esse valor: `motor.mjs` só escreve
   `modo: 'corrida'` (fuga, L249) ou `modo: 'batalha'` (aproximação, L281); `grep` por
   `investida` no arquivo inteiro não acha nada. E o harness já chama `L.passoDoGolpe` (`motor.mjs:102`), que usa
-  `modoCorre` por dentro (`combate-tempo.ts:1024`): a função É exercitada, só não por nome. `adiaGolpe(c)` pergunta se o sistema da MESA adia o golpe
+  `modoCorre` por dentro (`combate-tempo.ts:1027`): a função É exercitada, só não por nome. `adiaGolpe(c)` pergunta se o sistema da MESA adia o golpe
   (`c.sistema === 'simultaneo' || ...`), e o harness não tem esse objeto de configuração porque
   ele SEMPRE roda simultâneo, com o adiamento já embutido em `decideEmValeDepois()`
-  (`combate-tempo.ts:1080`, `decideEmValeDepois`), que está na lista dos 20 chamados pelos dois. As duas perguntas já
+  (`combate-tempo.ts:1083`, `decideEmValeDepois`), que está na lista dos 20 chamados pelos dois. As duas perguntas já
   estão respondidas do jeito que `adiaGolpe` responderia; wire-las não muda um Tick.
 
   **O TAMANHO DO BALDE C, medido em 06/09/2026 antes de construir nada** (a régua do L30: o
@@ -2835,7 +2835,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   - **os dois pontos que somam Defesa sem teto hoje** são os candidatos a receber o corte, e
     são estes dois:
     - `src/lib/mesa-core.ts:218` · `export function somarCondicoes(`
-    - `src/lib/combate-tempo.ts:696` · `export function defesaPerdida(`, esta com comentário
+    - `src/lib/combate-tempo.ts:699` · `export function defesaPerdida(`, esta com comentário
       próprio na linha de cima dizendo que acumula sem teto e só zera quando o ciclo fecha.
 
     Os dois se juntam em `src/lib/lance.ts:169` · `export function defesaEfetiva(`;
@@ -5927,7 +5927,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   metade do item sem a qual a distinção existiria no instante do clique e sumiria do histórico.
 
   **A DIVERGÊNCIA QUE A EXECUTORA ACHOU ANTES DE CODAR, e ela mudou o desenho:** este item mandava
-  "rotear para o mecanismo que já existe", mas `foraDeHora` (`src/lib/combate-tempo.ts:898`)
+  "rotear para o mecanismo que já existe", mas `foraDeHora` (`src/lib/combate-tempo.ts:904`)
   só devolve `pode:true` na **Recuperação**. Em `livre` a régua já diz "não paga nada",
   em `preparo` o que cabe é abortar (mecanismo próprio, com botão próprio) e em `golpe` não se
   interrompe. **Isso não é buraco no roteamento, é o roteamento:** o diálogo pergunta qual das duas

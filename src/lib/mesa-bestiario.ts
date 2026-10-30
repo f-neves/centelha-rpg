@@ -119,9 +119,10 @@ export interface ResumoCombate {
   resistPerf: number; perfArma?: number | null; velocidade?: number | null;
   /**
    * A classe de tempo do ataque (leve · media · pesada · haste · distancia ·
-   * arremesso · arte), estimada pelo `gen-monsters.mjs` para criatura. O PC não
-   * a carrega: a dele sai da arma do catálogo, pelo id. Nula, a mesa cai no
-   * atalho pela Velocidade, como sempre caiu.
+   * arremesso · arte), estimada pelo `gen-monsters.mjs` para criatura. Do PC,
+   * a do item que a ficha guarda (D-259; ponta 4, 30/10/2026), e ela vem antes
+   * do catálogo no `classeDeTempo`. Nula, a mesa cai no catálogo pelo nome e
+   * depois no atalho pela Velocidade, como sempre caiu.
    */
   classe?: string | null;
   /**

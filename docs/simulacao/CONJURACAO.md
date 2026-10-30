@@ -27,7 +27,7 @@ Preparo/Golpe/Recuperação de arma) e para o ataque de criatura que o bestiári
 conjuração, e nunca para a Arte que o jogador monta na caixa.
 
 **A consequência prática, e ela é boa:** a fórmula do tempo já está escrita e não é chamada de
-lugar nenhum (`reguaDaArte`, `src/lib/combate-tempo.ts:270-274`). Não é preciso inventá-la, é
+lugar nenhum (`reguaDaArte`, `src/lib/combate-tempo.ts:273-277`). Não é preciso inventá-la, é
 preciso ligá-la.
 
 ### O aviso que atravessa esta régua inteira

@@ -1568,7 +1568,7 @@ export function montarFicha(opts: FichaOpts) {
    * A régua sai de `regras.json`; a escada, da §14.11 do Combate_Tempo.md.
    */
   function linhaPGR(w: any) {
-    const cls = classeDeTempo(w?.id || w?.nome, w?.ticks);
+    const cls = classeDeTempo(w?.id || w?.nome, w?.ticks, w?.classe); // a classe do item (D-259)
     // A régua do livro (D-082, `combate.pgr.reforma`, corpo a corpo e tiro), e não a fórmula velha do motor do Grid
     // (`combate.pgr.preparo`, congelado pela D-054, N22). A conta mora em `ficha-pgr.ts`, que o teste percorre.
     const a = anatomiaDaFicha(w, regras);
