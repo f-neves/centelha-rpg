@@ -1,5 +1,5 @@
 ---
-ordem: 20
+ordem: 22
 numeral: "XIV"
 titulo: "Moeda, Renda e Custo de Vida"
 resumo: "O que se ganha e o que se gasta: as moedas, a renda por faixa de Recursos, os imprevistos, as semanas de aventura e o custo de vida."

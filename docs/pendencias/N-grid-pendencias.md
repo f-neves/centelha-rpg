@@ -197,3 +197,9 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     - **Força e Vigor acima de 6 (D-143, D-144, D-146):**
       - a FAH das criaturas vai além da 40, e `forca-empurrao.ts` para nela e não soma Musculatura;
       - o Vigor alto sobe os PV, a Absorção de Impacto e a Energia das fichas grandes.
+- [ ] **N23 · [FAZER] As condições das decisões R8 a R20 (D-281 a D-294, 03/11/2026): o que o painel já tem e o que o Grid e a aba Combate ainda não fazem.**
+  - O livro diz (Cap. IX, Condições): Retardado e Acelerado mudam só a **Recuperação** de cada ação, em 1 Tick, e o Acelerado vai até 0. O painel passou a `velocidade` ±1 (era ±2); a aba Combate soma isso ao custo da ação inteira, que dá o mesmo total, mas não sabe que é Recuperação, nem o piso 0 dela. O Grid não lê a `velocidade` da condição.
+  - O livro diz: o **Atordoado** atrasa a próxima ação de 3 a 18 Ticks, pelo quanto o Vigor + Resistência ficou abaixo de 10 + 5 × Margem, e tem −4 nas Defesas Físicas até essa ação começar (1 de Força de Vontade ignora o −4). O painel tem a condição com Defesa −4; o atraso nenhuma tela conta, e o −4 não sai sozinho quando a ação começa.
+  - O livro diz: **Surpreso** e **Paralisado** ficam com as Defesas (Físicas) em 0. O painel marca `zeraDefesa: true` e guarda Defesa −4 como valor que as telas aplicam hoje; nem o Grid (`grid.astro`, `condicoesDefesa` por `defesaCaC`) nem a aba Combate leem a marca.
+  - O livro diz: **Petrificando** testa a cada 6 Ticks e perde Vigor por falha; o **Cego** soma −1d6 só nas ações que dependem da visão; o **Ofuscado**, −2 só nelas; o **Confuso** rola 1d6 a cada ação. O painel guarda os números e o texto; nenhuma tela faz a conta ou o dado.
+  - O teste `test-l64-velocidade.mjs` teve os números esperados de Acelerado e Retardado trocados de ±2 para ±1 (o que ele prova, a marca separada do número, não mudou).

@@ -1,5 +1,5 @@
 ---
-ordem: 21
+ordem: 23
 numeral: "XIV"
 titulo: "Serviços e Contratação"
 resumo: "O preço de contratar alguém: a tabela por perfil, os serviços do dia a dia, as aulas, os criados e os escravos."

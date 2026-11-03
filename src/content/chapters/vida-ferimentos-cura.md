@@ -49,7 +49,7 @@ Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (a
 | 31–60% | Machucado | −2 | −2 |
 | 11–30% | Grave | −1d6 | −4 |
 | 1–10% | Crítico | −2d6 | −8 |
-| ≤ 0% | Incapacitado | desmaiado, fora da briga | — |
+| ≤ 0% | Incapacitado | normalmente Inconsciente, fora da briga | — |
 
 A porcentagem é a Vida restante sobre o PV máximo, **arredondada para baixo**: com PV 43 e 26 de Vida, 60,47% conta como 60%, e o estado é Machucado. Com Vida acima de 0, ela nunca fica abaixo de 1%, que é Crítico.
 
@@ -61,7 +61,7 @@ A porcentagem é a Vida restante sobre o PV máximo, **arredondada para baixo**:
 
 ## Queda e Morte
 
-Chegar a **0 PV ou menos** deixa você **Incapacitado**: desmaiado, fora da briga, e ainda vivo. Esse desmaio não tem teste: nem a Resistência o evita. As Proezas que mantêm de pé em 0 PV ou menos (Não Vou Cair, Último Suspiro, Não Sentir Dor) são a exceção. A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
+Chegar a **0 PV ou menos** deixa você **Incapacitado**: fora da briga, e ainda vivo. Chegar a Incapacitado normalmente deixa **Inconsciente**, e esse desmaio não tem teste: nem a Resistência o evita. As exceções são as Proezas que mantêm de pé em 0 PV ou menos (Não Vou Cair, Último Suspiro, Não Sentir Dor) e o Mestre. A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
 
 <p class="formula">Morre em Vida ≤ −(PV máximo ÷ 2)</p>
 

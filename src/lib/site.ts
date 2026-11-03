@@ -39,7 +39,16 @@ export const NAV = [
       { slug: 'regras/acoes-oficio-e-mundo', titulo: 'Ofício e Mundo' },
     ],
   },
-  { slug: 'regras/combate', titulo: 'Combate Físico', numeral: 'IX' },
+  {
+    // O IX são três páginas desde 03/11/2026 (decisões R1 a R20 do autor): as condições e os poderes
+    // das criaturas entraram como páginas dele, para não renumerar os capítulos seguintes.
+    slug: 'regras/combate', titulo: 'Combate Físico', numeral: 'IX',
+    sub: [
+      { slug: 'regras/combate', titulo: 'Combate Físico' },
+      { slug: 'regras/condicoes', titulo: 'Condições' },
+      { slug: 'regras/poderes-das-criaturas', titulo: 'Os Poderes das Criaturas' },
+    ],
+  },
   { slug: 'regras/relacoes-sociais', titulo: 'Relações Sociais', numeral: 'X' },
   { slug: 'regras/defesas', titulo: 'As Três Defesas', numeral: 'XI' },
   { slug: 'regras/quase-acerto', titulo: 'Quase-Acerto', numeral: 'XII' },

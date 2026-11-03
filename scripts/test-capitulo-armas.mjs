@@ -778,13 +778,13 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
     for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 40)}" não tem "${fr.slice(0, 80)}"`);
   };
   // a Defesa zerada e o cego
-  for (const l of ['| **Surpreso** (não sabe do ataque) | 0 | 0 |', '| **Totalmente imobilizado** (amarrado, soterrado) | 0 | 0 |', '| **Dormindo** ou **desacordado** | 0 | 0 |', '| **Cego, vendado ou no escuro total**, sabendo que vai ser atacado | −4 | −8 |']) linha(L, l, 'Combate, Defesa zerada');
+  for (const l of ['| **Surpreso** (não sabe do ataque) | 0 | 0 |', '| **Totalmente imobilizado** (amarrado, soterrado) | 0 | 0 |', '| **Dormindo** ou **Inconsciente** | 0 | 0 |', '| **Cego, vendado ou no escuro total**, sabendo que vai ser atacado | −4 | −8 |']) linha(L, l, 'Combate, Defesa zerada');
   comeca(L, 'Sempre que o personagem **não souber do ataque**', ['a Defesa correspondente é **zerada**: basta um total de 1 para acertar.', 'Um ataque **imbloqueável** zera só o Bloqueio, um **inesquivável** zera só a Esquiva, e os dois juntos zeram tudo.', 'Quem se mexe e **vê o ataque** tem a Defesa normal.'], 'Combate, Defesa zerada');
   comeca(L, 'Cego sem saber do ataque vale como surpreso.', ['A penumbra fica sem regra, a critério do Mestre.', 'o atacante rola **Furtividade** contra a **Percepção Passiva** do defendido', 'o atacante invisível usa o mesmo teste.'], 'Combate, Defesa zerada');
   // a tabela de restrição (as sete linhas) e as duas frases que a cercam
   for (const l of ['| **Corpo, leve** | pé enroscado, lama funda | −2 | 0 |', '| **Corpo, parcial nas pernas** | uma perna presa; Preso por boleadeira ou por Arte de prender | −4 | 0 |', '| **Corpo, parcial nos braços** | um braço preso, arma travada | 0 | −4 |', '| **Corpo, grave** | preso pela cintura; Agarrado (só contra quem está de fora) | −8 | −4 |', '| **Corpo, total** | amarrado, soterrado; Imobilizado | zerada | zerado |', '| **Lugar: pouco espaço** | corredor estreito, entre galhos, túnel | −2 | −4 |', '| **Lugar: sem equilíbrio** | corda bamba, telhado inclinado, convés no temporal | −4 | −2 |']) linha(L, l, 'Combate, restrição');
   if (L.some((x) => /rede nas pernas|enrolado na rede/i.test(x) && x.startsWith('|'))) f.push('Combate, restrição: "rede nas pernas" e "enrolado na rede" saem da tabela (a Rede tem regra própria)');
-  comeca(L, 'No Total, as Defesas zeradas são a Esquiva e o Bloqueio', ['e **não** a Defesa de agarrão.', 'o escudo **perde o bônus**: ele não está *apto*', '**Alguns estados se substituem em vez de se somar**', 'Prono (Caído)'], 'Combate, restrição');
+  comeca(L, 'No Total, as Defesas zeradas são a Esquiva e o Bloqueio', ['e **não** a Defesa de agarrão.', 'o escudo **perde o bônus**: ele não está *apto*', '**Alguns estados se substituem em vez de se somar**', 'quem está Caído'], 'Combate, restrição');
   // o teto: bônus +6, penalidade sem teto, piso 0
   comeca(L, '<p class="muted">A <strong>postura agressiva</strong>', ['**se somam todos na mesma Defesa**', '**Os bônus têm teto, as penalidades não:**', 'somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>.', 'O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>'], 'Combate, teto');
   if (L.some((x) => /limitado a <strong>±6/.test(x))) f.push('Combate: sobrou o empilhamento "limitado a ±6"');
@@ -828,7 +828,7 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
     if (CT.bonusCap !== 6 || CT.penalidadeCap !== null || CT.pisoDefesa !== 0) f.push('combateTatico: bonusCap 6, penalidadeCap null e pisoDefesa 0 (D-078)');
     if ((CT.modificadores || []).some((m) => /surpreso|cego|imobilizado|agarrad/i.test(m.nome))) f.push('combateTatico.modificadores: sobrou a linha de surpreso, cego, imobilizado ou agarrado a -4 ou -2 (agora em defesaZerada e na restrição do capítulo)');
     const Z = (CT.defesaZerada?.linhas || []).map((l) => JSON.stringify(l));
-    for (const esp of [{ nome: 'Surpreso (não sabe do ataque)', tipo: 'zera' }, { nome: 'Totalmente imobilizado (amarrado, soterrado; não zera a Defesa de agarrão)', tipo: 'zera' }, { nome: 'Dormindo ou desacordado', tipo: 'zera' }, { nome: 'Cego, vendado ou no escuro total, sabendo do ataque', tipo: 'soma', esquiva: -4, bloqueio: -8 }]) {
+    for (const esp of [{ nome: 'Surpreso (não sabe do ataque)', tipo: 'zera' }, { nome: 'Totalmente imobilizado (amarrado, soterrado; não zera a Defesa de agarrão)', tipo: 'zera' }, { nome: 'Dormindo ou Inconsciente', tipo: 'zera' }, { nome: 'Cego, vendado ou no escuro total, sabendo do ataque', tipo: 'soma', esquiva: -4, bloqueio: -8 }]) {
       if (!Z.includes(JSON.stringify(esp))) f.push(`combateTatico.defesaZerada: falta a linha ${JSON.stringify(esp)}`);
     }
   }
@@ -864,7 +864,7 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
   const mutD = realDef.length ? {} : {
     'Surpreso com Defesa 0': (c, a, t, r) => [c.replace('| **Surpreso** (não sabe do ataque) | 0 | 0 |', '| **Surpreso** (não sabe do ataque) | −4 | −4 |'), a, t, r],
     'o cego com −4/−8': (c, a, t, r) => [c.replace('sabendo que vai ser atacado | −4 | −8 |', 'sabendo que vai ser atacado | −4 | −4 |'), a, t, r],
-    'o dormindo sumido': (c, a, t, r) => [c.replace('| **Dormindo** ou **desacordado** | 0 | 0 |\n', ''), a, t, r],
+    'o dormindo sumido': (c, a, t, r) => [c.replace('| **Dormindo** ou **Inconsciente** | 0 | 0 |\n', ''), a, t, r],
     'o imbloqueável': (c, a, t, r) => [c.replace('Um ataque **imbloqueável** zera só o Bloqueio', 'Um ataque **imbloqueável** zera só a Esquiva'), a, t, r],
     'a linha do Agarrado a −2': (c, a, t, r) => [c.replace('| **Corpo, grave** | preso pela cintura; Agarrado (só contra quem está de fora) | −8 | −4 |', '| **Corpo, grave** | preso pela cintura; Agarrado | −2 | −2 |'), a, t, r],
     'o Imobilizado a −4': (c, a, t, r) => [c.replace('amarrado, soterrado; Imobilizado | zerada | zerado |', 'amarrado, soterrado; Imobilizado | −4 | −4 |'), a, t, r],
@@ -1412,7 +1412,7 @@ function conferirTermos(T) {
   const troca = (k, de, para) => (T) => ({ ...T, [k]: T[k].replace(de, para) });
   const mutT = realT.length ? {} : {
     'um travessão em regras.json': (T) => ({ ...T, regras: (() => { const x = copia(T.regras); x.combateTatico.modificadores[0].nome += ' — x'; return x; })() }),
-    'o "Alvo prono —" de volta': (T) => ({ ...T, regras: (() => { const x = copia(T.regras); const m = x.combateTatico.modificadores.find((y) => /prono/.test(y.nome)); m.nome = m.nome.replace(', ', ' — '); return x; })() }),
+    'o "Alvo caído —" de volta': (T) => ({ ...T, regras: (() => { const x = copia(T.regras); const m = x.combateTatico.modificadores.find((y) => /caído/.test(y.nome)); m.nome = m.nome.replace(', ', ' — '); return x; })() }),
     'um travessão no glossário': (T) => ({ ...T, gloss: T.gloss.map((g, i) => (i === 0 ? { ...g, definicao: g.definicao + ' — x' } : g)) }),
     'um travessão em tecnicas.json': (T) => ({ ...T, tecnicas: T.tecnicas.map((t, i) => (i === 0 ? { ...t, texto: t.texto + ' — x' } : t)) }),
     'a lista da Horda com travessão': troca('ref', '<li><strong>Fim</strong>: {HORDA.', '<li><strong>Fim</strong> — {HORDA.'),

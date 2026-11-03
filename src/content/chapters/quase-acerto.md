@@ -1,5 +1,5 @@
 ---
-ordem: 18
+ordem: 20
 numeral: "XII"
 titulo: "Quase-Acerto"
 resumo: "Errar por pouco ainda raspa: a válvula de dano que mantém o combate vivo mesmo contra guardas altas."
@@ -82,7 +82,7 @@ Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a 
 
 A Margem e o dano do raspão são o ponto de partida; várias coisas os ajustam:
 
-- **Situacionais**: as mesmas circunstâncias que mexem na Defesa (cobertura, alvo prono, flanco, postura) também afetam o quanto você quase-acerta. Um alvo difícil de acertar é difícil de raspar; um alvo exposto, fácil. Use o bom senso na mesma escala dos [modificadores de combate](/regras/combate).
+- **Situacionais**: as mesmas circunstâncias que mexem na Defesa (cobertura, alvo caído, flanco, postura) também afetam o quanto você quase-acerta. Um alvo difícil de acertar é difícil de raspar; um alvo exposto, fácil. Use o bom senso na mesma escala dos [modificadores de combate](/regras/combate).
 - **Encantamentos**: armas e armaduras mágicas podem trazer Bônus de QA, Dano de raspão ou Redução próprios, somados aos da classe (uma lâmina élfica que "sempre tira sangue", uma cota que "ignora arranhões").
 - **Proezas**: Técnicas podem ampliar a Margem, transformar raspões em golpes de verdade, fazer o raspão sangrar, ou (na defesa) anular o Quase-Acerto contra o portador. São o caminho herói para tornar a válvula uma arma.
 - **Magia (Feitiçaria)**: feitiços podem conceder os mesmos efeitos por uma cena (afiar, amaldiçoar a guarda do alvo, blindar contra raspões) ou criar raspões a partir de efeitos que normalmente nem rolam para acertar.

@@ -611,6 +611,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Decisão: "Poder natural NÃO passa pelo portão de Centelha e NÃO usa Mana. `resiste` é categoria, sem fórmula" (poder: {id, nome, tipo: "natural", base: {arte, nivel} só parâmetro, resiste: esquiva|corpo|mente|nenhum, area, efeito, usos: {quantidade, periodo, recarga}})
 - Origem: b14-fase2-despacho.md:13-22 (item A.2), pino 3e29b03
 - Estado: no ar (não conferido; a regra de Imunidade e dos poderes naturais foi refeita na Fase 4, ver C-037 e C-039)
+- **Substituída em parte pela D-274** (R1, 03/11/2026): o poder natural pode usar Mana (e Energia) nos usos extras, quando a ficha especificar. Só quem tem Centelha paga com Energia, e só quem tem Mana paga com Mana.
 
 ### C-002 · Constructo: flag semVida [tags: constructo, bestiario, vigor, resistir]
 - Data: 2026-09-26
@@ -827,6 +828,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Decisão: "toda habilidade inata com usos (Sp e Su da fonte) é poder natural, com os usos da fonte e sem portão de Centelha. Arte com Mana só para quem conjura como classe (dragões, Lich, Couatl, Ninfa, Planetar, Solar, Ghaele, Rakshasa, Naga). Isto revê a fase 3: as Artes gravadas das outras criaturas viram poderes naturais, com base e nível mantidos como parâmetro."
 - Origem: b14-cr-desafio-fase4-5-despacho.md:21-26 (item 3), commits cb2381c3, a4d53bdc, 0cdc06db
 - Estado: no ar (não conferido). Substitui parte da C-018 e da C-005
+- Continua (D-274, R1, 03/11/2026): a Arte com Mana segue só para quem conjura como classe; o uso extra pago de um poder de criatura não é Arte.
 
 ### C-038 · Todo poder natural ganha descricao detalhada [tags: bestiario, poder-natural, texto]
 - Data: 2026-09-28
@@ -923,6 +925,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Decisão: "Múltiplos ataques só pelas regras escritas (combate.md: Rajada e empunhadura dupla). Fora disso, só por Poder Especial ou Proeza." "PV não cresce com a Centelha (só a Absorção). O PV fixo da bancada está certo." "Nova base da bancada: SEM o bônus de Proezas (atual célula B2). A célula B1 (com Proezas) fica como teste de sensibilidade." Adendo: base "SEM Proezas e COM Vontade (o traço Força de Vontade real)". Pers.2: "um disparo por ação, sem Rajada nem dupla". Bando: "N criaturas individuais".
 - Origem: b14-fase5b-economia-de-acao-despacho.md:14-20, :82-103 (Adendos 1), commits 2e14b3f2, 3c9f9d59
 - Estado: no ar (bancada)
+- **Substituída em parte pela D-274** (R1, 03/11/2026): o "Poder Especial" sai do livro; o ataque extra de criatura vai ao multiataque (item 022, tema de combate, ainda não decidido).
 
 ### C-047 · Guarda sob pressão: leitura da Defesa final, feito + recebido, dupla conta 2 [tags: guarda, pressao, defesa, combate, tick]
 - Data: 2026-10-01
@@ -3045,6 +3048,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: perguntas 33.3, 33.2 e 35.2 de `../tmp/arquiteto/PERGUNTAS.md` (o livro não tem as condições Paralisado, Atordoado nem Petrificado; as fichas aprovadas usavam o Imobilizado, regra da ficha ou o efeito escrito na habilidade). As aspas internas do autor vão como «».
 - Estado: **a implementar** nas fichas, por lote de ajuste; as três lacunas estão em `../tmp/arquiteto/bestiario/lacunas-do-livro.md`.
 - Fase 4: **no ar em 29/10/2026** (merge `4cb057fb` no `main`, deploy verde; migração 41 rodada no banco no mesmo dia). O que dela estava nas 324 fichas e no código da branch foi publicado junto. As lacunas do livro seguem abertas.
+- **Substituída pelas D-283, D-284 e D-285** (R10, R11 e R12, 03/11/2026): paralisia, atordoamento e petrificação deixam de ser "sem regra ainda" e ganham regra no livro (Cap. IX, Condições).
 
 ### D-251 · A teia de toda criatura vai pelo Preso da Rede do livro [tags: bestiario, criatura, teia, rede, preso, aranha, b20]
 - Data: 2026-10-26
@@ -3088,6 +3092,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: pergunta 37.2 de `../tmp/arquiteto/PERGUNTAS.md`. As aspas internas do autor vão como «».
 - Estado: **a implementar** nas 21 fichas, por lote de ajuste; lacuna em `../tmp/arquiteto/bestiario/lacunas-do-livro.md`. Mesmo caminho da D-246.
 - Fase 4: **no ar em 29/10/2026** (merge `4cb057fb` no `main`, deploy verde; migração 41 rodada no banco no mesmo dia). O que dela estava nas 324 fichas e no código da branch foi publicado junto. A lacuna do livro segue aberta.
+- **Substituída pela D-280** (R7, 03/11/2026): a resistência à magia ganha regra, em três graus (+2, +4, +6). A R7 cita a D-255; o "sem regra ainda" é este, e a D-255 continua.
 
 ### D-257 · Enxame: o bloco `enxame` guarda os indivíduos por quadrado e o Tamanho equivalente; o PV do quadrado é conta do motor [tags: bestiario, criatura, enxame, pv, formato, tamanho, d-101, d-216, b20]
 - Data: 2026-10-28
@@ -3226,6 +3231,225 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/executora/fase3/perguntas.md`, P23; respostas do autor de 30/10/2026.
 - Estado: **aplicada** na fase5-correcoes (`fe832a44`), a publicar.
 - Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
+
+### D-274 · R1: Os poderes das criaturas: cinco categorias, e como cada uma se paga [tags: bestiario, criatura, poder, substancia, inato, sobrenatural, similar-a-magia, milagre, energia, mana, c-001, c-037, c-046]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R1. Como o poder de uma criatura se paga (03/11/2026, DECIDIDA)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  Respostas do autor até aqui:
+  - Além dos efeitos naturais e sobrenaturais, a criatura pode ter Proezas e Artes (magias) próprias. Os efeitos abaixo são outra coisa.
+  - Os efeitos se dividem em categorias (podem ser juntadas ou eliminadas depois; o autor prefere separar agora, porque juntar depois é mais fácil que separar):
+    1. Substância produzida pelo corpo (veneno, tinta, ácido, teia, sopro). O corpo guarda X doses e produz 1 dose a cada Y horas; só se usa o que o corpo já produziu, gasta só a substância e nada acelera a produção.
+    2. Inato à criatura (da raça; normalmente sem limite de uso ou sempre ativo; não gasta nada). Usar muito causa esforço e pode levar ao cansaço ou exaustão; a mecânica vem depois, por ora só se descreve. Exemplo: o salto etéreo da aranha das fases, à vontade.
+    3. Ação sobrenatural (o que a criatura faz para caçar, atacar ou se defender: o canto da harpia, o olhar da medusa). Um ou alguns usos grátis por cena ou dia; os usos seguintes custam Energia ou Mana.
+    4. Efeito semelhante a magia. Como a ação sobrenatural, com usos grátis, e pode ainda ter o efeito ampliado com Energia ou Mana (o aasimar canaliza luz com facilidade e amplia gastando).
+    5. Nova categoria, a nomear: poderes que mudam a história (desejos, feitiços supremos, comandar o clima). Muito situacionais, exigem um conjunto de fatores para serem conjurados e não se usam de maneira leviana.
+  - Só quem tem Centelha ou Mana pode ter usos extras pagos em Energia ou Mana.
+  - Sopro de dragão: é substância, com X usos a cada Y horas. Um sopro a cada 24 Ticks é exagerado; não deveria haver tantos sopros numa luta. O dragão pode ter também uma Arte de sopro, paga em Mana.
+  - Muda a C-001 ("NÃO usa Mana") e a C-037 nos usos extras: o autor confirmou.
+  - Limite por alvo (03/11/2026):
+    - Uso contínuo que deixa o alvo imune por um tempo (auras, fedor, olhar do bodak, beleza da ninfa): é poder inato, sem limite de uso e podendo causar cansaço; a diferença é que o alvo fica imune por um período depois de ser afetado ou não.
+    - Uso ilimitado mas uma vez por alvo (cura da fênix, toque do unicórnio, confusão do glabrezu, olhar da naga espírita, sondagem do doppelganger): deixa de ser ilimitado. Vira ação sobrenatural com X usos por cena ou dia; o uso grátis não repete o alvo, e repetir o alvo custa Energia ou Mana.
+    - A imunidade temporária só vale para os efeitos cuja descrição diz que resistir deixa imune por um tempo; normalmente são efeitos mentais ou sociais. Aura de dano (fogo do dragão e do balor, calor da salamandra) fere a cada exposição, sem imunidade.
+    - O cansaço do inato vale para o uso ativo (salto etéreo, mudar de forma); a aura passiva não cansa quem a tem (anotado por Claude, sem objeção do autor).
+  - Categoria 5 (03/11/2026): a ficha lista as condições (quem pede, o que se paga ou aceita, o tempo de preparo); o limite é fixo (por história, semana ou dia); nunca se compra uso extra nem se amplia com Energia ou Mana. Entram: conceder desejos (efreeti), desejo traiçoeiro (glabrezu), feitiços supremos (diabo do fosso), comandar o clima (gigante da tempestade).
+  - Ginosfinge (03/11/2026): o enigma mortal entra na categoria 5; a sabedoria ancestral é efeito semelhante a magia (uso grátis por dia, extra pago em Mana).
+  - Nomes das categorias (03/11/2026): Substâncias produzidas; Poderes inatos; Ações sobrenaturais; Efeito similar à magia; Milagres.
+  - Consequências aprovadas pelo autor: a C-001 muda (o poder pode usar Mana nos usos extras, nos casos que a ficha especificar); a C-037 segue para as Artes de classe; o "Poder Especial" da C-046 sai do livro e o ataque extra de criatura vai ao multiataque (item 022, tema de combate); a Bestiarista reclassifica os poderes, dá doses e ritmo às substâncias e tira o sopro a cada 24 Ticks, e a bancada refaz o desafio de dragões, linnorms, cães infernais e quimera.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas).
+- Muda: a C-001 muda (o poder pode usar Mana, e Energia, nos usos extras, quando a ficha especificar) e tira da C-046 o "Poder Especial" (o ataque extra de criatura vai ao multiataque, item 022, tema de combate, ainda não decidido). A C-037 continua para as Artes de classe. Nas fichas, a Bestiarista reclassifica os poderes, dá doses e ritmo às substâncias e tira o sopro a cada 24 Ticks; a bancada refaz o desafio de dragões, linnorms, cães infernais e quimera.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-275 · R2: O alcance dos poderes de criatura: sem padrão, cada poder escreve o seu [tags: bestiario, criatura, poder, alcance, d-263]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R2. O alcance dos poderes de criatura (03/11/2026, DECIDIDA)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. Sem alcance padrão no livro; cada poder escreve o seu. A Bestiarista usa uma escala de referência só para criaturas, com os degraus já usados nas fichas: toque, 3, 9, 18, 36 m, e "até onde vê" ou "até onde ouve".
+  - Consequências: as fichas quase não mudam; mantém a D-263 (F5.79, os 18 m da naga negra; F5.85, os 18 m do gigante das nuvens); acaba a contradição da telepatia contra a leitura de pensamentos (cada poder diz o seu). O poder de criatura pode alcançar mais longe que a Arte do jogador de mesmo grau (aceito).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas).
+- Muda: mantém a D-263.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-276 · R3: A Velocidade dos poderes: o efeito similar à magia segue a régua da Arte [tags: bestiario, criatura, poder, velocidade, arte]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R3. A Velocidade de ativação dos poderes (03/11/2026, DECIDIDA)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. O efeito similar à magia segue a régua da Arte pelo grau da base (grau 1 a 3: Velocidade 5; grau 4: 6; grau 5 e 6: 7) e sai no Tick do Golpe, como a Arte. As outras categorias escrevem a sua Velocidade na ficha; referência para a Bestiarista: ataque com o corpo (olhar, canto, toque) 6; sopro e jato 7; transformação, teleporte e convocação 8.
+  - Hoje só 31 de 163 poderes de ação batem com a régua da Arte; a classificação da R1 passa a decidir a Velocidade.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-277 · R4: A recarga em Ticks acaba; os poderes viram uso por cena ou por dia [tags: bestiario, criatura, poder, recarga, ticks, sopro]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R4. Recarga em Ticks (03/11/2026, DECIDIDA)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. A recarga em Ticks acaba. Os poderes "a cada 12 ou 24 Ticks" que não são sopro (raios do buscador, rajada cortante do bralani, muralha de chamas da fênix, emaranhar da vinha assassina) viram uso por cena ou por dia pela categoria da R1, com o extra pago em Energia ou Mana. O choque do lagarto elétrico vira substância produzida (cargas e tempo para recarregar).
+  - Consequência: o desafio dessas criaturas volta à bancada, junto do dos dragões. Caso de borda para a Bestiarista: o sopro do golem de gelo (constructo não produz, C-002) provavelmente é efeito similar à magia.
+  - Sem texto próprio no livro: as categorias da R1 já cobrem (nenhuma delas tem recarga em Ticks).
+- No livro: nada; sem texto próprio no livro: as categorias da D-274 já cobrem.
+- Muda: o desafio das criaturas com recarga em Ticks volta à bancada, junto do dos dragões.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-278 · R5: Resistir a poder de mente: vale a regra do livro (Defesa Mental e Resistir) [tags: bestiario, criatura, poder, mente, defesa-mental, resistir, d-001]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R5. Resistir a poder de mente (03/11/2026, JÁ DECIDIDA NO LIVRO, aplicada sem pergunta)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Já está no livro (defesas.md, "Ataques e influências mentais"; D-001): o poder mental é um ataque contra a Defesa Mental do alvo; antes do teste, 1 ponto de Vontade dá +4 na Defesa (no máximo 1 por ação); depois que o ataque passou, pagar 1 + Margem de Vontade (teto 4) recusa o efeito, e com Margem 1 ou mais pode pagar só 1: o efeito pega, mas dura um grau a menos na régua de Duração. A intimidação numa conversa é Defesa Social; o medo imposto e a dominação são Defesa Mental (acoes-resistir.md, "Medo, dominação e imposição").
+  - As cinco formas dos estudos (recusa sem jogada, 056; Empatia + Adestramento, 057 e 138; 10 + Centelha, 123; Defesa Mental sem o Resistir, 068, 120 e 125) caem: todas passam à regra do livro. Comunicação com quem aceita (o gigante das nuvens falando com os aliados, F5.85) não é ataque e não pede resistência.
+  - Para as fichas: o campo "Resistência: mente, contra X" passa a dizer a jogada da criatura contra a Defesa Mental do alvo, com o Resistir do livro.
+- No livro: nada; sem texto novo: a regra já está em `defesas.md`, "Ataques e influências mentais" (D-001).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-279 · R6: Corpo nas jogadas que não são de ataque: Tamanho +3 por categoria, anatomia +1d6 [tags: tamanho, anatomia, jogada, d-077, d-226]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R6. A moeda da vantagem fora do ataque (03/11/2026, DECIDIDA)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. Separar pelo que é: Tamanho é +3 fixo por categoria, a mesma régua do ataque (D-077) e da D-226; vantagem de anatomia ou adaptação (corpo flexível no Escapismo, aderência na Escalada, adaptação de perseguição) é +1d6.
+  - Resolve a contradição 8 do 00-contexto (itens 001 contra 004 e 006). A dúvida da D-226 (Tamanho na Furtividade relativo a quem procura ou fixo contra o Médio) vai ao tema do Tamanho.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-e-sistema.md` (Cap. VIII, A Régua Comum, "De onde sai a Dificuldade").
+- Muda: a ordem do autor de 03/11/2026 não listava a R6 entre os blocos do livro; o texto aprovado entrou na Régua Comum.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-280 · R7: Resistência à magia: três graus, +2, +4 e +6, dentro do teto de +6 [tags: bestiario, criatura, resistencia-a-magia, defesa, d-078, d-256]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R7. Resistência à magia (03/11/2026, DECIDIDA; itens 105 e 107)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada da primeira rodada (pensou em +2 a +12, voltou atrás depois de ver o teto da D-078 e a soma com a Centelha). Três graus, +2, +4 e +6, contra Arte e efeito similar à magia, nas Defesas e na Dificuldade de resistir, dentro do teto comum de +6 (D-078). Conversão do X da fonte: até 15, grau 1; 16 a 25, grau 2; 26 ou mais, grau 3.
+  - Substitui o "sem regra ainda" da D-255. Resolve a contradição 9 do 00-contexto (105 contra 107). O constructo imune à magia (106) é outro mecanismo.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas).
+- Muda: substitui a D-256 ("Resistência à magia X · sem regra ainda"). A seção R7 e a ordem do autor de 03/11/2026 dizem D-255; no registro, o "sem regra ainda" da resistência à magia é a D-256, e a D-255 (o bônus da fonte na escala do autor) continua.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-281 · R8: Abalado e Amedrontado: −2 nas jogadas; Recompor [tags: condicoes, abalado, amedrontado, medo, recompor]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R8. Abalado (03/11/2026, DECIDIDA; item 075)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. Abalado dá −2 nas jogadas (não nas Defesas) até o fim da cena ou até Recompor. Recompor é uma ação de Velocidade 5, sem teste. Não acumula com outro Abalado. Escada do medo: Abalado −2, sai com Recompor; Amedrontado −2, não avança em direção à fonte e não sai com Recompor enquanto ela estiver à vista.
+  - Muda o painel (condicoes.json, Abalado −1 vira −2) e define o "se recompor". O 086 usa este número; o fim do Enfurecido se decide com o Frenesi.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Muda: o painel (`condicoes.json`): Abalado de −1 para −2.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-282 · R9: Enfurecido usa o bloco da fúria do Frenesi [tags: condicoes, enfurecido, frenesi, furia]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R9. Enfurecido e o Frenesi (03/11/2026, DECIDIDA "por enquanto"; item 081)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: uma fúria só, por enquanto. O Enfurecido usa o bloco "O que a fúria dá e o que ela tira" do Frenesi (+2 nas ações físicas, menos o tiro; −2 em Esquiva e Bloqueio; só ações físicas; não pode ser convencido). A entrada e a saída da criatura ficam na ficha (o gatilho; o fim, como o fim da cena ou ficar sem inimigo à vista); se ignora ferimento, e até onde, também. O orc mantém o Frenesi inteiro (Temperança, manutenção, ressaca), sem mudança.
+  - Cai a proposta do item 081 (+1d6, −4, Recompor contra 12).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-283 · R10: Paralisado [tags: condicoes, paralisado, paralisia, defesa, destreza, d-250]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R10. Paralisado (03/11/2026, DECIDIDA "no momento"; item 078; substitui o "sem regra ainda" da D-250 para a paralisia)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: um estado só, no momento. O corpo não se move nem faz ação física; Defesas Físicas 0, como no Imobilizado; a mente segue livre (percebe, gasta Vontade, faz ações só mentais); sem Escapismo (não há amarra); dura o que o poder ou o veneno diz, e nova aplicação renova sem somar. Destreza 0 deixa Paralisado.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Muda: substitui a D-250 na paralisia.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-284 · R11: Atordoado: Vigor + Resistência contra 10 + 5 × Margem, atraso de 3 a 18 Ticks [tags: condicoes, atordoado, atordoamento, margem, ticks, d-250]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R11. Atordoado (03/11/2026, DECIDIDA; item 082; substitui o "sem regra ainda" da D-250 para o atordoamento)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Respostas do autor: Atordoado não é Paralisado (a vítima se move e não larga o que segura). A Margem conta de 6 em 6 acima da Defesa; atordoar vai até Margem 6 (adiamento de 18 Ticks), o que já é praticamente sobrenatural. A vítima testa Vigor + Resistência contra Dificuldade 10 + 5 × Margem (Margem 1: 15; 2: 20; 3: 25; 6: 40). Passar evita; cada 5 abaixo da Dificuldade sobe um grau, de 3 em 3 Ticks de adiamento, até 18. Até a próxima ação começar, −4 nas Defesas Físicas; pagar 1 de Força de Vontade ignora essa penalidade, mas nada reduz o adiamento. Atordoamento não é efeito banal nem de uso constante.
+  - Assumido por Claude, sem objeção do autor: Margem 0 não atordoa; um novo atordoamento vale o maior, sem somar; constructo não é atordoado (C-002).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Muda: substitui a D-250 no atordoamento.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-285 · R12: Petrificação: um membro por falha, a cada 6 Ticks [tags: condicoes, petrificacao, petrificando, vigor, d-250, d-087]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R12. Petrificado (03/11/2026, DECIDIDA; item 083; substitui o "sem regra ainda" da D-250 para a petrificação)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Respostas do autor: regra muito específica (só duas criaturas hoje). Jogada de Vigor + Resistência contra um número fixo escrito no poder de cada criatura (a Bestiarista sugere pela régua de 5); falhar inicia a petrificação; testa de novo a cada 6 Ticks fixos (escolha pela simplicidade, para o jogador ter algumas ações); cada falha petrifica um membro e tira 1 ponto temporário de Vigor; passar vai resistindo, mas são precisos vários sucessos.
+  - Proposto por Claude dentro da base do autor, sem objeção: 3 sucessos somados param; Vigor 0 é estátua; o Vigor perdido não recalcula PV nem Absorção; desfazer só com Arte de grau 5 (Matéria ou Cura) ou equivalente; constructo não petrifica. Efeito do intervalo fixo: o Vigor mede quantas falhas a vítima aguenta, não a velocidade da pedra.
+  - O olhar devolvido pelo espelho (basilisco) e a medusa diante do próprio reflexo ficam ao Mestre (D-087), com uma frase no livro.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Muda: substitui a D-250 na petrificação. A frase do espelho entrou no texto do livro.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-286 · R13: Enjoado [tags: condicoes, enjoado, enjoo, resistencia]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R13. Enjoo (03/11/2026, DECIDIDA; item 076, a parte do enjoo; a parte do medo já saiu na R5 e na R8)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. Estado novo, Enjoado: −2 em todas as jogadas enquanto exposto e por mais 6 Ticks depois de sair; resiste com Vigor + Resistência contra o número fixo do poder; quem passa fica imune àquela fonte pela cena, se o poder disser (R1); constructo não enjoa (C-002).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-287 · R14: Ofuscado e Cego [tags: condicoes, ofuscado, cego, visao, defesa]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R14. Ofuscado e Cego (03/11/2026, DECIDIDA; item 077)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. Ofuscado: −2 nas ações que dependem da visão (ataque incluído), sem mexer nas Defesas; dura enquanto o estímulo existir (um clarão, 6 Ticks). Cego: as Defesas do livro (Esquiva −4, Bloqueio −8, sabendo do ataque; sem saber, Surpreso) e −1d6 no ataque e em toda ação que dependa da visão; atirar exige saber onde o alvo está, a critério do Mestre. Não acumulam: vale o Cego. A sensibilidade à luz (drow, duergar) é Ofuscado sob sol forte.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-288 · R15: Confuso: 1d6 a cada ação [tags: condicoes, confuso, mente]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R15. Confuso (03/11/2026, DECIDIDA; item 079)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a vítima escolhe a ação e depois rola 1d6: 1 a 3, faz o que escolheu; 4 e 5, o Mestre escolhe a ação e o alvo (pode ser um aliado); 6, perde a ação. Dura o que o poder disser; resiste-se pela Defesa Mental, com o Resistir do livro (R5).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-289 · R16: Dominado: o poder descreve; a vítima recusa ordem pagando Vontade [tags: condicoes, dominado, mente, resistir, d-001]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R16. Dominado (03/11/2026, DECIDIDA; item 080)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: o efeito depende muito do poder; como funciona fica descrito no poder, não na regra geral. A regra geral diz no máximo que a vítima pode pagar Força de Vontade para resistir a uma ou algumas ordens.
+  - Assumido por Claude, para o autor conferir: o pagamento é o Resistir do livro (1 + Margem, até 4; D-001), por ordem recusada.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-290 · R17: Retardado e Acelerado: ±1 Tick na Recuperação [tags: condicoes, retardado, acelerado, recuperacao, ticks]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R17. Retardado e Acelerado (03/11/2026, DECIDIDA; item 084)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: Retardado, +1 Tick na Recuperação; Acelerado, −1 Tick na Recuperação. Talvez suba para 2 se ficar fraco demais (rever no teste de mesa).
+  - Assumido por Claude, para o autor conferir: a Recuperação pode chegar a 0 com Acelerado (a Arte, de Recuperação 1, fica sem Recuperação); os dois se anulam; duas aplicações do mesmo não somam; o Deslocamento não muda. Muda o painel (hoje ±2 Ticks na ação inteira).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Muda: o painel (`condicoes.json`): de ±2 Ticks na ação inteira para ±1.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-291 · R18: Atributo enfraquecido: o dreno vira Atributo reduzido [tags: condicoes, atributo, dreno, enfraquecido]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R18. Dreno de Atributo e "Enfraquecido" (03/11/2026, DECIDIDA; item 085)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. "Enfraquecido" deixa de ser estado; o dreno vira Atributo reduzido. O efeito tem de dizer qual ou quais Atributos enfraquece: normalmente os físicos ou os mentais, mas pode haver efeito que sirva a qualquer dos 9. Sabedoria da fonte vira Percepção ou Raciocínio, pela ficha. O ponto perdido vale em toda conta que usa o Atributo, menos PV e Absorção; volta 1 por dia de descanso; Atributo em 0 tem o efeito do livro (Destreza 0, Paralisado, R10).
+  - Vale também para o dreno de nível do espectro e para o 086 (Definhar).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-292 · Item 086: O Abalado do Definhar é efeito comprado na Arte [tags: bestiario, criatura, arte, abalado, definhar, c-037, d-087]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "Item 086. Abalado adicional no Definhar (03/11/2026, aplicado sem pergunta)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - O cultista conjura Arte com Mana; somar um efeito à Arte se paga pela regra das Artes, não por regra de criatura (R1 e C-037). Se a ficha quiser o Abalado, ele entra como efeito comprado na Arte, e o Abalado é o da R8 (−2). Caso de ficha, para a Bestiarista (D-087).
+- No livro: nada; caso de ficha, para a Bestiarista.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-293 · R19: Sono sobrenatural leva ao estado Dormindo [tags: condicoes, sono, dormindo, d-078]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R19. Sono sobrenatural (03/11/2026, DECIDIDA; item 087; resolve a contradição 4 do 00-contexto com o 114)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Resposta do autor: a recomendada. Dois sonos, o mesmo estado no fim. O sono por cansaço segue o livro (Desgaste 4). O sono sobrenatural, de poder ou de veneno, leva ao estado Dormindo do livro (Defesas 0, D-078); o poder resiste-se pela Defesa Mental com o Resistir (R5), o veneno pela regra de veneno (tema 11). Dura o que o poder ou o veneno disser; acaba com qualquer dano ou com um aliado que gasta uma ação de Velocidade 5 sacudindo a vítima.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-294 · R20: Os nomes dos estados: Caído, Inconsciente, Surpreso, Flanqueado, Preso [tags: condicoes, caido, prono, inconsciente, incapacitado, surpreso, flanqueado, preso, glossario]
+- Data: 2026-11-03
+- Decisão (autor, 03/11/2026; seção "R20. Os nomes dos estados (03/11/2026, DECIDIDA; contradição 12 do 00-contexto)" de `DECISOES-AUTOR.md`, copiada como está, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - Respostas do autor:
+    1. "Caído" no lugar de "Prono" (livro, glossário, painel e fichas).
+    2. Inconsciente é não estar acordado. Incapacitado é a faixa de Vida (≤ 0) e nem sempre é desmaio: em combate normalmente significa desmaiar, mas, pela ação do jogador ou do Mestre, o personagem pode ficar acordado. Aplicado ao livro: chegar a Incapacitado normalmente deixa Inconsciente; as exceções são as que o livro já tem (Proezas como Não Vou Cair, Último Suspiro, Não Sentir Dor) e o Mestre. O "desacordado" da tabela de Defesas passa a "Inconsciente".
+    3. Surpreso é Defesas 0 (vale o livro; o painel se corrige).
+    4. Flanquear é penalidade de Defesa (modificador, não estado).
+    5. Preso: tudo o que gruda ou enreda à distância (teia, fio do laçador) usa o Preso da Rede; Agarrado só no corpo a corpo.
+- No livro: a seção não tem texto aprovado; os nomes entraram em `combate.md` (Caído, Inconsciente na tabela de Defesas, o passo 6, a teia no Preso), `vida-ferimentos-cura.md` (Queda e Morte e a tabela de Limiares), `quase-acerto.md`, `condicoes.md`, `regras.json`, `tecnicas.json` e `condicoes.json`. O glossário (`glossario.json`) não tem verbete de estado, e nada mudou nele. As fichas e os gerados (`monsters.json`, os JSON do bestiário) seguem por lote de ajuste.
+- Muda: dá nuance à decisão do autor de 02/10/2026 de que em 0 PV se desmaia sem teste (aplicada em `5598adeb`, Veterana 1d, T1a; sem entrada própria no registro): chegar a Incapacitado normalmente deixa Inconsciente, com as exceções das Proezas e do Mestre.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

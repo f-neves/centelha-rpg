@@ -2,7 +2,7 @@
 //
 // docs/pendencias/L-simulacao-simultaneo.md L64 (rodada 57): `Condicao.velocidade` carregava duas coisas
 // com o mesmo número. Três condições usam grandeza de verdade (`acelerado`
-// −2, `retardado` +2, `terreno-dificil` +1); uma, `fora-do-tempo`, usava a
+// −1, `retardado` +1, `terreno-dificil` +1, os dois primeiros pela R17 do autor, 03/11/2026); uma, `fora-do-tempo`, usava a
 // SENTINELA `-99` para dizer "não age", funcionando hoje por saturação
 // aritmética: o −99 afunda a soma e o `Math.max(0, ...)` do consumidor
 // (`combate.astro:1404`) corta em zero. Nada no formato distinguia as duas.
@@ -69,7 +69,7 @@ ok(somaFora.naoAge === true, 'somarCondicoes([fora-do-tempo]) devolve naoAge tru
 eq(somaFora.velocidade, 0, 'e velocidade some no total 0, não -99: a sentinela não entra mais na conta');
 
 const somaGrandeza = M.somarCondicoes([M.COND['acelerado'], M.COND['terreno-dificil']]);
-eq(somaGrandeza.velocidade, -1, 'acelerado (-2) + terreno-dificil (+1) soma -1, sem a marca por perto');
+eq(somaGrandeza.velocidade, 0, 'acelerado (-1) + terreno-dificil (+1) soma 0, sem a marca por perto');
 ok(!somaGrandeza.naoAge, 'e naoAge fica falso: nenhuma das duas é sentinela');
 
 // Caso misto: fora-do-tempo junto com uma condição de grandeza de verdade. A
@@ -78,7 +78,7 @@ ok(!somaGrandeza.naoAge, 'e naoAge fica falso: nenhuma das duas é sentinela');
 // se prova que a soma não perde a marca nem o número).
 const somaMista = M.somarCondicoes([foraDoTempo, M.COND['retardado']]);
 ok(somaMista.naoAge === true, 'fora-do-tempo + retardado: a marca continua true');
-eq(somaMista.velocidade, 2, 'e o número de retardado (+2) continua aparecendo, separado da marca');
+eq(somaMista.velocidade, 1, 'e o número de retardado (+1) continua aparecendo, separado da marca');
 
 // ----------------------------------------- 3 · a tela (condChipHTML, real)
 const chipFora = M.condChipHTML(foraDoTempo);
@@ -87,8 +87,8 @@ ok(!/-99|−99/.test(chipFora), 'e não mostra mais o número da sentinela em lu
 ok(!/vel [+\-−]/.test(chipFora), 'e não mostra um badge "vel ±N" nenhum para esta condição');
 
 const chipAcelerado = M.condChipHTML(M.COND['acelerado']);
-ok(/vel −2/.test(chipAcelerado) || /vel -2/.test(chipAcelerado),
-  'o chip de Acelerado continua mostrando o número, sem redesenho: "vel -2"');
+ok(/vel −1/.test(chipAcelerado) || /vel -1/.test(chipAcelerado),
+  'o chip de Acelerado continua mostrando o número, sem redesenho: "vel -1"');
 
 // ------------------------ 4 · A ASSERÇÃO QUE É O MOTIVO DESTA RODADA EXISTIR
 //

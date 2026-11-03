@@ -1,5 +1,5 @@
 ---
-ordem: 19
+ordem: 21
 numeral: "XIII"
 titulo: "Armas & Armaduras"
 resumo: "Classes + Tags: a arma define o estilo, não a potência bruta."

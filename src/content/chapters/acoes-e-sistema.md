@@ -29,6 +29,8 @@ Os somas andam de três em três porque a régua é essa, e a conta confere na p
 
 **Circunstância entra como ±2 ou ±4 na Dificuldade.** Ferramenta certa, apoio, terreno bom e tempo de sobra abaixam; pressa, distração, escuridão e condição ruim sobem. É por aqui que corda, gazua, lanterna e oficina entram no jogo, sem regra nova nenhuma.
 
+**Corpo nas jogadas que não são de ataque.** A diferença de Tamanho soma ou tira 3 por categoria, como no ataque. Uma anatomia que favorece a ação (o corpo flexível que escapa, a pata que adere à parede, o fôlego feito para a perseguição) dá +1d6 na jogada, e não cresce com o Tamanho.
+
 ## A Margem mede o que sobrou
 
 A cada **6 pontos acima do alvo**, uma **Margem**. Ela não escolhe a Dificuldade: ela mede **quantos níveis de expertise sobraram** depois de a tarefa estar resolvida. Um total de 22 contra Dificuldade 10 são doze acima, ou seja duas Margens.

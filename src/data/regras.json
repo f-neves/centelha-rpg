@@ -1048,13 +1048,13 @@
         "nota": "gasta uma ação preparando o golpe"
       },
       {
-        "nome": "Alvo prono, corpo a corpo",
+        "nome": "Alvo caído, corpo a corpo",
         "valor": -2,
         "alvo": "defesa",
         "nota": "caído é fácil de alcançar de perto"
       },
       {
-        "nome": "Alvo prono, à distância",
+        "nome": "Alvo caído, à distância",
         "valor": 2,
         "alvo": "defesa",
         "nota": "deitado é um alvo menor de longe"
@@ -1077,7 +1077,7 @@
       "linhas": [
         { "nome": "Surpreso (não sabe do ataque)", "tipo": "zera" },
         { "nome": "Totalmente imobilizado (amarrado, soterrado; não zera a Defesa de agarrão)", "tipo": "zera" },
-        { "nome": "Dormindo ou desacordado", "tipo": "zera" },
+        { "nome": "Dormindo ou Inconsciente", "tipo": "zera" },
         { "nome": "Cego, vendado ou no escuro total, sabendo do ataque", "tipo": "soma", "esquiva": -4, "bloqueio": -8 }
       ]
     },

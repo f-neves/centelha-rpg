@@ -16,7 +16,7 @@ Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 3. **Para acertar, role seu pool de ataque** e compare com a **Defesa** do alvo: um número fixo. Se o total **superar** a Defesa, você acerta (empate erra).
 4. **Quanto melhor o acerto, mais forte o golpe:** a cada **6 pontos acima da Defesa**, o dano ganha **+1d6**, isso se chama **Margem**.
 5. **O dano, menos a Absorção** (a absorção do alvo), vira ferimento.
-6. **Quem chega a 0 de Vida desmaia (fica Incapacitado).** Ferimentos, morte e sangramento são assunto do próximo capítulo, [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
+6. **Quem chega a 0 de Vida fica Incapacitado, e normalmente desmaia (Inconsciente).** Ferimentos, morte e sangramento são assunto do próximo capítulo, [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um bandido de <strong>Defesa 20</strong>. Seu pool de ataque dá <strong>5d6+9</strong> (Destreza 6 + Armas 5, mais o acerto da espada e a Centelha); ela rola 17 nos dados e soma <strong>26</strong>. 26 supera 20 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ela rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
 
@@ -240,13 +240,13 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 
 **Três estados**, do mais leve ao mais forte: Preso, Agarrado, Imobilizado.
 
-* **Preso:** não se desloca, mas age. Vem da boleadeira, da Rede e da Arte de prender, e tem dois perfis. **Pela tabela de restrição** (a boleadeira e a Arte de prender, parcial nas pernas): Esquiva −4. **Pela Rede**, que tem regra própria ([Armas & Armaduras](/regras/armas-e-armaduras)): −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento, sem teto. Para se soltar da boleadeira e da Rede: Força + Atletismo contra o total do lançamento, uma tentativa por ação; da Arte de prender, contra a Dificuldade do Efeito ([Corpo e Movimento](/regras/acoes-corpo-e-movimento), Cap. VIII).
+* **Preso:** não se desloca, mas age. Vem da boleadeira, da Rede e da Arte de prender, e tem dois perfis. **Pela tabela de restrição** (a boleadeira e a Arte de prender, parcial nas pernas): Esquiva −4. **Pela Rede**, que tem regra própria ([Armas & Armaduras](/regras/armas-e-armaduras)): −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento, sem teto. Para se soltar da boleadeira e da Rede: Força + Atletismo contra o total do lançamento, uma tentativa por ação; da Arte de prender, contra a Dificuldade do Efeito ([Corpo e Movimento](/regras/acoes-corpo-e-movimento), Cap. VIII). Tudo o que gruda ou enreda à distância (a teia, o fio que laça) usa o Preso da Rede; Agarrado é só do corpo a corpo.
 * **Agarrado:** o agarrão acima; não age. O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.
 * **Imobilizado:** o que a Técnica Imobilizar e as parecidas causam, e o estado de quem está amarrado ou preso em gelo. Nenhum movimento, não age (nem com Firula) e, conforme o tipo de imobilização, nem grita. A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão), como em *Corpo, total* (ver *Restrição de corpo e de lugar*). Quem está imobilizado sem agarrão (amarrado, preso em gelo) pode tentar se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir. O Imobilizar cobra a manutenção se o alvo estiver tentando se libertar.
 
 **Deslocamento no agarrão.** Os dois podem se mover, e o Mestre julga. É só descrição, sem regra.
 
-**Derrubar.** Ataque comum, Força ou Destreza (à escolha) + Briga, contra a Defesa do alvo (a melhor entre Esquiva e Bloqueio). O alvo fica **Prono** (o Bestiário o chama de Caído): −2 na Defesa contra corpo a corpo e +2 contra distância (Vantagem tática). Levantar-se é uma ação de Velocidade 3.
+**Derrubar.** Ataque comum, Força ou Destreza (à escolha) + Briga, contra a Defesa do alvo (a melhor entre Esquiva e Bloqueio). O alvo fica **Caído** (prono): −2 na Defesa contra corpo a corpo e +2 contra distância (Vantagem tática). Levantar-se é uma ação de Velocidade 3.
 
 **Empurrar.** Ataque comum, contra a Defesa do alvo. O alvo recua 1 m mais 1 m por Margem, afastando-se de quem empurra. Se o recuo o leva a uma borda, valem [Cair](/regras/acoes-corpo-e-movimento) e Agarrar a borda, no Cap. VIII.
 
@@ -474,11 +474,11 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 | Alvo errático (movimento imprevisível), à distância | **+2** |
 | Atacante em terreno alto | **−2** |
 | Mirar (gasta uma ação preparando o golpe) | **−2** |
-| Alvo prono, atacado **corpo a corpo** | **−2** |
-| Alvo prono, atacado **à distância** | **+2** |
+| Alvo caído, atacado **corpo a corpo** | **−2** |
+| Alvo caído, atacado **à distância** | **+2** |
 | Flanco ou pelas costas | **−2** |
 
-<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. Os modificadores desta tabela, a condição, a tabela de restrição e a Guarda sob pressão (adiante) **se somam todos na mesma Defesa**. **Os bônus têm teto, as penalidades não:** os bônus de Defesa (cobertura, postura defensiva, alvo errático, prono à distância e a defesa reflexiva de Proeza) somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>. O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>
+<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. Os modificadores desta tabela, a condição, a tabela de restrição e a Guarda sob pressão (adiante) **se somam todos na mesma Defesa**. **Os bônus têm teto, as penalidades não:** os bônus de Defesa (cobertura, postura defensiva, alvo errático, caído à distância e a defesa reflexiva de Proeza) somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>. O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>
 
 <p class="formula">Cobertura total (sem nenhuma linha de visão) não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
 
@@ -490,7 +490,7 @@ Sempre que o personagem **não souber do ataque** ou **não tiver como se defend
 |---|:---:|:---:|
 | **Surpreso** (não sabe do ataque) | 0 | 0 |
 | **Totalmente imobilizado** (amarrado, soterrado) | 0 | 0 |
-| **Dormindo** ou **desacordado** | 0 | 0 |
+| **Dormindo** ou **Inconsciente** | 0 | 0 |
 | **Cego, vendado ou no escuro total**, sabendo que vai ser atacado | −4 | −8 |
 
 Cego sem saber do ataque vale como surpreso. A penumbra fica sem regra, a critério do Mestre. **Saber que vai ser atacado** se decide numa jogada: o atacante rola **Furtividade** contra a **Percepção Passiva** do defendido ([Furtividade e engano](/regras/acoes-sentidos-e-engano#furtividade-e-engano)), e o atacante invisível usa o mesmo teste.
@@ -509,7 +509,7 @@ Para o Mestre. O corpo preso ou o lugar apertado tiram da Esquiva e do Bloqueio,
 | **Lugar: pouco espaço** | corredor estreito, entre galhos, túnel | −2 | −4 |
 | **Lugar: sem equilíbrio** | corda bamba, telhado inclinado, convés no temporal | −4 | −2 |
 
-No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de agarrão. Em pouco espaço o escudo **perde o bônus**: ele não está *apto* (ver *Projéteis rápidos: só Esquiva ou escudo*). Quem está Preso (parcial nas pernas) não se desloca, mas age, e a Rede tem regra própria, em Armas & Armaduras. **Alguns estados se substituem em vez de se somar**, e o Mestre decide quais: quem está Prono (Caído), por exemplo, não está também "sem equilíbrio" só porque a tabela tem as duas linhas.
+No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de agarrão. Em pouco espaço o escudo **perde o bônus**: ele não está *apto* (ver *Projéteis rápidos: só Esquiva ou escudo*). Quem está Preso (parcial nas pernas) não se desloca, mas age, e a Rede tem regra própria, em Armas & Armaduras. **Alguns estados se substituem em vez de se somar**, e o Mestre decide quais: quem está Caído, por exemplo, não está também "sem equilíbrio" só porque a tabela tem as duas linhas.
 
 ### Golpes no mesmo instante
 

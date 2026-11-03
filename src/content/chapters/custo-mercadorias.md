@@ -1,5 +1,5 @@
 ---
-ordem: 22
+ordem: 24
 numeral: "XIV"
 titulo: "Mercadorias"
 resumo: "O preço das coisas do mundo mundano, da comida à ferramenta, e os pacotes de equipamento para começar uma aventura."

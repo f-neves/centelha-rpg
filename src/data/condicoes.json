@@ -12,8 +12,8 @@
     {
       "id": "caido", "nome": "Caído", "icone": "⤓", "grupo": "posicao", "cor": "alerta",
       "defesaCaC": -2, "defesaDist": 2, "acao": -2,
-      "nota": "Prono. De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Também −2 para agir (mira e postura ruins do chão). Levantar consome movimento.",
-      "fonte": "combateTatico · alvo prono"
+      "nota": "Caído (prono). De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Também −2 para agir (mira e postura ruins do chão). Levantar consome movimento.",
+      "fonte": "combateTatico · alvo caído"
     },
     {
       "id": "imobilizado", "nome": "Imobilizado", "icone": "⛓", "grupo": "posicao", "cor": "perigo",
@@ -29,7 +29,7 @@
     {
       "id": "flanqueado", "nome": "Flanqueado", "icone": "↹", "grupo": "posicao", "cor": "alerta",
       "defesa": -2,
-      "nota": "Atacado pelo lado ou pelas costas: não pode usar a melhor defesa contra você.",
+      "nota": "Não é condição: lembrete do modificador de flanco do livro (Vantagem tática). Atacado pelo lado ou pelas costas, não pode usar a melhor defesa contra você.",
       "fonte": "combateTatico · flanco ou pelas costas"
     },
     {
@@ -105,20 +105,20 @@
     },
     {
       "id": "surpreso", "nome": "Surpreso", "icone": "!", "grupo": "sentidos", "cor": "perigo",
-      "defesa": -4,
-      "nota": "Ainda não agiu na cena. Praticamente sem esquiva ativa.",
+      "defesa": -4, "zeraDefesa": true,
+      "nota": "Não sabe do ataque: Defesas 0 (livro, Combate Físico). O Grid e a aba Combate ainda aplicam −4, até lerem a marca de Defesa zerada.",
       "fonte": "combateTatico"
     },
     {
       "id": "cego", "nome": "Cego", "icone": "◍", "grupo": "sentidos", "cor": "perigo",
-      "defesa": -4, "acao": -3,
-      "nota": "Não enxerga o golpe chegando nem mira o próprio.",
+      "defesa": -4, "dados": -1,
+      "nota": "Esquiva −4 e Bloqueio −8 sabendo do ataque; sem saber, Surpreso. −1d6 no ataque e em toda ação que dependa da visão. Para atirar, precisa saber onde o alvo está (o Mestre julga). Cego e Ofuscado não somam: vale o Cego.",
       "fonte": "combateTatico"
     },
     {
       "id": "ofuscado", "nome": "Ofuscado", "icone": "☀", "grupo": "sentidos", "cor": "alerta",
       "acao": -2,
-      "nota": "Clarão, fumaça, poeira ou contraluz. Sem rolagem enquanto durar (Clarão Cegante)."
+      "nota": "Clarão, fumaça, poeira ou contraluz: −2 nas ações que dependem da visão, o ataque incluído; as Defesas não mudam. Dura enquanto o estímulo existir; um clarão dura 6 Ticks. Sensível à luz: Ofuscado sob sol forte."
     },
     {
       "id": "surdo", "nome": "Surdo", "icone": "🔇", "grupo": "sentidos", "cor": "alerta",
@@ -173,6 +173,25 @@
       "nota": "Queima a cada 6 Ticks até apagar (ação inteira, rolar no chão ou água)."
     },
     {
+      "id": "paralisado", "nome": "Paralisado", "icone": "⏹", "grupo": "corpo", "cor": "perigo",
+      "defesa": -4, "zeraDefesa": true,
+      "nota": "O corpo travou, a mente segue livre: não se move nem faz ação física; Defesas Físicas 0 (o Grid e a aba Combate ainda aplicam −4, até lerem a marca). Percebe, gasta Vontade e faz ações só mentais. Dura o que o poder ou o veneno disser; nova aplicação renova, sem somar."
+    },
+    {
+      "id": "atordoado", "nome": "Atordoado", "icone": "✶", "grupo": "corpo", "cor": "perigo",
+      "defesa": -4,
+      "nota": "A próxima ação começa 3 a 18 Ticks mais tarde (pelo quanto o Vigor + Resistência ficou abaixo da Dificuldade); até ela começar, −4 nas Defesas Físicas, e 1 de Força de Vontade ignora o −4. Move-se e não larga o que segura. O atraso o Mestre conta à mão."
+    },
+    {
+      "id": "petrificando", "nome": "Petrificando", "icone": "🗿", "grupo": "corpo", "cor": "perigo",
+      "nota": "Testa Vigor + Resistência a cada 6 Ticks contra a Dificuldade do poder. Cada falha: um membro vira pedra e −1 de Vigor temporário. 3 sucessos somados param. Vigor 0: estátua."
+    },
+    {
+      "id": "enjoado", "nome": "Enjoado", "icone": "🤢", "grupo": "corpo", "cor": "alerta",
+      "acao": -2,
+      "nota": "−2 em todas as jogadas enquanto exposto, e por mais 6 Ticks depois de sair. Constructos não enjoam."
+    },
+    {
       "id": "inconsciente", "nome": "Inconsciente", "icone": "💤", "grupo": "corpo", "cor": "morte",
       "defesa": -8, "foraDeCombate": true,
       "nota": "Não age, não defende. Golpe deliberado em quem está inconsciente acerta automaticamente."
@@ -195,7 +214,7 @@
     {
       "id": "amedrontado", "nome": "Amedrontado", "icone": "😨", "grupo": "mente", "cor": "alerta",
       "acao": -2,
-      "nota": "Não avança em direção à fonte do medo. −2 em tudo enquanto ela estiver à vista."
+      "nota": "−2 em todas as jogadas, e não avança em direção à fonte do medo. Enquanto ela estiver à vista, Recompor não encerra o estado."
     },
     {
       "id": "em-panico", "nome": "Em pânico", "icone": "😱", "grupo": "mente", "cor": "perigo",
@@ -204,22 +223,21 @@
     },
     {
       "id": "dominado", "nome": "Dominado", "icone": "🕸", "grupo": "mente", "cor": "arcano",
-      "nota": "Age pela vontade de outro. Quem controla declara as ações; um novo teste de Defesa Mental a cada cena ou dano sofrido."
+      "nota": "Outra vontade comanda a sua. O que o controlador pode mandar, como e por quanto tempo está no poder. A vítima recusa uma ordem pagando Força de Vontade, como no Resistir (1 + Margem, até 4), a cada ordem."
     },
     {
       "id": "confuso", "nome": "Confuso", "icone": "🌀", "grupo": "mente", "cor": "alerta",
-      "acao": -2,
-      "nota": "Alvo e intenção erráticos. O mestre decide a direção da ação em metade das vezes."
+      "nota": "A cada ação, declara o que vai fazer e rola 1d6: de 1 a 3, faz o que declarou; com 4 ou 5, o Mestre escolhe a ação e o alvo (pode ser um aliado); com 6, a ação se perde e o tempo dela passa. Dura o que o poder disser."
     },
     {
       "id": "enfurecido", "nome": "Enfurecido", "icone": "💢", "grupo": "mente", "cor": "alerta",
       "ataque": 2, "defesa": -2,
-      "nota": "Ataca o que estiver mais perto. Não recua, não defende, não negocia."
+      "nota": "A fúria do Frenesi: +2 nas ações físicas, menos o tiro; −2 em Esquiva e em Bloqueio; só ações físicas; não pode ser convencido a nada. A ficha diz o que faz entrar, quando sai e se ignora as penalidades de ferimento."
     },
     {
       "id": "abalado", "nome": "Abalado", "icone": "💔", "grupo": "mente", "cor": "alerta",
-      "acao": -1,
-      "nota": "Levou um golpe social ou mental que abriu brecha: −1 até se recompor."
+      "acao": -2,
+      "nota": "Um golpe social ou mental abriu brecha: −2 em todas as jogadas (não nas Defesas) até o fim da cena, ou até Recompor (ação de Velocidade 5, sem teste). Ser abalado de novo não soma."
     },
     {
       "id": "concentrando", "nome": "Concentrando", "icone": "◈", "grupo": "arcano", "cor": "arcano",
@@ -258,13 +276,13 @@
     },
     {
       "id": "acelerado", "nome": "Acelerado", "icone": "»", "grupo": "arcano", "cor": "bom",
-      "velocidade": -2,
-      "nota": "Suas ações custam 2 Ticks a menos (mínimo 1)."
+      "velocidade": -1,
+      "nota": "1 Tick a menos de Recuperação em cada ação, até 0. Anula o Retardado; duas aplicações não somam."
     },
     {
       "id": "retardado", "nome": "Retardado", "icone": "«", "grupo": "arcano", "cor": "perigo",
-      "velocidade": 2,
-      "nota": "Suas ações custam 2 Ticks a mais."
+      "velocidade": 1,
+      "nota": "1 Tick a mais de Recuperação em cada ação. Anula o Acelerado; duas aplicações não somam."
     },
     {
       "id": "terreno-dificil", "nome": "Terreno difícil", "icone": "⌇", "grupo": "arcano", "cor": "alerta",

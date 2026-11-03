@@ -1,5 +1,5 @@
 ---
-ordem: 23
+ordem: 25
 numeral: "XIV"
 titulo: "Qualidade e Equipamento"
 resumo: "O catálogo de armas, armaduras, escudos e munição, e como a qualidade muda o preço e os números de uma peça."

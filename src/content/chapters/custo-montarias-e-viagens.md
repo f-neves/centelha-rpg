@@ -1,5 +1,5 @@
 ---
-ordem: 24
+ordem: 26
 numeral: "XIV"
 titulo: "Montarias, Veículos e Viagens"
 resumo: "Montarias, animais, arreios e veículos, com a manutenção, e quanto custa e quanto demora viajar."

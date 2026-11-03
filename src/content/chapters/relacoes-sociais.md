@@ -1,5 +1,5 @@
 ---
-ordem: 16
+ordem: 18
 numeral: "X"
 titulo: "Relações Sociais"
 resumo: "O lado social do jogo em três marchas: a régua de disposição do dia a dia, o duelo de vontade quando a aposta é alta (Combate Social), e o cortejo com calma (Influência Estendida), que é o único lugar onde a conversa move a régua."

@@ -1,5 +1,5 @@
 ---
-ordem: 17
+ordem: 19
 numeral: "XI"
 titulo: "As Três Defesas"
 resumo: "As três muralhas de toda criatura: corpo, postura e mente. Qual delas um ataque testa, como decidir entre Social e Mental, e o número de cada uma."
