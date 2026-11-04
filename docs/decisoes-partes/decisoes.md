@@ -3421,6 +3421,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+- Definhar (`efeitos.json`), 04/11/2026: deixa de tirar PV e Absorção, pela própria R18 (resposta do autor ao Bloqueia-1 da Revisora, opção recomendada). O texto era "com tudo o que isso arrasta atrás (dano, carga, PV, Absorção natural)".
 
 ### D-292 · Item 086: O Abalado do Definhar é efeito comprado na Arte [tags: bestiario, criatura, arte, abalado, definhar, c-037, d-087]
 - Data: 2026-11-03
