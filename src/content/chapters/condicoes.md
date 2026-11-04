@@ -42,7 +42,7 @@ Uma condição é o estado em que um golpe, um poder ou um veneno deixa alguém.
 | 20 a 24 | 15 Ticks mais tarde |
 | 25 ou mais | 18 Ticks mais tarde (o máximo) |
 
-Até essa ação começar, a vítima tem −4 nas Defesas Físicas. Ela pode se mover e não larga o que segura. Pagar 1 de Força de Vontade ignora o −4, mas nada encurta o atraso. Um novo atordoamento enquanto ela ainda está Atordoada vale o maior dos dois, sem somar. Constructos não são atordoados.
+Até essa ação começar, a vítima tem −4 nas Defesas Físicas. Ela pode se mover e não larga o que segura. Pagar 1 de Força de Vontade ignora o −4, mas nada encurta o atraso. Um novo atordoamento enquanto ela ainda está Atordoada vale o maior dos dois, sem somar. Constructos e mortos-vivos não são atordoados.
 
 *Exemplo:* um golpe atordoa com Margem 3, e a Dificuldade é 25. A vítima tira 22: ficou 3 abaixo, e a próxima ação dela atrasa 3 Ticks. Se tirasse 14, ficaria 11 abaixo, e o atraso seria de 9 Ticks.
 
@@ -54,13 +54,13 @@ Enquanto está Petrificando, a vítima testa de novo **a cada 6 Ticks**, contra 
 
 Membros: uma perna de pedra corta o deslocamento pela metade, e as duas o zeram; um braço de pedra perde aquela mão; o tronco e a cabeça só se petrificam no fim, com o Vigor em 0. O Mestre escolhe a ordem, normalmente de baixo para cima. O Vigor perdido conta nos testes, mas não recalcula PV nem Absorção.
 
-Os membros de pedra e o Vigor perdido só voltam com uma Arte de grau 5 (Matéria ou Cura) ou um efeito equivalente. A estátua quebrada volta sem a parte que perdeu, ou morta, se quebrou inteira. A Força de Vontade dá +1d6 em cada teste, como em qualquer jogada. Constructos não petrificam. O que acontece quando o olhar volta por um espelho fica ao Mestre.
+Os membros de pedra e o Vigor perdido só voltam com uma Arte de grau 5 (Matéria ou Cura) ou um efeito equivalente. A estátua quebrada volta sem a parte que perdeu, ou morta, se quebrou inteira. A Força de Vontade dá +1d6 em cada teste, como em qualquer jogada. Constructos e mortos-vivos não petrificam. O que acontece quando o olhar volta por um espelho fica ao Mestre.
 
 *Exemplo:* Bram, com Vigor 3, falha contra o olhar da medusa (Dificuldade 20). A cada 6 Ticks ele testa. Falha: a perna esquerda vira pedra, e o Vigor cai para 2. Passa. Falha: o braço direito vira pedra, e o Vigor cai para 1. Passa duas vezes: a petrificação para. Bram fica com uma perna e um braço de pedra até alguém desfazer.
 
 ### Enjoo e Atributo enfraquecido
 
-**Enjoado.** Um fedor, um esporo ou um veneno revirou o estômago. −2 em todas as jogadas enquanto você estiver exposto, e por mais 6 Ticks depois de sair. Resiste-se com **Vigor + Resistência** contra a Dificuldade escrita no poder; quem passa fica imune àquela fonte pelo resto da cena, se o poder disser. Constructos não enjoam.
+**Enjoado.** Um fedor, um esporo ou um veneno revirou o estômago. −2 em todas as jogadas enquanto você estiver exposto, e por mais 6 Ticks depois de sair. Resiste-se com **Vigor + Resistência** contra a Dificuldade escrita no poder; quem passa fica imune àquela fonte pelo resto da cena, se o poder disser. Constructos e mortos-vivos não enjoam.
 
 **Atributo enfraquecido.** Alguns venenos, toques e maldições tiram pontos temporários de um Atributo. O efeito diz qual ou quais: normalmente os do corpo ou os da mente, mas pode haver efeito que alcance qualquer um dos nove. O ponto perdido vale em tudo o que usa o Atributo (dano, jogadas, Defesas), menos nos PV e na Absorção. Volta 1 ponto por dia de descanso, a não ser que o efeito diga outra coisa. Um Atributo em 0 tem o efeito do livro para ele (Destreza 0, por exemplo, deixa Paralisado).
 

@@ -387,7 +387,7 @@ Para ir além, gaste a vez numa **ação de movimento**: Corrida ou Salto, ambas
 
 Vai mais longe por Tick que o Deslocamento de Batalha: no Arranque, uns 40% a mais para a pessoa comum (3,5 m contra 2,5) e uns 60% para o teto humano (8 m contra 5); na Corrida, do 4º Tick em diante, mais que o dobro (5,5 m contra 2,5; 11,5 m contra 5). O preço é a guarda:
 
-<p class="formula">Correndo: <strong>Defesa −4</strong>, enquanto corre e até se recompor</p>
+<p class="formula">Correndo: <strong>Defesa −4</strong>, enquanto corre e até a sua próxima ação começar.</p>
 
 É o mesmo −4 do Tick do Golpe, e ele diz uma coisa
 só: **correndo não se apara nem se esquiva**. O acerto não sofre, porque quem parou, parou.

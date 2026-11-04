@@ -128,7 +128,7 @@ Sai sozinho do Vigor, que entra **duas vezes**: nos Pontos de Vida e na Absorç�
 | Herói · Vigor 6, Centelha 2 | 43 | 8 | **24 m** | **36 m** |
 | Colosso · Vigor 6, Centelha 6 | 43 | 12 | **26 m** | **38 m** |
 
-Desmaia é cair a 0 PV (o dano líquido iguala o PV); morre é chegar a −(PV máximo ÷ 2), como no Cap. IV.
+Desmaia é cair a 0 PV (o dano líquido iguala o PV): chegar a Incapacitado normalmente deixa Inconsciente, e as exceções são as Proezas e o Mestre ([Queda e Morte](/regras/vida-ferimentos-cura#queda-e-morte)); morre é chegar a −(PV máximo ÷ 2), como no Cap. IV.
 
 E os quinze metros da pessoa comum não são chute: é a altura em que, na vida real, cerca de metade dos adultos morre sem socorro; no jogo, é a altura em que ela cai a 0 PV e desmaia, e a morte vem aos 23. Aos vinte e cinco morrem nove em cada dez, e a tabela concorda.
 
