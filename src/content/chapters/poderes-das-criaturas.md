@@ -51,6 +51,8 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 **Incorpóreo.** Resiste ao dano físico, mas não é imune a ele. Não come, não respira, não dorme, e não pode ser agarrado nem derrubado.
 
+Constructos, mortos-vivos e elementais não dormem, e por isso o sono sobrenatural não os alcança.
+
 ## Imunidades
 
 **Imunidade mental.** Uma criatura pode ignorar famílias de efeitos da mente: medo, sono, domínio, leitura de mente, confusão. A ficha diz quais; não há imunidade mental só pelo tipo de corpo. A imunidade não protege contra o dano físico de uma Arte, nem contra uma conversa comum. Quem tem Inteligência 0 é imune a todo ataque à [Defesa Social e à Mental](/regras/defesas#quem-tem-cada-muralha).
@@ -58,7 +60,7 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 **Imunidades são estreitas.** Uma imunidade cobre só o que a ficha nomeia, e nada além.
 
 - **Ao medo:** ignora o medo das fontes que a ficha diz. Se a ficha compara Centelha ("imune ao medo de quem tem Centelha menor"), compare antes do efeito: Centelha igual não é menor. Não protege do [Abalado](/regras/condicoes) que vem de um golpe social.
-- **À morte e à maldição:** bloqueia o efeito que mata sem causar dano e o que instala uma maldição. O dano comum continua, e a [Vida abaixo de 0](/regras/vida-ferimentos-cura#queda-e-morte) mata como sempre.
+- **À morte e à maldição:** bloqueia o efeito que mata sem causar dano e o que instala uma maldição. O dano comum continua, e a Vida que chega à morte ([Queda e Morte](/regras/vida-ferimentos-cura#queda-e-morte)) mata como sempre.
 - **Ao golpe certeiro e ao flanco:** a criatura perde só o dano extra de ponto vital, ou o −2 de [Flanqueado](/regras/combate), conforme a ficha nomeia. Surpresa e Tamanho valem normalmente.
 - **Liberdade de movimento:** nada de fora a deixa [Agarrada, Presa ou Imobilizada](/regras/combate#manobras-agarrar-derrubar-empurrar). Paredes, [Paralisado e Atordoado](/regras/condicoes) valem normalmente.
 

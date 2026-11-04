@@ -3358,6 +3358,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: substitui a D-250 no atordoamento.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
+- Ajuste de 04/11/2026: no Atordoado, "Constructos não ..." passa a "Constructos e mortos-vivos não ...", consequência da D-298 (R21; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
 
 ### D-285 · R12: Petrificação: um membro por falha, a cada 6 Ticks [tags: condicoes, petrificacao, petrificando, vigor, d-250, d-087]
 - Data: 2026-11-03
@@ -3370,6 +3371,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
 - Completada pela D-296 (P2, 04/11/2026): vale para todo efeito que petrifica (olhar, bicada, sopro, raio), com a Dificuldade fixa de cada criatura; são seis criaturas, e não duas.
+- Ajuste de 04/11/2026: na Petrificação, "Constructos não ..." passa a "Constructos e mortos-vivos não ...", consequência da D-298 (R21; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
 
 ### D-286 · R13: Enjoado [tags: condicoes, enjoado, enjoo, resistencia]
 - Data: 2026-11-03
@@ -3378,6 +3380,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
+- Ajuste de 04/11/2026: no Enjoado, "Constructos não ..." passa a "Constructos e mortos-vivos não ...", consequência da D-298 (R21; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
 
 ### D-287 · R14: Ofuscado e Cego [tags: condicoes, ofuscado, cego, visao, defesa]
 - Data: 2026-11-03
@@ -3496,6 +3499,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: a C-002 continua: a R21 a repete para o constructo e a estende ao morto-vivo (que se recupera pelo que a ficha disser, não por conserto). O incorpóreo segue a C-008 (resistência, não imunidade, ao dano físico).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
 - Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Ajustes de 04/11/2026: completada pela D-304 (R26), com a frase do sono depois do Incorpóreo; e, por consequência dela, o Atordoado, a Petrificação e o Enjoado passam a "Constructos e mortos-vivos não ..." (D-284, D-285 e D-286; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
 
 ### D-299 · R22: Imunidade mental: a ficha diz as famílias; nenhuma pelo tipo de corpo [tags: bestiario, criatura, imunidade, mental, medo, sono, dominio, inteligencia-zero, d-186]
 - Data: 2026-11-04
@@ -3505,6 +3509,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído: a Inteligência 0 segue a D-186 e a tabela *Quem tem cada muralha* de `defesas.md`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
 - Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Limitada pela D-304 (R26, 04/11/2026): constructo, morto-vivo e elemental não caem no sono sobrenatural por fisiologia; a ficha deles não precisa declarar o sono.
 
 ### D-300 · R23: Imunidades são estreitas: medo, morte e maldição, golpe certeiro e flanco, liberdade de movimento [tags: bestiario, criatura, imunidade, medo, morte, maldicao, flanqueado, agarrado, preso, imobilizado]
 - Data: 2026-11-04
@@ -3514,6 +3519,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
 - Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Ajuste de redação de 04/11/2026 (seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`): "a Vida abaixo de 0 mata como sempre" foi erro de redação de Claude, não decisão do autor (o livro mata em Vida ≤ −(PV máximo ÷ 2)); passa a "e a Vida que chega à morte (Queda e Morte) mata como sempre". O "dano extra de ponto vital" fica: vale para a Proeza, a Arte ou a ficha que trouxer esse dano (D-087).
 
 ### D-301 · Itens 088 e 090: veneno e doença: imunidade estreita, portador e resistência extraordinária +1d6 [tags: bestiario, criatura, imunidade, veneno, doenca, resistir, d-279]
 - Data: 2026-11-04
@@ -3541,6 +3547,15 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído. As duas notas de tela que ainda dizem "até se recompor" (`combate-tempo.ts` e `grid.astro`) ficam no N23 (D-054).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
 - Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor.
+
+### D-304 · R26: Quem não dorme não pode ser posto para dormir [tags: bestiario, criatura, sono, dormindo, constructo, morto-vivo, elemental, imunidade, d-298, d-299, d-292]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R26. Quem não dorme não pode ser posto para dormir (04/11/2026, DECIDIDA; conflito 3 do Arquiteto entre R21 e R22)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. Constructo, morto-vivo e elemental (os três que "não dormem" pela R21) não caem no Sono sobrenatural (R19): falta o corpo que adormece. É fisiologia, não imunidade mental; a R22 segue para medo, domínio, leitura e confusão. A família "sono" do ghast e do ghoul fica redundante e sai das fichas.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), *Corpos que não vivem*, depois do Incorpóreo.
+- Muda: completa a D-298 (R21) e limita a D-299 (R22): para os três corpos que não dormem, o sono sai da imunidade mental e vira fisiologia; a R22 segue para medo, domínio, leitura e confusão.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (conflito 3 do Arquiteto na rodada R21 a R25).
+- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. A família "sono" do ghast e do ghoul sai das fichas por lote de ajuste da Bestiarista.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
