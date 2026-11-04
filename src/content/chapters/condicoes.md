@@ -76,7 +76,7 @@ Os membros de pedra e o Vigor perdido só voltam com uma Arte de grau 5 (Matéri
 
 **Dominado.** Outra vontade comanda a sua. O que o controlador pode mandar, como e por quanto tempo está no poder que dominou você. Mesmo dominada, a vítima pode recusar uma ordem pagando Força de Vontade, como no Resistir (1 + Margem, até 4), a cada ordem que recusar.
 
-**Sono sobrenatural.** Um poder ou um veneno pode fazer dormir na hora, sem o cansaço do Desgaste. A vítima fica **Dormindo** (Defesas 0) pelo tempo que o poder ou o veneno disser. Acorda ao sofrer qualquer dano, ou quando um aliado gasta uma ação de Velocidade 5 para sacudi-la.
+**Sono sobrenatural.** Um poder ou um veneno pode fazer dormir na hora, sem o cansaço do Desgaste. A vítima fica **Dormindo** (Defesas 0) pelo tempo que o poder ou o veneno disser. Acorda ao sofrer qualquer dano, ou quando um aliado gasta uma ação de Velocidade 5 para sacudi-la. A exceção está em [Corpos que não vivem](/regras/poderes-das-criaturas).
 
 ## O tempo
 

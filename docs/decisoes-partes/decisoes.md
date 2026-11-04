@@ -3442,6 +3442,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/condicoes.md` (Cap. IX, Condições).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
+- Completada pela D-305 (R27, 04/11/2026): o veneno de sono enche a sonolência até o Vigor e então leva ao Dormindo.
 
 ### D-294 · R20: Os nomes dos estados: Caído, Inconsciente, Surpreso, Flanqueado, Preso [tags: condicoes, caido, prono, inconsciente, incapacitado, surpreso, flanqueado, preso, glossario]
 - Data: 2026-11-03
@@ -3498,8 +3499,8 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), seção *Corpos que não vivem*.
 - Muda: a C-002 continua: a R21 a repete para o constructo e a estende ao morto-vivo (que se recupera pelo que a ficha disser, não por conserto). O incorpóreo segue a C-008 (resistência, não imunidade, ao dano físico).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
-- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
-- Ajustes de 04/11/2026: completada pela D-304 (R26), com a frase do sono depois do Incorpóreo; e, por consequência dela, o Atordoado, a Petrificação e o Enjoado passam a "Constructos e mortos-vivos não ..." (D-284, D-285 e D-286; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
+- Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). As fichas seguem por lote de ajuste da Bestiarista.
+- Ajustes de 04/11/2026: completada pela D-304 (R26), com a frase do sono depois do Incorpóreo; e, por consequência da própria R21, o Atordoado, a Petrificação e o Enjoado passam a "Constructos e mortos-vivos não ..." (D-284, D-285 e D-286; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
 
 ### D-299 · R22: Imunidade mental: a ficha diz as famílias; nenhuma pelo tipo de corpo [tags: bestiario, criatura, imunidade, mental, medo, sono, dominio, inteligencia-zero, d-186]
 - Data: 2026-11-04
@@ -3508,7 +3509,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), seção *Imunidades*, com o link para *Quem tem cada muralha* (Defesas).
 - Muda: nada substituído: a Inteligência 0 segue a D-186 e a tabela *Quem tem cada muralha* de `defesas.md`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
-- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). As fichas seguem por lote de ajuste da Bestiarista.
 - Limitada pela D-304 (R26, 04/11/2026): constructo, morto-vivo e elemental não caem no sono sobrenatural por fisiologia; a ficha deles não precisa declarar o sono.
 
 ### D-300 · R23: Imunidades são estreitas: medo, morte e maldição, golpe certeiro e flanco, liberdade de movimento [tags: bestiario, criatura, imunidade, medo, morte, maldicao, flanqueado, agarrado, preso, imobilizado]
@@ -3518,7 +3519,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), seção *Imunidades*, com links para Condições, Combate Físico e *Queda e Morte*.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
-- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). As fichas seguem por lote de ajuste da Bestiarista.
 - Ajuste de redação de 04/11/2026 (seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`): "a Vida abaixo de 0 mata como sempre" foi erro de redação de Claude, não decisão do autor (o livro mata em Vida ≤ −(PV máximo ÷ 2)); passa a "e a Vida que chega à morte (Queda e Morte) mata como sempre". O "dano extra de ponto vital" fica: vale para a Proeza, a Arte ou a ficha que trouxer esse dano (D-087).
 
 ### D-301 · Itens 088 e 090: veneno e doença: imunidade estreita, portador e resistência extraordinária +1d6 [tags: bestiario, criatura, imunidade, veneno, doenca, resistir, d-279]
@@ -3528,7 +3529,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: um parágrafo, *Veneno e doença*, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), seção *Imunidades* (a seção não tem texto aprovado; a redação é do Arquiteto, pela ordem do autor de 04/11/2026: "imunidade estreita; quem é imune à doença ainda pode carregar o agente; a resistência extraordinária é +1d6 no teste de Vigor + Resistência").
 - Muda: nada substituído: a resistência extraordinária é a vantagem de anatomia da D-279 (R6).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
-- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). As fichas seguem por lote de ajuste da Bestiarista.
 
 ### D-302 · R24: Resistência mental sem imunidade, em três graus, como a Resistência à magia [tags: bestiario, criatura, resistencia, mental, defesa-mental, d-280]
 - Data: 2026-11-04
@@ -3537,7 +3538,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), logo depois da Resistência à magia (a seção passou a *Resistência à magia e à mente*).
 - Muda: nada substituído: a mesma escala da D-280 (R7).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
-- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). As fichas seguem por lote de ajuste da Bestiarista.
 
 ### D-303 · R25: a Corrida: o −4 vale até a próxima ação começar; Recompor é só a ação da R8 [tags: combate, corrida, defesa, recompor, abalado, d-281]
 - Data: 2026-11-04
@@ -3546,7 +3547,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção em `src/content/chapters/combate.md` (Corrida), no lugar de "enquanto corre e até se recompor"; a mesma troca em `src/data/regras.json` (a Corrida) e no painel (`condicoes.json`, Correndo).
 - Muda: nada substituído. As duas notas de tela que ainda dizem "até se recompor" (`combate-tempo.ts` e `grid.astro`) ficam no N23 (D-054).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
-- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor.
+- Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`).
 
 ### D-304 · R26: Quem não dorme não pode ser posto para dormir [tags: bestiario, criatura, sono, dormindo, constructo, morto-vivo, elemental, imunidade, d-298, d-299, d-292]
 - Data: 2026-11-04
@@ -3555,7 +3556,49 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), *Corpos que não vivem*, depois do Incorpóreo.
 - Muda: completa a D-298 (R21) e limita a D-299 (R22): para os três corpos que não dormem, o sono sai da imunidade mental e vira fisiologia; a R22 segue para medo, domínio, leitura e confusão.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (conflito 3 do Arquiteto na rodada R21 a R25).
-- Estado: **aplicada** na branch `regras-r21-r25`, a publicar com o ok do autor. A família "sono" do ghast e do ghoul sai das fichas por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). A família "sono" do ghast e do ghoul sai das fichas por lote de ajuste da Bestiarista.
+
+### D-305 · R27: Veneno de sono: o pool enche a sonolência até o Vigor, e a vítima fica Dormindo [tags: resistir, veneno, sono, sonolencia, dormindo, d-293]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R27. Veneno de sono (04/11/2026, DECIDIDA; item 114; fecha a contradição 4 do 00-contexto com a R19)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. O veneno de sono tem Tipo "sono": cada pulso, pela tabela do livro (0 a 3), soma à sonolência da vítima; quando a sonolência alcança o Vigor, ela fica Dormindo (R19) pelo tempo que o veneno disser. Resistência, tratamento e penalidade mínima como em qualquer veneno.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Veneno*), depois do Atributo drenado, com o link para o *Sono sobrenatural* de Condições.
+- Muda: completa a D-293 (R19): o veneno de sono leva ao Dormindo por um terceiro Tipo de pool, a sonolência, ao lado de PV e Atributo.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+
+### D-306 · R28: Quando o golpe inocula, e o veneno na lâmina [tags: resistir, veneno, inocular, absorcao, arma, destreza, atributo-puro]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R28. Quando o golpe inocula, e o veneno na lâmina (04/11/2026, DECIDIDA; itens 109 e 113)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. Inocula o golpe que causa pelo menos 1 PV depois da Absorção. Passar veneno numa arma é ação de Velocidade 5; sem Habilidade de Cura ou de Ofício ligada a venenos, quem aplica faz um teste de Destreza e, se falhar, é exposto ao próprio veneno. A dose na lâmina vale até o primeiro golpe que inocula ou até o fim da cena.
+  - Assumido por Claude, para o autor conferir: o teste do leigo é Destreza pura (jogada de Atributo puro, como decide o Mestre) contra Dificuldade 10.
+- Suposição: a de Claude, logo acima (Destreza pura contra 10), fica registrada como está; o autor não a contestou ao aprovar o texto (04/11/2026).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Veneno*), depois das quatro vias de entrada.
+- Muda: nada substituído. "Todo dano de veneno ignora a Absorção" continua: a Absorção só decide se o golpe inoculou; o pool, depois, a ignora.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+
+### D-307 · R29: Peçonha com elemento: o elemento é a imagem, o veneno é o pool [tags: resistir, veneno, elemento, imunidade, linnorm, d-300]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R29. Peçonha com elemento (04/11/2026, DECIDIDA; item 111; os três linnorms)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada (contra a A do Codex). O elemento é só a imagem do veneno: não há dano a mais além do pool; imunidade ao elemento não protege do veneno, salvo o que a ficha disser.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Veneno*), depois do Veneno de sono.
+- Muda: nada substituído: segue a imunidade estreita da D-300 (R23); ser imune ao elemento não é ser imune ao veneno.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor. As fichas dos três linnorms seguem por lote de ajuste da Bestiarista.
+
+### D-308 · Itens 110, 112, 115 e 116: doença de parasita e esporo, veneno só nomeado, doença de cadáver e o frio do gigante do gelo [tags: resistir, doenca, parasita, esporo, veneno, catalogo, imunidade, frio, d-087, d-300]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "Itens 110, 112, 115 e 116 (04/11/2026, aplicados sem pergunta)" de `DECISOES-AUTOR.md`, copiada como está):
+  - 110 (parasitas, esporos, carne que apodrece): usa o relógio de doença do livro; a ficha declara exposição, incubação e Virulência; Cura ou cirurgia adequada retira o agente e para a progressão. Caso de ficha.
+  - 112 (veneno só nomeado): o veneno próprio declara via, Potência, início, intervalo, tipo do pool e penalidade mínima; sem isso, a ficha usa um veneno do catálogo, nomeado como provisório. Caso de ficha.
+  - 115 (doença de cadáver): só transmite se o Mestre identificar o agente e a via (D-087).
+  - 116 (imune ao frio do gigante do gelo): imunidade estreita (R23): ignora o frio do clima, não o dano de gelo nem a lentidão mágica.
+  - 109, a reserva de doses: já decidida na R1 (substância: doses guardadas e tempo por dose); o "três por cena" da recomendação do Codex cai.
+- No livro: uma frase em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Doença*), depois da Ajuda: "**Parasita e esporo** · Cura ou cirurgia adequada retira o agente e para a progressão." O capítulo de doença não cobria a retirada do agente (a cirurgia ali só apoia a jogada contra a Virulência). O resto são casos de ficha.
+- Muda: nada substituído: o 115 segue a D-087, o 116 a D-300 (R23), e o 109 já está na R1.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
