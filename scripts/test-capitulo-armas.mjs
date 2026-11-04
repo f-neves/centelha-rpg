@@ -920,7 +920,9 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
   comeca('- **À distância, relativo nos dois sentidos.**', ['(arremesso, projétil, arco, besta, ataque mágico e Artes físicas à distância)', 'alvo **maior** que quem ataca, **+3 por categoria**; alvo **menor**, **−3 por categoria**.'], 'Combate, Porte, à distância');
   for (const l of ['| **Maior** em *n* categorias | **+3 × n** | **+3 × n** |', '| **Do mesmo tamanho** | 0 | 0 |', '| **Menor** em *n* categorias | **0** | **−3 × n** |']) linha(l, 'Combate, Porte, tabela');
   comeca('Sem teto quer dizer sem teto:', ['um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe.', 'rola sem penalidade', '**−18**'], 'Combate, Porte, exemplo');
-  comeca('Atirar num Colossal **muito longe** continua difícil:', ['o tamanho não escala a Efetiva', 'entra só como bônus fixo no acerto.', 'Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.'], 'Combate, Porte, Colossal e enxame');
+  comeca('Atirar num Colossal **muito longe** continua difícil:', ['o tamanho não escala a Efetiva', 'entra só como bônus fixo no acerto.'], 'Combate, Porte, Colossal');
+  comeca('**O Tamanho do enxame.**', ['Um quadrado cheio de enxame conta como **Médio** para atacar e para ser atacado', 'O tamanho do indivíduo só diz onde o enxame cabe e por onde passa.'], 'Combate, Porte, enxame (R34)');
+  if (/tamanho que \*\*apresenta\*\*/.test(comb)) f.push('Combate: sobrou o enxame que "usa o tamanho que apresenta" (saiu pela R34)');
   comeca('Isso é **só no acerto**:', ['não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa)', 'ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'a pele pode dar Couraça (ver *Couraça*).'], 'Combate, Porte, exclusões');
   linha('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>', 'Combate, Porte, nota ao Mestre');
   comeca('Controlar alguém em vez de feri-lo é uma **Manobra**', ['Na Manobra quem pesa é a **massa**, e não o tamanho: o bônus de tamanho do acerto não entra em agarrar, derrubar e empurrar (ver *Massa nas Manobras*, abaixo).'], 'Combate, Manobras');
@@ -935,7 +937,7 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     // o Grid lê ordem e reforma.porCategoria (calc.ts): a D-077 desde a D-179, com os oito portes
     if ('capCategorias' in PA || 'porDiferenca' in PA || JSON.stringify(PA.ordem) !== JSON.stringify(['minusculo', 'miudo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal'])) f.push('porteAcerto: o teto velho do Grid (capCategorias, porDiferenca) saiu, e a ordem tem os oito portes, do Minúsculo ao Colossal');
     if (!PA.gridNota || !/Grid segue a regra acima/.test(PA.gridNota)) f.push('porteAcerto.gridNota: falta a nota de que o Grid segue a D-077');
-    for (const fr of ['+3 por categoria, SEM TETO (D-077)', 'CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade.', 'À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria.', 'O enxame usa o tamanho que apresenta, nos dois papéis.', 'O tamanho não escala a Efetiva.', 'nem para Artes de área sem rolagem de ataque']) if (!PA.nota.includes(fr)) f.push(`porteAcerto.nota: falta "${fr.slice(0, 70)}"`);
+    for (const fr of ['+3 por categoria, SEM TETO (D-077)', 'CORPO A CORPO: só o menor ganha (+3 por categoria contra o maior); o maior ataca o menor sem penalidade.', 'À DISTÂNCIA (arremesso, projétil, arco, besta, ataque mágico, Artes físicas à distância): relativo nos dois sentidos, alvo maior +3 por categoria, alvo menor −3 por categoria.', 'O quadrado cheio de enxame conta como Médio, nos dois papéis (R34).', 'O tamanho não escala a Efetiva.', 'nem para Artes de área sem rolagem de ataque']) if (!PA.nota.includes(fr)) f.push(`porteAcerto.nota: falta "${fr.slice(0, 70)}"`);
     if (/teto de 4 categorias \(diferenças|Relativo e simétrico|teto ±6/.test(PA.nota)) f.push('porteAcerto.nota: sobrou a regra velha (teto de 4 categorias, simétrico, teto ±6)');
   }
   // glossário
@@ -966,7 +968,7 @@ function conferirPorte(comb, R, gloss, ref, mesa) {
     'o corpo a corpo com −3 para o maior': (c) => [c.replace('| **Menor** em *n* categorias | **0** | **−3 × n** |', '| **Menor** em *n* categorias | **−3 × n** | **−3 × n** |')],
     'a distância sem o relativo': (c) => [c.replace('alvo **menor**, **−3 por categoria**.', 'alvo menor, igual.')],
     'sem o "sem teto"': (c) => [c.replace('soma **+3**, **sem teto**.', 'soma **+3**, até 4 categorias.')],
-    'o enxame sumido': (c) => [c.replace('Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.', '')],
+    'o enxame de volta ao tamanho que apresenta': (c) => [c.replace('conta como **Médio** para atacar e para ser atacado', 'usa o tamanho que **apresenta** para atacar e para ser atacado')],
     'a exclusão social/mental/área sumida': (c) => [c.replace('ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque.', 'ataques Sociais.')],
     'a nota ao Mestre sumida': (c) => [c.replace('<div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém.', '<div class="callout regra"><span class="lbl">Aviso</span>O tamanho não dá Defesa a ninguém.')],
     'o teto de ±6 de volta no porte': (c) => [c.replace('(então fica fora do teto de +6 dos bônus de Defesa)', 'e não entra no teto de ±6')],

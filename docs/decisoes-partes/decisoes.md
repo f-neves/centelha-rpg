@@ -2774,6 +2774,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 24/10/2026; decisão 58 na numeração do autor; o autor autoriza o registro): "O Tamanho de criatura de corpo de serpente, ou de qualquer criatura que muda muito de silhueta, se mede pela postura em que ela luta: enrolada se dá o bote enrolada (como a jiboia), erguida se luta erguida (como a naga). A linha Tamanho diz com clareza a qual postura o Tamanho se refere, e o Segundo Tamanho também. Ponha no manual e no conferidor, se der para conferir. A Bestiarista já foi avisada; vale para os dragões do lote 23."
 - Origem: mensagem do autor de 24/10/2026, sobre o Tamanho das nagas do lote 21 (principal erguida, marcado provisório, contra a jiboia do molde, principal enrolada).
 - Estado: **aplicada em 24/10/2026** no manual (Passo 4, seção 3.12 e a lista de conferência; a cópia do pacote da Bestiarista) e no conferidor (`confere_etapa2.py`: com segundo Tamanho, as duas linhas têm de dizer a postura, e a vista sozinha não conta; erro na ficha que não é animal, aviso na de animal; três casos novos no teste com defeito plantado e controle negativo). Nas 187 fichas, das 33 com segundo Tamanho, só o lagarto-de-gola-gigante (animal) não diz a postura da linha Tamanho ("vista de lado"); vai à Bestiarista pelo fluxo de ajuste. Se a postura escolhida é a em que a criatura luta, só se confere lendo. Completa a decisão 8 de `tamanho-decisoes-3` (o segundo Tamanho e o voador de asas abertas). **Corrigido em 24/10/2026:** o Estado dizia "Nada muda no site: nenhuma categoria muda", e isso deixou de valer. O autor estendeu a decisão a todas as criaturas, inclusive as aprovadas antes dela, e seis categorias principais mudam (D-215): as cinco que a decisão nomeia e a naga espírita, que medida enroscada cai de Grande para Médio. A serpente venenosa, medida de capuz aberto, fica Miúda. **Nota de 25/10/2026** (autor, decisão 88 na numeração do autor; mensagem guardada em `../tmp/arquiteto/msg-autor-25-10-decisoes-87-89.txt`): vale também para o redemoinho ou o vórtice tratado como poder com duração. Não é decisão nova; veio da resposta do autor à pergunta 1 do lote 25 (24/10/2026, recebida pela Bestiarista, `../tmp/bestiarista-fichas/perguntas-autor.md`): o Tamanho principal do elemental do ar é o do núcleo, e o redemoinho ativo entra como Segundo Tamanho, com a postura escrita. Aplicada no lote 25 (elemental do ar e elemental da água; o tornado do djinn continua Grande e não ganha Segundo Tamanho).
+- Completada pela D-310 (R31, 04/11/2026): na mesa vale o Tamanho da postura atual; abrir e fechar as asas é parte do movimento, e outra troca de postura custa 1 Tick.
 
 ### D-214 · A mesa não precisa achar criatura salva com id antigo [tags: mesa, bestiario, criatura, id, monstro-id, renomear, campones-assustado, banco, b20]
 - Data: 2026-10-24
@@ -2786,6 +2787,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 24/10/2026; decisão 60 na numeração do autor; o autor autoriza o registro): "Mudam o Tamanho principal pela postura em que lutam: lagarto-de-gola-gigante (Grande, gola aberta), polvo (Médio, braços abertos), polvo gigante (Imenso, braços abertos), louva-a-deus gigante (Médio, pousado, como caça) e quetzalcoatlo (Grande, no chão, como caça). O Segundo Tamanho passa a ser o da outra postura. A naga espírita passa a ser medida enroscada, porque a própria ficha diz que ela luta «enroscada sobre o tesouro». Vale a postura em que ela luta, e não o exemplo «como a naga». A serpente venenosa é medida de capuz aberto, a postura em que luta; a Bestiarista mede e diz se a categoria muda. A geleia ocre fica na bola. A regra antiga «Nos voadores, o Alvo principal é o de asas abertas» passa a valer só para quem luta voando."
 - Origem: resposta do autor à lista do Arquiteto de 24/10/2026 (as 202 fichas lidas pela linha "como luta"), depois da resposta "Opção 1. A D-213 vale para todas as criaturas, inclusive as aprovadas antes dela." à pergunta do lagarto-de-gola-gigante.
 - Estado: **a implementar.** As do molde o Arquiteto ajusta (lagarto, polvo, polvo gigante, louva-a-deus gigante, quetzalcoatlo e a serpente venenosa, depois da medida da Bestiarista); a naga espírita, a Bestiarista. A Revisora confere; a branch do site traz a tabela de antes e depois do Tamanho, do acerto e da Furtividade, e o merge espera o ok do autor. **Substitui as duas metades** da decisão 8 de `tamanho-decisoes-3`. A primeira, "Nos voadores, o Alvo principal é o de **asas abertas**", passa a valer só para quem luta voando (D-215). A segunda, "Nos outros, o principal é a postura de repouso e a aberta ou esticada é o segundo", cai pela D-213 (o Tamanho principal é a postura em que a criatura luta) e pela D-215, que a estende às criaturas aprovadas antes: é por ela que mudam o lagarto, o polvo, o polvo gigante e a naga espírita. Pela medida, mudam seis categorias principais: as cinco que a decisão nomeia e a naga espírita (de Grande para Médio); a serpente venenosa fica Miúda. Completa a D-213. **Completada pela D-247 (26/10/2026)** no dragão: em voo vale o de asas abertas, em terra o de asas fechadas, e no misto o principal guardado é o de terra.
+- Completada pela D-310 (R31, 04/11/2026): na mesa vale o Tamanho da postura atual; abrir e fechar as asas é parte do movimento, e outra troca de postura custa 1 Tick.
 
 ### D-216 · Nenhum valor que o motor calcula fica guardado no JSON da criatura, e um motor só calcula tudo [tags: bestiario, criatura, json, formato, motor, v3, pv, defesas, absorcao, peso-erguido, deslocamento, d-190, d-213, ficha, mesa, grid, editor, b20]
 - Data: 2026-10-24
@@ -2862,6 +2864,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 24/10/2026; decisão 71 na numeração do autor; o autor autoriza o registro): "Furtividade e Tamanho: a regra não fica na ficha da criatura. Ela é descrita no livro (nas ações ou na própria Habilidade). A ficha informa só o Tamanho e as dimensões da criatura; o Mestre aplica a regra na mesa. Vale para qualquer jogada que não seja de ataque. Na lista de lacunas do livro, anote: escrever a regra do Tamanho na Furtividade (o autor aprovou a escala de 3 por categoria; falta dizer se é relativa à criatura que procura ou fixa contra o Médio)."
 - Origem: a mesma mensagem, decisão 71, resposta à pergunta da Furtividade que seguia aberta (decisoes-autor de 19/10/2026, §8, fora do repositório).
 - Estado: **a implementar**. Anotada em 24/10/2026 nas lacunas do livro (`../tmp/arquiteto/bestiario/lacunas-do-livro.md`, seção 2), com a pergunta que falta. A ficha .md e o manual não mudam: a ficha já guarda a Furtividade como Habilidade, sem somar nada pelo Tamanho. O card mostra a Furtividade da ficha como está, com o Tamanho e as dimensões. A tabela `furtividadeCriatura` de `regras.json`, que hoje estima pelo porte e pela categoria a Furtividade das 122 criaturas sem ficha v3 (`scripts/lib-bestiario.mjs:177-193`), deixa de ser usada quando elas tiverem ficha; isso entra no plano da conversão, para o autor aprovar. O acerto pelo Tamanho (D-077) é jogada de ataque e continua na conta do motor.
+- A dúvida (relativo a quem procura ou fixo contra o Médio) foi fechada pela D-309 (R30, 04/11/2026): fixo contra o Médio, em toda jogada que não é de ataque, a Furtividade incluída. A regra está no livro, na Régua Comum.
 
 ### D-227 · As 122 criaturas sem ficha ganham ficha nova, e o site troca de formato só com as 324 [tags: bestiario, criatura, json, formato, conversao, bestiarista, lotes, d-216, d-210, b20]
 - Data: 2026-10-24
@@ -3106,6 +3109,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **implementada** na branch `bestiario-implementacao` (`1a3074a0`), fora do site até a Fase 4; a parte da P13 (`tamanhoEquivalente` no lugar da massa) é **provisória** e vai à confirmação do autor na Fase 5; formato em `../tmp/arquiteto/bestiario/formato-json/formato-criatura.md` (seções 1, 2.2, 2.6 e 3). As oito fichas de enxame já escrevem a quantidade e o Tamanho equivalente na linha `PV base`; nenhum lote de ajuste.
 - Fase 4: **no ar em 29/10/2026** (merge `4cb057fb` no `main`, deploy verde; migração 41 rodada no banco no mesmo dia). O que dela estava nas 324 fichas e no código da branch foi publicado junto. **A parte da P13 (`tamanhoEquivalente`) continua provisória e vai à Fase 5** (PLANO-FASE4, F4.6).
 - Fase 5: **a P13 deixa de ser provisória** (F5.26, confirmada pelo autor em 29/10/2026, D-263); o Tamanho equivalente fica limitado a Pequeno e Médio até nova decisão (F5.3).
+- Completada pelas D-311 (R32, ferir), D-312 (R33, dentro) e D-313 (R34, o Tamanho), de 04/11/2026: para atacar e ser atacado o quadrado cheio é Médio; o `tamanhoEquivalente` segue só para o PV. O item 138 (controle de enxame) é caso de ficha.
 
 ### D-258 · O JSON guarda dados, o site faz as contas (criatura e ficha do personagem); complemento da D-208 [tags: formato, json, criatura, ficha, motor, conta, d-208, d-216]
 - Data: 2026-10-29
@@ -3310,6 +3314,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: a ordem do autor de 03/11/2026 não listava a R6 entre os blocos do livro; o texto aprovado entrou na Régua Comum.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
+- **Mudada pela D-309 (R30, 04/11/2026):** o Tamanho conta a partir do Médio (Médio 0, cada categoria menor +3, cada maior −3, seja quem for o observador), e não pela diferença "como no ataque". A anatomia (+1d6) fica como está.
 
 ### D-280 · R7: Resistência à magia: três graus, +2, +4 e +6, dentro do teto de +6 [tags: bestiario, criatura, resistencia-a-magia, defesa, d-078, d-256]
 - Data: 2026-11-03
@@ -3599,6 +3604,52 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído: o 115 segue a D-087, o 116 a D-300 (R23), e o 109 já está na R1.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
 - Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-309 · R30: Tamanho nas jogadas que não são de ataque: fixo contra o Médio, seja quem for o observador [tags: tamanho, jogada, furtividade, anatomia, d-226, d-279]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R30. Tamanho nas jogadas que não são de ataque (04/11/2026, DECIDIDA; item 001; fecha a dúvida da D-226)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: fixo contra o Médio. Médio é 0; +3 para cada categoria menor; −3 para cada categoria maior, qualquer que seja o observador. Vale para toda jogada que não seja de ataque (D-226), a Furtividade incluída.
+  - Muda o texto da R6 (que dizia "a diferença de Tamanho"), já publicado na Régua Comum.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-e-sistema.md` (Cap. VIII, A Régua Comum), no lugar do bloco da R6 (D-279). O texto aprovado diz que substitui a primeira frase do bloco; ele traz o bloco inteiro, e a segunda frase (a anatomia) é igual à da R6.
+- Muda: **muda a D-279 (R6)**: "A diferença de Tamanho soma ou tira 3 por categoria, como no ataque" passa a "contado a partir do Médio". Fecha a dúvida da D-226 (fixo contra o Médio, e não relativo a quem procura).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 01, Tamanho).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+
+### D-310 · R31: Duas posturas, dois Tamanhos: vale o da postura atual; asas sem custo, outra troca 1 Tick [tags: tamanho, segundo-tamanho, postura, voador, tick, d-213, d-215]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R31. Segundo Tamanho e troca de postura (04/11/2026, DECIDIDA; item 002; completa a D-213 e a D-215)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo; as outras trocas (abrir a gola, esticar os braços) custam 1 Tick e valem até serem desfeitas. O autor não pediu restringir o sinal da R30 às jogadas em que ser pequeno ajuda: a R30 fica para toda jogada que não é de ataque.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), depois da Nota ao Mestre.
+- Muda: completa a D-213 e a D-215: elas dizem qual postura é o Tamanho principal da ficha; a R31 diz qual vale na mesa (a atual) e quanto custa trocar.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 01, Tamanho).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+
+### D-311 · R32: Ferir um enxame: a ficha diz se arma comum fere; golpe num quadrado, área com dano inteiro por quadrado [tags: bestiario, criatura, enxame, area, arma, d-257]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R32. Ferir um enxame (04/11/2026, DECIDIDA; item 135; completa a D-257)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. A ficha diz se arma comum fere o enxame (ratos, morcegos, aranhas grandes: sim; insetos, mosquitos: não). Quando fere, o golpe atinge um quadrado; o ataque de área aplica o dano inteiro a cada quadrado coberto. A conta de PV e a dispersão seguem a D-257.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), junto do enxame.
+- Muda: completa a D-257: a conta de PV e a dispersão continuam as dela.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 16, enxame).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+
+### D-312 · R33: Dentro do enxame: o pulso da ficha, sem jogada de ataque, no máximo uma vez a cada 6 Ticks [tags: bestiario, criatura, enxame, pulso, absorcao, veneno, d-306]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R33. Ficar dentro do enxame (04/11/2026, DECIDIDA; item 136)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. Quem começa uma ação dentro de um quadrado ocupado sofre o dano de pulso que a ficha declara, no máximo uma vez a cada 6 Ticks, sem jogada de ataque; a Absorção conta; o veneno entra pela R28; sair evita os próximos pulsos.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), junto do enxame.
+- Muda: nada substituído: o veneno do pulso entra pela D-306 (R28).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 16, enxame).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+
+### D-313 · R34: O Tamanho do enxame: o quadrado cheio é Médio para atacar e ser atacado [tags: bestiario, criatura, enxame, tamanho, acerto, d-077, d-257]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "R34. O Tamanho do enxame (04/11/2026, DECIDIDA; item 137)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. O quadrado cheio de enxame é Médio para atacar e para ser alvo; o Tamanho do indivíduo é só anatomia (onde cabe, por onde passa). PV e dispersão seguem a D-257.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), no lugar da frase "Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.", junto do enxame; a mesma troca em `src/data/regras.json` (`porteAcerto.nota` e `porteAcerto.reforma.enxame`) e no teste que prendia a frase velha (`scripts/test-capitulo-armas.mjs`).
+- Muda: completa a D-257 (o `tamanhoEquivalente` segue só para o PV) e substitui a frase do enxame da D-077 no livro. O Grid ainda usa o Tamanho do indivíduo no acerto (Minúsculo nos oito enxames): fica no N23 (D-054).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 16, enxame).
+- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
