@@ -68,8 +68,12 @@ const somaFora = M.somarCondicoes([foraDoTempo]);
 ok(somaFora.naoAge === true, 'somarCondicoes([fora-do-tempo]) devolve naoAge true');
 eq(somaFora.velocidade, 0, 'e velocidade some no total 0, não -99: a sentinela não entra mais na conta');
 
-const somaGrandeza = M.somarCondicoes([M.COND['acelerado'], M.COND['terreno-dificil']]);
-eq(somaGrandeza.velocidade, 0, 'acelerado (-1) + terreno-dificil (+1) soma 0, sem a marca por perto');
+// Com os números da R17 (±1), acelerado + terreno-dificil dá 0, que é também o resultado de não somar
+// nada; por isso a soma é provada com duas que não se anulam, e o negativo, com as três juntas.
+const somaGrandeza = M.somarCondicoes([M.COND['retardado'], M.COND['terreno-dificil']]);
+eq(somaGrandeza.velocidade, 2, 'retardado (+1) + terreno-dificil (+1) soma 2, sem a marca por perto');
+eq(M.somarCondicoes([M.COND['acelerado'], M.COND['retardado'], M.COND['terreno-dificil']]).velocidade, 1,
+  'acelerado (-1) + retardado (+1) + terreno-dificil (+1) soma 1: o negativo entra na conta');
 ok(!somaGrandeza.naoAge, 'e naoAge fica falso: nenhuma das duas é sentinela');
 
 // Caso misto: fora-do-tempo junto com uma condição de grandeza de verdade. A
