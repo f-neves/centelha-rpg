@@ -17,8 +17,8 @@
     },
     {
       "id": "imobilizado", "nome": "Imobilizado", "icone": "⛓", "grupo": "posicao", "cor": "perigo",
-      "defesa": -4, "acao": -2,
-      "nota": "Agarrado, preso ou amarrado. Praticamente sem esquiva ativa.",
+      "defesa": -4, "acao": -2, "zeraDefesa": true,
+      "nota": "Imobilizar, amarrado, preso em gelo: Esquiva e Bloqueio 0 (livro, Combate Físico; não a Defesa de agarrão). O Grid e a aba Combate ainda aplicam −4, até lerem a marca de Defesa zerada.",
       "fonte": "combateTatico · surpreso, cego ou imobilizado"
     },
     {
@@ -193,8 +193,8 @@
     },
     {
       "id": "inconsciente", "nome": "Inconsciente", "icone": "💤", "grupo": "corpo", "cor": "morte",
-      "defesa": -8, "foraDeCombate": true,
-      "nota": "Não age, não defende. Golpe deliberado em quem está inconsciente acerta automaticamente."
+      "defesa": -8, "foraDeCombate": true, "zeraDefesa": true,
+      "nota": "Não age, não defende: Defesas 0 (livro, Combate Físico). Golpe deliberado em quem está inconsciente acerta automaticamente. O Grid e a aba Combate ainda aplicam −8, até lerem a marca de Defesa zerada."
     },
     {
       "id": "morrendo", "nome": "Morrendo", "icone": "✝", "grupo": "corpo", "cor": "morte",

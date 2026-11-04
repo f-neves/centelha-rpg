@@ -48,7 +48,7 @@ Até essa ação começar, a vítima tem −4 nas Defesas Físicas. Ela pode se 
 
 ### Petrificação
 
-Alguns olhares e toques transformam carne em pedra. Quem é atingido testa **Vigor + Resistência** contra a Dificuldade escrita no poder. Passar não tem efeito; falhar começa a petrificação, e a vítima fica **Petrificando**.
+Alguns olhares, toques, sopros e raios transformam carne em pedra. Quem é atingido testa **Vigor + Resistência** contra a Dificuldade escrita no poder, fixa para cada criatura. Passar não tem efeito; falhar começa a petrificação, e a vítima fica **Petrificando**.
 
 Enquanto está Petrificando, a vítima testa de novo **a cada 6 Ticks**, contra a mesma Dificuldade. Cada **falha** transforma um membro em pedra e tira 1 ponto de Vigor temporário. Cada **sucesso** é resistência acumulada: com **3 sucessos**, somados e não seguidos, a petrificação para, e o que já virou pedra continua pedra. Com **Vigor 0**, o corpo inteiro vira pedra, com o que veste; a vítima não morre, não envelhece e não respira enquanto for estátua.
 

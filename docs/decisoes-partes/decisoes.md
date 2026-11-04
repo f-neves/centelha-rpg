@@ -3368,6 +3368,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: substitui a D-250 na petrificação. A frase do espelho entrou no texto do livro.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+- Completada pela D-296 (P2, 04/11/2026): vale para todo efeito que petrifica (olhar, bicada, sopro, raio), com a Dificuldade fixa de cada criatura; são seis criaturas, e não duas.
 
 ### D-286 · R13: Enjoado [tags: condicoes, enjoado, enjoo, resistencia]
 - Data: 2026-11-03
@@ -3450,6 +3451,34 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: dá nuance à decisão do autor de 02/10/2026 de que em 0 PV se desmaia sem teste (aplicada em `5598adeb`, Veterana 1d, T1a; sem entrada própria no registro): chegar a Incapacitado normalmente deixa Inconsciente, com as exceções das Proezas e do Mestre.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+- Painel, 04/11/2026 ("Aplicados sem pergunta" de `DECISOES-AUTOR.md`): Inconsciente e Imobilizado também com Defesas 0, como o livro (marca `zeraDefesa`; as telas, no N23).
+
+### D-295 · P1: Atributo em 0: nenhum nasce em 0, e só um efeito o leva a 0 [tags: atributos, zero, condicoes, d-283, d-285, d-291]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "P1. Atributo em 0 (04/11/2026, DECIDIDA; conflito levantado pelo Arquiteto contra atributos.md:18)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. A frase "Nenhum Atributo chega a 0 num personagem vivo e desperto" é reescrita. Concilia R10 (Destreza 0, Paralisado), R12 (Vigor 0, estátua) e R18 (dreno até 0).
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/atributos.md` (Cap. II, Atributos), no lugar de "Nenhum Atributo chega a 0 num personagem vivo e desperto.".
+- Muda: concilia as D-283 (R10), D-285 (R12) e D-291 (R18) com o capítulo de Atributos.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (as perguntas que o Arquiteto e a Bestiarista levantaram sobre as R1 a R20).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor.
+
+### D-296 · P2: a Petrificação vale para todo efeito que petrifica, com a Dificuldade fixa de cada criatura [tags: condicoes, petrificacao, bestiario, criatura, d-285, d-250]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "P2. A petrificação nas outras criaturas (04/11/2026, DECIDIDA; caso da Bestiarista)" de `DECISOES-AUTOR.md`, copiada como está):
+  - A premissa da R12 ("só duas criaturas") estava errada: são seis (medusa, basilisco, cocatriz, dracolisk, górgona, buscador). Resposta do autor: a recomendada. A Petrificação da R12 vale para todo efeito que petrifica; o poder muda só o jeito de chegar (olhar, bicada, sopro, raio) e a Dificuldade fixa de cada criatura. Os quatro "sem regra ainda" (cocatriz, dracolisk, górgona, raio de pedra do buscador) passam à R12.
+- No livro: em `src/content/chapters/condicoes.md`, Petrificação: "olhares, toques, sopros e raios" e "a Dificuldade escrita no poder, fixa para cada criatura" (a seção não tem texto aprovado; a frase é a da ordem do autor de 04/11/2026).
+- Muda: corrige a premissa da D-285 (R12, "só duas criaturas"): são seis (medusa, basilisco, cocatriz, dracolisk, górgona e o raio de pedra do buscador); os quatro "sem regra ainda" passam à D-285.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (as perguntas que o Arquiteto e a Bestiarista levantaram sobre as R1 a R20).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+
+### D-297 · P3: o sopro do golem de ferro e o ferrão do homúnculo são efeito similar à magia; a C-002 fica intacta [tags: bestiario, criatura, constructo, substancia, similar-a-magia, c-002, d-274]
+- Data: 2026-11-04
+- Decisão (autor, 04/11/2026; seção "P3. Substância em constructo (04/11/2026, DECIDIDA; caso da Bestiarista)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: opção 2. O sopro de gás venenoso do golem de ferro e o ferrão sonífero do homúnculo viram efeito similar à magia (usos por cena ou dia), como o sopro do golem de gelo. A C-002 fica intacta: constructo não produz substância.
+- No livro: nada; caso de ficha.
+- Muda: nenhuma: a C-002 fica intacta (constructo não produz substância).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (as perguntas que o Arquiteto e a Bestiarista levantaram sobre as R1 a R20).
+- Estado: **aplicada** na branch `regras-r1-r20`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

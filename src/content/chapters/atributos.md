@@ -15,7 +15,7 @@ Cada verbete, aqui e nas outras duas páginas, diz três coisas nesta ordem: **o
 
 ## Os Nove Atributos
 
-Os Atributos são a matéria-prima do personagem: o que o corpo, o trato social e a mente conseguem fazer, antes de qualquer treino. São nove, em três tríades, e para um humano vão de **1 a 6**. Nenhum Atributo chega a 0 num personagem vivo e desperto.
+Os Atributos são a matéria-prima do personagem: o que o corpo, o trato social e a mente conseguem fazer, antes de qualquer treino. São nove, em três tríades, e para um humano vão de **1 a 6**. Nenhum Atributo nasce em 0. Um Atributo só chega a 0 por um efeito, como o enfraquecimento e a petrificação, e cada efeito diz o que acontece.
 
 | Nível | O que significa |
 |:---:|---|
