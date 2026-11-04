@@ -12,7 +12,7 @@
     {
       "id": "caido", "nome": "Caído", "icone": "⤓", "grupo": "posicao", "cor": "alerta",
       "defesaCaC": -2, "defesaDist": 2, "acao": -2,
-      "nota": "Caído (prono). De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Também −2 para agir (mira e postura ruins do chão). Levantar consome movimento.",
+      "nota": "De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Também −2 para agir (mira e postura ruins do chão). Levantar consome movimento.",
       "fonte": "combateTatico · alvo caído"
     },
     {
@@ -53,7 +53,7 @@
     {
       "id": "correndo", "nome": "Correndo", "icone": "»", "grupo": "posicao", "cor": "perigo",
       "defesa": -4,
-      "nota": "Esprintando: não apara nem esquiva. Vale enquanto corre e até se recompor. O acerto não sofre: quem parou, parou.",
+      "nota": "Esprintando: não apara nem esquiva. Vale enquanto corre e até a sua próxima ação começar. O acerto não sofre: quem parou, parou.",
       "fonte": "combate · movimento"
     },
     {
@@ -111,8 +111,8 @@
     },
     {
       "id": "cego", "nome": "Cego", "icone": "◍", "grupo": "sentidos", "cor": "perigo",
-      "defesa": -4, "dados": -1,
-      "nota": "Esquiva −4 e Bloqueio −8 sabendo do ataque; sem saber, Surpreso. −1d6 no ataque e em toda ação que dependa da visão. Para atirar, precisa saber onde o alvo está (o Mestre julga). Cego e Ofuscado não somam: vale o Cego.",
+      "defesa": -4, "dados": -1, "bloqueio": -8,
+      "nota": "Esquiva −4 e Bloqueio −8 sabendo do ataque (o Grid e a aba Combate ainda aplicam −4 nos dois, até lerem a marca `bloqueio`); sem saber, Surpreso. −1d6 no ataque e em toda ação que dependa da visão. Para atirar, precisa saber onde o alvo está (o Mestre julga). Cego e Ofuscado não somam: vale o Cego.",
       "fonte": "combateTatico"
     },
     {
@@ -197,6 +197,11 @@
       "nota": "Não age, não defende: Defesas 0 (livro, Combate Físico). Golpe deliberado em quem está inconsciente acerta automaticamente. O Grid e a aba Combate ainda aplicam −8, até lerem a marca de Defesa zerada."
     },
     {
+      "id": "dormindo", "nome": "Dormindo", "icone": "☾", "grupo": "corpo", "cor": "perigo",
+      "defesa": -8, "foraDeCombate": true, "zeraDefesa": true,
+      "nota": "Dorme: Defesas 0 (livro, Combate Físico). Um poder ou um veneno pode fazer dormir na hora (Sono sobrenatural, Condições), pelo tempo que ele disser; acorda ao sofrer qualquer dano, ou quando um aliado gasta uma ação de Velocidade 5 para sacudi-lo. O Grid e a aba Combate ainda aplicam −8, até lerem a marca de Defesa zerada."
+    },
+    {
       "id": "morrendo", "nome": "Morrendo", "icone": "✝", "grupo": "corpo", "cor": "morte",
       "foraDeCombate": true,
       "nota": "0 PV ou menos, entre a vida e a morte; ver Tratar."
@@ -231,8 +236,8 @@
     },
     {
       "id": "enfurecido", "nome": "Enfurecido", "icone": "💢", "grupo": "mente", "cor": "alerta",
-      "ataque": 2, "defesa": -2,
-      "nota": "A fúria do Frenesi: +2 nas ações físicas, menos o tiro; −2 em Esquiva e em Bloqueio; só ações físicas; não pode ser convencido a nada. A ficha diz o que faz entrar, quando sai e se ignora as penalidades de ferimento."
+      "ataque": 2, "ataqueDist": 0, "defesa": -2,
+      "nota": "A fúria do Frenesi: +2 nas ações físicas, menos o tiro (o Grid e a aba Combate ainda somam o +2 também no tiro, até lerem a marca `ataqueDist`); −2 em Esquiva e em Bloqueio; só ações físicas; não pode ser convencido a nada. A ficha diz o que faz entrar, quando sai e se ignora as penalidades de ferimento."
     },
     {
       "id": "abalado", "nome": "Abalado", "icone": "💔", "grupo": "mente", "cor": "alerta",

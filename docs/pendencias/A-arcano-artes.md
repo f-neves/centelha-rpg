@@ -292,3 +292,13 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
     Golpe, o penúltimo (aviso de 4 a 6 Ticks, janela de sair do caminho 1 Tick menor, esticar decide nos Ticks
     4, 9 e 14). Calibrar ART-34, ART-5, ART-38 e ART-40 com o tempo antigo seria calibrar duas vezes. Medir o
     efeito no T6 de `docs/decisoes-partes/fase-de-testes.md`.
+- [ ] **A35 · [FAZER] Artes e Técnica que usam o nome das condições com outro efeito (Depois-3 da Revisora, 04/11/2026).**
+  Registrado em 04/11/2026, na revisão da branch `regras-r1-r20` (`tmp/revisora/revisao-regras-r1-r20.md`). O efeito
+  de Arte vale pelo próprio texto (D-274; D-284, "se a arma ou o poder disser"), por isso nada aqui é erro de regra;
+  mas o tabuleiro põe nestes efeitos um estado do painel que agora tem outra regra (Condições, D-281 a D-294):
+  - `efeitos.json`, `passo-lento`: "+2 Ticks por nível em cada ação do alvo", e o `grid` aplica `retardado` (R17: +1 de Recuperação);
+  - `efeitos.json`, `peso` ("anda devagar, não salta e não corre") e `definhar` (enfraquece Força e Vigor) também aplicam `retardado`, e nenhum dos dois é atraso de ação;
+  - `efeitos.json`, `bolha-temporal` ("o tempo corre ao dobro ou à metade") aplica `acelerado` (−1 de Recuperação); `instante` e `lapso` o mostram como `condicaoAparente`;
+  - `efeitos.json`, `paralisia`: "o alvo recebe 2 × (nível da Arte) de penalidade", e o `grid` aplica `imobilizado`, que agora tem `zeraDefesa`; nada disso é o Paralisado da R10;
+  - `tecnicas.json`, `soco-trovejante`: "o atordoa (perde Ticks) se ele falhar num teste de Vigor", contra a R11 (Vigor + Resistência contra 10 + 5 × Margem).
+  - Fazer, no tema 05 (Artes): revisar o `grid.condicao` destes seis efeitos e o texto da Técnica.
