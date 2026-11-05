@@ -210,6 +210,7 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
   - **Triagem da Leitora (D-345 e D-346, 05/11/2026), o que as telas ainda fazem:**
     - **Caído e Imobilizado:** o painel tirou o −2 de ação (`acao`). A aba Combate e o Grid somam o painel, então o −2 sai deles junto; conferir se alguma tela guarda o número por conta própria.
     - **Na escuridão:** o painel tirou o −2 e virou lembrete da penumbra. As Artes que aplicam essa condição no Grid (`efeitos.json`: Mordaça de Treva, Devorar a Luz e Noite) e as fichas que a citam (4 no bestiário) passam a não dar número; ficam sem número até a revisão das Artes (A35, ordem do autor de 05/11/2026).
+    - **Agarrado:** o painel tirou o −2 de Defesa (`defesa`) e diz o que o livro dá (K7, D-346): não age; contra quem ataca de fora, Esquiva −8 e Bloqueio −4. A mesa hoje não aplica nada ao Agarrado; o painel não tem marca para uma penalidade que vale só contra quem está de fora, então o Mestre conta à mão até a revisão do Grid.
     - **Dormindo:** só as Defesas Físicas vão a 0 (L2); a Mental continua. A marca `zeraDefesa` não diz qual Defesa; conferir se o Grid zera a Mental.
     - **Atordoado no Preparo (L3):** a ação em curso se perde, e a próxima começa o atraso depois; o atraso o Mestre conta à mão.
   - **R40, R48, R49 e R51 (D-319, D-327, D-328 e D-330, 05/11/2026), o que o Grid precisa:**
