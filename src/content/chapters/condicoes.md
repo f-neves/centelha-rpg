@@ -9,7 +9,9 @@ resumo: "Os estados em que um golpe, um poder ou um veneno deixa alguém: medo, 
 
 Uma condição é o estado em que um golpe, um poder ou um veneno deixa alguém. Esta página reúne as que não têm outro lugar no livro. As que já estão definidas em outro capítulo ficam lá, e aqui só se diz onde.
 
-**Quando as condições se juntam.** A mesma condição, ou duas da mesma origem (Abalado e Amedrontado são ambas medo), não somam: vale a maior. Condições diferentes, de origens diferentes, somam todas: quem está com medo, enjoado e ofuscado sofre as três penalidades.
+<span id="quando-as-condicoes-se-juntam"></span>
+
+**Quando as condições se juntam.** A mesma condição, ou duas da mesma origem (Abalado e Amedrontado são ambas medo), não somam: vale a maior. Condições diferentes, de origens diferentes, somam todas: quem está com medo, enjoado e ofuscado sofre as três penalidades. A origem é a família do estado (o medo, o enjoo, a vista), e não a fonte que o causou. Entre Abalado e Amedrontado, vale o Amedrontado, o degrau de cima na escada do medo.
 
 ## Os estados que já estão no livro
 
@@ -32,7 +34,7 @@ Uma condição é o estado em que um golpe, um poder ou um veneno deixa alguém.
 
 ## O corpo
 
-**Paralisado.** O corpo travou, mas a mente segue livre. Você não se move nem faz ação física, e as suas Defesas Físicas ficam em 0. Ainda percebe o que acontece, gasta Vontade e faz ações só mentais. Não fala, porque a fala é do corpo, e só usa uma Arte que não peça gesto nem fala. A Defesa de agarrão também vai a 0. Não há amarra de que escapar: o estado dura o que o poder ou o veneno disser, e uma nova aplicação renova essa duração, sem somar. Destreza 0 também deixa Paralisado, e esse dura até o ponto voltar.
+**Paralisado.** O corpo travou, mas a mente segue livre. Você não se move nem faz ação física, e as suas Defesas Físicas ficam em 0. Ainda percebe o que acontece, gasta Vontade e faz ações só mentais. Não fala, porque a fala é do corpo, e só usa uma Arte que não peça gesto nem fala; o Mestre julga, Arte por Arte, se ela pede. A Defesa de agarrão também vai a 0. Não há amarra de que escapar: o estado dura o que o poder ou o veneno disser, e uma nova aplicação renova essa duração, sem somar. Destreza 0 também deixa Paralisado, e esse dura até o ponto voltar.
 
 **Atordoado.** Um golpe que acerta com Margem 1 ou mais pode atordoar, se a arma ou o poder disser que atordoa. A vítima testa **Vigor + Resistência** contra **10 + 5 × Margem** (Margem 1: 15; Margem 2: 20; Margem 3: 25; o máximo, Margem 6: 40). O teto vale mesmo contra uma Defesa zerada: a Margem sem teto do Combate Físico é a do dano, e não a do atordoamento. Se passar, não fica atordoada; empatar é falhar. Se falhar, fica Atordoada, e quanto mais longe da Dificuldade, pior:
 
@@ -45,7 +47,7 @@ Uma condição é o estado em que um golpe, um poder ou um veneno deixa alguém.
 | 20 a 24 | 15 Ticks mais tarde |
 | 25 ou mais | 18 Ticks mais tarde (o máximo) |
 
-Se o golpe pega a vítima no **Preparo** de uma ação, essa ação se perde, e a próxima começa o atraso da tabela depois. Fora do Preparo, a próxima ação começa esse mesmo atraso depois do momento em que começaria.
+Se o golpe pega a vítima no **Preparo** de uma ação, essa ação se perde, e a próxima começa o atraso da tabela depois do golpe. Fora do Preparo, a próxima ação começa esse mesmo atraso depois do momento em que começaria. Por ora, o caso do Preparo vale só no sistema P/G/R ([Combate Físico](/regras/combate), *Dois sistemas de tempo*); no sistema Normal, em que o golpe já foi rolado na declaração, o atordoamento no Preparo ainda não tem regra.
 
 Até essa ação começar, a vítima tem −4 nas Defesas Físicas. Ela pode se mover e não larga o que segura. Pagar 1 de Força de Vontade ignora o −4 pelo atordoamento inteiro (é um gasto próprio, e não o +4 numa Defesa), mas nada encurta o atraso. Um novo atordoamento enquanto ela ainda está Atordoada vale o maior dos dois, sem somar. Constructos e mortos-vivos não são atordoados.
 
@@ -57,7 +59,7 @@ Alguns olhares, toques, sopros e raios transformam carne em pedra. Quem é ating
 
 Enquanto está Petrificando, a vítima testa de novo **a cada 6 Ticks**, contra a mesma Dificuldade; o primeiro novo teste vem 6 Ticks depois da falha inicial, que ainda não petrifica membro. Cada **falha** transforma um membro em pedra e tira 1 ponto de Vigor temporário. Cada **sucesso** é resistência acumulada: com **3 sucessos**, somados e não seguidos, a petrificação para, e o que já virou pedra continua pedra. Com **Vigor 0**, o corpo inteiro vira pedra, com o que veste; a vítima não morre, não envelhece e não respira enquanto for estátua.
 
-Membros: uma perna de pedra corta o deslocamento pela metade e conta como perna presa para a Esquiva (*Restrição de corpo e de lugar*, em [Combate Físico](/regras/combate)), e as duas o zeram; um braço de pedra perde aquela mão; o tronco e a cabeça só se petrificam no fim, com o Vigor em 0. O Mestre escolhe a ordem, normalmente de baixo para cima. O Vigor perdido conta nos testes, mas não recalcula PV nem Absorção.
+Membros: uma perna de pedra corta o deslocamento pela metade e conta como perna presa para a Esquiva (*Restrição de corpo e de lugar*, em [Combate Físico](/regras/combate)), e as duas o zeram (para a Esquiva, o Mestre escolhe a linha da tabela de restrição); um braço de pedra perde aquela mão; o tronco e a cabeça só se petrificam no fim, com o Vigor em 0. O Mestre escolhe a ordem, normalmente de baixo para cima. O Vigor perdido conta nos testes, mas não recalcula PV nem Absorção.
 
 Os membros de pedra e o Vigor perdido só voltam com uma Arte de nível 5 (Matéria ou Cura) ou um efeito equivalente. A estátua quebrada volta sem a parte que perdeu, ou morta, se quebrou inteira. A Força de Vontade dá +1d6 em cada teste, como em qualquer jogada. Constructos e mortos-vivos não petrificam. O que acontece quando o olhar volta por um espelho fica ao Mestre.
 
@@ -65,7 +67,7 @@ Os membros de pedra e o Vigor perdido só voltam com uma Arte de nível 5 (Maté
 
 ### Enjoo e Atributo enfraquecido
 
-**Enjoado.** Um fedor, um esporo ou um veneno revirou o estômago. −2 em todas as jogadas enquanto você estiver exposto, e por mais 6 Ticks depois de sair; o que vem de um veneno dura o que a regra do veneno der ([Resistir](/regras/acoes-resistir#veneno)). Resiste-se com **Vigor + Resistência** contra a Dificuldade escrita no poder; quem passa fica imune àquela fonte pelo resto da cena, se o poder disser. Constructos e mortos-vivos não enjoam.
+**Enjoado.** Um fedor, um esporo ou um veneno revirou o estômago. −2 em todas as jogadas enquanto você estiver exposto, e por mais 6 Ticks depois de sair; o que vem de um veneno dura o que a regra do veneno der ([Resistir](/regras/acoes-resistir#veneno)), enquanto o pool não zera; o Desgaste do mesmo veneno é outra régua e soma com ele. Resiste-se com **Vigor + Resistência** contra a Dificuldade escrita no poder; quem passa fica imune àquela fonte pelo resto da cena, se o poder disser. Constructos e mortos-vivos não enjoam.
 
 **Atributo enfraquecido.** Alguns venenos, toques e maldições tiram pontos temporários de um Atributo. O efeito diz qual ou quais: normalmente os do corpo ou os da mente, mas pode haver efeito que alcance qualquer um dos nove. O ponto perdido vale em tudo o que usa o Atributo (dano, jogadas, Defesas: a Compostura enfraquecida baixa a Defesa Social), menos nos PV e na Absorção. Volta 1 ponto por dia de descanso, a não ser que o efeito diga outra coisa. Um Atributo em 0 tem o efeito que o poder ou o veneno disser. Se ele não disser, o Atributo em 0 incapacita naquele eixo, como em [Resistir](/regras/acoes-resistir#veneno): Vigor 0 desliga o corpo, Destreza 0 deixa Paralisado, Inteligência 0 é delírio, e o Mestre aplica a mesma ideia aos outros. A petrificação tem regra própria: nela, Vigor 0 é a estátua.
 

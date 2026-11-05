@@ -100,7 +100,7 @@
     {
       "id": "invisivel", "nome": "Invisível", "icone": "👁", "grupo": "sentidos", "cor": "arcano",
       "defesa": 4,
-      "nota": "Quem ataca precisa adivinhar a posição. Ataques contra o invisível também sofrem como se o atacante estivesse Cego."
+      "nota": "Lembrete de mesa, sem regra no livro. Quem ataca precisa adivinhar a posição. Ataques contra o invisível também sofrem como se o atacante estivesse Cego."
     },
     {
       "id": "surpreso", "nome": "Surpreso", "icone": "!", "grupo": "sentidos", "cor": "perigo",
@@ -162,13 +162,12 @@
     },
     {
       "id": "sufocando", "nome": "Sufocando", "icone": "🫁", "grupo": "corpo", "cor": "perigo",
-      "porSeisTicks": 2,
-      "nota": "Afogamento, fumaça, garganta presa: dano crescente a cada 6 Ticks, ignora Absorção."
+      "nota": "Afogamento, fumaça, garganta presa. Segue o relógio de ar de Resistir (Sufocamento): Ticks de ar = (Vigor + Resistência) × 10, +1 Desgaste no último quarto, apaga quando acabam; depois, a janela de socorro de Vigor × 20 Ticks."
     },
     {
       "id": "em-chamas", "nome": "Em chamas", "icone": "🔥", "grupo": "corpo", "cor": "perigo",
       "porSeisTicks": 3,
-      "nota": "Queima a cada 6 Ticks até apagar (ação inteira, rolar no chão ou água)."
+      "nota": "Lembrete de mesa, sem regra no livro. Queima a cada 6 Ticks até apagar (ação inteira, rolar no chão ou água)."
     },
     {
       "id": "paralisado", "nome": "Paralisado", "icone": "⏹", "grupo": "corpo", "cor": "perigo",
@@ -280,17 +279,17 @@
     {
       "id": "acelerado", "nome": "Acelerado", "icone": "»", "grupo": "arcano", "cor": "bom",
       "velocidade": -1,
-      "nota": "1 Tick a menos de Recuperação em cada ação, até 0. Anula o Retardado; duas aplicações não somam."
+      "nota": "1 Tick a menos de Recuperação em cada ação, até 0. Anula o Retardado; duas aplicações não somam. Só no sistema P/G/R, por ora."
     },
     {
       "id": "retardado", "nome": "Retardado", "icone": "«", "grupo": "arcano", "cor": "perigo",
       "velocidade": 1,
-      "nota": "1 Tick a mais de Recuperação em cada ação. Anula o Acelerado; duas aplicações não somam."
+      "nota": "1 Tick a mais de Recuperação em cada ação. Anula o Acelerado; duas aplicações não somam. Só no sistema P/G/R, por ora."
     },
     {
       "id": "terreno-dificil", "nome": "Terreno difícil", "icone": "⌇", "grupo": "arcano", "cor": "alerta",
       "velocidade": 1,
-      "nota": "Lama, escombros, gelo, corrente. Movimento pela metade e ações custam 1 Tick a mais."
+      "nota": "Lembrete de mesa, sem regra no livro. Lama, escombros, gelo, corrente. Movimento pela metade e ações custam 1 Tick a mais."
     },
 
     {
@@ -310,7 +309,7 @@
     },
     {
       "id": "preparado", "nome": "Ação preparada", "icone": "⏱", "grupo": "bom", "cor": "bom",
-      "nota": "Declarou um gatilho e espera. Quando o gatilho acontecer, age fora da ordem de Ticks."
+      "nota": "Lembrete de mesa, sem regra no livro. Declarou um gatilho e espera. Quando o gatilho acontecer, age fora da ordem de Ticks."
     },
     {
       "id": "marcado", "nome": "Marcado", "icone": "⊗", "grupo": "bom", "cor": "alerta",

@@ -3477,6 +3477,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Painel, 04/11/2026 ("Aplicados sem pergunta" de `DECISOES-AUTOR.md`): Inconsciente e Imobilizado também com Defesas 0, como o livro (marca `zeraDefesa`; as telas, no N23).
 - Glosa, 04/11/2026 (Depois-2 da Revisora, ordem do autor): o "(prono)" saiu do painel e fica só no Derrubar (`combate.md`), de propósito, como a única glosa do termo antigo.
 - Painel, 05/11/2026 (D-346): o Caído e o Imobilizado sem o −2 de ação, o "Na escuridão" como lembrete da penumbra, e a nota de que o painel é lembrete e vale o livro.
+- Painel, 05/11/2026 (D-347, K9): Invisível, Em chamas, Terreno difícil e Ação preparada com "Lembrete de mesa"; o Sufocando segue o relógio de ar de Resistir, sem o dano por 6 Ticks.
 
 ### D-295 · P1: Atributo em 0: nenhum nasce em 0, e só um efeito o leva a 0 [tags: atributos, zero, condicoes, d-283, d-285, d-291]
 - Data: 2026-11-04
@@ -3539,6 +3540,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). As fichas seguem por lote de ajuste da Bestiarista.
 - Ajuste de redação de 04/11/2026 (seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`): "a Vida abaixo de 0 mata como sempre" foi erro de redação de Claude, não decisão do autor (o livro mata em Vida ≤ −(PV máximo ÷ 2)); passa a "e a Vida que chega à morte (Queda e Morte) mata como sempre". O "dano extra de ponto vital" fica: vale para a Proeza, a Arte ou a ficha que trouxer esse dano (D-087).
+- **Completada pela D-347** (K6, 05/11/2026): a imunidade ao medo cobre o Abalado que vem do medo, e não o de um golpe social; a regra de somar da L1 só junta os dois na conta.
 
 ### D-301 · Itens 088 e 090: veneno e doença: imunidade estreita, portador e resistência extraordinária +1d6 [tags: bestiario, criatura, imunidade, veneno, doenca, resistir, d-279]
 - Data: 2026-11-04
@@ -3575,6 +3577,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-298 (R21) e limita a D-299 (R22): para os três corpos que não dormem, o sono sai da imunidade mental e vira fisiologia; a R22 segue para medo, domínio, leitura e confusão.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (conflito 3 do Arquiteto na rodada R21 a R25).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`). A família "sono" do ghast e do ghoul sai das fichas por lote de ajuste da Bestiarista.
+- **Completada pela D-347** (K5, 05/11/2026): o incorpóreo entra na frase ("Constructos, mortos-vivos, elementais e incorpóreos não dormem"); a omissão foi erro de Claude, e a R21 já dizia que o incorpóreo não dorme.
 
 ### D-305 · R27: Veneno de sono: o pool enche a sonolência até o Vigor, e a vítima fica Dormindo [tags: resistir, veneno, sono, sonolencia, dormindo, d-293]
 - Data: 2026-11-04
@@ -4045,6 +4048,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **no ar** desde 05/11/2026 (branch `regras-leitora`, publicada em `a4cc6fa5`).
 - Acréscimo à L4 (autor, 05/11/2026): depois de "Não é conjuração, não gasta Mana", o livro diz que isso é a ativação: "o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias acima".
 - Redação corrigida (autor, 05/11/2026): no acréscimo da L4, "como nas categorias acima" passa a "como nas categorias abaixo", porque as categorias vêm depois do parágrafo de abertura; o erro de redação foi de Claude.
+- **Completada pela D-347** (05/11/2026): K7, o "o Mestre decide quais" de `combate.md` passa a remeter à L1; K8, a L3 vale no sistema P/G/R, e no Normal o atordoamento no Preparo ainda não tem regra. E pela D-348: C1, C2 e C6.
 
 ### D-346 · Triagem da Leitora: os itens aplicados sem pergunta [tags: condicoes, poderes, painel, atordoado, atributo-enfraquecido, paralisado, petrificacao, cego, dominado, confuso, sono, leitora, d-284, d-291, d-294, d-282, d-001]
 - Data: 2026-11-05
@@ -4082,6 +4086,48 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - **K7 seguiu o registro** (autor, 05/11/2026, opção 1): a ordem vinha de uma decisão de 03/10 já substituída pela D-019, item 23, e pela D-081; o erro foi de Claude, não do autor. O livro fica como está ("Agarrado: não age"). No painel, o Agarrado perde "Só ações de força, arma curta ou escapar" e o −2, e passa a dizer "não age; contra quem ataca de fora, Esquiva −8 e Bloqueio −4".
 - P6 da Leitora (autor, 05/11/2026): o livro já põe a cobertura e a postura no teto de +6 dos bônus de Defesa (`combate.md`, a Defesa reflexiva de Proeza). A resistência à magia e a mental, quando somam numa Defesa, entram nesse mesmo teto; na jogada de resistir, valem sozinhas. Uma frase em *Os Poderes das Criaturas*, junto das duas resistências.
 - As três Artes que aplicam "Na escuridão" (Mordaça de Treva, Devorar a Luz, Noite) vão à pendência A35, para a revisão das Artes, sem número por agora (autor, 05/11/2026).
+
+### D-347 · Releitura da Leitora: K5 a K9 (incorpóreo e o sono, o Abalado e a imunidade ao medo, a regra de somar no Combate, o Atordoado no Preparo só no P/G/R, o painel) [tags: condicoes, poderes, incorporeo, sono, abalado, medo, acumulo, atordoado, preparo, painel, sufocamento, leitora, d-304, d-300, d-345, d-294]
+- Data: 2026-11-05
+- Decisão (autor, 05/11/2026, mensagem ao Arquiteto, copiada como está):
+  - "K5: o Incorpóreo entra na frase da R26 ("Constructos, mortos-vivos, elementais e incorpóreos não dormem..."). A omissão foi erro de Claude; a R21 já diz que o Incorpóreo não dorme."
+  - "K6: uma frase junto da imunidade ao medo: ela cobre o Abalado que vem de medo, não o de um golpe social; a regra de somar da L1 só agrupa os dois para a conta."
+  - "K7: a L1 é mais recente. No Combate Físico, o "o Mestre decide quais se substituem" passa a remeter à L1 ("Quando as condições se juntam")."
+  - "K8: o autor trata só o sistema P/G/R por enquanto. A L3 vale nele; no sistema Normal, uma nota de que o atordoamento no Preparo ainda não tem regra."
+  - "K9: Invisível, Em chamas, Terreno difícil e Ação preparada ganham a marca "Lembrete de mesa"; o Sufocando do painel passa a seguir o relógio de ar de Resistir."
+  - "K1 a K4 e os itens de ficha (categoria, Velocidade, teleporte, resistência à magia, a Dificuldade sem número, a petrificação com Vigor 1 ou acima de 4): vão para o lote da Bestiarista, como a D-346 já diz."
+- No livro: em `poderes-das-criaturas.md`, a frase da R26 com os incorpóreos (K5) e, na imunidade ao medo, "Cobre o Abalado que vem do medo, e não o de um golpe social; a regra de somar das Condições só junta os dois na conta" (K6). Em `combate.md`, *Restrição de corpo e de lugar*, "e o Mestre decide quais" passa a remeter a *Quando as condições se juntam* (âncora nova `#quando-as-condicoes-se-juntam` em `condicoes.md`) (K7). Em `condicoes.md`, depois da L3: o caso do Preparo vale só no P/G/R, e no Normal ainda não tem regra (K8).
+- Painel (`src/data/condicoes.json`): Invisível, Em chamas, Terreno difícil e Ação preparada ganham "Lembrete de mesa, sem regra no livro"; o Sufocando perde o dano por 6 Ticks (`porSeisTicks: 2`) e passa a dizer o relógio de ar de Resistir (K9). O que a mesa deixa de fazer vai ao N23.
+- Fichas: K1 a K4 e os itens de ficha vão à Bestiarista, na lista `../tmp/arquiteto/bestiarista-releitura-leitora.md`.
+- Muda: completa a D-304 (R26, K5), a D-300 (R23, K6), a D-345 (L1 e L3; K7 e K8) e a D-294 (R20, o painel; K9); nada substituído.
+- Origem: mensagem do autor de 05/11/2026 sobre a releitura da Leitora-novata (`../tmp/leitora/releitura-condicoes-poderes.md`, lida em `a4cc6fa5`).
+- Estado: **aplicada** na branch `regras-leitora-3`, a publicar com o ok do autor.
+
+### D-348 · Releitura da Leitora: os itens resolvidos pelo registro ou pelo Mestre [tags: condicoes, poderes, acumulo, amedrontado, paralisado, atordoado, petrificacao, enjoado, retardado, resistencia-a-magia, incorporeo, golem, golpe-na-brecha, leitora, d-087, d-345, d-281, d-280, d-298, c-008, d-324, d-299, d-316, d-300, d-322, d-346]
+- Data: 2026-11-05
+- Decisão (Arquiteto, por ordem do autor de 05/11/2026: "passe os 32 itens novos e os 6 que continuam iguais pelos três filtros (registro, Veterana, bom senso do Mestre), aplique o que já tem decisão e me traga só o que sobrar"). Cada item, com a decisão que o resolve:
+  - C1 ("vale a maior" entre Abalado e Amedrontado): vale o Amedrontado, o degrau de cima da "Escada do medo" da D-281.
+  - C2 (o que é "origem"): a família do estado, e não a fonte; a resposta da L1 (D-345) dá as famílias ("medo, enjoo e vista somam"), e a K6 da D-347 junta na conta o Abalado de golpe social e o Amedrontado de aura, de fontes diferentes.
+  - C4 (Arte sem gesto nem fala): o Mestre julga, Arte por Arte (D-087).
+  - C6 ("depois" de quê, no Preparo): depois do golpe; é o único ponto de partida quando a ação se perde (D-345, L3).
+  - C8 (as duas pernas de pedra e a Esquiva): o Mestre escolhe a linha da tabela de restrição, que já é "Para o Mestre" (D-087).
+  - C11 (Retardado e Acelerado no Normal): já decidido ("Retardado e Acelerado: só no sistema P/G/R por ora", triagem do autor de 05/11/2026, D-346); o painel passa a dizer "Só no sistema P/G/R, por ora".
+  - C12 (Enjoado por veneno): "Enjoado por veneno dura o que a regra do veneno dá (pool)" (D-346), e "o Desgaste é outra régua" (L1, D-345): dura enquanto o pool não zera, e soma com o Desgaste.
+  - P1 ("acima"): corrigido em `2bf258ae` (D-345, nota).
+  - P2 ("não gasta Mana" e os usos extras): texto do autor (D-345, acréscimo à L4); sem mudança.
+  - P5 ("às Defesas": quais): a Defesa que a Arte ataca; a D-280 diz "nas Defesas e na Dificuldade de resistir" contra a Arte, e cada Arte ataca uma Defesa.
+  - P7 (quanto o incorpóreo resiste): a C-008 deu "resistências a corte, perfuração e impacto (regra de resistência do regras.json)", e a Resistência do Bestiário corta o dano pela metade; a teia que o prenda fica ao Mestre (D-087).
+  - P8 (todo constructo é golem?): não; vale para quem a ficha chama de golem, porque as fichas dos golens declaram as famílias (D-324, pela D-299).
+  - P9 (golpe certeiro e Golpe na brecha): o "dano extra de ponto vital" é o Golpe na brecha (D-316: "A imunidade da R23 ('dano extra de ponto vital') vale contra ele"); pega de surpresa, a criatura fica com as Defesas 0 e sem o dano extra.
+  - P10 (a remissão da resistência extraordinária): âncora nova `#corpo-nas-jogadas` em `acoes-e-sistema.md`.
+  - K3 (Teleporte em Velocidade 8): a D-322 (R43) fixa a Velocidade 8; o livro diz que é exceção à régua. As fichas seguem na lista da Bestiarista.
+  - Consequência do P6 da D-346: o teto de +6 de `combate.md` passa a citar as resistências à magia e à mente das criaturas (a P4 da releitura notou que quem lê só o Combate Físico não sabia).
+  - Para as fichas (lista da Bestiarista): P3 (a ficha nomeia o Efeito Especial quando houver um que sirva, sugestão sem objeção na L4) e P6 (as substâncias em "três vezes por cena, recarga de uma hora" passam a doses e tempo de produção, R1).
+- Perguntas ao autor, sem aplicação: C3 (a duração do Amedrontado e a falha na Bravura), C5 (Inconsciente e a Defesa Mental), C10 (Vigor 0 fora da petrificação), C13 (o "grau a menos" do Dominado num poder de criatura) e P4 (as duas resistências juntas na jogada de resistir).
+- No livro: `condicoes.md` (C1, C2, C4, C6, C8, C12), `poderes-das-criaturas.md` (P5, P7, P8, P9, P10, K3), `acoes-e-sistema.md` (âncora), `combate.md` (o teto de +6); painel: Retardado e Acelerado "Só no sistema P/G/R, por ora".
+- Muda: completa a D-345, a D-281, a D-280, a D-298, a D-324, a D-300 e a D-322 nos pontos acima; nada substituído.
+- Origem: mensagem do autor de 05/11/2026 sobre a releitura da Leitora-novata (`../tmp/leitora/releitura-condicoes-poderes.md`, lida em `a4cc6fa5`).
+- Estado: **aplicada** na branch `regras-leitora-3`, a publicar com o ok do autor.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

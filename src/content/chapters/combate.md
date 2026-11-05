@@ -514,7 +514,7 @@ Posição, cobertura e postura mudam o combate sem mudar suas fichas: todos eles
 | Alvo caído, atacado **à distância** | **+2** |
 | Flanco ou pelas costas | **−2** |
 
-<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. Os modificadores desta tabela, a condição, a tabela de restrição e a Guarda sob pressão (adiante) **se somam todos na mesma Defesa**. **Os bônus têm teto, as penalidades não:** os bônus de Defesa (cobertura, postura defensiva, alvo errático, caído à distância e a defesa reflexiva de Proeza) somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>. O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>
+<p class="muted">A <strong>postura agressiva</strong> é a exceção que mexe nos dois lados: você baixa <strong>−2</strong> a sua própria Defesa até a próxima ação em troca de <strong>+2</strong> no seu ataque. Os modificadores desta tabela, a condição, a tabela de restrição e a Guarda sob pressão (adiante) **se somam todos na mesma Defesa**. **Os bônus têm teto, as penalidades não:** os bônus de Defesa (cobertura, postura defensiva, alvo errático, caído à distância, a defesa reflexiva de Proeza e as resistências à magia e à mente das criaturas, em <a href="/centelha-rpg/regras/poderes-das-criaturas">Os Poderes das Criaturas</a>) somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>. O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>
 
 <p class="formula">Cobertura total (sem nenhuma linha de visão) não pode ser alvejada; primeiro é preciso flanquear ou destruir o anteparo.</p>
 
@@ -547,7 +547,7 @@ Para o Mestre. O corpo preso ou o lugar apertado tiram da Esquiva e do Bloqueio,
 | **Lugar: pouco espaço** | corredor estreito, entre galhos, túnel | −2 | −4 |
 | **Lugar: sem equilíbrio** | corda bamba, telhado inclinado, convés no temporal | −4 | −2 |
 
-No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de agarrão. Em pouco espaço o escudo **perde o bônus**: ele não está *apto* (ver *Projéteis rápidos: só Esquiva ou escudo*). Quem está Preso (parcial nas pernas) não se desloca, mas age, e a Rede tem regra própria, em Armas & Armaduras. **Alguns estados se substituem em vez de se somar**, e o Mestre decide quais: quem está Caído, por exemplo, não está também "sem equilíbrio" só porque a tabela tem as duas linhas.
+No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de agarrão. Em pouco espaço o escudo **perde o bônus**: ele não está *apto* (ver *Projéteis rápidos: só Esquiva ou escudo*). Quem está Preso (parcial nas pernas) não se desloca, mas age, e a Rede tem regra própria, em Armas & Armaduras. **Alguns estados se substituem em vez de se somar**, pela regra de [Quando as condições se juntam](/regras/condicoes#quando-as-condicoes-se-juntam) (Condições): quem está Caído, por exemplo, não está também "sem equilíbrio" só porque a tabela tem as duas linhas.
 
 ### Golpes no mesmo instante
 
