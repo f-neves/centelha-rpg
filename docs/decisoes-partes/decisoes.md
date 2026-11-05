@@ -3273,6 +3273,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`). As fichas seguem por lote de ajuste da Bestiarista.
 - O item 022 (multiataque), "ainda não decidido" acima, foi decidido pela D-314 (R35, 05/11/2026).
+- **Frase da base de Arte substituída pela D-345** (L4, 05/11/2026): a base é um Efeito Especial de Arte num nível; o nível dá a referência de potência e a Velocidade.
 
 ### D-275 · R2: O alcance dos poderes de criatura: sem padrão, cada poder escreve o seu [tags: bestiario, criatura, poder, alcance, d-263]
 - Data: 2026-11-03
@@ -3373,6 +3374,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
 - Ajuste de 04/11/2026: no Atordoado, "Constructos não ..." passa a "Constructos e mortos-vivos não ...", consequência da D-298 (R21; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
+- **Completada pela D-345** (L3, 05/11/2026): atordoado no Preparo perde a ação em curso; fora dele, a próxima começa o atraso depois do momento em que começaria. E pela D-346 (K1): o teto de Margem 6 vale mesmo contra Defesa zerada; o ponto de Vontade vale pelo atordoamento inteiro.
 
 ### D-285 · R12: Petrificação: um membro por falha, a cada 6 Ticks [tags: condicoes, petrificacao, petrificando, vigor, d-250, d-087]
 - Data: 2026-11-03
@@ -3440,6 +3442,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
 - Definhar (`efeitos.json`), 04/11/2026: deixa de tirar PV e Absorção, pela própria R18 (resposta do autor ao Bloqueia-1 da Revisora, opção recomendada). O texto era "com tudo o que isso arrasta atrás (dano, carga, PV, Absorção natural)".
+- **Completada pela D-346** (K5 e K6, 05/11/2026): o Atributo em 0 tem o efeito que o poder disser; se não disser, incapacita naquele eixo, como em Resistir; a petrificação tem regra própria.
 
 ### D-292 · Item 086: O Abalado do Definhar é efeito comprado na Arte [tags: bestiario, criatura, arte, abalado, definhar, c-037, d-087]
 - Data: 2026-11-03
@@ -3473,6 +3476,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
 - Painel, 04/11/2026 ("Aplicados sem pergunta" de `DECISOES-AUTOR.md`): Inconsciente e Imobilizado também com Defesas 0, como o livro (marca `zeraDefesa`; as telas, no N23).
 - Glosa, 04/11/2026 (Depois-2 da Revisora, ordem do autor): o "(prono)" saiu do painel e fica só no Derrubar (`combate.md`), de propósito, como a única glosa do termo antigo.
+- Painel, 05/11/2026 (D-346): o Caído e o Imobilizado sem o −2 de ação, o "Na escuridão" como lembrete da penumbra, e a nota de que o painel é lembrete e vale o livro.
 
 ### D-295 · P1: Atributo em 0: nenhum nasce em 0, e só um efeito o leva a 0 [tags: atributos, zero, condicoes, d-283, d-285, d-291]
 - Data: 2026-11-04
@@ -3667,7 +3671,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Rajada*), no fim da seção.
 - Muda: **substitui em parte a C-046**: o "Poder Especial" que dava múltiplos ataques (a R1 o tirou) passa a ser o multiataque escrito na ficha. O resto da C-046 continua.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-315 · R36: Projéteis do corpo: o maior entre Vigor, Destreza e Percepção + Atirador; a Habilidade Disparo deixa de existir [tags: combate, tiro, atirador, criatura, projetil, area, disparo]
 - Data: 2026-11-05
@@ -3676,7 +3680,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Distância e tempo de voo*), no fim.
 - Muda: nada substituído no livro. "Disparo" só existe nas fichas de criatura (`monsters.json` e 15 arquivos de `src/data/bestiario/`, nunca em `habilidades*.json`): sai delas por lote de ajuste da Bestiarista.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-316 · R37: Golpe na brecha: +1d6 de dano só com Proeza ou poder escrito, uma vez por ação [tags: combate, surpreso, flanqueado, dano, proeza, d-300]
 - Data: 2026-11-05
@@ -3685,7 +3689,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Quando a Defesa zera, e quando o alvo não vê*), no fim.
 - Muda: nada substituído: a imunidade ao golpe certeiro da D-300 (R23) vale contra ele.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-317 · R38: Golpe que mutila ou extermina: sem regra, o Mestre decide [tags: combate, mutilacao, morte, mestre, d-087]
 - Data: 2026-11-05
@@ -3694,7 +3698,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: a seção não tem texto aprovado; pela ordem do autor de 05/11/2026 ("se achar útil, uma frase dizendo que mutilação e morte instantânea ficam ao Mestre"), um parágrafo do Arquiteto, *Mutilar ou matar de um golpe*, em `src/content/chapters/combate.md` (Combate Físico, *Dano e Armadura*), depois do Derrubar sem matar.
 - Muda: nada substituído (D-087).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-318 · R39: Derrubar sem matar: declarar antes; a Vida não cai abaixo de 0 [tags: combate, dano, incapacitado, inconsciente, queda-e-morte]
 - Data: 2026-11-05
@@ -3703,7 +3707,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Dano e Armadura*), antes dos três modos de dano.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-319 · R40: Atropelar e Pisoteio: 3 Ticks de Preparação, Golpe a cada Tick correndo, 3 de Recuperação; Esquivar ou Parar [tags: combate, atropelar, pisoteio, forca, atributo-puro, tamanho, caido, centelha]
 - Data: 2026-11-05
@@ -3715,7 +3719,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico), numa subseção nova *Atropelar e Pisoteio*, depois da Investida.
 - Muda: nada substituído. As duas suposições de Claude ficam registradas como estão, acima. O fator da Centelha (inteira ou 2 ×) é pendência da bancada (B23).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 09, sopro e área).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - **Dano mudado pela D-340** (R40c, 05/11/2026): sai "o golpe da ficha ou, para quem não tem, o do Encontrão", que era erro de redação de Claude; entra o dano próprio do atropelamento.
 
 ### D-320 · R41: Depois da área: nada de dano que fica, a não ser que o efeito diga; o Mestre decide as consequências [tags: combate, area, sopro, mestre, d-087]
@@ -3725,7 +3729,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico), depois de *O sopro das criaturas é área*.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 09, sopro e área).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-321 · R42: Outros planos existem e ainda não estão fechados [tags: lore, planos, etereo, convocacao, pendencia]
 - Data: 2026-11-05
@@ -3744,7 +3748,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), numa seção nova *Teleporte*, depois de *Alcance e Velocidade*.
 - Muda: nada substituído. O "à vontade" do nalfeshnee e o "leva quem agarra" do hezrou mudam nas fichas, por lote de ajuste da Bestiarista.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 05).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-323 · R44: Feitiço que volta (o rakshasa): ação sobrenatural escrita na ficha [tags: bestiario, criatura, rakshasa, arte, resistir, r1]
 - Data: 2026-11-05
@@ -3763,7 +3767,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas, *Corpos que não vivem*), no fim, depois da frase do sono (R26), para não partir o bloco dos quatro corpos da R21.
 - Muda: substitui, para os golens, o "sem regra ainda" da D-256 (que já estava substituída pela D-280 na resistência à magia em geral). Pela R22 (D-299), vale porque as fichas dos golens declaram as famílias.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 10, resistência à magia).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-325 · R46: Regeneração N: diretriz do autor; a regra sai da bancada [tags: bestiario, criatura, regeneracao, bancada, d-246, pendencia]
 - Data: 2026-11-05
@@ -3774,7 +3778,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: uma linha do Arquiteto, *Regeneração N · sem regra ainda*, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas, seção nova *Regeneração*), só para dar lugar à R47 (D-326).
 - Muda: nada substituído: a D-246 segue.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 12, regeneração).
-- Estado: **pendência, não regra** (`docs/pendencias/B-bestiario.md`, B21).
+- Estado: **pendência, não regra** (`docs/pendencias/B-bestiario.md`, B21). A linha do livro está **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - Redação de 05/11/2026 (ordem do autor): a linha que abre a seção *Regeneração* diz só que a regra do ritmo está pendente; sai "o Mestre resolve o que a ficha descrever até lá".
 - Redação de 05/11/2026 (depois da Revisora, ok do autor): a frase da ficha ganha "Por ora," ("Por ora, a ficha dá o nível de regeneração só para comparar uma criatura com a outra."), porque a R46 ainda vai dar ritmo ao nível.
 
@@ -3785,7 +3789,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas), seção nova *Regeneração*. A fonte diz "quando a bancada fechar a R46"; entrou agora pela ordem do autor de 05/11/2026 ("R47 (Fraqueza da criatura, junto da regeneração, que segue «sem regra ainda» pela R46)"). A linha que abre a seção é redação do Arquiteto.
 - Muda: completa a D-246; a R46 (D-325) segue pendente.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 12, regeneração).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-327 · R48: Engolir: o passo seguinte do agarrão, Velocidade 7 [tags: combate, engolir, agarrao, imobilizado, sufocamento, acido]
 - Data: 2026-11-05
@@ -3794,7 +3798,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Manobras*), depois do Agarrar (antes do Derrubar).
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 14, engolir).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-328 · R49: Quanto a Couraça protege: nível único, três perfis (Rígida, Couro, Mole) [tags: combate, couraca, absorcao, criatura, perfuracao, d-180, d-183]
 - Data: 2026-11-05
@@ -3803,7 +3807,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Couraça*), no lugar de "Quanto cada nível vale na Absorção: sem regra ainda". A nota da conta antiga da mesa fica até o Grid mudar (N23).
 - Muda: substitui o "sem regra ainda" do valor do nível na Absorção (D-183, item 1, e D-180, ponto 4). "Não cria Nível de Perfuração" convive com a frase do livro de que a ficha pode dar Perfuração natural: a Perfuração natural é campo próprio da ficha, e não sai do nível de Couraça.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-329 · R50: Resistência que depende da arma: metade do dano que passa da Absorção [tags: bestiario, criatura, resistencia, prata, ferro-frio, absorcao, d-300]
 - Data: 2026-11-05
@@ -3812,7 +3816,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/poderes-das-criaturas.md` (Cap. IX, Os Poderes das Criaturas, *Imunidades*), no fim.
 - Muda: nada substituído: não é imunidade (D-300, R23).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-330 · R51: Integridade do equipamento: inteira, avariada, quebrada; o desgaste pelo uso é regra extra [tags: equipamento, arma, armadura, escudo, conserto, ferreiro, carpintaria]
 - Data: 2026-11-05
@@ -3822,7 +3826,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/armas-e-armaduras.md`, numa seção nova *Integridade do equipamento*, antes de *A Interação Arma × Armadura*.
 - Muda: nada substituído. A suposição de Claude fica registrada como está, acima.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-331 · R52: Relações iniciais do Humano: vale o capítulo de Raças [tags: racas, humano, relacoes-sociais, dados]
 - Data: 2026-11-05
@@ -3831,7 +3835,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: nada no capítulo (ele já tem as três exceções). O `src/data/racas.json` (descrição e traço do Humano) passa a dizer as exceções, como o capítulo.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
-- Estado: **aplicada** na branch `regras-r35-r54` (dados), a publicar com o ok do autor. As 15 fichas de humano se corrigem por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`) (dados). As 15 fichas de humano se corrigem por lote de ajuste da Bestiarista.
 
 ### D-332 · R53: Centelha inicial: combinada com o Mestre, sem XP; Centelha 1 como referência da campanha heroica [tags: criacao, centelha, mestre, d-055]
 - Data: 2026-11-05
@@ -3841,7 +3845,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   **Centelha inicial.** A Centelha não se compra com XP: o Mestre e o grupo a combinam antes da criação. Se ninguém definir, a referência de uma campanha heroica é **Centelha 1**.
 - Muda: nada substituído: segue a D-055 (o teto 3 da Centelha caiu na criação). O texto aprovado primeiro foi substituído pela correção.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - Correção (autor, 05/11/2026; seção "R53, correção (05/11/2026, DECIDIDA; pergunta 1 do Arquiteto)"): A R53 foi montada por Claude sobre premissa errada do estudo: Veil é exemplo de personagem na Criação, não campanha com teto; a D-055 já tirou o teto 3 da criação; o piso é Centelha 0. Resposta do autor: tirar o "(no Veil, 3)" e trocar "comece em Centelha 1" por "a referência de uma campanha heroica é Centelha 1". A premissa do "(no Veil, 3)" foi erro de Claude, e não do autor.
 - Ajuste de 05/11/2026 (ordem do autor): a frase da abertura de *Custos de XP* que dizia "na criação, é o Mestre quem a dá, pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica)" passa a "na criação, o Mestre e o grupo a combinam pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica, com referência 1)". "O Mestre e o grupo" segue a R53; a faixa de 1 a 3 é texto do autor e fica, com a referência 1 dentro dela.
 
@@ -3869,7 +3873,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: dois itens, por completarem regra geral do livro, em `src/content/chapters/combate.md` (Combate Físico, *Manobras*): o 024 no *Deslocamento no agarrão*, no lugar de "Os dois podem se mover, e o Mestre julga. É só descrição, sem regra."; e o 044 no fim do *Empurrar* (o recuo contra o que não cede dá 1d6 de Impacto). Os outros (026, 027, 029, 030, 032 a 036, 038 a 041, 043, 045 a 047) são casos de ficha.
 - Muda: **muda a D-019, item 26** ("Deslocamento durante o agarrão: só descrição"), pelo 024. O 047 aponta uma diferença com o livro que fica para o autor: a Técnica Encontrão Relâmpago (`tecnicas.json`) diz "Força+Corrida vs Defesa", e o item diz Força + Atletismo contra a Defesa Física.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - Ajustes de 05/11/2026: o 044 diz que o 1d6 de Impacto a mais passa pela Absorção, como todo dano (ordem do autor); o 047 se resolveu pela D-342 (P7).
 
 ### D-334 · Tema 09, itens aplicados: o molde do sopro, a tinta na água e a descarga coletiva [tags: criatura, sopro, area, substancia, r1, r3, r4]
@@ -3881,7 +3885,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: nada: casos de ficha (o sopro já é área no livro).
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 09, sopro e área).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-335 · Tema 05, itens aplicados: mudar de forma, sentidos, invisibilidade, magia inata, incorpóreo e os outros [tags: criatura, forma, sentidos, invisibilidade, magia-inata, desejo, r1, r2, r3]
 - Data: 2026-11-05
@@ -3902,7 +3906,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: nada: casos de ficha.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 05).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-336 · Poderes "aguarda regra própria" do tema 05: cada um aponta a sua R ou a sua Arte [tags: criatura, teleporte, ilusao, dissipar, lentidao, fascinacao, r42]
 - Data: 2026-11-05
@@ -3924,7 +3928,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: nada: casos de ficha.
 - Muda: nada substituído. Passeio etéreo e passagem entre planos aguardam o lore (R42, B22).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 05).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-337 · Item 119: a duração da Técnica Regeneração fica com o Mestre [tags: tecnica, regeneracao, mestre, d-246]
 - Data: 2026-11-05
@@ -3933,7 +3937,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: nada.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 12, regeneração).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-338 · Tema 13, itens aplicados: possuir, consumir almas, convocar, maldição da morte, ressurreição, sonhos e erguer morto [tags: criatura, alma, morte, convocacao, possessao, r5, r16]
 - Data: 2026-11-05
@@ -3948,7 +3952,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: nada: casos de ficha.
 - Muda: nada substituído. A origem dos convocados de outros planos aguarda o lore (R42, B22).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 13, almas, morte e convocação).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-339 · Temas 02, 03, 06 e 15, itens aplicados: embarcação, tolerância a ferimento, cabeças de hidra, dano de som e os outros [tags: combate, dano, som, criatura, racas, xp]
 - Data: 2026-11-05
@@ -3969,7 +3973,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: um item, por completar regra geral do livro: o 073, num parágrafo *Som*, em `src/content/chapters/combate.md` (Combate Físico, *Os três modos de dano*). O 132 (modificador racial) o livro já cobre (Raças e Criação: o `+1` move o valor inicial e o teto). Os outros (005, 007 a 010, 018, 070 a 072, 074) são casos de ficha.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-340 · R40c: o dano do atropelamento: 1d6 no Médio, +1d6 por categoria acima, + Margem + 2 × Força + Centelha [tags: combate, atropelar, dano, tamanho, forca, centelha, d-319]
 - Data: 2026-11-05
@@ -3979,7 +3983,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (*Atropelar e Pisoteio*), no lugar da frase "Quem não consegue sofre o dano do atropelamento (o golpe da ficha ou, para quem não tem, o do Encontrão) e fica Caído, e você continua o trajeto."
 - Muda: **muda a D-319 (R40)** no dano: o "dano de Encontrão" era erro de redação de Claude.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-341 · P6: a prata e o lobisomem: o exemplo sai da fraqueza das Artes; o lobisomem fica com a R50 e a R47 [tags: artes, fraqueza, resistencia, prata, lobisomem, d-329, d-326]
 - Data: 2026-11-05
@@ -3988,7 +3992,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: em `src/data/regras.json` (`arcano.fraquezas.nota`) e em `src/pages/artes/regras.astro` (*Fraqueza e resistência*), o lobisomem e a prata dão lugar ao elemental de gelo e ao fogo.
 - Muda: nada substituído: a fraqueza das Artes continua. Fecha o item 069 de `99-sem-decisao.md`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-342 · P7: o Encontrão Relâmpago rola Força + Atletismo contra a Defesa [tags: tecnica, encontrao-relampago, atletismo, d-333]
 - Data: 2026-11-05
@@ -3997,7 +4001,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: em `src/data/tecnicas.json` (`encontrao-relampago`), "Força+Corrida vs Defesa" passa a "Força + Atletismo contra a Defesa".
 - Muda: corrige a Técnica (o item 047 da D-333 apontou a diferença).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 
 ### D-343 · P8: Anticoagulante: o Sangramento comum, mas estancar pede Raciocínio + Cura [tags: vida, sangramento, anticoagulante, cura, criatura, d-248]
 - Data: 2026-11-05
@@ -4006,7 +4010,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/vida-ferimentos-cura.md` (*Sangramento e Estabilização*), depois do Estabilizar.
 - Muda: nada substituído: o Sangramento segue a D-248. Fecha o item 031 de `99-sem-decisao.md`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - Redação de 05/11/2026 (ordem do autor, depois da Revisora): "o cuidado simples não basta" passa a "o Estabilizar comum não basta", sem mudar o sentido: o Estabilizar comum não para a ferida do anticoagulante, e é preciso o teste de Raciocínio + Cura.
 
 ### D-344 · Itens editoriais separados pelo Arquiteto: 003, o catálogo de armas e o exemplo de Bram [tags: livro, peso-erguido, catalogo, armas, bram, d-053, d-267]
@@ -4018,7 +4022,65 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: nada. O 003 já está no ar: o capítulo *Corpo e Movimento* traz a R15 no bloco gerado `gen:peso-erguido` desde a D-267 (V2), e a tabela antiga por FAH saiu do capítulo; nada vai à Executora.
 - Muda: nada substituído. O catálogo de armas vira a pendência B24; o 134 fica congelado (D-053) até a R54 (D19).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
-- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+
+### D-345 · L1 a L4: condições que se juntam, Dormindo e a mente, Atordoado no Preparo e a base de Arte dos poderes [tags: condicoes, acumulo, dormindo, defesa-mental, atordoado, preparo, poderes, base, efeito-especial, leitora, d-284, d-274, d-276]
+- Data: 2026-11-05
+- Decisão (autor; seções L1 a L4 de `DECISOES-AUTOR.md`, copiadas como estão, com o que a seção marca como assumido por Claude, sem objeção do autor):
+  - "L1. Acúmulo das penalidades leves (05/11/2026, DECIDIDA; leitura da Leitora)":
+    - Resposta do autor: condições de mesma origem ou a mesma condição não somam (vale a maior); condições diferentes, de origens diferentes, somam, sem teto. Abalado e Amedrontado (ambos medo) não somam; medo, enjoo e vista somam (até −6 com os três; o Desgaste é outra régua).
+    - Texto aprovado: "**Quando as condições se juntam.** A mesma condição, ou duas da mesma origem (Abalado e Amedrontado são ambas medo), não somam: vale a maior. Condições diferentes, de origens diferentes, somam todas: quem está com medo, enjoado e ofuscado sofre as três penalidades."
+  - "L2. Dormindo e as Defesas da mente (05/11/2026, DECIDIDA; leitura da Leitora)":
+    - Resposta do autor: a recomendada. Dormindo zera só as Defesas Físicas (Esquiva e Bloqueio), como a tabela do combate; a Mental continua; a Social não se aplica (não se conversa com quem dorme). O assombrar sonhos (item 125) segue contra a Defesa Mental.
+    - Texto aprovado: "Dormindo zera as **Defesas Físicas** (Esquiva e Bloqueio). A mente continua se defendendo: um poder de mente contra quem dorme ainda enfrenta a **Defesa Mental**."
+  - "L3. Atordoado no meio de uma ação (05/11/2026, DECIDIDA; leitura da Leitora; completa a R11)":
+    - Resposta do autor: atordoado durante o Preparo perde a ação em curso, e a próxima começa X Ticks depois (X do grau). Assumido por Claude: fora do Preparo, a próxima ação começa X Ticks depois do momento em que começaria; o −4 dura até essa ação começar.
+    - Texto aprovado: "Se o golpe pega a vítima no **Preparo** de uma ação, essa ação se perde, e a próxima começa o atraso da tabela depois. Fora do Preparo, a próxima ação começa esse mesmo atraso depois do momento em que começaria."
+  - "L4. A base de Arte dos poderes (05/11/2026, DECIDIDA; leitura da Leitora; aplica a decisão antiga de que os poderes naturais usam os Efeitos Especiais das Artes como base)":
+    - Respostas do autor: a "base X" é o equivalente a um Efeito Especial de uma Arte do nível da base (a Rajada cortante do bralani é como um efeito especial de Vento 3); não dá a Arte à criatura. Os números não precisam bater com o nível do Efeito Especial: os efeitos de criatura podem ser mais livres. O que a ficha escreve vence; o nível da base serve de referência de potência e dá a Velocidade (R3). A ficha nomeia o Efeito Especial quando houver um que sirva (sugestão de Claude, sem objeção).
+    - Texto aprovado: "A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade."
+- No livro: os quatro "Texto aprovado", como estão. Em `src/content/chapters/condicoes.md`: a L1 na abertura; a L2 no Dormindo (*Os estados que já estão no livro*, onde o Dormindo ganhou linha própria, separado do Inconsciente, que segue com Defesas 0) e no *Sono sobrenatural*, no lugar do "(Defesas 0)"; a L3 no Atordoado, depois da tabela. Em `src/content/chapters/poderes-das-criaturas.md`: a L4 no lugar de "A Arte citada como base de um poder indica só a potência dele: não é conjuração e não dá a Arte a quem tem o poder." No painel (`src/data/condicoes.json`), o Dormindo diz Defesas Físicas 0 e a Mental continua.
+- Muda: a L3 completa a D-284 (R11); a L4 substitui a frase da base de Arte da D-274 (R1); a L2 diz o que o "Defesas 0" do Dormindo era.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, triagem do autor de 05/11/2026 sobre a leitura da Leitora-novata (`../tmp/leitora/leitura-condicoes-poderes.md`, 43 itens, lida em `d796a36d`).
+- Estado: **aplicada** na branch `regras-leitora`, a publicar com o ok do autor.
+- Acréscimo à L4 (autor, 05/11/2026): depois de "Não é conjuração, não gasta Mana", o livro diz que isso é a ativação: "o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias acima".
+
+### D-346 · Triagem da Leitora: os itens aplicados sem pergunta [tags: condicoes, poderes, painel, atordoado, atributo-enfraquecido, paralisado, petrificacao, cego, dominado, confuso, sono, leitora, d-284, d-291, d-294, d-282, d-001]
+- Data: 2026-11-05
+- Decisão (autor; seção "Triagem da leitura da Leitora-novata (leitura-condicoes-poderes.md, 43 itens, lida em d796a36d), 05/11/2026" de `DECISOES-AUTOR.md`, copiada como está):
+  Resolvidos pelas fichas (lote da Bestiarista e entrada da Executora): K2 (Velocidade dos poderes, R3), K3 (campo categoria, R1), K4 (resistência à magia em graus, R7), a Dificuldade do basilisco (15, P2).
+  Aplicados sem pergunta (redação para o Arquiteto):
+  - K1: o teto do atordoamento é Margem 6 (Dificuldade 40, 18 Ticks), decisão do autor na R11, mesmo contra Defesa zerada; a Margem sem teto vale para o dano, não para o atordoamento. Uma frase em condicoes.md.
+  - K5 e K6: vale a P1 (cada efeito diz o que acontece). O texto do Atributo enfraquecido (R18) passa de "o efeito do livro" a "o que o efeito disser; se não disser, o Atributo em 0 incapacita naquele eixo (Resistir: Vigor 0 desliga o corpo, Destreza 0 paralisa, Inteligência 0 é delírio), e o Mestre aplica a mesma ideia aos outros". A petrificação tem regra própria (Vigor 0 é estátua).
+  - K7: o livro está errado contra a decisão de 03/10 (Agarrado não se desloca, mas age; Imobilizado não age). Corrigir combate.md ("Agarrado: não age") para "não se desloca, mas age". O painel segue o livro corrigido.
+  - K8 a K11 e "estados do painel que faltam no livro": o painel é lembrete, e vale o livro (R20). Caído sem −2 nas próprias jogadas; Imobilizado não age (o −2 sai); "Na escuridão" vira lembrete da penumbra a critério do Mestre (escuro total é Cego); Enfurecido segue a R9.
+  - Abalado por qualquer poder: sim, a abertura é descritiva.
+  - Amedrontado não mexe nas Defesas (só jogadas), como o Abalado; deixar explícito.
+  - Enfurecido: só o bloco "dá e tira" do Frenesi; acalmar fica ao Mestre.
+  - Paralisado: não fala (fala é corpo); Arte só se não exigir gesto nem fala; a Defesa de agarrão também vai a 0 (Defesas Físicas); por Destreza 0, dura até o ponto voltar.
+  - Atordoado: pagar 1 de Vontade ignora o −4 pelo atordoamento inteiro, e é outro gasto, não o +4 da Defesa.
+  - Petrificação: o primeiro reteste vem 6 Ticks depois da falha inicial; a falha inicial não petrifica membro; perna de pedra conta como perna presa para a Esquiva.
+  - Zumbi, limo e planta: pela R21 (o morto-vivo não atordoa, não petrifica, não enjoa; limo e planta são vivos, salvo a ficha).
+  - Enjoado por veneno dura o que a regra do veneno dá (pool).
+  - Compostura enfraquecida baixa a Defesa Social (R18: vale nas Defesas).
+  - Cego no corpo a corpo: pode golpear onde acha que o alvo está, com −1d6, e o Mestre julga se sabe o quadrado.
+  - Dominado: o Resistir é o do livro (D-001), com a opção de pagar 1 e encurtar; a Margem é a do poder que dominou.
+  - Confuso com 6: passa o tempo da ação declarada.
+  - Sono: o acerto que a Absorção engole também acorda (sacudida); Defesas voltam ao normal a partir do golpe seguinte.
+  - Retardado e Acelerado: só no sistema P/G/R por ora (o sistema Normal fica de lado, decisão do autor).
+  - Poderes: "esforço e cansaço" aguardam mecânica (R1); a fera sem Centelha nem Mana para nos usos grátis; a frase de Defesas vale para os poderes; o "não repete o alvo" vale pelo período dos usos (cena ou dia); não há uso que volte por hora fora das substâncias (R4); grau e nível de Arte são a mesma coisa (uniformizar).
+  Perguntas ao autor: Dormindo e as Defesas Mental e Social; acúmulo das penalidades leves (−2); Atordoado no meio do Preparo; como se lê a potência da base de Arte; bônus de resistência à magia com cobertura no teto.
+- Ordem do autor para a redação (05/11/2026): "redija o mínimo necessário em cada página"; nos demais, "uma frase onde a Leitora tropeçou, só se a página não responder".
+- No livro: em `condicoes.md`, uma frase em cada ponto: o teto de Margem 6 contra Defesa zerada (K1); o Atributo em 0 pelo efeito e, se ele não disser, o "incapacita naquele eixo" de Resistir, com link, e a estátua da petrificação (K5, K6); o Abalado por qualquer poder; o Amedrontado sem mexer nas Defesas; o Enfurecido com o +1 na soma e o Intimidar do bloco da fúria, e o acalmar ao Mestre; o Paralisado que não fala, a Arte sem gesto nem fala, a Defesa de agarrão em 0 e o da Destreza 0 até o ponto voltar; o ponto de Vontade pelo atordoamento inteiro; o primeiro reteste da Petrificação e a perna de pedra como perna presa; "Arte de nível 5"; o Enjoado por veneno; a Compostura e a Defesa Social; o Cego no corpo a corpo; o Dominado com o Resistir dos ataques mentais (link a Defesas), a opção de pagar 1 e a Margem do poder; o Confuso com 6; o sono que acorda com o acerto que a Absorção engole e as Defesas do golpe seguinte; o Retardado e o Acelerado só no P/G/R. Em `poderes-das-criaturas.md`: o esforço e o cansaço pendentes; nenhum uso volta por hora fora das substâncias; quem não tem Centelha nem Mana para; a frase de Defesas para os poderes; o alvo que não se repete pelo período dos usos; "mesmo nível".
+- Painel (`src/data/condicoes.json`): o Caído e o Imobilizado perdem o −2 de ação; o Imobilizado diz que não age; o "Na escuridão" perde o −2 e vira lembrete da penumbra a critério do Mestre (o escuro total é Cego), com o mesmo nome, porque as fichas o citam; o Atordoado diz que o ponto de Vontade vale pelo atordoamento inteiro; o Amedrontado diz "não nas Defesas"; o Morrendo remete ao Incapacitado do livro; a nota geral diz que o painel é lembrete e que vale o livro, e os estados que só existem no painel (Em pânico, Surdo, Congelado, Eletrizado, Amaldiçoado, Abençoado, Inspirado, Protegido, Marcado, Voando) dizem "Lembrete de mesa, sem regra no livro". O que as telas ainda fazem vai à Executora no N23.
+- **Não aplicado, à espera do autor: o K7.** A ordem diz "combate.md, 'Agarrado: não age' passa a 'não se desloca, mas age' (decisão de 03/10: Agarrado age, Imobilizado não)". O registro diz o contrário: a decisão de 03/10 com "Agarrado (não se desloca, mas age)" foi SUBSTITUÍDA pela D-019 (item 23, "O agarrado não age"), e a D-081 (corrigida em 10/10/2026) confirma: "Continua valendo o resto do item 23: **o agarrado não age, não rola, e só se solta quando quem controla erra.**" O livro e o painel do Agarrado ficam como estão até o autor decidir.
+- Já respondidos, sem frase nova: o zumbi, o limo e a planta (a R21, D-298: o morto-vivo está nos *Corpos que não vivem*, e o que não está na lista segue a regra de todos); o Enfurecido do painel (R9, D-282, marca `ataqueDist`); K2, K3, K4 e a Dificuldade do basilisco (fichas).
+- Muda: completa a D-284 (R11), a D-291 (R18), a D-294 (R20, o painel), a D-282 (R9) e a D-276 e D-277 (R3 e R4) nos pontos acima; nada substituído.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, triagem do autor de 05/11/2026 sobre a leitura da Leitora-novata (`../tmp/leitora/leitura-condicoes-poderes.md`, 43 itens, lida em `d796a36d`).
+- Estado: **aplicada** na branch `regras-leitora`, a publicar com o ok do autor.
+- **K7 seguiu o registro** (autor, 05/11/2026, opção 1): a ordem vinha de uma decisão de 03/10 já substituída pela D-019, item 23, e pela D-081; o erro foi de Claude, não do autor. O livro fica como está ("Agarrado: não age"). No painel, o Agarrado perde "Só ações de força, arma curta ou escapar" e o −2, e passa a dizer "não age; contra quem ataca de fora, Esquiva −8 e Bloqueio −4".
+- P6 da Leitora (autor, 05/11/2026): o livro já põe a cobertura e a postura no teto de +6 dos bônus de Defesa (`combate.md`, a Defesa reflexiva de Proeza). A resistência à magia e a mental, quando somam numa Defesa, entram nesse mesmo teto; na jogada de resistir, valem sozinhas. Uma frase em *Os Poderes das Criaturas*, junto das duas resistências.
+- As três Artes que aplicam "Na escuridão" (Mordaça de Treva, Devorar a Luz, Noite) vão à pendência A35, para a revisão das Artes, sem número por agora (autor, 05/11/2026).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

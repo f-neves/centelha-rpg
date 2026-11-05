@@ -7,31 +7,31 @@ resumo: "As cinco categorias de poder que uma criatura tem além das Artes e das
 
 <p class="muted">Parte do capítulo <strong>Combate Físico</strong>. Vale para os poderes das criaturas do <a href="/centelha-rpg/bestiario">Bestiário</a>; cada ficha diz a categoria, os usos e os números do poder. Os estados que os poderes causam estão em <a href="/centelha-rpg/regras/condicoes">Condições</a>.</p>
 
-**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. A Arte citada como base de um poder indica só a potência dele: não é conjuração e não dá a Arte a quem tem o poder. Todo poder pertence a uma de cinco categorias.
+**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias acima. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
 
 ## As cinco categorias
 
 **Substâncias produzidas.** Veneno, tinta, ácido, teia, sopro: o que o corpo fabrica. A ficha diz quantas doses o corpo guarda e quanto tempo leva para produzir cada nova dose. A criatura só usa o que já foi produzido, gasta apenas a substância, e nada acelera a produção.
 
-**Poderes inatos.** O que é da natureza da criatura: sentidos, auras, corpo incorpóreo, mudar de forma, atravessar a pedra. Não gastam nada e, em geral, não têm limite de uso ou estão sempre ativos. Usar muito um poder inato ativo causa esforço e pode levar ao cansaço; uma aura passiva não cansa quem a tem.
+**Poderes inatos.** O que é da natureza da criatura: sentidos, auras, corpo incorpóreo, mudar de forma, atravessar a pedra. Não gastam nada e, em geral, não têm limite de uso ou estão sempre ativos. Usar muito um poder inato ativo causa esforço e pode levar ao cansaço (a mecânica do esforço e do cansaço ainda está pendente); uma aura passiva não cansa quem a tem.
 
-**Ações sobrenaturais.** O que a criatura faz para caçar, atacar ou se defender: o canto que atrai, o olhar que domina. A ficha diz quantos usos grátis a criatura tem por cena ou por dia. Os usos seguintes custam Energia ou Mana, como a ficha indicar.
+**Ações sobrenaturais.** O que a criatura faz para caçar, atacar ou se defender: o canto que atrai, o olhar que domina. A ficha diz quantos usos grátis a criatura tem por cena ou por dia; fora das substâncias, nenhum uso volta por hora. Os usos seguintes custam Energia ou Mana, como a ficha indicar.
 
 **Efeito similar à magia.** Funciona como a ação sobrenatural, com usos grátis, e a criatura pode ainda ampliar o efeito gastando Energia ou Mana, como a ficha indicar.
 
 **Milagres.** Desejos, feitiços supremos, comandar o clima. São muito situacionais: a ficha lista as condições para acontecerem (quem pede, o que se paga ou aceita, o tempo de preparo) e um limite fixo, por dia, por semana ou por história. Nunca se compra uso extra nem se amplia um milagre.
 
-Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com Mana.
+Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com Mana. Quem não tem nenhuma das duas para de usar o poder quando os usos grátis acabam.
 
-**Imunidade depois de resistir.** Quando a descrição do poder diz, quem resiste a ele fica imune por um tempo; normalmente são efeitos mentais ou sociais, como uma aura de medo. Um poder de dano, como uma aura de fogo, fere a cada exposição.
+**Imunidade depois de resistir.** Quando a descrição do poder diz, quem resiste a ele fica imune por um tempo; normalmente são efeitos mentais ou sociais, como uma aura de medo. Um poder de dano, como uma aura de fogo, fere a cada exposição. Sem essa imunidade escrita, vale o que vale contra os ataques mentais ([Defesas](/regras/defesas)): não há blindagem por cena ou por dia, e cada uso pede a sua resistência.
 
-**Um alvo por uso grátis.** Quando a ficha diz, o uso grátis não pode repetir o alvo; repetir o alvo custa Energia ou Mana.
+**Um alvo por uso grátis.** Quando a ficha diz, o uso grátis não pode repetir o alvo durante o período dos usos (a cena ou o dia); repetir o alvo custa Energia ou Mana.
 
 ## Alcance e Velocidade
 
 **Alcance.** Cada poder traz o seu alcance na ficha. Não há alcance padrão: um olhar chega até onde a criatura vê, um canto até onde se ouve, e o resto vem escrito em metros.
 
-**Velocidade.** O efeito similar à magia é ativado na Velocidade da Arte do mesmo grau da sua base e sai no Tick do Golpe, como uma Arte. Os outros poderes trazem a sua Velocidade na ficha.
+**Velocidade.** O efeito similar à magia é ativado na Velocidade da Arte do mesmo nível da sua base e sai no Tick do Golpe, como uma Arte. Os outros poderes trazem a sua Velocidade na ficha.
 
 ## Teleporte
 
@@ -42,6 +42,8 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 **Resistência à magia.** Algumas criaturas resistem à magia por natureza. A resistência tem três graus, que somam +2, +4 ou +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia. O bônus entra no teto comum de +6.
 
 **Resistência mental.** Algumas criaturas resistem à mente sem ser imunes. A resistência tem três graus, que somam +2, +4 ou +6 à Defesa Mental, contra todo efeito mental ou só contra a família que a ficha nomear. O bônus entra no teto comum de +6.
+
+**O teto das duas resistências.** Quando somam numa Defesa, a resistência à magia e a mental entram no mesmo teto de +6 dos bônus de Defesa, junto da cobertura e da postura ([Combate Físico](/regras/combate)). Na jogada de resistir, valem sozinhas.
 
 <span id="corpos-que-nao-vivem"></span>
 
