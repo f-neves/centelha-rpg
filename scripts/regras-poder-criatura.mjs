@@ -6,10 +6,16 @@ const producao = new RegExp('\\b(?:produz|recupera|repõe|regenera) (?:1|uma?|um
 const gratis = new RegExp('(?:usos? gr[áa]tis\\s*:\\s*'+quantidade+'|'+quantidade+' usos? gr[áa]tis) por (?:cena|dia)\\b','iu');
 const fixo = new RegExp('\\b'+quantidade+' (?:vez(?:es)? |usos? )?por (?:história|semana|dia)\\b','iu');
 // Livro: "fora das substâncias, nenhum uso volta por hora".
-// O verbo fecha na letra ("regeneração para por 1 hora" não é uso voltando).
-const voltaPorHora = new RegExp('\\b(?:recupera|volta|voltam|repõe|regenera|recarrega)(?!\\p{L})[^.;]{0,40}\\b(?:por|a cada|em) (?:(?:'+quantidade+') )?horas?\\b|\\busos?[^.;]{0,30}\\b(?:por|a cada) (?:(?:'+quantidade+') )?horas?\\b','iu');
-// P3 (04/11/2026): constructo não produz substância; estes dois são efeito similar à magia.
-const P3 = { 'golem-de-ferro': /^sopro de gás venenoso$/i, homunculus: /^ferrão sonífero$/i };
+// O que volta tem de ser o uso, a carga, a dose ou a ativação: "recupera 1 PV por hora" é regeneração, e não uso
+// voltando (R46: a bancada vai propor regeneração nesse ritmo). O verbo fecha na letra ("regeneração para por 1 hora").
+const porHora = '[^.;]{0,30}\\b(?:por|a cada|em) (?:(?:'+quantidade+') )?horas?\\b';
+const usoVolta = '(?:usos?|cargas?|doses?|ativaç\\p{L}*)';
+const voltaPorHora = new RegExp(
+  '\\b(?:recupera|repõe|regenera|volta|voltam)(?!\\p{L})\\s+(?:(?:o|os|a|as|um|uma|seu|sua|seus|suas|\\d+)\\s+)?'+usoVolta+'(?!\\p{L})'+porHora
+  +'|\\brecarrega(?:m)?(?!\\p{L})'+porHora
+  +'|\\b'+usoVolta+'(?!\\p{L})'+porHora,'iu');
+// C-002 e P3 (04/11/2026): constructo não produz substância. Os sopros e o ferrão citados na P3 são efeito similar à magia.
+const P3 = { 'golem-de-ferro': /^sopro de gás venenoso$/i, homunculus: /^ferrão sonífero$/i, 'golem-de-gelo': /^sopro congelante$/i };
 // Negações que não são custo: "sem Energia", "sem gastar Mana", "não custa Energia".
 const semCusto = /\bsem (?:gastar |pagar |custo (?:em |de )?)?(?:Energia|Mana)(?: (?:nem|ou) (?:Energia|Mana))?\b|\bnão (?:custa|gasta|paga|exige)[^.;]{0,20}\b(?:Energia|Mana)\b/gi;
 
@@ -32,6 +38,7 @@ export function validarPoderes(c, erro) {
       .replace(semCusto,'');
     const alvoP3 = Object.entries(P3).some(([id,re]) => id === c.id && re.test(h.nome.trim()));
     if (alvoP3 && h.categoria !== 'magia') problema('categoria','P3 exige magia (constructo não produz substância)');
+    else if (c.categoria === 'construto' && h.categoria === 'substancia') problema('categoria','constructo não produz substância (C-002, P3)');
     // R4: a recarga em Ticks acabou, para todas as categorias.
     if (/\b(?:recarga|recarrega)[^.;]{0,35}\b\d+\s*ticks?\b|\b(?:uma vez|um uso|disponível|pode usar) a cada \d+ ticks?\b/i.test(regra) || /a cada \d+ ticks?\b/i.test(h.limiteDeUso || ''))
       problema(campo,'recarga em Ticks');

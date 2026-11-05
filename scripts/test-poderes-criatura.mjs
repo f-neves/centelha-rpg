@@ -41,6 +41,10 @@ falha(poder('magia', 'à vontade'), 'falta o número de usos grátis', 'magia se
 passa(poder('magia', GRATIS + '. Pode ampliar o efeito gastando 2 de Energia'), 'magia amplia');
 falha(poder('sobrenatural', GRATIS + '. Pode ampliar o efeito gastando 2 de Energia'), 'somente magia admite ampliação', 'sobrenatural amplia');
 falha(poder('magia', 'Usos grátis: 1 por cena. Os usos voltam a cada 2 horas'), 'nenhum uso volta por hora', 'uso que volta por hora fora da substância');
+falha(poder('sobrenatural', 'Usos grátis: 1 por cena. Recupera 1 uso a cada 2 horas'), 'nenhum uso volta por hora', '"recupera 1 uso a cada 2 horas"');
+falha(poder('magia', 'Usos grátis: 1 por cena. Recarrega em 1 hora'), 'nenhum uso volta por hora', '"recarrega em 1 hora"');
+passa(poder('inato', 'contínuo', { classe: 'sem regra ainda', efeito: 'recupera 1 PV por hora' }), '"recupera 1 PV por hora" é regeneração, não uso voltando (sem regra ainda)');
+passa(poder('inato', 'Recupera 1 PV por hora enquanto tiver alimento'), '"recupera 1 PV por hora" é regeneração, não uso voltando (regra da ficha)');
 passa(poder('inato', 'toda a regeneração para por 1 hora. Depois, as feridas voltam a fechar', { classe: 'sem regra ainda', efeito: 'toda a regeneração para por 1 hora. Depois, as feridas voltam a fechar' }), '"regeneração para por 1 hora" não é uso voltando');
 passa(poder('magia', 'Usos grátis: 1 por dia', { classe: 'livro', base: { arte: 'fogo', nivel: 2 } }), 'magia do livro não cobra os números da ficha');
 
@@ -71,6 +75,12 @@ ok(golem('substancia', SUBST).some((x) => x.includes('P3 exige magia')), 'golem 
 ok(golem('sobrenatural', GRATIS).some((x) => x.includes('P3 exige magia')), 'golem de ferro com o sopro como sobrenatural falha');
 ok(golem('magia', GRATIS).length === 0, 'golem de ferro com o sopro como magia passa');
 ok(erros(poder('substancia', SUBST, { nome: 'Ferrão sonífero' }), { id: 'homunculus' }).some((x) => x.includes('P3 exige magia')), 'homúnculo com o ferrão como substância falha');
+const gelo = (categoria, lim) => erros(poder(categoria, lim, { nome: 'Sopro congelante' }), { id: 'golem-de-gelo', categoria: 'construto' });
+ok(gelo('substancia', SUBST).some((x) => x.includes('P3 exige magia')), 'golem de gelo com o Sopro congelante como substância falha');
+ok(gelo('magia', GRATIS).length === 0, 'golem de gelo com o Sopro congelante como magia passa');
+ok(erros(poder('substancia', SUBST, { nome: 'Óleo corrosivo' }), { id: 'golem-de-pedra', categoria: 'construto' }).some((x) => x.includes('constructo não produz substância')), 'qualquer constructo com substância falha (C-002)');
+ok(erros(poder('substancia', SUBST, { nome: 'Óleo corrosivo' }), { id: 'lesma', categoria: 'animal' }).length === 0, 'a mesma substância num animal passa');
+ok(erros(poder('magia', GRATIS, { nome: 'Óleo corrosivo' }), { id: 'golem-de-pedra', categoria: 'construto' }).length === 0, 'constructo com o mesmo poder como magia passa');
 
 console.log('o esquema e a leitura por ficha');
 const fonte = JSON.parse(fs.readFileSync('src/data/bestiario/golem-de-ferro.json', 'utf8'));
