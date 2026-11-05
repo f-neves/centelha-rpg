@@ -4042,8 +4042,9 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: os quatro "Texto aprovado", como estão. Em `src/content/chapters/condicoes.md`: a L1 na abertura; a L2 no Dormindo (*Os estados que já estão no livro*, onde o Dormindo ganhou linha própria, separado do Inconsciente, que segue com Defesas 0) e no *Sono sobrenatural*, no lugar do "(Defesas 0)"; a L3 no Atordoado, depois da tabela. Em `src/content/chapters/poderes-das-criaturas.md`: a L4 no lugar de "A Arte citada como base de um poder indica só a potência dele: não é conjuração e não dá a Arte a quem tem o poder." No painel (`src/data/condicoes.json`), o Dormindo diz Defesas Físicas 0 e a Mental continua.
 - Muda: a L3 completa a D-284 (R11); a L4 substitui a frase da base de Arte da D-274 (R1); a L2 diz o que o "Defesas 0" do Dormindo era.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, triagem do autor de 05/11/2026 sobre a leitura da Leitora-novata (`../tmp/leitora/leitura-condicoes-poderes.md`, 43 itens, lida em `d796a36d`).
-- Estado: **aplicada** na branch `regras-leitora`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-leitora`, publicada em `a4cc6fa5`).
 - Acréscimo à L4 (autor, 05/11/2026): depois de "Não é conjuração, não gasta Mana", o livro diz que isso é a ativação: "o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias acima".
+- Redação corrigida (autor, 05/11/2026): no acréscimo da L4, "como nas categorias acima" passa a "como nas categorias abaixo", porque as categorias vêm depois do parágrafo de abertura; o erro de redação foi de Claude.
 
 ### D-346 · Triagem da Leitora: os itens aplicados sem pergunta [tags: condicoes, poderes, painel, atordoado, atributo-enfraquecido, paralisado, petrificacao, cego, dominado, confuso, sono, leitora, d-284, d-291, d-294, d-282, d-001]
 - Data: 2026-11-05
@@ -4077,7 +4078,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Já respondidos, sem frase nova: o zumbi, o limo e a planta (a R21, D-298: o morto-vivo está nos *Corpos que não vivem*, e o que não está na lista segue a regra de todos); o Enfurecido do painel (R9, D-282, marca `ataqueDist`); K2, K3, K4 e a Dificuldade do basilisco (fichas).
 - Muda: completa a D-284 (R11), a D-291 (R18), a D-294 (R20, o painel), a D-282 (R9) e a D-276 e D-277 (R3 e R4) nos pontos acima; nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, triagem do autor de 05/11/2026 sobre a leitura da Leitora-novata (`../tmp/leitora/leitura-condicoes-poderes.md`, 43 itens, lida em `d796a36d`).
-- Estado: **aplicada** na branch `regras-leitora`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-leitora`, publicada em `a4cc6fa5`).
 - **K7 seguiu o registro** (autor, 05/11/2026, opção 1): a ordem vinha de uma decisão de 03/10 já substituída pela D-019, item 23, e pela D-081; o erro foi de Claude, não do autor. O livro fica como está ("Agarrado: não age"). No painel, o Agarrado perde "Só ações de força, arma curta ou escapar" e o −2, e passa a dizer "não age; contra quem ataca de fora, Esquiva −8 e Bloqueio −4".
 - P6 da Leitora (autor, 05/11/2026): o livro já põe a cobertura e a postura no teto de +6 dos bônus de Defesa (`combate.md`, a Defesa reflexiva de Proeza). A resistência à magia e a mental, quando somam numa Defesa, entram nesse mesmo teto; na jogada de resistir, valem sozinhas. Uma frase em *Os Poderes das Criaturas*, junto das duas resistências.
 - As três Artes que aplicam "Na escuridão" (Mordaça de Treva, Devorar a Luz, Noite) vão à pendência A35, para a revisão das Artes, sem número por agora (autor, 05/11/2026).
