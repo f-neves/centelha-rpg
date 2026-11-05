@@ -11,7 +11,7 @@ Uma condição é o estado em que um golpe, um poder ou um veneno deixa alguém.
 
 <span id="quando-as-condicoes-se-juntam"></span>
 
-**Quando as condições se juntam.** A mesma condição, ou duas da mesma origem (Abalado e Amedrontado são ambas medo), não somam: vale a maior. Condições diferentes, de origens diferentes, somam todas: quem está com medo, enjoado e ofuscado sofre as três penalidades. A origem é a família do estado (o medo, o enjoo, a vista), e não a fonte que o causou. Entre Abalado e Amedrontado, vale o Amedrontado, o degrau de cima na escada do medo.
+**Quando as condições se juntam.** A mesma condição, ou duas da mesma origem (Abalado e Amedrontado são ambas medo), não somam: vale a maior. Condições diferentes, de origens diferentes, somam todas: quem está com medo, enjoado e ofuscado sofre as três penalidades. A origem é a família do estado (o medo, o enjoo, a vista), e não a fonte que o causou. Entre Abalado e Amedrontado, vale o Amedrontado, o mais forte dos dois.
 
 ## Os estados que já estão no livro
 
@@ -57,7 +57,7 @@ Até essa ação começar, a vítima tem −4 nas Defesas Físicas. Ela pode se 
 
 Alguns olhares, toques, sopros e raios transformam carne em pedra. Quem é atingido testa **Vigor + Resistência** contra a Dificuldade escrita no poder, fixa para cada criatura. Passar não tem efeito; falhar começa a petrificação, e a vítima fica **Petrificando**.
 
-Enquanto está Petrificando, a vítima testa de novo **a cada 6 Ticks**, contra a mesma Dificuldade; o primeiro novo teste vem 6 Ticks depois da falha inicial, que ainda não petrifica membro. Cada **falha** transforma um membro em pedra e tira 1 ponto de Vigor temporário. Cada **sucesso** é resistência acumulada: com **3 sucessos**, somados e não seguidos, a petrificação para, e o que já virou pedra continua pedra. Com **Vigor 0**, o corpo inteiro vira pedra, com o que veste; a vítima não morre, não envelhece e não respira enquanto for estátua.
+Enquanto está Petrificando, a vítima testa de novo **a cada 6 Ticks**, contra a mesma Dificuldade; o primeiro novo teste vem 6 Ticks depois da falha inicial, que ainda não petrifica membro. Cada **falha** transforma um membro em pedra e tira 1 ponto de Vigor temporário. Enquanto houver membro livre, cada falha petrifica um. Quando os membros acabam e ainda sobra Vigor, as falhas seguintes só tiram Vigor: o corpo endurece por dentro, até o 0 fazer a estátua. Quem tem Vigor 1 vira estátua na primeira falha. Num corpo de outro feitio (a serpente, o basilisco), o Mestre decide o que conta como membro. Cada **sucesso** é resistência acumulada: com **3 sucessos**, somados e não seguidos, a petrificação para, e o que já virou pedra continua pedra. Com **Vigor 0**, o corpo inteiro vira pedra, com o que veste; a vítima não morre, não envelhece e não respira enquanto for estátua.
 
 Membros: uma perna de pedra corta o deslocamento pela metade e conta como perna presa para a Esquiva (*Restrição de corpo e de lugar*, em [Combate Físico](/regras/combate)), e as duas o zeram (para a Esquiva, o Mestre escolhe a linha da tabela de restrição); um braço de pedra perde aquela mão; o tronco e a cabeça só se petrificam no fim, com o Vigor em 0. O Mestre escolhe a ordem, normalmente de baixo para cima. O Vigor perdido conta nos testes, mas não recalcula PV nem Absorção.
 

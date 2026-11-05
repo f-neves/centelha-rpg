@@ -3390,6 +3390,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`).
 - Completada pela D-296 (P2, 04/11/2026): vale para todo efeito que petrifica (olhar, bicada, sopro, raio), com a Dificuldade fixa de cada criatura; são seis criaturas, e não duas.
 - Ajuste de 04/11/2026: na Petrificação, "Constructos não ..." passa a "Constructos e mortos-vivos não ...", consequência da D-298 (R21; seção "Ajustes de redação de 04/11/2026" de `DECISOES-AUTOR.md`).
+- **Completada pela D-350** (L9, 05/11/2026): enquanto houver membro livre, cada falha petrifica um; depois, as falhas só tiram Vigor até o 0 fazer a estátua; Vigor 1 vira estátua na primeira falha; num corpo de outro feitio, o Mestre decide o que conta como membro.
 
 ### D-286 · R13: Enjoado [tags: condicoes, enjoado, enjoo, resistencia]
 - Data: 2026-11-03
@@ -3502,6 +3503,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (as perguntas que o Arquiteto e a Bestiarista levantaram sobre as R1 a R20).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`). As fichas seguem por lote de ajuste da Bestiarista.
 - A frase, na ordem do autor de 04/11/2026 (Depois-9 da Revisora): "vale também para sopro e raio, e a Dificuldade é fixa por criatura".
+- **Completada pela D-350** (L9, 05/11/2026): a conta dos membros vale para todo efeito que petrifica; num corpo de outro feitio (a serpente, o basilisco), o Mestre decide o que conta como membro.
 
 ### D-297 · P3: o sopro do golem de ferro e o ferrão do homúnculo são efeito similar à magia; a C-002 fica intacta [tags: bestiario, criatura, constructo, substancia, similar-a-magia, c-002, d-274]
 - Data: 2026-11-04
@@ -4108,7 +4110,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fichas: K1 a K4 e os itens de ficha vão à Bestiarista, na lista `../tmp/arquiteto/bestiarista-releitura-leitora.md`.
 - Muda: completa a D-304 (R26, K5), a D-300 (R23, K6), a D-345 (L1 e L3; K7 e K8) e a D-294 (R20, o painel; K9); nada substituído.
 - Origem: mensagem do autor de 05/11/2026 sobre a releitura da Leitora-novata (`../tmp/leitora/releitura-condicoes-poderes.md`, lida em `a4cc6fa5`).
-- Estado: **aplicada** na branch `regras-leitora-3`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-leitora-3`, publicada em `f294e7c9`).
 
 ### D-348 · Releitura da Leitora: os itens resolvidos pelo registro ou pelo Mestre [tags: condicoes, poderes, acumulo, amedrontado, paralisado, atordoado, petrificacao, enjoado, retardado, resistencia-a-magia, incorporeo, golem, golpe-na-brecha, leitora, d-087, d-345, d-281, d-280, d-298, c-008, d-324, d-299, d-316, d-300, d-322, d-346]
 - Data: 2026-11-05
@@ -4134,8 +4136,9 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: `condicoes.md` (C1, C2, C4, C6, C8, C12), `poderes-das-criaturas.md` (P5, P7, P8, P9, P10, K3), `acoes-e-sistema.md` (âncora), `combate.md` (o teto de +6); painel: Retardado e Acelerado "Só no sistema P/G/R, por ora".
 - Muda: completa a D-345, a D-281, a D-280, a D-298, a D-324, a D-300 e a D-322 nos pontos acima; nada substituído.
 - Origem: mensagem do autor de 05/11/2026 sobre a releitura da Leitora-novata (`../tmp/leitora/releitura-condicoes-poderes.md`, lida em `a4cc6fa5`).
-- Estado: **aplicada** na branch `regras-leitora-3`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-leitora-3`, publicada em `f294e7c9`).
 - As perguntas C3, C5, C10, C13 e P4 foram respondidas pela D-349 (05/11/2026).
+- Ajustes de 05/11/2026, depois da Revisora na `regras-leitora-3` (ordem do autor): no C1, "o degrau de cima na escada do medo" passa a "o mais forte dos dois" (o termo é da D-281 e não está no livro); no P9, o parêntese passa a cobrir a Proeza, a Arte e a ficha que trouxer o dano (D-300), e não só o Golpe na brecha. O C7 virou regra do livro pela D-350.
 
 ### D-349 · L5 a L7, C5 e P4: Vigor 0 mata, o Amedrontado e a Bravura, o grau a menos do Dominado, o Inconsciente e a mente, as duas resistências no teto [tags: condicoes, vigor, atributo-enfraquecido, amedrontado, bravura, dominado, duracao, inconsciente, defesa-mental, resistencia-a-magia, resistencia-mental, teto, leitora, d-291, d-295, d-281, d-289, d-014, d-345, d-280, d-302, d-346, d-348]
 - Data: 2026-11-05
@@ -4155,7 +4158,18 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fichas: a L5 manda a Bestiarista conferir cada dreno de Vigor (lista `../tmp/arquiteto/bestiarista-releitura-leitora.md`, item 9).
 - Muda: completa a D-291 e a D-295 (L5), a D-281 (L6), a D-289 (L7), a D-345 (C5, pela L2); ajusta a leitura da D-014 para os poderes de criatura (L7); substitui a frase "valem sozinhas" da nota P6 da D-346 (P4, redação de Claude). Responde as perguntas da D-348.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, seção "Releitura da Leitora (releitura-condicoes-poderes.md), perguntas que sobraram da triagem do Arquiteto (05/11/2026)", decisões do autor de 05/11/2026 sobre as perguntas da releitura da Leitora-novata (D-348).
-- Estado: **aplicada** na branch `regras-leitora-3`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-leitora-3`, publicada em `f294e7c9`).
+
+### D-350 · L9: Petrificação com Vigor alto, Vigor 1 e corpos de outro feitio [tags: condicoes, petrificacao, vigor, membros, mestre, leitora, d-285, d-296, d-087, d-348]
+- Data: 2026-11-05
+- Decisão (autor; seção "L9. Petrificação com Vigor alto, Vigor 1 e corpos de outro feitio (05/11/2026, DECIDIDA; C7 da releitura; completa a R12)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada (do Arquiteto). Cada falha tira 1 de Vigor e petrifica um membro enquanto houver membro; depois, as falhas só tiram Vigor (o corpo endurece por dentro) até o 0 fazer a estátua. Com Vigor 1, a estátua vem na primeira falha. Corpos de outro feitio (basilisco, serpente), o Mestre ajusta.
+  - Texto aprovado: "Enquanto houver membro livre, cada falha petrifica um. Quando os membros acabam e ainda sobra Vigor, as falhas seguintes só tiram Vigor: o corpo endurece por dentro, até o 0 fazer a estátua. Quem tem Vigor 1 vira estátua na primeira falha. Num corpo de outro feitio (a serpente, o basilisco), o Mestre decide o que conta como membro."
+- No livro: o "Texto aprovado", como está, em `src/content/chapters/condicoes.md`, *Petrificação*, depois de "Cada **falha** transforma um membro em pedra e tira 1 ponto de Vigor temporário."
+- Fichas: o item da petrificação sai da lista da Bestiarista (`../tmp/arquiteto/bestiarista-releitura-leitora.md`), porque virou regra do livro.
+- Muda: completa a D-285 (R12) e a D-296 (P2); responde o C7 da releitura, que a D-348 tinha mandado às fichas e a Revisora mostrou ser também de livro (um personagem pode ter Vigor 5 ou 6).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisão do autor de 05/11/2026 sobre o item 2 de depois da Revisora na `regras-leitora-3`.
+- Estado: **aplicada** na branch `regras-leitora-4`, a publicar com o ok do autor.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
