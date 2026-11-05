@@ -4043,6 +4043,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: a L3 completa a D-284 (R11); a L4 substitui a frase da base de Arte da D-274 (R1); a L2 diz o que o "Defesas 0" do Dormindo era.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, triagem do autor de 05/11/2026 sobre a leitura da Leitora-novata (`../tmp/leitora/leitura-condicoes-poderes.md`, 43 itens, lida em `d796a36d`).
 - Estado: **aplicada** na branch `regras-leitora`, a publicar com o ok do autor.
+- Acréscimo à L4 (autor, 05/11/2026): depois de "Não é conjuração, não gasta Mana", o livro diz que isso é a ativação: "o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias acima".
 
 ### D-346 · Triagem da Leitora: os itens aplicados sem pergunta [tags: condicoes, poderes, painel, atordoado, atributo-enfraquecido, paralisado, petrificacao, cego, dominado, confuso, sono, leitora, d-284, d-291, d-294, d-282, d-001]
 - Data: 2026-11-05
@@ -4077,6 +4078,9 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-284 (R11), a D-291 (R18), a D-294 (R20, o painel), a D-282 (R9) e a D-276 e D-277 (R3 e R4) nos pontos acima; nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, triagem do autor de 05/11/2026 sobre a leitura da Leitora-novata (`../tmp/leitora/leitura-condicoes-poderes.md`, 43 itens, lida em `d796a36d`).
 - Estado: **aplicada** na branch `regras-leitora`, a publicar com o ok do autor.
+- **K7 seguiu o registro** (autor, 05/11/2026, opção 1): a ordem vinha de uma decisão de 03/10 já substituída pela D-019, item 23, e pela D-081; o erro foi de Claude, não do autor. O livro fica como está ("Agarrado: não age"). No painel, o Agarrado perde "Só ações de força, arma curta ou escapar" e o −2, e passa a dizer "não age; contra quem ataca de fora, Esquiva −8 e Bloqueio −4".
+- P6 da Leitora (autor, 05/11/2026): o livro já põe a cobertura e a postura no teto de +6 dos bônus de Defesa (`combate.md`, a Defesa reflexiva de Proeza). A resistência à magia e a mental, quando somam numa Defesa, entram nesse mesmo teto; na jogada de resistir, valem sozinhas. Uma frase em *Os Poderes das Criaturas*, junto das duas resistências.
+- As três Artes que aplicam "Na escuridão" (Mordaça de Treva, Devorar a Luz, Noite) vão à pendência A35, para a revisão das Artes, sem número por agora (autor, 05/11/2026).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

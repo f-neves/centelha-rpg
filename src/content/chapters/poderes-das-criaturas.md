@@ -7,7 +7,7 @@ resumo: "As cinco categorias de poder que uma criatura tem além das Artes e das
 
 <p class="muted">Parte do capítulo <strong>Combate Físico</strong>. Vale para os poderes das criaturas do <a href="/centelha-rpg/bestiario">Bestiário</a>; cada ficha diz a categoria, os usos e os números do poder. Os estados que os poderes causam estão em <a href="/centelha-rpg/regras/condicoes">Condições</a>.</p>
 
-**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
+**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias acima. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
 
 ## As cinco categorias
 
@@ -42,6 +42,8 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 **Resistência à magia.** Algumas criaturas resistem à magia por natureza. A resistência tem três graus, que somam +2, +4 ou +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia. O bônus entra no teto comum de +6.
 
 **Resistência mental.** Algumas criaturas resistem à mente sem ser imunes. A resistência tem três graus, que somam +2, +4 ou +6 à Defesa Mental, contra todo efeito mental ou só contra a família que a ficha nomear. O bônus entra no teto comum de +6.
+
+**O teto das duas resistências.** Quando somam numa Defesa, a resistência à magia e a mental entram no mesmo teto de +6 dos bônus de Defesa, junto da cobertura e da postura ([Combate Físico](/regras/combate)). Na jogada de resistir, valem sozinhas.
 
 <span id="corpos-que-nao-vivem"></span>
 

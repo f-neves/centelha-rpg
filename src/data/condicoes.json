@@ -23,8 +23,7 @@
     },
     {
       "id": "agarrado", "nome": "Agarrado", "icone": "🤝", "grupo": "posicao", "cor": "alerta",
-      "defesa": -2,
-      "nota": "Em luta corpo a corpo travada. Só ações de força, arma curta ou escapar."
+      "nota": "Em luta corpo a corpo travada: não age; contra quem ataca de fora, Esquiva −8 e Bloqueio −4 (livro, Combate Físico)."
     },
     {
       "id": "flanqueado", "nome": "Flanqueado", "icone": "↹", "grupo": "posicao", "cor": "alerta",

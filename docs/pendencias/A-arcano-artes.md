@@ -301,4 +301,5 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   - `efeitos.json`, `bolha-temporal` ("o tempo corre ao dobro ou à metade") aplica `acelerado` (−1 de Recuperação); `instante` e `lapso` o mostram como `condicaoAparente`;
   - `efeitos.json`, `paralisia`: "o alvo recebe 2 × (nível da Arte) de penalidade", e o `grid` aplica `imobilizado`, que agora tem `zeraDefesa`; nada disso é o Paralisado da R10;
   - `tecnicas.json`, `soco-trovejante`: "o atordoa (perde Ticks) se ele falhar num teste de Vigor", contra a R11 (Vigor + Resistência contra 10 + 5 × Margem).
-  - Fazer, no tema 05 (Artes): revisar o `grid.condicao` destes seis efeitos e o texto da Técnica.
+  - `efeitos.json`, `mordaca` (Mordaça de Treva), `devorar-a-luz` (Devorar a Luz) e `noite` (Noite) aplicam `escuridao`, que desde a D-346 (05/11/2026) é lembrete da penumbra, sem número; ficam sem número até a revisão (ordem do autor de 05/11/2026).
+  - Fazer, no tema 05 (Artes): revisar o `grid.condicao` destes nove efeitos e o texto da Técnica.
