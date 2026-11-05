@@ -59,6 +59,8 @@ O custo é para subir ao próximo ponto, em função do *novo* valor.
 
 <div class="callout"><span class="lbl">O portão da Centelha</span>A Centelha <strong>não custa XP</strong>. Ela sobe só com <strong>permissão do Mestre</strong>, num marco de história ou feito maior: o salto de tier, de herói a semideus, é uma conquista narrativa e não uma transação de balcão. Cobrar XP por ela criava a situação estranha de o Mestre conceder o marco e o jogador responder que não tinha guardado o suficiente.</div>
 
+**Centelha inicial.** A Centelha não se compra com XP: o Mestre e o grupo a combinam antes da criação. Se ninguém definir, a referência de uma campanha heroica é **Centelha 1**.
+
 ## Limites na criação
 
 Na criação não existe limite próprio: valem os máximos normais da ficha. Quase tudo vai até **6**, e alguns traços vão até **12** (Força de Vontade, Aparência). Depois entram os ajustes raciais, para cima ou para baixo: o Atributo com `+1` racial chega a **7**, e o com `−1` fica em **5**. O que segura o personagem novo é o orçamento de XP. A ficha básica não tem restrição de criação, e isso vale também para a Centelha: quem informa aos jogadores as restrições da campanha é o Mestre. O nível de cada Arte respeita o teto da Centelha (Centelha + 2). Os tiers maiores da Centelha vêm com o jogo.

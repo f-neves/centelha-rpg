@@ -1505,6 +1505,7 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 - Decisao: "as fichas de exemplo (Kael, Sora, Veil, Bram) sao so um direcionamento. Depois desta correcao, nao gaste mais rodada nelas. Ficam como estiverem ate o fim da revisao do sistema, quando o autor volta a elas. Registre como pendencia (revisar as fichas de exemplo ao fim) e, se algum ponto do 1e mexer nelas alem disso, pule e anote."
 - Origem: conversa do autor, 04/10/2026
 - Estado: em vigor. Vale na rodada 10: so a troca das Tecnicas da D-047; os demais pontos sobre as fichas (totais de XP, Bram em 1401, contagens) sao pulados e anotados. Pendencia "revisar as fichas de exemplo ao fim" no Pendencias.md (pasta docs/pendencias).
+- Item 134 de `99-sem-decisao.md` (05/11/2026): o exemplo de Bram fica congelado até o recálculo do orçamento (R54, pendência D19).
 
 ### Respostas do autor às 12 dúvidas do veterana-1e (04/10/2026)
 
@@ -3713,6 +3714,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído. As duas suposições de Claude ficam registradas como estão, acima. O fator da Centelha (inteira ou 2 ×) é pendência da bancada (B23).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 09, sopro e área).
 - Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- **Dano mudado pela D-340** (R40c, 05/11/2026): sai "o golpe da ficha ou, para quem não tem, o do Encontrão", que era erro de redação de Claude; entra o dano próprio do atropelamento.
 
 ### D-320 · R41: Depois da área: nada de dano que fica, a não ser que o efeito diga; o Mestre decide as consequências [tags: combate, area, sopro, mestre, d-087]
 - Data: 2026-11-05
@@ -3771,6 +3773,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído: a D-246 segue.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 12, regeneração).
 - Estado: **pendência, não regra** (`docs/pendencias/B-bestiario.md`, B21).
+- Redação de 05/11/2026 (ordem do autor): a linha que abre a seção *Regeneração* diz só que a regra do ritmo está pendente; sai "o Mestre resolve o que a ficha descrever até lá".
 
 ### D-326 · R47: Fraqueza da criatura na regeneração: interrompe tudo, ou não se regenera [tags: bestiario, criatura, regeneracao, fraqueza, d-246]
 - Data: 2026-11-05
@@ -3827,14 +3830,16 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
 - Estado: **aplicada** na branch `regras-r35-r54` (dados), a publicar com o ok do autor. As 15 fichas de humano se corrigem por lote de ajuste da Bestiarista.
 
-### D-332 · R53: Centelha inicial: combinada com o Mestre, sem XP, teto por campanha, Centelha 1 por referência [tags: criacao, centelha, mestre, veil]
+### D-332 · R53: Centelha inicial: combinada com o Mestre, sem XP; Centelha 1 como referência da campanha heroica [tags: criacao, centelha, mestre, d-055]
 - Data: 2026-11-05
 - Decisão (autor; seção "R53. Centelha inicial (05/11/2026, DECIDIDA; item 129)" de `DECISOES-AUTOR.md`, copiada como está):
   - Resposta do autor: a recomendada. A Centelha inicial se escolhe com o Mestre e não custa XP; cada campanha declara o seu teto antes da criação (no Veil, 3); o livro dá uma referência para quem não definir: Centelha 1.
-- No livro: **ainda não**: o texto aprovado contradiz o livro (ver Estado).
-- Muda: a decidir.
+- No livro: o "Texto aprovado, corrigido" da seção "R53, correção (05/11/2026, DECIDIDA; pergunta 1 do Arquiteto)", como está, em `src/content/chapters/criacao-de-personagem.md` (*Custos de XP*), depois de *O portão da Centelha*:
+  **Centelha inicial.** A Centelha não se compra com XP: o Mestre e o grupo a combinam antes da criação. Se ninguém definir, a referência de uma campanha heroica é **Centelha 1**.
+- Muda: nada substituído: segue a D-055 (o teto 3 da Centelha caiu na criação). O texto aprovado primeiro foi substituído pela correção.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
-- Estado: **suspensa** até o autor responder ao conflito levado pelo Arquiteto em 05/11/2026: "Se ninguém definir, comece em Centelha 1" contra `criacao-de-personagem.md:31` e `:33` (o piso é Centelha 0, e "Alcançar Centelha 1 ... se conquista na história, não na planilha"); e "(no Veil, 3)" contra o exemplo de Veil, `:126` e `:128` (Centelha 4, com exceção declarada).
+- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Correção (autor, 05/11/2026; seção "R53, correção (05/11/2026, DECIDIDA; pergunta 1 do Arquiteto)"): A R53 foi montada por Claude sobre premissa errada do estudo: Veil é exemplo de personagem na Criação, não campanha com teto; a D-055 já tirou o teto 3 da criação; o piso é Centelha 0. Resposta do autor: tirar o "(no Veil, 3)" e trocar "comece em Centelha 1" por "a referência de uma campanha heroica é Centelha 1". A premissa do "(no Veil, 3)" foi erro de Claude, e não do autor.
 
 ### D-333 · Tema 04, itens aplicados: arrastar a presa, golpe que derruba ou agarra, firme, emboscada, esmagar contra obstáculo e os outros [tags: combate, manobras, agarrao, empurrar, criatura, d-019, d-081]
 - Data: 2026-11-05
@@ -3861,6 +3866,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: **muda a D-019, item 26** ("Deslocamento durante o agarrão: só descrição"), pelo 024. O 047 aponta uma diferença com o livro que fica para o autor: a Técnica Encontrão Relâmpago (`tecnicas.json`) diz "Força+Corrida vs Defesa", e o item diz Força + Atletismo contra a Defesa Física.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
 - Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Ajustes de 05/11/2026: o 044 diz que o 1d6 de Impacto a mais passa pela Absorção, como todo dano (ordem do autor); o 047 se resolveu pela D-342 (P7).
 
 ### D-334 · Tema 09, itens aplicados: o molde do sopro, a tinta na água e a descarga coletiva [tags: criatura, sopro, area, substancia, r1, r3, r4]
 - Data: 2026-11-05
@@ -3959,6 +3965,54 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: um item, por completar regra geral do livro: o 073, num parágrafo *Som*, em `src/content/chapters/combate.md` (Combate Físico, *Os três modos de dano*). O 132 (modificador racial) o livro já cobre (Raças e Criação: o `+1` move o valor inicial e o teto). Os outros (005, 007 a 010, 018, 070 a 072, 074) são casos de ficha.
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
+- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+
+### D-340 · R40c: o dano do atropelamento: 1d6 no Médio, +1d6 por categoria acima, + Margem + 2 × Força + Centelha [tags: combate, atropelar, dano, tamanho, forca, centelha, d-319]
+- Data: 2026-11-05
+- Decisão (autor; seção "R40c. Dano do Atropelar (05/11/2026, DECIDIDA; pergunta 2 do Arquiteto)" de `DECISOES-AUTOR.md`, copiada como está):
+  - O livro não tem "dano de Encontrão" (erro de redação de Claude na R40). Resposta do autor: o dano do atropelamento vem do tamanho mais 2 × Força; Médio 1d6, +1d6 por categoria acima. Ajustes de Claude aceitos: a Centelha e a Margem entram, como em todo dano do livro; o Pequeno atropela sem dado (2 × Força + Centelha, um degrau de 1d6 abaixo do Médio, igual ao dano do agarrão); quem é menor que Pequeno não atropela. O autor escolheu "sem dado" contra "1d6 − 4" e "só Força".
+  - Sai da R40 a frase "o golpe da ficha ou, para quem não tem, o do Encontrão".
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (*Atropelar e Pisoteio*), no lugar da frase "Quem não consegue sofre o dano do atropelamento (o golpe da ficha ou, para quem não tem, o do Encontrão) e fica Caído, e você continua o trajeto."
+- Muda: **muda a D-319 (R40)** no dano: o "dano de Encontrão" era erro de redação de Claude.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
+- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+
+### D-341 · P6: a prata e o lobisomem: o exemplo sai da fraqueza das Artes; o lobisomem fica com a R50 e a R47 [tags: artes, fraqueza, resistencia, prata, lobisomem, d-329, d-326]
+- Data: 2026-11-05
+- Decisão (autor; seção "P6. A prata e o lobisomem (05/11/2026, DECIDIDA; pergunta 3 do Arquiteto; resolve o item 069)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. Na página das Artes ("Fraqueza e resistência", regras.json), o exemplo do lobisomem sai e entra outra criatura (por exemplo, fogo contra criatura de gelo); a fraqueza das Artes (ignora a Absorção e agrava) continua existindo. O lobisomem fica com a R50 (a prata tira a metade da resistência) e a R47 (o dano de prata não se regenera).
+- No livro: em `src/data/regras.json` (`arcano.fraquezas.nota`) e em `src/pages/artes/regras.astro` (*Fraqueza e resistência*), o lobisomem e a prata dão lugar ao elemental de gelo e ao fogo.
+- Muda: nada substituído: a fraqueza das Artes continua. Fecha o item 069 de `99-sem-decisao.md`.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
+- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+
+### D-342 · P7: o Encontrão Relâmpago rola Força + Atletismo contra a Defesa [tags: tecnica, encontrao-relampago, atletismo, d-333]
+- Data: 2026-11-05
+- Decisão (autor; seção "P7. Jogada do Encontrão Relâmpago (05/11/2026, DECIDIDA; pergunta 4 do Arquiteto)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. A Técnica passa de "Força + Corrida" (Corrida não é Habilidade) para "Força + Atletismo contra a Defesa".
+- No livro: em `src/data/tecnicas.json` (`encontrao-relampago`), "Força+Corrida vs Defesa" passa a "Força + Atletismo contra a Defesa".
+- Muda: corrige a Técnica (o item 047 da D-333 apontou a diferença).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
+- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+
+### D-343 · P8: Anticoagulante: o Sangramento comum, mas estancar pede Raciocínio + Cura [tags: vida, sangramento, anticoagulante, cura, criatura, d-248]
+- Data: 2026-11-05
+- Decisão (autor; seção "P8. Anticoagulante e Sangramento (05/11/2026, DECIDIDA; item 031)" de `DECISOES-AUTOR.md`, copiada como está):
+  - Resposta do autor: a recomendada. A mordida usa o Sangramento do livro (D-248); o anticoagulante é exceção de tratamento: a ferida não para sozinha, e estancar exige Raciocínio + Cura em vez do cuidado simples. O resto é o Sangramento comum.
+- No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/vida-ferimentos-cura.md` (*Sangramento e Estabilização*), depois do Estabilizar.
+- Muda: nada substituído: o Sangramento segue a D-248. Fecha o item 031 de `99-sem-decisao.md`.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
+- Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+
+### D-344 · Itens editoriais separados pelo Arquiteto: 003, o catálogo de armas e o exemplo de Bram [tags: livro, peso-erguido, catalogo, armas, bram, d-053, d-267]
+- Data: 2026-11-05
+- Decisão (autor; seção "Itens editoriais separados pelo Arquiteto (05/11/2026, aplicados sem pergunta)" de `DECISOES-AUTOR.md`, copiada como está):
+  - 003: a R15 (peso erguido pela massa) já está decidida; publicar no lugar da tabela antiga (Arquiteto e Executora, a tabela é gerada por script).
+  - 014, 016, 017, 019, 020, 021: entradas de catálogo. Por ora, as fichas usam a equivalência que já têm (tridente como Lança, florete como espada curta, forcado como bordão, besta pesada como Média, rocha como arremesso pesado, armas de gigante como variantes de tamanho); o catálogo vai à revisão de armas (Comerciante).
+  - 134: o exemplo do Bram fica congelado (D-053) até o recálculo do orçamento (R54).
+- No livro: nada. O 003 já está no ar: o capítulo *Corpo e Movimento* traz a R15 no bloco gerado `gen:peso-erguido` desde a D-267 (V2), e a tabela antiga por FAH saiu do capítulo; nada vai à Executora.
+- Muda: nada substituído. O catálogo de armas vira a pendência B24; o 134 fica congelado (D-053) até a R54 (D19).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
 - Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]

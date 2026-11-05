@@ -256,7 +256,7 @@ Há duas saídas: abrir uma ferida por dentro, de tantos PV quanto a ficha diz (
 
 **Derrubar.** Ataque comum, Força ou Destreza (à escolha) + Briga, contra a Defesa do alvo (a melhor entre Esquiva e Bloqueio). O alvo fica **Caído** (prono): −2 na Defesa contra corpo a corpo e +2 contra distância (Vantagem tática). Levantar-se é uma ação de Velocidade 3.
 
-**Empurrar.** Ataque comum, contra a Defesa do alvo. O alvo recua 1 m mais 1 m por Margem, afastando-se de quem empurra. Se o recuo o leva a uma borda, valem [Cair](/regras/acoes-corpo-e-movimento) e Agarrar a borda, no Cap. VIII. Se o recuo termina contra algo que não cede (parede, rocha, tronco), o alvo sofre 1d6 de Impacto, uma vez por ação; prensar contra o obstáculo pede manter um agarrão.
+**Empurrar.** Ataque comum, contra a Defesa do alvo. O alvo recua 1 m mais 1 m por Margem, afastando-se de quem empurra. Se o recuo o leva a uma borda, valem [Cair](/regras/acoes-corpo-e-movimento) e Agarrar a borda, no Cap. VIII. Se o recuo termina contra algo que não cede (parede, rocha, tronco), o alvo sofre 1d6 de Impacto a mais, uma vez por ação, e esse dano passa pela Absorção, como todo dano; prensar contra o obstáculo pede manter um agarrão.
 
 ### Massa nas Manobras
 
@@ -459,7 +459,7 @@ Cada alvo no caminho escolhe como se defender:
 - **Esquivar**, com Destreza + Esquiva: se igualar ou superar o seu total, sai do caminho sem dano, e você segue.
 - **Parar**, com Força pura: precisa **superar** o seu total (empate não basta), e então o atropelamento para ali.
 
-Quem não consegue sofre o dano do atropelamento (o golpe da ficha ou, para quem não tem, o do Encontrão) e fica Caído, e você continua o trajeto.
+**Dano do atropelamento:** 1d6 de Impacto no Médio, mais 1d6 por categoria de Tamanho acima do Médio (Grande 2d6, Enorme 3d6...), **+ Margem + 2 × Força + Centelha − Absorção**. O Pequeno atropela sem dado, só com 2 × Força + Centelha; quem é menor que isso não atropela. Quem não consegue se defender sofre esse dano e fica Caído, e o atropelamento segue.
 
 **Pisoteio** é outra coisa: pisar num alvo só. É um ataque natural da ficha, como uma garra ou uma mordida.
 

@@ -419,3 +419,8 @@ limitações conhecidas, que são as três de baixo.
 - [ ] **B23 · [FAZER] Atropelar: a Centelha inteira ou 2 × Centelha (R40, D-319).** Registrado em 05/11/2026. A bancada calcula se
   a Força pura do Atropelar soma a Centelha inteira (como está no livro) ou 2 × Centelha, para que uma criatura de Centelha alta consiga
   parar criaturas grandes. O autor confirmou que o fator é o mesmo nos dois lados (quem atropela e quem quer Parar).
+
+- [ ] **B24 · [FAZER] Catálogo de armas: as que as fichas usam por equivalência (itens 014, 016, 017, 019, 020 e 021; D-344).**
+  Registrado em 05/11/2026. Por ora as fichas usam a equivalência que já têm: tridente como Lança, florete como espada curta, forcado
+  como bordão, besta pesada como Média, rocha como arremesso pesado, armas de gigante como variantes de tamanho. O catálogo vai à
+  revisão de armas (Comerciante).
