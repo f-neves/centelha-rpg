@@ -4169,7 +4169,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fichas: o item da petrificação sai da lista da Bestiarista (`../tmp/arquiteto/bestiarista-releitura-leitora.md`), porque virou regra do livro.
 - Muda: completa a D-285 (R12) e a D-296 (P2); responde o C7 da releitura, que a D-348 tinha mandado às fichas e a Revisora mostrou ser também de livro (um personagem pode ter Vigor 5 ou 6).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisão do autor de 05/11/2026 sobre o item 2 de depois da Revisora na `regras-leitora-3`.
-- Estado: **aplicada** na branch `regras-leitora-4`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-leitora-4`, publicada em `814e6cc2`).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
