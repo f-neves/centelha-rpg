@@ -19,7 +19,7 @@ Cinco coisas tentam derrubar um corpo ao longo do tempo: veneno, doença, ambien
 
 O pool **nunca desce abaixo de 1d6**, e o +2 da soma ímpar continua valendo: mesmo arrasado, o personagem ainda joga alguma coisa.
 
-**Os degraus de condições diferentes somam, e a soma para em 4.** O náufrago com frio, sede e sono não morre de aritmética. **O que mata é o relógio próprio de cada condição**, nunca o Desgaste: o sufocamento tem a asfixia, a doença tem o estágio Terminal, o veneno tem a dose letal. O Desgaste é o preço de estar aguentando, não a forma de morrer.
+**Os degraus de condições diferentes somam, e a soma para em 4.** (O teto é só do Desgaste; os estados de [Condições](/regras/condicoes), como o Enjoado, são outra régua e somam por fora.) O náufrago com frio, sede e sono não morre de aritmética. **O que mata é o relógio próprio de cada condição**, nunca o Desgaste: o sufocamento tem a asfixia, a doença tem o estágio Terminal, o veneno tem a dose letal. O Desgaste é o preço de estar aguentando, não a forma de morrer.
 
 **Recuperação padrão:** um degrau por noite de sono com abrigo, comida e água.
 
@@ -113,7 +113,7 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 
 <div class="callout regra"><span class="lbl">Regra</span>É isso que faz "põe ele na cama" ser um ato mecânico e não um floreio. A febre dos pântanos que o camponês não vence de jeito nenhum vira Virulência 6 com cama e cuidado, e ele desce um estágio a cada três dias. <b>Doença não é vencida pela ficha do doente, é vencida por quem cuida dele.</b></div>
 
-**Ajuda** · reconhecer a doença é Inteligência + Cura, e o Mestre decide se é preciso rolar. O curandeiro que quiser mais do que a circunstância trata com a mão (cirurgia, administração intravenosa), rola **Raciocínio + Cura** contra a Virulência e apoia pela [tabela geral de apoio](/regras/acoes-e-sistema). Dar um remédio para beber não pede teste. O −2 vale para até três doentes, e some acima disso.
+**Ajuda** · reconhecer a doença é Inteligência + Cura, e o Mestre decide se é preciso rolar. O curandeiro que quiser mais do que a circunstância trata com a mão (cirurgia, administração intravenosa), rola **Raciocínio + Cura** contra a Virulência e apoia pela [tabela geral de apoio](/regras/acoes-e-sistema). Dar um remédio para beber não pede teste. O −2 do curandeiro vale para até três doentes, e some acima disso.
 
 **Parasita e esporo** · Cura ou cirurgia adequada retira o agente e para a progressão.
 
@@ -123,7 +123,7 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 
 **Modo** · Direta repetida. **Jogada** · Vigor + Resistência contra a **Severidade**, uma por intervalo. Falhando, **+1 Desgaste**. Passando, nada. Passando por uma Margem, nada e **o intervalo seguinte não se rola**: o corpo achou o ritmo.
 
-<p class="formula">Agasalho e abrigo não mudam a Severidade: sobem o <b>intervalo</b> um degrau</p>
+<p class="formula">Agasalho e abrigo não mudam a Severidade: sobem o <b>intervalo</b> um degrau (testa-se menos vezes: de hora em hora passa a uma vez por dia)</p>
 
 É o efeito real de um casaco. Não é que você aguente melhor o frio, é que ele deixa de ser testado a toda hora.
 
@@ -171,7 +171,7 @@ Quando os Ticks acabam, **o personagem apaga na hora**. Não há queda gradual n
 
 <p class="formula">Janela de socorro = <b>Vigor × 20</b> Ticks, e depois disso morre</p>
 
-Vigor 3 dá um minuto para tirar da água, virar de lado e fazer voltar a respirar. Reanimar é Raciocínio + Cura contra Dificuldade 10, uma jogada por Tick, e cada jogada custa a ação de quem socorre. Quem volta acorda com **Desgaste 2**, que sai em dois dias e não em um: quase se afogar cobra.
+Vigor 3 dá um minuto para tirar da água, virar de lado e fazer voltar a respirar. Reanimar é Raciocínio + Cura contra Dificuldade 10, uma jogada por Tick, e cada jogada custa a ação de quem socorre. Quem volta acorda com **Desgaste 2**, que sai em duas noites, como todo Desgaste: quase se afogar cobra.
 
 Vale igual para afogamento, estrangulamento, soterramento, fumaça e vácuo. A fumaça acrescenta o dano dela por Tick; o soterramento acrescenta o peso, que é [Feito de força](/regras/acoes-corpo-e-movimento).
 

@@ -218,7 +218,7 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, Shuriken, Mini-fa
 
 ## Integridade do equipamento
 
-**Integridade do equipamento.** Armas, armaduras e escudos têm três graus: **inteira**, **avariada** e **quebrada**. Avariada, a peça perde 1 ou 2 num número: a arma no acerto ou no dano, o escudo no Bloqueio, a armadura na Absorção ou na penalidade. Quebrada, perde de 2 a 4 em um ou mais números, e ainda serve, mal. Cada conserto (Ferreiro; Carpintaria, se for de madeira) repõe um grau.
+**Integridade do equipamento.** Armas, armaduras e escudos têm três graus: **inteira**, **avariada** e **quebrada**. Avariada, a peça perde 1 ou 2 num número: a arma no acerto ou no dano, o escudo no Bloqueio, a armadura na Absorção ou na penalidade. Quebrada, perde de 2 a 4 em um ou mais números, e ainda serve, mal. O valor exato dentro da faixa fica com a peça ou com o Mestre. Cada conserto (Ferreiro; Carpintaria, se for de madeira) repõe um grau.
 
 O que uma criatura ou uma Arte estraga de propósito (a ferrugem, a corrosão, o ácido) tira um grau sempre que vencer a resistência da peça.
 

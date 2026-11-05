@@ -52,7 +52,7 @@
     {
       "id": "correndo", "nome": "Correndo", "icone": "»", "grupo": "posicao", "cor": "perigo",
       "defesa": -4,
-      "nota": "Esprintando: não apara nem esquiva. Vale enquanto corre e até a sua próxima ação começar. O acerto não sofre: quem parou, parou.",
+      "nota": "Esprintando: apara e esquiva mal. Vale enquanto corre e até a sua próxima ação começar. O acerto não sofre: quem parou, parou.",
       "fonte": "combate · movimento"
     },
     {
@@ -88,13 +88,13 @@
     {
       "id": "guarda-quebrada", "nome": "Guarda quebrada", "icone": "✖", "grupo": "posicao", "cor": "perigo",
       "defesa": -4,
-      "nota": "Fez dois ataques no mesmo lance (empunhadura dupla) ou perdeu a guarda: −4 pelos próximos 6 Ticks.",
+      "nota": "Fez dois ataques no mesmo lance (empunhadura dupla) ou perdeu a guarda: −4 até a sua próxima ação (Guarda sob pressão, livro).",
       "fonte": "combate · empunhadura dupla"
     },
 
     {
       "id": "escondido", "nome": "Escondido", "icone": "◐", "grupo": "sentidos", "cor": "bom",
-      "nota": "Não pode ser alvejado enquanto não for encontrado (Percepção + Prontidão contra a Furtividade). O primeiro golpe pega o alvo Surpreso.",
+      "nota": "Não pode ser alvejado enquanto não for encontrado (a Furtividade de quem se esconde contra a Percepção Passiva de quem procura, livro, Sentidos e Engano). O primeiro golpe pega o alvo Surpreso.",
       "marcaOculto": true
     },
     {
@@ -131,7 +131,7 @@
     {
       "id": "sangrando", "nome": "Sangrando", "icone": "🩸", "grupo": "corpo", "cor": "perigo",
       "porSeisTicks": 1,
-      "nota": "A cada 6 Ticks desde o ferimento perde 1 de Vida (ignora Absorção). Estabilizar: Raciocínio + Cura contra Dif 10, ou Vigor + Resistência em si mesmo.",
+      "nota": "Sangramento N: a cada 6 Ticks desde o ferimento perde N de Vida, até 5 (ignora Absorção); o painel marca 1, e o Mestre soma o resto. Estabilizar: Raciocínio + Cura contra Dif 10, ou Vigor + Resistência em si mesmo.",
       "fonte": "regras.json · sangramento"
     },
     {
