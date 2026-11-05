@@ -4171,6 +4171,29 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisão do autor de 05/11/2026 sobre o item 2 de depois da Revisora na `regras-leitora-3`.
 - Estado: **no ar** desde 05/11/2026 (branch `regras-leitora-4`, publicada em `814e6cc2`).
 
+### D-351 · Leitura da Leitora em Combate, Resistir, Integridade, Criação e Atributos: os itens resolvidos pelo registro ou pelo próprio livro [tags: combate, corrida, painel, sangramento, escondido, horda, atropelar, engolir, resistir, desgaste, doenca, ambiente, integridade, criacao, centelha, atributos, leitora, d-087, d-303, d-294, d-346, d-319, d-327, d-330, d-332, d-345]
+- Data: 2026-11-05
+- Decisão (Arquiteto, por ordem do autor de 05/11/2026: "passe os itens pelos três filtros (registro, Veterana, bom senso do Mestre), como na regras-leitora-3: aplique o que já tem decisão (...) e me traga só as perguntas que sobrarem"). Triagem completa em `../tmp/arquiteto/triagem-leitura-combate-05-11.md`. Aplicados aqui:
+  - K-COMB-1: Correndo vale o −4 (D-303); "correndo não se apara nem se esquiva" passa a "correndo, apara e esquiva mal", no livro, no painel e no espelho de `regras.json` (`combate.movimento.corrida.texto`); o `test-capitulo-armas.mjs` passa a cobrar os dois lados.
+  - K-COMB-2: no painel, a Guarda quebrada dura "até a sua próxima ação" (Guarda sob pressão), e não 6 Ticks; o painel é lembrete e vale o livro (D-294, D-346).
+  - K-COMB-3: no painel, o Sangrando diz o Sangramento N (N de dano, até 5); o número 1 fica, e o Mestre soma o resto.
+  - K-COMB-4: no painel, o Escondido diz a regra do livro (Furtividade contra a Percepção Passiva de quem vigia; quem procura de propósito rola Procurar).
+  - C-COMB-3: no exemplo do Kael, "investida" (que é regra) passa a "ação".
+  - C-COMB-7: o Engolir ganha o link para Sufocamento.
+  - C-COMB-8, em parte: a esquiva do Atropelar é rolada, e não passiva (a D-319 diz "Defesa ativa").
+  - C-COMB-11: o "piso de durabilidade de 25" é o 25 fixo da fórmula do PV, com link.
+  - C-COMB-12 não entrou: a tabela de fases ("Arte, graus 0 a 3") é guardada pelo `test-capitulo-armas.mjs`, que cobra o rótulo; trocar por "níveis" (D-346) pede mudar o teste junto, numa rodada própria.
+  - K-RES-1: o Desgaste 2 do afogamento "sai em duas noites, como todo Desgaste" (o topo da página dá um degrau por noite).
+  - C-RES-8: o −2 que vale para até três doentes é o do curandeiro.
+  - C-RES-9: "sobem o intervalo" quer dizer testar menos vezes.
+  - C-RES-12: o teto de 4 é só do Desgaste; as Condições são outra régua (resposta do autor na L1, D-345: "o Desgaste é outra régua").
+  - C-ARM-1: o valor exato dentro da faixa da Integridade fica com a peça ou com o Mestre (D-330, assumido sem objeção).
+  - C-CRI-1: no Passo 8, "O Mestre escolhe pela campanha" passa a "O Mestre e o grupo combinam pela campanha" (D-332).
+  - K-ATR-1: a conta do exemplo (Força 2 e Armas 5 não somam 5) passa a Força 2 e Armas 3.
+- Ficam para depois, na triagem: os itens a conferir no registro (seção D) e as perguntas ao autor (seção E).
+- Origem: `../tmp/leitora/leitura-combate-resistir-armas.md` (lida em `bc3cfd28`).
+- Estado: **aplicada** na branch `regras-leitora-6`, a publicar com o ok do autor.
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.

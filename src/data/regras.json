@@ -2598,7 +2598,7 @@
         "titulo": "Corrida",
         "defesa": -4,
         "ataque": 0,
-        "texto": "Vai 50 a 67% mais longe por Tick, e cobra a guarda: Defesa −4 enquanto corre e até a sua próxima ação começar, que é o mesmo −4 do Tick do Golpe. Correndo não se apara nem se esquiva. O acerto não sofre: quem parou, parou."
+        "texto": "Vai 50 a 67% mais longe por Tick, e cobra a guarda: Defesa −4 enquanto corre e até a sua próxima ação começar, que é o mesmo −4 do Tick do Golpe. Correndo, apara e esquiva mal. O acerto não sofre: quem parou, parou."
       },
       "investida": {
         "titulo": "Investida",

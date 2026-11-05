@@ -250,7 +250,7 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 
 **Deslocamento no agarrão.** Quem mantém o agarrão pode se deslocar levando a presa, à metade do Deslocamento de Batalha, se ela couber no peso que arrasta. É o movimento da manutenção: o agarrado não ganha com isso nenhuma jogada.
 
-**Engolir.** Algumas criaturas engolem quem já está Agarrado e cabe na boca: uma ação de Velocidade 7. Lá dentro, a vítima fica Imobilizada para o corpo, mas ainda golpeia com uma arma curta. Sufoca como o livro diz e sofre o dano interno da ficha uma vez a cada 6 Ticks; contra o ácido, a armadura vestida não protege.
+**Engolir.** Algumas criaturas engolem quem já está Agarrado e cabe na boca: uma ação de Velocidade 7. Lá dentro, a vítima fica Imobilizada para o corpo, mas ainda golpeia com uma arma curta. Sufoca como em [Sufocamento](/regras/acoes-resistir#sufocamento) e sofre o dano interno da ficha uma vez a cada 6 Ticks; contra o ácido, a armadura vestida não protege.
 
 Há duas saídas: abrir uma ferida por dentro, de tantos PV quanto a ficha diz (um aliado pode abri-la por fora), ou subir pela garganta, como quem escapa de um agarrão. Se quem engoliu morre, a vítima sai com uma ação.
 
@@ -399,7 +399,7 @@ O jogo tem **um só número de andar em combate**, e ele serve para duas coisas:
 - **O primeiro Tick é de graça durante outra ação** (atacar, conjurar), em qualquer direção e sem gastar a vez. É o arqueiro que recua e dispara, o duelista que circula enquanto golpeia.
 - **Para ir além, cada Tick a mais rende outro tanto.** Não há ação separada nem tabela: andar cobra Tick como qualquer outra coisa, e você para quando quiser.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael anda <strong>4 m por Tick</strong>. O inimigo está a <strong>9 metros</strong>. Ele gasta <strong>2 Ticks</strong> fechando a distância (8 m) e ataca do terceiro, com o último metro saindo no passo grátis da própria investida. Se preferisse correr, cobriria os 9 m em menos de dois Ticks, mas correndo não se ataca, e a guarda vai junto.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Kael anda <strong>4 m por Tick</strong>. O inimigo está a <strong>9 metros</strong>. Ele gasta <strong>2 Ticks</strong> fechando a distância (8 m) e ataca do terceiro, com o último metro saindo no passo grátis da própria ação. Se preferisse correr, cobriria os 9 m em menos de dois Ticks, mas correndo não se ataca, e a guarda vai junto.</div>
 
 Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um segundo, o número em metros é também a sua velocidade em metros por segundo. A faixa é humana de propósito: **de 2 a 5 m/s**. Andar tranquilo são 1,4 m/s; fechar distância numa briga, sem perder a guarda nem o equilíbrio, fica entre 2 e 4; e o teto de 5 é o acrobata. O resto do tempo da ação você não está andando, está lutando.
 
@@ -414,7 +414,7 @@ Vai mais longe por Tick que o Deslocamento de Batalha: no Arranque, uns 40% a ma
 <p class="formula">Correndo: <strong>Defesa −4</strong>, enquanto corre e até a sua próxima ação começar.</p>
 
 É o mesmo −4 do Tick do Golpe, e ele diz uma coisa
-só: **correndo não se apara nem se esquiva**. O acerto não sofre, porque quem parou, parou.
+só: **correndo, apara e esquiva mal**. O acerto não sofre, porque quem parou, parou.
 
 A Corrida é uma **ação de 3 Ticks**, interrompível a **qualquer Tick**: você decide quando parar. A largada acelera: os **3 primeiros Ticks** correm à **Velocidade de Arranque** (a explosão do disparo). Para seguir correndo, declara-se outra Corrida sem parar: a declaração e o custo recomeçam, mas a velocidade não, e a Corrida seguinte já corre à **Velocidade de Corrida** (o ritmo sustentado), do **4º Tick em diante**. Kael (Força 3, Destreza 4, Atletismo 3) corre a **6 m por Tick** (5,5, arredondado) no Arranque e a **9 m por Tick** (8,5, arredondado) na Corrida. Cada valor é em metros por Tick.
 
@@ -456,7 +456,7 @@ Quanto maior o Preparo, mais longe e mais forte vai o golpe que investe, e a pes
 **Atropelar.** Um ataque diferente dos outros. São **3 Ticks de Preparação**; do terceiro Tick em diante, cada Tick em que você segue correndo é um **Tick de Golpe** (com a mesma penalidade do Golpe), até você decidir parar ou ser parado; depois vêm **3 Ticks de Recuperação**. Quem estiver no caminho pode ser atropelado. A jogada é de **Força pura**, sem Habilidade (soma a Centelha inteira, como toda jogada de Atributo puro), **mais 3 por categoria de Tamanho que você tem acima do alvo** (menos 3 por categoria abaixo). Você rola uma vez, e o total vale contra cada alvo, com o ajuste de Tamanho de cada um.
 
 Cada alvo no caminho escolhe como se defender:
-- **Esquivar**, com Destreza + Esquiva: se igualar ou superar o seu total, sai do caminho sem dano, e você segue.
+- **Esquivar**, com Destreza + Esquiva (aqui a defesa é rolada, e não passiva): se igualar ou superar o seu total, sai do caminho sem dano, e você segue.
 - **Parar**, com Força pura: precisa **superar** o seu total (empate não basta), e então o atropelamento para ali.
 
 **Dano do atropelamento:** 1d6 de Impacto no Médio, mais 1d6 por categoria de Tamanho acima do Médio (Grande 2d6, Enorme 3d6...), **+ Margem + 2 × Força + Centelha − Absorção**. O Pequeno atropela sem dado, só com 2 × Força + Centelha; quem é menor que isso não atropela. Quem não consegue se defender sofre esse dano e fica Caído, e o atropelamento segue.
@@ -611,7 +611,7 @@ Quando muitos capangas iguais avançam juntos, não role um por um: trate o band
 - **Ataque**: o esquadrão faz **um ataque por inimigo engajado, até Magnitude + 1, a cada 6 Ticks** (o teto é a frente de combate: só cabe tanta gente em volta). Contra um alvo só, os golpes **concentram numa rolagem**; contra vários, **espalham-se** um por inimigo. Cada ataque rola o pool de um capanga **+ Magnitude d6 no acerto e + Magnitude d6 no dano** (o enxame que conecta cai todo em cima). O esquadrão **não** aplica a penalidade de guarda da Pressão; sua ameaça já é a chuva de dados.
 - **Modos**: os ataques podem misturar **Impacto / Corte / Perfuração** e **corpo a corpo ou à distância**. Um esquadrão **híbrido** o bastante (armas variadas) ataca sempre pelo **modo de menor Absorção do alvo**, achando a brecha na guarda.
 - **Defesa**, a de um capanga **−2**: multidão amontoada é alvo fácil.
-- **Baixas**: o esquadrão tem **PV = nº de membros × o PV-de-horda do capanga** (Comum **5**, Treinado **10**, Elite **15**). Na horda o capanga perde o **piso de durabilidade de 25**, que protege só heróis e NPCs nomeados. O dano que você causa **acumula**; cada vez que o total passa o PV-de-horda de um capanga, **cai um membro**: um golpe pesado derruba vários de uma vez. Conforme caem, a **Magnitude desce em degraus**, até sobrar um (Magnitude 0), que volta a ser um NPC comum. Ataques em **área** batem direto no PV do esquadrão.
+- **Baixas**: o esquadrão tem **PV = nº de membros × o PV-de-horda do capanga** (Comum **5**, Treinado **10**, Elite **15**). Na horda o capanga perde o **piso de durabilidade de 25** (o 25 fixo da fórmula do PV, em [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)), que protege só heróis e NPCs nomeados. O dano que você causa **acumula**; cada vez que o total passa o PV-de-horda de um capanga, **cai um membro**: um golpe pesado derruba vários de uma vez. Conforme caem, a **Magnitude desce em degraus**, até sobrar um (Magnitude 0), que volta a ser um NPC comum. Ataques em **área** batem direto no PV do esquadrão.
 
 Na prática, um lutador resistente abre caminho por ~**20 Comuns**, ~**8 Treinados** ou ~**5 Elites** antes de correr risco real, mas uma maré de **30 ou 40** afoga até ele. É o pilar do sistema: um herói vence vários fracos e, ainda assim, **perde para a multidão**.
 

@@ -805,7 +805,8 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
   comeca(L, 'Para o Mestre. O corpo preso ou o lugar apertado tiram da Esquiva e do Bloqueio', ['**só a parte presa conta**: quem tem uma perna presa perde Esquiva e conserva o Bloqueio dos braços.'], 'Combate, restrição');
   // os espelhos em dado das frases do capítulo (rodada 5-bis): o Correndo e a faixa de distância
   const CO = R?.combate?.movimento?.corrida?.texto;
-  if (!CO || !CO.includes('que é o mesmo −4 do Tick do Golpe. Correndo não se apara nem se esquiva.')) f.push('regras.json movimento.corrida.texto: devia dizer "que é o mesmo −4 do Tick do Golpe." como o capítulo');
+  if (!CO || !CO.includes('que é o mesmo −4 do Tick do Golpe. Correndo, apara e esquiva mal.')) f.push('regras.json movimento.corrida.texto: devia dizer "que é o mesmo −4 do Tick do Golpe. Correndo, apara e esquiva mal." como o capítulo');
+  if (!COMB.includes('**correndo, apara e esquiva mal**')) f.push('Combate, Corrida: devia dizer "**correndo, apara e esquiva mal**", como o regras.json (D-303, D-351)');
   const OE = R?.combate?.alcance?.faixas?.ondeEntra;
   if (!OE || !OE.includes('Por isso não é modificador de Defesa e não entra no teto de +6 dos bônus de Defesa.')) f.push('regras.json alcance.faixas.ondeEntra: devia dizer que não entra no teto de +6 dos bônus de Defesa');
   // varredura: nenhum texto de regras.json fala do teto velho nem das condições surpreso/cego/imobilizado a -4, salvo as exceções abaixo
