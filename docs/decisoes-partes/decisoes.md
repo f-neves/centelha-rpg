@@ -3575,7 +3575,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Veneno*), depois do Atributo drenado, com o link para o *Sono sobrenatural* de Condições.
 - Muda: completa a D-293 (R19): o veneno de sono leva ao Dormindo por um terceiro Tipo de pool, a sonolência, ao lado de PV e Atributo.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`).
 
 ### D-306 · R28: Quando o golpe inocula, e o veneno na lâmina [tags: resistir, veneno, inocular, absorcao, arma, destreza, atributo-puro]
 - Data: 2026-11-04
@@ -3586,7 +3586,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Veneno*), depois das quatro vias de entrada.
 - Muda: nada substituído. "Todo dano de veneno ignora a Absorção" continua: a Absorção só decide se o golpe inoculou; o pool, depois, a ignora.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`).
 
 ### D-307 · R29: Peçonha com elemento: o elemento é a imagem, o veneno é o pool [tags: resistir, veneno, elemento, imunidade, linnorm, d-300]
 - Data: 2026-11-04
@@ -3595,7 +3595,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Veneno*), depois do Veneno de sono.
 - Muda: nada substituído: segue a imunidade estreita da D-300 (R23); ser imune ao elemento não é ser imune ao veneno.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor. As fichas dos três linnorms seguem por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`). As fichas dos três linnorms seguem por lote de ajuste da Bestiarista.
 
 ### D-308 · Itens 110, 112, 115 e 116: doença de parasita e esporo, veneno só nomeado, doença de cadáver e o frio do gigante do gelo [tags: resistir, doenca, parasita, esporo, veneno, catalogo, imunidade, frio, d-087, d-300]
 - Data: 2026-11-04
@@ -3608,7 +3608,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: uma frase em `src/content/chapters/acoes-resistir.md` (Resistir, seção *Doença*), depois da Ajuda: "**Parasita e esporo** · Cura ou cirurgia adequada retira o agente e para a progressão." O capítulo de doença não cobria a retirada do agente (a cirurgia ali só apoia a jogada contra a Virulência). O resto são casos de ficha.
 - Muda: nada substituído: o 115 segue a D-087, o 116 a D-300 (R23), e o 109 já está na R1.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 11, venenos e doenças).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor. As fichas seguem por lote de ajuste da Bestiarista.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`). As fichas seguem por lote de ajuste da Bestiarista.
 
 ### D-309 · R30: Tamanho nas jogadas que não são de ataque: fixo contra o Médio, seja quem for o observador [tags: tamanho, jogada, furtividade, anatomia, d-226, d-279]
 - Data: 2026-11-04
@@ -3618,7 +3618,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/acoes-e-sistema.md` (Cap. VIII, A Régua Comum), no lugar do bloco da R6 (D-279). O texto aprovado diz que substitui a primeira frase do bloco; ele traz o bloco inteiro, e a segunda frase (a anatomia) é igual à da R6.
 - Muda: **muda a D-279 (R6)**: "A diferença de Tamanho soma ou tira 3 por categoria, como no ataque" passa a "contado a partir do Médio". Fecha a dúvida da D-226 (fixo contra o Médio, e não relativo a quem procura).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 01, Tamanho).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`).
 
 ### D-310 · R31: Duas posturas, dois Tamanhos: vale o da postura atual; asas sem custo, outra troca 1 Tick [tags: tamanho, segundo-tamanho, postura, voador, tick, d-213, d-215]
 - Data: 2026-11-04
@@ -3627,7 +3627,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), depois da Nota ao Mestre.
 - Muda: completa a D-213 e a D-215: elas dizem qual postura é o Tamanho principal da ficha; a R31 diz qual vale na mesa (a atual) e quanto custa trocar.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 01, Tamanho).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`).
 
 ### D-311 · R32: Ferir um enxame: a ficha diz se arma comum fere; golpe num quadrado, área com dano inteiro por quadrado [tags: bestiario, criatura, enxame, area, arma, d-257]
 - Data: 2026-11-04
@@ -3636,7 +3636,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), junto do enxame.
 - Muda: completa a D-257: a conta de PV e a dispersão continuam as dela.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 16, enxame).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`).
 
 ### D-312 · R33: Dentro do enxame: o pulso da ficha, sem jogada de ataque, no máximo uma vez a cada 6 Ticks [tags: bestiario, criatura, enxame, pulso, absorcao, veneno, d-306]
 - Data: 2026-11-04
@@ -3645,7 +3645,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), junto do enxame.
 - Muda: nada substituído: o veneno do pulso entra pela D-306 (R28).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 16, enxame).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`).
 
 ### D-313 · R34: O Tamanho do enxame: o quadrado cheio é Médio para atacar e ser atacado [tags: bestiario, criatura, enxame, tamanho, acerto, d-077, d-257]
 - Data: 2026-11-04
@@ -3654,7 +3654,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - No livro: o "Texto aprovado" da seção, como está, em `src/content/chapters/combate.md` (Combate Físico, *Tamanho: o grande é fácil de acertar, o pequeno é difícil*), no lugar da frase "Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.", junto do enxame; a mesma troca em `src/data/regras.json` (`porteAcerto.nota` e `porteAcerto.reforma.enxame`) e no teste que prendia a frase velha (`scripts/test-capitulo-armas.mjs`).
 - Muda: completa a D-257 (o `tamanhoEquivalente` segue só para o PV) e substitui a frase do enxame da D-077 no livro. O Grid ainda usa o Tamanho do indivíduo no acerto (Minúsculo nos oito enxames): fica no N23 (D-054).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 16, enxame).
-- Estado: **aplicada** na branch `regras-r27-r29`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-r27-r29`, publicada em `2274aed5`).
 
 ### D-314 · R35: Multiataque de criatura: uma Rajada com partes diferentes do corpo, só quando a ficha diz [tags: combate, rajada, multiataque, criatura, guarda, c-046, r1]
 - Data: 2026-11-05
