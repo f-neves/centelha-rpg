@@ -35,15 +35,15 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 ## Teleporte
 
-**Teleporte.** Some e reaparece noutro ponto que veja ou conheça bem, até o alcance da ficha, levando o que carrega. É efeito similar à magia, ativado em Velocidade 8. Outros seres só vão junto se quiserem e estiverem tocando quem se teleporta, até o número que a ficha diz. Quem agarra ou é agarrado pode se soltar assim, mas não arrasta o outro contra a vontade.
+**Teleporte.** Some e reaparece noutro ponto que veja ou conheça bem, até o alcance da ficha, levando o que carrega. É efeito similar à magia, ativado em Velocidade 8, uma exceção à régua da Velocidade acima. Outros seres só vão junto se quiserem e estiverem tocando quem se teleporta, até o número que a ficha diz. Quem agarra ou é agarrado pode se soltar assim, mas não arrasta o outro contra a vontade.
 
 ## Resistência à magia e à mente
 
-**Resistência à magia.** Algumas criaturas resistem à magia por natureza. A resistência tem três graus, que somam +2, +4 ou +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia. O bônus entra no teto comum de +6.
+**Resistência à magia.** Algumas criaturas resistem à magia por natureza. A resistência tem três graus, que somam +2, +4 ou +6 à Defesa que a Arte ataca e à jogada de resistir contra Artes e efeitos similares à magia. O bônus entra no teto comum de +6.
 
 **Resistência mental.** Algumas criaturas resistem à mente sem ser imunes. A resistência tem três graus, que somam +2, +4 ou +6 à Defesa Mental, contra todo efeito mental ou só contra a família que a ficha nomear. O bônus entra no teto comum de +6.
 
-**O teto das duas resistências.** Quando somam numa Defesa, a resistência à magia e a mental entram no mesmo teto de +6 dos bônus de Defesa, junto da cobertura e da postura ([Combate Físico](/regras/combate)). Na jogada de resistir, valem sozinhas.
+**O teto das duas resistências.** Quando somam numa Defesa, a resistência à magia e a mental entram no mesmo teto de +6 dos bônus de Defesa, junto da cobertura e da postura ([Combate Físico](/regras/combate)). Na jogada de resistir, não somam a cobertura nem a postura, mas continuam no teto de +6, também quando as duas valem juntas.
 
 <span id="corpos-que-nao-vivem"></span>
 
@@ -57,11 +57,11 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 **Elemental.** Não respira, não come e não dorme. Faz os testes de corpo normalmente, porque tem um corpo de matéria, salvo o que a ficha disser.
 
-**Incorpóreo.** Resiste ao dano físico, mas não é imune a ele. Não come, não respira, não dorme, e não pode ser agarrado nem derrubado.
+**Incorpóreo.** Resiste ao dano físico (o corte, a perfuração e o impacto caem à metade, como a Resistência do [Bestiário](/bestiario)), mas não é imune a ele. Não come, não respira, não dorme, e não pode ser agarrado nem derrubado. O que o prende à distância, como a teia, o Mestre julga.
 
-Constructos, mortos-vivos e elementais não dormem, e por isso o sono sobrenatural não os alcança.
+Constructos, mortos-vivos, elementais e incorpóreos não dormem, e por isso o sono sobrenatural não os alcança.
 
-**Golens e a magia.** O golem ignora as Artes que mexem no corpo ou na mente dele. O dano de elemento o atinge normalmente, com a resistência e a Absorção que ele tiver. Cada material tem as suas exceções, escritas na ficha: o raio que cura o golem de carne, a eletricidade que deixa o de ferro mais lento.
+**Golens e a magia.** O golem ignora as Artes que mexem no corpo ou na mente dele. O dano de elemento o atinge normalmente, com a resistência e a Absorção que ele tiver. Cada material tem as suas exceções, escritas na ficha: o raio que cura o golem de carne, a eletricidade que deixa o de ferro mais lento. Vale para quem a ficha chama de golem; outro constructo só ignora o que a própria ficha disser.
 
 ## Imunidades
 
@@ -69,12 +69,12 @@ Constructos, mortos-vivos e elementais não dormem, e por isso o sono sobrenatur
 
 **Imunidades são estreitas.** Uma imunidade cobre só o que a ficha nomeia, e nada além.
 
-- **Ao medo:** ignora o medo das fontes que a ficha diz. Se a ficha compara Centelha ("imune ao medo de quem tem Centelha menor"), compare antes do efeito: Centelha igual não é menor. Não protege do [Abalado](/regras/condicoes) que vem de um golpe social.
+- **Ao medo:** ignora o medo das fontes que a ficha diz. Se a ficha compara Centelha ("imune ao medo de quem tem Centelha menor"), compare antes do efeito: Centelha igual não é menor. Cobre o [Abalado](/regras/condicoes) que vem do medo, e não o de um golpe social; a regra de somar das Condições só junta os dois na conta.
 - **À morte e à maldição:** bloqueia o efeito que mata sem causar dano e o que instala uma maldição. O dano comum continua, e a Vida que chega à morte ([Queda e Morte](/regras/vida-ferimentos-cura#queda-e-morte)) mata como sempre.
-- **Ao golpe certeiro e ao flanco:** a criatura perde só o dano extra de ponto vital, ou o −2 de [Flanqueado](/regras/combate), conforme a ficha nomeia. Surpresa e Tamanho valem normalmente.
+- **Ao golpe certeiro e ao flanco:** a criatura perde só o dano extra de ponto vital (o Golpe na brecha de [Combate Físico](/regras/combate), quando uma Proeza ou a ficha o dá), ou o −2 de Flanqueado, conforme a ficha nomeia. Surpresa e Tamanho valem normalmente: pega de surpresa, ela fica com as Defesas 0, mas não leva o dano extra.
 - **Liberdade de movimento:** nada de fora a deixa [Agarrada, Presa ou Imobilizada](/regras/combate#manobras-agarrar-derrubar-empurrar). Paredes, [Paralisado e Atordoado](/regras/condicoes) valem normalmente.
 
-**Veneno e doença.** A imunidade a veneno ou a doença também é estreita: cobre só o que a ficha nomeia, e a imunidade ao próprio veneno vale só para aquela secreção. O ferimento do golpe que trouxe o veneno continua. Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema).
+**Veneno e doença.** A imunidade a veneno ou a doença também é estreita: cobre só o que a ficha nomeia, e a imunidade ao próprio veneno vale só para aquela secreção. O ferimento do golpe que trouxe o veneno continua. Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema#corpo-nas-jogadas).
 
 **Resistência que depende da arma.** Algumas criaturas só se ferem de verdade com um material ou uma origem: prata, ferro frio, uma arma abençoada. Contra qualquer outra arma, o dano que passa da Absorção cai **à metade**. A arma certa não tira a Absorção; tira só essa metade.
 

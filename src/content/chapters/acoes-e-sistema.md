@@ -29,6 +29,8 @@ Os somas andam de três em três porque a régua é essa, e a conta confere na p
 
 **Circunstância entra como ±2 ou ±4 na Dificuldade.** Ferramenta certa, apoio, terreno bom e tempo de sobra abaixam; pressa, distração, escuridão e condição ruim sobem. É por aqui que corda, gazua, lanterna e oficina entram no jogo, sem regra nova nenhuma.
 
+<span id="corpo-nas-jogadas"></span>
+
 **Corpo nas jogadas que não são de ataque.** O Tamanho soma ou tira 3 por categoria, contado a partir do Médio: Médio é 0, cada categoria menor dá +3 e cada categoria maior dá −3, seja quem for o observador. Uma anatomia que favorece a ação (o corpo flexível que escapa, a pata que adere à parede, o fôlego feito para a perseguição) dá +1d6 na jogada, e não cresce com o Tamanho.
 
 ## A Margem mede o que sobrou
