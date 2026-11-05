@@ -1,5 +1,5 @@
 {
-  "nota": "Catálogo de condições do rastreador de combate e do Escudo do Mestre. Os números seguem o vocabulário do sistema: `acao` é penalidade/bônus FLAT nas jogadas (mesma moeda dos Limiares de Ferimento), `dados` é em d6 (moeda do Desgaste, cap. Resistir), `defesa` é FLAT no valor passivo da Defesa, `ataque` é FLAT na jogada de acerto de quem está com a condição. `defesaCaC` e `defesaDist` substituem `defesa` quando o golpe vem de perto ou de longe. Origem dos valores: regras.json → combateTatico, ferimentos, sangramento; o resto é convenção de mesa, editável pelo mestre na hora.",
+  "nota": "Catálogo de condições do rastreador de combate e do Escudo do Mestre. Os números seguem o vocabulário do sistema: `acao` é penalidade/bônus FLAT nas jogadas (mesma moeda dos Limiares de Ferimento), `dados` é em d6 (moeda do Desgaste, cap. Resistir), `defesa` é FLAT no valor passivo da Defesa, `ataque` é FLAT na jogada de acerto de quem está com a condição. `defesaCaC` e `defesaDist` substituem `defesa` quando o golpe vem de perto ou de longe. Origem dos valores: regras.json → combateTatico, ferimentos, sangramento; o resto é convenção de mesa, editável pelo mestre na hora. O painel é lembrete: quando ele e o livro discordam, vale o livro (R20, D-294), e os estados marcados \"Lembrete de mesa\" não têm regra no livro.",
   "grupos": [
     { "id": "posicao", "nome": "Posição & Postura" },
     { "id": "sentidos", "nome": "Sentidos & Ocultação" },
@@ -11,14 +11,14 @@
   "lista": [
     {
       "id": "caido", "nome": "Caído", "icone": "⤓", "grupo": "posicao", "cor": "alerta",
-      "defesaCaC": -2, "defesaDist": 2, "acao": -2,
-      "nota": "De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). Também −2 para agir (mira e postura ruins do chão). Levantar consome movimento.",
+      "defesaCaC": -2, "defesaDist": 2,
+      "nota": "De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). As próprias jogadas não mudam (livro, Combate Físico). Levantar consome movimento.",
       "fonte": "combateTatico · alvo caído"
     },
     {
       "id": "imobilizado", "nome": "Imobilizado", "icone": "⛓", "grupo": "posicao", "cor": "perigo",
-      "defesa": -4, "acao": -2, "zeraDefesa": true,
-      "nota": "Imobilizar, amarrado, preso em gelo: Esquiva e Bloqueio 0 (livro, Combate Físico; não a Defesa de agarrão). O Grid e a aba Combate ainda aplicam −4, até lerem a marca de Defesa zerada.",
+      "defesa": -4, "zeraDefesa": true,
+      "nota": "Imobilizar, amarrado, preso em gelo: não age, nem com Firula; Esquiva e Bloqueio 0 (livro, Combate Físico; não a Defesa de agarrão). O Grid e a aba Combate ainda aplicam −4, até lerem a marca de Defesa zerada.",
       "fonte": "combateTatico · surpreso, cego ou imobilizado"
     },
     {
@@ -122,12 +122,11 @@
     },
     {
       "id": "surdo", "nome": "Surdo", "icone": "🔇", "grupo": "sentidos", "cor": "alerta",
-      "nota": "Perde ordens faladas, encantamentos verbais e a aproximação pelas costas."
+      "nota": "Lembrete de mesa, sem regra no livro. Perde ordens faladas, encantamentos verbais e a aproximação pelas costas."
     },
     {
       "id": "escuridao", "nome": "Na escuridão", "icone": "🌑", "grupo": "sentidos", "cor": "alerta",
-      "acao": -2,
-      "nota": "Vulto e silhueta apenas. Quem tem visão adaptada ignora."
+      "nota": "Lembrete da penumbra: vulto e silhueta apenas. Fica sem regra, a critério do Mestre (livro, Combate Físico); o escuro total é Cego. Quem tem visão adaptada ignora."
     },
 
     {
@@ -180,7 +179,7 @@
     {
       "id": "atordoado", "nome": "Atordoado", "icone": "✶", "grupo": "corpo", "cor": "perigo",
       "defesa": -4,
-      "nota": "A próxima ação começa 3 a 18 Ticks mais tarde (pelo quanto o Vigor + Resistência ficou abaixo da Dificuldade); até ela começar, −4 nas Defesas Físicas, e 1 de Força de Vontade ignora o −4. Move-se e não larga o que segura. O atraso o Mestre conta à mão."
+      "nota": "A próxima ação começa 3 a 18 Ticks mais tarde (pelo quanto o Vigor + Resistência ficou abaixo da Dificuldade); até ela começar, −4 nas Defesas Físicas, e 1 de Força de Vontade ignora o −4 pelo atordoamento inteiro. Move-se e não larga o que segura. O atraso o Mestre conta à mão."
     },
     {
       "id": "petrificando", "nome": "Petrificando", "icone": "🗿", "grupo": "corpo", "cor": "perigo",
@@ -199,12 +198,12 @@
     {
       "id": "dormindo", "nome": "Dormindo", "icone": "☾", "grupo": "corpo", "cor": "perigo",
       "defesa": -8, "foraDeCombate": true, "zeraDefesa": true,
-      "nota": "Dorme: Defesas 0 (livro, Combate Físico). Um poder ou um veneno pode fazer dormir na hora (Sono sobrenatural, Condições), pelo tempo que ele disser; acorda ao sofrer qualquer dano, ou quando um aliado gasta uma ação de Velocidade 5 para sacudi-lo. O Grid e a aba Combate ainda aplicam −8, até lerem a marca de Defesa zerada."
+      "nota": "Dorme: Defesas Físicas 0 (livro, Combate Físico); a Defesa Mental continua. Um poder ou um veneno pode fazer dormir na hora (Sono sobrenatural, Condições), pelo tempo que ele disser; acorda ao sofrer qualquer dano, mesmo o que a Absorção engole, ou quando um aliado gasta uma ação de Velocidade 5 para sacudi-lo. O Grid e a aba Combate ainda aplicam −8, até lerem a marca de Defesa zerada."
     },
     {
       "id": "morrendo", "nome": "Morrendo", "icone": "✝", "grupo": "corpo", "cor": "morte",
       "foraDeCombate": true,
-      "nota": "0 PV ou menos, entre a vida e a morte; ver Tratar."
+      "nota": "0 PV ou menos, entre a vida e a morte; ver Tratar. No livro é a faixa Incapacitado (Vida, Ferimentos & Cura)."
     },
     {
       "id": "estabilizado", "nome": "Estabilizado", "icone": "✚", "grupo": "corpo", "cor": "bom",
@@ -219,12 +218,12 @@
     {
       "id": "amedrontado", "nome": "Amedrontado", "icone": "😨", "grupo": "mente", "cor": "alerta",
       "acao": -2,
-      "nota": "−2 em todas as jogadas, e não avança em direção à fonte do medo. Enquanto ela estiver à vista, Recompor não encerra o estado."
+      "nota": "−2 em todas as jogadas (não nas Defesas), e não avança em direção à fonte do medo. Enquanto ela estiver à vista, Recompor não encerra o estado."
     },
     {
       "id": "em-panico", "nome": "Em pânico", "icone": "😱", "grupo": "mente", "cor": "perigo",
       "acao": -4,
-      "nota": "Foge pelo caminho mais curto. Só age para se afastar."
+      "nota": "Lembrete de mesa, sem regra no livro. Foge pelo caminho mais curto. Só age para se afastar."
     },
     {
       "id": "dominado", "nome": "Dominado", "icone": "🕸", "grupo": "mente", "cor": "arcano",
@@ -254,21 +253,21 @@
     {
       "id": "protegido", "nome": "Protegido", "icone": "✧", "grupo": "arcano", "cor": "arcano",
       "soak": 3,
-      "nota": "Barreira arcana: soma Absorção em todos os modos enquanto durar."
+      "nota": "Lembrete de mesa, sem regra no livro. Barreira arcana: soma Absorção em todos os modos enquanto durar."
     },
     {
       "id": "congelado", "nome": "Congelado", "icone": "❄", "grupo": "arcano", "cor": "arcano",
       "acao": -2, "defesa": -2,
-      "nota": "Membros rígidos, movimento pela metade."
+      "nota": "Lembrete de mesa, sem regra no livro. Membros rígidos, movimento pela metade."
     },
     {
       "id": "eletrizado", "nome": "Eletrizado", "icone": "⚡", "grupo": "arcano", "cor": "arcano",
       "acao": -2,
-      "nota": "Espasmo muscular: falha em ações de precisão e solta o que segura."
+      "nota": "Lembrete de mesa, sem regra no livro. Espasmo muscular: falha em ações de precisão e solta o que segura."
     },
     {
       "id": "voando", "nome": "Voando", "icone": "🕊", "grupo": "arcano", "cor": "bom",
-      "nota": "Fora do alcance de quem luta no chão. Corpo a corpo só de quem também voa ou tem alcance."
+      "nota": "Lembrete de mesa, sem regra no livro. Fora do alcance de quem luta no chão. Corpo a corpo só de quem também voa ou tem alcance."
     },
     {
       "id": "fora-do-tempo",
@@ -298,17 +297,17 @@
     {
       "id": "inspirado", "nome": "Inspirado", "icone": "★", "grupo": "bom", "cor": "bom",
       "dados": 1,
-      "nota": "Canção, discurso ou bênção: +1d6 na próxima jogada relevante."
+      "nota": "Lembrete de mesa, sem regra no livro. Canção, discurso ou bênção: +1d6 na próxima jogada relevante."
     },
     {
       "id": "abencoado", "nome": "Abençoado", "icone": "✦", "grupo": "bom", "cor": "arcano",
       "acao": 2,
-      "nota": "Favor declarado: +2 enquanto a bênção durar."
+      "nota": "Lembrete de mesa, sem regra no livro. Favor declarado: +2 enquanto a bênção durar."
     },
     {
       "id": "amaldicoado", "nome": "Amaldiçoado", "icone": "☾", "grupo": "arcano", "cor": "perigo",
       "acao": -2,
-      "nota": "Azar dirigido: −2 em tudo até a maldição ser quebrada."
+      "nota": "Lembrete de mesa, sem regra no livro. Azar dirigido: −2 em tudo até a maldição ser quebrada."
     },
     {
       "id": "preparado", "nome": "Ação preparada", "icone": "⏱", "grupo": "bom", "cor": "bom",
@@ -316,7 +315,7 @@
     },
     {
       "id": "marcado", "nome": "Marcado", "icone": "⊗", "grupo": "bom", "cor": "alerta",
-      "nota": "Alvo escolhido por alguém. Quem marcou tem vantagem declarada contra ele."
+      "nota": "Lembrete de mesa, sem regra no livro. Alvo escolhido por alguém. Quem marcou tem vantagem declarada contra ele."
     }
   ]
 }
