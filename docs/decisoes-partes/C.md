@@ -277,6 +277,7 @@ Notas de leitura: (1) a fase3 do B14 tem o pedido do autor, mas as decisões de 
 - Decisão: "Múltiplos ataques só pelas regras escritas (combate.md: Rajada e empunhadura dupla). Fora disso, só por Poder Especial ou Proeza." "PV não cresce com a Centelha (só a Absorção). O PV fixo da bancada está certo." "Nova base da bancada: SEM o bônus de Proezas (atual célula B2). A célula B1 (com Proezas) fica como teste de sensibilidade." Adendo: base "SEM Proezas e COM Vontade (o traço Força de Vontade real)". Pers.2: "um disparo por ação, sem Rajada nem dupla". Bando: "N criaturas individuais".
 - Origem: b14-fase5b-economia-de-acao-despacho.md:14-20, :82-103 (Adendos 1), commits 2e14b3f2, 3c9f9d59
 - Estado: no ar (bancada)
+- **"Poder Especial" substituído pela D-314** (R35, 05/11/2026): fora da Rajada e da empunhadura dupla, múltiplos ataques vêm do multiataque escrito na ficha (ou de Proeza). O resto da C-046 continua.
 
 ### C-047 · Guarda sob pressão: leitura da Defesa final, feito + recebido, dupla conta 2 [tags: guarda, pressao, defesa, combate, tick]
 - Data: 2026-10-01

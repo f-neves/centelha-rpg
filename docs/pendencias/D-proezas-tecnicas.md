@@ -158,3 +158,6 @@ Detalhe em `Proezas_revisao.md`.
     Golpe (`Combate_Tempo.md` l.1234-1236). A outra candidata de lá, tratar par com média como par leve, foi
     medida (67,7%) e descartada.
   - Decidir junto com a recalibração das Proezas.
+
+- [ ] **D19 · [ADIADO] Orçamento de XP da criação (R54).** Registrado em 05/11/2026. O autor adiou: o orçamento vai ser
+  recalculado depois. Nada muda no livro agora; os exemplos que não fecham (Lia: 630 gastos) ficam como estão até o recálculo.

@@ -8,9 +8,9 @@
     "aparenciaMod": 0,
     "aparenciaUniversal": false,
     "longevidade": "padrao",
-    "descricao": "Versáteis e adaptáveis, sem extremos raciais. Sem inimizades naturais: partem do Neutro com todos os povos.",
+    "descricao": "Versáteis e adaptáveis, sem extremos raciais. Sem inimizades naturais: partem do Neutro com a maioria dos povos, com três exceções não recíprocas (Elfo e Meio-Elfo em +1; Orc e Meio-Orc em −1).",
     "tracos": [
-      "Sem inimizades naturais: transita e negocia entre os povos onde outros não conseguem (valor de partida 0 na Régua de Relação com todos)."
+      "Sem inimizades naturais: transita e negocia entre os povos onde outros não conseguem (valor de partida 0 na Régua de Relação com a maioria; olha o Elfo e o Meio-Elfo com +1, Simpatia, e o Orc e o Meio-Orc com −1, Antipatia, sem reciprocidade)."
     ],
     "massaKg": [
       60,

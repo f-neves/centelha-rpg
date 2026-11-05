@@ -406,3 +406,21 @@ limitações conhecidas, que são as três de baixo.
     feitas dentro desta frente quando ela chegar a essas criaturas.
   - **Leitura de apoio, fora do repositório:** `../tmp/arquiteto/bestiario/diagnostico.md`,
     `animais-centelha-0.md` e `inventario.md` (o esquema proposto e as descrições da ficha humana com linha).
+
+- [ ] **B21 · [FAZER] Regeneração N: a regra sai da bancada (R46, D-325).** Registrado em 05/11/2026. Diretriz do autor:
+  a regeneração natural é muito lenta, a ponto de não pesar no combate rápido, salvo nos níveis muito altos; as propostas de
+  N PV a cada 6 Ticks são aceleradas demais. A bancada propõe a unidade (por minuto ou por hora nos níveis baixos) e o nível a
+  partir do qual pesa na luta, e leva ao autor. Até lá a D-246 segue ("Regeneração N · sem regra ainda"); a R47 (D-326) já está no livro.
+
+- [ ] **B22 · [ADIADO] Os planos: aguarda o lore (R42, D-321).** Registrado em 05/11/2026. Existem outros planos, ainda não fechados.
+  Esperam o lore: passeio etéreo (cauchemar), passagem entre planos (bebilith, xill), estado etéreo (item 060) e a origem dos convocados
+  (item 122). O livro não ganha o estado Etéreo agora.
+
+- [ ] **B23 · [FAZER] Atropelar: a Centelha inteira ou 2 × Centelha (R40, D-319).** Registrado em 05/11/2026. A bancada calcula se
+  a Força pura do Atropelar soma a Centelha inteira (como está no livro) ou 2 × Centelha, para que uma criatura de Centelha alta consiga
+  parar criaturas grandes. O autor confirmou que o fator é o mesmo nos dois lados (quem atropela e quem quer Parar).
+
+- [ ] **B24 · [FAZER] Catálogo de armas: as que as fichas usam por equivalência (itens 014, 016, 017, 019, 020 e 021; D-344).**
+  Registrado em 05/11/2026. Por ora as fichas usam a equivalência que já têm: tridente como Lança, florete como espada curta, forcado
+  como bordão, besta pesada como Média, rocha como arremesso pesado, armas de gigante como variantes de tamanho. O catálogo vai à
+  revisão de armas (Comerciante).

@@ -40,7 +40,7 @@ A Habilidade das três que rolam é **Resistência**, e ela é de Vigor puro.
 | Falhou por menos de 6 | 2 |
 | Falhou por **6 ou mais** | 3 |
 
-Esse valor sai do **pool total**, na unidade que o **Tipo** do veneno declara (PV ou ponto de Atributo). **Todo dano de veneno ignora a Absorção**, natural e de armadura: peçonha não se para com aço.
+Esse valor sai do **pool total**, na unidade que o **Tipo** do veneno declara (PV, ponto de Atributo ou, no veneno de sono, sonolência). **Todo dano de veneno ignora a Absorção**, natural e de armadura: peçonha não se para com aço. A armadura só decide se o veneno entra (ver *Quando o veneno entra*, abaixo).
 
 **Dano e penalidade são duas trilhas separadas, e só o dano se reduz pela rolagem.** Enquanto o pool não zerar, o alvo carrega a **penalidade mínima** do veneno (Desgaste, nos seis catalogados), que **não** se reduz por resistir bem: é a substância ainda circulando, mesmo que o corpo esteja vencendo o dano dela. Só some quando o pool zera de vez.
 

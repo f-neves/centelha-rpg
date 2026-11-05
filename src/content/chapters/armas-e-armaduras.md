@@ -216,6 +216,14 @@ Contra **projéteis rápidos** (flecha, virote, bala de funda, Shuriken, Mini-fa
 
 </div>
 
+## Integridade do equipamento
+
+**Integridade do equipamento.** Armas, armaduras e escudos têm três graus: **inteira**, **avariada** e **quebrada**. Avariada, a peça perde 1 ou 2 num número: a arma no acerto ou no dano, o escudo no Bloqueio, a armadura na Absorção ou na penalidade. Quebrada, perde de 2 a 4 em um ou mais números, e ainda serve, mal. Cada conserto (Ferreiro; Carpintaria, se for de madeira) repõe um grau.
+
+O que uma criatura ou uma Arte estraga de propósito (a ferrugem, a corrosão, o ácido) tira um grau sempre que vencer a resistência da peça.
+
+**Regra extra: desgaste pelo uso.** Se o Mestre quiser, o uso comum também gasta o equipamento, que pede manutenção e conserto de tempos em tempos.
+
 ## A Interação Arma × Armadura
 
 A pedra-papel-tesoura sai dos números acima. **Os números desta lista são só os da ARMADURA**, direto da tabela: a [Absorção natural](/regras/combate) do defensor soma por cima, e ela não é igual nos três modos. Contra **Impacto** o corpo entra inteiro (**Vigor + Centelha**); contra **Corte** e **Perfuração** entra **só a Centelha**, porque a carne não para o fio nem a ponta.

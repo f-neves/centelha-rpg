@@ -87,12 +87,12 @@ A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com 
 
 ## Especialidade: o foco que só vale às vezes
 
-Toda **Especialidade** é **situacional**. Ela é um foco estreito, com um **rótulo de situação** e um bônus, que **só soma quando o ataque cai naquela situação**. Fora dela, a defesa é só a fórmula base. É por isso que se chama especialidade: vale para um caso.
+Toda **Especialidade** é **situacional**. Ela é um foco estreito, com um **rótulo de situação** e um bônus, que **só soma quando o ataque cai naquela situação**. Fora dela, a defesa é só a fórmula base. É por isso que se chama especialidade: vale para um caso. A Especialidade que entra numa Defesa é a da Habilidade que a compõe (Esquiva, Bloqueio, Sociabilidade, Integridade); a Defesa não tem Especialidade própria.
 
 - **Esquiva**: "contra um grupo", "na floresta", "contra armas de duas mãos".
 - **Bloqueio**: "aparando arma de duas mãos", "de escudo contra flecha".
-- **Social**: "contra sedução", "quando tentam me ler", "firme no pregão".
-- **Mental**: "contra controle", "contra medo mágico", "contra ilusão".
+- **Sociabilidade** (na Defesa Social): "contra sedução", "quando tentam me ler", "firme no pregão".
+- **Integridade** (na Defesa Mental): "contra controle", "contra medo mágico", "contra ilusão".
 
 Regra do "quando": o foco é **estreito e declarado** (uma situação, nunca "toda a defesa"); só soma quando o ataque casa com ele; e entra **uma por golpe** (a mais específica), sem empilhar.
 
