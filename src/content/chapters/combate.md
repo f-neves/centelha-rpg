@@ -534,11 +534,19 @@ O tamanho conta na **jogada de acerto** dos **ataques físicos**: cada **categor
 
 Sem teto quer dizer sem teto: um Miúdo que ataca um Colossal soma **+18**, de perto ou de longe. O Colossal que bate no Miúdo de perto rola sem penalidade, e o que o atinge de longe (uma Arte, um arremesso) tem **−18**.
 
-Atirar num Colossal **muito longe** continua difícil: o tamanho não escala a Efetiva (a distância em que a pontaria cai), entra só como bônus fixo no acerto. Um **enxame** usa o tamanho que **apresenta**, nos dois papéis, como alvo e como atacante.
+Atirar num Colossal **muito longe** continua difícil: o tamanho não escala a Efetiva (a distância em que a pontaria cai), entra só como bônus fixo no acerto.
 
 Isso é **só no acerto**: não muda a Defesa passiva do alvo, não é modificador de Defesa (então fica fora do teto de +6 dos bônus de Defesa), e não se aplica a ataques **Sociais** ou **Mentais**, nem a Artes de **área** sem rolagem de ataque. Acertar o gigante fica fácil, e feri-lo é outra conta: a Vida dele sobe com a massa (ver [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)), e a pele pode dar Couraça (ver *Couraça*).
 
 <div class="callout regra"><span class="lbl">Nota ao Mestre</span>O tamanho não dá Defesa a ninguém. Quando duas criaturas maiores que Médio lutam <strong>entre si</strong>, o Mestre pode aumentar a Defesa delas.</div>
+
+**Duas posturas, dois Tamanhos.** Algumas criaturas mudam de Tamanho pela postura: a águia gigante é maior de asas abertas que pousada; o polvo, maior com os braços estendidos. Vale sempre o Tamanho da postura atual. Abrir as asas para voar e fechá-las ao pousar fazem parte do movimento e não custam nada; qualquer outra troca de postura custa 1 Tick e vale até ser desfeita.
+
+**O Tamanho do enxame.** Um quadrado cheio de enxame conta como **Médio** para atacar e para ser atacado, qualquer que seja o tamanho de cada bicho. O tamanho do indivíduo só diz onde o enxame cabe e por onde passa.
+
+**Ferir um enxame.** A ficha diz se arma comum fere o enxame: uma espada mata ratos, mas não mosquitos. Quando fere, cada golpe atinge um quadrado. Um ataque de área aplica o dano inteiro a cada quadrado de enxame que cobre, sem dividir. Fogo, fumaça, água e Artes de área são as ferramentas contra o enxame que a arma não alcança.
+
+**Dentro do enxame.** Ninguém se esquiva de mil picadas. Quem começa uma ação dentro de um quadrado ocupado pelo enxame sofre o dano de pulso da ficha, sem jogada de ataque, no máximo uma vez a cada 6 Ticks. A Absorção vale, e o veneno entra se o pulso causar ao menos 1 PV. Como em toda área, a saída é sair.
 
 ### Pressão: muitos contra um
 

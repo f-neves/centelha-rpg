@@ -57,7 +57,15 @@ A bebida forte é a exceção declarada: tem pool 0, nada a drenar, e o Desgaste
 
 **Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido). **Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo já usa em Tratar. **Se o ponto de contato tem ferimento aberto ou mucosa exposta, o abatimento não se aplica**: o toque passa a valer como via sangue.
 
+**Quando o veneno entra.** Picada, ferrão ou lâmina envenenada inoculam quando o golpe causa pelo menos 1 PV depois da Absorção. Se a armadura segurou tudo, o veneno não entrou.
+
+**Envenenar uma arma** é uma ação de Velocidade 5. Quem tem Cura ou um Ofício ligado a venenos faz isso sem risco; quem não tem testa **Destreza contra 10** e, se falhar, é exposto ao próprio veneno. A dose vale até o primeiro golpe que inocula, ou até o fim da cena.
+
 **Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
+
+**Veneno de sono.** Em vez de PV ou Atributo, o pool deste veneno enche a **sonolência**. Cada pulso soma à sonolência o que tiraria do pool (0 a 3, pela tabela). Quando a sonolência alcança o **Vigor** da vítima, ela fica **Dormindo** pelo tempo que o veneno disser, e acorda como em todo [sono sobrenatural](/regras/condicoes#a-mente). Resistir, tratar e a penalidade mínima funcionam como nos outros venenos.
+
+**Peçonha com elemento.** Uma peçonha que queima, congela ou corrói por dentro continua sendo veneno: drena o seu pool e só. O elemento dá a imagem e pode sugerir o remédio, mas não causa dano a mais, e ser imune ao elemento não protege do veneno, a não ser que a ficha diga.
 
 **Reconhecer** o veneno é Inteligência + Cura, e o Mestre decide se é preciso rolar. **Tratar** é o que se faz com a mão (sangrar e limpar a ferida, administrar o antídoto na veia): **Raciocínio + Cura contra a Potência**, uma vez por intervalo pendente. Passando, reduz o pool restante pela mesma régua de Margem da rolagem de resistir; antídoto específico em mãos dá **+4** à jogada. Dar um remédio ou um antídoto para beber não pede teste, e ele vale o que o próprio remédio disser.
 
@@ -106,6 +114,8 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 <div class="callout regra"><span class="lbl">Regra</span>É isso que faz "põe ele na cama" ser um ato mecânico e não um floreio. A febre dos pântanos que o camponês não vence de jeito nenhum vira Virulência 6 com cama e cuidado, e ele desce um estágio a cada três dias. <b>Doença não é vencida pela ficha do doente, é vencida por quem cuida dele.</b></div>
 
 **Ajuda** · reconhecer a doença é Inteligência + Cura, e o Mestre decide se é preciso rolar. O curandeiro que quiser mais do que a circunstância trata com a mão (cirurgia, administração intravenosa), rola **Raciocínio + Cura** contra a Virulência e apoia pela [tabela geral de apoio](/regras/acoes-e-sistema). Dar um remédio para beber não pede teste. O −2 vale para até três doentes, e some acima disso.
+
+**Parasita e esporo** · Cura ou cirurgia adequada retira o agente e para a progressão.
 
 **Contágio** · quem convive com um doente Instalado ou pior rola uma vez por dia contra metade da Virulência. Quem falha no contágio começa em Incubação.
 
