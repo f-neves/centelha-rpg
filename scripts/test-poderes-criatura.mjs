@@ -43,6 +43,8 @@ falha(poder('sobrenatural', GRATIS + '. Pode ampliar o efeito gastando 2 de Ener
 falha(poder('magia', 'Usos grátis: 1 por cena. Os usos voltam a cada 2 horas'), 'nenhum uso volta por hora', 'uso que volta por hora fora da substância');
 falha(poder('sobrenatural', 'Usos grátis: 1 por cena. Recupera 1 uso a cada 2 horas'), 'nenhum uso volta por hora', '"recupera 1 uso a cada 2 horas"');
 falha(poder('magia', 'Usos grátis: 1 por cena. Recarrega em 1 hora'), 'nenhum uso volta por hora', '"recarrega em 1 hora"');
+passa(poder('magia', 'Usos grátis: 1 por dia. A ativação se completa em 1 hora'), '"a ativação se completa em 1 hora" é tempo de ativação, não uso voltando');
+falha(poder('magia', 'Usos grátis: 1 por dia. Recupera a ativação em 1 hora'), 'nenhum uso volta por hora', '"recupera a ativação em 1 hora"');
 passa(poder('inato', 'contínuo', { classe: 'sem regra ainda', efeito: 'recupera 1 PV por hora' }), '"recupera 1 PV por hora" é regeneração, não uso voltando (sem regra ainda)');
 passa(poder('inato', 'Recupera 1 PV por hora enquanto tiver alimento'), '"recupera 1 PV por hora" é regeneração, não uso voltando (regra da ficha)');
 passa(poder('inato', 'toda a regeneração para por 1 hora. Depois, as feridas voltam a fechar', { classe: 'sem regra ainda', efeito: 'toda a regeneração para por 1 hora. Depois, as feridas voltam a fechar' }), '"regeneração para por 1 hora" não é uso voltando');

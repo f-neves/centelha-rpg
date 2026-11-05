@@ -13,7 +13,8 @@ const usoVolta = '(?:usos?|cargas?|doses?|ativaç\\p{L}*)';
 const voltaPorHora = new RegExp(
   '\\b(?:recupera|repõe|regenera|volta|voltam)(?!\\p{L})\\s+(?:(?:o|os|a|as|um|uma|seu|sua|seus|suas|\\d+)\\s+)?'+usoVolta+'(?!\\p{L})'+porHora
   +'|\\brecarrega(?:m)?(?!\\p{L})'+porHora
-  +'|\\b'+usoVolta+'(?!\\p{L})'+porHora,'iu');
+  // sem o verbo de volta, só o uso, a carga ou a dose: "a ativação se completa em 1 hora" é tempo de ativação
+  +'|\\b(?:usos?|cargas?|doses?)(?!\\p{L})'+porHora,'iu');
 // C-002 e P3 (04/11/2026): constructo não produz substância. Os sopros e o ferrão citados na P3 são efeito similar à magia.
 const P3 = { 'golem-de-ferro': /^sopro de gás venenoso$/i, homunculus: /^ferrão sonífero$/i, 'golem-de-gelo': /^sopro congelante$/i };
 // Negações que não são custo: "sem Energia", "sem gastar Mana", "não custa Energia".
