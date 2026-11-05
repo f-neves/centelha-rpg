@@ -4174,10 +4174,10 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 ### D-351 · Leitura da Leitora em Combate, Resistir, Integridade, Criação e Atributos: os itens resolvidos pelo registro ou pelo próprio livro [tags: combate, corrida, painel, sangramento, escondido, horda, atropelar, engolir, resistir, desgaste, doenca, ambiente, integridade, criacao, centelha, atributos, leitora, d-087, d-303, d-294, d-346, d-319, d-327, d-330, d-332, d-345]
 - Data: 2026-11-05
 - Decisão (Arquiteto, por ordem do autor de 05/11/2026: "passe os itens pelos três filtros (registro, Veterana, bom senso do Mestre), como na regras-leitora-3: aplique o que já tem decisão (...) e me traga só as perguntas que sobrarem"). Triagem completa em `../tmp/arquiteto/triagem-leitura-combate-05-11.md`. Aplicados aqui:
-  - K-COMB-1: Correndo vale o −4 (D-303); "correndo não se apara nem se esquiva" passa a "correndo, apara e esquiva mal", no livro e no painel.
+  - K-COMB-1: Correndo vale o −4 (D-303); "correndo não se apara nem se esquiva" passa a "correndo, apara e esquiva mal", no livro, no painel e no espelho de `regras.json` (`combate.movimento.corrida.texto`); o `test-capitulo-armas.mjs` passa a cobrar os dois lados.
   - K-COMB-2: no painel, a Guarda quebrada dura "até a sua próxima ação" (Guarda sob pressão), e não 6 Ticks; o painel é lembrete e vale o livro (D-294, D-346).
   - K-COMB-3: no painel, o Sangrando diz o Sangramento N (N de dano, até 5); o número 1 fica, e o Mestre soma o resto.
-  - K-COMB-4: no painel, o Escondido diz a regra do livro (Furtividade contra a Percepção Passiva de quem procura).
+  - K-COMB-4: no painel, o Escondido diz a regra do livro (Furtividade contra a Percepção Passiva de quem vigia; quem procura de propósito rola Procurar).
   - C-COMB-3: no exemplo do Kael, "investida" (que é regra) passa a "ação".
   - C-COMB-7: o Engolir ganha o link para Sufocamento.
   - C-COMB-8, em parte: a esquiva do Atropelar é rolada, e não passiva (a D-319 diz "Defesa ativa").

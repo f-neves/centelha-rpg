@@ -94,7 +94,7 @@
 
     {
       "id": "escondido", "nome": "Escondido", "icone": "◐", "grupo": "sentidos", "cor": "bom",
-      "nota": "Não pode ser alvejado enquanto não for encontrado (a Furtividade de quem se esconde contra a Percepção Passiva de quem procura, livro, Sentidos e Engano). O primeiro golpe pega o alvo Surpreso.",
+      "nota": "Não pode ser alvejado enquanto não for encontrado (a Furtividade de quem se esconde contra a Percepção Passiva de quem vigia; quem procura de propósito rola Procurar, livro, Sentidos e Engano). O primeiro golpe pega o alvo Surpreso.",
       "marcaOculto": true
     },
     {
