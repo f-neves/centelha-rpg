@@ -18,7 +18,7 @@ Antes dos detalhes, o esqueleto de uma briga, do começo ao fim:
 5. **O dano, menos a Absorção** (a absorção do alvo), vira ferimento.
 6. **Quem chega a 0 de Vida fica Incapacitado, e normalmente desmaia (Inconsciente).** Ferimentos, morte e sangramento são assunto do próximo capítulo, [Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura).
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um bandido de <strong>Defesa 20</strong>. Seu pool de ataque dá <strong>5d6+9</strong> (Destreza 6 + Armas 5, mais o acerto da espada e a Centelha); ela rola 17 nos dados e soma <strong>26</strong>. 26 supera 20 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ela rola o dano da espada (1d6) + a Margem (1d6) + a Força, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora ataca um bandido de <strong>Defesa 20</strong>. Seu pool de ataque dá <strong>5d6+9</strong> (Destreza 6 + Armas 5, mais o acerto da espada e a Centelha); ela rola 17 nos dados e soma <strong>26</strong>. 26 supera 20 → acerta, com diferença de 6, exatamente <strong>uma Margem</strong>, então o dano ganha <strong>+1d6</strong>. Ela rola o dano da espada (1d6) + a Margem (1d6) + a Força + a Centelha, desconta a Absorção do bandido, e o que sobra abre ferimento.</div>
 
 No osso, é só isso. O resto do capítulo são as camadas que dão profundidade tática: **quando** agir, **como** se mover, **usar a posição** e **desencadear Técnicas**.
 
@@ -220,7 +220,7 @@ No par de leves o segundo Golpe **come um Tick da Recuperação**, e o ciclo nã
 
 **Dois Punhos contam como duas armas leves**, cada um com as estatísticas dos Punhos (1/1/3). Fazem par para a empunhadura dupla (a linha do par de leves), para a Rajada (teto de 3 golpes, o da classe leve), para o Bloqueio (+1 cada) e contam como **2 ataques** para a Guarda sob pressão. **Só as mãos fazem par**: os dois punhos e qualquer mão que conta como arma (a Mão de Ferro, por exemplo). Chute, mordida, cauda e patas de animal seguem a regra de que nada dá ataque extra sem dizer que dá: são opções de ataque, não um par.
 
-A dupla de armas de Velocidades diferentes fica a critério do Mestre: o ciclo é o da arma **mais lenta** das duas, em qualquer mão que ela esteja. Uma adaga na mão hábil e uma espada longa na inábil têm o ciclo da dupla com a espada, 7 Ticks (a Velocidade 6 dela mais 1, como na tabela acima), como se ela estivesse na mão hábil.
+A dupla de armas de Velocidades diferentes fica a critério do Mestre: o ciclo é o da arma **mais lenta** das duas, em qualquer mão que ela esteja. Uma adaga na mão hábil e uma espada longa na inábil têm o ciclo da dupla com a espada, 7 Ticks (a Velocidade 6 dela mais 1, como na tabela acima), como se ela estivesse na mão hábil. Isso é do P/G/R; no sistema Normal a dupla tem a mesma Velocidade da arma, 6.
 
 O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até a sua próxima ação. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
 

@@ -4192,7 +4192,8 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - K-ATR-1: a conta do exemplo (Força 2 e Armas 5 não somam 5) passa a Força 2 e Armas 3.
 - Ficam para depois, na triagem: os itens a conferir no registro (seção D) e as perguntas ao autor (seção E).
 - Origem: `../tmp/leitora/leitura-combate-resistir-armas.md` (lida em `bc3cfd28`).
-- Estado: **aplicada** na branch `regras-leitora-6`, a publicar com o ok do autor.
+- Estado: **no ar** desde 05/11/2026 (branch `regras-leitora-6`, publicada em `f41ab729`).
+- Completada em 05/11/2026 (branch `regras-leitora-7`): C-COMB-1, o dano do exemplo da Sora soma a Centelha (a fórmula do livro, *Dano e Armadura*); C-COMB-5, o ciclo de 7 Ticks da dupla é do P/G/R, e no Normal a dupla tem a mesma Velocidade (D-083); C-RES-3, a remissão do toque aponta o +4 da dose dobrada, que é o que a Circunstância abaixo tem.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
