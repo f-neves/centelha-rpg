@@ -191,7 +191,7 @@
     {
       "id": "inconsciente", "nome": "Inconsciente", "icone": "💤", "grupo": "corpo", "cor": "morte",
       "defesa": -8, "foraDeCombate": true, "zeraDefesa": true,
-      "nota": "Não age, não defende: Defesas 0 (livro, Combate Físico). Golpe deliberado em quem está inconsciente acerta automaticamente. O Grid e a aba Combate ainda aplicam −8, até lerem a marca de Defesa zerada."
+      "nota": "Não age: Defesas Físicas 0 (livro, Combate Físico); a Defesa Mental continua. Golpe deliberado em quem está inconsciente acerta automaticamente. O Grid e a aba Combate ainda aplicam −8, até lerem a marca de Defesa zerada."
     },
     {
       "id": "dormindo", "nome": "Dormindo", "icone": "☾", "grupo": "corpo", "cor": "perigo",

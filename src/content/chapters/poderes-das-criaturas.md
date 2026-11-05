@@ -43,7 +43,7 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 **Resistência mental.** Algumas criaturas resistem à mente sem ser imunes. A resistência tem três graus, que somam +2, +4 ou +6 à Defesa Mental, contra todo efeito mental ou só contra a família que a ficha nomear. O bônus entra no teto comum de +6.
 
-**O teto das duas resistências.** Quando somam numa Defesa, a resistência à magia e a mental entram no mesmo teto de +6 dos bônus de Defesa, junto da cobertura e da postura ([Combate Físico](/regras/combate)). Na jogada de resistir, valem sozinhas.
+**O teto das duas resistências.** Quando somam numa Defesa, a resistência à magia e a mental entram no mesmo teto de +6 dos bônus de Defesa, junto da cobertura e da postura ([Combate Físico](/regras/combate)). Na jogada de resistir, não somam a cobertura nem a postura, mas continuam no teto de +6, também quando as duas valem juntas.
 
 <span id="corpos-que-nao-vivem"></span>
 
