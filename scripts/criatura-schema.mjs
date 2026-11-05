@@ -1,4 +1,5 @@
 // Contrato unificado da fonte da criatura. Só entradas e escolhas, sem derivados.
+import { validarPoderes } from './regras-poder-criatura.mjs';
 import { z } from 'zod';
 import artesCatalogo from '../src/data/artes.json' with { type: 'json' };
 import elementosVocab from '../src/data/elementos-vocab.json' with { type: 'json' };
@@ -41,6 +42,7 @@ const ataqueComArma = z.object({ nome: texto, arma: id }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };
 const habilidadeEspecial = z.object({
+  categoria: z.enum(['substancia','inato','sobrenatural','magia','milagre']).optional(),
   nome: texto, formas: formasMarca, classe: z.enum(['livro', 'regra da ficha', 'sem regra ainda']),
   ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg }).strict().optional(), regra: id.optional(),
   // P7, 26/10/2026: referências ao livro; texto só acrescenta detalhe ou limite próprio da criatura.
@@ -70,7 +72,7 @@ const formaNova = z.object({
   // D-265: as outras formas que o Mestre pode escolher no lugar do disfarce fixo ("um animal comum"); o card escreve a regra
   outraForma: texto.trim().min(1).optional(),
 }).strict();
-export const criaturaNovaSchema = z.object({
+const estruturaCriatura = z.object({
   id, idAntigo: texto.optional(), nome: texto, nomeIngles: texto.nullable(), categoria: id, papel: id,
   ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(12),
   formaPrincipal: z.object({ id, nome: texto }).strict().optional(),
@@ -92,7 +94,8 @@ export const criaturaNovaSchema = z.object({
   ecologia: z.object({ terreno: z.array(texto), clima: z.array(texto) }).strict(),
   descricao: texto.trim().min(1), lore: z.array(z.object({ titulo: texto, texto }).strict()), imagens: z.array(texto),
   revisao: z.array(z.object({ campo: texto, motivo: texto }).strict()),
- }).strict().superRefine((c, ctx) => {
+ }).strict();
+function conferirCriatura(c, ctx) {
   const erro=(path,message)=>ctx.addIssue({code:'custom',path,message});
   if (Boolean(c.formaPrincipal) !== Boolean(c.formas)) erro(['formas'],'formaPrincipal e formas devem existir juntas');
   const ids=[...(c.formaPrincipal ? [c.formaPrincipal.id] : []),...(c.formas || []).map(f=>f.id)];
@@ -113,6 +116,12 @@ export const criaturaNovaSchema = z.object({
   }
   const listas=[['habilidadesEspeciais',c.habilidadesEspeciais],['comoLuta',c.comoLuta],['sentidos',c.sentidos],...Object.entries(c.elementos).map(([k,v])=>['elementos.'+k,v])];
   for (const [lista,itens] of listas) for (const [i,item] of itens.entries()) if (item.formas !== 'todas') for (const id of item.formas) if (!ids.includes(id)) erro([lista,i,'formas'],'marca aponta para forma inexistente: '+id);
+}
+
+export const criaturaAnteriorR03Schema = estruturaCriatura.superRefine(conferirCriatura);
+export const criaturaNovaSchema = estruturaCriatura.superRefine((c,ctx) => {
+  conferirCriatura(c,ctx);
+  validarPoderes(c,(path,message)=>ctx.addIssue({code:'custom',path,message}));
 });
 
 // As fontes publicadas antes da F5.2 ainda podem trazer a escolha de Tamanho da
@@ -120,7 +129,8 @@ export const criaturaNovaSchema = z.object({
 // de entrada, o conversor e o editor continuam recusando esse formato antigo.
 export const criaturaParaLeituraSchema = {
   safeParse(c) {
-    const estrito = criaturaNovaSchema.safeParse(c);
+    const schema = c?.habilidadesEspeciais?.some(h => h?.categoria !== undefined) ? criaturaNovaSchema : criaturaAnteriorR03Schema;
+    const estrito = schema.safeParse(c);
     if (estrito.success) return estrito;
     const legado = structuredClone(c);
     let mudou = false;
@@ -128,7 +138,7 @@ export const criaturaParaLeituraSchema = {
       delete forma.corpo.tamanhoEscolhido;
       mudou = true;
     }
-    if (!mudou || !criaturaNovaSchema.safeParse(legado).success) return estrito;
+    if (!mudou || !schema.safeParse(legado).success) return estrito;
     return { success: true, data: c };
   },
   parse(c) {

@@ -17,7 +17,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { lerFichaMd, campo, negritos, numBR, semMarcas, slug, idAtributo, idHabilidade } from './lib-ficha-md.mjs';
 import { carregarTS } from './lib-ts.mjs';
-import { criaturaNovaSchema } from './criatura-schema.mjs';
+import { criaturaNovaSchema, criaturaAnteriorR03Schema } from './criatura-schema.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const dado = (f) => JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data', f), 'utf8'));
@@ -90,7 +90,16 @@ const motivoDaLinhaPV = (s) => {
 };
 const idForma = (nome) => slug(String(nome).replace(/^forma (de |d[ao] )?/, ''));
 
-export function converterFicha(texto, { site = null } = {}) {
+export function converterFicha(texto, opcoes = {}) {
+  return converter(texto, opcoes, criaturaNovaSchema);
+}
+
+// Releitura de fixtures anteriores à migração, sem relaxar o contrato de entrada.
+export function converterFichaAnteriorR03(texto, opcoes = {}) {
+  return converter(texto, opcoes, criaturaAnteriorR03Schema);
+}
+
+function converter(texto, { site = null }, schema) {
   const F = lerFichaMd(texto), T = F.tabelas, S = F.secoes;
   const paradas = [], lacunas = [], avisos = [], revisao = [];
   const para = (s) => paradas.push(s), lacuna = (s) => lacunas.push(s);
@@ -439,7 +448,10 @@ export function converterFicha(texto, { site = null } = {}) {
       const mb = p.match(/^poder natural \(base ([^)]+?) (\d+)(?:,[^)]*)?\)$/);
       const mt = p.match(/^Técnica ([a-z0-9-]+), nível (\d+)$/);
       const ma = p.match(/^Arte (\S+) (\d+)$/);
-      if (mb) {
+      if (p.startsWith('categoria:')) {
+        if (he.categoria !== undefined) para('Manobras, '+nome+': categoria repetida');
+        he.categoria = p.slice('categoria:'.length).trim();
+      } else if (mb) {
         const arte = slug(mb[1]);
         if (!ARTES.has(arte)) para(`Manobras, ${nome}: a base ${mb[1]} não é Arte do artes.json`);
         he.base = { arte, nivel: Number(mb[2]) };
@@ -793,7 +805,7 @@ export function converterFicha(texto, { site = null } = {}) {
   for (const { campo: cp } of c.revisao) if (!aponta(c, cp)) para(`revisao: o campo "${cp}" não aponta para nada`);
   // e o JSON passa no esquema novo, todo .strict() (scripts/criatura-schema.mjs, criaturaNovaSchema)
   if (!paradas.length) {
-    const r = criaturaNovaSchema.safeParse(c);
+    const r = schema.safeParse(c);
     if (!r.success) for (const i of r.error.issues.slice(0, 5)) para(`esquema: ${i.path.join('.')}: ${i.message}`);
   }
   return { criatura: c, paradas, lacunas: [...new Set(lacunas)], avisos };

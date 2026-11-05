@@ -3,8 +3,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {pathToFileURL} from 'node:url';
 const url = (env, rel) => process.env[env] ? pathToFileURL(process.env[env]).href : new URL(rel, import.meta.url).href;
-const {converterFicha} = await import(url('CENTELHA_CONVERSOR_TESTE', './conversor-criatura.mjs'));
-const {criaturaNovaSchema} = await import(url('CENTELHA_SCHEMA_TESTE', './criatura-schema.mjs'));
+const {converterFichaAnteriorR03: converterFicha} = await import(url('CENTELHA_CONVERSOR_TESTE', './conversor-criatura.mjs'));
+const {criaturaAnteriorR03Schema: criaturaNovaSchema} = await import(url('CENTELHA_SCHEMA_TESTE', './criatura-schema.mjs'));
 const original = fs.readFileSync(new URL('fixtures/conversor/lobisomem.md', import.meta.url), 'utf8');
 function campo(t, nome, valor) {
   const re = new RegExp('^(\\| '+nome+' \\| )[^|]*\\|', 'm');

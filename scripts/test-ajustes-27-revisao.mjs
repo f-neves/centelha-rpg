@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {pathToFileURL} from 'node:url';
 const modulo = process.env.CENTELHA_CONVERSOR_TESTE ? pathToFileURL(process.env.CENTELHA_CONVERSOR_TESTE).href : new URL('./conversor-criatura.mjs', import.meta.url).href;
-const {converterFicha, aponta} = await import(modulo);
+const {converterFichaAnteriorR03: converterFicha, aponta} = await import(modulo);
 const original = fs.readFileSync(new URL('fixtures/conversor/lobisomem.md', import.meta.url), 'utf8').replaceAll('Mordida', 'Corrente farpada');
 const nota = '- `corrente farpada`: Antes: dano médio 31,5.\n- `ataque inexistente`: esta nota não tem destino. a conferir\n- `outra nota sem marca`: comportamento anterior preservado.\n';
 const texto = original.replace('## Bloco de conferência', nota+'\n## Bloco de conferência');

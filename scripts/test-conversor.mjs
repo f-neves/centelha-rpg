@@ -20,8 +20,8 @@
 //   node scripts/test-conversor.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { converterFicha, aponta } from './conversor-criatura.mjs';
-import { criaturaNovaSchema, criaturaParaLeituraSchema } from './criatura-schema.mjs';
+import { converterFichaAnteriorR03 as converterFicha, aponta } from './conversor-criatura.mjs';
+import { criaturaAnteriorR03Schema as criaturaNovaSchema, criaturaParaLeituraSchema } from './criatura-schema.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const FIX = path.join(ROOT, 'scripts/fixtures/conversor');

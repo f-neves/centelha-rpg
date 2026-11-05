@@ -1,8 +1,8 @@
 // Regressões da Fase 5: fonte inválida deve parar, e dado válido deve sobreviver.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { criaturaNovaSchema as schema } from './criatura-schema.mjs';
-import { converterFicha } from './conversor-criatura.mjs';
+import { criaturaAnteriorR03Schema as schema } from './criatura-schema.mjs';
+import { converterFichaAnteriorR03 as converterFicha } from './conversor-criatura.mjs';
 import { carregarTS } from './lib-ts.mjs';
 const M = await carregarTS('src/lib/motor.ts');
 const raw = fs.readFileSync('scripts/fixtures/conversor/lobisomem.md','utf8');

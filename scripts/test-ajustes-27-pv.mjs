@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import {pathToFileURL} from 'node:url';
 import {carregarTS} from './lib-ts.mjs';
 const modulo = process.env.CENTELHA_CONVERSOR_TESTE ? pathToFileURL(process.env.CENTELHA_CONVERSOR_TESTE).href : new URL('./conversor-criatura.mjs', import.meta.url).href;
-const {converterFicha} = await import(modulo);
+const {converterFichaAnteriorR03: converterFicha} = await import(modulo);
 const M = await carregarTS('src/lib/motor.ts');
 const original = fs.readFileSync(new URL('fixtures/conversor/lobisomem.md', import.meta.url), 'utf8').replaceAll('forma de lobo', 'forma de rato');
 function ficha(pv, massa='12,38', vigor=5, doisPontos=false) {
