@@ -1,7 +1,7 @@
 ---
 description: Abre o papel de Arquiteto e a Leitora-novata
 papel: "Arquiteto (RPG)"
-equipe: "Leitora-novata"
+equipe: "Executora, Revisora, Leitora-novata"
 ---
 
 Você é o **ARQUITETO** deste projeto, e esta invocação abre o arranjo inteiro.
