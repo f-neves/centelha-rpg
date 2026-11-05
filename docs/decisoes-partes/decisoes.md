@@ -927,6 +927,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Origem: b14-fase5b-economia-de-acao-despacho.md:14-20, :82-103 (Adendos 1), commits 2e14b3f2, 3c9f9d59
 - Estado: no ar (bancada)
 - **Substituída em parte pela D-274** (R1, 03/11/2026): o "Poder Especial" sai do livro; o ataque extra de criatura vai ao multiataque (item 022, tema de combate, ainda não decidido).
+- **"Poder Especial" substituído pela D-314** (R35, 05/11/2026): fora da Rajada e da empunhadura dupla, múltiplos ataques vêm do multiataque escrito na ficha (ou de Proeza). O resto da C-046 continua. O item 022 está decidido pela D-314.
 
 ### C-047 · Guarda sob pressão: leitura da Defesa final, feito + recebido, dupla conta 2 [tags: guarda, pressao, defesa, combate, tick]
 - Data: 2026-10-01
@@ -2579,11 +2580,11 @@ As D-176 a D-178 respondem às questões 1, 2 e 3a de `../tmp/arquiteto/bestiari
   - 4: "A Executora aplica 1 e 2. A Revisora confere."
   - 5: "Depois disso, monte uma página HTML local com a lista da prévia, para eu conferir no navegador" (`../tmp/arquiteto/bestiario/publicacao/conferencia-previa.html`), com os itens A a D da lista, o gnomo e as quatro regras provisórias, começando pelo item C (a tabela de acerto), cada item com o que olhar, o link da prévia, o antes e o depois, três botões (ok, não, dúvida), um campo de nota e um botão que baixa as respostas num arquivo .md. "O merge só depois de eu mandar o arquivo de respostas com tudo ok."
 - Estado do complemento 3: **NO AR desde 22/10/2026, no merge `0ecdd97e`** (decisão 31 do autor, 22/10/2026; a publicação da D-179). Histórico, como estava antes: o item 1 do complemento 2 está aplicado na branch `bestiario-publicacao` (etapa 6d, commits `368acdf7` e `2198357f`; Revisora PROCEDE na 09e). A marca escolhida para o item 2 é «(provisório)», em letra menor (`<small>(provisório)</small>` no capítulo e na referência da mesa; o texto «(provisório)» nas notas do `regras.json`), logo depois da frase de cada regra; é a marca que o `racas.md` já usa no custo de XP. Os itens 1 e 2 estão a implementar na etapa 6e da publicação. O item 18 também dá massas ao halfling (20 a 28 kg) e ao elfo (42 a 65 kg), que o livro escreve 20–35 kg e 40–65 kg; os dois já ficam numa linha só da tabela de Vida (15 a 35 kg e 35 a 220 kg), a mensagem só decidiu o gnomo, e os dois ficam como estão. **Substituído pela D-234** (24/10/2026): as faixas do item 18 valem para as oito raças, e o livro se corrige na troca.
+- O "sem regra ainda" do valor de cada nível de Couraça na Absorção (item 1 do lote 1 da Bestiarista) foi substituído pela D-328 (R49, 05/11/2026). A nota da conta antiga da mesa fica no livro até o Grid mudar (N23).
 
 ## O lote 1 da Bestiarista: peso erguido, Centelha do zumbi, Inteligência 0, equipamento no card, Bravura e o manual (22/10/2026)
 
 As D-184 a D-190 são as respostas do autor ao lote 1 da Bestiarista (`../tmp/bestiarista-fichas/relato-lote-1.md` e `perguntas-autor.md`) e à proposta do Arquiteto para o manual (`../tmp/arquiteto/bestiario/proposta-manual-lote1-2026-10-22.md`). A numeração do autor (35 a 41) segue a da D-179; ele autoriza o registro de todas. A D-191 (decisão 42) responde à pergunta que sobrou do ajuste do lote 1 (`../tmp/bestiarista-fichas/relato-ajuste-lote-1.md`).
-- O "sem regra ainda" do valor de cada nível de Couraça na Absorção (item 1) foi substituído pela D-328 (R49, 05/11/2026). A nota da conta antiga da mesa fica no livro até o Grid mudar (N23).
 
 ### D-184 · Peso erguido: uma fórmula só para criatura e personagem, a R15 [tags: forca, peso-erguido, levantamento, halterofilismo, musculatura, massa, personagem, criatura, racas, regras-json, ficha, d-146, d-159, d-162, d-180, b20]
 - Data: 2026-10-22
@@ -3271,6 +3272,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: a C-001 muda (o poder pode usar Mana, e Energia, nos usos extras, quando a ficha especificar) e tira da C-046 o "Poder Especial" (o ataque extra de criatura vai ao multiataque, item 022, tema de combate, ainda não decidido). A C-037 continua para as Artes de classe. Nas fichas, a Bestiarista reclassifica os poderes, dá doses e ritmo às substâncias e tira o sopro a cada 24 Ticks; a bancada refaz o desafio de dragões, linnorms, cães infernais e quimera.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 03/11/2026 (tema 07 e réguas comuns).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r1-r20`, publicada em `d796a36d`). As fichas seguem por lote de ajuste da Bestiarista.
+- O item 022 (multiataque), "ainda não decidido" acima, foi decidido pela D-314 (R35, 05/11/2026).
 
 ### D-275 · R2: O alcance dos poderes de criatura: sem padrão, cada poder escreve o seu [tags: bestiario, criatura, poder, alcance, d-263]
 - Data: 2026-11-03
@@ -3774,6 +3776,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 12, regeneração).
 - Estado: **pendência, não regra** (`docs/pendencias/B-bestiario.md`, B21).
 - Redação de 05/11/2026 (ordem do autor): a linha que abre a seção *Regeneração* diz só que a regra do ritmo está pendente; sai "o Mestre resolve o que a ficha descrever até lá".
+- Redação de 05/11/2026 (depois da Revisora, ok do autor): a frase da ficha ganha "Por ora," ("Por ora, a ficha dá o nível de regeneração só para comparar uma criatura com a outra."), porque a R46 ainda vai dar ritmo ao nível.
 
 ### D-326 · R47: Fraqueza da criatura na regeneração: interrompe tudo, ou não se regenera [tags: bestiario, criatura, regeneracao, fraqueza, d-246]
 - Data: 2026-11-05
@@ -3840,6 +3843,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
 - Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
 - Correção (autor, 05/11/2026; seção "R53, correção (05/11/2026, DECIDIDA; pergunta 1 do Arquiteto)"): A R53 foi montada por Claude sobre premissa errada do estudo: Veil é exemplo de personagem na Criação, não campanha com teto; a D-055 já tirou o teto 3 da criação; o piso é Centelha 0. Resposta do autor: tirar o "(no Veil, 3)" e trocar "comece em Centelha 1" por "a referência de uma campanha heroica é Centelha 1". A premissa do "(no Veil, 3)" foi erro de Claude, e não do autor.
+- Ajuste de 05/11/2026 (ordem do autor): a frase da abertura de *Custos de XP* que dizia "na criação, é o Mestre quem a dá, pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica)" passa a "na criação, o Mestre e o grupo a combinam pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica, com referência 1)". "O Mestre e o grupo" segue a R53; a faixa de 1 a 3 é texto do autor e fica, com a referência 1 dentro dela.
 
 ### D-333 · Tema 04, itens aplicados: arrastar a presa, golpe que derruba ou agarra, firme, emboscada, esmagar contra obstáculo e os outros [tags: combate, manobras, agarrao, empurrar, criatura, d-019, d-081]
 - Data: 2026-11-05
@@ -4003,6 +4007,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído: o Sangramento segue a D-248. Fecha o item 031 de `99-sem-decisao.md`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
 - Estado: **aplicada** na branch `regras-r35-r54`, a publicar com o ok do autor.
+- Redação de 05/11/2026 (ordem do autor, depois da Revisora): "o cuidado simples não basta" passa a "o Estabilizar comum não basta", sem mudar o sentido: o Estabilizar comum não para a ferida do anticoagulante, e é preciso o teste de Raciocínio + Cura.
 
 ### D-344 · Itens editoriais separados pelo Arquiteto: 003, o catálogo de armas e o exemplo de Bram [tags: livro, peso-erguido, catalogo, armas, bram, d-053, d-267]
 - Data: 2026-11-05

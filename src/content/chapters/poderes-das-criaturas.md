@@ -78,6 +78,6 @@ Constructos, mortos-vivos e elementais não dormem, e por isso o sono sobrenatur
 
 ## Regeneração
 
-**Regeneração N · sem regra ainda.** A ficha dá o nível de regeneração só para comparar uma criatura com a outra. A regra do ritmo ainda está pendente: sai dos testes de combate.
+**Regeneração N · sem regra ainda.** Por ora, a ficha dá o nível de regeneração só para comparar uma criatura com a outra. A regra do ritmo ainda está pendente: sai dos testes de combate.
 
 **Fraqueza da criatura.** Algumas regenerações têm uma fraqueza nomeada na ficha (o fogo e o ácido do trol, a prata do lobisomem). A ficha diz qual das duas formas vale: ou o dano da fraqueza **interrompe toda a regeneração** por um tempo, e depois tudo volta a fechar; ou o dano da fraqueza **não se regenera**, e só fecha com outras curas (Artes, Cura, descanso), enquanto o resto se regenera normalmente.
