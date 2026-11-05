@@ -2,7 +2,7 @@
 ordem: 17
 numeral: "IX"
 titulo: "Os Poderes das Criaturas"
-resumo: "As cinco categorias de poder que uma criatura tem além das Artes e das Proezas, como cada uma se paga, o alcance, a Velocidade, a Resistência à magia e a mental, os corpos que não vivem e as imunidades."
+resumo: "As cinco categorias de poder que uma criatura tem além das Artes e das Proezas, como cada uma se paga, o alcance, a Velocidade, a Resistência à magia e a mental, os corpos que não vivem, o teleporte, as imunidades, a resistência que depende da arma e a regeneração."
 ---
 
 <p class="muted">Parte do capítulo <strong>Combate Físico</strong>. Vale para os poderes das criaturas do <a href="/centelha-rpg/bestiario">Bestiário</a>; cada ficha diz a categoria, os usos e os números do poder. Os estados que os poderes causam estão em <a href="/centelha-rpg/regras/condicoes">Condições</a>.</p>
@@ -33,17 +33,25 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 **Velocidade.** O efeito similar à magia é ativado na Velocidade da Arte do mesmo grau da sua base e sai no Tick do Golpe, como uma Arte. Os outros poderes trazem a sua Velocidade na ficha.
 
+## Teleporte
+
+**Teleporte.** Some e reaparece noutro ponto que veja ou conheça bem, até o alcance da ficha, levando o que carrega. É efeito similar à magia, ativado em Velocidade 8. Outros seres só vão junto se quiserem e estiverem tocando quem se teleporta, até o número que a ficha diz. Quem agarra ou é agarrado pode se soltar assim, mas não arrasta o outro contra a vontade.
+
 ## Resistência à magia e à mente
 
 **Resistência à magia.** Algumas criaturas resistem à magia por natureza. A resistência tem três graus, que somam +2, +4 ou +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia. O bônus entra no teto comum de +6.
 
 **Resistência mental.** Algumas criaturas resistem à mente sem ser imunes. A resistência tem três graus, que somam +2, +4 ou +6 à Defesa Mental, contra todo efeito mental ou só contra a família que a ficha nomear. O bônus entra no teto comum de +6.
 
+<span id="corpos-que-nao-vivem"></span>
+
 ## Corpos que não vivem
 
 **Corpos que não vivem.** Quatro tipos de corpo fogem das necessidades comuns. O que não estiver na lista do tipo segue a regra de todos.
 
 **Constructo.** Não come, não respira, não dorme. Não faz teste de Vigor, de Resistência nem de Virtude, e é imune a tudo que se resiste com o corpo. Não se cura sozinho: é consertado por Ofício. Herda a fraqueza do material de que é feito.
+
+**Golens e a magia.** O golem ignora as Artes que mexem no corpo ou na mente dele. O dano de elemento o atinge normalmente, com a resistência e a Absorção que ele tiver. Cada material tem as suas exceções, escritas na ficha: o raio que cura o golem de carne, a eletricidade que deixa o de ferro mais lento.
 
 **Morto-vivo.** Como o constructo: não come, não respira, não dorme, não faz teste de corpo e é imune ao que se resiste com o corpo. Não se cura sozinho; recupera-se pelo que a ficha disser (energia negativa, sangue, tempo).
 
@@ -65,3 +73,11 @@ Constructos, mortos-vivos e elementais não dormem, e por isso o sono sobrenatur
 - **Liberdade de movimento:** nada de fora a deixa [Agarrada, Presa ou Imobilizada](/regras/combate#manobras-agarrar-derrubar-empurrar). Paredes, [Paralisado e Atordoado](/regras/condicoes) valem normalmente.
 
 **Veneno e doença.** A imunidade a veneno ou a doença também é estreita: cobre só o que a ficha nomeia, e a imunidade ao próprio veneno vale só para aquela secreção. O ferimento do golpe que trouxe o veneno continua. Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema).
+
+**Resistência que depende da arma.** Algumas criaturas só se ferem de verdade com um material ou uma origem: prata, ferro frio, uma arma abençoada. Contra qualquer outra arma, o dano que passa da Absorção cai **à metade**. A arma certa não tira a Absorção; tira só essa metade.
+
+## Regeneração
+
+**Regeneração N · sem regra ainda.** A ficha dá o nível de regeneração só para comparar uma criatura com a outra. A regra sai de testes de combate, e o Mestre resolve o que a ficha descrever até lá.
+
+**Fraqueza da criatura.** Algumas regenerações têm uma fraqueza nomeada na ficha (o fogo e o ácido do trol, a prata do lobisomem). A ficha diz qual das duas formas vale: ou o dano da fraqueza **interrompe toda a regeneração** por um tempo, e depois tudo volta a fechar; ou o dano da fraqueza **não se regenera**, e só fecha com outras curas (Artes, Cura, descanso), enquanto o resto se regenera normalmente.

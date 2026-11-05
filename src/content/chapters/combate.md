@@ -123,6 +123,8 @@ Cada arma de tiro tem uma **Efetiva** (a coluna Efetiva em [Armas & Armaduras](/
 
 **O sistema Normal não tem tempo de voo**: o tiro continua rolado na declaração, e o projétil chega no mesmo instante. Isso favorece um pouco quem atira de longe, e é aceito: o equilíbrio do jogo é medido no P/G/R.
 
+**Projéteis do corpo.** Quem cospe, lança espinhos ou dispara um jato contra um alvo rola **o maior entre Vigor, Destreza e Percepção + Atirador**. A anatomia faz as vezes de arma; o treino é o do tiro. Se o jato cobre uma área, não há jogada de ataque: quem está na área se defende, como em toda área.
+
 ## Dois sistemas de tempo, e qual é o padrão
 
 Existe mais de um jeito de jogar esta mesma régua, e o que muda é o **quanto** se separam
@@ -192,6 +194,8 @@ A Rajada é só **corpo a corpo** (arco, besta e Arremesso não fazem: recarrega
 
 Cada golpe da Rajada conta como um ataque feito pela Guarda sob pressão: uma Rajada de 3 golpes baixa a sua Esquiva e o Bloqueio em **−6** até a sua próxima ação, e a de 2 golpes (as duas Hastes e a Pesada), em **−4** (−2 por golpe, a mesma conta da empunhadura dupla).
 
+**Multiataque de criatura.** Algumas criaturas golpeiam com várias partes do corpo no mesmo lance: garra, garra e mordida. Isso só existe quando a ficha diz, e funciona como uma Rajada com partes diferentes: a mesma forma, −1d6 acumulado a cada golpe além do primeiro, cada golpe contando para a Guarda sob pressão e um teto de 3 golpes (4 só para corpos de muitas partes, como a hidra, quando a ficha disser). Não se soma à Rajada comum.
+
 ### Empunhadura dupla: um ataque por mão
 
 A outra forma de multiplicar ataques é lutar com **uma arma em cada mão**: aí você pode
@@ -244,11 +248,15 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 * **Agarrado:** o agarrão acima; não age. O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.
 * **Imobilizado:** o que a Técnica Imobilizar e as parecidas causam, e o estado de quem está amarrado ou preso em gelo. Nenhum movimento, não age (nem com Firula) e, conforme o tipo de imobilização, nem grita. A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão), como em *Corpo, total* (ver *Restrição de corpo e de lugar*). Quem está imobilizado sem agarrão (amarrado, preso em gelo) pode tentar se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir. O Imobilizar cobra a manutenção se o alvo estiver tentando se libertar.
 
-**Deslocamento no agarrão.** Os dois podem se mover, e o Mestre julga. É só descrição, sem regra.
+**Deslocamento no agarrão.** Quem mantém o agarrão pode se deslocar levando a presa, à metade do Deslocamento de Batalha, se ela couber no peso que arrasta. É o movimento da manutenção, e não dá ao agarrado um teste de escape novo.
+
+**Engolir.** Algumas criaturas engolem quem já está Agarrado e cabe na boca: uma ação de Velocidade 7. Lá dentro, a vítima fica Imobilizada para o corpo, mas ainda golpeia com uma arma curta. Sufoca como o livro diz e sofre o dano interno da ficha uma vez a cada 6 Ticks; contra o ácido, a armadura vestida não protege.
+
+Há duas saídas: abrir uma ferida por dentro, de tantos PV quanto a ficha diz (um aliado pode abri-la por fora), ou subir pela garganta, como quem escapa de um agarrão. Se quem engoliu morre, a vítima sai com uma ação.
 
 **Derrubar.** Ataque comum, Força ou Destreza (à escolha) + Briga, contra a Defesa do alvo (a melhor entre Esquiva e Bloqueio). O alvo fica **Caído** (prono): −2 na Defesa contra corpo a corpo e +2 contra distância (Vantagem tática). Levantar-se é uma ação de Velocidade 3.
 
-**Empurrar.** Ataque comum, contra a Defesa do alvo. O alvo recua 1 m mais 1 m por Margem, afastando-se de quem empurra. Se o recuo o leva a uma borda, valem [Cair](/regras/acoes-corpo-e-movimento) e Agarrar a borda, no Cap. VIII.
+**Empurrar.** Ataque comum, contra a Defesa do alvo. O alvo recua 1 m mais 1 m por Margem, afastando-se de quem empurra. Se o recuo o leva a uma borda, valem [Cair](/regras/acoes-corpo-e-movimento) e Agarrar a borda, no Cap. VIII. Se o recuo termina contra algo que não cede (parede, rocha, tronco), o alvo sofre 1d6 de Impacto, uma vez por ação; prensar contra o obstáculo pede manter um agarrão.
 
 ### Massa nas Manobras
 
@@ -280,6 +288,10 @@ Estas sete faixas são só das Manobras e do Bloqueio; a Vida tem uma tabela pr�
 
 O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste média 1d6, haste de Guerra 1d6+2, arremesso 1d6−4 a 1d6, distância 1d6−2 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**, a Lança entre elas: **a exceção é a Lança Longa**, que fere por alcance e precisão, não por peso, e soma apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6. A **Centelha do atacante** soma inteira, sem teto de Habilidade: é a mesma fagulha que abre Proeza que faz o golpe doer mais fundo, em toda arma, em toda Arte e a cada pulso de dano contínuo.
 
+**Derrubar sem matar.** Declare antes do golpe que quer só derrubar. Com o punho, uma arma contundente, o cabo da arma ou um choque, o golpe não leva a Vida abaixo de 0: quem cai fica Incapacitado e Inconsciente, sem risco de morrer. Uma arma de corte usada de lado também serve, com −1d6 no acerto.
+
+**Mutilar ou matar de um golpe.** O livro não tem regra para o golpe que arranca um membro ou mata de uma vez: quando uma arma, uma Proeza ou uma ficha descreve esse efeito, o Mestre decide o que acontece.
+
 ### Os três modos de dano
 
 Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um, você escolhe conforme o alvo:
@@ -289,6 +301,8 @@ Todo golpe tem um **modo**, e a maioria das armas pode usar mais de um, você es
 - **Impacto**: maça, martelo, malho; também socos e quedas.
 
 O modo escolhe a **Absorção**, e para ali: o dano que passa é um só, e qualquer um dos três mata (ver [Vida & Ferimentos](/regras/vida-ferimentos-cura)).
+
+**Som.** O dano de som é vibração: é dano físico, de Impacto, e usa a Absorção de Impacto. Resistência ou imunidade ao som não protege do efeito mental de uma música.
 
 A **Absorção** total de um golpe é **Absorção natural + a absorção da armadura**. A armadura tem **três Absorções** (Impacto, Corte e Perfuração), e o **dano Perfurante usa a Absorção de Perfuração**:
 
@@ -310,7 +324,15 @@ A **Couraça** é a armadura natural de uma criatura, e vem **só da pele**: cou
 
 Cada criatura tem um **nível de Couraça de 0 a 12**, numa escala única para animais, extintos, gigantes e criaturas sobrenaturais. O nível é de comparação: a criatura fica no nível em que cai quando posta ao lado das outras. Bicho grande tende a ter pele mais grossa, mas o tamanho não manda sozinho: um tatu de carapaça fica acima de um elefante. Para comparar: humano 0; cavalo 1; porco 1 a 2; búfalo e elefante 2 a 3; hipopótamo e rinoceronte 3 a 4; crocodilo e tatu 4 a 5; tartaruga grande, cerca de 6; anquilossauro 7 a 8. Acima disso ficam as criaturas sobrenaturais.
 
-**Quanto cada nível vale na Absorção: sem regra ainda.** Até essa regra sair, o nível fica na ficha e não entra na Absorção.
+**Quanto a Couraça protege.** A ficha diz o nível (N) e o perfil da cobertura. O nível soma à Absorção assim (metades arredondadas para cima):
+
+| Perfil | Corte | Perfuração | Impacto |
+|---|---|---|---|
+| **Rígida** (casco, carapaça, escama dura, pedra, metal) | N | N | N/2 |
+| **Couro** (couro grosso, pele densa) | N | N/2 | N/2 |
+| **Mole** (gel, borracha, gordura, corpo sem ossos) | N/2 | N/2 | N |
+
+A Couraça não cria Nível de Perfuração. A criatura mágica usa o perfil do que a pele dela é.
 
 <p class="muted">A mesa ainda faz a conta antiga (Couraça pelo tamanho, de +2 no Grande a +10 no Colossal, e Perfuração natural de N1 no Enorme a N3 no Colossal) para as criaturas sem ficha nova, até o código mudar.</p>
 
@@ -365,6 +387,8 @@ Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche e uma onda de fogo cob
 A Dificuldade é a mesma nos dois casos, e sai da distância: **5 + 5 × os metros** que faltam para ficar fora, para sofrer metade; o **dobro** disso, para não sofrer nada. A jogada é **Destreza + Esquiva**. A regra inteira está em [O tempo da Arte](/artes/regras#tempo).
 
 **O sopro das criaturas é área, e segue esta regra.** O fogo do dragão, o gelo do linnorm, o ácido do behir e todo cone, linha ou nuvem que uma criatura cospe não têm jogada de ataque a esquivar: quem está na área sai dela como acima, contra a mesma Dificuldade da distância, e quem não sai leva o dano inteiro. O card do bestiário diz a área, o alcance e o dano de cada sopro.
+
+**Depois da área.** Uma área não deixa dano para trás, a não ser que o efeito diga. Ela pode deixar consequências: o sopro de fogo que pega o mato seco começa um incêndio, o de gelo congela a água. Isso o Mestre decide.
 
 ## Movimento: Deslocamento, Corrida e Salto
 
@@ -426,6 +450,18 @@ Como toda arma tem ao menos 1 Tick de Preparo, **toda arma investe**, a leve tam
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Sora, de martelo (Preparo 3), anda 4 m por Tick e corre 7 no Arranque. Fechando a distância no Preparo ela cobre <strong>12 metros</strong> com a Defesa em −2. Investindo, cobre <strong>21</strong>, com a Defesa em −4, e o martelo, que é o de guerra (o pesado, de duas mãos), cai com a Força <strong>× 3</strong> em vez de × 2, sem dado a mais. Com uma arma de uma mão, a Força iria de × 1 para × 2.</div>
 
 Quanto maior o Preparo, mais longe e mais forte vai o golpe que investe, e a pesada, com Preparo 3, é a que investe melhor, que é exatamente a imagem de quem atravessa o salão com o martelo erguido.
+
+### Atropelar e Pisoteio
+
+**Atropelar.** Um ataque diferente dos outros. São **3 Ticks de Preparação**; do terceiro Tick em diante, cada Tick em que você segue correndo é um **Tick de Golpe** (com a mesma penalidade do Golpe), até você decidir parar ou ser parado; depois vêm **3 Ticks de Recuperação**. Quem estiver no caminho pode ser atropelado. A jogada é de **Força pura**, sem Habilidade (soma a Centelha inteira, como toda jogada de Atributo puro), **mais 3 por categoria de Tamanho que você tem acima do alvo** (menos 3 por categoria abaixo). Você rola uma vez, e o total vale contra cada alvo, com o ajuste de Tamanho de cada um.
+
+Cada alvo no caminho escolhe como se defender:
+- **Esquivar**, com Destreza + Esquiva: se igualar ou superar o seu total, sai do caminho sem dano, e você segue.
+- **Parar**, com Força pura: precisa **superar** o seu total (empate não basta), e então o atropelamento para ali.
+
+Quem não consegue sofre o dano do atropelamento (o golpe da ficha ou, para quem não tem, o do Encontrão) e fica Caído, e você continua o trajeto.
+
+**Pisoteio** é outra coisa: pisar num alvo só. É um ataque natural da ficha, como uma garra ou uma mordida.
 
 ### Recarga: o Preparo que não anda
 
@@ -494,6 +530,8 @@ Sempre que o personagem **não souber do ataque** ou **não tiver como se defend
 | **Cego, vendado ou no escuro total**, sabendo que vai ser atacado | −4 | −8 |
 
 Cego sem saber do ataque vale como surpreso. A penumbra fica sem regra, a critério do Mestre. **Saber que vai ser atacado** se decide numa jogada: o atacante rola **Furtividade** contra a **Percepção Passiva** do defendido ([Furtividade e engano](/regras/acoes-sentidos-e-engano#furtividade-e-engano)), e o atacante invisível usa o mesmo teste.
+
+**Golpe na brecha.** Pegar alguém surpreso ou cercado já é vantagem para todos, na Defesa dele. Dano a mais é coisa de especialista: só quem tem a Proeza ou o poder escrito na ficha soma **+1d6 de dano** no primeiro golpe que fere um alvo Surpreso ou Flanqueado, uma vez por ação.
 
 ### Restrição de corpo e de lugar
 
