@@ -51,8 +51,6 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 **Constructo.** Não come, não respira, não dorme. Não faz teste de Vigor, de Resistência nem de Virtude, e é imune a tudo que se resiste com o corpo. Não se cura sozinho: é consertado por Ofício. Herda a fraqueza do material de que é feito.
 
-**Golens e a magia.** O golem ignora as Artes que mexem no corpo ou na mente dele. O dano de elemento o atinge normalmente, com a resistência e a Absorção que ele tiver. Cada material tem as suas exceções, escritas na ficha: o raio que cura o golem de carne, a eletricidade que deixa o de ferro mais lento.
-
 **Morto-vivo.** Como o constructo: não come, não respira, não dorme, não faz teste de corpo e é imune ao que se resiste com o corpo. Não se cura sozinho; recupera-se pelo que a ficha disser (energia negativa, sangue, tempo).
 
 **Elemental.** Não respira, não come e não dorme. Faz os testes de corpo normalmente, porque tem um corpo de matéria, salvo o que a ficha disser.
@@ -60,6 +58,8 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 **Incorpóreo.** Resiste ao dano físico, mas não é imune a ele. Não come, não respira, não dorme, e não pode ser agarrado nem derrubado.
 
 Constructos, mortos-vivos e elementais não dormem, e por isso o sono sobrenatural não os alcança.
+
+**Golens e a magia.** O golem ignora as Artes que mexem no corpo ou na mente dele. O dano de elemento o atinge normalmente, com a resistência e a Absorção que ele tiver. Cada material tem as suas exceções, escritas na ficha: o raio que cura o golem de carne, a eletricidade que deixa o de ferro mais lento.
 
 ## Imunidades
 

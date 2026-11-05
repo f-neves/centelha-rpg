@@ -248,7 +248,7 @@ Controlar alguém em vez de feri-lo é uma **Manobra**: agarrar, derrubar ou emp
 * **Agarrado:** o agarrão acima; não age. O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.
 * **Imobilizado:** o que a Técnica Imobilizar e as parecidas causam, e o estado de quem está amarrado ou preso em gelo. Nenhum movimento, não age (nem com Firula) e, conforme o tipo de imobilização, nem grita. A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão), como em *Corpo, total* (ver *Restrição de corpo e de lugar*). Quem está imobilizado sem agarrão (amarrado, preso em gelo) pode tentar se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir. O Imobilizar cobra a manutenção se o alvo estiver tentando se libertar.
 
-**Deslocamento no agarrão.** Quem mantém o agarrão pode se deslocar levando a presa, à metade do Deslocamento de Batalha, se ela couber no peso que arrasta. É o movimento da manutenção, e não dá ao agarrado um teste de escape novo.
+**Deslocamento no agarrão.** Quem mantém o agarrão pode se deslocar levando a presa, à metade do Deslocamento de Batalha, se ela couber no peso que arrasta. É o movimento da manutenção: o agarrado não ganha com isso nenhuma jogada.
 
 **Engolir.** Algumas criaturas engolem quem já está Agarrado e cabe na boca: uma ação de Velocidade 7. Lá dentro, a vítima fica Imobilizada para o corpo, mas ainda golpeia com uma arma curta. Sufoca como o livro diz e sofre o dano interno da ficha uma vez a cada 6 Ticks; contra o ácido, a armadura vestida não protege.
 
