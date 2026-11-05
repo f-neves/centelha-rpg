@@ -55,7 +55,7 @@ A bebida forte é a exceção declarada: tem pool 0, nada a drenar, e o Desgaste
 | Peçonha de aranha gigante | 18 | Tick (sangue) | 1 minuto | 4 (Destreza) | atributo | Desgaste 1 |
 | Hálito de basilisco | 22 | minuto (inalado) | 1 minuto | 48 (PV) | pv | Desgaste 1 |
 
-**Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido). **Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo já usa em Tratar. **Se o ponto de contato tem ferimento aberto ou mucosa exposta, o abatimento não se aplica**: o toque passa a valer como via sangue.
+**Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido). **Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo dá à dose dobrada ou direto no sangue (+4). **Se o ponto de contato tem ferimento aberto ou mucosa exposta, o abatimento não se aplica**: o toque passa a valer como via sangue.
 
 **Quando o veneno entra.** Picada, ferrão ou lâmina envenenada inoculam quando o golpe causa pelo menos 1 PV depois da Absorção. Se a armadura segurou tudo, o veneno não entrou.
 
