@@ -84,7 +84,7 @@ Sangramentos não se somam livremente: vale o **maior**, e cada fonte adicional 
 
 <div class="callout"><span class="lbl">Estabilizar</span>Uma ação dedicada e um teste de <strong>Raciocínio + Cura vs Dif 10</strong> (pano limpo, pressão, sutura) encerra um Sangramento. Sozinho, cerrando os dentes, role <strong>Vigor + Resistência vs Dif 10</strong>. Qualquer cura de PV (descanso, Cura ou magia) também o estanca.</div>
 
-**Anticoagulante.** Algumas mordidas (o morcego vampiro, a sanguessuga) deixam uma ferida que não fecha sozinha. O Sangramento é o comum, mas para estancar é preciso um teste de **Raciocínio + Cura**; o Estabilizar comum não basta.
+**Anticoagulante.** Algumas mordidas (o morcego vampiro, a sanguessuga) deixam uma ferida que não fecha sozinha. O Sangramento é o comum, mas só o teste de **Raciocínio + Cura** estanca essa ferida: as outras saídas do Estabilizar (o Vigor + Resistência de quem sangra e qualquer cura de PV) não a fecham.
 
 <p class="muted">Um aliado <strong>Incapacitado</strong> que ainda sangra continua perdendo Vida rumo ao limite: a margem de meio PV máximo encurta sozinha enquanto ninguém chega. É a hora em que parar para estabilizar o companheiro pesa tanto quanto desferir mais um golpe.</p>
 

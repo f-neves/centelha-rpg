@@ -735,8 +735,8 @@ function conferirArte(comb, R, astro) {
   const realArte = conferirArte(COMB, REGRAS, ASTRO);
   for (const x of realArte) falhas.push(x);
   const mut = realArte.length ? {} : {
-    'a linha da Arte graus 0 a 3 no capítulo': (c, r, a) => [c.replace('| Arte, graus 0 a 3 | 5 | 3 | 1 | 1 |', '| Arte, graus 0 a 3 | 5 | 3 | 1 | 0 |'), r, a],
-    'a linha velha da Arte de volta no capítulo': (c, r, a) => [c.replace('| Arte, grau 4 | 6 | 4 | 1 | 1 |', '| Arte, grau 4 | 6 | 4 | 1 | 1 |\n| Arte (conjuração) | 5 a 7 | Velocidade − 1 | 1 | 0 |'), r, a],
+    'a linha da Arte níveis 0 a 3 no capítulo': (c, r, a) => [c.replace('| Arte, níveis 0 a 3 | 5 | 3 | 1 | 1 |', '| Arte, níveis 0 a 3 | 5 | 3 | 1 | 0 |'), r, a],
+    'a linha velha da Arte de volta no capítulo': (c, r, a) => [c.replace('| Arte, nível 4 | 6 | 4 | 1 | 1 |', '| Arte, nível 4 | 6 | 4 | 1 | 1 |\n| Arte (conjuração) | 5 a 7 | Velocidade − 1 | 1 | 0 |'), r, a],
     'o penúltimo no parágrafo da Arte': (c, r, a) => [c.replace('Ela sai no **Tick do Golpe, o penúltimo da Velocidade**', 'Ela sai no **último Tick da Velocidade**'), r, a],
     '4 a 6 Ticks de aviso': (c, r, a) => [c.replace('de **4 a 6 Ticks**', 'de **5 a 7 Ticks**'), r, a],
     'a Arte no último Tick, no Normal': (c, r, a) => [c.replace('produz o efeito no Tick do Golpe, o penúltimo da Velocidade (ver', 'produz o efeito no último Tick da Velocidade (ver'), r, a],
