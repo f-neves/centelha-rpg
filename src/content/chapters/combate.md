@@ -334,8 +334,6 @@ Cada criatura tem um **nível de Couraça de 0 a 12**, numa escala única para a
 
 A Couraça não cria Nível de Perfuração. A criatura mágica usa o perfil do que a pele dela é.
 
-<p class="muted">A mesa ainda faz a conta antiga (Couraça pelo tamanho, de +2 no Grande a +10 no Colossal, e Perfuração natural de N1 no Enorme a N3 no Colossal) para as criaturas sem ficha nova, até o código mudar.</p>
-
 ### Trocar de modo
 
 Cada arma tem um **modo principal** (sem custo) e, às vezes, **secundários**: alternar para um secundário custa **−2 ao acerto e −1d6 no dano** (estocar com uma lâmina de corte é mais difícil e sai mais fraco). Algumas armas, como a **Alabarda**, têm vários modos *principais*: alternam sem penalidade.
