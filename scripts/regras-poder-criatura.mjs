@@ -42,7 +42,8 @@ export function validarPoderes(c, erro, aviso = () => {}) {
       .replace(/\bnunca se (?:compra uso extra nem se amplia|amplia)\b/gi,'')
       .replace(semCusto,'')
       // A comparação com a Técnica do livro não é custo do poder ("a Técnica do livro é ativa e custa Energia"; autor, 06/11/2026).
-      .replace(/[^.;]*\bTécnica do livro\b[^.;]*/giu,'');
+      // Só a partir da menção: o que vem antes dela na oração continua sendo lido ("custa 1 de Energia, como a Técnica do livro").
+      .replace(/\bTécnica do livro\b[^.;]*/giu,'');
     const alvoP3 = Object.entries(P3).some(([id,re]) => id === c.id && re.test(h.nome.trim()));
     if (alvoP3 && h.categoria !== 'magia') problema('categoria','P3 exige magia (constructo não produz substância)');
     else if (c.categoria === 'construto' && h.categoria === 'substancia') problema('categoria','constructo não produz substância (C-002, P3)');

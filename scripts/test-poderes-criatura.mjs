@@ -88,6 +88,8 @@ console.log('ajustes do autor de 06/11/2026');
 const VISAO = 'o babau enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia.';
 passa(poder('inato', '', { classe: 'sem regra ainda', efeito: VISAO, nome: 'visão verdadeira sempre ativa' }), 'a menção à Técnica do livro não é custo do poder');
 falha(poder('inato', '', { classe: 'sem regra ainda', efeito: 'enxerga o invisível; cada uso custa 1 de Energia', nome: 'visão verdadeira' }), 'não permite custo em Energia', 'inato que custa Energia sem citar a Técnica continua falhando');
+falha(poder('inato', 'cada uso custa 1 de Energia, como a Técnica do livro', { nome: 'visão verdadeira' }), 'não permite custo em Energia', 'custo ANTES da menção à Técnica, na mesma oração, continua falhando');
+falha(poder('sobrenatural', 'Usos grátis: 1 por cena. Pode ampliar gastando Mana, além da Técnica do livro', { nome: 'olhar' }), 'somente magia admite ampliação', 'ampliação ANTES da menção à Técnica, na mesma oração, continua falhando');
 const PULSO = 'no máximo um pulso por alvo a cada 6 Ticks, sem custo';
 const ENXAME = { enxame: { individuosPorQuadrado: 20, tamanhoEquivalente: 'pequeno' } };
 passa(poder('inato', PULSO, { nome: 'Pulso do enxame' }), 'pulso do enxame a cada 6 Ticks segue a R33', ENXAME);
