@@ -4765,11 +4765,11 @@
    "integridade": 4,
    "persuasao": 2,
    "sobrevivencia": 2,
+   "atirador": 3,
    "sociabilidade": 1
   },
   "habilidadesSec": {
    "voo": 4,
-   "disparo": 3,
    "musculatura": 0
   },
   "artes": [],
@@ -4812,7 +4812,7 @@
      "pool": "4d6 +6",
      "dano": "3d6 +4 (C)",
      "perfArma": null,
-     "speed": 7,
+     "speed": 5,
      "classe": "distancia",
      "forcaInvestida": 0
     }
@@ -4890,11 +4890,11 @@
       "integridade": 4,
       "persuasao": 2,
       "sobrevivencia": 2,
+      "atirador": 3,
       "sociabilidade": 1
      },
      "habilidadesSec": {
       "voo": 4,
-      "disparo": 3,
       "musculatura": 0
      },
      "artes": [],
@@ -8558,12 +8558,13 @@
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
-    "impacto": 7,
-    "corte": 1,
-    "perfuracao": 1
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 2,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -8671,12 +8672,13 @@
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 4,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 9,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "couraca": 9,
+   "perfilCouraca": "rigida",
    "fraquezas": [
     "raio"
    ],
@@ -15915,7 +15917,7 @@
    "envergadura": 0.28,
    "massa": 0.011,
    "area": 0.01,
-   "posturaDoTamanho": "de baixo, asas abertas",
+   "posturaDoTamanho": "de baixo, asas abertas; indivíduo, anatomia",
    "medida": "0.03 m de altura, 0.09 m de comprimento",
    "peso": "0.011 kg"
   },
@@ -23455,12 +23457,13 @@
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
-    "impacto": 6,
-    "corte": 2,
-    "perfuracao": 2
+    "impacto": 7,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "fraquezas": [
     "prata"
    ],
@@ -26781,12 +26784,13 @@
    "defesaSocial": 8,
    "defesaMental": 16,
    "absorcao": {
-    "impacto": 7,
-    "corte": 2,
-    "perfuracao": 2
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "fraquezas": [
     "prata"
    ],

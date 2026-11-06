@@ -3753,7 +3753,7 @@
      "formas": "todas",
      "classe": "sem regra ainda",
      "categoria": "magia",
-     "efeito": "Aguarda o lore dos planos"
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
      "nome": "fio de teia",
@@ -4009,7 +4009,7 @@
    },
    {
     "nome": "Salto etéreo",
-    "descricao": "Aguarda o lore dos planos",
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
     "classe": "sem regra ainda"
    },
    {
@@ -14454,7 +14454,7 @@
      "formas": "todas",
      "classe": "sem regra ainda",
      "categoria": "magia",
-     "efeito": "Aguarda o lore dos planos"
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
      "nome": "Escalador nato",
@@ -14893,7 +14893,7 @@
    },
    {
     "nome": "passagem entre planos",
-    "descricao": "Aguarda o lore dos planos",
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
     "classe": "sem regra ainda"
    },
    {
@@ -19213,11 +19213,11 @@
     "integridade": 4,
     "persuasao": 2,
     "sobrevivencia": 2,
+    "atirador": 3,
     "sociabilidade": 1
    },
    "habilidadesSec": {
     "voo": 4,
-    "disparo": 3,
     "musculatura": 0
    },
    "especialidades": {
@@ -19273,10 +19273,10 @@
     {
      "nome": "Rajada cortante",
      "parte": "lamina-de-ar",
-     "habilidade": "disparo",
+     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
-      3,
+      1,
       1,
       3
      ],
@@ -19293,14 +19293,15 @@
      "nome": "Forma de vento",
      "formas": "todas",
      "classe": "regra da ficha",
-     "ativacao": "uma ação, Velocidade 6",
+     "categoria": "inato",
+     "ativacao": "uma ação, Velocidade 8",
      "duracao": "até ele voltar com outra ação",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada",
+     "efeito": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade"
+     "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
      "nome": "Rajada cortante",
@@ -19313,14 +19314,15 @@
       "nivel": 3
      },
      "ataque": "Rajada cortante",
-     "ativacao": "uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo)",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe",
      "duracao": "instantânea",
      "alcance": "18 m à frente",
      "area": "linha de 18 m",
-     "efeito": "uma lâmina de ar corta todos na linha",
+     "efeito": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
      "dano": "3d6 + Centelha, Corte",
-     "resistencia": "corpo, Vigor + Resistência contra a jogada; quem passa leva metade",
-     "limiteDeUso": "uma vez a cada 24 Ticks"
+     "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. corpo, Vigor + Resistência contra a jogada; quem passa leva metade",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Ventos a serviço",
@@ -19328,22 +19330,32 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "vento",
-      "nivel": 2
+      "nivel": 2,
+      "efeito": "empurrao-elemental"
      },
-     "ativacao": "uma ação, Velocidade 6",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
      "duracao": "o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo",
      "alcance": "18 m",
      "area": "um alvo, ou uma imagem de até 3 m",
-     "efeito": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado",
+     "efeito": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece",
      "dano": "nenhum; a cura devolve 2d6 + Centelha PV",
      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada",
-     "limiteDeUso": "três vezes por cena, somados"
+     "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
     },
     {
-     "nome": "Resistência à magia 17",
+     "nome": "Resistência à magia",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "sua natureza dificulta o efeito de magia hostil"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "sempre ativa",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a própria criatura",
+     "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+     "dano": "nenhum adicional",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo. Sem custo"
     }
    ],
    "comoLuta": [
@@ -19360,6 +19372,11 @@
       "elfica"
      ],
      "texto": "entra na luta pelo gosto da briga, com a espada longa; ofusca o mais perigoso, cura os aliados e vira vento para cortar de longe ou para sumir."
+    },
+    {
+     "nome": "Projétil natural",
+     "formas": "todas",
+     "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
    ],
    "sentidos": [
@@ -19522,11 +19539,11 @@
    "integridade": 4,
    "persuasao": 2,
    "sobrevivencia": 2,
+   "atirador": 3,
    "sociabilidade": 1
   },
   "habilidadesSec": {
    "voo": 4,
-   "disparo": 3,
    "musculatura": 0
   },
   "vontade": 9,
@@ -19576,7 +19593,7 @@
      "pool": "4d6 +6",
      "dano": "3d6 +4 (C)",
      "perfArma": null,
-     "speed": 7,
+     "speed": 5,
      "classe": "distancia",
      "forcaInvestida": 0
     }
@@ -19585,13 +19602,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "Forma de vento",
-    "descricao": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Ativação: uma ação, Velocidade 6. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade",
+    "descricao": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
     "classe": "regra da ficha",
-    "texto": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada",
+    "texto": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 8"
      },
      {
       "rotulo": "Duração",
@@ -19615,23 +19632,23 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade"
+      "valor": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
      }
     ]
    },
    {
     "nome": "Rajada cortante",
-    "descricao": "uma lâmina de ar corta todos na linha. Ativação: uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo). Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 3d6 + Centelha, Corte. Resistência: corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: uma vez a cada 24 Ticks",
+    "descricao": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara. Ativação: uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 3d6 + Centelha, Corte. Resistência: sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "vento",
      "nivel": 3
     },
-    "texto": "uma lâmina de ar corta todos na linha",
+    "texto": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, a jogada da tabela (Vigor + Disparo)"
+      "valor": "uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -19651,27 +19668,28 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, Vigor + Resistência contra a jogada; quem passa leva metade"
+      "valor": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. corpo, Vigor + Resistência contra a jogada; quem passa leva metade"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma vez a cada 24 Ticks"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Ventos a serviço",
-    "descricao": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ativação: uma ação, Velocidade 6. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: três vezes por cena, somados",
+    "descricao": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis",
     "classe": "regra da ficha",
     "base": {
      "arte": "vento",
-     "nivel": 2
+     "nivel": 2,
+     "efeito": "empurrao-elemental"
     },
-    "texto": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado",
+    "texto": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -19695,20 +19713,55 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "três vezes por cena, somados"
+      "valor": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
      }
     ]
    },
    {
-    "nome": "Resistência à magia 17",
-    "descricao": "sua natureza dificulta o efeito de magia hostil",
-    "classe": "sem regra ainda"
+    "nome": "Resistência à magia",
+    "descricao": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6. Ativação: sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: a própria criatura. Dano: nenhum adicional. Resistência: nenhuma. Limite de uso: contínuo. Sem custo",
+    "classe": "regra da ficha",
+    "texto": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "sempre ativa"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a própria criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum adicional"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo. Sem custo"
+     }
+    ]
    }
   ],
   "comoLuta": [
    {
     "nome": "tempestade arisca",
     "texto": "entra na luta pelo gosto da briga, corta de longe com a rajada, ofusca o mais perigoso e cura os aliados; some no vento quando enjoa."
+   },
+   {
+    "nome": "Projétil natural",
+    "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
    }
   ],
   "sentidos": [
@@ -19791,11 +19844,11 @@
       "integridade": 4,
       "persuasao": 2,
       "sobrevivencia": 2,
+      "atirador": 3,
       "sociabilidade": 1
      },
      "habilidadesSec": {
       "voo": 4,
-      "disparo": 3,
       "musculatura": 0
      },
      "vontade": 9,
@@ -19845,13 +19898,13 @@
      "habilidadesEspeciais": [
       {
        "nome": "Forma de vento",
-       "descricao": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Ativação: uma ação, Velocidade 6. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade",
+       "descricao": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
-       "texto": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada",
+       "texto": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
        "campos": [
         {
          "rotulo": "Ativação",
-         "valor": "uma ação, Velocidade 6"
+         "valor": "uma ação, Velocidade 8"
         },
         {
          "rotulo": "Duração",
@@ -19875,23 +19928,24 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "à vontade"
+         "valor": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
         }
        ]
       },
       {
        "nome": "Ventos a serviço",
-       "descricao": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ativação: uma ação, Velocidade 6. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: três vezes por cena, somados",
+       "descricao": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: o ofuscar e a ilusão, até o fim da cena; o resto, instantâneo. Alcance: 18 m. Área: um alvo, ou uma imagem de até 3 m. Dano: nenhum; a cura devolve 2d6 + Centelha PV. Resistência: corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada. Limite de uso: Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis",
        "classe": "regra da ficha",
        "base": {
         "arte": "vento",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "empurrao-elemental"
        },
-       "texto": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado",
+       "texto": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece",
        "campos": [
         {
          "rotulo": "Ativação",
-         "valor": "uma ação, Velocidade 6"
+         "valor": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe"
         },
         {
          "rotulo": "Duração",
@@ -19915,20 +19969,55 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "três vezes por cena, somados"
+         "valor": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
         }
        ]
       },
       {
-       "nome": "Resistência à magia 17",
-       "descricao": "sua natureza dificulta o efeito de magia hostil",
-       "classe": "sem regra ainda"
+       "nome": "Resistência à magia",
+       "descricao": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6. Ativação: sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: a própria criatura. Dano: nenhum adicional. Resistência: nenhuma. Limite de uso: contínuo. Sem custo",
+       "classe": "regra da ficha",
+       "texto": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+       "campos": [
+        {
+         "rotulo": "Ativação",
+         "valor": "sempre ativa"
+        },
+        {
+         "rotulo": "Duração",
+         "valor": "permanente"
+        },
+        {
+         "rotulo": "Alcance",
+         "valor": "o próprio corpo"
+        },
+        {
+         "rotulo": "Área",
+         "valor": "a própria criatura"
+        },
+        {
+         "rotulo": "Dano",
+         "valor": "nenhum adicional"
+        },
+        {
+         "rotulo": "Resistência",
+         "valor": "nenhuma"
+        },
+        {
+         "rotulo": "Limite de uso",
+         "valor": "contínuo. Sem custo"
+        }
+       ]
       }
      ],
      "comoLuta": [
       {
        "nome": "elfo de espada",
        "texto": "entra na luta pelo gosto da briga, com a espada longa; ofusca o mais perigoso, cura os aliados e vira vento para cortar de longe ou para sumir."
+      },
+      {
+       "nome": "Projétil natural",
+       "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
       }
      ],
      "sentidos": [
@@ -30660,14 +30749,14 @@
      "formas": "todas",
      "classe": "sem regra ainda",
      "categoria": "magia",
-     "efeito": "Aguarda o lore dos planos"
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
      "nome": "passeio etéreo",
      "formas": "todas",
      "classe": "sem regra ainda",
      "categoria": "magia",
-     "efeito": "Aguarda o lore dos planos"
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
      "nome": "Multiataque",
@@ -30994,12 +31083,12 @@
    },
    {
     "nome": "Viagem entre planos",
-    "descricao": "Aguarda o lore dos planos",
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
     "classe": "sem regra ainda"
    },
    {
     "nome": "passeio etéreo",
-    "descricao": "Aguarda o lore dos planos",
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
     "classe": "sem regra ainda"
    },
    {
@@ -33365,6 +33454,7 @@
     "posturaDoTamanho": "de frente"
    },
    "couraca": 2,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 9,
     "destreza": 2,
@@ -33463,11 +33553,12 @@
      "formas": "todas",
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
+     "categoria": "inato",
      "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
      "duracao": "instantânea",
      "alcance": "até 36 m; acima de 12 m, −2 na jogada",
      "area": "um alvo",
-     "efeito": "a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica)",
+     "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
      "dano": "2d6 + Força + Centelha, Impacto",
      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
      "limiteDeUso": "enquanto houver rocha por perto"
@@ -33476,19 +33567,21 @@
      "nome": "Lampejo de premonição",
      "formas": "todas",
      "classe": "regra da ficha",
-     "ativacao": "um golpe vai acertá-lo; gasta 2 de Energia (o site diz que gasta Centelha; no livro, o que se gasta é a Energia, `centelha.md`)",
+     "categoria": "sobrenatural",
+     "ativacao": "um golpe vai acertá-lo",
      "duracao": "instantânea",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "pressente o golpe certeiro e o evita por completo",
+     "efeito": "Pressente o golpe e o evita por completo ao ativar o lampejo. Fora dessa reação, ponto vital, flanco, surpresa e Tamanho seguem suas regras",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "uma vez por cena"
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 2 de Energia"
     },
     {
      "nome": "Olho único",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "nenhuma; sempre",
      "duracao": "permanente",
      "alcance": "o próprio corpo",
@@ -33496,13 +33589,14 @@
      "efeito": "o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "nenhum"
+     "limiteDeUso": "nenhum. Sem custo"
     },
     {
      "nome": "agarrar",
      "formas": "todas",
      "classe": "livro",
      "ataque": "Pancada descomunal",
+     "categoria": "inato",
      "regra": "agarrar"
     }
    ],
@@ -33663,12 +33757,13 @@
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
-    "impacto": 7,
-    "corte": 1,
-    "perfuracao": 1
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 2,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -33699,9 +33794,9 @@
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
-    "descricao": "a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica). Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
     "classe": "regra da ficha",
-    "texto": "a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica)",
+    "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -33735,13 +33830,13 @@
    },
    {
     "nome": "Lampejo de premonição",
-    "descricao": "pressente o golpe certeiro e o evita por completo. Ativação: um golpe vai acertá-lo; gasta 2 de Energia (o site diz que gasta Centelha; no livro, o que se gasta é a Energia, `centelha.md`). Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena",
+    "descricao": "Pressente o golpe e o evita por completo ao ativar o lampejo. Fora dessa reação, ponto vital, flanco, surpresa e Tamanho seguem suas regras. Ativação: um golpe vai acertá-lo. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 2 de Energia",
     "classe": "regra da ficha",
-    "texto": "pressente o golpe certeiro e o evita por completo",
+    "texto": "Pressente o golpe e o evita por completo ao ativar o lampejo. Fora dessa reação, ponto vital, flanco, surpresa e Tamanho seguem suas regras",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "um golpe vai acertá-lo; gasta 2 de Energia (o site diz que gasta Centelha; no livro, o que se gasta é a Energia, `centelha.md`)"
+      "valor": "um golpe vai acertá-lo"
      },
      {
       "rotulo": "Duração",
@@ -33765,13 +33860,13 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma vez por cena"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 2 de Energia"
      }
     ]
    },
    {
     "nome": "Olho único",
-    "descricao": "o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque. Ativação: nenhuma; sempre. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum",
+    "descricao": "o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque. Ativação: nenhuma; sempre. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Sem custo",
     "classe": "regra da ficha",
     "texto": "o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque",
     "campos": [
@@ -33801,7 +33896,7 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "nenhum"
+      "valor": "nenhum. Sem custo"
      }
     ]
    },
@@ -33877,6 +33972,7 @@
     "posturaDoTamanho": "enrolada, de cabeça erguida"
    },
    "couraca": 9,
+   "perfilCouraca": "rigida",
    "atributos": {
     "forca": 3,
     "destreza": 4,
@@ -33942,29 +34038,25 @@
    ],
    "habilidadesEspeciais": [
     {
-     "nome": "sem vida",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
-    },
-    {
      "nome": "Picada envenenada",
      "formas": "todas",
      "classe": "regra da ficha",
      "ataque": "Mordida",
-     "ativacao": "a Mordida que fere",
-     "duracao": "a do veneno",
+     "categoria": "magia",
+     "ativacao": "a Mordida que causa ao menos 1 PV depois da Absorção",
+     "duracao": "a do efeito descrito em Veneno e doença",
      "alcance": "o do corpo a corpo",
      "area": "um alvo",
-     "efeito": "injeta o veneno do reservatório (Veneno e doença); depois de três picadas que injetam, o reservatório se esgota e a mordida fica só com o dano. O criador pode encher o reservatório com outra peçonha, com ácido ou com alquimia",
-     "dano": "o da Mordida e o do veneno",
-     "resistencia": "corpo, pelo veneno (Veneno e doença)",
-     "limiteDeUso": "três doses, até o criador encher de novo"
+     "efeito": "a picada desencadeia magicamente o efeito de peçonha descrito em Veneno e doença",
+     "dano": "o da Mordida e o do efeito de peçonha",
+     "resistencia": "corpo, pelo perfil de peçonha em Veneno e doença",
+     "limiteDeUso": "Usos grátis: 3 por dia. Sem usos extras"
     },
     {
      "nome": "Farejar alvo",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "uma ordem do criador, que viu o alvo ou segura um objeto dele",
      "duracao": "até achar e matar o alvo",
      "alcance": "quilômetros",
@@ -33972,20 +34064,28 @@
      "efeito": "sabe a direção e a distância do alvo e vai até ele sem parar",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "uma vez por dia"
+     "limiteDeUso": "uma vez por dia. Sem custo"
     },
     {
-     "nome": "Resistência à magia 13",
+     "nome": "Resistência à magia",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "sua natureza dificulta o efeito de magia hostil"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "sempre ativa",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a própria criatura",
+     "efeito": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+     "dano": "nenhum adicional",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo. Sem custo"
     }
    ],
    "comoLuta": [
     {
      "nome": "guardiã sem alma",
      "formas": "todas",
-     "texto": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e repete até o veneno acabar; mandada matar, segue o alvo por quilômetros."
+     "texto": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e pode envenenar magicamente até três vezes por dia; mandada matar, segue o alvo por quilômetros."
     }
    ],
    "sentidos": [
@@ -33996,11 +34096,10 @@
     }
    ],
    "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parada no escuro, passa por um enfeite de ferro entre o tesouro",
     "mente": "nenhuma; obedece ao criador",
-    "tracos": "serpente de 1,2 m de placas de ferro articuladas, que desliza sem o ruído do metal"
+    "tracos": "serpente de 1,2 m de placas de ferro articuladas, que desliza sem o ruído do metal. Não se cansa",
+    "tipoCorpo": "constructo"
    },
    "aptidoes": {
     "montaria": false,
@@ -34010,7 +34109,6 @@
    "comportamento": {
     "social": "solitária",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda, ou caça o alvo que o criador manda",
     "dianteDeGente": "pica quem chega perto do que guarda"
    },
@@ -34022,7 +34120,7 @@
      "temperado"
     ]
    },
-   "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Pica com o veneno de um reservatório, três vezes antes de secar. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
+   "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Sua picada produz um efeito mágico de peçonha até três vezes por dia. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
    "lore": [
     {
      "titulo": "Guardiã sem Alma",
@@ -34075,7 +34173,7 @@
   "categoriaNome": "Construto",
   "tipo": "soldado",
   "conceito": "Construto Miúdo",
-  "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Pica com o veneno de um reservatório, três vezes antes de secar. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
+  "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Sua picada produz um efeito mágico de peçonha até três vezes por dia. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
   "tags": [
    "construto"
   ],
@@ -34147,12 +34245,13 @@
    "defesaSocial": "-",
    "defesaMental": "-",
    "absorcao": {
-    "impacto": 4,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 9,
+    "corte": 9,
+    "perfuracao": 9
    },
    "resistenciaPerfuracao": 0,
    "couraca": 9,
+   "perfilCouraca": "rigida",
    "fraquezas": [
     "raio"
    ],
@@ -34181,23 +34280,18 @@
   },
   "habilidadesEspeciais": [
    {
-    "nome": "sem vida",
-    "descricao": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo",
-    "classe": "sem regra ainda"
-   },
-   {
     "nome": "Picada envenenada",
-    "descricao": "injeta o veneno do reservatório (Veneno e doença); depois de três picadas que injetam, o reservatório se esgota e a mordida fica só com o dano. O criador pode encher o reservatório com outra peçonha, com ácido ou com alquimia. Ativação: a Mordida que fere. Duração: a do veneno. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida e o do veneno. Resistência: corpo, pelo veneno (Veneno e doença). Limite de uso: três doses, até o criador encher de novo",
+    "descricao": "a picada desencadeia magicamente o efeito de peçonha descrito em Veneno e doença. Ativação: a Mordida que causa ao menos 1 PV depois da Absorção. Duração: a do efeito descrito em Veneno e doença. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida e o do efeito de peçonha. Resistência: corpo, pelo perfil de peçonha em Veneno e doença. Limite de uso: Usos grátis: 3 por dia. Sem usos extras",
     "classe": "regra da ficha",
-    "texto": "injeta o veneno do reservatório (Veneno e doença); depois de três picadas que injetam, o reservatório se esgota e a mordida fica só com o dano. O criador pode encher o reservatório com outra peçonha, com ácido ou com alquimia",
+    "texto": "a picada desencadeia magicamente o efeito de peçonha descrito em Veneno e doença",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "a Mordida que fere"
+      "valor": "a Mordida que causa ao menos 1 PV depois da Absorção"
      },
      {
       "rotulo": "Duração",
-      "valor": "a do veneno"
+      "valor": "a do efeito descrito em Veneno e doença"
      },
      {
       "rotulo": "Alcance",
@@ -34209,21 +34303,21 @@
      },
      {
       "rotulo": "Dano",
-      "valor": "o da Mordida e o do veneno"
+      "valor": "o da Mordida e o do efeito de peçonha"
      },
      {
       "rotulo": "Resistência",
-      "valor": "corpo, pelo veneno (Veneno e doença)"
+      "valor": "corpo, pelo perfil de peçonha em Veneno e doença"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "três doses, até o criador encher de novo"
+      "valor": "Usos grátis: 3 por dia. Sem usos extras"
      }
     ]
    },
    {
     "nome": "Farejar alvo",
-    "descricao": "sabe a direção e a distância do alvo e vai até ele sem parar. Ativação: uma ordem do criador, que viu o alvo ou segura um objeto dele. Duração: até achar e matar o alvo. Alcance: quilômetros. Área: um alvo. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia",
+    "descricao": "sabe a direção e a distância do alvo e vai até ele sem parar. Ativação: uma ordem do criador, que viu o alvo ou segura um objeto dele. Duração: até achar e matar o alvo. Alcance: quilômetros. Área: um alvo. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia. Sem custo",
     "classe": "regra da ficha",
     "texto": "sabe a direção e a distância do alvo e vai até ele sem parar",
     "campos": [
@@ -34253,20 +34347,51 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma vez por dia"
+      "valor": "uma vez por dia. Sem custo"
      }
     ]
    },
    {
-    "nome": "Resistência à magia 13",
-    "descricao": "sua natureza dificulta o efeito de magia hostil",
-    "classe": "sem regra ainda"
+    "nome": "Resistência à magia",
+    "descricao": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6. Ativação: sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: a própria criatura. Dano: nenhum adicional. Resistência: nenhuma. Limite de uso: contínuo. Sem custo",
+    "classe": "regra da ficha",
+    "texto": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "sempre ativa"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a própria criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum adicional"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo. Sem custo"
+     }
+    ]
    }
   ],
   "comoLuta": [
    {
     "nome": "guardiã sem alma",
-    "texto": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e repete até o veneno acabar; mandada matar, segue o alvo por quilômetros."
+    "texto": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e pode envenenar magicamente até três vezes por dia; mandada matar, segue o alvo por quilômetros."
    }
   ],
   "sentidos": [
@@ -36423,7 +36548,7 @@
      "formas": "todas",
      "classe": "sem regra ainda",
      "categoria": "magia",
-     "efeito": "Aguarda o lore dos planos"
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     }
    ],
    "comoLuta": [
@@ -36811,7 +36936,7 @@
    },
    {
     "nome": "Viagem planar",
-    "descricao": "Aguarda o lore dos planos",
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
     "classe": "sem regra ainda"
    }
   ],
@@ -37065,7 +37190,7 @@
       },
       {
        "nome": "Viagem planar",
-       "descricao": "Aguarda o lore dos planos",
+       "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
        "classe": "sem regra ainda"
       }
      ],
@@ -47085,20 +47210,29 @@
      "formas": "todas",
      "classe": "regra da ficha",
      "ataque": "Ferrão",
-     "ativacao": "o golpe do Ferrão que fere",
+     "categoria": "substancia",
+     "ativacao": "o golpe do Ferrão que causa ao menos 1 PV depois da Absorção",
      "duracao": "a do veneno",
      "alcance": "o da cauda",
      "area": "um alvo",
      "efeito": "o alvo fica Envenenado pelo veneno do diabrete (Veneno e doença), que tira força",
      "dano": "o do veneno",
      "resistencia": "corpo, pelo veneno",
-     "limiteDeUso": "três picadas que injetam por cena; o ferrão recarrega em uma hora"
+     "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
      "nome": "invisibilidade",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "fica invisível à vontade, como ação livre"
+     "classe": "regra da ficha",
+     "categoria": "sobrenatural",
+     "ativacao": "uma ação, Velocidade 5",
+     "duracao": "até atacar ou desfazer",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Adivinhação",
@@ -47106,16 +47240,18 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "adivinhacao",
-      "nivel": 1
+      "nivel": 1,
+      "efeito": "oraculo"
      },
-     "ativacao": "uma ação, Velocidade 6",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
      "duracao": "instantânea",
      "alcance": "um alvo ou uma cena à vista",
      "area": "não se aplica",
      "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "uma vez por cena"
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Forma alternativa",
@@ -47125,26 +47261,36 @@
       "arte": "materia",
       "nivel": 2
      },
-     "ativacao": "uma ação, Velocidade 6",
+     "categoria": "inato",
+     "ativacao": "uma ação, Velocidade 5",
      "duracao": "até ele voltar, com outra ação",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala",
+     "efeito": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade"
+     "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
      "nome": "Regeneração 2",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de prata ou arma benta"
+     "categoria": "inato",
+     "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
      "nome": "imune a veneno",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "o veneno não pega no corpo de diabo"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "Contínuo, sem custo"
     }
    ],
    "comoLuta": [
@@ -47368,13 +47514,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "Ferrão venenoso",
-    "descricao": "o alvo fica Envenenado pelo veneno do diabrete (Veneno e doença), que tira força. Ativação: o golpe do Ferrão que fere. Duração: a do veneno. Alcance: o da cauda. Área: um alvo. Dano: o do veneno. Resistência: corpo, pelo veneno. Limite de uso: três picadas que injetam por cena; o ferrão recarrega em uma hora",
+    "descricao": "o alvo fica Envenenado pelo veneno do diabrete (Veneno e doença), que tira força. Ativação: o golpe do Ferrão que causa ao menos 1 PV depois da Absorção. Duração: a do veneno. Alcance: o da cauda. Área: um alvo. Dano: o do veneno. Resistência: corpo, pelo veneno. Limite de uso: O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
     "classe": "regra da ficha",
     "texto": "o alvo fica Envenenado pelo veneno do diabrete (Veneno e doença), que tira força",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "o golpe do Ferrão que fere"
+      "valor": "o golpe do Ferrão que causa ao menos 1 PV depois da Absorção"
      },
      {
       "rotulo": "Duração",
@@ -47398,28 +47544,60 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "três picadas que injetam por cena; o ferrão recarrega em uma hora"
+      "valor": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
      }
     ]
    },
    {
     "nome": "invisibilidade",
-    "descricao": "fica invisível à vontade, como ação livre",
-    "classe": "sem regra ainda"
+    "descricao": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque. Ativação: uma ação, Velocidade 5. Duração: até atacar ou desfazer. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "classe": "regra da ficha",
+    "texto": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "uma ação, Velocidade 5"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "até atacar ou desfazer"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+     }
+    ]
    },
    {
     "nome": "Adivinhação",
-    "descricao": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta. Ativação: uma ação, Velocidade 6. Duração: instantânea. Alcance: um alvo ou uma cena à vista. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por cena",
+    "descricao": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: um alvo ou uma cena à vista. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
-     "nivel": 1
+     "nivel": 1,
+     "efeito": "oraculo"
     },
     "texto": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -47443,23 +47621,23 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma vez por cena"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Forma alternativa",
-    "descricao": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala. Ativação: uma ação, Velocidade 6. Duração: até ele voltar, com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade",
+    "descricao": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 5. Duração: até ele voltar, com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
     "classe": "regra da ficha",
     "base": {
      "arte": "materia",
      "nivel": 2
     },
-    "texto": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala",
+    "texto": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 5"
      },
      {
       "rotulo": "Duração",
@@ -47483,19 +47661,50 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade"
+      "valor": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
      }
     ]
    },
    {
     "nome": "Regeneração 2",
-    "descricao": "origem sobrenatural; fecha as feridas, exceto o dano de prata ou arma benta",
+    "descricao": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
     "classe": "sem regra ainda"
    },
    {
     "nome": "imune a veneno",
-    "descricao": "o veneno não pega no corpo de diabo",
-    "classe": "sem regra ainda"
+    "descricao": "o veneno não pega no corpo de diabo. O ferimento do golpe continua. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: Contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Contínuo, sem custo"
+     }
+    ]
    }
   ],
   "comoLuta": [
@@ -60489,8 +60698,10 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "fogo",
-      "nivel": 4
+      "nivel": 4,
+      "efeito": "aura"
      },
+     "categoria": "inato",
      "ativacao": "nenhuma; sempre ativo",
      "duracao": "permanente",
      "alcance": "toque",
@@ -60498,7 +60709,7 @@
      "efeito": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa",
      "dano": "1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa",
      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele; quem passa não se queima ao entrar; quem o acerta ou o toca não resiste",
-     "limiteDeUso": "a queima ao entrar, uma vez por cena para cada criatura; o resto, sem limite"
+     "limiteDeUso": "A cada exposição ao calor ou contato. Sem custo"
     },
     {
      "nome": "Muralha de fogo",
@@ -60506,16 +60717,18 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "fogo",
-      "nivel": 4
+      "nivel": 4,
+      "efeito": "muro"
      },
-     "ativacao": "uma ação, Velocidade 8",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
      "duracao": "até o fim da cena, ou até ele desfazer",
      "alcance": "18 m",
      "area": "uma parede de até 6 m de comprimento e 3 m de altura",
      "efeito": "ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima",
      "dano": "3d6 + Centelha, fogo, a quem atravessa",
      "resistencia": "esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade",
-     "limiteDeUso": "três vezes por dia"
+     "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Conceder desejos",
@@ -60525,14 +60738,15 @@
       "arte": "fortuna",
       "nivel": 6
      },
-     "ativacao": "o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita",
+     "categoria": "milagre",
+     "ativacao": "o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita. O interessado apresenta o pedido e negocia o preço com o efreeti. O preparo dura a negociação até ambos aceitarem o trato",
      "duracao": "a do pedido",
      "alcance": "o que o pedido alcança",
      "area": "a do pedido",
-     "efeito": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço",
+     "efeito": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço. O limite é uma Arte até nível 6 que o concedente possa descrever. Preço e alvo são declarados antes do acordo. O desejo não altera o passado, não cria outro desejo e só traz mortos até onde a Cura permite",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "uma vez por dia, e raramente"
+     "limiteDeUso": "uma vez por dia, e raramente. Limite fixo, sem uso extra nem ampliação"
     },
     {
      "nome": "Invisibilidade",
@@ -60540,29 +60754,25 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "ofuscacao",
-      "nivel": 1
+      "nivel": 1,
+      "efeito": "ausencia"
      },
-     "ativacao": "uma ação, Velocidade 6",
-     "duracao": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
+     "duracao": "até atacar ou desfazer",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "fica Invisível; o calor do corpo continua",
+     "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade"
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Viagem planar",
      "formas": "todas",
-     "classe": "regra da ficha",
-     "ativacao": "uma ação, Velocidade 8",
-     "duracao": "instantânea",
-     "alcance": "outro plano ou realidade",
-     "area": "ele e quem ele toca e quer levar",
-     "efeito": "passa para outro plano e volta quando quiser",
-     "dano": "nenhum",
-     "resistencia": "nenhum; quem não quer ir não é levado",
-     "limiteDeUso": "uma vez por cena"
+     "classe": "sem regra ainda",
+     "categoria": "magia",
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     }
    ],
    "comoLuta": [
@@ -60771,11 +60981,12 @@
   "habilidadesEspeciais": [
    {
     "nome": "Corpo em chamas",
-    "descricao": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa. Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: toque. Área: quem entra no alcance do corpo a corpo dele, quem o acerta com um golpe corpo a corpo, quem o toca, e o alvo do Punho em brasa. Dano: 1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa. Resistência: corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele; quem passa não se queima ao entrar; quem o acerta ou o toca não resiste. Limite de uso: a queima ao entrar, uma vez por cena para cada criatura; o resto, sem limite",
+    "descricao": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa. Ativação: nenhuma; sempre ativo. Duração: permanente. Alcance: toque. Área: quem entra no alcance do corpo a corpo dele, quem o acerta com um golpe corpo a corpo, quem o toca, e o alvo do Punho em brasa. Dano: 1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa. Resistência: corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele; quem passa não se queima ao entrar; quem o acerta ou o toca não resiste. Limite de uso: A cada exposição ao calor ou contato. Sem custo",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
-     "nivel": 4
+     "nivel": 4,
+     "efeito": "aura"
     },
     "texto": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa",
     "campos": [
@@ -60805,23 +61016,24 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "a queima ao entrar, uma vez por cena para cada criatura; o resto, sem limite"
+      "valor": "A cada exposição ao calor ou contato. Sem custo"
      }
     ]
    },
    {
     "nome": "Muralha de fogo",
-    "descricao": "ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima. Ativação: uma ação, Velocidade 8. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: uma parede de até 6 m de comprimento e 3 m de altura. Dano: 3d6 + Centelha, fogo, a quem atravessa. Resistência: esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade. Limite de uso: três vezes por dia",
+    "descricao": "ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima. Ativação: uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: uma parede de até 6 m de comprimento e 3 m de altura. Dano: 3d6 + Centelha, fogo, a quem atravessa. Resistência: esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade. Limite de uso: Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "fogo",
-     "nivel": 4
+     "nivel": 4,
+     "efeito": "muro"
     },
     "texto": "ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 8"
+      "valor": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -60845,23 +61057,23 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "três vezes por dia"
+      "valor": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Conceder desejos",
-    "descricao": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço. Ativação: o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita. Duração: a do pedido. Alcance: o que o pedido alcança. Área: a do pedido. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia, e raramente",
+    "descricao": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço. O limite é uma Arte até nível 6 que o concedente possa descrever. Preço e alvo são declarados antes do acordo. O desejo não altera o passado, não cria outro desejo e só traz mortos até onde a Cura permite. Ativação: o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita. O interessado apresenta o pedido e negocia o preço com o efreeti. O preparo dura a negociação até ambos aceitarem o trato. Duração: a do pedido. Alcance: o que o pedido alcança. Área: a do pedido. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia, e raramente. Limite fixo, sem uso extra nem ampliação",
     "classe": "regra da ficha",
     "base": {
      "arte": "fortuna",
      "nivel": 6
     },
-    "texto": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço",
+    "texto": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço. O limite é uma Arte até nível 6 que o concedente possa descrever. Preço e alvo são declarados antes do acordo. O desejo não altera o passado, não cria outro desejo e só traz mortos até onde a Cura permite",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita"
+      "valor": "o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita. O interessado apresenta o pedido e negocia o preço com o efreeti. O preparo dura a negociação até ambos aceitarem o trato"
      },
      {
       "rotulo": "Duração",
@@ -60885,27 +61097,28 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma vez por dia, e raramente"
+      "valor": "uma vez por dia, e raramente. Limite fixo, sem uso extra nem ampliação"
      }
     ]
    },
    {
     "nome": "Invisibilidade",
-    "descricao": "fica Invisível; o calor do corpo continua. Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade",
+    "descricao": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: até atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "ofuscacao",
-     "nivel": 1
+     "nivel": 1,
+     "efeito": "ausencia"
     },
-    "texto": "fica Invisível; o calor do corpo continua",
+    "texto": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
-      "valor": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena"
+      "valor": "até atacar ou desfazer"
      },
      {
       "rotulo": "Alcance",
@@ -60925,45 +61138,14 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Viagem planar",
-    "descricao": "passa para outro plano e volta quando quiser. Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: outro plano ou realidade. Área: ele e quem ele toca e quer levar. Dano: nenhum. Resistência: nenhum; quem não quer ir não é levado. Limite de uso: uma vez por cena",
-    "classe": "regra da ficha",
-    "texto": "passa para outro plano e volta quando quiser",
-    "campos": [
-     {
-      "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 8"
-     },
-     {
-      "rotulo": "Duração",
-      "valor": "instantânea"
-     },
-     {
-      "rotulo": "Alcance",
-      "valor": "outro plano ou realidade"
-     },
-     {
-      "rotulo": "Área",
-      "valor": "ele e quem ele toca e quer levar"
-     },
-     {
-      "rotulo": "Dano",
-      "valor": "nenhum"
-     },
-     {
-      "rotulo": "Resistência",
-      "valor": "nenhum; quem não quer ir não é levado"
-     },
-     {
-      "rotulo": "Limite de uso",
-      "valor": "uma vez por cena"
-     }
-    ]
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
+    "classe": "sem regra ainda"
    }
   ],
   "comoLuta": [
@@ -66235,7 +66417,7 @@
     "envergadura": 0.28,
     "massa": 0.011,
     "area": 0.01,
-    "posturaDoTamanho": "de baixo, asas abertas"
+    "posturaDoTamanho": "de baixo, asas abertas; indivíduo, anatomia"
    },
    "couraca": 0,
    "atributos": {
@@ -66319,7 +66501,50 @@
      "bloqueiaComoArma": null
     }
    ],
-   "habilidadesEspeciais": [],
+   "habilidadesEspeciais": [
+    {
+     "nome": "Pulso do enxame",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "quando um alvo começa uma ação dentro de um quadrado ocupado pelo enxame",
+     "duracao": "instantânea",
+     "alcance": "o quadrado ocupado",
+     "area": "cada alvo dentro do quadrado",
+     "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos",
+     "dano": "1d6 + 1 de Perfuração",
+     "resistencia": "sem jogada de ataque; a Absorção conta",
+     "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+    },
+    {
+     "nome": "Corpo de enxame",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Arma comum fere; cada golpe atinge um quadrado. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+     "nome": "Posturas de combate",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Anatomia do indivíduo: Minúsculo: de baixo, asas abertas. Minúsculo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. O quadrado cheio é Médio para atacar e ser alvo",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
+    }
+   ],
    "comoLuta": [],
    "sentidos": [
     {
@@ -66419,7 +66644,7 @@
    "envergadura": 0.28,
    "massa": 0.011,
    "area": 0.01,
-   "posturaDoTamanho": "de baixo, asas abertas",
+   "posturaDoTamanho": "de baixo, asas abertas; indivíduo, anatomia",
    "medida": "0.03 m de altura, 0.09 m de comprimento",
    "peso": "0.011 kg"
   },
@@ -66508,7 +66733,116 @@
     }
    ]
   },
-  "habilidadesEspeciais": [],
+  "habilidadesEspeciais": [
+   {
+    "nome": "Pulso do enxame",
+    "descricao": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos. Ativação: quando um alvo começa uma ação dentro de um quadrado ocupado pelo enxame. Duração: instantânea. Alcance: o quadrado ocupado. Área: cada alvo dentro do quadrado. Dano: 1d6 + 1 de Perfuração. Resistência: sem jogada de ataque; a Absorção conta. Limite de uso: no máximo um pulso por alvo a cada 6 Ticks, sem custo",
+    "classe": "regra da ficha",
+    "texto": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "quando um alvo começa uma ação dentro de um quadrado ocupado pelo enxame"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "instantânea"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o quadrado ocupado"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "cada alvo dentro do quadrado"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "1d6 + 1 de Perfuração"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "sem jogada de ataque; a Absorção conta"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Corpo de enxame",
+    "descricao": "Arma comum fere; cada golpe atinge um quadrado. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Arma comum fere; cada golpe atinge um quadrado. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Posturas de combate",
+    "descricao": "Anatomia do indivíduo: Minúsculo: de baixo, asas abertas. Minúsculo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. O quadrado cheio é Médio para atacar e ser alvo. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Anatomia do indivíduo: Minúsculo: de baixo, asas abertas. Minúsculo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. O quadrado cheio é Médio para atacar e ser alvo",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
+   }
+  ],
   "enxame": {
    "individuosPorQuadrado": 20,
    "tamanhoEquivalente": "medio"
@@ -98375,6 +98709,7 @@
     "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 3,
     "destreza": 5,
@@ -98466,14 +98801,15 @@
      "nome": "Forma mutável",
      "formas": "todas",
      "classe": "regra da ficha",
-     "ativacao": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce",
+     "categoria": "inato",
+     "ativacao": "uma ação, Velocidade 8",
      "duracao": "até ele voltar com outra ação; na lua cheia, até o sol nascer",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato",
+     "efeito": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade fora da lua cheia"
+     "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
      "nome": "Mordida maldita",
@@ -98483,6 +98819,7 @@
      ],
      "classe": "regra da ficha",
      "ataque": "Mordida",
+     "categoria": "inato",
      "ativacao": "a Mordida que fere (1 de dano ou mais depois da Absorção)",
      "duracao": "permanente, se pegar",
      "alcance": "o do corpo a corpo",
@@ -98490,25 +98827,13 @@
      "efeito": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia",
      "dano": "o da Mordida",
      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo",
-     "limiteDeUso": "um por golpe"
-    },
-    {
-     "nome": "Ataque furtivo",
-     "formas": "todas",
-     "classe": "regra da ficha",
-     "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
-     "duracao": "instantânea",
-     "alcance": "o do corpo a corpo",
-     "area": "um alvo",
-     "efeito": "o golpe entra onde o alvo não guarda",
-     "dano": "+1d6 no dano do golpe",
-     "resistencia": "nenhum",
-     "limiteDeUso": "um por golpe"
+     "limiteDeUso": "um por golpe. Sem custo"
     },
     {
      "nome": "Esquiva sobrenatural",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "um efeito de área que pede esquiva",
      "duracao": "instantânea",
      "alcance": "o próprio corpo",
@@ -98516,20 +98841,51 @@
      "efeito": "se passa na esquiva, não leva dano nenhum, em vez de metade",
      "dano": "nenhum",
      "resistencia": "esquiva, a do próprio efeito",
-     "limiteDeUso": "nenhum"
+     "limiteDeUso": "nenhum. Sem custo"
     },
     {
      "nome": "Afinidade com ratos",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "uma ação, Velocidade 6, um guincho ou um gesto",
      "duracao": "até o fim da cena",
      "alcance": "onde o guincho é ouvido",
      "area": "os ratos comuns e gigantes que o ouvem",
-     "efeito": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
+     "efeito": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena",
      "dano": "nenhum",
-     "resistencia": "nenhum",
-     "limiteDeUso": "um enxame ou até 6 ratos gigantes por vez"
+     "resistencia": "nenhuma; o comando dos ratos é inato",
+     "limiteDeUso": "um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+    },
+    {
+     "nome": "Golpe na brecha",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+     "duracao": "instantânea",
+     "alcance": "o do golpe",
+     "area": "o alvo atingido",
+     "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+     "dano": "+1d6 no dano do golpe",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "uma vez por ação, sem custo"
+    },
+    {
+     "nome": "Resistência à arma comum",
+     "formas": [
+      "hibrida"
+     ],
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
     }
    ],
    "comoLuta": [
@@ -98788,12 +99144,13 @@
    "defesaSocial": 4,
    "defesaMental": 16,
    "absorcao": {
-    "impacto": 6,
-    "corte": 2,
-    "perfuracao": 2
+    "impacto": 7,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "fraquezas": [
     "prata"
    ],
@@ -98832,13 +99189,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "Forma mutável",
-    "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia",
+    "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
     "classe": "regra da ficha",
-    "texto": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato",
+    "texto": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce"
+      "valor": "uma ação, Velocidade 8"
      },
      {
       "rotulo": "Duração",
@@ -98862,13 +99219,13 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade fora da lua cheia"
+      "valor": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
      }
     ]
    },
    {
     "nome": "Mordida maldita",
-    "descricao": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe",
+    "descricao": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe. Sem custo",
     "classe": "regra da ficha",
     "texto": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia",
     "campos": [
@@ -98898,49 +99255,13 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "um por golpe"
-     }
-    ]
-   },
-   {
-    "nome": "Ataque furtivo",
-    "descricao": "o golpe entra onde o alvo não guarda. Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe",
-    "classe": "regra da ficha",
-    "texto": "o golpe entra onde o alvo não guarda",
-    "campos": [
-     {
-      "rotulo": "Ativação",
-      "valor": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado"
-     },
-     {
-      "rotulo": "Duração",
-      "valor": "instantânea"
-     },
-     {
-      "rotulo": "Alcance",
-      "valor": "o do corpo a corpo"
-     },
-     {
-      "rotulo": "Área",
-      "valor": "um alvo"
-     },
-     {
-      "rotulo": "Dano",
-      "valor": "+1d6 no dano do golpe"
-     },
-     {
-      "rotulo": "Resistência",
-      "valor": "nenhum"
-     },
-     {
-      "rotulo": "Limite de uso",
-      "valor": "um por golpe"
+      "valor": "um por golpe. Sem custo"
      }
     ]
    },
    {
     "nome": "Esquiva sobrenatural",
-    "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum",
+    "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum. Sem custo",
     "classe": "regra da ficha",
     "texto": "se passa na esquiva, não leva dano nenhum, em vez de metade",
     "campos": [
@@ -98970,15 +99291,15 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "nenhum"
+      "valor": "nenhum. Sem custo"
      }
     ]
    },
    {
     "nome": "Afinidade com ratos",
-    "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: um enxame ou até 6 ratos gigantes por vez",
+    "descricao": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena. Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Dano: nenhum. Resistência: nenhuma; o comando dos ratos é inato. Limite de uso: um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
     "classe": "regra da ficha",
-    "texto": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
+    "texto": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -99002,11 +99323,83 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "nenhum"
+      "valor": "nenhuma; o comando dos ratos é inato"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "um enxame ou até 6 ratos gigantes por vez"
+      "valor": "um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Golpe na brecha",
+    "descricao": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo. Ativação: o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado. Duração: instantânea. Alcance: o do golpe. Área: o alvo atingido. Dano: +1d6 no dano do golpe. Resistência: nenhuma. Limite de uso: uma vez por ação, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "instantânea"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o do golpe"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "o alvo atingido"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "+1d6 no dano do golpe"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "uma vez por ação, sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Resistência à arma comum",
+    "descricao": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
      }
     ]
    }
@@ -99150,13 +99543,13 @@
      "habilidadesEspeciais": [
       {
        "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia",
+       "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
-       "texto": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato",
+       "texto": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
        "campos": [
         {
          "rotulo": "Ativação",
-         "valor": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce"
+         "valor": "uma ação, Velocidade 8"
         },
         {
          "rotulo": "Duração",
@@ -99180,49 +99573,13 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "à vontade fora da lua cheia"
-        }
-       ]
-      },
-      {
-       "nome": "Ataque furtivo",
-       "descricao": "o golpe entra onde o alvo não guarda. Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe",
-       "classe": "regra da ficha",
-       "texto": "o golpe entra onde o alvo não guarda",
-       "campos": [
-        {
-         "rotulo": "Ativação",
-         "valor": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado"
-        },
-        {
-         "rotulo": "Duração",
-         "valor": "instantânea"
-        },
-        {
-         "rotulo": "Alcance",
-         "valor": "o do corpo a corpo"
-        },
-        {
-         "rotulo": "Área",
-         "valor": "um alvo"
-        },
-        {
-         "rotulo": "Dano",
-         "valor": "+1d6 no dano do golpe"
-        },
-        {
-         "rotulo": "Resistência",
-         "valor": "nenhum"
-        },
-        {
-         "rotulo": "Limite de uso",
-         "valor": "um por golpe"
+         "valor": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
         }
        ]
       },
       {
        "nome": "Esquiva sobrenatural",
-       "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum",
+       "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum. Sem custo",
        "classe": "regra da ficha",
        "texto": "se passa na esquiva, não leva dano nenhum, em vez de metade",
        "campos": [
@@ -99252,15 +99609,15 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "nenhum"
+         "valor": "nenhum. Sem custo"
         }
        ]
       },
       {
        "nome": "Afinidade com ratos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: um enxame ou até 6 ratos gigantes por vez",
+       "descricao": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena. Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Dano: nenhum. Resistência: nenhuma; o comando dos ratos é inato. Limite de uso: um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
-       "texto": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
+       "texto": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena",
        "campos": [
         {
          "rotulo": "Ativação",
@@ -99284,11 +99641,47 @@
         },
         {
          "rotulo": "Resistência",
-         "valor": "nenhum"
+         "valor": "nenhuma; o comando dos ratos é inato"
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "um enxame ou até 6 ratos gigantes por vez"
+         "valor": "um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+        }
+       ]
+      },
+      {
+       "nome": "Golpe na brecha",
+       "descricao": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo. Ativação: o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado. Duração: instantânea. Alcance: o do golpe. Área: o alvo atingido. Dano: +1d6 no dano do golpe. Resistência: nenhuma. Limite de uso: uma vez por ação, sem custo",
+       "classe": "regra da ficha",
+       "texto": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+       "campos": [
+        {
+         "rotulo": "Ativação",
+         "valor": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado"
+        },
+        {
+         "rotulo": "Duração",
+         "valor": "instantânea"
+        },
+        {
+         "rotulo": "Alcance",
+         "valor": "o do golpe"
+        },
+        {
+         "rotulo": "Área",
+         "valor": "o alvo atingido"
+        },
+        {
+         "rotulo": "Dano",
+         "valor": "+1d6 no dano do golpe"
+        },
+        {
+         "rotulo": "Resistência",
+         "valor": "nenhuma"
+        },
+        {
+         "rotulo": "Limite de uso",
+         "valor": "uma vez por ação, sem custo"
         }
        ]
       }
@@ -99457,13 +99850,13 @@
      "habilidadesEspeciais": [
       {
        "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia",
+       "descricao": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
-       "texto": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato",
+       "texto": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
        "campos": [
         {
          "rotulo": "Ativação",
-         "valor": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce"
+         "valor": "uma ação, Velocidade 8"
         },
         {
          "rotulo": "Duração",
@@ -99487,13 +99880,13 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "à vontade fora da lua cheia"
+         "valor": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
         }
        ]
       },
       {
        "nome": "Mordida maldita",
-       "descricao": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe",
+       "descricao": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia. Ativação: a Mordida que fere (1 de dano ou mais depois da Absorção). Duração: permanente, se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe. Sem custo",
        "classe": "regra da ficha",
        "texto": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia",
        "campos": [
@@ -99523,49 +99916,13 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "um por golpe"
-        }
-       ]
-      },
-      {
-       "nome": "Ataque furtivo",
-       "descricao": "o golpe entra onde o alvo não guarda. Ativação: o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado. Duração: instantânea. Alcance: o do corpo a corpo. Área: um alvo. Dano: +1d6 no dano do golpe. Resistência: nenhum. Limite de uso: um por golpe",
-       "classe": "regra da ficha",
-       "texto": "o golpe entra onde o alvo não guarda",
-       "campos": [
-        {
-         "rotulo": "Ativação",
-         "valor": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado"
-        },
-        {
-         "rotulo": "Duração",
-         "valor": "instantânea"
-        },
-        {
-         "rotulo": "Alcance",
-         "valor": "o do corpo a corpo"
-        },
-        {
-         "rotulo": "Área",
-         "valor": "um alvo"
-        },
-        {
-         "rotulo": "Dano",
-         "valor": "+1d6 no dano do golpe"
-        },
-        {
-         "rotulo": "Resistência",
-         "valor": "nenhum"
-        },
-        {
-         "rotulo": "Limite de uso",
-         "valor": "um por golpe"
+         "valor": "um por golpe. Sem custo"
         }
        ]
       },
       {
        "nome": "Esquiva sobrenatural",
-       "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum",
+       "descricao": "se passa na esquiva, não leva dano nenhum, em vez de metade. Ativação: um efeito de área que pede esquiva. Duração: instantânea. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: esquiva, a do próprio efeito. Limite de uso: nenhum. Sem custo",
        "classe": "regra da ficha",
        "texto": "se passa na esquiva, não leva dano nenhum, em vez de metade",
        "campos": [
@@ -99595,15 +99952,15 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "nenhum"
+         "valor": "nenhum. Sem custo"
         }
        ]
       },
       {
        "nome": "Afinidade com ratos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: um enxame ou até 6 ratos gigantes por vez",
+       "descricao": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena. Ativação: uma ação, Velocidade 6, um guincho ou um gesto. Duração: até o fim da cena. Alcance: onde o guincho é ouvido. Área: os ratos comuns e gigantes que o ouvem. Dano: nenhum. Resistência: nenhuma; o comando dos ratos é inato. Limite de uso: um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
-       "texto": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
+       "texto": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena",
        "campos": [
         {
          "rotulo": "Ativação",
@@ -99627,11 +99984,47 @@
         },
         {
          "rotulo": "Resistência",
-         "valor": "nenhum"
+         "valor": "nenhuma; o comando dos ratos é inato"
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "um enxame ou até 6 ratos gigantes por vez"
+         "valor": "um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+        }
+       ]
+      },
+      {
+       "nome": "Golpe na brecha",
+       "descricao": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo. Ativação: o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado. Duração: instantânea. Alcance: o do golpe. Área: o alvo atingido. Dano: +1d6 no dano do golpe. Resistência: nenhuma. Limite de uso: uma vez por ação, sem custo",
+       "classe": "regra da ficha",
+       "texto": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+       "campos": [
+        {
+         "rotulo": "Ativação",
+         "valor": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado"
+        },
+        {
+         "rotulo": "Duração",
+         "valor": "instantânea"
+        },
+        {
+         "rotulo": "Alcance",
+         "valor": "o do golpe"
+        },
+        {
+         "rotulo": "Área",
+         "valor": "o alvo atingido"
+        },
+        {
+         "rotulo": "Dano",
+         "valor": "+1d6 no dano do golpe"
+        },
+        {
+         "rotulo": "Resistência",
+         "valor": "nenhuma"
+        },
+        {
+         "rotulo": "Limite de uso",
+         "valor": "uma vez por ação, sem custo"
         }
        ]
       }
@@ -100344,16 +100737,18 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "ofuscacao",
-      "nivel": 3
+      "nivel": 3,
+      "efeito": "ausencia"
      },
-     "ativacao": "uma ação, Velocidade 6",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
      "duracao": "até ele atacar ou desfazer",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido",
+     "efeito": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. O efeito termina ao atacar ou desfazer. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade"
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Mudar o tamanho",
@@ -100363,32 +100758,28 @@
       "arte": "metamorfose",
       "nivel": 2
      },
-     "ativacao": "uma ação, Velocidade 6, com um gesto",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5, com um gesto. O efeito sai no Tick do Golpe",
      "duracao": "até o fim da cena",
      "alcance": "9 m",
      "area": "um alvo, ou ele mesmo",
-     "efeito": "encolhe ou amplia o alvo: ampliado, um Tamanho acima, +1 na Força e −2 na Esquiva; encolhido, um Tamanho abaixo, −1 na Força e +2 na Esquiva",
+     "efeito": "Cada grau de crescimento multiplica a área por 4 e a massa por 8. Ao encolher, divida nas mesmas proporções. Recalcule Tamanho e alcance. Atributos e Couraça só mudam se este poder declarar a mudança",
      "dano": "nenhum",
-     "resistencia": "mente, contra Influência + Ocultismo dele, para quem não quer",
-     "limiteDeUso": "duas vezes por cena"
+     "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+     "limiteDeUso": "Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Passagem entre mundos",
      "formas": "todas",
-     "classe": "regra da ficha",
-     "ativacao": "uma ação, Velocidade 8",
-     "duracao": "instantânea",
-     "alcance": "um plano elemental ou o mundo material",
-     "area": "ele e quem estiver disposto a atravessar, até seis",
-     "efeito": "abre a passagem e atravessa com os que vão",
-     "dano": "nenhum",
-     "resistencia": "nenhum",
-     "limiteDeUso": "uma vez por dia"
+     "classe": "sem regra ainda",
+     "categoria": "magia",
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
      "nome": "Resistência do deserto",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "nenhuma; vale nos planos elementais",
      "duracao": "até 2 dias por visita",
      "alcance": "o próprio corpo",
@@ -100396,7 +100787,7 @@
      "efeito": "não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "uma visita por vez"
+     "limiteDeUso": "uma visita por vez. Sem custo"
     }
    ],
    "comoLuta": [
@@ -100585,17 +100976,18 @@
   "habilidadesEspeciais": [
    {
     "nome": "Desaparecer",
-    "descricao": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. Ativação: uma ação, Velocidade 6. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade",
+    "descricao": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. O efeito termina ao atacar ou desfazer. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "ofuscacao",
-     "nivel": 3
+     "nivel": 3,
+     "efeito": "ausencia"
     },
-    "texto": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido",
+    "texto": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. O efeito termina ao atacar ou desfazer. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -100619,23 +101011,23 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Mudar o tamanho",
-    "descricao": "encolhe ou amplia o alvo: ampliado, um Tamanho acima, +1 na Força e −2 na Esquiva; encolhido, um Tamanho abaixo, −1 na Força e +2 na Esquiva. Ativação: uma ação, Velocidade 6, com um gesto. Duração: até o fim da cena. Alcance: 9 m. Área: um alvo, ou ele mesmo. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo dele, para quem não quer. Limite de uso: duas vezes por cena",
+    "descricao": "Cada grau de crescimento multiplica a área por 4 e a massa por 8. Ao encolher, divida nas mesmas proporções. Recalcule Tamanho e alcance. Atributos e Couraça só mudam se este poder declarar a mudança. Ativação: uma ação, Velocidade 5, com um gesto. O efeito sai no Tick do Golpe. Duração: até o fim da cena. Alcance: 9 m. Área: um alvo, ou ele mesmo. Dano: nenhum. Resistência: Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "metamorfose",
      "nivel": 2
     },
-    "texto": "encolhe ou amplia o alvo: ampliado, um Tamanho acima, +1 na Força e −2 na Esquiva; encolhido, um Tamanho abaixo, −1 na Força e +2 na Esquiva",
+    "texto": "Cada grau de crescimento multiplica a área por 4 e a massa por 8. Ao encolher, divida nas mesmas proporções. Recalcule Tamanho e alcance. Atributos e Couraça só mudam se este poder declarar a mudança",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6, com um gesto"
+      "valor": "uma ação, Velocidade 5, com um gesto. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -100655,53 +101047,22 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "mente, contra Influência + Ocultismo dele, para quem não quer"
+      "valor": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "duas vezes por cena"
+      "valor": "Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Passagem entre mundos",
-    "descricao": "abre a passagem e atravessa com os que vão. Ativação: uma ação, Velocidade 8. Duração: instantânea. Alcance: um plano elemental ou o mundo material. Área: ele e quem estiver disposto a atravessar, até seis. Dano: nenhum. Resistência: nenhum. Limite de uso: uma vez por dia",
-    "classe": "regra da ficha",
-    "texto": "abre a passagem e atravessa com os que vão",
-    "campos": [
-     {
-      "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 8"
-     },
-     {
-      "rotulo": "Duração",
-      "valor": "instantânea"
-     },
-     {
-      "rotulo": "Alcance",
-      "valor": "um plano elemental ou o mundo material"
-     },
-     {
-      "rotulo": "Área",
-      "valor": "ele e quem estiver disposto a atravessar, até seis"
-     },
-     {
-      "rotulo": "Dano",
-      "valor": "nenhum"
-     },
-     {
-      "rotulo": "Resistência",
-      "valor": "nenhum"
-     },
-     {
-      "rotulo": "Limite de uso",
-      "valor": "uma vez por dia"
-     }
-    ]
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
+    "classe": "sem regra ainda"
    },
    {
     "nome": "Resistência do deserto",
-    "descricao": "não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material. Ativação: nenhuma; vale nos planos elementais. Duração: até 2 dias por visita. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: uma visita por vez",
+    "descricao": "não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material. Ativação: nenhuma; vale nos planos elementais. Duração: até 2 dias por visita. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: uma visita por vez. Sem custo",
     "classe": "regra da ficha",
     "texto": "não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material",
     "campos": [
@@ -100731,7 +101092,7 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma visita por vez"
+      "valor": "uma visita por vez. Sem custo"
      }
     ]
    }
@@ -112555,6 +112916,7 @@
     "posturaDoTamanho": "de frente"
    },
    "couraca": 1,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 6,
     "destreza": 3,
@@ -112651,14 +113013,15 @@
      "nome": "Forma mutável",
      "formas": "todas",
      "classe": "regra da ficha",
-     "ativacao": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce",
+     "categoria": "inato",
+     "ativacao": "uma ação, Velocidade 8",
      "duracao": "até ele voltar com outra ação; na lua cheia, até o sol nascer",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai",
+     "efeito": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade fora da lua cheia"
+     "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
      "nome": "Mordida que derruba e amaldiçoa",
@@ -112668,32 +113031,35 @@
      ],
      "classe": "regra da ficha",
      "ataque": "Mordida",
+     "categoria": "sobrenatural",
      "ativacao": "a Mordida que fere",
      "duracao": "a queda é instantânea; a maldição, permanente se pegar",
      "alcance": "o do corpo a corpo",
      "area": "um alvo",
-     "efeito": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
+     "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
      "dano": "o da Mordida",
      "resistencia": "corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo",
-     "limiteDeUso": "um por golpe"
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Firme contra o medo",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "um efeito de medo o tem como alvo",
      "duracao": "a do efeito",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
      "efeito": "o pavor pega menos nele que na maioria dos guerreiros",
      "dano": "nenhum",
-     "resistencia": "mente, com +2 na Defesa Mental contra medo",
-     "limiteDeUso": "nenhum"
+     "resistencia": "medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+     "limiteDeUso": "nenhum. Sem custo"
     },
     {
      "nome": "Afinidade com lobos",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "uma ação, Velocidade 6, um uivo ou um gesto",
      "duracao": "até o fim da cena",
      "alcance": "onde o uivo é ouvido",
@@ -112701,7 +113067,23 @@
      "efeito": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "até 6 lobos por vez"
+     "limiteDeUso": "até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+    },
+    {
+     "nome": "Resistência à arma comum",
+     "formas": [
+      "hibrida"
+     ],
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
     }
    ],
    "comoLuta": [
@@ -112982,12 +113364,13 @@
    "defesaSocial": 8,
    "defesaMental": 16,
    "absorcao": {
-    "impacto": 7,
-    "corte": 2,
-    "perfuracao": 2
+    "impacto": 8,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "fraquezas": [
     "prata"
    ],
@@ -113026,13 +113409,13 @@
   "habilidadesEspeciais": [
    {
     "nome": "Forma mutável",
-    "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia",
+    "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
     "classe": "regra da ficha",
-    "texto": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai",
+    "texto": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce"
+      "valor": "uma ação, Velocidade 8"
      },
      {
       "rotulo": "Duração",
@@ -113056,15 +113439,15 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade fora da lua cheia"
+      "valor": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
      }
     ]
    },
    {
     "nome": "Mordida que derruba e amaldiçoa",
-    "descricao": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. Ativação: a Mordida que fere. Duração: a queda é instantânea; a maldição, permanente se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. Ativação: a Mordida que fere. Duração: a queda é instantânea; a maldição, permanente se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
-    "texto": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
+    "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -113092,13 +113475,13 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "um por golpe"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Firme contra o medo",
-    "descricao": "o pavor pega menos nele que na maioria dos guerreiros. Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra medo. Limite de uso: nenhum",
+    "descricao": "o pavor pega menos nele que na maioria dos guerreiros. Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: nenhum. Sem custo",
     "classe": "regra da ficha",
     "texto": "o pavor pega menos nele que na maioria dos guerreiros",
     "campos": [
@@ -113124,17 +113507,17 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "mente, com +2 na Defesa Mental contra medo"
+      "valor": "medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "nenhum"
+      "valor": "nenhum. Sem custo"
      }
     ]
    },
    {
     "nome": "Afinidade com lobos",
-    "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez",
+    "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
     "classe": "regra da ficha",
     "texto": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
     "campos": [
@@ -113164,7 +113547,43 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "até 6 lobos por vez"
+      "valor": "até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Resistência à arma comum",
+    "descricao": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
      }
     ]
    }
@@ -113309,13 +113728,13 @@
      "habilidadesEspeciais": [
       {
        "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia",
+       "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
-       "texto": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai",
+       "texto": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
        "campos": [
         {
          "rotulo": "Ativação",
-         "valor": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce"
+         "valor": "uma ação, Velocidade 8"
         },
         {
          "rotulo": "Duração",
@@ -113339,13 +113758,13 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "à vontade fora da lua cheia"
+         "valor": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
         }
        ]
       },
       {
        "nome": "Firme contra o medo",
-       "descricao": "o pavor pega menos nele que na maioria dos guerreiros. Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra medo. Limite de uso: nenhum",
+       "descricao": "o pavor pega menos nele que na maioria dos guerreiros. Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: nenhum. Sem custo",
        "classe": "regra da ficha",
        "texto": "o pavor pega menos nele que na maioria dos guerreiros",
        "campos": [
@@ -113371,17 +113790,17 @@
         },
         {
          "rotulo": "Resistência",
-         "valor": "mente, com +2 na Defesa Mental contra medo"
+         "valor": "medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro"
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "nenhum"
+         "valor": "nenhum. Sem custo"
         }
        ]
       },
       {
        "nome": "Afinidade com lobos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez",
+       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
        "texto": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
        "campos": [
@@ -113411,7 +113830,7 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "até 6 lobos por vez"
+         "valor": "até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
         }
        ]
       }
@@ -113570,13 +113989,13 @@
      "habilidadesEspeciais": [
       {
        "nome": "Forma mutável",
-       "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Ativação: uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia",
+       "descricao": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 8. Duração: até ele voltar com outra ação; na lua cheia, até o sol nascer. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
-       "texto": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai",
+       "texto": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
        "campos": [
         {
          "rotulo": "Ativação",
-         "valor": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce"
+         "valor": "uma ação, Velocidade 8"
         },
         {
          "rotulo": "Duração",
@@ -113600,15 +114019,15 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "à vontade fora da lua cheia"
+         "valor": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
         }
        ]
       },
       {
        "nome": "Mordida que derruba e amaldiçoa",
-       "descricao": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. Ativação: a Mordida que fere. Duração: a queda é instantânea; a maldição, permanente se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. Limite de uso: um por golpe",
+       "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia. Ativação: a Mordida que fere. Duração: a queda é instantânea; a maldição, permanente se pegar. Alcance: o do corpo a corpo. Área: um alvo. Dano: o da Mordida. Resistência: corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
        "classe": "regra da ficha",
-       "texto": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
+       "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
        "campos": [
         {
          "rotulo": "Ativação",
@@ -113636,13 +114055,13 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "um por golpe"
+         "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
         }
        ]
       },
       {
        "nome": "Firme contra o medo",
-       "descricao": "o pavor pega menos nele que na maioria dos guerreiros. Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: mente, com +2 na Defesa Mental contra medo. Limite de uso: nenhum",
+       "descricao": "o pavor pega menos nele que na maioria dos guerreiros. Ativação: um efeito de medo o tem como alvo. Duração: a do efeito. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: nenhum. Sem custo",
        "classe": "regra da ficha",
        "texto": "o pavor pega menos nele que na maioria dos guerreiros",
        "campos": [
@@ -113668,17 +114087,17 @@
         },
         {
          "rotulo": "Resistência",
-         "valor": "mente, com +2 na Defesa Mental contra medo"
+         "valor": "medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro"
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "nenhum"
+         "valor": "nenhum. Sem custo"
         }
        ]
       },
       {
        "nome": "Afinidade com lobos",
-       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez",
+       "descricao": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele. Ativação: uma ação, Velocidade 6, um uivo ou um gesto. Duração: até o fim da cena. Alcance: onde o uivo é ouvido. Área: os lobos comuns e atrozes que o ouvem. Dano: nenhum. Resistência: nenhum. Limite de uso: até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
        "classe": "regra da ficha",
        "texto": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
        "campos": [
@@ -113708,7 +114127,7 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "até 6 lobos por vez"
+         "valor": "até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
         }
        ]
       }
@@ -114269,13 +114688,18 @@
      "bloqueiaComoArma": null
     }
    ],
-   "habilidadesEspeciais": [],
-   "comoLuta": [
+   "habilidadesEspeciais": [
     {
      "nome": "derrubar",
      "formas": "todas",
-     "texto": "mordida (na perna) · regra de Derrubar do livro. pelo lobo.."
-    },
+     "classe": "livro",
+     "ataque": "Mordida",
+     "categoria": "inato",
+     "regra": "derrubar",
+     "texto": "Sem custo nem limite próprio de usos. Usar repetidamente causa esforço e pode levar ao cansaço"
+    }
+   ],
+   "comoLuta": [
     {
      "nome": "caça em matilha",
      "formas": "todas",
@@ -114465,12 +114889,15 @@
     }
    ]
   },
-  "habilidadesEspeciais": [],
-  "comoLuta": [
+  "habilidadesEspeciais": [
    {
     "nome": "derrubar",
-    "texto": "mordida (na perna) · regra de Derrubar do livro. pelo lobo.."
-   },
+    "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3. Nesta criatura: 4d6 +2 (Força 5 + Briga 4). Sem custo nem limite próprio de usos. Usar repetidamente causa esforço e pode levar ao cansaço",
+    "classe": "livro",
+    "regra": "derrubar"
+   }
+  ],
+  "comoLuta": [
    {
     "nome": "caça em matilha",
     "texto": "ataca em grupo e cerca a presa."
@@ -139465,7 +139892,7 @@
      "formas": "todas",
      "classe": "sem regra ainda",
      "categoria": "magia",
-     "efeito": "Aguarda o lore dos planos"
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
      "nome": "Multiataque",
@@ -139790,7 +140217,7 @@
    },
    {
     "nome": "Viagem entre planos",
-    "descricao": "Aguarda o lore dos planos",
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
     "classe": "sem regra ainda"
    },
    {
@@ -145612,6 +146039,7 @@
      "formas": "todas",
      "classe": "livro",
      "ataque": "Garras",
+     "categoria": "inato",
      "regra": "rajada",
      "texto": "Até dois golpes por ação"
     },
@@ -145620,20 +146048,29 @@
      "formas": "todas",
      "classe": "regra da ficha",
      "ataque": "Garras",
-     "ativacao": "o golpe das Garras que acerta com Margem",
+     "categoria": "substancia",
+     "ativacao": "o golpe das Garras que causa ao menos 1 PV depois da Absorção",
      "duracao": "a do veneno",
      "alcance": "toque",
      "area": "um alvo",
      "efeito": "o alvo fica Envenenado pelo veneno do quasit (Veneno e doença)",
      "dano": "o do veneno",
      "resistencia": "corpo, pelo veneno",
-     "limiteDeUso": "um por golpe"
+     "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
      "nome": "invisibilidade",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "fica invisível à vontade, como ação livre"
+     "classe": "regra da ficha",
+     "categoria": "sobrenatural",
+     "ativacao": "uma ação, Velocidade 5",
+     "duracao": "até atacar ou desfazer",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Susto",
@@ -145641,16 +146078,18 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "fascinacao",
-      "nivel": 1
+      "nivel": 1,
+      "efeito": "pavor"
      },
-     "ativacao": "uma ação, Velocidade 6, uma careta ou um sussurro",
-     "duracao": "até o fim da cena",
+     "categoria": "sobrenatural",
+     "ativacao": "uma ação, Velocidade 5, uma careta ou um sussurro",
+     "duracao": "para Abalado, até o fim da cena ou até Recompor",
      "alcance": "9 m",
      "area": "um alvo",
-     "efeito": "um terror súbito sem motivo; quem falha fica Abalado",
+     "efeito": "um terror súbito sem motivo; quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
      "dano": "nenhum",
-     "resistencia": "mente, contra Influência + Briga dele; quem passa fica imune ao susto até o fim da cena",
-     "limiteDeUso": "uma vez por cena"
+     "resistencia": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao susto até o fim da cena",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Adivinhação",
@@ -145658,16 +146097,18 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "adivinhacao",
-      "nivel": 1
+      "nivel": 1,
+      "efeito": "oraculo"
      },
-     "ativacao": "uma ação, Velocidade 6",
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
      "duracao": "até a próxima jogada dele, ou o fim da cena",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
      "efeito": "vislumbra o futuro próximo",
      "dano": "nenhum; soma +1d6 na próxima jogada",
      "resistencia": "nenhum",
-     "limiteDeUso": "uma vez por cena"
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
      "nome": "Forma alternativa",
@@ -145677,20 +146118,22 @@
       "arte": "materia",
       "nivel": 2
      },
-     "ativacao": "uma ação, Velocidade 6",
+     "categoria": "inato",
+     "ativacao": "uma ação, Velocidade 5",
      "duracao": "até ele voltar, com outra ação",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala",
+     "efeito": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "à vontade"
+     "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
      "nome": "Regeneração 2",
      "formas": "todas",
      "classe": "sem regra ainda",
-     "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de prata ou arma benta"
+     "categoria": "inato",
+     "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     }
    ],
    "comoLuta": [
@@ -145907,13 +146350,13 @@
    },
    {
     "nome": "garras venenosas",
-    "descricao": "o alvo fica Envenenado pelo veneno do quasit (Veneno e doença). Ativação: o golpe das Garras que acerta com Margem. Duração: a do veneno. Alcance: toque. Área: um alvo. Dano: o do veneno. Resistência: corpo, pelo veneno. Limite de uso: um por golpe",
+    "descricao": "o alvo fica Envenenado pelo veneno do quasit (Veneno e doença). Ativação: o golpe das Garras que causa ao menos 1 PV depois da Absorção. Duração: a do veneno. Alcance: toque. Área: um alvo. Dano: o do veneno. Resistência: corpo, pelo veneno. Limite de uso: O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
     "classe": "regra da ficha",
     "texto": "o alvo fica Envenenado pelo veneno do quasit (Veneno e doença)",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "o golpe das Garras que acerta com Margem"
+      "valor": "o golpe das Garras que causa ao menos 1 PV depois da Absorção"
      },
      {
       "rotulo": "Duração",
@@ -145937,32 +146380,64 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "um por golpe"
+      "valor": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
      }
     ]
    },
    {
     "nome": "invisibilidade",
-    "descricao": "fica invisível à vontade, como ação livre",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "Susto",
-    "descricao": "um terror súbito sem motivo; quem falha fica Abalado. Ativação: uma ação, Velocidade 6, uma careta ou um sussurro. Duração: até o fim da cena. Alcance: 9 m. Área: um alvo. Dano: nenhum. Resistência: mente, contra Influência + Briga dele; quem passa fica imune ao susto até o fim da cena. Limite de uso: uma vez por cena",
+    "descricao": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque. Ativação: uma ação, Velocidade 5. Duração: até atacar ou desfazer. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
-    "base": {
-     "arte": "fascinacao",
-     "nivel": 1
-    },
-    "texto": "um terror súbito sem motivo; quem falha fica Abalado",
+    "texto": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6, uma careta ou um sussurro"
+      "valor": "uma ação, Velocidade 5"
      },
      {
       "rotulo": "Duração",
-      "valor": "até o fim da cena"
+      "valor": "até atacar ou desfazer"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+     }
+    ]
+   },
+   {
+    "nome": "Susto",
+    "descricao": "um terror súbito sem motivo; quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. Ativação: uma ação, Velocidade 5, uma careta ou um sussurro. Duração: para Abalado, até o fim da cena ou até Recompor. Alcance: 9 m. Área: um alvo. Dano: nenhum. Resistência: Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao susto até o fim da cena. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "classe": "regra da ficha",
+    "base": {
+     "arte": "fascinacao",
+     "nivel": 1,
+     "efeito": "pavor"
+    },
+    "texto": "um terror súbito sem motivo; quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "uma ação, Velocidade 5, uma careta ou um sussurro"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "para Abalado, até o fim da cena ou até Recompor"
      },
      {
       "rotulo": "Alcance",
@@ -145978,27 +146453,28 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "mente, contra Influência + Briga dele; quem passa fica imune ao susto até o fim da cena"
+      "valor": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao susto até o fim da cena"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma vez por cena"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Adivinhação",
-    "descricao": "vislumbra o futuro próximo. Ativação: uma ação, Velocidade 6. Duração: até a próxima jogada dele, ou o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum; soma +1d6 na próxima jogada. Resistência: nenhum. Limite de uso: uma vez por cena",
+    "descricao": "vislumbra o futuro próximo. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: até a próxima jogada dele, ou o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum; soma +1d6 na próxima jogada. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
-     "nivel": 1
+     "nivel": 1,
+     "efeito": "oraculo"
     },
     "texto": "vislumbra o futuro próximo",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -146022,23 +146498,23 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma vez por cena"
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
      }
     ]
    },
    {
     "nome": "Forma alternativa",
-    "descricao": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala. Ativação: uma ação, Velocidade 6. Duração: até ele voltar, com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade",
+    "descricao": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Ativação: uma ação, Velocidade 5. Duração: até ele voltar, com outra ação. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
     "classe": "regra da ficha",
     "base": {
      "arte": "materia",
      "nivel": 2
     },
-    "texto": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala",
+    "texto": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
+      "valor": "uma ação, Velocidade 5"
      },
      {
       "rotulo": "Duração",
@@ -146062,13 +146538,13 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "à vontade"
+      "valor": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
      }
     ]
    },
    {
     "nome": "Regeneração 2",
-    "descricao": "origem sobrenatural; fecha as feridas, exceto o dano de prata ou arma benta",
+    "descricao": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
     "classe": "sem regra ainda"
    }
   ],
@@ -174022,7 +174498,7 @@
      "formas": "todas",
      "classe": "sem regra ainda",
      "categoria": "magia",
-     "efeito": "Aguarda o lore dos planos"
+     "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
      "nome": "Resistência à magia",
@@ -174343,7 +174819,7 @@
    },
    {
     "nome": "passagem entre planos",
-    "descricao": "Aguarda o lore dos planos",
+    "descricao": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
     "classe": "sem regra ainda"
    },
    {

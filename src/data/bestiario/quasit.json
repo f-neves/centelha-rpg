@@ -122,6 +122,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -130,20 +131,29 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Garras",
-      "ativacao": "o golpe das Garras que acerta com Margem",
+      "categoria": "substancia",
+      "ativacao": "o golpe das Garras que causa ao menos 1 PV depois da Absorção",
       "duracao": "a do veneno",
       "alcance": "toque",
       "area": "um alvo",
       "efeito": "o alvo fica Envenenado pelo veneno do quasit (Veneno e doença)",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "invisibilidade",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "fica invisível à vontade, como ação livre"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até atacar ou desfazer",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Susto",
@@ -151,16 +161,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "pavor"
       },
-      "ativacao": "uma ação, Velocidade 6, uma careta ou um sussurro",
-      "duracao": "até o fim da cena",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5, uma careta ou um sussurro",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "9 m",
       "area": "um alvo",
-      "efeito": "um terror súbito sem motivo; quem falha fica Abalado",
+      "efeito": "um terror súbito sem motivo; quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Briga dele; quem passa fica imune ao susto até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao susto até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Adivinhação",
@@ -168,16 +180,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "adivinhacao",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "oraculo"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até a próxima jogada dele, ou o fim da cena",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "vislumbra o futuro próximo",
       "dano": "nenhum; soma +1d6 na próxima jogada",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Forma alternativa",
@@ -187,20 +201,22 @@
         "arte": "materia",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até ele voltar, com outra ação",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala",
+      "efeito": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Regeneração 2",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de prata ou arma benta"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     }
   ],
   "comoLuta": [
@@ -286,22 +302,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.garras venenosas",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Susto",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Adivinhação",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Forma alternativa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "O site dizia 30 cm e 3,5 kg, que não fecham: o corpo de base a 30 cm daria 0,37 kg. A massa do site é a do Pathfinder (cerca de 60 cm); fica a altura que fecha com ela; 0,6 m, e não os 30 cm do site, que não fecham com os 3,5 kg (o corpo de base a 30 cm daria 0,37 kg, na Faixa 1 e com PV = Vigor = 2). A outra saída era manter os 30 cm e baixar a massa; fica a altura, que é a do Pathfinder, e a massa do site . É a exceção à regra de altura e massa do bestiário (a partir do lote 32: a altura do site manda, e a massa do site fica quando um fator de forma plausível a alcança; balor, glabrezu e marilith mantiveram a altura). Aqui o número errado do site era a própria altura: 30 cm fica longe da massa por um fator de quase dez, nenhum fator de forma plausível fecha a conta, e a altura contradiz a fonte (cerca de 60 cm no Pathfinder). Mantida a altura, o quasit teria 0,37 kg e PV 2; mantida a massa, fica com 3,5 kg, a altura da fonte e PV 6"
     },
@@ -312,6 +312,22 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.garras venenosas",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Susto",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Adivinhação",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma alternativa",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
     },
     {
       "campo": "corpo",

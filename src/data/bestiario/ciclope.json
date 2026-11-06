@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 2,
@@ -117,11 +118,12 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Rocha arremessada",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
       "duracao": "instantânea",
       "alcance": "até 36 m; acima de 12 m, −2 na jogada",
       "area": "um alvo",
-      "efeito": "a rocha derruba o alvo Médio ou menor que ela fere; contra uma parede fraca, uma cerca ou um telheiro, derruba a estrutura pequena (site, Força ciclópica)",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "2d6 + Força + Centelha, Impacto",
       "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
       "limiteDeUso": "enquanto houver rocha por perto"
@@ -130,19 +132,21 @@
       "nome": "Lampejo de premonição",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "um golpe vai acertá-lo; gasta 2 de Energia (o site diz que gasta Centelha; no livro, o que se gasta é a Energia, `centelha.md`)",
+      "categoria": "sobrenatural",
+      "ativacao": "um golpe vai acertá-lo",
       "duracao": "instantânea",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "pressente o golpe certeiro e o evita por completo",
+      "efeito": "Pressente o golpe e o evita por completo ao ativar o lampejo. Fora dessa reação, ponto vital, flanco, surpresa e Tamanho seguem suas regras",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 2 de Energia"
     },
     {
       "nome": "Olho único",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -150,13 +154,14 @@
       "efeito": "o campo de visão é estreito: quem o flanqueia ou o ataca de surpresa soma +2 a mais na jogada de ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -233,20 +238,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Arremesso de rocha",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Lampejo de premonição",
-      "motivo": "números sugeridos pela ficha (D-197); as duas linhas do site numa só; o custo em Energia, e não em Centelha"
-    },
-    {
-      "campo": "habilidadesEspeciais.Olho único",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro grosso\" do site, como o do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 2, couro grosso, como o gigante da colina"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça: o \"couro grosso\" do site, como o do gigante da colina (2) .; 2, couro grosso, como o gigante da colina"
     },
     {
       "campo": "comportamento.atividade",
@@ -255,6 +248,10 @@
     {
       "campo": "habilidades.prontidao",
       "motivo": "2, a da nota do site; o campo dizia 1"
+    },
+    {
+      "campo": "habilidadesEspeciais.Lampejo de premonição",
+      "motivo": "as duas linhas do site numa só; o custo em Energia, e não em Centelha"
     }
   ]
 }

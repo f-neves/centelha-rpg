@@ -92,16 +92,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "ausencia"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até ele atacar ou desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido",
+      "efeito": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. O efeito termina ao atacar ou desfazer. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Mudar o tamanho",
@@ -111,32 +113,28 @@
         "arte": "metamorfose",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6, com um gesto",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, com um gesto. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "9 m",
       "area": "um alvo, ou ele mesmo",
-      "efeito": "encolhe ou amplia o alvo: ampliado, um Tamanho acima, +1 na Força e −2 na Esquiva; encolhido, um Tamanho abaixo, −1 na Força e +2 na Esquiva",
+      "efeito": "Cada grau de crescimento multiplica a área por 4 e a massa por 8. Ao encolher, divida nas mesmas proporções. Recalcule Tamanho e alcance. Atributos e Couraça só mudam se este poder declarar a mudança",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele, para quem não quer",
-      "limiteDeUso": "duas vezes por cena"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Passagem entre mundos",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 8",
-      "duracao": "instantânea",
-      "alcance": "um plano elemental ou o mundo material",
-      "area": "ele e quem estiver disposto a atravessar, até seis",
-      "efeito": "abre a passagem e atravessa com os que vão",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "classe": "sem regra ainda",
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "Resistência do deserto",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale nos planos elementais",
       "duracao": "até 2 dias por visita",
       "alcance": "o próprio corpo",
@@ -144,7 +142,7 @@
       "efeito": "não sofre o dano do ambiente dos planos elementais enquanto o tempo durar; passado o tempo, sofre como qualquer um até voltar ao mundo material",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma visita por vez"
+      "limiteDeUso": "uma visita por vez. Sem custo"
     }
   ],
   "comoLuta": [
@@ -219,22 +217,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Desaparecer",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mudar o tamanho",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Passagem entre mundos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Resistência do deserto",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "Apara com a espada, guerreiro treinado; 2; o site não gravava Bloqueio"
     },
@@ -245,6 +227,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Desaparecer",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar o tamanho",
+      "motivo": "R1 e D-197. Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, com um gesto -> uma ação, Velocidade 5, com um gesto. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

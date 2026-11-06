@@ -107,20 +107,29 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Ferrão",
-      "ativacao": "o golpe do Ferrão que fere",
+      "categoria": "substancia",
+      "ativacao": "o golpe do Ferrão que causa ao menos 1 PV depois da Absorção",
       "duracao": "a do veneno",
       "alcance": "o da cauda",
       "area": "um alvo",
       "efeito": "o alvo fica Envenenado pelo veneno do diabrete (Veneno e doença), que tira força",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "três picadas que injetam por cena; o ferrão recarrega em uma hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "invisibilidade",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "fica invisível à vontade, como ação livre"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até atacar ou desfazer",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Adivinhação",
@@ -128,16 +137,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "adivinhacao",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "oraculo"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "um alvo ou uma cena à vista",
       "area": "não se aplica",
       "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Forma alternativa",
@@ -147,26 +158,36 @@
         "arte": "materia",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até ele voltar, com outra ação",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala",
+      "efeito": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Regeneração 2",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de prata ou arma benta"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de diabo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -266,20 +287,20 @@
   },
   "revisao": [
     {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
       "campo": "habilidadesEspeciais.Ferrão venenoso",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "habilidadesEspeciais.Adivinhação",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Forma alternativa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "comportamento.dieta",
-      "motivo": ""
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
     },
     {
       "campo": "corpo",

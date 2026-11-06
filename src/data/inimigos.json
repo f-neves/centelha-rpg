@@ -2679,11 +2679,11 @@
       {
         "nome": "Rajada cortante",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 3,
         "tipo": "corte",
         "classe": "distancia",
-        "ticks": 7,
+        "ticks": 5,
         "acerto": 0,
         "pool": "4d6 +6",
         "dano": "3d6 +4 (C)",
@@ -2704,9 +2704,9 @@
       "integridade": 4,
       "persuasao": 2,
       "sobrevivencia": 2,
+      "atirador": 3,
       "sociabilidade": 1,
       "voo": 4,
-      "disparo": 3,
       "musculatura": 0
     }
   },
@@ -4846,9 +4846,9 @@
     "defesaSocial": 4,
     "vontade": 6,
     "soak": {
-      "impacto": 7,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 8,
+      "corte": 3,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -4919,7 +4919,7 @@
     "ameaca": 2,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Pica com o veneno de um reservatório, três vezes antes de secar. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
+    "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Sua picada produz um efeito mágico de peçonha até três vezes por dia. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
     "tags": [
       "construto"
     ],
@@ -4929,9 +4929,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 9,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -13976,9 +13976,9 @@
     "defesaSocial": 4,
     "vontade": 7,
     "soak": {
-      "impacto": 6,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 7,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -15978,9 +15978,9 @@
     "defesaSocial": 8,
     "vontade": 7,
     "soak": {
-      "impacto": 7,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 8,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",

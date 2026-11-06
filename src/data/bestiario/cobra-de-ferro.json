@@ -19,6 +19,7 @@
     "posturaDoTamanho": "enrolada, de cabeça erguida"
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 3,
     "destreza": 4,
@@ -84,29 +85,25 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
-    },
-    {
       "nome": "Picada envenenada",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
-      "ativacao": "a Mordida que fere",
-      "duracao": "a do veneno",
+      "categoria": "magia",
+      "ativacao": "a Mordida que causa ao menos 1 PV depois da Absorção",
+      "duracao": "a do efeito descrito em Veneno e doença",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "injeta o veneno do reservatório (Veneno e doença); depois de três picadas que injetam, o reservatório se esgota e a mordida fica só com o dano. O criador pode encher o reservatório com outra peçonha, com ácido ou com alquimia",
-      "dano": "o da Mordida e o do veneno",
-      "resistencia": "corpo, pelo veneno (Veneno e doença)",
-      "limiteDeUso": "três doses, até o criador encher de novo"
+      "efeito": "a picada desencadeia magicamente o efeito de peçonha descrito em Veneno e doença",
+      "dano": "o da Mordida e o do efeito de peçonha",
+      "resistencia": "corpo, pelo perfil de peçonha em Veneno e doença",
+      "limiteDeUso": "Usos grátis: 3 por dia. Sem usos extras"
     },
     {
       "nome": "Farejar alvo",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ordem do criador, que viu o alvo ou segura um objeto dele",
       "duracao": "até achar e matar o alvo",
       "alcance": "quilômetros",
@@ -114,20 +111,28 @@
       "efeito": "sabe a direção e a distância do alvo e vai até ele sem parar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "uma vez por dia. Sem custo"
     },
     {
-      "nome": "Resistência à magia 13",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     }
   ],
   "comoLuta": [
     {
       "nome": "guardiã sem alma",
       "formas": "todas",
-      "texto": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e repete até o veneno acabar; mandada matar, segue o alvo por quilômetros."
+      "texto": "espera enrolada junto do tesouro, sem ruído; pica quem chega perto e pode envenenar magicamente até três vezes por dia; mandada matar, segue o alvo por quilômetros."
     }
   ],
   "sentidos": [
@@ -138,11 +143,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parada no escuro, passa por um enfeite de ferro entre o tesouro",
     "mente": "nenhuma; obedece ao criador",
-    "tracos": "serpente de 1,2 m de placas de ferro articuladas, que desliza sem o ruído do metal"
+    "tracos": "serpente de 1,2 m de placas de ferro articuladas, que desliza sem o ruído do metal. Não se cansa",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -152,7 +156,6 @@
   "comportamento": {
     "social": "solitária",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda, ou caça o alvo que o criador manda",
     "dianteDeGente": "pica quem chega perto do que guarda"
   },
@@ -164,7 +167,7 @@
       "temperado"
     ]
   },
-  "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Pica com o veneno de um reservatório, três vezes antes de secar. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
+  "descricao": "Serpente de ferro de 1,2 m que guarda tesouros sem ruído e sem medo. Sua picada produz um efeito mágico de peçonha até três vezes por dia. Mandada pelo criador, rastreia e mata um alvo a quilômetros.",
   "lore": [
     {
       "titulo": "Guardiã sem Alma",
@@ -211,14 +214,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Picada envenenada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Farejar alvo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): placas de ferro que não sangram nem cansam, num corpo pequeno. O site tinha 0; 28, na zona de transição, pela faixa de cima (corpo de ferro); pela de baixo seria 19; 4 por julgamento (placas de ferro num corpo pequeno); o site tinha 0"
     },
@@ -231,12 +226,16 @@
       "motivo": "O terço da frente erguido para o bote, como a naja"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: placas de ferro, como o granito do golem de pedra (9) e um nível abaixo do ferro maciço do golem de ferro (10); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); 9, placas de ferro"
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 13 da fonte passa a grau 1 (+2)."
     },
     {
       "campo": "corpo",
       "motivo": "28, na zona de transição, pela faixa de cima (corpo de ferro); pela de baixo seria 19"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "9, placas de ferro"
     },
     {
       "campo": "habilidadesEspeciais",
