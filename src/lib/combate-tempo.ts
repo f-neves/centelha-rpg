@@ -1007,7 +1007,7 @@ export const MODOS_MOV: { id: ModoMov; nome: string; porTick: number; nota: stri
   { id: 'batalha', nome: 'Deslocamento de Batalha', porTick: SIM?.velocidadePadrao?.batalha ?? 3,
     nota: 'a guarda de pé: sem penalidade nenhuma' },
   { id: 'corrida', nome: 'Corrida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,
-    nota: `Defesa ${CORRIDA.defesa ?? -4} enquanto corre e até se recompor` },
+    nota: `Defesa ${CORRIDA.defesa ?? -4} enquanto corre e até a sua próxima ação começar` },
   // A INVESTIDA CORRE, e é por isso que o passo dela é o da Corrida: investir é
   // gastar o Preparo correndo em vez de andando, e não uma quarta velocidade.
   { id: 'investida', nome: 'Investida', porTick: SIM?.velocidadePadrao?.corrida ?? 6,

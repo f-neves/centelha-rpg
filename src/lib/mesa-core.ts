@@ -186,7 +186,7 @@ export interface Condicao {
   /** @deprecated o nome antes da `M-04b`. Só leitura, para o que já está salvo. */
   porRodada?: number;
   // A MARCA, SEPARADA DO NÚMERO (L64, rodada 57). `velocidade` só carrega
-  // grandeza de verdade (`acelerado` −2, `retardado` +2, `terreno-dificil`
+  // grandeza de verdade (`acelerado` −1, `retardado` +1, `terreno-dificil`
   // +1); `fora-do-tempo` ("não age") usava o mesmo campo com a sentinela
   // `-99`, funcionando por saturação aritmética no consumidor (o `Math.max`
   // de `combate.astro`). `naoAge` é essa marca, como campo próprio: quando

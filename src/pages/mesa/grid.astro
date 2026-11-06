@@ -6377,7 +6377,7 @@ const SETAS = [
       nota.textContent = `Começa no Tick ${T + decideEmValeDepois()} e chega no ${chegadaEm(v)}`
         + ` (${ticksDeViagem(distM, v)} Tick(s) de caminho).`
         + ` · passo de ${esc(c.nome)}: ${pas.batalha}/${pas.arranque}/${pas.corrida} m por Tick`
-        + (sel.value === 'corrida' ? ' · correndo: Defesa −4 até se recompor.' : '');
+        + (sel.value === 'corrida' ? ' · correndo: Defesa −4 enquanto corre e até a sua próxima ação começar.' : '');
     };
     sel.onchange = pintar; vel.oninput = pintar; pintar();
 

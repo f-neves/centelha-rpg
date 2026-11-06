@@ -1380,7 +1380,7 @@ relatório cita. Quando o `Combate_Simultaneo.md` discordar do `02`, vale o `02`
 
   **E o que sobra para a fase 3 é a Corrida, pelo mesmo desenho.** Ela tem hoje o defeito oposto e
   mais antigo: **nenhuma cobrança automática nenhuma** · o −4 dela em `MODOS_MOV` é só o texto da
-  nota (`enquanto corre e até se recompor`, `src/lib/combate-tempo.ts:1010`), e quem cobra é só a
+  nota (`enquanto corre e até a sua próxima ação começar`, `src/lib/combate-tempo.ts:1010`), e quem cobra é só a
   condição `correndo`, à mão. É o defeito nomeado no cabeçalho do `src/lib/mesa-condicoes.ts`, e o
   `marcarInvestida` é o molde pronto do conserto dele.
 
