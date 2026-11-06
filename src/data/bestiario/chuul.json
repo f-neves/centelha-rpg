@@ -264,7 +264,7 @@
     },
     {
       "titulo": "Veneno e doença",
-      "texto": "Veneno no jogo: Curare · Potência 14 · 1 Tick (toque) · efeito único · pool 3 (Destreza) · Desgaste 1 · pelos Tentáculos paralisantes. Pelo toque em pele intacta, a Potência cai 4; a cada 6 Ticks preso, uma nova jogada. Quem perde os 3 pontos de Destreza fica Imobilizado até o fim da cena (o curare dura 1 cena)"
+      "texto": "Veneno no jogo: Curare · Potência 14 · 1 Tick (toque) · efeito único · redução de 0 a 3 de Destreza pela cena · Desgaste 1 · pelos Tentáculos paralisantes. Em pele intacta, a Potência cai 4. Cada dose tem uma única rolagem pela régua de resistir. Destreza 0 deixa Paralisado. Após 6 Ticks preso, só há nova jogada com novo toque dos tentáculos e gasto de uma nova dose"
     }
   ],
   "imagens": [
