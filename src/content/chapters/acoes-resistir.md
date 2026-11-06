@@ -29,7 +29,7 @@ A Habilidade das três que rolam é **Resistência**, e ela é de Vigor puro.
 
 **Modo** · Direta repetida por intervalo. Cada veneno abre um **pool** de dano que drena aos poucos, não um efeito fixo repetido por dose: doses novas somam ao pool pendente e estendem a duração, não multiplicam o dano por intervalo.
 
-**Potência efetiva = Potência do veneno − Resistência do alvo, piso 0.** É o corpo aguentando a substância antes de qualquer jogada: um veneno fraco contra alguém resistente pode nem chegar a exigir teste.
+**Potência efetiva = Potência do veneno − Resistência do alvo, piso 0.** É o corpo aguentando a substância antes de qualquer jogada: um veneno fraco contra alguém resistente pode nem chegar a exigir teste. Com Potência efetiva 0, o veneno não faz efeito: nem pulso, nem penalidade.
 
 **A cada intervalo, Vigor + Resistência contra a Potência efetiva reduz o dano daquele pulso**, na régua de Margem:
 
@@ -61,13 +61,13 @@ A bebida forte é a exceção declarada: tem pool 0, nada a drenar, e o Desgaste
 
 **Envenenar uma arma** é uma ação de Velocidade 5. Quem tem Cura ou um Ofício ligado a venenos faz isso sem risco; quem não tem testa **Destreza contra 10** e, se falhar, é exposto ao próprio veneno. A dose vale até o primeiro golpe que inocula, ou até o fim da cena.
 
-**Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
+**Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. O Curare tem uma rolagem só: pela régua de resistir, tira de 0 a 3 de Destreza, de uma vez, pela cena (Destreza 0 deixa Paralisado). Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
 
 **Veneno de sono.** Em vez de PV ou Atributo, o pool deste veneno enche a **sonolência**. Cada pulso soma à sonolência o que tiraria do pool (0 a 3, pela tabela). Quando a sonolência alcança o **Vigor** da vítima, ela fica **Dormindo** pelo tempo que o veneno disser, e acorda como em todo [sono sobrenatural](/regras/condicoes#a-mente). Resistir, tratar e a penalidade mínima funcionam como nos outros venenos.
 
 **Peçonha com elemento.** Uma peçonha que queima, congela ou corrói por dentro continua sendo veneno: drena o seu pool e só. O elemento dá a imagem e pode sugerir o remédio, mas não causa dano a mais, e ser imune ao elemento não protege do veneno, a não ser que a ficha diga.
 
-**Reconhecer** o veneno é Inteligência + Cura, e o Mestre decide se é preciso rolar. **Tratar** é o que se faz com a mão (sangrar e limpar a ferida, administrar o antídoto na veia): **Raciocínio + Cura contra a Potência**, uma vez por intervalo pendente. Passando, reduz o pool restante pela mesma régua de Margem da rolagem de resistir; antídoto específico em mãos dá **+4** à jogada. Dar um remédio ou um antídoto para beber não pede teste, e ele vale o que o próprio remédio disser.
+**Reconhecer** o veneno é Inteligência + Cura, e o Mestre decide se é preciso rolar. **Tratar** é o que se faz com a mão (sangrar e limpar a ferida, administrar o antídoto na veia): **Raciocínio + Cura contra a Potência**, uma vez por intervalo pendente. Passando, reduz o pool restante pela régua de Margem da rolagem de resistir, lida ao contrário: passar raspando tira 1 do pool, uma Margem tira 2, duas ou mais tiram 3; antídoto específico em mãos dá **+4** à jogada. Dar um remédio ou um antídoto para beber não pede teste, e ele vale o que o próprio remédio disser.
 
 **Circunstância** · sangrar a ferida no primeiro Tick **−2** na Potência efetiva · dose dobrada ou direto no sangue **+4**.
 

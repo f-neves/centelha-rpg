@@ -1519,6 +1519,7 @@ Origem de todas: "conversa do autor, 04/10/2026, respostas às 12 dúvidas da en
 - Decisão: "O Grid fica congelado. Nada no Grid muda até fecharmos todas as regras, Proezas, magias, criaturas etc. Toda divergência entre livro e Grid vai para uma lista única de pendências do Grid (crie, se não existir). O livro manda; o Grid se ajusta depois, numa passada só."
 - Origem: regra geral nova do autor, 04/10/2026. Cobre a dúvida 11 (ART-35, ART-33, ART-11, ART-36 e ART-42 entram na lista).
 - Estado: em vigor. Lista única: docs/pendencias/N-grid-pendencias.md. Vale para toda rodada daqui em diante: o que tocar o Grid se aplica só fora dele e se anota na lista.
+- **Exceção escrita pela L17** (autor, 06/11/2026; D-354): as duas frases do Correndo no Grid ("até a sua próxima ação começar", em `combate-tempo.ts` e `grid.astro`) e o comentário do `mesa-core.ts` (Retardado e Acelerado ±1) entram num commit só, por serem texto, sem número do motor. O resto do N23 fica para a passada única do Grid.
 
 ### D-055 · Dúvida 1 (A): o teto 3 da Centelha cai na criação [tags: criacao, centelha, teto, mestre]
 - Data: 2026-10-04
@@ -4248,6 +4249,29 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - A frase da dupla no Normal passa a "a Velocidade da arma mais lenta, 6" (sugestão da Revisora, ordem do autor).
 - Perguntas ao autor, sem aplicação: C-RES-1 (Potência efetiva 0), C-RES-2 (o Curare de efeito único com pool 3), C-RES-4 (a régua do Tratar) e C-REG-2 (o "−1 físico" e a Dificuldade do líder no Teste Coletivo).
 - Origem: `../tmp/leitora/leitura-combate-resistir-armas.md` e `../tmp/arquiteto/triagem-leitura-combate-05-11.md`.
+- Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
+- As perguntas C-RES-1, C-RES-2, C-RES-4 e C-REG-2 foram respondidas pela D-354 (06/11/2026).
+
+### D-354 · Respostas de 06/11 (00:53), L16, L17 e L18: Ferreiro, o veneno sem efeito, o Curare, o Tratar, o Teste Coletivo, o texto do Grid e a lista da Bestiarista [tags: oficios, ferreiro, conserto, resistir, veneno, curare, tratar, teste-coletivo, grid, d-054, bestiarista, leitora, d-352, d-353]
+- Data: 2026-11-06
+- Decisão (autor; seções de `DECISOES-AUTOR.md`, copiadas como estão, e a L18 da mensagem do autor de 06/11/2026):
+  - "Respostas aplicadas sem pergunta às perguntas do Arquiteto de 06/11 (00:53)":
+    - "Ferraria" no texto da L14: erro de redação de Claude; o ofício do livro é Ferreiro.
+    - Potência efetiva 0 (C-RES-1): o veneno não faz efeito (nem pulso, nem penalidade), leitura do livro ("pode nem chegar a exigir teste").
+    - Tratar do veneno (C-RES-4): a régua se lê ao contrário; passar raspando tira 1 do pool, uma Margem tira 2, duas ou mais tiram 3.
+    - Teste Coletivo (C-REG-2): o exemplo troca "−1 físico" por uma penalidade do livro (Machucado −2); o líder rola contra a Dificuldade já com os +2.
+    - R49 no motor de criaturas (132 fichas): etapa própria da Executora (motor do bestiário, esquema, conversor, depois as 132), com a Revisora; não é o Grid (D-054).
+    - Leituras do conversor (105 fichas): base com Efeito Especial nomeado (L4), Tipo de corpo (R21), Jogada da D-315, Tamanho do enxame (R34), e parada para chave desconhecida no bloco Corpo; etapa própria antes da C.
+    - fichas-v3: o Arquiteto copia as 83 quando a Revisora aprovar a etapa B.
+  - "L16. O Curare (06/11/2026, DECIDIDA; C-RES-2)":
+    - Resposta do autor: a recomendada. Uma rolagem só: pela régua de resistir, o Curare tira de 0 a 3 de Destreza, de uma vez, pela cena (Destreza 0 deixa Paralisado, R10).
+  - "L17. Texto do Grid antes de descongelar (06/11/2026, DECIDIDA; exceção escrita à D-054)":
+    - Resposta do autor: a recomendada. As duas frases do Correndo no Grid ("até a sua próxima ação começar", em combate-tempo.ts e grid.astro) e o comentário do mesa-core.ts (Retardado e Acelerado ±1) entram num commit só, como exceção escrita à D-054: é texto, sem número do motor. O resto do N23 fica para a passada única do Grid.
+  - "L18" (mensagem do autor, 06/11/2026): "a lista dela fica com você em arquivo, como a bestiarista-entrada-r35-06-11.md, e quem manda a ela é o autor. Quando ela devolver as fichas corrigidas, a Executora faz a entrada delas como na etapa B."
+- No livro: em `armas-e-armaduras.md`, "Ferraria para o metal" passa a "Ferreiro para o metal" (o texto aprovado da L14, com a correção do autor). Em `acoes-resistir.md`: com Potência efetiva 0, nem pulso nem penalidade; o Curare com uma rolagem só, de 0 a 3 de Destreza pela cena (L16); o Tratar com a régua lida ao contrário. Em `acoes-e-sistema.md` (Teste Coletivo): o líder rola contra a Dificuldade já com os +2, e o exemplo passa a "um dançarino Machucado (−2) pesa −2".
+- Fora do livro: a R49 no motor de criaturas, as leituras do conversor e a etapa C do Grid (L17) vão à Executora; a L17 fica anotada na D-054 como exceção escrita.
+- Muda: completa a D-352 (L14, Ferreiro) e a D-353 (as perguntas C-RES-1, C-RES-2, C-RES-4 e C-REG-2); abre a exceção escrita da L17 na D-054.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026.
 - Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
