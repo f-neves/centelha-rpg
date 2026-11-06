@@ -3694,6 +3694,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído no livro. "Disparo" só existe nas fichas de criatura (`monsters.json` e 15 arquivos de `src/data/bestiario/`, nunca em `habilidades*.json`): sai delas por lote de ajuste da Bestiarista.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+- **No motor e no conversor desde 06/11/2026** (branch `executora`, publicada em `ce1fc1c2`): a Jogada do projétil natural é a do maior entre Vigor, Destreza e Percepção + Atirador, e o ataque de área que a ficha diz "Sem jogada de ataque" (R36) sai sem jogada (o mephit e os 22 do lote r-sopros-06-11).
 
 ### D-316 · R37: Golpe na brecha: +1d6 de dano só com Proeza ou poder escrito, uma vez por ação [tags: combate, surpreso, flanqueado, dano, proeza, d-300]
 - Data: 2026-11-05
@@ -3823,6 +3824,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: substitui o "sem regra ainda" do valor do nível na Absorção (D-183, item 1, e D-180, ponto 4). "Não cria Nível de Perfuração" convive com a frase do livro de que a ficha pode dar Perfuração natural: a Perfuração natural é campo próprio da ficha, e não sai do nível de Couraça.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+- **No motor de criaturas desde 06/11/2026** (branch `executora`, `f30e1078` e `b549ae92`, publicada em `ce1fc1c2`): a Couraça soma à Absorção pelo nível e pelo perfil; 187 criaturas com perfil. A criatura sem perfil na fonte soma 0.
 
 ### D-329 · R50: Resistência que depende da arma: metade do dano que passa da Absorção [tags: bestiario, criatura, resistencia, prata, ferro-frio, absorcao, d-300]
 - Data: 2026-11-05
@@ -4238,7 +4240,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-345 (L1, a família do Caído), a D-319 e a D-340 (Atropelar; o "do terceiro Tick em diante" foi erro de redação de Claude), a D-343 (o "o Estabilizar comum não basta" foi erro de redação de Claude na P8), a D-318 (Derrubar sem matar), a D-330 (Integridade: o conserto ganha regra), a D-303 (Recompor-se) e a D-351.
 - Ponto aberto, para o autor: o texto aprovado da L14 diz "Ferraria para o metal", e o ofício do livro é "Ferreiro" (`acoes-oficio-e-mundo.md`, a lista dos ofícios). Entrou como está. **Respondido pela D-354 (06/11/2026):** passa a "Ferreiro para o metal".
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05 e 06/11/2026 às 13 perguntas do relatório do Arquiteto das 17:41 de 05/11.
-- Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
+- Estado: **no ar** desde 06/11/2026 (branch `regras-leitora-8`, publicada em `b9c616a9`, no merge do fim da L13).
 
 ### D-353 · Triagem da leitura de Combate e Resistir: os itens que ficaram por conferir [tags: combate, arte, nivel, golpes-simultaneos, resistir, sede, fome, leitora, d-087, d-346, d-351]
 - Data: 2026-11-06
@@ -4249,7 +4251,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - A frase da dupla no Normal passa a "a Velocidade da arma mais lenta, 6" (sugestão da Revisora, ordem do autor).
 - Perguntas ao autor, sem aplicação: C-RES-1 (Potência efetiva 0), C-RES-2 (o Curare de efeito único com pool 3), C-RES-4 (a régua do Tratar) e C-REG-2 (o "−1 físico" e a Dificuldade do líder no Teste Coletivo).
 - Origem: `../tmp/leitora/leitura-combate-resistir-armas.md` e `../tmp/arquiteto/triagem-leitura-combate-05-11.md`.
-- Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
+- Estado: **no ar** desde 06/11/2026 (branch `regras-leitora-8`, publicada em `b9c616a9`, no merge do fim da L13).
 - As perguntas C-RES-1, C-RES-2, C-RES-4 e C-REG-2 foram respondidas pela D-354 (06/11/2026).
 
 ### D-354 · Respostas de 06/11 (00:53), L16, L17 e L18: Ferreiro, o veneno sem efeito, o Curare, o Tratar, o Teste Coletivo, o texto do Grid e a lista da Bestiarista [tags: oficios, ferreiro, conserto, resistir, veneno, curare, tratar, teste-coletivo, grid, d-054, bestiarista, leitora, d-352, d-353]
@@ -4272,7 +4274,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: a R49 no motor de criaturas, as leituras do conversor e a etapa C do Grid (L17) vão à Executora; a L17 fica anotada na D-054 como exceção escrita.
 - Muda: completa a D-352 (L14, Ferreiro) e a D-353 (as perguntas C-RES-1, C-RES-2, C-RES-4 e C-REG-2); abre a exceção escrita da L17 na D-054.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026.
-- Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
+- Estado: **no ar** desde 06/11/2026 (branch `regras-leitora-8`, publicada em `b9c616a9`, no merge do fim da L13).
 
 ### D-355 · L20: Investida e Atropelar são ataques diferentes; as 13 fichas retidas ganham o Atropelar e mantêm a Investida da fonte; o gigante do gelo fica como a Bestiarista fez [tags: bestiario, investida, atropelar, pisoteio, r40, d-269, d-319, gigante-do-gelo, imunidade, bestiarista]
 - Data: 2026-11-06
@@ -4284,7 +4286,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: as 13 seguem retidas, com o JSON publicado intacto, até o lote novo da Bestiarista (lista dela em `../tmp/arquiteto/bestiarista-entrada-r35-06-11.md`). O mephit com "Ataque: 0d6" na mesa fica na lista do Grid (D-054), pelo parecer da Revisora de que não segura a ficha.
 - Muda: completa a D-319 (R40) e a D-269 (a contagem de Investidas do teste muda com o lote novo).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026.
-- Estado: **a implementar** pelo lote novo da Bestiarista e pela entrada da Executora.
+- Estado: **no ar** desde 06/11/2026: o lote r-retidas-06-11 entrou na branch `executora` (`9f0eaeab`), publicada em `ce1fc1c2`, no merge do fim da L13; o teste da D-269 conta 30 Investidas.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
