@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 7,
@@ -101,6 +102,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -109,20 +111,22 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Garras",
+      "categoria": "inato",
       "ativacao": "o golpe das Garras que fere",
       "duracao": "até o fim do próximo intervalo de 12 Ticks",
       "alcance": "o das garras",
       "area": "um alvo",
       "efeito": "o terror entra com os espinhos; quem falha fica Em pânico e foge",
       "dano": "nenhum além do golpe",
-      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune ao pavor dele até o fim da cena",
-      "limiteDeUso": "um por golpe"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao pavor dele até o fim da cena",
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Empalar",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Garras",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, contra quem ele mantém Agarrado",
       "duracao": "instantânea",
       "alcance": "o próprio abraço",
@@ -136,6 +140,7 @@
       "nome": "Defesa espinhosa",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -143,28 +148,36 @@
       "efeito": "os espinhos ferem quem o golpeia de perto",
       "dano": "1d6 de Perfuração em quem o acerta com golpe desarmado, arma natural ou arma que não seja de haste",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por golpe recebido"
+      "limiteDeUso": "uma vez por golpe recebido. Sem custo"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de diabo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "proteção infernal",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma do bem"
-    },
-    {
-      "nome": "poderes ígneos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "cria chamas, lança raios ofuscantes de luz, projeta ilusões elaboradas e some para outro lugar à vontade; o site não dá Arte de base para nenhum"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "poderes ígneos",
+      "formas": "todas",
+      "texto": "cria chamas, lança raios ofuscantes de luz, projeta ilusões elaboradas e some para outro lugar à vontade. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "carcereiro",
       "formas": "todas",
@@ -247,20 +260,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Pavor pelo toque",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Empalar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Defesa espinhosa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: o couro duro coberto de espinhos, como o do elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Resistências Infernais\"), pela linha Elementos; 2, pelo couro de espinhos"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 2: o couro duro coberto de espinhos, como o do elefante (2 a 3) .; 2, pelo couro de espinhos"
     },
     {
       "campo": "comportamento.dieta",

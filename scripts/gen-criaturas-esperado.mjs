@@ -20,7 +20,10 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { lerFichaMd, campo, negritos, numBR, semMarcas, slug } from './lib-ficha-md.mjs';
-import { converterFicha } from './conversor-criatura.mjs';
+import { converterFicha, converterFichaAnteriorR03 } from './conversor-criatura.mjs';
+// A pasta pode misturar fichas de antes e de depois da categoria dos poderes (R1): a que escreve "categoria:" nas
+// Manobras passa pelo contrato novo, e a outra pela releitura anterior, como a leitura do validate faz com os JSON.
+const converterDaFicha = (texto, opcoes) => (/ · categoria: /.test(texto) ? converterFicha : converterFichaAnteriorR03)(texto, opcoes);
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const PASTA = path.resolve(process.argv[2] || path.join(RAIZ, '..', 'tmp', 'arquiteto', 'bestiario', 'fichas-v3'));
@@ -28,19 +31,32 @@ const SAIDA = path.join(RAIZ, 'scripts', 'fixtures', 'criaturas-esperado.json');
 const SITE = path.join(RAIZ, 'src', 'data', 'bestiario');
 const TAMANHOS = 'Minúsculo|Miúdo|Pequeno|Médio|Grande|Enorme|Imenso|Colossal';
 const HAB_ATAQUE = 'Briga|Armas|Disparo|Atirador|Arremesso';
-const CHAVES_MOTOR = ['enxame', 'categoria', 'centelha', 'atributos', 'habilidades', 'habilidadesSec', 'vontade', 'corpo', 'bonusPV', 'couraca', 'artes', 'equipamento', 'ataques'];
+const CHAVES_MOTOR = ['enxame', 'categoria', 'centelha', 'atributos', 'habilidades', 'habilidadesSec', 'vontade', 'corpo', 'bonusPV', 'couraca', 'perfilCouraca', 'artes', 'equipamento', 'ataques'];
 const inteiro = (s) => { const m = String(s ?? '').match(/[−-]?\d+/); return m ? Number(m[0].replace('−', '-')) : undefined; };
 const ultimo = (s) => { const n = negritos(s); return n.length ? n[n.length - 1] : undefined; };
 const escolhe = (o, ks) => Object.fromEntries(ks.filter((k) => o[k] !== undefined).map((k) => [k, o[k]]));
 
 // A jogada que a frase "Jogada:" da Justificativa escreve: o Atributo, a Habilidade e o termo da Centelha, sem o Acerto
 // da coluna. Devolve a soma dos três números escritos; undefined quando a frase não os traz.
-function lerJogada(just) {
-  const j = (String(just).match(/Jogada:([^|]*)/) || [])[1];
+// A frase da D-315 (R36) não escreve os números: "o maior entre Vigor, Destreza e Percepção + Atirador". Para ela, os
+// números são os que a própria ficha escreve nas tabelas Atributos e Habilidades (`numeros`), e a frase só diz quais
+// somar; sem um deles, a jogada fica sem conferir, como antes.
+const D315 = /^\s*o maior entre Vigor, Destreza e Percepção \+ Atirador\b/;
+// E a frase que nomeia antes e soma depois, do lote r35-r54: "Jogada de Percepção + Atirador: 5 + 4 + 2 × ...".
+const NOMEIA = new RegExp(`Jogada de (?:Força|Destreza|Vigor|Percepção) \\+ (?:${HAB_ATAQUE}):\\s*(\\d+)\\s*\\+\\s*(\\d+)([^|]*)`);
+function lerJogada(just, numeros = {}) {
+  const nm = String(just).match(NOMEIA);
+  const j = nm ? nm[3] : (String(just).match(/Jogada:([^|]*)/) || String(just).match(/\bjogada( o maior entre Vigor, Destreza e Percepção[^|]*)/) || [])[1];
   if (!j) return undefined;
   let atr, hab, termo = 0;
   const mh = j.match(new RegExp(`(\\d+)(?:\\s*\\([^)]*\\))?\\s*\\+\\s*(${HAB_ATAQUE})\\s+(\\d+)`));
-  if (mh) { atr = Number(mh[1]); hab = Number(mh[3]); }
+  if (nm) { atr = Number(nm[1]); hab = Number(nm[2]); }
+  else if (mh) { atr = Number(mh[1]); hab = Number(mh[3]); }
+  else if (D315.test(j)) {
+    const tres = ['Vigor', 'Destreza', 'Percepção'].map((k) => numeros[k]);
+    if (tres.some((x) => x === undefined) || numeros.Atirador === undefined) return undefined;
+    atr = Math.max(...tres); hab = numeros.Atirador;
+  }
   else {
     const mp = j.match(new RegExp(`(${HAB_ATAQUE})[^(]*\\((\\d+)\\s*\\+\\s*(\\d+)`));
     if (!mp) return undefined;
@@ -93,6 +109,9 @@ export function lerEsperado(texto) {
     if (feq[7]) esperado.comEquipamento.nivelPerfuracao = +feq[7];
     if (feq[9]) esperado.comEquipamento.contraTiro = +feq[9];
   }
+  // os números das tabelas Atributos e Habilidades, pelo nome da linha, para a frase da D-315
+  const numeros = {};
+  for (const r of [...(T['Atributos'] || []), ...(T['Habilidades'] || [])]) { const [k, v] = Object.values(r); const n = inteiro(semMarcas(v ?? '')); if (n !== undefined) numeros[semMarcas(k).trim()] = n; }
   const ataques = [];
   for (const r of T['Ataques'] || []) {
     const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? '');
@@ -100,7 +119,7 @@ export function lerEsperado(texto) {
     const e = { nome, velocidade: inteiro(r['Velocidade']) };
     const dm = semMarcas(r['Dano médio'] ?? '').replace(/\*\*/g, '');
     if (/\d/.test(dm)) e.danoMedio = numBR(dm.match(/[\d.,]+/)[0]);
-    const jog = lerJogada(r['Justificativa'] ?? '');
+    const jog = lerJogada(r['Justificativa'] ?? '', numeros);
     const igual = String(r['Justificativa'] ?? '').match(/Jogada igual à d[ao]s? (.+?)(?:\.|$)/);
     if (jog !== undefined) e.jogada = jog; else if (igual) e._igual = igual[1].trim();
     ataques.push(e);
@@ -133,7 +152,7 @@ let comParada = 0;
 for (const a of arquivos) {
   const id = a.slice(0, -3), buf = fs.readFileSync(path.join(PASTA, a)), texto = buf.toString('utf8');
   const sp = path.join(SITE, `${id}.json`);
-  const conv = converterFicha(texto, { site: fs.existsSync(sp) ? JSON.parse(fs.readFileSync(sp, 'utf8')) : null });
+  const conv = converterDaFicha(texto, { site: fs.existsSync(sp) ? JSON.parse(fs.readFileSync(sp, 'utf8')) : null });
   const { esperado, ficha, formas, nao } = lerEsperado(texto);
   const o = { sha256: crypto.createHash('sha256').update(buf).digest('hex'), entrada: escolhe(conv.criatura, CHAVES_MOTOR), esperado };
   if (Object.keys(ficha).length) o.ficha = ficha;
@@ -148,7 +167,7 @@ for (const a of arquivos) {
   criaturas[id] = o;
 }
 const saida = {
-  fonte: { pasta: 'tmp/arquiteto/bestiario/fichas-v3', data: new Date().toLocaleDateString('sv-SE'), fichas: arquivos.length, gerador: 'scripts/gen-criaturas-esperado.mjs' },
+  fonte: { pasta: path.relative(path.join(RAIZ, '..'), PASTA).replaceAll(path.sep, '/'), data: new Date().toLocaleDateString('sv-SE'), fichas: arquivos.length, gerador: 'scripts/gen-criaturas-esperado.mjs' },
   criaturas,
 };
 fs.mkdirSync(path.dirname(SAIDA), { recursive: true });

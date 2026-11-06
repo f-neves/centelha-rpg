@@ -14,7 +14,7 @@
 //      produção. A instrumentação não pode mudar a mesa de quem joga.
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
 import { carimbar } from './carimbo.mjs';
@@ -84,7 +84,7 @@ const assinatura = (d) => {
 };
 
 const { url, parar } = await subirDev({ config: 'astro.bancada.mjs' });
-const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
+const br = await abrirNavegador(puppeteer, { executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   console.log('\n· Etapa 0: a semente e o despejo');
 

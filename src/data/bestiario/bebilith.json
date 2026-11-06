@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de cima, sobre as patas"
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 3,
@@ -40,10 +41,10 @@
     "prontidao": 1,
     "resistencia": 5,
     "sobrevivencia": 3,
-    "ocultismo": 1
+    "ocultismo": 1,
+    "atirador": 3
   },
   "habilidadesSec": {
-    "disparo": 3,
     "escalada": 5,
     "musculatura": 3
   },
@@ -120,65 +121,87 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "rasga com as patas e morde na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a Mordida é outra ação"
     },
     {
       "nome": "Teia abissal",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância (Vigor + Disparo)",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância (o maior entre Vigor, Destreza e Percepção + Atirador)",
       "duracao": "até o alvo escapar",
       "alcance": "9 m",
       "area": "um alvo",
       "efeito": "o fio grudento prende o alvo no lugar: não se desloca, mas age, como preso pela Rede do livro; escapa com Força + Atletismo contra o total do disparo, gastando a ação",
       "dano": "nenhum",
       "resistencia": "esquiva, contra a jogada do disparo; quem passa não fica preso",
-      "limiteDeUso": "um fio por ação"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 1 hora. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Mordida apodrecedora",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
-      "ativacao": "a Mordida que fere",
-      "duracao": "18 Ticks",
+      "categoria": "inato",
+      "ativacao": "a mordida abre uma ferida e contamina a carne",
+      "duracao": "até a doença regredir ou o agente ser retirado",
       "alcance": "toque",
       "area": "um alvo",
-      "efeito": "a podridão continua a comer a carne depois da mordida",
-      "dano": "1d6 a cada 6 Ticks, por 18 Ticks",
-      "resistencia": "corpo, contra a jogada da mordida; quem passa só leva a mordida",
-      "limiteDeUso": "um por golpe"
+      "efeito": "Podridão da bebilith. Exposição: a mordida abre uma ferida e contamina a carne. Incubação: 10 minutos. Virulência 15. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
+      "dano": "pela progressão da doença",
+      "resistencia": "Vigor + Resistência contra Virulência 15",
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "só cede a cura poderosa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a podridão da mordida não para com cura comum"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "por exposição",
+      "duracao": "pelo relógio do efeito",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Cura ou cirurgia adequada pode retirar o agente da mordida e interromper a progressão",
+      "dano": "o do efeito",
+      "resistencia": "pela regra do livro",
+      "limiteDeUso": "acompanha a doença da Mordida apodrecedora"
     },
     {
       "nome": "desarme brutal",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quando as duas garras da Rajada acertam o mesmo alvo, arranca e destroça a armadura e o escudo dele, que caem quebrados"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "as duas garras acertam o alvo protegido",
+      "duracao": "até conserto",
+      "alcance": "contato",
+      "area": "a peça atingida",
+      "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
+      "dano": "nenhum",
+      "resistencia": "a resistência da peça contra a exposição",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "golpe que atravessa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "garras e presas passam pela proteção sobrenatural comum, e mais ainda contra demônios"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "passagem entre planos",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "uma vez por cena, abre uma fenda para outro plano e some com o corpo inteiro, para fugir ou para emboscar"
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "Escalador nato",
@@ -187,7 +210,8 @@
       "tecnica": {
         "id": "andar-de-aranha",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Faro",
@@ -196,13 +220,29 @@
       "tecnica": {
         "id": "faro",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê a bebilith pela primeira vez sente o nojo e o pavor de uma aranha do tamanho de uma casa; o corpo quer recuar antes de qualquer golpe"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -210,6 +250,11 @@
       "nome": "caçadora de demônios",
       "formas": "todas",
       "texto": "tece a teia em fendas e cavernas e espera; prende de longe, cai sobre a presa, quebra a armadura com as patas e apodrece a carne com a mordida; abre uma fenda e some quando a caça não vale a pena."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -284,18 +329,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Teia abissal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mordida apodrecedora",
-      "motivo": "números sugeridos pela ficha (D-197); 1d6 a cada 6 Ticks por 18 Ticks é número da ficha (D-197); \"drenar o Vigor\" do site ficou como dano, porque o livro não tem dreno de Atributo"
-    },
-    {
-      "campo": "habilidadesSec.disparo",
-      "motivo": "O fio de teia lançado de longe: ataque natural a distância, Vigor + Disparo (decisoes-autor §14)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "O site não dá; o corpo de 0,95 m de espessura erguido cerca de um metro sobre as patas"
     },
@@ -309,7 +342,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de quitina de um artrópode de 2,7 t, como o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); 5, carapaça de quitina, como o crocodilo"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de quitina de um artrópode de 2,7 t, como o crocodilo (4 a 5) .; 5, carapaça de quitina, como o crocodilo"
     },
     {
       "campo": "comportamento.dianteDeGente",
@@ -318,6 +351,14 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "A \"Mordida Apodrecedora\" (site): as quelíceras que furam com a cabeça atrás, Média (`regra-construcao.md` §7). N2: presas de quitina de um bicho de 2,7 t . Leva a podridão (Manobras). Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Teia abissal",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
+    },
+    {
+      "campo": "habilidadesEspeciais.passagem entre planos",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.massa",
@@ -330,6 +371,10 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um \"Golpe planar\" de 3 dados e 7 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida e as garras ficam Médias, e é aqui que a ficha mais perde dano (de 2d6 + 11 para 1d6 + 11)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mordida apodrecedora",
+      "motivo": "1d6 a cada 6 Ticks por 18 Ticks é número da ficha (D-197); \"drenar o Vigor\" do site ficou como dano, porque o livro não tem dreno de Atributo"
     }
   ]
 }

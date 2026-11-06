@@ -23,6 +23,7 @@
     "linhaPVMotivo": "corpo rústico e robusto"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 2,
@@ -120,11 +121,11 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "atropelar",
+      "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
-      "ataque": "Coice",
-      "regra": "investida"
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [
@@ -137,6 +138,11 @@
       "nome": "dócil",
       "formas": "todas",
       "texto": "raramente entra em combate, a menos que treinado para isso."
+    },
+    {
+      "nome": "Pisar num alvo",
+      "formas": "todas",
+      "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Coice."
     }
   ],
   "sentidos": [

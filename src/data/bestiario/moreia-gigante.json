@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -100,6 +101,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -107,6 +109,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe"
     }

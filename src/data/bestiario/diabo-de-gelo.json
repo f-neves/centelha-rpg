@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 4,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 6,
@@ -135,6 +136,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Lança de gelo",
+      "categoria": "inato",
       "ativacao": "o golpe da lança que fere",
       "duracao": "o frio é instantâneo; o Congelado vai até o fim do próximo intervalo de 6 Ticks",
       "alcance": "o da lança",
@@ -142,27 +144,22 @@
       "efeito": "a ponta de gelo queima de frio e enrijece o corpo; quem falha fica Congelado",
       "dano": "+1d6 de gelo, somado ao do golpe",
       "resistencia": "corpo, contra a jogada do golpe; quem passa leva o frio e não fica Congelado",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Ferrão venenoso",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Cauda",
-      "ativacao": "o golpe da Cauda que fere",
+      "categoria": "substancia",
+      "ativacao": "o golpe da Cauda que causa ao menos 1 PV depois da Absorção",
       "duracao": "a do veneno",
       "alcance": "o da cauda",
       "area": "um alvo",
       "efeito": "o alvo fica Envenenado pelo veneno do diabo de gelo (Veneno e doença), que tira força",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "um por golpe"
-    },
-    {
-      "nome": "lança e ferrão juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "pica com a cauda na mesma ação do golpe da lança; por enquanto, um ataque por ação"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Aura de frio",
@@ -170,8 +167,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "aura"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "3 m",
@@ -179,7 +178,7 @@
       "efeito": "um frio cortante cerca o diabo; chegar perto queima de gelo, mesmo sem ser atacado",
       "dano": "1d6 de gelo a cada 6 Ticks em quem estiver dentro",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Muralha de gelo",
@@ -187,16 +186,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 5
+        "nivel": 5,
+        "efeito": "muro"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 7. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até derreter",
       "alcance": "30 m",
       "area": "parede de 9 m de comprimento, 3 m de altura e 0,3 m de espessura; ou nevasca em esfera de 6 m",
       "efeito": "a parede bloqueia a passagem e a visão; a nevasca deixa a área em Terreno difícil e fere quem está dentro",
       "dano": "a parede, nenhum; a nevasca, 3d6 + Centelha de gelo",
       "resistencia": "esquiva, contra a nevasca; quem passa leva metade",
-      "limiteDeUso": "uma vez por cena, até três por dia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Limite diário dos usos grátis: 3"
     },
     {
       "nome": "Teleporte",
@@ -204,16 +205,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 6
+        "nivel": 6,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "qualquer ponto que ele conheça no mesmo plano",
       "area": "o próprio diabo",
-      "efeito": "some numa nuvem gelada e reaparece no destino",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ver o invisível",
@@ -222,19 +225,50 @@
       "tecnica": {
         "id": "visao-verdadeira",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o diabo de gelo enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "o campo de visão",
+      "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de diabo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: lança de gelo, ferrão da cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -252,7 +286,7 @@
     },
     {
       "nome": "visão verdadeira",
-      "descricao": "pela Técnica (Manobras)",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -335,32 +369,24 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Lança gelada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ferrão venenoso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura de frio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Muralha de gelo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a carapaça de inseto, como a do crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). A resistência e as imunidades são as do site (\"Sangue infernal\"), pela linha Elementos; 4, pela carapaça de inseto"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 4: a carapaça de inseto, como a do crocodilo (4 a 5) .; 4, pela carapaça de inseto"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Ferrão venenoso",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Muralha de gelo",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Limite diário dos usos grátis: 3. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

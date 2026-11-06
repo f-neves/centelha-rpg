@@ -1,13 +1,17 @@
 // Contrato unificado da fonte da criatura. Só entradas e escolhas, sem derivados.
+import { validarPoderes } from './regras-poder-criatura.mjs';
 import { z } from 'zod';
 import artesCatalogo from '../src/data/artes.json' with { type: 'json' };
 import elementosVocab from '../src/data/elementos-vocab.json' with { type: 'json' };
+import efeitosCatalogo from '../src/data/efeitos.json' with { type: 'json' };
 const inteiro=z.number().int(),naoNeg=inteiro.nonnegative(),texto=z.string();
 export const HABILIDADES_DE_CRIATURA=['musculatura','corrida','voo','disparo'];
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 const numero = z.number();
 const tamanho = z.enum(['minusculo','miudo','pequeno','medio','grande','enorme','imenso','colossal']);
 const formasMarca = z.union([z.literal('todas'), z.array(id).min(1)]);
+// R49 (D-328): o perfil da cobertura da Couraça; a ficha diz o nível e o perfil
+const perfilCouraca = z.enum(['rigida', 'couro', 'mole']);
 const corpoNovo = z.object({
   postura: texto, apoio: z.enum(['bipede', 'quadrupede', 'outro']),
   altura: numero, largura: numero, profundidade: numero.nullable(), comprimento: numero.nullable(),
@@ -30,6 +34,8 @@ const deslocamentoForma = z.object({ terra: passo.nullable().optional(), voo: pa
 const equipamentoNovo = z.object({
   arsenal: z.array(z.object({ ref: z.string().regex(/^[ae]:[a-z0-9-]+$/) }).strict()),
   armaduras: z.array(z.object({ base: id, vestida: z.boolean() }).strict()),
+  // D-306 (R28): a dose de veneno que a criatura carrega para a lâmina, em texto (nem todo veneno tem id no venenos.json)
+  veneno: texto.trim().min(1).optional(),
 }).strict();
 const ataqueNatural = z.object({
   // D-258: só a Habilidade de tiro e arremesso fica no JSON; a de corpo a corpo o motor calcula (a maior entre Briga e Armas)
@@ -41,8 +47,9 @@ const ataqueComArma = z.object({ nome: texto, arma: id }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };
 const habilidadeEspecial = z.object({
+  categoria: z.enum(['substancia','inato','sobrenatural','magia','milagre']).optional(),
   nome: texto, formas: formasMarca, classe: z.enum(['livro', 'regra da ficha', 'sem regra ainda']),
-  ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg }).strict().optional(), regra: id.optional(),
+  ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg, efeito: z.enum(efeitosCatalogo.map(e => e.id)).optional() }).strict().optional(), regra: id.optional(),
   // P7, 26/10/2026: referências ao livro; texto só acrescenta detalhe ou limite próprio da criatura.
   tecnica: z.object({ id, nivel: naoNeg }).strict().optional(), arte: z.object({ id, nivel: naoNeg }).strict().optional(), texto: texto.optional(),
   ...Object.fromEntries(Object.entries(oitoCampos).map(([k, v]) => [k, v.optional()])),
@@ -58,24 +65,28 @@ const habilidadeEspecial = z.object({
   }
 });
 const elementoNovo = z.array(z.object({ tipo: id, formas: formasMarca }).strict());
-const fisiologiaNovo = z.object({ respiracao: texto.optional(), prendeRespiracao: texto.optional(), camuflagem: texto.optional(), mente: texto.optional(), tracos: texto.optional() }).strict();
+// R21 (D-298): os corpos que não vivem; R22: as famílias mentais que a ficha diz que a criatura ignora
+const tipoCorpo = z.enum(['constructo', 'morto-vivo', 'elemental', 'incorporeo']);
+const familiaMental = z.enum(['medo', 'sono', 'dominio', 'leitura-de-mente', 'confusao']);
+const fisiologiaNovo = z.object({ respiracao: texto.optional(), prendeRespiracao: texto.optional(), camuflagem: texto.optional(), mente: texto.optional(), tracos: texto.optional(),
+  tipoCorpo: tipoCorpo.optional(), recuperacao: texto.trim().min(1).optional(), familiasMentaisIgnoradas: z.array(familiaMental).min(1).optional() }).strict();
 const aptidoesNovo = z.object({ montaria: z.boolean(), carga: z.boolean(), tracao: z.boolean() }).strict();
 const numeros = z.record(id, inteiro);
 const artesNova = z.record(z.enum(artesCatalogo.map(a => a.id)), naoNeg);
 const bolsasNova = z.array(z.object({ nome: texto, itens: z.array(z.object({ item: texto, peso: numero, preco: numero }).strict()) }).strict());
 const formaNova = z.object({
-  id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
+  id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), perfilCouraca: perfilCouraca.optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
   deslocamento: deslocamentoForma.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
   fisiologia: fisiologiaNovo.optional(), aptidoes: aptidoesNovo.optional(), ataques: z.array(ataqueNovo).optional(),
   // D-265: as outras formas que o Mestre pode escolher no lugar do disfarce fixo ("um animal comum"); o card escreve a regra
   outraForma: texto.trim().min(1).optional(),
 }).strict();
-export const criaturaNovaSchema = z.object({
+const estruturaCriatura = z.object({
   id, idAntigo: texto.optional(), nome: texto, nomeIngles: texto.nullable(), categoria: id, papel: id,
   ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(12),
   formaPrincipal: z.object({ id, nome: texto }).strict().optional(),
   enxame: z.object({ individuosPorQuadrado: z.number().int().positive(), tamanhoEquivalente: z.enum(['pequeno','medio']) }).strict().optional(),
-  corpo: corpoNovo.refine(c => c.massa !== undefined || c.semMassa === true, {message:'corpo exige massa ou semMassa',path:['massa']}).refine(c => (c.semMassa === true) === (c.volume !== undefined), {message:'semMassa e volume devem ser declarados juntos',path:['volume']}), couraca: z.number().int().min(0).max(12), bonusPV: inteiro.optional(),
+  corpo: corpoNovo.refine(c => c.massa !== undefined || c.semMassa === true, {message:'corpo exige massa ou semMassa',path:['massa']}).refine(c => (c.semMassa === true) === (c.volume !== undefined), {message:'semMassa e volume devem ser declarados juntos',path:['volume']}), couraca: z.number().int().min(0).max(12), perfilCouraca: perfilCouraca.optional(), bonusPV: inteiro.optional(),
   atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict(),
   habilidades: numeros, habilidadesSec: numeros, especialidades: especialidadesNovo, especialidadesSec: especialidadesNovo,
   virtudes: z.object({ bravura: naoNeg, compaixao: naoNeg, conviccao: naoNeg, temperanca: naoNeg }).strict(),
@@ -87,12 +98,14 @@ export const criaturaNovaSchema = z.object({
   comoLuta: z.array(z.object({ nome: texto, formas: formasMarca, texto }).strict()),
   sentidos: z.array(z.object({ nome: texto, descricao: texto, formas: formasMarca, classe: z.literal('sem regra ainda').optional() }).strict()),
   elementos: z.object({ fraquezas: elementoNovo, resistencias: elementoNovo, imunidades: elementoNovo }).strict(),
-  fisiologia: fisiologiaNovo.extend({respiracao:texto.trim().min(1),mente:texto.trim().min(1),tracos:texto.trim().min(1)}), aptidoes: aptidoesNovo,
+  fisiologia: fisiologiaNovo.extend({respiracao:texto.trim().min(1).optional(),mente:texto.trim().min(1),tracos:texto.trim().min(1)})
+    .refine(f => f.respiracao !== undefined || f.tipoCorpo !== undefined, {message:'Required',path:['respiracao']}), aptidoes: aptidoesNovo,
   comportamento: z.object({ social: texto.trim().min(1).optional(), atividade: texto.trim().min(1).optional(), dieta: texto.trim().min(1).optional(), caca: texto.trim().min(1).optional(), dianteDeGente: texto.trim().min(1).optional() }).strict(),
   ecologia: z.object({ terreno: z.array(texto), clima: z.array(texto) }).strict(),
   descricao: texto.trim().min(1), lore: z.array(z.object({ titulo: texto, texto }).strict()), imagens: z.array(texto),
   revisao: z.array(z.object({ campo: texto, motivo: texto }).strict()),
- }).strict().superRefine((c, ctx) => {
+ }).strict();
+function conferirCriatura(c, ctx) {
   const erro=(path,message)=>ctx.addIssue({code:'custom',path,message});
   if (Boolean(c.formaPrincipal) !== Boolean(c.formas)) erro(['formas'],'formaPrincipal e formas devem existir juntas');
   const ids=[...(c.formaPrincipal ? [c.formaPrincipal.id] : []),...(c.formas || []).map(f=>f.id)];
@@ -113,6 +126,16 @@ export const criaturaNovaSchema = z.object({
   }
   const listas=[['habilidadesEspeciais',c.habilidadesEspeciais],['comoLuta',c.comoLuta],['sentidos',c.sentidos],...Object.entries(c.elementos).map(([k,v])=>['elementos.'+k,v])];
   for (const [lista,itens] of listas) for (const [i,item] of itens.entries()) if (item.formas !== 'todas') for (const id of item.formas) if (!ids.includes(id)) erro([lista,i,'formas'],'marca aponta para forma inexistente: '+id);
+}
+
+export const criaturaAnteriorR03Schema = estruturaCriatura.superRefine(conferirCriatura);
+export const criaturaNovaSchema = estruturaCriatura.superRefine((c,ctx) => {
+  conferirCriatura(c,ctx);
+  // R49 (D-328): no contrato novo, a Couraça acima de 0 diz o perfil, na principal ou herdado dela pela forma
+  if (c.couraca > 0 && !c.perfilCouraca) ctx.addIssue({code:'custom',path:['perfilCouraca'],message:'Couraça nível '+c.couraca+' sem o perfil (R49): rigida, couro ou mole'});
+  for (const [i, forma] of (c.formas || []).entries()) if (forma.couraca > 0 && !(forma.perfilCouraca ?? c.perfilCouraca))
+    ctx.addIssue({code:'custom',path:['formas',i,'perfilCouraca'],message:'Couraça nível '+forma.couraca+' da forma sem o perfil (R49)'});
+  validarPoderes(c,(path,message)=>ctx.addIssue({code:'custom',path,message}));
 });
 
 // As fontes publicadas antes da F5.2 ainda podem trazer a escolha de Tamanho da
@@ -120,7 +143,8 @@ export const criaturaNovaSchema = z.object({
 // de entrada, o conversor e o editor continuam recusando esse formato antigo.
 export const criaturaParaLeituraSchema = {
   safeParse(c) {
-    const estrito = criaturaNovaSchema.safeParse(c);
+    const schema = c?.habilidadesEspeciais?.some(h => h?.categoria !== undefined) ? criaturaNovaSchema : criaturaAnteriorR03Schema;
+    const estrito = schema.safeParse(c);
     if (estrito.success) return estrito;
     const legado = structuredClone(c);
     let mudou = false;
@@ -128,7 +152,7 @@ export const criaturaParaLeituraSchema = {
       delete forma.corpo.tamanhoEscolhido;
       mudou = true;
     }
-    if (!mudou || !criaturaNovaSchema.safeParse(legado).success) return estrito;
+    if (!mudou || !schema.safeParse(legado).success) return estrito;
     return { success: true, data: c };
   },
   parse(c) {

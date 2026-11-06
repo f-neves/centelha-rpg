@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 2,
@@ -101,9 +102,17 @@
     {
       "nome": "bote de pescoço longo",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Mordida",
-      "efeito": "morde de lado ou de baixo, a vários metros do corpo; a cabeça não sobe acima da água mais que ela mesma"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A parte alcança até 3 m medidos da borda do corpo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],

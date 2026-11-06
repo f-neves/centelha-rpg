@@ -16,7 +16,7 @@
 import puppeteer from 'puppeteer-core';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { carimbar } from './carimbo.mjs';
 
 // Sem lista: so o `EDGE` do ambiente, com o Windows como padrao. Ver
@@ -27,7 +27,7 @@ const URL = 'file:///' + join(RAIZ, 'combate-tempo-bench.html').split('\\').join
 
 const erros = [];
 const clicar = (pg, sel) => pg.$eval(sel, (e) => e.click());
-const browser = await puppeteer.launch({ executablePath: EDGE, headless: 'new', args: ['--no-sandbox', '--allow-file-access-from-files'] });
+const browser = await abrirNavegador(puppeteer, { executablePath: EDGE, headless: 'new', args: ['--no-sandbox', '--allow-file-access-from-files'] });
 const page = await browser.newPage();
 page.on('pageerror', (e) => erros.push('pageerror: ' + e.message));
 page.on('console', (m) => { if (m.type() === 'error') erros.push('console: ' + m.text()); });

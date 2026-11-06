@@ -2,12 +2,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { carregarTS } from './lib-ts.mjs';
-import { converterFicha } from './conversor-criatura.mjs';
+import { converterFicha as converterAtual, converterFichaAnteriorR03 } from './conversor-criatura.mjs';
 import { lerEsperado } from './gen-criaturas-esperado.mjs';
 import { lerFichaMd, slug } from './lib-ficha-md.mjs';
-import { criaturaNovaSchema } from './criatura-schema.mjs';
+import { criaturaNovaSchema, criaturaParaLeituraSchema } from './criatura-schema.mjs';
 const M=await carregarTS('src/lib/motor.ts');
 const args=process.argv.slice(2), valor=k=>{const i=args.indexOf(k);return i<0?null:args[i+1];};
+// --anterior-r03: relê ficha de antes da categoria dos poderes (R1), como as fixtures de teste; o padrão é o contrato novo.
+const converterFicha=args.includes('--anterior-r03')?converterFichaAnteriorR03:converterAtual;
 const erros=[]; let contas=0, avisos=0;
 function confere(id,k,real,esperado) {
   if (esperado===undefined) return;
@@ -60,9 +62,10 @@ if(pasta) {
   const r=ficha(arquivo);if(r)console.log(JSON.stringify(r,null,2));
   for(const e of erros)console.error(e);
 } else if(entrada) {
-  const c=criaturaNovaSchema.parse(JSON.parse(fs.readFileSync(entrada,'utf8')));
+  // A fonte publicada passa pela mesma leitura do validate (ficha com alguma categoria cobra todas); --estrito cobra o contrato novo inteiro.
+const c=(args.includes('--estrito')?criaturaNovaSchema:criaturaParaLeituraSchema).parse(JSON.parse(fs.readFileSync(entrada,'utf8')));
   const fid=valor('--forma'),fo=fid?c.formas?.find(f=>f.id===fid):null;
   if(fid&&!fo)throw Error('Forma inexistente: '+fid);
   console.log(JSON.stringify(M.criatura(fo?M.comForma(c,fo):c),null,2));
-} else { console.error('uso: node scripts/motor-criatura.mjs --conferir pasta [--antes pasta] | --ficha arquivo.md | --entrada arquivo.json [--forma id]');process.exitCode=2; }
+} else { console.error('uso: node scripts/motor-criatura.mjs --conferir pasta [--antes pasta] | --ficha arquivo.md [--anterior-r03] | --entrada arquivo.json [--forma id] [--estrito]');process.exitCode=2; }
 if(erros.length)process.exitCode=1;

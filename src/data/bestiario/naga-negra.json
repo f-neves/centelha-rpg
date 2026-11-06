@@ -23,6 +23,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 5,
     "destreza": 6,
@@ -106,11 +107,33 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: erguida. Pequeno: enrolada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Ferrão peçonhento",
       "formas": "todas",
-      "classe": "livro",
+      "classe": "regra da ficha",
       "ataque": "Ferrão",
-      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
+      "categoria": "substancia",
+      "ativacao": "Ferrão ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Peçonha de naga. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "Leitura de pensamentos",
@@ -120,19 +143,21 @@
         "arte": "adivinhacao",
         "nivel": 2
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "18 m",
       "area": "quem ela escolher ao alcance",
       "efeito": "ouve os pensamentos de superfície do alvo: o que ele pensa agora, não as lembranças",
       "dano": "nenhum",
-      "resistencia": "mente, contra Perspicácia 5 + Empatia 3 + 2 × o menor entre Centelha 4 e Empatia 3 (6) = 14 mais a rolagem; quem passa fica fechado para ela até o fim da cena, e a mente protegida por Arte não se lê",
-      "limiteDeUso": "um alvo por vez"
+      "resistencia": "Perspicácia 5 + Empatia 3 + 2 × o menor entre Centelha 4 e Empatia 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica fechado para ela até o fim da cena, e a mente protegida por Arte não se lê",
+      "limiteDeUso": "um alvo por vez. Sem custo"
     },
     {
       "nome": "Mente blindada",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -140,19 +165,35 @@
       "efeito": "soma +2 na Defesa Mental contra encanto e domínio",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Imune a leitura da mente",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "nenhuma Arte ou poder lê os pensamentos dela nem entra na mente dela"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora leitura de mente. Outras influências mentais encontram a Defesa Mental normal. Dano físico de Arte e conversa comum seguem as regras normais",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "nenhum veneno a afeta"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "nenhum veneno a afeta. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -220,14 +261,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Leitura de pensamentos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mente blindada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": ""
     },
@@ -241,7 +274,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escamas de serpente ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escamas de serpente ;; nível 1"
     },
     {
       "campo": "comportamento.atividade",
@@ -252,16 +285,16 @@
       "motivo": ""
     },
     {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Antes: Potência 16, pool 4 de Vigor  O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
       "campo": "artes",
       "motivo": "Raio 4, Forças 3 e Fascinação 3, escolhidas pelo texto; o site não grava Arte"
     },
     {
       "campo": "virtudes.temperanca",
       "motivo": "1; o site tinha 2"
-    },
-    {
-      "campo": "habilidadesEspeciais",
-      "motivo": "Potência 16, pool 4 de Vigor"
     },
     {
       "campo": "ataques",

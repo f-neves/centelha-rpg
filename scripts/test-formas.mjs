@@ -4,7 +4,7 @@ import path from 'node:path';
 import os from 'node:os';
 import { spawnSync } from 'node:child_process';
 import { carregarTS } from './lib-ts.mjs';
-import { criaturaNovaSchema } from './criatura-schema.mjs';
+import { criaturaParaLeituraSchema as criaturaNovaSchema } from './criatura-schema.mjs';
 
 const falhas=[];const ok=(c,m)=>{if(!c)falhas.push(m);console.log((c?'  ✓ ':'  ✘ ')+m)};
 const erro=fn=>{try{fn();return null}catch(e){return e.message}};
@@ -95,8 +95,11 @@ for (const m of monstros) {
 
 // A10: a CLI confere o número da ficha e recusa uma divergência plantada.
 const caso=path.resolve('scripts/fixtures/conversor/ghaele-azata.md');
-const cli=(arquivo)=>spawnSync(process.execPath,['scripts/motor-criatura.mjs','--ficha',arquivo],{encoding:'utf8'});
-const bom=cli(caso);
+const cli=(arquivo,...extra)=>spawnSync(process.execPath,['scripts/motor-criatura.mjs','--ficha',arquivo,...extra],{encoding:'utf8'});
+// A fixture é anterior à categoria dos poderes (R1): o contrato novo a recusa, e a releitura antiga a aceita.
+const semCategoria=cli(caso);
+ok(semCategoria.status===1 && semCategoria.stderr.includes('poder exige categoria'),'conferidor: contrato novo recusa ficha sem categoria de poder');
+const bom=cli(caso,'--anterior-r03');
 ok(bom.status===0 && JSON.parse(bom.stdout).numeros.pv===40,'conferidor: ficha correta e PV 40');
 const pastaCaso=fs.mkdtempSync(path.join(os.tmpdir(),'centelha-a10-'));
 const arquivoMutado=path.join(pastaCaso,'ghaele-azata.md');
@@ -104,7 +107,7 @@ try {
   const alterada=fs.readFileSync(caso,'utf8').replace('"pv":40','"pv":41');
   ok(alterada!==fs.readFileSync(caso,'utf8'),'controle negativo alterou o PV declarado');
   fs.writeFileSync(arquivoMutado,alterada);
-  const ruim=cli(arquivoMutado);
+  const ruim=cli(arquivoMutado,'--anterior-r03');
   ok(ruim.status===1 && ruim.stderr.includes('motor 40, ficha 41'),'conferidor acusa PV divergente');
 } finally { if(fs.existsSync(arquivoMutado))fs.unlinkSync(arquivoMutado); fs.rmdirSync(pastaCaso); }
 

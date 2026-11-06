@@ -115,6 +115,7 @@
       ],
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -126,14 +127,15 @@
         "arte": "materia",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até ele desfazer, ou até cair inconsciente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca",
+      "efeito": "assume o corpo, o rosto e a voz de qualquer humanoide de Tamanho perto do dele; os números ficam os dele; sem magia, ninguém vê a troca. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Ler pensamentos",
@@ -143,14 +145,15 @@
         "arte": "adivinhacao",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6, olhando o alvo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, olhando o alvo. O efeito sai no Tick do Golpe",
       "duracao": "enquanto se concentra, até o fim da cena",
       "alcance": "18 m",
       "area": "um alvo",
       "efeito": "ouve os pensamentos de superfície do alvo e descobre uma intenção ou um segredo dele",
       "dano": "nenhum",
-      "resistencia": "mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem",
-      "limiteDeUso": "à vontade, um alvo por vez"
+      "resistencia": "Percepção + Empatia da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não revela nada e sente a sondagem",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. um alvo por vez"
     },
     {
       "nome": "Ilusões",
@@ -158,21 +161,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "imagem-viva"
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou enquanto ele mantiver",
       "alcance": "36 m",
       "area": "uma imagem de até 6 m de lado",
       "efeito": "uma imagem com som e cheiro, que se move como ele quer, para enganar ou distrair; quem toca ou desconfia e testa vê através dela",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Manha dele, só para quem desconfia",
-      "limiteDeUso": "uma ilusão por vez"
+      "resistencia": "Influência + Manha da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. uma ilusão por vez"
     },
     {
       "nome": "Magia reversa",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -180,13 +186,21 @@
       "efeito": "soma +4 na Defesa Mental e nas resistências contra Artes",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Feitiço que volta",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "alguns feitiços lançados contra ele produzem o efeito oposto ao que o conjurador queria"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "ao resistir a uma Arte dirigida a ele",
+      "duracao": "instantânea",
+      "alcance": "até quem conjurou a Arte",
+      "area": "o conjurador",
+      "efeito": "Devolve a Arte com o mesmo total e a mesma potência. Só devolve Artes dirigidas ao rakshasa. Áreas e cura ficam fora do efeito",
+      "dano": "o da Arte devolvida",
+      "resistencia": "o conjurador resiste normalmente",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -281,22 +295,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ler pensamentos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ilusões",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Magia reversa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "Apara pouco com as garras; prefere não lutar. \"até um humano sem treino pode ter 1\" (decisoes-autor §1). Com a Centelha 5, já dá Defesa 14; 1; o site não gravava Bloqueio"
     },
@@ -311,6 +309,22 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma muda o corpo, o rosto e a voz; os números ficam os dele, e só a magia vê a troca (site)  Descrição anterior: Anatomia: a de qualquer humanoide; Altura e Massa: as do disfarce, dentro do Tamanho Médio; Aparência: a do disfarce; Camuflagem: passa por qualquer humanoide, e só a magia vê a troca; o resto: o do rakshasa."
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Ler pensamentos",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. um alvo por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, olhando o alvo -> uma ação, Velocidade 5, olhando o alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Ilusões",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. uma ilusão por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiço que volta",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "formas",

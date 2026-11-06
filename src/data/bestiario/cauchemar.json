@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 11,
     "destreza": 4,
@@ -112,6 +113,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Cascos flamejantes",
+      "categoria": "inato",
       "ativacao": "o golpe dos Cascos que acerta",
       "duracao": "instantânea",
       "alcance": "o dos cascos",
@@ -119,18 +121,13 @@
       "efeito": "os cascos em brasa queimam o que tocam",
       "dano": "+1d6 de fogo, somado ao do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
-    },
-    {
-      "nome": "cascos e mordida juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "escoiceia e morde na mesma ação"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Fumaça sufocante",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "substancia",
       "ativacao": "uma ação, Velocidade 6, bufando e batendo os cascos",
       "duracao": "a nuvem fica 12 Ticks; quem falha fica Cego enquanto estiver nela e até 6 Ticks depois de sair",
       "alcance": "o próprio corpo",
@@ -138,36 +135,49 @@
       "efeito": "uma fumaça acre sai das narinas e dos cascos e arde nos olhos",
       "dano": "nenhum",
       "resistencia": "corpo, Vigor + Resistência contra Vigor + Resistência dele; quem passa enxerga naquela nuvem",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "enjoo da fumaça",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quem respira bastante da fumaça fica enjoado, além de cego"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "quando a vítima respira a fumaça liberada",
+      "duracao": "enquanto exposto e por mais 6 Ticks depois de sair",
+      "alcance": "o próprio corpo",
+      "area": "esfera de 6 m em volta dele",
+      "efeito": "A exposição deixa a vítima Enjoada, com −2 nas jogadas. Constructos não enjoam. O enjoo se soma à cegueira da fumaça",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Parte da mesma dose de Fumaça sufocante, com o estoque e a produção daquele poder"
     },
     {
       "nome": "Viagem entre planos",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "base": {
-        "arte": "conjuracao",
-        "nivel": 5
-      },
-      "ativacao": "uma ação, Velocidade 7, galopando pelo ar",
-      "duracao": "instantânea",
-      "alcance": "o próprio corpo e quem estiver montado nele",
-      "area": "ele e um cavaleiro",
-      "efeito": "atravessa a fronteira para outro plano, levando o cavaleiro",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "três vezes por dia"
+      "classe": "sem regra ainda",
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "passeio etéreo",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "fica etéreo com o cavaleiro e atravessa o mundo sem tocar nele, à vontade"
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: casco esquerdo, casco direito, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -244,24 +254,28 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Cascos em chamas",
-      "motivo": "números sugeridos pela ficha (D-197); +1d6 de fogo por golpe, como no pesadelo, pela Arte do Fogo no nível 1; o site não dava o número"
-    },
-    {
-      "campo": "habilidadesEspeciais.Fumaça sufocante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Viagem entre planos",
-      "motivo": "números sugeridos pela ficha (D-197); a do pesadelo, com a base Conjuração 5 dele; o site não dava base para o cauchemar"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: couro de cavalo crescido a 2 t, como o elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). A imunidade do site (`imunidades`: fogo), pela linha Elementos"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 2: couro de cavalo crescido a 2 t, como o elefante (2 a 3) ."
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Fumaça sufocante",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.enjoo da fumaça",
+      "motivo": "R13 e D-197. Dificuldade fixa sugerida 15 (10 + Centelha 5) para graduar a potência deste fedor."
+    },
+    {
+      "campo": "habilidadesEspeciais.Viagem entre planos",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, galopando pelo ar -> uma ação, Velocidade 7, galopando pelo ar. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia).; a do pesadelo, com a base Conjuração 5 dele; o site não dava base para o cauchemar"
+    },
+    {
+      "campo": "habilidadesEspeciais.passeio etéreo",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.area",
@@ -270,6 +284,10 @@
     {
       "campo": "ataques",
       "motivo": "os \"Cascos flamejantes\" do site (3 dados, 7 Ticks, `inimigos.json`: \"3d6 +16 impacto\", dano médio 26,5) ficam Pesados, 2 dados: 23,0. A \"Mordida\" do site (2 dados, 6 Ticks, \"2d6 +16 perfurante\", 23) fica Leve, como a do cavalo: 17,5. A D-241 levou a Pesado de 2 dados só o golpe de cinco planares, e aqui a classe sai do gesto"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cascos em chamas",
+      "motivo": "+1d6 de fogo por golpe, como no pesadelo, pela Arte do Fogo no nível 1; o site não dava o número"
     }
   ]
 }

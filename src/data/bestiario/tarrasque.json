@@ -20,6 +20,7 @@
     "tamanhoEscolhido": "colossal"
   },
   "couraca": 12,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 16,
     "destreza": 2,
@@ -121,27 +122,24 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "múltiplos ataques",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "morde, arranha e bate com a cauda na mesma ação"
-    },
-    {
       "nome": "fúria implacável",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "abaixo da metade dos PV, ganha mais um ataque por rodada"
     },
     {
       "nome": "Regeneração 40",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de fogo ou ácido, que a atrasam"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. Quando sofre dano de fogo ou ácido, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
     },
     {
       "nome": "fogo e ácido atrasam a regeneração",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o dano de fogo ou de ácido se fecha mais devagar"
     },
     {
@@ -151,7 +149,8 @@
       "tecnica": {
         "id": "imortalidade-tenue",
         "nivel": 6
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Bramido de pânico",
@@ -159,21 +158,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "mortalha"
       },
-      "ativacao": "uma ação, Velocidade 6, um rugido",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, um rugido. O efeito sai no Tick do Golpe",
       "duracao": "6 Ticks",
       "alcance": "quem ouve, até 18 m",
       "area": "esfera de 18 m em volta dela",
       "efeito": "quem falha fica Em pânico e foge sem escolher direção",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dela; quem passa fica imune pela cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune pela cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Carapaça que reflete magia",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; quando uma Arte de raio, linha ou cone a mira",
       "duracao": "instantânea",
       "alcance": "o próprio corpo",
@@ -181,19 +183,42 @@
       "efeito": "rola 1d6; em 1 ou 2, a Arte volta para quem a conjurou",
       "dano": "o da Arte, em quem conjurou",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por Arte"
+      "limiteDeUso": "uma vez por Arte. Sem custo"
     },
     {
       "nome": "quase imune",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "resiste a veneno, doença e à maioria dos efeitos mentais"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Soma +1d6 no teste de Vigor + Resistência contra veneno ou doença. Também resiste a influências mentais. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "investida destruidora",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "atropela tudo no caminho, sem ligar para terreno nem estrutura leve"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: mordida, garra, cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -264,20 +289,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Bramido de pânico",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Carapaça que reflete magia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.massa",
       "motivo": "A do site. A regra de altura e massa dos lotes 32 e 33, mantida nos lotes 34 a 36: a medida do site manda, e a massa do site fica quando um fator de forma plausível sobre o animal de base a alcança. A altura erguida manda, a postura em que luta: o tiranossauro (7,5 t, 3,9 m) escalado pelo cubo da altura (15 ÷ 3,9 = × 3,846) dá 427 t; a cauda mais curta tira peso e o corpo mais grosso e a carapaça põem de volta, fator 1,05: 450 t; 450 t, a do site, pela altura erguida e o tiranossauro (fator 1,05). Nada muda: Faixa, PV e Tamanho ficam os do site"
     },
     {
       "campo": "corpo.area",
       "motivo": "A área do tiranossauro (11,82 m²) escalada pelo quadrado da altura (174,8 m²) e encurtada pelo comprimento do site (27 contra 49 m: × 0,549): 96,0; Colossal na borda de 5% (96 m²), pela carapaça e pelos chifres"
+    },
+    {
+      "campo": "habilidadesEspeciais.Bramido de pânico",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, um rugido -> uma ação, Velocidade 5, um rugido. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

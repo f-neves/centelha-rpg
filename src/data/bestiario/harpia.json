@@ -110,6 +110,20 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Canção cativante",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -117,14 +131,15 @@
         "arte": "fascinacao",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6, cantando; mantém cantando a cada ação",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5, cantando; mantém cantando a cada ação",
       "duracao": "enquanto ela cantar, e mais 6 Ticks",
       "alcance": "até onde o canto é ouvido, cerca de 90 m",
       "area": "todos os que ouvem, menos as harpias",
       "efeito": "quem falha fica cativado: anda até ela pelo caminho mais curto, ignorando perigos (não entra em fogo nem em abismo sem testar de novo), e não age contra ela; quem é atacado se solta",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Canto dela; quem passa fica imune a esta canção até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Canto da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune a esta canção até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Feitiçaria",
@@ -134,25 +149,28 @@
         "arte": "fascinacao",
         "nivel": 1
       },
-      "ativacao": "no lugar da canção, uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "no lugar da canção, uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da próxima ação do alvo",
       "alcance": "18 m",
       "area": "um alvo",
       "efeito": "uma pequena ilusão ou um comando curto (\"vem\", \"larga\", \"olha\"); o alvo perde a próxima ação ou obedece a uma palavra",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Canto dela",
-      "limiteDeUso": "a canção ou a feitiçaria, uma vez por cena"
+      "resistencia": "Influência + Canto da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. A canção e a feitiçaria compartilham o uso grátis"
     },
     {
       "nome": "Garras aviformes",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "empunhadura-dupla"
     },
     {
       "nome": "Voo rasante",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "Voo; em baixa altura"
     }
   ],
@@ -231,14 +249,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Canção cativante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Feitiçaria",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.area",
       "motivo": "O corpo, 0,72 × 0,889² = 0,57 m²; as asas, (4,5 − 0,40) × 0,6 m de largura média = 2,46 m²  na largura da asa; Grande de asas abertas, Médio de pé  na largura da asa"
     },
@@ -249,6 +259,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Canção cativante",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiçaria",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. A canção e a feitiçaria compartilham o uso grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação no lugar da canção, uma ação, Velocidade 6 -> no lugar da canção, uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "virtudes.compaixao",

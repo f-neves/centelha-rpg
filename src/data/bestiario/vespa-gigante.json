@@ -24,6 +24,7 @@
     }
   },
   "couraca": 2,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 2,
     "destreza": 4,
@@ -123,23 +124,54 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enorme: de cima, asas abertas. Grande: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "paralisar",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Ferrão",
-      "efeito": "o ferrão paralisa a presa"
+      "categoria": "substancia",
+      "ativacao": "quando o ataque descrito atinge a vítima; o golpe inocula ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o ferrão paralisa a presa. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "pela regra do veneno da ficha",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "arrastar a presa até a toca",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "leva a presa paralisada até a toca, até o Peso erguido"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],
@@ -228,6 +260,10 @@
     {
       "campo": "ataques.Ferrão",
       "motivo": "era 1d6 − 2 + 6, média 7,5. Golpe rápido de ponta. Ferrão de 7 a 12 mm na real (NPS; Wikipédia), de 47 a 80 cm na gigante (56 a 96 cm com os 3,6 m, × 3 ÷ 3,6) : fura couro e malha, como a lança. Veneno sem id no catálogo, paralisante"
+    },
+    {
+      "campo": "habilidadesEspeciais.paralisar",
+      "motivo": "R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     }
   ]
 }

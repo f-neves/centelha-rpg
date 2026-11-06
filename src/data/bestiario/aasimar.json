@@ -91,14 +91,15 @@
         "arte": "luz",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "9 m",
       "area": "esfera de 9 m em volta dele",
       "efeito": "à escolha: cura os aliados vivos na área, ou queima os mortos-vivos",
       "dano": "aos mortos-vivos, 2d6 + Centelha, sagrado; a cura devolve 2d6 + Centelha PV a cada aliado",
       "resistencia": "esquiva, só para os mortos-vivos; quem passa leva metade",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Pode gastar 1 de Energia para ampliar em +1d6 a cura ou o dano deste uso"
     },
     {
       "nome": "Repúdio da morte",
@@ -108,14 +109,15 @@
         "arte": "cura",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 6, tocando um aliado moribundo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, tocando um aliado moribundo. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "toque",
       "area": "um aliado",
       "efeito": "estabiliza o aliado (para o Sangramento e a queda) e devolve 1d6 PV",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "três vezes por cena"
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Toque do bem",
@@ -125,14 +127,15 @@
         "arte": "protecao",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 5, tocando um aliado",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, tocando um aliado. O efeito sai no Tick do Golpe",
       "duracao": "até a próxima jogada importante do aliado, ou o fim da cena",
       "alcance": "toque",
       "area": "um aliado",
       "efeito": "fortalece a resolução: o aliado soma +1d6 na próxima jogada importante",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Luz do dia",
@@ -140,16 +143,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "luz",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "dia"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "o próprio corpo, ou um objeto que ele toca",
       "area": "esfera de 18 m de luz forte",
-      "efeito": "ilumina como o dia; quem é sensível à luz fica Ofuscado na área",
+      "efeito": "ilumina como o dia; quem é sensível à luz fica Ofuscado na área. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -236,19 +241,19 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Canalizar luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Ampliação sugerida de +1d6 por 1 de Energia para aumentar a intensidade sem aumentar a área. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Pode gastar 1 de Energia para ampliar em +1d6 a cura ou o dano deste uso. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Repúdio da morte",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, tocando um aliado moribundo -> uma ação, Velocidade 5, tocando um aliado moribundo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Toque do bem",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, tocando um aliado -> uma ação, Velocidade 5, tocando um aliado. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Luz do dia",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

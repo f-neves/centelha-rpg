@@ -116,6 +116,7 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar",
       "texto": "na perna da presa em fuga"
     },
@@ -123,6 +124,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],

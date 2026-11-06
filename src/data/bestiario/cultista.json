@@ -103,7 +103,8 @@
       "arte": {
         "id": "morte",
         "nivel": 1
-      }
+      },
+      "categoria": "magia"
     },
     {
       "nome": "Maldição do apodrecer",
@@ -112,7 +113,8 @@
       "arte": {
         "id": "morte",
         "nivel": 2
-      }
+      },
+      "categoria": "magia"
     },
     {
       "nome": "Podridão",
@@ -121,19 +123,33 @@
       "arte": {
         "id": "morte",
         "nivel": 1
-      }
+      },
+      "categoria": "magia"
     },
     {
       "nome": "Ritual da morte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "em poucos minutos de ritual ergue um morto-vivo para lutar ao lado dele. O efeito do livro que levanta cadáver (Servo de Ossos) é Morte 4, acima da Arte dele"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 2
+      },
+      "categoria": "magia",
+      "ativacao": "ritual sobre o cadáver",
+      "duracao": "pelo ritual",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Prepara o cadáver. Para erguê-lo é preciso Morte 4 ou poder de grau igual",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -208,6 +224,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Ritual da morte",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "virtudes",

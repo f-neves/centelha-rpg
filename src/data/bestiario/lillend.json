@@ -102,30 +102,66 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: cauda enrolada, torso erguido. Enorme: asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Constrição",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Cauda",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "envolve o adversário nas espiras"
     },
     {
       "nome": "Canto encantado",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a música inspira coragem, prende a atenção e sugere condutas aos ouvintes"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "enquanto mantém o canto",
+      "alcance": "até onde ouve",
+      "area": "um alvo",
+      "efeito": "Fascina quem ouve o canto e prende sua atenção enquanto a canção durar",
+      "dano": "nenhum",
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Conversar com animais e plantas",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "faz-se entender por animais e vegetação"
     },
     {
       "nome": "Imunidade a veneno e petrificação",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "toxinas e transformações em pedra não a afetam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "toxinas e transformações em pedra não a afetam. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -239,6 +275,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Canto encantado",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "habilidadesSec.tocar-instrumento",

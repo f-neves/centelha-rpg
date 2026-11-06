@@ -21,6 +21,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 2,
     "destreza": 4,
@@ -37,6 +38,7 @@
     "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 1,
+    "atirador": 2,
     "furtividade": 2,
     "integridade": 2,
     "prontidao": 1,
@@ -45,7 +47,6 @@
     "sobrevivencia": 2
   },
   "habilidadesSec": {
-    "disparo": 2,
     "escalada": 2,
     "natacao": 2,
     "musculatura": 2
@@ -98,7 +99,7 @@
     {
       "nome": "Choque",
       "parte": "corpo",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -122,33 +123,46 @@
         "arte": "raio",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 7, o ataque natural a distância da tabela (Vigor + Disparo)",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5, o ataque natural a distância da tabela (o maior entre Vigor, Destreza e Percepção + Atirador)",
       "duracao": "instantânea",
       "alcance": "3 m",
       "area": "um alvo",
-      "efeito": "descarrega a eletricidade do corpo num alvo perto",
+      "efeito": "descarrega a eletricidade do corpo num alvo perto A descarga nunca reduz a vítima abaixo de 0 PV. Ao chegar a 0, fica Incapacitada e Inconsciente, sem risco de morte",
       "dano": "1d6 + Centelha, raio",
       "resistencia": "esquiva, contra a jogada do choque",
-      "limiteDeUso": "uma vez a cada 12 Ticks"
-    },
-    {
-      "nome": "choque que não mata",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o choque de um lagarto só derruba, e não mata"
+      "limiteDeUso": "O corpo guarda 2 cargas e produz 1 carga a cada 1 hora. Cada uso gasta 1 carga. Nada acelera a produção"
     },
     {
       "nome": "choque da colônia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "vários lagartos juntos descarregam um choque letal em área"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "três ou mais lagartos juntos descarregam no mesmo instante",
+      "duracao": "instantânea",
+      "alcance": "ao redor dos participantes",
+      "area": "raio de 3 m em torno do grupo",
+      "efeito": "A descarga nunca reduz a vítima abaixo de 0 PV. Ao chegar a 0, fica Incapacitada e Inconsciente, sem risco de morte",
+      "dano": "o dano de um Choque elétrico",
+      "resistencia": "saída de área do livro, apenas os alvos rolam",
+      "limiteDeUso": "cada participante gasta uma carga do próprio Choque elétrico"
     }
   ],
   "comoLuta": [
     {
+      "nome": "choque que não mata",
+      "formas": "todas",
+      "texto": "A descarga nunca reduz a vítima abaixo de 0 PV. Ao chegar a 0, fica Incapacitada e Inconsciente, sem risco de morte."
+    },
+    {
       "nome": "colônia",
       "formas": "todas",
       "texto": "sozinho, dá um choque e foge; em colônia, cerca o intruso e descarrega junto."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -225,12 +239,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Choque elétrico",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Raio 1 (o Estalo, 1d6); o site não dava base"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: escamas finas de lagarto pequeno, abaixo do varano (4) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: escamas finas de lagarto pequeno, abaixo do varano (4) ."
     },
     {
       "campo": "comportamento.atividade",
@@ -239,6 +249,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Choque elétrico",
+      "motivo": "R1/R4, D-197. Duas descargas permitem reagir à aproximação. Sugestão de 2 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (2 cargas e produz 1 carga a cada 1 hora).; poder natural com números da ficha (D-197), base Raio 1 (o Estalo, 1d6); o site não dava base"
     },
     {
       "campo": "ataques",

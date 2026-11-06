@@ -111,6 +111,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mãos ossudas",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -119,13 +120,22 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mãos ossudas",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "Língua paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o toque da língua paralisa a vítima"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando o ataque descrito atinge a vítima",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o toque da língua paralisa a vítima. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cria servos ao matar",
@@ -133,28 +143,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "servo-de-ossos"
       },
-      "ativacao": "um humanoide morre pelos golpes dele",
+      "categoria": "magia",
+      "ativacao": "um humanoide morre pelos golpes dele, em ação de Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "o servo, permanente; o fôlego dele, 6 Ticks",
       "alcance": "o corpo da vítima",
       "area": "um corpo",
       "efeito": "a vítima se ergue na hora como um morto-vivo rápido sob o comando dele, e a explosão de energia negra o fecha e o acelera por um instante",
       "dano": "nenhum; ele recupera 1d6 + Centelha PV e fica Acelerado por 6 Ticks",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por vítima"
-    },
-    {
-      "nome": "imune ao que pede corpo vivo",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não sofre veneno, doença, cansaço nem nada que dependa de um corpo vivo"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come e não dorme"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -177,10 +177,13 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "inteira, cruel, presa ao gosto de matar",
-    "tracos": "esqueleto humano com as entranhas penduradas e uma língua comprida e podre que sai da boca sem lábios"
+    "mente": "inteira, cruel, presa ao gosto de matar. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Medo cobre o imposto por essas fontes. Golpe social ou corporal ainda pode deixar Abalado. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "esqueleto humano com as entranhas penduradas e uma língua comprida e podre que sai da boca sem lábios",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa",
+    "familiasMentaisIgnoradas": [
+      "medo"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -190,7 +193,6 @@
   "comportamento": {
     "social": "solitário, com os servos que cria",
     "atividade": "noturno",
-    "dieta": "nenhuma",
     "caca": "isola e paralisa uma vítima por vez",
     "dianteDeGente": "ataca"
   },
@@ -239,10 +241,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Cria servos ao matar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.furtividade",
       "motivo": "\"Prefere isolar suas vítimas\", \"caçador solitário\" (site); 2, pelo caçador que isola a vítima"
     },
@@ -253,6 +251,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Língua paralisante",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Cria servos ao matar",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação um humanoide morre pelos golpes dele -> um humanoide morre pelos golpes dele, em ação de Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

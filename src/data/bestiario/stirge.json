@@ -107,10 +107,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Miúdo: de baixo, asas abertas. Minúsculo: asas fechadas, preso ao alvo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "fixação",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Probóscide",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -118,14 +133,15 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Probóscide",
+      "categoria": "inato",
       "ativacao": "a Probóscide que acerta e se fixa",
       "duracao": "enquanto estiver preso ao alvo",
       "alcance": "o da probóscide",
       "area": "um alvo",
-      "efeito": "drena sangue sem parar; o alvo fica Sangrando 1 enquanto ele estiver preso",
+      "efeito": "Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção",
       "dano": "o do Sangrando",
       "resistencia": "nenhum; tirá-lo pelo Agarrar acaba o efeito",
-      "limiteDeUso": "até se saciar, depois de tirar 6 PV do alvo"
+      "limiteDeUso": "até se saciar, depois de tirar 6 PV do alvo. Sem custo"
     }
   ],
   "comoLuta": [
@@ -195,10 +211,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sugar sangue",
-      "motivo": "números sugeridos pela ficha (D-197); o Sangrando é a condição do livro que o site nomeia (\"Sangramento\"); o limite de 6 PV para se saciar é da ficha (D-197)"
-    },
-    {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 0: casca fina de inseto . O nível fica fora da Absorção (decisoes-autor §16)"
     },
@@ -217,6 +229,10 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\", a probóscide (`inimigos.json`: \"1d6 +2 perfurante\", 5 Ticks, dano médio 5,5). A ficha fica com a probóscide, Leve. Dano médio: 5,5 antes; depois, probóscide 3,5, mais o Sangrando enquanto preso"
+    },
+    {
+      "campo": "habilidadesEspeciais.Sugar sangue",
+      "motivo": "o Sangrando é a condição do livro que o site nomeia (\"Sangramento\"); o limite de 6 PV para se saciar é da ficha (D-197)"
     }
   ]
 }

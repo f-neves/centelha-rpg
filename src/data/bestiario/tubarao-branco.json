@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 2,
@@ -115,6 +116,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "investida"
     }
   ],

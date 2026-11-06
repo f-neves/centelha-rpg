@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -88,6 +89,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -95,18 +97,14 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho",
+      "categoria": "inato",
       "regra": "derrubar"
-    },
-    {
-      "nome": "sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto ou pelo raio; não sofre nada que se resista com o corpo"
     },
     {
       "nome": "Fúria descontrolada",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "a cada 6 Ticks de combate, o Mestre rola 1d6; o espírito se liberta com 6 na primeira rolagem, com 5 ou 6 na segunda, e o número desce um a cada rolagem que não liberta",
       "duracao": "até o fim da cena, ou até o criador o acalmar",
       "alcance": "o próprio corpo",
@@ -114,25 +112,27 @@
       "efeito": "o golem ataca a criatura mais perto, amiga ou inimiga, e destrói o que encontra; só o criador pode acalmá-lo, com uma ação de fala a até 18 m e 4 ou mais em 1d6",
       "dano": "nenhum além dos golpes",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Fraqueza ao frio e ao fogo",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "leva dano de gelo ou de fogo (1 ou mais, depois da Absorção)",
       "duracao": "18 Ticks",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "o corpo fica lento e desajeitado: fica Retardado",
+      "efeito": "o corpo fica lento e desajeitado: fica Retardado. A Recuperação aumenta 1 Tick. Os opostos se anulam e aplicações iguais não somam",
       "dano": "nenhum além do que levou",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Vigor pela centelha elétrica",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um golpe ou efeito de raio o acerta",
       "duracao": "instantânea",
       "alcance": "o próprio corpo",
@@ -140,13 +140,21 @@
       "efeito": "o raio não o fere (Elementos) e devolve PV: recupera metade do dano que o raio daria",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "imune à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a maior parte das Artes não o afeta"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Neste material, aplicam-se Fraqueza ao frio e ao fogo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -164,10 +172,9 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "mente": "nenhuma; um espírito preso que obedece ao criador. Raramente guarda fragmentos da memória de quem deu a cabeça (site)",
-    "tracos": "corpo de 2,4 m costurado de partes de cadáveres, de pele amarelada, cicatrizes grosseiras e andar travado"
+    "tracos": "corpo de 2,4 m costurado de partes de cadáveres, de pele amarelada, cicatrizes grosseiras e andar travado. Não se cansa. O raio também o recupera",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -177,7 +184,6 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda e obedece",
     "dianteDeGente": "ataca quem a ordem manda atacar; na fúria, ataca todos"
   },
@@ -223,18 +229,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Fúria descontrolada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Fraqueza ao frio e ao fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Vigor pela centelha elétrica",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): carne morta que não sangra, não sente dor e não cansa, presa por pontos grosseiros; abaixo do granito do golem de pedra (6). O site tinha 1; 50, na zona de transição, pela faixa de cima (corpo robusto que não sente dor); pela de baixo seria 40; 5 por julgamento (carne morta que não sente dor); o site tinha 1"
     },
@@ -249,10 +243,6 @@
     {
       "campo": "aparencia",
       "motivo": "Degrau 2, repulsivo: \"um amálgama grotesco de partes de cadáveres... de pele amarelada e cicatrizes grosseiras\" (site). A Aparência mede a beleza (D-205), e esse corpo é feio. O site tinha 4; 2, o corpo de cadáveres costurados; o site tinha 4"
-    },
-    {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele morta, grossa e costurada, um pouco acima da pele de gente; o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site; a imunidade, da habilidade publicada (Elementos)"
     },
     {
       "campo": "corpo",

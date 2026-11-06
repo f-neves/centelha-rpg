@@ -26,6 +26,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 4,
@@ -42,6 +43,7 @@
     "bloqueio": 1,
     "esquiva": 1,
     "atletismo": 1,
+    "atirador": 3,
     "furtividade": 1,
     "integridade": 2,
     "prontidao": 2,
@@ -50,7 +52,6 @@
     "sobrevivencia": 3
   },
   "habilidadesSec": {
-    "disparo": 3,
     "intimidacao": 2,
     "voo": 2,
     "musculatura": 3
@@ -116,7 +117,7 @@
     {
       "nome": "Espinhos de cauda",
       "parte": "cauda",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -133,30 +134,47 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: silhueta vista de lado, asas fechadas, no chão. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Estoque de espinhos",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Espinhos de cauda",
+      "categoria": "substancia",
       "ativacao": "cada disparo dos Espinhos de cauda",
       "duracao": "o dia",
       "alcance": "30 m",
       "area": "um alvo por espinho",
-      "efeito": "a cauda guarda 24 espinhos; cada disparo gasta um, e eles voltam a crescer num dia",
+      "efeito": "A cauda lança um espinho por disparo",
       "dano": "o do ataque",
       "resistencia": "esquiva, contra a jogada do disparo",
-      "limiteDeUso": "24 espinhos por dia"
+      "limiteDeUso": "Guarda 24 espinhos. Produz 1 espinho por hora. Cada disparo gasta 1 espinho"
     },
     {
-      "nome": "saraivada",
+      "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "dispara quatro espinhos na mesma ação, divididos entre até dois alvos"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "depois da mordida, ataca também com as garras de leão na mesma ação"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum. Em vez da rotina corporal, pode lançar primeiro, segundo e terceiro espinho da cauda, na ordem. Cada disparo gasta uma dose e recebe as mesmas penalidades",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -164,6 +182,11 @@
       "nome": "caça de longe",
       "formas": "todas",
       "texto": "fere e cansa a presa com espinhos do ar antes de fechar a distância; conversa com ela antes de matar, e prefere gente a qualquer outra carne."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -233,12 +256,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Estoque de espinhos",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197) com o estoque do site (24 espinhos, \"6 rajadas de 4\"); o alcance de 30 m é da ficha"
-    },
-    {
       "campo": "corpo.envergadura",
       "motivo": "Duas vezes o corpo sem a cauda: asa de morcego, larga e curta, como a do cão yeth. O site não dá a envergadura"
+    },
+    {
+      "campo": "habilidadesEspeciais.Estoque de espinhos",
+      "motivo": "R1 e D-197. Os 24 espinhos por dia publicados passam a um estoque de 24 com produção sugerida de 1 por hora, mantendo o total diário. valor de molde, para a bancada (Guarda 24 espinhos. Produz 1 espinho por hora).; números da ficha (D-197) com o estoque do site (24 espinhos, \"6 rajadas de 4\"); o alcance de 30 m é da ficha"
     },
     {
       "campo": "corpo.area",

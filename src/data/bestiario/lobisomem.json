@@ -23,6 +23,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 3,
@@ -119,14 +120,15 @@
       "nome": "Forma mutável",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 8",
       "duracao": "até ele voltar com outra ação; na lua cheia, até o sol nascer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai",
+      "efeito": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade fora da lua cheia"
+      "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Mordida que derruba e amaldiçoa",
@@ -136,32 +138,35 @@
       ],
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "sobrenatural",
       "ativacao": "a Mordida que fere",
       "duracao": "a queda é instantânea; a maldição, permanente se pegar",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "o alvo cai no chão; e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
       "dano": "o da Mordida",
       "resistencia": "corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Firme contra o medo",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um efeito de medo o tem como alvo",
       "duracao": "a do efeito",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "o pavor pega menos nele que na maioria dos guerreiros",
       "dano": "nenhum",
-      "resistencia": "mente, com +2 na Defesa Mental contra medo",
-      "limiteDeUso": "nenhum"
+      "resistencia": "medo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Afinidade com lobos",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, um uivo ou um gesto",
       "duracao": "até o fim da cena",
       "alcance": "onde o uivo é ouvido",
@@ -169,7 +174,23 @@
       "efeito": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "até 6 lobos por vez"
+      "limiteDeUso": "até 6 lobos por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+    },
+    {
+      "nome": "Resistência à arma comum",
+      "formas": [
+        "hibrida"
+      ],
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -366,22 +387,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Forma mutável",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mordida que derruba e amaldiçoa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Firme contra o medo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Afinidade com lobos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "Degrau 6: a forma de luta passa o homem forte (o site tinha 5, a For 17 do Pathfinder) e chega perto do lobo atroz, sem passar de 6; 6 na híbrida, 4 na humana; o site tinha 5"
     },
@@ -403,7 +408,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: o couro peludo, mais grosso que a pele de gente e longe do couro do búfalo ; o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site: \"sua pele peluda absorve grande parte dos ferimentos comuns; só prata a fere de verdade\" (linha Elementos); nível 1 pelo couro peludo"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: o couro peludo, mais grosso que a pele de gente e longe do couro do búfalo ; o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site: \"sua pele peluda absorve grande parte dos ferimentos comuns; só prata a fere de verdade\" (linha Elementos); nível 1 pelo couro peludo"
     },
     {
       "campo": "comportamento.social",
@@ -420,6 +425,14 @@
     {
       "campo": "formas.lobo",
       "motivo": "Um lobo grande, com a massa do homem. Caça e foge nesta forma. Usa a ficha do lobo do molde como base, com a Centelha 2 e a mente de gente . O corpo é o do lobo do molde (55 kg) levado a 80 kg: as medidas sobem pela raiz cúbica da massa, × (80 ÷ 55)^(1/3) = 1,133, e a área pelo quadrado desse fator, 0,40 × 1,285 = 0,51 m², 14% acima do corte do Médio . Vigor 4, o da forma humana, que tem a mesma massa; o 5 da híbrida vem do corpo maior. PV pela massa: 25 + 3 × 4 = 37. Peso erguido pela R15 com 80 kg, Força 4, Halterofilismo 0 e Musculatura 0, o mesmo da humana. Couraça 0 e Aparência 6, as do lobo do molde: o couro e a cara são de lobo comum, e o couro mais grosso da híbrida não passa para esta forma; o lobo do molde levado a 80 kg (× 1,133), área 0,51 m², Médio; Vigor 4, Couraça 0 e Aparência 6"
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma mutável",
+      "motivo": "R3. Ativação uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce -> uma ação, Velocidade 8; na noite de lua cheia, à força, quando a lua nasce Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Mordida que derruba e amaldiçoa",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques.Mordida",

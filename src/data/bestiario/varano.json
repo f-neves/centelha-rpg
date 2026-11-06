@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 4,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 5,
     "destreza": 2,
@@ -105,15 +106,32 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Anticoagulante de varano",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida (morde e rasga)",
+      "categoria": "substancia",
+      "ativacao": "Mordida (morde e rasga) ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Anticoagulante de varano. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
       "nome": "fisgar com a boca",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],

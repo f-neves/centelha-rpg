@@ -23,6 +23,7 @@
     }
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -116,10 +117,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: silhueta de frente, de pé. Médio: de lado, de quatro, na corrida. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Duas garras",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -128,6 +144,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "o abraço só vem depois que as duas garras acertam o mesmo alvo"
     },
@@ -138,26 +155,36 @@
       "tecnica": {
         "id": "imobilizar",
         "nivel": 1
-      }
-    },
-    {
-      "nome": "bico no agarrado",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "além do abraço, bica o alvo que já está preso, na mesma ação"
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Fúria descontrolada",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "na primeira vez na cena em que cai abaixo da metade dos PV",
       "duracao": "até o fim da cena",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Enfurecido, e ataca o que estiver mais perto, aliado ou não",
+      "efeito": "Fica Enfurecido pelo Frenesi. +2 nas ações físicas exceto tiro, −2 em Esquiva e Bloqueio, só ações físicas. Não pode ser convencido. Sofre as penalidades de ferimento",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "uma vez por cena. Sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico contra a presa agarrada. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -232,10 +259,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Fúria descontrolada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "O \"bico cortante\" do site: bico de coruja do tamanho de uma cabeça de urso, com o pescoço atrás: Média; bico grande em N1 . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 0 e Briga 4 (0)"

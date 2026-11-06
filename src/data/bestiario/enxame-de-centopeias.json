@@ -20,7 +20,7 @@
     "comprimento": 0.03,
     "massa": 0.0001,
     "area": 0,
-    "posturaDoTamanho": "vista de cima"
+    "posturaDoTamanho": "indivíduo, anatomia"
   },
   "couraca": 0,
   "atributos": {
@@ -108,7 +108,51 @@
       "bloqueiaComoArma": null
     }
   ],
-  "habilidadesEspeciais": [],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Pulso do enxame",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando um alvo começa uma ação dentro de um quadrado ocupado pelo enxame",
+      "duracao": "instantânea",
+      "alcance": "o quadrado ocupado",
+      "area": "cada alvo dentro do quadrado",
+      "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos. O veneno só entra se o pulso causar ao menos 1 PV depois da Absorção, gastando uma dose da reserva declarada",
+      "dano": "1d6 + 1 de Perfuração",
+      "resistencia": "sem jogada de ataque; a Absorção conta",
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+    },
+    {
+      "nome": "Corpo de enxame",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Arma comum não fere este enxame. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Veneno de lacraia",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Garra de veneno",
+      "categoria": "substancia",
+      "ativacao": "quando o pulso causa ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Veneno de lacraia. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    }
+  ],
   "comoLuta": [],
   "sentidos": [
     {

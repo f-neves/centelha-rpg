@@ -26,6 +26,7 @@
     }
   },
   "couraca": 6,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 9,
     "destreza": 3,
@@ -47,12 +48,12 @@
     "prontidao": 4,
     "sociabilidade": 2,
     "ocultismo": 2,
-    "manha": 3
+    "manha": 3,
+    "atirador": 3
   },
   "habilidadesSec": {
     "intimidacao": 3,
     "voo": 3,
-    "disparo": 3,
     "acerto-arcano": 2,
     "musculatura": 3
   },
@@ -128,7 +129,6 @@
     {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
       "classe": "distancia",
       "pgr": [
         3,
@@ -145,6 +145,20 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: de lado, pousado, asas fechadas. Enorme: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Sopro de fogo",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -153,27 +167,37 @@
         "nivel": 3
       },
       "ataque": "Sopro de fogo",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "cone de 9 m",
-      "efeito": "o fogo queima tudo no cone",
+      "efeito": "o fogo queima tudo no cone. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "6d6 + Centelha, fogo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
       "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Presença",
@@ -183,14 +207,15 @@
         "arte": "morte",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "a primeira vez na cena em que ele ruge, ataca ou desce do céu",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "18 m",
       "area": "esfera de 18 m em volta dele",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência 3 + Intimidação 3 + 2 × o menor entre Centelha 5 e Intimidação 3 (6) = 12 mais a rolagem; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência 3 + Intimidação 3 + 2 × o menor entre Centelha 5 e Intimidação 3 (6) = 12 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Temor Reverente",
@@ -199,12 +224,14 @@
       "tecnica": {
         "id": "temor-reverente",
         "nivel": 3
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Voo veloz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "descer de pelo menos 6 m de altura direto sobre o alvo",
       "duracao": "instantânea",
       "alcance": "o do voo",
@@ -212,13 +239,21 @@
       "efeito": "+1d6 na Iniciativa no mergulho",
       "dano": "o do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m"
+      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m. Sem custo"
     },
     {
       "nome": "Feitiço sem gastar ação",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "\"lança 1 truque arcano por cena sem gastar ação extra\"; a ficha conjura pela regra da Arte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando inicia uma conjuração",
+      "duracao": "a próxima ação",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Reduz a duração da conjuração em 2 Ticks, até o mínimo de 1 Tick",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por cena, sem custo"
     }
   ],
   "comoLuta": [
@@ -226,6 +261,11 @@
       "nome": "caça do alto",
       "formas": "todas",
       "texto": "mergulha, sopra fogo sobre o grupo e desce para morder o que ficou de pé."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -307,18 +347,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro de fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Voo veloz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "sentidos.sentidos dracônicos",
       "motivo": "sem regra ainda no livro"
     },
@@ -336,7 +364,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escama de dragão, \"acima do crocodilo\" (manual 4.2), como o branco jovem (6) . As \"Escamas rígidas\" do site (Absorção +2d6) são esta Couraça. O nível fica fora da Absorção (decisoes-autor §16); nível 6"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escama de dragão, \"acima do crocodilo\" (manual 4.2), como o branco jovem (6) . As \"Escamas rígidas\" do site (Absorção +2d6) são esta Couraça.; nível 6"
     },
     {
       "campo": "comportamento.atividade",
@@ -345,6 +373,14 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N2, como o branco jovem . Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques.Sopro de fogo",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiço sem gastar ação",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "ataques",

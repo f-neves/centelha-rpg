@@ -20,6 +20,10 @@
     "massa": 1.25,
     "area": 0.29,
     "posturaDoTamanho": "de baixo, asas abertas",
+    "segundoTamanho": {
+      "area": 0.12,
+      "posturaDoTamanho": "pousado, asas fechadas"
+    },
     "linhaPV": "abaixo",
     "linhaPVMotivo": "ave de osso oco, corpo leve"
   },
@@ -119,7 +123,22 @@
       "bloqueiaComoArma": null
     }
   ],
-  "habilidadesEspeciais": [],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Pequeno: de baixo, asas abertas. Miúdo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    }
+  ],
   "comoLuta": [
     {
       "nome": "bicar o caído",

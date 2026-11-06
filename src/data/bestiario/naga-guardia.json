@@ -23,6 +23,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 7,
@@ -45,10 +46,10 @@
     "ocultismo": 3,
     "empatia": 3,
     "persuasao": 2,
-    "sociabilidade": 2
+    "sociabilidade": 2,
+    "atirador": 3
   },
   "habilidadesSec": {
-    "disparo": 3,
     "acerto-arcano": 4,
     "musculatura": 2
   },
@@ -106,24 +107,40 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: erguida. Pequeno: enrolada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Mordida venenosa",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
-      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
+      "categoria": "substancia",
+      "texto": "A Mordida inocula ao causar ao menos 1 PV depois da Absorção. O cuspe e a Mordida gastam a mesma reserva de peçonha"
     },
     {
       "nome": "Cuspe à distância",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 7 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6)",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 7; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador",
       "duracao": "a do veneno",
       "alcance": "9 m",
       "area": "um alvo",
       "efeito": "o cuspe mira os olhos e a boca; mucosa exposta conta como sangue (`venenos.json`), e o veneno da linha Veneno e doença entra",
       "dano": "nenhum além do veneno",
       "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno",
-      "limiteDeUso": "três vezes por cena, recarga de 1 hora, os usos do cuspe da naga espírita (o site não dá)"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. A Mordida usa esta mesma reserva"
     }
   ],
   "comoLuta": [
@@ -131,6 +148,11 @@
       "nome": "sentinela do lugar sagrado",
       "formas": "todas",
       "texto": "avisa antes de atacar; protege o lugar com o Refúgio, cospe de longe, morde quem insiste e cura o par e a ninhada."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -191,10 +213,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Cuspe à distância",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Animal comum na escala da decisão 12"
     },
@@ -208,7 +226,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escamas de serpente ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escamas de serpente ;; nível 1"
     },
     {
       "campo": "comportamento.atividade",
@@ -223,16 +241,20 @@
       "motivo": ""
     },
     {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Antes: Potência 16, pool 4 de Vigor  O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campo": "habilidadesEspeciais.Cuspe à distância",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R3. Ativação uma ação, Velocidade 6; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) -> uma ação, Velocidade 7; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
       "campo": "artes",
       "motivo": "Proteção 4, Cura 4 e Forças 3, escolhidas pelo texto; o site não grava Arte"
     },
     {
       "campo": "virtudes",
       "motivo": "Compaixão 2 e Convicção 4; o site tinha 0 e 3"
-    },
-    {
-      "campo": "habilidadesEspeciais",
-      "motivo": "Potência 16, pool 4 de Vigor"
     },
     {
       "campo": "ataques",

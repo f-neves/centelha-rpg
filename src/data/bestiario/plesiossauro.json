@@ -21,6 +21,7 @@
     "tamanhoEscolhido": "medio"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 5,
     "destreza": 2,

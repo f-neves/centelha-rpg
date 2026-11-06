@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 4,
@@ -128,12 +129,14 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
@@ -141,6 +144,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "investida"
     }
   ],

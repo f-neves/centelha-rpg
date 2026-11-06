@@ -41,7 +41,7 @@
 //                                               primeiro Tick que divergir
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { carregarLib, ligar } from './sim/lib-ponte.mjs';
 import { rodarEspelho, celulaEspelho } from './sim/espelho.mjs';
@@ -293,7 +293,7 @@ function comparar(cena, mesa, laco) {
 const L = await carregarLib();
 ligar(L);
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
-const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
+const br = await abrirNavegador(puppeteer, { executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   for (const cena of CENAS) {
    // A CENA DO DUPLO GOLPE FATAL tem semente própria (achada por busca, não

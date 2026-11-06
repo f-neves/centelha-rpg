@@ -26,6 +26,7 @@
     }
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 2,
@@ -46,12 +47,12 @@
     "integridade": 5,
     "prontidao": 4,
     "sociabilidade": 2,
-    "manha": 4
+    "manha": 4,
+    "atirador": 4
   },
   "habilidadesSec": {
     "intimidacao": 4,
     "voo": 3,
-    "disparo": 4,
     "acerto-arcano": 4,
     "musculatura": 3
   },
@@ -154,7 +155,6 @@
     {
       "nome": "Sopro elétrico",
       "parte": "boca",
-      "habilidade": "disparo",
       "classe": "distancia",
       "pgr": [
         3,
@@ -171,6 +171,20 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enorme: de lado, pousado, asas fechadas. Imenso: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Sopro elétrico",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -179,20 +193,22 @@
         "nivel": 4
       },
       "ataque": "Sopro elétrico",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "instantânea",
       "alcance": "18 m à frente",
       "area": "linha de 18 m",
-      "efeito": "o relâmpago atravessa todos na linha",
+      "efeito": "o relâmpago atravessa todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "9d6 + Centelha, raio",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -200,13 +216,22 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Cauda",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
       "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Presença",
@@ -216,14 +241,15 @@
         "arte": "morte",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "a primeira vez na cena em que ele ruge, ataca ou desce do céu",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "18 m",
       "area": "esfera de 18 m em volta dele",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência 5 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 17 mais a rolagem; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência 5 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 17 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Miragem no deserto",
@@ -231,21 +257,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "imagem-viva"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da próxima ação do alvo",
       "alcance": "36 m",
       "area": "um alvo",
       "efeito": "uma ilusão esconde onde ele está de verdade: para esse alvo, fica Invisível",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência 5 + Manha 4 + 2 × o menor entre Centelha 6 e Manha 4 (8) = 17 mais a rolagem",
-      "limiteDeUso": "três vezes por cena"
+      "resistencia": "Influência 5 + Manha 4 + 2 × o menor entre Centelha 6 e Manha 4 (8) = 17 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Enterrar e emergir",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "sair de baixo da areia para atacar",
       "duracao": "instantânea",
       "alcance": "o da escavação",
@@ -253,7 +282,7 @@
       "efeito": "+1d6 na Iniciativa no ataque que emerge",
       "dano": "o do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um a cada vez que se enterra de novo"
+      "limiteDeUso": "um a cada vez que se enterra de novo. Sem custo"
     }
   ],
   "comoLuta": [
@@ -261,12 +290,17 @@
       "nome": "senhor das dunas",
       "formas": "todas",
       "texto": "espera enterrado, emerge com o relâmpago em linha, esconde-se com a miragem e morde quem procura o lugar errado."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
     {
       "nome": "visão no escuro",
-      "descricao": "vê sem luz",
+      "descricao": "Distingue formas sem cor até 18 m no escuro, sem atravessar obstáculos",
       "formas": "todas"
     },
     {
@@ -276,9 +310,8 @@
     },
     {
       "nome": "sentidos do deserto",
-      "descricao": "percebe vibração no chão a longa distância; dificulta a Furtividade contra ele",
-      "formas": "todas",
-      "classe": "sem regra ainda"
+      "descricao": "Percebe vibrações no mesmo solo até 18 m. Quem voa fica fora desse sentido",
+      "formas": "todas"
     }
   ],
   "fisiologia": {
@@ -343,26 +376,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro elétrico",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Miragem no deserto",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Enterrar e emergir",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "sentidos.sentidos do deserto",
-      "motivo": "sem regra ainda no livro"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "A do dragão branco jovem (1,3 m, 700 kg) escalada pela massa: × (massa ÷ 700)^(1/3) = × 2,205"
     },
@@ -376,7 +389,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escama de dragão: os níveis 9 a 12 ficam para os adultos e anciões (o texto do branco jovem) . As \"Escamas azuis\" do site (Absorção +3d6) são esta Couraça. O nível fica fora da Absorção (decisoes-autor §16); nível 9"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escama de dragão: os níveis 9 a 12 ficam para os adultos e anciões (o texto do branco jovem) . As \"Escamas azuis\" do site (Absorção +3d6) são esta Couraça.; nível 9"
     },
     {
       "campo": "comportamento.atividade",
@@ -385,6 +398,14 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques.Sopro elétrico",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Miragem no deserto",
+      "motivo": "R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "ataques",

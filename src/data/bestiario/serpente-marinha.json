@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 13,
     "destreza": 4,
@@ -95,24 +96,42 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "engolir inteiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "engole o alvo menor que já está agarrado; preso dentro, ele leva dano a cada rodada até sair"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "capotar embarcações",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "investe contra um navio para virá-lo e jogar a tripulação na água"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "elusiva no mar",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "nada sem deixar rastro, e é muito difícil de rastrear ou cercar"
     }
   ],
@@ -199,7 +218,7 @@
   "revisao": [
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: escamas de serpente grande, um abaixo do crocodilo (5) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 3: escamas de serpente grande, um abaixo do crocodilo (5) ."
     },
     {
       "campo": "corpo.area",

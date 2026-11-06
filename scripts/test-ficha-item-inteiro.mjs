@@ -3,13 +3,13 @@
 import fs from 'node:fs';
 import puppeteer from 'puppeteer-core';
 import { subirDev } from './dev-server.mjs';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { carimbar } from './carimbo.mjs';
 
 const kael = JSON.parse(fs.readFileSync('scripts/fixtures/kael.json', 'utf8'));
 kael.conjuntos[0].habil.mod = { acerto: 3 };
 const dev = await subirDev();
-const browser = await puppeteer.launch({ executablePath: navegadorOuSair('ficha, item inteiro'), headless: true, args: ['--no-sandbox'] });
+const browser = await abrirNavegador(puppeteer, { executablePath: navegadorOuSair('ficha, item inteiro'), headless: true, args: ['--no-sandbox'] });
 const falhas = []; const ok = (c, m) => { console.log((c ? '✓ ' : '✘ ') + m); if (!c) falhas.push(m); };
 try {
   const p = await browser.newPage(); const erros = []; p.on('pageerror', (e) => erros.push(String(e)));

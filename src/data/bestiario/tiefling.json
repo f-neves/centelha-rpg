@@ -88,30 +88,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "sombra",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "manto-de-treva"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até ele desfazer",
       "alcance": "18 m",
       "area": "esfera de 6 m num ponto que ele vê",
       "efeito": "escuridão sobrenatural que a luz comum não atravessa; ele enxerga nela",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
-      "nome": "Golpe certeiro",
+      "nome": "Golpe na brecha",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ataque": "Sabre",
-      "ativacao": "o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
       "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "a lâmina entra onde o alvo não guarda",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -196,11 +198,7 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Manto de trevas",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Golpe certeiro",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

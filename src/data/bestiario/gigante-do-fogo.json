@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 10,
     "destreza": 2,
@@ -121,11 +122,12 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Rocha arremessada",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
       "duracao": "instantânea",
       "alcance": "até 36 m; acima de 12 m, −2 na jogada",
       "area": "um alvo",
-      "efeito": "a rocha derruba o alvo Médio ou menor que ela fere",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "2d6 + Força + Centelha, Impacto",
       "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
       "limiteDeUso": "enquanto houver rocha por perto"
@@ -134,6 +136,7 @@
       "nome": "Sangue de forja",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um efeito que deixaria Abalado",
       "duracao": "a do efeito",
       "alcance": "o próprio corpo",
@@ -141,12 +144,13 @@
       "efeito": "a disciplina de forja resiste ao medo: +2 na Defesa Mental contra o que deixa Abalado",
       "dano": "nenhum",
       "resistencia": "mente, com o +2",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Presença marcial",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, uma ordem gritada",
       "duracao": "até o fim da próxima ação de cada aliado",
       "alcance": "9 m",
@@ -154,13 +158,14 @@
       "efeito": "comanda as tropas: cada aliado soma +2 na próxima jogada de ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -169,6 +174,11 @@
       "nome": "comandante da forja",
       "formas": "todas",
       "texto": "luta em formação, com os escravos e os ogros na frente; grita a ordem que fortalece a tropa, atira rochas e entra de espadão onde a linha cede."
+    },
+    {
+      "nome": "Placa do gigante",
+      "formas": "todas",
+      "texto": "A placa usa os números da peça do catálogo e serve ao corpo do gigante. O preço dobra por faixa de massa acima da humana."
     }
   ],
   "sentidos": [
@@ -247,20 +257,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Arremesso de rocha",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sangue de forja",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença marcial",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: pele grossa de gigante, como o gigante da colina (2) ; o nível fica fora da Absorção (decisoes-autor §16). Vestido, pelas regras do personagem (`armas-e-armaduras.md`; manual 5.2): a placa de munição (`placa-municao`: Impacto 4, Corte 7, Perfuração 4, N2, Penalidade 3) soma por cima da natural (D-188). A resistência é a do site (Elementos); 2, pele grossa de gigante"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça: pele grossa de gigante, como o gigante da colina (2) ; o nível fica fora da Absorção (decisoes-autor §16). Vestido, pelas regras do personagem (`armas-e-armaduras.md`; manual 5.2): a placa de munição (`placa-municao`: Impacto 4, Corte 7, Perfuração 4, N2, Penalidade 3) soma por cima da natural (D-188). A resistência é a do site (Elementos); 2, pele grossa de gigante"
     },
     {
       "campo": "comportamento.dieta",

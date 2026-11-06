@@ -20,6 +20,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -134,13 +135,22 @@
       "nome": "agarrar (o \"abraço\")",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "fúria ferida",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ferido grave, luta com mais força e fere mais"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando sofre ferimento grave",
+      "duracao": "até um dos lados cair ou o combate acabar",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Fica Enfurecido. +2 nas ações físicas exceto tiro, −2 em Esquiva e Bloqueio, só ações físicas. Não pode ser convencido. Sofre as penalidades de ferimento",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "A cada exposição ao gatilho, sem custo"
     }
   ],
   "comoLuta": [],
@@ -217,6 +227,10 @@
     {
       "campo": "corpo.largura",
       "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,87 × 1,0240 = 0,891 . Antes: Principal: 0,74 m (estimada pelo Arquiteto, sem fonte). Escalada pelo cubo da massa: 0,740 × 1,1786 = 0,872."
+    },
+    {
+      "campo": "habilidadesEspeciais.fúria ferida",
+      "motivo": "R9. O ferimento dispara o Frenesi da criatura. O término segue o combate entre os dois lados. A ficha não concedia imunidade a penalidade de ferimento."
     }
   ]
 }

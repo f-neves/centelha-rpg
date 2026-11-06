@@ -109,6 +109,7 @@
       "nome": "Caçador em matilha",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale quando outro gnoll está em contato com o mesmo alvo",
       "duracao": "enquanto o companheiro estiver ali",
       "alcance": "o do corpo a corpo",
@@ -116,12 +117,13 @@
       "efeito": "soma +1 na jogada de ataque contra esse alvo",
       "dano": "nenhum além do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Mordida selvagem",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "a Mordida da tabela, no lugar do golpe de machado (um ataque por ação)"
     }
   ],
@@ -200,10 +202,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Caçador em matilha",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "comportamento.social",
       "motivo": "site (Sociedade)"

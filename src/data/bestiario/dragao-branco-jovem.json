@@ -26,6 +26,7 @@
     }
   },
   "couraca": 6,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 8,
     "destreza": 2,
@@ -46,15 +47,15 @@
     "integridade": 2,
     "prontidao": 3,
     "sobrevivencia": 2,
-    "sociabilidade": 1
+    "sociabilidade": 1,
+    "atirador": 3
   },
   "habilidadesSec": {
     "intimidacao": 3,
     "voo": 2,
     "natacao": 2,
     "escalada": 1,
-    "musculatura": 3,
-    "disparo": 3
+    "musculatura": 3
   },
   "especialidades": {
     "furtividade": [
@@ -134,7 +135,6 @@
     {
       "nome": "Sopro de frio",
       "parte": "boca",
-      "habilidade": "disparo",
       "classe": "distancia",
       "pgr": [
         3,
@@ -151,35 +151,60 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: de lado, pousado, asas fechadas. Enorme: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Sopro de frio",
       "formas": "todas",
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "sopro-do-norte"
       },
       "ataque": "Sopro de frio",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "cone de 9 m",
-      "efeito": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair",
+      "efeito": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "6d6 + Centelha, gelo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
       "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "garra, garra e mordida no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Presença",
@@ -189,14 +214,15 @@
         "arte": "morte",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "a primeira vez na cena em que ele ruge, ataca ou desce do céu",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "12 m",
       "area": "esfera de 12 m em volta dele",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Andar no gelo",
@@ -206,6 +232,7 @@
         "arte": "gelo",
         "nivel": 2
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -213,7 +240,7 @@
       "efeito": "anda, corre e luta no gelo e na neve sem penalidade e sem cair",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Nevasca",
@@ -221,21 +248,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "inverno"
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "24 Ticks",
       "alcance": "12 m",
       "area": "esfera de 6 m",
       "efeito": "neve fechada; quem está dentro tem −2 em Prontidão e nas jogadas de Percepção pela vista, e ele não sofre a penalidade",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Voo em mergulho",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "descer de pelo menos 6 m de altura direto sobre o alvo",
       "duracao": "instantânea",
       "alcance": "o do voo",
@@ -243,7 +273,7 @@
       "efeito": "+2 na Iniciativa da rodada do mergulho e +1 na jogada do primeiro golpe",
       "dano": "o do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m"
+      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m. Sem custo"
     }
   ],
   "comoLuta": [
@@ -256,14 +286,18 @@
       "nome": "caça do alto",
       "formas": "todas",
       "texto": "sopra primeiro, de cima, e desce para morder o que ficou de pé."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
     {
       "nome": "visão no escuro",
-      "descricao": "vê sem luz",
-      "formas": "todas",
-      "classe": "sem regra ainda"
+      "descricao": "Distingue formas sem cor até 18 m no escuro, sem atravessar obstáculos",
+      "formas": "todas"
     },
     {
       "nome": "faro",
@@ -343,34 +377,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro de frio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Andar no gelo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Nevasca",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Voo em mergulho",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "sentidos.visão no escuro",
-      "motivo": "sem regra ainda no livro"
-    },
-    {
-      "campo": "habilidadesSec.disparo",
-      "motivo": "O sopro é a arma principal dele: \"Serve para qualquer disparo corporal (... sopro)\" (decisoes-autor §14). A ficha usava o Disparo na jogada sem a linha"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "Sem espécie medida. Um quadrúpede de 700 kg de patas eretas fica entre o bisão (cerca de 1,8 m no cupim, de memória) e o crocodilo (baixo, de patas abertas); o dragão anda de patas meio eretas, com o peito largo e a cabeça alta"
     },
@@ -384,7 +390,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: escama de dragão, \"acima do crocodilo\" (manual 4.2; crocodilo 4 a 5), como a tartaruga grande (cerca de 6); o jovem fica no começo da faixa, e os níveis 9 a 12 ficam para os adultos e anciões quando as sobrenaturais tiverem referência . O nível fica fora da Absorção (decisoes-autor §16). As \"escamas gélidas\" do site (Absorção +2d6) são esta Couraça; 6, \"acima do crocodilo\", no começo da faixa, para deixar espaço às idades maiores"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça: escama de dragão, \"acima do crocodilo\" (manual 4.2; crocodilo 4 a 5), como a tartaruga grande (cerca de 6); o jovem fica no começo da faixa, e os níveis 9 a 12 ficam para os adultos e anciões quando as sobrenaturais tiverem referência .; 6, \"acima do crocodilo\", no começo da faixa, para deixar espaço às idades maiores"
     },
     {
       "campo": "comportamento.atividade",
@@ -393,6 +399,14 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7). Golpe de boca: Força × 1. N2 pela proposta da seção 3.10 (até 30.000 N): a mordida de um réptil de 700 kg fica acima da do crocodilo (N1 a N2) . Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+    },
+    {
+      "campo": "ataques.Sopro de frio",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Nevasca",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "atributos.forca",

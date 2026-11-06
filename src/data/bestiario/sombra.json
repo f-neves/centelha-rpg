@@ -102,14 +102,15 @@
         "arte": "espirito",
         "nivel": 2
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "desliza sem ruído, atravessa paredes e portas fechadas e se achata para escoar por frestas mínimas; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos)",
+      "efeito": "desliza sem ruído, atravessa paredes e portas fechadas e se achata para escoar por frestas mínimas; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos). Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Dreno de Força",
@@ -117,21 +118,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "definhar"
       },
+      "categoria": "sobrenatural",
       "ativacao": "o Toque dilacerante que fere",
       "duracao": "até um descanso completo",
       "alcance": "toque",
       "area": "um alvo",
-      "efeito": "suga a força de quem toca; a Força do alvo cai 1, o efeito se acumula a cada toque que pega, e a sombra se fecha com o que roubou",
+      "efeito": "suga a força de quem toca; a Força do alvo cai 1, o efeito se acumula a cada toque que pega, e a sombra se fecha com o que roubou. A Força reduzida vale nas contas que a usam, exceto PV e Absorção",
       "dano": "nenhum além do toque; −1 na Força do alvo, e ela recupera 1d6 PV",
       "resistencia": "corpo, contra a jogada do toque; quem passa não perde Força por aquele toque",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cria sombras",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "a vítima morre com a Força reduzida pelo Dreno de Força, ou cai a Força 0 por ele",
       "duracao": "permanente",
       "alcance": "o corpo da vítima",
@@ -139,12 +143,13 @@
       "efeito": "a alma se ergue como sombra no fim da cena, presa ao mesmo destino",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por vítima"
+      "limiteDeUso": "um por vítima. Sem custo"
     },
     {
       "nome": "Deslize silencioso",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "começar a cena escondida no escuro",
       "duracao": "a primeira rodada",
       "alcance": "o próprio corpo",
@@ -152,19 +157,7 @@
       "efeito": "sai da treva sem ruído e pega a vítima de surpresa",
       "dano": "nenhum; +2 na Iniciativa",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
-    },
-    {
-      "nome": "imune a veneno e doença",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não tem corpo que se envenene ou adoeça"
-    },
-    {
-      "nome": "sem corpo",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa"
+      "limiteDeUso": "uma vez por cena. Sem custo"
     }
   ],
   "comoLuta": [
@@ -187,11 +180,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "no escuro, some; Furtividade (no escuro) +3",
-    "mente": "quase nenhuma; não lembra quem foi, só tem fome",
-    "tracos": "sem peso e sem matéria; treva em forma vaga de gente, de bordas que se desfazem; o ar fica frio onde ela passa"
+    "mente": "quase nenhuma; não lembra quem foi, só tem fome. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "sem peso e sem matéria; treva em forma vaga de gente, de bordas que se desfazem; o ar fica frio onde ela passa. Não se cansa",
+    "tipoCorpo": "incorporeo",
+    "recuperacao": "Recupera-se pela energia negativa",
+    "familiasMentaisIgnoradas": [
+      "leitura-de-mente"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -201,7 +197,6 @@
   "comportamento": {
     "social": "sozinha, ou com as sombras que criou",
     "atividade": "noturno; lugares sem luz",
-    "dieta": "nenhuma",
     "caca": "espera na treva e toca",
     "dianteDeGente": "ataca"
   },
@@ -265,28 +260,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Incorpórea",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Dreno de Força",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cria sombras",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Deslize silencioso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "Para a alma sem corpo, o Vigor mede o quanto ela aguenta antes de se desfazer, como no espectro. Fica como no site; 4, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
     },
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dreno de Força",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais",

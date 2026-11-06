@@ -47,7 +47,7 @@ const noJson = Object.keys(regras.bandeiras || {}).filter((k) => typeof regras.b
 ok(noJson.length === 15, `e quinze booleanos no regras.json (${noJson.length})`);
 ok(B.BANDEIRAS.every((b) => noJson.includes(b)), 'os nomes do módulo e do JSON são os mesmos');
 ok(!B.BANDEIRAS.includes('couraca'),
-  'a couraca NÃO está na lista: já é aplicada em tempo de geração, e uma bandeira a somaria duas vezes');
+  'a couraca NÃO está na lista: a Absorção da criatura já sai do motor com ela (R49), e uma bandeira a somaria duas vezes');
 
 // ---- 2: o estado inicial é o que a §0.7 decidiu ----
 const publicadas = ['margem', 'gate', 'porte', 'bloqueio', 'modo2', 'teto6', 'curaSemArea', 'curaDivide', 'porRodada'];

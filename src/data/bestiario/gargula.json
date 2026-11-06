@@ -24,6 +24,7 @@
     }
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 4,
     "destreza": 4,
@@ -124,15 +125,31 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Garras e chifres",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "empunhadura-dupla"
     },
     {
       "nome": "Voo silencioso",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale enquanto voa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -140,13 +157,21 @@
       "efeito": "o voo não faz barulho: a Furtividade vale no ar, e quem está embaixo só a percebe pela vista",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Corpo pétreo",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come nem dorme, e veneno não a pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "não respira, não come nem dorme, e veneno não a pega. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -173,7 +198,7 @@
     "prendeRespiracao": "não precisa",
     "camuflagem": "imóvel, passa por estátua; Especialidade natural",
     "mente": "simples; cumpre o propósito",
-    "tracos": "corpo de pedra cinzenta rachada, asas de morcego de pedra, chifres, garras, rosto em careta"
+    "tracos": "Corpo vivo comum. corpo de pedra cinzenta rachada, asas de morcego de pedra, chifres, garras, rosto em careta"
   },
   "aptidoes": {
     "montaria": false,
@@ -225,10 +250,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Voo silencioso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "Apara com o braço de pedra, que \"quase todas podem bloquear sem tomar dano\" (D-066)"
     },
@@ -241,12 +262,12 @@
       "motivo": "O corpo, 0,72 × 0,833² × 1,3 = 0,65 m²; as asas, (2,4 − 0,49) × 0,5 m de largura média = 0,96 m²  na largura da asa; Grande de asas abertas, Médio de pé  na largura da asa"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 9: pedra viva, como o golem de pedra (nível 9, \"sem referência até entrarem\", tamanho-decisoes-5, item 2). O nível fica fora da Absorção até o autor dar o valor (decisoes-autor §16): a \"Pele de pedra\" e o +3 de Absorção do site dependem dele; nível 9, como o golem de pedra"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": ""
+    },
+    {
+      "campo": "couraca",
+      "motivo": "nível 9, como o golem de pedra"
     },
     {
       "campo": "virtudes",

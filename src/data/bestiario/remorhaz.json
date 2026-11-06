@@ -21,6 +21,7 @@
     "linhaPVMotivo": "placas grossas, corpo robusto"
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 9,
     "destreza": 3,
@@ -99,6 +100,7 @@
         "arte": "fogo",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo enquanto ela está desperta",
       "duracao": "contínua",
       "alcance": "o próprio corpo",
@@ -106,12 +108,13 @@
       "efeito": "o corpo arde por dentro e queima o que encosta",
       "dano": "2d6 de fogo em quem a toca ou é mordido, somado ao do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por toque"
+      "limiteDeUso": "uma vez por toque. Sem custo"
     },
     {
       "nome": "arma que derrete",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "a arma que fica muito tempo em contato com ela começa a derreter"
     },
     {
@@ -119,13 +122,22 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "engolir inteiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "engole o alvo menor que já está agarrado; preso dentro, ele leva dano a cada rodada até sair"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de fogo uma vez a cada 6 Ticks",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -213,12 +225,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Calor abrasador",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Fogo 3 (2d6)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: placas grossas de artrópode gigante, como o crocodilo (5) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 5: placas grossas de artrópode gigante, como o crocodilo (5) ."
     },
     {
       "campo": "corpo",
@@ -231,6 +239,10 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +13 perfurante\", 7 Ticks, dano médio 23,5). A ficha fica com a mordida, Média, e o calor vai no Calor abrasador. Dano médio: 23,5 antes; depois, mordida 16,5, mais 2d6 de fogo (média 7): 23,5 com o calor, sem mudança"
+    },
+    {
+      "campo": "habilidadesEspeciais.Calor abrasador",
+      "motivo": "poder natural com números da ficha (D-197), base Fogo 3 (2d6)"
     }
   ]
 }

@@ -33,7 +33,7 @@
 //   node scripts/test-golpe-caido.mjs
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
 import { carimbar } from './carimbo.mjs';
@@ -83,7 +83,7 @@ const CAIXA = () => {
 };
 
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
-const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
+const br = await abrirNavegador(puppeteer, { executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   // ---------------------------------------------------------------- 1 · a caixa
   console.log('\n· o alvo caiu ANTES do Tick, e há inimigo ao alcance');

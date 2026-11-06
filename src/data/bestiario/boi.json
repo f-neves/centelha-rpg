@@ -20,6 +20,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 1,
@@ -117,30 +118,48 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Investida",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Investida (marrada)",
+      "categoria": "inato",
+      "regra": "investida"
+    },
+    {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "pisotear",
-      "formas": "todas",
-      "classe": "livro",
-      "ataque": "Investida (marrada)",
-      "regra": "investida"
     },
     {
       "nome": "esmagar contra a cerca",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Investida (marrada)",
-      "efeito": "prensa o alvo contra cerca, porteira ou parede"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao Empurrar contra um obstáculo que não cede, causa +1d6 de Impacto uma vez por ação. Para manter alguém prensado, deve manter o agarrão",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Atropelar",
+      "formas": "todas",
+      "classe": "livro",
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [],

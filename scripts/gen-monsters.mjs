@@ -115,7 +115,7 @@ function build(c, fonte) {
       defesaSocial: c.defesaSocial,
       defesaMental: c.defesaMental,
       absorcao: { impacto: c.soak.impacto, corte: c.soak.corte, perfuracao: c.soak.perfuracao },
-      resistenciaPerfuracao: c.resistPerf || 0, ...(f.motor?.couraca ? { couraca: f.motor.couraca } : {}), /* o nível de Couraça, à vista no card (M6); ainda não entra na Absorção */ ...(c.vestida ? { vestida: c.vestida } : {}), ...(c.defesaOutraArma ? { defesaOutraArma: c.defesaOutraArma } : {}), /* P23: a Defesa com a outra arma (o solar de arco) */ // D-206: com o equipamento; a mesa escolhe (defesa-vestida.ts)
+      resistenciaPerfuracao: c.resistPerf || 0, ...(f.motor?.veneno ? { veneno: f.motor.veneno } : {}), /* a dose de veneno do equipamento (D-306) */ ...(f.motor?.couraca ? { couraca: f.motor.couraca, ...(f.motor.perfilCouraca ? { perfilCouraca: f.motor.perfilCouraca } : {}) } : {}), /* o nível de Couraça, à vista no card (M6); com o perfil (R49, D-328) já entra na Absorção, sem ele não */ ...(c.vestida ? { vestida: c.vestida } : {}), ...(c.defesaOutraArma ? { defesaOutraArma: c.defesaOutraArma } : {}), /* P23: a Defesa com a outra arma (o solar de arco) */ // D-206: com o equipamento; a mesa escolhe (defesa-vestida.ts)
       // Fraqueza e resistência a elemento, tipo de dano ou natureza. A maioria das
       // criaturas não tem nenhuma, então os campos só aparecem em quem tem.
       ...(elem.fraquezas.length ? { fraquezas: elem.fraquezas } : {}),
@@ -124,7 +124,7 @@ function build(c, fonte) {
       iniciativa: c.iniciativa,
       // As três velocidades vêm do modo de deslocamento declarado na fonte.
       deslocamento: (()=>{const d=f.deslocamentoDeclarado;if(!d)throw Error(f.id+': deslocamento ausente');return {batalha:d.batalha,arranque:d.arranque,corrida:d.corrida};})(),
-      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), forcaInvestida: a.forcaInvestida ?? 0, ...(a.notas ? { notas: a.notas } : {}) })),
+      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), forcaInvestida: a.forcaInvestida ?? 0, ...(a.semJogada ? { semJogada: true } : {}), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao || descricaoDaRef(x), ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}), ...(x.campos ? {texto:x.texto, campos:x.campos} : {}) })),
     ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),

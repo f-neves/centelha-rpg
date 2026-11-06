@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 5,
     "destreza": 5,
@@ -114,37 +115,71 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Espada curta",
+      "categoria": "inato",
       "regra": "empunhadura-dupla"
-    },
-    {
-      "nome": "quatro braços juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "golpeia com as duas espadas e as duas garras na mesma ação, sem perder precisão; a empunhadura dupla do livro conta duas mãos"
     },
     {
       "nome": "ferrão paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a mordida injeta um veneno que paralisa por horas quem falha num teste de Vigor"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "quando o ataque descrito atinge a vítima; o golpe inocula ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "a duração do veneno, em horas",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "a mordida injeta um veneno que paralisa por horas quem falha num teste de Vigor. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "pela regra do veneno da ficha",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "implante de ovos",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "põe dezenas de ovos dentro de uma vítima indefesa; ao eclodir, as larvas a comem por dentro até a morte, a menos que sejam tiradas por cirurgia ou curadas"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "a xill implanta os ovos na carne de uma vítima indefesa",
+      "duracao": "até a doença regredir ou o agente ser retirado",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Infestação das larvas de xill. Exposição: a xill implanta os ovos na carne de uma vítima indefesa. Incubação: 1 dia. Virulência 15. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
+      "dano": "pela progressão da doença",
+      "resistencia": "Vigor + Resistência contra Virulência 15",
+      "limiteDeUso": "por exposição"
     },
     {
       "nome": "passagem entre planos",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "desliza do Plano Etéreo para o mundo num instante; a volta é lenta, deixa o corpo meio incorpóreo e difícil de acertar, e pode levar junto uma vítima indefesa"
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
-      "nome": "Resistência à magia 17",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: espada curta, garra, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -231,11 +266,23 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: carapaça fina de inseto, como o couro do cavalo (1) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: carapaça fina de inseto, como o couro do cavalo (1) ."
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.ferrão paralisante",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.passagem entre planos",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 17 da fonte passa a grau 2 (+4)."
     },
     {
       "campo": "ataques",

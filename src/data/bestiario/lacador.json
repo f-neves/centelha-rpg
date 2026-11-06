@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 3,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 9,
     "destreza": 3,
@@ -40,10 +41,10 @@
     "integridade": 4,
     "ocultismo": 3,
     "sociabilidade": 1,
-    "resistencia": 3
+    "resistencia": 3,
+    "atirador": 3
   },
   "habilidadesSec": {
-    "disparo": 3,
     "musculatura": 2
   },
   "especialidades": {
@@ -106,32 +107,57 @@
       "nome": "Filamentos pegajosos",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 10 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6)",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador",
       "duracao": "até o alvo se soltar ou o filamento ser cortado",
       "alcance": "15 m",
       "area": "um alvo por ação",
-      "efeito": "o filamento gruda: o alvo fica Agarrado à distância, e a fraqueza dos filamentos entra (Veneno e doença)",
+      "efeito": "O filamento prende à distância. O alvo fica Preso pela Rede do livro. A fraqueza do filamento segue Veneno e doença",
       "dano": "nenhum",
-      "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno; o agarrado não age nem rola para se soltar: solta-se quando o laçador erra o Manter do Agarrar do livro, ou quando alguém corta o filamento (um golpe de Corte que fira, a critério do Mestre)",
-      "limiteDeUso": "até seis filamentos presos ao mesmo tempo, em alvos diferentes ou no mesmo"
+      "resistencia": "Esquiva contra o disparo. Para se soltar, aplicar Preso da Rede ou cortar o fio. O veneno mantém a resistência própria",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno"
     },
     {
       "nome": "puxão",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a cada ação, puxa um preso 3 m para perto da boca, até o Peso erguido"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
-      "nome": "seis filamentos por ação",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o site diz \"lança até seis fios\". Pelos Filamentos pegajosos acima, a ficha lança um por ação; o lançamento de vários na mesma ação fica sem regra, porque a Rajada é só corpo a corpo. Os caminhos que o livro deixa abertos ao autor são o Poder Especial ou uma regra de disparo múltiplo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 3. Soma +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
-      "nome": "Resistência à magia 27",
+      "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: primeiro filamento, segundo filamento, terceiro filamento. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum. Cada filamento gasta uma dose da reserva",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -139,6 +165,11 @@
       "nome": "estalagmite que espera",
       "formas": "todas",
       "texto": "imóvel entre as estalagmites, deixa a presa chegar, prende vários de uma vez com os filamentos, puxa o mais fraco até a boca e morde. Gosta de conversar com quem prende, se o assunto for a morte."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -221,10 +252,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Filamentos pegajosos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 11. Com 1 t, ficaria acima de todo bicho do molde até 3 t (o tubarão-branco de 1,26 t e o elasmossauro de 2,1 t têm 9; o rinoceronte de 2,25 t, 8) e do aboleth de 2,7 t (10). Desce para 9, perto da Força de referência da massa (8,66, manual 3.9), pelo teste de ordem; 9; o site tinha 11"
     },
@@ -234,7 +261,15 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Pele pétrea ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 3"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Pele pétrea ;; nível 3"
+    },
+    {
+      "campo": "habilidadesEspeciais.Filamentos pegajosos",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 27 da fonte passa a grau 3 (+6)."
     },
     {
       "campo": "virtudes.temperanca",

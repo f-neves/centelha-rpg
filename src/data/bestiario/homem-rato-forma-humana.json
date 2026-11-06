@@ -23,6 +23,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 3,
     "destreza": 5,
@@ -114,14 +115,15 @@
       "nome": "Forma mutável",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 8",
       "duracao": "até ele voltar com outra ação; na lua cheia, até o sol nascer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato",
+      "efeito": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade fora da lua cheia"
+      "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Mordida maldita",
@@ -131,6 +133,7 @@
       ],
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "inato",
       "ativacao": "a Mordida que fere (1 de dano ou mais depois da Absorção)",
       "duracao": "permanente, se pegar",
       "alcance": "o do corpo a corpo",
@@ -138,25 +141,13 @@
       "efeito": "quem sobrevive à mordida e não trata a ferida até o fim do dia vira homem-rato na próxima lua cheia",
       "dano": "o da Mordida",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; a maldição só não pega se a ferida for tratada a tempo",
-      "limiteDeUso": "um por golpe"
-    },
-    {
-      "nome": "Ataque furtivo",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
-      "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "o golpe entra onde o alvo não guarda",
-      "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Esquiva sobrenatural",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um efeito de área que pede esquiva",
       "duracao": "instantânea",
       "alcance": "o próprio corpo",
@@ -164,20 +155,51 @@
       "efeito": "se passa na esquiva, não leva dano nenhum, em vez de metade",
       "dano": "nenhum",
       "resistencia": "esquiva, a do próprio efeito",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Afinidade com ratos",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, um guincho ou um gesto",
       "duracao": "até o fim da cena",
       "alcance": "onde o guincho é ouvido",
       "area": "os ratos comuns e gigantes que o ouvem",
-      "efeito": "eles o reconhecem como um dos seus, não o atacam e seguem as ordens simples dele",
+      "efeito": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena",
       "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um enxame ou até 6 ratos gigantes por vez"
+      "resistencia": "nenhuma; o comando dos ratos é inato",
+      "limiteDeUso": "um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+    },
+    {
+      "nome": "Golpe na brecha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
+    },
+    {
+      "nome": "Resistência à arma comum",
+      "formas": [
+        "hibrida"
+      ],
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -353,26 +375,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Forma mutável",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mordida maldita",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ataque furtivo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Esquiva sobrenatural",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Afinidade com ratos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.destreza",
       "motivo": "Degrau 5, \"Pico humano\": a forma de rato é mais rápida e esquiva que a humana (4, a do site); 5 na híbrida, 4 na humana (a do site)"
     },
@@ -382,7 +384,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: a \"pele grossa\" da forma híbrida (site) . As resistências são as do site: \"absorve boa parte dos golpes comuns; apenas prata a fere por completo\" (linha Elementos), como no lobisomem; nível 1 pela pele grossa"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: a \"pele grossa\" da forma híbrida (site) . As resistências são as do site: \"absorve boa parte dos golpes comuns; apenas prata a fere por completo\" (linha Elementos), como no lobisomem; nível 1 pela pele grossa"
     },
     {
       "campo": "comportamento.social",
@@ -395,6 +397,10 @@
     {
       "campo": "formas.rato",
       "motivo": "A referência genérica ao rato gigante foi explicitada. Medidas, Força, Destreza, Vigor e Couraça são os do molde; a mente, o treino e Musculatura 0 ficam os do homem, pelo mesmo critério das formas do lobisomem. Centelha 2. PV 30. PV na linha de cima: corpo resistente de rato gigante. A escolha está na zona de transição. Peso pela R15 com Musculatura 0, 48,55 kg, em vez dos 71,96 kg do rato de Musculatura 2; Referência antes implícita; escolhas físicas explícitas na Variante. A escolha da linha superior de PV precisa ser lida na forma, como na principal."
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma mutável",
+      "motivo": "R3. Ativação uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce -> uma ação, Velocidade 8; na noite de lua cheia, à força, quando a lua nasce Pela referência corporal ou de deslocamento do poder."
     }
   ]
 }

@@ -112,6 +112,7 @@
         "arte": "fascinacao",
         "nivel": 4
       },
+      "categoria": "sobrenatural",
       "ativacao": "uma ação, Velocidade 6, o beijo em quem está Agarrado, Dominado ou se deixa beijar",
       "duracao": "instantânea",
       "alcance": "toque",
@@ -119,7 +120,7 @@
       "efeito": "bebe a vida da vítima com o beijo e se fecha com ela; deixa a vítima exausta",
       "dano": "1d6 + Centelha, que ela recupera em PV",
       "resistencia": "corpo, contra Influência + Sedução dela; quem passa não perde nada",
-      "limiteDeUso": "um por ação"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Encanto",
@@ -128,7 +129,8 @@
       "tecnica": {
         "id": "encantamento",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Sedução",
@@ -137,12 +139,14 @@
       "tecnica": {
         "id": "charme",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "aproximação livre",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "a sedução que dá certo abre uma ação livre de aproximação ou de distração"
     },
     {
@@ -153,14 +157,15 @@
         "arte": "materia",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até ela desfazer com outra ação",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume o rosto, a voz e o corpo de qualquer humanoide Médio, sem diferença que se veja sem magia; os números ficam os dela, e as asas somem",
+      "efeito": "assume o rosto, a voz e o corpo de qualquer humanoide Médio, sem diferença que se veja sem magia; os números ficam os dela, e as asas somem. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum; quem tem visão verdadeira vê a forma real",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Teleporte",
@@ -168,22 +173,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "60 m",
       "area": "o próprio súcubo",
-      "efeito": "some e reaparece a até 60 m, sem precisar de caminho livre",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "arma abençoada fere inteira",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a resistência da pele não vale contra arma abençoada"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra arma abençoada, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -282,24 +297,24 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Beijo dreno",
-      "motivo": "números sugeridos pela ficha (D-197); 1d6 + Centelha com cura é número da ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 0: pele humana; a resistência a arma comum vai na linha Elementos. O nível fica fora da Absorção (decisoes-autor §16). A \"pele resistente\" do site (metade do dano de arma comum), pela linha Elementos; \"metade do dano de armas comuns não abençoadas\" virou resistência a Corte, Perfuração e Impacto; a exceção da arma abençoada ficou sem regra ainda"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Beijo dreno",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia).; 1d6 + Centelha com cura é número da ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "virtudes.temperanca",

@@ -26,6 +26,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 5,
     "destreza": 4,
@@ -107,49 +108,89 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: silhueta vista de lado, de pé. Grande: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Uivo apavorante",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, um uivo",
       "duracao": "18 Ticks",
       "alcance": "quem ouve, até 90 m",
       "area": "esfera de 90 m em volta dele",
       "efeito": "quem falha fica Em pânico",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele; quem passa não é pego por esse uivo de novo",
-      "limiteDeUso": "uma vez por cena para cada vítima"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não é pego por esse uivo de novo",
+      "limiteDeUso": "uma vez por cena para cada vítima. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Mordida sinistra",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "inato",
       "ativacao": "a Mordida que fere",
-      "duracao": "até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "o da mordida",
       "area": "um alvo",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "o do golpe",
-      "resistencia": "mente, contra a jogada da mordida; quem passa só leva o dano",
-      "limiteDeUso": "um por golpe"
+      "resistencia": "a jogada da mordida da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa só leva o dano",
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "paralisado de medo",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quem já está apavorado e leva a mordida fica paralisado de medo por um instante"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando o ataque descrito atinge a vítima",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "quem já está apavorado e leva a mordida fica paralisado de medo por um instante. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Influência + Intimidação contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "mordida corrompida",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a mordida atravessa as proteções contra o mal"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Este golpe ignora até 2 pontos de Absorção sobrenatural. A proteção de armadura vestida continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "prata fere inteira",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a resistência da pele não vale contra arma de prata"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra prata, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -246,24 +287,20 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Uivo apavorante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mordida sinistra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.envergadura",
       "motivo": "Duas vezes o corpo sem a cauda: asa de morcego, larga e curta. O site não dá a envergadura; o cão voa pela Centelha, e não pela asa"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: couro de cão, um acima do lobo (0) pela pele de exterior . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele resistente a lâminas comuns\" do site, pela linha Elementos, como a pele do súcubo e do kyton; resistência a Corte, Perfuração e Impacto, como a do súcubo e do kyton; a prata ficou sem regra ainda"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: couro de cão, um acima do lobo (0) pela pele de exterior .; resistência a Corte, Perfuração e Impacto, como a do súcubo e do kyton; a prata ficou sem regra ainda"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.paralisado de medo",
+      "motivo": "R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

@@ -71,7 +71,8 @@
   },
   "equipamento": {
     "arsenal": [],
-    "armaduras": []
+    "armaduras": [],
+    "veneno": "1 dose de veneno do sono drow"
   },
   "artes": {},
   "ataques": [
@@ -82,60 +83,94 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Feitiçaria inata",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "base": {
-        "arte": "sombra",
-        "nivel": 1
-      },
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "até o fim da cena, ou até ele desfazer",
-      "alcance": "18 m",
-      "area": "à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca",
-      "efeito": "as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar",
-      "dano": "nenhum",
-      "resistencia": "esquiva, contra Influência + Manha dele, só para o fogo feérico",
-      "limiteDeUso": "cada um, uma vez por cena"
-    },
-    {
-      "nome": "Veneno do sono",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "ataque": "Espada curta",
-      "ativacao": "o golpe envenenado que fere",
-      "duracao": "1 hora de sono, ou até alguém sacudir o alvo",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar",
-      "dano": "nenhum além do golpe",
-      "resistencia": "corpo, Vigor + Resistência pela regra do veneno",
-      "limiteDeUso": "uma dose por lâmina, preparada antes da luta"
-    },
-    {
       "nome": "Sensibilidade à luz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
-      "duracao": "enquanto estiver na luz forte",
+      "duracao": "enquanto durar a exposição",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Ofuscado",
+      "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Resiliência mental",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "Resiliência mental do Elfo"
     },
     {
       "nome": "Imune ao sono mágico",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "Arte ou poder que faz dormir não o pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora sono imposto por Arte ou poder. Sono por cansaço ou veneno segue sua regra",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Trevas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 1,
+        "efeito": "manto-de-treva"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "esfera de 6 m",
+      "efeito": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+    },
+    {
+      "nome": "Luzes dançantes",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "luz",
+        "nivel": 1
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "um ponto visível",
+      "efeito": "Cria luzes móveis para iluminar ou enganar",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+    },
+    {
+      "nome": "Fogo feérico",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "luz",
+        "nivel": 1
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "Contorna o alvo de luz e revela a sua posição enquanto durar",
+      "dano": "nenhum",
+      "resistencia": "esquiva, contra Influência + Manha dele",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
     }
   ],
   "comoLuta": [
@@ -207,18 +242,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Feitiçaria inata",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Veneno do sono",
-      "motivo": "números sugeridos pela ficha (D-197); Potência 13, pool 2, fora do catálogo"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sensibilidade à luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "aparencia",
       "motivo": "Degrau 4, \"Feio\", fica como no site. O Elfo parente tem a Aparência Universal, que é traço de raça e não passa ao drow pela D-207; 4, a do site; a Aparência Universal do Elfo não passa ao drow"

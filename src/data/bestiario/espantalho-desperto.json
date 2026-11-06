@@ -19,6 +19,7 @@
     "posturaDoTamanho": "bípede, de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 3,
     "destreza": 2,
@@ -89,13 +90,8 @@
       "nome": "Imóvel",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "parado entre espantalhos comuns, disfarça sua natureza até virar a cabeça ou atacar"
-    },
-    {
-      "nome": "Sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, come, dorme ou se cansa; não sofre aflições da carne, não cura sozinho e precisa de conserto"
     }
   ],
   "comoLuta": [
@@ -113,11 +109,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "passa por um espantalho comum enquanto imóvel",
     "mente": "inteligente",
-    "tracos": "Espantalho de madeira e palha com uma foice enferrujada"
+    "tracos": "Espantalho de madeira e palha com uma foice enferrujada",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -127,7 +122,6 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "qualquer hora",
-    "dieta": "não precisa comer",
     "caca": "não se aplica",
     "dianteDeGente": "expulsa intrusos da plantação e volta ao poste"
   },

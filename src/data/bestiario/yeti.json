@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -108,19 +109,21 @@
       "nome": "Investida das garras",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "as duas garras na mesma ação, pela empunhadura dupla do livro (as duas a −1d6)",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "se as duas garras acertam o mesmo alvo, ele é dilacerado",
+      "efeito": "se as duas garras acertam o mesmo alvo, ele é dilacerado. Quando combina arma empunhada e parte do corpo, usa o custo e as penalidades da empunhadura dupla",
       "dano": "+2d6, Corte, além das duas garras",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por ação"
+      "limiteDeUso": "uma vez por ação. Sem custo"
     },
     {
       "nome": "Corpo gélido",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "cada golpe de garra ou de mão nua que acerta",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -128,13 +131,21 @@
       "efeito": "o frio do corpo queima a carne",
       "dano": "+1d6, gelo, somado ao golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Olhar paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o terror do olhar paralisa a vítima"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "6 Ticks",
+      "alcance": "até onde vê",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o terror do olhar paralisa a vítima. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Influência + Intimidação contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -213,20 +224,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Investida das garras",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Corpo gélido",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "Acima de 6 pela física (D-143): 360 kg de corpo de urso, acima da Força de referência da massa (6,97) e não abaixo do gorila de 180 kg (Força 7, D-117). O site tinha 6 (For 19 na fonte); 7; o site tinha 6"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Pelagem espessa e gordura: nível 1, como o couro peludo do molde (tamanho-decisoes-5, item 6: \"Pelagem e gordura podem subir a Couraça e dar Resistência (frio) ao mesmo tempo\") . A imunidade e a fraqueza vão em Elementos; nível 1 pela pelagem e gordura"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Pelagem espessa e gordura: nível 1, como o couro peludo do molde (tamanho-decisoes-5, item 6: \"Pelagem e gordura podem subir a Couraça e dar Resistência (frio) ao mesmo tempo\") . A imunidade e a fraqueza vão em Elementos; nível 1 pela pelagem e gordura"
     },
     {
       "campo": "comportamento.social",
@@ -235,6 +238,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar paralisante",
+      "motivo": "R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
     }
   ]
 }

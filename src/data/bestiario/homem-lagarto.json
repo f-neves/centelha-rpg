@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 3,
     "destreza": 2,
@@ -121,6 +122,7 @@
       "nome": "Rabada",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "ataque": "Rabada",
       "texto": "a Rabada da tabela, no lugar do golpe de maça (um ataque por ação)"
     }
@@ -197,7 +199,7 @@
   "revisao": [
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escamas grossas de réptil, abaixo do crocodilo (4 a 5) da escala (tamanho-decisoes-5, item 2); nível 2 pelas escamas"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escamas grossas de réptil, abaixo do crocodilo (4 a 5) da escala (tamanho-decisoes-5, item 2); nível 2 pelas escamas"
     },
     {
       "campo": "comportamento.social",

@@ -26,6 +26,7 @@
     }
   },
   "couraca": 11,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 14,
     "destreza": 2,
@@ -48,12 +49,12 @@
     "sociabilidade": 3,
     "ocultismo": 5,
     "persuasao": 5,
-    "conhecimentos": 4
+    "conhecimentos": 4,
+    "atirador": 5
   },
   "habilidadesSec": {
     "intimidacao": 5,
     "voo": 4,
-    "disparo": 5,
     "acerto-arcano": 5,
     "musculatura": 4
   },
@@ -155,7 +156,6 @@
     {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
       "classe": "distancia",
       "pgr": [
         3,
@@ -172,6 +172,20 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Sopro de fogo",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -180,20 +194,22 @@
         "nivel": 5
       },
       "ataque": "Sopro de fogo",
+      "categoria": "substancia",
       "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "15 m à frente",
       "area": "cone de 15 m",
-      "efeito": "o fogo queima tudo no cone",
+      "efeito": "o fogo queima tudo no cone. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "12d6 + Centelha, fogo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -201,13 +217,22 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Cauda",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
       "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "garra, garra, mordida e cauda no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Presença",
@@ -217,38 +242,71 @@
         "arte": "morte",
         "nivel": 4
       },
+      "categoria": "inato",
       "ativacao": "a primeira vez na cena em que ele ruge, ataca ou desce do céu",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "30 m",
       "area": "esfera de 30 m em volta dele",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência 6 + Intimidação 5 + 2 × o menor entre Centelha 7 e Intimidação 5 (10) = 21 mais a rolagem; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência 6 + Intimidação 5 + 2 × o menor entre Centelha 7 e Intimidação 5 (10) = 21 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
-      "nome": "Resistência à magia 30",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 3. Soma +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Autoridade dracônica",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "efeito de medo ou de domínio de quem tem Centelha menor falha nele"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Compare a Centelha antes de resolver medo ou domínio imposto por outra criatura. Ignora o efeito apenas se a Centelha da fonte for menor. Abalado de golpe social ou corporal continua valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Feitiço sem gastar a ação",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "\"lança feitiços avançados sem gastar a ação principal\"; a ficha conjura pela regra da Arte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando inicia uma conjuração",
+      "duracao": "a próxima ação",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Reduz a duração da conjuração em 2 Ticks, até o mínimo de 1 Tick",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por cena, sem custo"
     },
     {
       "nome": "paralisia da presença",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o medo da presença trava o corpo da vítima"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "6 Ticks",
+      "alcance": "30 m",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o medo da presença trava o corpo da vítima. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Influência + Intimidação contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     }
   ],
   "comoLuta": [
@@ -261,6 +319,11 @@
       "nome": "senhor da montanha",
       "formas": "todas",
       "texto": "abre com o sopro, paralisa de medo os que vêm, abre portais e barreiras com a Arte e desce para morder o mais perigoso."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -343,14 +406,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro de fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "sentidos.sentidos onipresentes",
       "motivo": "sem regra ainda no livro"
     },
@@ -368,7 +423,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escama de dragão, nos níveis 9 a 12 dos adultos e anciões (o texto do branco jovem); um abaixo do grande wyrm . O nível fica fora da Absorção (decisoes-autor §16); nível 11"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escama de dragão, nos níveis 9 a 12 dos adultos e anciões (o texto do branco jovem); um abaixo do grande wyrm .; nível 11"
     },
     {
       "campo": "comportamento.atividade",
@@ -377,6 +432,22 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 14 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques.Sopro de fogo",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 30 da fonte passa a grau 3 (+6)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiço sem gastar a ação",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.paralisia da presença",
+      "motivo": "R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "ataques",

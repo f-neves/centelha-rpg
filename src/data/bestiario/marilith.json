@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de lado, erguida"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 10,
     "destreza": 8,
@@ -113,23 +114,11 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Três lâminas",
-      "formas": "todas",
-      "classe": "livro",
-      "ataque": "Espada longa",
-      "regra": "rajada"
-    },
-    {
-      "nome": "seis lâminas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ataca com as seis espadas na mesma rodada, um golpe independente por lâmina; por enquanto, até três pela Rajada"
-    },
-    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Cauda",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -139,7 +128,8 @@
       "tecnica": {
         "id": "aperto-esmagador",
         "nivel": 5
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Teleporte",
@@ -147,16 +137,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 6
+        "nivel": 6,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "qualquer lugar que ela conheça no mesmo plano",
       "area": "a própria marilith",
-      "efeito": "some e reaparece no destino",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Telecinese",
@@ -164,22 +156,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "forcas",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "arremesso"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "enquanto se concentrar",
       "alcance": "18 m",
       "area": "um objeto ou uma pessoa",
       "efeito": "move objetos ou uma pessoa sem tocá-los, com a força de um homem forte; arremessa o que move",
       "dano": "o do objeto arremessado, a critério do Mestre",
       "resistencia": "esquiva, contra o objeto arremessado; corpo, para quem é erguido; quem passa não sai do lugar",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Paralisar",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o corpo do alvo trava e ele fica paralisado"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "6 Ticks",
+      "alcance": "9 m",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o corpo do alvo trava e ele fica paralisado. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ver o invisível",
@@ -188,13 +190,22 @@
       "tecnica": {
         "id": "visao-verdadeira",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a marilith enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "o campo de visão",
+      "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Tática de guerra",
@@ -203,12 +214,14 @@
       "tecnica": {
         "id": "coordenar",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Corpo de serpente",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -216,18 +229,20 @@
       "efeito": "desliza sobre o chão sem perder deslocamento em Terreno difícil",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Regeneração 9",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de arma benta ou fogo"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de arma benta ou fogo só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "arma benta e fogo param a regeneração",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o dano de arma benta ou de fogo não se fecha pela Regeneração"
     },
     {
@@ -237,13 +252,29 @@
       "tecnica": {
         "id": "temor-reverente",
         "nivel": 3
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê a marilith pela primeira vez sente o pavor dos seis braços armados sobre o corpo de serpente; o corpo quer recuar antes de qualquer golpe"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: primeira lâmina, segunda lâmina, terceira lâmina, quarta lâmina. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 4 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -266,7 +297,7 @@
     },
     {
       "nome": "visão verdadeira",
-      "descricao": "pela Técnica (Manobras)",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -333,18 +364,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Telecinese",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Corpo de serpente",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
     },
@@ -358,11 +377,23 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: as escamas da cauda de serpente grande, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); a Arte do site ficou sem poder próprio; 3, escamas de serpente grande"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 3: as escamas da cauda de serpente grande, entre o elefante (2 a 3) e o crocodilo (4 a 5) .; a Arte do site ficou sem poder próprio; 3, escamas de serpente grande"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Telecinese",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Paralisar",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "aparencia",

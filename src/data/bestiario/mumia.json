@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -87,8 +88,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "praga"
       },
+      "categoria": "inato",
       "ativacao": "o Golpe esmagador que fere",
       "duracao": "até um rito de cura de nível 4 ou mais tirar a maldição",
       "alcance": "toque",
@@ -96,7 +99,7 @@
       "efeito": "a carne do alvo começa a apodrecer: ele fica Doente e não recupera PV por Arte nem por Técnica de cura enquanto a podridão durar; cada novo golpe que pega soma um degrau de Desgaste",
       "dano": "nenhum além do golpe",
       "resistencia": "corpo, contra a jogada do golpe; quem passa não pega a podridão daquele golpe",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Aura de desespero",
@@ -104,34 +107,25 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "mortalha"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativa",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "9 m",
       "area": "esfera de 9 m em volta dela",
-      "efeito": "quem entra na área pela primeira vez na cena sente o peso da tumba; na falha, fica Abalado",
+      "efeito": "quem entra na área pela primeira vez na cena sente o peso da tumba; na falha, fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Briga dela; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "resistencia": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "ataduras",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "as camadas de pano e resina seguram parte do corte e da estocada"
-    },
-    {
-      "nome": "imune a veneno e efeito mental",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno e o que age na mente não pegam nela"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; dorme séculos na câmara selada até alguém entrar"
     }
   ],
   "comoLuta": [
@@ -154,10 +148,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "pouca, presa ao juramento de guardar o lugar",
-    "tracos": "corpo seco e escuro enrolado em ataduras amareladas e duras de resina; cheira a óleo de embalsamar e a poeira de tumba"
+    "mente": "pouca, presa ao juramento de guardar o lugar. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Medo cobre o imposto por essas fontes. Golpe social ou corporal ainda pode deixar Abalado. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "corpo seco e escuro enrolado em ataduras amareladas e duras de resina; cheira a óleo de embalsamar e a poeira de tumba. Não se cansa. Pode ficar inerte por séculos na câmara selada",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se com o tempo em repouso na tumba",
+    "familiasMentaisIgnoradas": [
+      "dominio",
+      "medo"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -167,7 +165,6 @@
   "comportamento": {
     "social": "sozinha, ou com outras da mesma tumba",
     "atividade": "dorme até a tumba ser aberta",
-    "dieta": "nenhuma",
     "caca": "guarda o lugar e persegue o intruso",
     "dianteDeGente": "ataca quem profana o lugar"
   },
@@ -227,14 +224,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Podridão da múmia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura de desespero",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Pelo corpo: músculo seco e embalsamado, como o do ghoul (1). A força está na Força 7 (D-117, D-184); 1, músculo seco"
     },
@@ -244,7 +233,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: as camadas de atadura endurecida pela resina, entre a pele humana (0) e o couro do cavalo (1) ; o nível fica fora da Absorção (decisoes-autor §16). A resistência e a fraqueza são as do site, pela linha Elementos; 1, as ataduras endurecidas"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: as camadas de atadura endurecida pela resina, entre a pele humana (0) e o couro do cavalo (1) ; o nível fica fora da Absorção (decisoes-autor §16). A resistência e a fraqueza são as do site, pela linha Elementos; 1, as ataduras endurecidas"
     },
     {
       "campo": "comportamento.social",

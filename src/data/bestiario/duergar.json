@@ -98,14 +98,15 @@
         "arte": "metamorfose",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até ele desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar",
+      "efeito": "o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar. Por grau, multiplique a área por 4 e a massa por 8. Recalcule Tamanho e alcance. Atributos e Couraça só mudam quando o poder expressamente os altera",
       "dano": "o dos golpes, com a Força maior",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena, contando com o Sumir"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Sumir"
     },
     {
       "nome": "Sumir",
@@ -113,48 +114,60 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "ausencia"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "12 Ticks, ou até ele atacar",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Invisível",
+      "efeito": "fica Invisível. O efeito termina ao atacar ou desfazer. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena, contando com o Crescer"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Crescer"
     },
     {
       "nome": "Sensibilidade à luz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
-      "duracao": "enquanto estiver na luz forte",
+      "duracao": "enquanto durar a exposição",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Ofuscado",
+      "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Resiste a ilusões",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ilusão o tem como alvo",
       "duracao": "a da ilusão",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "a ilusão pega menos nele",
       "dano": "nenhum",
-      "resistencia": "mente, com +2 na Defesa Mental contra ilusão",
-      "limiteDeUso": "nenhum"
+      "resistencia": "ilusão da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Imune a paralisia e venenos",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune)"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune). O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -223,28 +236,20 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Crescer",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sumir",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sensibilidade à luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Resiste a ilusões",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": "site (Senhores de escravos)"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Crescer",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Sumir. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Sumir",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Crescer. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

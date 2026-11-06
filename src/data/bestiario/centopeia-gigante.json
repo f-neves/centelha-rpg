@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 4,
     "destreza": 4,
@@ -107,16 +108,40 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Ferrão de gigante",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Forcípulas",
+      "categoria": "substancia",
+      "ativacao": "Forcípulas ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Ferrão de gigante. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "espinhos das patas de trás",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "afastam quem a ataca por trás"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "+4 na Defesa contra ataques que vêm por trás e alcançam as patas espinhosas",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],
@@ -206,6 +231,10 @@
     {
       "campo": "ataques.Forcípulas",
       "motivo": "era 1d6 − 2 + 5, média 6,5: segue a Força nova (D-115). As forcípulas são o primeiro par de patas, em garra de veneno (ADW); bote rápido (Leve), a primeira picada no pescoço da presa (Molinari et al. 2005). A ponta da gigante fura couro ; força não achada. Veneno sem id no catálogo"
+    },
+    {
+      "campo": "habilidadesEspeciais.espinhos das patas de trás",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
     }
   ]
 }

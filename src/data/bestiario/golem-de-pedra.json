@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 10,
     "destreza": 2,
@@ -95,6 +96,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de pedra",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -102,6 +104,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de pedra",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
@@ -109,25 +112,41 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de pedra",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
     },
     {
       "nome": "onda de lentidão",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "algumas vezes por cena, solta em volta de si um campo que deixa lento quem estiver perto por várias rodadas; quem é pego fica Retardado (as ações custam 2 Ticks a mais)"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "tempo",
+        "nivel": 1,
+        "efeito": "passo-lento"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "6 Ticks",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "O alvo fica Retardado pelo efeito da onda",
+      "dano": "nenhum",
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "imune à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a maior parte das Artes não o afeta; a magia que molda a pedra o afeta de outro jeito, e pode deixá-lo lento ou restaurar o corpo inteiro"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Uma Arte que molda pedra pode deixá-lo Retardado ou restaurar o corpo, conforme o efeito usado",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -150,11 +169,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parado, passa por estátua",
     "mente": "nenhuma; obedece ao criador",
-    "tracos": "talhado num único bloco de granito; não fala; a pedra range quando anda"
+    "tracos": "talhado num único bloco de granito; não fala; a pedra range quando anda. Não se cansa",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -164,7 +182,6 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda",
     "dianteDeGente": "ataca quem a ordem manda atacar"
   },
@@ -222,8 +239,12 @@
       "motivo": "O criador lhe deu o combate de um guarda: \"Perito\". O site tinha 5 (\"Mestre, um dos melhores que existem\"), demais para quem não aprende"
     },
     {
+      "campo": "habilidadesEspeciais.onda de lentidão",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro: Vigor + Centelha contra Impacto, só a Centelha contra Corte e Perfuração (`combate.md`). Couraça: granito maciço, mais duro que qualquer carapaça da escala (anquilossauro 7 a 8); os níveis 9 a 12 ficam \"sem referência até entrarem\" (tamanho-decisoes-5, item 2). O nível fica fora da Absorção (decisoes-autor §16). As resistências são regra do livro (Elementos); 9, o primeiro nível sem referência na escala. O autor ainda não deu exemplo de criatura sobrenatural na escala"
+      "motivo": "9, o primeiro nível sem referência na escala. O autor ainda não deu exemplo de criatura sobrenatural na escala"
     },
     {
       "campo": "centelha",

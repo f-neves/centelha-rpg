@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 3,
     "destreza": 3,
@@ -40,15 +41,15 @@
     "prontidao": 2,
     "resistencia": 2,
     "empatia": 0,
-    "sobrevivencia": 2
+    "sobrevivencia": 2,
+    "atirador": 3
   },
   "habilidadesSec": {
     "equilibrio": 0,
     "escalada": 3,
     "natacao": 0,
     "voo": 0,
-    "musculatura": 2,
-    "disparo": 3
+    "musculatura": 2
   },
   "especialidades": {
     "prontidao": [
@@ -107,38 +108,70 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Peçonha de aranha gigante",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Presas (quelíceras)",
+      "categoria": "substancia",
+      "ativacao": "Presas (quelíceras) ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Peçonha de aranha gigante. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "arrastar a presa até a toca",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "leva o que agarrou até a toca, até o Peso erguido"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "cerdas urticantes",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "esfrega o abdome e solta cerdas que irritam a pele, os olhos e as mucosas de quem está perto; não é ataque com dano"
+      "categoria": "substancia",
+      "efeito": "esfrega o abdome e solta cerdas que irritam a pele, os olhos e as mucosas de quem está perto; não é ataque com dano. O corpo guarda 2 doses e produz 1 dose em 6 horas"
     },
     {
       "nome": "teia",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; dispara pelas fieiras com Vigor + Disparo",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6; dispara pelas fieiras com o maior entre Vigor, Destreza e Percepção + Atirador",
       "duracao": "até o alvo se soltar",
       "alcance": "6 m",
       "area": "um alvo",
       "efeito": "o acerto deixa Preso pela Rede do livro; a teia serve para prender, não para sustentar a aranha",
       "dano": "nenhum",
       "resistencia": "nenhum teste adicional; para sair, a regra da Rede contra o total do disparo",
-      "limiteDeUso": "três vezes por cena, recarga de uma hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 1 hora. Cada uso gasta 1 dose. Nada acelera a produção"
     }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
+    }
+  ],
   "sentidos": [
     {
       "nome": "vibração",
@@ -210,10 +243,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.teia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.resistencia",
       "motivo": "era sem linha (0).  A régua põe o normal da espécie em 2. A pesquisa não traz jejum, sede, frio, veneno sofrido nem ferida; a vida de 20 anos da fêmea não sustenta mais. Falta o jejum da Theraphosa, que é o dado que esta Resistência pediria"
     },
@@ -240,6 +269,14 @@
     {
       "campo": "ataques.Presas (quelíceras)",
       "motivo": "era 1d6 + 6, média 9,5: segue a Força nova (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Mordida de predador grande (seção 7). Presas de 2 a 4 cm na real (Wikipédia; 2,5 cm na National Geographic), de 11 a 22 cm na gigante (× 5,45) : a ponta longa fura couro e malha, como a lança (N1). A força de mordida não foi achada. Injeta `peconha-de-aranha-gigante`"
+    },
+    {
+      "campo": "habilidadesEspeciais.cerdas urticantes",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.teia",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
     }
   ]
 }

@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 4,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 1,
@@ -97,13 +98,15 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
-      "nome": "atropelar",
+      "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
-      "regra": "investida"
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [],

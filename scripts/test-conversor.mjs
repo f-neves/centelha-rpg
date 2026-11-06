@@ -20,8 +20,9 @@
 //   node scripts/test-conversor.mjs
 import fs from 'node:fs';
 import path from 'node:path';
-import { converterFicha, aponta } from './conversor-criatura.mjs';
-import { criaturaNovaSchema, criaturaParaLeituraSchema } from './criatura-schema.mjs';
+import { converterFichaAnteriorR03 as converterFicha, aponta } from './conversor-criatura.mjs';
+import { lerEsperado } from './gen-criaturas-esperado.mjs';
+import { criaturaAnteriorR03Schema as criaturaNovaSchema, criaturaParaLeituraSchema, criaturaNovaSchema as contratoNovoSchema } from './criatura-schema.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const FIX = path.join(ROOT, 'scripts/fixtures/conversor');
@@ -383,6 +384,111 @@ if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrad
   if (!forma('PV na linha de cima: teste.', 'PV 28').paradas.some((p) => p.includes('forma de lobo') && p.includes('PV na linha de cima'))) falhas.push('linhaPVMotivo: a forma com a frase contrária ao PV passou');
   const sem = structuredClone(r.criatura); delete sem.corpo.linhaPV;
   if (criaturaNovaSchema.safeParse(sem).success) falhas.push('linhaPVMotivo: o esquema aceitou o porquê sem a linha');
+}
+
+{
+  // R49 (D-328, 05/11/2026): "Couraça **nível N**, perfil couro" chega ao JSON como `perfilCouraca` (sem acento: rigida,
+  // couro, mole); a palavra fora dos três para; sem a palavra, nada se inventa; e o contrato novo recusa a Couraça acima
+  // de 0 sem o perfil, na principal e na forma que sobe o nível.
+  const alvo = 'Couraça **nível 1**';
+  if (!LOBO.includes(alvo)) falhas.push('R49: a ficha do lobisomem não traz mais "' + alvo + '"');
+  const com = (p) => LOBO.replace(alvo, alvo + ', perfil ' + p);
+  for (const [p, id] of [['couro', 'couro'], ['rígida', 'rigida'], ['mole', 'mole']]) {
+    const r = converterFicha(com(p), { site: SITE });
+    if (r.paradas.length || r.criatura.perfilCouraca !== id) falhas.push('R49: "perfil ' + p + '" não virou perfilCouraca ' + id + ': ' + JSON.stringify([r.paradas, r.criatura.perfilCouraca]));
+  }
+  if (!converterFicha(com('escamosa'), { site: SITE }).paradas.some((p) => p.includes('perfil de Couraça "escamosa"'))) falhas.push('R49: o perfil fora dos três passou');
+  const r0 = converterFicha(LOBO, { site: SITE });
+  if (r0.criatura.perfilCouraca !== undefined) falhas.push('R49: perfil inventado sem a palavra na ficha');
+  const acusa = (c) => (contratoNovoSchema.safeParse(c).error?.issues || []).filter((i) => i.path.includes('perfilCouraca')).map((i) => i.path.join('.'));
+  if (!acusa(r0.criatura).includes('perfilCouraca')) falhas.push('R49: o contrato novo aceitou Couraça 1 sem perfil');
+  const rc = converterFicha(com('couro'), { site: SITE }).criatura;
+  if (acusa(rc).length) falhas.push('R49: o contrato novo acusou o perfil presente: ' + acusa(rc));
+  const zero = { ...structuredClone(r0.criatura), couraca: 0 };
+  if (acusa(zero).length) falhas.push('R49: o contrato novo cobrou perfil de Couraça 0');
+  zero.formas = [{ ...zero.formas[0], couraca: 2 }, ...zero.formas.slice(1)];
+  if (!acusa(zero).includes('formas.0.perfilCouraca')) falhas.push('R49: a forma de Couraça 2 sem perfil (nem na principal) passou');
+  // a releitura anterior (as fichas de antes da R49) aceita o campo e não o cobra
+  if (criaturaNovaSchema.safeParse(rc).success !== criaturaNovaSchema.safeParse(r0.criatura).success) falhas.push('R49: na releitura anterior o perfil muda o resultado do esquema');
+}
+
+{
+  // Leituras do conversor da etapa b (ordem do autor de 06/11/2026), cada uma plantada numa cópia do lobisomem.
+  const troca = (de, para_, txt = LOBO) => { if (!txt.includes(de)) falhas.push('leituras b: a ficha do lobisomem não traz mais "' + de.slice(0, 40) + '"'); return txt.replace(de, para_); };
+  const conv = (txt) => converterFicha(txt, { site: SITE });
+  const parou = (r, trecho) => r.paradas.some((p) => p.includes(trecho));
+  // L4 (D-345): "poder natural (base: Fresta, Conjuração 4)" guarda o Efeito Especial pelo id do efeitos.json
+  const manobra = (base) => troca('## Manobras\n\n', '## Manobras\n\n- Passo · poder natural (' + base + ') · sem regra ainda: some e reaparece. **[formas: todas]**\n');
+  const passo = (r) => r.criatura.habilidadesEspeciais?.find((h) => h.nome === 'Passo');
+  let r = conv(manobra('base: Fresta, Conjuração 4'));
+  if (r.paradas.length || JSON.stringify(passo(r)?.base) !== JSON.stringify({ arte: 'conjuracao', nivel: 4, efeito: 'fresta' })) falhas.push('L4: a base com Efeito Especial não chegou ao JSON: ' + JSON.stringify([r.paradas, passo(r)?.base]));
+  r = conv(manobra('base Conjuração 4'));
+  if (r.paradas.length || JSON.stringify(passo(r)?.base) !== JSON.stringify({ arte: 'conjuracao', nivel: 4 })) falhas.push('L4: a base sem Efeito mudou: ' + JSON.stringify([r.paradas, passo(r)?.base]));
+  if (!parou(conv(manobra('base: Guelra, Metamorfose 2')), 'Efeito Especial "Guelra"')) falhas.push('L4: o Efeito fora do efeitos.json passou');
+  if (!parou(conv(manobra('base: Fresta, Fogo 4')), 'não é da Arte Fogo')) falhas.push('L4: o Efeito de outra Arte passou');
+  if (criaturaNovaSchema.safeParse(conv(manobra('base: Fresta, Conjuração 4')).criatura).error?.issues.some((i) => i.path.includes('efeito'))) falhas.push('L4: o esquema recusou o efeito do catálogo');
+  { const c = structuredClone(conv(manobra('base: Fresta, Conjuração 4')).criatura), pb = passo({ criatura: c }); if (!pb?.base) falhas.push('L4: o poder plantado saiu sem a base'); else { pb.base.efeito = 'nao-existe'; if (!criaturaNovaSchema.safeParse(c).error?.issues.some((i) => i.path.includes('efeito'))) falhas.push('L4: o esquema aceitou um efeito fora do catálogo'); } }
+  // R21 (D-298) e R22: o Tipo de corpo toma o lugar da Respiração; a Recuperação e as famílias mentais chegam ao JSON
+  const corpo = (linhas) => troca('- Respiração: ar.\n- Prende a respiração: a de um humano.\n', linhas);
+  r = conv(corpo('- Tipo de corpo: morto-vivo.\n- Recuperação: pela energia negativa.\n- Famílias mentais ignoradas: medo, leitura de mente e confusão.\n'));
+  const fi = r.criatura.fisiologia;
+  if (r.paradas.length || fi.tipoCorpo !== 'morto-vivo' || fi.respiracao !== undefined || fi.recuperacao !== 'pela energia negativa' || JSON.stringify(fi.familiasMentaisIgnoradas) !== JSON.stringify(['medo', 'leitura-de-mente', 'confusao'])) falhas.push('R21: o corpo que não vive não chegou ao JSON: ' + JSON.stringify([r.paradas, fi]));
+  if (!parou(conv(corpo('- Tipo de corpo: planta.\n')), 'Tipo de corpo "planta"')) falhas.push('R21: tipo de corpo fora dos quatro passou');
+  if (!parou(conv(corpo('- Tipo de corpo: elemental.\n- Famílias mentais ignoradas: ódio.\n')), 'família mental')) falhas.push('R22: família fora das cinco passou');
+  if (!parou(conv(corpo('')), 'fisiologia.respiracao')) falhas.push('R21: sem Respiração e sem Tipo de corpo passou');
+  // a chave desconhecida no bloco Corpo para, em vez de sumir
+  if (!parou(conv(troca('- Camuflagem: nenhuma.\n', '- Camuflagem: nenhuma.\n- Sangue: frio.\n')), 'Corpo: chave "Sangue"')) falhas.push('Corpo: a chave desconhecida passou calada');
+  // D-315 (R36): a frase do projétil do corpo sem números escolhe o Atirador no conversor, e o leitor da fixture soma o
+  // maior entre Vigor 5, Destreza 3 e Percepção 4 da ficha, o Atirador 2 e o termo da Centelha (4): 5 + 2 + 4 = 11
+  const tiro = troca('| Sociabilidade | 1 |', '| Atirador | 2 | teste |\n| Sociabilidade | 1 |', troca('|---|---|---|---|---|---|---|---|---|---|---|---|\n', '|---|---|---|---|---|---|---|---|---|---|---|---|\n| Espinho | cauda, à distância | Distância | 1/1/3 | 5 | 1d6 + Força × 1 (6) + Centelha (2) | Perfuração | N0 | +0 | não | 11,5 | Teste. jogada o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 2 e Atirador 2 (4) |\n'));
+  r = conv(tiro);
+  const esp = r.criatura.ataques.find((a) => a.nome === 'Espinho');
+  if (esp?.habilidade !== 'atirador' || parou(r, 'Espinho')) falhas.push('D-315: a frase sem dois-pontos não deu o Atirador: ' + JSON.stringify([r.paradas, esp]));
+  const jog = lerEsperado(tiro).esperado.ataques.find((a) => a.nome === 'Espinho')?.jogada;
+  if (jog !== 11) falhas.push('D-315: o leitor da fixture não somou a jogada da frase sem números: ' + jog);
+  if (lerEsperado(troca('| Atirador | 2 | teste |\n', '', tiro)).esperado.ataques.find((a) => a.nome === 'Espinho')?.jogada !== undefined) falhas.push('D-315: sem o Atirador na ficha, a jogada foi inventada');
+  // a frase que nomeia antes e soma depois (lote r35-r54): "Jogada de Força + Briga: 6 + 3 + 2 × ..." dá a mesma jogada
+  const antes = lerEsperado(LOBO).esperado.ataques.find((a) => a.nome === 'Mordida')?.jogada;
+  const nomeia = lerEsperado(troca('Jogada: Força 6 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4) |', 'Jogada de Força + Briga: 6 + 3 + 2 × o menor entre Centelha 2 e Briga 3 (4) |')).esperado.ataques.find((a) => a.nome === 'Mordida')?.jogada;
+  if (antes !== 13 || nomeia !== 13) falhas.push('jogada: a frase "Jogada de Força + Briga: 6 + 3" não deu a mesma soma: ' + JSON.stringify([antes, nomeia]));
+  // R34 (D-313): "(indivíduo, anatomia)" no Tamanho só vale para enxame
+  if (!parou(conv(troca('| Tamanho | **Médio** (0,98 m², de frente) |', '| Tamanho | **Médio** (indivíduo, anatomia) |')), 'só vale para enxame')) falhas.push('R34: o Tamanho do indivíduo passou numa ficha que não é enxame');
+  // R49 na forma: "Couraça nível N, perfil couro" na Variante; a palavra fora das três para
+  const lobo = LOBO.split('\n').find((l) => l.startsWith('| forma de lobo |'));
+  const formaCou = (s) => LOBO.replace(lobo, lobo.replace('; Couraça nível 0', '; ' + s));
+  if (!lobo.includes('; Couraça nível 0')) falhas.push('R49 na forma: a Variante do lobo não traz mais "; Couraça nível 0"');
+  r = conv(formaCou('Couraça nível 2, perfil couro'));
+  const fl = r.criatura.formas?.find((f) => f.id === 'lobo');
+  if (r.paradas.length || fl?.couraca !== 2 || fl?.perfilCouraca !== 'couro') falhas.push('R49 na forma: o perfil não chegou à forma: ' + JSON.stringify([r.paradas, fl?.couraca, fl?.perfilCouraca]));
+  if (!parou(conv(formaCou('Couraça nível 2, perfil escamosa')), 'perfil de Couraça "escamosa"')) falhas.push('R49 na forma: o perfil fora dos três passou');
+}
+
+{
+  // Etapa c2 (decisões do Arquiteto de 06/11/2026, leituras de regra já decidida), plantadas numa cópia do lobisomem.
+  const troca = (de, para_, txt = LOBO) => { if (!txt.includes(de)) falhas.push('c2: a ficha do lobisomem não traz mais "' + de.slice(0, 40) + '"'); return txt.replace(de, para_); };
+  const conv = (txt) => converterFicha(txt, { site: SITE });
+  const parou = (r, trecho) => r.paradas.some((p) => p.includes(trecho));
+  // R36: o ataque Distância que diz "Sem jogada de ataque" (área) fica sem Habilidade e sem jogada; sem a frase, para
+  const SEP = '|---|---|---|---|---|---|---|---|---|---|---|---|\n';
+  const sopro = (just) => troca(SEP, SEP + '| Sopro | boca, à distância | Distância | 3/1/3 | 7 | 2d6 + Centelha (2) | fogo | | +0 | não | 9 | ' + just + ' |\n');
+  let r = conv(sopro('O sopro ocupa um cone de 3 m. Cada alvo resolve a saída de área pelo livro. Sem jogada de ataque'));
+  const s = r.criatura.ataques.find((a) => a.nome === 'Sopro');
+  if (r.paradas.length || !s || s.habilidade !== undefined) falhas.push('R36: o ataque de área sem jogada não entrou sem Habilidade: ' + JSON.stringify([r.paradas, s]));
+  if (lerEsperado(sopro('Sem jogada de ataque')).esperado.ataques.find((a) => a.nome === 'Sopro')?.jogada !== undefined) falhas.push('R36: o leitor da fixture cobrou jogada do ataque de área');
+  if (!parou(conv(sopro('O sopro ocupa um cone de 3 m.')), 'Habilidade de tiro ou arremesso ausente')) falhas.push('R36: Distância sem Habilidade e sem a frase de área passou');
+  // "imunidades: nenhuma" é a lista vazia; outra palavra fora do vocabulário continua parando
+  const elem = (s2) => troca('prata · resistências: corte, perfuração, impacto', 'prata · resistências: corte, perfuração, impacto · imunidades: ' + s2);
+  r = conv(elem('nenhuma'));
+  if (r.paradas.length || JSON.stringify(r.criatura.elementos.imunidades) !== '[]') falhas.push('Elementos: "imunidades: nenhuma" não virou lista vazia: ' + JSON.stringify([r.paradas, r.criatura.elementos]));
+  if (!parou(conv(elem('nada')), '"nada" fora do vocabulário')) falhas.push('Elementos: palavra fora do vocabulário passou');
+  // D-306 (R28): "veneno: <texto>" no Equipamento vai a equipamento.veneno; outro pedaço depois dos escudos para
+  const eq = (resto) => troca('| Equipamento | nenhum |', '| Equipamento | armas: nenhuma · armaduras: nenhuma · escudos: nenhum' + resto + ' |');
+  r = conv(eq(' · veneno: 1 dose de veneno de teste'));
+  if (r.paradas.length || r.criatura.equipamento.veneno !== '1 dose de veneno de teste') falhas.push('D-306: a dose de veneno não chegou ao equipamento: ' + JSON.stringify([r.paradas, r.criatura.equipamento]));
+  r = conv(eq(''));
+  if (r.paradas.length || r.criatura.equipamento.veneno !== undefined) falhas.push('D-306: o Equipamento sem veneno mudou: ' + JSON.stringify([r.paradas, r.criatura.equipamento]));
+  if (!parou(conv(eq(' · bolsa: corda')), 'pedaço que o conversor não conhece')) falhas.push('D-306: o pedaço desconhecido do Equipamento passou calado');
+  if (criaturaNovaSchema.safeParse(conv(eq(' · veneno: 1 dose')).criatura).error?.issues.some((i) => i.path.includes('veneno'))) falhas.push('D-306: o esquema recusou o veneno do equipamento');
 }
 
 if (falhas.length) {

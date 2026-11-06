@@ -101,23 +101,10 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Ataque furtivo",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "ataque": "Bastão",
-      "ativacao": "o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado",
-      "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "o golpe pega um ponto vital",
-      "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
-    },
-    {
       "nome": "Salto certeiro",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um salto que o leva até o alvo, com o golpe",
       "duracao": "instantânea",
       "alcance": "o salto (Atletismo)",
@@ -125,12 +112,13 @@
       "efeito": "golpeia no começo, no meio ou no fim do salto, e o movimento não abre a guarda dele a quem está no caminho",
       "dano": "o do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "a cada ação"
+      "limiteDeUso": "a cada ação. Sem custo"
     },
     {
       "nome": "Luta em enxame",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale quando dois morlocks atacam o mesmo alvo",
       "duracao": "enquanto os dois estiverem juntos",
       "alcance": "o do corpo a corpo",
@@ -138,26 +126,49 @@
       "efeito": "os dois cabem no mesmo espaço apertado e o alvo conta como Flanqueado por eles",
       "dano": "nenhum além dos golpes",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Cego pela luz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "luz repentina e intensa (um clarão, uma tocha acesa de perto, o sol de repente)",
-      "duracao": "6 Ticks",
+      "duracao": "enquanto durar a exposição",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Cego",
+      "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
       "dano": "nenhum",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa fica só Ofuscado",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Imune a veneno e doença",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "toxinas e pragas não o pegam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "toxinas e pragas não o pegam. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Golpe na brecha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -225,22 +236,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Ataque furtivo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Salto certeiro",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Luta em enxame",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cego pela luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidades.armas",
       "motivo": "O site gravava `briga` 3 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5)"

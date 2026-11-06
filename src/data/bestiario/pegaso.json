@@ -24,6 +24,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 4,
@@ -121,10 +122,18 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "coice e mordida juntos",
+      "nome": "Posturas de combate",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "escoiceia e morde na mesma ação"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: de lado, asas fechadas, no chão. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Sentir o bem e o mal",
@@ -134,20 +143,43 @@
         "arte": "adivinhacao",
         "nivel": 1
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, está sempre ligado",
       "duracao": "contínua",
       "alcance": "18 m",
       "area": "esfera de 18 m em volta dele",
       "efeito": "sente se quem está perto tem intenção boa ou má",
       "dano": "nenhum",
-      "resistencia": "mente, contra Percepção + Empatia dele; quem passa esconde a intenção",
-      "limiteDeUso": "à vontade"
+      "resistencia": "Percepção + Empatia da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa esconde a intenção",
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "coração nobre",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o medo não o pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora medo imposto por presença, Arte ou poder de criatura. O Abalado de golpe social ou corporal continua valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: coice esquerdo, coice direito, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -234,10 +266,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Sentir o bem e o mal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "corpo.area",
       "motivo": "Enorme em voo, de asas abertas (17,0 m²), pelo método do grifo"

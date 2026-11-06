@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 4,
     "destreza": 2,
@@ -87,22 +88,16 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
-    },
-    {
-      "nome": "formas variadas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "conforme o objeto, ganha garras a mais, sobe, nada ou voa, ou derruba com o golpe; a ficha do armário não tem nenhuma, e a outra forma fica com o Mestre"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "formas variadas",
+      "formas": "todas",
+      "texto": "Cada objeto animado usa o perfil de seu próprio corpo, conforme sua forma e material."
+    },
     {
       "nome": "guardião do cômodo",
       "formas": "todas",
@@ -117,11 +112,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parado, passa por um móvel comum",
     "mente": "nenhuma; cumpre a última ordem recebida",
-    "tracos": "armário de carvalho de 1,5 m com ferragens de ferro, que anda aos trancos e bate as portas"
+    "tracos": "armário de carvalho de 1,5 m com ferragens de ferro, que anda aos trancos e bate as portas. Não se cansa",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -131,7 +125,6 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda",
     "dianteDeGente": "ataca quem cruza o posto"
   },
@@ -186,12 +179,12 @@
       "motivo": "As medidas de um armário de 1,5 m"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: tábua de carvalho de 3 cm, ao lado do couro do búfalo e do elefante (2 a 3); o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site (Elementos); 3, tábua de carvalho de 3 cm"
-    },
-    {
       "campo": "corpo",
       "motivo": "o armário de carvalho, e não a jaula do exemplo do site, que pela área das barras ficaria abaixo do Médio"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "3, tábua de carvalho de 3 cm"
     }
   ]
 }

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "seis pernas apoiadas na rocha"
   },
   "couraca": 3,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 5,
     "destreza": 3,
@@ -92,19 +93,36 @@
     {
       "nome": "Filamento pegajoso",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "dispara seda adesiva que prende a presa à distância; a vítima tenta romper ou se livrar do fio"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "9 m",
+      "area": "a criatura",
+      "efeito": "Quem é atingido fica Preso pela Rede do livro. Pode romper o fio ou muco por 3 PV de Corte",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose"
     },
     {
       "nome": "Puxão certeiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "recolhe o filamento e arrasta a presa até a saliência onde espera"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Mente vazia",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "resiste a efeitos que dependem de mente ou raciocínio"
     }
   ],
@@ -194,6 +212,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Filamento pegajoso",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
     },
     {
       "campo": "corpo",

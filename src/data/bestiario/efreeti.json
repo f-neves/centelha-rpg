@@ -106,8 +106,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "aura"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "toque",
@@ -115,7 +117,7 @@
       "efeito": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa",
       "dano": "1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele; quem passa não se queima ao entrar; quem o acerta ou o toca não resiste",
-      "limiteDeUso": "a queima ao entrar, uma vez por cena para cada criatura; o resto, sem limite"
+      "limiteDeUso": "A cada exposição ao calor ou contato. Sem custo"
     },
     {
       "nome": "Muralha de fogo",
@@ -123,16 +125,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "muro"
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até ele desfazer",
       "alcance": "18 m",
       "area": "uma parede de até 6 m de comprimento e 3 m de altura",
       "efeito": "ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima",
       "dano": "3d6 + Centelha, fogo, a quem atravessa",
       "resistencia": "esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade",
-      "limiteDeUso": "três vezes por dia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Conceder desejos",
@@ -142,14 +146,15 @@
         "arte": "fortuna",
         "nivel": 6
       },
-      "ativacao": "o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita",
+      "categoria": "milagre",
+      "ativacao": "o pedido de quem o aprisiona, o suborna ou o convence, quando ele aceita. O interessado apresenta o pedido e negocia o preço com o efreeti. O preparo dura a negociação até ambos aceitarem o trato",
       "duracao": "a do pedido",
       "alcance": "o que o pedido alcança",
       "area": "a do pedido",
-      "efeito": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço",
+      "efeito": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço. O limite é uma Arte até nível 6 que o concedente possa descrever. Preço e alvo são declarados antes do acordo. O desejo não altera o passado, não cria outro desejo e só traz mortos até onde a Cura permite",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia, e raramente"
+      "limiteDeUso": "uma vez por dia, e raramente. Limite fixo, sem uso extra nem ampliação"
     },
     {
       "nome": "Invisibilidade",
@@ -157,29 +162,25 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "ausencia"
       },
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
+      "duracao": "até atacar ou desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Invisível; o calor do corpo continua",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Viagem planar",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 8",
-      "duracao": "instantânea",
-      "alcance": "outro plano ou realidade",
-      "area": "ele e quem ele toca e quer levar",
-      "efeito": "passa para outro plano e volta quando quiser",
-      "dano": "nenhum",
-      "resistencia": "nenhum; quem não quer ir não é levado",
-      "limiteDeUso": "uma vez por cena"
+      "classe": "sem regra ainda",
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     }
   ],
   "comoLuta": [
@@ -269,32 +270,24 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Corpo em chamas",
-      "motivo": "números sugeridos pela ficha (D-197); o efeito do site, \"Resiste ao entrar, 1 vez por cena\", fica como a queima de quem entra no alcance, com resistência de corpo uma vez por cena; o mesmo poder diz `resiste: nenhum`, que fica para quem o acerta ou o toca"
-    },
-    {
-      "campo": "habilidadesEspeciais.Muralha de fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Conceder desejos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Invisibilidade",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Viagem planar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": "site (Sociedade)"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Muralha de fogo",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Viagem planar",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidades.prontidao",
@@ -307,6 +300,10 @@
     {
       "campo": "ataques",
       "motivo": "o \"Golpe planar\" de 2 dados e corte vira o Punho em brasa Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
+    },
+    {
+      "campo": "habilidadesEspeciais.Corpo em chamas",
+      "motivo": "o efeito do site, \"Resiste ao entrar, 1 vez por cena\", fica como a queima de quem entra no alcance, com resistência de corpo uma vez por cena; o mesmo poder diz `resiste: nenhum`, que fica para quem o acerta ou o toca"
     }
   ]
 }

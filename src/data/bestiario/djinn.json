@@ -106,8 +106,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "vento",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "tromba"
       },
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6",
       "duracao": "até 18 Ticks, ou até ele desfazer com outra ação",
       "alcance": "o próprio corpo, que se move enquanto gira",
@@ -115,7 +117,7 @@
       "efeito": "vira um tornado de vento cortante que levanta destroços; quem está na área cai (Caído), e quem é mais leve que ele e não passa fica Agarrado, girando dentro, até o tornado acabar ou até vencer a manobra para se soltar",
       "dano": "2d6 + Centelha, Corte, a cada 6 Ticks, a quem está dentro",
       "resistencia": "esquiva, contra Destreza + Briga dele; quem passa fica de pé e de fora",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Invisibilidade",
@@ -123,16 +125,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "ausencia"
       },
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
+      "duracao": "até atacar ou desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Invisível",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Criar água e comida",
@@ -140,16 +144,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "materia",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "criar-substancia"
       },
-      "ativacao": "um gesto, sem gastar ação de combate",
+      "categoria": "magia",
+      "ativacao": "um gesto, sem gastar ação de combate, em ação de Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "a comida fica boa por um dia",
       "alcance": "3 m",
       "area": "o bastante para seis pessoas por um dia",
       "efeito": "faz brotar água limpa ou uma refeição simples do nada",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Véu",
@@ -159,19 +165,21 @@
         "arte": "ofuscacao",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "o próprio corpo, ou uma área a até 9 m",
       "area": "ele mesmo, ou um espaço de até 3 m",
       "efeito": "muda a própria aparência (outro rosto, outra roupa, outra altura dentro do Grande) ou a de uma área pequena; é ilusão, e quem toca percebe",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele, para quem desconfia e examina",
-      "limiteDeUso": "duas vezes por cena"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Domínio do vento",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -179,7 +187,7 @@
       "efeito": "o domínio do ar concede +1 na Defesa Física (Esquiva e Bloqueio) contra quem ataca estando no ar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -261,28 +269,24 @@
   },
   "revisao": [
     {
+      "campo": "comportamento.social",
+      "motivo": "site"
+    },
+    {
       "campo": "habilidadesEspeciais.Forma de redemoinho",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural, e não forma (linha Formas)"
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder.; poder natural, e não forma (linha Formas)"
     },
     {
       "campo": "habilidadesEspeciais.Invisibilidade",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Criar água e comida",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação um gesto, sem gastar ação de combate -> um gesto, sem gastar ação de combate, em ação de Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Véu",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Domínio do vento",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "comportamento.social",
-      "motivo": "site"
+      "motivo": "R1 e D-197. Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo",

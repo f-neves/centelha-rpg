@@ -28,6 +28,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 6,
@@ -131,11 +132,26 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: asas abertas. Médio: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Agarrar",
       "formas": [
         "verdadeira"
       ],
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -145,14 +161,15 @@
       ],
       "classe": "regra da ficha",
       "ataque": "Mordida venenosa",
-      "ativacao": "a Mordida que fere; ela pode enrolar o alvo em seguida, pela jogada de Agarrar do livro",
+      "categoria": "substancia",
+      "ativacao": "a Mordida que causa ao menos 1 PV depois da Absorção; ela pode enrolar o alvo em seguida, pela jogada de Agarrar do livro",
       "duracao": "enquanto agarra",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado",
+      "efeito": "a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "1d6 + Força, Impacto, a cada aperto",
       "resistencia": "corpo, pela regra do Agarrar para escapar e pela do veneno",
-      "limiteDeUso": "três vezes por cena; recupera em 1 hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Mudar de forma",
@@ -162,19 +179,21 @@
         "arte": "materia",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até o fim da cena, ou até ela desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela",
+      "efeito": "assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Telepatia",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "18 m",
@@ -182,20 +201,14 @@
       "efeito": "fala com qualquer criatura pela mente, por imagens e sensações, sem língua em comum",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Viagem planar",
       "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 8",
-      "duracao": "instantânea",
-      "alcance": "outro plano ou realidade",
-      "area": "ela e quem ela toca e quer levar",
-      "efeito": "passa para outro plano e volta quando quiser",
-      "dano": "nenhum",
-      "resistencia": "nenhum; quem não quer ir não é levado",
-      "limiteDeUso": "uma vez por cena"
+      "classe": "sem regra ainda",
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     }
   ],
   "comoLuta": [
@@ -309,22 +322,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Constrição venenosa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Telepatia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Viagem planar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "Constritora de 270 kg: não fica abaixo da jiboia do molde (27 kg, Força 5). O site tinha 4 (a For 15 do Pathfinder); 6; o site tinha 4"
     },
@@ -346,7 +343,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escamas sob penas, como a jiboia (nível 0 a 1)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escamas sob penas, como a jiboia (nível 0 a 1)"
     },
     {
       "campo": "comportamento.atividade",
@@ -359,6 +356,14 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma (site) muda o corpo; a mente, as Artes e os números ficam os dela"
+    },
+    {
+      "campo": "habilidadesEspeciais.Constrição venenosa",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Viagem planar",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "formas",

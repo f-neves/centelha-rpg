@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 2,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 5,
     "destreza": 3,
@@ -131,9 +132,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Ferrão de gigante",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Ferrão",
+      "categoria": "substancia",
+      "ativacao": "Ferrão ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Ferrão de gigante. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],

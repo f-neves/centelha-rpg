@@ -19,6 +19,7 @@
     "posturaDoTamanho": "ramos espalhados no chão"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 5,
     "destreza": 4,
@@ -87,19 +88,40 @@
       "nome": "Névoa de pólen",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "sopra pólen sobre a vítima, que fica atraída pelas flores e se aproxima sem se defender"
+      "categoria": "substancia",
+      "efeito": "sopra pólen sobre a vítima, que fica atraída pelas flores e se aproxima sem se defender. O corpo guarda 2 doses e produz 1 dose em 6 horas"
     },
     {
       "nome": "Criação de zumbi de almíscar",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "os tendrilhos invadem o cérebro de uma vítima indefesa; o corpo morto passa a servir à planta"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "morte",
+        "nivel": 4
+      },
+      "categoria": "magia",
+      "ativacao": "ritual sobre o cadáver",
+      "duracao": "pelo ritual",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Ergue o cadáver como zumbi de almíscar pelo poder equivalente a Morte 4",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena"
     },
     {
       "nome": "Imunidades vegetais",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "veneno, sono e aflições mentais não a afetam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora veneno, sono e domínio. O ferimento do golpe continua. Dano físico de Arte e conversa comum seguem as regras normais",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -201,6 +223,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Névoa de pólen",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Criação de zumbi de almíscar",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Somente os usos grátis estão disponíveis. Um uso de abertura até a definição do efeito."
     },
     {
       "campo": "corpo",

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de pé"
   },
   "couraca": 3,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 10,
     "destreza": 5,
@@ -89,20 +90,37 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "fecha as fauces em volta da presa"
     },
     {
       "nome": "Fauces engolidoras",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "encerra a presa inteira na boca e a digere com pressão e ácido"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Imunidades vegetais",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não sofre doenças, venenos, sono ou paralisia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "não sofre doenças, venenos, sono ou paralisia. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [

@@ -89,8 +89,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "dreno"
       },
+      "categoria": "sobrenatural",
       "ativacao": "a Garra que fere",
       "duracao": "até um descanso completo",
       "alcance": "toque",
@@ -98,12 +100,13 @@
       "efeito": "a vida do alvo escorre para o wight; o PV máximo do alvo cai, e o efeito se acumula a cada garra que pega",
       "dano": "nenhum além da garra; o PV máximo do alvo cai 1d6",
       "resistencia": "corpo, contra a jogada da garra; quem passa não perde PV máximo por aquela garra",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cria servos",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um humanoide morre com o PV máximo reduzido pelo Dreno de vida",
       "duracao": "permanente",
       "alcance": "o corpo da vítima",
@@ -111,19 +114,7 @@
       "efeito": "a vítima se ergue como wight na cena seguinte, sob o comando dele, até ele ser destruído; então fica livre",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por vítima"
-    },
-    {
-      "nome": "imune a veneno, doença e efeito mental",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno, a doença e o que age na mente não pegam nele"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa"
+      "limiteDeUso": "um por vítima. Sem custo"
     }
   ],
   "comoLuta": [
@@ -151,10 +142,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "inteira, fria e presa ao ódio",
-    "tracos": "cadáver dessecado de pele escura e esticada, unhas compridas, olhos com uma luz fria"
+    "mente": "inteira, fria e presa ao ódio. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Medo cobre o imposto por essas fontes. Golpe social ou corporal ainda pode deixar Abalado. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "cadáver dessecado de pele escura e esticada, unhas compridas, olhos com uma luz fria. Não se cansa",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa",
+    "familiasMentaisIgnoradas": [
+      "medo",
+      "confusao"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -164,7 +159,6 @@
   "comportamento": {
     "social": "com os servos que criou",
     "atividade": "noturno",
-    "dieta": "nenhuma",
     "caca": "drena os vivos",
     "dianteDeGente": "ataca"
   },
@@ -220,14 +214,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Dreno de vida",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cria servos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.intimidacao",
       "motivo": "Comanda os servos pelo medo (site); 1, o comando dos servos"
     },
@@ -242,6 +228,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (morto que foge da luz)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dreno de vida",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

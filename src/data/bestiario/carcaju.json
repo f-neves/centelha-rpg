@@ -141,14 +141,30 @@
     {
       "nome": "fúria ao ferimento",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ferido, entra em fúria na ação seguinte, lutando com mais força e resistência, e descuida da própria defesa até um dos lados cair"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "na ação seguinte àquela em que é ferido",
+      "duracao": "até um dos lados cair ou o combate acabar",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Fica Enfurecido. +2 nas ações físicas exceto tiro, −2 em Esquiva e Bloqueio, só ações físicas. Não pode ser convencido. Sofre as penalidades de ferimento",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "A cada exposição ao gatilho, sem custo"
     },
     {
       "nome": "corpo firme",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o corpo compacto é difícil de derrubar"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -221,5 +237,10 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": []
+  "revisao": [
+    {
+      "campo": "habilidadesEspeciais.fúria ao ferimento",
+      "motivo": "R9. O ferimento dispara o Frenesi da criatura. O término segue o combate entre os dois lados. A ficha não concedia imunidade a penalidade de ferimento."
+    }
+  ]
 }

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 4,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 12,
     "destreza": 9,
@@ -151,28 +152,24 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "garras, mordida e ferrão juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "rasga, morde e pica na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a mordida e a cauda são outras ações"
     },
     {
       "nome": "Ferrão venenoso",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Cauda",
-      "ativacao": "o golpe da Cauda que fere",
+      "categoria": "substancia",
+      "ativacao": "o golpe da Cauda que causa ao menos 1 PV depois da Absorção",
       "duracao": "a do veneno",
       "alcance": "o da cauda",
       "area": "um alvo",
       "efeito": "o alvo fica Envenenado pelo veneno do diabo do fosso (Veneno e doença)",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Doença infernal",
@@ -180,16 +177,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "praga"
       },
+      "categoria": "inato",
       "ativacao": "a Mordida que fere",
       "duracao": "até ser tratada (Cura) ou curada por Arte",
       "alcance": "toque",
       "area": "um alvo",
-      "efeito": "o alvo fica Doente e vai perdendo Vigor: a cada dia sem tratamento, um degrau de Desgaste",
+      "efeito": "o alvo fica Doente e vai perdendo Vigor: a cada dia sem tratamento, um degrau de Desgaste. Se o Vigor chegar a 0, a vítima morre",
       "dano": "nenhum além da mordida",
       "resistencia": "corpo, contra a jogada da mordida; quem passa não adoece daquele golpe",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Aura de medo",
@@ -197,16 +196,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "mortalha"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
-      "duracao": "até o fim da cena para quem falha",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "12 m",
       "area": "esfera de 12 m em volta dele",
-      "efeito": "puro terror; quem entra e falha fica Abalado só de estar perto",
+      "efeito": "puro terror; quem entra e falha fica Abalado só de estar perto. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, uma vez por cena, ao entrar; quem passa fica imune à aura até o fim da cena",
-      "limiteDeUso": "nenhum"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune à aura até o fim da cena",
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Labareda",
@@ -214,16 +215,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
-        "nivel": 6
+        "nivel": 6,
+        "efeito": "projetil-conjurado"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 7. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "60 m",
       "area": "esfera de 6 m",
       "efeito": "arremessa uma bola de fogo que explode no ponto escolhido",
       "dano": "6d6 + Centelha, fogo",
       "resistencia": "esquiva; quem passa leva metade",
-      "limiteDeUso": "três vezes por dia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Convocar diabos",
@@ -231,16 +234,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "espirito",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "invocar"
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "até o fim da cena",
       "alcance": "9 m",
-      "area": "os diabos chamados aparecem perto dele",
-      "efeito": "abre uma fenda para o Fosso e puxa 1d6 diabos menores (diabos barbados ou espinhosos, à escolha do Mestre) que lutam ao lado dele",
+      "area": "um aliado",
+      "efeito": "Convoca Diabrete (Imp) até o fim da cena. A origem aguarda o lore dos planos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena, uma por dia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Feitiços supremos",
@@ -250,25 +255,28 @@
         "arte": "fortuna",
         "nivel": 6
       },
-      "ativacao": "uma ação, Velocidade 8, quando o Mestre diz que é possível",
+      "categoria": "milagre",
+      "ativacao": "Um mortal pede uma Arte específica e assina um pacto que nomeia o serviço que deverá ao diabo. O diabo precisa traçar o selo e ler o pacto em voz alta sem interrupção. Depois de lacrá-lo, invoca a Arte com uma ação de Velocidade 7",
       "duracao": "a do efeito reproduzido",
       "alcance": "o do efeito reproduzido",
       "area": "a do efeito reproduzido",
       "efeito": "reproduz o efeito de qualquer Arte, de qualquer nível, uma única vez",
       "dano": "o do efeito reproduzido",
       "resistencia": "a do efeito reproduzido",
-      "limiteDeUso": "uma vez por história"
+      "limiteDeUso": "uma vez por história. Limite fixo, sem uso extra nem ampliação"
     },
     {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de armas sagradas ou de prata"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de arma sagrada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "ferida que não fecha",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o que arma sagrada ou de prata faz não se regenera pela regeneração"
     },
     {
@@ -278,25 +286,57 @@
       "tecnica": {
         "id": "visao-verdadeira",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o diabo do fosso enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "o campo de visão",
+      "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de diabo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o senhor do Fosso, de asas, presas e ferrão; diabos menores obedecem sem hesitar só de vê-lo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra, mordida, ferrão da cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -314,7 +354,7 @@
     },
     {
       "nome": "visão verdadeira",
-      "descricao": "pela Técnica (Manobras)",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -390,40 +430,36 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ferrão venenoso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Doença infernal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura de medo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Labareda",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Convocar diabos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Feitiços supremos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 4; 5 pela nota do site, e não o 4 do campo"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de diabo maior, como a do balor e do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade é a do site, pela linha Elementos; 4, como o balor"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 4: a pele de diabo maior, como a do balor e do hezrou .; 4, como o balor"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Ferrão venenoso",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Aura de medo",
+      "motivo": "R5 e D-197. Jogada sugerida de Influência + Ocultismo para a imposição mental deste poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Labareda",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Convocar diabos",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Limite diário dos usos grátis: 1. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiços supremos",
+      "motivo": "R1 e D-197. Proponho um pedido mortal, uma dívida de serviço nomeada e o preparo do selo com leitura do pacto. A dívida dá um preço concreto ao uso por história."
     },
     {
       "campo": "virtudes.temperanca",

@@ -119,14 +119,15 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 7, lançando-se sobre um alvo de Tamanho Grande ou menor",
       "duracao": "até o alvo se soltar ou ela soltar",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "na jogada de Agarrar do livro que acerta, envolve o alvo no próprio corpo: ele fica Agarrado e Cego, e a Mordida acerta sem jogada a cada 6 Ticks; quem ataca a capa enquanto ela envolve alguém faz metade do dano nela e metade na vítima",
+      "efeito": "na jogada de Agarrar do livro que acerta, envolve o alvo no próprio corpo: ele fica Agarrado e Cego, e a Mordida acerta sem jogada a cada 6 Ticks; quem ataca a capa enquanto ela envolve alguém faz metade do dano nela e metade na vítima. Cego aplica −1d6 nas ações de visão. Se souber do ataque, Esquiva −4 e Bloqueio −8. Se não souber, Surpreso, com Defesas 0",
       "dano": "o da Mordida",
       "resistencia": "corpo, para escapar, pela jogada de Agarrar do livro",
-      "limiteDeUso": "um alvo envolvido por vez"
+      "limiteDeUso": "um alvo envolvido por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Gemido sônico",
@@ -136,14 +137,15 @@
         "arte": "fascinacao",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "à escolha, abaixo",
       "alcance": "9 m em volta dela",
       "area": "à escolha: pavor, todos na área ficam Em pânico até o fim da cena; náusea, todos na área ficam Caídos e passam o próximo Tick só levantando; lamento, todos na área ficam Abalados até o fim da cena",
       "efeito": "o lamento infrassônico não pega nela nem em outra capa sombria (\"Imune ao próprio gemido\", site)",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Integridade dela",
-      "limiteDeUso": "o pavor, uma vez por dia; os outros, um gemido a cada 12 Ticks"
+      "resistencia": "Influência + Integridade da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Pavor: 1 uso grátis por dia. Outros gemidos: 1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Manipulação de sombras",
@@ -153,19 +155,21 @@
         "arte": "ofuscacao",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6, só em penumbra ou escuridão",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, só em penumbra ou escuridão. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até ela desfazer",
       "alcance": "o próprio corpo, ou 18 m para a imagem falsa",
       "area": "à escolha: borrada, conta como em Cobertura parcial contra quem a ataca; duplicatas, três imagens dela, e quem a ataca escolhe uma ao acaso (uma em quatro é ela, e a imagem acertada some); imagem falsa, uma cena de sombras de até 6 m",
       "efeito": "o descrito na escolha",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Integridade dela, só para quem desconfia da imagem falsa",
-      "limiteDeUso": "um efeito por vez, à vontade"
+      "resistencia": "Influência + Integridade da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um efeito por vez"
     },
     {
       "nome": "torpor do gemido",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o gemido entorpece um alvo, que fica travado sem conseguir agir"
     }
   ],
@@ -230,18 +234,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Envolver",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Gemido sônico",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Manipulação de sombras",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 7; com 45 kg, ficaria igual ao gorila (180 kg, Força 7) e muito acima da Força de referência da massa (5,53, manual 3.9). Desce para 5, pelo teste de ordem; 5; o site tinha 7"
     },
@@ -264,6 +256,14 @@
     {
       "campo": "ataques.Cauda",
       "motivo": "Chicote rápido de membro, Leve (regra-construcao §7) . Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Gemido sônico",
+      "motivo": "R1 e D-197. Pavor: 1 uso grátis por dia. Outros gemidos: 1 uso grátis por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Manipulação de sombras",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um efeito por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, só em penumbra ou escuridão -> uma ação, Velocidade 5, só em penumbra ou escuridão. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

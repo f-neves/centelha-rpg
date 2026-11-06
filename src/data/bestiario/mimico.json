@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 5,
     "destreza": 3,
@@ -116,42 +117,44 @@
       "nome": "Assumir forma de objeto",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6, com uma hora de preparo para mudar de objeto",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 8",
       "duracao": "até ele se mexer para atacar",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "parece um baú, uma porta ou um móvel comum da massa dele; quem olha precisa vencer a Furtividade dele, com a Especialidade natural (disfarçado de objeto) +3, com Prontidão para notar o engano",
+      "efeito": "parece um baú, uma porta ou um móvel comum da massa dele; quem olha precisa vencer a Furtividade dele, com a Especialidade natural (disfarçado de objeto) +3, com Prontidão para notar o engano. Use o perfil declarado da forma. O equipamento só acompanha quando o poder disser",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Cola aderente",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pseudópode",
+      "categoria": "substancia",
       "ativacao": "o Pseudópode que acerta, ou alguém que toca nele com a mão ou com uma arma",
       "duracao": "até se soltar",
       "alcance": "o corpo dele",
       "area": "quem tocou",
-      "efeito": "fica Agarrado, colado; a arma que tocou fica presa nele",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro. A adesão de uma arma que toca o corpo segue a regra da cola",
       "dano": "nenhum",
-      "resistencia": "esquiva, contra a jogada do Pseudópode, para não grudar; colado, o agarrado não age nem rola para se soltar: só se solta quando o mímico erra o Manter do Agarrar do livro, ou quando ele o solta",
-      "limiteDeUso": "três vezes por cena, recarga de 1 hora"
+      "resistencia": "pela manobra Agarrar",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
-      "nome": "Mordida de emboscada",
+      "nome": "Golpe na brecha",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ataque": "Mordida",
-      "ativacao": "o primeiro golpe contra um alvo Surpreso (`condicoes.json`)",
-      "duracao": "o golpe",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "morde quem achou que abria um baú",
-      "dano": "+2d6 ao da Mordida",
-      "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por alvo"
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -225,24 +228,20 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Assumir forma de objeto",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cola aderente",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mordida de emboscada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": ""
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). A pele que imita madeira endurece um pouco ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). A pele que imita madeira endurece um pouco ;; nível 1"
+    },
+    {
+      "campo": "habilidadesEspeciais.Assumir forma de objeto",
+      "motivo": "R3. Ativação uma ação, Velocidade 6, com uma hora de preparo para mudar de objeto -> uma ação, Velocidade 8, com uma hora de preparo para mudar de objeto Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Cola aderente",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "ataques",

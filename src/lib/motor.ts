@@ -127,10 +127,10 @@ export function porteDeRotulo(rotulo: string | null | undefined): Porte {
  *
  * A D-077, sem teto: +3 por categoria (`reforma.porCategoria`) pela `ordem`.
  * Corpo a corpo só o menor ganha; à distância é relativo nos dois sentidos
- * (alvo menor dá −3 por categoria). Só a metade da compensação: a outra metade
- * (Couraça de Porte, que corta o dano de quem é menor) já está aplicada em
- * tempo de geração (`gen-bestiario.mjs`), somada na `absorcao` de cada
- * criatura , esta função completa o par, não inventa um novo.
+ * (alvo menor dá −3 por categoria). O porte mexe só no acerto: a antiga
+ * Couraça de Porte, que cortava o dano de quem é menor e morava no gerador do
+ * bestiário, saiu em 5da94c0d. A Couraça de hoje vem só da pele, pelo nível e
+ * pelo perfil (R49, D-328; `absorcaoDaCouraca`), e não depende do porte.
  */
 export function modificadorPorte(porteAtacante: Porte, porteAlvo: Porte, aDistancia = false): number {
   const t = regras.porteAcerto as { ordem: string[]; reforma: { porCategoria: number } };
@@ -482,6 +482,8 @@ export interface EntradaCriatura {
     enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Extract<Tamanho, 'pequeno' | 'medio'> };
     bonusPV?: number;
     couraca?: number;
+    // o perfil da cobertura (R49, D-328); sem ele a Couraça não soma à Absorção
+    perfilCouraca?: PerfilCouraca;
     artes?: Num;
     // as peças da ficha do jogador (D-231, D-238): a arma `{ref: "a:<id>"}`, o escudo `{ref: "e:<id>"}`, a armadura `{base, vestida}`
     equipamento?: {
@@ -492,6 +494,8 @@ export interface EntradaCriatura {
             base: string;
             vestida?: boolean;
         }[];
+        // a dose de veneno carregada para a lâmina (D-306, R28), em texto
+        veneno?: string;
     };
     ataques: AtaqueEntrada[];
 }
@@ -605,12 +609,24 @@ export function ataqueDaArma(id: string, forca: number, duasMaos = false) {
         acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks, habilidade: w.pericia,
     };
 }
-/** O Atributo da jogada pela Habilidade: Disparo, Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208). */
-export function atributoDaJogada(habilidade: string, at: Num): number {
+/**
+ * Qual Atributo o projétil do corpo usa (D-315, R36, 06/11/2026): "o projétil natural com alvo rola o maior entre
+ * Vigor, Destreza e Percepção + Atirador". Só o ataque natural, sem arma; o arqueiro segue a Percepção de sempre.
+ * No empate vale a ordem Vigor, Destreza, Percepção, só para o nome que o card escreve (o número é o mesmo).
+ */
+export function atributoDoProjetilNatural(at: Num): 'vigor' | 'destreza' | 'percepcao' {
+    const v = at.vigor ?? 0, d = at.destreza ?? 0, p = at.percepcao ?? 0;
+    return v >= d && v >= p ? 'vigor' : d >= p ? 'destreza' : 'percepcao';
+}
+/**
+ * O Atributo da jogada pela Habilidade: Disparo, Vigor; Atirador, Percepção (com arma) ou o maior entre Vigor, Destreza
+ * e Percepção (ataque natural, D-315); Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208).
+ */
+export function atributoDaJogada(habilidade: string, at: Num, natural = false): number {
     if (habilidade === 'disparo')
         return at.vigor ?? 0;
     if (habilidade === 'atirador')
-        return at.percepcao ?? 0;
+        return natural ? (at[atributoDoProjetilNatural(at)] ?? 0) : at.percepcao ?? 0;
     if (habilidade === 'arremesso')
         return at.destreza ?? 0;
     return Math.max(at.forca ?? 0, at.destreza ?? 0);
@@ -633,6 +649,20 @@ export function habilidadeDaJogada(ataque: AtaqueEntrada, habilidades: Num, habi
     return armas > briga ? 'armas' : 'briga';
 }
 const habDe = (e: EntradaCriatura, id: string) => e.habilidades[id] ?? e.habilidadesSec[id] ?? 0;
+export type PerfilCouraca = 'rigida' | 'couro' | 'mole';
+/**
+ * Quanto a Couraça soma à Absorção (R49, D-328, 05/11/2026; `regras.json → criatura.couraca`): o nível N vezes a fração
+ * do perfil, com as metades arredondadas para cima. Rígida: Corte N, Perfuração N, Impacto N/2; Couro: Corte N,
+ * Perfuração N/2, Impacto N/2; Mole: Corte N/2, Perfuração N/2, Impacto N. Não cria Nível de Perfuração. Sem perfil
+ * (as fichas de antes da R49) a soma é zero: o motor não escolhe o perfil pela ficha.
+ */
+export function absorcaoDaCouraca(nivel: number | undefined, perfil: PerfilCouraca | undefined): Soak {
+    const p = perfil ? C.couraca.perfis[perfil] : undefined;
+    if (perfil && !p) throw Error('perfil de Couraça desconhecido: ' + perfil);
+    const n = nivel ?? 0;
+    const de = (k: 'impacto' | 'corte' | 'perfuracao') => (p ? Math.ceil(n * p[k]) : 0);
+    return { impacto: de('impacto'), corte: de('corte'), perfuracao: de('perfuracao') };
+}
 // ----- A criatura -----
 export function criatura(e: EntradaCriatura) {
     const at = e.atributos, ce = e.centelha ?? 0, ct = e.corpo;
@@ -644,7 +674,8 @@ export function criatura(e: EntradaCriatura) {
     const social = e.categoria === 'animal' || at.inteligencia === 1
         ? defSocial({ compostura: at.compostura ?? 0, sociabilidade: habDe(e, 'sobrevivencia'), centelha: ce })
         : defSocial({ compostura: at.compostura ?? 0, sociabilidade: habDe(e, 'sociabilidade'), centelha: ce });
-    const absorcao = { impacto: (at.vigor ?? 0) + ce, corte: ce, perfuracao: ce };
+    const cou = absorcaoDaCouraca(e.couraca, e.perfilCouraca);
+    const absorcao = { impacto: (at.vigor ?? 0) + ce + cou.impacto, corte: ce + cou.corte, perfuracao: ce + cou.perfuracao };
     const comArtes = Object.values(e.artes || {}).some((n) => n > 0);
     const enxame = e.enxame ? enxamePorQuadrado(e) : null;
     const r: any = {
@@ -673,7 +704,7 @@ export function criatura(e: EntradaCriatura) {
                 nome: a.nome, acerto, habilidade: h,
                 velocidade: w ? w.velocidade : a.pgr ? a.pgr[0] + a.pgr[1] + a.pgr[2] : null,
                 danoMedio: w ? danoMedio(w.dado, w.forca, w.multiplicadorForca, ce) : danoMedio(a.dado ?? null, at.forca ?? 0, a.multiplicadorForca ?? 0, ce),
-                jogada: h ? atributoDaJogada(h, at) + hv + centelhaNaJogada(ce, hv) + acerto : null,
+                jogada: h ? atributoDaJogada(h, at, !w) + hv + centelhaNaJogada(ce, hv) + acerto : null,
             };
         }),
     };
@@ -796,8 +827,9 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const pecas: any[] = [];
     const ataques = c.ataques.map((a: any, i: number) => {
         const w: any = armaDe(a), h = r.ataques[i].habilidade, hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
-        const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? 'percepcao' : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
-        const soma = h ? M.atributoDaJogada(h, c.atributos) + hv : 0;
+        const natural = !a.arma;
+        const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? (natural ? atributoDoProjetilNatural(c.atributos) : 'percepcao') : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
+        const soma = h ? M.atributoDaJogada(h, c.atributos, natural) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);
         const wd = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca) : null;
         const dado = wd?.dado ?? a.dado;
@@ -811,6 +843,8 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         return {
             nome: a.nome, atrib, pericia: h, dado: Number(dado?.match(/^\d+/)?.[0] ?? 0), tipo, classe: w?.classe ?? a.classe, ticks: r.ataques[i].velocidade, acerto: r.ataques[i].acerto,
             pool: Math.floor(soma / 2) + 'd6' + (soma % 2 ? '+2' : '') + (acerto ? (acerto > 0 ? ' +' : ' −') + Math.abs(acerto) : ''),
+            // R36: o ataque de área não tem jogada de ataque (quem está na área se defende); o card diz isso no lugar do dado
+            ...(!h && !a.arma && (a.classe === 'distancia' || a.classe === 'arremesso') ? { semJogada: true } : {}),
             dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf, forcaInvestida
         };
     });
@@ -839,7 +873,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     Object.defineProperty(f, 'motor', { value: {
       edicao,
       energia: r.energia, stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
-      couraca: c.couraca ?? 0, enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
+      couraca: c.couraca ?? 0, ...(c.perfilCouraca ? { perfilCouraca: c.perfilCouraca } : {}), ...(c.equipamento?.veneno ? { veneno: c.equipamento.veneno } : {}), enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
       comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
       // o sentido sem dado nenhum ("faro:" vazio no card; parecer da Veterana, m1) não vai à vista
       sentidos: (c.sentidos || []).filter(vale).filter((s: any) => s.descricao).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),

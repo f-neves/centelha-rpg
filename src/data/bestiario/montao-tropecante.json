@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -100,6 +101,7 @@
       "nome": "Absorve raio",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um dano de raio que o acerta",
       "duracao": "instantânea",
       "alcance": "o próprio corpo",
@@ -107,27 +109,29 @@
       "efeito": "a resistência corta metade do dano, e a metade cortada vira cura em PV, até o PV total",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Agarra no golpe",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Duas pancadas",
+      "categoria": "inato",
       "ativacao": "as Duas pancadas que acertam, se ele quiser",
       "duracao": "até o alvo se soltar ou ele soltar",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "o alvo fica Agarrado, sem jogada de Agarrar",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "o das Duas pancadas",
-      "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o montão erra o Manter do Agarrar do livro (Força 7 + Briga 5)",
-      "limiteDeUso": "um alvo agarrado por vez"
+      "resistencia": "pela manobra Agarrar",
+      "limiteDeUso": "um alvo agarrado por vez. Sem custo"
     },
     {
       "nome": "Constrição",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Duas pancadas",
+      "categoria": "inato",
       "ativacao": "a cada 6 Ticks em que mantém o agarrão",
       "duracao": "enquanto agarra",
       "alcance": "o do corpo a corpo",
@@ -135,13 +139,21 @@
       "efeito": "esmaga e sufoca sem nova jogada de ataque",
       "dano": "1d6 + Força, Impacto",
       "resistencia": "nenhum; quem se solta para de sofrer",
-      "limiteDeUso": "um alvo por vez"
+      "limiteDeUso": "um alvo por vez. Sem custo"
     },
     {
       "nome": "Engolir",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "puxa o agarrado para dentro da massa de lodo, um por vez, onde ele sufoca"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -225,18 +237,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Absorve raio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Agarra no golpe",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Constrição",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Galhos entrelaçados que apertam como o músculo de um animal comum (escala da decisão 12)"
     },
@@ -250,7 +250,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: a \"casca vegetal\" do site, galho e fibra por fora ; o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (linha Elementos); nível 1 pela casca vegetal"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: a \"casca vegetal\" do site, galho e fibra por fora ; o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (linha Elementos); nível 1 pela casca vegetal"
     },
     {
       "campo": "comportamento.social",

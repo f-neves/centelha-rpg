@@ -113,6 +113,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -120,6 +121,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Língua",
+      "categoria": "inato",
       "ativacao": "uma ação, o ataque de Língua com Briga",
       "duracao": "até a presa se soltar",
       "alcance": "três vezes o alcance normal do corpo a corpo",
@@ -127,21 +129,37 @@
       "efeito": "agarra o que acertar; se bloqueado, agarra o que bloqueou, seguindo o Agarrar do livro",
       "dano": "nenhum",
       "resistencia": "a Defesa contra o ataque; quem evita não é agarrado",
-      "limiteDeUso": "um alvo por vez"
+      "limiteDeUso": "um alvo por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "puxão",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Língua",
-      "efeito": "puxa o preso até a boca, até o Peso erguido"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "engolir",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Bocada",
-      "efeito": "engole inteira a presa que cabe na boca (um bicho Miúdo)"
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 5 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "1d6 de Impacto uma vez a cada 6 Ticks",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [],
@@ -206,10 +224,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.língua",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "atributos.forca",
       "motivo": "Fixada em `valores.mjs` (D-158, a v2: \"Rã de 192 kg sem arma além da boca; o salto vai para a Musculatura\"; a massa passou a 42,7 kg  com o tamanho do site). Pela pesquisa: a única arma é a boca, que engole a presa inteira (Wikipédia); não morde para ferir nem segura com as patas. O feito medido é o do ninho: o macho real move pedras de até 2 kg, sendo ele de até 3,3 kg (Schäfer et al. 2019, pelo comunicado da Taylor & Francis), o que no gigante de 42,7 kg dá uma pedra de cerca de 26 kg  (2 ÷ 3,3 × 42,7) . Na conta nova do peso erguido (decisão 14) o feito não separa as Forças: com a Musculatura 3, Força 3 ergue 181,6 kg  e Força 2 ergueria 149,2 . A Força 3 fica pela D-176 e abaixo dos predadores de 50 a 75 kg com arma (lobo-terrível e deinonico, 4). Reanalisado na sétima rodada: fica, porque com 42,7 kg (era 159,5 na v3) a Força de referência da massa é 5,44 e a rã não tem arma além da boca; os vizinhos de massa são o lobo (50 kg, Força 3), o rato-atroz (20 kg, 3) e a formiga gigante (41 kg, 3), com a hiena (50 kg, 4) e o leopardo (47,75 kg, 5) acima por terem mordida que mata, e o guepardo (53 kg, 2) abaixo; a força das pernas de salto já está na Musculatura 3. Continua acima da rã-golias de base (Força 0: abocanha e engole presa pequena, e a boca de 0,95 kg não fere nem segura um humano; item 8 da `tamanho-decisoes-5.md`), como pede a D-176."

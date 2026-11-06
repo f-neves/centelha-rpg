@@ -87,14 +87,15 @@
       "nome": "Disciplina militar",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale enquanto luta ombro a ombro com um aliado que também tem Disciplina militar",
       "duracao": "enquanto a formação se mantiver",
       "alcance": "1 m, o aliado ao lado",
       "area": "ele e o aliado",
-      "efeito": "soma +1 na Defesa e não pode ser flanqueado pelo lado do aliado",
+      "efeito": "Soma +1 na Defesa e ignora o −2 de Flanqueado apenas pelo lado coberto pelo aliado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -171,10 +172,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Disciplina militar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidades.armas",
       "motivo": "O site gravava `briga` 1 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). Soldado de linha; 3 e 2; o site tinha só Briga 1"

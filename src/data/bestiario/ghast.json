@@ -105,20 +105,23 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
     {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "rasga com as duas garras e morde na mesma ação; por enquanto, as duas garras vão juntas pela Rajada, e a Mordida é outra ação"
-    },
-    {
       "nome": "Toque paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a garra paralisa a vítima, impedindo-a de agir e se mover"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando o ataque descrito atinge a vítima",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "a garra paralisa a vítima, impedindo-a de agir e se mover. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Fedor nauseante",
@@ -128,26 +131,29 @@
         "arte": "morte",
         "nivel": 2
       },
-      "ativacao": "nenhuma, sempre ativo",
-      "duracao": "Abalado enquanto ficar a até 3 m dele",
+      "categoria": "substancia",
+      "ativacao": "libera a substância ao entrar em contato com os alvos no alcance",
+      "duracao": "enquanto exposto e por mais 6 Ticks depois de sair",
       "alcance": "3 m",
       "area": "esfera de 3 m em volta dele",
-      "efeito": "o fedor de cova enjoa quem chega perto; quem falha fica Abalado",
+      "efeito": "A exposição deixa a vítima Enjoada, com −2 nas jogadas. Constructos não enjoam",
       "dano": "nenhum",
-      "resistencia": "corpo, contra Vigor + Resistência de quem entra contra a Influência + Briga dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "resistencia": "Vigor + Resistência contra Dificuldade 12. Quem passa fica imune a esta fonte pelo resto da cena",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
-      "nome": "imune a veneno e doença",
+      "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno e a doença não pegam no corpo morto"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não dorme e não se cansa; come carne por fome, e não para viver"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -175,10 +181,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "mente": "inteira e astuta, presa à fome",
-    "tracos": "corpo humano ressecado e mais alto que o do ghoul, de unhas longas; o fedor de cova chega antes dele"
+    "tracos": "corpo humano ressecado e mais alto que o do ghoul, de unhas longas; o fedor de cova chega antes dele. Busca carne por fome e não se cansa",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa"
   },
   "aptidoes": {
     "montaria": false,
@@ -244,10 +250,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Fedor nauseante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.estrategia",
       "motivo": "Lidera a matilha em emboscada (site); 1, a liderança da matilha"
     },
@@ -262,6 +264,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (criptas e ossários)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque paralisante",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Fedor nauseante",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R13 e D-197. Dificuldade fixa sugerida 12 (10 + Centelha 2) para graduar a potência deste fedor. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "ataques",

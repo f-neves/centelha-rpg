@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente, tentáculos erguidos"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 2,
@@ -135,20 +136,22 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "ativacao": "o Tentáculo que acerta, se ele quiser",
       "duracao": "até o alvo se soltar ou ele soltar",
       "alcance": "4,5 m",
       "area": "um alvo por tentáculo",
-      "efeito": "o alvo fica Agarrado, sem jogada de Agarrar, e pode ser puxado até a boca",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "o do Tentáculo",
-      "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando o otyugh erra o Manter do Agarrar do livro (Força 6 + Briga 4, com o Agarrão +2)",
-      "limiteDeUso": "dois alvos agarrados, um em cada tentáculo"
+      "resistencia": "pela manobra Agarrar",
+      "limiteDeUso": "dois alvos agarrados, um em cada tentáculo. Sem custo"
     },
     {
       "nome": "Esmagar",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "ativacao": "a cada 6 Ticks em que mantém o agarrão",
       "duracao": "enquanto agarra",
       "alcance": "4,5 m",
@@ -156,13 +159,14 @@
       "efeito": "aperta e esmaga sem nova jogada de ataque",
       "dano": "1d6 + Força, Impacto",
       "resistencia": "nenhum; quem se solta para de sofrer",
-      "limiteDeUso": "um por alvo agarrado"
+      "limiteDeUso": "um por alvo agarrado. Sem custo"
     },
     {
       "nome": "Mordida contaminada",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "inato",
       "ativacao": "a Mordida que fere (1 de dano ou mais depois da Absorção)",
       "duracao": "a da doença",
       "alcance": "o do corpo a corpo",
@@ -170,13 +174,21 @@
       "efeito": "passa a febre do lixo (Veneno e doença)",
       "dano": "nenhum além da Mordida",
       "resistencia": "corpo, pela jogada da doença",
-      "limiteDeUso": "uma jogada de doença por Mordida que fere"
+      "limiteDeUso": "uma jogada de doença por Mordida que fere. Sem custo"
     },
     {
       "nome": "Imune a doenças",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "doença não pega nele"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "doença não pega nele. Pode carregar o agente e expor outros, a critério do Mestre",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -251,18 +263,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Tentáculos que agarram",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Esmagar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mordida contaminada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "Os tentáculos desviam o golpe às vezes: \"«Quase não bloqueia» é 1, e não 0\" (D-110); 1, pelos tentáculos; o site não gravava Bloqueio"
     },
@@ -272,7 +272,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couro grosso e rugoso, coberto de crosta de lodo seco: entre o porco com escudo e o búfalo da escala (tamanho-decisoes-5, item 2); nível 2 pelo couro rugoso"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couro grosso e rugoso, coberto de crosta de lodo seco: entre o porco com escudo e o búfalo da escala (tamanho-decisoes-5, item 2); nível 2 pelo couro rugoso"
     },
     {
       "campo": "comportamento.social",

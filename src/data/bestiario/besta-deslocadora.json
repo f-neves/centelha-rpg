@@ -21,6 +21,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 4,
@@ -110,20 +111,16 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "tentáculos e mordida juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "chicoteia com os dois tentáculos e morde na mesma ação"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -133,7 +130,8 @@
       "tecnica": {
         "id": "imobilizar",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Deslocamento",
@@ -143,6 +141,7 @@
         "arte": "fascinacao",
         "nivel": 1
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, está sempre ligado",
       "duracao": "contínua",
       "alcance": "o próprio corpo",
@@ -150,12 +149,13 @@
       "efeito": "a luz em volta dela se dobra e mostra o corpo um passo fora de onde ele está; o primeiro ataque de cada oponente contra ela na cena erra",
       "dano": "nenhum",
       "resistencia": "nenhum; quem vê o invisível ou as ilusões não é enganado",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "Resistência a ataques à distância",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -163,7 +163,21 @@
       "efeito": "a imagem fora do lugar engana quem lança de longe: soma +2 na Defesa Mental contra Arte dirigida a ela à distância",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: tentáculo esquerdo, tentáculo direito, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -238,14 +252,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Deslocamento",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com a base do site (Fascinação 1) e o efeito que o site descreve (\"o primeiro ataque de cada oponente contra ela erra\"); o livro não tem regra de erro automático, e o efeito fica como regra da ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Resistência a ataques à distância",
-      "motivo": "números sugeridos pela ficha (D-197); Antes: Resistência à magia, sem regra ainda e sem número. A exceção da fonte (o toque à distância) não tem par exato no livro: a Arte mirada já se esquiva, e o +2 fica na Defesa Mental"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "Degrau 7: For 18 no 3.5. Teste de ordem: como o tigre (7, 192 kg) e o leão-das-cavernas (7, 235 kg), um acima do leão (6, 173 kg), que é mais leve. O site tinha 6; 6 para 7, pelo teste de ordem com o tigre (7 com 192 kg) e o leão-das-cavernas (7 com 235 kg)"
     },
@@ -268,6 +274,14 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +8 perfurante\", 6 Ticks, dano médio 15). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 15 antes; depois, tentáculo 12,5 (dois pela Rajada), mordida 12,5"
+    },
+    {
+      "campo": "habilidadesEspeciais.Deslocamento",
+      "motivo": "poder natural com a base do site (Fascinação 1) e o efeito que o site descreve (\"o primeiro ataque de cada oponente contra ela erra\"); o livro não tem regra de erro automático, e o efeito fica como regra da ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência a ataques à distância",
+      "motivo": "Antes: Resistência à magia, sem regra ainda e sem número. A exceção da fonte (o toque à distância) não tem par exato no livro: a Arte mirada já se esquiva, e o +2 fica na Defesa Mental"
     }
   ]
 }

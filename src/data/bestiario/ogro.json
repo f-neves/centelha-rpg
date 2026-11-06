@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -90,6 +91,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "ativacao": "a Pancada descomunal que fere um alvo Médio ou menor",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -97,13 +99,14 @@
       "efeito": "o alvo cai no chão ou é empurrado 1 m, à escolha do ogro; uma porta comum cede ao segundo golpe",
       "dano": "o da Pancada",
       "resistencia": "corpo, contra a jogada da pancada; quem passa fica de pé e no lugar",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -181,12 +184,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Força de gigante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e suja, um pouco acima da pele de gente e abaixo do couro grosso do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 1, pele grossa e suja"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e suja, um pouco acima da pele de gente e abaixo do couro grosso do gigante da colina (2) .; 1, pele grossa e suja"
     },
     {
       "campo": "comportamento.atividade",

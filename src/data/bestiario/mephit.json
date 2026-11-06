@@ -44,12 +44,12 @@
     "atletismo": 1,
     "furtividade": 2,
     "prontidao": 1,
-    "integridade": 3
+    "integridade": 3,
+    "atirador": 2
   },
   "habilidadesSec": {
     "labia": 2,
     "voo": 2,
-    "disparo": 2,
     "musculatura": 0
   },
   "especialidades": {
@@ -105,7 +105,6 @@
     {
       "nome": "Sopro elemental",
       "parte": "boca",
-      "habilidade": "disparo",
       "classe": "distancia",
       "pgr": [
         3,
@@ -122,6 +121,20 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: asas abertas. Pequeno: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Sopro elemental",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -130,19 +143,21 @@
         "nivel": 2
       },
       "ataque": "Sopro elemental",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "3 m à frente",
       "area": "cone de 3 m",
-      "efeito": "um jato do elemento dele queima todos no cone",
+      "efeito": "um jato do elemento dele queima todos no cone. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, fogo (na Variante, o tipo do elemento)",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Cura acelerada",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale num ambiente ligado ao elemento dele (fogo aceso por perto, para o de fogo)",
       "duracao": "enquanto estiver no ambiente",
       "alcance": "o próprio corpo",
@@ -150,20 +165,25 @@
       "efeito": "fecha ferimentos sozinho",
       "dano": "nenhum; recupera 1 PV a cada 6 Ticks",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Convocar semelhante",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 8",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "até o fim da cena",
       "alcance": "o plano dele",
-      "area": "não se aplica",
-      "efeito": "chama outro mephit do mesmo elemento, que chega em 30 Ticks se houver um a responder (o Mestre decide)",
+      "area": "um aliado",
+      "efeito": "Convoca um mephit do mesmo tipo até o fim da cena. A Centelha do auxiliar vai até a metade da Centelha de quem convoca, arredondada para baixo. Se o teto for 0, use a versão de Centelha 0. A origem aguarda o lore dos planos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -171,6 +191,11 @@
       "nome": "praga alada",
       "formas": "todas",
       "texto": "provoca de cima, sopra no grupo, arranha quem está sozinho e foge para o alto quando o atacam de frente."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -249,18 +274,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro elemental",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cura acelerada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Convocar semelhante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.envergadura",
       "motivo": "O site não dá : asas de diabrete, 1,6 vez a altura; 1,6 m, estimada; o site não dá"
     },
@@ -285,6 +298,14 @@
       "motivo": ""
     },
     {
+      "campo": "ataques.Sopro elemental",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Convocar semelhante",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
       "campo": "elementos",
       "motivo": "o de fogo como principal; o site é genérico"
     },
@@ -295,10 +316,6 @@
     {
       "campo": "virtudes",
       "motivo": "Bravura 2 e Temperança 2; o site tinha 4 e 3"
-    },
-    {
-      "campo": "ataques.Sopro elemental",
-      "motivo": "números sugeridos pela ficha (D-197)"
     }
   ]
 }

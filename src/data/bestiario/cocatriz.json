@@ -96,20 +96,37 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Bicada",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Toque que petrifica",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a bicada transforma a vítima em pedra aos poucos"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando a Bicada atinge",
+      "duracao": "até acumular 3 sucessos ou chegar a Vigor 0, com novo teste a cada 6 Ticks",
+      "alcance": "o do golpe",
+      "area": "a vítima da Bicada",
+      "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 10",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "voo ágil",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "pequena e veloz no ar, é mais difícil de acertar voando"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "+4 na Defesa contra ataques durante as manobras evasivas em voo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -184,6 +201,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque que petrifica",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. P2. Dificuldade 10 sugerida porque a bicada exige contato e a ameaça é 3. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.area",

@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 2,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 2,
     "destreza": 5,
@@ -120,22 +121,25 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "materia",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "enferrujar"
       },
       "ataque": "Antenas",
-      "ativacao": "as Antenas que acertam o alvo, ou que tocam uma arma de metal que bloqueia ou que o acerta",
-      "duracao": "permanente",
-      "alcance": "o do corpo a corpo",
-      "area": "um objeto de metal",
-      "efeito": "o metal enferruja: a armadura de metal perde 1 ponto de Absorção, e a arma de metal perde 1 de dano, por toque; o efeito acumula, e a peça que chega a 0 vira pó",
+      "categoria": "inato",
+      "ativacao": "a antena toca a peça metálica",
+      "duracao": "até conserto",
+      "alcance": "contato",
+      "area": "a peça atingida",
+      "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "nenhum ao portador",
-      "resistencia": "nenhum para o metal comum; a peça encantada, a critério do Mestre",
-      "limiteDeUso": "um por golpe"
+      "resistencia": "a resistência da peça contra a exposição",
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Faro por metal",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "27 m",
@@ -143,7 +147,7 @@
       "efeito": "sabe onde há metal e quanto, mesmo escondido; Prontidão (metal) +3",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -211,14 +215,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Corrói metal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Faro por metal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Quadrúpede de carapaça"
     },
@@ -232,7 +228,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Carapaça de inseto ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 2"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Carapaça de inseto ;; nível 2"
     },
     {
       "campo": "comportamento.social",

@@ -21,6 +21,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 4,
@@ -37,6 +38,7 @@
     "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 3,
+    "atirador": 3,
     "furtividade": 0,
     "integridade": 2,
     "prontidao": 1,
@@ -45,7 +47,6 @@
     "sobrevivencia": 3
   },
   "habilidadesSec": {
-    "disparo": 3,
     "musculatura": 3
   },
   "especialidades": {
@@ -98,7 +99,6 @@
     {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
       "classe": "distancia",
       "pgr": [
         3,
@@ -123,33 +123,46 @@
         "nivel": 4
       },
       "ataque": "Sopro de fogo",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "instantânea",
       "alcance": "6 m à frente",
       "area": "cone de 6 m",
-      "efeito": "o cão expele um cone de fogo devastador",
+      "efeito": "o cão expele um cone de fogo devastador. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, fogo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
-    },
-    {
-      "nome": "mordida crítica",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a mordida rasga com facilidade incomum, e cada golpe que acerta ameaça um ferimento grave"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "couraça chamuscada",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "veste uma couraça de metal enegrecido feita para o corpo de cão; ainda sem regra para armadura de criatura"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A peça usa os números da armadura equivalente do catálogo e só serve a esta anatomia. O preço dobra por faixa de massa acima da humana. Use a placa de metal ajustada para quadrúpede",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
     {
+      "nome": "mordida crítica",
+      "formas": "todas",
+      "texto": "A mordida rasga a carne profundamente. O Mestre decide a consequência na cena."
+    },
+    {
       "nome": "caçador de Asmodeus",
       "formas": "todas",
       "texto": "persegue o alvo do senhor sem parar, abre com o sopro e morde até completar a missão ou morrer."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -228,16 +241,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro de fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: couro grosso de mastim crescido a 450 kg, como o elefante (2 a 3), sem contar a couraça vestida . O nível fica fora da Absorção (decisoes-autor §16). \"As chamas não o afetam\" (site), pela linha Elementos"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 2: couro grosso de mastim crescido a 450 kg, como o elefante (2 a 3), sem contar a couraça vestida ."
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Sopro de fogo",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números"
     },
     {
       "campo": "corpo.area",
@@ -246,10 +259,6 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +14 corte\", dano médio 21). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo e a do cachorro de guarda. Dano médio: 21 antes; depois, 17,5"
-    },
-    {
-      "campo": "ataques.Sopro de fogo",
-      "motivo": "poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números"
     },
     {
       "campo": "habilidadesEspeciais.couraça chamuscada",

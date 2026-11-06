@@ -105,13 +105,22 @@
     {
       "nome": "Toque paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o toque gélido paralisa a vítima"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando o ataque descrito atinge a vítima",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o toque gélido paralisa a vítima. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Toque gélido",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "no golpe, no lugar do Toque paralisante, à escolha dele",
       "duracao": "instantânea",
       "alcance": "toque",
@@ -119,7 +128,7 @@
       "efeito": "o frio seca a carne do alvo",
       "dano": "1d6 + Centelha, gelo, além do dano do Toque",
       "resistencia": "corpo; quem passa leva metade do frio",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Aura de medo",
@@ -127,21 +136,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "mortalha"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "9 m",
       "area": "esfera de 9 m em volta dele",
-      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado",
+      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Filactério",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "o corpo cai a 0 PV ou é destruído",
       "duracao": "o corpo se refaz em 1d6 dias, perto do filactério",
       "alcance": "qualquer distância",
@@ -149,37 +161,27 @@
       "efeito": "volta com os PV cheios e a memória inteira; só a destruição do filactério acaba com ele",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "sem limite enquanto o filactério existir"
+      "limiteDeUso": "sem limite enquanto o filactério existir. Sem custo"
     },
     {
       "nome": "Comando sobre mortos-vivos",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6",
       "duracao": "até o fim da cena, ou enquanto ele mantiver",
       "alcance": "18 m",
       "area": "os mortos-vivos de Centelha menor que a dele que ele vê",
       "efeito": "obedecem às ordens dele",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele; o morto-vivo sem mente não resiste",
-      "limiteDeUso": "até 6 criaturas por vez"
-    },
-    {
-      "nome": "imune a veneno, doença e efeitos mentais",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o corpo seco não se envenena nem adoece, e a mente presa ao filactério não se deixa dobrar. O frio vai em Elementos"
-    },
-    {
-      "nome": "corpo ressecado",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira e não tem sangue; o que depende de fôlego ou de sangue não o afeta"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. o morto-vivo sem mente não resiste",
+      "limiteDeUso": "até 6 criaturas por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Presença de poder",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "enquanto ele estiver no lugar",
       "alcance": "30 m",
@@ -187,7 +189,7 @@
       "efeito": "quem conhece magia sente a distorção dela no lugar antes de vê-lo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -205,10 +207,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "humana, de séculos de estudo; presa ao filactério",
-    "tracos": "ossos cobertos de pele seca, vestes ricas e gastas, joias antigas; dois pontos de luz no fundo das órbitas"
+    "mente": "humana, de séculos de estudo; presa ao filactério. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "ossos cobertos de pele seca, vestes ricas e gastas, joias antigas; dois pontos de luz no fundo das órbitas. Não tem sangue. Efeitos que dependem de sangue não o atingem",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa ligada ao filactério",
+    "familiasMentaisIgnoradas": [
+      "dominio",
+      "leitura-de-mente"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -218,7 +224,6 @@
   "comportamento": {
     "social": "solitário, cercado de servos mortos-vivos",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não caça: estuda e guarda o filactério",
     "dianteDeGente": "despreza; mata quem ameaça o segredo"
   },
@@ -279,26 +284,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Toque gélido",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura de medo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Filactério",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Comando sobre mortos-vivos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença de poder",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O Vigor do morto-vivo mede o quanto o corpo aguenta (manual 4.2): osso seco, sem dor e sem sangue, preso ao mundo pelo filactério. Fica como no site"
     },
@@ -313,6 +298,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque paralisante",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Mana)."
     }
   ]
 }

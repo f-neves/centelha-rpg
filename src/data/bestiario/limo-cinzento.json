@@ -103,6 +103,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pseudópode",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -110,6 +111,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pseudópode",
+      "categoria": "substancia",
       "ativacao": "o Pseudópode que fere",
       "duracao": "12 Ticks, ou até alguém gastar uma ação para lavar o ácido",
       "alcance": "toque",
@@ -117,13 +119,21 @@
       "efeito": "o ácido segue corroendo (\"cada golpe causa dano contínuo adicional\", site)",
       "dano": "1d6, ácido, a cada 6 Ticks",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe; não acumula"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "corrói arma e armadura",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a arma ou a armadura que a toca pode se corroer"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "a arma ou armadura toca o limo",
+      "duracao": "até conserto",
+      "alcance": "contato",
+      "area": "a peça atingida",
+      "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
+      "dano": "nenhum",
+      "resistencia": "a resistência da peça contra a exposição",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -136,7 +146,7 @@
   "sentidos": [
     {
       "nome": "sentido cego",
-      "descricao": "percebe o mundo em volta sem olhos",
+      "descricao": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção",
       "formas": "todas"
     }
   ],
@@ -208,10 +218,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ácido corrosivo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Corpo sem músculo, julgado pelo material e pela forma (manual 3.5): massa baixa e mole; 1"
     },
@@ -222,6 +228,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Ácido corrosivo",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "ataques",

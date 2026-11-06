@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de pé"
   },
   "couraca": 2,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 6,
     "destreza": 3,
@@ -87,18 +88,28 @@
       "nome": "Nuvem de alucinação",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "libera esporos invisíveis que provocam visões terríveis em quem os respira"
+      "categoria": "substancia",
+      "efeito": "libera esporos invisíveis que provocam visões terríveis em quem os respira. O corpo guarda 2 doses e produz 1 dose em 6 horas"
     },
     {
       "nome": "Esporos parasitas",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o golpe espalha esporos que germinam na carne e nos pulmões da vítima"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "os esporos entram na ferida do golpe ou nos pulmões de quem os inala",
+      "duracao": "até a doença regredir ou o agente ser retirado",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Esporose do basidirond. Exposição: os esporos entram na ferida do golpe ou nos pulmões de quem os inala. Incubação: 1 hora. Virulência 12. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
+      "dano": "pela progressão da doença",
+      "resistencia": "Vigor + Resistência contra Virulência 12",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "Letargia pelo frio",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o frio não o fere, mas reduz seus movimentos e suspende a produção de esporos"
     }
   ],
@@ -201,6 +212,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Nuvem de alucinação",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Esporos parasitas",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
     }
   ]
 }

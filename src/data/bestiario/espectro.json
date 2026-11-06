@@ -107,14 +107,15 @@
         "arte": "espirito",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "voa e atravessa paredes, portas e obstáculos; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos)",
+      "efeito": "voa e atravessa paredes, portas e obstáculos; não agarra nem empurra e não pode ser empurrado. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Dreno de nível",
@@ -122,21 +123,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "definhar"
       },
+      "categoria": "sobrenatural",
       "ativacao": "o Toque dilacerante que fere",
-      "duracao": "até ser tirado por magia de Morte ou de Proteção de nível 3 ou mais",
+      "duracao": "volta 1 ponto por dia de descanso",
       "alcance": "toque",
       "area": "um alvo",
-      "efeito": "−1 em todas as jogadas do alvo a cada dreno que pega, até −4",
+      "efeito": "Cada dreno que pega tira 1 ponto temporário de Vigor. A perda afeta as contas de Vigor, exceto PV e Absorção. Se o Vigor chegar a 0, a vítima morre",
       "dano": "nenhum além do toque",
       "resistencia": "corpo, contra a jogada do toque; quem passa não sofre o dreno daquele toque",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Regenera com o dreno",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "o Dreno de nível que pega",
       "duracao": "instantânea",
       "alcance": "toque",
@@ -144,12 +148,13 @@
       "efeito": "a força roubada fecha as feridas dele",
       "dano": "nenhum; cura 1d6 PV do espectro",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por dreno"
+      "limiteDeUso": "um por dreno. Sem custo"
     },
     {
       "nome": "Cria espectros",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "a vítima morre com pelo menos um dreno de nível",
       "duracao": "permanente",
       "alcance": "o corpo da vítima",
@@ -157,25 +162,27 @@
       "efeito": "a alma se ergue como espectro no fim da cena, sob o comando dele, até ele ser destruído; então fica livre",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por vítima"
+      "limiteDeUso": "um por vítima. Sem custo"
     },
     {
       "nome": "Terror sepulcral",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "9 m",
       "area": "esfera de 9 m em volta dele",
-      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado",
+      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena para cada pessoa. Sem custo"
     },
     {
       "nome": "Frio sobrenatural",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "enquanto ele estiver perto",
       "alcance": "9 m",
@@ -183,19 +190,7 @@
       "efeito": "o ar esfria de repente, a respiração vira vapor e as chamas pequenas tremem; é o aviso de que ele chegou",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
-    },
-    {
-      "nome": "imune a veneno e doença",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não tem corpo que se envenene ou adoeça"
-    },
-    {
-      "nome": "sem corpo",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -218,11 +213,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "nenhuma; no escuro é uma silhueta apagada",
-    "mente": "inteira, mas fixa num ódio só",
-    "tracos": "sem peso e sem matéria; o ar esfria onde ele passa"
+    "mente": "inteira, mas fixa num ódio só. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "sem peso e sem matéria; o ar esfria onde ele passa. Não se cansa",
+    "tipoCorpo": "incorporeo",
+    "recuperacao": "Recupera-se pela energia negativa",
+    "familiasMentaisIgnoradas": [
+      "confusao"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -232,7 +230,6 @@
   "comportamento": {
     "social": "solitário, ou com os espectros que criou",
     "atividade": "noturno",
-    "dieta": "nenhuma",
     "caca": "persegue o vivo até alcançá-lo",
     "dianteDeGente": "ataca"
   },
@@ -294,30 +291,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Voo e incorpóreo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Dreno de nível",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Regenera com o dreno",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cria espectros",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Terror sepulcral",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Frio sobrenatural",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O Vigor do morto-vivo mede o quanto o corpo aguenta (manual 4.2); o espectro não tem corpo, e o Vigor mede aqui o quanto a alma aguenta antes de se desfazer. O 3.5 escreve Con \"-\". Acima de 6 só com Centelha (D-143); 5 fica dentro. Fica como no site; 5, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
     },
@@ -328,6 +301,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (morto que não descansa; foge da luz, fraqueza a luz)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dreno de nível",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R18 e D-197. O enfraquecimento da vitalidade passa a tirar 1 de Vigor por dreno, no lugar da penalidade geral acumulada até −4. valor de molde, para a bancada (uso extra de 1 de Energia)."
     }
   ]
 }

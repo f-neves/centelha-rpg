@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 5,
     "destreza": 2,
@@ -133,6 +134,7 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar",
       "texto": "pelas pernas"
     },
@@ -141,19 +143,36 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Investida",
+      "categoria": "inato",
       "regra": "investida"
     },
     {
       "nome": "presas que sangram",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o corte da presa continua sangrando"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando a presa corta a vítima",
+      "duracao": "até estancar",
+      "alcance": "o do golpe",
+      "area": "a vítima ferida",
+      "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
     },
     {
       "nome": "teimosia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "luta normalmente até ferido grave, sem se abalar"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],

@@ -23,6 +23,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 4,
@@ -99,12 +100,14 @@
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de fogo ou ácido"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "fogo e ácido param a regeneração",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração. O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido"
     },
     {
@@ -115,14 +118,15 @@
         "arte": "materia",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "6 Ticks",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura",
+      "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Em forma gasosa não ataca nem conjura",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "uma vez por cena. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Invisibilidade",
@@ -130,16 +134,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "ausencia"
       },
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "até ele atacar ou usar um poder chamativo, e no máximo até o fim da cena",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
+      "duracao": "até atacar ou desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Invisível",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena; o site chamava a habilidade de \"à vontade\" e descrevia \"1x por cena\", e vale a descrição. O nível 3 da Ofuscação é o que some da vista mesmo andando"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cone de frio",
@@ -147,16 +153,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "sopro-do-norte"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "cone de 9 m",
       "efeito": "um sopro de frio que queima a pele e cobre o chão de gelo fino",
       "dano": "3d6 + Centelha, gelo (o site diz \"dano alto\", sem número)",
       "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Sono",
@@ -166,14 +174,15 @@
         "arte": "fascinacao",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 6, à vista do alvo",
-      "duracao": "até o fim da cena, ou até o alvo levar dano ou alguém sacudi-lo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, à vista do alvo. O efeito sai no Tick do Golpe",
+      "duracao": "até o fim da cena",
       "alcance": "9 m",
       "area": "um alvo",
-      "efeito": "o alvo cai Inconsciente, dormindo",
+      "efeito": "o alvo fica Dormindo, dormindo. O sono leva a Dormindo, com Defesas 0. Qualquer dano acorda a vítima, assim como uma ação de Velocidade 5 de um aliado para sacudi-la",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica acordado",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica acordado",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Mudar de forma",
@@ -183,14 +192,15 @@
         "arte": "metamorfose",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até ele desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume a forma de um humano, sedutor ou nobre elegante (a Variante \"disfarce\"), e volta à forma verdadeira quando quer; a mente e os números ficam os dele",
+      "efeito": "assume a forma de um humano, sedutor ou nobre elegante (a Variante \"disfarce\"), e volta à forma verdadeira quando quer; a mente e os números ficam os dele. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Rosto humano",
@@ -198,6 +208,7 @@
         "disfarce"
       ],
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale enquanto está disfarçado",
       "duracao": "a do disfarce",
       "alcance": "o próprio corpo",
@@ -205,7 +216,7 @@
       "efeito": "+2d6 em Manha para se passar por humano",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -308,36 +319,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Forma gasosa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Invisibilidade",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cone de frio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sono",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Rosto humano",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "aparencia",
       "motivo": "Degrau 4, \"Feio\": na forma verdadeira, um ogro de pele azul, chifres e presas, de rosto de gigante, feio como o ogro (4), mas não disforme. O site tinha 0, o \"Monstruoso\" de quem não tem forma de gente (como o hezrou); a Aparência mede a beleza, e não o quanto assusta (D-205). No disfarce, 8 (Variantes); 4; o site tinha 0, e a Aparência mede a beleza (D-205)"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa de ogro, como a do ogro (1) . O nível fica fora da Absorção (decisoes-autor §16); 1, pele grossa de ogro"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: pele grossa de ogro, como a do ogro (1) .; 1, pele grossa de ogro"
     },
     {
       "campo": "comportamento.atividade",
@@ -350,6 +337,26 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma (site): \"humano sedutor ou nobre elegante\". A mente e os números ficam os dele, como no disfarce do rakshasa e do marid"
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma gasosa",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Cone de frio",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Sono",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, à vista do alvo -> uma ação, Velocidade 5, à vista do alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
     },
     {
       "campo": "ataques",

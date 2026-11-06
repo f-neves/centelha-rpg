@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 8,
     "destreza": 3,
@@ -128,6 +129,7 @@
       "nome": "agarrar (o \"abraço\")",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -235,7 +237,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "A pele não se preservou e nada indica cobertura dura; pelo e gordura de hibernador  pelos ursos vivos. Razão do nível em `couraca.mjs`, escrita com a massa de então (o macho grande de 450 kg): \"pelo e gordura grossos, [...]\", e o nível não muda com o adulto típico de 343,75 kg. A linha 2 da escala inclui \"pelo e gordura grossos\"; a referência mais próxima é o javali macho com o escudo do ombro (nível 2), ao lado do urso-polar de mesma massa (nível 2). Era Corte 0, Perfuração 0, Nível 0 na v3."
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. A pele não se preservou e nada indica cobertura dura; pelo e gordura de hibernador  pelos ursos vivos. Razão do nível em `couraca.mjs`, escrita com a massa de então (o macho grande de 450 kg): \"pelo e gordura grossos, [...]\", e o nível não muda com o adulto típico de 343,75 kg. A linha 2 da escala inclui \"pelo e gordura grossos\"; a referência mais próxima é o javali macho com o escudo do ombro (nível 2), ao lado do urso-polar de mesma massa (nível 2). Era Corte 0, Perfuração 0, Nível 0 na v3."
     },
     {
       "campo": "comportamento.social",

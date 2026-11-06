@@ -22,6 +22,7 @@
     "cargaMedida": 540
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 10,
     "destreza": 1,
@@ -125,46 +126,67 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "atropelar",
-      "formas": "todas",
-      "classe": "livro",
-      "regra": "investida"
     },
     {
       "nome": "arremessar o que agarrou",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "lança o alvo que agarrou com a tromba"
-    },
-    {
-      "nome": "pisoteio em área",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "esmaga quem está sob as patas numa área de uns 3 m"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "investida que empurra",
       "formas": "todas",
       "classe": "livro",
+      "ataque": "Pisão (ou investida)",
+      "categoria": "inato",
       "regra": "investida"
     },
     {
       "nome": "corpo enorme",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "dificilmente cai Prono"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Atropelar",
+      "formas": "todas",
+      "classe": "livro",
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+    {
+      "nome": "Pisar num alvo",
+      "formas": "todas",
+      "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+    }
+  ],
   "sentidos": [
     {
       "nome": "faro",

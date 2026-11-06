@@ -88,22 +88,11 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "imune a veneno e doença",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "osso seco não se envenena nem adoece"
-    },
-    {
       "nome": "sem medo",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "nunca fica Abalado por medo"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; fica parado por anos até a ordem o acordar"
     }
   ],
   "comoLuta": [
@@ -126,10 +115,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "mente": "nenhuma; obedece a uma vontade de fora",
-    "tracos": "ossos amarelados presos por magia, rígidos; pontos de luz fria nas órbitas"
+    "tracos": "ossos amarelados presos por magia, rígidos; pontos de luz fria nas órbitas. Não se cansa. Pode ficar parado por anos à espera de ordem",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa"
   },
   "aptidoes": {
     "montaria": false,
@@ -139,7 +128,6 @@
   "comportamento": {
     "social": "grupo, sob quem o ergueu",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "guarda o lugar que mandaram",
     "dianteDeGente": "ataca"
   },

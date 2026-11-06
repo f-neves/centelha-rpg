@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de lado, esticado ou com a frente erguida"
   },
   "couraca": 11,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 13,
     "destreza": 8,
@@ -36,11 +37,11 @@
     "esquiva": 2,
     "atletismo": 2,
     "integridade": 8,
-    "prontidao": 4
+    "prontidao": 4,
+    "atirador": 5
   },
   "habilidadesSec": {
     "natacao": 4,
-    "disparo": 5,
     "musculatura": 4
   },
   "especialidades": {
@@ -138,7 +139,6 @@
     {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "disparo",
       "classe": "distancia",
       "pgr": [
         3,
@@ -155,6 +155,21 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Peçonha de linnorm dos lagos",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "categoria": "substancia",
+      "ativacao": "Mordida ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "A peçonha drena apenas o pool de Vigor. A imunidade ao elemento não protege contra a peçonha. Se o Vigor chegar a 0, a vítima morre",
+      "dano": "pool de Vigor do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 12 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "Sopro ácido",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -163,26 +178,36 @@
         "nivel": 4
       },
       "ataque": "Sopro ácido",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "instantânea",
       "alcance": "18 m à frente",
       "area": "linha de 18 m ou cone de 12 m, à escolha",
-      "efeito": "o ácido corrói tudo o que toca",
+      "efeito": "o ácido corrói tudo o que toca. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "9d6 + Centelha, ácido",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "fumaça do ácido",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a fumaça que sobe da carne corroída fere de novo quem respira perto logo depois do sopro"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao entrar em contato com o resíduo do sopro",
+      "duracao": "até o fim do Tick seguinte",
+      "alcance": "o do sopro",
+      "area": "o trecho atingido pelo sopro",
+      "efeito": "A fumaça ácida atinge quem a respira",
+      "dano": "1d6 de ácido",
+      "resistencia": "saída de área pelo livro",
+      "limiteDeUso": "uma exposição por alvo por dose de sopro, sem custo adicional"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -190,6 +215,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Cauda",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -197,49 +223,99 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Cauda",
+      "categoria": "inato",
       "regra": "agarrar"
-    },
-    {
-      "nome": "Duas cabeças",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "as duas cabeças mordem na mesma ação, e com elas as garras e a cauda, no mesmo turno. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
     },
     {
       "nome": "Nunca cercado",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "com as duas cabeças vigiando, não fica Flanqueado; a surpresa já está na Prontidão (surpresa) +3"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "As duas cabeças vigiam os flancos. Ignora o −2 de Flanqueado. Sua Prontidão contra surpresa segue a ficha. Tamanho continua valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
-      "nome": "Resistência à magia 31",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 3. Soma +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Liberdade de movimento",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Nada de fora o deixa Agarrado, Preso ou Imobilizado. Paredes barram a passagem. Paralisado e Atordoado continuam valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Regeneração 15",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de ferro frio"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "Maldição da morte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quem o mata nunca mais é curado por magia nem se recupera descansando, e definha aos poucos pelo resto da vida"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao morrer",
+      "duracao": "até Proteção 5 ou cura apropriada",
+      "alcance": "quem deu o golpe final",
+      "area": "o responsável pelo golpe final",
+      "efeito": "quem o mata nunca mais é curado por magia nem se recupera descansando, e definha aos poucos pelo resto da vida. Se falhar, a maldição só sai com Proteção 5 ou a cura apropriada",
+      "dano": "nenhum",
+      "resistencia": "Vigor + Resistência contra Dificuldade 20",
+      "limiteDeUso": "uma vez, na morte, sem custo"
     },
     {
       "nome": "Imune a sono, paralisia, veneno e maldições comuns",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "nada disso o pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora veneno, sono, paralisia e efeitos que instalam maldição comum. Recebe dano comum e morre pela perda de Vida como de costume. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: mordida da primeira cabeça, mordida da segunda cabeça, garra. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -247,6 +323,11 @@
       "nome": "fúria de duas cabeças",
       "formas": "todas",
       "texto": "emerge do lago gelado, cospe ácido sobre o barco, prende um com a cauda e morde com as duas cabeças quem ainda luta."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -323,10 +404,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro ácido",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 16. Desce para 13 pelo teste de ordem (manual, Passo 7), o mesmo método que o autor mandou aplicar ao neothelid (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)): com 16, a serpente de 11 t passava o grande wyrm vermelho de 88 t (16), o ancião de 59 t (14), o braquiossauro de 31 t (14) e o megalodonte de 36 t (13). Fica acima do dragão dourado adulto de 9 t (12), mais leve, e igual ao megalodonte, sem passar ninguém mais pesado. É a Força de referência da massa arredondada (12,61, manual 3.9); 13, pelo teste de ordem; o site tinha 16 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro))"
     },
@@ -336,7 +413,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escama de linnorm, o mais antigo e mortal da família (site): dois degraus acima do linnorm dos penhascos (9) . O nível fica fora da Absorção (decisoes-autor §16); nível 11"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escama de linnorm, o mais antigo e mortal da família (site): dois degraus acima do linnorm dos penhascos (9) .; nível 11"
     },
     {
       "campo": "comportamento.atividade",
@@ -345,6 +422,22 @@
     {
       "campo": "ataques.Mordida",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), N3 como a dos dragões adultos. Golpe de boca: Força × 1. Inocula o veneno (Veneno e doença) . Jogada: Força 13 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Antes: pelo padrão do \"Ferrão de gigante\"  O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campo": "ataques.Sopro ácido",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 31 da fonte passa a grau 3 (+6)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Maldição da morte",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.area",
@@ -357,10 +450,6 @@
     {
       "campo": "ataques",
       "motivo": "9d6 + Centelha, linha de 18 m ou cone de 12 m, pela escada de Centelha do lote 23 (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais",
-      "motivo": "pelo padrão do \"Ferrão de gigante\""
     },
     {
       "campo": "habilidadesEspeciais.Regeneração 15",

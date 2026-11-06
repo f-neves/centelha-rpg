@@ -23,6 +23,7 @@
     "linhaPVMotivo": "gordura e pelo grossos"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -137,13 +138,22 @@
       "nome": "agarrar (o \"abraço\")",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "fúria ferida",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ferido grave, luta com mais força e fere mais"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando sofre ferimento grave",
+      "duracao": "até um dos lados cair ou o combate acabar",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Fica Enfurecido. +2 nas ações físicas exceto tiro, −2 em Esquiva e Bloqueio, só ações físicas. Não pode ser convencido. Sofre as penalidades de ferimento",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "A cada exposição ao gatilho, sem custo"
     }
   ],
   "comoLuta": [],
@@ -232,6 +242,10 @@
     {
       "campo": "corpo.largura",
       "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,74 × 1,0319 = 0,764 . Antes: Era 0,80 m, estimada pelo Arquiteto (`porte-area-forca.md` §1.2); a pesquisa não mediu largura. Escalada pelo cubo da massa: 0,80 × (182 ÷ 230)^(1/3) = 0,740."
+    },
+    {
+      "campo": "habilidadesEspeciais.fúria ferida",
+      "motivo": "R9. O ferimento dispara o Frenesi da criatura. O término segue o combate entre os dois lados. A ficha não concedia imunidade a penalidade de ferimento."
     }
   ]
 }

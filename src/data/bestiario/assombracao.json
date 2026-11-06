@@ -104,14 +104,15 @@
         "arte": "espirito",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "voa sem ruído e atravessa paredes, portas e objetos; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos)",
+      "efeito": "voa sem ruído e atravessa paredes, portas e objetos; não agarra nem empurra e não pode ser empurrado. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Dreno de vida",
@@ -119,8 +120,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "dreno"
       },
+      "categoria": "sobrenatural",
       "ativacao": "o Toque dilacerante que fere",
       "duracao": "até um descanso completo",
       "alcance": "toque",
@@ -128,12 +131,13 @@
       "efeito": "rouba a vida do alvo; o PV máximo dele cai, o efeito se acumula a cada toque que pega, e a assombração se fecha com o que roubou",
       "dano": "nenhum além do toque; o PV máximo do alvo cai 1d6, e ela recupera o mesmo tanto de PV",
       "resistencia": "corpo, contra a jogada do toque; quem passa não perde PV máximo por aquele toque",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cria súditos",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "a vítima morre com o PV máximo reduzido pelo Dreno de vida",
       "duracao": "permanente",
       "alcance": "o corpo da vítima",
@@ -141,25 +145,27 @@
       "efeito": "a alma se ergue como assombração no fim da cena, sob o comando dela, até ela ser destruída; então fica livre",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por vítima"
+      "limiteDeUso": "um por vítima. Sem custo"
     },
     {
       "nome": "Presença sepulcral",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativa",
-      "duracao": "Abalado até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "9 m",
       "area": "esfera de 9 m em volta dela",
-      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado",
+      "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dela; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Frio da morte",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "enquanto ela estiver perto",
       "alcance": "9 m",
@@ -167,19 +173,7 @@
       "efeito": "o ar esfria de repente e denuncia a presença dela a quem for sensível",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
-    },
-    {
-      "nome": "imune a veneno e doença",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não tem corpo que se envenene ou adoeça"
-    },
-    {
-      "nome": "sem corpo",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -207,11 +201,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "nenhuma; no escuro é uma capa negra quase invisível",
-    "mente": "inteira, cruel e voltada contra a vida",
-    "tracos": "sem peso e sem matéria; uma capa negra com a sombra de um rosto e dois olhos de brasa fria"
+    "mente": "inteira, cruel e voltada contra a vida. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Medo cobre o imposto por essas fontes. Golpe social ou corporal ainda pode deixar Abalado. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "sem peso e sem matéria; uma capa negra com a sombra de um rosto e dois olhos de brasa fria. Não se cansa",
+    "tipoCorpo": "incorporeo",
+    "recuperacao": "Recupera-se da energia vital que rouba pelo Dreno de vida",
+    "familiasMentaisIgnoradas": [
+      "medo"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -221,7 +218,6 @@
   "comportamento": {
     "social": "senhora de sombras e mortos menores",
     "atividade": "noturno",
-    "dieta": "nenhuma",
     "caca": "rouba a vida dos vivos",
     "dianteDeGente": "ataca"
   },
@@ -283,26 +279,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Voo e incorpóreo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Dreno de vida",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cria súditos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença sepulcral",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Frio da morte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "Para a alma sem corpo, o Vigor mede o quanto ela aguenta antes de se desfazer, como no espectro. O site o tirou do Carisma 21 (nota da fonte). Fica como no site; 6, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
     },
@@ -313,6 +289,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (fraqueza a luz)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dreno de vida",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais",

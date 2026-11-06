@@ -104,20 +104,23 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
     {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "rasga com as duas garras e morde na mesma ação; por enquanto, as duas garras vão juntas pela Rajada, e a Mordida é outra ação"
-    },
-    {
       "nome": "Toque paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a garra paralisa a vítima, impedindo-a de agir e se mover"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando o ataque descrito atinge a vítima",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "a garra paralisa a vítima, impedindo-a de agir e se mover. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Faro",
@@ -126,12 +129,14 @@
       "tecnica": {
         "id": "faro",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Faro do carniçal",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "permanente",
       "alcance": "o do faro",
@@ -139,19 +144,21 @@
       "efeito": "sente cadáver e ferido grave de longe e cai primeiro sobre o mais fraco",
       "dano": "nenhum; +2 na Iniciativa contra quem está abaixo da metade do PV",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
-      "nome": "imune a veneno",
+      "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo morto, e o que pede a resistência do corpo pega menos"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não dorme e não se cansa; come carne por fome, e não para viver"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -179,10 +186,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "mente": "inteira, mas presa à fome",
-    "tracos": "corpo humano ressecado, cinzento, de unhas compridas e língua de bicho; cheira a cova aberta"
+    "tracos": "corpo humano ressecado, cinzento, de unhas compridas e língua de bicho; cheira a cova aberta. Busca carne por fome e não se cansa",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa"
   },
   "aptidoes": {
     "montaria": false,
@@ -248,16 +255,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Faro do carniçal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Pelo corpo: músculo seco e encolhido, abaixo do corpo comum (2), acima do osso sem carne (0); 1, músculo seco abaixo do corpo comum"
     },
     {
       "campo": "comportamento.social",
       "motivo": "site (Comportamento)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque paralisante",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

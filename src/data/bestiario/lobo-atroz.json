@@ -106,13 +106,18 @@
       "bloqueiaComoArma": null
     }
   ],
-  "habilidadesEspeciais": [],
-  "comoLuta": [
+  "habilidadesEspeciais": [
     {
       "nome": "derrubar",
       "formas": "todas",
-      "texto": "mordida (na perna) · regra de Derrubar do livro. pelo lobo.."
-    },
+      "classe": "livro",
+      "ataque": "Mordida",
+      "categoria": "inato",
+      "regra": "derrubar",
+      "texto": "Sem custo nem limite próprio de usos. Usar repetidamente causa esforço e pode levar ao cansaço"
+    }
+  ],
+  "comoLuta": [
     {
       "nome": "caça em matilha",
       "formas": "todas",

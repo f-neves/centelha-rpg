@@ -132,9 +132,24 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: de baixo, asas abertas. Pequeno: asas fechadas, de lado, pousada. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "talões"
     },
@@ -143,15 +158,24 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras (talões)",
+      "categoria": "inato",
       "regra": "investida",
       "texto": "só descendo"
     },
     {
       "nome": "erguer e largar",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Garras (talões)",
-      "efeito": "sobe com o que agarrou, até o Peso erguido, e solta do alto; a queda é a de Cair (Corpo e Movimento)"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [

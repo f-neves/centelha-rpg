@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 3,
     "destreza": 2,
@@ -114,6 +115,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -125,14 +127,15 @@
         "arte": "vento",
         "nivel": 2
       },
-      "ativacao": "nenhuma, sempre ativo",
-      "duracao": "Abalado enquanto ficar a até 3 m dele",
+      "categoria": "substancia",
+      "ativacao": "libera a substância ao entrar em contato com os alvos no alcance",
+      "duracao": "enquanto exposto e por mais 6 Ticks depois de sair",
       "alcance": "3 m",
       "area": "esfera de 3 m em volta dele",
-      "efeito": "o fedor de carniça e podridão enjoa quem chega perto; quem falha fica Abalado",
+      "efeito": "A exposição deixa a vítima Enjoada, com −2 nas jogadas. Constructos não enjoam",
       "dano": "nenhum",
-      "resistencia": "corpo, contra Vigor + Resistência de quem entra contra a Influência + Briga dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "resistencia": "Vigor + Resistência contra Dificuldade 12. Quem passa fica imune a esta fonte pelo resto da cena",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Susto",
@@ -140,28 +143,39 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "pavor"
       },
-      "ativacao": "uma ação, Velocidade 6, um olhar ou um guincho",
-      "duracao": "até o fim da cena",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5, um olhar ou um guincho",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "9 m",
       "area": "um alvo",
-      "efeito": "um terror súbito sem motivo; quem falha fica Abalado",
+      "efeito": "um terror súbito sem motivo; quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Briga dele; quem passa fica imune ao susto até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao susto até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "telepatia",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "fala com a mente de qualquer criatura a até 30 m, sem língua em comum"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de demônio"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de demônio. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -260,20 +274,20 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Fedor nauseante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Susto",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "vontade",
       "motivo": "A régua do livro (D-202): abaixo do herói típico (5 ou mais), porque o site o descreve covarde sozinho, só com medo do que vem acima dele. O site tinha 7; 4, e não 7; `bravura` 3, e não 5; `conviccao` 2, e não 5: pelo texto do site (\"covardes quando sozinhos\", \"sem lealdade nem hierarquia própria, só medo\")"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e flácida de demônio, como o cavalo . O nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site, pela linha Elementos; 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e flácida de demônio, como o cavalo .; 1"
+    },
+    {
+      "campo": "habilidadesEspeciais.Fedor nauseante",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R13 e D-197. Dificuldade fixa sugerida 12 (10 + Centelha 2) para graduar a potência deste fedor. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Susto",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

@@ -96,25 +96,35 @@
         "arte": "ofuscacao",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até ele desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "à escolha: nubla a forma (quem o ataca tem −2 no acerto); assume a aparência de outro humanoide pequeno; ou some numa sombra instantânea (fica Escondido, se houver sombra perto)",
       "dano": "nenhum",
       "resistencia": "nenhum; quem desconfia do disfarce testa a Percepção contra a Manha dele",
-      "limiteDeUso": "três vezes por dia, somados"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
     },
     {
-      "nome": "Resistência à magia 12",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Inconspícuo",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "magia de adivinhação tem dificuldade de achá-lo"
     }
   ],
@@ -185,16 +195,20 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Disfarce e sombra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": "site (Cidades escondidas)"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Disfarce e sombra",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 12 da fonte passa a grau 1 (+2)."
     },
     {
       "campo": "equipamento",

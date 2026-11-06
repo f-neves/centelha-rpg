@@ -26,6 +26,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 4,
@@ -103,10 +104,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: silhueta vista de lado, asas fechadas, no chão. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Garras devastadoras",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -118,14 +134,15 @@
         "arte": "fascinacao",
         "nivel": 4
       },
-      "ativacao": "uma ação, Velocidade 6, propondo o enigma em voz alta",
+      "categoria": "milagre",
+      "ativacao": "uma ação, Velocidade 6, propondo o enigma em voz alta. A ginosfinge dirige o desafio a quem a ouve. Ela precisa formular e enunciar o enigma e dar ao desafiado a oportunidade de responder. Quem o enfrenta aceita a consequência do erro ou da recusa",
       "duracao": "até o fim da cena",
       "alcance": "quem ouve, até 18 m",
       "area": "um alvo que aceita ou recusa o enigma",
-      "efeito": "quem recusa ou erra fica Amedrontado, ou leva a dor pura do dano, à escolha dela; adormecer ou paralisar o alvo fica sem regra ainda",
+      "efeito": "quem recusa ou erra fica Amedrontado, ou leva a dor pura do dano, à escolha dela. Se escolher o sono ou a paralisia, a vítima fica Dormindo ou Paralisada pelo prazo do enigma",
       "dano": "3d6 + Centelha, fenômeno, se ela escolher a dor",
-      "resistencia": "mente, Raciocínio + Integridade contra Influência + Oratória dela; quem passa ou responde certo não sofre nada",
-      "limiteDeUso": "uma vez por semana"
+      "resistencia": "Influência + Oratória da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa ou responde certo não sofre nada",
+      "limiteDeUso": "uma vez por semana. Limite fixo, sem uso extra nem ampliação"
     },
     {
       "nome": "Sabedoria ancestral",
@@ -133,16 +150,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "adivinhacao",
-        "nivel": 5
+        "nivel": 5,
+        "efeito": "oraculo"
       },
-      "ativacao": "uma ação, Velocidade 6, recordando",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 7, recordando. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "o próprio saber",
       "area": "não se aplica",
       "efeito": "lembra algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém; o Mestre diz o quanto ela revela",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "1 uso grátis por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ver o invisível",
@@ -152,6 +171,7 @@
         "arte": "ofuscacao",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, está sempre ligado",
       "duracao": "contínua",
       "alcance": "o da visão",
@@ -159,22 +179,22 @@
       "efeito": "enxerga quem está invisível e vê através de ilusões e disfarces",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
-    },
-    {
-      "nome": "feitiços arcanos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "lança magias de dano e de controle, mais de uma vez por cena; ela não conjura como classe, e o site não dava a Arte"
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "laços com outras esfinges",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "troca saber com esfinges distantes pela mente"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "feitiços arcanos",
+      "formas": "todas",
+      "texto": "lança magias de dano e de controle, mais de uma vez por cena. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "guardiã de enigmas",
       "formas": "todas",
@@ -252,20 +272,16 @@
   },
   "revisao": [
     {
+      "campo": "comportamento.dieta",
+      "motivo": ""
+    },
+    {
       "campo": "habilidadesEspeciais.Enigma mortal",
-      "motivo": "números sugeridos pela ficha (D-197); poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
+      "motivo": "R3. Ativação uma ação, Velocidade 6, propondo o enigma em voz alta -> uma ação, Velocidade 6, propondo o enigma em voz alta. A ginosfinge dirige o desafio a quem a ouve. Ela precisa formular e enunciar o enigma e dar ao desafiado a oportunidade de responder. Quem o enfrenta aceita a consequência do erro ou da recusa. Pela referência corporal ou de deslocamento do poder.; poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
     },
     {
       "campo": "habilidadesEspeciais.Sabedoria ancestral",
-      "motivo": "números sugeridos pela ficha (D-197); poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ver o invisível",
-      "motivo": "números sugeridos pela ficha (D-197); poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
-    },
-    {
-      "campo": "comportamento.dieta",
-      "motivo": ""
+      "motivo": "R3. Ativação uma ação, Velocidade 6, recordando -> uma ação, Velocidade 7, recordando. O efeito sai no Tick do Golpe. Pela régua da Arte de base. R1, aplicado em 04/11. Centelha 5 sustenta o uso extra depois da consulta diária. valor de molde, para a bancada (uso extra de 1 de Energia).; poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
     },
     {
       "campo": "corpo.area",
@@ -274,6 +290,10 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +12 perfurante\", 6 Ticks, dano médio 19). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 19 antes; depois, garras 13,5, duas pela Rajada"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ver o invisível",
+      "motivo": "poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda"
     }
   ]
 }

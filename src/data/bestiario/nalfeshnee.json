@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 4,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 12,
     "destreza": 3,
@@ -124,58 +125,63 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "rasga e morde na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a Mordida é outra ação"
     },
     {
       "nome": "Nimbo profano",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 8; as luzes brilham em volta dele e explodem 6 Ticks depois",
       "duracao": "12 Ticks",
       "alcance": "18 m",
       "area": "esfera de 18 m em volta dele",
-      "efeito": "luzes nauseantes trazem visões de loucura; quem não é demônio e falha fica Confuso",
+      "efeito": "luzes nauseantes trazem visões de loucura; quem não é demônio e falha fica Confuso. Enquanto Confuso, declara a ação e rola 1d6. Com 1 a 3, faz o declarado. Com 4 ou 5, o Mestre escolhe ação e alvo. Com 6, perde a ação",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "três vezes por dia"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "três vezes por dia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "aura profana",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "uma presença profana em volta dele enfraquece e perturba as criaturas do bem que chegam perto"
     },
     {
       "nome": "Retardar",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "12 Ticks",
       "alcance": "18 m, à vista",
       "area": "um alvo",
-      "efeito": "o tempo do alvo arrasta, e ele fica Retardado",
+      "efeito": "o tempo do alvo arrasta, e ele fica Retardado. A Recuperação aumenta 1 Tick. Os opostos se anulam e aplicações iguais não somam",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada alvo"
-    },
-    {
-      "nome": "poderes arcanos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "invoca relâmpagos, embota a mente de um inimigo e anula magias"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "uma vez por cena para cada alvo. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "teleporte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "some e reaparece em outro lugar, à vontade"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4,
+        "efeito": "fresta"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "36 m",
+      "area": "o próprio usuário",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ver o invisível",
@@ -184,34 +190,79 @@
       "tecnica": {
         "id": "visao-verdadeira",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o nalfeshnee enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "o campo de visão",
+      "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de demônio"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de demônio. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "proteção profana",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "uma proteção sobrenatural absorve boa parte de qualquer dano que não venha de arma abençoada"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra arma abençoada, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê o nalfeshnee pela primeira vez sente a repulsa de um javali-símio de 6 m; o corpo quer recuar antes de qualquer golpe"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "poderes arcanos",
+      "formas": "todas",
+      "texto": "invoca relâmpagos, embota a mente de um inimigo e anula magias. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "administrador",
       "formas": "todas",
@@ -226,7 +277,7 @@
     },
     {
       "nome": "visão verdadeira",
-      "descricao": "pela Técnica (Manobras)",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -303,16 +354,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Nimbo profano",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site não dá Arte de base. O \"atordoadas por visões de loucura\" virou Confuso"
-    },
-    {
-      "campo": "habilidadesEspeciais.Retardar",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site não dá Arte de base. O \"atordoadas por visões de loucura\" virou Confuso"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos; 4, como o hezrou"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou .; 4, como o hezrou"
     },
     {
       "campo": "comportamento.dieta",
@@ -323,6 +366,10 @@
       "motivo": "A cabeça de javali com presas, a mordida com a cabeça atrás, Média. N1 pelas presas . Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     },
     {
+      "campo": "habilidadesEspeciais.teleporte",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
       "campo": "aparencia",
       "motivo": "0, e não o −1 do site, fora da régua"
     },
@@ -331,8 +378,12 @@
       "motivo": "o site gravava um \"Golpe planar\" de 3 dados e 7 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e mordida Médias; perde dano em relação ao site"
     },
     {
-      "campo": "habilidadesEspeciais.poderes arcanos",
-      "motivo": "o site juntava relâmpago, embotar a mente, anular magia, retardar e teleporte; o retardar entrou como Retardado, a condição do livro, e o resto ficou sem regra ainda"
+      "campo": "habilidadesEspeciais.Nimbo profano",
+      "motivo": "números da ficha (D-197); o site não dá Arte de base. O \"atordoadas por visões de loucura\" virou Confuso"
+    },
+    {
+      "campo": "habilidadesEspeciais.Retardar",
+      "motivo": "números da ficha (D-197); o site não dá Arte de base. O \"atordoadas por visões de loucura\" virou Confuso"
     }
   ]
 }

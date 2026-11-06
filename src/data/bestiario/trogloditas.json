@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 3,
     "destreza": 2,
@@ -109,19 +110,21 @@
       "nome": "Fedor nauseante",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "nenhuma; sempre ativo, e mais forte quando ele se irrita ou luta",
-      "duracao": "Abalado até sair do cheiro e passar 6 Ticks fora dele",
+      "categoria": "substancia",
+      "ativacao": "libera a substância ao entrar em contato com os alvos no alcance",
+      "duracao": "enquanto exposto e por mais 6 Ticks depois de sair",
       "alcance": "3 m",
       "area": "esfera de 3 m em volta dele",
-      "efeito": "quem entra na área pela primeira vez na cena testa contra o enjoo; na falha, fica Abalado",
+      "efeito": "A exposição deixa a vítima Enjoada, com −2 nas jogadas. Constructos não enjoam",
       "dano": "nenhum",
-      "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa fica imune ao cheiro dos trogloditas até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "resistencia": "Vigor + Resistência contra Dificuldade 10. Quem passa fica imune a esta fonte pelo resto da cena",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Garras",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "ataque": "Garras",
       "texto": "as Garras da tabela, no lugar do golpe de martelo (um ataque por ação)"
     }
@@ -202,12 +205,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Fedor nauseante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couro grosso e escamoso, abaixo do crocodilo (4 a 5) da escala (tamanho-decisoes-5, item 2); nível 2 pelo couro escamoso"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couro grosso e escamoso, abaixo do crocodilo (4 a 5) da escala (tamanho-decisoes-5, item 2); nível 2 pelo couro escamoso"
     },
     {
       "campo": "comportamento.social",
@@ -216,6 +215,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Fedor nauseante",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R13 e D-197. Dificuldade fixa sugerida 10 (10 + Centelha 0) para graduar a potência deste fedor. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "equipamento",

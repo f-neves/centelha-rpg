@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de cima"
   },
   "couraca": 8,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 1,
@@ -105,14 +106,23 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
       "nome": "atordoar",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Clava da cauda",
-      "efeito": "o golpe certeiro da cauda deixa o alvo zonzo por um instante"
+      "categoria": "inato",
+      "ativacao": "quando o golpe indicado atinge",
+      "duracao": "até a próxima ação começar, com o adiamento de Atordoado",
+      "alcance": "o do golpe",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "O golpe certeiro da cauda atordoa com Margem 1 ou mais. Aplicar Atordoado do livro",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra 10 + 5 × Margem, até 40",
+      "limiteDeUso": "Quando o golpe indicado atinge com a Margem exigida, sem custo"
     }
   ],
   "comoLuta": [

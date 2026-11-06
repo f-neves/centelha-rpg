@@ -115,16 +115,9 @@
         "verdadeira"
       ],
       "classe": "livro",
+      "categoria": "inato",
       "ataque": "Garras",
       "regra": "empunhadura-dupla"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": [
-        "verdadeira"
-      ],
-      "classe": "sem regra ainda",
-      "efeito": "na mesma ação, além das duas garras, morde"
     },
     {
       "nome": "Mordida doentia",
@@ -133,57 +126,108 @@
       ],
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "inato",
       "ativacao": "a Mordida que fere",
       "duracao": "até a cura",
       "alcance": "o da mordida",
       "area": "um alvo",
-      "efeito": "quem falha pega a febre demoníaca e fica Doente; a cada dia sem cura, perde um nível de Vigor, até ser curado ou sucumbir",
+      "efeito": "quem falha pega a febre demoníaca e fica Doente; a cada dia sem cura, perde um nível de Vigor, até ser curado ou sucumbir. Se o Vigor chegar a 0, a vítima morre",
       "dano": "o do golpe",
       "resistencia": "corpo, Vigor + Resistência contra a jogada da mordida, de novo a cada dia; quem passa só leva o dano",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Mudar de forma",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 8",
       "duracao": "até ela desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume a forma de qualquer humanoide (o disfarce, em Variantes); a mente e os números ficam os dela",
+      "efeito": "assume a forma de qualquer humanoide (o disfarce, em Variantes); a mente e os números ficam os dela. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "ferro frio e arma mágica ferem inteiros",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a resistência da pele não vale contra eles"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra ferro frio ou arma mágica, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "mente imune",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "encanto, medo e sono não a pegam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora domínio, sono e medo imposto por poderes ou Artes. Dano físico de Arte e conversa comum seguem as regras normais",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
-      "nome": "Resistência à magia 24",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "assombrar sonhos",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "com a pedra do coração, fica etérea, senta no peito de quem dorme e o cavalga a noite inteira, tirando um pouco da vitalidade dele a cada noite, até a morte; a alma de quem morre assim vai para uma gema escura"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma noite com a gema e acesso ao alvo adormecido",
+      "duracao": "durante o sonho de cada noite",
+      "alcance": "o alvo adormecido acessível",
+      "area": "um alvo",
+      "efeito": "Domina o sonho da vítima e decide as imagens que a afligem enquanto ela dorme. Cada noite vencida causa Desgaste 1 e avança uma etapa. Na quarta noite prende a alma na gema. Tirar a gema interrompe o acesso",
+      "dano": "nenhum",
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "pedra do coração",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "a gema que ela carrega cura as doenças dela e a fortalece contra provações; sem ela, perde o poder de ficar etérea e de prender almas"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -287,14 +331,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Mordida doentia",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o Doente é a condição do livro, e a doença vai só pelo nome"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
       "motivo": "Absorção natural do livro (`combate.md`). Couraça 0: pele de gente, como a bruxa verde. O nível fica fora da Absorção (decisoes-autor §16). A \"Pele curtida\" do site (absorve golpes comuns) e a imunidade a fogo e frio, pela linha Elementos, como a pele do súcubo; resistência a Corte, Perfuração e Impacto e imunidade a Fogo e Gelo; ferro frio, arma mágica, encanto, medo, sono e resistência à magia sem regra ficaram sem regra ainda"
     },
@@ -307,12 +343,28 @@
       "motivo": "\"Pode assumir a forma de qualquer humanoide à vontade\" (site); a mente e os números ficam os dela, como no disfarce da bruxa verde e do doppelganger  A forma mantém os números da bruxa; o disfarce corporal é visual."
     },
     {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 24 da fonte passa a grau 2 (+4)."
+    },
+    {
+      "campo": "habilidadesEspeciais.assombrar sonhos",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
       "campo": "ataques",
       "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +11 corte\", dano médio 14,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média e as garras Leves, em par, como na bruxa verde. Dano médio: 14,5 antes; depois, a mordida 14,5, as garras 12,5 cada"
     },
     {
       "campo": "formas",
       "motivo": "verdadeira e disfarce (D-201), como a bruxa verde"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mordida doentia",
+      "motivo": "números da ficha (D-197); o Doente é a condição do livro, e a doença vai só pelo nome"
     },
     {
       "campo": "fisiologia",

@@ -1,10 +1,10 @@
 // O editor importa e exporta a fonte unificada e mostra contas do motor, sem gravar derivados na fonte.
 import puppeteer from 'puppeteer-core';
 import { subirDev } from './dev-server.mjs';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { carimbar } from './carimbo.mjs';
 const dev=await subirDev();
-const browser=await puppeteer.launch({executablePath:navegadorOuSair('editor de criatura'),headless:true,args:['--no-sandbox']});
+const browser=await abrirNavegador(puppeteer, {executablePath:navegadorOuSair('editor de criatura'),headless:true,args:['--no-sandbox']});
 const falhas=[];const ok=(c,m)=>{console.log((c?'✓ ':'✘ ')+m);if(!c)falhas.push(m);};
 try {
   const p=await browser.newPage();const erros=[];p.on('pageerror',e=>erros.push(String(e)));

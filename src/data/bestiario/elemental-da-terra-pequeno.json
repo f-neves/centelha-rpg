@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 5,
     "destreza": 2,
@@ -110,6 +111,7 @@
         "arte": "terra",
         "nivel": 2
       },
+      "categoria": "inato",
       "ativacao": "parte do movimento dele",
       "duracao": "enquanto se move",
       "alcance": "o próprio corpo",
@@ -117,12 +119,13 @@
       "efeito": "cava pela terra e atravessa a rocha como se fosse água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "Domínio da terra",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale enquanto ele toca o chão",
       "duracao": "enquanto tocar o chão",
       "alcance": "o próprio corpo",
@@ -130,13 +133,21 @@
       "efeito": "+3 para Derrubar e Empurrar quem também toca o chão, e +3 contra ser derrubado ou empurrado, como uma faixa de massa a mais. Contra quem voa ou nada, nada disso vale",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "feito de pedra viva",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não sente cansaço, veneno nem doença; não respira, não come, não dorme"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -159,11 +170,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parado, passa por um monte de pedras; dentro da rocha, não se vê",
     "mente": "simples; obedece a quem o conjurou e, solto, volta ao próprio plano",
-    "tracos": "pedra cinzenta e rachada na forma de um homem baixo e largo, com terra e cascalho caindo das juntas"
+    "tracos": "pedra cinzenta e rachada na forma de um homem baixo e largo, com terra e cascalho caindo das juntas",
+    "tipoCorpo": "elemental"
   },
   "aptidoes": {
     "montaria": false,
@@ -173,7 +183,6 @@
   "comportamento": {
     "social": "sozinho, ou com quem o conjurou",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não caça",
     "dianteDeGente": "cumpre a ordem de quem o trouxe; espera o momento certo"
   },
@@ -215,20 +224,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Deslizar na pedra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Domínio da terra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "Apara pouco, com o braço de pedra, que bloqueia sem tomar dano (D-066); \"«Quase não bloqueia» é 1, e não 0\" (D-110); 1, braço de pedra; o site não gravava Bloqueio"
-    },
-    {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: pedra maciça, como o golem de pedra (9), acima de qualquer carapaça da escala; o nível fica fora da Absorção (decisoes-autor §16). A resistência a fogo e a fraqueza a água vêm de Elementos; nível 9, pedra maciça, como o golem de pedra"
     },
     {
       "campo": "comportamento.social",
@@ -241,6 +238,10 @@
     {
       "campo": "sentidos.tremor",
       "motivo": "o sentido é do site; os 18 m são sugestão da ficha"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "nível 9, pedra maciça, como o golem de pedra"
     },
     {
       "campo": "virtudes.temperanca",

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 5,
@@ -133,14 +134,9 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Chifre em investida",
+      "categoria": "inato",
       "regra": "investida",
       "texto": "só depois de correr ao menos 6 m em linha reta"
-    },
-    {
-      "nome": "chifre e cascos juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "chifra e escoiceia na mesma ação"
     },
     {
       "nome": "Toque curativo do chifre",
@@ -150,14 +146,15 @@
         "arte": "cura",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6, tocando o ferido com o chifre",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5, tocando o ferido com o chifre",
       "duracao": "instantânea",
       "alcance": "toque",
       "area": "um alvo",
       "efeito": "fecha feridas e tira do corpo um veneno ou uma doença; ou desfaz uma condição de corpo (Envenenado, Doente, Sangrando)",
       "dano": "nenhum; cura 3d6 PV",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena para cada alvo"
+      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia"
     },
     {
       "nome": "Passo de luz",
@@ -165,29 +162,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "fresta"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "até 12 m, a um lugar que ele vê",
       "area": "o próprio corpo",
-      "efeito": "some e aparece no outro ponto, sem passar pelo meio",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Presença pura",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma, está sempre ligada",
       "duracao": "contínua",
       "alcance": "3 m",
       "area": "esfera de 3 m em volta dele",
       "efeito": "a criatura de má índole que falha não consegue chegar mais perto dele por vontade própria",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Empatia dele; quem passa se aproxima normalmente pela cena",
-      "limiteDeUso": "à vontade"
+      "resistencia": "Influência + Empatia da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa se aproxima normalmente pela cena",
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "Imunidade",
@@ -196,13 +196,36 @@
       "tecnica": {
         "id": "imunidade",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "imune a veneno e encanto",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "veneno nenhum o afeta, mundano ou não, e nenhum encanto pega na mente dele"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora veneno e domínio por encantamento. O ferimento do golpe continua. Dano físico de Arte e conversa comum seguem as regras normais",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: chifre, casco esquerdo, casco direito. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -280,20 +303,16 @@
   },
   "revisao": [
     {
+      "campo": "atributos.forca",
+      "motivo": "Degrau 7: For 18 no Pathfinder. Teste de ordem: igual ao cavalo do molde (7, 500 kg), que é mais leve, como o pesadelo (7, 800 kg, também For 18). O site tinha 6; 6 para 7, pelo teste de ordem com o cavalo do molde (7 com 500 kg), como o pesadelo"
+    },
+    {
       "campo": "habilidadesEspeciais.Toque curativo do chifre",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Passo de luz",
-      "motivo": "números sugeridos pela ficha (D-197); o \"teleporte\" do site, poder natural com base Conjuração 3 (Passo Brusco, o teletransporte curto do livro); o site dava a Arte Conjuração 2, que não teleporta"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença pura",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "atributos.forca",
-      "motivo": "Degrau 7: For 18 no Pathfinder. Teste de ordem: igual ao cavalo do molde (7, 500 kg), que é mais leve, como o pesadelo (7, 800 kg, também For 18). O site tinha 6; 6 para 7, pelo teste de ordem com o cavalo do molde (7 com 500 kg), como o pesadelo"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia).; o \"teleporte\" do site, poder natural com base Conjuração 3 (Passo Brusco, o teletransporte curto do livro); o site dava a Arte Conjuração 2, que não teleporta"
     },
     {
       "campo": "ataques",
