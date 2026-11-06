@@ -23,6 +23,7 @@
     }
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 5,
@@ -40,11 +41,11 @@
     "esquiva": 1,
     "atletismo": 2,
     "integridade": 6,
-    "prontidao": 2
+    "prontidao": 2,
+    "atirador": 4
   },
   "habilidadesSec": {
     "natacao": 3,
-    "disparo": 4,
     "musculatura": 3
   },
   "especialidades": {},
@@ -111,7 +112,7 @@
     {
       "nome": "Sopro de magma",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -128,6 +129,35 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enorme: de lado, esticado ou com a frente erguida. Grande: enrolado. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Peçonha de linnorm dos penhascos",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "categoria": "substancia",
+      "ativacao": "Mordida ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "A peçonha drena apenas o pool de Vigor. A imunidade ao elemento não protege contra a peçonha. Se o Vigor chegar a 0, a vítima morre",
+      "dano": "pool de Vigor do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 12 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "Sopro de magma",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -136,57 +166,100 @@
         "nivel": 4
       },
       "ataque": "Sopro de magma",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "instantânea",
       "alcance": "18 m à frente",
       "area": "linha de 18 m",
-      "efeito": "a lava queima tudo na linha",
+      "efeito": "a lava queima tudo na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "9d6 + Centelha, fogo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks (\"a cada poucos rounds\", site)"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "rastro de lava",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a linha do sopro continua ardendo e fere de novo quem passa por cima logo depois"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao entrar em contato com o resíduo do sopro",
+      "duracao": "até o fim do Tick seguinte",
+      "alcance": "o do sopro",
+      "area": "o trecho atingido pelo sopro",
+      "efeito": "A lava fere quem toca o rastro ainda quente",
+      "dano": "1d6 de fogo",
+      "resistencia": "saída de área pelo livro",
+      "limiteDeUso": "uma exposição por alvo por dose de sopro, sem custo adicional"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
-      "nome": "Resistência à magia 25",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Liberdade de movimento",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "nunca fica Imobilizado, Preso nem agarrado; solta-se de qualquer prisão como se ela não estivesse lá"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Nada de fora o deixa Agarrado, Preso ou Imobilizado. Paredes barram a passagem. Paralisado e Atordoado continuam valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Regeneração 10",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de ferro frio"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "Maldição da morte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quem o mata passa a arder por dentro e fica vulnerável ao fogo para sempre"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao morrer",
+      "duracao": "até Proteção 5 ou cura apropriada",
+      "alcance": "quem deu o golpe final",
+      "area": "o responsável pelo golpe final",
+      "efeito": "quem o mata passa a arder por dentro e fica vulnerável ao fogo para sempre. Se falhar, a maldição só sai com Proteção 5 ou a cura apropriada",
+      "dano": "nenhum",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "uma vez, na morte, sem custo"
     },
     {
       "nome": "Imune a veneno, sono, paralisia e maldições comuns",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "nada disso o pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora veneno, sono, paralisia e efeitos que instalam maldição comum. Recebe dano comum e morre pela perda de Vida como de costume. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -194,14 +267,18 @@
       "nome": "fera do norte",
       "formas": "todas",
       "texto": "cospe lava sobre quem se aproxima, desce sobre o mais forte com mordida e garras, e não recua: as feridas fecham sozinhas."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
     {
       "nome": "visão verdadeira",
-      "descricao": "enxerga através de ilusão, disfarce e escuridão (site; sem regra ainda)",
-      "formas": "todas",
-      "classe": "sem regra ainda"
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
+      "formas": "todas"
     },
     {
       "nome": "visão no escuro",
@@ -270,14 +347,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro de magma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "sentidos.visão verdadeira",
-      "motivo": "sem regra ainda no livro"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 13. Desce para 11 pelo teste de ordem (manual, Passo 7), o mesmo método que o autor mandou aplicar ao neothelid (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)): com 13, a serpente de 5,4 t passava os dragões adultos, mais pesados (o verde de 7 t, 10; o vermelho e o azul, 11), e o neothelid de 6 t (11). Não fica abaixo do anquilossauro de 5,2 t (11), mais leve. O mamute de 5 t do molde tem 13, mas a Força dele vem da tromba e do corpo de elefante; \"corpo de serpente, todo músculo\" já está na Musculatura e não resiste ao teste contra os dragões. Perto da Força de referência da massa (11,44, manual 3.9); 11, pelo teste de ordem; o site tinha 13 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro))"
     },
@@ -287,7 +356,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). \"Escamas grossas absorvem grande parte do dano físico\" (site): a Couraça dos dragões adultos (9), para o mais fraco dos linnorms . O nível fica fora da Absorção (decisoes-autor §16); nível 9"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). \"Escamas grossas absorvem grande parte do dano físico\" (site): a Couraça dos dragões adultos (9), para o mais fraco dos linnorms .; nível 9"
     },
     {
       "campo": "comportamento.atividade",
@@ -296,6 +365,22 @@
     {
       "campo": "ataques.Mordida",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), N3 como a dos dragões adultos. Golpe de boca: Força × 1. Inocula o veneno (Veneno e doença) . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais",
+      "motivo": "Antes: pelo padrão do \"Ferrão de gigante\"  O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campo": "ataques.Sopro de magma",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 25 da fonte passa a grau 2 (+4)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Maldição da morte",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.area",
@@ -308,10 +393,6 @@
     {
       "campo": "ataques",
       "motivo": "9d6 + Centelha, linha de 18 m, pela escada de Centelha do lote 23 (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais",
-      "motivo": "pelo padrão do \"Ferrão de gigante\""
     },
     {
       "campo": "habilidadesEspeciais.Regeneração 10",

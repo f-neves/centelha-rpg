@@ -21,6 +21,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 4,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 5,
     "destreza": 2,
@@ -99,13 +100,22 @@
     {
       "nome": "Olhar petrificante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o olhar transforma em pedra quem o encara"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até acumular 3 sucessos ou chegar a Vigor 0, com novo teste a cada 6 Ticks",
+      "alcance": "até onde vê",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15 pela Petrificação",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "reflexo traidor",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o espelho ou a superfície que reflete vira o olhar contra ele mesmo"
     }
   ],
@@ -179,6 +189,10 @@
     "imunidades": []
   },
   "revisao": [
+    {
+      "campo": "habilidadesEspeciais.Olhar petrificante",
+      "motivo": "R12. Dificuldade sugerida 15 na régua de 5 para esta exposição à petrificação. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
     {
       "campo": "corpo.area",
       "motivo": "Médio para Pequeno (0,30 m²). Em jogo: o atirador humano perde 3 contra ele, e ele ganha +3 no corpo a corpo contra o humano"

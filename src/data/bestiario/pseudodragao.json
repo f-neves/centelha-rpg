@@ -26,6 +26,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 1,
     "destreza": 4,
@@ -135,10 +136,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Miúdo: de lado, pousado, asas fechadas. Médio: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -146,19 +162,21 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Ferrão",
+      "categoria": "substancia",
       "ativacao": "o Ferrão que fere (1 de dano ou mais depois da Absorção)",
-      "duracao": "o sono, alguns minutos (\"vários minutos\", site), ou até alguém sacudir o alvo",
+      "duracao": "10 minutos de sono",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo, como no veneno do sono do drow",
+      "efeito": "Cada pulso soma de 0 a 3 à sonolência, pela tabela de veneno. Quando a sonolência alcança o Vigor, a vítima fica Dormindo por 10 minutos. Qualquer dano a acorda. Um aliado também pode acordá-la com uma ação de Velocidade 5",
       "dano": "nenhum além do Ferrão",
       "resistencia": "corpo, Vigor + Resistência pela regra do veneno",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Telepatia",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "18 m, como a da couatl",
@@ -166,19 +184,35 @@
       "efeito": "fala com qualquer criatura inteligente pela mente, sem língua em comum e sem abrir a boca",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
-      "nome": "Resistência à magia 12",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Imune a paralisia e sono",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "nenhum efeito que paralise ou faça dormir o pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora efeitos que paralisam ou fazem dormir. A imunidade não se estende aos demais efeitos da fonte",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -201,7 +235,7 @@
     },
     {
       "nome": "sentido cego",
-      "descricao": "sente presença próxima mesmo sem ver",
+      "descricao": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção",
       "formas": "todas"
     },
     {
@@ -261,14 +295,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ferrão sonífero",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Telepatia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "As proporções do dragão branco jovem (1,3 m de cernelha em 2,3 m de corpo) escaladas pelo corpo do site (0,30 ÷ 2,3 = × 0,130)"
     },
@@ -278,7 +304,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escama miúda de dragão, que só tira o arranhão . O nível fica fora da Absorção (decisoes-autor §16); nível 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escama miúda de dragão, que só tira o arranhão .; nível 1"
     },
     {
       "campo": "comportamento.atividade",
@@ -291,6 +317,14 @@
     {
       "campo": "comportamento.caca",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Ferrão sonífero",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 12 da fonte passa a grau 1 (+2)."
     },
     {
       "campo": "corpo.area",

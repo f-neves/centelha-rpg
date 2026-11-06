@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 7,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 6,
     "destreza": 3,
@@ -119,6 +120,7 @@
         "arte": "terra",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "parte do movimento dele",
       "duracao": "enquanto se move",
       "alcance": "o próprio corpo",
@@ -126,26 +128,22 @@
       "efeito": "atravessa a rocha sólida como um peixe na água, à velocidade da Escavação, sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "Três garras",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "as três garras e a mordida na mesma rodada; o livro deixa vários golpes por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza, e não junta partes diferentes do corpo numa ação. A ficha fica com a Rajada das garras, e a Mordida é outra ação"
     },
     {
       "nome": "Devorar metal e gema",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, a Mordida contra um objeto de metal ou uma gema ao alcance, solto ou na mão, no corpo ou na bolsa de alguém",
       "duracao": "instantânea",
       "alcance": "o da Mordida",
@@ -153,7 +151,21 @@
       "efeito": "morde e engole o objeto (uma arma, uma peça de armadura pequena, moedas ou gemas), que some",
       "dano": "nenhum a quem o carrega",
       "resistencia": "esquiva, contra a jogada da Mordida, para quem segura ou veste o objeto",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -247,20 +259,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Deslizar pela pedra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Devorar metal e gema",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site: \"Prontidão 3\"; o campo tinha 1. Como no wyvern do lote 24, que ficou com a Prontidão da nota. O tremor e o faro de tesouro vão em Sentidos e na Especialidade natural; 3, a da nota do site; o campo tinha 1, como no wyvern do lote 24"
-    },
-    {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 7: couro de pedra, no nível do anquilossauro (7 a 8) e abaixo da pedra maciça dos elementais da terra (9); o nível fica fora da Absorção (decisoes-autor §16). A resistência a fogo e a fraqueza a água vêm de Elementos; nível 7, couro de pedra"
     },
     {
       "campo": "comportamento.social",
@@ -273,6 +273,10 @@
     {
       "campo": "artes",
       "motivo": "a Arte Terra 3 do site sai, e fica o poder natural Deslizar pela pedra, de mesma base (C-037)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "nível 7, couro de pedra"
     }
   ]
 }

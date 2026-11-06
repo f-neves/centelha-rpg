@@ -314,8 +314,9 @@ console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativa
   let recusou = false; try { M.absorcaoDaCouraca(2, 'escamosa'); } catch { recusou = true; }
   confere('R49', 'perfil fora dos três é recusado', recusou, true);
   // na criatura: soma por cima da Absorção natural (Vigor e Centelha), passa para a Absorção com equipamento, e nada
-  // mais muda (não cria Nível de Perfuração). O alce do criaturas-esperado: Couraça 1, sem perfil.
+  // mais muda (não cria Nível de Perfuração). A entrada do alce do criaturas-esperado, com o perfil tirado.
   const sem = structuredClone(FIX.criaturas.alce.entrada);
+  delete sem.perfilCouraca;
   const com = { ...structuredClone(sem), couraca: 3, perfilCouraca: 'rigida' };
   const s0 = M.criatura({ ...structuredClone(sem), couraca: 3 }), s1 = M.criatura(com);
   for (const k of ['impacto', 'corte', 'perfuracao']) confere('R49', `alce rígida 3, ${k}`, s1.absorcao[k] - s0.absorcao[k], tab.rigida[k]);

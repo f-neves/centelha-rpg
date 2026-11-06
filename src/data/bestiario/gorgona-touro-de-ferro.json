@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 8,
     "destreza": 2,
@@ -35,6 +36,7 @@
     "bloqueio": 1,
     "esquiva": 0,
     "atletismo": 3,
+    "atirador": 2,
     "furtividade": 1,
     "integridade": 3,
     "prontidao": 4,
@@ -43,7 +45,6 @@
     "sobrevivencia": 3
   },
   "habilidadesSec": {
-    "disparo": 2,
     "musculatura": 3
   },
   "especialidades": {},
@@ -104,7 +105,7 @@
     {
       "nome": "Sopro petrificante",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -125,6 +126,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Investida (marrada)",
+      "categoria": "inato",
       "regra": "investida"
     },
     {
@@ -132,26 +134,37 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Investida (marrada)",
+      "categoria": "inato",
       "regra": "derrubar"
-    },
-    {
-      "nome": "pisoteio",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "atropela e fere quem é menor e está no caminho da carga"
     },
     {
       "nome": "Sopro petrificante",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Sopro petrificante",
-      "efeito": "um bafo que solidifica os pulmões e a carne"
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "até acumular 3 sucessos ou chegar a Vigor 0, com novo teste a cada 6 Ticks",
+      "alcance": "9 m",
+      "area": "quem estiver no cone de 9 m à frente da górgona",
+      "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
+      "dano": "nenhum adicional",
+      "resistencia": "Saída de área pelo livro. Quem ficar exposto testa Vigor + Resistência contra Dificuldade 20",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "corpo metálico",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "veneno e doença não pegam no corpo de metal"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "veneno e doença não pegam no corpo de metal. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -159,6 +172,16 @@
       "nome": "carga",
       "formas": "todas",
       "texto": "pasta como um touro até ser provocada; então carrega em linha reta, sopra o bafo que vira pedra e passa por cima de quem cai."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
+    },
+    {
+      "nome": "Atropelar",
+      "formas": "todas",
+      "texto": "Corre sobre os alvos do trajeto. Resolva a ação e o dano pelo Atropelar do livro."
     }
   ],
   "sentidos": [
@@ -233,16 +256,16 @@
   },
   "revisao": [
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 9: placas de ferro maciço, acima do anquilossauro (7 a 8), no degrau do sobrenatural (9 a 12) . O nível fica fora da Absorção (decisoes-autor §16). A \"couraça de ferro\" do site, que \"ignora a maior parte dos golpes cortantes e perfurantes\", pela linha Elementos; 9, e a resistência a Corte e Perfuração pela linha Elementos, como a pele do cão yeth. Quando a Couraça tiver regra, a resistência pode ficar dobrada com ela"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": ""
     },
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Sopro petrificante",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 7 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. P2. Dificuldade 20 sugerida porque o sopro de ameaça 5 expõe vários alvos próximos. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
     },
     {
       "campo": "corpo",
@@ -255,6 +278,10 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +11 perfurante\", 6 Ticks, dano médio 18). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 18 antes; depois, chifrada 14,5, investida 26,0 (só na carga corrida)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "9, e a resistência a Corte e Perfuração pela linha Elementos, como a pele do cão yeth. Quando a Couraça tiver regra, a resistência pode ficar dobrada com ela"
     }
   ]
 }

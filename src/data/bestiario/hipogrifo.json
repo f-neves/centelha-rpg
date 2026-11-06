@@ -24,6 +24,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 4,
@@ -129,10 +130,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enorme: de baixo, asas abertas. Grande: de lado, asas fechadas, no chão. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -140,20 +156,37 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras em mergulho",
+      "categoria": "inato",
       "regra": "investida",
       "texto": "só descendo"
     },
     {
-      "nome": "garras e bico",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "na mesma ação, além das garras, ataca também com o bico"
-    },
-    {
       "nome": "perseguição aérea",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "no ar, numa perseguição, age um pouco antes de quem o segue"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando usa a adaptação descrita",
+      "duracao": "a jogada",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Na entrada da cena, recebe +2 na Iniciativa quando inicia a perseguição aérea. O avanço na ordem não concede ação extra",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Sem custo. O uso ativo repetido causa esforço e pode levar ao cansaço"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -237,6 +270,10 @@
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "Bico de águia com o pescoço atrás: Média, como o bico do grifo; bico grande em N1 . Jogada: Força 6 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
+    },
+    {
+      "campo": "habilidadesEspeciais.perseguição aérea",
+      "motivo": "R6. A adaptação corporal vale +1d6 na jogada."
     },
     {
       "campo": "corpo.area",

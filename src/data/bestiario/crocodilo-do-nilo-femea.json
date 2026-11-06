@@ -20,6 +20,7 @@
     "posturaDoTamanho": "vista de cima"
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 6,
     "destreza": 2,
@@ -121,6 +122,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -128,15 +130,24 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "é a manutenção do agarrão, rolando na água"
     },
     {
       "nome": "arrastar para a água",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Mordida",
-      "efeito": "leva o que agarrou para a água e o afoga, até o Peso erguido"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [

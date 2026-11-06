@@ -20,6 +20,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 12,
     "destreza": 2,
@@ -101,6 +102,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],

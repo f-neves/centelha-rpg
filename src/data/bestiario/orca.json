@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 10,
     "destreza": 2,
@@ -116,6 +117,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],

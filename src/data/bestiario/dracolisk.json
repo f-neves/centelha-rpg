@@ -26,6 +26,7 @@
     }
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -44,11 +45,11 @@
     "atletismo": 2,
     "furtividade": 1,
     "integridade": 3,
-    "prontidao": 1
+    "prontidao": 1,
+    "atirador": 3
   },
   "habilidadesSec": {
     "voo": 1,
-    "disparo": 3,
     "musculatura": 2
   },
   "especialidades": {},
@@ -112,7 +113,7 @@
     {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -129,6 +130,20 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: de lado, pousado, asas fechadas. Enorme: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Sopro ácido",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -137,33 +152,51 @@
         "nivel": 2
       },
       "ataque": "Sopro ácido",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "linha de 9 m",
-      "efeito": "o ácido castiga todos na linha",
+      "efeito": "o ácido castiga todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, ácido",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks, como nos dragões"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
       "nome": "Olhar petrificante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o olhar transforma em pedra o corpo da vítima e o que veste, sem matar"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até acumular 3 sucessos ou chegar a Vigor 0, com novo teste a cada 6 Ticks",
+      "alcance": "até onde vê",
+      "area": "quem encara o olhar do dracolisk",
+      "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Imune a sono e paralisia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "Arte, poder ou veneno que faz dormir ou paralisa não o pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora sono e paralisia impostos por Arte, poder ou veneno. Outros efeitos da fonte continuam valendo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -171,6 +204,11 @@
       "nome": "dupla ameaça",
       "formas": "todas",
       "texto": "sopra ácido de longe sobre quem vem em linha, encara quem chega perto e morde quem ainda se mexe."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -244,10 +282,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro ácido",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "A do dragão branco jovem (1,3 m, 700 kg) escalada pela massa: × (180 ÷ 700)^(1/3) = × 0,636"
     },
@@ -261,7 +295,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escama de dragão negro: a do filhote de dragão vermelho (5), de massa parecida, abaixo do branco jovem (6) . O nível fica fora da Absorção (decisoes-autor §16); nível 5"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escama de dragão negro: a do filhote de dragão vermelho (5), de massa parecida, abaixo do branco jovem (6) .; nível 5"
     },
     {
       "campo": "comportamento.atividade",
@@ -274,6 +308,14 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como a dos dragões. Golpe de boca: Força × 1. N1, um abaixo do branco jovem (N2), pela massa . Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+    },
+    {
+      "campo": "ataques.Sopro ácido",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar petrificante",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. P2. Dificuldade 15 sugerida porque o olhar de ameaça 4 alcança quem o encara. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

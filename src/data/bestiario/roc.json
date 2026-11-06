@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de baixo, asas abertas"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -143,9 +144,24 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Imenso: de baixo, asas abertas. Imenso: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "talões"
     },
@@ -154,21 +170,42 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras em mergulho",
+      "categoria": "inato",
       "regra": "investida",
       "texto": "só descendo"
     },
     {
       "nome": "erguer e largar",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Garras (talões)",
-      "efeito": "sobe com o que agarrou, até o Peso erguido, e solta do alto; a queda é a de Cair (Corpo e Movimento)"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "grito ensurdecedor",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "grito numa área de uns 9 m; quem falha em Vontade fica abalado"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vento",
+        "nivel": 3
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "6 Ticks",
+      "alcance": "até onde ouve",
+      "area": "um alvo",
+      "efeito": "O grito deixa surdo quem falha na resistência",
+      "dano": "nenhum",
+      "resistencia": "Vigor + Resistência contra Dificuldade 10",
+      "limiteDeUso": "1 uso grátis por cena"
     }
   ],
   "comoLuta": [],
@@ -304,6 +341,10 @@
     {
       "campo": "ataques.Garras (talões).nivelPerfuracao",
       "motivo": "Na escala do roc, o golpe da garra pede o corpo atrás: Média (seção 7). Garra do hálux da águia de 4,5 a 6,34 cm × 9: cerca de 50 cm; garra grande em N1 (seção 7) . Era 1d6 + 14, média 17,5"
+    },
+    {
+      "campo": "habilidadesEspeciais.grito ensurdecedor",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Somente os usos grátis estão disponíveis. Um uso de abertura até a definição do efeito."
     }
   ]
 }

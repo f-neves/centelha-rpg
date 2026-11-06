@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de pé"
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 2,
@@ -94,25 +95,28 @@
         "arte": "vida",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "uma cena",
       "alcance": "18 m",
       "area": "até duas árvores próximas",
       "efeito": "desperta até duas árvores, que lutam com a Pancada e os valores desta criatura; elas não animam outras árvores e voltam a enraizar ao fim do efeito",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Casca reforçada",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "a casca protege contra golpes; sua proteção adicional depende de como o golpe atravessa a madeira"
     },
     {
       "nome": "Guardião da floresta",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "conversa com plantas e compreende o estado da mata"
     }
   ],
@@ -204,10 +208,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Animar árvores",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Fibras móveis capazes de prender e deslocar presas"
     },
@@ -230,6 +230,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Animar árvores",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     }
   ]
 }

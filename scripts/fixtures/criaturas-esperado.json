@@ -1,6 +1,6 @@
 {
  "fonte": {
-  "pasta": "tmp/executora/b/fichas-misto",
+  "pasta": "tmp/executora/a49/fichas-misto",
   "data": "2026-11-06",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
@@ -462,7 +462,7 @@
    }
   },
   "alce": {
-   "sha256": "a1194fe5261f18e319cfb3a44df0f0901f4751613d7aed18d6079c7273969c90",
+   "sha256": "e0358ac5efb78e98927d03d7db6f15fbcbfa6e926e75f89ee7fb11f4805d02c4",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -512,6 +512,7 @@
      "posturaDoTamanho": "vista de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -581,7 +582,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -603,7 +606,7 @@
    }
   },
   "ankheg": {
-   "sha256": "9f420ab585ab7a26a373fb6a7315153b18acdd1e793ac0841a843bf652b5a1b1",
+   "sha256": "76e83bb728cbe548e892012a3e98f4f9c1ccca5821d87b9db8172d1267118c25",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -623,6 +626,7 @@
      "bloqueio": 0,
      "esquiva": 0,
      "atletismo": 2,
+     "atirador": 2,
      "furtividade": 2,
      "integridade": 2,
      "prontidao": 1,
@@ -631,7 +635,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 2,
      "musculatura": 4
     },
     "vontade": 7,
@@ -647,6 +650,7 @@
      "posturaDoTamanho": "vista de cima"
     },
     "couraca": 3,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -672,7 +676,7 @@
      {
       "nome": "Cuspe ácido",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -701,9 +705,9 @@
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
-     "impacto": 8,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 10,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -715,14 +719,13 @@
      {
       "nome": "Cuspe ácido",
       "velocidade": 7,
-      "danoMedio": 9,
-      "jogada": 12
+      "danoMedio": 9
      }
     ]
    }
   },
   "anquilossauro": {
-   "sha256": "db1d529654d99faa3973daf84df90b40d6622a867d32f8fff2b0714195a723a2",
+   "sha256": "748fdceb812c6bf7fec74034732d34674575cdd76b49ceb71e8533935df781db",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -772,6 +775,7 @@
      "posturaDoTamanho": "vista de cima"
     },
     "couraca": 8,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -809,7 +813,9 @@
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
-     "impacto": 10
+     "impacto": 14,
+     "corte": 8,
+     "perfuracao": 8
     },
     "ataques": [
      {
@@ -821,7 +827,7 @@
    }
   },
   "aranha-das-fases": {
-   "sha256": "68742b926cb3e5a9636a8dae2a5b58291b8f51199ed3e0475e2eb81d03a50a7d",
+   "sha256": "1fea466de207f372e2684c10f7e464b466665210043b1e3045e5399989b9cd3a",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -841,6 +847,7 @@
      "bloqueio": 0,
      "esquiva": 1,
      "atletismo": 2,
+     "atirador": 2,
      "furtividade": 3,
      "integridade": 3,
      "prontidao": 1,
@@ -849,7 +856,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 2,
      "escalada": 3,
      "musculatura": 2
     },
@@ -866,6 +872,7 @@
      "posturaDoTamanho": "vista de cima, pernas abertas"
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -903,9 +910,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 3,
-     "perfuracao": 3
+     "impacto": 10,
+     "corte": 4,
+     "perfuracao": 4
     },
     "ataques": [
      {
@@ -918,7 +925,7 @@
    }
   },
   "aranha-gigante": {
-   "sha256": "481a1c132c970b3452dde6d7795eeeddcbe3e7e6a5177d2b0ec345c47af982ec",
+   "sha256": "1c85724feaa5496816e3223fee75c1261d4a867c837305ce52b1ce03dac3c044",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -943,15 +950,15 @@
      "prontidao": 2,
      "resistencia": 2,
      "empatia": 0,
-     "sobrevivencia": 2
+     "sobrevivencia": 2,
+     "atirador": 3
     },
     "habilidadesSec": {
      "equilibrio": 0,
      "escalada": 3,
      "natacao": 0,
      "voo": 0,
-     "musculatura": 2,
-     "disparo": 3
+     "musculatura": 2
     },
     "vontade": 3,
     "corpo": {
@@ -966,6 +973,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -1003,7 +1011,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -2097,7 +2107,7 @@
    }
   },
   "barghest-maior": {
-   "sha256": "8bdbb5a7c7996aa59abb405c3a6d6d6d8a83cf5c1f26e777bd67608fec7f9765",
+   "sha256": "d8821e1143e183464476b7894ed0b3b5abcdaee113af77bae17e97cf0f510bfd",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -2144,6 +2154,7 @@
      "posturaDoTamanho": "silhueta de frente, de pé"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -2197,9 +2208,9 @@
     "iniciativa": 7,
     "mana": null,
     "absorcao": {
-     "impacto": 10,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 11,
+     "corte": 6,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -2271,7 +2282,7 @@
    }
   },
   "barghest": {
-   "sha256": "b3fb6acf0c35ac0075186269a64587064f677ab1c93097860d610e4e0470c909",
+   "sha256": "3584ff7b3413e410f16d89af771de603b846c15fa2ac5fa9795fff1f06023204",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -2318,6 +2329,7 @@
      "posturaDoTamanho": "silhueta de frente, de pé"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -2371,9 +2383,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 7,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -2445,7 +2457,7 @@
    }
   },
   "basidirond": {
-   "sha256": "f1b0abdf016c073e3f020f316da5fa17ab42d426562e5a426151488d53d140e6",
+   "sha256": "93ff9135ae50fafc1c39f0e5b73b3398ad4da1bcf51c011cd43b35e2e6775b98",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -2485,6 +2497,7 @@
      "posturaDoTamanho": "de pé"
     },
     "couraca": 2,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -2522,9 +2535,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 5,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 7,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -2536,7 +2549,7 @@
    }
   },
   "basilisco": {
-   "sha256": "8490709833a3265118be9ade9f0f082ae659d28eefba7b8e92b388f9c8b7159a",
+   "sha256": "d81a51d3046a83e0c3586713aeb99809e6f702d8034bacb60a76d670afe57b8b",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -2581,6 +2594,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 4,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -2618,9 +2632,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 7,
-     "corte": 3,
-     "perfuracao": 3
+     "impacto": 9,
+     "corte": 7,
+     "perfuracao": 7
     },
     "ataques": [
      {
@@ -2633,7 +2647,7 @@
    }
   },
   "bebilith": {
-   "sha256": "c4d50a1ca8f219f5b5636242f53c63492c5c56e722e9091fbdc24964e7dd21a3",
+   "sha256": "236410fc4d97fe394eacf1dac2c4c4a927255a59d83fd156d640ea4ff379c5c9",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -2658,10 +2672,10 @@
      "prontidao": 1,
      "resistencia": 5,
      "sobrevivencia": 3,
-     "ocultismo": 1
+     "ocultismo": 1,
+     "atirador": 3
     },
     "habilidadesSec": {
-     "disparo": 3,
      "escalada": 5,
      "musculatura": 3
     },
@@ -2678,6 +2692,7 @@
      "posturaDoTamanho": "de cima, sobre as patas"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -2731,9 +2746,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 14,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 17,
+     "corte": 10,
+     "perfuracao": 10
     },
     "ataques": [
      {
@@ -2752,7 +2767,7 @@
    }
   },
   "behir": {
-   "sha256": "ff03fdebc86455a78b362af0afd24f20bd02ece5e91c8fa458d99a630e9e73c4",
+   "sha256": "4b5c2461825579aecb12ef4e264e182c7757d7a8f801f20ec774d0f99b1d59b2",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -2772,6 +2787,7 @@
      "bloqueio": 0,
      "esquiva": 1,
      "atletismo": 3,
+     "atirador": 2,
      "furtividade": 3,
      "integridade": 3,
      "prontidao": 3,
@@ -2780,7 +2796,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 2,
      "escalada": 3,
      "musculatura": 3
     },
@@ -2799,6 +2814,7 @@
      "posturaDoTamanho": "vista de cima"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -2824,7 +2840,7 @@
      {
       "nome": "Sopro elétrico",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -2853,9 +2869,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 12,
+     "corte": 6,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -2867,14 +2883,13 @@
      {
       "nome": "Sopro elétrico",
       "velocidade": 7,
-      "danoMedio": 8,
-      "jogada": 12
+      "danoMedio": 8
      }
     ]
    }
   },
   "besouro-de-fogo": {
-   "sha256": "79028cf5fadb03bd2c70840aaa5a8e83cb34cae78d94967064b62a9b45892116",
+   "sha256": "cd7da9c11f20e3ef4603547d92fe1039c2ecd37845208e2778e83d7d62482b85",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -2927,6 +2942,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -2965,7 +2981,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -3074,7 +3092,7 @@
    }
   },
   "besta-deslocadora": {
-   "sha256": "816681ef4101573124f82ee4bd65089a397dcd14e5877d354d8e689620b33678",
+   "sha256": "360eb674fbf5cb76e680a609a25fdcdc702c7647c5e9e8a1c046c924d7804b6d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -3120,6 +3138,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -3173,9 +3192,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 8,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 9,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -4415,7 +4434,7 @@
    }
   },
   "bulette": {
-   "sha256": "2725ad7adae790ee2e1f45d3e3d3ff8b1487dd70aa3ea60442bf283d07fe2111",
+   "sha256": "1df9d1dba3c7812ede7658492cb4c1909cf63ddb48115fdc75a41d9124b25e19",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -4461,6 +4480,7 @@
      "tamanhoEscolhido": "enorme"
     },
     "couraca": 7,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -4514,9 +4534,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 10,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 14,
+     "corte": 8,
+     "perfuracao": 8
     },
     "ataques": [
      {
@@ -5130,7 +5150,7 @@
    }
   },
   "cao-de-guerra-nessiano": {
-   "sha256": "fedf6f40040fb6fd21e90a0c4f1c445b747e5b5f9fafad211d4ff60470ad9a22",
+   "sha256": "b035672120ee70a7261440dba56bb13e8766f18c7e6e10efe2fe860159e00aaf",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -5150,6 +5170,7 @@
      "bloqueio": 0,
      "esquiva": 1,
      "atletismo": 3,
+     "atirador": 3,
      "furtividade": 0,
      "integridade": 2,
      "prontidao": 1,
@@ -5158,7 +5179,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 3,
      "musculatura": 3
     },
     "vontade": 10,
@@ -5176,6 +5196,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -5201,7 +5222,7 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -5230,9 +5251,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 12,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 13,
+     "corte": 7,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -5244,14 +5265,13 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 15.5,
-      "jogada": 16
+      "danoMedio": 15.5
      }
     ]
    }
   },
   "cao-infernal": {
-   "sha256": "9039a1cb552b33b876582407437f9b8301b191679a9eb25173aadfd934837ec3",
+   "sha256": "fa0810b175231c627d8b10cca2f4676e4b8702b603397dc2e9217da29d560e32",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5271,6 +5291,7 @@
      "bloqueio": 0,
      "esquiva": 1,
      "atletismo": 3,
+     "atirador": 2,
      "furtividade": 1,
      "integridade": 2,
      "prontidao": 1,
@@ -5279,7 +5300,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 2,
      "musculatura": 2
     },
     "vontade": 7,
@@ -5297,6 +5317,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -5322,7 +5343,7 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -5351,9 +5372,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 7,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -5365,14 +5386,13 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 9,
-      "jogada": 10
+      "danoMedio": 9
      }
     ]
    }
   },
   "cao-yeth": {
-   "sha256": "6438bef9e2567d8840b8b9b4fee2f858051c3ba2dc1ea4b446630d5d17687f76",
+   "sha256": "2d427c4e63b2737374759474979d28e7e7817682cb0c8e7f502e140cfe9f79f9",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5424,6 +5444,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -5462,9 +5483,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 7,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -5699,7 +5720,7 @@
    }
   },
   "caranguejo-gigante": {
-   "sha256": "df434e9a6415c3f0933268e33c8802f3b7e801416c40400d36156c0bc0a37d7d",
+   "sha256": "fd420a516767a4a8771a156c6ca38476e6d217e5473ae449280ee09e5dc4c156",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -5748,6 +5769,7 @@
      "linhaPVMotivo": "carapaça mineralizada"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -5785,7 +5807,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 8,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -5797,7 +5821,7 @@
    }
   },
   "carcaju-atroz": {
-   "sha256": "6307c63d75ca67b14a9678d671247a291e51643de91e845534167843a2a60d0e",
+   "sha256": "055a04edd80121f995e790bdb16e33ba9a2920a259f894de17e91d89ec56130a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -5847,6 +5871,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -5900,7 +5925,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 6
+     "impacto": 7,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -6037,7 +6064,7 @@
    }
   },
   "cauchemar": {
-   "sha256": "43862b81ec02aa637b46c305eb8be91c375793fde84b5452a993c375de42284a",
+   "sha256": "1426359ada9ead2914be3516b81baae7421a4739cd244e31bec1bdfe3550be23",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -6082,6 +6109,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -6135,9 +6163,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 13,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 14,
+     "corte": 7,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -6373,7 +6401,7 @@
    }
   },
   "centauro": {
-   "sha256": "4a8f86ec8d71b3bbacb2042c6c1a271c5188d45eecb77713553b0673605eb486",
+   "sha256": "1f572840935e514f3c58b44f869f12b01f5f1888394902aefe0422c90bacf4d8",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -6417,6 +6445,7 @@
      "posturaDoTamanho": "vista de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -6462,9 +6491,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 8,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 9,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -6489,7 +6518,7 @@
    }
   },
   "centopeia-gigante": {
-   "sha256": "cce4fd40945baf4a886ff775461654b9ea359ed5e16b3e1365c7b53a6a3038f8",
+   "sha256": "8e9f2fdb0c487148059999b052a1c673da25a378916c8c90cb1eafe360f285de",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -6536,6 +6565,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -6573,7 +6603,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -6585,7 +6617,7 @@
    }
   },
   "chuul": {
-   "sha256": "cb676c2165aa65bceea63f8824668cb80fc836efb17d33dee48f41fe3d325ab1",
+   "sha256": "71dd6a055bad50c887fac09eedbd96b5474042bf5205c255c1bd9f32de39258c",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -6628,6 +6660,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -6681,9 +6714,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 10,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 13,
+     "corte": 9,
+     "perfuracao": 9
     },
     "ataques": [
      {
@@ -7108,7 +7141,7 @@
    }
   },
   "corujurso": {
-   "sha256": "7ed8f3d0ecafe2564eec0ac439686b0db9c9be8611c035f0aad711261263cc3f",
+   "sha256": "662212718c280aea5fe04389974c46dacb10493e829ffc953cdf8730a50863ae",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 0,
@@ -7156,6 +7189,7 @@
      }
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -7210,9 +7244,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 7,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -7337,7 +7371,7 @@
    }
   },
   "couatl": {
-   "sha256": "2a8b62bc40285dcdd026b897fdb9d60e3bd96f4903ddc09ea9fdbaee8a121ac9",
+   "sha256": "1ab678b8940fb5ba577bcf7c51df33fc92f544546f161ea1640b66812631ef93",
    "entrada": {
     "categoria": "outsider",
     "centelha": 5,
@@ -7387,6 +7421,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {
      "conjuracao": 5,
      "ofuscacao": 3,
@@ -7431,9 +7466,9 @@
     "iniciativa": 9,
     "mana": 20,
     "absorcao": {
-     "impacto": 10,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 11,
+     "corte": 6,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -7463,7 +7498,7 @@
    }
   },
   "crocodilo-do-nilo-femea": {
-   "sha256": "5378811d4d3e93fdfc11ea6c9b283300747a9c4c2fb0dad73084a2a1c3304894",
+   "sha256": "ca926795ab40cc2de46ef5e511509a67c801668cbaf5a3cfc9cf1dd73e1423bd",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7513,6 +7548,7 @@
      "posturaDoTamanho": "vista de cima"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -7550,7 +7586,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 3
+     "impacto": 6,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -7562,7 +7600,7 @@
    }
   },
   "crocodilo-do-nilo": {
-   "sha256": "b1a8b7b92088e508940807a5db8b868fb07a80a9357673b498ac533b37282378",
+   "sha256": "73dc39932c6186845d430543653171385b8ff86269b6f1574e51ec012ea798ce",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7614,6 +7652,7 @@
      "linhaPVMotivo": "couraça de osteodermos"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -7651,7 +7690,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 3
+     "impacto": 6,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -7853,7 +7894,7 @@
    }
   },
   "daeodon": {
-   "sha256": "618af0e3b08d155dd5fed891c4b41c5f7504662b7b490a71c4eeb10c3f925fab",
+   "sha256": "a27b712429a47df8f8053935021d2349036635039f1c8838320aed86edbaff92",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7903,6 +7944,7 @@
      "posturaDoTamanho": "vista de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -7940,7 +7982,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -8493,7 +8537,7 @@
    }
   },
   "diabo-chifrudo": {
-   "sha256": "d9bd8c9cbf55a34cfab2d2eff70cb1b65df0aac2b4b0552dab3857ba13b61789",
+   "sha256": "c062a735b95f0fa322efcb7f732b1bfceb7b62cf0ac88ef39ad37c320620e77d",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 6,
@@ -8541,6 +8585,7 @@
      "posturaDoTamanho": "silhueta de frente, de pé"
     },
     "couraca": 3,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -8598,9 +8643,9 @@
     "iniciativa": 8,
     "mana": null,
     "absorcao": {
-     "impacto": 16,
-     "corte": 6,
-     "perfuracao": 6
+     "impacto": 18,
+     "corte": 9,
+     "perfuracao": 8
     },
     "ataques": [
      {
@@ -8904,7 +8949,7 @@
    }
   },
   "diabo-espinhoso": {
-   "sha256": "3f91963dc2f9e1b91c253f4cc115da9607f75965caa46720b7602d20d6ef4c03",
+   "sha256": "39c5491f5500c9a6da62bce99cad337683f2193b10f9f25a2b2fa6a5f0430573",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -8949,6 +8994,7 @@
      "posturaDoTamanho": "silhueta de frente, de pé"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -8986,9 +9032,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 12,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 13,
+     "corte": 7,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -9506,7 +9552,7 @@
    }
   },
   "dracolisk": {
-   "sha256": "7630e5e8d878c093932eacae0c8bafffeb156b349099160588bb5cdc50e21ca1",
+   "sha256": "122b3af80d864cd8302c48ccf837462ea5115988b0da2c61b4c7514f632a36bb",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9528,11 +9574,11 @@
      "atletismo": 2,
      "furtividade": 1,
      "integridade": 3,
-     "prontidao": 1
+     "prontidao": 1,
+     "atirador": 3
     },
     "habilidadesSec": {
      "voo": 1,
-     "disparo": 3,
      "musculatura": 2
     },
     "vontade": 9,
@@ -9555,6 +9601,7 @@
      }
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -9596,7 +9643,7 @@
      {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -9626,9 +9673,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 10,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 13,
+     "corte": 9,
+     "perfuracao": 9
     },
     "ataques": [
      {
@@ -9646,8 +9693,7 @@
      {
       "nome": "Sopro ácido",
       "velocidade": 7,
-      "danoMedio": 14.5,
-      "jogada": 15
+      "danoMedio": 14.5
      }
     ]
    }
@@ -9984,7 +10030,7 @@
    }
   },
   "dragao-dourado-adulto": {
-   "sha256": "3e90f9951eeb5e2b083ba2aa4f96e020badf100124dd396c7c0ffe0f0d1f078c",
+   "sha256": "c47862d20082f8552e01cccd6c6db8ffdeedc04469c3d3363759179c8a8b95d7",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10011,13 +10057,13 @@
      "ocultismo": 5,
      "persuasao": 5,
      "conhecimentos": 5,
-     "empatia": 3
+     "empatia": 3,
+     "atirador": 4
     },
     "habilidadesSec": {
      "natacao": 3,
      "intimidacao": 3,
      "voo": 4,
-     "disparo": 4,
      "acerto-arcano": 5,
      "musculatura": 3
     },
@@ -10041,6 +10087,7 @@
      }
     },
     "couraca": 9,
+    "perfilCouraca": "rigida",
     "artes": {
      "protecao": 3,
      "fortuna": 3,
@@ -10087,7 +10134,7 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10117,9 +10164,9 @@
     "iniciativa": 12,
     "mana": 26,
     "absorcao": {
-     "impacto": 17,
-     "corte": 7,
-     "perfuracao": 7
+     "impacto": 22,
+     "corte": 16,
+     "perfuracao": 16
     },
     "ataques": [
      {
@@ -10137,8 +10184,7 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 38.5,
-      "jogada": 22
+      "danoMedio": 38.5
      }
     ]
    },
@@ -10498,7 +10544,7 @@
    }
   },
   "dragao-vermelho-anciao": {
-   "sha256": "d9520b06fecccc1cccafda88fd8988cedbfc8829f71460bf465b71680290075c",
+   "sha256": "9983bd3b06f7bbedf323f3bda1f72e080c69a4a2d13b412e95ffc78458587f07",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10524,12 +10570,12 @@
      "sociabilidade": 3,
      "ocultismo": 5,
      "persuasao": 5,
-     "conhecimentos": 4
+     "conhecimentos": 4,
+     "atirador": 5
     },
     "habilidadesSec": {
      "intimidacao": 5,
      "voo": 4,
-     "disparo": 5,
      "acerto-arcano": 5,
      "musculatura": 4
     },
@@ -10553,6 +10599,7 @@
      }
     },
     "couraca": 11,
+    "perfilCouraca": "rigida",
     "artes": {
      "conjuracao": 6,
      "protecao": 5,
@@ -10616,7 +10663,7 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10646,9 +10693,9 @@
     "iniciativa": 11,
     "mana": 26,
     "absorcao": {
-     "impacto": 18,
-     "corte": 7,
-     "perfuracao": 7
+     "impacto": 24,
+     "corte": 18,
+     "perfuracao": 18
     },
     "ataques": [
      {
@@ -10672,14 +10719,13 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 49,
-      "jogada": 26
+      "danoMedio": 49
      }
     ]
    }
   },
   "dragao-vermelho-jovem": {
-   "sha256": "6b300ee6159d7019aa4a963af4c1dd5f1b085cc3fa613598a695b1aca9bf1cb9",
+   "sha256": "02342033a78b85c6a1ab77c2907f84f1b443349dee054ac288d5737d1b2cf0df",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -10704,12 +10750,12 @@
      "prontidao": 4,
      "sociabilidade": 2,
      "ocultismo": 2,
-     "manha": 3
+     "manha": 3,
+     "atirador": 3
     },
     "habilidadesSec": {
      "intimidacao": 3,
      "voo": 3,
-     "disparo": 3,
      "acerto-arcano": 2,
      "musculatura": 3
     },
@@ -10733,6 +10779,7 @@
      }
     },
     "couraca": 6,
+    "perfilCouraca": "rigida",
     "artes": {
      "protecao": 1,
      "fortuna": 1
@@ -10777,7 +10824,7 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10807,9 +10854,9 @@
     "iniciativa": 7,
     "mana": 20,
     "absorcao": {
-     "impacto": 11,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 14,
+     "corte": 11,
+     "perfuracao": 11
     },
     "ataques": [
      {
@@ -10827,8 +10874,7 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 26,
-      "jogada": 15
+      "danoMedio": 26
      }
     ]
    }
@@ -11500,7 +11546,7 @@
    }
   },
   "elasmossauro": {
-   "sha256": "f3bfe33f219a2e6a86e032d108ce3f58af62baeb69716f12c0872bb9c0b712fe",
+   "sha256": "8acd4f042ecef5074d22ac04694ff2f9da65d4535bbe094c75ec954f12709e69",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -11549,6 +11595,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -11586,7 +11633,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 7
+     "impacto": 8,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -13154,7 +13203,7 @@
    }
   },
   "escorpiao-gigante": {
-   "sha256": "dfec87d0fdb045cdb3948568ef4bdd0f551afc704860fbe70db114d7ee396e2b",
+   "sha256": "2bf263b69ddc502db3f2b4cb8a1f0736428db4ef741163251a2265e6bec48f3a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -13203,6 +13252,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -13256,7 +13306,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -13954,7 +14006,7 @@
    }
   },
   "ettercap": {
-   "sha256": "e72d7a8e059b4ae232c1a5079cddc3f9b8d05d61b3e5a215437a2b9d2115cf76",
+   "sha256": "5b972f5e27fa58dc5f8d7d4f90ced704efaef51b8cdbfc3458ed0df20ceb9f05",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -13977,11 +14029,11 @@
      "furtividade": 3,
      "prontidao": 2,
      "integridade": 3,
-     "sobrevivencia": 3
+     "sobrevivencia": 3,
+     "atirador": 2
     },
     "habilidadesSec": {
      "escalada": 3,
-     "disparo": 2,
      "adestramento": 2,
      "musculatura": 1
     },
@@ -13998,6 +14050,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -14051,9 +14104,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 7,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 8,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -14072,7 +14125,7 @@
    }
   },
   "ettin": {
-   "sha256": "66eeb09ea2914e91011b8bc75024c58a5aa36d1f260e56aa6635137d62c22f67",
+   "sha256": "4b9c884406b73bb3bfcab577500a571b1ace0ff01ee3441abeebf73b3b38acf1",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -14113,6 +14166,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -14150,9 +14204,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 5,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 6,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -14634,7 +14688,7 @@
    }
   },
   "filhote-de-dragao-vermelho": {
-   "sha256": "28c7f6fd966943299e8ad9f0a0607495517a7af4fcd7a693f056792a87ea7977",
+   "sha256": "46b30012ea28d0324ed3388d28d13e2536af3bcf991e356683bb50030522c3c1",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -14658,13 +14712,13 @@
      "integridade": 4,
      "prontidao": 3,
      "sociabilidade": 1,
-     "manha": 2
+     "manha": 2,
+     "atirador": 2
     },
     "habilidadesSec": {
      "escalada": 2,
      "intimidacao": 2,
      "voo": 2,
-     "disparo": 2,
      "acerto-arcano": 2,
      "musculatura": 2
     },
@@ -14688,6 +14742,7 @@
      }
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {
      "morte": 3,
      "fogo": 2
@@ -14732,7 +14787,7 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -14762,9 +14817,9 @@
     "iniciativa": 7,
     "mana": 17,
     "absorcao": {
-     "impacto": 9,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 12,
+     "corte": 9,
+     "perfuracao": 9
     },
     "ataques": [
      {
@@ -14782,8 +14837,7 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 14.5,
-      "jogada": 11
+      "danoMedio": 14.5
      }
     ]
    }
@@ -14886,7 +14940,7 @@
    }
   },
   "formiga-gigante": {
-   "sha256": "2a22149aca64eddb77e43d5dc965ec9042468d675833a5c7b3a76c8c1873e457",
+   "sha256": "5dcad4fed6f4ef104646c75a284843e781fb9fe7a2c5c4fefe96a795c47ef223",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -14933,6 +14987,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -14986,7 +15041,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -15003,7 +15060,7 @@
    }
   },
   "froghemoth": {
-   "sha256": "18ff9c2735f66b7c85f25327507eba3532378d328a136c32c050801129d298d6",
+   "sha256": "02a2a88e083337cb6fbd5a5f0d057c5ad63a705b1a8b2a316220a5bcb4224225",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 0,
@@ -15046,6 +15103,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -15115,9 +15173,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 11,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -15234,7 +15292,7 @@
    }
   },
   "gargula": {
-   "sha256": "fc842979ad4424da590d11b8c9d67e34ac930137c9f2f99eaedb4612255369ba",
+   "sha256": "f44febb665a9c8f1823c22102af3b0de5a00d35b0f16751473d037a5488b6757",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 1,
@@ -15280,6 +15338,7 @@
      }
     },
     "couraca": 9,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -15334,9 +15393,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 11,
+     "corte": 10,
+     "perfuracao": 10
     },
     "ataques": [
      {
@@ -15945,7 +16004,7 @@
    }
   },
   "gigante-da-colina": {
-   "sha256": "b94ac63aa63e80d9318e273783a8add34b87360a4d28beeffd1946ce42dbf47e",
+   "sha256": "b91f909c8df4c07af04257f195c852389f65e16eee4396d0f4648e12e1f2ea43",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -15988,6 +16047,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -16042,9 +16102,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 7,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 8,
+     "corte": 3,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -16063,7 +16123,7 @@
    }
   },
   "gigante-da-pedra": {
-   "sha256": "95fa7b7c7b568711257415a7d7fcdbf32a4fdaeb55bf255677223fe06657310a",
+   "sha256": "c2cb0a0572cd0bf266eefdd6192d87d04d4860c312bf1e213786af956f86c1d8",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -16105,6 +16165,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 4,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -16159,9 +16220,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 8,
+     "corte": 4,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -16394,7 +16455,7 @@
    }
   },
   "gigante-do-fogo": {
-   "sha256": "59a20296c9da254a632a8b431825787d81fe49c5e774bcc190cb8ae5b1c9992c",
+   "sha256": "17ac617cc20140e0a253257e027f0c00cd15b7f1f8bfabb8c501be70808ba4d4",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -16437,6 +16498,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -16496,16 +16558,16 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 10,
+     "corte": 3,
+     "perfuracao": 2
     },
     "comEquipamento": {
      "esquiva": 1,
      "bloqueio": 5,
-     "impacto": 13,
-     "corte": 8,
-     "perfuracao": 5,
+     "impacto": 14,
+     "corte": 10,
+     "perfuracao": 6,
      "penalidade": 3,
      "nivelPerfuracao": 2
     },
@@ -16645,7 +16707,7 @@
    }
   },
   "gigantopiteco": {
-   "sha256": "f7e7bfbcf2fe1fc1646ec31d7f0fe0b5f29a66b508dc6bd3490c5f870d0bb12c",
+   "sha256": "1e52baa6d5dd7a6ce47476b0bbdb5907c7466ba286f75bfb50dcd48243f6d051",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -16692,6 +16754,7 @@
      "posturaDoTamanho": "de frente, em pé"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -16745,7 +16808,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 7
+     "impacto": 8,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -16762,7 +16827,7 @@
    }
   },
   "girallon": {
-   "sha256": "c80fb5ca0c4f889c1851fdc084be63dcc8b1a2aff89850d43f3cdc5c76b9e822",
+   "sha256": "b0aaf96245a9490fb0a67933a097e75e3a50f1f78a9eacc1a477867daabedd58",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -16806,6 +16871,7 @@
      "posturaDoTamanho": "silhueta de frente, de pé"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -16859,9 +16925,9 @@
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
-     "impacto": 7,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 8,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -17654,7 +17720,7 @@
    }
   },
   "golfinho": {
-   "sha256": "bb86f4340190d493a91b3baa0f975240da704bb87f0704ec381fbb3fd6f6edcc",
+   "sha256": "cf590fe9d519eb8c8007f224f2fbdfdee463795ca0681cbdda203534d5620770",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -17703,6 +17769,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -17756,7 +17823,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -17773,7 +17842,7 @@
    }
   },
   "gorgona-touro-de-ferro": {
-   "sha256": "6b02c5096a65df163e99b2f702eef84916b64f47aedb045a8c465834aef62152",
+   "sha256": "6d8206e9ecea1dbdac374020bdb9dba54c38fa3760827d0aec7033bb26852b3f",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -17793,6 +17862,7 @@
      "bloqueio": 1,
      "esquiva": 0,
      "atletismo": 3,
+     "atirador": 2,
      "furtividade": 1,
      "integridade": 3,
      "prontidao": 4,
@@ -17801,7 +17871,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 2,
      "musculatura": 3
     },
     "vontade": 8,
@@ -17817,6 +17886,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 9,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -17858,7 +17928,7 @@
      {
       "nome": "Sopro petrificante",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -17887,9 +17957,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 11,
-     "corte": 3,
-     "perfuracao": 3
+     "impacto": 16,
+     "corte": 12,
+     "perfuracao": 12
     },
     "ataques": [
      {
@@ -17907,14 +17977,13 @@
      {
       "nome": "Sopro petrificante",
       "velocidade": 7,
-      "danoMedio": 0,
-      "jogada": 14
+      "danoMedio": 0
      }
     ]
    }
   },
   "gorila": {
-   "sha256": "40f0c8104f0c5415d514e5e219cfd3dc790afb0ca3a725225bed3559df54f781",
+   "sha256": "8227a65346fbea2b4d7f567f59ab18f26f65f444b3d25bcf1b3007856779c2dd",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -17964,6 +18033,7 @@
      "linhaPVMotivo": "primata robusto"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -18017,7 +18087,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 6
+     "impacto": 7,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -18034,7 +18106,7 @@
    }
   },
   "grande-wyrm-vermelho": {
-   "sha256": "2d261d7a7ae60fa88ea00b757416ac9efe1aa47ded6c4227dd71f62085eaac2c",
+   "sha256": "98775bc47790e044112f6b5647d9748aa7a1e91f357a0fcb83928fb88de421e7",
    "entrada": {
     "categoria": "dragao",
     "centelha": 9,
@@ -18060,12 +18132,12 @@
      "sociabilidade": 3,
      "ocultismo": 5,
      "persuasao": 5,
-     "conhecimentos": 5
+     "conhecimentos": 5,
+     "atirador": 5
     },
     "habilidadesSec": {
      "intimidacao": 5,
      "voo": 4,
-     "disparo": 5,
      "acerto-arcano": 5,
      "musculatura": 4
     },
@@ -18089,6 +18161,7 @@
      }
     },
     "couraca": 12,
+    "perfilCouraca": "rigida",
     "artes": {
      "tempo": 6,
      "protecao": 6,
@@ -18168,7 +18241,7 @@
      {
       "nome": "Sopro cataclísmico",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -18198,9 +18271,9 @@
     "iniciativa": 12,
     "mana": 30,
     "absorcao": {
-     "impacto": 23,
-     "corte": 9,
-     "perfuracao": 9
+     "impacto": 29,
+     "corte": 21,
+     "perfuracao": 21
     },
     "ataques": [
      {
@@ -18230,14 +18303,13 @@
      {
       "nome": "Sopro cataclísmico",
       "velocidade": 7,
-      "danoMedio": 61.5,
-      "jogada": 29
+      "danoMedio": 61.5
      }
     ]
    }
   },
   "grifo": {
-   "sha256": "bd18d1aea9f1bae3633f4e38110ca46316dc5b1623f3c6868ed730143d984312",
+   "sha256": "f2b48db228cda96d79fe8c7693a0c55d0438647c283c9d10e120b5fc8e8ed90d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -18295,6 +18367,7 @@
      "linhaPVMotivo": "voador, meio ave de osso oco"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -18365,9 +18438,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 7,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -18837,7 +18910,7 @@
    }
   },
   "hidra-5-cabecas": {
-   "sha256": "adcf0cdab399507301daea74c281792d8f1b89720e8bed26ba76b3da4b7bd7ec",
+   "sha256": "7ee5dfb93b4ed6c8bb7e9efea79fbd9007b650f24fc7a2783c04bb60dcaaa01d",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -18883,6 +18956,7 @@
      "posturaDoTamanho": "vista de cima, os pescoços abertos"
     },
     "couraca": 3,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -18920,9 +18994,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 11,
+     "corte": 4,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -19035,7 +19109,7 @@
    }
   },
   "hienodonte": {
-   "sha256": "ec42c89214578f48993ef78cf189d19445c7841249b9535a39c7d5573603366c",
+   "sha256": "a6ac8395f96a643e96088dc082a9960c6c46cab5332a1f72c91539c55e4d71f5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19085,6 +19159,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -19122,7 +19197,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -19134,7 +19211,7 @@
    }
   },
   "hipogrifo": {
-   "sha256": "a725175d5c90ea662c9c94a35dafa919a0ca3f93b99ca91dd56eb62d17e6c186",
+   "sha256": "3ee5162e3a783528a6bdae36c386924faaa67b0b6f1427e407f53886b4347331",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -19184,6 +19261,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -19254,9 +19332,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 7,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 8,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -19365,7 +19443,7 @@
    }
   },
   "homem-lagarto": {
-   "sha256": "20b7e38b31b543d120a25e8747664328d70d39089c8917476e018a0f7ede6968",
+   "sha256": "ed883aceee16ea62379135dad016c696928d6ffe6191a24a8ce3fcb52b15eb37",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -19410,6 +19488,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -19451,9 +19530,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 3,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 4,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -19915,7 +19994,7 @@
    }
   },
   "javali": {
-   "sha256": "d6b4d9e64a81c3ed9e7f5d073469c56fab8760bcf58ec2adb009d5aaf49ef037",
+   "sha256": "7f596acceb7826fc797df72b960442b09eb33414ffd6c8b81b59744315bafb05",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19965,6 +20044,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20018,7 +20098,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -20035,7 +20117,7 @@
    }
   },
   "jiboia": {
-   "sha256": "722851b87142d9f7a2357ee3ca93ed7472062a79255f933d0e211cc24375c92b",
+   "sha256": "115985ab4a37c9101bde4023e196fa02ef965034d585c39ef8343f63729107cd",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20086,6 +20168,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20124,7 +20207,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 3
+     "impacto": 4,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -20136,7 +20221,7 @@
    }
   },
   "kobold": {
-   "sha256": "62d8e580eeaeb9fbc23bf0b0fce264f338f35bfa90fc185d66600240a0068d7e",
+   "sha256": "e1253b10ab68588e0c38a55b915f7d5083737cabd7dd1d3a0879cb35cadb8a84",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -20181,6 +20266,7 @@
      "linhaPVMotivo": "corpo frágil"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20206,9 +20292,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 2,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 3,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -20343,7 +20429,7 @@
    }
   },
   "kyton": {
-   "sha256": "db15bbf3761761298568f02afe47462a04b7a4f3acc718a774f1fe38bbd55c07",
+   "sha256": "0a85a943818e91a1964ad738105f6e1e1e9d9504dde83776d32905d384af9077",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -20389,6 +20475,7 @@
      "posturaDoTamanho": "silhueta de frente, de pé"
     },
     "couraca": 3,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20426,9 +20513,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 8,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 10,
+     "corte": 7,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -20441,7 +20528,7 @@
    }
   },
   "lacador": {
-   "sha256": "2fb3c8b8f70c96c037b12048c83ec3f93e78219606df774194de23cba5f5356e",
+   "sha256": "eda7ca01c0935795eb1c0eb88d917f81fcfe0e9c0ded0912a745451cf8d55a0a",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -20466,10 +20553,10 @@
      "integridade": 4,
      "ocultismo": 3,
      "sociabilidade": 1,
-     "resistencia": 3
+     "resistencia": 3,
+     "atirador": 3
     },
     "habilidadesSec": {
-     "disparo": 3,
      "musculatura": 2
     },
     "vontade": 10,
@@ -20485,6 +20572,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20522,9 +20610,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 15,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 17,
+     "corte": 8,
+     "perfuracao": 8
     },
     "ataques": [
      {
@@ -20537,7 +20625,7 @@
    }
   },
   "lagarto-de-gola-gigante": {
-   "sha256": "6ab40ec0c974582c1f0673353a70f32127491fe21d8156ebbd4163753c63e5a7",
+   "sha256": "6b5d5ae852156f1b028f798c6bbfbfd5be8c54215018ac4fa677705c617b3e65",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20591,6 +20679,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20645,7 +20734,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -20662,7 +20753,7 @@
    }
   },
   "lagarto-eletrico": {
-   "sha256": "4348f7b75f90706236e33843785cde03aaae7aa61a175c68522a5e150b83eea0",
+   "sha256": "a9cbb29c2bdd46776189f6b6f4245db15147bb39e41cf177deba94bacc1b4188",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -20682,6 +20773,7 @@
      "bloqueio": 0,
      "esquiva": 1,
      "atletismo": 1,
+     "atirador": 2,
      "furtividade": 2,
      "integridade": 2,
      "prontidao": 1,
@@ -20690,7 +20782,6 @@
      "sobrevivencia": 2
     },
     "habilidadesSec": {
-     "disparo": 2,
      "escalada": 2,
      "natacao": 2,
      "musculatura": 2
@@ -20710,6 +20801,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20735,7 +20827,7 @@
      {
       "nome": "Choque",
       "parte": "corpo",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -20764,9 +20856,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 5,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 6,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -20778,8 +20870,7 @@
      {
       "nome": "Choque",
       "velocidade": 7,
-      "danoMedio": 5.5,
-      "jogada": 9
+      "danoMedio": 5.5
      }
     ]
    }
@@ -20880,7 +20971,7 @@
    }
   },
   "leao-das-cavernas-tardio": {
-   "sha256": "82a018fc9caa575889b44ba75cedbcf5adf5927af288da4c5e1c39bbad3f7ec0",
+   "sha256": "7f4d3db1ea6afaf3c5a1c96dfab79465d70eb1f8e6643b8144d6ab0f58327423",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20930,6 +21021,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -20983,7 +21075,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -21000,7 +21094,7 @@
    }
   },
   "leao-das-cavernas": {
-   "sha256": "03b016aba07023a615415c6825c824cece6db32280f0a0bef10f0acccb3b96b1",
+   "sha256": "4f0489927770a5c04d2d938dcb0f840c9837d4fafc2127f04676ba35077413f1",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21050,6 +21144,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -21103,7 +21198,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 6
+     "impacto": 7,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -21120,7 +21217,7 @@
    }
   },
   "leao": {
-   "sha256": "a8580353912dd272c1cc24c54363e593ab2e3bdb4899fb0d38708afdc1ce4958",
+   "sha256": "2606b4ef0cc38678d80d555ea6d95b9ee0cf083e26e79e0f8fe9ba8060ec3cdc",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21170,6 +21267,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -21223,7 +21321,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -21999,7 +22099,7 @@
    }
   },
   "linnorm-dos-lagos": {
-   "sha256": "0a85365def8fa5d3b0df18ec0308618a1ee632f9915b4f5ec59567aaaafafd39",
+   "sha256": "ada16442f12ea300de6e22662d9c7b5a6ce3172815c5eee6c19c51bd24d63ba6",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22020,11 +22120,11 @@
      "esquiva": 2,
      "atletismo": 2,
      "integridade": 8,
-     "prontidao": 4
+     "prontidao": 4,
+     "atirador": 5
     },
     "habilidadesSec": {
      "natacao": 4,
-     "disparo": 5,
      "musculatura": 4
     },
     "vontade": 11,
@@ -22040,6 +22140,7 @@
      "posturaDoTamanho": "de lado, esticado ou com a frente erguida"
     },
     "couraca": 11,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -22097,7 +22198,7 @@
      {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -22126,9 +22227,9 @@
     "iniciativa": 9,
     "mana": null,
     "absorcao": {
-     "impacto": 20,
-     "corte": 6,
-     "perfuracao": 6
+     "impacto": 26,
+     "corte": 17,
+     "perfuracao": 17
     },
     "ataques": [
      {
@@ -22152,14 +22253,13 @@
      {
       "nome": "Sopro ácido",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 29
+      "danoMedio": 37.5
      }
     ]
    }
   },
   "linnorm-dos-penhascos": {
-   "sha256": "cfad9bce1a4a6dc9a04b072b484e8d960383a010df4213000a1ab9371ac2eee0",
+   "sha256": "f9145eaa5423f65544ece985af6070954f1396f5be0c88ecb34a061fbb821f21",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22180,11 +22280,11 @@
      "esquiva": 1,
      "atletismo": 2,
      "integridade": 6,
-     "prontidao": 2
+     "prontidao": 2,
+     "atirador": 4
     },
     "habilidadesSec": {
      "natacao": 3,
-     "disparo": 4,
      "musculatura": 3
     },
     "vontade": 11,
@@ -22204,6 +22304,7 @@
      }
     },
     "couraca": 9,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -22245,7 +22346,7 @@
      {
       "nome": "Sopro de magma",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -22275,9 +22376,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 17,
-     "corte": 6,
-     "perfuracao": 6
+     "impacto": 22,
+     "corte": 15,
+     "perfuracao": 15
     },
     "ataques": [
      {
@@ -22295,8 +22396,7 @@
      {
       "nome": "Sopro de magma",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 23
+      "danoMedio": 37.5
      }
     ]
    }
@@ -22824,7 +22924,7 @@
    }
   },
   "louva-a-deus-gigante": {
-   "sha256": "c3eda680278e70b8087f8a12a081acd413c0edb8135fd7ed3c6275c5069bced9",
+   "sha256": "a13154f3de5621f07fa1e77e554b9538851e25b9237f0496c2fd7ecfb9ba54b8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -22876,6 +22976,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -22930,7 +23031,9 @@
     "iniciativa": 7,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -23617,7 +23720,7 @@
    }
   },
   "manticora": {
-   "sha256": "3ce3083aba072096a73f62829e226506adbf699bb25d2eabe1adea5f074d081b",
+   "sha256": "1f0fdfbe19cb1c3a7a0312fa1f94201819ca079838139e275dbf4b2655fd6567",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 0,
@@ -23637,6 +23740,7 @@
      "bloqueio": 1,
      "esquiva": 1,
      "atletismo": 1,
+     "atirador": 3,
      "furtividade": 1,
      "integridade": 2,
      "prontidao": 2,
@@ -23645,7 +23749,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 3,
      "intimidacao": 2,
      "voo": 2,
      "musculatura": 3
@@ -23670,6 +23773,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -23711,7 +23815,7 @@
      {
       "nome": "Espinhos de cauda",
       "parte": "cauda",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -23741,9 +23845,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 7,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -23761,8 +23865,7 @@
      {
       "nome": "Espinhos de cauda",
       "velocidade": 7,
-      "danoMedio": 10.5,
-      "jogada": 9
+      "danoMedio": 10.5
      }
     ]
    }
@@ -24335,7 +24438,7 @@
    }
   },
   "megalodonte": {
-   "sha256": "99343589da03a77c4e8e3471d520970ea9bac4851c69251b5a070d2bd5b38edc",
+   "sha256": "8459163f6b1e42e880cd9e08411171bac47ffe8328c4a513fb421b5c9fee2673",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -24384,6 +24487,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 3,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -24421,7 +24525,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 8
+     "impacto": 10,
+     "corte": 3,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -24651,7 +24757,7 @@
    }
   },
   "mimico": {
-   "sha256": "50322c5cd1ae563dc0338986fc560be1ae24330a14a4508c3d9aad4e4d9ccedc",
+   "sha256": "0aaaa9acb4b74d3ecce36cb9432988e106cfa2b0af9dd066b1b768c19d8e4602",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 1,
@@ -24693,6 +24799,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -24746,9 +24853,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 7,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -24767,7 +24874,7 @@
    }
   },
   "minotauro": {
-   "sha256": "f4c936603694c49d1a0da1095dc1c90731ec587aeb1a142be2cc6d5427f0df1f",
+   "sha256": "aba74cc40566b02e70d0cb95fcebd69e700b72de63db64979d0b7385bb33adb5",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 1,
@@ -24811,6 +24918,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -24852,9 +24960,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 7,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -25201,7 +25309,7 @@
    }
   },
   "montao-tropecante": {
-   "sha256": "5a42a21123500880e7a3922fd9d77d2e0f375cbf47877058559257b4c72cd34b",
+   "sha256": "50e5af0c86a2bb7f49cbcab7810e4523cfd2b1336e2475a446b23f550cc854b5",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -25243,6 +25351,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -25280,9 +25389,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 7,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -25496,7 +25605,7 @@
    }
   },
   "moreia-gigante": {
-   "sha256": "19abdc7caf0b8c9221313fbbe4ba93379624b96d3a4be3a2b5eb9ece7b4c6796",
+   "sha256": "a36c606c5bd68210d088e5f09229b609b5435f424c5d256732f248893fd62cff",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25543,6 +25652,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -25580,7 +25690,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -25675,7 +25787,7 @@
    }
   },
   "mosassauro": {
-   "sha256": "d4d78c68294ee702fd78666fe9221b05f34036f7559b147e9980f00ea1128a23",
+   "sha256": "a19ed4a19857f96d96721227cf3eaa5113b868293bef3e190d3a9d9c139e10e8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25724,6 +25836,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -25761,7 +25874,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 7
+     "impacto": 8,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -26092,7 +26207,7 @@
    }
   },
   "naga-guardia": {
-   "sha256": "0840c79f6f2dc86f5a43ee38075c12f28f0eb21aca22640a1a073e9ee5ef2df9",
+   "sha256": "bbbf20b5ae53ba662a8f944a347dbb39fa8e7a4f75d13a29387e66f77c8ace2c",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 5,
@@ -26118,10 +26233,10 @@
      "ocultismo": 3,
      "empatia": 3,
      "persuasao": 2,
-     "sociabilidade": 2
+     "sociabilidade": 2,
+     "atirador": 3
     },
     "habilidadesSec": {
-     "disparo": 3,
      "acerto-arcano": 4,
      "musculatura": 2
     },
@@ -26142,6 +26257,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {
      "protecao": 4,
      "cura": 4,
@@ -26184,9 +26300,9 @@
     "iniciativa": 7,
     "mana": 20,
     "absorcao": {
-     "impacto": 12,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 13,
+     "corte": 6,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -26199,7 +26315,7 @@
    }
   },
   "naga-negra": {
-   "sha256": "34286d4530250a637476b9b92c31ab9823d6e32770111a1bdbba77a79e6c0600",
+   "sha256": "2ca89fa0a3e2a4db8cdf6d186d8174155b3af1273a19f1e51fbc88a5e9da6c99",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -26249,6 +26365,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {
      "raio": 4,
      "forcas": 3,
@@ -26291,9 +26408,9 @@
     "iniciativa": 7,
     "mana": 17,
     "absorcao": {
-     "impacto": 10,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 11,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -26429,7 +26546,7 @@
    }
   },
   "neothelid": {
-   "sha256": "45a9249da691068a2b7c721691a61d1b8dc079a09a77b7bb805e5dea70f1648c",
+   "sha256": "c3356671d90c5004945c9eec20579d9ea538b3e67ebfbfb07e3c4224fda00da6",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 6,
@@ -26454,11 +26571,11 @@
      "integridade": 5,
      "ocultismo": 4,
      "persuasao": 3,
-     "sociabilidade": 2
+     "sociabilidade": 2,
+     "atirador": 2
     },
     "habilidadesSec": {
      "intimidacao": 4,
-     "disparo": 2,
      "musculatura": 2
     },
     "vontade": 11,
@@ -26474,6 +26591,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 3,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -26511,9 +26629,9 @@
     "iniciativa": 7,
     "mana": null,
     "absorcao": {
-     "impacto": 16,
-     "corte": 6,
-     "perfuracao": 6
+     "impacto": 19,
+     "corte": 8,
+     "perfuracao": 8
     },
     "ataques": [
      {
@@ -26917,7 +27035,7 @@
    }
   },
   "ogro": {
-   "sha256": "99ccdf4a6cc1f1e6c2aa089fd1135abf3ba1fda0c124132466b5bbaf9e102354",
+   "sha256": "638ece5f63e3527d9b257ff066645cf8404ad1804989d8683a5feb5a97ea4d49",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -26959,6 +27077,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -26996,9 +27115,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 5,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 6,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -27095,7 +27214,7 @@
    }
   },
   "orca": {
-   "sha256": "8d8da0a637f3fb2287b8f2944b20a614b9a8c8dc550ebde8d7f5f10fd0f68d70",
+   "sha256": "5ed9acbe894a5be09c96c673d92f9dfc0ed9f8587baef45b877d8fd098af097c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -27144,6 +27263,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -27181,7 +27301,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 6
+     "impacto": 8,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -27193,7 +27315,7 @@
    }
   },
   "otyugh": {
-   "sha256": "c16406f8fb7d63c1d75d04bb25114776224668cdbf4628339315444601536cb7",
+   "sha256": "cf42e86a667756631baed940011eb5d5aedc146a81f62785747113fc113c7b90",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -27235,6 +27357,7 @@
      "posturaDoTamanho": "de frente, tentáculos erguidos"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -27288,9 +27411,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 7,
+     "corte": 4,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -27309,7 +27432,7 @@
    }
   },
   "papa-moscas-gigante": {
-   "sha256": "7527250f16047121ff78bcdcfdb525bb718f3ae8e538e020aa1e04300438957e",
+   "sha256": "64b62459e7cca8fd061e0d57c3648d04a0d1e5115fe899f5fdeb6c949ce1fc73",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -27350,6 +27473,7 @@
      "posturaDoTamanho": "de pé"
     },
     "couraca": 3,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -27387,9 +27511,9 @@
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
-     "impacto": 10,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 13,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -27401,7 +27525,7 @@
    }
   },
   "pegaso": {
-   "sha256": "858b71c8f0ddf7ac9b60404c4323e10c4cf65681f1ed72cf68d890a15d61c86d",
+   "sha256": "42629f3e2c8488cc4d3c7455f314447072427251470ff2082644596534d47748",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -27451,6 +27575,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -27505,9 +27630,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 10,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 11,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -27622,7 +27747,7 @@
    }
   },
   "pesadelo": {
-   "sha256": "ac85b6d4307f54e125292c49f7e3d19cbee1a0704e235662647946fa6d78cc63",
+   "sha256": "72cf087183c1f6b619a8e51157d9df295d7813455ebb17cad4db257fb335047e",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -27667,6 +27792,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -27720,9 +27846,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 10,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 11,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -27741,7 +27867,7 @@
    }
   },
   "pescador-das-cavernas": {
-   "sha256": "6a5bed8f3927d589c87ee9aab8a2eb19d81592b5868e0ebba576c0ec96d77994",
+   "sha256": "8b4a49f40acf88e503ae30bd1cc2dee5549174ecd89f06b331da26a6fec59f8b",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -27784,6 +27910,7 @@
      "posturaDoTamanho": "seis pernas apoiadas na rocha"
     },
     "couraca": 3,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -27821,9 +27948,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 5,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 7,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -28044,7 +28171,7 @@
    }
   },
   "plesiossauro": {
-   "sha256": "d78279e8cf8a8f4d2050b91f4e6a68d29326646f8935d20b7033f05cb621d502",
+   "sha256": "f08fa4b11050fe9340646f0afdd97b5a48920741fb499a7b6318a99c1b6df09a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28094,6 +28221,7 @@
      "tamanhoEscolhido": "medio"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -28131,7 +28259,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 3
+     "impacto": 4,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -28609,7 +28739,7 @@
    }
   },
   "pseudodragao": {
-   "sha256": "75b8cc3be01212f05a5a0296adbf5c1d0a8132eb9fe2157b5219986ed734da47",
+   "sha256": "e56015f2b2d56133fa39ce635c994cf74461a142ab4f6c85c377510c65d31abf",
    "entrada": {
     "categoria": "dragao",
     "centelha": 1,
@@ -28657,6 +28787,7 @@
      }
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -28727,9 +28858,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 4,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 5,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -29175,7 +29306,7 @@
    }
   },
   "quimera": {
-   "sha256": "4e54ae1785b04a59750fcead5f300e83ab4a82d125b7a7ac1135d7361222943c",
+   "sha256": "bf1e216538721c8dab2e629f01d1743ba57ff7872b15ce7a3e628de3ee72b762",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -29195,6 +29326,7 @@
      "bloqueio": 1,
      "esquiva": 1,
      "atletismo": 2,
+     "atirador": 2,
      "furtividade": 1,
      "integridade": 3,
      "prontidao": 3,
@@ -29203,7 +29335,6 @@
      "sobrevivencia": 3
     },
     "habilidadesSec": {
-     "disparo": 2,
      "voo": 2,
      "musculatura": 3
     },
@@ -29227,6 +29358,7 @@
      }
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -29284,7 +29416,7 @@
      {
       "nome": "Sopro dracônico",
       "parte": "cabeca-de-dragao",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -29314,9 +29446,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 3,
-     "perfuracao": 3
+     "impacto": 10,
+     "corte": 5,
+     "perfuracao": 4
     },
     "ataques": [
      {
@@ -29340,8 +29472,7 @@
      {
       "nome": "Sopro dracônico",
       "velocidade": 7,
-      "danoMedio": 10,
-      "jogada": 12
+      "danoMedio": 10
      }
     ]
    }
@@ -29926,7 +30057,7 @@
    }
   },
   "remorhaz": {
-   "sha256": "0a755b10d9a2d6b5230383a57e138c973884747ce349e6febe6f169a6aed9f79",
+   "sha256": "58231e3dc53fee34329ad3e3d7f5540202d9972f2715d65045260df3400e37d9",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -29971,6 +30102,7 @@
      "linhaPVMotivo": "placas grossas, corpo robusto"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -30008,9 +30140,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 12,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 15,
+     "corte": 9,
+     "perfuracao": 9
     },
     "ataques": [
      {
@@ -30143,7 +30275,7 @@
    }
   },
   "roc": {
-   "sha256": "1747faa725578194c0fe99dad937ff687101a13467868a63fd8b4e4a2b15bf5d",
+   "sha256": "91ee944d8f60f2724a6463a4f581eebf0ffc6d84e0ba4e6a6291e32683aaf70c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30192,6 +30324,7 @@
      "posturaDoTamanho": "de baixo, asas abertas"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -30261,7 +30394,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -30283,7 +30418,7 @@
    }
   },
   "sahuagin": {
-   "sha256": "83dfde7311b5f118078abb26c31cecbb5f1b07083507884d581d8663bfd25d1a",
+   "sha256": "e5ccdc55782f95ac5a2f9cae556f3770c107d8e8e4e20959ef1fc33be2f94641",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -30326,6 +30461,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -30367,9 +30503,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 7,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -30670,7 +30806,7 @@
    }
   },
   "satiro": {
-   "sha256": "ec0d4d492378e2e1ec9f287e8948ac73efd4bff88b54d916d7a986b1632e20ce",
+   "sha256": "6128d5fd6182cfdada3b2026c0263602f94f1f8a60f0136fb1313957957e9617",
    "entrada": {
     "categoria": "fada",
     "centelha": 2,
@@ -30715,6 +30851,7 @@
      "posturaDoTamanho": "bípede, de pé"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -30752,9 +30889,9 @@
     "iniciativa": 7,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 7,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -30766,7 +30903,7 @@
    }
   },
   "serpente-marinha": {
-   "sha256": "a6b4e60a693bac042938ffaac6f6a8119f5646a573b77424b0c5753bbbdbd4ec",
+   "sha256": "0c7797975d02cb31d2a0001f1fee1c7c4641920ce7cece706890f6e0a1e95d4c",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 5,
@@ -30810,6 +30947,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 3,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -30847,9 +30985,9 @@
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
-     "impacto": 16,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 18,
+     "corte": 8,
+     "perfuracao": 7
     },
     "ataques": [
      {
@@ -31152,7 +31290,7 @@
    }
   },
   "skum-ulat-kini": {
-   "sha256": "57e1c4dd778c7001c1e414323b58064984ef3a42459b5db9d96983d42998cf19",
+   "sha256": "e0245d0ec0519bdd9ea231b236689fe7f56cedced1d3342dfe72a6d641df89e0",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -31195,6 +31333,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -31252,9 +31391,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 7,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 8,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {
@@ -32055,7 +32194,7 @@
    }
   },
   "tartaruga-dragao": {
-   "sha256": "9b92c4a10fe8a19ef1dff6b7630cbf1ab18e8ab5f4d80a2c6c1a2b0db77c2b86",
+   "sha256": "46b1e2185e298671e981d557edaa69ee47343bd97c2ab94a8a2711ea01c9a7c8",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -32077,11 +32216,11 @@
      "atletismo": 2,
      "furtividade": 1,
      "integridade": 3,
-     "prontidao": 1
+     "prontidao": 1,
+     "atirador": 3
     },
     "habilidadesSec": {
      "natacao": 4,
-     "disparo": 3,
      "musculatura": 3
     },
     "vontade": 10,
@@ -32099,6 +32238,7 @@
      "posturaDoTamanho": "de cima"
     },
     "couraca": 8,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -32140,7 +32280,7 @@
      {
       "nome": "Sopro de vapor",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -32169,9 +32309,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 12,
-     "corte": 5,
-     "perfuracao": 5
+     "impacto": 16,
+     "corte": 13,
+     "perfuracao": 13
     },
     "ataques": [
      {
@@ -32189,8 +32329,7 @@
      {
       "nome": "Sopro de vapor",
       "velocidade": 7,
-      "danoMedio": 26,
-      "jogada": 16
+      "danoMedio": 26
      }
     ]
    }
@@ -32383,7 +32522,7 @@
    }
   },
   "tigre-dentes-de-sabre": {
-   "sha256": "13beea69d033c94c00ce9e2e10119090dc089c39afb983adfc448e8a116cea69",
+   "sha256": "9ab0d75bf2704e51671dd44d49fe7f39c399acf509672b85c37920c498b5bdce",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32433,6 +32572,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -32486,7 +32626,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -32503,7 +32645,7 @@
    }
   },
   "tigre": {
-   "sha256": "de4429324eefea24b7e3c16e75eaf326f25afdc4b3b5e048225c1210f56a759b",
+   "sha256": "46210e7fd2dc2ea8d90a6322a0f481fa70a88d4a2cb01a9518a4d6628e3a1b84",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32556,6 +32698,7 @@
      "cargaMedida": 68
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -32609,7 +32752,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -32626,7 +32771,7 @@
    }
   },
   "tiranossauro": {
-   "sha256": "ca619656203cc07727a07738a15a704a889c24674c6063169c069562ba05632e",
+   "sha256": "d3fec569066ce62df2d20a97ecd92bbe840923eaf839d66e37638274ec4f3b91",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -32675,6 +32820,7 @@
      "posturaDoTamanho": "vista de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -32712,7 +32858,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 10
+     "impacto": 11,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -32724,7 +32872,7 @@
    }
   },
   "treant": {
-   "sha256": "a45d31b1d2e77041f9f1e24d257e86c0ed4efad6b9ec65dfa728a63820b72771",
+   "sha256": "353519d085d3ea0c025b6eed01903ac20df0bcaae345e4c77b75ae1fd882d25e",
    "entrada": {
     "categoria": "planta",
     "centelha": 3,
@@ -32767,6 +32915,7 @@
      "posturaDoTamanho": "de pé"
     },
     "couraca": 5,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -32804,9 +32953,9 @@
     "iniciativa": 6,
     "mana": null,
     "absorcao": {
-     "impacto": 11,
-     "corte": 3,
-     "perfuracao": 3
+     "impacto": 14,
+     "corte": 8,
+     "perfuracao": 8
     },
     "ataques": [
      {
@@ -32818,7 +32967,7 @@
    }
   },
   "trepadeira-de-almiscar-amarelo": {
-   "sha256": "9154c39f2408fdfaf68623014d5e057656514a0985bf3d65a8061a2672f831b8",
+   "sha256": "fc9780397d266570afee811f8de5b3eea4dac73d8187870968a8653339618ae6",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -32858,6 +33007,7 @@
      "posturaDoTamanho": "ramos espalhados no chão"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -32895,9 +33045,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 5,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 6,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -33029,7 +33179,7 @@
    }
   },
   "trogloditas": {
-   "sha256": "bb1781fea1721fa712536643cdbb110567ed6228b67f08b3fd6ed68a9370bcbf",
+   "sha256": "f5bbed9870c338b6394630ffd2698b67cb8febf2c7ae4ec0454ab7c5ed76b8b9",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -33072,6 +33222,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -33113,9 +33264,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 4,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 5,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -33134,7 +33285,7 @@
    }
   },
   "trol": {
-   "sha256": "06a4f3589460dd405b04addf88bd8f9dc43e2ef68e3ea56cb2cd7ad39bb6abf3",
+   "sha256": "4e57a67b4c95c23a299f05001b7c4faa132bfe9a36261dac8d146052437f5144",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -33174,6 +33325,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -33227,9 +33379,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 10,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -33247,7 +33399,7 @@
    }
   },
   "tubarao-branco": {
-   "sha256": "8ff07625d717ca23c2ad6d78bb4747d264b343c77dbb43354f76fdd3f97b7190",
+   "sha256": "29d338016aed956dd9829037e4c4c8f10e22ff606c3de8874fdeeeaced225ff0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33296,6 +33448,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -33333,7 +33486,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -33486,7 +33641,7 @@
    }
   },
   "urso-cinzento": {
-   "sha256": "7f5a2f1319d0075acb71565f23d54e778c050b35dd04b97c21ecc62c44d3ef47",
+   "sha256": "1dc93a6949ac95e8f235edf42688dbc8f925dcffb3f406482f700a0e26a7c912",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33533,6 +33688,7 @@
      }
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -33587,9 +33743,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 6,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 7,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -33606,7 +33762,7 @@
    }
   },
   "urso-das-cavernas": {
-   "sha256": "aaf9547436cdfd29eff693841ff3f3314856819e966e269dd971e129a5907380",
+   "sha256": "ed955e0b099afc13785a4fd9031afeba5b7c41c537b5622a2bd6f6ca219eded8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33656,6 +33812,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -33709,7 +33866,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 6
+     "impacto": 7,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -33726,7 +33885,7 @@
    }
   },
   "urso-negro": {
-   "sha256": "2764bfa94af2d6f0c22b25dfcb5c78e306f869af2528484cae9f843530460451",
+   "sha256": "e23ae36fea80508180f1dddcda4dba3d00f80895f3097ca21060f3b93d46996d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33776,6 +33935,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -33829,7 +33989,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 4
+     "impacto": 5,
+     "corte": 1,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -33846,7 +34008,7 @@
    }
   },
   "urso-pardo-litoral": {
-   "sha256": "2e2b69a1250b36902772efe1009f0350a0cd61d530c5075675e70435b1dda49a",
+   "sha256": "0b0091cf8a64277dafd75a8a4c74968c2a3817694d9d34350c9142e11fd35c48",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33896,6 +34058,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -33949,7 +34112,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 6
+     "impacto": 7,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -33966,7 +34131,7 @@
    }
   },
   "urso-pardo": {
-   "sha256": "257b0a482de774e8dd9ca758033c763899e848a013590d123c426e4e8dbcafb0",
+   "sha256": "6df850ce7fb7bd374d5e11d37862b8b22687d732740fbe6920a3dc808db35331",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -34018,6 +34183,7 @@
      "linhaPVMotivo": "gordura e pelo grossos"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -34071,7 +34237,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -34088,7 +34256,7 @@
    }
   },
   "urso-polar": {
-   "sha256": "74f6d8d0fec3e151377f3dac18cc6b192fd513406ff8640d969cc810baff45f3",
+   "sha256": "20efd21fa94e9ec7062e840daf320661e518a624b809f43db66d91b9608b8b98",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -34138,6 +34306,7 @@
      "posturaDoTamanho": "de lado"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -34191,7 +34360,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 5
+     "impacto": 6,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -34326,7 +34497,7 @@
    }
   },
   "varano-femea": {
-   "sha256": "1891859a8203292b4b6ee69c9aeae7362ca60b63f43fcd368ae30ed6228fdbbd",
+   "sha256": "b43f120a7d211869c06abcc04c914c91dba167894387120de7140739a5bb5440",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -34376,6 +34547,7 @@
      "posturaDoTamanho": "vista de lado"
     },
     "couraca": 4,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -34413,7 +34585,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 3
+     "impacto": 5,
+     "corte": 4,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -34425,7 +34599,7 @@
    }
   },
   "varano": {
-   "sha256": "3d75413c2ff4a4311789fe566016b319894a6a49de4310452f63f6460aefc066",
+   "sha256": "3420b9b90f8b02e1626053955cc0610060229c01d539983aa3fbbd617291d269",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -34475,6 +34649,7 @@
      "posturaDoTamanho": "vista de lado"
     },
     "couraca": 4,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -34512,7 +34687,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 3
+     "impacto": 5,
+     "corte": 4,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -34620,7 +34797,7 @@
    }
   },
   "vegepygmy": {
-   "sha256": "c9136966b36d74338ae83066edc47eaf56ec7f38ad3b0f1a87950530f5275947",
+   "sha256": "51331f4bf7781ed1d434eb7e024568bddb086d9005841abf7711a570fa9dfe38",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -34661,6 +34838,7 @@
      "posturaDoTamanho": "de pé"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -34698,9 +34876,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 3,
-     "corte": 0,
-     "perfuracao": 0
+     "impacto": 4,
+     "corte": 2,
+     "perfuracao": 1
     },
     "ataques": [
      {
@@ -34712,7 +34890,7 @@
    }
   },
   "verme-purpura": {
-   "sha256": "1fac0b3f3509e0ccf5b723fde4501b3bce8366bbfcf8fc44163b4cb08355943a",
+   "sha256": "54fc0c11b837ef805d91170114a266e011c401c3c1f40a630886c3f4733f06a3",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -34755,6 +34933,7 @@
      "posturaDoTamanho": "silhueta vista de lado"
     },
     "couraca": 5,
+    "perfilCouraca": "mole",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -34808,9 +34987,9 @@
     "iniciativa": 2,
     "mana": null,
     "absorcao": {
-     "impacto": 12,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 17,
+     "corte": 4,
+     "perfuracao": 4
     },
     "ataques": [
      {
@@ -34829,7 +35008,7 @@
    }
   },
   "vespa-gigante": {
-   "sha256": "9f9cb3fc620fa065a06e87b2806745369558902332e3b74998d6048178d32b23",
+   "sha256": "d8d74d871bede41f0c1d4ece384554cdda438a74df216d9e61c83f6ba322a82d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -34881,6 +35060,7 @@
      }
     },
     "couraca": 2,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -34935,7 +35115,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 3
+     "impacto": 4,
+     "corte": 2,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -35356,7 +35538,7 @@
    }
   },
   "wyvern": {
-   "sha256": "54e27610dccf8619dd39b8952a7728955fd8075778f2b6a17c9b4741cb4ef54e",
+   "sha256": "d6f26373155d3e9436c3fa09ab64419c88431459b053806480d177f419c56e30",
    "entrada": {
     "categoria": "dragao",
     "centelha": 3,
@@ -35406,6 +35588,7 @@
      "linhaPVMotivo": "voador de cauda fina"
     },
     "couraca": 3,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -35492,9 +35675,9 @@
     "iniciativa": 4,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 3,
-     "perfuracao": 3
+     "impacto": 11,
+     "corte": 6,
+     "perfuracao": 6
     },
     "ataques": [
      {
@@ -35525,7 +35708,7 @@
    }
   },
   "xill": {
-   "sha256": "f7667843de53be4fa2e6278539d5977e911b404fc7d88da8daead4a6f163bd5f",
+   "sha256": "16493c05e8a096f23bb972eeafc3ba79f02beeb89805cdebfb5eaf60498e2035",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -35571,6 +35754,7 @@
      "posturaDoTamanho": "silhueta de frente, de pé"
     },
     "couraca": 1,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -35628,9 +35812,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 8,
-     "corte": 4,
-     "perfuracao": 4
+     "impacto": 9,
+     "corte": 5,
+     "perfuracao": 5
     },
     "ataques": [
      {
@@ -35655,7 +35839,7 @@
    }
   },
   "xorn": {
-   "sha256": "4ad8c269e75be037ad2ba88e08370e079c47b215776aec866cb43352c27ffbb1",
+   "sha256": "d2848c3ac76c33f7670f34cf9a4794d9b73b39ee3776c86a131d3938fab4ccb3",
    "entrada": {
     "categoria": "elemental",
     "centelha": 3,
@@ -35696,6 +35880,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 7,
+    "perfilCouraca": "rigida",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -35749,9 +35934,9 @@
     "iniciativa": 5,
     "mana": null,
     "absorcao": {
-     "impacto": 9,
-     "corte": 3,
-     "perfuracao": 3
+     "impacto": 13,
+     "corte": 10,
+     "perfuracao": 10
     },
     "ataques": [
      {
@@ -35770,7 +35955,7 @@
    }
   },
   "yeti": {
-   "sha256": "2f9546b91fbb58e2ecedbe9ad82cfb7b806356e3912b59343ecc42227f077794",
+   "sha256": "d195066aa3ede938528d663f171f15e07ae87525cae4cbdfe345aefe9cf0e9e4",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -35813,6 +35998,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 1,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -35850,9 +36036,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 7,
-     "corte": 2,
-     "perfuracao": 2
+     "impacto": 8,
+     "corte": 3,
+     "perfuracao": 3
     },
     "ataques": [
      {

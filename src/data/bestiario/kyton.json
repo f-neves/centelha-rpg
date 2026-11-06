@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 4,
     "destreza": 5,
@@ -94,56 +95,96 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Correntes",
+      "categoria": "inato",
       "regra": "rajada"
-    },
-    {
-      "nome": "quatro correntes juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ataca com até quatro correntes na mesma ação; a Rajada do livro para em três"
     },
     {
       "nome": "correntes dançantes",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "faz até quatro correntes atacarem sozinhas num raio de 6 m, como extensões do corpo; quem tenta arrancar uma delas precisa vencê-lo em Compostura, ou a corrente continua dele"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "materia",
+        "nivel": 3
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "6 Ticks",
+      "alcance": "6 m",
+      "area": "um alvo",
+      "efeito": "A corrente pode deixar Preso à distância pela Rede do livro. Para atacar, as correntes gastam a ação do kyton e seguem a ordem e o teto do Multiataque. Desarmar uma corrente usa a defesa do comandante",
+      "dano": "nenhum",
+      "resistencia": "pela Rede do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Olhar perturbador",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "sobrenatural",
       "ativacao": "uma ação, Velocidade 6, o rosto que muda",
       "duracao": "até o fim do próximo intervalo de 12 Ticks",
       "alcance": "9 m, quem olha para ele",
       "area": "um alvo",
       "efeito": "o rosto vira o de um ente querido morto ou de um inimigo odiado da vítima; quem falha fica Amedrontado",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune ao olhar dele até o fim da cena",
-      "limiteDeUso": "uma vez por cena por alvo"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar dele até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Regeneração 2",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de arma abençoada ou de prata"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "ferida que não fecha",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o que arma de prata ou do bem faz não se regenera pela regeneração"
     },
     {
       "nome": "arma de prata ou abençoada fere inteira",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a resistência da pele não vale contra arma de prata ou abençoada"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra prata ou arma abençoada, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
-      "nome": "Resistência à magia 17",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: primeira corrente, segunda corrente, terceira corrente. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -244,16 +285,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Olhar perturbador",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "Apara com a corrente esticada (decisoes-autor §1)"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: a \"armadura de correntes\", que \"não pesa nem atrapalha\" (site), tratada como parte do corpo e não como equipamento (D-188), entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). A \"pele curtida\" do site (resiste a golpes comuns; imune ao frio), pela linha Elementos; Couraça 3, e não equipamento (D-188), porque o site diz que não pesa nem atrapalha; \"resiste a golpes comuns\" virou resistência a Corte, Perfuração e Impacto, como a pele do súcubo; a exceção da prata e da arma abençoada ficou sem regra ainda"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 3: a \"armadura de correntes\", que \"não pesa nem atrapalha\" (site), tratada como parte do corpo e não como equipamento (D-188), entre o elefante (2 a 3) e o crocodilo (4 a 5) .; Couraça 3, e não equipamento (D-188), porque o site diz que não pesa nem atrapalha; \"resiste a golpes comuns\" virou resistência a Corte, Perfuração e Impacto, como a pele do súcubo; a exceção da prata e da arma abençoada ficou sem regra ainda"
     },
     {
       "campo": "comportamento.dieta",
@@ -262,6 +299,18 @@
     {
       "campo": "ataques.Correntes",
       "motivo": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte) e as \"correntes farpadas que atacam como extensões de si mesmo\": o chicote da corrente com o corpo atrás, Média (`regra-construcao.md` §7) . Até três por ação pela Rajada (Manobras). Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8); ataque da ficha; o livro não tem corrente, e o alcance de 3 m é do corpo (D-180, ponto 19)"
+    },
+    {
+      "campo": "habilidadesEspeciais.correntes dançantes",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar perturbador",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 17 da fonte passa a grau 2 (+4)."
     },
     {
       "campo": "ataques",

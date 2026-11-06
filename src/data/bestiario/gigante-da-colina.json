@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 2,
@@ -116,11 +117,12 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Rocha arremessada",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
       "duracao": "instantânea",
       "alcance": "até 36 m; acima de 12 m, −2 na jogada",
       "area": "um alvo",
-      "efeito": "a rocha derruba o alvo Médio ou menor que ela fere",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "2d6 + Força + Centelha, Impacto",
       "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
       "limiteDeUso": "enquanto houver rocha por perto"
@@ -130,6 +132,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "ativacao": "a Pancada descomunal que fere um alvo Médio ou menor",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -143,6 +146,7 @@
       "nome": "Brutalidade cega",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "ficar Abalado",
       "duracao": "até o fim da cena",
       "alcance": "o próprio corpo",
@@ -150,13 +154,14 @@
       "efeito": "o Abalado não tira nada das jogadas de ataque e de dano dele; ainda conta para fugir e para as outras jogadas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -238,24 +243,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Arremesso de rocha",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Marretada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Brutalidade cega",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.briga",
       "motivo": "Ajuste-piloto: antes 4, depois 5; recupera o 5 publicado. Resolve os conflitos lutando no braço, prática constante comparável à dos gigantes da pedra, fogo e gelo (Briga 5); não havia motivo corporal ou de treino para o rebaixamento. Jogada da Pancada: 15 antes, 16 depois; dano médio permanece 17. Decisão da Bestiarista, resposta 2c"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro grosso\" do site, como o búfalo e o elefante (2 a 3), no baixo da faixa: pele de gente, só que grossa . O nível fica fora da Absorção (decisoes-autor §16); 2, couro grosso, no baixo da faixa do búfalo"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça: o \"couro grosso\" do site, como o búfalo e o elefante (2 a 3), no baixo da faixa: pele de gente, só que grossa .; 2, couro grosso, no baixo da faixa do búfalo"
     },
     {
       "campo": "comportamento.social",

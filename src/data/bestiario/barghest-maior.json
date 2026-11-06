@@ -23,6 +23,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 8,
     "destreza": 4,
@@ -124,50 +125,75 @@
         "verdadeira"
       ],
       "classe": "livro",
+      "categoria": "inato",
       "ataque": "Garras",
       "regra": "empunhadura-dupla"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": [
-        "verdadeira"
-      ],
-      "classe": "sem regra ainda",
-      "efeito": "na mesma ação, além das duas garras, morde"
     },
     {
       "nome": "Mudar de forma",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 8",
       "duracao": "até ele voltar à forma verdadeira",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "vira um goblin ou um lobo enorme (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele",
+      "efeito": "vira um goblin ou um lobo enorme (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "arma enfeitiçada fere inteira",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a resistência da pele não vale contra arma encantada"
-    },
-    {
-      "nome": "truques sombrios",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "os do barghest (pisca entre as sombras, levita, confunde onde está, encanta, espalha desespero, salta para perto), e mais: fica invisível por um tempo e fortalece ou faz crescer os aliados por perto"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra arma encantada, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção. A arma enfeitiçada também fere incorpóreo sem a resistência a dano físico",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "devorar almas",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ao devorar o corpo de uma vítima inocente, cresce de forma permanente"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao consumir a alma de uma vítima inocente ao devorar seu corpo",
+      "duracao": "até gastar as cargas",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Cada alma elegível fornece uma carga uma única vez. Ao gastar uma carga, some +1d6 a uma jogada ou recupere 1d6 PV",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "até três cargas guardadas, sem custo de Energia"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": [
+        "verdadeira"
+      ],
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "truques sombrios",
+      "formas": "todas",
+      "texto": "os do barghest (pisca entre as sombras, levita, confunde onde está, encanta, espalha desespero, salta para perto), e mais: fica invisível por um tempo e fortalece ou faz crescer os aliados por perto. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "tirano da tribo",
       "formas": "todas",
@@ -309,12 +335,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele nova, mais grossa que a do barghest (1), como a do elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). A \"Pele Curtida Maior\" do site, pela linha Elementos, como a do barghest; o \"ainda mais\" do site vai na Couraça 2; resistência a Corte, Perfuração e Impacto, e Couraça 2 pelo \"ainda mais\""
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 2: a pele nova, mais grossa que a do barghest (1), como a do elefante (2 a 3) .; resistência a Corte, Perfuração e Impacto, e Couraça 2 pelo \"ainda mais\""
     },
     {
       "campo": "comportamento.atividade",
@@ -331,6 +353,18 @@
     {
       "campo": "formas.lobo",
       "motivo": "O lobo do molde (55 kg) levado aos 350 kg dele: × (350 ÷ 55)^(1/3) = 1,853 nas medidas e × 3,43 na área: 0,40 × 3,43 = 1,37 m², 5,5% abaixo do corte do Grande, fora da borda de 5% . Força, Vigor, PV e peso erguido ficam os da forma verdadeira, que tem a mesma massa"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.arma enfeitiçada fere inteira",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.devorar almas",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

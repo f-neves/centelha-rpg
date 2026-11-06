@@ -22,6 +22,7 @@
     "tamanhoEscolhido": "enorme"
   },
   "couraca": 7,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 10,
     "destreza": 3,
@@ -113,6 +114,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Salto de emboscada",
+      "categoria": "inato",
       "regra": "investida",
       "texto": "só ao sair da terra"
     },
@@ -121,18 +123,28 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
       "nome": "primeira rodada",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ao sair da terra, age antes na primeira rodada"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "fúria voraz",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "bate mais forte em quem já está ferido ou Caído"
     }
   ],

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 10,
     "destreza": 8,
@@ -125,14 +126,23 @@
     {
       "nome": "Atordoar com a corrente",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o golpe da corrente deixa a vítima zonza e incapaz de agir"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando o golpe indicado atinge",
+      "duracao": "até a próxima ação começar, com o adiamento de Atordoado",
+      "alcance": "o do golpe",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "O golpe da corrente atordoa com Margem 1 ou mais. Aplicar Atordoado do livro",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra 10 + 5 × Margem, até 40",
+      "limiteDeUso": "Quando o golpe indicado atinge com a Margem exigida, sem custo"
     },
     {
       "nome": "Ferida infernal",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Cauda",
+      "categoria": "inato",
       "ativacao": "o golpe da Cauda que fere",
       "duracao": "até alguém estancar",
       "alcance": "o da cauda",
@@ -140,19 +150,14 @@
       "efeito": "a ferida sangra sem parar; o alvo fica Sangrando",
       "dano": "o do golpe, e depois o do Sangrando",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "ferida difícil de estancar",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "estancar a ferida da cauda pede mais que o cuidado comum, e a cura comum não basta"
-    },
-    {
-      "nome": "corrente, mordida e cauda juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "golpeia com as três na mesma ação; por enquanto, um ataque por ação"
     },
     {
       "nome": "Aura de pavor",
@@ -161,40 +166,58 @@
       "tecnica": {
         "id": "irradiar-temor",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "aura sempre ativa",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o pavor emana dele o tempo todo, sem gasto, em quem se aproxima"
     },
     {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; as feridas se fecham, exceto as de arma ou Arte abençoada"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de arma ou Arte abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "ferida que não fecha",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o que arma ou Arte abençoada faz não se fecha pela regeneração"
-    },
-    {
-      "nome": "poderes infernais",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "anula magias do bem, lança bolas de fogo e relâmpagos, projeta ilusões e some para outro lugar à vontade; o site não dá Arte de base para nenhum"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "chifres imponentes, asas largas e a corrente farpada: um terror que se reconhece de longe"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: corrente farpada, mordida, cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "poderes infernais",
+      "formas": "todas",
+      "texto": "anula magias do bem, lança bolas de fogo e relâmpagos, projeta ilusões e some para outro lugar à vontade. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "comandante das legiões",
       "formas": "todas",
@@ -263,10 +286,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ferida infernal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.armas",
       "motivo": "A corrente \"com destreza mortal\" (site). O site não dava a Habilidade"
     },
@@ -276,7 +295,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: pele escamosa de diabo maior, entre o elefante (2 a 3) e o crocodilo (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16); 3, pelas escamas"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 3: pele escamosa de diabo maior, entre o elefante (2 a 3) e o crocodilo (4 a 5) .; 3, pelas escamas"
     },
     {
       "campo": "comportamento.dieta",

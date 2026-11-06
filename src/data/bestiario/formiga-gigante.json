@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 2,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 3,
     "destreza": 3,
@@ -115,23 +116,55 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Ferrão de gigante",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Ferrão",
+      "categoria": "substancia",
+      "ativacao": "Ferrão ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Ferrão de gigante. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "arrastar a presa",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Mandíbulas",
-      "efeito": "leva o que agarrou, até o Peso erguido"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "escalar",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "anda em parede e barranco com a mesma facilidade do chão"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando usa a adaptação descrita",
+      "duracao": "a jogada",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "anda em parede e barranco com a mesma facilidade do chão. A adaptação concede +1d6 na jogada de Escalada",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Sem custo. O uso ativo repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [],
@@ -225,6 +258,10 @@
     {
       "campo": "ataques.Ferrão",
       "motivo": "igual ao de hoje (1d6 − 2 + 3, média 4,5). Golpe rápido de ponta. A ponta longa da gigante fura couro . Veneno sem id no catálogo (abaixo). Opção (D-097)"
+    },
+    {
+      "campo": "habilidadesEspeciais.escalar",
+      "motivo": "R6. A adaptação corporal vale +1d6 na jogada."
     }
   ]
 }

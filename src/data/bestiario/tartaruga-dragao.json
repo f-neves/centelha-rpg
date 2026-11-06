@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 8,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 10,
     "destreza": 2,
@@ -39,11 +40,11 @@
     "atletismo": 2,
     "furtividade": 1,
     "integridade": 3,
-    "prontidao": 1
+    "prontidao": 1,
+    "atirador": 3
   },
   "habilidadesSec": {
     "natacao": 4,
-    "disparo": 3,
     "musculatura": 3
   },
   "especialidades": {
@@ -115,7 +116,7 @@
     {
       "nome": "Sopro de vapor",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -139,39 +140,65 @@
         "arte": "fogo",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "cone de 9 m, na superfície ou debaixo d'água",
-      "efeito": "o vapor fervente queima quem está na nuvem",
+      "efeito": "o vapor fervente queima quem está na nuvem. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "6d6 + Centelha, fogo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks (\"não pode repetir o sopro em sequência\", site)"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
       "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A ficha ataca com uma parte por ação; a Rajada repete golpes da mesma parte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: mordida, garra esquerda, garra direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Afunda embarcações",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "investe contra um barco ou navio para virá-lo, e leva tripulação e carga para o fundo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Firme contra o sono, a paralisia e o domínio da mente",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não pode ser posta para dormir nem paralisada, e efeito que domina a mente não a pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora sono imposto, paralisia e domínio. As demais famílias mentais, a conversa comum e o dano físico de Arte seguem suas regras",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -179,6 +206,11 @@
       "nome": "senhora dos mares",
       "formas": "todas",
       "texto": "chega por baixo sem ruído, sopra vapor sobre o convés, vira o barco e morde quem cai na água."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -246,10 +278,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro de vapor escaldante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.comprimento",
       "motivo": "Da ficha publicada : cabeça e pescoço de 2,2 m, casco de 3,1 m e cauda de 3,7 m"
     },
@@ -263,7 +291,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). O casco: acima da escama do dragão jovem (6) e abaixo dos adultos (9) (\"carapaça lendária\", site) . O nível fica fora da Absorção (decisoes-autor §16); nível 8"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). O casco: acima da escama do dragão jovem (6) e abaixo dos adultos (9) (\"carapaça lendária\", site) .; nível 8"
     },
     {
       "campo": "comportamento.atividade",
@@ -276,6 +304,10 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como a dos dragões. Golpe de boca: Força × 1. N2, a do branco jovem . Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Sopro de vapor escaldante",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
     },
     {
       "campo": "corpo",

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "bípede, de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 4,
     "destreza": 4,
@@ -96,19 +97,21 @@
         "arte": "fascinacao",
         "nivel": 2
       },
-      "ativacao": "uma ação tocando a flauta, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação tocando a flauta, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "uma cena, ou até parar de tocar; hostilidade rompe o encanto",
       "alcance": "18 m",
       "area": "ouvintes no alcance",
-      "efeito": "escolhe uma melodia: encanta e acalma, assusta deixando Abalado e fazendo fugir, ou embala até dormir; dano ou ser sacudido acorda quem dorme",
+      "efeito": "escolhe uma melodia: encanta e acalma, assusta deixando Abalado e fazendo fugir, ou embala até dormir; dano ou ser sacudido acorda quem dorme. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O sono leva a Dormindo, com Defesas 0. Qualquer dano acorda a vítima, assim como uma ação de Velocidade 5 de um aliado para sacudi-la",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Tocar Instrumento; quem passa não sofre o efeito",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Tocar Instrumento da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não sofre o efeito",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Passos ágeis",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -116,7 +119,7 @@
       "efeito": "recebe +1 na Esquiva",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -201,14 +204,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Flautas encantadas",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Passos ágeis",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Compleição física, sem treino de levantar peso"
     },
@@ -223,6 +218,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Flautas encantadas",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação tocando a flauta, Velocidade 6 -> uma ação tocando a flauta, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques.Cabeçada",

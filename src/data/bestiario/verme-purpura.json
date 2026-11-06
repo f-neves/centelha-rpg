@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta vista de lado"
   },
   "couraca": 5,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 13,
     "destreza": 2,
@@ -109,35 +110,83 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "mordida e ferrão juntos",
+      "nome": "Peçonha do verme púrpura",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "morde e pica com o ferrão da cauda na mesma ação"
+      "classe": "regra da ficha",
+      "ataque": "Ferrão de cauda",
+      "categoria": "substancia",
+      "ativacao": "Ferrão de cauda ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Peçonha de víbora (referência provisória do catálogo para Verme Púrpura). Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "engolir inteiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "engole o alvo menor que agarrou; preso dentro, ele leva dano a cada rodada até sair"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 15 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "3d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "mordida colossal",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a mordida passa por parte da Absorção pelo tamanho"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Este golpe ignora até 2 pontos de Absorção natural. A proteção de armadura vestida continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "emergir sob o alvo",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "escava por baixo e sai sob o alvo, agindo antes"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: mordida, ferrão da cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -155,7 +204,7 @@
     },
     {
       "nome": "cego",
-      "descricao": "não tem visão; o que voa ou flutua fora do tremor ele não percebe bem",
+      "descricao": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção",
       "formas": "todas"
     }
   ],
@@ -210,7 +259,7 @@
   "revisao": [
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a \"carapaça anelada\" do site, de anéis grossos . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 5: a \"carapaça anelada\" do site, de anéis grossos ."
     },
     {
       "campo": "ataques",

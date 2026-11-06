@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 7,
     "destreza": 5,
@@ -132,6 +133,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pinça",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -139,6 +141,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mandíbulas",
+      "categoria": "substancia",
       "ativacao": "uma ação, Velocidade 6, contra quem já está Agarrado na Pinça",
       "duracao": "até o alvo se soltar ou ele soltar",
       "alcance": "o do corpo a corpo",
@@ -146,13 +149,14 @@
       "efeito": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa",
       "dano": "nenhum",
       "resistencia": "corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2",
-      "limiteDeUso": "um alvo nos tentáculos por vez"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno"
     },
     {
       "nome": "Mandíbulas devoradoras",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mandíbulas",
+      "categoria": "inato",
       "ativacao": "a cada 6 Ticks em que segura a presa nos tentáculos",
       "duracao": "enquanto segura",
       "alcance": "o do corpo a corpo",
@@ -160,26 +164,50 @@
       "efeito": "crava as Mandíbulas sem nova jogada de ataque",
       "dano": "o das Mandíbulas",
       "resistencia": "nenhum; quem se solta para de sofrer",
-      "limiteDeUso": "um por presa nos tentáculos"
+      "limiteDeUso": "um por presa nos tentáculos. Sem custo"
     },
     {
       "nome": "Imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "veneno nenhum pega nele; a Resistência (venenos) +3 fica para o que o Mestre quiser rolar"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora o efeito do veneno que o atingiria. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "arrastar para o fundo",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Pinça",
-      "efeito": "arrasta o que agarrou para dentro da água, para afogar, até o Peso erguido. O mesmo \"puxar para a água\" do caranguejo-gigante do molde"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "paralisia dos tentáculos",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno dos tentáculos paralisa a presa que segura"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "quando o ataque descrito atinge a vítima",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o veneno dos tentáculos paralisa a presa que segura. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "pela regra do veneno da ficha",
+      "limiteDeUso": "A paralisia usa a dose já aplicada pelos Tentáculos paralisantes"
     }
   ],
   "comoLuta": [
@@ -249,14 +277,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Tentáculos paralisantes",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mandíbulas devoradoras",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 9; com 160 kg, ficaria muito acima do gorila (180 kg, Força 7) e da Força de referência da massa (6, manual 3.9). Desce para 7, a do gorila, pelo teste de ordem, como o caranguejo-gigante desceu de 9 para 7 (D-115); 7; o site tinha 9"
     },
@@ -274,7 +294,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). \"Blindado como um caranguejo gigante\" (site): o nível do caranguejo-gigante do molde (5) ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 5, o do caranguejo-gigante"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). \"Blindado como um caranguejo gigante\" (site): o nível do caranguejo-gigante do molde (5) ;; nível 5, o do caranguejo-gigante"
     },
     {
       "campo": "comportamento.social",
@@ -283,6 +303,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Tentáculos paralisantes",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.paralisia dos tentáculos",
+      "motivo": "R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "ataques",

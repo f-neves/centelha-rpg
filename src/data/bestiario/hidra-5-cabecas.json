@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de cima, os pescoços abertos"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 8,
     "destreza": 3,
@@ -93,41 +94,60 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Cinco mordidas",
-      "formas": "todas",
-      "classe": "livro",
-      "ataque": "Mordida",
-      "regra": "rajada"
-    },
-    {
-      "nome": "a quarta e a quinta cabeça",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "morde com uma cabeça por cabeça viva, na mesma ação; a Rajada leva só três golpes"
-    },
-    {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem natural; fecha as feridas, exceto o dano de fogo ou ácido"
+      "categoria": "inato",
+      "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "fogo e ácido param a regeneração",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração"
     },
     {
       "nome": "cabeças que rebrotam",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a cabeça cortada sem cauterizar o coto rebrota em duas"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A cabeça cortada rebrota em duas se o coto não for cauterizado em 6 Ticks. Mesmo com mais cabeças vivas, o Multiataque tem teto de 4 golpes",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "corpo descomunal",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "resiste a ser derrubada ou Abalada"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: primeira cabeça, segunda cabeça, terceira cabeça, quarta cabeça. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 4 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -206,7 +226,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: escamas de réptil, abaixo do crocodilo (5), mais finas nos pescoços . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 3: escamas de réptil, abaixo do crocodilo (5), mais finas nos pescoços ."
     },
     {
       "campo": "ataques",

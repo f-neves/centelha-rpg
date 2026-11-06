@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 3,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 11,
     "destreza": 1,
@@ -40,11 +41,11 @@
     "integridade": 5,
     "ocultismo": 4,
     "persuasao": 3,
-    "sociabilidade": 2
+    "sociabilidade": 2,
+    "atirador": 2
   },
   "habilidadesSec": {
     "intimidacao": 4,
-    "disparo": 2,
     "musculatura": 2
   },
   "especialidades": {
@@ -108,6 +109,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -115,27 +117,37 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "Engole inteiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Tentáculo",
-      "efeito": "traga a presa agarrada; dentro, o ácido a dilacera"
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 15 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "3d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Sopro ácido",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "substancia",
       "ativacao": "uma ação, Velocidade 7",
       "duracao": "o ácido segue queimando por 12 Ticks",
       "alcance": "cone de 9 m",
       "area": "o cone",
-      "efeito": "o ácido corrói quem não escapa",
+      "efeito": "o ácido corrói quem não escapa. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste; quem sofre metade não segue queimando",
-      "limiteDeUso": "uma vez a cada 18 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Golpe mental",
@@ -145,14 +157,15 @@
         "arte": "fascinacao",
         "nivel": 4
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "instantâneo",
       "alcance": "18 m",
       "area": "um alvo que pense (Inteligência 1 ou mais)",
       "efeito": "uma rajada psíquica fere a mente",
       "dano": "3d6, fenômeno",
-      "resistencia": "mente, contra Influência 6 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 18 mais a rolagem; quem passa leva metade",
-      "limiteDeUso": "três vezes por cena (\"algumas vezes por cena\", site)"
+      "resistencia": "Influência 6 + Intimidação 4 + 2 × o menor entre Centelha 6 e Intimidação 4 (8) = 18 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa leva metade",
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Esmagamento da mente",
@@ -162,27 +175,29 @@
         "arte": "fascinacao",
         "nivel": 5
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 7. O efeito sai no Tick do Golpe",
       "duracao": "até alguém o estabilizar",
       "alcance": "18 m",
       "area": "um alvo que pense",
       "efeito": "a mente do alvo desmorona: fica Inconsciente e Morrendo",
       "dano": "nenhum além do efeito",
-      "resistencia": "mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "a mesma jogada do Golpe mental da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica Abalado até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Poderes mentais",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6",
       "duracao": "a do efeito",
       "alcance": "18 m",
       "area": "a do efeito",
       "efeito": "à escolha: encanto (o efeito de Fascinação 3, Encanto), telecinese (o de Forças 3, Telecinese) ou teletransporte para um lugar que ele conhece (o de Conjuração 4)",
       "dano": "nenhum",
-      "resistencia": "mente, contra a jogada do Golpe mental, no encanto; nenhum nos outros",
-      "limiteDeUso": "à vontade"
+      "resistencia": "a jogada do Golpe mental, no encanto da criatura contra a Defesa Mental do alvo, com o Resistir do livro. nenhum nos outros",
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Levitação",
@@ -192,6 +207,7 @@
         "arte": "forcas",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -199,19 +215,49 @@
       "efeito": "voa sem esforço, na Batalha do deslocamento em terra (\"voa sem esforço\", site)",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
-      "nome": "Resistência à magia 26",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 3. Soma +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Casca contra armas comuns",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a pele absorve parte do golpe de arma comum, menos a de ferro frio"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra ferro frio, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Detectar magia",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "instantânea",
+      "alcance": "18 m",
+      "area": "o espaço percebido",
+      "efeito": "Percebe a presença e direção de magia. O rastro de um teleporte dura 6 Ticks e indica a direção, sem revelar o destino",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -219,12 +265,17 @@
       "nome": "terror das profundezas",
       "formas": "todas",
       "texto": "esmaga a mente do mais perigoso, sopra ácido nos que vêm juntos, prende com as línguas e engole; quando perde, some por teletransporte."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
     {
       "nome": "sentido cego",
-      "descricao": "percebe tudo em volta sem visão",
+      "descricao": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção",
       "formas": "todas"
     },
     {
@@ -280,26 +331,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro ácido",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Golpe mental",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Esmagamento da mente",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Poderes mentais",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Levitação",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 12, acima dos dragões adultos de 7 a 7,5 t, mais pesados (o verde, 10; o vermelho e o azul, 11). Desce para 11 pelo teste de ordem (manual, Passo 7), como o chuul, a capa-sombria, o estrangulador e o laçador: não fica acima de quem é maior, e não fica abaixo do froghemoth de 3 t (11), mais leve. Abaixo da Força de referência da massa (11,61, manual 3.9): verme sem membros, que bate com as línguas e não tem alavanca. Pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro); 11, pelo teste de ordem; o site tinha 12 (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro))"
     },
@@ -309,7 +340,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). \"Casca resistente\" (site) ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 3"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). \"Casca resistente\" (site) ;; nível 3"
     },
     {
       "campo": "comportamento.social",
@@ -318,6 +349,22 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Sopro ácido",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Golpe mental",
+      "motivo": "R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Esmagamento da mente",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 26 da fonte passa a grau 3 (+6)."
     },
     {
       "campo": "deslocamento",

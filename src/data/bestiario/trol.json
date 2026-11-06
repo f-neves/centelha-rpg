@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 4,
@@ -104,19 +105,15 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "as duas garras e a mordida na mesma rodada; o livro deixa vários golpes por ação só por Rajada, empunhadura dupla, Poder Especial ou Proeza, e não junta partes diferentes do corpo numa ação. A ficha fica com a Rajada das garras, e a Mordida é outra ação, como no xorn"
     },
     {
       "nome": "Dilacerar",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Garras",
+      "categoria": "inato",
       "ativacao": "a garra que acerta um alvo que já está Sangrando",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -124,25 +121,35 @@
       "efeito": "a garra abre mais a ferida que já sangra",
       "dano": "+1d6 no dano da garra",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "braços longos",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Garras",
-      "efeito": "os braços compridos alcançam 3 m e atacam sem precisar se aproximar; o livro não tem alcance de corpo a corpo maior pelo comprimento do braço, como no estrangulador"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A garra alcança até 3 m medidos da borda do corpo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem natural; fecha as feridas, exceto o dano de fogo ou ácido"
+      "categoria": "inato",
+      "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "fogo e ácido param a regeneração",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração, e a queimadura é o que o faz recuar. O livro não diz como um dano fica fora da cura nem por quanto tempo. O dano a mais do fogo e do ácido está em Elementos"
     },
     {
@@ -150,6 +157,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -157,7 +165,22 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "texto": "a tag Sangramento"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -248,12 +271,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Dilacerar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e borrachuda, como a do ogro (1) . O nível fica fora da Absorção (decisoes-autor §16). As fraquezas são as do site (Elementos); 1, pele grossa e borrachuda"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: pele grossa e borrachuda, como a do ogro (1) .; 1, pele grossa e borrachuda"
     },
     {
       "campo": "comportamento.social",

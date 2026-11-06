@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de cima"
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 10,
     "destreza": 3,
@@ -37,6 +38,7 @@
     "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 3,
+    "atirador": 2,
     "furtividade": 3,
     "integridade": 3,
     "prontidao": 3,
@@ -45,7 +47,6 @@
     "sobrevivencia": 3
   },
   "habilidadesSec": {
-    "disparo": 2,
     "escalada": 3,
     "musculatura": 3
   },
@@ -102,7 +103,7 @@
     {
       "nome": "Sopro elétrico",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -123,6 +124,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -134,20 +136,29 @@
         "nivel": 3
       },
       "ataque": "Sopro elétrico",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "18 m à frente",
       "area": "linha de 18 m",
-      "efeito": "um relâmpago sai da boca em linha reta",
+      "efeito": "um relâmpago sai da boca em linha reta. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, raio",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "engolir inteiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "engole o alvo que já está agarrado; preso dentro, ele leva dano a cada rodada"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -155,6 +166,11 @@
       "nome": "emboscada",
       "formas": "todas",
       "texto": "espera em passagem estreita, enrosca o corpo na presa para esmagar e cospe raio em quem tenta fugir; disputa covil com dragões azuis e nunca cede terreno."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -224,16 +240,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro elétrico",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "campo": "ataques.Sopro elétrico",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; poder natural com a base e os usos do site (Raio 3, a cada 24 Ticks) e números da ficha (D-197): o Relâmpago do livro dá 2d6"
     },
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +11 perfurante\", 7 Ticks, dano médio 21,5). A ficha fica com a mordida, Média, pelo gesto; a D-241 levou a Pesado de 2 dados só cinco planares. Dano médio: 21,5 antes; depois, mordida 14,5, sopro 8,0"
-    },
-    {
-      "campo": "ataques.Sopro elétrico",
-      "motivo": "poder natural com a base e os usos do site (Raio 3, a cada 24 Ticks) e números da ficha (D-197): o Relâmpago do livro dá 2d6"
     }
   ]
 }

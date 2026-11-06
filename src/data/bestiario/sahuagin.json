@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 4,
     "destreza": 3,
@@ -112,19 +113,21 @@
       "nome": "Fúria sanguinária",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "ao ser ferido em combate (1 de dano ou mais depois da Absorção), se quiser",
       "duracao": "até o fim da luta",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Enfurecido (+2 no ataque, −2 nas Defesas; ataca o mais perto, não recua) e soma +1 na Força, com o dano que vem dela",
+      "efeito": "Fica Enfurecido pelo Frenesi. +2 nas ações físicas exceto tiro, −2 em Esquiva e Bloqueio, só ações físicas. Não pode ser convencido. Mantém +1 na Força, inclusive no dano. Sofre as penalidades de ferimento",
       "dano": "+1 por golpe, da Força",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "uma vez por cena. Sem custo"
     },
     {
       "nome": "Fala com tubarões",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6",
       "duracao": "até o fim da cena",
       "alcance": "50 m, debaixo d'água",
@@ -132,20 +135,21 @@
       "efeito": "fala com eles em ideias simples, pela mente, e eles o tratam como parente e seguem ordens simples",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "até 6 tubarões por vez"
+      "limiteDeUso": "até 6 tubarões por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Cegueira pela luz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "luz forte (sol fora d'água, Arte de Luz, lanterna de perto)",
-      "duracao": "enquanto estiver na luz forte",
+      "duracao": "enquanto durar a exposição",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Ofuscado",
+      "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -220,20 +224,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Fúria sanguinária",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Fala com tubarões",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cegueira pela luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escamas de peixe, finas e duras: nível 1; nível 1 pelas escamas"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escamas de peixe, finas e duras: nível 1; nível 1 pelas escamas"
     },
     {
       "campo": "comportamento.social",

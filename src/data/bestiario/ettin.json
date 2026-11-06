@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 8,
     "destreza": 2,
@@ -89,26 +90,29 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
       "nome": "Vigilância dupla",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "as duas cabeças vigiam: nunca fica Surpreso, e quem o flanqueia ou o embosca não ganha o bônus por isso",
+      "efeito": "As duas cabeças vigiam lados opostos. Ignora o −2 de Flanqueado. A vigilância também impede que fique Surpreso. Tamanho continua valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -190,16 +194,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Vigilância dupla",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.largura",
       "motivo": "O corpo de base (D-192, manual 4.2) escalado pela altura (4,0 ÷ 1,80 = × 2,222), com os ombros 25% mais largos para os dois pescoços: 0,45 × 2,222 × 1,25 = 1,25 m; 0,23 × 2,222 = 0,51 m; 25% mais largo pelos dois pescoços, leitura da ficha"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro calejado\" do site, como o couro grosso do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 2, couro calejado"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça: o \"couro calejado\" do site, como o couro grosso do gigante da colina (2) .; 2, couro calejado"
     },
     {
       "campo": "comportamento.atividade",

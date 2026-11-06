@@ -21,6 +21,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 5,
     "destreza": 3,
@@ -133,14 +134,23 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Investida de focinho",
+      "categoria": "inato",
       "regra": "investida"
     },
     {
       "nome": "jogar a presa para fora da água",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Investida de focinho",
-      "efeito": "arremessa a presa pequena para fora da água"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],

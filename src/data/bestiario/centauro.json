@@ -19,6 +19,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 4,
@@ -107,11 +108,12 @@
       "nome": "Ataque duplo",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
       "area": "um alvo, ou dois, um na frente e um atrás",
-      "efeito": "um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro)",
+      "efeito": "um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro). Quando combina arma empunhada e parte do corpo, usa o custo e as penalidades da empunhadura dupla",
       "dano": "o de cada golpe",
       "resistencia": "nenhum",
       "limiteDeUso": "a cada ação"
@@ -120,12 +122,14 @@
       "nome": "Investida",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "investida"
     },
     {
       "nome": "Armas de porte humano",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "usa as armas do livro feitas para gente, sem perda"
     }
   ],
@@ -203,10 +207,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Ataque duplo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "atributos.forca",
       "motivo": "Acima de 6 pela física (D-143): o corpo de cavalo de 900 kg empurra e coiceia como o cavalo do molde (Força 7, com 500 kg), e não fica abaixo dele; abaixo da Força de referência da massa (8,48). O site tinha 5 (a For 15 do Pathfinder, a dos braços); 7 e 6, pelo cavalo do molde; o site tinha 5 e 5"

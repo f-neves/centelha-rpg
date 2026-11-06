@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 4,
     "destreza": 3,
@@ -125,17 +126,10 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Multiataque aquático",
-      "formas": "todas",
-      "classe": "livro",
-      "ataque": "Garras",
-      "regra": "empunhadura-dupla",
-      "texto": "só sem a lança"
-    },
-    {
       "nome": "Anfíbio",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -143,7 +137,21 @@
       "efeito": "respira ar e água igualmente bem",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Na água e sem a lança, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -224,16 +232,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Anfíbio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "aparencia",
       "motivo": "Degrau 3, \"Muito feio\": a \"criatura hedionda\" do site. A Aparência mede a beleza (D-205). O site tinha 4; 3 pela D-205; o site tinha 4"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escamas de peixe: nível 1 . A \"Resistência ao frio\" do site vai em Elementos; nível 1 pelas escamas"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escamas de peixe: nível 1 . A \"Resistência ao frio\" do site vai em Elementos; nível 1 pelas escamas"
     },
     {
       "campo": "comportamento.social",

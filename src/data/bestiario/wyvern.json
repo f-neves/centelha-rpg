@@ -28,6 +28,7 @@
     "linhaPVMotivo": "voador de cauda fina"
   },
   "couraca": 3,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 6,
     "destreza": 3,
@@ -153,10 +154,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enorme: de baixo, asas abertas. Grande: de lado, pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "garras em sequência",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -164,19 +180,29 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "voar com a presa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "agarra alvo pequeno com as patas e o leva no ar (site, \"Garras que prendem\")"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Ferrão venenoso",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Ferrão",
+      "categoria": "substancia",
       "ativacao": "o Ferrão que fere (1 de dano ou mais depois da Absorção)",
       "duracao": "a do veneno",
       "alcance": "o do corpo a corpo",
@@ -184,12 +210,13 @@
       "efeito": "inocula a Peçonha de wyvern (Veneno e doença)",
       "dano": "o do Ferrão",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "três vezes por cena; recarrega em 1 hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Voo em mergulho",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "descer de pelo menos 6 m de altura direto sobre o alvo",
       "duracao": "instantânea",
       "alcance": "o do voo",
@@ -197,7 +224,7 @@
       "efeito": "+2 na Iniciativa do mergulho e o golpe sai com as Garras em mergulho",
       "dano": "o das Garras em mergulho",
       "resistencia": "nenhum",
-      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m. Os números do Voo em mergulho do branco jovem"
+      "limiteDeUso": "um mergulho a cada vez que sobe de novo a 6 m. Os números do Voo em mergulho do branco jovem. Sem custo"
     }
   ],
   "comoLuta": [
@@ -277,14 +304,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ferrão venenoso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Voo em mergulho",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "Corpo de ave de rapina grande escalado: em pé sobre as patas, com o pescoço erguido"
     },
@@ -298,11 +317,15 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couro de escama de fera alada, abaixo do branco jovem (6) e do crocodilo; o site não dá escama . O nível fica fora da Absorção (decisoes-autor §16); nível 3"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couro de escama de fera alada, abaixo do branco jovem (6) e do crocodilo; o site não dá escama .; nível 3"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Ferrão venenoso",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "corpo.area",

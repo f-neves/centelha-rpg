@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 4,
     "destreza": 5,
@@ -38,11 +39,11 @@
     "furtividade": 3,
     "prontidao": 2,
     "integridade": 3,
-    "sobrevivencia": 3
+    "sobrevivencia": 3,
+    "atirador": 2
   },
   "habilidadesSec": {
     "escalada": 3,
-    "disparo": 2,
     "adestramento": 2,
     "musculatura": 1
   },
@@ -125,32 +126,50 @@
       "nome": "teia",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; dispara pelas fieiras com Vigor + Disparo",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6; dispara pelas fieiras com o maior entre Vigor, Destreza e Percepção + Atirador",
       "duracao": "até o alvo se soltar",
       "alcance": "6 m",
       "area": "um alvo",
       "efeito": "o acerto deixa Preso pela Rede do livro; a teia serve para prender, não para sustentar a aranha",
       "dano": "nenhum",
       "resistencia": "nenhum teste adicional; para sair, a regra da Rede contra o total do disparo",
-      "limiteDeUso": "três vezes por cena, recarga de uma hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 1 hora. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Mordida venenosa",
       "formas": "todas",
-      "classe": "livro",
+      "classe": "regra da ficha",
       "ataque": "Mordida",
-      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
+      "categoria": "substancia",
+      "ativacao": "Mordida ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Peçonha de aranha gigante. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "Mestre de armadilhas",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "arma armadilhas de teia (fossos cobertos, laços, lanças escondidas) só com tempo e paciência, sem ferramenta"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "10 minutos e uma dose de teia",
+      "duracao": "até o gatilho ou desarme",
+      "alcance": "toque",
+      "area": "até 3 m de passagem",
+      "efeito": "Antes de armar, marque a área e o gatilho de contato. A primeira criatura que toca os fios fica Presa pela Rede. Para achar ou desarmar a armadilha, supere o total da construção",
+      "dano": "nenhum",
+      "resistencia": "pela Rede do livro",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Empatia com aranhas",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "fala com aranhas e manda nas aranhas gigantes, que lhe servem de sentinela e de guarda do covil"
     }
   ],
@@ -159,6 +178,11 @@
       "nome": "tecelão das copas",
       "formas": "todas",
       "texto": "espera nas copas, deixa a presa cair no fosso ou no laço, prende de longe com a teia, desce e morde; as aranhas que ele cria fecham o caminho."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -219,16 +243,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.teia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "As foices de quitina aparam às vezes (D-100, D-110); 1, pelas foices; o site não gravava Bloqueio"
-    },
-    {
-      "campo": "habilidadesSec.disparo",
-      "motivo": "A teia arremessada: \"Serve para qualquer disparo corporal (teia...)\" (decisoes-autor §14); um abaixo da aranha-gigante do molde (3); 2, 2 e 1"
     },
     {
       "campo": "habilidadesSec.adestramento",
@@ -240,7 +256,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couro grosso e peludo, quitina nas mãos e no rosto ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couro grosso e peludo, quitina nas mãos e no rosto ;; nível 1"
     },
     {
       "campo": "comportamento.atividade",
@@ -253,6 +269,10 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.teia",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
     },
     {
       "campo": "ataques",

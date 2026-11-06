@@ -19,6 +19,7 @@
     "posturaDoTamanho": "vista de cima, pernas abertas"
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 6,
     "destreza": 5,
@@ -35,6 +36,7 @@
     "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 2,
+    "atirador": 2,
     "furtividade": 3,
     "integridade": 3,
     "prontidao": 1,
@@ -43,7 +45,6 @@
     "sobrevivencia": 3
   },
   "habilidadesSec": {
-    "disparo": 2,
     "escalada": 3,
     "musculatura": 2
   },
@@ -92,40 +93,54 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Salto etéreo",
+      "nome": "Peçonha da aranha das fases",
       "formas": "todas",
       "classe": "regra da ficha",
-      "base": {
-        "arte": "espirito",
-        "nivel": 2
-      },
-      "ativacao": "uma ação, Velocidade 5",
-      "duracao": "instantânea",
-      "alcance": "até 9 m",
-      "area": "o próprio corpo",
-      "efeito": "some deste mundo e reaparece no outro ponto, sem passar pelo meio e sem dar chance de ataque a quem estava perto",
-      "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "ataque": "Mordida",
+      "categoria": "substancia",
+      "ativacao": "Mordida ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Peçonha de aranha gigante (referência provisória do catálogo para Aranha das Fases). Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
+    },
+    {
+      "nome": "Salto etéreo",
+      "formas": "todas",
+      "classe": "sem regra ainda",
+      "categoria": "magia",
+      "efeito": "Aguarda o lore dos planos"
     },
     {
       "nome": "fio de teia",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6, dispara pelas fieiras com Vigor + Disparo",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6, dispara pelas fieiras com o maior entre Vigor, Destreza e Percepção + Atirador",
       "duracao": "até o alvo se soltar",
       "alcance": "até 6 m",
       "area": "um alvo",
       "efeito": "o acerto prende pela teia, pelo Preso da Rede do livro",
       "dano": "nenhum",
       "resistencia": "nenhum teste adicional; para se soltar, usa a regra da Rede contra o total do disparo",
-      "limiteDeUso": "três vezes por cena, recarga de uma hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 1 hora. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "arrastar para o véu",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "leva a presa envenenada para o lado etéreo, longe de qualquer resgate"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. O trecho etéreo aguarda o lore dos planos",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -133,6 +148,11 @@
       "nome": "emboscada etérea",
       "formas": "todas",
       "texto": "surge do véu sem aviso, morde e some de novo; gravemente ferida, foge para o véu na hora."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -200,11 +220,11 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Salto etéreo",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com a base e os usos do site (Espírito 2, à vontade) e números da ficha (D-197); o alcance de 9 m é o do site"
+      "motivo": "R3. Ativação uma ação, Velocidade 5 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder.; poder natural com a base e os usos do site (Espírito 2, à vontade) e números da ficha (D-197); o alcance de 9 m é o do site"
     },
     {
       "campo": "habilidadesEspeciais.fio de teia",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
     },
     {
       "campo": "ataques",

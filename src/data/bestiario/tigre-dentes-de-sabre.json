@@ -20,6 +20,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 8,
     "destreza": 3,
@@ -120,6 +121,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "os antebraços seguram a presa"
     },
@@ -127,6 +129,7 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     }
   ],

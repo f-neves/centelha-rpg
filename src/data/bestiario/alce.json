@@ -20,6 +20,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -151,10 +152,22 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+    {
+      "nome": "Pisar num alvo",
+      "formas": "todas",
+      "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Coice (pata dianteira)."
+    },
+    {
+      "nome": "Atropelar",
+      "formas": "todas",
+      "texto": "Corre sobre os alvos do trajeto. Resolva a ação e o dano pelo Atropelar do livro."
+    }
+  ],
   "sentidos": [
     {
       "nome": "faro",

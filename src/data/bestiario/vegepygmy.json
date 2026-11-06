@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de pé"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 2,
     "destreza": 4,
@@ -87,13 +88,22 @@
     {
       "nome": "Corpo vegetal",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não possui órgãos vitais animais e não sofre doenças ou envenenamento"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora doença e veneno. Sem órgãos vitais animais, um golpe nessas partes não recebe dano extra por ponto vital. Surpresa e Tamanho continuam valendo. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Casca resistente",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "a pele fibrosa amortece cortes e impactos"
     }
   ],

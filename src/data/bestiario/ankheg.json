@@ -19,6 +19,7 @@
     "posturaDoTamanho": "vista de cima"
   },
   "couraca": 3,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 6,
     "destreza": 2,
@@ -35,6 +36,7 @@
     "bloqueio": 0,
     "esquiva": 0,
     "atletismo": 2,
+    "atirador": 2,
     "furtividade": 2,
     "integridade": 2,
     "prontidao": 1,
@@ -43,7 +45,6 @@
     "sobrevivencia": 3
   },
   "habilidadesSec": {
-    "disparo": 2,
     "musculatura": 4
   },
   "especialidades": {},
@@ -91,7 +92,7 @@
     {
       "nome": "Cuspe ácido",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -112,6 +113,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mandíbulas",
+      "categoria": "substancia",
       "ativacao": "as Mandíbulas que acertam",
       "duracao": "instantânea",
       "alcance": "o das mandíbulas",
@@ -119,34 +121,44 @@
       "efeito": "as mandíbulas injetam ácido a cada mordida",
       "dano": "+1d6 de ácido, somado ao do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "prensa",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mandíbulas",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "arrastar para o túnel",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "leva o que agarrou para dentro da terra, até o Peso erguido"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Cuspe ácido",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Cuspe ácido",
+      "categoria": "substancia",
       "ativacao": "uma ação, Velocidade 7",
       "duracao": "instantânea",
       "alcance": "9 m à frente",
       "area": "linha de 9 m",
-      "efeito": "um jato de ácido em linha reta",
+      "efeito": "um jato de ácido em linha reta. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, ácido",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o cuspe não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     }
   ],
   "comoLuta": [
@@ -154,6 +166,11 @@
       "nome": "emboscada de baixo",
       "formas": "todas",
       "texto": "espera sob a terra solta, sente o passo da presa, sai, prende e recua para o túnel antes que alguém a socorra."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -218,19 +235,15 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Mordida ácida",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     },
     {
-      "campo": "habilidadesEspeciais.Cuspe ácido",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "campo": "ataques.Cuspe ácido",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     },
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +8 perfurante\", 6 Ticks, dano médio 15). A ficha fica com as mandíbulas, Médias, e o ácido vai na Mordida ácida. Dano médio: 15 antes; depois, mandíbulas 11,5, mais 1d6 de ácido (média 3,5): 15 com o ácido, sem mudança; cuspe 9,0"
-    },
-    {
-      "campo": "ataques.Cuspe ácido",
-      "motivo": "números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     }
   ]
 }

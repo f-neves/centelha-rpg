@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 2,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 11,
     "destreza": 3,
@@ -148,6 +149,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -155,6 +157,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -162,6 +165,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "aperta a presa com o corpo"
     },
@@ -170,46 +174,65 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Língua",
+      "categoria": "inato",
       "ativacao": "uma ação, o ataque de Língua com Briga",
       "duracao": "até a presa se soltar",
       "alcance": "três vezes o alcance normal do corpo a corpo",
       "area": "um alvo",
-      "efeito": "agarra o que acertar; se bloqueado, agarra o que bloqueou, seguindo o Agarrar do livro",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "nenhum",
-      "resistencia": "a Defesa contra o ataque; quem evita não é agarrado",
-      "limiteDeUso": "um alvo por vez"
+      "resistencia": "pela manobra Agarrar",
+      "limiteDeUso": "um alvo por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "puxão",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Língua",
-      "efeito": "puxa o preso pela língua até a boca, até o Peso erguido. O mesmo puxão da rã-gigante do molde"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Engole inteiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Bocada",
-      "efeito": "traga inteira a presa agarrada que cabe na boca; dentro, ela é esmagada e digerida até morrer ou abrir caminho para fora cortando"
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Visão total",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "não fica Flanqueado (`condicoes.json`): os três olhos no pedúnculo veem em todas as direções",
+      "efeito": "Os três olhos vigiam todas as direções. Ignora o −2 de Flanqueado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Absorção contra choques",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "levar dano de raio que passe da resistência (Elementos)",
       "duracao": "até o fim da próxima ação dela",
       "alcance": "o próprio corpo",
@@ -217,7 +240,7 @@
       "efeito": "fica Retardada (`condicoes.json`: as ações custam 2 Ticks a mais): o choque a deixa lenta e desajeitada",
       "dano": "nenhum além do raio",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por choque"
+      "limiteDeUso": "uma vez por choque. Sem custo"
     }
   ],
   "comoLuta": [
@@ -298,18 +321,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.língua",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Visão total",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Absorção contra choques",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "A rã-gigante do molde (0,31 m sentada) × 4,13 = 1,28 m; o pedúnculo levanta os olhos mais 1,0 m"
     },
@@ -323,7 +334,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couro grosso e borrachudo ; o nível fica na ficha e não entra na conta (decisoes-autor §16). A resistência a raio vem de Elementos; nível 2"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couro grosso e borrachudo ;; nível 2"
     },
     {
       "campo": "comportamento.social",
