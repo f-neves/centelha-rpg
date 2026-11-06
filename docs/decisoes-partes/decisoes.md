@@ -4274,6 +4274,18 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026.
 - Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
 
+### D-355 · L20: Investida e Atropelar são ataques diferentes; as 13 fichas retidas ganham o Atropelar e mantêm a Investida da fonte; o gigante do gelo fica como a Bestiarista fez [tags: bestiario, investida, atropelar, pisoteio, r40, d-269, d-319, gigante-do-gelo, imunidade, bestiarista]
+- Data: 2026-11-06
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "L20. Investida e Atropelar nas 13 fichas retidas (06/11/2026, DECIDIDA)":
+    - Resposta do autor: são ataques diferentes. Investida é o ataque em um alvo; Atropelar é o ataque em linha (R40). As 13 (auroque, besouro-veado-gigante, bisão, boi, braquiossauro, cavalo, elefante, estegossauro, mamute, mastodonte, pônei, rinoceronte, tricerátops) ganham o Atropelar, e quem tinha Investida própria na fonte (elefante, rinoceronte, auroque, bisão, boi, tricerátops e o que mais a fonte trouxer) mantém a Investida. O teste da D-269 passa a contar o número novo.
+    - Gigante do gelo: segue o item 116 (imunidade ao frio do clima, não ao dano de gelo); o autor não vetou.
+- Também do autor (mensagem de 06/11/2026): "A Bestiarista refaz as 13 num lote novo; quando o lote chegar, a Executora faz a entrada delas como na etapa c), e o teste da D-269 passa a contar o número novo." E: "O texto 'o gelo não o fere' da seção 'No jogo' (...) vai para ela corrigir."
+- Fora do livro: as 13 seguem retidas, com o JSON publicado intacto, até o lote novo da Bestiarista (lista dela em `../tmp/arquiteto/bestiarista-entrada-r35-06-11.md`). O mephit com "Ataque: 0d6" na mesa fica na lista do Grid (D-054), pelo parecer da Revisora de que não segura a ficha.
+- Muda: completa a D-319 (R40) e a D-269 (a contagem de Investidas do teste muda com o lote novo).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026.
+- Estado: **a implementar** pelo lote novo da Bestiarista e pela entrada da Executora.
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
