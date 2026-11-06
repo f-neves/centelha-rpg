@@ -20,7 +20,10 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { lerFichaMd, campo, negritos, numBR, semMarcas, slug } from './lib-ficha-md.mjs';
-import { converterFicha } from './conversor-criatura.mjs';
+import { converterFicha, converterFichaAnteriorR03 } from './conversor-criatura.mjs';
+// A pasta pode misturar fichas de antes e de depois da categoria dos poderes (R1): a que escreve "categoria:" nas
+// Manobras passa pelo contrato novo, e a outra pela releitura anterior, como a leitura do validate faz com os JSON.
+const converterDaFicha = (texto, opcoes) => (/ · categoria: /.test(texto) ? converterFicha : converterFichaAnteriorR03)(texto, opcoes);
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const PASTA = path.resolve(process.argv[2] || path.join(RAIZ, '..', 'tmp', 'arquiteto', 'bestiario', 'fichas-v3'));
@@ -133,7 +136,7 @@ let comParada = 0;
 for (const a of arquivos) {
   const id = a.slice(0, -3), buf = fs.readFileSync(path.join(PASTA, a)), texto = buf.toString('utf8');
   const sp = path.join(SITE, `${id}.json`);
-  const conv = converterFicha(texto, { site: fs.existsSync(sp) ? JSON.parse(fs.readFileSync(sp, 'utf8')) : null });
+  const conv = converterDaFicha(texto, { site: fs.existsSync(sp) ? JSON.parse(fs.readFileSync(sp, 'utf8')) : null });
   const { esperado, ficha, formas, nao } = lerEsperado(texto);
   const o = { sha256: crypto.createHash('sha256').update(buf).digest('hex'), entrada: escolhe(conv.criatura, CHAVES_MOTOR), esperado };
   if (Object.keys(ficha).length) o.ficha = ficha;
@@ -148,7 +151,7 @@ for (const a of arquivos) {
   criaturas[id] = o;
 }
 const saida = {
-  fonte: { pasta: 'tmp/arquiteto/bestiario/fichas-v3', data: new Date().toLocaleDateString('sv-SE'), fichas: arquivos.length, gerador: 'scripts/gen-criaturas-esperado.mjs' },
+  fonte: { pasta: path.relative(path.join(RAIZ, '..'), PASTA).replaceAll(path.sep, '/'), data: new Date().toLocaleDateString('sv-SE'), fichas: arquivos.length, gerador: 'scripts/gen-criaturas-esperado.mjs' },
   criaturas,
 };
 fs.mkdirSync(path.dirname(SAIDA), { recursive: true });
