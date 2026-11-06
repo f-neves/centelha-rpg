@@ -2683,9 +2683,9 @@
         "arte": {
           "nota": "A Arte na D-082 e na D-084 (rodada 4c): sai no Tick do Golpe, o penúltimo (Velocidade − 1), com 1 Tick de Recuperação, que cobra −2 como a de qualquer ataque. A Velocidade vem do maior grau investido na conjuração (feiticoTicks). O motor do Grid segue em combate.pgr.preparo.arte e combate.pgr.arte, congelados pela D-054 (N22).",
           "graus": [
-            { "id": "arte-0-3", "nome": "Arte, graus 0 a 3", "velocidade": 5, "preparo": 3, "golpe": 1, "recuperacao": 1 },
-            { "id": "arte-4", "nome": "Arte, grau 4", "velocidade": 6, "preparo": 4, "golpe": 1, "recuperacao": 1 },
-            { "id": "arte-5-6", "nome": "Arte, graus 5 e 6", "velocidade": 7, "preparo": 5, "golpe": 1, "recuperacao": 1 }
+            { "id": "arte-0-3", "nome": "Arte, níveis 0 a 3", "velocidade": 5, "preparo": 3, "golpe": 1, "recuperacao": 1 },
+            { "id": "arte-4", "nome": "Arte, nível 4", "velocidade": 6, "preparo": 4, "golpe": 1, "recuperacao": 1 },
+            { "id": "arte-5-6", "nome": "Arte, níveis 5 e 6", "velocidade": 7, "preparo": 5, "golpe": 1, "recuperacao": 1 }
           ],
           "esticar": {
             "nota": "Esticar soma a Velocidade outra vez (T = n × V, n de 1 a 4). O Golpe do ciclo n cai no Tick n × V − 1 (V5: 4, 9, 14, 19); só o ciclo final leva Recuperação; o Tick em que se decide esticar ainda é Preparo (−2), e só o Tick em que a Arte sai é Golpe (−4). Custo total 2 × T + 2, o mesmo do Normal. O sinal dura T − 1 Ticks.",

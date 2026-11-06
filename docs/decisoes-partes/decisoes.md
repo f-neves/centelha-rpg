@@ -1508,6 +1508,7 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 - Origem: conversa do autor, 04/10/2026
 - Estado: em vigor. Vale na rodada 10: so a troca das Tecnicas da D-047; os demais pontos sobre as fichas (totais de XP, Bram em 1401, contagens) sao pulados e anotados. Pendencia "revisar as fichas de exemplo ao fim" no Pendencias.md (pasta docs/pendencias).
 - Item 134 de `99-sem-decisao.md` (05/11/2026): o exemplo de Bram fica congelado até o recálculo do orçamento (R54, pendência D19).
+- Teto do Veil (06/11/2026, D-352): a nota "o teto de criação é Centelha 3" (`criacao-de-personagem.md`, Veil) contradiz a D-055, e fica como está até o fim da revisão, por esta decisão.
 
 ### Respostas do autor às 12 dúvidas do veterana-1e (04/10/2026)
 
@@ -3731,6 +3732,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 09, sopro e área).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - **Dano mudado pela D-340** (R40c, 05/11/2026): sai "o golpe da ficha ou, para quem não tem, o do Encontrão", que era erro de redação de Claude; entra o dano próprio do atropelamento.
+- **Corrigida pela D-352** (06/11/2026): "do terceiro Tick em diante" foi erro de redação de Claude; o autor disse "depois do terceiro": os Ticks 1 a 3 são Preparação, e o primeiro Golpe é o quarto. Contra quem não se defende, a Margem é contra 0.
 
 ### D-320 · R41: Depois da área: nada de dano que fica, a não ser que o efeito diga; o Mestre decide as consequências [tags: combate, area, sopro, mestre, d-087]
 - Data: 2026-11-05
@@ -3837,6 +3839,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído. A suposição de Claude fica registrada como está, acima.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (temas 02, 03, 06 e 15).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+- **Completada pela D-352** (L14 e L14a, 06/11/2026): *Consertar equipamento* (o nível exigido, abaixo do nível e quanto tempo); Integridade e Reparar são réguas diferentes.
 
 ### D-331 · R52: Relações iniciais do Humano: vale o capítulo de Raças [tags: racas, humano, relacoes-sociais, dados]
 - Data: 2026-11-05
@@ -4022,6 +4025,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - Redação de 05/11/2026 (ordem do autor, depois da Revisora): "o cuidado simples não basta" passa a "o Estabilizar comum não basta", sem mudar o sentido: o Estabilizar comum não para a ferida do anticoagulante, e é preciso o teste de Raciocínio + Cura.
+- **Corrigida pela D-352** (06/11/2026): "o Estabilizar comum não basta" foi erro de redação de Claude; o livro diz que só o Raciocínio + Cura estanca, e que o Vigor + Resistência de quem sangra e a cura de PV não.
 
 ### D-344 · Itens editoriais separados pelo Arquiteto: 003, o catálogo de armas e o exemplo de Bram [tags: livro, peso-erguido, catalogo, armas, bram, d-053, d-267]
 - Data: 2026-11-05
@@ -4194,6 +4198,53 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/leitora/leitura-combate-resistir-armas.md` (lida em `bc3cfd28`).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-leitora-6`, publicada em `f41ab729`).
 - Completada em 05/11/2026 (branch `regras-leitora-7`): C-COMB-1, o dano do exemplo da Sora soma a Centelha (a fórmula do livro, *Dano e Armadura*); C-COMB-5, o ciclo de 7 Ticks da dupla é do P/G/R, e no Normal a dupla tem a mesma Velocidade (D-083); C-RES-3, a remissão do toque aponta o +4 da dose dobrada, que é o que a Circunstância abaixo tem.
+
+### D-352 · L13 a L15 e as respostas de 05/11 (17:41): merge no fim, lotes pelo acumulado, Caído e equilíbrio, anticoagulante, Atropelar, Derrubar sem matar, consertar equipamento [tags: merge, lotes, validacao, combate, caido, equilibrio, anticoagulante, atropelar, derrubar, integridade, reparar, conserto, oficios, veil, recompor, leitora, d-053, d-303, d-319, d-330, d-343, d-345, d-351]
+- Data: 2026-11-06
+- Decisão (autor; seções "L13. Merge da validação de categoria (05/11/2026, DECIDIDA)", "Respostas aplicadas sem pergunta às perguntas do Arquiteto de 05/11 (17:41)", "L14. Consertar equipamento (06/11/2026, DECIDIDA; Integridade contra Reparar)" (com a L14a) e "L15. Descrição do comando /arquiteto (06/11/2026, DECIDIDA)" de `DECISOES-AUTOR.md`, copiadas como estão):
+  - "L13. Merge da validação de categoria (05/11/2026, DECIDIDA)":
+    - Resposta do autor: terminar tudo antes; o merge vem no fim, de uma vez. A entrada dos lotes segue na branch da Executora.
+  - "Respostas aplicadas sem pergunta às perguntas do Arquiteto de 05/11 (17:41)":
+    - Lotes: entram direto pelo r35-r54 (acumulado), mais as fontes fora dele.
+    - Visão verdadeira sempre ativa: a validação ignora a menção à Técnica do livro.
+    - Pulso do enxame: segue a R33 (D-312); a validação aceita.
+    - Números de uso: a validação cobra também da classe "sem regra ainda" (R1), como aviso até a Bestiarista preencher.
+    - Teto do Veil: fica até o fim da revisão (D-053), com uma linha no registro.
+    - Técnica "Recompor-se": ganha a frase de que não é o Recompor do Abalado (D-303); sem renomear.
+    - Caído e "sem equilíbrio": mesma família (equilíbrio do corpo), não somam (L1).
+    - Anticoagulante: erro de redação de Claude na P8; as outras saídas (o Vigor + Resistência de quem sangra, cura de PV) não estancam; só o teste de Raciocínio + Cura.
+    - Atropelar: erro de redação de Claude; o primeiro Golpe é o quarto Tick ("depois do terceiro"); contra quem não se defende, a Margem é contra 0.
+    - "Derrubar sem matar": ganha "(não é a Manobra)"; a arma de corte usada de lado fere de Impacto.
+  - "L14. Consertar equipamento (06/11/2026, DECIDIDA; Integridade contra Reparar)":
+    - Respostas do autor: as réguas são diferentes (Reparar: objetos em geral; Integridade: armas, armaduras, escudos). Quem julga se a peça tem conserto é o Mestre. Ofícios Gerais exige grau maior que o ofício específico (Carpintaria 2 pede Ofícios Gerais 3, talvez 4). Dá para tentar com grau menor, com mais tempo e teste; falhar mantém ou piora. O autor aprovou a regra montada por Claude.
+    Texto aprovado (vai ao livro, Armas e Armaduras, junto da Integridade):
+    > **Consertar equipamento.** A Integridade e o Reparar são réguas diferentes: o Reparar é para objetos em geral; a Integridade, para armas, armaduras e escudos. Quem julga se uma peça ainda tem conserto é o Mestre.
+    >
+    > **Nível exigido.** Cada grau a recuperar pede um nível mínimo no ofício da peça (Ferraria para o metal, Carpintaria para a madeira, e assim por diante): de avariada para inteira, **ofício 1**; de quebrada para avariada, **ofício 2**; peças de qualidade superior pedem 1 nível a mais. Com **Ofícios Gerais**, o nível exigido é 1 acima do ofício específico (o Mestre pode pedir 2 acima numa peça muito trabalhada): o escudo de madeira que pede Carpintaria 2 pede Ofícios Gerais 3, ou até 4. Quem tem o nível exigido conserta sem teste, no tempo normal do ofício.
+    >
+    > **Abaixo do nível.** Dá para tentar com nível menor, mas o trabalho demora mais e pede teste. O tempo dobra a cada nível que falta; no fim, teste de **Raciocínio + o ofício usado, contra 10 + 5 por nível que falta**. Passou: a peça recupera o grau. Falhou por menos de 5: fica como estava, e o tempo se perdeu. Falhou por 5 ou mais: a peça piora um grau (a avariada quebra; a quebrada perde o conserto, se o Mestre julgar).
+    - L14a (06/11/2026): o tempo do conserto, o Mestre decide; referência do autor (diretriz, não regra fixa): 1 dia para reparos simples, 2 ou 3 dias para reparos maiores, 1 semana para reparos muito difíceis. Abaixo do nível, esse tempo dobra a cada nível que falta.
+    Texto aprovado (acrescenta ao Consertar equipamento):
+    > **Quanto tempo.** O Mestre decide pelo estrago. Como referência: **1 dia** para um reparo simples, **2 ou 3 dias** para um reparo maior, **1 semana** para um reparo muito difícil.
+  - "L15. Descrição do comando /arquiteto (06/11/2026, DECIDIDA)":
+    - Resposta do autor: fica como está ("Abre o papel de Arquiteto e a Leitora-novata"); o teste F5-baixo-comando não muda.
+- No livro: em `combate.md`, o exemplo do Caído diz que ele e o "sem equilíbrio" são da mesma família, o equilíbrio do corpo; o Atropelar diz "depois do terceiro Tick (...) (o primeiro é o quarto)" e "com a Margem contada contra 0"; o "Derrubar sem matar" ganha "(não é a Manobra)" e "fere de Impacto". Em `vida-ferimentos-cura.md`, o Anticoagulante diz que só o Raciocínio + Cura estanca, e que o Vigor + Resistência de quem sangra e a cura de PV não. Em `armas-e-armaduras.md`, os textos aprovados da L14 e da L14a, como estão, depois da Integridade, antes da *Regra extra*. Em `tecnicas.json`, a Técnica Recompor-se ganha "Não é o Recompor do Abalado (Condições)." O teto do Veil (`criacao-de-personagem.md`) fica como está até o fim da revisão (D-053): esta linha é o registro dele.
+- Fora do livro: a validação de categoria (visão verdadeira, pulso do enxame, números de uso como aviso) e a entrada dos lotes pelo r35-r54 vão à Executora, na branch `executora`. A descrição do `/arquiteto` fica como está.
+- Muda: completa a D-345 (L1, a família do Caído), a D-319 e a D-340 (Atropelar; o "do terceiro Tick em diante" foi erro de redação de Claude), a D-343 (o "o Estabilizar comum não basta" foi erro de redação de Claude na P8), a D-318 (Derrubar sem matar), a D-330 (Integridade: o conserto ganha regra), a D-303 (Recompor-se) e a D-351.
+- Ponto aberto, para o autor: o texto aprovado da L14 diz "Ferraria para o metal", e o ofício do livro é "Ferreiro" (`acoes-oficio-e-mundo.md`, a lista dos ofícios). Entrou como está.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05 e 06/11/2026 às 13 perguntas do relatório do Arquiteto das 17:41 de 05/11.
+- Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
+
+### D-353 · Triagem da leitura de Combate e Resistir: os itens que ficaram por conferir [tags: combate, arte, nivel, golpes-simultaneos, resistir, sede, fome, leitora, d-087, d-346, d-351]
+- Data: 2026-11-06
+- Decisão (Arquiteto, por ordem do autor de 06/11/2026: "passe pelos três filtros, aplique o que tiver decisão e me traga só o que sobrar"):
+  - C-COMB-12: "Arte, graus 0 a 3", "grau 4" e "graus 5 e 6" passam a "níveis" na tabela de fases (D-346: "grau e nível de Arte são a mesma coisa (uniformizar)"), em `combate.md`, no `regras.json` (os nomes das três linhas) e no `test-capitulo-armas.mjs` (os mutantes), que confere os dois lados.
+  - C-COMB-10: no exemplo dos golpes no mesmo instante, a espada do Normal já rolou no Tick 2 contra a guarda de então, e o Tick 4 só marca a Defesa dela (o livro: no Normal "o acerto e o dano valem no Tick da declaração, e o Preparo e o Golpe que vêm depois só marcam a Defesa").
+  - C-RES-10: sede e fome rolam uma vez por dia (a Severidade sobe "por dia").
+  - A frase da dupla no Normal passa a "a Velocidade da arma mais lenta, 6" (sugestão da Revisora, ordem do autor).
+- Perguntas ao autor, sem aplicação: C-RES-1 (Potência efetiva 0), C-RES-2 (o Curare de efeito único com pool 3), C-RES-4 (a régua do Tratar) e C-REG-2 (o "−1 físico" e a Dificuldade do líder no Teste Coletivo).
+- Origem: `../tmp/leitora/leitura-combate-resistir-armas.md` e `../tmp/arquiteto/triagem-leitura-combate-05-11.md`.
+- Estado: **aplicada** na branch `regras-leitora-8`, a publicar com o ok do autor (L13: o merge vem no fim, de uma vez).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

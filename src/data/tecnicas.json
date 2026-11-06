@@ -1499,7 +1499,7 @@
       "regeneracao"
     ],
     "aliases": [],
-    "texto": "Fecha ferimentos graves, recoloca ossos e cicatriza cortes profundos em segundos.",
+    "texto": "Fecha ferimentos graves, recoloca ossos e cicatriza cortes profundos em segundos. Não é o Recompor do Abalado (Condições).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"

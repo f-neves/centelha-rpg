@@ -135,7 +135,7 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 | Frio de montanha alta, água gelada, casa em chamas | **minuto** | 10 |
 | Lava por perto, ventania de inverno no pico | **minuto** | 15 |
 
-Sede e fome rodam no mesmo motor, com a Severidade subindo sozinha:
+Sede e fome rodam no mesmo motor, uma jogada por dia, com a Severidade subindo sozinha:
 
 | | Começa | Severidade |
 |---|---|---|

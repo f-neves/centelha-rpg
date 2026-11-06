@@ -92,9 +92,9 @@ Toda arma tem **ao menos 1 Tick de Preparo**, e a conta é **Preparo = Velocidad
 | Besta Média | 12 | 9 | 1 | 2 |
 | Besta Grande | 15 | 12 | 1 | 2 |
 | Azagaia com atlatl | 8 | 5 | 1 | 2 |
-| Arte, graus 0 a 3 | 5 | 3 | 1 | 1 |
-| Arte, grau 4 | 6 | 4 | 1 | 1 |
-| Arte, graus 5 e 6 | 7 | 5 | 1 | 1 |
+| Arte, níveis 0 a 3 | 5 | 3 | 1 | 1 |
+| Arte, nível 4 | 6 | 4 | 1 | 1 |
+| Arte, níveis 5 e 6 | 7 | 5 | 1 | 1 |
 
 A **Haste** se divide em duas: a **média** (Lança, Bordão, Cajado, Tridente, Arpão) e a **de Guerra** (Foice Grande, Lança Longa, Alabarda, Glaive, Guisarme, Poleaxe), maior e mais lenta. No corpo a corpo o Golpe cai no Tick logo depois do Preparo, e sobram três Ticks de Recuperação. Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) o Golpe cai no Tick **imediatamente antes da Recuperação**, que **toda arma de tiro tem**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
 
@@ -220,7 +220,7 @@ No par de leves o segundo Golpe **come um Tick da Recuperação**, e o ciclo nã
 
 **Dois Punhos contam como duas armas leves**, cada um com as estatísticas dos Punhos (1/1/3). Fazem par para a empunhadura dupla (a linha do par de leves), para a Rajada (teto de 3 golpes, o da classe leve), para o Bloqueio (+1 cada) e contam como **2 ataques** para a Guarda sob pressão. **Só as mãos fazem par**: os dois punhos e qualquer mão que conta como arma (a Mão de Ferro, por exemplo). Chute, mordida, cauda e patas de animal seguem a regra de que nada dá ataque extra sem dizer que dá: são opções de ataque, não um par.
 
-A dupla de armas de Velocidades diferentes fica a critério do Mestre: o ciclo é o da arma **mais lenta** das duas, em qualquer mão que ela esteja. Uma adaga na mão hábil e uma espada longa na inábil têm o ciclo da dupla com a espada, 7 Ticks (a Velocidade 6 dela mais 1, como na tabela acima), como se ela estivesse na mão hábil. Isso é do P/G/R; no sistema Normal a dupla tem a mesma Velocidade da arma, 6.
+A dupla de armas de Velocidades diferentes fica a critério do Mestre: o ciclo é o da arma **mais lenta** das duas, em qualquer mão que ela esteja. Uma adaga na mão hábil e uma espada longa na inábil têm o ciclo da dupla com a espada, 7 Ticks (a Velocidade 6 dela mais 1, como na tabela acima), como se ela estivesse na mão hábil. Isso é do P/G/R; no sistema Normal a dupla tem a Velocidade da arma mais lenta, 6.
 
 O preço não está tanto nos dados (pela régua da Margem, um golpe que **encosta** já rende quase todo o dano), e sim na **exposição**: cada ataque que você faz baixa a Esquiva e o Bloqueio (ver *Guarda sob pressão*), então brigar com as duas mãos derruba a sua guarda o **dobro** de um golpe só, até a sua próxima ação. Em troca, a **Defesa das armas continua valendo** para aparar: empunhar duas lâminas ataca e defende ao mesmo tempo: o que custa é ficar aberto, não largar a guarda da arma.
 
@@ -288,7 +288,7 @@ Estas sete faixas são só das Manobras e do Bloqueio; a Vida tem uma tabela pr�
 
 O **Dado da Arma** vem da classe (leve 1d6−2, média 1d6, pesada 2d6, haste média 1d6, haste de Guerra 1d6+2, arremesso 1d6−4 a 1d6, distância 1d6−2 a 1d6+8). Armas de uma mão somam a **Força**; as de duas mãos, o **dobro da Força**, a Lança entre elas: **a exceção é a Lança Longa**, que fere por alcance e precisão, não por peso, e soma apenas a **Força simples**. Cada Margem (6 pontos acima da Defesa) acrescenta +1d6. A **Centelha do atacante** soma inteira, sem teto de Habilidade: é a mesma fagulha que abre Proeza que faz o golpe doer mais fundo, em toda arma, em toda Arte e a cada pulso de dano contínuo.
 
-**Derrubar sem matar.** Declare antes do golpe que quer só derrubar. Com o punho, uma arma contundente, o cabo da arma ou um choque, o golpe não leva a Vida abaixo de 0: quem cai fica Incapacitado e Inconsciente, sem risco de morrer. Uma arma de corte usada de lado também serve, com −1d6 no acerto.
+**Derrubar sem matar** (não é a Manobra). Declare antes do golpe que quer só derrubar. Com o punho, uma arma contundente, o cabo da arma ou um choque, o golpe não leva a Vida abaixo de 0: quem cai fica Incapacitado e Inconsciente, sem risco de morrer. Uma arma de corte usada de lado também serve, com −1d6 no acerto, e fere de Impacto.
 
 **Mutilar ou matar de um golpe.** O livro não tem regra para o golpe que arranca um membro ou mata de uma vez: quando uma arma, uma Proeza ou uma ficha descreve esse efeito, o Mestre decide o que acontece.
 
@@ -453,13 +453,13 @@ Quanto maior o Preparo, mais longe e mais forte vai o golpe que investe, e a pes
 
 ### Atropelar e Pisoteio
 
-**Atropelar.** Um ataque diferente dos outros. São **3 Ticks de Preparação**; do terceiro Tick em diante, cada Tick em que você segue correndo é um **Tick de Golpe** (com a mesma penalidade do Golpe), até você decidir parar ou ser parado; depois vêm **3 Ticks de Recuperação**. Quem estiver no caminho pode ser atropelado. A jogada é de **Força pura**, sem Habilidade (soma a Centelha inteira, como toda jogada de Atributo puro), **mais 3 por categoria de Tamanho que você tem acima do alvo** (menos 3 por categoria abaixo). Você rola uma vez, e o total vale contra cada alvo, com o ajuste de Tamanho de cada um.
+**Atropelar.** Um ataque diferente dos outros. São **3 Ticks de Preparação**; depois do terceiro Tick, cada Tick em que você segue correndo é um **Tick de Golpe** (o primeiro é o quarto) (com a mesma penalidade do Golpe), até você decidir parar ou ser parado; depois vêm **3 Ticks de Recuperação**. Quem estiver no caminho pode ser atropelado. A jogada é de **Força pura**, sem Habilidade (soma a Centelha inteira, como toda jogada de Atributo puro), **mais 3 por categoria de Tamanho que você tem acima do alvo** (menos 3 por categoria abaixo). Você rola uma vez, e o total vale contra cada alvo, com o ajuste de Tamanho de cada um.
 
 Cada alvo no caminho escolhe como se defender:
 - **Esquivar**, com Destreza + Esquiva (aqui a defesa é rolada, e não passiva): se igualar ou superar o seu total, sai do caminho sem dano, e você segue.
 - **Parar**, com Força pura: precisa **superar** o seu total (empate não basta), e então o atropelamento para ali.
 
-**Dano do atropelamento:** 1d6 de Impacto no Médio, mais 1d6 por categoria de Tamanho acima do Médio (Grande 2d6, Enorme 3d6...), **+ Margem + 2 × Força + Centelha − Absorção**. O Pequeno atropela sem dado, só com 2 × Força + Centelha; quem é menor que isso não atropela. Quem não consegue se defender sofre esse dano e fica Caído, e o atropelamento segue.
+**Dano do atropelamento:** 1d6 de Impacto no Médio, mais 1d6 por categoria de Tamanho acima do Médio (Grande 2d6, Enorme 3d6...), **+ Margem + 2 × Força + Centelha − Absorção**. O Pequeno atropela sem dado, só com 2 × Força + Centelha; quem é menor que isso não atropela. Quem não consegue se defender sofre esse dano, com a Margem contada contra 0, e fica Caído, e o atropelamento segue.
 
 **Pisoteio** é outra coisa: pisar num alvo só. É um ataque natural da ficha, como uma garra ou uma mordida.
 
@@ -547,13 +547,13 @@ Para o Mestre. O corpo preso ou o lugar apertado tiram da Esquiva e do Bloqueio,
 | **Lugar: pouco espaço** | corredor estreito, entre galhos, túnel | −2 | −4 |
 | **Lugar: sem equilíbrio** | corda bamba, telhado inclinado, convés no temporal | −4 | −2 |
 
-No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de agarrão. Em pouco espaço o escudo **perde o bônus**: ele não está *apto* (ver *Projéteis rápidos: só Esquiva ou escudo*). Quem está Preso (parcial nas pernas) não se desloca, mas age, e a Rede tem regra própria, em Armas & Armaduras. **Alguns estados se substituem em vez de se somar**, pela regra de [Quando as condições se juntam](/regras/condicoes#quando-as-condicoes-se-juntam) (Condições): quem está Caído, por exemplo, não está também "sem equilíbrio" só porque a tabela tem as duas linhas.
+No Total, as Defesas zeradas são a Esquiva e o Bloqueio, e **não** a Defesa de agarrão. Em pouco espaço o escudo **perde o bônus**: ele não está *apto* (ver *Projéteis rápidos: só Esquiva ou escudo*). Quem está Preso (parcial nas pernas) não se desloca, mas age, e a Rede tem regra própria, em Armas & Armaduras. **Alguns estados se substituem em vez de se somar**, pela regra de [Quando as condições se juntam](/regras/condicoes#quando-as-condicoes-se-juntam) (Condições): quem está Caído, por exemplo, não está também "sem equilíbrio" só porque a tabela tem as duas linhas: os dois são da mesma família, o equilíbrio do corpo, e não somam.
 
 ### Golpes no mesmo instante
 
 Quando dois golpes caem no **mesmo Tick**, os dois atacantes estão abertos ao mesmo tempo: cada um ataca contra a guarda comprometida do outro. Não importa quem a mesa resolveu primeiro: a escada se lê pela **agenda**, e não pela ordem em que as jogadas foram narradas.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 1) declaradas no <strong>Tick 3</strong> golpeiam no <strong>Tick 4</strong> (a conta é a do P/G/R, em que o golpe sai no Tick do Golpe). As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 2) declarada no <strong>Tick 2</strong>, no sistema Normal ela rolaria no 2, mas o Golpe dela também cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Duas adagas (Preparo 1) declaradas no <strong>Tick 3</strong> golpeiam no <strong>Tick 4</strong> (a conta é a do P/G/R, em que o golpe sai no Tick do Golpe). As duas golpeiam nesse instante, então as duas estão em <strong>−4</strong>: cada uma ataca uma Defesa aberta. Se uma delas fosse uma espada longa (Preparo 2) declarada no <strong>Tick 2</strong>, no sistema Normal ela rolaria no 2, mas o Golpe dela também cairia no 4: no Tick 4 a guarda dela estaria em −4, a mesma das adagas. O golpe dela já rolou no 2, contra a guarda que a adaga tinha então; o Tick 4 só marca a Defesa dela.</div>
 
 <p class="muted">Vale a pena dizer por que a regra é essa: se a guarda de quem ainda não narrou a jogada contasse como inteira, a jogada certa seria sempre <em>deixar o outro atacar primeiro</em>, e a vantagem de ter rolado bem na Iniciativa se voltaria contra quem a ganhou.</p>
 
