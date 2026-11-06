@@ -719,7 +719,8 @@
      {
       "nome": "Cuspe ácido",
       "velocidade": 7,
-      "danoMedio": 9
+      "danoMedio": 9,
+      "jogada": 12
      }
     ]
    }
@@ -2883,7 +2884,8 @@
      {
       "nome": "Sopro elétrico",
       "velocidade": 7,
-      "danoMedio": 8
+      "danoMedio": 8,
+      "jogada": 12
      }
     ]
    }
@@ -5265,7 +5267,8 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 15.5
+      "danoMedio": 15.5,
+      "jogada": 16
      }
     ]
    }
@@ -5386,7 +5389,8 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 9
+      "danoMedio": 9,
+      "jogada": 10
      }
     ]
    }
@@ -9693,7 +9697,8 @@
      {
       "nome": "Sopro ácido",
       "velocidade": 7,
-      "danoMedio": 14.5
+      "danoMedio": 14.5,
+      "jogada": 15
      }
     ]
    }
@@ -10184,7 +10189,8 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 38.5
+      "danoMedio": 38.5,
+      "jogada": 22
      }
     ]
    },
@@ -10719,7 +10725,8 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 49
+      "danoMedio": 49,
+      "jogada": 26
      }
     ]
    }
@@ -10874,7 +10881,8 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 26
+      "danoMedio": 26,
+      "jogada": 15
      }
     ]
    }
@@ -14837,7 +14845,8 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 14.5
+      "danoMedio": 14.5,
+      "jogada": 11
      }
     ]
    }
@@ -17977,7 +17986,8 @@
      {
       "nome": "Sopro petrificante",
       "velocidade": 7,
-      "danoMedio": 0
+      "danoMedio": 0,
+      "jogada": 14
      }
     ]
    }
@@ -18303,7 +18313,8 @@
      {
       "nome": "Sopro cataclísmico",
       "velocidade": 7,
-      "danoMedio": 61.5
+      "danoMedio": 61.5,
+      "jogada": 29
      }
     ]
    }
@@ -20870,7 +20881,8 @@
      {
       "nome": "Choque",
       "velocidade": 7,
-      "danoMedio": 5.5
+      "danoMedio": 5.5,
+      "jogada": 10
      }
     ]
    }
@@ -22253,7 +22265,8 @@
      {
       "nome": "Sopro ácido",
       "velocidade": 7,
-      "danoMedio": 37.5
+      "danoMedio": 37.5,
+      "jogada": 29
      }
     ]
    }
@@ -22396,7 +22409,8 @@
      {
       "nome": "Sopro de magma",
       "velocidade": 7,
-      "danoMedio": 37.5
+      "danoMedio": 37.5,
+      "jogada": 23
      }
     ]
    }
@@ -23865,7 +23879,8 @@
      {
       "nome": "Espinhos de cauda",
       "velocidade": 7,
-      "danoMedio": 10.5
+      "danoMedio": 10.5,
+      "jogada": 9
      }
     ]
    }
@@ -24658,7 +24673,8 @@
      {
       "nome": "Sopro elemental",
       "velocidade": 7,
-      "danoMedio": 9
+      "danoMedio": 9,
+      "jogada": 10
      }
     ]
    }
@@ -29472,7 +29488,8 @@
      {
       "nome": "Sopro dracônico",
       "velocidade": 7,
-      "danoMedio": 10
+      "danoMedio": 10,
+      "jogada": 12
      }
     ]
    }
@@ -32329,7 +32346,8 @@
      {
       "nome": "Sopro de vapor",
       "velocidade": 7,
-      "danoMedio": 26
+      "danoMedio": 26,
+      "jogada": 16
      }
     ]
    }

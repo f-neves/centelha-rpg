@@ -127,10 +127,10 @@ export function porteDeRotulo(rotulo: string | null | undefined): Porte {
  *
  * A D-077, sem teto: +3 por categoria (`reforma.porCategoria`) pela `ordem`.
  * Corpo a corpo só o menor ganha; à distância é relativo nos dois sentidos
- * (alvo menor dá −3 por categoria). Só a metade da compensação: a outra metade
- * (Couraça de Porte, que corta o dano de quem é menor) já está aplicada em
- * tempo de geração (`gen-bestiario.mjs`), somada na `absorcao` de cada
- * criatura , esta função completa o par, não inventa um novo.
+ * (alvo menor dá −3 por categoria). O porte mexe só no acerto: a antiga
+ * Couraça de Porte, que cortava o dano de quem é menor e morava no gerador do
+ * bestiário, saiu em 5da94c0d. A Couraça de hoje vem só da pele, pelo nível e
+ * pelo perfil (R49, D-328; `absorcaoDaCouraca`), e não depende do porte.
  */
 export function modificadorPorte(porteAtacante: Porte, porteAlvo: Porte, aDistancia = false): number {
   const t = regras.porteAcerto as { ordem: string[]; reforma: { porCategoria: number } };

@@ -33,6 +33,7 @@ const IDS_ANTIGOS = dado('ids-antigos.json');
 const ARMADURAS = new Set(dado('armaduras.json').filter((a) => a.armadura).map((a) => a.id));
 const ESCUDOS = new Set(dado('escudos.json').filter((a) => a.escudo).map((a) => a.id));
 const ARTES = new Set(dado('artes.json').map((a) => a.id));
+const EFEITOS = dado('efeitos.json');
 const TECNICAS_DADOS = dado('tecnicas.json');
 const TECNICAS = new Set(TECNICAS_DADOS.map((t) => t.id));
 const VOC = dado('elementos-vocab.json');
@@ -84,6 +85,15 @@ const jogo = (s) => semMarcas(String(s ?? '').replace(/\s*\*\*\[formas:[^\]]*\]\
 const semPonto = (s) => s.replace(/\s*\.\s*$/, '').trim();
 // a célula que só diz que não há dado: a marca `**[sem dado]**` ou a palavra sem ela, com o ponto final ou sem
 const SEM_DADO = /^\s*(\*\*\[sem dado\]\*\*|\[sem dado\]|sem dado)\s*\.?\s*$/i;
+// R49 (D-328): a palavra do perfil de Couraça na ficha, e o id do JSON
+const PERFIS_COURACA = { 'rígida': 'rigida', couro: 'couro', mole: 'mole' };
+// R21 (D-298) e R22: os quatro corpos que não vivem e as cinco famílias mentais, pelo slug da palavra da ficha
+const TIPOS_CORPO = { constructo: 'constructo', 'morto-vivo': 'morto-vivo', elemental: 'elemental', incorporeo: 'incorporeo' };
+const FAMILIAS_MENTAIS = ['medo', 'sono', 'dominio', 'leitura-de-mente', 'confusao'];
+// as chaves que a seção Corpo da ficha pode ter, sem o parêntese de marca do fim ("Enxame no jogo (...)"); o Enxame e a
+// linha juntada "Prende a respiração, camuflagem" (sem dado) não viram campo do JSON (o enxame vem do PV base)
+const CHAVES_CORPO = new Set(['Respiração', 'Prende a respiração', 'Camuflagem', 'Mente', 'Traços', 'Tipo de corpo', 'Recuperação',
+  'Famílias mentais ignoradas', 'Enxame', 'Enxame no jogo', 'Prende a respiração, camuflagem']);
 // "PV na linha de cima: inseto de casca." · a linha que a ficha escolheu na zona de transição e o porquê, até o ponto
 const motivoDaLinhaPV = (s) => {
   const m = String(s ?? '').replace(/\*\*/g, '').match(/PV na linha de (cima|baixo):\s*([^.|]+?)\s*(?:\.|\||$)/);
@@ -190,7 +200,11 @@ function converter(texto, { site = null }, schema) {
   // ("**0,98 m²**, silhueta de frente"). A linha Postura NÃO a substitui: é a postura de sempre, e não a da medição;
   // usá-la era completar o que a ficha não diz (formato-x-codigo.md, item 13; revisão de af3697c7, C2). Sem nenhuma, para.
   const pp = lt.match(/\((?:[\d.,]+ m²|área [\d.,]+),\s*([^)]*)\)/);
+  // R34 (D-313): no enxame o Tamanho é o do indivíduo e só diz a anatomia; a ficha escreve "(indivíduo, anatomia)" no
+  // lugar da postura de medição, e é o que fica (que a ficha é enxame se confere abaixo, depois do PV base)
+  const ppEnxame = !pp && /^\s*\*\*[^*]+\*\*\s*\(indivíduo, anatomia\)/.test(lt);
   if (pp) corpo.posturaDoTamanho = pp[1].trim();
+  else if (ppEnxame) corpo.posturaDoTamanho = 'indivíduo, anatomia';
   else {
     const medida = String(la || '').match(/m²\*\*\s*,\s*(.+)$/);
     if (medida) corpo.posturaDoTamanho = jogo(medida[1]);
@@ -247,6 +261,7 @@ function converter(texto, { site = null }, schema) {
       else c.enxame = {individuosPorQuadrado:Number(enx[1]), tamanhoEquivalente};
     }
   }
+  if (ppEnxame && !c.enxame) para('Tamanho "(indivíduo, anatomia)" só vale para enxame (R34), e a ficha não é enxame');
   const carga = campo(MV, 'Carga') || '';
   const cm = carga.match(/\*\*Leve ([\d.,]+) kg\*\*/);
   if (cm && /medid/.test(carga)) corpo.cargaMedida = numBR(cm[1]);
@@ -258,7 +273,7 @@ function converter(texto, { site = null }, schema) {
   // R49 (D-328): "Couraça **nível N**, perfil couro". A falta do perfil acima do nível 0 o esquema novo acusa.
   const perfilLido = (campo(MV, 'Absorção') || '').match(/Couraça \*\*nível \d+\*\*[^,;|]*, perfil ([^\s.,;|]+)/)?.[1];
   if (perfilLido !== undefined) {
-    const perfil = { 'rígida': 'rigida', couro: 'couro', mole: 'mole' }[perfilLido.toLowerCase()];
+    const perfil = PERFIS_COURACA[perfilLido.toLowerCase()];
     if (perfil) c.perfilCouraca = perfil; else para(`Absorção: perfil de Couraça "${perfilLido}" fora de rígida, couro e mole (R49)`);
   }
   const bpv = inteiro(campo(MV, 'Bônus de PV'));
@@ -379,7 +394,9 @@ function converter(texto, { site = null }, schema) {
     const arma = armasEq.includes(citada) ? citada : ARMAS.find((w) => armasEq.includes(w.id) && w.nome.toLowerCase() === nome.toLowerCase())?.id;
     // e a frase em minúscula, sem os dois-pontos, quando ela escreve a soma: "jogada Vigor 3 + Disparo 3" (arconte-lanterna)
     const jog = just.match(/Jogada:[^|]*?\+\s*(Briga|Armas|Disparo|Atirador|Arremesso)\b/) || just.match(/Jogada:[^|]*?(Briga|Armas|Disparo|Atirador|Arremesso)\b/)
-      || just.match(/\bjogada:? (?:Força|Destreza|Vigor|Percepção) \d+ \+ (Disparo|Atirador|Arremesso) \d+/);
+      || just.match(/\bjogada:? (?:Força|Destreza|Vigor|Percepção) \d+ \+ (Disparo|Atirador|Arremesso) \d+/)
+      // D-315 (R36): "jogada o maior entre Vigor, Destreza e Percepção + Atirador", sem os dois-pontos (arconte-lanterna)
+      || just.match(/\b[Jj]ogada:? o maior entre Vigor, Destreza e Percepção \+ (Atirador)\b/);
     if (arma) {
       // a arma do livro guarda só o nome, a arma e a Habilidade (D-220); o resto vem do catálogo
       const w = ARMAS.find((x) => x.id === arma);
@@ -452,16 +469,24 @@ function converter(texto, { site = null }, schema) {
     if (cl === 'como luta') { c.comoLuta.push({ nome, formas, texto: jogo(corpoTxt) }); continue; }
     const he = { nome, formas, classe: cl };
     for (const p of partes.slice(1, iCl)) {
-      const mb = p.match(/^poder natural \(base ([^)]+?) (\d+)(?:,[^)]*)?\)$/);
+      // L4 (D-345, 05/11/2026): a ficha nomeia o Efeito Especial da base quando houver um que sirva, "base: Fresta,
+      // Conjuração 4"; sem ele, "base Vento 2" como antes. O nível da base é o da ficha, e não precisa ser o do Efeito.
+      const mb = p.match(/^poder natural \(base:? (?:([^,()]+?), )?([^,()]+?) (\d+)(?:,[^)]*)?\)$/);
       const mt = p.match(/^Técnica ([a-z0-9-]+), nível (\d+)$/);
       const ma = p.match(/^Arte (\S+) (\d+)$/);
       if (p.startsWith('categoria:')) {
         if (he.categoria !== undefined) para('Manobras, '+nome+': categoria repetida');
         he.categoria = p.slice('categoria:'.length).trim();
       } else if (mb) {
-        const arte = slug(mb[1]);
-        if (!ARTES.has(arte)) para(`Manobras, ${nome}: a base ${mb[1]} não é Arte do artes.json`);
-        he.base = { arte, nivel: Number(mb[2]) };
+        const arte = slug(mb[2]);
+        if (!ARTES.has(arte)) para(`Manobras, ${nome}: a base ${mb[2]} não é Arte do artes.json`);
+        he.base = { arte, nivel: Number(mb[3]) };
+        if (mb[1]) {
+          const ef = EFEITOS.find((e) => slug(e.nome) === slug(mb[1]));
+          if (!ef) para(`Manobras, ${nome}: o Efeito Especial "${mb[1]}" da base não está no efeitos.json`);
+          else if (!ef.artes.some((x) => x.id === arte)) para(`Manobras, ${nome}: o Efeito Especial ${ef.nome} não é da Arte ${mb[2]} no efeitos.json`);
+          else he.base.efeito = ef.id;
+        }
       } else if (mt) {
         if (!TECNICAS.has(mt[1])) para(`Manobras, ${nome}: a Técnica ${mt[1]} não está no tecnicas.json`);
         he.tecnica = { id: mt[1], nivel: Number(mt[2]) };
@@ -557,6 +582,15 @@ function converter(texto, { site = null }, schema) {
   if (camu && !/^nenhuma$/.test(camu)) c.fisiologia.camuflagem = camu;
   if (corpoSec['Mente'] !== undefined) c.fisiologia.mente = semPonto(corpoSec['Mente']);
   if (corpoSec['Traços'] !== undefined) c.fisiologia.tracos = semPonto(corpoSec['Traços']);
+  // R21 (D-298): o tipo de corpo que não vive (constructo, morto-vivo, elemental, incorpóreo), que não respira; R22: as
+  // famílias mentais que a ficha diz que a criatura ignora; e como o morto-vivo e o incorpóreo se recuperam
+  const lerTipoCorpo = (v, onde) => { const id = TIPOS_CORPO[slug(semPonto(v))]; if (!id) para(`${onde}: Tipo de corpo "${semPonto(v)}" fora de constructo, morto-vivo, elemental e incorpóreo (R21)`); return id; };
+  const lerFamilias = (v, onde) => { const ids = semPonto(v).split(/,\s*|\s+e\s+/).map((x) => slug(x)).filter(Boolean); const fora = ids.filter((x) => !FAMILIAS_MENTAIS.includes(x)); if (fora.length) para(`${onde}: família mental fora de medo, sono, domínio, leitura de mente e confusão (R22): ${fora.join(', ')}`); return ids; };
+  if (corpoSec['Tipo de corpo'] !== undefined) c.fisiologia.tipoCorpo = lerTipoCorpo(corpoSec['Tipo de corpo'], 'Corpo');
+  if (corpoSec['Recuperação'] !== undefined) c.fisiologia.recuperacao = semPonto(corpoSec['Recuperação']);
+  if (corpoSec['Famílias mentais ignoradas'] !== undefined) c.fisiologia.familiasMentaisIgnoradas = lerFamilias(corpoSec['Famílias mentais ignoradas'], 'Corpo');
+  // a chave que o conversor não conhece para, em vez de sumir calada (ordem do autor de 06/11/2026)
+  for (const k of Object.keys(corpoSec)) if (!CHAVES_CORPO.has(k.replace(/\s*\([^)]*\)$/, ''))) para(`Corpo: chave "${k.slice(0, 50)}" que o conversor não conhece`);
   const lerApt = (t, onde) => {
     const m = String(t || '').replace(/`/g, '').trim().match(/^montaria (sim|não) · carga (sim|não) · tração (sim|não)\.?$/);
     if (!m) { para(`${onde}: Aptidões fora do formato`); return undefined; }
@@ -613,6 +647,14 @@ function converter(texto, { site = null }, schema) {
         const om = t.match(/^o Mestre pode escolher outra forma \(([^)]+)\), e então valem a medida e o Tamanho dela$/);
         if (om) { f.outraForma = om[1].trim(); continue; }
         if (/^(Bloqueio|Musculatura) \d+$/.test(t)) { para('Variantes, ' + nomeF + ': ' + t + ' altera Habilidade fixa entre formas; ajustar a ficha, formato-criatura.md, seção 1'); continue; }
+        // R49: "Couraça nível N, perfil couro" na forma também (a forma sem a palavra herda o perfil da principal)
+        const mcp = t.match(/^Couraça nível (\d+), perfil (\S+)$/);
+        if (mcp) {
+          f.couraca = Number(mcp[1]);
+          const perfil = PERFIS_COURACA[mcp[2].toLowerCase()];
+          if (perfil) f.perfilCouraca = perfil; else para(`Variantes, ${nomeF}: perfil de Couraça "${mcp[2]}" fora de rígida, couro e mole (R49)`);
+          continue;
+        }
         const m = t.match(/^([^:]+):\s*(.*)$/) || t.match(/^(Couraça) nível (\d+)$/) || t.match(/^(Aparência) (\d+)$/);
         if (!m) { para(`Variantes, ${nomeF}: "${t.slice(0, 50)}" fora do formato`); continue; }
         const [k, v] = [m[1].trim(), m[2].trim()];
@@ -650,6 +692,9 @@ function converter(texto, { site = null }, schema) {
         else if (k === 'Deslocamento' || k === 'Deslocamento em terra') { if (/^não anda/.test(v)) { (f.deslocamento ??= {}).terra = null; continue; } const q = v.match(/\((\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?) · (\d+(?:[.,]\d+)?)\)/) || v.match(/Batalha (\d+(?:[.,]\d+)?), Arranque (\d+(?:[.,]\d+)?), Corrida (\d+(?:[.,]\d+)?)/); if (q) f.deslocamento = { terra: { batalha: numeroPasso(q[1]), arranque: numeroPasso(q[2]), corrida: numeroPasso(q[3]) } }; else para(`Variantes, ${nomeF}: Deslocamento ilegível`); }
         else if (k === 'Ataques') f._ataques = v;
         else if (k === 'Prende a respiração') { if (!SEM_DADO.test(v)) ff.prendeRespiracao = v; }
+        else if (k === 'Tipo de corpo') ff.tipoCorpo = lerTipoCorpo(v, `Variantes, ${nomeF}`);
+        else if (k === 'Recuperação') ff.recuperacao = v;
+        else if (k === 'Famílias mentais ignoradas') ff.familiasMentaisIgnoradas = lerFamilias(v, `Variantes, ${nomeF}`);
         else if (k === 'Voo' || k === 'Nado' || k === 'Escalada' || k === 'Escavação') {
           const q = v.match(/Batalha \**(\d+(?:[.,]\d+)?)\**/) || v.match(/^(\d+(?:[.,]\d+)?)(?=\s|$)/);
           if (q) {

@@ -38,12 +38,21 @@ const escolhe = (o, ks) => Object.fromEntries(ks.filter((k) => o[k] !== undefine
 
 // A jogada que a frase "Jogada:" da Justificativa escreve: o Atributo, a Habilidade e o termo da Centelha, sem o Acerto
 // da coluna. Devolve a soma dos três números escritos; undefined quando a frase não os traz.
-function lerJogada(just) {
-  const j = (String(just).match(/Jogada:([^|]*)/) || [])[1];
+// A frase da D-315 (R36) não escreve os números: "o maior entre Vigor, Destreza e Percepção + Atirador". Para ela, os
+// números são os que a própria ficha escreve nas tabelas Atributos e Habilidades (`numeros`), e a frase só diz quais
+// somar; sem um deles, a jogada fica sem conferir, como antes.
+const D315 = /^\s*o maior entre Vigor, Destreza e Percepção \+ Atirador\b/;
+function lerJogada(just, numeros = {}) {
+  const j = (String(just).match(/Jogada:([^|]*)/) || String(just).match(/\bjogada( o maior entre Vigor, Destreza e Percepção[^|]*)/) || [])[1];
   if (!j) return undefined;
   let atr, hab, termo = 0;
   const mh = j.match(new RegExp(`(\\d+)(?:\\s*\\([^)]*\\))?\\s*\\+\\s*(${HAB_ATAQUE})\\s+(\\d+)`));
   if (mh) { atr = Number(mh[1]); hab = Number(mh[3]); }
+  else if (D315.test(j)) {
+    const tres = ['Vigor', 'Destreza', 'Percepção'].map((k) => numeros[k]);
+    if (tres.some((x) => x === undefined) || numeros.Atirador === undefined) return undefined;
+    atr = Math.max(...tres); hab = numeros.Atirador;
+  }
   else {
     const mp = j.match(new RegExp(`(${HAB_ATAQUE})[^(]*\\((\\d+)\\s*\\+\\s*(\\d+)`));
     if (!mp) return undefined;
@@ -96,6 +105,9 @@ export function lerEsperado(texto) {
     if (feq[7]) esperado.comEquipamento.nivelPerfuracao = +feq[7];
     if (feq[9]) esperado.comEquipamento.contraTiro = +feq[9];
   }
+  // os números das tabelas Atributos e Habilidades, pelo nome da linha, para a frase da D-315
+  const numeros = {};
+  for (const r of [...(T['Atributos'] || []), ...(T['Habilidades'] || [])]) { const [k, v] = Object.values(r); const n = inteiro(semMarcas(v ?? '')); if (n !== undefined) numeros[semMarcas(k).trim()] = n; }
   const ataques = [];
   for (const r of T['Ataques'] || []) {
     const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? '');
@@ -103,7 +115,7 @@ export function lerEsperado(texto) {
     const e = { nome, velocidade: inteiro(r['Velocidade']) };
     const dm = semMarcas(r['Dano médio'] ?? '').replace(/\*\*/g, '');
     if (/\d/.test(dm)) e.danoMedio = numBR(dm.match(/[\d.,]+/)[0]);
-    const jog = lerJogada(r['Justificativa'] ?? '');
+    const jog = lerJogada(r['Justificativa'] ?? '', numeros);
     const igual = String(r['Justificativa'] ?? '').match(/Jogada igual à d[ao]s? (.+?)(?:\.|$)/);
     if (jog !== undefined) e.jogada = jog; else if (igual) e._igual = igual[1].trim();
     ataques.push(e);

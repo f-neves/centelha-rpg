@@ -2809,7 +2809,7 @@
     "n5": false,
     "n6": false,
     "notaN1": "Enquanto n1 for false, quem manda e combate.simultaneo.decideEmValeDepois, que vale 1 (a acao comeca em T+1). No commit que escrever N1 os dois passam a ser a mesma coisa: decideEmValeDepois vira derivado de n1, e nao ha dois lugares dizendo a regra.",
-    "notaCouraca": "A couraca de porte NAO esta aqui, e nao por esquecimento: ela ja e aplicada em tempo de geracao (scripts/gen-bestiario.mjs, linhas 36-45 e 79-82) e ja vem somada na absorcao de cada criatura do monsters-mesa.json. Uma bandeira de tempo de execucao a somaria DUAS VEZES. O que a bateria mede no lugar dela e o eixo do elenco: criatura grande contra criatura media."
+    "notaCouraca": "A couraca NAO e bandeira, e nao por esquecimento: a Absorcao de cada criatura ja sai do motor com a Couraca somada pelo nivel e pelo perfil (R49, D-328; src/lib/motor.ts, absorcaoDaCouraca) e vem pronta no monsters-mesa.json. Uma bandeira de tempo de execucao a somaria DUAS VEZES. A antiga couraca de porte, por tamanho, saiu do gerador em 5da94c0d. O que a bateria mede no lugar dela e o eixo do elenco: criatura grande contra criatura media."
   },
   "social": {
     "nota": "A Régua de Relação e os dois modos, decisão de 18-19/09/2026 (ver o capítulo X, relacoes-sociais.md). O modo RÁPIDO (com dado) não move a régua: a Margem compra alcance do pedido, +1 nível por 6 de folga, só naquela cena. O modo DEVAGAR é o único lugar onde a conversa move a régua. Atos movem nos dois, com passo fixo e sem rolagem.",

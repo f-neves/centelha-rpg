@@ -3,6 +3,7 @@ import { validarPoderes } from './regras-poder-criatura.mjs';
 import { z } from 'zod';
 import artesCatalogo from '../src/data/artes.json' with { type: 'json' };
 import elementosVocab from '../src/data/elementos-vocab.json' with { type: 'json' };
+import efeitosCatalogo from '../src/data/efeitos.json' with { type: 'json' };
 const inteiro=z.number().int(),naoNeg=inteiro.nonnegative(),texto=z.string();
 export const HABILIDADES_DE_CRIATURA=['musculatura','corrida','voo','disparo'];
 const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
@@ -46,7 +47,7 @@ const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: text
 const habilidadeEspecial = z.object({
   categoria: z.enum(['substancia','inato','sobrenatural','magia','milagre']).optional(),
   nome: texto, formas: formasMarca, classe: z.enum(['livro', 'regra da ficha', 'sem regra ainda']),
-  ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg }).strict().optional(), regra: id.optional(),
+  ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg, efeito: z.enum(efeitosCatalogo.map(e => e.id)).optional() }).strict().optional(), regra: id.optional(),
   // P7, 26/10/2026: referências ao livro; texto só acrescenta detalhe ou limite próprio da criatura.
   tecnica: z.object({ id, nivel: naoNeg }).strict().optional(), arte: z.object({ id, nivel: naoNeg }).strict().optional(), texto: texto.optional(),
   ...Object.fromEntries(Object.entries(oitoCampos).map(([k, v]) => [k, v.optional()])),
@@ -62,7 +63,11 @@ const habilidadeEspecial = z.object({
   }
 });
 const elementoNovo = z.array(z.object({ tipo: id, formas: formasMarca }).strict());
-const fisiologiaNovo = z.object({ respiracao: texto.optional(), prendeRespiracao: texto.optional(), camuflagem: texto.optional(), mente: texto.optional(), tracos: texto.optional() }).strict();
+// R21 (D-298): os corpos que não vivem; R22: as famílias mentais que a ficha diz que a criatura ignora
+const tipoCorpo = z.enum(['constructo', 'morto-vivo', 'elemental', 'incorporeo']);
+const familiaMental = z.enum(['medo', 'sono', 'dominio', 'leitura-de-mente', 'confusao']);
+const fisiologiaNovo = z.object({ respiracao: texto.optional(), prendeRespiracao: texto.optional(), camuflagem: texto.optional(), mente: texto.optional(), tracos: texto.optional(),
+  tipoCorpo: tipoCorpo.optional(), recuperacao: texto.trim().min(1).optional(), familiasMentaisIgnoradas: z.array(familiaMental).min(1).optional() }).strict();
 const aptidoesNovo = z.object({ montaria: z.boolean(), carga: z.boolean(), tracao: z.boolean() }).strict();
 const numeros = z.record(id, inteiro);
 const artesNova = z.record(z.enum(artesCatalogo.map(a => a.id)), naoNeg);
@@ -91,7 +96,8 @@ const estruturaCriatura = z.object({
   comoLuta: z.array(z.object({ nome: texto, formas: formasMarca, texto }).strict()),
   sentidos: z.array(z.object({ nome: texto, descricao: texto, formas: formasMarca, classe: z.literal('sem regra ainda').optional() }).strict()),
   elementos: z.object({ fraquezas: elementoNovo, resistencias: elementoNovo, imunidades: elementoNovo }).strict(),
-  fisiologia: fisiologiaNovo.extend({respiracao:texto.trim().min(1),mente:texto.trim().min(1),tracos:texto.trim().min(1)}), aptidoes: aptidoesNovo,
+  fisiologia: fisiologiaNovo.extend({respiracao:texto.trim().min(1).optional(),mente:texto.trim().min(1),tracos:texto.trim().min(1)})
+    .refine(f => f.respiracao !== undefined || f.tipoCorpo !== undefined, {message:'Required',path:['respiracao']}), aptidoes: aptidoesNovo,
   comportamento: z.object({ social: texto.trim().min(1).optional(), atividade: texto.trim().min(1).optional(), dieta: texto.trim().min(1).optional(), caca: texto.trim().min(1).optional(), dianteDeGente: texto.trim().min(1).optional() }).strict(),
   ecologia: z.object({ terreno: z.array(texto), clima: z.array(texto) }).strict(),
   descricao: texto.trim().min(1), lore: z.array(z.object({ titulo: texto, texto }).strict()), imagens: z.array(texto),
