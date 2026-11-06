@@ -605,12 +605,24 @@ export function ataqueDaArma(id: string, forca: number, duasMaos = false) {
         acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks, habilidade: w.pericia,
     };
 }
-/** O Atributo da jogada pela Habilidade: Disparo, Vigor; Atirador, Percepção; Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208). */
-export function atributoDaJogada(habilidade: string, at: Num): number {
+/**
+ * Qual Atributo o projétil do corpo usa (D-315, R36, 06/11/2026): "o projétil natural com alvo rola o maior entre
+ * Vigor, Destreza e Percepção + Atirador". Só o ataque natural, sem arma; o arqueiro segue a Percepção de sempre.
+ * No empate vale a ordem Vigor, Destreza, Percepção, só para o nome que o card escreve (o número é o mesmo).
+ */
+export function atributoDoProjetilNatural(at: Num): 'vigor' | 'destreza' | 'percepcao' {
+    const v = at.vigor ?? 0, d = at.destreza ?? 0, p = at.percepcao ?? 0;
+    return v >= d && v >= p ? 'vigor' : d >= p ? 'destreza' : 'percepcao';
+}
+/**
+ * O Atributo da jogada pela Habilidade: Disparo, Vigor; Atirador, Percepção (com arma) ou o maior entre Vigor, Destreza
+ * e Percepção (ataque natural, D-315); Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208).
+ */
+export function atributoDaJogada(habilidade: string, at: Num, natural = false): number {
     if (habilidade === 'disparo')
         return at.vigor ?? 0;
     if (habilidade === 'atirador')
-        return at.percepcao ?? 0;
+        return natural ? (at[atributoDoProjetilNatural(at)] ?? 0) : at.percepcao ?? 0;
     if (habilidade === 'arremesso')
         return at.destreza ?? 0;
     return Math.max(at.forca ?? 0, at.destreza ?? 0);
@@ -673,7 +685,7 @@ export function criatura(e: EntradaCriatura) {
                 nome: a.nome, acerto, habilidade: h,
                 velocidade: w ? w.velocidade : a.pgr ? a.pgr[0] + a.pgr[1] + a.pgr[2] : null,
                 danoMedio: w ? danoMedio(w.dado, w.forca, w.multiplicadorForca, ce) : danoMedio(a.dado ?? null, at.forca ?? 0, a.multiplicadorForca ?? 0, ce),
-                jogada: h ? atributoDaJogada(h, at) + hv + centelhaNaJogada(ce, hv) + acerto : null,
+                jogada: h ? atributoDaJogada(h, at, !w) + hv + centelhaNaJogada(ce, hv) + acerto : null,
             };
         }),
     };
@@ -796,8 +808,9 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const pecas: any[] = [];
     const ataques = c.ataques.map((a: any, i: number) => {
         const w: any = armaDe(a), h = r.ataques[i].habilidade, hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
-        const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? 'percepcao' : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
-        const soma = h ? M.atributoDaJogada(h, c.atributos) + hv : 0;
+        const natural = !a.arma;
+        const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? (natural ? atributoDoProjetilNatural(c.atributos) : 'percepcao') : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
+        const soma = h ? M.atributoDaJogada(h, c.atributos, natural) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);
         const wd = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca) : null;
         const dado = wd?.dado ?? a.dado;

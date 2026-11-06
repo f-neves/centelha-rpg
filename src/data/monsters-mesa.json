@@ -29277,7 +29277,7 @@
     },
     {
      "nome": "Sopro elemental",
-     "pool": "2d6 +4",
+     "pool": "3d6 +4",
      "dano": "2d6 +2 (fogo)",
      "perfArma": null,
      "speed": 7,

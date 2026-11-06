@@ -17479,14 +17479,14 @@
       },
       {
         "nome": "Sopro elemental",
-        "atrib": "percepcao",
+        "atrib": "destreza",
         "pericia": "atirador",
         "dado": 2,
         "tipo": "fogo",
         "classe": "distancia",
         "ticks": 7,
         "acerto": 0,
-        "pool": "2d6 +4",
+        "pool": "3d6 +4",
         "dano": "2d6 +2 (fogo)",
         "perfArma": null,
         "forcaInvestida": 0
