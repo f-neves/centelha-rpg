@@ -3576,6 +3576,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído. As duas notas de tela que ainda dizem "até se recompor" (`combate-tempo.ts` e `grid.astro`) ficam no N23 (D-054).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04/11/2026 (tema 08, imunidades, e as perguntas da Bestiarista e da Revisora).
 - Estado: **no ar** desde 04/11/2026 (branch `regras-r21-r25`, publicada em `c11d5e9b`).
+- **Completada pela D-352** (06/11/2026): a Técnica Recompor-se ganha "Não é o Recompor do Abalado (Condições).", sem renomear.
 
 ### D-304 · R26: Quem não dorme não pode ser posto para dormir [tags: bestiario, criatura, sono, dormindo, constructo, morto-vivo, elemental, imunidade, d-298, d-299, d-292]
 - Data: 2026-11-04
@@ -3719,6 +3720,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+- **Completada pela D-352** (06/11/2026): "Derrubar sem matar" ganha "(não é a Manobra)", e a arma de corte usada de lado fere de Impacto.
 
 ### D-319 · R40: Atropelar e Pisoteio: 3 Ticks de Preparação, Golpe a cada Tick correndo, 3 de Recuperação; Esquivar ou Parar [tags: combate, atropelar, pisoteio, forca, atributo-puro, tamanho, caido, centelha]
 - Data: 2026-11-05
@@ -3997,6 +3999,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: **muda a D-319 (R40)** no dano: o "dano de Encontrão" era erro de redação de Claude.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+- **Completada pela D-352** (06/11/2026): contra quem não se defende, a Margem do dano do atropelamento é contra 0.
 
 ### D-341 · P6: a prata e o lobisomem: o exemplo sai da fraqueza das Artes; o lobisomem fica com a R50 e a R47 [tags: artes, fraqueza, resistencia, prata, lobisomem, d-329, d-326]
 - Data: 2026-11-05
@@ -4061,6 +4064,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Redação corrigida (autor, 05/11/2026): no acréscimo da L4, "como nas categorias acima" passa a "como nas categorias abaixo", porque as categorias vêm depois do parágrafo de abertura; o erro de redação foi de Claude.
 - **Completada pela D-347** (05/11/2026): K7, o "o Mestre decide quais" de `combate.md` passa a remeter à L1; K8, a L3 vale no sistema P/G/R, e no Normal o atordoamento no Preparo ainda não tem regra. E pela D-348: C1, C2 e C6.
 - **Completada pela D-349** (C5, 05/11/2026): o Inconsciente segue a L2: zera só as Defesas Físicas, e a Mental continua.
+- **Completada pela D-352** (06/11/2026): Caído e "sem equilíbrio" são da mesma família, o equilíbrio do corpo, e não somam (L1).
 
 ### D-346 · Triagem da Leitora: os itens aplicados sem pergunta [tags: condicoes, poderes, painel, atordoado, atributo-enfraquecido, paralisado, petrificacao, cego, dominado, confuso, sono, leitora, d-284, d-291, d-294, d-282, d-001]
 - Data: 2026-11-05
