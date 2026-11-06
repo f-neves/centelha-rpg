@@ -20,47 +20,55 @@ const P3 = { 'golem-de-ferro': /^sopro de gás venenoso$/i, homunculus: /^ferrã
 // Negações que não são custo: "sem Energia", "sem gastar Mana", "não custa Energia".
 const semCusto = /\bsem (?:gastar |pagar |custo (?:em |de )?)?(?:Energia|Mana)(?: (?:nem|ou) (?:Energia|Mana))?\b|\bnão (?:custa|gasta|paga|exige)[^.;]{0,20}\b(?:Energia|Mana)\b/gi;
 
-export function validarPoderes(c, erro) {
+// Quem não tem número de uso ainda ("sem regra ainda") recebe AVISO, e não erro, até a Bestiarista preencher (autor, 06/11/2026).
+export function validarPoderes(c, erro, aviso = () => {}) {
   const substancias = c.habilidadesEspeciais.filter(h => h.categoria === 'substancia');
   for (const [i,h] of c.habilidadesEspeciais.entries()) {
     // Manobra do livro (agarrar, derrubar) não é poder: só entra quem tem categoria ou base.
     if (h.classe === 'livro' && !h.categoria && !h.base) continue;
     const problema = (campo,msg) => erro(['habilidadesEspeciais',i,campo],h.nome+': '+msg);
+    const avisar = (campo,msg) => aviso(['habilidadesEspeciais',i,campo],h.nome+': '+msg);
     if (!h.categoria) problema('categoria','poder exige categoria');
     const pendente = h.classe === 'sem regra ainda';
-    // Os números (doses, usos grátis, limite fixo) se cobram da regra escrita na ficha; a do livro e a pendente já têm dono.
+    // Os números (doses, usos grátis, limite fixo) se cobram da regra escrita na ficha como erro; da "sem regra ainda",
+    // como aviso (R1; autor, 06/11/2026); a do livro tem os números no livro.
     const daFicha = h.classe === 'regra da ficha';
+    const numeros = daFicha ? problema : pendente ? avisar : null;
     const campo = pendente ? 'efeito' : 'limiteDeUso';
     const uso = h[campo] || '';
     const regra = [h.ativacao,h.efeito,h.limiteDeUso].filter(Boolean).join('. ');
     const afirmativo = regra
       .replace(/\bsem (?:uso extra nem ampliação|usos? extras?|ampliação)\b/gi,'')
       .replace(/\bnunca se (?:compra uso extra nem se amplia|amplia)\b/gi,'')
-      .replace(semCusto,'');
+      .replace(semCusto,'')
+      // A comparação com a Técnica do livro não é custo do poder ("a Técnica do livro é ativa e custa Energia"; autor, 06/11/2026).
+      .replace(/[^.;]*\bTécnica do livro\b[^.;]*/giu,'');
     const alvoP3 = Object.entries(P3).some(([id,re]) => id === c.id && re.test(h.nome.trim()));
     if (alvoP3 && h.categoria !== 'magia') problema('categoria','P3 exige magia (constructo não produz substância)');
     else if (c.categoria === 'construto' && h.categoria === 'substancia') problema('categoria','constructo não produz substância (C-002, P3)');
     // R4: a recarga em Ticks acabou, para todas as categorias.
-    if (/\b(?:recarga|recarrega)[^.;]{0,35}\b\d+\s*ticks?\b|\b(?:uma vez|um uso|disponível|pode usar) a cada \d+ ticks?\b/i.test(regra) || /a cada \d+ ticks?\b/i.test(h.limiteDeUso || ''))
+    // R33 (D-312): o pulso do enxame, "no máximo uma vez a cada 6 Ticks", é ritmo de dano de área, e não recarga.
+    const semPulso = (s) => c.enxame && /\bpulso\b/iu.test(h.nome) ? s.replace(/\b(?:no máximo )?(?:um pulso|uma vez)(?: por alvo)? a cada 6 ticks\b/giu,'') : s;
+    if (/\b(?:recarga|recarrega)[^.;]{0,35}\b\d+\s*ticks?\b|\b(?:uma vez|um uso|disponível|pode usar) a cada \d+ ticks?\b/i.test(semPulso(regra)) || /a cada \d+ ticks?\b/i.test(semPulso(h.limiteDeUso || '')))
       problema(campo,'recarga em Ticks');
     if (h.categoria && h.categoria !== 'substancia' && voltaPorHora.test(uso))
       problema(campo,'fora das substâncias, nenhum uso volta por hora');
-    if (h.categoria === 'substancia' && daFicha) {
+    if (h.categoria === 'substancia' && numeros) {
       // Efeito que gasta a dose de outra substância da mesma criatura ("parte da mesma dose de X").
       const doseAlheia = /\bdose\b/i.test(uso) && substancias.some(s => s !== h && uso.toLowerCase().includes(s.nome.toLowerCase()));
       if (!doseAlheia) {
-        if (!estoque.test(uso)) problema(campo,'falta o estoque de doses');
-        if (!producao.test(uso)) problema(campo,'falta o tempo de produção de uma dose em horas ou dias');
+        if (!estoque.test(uso)) numeros(campo,'falta o estoque de doses');
+        if (!producao.test(uso)) numeros(campo,'falta o tempo de produção de uma dose em horas ou dias');
       }
     }
-    if (['sobrenatural','magia'].includes(h.categoria) && daFicha && !gratis.test(uso))
-      problema(campo,'falta o número de usos grátis por cena ou dia');
+    if (['sobrenatural','magia'].includes(h.categoria) && numeros && !gratis.test(uso))
+      numeros(campo,'falta o número de usos grátis por cena ou dia');
     if (h.categoria !== 'magia' && /\bampli(?:ar|ação|ado|ada)\b/i.test(afirmativo))
       problema(campo,'somente magia admite ampliação');
     if (h.categoria === 'milagre') {
-      if (daFicha && !fixo.test(uso)) problema(campo,'falta limite fixo por dia, semana ou história');
-      if (daFicha && (!/ped(?:e|ido)|solicita|desafi|suplic/i.test(regra) || !/aceit|pag[ao]|preço|pacto|dívida|serviço|sacrif/i.test(regra) || !/prepar|concentra|selo|formular|ritual|negocia|minutos|horas/i.test(regra)))
-        problema('ativacao','faltam condições do milagre: pedido, contrapartida ou preparo');
+      if (numeros && !fixo.test(uso)) numeros(campo,'falta limite fixo por dia, semana ou história');
+      if (numeros && (!/ped(?:e|ido)|solicita|desafi|suplic/i.test(regra) || !/aceit|pag[ao]|preço|pacto|dívida|serviço|sacrif/i.test(regra) || !/prepar|concentra|selo|formular|ritual|negocia|minutos|horas/i.test(regra)))
+        numeros('ativacao','faltam condições do milagre: pedido, contrapartida ou preparo');
       if (/\b(?:usos? extras?|usos? adicionais?|repetir|ampliação)\b/i.test(afirmativo)) problema(campo,'milagre não permite uso extra nem ampliação');
     }
     for (const recurso of ['Energia','Mana']) {

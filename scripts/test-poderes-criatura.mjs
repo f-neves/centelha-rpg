@@ -84,6 +84,26 @@ ok(erros(poder('substancia', SUBST, { nome: 'Óleo corrosivo' }), { id: 'golem-d
 ok(erros(poder('substancia', SUBST, { nome: 'Óleo corrosivo' }), { id: 'lesma', categoria: 'animal' }).length === 0, 'a mesma substância num animal passa');
 ok(erros(poder('magia', GRATIS, { nome: 'Óleo corrosivo' }), { id: 'golem-de-pedra', categoria: 'construto' }).length === 0, 'constructo com o mesmo poder como magia passa');
 
+console.log('ajustes do autor de 06/11/2026');
+const VISAO = 'o babau enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia.';
+passa(poder('inato', '', { classe: 'sem regra ainda', efeito: VISAO, nome: 'visão verdadeira sempre ativa' }), 'a menção à Técnica do livro não é custo do poder');
+falha(poder('inato', '', { classe: 'sem regra ainda', efeito: 'enxerga o invisível; cada uso custa 1 de Energia', nome: 'visão verdadeira' }), 'não permite custo em Energia', 'inato que custa Energia sem citar a Técnica continua falhando');
+const PULSO = 'no máximo um pulso por alvo a cada 6 Ticks, sem custo';
+const ENXAME = { enxame: { individuosPorQuadrado: 20, tamanhoEquivalente: 'pequeno' } };
+passa(poder('inato', PULSO, { nome: 'Pulso do enxame' }), 'pulso do enxame a cada 6 Ticks segue a R33', ENXAME);
+falha(poder('inato', PULSO, { nome: 'Pulso do enxame' }), 'recarga em Ticks', 'o mesmo texto fora de enxame é recarga');
+falha(poder('inato', 'no máximo um pulso por alvo a cada 12 Ticks', { nome: 'Pulso do enxame' }), 'recarga em Ticks', 'pulso de enxame fora dos 6 Ticks da R33', ENXAME);
+falha(poder('sobrenatural', 'Usos grátis: 1 por cena. Recarrega em 12 Ticks', { nome: 'Nuvem de ferrões' }), 'recarga em Ticks', 'outro poder do enxame com recarga em Ticks', ENXAME);
+const comAviso = (h) => { const e = [], a = []; validarPoderes({ id: 'teste', centelha: 1, artes: {}, habilidadesEspeciais: [h] }, (p, m) => e.push(m), (p, m) => a.push(m)); return { e, a }; };
+let r1 = comAviso(poder('sobrenatural', '', { classe: 'sem regra ainda', efeito: 'olhar que domina' }));
+ok(r1.e.length === 0 && r1.a.some((x) => x.includes('falta o número de usos grátis')), '"sem regra ainda" sem usos grátis vira aviso, e não erro');
+r1 = comAviso(poder('substancia', '', { classe: 'sem regra ainda', efeito: 'cospe ácido' }));
+ok(r1.e.length === 0 && r1.a.length === 2, '"sem regra ainda" substância sem estoque e produção: dois avisos');
+r1 = comAviso(poder('sobrenatural', 'à vontade'));
+ok(r1.e.some((x) => x.includes('falta o número de usos grátis')) && r1.a.length === 0, '"regra da ficha" sem usos grátis continua erro');
+r1 = comAviso(poder('magia', '', { classe: 'sem regra ainda', efeito: 'Usos grátis: 1 por cena' }));
+ok(r1.e.length === 0 && r1.a.length === 0, '"sem regra ainda" com os números escritos: nem erro nem aviso');
+
 console.log('o esquema e a leitura por ficha');
 const fonte = JSON.parse(fs.readFileSync('src/data/bestiario/golem-de-ferro.json', 'utf8'));
 ok(criaturaAnteriorR03Schema.safeParse(fonte).success, 'fonte de hoje passa na releitura anterior à categoria');

@@ -18,6 +18,7 @@ import { fileURLToPath } from 'node:url';
 import { lerFichaMd, campo, negritos, numBR, semMarcas, slug, idAtributo, idHabilidade } from './lib-ficha-md.mjs';
 import { carregarTS } from './lib-ts.mjs';
 import { criaturaNovaSchema, criaturaAnteriorR03Schema } from './criatura-schema.mjs';
+import { validarPoderes } from './regras-poder-criatura.mjs';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const dado = (f) => JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data', f), 'utf8'));
@@ -808,6 +809,9 @@ function converter(texto, { site = null }, schema) {
     const r = schema.safeParse(c);
     if (!r.success) for (const i of r.error.issues.slice(0, 5)) para(`esquema: ${i.path.join('.')}: ${i.message}`);
   }
+  // Os números de uso que faltam no poder "sem regra ainda" saem como aviso, e não param (autor, 06/11/2026).
+  if (schema === criaturaNovaSchema && Array.isArray(c.habilidadesEspeciais))
+    validarPoderes(c, () => {}, (p, m) => avisos.push(`sem regra ainda, números de uso: ${m}`));
   return { criatura: c, paradas, lacunas: [...new Set(lacunas)], avisos };
 }
 
