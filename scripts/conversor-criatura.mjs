@@ -358,8 +358,15 @@ function converter(texto, { site = null }, schema) {
     const eq = { arsenal: [], armaduras: [] };
     const t = semMarcas(v || 'nenhum').replace(/`/g, '');
     if (t === 'nenhum') return eq;
-    const m = t.match(/^armas: (.+?) · armaduras: (\S+) · escudos: (\S+)/);
+    // D-306 (R28, o veneno na lâmina): a dose é equipamento, e vem em texto ("veneno: 1 dose de veneno do sono drow"),
+    // porque o veneno da criatura nem sempre tem id no venenos.json. Depois dos escudos, só o veneno; outro pedaço para.
+    const m = t.match(/^armas: (.+?) · armaduras: (\S+) · escudos: (\S+?)(?: · (.*))?$/);
     if (!m) { para(`${onde}: Equipamento fora do formato`); return eq; }
+    for (const resto of (m[4] ? m[4].split(' · ') : [])) {
+      const vn = resto.match(/^veneno: (.+)$/);
+      if (vn && eq.veneno === undefined) eq.veneno = semPonto(vn[1].trim());
+      else para(`${onde}: Equipamento com pedaço que o conversor não conhece: "${resto.slice(0, 50)}"`);
+    }
     for (const a of m[1].split(',').map((x) => x.trim()).filter((x) => x !== 'nenhuma')) {
       if (!ARMAS.some((w) => w.id === a)) para(`${onde}: a arma ${a} não está no armas.json`);
       eq.arsenal.push({ ref: `a:${a}` });
@@ -410,7 +417,9 @@ function converter(texto, { site = null }, schema) {
     // D-208 completada pela D-258: o corpo a corpo rola pela maior entre Briga e Armas, que o
     // motor calcula; o JSON só guarda a Habilidade de tiro e arremesso, que escolhe o Atributo.
     if (jog && HAB_DE_LONGE.has(slug(jog[1]))) a.habilidade = slug(jog[1]);
-    else if (cls === 'distancia' || cls === 'arremesso') para(`${onde}, ${nome}: Habilidade de tiro ou arremesso ausente na frase Jogada`);
+    // R36: "Se o jato cobre uma área, não há jogada de ataque: quem está na área se defende". A linha que diz "Sem
+    // jogada de ataque" fica sem Habilidade, e o motor não dá jogada a ela; fora desse caso, a Habilidade é obrigatória.
+    else if ((cls === 'distancia' || cls === 'arremesso') && !/\bSem jogada de ataque\b/i.test(just)) para(`${onde}, ${nome}: Habilidade de tiro ou arremesso ausente na frase Jogada`);
     a.classe = cls;
     const pgr = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/);
     if (!pgr) para(`${onde}, ${nome}: P/G/R ilegível`);
@@ -560,6 +569,9 @@ function converter(texto, { site = null }, schema) {
       const m = parte.match(/^\s*([^:]+):\s*(.+)$/);
       const k = m && { fraquezas: 'fraquezas', resistencias: 'resistencias', imunidades: 'imunidades' }[slug(m[1])];
       if (!k) { para(`${onde}: Elementos fora do formato: "${t.slice(0, 60)}"`); return out; }
+      // "imunidades: nenhuma" (e "resistências: nenhuma", "fraquezas: nenhuma") é a lista vazia, decisão do Arquiteto de
+      // 06/11/2026; qualquer outra palavra fora do vocabulário continua parando
+      if (/^nenhum[a]?$/i.test(m[2].trim())) continue;
       for (const w of m[2].split(',').map((x) => x.trim()).filter(Boolean)) {
         const id = ID_ELEM[slug(w)];
         if (!id) para(`${onde}: "${w}" fora do vocabulário de Elementos`); else out[k].push(id);

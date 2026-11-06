@@ -59230,7 +59230,8 @@
    },
    "equipamento": {
     "arsenal": [],
-    "armaduras": []
+    "armaduras": [],
+    "veneno": "1 dose de veneno do sono drow"
    },
    "artes": {},
    "ataques": [
@@ -59241,60 +59242,94 @@
    ],
    "habilidadesEspeciais": [
     {
-     "nome": "Feitiçaria inata",
-     "formas": "todas",
-     "classe": "regra da ficha",
-     "base": {
-      "arte": "sombra",
-      "nivel": 1
-     },
-     "ativacao": "uma ação, Velocidade 6",
-     "duracao": "até o fim da cena, ou até ele desfazer",
-     "alcance": "18 m",
-     "area": "à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca",
-     "efeito": "as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar",
-     "dano": "nenhum",
-     "resistencia": "esquiva, contra Influência + Manha dele, só para o fogo feérico",
-     "limiteDeUso": "cada um, uma vez por cena"
-    },
-    {
-     "nome": "Veneno do sono",
-     "formas": "todas",
-     "classe": "regra da ficha",
-     "ataque": "Espada curta",
-     "ativacao": "o golpe envenenado que fere",
-     "duracao": "1 hora de sono, ou até alguém sacudir o alvo",
-     "alcance": "o do corpo a corpo",
-     "area": "um alvo",
-     "efeito": "quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar",
-     "dano": "nenhum além do golpe",
-     "resistencia": "corpo, Vigor + Resistência pela regra do veneno",
-     "limiteDeUso": "uma dose por lâmina, preparada antes da luta"
-    },
-    {
      "nome": "Sensibilidade à luz",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
-     "duracao": "enquanto estiver na luz forte",
+     "duracao": "enquanto durar a exposição",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "fica Ofuscado",
+     "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "nenhum"
+     "limiteDeUso": "nenhum. Sem custo"
     },
     {
      "nome": "Resiliência mental",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "texto": "Resiliência mental do Elfo"
     },
     {
      "nome": "Imune ao sono mágico",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "Arte ou poder que faz dormir não o pega"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Ignora sono imposto por Arte ou poder. Sono por cansaço ou veneno segue sua regra",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+     "nome": "Trevas",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "base": {
+      "arte": "sombra",
+      "nivel": 1,
+      "efeito": "manto-de-treva"
+     },
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5",
+     "duracao": "até o fim da cena ou desfazer",
+     "alcance": "18 m",
+     "area": "esfera de 6 m",
+     "efeito": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+    },
+    {
+     "nome": "Luzes dançantes",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "base": {
+      "arte": "luz",
+      "nivel": 1
+     },
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5",
+     "duracao": "até o fim da cena ou desfazer",
+     "alcance": "18 m",
+     "area": "um ponto visível",
+     "efeito": "Cria luzes móveis para iluminar ou enganar",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+    },
+    {
+     "nome": "Fogo feérico",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "base": {
+      "arte": "luz",
+      "nivel": 1
+     },
+     "categoria": "magia",
+     "ativacao": "uma ação, Velocidade 5",
+     "duracao": "até o fim da cena ou desfazer",
+     "alcance": "18 m",
+     "area": "um alvo",
+     "efeito": "Contorna o alvo de luz e revela a sua posição enquanto durar",
+     "dano": "nenhum",
+     "resistencia": "esquiva, contra Influência + Manha dele",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
     }
    ],
    "comoLuta": [
@@ -59453,6 +59488,7 @@
     "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
+   "veneno": "1 dose de veneno do sono drow",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -59473,86 +59509,10 @@
   },
   "habilidadesEspeciais": [
    {
-    "nome": "Feitiçaria inata",
-    "descricao": "as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar. Ativação: uma ação, Velocidade 6. Duração: até o fim da cena, ou até ele desfazer. Alcance: 18 m. Área: à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca. Dano: nenhum. Resistência: esquiva, contra Influência + Manha dele, só para o fogo feérico. Limite de uso: cada um, uma vez por cena",
-    "classe": "regra da ficha",
-    "base": {
-     "arte": "sombra",
-     "nivel": 1
-    },
-    "texto": "as trevas apagam a luz comum (ele enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar",
-    "campos": [
-     {
-      "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 6"
-     },
-     {
-      "rotulo": "Duração",
-      "valor": "até o fim da cena, ou até ele desfazer"
-     },
-     {
-      "rotulo": "Alcance",
-      "valor": "18 m"
-     },
-     {
-      "rotulo": "Área",
-      "valor": "à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ele quer; ou fogo feérico que contorna um alvo de luz fraca"
-     },
-     {
-      "rotulo": "Dano",
-      "valor": "nenhum"
-     },
-     {
-      "rotulo": "Resistência",
-      "valor": "esquiva, contra Influência + Manha dele, só para o fogo feérico"
-     },
-     {
-      "rotulo": "Limite de uso",
-      "valor": "cada um, uma vez por cena"
-     }
-    ]
-   },
-   {
-    "nome": "Veneno do sono",
-    "descricao": "quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar. Ativação: o golpe envenenado que fere. Duração: 1 hora de sono, ou até alguém sacudir o alvo. Alcance: o do corpo a corpo. Área: um alvo. Dano: nenhum além do golpe. Resistência: corpo, Vigor + Resistência pela regra do veneno. Limite de uso: uma dose por lâmina, preparada antes da luta",
-    "classe": "regra da ficha",
-    "texto": "quem perde os dois pontos do pool do veneno (Veneno e doença) cai Inconsciente, dormindo; é como o drow captura escravos sem matar",
-    "campos": [
-     {
-      "rotulo": "Ativação",
-      "valor": "o golpe envenenado que fere"
-     },
-     {
-      "rotulo": "Duração",
-      "valor": "1 hora de sono, ou até alguém sacudir o alvo"
-     },
-     {
-      "rotulo": "Alcance",
-      "valor": "o do corpo a corpo"
-     },
-     {
-      "rotulo": "Área",
-      "valor": "um alvo"
-     },
-     {
-      "rotulo": "Dano",
-      "valor": "nenhum além do golpe"
-     },
-     {
-      "rotulo": "Resistência",
-      "valor": "corpo, Vigor + Resistência pela regra do veneno"
-     },
-     {
-      "rotulo": "Limite de uso",
-      "valor": "uma dose por lâmina, preparada antes da luta"
-     }
-    ]
-   },
-   {
     "nome": "Sensibilidade à luz",
-    "descricao": "fica Ofuscado. Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto estiver na luz forte. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum",
+    "descricao": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques. Ativação: luz forte (sol, Arte de Luz, lanterna de perto). Duração: enquanto durar a exposição. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Sem custo",
     "classe": "regra da ficha",
-    "texto": "fica Ofuscado",
+    "texto": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -59560,7 +59520,7 @@
      },
      {
       "rotulo": "Duração",
-      "valor": "enquanto estiver na luz forte"
+      "valor": "enquanto durar a exposição"
      },
      {
       "rotulo": "Alcance",
@@ -59580,7 +59540,7 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "nenhum"
+      "valor": "nenhum. Sem custo"
      }
     ]
    },
@@ -59591,8 +59551,160 @@
    },
    {
     "nome": "Imune ao sono mágico",
-    "descricao": "Arte ou poder que faz dormir não o pega",
-    "classe": "sem regra ainda"
+    "descricao": "Ignora sono imposto por Arte ou poder. Sono por cansaço ou veneno segue sua regra. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: Contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Ignora sono imposto por Arte ou poder. Sono por cansaço ou veneno segue sua regra",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Contínuo, sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Trevas",
+    "descricao": "Apaga a luz comum na esfera. A criatura enxerga dentro dela. Ativação: uma ação, Velocidade 5. Duração: até o fim da cena ou desfazer. Alcance: 18 m. Área: esfera de 6 m. Dano: nenhum. Resistência: nenhuma. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
+    "classe": "regra da ficha",
+    "base": {
+     "arte": "sombra",
+     "nivel": 1,
+     "efeito": "manto-de-treva"
+    },
+    "texto": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "uma ação, Velocidade 5"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "até o fim da cena ou desfazer"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "18 m"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "esfera de 6 m"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+     }
+    ]
+   },
+   {
+    "nome": "Luzes dançantes",
+    "descricao": "Cria luzes móveis para iluminar ou enganar. Ativação: uma ação, Velocidade 5. Duração: até o fim da cena ou desfazer. Alcance: 18 m. Área: um ponto visível. Dano: nenhum. Resistência: nenhuma. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
+    "classe": "regra da ficha",
+    "base": {
+     "arte": "luz",
+     "nivel": 1
+    },
+    "texto": "Cria luzes móveis para iluminar ou enganar",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "uma ação, Velocidade 5"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "até o fim da cena ou desfazer"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "18 m"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "um ponto visível"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+     }
+    ]
+   },
+   {
+    "nome": "Fogo feérico",
+    "descricao": "Contorna o alvo de luz e revela a sua posição enquanto durar. Ativação: uma ação, Velocidade 5. Duração: até o fim da cena ou desfazer. Alcance: 18 m. Área: um alvo. Dano: nenhum. Resistência: esquiva, contra Influência + Manha dele. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
+    "classe": "regra da ficha",
+    "base": {
+     "arte": "luz",
+     "nivel": 1
+    },
+    "texto": "Contorna o alvo de luz e revela a sua posição enquanto durar",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "uma ação, Velocidade 5"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "até o fim da cena ou desfazer"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "18 m"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "um alvo"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "esquiva, contra Influência + Manha dele"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+     }
+    ]
    }
   ],
   "comoLuta": [
@@ -85755,6 +85867,7 @@
     "posturaDoTamanho": "de frente"
    },
    "couraca": 2,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 10,
     "destreza": 2,
@@ -85860,11 +85973,12 @@
      "formas": "todas",
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
+     "categoria": "inato",
      "ativacao": "uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação)",
      "duracao": "instantânea",
      "alcance": "até 36 m; acima de 12 m, −2 na jogada",
      "area": "um alvo",
-     "efeito": "a rocha derruba o alvo Médio ou menor que ela fere",
+     "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
      "dano": "2d6 + Força + Centelha, Impacto",
      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
      "limiteDeUso": "enquanto houver rocha ou gelo por perto"
@@ -85872,14 +85986,23 @@
     {
      "nome": "vigor ártico",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "não sofre a exaustão do frio extremo; o livro não tem regra de desgaste pelo frio do ambiente"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Ignora o frio do clima. Dano de gelo e lentidão mágica seguem as regras normais",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
     },
     {
      "nome": "agarrar",
      "formas": "todas",
      "classe": "livro",
      "ataque": "Pancada descomunal",
+     "categoria": "inato",
      "regra": "agarrar"
     }
    ],
@@ -85901,7 +86024,7 @@
     "respiracao": "ar",
     "camuflagem": "na neve e no gelo (Especialidade natural)",
     "mente": "humanoide, violenta e orgulhosa",
-    "tracos": "gigante de 4,3 m de pele clara e cabelo branco como neve, vestido de peles e enfeitado com o saque"
+    "tracos": "gigante de 4,3 m de pele clara e cabelo branco como neve, vestido de peles e enfeitado com o saque. Ignora o frio do clima"
    },
    "aptidoes": {
     "montaria": false,
@@ -85953,12 +86076,7 @@
    "elementos": {
     "fraquezas": [],
     "resistencias": [],
-    "imunidades": [
-     {
-      "tipo": "gelo",
-      "formas": "todas"
-     }
-    ]
+    "imunidades": []
    }
   },
   "id": "gigante-do-gelo",
@@ -86046,15 +86164,13 @@
    "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
-    "impacto": 8,
-    "corte": 1,
-    "perfuracao": 1
+    "impacto": 9,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 2,
-   "imunidades": [
-    "gelo"
-   ],
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -86085,9 +86201,9 @@
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
-    "descricao": "a rocha derruba o alvo Médio ou menor que ela fere. Ativação: uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha ou gelo por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha ou gelo por perto",
     "classe": "regra da ficha",
-    "texto": "a rocha derruba o alvo Médio ou menor que ela fere",
+    "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -86121,8 +86237,39 @@
    },
    {
     "nome": "vigor ártico",
-    "descricao": "não sofre a exaustão do frio extremo; o livro não tem regra de desgaste pelo frio do ambiente",
-    "classe": "sem regra ainda"
+    "descricao": "Ignora o frio do clima. Dano de gelo e lentidão mágica seguem as regras normais. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Ignora o frio do clima. Dano de gelo e lentidão mágica seguem as regras normais",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
    },
    {
     "nome": "agarrar",
@@ -122776,7 +122923,6 @@
     {
      "nome": "Sopro elemental",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -123066,12 +123212,13 @@
     },
     {
      "nome": "Sopro elemental",
-     "pool": "3d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +2 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },

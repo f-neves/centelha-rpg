@@ -333,6 +333,19 @@ console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativa
   confere('R49', 'forma de Couraça 0 herda o perfil e não soma', fo.absorcao.corte, s1.absorcao.corte - tab.rigida.corte);
 }
 
+// R36 no card: o ataque Distância sem Habilidade (área) sai com semJogada, e o de tiro, sem a marca
+{
+  const card = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/bestiario/lobisomem.json'), 'utf8'));
+  const base = { parte: 'boca', classe: 'distancia', pgr: [3, 1, 3], dado: '2d6', multiplicadorForca: 0, tipoDano: 'fogo', nivelPerfuracao: null, acerto: 0, bloqueiaComoArma: null };
+  const v = M.vistaPublicaCriatura({ ...card, formas: undefined, formaPrincipal: undefined, ataques: [...card.ataques, { nome: 'Sopro', ...base }, { nome: 'Cuspe', ...base, habilidade: 'atirador' }] }, false);
+  const at = (n) => v.motor.stat.ataques.find((a) => a.nome === n);
+  confere('R36', 'ataque de área sem jogada tem semJogada', at('Sopro')?.semJogada, true);
+  confere('R36', 'ataque de tiro não tem semJogada', at('Cuspe')?.semJogada, undefined);
+  confere('R36', 'ataque corpo a corpo não tem semJogada', at(card.ataques[0].nome)?.semJogada, undefined);
+  const comVeneno = M.vistaPublicaCriatura({ ...card, formas: undefined, formaPrincipal: undefined, equipamento: { ...card.equipamento, veneno: '1 dose de teste' } }, false);
+  confere('D-306', 'a dose do equipamento chega à vista', comVeneno.motor.veneno, '1 dose de teste');
+}
+
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {
   const porConta = {};

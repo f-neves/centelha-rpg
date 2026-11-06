@@ -34,6 +34,8 @@ const deslocamentoForma = z.object({ terra: passo.nullable().optional(), voo: pa
 const equipamentoNovo = z.object({
   arsenal: z.array(z.object({ ref: z.string().regex(/^[ae]:[a-z0-9-]+$/) }).strict()),
   armaduras: z.array(z.object({ base: id, vestida: z.boolean() }).strict()),
+  // D-306 (R28): a dose de veneno que a criatura carrega para a lâmina, em texto (nem todo veneno tem id no venenos.json)
+  veneno: texto.trim().min(1).optional(),
 }).strict();
 const ataqueNatural = z.object({
   // D-258: só a Habilidade de tiro e arremesso fica no JSON; a de corpo a corpo o motor calcula (a maior entre Briga e Armas)

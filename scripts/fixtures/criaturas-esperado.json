@@ -1,6 +1,6 @@
 {
  "fonte": {
-  "pasta": "tmp/executora/c/fichas-misto",
+  "pasta": "tmp/executora/c2/fichas-misto",
   "data": "2026-11-06",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
@@ -11213,7 +11213,7 @@
    }
   },
   "drow": {
-   "sha256": "74cebd144592d0832c57dae86fd7f3e9cb1551b77a65c07aa9cffcbeea01d6aa",
+   "sha256": "f5252a912a1fa0dd5eaaf57046431721427573c7941b82ff7622fd08ab5843af",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -11258,7 +11258,8 @@
     "artes": {},
     "equipamento": {
      "arsenal": [],
-     "armaduras": []
+     "armaduras": [],
+     "veneno": "1 dose de veneno do sono drow"
     },
     "ataques": [
      {
@@ -16625,7 +16626,7 @@
    }
   },
   "gigante-do-gelo": {
-   "sha256": "56e295e27d7b71f1339c461c54b5cfaa07bc46617b3ca37fbec29131dc8f865c",
+   "sha256": "b50d6fa6235283c1c13909d8a2811f19ec0ce031246ecd039df6f0361b3a9a01",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -16669,6 +16670,7 @@
      "posturaDoTamanho": "de frente"
     },
     "couraca": 2,
+    "perfilCouraca": "couro",
     "artes": {},
     "equipamento": {
      "arsenal": [],
@@ -16723,9 +16725,9 @@
     "iniciativa": 3,
     "mana": null,
     "absorcao": {
-     "impacto": 8,
-     "corte": 1,
-     "perfuracao": 1
+     "impacto": 9,
+     "corte": 3,
+     "perfuracao": 2
     },
     "ataques": [
      {
@@ -24598,7 +24600,7 @@
    }
   },
   "mephit": {
-   "sha256": "3dbbf10c3fa017962f35dc11822ff8d08f3980747aea0961b36652ed5651cdd7",
+   "sha256": "f1c5ebfdd8b4cab555be146bfb18e0f8196bfbd80ef5fe181e767929435249c5",
    "entrada": {
     "categoria": "outsider",
     "centelha": 2,
@@ -24673,7 +24675,6 @@
      {
       "nome": "Sopro elemental",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -24717,8 +24718,7 @@
      {
       "nome": "Sopro elemental",
       "velocidade": 7,
-      "danoMedio": 9,
-      "jogada": 10
+      "danoMedio": 9
      }
     ]
    }

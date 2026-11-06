@@ -494,6 +494,8 @@ export interface EntradaCriatura {
             base: string;
             vestida?: boolean;
         }[];
+        // a dose de veneno carregada para a lâmina (D-306, R28), em texto
+        veneno?: string;
     };
     ataques: AtaqueEntrada[];
 }
@@ -841,6 +843,8 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         return {
             nome: a.nome, atrib, pericia: h, dado: Number(dado?.match(/^\d+/)?.[0] ?? 0), tipo, classe: w?.classe ?? a.classe, ticks: r.ataques[i].velocidade, acerto: r.ataques[i].acerto,
             pool: Math.floor(soma / 2) + 'd6' + (soma % 2 ? '+2' : '') + (acerto ? (acerto > 0 ? ' +' : ' −') + Math.abs(acerto) : ''),
+            // R36: o ataque de área não tem jogada de ataque (quem está na área se defende); o card diz isso no lugar do dado
+            ...(!h && !a.arma && (a.classe === 'distancia' || a.classe === 'arremesso') ? { semJogada: true } : {}),
             dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf, forcaInvestida
         };
     });
@@ -869,7 +873,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     Object.defineProperty(f, 'motor', { value: {
       edicao,
       energia: r.energia, stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
-      couraca: c.couraca ?? 0, ...(c.perfilCouraca ? { perfilCouraca: c.perfilCouraca } : {}), enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
+      couraca: c.couraca ?? 0, ...(c.perfilCouraca ? { perfilCouraca: c.perfilCouraca } : {}), ...(c.equipamento?.veneno ? { veneno: c.equipamento.veneno } : {}), enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
       comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
       // o sentido sem dado nenhum ("faro:" vazio no card; parecer da Veterana, m1) não vai à vista
       sentidos: (c.sentidos || []).filter(vale).filter((s: any) => s.descricao).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),

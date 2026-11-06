@@ -463,6 +463,34 @@ if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrad
   if (!parou(conv(formaCou('Couraça nível 2, perfil escamosa')), 'perfil de Couraça "escamosa"')) falhas.push('R49 na forma: o perfil fora dos três passou');
 }
 
+{
+  // Etapa c2 (decisões do Arquiteto de 06/11/2026, leituras de regra já decidida), plantadas numa cópia do lobisomem.
+  const troca = (de, para_, txt = LOBO) => { if (!txt.includes(de)) falhas.push('c2: a ficha do lobisomem não traz mais "' + de.slice(0, 40) + '"'); return txt.replace(de, para_); };
+  const conv = (txt) => converterFicha(txt, { site: SITE });
+  const parou = (r, trecho) => r.paradas.some((p) => p.includes(trecho));
+  // R36: o ataque Distância que diz "Sem jogada de ataque" (área) fica sem Habilidade e sem jogada; sem a frase, para
+  const SEP = '|---|---|---|---|---|---|---|---|---|---|---|---|\n';
+  const sopro = (just) => troca(SEP, SEP + '| Sopro | boca, à distância | Distância | 3/1/3 | 7 | 2d6 + Centelha (2) | fogo | | +0 | não | 9 | ' + just + ' |\n');
+  let r = conv(sopro('O sopro ocupa um cone de 3 m. Cada alvo resolve a saída de área pelo livro. Sem jogada de ataque'));
+  const s = r.criatura.ataques.find((a) => a.nome === 'Sopro');
+  if (r.paradas.length || !s || s.habilidade !== undefined) falhas.push('R36: o ataque de área sem jogada não entrou sem Habilidade: ' + JSON.stringify([r.paradas, s]));
+  if (lerEsperado(sopro('Sem jogada de ataque')).esperado.ataques.find((a) => a.nome === 'Sopro')?.jogada !== undefined) falhas.push('R36: o leitor da fixture cobrou jogada do ataque de área');
+  if (!parou(conv(sopro('O sopro ocupa um cone de 3 m.')), 'Habilidade de tiro ou arremesso ausente')) falhas.push('R36: Distância sem Habilidade e sem a frase de área passou');
+  // "imunidades: nenhuma" é a lista vazia; outra palavra fora do vocabulário continua parando
+  const elem = (s2) => troca('prata · resistências: corte, perfuração, impacto', 'prata · resistências: corte, perfuração, impacto · imunidades: ' + s2);
+  r = conv(elem('nenhuma'));
+  if (r.paradas.length || JSON.stringify(r.criatura.elementos.imunidades) !== '[]') falhas.push('Elementos: "imunidades: nenhuma" não virou lista vazia: ' + JSON.stringify([r.paradas, r.criatura.elementos]));
+  if (!parou(conv(elem('nada')), '"nada" fora do vocabulário')) falhas.push('Elementos: palavra fora do vocabulário passou');
+  // D-306 (R28): "veneno: <texto>" no Equipamento vai a equipamento.veneno; outro pedaço depois dos escudos para
+  const eq = (resto) => troca('| Equipamento | nenhum |', '| Equipamento | armas: nenhuma · armaduras: nenhuma · escudos: nenhum' + resto + ' |');
+  r = conv(eq(' · veneno: 1 dose de veneno de teste'));
+  if (r.paradas.length || r.criatura.equipamento.veneno !== '1 dose de veneno de teste') falhas.push('D-306: a dose de veneno não chegou ao equipamento: ' + JSON.stringify([r.paradas, r.criatura.equipamento]));
+  r = conv(eq(''));
+  if (r.paradas.length || r.criatura.equipamento.veneno !== undefined) falhas.push('D-306: o Equipamento sem veneno mudou: ' + JSON.stringify([r.paradas, r.criatura.equipamento]));
+  if (!parou(conv(eq(' · bolsa: corda')), 'pedaço que o conversor não conhece')) falhas.push('D-306: o pedaço desconhecido do Equipamento passou calado');
+  if (criaturaNovaSchema.safeParse(conv(eq(' · veneno: 1 dose')).criatura).error?.issues.some((i) => i.path.includes('veneno'))) falhas.push('D-306: o esquema recusou o veneno do equipamento');
+}
+
 if (falhas.length) {
   console.log(`✘ test-conversor: ${falhas.length} falha(s)`);
   for (const f of falhas) console.log(`  · ${f}`);

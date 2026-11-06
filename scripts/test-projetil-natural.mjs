@@ -13,6 +13,12 @@ const esperado = (c, atributo) => atributo + c.habilidades.atirador + M.centelha
 
 // O mephit: Destreza 4 contra Vigor 3 e Percepção 2. Pela Percepção, a jogada saía 2 abaixo.
 const mephit = fonte('mephit');
+// Desde a etapa c2 (06/11/2026) o Sopro elemental do mephit é cone e não tem jogada de ataque (R36: "Se o jato cobre uma
+// área, não há jogada de ataque"), e o JSON não guarda a Habilidade dele. O teste devolve o Atirador ao sopro para
+// medir a regra do projétil com alvo nos Atributos do mephit, como antes.
+const sopro = mephit.ataques.find((a) => a.nome === 'Sopro elemental');
+ok(sopro && sopro.habilidade === undefined, 'mephit: o Sopro elemental é de área, sem a Habilidade no JSON');
+sopro.habilidade = 'atirador';
 ok(jogada(mephit, 'Sopro elemental') === esperado(mephit, 4), `mephit, Sopro elemental: Destreza 4 (jogada ${jogada(mephit, 'Sopro elemental')}, esperado ${esperado(mephit, 4)})`);
 ok(jogada(mephit, 'Sopro elemental') - esperado(mephit, 2) === 2, 'mephit: 2 a mais do que pela Percepção');
 

@@ -11864,9 +11864,9 @@
     "defesaSocial": 6,
     "vontade": 6,
     "soak": {
-      "impacto": 8,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 9,
+      "corte": 3,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -17481,13 +17481,14 @@
       {
         "nome": "Sopro elemental",
         "atrib": "destreza",
-        "pericia": "atirador",
+        "pericia": null,
         "dado": 2,
         "tipo": "fogo",
         "classe": "distancia",
         "ticks": 7,
         "acerto": 0,
-        "pool": "3d6 +4",
+        "pool": "0d6",
+        "semJogada": true,
         "dano": "2d6 +2 (fogo)",
         "perfArma": null,
         "forcaInvestida": 0
