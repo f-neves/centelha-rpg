@@ -2827,7 +2827,6 @@
     {
      "nome": "Cuspe ácido",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -3079,12 +3078,13 @@
     },
     {
      "nome": "Cuspe ácido",
-     "pool": "4d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +2 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -15107,7 +15107,6 @@
     {
      "nome": "Sopro elétrico",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -15356,12 +15355,13 @@
     },
     {
      "nome": "Sopro elétrico",
-     "pool": "5d6 +2",
+     "pool": "0d6",
      "dano": "2d6 +1 (raio)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -19396,7 +19396,6 @@
     {
      "nome": "Rajada cortante",
      "parte": "lamina-de-ar",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       1,
@@ -19438,13 +19437,13 @@
      },
      "ataque": "Rajada cortante",
      "categoria": "magia",
-     "ativacao": "uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe",
+     "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
      "duracao": "instantânea",
      "alcance": "18 m à frente",
      "area": "linha de 18 m",
      "efeito": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
      "dano": "3d6 + Centelha, Corte",
-     "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. corpo, Vigor + Resistência contra a jogada; quem passa leva metade",
+     "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
@@ -19713,12 +19712,13 @@
     },
     {
      "nome": "Rajada cortante",
-     "pool": "4d6 +6",
+     "pool": "0d6",
      "dano": "3d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -19761,7 +19761,7 @@
    },
    {
     "nome": "Rajada cortante",
-    "descricao": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara. Ativação: uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 3d6 + Centelha, Corte. Resistência: sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. corpo, Vigor + Resistência contra a jogada; quem passa leva metade. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "descricao": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: 18 m à frente. Área: linha de 18 m. Dano: 3d6 + Centelha, Corte. Resistência: sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "vento",
@@ -19771,7 +19771,7 @@
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe"
+      "valor": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe"
      },
      {
       "rotulo": "Duração",
@@ -19791,7 +19791,7 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. corpo, Vigor + Resistência contra a jogada; quem passa leva metade"
+      "valor": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro"
      },
      {
       "rotulo": "Limite de uso",
@@ -27116,7 +27116,6 @@
     {
      "nome": "Sopro de fogo",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -27377,12 +27376,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "5d6 +6",
+     "pool": "0d6",
      "dano": "3d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -27609,7 +27609,6 @@
     {
      "nome": "Sopro de fogo",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -27857,12 +27856,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "3d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +2 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -49907,7 +49907,6 @@
     {
      "nome": "Sopro ácido",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -50202,12 +50201,13 @@
     },
     {
      "nome": "Sopro ácido",
-     "pool": "4d6+2 +6",
+     "pool": "0d6",
      "dano": "3d6 +4 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -50569,7 +50569,6 @@
     {
      "nome": "Sopro elétrico",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -50932,12 +50931,13 @@
     },
     {
      "nome": "Sopro elétrico",
-     "pool": "6d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (raio)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -51389,7 +51389,6 @@
     {
      "nome": "Sopro de frio",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -51768,12 +51767,13 @@
     },
     {
      "nome": "Sopro de frio",
-     "pool": "4d6+2 +6",
+     "pool": "0d6",
      "dano": "6d6 +4 (gelo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -52267,7 +52267,6 @@
     {
      "nome": "Sopro de fogo",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -52682,12 +52681,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "7d6 +8",
+     "pool": "0d6",
      "dano": "9d6 +7 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -53503,7 +53503,6 @@
     {
      "nome": "Sopro ácido",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -53840,12 +53839,13 @@
     },
     {
      "nome": "Sopro ácido",
-     "pool": "6d6 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -54264,7 +54264,6 @@
     {
      "nome": "Sopro de fogo",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -54619,12 +54618,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "6d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -55073,7 +55073,6 @@
     {
      "nome": "Sopro de fogo",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -55468,12 +55467,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "8d6 +10",
+     "pool": "0d6",
      "dano": "12d6 +7 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -55998,7 +55998,6 @@
     {
      "nome": "Sopro de fogo",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -56350,12 +56349,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "4d6+2 +6",
+     "pool": "0d6",
      "dano": "6d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -76683,7 +76683,6 @@
     {
      "nome": "Sopro de fogo",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -76991,12 +76990,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "3d6+2 +4",
+     "pool": "0d6",
      "dano": "3d6 +4 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -92230,7 +92230,6 @@
     {
      "nome": "Sopro petrificante",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -92503,12 +92502,13 @@
     },
     {
      "nome": "Sopro petrificante",
-     "pool": "5d6 +4",
+     "pool": "0d6",
      "dano": "nenhum",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -93243,7 +93243,6 @@
     {
      "nome": "Sopro cataclísmico",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -93644,12 +93643,13 @@
     },
     {
      "nome": "Sopro cataclísmico",
-     "pool": "9d6+2 +10",
+     "pool": "0d6",
      "dano": "15d6 +9 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -110922,7 +110922,6 @@
     {
      "nome": "Sopro gélido",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -111259,12 +111258,13 @@
     },
     {
      "nome": "Sopro gélido",
-     "pool": "8d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (gelo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -111694,7 +111694,6 @@
     {
      "nome": "Sopro ácido",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -112088,12 +112087,13 @@
     },
     {
      "nome": "Sopro ácido",
-     "pool": "9d6+2 +10",
+     "pool": "0d6",
      "dano": "9d6 +6 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -112614,7 +112614,6 @@
     {
      "nome": "Sopro de magma",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -112971,12 +112970,13 @@
     },
     {
      "nome": "Sopro de magma",
-     "pool": "7d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -115499,7 +115499,6 @@
     {
      "nome": "Sopro gélido",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -115769,12 +115768,13 @@
     },
     {
      "nome": "Sopro gélido",
-     "pool": "4d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +4 (gelo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -147714,7 +147714,6 @@
     {
      "nome": "Sopro dracônico",
      "parte": "cabeca-de-dragao",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -147998,12 +147997,13 @@
     },
     {
      "nome": "Sopro dracônico",
-     "pool": "4d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +3 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -161363,7 +161363,6 @@
     {
      "nome": "Sopro de vapor",
      "parte": "boca",
-     "habilidade": "atirador",
      "classe": "distancia",
      "pgr": [
       3,
@@ -161646,12 +161645,13 @@
     },
     {
      "nome": "Sopro de vapor",
-     "pool": "5d6 +6",
+     "pool": "0d6",
      "dano": "6d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },

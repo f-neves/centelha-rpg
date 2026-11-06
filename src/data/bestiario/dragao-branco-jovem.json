@@ -135,7 +135,6 @@
     {
       "nome": "Sopro de frio",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

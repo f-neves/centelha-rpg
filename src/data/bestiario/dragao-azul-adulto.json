@@ -155,7 +155,6 @@
     {
       "nome": "Sopro elétrico",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

@@ -116,7 +116,6 @@
     {
       "nome": "Sopro de vapor",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

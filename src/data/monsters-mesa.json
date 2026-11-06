@@ -712,12 +712,13 @@
     },
     {
      "nome": "Cuspe ácido",
-     "pool": "4d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +2 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -3754,12 +3755,13 @@
     },
     {
      "nome": "Sopro elétrico",
-     "pool": "5d6 +2",
+     "pool": "0d6",
      "dano": "2d6 +1 (raio)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -4813,12 +4815,13 @@
     },
     {
      "nome": "Rajada cortante",
-     "pool": "4d6 +6",
+     "pool": "0d6",
      "dano": "3d6 +4 (C)",
      "perfArma": null,
      "speed": 5,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -6867,12 +6870,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "5d6 +6",
+     "pool": "0d6",
      "dano": "3d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -6995,12 +6999,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "3d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +2 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -12171,12 +12176,13 @@
     },
     {
      "nome": "Sopro ácido",
-     "pool": "4d6+2 +6",
+     "pool": "0d6",
      "dano": "3d6 +4 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -12334,12 +12340,13 @@
     },
     {
      "nome": "Sopro elétrico",
-     "pool": "6d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (raio)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -12488,12 +12495,13 @@
     },
     {
      "nome": "Sopro de frio",
-     "pool": "4d6+2 +6",
+     "pool": "0d6",
      "dano": "6d6 +4 (gelo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -12650,12 +12658,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "7d6 +8",
+     "pool": "0d6",
      "dano": "9d6 +7 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -12953,12 +12962,13 @@
     },
     {
      "nome": "Sopro ácido",
-     "pool": "6d6 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -13126,12 +13136,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "6d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -13299,12 +13310,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "8d6 +10",
+     "pool": "0d6",
      "dano": "12d6 +7 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -13457,12 +13469,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "4d6+2 +6",
+     "pool": "0d6",
      "dano": "6d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -18204,12 +18217,13 @@
     },
     {
      "nome": "Sopro de fogo",
-     "pool": "3d6+2 +4",
+     "pool": "0d6",
      "dano": "3d6 +4 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -21732,12 +21746,13 @@
     },
     {
      "nome": "Sopro petrificante",
-     "pool": "5d6 +4",
+     "pool": "0d6",
      "dano": "nenhum",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -22030,12 +22045,13 @@
     },
     {
      "nome": "Sopro cataclísmico",
-     "pool": "9d6+2 +10",
+     "pool": "0d6",
      "dano": "15d6 +9 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -26426,12 +26442,13 @@
     },
     {
      "nome": "Sopro gélido",
-     "pool": "8d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (gelo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -26565,12 +26582,13 @@
     },
     {
      "nome": "Sopro ácido",
-     "pool": "9d6+2 +10",
+     "pool": "0d6",
      "dano": "9d6 +6 (acido)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -26694,12 +26712,13 @@
     },
     {
      "nome": "Sopro de magma",
-     "pool": "7d6+2 +8",
+     "pool": "0d6",
      "dano": "9d6 +6 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -27423,12 +27442,13 @@
     },
     {
      "nome": "Sopro gélido",
-     "pool": "4d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +4 (gelo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -35041,12 +35061,13 @@
     },
     {
      "nome": "Sopro dracônico",
-     "pool": "4d6 +4",
+     "pool": "0d6",
      "dano": "2d6 +3 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },
@@ -38367,12 +38388,13 @@
     },
     {
      "nome": "Sopro de vapor",
-     "pool": "5d6 +6",
+     "pool": "0d6",
      "dano": "6d6 +5 (fogo)",
      "perfArma": null,
      "speed": 7,
      "classe": "distancia",
-     "forcaInvestida": 0
+     "forcaInvestida": 0,
+     "semJogada": true
     }
    ]
   },

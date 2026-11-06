@@ -132,7 +132,6 @@
     {
       "nome": "Sopro dracônico",
       "parte": "cabeca-de-dragao",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

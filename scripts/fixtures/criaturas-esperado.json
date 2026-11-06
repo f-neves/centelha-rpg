@@ -1,6 +1,6 @@
 {
  "fonte": {
-  "pasta": "tmp/executora/e/fichas-misto",
+  "pasta": "tmp/executora/g/fichas-misto",
   "data": "2026-11-06",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
@@ -607,7 +607,7 @@
    }
   },
   "ankheg": {
-   "sha256": "76e83bb728cbe548e892012a3e98f4f9c1ccca5821d87b9db8172d1267118c25",
+   "sha256": "e08d1931f134054daff5a80a0a5585fdd21f142b540aaccfb908dae6b909b8ae",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -677,7 +677,6 @@
      {
       "nome": "Cuspe ácido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -720,8 +719,7 @@
      {
       "nome": "Cuspe ácido",
       "velocidade": 7,
-      "danoMedio": 9,
-      "jogada": 12
+      "danoMedio": 9
      }
     ]
    }
@@ -1129,7 +1127,7 @@
    }
   },
   "arconte-lanterna": {
-   "sha256": "869acef020ab9859d9c918cd627dacd746984c497a128dce12ced144af5aa22c",
+   "sha256": "0d5ff30120897f56ac7e5755e8062bcd1fd3acc590837fa7260a0d4c4efa4cb7",
    "entrada": {
     "categoria": "celestial",
     "centelha": 2,
@@ -2774,7 +2772,7 @@
    }
   },
   "behir": {
-   "sha256": "4b5c2461825579aecb12ef4e264e182c7757d7a8f801f20ec774d0f99b1d59b2",
+   "sha256": "5f84a16d2205064ee55d076839913e143c4a414c21ca34b9d81516d4d4b941af",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -2847,7 +2845,6 @@
      {
       "nome": "Sopro elétrico",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -2890,8 +2887,7 @@
      {
       "nome": "Sopro elétrico",
       "velocidade": 7,
-      "danoMedio": 8,
-      "jogada": 12
+      "danoMedio": 8
      }
     ]
    }
@@ -3744,7 +3740,7 @@
    }
   },
   "bralani": {
-   "sha256": "cfead36c64001f16c324f0002dc267afbf27e9a3cddc16282316f3907d0504ad",
+   "sha256": "a0be2249429cd91969d1af8073c22b372114ca7cb923bfcf07ee2c0cdd855d08",
    "entrada": {
     "categoria": "outsider",
     "centelha": 4,
@@ -3814,7 +3810,6 @@
      {
       "nome": "Rajada cortante",
       "parte": "lamina-de-ar",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        1,
@@ -3857,8 +3852,7 @@
      {
       "nome": "Rajada cortante",
       "velocidade": 5,
-      "danoMedio": 14.5,
-      "jogada": 14
+      "danoMedio": 14.5
      }
     ]
    }
@@ -5172,7 +5166,7 @@
    }
   },
   "cao-de-guerra-nessiano": {
-   "sha256": "b035672120ee70a7261440dba56bb13e8766f18c7e6e10efe2fe860159e00aaf",
+   "sha256": "e94b9be0431af53173f8a90c7d18837ce2efdc9718f45d5da5f3282e79b74014",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -5244,7 +5238,6 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -5287,14 +5280,13 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 15.5,
-      "jogada": 16
+      "danoMedio": 15.5
      }
     ]
    }
   },
   "cao-infernal": {
-   "sha256": "fa0810b175231c627d8b10cca2f4676e4b8702b603397dc2e9217da29d560e32",
+   "sha256": "63afedd62b5b1a03d8c61861b7b81863a1b511cf82c565fe50c68cf48a624e9b",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -5366,7 +5358,6 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -5409,8 +5400,7 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 9,
-      "jogada": 10
+      "danoMedio": 9
      }
     ]
    }
@@ -9585,7 +9575,7 @@
    }
   },
   "dracolisk": {
-   "sha256": "122b3af80d864cd8302c48ccf837462ea5115988b0da2c61b4c7514f632a36bb",
+   "sha256": "fcc531fbe5514a774b27c7b727f25e96ee22aa8bcad102bde2e5f12a541c871e",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -9676,7 +9666,6 @@
      {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -9726,14 +9715,13 @@
      {
       "nome": "Sopro ácido",
       "velocidade": 7,
-      "danoMedio": 14.5,
-      "jogada": 15
+      "danoMedio": 14.5
      }
     ]
    }
   },
   "dragao-azul-adulto": {
-   "sha256": "df9ce3bb00fd57429e9ef43ac174d9a1ac970f6bccc7921cf1842d4fb64ab5b8",
+   "sha256": "b94bb8670c9d8ec012868fd024c17cf84813680b95277ba4760f67f85b236218",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -9848,7 +9836,6 @@
      {
       "nome": "Sopro elétrico",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -9904,14 +9891,13 @@
      {
       "nome": "Sopro elétrico",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 21
+      "danoMedio": 37.5
      }
     ]
    }
   },
   "dragao-branco-jovem": {
-   "sha256": "79400eeccee1dbc48aed8f740c9b8894d778a65fffa0dd25f2826db7b231906a",
+   "sha256": "9beacd9e558daecfeef62e506c12346bf1beadfa2ef2a6915c1367370b9e9bee",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -10010,7 +9996,6 @@
      {
       "nome": "Sopro de frio",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10059,14 +10044,13 @@
      {
       "nome": "Sopro de frio",
       "velocidade": 7,
-      "danoMedio": 25,
-      "jogada": 15
+      "danoMedio": 25
      }
     ]
    }
   },
   "dragao-dourado-adulto": {
-   "sha256": "c47862d20082f8552e01cccd6c6db8ffdeedc04469c3d3363759179c8a8b95d7",
+   "sha256": "706b8d8a3942949602751cc8d3fa77bf607a8cbb96a4e8eb0c6b9c3eba14c0fe",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10170,7 +10154,6 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10220,8 +10203,7 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 38.5,
-      "jogada": 22
+      "danoMedio": 38.5
      }
     ]
    },
@@ -10244,7 +10226,7 @@
    }
   },
   "dragao-verde-adulto": {
-   "sha256": "3fb6583b9142036246d0f1c1f42a922effdfb9356f0ff5bb612754daaad405b5",
+   "sha256": "3624b42d290f3eefd2177c8f4ba58341d2a0c30620e9b40c0b6f1002a29fe9fa",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10345,7 +10327,6 @@
      {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10395,14 +10376,13 @@
      {
       "nome": "Sopro ácido",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 20
+      "danoMedio": 37.5
      }
     ]
    }
   },
   "dragao-vermelho-adulto": {
-   "sha256": "183567a6a8b27eda89fdc5f7052aa80547507bd48294db53a5582836d701b3fc",
+   "sha256": "0d4b5a040f00359368719f4332fdddf77e6154d5c13984d3b870f36ae24da455",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -10520,7 +10500,6 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10576,14 +10555,13 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 21
+      "danoMedio": 37.5
      }
     ]
    }
   },
   "dragao-vermelho-anciao": {
-   "sha256": "9983bd3b06f7bbedf323f3bda1f72e080c69a4a2d13b412e95ffc78458587f07",
+   "sha256": "8d6a968a0f03ef27dbb502b92710f7209097e4d0a399bf0808512bfd8565a6f6",
    "entrada": {
     "categoria": "dragao",
     "centelha": 7,
@@ -10702,7 +10680,6 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10758,14 +10735,13 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 49,
-      "jogada": 26
+      "danoMedio": 49
      }
     ]
    }
   },
   "dragao-vermelho-jovem": {
-   "sha256": "02342033a78b85c6a1ab77c2907f84f1b443349dee054ac288d5737d1b2cf0df",
+   "sha256": "896700c275ada94c739df1dcb68e2b8ce2d99042f940089b5969b2af0dc6b4ab",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -10864,7 +10840,6 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -10914,8 +10889,7 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 26,
-      "jogada": 15
+      "danoMedio": 26
      }
     ]
    }
@@ -14747,7 +14721,7 @@
    }
   },
   "filhote-de-dragao-vermelho": {
-   "sha256": "46b30012ea28d0324ed3388d28d13e2536af3bcf991e356683bb50030522c3c1",
+   "sha256": "70cec5231353b23eae10e65929fb7a736704a15c4e6ac5be8c9007a46f8a7a84",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
@@ -14846,7 +14820,6 @@
      {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -14896,8 +14869,7 @@
      {
       "nome": "Sopro de fogo",
       "velocidade": 7,
-      "danoMedio": 14.5,
-      "jogada": 11
+      "danoMedio": 14.5
      }
     ]
    }
@@ -17911,7 +17883,7 @@
    }
   },
   "gorgona-touro-de-ferro": {
-   "sha256": "6d8206e9ecea1dbdac374020bdb9dba54c38fa3760827d0aec7033bb26852b3f",
+   "sha256": "93f59a4034732e46f7c12873ee0e19b7a41d489e0328490fcae4839196b2bbac",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -17997,7 +17969,6 @@
      {
       "nome": "Sopro petrificante",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -18046,8 +18017,7 @@
      {
       "nome": "Sopro petrificante",
       "velocidade": 7,
-      "danoMedio": 0,
-      "jogada": 14
+      "danoMedio": 0
      }
     ]
    }
@@ -18176,7 +18146,7 @@
    }
   },
   "grande-wyrm-vermelho": {
-   "sha256": "98775bc47790e044112f6b5647d9748aa7a1e91f357a0fcb83928fb88de421e7",
+   "sha256": "17e42ce24d2d48e87b8bda47dc2cfe39374bbff81e5a171afd40113c8c9402c3",
    "entrada": {
     "categoria": "dragao",
     "centelha": 9,
@@ -18311,7 +18281,6 @@
      {
       "nome": "Sopro cataclísmico",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -18373,8 +18342,7 @@
      {
       "nome": "Sopro cataclísmico",
       "velocidade": 7,
-      "danoMedio": 61.5,
-      "jogada": 29
+      "danoMedio": 61.5
      }
     ]
    }
@@ -20828,7 +20796,7 @@
    }
   },
   "lagarto-eletrico": {
-   "sha256": "a9cbb29c2bdd46776189f6b6f4245db15147bb39e41cf177deba94bacc1b4188",
+   "sha256": "f4c671cbcd85ceb019cfb2cbc651f1591c5ca5d6b1d7f1b18a5bad74f585d9b8",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -22035,7 +22003,7 @@
    }
   },
   "linnorm-do-gelo": {
-   "sha256": "7f736dd8dd1c15f4ceaf703b5775621d7887a02bd179dfdcd814bd2287f9677e",
+   "sha256": "74f2e7d2570c7b29abebafd8522dffce521d244f88fd02dde54f346c063c6951",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22121,7 +22089,6 @@
      {
       "nome": "Sopro gélido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -22170,14 +22137,13 @@
      {
       "nome": "Sopro gélido",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 25
+      "danoMedio": 37.5
      }
     ]
    }
   },
   "linnorm-dos-lagos": {
-   "sha256": "ada16442f12ea300de6e22662d9c7b5a6ce3172815c5eee6c19c51bd24d63ba6",
+   "sha256": "edece7671b778ed2521335344060ef31367087e5b5614c455f8fc8e807fb5500",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22276,7 +22242,6 @@
      {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -22331,14 +22296,13 @@
      {
       "nome": "Sopro ácido",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 29
+      "danoMedio": 37.5
      }
     ]
    }
   },
   "linnorm-dos-penhascos": {
-   "sha256": "f9145eaa5423f65544ece985af6070954f1396f5be0c88ecb34a061fbb821f21",
+   "sha256": "96d6d020a0de49b9abc2657a52e9f2479dfc6281038a38759025d93e888ce0b5",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22425,7 +22389,6 @@
      {
       "nome": "Sopro de magma",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -22475,8 +22438,7 @@
      {
       "nome": "Sopro de magma",
       "velocidade": 7,
-      "danoMedio": 37.5,
-      "jogada": 23
+      "danoMedio": 37.5
      }
     ]
    }
@@ -22782,7 +22744,7 @@
    }
   },
   "lobo-do-inverno": {
-   "sha256": "6eee2d736943f0a2fdc42903c2ba4809fb6eb18181afdbe822d5828f1e5a682a",
+   "sha256": "2895e73ef9dd3d97d9a95e50aa69ee968c59009a49e50eeac239f8ba724eaca8",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 4,
@@ -22856,7 +22818,6 @@
      {
       "nome": "Sopro gélido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -22899,8 +22860,7 @@
      {
       "nome": "Sopro gélido",
       "velocidade": 7,
-      "danoMedio": 11,
-      "jogada": 12
+      "danoMedio": 11
      }
     ]
    }
@@ -23805,7 +23765,7 @@
    }
   },
   "manticora": {
-   "sha256": "1f0fdfbe19cb1c3a7a0312fa1f94201819ca079838139e275dbf4b2655fd6567",
+   "sha256": "44579eed0b3c7021b7fe7809400eeddc67c158afa2abce1ec4d2eff508f46629",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 0,
@@ -29408,7 +29368,7 @@
    }
   },
   "quimera": {
-   "sha256": "bf1e216538721c8dab2e629f01d1743ba57ff7872b15ce7a3e628de3ee72b762",
+   "sha256": "60872a4732ff687e2bb4ee49be6a0eb008a835318d6b4abc24b0c91f14d3a616",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 3,
@@ -29518,7 +29478,6 @@
      {
       "nome": "Sopro dracônico",
       "parte": "cabeca-de-dragao",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -29574,8 +29533,7 @@
      {
       "nome": "Sopro dracônico",
       "velocidade": 7,
-      "danoMedio": 10,
-      "jogada": 12
+      "danoMedio": 10
      }
     ]
    }
@@ -32303,7 +32261,7 @@
    }
   },
   "tartaruga-dragao": {
-   "sha256": "46b1e2185e298671e981d557edaa69ee47343bd97c2ab94a8a2711ea01c9a7c8",
+   "sha256": "ad5c46b9c94202e76152e4b5fa14e7c72a53af1376c7a3bc2d152dc7bef30166",
    "entrada": {
     "categoria": "dragao",
     "centelha": 5,
@@ -32389,7 +32347,6 @@
      {
       "nome": "Sopro de vapor",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -32438,8 +32395,7 @@
      {
       "nome": "Sopro de vapor",
       "velocidade": 7,
-      "danoMedio": 26,
-      "jogada": 16
+      "danoMedio": 26
      }
     ]
    }

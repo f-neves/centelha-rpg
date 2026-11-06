@@ -99,7 +99,6 @@
     {
       "nome": "Sopro de fogo",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

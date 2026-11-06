@@ -139,7 +139,6 @@
     {
       "nome": "Sopro ácido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

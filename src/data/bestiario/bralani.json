@@ -104,7 +104,6 @@
     {
       "nome": "Rajada cortante",
       "parte": "lamina-de-ar",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         1,
@@ -146,13 +145,13 @@
       },
       "ataque": "Rajada cortante",
       "categoria": "magia",
-      "ativacao": "uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "18 m à frente",
       "area": "linha de 18 m",
       "efeito": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, Corte",
-      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro. corpo, Vigor + Resistência contra a jogada; quem passa leva metade",
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
       "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {

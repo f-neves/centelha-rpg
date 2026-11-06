@@ -105,7 +105,6 @@
     {
       "nome": "Sopro petrificante",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

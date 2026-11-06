@@ -108,7 +108,6 @@
     {
       "nome": "Sopro gélido",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,

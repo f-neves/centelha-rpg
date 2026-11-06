@@ -172,7 +172,6 @@
     {
       "nome": "Sopro cataclísmico",
       "parte": "boca",
-      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
