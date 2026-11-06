@@ -9,7 +9,7 @@ import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { carimbar } from './carimbo.mjs';
 
 // O caminho vinha cravado no Edge do Windows, e o teste saia com codigo 2 em
@@ -32,7 +32,7 @@ const ok = (cond, msg, extra) => {
 const perto = (a, b, tol) => Math.abs(a-b) <= tol;
 
 async function main() {
-  const br = await puppeteer.launch({ executablePath: EDGE, headless: VER ? false : 'new', args: ['--no-sandbox'] });
+  const br = await abrirNavegador(puppeteer, { executablePath: EDGE, headless: VER ? false : 'new', args: ['--no-sandbox'] });
   const p = await br.newPage();
   const erros = [];
   p.on('pageerror', e => erros.push(String(e)));

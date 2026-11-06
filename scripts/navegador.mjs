@@ -57,6 +57,34 @@ export const acharNavegador = () =>
  *
  * @param {string} nome como o teste se chama na saída, para a linha do PULADO.
  */
+/**
+ * Abre o navegador com espera maior e novas tentativas.
+ *
+ * No runner do GitHub, em 06/11/2026, quatro smokes caíram três vezes ao ABRIR o
+ * Chrome ("Timed out after 30000 ms while waiting for the WS endpoint URL"), antes
+ * de qualquer asserção: o navegador demorou a subir, e o teste nem começou. O
+ * puppeteer espera 30 s por padrão; aqui a espera é de 90 s, e a abertura se
+ * repete até 3 vezes, com 2 s entre elas. Só a ABERTURA se repete: a falha de
+ * um teste depois de aberto continua sendo falha.
+ *
+ * @param {{ launch: (o: object) => Promise<any> }} puppeteer o módulo (ou um falso, no teste)
+ * @param {object} opcoes as opções do `puppeteer.launch`
+ * @param {{ tentativas?: number, espera?: number, pausa?: number }} [config]
+ */
+export async function abrirNavegador(puppeteer, opcoes, { tentativas = 3, espera = 90000, pausa = 2000 } = {}) {
+  let ultimo;
+  for (let i = 1; i <= tentativas; i++) {
+    try {
+      return await puppeteer.launch({ timeout: espera, ...opcoes });
+    } catch (e) {
+      ultimo = e;
+      console.log(`· navegador: a abertura ${i} de ${tentativas} falhou (${String(e?.message || e).split('\n')[0]})`);
+      if (i < tentativas) await new Promise((r) => setTimeout(r, pausa));
+    }
+  }
+  throw ultimo;
+}
+
 export function navegadorOuSair(nome) {
   const nav = acharNavegador();
   if (nav) return nav;

@@ -14,7 +14,7 @@
 //
 //   node scripts/test-l68-foradavez-mesa.mjs
 import puppeteer from 'puppeteer-core';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
 import { carimbar } from './carimbo.mjs';
@@ -65,7 +65,7 @@ const ultimasLinhas = (p, n = 3) => p.evaluate((n) =>
 const posDe = (p, id) => p.evaluate((id) => window.__ESPELHO?.posDe(id), id);
 
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
-const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
+const br = await abrirNavegador(puppeteer, { executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   const p = await br.newPage();
   await p.setViewport({ width: 1400, height: 950 });

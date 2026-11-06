@@ -16,7 +16,7 @@
 //
 //   node scripts/test-l84-caidofila-mesa.mjs
 import puppeteer from 'puppeteer-core';
-import { navegadorOuSair } from './navegador.mjs';
+import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { subirDev } from './dev-server.mjs';
 import { MESA_BANCADA } from './bancada.mjs';
 import { carimbar } from './carimbo.mjs';
@@ -76,7 +76,7 @@ const naLuta = (p) => p.evaluate(() => window.__ESPELHO?.naLuta?.() ?? window.__
 const tickDe = (p, cid) => p.evaluate((cid) => window.__ESPELHO?.acaoDe(cid)?.tick, cid);
 
 const dev = await subirDev({ config: 'astro.bancada.mjs' });
-const br = await puppeteer.launch({ executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
+const br = await abrirNavegador(puppeteer, { executablePath: NAV, headless: 'new', args: ['--no-sandbox'] });
 try {
   const p = await br.newPage();
   await p.setViewport({ width: 1400, height: 950 });
