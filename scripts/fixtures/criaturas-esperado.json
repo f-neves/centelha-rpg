@@ -1,6 +1,6 @@
 {
  "fonte": {
-  "pasta": "tmp/executora/g/fichas-misto",
+  "pasta": "tmp/executora/h/fichas-misto",
   "data": "2026-11-06",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
@@ -9897,7 +9897,7 @@
    }
   },
   "dragao-branco-jovem": {
-   "sha256": "9beacd9e558daecfeef62e506c12346bf1beadfa2ef2a6915c1367370b9e9bee",
+   "sha256": "939fd02ef6aa008a6b632b2a783f14e99cedf75624e5a37523ab7c5ad4ae76da",
    "entrada": {
     "categoria": "dragao",
     "centelha": 4,
