@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -128,36 +129,41 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Investida",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Investida (marrada)",
+      "categoria": "inato",
+      "regra": "investida"
+    },
+    {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "pisotear",
-      "formas": "todas",
-      "classe": "livro",
-      "ataque": "Investida (marrada)",
-      "regra": "investida"
     },
     {
       "nome": "arremessar com os chifres",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Chifrada",
+      "categoria": "inato",
       "regra": "empurrar"
     },
     {
-      "nome": "debandada",
+      "nome": "Atropelar",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "junto de outros bisões, atropela o que estiver à frente com mais força"
+      "classe": "livro",
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [],

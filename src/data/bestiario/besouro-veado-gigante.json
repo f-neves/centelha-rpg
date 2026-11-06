@@ -20,6 +20,7 @@
     "posturaDoTamanho": "de cima, asas abertas"
   },
   "couraca": 4,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 4,
     "destreza": 2,
@@ -103,22 +104,39 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: de cima, asas abertas. Grande: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
-      "nome": "atropelar",
+      "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
-      "regra": "investida"
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [],

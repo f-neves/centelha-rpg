@@ -190,8 +190,11 @@ assert.deepEqual(mi.combate.ataques.map(a=>[a.nome,a.forcaInvestida]),[['Machado
 const naoInveste=mesa.filter(m=>m.combate.ataques.some(a=>['distancia','arremesso'].includes(a.classe)&&a.forcaInvestida!==0));assert.equal(naoInveste.length,0,'golpe de longe com Força a mais: '+naoInveste.map(m=>m.id));
 const best=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const au=best.find(m=>m.id==='auroque').habilidadesEspeciais.find(h=>h.regra==='investida');
 assert.match(au.texto||au.descricao,/Nesta criatura, Investida \(marrada\) investindo: 2d6 \+14 \(I\) \(a Força 7 mais uma vez\)/,'o golpe comum soma a Força uma vez (ficha de 30/10, D-269); investindo, duas');
-const semLiga=best.find(m=>m.id==='besouro-veado-gigante').habilidadesEspeciais.find(h=>h.regra==='investida');assert.match(semLiga.texto||semLiga.descricao,/Nesta criatura: a Força 4 mais uma vez no dano do golpe/);
-const todas=best.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida'));assert.equal(todas.length,37);assert.ok(todas.every(h=>/Nesta criatura/.test(h.texto||h.descricao)),'Investida sem o dano desta criatura');
+const semLiga=best.find(m=>m.id==='centauro').habilidadesEspeciais.find(h=>h.regra==='investida');assert.match(semLiga.texto||semLiga.descricao,/Nesta criatura: a Força 7 mais uma vez no dano do golpe/);
+// 37 até o lote r-retidas-06-11 (L20, D-355): saem 7, o atropelamento lido como Investida em besouro-veado-gigante,
+// braquiossauro, cavalo, estegossauro e pônei (5), o "atropelar" do elefante (fica a "investida que empurra") e, no
+// rinoceronte, "pisotear" e "investida que derruba" viram uma "Investida" só; as 13 ganham o Atropelar do livro. Ficam 30.
+const todas=best.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida'));assert.equal(todas.length,30);assert.ok(todas.every(h=>/Nesta criatura/.test(h.texto||h.descricao)),'Investida sem o dano desta criatura');
 });
 // V2 (D-267): o peso erguido do livro é o da D-184 (a R15, pela massa), em tabela gerada do motor; a tabela por FAH sai.
 cases.set('parecer-V2', async () => {
@@ -343,7 +346,7 @@ const comb=fs.readFileSync('src/content/chapters/combate.md','utf8');const inv=c
 const best=fs.readFileSync('src/pages/bestiario.astro','utf8').split('<span class="lbl">Dano</span>')[1].split('</div>')[0];assert.ok(!/d6/.test(best),'callout Dano do bestiário');
 const T=await carregarTS('src/lib/combate-tempo.ts');const mi=T.MODOS_MOV.find(m=>m.id==='investida');assert.ok(!/d6/.test(mi.nota),mi.nota);assert.match(mi.nota,/Força mais uma vez/);
 const grid=fs.readFileSync('src/pages/mesa/grid.astro','utf8');assert.ok(!/INVESTIDA\.danoDados/.test(grid),'o Grid ainda lê o danoDados da Investida');assert.match(grid,/\? \{ dados: 0, flat: ra\?\.forcaInvestida \?\? 0 \}/);
-const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const todas=mon.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida').map(h=>[m.id,h.descricao]));assert.equal(todas.length,37);
+const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const todas=mon.flatMap(m=>m.habilidadesEspeciais.filter(h=>h.regra==='investida').map(h=>[m.id,h.descricao]));assert.equal(todas.length,30); // 37 antes do lote r-retidas-06-11 (L20, D-355; a conta no P20)
 // O dado a mais, e não a palavra: a ficha pode dizer "sem +1d6" (o lote da Bestiarista de 30/10 já escreve assim na
 // justificativa), e isso não é o card prometendo dado.
 const DADO_A_MAIS=/(?<!sem )\+\d*d6/;assert.ok(DADO_A_MAIS.test('investindo: 3d6 +19 (C) (o +1d6 e a Força 6 mais uma vez)'));assert.ok(DADO_A_MAIS.test('Nesta criatura: +1d6 e a Força 4'));assert.ok(!DADO_A_MAIS.test('soma mais uma Força, sem +1d6 (P20-b)'));assert.ok(!DADO_A_MAIS.test('investindo: 2d6 +19 (C)'));

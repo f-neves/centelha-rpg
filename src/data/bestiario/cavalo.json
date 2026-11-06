@@ -22,6 +22,7 @@
     "cargaMedida": 100
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -119,11 +120,11 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "atropelar",
+      "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
-      "ataque": "Coice",
-      "regra": "investida"
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [
@@ -136,6 +137,11 @@
       "nome": "dócil",
       "formas": "todas",
       "texto": "só briga de fato quando adestrado para o combate; do contrário, foge."
+    },
+    {
+      "nome": "Pisar num alvo",
+      "formas": "todas",
+      "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Coice."
     }
   ],
   "sentidos": [

@@ -143,10 +143,10 @@
       "ataque": "Mandíbulas",
       "categoria": "substancia",
       "ativacao": "uma ação, Velocidade 6, contra quem já está Agarrado na Pinça",
-      "duracao": "até o alvo se soltar ou ele soltar",
+      "duracao": "o Agarrado dura até se soltar ou ele soltar; a perda de Destreza do Curare dura a cena",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa",
+      "efeito": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) uma vez por dose. Após 6 Ticks, uma nova jogada de veneno exige uma nova ação de toque dos tentáculos e o gasto de outra dose da reserva. Permanecer preso não reaplica o Curare",
       "dano": "nenhum",
       "resistencia": "corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2",
       "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno"
@@ -200,14 +200,14 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "categoria": "substancia",
-      "ativacao": "quando o ataque descrito atinge a vítima",
-      "duracao": "6 Ticks",
-      "alcance": "toque, pelo ataque descrito",
-      "area": "a vítima descrita pelo poder",
-      "efeito": "o veneno dos tentáculos paralisa a presa que segura. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "ativacao": "quando o Curare dos tentáculos reduz a Destreza da vítima a 0",
+      "duracao": "pela cena, enquanto a Destreza ficar em 0",
+      "alcance": "toque dos tentáculos",
+      "area": "a vítima da dose",
+      "efeito": "cada dose tem uma única rolagem pela régua de resistir e tira de 0 a 3 de Destreza pela cena. Destreza 0 deixa Paralisado, com Defesas Físicas 0 e mente livre",
       "dano": "nenhum adicional",
-      "resistencia": "pela regra do veneno da ficha",
-      "limiteDeUso": "A paralisia usa a dose já aplicada pelos Tentáculos paralisantes"
+      "resistencia": "pela regra do Curare em Veneno e doença",
+      "limiteDeUso": "usa a mesma dose aplicada pelos Tentáculos paralisantes. Outra rolagem exige novo toque e outra dose"
     }
   ],
   "comoLuta": [
@@ -309,16 +309,8 @@
       "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
-      "campo": "habilidadesEspeciais.paralisia dos tentáculos",
-      "motivo": "R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
       "campo": "ataques",
       "motivo": "Pinça Média e Mandíbulas Leve no lugar das \"Garras e presas\""
-    },
-    {
-      "campo": "habilidadesEspeciais",
-      "motivo": "curare do livro, pelo toque"
     }
   ]
 }

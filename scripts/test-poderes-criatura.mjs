@@ -107,12 +107,12 @@ r1 = comAviso(poder('magia', '', { classe: 'sem regra ainda', efeito: 'Usos grá
 ok(r1.e.length === 0 && r1.a.length === 0, '"sem regra ainda" com os números escritos: nem erro nem aviso');
 
 console.log('o esquema e a leitura por ficha');
-// uma fonte publicada que ainda não traz a categoria dos poderes, com dois poderes ou mais. Era o golem-de-ferro, fixo,
-// até ele entrar pelo lote r35-r54 com a categoria (etapa b, 06/11/2026); agora é a primeira em ordem alfabética.
-const fonteId = fs.readdirSync('src/data/bestiario').filter((a) => a.endsWith('.json')).sort().map((a) => a.slice(0, -5))
-  .find((id) => { const f = JSON.parse(fs.readFileSync('src/data/bestiario/' + id + '.json', 'utf8')); return f.habilidadesEspeciais.length >= 2 && !f.habilidadesEspeciais.some((h) => h.categoria !== undefined); });
-ok(fonteId !== undefined, 'há fonte publicada sem a categoria dos poderes para o teste');
-const fonte = JSON.parse(fs.readFileSync('src/data/bestiario/' + fonteId + '.json', 'utf8'));
+// A fonte de antes da categoria dos poderes (R1). Era o golem-de-ferro publicado; depois, a primeira fonte sem a
+// categoria. Com o lote r-retidas-06-11 (06/11/2026) nenhuma fonte publicada com dois poderes ou mais ficou sem ela, e a
+// fonte de antes passa a ser feita aqui: o golem-de-ferro publicado com a categoria tirada de todos os poderes.
+const fonte = JSON.parse(fs.readFileSync('src/data/bestiario/golem-de-ferro.json', 'utf8'));
+ok(fonte.habilidadesEspeciais.length >= 2 && fonte.habilidadesEspeciais.every((h) => h.categoria !== undefined), 'o golem-de-ferro publicado tem dois poderes ou mais, todos com a categoria');
+for (const h of fonte.habilidadesEspeciais) delete h.categoria;
 ok(criaturaAnteriorR03Schema.safeParse(fonte).success, 'fonte de hoje passa na releitura anterior à categoria');
 ok(!criaturaNovaSchema.safeParse(fonte).success, 'fonte de hoje falha no contrato novo');
 ok(criaturaParaLeituraSchema.safeParse(fonte).success, 'leitura do validate aceita a fonte sem nenhuma categoria');

@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 13,
     "destreza": 2,
@@ -110,19 +111,35 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Investida",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Pisão (ou investida)",
+      "categoria": "inato",
+      "regra": "investida"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
-      "nome": "atropelar",
+      "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
-      "regra": "investida"
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+    {
+      "nome": "Pisar num alvo",
+      "formas": "todas",
+      "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+    }
+  ],
   "sentidos": [
     {
       "nome": "sentidos",
@@ -226,7 +243,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Cobertura: couro de proboscídeo  pelo elefante (18 a 30 mm) e pelo mamute (1,25 a 2,5 cm); a pele do mastodonte não foi achada, e a pelagem espessa das reconstruções é \"provavelmente exagerada\" (Larramendi 2016). Razão do nível (`couraca.mjs`): \"couro grosso pelo elefante e pelo mamute; pele não achada\". Criatura de referência mais próxima: o elefante e o mamute (nível 3). Era Corte 2, Perfuração 2, Nível N0 na v3 (e Impacto 7, com o natural +1)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Cobertura: couro de proboscídeo  pelo elefante (18 a 30 mm) e pelo mamute (1,25 a 2,5 cm); a pele do mastodonte não foi achada, e a pelagem espessa das reconstruções é \"provavelmente exagerada\" (Larramendi 2016). Razão do nível (`couraca.mjs`): \"couro grosso pelo elefante e pelo mamute; pele não achada\". Criatura de referência mais próxima: o elefante e o mamute (nível 3). Era Corte 2, Perfuração 2, Nível N0 na v3 (e Impacto 7, com o natural +1)"
     },
     {
       "campo": "comportamento.social",

@@ -99,6 +99,7 @@
       "nome": "Graça sobrenatural",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -106,7 +107,7 @@
       "efeito": "soma Influência 5 à Defesa Física (Esquiva e Bloqueio) e à Defesa Mental; não altera Defesa Social nem Absorção",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Beleza cegante",
@@ -116,14 +117,15 @@
         "arte": "fascinacao",
         "nivel": 4
       },
+      "categoria": "inato",
       "ativacao": "cruzar o olhar, sem ação adicional da ninfa",
       "duracao": "até o fim da cena",
       "alcance": "9 m",
       "area": "quem cruza seu olhar",
-      "efeito": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque",
+      "efeito": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque. Cego aplica −1d6 nas ações de visão. Se souber do ataque, Esquiva −4 e Bloqueio −8. Se não souber, Surpreso, com Defesas 0",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo; quem passa não fica Cego",
-      "limiteDeUso": "uma resistência por alvo por cena"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não fica Cego",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Fascínio",
@@ -132,19 +134,40 @@
       "tecnica": {
         "id": "beleza-inebriante",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Paralisia de espanto",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua beleza pode deixar quem a contempla incapaz de reagir"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "6 Ticks",
+      "alcance": "até onde vê",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "sua beleza pode deixar quem a contempla incapaz de reagir. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Afinidade com água",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "respira livremente debaixo de água"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "metamorfose",
+        "nivel": 2
+      },
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Respira tanto ar quanto água, sem limite de tempo, pela regra de respiração",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -225,14 +248,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Graça sobrenatural",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Beleza cegante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Compleição física, sem treino de levantar peso"
     },
@@ -247,6 +262,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Paralisia de espanto",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "ataques.Golpe desarmado",

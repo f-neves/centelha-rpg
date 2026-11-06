@@ -8507,6 +8507,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 2,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -8604,29 +8605,33 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Investida",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Investida (marrada)",
+     "categoria": "inato",
+     "regra": "investida"
+    },
+    {
      "nome": "derrubar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "derrubar"
     },
     {
      "nome": "empurrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "empurrar"
     },
     {
-     "nome": "pisotear",
+     "nome": "Atropelar",
      "formas": "todas",
      "classe": "livro",
-     "ataque": "Investida (marrada)",
-     "regra": "investida"
-    },
-    {
-     "nome": "debandada",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "três ou mais avançando lado a lado atropelam o que estiver no caminho, com força redobrada"
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [],
@@ -8770,12 +8775,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 2,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 2,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 7,
@@ -8805,6 +8811,12 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
+    "classe": "livro",
+    "regra": "investida"
+   },
+   {
     "nome": "derrubar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3. Nesta criatura: 5d6 (Força 7 + Briga 3)",
     "classe": "livro",
@@ -8817,15 +8829,9 @@
     "regra": "empurrar"
    },
    {
-    "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
-   },
-   {
-    "nome": "debandada",
-    "descricao": "três ou mais avançando lado a lado atropelam o que estiver no caminho, com força redobrada",
-    "classe": "sem regra ainda"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [],
@@ -15890,6 +15896,7 @@
     "posturaDoTamanho": "de cima, asas abertas"
    },
    "couraca": 4,
+   "perfilCouraca": "rigida",
    "atributos": {
     "forca": 4,
     "destreza": 2,
@@ -15973,22 +15980,39 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Posturas de combate",
+     "formas": "todas",
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Grande: de cima, asas abertas. Grande: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
+    },
+    {
      "nome": "agarrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "agarrar"
     },
     {
      "nome": "derrubar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "derrubar"
     },
     {
-     "nome": "atropelar",
+     "nome": "Atropelar",
      "formas": "todas",
      "classe": "livro",
-     "regra": "investida"
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [],
@@ -16132,12 +16156,13 @@
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
-    "impacto": 4,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "couraca": 4,
+   "perfilCouraca": "rigida",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -16158,6 +16183,42 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Posturas de combate",
+    "descricao": "Grande: de cima, asas abertas. Grande: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Grande: de cima, asas abertas. Grande: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
+   },
+   {
     "nome": "agarrar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão. Nesta criatura: 3d6 +2 (Força 4 + Briga 3)",
     "classe": "livro",
@@ -16170,10 +16231,9 @@
     "regra": "derrubar"
    },
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 4 mais uma vez no dano do golpe",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [],
@@ -16779,6 +16839,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 2,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -16886,36 +16947,41 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Investida",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Investida (marrada)",
+     "categoria": "inato",
+     "regra": "investida"
+    },
+    {
      "nome": "derrubar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "derrubar"
     },
     {
      "nome": "empurrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "empurrar"
-    },
-    {
-     "nome": "pisotear",
-     "formas": "todas",
-     "classe": "livro",
-     "ataque": "Investida (marrada)",
-     "regra": "investida"
     },
     {
      "nome": "arremessar com os chifres",
      "formas": "todas",
      "classe": "livro",
      "ataque": "Chifrada",
+     "categoria": "inato",
      "regra": "empurrar"
     },
     {
-     "nome": "debandada",
+     "nome": "Atropelar",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "junto de outros bisões, atropela o que estiver à frente com mais força"
+     "classe": "livro",
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [],
@@ -17071,12 +17137,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 2,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 2,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -17106,6 +17173,12 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
+    "classe": "livro",
+    "regra": "investida"
+   },
+   {
     "nome": "derrubar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3. Nesta criatura: 4d6 +2 (Força 7 + Briga 2)",
     "classe": "livro",
@@ -17118,21 +17191,15 @@
     "regra": "empurrar"
    },
    {
-    "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
-   },
-   {
     "nome": "arremessar com os chifres",
     "descricao": "Ataque comum contra a Defesa do alvo. O sucesso afasta o alvo 1 m mais 1 m por Margem, para longe de quem empurra",
     "classe": "livro",
     "regra": "empurrar"
    },
    {
-    "nome": "debandada",
-    "descricao": "junto de outros bisões, atropela o que estiver à frente com mais força",
-    "classe": "sem regra ainda"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [],
@@ -18805,6 +18872,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 1,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 7,
     "destreza": 1,
@@ -18902,30 +18970,48 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Investida",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Investida (marrada)",
+     "categoria": "inato",
+     "regra": "investida"
+    },
+    {
      "nome": "derrubar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "derrubar"
     },
     {
      "nome": "empurrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "empurrar"
-    },
-    {
-     "nome": "pisotear",
-     "formas": "todas",
-     "classe": "livro",
-     "ataque": "Investida (marrada)",
-     "regra": "investida"
     },
     {
      "nome": "esmagar contra a cerca",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "regra da ficha",
      "ataque": "Investida (marrada)",
-     "efeito": "prensa o alvo contra cerca, porteira ou parede"
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Ao Empurrar contra um obstáculo que não cede, causa +1d6 de Impacto uma vez por ação. Para manter alguém prensado, deve manter o agarrão",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+     "nome": "Atropelar",
+     "formas": "todas",
+     "classe": "livro",
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [],
@@ -19078,12 +19164,13 @@
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 5,
@@ -19113,6 +19200,12 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
+    "classe": "livro",
+    "regra": "investida"
+   },
+   {
     "nome": "derrubar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3. Nesta criatura: 4d6 +2 (Força 7 + Briga 2)",
     "classe": "livro",
@@ -19125,15 +19218,45 @@
     "regra": "empurrar"
    },
    {
-    "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida (marrada) investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "esmagar contra a cerca",
+    "descricao": "Ao Empurrar contra um obstáculo que não cede, causa +1d6 de Impacto uma vez por ação. Para manter alguém prensado, deve manter o agarrão. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Ao Empurrar contra um obstáculo que não cede, causa +1d6 de Impacto uma vez por ação. Para manter alguém prensado, deve manter o agarrão",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
    },
    {
-    "nome": "esmagar contra a cerca",
-    "descricao": "prensa o alvo contra cerca, porteira ou parede",
-    "classe": "sem regra ainda"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [],
@@ -20102,6 +20225,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 3,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 14,
     "destreza": 1,
@@ -20178,33 +20302,43 @@
      "nome": "empurrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "empurrar"
-    },
-    {
-     "nome": "atropelar",
-     "formas": "todas",
-     "classe": "livro",
-     "ataque": "Pisão",
-     "regra": "investida"
-    },
-    {
-     "nome": "pisoteio",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "ataque": "Pisão",
-     "efeito": "ao avançar, esmaga quem estiver sob as patas; um teste de Vigor reduz o estrago"
     },
     {
      "nome": "rabada",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "golpeia com a cauda longa a certa distância do corpo"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "A parte alcança até 6 m medidos da borda do corpo",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
     },
     {
      "nome": "corpo colossal",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "quase impossível de derrubar ou de empurrar à força"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+     "nome": "Atropelar",
+     "formas": "todas",
+     "classe": "livro",
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [
@@ -20212,6 +20346,11 @@
      "nome": "disputa de machos",
      "formas": "todas",
      "texto": "machos podem disputar em duas patas, embora o corpo seja mal adaptado para ficar de pé."
+    },
+    {
+     "nome": "Pisar num alvo",
+     "formas": "todas",
+     "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão."
     }
    ],
    "sentidos": [],
@@ -20348,12 +20487,13 @@
    "defesaSocial": 6,
    "defesaMental": 6,
    "absorcao": {
-    "impacto": 10,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 12,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 3,
@@ -20380,31 +20520,91 @@
     "regra": "empurrar"
    },
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão investindo: 2d6 +28 (I) (a Força 14 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
-   },
-   {
-    "nome": "pisoteio",
-    "descricao": "ao avançar, esmaga quem estiver sob as patas; um teste de Vigor reduz o estrago",
-    "classe": "sem regra ainda"
-   },
-   {
     "nome": "rabada",
-    "descricao": "golpeia com a cauda longa a certa distância do corpo",
-    "classe": "sem regra ainda"
+    "descricao": "A parte alcança até 6 m medidos da borda do corpo. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "A parte alcança até 6 m medidos da borda do corpo",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
    },
    {
     "nome": "corpo colossal",
-    "descricao": "quase impossível de derrubar ou de empurrar à força",
-    "classe": "sem regra ainda"
+    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [
    {
     "nome": "disputa de machos",
     "texto": "machos podem disputar em duas patas, embora o corpo seja mal adaptado para ficar de pé."
+   },
+   {
+    "nome": "Pisar num alvo",
+    "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão."
    }
   ],
   "sentidos": [],
@@ -31557,6 +31757,7 @@
     "cargaMedida": 100
    },
    "couraca": 1,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -31654,11 +31855,11 @@
    ],
    "habilidadesEspeciais": [
     {
-     "nome": "atropelar",
+     "nome": "Atropelar",
      "formas": "todas",
      "classe": "livro",
-     "ataque": "Coice",
-     "regra": "investida"
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [
@@ -31671,6 +31872,11 @@
      "nome": "dócil",
      "formas": "todas",
      "texto": "só briga de fato quando adestrado para o combate; do contrário, foge."
+    },
+    {
+     "nome": "Pisar num alvo",
+     "formas": "todas",
+     "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Coice."
     }
    ],
    "sentidos": [
@@ -31838,12 +32044,13 @@
    "defesaSocial": 6,
    "defesaMental": 6,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -31873,10 +32080,9 @@
   },
   "habilidadesEspeciais": [
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 2d6 +14 (I) (a Força 7 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [
@@ -31887,6 +32093,10 @@
    {
     "nome": "dócil",
     "texto": "só briga de fato quando adestrado para o combate; do contrário, foge."
+   },
+   {
+    "nome": "Pisar num alvo",
+    "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Coice."
    }
   ],
   "sentidos": [
@@ -32957,10 +33167,10 @@
      "ataque": "Mandíbulas",
      "categoria": "substancia",
      "ativacao": "uma ação, Velocidade 6, contra quem já está Agarrado na Pinça",
-     "duracao": "até o alvo se soltar ou ele soltar",
+     "duracao": "o Agarrado dura até se soltar ou ele soltar; a perda de Destreza do Curare dura a cena",
      "alcance": "o do corpo a corpo",
      "area": "um alvo",
-     "efeito": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa",
+     "efeito": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) uma vez por dose. Após 6 Ticks, uma nova jogada de veneno exige uma nova ação de toque dos tentáculos e o gasto de outra dose da reserva. Permanecer preso não reaplica o Curare",
      "dano": "nenhum",
      "resistencia": "corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2",
      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno"
@@ -33014,14 +33224,14 @@
      "formas": "todas",
      "classe": "regra da ficha",
      "categoria": "substancia",
-     "ativacao": "quando o ataque descrito atinge a vítima",
-     "duracao": "6 Ticks",
-     "alcance": "toque, pelo ataque descrito",
-     "area": "a vítima descrita pelo poder",
-     "efeito": "o veneno dos tentáculos paralisa a presa que segura. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+     "ativacao": "quando o Curare dos tentáculos reduz a Destreza da vítima a 0",
+     "duracao": "pela cena, enquanto a Destreza ficar em 0",
+     "alcance": "toque dos tentáculos",
+     "area": "a vítima da dose",
+     "efeito": "cada dose tem uma única rolagem pela régua de resistir e tira de 0 a 3 de Destreza pela cena. Destreza 0 deixa Paralisado, com Defesas Físicas 0 e mente livre",
      "dano": "nenhum adicional",
-     "resistencia": "pela regra do veneno da ficha",
-     "limiteDeUso": "A paralisia usa a dose já aplicada pelos Tentáculos paralisantes"
+     "resistencia": "pela regra do Curare em Veneno e doença",
+     "limiteDeUso": "usa a mesma dose aplicada pelos Tentáculos paralisantes. Outra rolagem exige novo toque e outra dose"
     }
    ],
    "comoLuta": [
@@ -33217,9 +33427,9 @@
    },
    {
     "nome": "Tentáculos paralisantes",
-    "descricao": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa. Ativação: uma ação, Velocidade 6, contra quem já está Agarrado na Pinça. Duração: até o alvo se soltar ou ele soltar. Alcance: o do corpo a corpo. Área: um alvo. Dano: nenhum. Resistência: corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2. Limite de uso: O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno",
+    "descricao": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) uma vez por dose. Após 6 Ticks, uma nova jogada de veneno exige uma nova ação de toque dos tentáculos e o gasto de outra dose da reserva. Permanecer preso não reaplica o Curare. Ativação: uma ação, Velocidade 6, contra quem já está Agarrado na Pinça. Duração: o Agarrado dura até se soltar ou ele soltar; a perda de Destreza do Curare dura a cena. Alcance: o do corpo a corpo. Área: um alvo. Dano: nenhum. Resistência: corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2. Limite de uso: O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno",
     "classe": "regra da ficha",
-    "texto": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) a cada 6 Ticks que a presa fica presa",
+    "texto": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) uma vez por dose. Após 6 Ticks, uma nova jogada de veneno exige uma nova ação de toque dos tentáculos e o gasto de outra dose da reserva. Permanecer preso não reaplica o Curare",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -33227,7 +33437,7 @@
      },
      {
       "rotulo": "Duração",
-      "valor": "até o alvo se soltar ou ele soltar"
+      "valor": "o Agarrado dura até se soltar ou ele soltar; a perda de Destreza do Curare dura a cena"
      },
      {
       "rotulo": "Alcance",
@@ -33361,25 +33571,25 @@
    },
    {
     "nome": "paralisia dos tentáculos",
-    "descricao": "o veneno dos tentáculos paralisa a presa que segura. A vítima fica Paralisada. Defesas Físicas 0, mente livre. Ativação: quando o ataque descrito atinge a vítima. Duração: 6 Ticks. Alcance: toque, pelo ataque descrito. Área: a vítima descrita pelo poder. Dano: nenhum adicional. Resistência: pela regra do veneno da ficha. Limite de uso: A paralisia usa a dose já aplicada pelos Tentáculos paralisantes",
+    "descricao": "cada dose tem uma única rolagem pela régua de resistir e tira de 0 a 3 de Destreza pela cena. Destreza 0 deixa Paralisado, com Defesas Físicas 0 e mente livre. Ativação: quando o Curare dos tentáculos reduz a Destreza da vítima a 0. Duração: pela cena, enquanto a Destreza ficar em 0. Alcance: toque dos tentáculos. Área: a vítima da dose. Dano: nenhum adicional. Resistência: pela regra do Curare em Veneno e doença. Limite de uso: usa a mesma dose aplicada pelos Tentáculos paralisantes. Outra rolagem exige novo toque e outra dose",
     "classe": "regra da ficha",
-    "texto": "o veneno dos tentáculos paralisa a presa que segura. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+    "texto": "cada dose tem uma única rolagem pela régua de resistir e tira de 0 a 3 de Destreza pela cena. Destreza 0 deixa Paralisado, com Defesas Físicas 0 e mente livre",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "quando o ataque descrito atinge a vítima"
+      "valor": "quando o Curare dos tentáculos reduz a Destreza da vítima a 0"
      },
      {
       "rotulo": "Duração",
-      "valor": "6 Ticks"
+      "valor": "pela cena, enquanto a Destreza ficar em 0"
      },
      {
       "rotulo": "Alcance",
-      "valor": "toque, pelo ataque descrito"
+      "valor": "toque dos tentáculos"
      },
      {
       "rotulo": "Área",
-      "valor": "a vítima descrita pelo poder"
+      "valor": "a vítima da dose"
      },
      {
       "rotulo": "Dano",
@@ -33387,11 +33597,11 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "pela regra do veneno da ficha"
+      "valor": "pela regra do Curare em Veneno e doença"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "A paralisia usa a dose já aplicada pelos Tentáculos paralisantes"
+      "valor": "usa a mesma dose aplicada pelos Tentáculos paralisantes. Outra rolagem exige novo toque e outra dose"
      }
     ]
    }
@@ -61682,6 +61892,7 @@
     "cargaMedida": 540
    },
    "couraca": 3,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 10,
     "destreza": 1,
@@ -61785,46 +61996,67 @@
      "nome": "agarrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "agarrar"
     },
     {
      "nome": "empurrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "empurrar"
-    },
-    {
-     "nome": "atropelar",
-     "formas": "todas",
-     "classe": "livro",
-     "regra": "investida"
     },
     {
      "nome": "arremessar o que agarrou",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "lança o alvo que agarrou com a tromba"
-    },
-    {
-     "nome": "pisoteio em área",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "esmaga quem está sob as patas numa área de uns 3 m"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
     },
     {
      "nome": "investida que empurra",
      "formas": "todas",
      "classe": "livro",
+     "ataque": "Pisão (ou investida)",
+     "categoria": "inato",
      "regra": "investida"
     },
     {
      "nome": "corpo enorme",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "dificilmente cai Prono"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+     "nome": "Atropelar",
+     "formas": "todas",
+     "classe": "livro",
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
-   "comoLuta": [],
+   "comoLuta": [
+    {
+     "nome": "Pisar num alvo",
+     "formas": "todas",
+     "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+    }
+   ],
    "sentidos": [
     {
      "nome": "faro",
@@ -61982,12 +62214,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 9,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 11,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -62029,34 +62262,95 @@
     "regra": "empurrar"
    },
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 10 mais uma vez no dano do golpe",
-    "classe": "livro",
-    "regra": "investida"
-   },
-   {
     "nome": "arremessar o que agarrou",
-    "descricao": "lança o alvo que agarrou com a tromba",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "pisoteio em área",
-    "descricao": "esmaga quem está sob as patas numa área de uns 3 m",
-    "classe": "sem regra ainda"
+    "descricao": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
    },
    {
     "nome": "investida que empurra",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 10 mais uma vez no dano do golpe",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão (ou investida) investindo: 2d6 +20 (I) (a Força 10 mais uma vez)",
     "classe": "livro",
     "regra": "investida"
    },
    {
     "nome": "corpo enorme",
-    "descricao": "dificilmente cai Prono",
-    "classe": "sem regra ainda"
+    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
+   },
+   {
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+   {
+    "nome": "Pisar num alvo",
+    "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+   }
+  ],
   "sentidos": [
    {
     "nome": "faro",
@@ -72087,6 +72381,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 4,
+   "perfilCouraca": "rigida",
    "atributos": {
     "forca": 11,
     "destreza": 1,
@@ -72163,13 +72458,15 @@
      "nome": "derrubar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "derrubar"
     },
     {
-     "nome": "atropelar",
+     "nome": "Atropelar",
      "formas": "todas",
      "classe": "livro",
-     "regra": "investida"
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [],
@@ -72313,12 +72610,13 @@
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
-    "impacto": 10,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 12,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "couraca": 4,
+   "perfilCouraca": "rigida",
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -72345,10 +72643,9 @@
     "regra": "derrubar"
    },
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 11 mais uma vez no dano do golpe",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [],
@@ -118328,6 +118625,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 3,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 13,
     "destreza": 2,
@@ -118425,19 +118723,35 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Investida",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Pisão (ou investida)",
+     "categoria": "inato",
+     "regra": "investida"
+    },
+    {
      "nome": "agarrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "agarrar"
     },
     {
-     "nome": "atropelar",
+     "nome": "Atropelar",
      "formas": "todas",
      "classe": "livro",
-     "regra": "investida"
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
-   "comoLuta": [],
+   "comoLuta": [
+    {
+     "nome": "Pisar num alvo",
+     "formas": "todas",
+     "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+    }
+   ],
    "sentidos": [
     {
      "nome": "sentidos",
@@ -118576,12 +118890,13 @@
    "defesaSocial": 10,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 11,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 13,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -118611,19 +118926,29 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão (ou investida) investindo: 2d6 +26 (I) (a Força 13 mais uma vez)",
+    "classe": "livro",
+    "regra": "investida"
+   },
+   {
     "nome": "agarrar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão. Nesta criatura: 8d6 (Força 13 + Briga 3)",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 13 mais uma vez no dano do golpe",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+   {
+    "nome": "Pisar num alvo",
+    "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+   }
+  ],
   "sentidos": [
    {
     "nome": "sentidos",
@@ -121468,6 +121793,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 3,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 13,
     "destreza": 2,
@@ -121557,19 +121883,35 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Investida",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Pisão (ou investida)",
+     "categoria": "inato",
+     "regra": "investida"
+    },
+    {
      "nome": "agarrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "agarrar"
     },
     {
-     "nome": "atropelar",
+     "nome": "Atropelar",
      "formas": "todas",
      "classe": "livro",
-     "regra": "investida"
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
-   "comoLuta": [],
+   "comoLuta": [
+    {
+     "nome": "Pisar num alvo",
+     "formas": "todas",
+     "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+    }
+   ],
    "sentidos": [
     {
      "nome": "sentidos",
@@ -121714,12 +122056,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 11,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 13,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -121749,19 +122092,29 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Pisão (ou investida) investindo: 2d6 +26 (I) (a Força 13 mais uma vez)",
+    "classe": "livro",
+    "regra": "investida"
+   },
+   {
     "nome": "agarrar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a Defesa de agarrão. O acerto agarra e não fere. Quem controla rola Manter a cada 6 Ticks; o agarrado não age nem rola. Não existe Rajada de agarrão. Nesta criatura: 8d6 (Força 13 + Briga 3)",
     "classe": "livro",
     "regra": "agarrar"
    },
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 13 mais uma vez no dano do golpe",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+   {
+    "nome": "Pisar num alvo",
+    "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão (ou investida)."
+   }
+  ],
   "sentidos": [
    {
     "nome": "sentidos",
@@ -134283,6 +134636,7 @@
      "nome": "Graça sobrenatural",
      "formas": "todas",
      "classe": "regra da ficha",
+     "categoria": "inato",
      "ativacao": "nenhuma; sempre ativa",
      "duracao": "permanente",
      "alcance": "o próprio corpo",
@@ -134290,7 +134644,7 @@
      "efeito": "soma Influência 5 à Defesa Física (Esquiva e Bloqueio) e à Defesa Mental; não altera Defesa Social nem Absorção",
      "dano": "nenhum",
      "resistencia": "nenhum",
-     "limiteDeUso": "nenhum"
+     "limiteDeUso": "nenhum. Sem custo"
     },
     {
      "nome": "Beleza cegante",
@@ -134300,14 +134654,15 @@
       "arte": "fascinacao",
       "nivel": 4
      },
+     "categoria": "inato",
      "ativacao": "cruzar o olhar, sem ação adicional da ninfa",
      "duracao": "até o fim da cena",
      "alcance": "9 m",
      "area": "quem cruza seu olhar",
-     "efeito": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque",
+     "efeito": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque. Cego aplica −1d6 nas ações de visão. Se souber do ataque, Esquiva −4 e Bloqueio −8. Se não souber, Surpreso, com Defesas 0",
      "dano": "nenhum",
-     "resistencia": "mente, contra Influência + Ocultismo; quem passa não fica Cego",
-     "limiteDeUso": "uma resistência por alvo por cena"
+     "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não fica Cego",
+     "limiteDeUso": "Contínuo, sem custo"
     },
     {
      "nome": "Fascínio",
@@ -134316,19 +134671,40 @@
      "tecnica": {
       "id": "beleza-inebriante",
       "nivel": 4
-     }
+     },
+     "categoria": "inato"
     },
     {
      "nome": "Paralisia de espanto",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "sua beleza pode deixar quem a contempla incapaz de reagir"
+     "classe": "regra da ficha",
+     "categoria": "sobrenatural",
+     "ativacao": "uma ação, Velocidade 6",
+     "duracao": "6 Ticks",
+     "alcance": "até onde vê",
+     "area": "a vítima descrita pelo poder",
+     "efeito": "sua beleza pode deixar quem a contempla incapaz de reagir. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+     "dano": "nenhum adicional",
+     "resistencia": "Vigor + Resistência contra Dificuldade 15",
+     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
      "nome": "Afinidade com água",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "respira livremente debaixo de água"
+     "classe": "regra da ficha",
+     "base": {
+      "arte": "metamorfose",
+      "nivel": 2
+     },
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "permanente",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "Respira tanto ar quanto água, sem limite de tempo, pela regra de respiração",
+     "dano": "nenhum adicional",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
     }
    ],
    "comoLuta": [
@@ -134523,7 +134899,7 @@
   "habilidadesEspeciais": [
    {
     "nome": "Graça sobrenatural",
-    "descricao": "soma Influência 5 à Defesa Física (Esquiva e Bloqueio) e à Defesa Mental; não altera Defesa Social nem Absorção. Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum",
+    "descricao": "soma Influência 5 à Defesa Física (Esquiva e Bloqueio) e à Defesa Mental; não altera Defesa Social nem Absorção. Ativação: nenhuma; sempre ativa. Duração: permanente. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. Sem custo",
     "classe": "regra da ficha",
     "texto": "soma Influência 5 à Defesa Física (Esquiva e Bloqueio) e à Defesa Mental; não altera Defesa Social nem Absorção",
     "campos": [
@@ -134553,19 +134929,19 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "nenhum"
+      "valor": "nenhum. Sem custo"
      }
     ]
    },
    {
     "nome": "Beleza cegante",
-    "descricao": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque. Ativação: cruzar o olhar, sem ação adicional da ninfa. Duração: até o fim da cena. Alcance: 9 m. Área: quem cruza seu olhar. Dano: nenhum. Resistência: mente, contra Influência + Ocultismo; quem passa não fica Cego. Limite de uso: uma resistência por alvo por cena",
+    "descricao": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque. Cego aplica −1d6 nas ações de visão. Se souber do ataque, Esquiva −4 e Bloqueio −8. Se não souber, Surpreso, com Defesas 0. Ativação: cruzar o olhar, sem ação adicional da ninfa. Duração: até o fim da cena. Alcance: 9 m. Área: quem cruza seu olhar. Dano: nenhum. Resistência: Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não fica Cego. Limite de uso: Contínuo, sem custo",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 4
     },
-    "texto": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque",
+    "texto": "quem cruza seu olhar fica Cego; desviar o rosto evita o efeito, mas impõe −4 ao ataque. Cego aplica −1d6 nas ações de visão. Se souber do ataque, Esquiva −4 e Bloqueio −8. Se não souber, Surpreso, com Defesas 0",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -134589,11 +134965,11 @@
      },
      {
       "rotulo": "Resistência",
-      "valor": "mente, contra Influência + Ocultismo; quem passa não fica Cego"
+      "valor": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não fica Cego"
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "uma resistência por alvo por cena"
+      "valor": "Contínuo, sem custo"
      }
     ]
    },
@@ -134604,13 +134980,79 @@
    },
    {
     "nome": "Paralisia de espanto",
-    "descricao": "sua beleza pode deixar quem a contempla incapaz de reagir",
-    "classe": "sem regra ainda"
+    "descricao": "sua beleza pode deixar quem a contempla incapaz de reagir. A vítima fica Paralisada. Defesas Físicas 0, mente livre. Ativação: uma ação, Velocidade 6. Duração: 6 Ticks. Alcance: até onde vê. Área: a vítima descrita pelo poder. Dano: nenhum adicional. Resistência: Vigor + Resistência contra Dificuldade 15. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana",
+    "classe": "regra da ficha",
+    "texto": "sua beleza pode deixar quem a contempla incapaz de reagir. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "uma ação, Velocidade 6"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "6 Ticks"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "até onde vê"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a vítima descrita pelo poder"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum adicional"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "Vigor + Resistência contra Dificuldade 15"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
+     }
+    ]
    },
    {
     "nome": "Afinidade com água",
-    "descricao": "respira livremente debaixo de água",
-    "classe": "sem regra ainda"
+    "descricao": "Respira tanto ar quanto água, sem limite de tempo, pela regra de respiração. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum adicional. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "base": {
+     "arte": "metamorfose",
+     "nivel": 2
+    },
+    "texto": "Respira tanto ar quanto água, sem limite de tempo, pela regra de respiração",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "permanente"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum adicional"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
    }
   ],
   "comoLuta": [
@@ -143694,6 +144136,7 @@
     "linhaPVMotivo": "corpo rústico e robusto"
    },
    "couraca": 1,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 6,
     "destreza": 2,
@@ -143791,11 +144234,11 @@
    ],
    "habilidadesEspeciais": [
     {
-     "nome": "atropelar",
+     "nome": "Atropelar",
      "formas": "todas",
      "classe": "livro",
-     "ataque": "Coice",
-     "regra": "investida"
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [
@@ -143808,6 +144251,11 @@
      "nome": "dócil",
      "formas": "todas",
      "texto": "raramente entra em combate, a menos que treinado para isso."
+    },
+    {
+     "nome": "Pisar num alvo",
+     "formas": "todas",
+     "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Coice."
     }
    ],
    "sentidos": [
@@ -143960,12 +144408,13 @@
    "defesaSocial": 6,
    "defesaMental": 6,
    "absorcao": {
-    "impacto": 4,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 5,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -143995,10 +144444,9 @@
   },
   "habilidadesEspeciais": [
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Coice investindo: 2d6 +12 (I) (a Força 6 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [
@@ -144009,6 +144457,10 @@
    {
     "nome": "dócil",
     "texto": "raramente entra em combate, a menos que treinado para isso."
+   },
+   {
+    "nome": "Pisar num alvo",
+    "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Coice."
    }
   ],
   "sentidos": [
@@ -151311,6 +151763,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 4,
+   "perfilCouraca": "couro",
    "atributos": {
     "forca": 8,
     "destreza": 2,
@@ -151408,15 +151861,25 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Investida",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Investida",
+     "categoria": "inato",
+     "regra": "investida"
+    },
+    {
      "nome": "derrubar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "derrubar"
     },
     {
      "nome": "empurrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "empurrar"
     },
     {
@@ -151424,21 +151887,23 @@
      "formas": "todas",
      "classe": "livro",
      "ataque": "Chifrada",
+     "categoria": "inato",
      "regra": "empurrar"
-    },
-    {
-     "nome": "pisotear",
-     "formas": "todas",
-     "classe": "livro",
-     "ataque": "Investida",
-     "regra": "investida"
     },
     {
      "nome": "investida que derruba",
      "formas": "todas",
      "classe": "livro",
      "ataque": "Investida",
-     "regra": "investida"
+     "categoria": "inato",
+     "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada"
+    },
+    {
+     "nome": "Atropelar",
+     "formas": "todas",
+     "classe": "livro",
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [
@@ -151604,12 +152069,13 @@
    "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
-    "impacto": 8,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 10,
+    "corte": 4,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 4,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -151639,6 +152105,12 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +16 (P) · perf. 1 (a Força 8 mais uma vez)",
+    "classe": "livro",
+    "regra": "investida"
+   },
+   {
     "nome": "derrubar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3. Nesta criatura: 5d6 +2 (Força 8 + Briga 3)",
     "classe": "livro",
@@ -151657,16 +152129,14 @@
     "regra": "empurrar"
    },
    {
-    "nome": "pisotear",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +16 (P) · perf. 1 (a Força 8 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "investida que derruba",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
+    "classe": "livro"
    },
    {
-    "nome": "investida que derruba",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida investindo: 2d6 +16 (P) · perf. 1 (a Força 8 mais uma vez)",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [
@@ -164277,6 +164747,7 @@
     "posturaDoTamanho": "vista de lado"
    },
    "couraca": 3,
+   "perfilCouraca": "rigida",
    "atributos": {
     "forca": 11,
     "destreza": 1,
@@ -164366,28 +164837,47 @@
    ],
    "habilidadesEspeciais": [
     {
+     "nome": "Investida",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Investida de chifre",
+     "categoria": "inato",
+     "regra": "investida"
+    },
+    {
      "nome": "derrubar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "derrubar"
     },
     {
      "nome": "empurrar",
      "formas": "todas",
      "classe": "livro",
+     "categoria": "inato",
      "regra": "empurrar"
-    },
-    {
-     "nome": "atropelar",
-     "formas": "todas",
-     "classe": "livro",
-     "regra": "investida"
     },
     {
      "nome": "escudo de osso",
      "formas": "todas",
-     "classe": "sem regra ainda",
-     "efeito": "a gola protege o pescoço; difícil de derrubar ou de empurrar à força"
+     "classe": "regra da ficha",
+     "categoria": "inato",
+     "ativacao": "contínua",
+     "duracao": "enquanto a condição se aplica",
+     "alcance": "o próprio corpo",
+     "area": "a criatura",
+     "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+     "dano": "nenhum",
+     "resistencia": "nenhuma",
+     "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+     "nome": "Atropelar",
+     "formas": "todas",
+     "classe": "livro",
+     "categoria": "inato",
+     "texto": "Atropelar"
     }
    ],
    "comoLuta": [],
@@ -164540,12 +165030,13 @@
    "defesaSocial": 6,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 10,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 12,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "rigida",
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -164575,6 +165066,12 @@
   },
   "habilidadesEspeciais": [
    {
+    "nome": "Investida",
+    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura, Investida de chifre investindo: 2d6 +22 (P) · perf. 1 (a Força 11 mais uma vez)",
+    "classe": "livro",
+    "regra": "investida"
+   },
+   {
     "nome": "derrubar",
     "descricao": "Ataque de Força ou Destreza + Briga contra a melhor Defesa do alvo. O sucesso deixa o alvo Caído; levantar-se é uma ação de Velocidade 3. Nesta criatura: 7d6 (Força 11 + Briga 3)",
     "classe": "livro",
@@ -164587,15 +165084,45 @@
     "regra": "empurrar"
    },
    {
-    "nome": "atropelar",
-    "descricao": "Gaste o Preparo correndo em vez de andando. A Investida soma a Força mais uma vez ao dano, sem dado a mais (uma mão ou o corpo, de × 1 para × 2; arma de duas mãos, de × 2 para × 3; o golpe comum, sem investir, soma a Força como sempre) e aplica −2 adicionais na Defesa durante o Preparo. Nesta criatura: a Força 11 mais uma vez no dano do golpe",
-    "classe": "livro",
-    "regra": "investida"
+    "nome": "escudo de osso",
+    "descricao": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "classe": "regra da ficha",
+    "texto": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+    "campos": [
+     {
+      "rotulo": "Ativação",
+      "valor": "contínua"
+     },
+     {
+      "rotulo": "Duração",
+      "valor": "enquanto a condição se aplica"
+     },
+     {
+      "rotulo": "Alcance",
+      "valor": "o próprio corpo"
+     },
+     {
+      "rotulo": "Área",
+      "valor": "a criatura"
+     },
+     {
+      "rotulo": "Dano",
+      "valor": "nenhum"
+     },
+     {
+      "rotulo": "Resistência",
+      "valor": "nenhuma"
+     },
+     {
+      "rotulo": "Limite de uso",
+      "valor": "contínuo, sem custo"
+     }
+    ]
    },
    {
-    "nome": "escudo de osso",
-    "descricao": "a gola protege o pescoço; difícil de derrubar ou de empurrar à força",
-    "classe": "sem regra ainda"
+    "nome": "Atropelar",
+    "descricao": "Atropelar",
+    "classe": "livro"
    }
   ],
   "comoLuta": [],

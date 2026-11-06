@@ -2014,12 +2014,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 2,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 2,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 7,
@@ -3969,12 +3970,13 @@
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
-    "impacto": 4,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 6,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "couraca": 4,
+   "perfilCouraca": "rigida",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -4206,12 +4208,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 2,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 2,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 7,
@@ -4659,12 +4662,13 @@
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 5,
@@ -5035,12 +5039,13 @@
    "defesaSocial": 6,
    "defesaMental": 6,
    "absorcao": {
-    "impacto": 10,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 12,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 1",
    "deslocamento": {
     "batalha": 3,
@@ -8076,12 +8081,13 @@
    "defesaSocial": 6,
    "defesaMental": 6,
    "absorcao": {
-    "impacto": 6,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 7,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -14712,12 +14718,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 9,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 11,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -17202,12 +17209,13 @@
    "defesaSocial": 6,
    "defesaMental": 5,
    "absorcao": {
-    "impacto": 10,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 12,
+    "corte": 4,
+    "perfuracao": 4
    },
    "resistenciaPerfuracao": 0,
    "couraca": 4,
+   "perfilCouraca": "rigida",
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,
@@ -28232,12 +28240,13 @@
    "defesaSocial": 10,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 11,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 13,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -29002,12 +29011,13 @@
    "defesaSocial": 8,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 11,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 13,
+    "corte": 3,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -34145,12 +34155,13 @@
    "defesaSocial": 6,
    "defesaMental": 6,
    "absorcao": {
-    "impacto": 4,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 5,
+    "corte": 1,
+    "perfuracao": 1
    },
    "resistenciaPerfuracao": 0,
    "couraca": 1,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 5",
    "deslocamento": {
     "batalha": 7,
@@ -36091,12 +36102,13 @@
    "defesaSocial": 6,
    "defesaMental": 9,
    "absorcao": {
-    "impacto": 8,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 10,
+    "corte": 4,
+    "perfuracao": 2
    },
    "resistenciaPerfuracao": 0,
    "couraca": 4,
+   "perfilCouraca": "couro",
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 3,
@@ -39281,12 +39293,13 @@
    "defesaSocial": 6,
    "defesaMental": 7,
    "absorcao": {
-    "impacto": 10,
-    "corte": 0,
-    "perfuracao": 0
+    "impacto": 12,
+    "corte": 3,
+    "perfuracao": 3
    },
    "resistenciaPerfuracao": 0,
    "couraca": 3,
+   "perfilCouraca": "rigida",
    "iniciativa": "1d6 + 2",
    "deslocamento": {
     "batalha": 3,

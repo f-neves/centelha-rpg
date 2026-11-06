@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 14,
     "destreza": 1,
@@ -97,33 +98,43 @@
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "atropelar",
-      "formas": "todas",
-      "classe": "livro",
-      "ataque": "Pisão",
-      "regra": "investida"
-    },
-    {
-      "nome": "pisoteio",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "ataque": "Pisão",
-      "efeito": "ao avançar, esmaga quem estiver sob as patas; um teste de Vigor reduz o estrago"
     },
     {
       "nome": "rabada",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "golpeia com a cauda longa a certa distância do corpo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A parte alcança até 6 m medidos da borda do corpo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "corpo colossal",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quase impossível de derrubar ou de empurrar à força"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Atropelar",
+      "formas": "todas",
+      "classe": "livro",
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [
@@ -131,6 +142,11 @@
       "nome": "disputa de machos",
       "formas": "todas",
       "texto": "machos podem disputar em duas patas, embora o corpo seja mal adaptado para ficar de pé."
+    },
+    {
+      "nome": "Pisar num alvo",
+      "formas": "todas",
+      "texto": "O Pisoteio é um ataque físico normal contra um alvo, com o golpe Pisão."
     }
   ],
   "sentidos": [],

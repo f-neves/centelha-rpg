@@ -1205,9 +1205,9 @@
     "defesaSocial": 8,
     "vontade": 4,
     "soak": {
-      "impacto": 6,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 7,
+      "corte": 2,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2120,9 +2120,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2275,9 +2275,9 @@
     "defesaSocial": 8,
     "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 7,
+      "corte": 2,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -2558,9 +2558,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 7,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -2728,9 +2728,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 10,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 12,
+      "corte": 3,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 1",
@@ -4511,9 +4511,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 6,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 7,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -8397,9 +8397,9 @@
     "defesaSocial": 8,
     "vontade": 3,
     "soak": {
-      "impacto": 9,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 11,
+      "corte": 3,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -9945,9 +9945,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 10,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 12,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -16777,9 +16777,9 @@
     "defesaSocial": 10,
     "vontade": 3,
     "soak": {
-      "impacto": 11,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 13,
+      "corte": 3,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -17192,9 +17192,9 @@
     "defesaSocial": 8,
     "vontade": 3,
     "soak": {
-      "impacto": 11,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 13,
+      "corte": 3,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -20333,9 +20333,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 5,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -21508,9 +21508,9 @@
     "defesaSocial": 6,
     "vontade": 4,
     "soak": {
-      "impacto": 8,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 10,
+      "corte": 4,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -23644,9 +23644,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 10,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 12,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",

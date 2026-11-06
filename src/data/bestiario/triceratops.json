@@ -21,6 +21,7 @@
     "posturaDoTamanho": "vista de lado"
   },
   "couraca": 3,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 1,
@@ -110,28 +111,47 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Investida",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Investida de chifre",
+      "categoria": "inato",
+      "regra": "investida"
+    },
+    {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "atropelar",
-      "formas": "todas",
-      "classe": "livro",
-      "regra": "investida"
     },
     {
       "nome": "escudo de osso",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a gola protege o pescoço; difícil de derrubar ou de empurrar à força"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Atropelar",
+      "formas": "todas",
+      "classe": "livro",
+      "categoria": "inato",
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [],
