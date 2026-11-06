@@ -48,16 +48,6 @@ export const acharNavegador = () =>
     : NAVEGADORES.find((p) => { try { return fs.existsSync(p); } catch { return false; } }) || null);
 
 /**
- * O caminho do navegador, ou a saída do processo pela porta certa.
- *
- * Devolve a string quando achou. Quando não achou, ENCERRA o processo: com
- * `SMOKE_EXIGE_NAVEGADOR=1` sai 1 (o portão fica vermelho e diz por quê); sem
- * ela sai 0, dizendo PULADO em voz alta. Nunca devolve `null`, para que nenhum
- * chamador precise lembrar da política.
- *
- * @param {string} nome como o teste se chama na saída, para a linha do PULADO.
- */
-/**
  * Abre o navegador com espera maior e novas tentativas.
  *
  * No runner do GitHub, em 06/11/2026, quatro smokes caíram três vezes ao ABRIR o
@@ -85,6 +75,16 @@ export async function abrirNavegador(puppeteer, opcoes, { tentativas = 3, espera
   throw ultimo;
 }
 
+/**
+ * O caminho do navegador, ou a saída do processo pela porta certa.
+ *
+ * Devolve a string quando achou. Quando não achou, ENCERRA o processo: com
+ * `SMOKE_EXIGE_NAVEGADOR=1` sai 1 (o portão fica vermelho e diz por quê); sem
+ * ela sai 0, dizendo PULADO em voz alta. Nunca devolve `null`, para que nenhum
+ * chamador precise lembrar da política.
+ *
+ * @param {string} nome como o teste se chama na saída, para a linha do PULADO.
+ */
 export function navegadorOuSair(nome) {
   const nav = acharNavegador();
   if (nav) return nav;
