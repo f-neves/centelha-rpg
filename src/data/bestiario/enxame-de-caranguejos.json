@@ -20,9 +20,10 @@
     "comprimento": 0.067,
     "massa": 0.148,
     "area": 0.008,
-    "posturaDoTamanho": "vista de cima"
+    "posturaDoTamanho": "indivíduo, anatomia"
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 0,
     "destreza": 2,
@@ -93,7 +94,36 @@
       "bloqueiaComoArma": null
     }
   ],
-  "habilidadesEspeciais": [],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Pulso do enxame",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando um alvo começa uma ação dentro de um quadrado ocupado pelo enxame",
+      "duracao": "instantânea",
+      "alcance": "o quadrado ocupado",
+      "area": "cada alvo dentro do quadrado",
+      "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos",
+      "dano": "1d6 + 3 de Corte",
+      "resistencia": "sem jogada de ataque; a Absorção conta",
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+    },
+    {
+      "nome": "Corpo de enxame",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Arma comum fere; cada golpe atinge um quadrado. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    }
+  ],
   "comoLuta": [],
   "sentidos": [
     {

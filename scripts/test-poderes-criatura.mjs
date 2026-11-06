@@ -107,12 +107,17 @@ r1 = comAviso(poder('magia', '', { classe: 'sem regra ainda', efeito: 'Usos grá
 ok(r1.e.length === 0 && r1.a.length === 0, '"sem regra ainda" com os números escritos: nem erro nem aviso');
 
 console.log('o esquema e a leitura por ficha');
-const fonte = JSON.parse(fs.readFileSync('src/data/bestiario/golem-de-ferro.json', 'utf8'));
+// uma fonte publicada que ainda não traz a categoria dos poderes, com dois poderes ou mais. Era o golem-de-ferro, fixo,
+// até ele entrar pelo lote r35-r54 com a categoria (etapa b, 06/11/2026); agora é a primeira em ordem alfabética.
+const fonteId = fs.readdirSync('src/data/bestiario').filter((a) => a.endsWith('.json')).sort().map((a) => a.slice(0, -5))
+  .find((id) => { const f = JSON.parse(fs.readFileSync('src/data/bestiario/' + id + '.json', 'utf8')); return f.habilidadesEspeciais.length >= 2 && !f.habilidadesEspeciais.some((h) => h.categoria !== undefined); });
+ok(fonteId !== undefined, 'há fonte publicada sem a categoria dos poderes para o teste');
+const fonte = JSON.parse(fs.readFileSync('src/data/bestiario/' + fonteId + '.json', 'utf8'));
 ok(criaturaAnteriorR03Schema.safeParse(fonte).success, 'fonte de hoje passa na releitura anterior à categoria');
 ok(!criaturaNovaSchema.safeParse(fonte).success, 'fonte de hoje falha no contrato novo');
 ok(criaturaParaLeituraSchema.safeParse(fonte).success, 'leitura do validate aceita a fonte sem nenhuma categoria');
 const meia = structuredClone(fonte);
-meia.habilidadesEspeciais.find((h) => h.nome === 'Sopro de gás venenoso').categoria = 'magia';
+meia.habilidadesEspeciais[0].categoria = 'magia';
 const r = criaturaParaLeituraSchema.safeParse(meia);
 ok(!r.success && r.error.issues.some((i) => i.message.includes('poder exige categoria')), 'ficha com uma categoria passa a exigir todas');
 const errada = structuredClone(fonte);

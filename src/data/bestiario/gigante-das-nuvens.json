@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 12,
     "destreza": 3,
@@ -116,11 +117,12 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Rocha arremessada",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
       "duracao": "instantânea",
       "alcance": "até 36 m; acima de 12 m, −2 na jogada",
       "area": "um alvo",
-      "efeito": "a rocha derruba o alvo Grande ou menor que ela fere",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "2d6 + Força + Centelha, Impacto",
       "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
       "limiteDeUso": "enquanto houver rocha por perto"
@@ -133,14 +135,15 @@
         "arte": "vento",
         "nivel": 4
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "enquanto quiser, sem limite de tempo",
       "alcance": "o próprio corpo, e quem ou o que ele leva",
       "area": "ele e até mais 900 kg de carga ou de um companheiro",
       "efeito": "flutua, subindo e descendo devagar, sem asas; a Batalha no ar é a metade da de terra",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Névoa",
@@ -148,21 +151,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "agua",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "neblina"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até um vento forte dispersar",
       "alcance": "18 m",
       "area": "uma esfera de 9 m de raio",
       "efeito": "névoa espessa que tapa a visão de quem está dentro: quem está dentro fica Na escuridão para ver, os aliados dele somam +2 em Furtividade, e o ataque à distância contra quem está dentro leva −2",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Telepatia",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "18 m",
@@ -170,19 +176,32 @@
       "efeito": "fala com os aliados pela mente, sem língua em comum",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "servos alados",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "no próprio domínio, conhece as rotas do céu e chama os servos alados (águias gigantes) e os ogros que o servem (site, Castelo entre nuvens)"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena",
+      "alcance": "9 m",
+      "area": "um aliado",
+      "efeito": "Convoca um aliado com o perfil Águia Gigante para lutar até o fim da cena. Só funciona no próprio domínio",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -260,24 +279,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Arremesso de rocha",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "campo": "couraca",
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça: o \"couro nas alturas\" do site, como o couro grosso do gigante da colina (2) .; 2, couro grosso"
     },
     {
       "campo": "habilidadesEspeciais.Levitar",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Névoa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Telepatia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: o \"couro nas alturas\" do site, como o couro grosso do gigante da colina (2) . O nível fica fora da Absorção (decisoes-autor §16); 2, couro grosso"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidades.prontidao",

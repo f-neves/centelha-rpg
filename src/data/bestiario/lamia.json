@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 6,
@@ -116,14 +117,15 @@
         "arte": "morte",
         "nivel": 2
       },
+      "categoria": "sobrenatural",
       "ativacao": "uma ação, Velocidade 5, a jogada de Briga para tocar, ou as Garras que ferem",
-      "duracao": "até o fim do dia; acumula",
+      "duracao": "volta 1 ponto de Percepção por dia de descanso",
       "alcance": "toque",
       "area": "um alvo",
-      "efeito": "quem falha perde a firmeza da mente: a Percepção e a Integridade contam um nível abaixo, e fica Abalado; cada toque que pega desce mais um; quem chega a 0 vira servo dela até o efeito passar",
+      "efeito": "Cada toque que pega tira 1 ponto temporário de Percepção e deixa o alvo Abalado (−2 nas jogadas, até Recompor ou até o fim da cena). A perda de Percepção não recalcula PV nem Absorção. Se a Percepção chegar a 0, a vítima fica Dominada enquanto estiver com Percepção 0. A lâmia pode ordenar em voz alta que ela a siga, proteja ou ataque um alvo indicado. A vítima precisa ouvir e compreender a ordem e pode recusá-la pagando 1 + Margem de Força de Vontade, até 4 por ordem",
       "dano": "nenhum além do golpe",
-      "resistencia": "mente, contra a jogada do toque",
-      "limiteDeUso": "um por golpe"
+      "resistencia": "a jogada do toque da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ilusões",
@@ -131,16 +133,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "imagem-viva"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou enquanto ela mantiver",
       "alcance": "36 m",
       "area": "uma imagem de até 6 m de lado, ou a aparência dela",
       "efeito": "uma imagem falsa (um oásis, uma mulher bela, um caminho seguro) para atrair ou emboscar; quem desconfia e testa vê através",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Manha dela, só para quem desconfia",
-      "limiteDeUso": "à vontade, uma ilusão por vez"
+      "resistencia": "Influência + Manha da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma ilusão por vez"
     }
   ],
   "comoLuta": [
@@ -223,14 +227,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Toque drenante",
-      "motivo": "números sugeridos pela ficha (D-197); a Sabedoria do site vira Percepção e Integridade"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ilusões",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": ": o leão do molde tem 1,13 m de altura; o torso de mulher sobe cerca de 0,8 m acima da cernelha"
     },
@@ -241,6 +237,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque drenante",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R18. A Sabedoria drenada equivale à Percepção nesta ficha. Perda proposta de 1 de Percepção por toque. R3. Ativação uma ação, Velocidade 5, a jogada de Briga para tocar, ou as Garras que ferem -> uma ação, Velocidade 6, a jogada de Briga para tocar, ou as Garras que ferem Pela referência corporal ou de deslocamento do poder. R16. A servidão termina quando a Percepção volta acima de 0. Ordens audíveis de escolta, proteção ou ataque dão limites ao controle. valor de molde, para a bancada (uso extra de 1 de Energia).; a Sabedoria do site vira Percepção e Integridade"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ilusões",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma ilusão por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "virtudes.compaixao",

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de lado"
   },
   "couraca": 3,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 5,
@@ -100,16 +101,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "projetil-conjurado"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "18 m",
       "area": "um alvo",
-      "efeito": "dispara dos olhos um raio de fogo; um raio por ação, e cada um dos quatro recarrega à parte",
+      "efeito": "dispara dos olhos um raio de fogo; um raio por ação",
       "dano": "3d6, fogo",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
     },
     {
       "nome": "Raio de frio",
@@ -117,16 +120,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "projetil-conjurado"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "18 m",
       "area": "um alvo",
-      "efeito": "dispara dos olhos um raio de frio; um raio por ação, e cada um dos quatro recarrega à parte",
+      "efeito": "dispara dos olhos um raio de frio; um raio por ação",
       "dano": "3d6, gelo",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
     },
     {
       "nome": "Raio elétrico",
@@ -134,27 +139,38 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "raio",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "projetil-conjurado"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "18 m",
       "area": "um alvo",
-      "efeito": "dispara dos olhos um raio de eletricidade; um raio por ação, e cada um dos quatro recarrega à parte",
+      "efeito": "dispara dos olhos um raio de eletricidade; um raio por ação",
       "dano": "3d6, raio",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
     },
     {
       "nome": "raio de pedra",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o quarto raio dos olhos transforma em pedra quem não resiste; o livro não tem a condição de petrificado. Recarrega à parte, como os outros"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até acumular 3 sucessos ou chegar a Vigor 0, com novo teste a cada 6 Ticks",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 20",
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
     },
     {
       "nome": "Escalada e travessia da água",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativas",
       "duracao": "permanente; não pode ser desfeita",
       "alcance": "o próprio corpo",
@@ -162,19 +178,28 @@
       "efeito": "sobe qualquer superfície à Batalha 5 e anda sobre a água como em terra firme",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "presa implacável",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "Sobrevivência, com a Especialidade natural (rastrear o alvo designado) +3"
     },
     {
       "nome": "corpo de construto",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude; é imune a doença e veneno e à maioria dos efeitos que pedem Vontade; não cura sozinho"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora domínio e confusão. Cumpre as ordens do senhor demoníaco mesmo sob tentativas de desviar sua vontade. Dano físico de Arte e conversa comum seguem as regras normais",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -192,10 +217,9 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "mente": "astúcia de bicho, sem vontade própria; obedece ao senhor demoníaco",
-    "tracos": "corpo de carne moldada do tamanho de um elefante, sobre quatro patas longas de lâmina, com olhos que disparam raios"
+    "tracos": "corpo de carne moldada do tamanho de um elefante, sobre quatro patas longas de lâmina, com olhos que disparam raios",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -205,7 +229,6 @@
   "comportamento": {
     "social": "solitário, a serviço de um demônio",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "caça o fugitivo ou o objeto que o senhor manda buscar",
     "dianteDeGente": "ataca quem está entre ele e a presa"
   },
@@ -261,22 +284,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Raio de fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Raio de frio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Raio elétrico",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Escalada e travessia da água",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): carne viva do porte do elefante, que não come, não dorme e não cansa; um degrau abaixo do elefante (9), porque é carne moldada, e não um corpo crescido. O site tinha 2; 8 por julgamento (carne do porte do elefante); o site tinha 2"
     },
@@ -289,8 +296,20 @@
       "motivo": "O site diz \"várias t\" e \"corpo do tamanho de um elefante\", e o lore diz \"carne viva\": a massa do elefante do molde (3.600 kg), de mesmo comprimento, na densidade da carne; os do elefante do molde (3.600 kg, 6,65 m² de lado), pelo \"tamanho de um elefante\" e pela \"carne viva\" do site"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 3: carne moldada de couro grosso, como o elefante (2 a 3); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); 3, couro grosso como o do elefante"
+      "campo": "habilidadesEspeciais.Raio de fogo",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base."
+    },
+    {
+      "campo": "habilidadesEspeciais.Raio de frio",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base."
+    },
+    {
+      "campo": "habilidadesEspeciais.Raio elétrico",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base."
+    },
+    {
+      "campo": "habilidadesEspeciais.raio de pedra",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 18 m para o quarto raio, como nos outros três raios oculares. P2. Dificuldade 20 sugerida porque o raio de ameaça 5 escolhe um único alvo a 18 m."
     },
     {
       "campo": "corpo",
@@ -299,6 +318,10 @@
     {
       "campo": "ataques",
       "motivo": "a \"Arma\" de 3 dados vira as Patas-lâmina Pesadas, de 2 dados (perda de mecânica publicada, no relato)"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "3, couro grosso como o do elefante"
     }
   ]
 }

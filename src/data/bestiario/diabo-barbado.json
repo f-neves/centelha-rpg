@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 4,
     "destreza": 4,
@@ -103,6 +104,7 @@
       "nome": "Trava a ferida",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale para quem a glaive ou a barba feriu",
       "duracao": "até o fim da cena",
       "alcance": "o alvo ferido",
@@ -110,7 +112,7 @@
       "efeito": "a ferida aberta pelo diabo não fecha sozinha: o alvo não estabiliza o Sangrando sem ajuda e recupera só metade do que uma cura lhe daria",
       "dano": "nenhum além do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Doença infernal",
@@ -118,8 +120,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "praga"
       },
+      "categoria": "inato",
       "ativacao": "a Mordida que fere",
       "duracao": "até ser tratada (Cura) ou curada por Arte",
       "alcance": "toque",
@@ -127,20 +131,21 @@
       "efeito": "o alvo adoece e vai perdendo força: fica Doente, e a cada dia sem tratamento soma um degrau de Desgaste",
       "dano": "nenhum além da mordida",
       "resistencia": "corpo, contra a jogada da mordida; quem passa não adoece daquele golpe",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Barba viva",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "reação, quando alguém o ataca corpo a corpo",
       "duracao": "até o alvo escapar",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "a barba de tentáculos se enrola no atacante, que fica Agarrado",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "nenhum",
-      "resistencia": "corpo, contra Força + Briga (Agarrão) dele; quem passa não é preso",
-      "limiteDeUso": "uma vez a cada 6 Ticks"
+      "resistencia": "pela manobra Agarrar",
+      "limiteDeUso": "A cada ativação descrita. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Teleporte",
@@ -148,34 +153,46 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "60 m, até um ponto que ele veja ou conheça",
       "area": "o próprio diabo",
-      "efeito": "some numa baforada de enxofre e reaparece no destino",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena, até três por dia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; as feridas se fecham, exceto as de arma benta ou de prata"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de arma benta ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "ferida que não fecha",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o que arma benta ou de prata faz não se fecha pela regeneração"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de diabo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -265,36 +282,36 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Trava a ferida",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
-    },
-    {
-      "campo": "habilidadesEspeciais.Doença infernal",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
-    },
-    {
-      "campo": "habilidadesEspeciais.Barba viva",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha, com as bases do site quando havia (D-197)."
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site (\"Prontidão 3\"); o campo dizia 1; 3 pela nota do site, e não o 1 do campo"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele escamosa e dura, como a do cavalo (1) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Sangue infernal\"), pela linha Elementos; 1, pela pele escamosa"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: pele escamosa e dura, como a do cavalo (1) .; 1, pela pele escamosa"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
     },
     {
+      "campo": "habilidadesEspeciais.Barba viva",
+      "motivo": "R4. Retirada a espera entre ativações.; números da ficha, com as bases do site quando havia (D-197)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Limite diário dos usos grátis: 3. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia).; números da ficha, com as bases do site quando havia (D-197)."
+    },
+    {
       "campo": "ataques",
       "motivo": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +8 corte\", dano médio 11,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a glaive é a Haste de Guerra do livro, de duas mãos (Força × 2), e a Mordida é Leve. Dano médio: 11,5 antes; depois, 17,5 (a glaive)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Trava a ferida",
+      "motivo": "números da ficha, com as bases do site quando havia (D-197)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Doença infernal",
+      "motivo": "números da ficha, com as bases do site quando havia (D-197)."
     },
     {
       "campo": "ataques.Glaive serrilhada",

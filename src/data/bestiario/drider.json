@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de cima"
   },
   "couraca": 1,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 5,
     "destreza": 4,
@@ -38,11 +39,11 @@
     "furtividade": 3,
     "prontidao": 2,
     "integridade": 5,
-    "ocultismo": 2
+    "ocultismo": 2,
+    "atirador": 3
   },
   "habilidadesSec": {
     "escalada": 3,
-    "disparo": 3,
     "musculatura": 1
   },
   "especialidades": {
@@ -101,50 +102,113 @@
       "nome": "teia",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; dispara pelas fieiras com Vigor + Disparo",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 6; dispara pelas fieiras com o maior entre Vigor, Destreza e Percepção + Atirador",
       "duracao": "até o alvo se soltar",
       "alcance": "6 m",
       "area": "um alvo",
       "efeito": "o acerto deixa Preso pela Rede do livro; a teia serve para prender, não para sustentar a aranha",
       "dano": "nenhum",
       "resistencia": "nenhum teste adicional; para sair, a regra da Rede contra o total do disparo",
-      "limiteDeUso": "três vezes por cena, recarga de uma hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 1 hora. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Mordida venenosa",
       "formas": "todas",
-      "classe": "livro",
+      "classe": "regra da ficha",
       "ataque": "Mordida",
-      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
+      "categoria": "substancia",
+      "ativacao": "Mordida ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Peçonha de drider. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
-      "nome": "Feitiçaria residual",
+      "nome": "Resistência à magia",
       "formas": "todas",
       "classe": "regra da ficha",
-      "base": {
-        "arte": "sombra",
-        "nivel": 1
-      },
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "até o fim da cena, ou até ela desfazer",
-      "alcance": "18 m",
-      "area": "à escolha: trevas numa esfera de 6 m; luzes dançantes que se movem como ela quer; ou fogo feérico que contorna um alvo de luz fraca",
-      "efeito": "as trevas apagam a luz comum (ela enxerga nelas); as luzes enganam e iluminam; o alvo do fogo feérico não pode ficar Escondido nem Invisível enquanto durar",
-      "dano": "nenhum",
-      "resistencia": "esquiva, contra Influência + Ocultismo dela, só para o fogo feérico",
-      "limiteDeUso": "cada um, uma vez por cena. A mesma feitiçaria do drow"
-    },
-    {
-      "nome": "Resistência à magia 18",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Imune ao sono",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "Arte, poder ou veneno que faz dormir não a pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora sono induzido por Arte, poder ou veneno. Os demais efeitos da mesma fonte continuam valendo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Trevas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 1,
+        "efeito": "manto-de-treva"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "esfera de 6 m",
+      "efeito": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+    },
+    {
+      "nome": "Luzes dançantes",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "luz",
+        "nivel": 1
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "um ponto visível",
+      "efeito": "Cria luzes móveis para iluminar ou enganar",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+    },
+    {
+      "nome": "Fogo feérico",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "luz",
+        "nivel": 1
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "um alvo",
+      "efeito": "Contorna o alvo de luz e revela a sua posição enquanto durar",
+      "dano": "nenhum",
+      "resistencia": "esquiva, contra Influência + Ocultismo dela",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
     }
   ],
   "comoLuta": [
@@ -152,6 +216,11 @@
       "nome": "tecelã dos túneis",
       "formas": "todas",
       "texto": "estende teia no túnel escuro, apaga a luz com as trevas, prende de longe com a teia e desce pela parede para morder quem ficou preso."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -212,14 +281,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.teia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Feitiçaria residual",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.bloqueio",
       "motivo": "Os braços e as patas da frente desviam às vezes: \"«Quase não bloqueia» é 1, e não 0\" (D-110); 1; o site não gravava Bloqueio"
     },
@@ -229,7 +290,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Cutícula de aranha no corpo e pele de drow no tronco ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Cutícula de aranha no corpo e pele de drow no tronco ;; nível 1"
     },
     {
       "campo": "comportamento.social",
@@ -242,6 +303,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.teia",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 18 da fonte passa a grau 2 (+4)."
     },
     {
       "campo": "ataques",

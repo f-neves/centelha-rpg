@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 4,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 9,
     "destreza": 3,
@@ -138,37 +139,80 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "agarra no golpe forte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quando a mordida ou as garras acertam com folga, a presa já fica Agarrada, sem a manobra à parte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
+      "dano": "nenhum",
+      "resistencia": "pela manobra Agarrar",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "fedor nauseante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "um fedor em volta dele, de uns 6 m. Quem entra resiste uma vez por cena com Vigor + Resistência; quem falha fica enjoado enquanto ficar perto"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "libera a substância ao entrar em contato com os alvos no alcance",
+      "duracao": "enquanto exposto e por mais 6 Ticks depois de sair",
+      "alcance": "9 m",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "A exposição deixa a vítima Enjoada, com −2 nas jogadas. Constructos não enjoam",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê o hezrou pela primeira vez sente repulsa e medo; o estômago vira, e o corpo quer recuar antes de qualquer golpe"
     },
     {
       "nome": "convocar",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "uma vez por cena, por feitiçaria, traz outro demônio para reforçar a luta"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até o fim da cena",
+      "alcance": "9 m",
+      "area": "um aliado",
+      "efeito": "Convoca um aliado com o perfil Dretch para lutar até o fim da cena. A origem planar aguarda o lore dos planos",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "teleporte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "uma vez por cena, por feitiçaria, some e reaparece em outro lugar, e pode levar junto quem estiver agarrando"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4,
+        "efeito": "fresta"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "36 m",
+      "area": "o hezrou e uma criatura que ele esteja agarrando",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato. Pode levar a criatura que estiver agarrando mesmo contra a vontade dela",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -284,12 +328,20 @@
       "motivo": "Régua do livro (0 a 12): reserva de demônio, acima do herói típico (5 ou mais), mas \"sem paciência\" e sob o comando de outros. O site tinha 10"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: couro grosso e verrugoso de sapo gigante, como o rinoceronte (3 a 4); o nível fica fora da Absorção (decisoes-autor §16). As resistências são o \"sangue abissal\" da ficha publicada, pela regra do livro (Elementos); o ácido entrou no vocabulário dos elementos, com a resistência pela metade (C-039, decisão do autor desta rodada); 4, como o rinoceronte; a pele de demônio não tem referência na escala"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": "site (Sociedade)  no número"
+    },
+    {
+      "campo": "habilidadesEspeciais.fedor nauseante",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R13 e D-197. Dificuldade fixa sugerida 15 (10 + Centelha 5) para graduar a potência deste fedor. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.convocar",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.teleporte",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "centelha",
@@ -298,6 +350,10 @@
     {
       "campo": "artes",
       "motivo": "o site tinha `arte: vento 2, espirito 4` e um poder natural \"fedor nauseante\" com base Vento 2. Pela C-037 a Arte com Mana é só da lista de conjuradores (dragões, Lich, Couatl, Ninfa, Planetar, Solar, Ghaele, Rakshasa, Naga); o resto vira poder natural, \"com base e nível mantidos como parâmetro\". A ficha não tem Mana e guarda Vento 2 (fedor) e Espírito 4 (convocar e teleporte, ao que parece) só como parâmetro aqui"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "4, como o rinoceronte; a pele de demônio não tem referência na escala"
     },
     {
       "campo": "aparencia",

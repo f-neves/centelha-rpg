@@ -19,6 +19,7 @@
     "posturaDoTamanho": "tentáculos abertos"
   },
   "couraca": 1,
+  "perfilCouraca": "mole",
   "atributos": {
     "forca": 14,
     "destreza": 2,
@@ -115,19 +116,15 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "rajada"
-    },
-    {
-      "nome": "mais tentáculos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "ataca com vários tentáculos por rodada, cada um num alvo diferente; a Rajada leva só três"
     },
     {
       "nome": "constrição",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculo",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -137,13 +134,22 @@
       "tecnica": {
         "id": "abraco-do-tita",
         "nivel": 6
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "afundar embarcações",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "aperta e arrasta um navio inteiro para o fundo, com dano alto contra a estrutura"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Nuvem de tinta",
@@ -151,21 +157,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "agua",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "neblina"
       },
+      "categoria": "substancia",
       "ativacao": "uma ação, Velocidade 6",
-      "duracao": "18 Ticks",
-      "alcance": "o próprio corpo",
-      "area": "esfera de 18 m de água em volta dele",
-      "efeito": "a tinta escura cobre a água; quem está nela fica Cego",
+      "duracao": "6 Ticks, ou até o fim do Tick seguinte em corrente forte",
+      "alcance": "na água ao redor da criatura",
+      "area": "nuvem de raio 3 m",
+      "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
       "dano": "nenhum",
-      "resistencia": "nenhum",
-      "limiteDeUso": "três vezes por cena"
+      "resistencia": "sair da nuvem",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "agitar o mar",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "agita o mar numa área grande e atrapalha o movimento e a visão de quem navega ou nada ali"
     },
     {
@@ -174,16 +183,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "raio",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "tempestade"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "o céu sobre ele, até 120 m",
       "area": "três alvos diferentes",
       "efeito": "o céu escurece e três raios caem ao mesmo tempo",
       "dano": "3d6 + Centelha, raio, em cada alvo",
       "resistencia": "esquiva; quem passa leva metade",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Dominar bestas do mar",
@@ -193,23 +204,37 @@
         "arte": "fascinacao",
         "nivel": 5
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "até o fim da cena",
       "alcance": "90 m",
       "area": "um animal do mar, ou um cardume",
-      "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa",
+      "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele",
-      "limiteDeUso": "uma vez por dia"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
-      "nome": "feitiços arcanos",
+      "nome": "Multiataque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "magias de dano e de controle em larga escala; ele não conjura como classe, e o site não dava a Arte"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: primeiro tentáculo, segundo tentáculo, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "feitiços arcanos",
+      "formas": "todas",
+      "texto": "magias de dano e de controle em larga escala. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "senhor do abismo",
       "formas": "todas",
@@ -284,24 +309,24 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Nuvem de tinta",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Tempestade de raios",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Dominar bestas do mar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pele grossa de leviatã, um acima do polvo-gigante (0), pela \"escala colossal\" do site . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: pele grossa de leviatã, um acima do polvo-gigante (0), pela \"escala colossal\" do site ."
     },
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "O bico de cefalópode do tamanho de um bote, com o corpo atrás, Média; bico grande em N1 . Jogada: Força 14 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Nuvem de tinta",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Tempestade de raios",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Dominar bestas do mar",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

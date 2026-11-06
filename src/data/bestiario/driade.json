@@ -19,6 +19,7 @@
     "posturaDoTamanho": "bípede, de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 2,
     "destreza": 5,
@@ -94,16 +95,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "sugestao-plantada"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "uma cena, ou até ela hostilizá-lo",
       "alcance": "9 m",
       "area": "um alvo",
       "efeito": "o alvo baixa a guarda, trata a dríade com boa vontade e aceita pedidos pacíficos",
       "dano": "nenhum",
-      "resistencia": "mente, pela Defesa Social contra Influência + Persuasão; quem passa não é afetado",
-      "limiteDeUso": "três vezes por dia"
+      "resistencia": "Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não é afetado",
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Fundir-se à árvore",
@@ -113,31 +116,54 @@
         "arte": "materia",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até sair com outra ação",
       "alcance": "toque",
       "area": "uma árvore que comporte seu corpo",
       "efeito": "entra por completo no tronco vivo e fica oculta; sai por onde entrou, com os mesmos números",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Passo arbóreo",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "passa de uma árvore a outra sem atravessar o espaço entre elas"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4,
+        "efeito": "fresta"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "36 m",
+      "area": "o próprio usuário",
+      "efeito": "Passa de uma árvore a outra num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Vínculo com a árvore-lar",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "adoece longe da árvore e sofre quando ela é ferida ou destruída"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enquanto estiver afastada da árvore-lar, sofre Desgaste 1 a cada 1 dia. Aplicar por contato exige uma ação",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Furtividade natural",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "enquanto estiver na floresta",
       "alcance": "o próprio corpo",
@@ -145,12 +171,13 @@
       "efeito": "recebe +1d6 nas jogadas de Furtividade dentro de florestas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Empatia selvagem",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "acalma animais e consegue conduzir seu comportamento"
     }
   ],
@@ -220,18 +247,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Enfeitiçar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Fundir-se à árvore",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Furtividade natural",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Compleição física, sem treino de levantar peso"
     },
@@ -246,6 +261,18 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Enfeitiçar",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Fundir-se à árvore",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Passo arbóreo",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques.Golpe desarmado",

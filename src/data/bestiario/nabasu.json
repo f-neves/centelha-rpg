@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 5,
@@ -113,14 +114,9 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "garras e mordida juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "rasga e morde na mesma ação; por enquanto, as garras vão juntas pela Rajada, e a Mordida é outra ação"
     },
     {
       "nome": "Toque que envelhece",
@@ -130,6 +126,7 @@
         "arte": "morte",
         "nivel": 2
       },
+      "categoria": "sobrenatural",
       "ativacao": "a Garra que fere",
       "duracao": "até o fim da cena",
       "alcance": "toque",
@@ -137,7 +134,7 @@
       "efeito": "a carne do alvo envelhece e o vigor escorre; ele tem −1 nas ações até o fim da cena, e o efeito não se soma",
       "dano": "nenhum além da garra",
       "resistencia": "corpo, contra a jogada da garra; quem passa não envelhece por aquela garra",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Sombras",
@@ -145,16 +142,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "sombra",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "manto-de-treva"
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "18 m",
       "area": "esfera de 9 m, ou o lugar onde as sombras surgem",
       "efeito": "escolhe: cobre a área de escuridão (quem está dentro fica Na escuridão, e ele vê nela), ou chama duas sombras (a ficha do bestiário) que lutam por ele",
       "dano": "o das sombras",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Fascinar",
@@ -162,62 +161,103 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "boa-impressao"
       },
+      "categoria": "sobrenatural",
       "ativacao": "uma ação, Velocidade 6, olho no olho",
       "duracao": "até a próxima ação do alvo",
       "alcance": "9 m, à vista",
       "area": "um alvo",
       "efeito": "prende a atenção do alvo, que perde a próxima ação e fica com a Defesa −4 até ela, como Surpreso",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "três vezes por dia"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Olhar que rouba a morte",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "permanente",
       "alcance": "9 m",
       "area": "todos à vista a até 9 m dele",
       "efeito": "quem falha perde vitalidade para sempre; o humano que morre disso se ergue como ghoul (a ficha do bestiário) sob o comando dele na cena seguinte",
       "dano": "o PV máximo do alvo cai 1d6, para sempre",
       "resistencia": "corpo, contra Influência + Ocultismo dele; quem passa não perde nada",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "roubo de vida",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "cada vítima erguida pelo olhar o fortalece; ganha vigor, precisão e poder a cada alma, até amadurecer em algo pior"
-    },
-    {
-      "nome": "dano de assassino",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quando pega o alvo desprevenido, o golpe faz dano extra considerável"
-    },
-    {
-      "nome": "poderes sombrios",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "enfraquece inimigos de longe, imobiliza vários de uma vez, silencia uma área ou drena vida com um toque"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao consumir a alma de uma vítima erguida pelo olhar",
+      "duracao": "até gastar as cargas",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Cada alma elegível fornece uma carga uma única vez. Ao gastar uma carga, some +1d6 a uma jogada ou recupere 1d6 PV",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "até três cargas guardadas, sem custo de Energia"
     },
     {
       "nome": "imune a veneno, paralisia e efeito de morte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega nele, e o que trava o corpo ou mata de uma vez não o pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora veneno, paralisia e o efeito que mata sem causar dano. Recebe dano comum e morre pela perda de Vida como de costume. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê o nabasu pela primeira vez sente a fome dele como uma ameaça ao próprio corpo; o estômago gela e o corpo quer recuar"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+    },
+    {
+      "nome": "Golpe na brecha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "poderes sombrios",
+      "formas": "todas",
+      "texto": "enfraquece inimigos de longe, imobiliza vários de uma vez, silencia uma área ou drena vida com um toque. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "fome sem fim",
       "formas": "todas",
@@ -310,24 +350,28 @@
   },
   "revisao": [
     {
+      "campo": "couraca",
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 2: a pele grossa de gárgula, como o elefante (2 a 3) .; 2"
+    },
+    {
       "campo": "habilidadesEspeciais.Toque que envelhece",
-      "motivo": "números sugeridos pela ficha (D-197); −1 nas ações até o fim da cena, o Definhar da Arte Morte 2 do livro; \"drenando vigor aos poucos\" do site ficou nisso"
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia).; −1 nas ações até o fim da cena, o Definhar da Arte Morte 2 do livro; \"drenando vigor aos poucos\" do site ficou nisso"
     },
     {
       "campo": "habilidadesEspeciais.Sombras",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha com as bases do site (D-197); \"deixando-o vulnerável\" do site virou perder a ação com a Defesa −4, como Surpreso"
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia).; números da ficha com as bases do site (D-197); \"deixando-o vulnerável\" do site virou perder a ação com a Defesa −4, como Surpreso"
     },
     {
       "campo": "habilidadesEspeciais.Fascinar",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha com as bases do site (D-197); \"deixando-o vulnerável\" do site virou perder a ação com a Defesa −4, como Surpreso"
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia).; números da ficha com as bases do site (D-197); \"deixando-o vulnerável\" do site virou perder a ação com a Defesa −4, como Surpreso"
     },
     {
       "campo": "habilidadesEspeciais.Olhar que rouba a morte",
-      "motivo": "números sugeridos pela ficha (D-197); PV máximo −1d6 para sempre e o ghoul são números e escolha da ficha (D-197); o site não diz que morto-vivo se ergue"
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia).; PV máximo −1d6 para sempre e o ghoul são números e escolha da ficha (D-197); o site não diz que morto-vivo se ergue"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele grossa de gárgula, como o elefante (2 a 3) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos; 2"
+      "campo": "habilidadesEspeciais.roubo de vida",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

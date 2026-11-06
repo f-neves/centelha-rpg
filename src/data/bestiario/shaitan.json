@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -99,6 +100,7 @@
       "nome": "Domínio da pedra",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -106,7 +108,7 @@
       "efeito": "golpeia com mais força quando ele e o alvo tocam o chão, e luta pior contra quem está no ar ou na água: +2 no dano da Pancada de pedra quando os dois tocam o chão; −2 no ataque contra quem voa ou está na água",
       "dano": "o +2 na Pancada",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Deslizar pela rocha",
@@ -116,6 +118,7 @@
         "arte": "terra",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "parte do movimento dele",
       "duracao": "enquanto se move",
       "alcance": "o próprio corpo",
@@ -123,7 +126,7 @@
       "efeito": "atravessa pedra, terra, cristal e até metal como se fossem água, à Batalha dele em terra (2 m por Tick), sem abrir túnel nem deixar rastro; dentro da pedra, quem está fora não o vê nem o ataca",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "Maldição da pedra",
@@ -133,14 +136,15 @@
         "arte": "terra",
         "nivel": 4
       },
-      "ativacao": "vencer o Empurrar do livro (`combate.md`) contra um alvo e levá-lo até uma parede de pedra",
+      "categoria": "magia",
+      "ativacao": "vencer o Empurrar do livro (`combate.md`) contra um alvo e levá-lo até uma parede de pedra, em ação de Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "até o alvo se soltar",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
       "efeito": "a pedra se fecha em volta do alvo e o sela dentro da parede; preso, não age nem se move",
       "dano": "nenhum",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), uma tentativa a cada 6 Ticks; quem passa sai da pedra",
-      "limiteDeUso": "um alvo selado por vez"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo selado por vez"
     },
     {
       "nome": "Metamorfose do metal",
@@ -148,16 +152,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "materia",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "transmutar"
       },
-      "ativacao": "uma ação, Velocidade 8, tocando o objeto",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, tocando o objeto. O efeito sai no Tick do Golpe",
       "duracao": "um dia",
       "alcance": "toque",
       "area": "um objeto de metal",
       "efeito": "transforma o metal em outro metal (o aço em chumbo, o ouro em cobre, o ferro em prata); a arma de aço que vira chumbo entorta no primeiro golpe",
       "dano": "nenhum",
       "resistencia": "corpo, Vigor + Resistência de quem segura o objeto, contra Dificuldade 14 (10 + Centelha 4); o objeto solto não resiste",
-      "limiteDeUso": "três vezes por dia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -237,22 +243,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Domínio da pedra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Deslizar pela rocha",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Maldição da pedra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Metamorfose do metal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "Acima do teto humano (6): For 20 no Pathfinder, entre o djinn (For 18, Força 6) e o efreeti (For 23, Força 8). Teste de ordem: abaixo do efreeti (8) e do marid (9); abaixo do rinoceronte do molde (8, 2.250 kg, de massa parecida) e do elemental da terra grande do lote 25 (10, 1.234 kg), que são mais fortes pela descrição (no livro de origem, de memória, For 26 e 24): o shaitan é tão grande quanto eles, mas não mais forte, e a ordem não se quebra . Fica como no site; 7, a do site; abaixo do rinoceronte e do elemental da terra grande, que são mais fortes pela descrição"
     },
@@ -265,10 +255,6 @@
       "motivo": "O corpo de base (D-192, manual 4.2) escalado pela altura (3,4 ÷ 1,80 = × 1,889), com os ombros 25% mais largos, como o golem de pedra do exemplo do manual e os elementais da terra do lote 25: 0,45 × 1,889 × 1,25 = 1,06 m; 0,23 × 1,889 = 0,43 m. O site não diz o porte; o corpo atarracado é leitura da ficha para a carne de pedra; 25% mais largo, como o golem e os elementais da terra; sem isso, a massa do site daria 4.260 kg/m³"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: a pele que lembra pedra polida e metal é mais dura que a de gente, mas é pele, e não a pedra maciça do elemental da terra e do golem (9); o nível fica fora da Absorção (decisoes-autor §16). A resistência e a imunidade são as do site (Elementos); nível 2, pele dura que lembra pedra e metal"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": "site (Nobreza subterrânea)"
     },
@@ -279,6 +265,18 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Maldição da pedra",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo selado por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação vencer o Empurrar do livro (`combate.md`) contra um alvo e levá-lo até uma parede de pedra -> vencer o Empurrar do livro (`combate.md`) contra um alvo e levá-lo até uma parede de pedra, em ação de Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Metamorfose do metal",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8, tocando o objeto -> uma ação, Velocidade 5, tocando o objeto. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "couraca",
+      "motivo": "nível 2, pele dura que lembra pedra e metal"
     },
     {
       "campo": "ataques",

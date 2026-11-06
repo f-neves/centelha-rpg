@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 6,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 8,
     "destreza": 2,
@@ -88,6 +89,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de argila",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -95,6 +97,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de argila",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
@@ -102,18 +105,14 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de argila",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
     },
     {
       "nome": "Fúria descontrolada",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "a cada 6 Ticks de combate, o Mestre rola 1d6; o espírito se liberta com 6 na primeira rolagem, com 5 ou 6 na segunda, e o número desce um a cada rolagem que não liberta",
       "duracao": "até ele ser destruído; ninguém volta a controlá-lo",
       "alcance": "o próprio corpo",
@@ -121,26 +120,28 @@
       "efeito": "o espírito preso se liberta, e o golem ataca a criatura mais perto, amiga ou inimiga, e destrói o que encontra",
       "dano": "nenhum além dos golpes",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Investida acelerada",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, depois de pelo menos 6 Ticks de combate",
       "duracao": "18 Ticks",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Acelerado",
+      "efeito": "fica Acelerado. A Recuperação diminui 1 Tick, até 0. Os opostos se anulam e aplicações iguais não somam",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "uma vez por cena. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Ferida amaldiçoada",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Punho de argila",
+      "categoria": "sobrenatural",
       "ativacao": "o Punho que fere",
       "duracao": "até a cura que vence a maldição",
       "alcance": "o do corpo a corpo",
@@ -148,13 +149,21 @@
       "efeito": "a ferida não fecha sozinha nem com descanso; a cura por Arte só a fecha se quem cura passar numa jogada contra Dificuldade 13 (10 + Centelha 3)",
       "dano": "o do Punho",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "imune à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a maior parte das Artes não o afeta"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -172,11 +181,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parado, passa por estátua de barro",
     "mente": "nenhuma; um espírito preso à força, que obedece ao criador até se libertar",
-    "tracos": "esculpido num único bloco de argila, de rosto tosco e sem expressão; o barro range quando anda"
+    "tracos": "esculpido num único bloco de argila, de rosto tosco e sem expressão; o barro range quando anda. Não se cansa",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -186,7 +194,6 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda",
     "dianteDeGente": "ataca quem a ordem manda atacar; na fúria, ataca todos"
   },
@@ -232,18 +239,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Fúria descontrolada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Investida acelerada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ferida amaldiçoada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): argila endurecida maciça, que não sangra nem cansa, um degrau abaixo do granito do golem de pedra (6). O site tinha 1; 5 por julgamento (argila endurecida, abaixo do granito); o site tinha 1"
     },
@@ -256,12 +251,16 @@
       "motivo": "Pelo corpo, julgado pelo material e pela forma (manual 3.5; tamanho-decisoes-3, item 12: 0 corpo de resistência, 2 comum, 3 robusto): bloco de argila seca na forma de um homem, sem os ombros largos do golem de pedra (3) e de um material mais mole que o granito. Comum, 2; 2, pelo corpo de argila na proporção humana"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: argila endurecida, abaixo do granito do golem de pedra (9) e perto da tartaruga grande (cerca de 6); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); 6, argila endurecida"
-    },
-    {
       "campo": "ataques.Punho de argila",
       "motivo": "A \"Arma\" do site (2 dados, corte, 6 Ticks) é o punho de barro: Média, como o Punho de pedra do golem de pedra (`regra-construcao.md` §7), golpe de membro, Força × 1; o segundo dado sai com a classe, e o tipo passa a Impacto, porque é punho, e não lâmina. Bloqueia como arma (D-066), Defesa +1 . Jogada: Força 8 + Briga 4 + 2 × o menor entre Centelha 3 e Briga 4 (6)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ferida amaldiçoada",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "couraca",
+      "motivo": "6, argila endurecida"
     },
     {
       "campo": "ataques",

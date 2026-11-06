@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 10,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 11,
     "destreza": 2,
@@ -88,6 +89,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de ferro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -95,6 +97,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de ferro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
@@ -102,44 +105,42 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho de ferro",
+      "categoria": "inato",
       "regra": "empurrar"
-    },
-    {
-      "nome": "sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto ou pelo fogo; não sofre nada que se resista com o corpo"
     },
     {
       "nome": "Sopro de gás venenoso",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "o gás fica no lugar até o fim da próxima ação dele",
       "alcance": "à frente dele",
       "area": "um cubo de 3 m de lado, encostado nele",
-      "efeito": "exala uma nuvem de gás nocivo; quem a respira é envenenado (Veneno e doença)",
+      "efeito": "exala uma nuvem de gás nocivo; quem a respira é envenenado (Veneno e doença). Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "o do veneno",
-      "resistencia": "corpo, pelo veneno (Veneno e doença); quem prende a respiração antes de entrar, e não sai do fôlego, não é envenenado",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Lento pelo raio",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um golpe ou efeito de raio o acerta",
       "duracao": "18 Ticks",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "o raio o deixa Retardado, sem resistência; o dano é o da fraqueza (Elementos)",
+      "efeito": "o raio o deixa Retardado, sem resistência; o dano é o da fraqueza (Elementos). A Recuperação aumenta 1 Tick. Os opostos se anulam e aplicações iguais não somam",
       "dano": "o do raio",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Curado pelo fogo",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um golpe ou efeito de fogo o acerta",
       "duracao": "instantânea",
       "alcance": "o próprio corpo",
@@ -147,22 +148,29 @@
       "efeito": "o fogo não o fere (Elementos), devolve metade do dano que daria e acaba com o Retardado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "imune à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a maior parte das Artes não o afeta"
-    },
-    {
-      "nome": "golpes poderosos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "os socos de ferro ameaçam ferimento grave com uma facilidade incomum; o livro não tem regra de golpe que fere grave com mais facilidade"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Neste material, aplicam-se Lento pelo raio, Curado pelo fogo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "golpes poderosos",
+      "formas": "todas",
+      "texto": "Os punhos de ferro podem causar ferimentos graves, a critério do Mestre."
+    },
     {
       "nome": "autômato de guerra",
       "formas": "todas",
@@ -182,11 +190,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parado, passa por estátua de ferro",
     "mente": "nenhuma; obedece ao criador",
-    "tracos": "estátua de ferro de 3,6 m, sem cheiro e sem voz; só se ouve o bater metálico dos passos"
+    "tracos": "estátua de ferro de 3,6 m, sem cheiro e sem voz; só se ouve o bater metálico dos passos. Não se cansa. O fogo também o recupera",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -196,7 +203,6 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda",
     "dianteDeGente": "ataca quem a ordem manda atacar"
   },
@@ -252,18 +258,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Sopro de gás venenoso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Lento pelo raio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Curado pelo fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): ferro maciço, que só cede amassando e partindo, um degrau acima do granito do golem de pedra (6). O site tinha 1; 7 por julgamento (ferro maciço, acima do granito); o site tinha 1"
     },
@@ -280,12 +274,16 @@
       "motivo": "Pelo material e pelo volume (manual 4.2): o corpo de base escalado pelo cubo da altura (× 8) tem 0,632 m³, e em ferro (7.850 kg/m³), 4.960 kg. O site dizia 2.270 kg, o que dá 3.590 kg/m³ para esse corpo: menos da metade da densidade do ferro, só possível numa casca oca, e o site não diz que o golem é oco (\"forjado\", \"casco de ferro\" que absorve golpes). Vale a conta (D-187), como no elemental da terra grande do lote 25, no sentido contrário: lá o site pesava demais para a pedra, aqui pesa de menos para o ferro. A Faixa não muda: os 2.270 kg também eram Faixa 5; 4.960 kg pelo ferro maciço (0,632 m³ × 7.850 kg/m³); o site dizia 2.270 kg, que daria 3.590 kg/m³, só numa casca oca. Com 2.270 kg, a Faixa e o PV seriam os mesmos, e o peso erguido, menor"
     },
     {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: ferro maciço, um nível acima do granito do golem de pedra (9), na faixa sem referência das criaturas sobrenaturais (9 a 12); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site; a imunidade a fogo, da habilidade publicada (Elementos); 10, ferro maciço, um nível acima do granito"
-    },
-    {
       "campo": "ataques.Punho de ferro",
       "motivo": "Os \"Punhos\" do site (2 dados, impacto, 6 Ticks), com \"força redobrada\" (site, Golpes poderosos): o punho de ferro de 3,6 m com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7, \"o golpe do corpo inteiro, com carga ou rotação\"), como a Pancada descomunal do gigante da colina do lote 3; golpe de membro, Força × 1. Os 2 dados do site ficam. Bloqueia como arma (D-066), Defesa +1 . Jogada: Força 11 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Sopro de gás venenoso",
+      "motivo": "P3. Manifestação mágica do construto. Um uso grátis por cena permite o ataque de abertura. A Velocidade conserva a do sopro ou da Mordida. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "couraca",
+      "motivo": "10, ferro maciço, um nível acima do granito"
     },
     {
       "campo": "ataques",

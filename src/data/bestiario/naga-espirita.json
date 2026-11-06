@@ -23,6 +23,7 @@
     }
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 6,
     "destreza": 3,
@@ -45,11 +46,11 @@
     "ocultismo": 4,
     "persuasao": 3,
     "empatia": 2,
-    "sociabilidade": 2
+    "sociabilidade": 2,
+    "atirador": 3
   },
   "habilidadesSec": {
     "natacao": 3,
-    "disparo": 3,
     "acerto-arcano": 5,
     "musculatura": 2
   },
@@ -122,24 +123,40 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: enroscada. Grande: erguida ou esticada, de lado. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Mordida venenosa",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
-      "texto": "a regra do veneno, com o veneno da linha Veneno e doença"
+      "categoria": "substancia",
+      "texto": "A Mordida inocula ao causar ao menos 1 PV depois da Absorção. O cuspe e a Mordida gastam a mesma reserva de peçonha"
     },
     {
       "nome": "Cuspe venenoso",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; ataque a distância, Vigor + Disparo (Vigor 6 + Disparo 3 + 2 × o menor entre Centelha 5 e Disparo 3, 6)",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 7; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador",
       "duracao": "a do veneno",
       "alcance": "9 m",
       "area": "um alvo",
       "efeito": "o cuspe mira os olhos e a boca; mucosa exposta conta como sangue (`venenos.json`), e o veneno da linha Veneno e doença entra",
       "dano": "nenhum além do veneno",
       "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno",
-      "limiteDeUso": "três vezes por cena, recarga de 1 hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. A Mordida usa esta mesma reserva"
     },
     {
       "nome": "Olhar encantador",
@@ -147,22 +164,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "sugestao-plantada"
       },
+      "categoria": "sobrenatural",
       "ativacao": "uma ação, Velocidade 5, contra quem cruza o olhar com ela",
       "duracao": "até o fim da cena",
       "alcance": "9 m, à vista",
       "area": "um alvo",
-      "efeito": "o alvo fica Dominado e obedece a ela",
+      "efeito": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem; quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar",
-      "limiteDeUso": "uma tentativa por alvo por cena"
+      "resistencia": "Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar",
+      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana"
     },
     {
       "nome": "Imune ao próprio veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno de naga não a pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora apenas a própria secreção. Venenos de outras fontes exigem o teste normal. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -170,6 +197,11 @@
       "nome": "rainha das ruínas",
       "formas": "todas",
       "texto": "enroscada sobre o tesouro, encanta o mais forte com o olhar, abre com a Bola de Fogo e o cuspe, e só negocia quando lhe convém."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -245,14 +277,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Cuspe venenoso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Olhar encantador",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Animal comum na escala da decisão 12"
     },
@@ -262,7 +286,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Escamas de serpente ; o nível fica na ficha e não entra na conta (decisoes-autor §16); nível 1"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Escamas de serpente ;; nível 1"
     },
     {
       "campo": "comportamento.atividade",
@@ -274,7 +298,15 @@
     },
     {
       "campo": "habilidadesEspeciais",
-      "motivo": "Potência 16, pool 4 de Vigor, com Abalado"
+      "motivo": "Antes: Potência 16, pool 4 de Vigor, com Abalado  O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campo": "habilidadesEspeciais.Cuspe venenoso",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R3. Ativação uma ação, Velocidade 6; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) -> uma ação, Velocidade 7; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar encantador",
+      "motivo": "R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, contra quem cruza o olhar com ela -> uma ação, Velocidade 6, contra quem cruza o olhar com ela Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
     },
     {
       "campo": "ataques",

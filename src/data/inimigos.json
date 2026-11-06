@@ -86,9 +86,9 @@
     "defesaSocial": 10,
     "vontade": 10,
     "soak": {
-      "impacto": 13,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 15,
+      "corte": 8,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -1291,9 +1291,9 @@
     "defesaSocial": 12,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 11,
+      "corte": 6,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -1393,9 +1393,9 @@
     "defesaSocial": 24,
     "vontade": 12,
     "soak": {
-      "impacto": 21,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 23,
+      "corte": 13,
+      "perfuracao": 11
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 12",
@@ -2427,9 +2427,9 @@
     "defesaSocial": 8,
     "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 10,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -3247,9 +3247,9 @@
     "defesaSocial": 8,
     "vontade": 5,
     "soak": {
-      "impacto": 8,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 10,
+      "corte": 3,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 2",
@@ -6054,9 +6054,9 @@
     "defesaSocial": 4,
     "vontade": 9,
     "soak": {
-      "impacto": 9,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 10,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -6238,9 +6238,9 @@
     "defesaSocial": 20,
     "vontade": 11,
     "soak": {
-      "impacto": 15,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 17,
+      "corte": 10,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -6340,9 +6340,9 @@
     "defesaSocial": 30,
     "vontade": 12,
     "soak": {
-      "impacto": 20,
-      "corte": 9,
-      "perfuracao": 9
+      "impacto": 22,
+      "corte": 13,
+      "perfuracao": 11
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 14",
@@ -6515,9 +6515,9 @@
     "defesaSocial": 14,
     "vontade": 10,
     "soak": {
-      "impacto": 12,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 15,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -6980,9 +6980,9 @@
     "defesaSocial": 18,
     "vontade": 11,
     "soak": {
-      "impacto": 15,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 20,
+      "corte": 15,
+      "perfuracao": 15
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -7043,7 +7043,7 @@
       {
         "nome": "Sopro elétrico",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 9,
         "tipo": "raio",
         "classe": "distancia",
@@ -7080,9 +7080,9 @@
       "integridade": 5,
       "sociabilidade": 2,
       "manha": 4,
+      "atirador": 4,
       "intimidacao": 4,
       "voo": 3,
-      "disparo": 4,
       "acerto-arcano": 4,
       "musculatura": 3
     }
@@ -7105,9 +7105,9 @@
     "defesaSocial": 8,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 13,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -7154,7 +7154,7 @@
       {
         "nome": "Sopro de frio",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 6,
         "tipo": "gelo",
         "classe": "distancia",
@@ -7187,12 +7187,12 @@
       "integridade": 2,
       "sobrevivencia": 2,
       "sociabilidade": 1,
+      "atirador": 3,
       "intimidacao": 3,
       "voo": 2,
       "natacao": 2,
       "escalada": 1,
-      "musculatura": 3,
-      "disparo": 3
+      "musculatura": 3
     }
   },
   {
@@ -7332,9 +7332,9 @@
     "defesaSocial": 18,
     "vontade": 11,
     "soak": {
-      "impacto": 14,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 19,
+      "corte": 15,
+      "perfuracao": 15
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7381,7 +7381,7 @@
       {
         "nome": "Sopro ácido",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 9,
         "tipo": "acido",
         "classe": "distancia",
@@ -7416,10 +7416,10 @@
       "persuasao": 4,
       "manha": 4,
       "empatia": 2,
+      "atirador": 4,
       "natacao": 3,
       "intimidacao": 4,
       "voo": 3,
-      "disparo": 4,
       "acerto-arcano": 4,
       "musculatura": 3
     }
@@ -7442,9 +7442,9 @@
     "defesaSocial": 18,
     "vontade": 11,
     "soak": {
-      "impacto": 15,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 20,
+      "corte": 15,
+      "perfuracao": 15
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 10",
@@ -7505,7 +7505,7 @@
       {
         "nome": "Sopro de fogo",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 9,
         "tipo": "fogo",
         "classe": "distancia",
@@ -7551,9 +7551,9 @@
       "sociabilidade": 2,
       "ocultismo": 3,
       "persuasao": 4,
+      "atirador": 4,
       "intimidacao": 4,
       "voo": 3,
-      "disparo": 4,
       "acerto-arcano": 4,
       "musculatura": 3
     }
@@ -7821,9 +7821,9 @@
     "defesaSocial": 8,
     "vontade": 4,
     "soak": {
-      "impacto": 6,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 7,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -7901,9 +7901,9 @@
     "defesaSocial": 18,
     "vontade": 9,
     "soak": {
-      "impacto": 7,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 8,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -7970,9 +7970,9 @@
     "defesaSocial": 10,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 11,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -8014,8 +8014,8 @@
       "atletismo": 2,
       "integridade": 5,
       "ocultismo": 2,
+      "atirador": 3,
       "escalada": 3,
-      "disparo": 3,
       "musculatura": 1
     }
   },
@@ -8549,9 +8549,9 @@
     "defesaSocial": 8,
     "vontade": 8,
     "soak": {
-      "impacto": 10,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 15,
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -8617,9 +8617,9 @@
     "defesaSocial": 8,
     "vontade": 6,
     "soak": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 9,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -8885,9 +8885,9 @@
     "defesaSocial": 6,
     "vontade": 3,
     "soak": {
-      "impacto": 3,
-      "corte": 0,
-      "perfuracao": 0
+      "impacto": 4,
+      "corte": 1,
+      "perfuracao": 1
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -9589,9 +9589,9 @@
     "defesaSocial": 10,
     "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 12,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -9662,9 +9662,9 @@
     "defesaSocial": 4,
     "vontade": 5,
     "soak": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 5,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -10456,9 +10456,9 @@
     "defesaSocial": 14,
     "vontade": 11,
     "soak": {
-      "impacto": 15,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 16,
+      "corte": 7,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 10",
@@ -11618,9 +11618,9 @@
     "defesaSocial": 18,
     "vontade": 8,
     "soak": {
-      "impacto": 13,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 14,
+      "corte": 6,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -11687,9 +11687,9 @@
     "defesaSocial": 14,
     "vontade": 6,
     "soak": {
-      "impacto": 10,
-      "corte": 2,
-      "perfuracao": 2
+      "impacto": 11,
+      "corte": 4,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -12113,9 +12113,9 @@
     "defesaSocial": 24,
     "vontade": 11,
     "soak": {
-      "impacto": 16,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 18,
+      "corte": 10,
+      "perfuracao": 10
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -12347,9 +12347,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 8,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 11,
+      "corte": 9,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12412,9 +12412,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 8,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 9,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12477,9 +12477,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 11,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 16,
+      "corte": 14,
+      "perfuracao": 14
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12542,9 +12542,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 5,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 7,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -12607,9 +12607,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 9,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 14,
+      "corte": 12,
+      "perfuracao": 12
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -13428,9 +13428,9 @@
     "defesaSocial": 8,
     "vontade": 8,
     "soak": {
-      "impacto": 14,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 16,
+      "corte": 9,
+      "perfuracao": 7
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -14487,9 +14487,9 @@
     "defesaSocial": 12,
     "vontade": 12,
     "soak": {
-      "impacto": 20,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 21,
+      "corte": 8,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 11",
@@ -14883,9 +14883,9 @@
     "defesaSocial": 14,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 11,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -15680,9 +15680,9 @@
     "defesaSocial": 14,
     "vontade": 11,
     "soak": {
-      "impacto": 19,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 24,
+      "corte": 16,
+      "perfuracao": 16
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -15729,7 +15729,7 @@
       {
         "nome": "Sopro gélido",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 9,
         "tipo": "gelo",
         "classe": "distancia",
@@ -15751,9 +15751,9 @@
       "esquiva": 2,
       "atletismo": 2,
       "integridade": 7,
+      "atirador": 4,
       "escalada": 3,
       "natacao": 3,
-      "disparo": 4,
       "musculatura": 4
     }
   },
@@ -16203,9 +16203,9 @@
     "defesaSocial": 6,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 11,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 3",
@@ -16238,7 +16238,7 @@
       {
         "nome": "Sopro gélido",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 2,
         "tipo": "gelo",
         "classe": "distancia",
@@ -16259,11 +16259,11 @@
       "bloqueio": 0,
       "esquiva": 1,
       "atletismo": 3,
+      "atirador": 2,
       "integridade": 3,
       "resistencia": 3,
       "sociabilidade": 0,
       "sobrevivencia": 3,
-      "disparo": 2,
       "musculatura": 3
     }
   },
@@ -17099,9 +17099,9 @@
     "defesaSocial": 26,
     "vontade": 12,
     "soak": {
-      "impacto": 16,
-      "corte": 7,
-      "perfuracao": 7
+      "impacto": 18,
+      "corte": 10,
+      "perfuracao": 9
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -17775,9 +17775,9 @@
     "defesaSocial": 8,
     "vontade": 6,
     "soak": {
-      "impacto": 3,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 4,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -17921,9 +17921,9 @@
     "defesaSocial": 10,
     "vontade": 6,
     "soak": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 5,
+      "corte": 3,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -18418,9 +18418,9 @@
     "defesaSocial": 8,
     "vontade": 9,
     "soak": {
-      "impacto": 8,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 9,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 5",
@@ -18481,9 +18481,9 @@
     "defesaSocial": 14,
     "vontade": 9,
     "soak": {
-      "impacto": 11,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 12,
+      "corte": 6,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 7",
@@ -18565,9 +18565,9 @@
     "defesaSocial": 18,
     "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 12,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 9",
@@ -18629,8 +18629,8 @@
       "persuasao": 3,
       "empatia": 2,
       "sociabilidade": 2,
+      "atirador": 3,
       "natacao": 3,
-      "disparo": 3,
       "acerto-arcano": 5,
       "musculatura": 2
     }
@@ -18819,9 +18819,9 @@
     "defesaSocial": 24,
     "vontade": 11,
     "soak": {
-      "impacto": 17,
-      "corte": 6,
-      "perfuracao": 6
+      "impacto": 19,
+      "corte": 10,
+      "perfuracao": 8
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 10",
@@ -19141,9 +19141,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 4,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 6,
+      "corte": 4,
+      "perfuracao": 3
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 0",
@@ -19272,9 +19272,9 @@
     "defesaSocial": 18,
     "vontade": 10,
     "soak": {
-      "impacto": 11,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 12,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -21772,9 +21772,9 @@
     "defesaSocial": 12,
     "vontade": 8,
     "soak": {
-      "impacto": 8,
-      "corte": 3,
-      "perfuracao": 3
+      "impacto": 9,
+      "corte": 4,
+      "perfuracao": 4
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -22194,9 +22194,9 @@
     "defesaSocial": 12,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 11,
+      "corte": 6,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -22928,9 +22928,9 @@
     "defesaSocial": 20,
     "vontade": 12,
     "soak": {
-      "impacto": 24,
-      "corte": 10,
-      "perfuracao": 10
+      "impacto": 30,
+      "corte": 22,
+      "perfuracao": 22
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 6",
@@ -23958,9 +23958,9 @@
     "defesaSocial": 14,
     "vontade": 9,
     "soak": {
-      "impacto": 10,
-      "corte": 4,
-      "perfuracao": 4
+      "impacto": 11,
+      "corte": 5,
+      "perfuracao": 5
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",
@@ -25092,9 +25092,9 @@
     "defesaSocial": "-",
     "vontade": 3,
     "soak": {
-      "impacto": 7,
-      "corte": 1,
-      "perfuracao": 1
+      "impacto": 8,
+      "corte": 2,
+      "perfuracao": 2
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 4",
@@ -25156,9 +25156,9 @@
     "defesaSocial": 14,
     "vontade": 10,
     "soak": {
-      "impacto": 14,
-      "corte": 5,
-      "perfuracao": 5
+      "impacto": 15,
+      "corte": 7,
+      "perfuracao": 6
     },
     "resistPerf": 0,
     "iniciativa": "1d6 + 8",

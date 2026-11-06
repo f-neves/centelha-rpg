@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 4,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 11,
     "destreza": 8,
@@ -124,6 +125,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Espada flamejante",
+      "categoria": "inato",
       "ativacao": "o golpe da espada que acerta",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -131,27 +133,22 @@
       "efeito": "a lâmina arde e queima a ferida",
       "dano": "+1d6 de fogo, somado ao do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Chicote que puxa",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Chicote de chamas",
+      "categoria": "inato",
       "ativacao": "o golpe do chicote que acerta",
       "duracao": "instantânea",
       "alcance": "9 m",
       "area": "um alvo",
-      "efeito": "o chicote enrola o alvo e o puxa até o balor ou o derruba (Caído), à escolha dele",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "o do chicote",
       "resistencia": "corpo, contra a jogada do golpe; quem passa leva o dano e fica onde está",
       "limiteDeUso": "um por golpe"
-    },
-    {
-      "nome": "espada e chicote juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "golpeia com a espada e com o chicote na mesma ação; por enquanto, um ataque por ação"
     },
     {
       "nome": "Aura de fogo",
@@ -159,8 +156,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fogo",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "aura"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "3 m",
@@ -168,7 +167,7 @@
       "efeito": "o corpo arde o tempo todo; ficar perto, mesmo sem lutar, queima",
       "dano": "2d6 de fogo a cada 6 Ticks em quem estiver dentro",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Morte explosiva",
@@ -178,6 +177,7 @@
         "arte": "fogo",
         "nivel": 5
       },
+      "categoria": "inato",
       "ativacao": "quando cai a 0 PV",
       "duracao": "instantânea",
       "alcance": "12 m",
@@ -185,7 +185,7 @@
       "efeito": "o corpo estoura numa bola de fogo",
       "dano": "5d6 + Centelha, fogo",
       "resistencia": "esquiva; quem passa leva metade",
-      "limiteDeUso": "uma vez, na morte"
+      "limiteDeUso": "uma vez, na morte. Sem custo"
     },
     {
       "nome": "Teleporte",
@@ -193,16 +193,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "qualquer lugar que ele conheça no mesmo plano",
       "area": "o próprio balor",
-      "efeito": "some numa lufada de fumaça negra e reaparece no destino, atravessando paredes e prisões mágicas comuns",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "três vezes por dia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Comandar legiões",
@@ -211,13 +213,22 @@
       "tecnica": {
         "id": "coordenar",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "comandar a horda inteira",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "dá ação extra ou Iniciativa a todos os demônios aliados na área, e não a um só"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao comandar a horda",
+      "duracao": "a próxima ação",
+      "alcance": "até onde ouvem a ordem",
+      "area": "aliados que ouvem",
+      "efeito": "Antecipa a próxima ação dos aliados em 2 Ticks, sem dar ação extra",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por cena, sem custo"
     },
     {
       "nome": "Ver o invisível",
@@ -226,19 +237,43 @@
       "tecnica": {
         "id": "visao-verdadeira",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o balor enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "o campo de visão",
+      "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê o balor pela primeira vez sente o calor e o terror de uma calamidade viva; o corpo quer fugir antes de qualquer golpe"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: espada flamejante, chicote de chamas. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -256,7 +291,7 @@
     },
     {
       "nome": "visão verdadeira",
-      "descricao": "pela Técnica (Manobras)",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -337,26 +372,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Lâmina em chamas",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Chicote que puxa",
-      "motivo": "números sugeridos pela ficha (D-197); Acerto pela Destreza 8, em vez da Força 11; jogada 27 para 24, pela 33.2."
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura de fogo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Morte explosiva",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site (\"Prontidão 5\"); o campo dizia 3; 5 pela nota do site, e não o 3 do campo"
     },
@@ -366,11 +381,15 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). A imunidade e a fraqueza são as do site (\"imune a fogo; vulnerável a frio\"), pela linha Elementos; 4, como o hezrou"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou .; 4, como o hezrou"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "aparencia",
@@ -383,6 +402,10 @@
     {
       "campo": "elementos.fraquezas",
       "motivo": "o site diz \"vulnerável a frio (sofre dano extra)\"; entrou como fraqueza a Gelo do vocabulário, que passa a Absorção"
+    },
+    {
+      "campo": "habilidadesEspeciais.Chicote que puxa",
+      "motivo": "Acerto pela Destreza 8, em vez da Força 11; jogada 27 para 24, pela 33.2."
     }
   ]
 }

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 4,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 12,
     "destreza": 4,
@@ -119,6 +120,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pinças",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -127,20 +129,16 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "pinças e garras juntas",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quatro golpes na mesma ação, duas pinças e duas garras; por enquanto, uma Rajada por ação"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pinças",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -151,14 +149,15 @@
         "arte": "fortuna",
         "nivel": 6
       },
-      "ativacao": "uma ação, a pedido de um mortal que aceita o trato",
+      "categoria": "milagre",
+      "ativacao": "uma ação, a pedido de um mortal que aceita o trato. Um mortal enuncia o pedido e aceita o pacto. A negociação e a aceitação do pacto são o preparo",
       "duracao": "até o pedido se cumprir",
       "alcance": "quem fala com ele",
       "area": "um alvo",
-      "efeito": "realiza o pedido ao pé da letra, com uma cláusula escondida que prejudica quem pediu depois",
+      "efeito": "realiza o pedido ao pé da letra, com uma cláusula escondida que prejudica quem pediu depois. O limite é uma Arte até nível 6 que o concedente possa descrever. Preço e alvo são declarados antes do acordo. O desejo não altera o passado, não cria outro desejo e só traz mortos até onde a Cura permite",
       "dano": "nenhum",
       "resistencia": "nenhum; quem aceita, aceita o preço",
-      "limiteDeUso": "uma vez por história"
+      "limiteDeUso": "uma vez por história. Limite fixo, sem uso extra nem ampliação"
     },
     {
       "nome": "Confusão",
@@ -168,14 +167,15 @@
         "arte": "fascinacao",
         "nivel": 5
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 7",
       "duracao": "12 Ticks",
       "alcance": "18 m, à vista",
       "area": "um alvo",
-      "efeito": "embaralha a mente do alvo, que fica Confuso",
+      "efeito": "embaralha a mente do alvo, que fica Confuso. Enquanto Confuso, declara a ação e rola 1d6. Com 1 a 3, faz o declarado. Com 4 ou 5, o Mestre escolhe ação e alvo. Com 6, perde a ação",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada alvo"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia"
     },
     {
       "nome": "Imagem espelhada",
@@ -185,26 +185,34 @@
         "arte": "protecao",
         "nivel": 5
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 7. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até as cópias acabarem",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "três cópias ilusórias dele confundem quem ataca; cada golpe que o acerta desfaz uma cópia em vez de feri-lo, até as três acabarem",
       "dano": "nenhum",
       "resistencia": "nenhum; quem tem visão verdadeira ignora as cópias",
-      "limiteDeUso": "uma vez por cena"
-    },
-    {
-      "nome": "feitiços de área",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "lança efeitos de área como conjurador experiente"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "teleporte",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "uma vez por cena, some e reaparece a até 300 m, levando até seis aliados"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4,
+        "efeito": "fresta"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "300 m",
+      "area": "até seis aliados",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ver o invisível",
@@ -213,34 +221,72 @@
       "tecnica": {
         "id": "visao-verdadeira",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o glabrezu enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "o campo de visão",
+      "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "telepatia",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "fala com a mente de qualquer criatura a até 30 m, sem língua em comum"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de demônio"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de demônio. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê o glabrezu pela primeira vez sente o pavor das pinças e da cara de cão; o corpo quer recuar, mesmo quando a voz dele é cortês"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: pinça esquerda, pinça direita, garra. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "feitiços de área",
+      "formas": "todas",
+      "texto": "lança efeitos de área como conjurador experiente. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    },
     {
       "nome": "tentador",
       "formas": "todas",
@@ -255,7 +301,7 @@
     },
     {
       "nome": "visão verdadeira",
-      "descricao": "pela Técnica (Manobras)",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -336,18 +382,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Desejo traiçoeiro",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Confusão",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Imagem espelhada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 3; 4 pela nota do site, e não o 3 do campo"
     },
@@ -357,11 +391,23 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site, pela linha Elementos; 4, como o hezrou"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 4: a pele de demônio maior, como a do hezrou .; 4, como o hezrou"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Confusão",
+      "motivo": "R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Imagem espelhada",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.teleporte",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.area",

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 13,
     "destreza": 4,
@@ -96,16 +97,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "vento",
-        "nivel": 5
+        "nivel": 5,
+        "efeito": "tempestade"
       },
-      "ativacao": "cerca de dez minutos de concentração",
+      "categoria": "milagre",
+      "ativacao": "Um porta-voz dos atingidos pede ao gigante uma mudança do tempo e aceita acolher quem precisar de abrigo. Se o gigante concordar, observa o céu a descoberto e se concentra por dez minutos antes de chamar ou dissipar a tempestade",
       "duracao": "até ele dissipar, ou até o fim do dia",
       "alcance": "o céu sobre uma região inteira",
       "area": "uma região, de quilômetros",
       "efeito": "convoca ou dissipa uma tempestade: nuvens carregadas, ventania, raios caindo ao acaso, a critério do Mestre",
       "dano": "o dos raios ao acaso, a critério do Mestre",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "uma vez por dia. Limite fixo, sem uso extra nem ampliação"
     },
     {
       "nome": "Relâmpago em cadeia",
@@ -113,16 +116,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "raio",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "corrente"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "36 m até o primeiro alvo",
       "area": "o primeiro alvo e até quatro outros, cada um a até 9 m do anterior",
       "efeito": "um relâmpago sai das mãos dele e salta de um alvo para o próximo",
       "dano": "4d6 + Centelha, raio, no primeiro; 2d6 + Centelha, raio, em cada um dos outros",
       "resistencia": "esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade",
-      "limiteDeUso": "três vezes por dia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Respirar água",
@@ -130,8 +135,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "agua",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "bolha-de-ar"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -139,13 +146,14 @@
       "efeito": "respira água como quem respira ar, sem esforço nem limite de tempo, e nada sem penalidade (site, Anfíbio)",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Fúria do raio",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "ativacao": "a Pancada descomunal que acerta",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -153,26 +161,28 @@
       "efeito": "o punho solta uma descarga elétrica",
       "dano": "mais 1d6, raio",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Presença régia",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "a primeira vez na cena em que ele fala, ruge ou ataca",
-      "duracao": "até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "18 m",
       "area": "os inimigos que o veem a até 18 m",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência 4 + Intimidação 3 + 2 × o menor entre Centelha 4 e Intimidação 3 (6) = 13 mais a rolagem; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência 4 + Intimidação 3 + 2 × o menor entre Centelha 4 e Intimidação 3 (6) = 13 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada descomunal",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],
@@ -255,28 +265,8 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Comandar o clima",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Relâmpago em cadeia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Respirar água",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Fúria do raio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Presença régia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: pele grossa de gigante, como o gigante da colina (2) ; o nível fica fora da Absorção (decisoes-autor §16). A imunidade é a da habilidade publicada (Elementos); 2, pele grossa de gigante"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça: pele grossa de gigante, como o gigante da colina (2) ; o nível fica fora da Absorção (decisoes-autor §16). A imunidade é a da habilidade publicada (Elementos); 2, pele grossa de gigante"
     },
     {
       "campo": "comportamento.dieta",
@@ -285,6 +275,14 @@
     {
       "campo": "comportamento.caca",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Comandar o clima",
+      "motivo": "R1 e D-197. Proponho um porta-voz da comunidade e o compromisso de dar abrigo. O preparo a céu aberto conserva os dez minutos de concentração da ficha."
+    },
+    {
+      "campo": "habilidadesEspeciais.Relâmpago em cadeia",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidades.prontidao",

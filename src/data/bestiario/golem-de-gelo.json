@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 4,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 5,
     "destreza": 2,
@@ -88,6 +89,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho gelado",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -95,18 +97,14 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punho gelado",
+      "categoria": "inato",
       "regra": "derrubar"
-    },
-    {
-      "nome": "sem vida",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto; não sofre nada que se resista com o corpo"
     },
     {
       "nome": "Frio cortante",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "toque",
@@ -114,7 +112,7 @@
       "efeito": "o corpo de gelo queima de frio quem encosta nele",
       "dano": "1d6, gelo",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Sopro congelante",
@@ -122,21 +120,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "sopro-do-norte"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "6 m à frente",
       "area": "cone de 6 m",
-      "efeito": "um sopro de frio brutal castiga todos à frente",
+      "efeito": "um sopro de frio brutal castiga todos à frente. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, gelo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Explosão final",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "chega a 0 PV e é destruído",
       "duracao": "o dano é instantâneo; o Sangrando vai até alguém tratar",
       "alcance": "o próprio corpo",
@@ -144,13 +145,21 @@
       "efeito": "estilhaça em lascas de gelo cortante; quem não passa fica Sangrando",
       "dano": "2d6 + Centelha, Corte",
       "resistencia": "esquiva, contra Dificuldade 11 (10 + Centelha 1); quem passa leva metade e não sangra",
-      "limiteDeUso": "uma vez, na destruição"
+      "limiteDeUso": "uma vez, na destruição. Sem custo"
     },
     {
       "nome": "imune à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a maior parte das Artes não o afeta"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Neste material, aplicam-se Frio cortante",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -168,11 +177,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parado no gelo, passa por um bloco de gelo esculpido",
     "mente": "nenhuma; obedece ao criador",
-    "tracos": "esculpido num único bloco de gelo puro, de figura tosca e congelada; o gelo estala sem parar quando ele anda"
+    "tracos": "esculpido num único bloco de gelo puro, de figura tosca e congelada; o gelo estala sem parar quando ele anda. Não se cansa",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -182,7 +190,6 @@
   "comportamento": {
     "social": "solitário",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não se aplica: guarda",
     "dianteDeGente": "ataca quem a ordem manda atacar"
   },
@@ -231,18 +238,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Frio cortante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sopro congelante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Explosão final",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "O construto mantém o Vigor como medida do corpo (C-002, C-040): gelo maciço, que não sangra nem cansa, mas racha; abaixo da argila endurecida (5) e do granito (6). O site tinha 0; 4 por julgamento (gelo que racha); o site tinha 0"
     },
@@ -259,8 +254,12 @@
       "motivo": "Pelo material e pelo volume (manual 4.2): o corpo de base escalado pelo cubo da altura (× 1,59) tem 0,125 m³, e em gelo (917 kg/m³), 115 kg. O site dizia 225 kg, o que dá 1.794 kg/m³ para esse corpo, o dobro do gelo; com os ombros 25% mais largos, ainda 1.435 kg/m³. Vale a conta (D-187), como no elemental da terra grande do lote 25; 115 kg pelo gelo (0,125 m³ × 917 kg/m³); o site dizia 225 kg, o dobro da densidade do gelo. Com 225 kg, Faixa 4 e PV 46"
     },
     {
+      "campo": "habilidadesEspeciais.Sopro congelante",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R4/C-002. Gelo do construto é efeito similar à magia de base Gelo 2, V5. O corpo construído não produz doses. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: gelo maciço, duro mas quebradiço, entre o rinoceronte e o crocodilo (3 a 5) e abaixo da argila endurecida (6); o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site; a imunidade a gelo, da habilidade publicada (Elementos); 4, gelo duro e quebradiço"
+      "motivo": "4, gelo duro e quebradiço"
     }
   ]
 }

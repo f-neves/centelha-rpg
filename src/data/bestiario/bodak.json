@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de pé"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 4,
     "destreza": 4,
@@ -90,45 +91,36 @@
         "arte": "morte",
         "nivel": 5
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo, contra quem cruza o olhar com ele em campo aberto",
       "duracao": "instantânea; Abalado até o fim da cena",
       "alcance": "9 m, à vista",
       "area": "cada pessoa que o encara",
-      "efeito": "o olhar apaga a vida de quem o encara; quem falha fica Abalado, e quem falha por uma Margem cai a 0 PV na hora. Quem desvia o rosto não precisa resistir, mas ataca com −4 enquanto não olha",
+      "efeito": "o olhar apaga a vida de quem o encara; quem falha fica Abalado, e quem falha por uma Margem cai a 0 PV na hora. Quem desvia o rosto não precisa resistir, mas ataca com −4 enquanto não olha. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum além do efeito",
       "resistencia": "corpo, Vigor + Resistência contra Influência + Integridade dele; quem passa fica imune até o fim da cena",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "sol direto",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "ficar sob a luz direta do sol",
       "duracao": "enquanto estiver no sol",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "a luz do sol o enfraquece; fica Abalado e com −1 nas jogadas",
+      "efeito": "a luz do sol o enfraquece; fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "odiado pela vida",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "plantas e bichos perto dele reagem com pavor, e isso denuncia que ele chegou"
-    },
-    {
-      "nome": "imune a veneno, doença e efeito mental",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno, a doença e o que age na mente não pegam nele"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa"
     }
   ],
   "comoLuta": [
@@ -151,10 +143,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "pouca, só ódio a tudo o que respira",
-    "tracos": "casca humana cinzenta e rachada, sem cabelo, rosto encolhido como uma máscara de caveira, olhos vazios e brancos, unhas longas e secas"
+    "mente": "pouca, só ódio a tudo o que respira. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Medo cobre o imposto por essas fontes. Golpe social ou corporal ainda pode deixar Abalado. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "casca humana cinzenta e rachada, sem cabelo, rosto encolhido como uma máscara de caveira, olhos vazios e brancos, unhas longas e secas. Não se cansa",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa",
+    "familiasMentaisIgnoradas": [
+      "medo",
+      "confusao"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -164,7 +160,6 @@
   "comportamento": {
     "social": "sozinho",
     "atividade": "qualquer hora; evita o sol",
-    "dieta": "nenhuma",
     "caca": "vaga atrás do calor da vida",
     "dianteDeGente": "ataca"
   },
@@ -220,20 +215,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Olhar mortal",
-      "motivo": "números sugeridos pela ficha (D-197); a \"falha grave\" do site ficou a falha por uma Margem (6 ou mais abaixo), a régua do livro (`acoes-resistir.md`)"
-    },
-    {
-      "campo": "habilidadesEspeciais.sol direto",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Pelo corpo: casca seca e emagrecida, como o ghoul (1)"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: \"pele cinzenta e rachada, Absorção elevada\" (site), uma casca mais dura que a pele humana (0), perto do couro do cavalo (1) ; o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site, pela linha Elementos; 1, a pele cinzenta e rachada"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: \"pele cinzenta e rachada, Absorção elevada\" (site), uma casca mais dura que a pele humana (0), perto do couro do cavalo (1) ; o nível fica fora da Absorção (decisoes-autor §16). A resistência é a do site, pela linha Elementos; 1, a pele cinzenta e rachada"
     },
     {
       "campo": "comportamento.atividade",
@@ -242,6 +229,10 @@
     {
       "campo": "ataques",
       "motivo": "o \"Golpe\" de impacto do site virou Garras ressecadas Médias de Corte"
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar mortal",
+      "motivo": "a \"falha grave\" do site ficou a falha por uma Margem (6 ou mais abaixo), a régua do livro (`acoes-resistir.md`)"
     }
   ]
 }

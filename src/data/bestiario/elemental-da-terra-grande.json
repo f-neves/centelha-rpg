@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 9,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 10,
     "destreza": 2,
@@ -103,6 +104,7 @@
         "arte": "terra",
         "nivel": 2
       },
+      "categoria": "inato",
       "ativacao": "parte do movimento dele",
       "duracao": "enquanto se move",
       "alcance": "o próprio corpo",
@@ -110,13 +112,14 @@
       "efeito": "nada pela rocha sólida como se fosse água, à velocidade da Escavação, sem deixar rastro nem precisar de passagem aberta; dentro da pedra, quem está fora não o vê nem o ataca",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Sem custo"
     },
     {
       "nome": "Empurrão",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pancada de pedra",
+      "categoria": "inato",
       "ativacao": "a Pancada de pedra que acerta",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -124,7 +127,7 @@
       "efeito": "o alvo é jogado 3 m para trás ou cai (Caído), à escolha do elemental; quem está duas faixas de massa ou mais acima dele não sai do lugar",
       "dano": "o da Pancada",
       "resistencia": "corpo, contra a jogada da Pancada; quem passa fica de pé e no lugar",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Pele de Pedra",
@@ -133,13 +136,22 @@
       "tecnica": {
         "id": "pele-de-pedra",
         "nivel": 3
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "feito de pedra viva",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não sente cansaço, veneno nem doença; não respira, não come, não dorme, não se afoga e não sente gás"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal. Gás inalado não o atinge",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -157,11 +169,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "parado, passa por um rochedo; dentro da rocha, não se vê",
-    "mente": "simples; não come, não dorme, não envelhece, e existe enquanto o propósito da invocação o sustenta",
-    "tracos": "pedra cinzenta e rachada na forma de um homem de 3 m e ombros largos, com terra e cascalho caindo das juntas"
+    "mente": "simples; não envelhece, e existe enquanto o propósito da invocação o sustenta",
+    "tracos": "pedra cinzenta e rachada na forma de um homem de 3 m e ombros largos, com terra e cascalho caindo das juntas",
+    "tipoCorpo": "elemental"
   },
   "aptidoes": {
     "montaria": false,
@@ -171,7 +182,6 @@
   "comportamento": {
     "social": "sozinho, ou com quem o conjurou",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não caça",
     "dianteDeGente": "avança em linha reta, sem malícia nem hesitação"
   },
@@ -226,24 +236,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Deslizar na pedra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Empurrão",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "O site tinha 9 (For 26 no Pathfinder). Sobe para 10 pelo teste de ordem (manual, Passo 6): com 9, a pedra de 1,2 t ficaria abaixo do golem de pedra de 900 kg (10), mais leve e do mesmo material. Com 10, fica igual ao golem e ao elefante do molde (6 t), acima do rinoceronte (8) e de todo animal da Faixa 4. A Força passa de 6 pela física (D-143); 10 pelo teste de ordem; o site tinha 9. Com 9, o dano médio seria 19 e o peso erguido 1.137,73 kg"
     },
     {
       "campo": "habilidades.bloqueio",
       "motivo": "Apara com os antebraços de pedra, que bloqueiam sem tomar dano (D-066), como o golem de pedra (2); 2, como o golem de pedra; o site não gravava Bloqueio"
-    },
-    {
-      "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça: pedra maciça, como o golem de pedra (9); o nível fica fora da Absorção (decisoes-autor §16). As resistências são as do site (Elementos); nível 9, pedra maciça, como o golem de pedra"
     },
     {
       "campo": "comportamento.social",
@@ -256,6 +254,10 @@
     {
       "campo": "ataques",
       "motivo": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto"
+    },
+    {
+      "campo": "couraca",
+      "motivo": "nível 9, pedra maciça, como o golem de pedra"
     }
   ]
 }

@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé"
   },
   "couraca": 2,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 4,
@@ -123,14 +124,9 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "garras e bico juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "três golpes na mesma ação, duas garras e o bico; por enquanto, as garras vão juntas pela Rajada, e o Bico é outra ação"
     },
     {
       "nome": "Esporos",
@@ -140,19 +136,21 @@
         "arte": "morte",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6, ou sozinho, quando ele fica Morrendo",
-      "duracao": "18 Ticks",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5, ou sozinho, quando ele fica Morrendo",
+      "duracao": "até a doença regredir ou o agente ser retirado",
       "alcance": "6 m",
       "area": "esfera de 6 m em volta dele",
-      "efeito": "esporos brotam na carne de quem está perto e enfraquecem; quem falha leva o dano e fica Abalado até o fim da cena",
-      "dano": "1d6 a cada 6 Ticks, por 18 Ticks",
-      "resistencia": "corpo, contra Influência + Briga dele; quem passa não pega os esporos",
-      "limiteDeUso": "uma vez por dia"
+      "efeito": "Esporose do vrock. Exposição: os esporos lançados alcançam a carne de quem falha na resistência à nuvem. Incubação: 10 minutos. Virulência 14. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão. A exposição conserva o Abalado da descarga inicial",
+      "dano": "pela progressão da doença",
+      "resistencia": "Vigor + Resistência contra Virulência 14",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Dança da ruína",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "sobrenatural",
       "ativacao": "dois ou mais vrocks dançam juntos por 18 Ticks seguidos, sem fazer outra coisa",
       "duracao": "instantânea",
       "alcance": "30 m",
@@ -160,7 +158,7 @@
       "efeito": "a dança solta uma explosão de energia que arrasa a área",
       "dano": "5d6 + Centelha, raio",
       "resistencia": "esquiva; quem passa leva metade",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Convocar demônios",
@@ -168,34 +166,38 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "espirito",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "invocar"
       },
-      "ativacao": "uma ação, Velocidade 6, um grito",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6",
       "duracao": "até o fim da cena",
       "alcance": "o lugar onde ele está",
-      "area": "não se aplica",
-      "efeito": "traz 1d4 dretches ou outro vrock (as fichas do bestiário), que chegam em 6 Ticks e lutam por ele",
+      "area": "um aliado",
+      "efeito": "Convoca Dretch até o fim da cena. A origem aguarda o lore dos planos",
       "dano": "o dos que chegam",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Grito ensurdecedor",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "Surdo até o fim da cena",
-      "alcance": "6 m à frente",
-      "area": "cone de 6 m",
-      "efeito": "o grito ensurdece; quem falha fica Surdo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "6 Ticks",
+      "alcance": "até onde ouve",
+      "area": "um alvo",
+      "efeito": "O grito deixa surdo quem falha na resistência",
       "dano": "nenhum",
-      "resistencia": "corpo, contra Vigor + Intimidação dele; quem passa não ouve bem por um instante, sem efeito de jogo",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Imagem espelhada",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "sobrenatural",
       "ativacao": "uma ação, Velocidade 6",
       "duracao": "até o fim da cena, ou até as cópias acabarem",
       "alcance": "o próprio corpo",
@@ -203,19 +205,42 @@
       "efeito": "duas cópias ilusórias dele confundem quem ataca; cada golpe que o acerta desfaz uma cópia em vez de feri-lo, até as duas acabarem",
       "dano": "nenhum",
       "resistencia": "nenhum; quem tem visão verdadeira ignora as cópias",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "medonho",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "quem vê o vrock pela primeira vez sente o cheiro de carniça e o pavor do abutre do tamanho de um homem; o corpo quer recuar"
     },
     {
       "nome": "atordoamento do grito",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o grito deixa a vítima zonza e incapaz de agir por um instante"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até a próxima ação começar, com o adiamento de Atordoado",
+      "alcance": "até onde ouve",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "O grito atordoa com Margem 1 ou mais. Aplicar Atordoado do livro",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra 10 + 5 × Margem, até 40",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -300,36 +325,40 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Esporos",
-      "motivo": "números sugeridos pela ficha (D-197); o site trazia duas versões (explosão de 6 m ao ficar Agonizante, e esporos em quem está colado, uma vez por dia); a ficha juntou as duas numa linha, com o \"Agonizante\" lido como Morrendo e o \"Enfraquecido\" como Abalado"
-    },
-    {
-      "campo": "habilidadesEspeciais.Dança da ruína",
-      "motivo": "números sugeridos pela ficha (D-197); o site dizia \"dois ou mais vrocks\" numa linha e \"exige 3 vrocks\" na outra; ficaram dois. O tipo raio é escolha da ficha, porque o site só diz \"dano alto\""
-    },
-    {
-      "campo": "habilidadesEspeciais.Convocar demônios",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Grito ensurdecedor",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Imagem espelhada",
-      "motivo": "números sugeridos pela ficha (D-197); números da ficha (D-197)"
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 2: penas duras e pele grossa de ave grande . O nível fica fora da Absorção (decisoes-autor §16); 2"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 2: penas duras e pele grossa de ave grande .; 2"
     },
     {
       "campo": "ataques.Bico.nivelPerfuracao",
       "motivo": "\"Garras e bico\" (site): o bico curvo de abutre, com a cabeça e o pescoço atrás, Média. N1, bico córneo que fura couro . Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Esporos",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; o site trazia duas versões (explosão de 6 m ao ficar Agonizante, e esporos em quem está colado, uma vez por dia); a ficha juntou as duas numa linha, com o \"Agonizante\" lido como Morrendo e o \"Enfraquecido\" como Abalado"
+    },
+    {
+      "campo": "habilidadesEspeciais.Dança da ruína",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia).; o site dizia \"dois ou mais vrocks\" numa linha e \"exige 3 vrocks\" na outra; ficaram dois. O tipo raio é escolha da ficha, porque o site só diz \"dano alto\""
+    },
+    {
+      "campo": "habilidadesEspeciais.Convocar demônios",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, um grito -> uma ação, Velocidade 6, um grito. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Grito ensurdecedor",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Imagem espelhada",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia).; números da ficha (D-197)"
+    },
+    {
+      "campo": "habilidadesEspeciais.atordoamento do grito",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.massa",

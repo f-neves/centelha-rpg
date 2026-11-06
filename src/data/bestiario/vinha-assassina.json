@@ -19,6 +19,7 @@
     "posturaDoTamanho": "de frente"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 2,
@@ -96,20 +97,22 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Vinha constritora",
+      "categoria": "inato",
       "ativacao": "a Vinha constritora que acerta",
       "duracao": "até o alvo se soltar ou a vinha soltar",
       "alcance": "3 m",
       "area": "um alvo",
-      "efeito": "o acerto já agarra, sem jogada de Agarrar; o alvo fica Agarrado e é puxado para junto do caule",
+      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "o da Vinha",
-      "resistencia": "nenhuma do agarrado: ele não age nem rola, e só se solta quando a vinha erra o Manter do Agarrar do livro (Força 7 + Briga 4)",
-      "limiteDeUso": "um alvo agarrado por vez"
+      "resistencia": "pela manobra Agarrar",
+      "limiteDeUso": "um alvo agarrado por vez. Sem custo"
     },
     {
       "nome": "Constrição",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Vinha constritora",
+      "categoria": "inato",
       "ativacao": "a cada 6 Ticks em que mantém o agarrão",
       "duracao": "enquanto agarra",
       "alcance": "3 m",
@@ -117,7 +120,7 @@
       "efeito": "esmaga sem nova jogada de ataque",
       "dano": "1d6 + Força + Centelha, Impacto",
       "resistencia": "nenhum; quem se solta para de sofrer",
-      "limiteDeUso": "um alvo por vez"
+      "limiteDeUso": "um alvo por vez. Sem custo"
     },
     {
       "nome": "Emaranhar",
@@ -125,16 +128,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "vida",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "prisao"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até a vinha morrer",
       "alcance": "9 m em volta",
       "area": "círculo de 9 m de raio em volta do caule",
       "efeito": "as plantas do chão se agitam e prendem os pés; quem falha fica Imobilizado até gastar uma ação e passar Força + Atletismo, Dificuldade 15; quem passa anda pela metade do deslocamento dentro da área",
       "dano": "nenhum",
       "resistencia": "esquiva, contra Raciocínio + Briga da vinha",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -221,18 +226,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Vinha que agarra",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Constrição",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Emaranhar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "A fibra lenhosa que aperta como o músculo de um animal comum (escala da decisão 12); 2"
     },
@@ -246,7 +239,7 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: o caule lenhoso, casca de árvore nova ; o nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (linha Elementos); nível 1 pelo caule lenhoso"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: o caule lenhoso, casca de árvore nova ; o nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (linha Elementos); nível 1 pelo caule lenhoso"
     },
     {
       "campo": "comportamento.social",
@@ -259,6 +252,10 @@
     {
       "campo": "ataques.Vinha constritora",
       "motivo": "O ataque do site (2 dados, 6 Ticks, impacto, \"acerto agarra e constringe\"): a vinha grossa chicoteia e enrola, Pesada pelo peso que leva. Golpe de membro: Força × 1. Alcance: 3 m (a metade da vinha que se ergue; a outra ancora) . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Emaranhar",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.area",

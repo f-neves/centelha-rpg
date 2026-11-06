@@ -23,6 +23,7 @@
     "linhaPVMotivo": "pelagem densa, corpo robusto"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 7,
     "destreza": 3,
@@ -39,6 +40,7 @@
     "bloqueio": 0,
     "esquiva": 1,
     "atletismo": 3,
+    "atirador": 2,
     "furtividade": 1,
     "integridade": 3,
     "prontidao": 1,
@@ -47,7 +49,6 @@
     "sobrevivencia": 3
   },
   "habilidadesSec": {
-    "disparo": 2,
     "musculatura": 3
   },
   "especialidades": {
@@ -107,7 +108,7 @@
     {
       "nome": "Sopro gélido",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
         3,
@@ -128,6 +129,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
+      "categoria": "inato",
       "ativacao": "a Mordida que acerta",
       "duracao": "instantânea",
       "alcance": "o da mordida",
@@ -135,13 +137,14 @@
       "efeito": "o frio do corpo dele queima a carne mordida",
       "dano": "+1d6 de gelo, somado ao do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
@@ -150,17 +153,19 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "sopro-do-norte"
       },
       "ataque": "Sopro gélido",
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "instantânea",
       "alcance": "4,5 m à frente",
       "area": "cone de 4,5 m",
-      "efeito": "um vento congelante que cobre o chão de geada",
+      "efeito": "um vento congelante que cobre o chão de geada. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, gelo",
-      "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "uma vez a cada 24 Ticks"
+      "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     }
   ],
   "comoLuta": [
@@ -168,6 +173,11 @@
       "nome": "batedor dos gigantes",
       "formas": "todas",
       "texto": "a alcateia cerca a presa na neve, sopra o frio de longe e morde quem cai; serve gigantes do gelo como guarda."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -249,16 +259,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Mordida congelante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sopro gélido",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 1: pelagem densa de inverno sobre o couro, um acima do lobo atroz (0) . O nível fica fora da Absorção (decisoes-autor §16)"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 1: pelagem densa de inverno sobre o couro, um acima do lobo atroz (0) ."
+    },
+    {
+      "campo": "ataques.Sopro gélido",
+      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\""
     },
     {
       "campo": "corpo.area",
@@ -275,10 +281,6 @@
     {
       "campo": "ataques",
       "motivo": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +11 perfurante\", 6 Ticks, dano médio 18). A ficha fica com a mordida, Média, a do lobo atroz, e o frio vai na Mordida congelante. Dano médio: 18 antes; depois, mordida 14,5, mais 1d6 de gelo (média 3,5): 18 com o frio, sem mudança"
-    },
-    {
-      "campo": "ataques.Sopro gélido",
-      "motivo": "poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\""
     }
   ]
 }

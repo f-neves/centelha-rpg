@@ -19,6 +19,7 @@
     "posturaDoTamanho": "silhueta de frente, de pé, com a cauda erguida"
   },
   "couraca": 5,
+  "perfilCouraca": "rigida",
   "atributos": {
     "forca": 8,
     "destreza": 5,
@@ -123,14 +124,9 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras ósseas",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
-    },
-    {
-      "nome": "garras e ferrão juntos",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "rasga com as garras e pica com a cauda na mesma ação; por enquanto, as garras vão juntas pela Rajada, e o ferrão é outra ação"
     },
     {
       "nome": "Ferrão que enfraquece",
@@ -138,16 +134,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "definhar"
       },
-      "ativacao": "o golpe do Ferrão que fere",
+      "categoria": "substancia",
+      "ativacao": "o golpe do Ferrão que causa ao menos 1 PV depois da Absorção",
       "duracao": "a do veneno",
       "alcance": "o da cauda",
       "area": "um alvo",
       "efeito": "o alvo fica Envenenado pelo veneno do diabo ósseo (Veneno e doença), que tira força; cada nova picada soma ao veneno",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Parede de gelo",
@@ -155,16 +153,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "muro"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena, ou até derreter",
       "alcance": "18 m",
       "area": "parede de 6 m de comprimento, 3 m de altura e 0,15 m de espessura",
       "efeito": "o gelo bloqueia a passagem e a visão",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Invisibilidade",
@@ -174,20 +174,43 @@
         "arte": "fascinacao",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "até ele atacar, ou o fim da cena",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
+      "duracao": "até atacar ou desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Invisível",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum; quem tem visão verdadeira o vê",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "imune a veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o veneno não pega no corpo de diabo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, ferrão. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -282,18 +305,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ferrão que enfraquece",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Parede de gelo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Invisibilidade",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.prontidao",
       "motivo": "A nota do site (\"Prontidão 4\"); o campo dizia 2; 4 pela nota do site, e não o 2 do campo"
     },
@@ -307,11 +318,23 @@
     },
     {
       "campo": "couraca",
-      "motivo": "Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de osso, a \"Absorção alta contra ataques físicos\" do site, como o crocodilo no alto (4 a 5) . O nível fica fora da Absorção (decisoes-autor §16). As resistências e a imunidade são as do site (\"Sangue infernal\"), pela linha Elementos; 5, pela carapaça de osso"
+      "motivo": "Cobertura do corpo pela R49; metades arredondadas para cima. Absorção natural do livro (`combate.md`). Couraça 5: a carapaça de osso, a \"Absorção alta contra ataques físicos\" do site, como o crocodilo no alto (4 a 5) .; 5, pela carapaça de osso"
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Ferrão que enfraquece",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Parede de gelo",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Invisibilidade",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

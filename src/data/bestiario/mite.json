@@ -20,6 +20,7 @@
     "tamanhoEscolhido": "pequeno"
   },
   "couraca": 1,
+  "perfilCouraca": "couro",
   "atributos": {
     "forca": 1,
     "destreza": 3,
@@ -95,19 +96,36 @@
     {
       "nome": "Pele contra ferro frio",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a pele fibrosa amortece cortes, mas ferro frio atravessa essa proteção"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra ferro frio, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Sensibilidade à luz",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "luz forte ofusca seus sentidos e prejudica a luta"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "a exposição direta à luz forte",
+      "duracao": "enquanto durar a luz forte",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Fica Ofuscado. Sofre −2 nas ações de visão, inclusive ataques. As Defesas não mudam. Cego prevalece",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "A cada exposição ao gatilho, sem custo"
     },
     {
       "nome": "Ódio aos anões e gnomos",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -115,19 +133,14 @@
       "efeito": "recebe +1 nas jogadas de ataque contra anões e gnomos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Fala com os vermes",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "comunica intenções a artrópodes, treina montarias e dirige enxames como um só animal"
-    },
-    {
-      "nome": "Truques menores",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "faz pequenas ilusões e truques de prestidigitação"
     },
     {
       "nome": "Má sorte",
@@ -135,19 +148,27 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fortuna",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "azar-marcado"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até a próxima jogada do alvo, nesta cena",
       "alcance": "9 m",
       "area": "um alvo",
       "efeito": "uma distração azarada dificulta a próxima ação do alvo, impondo −1 na jogada",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Integridade; quem passa não é afetado",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Integridade da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não é afetado",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
-  "comoLuta": [],
+  "comoLuta": [
+    {
+      "nome": "Truques menores",
+      "formas": "todas",
+      "texto": "faz pequenas ilusões e truques de prestidigitação. Os efeitos disponíveis em jogo são os poderes individuais descritos na ficha."
+    }
+  ],
   "sentidos": [
     {
       "nome": "visão",
@@ -206,14 +227,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ódio aos anões e gnomos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Má sorte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Compleição física, sem treino de levantar peso"
     },
@@ -224,6 +237,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Má sorte",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques.Mordida",
