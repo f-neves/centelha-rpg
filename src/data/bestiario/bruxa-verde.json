@@ -124,16 +124,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "definhar"
       },
+      "categoria": "sobrenatural",
       "ativacao": "as Garras que ferem, ou um toque (a jogada de Briga)",
       "duracao": "até o fim da cena; acumula",
       "alcance": "toque",
       "area": "um alvo",
-      "efeito": "quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1",
+      "efeito": "quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1. A Força reduzida vale nas contas que a usam, exceto PV e Absorção",
       "dano": "nenhum além do golpe",
       "resistencia": "corpo, Vigor + Resistência contra a jogada do toque",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Disfarce ilusório",
@@ -141,16 +143,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "rosto-emprestado"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até ela desfazer, ou até atacar",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Manha dela, só para quem desconfia",
-      "limiteDeUso": "à vontade"
+      "resistencia": "Influência + Manha da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Feitiços de maldição",
@@ -160,19 +164,21 @@
         "arte": "ofuscacao",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "18 m",
       "area": "um alvo",
       "efeito": "à escolha: uma névoa de ilusão que tira o alvo do caminho (Confuso), ou uma ordem curta que ele cumpre (\"vem\", \"dorme\", \"larga\")",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dela; quem passa fica imune a esse feitiço até o fim da cena",
-      "limiteDeUso": "três vezes por cena, somados"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune a esse feitiço até o fim da cena",
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
     },
     {
       "nome": "Fôlego anfíbio",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -180,7 +186,7 @@
       "efeito": "respira e nada debaixo d'água sem penalidade",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Garras",
@@ -188,6 +194,7 @@
         "verdadeira"
       ],
       "classe": "livro",
+      "categoria": "inato",
       "ataque": "Garras",
       "regra": "empunhadura-dupla"
     }
@@ -281,22 +288,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Toque da fraqueza",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Disfarce ilusório",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Feitiços de maldição",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Fôlego anfíbio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "aparencia",
       "motivo": "Degrau 2, \"Repulsivo\": a forma verdadeira é velha de pele verde e garras. O 8 do site é o do disfarce (\"parece bela\"), que vai na Variante; a Aparência mede a beleza do rosto e do corpo (D-205); 2 na forma verdadeira, 8 no disfarce; o site tinha 8"
     },
@@ -311,6 +302,18 @@
     {
       "campo": "formas.disfarce",
       "motivo": "\"parece bela ou inofensiva até revelar a forma verdadeira\" (site); é ilusão, e os números ficam os dela"
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque da fraqueza",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Disfarce ilusório",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiços de maldição",
+      "motivo": "R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "formas",

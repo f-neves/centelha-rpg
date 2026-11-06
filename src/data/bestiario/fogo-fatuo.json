@@ -105,21 +105,24 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "ofuscacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "ausencia"
       },
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 5",
-      "duracao": "até ele atacar ou desfazer",
+      "duracao": "até atacar ou desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Evasiva",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -127,12 +130,13 @@
       "efeito": "+2 na Esquiva contra ataque a distância",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Difícil de acertar por Arte",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "Arte que mira um alvo raramente o alcança"
     }
   ],
@@ -165,7 +169,7 @@
     "prendeRespiracao": "não respira",
     "camuflagem": "a invisibilidade, e a luz que se confunde com uma lanterna distante",
     "mente": "inteligente, fria e paciente; vive do medo e da força vital das vítimas",
-    "tracos": "orbe de luz pálida de 30 cm, que muda de azul a amarelo e pisca como chama"
+    "tracos": "Corpo vivo comum. orbe de luz pálida de 30 cm, que muda de azul a amarelo e pisca como chama"
   },
   "aptidoes": {
     "montaria": false,
@@ -220,14 +224,6 @@
     ]
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Invisibilidade natural",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Evasiva",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "aparencia",
       "motivo": "Degrau 5. O site tinha 1; a Aparência mede a beleza (D-205), e a luz do fogo-fátuo é bonita de ver: é o que atrai as vítimas. O mesmo 5 do elemental do fogo; 5; o site tinha 1 (D-205)"

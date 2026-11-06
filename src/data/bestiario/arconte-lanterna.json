@@ -41,11 +41,11 @@
     "prontidao": 1,
     "integridade": 2,
     "sobrevivencia": 0,
-    "sociabilidade": 1
+    "sociabilidade": 1,
+    "atirador": 3
   },
   "habilidadesSec": {
-    "musculatura": 0,
-    "disparo": 3
+    "musculatura": 0
   },
   "especialidades": {},
   "especialidadesSec": {},
@@ -73,10 +73,10 @@
     {
       "nome": "Raio de luz",
       "parte": "luz-do-corpo",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
-        3,
+        1,
         1,
         3
       ],
@@ -95,41 +95,75 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "luz",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "projetil-conjurado"
       },
       "ataque": "Raio de luz",
-      "ativacao": "uma ação, Velocidade 7, Vigor + Disparo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "18 m",
       "area": "um alvo",
       "efeito": "atinge com luz concentrada",
       "dano": "2d6 + Centelha, fenômeno",
       "resistencia": "esquiva, contra a jogada do raio; quem passa evita o feixe",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Atravessar toda proteção",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "os raios atravessam proteções sobrenaturais; o alcance dessa penetração aguarda regra própria"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Resistência a ferimentos",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a luz celeste resiste a armas comuns, mas pode ser ferida pelo mal"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao receber o golpe",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra arma ou efeito maligno, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Imune a petrificação",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o corpo luminoso não se transforma em pedra"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "O corpo luminoso ignora Petrificação. Outros efeitos do mesmo golpe ou poder continuam valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Fusão",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "vários arcontes lanterna podem reunir suas luzes numa entidade mais poderosa e depois se separar"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A fusão soma os PV atuais e máximos de quem se reúne. O conjunto usa uma única sequência de ações até o fim da cena",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Aura de ameaça",
@@ -139,6 +173,7 @@
         "arte": "luz",
         "nivel": 2
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "enquanto o inimigo permanecer no raio",
       "alcance": "6 m",
@@ -146,7 +181,7 @@
       "efeito": "a luz perturba a atenção: −1 nas jogadas de ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Círculo contra o mal",
@@ -154,22 +189,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "protecao",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "circulo"
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "3 m",
       "area": "o próprio arconte e os aliados no raio",
       "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Repelir possessão",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a barreira do círculo dificulta a entrada de entidades na mente dos protegidos"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra uma possessão, o protegido usa sua Defesa Mental com a proteção do círculo e o Resistir do livro",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Teleporte",
@@ -177,16 +222,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "12 m visíveis",
       "area": "o próprio arconte",
-      "efeito": "apaga num ponto e acende no destino",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "três vezes por dia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -194,6 +241,11 @@
       "nome": "guarda celestial",
       "formas": "todas",
       "texto": "paira fora do alcance e dispara luz enquanto protege os companheiros."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -262,22 +314,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Raio de luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura de ameaça",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Círculo contra o mal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.altura",
       "motivo": "A bola de luz do tamanho de uma cabeça grande (Fase 5, F5.84); o site dava 1 m"
     },
@@ -287,7 +323,15 @@
     },
     {
       "campo": "ataques.Raio de luz",
-      "motivo": "Feixe natural (base Luz 3); jogada Vigor 3 + Disparo 3 + 2 × o menor entre Centelha 2 e Disparo 3. Só Centelha absorve fenômeno (C-041)"
+      "motivo": "Feixe natural (base Luz 3); jogada o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 2 e Disparo 3. Só Centelha absorve fenômeno (C-041); R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, o maior entre Vigor, Destreza e Percepção + Atirador -> uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Pela régua da Arte de base. R3 e D-197. P/G/R do ataque 3/1/3 -> 1/1/3 para o golpe sair na Velocidade 5 do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Círculo contra o mal",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo",

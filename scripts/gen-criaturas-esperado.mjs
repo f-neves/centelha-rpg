@@ -42,12 +42,16 @@ const escolhe = (o, ks) => Object.fromEntries(ks.filter((k) => o[k] !== undefine
 // números são os que a própria ficha escreve nas tabelas Atributos e Habilidades (`numeros`), e a frase só diz quais
 // somar; sem um deles, a jogada fica sem conferir, como antes.
 const D315 = /^\s*o maior entre Vigor, Destreza e Percepção \+ Atirador\b/;
+// E a frase que nomeia antes e soma depois, do lote r35-r54: "Jogada de Percepção + Atirador: 5 + 4 + 2 × ...".
+const NOMEIA = new RegExp(`Jogada de (?:Força|Destreza|Vigor|Percepção) \\+ (?:${HAB_ATAQUE}):\\s*(\\d+)\\s*\\+\\s*(\\d+)([^|]*)`);
 function lerJogada(just, numeros = {}) {
-  const j = (String(just).match(/Jogada:([^|]*)/) || String(just).match(/\bjogada( o maior entre Vigor, Destreza e Percepção[^|]*)/) || [])[1];
+  const nm = String(just).match(NOMEIA);
+  const j = nm ? nm[3] : (String(just).match(/Jogada:([^|]*)/) || String(just).match(/\bjogada( o maior entre Vigor, Destreza e Percepção[^|]*)/) || [])[1];
   if (!j) return undefined;
   let atr, hab, termo = 0;
   const mh = j.match(new RegExp(`(\\d+)(?:\\s*\\([^)]*\\))?\\s*\\+\\s*(${HAB_ATAQUE})\\s+(\\d+)`));
-  if (mh) { atr = Number(mh[1]); hab = Number(mh[3]); }
+  if (nm) { atr = Number(nm[1]); hab = Number(nm[2]); }
+  else if (mh) { atr = Number(mh[1]); hab = Number(mh[3]); }
   else if (D315.test(j)) {
     const tres = ['Vigor', 'Destreza', 'Percepção'].map((k) => numeros[k]);
     if (tres.some((x) => x === undefined) || numeros.Atirador === undefined) return undefined;

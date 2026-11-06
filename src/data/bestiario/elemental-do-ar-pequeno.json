@@ -90,26 +90,43 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Pequeno: o núcleo, sem o redemoinho. Médio: com o redemoinho ativo. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita. A postura ativa não dispensa a ativação, a duração e os usos do poder correspondente",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Redemoinho",
       "formas": "todas",
       "classe": "regra da ficha",
       "base": {
         "arte": "vento",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "tromba"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até 18 Ticks, ou até ele desfazer com outra ação",
       "alcance": "o próprio corpo, que se move enquanto gira",
       "area": "o espaço por onde ele passa, até 1,2 m de largura",
       "efeito": "vira um pequeno tornado; quem ele atravessa é puxado para dentro e fica Agarrado, girando, até o redemoinho acabar ou até vencer a manobra para se soltar. Quem está duas faixas de massa ou mais acima dele não é puxado",
       "dano": "o da Pancada de vento a quem está dentro, a cada 6 Ticks",
       "resistencia": "esquiva, contra Destreza + Briga dele; quem passa não é puxado",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Domínio do ar",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -117,13 +134,21 @@
       "efeito": "o vento em volta desvia os projéteis: +2 na Defesa contra flecha, virote, pedra e o que se arremessa",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "feito de vento",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não sente cansaço, veneno nem doença; não respira, não come, não dorme"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -141,11 +166,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "quase transparente; vê-se pela poeira e pelas folhas que levanta",
     "mente": "simples; obedece a quem o conjurou enquanto o vínculo se sustenta",
-    "tracos": "redemoinho de vento de 1,2 m, com poeira, folhas e areia girando; assobia por onde passa"
+    "tracos": "redemoinho de vento de 1,2 m, com poeira, folhas e areia girando; assobia por onde passa",
+    "tipoCorpo": "elemental"
   },
   "aptidoes": {
     "montaria": false,
@@ -155,7 +179,6 @@
   "comportamento": {
     "social": "sozinho, ou com quem o conjurou",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não caça",
     "dianteDeGente": "obedece enquanto o vínculo dura; rompido o elo, volta furioso ao próprio plano"
   },
@@ -196,14 +219,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Redemoinho",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural de uma vez por cena, e não forma (linha Formas): é um modo de ataque com duração, sem corpo próprio a descrever"
-    },
-    {
-      "campo": "habilidadesEspeciais.Domínio do ar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.forca",
       "motivo": "Fica como no site (For 12 no Pathfinder). O golpe do vento empurra: é pressão de ar, e não chama, por isso não desce como a Força 1 do elemental do fogo, que fere pelo fogo. Teste de ordem: o volume lido como 23,6 kg fica igual ao lobo do molde (55 kg, 3), sem passar ninguém mais pesado; 3, a do site; o vento empurra, por isso não desce como o fogo"
     },
@@ -214,6 +229,10 @@
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Redemoinho",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia).; poder natural de uma vez por cena, e não forma (linha Formas): é um modo de ataque com duração, sem corpo próprio a descrever"
     },
     {
       "campo": "corpo.volume",

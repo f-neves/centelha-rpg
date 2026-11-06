@@ -108,10 +108,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: amontoada. Grande: espalhada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "muitas bocas",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Bocas",
+      "categoria": "inato",
       "regra": "rajada"
     },
     {
@@ -119,6 +134,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Bocas",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -126,14 +142,23 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Bocas",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "as bocas presas drenam o sangue"
     },
     {
       "nome": "Engolir em vida",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "espalhada, traga para dentro de si um inimigo do tamanho dela ou menor; dentro, as bocas seguem comendo até ele abrir caminho para fora cortando"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Coro enlouquecedor",
@@ -143,14 +168,15 @@
         "arte": "fascinacao",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 5",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da próxima ação de cada alvo",
       "alcance": "18 m, quem a ouve",
       "area": "todos ao alcance, menos ela",
-      "efeito": "o balbuciar de mil vozes deixa o alvo Confuso",
+      "efeito": "o balbuciar de mil vozes deixa o alvo Confuso. Enquanto Confuso, declara a ação e rola 1d6. Com 1 a 3, faz o declarado. Com 4 ou 5, o Mestre escolhe ação e alvo. Com 6, perde a ação",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência 3 + Integridade 3 + 2 × o menor entre Centelha 4 e Integridade 3 (6) = 12 mais a rolagem; quem passa fica livre dela até o fim da cena",
-      "limiteDeUso": "à vontade (\"livremente\", site)"
+      "resistencia": "Influência 3 + Integridade 3 + 2 × o menor entre Centelha 4 e Integridade 3 (6) = 12 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica livre dela até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Terreno lodoso",
@@ -158,35 +184,46 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "terra",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "chao-traicoeiro"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "o chão sob ela",
       "area": "círculo de 3 m em volta dela",
       "efeito": "pedra e terra viram lama: Terreno difícil (`condicoes.json`) para todos, menos para ela",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Olhos por todo lado",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "não fica Flanqueada (`condicoes.json`)",
+      "efeito": "Ignora apenas o −2 de Flanqueado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Massa amorfa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "golpe certeiro e ataque furtivo não fazem nela mais do que o dano comum"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Um golpe dirigido a ponto vital causa apenas o dano comum. Surpresa e Tamanho continuam valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -255,18 +292,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Coro enlouquecedor",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Terreno lodoso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Olhos por todo lado",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "aparencia",
       "motivo": "Degrau 0: massa de olhos e bocas sem rosto. O site tinha 1; a Aparência mede a beleza (D-205), e nada nela tem forma. O que ela faz em quem olha está no Coro (Manobras); 0; o site tinha 1 (D-205)"
     },
@@ -281,6 +306,14 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Coro enlouquecedor",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Terreno lodoso",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

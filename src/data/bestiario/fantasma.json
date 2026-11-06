@@ -99,14 +99,15 @@
         "arte": "espirito",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "nenhuma, sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "voa sem ruído e atravessa paredes e portas; não agarra, não empurra e não pode ser agarrado nem empurrado; a arma comum ainda o fere, pela metade (Elementos)",
+      "efeito": "voa sem ruído e atravessa paredes e portas; não agarra nem empurra e não pode ser empurrado. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Toque corruptor",
@@ -116,6 +117,7 @@
         "arte": "morte",
         "nivel": 2
       },
+      "categoria": "sobrenatural",
       "ativacao": "o Toque corrupto que fere",
       "duracao": "18 Ticks",
       "alcance": "toque",
@@ -123,7 +125,7 @@
       "efeito": "o frio do toque continua consumindo a vida do alvo depois do golpe",
       "dano": "1d6 + Centelha, fenômeno, a cada 6 Ticks enquanto durar",
       "resistencia": "corpo, contra a jogada do toque; quem passa leva metade a cada vez",
-      "limiteDeUso": "um por golpe; um novo toque recomeça a contagem"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Lamento aterrador",
@@ -131,16 +133,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "mortalha"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "Em pânico por 12 Ticks",
       "alcance": "quem ouve, até 18 m",
       "area": "esfera de 18 m em volta dele",
       "efeito": "um gemido que gela o sangue; quem falha foge tomado de pavor",
       "dano": "nenhum",
-      "resistencia": "mente, Compostura + Integridade de quem ouve contra Influência + Intimidação dele; quem passa fica Abalado até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica Abalado até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Possessão",
@@ -150,20 +154,29 @@
         "arte": "fascinacao",
         "nivel": 4
       },
-      "ativacao": "uma ação, Velocidade 6, entrando no corpo de um alvo ao alcance do toque",
-      "duracao": "uma cena",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até expulsão, resistência bem-sucedida ou morte do hospedeiro",
       "alcance": "toque",
       "area": "um alvo",
-      "efeito": "o fantasma some dentro do alvo e o controla, agindo como se fosse ele; o alvo fica Dominado, com o novo teste que a condição manda a cada dano sofrido",
+      "efeito": "Domina um hospedeiro indefeso. Usa o corpo e os sentidos dele com a própria mente, controlando suas ações. Dano dá nova resistência. A morte do hospedeiro expulsa o possuidor no local",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Briga dele; quem passa fica imune à possessão dele até o fim do dia",
-      "limiteDeUso": "uma vez por dia"
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "o corpo do possuído",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "enquanto possui, o fantasma não pode ser atacado sem ferir o corpo do possuído; o livro não diz o que acontece com quem está dentro quando o corpo cai"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "até expulsão, resistência bem-sucedida ou morte do hospedeiro",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Domina um hospedeiro indefeso. Usa o corpo e os sentidos dele com a própria mente, controlando suas ações. Dano dá nova resistência. A morte do hospedeiro expulsa o possuidor no local",
+      "dano": "nenhum",
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Telecinese",
@@ -171,34 +184,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "forcas",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "arremesso"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "enquanto se concentrar",
       "alcance": "9 m",
       "area": "um objeto",
       "efeito": "move objetos pela sala sem tocá-los, com a força de uma pessoa comum; arremessa o que move",
       "dano": "o do objeto arremessado, a critério do Mestre",
       "resistencia": "esquiva, contra o objeto arremessado",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Renascer da fúria",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "destruído, volta ao lugar da injustiça depois de alguns dias, a menos que a injustiça que o prende seja resolvida"
-    },
-    {
-      "nome": "imune a veneno e doença",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não tem corpo que se envenene ou adoeça"
-    },
-    {
-      "nome": "sem corpo",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao morrer",
+      "duracao": "alguns dias",
+      "alcance": "a própria âncora",
+      "area": "a criatura",
+      "efeito": "Retorna com 1 PV após alguns dias, pelo vínculo com o lugar e a injustiça que o prendem. Destruir a âncora ou resolver o vínculo impede o retorno",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por dia, sem custo"
     }
   ],
   "comoLuta": [
@@ -221,10 +232,13 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "inteira, presa à injustiça, cruel e vingativa",
-    "tracos": "sem peso e sem matéria; a figura translúcida de quem ele foi, com cópias etéreas dos pertences que mais amava, que atravessam a matéria como ele"
+    "mente": "inteira, presa à injustiça, cruel e vingativa. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "sem peso e sem matéria; a figura translúcida de quem ele foi, com cópias etéreas dos pertences que mais amava, que atravessam a matéria como ele. Não se cansa",
+    "tipoCorpo": "incorporeo",
+    "recuperacao": "Recupera-se com o tempo junto ao lugar da injustiça que o prende",
+    "familiasMentaisIgnoradas": [
+      "dominio"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -234,7 +248,6 @@
   "comportamento": {
     "social": "sozinho",
     "atividade": "noturno",
-    "dieta": "nenhuma",
     "caca": "assombra um lugar",
     "dianteDeGente": "assusta, possui ou ataca"
   },
@@ -295,26 +308,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Corpo incorpóreo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Toque corruptor",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Lamento aterrador",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Possessão",
-      "motivo": "números sugeridos pela ficha (D-197); o livro não tem regra de possessão (manual 4.3); a ficha a monta pela condição Dominado, com a base Fascinação 4 do site, e deixa o que acontece com o corpo possuído sem regra ainda"
-    },
-    {
-      "campo": "habilidadesEspeciais.Telecinese",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "atributos.vigor",
       "motivo": "Para a alma sem corpo, o Vigor mede o quanto ela aguenta antes de se desfazer, como no espectro. Fica como no site; 6, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer"
     },
@@ -329,6 +322,26 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (fraqueza a luz)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque corruptor",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Lamento aterrador",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Possessão",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, entrando no corpo de um alvo ao alcance do toque -> uma ação, Velocidade 6, entrando no corpo de um alvo ao alcance do toque. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia).; o livro não tem regra de possessão (manual 4.3); a ficha a monta pela condição Dominado, com a base Fascinação 4 do site, e deixa o que acontece com o corpo possuído sem regra ainda"
+    },
+    {
+      "campo": "habilidadesEspeciais.Telecinese",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Renascer da fúria",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

@@ -99,13 +99,35 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Maça estonteante",
       "formas": [
         "anjo"
       ],
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Maça",
-      "efeito": "o golpe da maça deixa o alvo tonto, incapaz de agir por um instante"
+      "categoria": "inato",
+      "ativacao": "quando o golpe indicado atinge",
+      "duracao": "até a próxima ação começar, com o adiamento de Atordoado",
+      "alcance": "o do golpe",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "O golpe da maça atordoa com Margem 1 ou mais. Aplicar Atordoado do livro",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra 10 + 5 × Margem, até 40",
+      "limiteDeUso": "Quando o golpe indicado atinge com a Margem exigida, sem custo"
     },
     {
       "nome": "Golpe sagrado",
@@ -114,6 +136,7 @@
       ],
       "classe": "regra da ficha",
       "ataque": "Maça",
+      "categoria": "inato",
       "ativacao": "o golpe corpo a corpo que acerta uma criatura maligna (demônio, morto-vivo, corruptor, ou quem o Mestre disser)",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -121,7 +144,7 @@
       "efeito": "a luz do golpe queima o mal",
       "dano": "+1d6, sagrado, somado ao do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Mudar de forma",
@@ -131,14 +154,15 @@
         "arte": "metamorfose",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "uma cena, ou até ela desfazer com outra ação",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça",
+      "efeito": "assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Feitiços celestiais",
@@ -148,14 +172,15 @@
         "arte": "cura",
         "nivel": 4
       },
-      "ativacao": "uma ação, Velocidade 8, tocando o alvo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6, tocando o alvo. O efeito sai no Tick do Golpe",
       "duracao": "instantânea; a bênção dura até a próxima jogada do aliado ou o fim da cena",
       "alcance": "toque",
       "area": "um alvo",
       "efeito": "escolhe uma: fecha ferimentos; limpa uma doença ou uma maldição (inclusive a licantropia); ou abençoa, e o aliado soma +1d6 na próxima jogada importante",
       "dano": "nenhum; a cura devolve 3d6 + Centelha PV",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Aura protetora",
@@ -163,8 +188,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "protecao",
-        "nivel": 5
+        "nivel": 5,
+        "efeito": "barreira"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "6 m",
@@ -172,7 +199,7 @@
       "efeito": "os aliados dentro dela somam +4 em Esquiva, Bloqueio e Defesa Mental contra golpe, Arte ou efeito de criatura maligna",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Teleporte sem erro",
@@ -180,22 +207,32 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 5
+        "nivel": 5,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "qualquer lugar que ela conheça no mesmo plano",
       "area": "o deva e até seis companheiros que ele toca ou que tocam nele",
-      "efeito": "some e reaparece no destino, sem chance de erro",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum; quem não quer ir não é levado",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Imune a doença e veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "doença e veneno não pegam nele"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "doença e veneno não pegam nele. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -300,26 +337,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Golpe sagrado",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Feitiços celestiais",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura protetora",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte sem erro",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.briga",
       "motivo": "O site gravava `briga` 5 para o \"Golpe planar\", que é a maça (Armas); de mãos nuas, o anjo é guerreiro treinado, e não lutador; 2 e 1; o site tinha Briga 5 e nenhum Bloqueio"
     },
@@ -342,6 +359,14 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma muda a aparência, a voz e o cheiro; os números ficam os do deva, e a maça e o que veste não acompanham a troca"
+    },
+    {
+      "campo": "habilidadesEspeciais.Feitiços celestiais",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8, tocando o alvo -> uma ação, Velocidade 6, tocando o alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte sem erro",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "formas",

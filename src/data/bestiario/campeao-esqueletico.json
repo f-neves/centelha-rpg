@@ -95,19 +95,21 @@
       "nome": "Resistência a rituais",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma Arte, Técnica ou ritual que afasta, expulsa ou comanda mortos-vivos o tem como alvo",
       "duracao": "a do efeito",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "o campeão resiste melhor que os esqueletos comuns",
       "dano": "nenhum",
-      "resistencia": "mente, com +4 na Defesa Mental contra esse efeito",
-      "limiteDeUso": "nenhum"
+      "resistencia": "esse efeito da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Comanda os mortos",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, para dar uma ordem",
       "duracao": "até a ordem se cumprir ou ele dar outra",
       "alcance": "18 m, onde o ouvem",
@@ -115,19 +117,7 @@
       "efeito": "eles obedecem e mantêm a fileira",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "até 12 mortos-vivos sem mente por vez"
-    },
-    {
-      "nome": "imune a veneno e doença",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "osso seco não se envenena nem adoece"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não dorme e não se cansa"
+      "limiteDeUso": "até 12 mortos-vivos sem mente por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     }
   ],
   "comoLuta": [
@@ -150,10 +140,13 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "a disciplina de soldado, presa ao ritual que o ergueu",
-    "tracos": "ossos amarelados presos por magia, peitoral antigo, escudo marcado de batalhas; pontos de luz fria nas órbitas"
+    "mente": "a disciplina de soldado, presa ao ritual que o ergueu. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Medo cobre o imposto por essas fontes. Golpe social ou corporal ainda pode deixar Abalado. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "ossos amarelados presos por magia, peitoral antigo, escudo marcado de batalhas; pontos de luz fria nas órbitas. Não se cansa",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa",
+    "familiasMentaisIgnoradas": [
+      "medo"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -163,7 +156,6 @@
   "comportamento": {
     "social": "à frente de um pelotão de esqueletos (típico 6 a 12)",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "guarda e marcha, como mandaram",
     "dianteDeGente": "ataca"
   },
@@ -224,14 +216,6 @@
     ]
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Resistência a rituais",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Comanda os mortos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "atributos.forca",
       "motivo": "Degrau 4: o guerreiro forte de quando vivia, sem dor que o freie, como o zumbi do lote 1 (4). O site tinha 5 (For 17 no Pathfinder), o pico humano, demais para osso seco; 4; o site tinha 5"

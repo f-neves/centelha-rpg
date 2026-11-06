@@ -42,14 +42,14 @@
     "integridade": 7,
     "sobrevivencia": 0,
     "sociabilidade": 3,
+    "atirador": 4,
     "ocultismo": 4,
     "oratoria": 0,
     "empatia": 3,
     "armas": 5
   },
   "habilidadesSec": {
-    "musculatura": 0,
-    "disparo": 4
+    "musculatura": 0
   },
   "especialidades": {},
   "especialidadesSec": {},
@@ -95,8 +95,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "protecao",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "barreira"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "6 m",
@@ -104,7 +106,7 @@
       "efeito": "soma +4 em Esquiva, Bloqueio e Defesa Mental",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Forma de globo de luz",
@@ -114,14 +116,15 @@
         "arte": "espirito",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até desfazer com outra ação",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "vira o globo da Variante ou retorna à forma humanoide desta ficha; o equipamento só existe na forma humanoide",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Raio de luz",
@@ -131,16 +134,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "luz",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "projetil-conjurado"
       },
-      "ativacao": "uma ação, Velocidade 7, Vigor + Disparo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe",
       "duracao": "instantânea; a cegueira dura 12 Ticks",
       "alcance": "9 m",
       "area": "um alvo",
       "efeito": "o raio fere se acertar e ofusca os olhos do atingido",
       "dano": "2d6 + Centelha, fenômeno",
       "resistencia": "corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Sem membros para bloquear",
@@ -148,6 +153,7 @@
         "globo-de-luz"
       ],
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "passiva",
       "duracao": "enquanto estiver na forma de globo",
       "alcance": "o próprio corpo",
@@ -155,15 +161,23 @@
       "efeito": "não pode bloquear nem aparar ataques, por não ter membros",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "contínuo"
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Corpo de luz",
       "formas": [
         "globo-de-luz"
       ],
-      "classe": "sem regra ainda",
-      "efeito": "na forma luminosa, o corpo incorpóreo atravessa matéria e resiste a ferimentos comuns"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Na forma de globo, atravessa matéria. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Detectar pensamentos e o mal",
@@ -173,20 +187,29 @@
         "arte": "adivinhacao",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "18 m",
       "area": "uma criatura por ação",
       "efeito": "sente intenção imediata e presença de mal sobrenatural, sem ler lembranças",
       "dano": "nenhum",
-      "resistencia": "mente, contra Perspicácia + Integridade; quem passa conserva a intenção oculta",
-      "limiteDeUso": "à vontade"
+      "resistencia": "Perspicácia + Integridade da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa conserva a intenção oculta",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
-      "nome": "Resistência à magia 25",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Aura de beleza",
@@ -198,26 +221,53 @@
         "arte": "fascinacao",
         "nivel": 3
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; quando alguém a encara",
-      "duracao": "12 Ticks",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "6 m",
       "area": "um inimigo que a encare",
-      "efeito": "quem falha fica Abalado e hesita diante da beleza",
+      "efeito": "quem falha fica Abalado e hesita diante da beleza. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Oratória; quem passa ignora a aura nesta cena",
-      "limiteDeUso": "uma resistência por alvo por cena"
+      "resistencia": "Influência + Oratória da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa ignora a aura nesta cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Fascinar pela beleza",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quem contempla a ghaele pode se esquecer da luta"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3,
+        "efeito": "boa-impressao"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "6 Ticks",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "Fascina pela beleza quem pode ver sua forma e prende sua atenção",
+      "dano": "nenhum",
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Ilusões feéricas",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "cria imagens ilusórias para confundir inimigos"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 5,
+        "efeito": "imagem-viva"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "uma cena",
+      "alcance": "9 m",
+      "area": "um alvo",
+      "efeito": "Cria uma imagem pelo efeito Ilusão. Quem duvida e testa pode perceber a mentira",
+      "dano": "nenhum",
+      "resistencia": "teste de quem duvida, pelo efeito Ilusão",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     }
   ],
   "comoLuta": [
@@ -241,6 +291,11 @@
         "humanoide"
       ],
       "texto": "luta com a espada longa e conjura para proteger seus aliados."
+    },
+    {
+      "nome": "Projétil natural",
+      "formas": "todas",
+      "texto": "Contra um alvo, use o maior entre Vigor, Destreza e Percepção + Atirador. Ao cobrir uma área, só os alvos fazem a jogada de saída."
     }
   ],
   "sentidos": [
@@ -331,8 +386,7 @@
         "forca": 0
       },
       "fisiologia": {
-        "respiracao": "não precisa",
-        "prendeRespiracao": "não precisa",
+        "tipoCorpo": "incorporeo",
         "camuflagem": "nenhuma, emite luz",
         "tracos": "globo luminoso sem membros"
       },
@@ -340,7 +394,7 @@
         {
           "nome": "Raio de luz",
           "parte": "raio-de-luz",
-          "habilidade": "disparo",
+          "habilidade": "atirador",
           "acerto": 0,
           "bloqueiaComoArma": null,
           "nivelPerfuracao": 0,
@@ -369,32 +423,32 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Aura sagrada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Forma de globo de luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Raio de luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Detectar pensamentos e o mal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aura de beleza",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "comportamento.atividade",
       "motivo": ""
     },
     {
       "campo": "formas.globo-de-luz",
       "motivo": "Volume por equivalência ao corpo documentado: 90 ÷ 1.010 = 0,089109 m³. Diâmetro (6 × volume ÷ π)^(1/3) = 0,5542 m; área π × diâmetro² ÷ 4 = 0,2412 m². Tabela: 25 + 3 × Vigor 5 = 40 PV. Retirado o aumento obtido pela esfera arbitrária de 1 m. Ghaele, Light Form: luz voa e dispara, mas não conjura nem golpeia fisicamente; retirados Bloqueio 0 e Musculatura 0, pois as Habilidades são fixas entre formas; o Peso erguido não ergue exprime corpo.naoErgue e a proibição de bloquear fica na habilidade especial marcada da forma, sem alterar os níveis. a conferir."
+    },
+    {
+      "campo": "habilidadesEspeciais.Raio de luz",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, o maior entre Vigor, Destreza e Percepção + Atirador -> uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Detectar pensamentos e o mal",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 25 da fonte passa a grau 2 (+4)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Fascinar pela beleza",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Ilusões feéricas",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
     }
   ]
 }

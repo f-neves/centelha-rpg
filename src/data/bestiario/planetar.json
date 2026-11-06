@@ -88,13 +88,29 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: de pé, asas recolhidas. Enorme: asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Aura protetora",
       "formas": "todas",
       "classe": "regra da ficha",
       "base": {
         "arte": "protecao",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "barreira"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "9 m",
@@ -102,43 +118,82 @@
       "efeito": "a criatura e seus aliados somam +4 em Esquiva, Bloqueio e Defesa Mental contra ataques e efeitos malignos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Regeneração 10",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "regeneração sobrenatural; interrompida por armas e efeitos malignos"
+      "categoria": "inato",
+      "efeito": "regeneração sobrenatural. Quando sofre dano de armas e efeitos malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
     },
     {
-      "nome": "Resistência à magia 27",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 3. Soma +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Verbo verdadeiro",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "compreende e fala com criaturas de idiomas diferentes"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "até onde ouve e pode ser ouvido",
+      "area": "a criatura",
+      "efeito": "Compreende e fala qualquer idioma falado. Escrita, códigos e pensamentos exigem outros meios. Entender o pedido não obriga a obedecer",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Imunidades celestes",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não adoece, não é envenenado e resiste à transformação em pedra"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "não adoece, não é envenenado e resiste à transformação em pedra",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Espada de luz cegante",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "um golpe forte pode cegar o adversário"
     },
     {
       "nome": "Teleporte instantâneo",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "muda de posição pelo espaço sem percorrer o caminho"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "conjuracao",
+        "nivel": 4,
+        "efeito": "fresta"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 8",
+      "duracao": "instantânea",
+      "alcance": "36 m",
+      "area": "o próprio usuário",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     }
   ],
   "comoLuta": [
@@ -161,7 +216,7 @@
     },
     {
       "nome": "visão verdadeira · sem regra ainda",
-      "descricao": "percebe através de ilusões e ocultação mágica",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -242,10 +297,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Aura protetora",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.musculatura",
       "motivo": "Corpo de guerreiro, força sobrenatural além do músculo"
     },
@@ -256,6 +307,18 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 27 da fonte passa a grau 3 (+6)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Verbo verdadeiro",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte instantâneo",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
     }
   ]
 }

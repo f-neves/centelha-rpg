@@ -7,7 +7,7 @@
  },
  "criaturas": {
   "aasimar": {
-   "sha256": "1feab1a576d0ec262dca91348f364446944d6e43a3f4ea59b35998e387b88e64",
+   "sha256": "290bb8534e46bba5f5d3a8bff741220e4474069d6617d61f348302cf811fb77e",
    "entrada": {
     "categoria": "outsider",
     "centelha": 1,
@@ -1027,7 +1027,7 @@
    }
   },
   "arconte-cao": {
-   "sha256": "67b013ba48738efc490e7c52211bb10a003c9463ca8a901e6c0a665a9973584e",
+   "sha256": "cd55660451f4444dc5b7bd4121e712a1b0ec24ad371fbb8cc476c3b95dcca9e3",
    "entrada": {
     "categoria": "celestial",
     "centelha": 4,
@@ -1129,7 +1129,7 @@
    }
   },
   "arconte-lanterna": {
-   "sha256": "82e14dd8f1e9c3e74220ff87abc9dd75c23260f33605d017a190c5910e2f3037",
+   "sha256": "869acef020ab9859d9c918cd627dacd746984c497a128dce12ced144af5aa22c",
    "entrada": {
     "categoria": "celestial",
     "centelha": 2,
@@ -1151,11 +1151,11 @@
      "prontidao": 1,
      "integridade": 2,
      "sobrevivencia": 0,
-     "sociabilidade": 1
+     "sociabilidade": 1,
+     "atirador": 3
     },
     "habilidadesSec": {
-     "musculatura": 0,
-     "disparo": 3
+     "musculatura": 0
     },
     "vontade": 7,
     "corpo": {
@@ -1183,10 +1183,10 @@
      {
       "nome": "Raio de luz",
       "parte": "luz-do-corpo",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
-       3,
+       1,
        1,
        3
       ],
@@ -1219,14 +1219,14 @@
     "ataques": [
      {
       "nome": "Raio de luz",
-      "velocidade": 7,
+      "velocidade": 5,
       "danoMedio": 9
      }
     ]
    }
   },
   "arconte-trombeta": {
-   "sha256": "cfea85c5d408f3d03b3ce037c899860ac81080602b248a9ab50350416781ce95",
+   "sha256": "78ec2fff7df9ced989eb855d334c3b5c34c118fc7674ceffc2192ff2d036bd47",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -1542,7 +1542,7 @@
    }
   },
   "assombracao": {
-   "sha256": "a48c296487a57d38b85dd5194cbc8339a4d671be1006171f64d17602f8a828a5",
+   "sha256": "35bc4239bb5e881c5f3d6db9c98403673d8141a049f3eb9c9df2e7a0a8fbda0e",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 3,
@@ -3338,7 +3338,7 @@
    }
   },
   "boca-tagarela": {
-   "sha256": "a7deca9c638c88214d06cb47dfe38dc0ab6ab3544b6392c098d321d8d566c707",
+   "sha256": "641dcfb7189c483aaa29bb82f76ccb31b3ac92c43ada4988f407172b9dc6c173",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -4261,7 +4261,7 @@
    }
   },
   "bruxa-verde": {
-   "sha256": "b35f22cb3dc05cd9abf9a9ab8688003f3b3637ce26faf01dd2d85d561ee7cbe7",
+   "sha256": "0f7a75e5dec1706e06648500e4067998b0d059dd800f059a30bc56f904ec1699",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 4,
@@ -4852,7 +4852,7 @@
    }
   },
   "campeao-esqueletico": {
-   "sha256": "648844ad9e7ab2a84260398bcff1f3439ef1436b00b38fa8b623da7c2e6ea2ee",
+   "sha256": "4b996c2423b8417bee09eaf3ed00fea846ae7b8fd5f1aa6dab359a5fb118a15f",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -8145,7 +8145,7 @@
    }
   },
   "derro": {
-   "sha256": "06c28289ecfe6904cb1652baf9165b36cecf13c7966bb8c4061f39d1afbc3f1e",
+   "sha256": "02b96b1a4e2b68de8056dcce182b818908ab0551b3f84cc38c1548765385a1b9",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -8230,7 +8230,7 @@
    }
   },
   "deva-astral": {
-   "sha256": "61002be9afbead225bed26dbedd365c419d405415390bd692c06c6c86dea1041",
+   "sha256": "95a73174de77c4f09768fad29dde172076efaffe4126551322db54ebd23b5a55",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -8343,7 +8343,7 @@
    }
   },
   "devorador-de-intelecto": {
-   "sha256": "25157c072d2d7a447ba28257829c11cc162579898aed5f812d360c972d77ccfe",
+   "sha256": "c414cd60823bce424ec332da614b1e3c8f806ad27a263b81294938d84c1e0257",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -9282,7 +9282,7 @@
    }
   },
   "djinn": {
-   "sha256": "1b8cfb71fb350fc5c93ad53121fc3b164a58b5701061ab36a799cdd2c1d3cb89",
+   "sha256": "4ea517612b18106429506de28a74f7dff26f97caa58aa308bb2dc6d73771c10f",
    "entrada": {
     "categoria": "elemental",
     "centelha": 4,
@@ -11388,7 +11388,7 @@
    }
   },
   "duergar": {
-   "sha256": "301b43891362652bb34135239f8f2ff9f542596242324865c0d3b433fe7a4714",
+   "sha256": "cb692cf9353ccbb1cf1e1be2c3983cd00a03c77862230fb0878769d040b8bcbb",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -11792,7 +11792,7 @@
    }
   },
   "elemental-da-agua-pequeno": {
-   "sha256": "93d9d5cfb401d8bc9df8d18dedd2a40cf136ff6388f9b9bfb81f790e2d91553b",
+   "sha256": "f7933ba357a39f641a81722c94ed324479aefc125dcd9e93563b7fa0b9c869c6",
    "entrada": {
     "categoria": "elemental",
     "centelha": 1,
@@ -12078,7 +12078,7 @@
    }
   },
   "elemental-do-ar-pequeno": {
-   "sha256": "c8424ce55dab4aac2ad7892caa205d1713fe4925082df506e7cf41a5cd3470c9",
+   "sha256": "c265dfd63d7be8017e0f421dfb251fe0db6675133c78ba0d4d494a1102f9c006",
    "entrada": {
     "categoria": "elemental",
     "centelha": 1,
@@ -12177,7 +12177,7 @@
    }
   },
   "elemental-do-fogo-pequeno": {
-   "sha256": "6fe764744406d156a9cfdd2ce70ff7482f2a728c9ec9a4d391975c27fc7bd3eb",
+   "sha256": "da9dd6ac956e92d7e27678c94b9f89ffc78dfa93e40918f2471e28c99bd48a6e",
    "entrada": {
     "categoria": "elemental",
     "centelha": 1,
@@ -12272,7 +12272,7 @@
    }
   },
   "enxame-de-aranhas": {
-   "sha256": "c2e5014c20d899f27702bcb7c2c980708790d4f80d49eec41ad5cc15a44751b4",
+   "sha256": "b36cb386883c0e119768a6b13ccdc10ad5eae2d82e8609bbb8b8b21836ba381f",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 3500,
@@ -12320,7 +12320,7 @@
      "comprimento": 0.0046,
      "massa": 0.000007,
      "area": 0,
-     "posturaDoTamanho": "vista de cima"
+     "posturaDoTamanho": "indivíduo, anatomia"
     },
     "couraca": 0,
     "artes": {},
@@ -12475,7 +12475,7 @@
    }
   },
   "enxame-de-centopeias": {
-   "sha256": "0c8f38a1e612be2af999103122ea892941935411e47642e844a0f733b52e85c0",
+   "sha256": "89d1ce25041681ade00fbe8cda1bf4636ce0dd4e913d3cedd8c72f4e089931c8",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 250,
@@ -12523,7 +12523,7 @@
      "comprimento": 0.03,
      "massa": 0.0001,
      "area": 0,
-     "posturaDoTamanho": "vista de cima"
+     "posturaDoTamanho": "indivíduo, anatomia"
     },
     "couraca": 0,
     "artes": {},
@@ -12575,7 +12575,7 @@
    }
   },
   "enxame-de-formigas": {
-   "sha256": "91e75af742d3fab72b2a8a3cd25b66e5e8ff7d9a326bc01442afed7904d2e5ba",
+   "sha256": "3f2877b613eb5f57b55488eff568a69fd66d65045a069c10dabcbecb7d6f0a2d",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 7000,
@@ -12623,7 +12623,7 @@
      "comprimento": 0.006,
      "massa": 0.000003,
      "area": 0,
-     "posturaDoTamanho": "vista de cima"
+     "posturaDoTamanho": "indivíduo, anatomia"
     },
     "couraca": 0,
     "artes": {},
@@ -12799,7 +12799,7 @@
    }
   },
   "enxame-de-ratos": {
-   "sha256": "38b988da4f2f6204d64164dbcf9f88b92f360cc2a2ccd7a9af58f37394687fc3",
+   "sha256": "88b8625f5cd9c1273d8224fc934d92386be2bbe4926fe2daf033a884bd02208e",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 40,
@@ -12850,7 +12850,7 @@
      "caudaGrossa": false,
      "massa": 0.3,
      "area": 0.01,
-     "posturaDoTamanho": "vista de lado"
+     "posturaDoTamanho": "indivíduo, anatomia"
     },
     "couraca": 0,
     "artes": {},
@@ -12902,7 +12902,7 @@
    }
   },
   "enxame-de-sanguessugas": {
-   "sha256": "f2f94be95aa356bdd2d5e2f258b5f4932ac97e60d9fb2515715a0c0b7da332cf",
+   "sha256": "e36374781d91a3b5ec2da8a59da5665c6315231f2ea693f16656407de69e1bac",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 400,
@@ -12951,7 +12951,7 @@
      "comprimento": 0.12,
      "massa": 0.004,
      "area": 0,
-     "posturaDoTamanho": "de cima"
+     "posturaDoTamanho": "indivíduo, anatomia"
     },
     "couraca": 0,
     "artes": {},
@@ -13003,7 +13003,7 @@
    }
   },
   "enxame-de-vespas": {
-   "sha256": "e02e1c06ff95b63e3ef283efa8845d8ca65fbeb9a068053788cb7e5aea39637e",
+   "sha256": "84d8ff60e3d461756566db556ac6a5f01c2d4c1523ead1ef224d4d24dca3ebb0",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 300,
@@ -13052,7 +13052,7 @@
      "envergadura": 0.02,
      "massa": 0.000084,
      "area": 0,
-     "posturaDoTamanho": "de cima, asas abertas, o indivíduo"
+     "posturaDoTamanho": "indivíduo, anatomia"
     },
     "couraca": 0,
     "artes": {},
@@ -13104,7 +13104,7 @@
    }
   },
   "erinia": {
-   "sha256": "936f2ae4b097e0412f86b9f48271df3d3b9a53a51c31df6313432c9512cd00aa",
+   "sha256": "646189ce218ff56daa6f47424d7d13408c9ad1f87472ab3be0e205d2bc8bc591",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -13558,7 +13558,7 @@
    }
   },
   "espectro": {
-   "sha256": "5d268191839f007f30dc76dd2c0df0e7657a5e4b32f93ef0d72ddc173821b882",
+   "sha256": "43cd6df7b42261ce08634adaddff3aa367d5320c424488ab3368c216817a5b79",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -13742,7 +13742,7 @@
    }
   },
   "esqueleto-humano": {
-   "sha256": "aecf48e4b4475669f977a5e2bd0658bbe70cddb83569a2bbdf11d667b6444763",
+   "sha256": "ebb64ef5df8f674a0f69c341ecd467fbab10ca1424070de6bc87dc3c22c129df",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 1,
@@ -14375,7 +14375,7 @@
    }
   },
   "fantasma": {
-   "sha256": "08da1d93c69941ab79d909e349d3a0a054d8abf128ee3c9c4a810ccf99c87d4c",
+   "sha256": "0ef01534046967c77d0167bde3621857acfc443aa091a172fb375bd8b529c520",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -14876,7 +14876,7 @@
    }
   },
   "fogo-fatuo": {
-   "sha256": "82b158852e5384094e6c7269f22d810a3673834d0035be4560c38c81fd4deba2",
+   "sha256": "6ade7542e02bd9ebbddf96e219470a782a05fb632d0a7784be34256b788b4ad8",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -15668,7 +15668,7 @@
    }
   },
   "ghaele-azata": {
-   "sha256": "e086b869ae0d4dbab7ce27b8ec85592454d0fa16031dbf2689f1bb43f85acfd7",
+   "sha256": "d79224b2ce118d29bbe4bd81148a8925e3dd6f21084e8b26a055f8a79867188d",
    "entrada": {
     "categoria": "celestial",
     "centelha": 6,
@@ -15691,14 +15691,14 @@
      "integridade": 7,
      "sobrevivencia": 0,
      "sociabilidade": 3,
+     "atirador": 4,
      "ocultismo": 4,
      "oratoria": 0,
      "empatia": 3,
      "armas": 5
     },
     "habilidadesSec": {
-     "musculatura": 0,
-     "disparo": 4
+     "musculatura": 0
     },
     "vontade": 11,
     "corpo": {
@@ -15783,7 +15783,7 @@
        {
         "nome": "Raio de luz",
         "parte": "raio-de-luz",
-        "habilidade": "disparo",
+        "habilidade": "atirador",
         "acerto": 0,
         "bloqueiaComoArma": null,
         "nivelPerfuracao": 0,
@@ -15808,7 +15808,7 @@
    }
   },
   "ghast": {
-   "sha256": "dd3b5134ed64e991b2790557dc79b991ba8007da7d0300e17c86aebc61a0c7fa",
+   "sha256": "33047a731dbbba872e6713b968357f8c879d78b73690c34cd06f81f2a3d38448",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -15923,7 +15923,7 @@
    }
   },
   "ghoul": {
-   "sha256": "6ba0a1edadee93245d4ed5e0b02c0166b6e2f0f705cf33bfa7ed8f29964aa243",
+   "sha256": "c6e2d470e2a3aa2f0843db8f5aadfa2abe053aa86fd1c8fc9b4e692a70d01679",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 1,
@@ -19754,7 +19754,7 @@
    }
   },
   "homunculus": {
-   "sha256": "8483c784c34364b43559ae98b5efcaa58d0d28ed7fde610ae6b4946b3ca650e9",
+   "sha256": "ca786aaa5f41a0f1b1605e9e4d5f9fdafc305639b432dbeb0170fdcef02a9bc3",
    "entrada": {
     "categoria": "construto",
     "centelha": 1,
@@ -19775,6 +19775,7 @@
      "esquiva": 1,
      "furtividade": 2,
      "integridade": 2,
+     "ocultismo": 3,
      "prontidao": 1,
      "resistencia": 0
     },
@@ -21698,7 +21699,7 @@
    }
   },
   "lich": {
-   "sha256": "92ea9d733a578c7968b717d673646ef66e89f52010ba612eec1012caa9a98615",
+   "sha256": "903c6795a9f02e21d1b28434cf8b6319594a68f55ac30a61fce6e1b0aa14d502",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 6,
@@ -23923,7 +23924,7 @@
    }
   },
   "manto-escuro": {
-   "sha256": "0979e63cec54384d085be0ce915c9710235f40ca0777aa4b0bcca104089dcabc",
+   "sha256": "7ff1602bf2b133dd7ff7ff2d3d612e52c49526abd40bd1c7d85d7a112678e04b",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -24024,7 +24025,7 @@
    }
   },
   "marid": {
-   "sha256": "27a3bedae9adf96b6a2df40b49cd56cffcd40a7ee8ce17a49fd3b7ad69b53364",
+   "sha256": "99ab1ad3dffa0fd2aae2112a6948d3be4b412816327b72eb60e5332b3dc5cd8c",
    "entrada": {
     "categoria": "elemental",
     "centelha": 5,
@@ -24473,7 +24474,8 @@
      {
       "nome": "Arco curto",
       "velocidade": 6,
-      "danoMedio": 6.5
+      "danoMedio": 6.5,
+      "jogada": 9
      },
      {
       "nome": "Espada curta",
@@ -24805,7 +24807,8 @@
      {
       "nome": "Besta média",
       "velocidade": 12,
-      "danoMedio": 8.5
+      "danoMedio": 8.5,
+      "jogada": 6
      }
     ]
    }
@@ -25133,7 +25136,7 @@
    }
   },
   "mohrg": {
-   "sha256": "53901a904d4912358f285583c73091fb9efc211255effb19d58bcff57e4d564e",
+   "sha256": "c2bcebe24c736b03e8793cced6143526ef0519084e5ea130ab9c56e5d1f1641f",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -27713,7 +27716,7 @@
    }
   },
   "perseguidor-invisivel": {
-   "sha256": "14d375446bf631ee29308ff19faef006cffe4c8290cf6a94f31dab186e8b549f",
+   "sha256": "1dfd0facb3cb5e30964add5631424130a49ede2427e7ac8979cd1b4203e4e8d5",
    "entrada": {
     "categoria": "elemental",
     "centelha": 4,
@@ -28024,7 +28027,7 @@
    }
   },
   "pixie": {
-   "sha256": "eca41817b22a5e67dfe38499c2b1228c6ff5bb48dd649d623b4114ae0b322e57",
+   "sha256": "1142f990c976690d00fef380eb9ebff8bd0ec2327c17a35569718c269acf7d39",
    "entrada": {
     "categoria": "fada",
     "centelha": 4,
@@ -28140,7 +28143,7 @@
    }
   },
   "planetar": {
-   "sha256": "2c2e732c13a9c45110cabb62e14a0a41cc953e84174ce385d25abf8b1483e00d",
+   "sha256": "59079207cf931e4841a9e29774666cde54eed019967eb70b8e29b4fe9b352131",
    "entrada": {
     "categoria": "celestial",
     "centelha": 7,
@@ -29731,7 +29734,7 @@
    }
   },
   "rakshasa": {
-   "sha256": "ea4012855f97afcb873eff1b0349e525bdd7d938668d7b7baae75f7840cc200b",
+   "sha256": "2eda84ea1a454ed64b164d7c730448487526d2701cb6025f34dded7b5f811cda",
    "entrada": {
     "categoria": "outsider",
     "centelha": 5,
@@ -31483,7 +31486,7 @@
    }
   },
   "solar": {
-   "sha256": "5c38a613dfe9aa54b924bb0fda51736fa468d979b9f0f708f3b360be9165bf82",
+   "sha256": "7d0623c9aea8e4133adf6345704a0cf5ab0752390f7271bf0108f61cc9a09d95",
    "entrada": {
     "categoria": "celestial",
     "centelha": 9,
@@ -31734,7 +31737,7 @@
    }
   },
   "sombra": {
-   "sha256": "927f4f1877bb501fa111359e0b3a2b661e584d9aa729706c61f14fd5d6f02d5f",
+   "sha256": "e692a9badaf556010ce4cf9a217005a29e7dd9ce34ac24cac308402fd0a97aab",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -31934,7 +31937,7 @@
    }
   },
   "sucubo": {
-   "sha256": "26133d24b89b2c708fb4ad384cb7f2a564a1c88e8511ee8ea069111f2514a76c",
+   "sha256": "35c6efe3289dcc45fcaf53561f29484067f633fdd07efa5463dcf1814b6d4f8a",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -32506,7 +32509,7 @@
    }
   },
   "tiefling": {
-   "sha256": "0d759f0181afcc38c1b5f2f21a3cbe71b677413f54ed128cd504ac44558ee934",
+   "sha256": "346ffafadfc3caf50c7a7ccd456958ad5b983f3ad2b718f8df412b4fa88ba7a2",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -34447,7 +34450,7 @@
    }
   },
   "vampiro": {
-   "sha256": "27993bad40bfbae83a22cec9a5d2f90852d04e92171b6897158df8ea2902119b",
+   "sha256": "7495ffaa78fa045d5e7db151a0e62e9d3c9c265d97a7a993c3e8cb81d021c307",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 5,
@@ -35418,7 +35421,7 @@
    }
   },
   "wight": {
-   "sha256": "9d13b3a13f906d61e4280db0b4e445f51d28940e22409796b771488c0a96b04e",
+   "sha256": "e8f6fdaaa817e2d9f9491f9d609bfa5efec7b2cf4c8cfb3814f959ccf5243cc2",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -36121,7 +36124,7 @@
    }
   },
   "zumbi-humano": {
-   "sha256": "3c36ed44a88885e251ba62cf47e8bee7bd2630e0674c88a31d6b708a0eb1b096",
+   "sha256": "7bda94864be67909b25b8133d0596ce6d1eb6eb633e40f002b24ad81dde0770b",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 1,

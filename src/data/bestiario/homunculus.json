@@ -41,6 +41,7 @@
     "esquiva": 1,
     "furtividade": 2,
     "integridade": 2,
+    "ocultismo": 3,
     "prontidao": 1,
     "resistencia": 0
   },
@@ -101,29 +102,39 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "sem vida",
+      "nome": "Posturas de combate",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come e não dorme; não faz teste de Vigor, Resistência nem Virtude; não cura nem regenera sozinho, só por conserto"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Pequeno: asas abertas. Miúdo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Ferrão sonífero",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Mordida",
-      "ativacao": "a Mordida que fere",
-      "duracao": "a do veneno",
+      "categoria": "magia",
+      "ativacao": "depois que a Mordida acerta com o ataque físico normal, no Tick do Golpe, Velocidade 5",
+      "duracao": "5 minutos",
       "alcance": "o do corpo a corpo",
       "area": "um alvo",
-      "efeito": "injeta o veneno do sono (Veneno e doença)",
+      "efeito": "Depois do acerto físico, faça a jogada separada do poder de mente. Se ela vencer a Defesa Mental e o alvo não recusar pelo Resistir, ele fica Dormindo (Defesa Física 0) por 5 minutos. Qualquer dano o acorda. Um aliado também pode acordá-lo gastando uma ação de Velocidade 5 para sacudi-lo",
       "dano": "o da Mordida",
-      "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "um por golpe"
+      "resistencia": "Influência + Ocultismo do homúnculo contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Vínculo telepático",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente, enquanto os dois vivem",
       "alcance": "cerca de 500 m (\"centenas de metros\", site)",
@@ -131,12 +142,13 @@
       "efeito": "o criador vê e ouve o que ele vê e ouve, e os dois falam pela mente",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Eco de dano",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "o homúnculo é destruído",
       "duracao": "instantânea",
       "alcance": "o criador, onde estiver",
@@ -144,7 +156,7 @@
       "efeito": "o criador sente o golpe que destruiu o servo e é ferido",
       "dano": "2d6, fenômeno, ao criador",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez, na destruição"
+      "limiteDeUso": "uma vez, na destruição. Sem custo"
     }
   ],
   "comoLuta": [
@@ -172,11 +184,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "camuflagem": "pequeno, se esconde nas vigas e nos cantos escuros",
     "mente": "um eco pequeno da mente do criador, ligada a ele; sem o criador, enlouquece",
-    "tracos": "criaturinha de 0,54 m de argila e cinzas, de asas de morcego e boca de presas"
+    "tracos": "criaturinha de 0,54 m de argila e cinzas, de asas de morcego e boca de presas",
+    "tipoCorpo": "constructo"
   },
   "aptidoes": {
     "montaria": false,
@@ -186,7 +197,6 @@
   "comportamento": {
     "social": "com o criador",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "não caça",
     "dianteDeGente": "espia para o criador; foge, ou morde para fazer dormir"
   },
@@ -231,15 +241,7 @@
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Ferrão sonífero",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Vínculo telepático",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Eco de dano",
-      "motivo": "números sugeridos pela ficha (D-197)"
+      "motivo": "P3. Manifestação mágica do construto. Um uso grátis por cena permite o ataque de abertura. A Velocidade conserva a do sopro ou da Mordida. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "corpo.area",
@@ -252,10 +254,6 @@
     {
       "campo": "atributos.vigor",
       "motivo": "5, na zona de transição, pela faixa de baixo (corpinho de argila); pela de cima seria 11"
-    },
-    {
-      "campo": "habilidadesEspeciais",
-      "motivo": "o formato do veneno do sono do drow, Potência 12"
     }
   ]
 }

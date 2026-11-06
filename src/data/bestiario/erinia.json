@@ -118,10 +118,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: voando, asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Lâmina em chamas",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Espada flamejante",
+      "categoria": "inato",
       "ativacao": "o golpe da espada que acerta",
       "duracao": "instantânea",
       "alcance": "o do corpo a corpo",
@@ -129,7 +144,7 @@
       "efeito": "a lâmina arde e queima a ferida",
       "dano": "+1d6 de fogo, somado ao do golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Corda de comando",
@@ -137,16 +152,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "sugestao-plantada"
       },
-      "ativacao": "uma ação, Velocidade 6, a corda lançada (Destreza + Arremesso dela)",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, a corda lançada (Destreza + Arremesso dela). O efeito sai no Tick do Golpe",
       "duracao": "até o alvo escapar ou ela soltar; a ordem, uma ação",
       "alcance": "9 m",
       "area": "um alvo",
-      "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela",
+      "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado",
-      "limiteDeUso": "uma corda por vez, à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez"
     },
     {
       "nome": "Teleporte",
@@ -154,16 +171,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "60 m",
       "area": "a própria erínia",
-      "efeito": "some e reaparece a até 60 m, sem precisar de caminho livre",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Olho de alcance",
@@ -172,7 +191,8 @@
       "tecnica": {
         "id": "olho-de-alcance",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Ver o invisível",
@@ -181,13 +201,22 @@
       "tecnica": {
         "id": "visao-verdadeira",
         "nivel": 4
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a erínia enxerga através de ilusão, disfarce e invisibilidade o tempo todo, sem esforço; a Técnica do livro é ativa e custa Energia"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "18 m",
+      "area": "o campo de visão",
+      "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -205,7 +234,7 @@
     },
     {
       "nome": "visão verdadeira",
-      "descricao": "pela Técnica (Manobras)",
+      "descricao": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo",
       "formas": "todas"
     }
   ],
@@ -272,18 +301,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Lâmina em chamas",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Corda de comando",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.armas",
       "motivo": "A espada flamejante (site). O site não dava a Habilidade"
     },
@@ -310,6 +327,14 @@
     {
       "campo": "ataques.Espada flamejante",
       "motivo": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com a corda na outra: Força × 1 . O fogo da lâmina vai nas Manobras. Jogada: Destreza 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Corda de comando",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, a corda lançada (Destreza + Arremesso dela) -> uma ação, Velocidade 5, a corda lançada (Destreza + Arremesso dela). O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "virtudes.temperanca",

@@ -447,6 +447,10 @@ if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrad
   const jog = lerEsperado(tiro).esperado.ataques.find((a) => a.nome === 'Espinho')?.jogada;
   if (jog !== 11) falhas.push('D-315: o leitor da fixture não somou a jogada da frase sem números: ' + jog);
   if (lerEsperado(troca('| Atirador | 2 | teste |\n', '', tiro)).esperado.ataques.find((a) => a.nome === 'Espinho')?.jogada !== undefined) falhas.push('D-315: sem o Atirador na ficha, a jogada foi inventada');
+  // a frase que nomeia antes e soma depois (lote r35-r54): "Jogada de Força + Briga: 6 + 3 + 2 × ..." dá a mesma jogada
+  const antes = lerEsperado(LOBO).esperado.ataques.find((a) => a.nome === 'Mordida')?.jogada;
+  const nomeia = lerEsperado(troca('Jogada: Força 6 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4) |', 'Jogada de Força + Briga: 6 + 3 + 2 × o menor entre Centelha 2 e Briga 3 (4) |')).esperado.ataques.find((a) => a.nome === 'Mordida')?.jogada;
+  if (antes !== 13 || nomeia !== 13) falhas.push('jogada: a frase "Jogada de Força + Briga: 6 + 3" não deu a mesma soma: ' + JSON.stringify([antes, nomeia]));
   // R34 (D-313): "(indivíduo, anatomia)" no Tamanho só vale para enxame
   if (!parou(conv(troca('| Tamanho | **Médio** (0,98 m², de frente) |', '| Tamanho | **Médio** (indivíduo, anatomia) |')), 'só vale para enxame')) falhas.push('R34: o Tamanho do indivíduo passou numa ficha que não é enxame');
   // R49 na forma: "Couraça nível N, perfil couro" na Variante; a palavra fora das três para

@@ -95,31 +95,36 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pancada",
+      "categoria": "inato",
       "regra": "agarrar"
-    },
-    {
-      "nome": "imune a veneno e doença",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "veneno e doença não o afetam; o corpo morto não tem o que envenenar nem infectar"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira, não come, não bebe, não dorme e não se cansa; fica parado o tempo que for preciso"
     },
     {
       "nome": "sem dor",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não sente dor; as penalidades de ferimento não o atrasam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "últimos estertores",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "uma vez por cena, o golpe que o derrubaria o deixa de pé com 1 PV"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ao sofrer o golpe que o derrubaria",
+      "duracao": "instantânea",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Fica com 1 PV e ganha Desgaste 1",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por cena, sem custo"
     }
   ],
   "comoLuta": [
@@ -137,10 +142,10 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
     "mente": "nenhuma; obedece a uma compulsão imposta de fora",
-    "tracos": "carne que apodrece aos poucos; o zumbi mal nota o próprio corpo se desfazendo. Não come, não dorme, não sente dor nem frio"
+    "tracos": "carne que apodrece aos poucos; o zumbi mal nota o próprio corpo se desfazendo. Não sente dor nem frio. Não se cansa. Permanece parado até receber ordem",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se pela energia negativa"
   },
   "aptidoes": {
     "montaria": false,
@@ -150,7 +155,6 @@
   "comportamento": {
     "social": "bando (típico 3 a 12)",
     "atividade": "qualquer hora",
-    "dieta": "nenhuma",
     "caca": "avança sobre o vivo mais próximo",
     "dianteDeGente": "ataca"
   },

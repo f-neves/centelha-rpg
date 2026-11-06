@@ -84,16 +84,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "pavor"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; ao entrar na aura",
-      "duracao": "até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "6 m",
       "area": "inimigos no raio",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Integridade; quem passa ignora a aura nesta cena",
-      "limiteDeUso": "uma resistência por alvo por cena"
+      "resistencia": "Influência + Integridade da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa ignora a aura nesta cena",
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Teleporte",
@@ -101,16 +103,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "conjuracao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "fresta"
       },
+      "categoria": "magia",
       "ativacao": "uma ação, Velocidade 8",
       "duracao": "instantânea",
       "alcance": "12 m visíveis",
       "area": "o próprio arconte",
-      "efeito": "desaparece e reaparece no destino",
+      "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Farejar o mal",
@@ -120,6 +124,7 @@
         "arte": "adivinhacao",
         "nivel": 1
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "18 m",
@@ -127,7 +132,7 @@
       "efeito": "percebe a presença de mal sobrenatural, mesmo atrás de cobertura; não lê pensamentos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Forma canina",
@@ -137,14 +142,15 @@
         "arte": "espirito",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 8",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até desfazer com outra ação",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume a forma canina da Variante ou retorna à forma de guardião",
+      "efeito": "assume a forma canina da Variante ou retorna à forma de guardião. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Círculo protetor",
@@ -152,8 +158,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "protecao",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "circulo"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "3 m",
@@ -161,7 +169,7 @@
       "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -278,32 +286,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Aura de ameaça",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Teleporte",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Farejar o mal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Forma canina",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Círculo protetor",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "comportamento.atividade",
       "motivo": ""
     },
     {
       "campo": "formas.canina",
       "motivo": "Massa e mente preservadas, corpo mais baixo; movimento extra do corpo quadrúpede"
+    },
+    {
+      "campo": "habilidadesEspeciais.Teleporte",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     }
   ]
 }

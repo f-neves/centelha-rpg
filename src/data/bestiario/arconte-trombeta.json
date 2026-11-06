@@ -88,8 +88,16 @@
     {
       "nome": "Trombeta paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o toque da trombeta paralisa os que a ouvem, poupando os aliados celestiais"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação de Velocidade 6 para soar a trombeta",
+      "duracao": "6 Ticks",
+      "alcance": "até onde se ouve a trombeta",
+      "area": "os ouvintes, exceto os aliados celestiais",
+      "efeito": "o toque da trombeta paralisa os que a ouvem, poupando os aliados celestiais. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Trombeta e espada",
@@ -99,14 +107,15 @@
         "arte": "materia",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até a próxima transformação",
       "alcance": "o objeto que segura",
       "area": "a própria trombeta",
       "efeito": "a trombeta toma a forma do montante ou retorna ao instrumento; os números da arma são os do catálogo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Círculo contra o mal",
@@ -114,8 +123,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "protecao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "circulo"
       },
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "3 m",
@@ -123,19 +134,35 @@
       "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Defesa contra possessão",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a proteção do círculo dificulta que entidades tomem o corpo dos protegidos"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Contra uma possessão, o protegido usa sua Defesa Mental com a proteção do círculo e o Resistir do livro",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
-      "nome": "Resistência à magia 25",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 2. Soma +4 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     }
   ],
   "comoLuta": [
@@ -212,16 +239,20 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Trombeta e espada",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Círculo contra o mal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Trombeta paralisante",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Velocidade sugerida 6, pela referência de ativação com o corpo. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Trombeta e espada",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 25 da fonte passa a grau 2 (+4)."
     }
   ]
 }

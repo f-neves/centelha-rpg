@@ -118,12 +118,14 @@
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de prata, fogo ou luz do sol"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de prata, fogo ou luz do sol só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "prata, fogo e sol param a regeneração",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o dano de prata, de fogo ou da luz do sol não se fecha pela Regeneração"
     },
     {
@@ -132,8 +134,10 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "morte",
-        "nivel": 1
+        "nivel": 1,
+        "efeito": "dreno"
       },
+      "categoria": "inato",
       "ativacao": "a Mordida que fere",
       "duracao": "instantânea",
       "alcance": "toque",
@@ -141,7 +145,7 @@
       "efeito": "bebe o sangue de quem morde e se fecha com ele",
       "dano": "nenhum além da mordida; ele recupera PV igual ao dano que a mordida fez depois da Absorção",
       "resistencia": "corpo, contra a jogada da mordida; quem passa leva o dano, mas ele não se cura",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Olhar dominador",
@@ -149,16 +153,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 3
+        "nivel": 3,
+        "efeito": "sugestao-plantada"
       },
-      "ativacao": "uma ação, Velocidade 6, olho no olho a até 9 m",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 5, olho no olho a até 9 m",
       "duracao": "uma cena",
       "alcance": "9 m, à vista",
       "area": "um alvo",
-      "efeito": "o alvo fica Dominado e obedece a ordens simples; a cada dano que sofre, testa de novo, como a condição manda",
+      "efeito": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Persuasão dele; quem passa fica imune ao olhar até o fim da cena",
-      "limiteDeUso": "um alvo Dominado por vez"
+      "resistencia": "Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez"
     },
     {
       "nome": "Forma gasosa",
@@ -168,14 +174,15 @@
         "arte": "vento",
         "nivel": 3
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até ele voltar, no máximo uma cena",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura",
+      "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Em forma gasosa não ataca nem conjura",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Filhos da noite",
@@ -185,41 +192,37 @@
         "arte": "espirito",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da cena",
       "alcance": "os bichos que estão por perto",
       "area": "não se aplica",
       "efeito": "chama um enxame de morcegos, um enxame de ratos ou um bando de lobos (as fichas do bestiário), que chega em 6 Ticks e luta por ele",
       "dano": "o dos bichos",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "água corrente e estaca",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a água corrente o fere, e a estaca no coração o derruba"
-    },
-    {
-      "nome": "sem reflexo nem sombra",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não aparece em espelho nem em retrato"
-    },
-    {
-      "nome": "imune a veneno, doença e efeito mental",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o corpo morto não sente veneno nem doença"
-    },
-    {
-      "nome": "corpo morto",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não respira e não envelhece; dorme de dia e vive do sangue"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enquanto estiver em água corrente ou tocado pela estaca, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "sem reflexo nem sombra",
+      "formas": "todas",
+      "texto": "O vampiro não projeta sombra nem aparece no espelho. O Mestre usa a ausência como pista."
+    },
     {
       "nome": "sedutor paciente",
       "formas": "todas",
@@ -239,10 +242,14 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma",
-    "prendeRespiracao": "não respira",
-    "mente": "inteira, fria e calculista; séculos de fome e solidão",
-    "tracos": "nobre pálido e belo, de pele fria, olhos que brilham no escuro e duas presas que só aparecem quando morde; não tem reflexo nem sombra"
+    "mente": "inteira, fria e calculista; séculos de fome e solidão. As famílias listadas abrangem os efeitos mentais de Artes e poderes. Dano físico de Arte e conversa comum seguem as regras normais",
+    "tracos": "nobre pálido e belo, de pele fria, olhos que brilham no escuro e duas presas que só aparecem quando morde; não tem reflexo nem sombra. Não envelhece. Recolhe-se de dia e vive do sangue. O dano de sol, prata ou fogo ignora toda a Absorção do vampiro e é agravado",
+    "tipoCorpo": "morto-vivo",
+    "recuperacao": "Recupera-se bebendo sangue",
+    "familiasMentaisIgnoradas": [
+      "dominio",
+      "leitura-de-mente"
+    ]
   },
   "aptidoes": {
     "montaria": false,
@@ -320,22 +327,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Dreno de sangue",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Olhar dominador",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Forma gasosa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Filhos da noite",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.atletismo",
       "motivo": "\"Força sobre-humana: bônus em Atletismo e Acrobacia\" (site); pela \"força sobre-humana\" e pela vida na nobreza do site"
     },
@@ -346,6 +337,18 @@
     {
       "campo": "aparencia",
       "motivo": "Degrau 9, \"Beleza\": o nobre que seduz antes de atacar e é a figura \"mais temida ou mais fascinante\" dos salões (site). A Aparência mede a beleza, e não o medo (D-205). O site tinha 2, o número de todos os mortos-vivos dele, que não cabe em quem passa por vivo na alta sociedade; 9, a beleza do nobre que seduz; o site tinha 2 (D-205)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar dominador",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Forma gasosa",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Filhos da noite",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

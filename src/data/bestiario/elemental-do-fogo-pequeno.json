@@ -99,6 +99,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pancada flamejante",
+      "categoria": "inato",
       "ativacao": "a Pancada flamejante que fere",
       "duracao": "até alguém gastar uma ação para apagar o fogo, ou 18 Ticks",
       "alcance": "toque",
@@ -106,12 +107,13 @@
       "efeito": "a roupa, o cabelo ou o pelo do alvo pegam fogo",
       "dano": "1d6, fogo, a cada 6 Ticks enquanto queima",
       "resistencia": "corpo, contra a jogada da pancada; quem passa não pega fogo",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Incendeia",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "tocar ou atravessar material que queima (palha, pano, madeira seca, óleo)",
       "duracao": "o fogo segue por conta própria, como fogo comum",
       "alcance": "toque",
@@ -119,13 +121,21 @@
       "efeito": "o material pega fogo; ele não escolhe não incendiar",
       "dano": "o do fogo comum, a critério do Mestre",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "feito de chama pura",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não sente cansaço, veneno nem doença; não respira, não come, não dorme"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -143,10 +153,9 @@
     }
   ],
   "fisiologia": {
-    "respiracao": "nenhuma; o fogo dele não precisa de ar para seguir aceso",
-    "prendeRespiracao": "não respira",
     "mente": "simples; obedece a quem o conjurou e, solto, só quer queimar",
-    "tracos": "chama viva na forma de um homem pequeno; deixa fumaça e cinza por onde passa"
+    "tracos": "chama viva na forma de um homem pequeno; deixa fumaça e cinza por onde passa",
+    "tipoCorpo": "elemental"
   },
   "aptidoes": {
     "montaria": false,
@@ -200,14 +209,6 @@
     ]
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Toque em chamas",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Incendeia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "atributos.forca",
       "motivo": "A chama empurra pouco: o golpe dele fere pelo fogo, e não pelo peso. O site tinha 2 (For 10 no Pathfinder), que é o de um homem comum, para um corpo que não pesa nada; 1; o site tinha 2. Com 2 o dano médio seria 4,5"

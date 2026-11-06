@@ -112,6 +112,20 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Miúdo: asas abertas. Minúsculo: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "Invisibilidade natural",
       "formas": "todas",
       "classe": "regra da ficha",
@@ -119,14 +133,15 @@
         "arte": "fascinacao",
         "nivel": 1
       },
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 5",
-      "duracao": "até ela atacar ou desfazer",
+      "duracao": "até atacar ou desfazer",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica com a condição Invisível; o que ela carrega some junto; a flecha que ela solta aparece quando sai do arco",
+      "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Flecha do sono ou do esquecimento",
@@ -134,17 +149,19 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "fascinacao",
-        "nivel": 2
+        "nivel": 2,
+        "efeito": "esquecer"
       },
       "ataque": "Flecha",
+      "categoria": "sobrenatural",
       "ativacao": "a Flecha que fere (1 de dano ou mais depois da Absorção)",
-      "duracao": "o sono, até o fim da cena ou até alguém sacudir o alvo ou ele levar dano; o esquecimento, permanente",
+      "duracao": "o sono, até o fim da cena",
       "alcance": "o da Flecha",
       "area": "um alvo",
-      "efeito": "à escolha da pixie antes de atirar: sono (o alvo fica Inconsciente) ou esquecimento (o alvo perde as memórias da última hora)",
+      "efeito": "à escolha da pixie antes de atirar: sono (o alvo fica Dormindo) ou esquecimento (o alvo perde as memórias da última hora). O sono leva a Dormindo, com Defesas 0. Qualquer dano acorda a vítima, assim como uma ação de Velocidade 5 de um aliado para sacudi-la",
       "dano": "o da Flecha",
-      "resistencia": "mente, contra a jogada da flecha; quem passa só leva o dano",
-      "limiteDeUso": "um por flecha"
+      "resistencia": "a jogada da flecha da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa só leva o dano",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Glamour distrativo",
@@ -154,19 +171,21 @@
         "arte": "fascinacao",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 5",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "até o fim da próxima ação do alvo",
       "alcance": "18 m, à vista dela",
       "area": "um alvo",
       "efeito": "uma ilusão (um brilho, um som, um vulto) puxa a atenção do alvo, que perde a próxima ação",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Lábia da pixie; quem passa vê a ilusão pelo que é",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Lábia da pixie da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa vê a ilusão pelo que é",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Fuga élfica",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "reação, ao levar o primeiro dano da cena (com 2 PV, qualquer ferida já é metade)",
       "duracao": "até o fim da cena",
       "alcance": "o próprio corpo",
@@ -174,12 +193,13 @@
       "efeito": "fica Invisível e voa, na mesma reação, até o Arranque do voo, para longe de quem a feriu",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena"
+      "limiteDeUso": "uma vez por cena. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Voo veloz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale enquanto voa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -187,7 +207,7 @@
       "efeito": "ignora o terreno difícil e soma +1 na Esquiva contra golpe corpo a corpo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -264,26 +284,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Invisibilidade natural",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Flecha do sono ou do esquecimento",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Glamour distrativo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Fuga élfica",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Voo veloz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.atirador",
       "motivo": "O arco das flechas do sono. O site gravava o ataque com Atirador, mas sem valor; fica com o valor que o site dava à Briga, que é a luta dela; 4 e 2; o site tinha só Briga 4"
     },
@@ -302,6 +302,14 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Flecha do sono ou do esquecimento",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Glamour distrativo",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

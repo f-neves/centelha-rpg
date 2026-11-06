@@ -103,10 +103,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: tentáculos abertos. Médio: de cima, tentáculos juntos, pendurado. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "constrição",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Tentáculos",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "envolve a presa, de preferência pela cabeça, e aperta"
     },
@@ -116,16 +131,18 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "sombra",
-        "nivel": 4
+        "nivel": 4,
+        "efeito": "manto-de-treva"
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 6. O efeito sai no Tick do Golpe",
       "duracao": "18 Ticks",
       "alcance": "o próprio corpo",
       "area": "esfera de 6 m em volta dele",
       "efeito": "trevas mágicas cobrem a área; quem depende de luz fica Na escuridão",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -191,12 +208,12 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Escuridão instintiva",
-      "motivo": "números sugeridos pela ficha (D-197); poder natural com números da ficha (D-197), base Sombra 4 (Escuridão Viva); o Na escuridão é a condição do livro para \"cegando a visão comum\" (site)"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Escuridão instintiva",
+      "motivo": "R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia).; poder natural com números da ficha (D-197), base Sombra 4 (Escuridão Viva); o Na escuridão é a condição do livro para \"cegando a visão comum\" (site)"
     },
     {
       "campo": "corpo.area",

@@ -85,46 +85,24 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Ataque furtivo",
+      "nome": "Resistência à magia",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ataque": "Espada curta",
-      "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
-      "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "a lâmina entra onde o alvo não guarda",
-      "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
-    },
-    {
-      "nome": "Poderes menores",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "base": {
-        "arte": "ofuscacao",
-        "nivel": 1
-      },
-      "ativacao": "uma ação, Velocidade 6",
-      "duracao": "as trevas e os sons, até o fim da cena",
-      "alcance": "18 m",
-      "area": "à escolha: trevas numa esfera de 6 m; sons ilusórios num ponto que ele vê; ou um estrondo numa esfera de 3 m",
-      "efeito": "as trevas apagam a luz comum (ele enxerga nelas); os sons enganam quem ouve",
-      "dano": "o estrondo, 1d6 + Centelha, Impacto; os outros, nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dele, para os sons; corpo, Vigor + Resistência contra Dificuldade 10, para o estrondo",
-      "limiteDeUso": "três vezes por dia, somados"
-    },
-    {
-      "nome": "Resistência à magia 14",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Vulnerabilidade ao sol",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "cada hora inteira à luz do sol",
       "duracao": "enquanto estiver ao sol",
       "alcance": "o próprio corpo",
@@ -132,25 +110,111 @@
       "efeito": "o sol queima a pele e enfraquece o corpo",
       "dano": "1d6 por hora, que a Absorção não segura",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Loucura inata",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "a mente já fraturada o deixa imune a efeitos de insanidade e de confusão (a condição Confuso não o pega)"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora efeitos que instalam insanidade ou a condição Confuso. Outras famílias mentais, dano físico de Arte e conversa comum seguem suas regras",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Uso de veneno",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "a Peçonha de aranha gigante na espada (Veneno e doença); aplica sem risco de se envenenar"
     },
     {
       "nome": "atordoamento dos poderes menores",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "os truques mentais e o estrondo deixam a vítima zonza"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até a próxima ação começar, com o adiamento de Atordoado",
+      "alcance": "9 m",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "Os truques mentais e o estrondo atordoa com Margem 1 ou mais. Aplicar Atordoado do livro",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra 10 + 5 × Margem, até 40",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+    },
+    {
+      "nome": "Golpe na brecha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
+    },
+    {
+      "nome": "Trevas",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "sombra",
+        "nivel": 1,
+        "efeito": "manto-de-treva"
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "esfera de 6 m",
+      "efeito": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
+    },
+    {
+      "nome": "Sons ilusórios",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "ofuscacao",
+        "nivel": 1
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "até o fim da cena ou desfazer",
+      "alcance": "18 m",
+      "area": "um ponto visível",
+      "efeito": "Imita sons para enganar quem os ouve",
+      "dano": "nenhum",
+      "resistencia": "quem duvida testa para perceber a ilusão",
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
+    },
+    {
+      "nome": "Estrondo",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "vento",
+        "nivel": 1
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "instantânea",
+      "alcance": "18 m",
+      "area": "esfera de 3 m",
+      "efeito": "Produz a vibração e aplica o Atordoado descrito no poder do derro",
+      "dano": "1d6 + Centelha de Impacto",
+      "resistencia": "saída de área do livro",
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
     }
   ],
   "comoLuta": [
@@ -223,24 +287,20 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Ataque furtivo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Poderes menores",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Vulnerabilidade ao sol",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "comportamento.social",
       "motivo": ""
     },
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 14 da fonte passa a grau 1 (+2)."
+    },
+    {
+      "campo": "habilidadesEspeciais.atordoamento dos poderes menores",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

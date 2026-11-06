@@ -1356,11 +1356,11 @@
    "esquiva": 0,
    "integridade": 2,
    "sobrevivencia": 0,
-   "sociabilidade": 1
+   "sociabilidade": 1,
+   "atirador": 3
   },
   "habilidadesSec": {
-   "musculatura": 0,
-   "disparo": 3
+   "musculatura": 0
   },
   "artes": [],
   "tecnicas": [],
@@ -1394,7 +1394,7 @@
      "pool": "3d6 +4",
      "dano": "2d6 +2 (fenomeno)",
      "perfArma": null,
-     "speed": 7,
+     "speed": 5,
      "classe": "distancia",
      "forcaInvestida": 0
     }
@@ -15439,7 +15439,7 @@
    "comprimento": 0.0046,
    "massa": 0.000007,
    "area": 0,
-   "posturaDoTamanho": "vista de cima",
+   "posturaDoTamanho": "indivíduo, anatomia",
    "medida": "0.003 m de altura, 0.0046 m de comprimento",
    "peso": "0.000007 kg"
   },
@@ -15672,7 +15672,7 @@
    "comprimento": 0.03,
    "massa": 0.0001,
    "area": 0,
-   "posturaDoTamanho": "vista de cima",
+   "posturaDoTamanho": "indivíduo, anatomia",
    "medida": "0.005 m de altura, 0.03 m de comprimento",
    "peso": "0.0001 kg"
   },
@@ -15795,7 +15795,7 @@
    "comprimento": 0.006,
    "massa": 0.000003,
    "area": 0,
-   "posturaDoTamanho": "vista de cima",
+   "posturaDoTamanho": "indivíduo, anatomia",
    "medida": "0.002 m de altura, 0.006 m de comprimento",
    "peso": "0.000003 kg"
   },
@@ -16034,7 +16034,7 @@
    "caudaGrossa": false,
    "massa": 0.3,
    "area": 0.01,
-   "posturaDoTamanho": "vista de lado",
+   "posturaDoTamanho": "indivíduo, anatomia",
    "medida": "0.08 m de altura, 0.4 m de comprimento",
    "peso": "0.3 kg"
   },
@@ -16151,7 +16151,7 @@
    "comprimento": 0.12,
    "massa": 0.004,
    "area": 0,
-   "posturaDoTamanho": "de cima",
+   "posturaDoTamanho": "indivíduo, anatomia",
    "medida": "0.005 m de altura, 0.12 m de comprimento",
    "peso": "0.004 kg"
   },
@@ -16266,7 +16266,7 @@
    "envergadura": 0.02,
    "massa": 0.000084,
    "area": 0,
-   "posturaDoTamanho": "de cima, asas abertas, o indivíduo",
+   "posturaDoTamanho": "indivíduo, anatomia",
    "medida": "0.005 m de altura, 0.015 m de comprimento",
    "peso": "0.000084 kg"
   },
@@ -19114,14 +19114,14 @@
    "integridade": 7,
    "sobrevivencia": 0,
    "sociabilidade": 3,
+   "atirador": 4,
    "ocultismo": 4,
    "oratoria": 0,
    "empatia": 3,
    "armas": 5
   },
   "habilidadesSec": {
-   "musculatura": 0,
-   "disparo": 4
+   "musculatura": 0
   },
   "artes": [
    {
@@ -19249,14 +19249,14 @@
       "integridade": 7,
       "sobrevivencia": 0,
       "sociabilidade": 3,
+      "atirador": 4,
       "ocultismo": 4,
       "oratoria": 0,
       "empatia": 3,
       "armas": 5
      },
      "habilidadesSec": {
-      "musculatura": 0,
-      "disparo": 4
+      "musculatura": 0
      },
      "artes": [
       {
@@ -19305,7 +19305,7 @@
       "ataques": [
        {
         "nome": "Raio de luz",
-        "pool": "4d6+2 +8",
+        "pool": "5d6 +8",
         "dano": "2d6 +6 (fenomeno)",
         "perfArma": null,
         "speed": 7,
@@ -23806,6 +23806,7 @@
    "bloqueio": 0,
    "esquiva": 1,
    "integridade": 2,
+   "ocultismo": 3,
    "resistencia": 0
   },
   "habilidadesSec": {

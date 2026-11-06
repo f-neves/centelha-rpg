@@ -822,11 +822,11 @@
       {
         "nome": "Raio de luz",
         "atrib": "vigor",
-        "pericia": "disparo",
+        "pericia": "atirador",
         "dado": 2,
         "tipo": "fenomeno",
         "classe": "distancia",
-        "ticks": 7,
+        "ticks": 5,
         "acerto": 0,
         "pool": "3d6 +4",
         "dano": "2d6 +2 (fenomeno)",
@@ -845,8 +845,8 @@
       "integridade": 2,
       "sobrevivencia": 0,
       "sociabilidade": 1,
-      "musculatura": 0,
-      "disparo": 3
+      "atirador": 3,
+      "musculatura": 0
     }
   },
   {
@@ -11271,12 +11271,12 @@
       "integridade": 7,
       "sobrevivencia": 0,
       "sociabilidade": 3,
+      "atirador": 4,
       "ocultismo": 4,
       "oratoria": 0,
       "empatia": 3,
       "armas": 5,
-      "musculatura": 0,
-      "disparo": 4
+      "musculatura": 0
     }
   },
   {
@@ -14100,6 +14100,7 @@
       "bloqueio": 0,
       "esquiva": 1,
       "integridade": 2,
+      "ocultismo": 3,
       "resistencia": 0,
       "voo": 3,
       "musculatura": 0
