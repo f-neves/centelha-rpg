@@ -298,6 +298,40 @@ console.log('P10 controle negativo: remover o ramo do enxame produz ' + negativa
   confere('F5.4', 'card ignora bonusPV da forma', lida, vista.motor.stat.pv);
 }
 
+// R49 (D-328, 05/11/2026): a Couraça soma à Absorção pelo nível N e pelo perfil, com as metades para cima. Os números
+// esperados vêm da tabela do texto aprovado (Rígida: Corte N, Perfuração N, Impacto N/2; Couro: Corte N, Perfuração N/2,
+// Impacto N/2; Mole: Corte N/2, Perfuração N/2, Impacto N), em N ímpar para cobrar o arredondamento.
+{
+  const tab = { rigida: { corte: 3, perfuracao: 3, impacto: 2 }, couro: { corte: 3, perfuracao: 2, impacto: 2 }, mole: { corte: 2, perfuracao: 2, impacto: 3 } };
+  for (const [perfil, deve] of Object.entries(tab)) for (const k of ['impacto', 'corte', 'perfuracao'])
+    confere('R49', `nível 3, ${perfil}, ${k}`, M.absorcaoDaCouraca(3, perfil)[k], deve[k]);
+  confere('R49', 'nível 12, rígida, Impacto', M.absorcaoDaCouraca(12, 'rigida').impacto, 6);
+  confere('R49', 'nível 1, mole, Corte', M.absorcaoDaCouraca(1, 'mole').corte, 1);
+  for (const k of ['impacto', 'corte', 'perfuracao']) {
+    confere('R49', `nível 0, rígida, ${k}`, M.absorcaoDaCouraca(0, 'rigida')[k], 0);
+    confere('R49', `sem perfil (ficha de antes da R49), ${k}`, M.absorcaoDaCouraca(5, undefined)[k], 0);
+  }
+  let recusou = false; try { M.absorcaoDaCouraca(2, 'escamosa'); } catch { recusou = true; }
+  confere('R49', 'perfil fora dos três é recusado', recusou, true);
+  // na criatura: soma por cima da Absorção natural (Vigor e Centelha), passa para a Absorção com equipamento, e nada
+  // mais muda (não cria Nível de Perfuração). O alce do criaturas-esperado: Couraça 1, sem perfil.
+  const sem = structuredClone(FIX.criaturas.alce.entrada);
+  const com = { ...structuredClone(sem), couraca: 3, perfilCouraca: 'rigida' };
+  const s0 = M.criatura({ ...structuredClone(sem), couraca: 3 }), s1 = M.criatura(com);
+  for (const k of ['impacto', 'corte', 'perfuracao']) confere('R49', `alce rígida 3, ${k}`, s1.absorcao[k] - s0.absorcao[k], tab.rigida[k]);
+  const resto = (r) => JSON.stringify({ ...r, absorcao: null });
+  confere('R49', 'alce rígida 3: nada além da Absorção muda', resto(s1), resto(s0));
+  const armado = { ...structuredClone(com), equipamento: { arsenal: [], armaduras: [{ base: 'malha', vestida: true }] } };
+  const a1 = M.criatura(armado), a0 = M.criatura({ ...armado, perfilCouraca: undefined });
+  if (a1.comEquipamento) {
+    for (const k of ['impacto', 'corte', 'perfuracao']) confere('R49', `com equipamento, ${k}`, a1.comEquipamento[k] - a0.comEquipamento[k], tab.rigida[k]);
+    confere('R49', 'com equipamento: o Nível de Perfuração é o da armadura', a1.comEquipamento.nivelPerfuracao, a0.comEquipamento.nivelPerfuracao);
+  } else confere('R49', 'a armadura malha existe no catálogo', false, true);
+  // a forma herda o perfil da principal (D-217) e troca o nível
+  const fo = M.criatura(M.comForma(com, { id: 'f', couraca: 0 }));
+  confere('R49', 'forma de Couraça 0 herda o perfil e não soma', fo.absorcao.corte, s1.absorcao.corte - tab.rigida.corte);
+}
+
 const nC = Object.keys(FIX.criaturas).length;
 if (falhas.length) {
   const porConta = {};

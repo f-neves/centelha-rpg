@@ -35,7 +35,7 @@ const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-f
     <div><dt>Def. Social</dt><dd>{i.combate.defesaSocial}</dd></div>
     <div><dt>Def. Mental</dt><dd>{i.combate.defesaMental}</dd></div>
     <div><dt>Absorção</dt><dd>{i.combate.absorcao.impacto}/{i.combate.absorcao.corte}/{i.combate.absorcao.perfuracao}{i.combate.vestida && <> · {i.combate.vestida.absorcao.impacto}/{i.combate.vestida.absorcao.corte}/{i.combate.vestida.absorcao.perfuracao}<small> c/ equip.</small></>}</dd></div>
-    {i.combate.couraca > 0 && <div title="O nível de Couraça da pele (0 a 12). Quanto cada nível vale na Absorção ainda não tem regra, e por isso ele não entra na conta."><dt>Couraça</dt><dd>{i.combate.couraca}</dd></div>}
+    {i.combate.couraca > 0 && <div title={i.combate.perfilCouraca ? "O nível de Couraça da pele (0 a 12) e o perfil da cobertura (R49): já somados na Absorção." : "O nível de Couraça da pele (0 a 12). A ficha ainda não diz o perfil da cobertura (R49), e por isso ele não entra na conta."}><dt>Couraça</dt><dd>{i.combate.couraca}{i.combate.perfilCouraca && `, ${({ rigida: "rígida", couro: "couro", mole: "mole" } as Record<string, string>)[i.combate.perfilCouraca]}`}</dd></div>}
     <div><dt>Iniciativa</dt><dd>{i.combate.iniciativa}</dd></div>
     {i.combate.energia != null && <div><dt>Energia</dt><dd>{i.combate.energia}</dd></div>}
   </dl>

@@ -482,6 +482,8 @@ export interface EntradaCriatura {
     enxame?: { individuosPorQuadrado: number; tamanhoEquivalente: Extract<Tamanho, 'pequeno' | 'medio'> };
     bonusPV?: number;
     couraca?: number;
+    // o perfil da cobertura (R49, D-328); sem ele a Couraça não soma à Absorção
+    perfilCouraca?: PerfilCouraca;
     artes?: Num;
     // as peças da ficha do jogador (D-231, D-238): a arma `{ref: "a:<id>"}`, o escudo `{ref: "e:<id>"}`, a armadura `{base, vestida}`
     equipamento?: {
@@ -645,6 +647,20 @@ export function habilidadeDaJogada(ataque: AtaqueEntrada, habilidades: Num, habi
     return armas > briga ? 'armas' : 'briga';
 }
 const habDe = (e: EntradaCriatura, id: string) => e.habilidades[id] ?? e.habilidadesSec[id] ?? 0;
+export type PerfilCouraca = 'rigida' | 'couro' | 'mole';
+/**
+ * Quanto a Couraça soma à Absorção (R49, D-328, 05/11/2026; `regras.json → criatura.couraca`): o nível N vezes a fração
+ * do perfil, com as metades arredondadas para cima. Rígida: Corte N, Perfuração N, Impacto N/2; Couro: Corte N,
+ * Perfuração N/2, Impacto N/2; Mole: Corte N/2, Perfuração N/2, Impacto N. Não cria Nível de Perfuração. Sem perfil
+ * (as fichas de antes da R49) a soma é zero: o motor não escolhe o perfil pela ficha.
+ */
+export function absorcaoDaCouraca(nivel: number | undefined, perfil: PerfilCouraca | undefined): Soak {
+    const p = perfil ? C.couraca.perfis[perfil] : undefined;
+    if (perfil && !p) throw Error('perfil de Couraça desconhecido: ' + perfil);
+    const n = nivel ?? 0;
+    const de = (k: 'impacto' | 'corte' | 'perfuracao') => (p ? Math.ceil(n * p[k]) : 0);
+    return { impacto: de('impacto'), corte: de('corte'), perfuracao: de('perfuracao') };
+}
 // ----- A criatura -----
 export function criatura(e: EntradaCriatura) {
     const at = e.atributos, ce = e.centelha ?? 0, ct = e.corpo;
@@ -656,7 +672,8 @@ export function criatura(e: EntradaCriatura) {
     const social = e.categoria === 'animal' || at.inteligencia === 1
         ? defSocial({ compostura: at.compostura ?? 0, sociabilidade: habDe(e, 'sobrevivencia'), centelha: ce })
         : defSocial({ compostura: at.compostura ?? 0, sociabilidade: habDe(e, 'sociabilidade'), centelha: ce });
-    const absorcao = { impacto: (at.vigor ?? 0) + ce, corte: ce, perfuracao: ce };
+    const cou = absorcaoDaCouraca(e.couraca, e.perfilCouraca);
+    const absorcao = { impacto: (at.vigor ?? 0) + ce + cou.impacto, corte: ce + cou.corte, perfuracao: ce + cou.perfuracao };
     const comArtes = Object.values(e.artes || {}).some((n) => n > 0);
     const enxame = e.enxame ? enxamePorQuadrado(e) : null;
     const r: any = {
@@ -852,7 +869,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     Object.defineProperty(f, 'motor', { value: {
       edicao,
       energia: r.energia, stat, pericias: { prontidao: 0, furtividade: 0, ...c.habilidades, ...c.habilidadesSec }, mana: r.mana,
-      couraca: c.couraca ?? 0, enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
+      couraca: c.couraca ?? 0, ...(c.perfilCouraca ? { perfilCouraca: c.perfilCouraca } : {}), enxame: c.enxame, corpo: c.corpo, formaPrincipal: c.formaPrincipal, segundoTamanho: r.segundoTamanho ? rotulo(r.segundoTamanho) : null,
       comoLuta: (c.comoLuta || []).filter(vale).map(({nome,texto}: any)=>({nome,texto})),
       // o sentido sem dado nenhum ("faro:" vazio no card; parecer da Veterana, m1) não vai à vista
       sentidos: (c.sentidos || []).filter(vale).filter((s: any) => s.descricao).map(({nome,descricao,classe}: any)=>({nome,descricao,...(classe ? {classe} : {})})),

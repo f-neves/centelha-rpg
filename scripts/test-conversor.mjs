@@ -21,7 +21,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { converterFichaAnteriorR03 as converterFicha, aponta } from './conversor-criatura.mjs';
-import { criaturaAnteriorR03Schema as criaturaNovaSchema, criaturaParaLeituraSchema } from './criatura-schema.mjs';
+import { criaturaAnteriorR03Schema as criaturaNovaSchema, criaturaParaLeituraSchema, criaturaNovaSchema as contratoNovoSchema } from './criatura-schema.mjs';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
 const FIX = path.join(ROOT, 'scripts/fixtures/conversor');
@@ -383,6 +383,32 @@ if (!criaturaNovaSchema.innerType().shape.enxame.safeParse({individuosPorQuadrad
   if (!forma('PV na linha de cima: teste.', 'PV 28').paradas.some((p) => p.includes('forma de lobo') && p.includes('PV na linha de cima'))) falhas.push('linhaPVMotivo: a forma com a frase contrária ao PV passou');
   const sem = structuredClone(r.criatura); delete sem.corpo.linhaPV;
   if (criaturaNovaSchema.safeParse(sem).success) falhas.push('linhaPVMotivo: o esquema aceitou o porquê sem a linha');
+}
+
+{
+  // R49 (D-328, 05/11/2026): "Couraça **nível N**, perfil couro" chega ao JSON como `perfilCouraca` (sem acento: rigida,
+  // couro, mole); a palavra fora dos três para; sem a palavra, nada se inventa; e o contrato novo recusa a Couraça acima
+  // de 0 sem o perfil, na principal e na forma que sobe o nível.
+  const alvo = 'Couraça **nível 1**';
+  if (!LOBO.includes(alvo)) falhas.push('R49: a ficha do lobisomem não traz mais "' + alvo + '"');
+  const com = (p) => LOBO.replace(alvo, alvo + ', perfil ' + p);
+  for (const [p, id] of [['couro', 'couro'], ['rígida', 'rigida'], ['mole', 'mole']]) {
+    const r = converterFicha(com(p), { site: SITE });
+    if (r.paradas.length || r.criatura.perfilCouraca !== id) falhas.push('R49: "perfil ' + p + '" não virou perfilCouraca ' + id + ': ' + JSON.stringify([r.paradas, r.criatura.perfilCouraca]));
+  }
+  if (!converterFicha(com('escamosa'), { site: SITE }).paradas.some((p) => p.includes('perfil de Couraça "escamosa"'))) falhas.push('R49: o perfil fora dos três passou');
+  const r0 = converterFicha(LOBO, { site: SITE });
+  if (r0.criatura.perfilCouraca !== undefined) falhas.push('R49: perfil inventado sem a palavra na ficha');
+  const acusa = (c) => (contratoNovoSchema.safeParse(c).error?.issues || []).filter((i) => i.path.includes('perfilCouraca')).map((i) => i.path.join('.'));
+  if (!acusa(r0.criatura).includes('perfilCouraca')) falhas.push('R49: o contrato novo aceitou Couraça 1 sem perfil');
+  const rc = converterFicha(com('couro'), { site: SITE }).criatura;
+  if (acusa(rc).length) falhas.push('R49: o contrato novo acusou o perfil presente: ' + acusa(rc));
+  const zero = { ...structuredClone(r0.criatura), couraca: 0 };
+  if (acusa(zero).length) falhas.push('R49: o contrato novo cobrou perfil de Couraça 0');
+  zero.formas = [{ ...zero.formas[0], couraca: 2 }, ...zero.formas.slice(1)];
+  if (!acusa(zero).includes('formas.0.perfilCouraca')) falhas.push('R49: a forma de Couraça 2 sem perfil (nem na principal) passou');
+  // a releitura anterior (as fichas de antes da R49) aceita o campo e não o cobra
+  if (criaturaNovaSchema.safeParse(rc).success !== criaturaNovaSchema.safeParse(r0.criatura).success) falhas.push('R49: na releitura anterior o perfil muda o resultado do esquema');
 }
 
 if (falhas.length) {

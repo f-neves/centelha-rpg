@@ -255,6 +255,12 @@ function converter(texto, { site = null }, schema) {
   c.corpo = corpo;
   c.couraca = F.bloco?.couracaNivel ?? inteiro((campo(MV, 'Absorção') || '').match(/Couraça \*\*nível (\d+)/)?.[1]);
   if (c.couraca === undefined) para('sem a Couraça (bloco de conferência ou linha Absorção)');
+  // R49 (D-328): "Couraça **nível N**, perfil couro". A falta do perfil acima do nível 0 o esquema novo acusa.
+  const perfilLido = (campo(MV, 'Absorção') || '').match(/Couraça \*\*nível \d+\*\*[^,;|]*, perfil ([^\s.,;|]+)/)?.[1];
+  if (perfilLido !== undefined) {
+    const perfil = { 'rígida': 'rigida', couro: 'couro', mole: 'mole' }[perfilLido.toLowerCase()];
+    if (perfil) c.perfilCouraca = perfil; else para(`Absorção: perfil de Couraça "${perfilLido}" fora de rígida, couro e mole (R49)`);
+  }
   const bpv = inteiro(campo(MV, 'Bônus de PV'));
   if (bpv) c.bonusPV = bpv;
 

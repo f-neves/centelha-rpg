@@ -31,7 +31,7 @@ const SAIDA = path.join(RAIZ, 'scripts', 'fixtures', 'criaturas-esperado.json');
 const SITE = path.join(RAIZ, 'src', 'data', 'bestiario');
 const TAMANHOS = 'Minúsculo|Miúdo|Pequeno|Médio|Grande|Enorme|Imenso|Colossal';
 const HAB_ATAQUE = 'Briga|Armas|Disparo|Atirador|Arremesso';
-const CHAVES_MOTOR = ['enxame', 'categoria', 'centelha', 'atributos', 'habilidades', 'habilidadesSec', 'vontade', 'corpo', 'bonusPV', 'couraca', 'artes', 'equipamento', 'ataques'];
+const CHAVES_MOTOR = ['enxame', 'categoria', 'centelha', 'atributos', 'habilidades', 'habilidadesSec', 'vontade', 'corpo', 'bonusPV', 'couraca', 'perfilCouraca', 'artes', 'equipamento', 'ataques'];
 const inteiro = (s) => { const m = String(s ?? '').match(/[−-]?\d+/); return m ? Number(m[0].replace('−', '-')) : undefined; };
 const ultimo = (s) => { const n = negritos(s); return n.length ? n[n.length - 1] : undefined; };
 const escolhe = (o, ks) => Object.fromEntries(ks.filter((k) => o[k] !== undefined).map((k) => [k, o[k]]));

@@ -9,6 +9,8 @@ const id = z.string().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/);
 const numero = z.number();
 const tamanho = z.enum(['minusculo','miudo','pequeno','medio','grande','enorme','imenso','colossal']);
 const formasMarca = z.union([z.literal('todas'), z.array(id).min(1)]);
+// R49 (D-328): o perfil da cobertura da Couraça; a ficha diz o nível e o perfil
+const perfilCouraca = z.enum(['rigida', 'couro', 'mole']);
 const corpoNovo = z.object({
   postura: texto, apoio: z.enum(['bipede', 'quadrupede', 'outro']),
   altura: numero, largura: numero, profundidade: numero.nullable(), comprimento: numero.nullable(),
@@ -66,7 +68,7 @@ const numeros = z.record(id, inteiro);
 const artesNova = z.record(z.enum(artesCatalogo.map(a => a.id)), naoNeg);
 const bolsasNova = z.array(z.object({ nome: texto, itens: z.array(z.object({ item: texto, peso: numero, preco: numero }).strict()) }).strict());
 const formaNova = z.object({
-  id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
+  id, nome: texto, bolsas: bolsasNova.optional(), corpo: corpoNovo.partial().optional(), couraca: naoNeg.max(12).optional(), perfilCouraca: perfilCouraca.optional(), atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict().partial().optional(), aparencia: naoNeg.max(12).optional(),
   deslocamento: deslocamentoForma.optional(), equipamento: equipamentoNovo.partial().optional(), artes: artesNova.optional(),
   fisiologia: fisiologiaNovo.optional(), aptidoes: aptidoesNovo.optional(), ataques: z.array(ataqueNovo).optional(),
   // D-265: as outras formas que o Mestre pode escolher no lugar do disfarce fixo ("um animal comum"); o card escreve a regra
@@ -77,7 +79,7 @@ const estruturaCriatura = z.object({
   ameaca: z.number().int().min(1).max(6), centelha: z.number().int().min(0).max(12),
   formaPrincipal: z.object({ id, nome: texto }).strict().optional(),
   enxame: z.object({ individuosPorQuadrado: z.number().int().positive(), tamanhoEquivalente: z.enum(['pequeno','medio']) }).strict().optional(),
-  corpo: corpoNovo.refine(c => c.massa !== undefined || c.semMassa === true, {message:'corpo exige massa ou semMassa',path:['massa']}).refine(c => (c.semMassa === true) === (c.volume !== undefined), {message:'semMassa e volume devem ser declarados juntos',path:['volume']}), couraca: z.number().int().min(0).max(12), bonusPV: inteiro.optional(),
+  corpo: corpoNovo.refine(c => c.massa !== undefined || c.semMassa === true, {message:'corpo exige massa ou semMassa',path:['massa']}).refine(c => (c.semMassa === true) === (c.volume !== undefined), {message:'semMassa e volume devem ser declarados juntos',path:['volume']}), couraca: z.number().int().min(0).max(12), perfilCouraca: perfilCouraca.optional(), bonusPV: inteiro.optional(),
   atributos: z.object({ forca: naoNeg, destreza: naoNeg, vigor: naoNeg, percepcao: naoNeg, inteligencia: naoNeg, raciocinio: naoNeg, influencia: naoNeg, perspicacia: naoNeg, compostura: naoNeg }).strict(),
   habilidades: numeros, habilidadesSec: numeros, especialidades: especialidadesNovo, especialidadesSec: especialidadesNovo,
   virtudes: z.object({ bravura: naoNeg, compaixao: naoNeg, conviccao: naoNeg, temperanca: naoNeg }).strict(),
@@ -121,6 +123,10 @@ function conferirCriatura(c, ctx) {
 export const criaturaAnteriorR03Schema = estruturaCriatura.superRefine(conferirCriatura);
 export const criaturaNovaSchema = estruturaCriatura.superRefine((c,ctx) => {
   conferirCriatura(c,ctx);
+  // R49 (D-328): no contrato novo, a Couraça acima de 0 diz o perfil, na principal ou herdado dela pela forma
+  if (c.couraca > 0 && !c.perfilCouraca) ctx.addIssue({code:'custom',path:['perfilCouraca'],message:'Couraça nível '+c.couraca+' sem o perfil (R49): rigida, couro ou mole'});
+  for (const [i, forma] of (c.formas || []).entries()) if (forma.couraca > 0 && !(forma.perfilCouraca ?? c.perfilCouraca))
+    ctx.addIssue({code:'custom',path:['formas',i,'perfilCouraca'],message:'Couraça nível '+forma.couraca+' da forma sem o perfil (R49)'});
   validarPoderes(c,(path,message)=>ctx.addIssue({code:'custom',path,message}));
 });
 

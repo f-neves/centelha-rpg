@@ -2889,6 +2889,14 @@
     "danoMedio": {
       "nota": "A média de cada d6 no dano médio (manual-fichas-criatura.md, 5.3; o dado mais o resto: Força × multiplicador e a Centelha, D-209).",
       "porDado": 3.5
+    },
+    "couraca": {
+      "nota": "Quanto a Couraça protege (R49, D-328, 05/11/2026; combate.md, Couraça): a ficha diz o nível N (0 a 12) e o perfil da cobertura, e o nível soma à Absorção a fração do perfil, com as metades arredondadas para cima. Não cria Nível de Perfuração. A ficha sem perfil (as de antes da R49) não soma nada: o motor não escolhe perfil por ela.",
+      "perfis": {
+        "rigida": { "corte": 1, "perfuracao": 1, "impacto": 0.5 },
+        "couro": { "corte": 1, "perfuracao": 0.5, "impacto": 0.5 },
+        "mole": { "corte": 0.5, "perfuracao": 0.5, "impacto": 1 }
+      }
     }
   }
 }
