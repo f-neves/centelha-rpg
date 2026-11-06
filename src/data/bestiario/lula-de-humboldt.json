@@ -130,20 +130,37 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "arrastar para o fundo",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Braços e tentáculos",
-      "efeito": "só presa pequena; a lula de 2,5 kg não arrasta gente"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "nuvem de tinta",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "solta uma nuvem de tinta que esconde a fuga"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "6 Ticks, ou até o fim do Tick seguinte em corrente forte",
+      "alcance": "na água ao redor da criatura",
+      "area": "nuvem de raio 3 m",
+      "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
+      "dano": "nenhum",
+      "resistencia": "sair da nuvem",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -210,6 +227,10 @@
     {
       "campo": "corpo.massa",
       "motivo": "Etapa 2 (20/10/2026): Decisão 5 de 19/10/2026: a ficha principal usa uma versão um pouco acima da média da espécie, dentro da faixa real. 2,5 kg mais 10% = 2,75 kg , dentro da faixa real (comum de 2 a 3 kg, FAO; até 50 kg, ADW, ou 65 kg, ALR 2019). Antes: Era 68 kg (o adulto grande do sul do Chile, agora `lula-de-humboldt-grande.md`). Referência: 2,5 kg, meio da faixa do \"peso comum 2 ou 3 kg\" (FAO, Roper, Sweeney e Nauen 1984), (2 + 3) ÷ 2 = 2,5 : meio de faixa, e não média. Pela relação manto e massa da Universidad de Concepción, o manto médio de 38 cm da Helgoland 2008 dá 0,0151 × 38^3,2 = 1,7 kg, e os 42,7 cm dão os 2,5 kg. Faixa do adulto: de 2 a 3 kg, o comum (FAO), a 50 kg (ADW; Wikipédia) ou 65 kg (ALR 2019, resumo de busca); os 150 kg são resumo de busca sem fonte. Sexos: as fêmeas amadurecem maiores (Wikipédia); manto médio de 376 mm nos machos e 388,7 mm nas fêmeas (Helgoland 2008); massa por sexo"
+    },
+    {
+      "campo": "habilidadesEspeciais.nuvem de tinta",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
     }
   ]
 }

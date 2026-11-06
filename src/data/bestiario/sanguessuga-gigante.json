@@ -113,27 +113,52 @@
       "nome": "fixar = agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "sugar",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Mordida",
-      "efeito": "enquanto presa, bebe sangue; o dano por manutenção e o fim da refeição ficam com o Mestre"
+      "categoria": "inato",
+      "ativacao": "ao manter o agarrão",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção",
+      "dano": "1 PV a cada 6 Ticks, ignorando a Absorção da armadura",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "enquanto mantiver o agarrão"
     },
     {
       "nome": "sangramento",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Mordida",
-      "efeito": "a ferida sangra por horas depois que ela solta"
+      "categoria": "inato",
+      "ativacao": "quando a sanguessuga solta a vítima depois de feri-la",
+      "duracao": "até estancar",
+      "alcance": "o do golpe",
+      "area": "a vítima ferida",
+      "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
     },
     {
       "nome": "sal",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "uma pitada de sal queima a carne mole dela; o dano fica a definir"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enquanto estiver em contato com sal, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [

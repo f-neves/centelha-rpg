@@ -102,7 +102,8 @@
       "arte": {
         "id": "fogo",
         "nivel": 4
-      }
+      },
+      "categoria": "magia"
     },
     {
       "nome": "Raio de energia",
@@ -111,7 +112,9 @@
       "arte": {
         "id": "fogo",
         "nivel": 1
-      }
+      },
+      "categoria": "magia",
+      "texto": "O raio ignora o bônus da cobertura parcial"
     },
     {
       "nome": "Labareda",
@@ -120,7 +123,8 @@
       "arte": {
         "id": "fogo",
         "nivel": 3
-      }
+      },
+      "categoria": "magia"
     },
     {
       "nome": "Escudo de força",
@@ -129,13 +133,15 @@
       "arte": {
         "id": "forcas",
         "nivel": 2
-      }
+      },
+      "categoria": "magia"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [

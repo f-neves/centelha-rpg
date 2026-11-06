@@ -107,6 +107,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Espada longa",
+      "categoria": "inato",
       "regra": "rajada",
       "texto": "Até dois golpes por ação"
     },
@@ -117,7 +118,8 @@
       "tecnica": {
         "id": "golpe-pesado",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Quebrar Guarda",
@@ -126,7 +128,8 @@
       "tecnica": {
         "id": "quebrar-guarda",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Soco Trovejante",
@@ -135,13 +138,15 @@
       "tecnica": {
         "id": "soco-trovejante",
         "nivel": 3
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [

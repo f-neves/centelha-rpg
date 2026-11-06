@@ -15407,13 +15407,13 @@
       "resistencia": 4,
       "empatia": 0,
       "sobrevivencia": 2,
+      "atirador": 2,
       "equilibrio": 0,
       "escalada": 0,
       "natacao": 0,
       "voo": 0,
       "corrida": 0,
-      "musculatura": 1,
-      "disparo": 2
+      "musculatura": 1
     }
   },
   {
@@ -17479,14 +17479,14 @@
       },
       {
         "nome": "Sopro elemental",
-        "atrib": "vigor",
-        "pericia": "disparo",
+        "atrib": "percepcao",
+        "pericia": "atirador",
         "dado": 2,
         "tipo": "fogo",
         "classe": "distancia",
         "ticks": 7,
         "acerto": 0,
-        "pool": "2d6+2 +4",
+        "pool": "2d6 +4",
         "dano": "2d6 +2 (fogo)",
         "perfArma": null,
         "forcaInvestida": 0
@@ -17502,9 +17502,9 @@
       "esquiva": 1,
       "atletismo": 1,
       "integridade": 3,
+      "atirador": 2,
       "labia": 2,
       "voo": 2,
-      "disparo": 2,
       "musculatura": 0
     }
   },

@@ -108,6 +108,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -115,6 +116,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "aperta a presa com o corpo"
     },
@@ -123,6 +125,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Garras",
+      "categoria": "inato",
       "ativacao": "o agarrão que dá certo; ele escolhe enroscar a garganta",
       "duracao": "enquanto mantém o agarrão",
       "alcance": "o do corpo a corpo",
@@ -130,27 +133,36 @@
       "efeito": "o alvo fica Agarrado e Sufocando (\"garganta presa\", `condicoes.json`), e não fala: não pede socorro nem usa Arte ou poder que precise de palavra",
       "dano": "o do agarrão, e o do Sufocando",
       "resistencia": "para se soltar, a manutenção do agarrão do livro",
-      "limiteDeUso": "um alvo por vez"
+      "limiteDeUso": "um alvo por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Rapidez sobrenatural",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "está sempre Acelerado (`condicoes.json`: as ações custam 2 Ticks a menos, mínimo 1)",
+      "efeito": "Fica Acelerado. A Recuperação diminui 1 Tick, até 0. Os opostos se anulam e aplicações iguais não somam",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno. Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: quem age duas vezes sempre fica Acelerado o tempo todo"
+      "limiteDeUso": "nenhum. O site dizia \"age duas vezes em sequência dentro do mesmo turno\"; o Centelha não tem turno. Critério do manual (seção 3.15, [DIRETRIZ] de 24/10/2026): agir duas vezes vira o Acelerado do livro, e o tempo segue a fonte: quem age duas vezes sempre fica Acelerado o tempo todo. Sem custo"
     },
     {
       "nome": "braços longos",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Garras",
-      "efeito": "os braços passam do dobro do corpo e alcançam mais longe que o corpo a corpo de um bicho do porte dele"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A parte alcança até 2 m medidos da borda do corpo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -215,14 +227,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Estrangulamento",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Rapidez sobrenatural",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "atributos.forca",
       "motivo": "O site tinha 5. Com 16 kg, ficaria igual à jiboia e ao varano de 27 kg (Força 5) e muito acima do cão de 20 kg (2) e da Força de referência da massa (3,82, manual 3.9). Desce para 4 pelo teste de ordem: abaixo dos dois de 27 kg, acima do cão, porque os braços longos são feitos para apertar; 4; o site tinha 5"

@@ -91,13 +91,15 @@
       "tecnica": {
         "id": "recuperacao-acelerada",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Regeneração 1",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "origem sobrenatural; fecha as feridas, exceto o dano de fogo, ácido ou arma benta"
+      "categoria": "inato",
+      "efeito": "origem sobrenatural. O dano de fogo, ácido ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     }
   ],
   "comoLuta": [

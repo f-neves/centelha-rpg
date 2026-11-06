@@ -91,39 +91,72 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pseudópode",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "envolve a presa com a massa aderente"
     },
     {
       "nome": "Ácido devorador",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o toque corrói carne, tecido e metal; atinge também armas e armaduras em contato"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "a peça fica exposta ao ácido do corpo",
+      "duracao": "até conserto",
+      "alcance": "contato",
+      "area": "a peça atingida",
+      "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
+      "dano": "nenhum",
+      "resistencia": "a resistência da peça contra a exposição",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose"
     },
     {
       "nome": "Divisão corrosiva",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "cortes e perfurações podem separar o corpo em poças vivas menores; a divisão e a vitalidade das partes ainda não têm regra"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "A divisão reparte os PV atuais entre as partes. O conjunto usa uma única sequência de ações até o fim da cena",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Aderência total",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "gruda em paredes e tetos e se torna difícil de arrancar enquanto adere; esse modo é mais lento"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando usa a adaptação descrita",
+      "duracao": "a jogada",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "gruda em paredes e tetos e se torna difícil de arrancar enquanto adere; esse modo é mais lento. A adaptação concede +1d6 na jogada de Escalada",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Sem custo. O uso ativo repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Corpo amorfo",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "não tem órgãos vitais ou pontos fracos que permitam ferimentos críticos ou vantagem por flanqueamento"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora o dano extra por ponto vital e o −2 de Flanqueado. Surpresa e Tamanho continuam valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [],
   "sentidos": [
     {
       "nome": "sentido cego",
-      "descricao": "detecta vibrações e contato sem olhos",
+      "descricao": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção",
       "formas": "todas"
     }
   ],
@@ -201,6 +234,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ácido devorador",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Aderência total",
+      "motivo": "R6. A adaptação corporal vale +1d6 na jogada."
     },
     {
       "campo": "ataques.Pseudópode",

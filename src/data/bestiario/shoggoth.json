@@ -96,44 +96,83 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pseudópode",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "envolve a presa com a massa aderente"
     },
     {
       "nome": "Cacofonia enlouquecedora",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "os sons confundem e ferem a mente de quem os ouve"
+      "classe": "regra da ficha",
+      "base": {
+        "arte": "fascinacao",
+        "nivel": 3
+      },
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5",
+      "duracao": "6 Ticks",
+      "alcance": "até onde ouve",
+      "area": "um alvo",
+      "efeito": "Quem ouve e falha fica Confuso, pela condição do livro",
+      "dano": "nenhum",
+      "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
+      "limiteDeUso": "1 uso grátis por cena"
     },
     {
       "nome": "Tragar múltiplo",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "envolve várias presas e as dissolve no interior ácido"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 15 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "3d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Visão total",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "os olhos distribuídos pelo corpo dificultam surpreendê-lo"
     },
     {
       "nome": "Regeneração 10",
       "formas": "todas",
       "classe": "sem regra ainda",
-      "efeito": "recompõe rapidamente os ferimentos"
+      "categoria": "inato",
+      "efeito": "Recompõe os ferimentos sem fraqueza específica. A taxa de Regeneração 10 segue sem regra ainda"
     },
     {
-      "nome": "Resistência à magia 30",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "seu corpo resiste a efeitos mágicos"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 3. Soma +6 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Imunidades sensoriais",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "cegueira, surdez e encantamentos não o afetam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora cegueira, surdez e domínio por encantamento. Dano físico de Arte e conversa comum seguem as regras normais",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -252,6 +291,14 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "Comportamento"
+    },
+    {
+      "campo": "habilidadesEspeciais.Cacofonia enlouquecedora",
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Somente os usos grátis estão disponíveis. Um uso de abertura até a definição do efeito."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 30 da fonte passa a grau 3 (+6)."
     },
     {
       "campo": "ataques.Pseudópode",

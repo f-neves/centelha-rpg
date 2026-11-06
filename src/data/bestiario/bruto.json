@@ -88,13 +88,15 @@
       "nome": "Vulnerável ao cerco",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "Guarda sob pressão"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [

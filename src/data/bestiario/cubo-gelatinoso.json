@@ -101,26 +101,36 @@
     {
       "nome": "Paralisia ao toque",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o toque entorpece e paralisa a vítima"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando o ataque descrito atinge a vítima",
+      "duracao": "6 Ticks",
+      "alcance": "toque, pelo ataque descrito",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o toque entorpece e paralisa a vítima. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Engolfar",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 6; o cubo avança sobre quem está no caminho",
-      "duracao": "até o alvo sair",
-      "alcance": "o espaço que ele ocupa ao avançar",
-      "area": "todos no caminho",
-      "efeito": "quem não sai fica dentro do cubo, Agarrado, e sofre o ácido",
-      "dano": "o do Ácido corrosivo",
-      "resistencia": "esquiva, contra Força 3 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2), com o Agarrão +2, para sair da frente; dentro, a manutenção do agarrão do livro para escapar",
-      "limiteDeUso": "uma vez a cada 6 Ticks"
+      "categoria": "inato",
+      "ativacao": "ação de Velocidade 7 contra vítima menor já Agarrada que cabe na boca",
+      "duracao": "até sair",
+      "alcance": "toque",
+      "area": "a vítima engolida",
+      "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
+      "dano": "2d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
+      "resistencia": "escape do agarrão pela garganta",
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Ácido corrosivo",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "substancia",
       "ativacao": "estar dentro do cubo",
       "duracao": "enquanto estiver dentro",
       "alcance": "dentro",
@@ -128,13 +138,21 @@
       "efeito": "dissolve carne e o que for orgânico",
       "dano": "1d6 + Centelha, ácido, a cada 6 Ticks",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "corrói equipamento",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o ácido corrói o equipamento exposto de quem fica dentro"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o equipamento exposto entra no ácido",
+      "duracao": "até conserto",
+      "alcance": "contato",
+      "area": "a peça atingida",
+      "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
+      "dano": "nenhum",
+      "resistencia": "a resistência da peça contra a exposição",
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -208,14 +226,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Engolfar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ácido corrosivo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "corpo.massa",
       "motivo": "O cubo de 3 m tem 27 m³; a gelatina, quase toda água, tem a densidade da carne (1.010 kg/m³, manual 4.2): 27,3 t. O site diz \"14 t (massa gelatinosa densa)\", mas 14 t em 27 m³ dariam metade da densidade da água, o contrário de densa. A ficha guarda o lado de 3 m, que é o que enche o corredor (D-187). Com 14 t, o lado seria 2,4 m; 27,3 t pelo cubo de 3 m; o site dava 14 t. Com 14 t, lado de 2,4 m, 5,76 m² (Grande pelo corte, ou Enorme pelos 5%) e 80 ou 85 PV"
     },
@@ -226,6 +236,18 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Paralisia ao toque",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Engolfar",
+      "motivo": "R4. Retirada a espera entre ativações."
+    },
+    {
+      "campo": "habilidadesEspeciais.Ácido corrosivo",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     }
   ]
 }

@@ -9177,13 +9177,17 @@
    "massa": 1.25,
    "area": 0.29,
    "posturaDoTamanho": "de baixo, asas abertas",
+   "segundoTamanho": {
+    "area": 0.12,
+    "posturaDoTamanho": "pousado, asas fechadas"
+   },
    "linhaPV": "abaixo",
    "linhaPVMotivo": "ave de osso oco, corpo leve",
    "medida": "0.34 m de altura, 0.62 m de comprimento",
    "peso": "1.25 kg"
   },
   "formas": [],
-  "segundoTamanho": null
+  "segundoTamanho": "Miúdo"
  },
  {
   "id": "couatl",
@@ -25735,7 +25739,8 @@
    "integridade": 0,
    "resistencia": 4,
    "empatia": 0,
-   "sobrevivencia": 2
+   "sobrevivencia": 2,
+   "atirador": 2
   },
   "habilidadesSec": {
    "equilibrio": 0,
@@ -25743,8 +25748,7 @@
    "natacao": 0,
    "voo": 0,
    "corrida": 0,
-   "musculatura": 1,
-   "disparo": 2
+   "musculatura": 1
   },
   "artes": [],
   "tecnicas": [],
@@ -29225,12 +29229,12 @@
    "bloqueio": 0,
    "esquiva": 1,
    "atletismo": 1,
-   "integridade": 3
+   "integridade": 3,
+   "atirador": 2
   },
   "habilidadesSec": {
    "labia": 2,
    "voo": 2,
-   "disparo": 2,
    "musculatura": 0
   },
   "artes": [],
@@ -29273,7 +29277,7 @@
     },
     {
      "nome": "Sopro elemental",
-     "pool": "2d6+2 +4",
+     "pool": "2d6 +4",
      "dano": "2d6 +2 (fogo)",
      "perfArma": null,
      "speed": 7,

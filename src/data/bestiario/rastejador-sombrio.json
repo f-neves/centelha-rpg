@@ -84,50 +84,53 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Ataque furtivo",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "ataque": "Adaga",
-      "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
-      "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "a adaga entra onde o alvo não guarda",
-      "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
-    },
-    {
       "nome": "Explosão mortal",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "ele morre",
       "duracao": "Cego por 6 Ticks",
       "alcance": "3 m",
       "area": "esfera de 3 m em volta do corpo",
-      "efeito": "o corpo explode num clarão branco; quem está na área e falha fica Cego; outros rastejadores na área ficam Cegos sem teste",
+      "efeito": "o corpo explode num clarão branco; quem está na área e falha fica Cego; outros rastejadores na área ficam Cegos sem teste. Cego aplica −1d6 nas ações de visão. Se souber do ataque, Esquiva −4 e Bloqueio −8. Se não souber, Surpreso, com Defesas 0",
       "dano": "nenhum",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem desvia o olhar a tempo (o Mestre decide) não testa",
-      "limiteDeUso": "uma vez, ao morrer"
+      "limiteDeUso": "uma vez, ao morrer. Sem custo"
     },
     {
       "nome": "Cegueira pela luz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
-      "duracao": "enquanto estiver na luz forte",
+      "duracao": "enquanto durar a exposição",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Ofuscado",
+      "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Uso de veneno",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "aplica veneno na lâmina sem nunca se envenenar ao aplicar. O veneno é o que ele tiver (o Mestre escolhe do catálogo)"
+    },
+    {
+      "nome": "Golpe na brecha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -196,18 +199,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Ataque furtivo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Explosão mortal",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cegueira pela luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "comportamento.social",
       "motivo": "site"

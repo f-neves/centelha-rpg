@@ -90,18 +90,18 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Golpe surpresa",
+      "nome": "Golpe na brecha",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ataque": "Machado",
-      "ativacao": "o golpe que acerta um alvo Surpreso ou que não o viu chegar",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
       "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "o golpe entra onde o alvo não guarda",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe, só contra quem está desprevenido"
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -179,10 +179,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Golpe surpresa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidades.armas",
       "motivo": "O site gravava `briga` 2 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5); 3; o site gravava `briga` 2 para a arma"

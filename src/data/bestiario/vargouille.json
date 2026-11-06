@@ -86,21 +86,46 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Peçonha do vargouille",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Mordida",
+      "categoria": "substancia",
+      "ativacao": "Mordida ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Peçonha de víbora (referência provisória do catálogo para Vargouille). Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "grito paralisante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "em vez de morder, solta um grito agudo; quem o ouve e o vê claramente fica paralisado, a menos que resista; quem resiste fica imune a esse grito por um dia"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "6 Ticks",
+      "alcance": "até onde ouve",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "em vez de morder, solta um grito agudo; quem o ouve e o vê claramente fica paralisado, a menos que resista; quem resiste fica imune a esse grito por um dia. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 15",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "beijo transformador",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "beija com as presas um alvo indefeso (paralisado, por exemplo); se nada interromper, em algumas horas a cabeça da vítima se solta do corpo e vira um novo vargouille"
     },
     {
       "nome": "ferida que não fecha",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "o dano da mordida só se cura com Arte de cura; sem ela, a ferida não fecha"
     }
   ],
@@ -181,6 +206,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.grito paralisante",
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "ataques",

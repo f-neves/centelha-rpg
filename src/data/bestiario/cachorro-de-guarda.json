@@ -117,12 +117,14 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     }
   ],

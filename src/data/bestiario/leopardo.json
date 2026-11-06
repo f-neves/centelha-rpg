@@ -141,6 +141,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "na garganta ou na nuca"
     },
@@ -148,6 +149,7 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
@@ -155,6 +157,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Mordida",
+      "categoria": "inato",
       "regra": "investida"
     }
   ],

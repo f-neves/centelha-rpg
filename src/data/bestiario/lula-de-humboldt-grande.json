@@ -131,20 +131,37 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "arrastar para o fundo",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Braços e tentáculos",
-      "efeito": "leva o que agarrou para o fundo, até o Peso erguido"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "nuvem de tinta",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "solta uma nuvem de tinta que esconde a fuga"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "6 Ticks, ou até o fim do Tick seguinte em corrente forte",
+      "alcance": "na água ao redor da criatura",
+      "area": "nuvem de raio 3 m",
+      "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
+      "dano": "nenhum",
+      "resistencia": "sair da nuvem",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -216,6 +233,10 @@
     {
       "campo": "corpo.comprimento",
       "motivo": "pela proporção do máximo da FAO (4 m de total para 1,5 m de manto, cerca de 2,7 vezes o manto): 1,2 × 2,7 = 3,2"
+    },
+    {
+      "campo": "habilidadesEspeciais.nuvem de tinta",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
     }
   ]
 }

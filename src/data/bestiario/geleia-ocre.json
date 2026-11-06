@@ -101,10 +101,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Médio: a bola. Grande: em repouso, de cima. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Pseudópode",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -112,6 +127,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Pseudópode",
+      "categoria": "inato",
       "ativacao": "a cada 6 Ticks em que mantém o agarrão",
       "duracao": "enquanto agarra",
       "alcance": "toque",
@@ -119,12 +135,13 @@
       "efeito": "aperta e dissolve ao mesmo tempo, sem precisar de nova jogada de ataque",
       "dano": "1d6 + Força + Centelha, ácido",
       "resistencia": "nenhum; quem se solta do agarrão para de sofrer",
-      "limiteDeUso": "um alvo por vez"
+      "limiteDeUso": "um alvo por vez. Sem custo"
     },
     {
       "nome": "Ácido que só dissolve carne",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "substancia",
       "ativacao": "o ácido dela em contato com o que for",
       "duracao": "enquanto toca",
       "alcance": "toque",
@@ -132,12 +149,13 @@
       "efeito": "dissolve pele, carne, couro e madeira viva; não corrói osso, pedra, metal nem pano seco, e a armadura de metal fica inteira",
       "dano": "o do Pseudópode e o do Abraço constritor",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Divisão",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "um golpe de corte, de perfuração ou de raio que a acertaria",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -145,7 +163,7 @@
       "efeito": "não sofre dano desse golpe e se racha em duas geleias iguais, cada uma com metade dos PV que tinha (arredondado para baixo), que agem cada uma na sua vez",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "não se divide com 10 PV ou menos; com isso, o golpe só não a fere"
+      "limiteDeUso": "não se divide com 10 PV ou menos; com isso, o golpe só não a fere. Sem custo"
     }
   ],
   "comoLuta": [
@@ -158,7 +176,7 @@
   "sentidos": [
     {
       "nome": "sentido cego",
-      "descricao": "percebe pelo tato e pela vibração tudo o que se move a até 18 m, sem olhos; não é enganada por escuro nem por invisibilidade",
+      "descricao": "Localiza corpos em contato com seu meio até 18 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção",
       "formas": "todas"
     }
   ],
@@ -224,24 +242,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Abraço constritor",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ácido que só dissolve carne",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Divisão",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.briga",
       "motivo": "O pseudópode acerta o que encosta nela. O site tinha 5, que é a mão de quem treinou; a geleia só reage; 4; o site tinha 5"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": "site"
+    },
+    {
+      "campo": "habilidadesEspeciais.Ácido que só dissolve carne",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
     },
     {
       "campo": "elementos.imunidades",

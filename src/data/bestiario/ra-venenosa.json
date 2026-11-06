@@ -72,7 +72,22 @@
   },
   "artes": {},
   "ataques": [],
-  "habilidadesEspeciais": [],
+  "habilidadesEspeciais": [
+    {
+      "nome": "Batracotoxina",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "quem ingere a secreção ou toca a pele da rã",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Batracotoxina. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    }
+  ],
   "comoLuta": [],
   "sentidos": [
     {

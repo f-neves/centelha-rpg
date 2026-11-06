@@ -132,23 +132,69 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Imenso: braços abertos. Enorme: de cima, braços juntos. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
+      "nome": "Ferrão de gigante",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "ataque": "Bico",
+      "categoria": "substancia",
+      "ativacao": "Bico ao causar ao menos 1 PV depois da Absorção",
+      "duracao": "até o fim do efeito do veneno",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Ferrão de gigante. Aplicar os parâmetros de Veneno e doença",
+      "dano": "apenas o pool do veneno",
+      "resistencia": "Vigor + Resistência pelo relógio do veneno",
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+    },
+    {
       "nome": "constrição = agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "arrastar para a toca",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Braços",
-      "efeito": "leva o que agarrou para a toca ou para o fundo, até o Peso erguido"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "nuvem de tinta",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "solta uma nuvem de tinta que esconde a fuga"
+      "classe": "regra da ficha",
+      "categoria": "substancia",
+      "ativacao": "uma ação, Velocidade 7",
+      "duracao": "6 Ticks, ou até o fim do Tick seguinte em corrente forte",
+      "alcance": "na água ao redor da criatura",
+      "area": "nuvem de raio 3 m",
+      "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
+      "dano": "nenhum",
+      "resistencia": "sair da nuvem",
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -243,6 +289,10 @@
     {
       "campo": "corpo.massa",
       "motivo": "Era 850,5 kg (antes, 292 e 259). Gigante pelo cubo, com o tamanho escolhido pelo item 7: base típica de 31,5 kg × 3,5³ (k = 14 ÷ 4,0 = 3,5, envergadura com envergadura) = 31,5 × 42,875 = 1.350,56 kg . A base: o polvo-gigante-do-pacífico adulto, de 18 a 45 kg, com envergadura de 3,7 a 4,3 m relaxado, as duas pela mesma fonte (Seattle Aquarium); meio da faixa (não média) da massa, (18 + 45) ÷ 2 = 31,5 kg, e da envergadura, (3,7 + 4,3) ÷ 2 = 4,0 m ; a de 15/10 usava o meio geométrico, 28 kg. A envergadura do gigante é 14 m  (dois braços de cerca de 6,1 m e o disco de 1,75 m; era 12 m, sem o disco), e é ela a medida de comprimento da conta. Outras fontes dão menos: média de 14,1 kg na pesca comercial do Mar de Bering e maturidade entre 10 e 13 kg (NOAA 2020) ; o maior pesado vivo, 71 kg (Guinness). Sexos: 50% maduros com 12,8 kg nas fêmeas e 10,8 kg nos machos (NOAA 2020), menos de 20% de diferença; média por sexo . O corte de 35 kg no lugar do de 25 kg (decisão 22) não muda a faixa"
+    },
+    {
+      "campo": "habilidadesEspeciais.nuvem de tinta",
+      "motivo": "R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
     }
   ]
 }

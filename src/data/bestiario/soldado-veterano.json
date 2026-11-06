@@ -150,6 +150,7 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar"
     },
     {
@@ -157,6 +158,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punhos",
+      "categoria": "inato",
       "regra": "empurrar"
     },
     {
@@ -164,19 +166,29 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Punhos",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "explora aberturas",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "quando o golpe de quem o ataca passa raspando, ele aproveita a abertura e devolve um contra-ataque que fere mais"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "quando um golpe dirigido ao veterano passa raspando",
+      "duracao": "instantânea",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Faz um contra-ataque físico com a arma empunhada contra quem abriu a guarda",
+      "dano": "o da arma",
+      "resistencia": "Defesa Física do atacante",
+      "limiteDeUso": "1 uso grátis por cena. Sem uso extra"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [

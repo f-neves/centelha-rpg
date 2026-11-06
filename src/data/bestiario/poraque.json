@@ -125,6 +125,7 @@
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Descarga elétrica",
+      "categoria": "substancia",
       "ativacao": "a descarga na água",
       "duracao": "instantânea",
       "alcance": "2 m",
@@ -132,13 +133,14 @@
       "efeito": "a corrente se espalha pela água; sair da área evita",
       "dano": "1d6 de raio; sem Absorção natural contra o elemento",
       "resistencia": "nenhum teste adicional",
-      "limiteDeUso": "o da Descarga elétrica"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 1 hora. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "descarga elétrica",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Descarga elétrica",
+      "categoria": "substancia",
       "ativacao": "a descarga que atinge",
       "duracao": "instantânea",
       "alcance": "o da Descarga elétrica",
@@ -146,13 +148,21 @@
       "efeito": "quem falha cai no chão, Caído",
       "dano": "o da Descarga elétrica",
       "resistencia": "corpo, Vigor + Resistência contra 12; quem passa não cai",
-      "limiteDeUso": "um por descarga"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 1 hora. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "atordoamento da descarga",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o choque deixa a vítima zonza, incapaz de agir por um instante"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "quando o golpe indicado atinge",
+      "duracao": "até a próxima ação começar, com o adiamento de Atordoado",
+      "alcance": "o do golpe",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "O choque atordoa com Margem 1 ou mais. Aplicar Atordoado do livro",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra 10 + 5 × Margem, até 40",
+      "limiteDeUso": "Quando o golpe indicado atinge com a Margem exigida, sem custo"
     }
   ],
   "comoLuta": [
@@ -226,14 +236,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.choque na água",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.descarga elétrica",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.natacao",
       "motivo": "Etapa 2 (20/10/2026): Decisão de 20/10/2026: a Habilidade secundária de Natação vale nas jogadas (manobrar na água), e a velocidade continua congelada; o nado em m por Tick não muda. A decisão manda dar a Habilidade ao poraquê pela pesquisa, e a pesquisa não achou velocidade nem manobra medida: nada ondulando a nadadeira de baixo, para a frente e para trás, no fundo turvo (o grupo dos peixes-faca, Wikipédia), e sobe à tona a cada dois minutos para respirar. Fica 1 . Antes: Sem velocidade achada; o nado sai da anatomia."
     },
@@ -252,6 +254,14 @@
     {
       "campo": "corpo.massa",
       "motivo": "Etapa 2 (20/10/2026): Decisão 5 de 19/10/2026: a ficha principal usa uma versão um pouco acima da média da espécie, dentro da faixa real. 4,32 kg mais 10% = 4,75 kg , dentro da faixa real (até 20 kg, FishBase); a média medida continua . Antes: Era 20 kg, o máximo publicado de E. electricus (FishBase, com 250 cm de comprimento padrão; Wikipédia: \"até 2 m e 20 kg\"). Média do adulto, mínimo do adulto e comprimento típico  (buscados na pesquisa de 12/10, no FishBase e na web em 15 e 16/10/2026: só os máximos; o FishBase não dá \"common length\" para E. electricus, nem para os parentes Gymnotus carapo e Rhamphichthys rostratus, abertos em 16/10). A conta, passo a passo: (1) comprimento típico de 1,5 m, escolhido: fica entre o único adulto do gênero com comprimento publicado (o E. voltai de 121,9 cm do recorde de 860 V, FishBase, de Santana e colegas 2019) e os máximos das duas espécies descritas em 2019 (E. varii 149 cm e E. voltai 171 cm de comprimento total, FishBase), que a cobertura da descrição diz terem o mesmo porte de E. electricus; é 60% do máximo de 250 cm. (2) Relação comprimento e massa: a lei do cubo sobre o par dos máximos do FishBase (250 cm e 20 kg, a mesma referência, Ref. 27188): 20 × (150 ÷ 250)³ = 20 × 0,216 = 4,32 kg. Esse par trata dois máximos como um animal só, o que a nota `dimensoes` já diz que eles não são. (3) Testada e posta de lado: a relação bayesiana do FishBase para o corpo da espécie (a = 0,00389, b = 3,12, em comprimento total) dá cerca de 118 kg a 250 cm, seis vezes os 20 kg publicados na mesma página, e 24 kg a 150 cm; ela é de forma de corpo genérica, e não da espécie. Sexos: os machos são bem maiores que as fêmeas (FishBase), sem massa por sexo . Faixa 2 (até 35 kg) pela D-141, a 8% do corte de 4 kg: abaixo de 1,46 m de comprimento escolhido, o típico cairia na Faixa 1"
+    },
+    {
+      "campo": "habilidadesEspeciais.choque na água",
+      "motivo": "R1/R4, D-197. Duas descargas permitem reagir à aproximação. Sugestão de 2 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 1 hora)."
+    },
+    {
+      "campo": "ataques.Descarga elétrica",
+      "motivo": "R1/R4, D-197. Duas descargas permitem reagir à aproximação. Sugestão de 2 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 1 hora)."
     }
   ]
 }

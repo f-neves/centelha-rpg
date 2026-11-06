@@ -96,6 +96,7 @@
       "nome": "Comando de tropa",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 3, dando a ordem em voz alta",
       "duracao": "até a próxima ação dele",
       "alcance": "18 m, onde o ouvem",
@@ -109,7 +110,8 @@
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -176,10 +178,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Comando de tropa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidadesSec.estrategia",
       "motivo": "O site tinha `tatica` 3, que não existe no livro; a secundária mais perto é Estratégia (manual 3.5, D-190); o `tatica` do site não existe no livro (manual 3.5, D-190)"

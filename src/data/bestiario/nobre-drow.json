@@ -94,14 +94,15 @@
         "arte": "morte",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 5, a jogada de Briga para tocar",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, a jogada de Briga para tocar. O efeito sai no Tick do Golpe",
       "duracao": "até a ferida ser tratada (Estabilizar)",
       "alcance": "toque",
       "area": "um alvo",
       "efeito": "abre uma ferida que sangra: o alvo fica Sangrando (Sangramento 2)",
       "dano": "o do Sangramento, pela regra do livro",
       "resistencia": "corpo, Vigor + Resistência contra a jogada do toque; quem passa não sangra",
-      "limiteDeUso": "três vezes por cena"
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Canalizar energia negativa",
@@ -111,14 +112,15 @@
         "arte": "morte",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 7",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "instantânea",
       "alcance": "9 m",
       "area": "esfera de 9 m em volta dela",
       "efeito": "uma onda de energia corruptora fere os vivos em volta; ela escolhe quem fica de fora",
       "dano": "1d6 + Centelha, fenômeno",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
-      "limiteDeUso": "duas vezes por cena"
+      "limiteDeUso": "Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Toque do caos",
@@ -128,14 +130,15 @@
         "arte": "fortuna",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 5, tocando o alvo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, tocando o alvo. O efeito sai no Tick do Golpe",
       "duracao": "até o próximo resultado importante do alvo, ou o fim da cena",
       "alcance": "toque",
       "area": "um alvo",
       "efeito": "o próximo resultado importante do alvo é rolado de novo, e vale o segundo, para melhor ou para pior",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dela",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Bênçãos sombrias",
@@ -145,27 +148,29 @@
         "arte": "sombra",
         "nivel": 1
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
       "duracao": "as trevas e a ilusão, até o fim da cena; o favor, até a próxima jogada do aliado",
       "alcance": "18 m",
       "area": "à escolha: trevas numa esfera de 6 m; uma ilusão de som ou de imagem pequena; ou um aliado",
       "efeito": "as trevas apagam a luz comum; a ilusão engana quem não desconfia; o favor soma +1d6 na próxima jogada importante do aliado",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dela, só para quem desconfia da ilusão",
-      "limiteDeUso": "três vezes por cena, somadas"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
     },
     {
       "nome": "Sensibilidade à luz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
-      "duracao": "enquanto estiver na luz forte",
+      "duracao": "enquanto durar a exposição",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Ofuscada",
+      "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -234,26 +239,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Toque sangrento",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Canalizar energia negativa",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Toque do caos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Bênçãos sombrias",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Sensibilidade à luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "aparencia",
       "motivo": "Degrau 4, \"Feio\", fica como no site. A Aparência Universal do Elfo parente não passa a ela (D-207); 4, a do site"
     },
@@ -264,6 +249,22 @@
     {
       "campo": "comportamento.atividade",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque sangrento",
+      "motivo": "R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, a jogada de Briga para tocar -> uma ação, Velocidade 5, a jogada de Briga para tocar. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Canalizar energia negativa",
+      "motivo": "R1 e D-197. Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Toque do caos",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, tocando o alvo -> uma ação, Velocidade 5, tocando o alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Bênçãos sombrias",
+      "motivo": "R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "virtudes",

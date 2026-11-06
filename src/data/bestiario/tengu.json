@@ -105,32 +105,33 @@
   ],
   "habilidadesEspeciais": [
     {
-      "nome": "Golpe certeiro",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "ativacao": "o golpe que acerta um alvo Surpreso, ou distraído, ou flanqueado",
-      "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "o golpe rápido entra antes que a vítima perceba",
-      "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
-    },
-    {
       "nome": "Bico afiado",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "o Bico da tabela, no lugar do golpe de espada (um ataque por ação)"
     },
     {
-      "nome": "Dom para línguas",
+      "nome": "Golpe na brecha",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "aprende idiomas com facilidade extraordinária, o dobro do que outros povos aprendem no mesmo tempo"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
+    {
+      "nome": "Dom para línguas",
+      "formas": "todas",
+      "texto": "Aprende idiomas com rapidez. O Mestre julga o tempo conforme o contato com os falantes."
+    },
     {
       "nome": "poleiro na cidade",
       "formas": "todas",
@@ -196,10 +197,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Golpe certeiro",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidades.armas",
       "motivo": "O site gravava `briga` 2 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5), e o \"Talento com espadas\" (site) a sobe um degrau; 3, um acima da Briga 2 do site, pelo \"Talento com espadas\""

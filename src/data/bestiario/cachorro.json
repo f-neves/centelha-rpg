@@ -120,6 +120,7 @@
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "segura e sacode"
     },
@@ -127,6 +128,7 @@
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "derrubar",
       "texto": "na perna, em grupo"
     }

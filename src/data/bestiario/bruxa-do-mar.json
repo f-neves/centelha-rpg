@@ -105,38 +105,49 @@
         "arte": "fascinacao",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6, encarando o alvo",
+      "categoria": "magia",
+      "ativacao": "uma ação, Velocidade 5, encarando o alvo. O efeito sai no Tick do Golpe",
       "duracao": "a maldição, até o fim do dia",
       "alcance": "9 m, à vista dela",
       "area": "um alvo",
       "efeito": "o alvo fica amaldiçoado; se ela o fere de novo enquanto a maldição dura, ele cai em coma (Inconsciente por 1d6 dias)",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Ocultismo dela; a maldição pega também em quem passa",
-      "limiteDeUso": "três vezes por cena"
+      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. a maldição pega também em quem passa",
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Aparência horrenda",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; vale para quem a encara de perto pela primeira vez na cena",
       "duracao": "até o fim da cena",
       "alcance": "9 m",
       "area": "cada um que a vê de perto",
-      "efeito": "quem falha fica enfraquecido: a Força conta um nível abaixo, com o dano e o peso que vêm dela",
+      "efeito": "quem falha fica enfraquecido: a Força conta um nível abaixo, com o dano e o peso que vêm dela. A Força reduzida vale nas contas que a usam, exceto PV e Absorção",
       "dano": "nenhum",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10",
-      "limiteDeUso": "uma vez por cena para cada pessoa"
+      "limiteDeUso": "uma vez por cena para cada pessoa. Sem custo"
     },
     {
-      "nome": "Resistência à magia 15",
+      "nome": "Resistência à magia",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "sua natureza dificulta o efeito de magia hostil"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "sempre ativa",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a própria criatura",
+      "efeito": "Resistência à magia de grau 1. Soma +2 às Defesas e à jogada de resistir contra Artes e efeitos similares à magia, até o teto comum de +6",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo. Sem custo"
     },
     {
       "nome": "Anfíbia",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativa",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -144,20 +155,29 @@
       "efeito": "respira na água e no ar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Garras",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "ataque": "Garras",
       "regra": "empunhadura-dupla"
     },
     {
       "nome": "paralisia do olho maligno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o terror trava o corpo de quem encara o olhar"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "6 Ticks",
+      "alcance": "até onde vê",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "o terror trava o corpo de quem encara o olhar. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
+      "dano": "nenhum adicional",
+      "resistencia": "Influência + Intimidação contra a Defesa Mental do alvo, com o Resistir do livro",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -231,18 +251,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Olho maligno",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Aparência horrenda",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Anfíbia",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "aparencia",
       "motivo": "Degrau 1, \"Deformado\": \"Tão repulsiva é a aparência da bruxa do mar\" (site). A Aparência mede a beleza (D-205), e aqui o rosto é de fato horrendo; o efeito em quem a vê é a habilidade \"Aparência horrenda\". O site tinha 4; 1 pela D-205; o site tinha 4"
     },
@@ -253,6 +261,18 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Olho maligno",
+      "motivo": "R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, encarando o alvo -> uma ação, Velocidade 5, encarando o alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Resistência à magia",
+      "motivo": "R7. SR 15 da fonte passa a grau 1 (+2)."
+    },
+    {
+      "campo": "habilidadesEspeciais.paralisia do olho maligno",
+      "motivo": "R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "virtudes.compaixao",

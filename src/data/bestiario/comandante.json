@@ -94,7 +94,8 @@
       "tecnica": {
         "id": "voz-de-lider",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Coordenar",
@@ -103,7 +104,8 @@
       "tecnica": {
         "id": "coordenar",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Tom de Autoridade",
@@ -112,12 +114,14 @@
       "tecnica": {
         "id": "tom-de-autoridade",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Estandarte de Comando",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 3, erguendo o estandarte e dando a ordem",
       "duracao": "até a próxima ação dele",
       "alcance": "18 m, onde o veem e ouvem",
@@ -131,24 +135,26 @@
       "nome": "Quebra de moral",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 6, gritando contra o inimigo",
-      "duracao": "até o fim da cena, ou até o alvo se recompor",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "18 m",
       "area": "os inimigos que o ouvem, até seis",
-      "efeito": "quem falha fica Abalado",
+      "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele, com o Tom de Autoridade (−3 na Defesa Mental)",
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
       "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Ponto de colapso",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "ele cai a 0 PV ou foge",
-      "duracao": "até o fim da cena",
+      "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "a tropa que ele lidera e que o vê cair",
       "area": "os aliados dele em campo",
-      "efeito": "cada um faz um teste de Bravura (a Virtude sozinha) contra Dificuldade 7; quem falha fica Abalado e tende a recuar",
+      "efeito": "cada um faz um teste de Bravura (a Virtude sozinha) contra Dificuldade 7; quem falha fica Abalado e tende a recuar. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Bravura, o teste de Virtude",
       "limiteDeUso": "uma vez"
@@ -157,7 +163,8 @@
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -226,24 +233,16 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Estandarte de Comando",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Quebra de moral",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ponto de colapso",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidadesSec.estrategia",
       "motivo": "O site tinha `tatica` 4, que não existe no livro; a secundária mais perto é Estratégia (manual 3.5, D-190); o `tatica` do site não existe no livro (manual 3.5, D-190)"
     },
     {
       "campo": "comportamento.social",
       "motivo": "site (Sociedade)"
+    },
+    {
+      "campo": "habilidadesEspeciais.Quebra de moral",
+      "motivo": "R5 e D-197. Jogada sugerida de Influência + Intimidação para a imposição mental deste poder."
     }
   ]
 }

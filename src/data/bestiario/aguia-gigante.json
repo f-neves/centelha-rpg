@@ -140,10 +140,25 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Enorme: de baixo, asas abertas. Grande: de lado, asas fechadas, pousada. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
@@ -151,27 +166,38 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garras em mergulho",
+      "categoria": "inato",
       "regra": "investida",
       "texto": "só descendo"
     },
     {
-      "nome": "garra e bico",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "na mesma ação, além das garras, ataca também com o bico"
-    },
-    {
       "nome": "erguer e levar",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Garras",
-      "efeito": "sobe com a presa que agarrou, de corpo menor que o de um humano, até o Peso erguido, e a solta do alto; a queda é a de Cair"
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "enquanto a condição se aplica",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "nobreza selvagem",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o medo que vem de criatura menor que ela não a pega"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora medo imposto por criatura de Tamanho menor que o seu. Tamanho igual não basta. O Abalado de golpe social ou corporal continua valendo",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Sentidos Apurados",
@@ -180,7 +206,22 @@
       "tecnica": {
         "id": "sentidos-apurados",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
+    },
+    {
+      "nome": "Multiataque",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "uma ação de Rajada",
+      "duracao": "uma ação",
+      "alcance": "o de cada parte",
+      "area": "os alvos da Rajada",
+      "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+      "dano": "o de cada ataque que acertar",
+      "resistencia": "a Defesa de cada golpe",
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [

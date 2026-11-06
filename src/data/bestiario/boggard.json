@@ -103,6 +103,7 @@
       "nome": "Língua grudenta",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "uma ação, Velocidade 5, a jogada de Agarrar do livro com a língua (Força + Briga, mais a Centelha, contra a Defesa de agarrão do alvo)",
       "duracao": "até a língua ser arrancada ou cortada, ou ele soltar",
       "alcance": "3 m",
@@ -110,25 +111,27 @@
       "efeito": "o alvo fica Agarrado pela língua e não se afasta mais que 3 m dele; para soltar, escapa pela regra do Agarrar ou corta a língua (um golpe de arma de corte que fira 3 ou mais)",
       "dano": "nenhum",
       "resistencia": "corpo, pela regra do Agarrar, com o Agarrão +2 dele",
-      "limiteDeUso": "um alvo por vez"
+      "limiteDeUso": "um alvo por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Grito aterrorizante",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "sobrenatural",
       "ativacao": "uma ação, Velocidade 6, um coaxar alto e horrível",
       "duracao": "Amedrontado até o fim da próxima ação de cada alvo",
       "alcance": "9 m",
       "area": "esfera de 9 m em volta dele",
       "efeito": "quem não é boggard e falha fica Amedrontado (não avança na direção dele, −2 em tudo enquanto ele estiver à vista)",
       "dano": "nenhum",
-      "resistencia": "mente, contra Influência + Intimidação dele; quem passa fica imune ao grito até o fim da cena",
-      "limiteDeUso": "uma vez por cena"
+      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao grito até o fim da cena",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Andar do pântano",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -136,7 +139,7 @@
       "efeito": "a lama, a água rasa e a vegetação do pântano não são terreno difícil para ele",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -210,18 +213,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Língua grudenta",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Grito aterrorizante",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Andar do pântano",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.armas",
       "motivo": "O site gravava `briga` 3 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5)"
     },
@@ -240,6 +231,10 @@
     {
       "campo": "comportamento.dianteDeGente",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Grito aterrorizante",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

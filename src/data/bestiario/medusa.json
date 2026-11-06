@@ -107,41 +107,59 @@
     {
       "nome": "Olhar petrificante",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o olhar transforma em pedra o corpo da vítima e o que veste, sem matar"
+      "classe": "regra da ficha",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6",
+      "duracao": "até acumular 3 sucessos ou chegar a Vigor 0, com novo teste a cada 6 Ticks",
+      "alcance": "até onde vê",
+      "area": "a vítima descrita pelo poder",
+      "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
+      "dano": "nenhum adicional",
+      "resistencia": "Vigor + Resistência contra Dificuldade 20 pela Petrificação",
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cabelos-serpente",
       "formas": "todas",
       "classe": "regra da ficha",
       "ataque": "Serpentes",
-      "ativacao": "na mesma ação de um golpe de espada, as serpentes mordem também",
+      "categoria": "substancia",
+      "ativacao": "na mesma ação de um golpe de espada, as serpentes mordem também; o golpe inocula ao causar ao menos 1 PV depois da Absorção",
       "duracao": "instantânea; o Abalado, até o fim da cena",
       "alcance": "o do corpo a corpo",
       "area": "o alvo do golpe",
-      "efeito": "um golpe de espada e uma mordida de serpente na mesma ação, os dois a −1d6 (a conta da empunhadura dupla do livro); a mordida que fere envenena, e quem é envenenado fica Abalado",
+      "efeito": "um golpe de espada e uma mordida de serpente na mesma ação, os dois a −1d6 (a conta da empunhadura dupla do livro); a mordida que fere envenena, e quem é envenenado fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. Quando combina arma empunhada e parte do corpo, usa o custo e as penalidades da empunhadura dupla",
       "dano": "o de cada golpe",
       "resistencia": "corpo, pela regra do veneno",
-      "limiteDeUso": "três vezes por cena; recupera em 1 hora"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Véu do olhar",
       "formas": "todas",
       "classe": "regra da ficha",
-      "ativacao": "uma ação, Velocidade 3, cobrindo ou descobrindo o rosto",
+      "categoria": "sobrenatural",
+      "ativacao": "uma ação, Velocidade 6, cobrindo ou descobrindo o rosto",
       "duracao": "até ela mudar de novo",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
       "efeito": "coberta, o olhar não petrifica ninguém",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Imune a petrificação e veneno",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "o próprio olhar, o reflexo dele e o veneno das serpentes não a afetam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora a petrificação pelo próprio olhar, inclusive refletido, e o veneno das próprias serpentes. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -223,14 +241,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Cabelos-serpente",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Véu do olhar",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.armas",
       "motivo": "O site gravava `briga` 5 para a \"Arma\"; no livro a arma branca é Armas (manual 3.5). O 5 se divide entre a lâmina e as serpentes; 3 e 3, o 5 do site dividido entre a lâmina e as serpentes"
     },
@@ -241,6 +251,18 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "habilidadesEspeciais.Olhar petrificante",
+      "motivo": "R12. Dificuldade sugerida 20 na régua de 5 para o olhar deliberado da medusa. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Cabelos-serpente",
+      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campo": "habilidadesEspeciais.Véu do olhar",
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 3, cobrindo ou descobrindo o rosto -> uma ação, Velocidade 6, cobrindo ou descobrindo o rosto Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "equipamento",

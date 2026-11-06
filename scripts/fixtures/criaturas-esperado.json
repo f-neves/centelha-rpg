@@ -1,7 +1,7 @@
 {
  "fonte": {
-  "pasta": "tmp/arquiteto/bestiario/fichas-v3",
-  "data": "2026-10-30",
+  "pasta": "tmp/executora/b/fichas-misto",
+  "data": "2026-11-06",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
  },
@@ -188,7 +188,7 @@
    }
   },
   "aguia-gigante": {
-   "sha256": "c1465cfaed8597c9d700c7bb0cbc17b577412b13faddab50bbd59b4694eb920d",
+   "sha256": "2909a6c747d3e41fb236563c3f27a221a9b3a81c27eebfbd5aab1f44748b7aad",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -336,7 +336,7 @@
    }
   },
   "aguia-real": {
-   "sha256": "bdc89c0e1f5edcc26c921a0e584a60156893d7dfd3e861eb5cfde2523422ae01",
+   "sha256": "f5abbc689230c3a3a37390a17fe8e66643a41a66828b59390a0966b676e388d5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -1313,7 +1313,7 @@
    }
   },
   "arqueiro": {
-   "sha256": "befe9b3aed02af880306d8798937ae84779522d6c1089fd69eca034584c43470",
+   "sha256": "bd4b8948094caeb80a46e635d99f700e66e9a13c35ad0e52f210eff6fc1bfa5d",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -1420,8 +1420,7 @@
      {
       "nome": "Arco longo",
       "velocidade": 7,
-      "danoMedio": 5.5,
-      "jogada": 7
+      "danoMedio": 5.5
      },
      {
       "nome": "Punhos",
@@ -1433,7 +1432,7 @@
    }
   },
   "assassino-das-sombras": {
-   "sha256": "5ad5ec4bc6f191724266b4c44c609f8ed0be98a4b7b31c997af0321d4053b3f7",
+   "sha256": "e683956fe02865aab3650effee82badcc19a3c0cd63a1bfd86aee8d50603665d",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -2000,7 +1999,7 @@
    }
   },
   "bandido-de-estrada": {
-   "sha256": "8232aab03ad340896b77275dd5cf1a1adadec0ec60c59b7baacb5fa05abde278",
+   "sha256": "976f5da4f5fe52f53c9e74d6c2f9fe6669d5e51902e9fb89146e34ba4b9ed736",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -3505,7 +3504,7 @@
    }
   },
   "boggard": {
-   "sha256": "adcf44f54fe10dded717479a2b5f4356d4c8fab55f72ff3570546dea3a7b7da3",
+   "sha256": "3cc0e050eb12f4761b125629677103f9b5fa2bccbd40d3d4dde7ec7d6bba6be1",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -3927,7 +3926,7 @@
    }
   },
   "bruto": {
-   "sha256": "a1ca1a7fc51e77c9a4e62829b6c2d9623b6d27ec6af1d55d2e0a2a7b957a8d95",
+   "sha256": "96e9d070112bda2c8c318ae89ba5e2904dbf9c800f7890d6e42e614ef3f3f075",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -4022,7 +4021,7 @@
    }
   },
   "bruxa-do-mar": {
-   "sha256": "3ba071909e6cba144a1d4eca276d48892f949e6a3929d868d1bd9f0d336b7a77",
+   "sha256": "bfcd59d562e4003a088aee8ab940c0968f77a1f6ec0927f57bdc526e3eff6465",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -4117,7 +4116,7 @@
    }
   },
   "bruxa-noturna": {
-   "sha256": "4b29b08d5f0563f0b8f63b5eb7b1a3a3ae4bde315aaefc361a89daa498519923",
+   "sha256": "835d7cbade9bad386f85236448571bfc56139a0dc98c85a1e11eb098d54965a9",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 5,
@@ -4333,7 +4332,7 @@
    }
   },
   "bugbear": {
-   "sha256": "08fd9f12e896bb3f376d48fef066e46971f53ba951768fa24cce0f7b2dd5656d",
+   "sha256": "d913d11e43f5d03271e4816dbc3fe5fec1a7ab4b4cb286b13090cdd91700b012",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -4628,7 +4627,7 @@
    }
   },
   "cachorro-de-guarda": {
-   "sha256": "6bfceba71874b9705c4cf704a36620c81f13f51f0f1539b3382293f3f273e639",
+   "sha256": "500e4c9850674d37fe29e8cfa89a5057013a54bfb03725298c7ae79a829ce81a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -4727,7 +4726,7 @@
    }
   },
   "cachorro": {
-   "sha256": "bb850be01de03b6031b4bb04e0a2ea3101760294d4af1efd0b40a2e82707de44",
+   "sha256": "768b24500466a6f1880552a2c3d0f7b353341f505592d0702265128c7ec5360f",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -4928,7 +4927,7 @@
    }
   },
   "campeao": {
-   "sha256": "fb2d7c8c1b294696f676809db6a28ba89cdb0ce81daf082165db8f47a7e54458",
+   "sha256": "3ff6d87e683d75738b97e69d83bad7f6de8c338aa65f8428a9164c8446219da9",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -5047,7 +5046,7 @@
    }
   },
   "campones-assustado": {
-   "sha256": "93c9a9bcc2b4f54b726b8477bb3c971e5a8ce1ea18c1e362682b3ea67f4d0cb2",
+   "sha256": "febc1188de13e4141208f92e9634c98a8ab18c26b12806ea4d9080fdf5883fab",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -5478,7 +5477,7 @@
    }
   },
   "capa-sombria": {
-   "sha256": "229d7492c737b9f08daaef2e0702c46a5e8ca36d77278f774d5f7e8e24895bf8",
+   "sha256": "98970a5c5bd41b6a3237e19bf1b8382879397cde42a05f9eb486ecc349774026",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 4,
@@ -5596,7 +5595,7 @@
    }
   },
   "capitao-da-guarda": {
-   "sha256": "32719b4ccf8dc7f9ac63b79048bbe73d99996d45b58a1a3ac735b21a11c86156",
+   "sha256": "f34b97a6f4d935f39bcbb3eaf7866da2992475ef5c8b24531779910aebcbbdba",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -5918,7 +5917,7 @@
    }
   },
   "carcaju": {
-   "sha256": "136d1684278a184b2c5444778f767c91bac8a182536adf8ce7dd3627333cccc9",
+   "sha256": "45901d7a25e2609d6ddefdd62ec00f38fe4950e50e3903b08cdea9650b537d28",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -6157,7 +6156,7 @@
    }
   },
   "cavaleiro-de-elite": {
-   "sha256": "20e08b6695265595af9cf9404f2320014c1593ac7bef8f4888dab3f9ffe6fd9b",
+   "sha256": "4c2a18dad2eff896e5b813f12b78f07106bf4b41a10867ee93ebac5cc3f32bdf",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -6914,7 +6913,7 @@
    }
   },
   "cocatriz": {
-   "sha256": "a0c3989f85339a604ada4c4759a939c8c9c010e285126960ca2445da1aabf552",
+   "sha256": "f5a56a68348586e0ff381c08b506e2492b0d311e1ded0acf403779ebe934baf0",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 2,
@@ -7011,7 +7010,7 @@
    }
   },
   "comandante": {
-   "sha256": "c73451ac67ae9e76195bd8479219f56423bfa5cb8ec82154cec4c28b1edb9d53",
+   "sha256": "2030c5696bbf26ceeff07e3003511b8e0ded2b9a91f8a741d0285a7f940f7aba",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -7232,7 +7231,7 @@
    }
   },
   "corvo": {
-   "sha256": "4529f0f2707dcceaabc7842f9d2be10eaad86457def5c30cf9c0e9d3022754fa",
+   "sha256": "50d54439cea14836288b50908e1d03b45a7a81da97b3fb83e60cdaba80d017bb",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -7280,6 +7279,10 @@
      "massa": 1.25,
      "area": 0.29,
      "posturaDoTamanho": "de baixo, asas abertas",
+     "segundoTamanho": {
+      "area": 0.12,
+      "posturaDoTamanho": "pousado, asas fechadas"
+     },
      "linhaPV": "abaixo",
      "linhaPVMotivo": "ave de osso oco, corpo leve"
     },
@@ -7313,6 +7316,7 @@
     "pesoErguido": 9.04,
     "faixa": 1,
     "tamanho": "Pequeno",
+    "segundoTamanho": "Miúdo",
     "esquiva": 12,
     "bloqueio": 6,
     "energia": 4,
@@ -7659,7 +7663,7 @@
    }
   },
   "cubo-gelatinoso": {
-   "sha256": "8abd24fa4b2d4b5886bb11ecd7f9dfbf9a74c9c547616d16fc549b0a12f8bbe1",
+   "sha256": "20b86dff44612468ff24f7ecbfb528aa34c9f4578ec18f301d0637e3fb453643",
    "entrada": {
     "categoria": "limo",
     "centelha": 1,
@@ -7751,7 +7755,7 @@
    }
   },
   "cultista": {
-   "sha256": "d663b914e3b3e3988c6e9c6dc157edc20d67b466849f7083a644db5dbdf9ec0d",
+   "sha256": "6b2eac128bbe8939c6563f49c6e873c00e007c3eb8facaf4722cb19e011334f1",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -7948,7 +7952,7 @@
    }
   },
   "deinonico": {
-   "sha256": "b5b5f3b208daf1086dd32e50f2c14cb6303643bc060afe74411ea9236f1787dd",
+   "sha256": "9073736b1d8e1b51d3a717d9f518781424fd8dca981036f0f6e0997c3df708dc",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -9317,7 +9321,7 @@
    }
   },
   "doninha": {
-   "sha256": "53f1085b6dcccaed44d7f43ef446e8f9514addfdaac7d60acd4f7347c69243b2",
+   "sha256": "4d28351261fd189b90c882915aeb2bf90cb79632bbf1cabcf66b289e8e489586",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -9416,7 +9420,7 @@
    }
   },
   "doppelganger": {
-   "sha256": "c9e6a525966fcdbe0076572144ea88d509ac330b4d43ae2395400a430bcbf0d7",
+   "sha256": "2013fac6c5c05e6a7c5532bd493e0d785a72fd0fd55772c61e38d253f0dca371",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -11219,7 +11223,7 @@
    }
   },
   "duelista": {
-   "sha256": "6bd2854ed98e65c708e536f5cc4a4d5ff24bd7e36b228a5719f848adaa819a41",
+   "sha256": "fdd09b1a66316043f58fa7401f8d51bd371916c8f61657135a01e41bb6500a49",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -13571,7 +13575,7 @@
    }
   },
   "espreitador-sombrio": {
-   "sha256": "4902e1b87a7401d081154e0280d0eeccd1c40d9b62ae1641e7948af874d43e48",
+   "sha256": "31bf3aa2aaf69daff5f19612698207901f31b6a797599bd6afd2e011f6d2816a",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -13856,7 +13860,7 @@
    }
   },
   "estrangulador": {
-   "sha256": "0e21b57f5bf775e6d29ea68beb0658f73bd8f181cf8d352f1c430b0f47a088d4",
+   "sha256": "7da0c90930b5357285f0ce967920c892ea0888f7e723ef6fd62883b3fba80b92",
    "entrada": {
     "categoria": "aberracao",
     "centelha": 2,
@@ -14161,7 +14165,7 @@
    }
   },
   "falcao-peregrino": {
-   "sha256": "4e0f73b3db714b0ea2dd13385e6ebcdcd107c06b35eb7343de048156f6302dd7",
+   "sha256": "398e635b6beeaab986fa7525c8e47af8a315e59611f97384e817476f0ed80ec5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -14381,7 +14385,7 @@
    }
   },
   "feiticeiro-menor": {
-   "sha256": "9f40e7b8e4783c9d91f512205bd39d4c5d2d975e4ee1497e9011b8e2fe7a27a6",
+   "sha256": "85ad70ff438e5dc43dc4b54ee41a7d78410bdfc26153c9bf3e00a1afc444315c",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -15138,7 +15142,7 @@
    }
   },
   "fungo-violeta": {
-   "sha256": "6b34e726659782862e80d2607c1c1762c0562a3547025929c154b2b9e37b1f03",
+   "sha256": "262e5a0b7349fe3fb0f64132552952775a06d080e67c9261c413017274f31032",
    "entrada": {
     "categoria": "planta",
     "centelha": 0,
@@ -15351,7 +15355,7 @@
    }
   },
   "gato": {
-   "sha256": "6e70febfcab29f6e8b0a4bbca4ea2125e1a74d0099e3a6615ab428a71fa08576",
+   "sha256": "dcf4e54c175cf3f7577a123cf33cbda06e5edd8e8c3473eccdf776970c692161",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -15473,7 +15477,7 @@
    }
   },
   "geleia-ocre": {
-   "sha256": "c10abef7b952dec9c3c8cbc8dde863c125144cd87bc062f2d7f26b5279da2c99",
+   "sha256": "f50709208e218946296c27644730742c350dfc8497be27cc48be2d802f900287",
    "entrada": {
     "categoria": "limo",
     "centelha": 1,
@@ -16996,7 +17000,7 @@
    }
   },
   "gnoll": {
-   "sha256": "91e24c8ac192ec8217a2e6b68d990c067eb7a80f664eccc211c3bfb45bca2937",
+   "sha256": "b4989a70c1922dc7e28be0c2e81288d8a8f27de80a8eb42ef745934b800ce5d0",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -18386,7 +18390,7 @@
    }
   },
   "guarda-da-cidade": {
-   "sha256": "269527cc74ceecc07afa52e352f2c5d6e0b3d891feed270f2c3feb85f523e35e",
+   "sha256": "89a5f03ab59a6a847f9bf7977c0736931bfe90b7c4aecbf73c96cbf76ce507b2",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -18489,7 +18493,7 @@
    }
   },
   "guepardo": {
-   "sha256": "c8bb2836d8baa256b8cad5e7752ef6e696f179ac9192cb074a9efbc50d347549",
+   "sha256": "95ad3b4c55ca3d3786171cad52e7ad1589060a7188ba11e3f783401e9601f35a",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -18609,7 +18613,7 @@
    }
   },
   "harpia": {
-   "sha256": "49ce201824cda234093934436e4f17f009864c08ee3fd34bd89b06628f5c7c84",
+   "sha256": "fe2a388a0fce41d06a6315673a83cd197354cee4f4d1f3c8f762b979f4e71790",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -18931,7 +18935,7 @@
    }
   },
   "hiena-malhada": {
-   "sha256": "144652f11eb02ebb1dd9373080b9cbd1dd6e2a7ca1d2e4eba27842e9f88735ae",
+   "sha256": "4cfb99c543db84f8f86e9904566d00aa4495c4e319a35da77c164c4c421dfb4b",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19277,7 +19281,7 @@
    }
   },
   "hobgoblin": {
-   "sha256": "be718dcfee453261d98ddf8d1537ef0f71cdac616218b7d3a1a912591204b74c",
+   "sha256": "2f5b795da14d0a1f21c9c027b479e7171845f15c4b6df420d14c814e6b971b7f",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -19810,7 +19814,7 @@
    }
   },
   "jararaca": {
-   "sha256": "d10e36981326f4602ad657a6d4d51b9648e0895a3807574675fef1407a5dd939",
+   "sha256": "1327e5504e16ae4a8bfeb57f79579f8de409230d76f47468e93f62e747f48db8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21236,7 +21240,7 @@
    }
   },
   "lemure": {
-   "sha256": "864b5148d634a1dfff76135676d17db8f4c53ddc935d13d914af1b44a2d768f9",
+   "sha256": "b6a1b5e6ed41d7a8dc90f0e7d885810fb5c45dbfc92783f92e2657483d6e5c44",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 1,
@@ -21329,7 +21333,7 @@
    }
   },
   "leopardo": {
-   "sha256": "7f69dfb62cd3720a11bb75f23ae2565e137a9ff89b07cfc6b5c3d994c0027d82",
+   "sha256": "094c657a1494d007a0131d8b7010b30e69a4231bf410487a536557a5fae54920",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21449,7 +21453,7 @@
    }
   },
   "lesma-gigante": {
-   "sha256": "68ab9a3f39f60fdc5cb899ae128d94742c88daed53463044e12bc03037a9760c",
+   "sha256": "7ce3ec8cfb91d1e8809aefec4cd8a88edc1ead47033e138aabd6a0dfc30e0d0d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21474,7 +21478,8 @@
      "prontidao": 0,
      "resistencia": 4,
      "empatia": 0,
-     "sobrevivencia": 2
+     "sobrevivencia": 2,
+     "atirador": 2
     },
     "habilidadesSec": {
      "equilibrio": 0,
@@ -21482,8 +21487,7 @@
      "natacao": 0,
      "voo": 0,
      "corrida": 0,
-     "musculatura": 1,
-     "disparo": 2
+     "musculatura": 1
     },
     "vontade": 3,
     "corpo": {
@@ -21650,7 +21654,7 @@
    }
   },
   "lillend": {
-   "sha256": "571ab7ffebd1d77cfe9a0867d785a1da2d7c3de1fd5d043de853b324ab6d597e",
+   "sha256": "bcd0c46ad6527cbaf5f9c6ab147d6622332defea70abed18822b776ce3ec4c10",
    "entrada": {
     "categoria": "celestial",
     "centelha": 4,
@@ -21762,7 +21766,7 @@
    }
   },
   "limo-cinzento": {
-   "sha256": "0d50976928ce2be3240f43314cffb9669eb8ddb66ab84a1a3bc12f2358d5bfda",
+   "sha256": "3b51160349b11a580e644cfc4e9229c0837ca85d11587f31b5579dd02716801d",
    "entrada": {
     "categoria": "limo",
     "centelha": 1,
@@ -22720,7 +22724,7 @@
    }
   },
   "lobo": {
-   "sha256": "0f2ba6c4c3d78a5fca5caa3c80dd9bb585e33c54eb5a165397e2023359336687",
+   "sha256": "1f8e7e7da8fdb5895753adb34964906f8ab7389a79461e76e1c7daf4327fad88",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -22943,7 +22947,7 @@
    }
   },
   "lula-de-humboldt-grande": {
-   "sha256": "84a78abf8f090ec61c4efd25514309619240f043e7df2c1041b43383690cf030",
+   "sha256": "2f3e58ddf7f1dde560549d9bd6af3835bf02854c5f107e4e0899764e7f0958c9",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23061,7 +23065,7 @@
    }
   },
   "lula-de-humboldt": {
-   "sha256": "a02802abbee6639f1ee2a90dcce5e60210b3aab650d45b9d4b9ef8b39d862b10",
+   "sha256": "46a66be9cd9a3feae391b3d69df022bfbda4388aef455506464d6e3b2d5fa77f",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23179,7 +23183,7 @@
    }
   },
   "lula-gigante": {
-   "sha256": "79cee638ce09006b8a4eb136a693e3e136828b1e08ec6c7689308c98fab61ffe",
+   "sha256": "446577af51a477ddfa7b722864f06c5fa43974dbc64742fd34fbfd10b3ca8792",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23396,7 +23400,7 @@
    }
   },
   "mago-de-batalha": {
-   "sha256": "52010f18e46788e724836dafa213ae161f1c4a82c4ea371d066998d16e37102b",
+   "sha256": "dcda39fb1089ea7708ea73da1d9265c1eba5c03b3276aa156c8e08cdf2ede1ca",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -24215,7 +24219,7 @@
    }
   },
   "medusa": {
-   "sha256": "1b8236cccb0abbbd138c8cd23a289f3d5122f335d7855c94e7dbcfeb389dde76",
+   "sha256": "9c9b942d2c517c34314a89777a3829dec62202c1a28438bfecc885fbb744a7ef",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 3,
@@ -24313,8 +24317,7 @@
      {
       "nome": "Arco curto",
       "velocidade": 6,
-      "danoMedio": 6.5,
-      "jogada": 9
+      "danoMedio": 6.5
      },
      {
       "nome": "Espada curta",
@@ -24430,7 +24433,7 @@
    }
   },
   "mephit": {
-   "sha256": "b8ab8ada272977a031b350abcb0589f9c6ef2c74dc551daceb719355a4da5144",
+   "sha256": "3dbbf10c3fa017962f35dc11822ff8d08f3980747aea0961b36652ed5651cdd7",
    "entrada": {
     "categoria": "outsider",
     "centelha": 2,
@@ -24452,12 +24455,12 @@
      "atletismo": 1,
      "furtividade": 2,
      "prontidao": 1,
-     "integridade": 3
+     "integridade": 3,
+     "atirador": 2
     },
     "habilidadesSec": {
      "labia": 2,
      "voo": 2,
-     "disparo": 2,
      "musculatura": 0
     },
     "vontade": 7,
@@ -24505,7 +24508,7 @@
      {
       "nome": "Sopro elemental",
       "parte": "boca",
-      "habilidade": "disparo",
+      "habilidade": "atirador",
       "classe": "distancia",
       "pgr": [
        3,
@@ -24549,14 +24552,13 @@
      {
       "nome": "Sopro elemental",
       "velocidade": 7,
-      "danoMedio": 9,
-      "jogada": 9
+      "danoMedio": 9
      }
     ]
    }
   },
   "merfolk": {
-   "sha256": "df9efd8aafbe04fb46ab3f03e4f5d14f42aaa4e26ea303121931cfbb4113085a",
+   "sha256": "f1f49570f5e177fcd0d4245a44b129e23bedddbd8ffa084f0a55edd217d1e6d5",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -24643,8 +24645,7 @@
      {
       "nome": "Besta média",
       "velocidade": 12,
-      "danoMedio": 8.5,
-      "jogada": 6
+      "danoMedio": 8.5
      }
     ]
    }
@@ -25294,7 +25295,7 @@
    }
   },
   "morcego-atroz": {
-   "sha256": "cebfc832d7b95551e2d511b921233e28f3e51b41c279ebd5c170fa0a3327d6ba",
+   "sha256": "fad995525b417b175a0de8e1aea7d9ba190faf24b954ff4f170c59b979855422",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25397,7 +25398,7 @@
    }
   },
   "morcego": {
-   "sha256": "0b0b7c669e2a24ccc28f92c38b2db954ebd5bfb40705da119feb32ebdf7f7c3c",
+   "sha256": "36bcacc55ad925b3994e523398239219713f5b0e7782969af52ab1a0f2ee6f79",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25591,7 +25592,7 @@
    }
   },
   "morlock": {
-   "sha256": "555e2999aee960a543682141d3dfcf2edab389fe321b79f3a42108731cf41532",
+   "sha256": "949ae832ce7e20ec8cba92828580ba9fec8ece14ab3dd631ade2d5901e72e85e",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -26628,7 +26629,7 @@
    }
   },
   "nobre-drow": {
-   "sha256": "7d84e255f09bc664cba19943879489a889bd62df5c840f3d3bb0399e22315ea8",
+   "sha256": "a98d956bf980540a57c329c5b840c262e8c7aa59fd28e1767b73599813d419a5",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -27010,7 +27011,7 @@
    }
   },
   "orc": {
-   "sha256": "8c81ad39d960de05bb00e0dcbe8333b56f54f564194753026d7e68828caf4ca1",
+   "sha256": "c9ffc6cd54c8a108e59b779cffbedf443108131fa2d03cd12548b46f824e3f0c",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -28142,7 +28143,7 @@
    }
   },
   "polvo-gigante": {
-   "sha256": "fa9173ca7892efe24b14faf5f694b86f780189475dc0df000bfd2a429f92dc5c",
+   "sha256": "08a6a918f338a300dfac4a22f7269fda31750cdf5b1beb16eb0fc7d761cf65f2",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28265,7 +28266,7 @@
    }
   },
   "polvo": {
-   "sha256": "deba23c93dcdb75e64bca262cb79d5230b1227ebe3c8e987d8c349051c4981cb",
+   "sha256": "bddf9450130062793c31a61f472e53c791db42d3224a3270eee2bca25f619ba5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28490,7 +28491,7 @@
    }
   },
   "poraque": {
-   "sha256": "3703228fb19d13eb75c4eea7baf203f724476ea37c4afd1f00a006c3f5a67290",
+   "sha256": "f667a02d83c7570a7f22f5dd867b083e463662d466ba636ef62a12d2de3296e1",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28753,7 +28754,7 @@
    }
   },
   "pteranodonte": {
-   "sha256": "c3e55bf746f58cc598d005226d4e0a8f09056bc844dd7362207a4a5597089584",
+   "sha256": "7b99f350b872005041e47446e51f4e9e777592898b4f543c474cf7bb615486da",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -28857,7 +28858,7 @@
    }
   },
   "pudim-negro": {
-   "sha256": "1bbe0ca4857c3424f276c375bc1559dfd0f53d3b506d29feb5f1807fa697e0d9",
+   "sha256": "c1a58c03c3cfef86d016ee41efb375a0e2b1138be59d3c0846c33b838a28eab3",
    "entrada": {
     "categoria": "limo",
     "centelha": 0,
@@ -29069,7 +29070,7 @@
    }
   },
   "quetzalcoatlo": {
-   "sha256": "ea5e3b4e13eac3b5507a40dba8eabd23338a38a4fa82613a47ff288562867714",
+   "sha256": "c41d98b3a48d481ef5d29efc30c3343667ef1066c81ed3c4f6a69e99d6c898c5",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29346,7 +29347,7 @@
    }
   },
   "ra-gigante": {
-   "sha256": "2955fb5534ae40fb4c5e7a87c4e26e7c9e76dab5cef82eb21ab852e2be3ae7d1",
+   "sha256": "f31e4e33a87f631f82aeac521db2e1e688d7bc89f910f8859fdffff8587594ee",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29463,7 +29464,7 @@
    }
   },
   "ra-venenosa": {
-   "sha256": "790dad8094f33b9d95d88fa92ace2408899b4dba559338892c705ea494f12cee",
+   "sha256": "abd8988eba400162f5e5041ea877e49decdd89b6d5450ac8c51aff4178595306",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29641,7 +29642,7 @@
    }
   },
   "rastejador-sombrio": {
-   "sha256": "1c3b41cd9b6019dec96bee5e4143f75e6eca3a0f102d35406f634a83ba7eb2b9",
+   "sha256": "4807131980286685215efe621f5ce25ac683c9ab5145c926d1852ab9bb0b114a",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 2,
@@ -29824,7 +29825,7 @@
    }
   },
   "rato-gigante": {
-   "sha256": "501da423ad7444b53262a3d06e0017188923a554fd2f04f1c220aaa6c0e3429e",
+   "sha256": "0a5745f0fc806d0b2117ea0285ef0b248eabd16c6b82d93dbe77e780508202b3",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30499,7 +30500,7 @@
    }
   },
   "sanguessuga-gigante": {
-   "sha256": "dd538c7a5f54e9685c4dc57f8345fc3caf907d8adfef3862c72cb83bddd9c60a",
+   "sha256": "68738b54f6943146b436c67ff2b48aa77d14cc55009088f6fa8bef83d71a17c3",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30596,7 +30597,7 @@
    }
   },
   "sapo": {
-   "sha256": "be62ae8253a15ad90e0fd1088e19e98d0608371f1e5d0f0c3cfddc08156fefa0",
+   "sha256": "810eb1750e7253b8239d989e7c06bda5b4709d59f857805b92de5cae9df53cde",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30861,7 +30862,7 @@
    }
   },
   "serpente-venenosa": {
-   "sha256": "5028b4b88dad7968c599a7953e0cb3bc3a4e0414e0fc3b37525cb8a958b1f10d",
+   "sha256": "eac824bc33d6a6d72ac55da188a70cb58f638eff126c2eabd63bf33c28bbe9c6",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -31058,7 +31059,7 @@
    }
   },
   "shoggoth": {
-   "sha256": "2d69c4ba0fe9c0ab9713ce24c7a253c0f98bfa2feae553a91643b296c475033b",
+   "sha256": "098e6a9daca80ff734fabcda9f9311754686491aa4238d50d099e17785285317",
    "entrada": {
     "categoria": "limo",
     "centelha": 0,
@@ -31381,7 +31382,7 @@
    }
   },
   "soldado-veterano": {
-   "sha256": "41a7ff50b9d8d3b3e0ed80d2a3cf7d91ae8709085a4745d9ee8c33b9a34358bb",
+   "sha256": "f511d6c59baab86b04581c69b42979262215dc3d550422411cf746a7e475a57b",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -31624,7 +31625,7 @@
    }
   },
   "stirge": {
-   "sha256": "6d61ffc87ee9767c88b10842ae1bbf1f1a82e6e887d3d3d01f6e43351aadc2de",
+   "sha256": "2c24b40eb92edc6b31f65473089a5573cc33b75b1d159b6cebf3c028812c1dc0",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -31831,7 +31832,7 @@
    }
   },
   "svirfneblin": {
-   "sha256": "4d3c67d2685f85c5594d21279ebf0864f5367cef7086ca9d3902329bea2d9a2d",
+   "sha256": "723921e63c6fbe3f438ea7db73eb0148a8a66f3a550188b53e1de523d9f6a6f2",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -32195,7 +32196,7 @@
    }
   },
   "tengu": {
-   "sha256": "da2226291b47d766bb46bd12400a4f29d2066a7ea09616cf6577d5c150c30da1",
+   "sha256": "bcba1aa0573b3f752d5dc98170999972ee5e2049cbad6a4f6da1336d87186792",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -34523,7 +34524,7 @@
    }
   },
   "vargouille": {
-   "sha256": "a70c9c511da0a461052b472d96e7192b6212bc781aac25d20f403d46d2a8badb",
+   "sha256": "9bbc696a0add8bdada38cfe7803b3f2ff13ccac3b8a55606df04bc0f36ee5bf9",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -35257,7 +35258,7 @@
    }
   },
   "worg": {
-   "sha256": "aa45b25f80c9441462da8b523589c73f90ef6beda8a04892ff67e3a97c0438ac",
+   "sha256": "0937ae74a941394fe947a7b6000cdb6a9b94d713b731c7baa0239959559f3cbe",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,

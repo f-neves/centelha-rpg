@@ -94,7 +94,8 @@
       "tecnica": {
         "id": "pisar-leve",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Esgueirar",
@@ -103,7 +104,8 @@
       "tecnica": {
         "id": "esgueirar",
         "nivel": 1
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Manto de Sombras",
@@ -112,7 +114,8 @@
       "tecnica": {
         "id": "manto-de-sombras",
         "nivel": 3
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Bote Silencioso",
@@ -121,13 +124,15 @@
       "tecnica": {
         "id": "bote-silencioso",
         "nivel": 3
-      }
+      },
+      "categoria": "inato"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
-      "texto": "o traço social do Humano"
+      "categoria": "inato",
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [

@@ -87,14 +87,30 @@
     {
       "nome": "Apodrecimento",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "os tentáculos infectam e decompõem a carne que tocam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o tentáculo toca carne exposta",
+      "duracao": "até a doença regredir ou o agente ser retirado",
+      "alcance": "toque",
+      "area": "um alvo",
+      "efeito": "Podridão do fungo-violeta. Exposição: o tentáculo toca carne exposta. Incubação: 1 hora. Virulência 10. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
+      "dano": "pela progressão da doença",
+      "resistencia": "Vigor + Resistência contra Virulência 10",
+      "limiteDeUso": "por exposição"
     },
     {
       "nome": "Imunidades fúngicas",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "venenos e aflições próprias de animais não o afetam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "venenos e aflições próprias de animais não o afetam. O ferimento do golpe continua",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [

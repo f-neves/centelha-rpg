@@ -104,14 +104,15 @@
         "arte": "materia",
         "nivel": 2
       },
-      "ativacao": "uma ação, Velocidade 6",
+      "categoria": "inato",
+      "ativacao": "uma ação, Velocidade 5",
       "duracao": "até ele desfazer, ou até cair inconsciente",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca",
+      "efeito": "assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Ler pensamentos",
@@ -121,20 +122,29 @@
         "arte": "adivinhacao",
         "nivel": 1
       },
-      "ativacao": "nenhuma; sempre ativo, e uma ação, Velocidade 6, para sondar fundo",
+      "categoria": "sobrenatural",
+      "ativacao": "nenhuma; sempre ativo, e uma ação, Velocidade 5, para sondar fundo",
       "duracao": "enquanto o alvo estiver perto",
       "alcance": "9 m",
       "area": "um alvo por vez",
       "efeito": "sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção",
       "dano": "nenhum",
-      "resistencia": "mente, contra Percepção + Empatia dele; quem passa não revela nada e sente a sondagem",
-      "limiteDeUso": "a sondagem, uma vez por cena para cada alvo"
+      "resistencia": "Percepção + Empatia da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não revela nada e sente a sondagem",
+      "limiteDeUso": "A escuta de superfície é contínua. Para a sondagem profunda: 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia"
     },
     {
       "nome": "Mente protegida",
       "formas": "todas",
-      "classe": "sem regra ainda",
-      "efeito": "leitura de mente e controle mental simples não o pegam"
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Ignora leitura de mente e domínio por comandos simples. Dano físico de Arte e conversa comum seguem as regras normais",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -223,14 +233,6 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Mudar de forma",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Ler pensamentos",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
       "campo": "habilidades.briga",
       "motivo": "De mãos nuas, luta de rua; 2; o site gravava 4, que era a Habilidade da arma"
     },
@@ -241,6 +243,14 @@
     {
       "campo": "formas.disfarce",
       "motivo": "Mudar de forma muda o rosto, o corpo, a voz e o cheiro; os números ficam os dele  Descrição anterior: Anatomia: a de qualquer humanoide de tamanho perto do dele que já tenha visto; Altura e Massa: as do disfarce, dentro do Tamanho Médio; Aparência: a da pessoa copiada; Equipamento: o que a pessoa usava; Camuflagem: passa pela pessoa copiada; o resto: o do doppelganger."
+    },
+    {
+      "campo": "habilidadesEspeciais.Mudar de forma",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campo": "habilidadesEspeciais.Ler pensamentos",
+      "motivo": "R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "formas",

@@ -142,6 +142,7 @@
       "formas": "todas",
       "classe": "livro",
       "ataque": "Garra",
+      "categoria": "inato",
       "regra": "agarrar",
       "texto": "o gato que se pendura no braço e morde"
     }

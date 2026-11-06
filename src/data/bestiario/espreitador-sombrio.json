@@ -87,26 +87,14 @@
       "nome": "Duas lâminas",
       "formas": "todas",
       "classe": "livro",
-      "regra": "empunhadura-dupla"
-    },
-    {
-      "nome": "Ataque furtivo",
-      "formas": "todas",
-      "classe": "regra da ficha",
-      "ataque": "Espada curta",
-      "ativacao": "o golpe que acerta um alvo Surpreso, ou que ainda não o viu, ou que está flanqueado",
-      "duracao": "instantânea",
-      "alcance": "o do corpo a corpo",
-      "area": "um alvo",
-      "efeito": "a lâmina entra onde o alvo não guarda",
-      "dano": "+1d6 no dano do golpe",
-      "resistencia": "nenhum",
-      "limiteDeUso": "um por golpe"
+      "categoria": "inato",
+      "texto": "Ignora a penalidade da mão inábil. Paga os custos normais de empunhadura dupla"
     },
     {
       "nome": "Explosão de chamas",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "ele morre",
       "duracao": "instantânea",
       "alcance": "3 m",
@@ -114,26 +102,42 @@
       "efeito": "o corpo estoura numa bola de fogo branco-quente",
       "dano": "3d6, fogo",
       "resistencia": "esquiva, contra Dificuldade 15; quem passa leva metade",
-      "limiteDeUso": "uma vez, ao morrer"
+      "limiteDeUso": "uma vez, ao morrer. Sem custo"
     },
     {
       "nome": "Cegueira pela luz",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "luz forte (sol, Arte de Luz, lanterna de perto)",
-      "duracao": "enquanto estiver na luz forte",
+      "duracao": "enquanto durar a exposição",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "fica Ofuscado",
+      "efeito": "Fica Ofuscado sob sol forte. Sofre −2 nas ações que dependem da visão, inclusive ataques",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Uso de veneno",
       "formas": "todas",
       "classe": "sem regra ainda",
+      "categoria": "inato",
       "efeito": "aplica veneno nas lâminas sem nunca se envenenar ao aplicar. O veneno é o que ele tiver (o Mestre escolhe do catálogo)"
+    },
+    {
+      "nome": "Golpe na brecha",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "o primeiro golpe da ação que fere um alvo Surpreso ou Flanqueado",
+      "duracao": "instantânea",
+      "alcance": "o do golpe",
+      "area": "o alvo atingido",
+      "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
+      "dano": "+1d6 no dano do golpe",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -202,18 +206,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Ataque furtivo",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Explosão de chamas",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campo": "habilidadesEspeciais.Cegueira pela luz",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "habilidades.bloqueio",
       "motivo": "Apara com as duas lâminas; 2; o site não gravava Bloqueio"

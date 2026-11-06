@@ -120,17 +120,40 @@
   ],
   "habilidadesEspeciais": [
     {
+      "nome": "Posturas de combate",
+      "formas": "todas",
+      "classe": "regra da ficha",
+      "categoria": "inato",
+      "ativacao": "contínua",
+      "duracao": "permanente",
+      "alcance": "o próprio corpo",
+      "area": "a criatura",
+      "efeito": "Grande: de baixo, asas abertas. Médio: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "dano": "nenhum",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "contínuo, sem custo"
+    },
+    {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "regra": "agarrar"
     },
     {
       "nome": "sangramento",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "regra da ficha",
       "ataque": "Mordida",
-      "efeito": "a ferida sangra por muito tempo, porque a saliva não deixa coagular"
+      "categoria": "inato",
+      "ativacao": "quando a mordida abre uma ferida",
+      "duracao": "até estancar",
+      "alcance": "o do golpe",
+      "area": "a vítima ferida",
+      "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
+      "dano": "nenhum adicional",
+      "resistencia": "nenhuma",
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
     }
   ],
   "comoLuta": [

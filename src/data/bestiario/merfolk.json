@@ -96,6 +96,7 @@
       "nome": "Anfíbio",
       "formas": "todas",
       "classe": "regra da ficha",
+      "categoria": "inato",
       "ativacao": "nenhuma; sempre ativo",
       "duracao": "permanente",
       "alcance": "o próprio corpo",
@@ -103,12 +104,13 @@
       "efeito": "respira na água e no ar; fora d'água só se arrasta",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum"
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Guerreiro do mar",
       "formas": "todas",
       "classe": "livro",
+      "categoria": "inato",
       "texto": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)"
     }
   ],
@@ -182,10 +184,6 @@
     "imunidades": []
   },
   "revisao": [
-    {
-      "campo": "habilidadesEspeciais.Anfíbio",
-      "motivo": "números sugeridos pela ficha (D-197)"
-    },
     {
       "campo": "corpo.altura",
       "motivo": "O tronco e a cabeça do corpo de base"
