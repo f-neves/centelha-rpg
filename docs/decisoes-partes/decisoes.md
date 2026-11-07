@@ -4440,10 +4440,13 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
     - Leitura para o livro: uma categoria de Tamanho de diferença desloca a arma um degrau na escada de classes (Leve, Média, Pesada), para mais leve se quem empunha é maior, e para mais pesada se é menor; o dado de dano fica o da arma (G1). Além da Pesada, o Mestre julga. A regra por peso e Força fica pendente do catálogo com peso.
     - Texto aprovado (vai ao livro, Armas e Armaduras, depois de "Armas de outro tamanho"):
     > **Quem empunha.** O dano é da arma, não de quem a segura. O que muda com o corpo é a classe: para quem é uma categoria maior, a arma fica um degrau mais leve (a espada longa de um humano é uma arma média para um ogro); para quem é uma categoria menor, um degrau mais pesada (a adaga de um ogro é uma espada para um halfling). Além da Pesada, e enquanto o catálogo não tiver o peso das armas, o Mestre julga se o personagem consegue usá-la.
-- Fora do livro: a regra por peso e Força fica pendente do catálogo com o peso das armas.
+- Fora do livro: a regra por peso e Força fica pendente (a faixa de peso por Força; ver a nota abaixo).
 - Muda: completa a D-360 ("quem pode empunhar uma arma maior que o próprio corpo").
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
 - Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- **Texto corrigido pelo autor em 07/11/2026** (respostas às perguntas do Arquiteto, a partir do achado da Revisora sobre `d4bb62ab`): os exemplos do texto aprovado não batiam com o catálogo (a espada longa já é classe Média, e o ogro é Grande, uma categoria acima do humano; do ogro ao halfling são duas categorias); o autor escolheu "Trocar os exemplos". E o catálogo já tem o peso de cada arma (`armas.json`, campo `peso`); o autor escolheu "Cortar a cláusula" do peso. O texto que vai ao livro fica:
+  > **Quem empunha.** O dano é da arma, não de quem a segura. O que muda com o corpo é a classe: para quem é uma categoria maior, a arma fica um degrau mais leve (a espada longa, Média, de um humano é uma arma Leve para um ogro); para quem é uma categoria menor, um degrau mais pesada (a adaga, Leve, de um ogro é uma arma Média para um humano). Além da Pesada, o Mestre julga se o personagem consegue usá-la.
+- A regra por peso e Força fica nas pendências do catálogo: a faixa de peso que cada Força consegue usar, sobre o peso que o catálogo já tem.
 
 ### D-367 · G5: o "atrasa a regeneração" é a primeira forma da R47, com o tempo na ficha; os tipos de fraqueza viram lista fechada (prata, ferro frio, arma abençoada, fogo, ácido, luz do sol) [tags: regeneracao, fraqueza, r47, d-326, d-362, tarrasque, vocabulario, prata, ferro-frio, arma-abencoada, fogo, acido, luz-do-sol, g5]
 - Data: 2026-11-07
