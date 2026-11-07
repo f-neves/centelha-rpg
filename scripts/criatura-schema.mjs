@@ -44,7 +44,7 @@ const ataqueNatural = z.object({
   tipoDano: z.enum([...elementosVocab.grupos.flatMap(g=>g.palavras),'fenomeno','eletricidade','nao-se-aplica']), nivelPerfuracao: naoNeg.nullable(), acerto: inteiro, bloqueiaComoArma: inteiro.nullable(),
 }).strict();
 const ataqueComArma = z.object({ nome: texto, arma: id,
-  // D-360: a arma de gigante, do Tamanho de quem a empunha; o dado base sobe pelo passo de `regras.json`
+  // D-360: a arma de gigante, no Tamanho da arma; o dado base muda pelo passo de `regras.json`
   // `combate.escalaPorTamanho`, que espera o autor (o motor marca "a definir" enquanto ele for null)
   tamanho: tamanho.optional() }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);

@@ -594,7 +594,7 @@ export function danoMedio(dado: string | null, forca: number, multiplicadorForca
  * com as duas (a criatura de hoje a usa com uma, como as fichas escrevem), e a de tiro pelo `forcaMult` dela, com o
  * teto da arma (`forcaCap`), o do arco (D-075) e o requisito (`M-32`).
  */
-// D-360 (06/11/2026): a arma de gigante e a rocha mudam o DADO BASE da arma por categoria de Tamanho acima do Médio, e a
+// D-360 (06/11/2026): a arma de gigante e a rocha mudam o DADO BASE da arma por categoria de Tamanho, em Tamanho diferente do Médio, e a
 // Força continua x1 com uma mão e x2 com duas. O passo por categoria (`regras.json`, `combate.escalaPorTamanho.passo`) está
 // com o autor: com ele em null, a arma vale o dado da arma comum e a resposta marca `escalaPorTamanho: 'a definir'`.
 // Com um número ali e sem a conta escrita, para alto, em vez de inventar o modo de aplicar o passo.

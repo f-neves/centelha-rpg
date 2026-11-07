@@ -4,7 +4,7 @@
 // 2d6). A Força continua ×1 com uma mão e ×2 com duas, como no livro." O passo por categoria de Tamanho está com ele:
 // "Não fixe a escala; prepare a entrada para receber um passo por categoria". Aqui se prova que:
 //   - `regras.json` `combate.escalaPorTamanho.passo` existe e está em null (nenhum número inventado);
-//   - a arma com `tamanho` acima do Médio dá o MESMO dado, a mesma Força e o mesmo multiplicador da arma comum, e só
+//   - a arma com `tamanho` diferente do Médio dá o MESMO dado, a mesma Força e o mesmo multiplicador da arma comum, e só
 //     ganha a marca `escalaPorTamanho: 'a definir'`; a do Médio e a sem tamanho não ganham marca;
 //   - a marca chega à vista do bestiário (o card escreve "escala por Tamanho: a definir") sem mudar o dano;
 //   - o esquema aceita o `tamanho` no ataque com arma e recusa um Tamanho que não existe.
@@ -27,6 +27,8 @@ for (const [arma, forca, duas] of [['maca', 6, false], ['montante', 8, true], ['
   ok(J(semMarca) === J(comum), `${arma}: a arma Grande dá o dado, a Força e o multiplicador da comum (${comum.dado}, Força ${comum.forca} × ${comum.multiplicadorForca})`);
   ok(escalaPorTamanho === 'a definir', `${arma}: a arma Grande marca a escala "a definir"`);
   ok(!('escalaPorTamanho' in comum) && !('escalaPorTamanho' in medio), `${arma}: a comum e a do Médio não levam marca`);
+  const pequena = M.ataqueDaArma(arma, forca, duas, 'pequeno');
+  ok(pequena.escalaPorTamanho === 'a definir' && pequena.dado === comum.dado, `${arma}: a arma Pequena também marca "a definir" (o autor não disse o lado) e dá o dado da comum`);
 }
 
 // a vista do bestiário: uma criatura publicada, com o ataque de arma trocado para uma arma de gigante

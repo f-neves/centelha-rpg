@@ -48,7 +48,7 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 </div>
 
-**Arma de gigante.** A arma feita para quem é maior que Médio usa os números da arma comum, menos o dado de dano base (o 1d6−2, o 1d6, o 2d6), que sobe por categoria de Tamanho acima do Médio. A Força continua ×1 com uma mão e ×2 com duas, como em qualquer arma. O passo por categoria ainda está a definir; até lá, a arma de gigante usa o dado da arma comum, e o card da criatura diz "escala por Tamanho: a definir".
+**Arma de gigante.** A arma de gigante usa os números da arma comum, menos o dado de dano base (o 1d6−2, o 1d6, o 2d6), que muda por categoria de Tamanho, em Tamanho diferente do Médio. A Força continua ×1 com uma mão e ×2 com duas, como em qualquer arma. O passo por categoria ainda está a definir.
 
 ## Tags
 
