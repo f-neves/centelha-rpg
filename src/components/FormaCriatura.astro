@@ -67,7 +67,7 @@ const ELEM_LINHAS: [string, string, string][] = [['fraquezas', 'Fraqueza', 'el-f
   {artes.length > 0 && <p class="ib-ref"><b>Artes:</b> {artes.map((a: any) => `${arteNome[a.id] ?? a.id} ${a.nivel}`).join(' · ')}</p>}
   <ul class="besta-atk">
     {i.combate.ataques.map((a: any) => (
-      <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">{a.semJogada ? <>Sem jogada de ataque (área: quem está nela se defende)</> : <>Ataque: <b>{fmtPool(a.pool)}</b></>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+      <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">{a.semJogada ? <>Sem jogada de ataque (área: quem está nela se defende)</> : <>Ataque: <b>{fmtPool(a.pool)}</b></>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}{a.escalaPorTamanho ? ' · escala por Tamanho: a definir' : ''}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
     ))}
   </ul>
   {(i.comoLuta || []).length > 0 && <><h4>Como luta</h4><ul>{i.comoLuta.map((x:any)=><li><b>{x.nome}:</b> {x.texto}</li>)}</ul></>}

@@ -171,7 +171,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           {i.combate.veneno && <p class="ib-ref besta-veneno"><b>Veneno no equipamento:</b> {i.combate.veneno}.</p>}
           <ul class="besta-atk">
             {i.combate.ataques.map((a: any) => (
-              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">{a.semJogada ? <>Sem jogada de ataque (área: quem está nela se defende)</> : <>Ataque: <b>{fmtPool(a.pool)}</b></>}{i.combate.vestida && <> sem o equipamento · <b>{fmtPool(poolComPenalidade(a.pool, i.combate.vestida.penalidade))}</b> com</>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">{a.semJogada ? <>Sem jogada de ataque (área: quem está nela se defende)</> : <>Ataque: <b>{fmtPool(a.pool)}</b></>}{i.combate.vestida && <> sem o equipamento · <b>{fmtPool(poolComPenalidade(a.pool, i.combate.vestida.penalidade))}</b> com</>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}{a.escalaPorTamanho ? ' · escala por Tamanho: a definir' : ''}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
             ))}
           </ul>
 
