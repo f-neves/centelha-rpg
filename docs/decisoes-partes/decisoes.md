@@ -4306,15 +4306,17 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - "Merge contínuo (06/11/2026, substitui a L13)":
     - O push do merge saiu antes da ordem de segurar (9dc8a021 no ar). O autor: deixar no ar, e o Arquiteto segue fazendo o merge de cada rodada pronta, com o PROCEDE da Revisora, enquanto o autor decide as regras.
 
-### D-357 · F1: a justificativa de ataques e poderes chega ao JSON e aparece no card; as Notas de observação chegam ao JSON, e o layout decide se mostra (provisória) [tags: bestiario, card, justificativa, notas, observacao, conversor, layout, f1]
+### D-357 · F1 e F1a: a justificativa de ataques e poderes chega ao JSON e aparece no card; as Notas de observação continuam fora do JSON (provisória) [tags: bestiario, card, justificativa, notas, observacao, conversor, layout, f1, f1a, d-219, d-222, d-224]
 - Data: 2026-11-06
-- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está, já com a F1a):
   - "F1. Observações das fichas no card (06/11/2026, DECIDIDA, provisória)":
-    - Resposta do autor: pode colocar no card; quando chegar a revisão de layout, ele decide como fica e se fica. A justificativa de ataques e poderes passa a chegar ao JSON e aparece no card; as Notas de observação também passam a chegar ao JSON, para o layout decidir se mostra.
+    - Resposta do autor: pode colocar no card; quando chegar a revisão de layout, ele decide como fica e se fica. A justificativa de ataques e poderes passa a chegar ao JSON e aparece no card.
+    - F1a (06/11/2026): a extensão às Notas de observação foi um acréscimo de Claude que contradizia a D-219, a D-222 e a D-224. Resposta do autor: só a justificativa entra; as Notas continuam fora do JSON (D-219, D-222 e D-224 ficam como estão), e o que mostrar delas se decide na revisão de layout.
+- Também do autor (resposta à pergunta do Arquiteto, 06/11/2026): "Pode soltar a F1 com essa correção: esquema, conversor e card só para a justificativa, Revisora confere, e merge com o PROCEDE."
 - Fora do livro: é trabalho do conversor e do card (`scripts/conversor-criatura.mjs`, `BestaCard.astro`); a forma final fica para a revisão de layout.
-- Muda: contradiz em parte a D-219 ("Saem do JSON: v3, notasObservacao (ficam na ficha .md)"), a D-222 (a lista `revisao` "substitui as notasObservacao") e a D-224 (a lista fica só no JSON-fonte, fora do JSON público e do card). Pela regra do registro, a pergunta vai ao autor antes de implementar: se as Notas de observação entram no JSON como campo novo, ao lado da `revisao`, ou se o que ele quer é a `revisao` no card. Para a justificativa de ataques e poderes não há decisão anterior que a tire do JSON (conferência da Revisora sobre `a518d65e`).
-- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
-- Estado: **suspensa** até a resposta do autor sobre a D-219, a D-222 e a D-224; depois, a implementar pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Muda: nada. A D-219, a D-222 e a D-224 ficam como estão (a primeira redação da F1, que levava também as Notas de observação ao JSON, foi um acréscimo de Claude, corrigido pela F1a; achado da Revisora sobre `a518d65e`).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e as mensagens do autor de 06/11/2026.
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
 
 ### D-358 · F2: a recalibração das Proezas entra depois das regras soltas, e leva a D18 (Ambidestria) e o cansaço do poder inato [tags: proezas, recalibracao, ambidestria, d18, poder-inato, cansaco, f2, escopo]
 - Data: 2026-11-06
@@ -4353,6 +4355,17 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: os itens 014, 016, 017, 019, 020 e 021; o preço fica para a revisão econômica. O "não recalcular fichas neste estudo" do item 014 (`99-sem-decisao.md`) vale para o estudo; a troca vem pela lista acima.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
 - Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+
+### D-361 · B1: a forma candidata da Regeneração é N PV por minuto, sempre ativa, até o PV máximo; a bancada mede antes de virar regra [tags: regeneracao, bancada, b1, r46, r47, d-246, desafio, trol, tarrasque, tick]
+- Data: 2026-11-06
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "B1. Forma candidata da regeneração, para a bancada (06/11/2026, DECIDIDA como candidata; completa a diretriz da R46)":
+    - Resposta do autor: Regeneração N = N PV por minuto, sempre ativa, até o PV máximo. A bancada mede o efeito em todas as criaturas com regeneração e traz quem ficou forte ou fraco demais (atenção ao meio-termo de N 20 a 30). A fraqueza segue a R47.
+- Também do autor (mensagem de 06/11/2026): "A fraqueza segue a R47 (interrompe toda a regeneração por um tempo, ou o dano da fraqueza não se regenera, conforme a ficha)." A bancada converte o minuto em Ticks pelo que o livro diz da duração do Tick (se o livro não fixar, vira pergunta), diz como fica o pulso no motor, compara o desafio com e sem regeneração em todas as criaturas que a têm (o trol, N 5, e a tarrasque, N 40, como as duas pontas) e traz o resultado como pergunta de regra, com os números. "Não mude ficha nem livro antes da resposta."
+- Fora do livro: a D-246 segue ("Regeneração N · sem regra ainda") até a resposta do autor.
+- Muda: completa a diretriz da R46; nada muda no livro nem nas fichas por ora.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026.
+- Estado: **candidata**, em medição na bancada.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
