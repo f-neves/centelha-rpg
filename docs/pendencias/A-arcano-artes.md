@@ -292,7 +292,7 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
     Golpe, o penúltimo (aviso de 4 a 6 Ticks, janela de sair do caminho 1 Tick menor, esticar decide nos Ticks
     4, 9 e 14). Calibrar ART-34, ART-5, ART-38 e ART-40 com o tempo antigo seria calibrar duas vezes. Medir o
     efeito no T6 de `docs/decisoes-partes/fase-de-testes.md`.
-- [ ] **A35 · [FAZER] Artes e Técnica que usam o nome das condições com outro efeito (Depois-3 da Revisora, 04/11/2026).**
+- [x] **~~A35 · [FAZER] Artes e Técnica que usam o nome das condições com outro efeito (Depois-3 da Revisora, 04/11/2026).~~ Fechada em 06/11/2026 (D-359), branch `a35-artes`.**
   Registrado em 04/11/2026, na revisão da branch `regras-r1-r20` (`tmp/revisora/revisao-regras-r1-r20.md`). O efeito
   de Arte vale pelo próprio texto (D-274; D-284, "se a arma ou o poder disser"), por isso nada aqui é erro de regra;
   mas o tabuleiro põe nestes efeitos um estado do painel que agora tem outra regra (Condições, D-281 a D-294):
@@ -303,3 +303,10 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   - `tecnicas.json`, `soco-trovejante`: "o atordoa (perde Ticks) se ele falhar num teste de Vigor", contra a R11 (Vigor + Resistência contra 10 + 5 × Margem).
   - `efeitos.json`, `mordaca` (Mordaça de Treva), `devorar-a-luz` (Devorar a Luz) e `noite` (Noite) aplicam `escuridao`, que desde a D-346 (05/11/2026) é lembrete da penumbra, sem número; ficam sem número até a revisão (ordem do autor de 05/11/2026).
   - Fazer, no tema 05 (Artes): revisar o `grid.condicao` destes nove efeitos e o texto da Técnica.
+  - **Feito em 06/11/2026 (D-359):** a Arte vale pelo próprio texto, e o texto agora diz o que cada uma é. Em `efeitos.json`: o
+    Definhar é o Atributo enfraquecido das Condições, pela duração da Arte; a Paralisia não é o Paralisado (o alvo se move e
+    age, com a penalidade); Devorar a Luz e Noite deixam Cego quem está no escuro total, e Ofuscado onde sobra penumbra, a
+    critério do Mestre. Passo Lento, Bolha Temporal, Peso e Mordaça de Treva não citam condição no texto, e o texto deles já
+    basta. Em `tecnicas.json`, o Soco Trovejante atordoa pela R11 (Vigor + Resistência contra 10 + 5 × Margem do golpe, atraso
+    pela tabela). O `grid.condicao` dos nove não muda agora: a lista do que muda em cada um está na N23 de
+    `N-grid-pendencias.md`, para a passada única do Grid (D-054).
