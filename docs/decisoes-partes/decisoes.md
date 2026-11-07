@@ -4299,6 +4299,58 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: substitui a L13 da D-352 ("terminar tudo antes; o merge vem no fim, de uma vez").
 - Origem: resposta do autor de 06/11/2026 no chat do Arquiteto.
 - Estado: **em vigor** desde 06/11/2026.
+- **A ordem anterior que a D-356 substitui** está na seção "L21 e L22. Ordem do merge (06/11/2026, DECIDIDA)" de `DECISOES-AUTOR.md`, copiada como está:
+  - "L21 e L22. Ordem do merge (06/11/2026, DECIDIDA)":
+    - O autor quer fechar todas as decisões antes do merge: primeiro a frente 2 (formato das observações), depois a 3 (bancada) e a 4 (regras abertas); só então o merge vai ao ar. O Grid não entra agora (D-054). Depois da frente 4, o autor quer olhar a formatação do site e o layout da página de criaturas. O merge já feito na pasta do Arquiteto fica guardado em branch própria, sem push.
+- **O registro do autor** (seção "Merge contínuo (06/11/2026, substitui a L13)" de `DECISOES-AUTOR.md`, copiada como está):
+  - "Merge contínuo (06/11/2026, substitui a L13)":
+    - O push do merge saiu antes da ordem de segurar (9dc8a021 no ar). O autor: deixar no ar, e o Arquiteto segue fazendo o merge de cada rodada pronta, com o PROCEDE da Revisora, enquanto o autor decide as regras.
+
+### D-357 · F1: a justificativa de ataques e poderes chega ao JSON e aparece no card; as Notas de observação chegam ao JSON, e o layout decide se mostra (provisória) [tags: bestiario, card, justificativa, notas, observacao, conversor, layout, f1]
+- Data: 2026-11-06
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "F1. Observações das fichas no card (06/11/2026, DECIDIDA, provisória)":
+    - Resposta do autor: pode colocar no card; quando chegar a revisão de layout, ele decide como fica e se fica. A justificativa de ataques e poderes passa a chegar ao JSON e aparece no card; as Notas de observação também passam a chegar ao JSON, para o layout decidir se mostra.
+- Fora do livro: é trabalho do conversor e do card (`scripts/conversor-criatura.mjs`, `BestaCard.astro`); a forma final fica para a revisão de layout.
+- Muda: nada registrado antes; a nota da revisão de layout segue com o autor.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+
+### D-358 · F2: a recalibração das Proezas entra depois das regras soltas, e leva a D18 (Ambidestria) e o cansaço do poder inato [tags: proezas, recalibracao, ambidestria, d18, poder-inato, cansaco, f2, escopo]
+- Data: 2026-11-06
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "F2. Escopo da frente 4 (06/11/2026, DECIDIDA)":
+    - Resposta do autor: a recalibração das Proezas entra depois que decidirmos as regras soltas. A D18 (Ambidestria) e o cansaço do poder inato vão com ela.
+- Fora do livro: nada a aplicar agora; é ordem de trabalho.
+- Muda: o escopo da frente 4 (DECISOES-AUTOR.md, "Frente 4: FECHADA em 06/11/2026").
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
+- Estado: **adiada** pelo autor, até a recalibração das Proezas.
+
+### D-359 · A35: as nove Artes e a Técnica com nome de condição valem pelo próprio texto; o marcador do Grid só usa a condição quando o efeito é ela [tags: arte, tecnica, condicao, definhar, soco-trovejante, paralisia, passo-lento, bolha-temporal, peso, mordaca, devorar-a-luz, noite, cego, ofuscado, atordoado, r10, r11, r14, r17, r18, d-274, d-054, a35]
+- Data: 2026-11-06
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "A35. As nove Artes e a Técnica com nome de condição (06/11/2026, aplicado sem pergunta; princípio: a Arte vale pelo próprio texto, D-274, e o marcador do Grid só usa uma condição quando o efeito é aquela condição)":
+    - definhar: é Atributo enfraquecido (R18), não Retardado; o marcador passa a ser o do Atributo enfraquecido.
+    - soco-trovejante (Técnica): "atordoa" segue a R11 (Vigor + Resistência contra 10 + 5 × Margem, graus de atraso), porque a R11 vale "se a arma ou o poder disser que atordoa".
+    - paralisia (Arte): o efeito é a penalidade de 2 × nível, não o Paralisado (R10); o marcador deixa de ser Imobilizado e passa a nomear o próprio efeito.
+    - passo-lento (+2 Ticks por nível) e bolha-temporal (tempo ao dobro ou à metade): valem pelo próprio texto, que é mais forte e escala com o nível; o marcador deixa de ser Retardado ou Acelerado e nomeia o efeito.
+    - peso ("anda devagar, não salta e não corre"): restrição de movimento, não atraso de ação; o marcador deixa de ser Retardado.
+    - mordaça (Mordaça de Treva), devorar-a-luz e noite: escuridão total deixa Cego quem está nela (a tabela de combate: "Cego, vendado ou no escuro total"); penumbra parcial fica Ofuscado, a critério do Mestre. O marcador "Na escuridão" deixa de ser usado por eles.
+    - O que mexe no grid.condicao vai à passada do Grid (D-054); o texto das Artes e da Técnica pode entrar já.
+- Fora do livro: o `grid.condicao` destes efeitos vai para a passada única do Grid (D-054), na N23; o texto das Artes e da Técnica entra já.
+- Muda: fecha a A35 das pendências; segue a D-274 (a Arte vale pelo próprio texto) e as R10, R11, R14, R17 e R18.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
+- Estado: **a implementar** pela Executora (o texto), em branch, com merge depois do PROCEDE da Revisora (D-356); o marcador, na passada do Grid.
+
+### D-360 · F3: seis armas entram no catálogo com números de combate, sem preço: armas de gigante, rocha arremessada, tridente, besta pesada, florete e forcado [tags: armas, catalogo, gigante, rocha, tridente, besta-pesada, florete, forcado, d-197, f3, bestiario, equivalencia]
+- Data: 2026-11-06
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "F3. Catálogo de armas (06/11/2026, DECIDIDA; itens 014, 016, 017, 019, 020, 021)":
+    - Resposta do autor: as seis entram agora no catálogo, com números de combate; o preço vem depois, na revisão econômica. São: armas de gigante, rocha arremessada, tridente, besta pesada, florete e forcado. Os números saem por analogia com as classes do catálogo (D-197: número é decisão da instância, escrito para revisão).
+- Fora do livro: os números saem por analogia com as classes do catálogo e ficam escritos para revisão (D-197). Se algum exigir regra nova (por exemplo, a escala das armas de gigante pelo Tamanho), a Executora para e o Arquiteto leva a pergunta ao autor. As fichas que hoje usam equivalência passam a usar a arma nova, por lista que vai à Bestiarista pelo autor (L18).
+- Muda: os itens 014, 016, 017, 019, 020 e 021; o preço fica para a revisão econômica.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
