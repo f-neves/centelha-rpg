@@ -1185,3 +1185,51 @@ export function enxamePorQuadrado(e: EntradaCriatura, individuos?: number) {
   const pvCheio = pvDoTamanho(e.atributos.vigor ?? 0, tamanho) + (e.bonusPV ?? 0);
   return {pvCheio, pv:Math.floor(pvCheio * presentes / cheio), individuos:presentes, minimo:Math.ceil(cheio/4), aindaEnxame:presentes*4>=cheio};
 }
+
+// ---- Regeneração N (D-362, B2 do autor, 07/11/2026; livro, Os Poderes das Criaturas, Regeneração)
+// "A criatura recupera N PV por minuto, até o PV máximo, sempre ativa: na luta, isso vale N/10 PV a cada 6 Ticks,
+// contados a partir do Tick em que ela sofreu o primeiro dano." O motor guarda a fração em décimos de PV (sem erro de
+// ponto flutuante: N 9 dá 0,9 por pulso, e dez pulsos dão 9 exatos). Um minuto são 60 Ticks (B2).
+// A fraqueza (R47) entra como parâmetro de quem chama, porque a ficha ainda não tem campo que diga qual das duas
+// formas vale: 'interrompe' (o dano da fraqueza para toda a regeneração por `duracaoTicks`) ou 'naoRegenera' (o dano
+// da fraqueza só fecha com outras curas, e o resto se regenera normalmente). Puro: não lê DOM nem a ficha.
+export type FraquezaDaRegeneracao = { forma: 'interrompe'; duracaoTicks: number } | { forma: 'naoRegenera' };
+export interface EstadoDaRegeneracao {
+    n: number; pvMax: number; pv: number;
+    /** décimos de PV guardados entre um pulso e outro */
+    decimos: number;
+    /** o Tick do próximo pulso; null até o primeiro dano */
+    proximoPulso: number | null;
+    /** forma 'interrompe': nenhum pulso antes deste Tick */
+    paradaAte: number;
+    /** forma 'naoRegenera': o dano da fraqueza que a regeneração não fecha */
+    travado: number;
+    fraqueza?: FraquezaDaRegeneracao;
+}
+export function regeneracaoInicial(n: number, pvMax: number, fraqueza?: FraquezaDaRegeneracao): EstadoDaRegeneracao {
+    if (!Number.isInteger(n) || n < 0) throw Error('Regeneração: N tem de ser inteiro e não negativo');
+    return { n, pvMax, pv: pvMax, decimos: 0, proximoPulso: null, paradaAte: -Infinity, travado: 0, ...(fraqueza ? { fraqueza } : {}) };
+}
+/** Leva a regeneração até o `tick`, pulso a pulso (cada 6 Ticks desde o primeiro dano). */
+export function regenerarAte(e: EstadoDaRegeneracao, tick: number): EstadoDaRegeneracao {
+    const s = { ...e };
+    while (s.proximoPulso !== null && s.proximoPulso <= tick) {
+        const teto = s.pvMax - s.travado;
+        if (s.proximoPulso >= s.paradaAte && s.pv < teto) {
+            s.decimos += s.n;
+            s.pv = Math.min(teto, s.pv + Math.floor(s.decimos / 10));
+            s.decimos = s.pv >= teto ? 0 : s.decimos % 10;
+        }
+        s.proximoPulso += 6;
+    }
+    return s;
+}
+/** O dano no `tick`: o primeiro dano abre a contagem; o da fraqueza aplica a forma que a ficha disser. */
+export function danoNaRegeneracao(e: EstadoDaRegeneracao, tick: number, dano: number, daFraqueza = false): EstadoDaRegeneracao {
+    const s = regenerarAte(e, tick);
+    s.pv = s.pv - dano;
+    if (s.proximoPulso === null) s.proximoPulso = tick + 6;
+    if (daFraqueza && s.fraqueza?.forma === 'interrompe') s.paradaAte = Math.max(s.paradaAte, tick + s.fraqueza.duracaoTicks);
+    if (daFraqueza && s.fraqueza?.forma === 'naoRegenera') s.travado = Math.min(s.pvMax, s.travado + dano);
+    return s;
+}
