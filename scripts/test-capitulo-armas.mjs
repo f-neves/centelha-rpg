@@ -511,9 +511,9 @@ for (const [nome, estraga] of Object.entries(estragosCatalogo)) {
 // "qual linha da tabela é a de cada arma" é escrita à mão abaixo (a medição de 10/10/2026 do plano, rodada 4d), de
 // propósito: se viesse de regras.json, a ficha e o teste leriam a mesma lista e concordariam errado.
 const LINHA_DA_ARMA = {
-  'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre', 'chicote'],
+  'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre', 'chicote', 'florete'],
   'Média': ['espada-longa', 'machado', 'espada-serrilhada', 'maca', 'picareta-de-guerra', 'martelo', 'maca-estrela'],
-  'Haste média': ['lanca', 'bordao'],
+  'Haste média': ['lanca', 'bordao', 'tridente', 'forcado'], // tridente, florete e forcado: F3, D-360 (06/11/2026)
   'Haste de Guerra': ['alabarda', 'glaive-serrilhada', 'lanca-longa', 'corrente-farpada'],
   'Pesada': ['montante', 'martelo-de-guerra', 'machado-pesado'],
   'Punhos': ['desarmado'],
@@ -574,7 +574,7 @@ function conferirFicha(mostra, comb, armas) {
 }
 {
   const catalogo = ARMAS.filter((x) => x.arma);
-  if (catalogo.length !== 44) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 44 (acrescente a nova em LINHA_DA_ARMA)`);
+  if (catalogo.length !== 47) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 47 (acrescente a nova em LINHA_DA_ARMA)`);
   const FP = await carregarTS('src/lib/ficha-pgr.ts');
   const CT = await carregarTS('src/lib/combate-tempo.ts');
   const dela = (R) => (w) => FP.anatomiaDaFicha(w, R);
