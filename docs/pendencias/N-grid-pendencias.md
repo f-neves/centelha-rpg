@@ -222,8 +222,9 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     - `passo-lento`: deixa `retardado` e nomeia o próprio efeito, +2 Ticks por nível em cada ação;
     - `bolha-temporal`: deixa `acelerado` e nomeia o próprio efeito, o tempo ao dobro ou à metade, escolhido ao conjurar; `instante` e `lapso`, que o mostram como `condicaoAparente`, são conferidos na mesma passada;
     - `peso`: deixa `retardado` e nomeia a restrição de movimento (anda devagar, não salta e não corre);
-    - `devorar-a-luz` e `noite`: deixam `escuridao` e passam a `cego` para quem está no escuro total; o Ofuscado da penumbra fica a critério do Mestre;
-    - `mordaca`: deixa `escuridao`, e o marcador nomeia o silêncio (o texto dela é de som, e não de vista);
+    - `devorar-a-luz`: deixa `escuridao` e passa a `ofuscado` (o texto é de crepúsculo, penumbra); o Cego onde não sobra luz nenhuma fica a critério do Mestre, sem número novo;
+    - `noite`: deixa `escuridao` e passa a `cego` (escuridão total), menos para o conjurador e quem ele escolheu, como o texto já diz;
+    - `mordaca`: deixa `escuridao`, e o marcador nomeia o silêncio. A A35 (D-359) citou a Mordaça de Treva entre as Artes de escuridão, mas o texto dela é só de silêncio ("Nenhum som sai da área") e não traz escuridão; por isso ela não ganha Cego nem Ofuscado (opção a do Arquiteto, 06/11/2026; vai ao autor como informação);
     - `soco-trovejante` (Técnica): o atordoamento pela R11 (Vigor + Resistência contra 10 + 5 × Margem, atraso pela tabela), que o Grid ainda não conta (ver o Atordoado acima).
   - **R40, R48, R49 e R51 (D-319, D-327, D-328 e D-330, 05/11/2026), o que o Grid precisa:**
     - **Atropelar:** ação nova, com 3 Ticks de Preparação, Golpe a cada Tick em que segue correndo depois do terceiro (o primeiro é o quarto, D-352) (avança como a Corrida, suposição de Claude) e 3 de Recuperação; Força pura com o Tamanho do atacante contra cada alvo no caminho; cada alvo escolhe Esquivar (Destreza + Esquiva, empate é do defensor) ou Parar (Força pura, tem de superar); quem não consegue sofre o dano do atropelamento (D-340: 1d6 de Impacto no Médio, +1d6 por categoria acima, + Margem + 2 × Força + Centelha − Absorção; o Pequeno sem dado; menor que Pequeno não atropela) e fica Caído.

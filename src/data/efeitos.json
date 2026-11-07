@@ -4735,7 +4735,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Apaga toda a luz da área, mágica ou não: tocha, sol, feitiço. Ninguém enxerga nada lá dentro, exceto você e quem você escolher ao conjurar. No escuro total, quem está dentro fica Cego; onde sobra penumbra, Ofuscado, a critério do Mestre.",
+    "efeito": "Apaga toda a luz da área, mágica ou não: tocha, sol, feitiço. Ninguém enxerga nada lá dentro, exceto você e quem você escolher ao conjurar. Quem está dentro e não enxerga fica Cego.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",
@@ -5851,7 +5851,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado. No escuro total, quem está dentro fica Cego; onde sobra penumbra, Ofuscado, a critério do Mestre.",
+    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado. Quem está dentro fica Ofuscado; onde não sobra luz nenhuma, Cego, a critério do Mestre.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",
