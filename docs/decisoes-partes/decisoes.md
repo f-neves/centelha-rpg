@@ -4306,14 +4306,16 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - "Merge contínuo (06/11/2026, substitui a L13)":
     - O push do merge saiu antes da ordem de segurar (9dc8a021 no ar). O autor: deixar no ar, e o Arquiteto segue fazendo o merge de cada rodada pronta, com o PROCEDE da Revisora, enquanto o autor decide as regras.
 
-### D-357 · F1 e F1a: a justificativa de ataques e poderes chega ao JSON e aparece no card; as Notas de observação continuam fora do JSON (provisória) [tags: bestiario, card, justificativa, notas, observacao, conversor, layout, f1, f1a, d-219, d-222, d-224]
+### D-357 · F1, F1a e F1b: a justificativa dos ataques chega ao JSON e aparece no card (os poderes não ganham); as Notas de observação continuam fora do JSON (provisória) [tags: bestiario, card, justificativa, notas, observacao, conversor, layout, f1, f1a, d-219, d-222, d-224]
 - Data: 2026-11-06
 - Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está, já com a F1a):
   - "F1. Observações das fichas no card (06/11/2026, DECIDIDA, provisória)":
     - Resposta do autor: pode colocar no card; quando chegar a revisão de layout, ele decide como fica e se fica. A justificativa de ataques e poderes passa a chegar ao JSON e aparece no card.
     - F1a (06/11/2026): a extensão às Notas de observação foi um acréscimo de Claude que contradizia a D-219, a D-222 e a D-224. Resposta do autor: só a justificativa entra; as Notas continuam fora do JSON (D-219, D-222 e D-224 ficam como estão), e o que mostrar delas se decide na revisão de layout.
+  - "F1b. Justificativa dos poderes (06/11/2026, DECIDIDA)":
+    - Resposta do autor: "não acho que precisa de explicativa". Os poderes ficam sem justificativa no card (a linha do poder já descreve o que ele faz); só os ataques ganham a justificativa (F1). Nenhum pedido à Bestiarista; as notas "habilidadesEspeciais.<poder>" continuam fora do JSON (D-219).
 - Também do autor (resposta à pergunta do Arquiteto, 06/11/2026): "Pode soltar a F1 com essa correção: esquema, conversor e card só para a justificativa, Revisora confere, e merge com o PROCEDE."
-- Fora do livro: é trabalho do conversor e do card (`scripts/conversor-criatura.mjs`, `BestaCard.astro`); a forma final fica para a revisão de layout.
+- Fora do livro: é trabalho do conversor e do card (`scripts/conversor-criatura.mjs`, `BestaCard.astro`), só para os 520 ataques com a célula Justificativa; nada é pedido à Bestiarista. A forma final fica para a revisão de layout.
 - Muda: nada. A D-219, a D-222 e a D-224 ficam como estão (a primeira redação da F1, que levava também as Notas de observação ao JSON, foi um acréscimo de Claude, corrigido pela F1a; achado da Revisora sobre `a518d65e`).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e as mensagens do autor de 06/11/2026.
 - Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
