@@ -2752,6 +2752,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor, 23/10/2026, item 1 da mensagem; o autor autoriza o registro): "toda criatura vai usar o maior atributo entre Força e Destreza para atacar e vai usar a maior defesa entre Bloqueio e Esquiva para defender. Se for diferente disso é trabalho do Mestre." A mensagem segue, fora das aspas do autor: "Vale para o corpo a corpo; tiro e arremesso seguem o livro (combate.md:156: arco pela Percepção, arremesso pela Destreza)." Item 3 da mesma mensagem, como consequência: "Os 36 ataques de 27 animais que usavam a Força com Destreza maior: aplique a Destreza na jogada, pelo fluxo de ajuste, como consequência do item 1. Não é ponto de revisão final. O dano continua pela Força."
 - Origem: mensagem do autor de 23/10/2026, sobre a jogada das fichas e dos animais (o achado da Executora: 36 ataques de 27 animais publicados pela Força com a Destreza maior).
 - Estado: **aplicada em 23/10/2026.** O card do editor e o conversor do site já faziam assim desde 23/10 (o corpo a corpo pelo maior; o conversor para na frase "Jogada:" com o menor), e os 36 ataques dos 27 animais já estão no ar pelo merge `2df6cdaa`; as fichas dos animais não têm frase "Jogada:" a corrigir. A Defesa das fichas v3 já é a maior entre Esquiva e Bloqueio (`scripts/fichas-v3-para-bestiario.mjs`). No manual (seção 5.2, item 8) e no LEIA-ME da Bestiarista. A Defesa contra tiro e a regra do projétil rápido (só Esquiva ou escudo hábil) não mudam: a decisão vale para o corpo a corpo.
+- **Substituída em parte em 07/11/2026 pela D-364** (G2): o arremesso passa a ser com Força ou Destreza, à escolha de quem arremessa; o tiro segue o livro.
 
 ### D-209 · O dano de arma é sempre pela Força; "ágil" não soma Destreza [tags: bestiario, criatura, dano, forca, destreza, agil, arma, adaga, assassino, b20]
 - Data: 2026-10-23
@@ -4417,7 +4418,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
     - Resposta do autor: arremessar pode ser com Força ou Destreza. Leitura: à escolha de quem arremessa, como no corpo a corpo ("Destreza ou Força, à escolha de quem ataca, normalmente o maior dos dois"), para toda arma de arremesso.
 - Também do autor (mensagem de 07/11/2026, item 2): "Corrija o texto do Arremesso e do Atirador onde disser só Destreza."
 - Fora do livro: o motor de arremesso passa a ler o maior entre Força e Destreza; a Jogada do projétil natural (D-315) é outra regra e não muda.
-- Muda: completa a D-360; o texto do livro que dizia só Destreza para o arremesso.
+- Muda: substitui em parte a D-208 (o pedaço "tiro e arremesso seguem o livro (combate.md:156: arco pela Percepção, arremesso pela Destreza)", para o arremesso; o tiro segue) e completa a D-360; corrige o texto do livro que dizia só Destreza para o arremesso. Fica como está o "Pegar o de retorno Cortante pede Destreza + Arremesso" da D-076, que é pegar o bumerangue de volta, e não atacar (achado da Revisora sobre `d4bb62ab`).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
 - Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
 
@@ -4447,7 +4448,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 ### D-367 · G5: o "atrasa a regeneração" é a primeira forma da R47, com o tempo na ficha; os tipos de fraqueza viram lista fechada (prata, ferro frio, arma abençoada, fogo, ácido, luz do sol) [tags: regeneracao, fraqueza, r47, d-326, d-362, tarrasque, vocabulario, prata, ferro-frio, arma-abencoada, fogo, acido, luz-do-sol, g5]
 - Data: 2026-11-07
 - Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
-  - "G5. A fraqueza que "atrasa" a regeneração, e o vocabulário (07/11/2026, DECIDIDA)":
+  - "G5. A fraqueza que 'atrasa' a regeneração, e o vocabulário (07/11/2026, DECIDIDA)":
     - Resposta do autor: a recomendada. O "atrasar" do tarrasque é a primeira forma da R47 (interrompe a regeneração por um tempo), com o tempo escrito na ficha (curto). O vocabulário das fraquezas vira lista fechada: prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, e o que mais o Mestre quiser acrescentar.
 - Também do autor (mensagem de 07/11/2026, item 5): "Ponha a lista no livro, junto da R47, e no esquema do conversor; nome fora da lista vira aviso."
 - Fora do livro: o esquema do conversor ganha a lista; o tarrasque e as fichas com nome fora da lista vão à Bestiarista por lista (L18).
