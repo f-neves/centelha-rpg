@@ -4241,6 +4241,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Ponto aberto, para o autor: o texto aprovado da L14 diz "Ferraria para o metal", e o ofício do livro é "Ferreiro" (`acoes-oficio-e-mundo.md`, a lista dos ofícios). Entrou como está. **Respondido pela D-354 (06/11/2026):** passa a "Ferreiro para o metal".
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05 e 06/11/2026 às 13 perguntas do relatório do Arquiteto das 17:41 de 05/11.
 - Estado: **no ar** desde 06/11/2026 (branch `regras-leitora-8`, publicada em `b9c616a9`, no merge do fim da L13).
+- **A L13 (o merge no fim, de uma vez) foi substituída pela D-356** em 06/11/2026: o merge volta a sair por rodada pronta, com o PROCEDE da Revisora antes do push.
 
 ### D-353 · Triagem da leitura de Combate e Resistir: os itens que ficaram por conferir [tags: combate, arte, nivel, golpes-simultaneos, resistir, sede, fome, leitora, d-087, d-346, d-351]
 - Data: 2026-11-06
@@ -4283,10 +4284,21 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
     - Resposta do autor: são ataques diferentes. Investida é o ataque em um alvo; Atropelar é o ataque em linha (R40). As 13 (auroque, besouro-veado-gigante, bisão, boi, braquiossauro, cavalo, elefante, estegossauro, mamute, mastodonte, pônei, rinoceronte, tricerátops) ganham o Atropelar, e quem tinha Investida própria na fonte (elefante, rinoceronte, auroque, bisão, boi, tricerátops e o que mais a fonte trouxer) mantém a Investida. O teste da D-269 passa a contar o número novo.
     - Gigante do gelo: segue o item 116 (imunidade ao frio do clima, não ao dano de gelo); o autor não vetou.
 - Também do autor (mensagem de 06/11/2026): "A Bestiarista refaz as 13 num lote novo; quando o lote chegar, a Executora faz a entrada delas como na etapa c), e o teste da D-269 passa a contar o número novo." E: "O texto 'o gelo não o fere' da seção 'No jogo' (...) vai para ela corrigir."
-- Fora do livro: as 13 seguem retidas, com o JSON publicado intacto, até o lote novo da Bestiarista (lista dela em `../tmp/arquiteto/bestiarista-entrada-r35-06-11.md`). O mephit com "Ataque: 0d6" na mesa fica na lista do Grid (D-054), pelo parecer da Revisora de que não segura a ficha.
+- Fora do livro: as 13 ficaram retidas, com o JSON publicado intacto, até o lote novo da Bestiarista (lista dela em `../tmp/arquiteto/bestiarista-entrada-r35-06-11.md`); o lote r-retidas-06-11 as trouxe (ver o Estado). O mephit com "Ataque: 0d6" na mesa fica na lista do Grid (D-054), pelo parecer da Revisora de que não segura a ficha.
 - Muda: completa a D-319 (R40) e a D-269 (a contagem de Investidas do teste muda com o lote novo).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026.
 - Estado: **no ar** desde 06/11/2026: o lote r-retidas-06-11 entrou na branch `executora` (`9f0eaeab`), publicada em `ce1fc1c2`, no merge do fim da L13; o teste da D-269 conta 30 Investidas.
+
+### D-356 · O merge volta a sair por rodada pronta, com o PROCEDE da Revisora antes do push; substitui a L13 [tags: merge, push, revisora, procede, branch, l13, d-352]
+- Data: 2026-11-06
+- Decisão (autor; resposta à pergunta do Arquiteto sobre o merge `9dc8a021`, que já estava no ar quando chegou a ordem de segurar o push, copiada como está):
+  - "Resposta do autor: opção 1. O merge 9dc8a021 fica no ar; não reverta nada nem force push."
+  - "Nova regra, que substitui a ordem anterior e a L13: você pode fazer o merge de cada rodada pronta, como antes, sempre com o PROCEDE da Revisora antes do push. O autor segue decidindo as regras em paralelo. A branch merge-fim-06-11 pode ser apagada, porque o main já tem os três commits."
+  - "Com isso, as duas frentes do último prompt (o campo da justificativa e das notas no card, pela F1, e a bancada) saem em branches a partir do main atual (9dc8a021), e cada uma vai ao ar quando a Revisora aprovar."
+- Fora do livro: o trabalho segue em branch a partir do `main`; cada rodada pronta vai ao `main` por merge, e o push só sai depois do PROCEDE da Revisora sobre a versão final. A branch `merge-fim-06-11` foi apagada (apontava para `9dc8a021`, que já é o `main`).
+- Muda: substitui a L13 da D-352 ("terminar tudo antes; o merge vem no fim, de uma vez").
+- Origem: resposta do autor de 06/11/2026 no chat do Arquiteto.
+- Estado: **em vigor** desde 06/11/2026.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
