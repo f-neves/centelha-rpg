@@ -85,7 +85,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida com o pescoço atrás, Média, como a do tiranossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 10 e Briga 5 (10)"
     },
     {
       "nome": "Garras",
@@ -101,7 +102,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A garra do braço com o corpo atrás, Média. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 10 e Briga 5 (10)"
     },
     {
       "nome": "Cauda",
@@ -117,7 +119,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A cauda que varre com o giro do corpo inteiro: Pesada, Força × 2 (manual 7.6). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 10 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

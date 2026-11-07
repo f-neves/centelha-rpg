@@ -96,7 +96,8 @@
   "ataques": [
     {
       "nome": "Bastão",
-      "arma": "bastao"
+      "arma": "bastao",
+      "justificativa": "A arma do livro (`armas.json`, `bastao`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★I. A Centelha soma inteira. Jogada: Destreza 5 + Armas 2 + 2 × o menor entre Centelha 2 e Armas 2 (4)"
     }
   ],
   "habilidadesEspeciais": [

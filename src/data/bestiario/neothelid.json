@@ -100,7 +100,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava \"Garras e presas\" de 3 dados e 7 Ticks; o neothelid ataca com as línguas tentaculares (site), que descem com o peso de um verme de 6 t: Pesada, com os 7 Ticks do site. Golpe de membro: Força × 1. A Centelha soma inteira. Agarra (Manobras). Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

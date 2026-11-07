@@ -104,7 +104,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Era 1d6 + 9, média 12,5: a Força desce de 9 para 7 (D-115); a sétima rodada não a muda. Golpe que pede o corpo atrás (seção 7). A pinça esmaga, e não corta: fica Impacto, como a mordida que esmaga (ver as notas). Quebra concha de ostra e de caranguejo (fishconsult.org)"
     }
   ],
   "habilidadesEspeciais": [

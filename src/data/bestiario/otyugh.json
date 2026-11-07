@@ -111,7 +111,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava 2 dados e 6 Ticks; o golpe de 2 dados é o Pesado da tabela (regra-construcao §7), a boca que fecha e torce, com Velocidade 7. Golpe de boca: Força × 1. N1 pela boca de um corpo de 500 kg (proposta da regra-construcao). A Centelha soma inteira. Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Tentáculo",
@@ -127,7 +128,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O golpe de chicote que pede o corpo atrás (Média), com os 6 Ticks do site; alcança 4,5 m (site). Prende quem acerta (Manobras). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [

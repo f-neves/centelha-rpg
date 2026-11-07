@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Os \"Punhos gelados\" do site (1 dado, impacto, 5 Ticks): o punho de um corpo de 2,1 m, Média como o Punho de pedra do golem de pedra (`regra-construcao.md` §7), golpe de membro, Força × 1; a Velocidade passa de 5 a 6 com a classe. O frio vem pelo Frio cortante (Manobras). Jogada: Força 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

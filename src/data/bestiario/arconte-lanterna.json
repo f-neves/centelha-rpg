@@ -85,7 +85,8 @@
       "tipoDano": "fenomeno",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Feixe natural (base Luz 3); jogada o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 2 e Atirador 3. Só Centelha absorve fenômeno (C-041)"
     }
   ],
   "habilidadesEspeciais": [
@@ -323,7 +324,7 @@
     },
     {
       "campo": "ataques.Raio de luz",
-      "motivo": "Feixe natural (base Luz 3); jogada o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 2 e Atirador 3. Só Centelha absorve fenômeno (C-041); R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, o maior entre Vigor, Destreza e Percepção + Atirador -> uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Pela régua da Arte de base. R3 e D-197. P/G/R do ataque 3/1/3 -> 1/1/3 para o golpe sair na Velocidade 5 do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+      "motivo": "Feixe natural (base Luz 3); jogada o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 2 e Atirador 3. Só Centelha absorve fenômeno (C-041); R36: projétil dirigido a um alvo, com o maior entre Vigor, Destreza e Percepção + Atirador. Antes: o bônus de Centelha ainda citava Disparo. Corrigida a referência para Atirador.; R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, o maior entre Vigor, Destreza e Percepção + Atirador -> uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Pela régua da Arte de base. R3 e D-197. P/G/R do ataque 3/1/3 -> 1/1/3 para o golpe sair na Velocidade 5 do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
     },
     {
       "campo": "habilidadesEspeciais.Círculo contra o mal",

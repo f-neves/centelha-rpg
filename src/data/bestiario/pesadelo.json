@@ -88,7 +88,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Os \"Cascos flamejantes\" do site (2 dados, 6 Ticks, impacto): o coice ou a pisada com o corpo virado, Pesada, como o coice do cavalo do molde; Força × 1, golpe de membro (`regra-construcao.md` §7). O fogo vai nas Manobras. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Mordida",
@@ -104,7 +105,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Mordida\" do site (1 dado, 5 Ticks): a mordida de cavalo, Leve, como a do cavalo do molde. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

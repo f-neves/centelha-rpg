@@ -80,7 +80,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Garras rudimentares: ataque simples, dano baixo\" (site) e o \"Golpe planar\" de 1 dado e 5 Ticks: a mão mole de garras, gesto rápido de membro, Leve (`regra-construcao.md` §7). Jogada: Força 3 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

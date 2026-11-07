@@ -96,7 +96,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A patada de urso, com o corpo atrás: Média, como a patada do urso-pardo. Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 0 e Briga 4 (0)"
     },
     {
       "nome": "Bico",
@@ -112,7 +113,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"bico cortante\" do site: bico de coruja do tamanho de uma cabeça de urso, com o pescoço atrás: Média; bico grande em N1 . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 0 e Briga 4 (0)"
     }
   ],
   "habilidadesEspeciais": [

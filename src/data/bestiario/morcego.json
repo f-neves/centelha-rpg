@@ -111,7 +111,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena: Leve. Incisivos e caninos afiados cortam um pedaço raso de pele, e o bicho lambe o sangue (pesquisa). Força 0: só o dado (D-115). A saliva anticoagulante faz a ferida sangrar por horas (revisão de 2023, PMC10258787): texto para o Mestre. A Força não muda: segue 1,5"
     }
   ],
   "habilidadesEspeciais": [

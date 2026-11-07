@@ -118,7 +118,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque é o mesmo; a Força da fórmula volta a 2 (sétima rodada), e o dano médio sobe de 1,5 para 3,5 (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Leve, como a do lobo (seção 7). Força × 1 (golpe de boca). A mordida do rato (13 N) escalada pelo quadrado do tamanho dá cerca de 159 N : N0"
     }
   ],
   "habilidadesEspeciais": [

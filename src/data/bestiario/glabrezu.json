@@ -95,7 +95,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Duas pinças esmagam\" (site): a pinça que fecha com o braço inteiro atrás, Média (`regra-construcao.md` §7). Duas por ação pela Rajada (Manobras). Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     },
     {
       "nome": "Garras",
@@ -111,7 +112,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Duas garras cortam\" (site): os braços menores, gesto rápido de membro, Leve. Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

@@ -99,7 +99,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Garras ósseas\" (site): o braço com o corpo atrás, Média (`regra-construcao.md` §7). \"Dois ataques na mesma ação\" (site): pela Rajada (Manobras). Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Ferrão",
@@ -115,7 +116,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Ferrão que enfraquece\" (site): a cauda que pica de cima, com o corpo atrás, Média. Leva o veneno (Veneno e doença). Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

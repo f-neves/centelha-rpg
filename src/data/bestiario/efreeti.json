@@ -96,7 +96,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte, 6 Ticks): \"sua pele soca e machuca como brasa\" (site, Corpo em chamas). O punho de um corpo de 3,6 m com o peso atrás: Pesada, Velocidade 7, golpe de membro, Força × 1 (`regra-construcao.md` §7), o mesmo caminho dos golens e dos gigantes (D-241); os 2 dados ficam. O tipo passa a Impacto, porque é punho, e não lâmina; o fogo vem pelo Corpo em chamas (Manobras). Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

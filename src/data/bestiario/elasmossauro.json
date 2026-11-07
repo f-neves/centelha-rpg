@@ -95,7 +95,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "1,5 + 7; era 1d6 − 2 + 9, média 10,5. Seção 7: Leve é o gesto rápido de boca pequena, como no plesiossauro. Dentes de agarrar, não de rasgar, de 17 a 19 na mandíbula; engolia a presa inteira (Wikipédia). Força × 1. N0 ."
     }
   ],
   "habilidadesEspeciais": [

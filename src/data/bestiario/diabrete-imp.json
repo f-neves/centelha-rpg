@@ -98,7 +98,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Ferrão venenoso\" (site) e o \"Golpe planar\" de 1 dado e 5 Ticks: o ferrão de bicho pequeno, gesto rápido, Leve (`regra-construcao.md` §7). Leva o veneno (Veneno e doença). Jogada: Destreza 5 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     }
   ],
   "habilidadesEspeciais": [

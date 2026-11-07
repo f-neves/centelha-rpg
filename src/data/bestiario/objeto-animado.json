@@ -79,7 +79,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Pancada\" do site (1 dado, impacto, 5 Ticks): o móvel que tomba e bate com a própria massa (site, Golpe bruto). Média, de 1 dado como no site (`regra-construcao.md` §7); a Velocidade passa de 5 a 6 com a classe. Jogada: Força 4 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

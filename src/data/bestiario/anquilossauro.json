@@ -98,7 +98,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 30, média 37. 7 + 22. \"Cauda, clava\" é Impacto na seção 7; golpe do corpo inteiro, × 2. Modelo em outros gêneros (Arbour 2009): clava média de 962 a 2.014 N, talvez quebra osso; grande de 7.281 a 14.360 N, muito provavelmente quebra. A clava conhecida do Ankylosaurus (49 cm de largura) fica no topo da média, e a do maior espécime (cerca de 57 cm) entra na grande (Arbour e Mallon 2017)."
     }
   ],
   "habilidadesEspeciais": [

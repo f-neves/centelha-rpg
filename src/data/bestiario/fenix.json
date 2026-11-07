@@ -104,7 +104,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe rápido de membro, como o talão da águia-real: Leve (`regra-construcao.md` §7). O fogo vai no Manto de chamas. Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     },
     {
       "nome": "Bico",
@@ -120,7 +121,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico em gancho com o pescoço atrás: Média, como o bico do grifo; bico grande em N1 . Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     },
     {
       "nome": "Garras em mergulho",
@@ -136,7 +138,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b). Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

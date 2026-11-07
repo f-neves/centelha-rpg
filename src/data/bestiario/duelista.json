@@ -80,7 +80,8 @@
   "ataques": [
     {
       "nome": "Lâmina leve",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1), no lugar do \"Florete\" do site, que o livro não tem. A Centelha soma inteira. Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     }
   ],
   "habilidadesEspeciais": [

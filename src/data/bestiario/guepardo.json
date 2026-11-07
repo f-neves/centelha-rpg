@@ -97,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Caninos pequenos e cônicos (Wikipédia); agarra a garganta e estrangula (ADW). Leve: boca pequena (seção 7). N0: mordida absoluta não achada; o modelo de 2011 dá 689 N com crânio escalado (forma, não força real). Não muda: a Força continua 2."
     },
     {
       "nome": "Patada com o ergot",
@@ -113,7 +114,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A unha do \"polegar\" é grande, curva e afiada, e a pata derruba a presa em corrida (ADW). Não muda. Opção (D-097)."
     }
   ],
   "habilidadesEspeciais": [

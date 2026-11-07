@@ -91,7 +91,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O punho de um gigante com o corpo girando atrás (site: 2 dados, 6 Ticks). Pesada pelo gesto (`regra-construcao.md` §7, \"o golpe do corpo inteiro, com carga ou rotação\"); golpe de membro, Força × 1, como o coice do cavalo. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
       "nome": "Rocha arremessada",
@@ -108,7 +109,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Arremesso de rocha\" do site, \"dano de arma grande\", até 36 m. Pesada (rocha de 20 a 40 kg lançada com o corpo); a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

@@ -86,7 +86,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"golpe pesado e lento\" da ficha publicada: o braço inteiro balançado, com o corpo atrás e sem técnica, é golpe Médio (`regra-construcao.md` §7), e não o Leve do site. Golpe de membro: Força × 1. A Centelha soma inteira no dano (`centelha.md`). Jogada: Força 4 + Briga 2 + 2 × o menor entre Centelha 1 e Briga 2 = 2"
     }
   ],
   "habilidadesEspeciais": [

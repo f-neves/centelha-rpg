@@ -99,7 +99,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena, golpe rápido: Leve (`regra-construcao.md` §7). Golpe de boca: Força × 1. Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     },
     {
       "nome": "Garras",
@@ -115,7 +116,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra miúda, Leve (§7). Bloqueia como a mão nua (D-100). Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     },
     {
       "nome": "Ferrão",
@@ -131,7 +133,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Ferrão sonífero\" do site: a cauda fina estala e crava o ferrão; Leve e Força × 1, a exceção da cauda de chicote. Inocula o veneno do sono (Veneno e doença). Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

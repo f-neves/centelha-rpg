@@ -93,7 +93,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"mordida reptiliana\" do site, Média: a mandíbula de lagarto que fecha e segura. Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     }
   ],
   "habilidadesEspeciais": [

@@ -88,7 +88,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (2 dados, 6 Ticks, impacto, \"acerto agarra e constringe\"): a vinha grossa chicoteia e enrola, Pesada pelo peso que leva. Golpe de membro: Força × 1. Alcance: 3 m (a metade da vinha que se ergue; a outra ancora) . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

@@ -96,7 +96,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida de lobo grande (`regra-construcao.md` §7). Golpe de boca: Força × 1. N0, como o lobo e o lobo atroz do molde (mordida abaixo de 4.000 N) . Jogada: Força 6 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     },
     {
       "nome": "Garras",
@@ -112,7 +113,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Patada de garra, Média (§7). Bloqueia como a mão nua (D-100). Jogada: Força 6 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     }
   ],
   "habilidadesEspeciais": [

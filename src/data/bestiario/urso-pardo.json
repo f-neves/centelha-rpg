@@ -114,7 +114,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O golpe com o ombro atrás: Média. Garra é Cortante (`regra-construcao.md` §7). Garras de média 45 mm, até 150 mm (NPS). Era 1d6 + 8, média 11,5."
     },
     {
       "nome": "Mordida",
@@ -130,7 +131,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "751 a 1.627 N no canino (Wroe 2005; Różycka 2024, crânio seco), abaixo de 4.000 N: N0. Opção, não segundo golpe (D-097). Era 1d6 + 8, média 11,5."
     }
   ],
   "habilidadesEspeciais": [

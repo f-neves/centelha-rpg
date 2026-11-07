@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Arco longo",
-      "arma": "arco-longo"
+      "arma": "arco-longo",
+      "justificativa": "A arma do livro (`armas.json`, `arco-longo`): Distância, duas mãos, Velocidade 7, Acerto +0, ★P(N1), efetiva 50 m, máximo 250 m; soma a Força inteira. Jogada de Percepção + Atirador: 3 + 4"
     },
     {
       "nome": "Punhos",
@@ -99,7 +100,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Luta desarmada do livro (Briga), quando o inimigo chega perto. Jogada: Destreza 4 + Briga 1"
     }
   ],
   "habilidadesEspeciais": [
@@ -191,6 +193,10 @@
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "ataques.Arco longo",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "equipamento",

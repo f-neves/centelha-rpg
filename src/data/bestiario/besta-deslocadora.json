@@ -86,7 +86,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O chicote do tentáculo com o ombro atrás: Média; alcança até 1,8 m, o comprimento do tentáculo (D-180, ponto 19) . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Mordida",
@@ -102,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de felino grande: Média, como a do leão. Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [

@@ -81,7 +81,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte): a mordida de uma cabeça do tamanho da humana, boca pequena e gesto rápido, Leve (`regra-construcao.md` §7). O veneno vai em Veneno e doença. Jogada: Destreza 3 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     }
   ],
   "habilidadesEspeciais": [

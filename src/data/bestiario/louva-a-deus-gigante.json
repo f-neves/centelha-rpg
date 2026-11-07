@@ -115,7 +115,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 7, média 8,5. Golpe rápido de membro: a tíbia gira a 7.650 graus por segundo (Garikipati et al. 2025). O fêmur e a tíbia fecham um sobre o outro com espinhos, que furam e prendem; N0, só fura pele"
     },
     {
       "nome": "Mandíbulas",
@@ -131,7 +132,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 7, média 8,5. Come a presa viva, a cabeça primeiro (Nyffeler et al. 2017, via divulgação). Opção (D-097)"
     }
   ],
   "habilidadesEspeciais": [

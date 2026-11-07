@@ -97,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Arma\" do site (1 dado, corte, 5 Ticks) é a mordida, que manifesta o sono mágico (P3, Ferrão sonífero): bote rápido, Leve (`regra-construcao.md` §7). O tipo passa a Perfuração, porque são presas. Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

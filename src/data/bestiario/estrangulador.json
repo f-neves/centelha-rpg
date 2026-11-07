@@ -99,7 +99,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (\"Garras e presas\", 1 dado, 5 Ticks, perfurante): as garras dos dedos, gesto rápido de membro, Leve (`regra-construcao.md` §7). A Centelha soma inteira. Jogada: Força 4 (igual à Destreza 4) + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     }
   ],
   "habilidadesEspeciais": [

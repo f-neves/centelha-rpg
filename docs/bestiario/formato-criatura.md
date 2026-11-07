@@ -118,6 +118,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 | `nivelPerfuracao` | inteiro ou null | `Nível de Perfuração` |
 | `acerto` | inteiro | `Acerto` |
 | `bloqueiaComoArma` | inteiro ou null | `Bloqueia como arma` ("sim (+1)" dá 1, "não" dá null) |
+| `justificativa` | texto, condicional (também no ataque com `arma`) | `Justificativa`, sem as marcas de trabalho; o card a mostra miúda (F1, D-357, 06/11/2026). O ataque da forma, que sai da Variante, não a herda |
 
 A coluna `Velocidade` da ficha não vai: é P + G + R, e o motor soma (D-221). O conversor confere a soma e para se ela não bater.
 
@@ -143,6 +144,8 @@ Não há `atrib`: o motor tira o Atributo da Habilidade. Disparo usa Vigor; Atir
 | `lore` | lista de `{titulo, texto}` | sim | · | **não vem da ficha**: é o lore do site, com as linhas `Ambientação:` trocando o parágrafo de mesmo título. Sai o "No jogo" (os números à mão, D-216) e a frase "Social: ..." que o conversor de hoje cola no "Comportamento", porque ela repete `comportamento.social` |
 | `imagens` | lista de caminhos | sim | · | Visual, "Imagem atual"; o site |
 | `revisao` | lista de `{campo, motivo}` (D-222); só no JSON-fonte (D-224) | sim (pode ser vazia) | · | as Notas de observação e as marcas `[provisório]` e `[extrapolação]` (seção 7) |
+
+Nas Notas de observação, o nome com o prefixo do campo (`` `ataques.Sopro de frio` ``) aponta para o campo e entra na `revisao` como o nome solto; o que não aponta dá aviso, e não some calado (F1, 06/11/2026). As Notas não vão ao JSON fora da `revisao` (D-224; F1a do autor, 06/11/2026).
 
 Cada item de `habilidadesEspeciais`:
 

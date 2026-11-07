@@ -90,7 +90,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 + 8, média 11,5. Cabeça grande com carniceiros em lâmina e pré-molares de quebrar osso (Wang 2005, via Wikipédia): Média. N1 [extrapolação]: nenhuma força estimada para o hienodonte (Wroe et al. 2005 não o inclui); a hiena-malhada, de 65 kg e com a mesma função, mede 4.500 N (Binder e Van Valkenburgh 2000), e um bicho de 300 kg com a mesma função não fica abaixo dos 4.000 N do corte."
     }
   ],
   "habilidadesEspeciais": [
@@ -237,6 +238,10 @@
     {
       "campo": "comportamento.caca",
       "motivo": "Morlo et al. 2010, via Wikipédia"
+    },
+    {
+      "campo": "ataques.Mordida",
+      "motivo": "N1 por extrapolação da hiena-malhada e da função de quebrar osso; sem estimativa própria"
     }
   ]
 }

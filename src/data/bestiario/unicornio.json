@@ -93,7 +93,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O chifre em espiral com o pescoço atrás: Média, como a chifrada do auroque; bloqueia como arma (D-100). Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     },
     {
       "nome": "Coice",
@@ -109,7 +110,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O coice com o corpo virado, Pesada, como o coice do cavalo do molde; Força × 1, golpe de membro (`regra-construcao.md` §7). Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     },
     {
       "nome": "Chifre em investida",
@@ -125,7 +127,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b). Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     }
   ],
   "habilidadesEspeciais": [

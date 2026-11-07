@@ -120,7 +120,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Força de mordida de cerca de 13 N (Nies e Ro 2004, citado por Cox 2015): N0. Mordidas reais em gente: 61% perfurações, 14% lacerações de menos de 1 cm (Ordog 1985). Um ataque por ação (D-097)"
     }
   ],
   "habilidadesEspeciais": [

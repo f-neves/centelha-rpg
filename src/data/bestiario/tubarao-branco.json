@@ -107,7 +107,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "7 + 8; era 2d6 + 11, média 18. Seção 7: a mordida que agarra e torce; dentes triangulares e serrilhados de até 7,5 cm, cerca de 300 em fileiras (Florida Museum; Wikipédia). Força × 1 (boca). N1 : 3.131 N atrás num exemplar de 2,5 m e 240 kg e 18.216 N escalado para 6,4 m (Wroe 2008); o adulto típico, de cerca de 1,15 t, fica entre os dois, na faixa de 4.000 a 15.000 N. O Nível do ataque é da arma, e não da Couraça."
     }
   ],
   "habilidadesEspeciais": [

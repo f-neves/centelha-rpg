@@ -115,7 +115,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca de sapo de 3 m, com dentes: mordida de predador grande, Média (`regra-construcao.md` §7). Golpe de boca, Força × 1; a Centelha soma inteira. N1 : força de mordida não medida. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 = 10"
     },
     {
       "nome": "Garras",
@@ -131,7 +132,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"golpe\" da ficha publicada (Corte): a patada com o braço inteiro, com o corpo atrás, Média"
     }
   ],
   "habilidadesEspeciais": [

@@ -80,7 +80,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe\" do site (1 dado) é a garra (\"garras afiadas\", site), golpe Médio como no ghoul (`regra-construcao.md` §7). O dano maior que o do ghoul vem da Força. Tipo Corte pela garra; o site gravava impacto. Duas por ação, pela Rajada. Jogada: Força 5 e Destreza 5 (D-208): 5 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     },
     {
       "nome": "Mordida",
@@ -96,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de boca com a cabeça atrás, Médio, como no ghoul (`regra-construcao.md` §7). Jogada igual à das Garras"
     }
   ],
   "habilidadesEspeciais": [

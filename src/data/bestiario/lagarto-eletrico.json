@@ -94,7 +94,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de lagarto pequeno, Leve. A jogada vai pela Destreza, maior que a Força (D-208); o dano, pela Força (D-209). Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     },
     {
       "nome": "Choque",
@@ -111,7 +112,8 @@
       "tipoDano": "raio",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância. Os números são da ficha, descritos na linha do choque nas Manobras. Jogada: o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 2 e Atirador 2 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -249,6 +251,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Choque",
+      "motivo": "R36: projétil dirigido a um alvo, com o maior entre Vigor, Destreza e Percepção + Atirador. Antes: o bônus de Centelha ainda citava Disparo. Corrigida a referência para Atirador."
     },
     {
       "campo": "habilidadesEspeciais.Choque elétrico",

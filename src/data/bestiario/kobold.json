@@ -81,7 +81,8 @@
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). Jogada: Destreza 3 + Armas 2"
     }
   ],
   "habilidadesEspeciais": [

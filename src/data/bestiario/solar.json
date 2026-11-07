@@ -84,11 +84,13 @@
   "ataques": [
     {
       "nome": "Montante",
-      "arma": "montante"
+      "arma": "montante",
+      "justificativa": "Montante do catálogo com duas mãos; jogada 25 com Armas"
     },
     {
       "nome": "Arco longo",
-      "arma": "arco-longo"
+      "arma": "arco-longo",
+      "justificativa": "Arco longo do catálogo; jogada 23 com Percepção + Atirador"
     }
   ],
   "habilidadesEspeciais": [
@@ -345,6 +347,10 @@
       "motivo": "Comportamento"
     },
     {
+      "campo": "ataques.Arco longo",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208.; dano médio 22,5 -> 20,5; a D-075 limita a Força aplicada ao arco a 8. A Força da criatura continua 10. a conferir."
+    },
+    {
       "campo": "habilidadesEspeciais.Resistência à magia",
       "motivo": "R7. SR 34 da fonte passa a grau 3 (+6)."
     },
@@ -359,10 +365,6 @@
     {
       "campo": "habilidadesEspeciais.Convocar anjos",
       "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campo": "ataques.Arco longo",
-      "motivo": "dano médio 22,5 -> 20,5; a D-075 limita a Força aplicada ao arco a 8. A Força da criatura continua 10. a conferir."
     }
   ]
 }

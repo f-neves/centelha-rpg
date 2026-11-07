@@ -90,7 +90,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 30, média 37. 7 + 22. Golpe de cauda do corpo inteiro: Pesada e × 2 (seção 7). Perfuração e não Impacto: são quatro espinhos de 60 a 90 cm que furam, e o dano achado é furo em osso (Carpenter 2005). N1 é o do próprio espinho (seção 7: \"garra e chifre ficam em N0 ou N1, pelo tamanho\"), e não do porte; força em N não achada."
     }
   ],
   "habilidadesEspeciais": [

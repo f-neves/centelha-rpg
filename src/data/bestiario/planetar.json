@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Montante",
-      "arma": "montante"
+      "arma": "montante",
+      "justificativa": "Montante do catálogo com duas mãos; jogada 24 com Armas"
     }
   ],
   "habilidadesEspeciais": [

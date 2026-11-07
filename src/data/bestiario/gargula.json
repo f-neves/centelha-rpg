@@ -104,7 +104,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7); as duas mãos fazem par (Manobras). A Centelha soma inteira. Jogada: Força 4 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Chifres",
@@ -120,7 +121,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Chifrada de cabeça, Média; chifre bloqueia como arma (D-100). N1 pela ponta de pedra. Jogada: Força 4 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

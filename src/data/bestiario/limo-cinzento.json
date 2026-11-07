@@ -94,7 +94,8 @@
       "tipoDano": "acido",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (1 dado, 5 Ticks): o braço de limo que salta da poça, Leve (`regra-construcao.md` §7). Tipo ácido: o que fere é o ácido (site: \"seu toque banha metal e matéria orgânica em ácido\"), como na geleia ocre. O site tinha tipo impacto. Jogada: Força 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

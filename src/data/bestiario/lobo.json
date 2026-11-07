@@ -117,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Não muda: a Força fica 3. Morde, segura e sacode: Média (`regra-construcao.md` §7). N0 porque a mordida no canino estimada é de 593 a 1.141 N (Wroe 2005; Różycka 2024, crânio seco), abaixo de 4.000 N."
     }
   ],
   "habilidadesEspeciais": [

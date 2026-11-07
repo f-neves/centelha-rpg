@@ -100,7 +100,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Com a Força 8: era 1d6 + 11, média 14,5. Mordida de predador grande: Média. Corte: o bico corta pedaço. N0 : força de bico não achada nem na base. Força × 1 (boca)."
     },
     {
       "nome": "Tentáculos",
@@ -116,7 +117,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Com a Força 8: era 1d6 − 2 + 11, média 12,5. O golpe dos dois tentáculos, de cerca de 22 m na escala (10 m na real, Wikipédia, × 2,2), com anéis de quitina serrilhados nas ventosas (Wikipédia). Abre o agarrão. Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [

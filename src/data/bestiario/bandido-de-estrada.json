@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Facão",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`), com os números do \"Facão\" do site: Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Jogada: Destreza 3 + Armas 2"
     }
   ],
   "habilidadesEspeciais": [

@@ -111,7 +111,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 + 7, média 10,5 (1d6 + 8 na ficha de hoje); segue a Força nova (D-115). Esmaga a presa (Wikipédia), golpe que pede o corpo atrás. Pinça real de 12,96 N (van der Meijden et al. 2013); cerca de 2.900 N na gigante"
     },
     {
       "nome": "Ferrão",
@@ -127,7 +128,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 7, média 8,5 (1d6 − 2 + 8 na ficha de hoje); segue a Força nova (D-115). Golpe rápido de ponta por cima do corpo; a ponta da gigante fura couro . Veneno sem id no catálogo. Opção (D-097)"
     }
   ],
   "habilidadesEspeciais": [

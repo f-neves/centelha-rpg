@@ -79,7 +79,8 @@
   "ataques": [
     {
       "nome": "Bordão",
-      "arma": "bordao"
+      "arma": "bordao",
+      "justificativa": "A arma do livro (`armas.json`, `bordao`, \"também chamada Cajado\"): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, Impacto, alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). O site dava \"Forcado/Pancada\", 1 dado, duas mãos, Impacto. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
     }
   ],
   "habilidadesEspeciais": [

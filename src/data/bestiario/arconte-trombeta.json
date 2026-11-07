@@ -81,7 +81,8 @@
   "ataques": [
     {
       "nome": "Montante",
-      "arma": "montante"
+      "arma": "montante",
+      "justificativa": "Arma do catálogo, montante; jogada maior entre Força e Destreza + Armas 5 + 2 × o menor entre Centelha 6 e Armas 5; um ataque por ação; Penalidade −2 da malha nas ações físicas, inclusive ataque"
     }
   ],
   "habilidadesEspeciais": [

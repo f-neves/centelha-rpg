@@ -99,7 +99,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site na forma de vento: o redemoinho bate com a força do corpo, Média (`regra-construcao.md` §7). A Centelha soma inteira. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Rajada cortante",
@@ -115,7 +116,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância (manual, Passo 10); os números vão na linha da Rajada nas Manobras (D-197). Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -330,12 +332,12 @@
       "motivo": "O corpo élfico do site: luta com a lâmina e anda; voa e corta com o vento só na forma de vento"
     },
     {
-      "campo": "habilidadesEspeciais.Forma de vento",
-      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+      "campo": "ataques.Rajada cortante",
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área.; R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador) -> uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe. Pela régua da Arte de base. R3 e D-197. P/G/R do ataque 3/1/3 -> 1/1/3 para o golpe sair na Velocidade 5 do poder. valor de molde, para a bancada (uso extra de 1 de Energia).; números sugeridos pela ficha (D-197)"
     },
     {
-      "campo": "ataques.Rajada cortante",
-      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador) -> uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe. Pela régua da Arte de base. R3 e D-197. P/G/R do ataque 3/1/3 -> 1/1/3 para o golpe sair na Velocidade 5 do poder. valor de molde, para a bancada (uso extra de 1 de Energia).; números sugeridos pela ficha (D-197)"
+      "campo": "habilidadesEspeciais.Forma de vento",
+      "motivo": "R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
     },
     {
       "campo": "habilidadesEspeciais.Ventos a serviço",

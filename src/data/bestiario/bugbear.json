@@ -85,7 +85,8 @@
   "ataques": [
     {
       "nome": "Machado",
-      "arma": "machado"
+      "arma": "machado",
+      "justificativa": "A arma do livro (`armas.json`, `machado`): Média, Velocidade 6, Acerto +1, Defesa 0, ★C · I. Jogada: Força 5 + Armas 3"
     }
   ],
   "habilidadesEspeciais": [

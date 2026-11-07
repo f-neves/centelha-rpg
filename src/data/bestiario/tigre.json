@@ -111,7 +111,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida na garganta (estrangula) ou na nuca (Wikipédia), com caninos de 6,4 a 7,6 cm (Mazák 1981): o golpe pede o corpo atrás, Média. N0: 1.525 N nos caninos, estimados pelo crânio seco de um tigre de 186,9 kg (Wroe et al. 2005, tabela 1), abaixo de 4.000 N. Era 1d6 + 9, média 12,5."
     },
     {
       "nome": "Patada",
@@ -127,7 +128,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras retráteis de 7,5 a 10 cm (San Diego Zoo); derruba a presa com as patas dianteiras. Era 1d6 − 2 + 9, média 10,5. Opção, não segundo golpe (D-097)."
     }
   ],
   "habilidadesEspeciais": [

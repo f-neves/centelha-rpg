@@ -42,8 +42,10 @@ const ataqueNatural = z.object({
   nome: texto, parte: id, habilidade: z.enum(['disparo', 'atirador', 'arremesso']).optional(), classe: z.enum(['leve','media','pesada','haste','haste-media','haste-guerra','distancia','arremesso']), pgr: z.tuple([naoNeg, z.literal(1), naoNeg]),
   dado: z.string().regex(/^\d+d6([+-]\d+)?$/).nullable(), multiplicadorForca: z.union([z.literal(0), z.literal(1), z.literal(2)]),
   tipoDano: z.enum([...elementosVocab.grupos.flatMap(g=>g.palavras),'fenomeno','eletricidade','nao-se-aplica']), nivelPerfuracao: naoNeg.nullable(), acerto: inteiro, bloqueiaComoArma: inteiro.nullable(),
+  // F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa da linha de Ataques, que o card mostra
+  justificativa: texto.trim().min(1).optional(),
 }).strict();
-const ataqueComArma = z.object({ nome: texto, arma: id }).strict();
+const ataqueComArma = z.object({ nome: texto, arma: id, justificativa: texto.trim().min(1).optional() }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };
 const habilidadeEspecial = z.object({

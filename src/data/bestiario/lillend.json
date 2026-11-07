@@ -81,7 +81,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "Catálogo, uma mão; jogada 20 com Armas"
     },
     {
       "nome": "Cauda",
@@ -97,7 +98,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de toda a cauda muscular; jogada 19 com Briga"
     }
   ],
   "habilidadesEspeciais": [

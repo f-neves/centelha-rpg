@@ -93,11 +93,13 @@
   "ataques": [
     {
       "nome": "Arco longo",
-      "arma": "arco-longo"
+      "arma": "arco-longo",
+      "justificativa": "A arma do livro (`armas.json`, `arco-longo`): Distância, duas mãos, Velocidade 7, Acerto +0, ★P(N1), efetiva 50 m, máximo 250 m; soma a Força inteira. A Centelha soma inteira. Jogada de Percepção + Atirador: 5 + 4 + 2 × o menor entre Centelha 5 e Atirador 4 (8)"
     },
     {
       "nome": "Espada flamejante",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com a corda na outra: Força × 1 . O fogo da lâmina vai nas Manobras. Jogada: Destreza 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Garras",
@@ -113,7 +115,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte), sem as armas: a mão de unhas, gesto rápido de membro, Leve (`regra-construcao.md` §7). Jogada: Destreza 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -327,6 +330,10 @@
     {
       "campo": "ataques.Espada flamejante",
       "motivo": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com a corda na outra: Força × 1 . O fogo da lâmina vai nas Manobras. Jogada: Destreza 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques.Arco longo",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "habilidadesEspeciais.Corda de comando",

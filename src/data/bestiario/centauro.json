@@ -80,11 +80,13 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). A Centelha soma inteira. Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 2 e Armas 4 (4)"
     },
     {
       "nome": "Azagaia",
-      "arma": "azagaia"
+      "arma": "azagaia",
+      "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Arremesso é sempre Destreza (`combate.md`). Jogada: Destreza 4 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
     },
     {
       "nome": "Coice",
@@ -100,7 +102,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O coice do cavalo do molde: Pesado, preparado e lento, golpe de membro, Força × 1 (erro 7.6). Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 2 e Armas 4 (4)"
     }
   ],
   "habilidadesEspeciais": [

@@ -108,7 +108,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (\"Tentáculos e língua\", 3 dados, 7 Ticks, impacto, \"agarra com os tentáculos\"): o tentáculo grosso de 3 m desce com o peso, Pesado, com os 7 Ticks do site. Golpe de membro: Força × 1. Centelha 0: nada a somar. Agarra (Manobras). Jogada: Força 11 + Briga 5"
     },
     {
       "nome": "Língua",
@@ -124,7 +125,8 @@
       "tipoDano": "nao-se-aplica",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A língua da rã-gigante do molde (resposta do autor de 20/10/2026): não é Disparo, porque a língua não sai do corpo; estende o alcance a três vezes o corpo a corpo normal, não fere e agarra o que acertar, mesmo se o golpe for bloqueado. \"A língua puxa a presa para perto\" (site). Jogada: Força 11 + Briga 5"
     },
     {
       "nome": "Bocada",
@@ -140,7 +142,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca de rã, sem dentes (a rã-gigante do molde morde de Impacto), com o corpo de 3 t atrás: Média (`regra-construcao.md` §7). É por onde engole (Manobras). Jogada: Força 11 + Briga 5"
     }
   ],
   "habilidadesEspeciais": [

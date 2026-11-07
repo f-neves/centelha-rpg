@@ -93,7 +93,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (2 dados, 6 Ticks, impacto): os dois braços descem juntos, um golpe só por ação, Pesado pelo peso que levam. Golpe de membro: Força × 1. Centelha 0: nada a somar. Jogada: Força 7 + Briga 5"
     }
   ],
   "habilidadesEspeciais": [

@@ -102,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 17, média 24. 7 + 12. Pesada: a mordida que arranca e quebra osso, com mordidas repetidas (Gignac e Erickson 2017). Força × 1 (boca, seção 7). N2 é o da própria mordida, e não do porte: os dentes de trás de 18.014 a 34.522 N (Gignac e Erickson 2017) ficam na faixa de 15.000 a 30.000 N; o meio do estudo conferido com sete adultos."
     }
   ],
   "habilidadesEspeciais": [

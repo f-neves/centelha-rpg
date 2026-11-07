@@ -109,7 +109,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "7 + 10; era 2d6 + 14, média 21. Seção 7: a mordida que agarra e rasga, Força × 1 (boca). De 40 a 52 dentes cônicos e encaixados, de cerca de 7,6 cm (Doheny State Beach, divulgação). N2 : nenhuma força de mordida achada; mata tubarão-branco e baleia, e fica com o mosassauro (N2), acima do tubarão-branco (N1). O Nível do ataque é da arma, e não da Couraça."
     }
   ],
   "habilidadesEspeciais": [

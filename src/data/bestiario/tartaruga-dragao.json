@@ -95,7 +95,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida de predador grande (`regra-construcao.md` §7), como a dos dragões. Golpe de boca: Força × 1. N2, a do branco jovem . Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Garras",
@@ -111,7 +112,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"As duas garras dianteiras\" (site), Média (§7), como nos dragões. Atacam submersas. Bloqueia como a mão nua (D-100). Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Sopro de vapor",
@@ -127,7 +129,8 @@
       "tipoDano": "fogo",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância (manual, Passo 10), como nos dragões. O site não dá dados; 6d6 é o degrau da Centelha 5 na escada do lote 23 (o dragão vermelho jovem, D-197), descrito na linha do sopro nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -303,6 +306,10 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como a dos dragões. Golpe de boca: Força × 1. N2, a do branco jovem . Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques.Sopro de vapor",
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
     },
     {
       "campo": "habilidadesEspeciais.Sopro de vapor escaldante",

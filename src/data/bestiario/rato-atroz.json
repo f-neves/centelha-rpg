@@ -116,7 +116,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje: a Força segue 3. Leve, como a do lobo (seção 7). Força × 1. Mordida de cerca de 210 N, a do rato escalada pelo quadrado do tamanho : N0"
     }
   ],
   "habilidadesEspeciais": [],

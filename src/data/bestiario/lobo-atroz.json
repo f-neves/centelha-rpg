@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Não muda: a Força fica 4. Morde, segura e sacode: Média, como o lobo (seção 7 da regra). N0: 893 N no canino (Wroe 2005), abaixo de 4.000 N."
     }
   ],
   "habilidadesEspeciais": [

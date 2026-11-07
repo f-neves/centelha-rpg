@@ -107,7 +107,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Na escala do roc, o golpe da garra pede o corpo atrás: Média (seção 7). Garra do hálux da águia de 4,5 a 6,34 cm × 9: cerca de 50 cm; garra grande em N1 (seção 7) . Era 1d6 + 14, média 17,5"
     },
     {
       "nome": "Bico",
@@ -123,7 +124,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico em gancho, como a águia. Era 1d6 + 14, média 17,5"
     },
     {
       "nome": "Garras em mergulho",
@@ -139,7 +141,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [

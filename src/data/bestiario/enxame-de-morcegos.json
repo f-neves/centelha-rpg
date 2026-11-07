@@ -104,7 +104,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena de insetívoro: Leve. Força 0: só o dado (D-115). Mordida não medida; N0. Um ataque por ação (D-097), como o enxame de ratos. A Força não muda: segue 1,5"
     }
   ],
   "habilidadesEspeciais": [

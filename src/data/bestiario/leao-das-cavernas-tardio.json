@@ -97,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Como o leão: morde a garganta e segura, Média. N0: a mordida do leão-das-cavernas não foi achada; a leoa mede 1.593,8 N (`leao.md`) e o leão-americano de 347 kg teria 2.830 N (Wikipédia, autor do cálculo não identificado), os dois abaixo de 4.000 N. Era 1d6 + 9, média 12,5."
     },
     {
       "nome": "Patada",
@@ -113,7 +114,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Como o leão: agarra e derruba com a pata dianteira. Era 1d6 − 2 + 8, média 9,5 (oitava rodada). Opção (D-097)."
     }
   ],
   "habilidadesEspeciais": [

@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (\"Garras e presas\", 1 dado, 5 Ticks, perfurante): as bocas que se lançam da massa, bote rápido, Leve (`regra-construcao.md` §7). A Centelha soma inteira. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

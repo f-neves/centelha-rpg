@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Os \"Punhos\" do site (2 dados, impacto, 6 Ticks), com \"força redobrada\" (site, Golpes poderosos): o punho de ferro de 3,6 m com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7, \"o golpe do corpo inteiro, com carga ou rotação\"), como a Pancada descomunal do gigante da colina do lote 3; golpe de membro, Força × 1. Os 2 dados do site ficam. Bloqueia como arma (D-066), Defesa +1 . Jogada: Força 11 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     }
   ],
   "habilidadesEspeciais": [

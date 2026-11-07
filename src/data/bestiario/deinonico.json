@@ -96,7 +96,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A Força não muda: o dano fica (era 1d6 + 4, média 7,5). Garra de mais de 120 mm com a bainha (Ostrom 1969). Fura e prende, não corta: a perna robótica em carcaça de porco só fez furos rasos (Manning e colegas 2006). Média: chute com o corpo atrás. N0 pelo tamanho (seção 7 da regra)."
     },
     {
       "nome": "Mordida",
@@ -112,7 +113,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Fica (era 1d6 − 2 + 4, média 5,5). Cerca de 70 dentes em lâmina, rasgo puxando com o pescoço (Tse e colegas 2024). N0 pelos 706 N conferidos; se os 8.200 N de Gignac 2010 forem confirmados, sobe para N1."
     },
     {
       "nome": "Garras da mão",
@@ -128,7 +130,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Fica (era 1d6 − 2 + 4, média 5,5). Mãos de três garras para agarrar (Senter 2006)."
     }
   ],
   "habilidadesEspeciais": [

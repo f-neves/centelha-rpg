@@ -113,7 +113,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Quelíceras com veneno, como em toda Theridiidae (pesquisa). Um ataque por ação (D-097)"
     }
   ],
   "habilidadesEspeciais": [

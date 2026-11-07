@@ -95,7 +95,8 @@
   "ataques": [
     {
       "nome": "Lança de gelo",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, Perfuração N1, alcance. Duas mãos: Força × 2 (`armas-e-armaduras.md`). O frio vai nas Manobras. Jogada: Força 9 + Armas 5 + 2 × o menor entre Centelha 6 e Armas 5 (10)"
     },
     {
       "nome": "Cauda",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Ferrão de cauda venenoso\" (site): a cauda que pica com o corpo atrás, Média (`regra-construcao.md` §7). Leva o veneno (Veneno e doença). Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     },
     {
       "nome": "Garras",
@@ -127,7 +129,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte), quando está sem a lança: o braço com o corpo atrás, Média. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

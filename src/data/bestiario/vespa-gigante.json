@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 6, média 7,5. Golpe rápido de ponta. Ferrão de 7 a 12 mm na real (NPS; Wikipédia), de 47 a 80 cm na gigante (56 a 96 cm com os 3,6 m, × 3 ÷ 3,6) : fura couro e malha, como a lança. Veneno sem id no catálogo, paralisante"
     },
     {
       "nome": "Mandíbulas",
@@ -119,7 +120,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 6, média 7,5. Mordida de boca pequena para o corpo; segura a presa. Opção (D-097)"
     }
   ],
   "habilidadesEspeciais": [

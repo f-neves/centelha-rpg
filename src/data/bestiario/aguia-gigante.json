@@ -103,7 +103,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe rápido de membro, como o talão da águia-real e as garras do grifo: Leve (`regra-construcao.md` §7). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Bico",
@@ -119,7 +120,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico em gancho do tamanho de uma cabeça de cavalo, com o pescoço atrás: Média, como o bico do grifo e do roc; bico grande em N1 . Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Garras em mergulho",
@@ -135,7 +137,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

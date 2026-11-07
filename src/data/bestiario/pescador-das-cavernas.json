@@ -86,7 +86,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Fechamento rápido da pinça sobre a presa; jogada 8 com Briga"
     }
   ],
   "habilidadesEspeciais": [

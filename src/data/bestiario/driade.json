@@ -85,7 +85,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe rápido para se afastar do agressor; jogada 12 com Briga"
     }
   ],
   "habilidadesEspeciais": [

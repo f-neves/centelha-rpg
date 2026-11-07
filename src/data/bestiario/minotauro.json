@@ -94,7 +94,8 @@
   "ataques": [
     {
       "nome": "Machado pesado",
-      "arma": "machado-pesado"
+      "arma": "machado-pesado",
+      "justificativa": "A arma do livro (`armas.json`, `machado-pesado`): Pesada, duas mãos, Velocidade 7, Acerto +0, Defesa −2, ★C · I. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). A Centelha soma inteira. Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 1 e Armas 4 (2)"
     },
     {
       "nome": "Chifrada",
@@ -110,7 +111,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Chifrada de cabeça, o golpe que pede o corpo atrás (Média; regra-construcao §7). Chifre bloqueia como arma (D-100). N1 pela ponta do chifre num pescoço de touro. Na Investida, Força × 2 (Manobras). Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 1 e Armas 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

@@ -96,7 +96,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A patada de felino, Leve, como a do leão. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 0 e Briga 5 (0)"
     },
     {
       "nome": "Mordida",
@@ -112,7 +113,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de felino grande, Média, como a do leão. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 0 e Briga 5 (0)"
     },
     {
       "nome": "Espinhos de cauda",
@@ -129,7 +131,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Os \"Espinhos de cauda\" do site (1 dado, perfurante, N1, 6 Ticks): espinho atirado pelo golpe da cauda, ataque natural a distância (o maior entre Vigor, Destreza e Percepção + Atirador, decisoes-autor §14); o dano é o do músculo da cauda, pela Força (D-209). Jogada: o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 0 e Atirador 3 (0)"
     }
   ],
   "habilidadesEspeciais": [
@@ -258,6 +261,10 @@
     {
       "campo": "corpo.envergadura",
       "motivo": "Duas vezes o corpo sem a cauda: asa de morcego, larga e curta, como a do cão yeth. O site não dá a envergadura"
+    },
+    {
+      "campo": "ataques.Espinhos de cauda",
+      "motivo": "R36: projétil dirigido a um alvo, com o maior entre Vigor, Destreza e Percepção + Atirador. Antes: o bônus de Centelha ainda citava Disparo. Corrigida a referência para Atirador."
     },
     {
       "campo": "habilidadesEspeciais.Estoque de espinhos",

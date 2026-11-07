@@ -101,7 +101,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida de predador grande (`regra-construcao.md` §7), como no grifo (Bico, Média). Golpe de boca: Força × 1. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     },
     {
       "nome": "Garras",
@@ -117,7 +118,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "As garras das patas, que prendem: golpe rápido de membro, Leve, como as do grifo. Bloqueia como a mão nua (D-100). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     },
     {
       "nome": "Garras em mergulho",
@@ -133,7 +135,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     },
     {
       "nome": "Ferrão",
@@ -149,7 +152,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Ferrão venenoso\" do site: a cauda fina estala como chicote e crava o ferrão; Leve e Força × 1, a exceção da cauda de chicote (manual, seção 3: o × 2 é da cauda que leva a massa do corpo). Inocula o veneno (Veneno e doença). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     }
   ],
   "habilidadesEspeciais": [

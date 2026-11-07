@@ -117,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 9, média 16. 7 + 8. Pesada é \"a mordida que agarra e torce\". Força × 1 (golpe de boca). Nível N1 : os 3.043 N medidos (N0) são de animais de 86 kg; o adulto típico de 198 kg morde mais, e os 22 kN de Brady Barr num adulto (Wikipédia, documentário de TV, não artigo) dariam N2. Fica no N1 (4.000 a 15.000 N), entre a medida pequena e a cifra de TV. Os 64 a 68 dentes (SDZG)."
     }
   ],
   "habilidadesEspeciais": [

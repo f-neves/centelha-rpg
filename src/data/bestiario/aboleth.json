@@ -110,7 +110,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava \"Garras e presas\" de 3 dados, perfurante, 7 Ticks; o aboleth não tem garras: são os tentáculos. O golpe de 7 Ticks, com o tentáculo de 3 m que gira, é o Pesado da tabela (regra-construcao §7); golpe de membro, Força × 1; tentáculo é Impacto. A Centelha soma inteira. Passa o muco (Manobras). Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

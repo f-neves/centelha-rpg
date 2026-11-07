@@ -100,7 +100,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7). A Centelha soma inteira. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Sopro elemental",
@@ -116,7 +117,8 @@
       "tipoDano": "fogo",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância (manual, Passo 10); os números vão na linha do sopro nas Manobras (D-197). O sopro ocupa um cone de 3 m. Cada alvo resolve a saída de área pelo livro. Sem jogada de ataque"
     }
   ],
   "habilidadesEspeciais": [
@@ -299,7 +301,7 @@
     },
     {
       "campo": "ataques.Sopro elemental",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; números sugeridos pela ficha (D-197)"
+      "motivo": "Antes: jogada de ataque com Atirador na tabela. R36: retirada porque o sopro é cone. Os alvos resolvem a saída de área.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; números sugeridos pela ficha (D-197)"
     },
     {
       "campo": "habilidadesEspeciais.Convocar semelhante",

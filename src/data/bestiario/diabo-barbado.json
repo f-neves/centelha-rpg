@@ -80,7 +80,8 @@
   "ataques": [
     {
       "nome": "Glaive serrilhada",
-      "arma": "glaive-serrilhada"
+      "arma": "glaive-serrilhada",
+      "justificativa": "O item Glaive serrilhada do catálogo (`armas.json`, `glaive-serrilhada`): Velocidade 7, 1d6 + 2, Acerto −1, Defesa +0, duas mãos, alcance. Duas mãos: Força × 2 (`armas-e-armaduras.md`). A tag Sangramento pertence ao item. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Mordida",
@@ -96,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Mordida com doença infernal\" (site): a mordida de boca humana, gesto rápido de boca pequena, Leve (`regra-construcao.md` §7). Leva a doença (Manobras). Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

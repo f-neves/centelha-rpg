@@ -102,7 +102,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O site dava \"Garras e presas\" de 1 dado e 5 Ticks; o lore diz que \"as mãos terminam em foices quitinosas\". A foice no fim do braço corta com o braço inteiro atrás, Média (`regra-construcao.md` §7); quitina bloqueia como arma (D-100). Jogada: Destreza 5 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Mordida",
@@ -118,7 +119,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Garras e presas\" do site, com os 5 Ticks dele: quelíceras pequenas, bote rápido, Leve. Passa o veneno (Veneno e doença). Jogada: Destreza 5 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [

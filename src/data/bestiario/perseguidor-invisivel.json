@@ -94,7 +94,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O soco etéreo (site: \"Dois socos\", 1 dado, 5 Ticks, impacto). Leve, gesto rápido de membro (`regra-construcao.md` §7). Os dois socos vão pela Rajada, nas Manobras. Jogada: Força 5 (igual à Destreza 5) + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

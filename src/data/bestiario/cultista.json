@@ -92,7 +92,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mão nua de quem não sabe brigar (`regra-construcao.md` §7, a classe Leve). A Centelha soma inteira. Jogada: Destreza 3 + Briga 0. O \"Toque mórbido (Morte 1)\" do site é Arte e não entra nesta tabela (D-196): é o Dreno, nas Manobras"
     }
   ],
   "habilidadesEspeciais": [

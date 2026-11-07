@@ -101,7 +101,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Arma\" do site (2 dados, corte, 6 Ticks): a patada de garra de um corpo de urso, Média (`regra-construcao.md` §7, \"patada do urso\"); as duas mãos fazem par (Manobras). A Centelha soma inteira. Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [

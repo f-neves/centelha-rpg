@@ -16,7 +16,7 @@ import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
-import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt } from '../lib/besta-card';
+import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt, justTxt } from '../lib/besta-card';
 import { linhaPVNaZona, massaDaConta } from '../lib/motor';
 import HAB from '../data/habilidades.json';
 import SEC from '../data/habilidades-secundarias.json';
@@ -171,7 +171,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           {i.combate.veneno && <p class="ib-ref besta-veneno"><b>Veneno no equipamento:</b> {i.combate.veneno}.</p>}
           <ul class="besta-atk">
             {i.combate.ataques.map((a: any) => (
-              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">{a.semJogada ? <>Sem jogada de ataque (área: quem está nela se defende)</> : <>Ataque: <b>{fmtPool(a.pool)}</b></>}{i.combate.vestida && <> sem o equipamento · <b>{fmtPool(poolComPenalidade(a.pool, i.combate.vestida.penalidade))}</b> com</>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}</li>
+              <li><span class="atk-nome">{a.nome}</span><span class="atk-rolls">{a.semJogada ? <>Sem jogada de ataque (área: quem está nela se defende)</> : <>Ataque: <b>{fmtPool(a.pool)}</b></>}{i.combate.vestida && <> sem o equipamento · <b>{fmtPool(poolComPenalidade(a.pool, i.combate.vestida.penalidade))}</b> com</>} · Dano <b>{fmtDano(a.dano)}</b> · Velocidade {a.speed}</span>{a.notas ? <span class="atk-nota muted">{a.notas}</span> : null}{i.justificativaDosAtaques?.[a.nome] ? <span class="atk-nota atk-just muted">{justTxt(i.justificativaDosAtaques[a.nome])}</span> : null}</li>
             ))}
           </ul>
 
@@ -264,6 +264,8 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
      Ameaça está no de baixo à esquerda, a Centelha e o pino nos de cima); a lupa, acima
      dele. Global porque a ficha nasce também dentro de <template>. */
   .arte img[data-img2] { cursor: pointer; }
+  /* F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa do ataque, numa linha própria, miúda. */
+  .atk-just { display: block; font-size: var(--fs-micro); font-style: italic; }
   .arte-selo {
     position: absolute; right: .55rem; bottom: .45rem; z-index: 2;
     font-family: 'Cinzel'; font-size: var(--fs-aux); font-weight: 600; letter-spacing: .04em;

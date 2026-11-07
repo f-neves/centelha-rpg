@@ -99,7 +99,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O braço de pedra (site: \"Pancada\", 1 dado, 5 Ticks, impacto). Leve, gesto rápido de membro (`regra-construcao.md` §7), como a pancada dos outros elementais pequenos. Bloqueia como arma: corpo de pedra (D-066), Defesa +1 . Jogada: Força 5 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

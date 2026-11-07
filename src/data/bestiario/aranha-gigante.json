@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 + 6, média 9,5: segue a Força nova (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Mordida de predador grande (seção 7). Presas de 2 a 4 cm na real (Wikipédia; 2,5 cm na National Geographic), de 11 a 22 cm na gigante (× 5,45) : a ponta longa fura couro e malha, como a lança (N1). A força de mordida não foi achada. Injeta `peconha-de-aranha-gigante`"
     }
   ],
   "habilidadesEspeciais": [

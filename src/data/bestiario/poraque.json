@@ -100,7 +100,8 @@
       "tipoDano": "eletricidade",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: não depende da Força. Medido: um poraquê de 40 cm, saltando sobre o braço de um humano, deu de 40 a 50 mA no pico e cerca de 3,9 W por descarga (Catania 2017); a extrapolação do autor para um de 1,8 m no tronco é de cerca de 0,24 A e 63 W. Fora da água a corrente não se perde, e o choque é mais forte quanto mais alto o salto (Catania 2016). O efeito (dor, queda, atordoar, parar o coração) fica ao Mestre (D-087). Opção, não segundo golpe (D-097)."
     },
     {
       "nome": "Mordida",
@@ -116,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: a Força segue 0 (era 1d6 − 2 + 0, média 1,5). Engole a presa; a mordida não tem dado (pesquisa)."
     }
   ],
   "habilidadesEspeciais": [

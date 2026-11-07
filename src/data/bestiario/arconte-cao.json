@@ -74,7 +74,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "Arma do catálogo, espada-longa; jogada maior entre Força e Destreza + Armas 4 + 2 × o menor entre Centelha 4 e Armas 4; um ataque por ação"
     }
   ],
   "habilidadesEspeciais": [

@@ -114,7 +114,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida de predador grande (`regra-construcao.md` §7). Golpe de boca: Força × 1. N2 pela proposta da seção 3.10 (até 30.000 N): a mordida de um réptil de 700 kg fica acima da do crocodilo (N1 a N2) . Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Garras",
@@ -130,7 +131,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Patada de predador grande, Média (§7, \"patada do urso\"); garra Cortante. Bloqueia como a mão nua (D-100)"
     },
     {
       "nome": "Sopro de frio",
@@ -146,7 +148,8 @@
       "tipoDano": "gelo",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O sopro cobre um cone de 9 m à frente da criatura. Quem estiver na área se defende pela regra de área do livro. Os números são sugestão da ficha (D-197), descritos na linha do sopro nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -402,7 +405,7 @@
     },
     {
       "campo": "ataques.Sopro de frio",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+      "motivo": "Antes: observação dizia que o sopro voava até o alvo. R36: texto corrigido para cone de 9 m e defesa de quem estiver na área, conforme as Manobras.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
     },
     {
       "campo": "habilidadesEspeciais.Nevasca",

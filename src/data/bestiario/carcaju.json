@@ -118,7 +118,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Não muda: a Força fica 2. Boca de predador pequeno: Leve (seção 7). 254 N no canino (Christiansen e Wroe 2007), abaixo de 4.000 N: N0. Arranca carne congelada com o molar virado (Wikipédia)."
     },
     {
       "nome": "Garra",
@@ -134,7 +135,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Não muda. Garras de grampo (Wikipédia)."
     }
   ],
   "habilidadesEspeciais": [

@@ -91,7 +91,8 @@
   "ataques": [
     {
       "nome": "Flecha",
-      "arma": "arco-curto"
+      "arma": "arco-curto",
+      "justificativa": "A arma do livro (`armas.json`, `arco-curto`): Velocidade 6, Acerto +2, dano 1d6 − 2 e a Força até +3, perfurante N1, 30 m de alcance eficaz e 120 m no máximo. O efeito do sono vai nas Manobras. Jogada de Percepção + Atirador: 4 + 4 + 2 × o menor entre Centelha 4 e Atirador 4 (8)"
     },
     {
       "nome": "Garras e presas",
@@ -107,7 +108,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (1 dado, 5 Ticks, perfurante): unha e dente de fada, Leve. A Força 0 não soma; a Centelha soma inteira (`centelha.md`). Jogada: Destreza 6 + Briga 2 + 2 × o menor entre Centelha 4 e Briga 2 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -302,6 +304,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Flecha",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "habilidadesEspeciais.Flecha do sono ou do esquecimento",

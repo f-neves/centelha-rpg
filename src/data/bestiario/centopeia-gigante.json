@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 5, média 6,5: segue a Força nova (D-115). As forcípulas são o primeiro par de patas, em garra de veneno (ADW); bote rápido (Leve), a primeira picada no pescoço da presa (Molinari et al. 2005). A ponta da gigante fura couro ; força não achada. Veneno sem id no catálogo"
     }
   ],
   "habilidadesEspeciais": [

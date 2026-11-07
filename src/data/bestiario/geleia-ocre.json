@@ -96,7 +96,8 @@
       "tipoDano": "acido",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O braço de geleia que bate e cola, levando o ácido (site: 2 dados, 6 Ticks). Média, o golpe que pede o corpo atrás (`regra-construcao.md` §7); membro, Força × 1. Tipo ácido: o que fere é o ácido, que só dissolve carne (Manobras). O site tinha 2 dados e tipo impacto. Jogada: Força 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

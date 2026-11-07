@@ -93,7 +93,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mão nua de quem não sabe brigar (`regra-construcao.md` §7, a classe Leve). Jogada: Destreza 3 + Briga 0"
     }
   ],
   "habilidadesEspeciais": [

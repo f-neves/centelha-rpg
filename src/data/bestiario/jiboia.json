@@ -106,7 +106,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "1d6 − 2 + Força 3, média 4,5. Bote rápido de boca pequena (seção 7). Dentes que seguram e empurram a presa para a garganta (ADW). Dói mas não é perigosa a gente (ADW)."
     }
   ],
   "habilidadesEspeciais": [

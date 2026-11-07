@@ -80,11 +80,13 @@
   "ataques": [
     {
       "nome": "Arco curto",
-      "arma": "arco-curto"
+      "arma": "arco-curto",
+      "justificativa": "A arma do livro (`armas.json`, `arco-curto`): Distância, Velocidade 6, Acerto +2, ★P(N1), efetiva 30 m; soma a Força até +3. Atirar é sempre Percepção (`combate.md`). Jogada de Percepção + Atirador: 3 + 2 + 2 × o menor entre Centelha 3 e Atirador 2 (4)"
     },
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Jogada: Destreza 4 + Armas 3 + 2 × o menor entre Centelha 3 e Armas 3 (6)"
     },
     {
       "nome": "Serpentes",
@@ -100,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida rápida das serpentes do cabelo, Leve (`regra-construcao.md` §7). Envenena (Veneno e doença). Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 3 e Briga 3 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -251,6 +254,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Arco curto",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "habilidadesEspeciais.Olhar petrificante",

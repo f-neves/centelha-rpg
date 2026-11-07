@@ -99,7 +99,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
       "nome": "Rocha arremessada",
@@ -116,7 +117,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Arremesso de rocha\" do site (\"até 36 m, dano alto\"): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

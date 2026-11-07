@@ -105,7 +105,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Arma\" do site (2 dados, corte, 6 Ticks): a patada de garra de um corpo de leão, que pede o corpo atrás, Média (`regra-construcao.md` §7). A Centelha soma inteira. Jogada: Destreza 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

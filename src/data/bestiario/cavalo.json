@@ -99,7 +99,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 8, média 15. O cavalo vira o corpo e escoiceia com as duas traseiras: preparado e lento, por isso Pesada. Força × 1 porque é golpe de membro (`regra-construcao.md` §7). O medido chega a 8.722 N (von Wachenfelt 2011)."
     },
     {
       "nome": "Mordida",
@@ -115,7 +116,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 − 2 + 8, média 9,5. Opção, não segundo golpe (D-097: \"um ataque por ação (D-068), também para as criaturas\"). Sem medida de força: N0."
     }
   ],
   "habilidadesEspeciais": [

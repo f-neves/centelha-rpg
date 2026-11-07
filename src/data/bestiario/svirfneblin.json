@@ -84,7 +84,8 @@
   "ataques": [
     {
       "nome": "Picareta de guerra",
-      "arma": "picareta-de-guerra"
+      "arma": "picareta-de-guerra",
+      "justificativa": "A arma do livro (`armas.json`, `picareta-de-guerra`): Média, Velocidade 6, Acerto +1, Defesa +1, ★P(N2) · I; o bico vence a placa de N2. A Centelha soma inteira. Jogada: Destreza 4 + Armas 3 + 2 × o menor entre Centelha 1 e Armas 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

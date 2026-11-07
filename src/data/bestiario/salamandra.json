@@ -85,7 +85,8 @@
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do \"Golpe planar\" do site (1 dado, corte, 5 Ticks): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). A Centelha soma inteira. A ponta em brasa vai nas Manobras. Jogada: Força 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     },
     {
       "nome": "Cauda",
@@ -101,7 +102,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O corpo de serpente que chicoteia: Média, e a massa do corpo inteiro empurra, Força × 2 (`regra-construcao.md` §7; erro 7.6). A Constrição vai nas Manobras. Jogada: Força 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     }
   ],
   "habilidadesEspeciais": [

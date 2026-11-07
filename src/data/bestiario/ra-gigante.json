@@ -89,7 +89,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A rã abocanha e engole inteira; dentes não achados nas fontes lidas, então Impacto, e não Perfuração (ver Notas). Leve: o bote rápido da boca (seção 7). Não muda: a Força continua 3 (3,5 − 2 + 3 = 4,5)."
     },
     {
       "nome": "Língua",
@@ -105,7 +106,8 @@
       "tipoDano": "nao-se-aplica",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
     }
   ],
   "habilidadesEspeciais": [
@@ -255,6 +257,10 @@
     {
       "campo": "corpo",
       "motivo": "gigante da D-105, escala × 3,56 da rã-golias típica (50,57 cm de comprimento total e 0,947 kg, os dois sexos de Camarões), até os 1,8 m do site lidos como comprimento total com as pernas esticadas. Era × 5,52 sobre o corpo, com o 1,20 m que os lotes antigos tinham escolhido para dar o porte Médio. Tudo  (D-105, D-174; `pedido-v6-site.md`)"
+    },
+    {
+      "campo": "ataques.Bocada",
+      "motivo": "Impacto, e não Perfuração, porque os dentes não foram achados nas fontes lidas (D-174)"
     }
   ]
 }

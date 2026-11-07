@@ -87,7 +87,8 @@
   "ataques": [
     {
       "nome": "Corrente farpada",
-      "arma": "corrente-farpada"
+      "arma": "corrente-farpada",
+      "justificativa": "Corrente farpada do armas.json, duas mãos; Sangramento do item; 33.2, 26/10/2026"
     },
     {
       "nome": "Mordida",
@@ -103,7 +104,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida com a cabeça atrás, Média (`regra-construcao.md` §7). Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     },
     {
       "nome": "Cauda",
@@ -119,7 +121,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"O golpe de sua cauda abre feridas que sangram\" (site): a cauda chicoteada com o quadril atrás, Média. A ferida vai nas Manobras. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

@@ -118,7 +118,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpeia a presa no ar com o pé fechado (Wikipédia): golpe rápido de membro. Com a Força 1 da sétima rodada, o dano soma a Força (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Era 1d6 − 2, média 1,5"
     },
     {
       "nome": "Bico (dente tomial)",
@@ -134,7 +135,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mata cortando as vértebras do pescoço com o entalhe do bico (ADW; Wikipédia). Segue 1,5"
     }
   ],
   "habilidadesEspeciais": [

@@ -109,7 +109,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 + 7, média 10,5 (sexta rodada), e 1d6 + 9, média 12,5. 3,5 + 5, com a Força 5 (D-115). Média: a mordida de bicho grande (seção 7). Força de mordida não achada: N0."
     },
     {
       "nome": "Chicotada de cauda",
@@ -125,7 +126,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 − 2 + 7, média 8,5 (sexta rodada), e 1d6 − 2 + 9, média 10,5. 1,5 + 5, com a Força 5 (D-115). A cauda chicoteia na exibição (Wikipédia). Leve: a cauda é fina e rápida, e não uma clava (seção 7); Força × 1, porque não é o corpo inteiro que empurra."
     }
   ],
   "habilidadesEspeciais": [

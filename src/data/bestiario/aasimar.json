@@ -79,7 +79,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). A Centelha soma inteira. Jogada: Destreza 2 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     }
   ],
   "habilidadesEspeciais": [

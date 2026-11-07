@@ -119,7 +119,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 + 9, média 12,5. No corpo de 400 kg a garra vira o golpe com o ombro atrás, como a do urso (seção 7)."
     },
     {
       "nome": "Mordida",
@@ -135,7 +136,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 + 9, média 12,5. A mordida do carcaju (254 N) escalada pela área do músculo (× 3² = 9): cerca de 2.290 N , abaixo de 4.000 N: N0. Opção, não segundo golpe (D-097)."
     }
   ],
   "habilidadesEspeciais": [

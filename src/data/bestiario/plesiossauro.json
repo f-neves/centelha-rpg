@@ -95,7 +95,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "3,5 − 2 + 5. Era 1d6 − 2 + 6, média 7,5: a Força desce a 5 na sétima rodada (D-115). Seção 7 da regra: Leve é o gesto rápido de boca pequena. Cabeça pequena, 20 a 25 dentes por fileira de cima, cônicos, finos e apontando para a frente (Wikipédia). Força × 1. N0 : nenhuma força de mordida achada, e o dente é de pegar peixe."
     }
   ],
   "habilidadesEspeciais": [],

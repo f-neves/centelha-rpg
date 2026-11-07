@@ -112,7 +112,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 + 8, média 11,5. A arma principal contra predador e gente (ADF&G 2020): golpe de membro, × 1."
     },
     {
       "nome": "Pisão (ergue-se e pisoteia)",
@@ -128,7 +129,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     },
     {
       "nome": "Galhada (só macho)",
@@ -144,7 +146,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": 2
+      "bloqueiaComoArma": 2,
+      "justificativa": "Era 1d6 + 8, média 11,5. Chifrada de galhada como no Pathfinder; uso da galhada em luta . Opção, não golpe somado (D-097)."
     }
   ],
   "habilidadesEspeciais": [

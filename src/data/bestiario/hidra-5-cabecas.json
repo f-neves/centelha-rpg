@@ -89,7 +89,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de cada cabeça, com o pescoço atrás: Média. As cinco cabeças são a mesma parte, e vão juntas pela Rajada. Jogada: Força 8 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

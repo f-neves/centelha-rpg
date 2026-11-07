@@ -102,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A probóscide que fura, Leve. A jogada vai pela Destreza, maior que a Força (D-208); o dano, pela Força (D-209). Jogada: Destreza 5 + Briga 2 + 2 × o menor entre Centelha 1 e Briga 2 (2)"
     }
   ],
   "habilidadesEspeciais": [

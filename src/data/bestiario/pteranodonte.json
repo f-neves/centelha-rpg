@@ -96,7 +96,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico longo e sem dentes, de pegar peixe: golpe rápido de boca. Mordida em N: não achada, N0. A Força não muda: segue 3,5"
     }
   ],
   "habilidadesEspeciais": [

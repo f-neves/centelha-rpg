@@ -79,7 +79,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe\" do site (1 dado) é a garra que paralisa (\"acerto de garra\", site). O braço que rasga com o corpo atrás é golpe Médio (`regra-construcao.md` §7), e o dado do site fica. Tipo Corte pela garra; o site gravava impacto. Duas por ação, pela Rajada, nas Manobras. Jogada: Força 3 e Destreza 4, a maior (D-208): Destreza 4 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     },
     {
       "nome": "Mordida",
@@ -95,7 +96,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Garras e mordida\" (site): a mordida que arranca carne, golpe de boca com a cabeça atrás, Média (`regra-construcao.md` §7). Jogada igual à das Garras"
     }
   ],
   "habilidadesEspeciais": [

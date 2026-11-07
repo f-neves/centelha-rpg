@@ -95,7 +95,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "igual ao de hoje (1d6 + 3, média 6,5): a Força não mudou. Mordida que pede o corpo atrás e prende. Mandíbula de 4,9 mm na real (Lenhart et al. 2013), cerca de 29 cm na gigante (× 58,82) ; força não achada, N0"
     },
     {
       "nome": "Ferrão",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "igual ao de hoje (1d6 − 2 + 3, média 4,5). Golpe rápido de ponta. A ponta longa da gigante fura couro . Veneno sem id no catálogo (abaixo). Opção (D-097)"
     }
   ],
   "habilidadesEspeciais": [

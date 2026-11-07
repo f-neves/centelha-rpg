@@ -93,7 +93,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "3,5 + 7; era 1d6 + 8, média 11,5. Seção 7: a Média é a \"mordida de predador grande\", o bote de dentro da toca. Força × 1 (boca). N0 : nenhuma força de mordida achada, nem na real."
     }
   ],
   "habilidadesEspeciais": [

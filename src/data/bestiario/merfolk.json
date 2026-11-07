@@ -84,11 +84,13 @@
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     },
     {
       "nome": "Besta média",
-      "arma": "besta-media"
+      "arma": "besta-media",
+      "justificativa": "A arma do livro (`armas.json`, `besta-media`), a \"besta pesada\" do site: Distância, Velocidade 12, 1d6 + 4 sem Força, Acerto +1, ★P(N1), efetiva 60 m; recarga parado. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -211,6 +213,10 @@
     {
       "campo": "comportamento.caca",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Besta média",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "equipamento",

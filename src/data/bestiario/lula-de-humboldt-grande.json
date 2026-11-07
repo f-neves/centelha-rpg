@@ -107,7 +107,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: a Força segue 4 (era 1d6 − 2 + 4, média 5,5). Bico entre os materiais orgânicos mais duros (Miserez 2008, trecho de busca). N0: nenhuma força de mordida revisada; os 455 kg de Barr não são medida aceita. William Gilly levou 15 pontos de uma mordida (National Geographic). Força × 1 (boca)."
     },
     {
       "nome": "Braços e tentáculos",
@@ -123,7 +124,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança (era 1d6 − 2 + 4, média 5,5). Ventosas com anel dentado de proteína nos braços e nas clavas (guia da Hopkins/NOAA): arranham ao prender. Abre o agarrão. Força × 1 (membro). Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [

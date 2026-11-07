@@ -95,7 +95,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": -1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
     },
     {
       "nome": "Mordida",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de grande macaco: Média, como a do gorila. Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     }
   ],
   "habilidadesEspeciais": [

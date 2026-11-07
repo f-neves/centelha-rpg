@@ -94,7 +94,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "7 + 12; era 2d6 + 16, média 23. Seção 7: a mordida que agarra e torce. Dezenas de dentes grandes e cortantes; comia por inércia, soltando e reabocanhando (Lingham-Soliar 2000, via Wikipédia). Força × 1 (boca). N2 : nenhuma força de mordida achada; o crânio rígido e os músculos enormes (Lingham-Soliar 1995) e as marcas de dente nas placas da tartaruga marinha gigante apontam para uma mordida maior que a do crocodilo (N1). O Nível do ataque é da arma, e não da Couraça."
     }
   ],
   "habilidadesEspeciais": [

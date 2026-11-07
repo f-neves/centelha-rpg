@@ -109,7 +109,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     },
     {
       "nome": "Mordida",
@@ -125,7 +126,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "1,5 + 5. Igual ao de hoje. Dentes cônicos de pegar peixe, que deixam arranhões paralelos (Discover Magazine). Opção, não segundo golpe (D-097)."
     }
   ],
   "habilidadesEspeciais": [

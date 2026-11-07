@@ -87,7 +87,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O soco que pede o corpo atrás: Média (`regra-construcao.md` §7), golpe de membro, Força × 1. A Centelha soma inteira no dano. A D-066 manda rever o ataque e a defesa dos golens com a regra das armas naturais: o punho de pedra bloqueia como arma. Jogada: Força 10 + Briga 4 + 2 × o menor entre Centelha 3 e Briga 4 = 6"
     }
   ],
   "habilidadesEspeciais": [

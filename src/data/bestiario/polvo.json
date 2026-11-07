@@ -112,7 +112,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Soma a Força 1 da sétima rodada (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"); era 1d6 − 2, média 1,5. O que pesa é a saliva: a mordida num humano deu úlcera inflamada que levou cerca de 10 dias para melhorar (Haddad e Magalhães 2014). Veneno sem id no catálogo (nota). Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [

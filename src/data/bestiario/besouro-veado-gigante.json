@@ -99,7 +99,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "era 1d6 + 10, média 13,5. Golpe que pede o corpo atrás, como a chifrada. As pontas furam; o C. metallifer macho morde com 6,9 N em 1,36 g (Goyens et al. 2014), e pelo quadrado do tamanho a gigante passaria de 25.000 N (eram 30.000 N com os 3,24 m, vezes (3 ÷ 3,24)²) . Fica N2 (ver as notas)"
     }
   ],
   "habilidadesEspeciais": [

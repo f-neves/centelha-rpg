@@ -119,7 +119,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de pata com o ombro atrás (seção 7 da regra), garra curta e curva (Wikipédia). A Força não muda: o dano fica 1d6 + 6, média 9,5."
     },
     {
       "nome": "Mordida",
@@ -135,7 +136,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "541 N no canino num crânio de 105,2 kg (Wroe, McHenry e Thomason 2005), abaixo de 4.000 N: N0. Fica 1d6 + 6, média 9,5."
     }
   ],
   "habilidadesEspeciais": [

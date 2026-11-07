@@ -97,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Caninos de quase 18 cm no S. fatalis (San Diego Zoo) e de cerca de 28 cm de dente total no S. populator (Wikipédia simples, fonte fraca), cravados no pescoço com o pescoço e os antebraços (PMC4182664; Meachen, via resumo). Média: pede o corpo atrás. N0: 976 a 2.000 N, abaixo de 4.000 N. Era 1d6 + 9, média 12,5."
     },
     {
       "nome": "Patada",
@@ -113,7 +114,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Membros anteriores muito fortes, que agarram e derrubam. Era 1d6 − 2 + 9, média 10,5. Opção (D-097)."
     }
   ],
   "habilidadesEspeciais": [

@@ -85,7 +85,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A rajada que bate (site: 1 dado, 5 Ticks, impacto). Leve, gesto rápido (`regra-construcao.md` §7), como a pancada dos outros elementais pequenos. Jogada: Destreza 5 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     }
   ],
   "habilidadesEspeciais": [

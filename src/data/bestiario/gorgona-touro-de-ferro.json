@@ -84,7 +84,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "A chifrada de touro com o pescoço atrás: Média, como a do auroque; bloqueia como arma (D-100). Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     },
     {
       "nome": "Investida (marrada)",
@@ -100,7 +101,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b). Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     },
     {
       "nome": "Sopro petrificante",
@@ -116,7 +118,8 @@
       "tipoDano": "nao-se-aplica",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância, sem dano: o efeito vai na linha do sopro nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -264,7 +267,7 @@
     },
     {
       "campo": "ataques.Sopro petrificante",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 7 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. P2. Dificuldade 20 sugerida porque o sopro de ameaça 5 expõe vários alvos próximos. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 7 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. P2. Dificuldade 20 sugerida porque o sopro de ameaça 5 expõe vários alvos próximos. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
     },
     {
       "campo": "corpo",

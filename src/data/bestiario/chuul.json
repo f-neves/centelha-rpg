@@ -108,7 +108,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O site dava \"Garras e presas\" de 2 dados e 6 Ticks; o chuul ataca com as pinças, como o caranguejo-gigante do molde: golpe que pede o corpo atrás (Média), com os 6 Ticks do site; a pinça esmaga, Impacto; carapaça bloqueia como arma (D-100). A Centelha soma inteira. Prende quem acerta (Manobras). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Mandíbulas",
@@ -124,7 +125,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena e rápida, Leve (regra-construcao §7). Só contra quem está preso nos tentáculos (Manobras). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

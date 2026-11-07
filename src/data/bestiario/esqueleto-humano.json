@@ -67,7 +67,8 @@
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`: Leve, Velocidade 5, Acerto +2, Defesa +1). Golpe de membro: Força × 1. A Centelha soma inteira no dano (`centelha.md`). Jogada: Força 4 e Destreza 4 (D-208): 4 + Armas 1 + 2 × o menor entre Centelha 1 e Armas 1 (2)"
     },
     {
       "nome": "Pancada",
@@ -83,7 +84,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe\" do site (1 dado, impacto), sem arma: a mão de osso leve, gesto rápido de membro, Leve (`regra-construcao.md` §7). Jogada: 4 + Briga 1 + 2 × o menor entre Centelha 1 e Briga 1 (2)"
     }
   ],
   "habilidadesEspeciais": [

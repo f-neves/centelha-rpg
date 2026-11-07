@@ -105,7 +105,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: a Força segue 2 (era 1d6 − 2 + 2, média 3,5). Boca de ventosa: Leve. Corte: as 3 mandíbulas com cerca de 100 bordas cortantes da Hirudo fazem incisão em Y (Wikipédia); a Haementeria usa probóscide de até 10 cm (Wikipédia). N0. Força × 1 (boca). O que pesa é ficar presa e sugar (Manobras). Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [

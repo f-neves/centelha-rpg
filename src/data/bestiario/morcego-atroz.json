@@ -115,7 +115,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida do vampiro na escala de 15: boca de predador grande, golpe com o corpo atrás. Força de mordida: sem dado; N0. A saliva anticoagulante, herdada: a ferida sangra (texto) . A Força não muda: segue 6,5"
     }
   ],
   "habilidadesEspeciais": [

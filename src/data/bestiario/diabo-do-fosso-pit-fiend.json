@@ -111,7 +111,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte): a garra com o braço e o corpo atrás, Média (`regra-construcao.md` §7). Duas por ação pela Rajada (Manobras). Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     },
     {
       "nome": "Mordida",
@@ -127,7 +128,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Mordida com doença infernal\" (site): a mordida com a cabeça atrás, Média. Leva a doença (Manobras). Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     },
     {
       "nome": "Cauda",
@@ -143,7 +145,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Ferrão de cauda venenoso\" (site): a cauda que pica com o quadril atrás, Média. Leva o veneno (Veneno e doença). Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

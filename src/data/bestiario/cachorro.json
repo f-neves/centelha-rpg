@@ -112,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Não muda: a Força fica 2. Boca de cão médio, golpe rápido: Leve (`regra-construcao.md` §7). N0: de 192 a 722 N no canino em cães de 18,5 a 23,5 kg (Ellis et al. 2008); mordida voluntária média de 256 N (Lindner et al. 1995). Abaixo de 4.000 N."
     }
   ],
   "habilidadesEspeciais": [

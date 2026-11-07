@@ -105,7 +105,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Mandíbulas em foice no soldado (Wikipédia)"
     },
     {
       "nome": "Ferroada do enxame",
@@ -121,7 +122,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje. Ferrão bem desenvolvido nas operárias (Wikipédia). Opção à mordida, um ataque por ação (D-097)"
     }
   ],
   "habilidadesEspeciais": [

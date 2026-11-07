@@ -85,7 +85,8 @@
   "ataques": [
     {
       "nome": "Machado",
-      "arma": "machado"
+      "arma": "machado",
+      "justificativa": "A arma do livro (`armas.json`, `machado`): Média, Velocidade 6, Acerto +1, Defesa 0, ★C · I. Jogada: Força 4 + Armas 2"
     },
     {
       "nome": "Mordida",
@@ -101,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Mordida selvagem\" (site). Mordida de predador grande, o golpe que pede o corpo atrás (Média; regra-construcao §7). N1 pela mordida de hiena, acima do corte de N0 . Golpe de boca: Força × 1. Jogada: Força 4 + Briga 2"
     }
   ],
   "habilidadesEspeciais": [

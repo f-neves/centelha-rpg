@@ -101,7 +101,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
     }
   ],
   "habilidadesEspeciais": [

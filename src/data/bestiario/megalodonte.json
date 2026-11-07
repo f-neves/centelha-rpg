@@ -107,7 +107,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 3,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "7 + 13; era 2d6 + 18, média 25. Seção 7: a mordida que agarra e torce. Dentes triangulares e serrilhados de até 18,4 cm, mais de 250 em cinco fileiras (Wikipédia). Força × 1 (boca). N3 : de 108.514 a 182.201 N na mordida de trás (Wroe e colegas 2008), muito acima dos 30.000 N da linha N3 da seção 7. O Nível do ataque é da arma, e não da Couraça."
     }
   ],
   "habilidadesEspeciais": [

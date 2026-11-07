@@ -82,7 +82,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": 0
+      "bloqueiaComoArma": 0,
+      "justificativa": "Ataque publicado preservado enquanto a foice não tem item de catálogo; proposta encaminhada ao autor; jogada 8 com Armas"
     }
   ],
   "habilidadesEspeciais": [

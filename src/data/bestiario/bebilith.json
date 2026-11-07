@@ -96,7 +96,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Mordida Apodrecedora\" (site): as quelíceras que furam com a cabeça atrás, Média (`regra-construcao.md` §7). N2: presas de quitina de um bicho de 2,7 t . Leva a podridão (Manobras). Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Garras",
@@ -112,7 +113,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (3 dados, corte): a pata dianteira que rasga com o corpo atrás, Média. Duas por ação pela Rajada (Manobras). Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

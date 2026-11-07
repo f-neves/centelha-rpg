@@ -80,7 +80,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": -1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
     },
     {
       "nome": "Mordida",
@@ -96,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A do site (1 dado, perfurante, 5 Ticks): golpe de boca, Média, Força × 1 (`regra-construcao.md` §7). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     }
   ],
   "habilidadesEspeciais": [

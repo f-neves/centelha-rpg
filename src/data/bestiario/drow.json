@@ -78,7 +78,8 @@
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Envenenada (Veneno e doença). A Centelha soma inteira. Jogada: Destreza 4 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     }
   ],
   "habilidadesEspeciais": [

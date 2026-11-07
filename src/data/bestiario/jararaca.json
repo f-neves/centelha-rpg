@@ -110,7 +110,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote rápido de boca pequena: Leve (seção 7). Com Força 0, o dano perde a parte da Força (D-115). Quem mata é o veneno, `peconha-botropica`, que não depende do dano: \"Todo dano de veneno ignora a Absorção\" (`acoes-resistir.md`:43), e a picada é via sangue (`acoes-resistir.md`:58). N0: força de mordida \"não achado\", e a presa só fura pele. Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [

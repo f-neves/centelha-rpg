@@ -120,7 +120,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico grande e um pouco curvo, cúlmen de 5,7 a 8,5 cm (Wikipédia). Força 0: só o dado (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). A Força não muda: segue 1,5"
     }
   ],
   "habilidadesEspeciais": [

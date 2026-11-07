@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Adaga",
-      "arma": "adaga"
+      "arma": "adaga",
+      "justificativa": "A arma do livro (`armas.json`, `adaga`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★P(N0) · C; só fura pele, e contra armadura mira na fresta. A Centelha soma inteira. O site somava a Destreza no dano (\"Ágil\"); no livro o dano soma a Força, e \"Ágil\" é só descritiva. Jogada: Destreza 5 + Armas 4 + 2 × o menor entre Centelha 3 e Armas 4 (6)"
     }
   ],
   "habilidadesEspeciais": [

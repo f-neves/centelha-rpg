@@ -95,7 +95,8 @@
       "tipoDano": "nao-se-aplica",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O toque das antenas não fere: enferruja o metal que toca (Manobras). Gesto rápido, Leve (`regra-construcao.md` §7), com os 5 Ticks do site. Jogada: Destreza 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Mordida",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"ataque secundário de pouco dano\" do site (Mordida fraca), com o dado e os 5 Ticks das \"Garras e presas\". Leve. Jogada: Destreza 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [

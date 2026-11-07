@@ -121,7 +121,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: a Força segue 0, e o dano é só o dado (era 1d6 − 2, média 1,5; D-115). Três mandíbulas com cerca de 100 bordas cortantes (Wikipédia): Corte. A sanguessuga fica presa de 20 a 40 min e a ferida sangra por horas depois (hirudina): texto para o Mestre. Um ataque por ação (D-097)"
     }
   ],
   "habilidadesEspeciais": [

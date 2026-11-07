@@ -95,7 +95,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de membro com o corpo atrás; jogada 11 com Briga"
     },
     {
       "nome": "Mordida",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Alternativa à garra, sem golpe adicional; jogada 11 com Briga"
     }
   ],
   "habilidadesEspeciais": [

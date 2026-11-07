@@ -397,6 +397,9 @@ function converter(texto, { site = null }, schema) {
     for (const col of Object.keys(r)) if (!colunas.has(col)) para(`${onde}: coluna desconhecida ${col}`);
     const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? '');
     const just = r['Justificativa'] ?? '';
+    // F1 (D-357): a Justificativa chega ao JSON, sem as marcas de trabalho, e o card a mostra discreta
+    const justificativa = semMarcas(just).replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
+    const comJust = (o) => (justificativa ? { ...o, justificativa } : o);
     const citada = just.match(/`armas\.json`, `([a-z0-9-]+)`/)?.[1];
     const arma = armasEq.includes(citada) ? citada : ARMAS.find((w) => armasEq.includes(w.id) && w.nome.toLowerCase() === nome.toLowerCase())?.id;
     // e a frase em minúscula, sem os dois-pontos, quando ela escreve a soma: "jogada Vigor 3 + Disparo 3" (arconte-lanterna)
@@ -409,7 +412,7 @@ function converter(texto, { site = null }, schema) {
       const w = ARMAS.find((x) => x.id === arma);
       const pgrCol = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/), vel = inteiro(r['Velocidade']);
       if (pgrCol && vel !== undefined && +pgrCol[1] + +pgrCol[2] + +pgrCol[3] !== vel) avisos.push(`${onde}, ${nome}: a coluna P/G/R (${pgrCol.slice(1).join('/')}) não soma a Velocidade ${vel}; a arma do livro usa a do catálogo (${w.arma.ticks})`);
-      return { nome, arma };
+      return comJust({ nome, arma });
     }
     // a parte é o pedaço do corpo; o resto da célula diz como o golpe sai ("boca, à distância")
     const a = { nome, parte: slug(semMarcas(r['Parte'] ?? '').split(',')[0]) };
@@ -451,7 +454,7 @@ function converter(texto, { site = null }, schema) {
     const bl = /^(sim\b|o mesmo chifre\b)/i.test(bloqueia) ? bloqueia.match(/(?<![A-Za-z])([+−-])\s*(\d+)/) : null;
     if (!/^não\b/i.test(bloqueia) && !bl) para(`${onde}, ${nome}: Bloqueia como arma ilegível`);
     a.bloqueiaComoArma = bl ? Number((bl[1] === '+' ? '' : '-') + bl[2]) : null;
-    return a;
+    return comJust(a);
   };
   c.ataques = (T['Ataques'] || []).filter((r) => { const n = semMarcas(r['Nome'] ?? r['Ataque'] ?? ''); return n && n !== 'Nome' && n !== 'Ataque'; })
     .map((r) => lerAtaque(r, armasDaFicha(c.equipamento), 'Ataques'));
@@ -771,7 +774,9 @@ function converter(texto, { site = null }, schema) {
             }
           }
           if (!base || !pgr || !dd) { para(`Variantes, ${nomeF}: o ataque "${nomeA}" ilegível`); continue; }
-          f.ataques.push({ ...base, classe: slug(det[0]), pgr: pgr.slice(1).map(Number),
+          // a Justificativa é da linha da tabela de Ataques, com os números dela; a forma, que troca os números, não a herda
+          const { justificativa: _semJust, ...daBase } = base;
+          f.ataques.push({ ...daBase, classe: slug(det[0]), pgr: pgr.slice(1).map(Number),
             dado: `${dd[1]}d6${dd[3] ? `${dd[2] === '+' ? '+' : '-'}${dd[3]}` : ''}`,
             multiplicadorForca: /Força\s*×\s*(\d)/.test(det[3]) ? Number(det[3].match(/Força\s*×\s*(\d)/)[1]) : /Força/.test(det[3]) ? 1 : 0,
             tipoDano: ID_ELEM[slug(det[4] || '')] ?? slug(det[4] || ''), nivelPerfuracao: (det[5] || '').match(/^N(\d)/) ? Number(det[5].match(/^N(\d)/)[1]) : base.nivelPerfuracao });
@@ -841,11 +846,31 @@ function converter(texto, { site = null }, schema) {
   // as Notas de observação: "- `nome`, `nome`: texto", com a marca ou "a conferir", no campo que o nome diz
   const NOTA = { altura: 'corpo.altura', largura: 'corpo.largura', comprimento: 'corpo.comprimento', envergadura: 'corpo.envergadura',
     massa: corpo.semMassa ? 'corpo.volume' : 'corpo.massa', volume: 'corpo.volume', area: 'corpo.area', aparencia: 'aparencia', couraca: 'couraca', vontade: 'vontade' };
+  // As Notas de observação não vão ao JSON (D-219, D-222, D-224; F1a do autor, 06/11/2026): só a revisao as lê.
+  // o nome com o prefixo do campo ("`ataques.Sopro de frio`", "`habilidadesEspeciais.Nevasca`"): até 06/11/2026 ele não
+  // casava com campo nenhum e, sem marca de dúvida, a nota era pulada calada. Agora o prefixo diz onde procurar.
+  const LISTAS_COM_NOME = new Set(['ataques', 'habilidadesEspeciais', 'comoLuta', 'sentidos']);
+  const CAMPOS_COM_CHAVE = new Set(['atributos', 'habilidades', 'habilidadesSec', 'corpo', 'comportamento', 'fisiologia', 'aptidoes', 'elementos', 'virtudes', 'equipamento', 'deslocamento']);
+  const comPrefixo = (nm) => {
+    const p = nm.match(/^([a-zA-Z]+)\.(.+)$/);
+    if (!p) return null;
+    const [, pre, resto] = p;
+    if (LISTAS_COM_NOME.has(pre)) { const it = (c[pre] || []).find((x) => slug(x.nome) === slug(resto)); return { pre, campo: it ? `${pre}.${it.nome}` : null }; }
+    if (pre === 'formas') { const fo = (c.formas || []).find((f) => f.id === slug(resto) || slug(f.nome) === slug(resto)); return { pre, campo: fo ? `formas.${fo.id}` : null }; }
+    if (CAMPOS_COM_CHAVE.has(pre)) { const k = [resto, slug(resto), slug(resto).replace(/-([a-z])/g, (_, x) => x.toUpperCase())].find((x) => aponta(c, `${pre}.${x}`)); return { pre, campo: k ? `${pre}.${k}` : null }; }
+    return { pre, campo: null };
+  };
   for (const l of (S['Notas de observação'] || []).filter((x) => x.startsWith('- '))) {
     const marcada = MARCA.test(l) || /a conferir/.test(l);
     const m = l.match(/^- ((?:`[^`]+`(?:,\s*|\s+e\s+)?)+):\s*(.*)$/);
     if (!m) continue;
     for (const nm of [...m[1].matchAll(/`([^`]+)`/g)].map((x) => x[1])) {
+      const pf = comPrefixo(nm);
+      if (pf) {
+        if (!pf.campo) { avisos.push('Notas de observação: "' + nm + '" tem o prefixo de campo "' + pf.pre + '", e o resto não aponta para nada; a nota não entra na revisao'); continue; }
+        if (pf.pre === 'ataques' || marcada) revisao.push({ campo: pf.campo, motivo: semMarcas(m[2]).replace(/\*\*/g, '') });
+        continue;
+      }
       const s = slug(nm), aid = (Object.hasOwn(c.atributos, s) ? s : undefined) ?? idAtributo(nm.charAt(0).toUpperCase() + nm.slice(1)) ?? ({ forca: 'forca' }[s]);
       const fo = (c.formas || []).find((f) => slug(f.nome) === s || f.id === s);
       const atq = c.ataques.find((a) => slug(a.nome) === s);

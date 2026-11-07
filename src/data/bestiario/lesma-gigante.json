@@ -96,7 +96,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Com a Força 8: era 1d6 + 12, média 15,5. A rádula raspa com milhares de dentes minúsculos (cerca de 8.600 a 11.500 na Limax maximus, Wikipédia): Média, porque é o corpo que empurra a boca contra o alvo. Corte: raspa, não fura. N0. Força × 1 (boca). Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [

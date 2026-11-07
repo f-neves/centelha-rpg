@@ -110,7 +110,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). Jogada: Destreza + Armas, (4 + 4)"
     },
     {
       "nome": "Espada longa a duas mãos",
@@ -126,7 +127,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Versátil: com as duas mãos soma Força × 2 (`armas-e-armaduras.md`)"
     },
     {
       "nome": "Punhos",
@@ -142,7 +144,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Luta desarmada do livro (Briga)"
     }
   ],
   "habilidadesEspeciais": [

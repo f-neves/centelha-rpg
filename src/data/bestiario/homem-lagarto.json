@@ -98,7 +98,8 @@
   "ataques": [
     {
       "nome": "Maça estrela",
-      "arma": "maca-estrela"
+      "arma": "maca-estrela",
+      "justificativa": "A arma do livro (`armas.json`, `maca-estrela`): Média, Velocidade 6, Acerto +1, Defesa +1, ★I · P(N1). Jogada: Força 3 + Armas 2"
     },
     {
       "nome": "Rabada",
@@ -114,7 +115,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Rabada\" (site). Golpe de cauda: Impacto, e a massa do corpo inteiro gira no golpe, Força × 2 (regra-construcao §7; erro 7.6). Média: cauda de réptil de 90 kg, sem a clava do anquilossauro. Jogada: Força 3 + Briga 2"
     }
   ],
   "habilidadesEspeciais": [

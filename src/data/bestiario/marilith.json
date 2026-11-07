@@ -93,7 +93,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão: Força × 1. Até três golpes pela Rajada (Manobras). Jogada: Força 10 + Armas 5 + 2 × o menor entre Centelha 7 e Armas 5 (10)"
     },
     {
       "nome": "Cauda",
@@ -109,7 +110,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Cauda constritora\" (site): a cauda que enrola e agarra, gesto de membro com o corpo atrás, Média. Leva o agarrão (Manobras). Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

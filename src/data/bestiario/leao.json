@@ -105,7 +105,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Morde a garganta ou o focinho e segura (Schaller 1972): o golpe pede o corpo atrás, Média. N0: 1.593,8 N na leoa, abaixo de 4.000 N. Era 1d6 + 8, média 11,5."
     },
     {
       "nome": "Patada",
@@ -121,7 +122,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra da pata dianteira, que agarra e derruba (Schaller 1972). Era 1d6 − 2 + 8, média 9,5. Opção, não segundo golpe (D-097)."
     }
   ],
   "habilidadesEspeciais": [

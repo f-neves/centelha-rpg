@@ -87,7 +87,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Todo o corpo participa do golpe; jogada 18 com Briga"
     }
   ],
   "habilidadesEspeciais": [

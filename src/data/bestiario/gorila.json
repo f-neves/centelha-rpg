@@ -113,7 +113,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de braço com o corpo atrás: Média. Mão com unha, não garra: Impacto (seção 7). A Força não muda: fica 1d6 + 7, média 10,5."
     },
     {
       "nome": "Mordida",
@@ -129,7 +130,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Caninos grandes no macho (ADW); força de mordida não achada: N0. Opção, não segundo golpe (D-097). Fica 1d6 + 7, média 10,5."
     }
   ],
   "habilidadesEspeciais": [

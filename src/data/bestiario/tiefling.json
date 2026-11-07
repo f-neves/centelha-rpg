@@ -78,7 +78,8 @@
   "ataques": [
     {
       "nome": "Sabre",
-      "arma": "sabre"
+      "arma": "sabre",
+      "justificativa": "A arma do livro (`armas.json`, `sabre`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C. A Centelha soma inteira. Jogada: Destreza 5 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     }
   ],
   "habilidadesEspeciais": [

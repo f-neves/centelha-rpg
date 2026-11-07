@@ -90,7 +90,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Era 1d6 + 15, média 18,5. 3,5 + 11. Golpe de cabeça com o corpo atrás (seção 7). Chifre de ponta de cerca de 1 m: N1 é o do próprio chifre, pelo tamanho (seção 7), e não do porte; força em N não achada. O buraco curado no malar com o diâmetro da ponta de um chifre (Farlow e Dodson 1975) mostra que ele fura."
     },
     {
       "nome": "Investida de chifre",
@@ -106,7 +107,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [

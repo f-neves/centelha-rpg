@@ -127,7 +127,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O bote da serpente, Leve (`regra-construcao.md` §7), os 5 Ticks do site. Envenena (Veneno e doença). A Centelha soma inteira. Jogada: Destreza 6 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [

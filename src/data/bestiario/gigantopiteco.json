@@ -95,7 +95,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de braço com o corpo atrás, como o do gorila (seção 7). Mão com unha: Impacto. A Força não muda: fica 1d6 + 8, média 11,5."
     },
     {
       "nome": "Mordida",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Canino de cima de 21,1 mm no macho (Wikipédia); força de mordida não achada: N0. Opção, não segundo golpe (D-097). Fica 1d6 + 8, média 11,5."
     }
   ],
   "habilidadesEspeciais": [

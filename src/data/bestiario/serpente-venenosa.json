@@ -105,7 +105,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote de boca pequena: Leve (seção 7). Força 0 tira a parte da Força do dano (D-115). Quem mata é o veneno (até 420 mg de veneno seco por picada, Thomas e Griessel 1999), sem id no catálogo (ver Veneno). Força de mordida não achada: N0. Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [

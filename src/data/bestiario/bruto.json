@@ -80,7 +80,8 @@
   "ataques": [
     {
       "nome": "Martelo de guerra",
-      "arma": "martelo-de-guerra"
+      "arma": "martelo-de-guerra",
+      "justificativa": "A arma do livro (`armas.json`, `martelo-de-guerra`): Pesada, duas mãos, Velocidade 7, Acerto +0, Defesa −2, ★I · P(N2). Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). Jogada: Força 5 + Armas 3"
     }
   ],
   "habilidadesEspeciais": [

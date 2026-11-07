@@ -100,7 +100,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Fica: a Força não mudou (era 2d6 + 6, média 13). Como o cavalo: vira o corpo e escoiceia, preparado e lento (Pesada); golpe de membro (× 1)"
     },
     {
       "nome": "Mordida",
@@ -116,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Fica (era 1d6 − 2 + 6, média 7,5). Como o cavalo. Opção, não segundo golpe (D-097)"
     }
   ],
   "habilidadesEspeciais": [

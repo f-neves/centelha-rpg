@@ -101,7 +101,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"coice poderoso\" do site: o coice com o corpo virado, Pesada, como o coice do cavalo do molde; Força × 1, golpe de membro (`regra-construcao.md` §7). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     },
     {
       "nome": "Mordida",
@@ -117,7 +118,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de cavalo, Leve, como a do cavalo do molde. Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     }
   ],
   "habilidadesEspeciais": [

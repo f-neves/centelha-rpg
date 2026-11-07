@@ -87,7 +87,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A prensa das mandíbulas com o corpo atrás, Média. O ácido vai nas Manobras. Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Cuspe ácido",
@@ -103,7 +104,8 @@
       "tipoDano": "acido",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância, como o sopro do cão infernal. Os números são da ficha, descritos na linha do cuspe nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -233,11 +235,11 @@
   },
   "revisao": [
     {
-      "campo": "habilidadesEspeciais.Mordida ácida",
-      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
+      "campo": "ataques.Cuspe ácido",
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área.; R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     },
     {
-      "campo": "ataques.Cuspe ácido",
+      "campo": "habilidadesEspeciais.Mordida ácida",
       "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     },
     {

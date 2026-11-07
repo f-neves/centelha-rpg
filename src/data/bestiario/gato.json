@@ -117,7 +117,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras retráteis nas quatro patas (ADW). Com a Força 1 da sétima rodada, o dano soma a Força (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Era 1d6 − 2, média 1,5. Um ataque por ação (D-097)."
     },
     {
       "nome": "Mordida",
@@ -133,7 +134,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Caninos finos; 206 N nos caninos do macho e 172 N na fêmea, estimados pelo crânio em 288 gatos ferais e de rua (Fleming et al. 2020). N0. A mordida em gente infecciona muito (Pasteurella multocida; Ng et al. 2025). Soma a Força 1 (D-115); era 1d6 − 2, média 1,5. Opção, não segundo golpe (D-097)."
     }
   ],
   "habilidadesEspeciais": [

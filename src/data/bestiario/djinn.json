@@ -96,7 +96,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte, 6 Ticks): o braço de 3 m que bate com o corpo atrás, envolto em vento que corta. Pesada, Velocidade 7, golpe de membro, Força × 1 (`regra-construcao.md` §7), o mesmo caminho dos golens e dos gigantes (D-241); os 2 dados ficam. A Centelha soma inteira. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
