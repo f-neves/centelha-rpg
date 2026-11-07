@@ -143,6 +143,15 @@ limitações conhecidas, que são as três de baixo.
     uma por pata" estão infladas** (davam à criatura o segundo golpe da empunhadura dupla que ela não tem).
     Não as use como base de desafio. **As fichas refeitas nascem com uma arma natural por ação.** O bestiário
     não se edita agora; a divergência fica aqui até a B14 chegar nas fichas.
+  - **A Regeneração na conta do desafio (D-362, B2 do autor, 07/11/2026).** Com o pulso fracionado (N/10 PV a cada 6
+    Ticks, desde o primeiro dano), duas criaturas caem um pouco abaixo dos 80% no C6, em 2000 lutas: a **marilith (N 9)**,
+    de 81,5% para 76,8%, e o **linnorm-dos-penhascos (N 10)**, de 83,8% para 78,4% (`tmp/bancada/regeneracao-b1.md`,
+    tabela dos casos refeitos com 2000 lutas, coluna "fracionado"). Pela B2, as duas ficam com o N como está até a B14
+    recalibrar o desafio com a regeneração na conta.
+  - **Achado da bancada (07/11/2026), só registro, sem conserto agora:** `scripts/sim/desafio-bancada.mjs` lê
+    `ficha.attrs` (o formato de antes de 58db84be, "Integra A5 e A5j ao motor com 155 fontes unificadas") e não
+    carrega as fichas de hoje; `desafio-matriz.mjs`, `desafio-5b-bateria.mjs` e `desafio-diagnostico.mjs` importam
+    dele. A recalibração da B14 precisa dele lendo as fontes unificadas antes de qualquer número.
 - [x] **B15 · [CORRIGIDO em 28/09/2026, achado da própria rodada estava ERRADO] O bônus de
   Centelha NÃO sai 0 em toda criatura.** Registrado em 28/09/2026, Fase 1 da Reforma da
   Centelha, como "as 309 fichas do bestiário não têm bloco `pericias`, o bônus de Centelha em

@@ -226,6 +226,14 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
     - `noite`: deixa `escuridao` e passa a `cego` (escuridão total), menos para o conjurador e quem ele escolheu, como o texto já diz;
     - `mordaca`: deixa `escuridao`, e o marcador nomeia o silêncio. A A35 (D-359) citou a Mordaça de Treva entre as Artes de escuridão, mas o texto dela é só de silêncio ("Nenhum som sai da área") e não traz escuridão; por isso ela não ganha Cego nem Ofuscado (opção a do Arquiteto, 06/11/2026; vai ao autor como informação);
     - `soco-trovejante` (Técnica): o atordoamento pela R11 (Vigor + Resistência contra 10 + 5 × Margem, atraso pela tabela), que o Grid ainda não conta (ver o Atordoado acima).
+  - **A Regeneração N no Grid, pelo pulso da D-362 (B2 do autor, 07/11/2026):** o livro passa a dizer "N PV por
+    minuto, até o PV máximo, sempre ativa: na luta, isso vale N/10 PV a cada 6 Ticks, contados a partir do Tick em que
+    ela sofreu o primeiro dano". O motor de criaturas já faz a conta (`regeneracaoInicial`, `danoNaRegeneracao` e
+    `regenerarAte` em `src/lib/motor.ts`, com a fração em décimos e o teto do PV máximo; `test-regeneracao.mjs`). O Grid
+    e a aba Combate ainda não regeneram nada: falta marcar o Tick do primeiro dano de cada criatura, somar o pulso a cada
+    6 Ticks com a fração guardada, parar no PV máximo e aplicar a fraqueza (R47) da ficha, que hoje está só na prosa do
+    poder (as duas formas: o dano da fraqueza não se regenera, ou para toda a regeneração por um tempo). Até lá, o
+    Mestre soma à mão.
   - **R40, R48, R49 e R51 (D-319, D-327, D-328 e D-330, 05/11/2026), o que o Grid precisa:**
     - **Atropelar:** ação nova, com 3 Ticks de Preparação, Golpe a cada Tick em que segue correndo depois do terceiro (o primeiro é o quarto, D-352) (avança como a Corrida, suposição de Claude) e 3 de Recuperação; Força pura com o Tamanho do atacante contra cada alvo no caminho; cada alvo escolhe Esquivar (Destreza + Esquiva, empate é do defensor) ou Parar (Força pura, tem de superar); quem não consegue sofre o dano do atropelamento (D-340: 1d6 de Impacto no Médio, +1d6 por categoria acima, + Margem + 2 × Força + Centelha − Absorção; o Pequeno sem dado; menor que Pequeno não atropela) e fica Caído.
     - **Couraça por perfil:** a Absorção da Couraça pelo nível e pelo perfil (Rígida N/N/N÷2, Couro N/N÷2/N÷2, Mole N÷2/N÷2/N no Corte, na Perfuração e no Impacto, metades para cima). O motor do bestiário já faz a conta (`absorcaoDaCouraca` em `src/lib/motor.ts`, com o perfil em `perfilCouraca` na fonte da criatura; etapa a da Executora, 06/11/2026), e a mesa lê a Absorção pronta do `monsters-mesa.json`, sem mudança no Grid. A conta antiga pelo tamanho não está mais no código: saiu do gerador em 5da94c0d, e nenhuma das 324 criaturas publicadas a leva (prova em `tmp/executora/b2/conta-antiga.txt`). A criatura sem perfil na fonte (as de antes da R49) não soma a Couraça.
