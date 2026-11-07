@@ -3807,6 +3807,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-246; a R46 (D-325) segue pendente.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 12, regeneração).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+- **Completada em 07/11/2026 pela D-367** (G5): o "atrasar" é a primeira forma (interrompe por um tempo, escrito na ficha); a lista fechada dos tipos de fraqueza vai ao livro junto desta regra.
 
 ### D-327 · R48: Engolir: o passo seguinte do agarrão, Velocidade 7 [tags: combate, engolir, agarrao, imobilizado, sufocamento, acido]
 - Data: 2026-11-05
@@ -4319,7 +4320,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: é trabalho do conversor e do card (`scripts/conversor-criatura.mjs`, `BestaCard.astro`), só para os 520 ataques com a célula Justificativa; nada é pedido à Bestiarista. A forma final fica para a revisão de layout.
 - Muda: nada. A D-219, a D-222 e a D-224 ficam como estão (a primeira redação da F1, que levava também as Notas de observação ao JSON, foi um acréscimo de Claude, corrigido pela F1a; achado da Revisora sobre `a518d65e`).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e as mensagens do autor de 06/11/2026.
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar** desde 07/11/2026 (branch `f1-justificativa`, publicada em `13ca3942`).
 
 ### D-358 · F2: a recalibração das Proezas entra depois das regras soltas, e leva a D18 (Ambidestria) e o cansaço do poder inato [tags: proezas, recalibracao, ambidestria, d18, poder-inato, cansaco, f2, escopo]
 - Data: 2026-11-06
@@ -4346,7 +4347,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - A Mordaça de Treva: o texto dela é só de silêncio ("Nenhum som sai da área [...] Quem está dentro ouve normalmente."), e a escuridão vinha só do `grid.condicao`. Pelo princípio da A35 ("o marcador do Grid só usa uma condição quando o efeito é aquela condição") e pela frase "O marcador 'Na escuridão' deixa de ser usado por eles", ela não ganha a frase de Cego nem de Ofuscado, e na N23 o marcador passa a nomear o silêncio (consequência direta, informada ao autor em 06/11/2026). A Devorar a Luz e a Noite recebem a frase do autor (escuridão total deixa Cego, penumbra parcial deixa Ofuscado, a critério do Mestre) sem classificação: o texto da Devorar a Luz diz "Só se enxerga o que estiver encostado", e qual das duas vale em cada ponto da área fica com o Mestre; o da Noite diz "Ninguém enxerga nada lá dentro" (correção da Revisora sobre `d96f82da`).
 - Muda: fecha a A35 das pendências; segue a D-274 (a Arte vale pelo próprio texto) e as R10, R11, R14, R17 e R18.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
-- Estado: **a implementar** pela Executora (o texto), em branch, com merge depois do PROCEDE da Revisora (D-356); o marcador, na passada do Grid.
+- Estado: **no ar** desde 07/11/2026 (branch `a35-artes`, publicada em `ec8606e8`); o marcador do Grid, na N23.
 
 ### D-360 · F3: seis armas entram no catálogo com números de combate, sem preço: armas de gigante, rocha arremessada, tridente, besta pesada, florete e forcado [tags: armas, catalogo, gigante, rocha, tridente, besta-pesada, florete, forcado, d-197, f3, bestiario, equivalencia]
 - Data: 2026-11-06
@@ -4357,12 +4358,17 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Também do autor (mensagem de 06/11/2026, item 2): "Depois, as fichas que hoje usam equivalência (o tridente como Lança, o florete como espada curta etc.) passam a usar a arma nova: liste-as num arquivo para a Bestiarista (L18)." A troca nas fichas é da Bestiarista, pela lista; a Executora só lista.
 - Muda: os itens 014, 016, 017, 019, 020 e 021; o preço fica para a revisão econômica. O "não recalcular fichas neste estudo" do item 014 (`99-sem-decisao.md`) vale para o estudo; a troca vem pela lista acima.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar em parte** desde 07/11/2026: Tridente, Florete e Forcado (branch `f3-armas`, publicada em `93295741`) e a regra da arma de gigante com o passo a definir (publicada em `47c45241`); o resto pelas D-363 a D-366.
 - **Respostas do autor às perguntas da Executora (06/11/2026, mensagem do autor, copiadas como estão):**
   - "Armas de gigante (014): nenhuma das suas três opções. A arma de gigante não muda o multiplicador da Força; muda o dado de dano base da arma (o 1d6−2, o 1d6, o 2d6). A Força continua ×1 com uma mão e ×2 com duas, como no livro. Não use 'Pesada com Força × 2' como regra da arma de gigante; o ×2 vem só das duas mãos."
   - "Rocha arremessada (016): a rocha é arma de arremesso improvisada. O arremesso pode usar Força ou Destreza (não só Destreza + Arremesso), e a distância vem da fórmula de arremesso, pela massa (a sua opção 1, sem número fixo de massa nem de alcance). O dano depende do tamanho da rocha. O quanto o dano base muda por categoria de Tamanho, que vale para a arma de gigante e para a rocha, ainda está com o autor. Não fixe a escala; prepare a entrada para receber um passo por categoria, e o número vem no próximo prompt."
   - "Também com o autor: quem pode empunhar uma arma maior que o próprio corpo, e a besta pesada (019). Não decida esses dois."
 - Estado parcial: Tridente, Florete e Forcado entraram na branch `f3-armas` (`14415e9a`); a arma de gigante e a rocha esperam o passo de dano por categoria de Tamanho; a besta pesada e quem empunha arma maior que o corpo seguem com o autor.
+- **A F3a do autor** (seção de `DECISOES-AUTOR.md`, copiada como está; é o registro dele das respostas acima):
+  - "F3a. Armas de gigante e rocha arremessada (06/11/2026, DECIDIDA em parte; itens 014 e 016)":
+    - Respostas do autor: a arma de gigante não muda o multiplicador da Força; muda o dado de dano base (o 1d6−2, 1d6, 2d6 da arma). A Força é ×1 com uma mão e ×2 com duas, como no livro. Arremessar pode usar Força ou Destreza; a distância vem da fórmula de arremesso. A rocha é arma de arremesso improvisada, e o dano depende do tamanho dela.
+    - Pendente: quanto o dano base muda por categoria de Tamanho (G1), quem pode empunhar arma maior que o corpo, e a besta pesada (019).
+- **Completada em 07/11/2026** pelas D-363 (G1, o passo por Tamanho), D-364 (G2, o arremesso), D-365 (G3, a besta pesada) e D-366 (G4, quem empunha).
 
 ### D-361 · B1: a forma candidata da Regeneração é N PV por minuto, sempre ativa, até o PV máximo; a bancada mede antes de virar regra [tags: regeneracao, bancada, b1, r46, r47, d-246, desafio, trol, tarrasque, tick]
 - Data: 2026-11-06
@@ -4388,7 +4394,66 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: a medição está em `../tmp/bancada/regeneracao-b1.md` (20 criaturas com regeneração; nenhuma luta mediana chega a 60 Ticks; a faixa de N 20 a 30 não tem criatura, e foi medida só no linnorm-dos-penhascos com o N trocado à mão). Nas fichas, a classe "sem regra ainda" dos 20 poderes "Regeneração N" e dos 7 "X param/atrasam a regeneração" é da Bestiarista: não se corrige por cima no gerador, e a troca para a regra do livro vai a ela por lista, pelo autor (L18); até lá o card mostra o rótulo antigo. A forma da fraqueza (R47) também não tem campo na ficha (só aparece na prosa): o motor a recebe de quem chama, e o campo vai na mesma lista. Achado da bancada: `scripts/sim/desafio-bancada.mjs` lê `attrs` desde `58db84be` e não carrega as fichas de hoje.
 - Muda: completa a D-325 (R46) e a D-361 (B1); a D-246 ("Regeneração N · sem regra ainda") deixa de valer no livro; a D-326 (R47, a fraqueza) segue.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026.
-- Estado: **a implementar** pela Executora (o texto no livro, o pulso no motor de criaturas, a N23 e a lista da B14), em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar** desde 07/11/2026 (branch `regen-b2`, publicada em `a57dd53b`): o texto no livro e o pulso no motor de criaturas; a troca da classe nas fichas vai à Bestiarista por lista (L18); o Grid, na N23.
+- **Completada em 07/11/2026 pela D-367** (G5): o "atrasa a regeneração" do tarrasque é a primeira forma da R47, e os tipos de fraqueza viram lista fechada.
+
+### D-363 · G1: a arma de outro tamanho muda o dado base, +1d6 por categoria acima de Médio e −2 por categoria abaixo; a rocha segue a mesma régua pelo tamanho dela [tags: armas, tamanho, gigante, rocha, arremesso, dano, g1, f3a, r40c, d-319, d-360]
+- Data: 2026-11-07
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "G1. Passo do dano base por Tamanho (07/11/2026, DECIDIDA; completa a F3a)":
+    - Resposta do autor: a recomendada. +1d6 no dano base por categoria de Tamanho acima de Médio, e −2 por categoria abaixo. Vale para a arma de gigante e para a rocha (a de mão é 1d6−4; a que um humano arremessa, 1d6; cada categoria acima soma +1d6). Mesma escala do Atropelar (R40c).
+    - Texto aprovado (vai ao livro, Armas e Armaduras, na regra da arma de gigante e na rocha):
+    > **Armas de outro tamanho.** Uma arma feita para um corpo maior ou menor muda só o dado de dano base: **+1d6 por categoria de Tamanho acima de Médio**, e **−2 por categoria abaixo**. A espada pesada (2d6) feita para um Grande dá 3d6; para um Enorme, 4d6. A Força segue a regra de sempre: ×1 com uma mão, ×2 com duas. A rocha arremessada segue a mesma régua pelo tamanho dela: a pedra de mão dá 1d6−4, a que um humano arremessa, 1d6, e cada categoria acima soma +1d6.
+- Também do autor (mensagem de 07/11/2026, item 1): "Texto 'Armas de outro tamanho' em Armas e Armaduras, no lugar de 'o passo por Tamanho a definir'. [...] A Velocidade e o Acerto dela saem por analogia com o Arremesso pesado (D-197)."
+- Fora do livro: o passo de `regras.json` (`combate.escalaPorTamanho`) deixa de ser null; a rocha entra no catálogo; as 6 fichas de gigante e as 6 de rocha vão à Bestiarista por lista (L18).
+- Muda: completa a D-360 (F3 e F3a); usa a mesma escala do Atropelar (R40c, D-319).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+
+### D-364 · G2: arremessar é com Força ou Destreza, à escolha de quem arremessa, normalmente o maior dos dois, para toda arma de arremesso [tags: arremesso, atirador, forca, destreza, g2, f3a, d-360, d-315]
+- Data: 2026-11-07
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "G2. Arremesso com Força ou Destreza (07/11/2026, DECIDIDA; já dito pelo autor na F3a)":
+    - Resposta do autor: arremessar pode ser com Força ou Destreza. Leitura: à escolha de quem arremessa, como no corpo a corpo ("Destreza ou Força, à escolha de quem ataca, normalmente o maior dos dois"), para toda arma de arremesso.
+- Também do autor (mensagem de 07/11/2026, item 2): "Corrija o texto do Arremesso e do Atirador onde disser só Destreza."
+- Fora do livro: o motor de arremesso passa a ler o maior entre Força e Destreza; a Jogada do projétil natural (D-315) é outra regra e não muda.
+- Muda: completa a D-360; o texto do livro que dizia só Destreza para o arremesso.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+
+### D-365 · G3: a besta pesada não é arma nova; é o nome que a fonte dá à Besta Média [tags: armas, besta, besta-media, besta-pesada, merfolk, g3, d-360]
+- Data: 2026-11-07
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "G3. Besta pesada (07/11/2026, DECIDIDA; item 019)":
+    - Resposta do autor: a recomendada. Não entra arma nova; "besta pesada" passa a ser o nome que a fonte dá à Besta Média, escrito na descrição dela. Acréscimo do autor: a ficha do merfolk passa a dizer Besta Média, no nome e nas estatísticas da arma (lista para a Bestiarista, L18).
+- Fora do livro: a descrição da Besta Média ganha o nome da fonte; a ficha do merfolk vai à Bestiarista por lista (L18).
+- Muda: completa a D-360 (item 019).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+
+### D-366 · G4: quem empunha arma de outro tamanho: o dano é da arma, e uma categoria de diferença desloca a classe um degrau; além da Pesada, o Mestre julga [tags: armas, tamanho, classe, empunhar, forca, peso, g4, d-087, d-360]
+- Data: 2026-11-07
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "G4. Quem empunha arma de outro tamanho (07/11/2026, DECIDIDA como princípio; regra fina depois)":
+    - Respostas do autor: por ora, o Mestre julga se o personagem consegue usar a arma. Haverá uma regra pelo peso de cada arma: uma faixa de peso que quem tem Força X consegue levantar e usar (depende do peso das armas no catálogo, ainda a fazer). Princípio: o dano da arma não muda com quem a empunha; muda a classe dela em relação ao corpo. A espada longa de uma criatura Média é uma espada média (mais leve) para uma Grande; a adaga de uma criatura Grande pode ser uma espada longa para uma Pequena.
+    - Leitura para o livro: uma categoria de Tamanho de diferença desloca a arma um degrau na escada de classes (Leve, Média, Pesada), para mais leve se quem empunha é maior, e para mais pesada se é menor; o dado de dano fica o da arma (G1). Além da Pesada, o Mestre julga. A regra por peso e Força fica pendente do catálogo com peso.
+    - Texto aprovado (vai ao livro, Armas e Armaduras, depois de "Armas de outro tamanho"):
+    > **Quem empunha.** O dano é da arma, não de quem a segura. O que muda com o corpo é a classe: para quem é uma categoria maior, a arma fica um degrau mais leve (a espada longa de um humano é uma arma média para um ogro); para quem é uma categoria menor, um degrau mais pesada (a adaga de um ogro é uma espada para um halfling). Além da Pesada, e enquanto o catálogo não tiver o peso das armas, o Mestre julga se o personagem consegue usá-la.
+- Fora do livro: a regra por peso e Força fica pendente do catálogo com o peso das armas.
+- Muda: completa a D-360 ("quem pode empunhar uma arma maior que o próprio corpo").
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+
+### D-367 · G5: o "atrasa a regeneração" é a primeira forma da R47, com o tempo na ficha; os tipos de fraqueza viram lista fechada (prata, ferro frio, arma abençoada, fogo, ácido, luz do sol) [tags: regeneracao, fraqueza, r47, d-326, d-362, tarrasque, vocabulario, prata, ferro-frio, arma-abencoada, fogo, acido, luz-do-sol, g5]
+- Data: 2026-11-07
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "G5. A fraqueza que "atrasa" a regeneração, e o vocabulário (07/11/2026, DECIDIDA)":
+    - Resposta do autor: a recomendada. O "atrasar" do tarrasque é a primeira forma da R47 (interrompe a regeneração por um tempo), com o tempo escrito na ficha (curto). O vocabulário das fraquezas vira lista fechada: prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, e o que mais o Mestre quiser acrescentar.
+- Também do autor (mensagem de 07/11/2026, item 5): "Ponha a lista no livro, junto da R47, e no esquema do conversor; nome fora da lista vira aviso."
+- Fora do livro: o esquema do conversor ganha a lista; o tarrasque e as fichas com nome fora da lista vão à Bestiarista por lista (L18).
+- Muda: completa a D-326 (R47) e a D-362.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
+- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
