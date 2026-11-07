@@ -48,7 +48,9 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 </div>
 
-**Arma de gigante.** A arma de gigante usa os números da arma comum, menos o dado de dano base (o 1d6−2, o 1d6, o 2d6), que muda por categoria de Tamanho, em Tamanho diferente do Médio. A Força continua ×1 com uma mão e ×2 com duas, como em qualquer arma. O passo por categoria ainda está a definir.
+**Armas de outro tamanho.** Uma arma feita para um corpo maior ou menor muda só o dado de dano base: **+1d6 por categoria de Tamanho acima de Médio**, e **−2 por categoria abaixo**. A espada pesada (2d6) feita para um Grande dá 3d6; para um Enorme, 4d6. A Força segue a regra de sempre: ×1 com uma mão, ×2 com duas. A rocha arremessada segue a mesma régua pelo tamanho dela: a pedra de mão dá 1d6−4, a que um humano arremessa, 1d6, e cada categoria acima soma +1d6.
+
+**Quem empunha.** O dano é da arma, não de quem a segura. O que muda com o corpo é a classe: para quem é uma categoria maior, a arma fica um degrau mais leve (a espada longa, Média, de um humano é uma arma Leve para um ogro); para quem é uma categoria menor, um degrau mais pesada (a adaga, Leve, de um ogro é uma arma Média para um humano). Além da Pesada, o Mestre julga se o personagem consegue usá-la.
 
 ## Tags
 

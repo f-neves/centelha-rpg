@@ -72,7 +72,16 @@ finos de ferramenta, e por isso fica na Haste média com dois passos abaixo dela
 | tags | alcance | alcance, arremessável | alcance | não se arremessa |
 | peso | 2 kg | 2 kg | 2 kg | o do Bordão |
 
-## Armas de gigante (item 014): a estrutura, com o passo vazio
+## Armas de gigante (item 014)
+
+**Atualização de 07/11/2026 (G1, D-363):** o passo chegou. "Uma arma feita para um corpo maior ou menor muda só o dado
+de dano base: +1d6 por categoria de Tamanho acima de Médio, e −2 por categoria abaixo." O `regras.json`
+`combate.escalaPorTamanho` traz `dadosPorCategoriaAcima: 1` e `bonusPorCategoriaAbaixo: -2`, o motor aplica a conta
+(`escalaDaArmaPorTamanho`), e a marca "a definir" saiu do motor e do card. O Cap. XIII troca o parágrafo "Arma de
+gigante" pelos textos aprovados "Armas de outro tamanho" e "Quem empunha" (G4, D-366). A tabela abaixo é a de 06/11, com o
+passo ainda vazio, e fica como história.
+
+### A estrutura de 06/11/2026, com o passo vazio
 
 O autor respondeu em 06/11/2026 (D-360): "A arma de gigante não muda o multiplicador da Força; muda o dado de dano
 base da arma (o 1d6−2, o 1d6, o 2d6). A Força continua ×1 com uma mão e ×2 com duas, como no livro." O passo por

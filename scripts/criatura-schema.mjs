@@ -46,8 +46,7 @@ const ataqueNatural = z.object({
   justificativa: texto.trim().min(1).optional(),
 }).strict();
 const ataqueComArma = z.object({ nome: texto, arma: id, justificativa: texto.trim().min(1).optional(),
-  // D-360: a arma de gigante, no Tamanho da arma; o dado base muda pelo passo de `regras.json`
-  // `combate.escalaPorTamanho`, que espera o autor (o motor marca "a definir" enquanto ele for null)
+  // G1 (D-363): o Tamanho da arma de outro tamanho; o dado base muda pela régua de `regras.json` `combate.escalaPorTamanho`
   tamanho: tamanho.optional() }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };
@@ -55,6 +54,9 @@ const habilidadeEspecial = z.object({
   categoria: z.enum(['substancia','inato','sobrenatural','magia','milagre']).optional(),
   nome: texto, formas: formasMarca, classe: z.enum(['livro', 'regra da ficha', 'sem regra ainda']),
   ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg, efeito: z.enum(efeitosCatalogo.map(e => e.id)).optional() }).strict().optional(), regra: id.optional(),
+  // G5 (D-367): a fraqueza da Regeneração, nas duas formas da R47; os tipos fora da lista fechada são aviso do conversor
+  fraqueza: z.object({ forma: z.enum(['interrompe', 'naoRegenera']), tipos: z.array(texto.trim().min(1)).min(1), duracao: texto.trim().min(1).optional() }).strict()
+    .refine((f) => (f.forma === 'interrompe') === (f.duracao !== undefined), { message: 'interrompe pede a duração, e não se regenera não a tem' }).optional(),
   // P7, 26/10/2026: referências ao livro; texto só acrescenta detalhe ou limite próprio da criatura.
   tecnica: z.object({ id, nivel: naoNeg }).strict().optional(), arte: z.object({ id, nivel: naoNeg }).strict().optional(), texto: texto.optional(),
   ...Object.fromEntries(Object.entries(oitoCampos).map(([k, v]) => [k, v.optional()])),

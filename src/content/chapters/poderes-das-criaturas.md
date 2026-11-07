@@ -82,4 +82,6 @@ Constructos, mortos-vivos, elementais e incorpóreos não dormem, e por isso o s
 
 **Regeneração N.** A criatura recupera **N PV por minuto**, até o PV máximo, sempre ativa: na luta, isso vale **N/10 PV a cada 6 Ticks**, contados a partir do Tick em que ela sofreu o primeiro dano. A regeneração baixa quase não aparece numa luta rápida; a alta muda o combate.
 
-**Fraqueza da criatura.** Algumas regenerações têm uma fraqueza nomeada na ficha (o fogo e o ácido do trol, a prata do lobisomem). A ficha diz qual das duas formas vale: ou o dano da fraqueza **interrompe toda a regeneração** por um tempo, e depois tudo volta a fechar; ou o dano da fraqueza **não se regenera**, e só fecha com outras curas (Artes, Cura, descanso), enquanto o resto se regenera normalmente.
+**Fraqueza da criatura.** Algumas regenerações têm uma fraqueza nomeada na ficha (o fogo e o ácido do trol, a prata do lobisomem). A ficha diz qual das duas formas vale: ou o dano da fraqueza **interrompe toda a regeneração** por um tempo, e depois tudo volta a fechar; ou o dano da fraqueza **não se regenera**, e só fecha com outras curas (Artes, Cura, descanso), enquanto o resto se regenera normalmente. A fraqueza que só **atrasa** a regeneração é a primeira forma, com o tempo (curto) escrito na ficha.
+
+As fraquezas da regeneração saem de uma lista fechada: **prata, ferro frio, arma abençoada, fogo, ácido e luz do sol**. O Mestre pode acrescentar outras.

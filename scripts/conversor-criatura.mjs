@@ -33,6 +33,8 @@ const IDS_ANTIGOS = dado('ids-antigos.json');
 const ARMADURAS = new Set(dado('armaduras.json').filter((a) => a.armadura).map((a) => a.id));
 const ESCUDOS = new Set(dado('escudos.json').filter((a) => a.escudo).map((a) => a.id));
 const ARTES = new Set(dado('artes.json').map((a) => a.id));
+// G5 (D-367): a lista fechada das fraquezas da Regeneração; nome fora dela vira aviso (o Mestre pode acrescentar)
+const FRAQUEZAS_REGEN = new Set(dado('regras.json').criatura.fraquezasDaRegeneracao.lista);
 const EFEITOS = dado('efeitos.json');
 const TECNICAS_DADOS = dado('tecnicas.json');
 const TECNICAS = new Set(TECNICAS_DADOS.map((t) => t.id));
@@ -486,6 +488,18 @@ function converter(texto, { site = null }, schema) {
       const mb = p.match(/^poder natural \(base:? (?:([^,()]+?), )?([^,()]+?) (\d+)(?:,[^)]*)?\)$/);
       const mt = p.match(/^Técnica ([a-z0-9-]+), nível (\d+)$/);
       const ma = p.match(/^Arte (\S+) (\d+)$/);
+      // G5 (D-367): "fraqueza: não se regenera; fogo, ácido" ou "fraqueza: interrompe; fogo, ácido; 1 hora" (R47)
+      const mf = p.match(/^fraqueza: (não se regenera|interrompe); ([^;]+?)(?:; (.+))?$/);
+      if (mf) {
+        if (he.fraqueza) para('Manobras, ' + nome + ': fraqueza repetida');
+        const forma = mf[1] === 'interrompe' ? 'interrompe' : 'naoRegenera';
+        const tipos = mf[2].split(',').map((x) => x.trim()).filter(Boolean);
+        if (forma === 'interrompe' && !mf[3]) para('Manobras, ' + nome + ': a fraqueza que interrompe pede o tempo (R47: "por um tempo")');
+        if (forma === 'naoRegenera' && mf[3]) para('Manobras, ' + nome + ': a fraqueza que não se regenera não tem tempo');
+        for (const t of tipos) if (!FRAQUEZAS_REGEN.has(t)) avisos.push('Manobras, ' + nome + ': a fraqueza "' + t + '" está fora da lista fechada (G5); vale, a critério do Mestre');
+        he.fraqueza = { forma, tipos, ...(mf[3] ? { duracao: mf[3].trim() } : {}) };
+        continue;
+      }
       if (p.startsWith('categoria:')) {
         if (he.categoria !== undefined) para('Manobras, '+nome+': categoria repetida');
         he.categoria = p.slice('categoria:'.length).trim();
