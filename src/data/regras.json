@@ -2424,7 +2424,7 @@
   },
   "combate": {
     "nota": "A linha do tempo do combate. O jogo tem DOIS sistemas de tempo, à escolha do mestre por mesa, e UM conjunto de regras: tudo aqui está escrito em moeda comum (Ticks de Velocidade, dados de rolagem e pontos de Defesa) e vale nos dois. Ver `Combate_Tempo.md`, seção 15.",
-    "escalaPorTamanho": { "passo": null, "base": "medio", "vale": ["arma de gigante", "rocha arremessada"], "nota": "D-360 (06/11/2026): a arma de gigante e a rocha mudam o dado de dano base da arma (o 1d6−2, o 1d6, o 2d6) por categoria de Tamanho, em Tamanho diferente do Médio; a Força continua ×1 com uma mão e ×2 com duas. O passo por categoria está com o autor. Enquanto `passo` for null, o motor usa o dado da arma comum e marca a escala como a definir, e o card o diz." },
+    "escalaPorTamanho": { "dadosPorCategoriaAcima": 1, "bonusPorCategoriaAbaixo": -2, "base": "medio", "vale": ["arma de outro tamanho", "rocha arremessada"], "nota": "G1 (D-363, 07/11/2026): uma arma feita para um corpo maior ou menor muda só o dado de dano base, +1d6 por categoria de Tamanho acima de Médio e −2 por categoria abaixo; a Força continua ×1 com uma mão e ×2 com duas. A régua das categorias é a do Porte (a mesma do Atropelar)." },
     "sistemaPadrao": "normal",
     "sistemas": [
       {

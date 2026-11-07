@@ -46,8 +46,7 @@ const ataqueNatural = z.object({
   justificativa: texto.trim().min(1).optional(),
 }).strict();
 const ataqueComArma = z.object({ nome: texto, arma: id, justificativa: texto.trim().min(1).optional(),
-  // D-360: a arma de gigante, no Tamanho da arma; o dado base muda pelo passo de `regras.json`
-  // `combate.escalaPorTamanho`, que espera o autor (o motor marca "a definir" enquanto ele for null)
+  // G1 (D-363): o Tamanho da arma de outro tamanho; o dado base muda pela régua de `regras.json` `combate.escalaPorTamanho`
   tamanho: tamanho.optional() }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };

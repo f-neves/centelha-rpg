@@ -443,7 +443,7 @@ type Num = Record<string, number>;
 /** O ataque natural guarda tudo o que não é conta; o com arma do livro guarda só nome e id (D-220, D-258). */
 export interface AtaqueEntrada {
     nome: string;
-    /** D-360: o Tamanho da arma de gigante; o dado base espera o passo por categoria (`combate.escalaPorTamanho`) */
+    /** G1 (D-363): o Tamanho da arma; o dado base muda pela régua de `combate.escalaPorTamanho` */
     tamanho?: string;
     classe?: string;
     pgr?: [
@@ -594,24 +594,26 @@ export function danoMedio(dado: string | null, forca: number, multiplicadorForca
  * com as duas (a criatura de hoje a usa com uma, como as fichas escrevem), e a de tiro pelo `forcaMult` dela, com o
  * teto da arma (`forcaCap`), o do arco (D-075) e o requisito (`M-32`).
  */
-// D-360 (06/11/2026): a arma de gigante e a rocha mudam o DADO BASE da arma por categoria de Tamanho, em Tamanho diferente do Médio, e a
-// Força continua x1 com uma mão e x2 com duas. O passo por categoria (`regras.json`, `combate.escalaPorTamanho.passo`) está
-// com o autor: com ele em null, a arma vale o dado da arma comum e a resposta marca `escalaPorTamanho: 'a definir'`.
-// Com um número ali e sem a conta escrita, para alto, em vez de inventar o modo de aplicar o passo.
-export function escalaDaArmaPorTamanho(tamanho?: string | null): 'a definir' | null {
+// G1 (D-363, 07/11/2026; completa a D-360): "Uma arma feita para um corpo maior ou menor muda só o dado de dano base:
+// +1d6 por categoria de Tamanho acima de Médio, e −2 por categoria abaixo." A Força segue x1 com uma mão e x2 com duas.
+// Os números moram em `regras.json`, `combate.escalaPorTamanho`; a régua das categorias é a do Porte, a mesma do Atropelar.
+const ORDEM_DO_PORTE: Porte[] = ['minusculo', 'miudo', 'pequeno', 'medio', 'grande', 'enorme', 'imenso', 'colossal'];
+export function escalaDaArmaPorTamanho(tamanho?: string | null): { dados: number; bonus: number } {
     if (!tamanho || tamanho === 'medio')
-        return null;
-    const passo = (regras as any).combate?.escalaPorTamanho?.passo ?? null;
-    if (passo !== null)
-        throw new Error('D-360: o passo do dado por Tamanho chegou (' + passo + '), e a conta ainda não foi escrita no motor');
-    return 'a definir';
+        return { dados: 0, bonus: 0 };
+    const k = ORDEM_DO_PORTE.indexOf(tamanho as Porte) - ORDEM_DO_PORTE.indexOf('medio');
+    if (ORDEM_DO_PORTE.indexOf(tamanho as Porte) < 0)
+        throw new Error('Tamanho da arma fora da régua: ' + tamanho);
+    const e = (regras as any).combate.escalaPorTamanho;
+    return k > 0 ? { dados: k * e.dadosPorCategoriaAcima, bonus: 0 } : { dados: 0, bonus: -k * e.bonusPorCategoriaAbaixo };
 }
 export function ataqueDaArma(id: string, forca: number, duasMaos = false, tamanhoDaArma?: string | null) {
     const item = (ARMAS as any[]).find((a) => a.id === id);
     if (!item?.arma)
         return null;
     const escala = escalaDaArmaPorTamanho(tamanhoDaArma);
-    const w = comRequisitoDeForca(item.arma, forca);
+    const w0 = comRequisitoDeForca(item.arma, forca);
+    const w = escala.dados || escala.bonus ? { ...w0, dado: w0.dado + escala.dados, danoBonus: (w0.danoBonus || 0) + escala.bonus } : w0;
     const fm = (regras as any).derivados.danoForca;
     const tags: string[] = item.tags || [];
     const mult = tags.includes('distância') ? (w.forcaMult ?? 1)
@@ -622,7 +624,6 @@ export function ataqueDaArma(id: string, forca: number, duasMaos = false, tamanh
     return {
         dado: `${w.dado}d6${bonus ? (bonus > 0 ? `+${bonus}` : `${bonus}`) : ''}`, forca: capF, multiplicadorForca: mult,
         acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks, habilidade: w.pericia,
-        ...(escala ? { escalaPorTamanho: escala } : {}),
     };
 }
 /**
@@ -861,8 +862,6 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
             pool: Math.floor(soma / 2) + 'd6' + (soma % 2 ? '+2' : '') + (acerto ? (acerto > 0 ? ' +' : ' −') + Math.abs(acerto) : ''),
             // R36: o ataque de área não tem jogada de ataque (quem está na área se defende); o card diz isso no lugar do dado
             ...(!h && !a.arma && (a.classe === 'distancia' || a.classe === 'arremesso') ? { semJogada: true } : {}),
-            // D-360: a arma de gigante leva a marca até o card enquanto o passo por Tamanho espera o autor
-            ...(wd?.escalaPorTamanho ? { escalaPorTamanho: wd.escalaPorTamanho } : {}),
             dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf, forcaInvestida
         };
     });
