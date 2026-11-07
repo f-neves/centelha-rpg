@@ -8233,7 +8233,7 @@
     },
     {
      "nome": "Azagaia",
-     "pool": "3d6+2 +5",
+     "pool": "5d6 +5",
      "dano": "1d6 +9 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
@@ -8594,7 +8594,7 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
+     "pool": "6d6 +2",
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
@@ -19711,7 +19711,7 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
+     "pool": "6d6 +2",
      "dano": "2d6 +10 (I)",
      "perfArma": null,
      "speed": 7,
@@ -19828,7 +19828,7 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "4d6",
+     "pool": "6d6+2",
      "dano": "2d6 +9 (I)",
      "perfArma": null,
      "speed": 7,
@@ -20061,7 +20061,7 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "3d6 +4",
+     "pool": "7d6+2 +4",
      "dano": "2d6 +14 (I)",
      "perfArma": null,
      "speed": 7,
@@ -20199,7 +20199,7 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
+     "pool": "6d6+2 +2",
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,
@@ -20318,7 +20318,7 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
+     "pool": "6d6+2 +2",
      "dano": "2d6 +11 (I)",
      "perfArma": null,
      "speed": 7,

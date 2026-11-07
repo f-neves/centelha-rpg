@@ -64,6 +64,20 @@ const confere = (id, conta, vem, deve, tol = 0) => {
 // o maior entre Força e Destreza e a maior Habilidade entre Briga e Armas. As 11 frases da regra antiga (babau,
 // boggard, diabo-barbado, erínia, centauro, minotauro, sahuagin, salamandra, skum-ulat-kini duas vezes e tengu)
 // foram reescritas nas fichas no lote ajuste-pontas de 30/10/2026, e a lista de exceção ACEITAS_JOGADA saiu.
+// TOLERÂNCIA (G2, D-364, 07/11/2026): o arremesso passou a ir pela Força ou pela Destreza, o maior dos dois, e sete fichas
+// ainda escrevem a jogada pela Destreza. A divergência é declarada, ficha a ficha, com a jogada da ficha e a do motor; se
+// uma das duas mudar, o teste acusa. LEVANTA QUANDO: o lote da Bestiarista (L18, D-364) reescrever a jogada das sete, e
+// então a entrada que não acontecer mais acusa "tire a entrada".
+const JOGADA_D364 = {
+  centauro: { Azagaia: [4 + 3 + 2 * 2, 7 + 3 + 2 * 2] },
+  ciclope: { 'Rocha arremessada': [2 + 3 + 2 * 1, 9 + 3 + 2 * 1] },
+  'gigante-da-colina': { 'Rocha arremessada': [2 + 3 + 2 * 1, 9 + 3 + 2 * 1] },
+  'gigante-da-pedra': { 'Rocha arremessada': [4 + 4, 9 + 4] },
+  'gigante-das-nuvens': { 'Rocha arremessada': [3 + 3 + 2 * 2, 12 + 3 + 2 * 2] },
+  'gigante-do-fogo': { 'Rocha arremessada': [2 + 3 + 2 * 1, 10 + 3 + 2 * 1] },
+  'gigante-do-gelo': { 'Rocha arremessada': [2 + 3 + 2 * 1, 10 + 3 + 2 * 1] },
+};
+const usadasD364 = new Set();
 // o peso erguido da ficha vem com duas casas, e o conferidor confere a 1% (GUIA-FICHA.md, seção 7)
 const tolPeso = (p) => Math.max(0.02, Math.abs(p) * 0.01);
 
@@ -86,7 +100,9 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
     if (a.velocidade !== undefined) confere(id, `${a.nome}.velocidade`, ra.velocidade, a.velocidade);
     if (a.danoMedio !== undefined) confere(id, `${a.nome}.danoMedio`, ra.danoMedio, a.danoMedio);
     // a frase "Jogada:" da ficha soma o Atributo, a Habilidade e a Centelha, sem o Acerto da coluna
-    if (a.jogada !== undefined) confere(id, `${a.nome}.jogada`, ra.jogada - (ra.acerto || 0), a.jogada);
+    const d364 = JOGADA_D364[id]?.[a.nome];
+    if (a.jogada !== undefined && d364 && a.jogada === d364[0] && ra.jogada - (ra.acerto || 0) === d364[1]) { usadasD364.add(id + '|' + a.nome); contas++; }
+    else if (a.jogada !== undefined) confere(id, `${a.nome}.jogada`, ra.jogada - (ra.acerto || 0), a.jogada);
   }
   for (const [fid, fo] of Object.entries(c.formas || {})) {
     const rf = M.criatura(M.comForma(c.entrada, fo.entrada));
@@ -96,6 +112,8 @@ for (const [id, c] of Object.entries(FIX.criaturas)) {
     }
   }
 }
+
+for (const [id, at] of Object.entries(JOGADA_D364)) for (const nome of Object.keys(at)) if (!usadasD364.has(id + '|' + nome)) falhas.push({ id, conta: `${nome}.jogada, divergência D-364 declarada`, vem: 'não aconteceu', deve: 'tire a entrada de JOGADA_D364' });
 
 // P4: o critério é Inteligência, inclusive fora dos animais; Int 0 continua imune.
 for (const categoria of ['animal', 'fera-magica', 'humanoide']) {
@@ -205,7 +223,7 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   confere('D-258', 'aasimar, cópia antiga Arremesso na espada não a faz de arremesso', jog(M, aasimar, 'Espada longa').jogada, 2 + 2 + 2 * 1 + 1);
   // e o tiro e o arremesso seguem a Habilidade de cada um
   const gigante = ler('gigante-da-colina');
-  confere('D-258', 'gigante, rocha arremessada (classe pesada) sai pela Destreza e Arremesso', jog(M, gigante, 'Rocha arremessada').jogada, 2 + 3 + 2 * 1 + 0);
+  confere('D-364', 'gigante, rocha arremessada (classe pesada) sai pelo Arremesso e pelo maior entre Força e Destreza (Força 9)', jog(M, gigante, 'Rocha arremessada').jogada, 9 + 3 + 2 * 1 + 0);
   confere('D-258', 'gigante, pancada pela Briga e Força', jog(M, gigante, 'Pancada descomunal').jogada, 9 + 5 + 2 * 1 + 0);
   const erinia = ler('erinia');
   confere('D-258', 'erínia, arco longo pela Percepção e Atirador do catálogo', jog(M, erinia, 'Arco longo').jogada, 5 + 4 + 2 * 4 + 0);

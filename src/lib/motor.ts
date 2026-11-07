@@ -637,15 +637,14 @@ export function atributoDoProjetilNatural(at: Num): 'vigor' | 'destreza' | 'perc
 }
 /**
  * O Atributo da jogada pela Habilidade: Disparo, Vigor; Atirador, Percepção (com arma) ou o maior entre Vigor, Destreza
- * e Percepção (ataque natural, D-315); Arremesso, Destreza; o corpo a corpo, o maior entre Força e Destreza (D-208).
+ * e Percepção (ataque natural, D-315); Arremesso e o corpo a corpo, o maior entre Força e Destreza (D-208; o arremesso pela
+ * G2, D-364, 07/11/2026: "Força ou Destreza, à escolha de quem arremessa").
  */
 export function atributoDaJogada(habilidade: string, at: Num, natural = false): number {
     if (habilidade === 'disparo')
         return at.vigor ?? 0;
     if (habilidade === 'atirador')
         return natural ? (at[atributoDoProjetilNatural(at)] ?? 0) : at.percepcao ?? 0;
-    if (habilidade === 'arremesso')
-        return at.destreza ?? 0;
     return Math.max(at.forca ?? 0, at.destreza ?? 0);
 }
 const HAB_DE_LONGE = new Set(['disparo', 'atirador', 'arremesso']);
@@ -845,7 +844,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
     const ataques = c.ataques.map((a: any, i: number) => {
         const w: any = armaDe(a), h = r.ataques[i].habilidade, hv = h ? (c.habilidades[h] ?? c.habilidadesSec[h] ?? 0) : 0;
         const natural = !a.arma;
-        const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? (natural ? atributoDoProjetilNatural(c.atributos) : 'percepcao') : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
+        const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? (natural ? atributoDoProjetilNatural(c.atributos) : 'percepcao') : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
         const soma = h ? M.atributoDaJogada(h, c.atributos, natural) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);
         const wd = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca, false, a.tamanho) : null;

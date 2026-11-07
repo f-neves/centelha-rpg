@@ -155,7 +155,7 @@ Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma*
 
 <p class="formula">Ataque = [(Atributo + Habilidade) ÷ 2]d6 (+2 se a soma for ímpar) + Arma + 2 × menor(Centelha, Habilidade)</p>
 
-<p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca, normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, sempre Destreza; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
+<p class="muted">O <strong>Atributo</strong> usado em combate corpo a corpo (armas ou punhos) é <strong>Destreza ou Força</strong>, à escolha de quem ataca, normalmente o maior dos dois (Força 5 e Destreza 2? use a Força). Para <strong>arremessos</strong>, também Destreza ou Força, à escolha de quem arremessa, normalmente o maior dos dois; para <strong>atirar</strong> (arco ou besta), sempre Percepção.</p>
 
 A Defesa é um valor **fixo** e **passivo**, o alvo não rola para se defender, e ela **nunca fica abaixo de 0**. Quem **não sabe do ataque** ou **não tem como se defender** fica com a Defesa correspondente **zerada** (ver *Vantagem tática*). A Habilidade que
 entra é **Esquiva ou Bloqueio**, detalhado a seguir em *Esquivar ou Bloquear*:

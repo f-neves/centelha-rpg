@@ -37,7 +37,7 @@ Essa régua é geral: um **3** em Força é "forte", um **3** em Inteligência �
 ### Físicos · o corpo
 
 **Força** · O poder bruto do corpo: o quanto você ergue, empurra, arromba e machuca com o peso do golpe. Aparece sempre que a resposta depende de músculo e não de jeito, seja levantar um portão de ferro, segurar a corda que escorrega, derrubar uma porta a ombradas ou prender quem se debate. Em combate é a Força que faz um golpe doer, e fora dele é ela que decide quanto peso você carrega sem virar lesma e a que distância você joga alguma coisa. Não confunda com Vigor: a Força é o pico do esforço (o quanto você consegue de uma vez), o Vigor é a duração dele.
-*Principais Habilidades:* Armas, Briga, Bloqueio, Atletismo. No arremesso a Força dá o alcance e o dano, e não a jogada, que vai pela Destreza (abaixo).
+*Principais Habilidades:* Armas, Briga, Bloqueio, Atletismo, Arremesso. No arremesso a Força dá o alcance e o dano, e pode dar também a jogada: arremessar vai pela Força ou pela Destreza, à escolha de quem arremessa, normalmente o maior dos dois.
 
 **Destreza** · A precisão do corpo: reflexo, equilíbrio, mão firme e o jeito de pôr o corpo exatamente onde ele precisa estar. É o Atributo que mais aparece na mesa, porque governa tanto o gume quanto o dedo que abre a fechadura e o pé que não faz barulho. Quando o problema é acertar, desviar ou manipular sem estragar, é aqui que se olha. A Força diz o quanto o golpe machuca; a Destreza diz se ele acerta.
 *Principais Habilidades:* Esquiva, Furtividade, Prestidigitação, Arremesso, Atletismo, Ofícios Gerais, e a *finesse* nas Armas. O tiro de arco e de besta não vai pela Destreza, e sim pela Percepção (abaixo): a mão firme ajuda, mas quem acerta longe é o olho.
