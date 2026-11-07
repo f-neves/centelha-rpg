@@ -159,6 +159,7 @@ Cada item de `habilidadesEspeciais`:
 | `arte` | classe `livro`, condicional | `{id, nivel}`, referência à Arte (D-253) |
 | `texto` | classe `livro`, condicional | Só o que a criatura acrescenta: detalhe próprio e limite de jogo, como "segura a presa no chão com o pé" e "só descendo". Não repete o livro, outra parte da ficha ou número calculado pelo motor (D-253). |
 | `ativacao`, `duracao`, `alcance`, `area`, `efeito`, `dano`, `resistencia`, `limiteDeUso` | classe `regra da ficha`; em `sem regra ainda`, só `efeito` | os oito campos da D-197 |
+| `fraqueza` | condicional, na Regeneração (G5, D-367, 07/11/2026) | o campo `fraqueza: não se regenera; fogo, ácido` ou `fraqueza: interrompe; fogo, ácido; 1 hora` da linha do poder: `{forma: "naoRegenera" ou "interrompe", tipos, duracao}`, a duração só (e sempre) no interrompe (R47). Os tipos saem da lista fechada de `regras.json` `criatura.fraquezasDaRegeneracao`; o que estiver fora dá aviso, e não parada (o Mestre pode acrescentar) |
 
 O "PROVISÓRIO" da linha não vira campo: a habilidade entra na `revisao` com o motivo (D-222).
 
