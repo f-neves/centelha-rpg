@@ -4312,9 +4312,9 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
   - "F1. Observações das fichas no card (06/11/2026, DECIDIDA, provisória)":
     - Resposta do autor: pode colocar no card; quando chegar a revisão de layout, ele decide como fica e se fica. A justificativa de ataques e poderes passa a chegar ao JSON e aparece no card; as Notas de observação também passam a chegar ao JSON, para o layout decidir se mostra.
 - Fora do livro: é trabalho do conversor e do card (`scripts/conversor-criatura.mjs`, `BestaCard.astro`); a forma final fica para a revisão de layout.
-- Muda: nada registrado antes; a nota da revisão de layout segue com o autor.
+- Muda: contradiz em parte a D-219 ("Saem do JSON: v3, notasObservacao (ficam na ficha .md)"), a D-222 (a lista `revisao` "substitui as notasObservacao") e a D-224 (a lista fica só no JSON-fonte, fora do JSON público e do card). Pela regra do registro, a pergunta vai ao autor antes de implementar: se as Notas de observação entram no JSON como campo novo, ao lado da `revisao`, ou se o que ele quer é a `revisao` no card. Para a justificativa de ataques e poderes não há decisão anterior que a tire do JSON (conferência da Revisora sobre `a518d65e`).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **suspensa** até a resposta do autor sobre a D-219, a D-222 e a D-224; depois, a implementar pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
 
 ### D-358 · F2: a recalibração das Proezas entra depois das regras soltas, e leva a D18 (Ambidestria) e o cansaço do poder inato [tags: proezas, recalibracao, ambidestria, d18, poder-inato, cansaco, f2, escopo]
 - Data: 2026-11-06
@@ -4338,6 +4338,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
     - mordaça (Mordaça de Treva), devorar-a-luz e noite: escuridão total deixa Cego quem está nela (a tabela de combate: "Cego, vendado ou no escuro total"); penumbra parcial fica Ofuscado, a critério do Mestre. O marcador "Na escuridão" deixa de ser usado por eles.
     - O que mexe no grid.condicao vai à passada do Grid (D-054); o texto das Artes e da Técnica pode entrar já.
 - Fora do livro: o `grid.condicao` destes efeitos vai para a passada única do Grid (D-054), na N23; o texto das Artes e da Técnica entra já.
+- A Mordaça de Treva: o texto dela é só de silêncio ("Nenhum som sai da área [...] Quem está dentro ouve normalmente."), e a escuridão vinha só do `grid.condicao`. Pelo princípio da A35 ("o marcador do Grid só usa uma condição quando o efeito é aquela condição") e pela frase "O marcador 'Na escuridão' deixa de ser usado por eles", ela não ganha a frase de Cego nem de Ofuscado, e na N23 o marcador passa a nomear o silêncio (consequência direta, informada ao autor em 06/11/2026). A Devorar a Luz ("o dia lá dentro vira crepúsculo") é a penumbra (Ofuscado, e Cego onde não houver luz nenhuma, a critério do Mestre); a Noite é a escuridão total.
 - Muda: fecha a A35 das pendências; segue a D-274 (a Arte vale pelo próprio texto) e as R10, R11, R14, R17 e R18.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
 - Estado: **a implementar** pela Executora (o texto), em branch, com merge depois do PROCEDE da Revisora (D-356); o marcador, na passada do Grid.
@@ -4347,8 +4348,9 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
   - "F3. Catálogo de armas (06/11/2026, DECIDIDA; itens 014, 016, 017, 019, 020, 021)":
     - Resposta do autor: as seis entram agora no catálogo, com números de combate; o preço vem depois, na revisão econômica. São: armas de gigante, rocha arremessada, tridente, besta pesada, florete e forcado. Os números saem por analogia com as classes do catálogo (D-197: número é decisão da instância, escrito para revisão).
-- Fora do livro: os números saem por analogia com as classes do catálogo e ficam escritos para revisão (D-197). Se algum exigir regra nova (por exemplo, a escala das armas de gigante pelo Tamanho), a Executora para e o Arquiteto leva a pergunta ao autor. As fichas que hoje usam equivalência passam a usar a arma nova, por lista que vai à Bestiarista pelo autor (L18).
-- Muda: os itens 014, 016, 017, 019, 020 e 021; o preço fica para a revisão econômica.
+- Fora do livro: os números saem por analogia com as classes do catálogo e ficam escritos para revisão (D-197). Se algum exigir regra nova (por exemplo, a escala das armas de gigante pelo Tamanho), a Executora para e o Arquiteto leva a pergunta ao autor.
+- Também do autor (mensagem de 06/11/2026, item 2): "Depois, as fichas que hoje usam equivalência (o tridente como Lança, o florete como espada curta etc.) passam a usar a arma nova: liste-as num arquivo para a Bestiarista (L18)." A troca nas fichas é da Bestiarista, pela lista; a Executora só lista.
+- Muda: os itens 014, 016, 017, 019, 020 e 021; o preço fica para a revisão econômica. O "não recalcular fichas neste estudo" do item 014 (`99-sem-decisao.md`) vale para o estudo; a troca vem pela lista acima.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
 - Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
 
