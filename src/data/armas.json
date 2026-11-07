@@ -81,6 +81,40 @@
     "municao": null
   },
   {
+    "id": "florete",
+    "nome": "Florete",
+    "tipo": "arma",
+    "peso": 0.9,
+    "descricao": "Lâmina fina e ágil, só de ponta: estoca as frestas (N1) e não corta. Veloz e defensiva, como a Espada Curta.",
+    "tags": [
+      "ágil"
+    ],
+    "arma": {
+      "classe": "leve",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": -2,
+      "acerto": 2,
+      "defesaArma": 1,
+      "maos": 1,
+      "ticks": 5,
+      "folego": 15,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
     "id": "espada-longa",
     "nome": "Espada Longa",
     "tipo": "arma",
@@ -312,6 +346,41 @@
     "municao": null
   },
   {
+    "id": "tridente",
+    "nome": "Tridente",
+    "tipo": "arma",
+    "peso": 2,
+    "descricao": "Haste média de três pontas: alcance e estocada (N1), arremessável como a Lança. Fura couro e malha e resvala na placa.",
+    "tags": [
+      "alcance",
+      "arremessável"
+    ],
+    "arma": {
+      "classe": "haste",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 1,
+      "defesaArma": 2,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "perfurante",
+      "pen": 1,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 1,
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
     "id": "bordao",
     "nome": "Bordão",
     "tipo": "arma",
@@ -339,6 +408,40 @@
       "modos": [
         {
           "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
+    "id": "forcado",
+    "nome": "Forcado",
+    "tipo": "arma",
+    "peso": 2,
+    "descricao": "Ferramenta do campo em haste de duas mãos: os dentes finos furam pele (N0) e param em couro duro. Mantém a distância, mas não é arma de guerra: acerta e guarda menos que a Lança.",
+    "tags": [
+      "alcance"
+    ],
+    "arma": {
+      "classe": "haste",
+      "atrib": "destreza",
+      "pericia": "armas",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 1,
+      "maos": 2,
+      "ticks": 6,
+      "folego": 24,
+      "tipoDano": "perfurante",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "perfurante",
+          "perf": 0,
           "principal": true
         }
       ]
