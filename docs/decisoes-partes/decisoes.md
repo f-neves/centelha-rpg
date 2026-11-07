@@ -4357,6 +4357,11 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: os itens 014, 016, 017, 019, 020 e 021; o preço fica para a revisão econômica. O "não recalcular fichas neste estudo" do item 014 (`99-sem-decisao.md`) vale para o estudo; a troca vem pela lista acima.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 06/11/2026 ("Frente 4 fechada pelo autor").
 - Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- **Respostas do autor às perguntas da Executora (06/11/2026, mensagem do autor, copiadas como estão):**
+  - "Armas de gigante (014): nenhuma das suas três opções. A arma de gigante não muda o multiplicador da Força; muda o dado de dano base da arma (o 1d6−2, o 1d6, o 2d6). A Força continua ×1 com uma mão e ×2 com duas, como no livro. Não use 'Pesada com Força × 2' como regra da arma de gigante; o ×2 vem só das duas mãos."
+  - "Rocha arremessada (016): a rocha é arma de arremesso improvisada. O arremesso pode usar Força ou Destreza (não só Destreza + Arremesso), e a distância vem da fórmula de arremesso, pela massa (a sua opção 1, sem número fixo de massa nem de alcance). O dano depende do tamanho da rocha. O quanto o dano base muda por categoria de Tamanho, que vale para a arma de gigante e para a rocha, ainda está com o autor. Não fixe a escala; prepare a entrada para receber um passo por categoria, e o número vem no próximo prompt."
+  - "Também com o autor: quem pode empunhar uma arma maior que o próprio corpo, e a besta pesada (019). Não decida esses dois."
+- Estado parcial: Tridente, Florete e Forcado entraram na branch `f3-armas` (`14415e9a`); a arma de gigante e a rocha esperam o passo de dano por categoria de Tamanho; a besta pesada e quem empunha arma maior que o corpo seguem com o autor.
 
 ### D-361 · B1: a forma candidata da Regeneração é N PV por minuto, sempre ativa, até o PV máximo; a bancada mede antes de virar regra [tags: regeneracao, bancada, b1, r46, r47, d-246, desafio, trol, tarrasque, tick]
 - Data: 2026-11-06
