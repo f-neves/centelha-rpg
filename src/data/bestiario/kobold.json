@@ -91,8 +91,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "monta armadilhas simples no túnel antes do combate; o efeito de cada uma fica com o Mestre",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "monta armadilhas simples no túnel antes do combate; o efeito de cada uma fica com o Mestre"
     }
   ],
   "comoLuta": [
@@ -167,44 +166,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Armadilheiro"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "17, a linha de baixo da zona de transição, pelo \"Corpo frágil\" do site; na de cima seriam 24"
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "lança do livro, sem armadura **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 1 pelas escamas **[provisório]**"
-    },
-    {
-      "campos": [
-        "virtudes"
-      ],
-      "texto": "Bravura 2 e Temperança 3; o site tinha 3 e 2 **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

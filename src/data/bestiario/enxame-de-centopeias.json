@@ -122,8 +122,7 @@
       "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos. O veneno só entra se o pulso causar ao menos 1 PV depois da Absorção, gastando uma dose da reserva declarada",
       "dano": "1d6 + 1 de Perfuração",
       "resistencia": "sem jogada de ataque; a Absorção conta",
-      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo",
-      "justificativa": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
     },
     {
       "nome": "Corpo de enxame",
@@ -137,8 +136,7 @@
       "efeito": "Arma comum não fere este enxame. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R32 e R34. Arma comum não fere este enxame. Escolha: as lacraias pequenas e dispersas conservam a exigência de área da ficha. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Veneno de lacraia",
@@ -153,8 +151,7 @@
       "efeito": "Veneno de lacraia. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Cada dose corresponde à ação coletiva do enxame. R28 e R33. Antes: inoculação pelo ataque nomeado. Agora: pelo pulso com ao menos 1 PV depois da Absorção; doses, produção e perfil preservados."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [],
@@ -219,141 +216,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Pulso do enxame"
-      ],
-      "texto": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corpo de enxame"
-      ],
-      "texto": "R32 e R34. Arma comum não fere este enxame. Escolha: as lacraias pequenas e dispersas conservam a exigência de área da ficha. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Veneno de lacraia"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Cada dose corresponde à ação coletiva do enxame. R28 e R33. Antes: inoculação pelo ataque nomeado. Agora: pelo pulso com ao menos 1 PV depois da Absorção; doses, produção e perfil preservados."
-    },
-    {
-      "campos": [
-        "anatomia"
-      ],
-      "texto": "artrópode, anatomia provisória (D-175)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23). 11 km/h contra 1,44 km/h do real (fonte fraca, sem método), +664% (D-170)"
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "0,00 kg pela fórmula provisória (decisões 14 e 16); carga \"não (enxame)\" (D-162, D-169)"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "24 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 7 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo."
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "o Minúsculo é o da lacraia; o enxame usa o tamanho que apresenta no acerto (D-077, D-166)"
-    },
-    {
-      "campos": [
-        "massa",
-        "dimensoes"
-      ],
-      "texto": "a massa (0,1 g), a altura (5 mm) e a largura (4 mm) são estimativas da Bestiarista, sem fonte; a largura é a do corpo, sem as patas (D-147, D-174)"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "veneno sem id no catálogo; o efeito real é dor de picada de abelha (D-112)"
-    },
-    {
-      "campos": [
-        "enxame"
-      ],
-      "texto": "nenhuma centopeia real forma grupo; o enxame inteiro é extrapolação de RPG mantida porque a ficha existe (D-101, D-174)"
-    },
-    {
-      "campos": [
-        "especie"
-      ],
-      "texto": "a lacraia-doméstica foi escolhida pela Bestiarista (D-174)"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "2 **[extrapolação]**; nenhum feito de frio, fome, veneno ou ferida na pesquisa (D-174)"
-    },
-    {
-      "campos": [
-        "furtividade"
-      ],
-      "texto": "2, e não o 3 de que o levantamento a dá como candidata: a lacraia se esconde de dia e caça à noite, mas a pesquisa não mostra emboscada habitual fora da fresta; a fresta vai na Especialidade (D-174)"
-    },
-    {
-      "campos": [
-        "escalada"
-      ],
-      "texto": "Escalada 2 pela ficha de hoje (\"sobe parede e teto\") e pelo d20; a pesquisa não traz número de escalada (D-174)"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [
-        "atributosSociais"
-      ],
-      "texto": "Compostura de 2 para 1 pela diretriz 1; espécie solitária (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a massa (0,1 g), a altura (5 mm) e a largura (4 mm) continuam só por estimativa; procurado na Wikipédia, na Universidade de Buffalo, no Espace pour la vie e em busca geral (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a vida de 3 a 7 anos e a autotomia (Vigor 2) continuam só pela Wikipédia (D-174)"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "só dor descritiva para bloco provisório, Potência 6, início minuto (sangue), intervalo de 1 hora, pool 2 de PV, Desgaste 1; abaixo da Cefalotoxina (Potência 8, pool 4), pois as lacraias mal perfuram a pele humana."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - visão: olhos compostos, sensíveis à luz do dia e muito ao ultravioleta (Meyer-Rochow 2006, via Wikipédia). Texto."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Veneno: **veneno sem id no catálogo**. O real: se fura a pele, dói como picada de abelha, com dor leve e inchaço no lugar; \"quase incapaz de ferir humanos\" (Barnes 2003, via Wikipédia); \"inofensiva\" (Penn State). Nenhuma entrada de `venenos.json` serve (a `peconha-de-vibora` e a `peconha-de-aranha-gigante` são muito mais fortes)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Enxame: sim, um grupo (decisão 10). Quadrado de 1 m: cheio com 250 lacraias; com menos de 63 (um quarto) deixa de ser enxame e elas ficam soltas **[conta, sobre estimativa]**. Chão, parede e teto. Desordenado, que se divide em vários quadrados e se junta de novo, cada quadrado com o seu PV. Só ataque em área. Armadura: ignora, entra por qualquer fresta. Retirar: difícil enquanto está dentro da roupa. Dano automático contra quem está cercado, de Perfuração, mais o veneno fraco descrito no bloco de veneno (as regras de enxame ficam para depois); metade com metade das lacraias. No acerto vale o tamanho que o enxame apresenta (D-077)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: solta a pata presa para fugir (autotomia; Wikipédia)."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

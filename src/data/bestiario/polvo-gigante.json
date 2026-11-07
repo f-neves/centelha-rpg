@@ -145,8 +145,7 @@
       "efeito": "Imenso: braços abertos. Enorme: de cima, braços juntos. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Imenso (braços abertos) e Enorme (de cima, braços juntos). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Ferrão de gigante",
@@ -161,16 +160,14 @@
       "efeito": "Ferrão de gigante. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "constrição = agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "arrastar para a toca",
@@ -185,8 +182,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar para a toca. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "nuvem de tinta",
@@ -200,8 +196,7 @@
       "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
       "dano": "nenhum",
       "resistencia": "sair da nuvem",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -272,112 +267,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.constrição = agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.nuvem de tinta"
-      ],
-      "texto": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar para a toca"
-      ],
-      "texto": "Aplicação à capacidade arrastar para a toca. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Imenso (braços abertos) e Enorme (de cima, braços juntos). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ferrão de gigante"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "nuvem de tinta"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [],
-      "texto": "gigante escalado (D-105): dimensões do adulto real × 3,5 (envergadura de 14 m, braços de cerca de 6,1 m, os do site com o disco somado); a massa é a base típica de 31,5 kg × 3,5³ = 1.350,6 kg (era 31,5 × 3,0³ = 850,5, e antes 292 e 259). Massa e envergadura da base saem da mesma fonte (Seattle Aquarium). Tudo [extrapolação] (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; com k = 3,0 o gigante ficava Grande de braços juntos, uma categoria acima da base (Média), e a 2% do corte; com k = 3,5 fica Enorme, a 33% do corte. O D&D 3.5 e o Pathfinder 1 dão Grande (D-174). Pela D-215 (24/10/2026), o principal passou a ser o de braços abertos (Imenso), e o Enorme de braços juntos ficou como segundo."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Imenso com os braços abertos (47,96 m²), a postura em que luta (D-215, 24/10/2026); segundo Alvo Enorme pela área de cima com os braços juntos (8,0 m², decisão 8). Provisório até os cortes fecharem (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, era 7; pelos vizinhos de massa (tubarão-branco, boi, rinoceronte), abaixo da referência (9,15) por não ter osso [provisório] (D-158, D-169)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 918,96 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 1.118,81 kg (calc6, 1.350,6 kg e Força 8; era 988,32 com 850,5 kg) pela fórmula das decisões 14 e 16; cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir."
-    },
-    {
-      "campos": [],
-      "texto": "inteligencia: 2 pela lista fechada da diretriz 1, igual ao polvo-comum; nota \"2 não é inteligência humana\"."
-    },
-    {
-      "campos": [],
-      "texto": "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a camuflagem foi para a Especialidade natural."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua (o frio de 7 a 9,5 °C é o meio dela); a Especialidade de Resistência (Frio) +2 sai pelo mesmo motivo. Se o Mestre puser o polvo em água mais fria que a do Pacífico Norte, é caso dele (D-087)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 4 (excepcional), sem medida do corpo inteiro; os 16 kg por ventosa são cálculo."
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: 4, com o levantamento apontando candidato a 5; a camuflagem como Especialidade natural +3."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: cefalópode, anatomia provisória (D-175); sem terra, e o rastejar no fundo fica em texto."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); nenhuma velocidade medida da real."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: dois acima da base real (2), um acima do mínimo da D-176, pela massa de 1,35 t (tubarão-branco 4; boi e rinoceronte 5); o corpo mole sem osso o deixa no lado de baixo, ao lado da lula-gigante (4). Era 3 (D-174, D-176)."
-    },
-    {
-      "campos": [],
-      "texto": "veneno: veneno sem id no catálogo (D-112); o efeito real (caso DAN) está na pesquisa e em Veneno e doença."
-    },
-    {
-      "campos": [],
-      "texto": "comportamento: a reação a gente fica [sem dado]; na escala, gente vira presa possível, pelo Mestre (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a altura, a largura e o comprimento da base (0,35, 0,5 e 2,3 m) continuam por estimativa a partir da envergadura (Seattle Aquarium) e do manto (ADW) (D-174)."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

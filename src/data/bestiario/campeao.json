@@ -111,8 +111,7 @@
       "ataque": "Espada longa",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Golpe Pesado",
@@ -122,8 +121,7 @@
         "id": "golpe-pesado",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Quebrar Guarda",
@@ -133,8 +131,7 @@
         "id": "quebrar-guarda",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Soco Trovejante",
@@ -144,16 +141,14 @@
         "id": "soco-trovejante",
         "nivel": 3
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -220,62 +215,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Soco Trovejante"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Quebrar Guarda"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe Pesado"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe duplo"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "energia"
-      ],
-      "texto": "14 pela fórmula do livro; o site escrevia \"Centelha × 3 + Virtudes + Vontade\""
-    },
-    {
-      "campos": [
-        "convicção"
-      ],
-      "texto": "4; o site tinha 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "escudo"
-      ],
-      "texto": "Variante, porque o site não o põe no equipamento"
-    },
-    {
-      "campos": [
-        "card e equipamento"
-      ],
-      "texto": "a malha está sempre vestida (D-188)"
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.social",

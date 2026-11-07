@@ -116,8 +116,7 @@
       "efeito": "O filamento prende à distância. O alvo fica Preso pela Rede do livro. A fraqueza do filamento segue Veneno e doença",
       "dano": "nenhum",
       "resistencia": "Esquiva contra o disparo. Para se soltar, aplicar Preso da Rede ou cortar o fio. O veneno mantém a resistência própria",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno"
     },
     {
       "nome": "puxão",
@@ -131,8 +130,7 @@
       "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Resistência à magia",
@@ -160,8 +158,7 @@
       "efeito": "Golpeia nesta ordem: primeiro filamento, segundo filamento, terceiro filamento. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum. Cada filamento gasta uma dose da reserva",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "primeiro filamento, segundo filamento, terceiro filamento. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -254,102 +251,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.puxão"
-      ],
-      "texto": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "primeiro filamento, segundo filamento, terceiro filamento. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 3: +3 Corte, +3 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Filamentos pegajosos"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "Filamentos pegajosos"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 27 da fonte passa a grau 3 (+6)."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "9; o site tinha 11 **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "3; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "a fraqueza dos filamentos, Potência 16, pool 4 de Força **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Mordida Média no lugar das \"Garras e presas\" **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "filamentos pegajosos"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "Resistência à magia 27"
-      ],
-      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
-    },
-    {
-      "campos": [],
-      "texto": "`filamentos pegajosos` (Fase 5, F5.34, D-263, 29/10/2026): o escape segue a D-081, \"o agarrado não age, não rola, e só se solta quando quem controla erra\". Antes: para se soltar, Força + Atletismo contra o total do ataque, ou cortar o filamento (um golpe de Corte que fira, a critério do Mestre)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

@@ -119,24 +119,21 @@
       "efeito": "Anticoagulante de varano. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "fisgar com a boca",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     }
   ],
   "comoLuta": [
@@ -217,100 +214,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.fisgar com a boca"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 4: +4 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Anticoagulante de varano"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [],
-      "texto": "area: 0,40 m², vista de lado: a medição da `tamanho-fichas-v2` (0,56 m², o macho de 2,59 m de Wood 1983, de 79 a 91 kg) escalada pelo cubo da massa a partir dos 80 kg de trabalho; era 1,04 m² (altura × comprimento, um retângulo cheio). O Alvo passa de Médio a Pequeno; com a base em 85 kg (meio da faixa de Wood) também (0,38 m²)."
-    },
-    {
-      "campos": [
-        "pesquisa.caudaGrossa"
-      ],
-      "texto": "sim, pela comparação com o crocodilo da D-155; nenhuma fonte diz \"grossa\" (D-155, D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a largura (0,35 m no macho, 0,29 m escalada) continua só pela estimativa; o comprimento sem cauda continua só pela Wikipédia (\"cauda tão longa quanto o corpo\") (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 234,14 kg (em vigor na Etapa 2, 20/10/2026); antes: 228,98 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 47,5 kg. Era 290,8 kg (80 kg de trabalho) e, antes, 232 kg pela fórmula de FAH."
-    },
-    {
-      "campos": [],
-      "texto": "carga: 4,75 kg de Leve pela conta da D-122 (estrutura 0,1, como o crocodilo) com os 47,5 kg, sem carga medida; era 8 kg pelos 80 kg."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). Terra 15 km/h contra \"até 20 km/h\" sem método (−25%); nado sem velocidade real achada."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 2 (animal comum), provisória, sem peso arrastado medido."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo normal da espécie. O peptídeo antibacteriano do sangue (VK25) caberia numa Resistência (doenças), mas a fonte é de laboratório e não diz que o animal resiste mais a infecção; não entra."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 4 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 51 kg (em vigor na Etapa 2, 20/10/2026); antes: 47,5 kg **[medido]**, a média simples do macho (70 kg) e da fêmea (25 kg) selvagens (Laver e colegas 2012); era 80 kg, quase o teto selvagem (81,5 kg, Jessop e colegas 2007), e 70 kg (o macho) na quinta rodada. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 47,5 kg (faixa e PV não mudam)."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): anda o dia pela área de vida de cerca de 1,9 km² (ADW); corre só em arrancadas curtas até 20 km/h (Wikipédia, sem método); a caçada mata em poucos minutos, quase sempre em menos de meia hora (Wikipédia). Sem distância por dia nem tempo de nado."
-    },
-    {
-      "campos": [],
-      "texto": "influencia, compostura: descem a 1 por não ser espécie social (diretriz 1)."
-    },
-    {
-      "campos": [
-        "ataques.mordida"
-      ],
-      "texto": "Perfuração pela regra do dente; o serrilhado que rasga pode pedir Corte. N0 pela mordida de 39 N, que é de modelo do crânio e não de animal vivo (Fry 2009) (D-174)"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "veneno sem id no catálogo (anticoagulante, Fry 2009) (D-112)"
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "a Prontidão (faro) desceu de +4 para +3 pelo teto da decisão 3, e passou de bônus fixo a Especialidade natural."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

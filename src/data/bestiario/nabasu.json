@@ -118,8 +118,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Toque que envelhece",
@@ -156,8 +155,7 @@
       "efeito": "escolhe: cobre a área de escuridão (quem está dentro fica Na escuridão, e ele vê nela), ou chama duas sombras (a ficha do bestiário) que lutam por ele",
       "dano": "o das sombras",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Fascinar",
@@ -176,8 +174,7 @@
       "efeito": "prende a atenção do alvo, que perde a próxima ação e fica com a Defesa −4 até ela, como Surpreso",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Boa Impressão pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Olhar que rouba a morte",
@@ -205,8 +202,7 @@
       "efeito": "Cada alma elegível fornece uma carga uma única vez. Ao gastar uma carga, some +1d6 a uma jogada ou recupere 1d6 PV",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "até três cargas guardadas, sem custo de Energia",
-      "justificativa": "Uma carga por alma e teto de 3, pela capacidade de guardar a energia consumida. Cada carga vale +1d6 numa jogada ou 1d6 PV. valor de molde, para a bancada."
+      "limiteDeUso": "até três cargas guardadas, sem custo de Energia"
     },
     {
       "nome": "imune a veneno, paralisia e efeito de morte",
@@ -220,8 +216,7 @@
       "efeito": "Ignora veneno, paralisia e o efeito que mata sem causar dano. Recebe dano comum e morre pela perda de Vida como de costume. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "medonho",
@@ -242,8 +237,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Golpe na brecha",
@@ -257,8 +251,7 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo",
-      "justificativa": "Bônus anterior indefinido passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -357,141 +350,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Fascinar"
-      ],
-      "texto": "Base Boa Impressão pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sombras"
-      ],
-      "texto": "Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "comoLuta.poderes sombrios"
-      ],
-      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe na brecha"
-      ],
-      "texto": "Bônus anterior indefinido passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.roubo de vida"
-      ],
-      "texto": "Uma carga por alma e teto de 3, pela capacidade de guardar a energia consumida. Cada carga vale +1d6 numa jogada ou 1d6 PV. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno, paralisia e efeito de morte"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Toque que envelhece"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Sombras"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Fascinar"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Olhar que rouba a morte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "roubo de vida"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "poderes sombrios"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e mordida Médias, o golpe com o corpo atrás **[provisório]**"
-    },
-    {
-      "campos": [
-        "toque que envelhece"
-      ],
-      "texto": "−1 nas ações até o fim da cena, o Definhar da Arte Morte 2 do livro; \"drenando vigor aos poucos\" do site ficou nisso **[provisório]**"
-    },
-    {
-      "campos": [
-        "olhar que rouba a morte"
-      ],
-      "texto": "PV máximo −1d6 para sempre e o ghoul são números e escolha da ficha (D-197); o site não diz que morto-vivo se ergue **[provisório]**"
-    },
-    {
-      "campos": [
-        "sombras",
-        "fascinar"
-      ],
-      "texto": "números da ficha com as bases do site (D-197); \"deixando-o vulnerável\" do site virou perder a ação com a Defesa −4, como Surpreso **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque furtivo"
-      ],
-      "texto": "só a parte que o livro cobre (Surpreso, Defesa −4); o dano extra do site ficou sem regra ainda"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "2 **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

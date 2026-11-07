@@ -105,20 +105,19 @@ for (const id of Object.keys(DIFERENCAS)) {
   const { criatura, paradas } = converterFicha(ler(`${id}.md`), { site: JSON.parse(ler(`${id}-site.json`)) });
   const ex = JSON.parse(ler(`${id}-exemplo.json`));
   if (JSON.stringify(paradas) !== JSON.stringify(PARADAS[id])) falhas.push(`${id}: paradas ${JSON.stringify(paradas)}, esperadas ${JSON.stringify(PARADAS[id])}`);
-  const { revisao: rc, notas: notasConv, ...c } = structuredClone(criatura), { revisao: re, ...e } = ex;
-  // F1 (D-357, 06/11/2026): a Justificativa (de ataque e de poder) e as Notas de observação chegam ao JSON, e os exemplos
-  // de 26/10 não as têm. Saem da comparação chave por chave e são conferidas aqui, contra a própria ficha.
+  const { revisao: rc, ...c } = structuredClone(criatura), { revisao: re, ...e } = ex;
+  // F1 (D-357, F1a de 06/11/2026): a Justificativa do ataque chega ao JSON, e os exemplos de 26/10 não a têm. Sai da
+  // comparação chave por chave e é conferida aqui, contra a própria ficha. As Notas de observação não vão ao JSON (D-224).
   {
     const F = lerFichaMd(ler(`${id}.md`));
-    const linhas = (F.secoes['Notas de observação'] || []).filter((x) => x.startsWith('- '));
-    if ((notasConv || []).length !== linhas.length) falhas.push(`${id}: notas, o conversor dá ${(notasConv || []).length}, a ficha tem ${linhas.length} linhas`);
+    if ('notas' in criatura) falhas.push(`${id}: as Notas de observação foram ao JSON (F1a, D-224)`);
     for (const r of F.tabelas['Ataques'] || []) {
       const nome = semMarcas(r['Nome'] ?? r['Ataque'] ?? ''), a = criatura.ataques.find((x) => x.nome === nome);
       const esperada = semMarcas(r['Justificativa'] ?? '').replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
       if (a && (a.justificativa ?? '') !== esperada) falhas.push(`${id}, ${nome}: a justificativa do JSON não é a da ficha`);
     }
     for (const f of [c, ...(c.formas || [])]) for (const a of f.ataques || []) delete a.justificativa;
-    for (const h of c.habilidadesEspeciais || []) delete h.justificativa;
+    if ((criatura.habilidadesEspeciais || []).some((h) => 'justificativa' in h)) falhas.push(`${id}: um poder ganhou justificativa, que espera o autor`);
   }
   // D-208 completada pela D-258: o ataque natural de corpo a corpo não guarda Habilidade, nem quando a frase
   // Jogada a escreve (a Mordida do lobisomem diz Briga), nem quando a omite (as Garras do dragão); o de tiro guarda.
@@ -171,18 +170,19 @@ if (!aponta(lobo, 'ataques.Mordida.nivelPerfuracao') || !aponta(lobo, 'formas.lo
 if (aponta(lobo, 'atributos.inexistente') || aponta(lobo, 'ataques.Coice') || aponta(lobo, 'formas.peixe.corpo')) falhas.push('aponta() aceitou um caminho que não existe');
 
 // F1 (D-357): a nota com o prefixo do campo. Até 06/11/2026 "`ataques.Mordida`" não casava com nada e, sem marca de
-// dúvida, saía calada; agora o prefixo resolve, a nota do poder vira a justificativa dele, e o prefixo que não aponta avisa.
+// dúvida, saía calada; agora o prefixo resolve para a revisao (D-222), e o prefixo que não aponta avisa. A nota do poder
+// não vira texto do JSON (F1a): sem marca de dúvida, ela não entra em lugar nenhum, como antes.
 {
   const NOTA = '- `forma principal`:';
   if (!LOBO.includes(NOTA)) throw new Error('o trecho das notas plantadas não está na ficha');
   const plantada = LOBO.replace(NOTA, '- `ataques.Mordida`: nota plantada do ataque\n- `habilidadesEspeciais.Mordida que derruba e amaldiçoa`: nota plantada do poder\n- `dimensoes.largura`: nota plantada sem campo\n' + NOTA);
   const r = converterFicha(plantada, { site: SITE });
   if (!r.criatura.revisao?.some((x) => x.campo === 'ataques.Mordida' && /nota plantada do ataque/.test(x.motivo))) falhas.push('F1: a nota `ataques.Mordida` não entrou na revisao');
-  if (r.criatura.habilidadesEspeciais.find((h) => h.nome === 'Mordida que derruba e amaldiçoa')?.justificativa !== 'nota plantada do poder') falhas.push('F1: a nota `habilidadesEspeciais.<poder>` não virou a justificativa do poder');
+  if (JSON.stringify(r.criatura).includes('nota plantada do poder')) falhas.push('F1: a nota sem marca do poder foi ao JSON');
   if (!r.avisos.some((a) => /"dimensoes\.largura" tem o prefixo de campo/.test(a))) falhas.push('F1: o prefixo que não aponta (`dimensoes.largura`) saiu calado');
-  if ((r.criatura.notas?.length ?? 0) !== (lobo.notas?.length ?? 0) + 3 || !lobo.notas?.length) falhas.push('F1: as três notas plantadas não chegaram às notas do JSON');
+  if ('notas' in r.criatura) falhas.push('F1: as Notas de observação foram ao JSON (F1a, D-224)');
   // controle: sem as linhas plantadas, nada disso aparece
-  if (lobo.revisao.some((x) => x.campo === 'ataques.Mordida' && /plantada/.test(x.motivo)) || lobo.habilidadesEspeciais.some((h) => h.justificativa === 'nota plantada do poder')) falhas.push('F1: o controle sem as notas plantadas acusou o que não há');
+  if (lobo.revisao.some((x) => x.campo === 'ataques.Mordida' && /plantada/.test(x.motivo))) falhas.push('F1: o controle sem as notas plantadas acusou o que não há');
 }
 
 // P5: naoErgue é condicional e aceita só true, também nos corpos das formas.

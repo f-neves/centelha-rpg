@@ -148,8 +148,7 @@
       "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -224,63 +223,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O corpo é constituído pelo próprio elemento."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.feito de pedra viva"
-      ],
-      "texto": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "79 kg pelo volume em granito; o site dizia 36 kg. Com 36 kg ficaria na Faixa 3 do mesmo jeito, mas na zona de transição do PV (28 a 42 kg) **[conta]**"
-    },
-    {
-      "campos": [
-        "bloqueio"
-      ],
-      "texto": "1, braço de pedra; o site não gravava Bloqueio **[provisório]**"
-    },
-    {
-      "campos": [
-        "tremor"
-      ],
-      "texto": "o sentido é do site; os 18 m são sugestão da ficha **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 9, pedra maciça, como o golem de pedra **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperança"
-      ],
-      "texto": "3; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "deslizar na pedra",
-        "domínio da terra"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

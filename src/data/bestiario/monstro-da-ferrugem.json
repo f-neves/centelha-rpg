@@ -135,8 +135,7 @@
       "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "nenhum ao portador",
       "resistencia": "a resistência da peça contra a exposição",
-      "limiteDeUso": "um por golpe. Sem custo",
-      "justificativa": "Antes: Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada. Base Enferrujar pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Faro por metal",
@@ -216,63 +215,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Corrói metal"
-      ],
-      "texto": "Antes: Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada. Base Enferrujar pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 2: +2 Corte, +2 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "patas estimadas **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "1; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Antenas sem dano e Mordida Leve no lugar das \"Garras e presas\" **[provisório]**"
-    },
-    {
-      "campos": [
-        "arte"
-      ],
-      "texto": "a Matéria 1 do site vira a base (Matéria 2, a do poder do site) do poder natural"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "corrói metal",
-        "faro por metal"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

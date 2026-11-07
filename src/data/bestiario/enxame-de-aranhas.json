@@ -130,8 +130,7 @@
       "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos. O veneno só entra se o pulso causar ao menos 1 PV depois da Absorção, gastando uma dose da reserva declarada",
       "dano": "1d6 + 1 de Perfuração",
       "resistencia": "sem jogada de ataque; a Absorção conta",
-      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo",
-      "justificativa": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
     },
     {
       "nome": "Corpo de enxame",
@@ -145,8 +144,7 @@
       "efeito": "Arma comum não fere este enxame. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R32 e R34. Arma comum não fere este enxame. Escolha: são aranhas de cerca de 5 mm, não as aranhas grandes da R32. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Peçonha do enxame de aranhas",
@@ -161,8 +159,7 @@
       "efeito": "Peçonha do enxame de aranhas. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Cada dose corresponde à ação coletiva do enxame. 112. Potência 6, início em 1 minuto, intervalo de 1 hora, pool 2 de PV e Desgaste 1 sugeridos para a irritação de várias picadas pequenas. R28 e R33. Antes: inoculação pelo ataque nomeado. Agora: pelo pulso com ao menos 1 PV depois da Absorção; doses, produção e perfil preservados."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [],
@@ -228,110 +225,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Pulso do enxame"
-      ],
-      "texto": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corpo de enxame"
-      ],
-      "texto": "R32 e R34. Arma comum não fere este enxame. Escolha: são aranhas de cerca de 5 mm, não as aranhas grandes da R32. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Peçonha do enxame de aranhas"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Cada dose corresponde à ação coletiva do enxame. 112. Potência 6, início em 1 minuto, intervalo de 1 hora, pool 2 de PV e Desgaste 1 sugeridos para a irritação de várias picadas pequenas. R28 e R33. Antes: inoculação pelo ataque nomeado. Agora: pelo pulso com ao menos 1 PV depois da Absorção; doses, produção e perfil preservados."
-    },
-    {
-      "campos": [
-        "anatomia"
-      ],
-      "texto": "artrópode, anatomia provisória (D-175), não calibrada em animal medido (D-175)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23); 10 km/h pela fórmula de hoje, sem velocidade real para comparar (D-170)"
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "0,00 kg pela fórmula provisória (decisões 14 e 16); a carga fica \"não (enxame)\" (D-162, D-169)"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "24 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 7 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo."
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "o Minúsculo é o da aranha; o enxame usa o tamanho que apresenta no acerto (D-077, D-166)"
-    },
-    {
-      "campos": [
-        "dimensoes"
-      ],
-      "texto": "altura (3 mm) e largura (2 mm) estimadas pela Bestiarista, sem fonte; o cefalotórax de 1,27 a 1,59 mm é piso (D-147, D-174)"
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "7 mg, o meio da faixa medida da ADW (2,55 a 11,82 mg), e não uma média medida (D-174)"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "veneno sem id no catálogo; o efeito em humanos não foi achado (D-112)"
-    },
-    {
-      "campos": [
-        "especie"
-      ],
-      "texto": "a aranha social foi escolhida pela Bestiarista; a ficha antiga não tinha espécie (D-174)"
-    },
-    {
-      "campos": [
-        "atributosSociais"
-      ],
-      "texto": "Compostura de 2 para 1 pela diretriz 1. A colônia é \"social\" no sentido da biologia, mas a pesquisa não mostra uma aranha lendo, intimidando ou enganando a outra; lida como não social para a diretriz (D-174)"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "2 **[extrapolação]**; nenhum feito de frio, fome, veneno ou ferida na pesquisa (D-174)"
-    },
-    {
-      "campos": [
-        "escalada"
-      ],
-      "texto": "Escalada 2 com a Especialidade natural (na teia) +2, escolha minha; a pesquisa dá a teia de até 20 m, sem número de escalada fora dela (D-174)"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "2 se apoia na vida de 76 dias da ADW; nada melhor achado (D-174)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

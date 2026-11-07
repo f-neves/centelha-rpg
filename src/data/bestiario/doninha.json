@@ -122,8 +122,7 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "nenhum",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "corpo flexível",
@@ -191,84 +190,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.morder e não largar"
-      ],
-      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "corpo flexível"
-      ],
-      "texto": "**[provisório]** R6. A adaptação corporal vale +1d6 na jogada."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a força de 90 g não fere nem segura a mão de um humano. O feito de matar coelho de 5 a 10 vezes o próprio peso é de matar, e não de levantar; o peso levado não foi achado (D-162)."
-    },
-    {
-      "campos": [],
-      "texto": "pv: 1 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela decisão 21 (5 + Vigor), e 11 pela outra proposta do autor (10 + metade do Vigor); eram 18 pela Faixa 1 antiga (D-169, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 0,32 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,28 kg pela fórmula nova (`calc6.mjs`, com 0,09025 kg), provisório; era 0,01 kg pela D-162 (decisões 14 e 16)."
-    },
-    {
-      "campos": [],
-      "texto": "carga: 0,02 kg de Leve pela conta da D-122, provisória (D-169)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 3 ◆, robusta para o tamanho, pela presa de 5 a 10 vezes o próprio peso (só pela Wikipédia; a Mammal Society confirma só coelho jovem) (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 **[extrapolação]**; o levantamento a aponta como candidata a 1 pelo metabolismo sem reserva, sem tempo medido de jejum (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "atributos.compostura: desce a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 10 para 8 (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "escalada: 0 por falta de dado na pesquisa, e não por fato contrário; o d20 dá escalar 20 pés, sem fonte real (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23), com o 0,4 do Miúdo no Minúsculo; sem real para conferir (D-170)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: a altura (0,045) e a largura (0,032) saem da estimativa da Bestiarista-2 para o macho, sem fonte; o comprimento é o do macho britânico (Mammal Society); os quatro escalados pelo cubo da massa para o típico de 90,25 g (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Minúsculo, sem borda; a área está abaixo do começo do Minúsculo (D-166, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "briga: 4 pela técnica de matar presa maior; com Força 0 o dano fica no dado (D-115, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "raciocinio: 3 pelo bote, sem tempo de reação medido (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "atletismo: 2 é escolha da Bestiarista-2, sem fonte de escalada ou salto medidos (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): sem velocidade, distância por dia nem tempo de perseguição (`doninha.md`). O que há: área de vida de 0,2 a 1,0 km² (ADW)."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

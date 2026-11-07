@@ -123,8 +123,7 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "segura e sacode",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "segura e sacode"
     },
     {
       "nome": "derrubar",
@@ -132,8 +131,7 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "na perna, em grupo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "na perna, em grupo"
     }
   ],
   "comoLuta": [
@@ -211,80 +209,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "pesoErguido",
-        "carga"
-      ],
-      "texto": "provisórios. A carga sai da massa e da faixa (2,66 kg); o peso erguido sai de `calc.mjs` (90,93 kg), e era 20,12 kg pela fórmula da D-162 (decisões 14 e 16). O travois de 20 a 30 kg e os 23 kg do trenó de correio ficam abaixo do número novo, que é arrasto e não carga de viagem"
-    },
-    {
-      "campos": [
-        "velocidade",
-        "nado"
-      ],
-      "texto": "congelados (decisão 23); 55 km/h contra 47 km/h do vira-lata mais rápido do Fast CAT (+16%), e o nado sem velocidade real"
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "0,20 m², Pequeno com folga"
-    },
-    {
-      "campos": [
-        "dimensoes"
-      ],
-      "texto": "o comprimento do focinho à base da cauda (0,90 m) e a largura (0,18 m) continuam estimados; o tronco medido do taigan e do FM 25-6 confirma a estimativa"
-    },
-    {
-      "campos": [
-        "referencia"
-      ],
-      "texto": "o cão não tem tamanho de espécie (de menos de 1 kg a mais de 100 kg); a ficha é a do cão médio de 20 kg do plano"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "2, sem a corrida (diretriz 2); o levantamento dava 3 pelos km por dia do cão de trenó, que ficam na nota de pesquisa (jornada)"
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): cão de trenó, 123 a 160 km por dia em prova de 1.600 km (Loftus 2014), 163 km por dia (Hinchcliff 1997), cerca de 191 km por dia no recorde do Iditarod de 2017 contando os descansos; 16 a 18 km/h por 12 km puxando veículo (Larsson 2015) **[medido]**. Em trabalho de carga, 39 a 40 km em 8 horas (FM 25-6; NPS, Yukon) **[medido]**. O cão médio que não é de trenó: **[sem dado]**."
-    },
-    {
-      "campos": [
-        "empatia"
-      ],
-      "texto": "2, nova, com Especialidade (ler o humano) 1, **[extrapolação]** da vida doméstica e de equipe; a pesquisa não mede leitura de gestos"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "2, animal comum, entre o lobo (0) e o mastim (3)"
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "Prontidão (faro) desce de +4 para +3 pelo teto da decisão 3; sem Resistência (frio), porque a pelagem dupla é de algumas raças e não do cão médio"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.furtividade",

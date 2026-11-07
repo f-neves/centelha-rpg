@@ -146,8 +146,7 @@
       "ataque": "Garra",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "o gato que se pendura no braço e morde",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "o gato que se pendura no braço e morde"
     }
   ],
   "comoLuta": [
@@ -224,117 +223,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar com as quatro patas"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "0 (em vigor na Etapa 2, 20/10/2026); antes: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`): arranha fundo e se segura no braço; era 0 pela leitura automática da D-167. O dano dos dois ataques sobe de 1,5 para 2,5 de média e o agarrão passa a 2 (D-115)"
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "25,18 kg (em vigor na Etapa 2, 20/10/2026); antes: 29,12 kg ◆ pela fórmula nova com a Força 1 (`calc6.mjs`, decisões 14 e 16; era 23,92 com a Força 0), provisório. Fica bem acima de tudo o que a pesquisa mostra o gato levar (o filhote de 110 a 125 g, a presa pequena na boca) e é 39 vezes os 0,75 kg da conta de hoje: a curva da massa dá 32 kg de P típico para 3,9 kg. Anotado, não corrigido (D-174)"
-    },
-    {
-      "campos": [
-        "carga"
-      ],
-      "texto": "provisória; sai da massa e da faixa (0,69 kg de Leve com 3,9 kg na Faixa 1, sem carga medida), e não da Força (D-160, D-169). A Faixa 1 tem fator 1,78, e por isso a Leve do típico passa a do macho de 4,3 kg (0,57)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23). Não bate com o real: 27 km/h contra cerca de 45 km/h de divulgação sem método, −40% (D-170)"
-    },
-    {
-      "campos": [
-        "faixa"
-      ],
-      "texto": "o adulto típico (3,9 kg, a média do macho e da fêmea) cai na Faixa 1, a 0,1 kg do corte de 4 kg, e passa a 7 PV (5 + Vigor, decisão 21), contra 24 na v3. O macho de 4,3 kg fica 0,3 kg acima do corte, na Faixa 2 (24 PV); a fêmea (3,5 kg), o gato feral (2,6 a 3,5 kg) e o AnAge (3,9 kg) ficam na Faixa 1. A diferença entre as duas faixas é de 17 PV, e o corte passa entre o típico e o macho (D-141, D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a cauda de cerca de 30 cm continua só pela Wikipédia (Sunquist e Sunquist 2002); procurado em Fleming et al. 2020, Pongrácz 2024 e Poradowski 2024, que não medem cauda (D-174)"
-    },
-    {
-      "campos": [
-        "compostura"
-      ],
-      "texto": "1 pela diretriz 1 (não é espécie social); a imobilidade do emboscador, que dava o 3, não tem lugar entre os Atributos sociais do animal solitário. Provisória (D-174)"
-    },
-    {
-      "campos": [
-        "empatia"
-      ],
-      "texto": "0, porque a pesquisa não traz leitura do humano; o gato doméstico convive com gente e pode merecer 1 quando houver fonte (D-174)"
-    },
-    {
-      "campos": [
-        "equilibrio",
-        "escalada"
-      ],
-      "texto": "Habilidades novas na ficha (2 e 2), com o cair em pé como Especialidade natural +2; nenhum número de altura de queda nem de escalada na pesquisa (D-174)"
-    },
-    {
-      "campos": [
-        "mordida"
-      ],
-      "texto": "o doméstico tem estimativa pelo crânio (206 N no macho, Fleming et al. 2020), 3,7 vezes os 56 N do gato-selvagem (Wroe et al. 2005) pelo mesmo tipo de método; a causa da diferença não foi investigada. Não muda o N0 (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: Prontidão (audição) +3 ◆ (era +4); de 48 Hz a 85 kHz (Heffner e Heffner 1985); as orelhas giram 180° (ADW)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - penumbra: Prontidão (penumbra) +2; cerca de 1/6 da luz que o humano precisa (Case 2003, via Wikipédia); tapetum lucidum (ADW). Vê mal de perto, a menos de cerca de 60 cm (ADW)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: Prontidão (faro) +2; cerca de 30 vezes o humano (ADW, sem método)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - vibrissas: texto; números **[sem dado]**."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo:   - doença da arranhadura do gato (Bartonella henselae), pelo arranhão de gato com pulga: nos Estados Unidos, cerca de 12.000 diagnósticos ambulatoriais e 500 internações por ano (Nelson, Saha e Mead 2016; CDC);"
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo:   - raiva: o gato é o animal doméstico raivoso mais registrado nos Estados Unidos, 222 em 2022 (Ma et al. 2024);"
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo:   - a mordida infecciona com frequência, sobretudo na mão (Pasteurella multocida; Ng et al. 2025, estudo pequeno)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Camuflagem: **[sem dado]** (a cor varia com a raça)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: garras retráteis; coluna que gira metade do corpo 180° e o reflexo de cair em pé (ADW); pouso de 1 m com pico de 149% do peso nas patas dianteiras (Lascelles et al. 2007)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: **[sem dado]** em fonte conferida"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

@@ -102,8 +102,7 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
+      "efeito": "origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "fogo e ácido param a regeneração",
@@ -128,8 +127,7 @@
       "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Em forma gasosa não ataca nem conjura",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por cena. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por cena. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Invisibilidade",
@@ -148,8 +146,7 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cone de frio",
@@ -168,8 +165,7 @@
       "efeito": "um sopro de frio que queima a pele e cobre o chão de gelo fino",
       "dano": "3d6 + Centelha, gelo (o site diz \"dano alto\", sem número)",
       "resistencia": "sair da área, pela regra do livro (Combate, \"Contra área, a saída é sair\"): contra o sopro não há Esquiva nem Bloqueio; rola Destreza + Esquiva contra 5 + 5 × os metros que faltam para ficar fora, para sofrer metade; contra o dobro disso, não sofre nada. Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Sono",
@@ -205,8 +201,7 @@
       "efeito": "assume a forma de um humano, sedutor ou nobre elegante (a Variante \"disfarce\"), e volta à forma verdadeira quando quer; a mente e os números ficam os dele. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Rosto humano",
@@ -323,144 +318,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Mudar de forma"
-      ],
-      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Cone de frio"
-      ],
-      "texto": "Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Invisibilidade"
-      ],
-      "texto": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Forma gasosa"
-      ],
-      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 5"
-      ],
-      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Forma gasosa"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "Invisibilidade"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Cone de frio"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Sono"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, à vista do alvo -> uma ação, Velocidade 5, à vista do alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Mudar de forma"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "269 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 290 kg (D-187) **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o \"Golpe planar\" de 2 dados e corte vira o Punho de ogro Pesado, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "4; o site tinha 0, e a Aparência mede a beleza (D-205) **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site vira 1, o piso da régua"
-    },
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "forma verdadeira e disfarce (D-201), como no rakshasa e no marid; todas as Manobras e os Sentidos em todas as formas, menos o Rosto humano (só no disfarce), o alvo grande (só na forma verdadeira) e o \"como luta\", em duas linhas. Aptidões iguais e nenhuma Arte nas duas **[provisório]**"
-    },
-    {
-      "campos": [
-        "voo"
-      ],
-      "texto": "6, o congelado; a habilidade do site dizia 12 m **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "1, pele grossa de ogro **[provisório]**"
-    },
-    {
-      "campos": [
-        "forma gasosa",
-        "invisibilidade",
-        "cone de frio",
-        "sono",
-        "mudar de forma"
-      ],
-      "texto": "números sugeridos pela ficha (D-197); o `rosto humano` fica com o +2d6 do site; as bases de Vento, Fascinação, Matéria e Gelo são as Artes do site, e as de Ofuscação e Metamorfose, sugestão da ficha"
-    },
-    {
-      "campos": [
-        "Regeneração 5"
-      ],
-      "texto": "Antes: 6 PV/6 Ticks por 4 de Energia."
-    },
-    {
-      "campos": [],
-      "texto": "`formas.corpo.area` (Fase 5, F5.2, D-263, 29/10/2026): a forma de disfarce declara outro Tamanho (Médio) e passa a declarar a própria Área, 0,64 m², a do humano de 1,78 m do soldado veterano; antes, sem Área própria."
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Rosto humano · regra da ficha: PROVISÓRIO. Ativação: nenhuma; vale enquanto está disfarçado. Duração: a do disfarce. Alcance: o próprio corpo. Área: não se aplica. Efeito: +2d6 em Manha para se passar por humano (o número do site). Dano: nenhum. Resistência: nenhum. Limite de uso: nenhum. **[formas: disfarce]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "aparencia",

@@ -125,8 +125,7 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "a pata na perna da presa em corrida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "a pata na perna da presa em corrida"
     },
     {
       "nome": "agarrar",
@@ -134,8 +133,7 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "na garganta",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "na garganta"
     },
     {
       "nome": "arrastar",
@@ -150,8 +148,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -222,101 +219,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar"
-      ],
-      "texto": "Aplicação à capacidade arrastar. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "pesoErguido",
-        "carga"
-      ],
-      "texto": "110,74 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da conta (5,3 kg de Leve); o peso erguido sai do `calc.mjs` (88,57 kg), e era 48,77 kg pela D-162. Com o número novo, a presa de 20 a 60 kg arrastada até o abrigo (Hunter, Durant e Caro 2007) cabe (decisões 14 e 16)"
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "0,38 m², 15% abaixo do corte de 0,45 m² entre Pequeno e Médio; a decisão 7 o põe Pequeno. A borda da R2 de hoje (3,01) não vale mais (D-174)"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo corpo frágil (diversidade genética baixa, ADW), e não pelo fôlego curto, que fica na nota de pesquisa (jornada) (decisão 5 da quarta rodada, D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): velocidade máxima mantida só por 1 a 2 s; corrida média de 173 m (desvio de 116 m); deslocamento diário médio de 6.040 m (Wilson et al. 2013, 367 corridas de 5 guepardos com colar) **[medido]**. De 96 a 112 km/h por até cerca de 274 m (Smithsonian, sem método); o superaquecimento como causa da desistência está em disputa (ADW contra Biology Letters 2013)."
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "3 (em vigor na Etapa 2, 20/10/2026); antes: 2, o normal; o levantamento a aponta como candidata a 1 pelo fôlego curto, que a diretriz 2 tira da conta (D-174)"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "0, corpo de velocista; com Força 2 e Musculatura 0 o peso erguido fica em um terço do típico de 53 kg (277 kg) (D-174)"
-    },
-    {
-      "campos": [
-        "atributos.compostura"
-      ],
-      "texto": "desce a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 8 para 6 e a Energia de 5 para 4 (D-174)"
-    },
-    {
-      "campos": [
-        "empatia"
-      ],
-      "texto": "0; a coalizão de irmãos (ADW) não traz como agem juntos; provisória (D-174)"
-    },
-    {
-      "campos": [
-        "escalada"
-      ],
-      "texto": "1, nova, pelo \"de vez em quando\" da ADW, sem número (D-174)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23): 95 km/h contra 93 medidos (Wilson et al. 2013), +2%. A conta é a do porte Médio de 12/10/2026, e o Alvo agora é Pequeno; não se refaz (D-170)"
-    },
-    {
-      "campos": [
-        "variantes.cativeiro"
-      ],
-      "texto": "33 kg cai na Faixa 2 pelo corte novo (decisão 22), com 24 PV (D-174)"
-    },
-    {
-      "campos": [
-        "dimensoes.largura"
-      ],
-      "texto": "0,30 m, estimada pelo Arquiteto, sem fonte; o comprimento total de 1,99 m soma o corpo e o ponto médio da cauda (D-174)"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

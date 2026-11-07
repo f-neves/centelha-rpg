@@ -109,8 +109,7 @@
       "efeito": "Domina um hospedeiro indefeso. Usa o corpo e os sentidos dele com a própria mente, controlando suas ações. Dano dá nova resistência. A morte do hospedeiro expulsa o possuidor no local",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Alvo indefeso, uma nova resistência ao sofrer dano e expulsão na morte do hospedeiro, pela possessão corporal. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Confundir",
@@ -128,8 +127,7 @@
       "efeito": "o alvo fica Confuso. Enquanto Confuso, declara a ação e rola 1d6. Com 1 a 3, faz o declarado. Com 4 ou 5, o Mestre escolhe ação e alvo. Com 6, perde a ação",
       "dano": "nenhum",
       "resistencia": "Influência 5 + Integridade 4 + 2 × o menor entre Centelha 4 e Integridade 4 (8) = 17 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Atordoar",
@@ -180,8 +178,7 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Resistência mental",
@@ -209,8 +206,7 @@
       "efeito": "Resiste ao dano físico de vibração, que usa a Absorção de Impacto. A proteção sonora não impede o efeito mental de música",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade Resistência a som. Resiste ao dano físico de vibração, que usa a Absorção de Impacto. A proteção sonora não impede o efeito mental de música. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Vulnerável às proteções contra o mal",
@@ -224,8 +220,7 @@
       "efeito": "A barreira só restringe quem chegou por convocação. Ao cruzá-la como convocado, usa Vigor + Resistência contra o total da proteção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade Vulnerável às proteções contra o mal. A barreira só restringe quem chegou por convocação. Ao cruzá-la como convocado, usa Vigor + Resistência contra o total da proteção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Golpe na brecha",
@@ -239,8 +234,7 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo",
-      "justificativa": "Bônus anterior +2d6 ao das Garras passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por ação, sem custo"
     },
     {
       "nome": "Detectar magia",
@@ -254,8 +248,7 @@
       "efeito": "Percebe a presença e direção de magia. O rastro de um teleporte dura 6 Ticks e indica a direção, sem revelar o destino",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Velocidade 5 e 18 m para localizar magia. O traço de partida dura 6 Ticks. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -341,120 +334,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Invisibilidade psíquica"
-      ],
-      "texto": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Confundir"
-      ],
-      "texto": "Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Detectar magia"
-      ],
-      "texto": "Velocidade 5 e 18 m para localizar magia. O traço de partida dura 6 Ticks. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "sentidos.sentido cego"
-      ],
-      "texto": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Vulnerável às proteções contra o mal"
-      ],
-      "texto": "Aplicação à capacidade Vulnerável às proteções contra o mal. A barreira só restringe quem chegou por convocação. Ao cruzá-la como convocado, usa Vigor + Resistência contra o total da proteção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Resistência a som"
-      ],
-      "texto": "Aplicação à capacidade Resistência a som. Resiste ao dano físico de vibração, que usa a Absorção de Impacto. A proteção sonora não impede o efeito mental de música. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe na brecha"
-      ],
-      "texto": "Bônus anterior +2d6 ao das Garras passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ladrão de corpos"
-      ],
-      "texto": "Alvo indefeso, uma nova resistência ao sofrer dano e expulsão na morte do hospedeiro, pela possessão corporal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Ladrão de corpos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Confundir"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Atordoar"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Golpe psíquico"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Invisibilidade psíquica"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "2; o site tinha 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "patas estimadas **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "elementos"
-      ],
-      "texto": "fraqueza a sagrado pela \"vulnerabilidade sagrada\" do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "ataque furtivo",
-        "confundir",
-        "golpe psíquico",
-        "invisibilidade psíquica",
-        "resistência mental"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

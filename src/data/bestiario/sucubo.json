@@ -131,8 +131,7 @@
         "id": "encantamento",
         "nivel": 4
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Sedução",
@@ -142,8 +141,7 @@
         "id": "charme",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "aproximação livre",
@@ -168,8 +166,7 @@
       "efeito": "assume o rosto, a voz e o corpo de qualquer humanoide Médio, sem diferença que se veja sem magia; os números ficam os dela, e as asas somem. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum; quem tem visão verdadeira vê a forma real",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Teleporte",
@@ -188,8 +185,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance 60 m, viajantes: o próprio súcubo. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "arma abençoada fere inteira",
@@ -203,8 +199,7 @@
       "efeito": "Contra arma abençoada, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: arma abençoada. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -301,99 +296,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Teleporte"
-      ],
-      "texto": "Antes: Velocidade 8, alcance 60 m, viajantes: o próprio súcubo. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Mudar de forma"
-      ],
-      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sedução"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Encanto"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arma abençoada fere inteira"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: arma abençoada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Beijo dreno"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Mudar de forma"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "Teleporte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as unhas ficam Leves, como os 5 Ticks do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "pele resistente"
-      ],
-      "texto": "\"metade do dano de armas comuns não abençoadas\" virou resistência a Corte, Perfuração e Impacto; a exceção da arma abençoada ficou sem regra ainda **[provisório]**"
-    },
-    {
-      "campos": [
-        "tech"
-      ],
-      "texto": "o site tinha `encanto-irresistivel`, que não está no `tecnicas.json`; virou a Técnica encantamento (nível 4, Centelha 4) **[provisório]**"
-    },
-    {
-      "campos": [
-        "beijo dreno"
-      ],
-      "texto": "1d6 + Centelha com cura é número da ficha (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "sedução"
-      ],
-      "texto": "a proeza do site virou a Técnica charme; a ação livre ficou sem regra ainda. O traço social \"Sedução\" virou a Habilidade secundária Sedução 5"
-    },
-    {
-      "campos": [
-        "mudar de forma",
-        "teleporte"
-      ],
-      "texto": "números da ficha com as bases do site (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

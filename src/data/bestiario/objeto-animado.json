@@ -90,8 +90,7 @@
       "classe": "livro",
       "ataque": "Pancada",
       "categoria": "inato",
-      "regra": "empurrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "empurrar"
     }
   ],
   "comoLuta": [
@@ -167,76 +166,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.empurrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "comoLuta.formas variadas"
-      ],
-      "texto": "O perfil pertence ao objeto da cena."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. Corpo fabricado ou animado; herda C-002."
-    },
-    {
-      "campos": [
-        "referência"
-      ],
-      "texto": "o armário de carvalho, e não a jaula do exemplo do site, que pela área das barras ficaria abaixo do Médio **[provisório]**"
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "150 kg, a do site, conferida pelas tábuas de carvalho e pelas ferragens **[referência de jogo]**"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "3 por julgamento (tábuas que lascam); o site tinha 0 **[provisório]**"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "0, caixa oca de tábuas **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "3, tábua de carvalho de 3 cm **[provisório]**"
-    },
-    {
-      "campos": [
-        "variantes"
-      ],
-      "texto": "os sete exemplos de tamanho do site, só com o Tamanho e os Traços (o material); a jaula sem Tamanho, porque a área das barras não dá o Médio do site"
-    },
-    {
-      "campos": [
-        "atributos sociais",
-        "vontade",
-        "virtudes"
-      ],
-      "texto": "decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

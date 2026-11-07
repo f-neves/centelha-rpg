@@ -104,8 +104,7 @@
       "efeito": "some da vista de todos (Invisível), andando e agindo devagar; para fugir de combate perdido. O efeito termina ao atacar ou desfazer. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Revelação ao atacar e percepção por som, cheiro ou rastro, conforme o efeito de invisibilidade. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Mudar o tamanho",
@@ -123,16 +122,14 @@
       "efeito": "Cada grau de crescimento multiplica a área por 4 e a massa por 8. Ao encolher, divida nas mesmas proporções. Recalcule Tamanho e alcance. Atributos e Couraça só mudam se este poder declarar a mudança",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Aplicação à capacidade Mudar o tamanho. Cada grau de crescimento multiplica a área por 4 e a massa por 8. Ao encolher, divida nas mesmas proporções. Recalcule Tamanho e alcance. Atributos e Couraça só mudam se este poder declarar a mudança. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Passagem entre mundos",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
-      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. A passagem entre mundos depende da cosmologia. valor de molde, para a bancada."
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "Resistência do deserto",
@@ -219,71 +216,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Passagem entre mundos"
-      ],
-      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Desaparecer"
-      ],
-      "texto": "Antes: Revelação ao atacar e percepção por som, cheiro ou rastro, conforme o efeito de invisibilidade. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Passagem entre mundos"
-      ],
-      "texto": "A passagem entre mundos depende da cosmologia. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Mudar o tamanho"
-      ],
-      "texto": "Aplicação à capacidade Mudar o tamanho. Cada grau de crescimento multiplica a área por 4 e a massa por 8. Ao encolher, divida nas mesmas proporções. Recalcule Tamanho e alcance. Atributos e Couraça só mudam se este poder declarar a mudança. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Desaparecer"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Mudar o tamanho"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, com um gesto -> uma ação, Velocidade 5, com um gesto. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "espada longa do livro **[provisório]**"
-    },
-    {
-      "campos": [
-        "bloqueio"
-      ],
-      "texto": "2; o site não gravava Bloqueio **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperança"
-      ],
-      "texto": "2; o site tinha 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "desaparecer",
-        "mudar o tamanho",
-        "passagem entre mundos",
-        "resistência do deserto"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

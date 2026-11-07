@@ -110,8 +110,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Constrição",
@@ -120,8 +119,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "aperta a presa com o corpo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "aperta a presa com o corpo"
     },
     {
       "nome": "Estrangulamento",
@@ -165,8 +163,7 @@
       "efeito": "A parte alcança até 2 m medidos da borda do corpo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "2 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade braços longos. A parte alcança até 2 m medidos da borda do corpo. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -230,57 +227,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Constrição"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.braços longos"
-      ],
-      "texto": "2 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade braços longos. A parte alcança até 2 m medidos da borda do corpo. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "4; o site tinha 5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "0,34 m², com os braços estimados **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "1 **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "estrangulamento",
-        "rapidez sobrenatural"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

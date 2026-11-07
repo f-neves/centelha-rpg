@@ -106,8 +106,7 @@
       "efeito": "Grande: de pé, asas recolhidas. Enorme: asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (de pé, asas recolhidas) e Enorme (asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Aura protetora",
@@ -126,16 +125,14 @@
       "efeito": "a criatura e seus aliados somam +4 em Esquiva, Bloqueio e Defesa Mental contra ataques e efeitos malignos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Regeneração 15",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "regeneração sobrenatural. Quando sofre dano de artefatos, efeitos e magias malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
-      "justificativa": "Interrupção por 1 hora, pois a fonte interrompe o processo sobrenatural. Fraqueza: artefatos, efeitos e magias malignos. valor de molde, para a bancada."
+      "efeito": "regeneração sobrenatural. Quando sofre dano de artefatos, efeitos e magias malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
     },
     {
       "nome": "Resistência à magia",
@@ -163,8 +160,7 @@
       "efeito": "Compreende e fala qualquer idioma falado. Escrita, códigos e pensamentos exigem outros meios. Entender o pedido não obriga a obedecer",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Compreensão contínua de idiomas falados, pelo alcance da audição normal. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Imunidades celestes",
@@ -178,8 +174,7 @@
       "efeito": "não adoece, não é envenenado e resiste à transformação em pedra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Ressurreição",
@@ -197,8 +192,7 @@
       "efeito": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana",
-      "justificativa": "Ressurreição de outro pela Cura 6, com o limite do poder do solar. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Convocar anjos",
@@ -216,8 +210,7 @@
       "efeito": "Convoca um aliado com o perfil Arconte Lanterna para lutar até o fim da cena. A origem planar aguarda o lore dos planos",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Um aliado com o perfil arconte-lanterna, Centelha 2, até metade da Centelha 9 do convocador. Uma convocação grátis por cena para reforço temporário. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Telepatia",
@@ -340,140 +333,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Arco longo"
-      ],
-      "texto": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Convocar anjos"
-      ],
-      "texto": "Antes: Um aliado com o perfil arconte-lanterna, Centelha 2, até metade da Centelha 9 do convocador. Uma convocação grátis por cena para reforço temporário. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Aura protetora"
-      ],
-      "texto": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "sentidos.visão verdadeira · sem regra ainda"
-      ],
-      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ressurreição"
-      ],
-      "texto": "Ressurreição de outro pela Cura 6, com o limite do poder do solar. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "comoLuta.Flecha exterminadora"
-      ],
-      "texto": "O ferimento excepcional fica na descrição, como decidiu o autor."
-    },
-    {
-      "campos": [
-        "comoLuta.Espada afiada"
-      ],
-      "texto": "O ferimento excepcional fica na descrição, como decidiu o autor."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Verbo verdadeiro"
-      ],
-      "texto": "Compreensão contínua de idiomas falados, pelo alcance da audição normal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 15"
-      ],
-      "texto": "Interrupção por 1 hora, pois a fonte interrompe o processo sobrenatural. Fraqueza: artefatos, efeitos e magias malignos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (de pé, asas recolhidas) e Enorme (asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imunidades celestes"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 34 da fonte passa a grau 3 (+6)."
-    },
-    {
-      "campos": [
-        "Verbo verdadeiro"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Ressurreição"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Convocar anjos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Arco longo"
-      ],
-      "texto": "dano médio 22,5 -> 20,5; a D-075 limita a Força aplicada ao arco a 8. A Força da criatura continua 10. a conferir."
-    },
-    {
-      "campos": [
-        "Aura protetora"
-      ],
-      "texto": "Antes: +2d de Defesa."
-    },
-    {
-      "campos": [
-        "Regeneração"
-      ],
-      "texto": "Antes: recuperava PV por rodada."
-    },
-    {
-      "campos": [
-        "Artes"
-      ],
-      "texto": "Antes: feitiço genérico por cena; níveis publicados preservados na conjuração."
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Antes: golpe planar genérico."
-    },
-    {
-      "campos": [
-        "Briga"
-      ],
-      "texto": "Antes: 5."
-    },
-    {
-      "campos": [
-        "Prontidão"
-      ],
-      "texto": "Antes: 4."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

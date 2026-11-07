@@ -137,8 +137,7 @@
       "classe": "livro",
       "ataque": "Investida de focinho",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "investida"
     },
     {
       "nome": "jogar a presa para fora da água",
@@ -153,8 +152,7 @@
       "efeito": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade jogar a presa para fora da água. Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],
@@ -219,110 +217,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.investida de baixo"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.jogar a presa para fora da água"
-      ],
-      "texto": "Aplicação à capacidade jogar a presa para fora da água. Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil mole, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 469,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 466,9 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\" pelo esquema §3; o número entra pelo pedido v3 e vale, na água, como empurrar."
-    },
-    {
-      "campos": [],
-      "texto": "carga: não se aplica (nadador)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). O nado de 6,5 m/s fica 21% abaixo da máxima de piscina (8,2 m/s) e 8% acima da arrancada realista dos autores (6 m/s), Rohr e colegas 2002."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 285 kg (em vigor na Etapa 2, 20/10/2026); antes: 260 kg, a ponta de baixo da ADW, e isso decide a Faixa 4 (PV 46). Com menos de 220 kg (o golfinho treinado de Rohr 2002 tinha 149 kg) a ficha cairia na Faixa 3: PV 37. A Couraça não depende mais disso."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.altura, comprimentoSemCauda e largura: estimadas pela Bestiarista-5 [extrapolação, sem dado]."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 5 por comparação, sem feito medido de levantar ou arrastar (D-158)."
-    },
-    {
-      "campos": [],
-      "texto": "inteligencia: 2 pela lista do autor (diretriz 1: o golfinho está nela); decisão provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 2, linha nova, pelo assobio individual e pelos grupos de fissão e fusão; sem medida de leitura de humano. Escolha provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua (normal da espécie no próprio meio); o levantamento propunha 3, mas o dado dele era o nado sem fim, que fica na nota de pesquisa (jornada)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidade Resistência (apneia) +3: 4,5 minutos contra cerca de 1 minuto do humano comum; o +3 é o teto. Escolha provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidade Briga (investida de baixo) +1: hábito documentado numa população (Moray Firth); provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): 3,08 m/s \"indefinidamente\"; 6,09 m/s por 50 s; 7,01 m/s por 10 s; 8,3 m/s por 7,5 s (Lang e Norris 1966, citado em Rohr 2002) [medido]."
-    },
-    {
-      "campos": [],
-      "texto": "aparencia: 7 pela pele lisa (D-107, D-138), escolha da Bestiarista-5 sem fonte que a mande."
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: 7 + 10. Igual ao de hoje: a Força não muda. O corpo inteiro arremete (× 2), como a investida do javali. As toninhas mortas por golfinhos têm \"costelas fraturadas e vértebras despedaçadas, aparentemente de impactos de alta energia\" (Discover Magazine). O melhor ataque."
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 17 para 12; Investida 17, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - ecolocalização: Prontidão (ecolocalização) +3 ◆, Especialidade natural ; achar presa e obstáculo pelos ecos, no escuro e na água turva; alcance **[sem dado]** (ADW)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: até cerca de 120 kHz (Wikipédia); cobre o mesmo uso da ecolocalização, sem Especialidade à parte."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Prende a respiração: até cerca de 4,5 minutos (ADW), medido; respira a cada 1 a 2 minutos em água funda. A Especialidade natural Resistência (apneia) +3 não troca este campo."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: assobio próprio de cada indivíduo, mantido a vida toda (ADW); vive de 25 a 35 anos na natureza, a mais velha registrada com 53 (ADW)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: Caça em grupo e mata toninhas a golpes de corpo, sem comer (Discover Magazine). Tubarões grandes caçam os filhotes e as fêmeas (ADW)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

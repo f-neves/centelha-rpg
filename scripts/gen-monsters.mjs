@@ -72,13 +72,13 @@ function classeDoAtaque(id, nome, ticks) {
 
 const CATEGORIA_NOME = { animal:'Animal', aberracao:'Aberração', 'besta-magica':'Besta mágica', celestial:'Celestial', humanoide:'Humanoide', 'humanoide-monstruoso':'Humanoide monstruoso', 'morto-vivo':'Morto-vivo', corruptor:'Corruptor', planta:'Planta', construto:'Construto', gigante:'Gigante', limo:'Limo', elemental:'Elemental', dragao:'Dragão', fada:'Fada', outsider:'Extraplanar' };
 const idCategoria = v => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,'-');
-// F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa dos ataques e a dos poderes vêm da fonte crua (a `edicao`, que é o JSON do
+// F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa dos ataques vem da fonte crua (a `edicao`, que é o JSON do
 // bestiário). A forma não tem `edicao` própria: lê a da criatura e, nela, a lista de ataques da forma, se houver.
 function justificativasDe(cru, formaId) {
-  if (!cru) return { ataques: {}, poderes: {} };
+  if (!cru) return { ataques: {} };
   const forma = formaId ? (cru.formas || []).find((x) => x.id === formaId) : null;
   const doNome = (lista) => Object.fromEntries((lista || []).filter((x) => x.justificativa).map((x) => [x.nome, x.justificativa]));
-  return { ataques: doNome(forma?.ataques ?? cru.ataques), poderes: doNome(cru.habilidadesEspeciais) };
+  return { ataques: doNome(forma?.ataques ?? cru.ataques) };
 }
 function build(c, fonte, cruDaCriatura) {
   const f = fonte || FICHA[c.id];
@@ -138,7 +138,7 @@ function build(c, fonte, cruDaCriatura) {
     },
     // fora de `combate`, que vai inteiro para a mesa: a justificativa é prosa do card (F1)
     ...(Object.keys(just.ataques).length ? { justificativaDosAtaques: just.ataques } : {}),
-    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao || descricaoDaRef(x), ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}), ...(x.campos ? {texto:x.texto, campos:x.campos} : {}), ...(just.poderes[x.nome] ? { justificativa: just.poderes[x.nome] } : {}) })),
+    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao || descricaoDaRef(x), ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}), ...(x.campos ? {texto:x.texto, campos:x.campos} : {}) })),
     ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),
     comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
     ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),

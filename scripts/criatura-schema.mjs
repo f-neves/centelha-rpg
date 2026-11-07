@@ -54,8 +54,6 @@ const habilidadeEspecial = z.object({
   ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg, efeito: z.enum(efeitosCatalogo.map(e => e.id)).optional() }).strict().optional(), regra: id.optional(),
   // P7, 26/10/2026: referências ao livro; texto só acrescenta detalhe ou limite próprio da criatura.
   tecnica: z.object({ id, nivel: naoNeg }).strict().optional(), arte: z.object({ id, nivel: naoNeg }).strict().optional(), texto: texto.optional(),
-  // F1 (D-357; a forma no card o autor decide na revisão de layout): a nota de observação que nomeia o poder com o prefixo (`habilidadesEspeciais.<nome>`); o card a mostra
-  justificativa: texto.trim().min(1).optional(),
   ...Object.fromEntries(Object.entries(oitoCampos).map(([k, v]) => [k, v.optional()])),
 }).strict().superRefine((h, ctx) => {
   const problema = (k, mensagem) => ctx.addIssue({code:'custom',path:[k],message:mensagem});
@@ -108,8 +106,6 @@ const estruturaCriatura = z.object({
   ecologia: z.object({ terreno: z.array(texto), clima: z.array(texto) }).strict(),
   descricao: texto.trim().min(1), lore: z.array(z.object({ titulo: texto, texto }).strict()), imagens: z.array(texto),
   revisao: z.array(z.object({ campo: texto, motivo: texto }).strict()),
-  // F1 (D-357; a forma no card o autor decide na revisão de layout): as Notas de observação da ficha, todas, na ordem; o card não as mostra (o layout decide)
-  notas: z.array(z.object({ campos: z.array(texto), texto }).strict()).optional(),
  }).strict();
 function conferirCriatura(c, ctx) {
   const erro=(path,message)=>ctx.addIssue({code:'custom',path,message});

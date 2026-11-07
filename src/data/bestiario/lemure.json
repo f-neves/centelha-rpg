@@ -93,16 +93,14 @@
         "id": "recuperacao-acelerada",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Regeneração 1",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de fogo, ácido ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo, ácido ou arma benta. valor de molde, para a bancada."
+      "efeito": "origem sobrenatural. O dano de fogo, ácido ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     }
   ],
   "comoLuta": [
@@ -186,47 +184,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Recuperação acelerada"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 1"
-      ],
-      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo, ácido ou arma benta. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "45 kg, a do site, com a altura do site (fator de forma 0,97 sobre os 46 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
-    },
-    {
-      "campos": [
-        "atributos sociais",
-        "vontade",
-        "integridade",
-        "virtudes"
-      ],
-      "texto": "pela régua da Inteligência 0 (D-186): Influência, Perspicácia e Compostura 2 para 1; Vontade 6 para 3; Integridade 2 para 0; Bravura 5 para 6 (imune a medo); Convicção 5 para 1; Compaixão 0 para 1"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +4 corte\", dano médio 7,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as garras ficam Leves, o \"dano baixo\" do site. Dano médio: 7,5 antes; depois, 5,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "Regeneração 1"
-      ],
-      "texto": "Antes: 1 PV/6 Ticks passivos."
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.dieta",

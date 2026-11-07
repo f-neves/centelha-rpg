@@ -128,8 +128,7 @@
       "ataque": "Garras ósseas",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Ferrão que enfraquece",
@@ -148,8 +147,7 @@
       "efeito": "o alvo fica Envenenado pelo veneno do diabo ósseo (Veneno e doença), que tira força; cada nova picada soma ao veneno",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Parede de gelo",
@@ -168,8 +166,7 @@
       "efeito": "o gelo bloqueia a passagem e a visão",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Muro pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Invisibilidade",
@@ -187,8 +184,7 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum; quem tem visão verdadeira o vê",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "imune a veneno",
@@ -202,8 +198,7 @@
       "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Multiataque",
@@ -217,8 +212,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, ferrão. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, ferrão. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -311,118 +305,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Parede de gelo"
-      ],
-      "texto": "Base Muro pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ferrão que enfraquece"
-      ],
-      "texto": "Antes: R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Invisibilidade"
-      ],
-      "texto": "A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, ferrão. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Ferrão que enfraquece"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "Parede de gelo"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Invisibilidade"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "230 kg, a do site, com a altura do site (fator de forma 0,86 sobre os 270 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "230 kg cai na zona de transição da tabela de PV (187 a 253 kg); a carapaça de osso não é corpo frágil, e fica a faixa de cima: 58, o mesmo do site"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "sem a cauda, a frente do corpo (1,46 m²) ficaria a 1% do corte de Médio para Grande; a cauda grossa de escorpião conta (D-155) e leva a 1,71 m², Grande, como o site **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "4 pela nota do site, e não o 2 do campo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +13 corte\", dano médio 20). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e ferrão ficam Médios (o golpe com o corpo atrás). Dano médio: 20 antes; depois, 16,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ferrão",
-        "parede de gelo",
-        "invisibilidade"
-      ],
-      "texto": "números da ficha com as bases do site (D-197). As três Artes do site viraram as bases dos três poderes"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "\"Enfraquecido\" do site virou o pool de Força do veneno, como na peçonha de drider; sem id no catálogo **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "5, pela carapaça de osso **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.prontidao",

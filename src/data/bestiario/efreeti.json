@@ -118,8 +118,7 @@
       "efeito": "o corpo é fogo vivo; o calor queima quem chega perto e quem encosta nele, e o punho bate como brasa",
       "dano": "1d6 + Centelha, fogo, a quem entra no alcance, a quem o acerta e a quem o toca; mais 1d6, fogo, a quem leva o Punho em brasa",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 14 (10 + Centelha 4), só ao entrar no alcance dele; quem passa não se queima ao entrar; quem o acerta ou o toca não resiste",
-      "limiteDeUso": "A cada exposição ao calor ou contato. Sem custo",
-      "justificativa": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "A cada exposição ao calor ou contato. Sem custo"
     },
     {
       "nome": "Muralha de fogo",
@@ -138,8 +137,7 @@
       "efeito": "ergue uma cortina de chamas que fecha um corredor ou uma porta e tira a visão do outro lado; quem a atravessa se queima",
       "dano": "3d6 + Centelha, fogo, a quem atravessa",
       "resistencia": "esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Muro pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Conceder desejos",
@@ -157,8 +155,7 @@
       "efeito": "realiza um pedido enorme, sempre pela letra e nunca pela intenção, e cobra um preço à altura; o Mestre decide o que cabe e qual é o preço. O limite é uma Arte até nível 6 que o concedente possa descrever. Preço e alvo são declarados antes do acordo. O desejo não altera o passado, não cria outro desejo e só traz mortos até onde a Cura permite",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia, e raramente. Limite fixo, sem uso extra nem ampliação",
-      "justificativa": "Teto de Arte 6 e condições do pacto preservadas, pelo alcance do milagre. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por dia, e raramente. Limite fixo, sem uso extra nem ampliação"
     },
     {
       "nome": "Invisibilidade",
@@ -177,16 +174,14 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Viagem planar",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
-      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     }
   ],
   "comoLuta": [
@@ -274,114 +269,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Viagem planar"
-      ],
-      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Invisibilidade"
-      ],
-      "texto": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Muralha de fogo"
-      ],
-      "texto": "Base Muro pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corpo em chamas"
-      ],
-      "texto": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Viagem planar"
-      ],
-      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Conceder desejos"
-      ],
-      "texto": "Teto de Arte 6 e condições do pacto preservadas, pelo alcance do milagre. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Muralha de fogo"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Invisibilidade"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Viagem planar"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "320 kg, a do site; o corpo de base escalado a 3,6 m daria 640 kg de carne (D-187) **[referência de jogo]**"
-    },
-    {
-      "campos": [
-        "centelha"
-      ],
-      "texto": "4, o campo do site; a nota da fonte dizia 3 (§17)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "3, a da nota do site; o campo dizia 2 (o precedente do wyvern) **[provisório]**"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "0, corpo leve de fogo e carne, como o djinn; com Musculatura 2 o peso erguido seria maior, sem fato no site que o peça **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o \"Golpe planar\" de 2 dados e corte vira o Punho em brasa Pesada, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**"
-    },
-    {
-      "campos": [
-        "elementos"
-      ],
-      "texto": "imunidade a fogo e fraqueza a água e gelo, pela habilidade publicada, como na salamandra; o campo dizia resistência a fogo e fraqueza a água"
-    },
-    {
-      "campos": [
-        "corpo em chamas"
-      ],
-      "texto": "o efeito do site, \"Resiste ao entrar, 1 vez por cena\", fica como a queima de quem entra no alcance, com resistência de corpo uma vez por cena; o mesmo poder diz `resiste: nenhum`, que fica para quem o acerta ou o toca **[provisório]**"
-    },
-    {
-      "campos": [
-        "corpo em chamas",
-        "muralha de fogo",
-        "conceder desejos",
-        "invisibilidade",
-        "viagem planar"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.social",

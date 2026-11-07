@@ -92,8 +92,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "parado entre espantalhos comuns, disfarça sua natureza até virar a cabeça ou atacar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "parado entre espantalhos comuns, disfarça sua natureza até virar a cabeça ou atacar"
     }
   ],
   "comoLuta": [
@@ -160,50 +159,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Imóvel"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. Corpo fabricado ou animado; herda C-002."
-    },
-    {
-      "campos": [
-        "Virtudes"
-      ],
-      "texto": "Antes: Compaixão 0."
-    },
-    {
-      "campos": [
-        "Armas"
-      ],
-      "texto": "Antes: sem Habilidade declarada para a foice."
-    },
-    {
-      "campos": [
-        "Bloqueio"
-      ],
-      "texto": "Antes: sem Habilidade declarada."
-    },
-    {
-      "campos": [
-        "Foice enferrujada"
-      ],
-      "texto": "Antes: ataque próprio publicado; catálogo sem item correspondente. Consulta no lote 42."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

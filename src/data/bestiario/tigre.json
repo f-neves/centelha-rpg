@@ -139,16 +139,14 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "na garganta",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "na garganta"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "bote",
@@ -156,8 +154,7 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "investida"
     }
   ],
   "comoLuta": [],
@@ -228,152 +225,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.bote"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "7 (em vigor na Etapa 2, 20/10/2026); antes: 8 ◆ (era 9), topo das âncoras (decisão 9: \"tigre com Força 5 ou mais\"), um acima do leão (7); nenhum feito pesado fixa o número (D-158, D-174)"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "5 ◆ (era 4 pela D-164, que a decisão 10 desfaz); sobe pela ferida aguentada e pela longevidade selvagem de Panna, sem número de cura; provisório (D-174)"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "4 (em vigor na Etapa 2, 20/10/2026); antes: 3, acima do normal só pela necropsia da tigresa de Chitwan (Sunquist 1981), que não diz a idade das lesões; sem ela o 3 fica sem feito fora do nado e da distância, que a diretriz 2 tira da conta. Ver \"desvios\" no resumo do lote (D-174)"
-    },
-    {
-      "campos": [
-        "massa",
-        "faixa"
-      ],
-      "texto": "192 kg (em vigor na Etapa 2, 20/10/2026); antes: 174,5 kg, a média simples do macho (209 kg) e da fêmea (cerca de 140 kg) de Panna, a 45,5 kg do corte de 220 kg. O macho médio de Panna fica a 11 kg (5%) do corte; dois dos quatro machos de Panna passam dele e vão para a Faixa 4 com 50 PV (D-141, D-174)"
-    },
-    {
-      "campos": [
-        "carga"
-      ],
-      "texto": "o piso de 68 kg vem de relato citado por Schaller 1967 (Smythies 1942), com massa do observador; provisório (D-122, D-169, D-174)"
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "810,96 kg (em vigor na Etapa 2, 20/10/2026); antes: 946,88 kg pela fórmula nova (`calc6.mjs`, com 174,5 kg), provisório; era 648,44 kg pela D-162 (decisões 14 e 16)"
-    },
-    {
-      "campos": [
-        "atributos.influencia",
-        "compostura"
-      ],
-      "texto": "descem a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 12 para 8 (D-174)"
-    },
-    {
-      "campos": [
-        "escalada"
-      ],
-      "texto": "1, nova, por um registro fotográfico só (Singh 1961, via Mazák); provisória (D-174)"
-    },
-    {
-      "campos": [
-        "empatia",
-        "equilibrio"
-      ],
-      "texto": "0, por espécie solitária e por falta de dado; provisórios (D-174)"
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "o \"Nado longo\" do levantamento não existe na v3 (diretriz 2); as travessias ficam na nota de pesquisa (jornada) (D-174)"
-    },
-    {
-      "campos": [
-        "velocidade",
-        "nado"
-      ],
-      "texto": "congelados (decisão 23); 57 km/h contra 56 km/h do Schaller 1967, uma só estimativa a olho (D-170)"
-    },
-    {
-      "campos": [
-        "variantes.tigreDeAmur"
-      ],
-      "texto": "a Resistência (frio) natural fica sem valor por falta de temperatura medida (D-174)"
-    },
-    {
-      "campos": [
-        "dimensoes.altura"
-      ],
-      "texto": "1,04 m, os 1,10 m do macho (entre a cernelha medida deitado em Panna, 1,20 m, e a faixa em pé de 0,90 a 1,10 m) escalados pelo cubo da massa (D-147, D-174)"
-    },
-    {
-      "campos": [
-        "dimensoes.largura"
-      ],
-      "texto": "0,38 m, os 0,40 m do macho, estimados pelo perímetro do peito de Panna (129 cm); não decide a área (D-147, D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "fonte: os números do tigre-de-amur (Slaght et al. 2005; Kerley et al. 2005) continuam só pela Wikipédia (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): atravessa rios de 6 a 8 km a nado e, excepcionalmente, até 29 km (Mazák 1981, p. 5) **[medido]**; de 16 a 30 km numa noite na Índia (Schaller 1967, via Mazák) e de 50 a 60 km num dia no leste da Sibéria (Jankovskij, via Mazák); em Chitwan, 2,0 km em média entre localizações diárias (Sunquist 1981). Não persegue: desiste se a presa abre vantagem (Schaller 1967)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - penumbra: Prontidão (penumbra) +2; \"seis vezes melhor que a nossa\" (San Diego Zoo, sem método)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: **[sem dado]** em número; provavelmente usada na caça (Schaller 1967)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: sem indício de uso para achar presa viva (Schaller 1967; Mazák 1981); sem Especialidade."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: Veneno: nenhum. Doença: cinomose (o vírus da cinomose canina) em tigres-de-amur selvagens, com encefalite; em 2010 matou cerca de 1% deles (Seimon et al. 2013). Nada que passe a gente."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: caninos de 6,4 a 7,6 cm (Mazák 1981); garras de 7,5 a 10 cm (San Diego Zoo). Urso, javali, gauro e porco-espinho podem feri-lo de morte (Mazák 1981)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

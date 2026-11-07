@@ -108,8 +108,7 @@
       "efeito": "atinge com luz concentrada",
       "dano": "2d6 + Centelha, fenômeno",
       "resistencia": "esquiva, contra a jogada do raio; quem passa evita o feixe",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Atravessar toda proteção",
@@ -123,8 +122,7 @@
       "efeito": "Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade Atravessar toda proteção. Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Resistência a ferimentos",
@@ -138,8 +136,7 @@
       "efeito": "Contra arma ou efeito maligno, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: arma ou efeito maligno. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Imune a petrificação",
@@ -153,8 +150,7 @@
       "efeito": "O corpo luminoso ignora Petrificação. Outros efeitos do mesmo golpe ou poder continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Fusão",
@@ -168,8 +164,7 @@
       "efeito": "A fusão soma os PV atuais e máximos de quem se reúne. O conjunto usa uma única sequência de ações até o fim da cena",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade Fusão. A fusão soma os PV atuais e máximos de quem se reúne. O conjunto usa uma única sequência de ações até o fim da cena. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Aura de ameaça",
@@ -206,8 +201,7 @@
       "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Círculo pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Repelir possessão",
@@ -221,8 +215,7 @@
       "efeito": "Contra uma possessão, o protegido usa sua Defesa Mental com a proteção do círculo e o Resistir do livro",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A proteção do círculo se aplica à resistência mental da criatura protegida quando houver tentativa de possessão. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Teleporte",
@@ -241,8 +234,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance 12 m visíveis, viajantes: o próprio arconte. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 3, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -321,132 +313,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Raio de luz"
-      ],
-      "texto": "R36: projétil dirigido a um alvo, com o maior entre Vigor, Destreza e Percepção + Atirador. Antes: o bônus de Centelha ainda citava Disparo. Corrigida a referência para Atirador."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Teleporte"
-      ],
-      "texto": "Antes: Velocidade 8, alcance 12 m visíveis, viajantes: o próprio arconte. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 3, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Círculo contra o mal"
-      ],
-      "texto": "Base Círculo pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Raio de luz"
-      ],
-      "texto": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Repelir possessão"
-      ],
-      "texto": "A proteção do círculo se aplica à resistência mental da criatura protegida quando houver tentativa de possessão. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Fusão"
-      ],
-      "texto": "Aplicação à capacidade Fusão. A fusão soma os PV atuais e máximos de quem se reúne. O conjunto usa uma única sequência de ações até o fim da cena. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Resistência a ferimentos"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: arma ou efeito maligno. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Atravessar toda proteção"
-      ],
-      "texto": "Aplicação à capacidade Atravessar toda proteção. Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imune a petrificação"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Raio de luz"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, o maior entre Vigor, Destreza e Percepção + Atirador -> uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Pela régua da Arte de base. R3 e D-197. P/G/R do ataque 3/1/3 -> 1/1/3 para o golpe sair na Velocidade 5 do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Círculo contra o mal"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Teleporte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "corpo"
-      ],
-      "texto": "apoio outro explicitado na Anatomia e na Postura; esfera, hexápode ou planta não usam o apoio bípede nem quadrúpede. a conferir."
-    },
-    {
-      "campos": [
-        "Briga"
-      ],
-      "texto": "3 -> 0."
-    },
-    {
-      "campos": [
-        "Sobrevivência"
-      ],
-      "texto": "2 -> 0; Defesa Social 4 -> 4."
-    },
-    {
-      "campos": [
-        "Sociabilidade"
-      ],
-      "texto": "0 -> 1; Inteligência 1 continua usando Sobrevivência na Defesa Social."
-    },
-    {
-      "campos": [
-        "Círculo contra o mal"
-      ],
-      "texto": "Esquiva +0 -> +2; Bloqueio e Defesa Mental conservam +2, sem bônus de Absorção."
-    },
-    {
-      "campos": [
-        "Resistência a ferimentos"
-      ],
-      "texto": "Absorção +2 contra malignos -> sem regra ainda."
-    },
-    {
-      "campos": [
-        "pericias"
-      ],
-      "texto": "razões individuais documentadas em Lantern Archon, retirados os treinos sem evidência."
-    },
-    {
-      "campos": [],
-      "texto": "`corpo` e `pv` (Fase 5, F5.84, D-263, 29/10/2026): diâmetro 1 m para 0,6 m; volume 0,523599 para 0,113097 m³; equivalente 528,83 para 114,23 kg; Faixa 4 para 3; Área 0,79 para 0,28 m², Tamanho Médio para Pequeno; PV 42 para 34 (o site tinha 26)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

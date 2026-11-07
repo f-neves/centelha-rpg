@@ -150,8 +150,7 @@
       "efeito": "o vapor fervente queima quem está na nuvem. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "6d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
@@ -159,8 +158,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
@@ -174,8 +172,7 @@
       "efeito": "Golpeia nesta ordem: mordida, garra esquerda, garra direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "mordida, garra esquerda, garra direita. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Afunda embarcações",
@@ -189,8 +186,7 @@
       "efeito": "Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade Afunda embarcações. Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Firme contra o sono, a paralisia e o domínio da mente",
@@ -204,8 +200,7 @@
       "efeito": "Ignora sono imposto, paralisia e domínio. As demais famílias mentais, a conversa comum e o dano físico de Arte seguem suas regras",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -283,98 +278,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro de vapor"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.garras em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro de vapor escaldante"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Afunda embarcações"
-      ],
-      "texto": "Aplicação à capacidade Afunda embarcações. Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "mordida, garra esquerda, garra direita. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 8: +8 Corte, +8 Perfuração e +4 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Firme contra o sono, a paralisia e o domínio da mente"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Sopro de vapor escaldante"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "medidas"
-      ],
-      "texto": "casco de 3,1 m pela massa do site; pescoço e cauda completam os 9 m **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 8 **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro"
-      ],
-      "texto": "6d6 + Centelha, cone de 9 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "multiataque"
-      ],
-      "texto": "sem regra ainda; garras pela Rajada"
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Multiataque · sem regra ainda: a boca e as duas garras dianteiras no mesmo turno, mesmo submersa. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Prende a respiração: muito tempo; ataca e sopra submersa (site)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.comprimento",

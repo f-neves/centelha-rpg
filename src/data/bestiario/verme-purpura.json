@@ -124,8 +124,7 @@
       "efeito": "Peçonha de víbora (referência provisória do catálogo para Verme Púrpura). Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 2 doses e produção de 1 dose em 6 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Peçonha de víbora é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "agarrar",
@@ -133,8 +132,7 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "engolir inteiro",
@@ -148,8 +146,7 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 15 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "3d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
-      "justificativa": "3d6 de ácido por 6 Ticks e ferida de 15 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "mordida colossal",
@@ -163,8 +160,7 @@
       "efeito": "Este golpe ignora até 2 pontos de Absorção natural. A proteção de armadura vestida continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade mordida colossal. Este golpe ignora até 2 pontos de Absorção natural. A proteção de armadura vestida continua. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "emergir sob o alvo",
@@ -178,8 +174,7 @@
       "efeito": "Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade emergir sob o alvo. Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Multiataque",
@@ -193,8 +188,7 @@
       "efeito": "Golpeia nesta ordem: mordida, ferrão da cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "mordida, ferrão da cauda. Teto 2. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -264,80 +258,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "sentidos.cego"
-      ],
-      "texto": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.emergir sob o alvo"
-      ],
-      "texto": "Aplicação à capacidade emergir sob o alvo. Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.mordida colossal"
-      ],
-      "texto": "Aplicação à capacidade mordida colossal. Este golpe ignora até 2 pontos de Absorção natural. A proteção de armadura vestida continua. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.engolir inteiro"
-      ],
-      "texto": "3d6 de ácido por 6 Ticks e ferida de 15 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "mordida, ferrão da cauda. Teto 2. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil mole, nível 5: +3 Corte, +3 Perfuração e +5 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Peçonha do verme púrpura"
-      ],
-      "texto": "R1. Estoque de 2 doses e produção de 1 dose em 6 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Peçonha de víbora é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "36 t, a do site; o corpo sai dela como cilindro de carne de 1,37 m de diâmetro médio. Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +14 perfurante\", 7 Ticks, dano médio 24,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 24,5 antes; depois, mordida 17,5, ferrão 17,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "só o nome (D-112); o \"Enfraquecido\" do site não é condição do livro, e o efeito fica sem regra ainda"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 2 (D-205)"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

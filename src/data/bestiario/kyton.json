@@ -97,8 +97,7 @@
       "classe": "livro",
       "ataque": "Correntes",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "correntes dançantes",
@@ -116,8 +115,7 @@
       "efeito": "A corrente pode deixar Preso à distância pela Rede do livro. Para atacar, as correntes gastam a ação do kyton e seguem a ordem e o teto do Multiataque. Desarmar uma corrente usa a defesa do comandante",
       "dano": "nenhum",
       "resistencia": "pela Rede do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Grau 3 de materia, alcance 6 m, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: pela Rede do livro. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Olhar perturbador",
@@ -138,8 +136,7 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma abençoada ou prata. valor de molde, para a bancada."
+      "efeito": "origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "ferida que não fecha",
@@ -160,8 +157,7 @@
       "efeito": "Contra prata ou arma abençoada, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: prata ou arma abençoada. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Resistência à magia",
@@ -189,8 +185,7 @@
       "efeito": "Golpeia nesta ordem: primeira corrente, segunda corrente, terceira corrente. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "primeira corrente, segunda corrente, terceira corrente. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -289,116 +284,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Três correntes"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arma de prata ou abençoada fere inteira"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: prata ou arma abençoada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 2"
-      ],
-      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma abençoada ou prata. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.correntes dançantes"
-      ],
-      "texto": "Grau 3 de materia, alcance 6 m, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: pela Rede do livro. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "primeira corrente, segunda corrente, terceira corrente. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "correntes dançantes"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Olhar perturbador"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 17 da fonte passa a grau 2 (+4)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "90 kg, a do site, com a altura do site (fator de forma 1,12 sobre os 80 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +8 corte\", dano médio 11,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as correntes ficam Médias, até três pela Rajada. Dano médio: 11,5 antes; depois, 11,5 (sem mudança) **[provisório]**"
-    },
-    {
-      "campos": [
-        "correntes"
-      ],
-      "texto": "ataque da ficha; o livro não tem corrente, e o alcance de 3 m é do corpo (D-180, ponto 19) **[provisório]**"
-    },
-    {
-      "campos": [
-        "armadura de correntes"
-      ],
-      "texto": "Couraça 3, e não equipamento (D-188), porque o site diz que não pesa nem atrapalha **[provisório]**"
-    },
-    {
-      "campos": [
-        "pele curtida"
-      ],
-      "texto": "\"resiste a golpes comuns\" virou resistência a Corte, Perfuração e Impacto, como a pele do súcubo; a exceção da prata e da arma abençoada ficou sem regra ainda **[provisório]**"
-    },
-    {
-      "campos": [
-        "olhar perturbador"
-      ],
-      "texto": "números da ficha (D-197); o site não dá Arte de base, e o efeito é do corpo que muda de rosto"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    },
-    {
-      "campos": [
-        "Regeneração 2"
-      ],
-      "texto": "Antes: 4 PV/6 Ticks por 4 de Energia."
-    },
-    {
-      "campos": [
-        "Resistência à magia 17"
-      ],
-      "texto": "Antes: sem classificação numérica."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

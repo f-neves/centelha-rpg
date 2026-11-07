@@ -111,8 +111,7 @@
       "efeito": "Grande: asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Maça estonteante",
@@ -164,8 +163,7 @@
       "efeito": "assume a aparência de um humano ou de um animal comum, com voz e cheiro; os números ficam os do deva; a arma e o que veste não acompanham a troca; na forma de animal não fala nem usa a maça. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Feitiços celestiais",
@@ -202,8 +200,7 @@
       "efeito": "os aliados dentro dela somam +4 em Esquiva, Bloqueio e Defesa Mental contra golpe, Arte ou efeito de criatura maligna",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Teleporte sem erro",
@@ -222,8 +219,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum; quem não quer ir não é levado",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance qualquer lugar que ela conheça no mesmo plano, viajantes: o deva e até seis companheiros que ele toca ou que tocam nele. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 5, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Imune a doença e veneno",
@@ -237,8 +233,7 @@
       "efeito": "doença e veneno não pegam nele. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -341,111 +336,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Teleporte sem erro"
-      ],
-      "texto": "Antes: Velocidade 8, alcance qualquer lugar que ela conheça no mesmo plano, viajantes: o deva e até seis companheiros que ele toca ou que tocam nele. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 5, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Aura protetora"
-      ],
-      "texto": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Mudar de forma"
-      ],
-      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imune a doença e veneno"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Feitiços celestiais"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8, tocando o alvo -> uma ação, Velocidade 6, tocando o alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Teleporte sem erro"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Aura protetora"
-      ],
-      "texto": "Esquiva/Bloqueio/Defesa Mental +2 -> +4 contra malignos; Defesa Social +2 -> +0. Fonte: Angel, Protective Aura, pela 37.1."
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Grande de asas abertas (3,06 m²), Médio de pé; a largura da asa é estimada **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "forma de anjo e disfarce (D-201); o disfarce é Variante que muda só a aparência, e os números são os do deva **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "a maça do livro, com Armas; o site gravava \"Golpe planar\" de corte com Briga **[provisório]**"
-    },
-    {
-      "campos": [
-        "briga",
-        "bloqueio"
-      ],
-      "texto": "2 e 1; o site tinha Briga 5 e nenhum Bloqueio **[provisório]**"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "4, a da nota do site; o campo tinha 2"
-    },
-    {
-      "campos": [
-        "golpe sagrado",
-        "mudar de forma",
-        "feitiços celestiais",
-        "aura protetora",
-        "teleporte sem erro"
-      ],
-      "texto": "números sugeridos pela ficha (D-197). A aura dá +2, e não \"+1 dado\" como no site: a Defesa é número fixo, e o livro troca 1d6 numa jogada por +4 numa Defesa só no ponto de Vontade, que é de uma pessoa e de uma vez; para todos os aliados e sempre, fica a metade"
-    },
-    {
-      "campos": [],
-      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Maça estonteante e o Golpe sagrado só na forma de anjo, porque a maça não acompanha a troca; os poderes naturais em todas, porque os números ficam os do deva; o \"como luta\" em duas linhas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
-    },
-    {
-      "campos": [
-        "maça estonteante"
-      ],
-      "texto": "antes, dano de 10 após Absorção tirava a próxima ação; agora sem regra ainda (33.3)."
-    },
-    {
-      "campos": [],
-      "texto": "`formas.corpo` (Fase 5, F5.2-b, D-265, 29/10/2026): o disfarce, que imitava uma forma de tamanho variável, ganha a forma fixa e típica, a humana: Médio, 1,78 m de altura, 0,48 m de largura, Área 0,64 m² (a do humano de base). O Mestre pode escolher outra forma. Antes, sem Área própria e com \"Tamanho: o da forma assumida\"."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.briga",

@@ -125,16 +125,14 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "os antebraços seguram a presa",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "os antebraços seguram a presa"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     }
   ],
   "comoLuta": [],
@@ -175,78 +173,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: 1,07 m² de lado pela área da `tamanho-fichas-v2.md`, 26% abaixo do corte de 1,45 m² do Grande. A borda da R2 de hoje (3,97) não vale mais; o comprimento extrapolado do S. fatalis e a largura estimada pesam menos na silhueta (decisões 7 e 25, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 8 ◆ (era 9), topo das âncoras, igual ao tigre; a força do braço vai na Musculatura 4 (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 5 ◆ (era 4), pelas fraturas curadas e pela doença óssea aguentada; as duas por resumo e citação, sem o artigo aberto; provisório (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 4 ◆ (era 0), pela anatomia dos membros anteriores; extinto, nenhum peso medido; provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 1.260,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.255,82 kg pela fórmula nova (`calc.mjs`), provisório; era 666 kg pela D-162 (decisões 14 e 16)."
-    },
-    {
-      "campos": [],
-      "texto": "carga: 29 kg de Leve pela conta da D-122 (extinto, sem carga medida), provisória; sai da massa e não muda com a Força (D-169, D-172)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "social: Influência, Perspicácia e Compostura em 1 pelo solitário; se a vida em grupo de La Brea for aceita, a Perspicácia é a primeira a subir (para 2). Ver \"desvios\" no resumo do lote (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 **[extrapolação]**, o normal da espécie; extinto (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "empatia, equilibrio, escalada e natacao: 0 por falta de dado (extinto), e não por fato contrário; provisórios (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). Sem número real do animal; os 50 km/h ficam dentro da arrancada do leão (Schaller 1972) (D-170)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.largura: 0,60 m estimada pelo Arquiteto, sem fonte; não decide a área (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.comprimento: o total (2,20) e o sem cauda (2,00) são extrapolação do S. fatalis na escala do ombro (D-147, D-174)."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

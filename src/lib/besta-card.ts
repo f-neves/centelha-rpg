@@ -60,7 +60,7 @@ export const treinoTxt = (l: Treino['primarias']) => l.map((h) => `${h.nome} ${h
  * poder natural, "com base e nível mantidos como parâmetro", sem portão de Centelha e com os usos da fonte (C-037): a
  * Arte e o nível medem o efeito, e o poder não gasta Mana nem tem o portão de Centelha das Artes.
  */
-// F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa do ataque e a do poder, discretas no card; a crase de código da ficha sai.
+// F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa do ataque, discreta no card; a crase de código da ficha sai.
 export const justTxt = (t?: string) => (t ? String(t).replace(/`/g, '') : '');
 export const BASE_NOTA ='Base: a Arte e o nível que medem um poder natural. Ele não é Arte conjurada: não gasta Mana nem pede Centelha mínima, e os usos e a resistência são os escritos no poder.';
 export const baseTxt = (b: { arte: string; nivel: number } | undefined, arteNome: Record<string, string>) => (b ? ` · base: ${arteNome[b.arte] ?? b.arte} ${b.nivel}` : '');

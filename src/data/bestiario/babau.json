@@ -130,8 +130,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Limo protetor",
@@ -145,8 +144,7 @@
       "efeito": "a baba ácida da pele queima quem o acerta de perto A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "1d6 de ácido em quem o acerta com golpe desarmado ou arma natural",
       "resistencia": "a resistência da peça contra a exposição",
-      "limiteDeUso": "uma vez por golpe recebido. Sem custo",
-      "justificativa": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por golpe recebido. Sem custo"
     },
     {
       "nome": "arma corroída",
@@ -160,8 +158,7 @@
       "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "nenhum",
       "resistencia": "a resistência da peça contra a exposição",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Ver o invisível",
@@ -171,8 +168,7 @@
         "id": "visao-verdadeira",
         "nivel": 4
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
@@ -186,8 +182,7 @@
       "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Escuridão",
@@ -220,8 +215,7 @@
       "efeito": "Pelo Dissipar de Proteção 5, desfaz uma magia de até grau 5 e enfraquece uma de grau maior. Uma Salvaguarda que cubra o grau do poder absorve o efeito uma vez e se gasta",
       "dano": "nenhum",
       "resistencia": "Dificuldade igual ao maior grau investido × 5. Contra outro feiticeiro, compare o maior grau investido de cada lado",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Grau 5 de protecao, alcance 9 m, duração instantânea, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: pelo efeito Dissipar do livro. valor de molde, para a bancada. O efeito usa o grau da base e o teste de Dissipar, com a proteção de Salvaguarda quando presente. Base Dissipar pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "teleporte",
@@ -240,8 +234,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance 36 m, viajantes: o próprio usuário. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "imune a veneno",
@@ -255,8 +248,7 @@
       "efeito": "o veneno não pega no corpo de demônio. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "pele coriácea",
@@ -270,8 +262,7 @@
       "efeito": "Contra ferro abençoado ou arma do bem, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro abençoado ou arma do bem. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Multiataque",
@@ -285,8 +276,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Golpe na brecha",
@@ -300,8 +290,7 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo",
-      "justificativa": "Bônus anterior indefinido passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -395,150 +384,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.teleporte"
-      ],
-      "texto": "Antes: Velocidade 8, alcance 36 m, viajantes: o próprio usuário. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.anular magia"
-      ],
-      "texto": "Antes: Grau 5 de protecao, alcance 9 m, duração instantânea, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: pelo efeito Dissipar do livro. valor de molde, para a bancada. O efeito usa o grau da base e o teste de Dissipar, com a proteção de Salvaguarda quando presente. Base Dissipar pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ver o invisível"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "sentidos.visão verdadeira"
-      ],
-      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.pele coriácea"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro abençoado ou arma do bem. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.visão verdadeira sempre ativa"
-      ],
-      "texto": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe na brecha"
-      ],
-      "texto": "Bônus anterior indefinido passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arma corroída"
-      ],
-      "texto": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Limo protetor"
-      ],
-      "texto": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Escuridão"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "anular magia"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "teleporte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "temperança"
-      ],
-      "texto": "4, e não o 1 do site, pelo assassino \"paciente e metódico\" do texto; a `compaixão` 0 do site sobe a 1, o piso da régua **[provisório]**"
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "a lança e a Habilidade Armas 4 entraram pelo texto do site, que não as tinha na ficha; sem a lança, ele luta com as garras **[provisório]**"
-    },
-    {
-      "campos": [],
-      "texto": "`furtividade` 4, `bloqueio` 2 e as Habilidades sem número no site: pelo texto de assassino e de lanceiro **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as garras e a mordida ficam Médias (o golpe com o corpo atrás), e a Lança é a do livro **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "2, pela pele coriácea; a redução de dano contra arma comum do site ficou sem regra ainda **[provisório]**"
-    },
-    {
-      "campos": [
-        "limo protetor"
-      ],
-      "texto": "1d6 de ácido é número da ficha (D-197); a corrosão da arma ficou sem regra ainda"
-    },
-    {
-      "campos": [
-        "ataque furtivo"
-      ],
-      "texto": "só a parte que o livro cobre (Surpreso, Defesa −4); o dano extra do site ficou sem regra ainda"
-    },
-    {
-      "campos": [
-        "manto de trevas"
-      ],
-      "texto": "o site juntava escuridão, anular magia e teleporte numa habilidade; viraram três linhas. O teleporte fica sem regra ainda porque o site não dá Arte de base (como no hezrou)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

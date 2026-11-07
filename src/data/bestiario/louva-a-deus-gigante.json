@@ -149,16 +149,14 @@
       "efeito": "Médio: pousado, asas fechadas, em espreita. Grande: de cima, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Médio (pousado, asas fechadas, em espreita) e Grande (de cima, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "alcance estendido",
@@ -173,8 +171,7 @@
       "efeito": "A parte alcança até 2 m medidos da borda do corpo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "2 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade alcance estendido. A parte alcança até 2 m medidos da borda do corpo. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "golpe surpresa",
@@ -188,8 +185,7 @@
       "efeito": "Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade golpe surpresa. Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -256,114 +252,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.golpe surpresa"
-      ],
-      "texto": "Aplicação à capacidade golpe surpresa. Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.alcance estendido"
-      ],
-      "texto": "2 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade alcance estendido. A parte alcança até 2 m medidos da borda do corpo. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Médio (pousado, asas fechadas, em espreita) e Grande (de cima, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [],
-      "texto": "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: de asas abertas o gigante está 4 portes acima da Tenodera (Minúsculo para Grande) e de lado 3 (para Médio), e o critério pede 2. Longe dos cortes: 3,88 m² fica 168% acima do corte do Grande (1,45) e 35% abaixo do do Enorme (6); de lado, 0,81 m² fica 79% acima do corte do Médio (0,45) e 44% abaixo do do Grande. Pela D-215 (24/10/2026), o principal passou a ser o Médio de espreita, e o Grande de asas abertas ficou como segundo."
-    },
-    {
-      "campos": [],
-      "texto": "gigante: escalado aos 3 m de comprimento da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site); contra o adulto típico de 85,79 mm, k = 34,97 (era 3,6 m, k = 41,96, e k = 40 sobre a fêmea de 9 cm); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)"
-    },
-    {
-      "campos": [],
-      "texto": "massa: 15 kg pela decisão 13 (meio em log de 9,05 kg pela regra do roc, com a base típica dos dois sexos de 2,737 g, e 24,48 kg pela reta dos voadores reais com a envergadura de 4,33 m), e não os 117,0 kg do cubo; era 23 kg com os 3,6 m. O macho (2,313 g) é pelo cubo do comprimento [comparação]; se a massa dele aparecer (Brown e Barry 2016 pesaram), a regra do roc se refaz. Se a fêmea pesada for posta nos 79,5 mm do meio da faixa, e não nos 9 cm, a conta dá 17,2 kg (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "faixa: Faixa 2, a mesma; PV 28 com o Vigor 4 da oitava rodada (30 na sétima; 40 na ficha de hoje)"
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Grande de asas abertas (3,88 m²) e Médio de lado em espreita (0,81 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,6)² (decisão 8). O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada). A fêmea quase não voa (Shim e Song 2024), e o Alvo de asas abertas vale só quando ela as abre; no jogo, o Médio de espreita é o mais comum. O autor quis o principal pela postura de caça (D-215, 24/10/2026): inverteu, e o Médio de espreita é o principal (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura (3 cm), largura (1,2 cm) e envergadura (13 cm) da real estimadas; o comprimento de referência (9 cm) é escolha dentro da faixa da fêmea"
-    },
-    {
-      "campos": [],
-      "texto": "voo: a fêmea de referência quase não voa, e a ficha antiga diz \"voo trôpego\". A fórmula, com Voo 0 (o mínimo), dá 39 km/h, que parece alto; congelada (decisão 23). Se o autor quiser, a fêmea pode ficar sem voo e o macho com ele"
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: artrópode alado, provisória (D-175)"
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 143,21 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga"
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); terra 30 km/h e voo 39 km/h, sem velocidade real (D-170)"
-    },
-    {
-      "campos": [],
-      "texto": "forca: 4, com as patas de agarrar na Musculatura 3 (D-158). Reanalisada na sétima rodada com os 15 kg (referência 3,7) e os vizinhos de massa (carcaju 2, cão 2, centopeia-gigante 5, aranha-gigante 6), e mantida. A Tenodera de base fica com Força 0 pelo item 8 (a força dela não fere nem segura um humano), e não pela D-167 automática (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "raciocinio: 4 pela duração do golpe medida em outras espécies, não na T. sinensis (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: o levantamento a dava como candidata a 4; ficou em 3, com Furtividade (camuflagem no mato) +1 natural e (imóvel na folhagem) 1. As duas se somam na espera parada no mato, o que dá o efeito do 4 só nessa situação (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "escalada: 1, nova, sem dado da espécie [extrapolação]"
-    },
-    {
-      "campos": [],
-      "texto": "compostura: 1 por não ser espécie social (diretriz 1); a espera de horas fica na Furtividade"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 pela escala da quinta rodada, reanalisado na sétima com a massa de 15 kg e mantido; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: o comprimento de 9 cm para a fêmea de 3,16 g, a altura, a largura e a envergadura continuam só por estimativa (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre o animal de base (Tenodera sinensis, Vigor 3, presumido), o mínimo da D-176; inseto leve de 15 kg (cutícula fina, abdome mole, traqueia), ao lado da aranha, da centopeia e da vespa gigantes (4) e do carcaju (11,75 kg, 4). Era 5 (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

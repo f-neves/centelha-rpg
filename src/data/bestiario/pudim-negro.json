@@ -94,8 +94,7 @@
       "ataque": "Pseudópode",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "envolve a presa com a massa aderente",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "envolve a presa com a massa aderente"
     },
     {
       "nome": "Ácido devorador",
@@ -109,8 +108,7 @@
       "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "nenhum",
       "resistencia": "a resistência da peça contra a exposição",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose",
-      "justificativa": "Antes: Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada. 3 doses e 4 horas por dose limitam a secreção entre encontros. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose"
     },
     {
       "nome": "Divisão corrosiva",
@@ -124,8 +122,7 @@
       "efeito": "A divisão reparte os PV atuais entre as partes. O conjunto usa uma única sequência de ações até o fim da cena",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade Divisão corrosiva. A divisão reparte os PV atuais entre as partes. O conjunto usa uma única sequência de ações até o fim da cena. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Aderência total",
@@ -153,8 +150,7 @@
       "efeito": "Ignora o dano extra por ponto vital e o −2 de Flanqueado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [],
@@ -219,116 +215,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Ácido devorador"
-      ],
-      "texto": "Antes: Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada. 3 doses e 4 horas por dose limitam a secreção entre encontros. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "sentidos.sentido cego"
-      ],
-      "texto": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Divisão corrosiva"
-      ],
-      "texto": "Aplicação à capacidade Divisão corrosiva. A divisão reparte os PV atuais entre as partes. O conjunto usa uma única sequência de ações até o fim da cena. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corpo amorfo"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Ácido devorador"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [
-        "Aderência total"
-      ],
-      "texto": "**[provisório]** R6. A adaptação corporal vale +1d6 na jogada."
-    },
-    {
-      "campos": [
-        "Pseudópode"
-      ],
-      "texto": "Antes: 3d6 + Força, dano médio 17,5. Agora: 2d6 + Força, dano médio 14, pela classe Pesada."
-    },
-    {
-      "campos": [
-        "Vontade"
-      ],
-      "texto": "Antes: 6."
-    },
-    {
-      "campos": [
-        "Virtudes"
-      ],
-      "texto": "Antes: Bravura 2 e Compaixão 0."
-    },
-    {
-      "campos": [
-        "Defesas"
-      ],
-      "texto": "Antes: sem aplicação explícita da imunidade de Inteligência 0."
-    },
-    {
-      "campos": [
-        "Destreza"
-      ],
-      "texto": "Antes: 0."
-    },
-    {
-      "campos": [
-        "Influência"
-      ],
-      "texto": "Antes: 0."
-    },
-    {
-      "campos": [
-        "Perspicácia"
-      ],
-      "texto": "Antes: 0."
-    },
-    {
-      "campos": [
-        "Compostura"
-      ],
-      "texto": "Antes: 0."
-    },
-    {
-      "campos": [
-        "Percepção"
-      ],
-      "texto": "Antes: 0."
-    },
-    {
-      "campos": [
-        "Raciocínio"
-      ],
-      "texto": "Antes: 0."
-    },
-    {
-      "campos": [
-        "Integridade"
-      ],
-      "texto": "Antes: 2."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

@@ -106,8 +106,7 @@
       "efeito": "Contra ferro frio, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro frio. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Sensibilidade à luz",
@@ -161,8 +160,7 @@
       "efeito": "uma distração azarada dificulta a próxima ação do alvo, impondo −1 na jogada",
       "dano": "nenhum",
       "resistencia": "Influência + Integridade da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não é afetado",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Azar Marcado pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -228,92 +226,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Má sorte"
-      ],
-      "texto": "Base Azar Marcado pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "comoLuta.Truques menores"
-      ],
-      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Pele contra ferro frio"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro frio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Truques menores"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Má sorte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "Antes: 9 kg."
-    },
-    {
-      "campos": [
-        "PV"
-      ],
-      "texto": "Antes: 17 pela massa 9 kg; agora 12 pela massa 5,3 kg e Vigor 2."
-    },
-    {
-      "campos": [
-        "Aparência"
-      ],
-      "texto": "Antes: 8, herdado do molde genérico de fada; agora 2 pelo rosto deformado e inchado descrito."
-    },
-    {
-      "campos": [
-        "Virtudes"
-      ],
-      "texto": "Antes: Bravura 3 e Compaixão 3; agora ambas 1, covarde e vingativo."
-    },
-    {
-      "campos": [
-        "Mordida"
-      ],
-      "texto": "Antes: ataque genérico 1d6 + 2 + 1, média 6,5; agora 1d6 − 2 + 1 + 1, média 3,5, Acerto 0 para +1."
-    },
-    {
-      "campos": [
-        "Força"
-      ],
-      "texto": "Antes: 2."
-    },
-    {
-      "campos": [
-        "Briga"
-      ],
-      "texto": "Antes: 2."
-    },
-    {
-      "campos": [
-        "Prontidão"
-      ],
-      "texto": "Antes: 1."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

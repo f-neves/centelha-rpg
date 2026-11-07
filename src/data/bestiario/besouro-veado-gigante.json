@@ -116,32 +116,28 @@
       "efeito": "Grande: de cima, asas abertas. Grande: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (de cima, asas abertas) e Grande (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar",
-      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte chama a manobra de atropelar e a adapta à antiga regra de Investida. A tabela tem Mordida, sem ataque próprio de investida."
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [],
@@ -199,130 +195,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Atropelar"
-      ],
-      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte chama a manobra de atropelar e a adapta à antiga regra de Investida. A tabela tem Mordida, sem ataque próprio de investida."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 4: +4 Corte, +4 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (de cima, asas abertas) e Grande (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [],
-      "texto": "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: o gigante está 4 portes acima do Lucanus (Minúsculo para Grande), e o critério pede 2. Longe dos cortes: 4,24 m² fica 193% acima do corte do Grande (1,45) e 29% abaixo do do Enorme (6)"
-    },
-    {
-      "campos": [],
-      "texto": "gigante: escalado aos 3 m de comprimento da ficha atual do Centelha, lidos com as mandíbulas (correção da sexta rodada: vale o tamanho do site); contra o adulto típico de 4,62 cm, k = 64,94 (era 3,24 m, k = 70,13, e k = 60 sobre o macho de 5,4 cm); a forma fica a do macho; tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)"
-    },
-    {
-      "campos": [],
-      "texto": "medida do site: o site diz só \"3 m de comprimento\". Lido com as mandíbulas, porque é assim que a base (Rink 2006, Tab. 8.3) e a v3 medem. Se os 3 m forem o corpo sem as mandíbulas, o total vai a 3 × 3,24 ÷ 2,40 = 4,05 m, k = 87,66, envergadura 6,75 m: regra do roc 82,69 kg, reta 77,84 kg, meio em log 80,2 kg (cubo 2.071 kg); Faixa 3, a mesma, mas a área vai a 4,95 × 1,25² = 7,73 m², Enorme, com segundo Alvo Grande (asas fechadas 4,11 m²); o Alvo não mexe no Vigor, e a massa de 80 kg pediria olhar o Vigor de novo pelo corpo (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "massa: 39 kg pela decisão 13 (meio em log de 41,72 kg pela regra do roc, com a base típica dos dois sexos de 3,075 g e 4,62 cm, e 35,57 kg pela reta dos voadores reais com a envergadura de 5,0 m), e não os 841,9 kg do cubo; era 46 kg com os 3,24 m. A base típica mistura o macho de mandíbulas longas com a fêmea curta, e o gigante tem a forma do macho; pela linha do macho (3,5 g e 5,44 cm), a conta daria cerca de 34 kg (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "faixa: Faixa 3, a mesma; PV 37 com o Vigor 4 da oitava rodada (40 na sétima; 50 na ficha de hoje). A fêmea (cerca de 34 kg) cai na Faixa 2"
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Grande de asas abertas (4,24 m²) e de asas fechadas (2,26 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,24)² (decisão 8); sem segundo Alvo. O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada)"
-    },
-    {
-      "campos": [],
-      "texto": "porte: as mandíbulas ficaram fora da área, como a cauda fina. Decisão provisória (D-155, D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura (2 cm), comprimento sem mandíbula (4 cm) e envergadura (9 cm) da real estimados; a largura (16 mm) está dentro da faixa medida"
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: artrópode alado, provisória (D-175)"
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 317,76 kg (em vigor na Etapa 2, 20/10/2026); antes: 386,87 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga"
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); terra 22 km/h e voo 28 km/h, sem pico real para comparar (D-170)"
-    },
-    {
-      "campos": [],
-      "texto": "forca: 4 (em vigor na Etapa 2, 20/10/2026); antes: 5, a referência da massa (D-158); o erguer e arremessar o rival foi para a Musculatura 5, e não escala inteiro. Reanalisada na sétima rodada pelos vizinhos de massa (formiga-gigante 3, varano 5, leopardo 5) e mantida. O Lucanus de base fica com Força 0 pelo item 8 (o beliscão não fere nem segura um humano), e não pela D-167 automática"
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 5, excepcional pela pinça; a força medida é de outra espécie (C. metallifer) (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "ataque: N2, escolha da ficha de hoje. A mordida do C. metallifer escalada pelo quadrado do tamanho passaria de 25.000 N; ficou N2 porque a força real é de outra espécie e porque a mandíbula do macho é feita para agarrar e torcer o rival (Goyens et al. 2016), e não para furar (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "bloqueio: a mandíbula bloqueia como arma, lida como a galhada da D-100; o +1, e não o +2 da galhada larga, por cautela. Se o autor não aceitar mandíbula como galhada, os élitros ainda contam como carapaça"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 4 pela escala da quinta rodada, reanalisado na sétima com a massa de 39 kg e mantido; a faixa passa de 4 a 5 para 3 a 4 (ao lado do rinoceronte, abaixo do crocodilo e do tatu, porque o élitro cobre só o dorso). O valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 pela régua; o levantamento a dava como candidata a 1 pelo voo curto, que agora fica na nota de pesquisa (jornada) (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): voo único de mediana 188,6 m (10 a 1.720 m) e total voado de mediana 876 m (105 a 1.950 m) no macho; 1 a 6 voos por animal; só voa entre 11 e 27 °C; a pé, até 4,0 m por hora no macho e 9,1 na fêmea (Rink 2006; Rink e Sinsch 2007, rádio-telemetria, [medido])."
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: 1, nova, pelo levantamento (zumbido grave, voo lento)"
-    },
-    {
-      "campos": [],
-      "texto": "escalada e atletismo: 1, novos, pelo voo que parte do alto e pela luta de erguer o rival (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "influencia: 1 por não ser espécie social (diretriz 1); a ameaça de mandíbulas abertas ao rival fica no texto"
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre o animal de base (Lucanus cervus, Vigor 3, presumido), o mínimo da D-176; o élitro está na Couraça nível 4, e o corpo de inseto de 39 kg fica ao lado da formiga-gigante (41 kg, 4). Era 5 (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

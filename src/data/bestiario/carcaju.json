@@ -166,8 +166,7 @@
       "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade corpo firme. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -240,89 +239,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.corpo firme"
-      ],
-      "texto": "Aplicação à capacidade corpo firme. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fúria ao ferimento"
-      ],
-      "texto": "**[provisório]** R9. O ferimento dispara o Frenesi da criatura. O término segue o combate entre os dois lados. A ficha não concedia imunidade a penalidade de ferimento."
-    },
-    {
-      "campos": [
-        "pesoErguido",
-        "carga"
-      ],
-      "texto": "provisórios. A carga sai da massa e da faixa (1,56 kg de Leve com 11,75 kg); o peso erguido sai de `calc6.mjs` (103,75 kg), e era 15,77 kg pela fórmula da D-162 (decisões 14 e 16)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23); a ADW traz dois números que se contradizem (48 e 15 km/h)"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "2 pela mordida estimada (254 N, Christiansen e Wroe 2007, só por resumo de busca); se ela for maior, a Força pode ir a 3"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "4 sem nenhum feito com peso medido (a pata de wapiti e os pedaços a 1,1 km não têm o peso); ver os desvios"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "2, sem a corrida (diretriz 2); o levantamento dava 4 só pelas perseguições e pelos km por dia, que ficam na nota de pesquisa (jornada)"
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): perseguiu caribus de 4 a 62 km na neve antes de matar, seis casos por rastro acompanhado de avião (Magoun 2018); viaja 10 a 15 km sem parar e até 45 km num dia (ADW); deslocamentos de 40 milhas (64 km) num dia documentados (ADF&G) **[medido]**."
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "Resistência (frio) passa de Especialidade comum 2 para natural +2, sem temperatura medida; Briga (presa atolada na neve) 1 e Sobrevivência (esconder comida) 1, novas"
-    },
-    {
-      "campos": [
-        "escalada"
-      ],
-      "texto": "2, nova, só pela descrição das garras (Wikipédia), sem altura nem velocidade"
-    },
-    {
-      "campos": [
-        "social"
-      ],
-      "texto": "Influência e Compostura descem a 1 pela diretriz 1 (solitário); a Defesa Social cai de 10 para 8 e a Energia de 6 para 5"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [
-        "dimensoes.largura"
-      ],
-      "texto": "0,25 m, estimada, sem fonte; não decide a área"
-    },
-    {
-      "campos": [
-        "faixa"
-      ],
-      "texto": "o macho grande de 30 a 32 kg passa da Faixa 3 para a 2 com o corte de 35 kg"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesEspeciais.fúria ao ferimento",

@@ -134,8 +134,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "arrastar para o fundo",
@@ -150,8 +149,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "nuvem de tinta",
@@ -165,8 +163,7 @@
       "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
       "dano": "nenhum",
       "resistencia": "sair da nuvem",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -234,88 +231,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.nuvem de tinta"
-      ],
-      "texto": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar para o fundo"
-      ],
-      "texto": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "nuvem de tinta"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: provisório, 217,49 kg pela fórmula das decisões 14 e 16; cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir."
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: cefalópode, anatomia provisória (D-175), fixada pelo Arquiteto e não calibrada em animal medido."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). 4,6 m/s contra 6,7 m/s sem método (−31%) e 3 m/s de subida medida (+54%)."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Pequeno pela área de lado (0,38 m²) da tamanho-fichas-v2; era 0,45 m² pela conta de hoje, com o mesmo resultado. Provisório até os cortes fecharem (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura, largura e comprimento sem tentáculos estimados, sem fonte; o comprimento total vem da proporção do máximo da FAO (D-174). Os dois tentáculos e a nadadeira ficam fora da área."
-    },
-    {
-      "campos": [],
-      "texto": "referencia e massa: 68 kg pela relação manto e massa da Universidad de Concepción; a própria página dá um exemplo que não fecha com a fórmula (manto de 80 cm com \"perto de 10 kg\", e a fórmula dá 18,6). O adulto comum (2 a 3 kg, FAO) é outra criatura de jogo, nas variantes (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 4, comparação com o lobo-terrível e a jiboia, sem feito com massa; [provisório] (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 2 (comum), sem medida; o manto é músculo de jato, sem osso de alavanca."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 pela régua da v3; o levantamento dava 3, mas com a migração e a distância, que ficam na nota de pesquisa (jornada) (decisão 5). A hipóxia fica na Especialidade natural +2."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 1, nova, pela sinalização de cor dentro do cardume; sem dado de leitura de outro bicho ou de gente. Escolha provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): migração vertical diária de 0 a 200 m à noite e 800 a 1.000 m de dia (SeaLifeBase); deslocamento horizontal de até 100 km em 3 a 4 dias (ADW) **[medido]**; em hipóxia o jato rápido cai (Gilly 2012, trecho de busca, não conferido)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidades: o Fôlego +2 de hoje virou Resistência (hipóxia) +2 natural, e a penumbra +2 virou natural; os valores não mudam."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: o \"até 1,2 m de manto e 65 kg\" continua só pelo resumo de busca (Aquatic Living Resources 2019; a página deu 403) (D-174)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.comprimento",

@@ -191,59 +191,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O cadáver é animado após a morte."
-    },
-    {
-      "campos": [
-        "fisiologia.recuperacao"
-      ],
-      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
-    },
-    {
-      "campos": [
-        "atributos.inteligencia"
-      ],
-      "texto": "R22 e D-186. A Inteligência 0 publicada já dá imunidade aos ataques à Defesa Social ou Mental."
-    },
-    {
-      "campos": [
-        "centelha"
-      ],
-      "texto": "1, como o zumbi (morto-vivo é sobrenatural); o site tinha 0. Se o autor quiser o esqueleto sem Centelha, o dano e a Absorção perdem 1, e a Energia cai a 4 **[provisório]**"
-    },
-    {
-      "campos": [
-        "atributos sociais",
-        "vontade",
-        "virtudes",
-        "integridade"
-      ],
-      "texto": "pela Inteligência 0 (D-186); o site tinha sociais 2, Vontade 5 e Integridade 2"
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "10 kg pelo método do campeão esquelético; o site dizia 15 kg; a Faixa de PV é a mesma **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "4, como o zumbi e o campeão **[provisório]**"
-    },
-    {
-      "campos": [
-        "elementos"
-      ],
-      "texto": "a fraqueza a Impacto sai da habilidade \"ossos frágeis a impacto\" do site **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

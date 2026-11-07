@@ -133,8 +133,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "arrastar para o fundo",
@@ -149,8 +148,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "nuvem de tinta",
@@ -164,8 +162,7 @@
       "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
       "dano": "nenhum",
       "resistencia": "sair da nuvem",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -224,88 +221,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.nuvem de tinta"
-      ],
-      "texto": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar para o fundo"
-      ],
-      "texto": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "nuvem de tinta"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: provisório, 21 kg ◆ pela fórmula das decisões 14 e 16 (calc6, 2,5 kg, Força 1, Musculatura 2; era 17,25 kg com a Força 0); cefalópode não tem `carga` (D-160, D-175). Sem feito medido para conferir."
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: cefalópode, anatomia provisória (D-175), fixada pelo Arquiteto e não calibrada em animal medido."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). 4,6 m/s contra 6,7 m/s sem método (−31%) e 3 m/s de subida medida (+54%). As duas medidas são de animais grandes (os 3 m/s, de adultos grandes marcados, Gilly 2012); o nado de 5 m por Tick fica congelado na lula de 2,5 kg, e nenhuma medida do adulto comum o confere."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Miúdo pela área de lado escalada da ficha grande, 0,38 × (2,5 ÷ 68)^(2/3) = 0,042 m². A ficha grande (68 kg) é Pequena. Provisório até os cortes fecharem (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: o manto de 42,7 cm sai da relação manto e massa (Universidad de Concepción) invertida para 2,5 kg, e confere com as médias da Helgoland 2008 (376 e 388,7 mm) e com o cubo da massa (1,2 × (2,5 ÷ 68)^(1/3) = 0,40 m). Altura, largura e comprimento sem tentáculos estimados pelas proporções da ficha grande, sem fonte; o comprimento total (1,15 m) vem da proporção do máximo da FAO, e não fecha com o \"comprimento total comum de 50 a 80 cm\" da mesma FAO, que fica perto do comprimento sem os tentáculos (0,64 m). Talvez a FAO meça sem os tentáculos; não conferido (D-174). Os dois tentáculos e a nadadeira ficam fora da área."
-    },
-    {
-      "campos": [],
-      "texto": "referencia e massa: 2,5 kg, o meio do \"peso comum 2 ou 3 kg\" da FAO (sexta rodada, item 4: o adulto típico); era 68 kg, o adulto grande do sul do Chile, que passou à ficha `lula-de-humboldt-grande.md`. A relação manto e massa da Universidad de Concepción dá o manto; a própria página dá um exemplo que não fecha com a fórmula (manto de 80 cm com \"perto de 10 kg\", e a fórmula dá 18,6) (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`), pela comparação com o polvo de 2 kg (Força 1 ◆): os braços de ventosa dentada prendem e puxam a mão; era 0 pela leitura automática da D-167 e 4 na ficha grande. Os dois ataques sobem de 1,5 para 2,5 de média e o agarrão de 0 para 2 (D-115). Vigor 2 pela mesma comparação (era 3). A D-176 fica cumprida: a ficha grande tem Força e Vigor maiores. [provisório] (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 2 (comum), sem medida; o manto é músculo de jato, sem osso de alavanca."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 pela régua da v3; o levantamento dava 3, mas com a migração e a distância, que ficam na nota de pesquisa (jornada) (decisão 5). A hipóxia fica na Especialidade natural +2."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 1, nova, pela sinalização de cor dentro do cardume; sem dado de leitura de outro bicho ou de gente. Escolha provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): migração vertical diária de 0 a 200 m à noite e 800 a 1.000 m de dia (SeaLifeBase); deslocamento horizontal de até 100 km em 3 a 4 dias (ADW) **[medido]**; em hipóxia o jato rápido cai (Gilly 2012, trecho de busca, não conferido)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidades: o Fôlego +2 de hoje virou Resistência (hipóxia) +2 natural, e a penumbra +2 virou natural; os valores não mudam."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: o \"até 1,2 m de manto e 65 kg\" continua só pelo resumo de busca (Aquatic Living Resources 2019; a página deu 403) (D-174)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.comprimento",

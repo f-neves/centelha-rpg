@@ -115,8 +115,7 @@
       "ataque": "Mordida",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "Sem custo nem limite próprio de usos. Usar repetidamente causa esforço e pode levar ao cansaço",
-      "justificativa": "Antes: Derrubar descrito em como luta. R1: inato ligado à Mordida, pela regra do livro, sem custo nem limite próprio de usos."
+      "texto": "Sem custo nem limite próprio de usos. Usar repetidamente causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -194,67 +193,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Antes: Derrubar descrito em como luta. R1: inato ligado à Mordida, pela regra do livro, sem custo nem limite próprio de usos."
-    },
-    {
-      "campos": [
-        "pesoErguido",
-        "carga"
-      ],
-      "texto": "provisórios. A carga é o piso escalado do lobo (16,3 kg); o peso erguido sai de `calc.mjs` (245,67 kg), e era 132,05 kg pela fórmula da D-162 (decisões 14 e 16)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23); 61 km/h, que saiu do fator do Médio. Com o Alvo Pequeno, a conta de hoje daria a do lobo (58 km/h); fica a de hoje até o autor voltar à velocidade"
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "0,44 m², logo abaixo do corte de cerca de 0,45 m² entre Pequeno e Médio; a decisão 7 o põe Pequeno. A subespécie do leste (68 kg) pode passar do corte"
-    },
-    {
-      "campos": [
-        "dimensoes.largura"
-      ],
-      "texto": "0,35 m, estimada pelo Arquiteto, sem fonte"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "4 (em vigor na Etapa 2, 20/10/2026); antes: 2, sem a corrida (diretriz 2), **[extrapolação]** por falta de qualquer dado do animal; o levantamento dava 4 só pelos 200 km por dia do lobo, que ficam na nota de pesquisa (jornada)"
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): **[sem dado]** no animal (velocidade e fôlego não achados, `lobo-terrivel.md`). **[comparação]** pelo lobo: até 200 km por dia, em cruzeiro de cerca de 8 km/h (ADW; NPS)."
-    },
-    {
-      "campos": [
-        "empatia"
-      ],
-      "texto": "2, nova, **[extrapolação]** da matilha suposta pelos fósseis de La Brea"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "3, robusto, pela comparação de crânio e massa com o lobo (mesmo ombro, 25% mais pesado); sem dado de carga do animal"
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "Prontidão (faro) desce de +4 para +3 pelo teto da decisão 3; sem Resistência (frio), porque não há pelagem conhecida nem distribuição ártica"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.destreza",

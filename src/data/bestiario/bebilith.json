@@ -125,8 +125,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Teia abissal",
@@ -155,8 +154,7 @@
       "efeito": "Podridão da bebilith. Exposição: a mordida abre uma ferida e contamina a carne. Incubação: 10 minutos. Virulência 15. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
       "dano": "pela progressão da doença",
       "resistencia": "Vigor + Resistência contra Virulência 15",
-      "limiteDeUso": "um por golpe. Sem custo",
-      "justificativa": "110. Incubação de 10 minutos e Virulência 15 sugeridas porque a lesão da quelícera dá entrada direta ao agente. Intervalo diário pelo relógio do livro."
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "só cede a cura poderosa",
@@ -184,8 +182,7 @@
       "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "nenhum",
       "resistencia": "a resistência da peça contra a exposição",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "golpe que atravessa",
@@ -199,16 +196,14 @@
       "efeito": "Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade golpe que atravessa. Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "passagem entre planos",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
-      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "Escalador nato",
@@ -218,8 +213,7 @@
         "id": "andar-de-aranha",
         "nivel": 4
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Faro",
@@ -229,8 +223,7 @@
         "id": "faro",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "medonho",
@@ -251,8 +244,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -337,126 +329,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.passagem entre planos"
-      ],
-      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Faro"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Escalador nato"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.passagem entre planos"
-      ],
-      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.golpe que atravessa"
-      ],
-      "texto": "Aplicação à capacidade golpe que atravessa. Este golpe ignora até 4 pontos de Absorção sobrenatural. A proteção de armadura vestida continua. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.desarme brutal"
-      ],
-      "texto": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Mordida apodrecedora"
-      ],
-      "texto": "110. Incubação de 10 minutos e Virulência 15 sugeridas porque a lesão da quelícera dá entrada direta ao agente. Intervalo diário pelo relógio do livro."
-    },
-    {
-      "campos": [
-        "Teia abissal"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
-    },
-    {
-      "campos": [
-        "passagem entre planos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "2,7 t, a do site, que fecha com o elipsoide do corpo; altura, comprimento do corpo e largura são da ficha, porque o site só dá os 7 m das patas **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "7,44 m² pelo método da aranha gigante (corpo de cima mais oito patas); patas de 2,0 × 0,2 m são estimativa **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 3 dados e 7 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida e as garras ficam Médias, e é aqui que a ficha mais perde dano (de 2d6 + 11 para 1d6 + 11) **[provisório]**"
-    },
-    {
-      "campos": [],
-      "texto": "`disparo` 3 e a teia: o site não dava a Habilidade; a teia segue a Rede do livro (`armas-e-armaduras.md`) **[provisório]**"
-    },
-    {
-      "campos": [
-        "mordida apodrecedora"
-      ],
-      "texto": "1d6 a cada 6 Ticks por 18 Ticks é número da ficha (D-197); \"drenar o Vigor\" do site ficou como dano, porque o livro não tem dreno de Atributo **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "5, carapaça de quitina, como o crocodilo **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

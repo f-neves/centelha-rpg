@@ -101,16 +101,14 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "na perna da presa em corrida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "na perna da presa em corrida"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     }
   ],
   "comoLuta": [
@@ -160,85 +158,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "330 kg (em vigor na Etapa 2, 20/10/2026); antes: 300 kg **[extrapolação]**. Não há massa publicada para o H. gigas. Estimativas concorrentes: \"maior que um leão\", sem número (Morlo e Nagel 2006, via Wikipédia); 200 a 400 kg, conta da pesquisa sobre o leão de 189 kg; 408 kg no texto do Pathfinder e 400 kg na ficha atual, sem base científica; os parentes gigantes de outra subfamília (Hyainailouros, Megistotherium) mostram que a família chegava a esse tamanho"
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "Médio pela silhueta (1,13 m²), era Grande na borda (4,08). Todas as medidas são extrapolação, e a silhueta também"
-    },
-    {
-      "campos": [
-        "dimensoes"
-      ],
-      "texto": "altura, comprimento e largura são extrapolação, sem esqueleto: só há dentes, um fragmento de maxila e uma garra. O crânio de 60 cm da Wikipédia é dado ao H. gigas e ao H. mongoliensis juntos, o que não fecha com o primeiro ser \"claramente\" maior (Lange-Badré e Dashzeveg 1989)"
-    },
-    {
-      "campos": [
-        "pesoErguido",
-        "carga"
-      ],
-      "texto": "850,83 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (30 kg de Leve); o peso erguido sai de `calc.mjs` (848,4 kg), e era 554,66 kg pela fórmula da D-162 (decisões 14 e 16)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23); 63 km/h, que saiu da Força 8 e do fator do Grande"
-    },
-    {
-      "campos": [
-        "ataques.mordida"
-      ],
-      "texto": "N1 por extrapolação da hiena-malhada e da função de quebrar osso; sem estimativa própria"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "4 pela comparação de massa com a hiena (3) e o leão (4), sem nenhum dado de corpo"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "3 pela comparação com a hiena, de mesma função; era 0 por falta de dado"
-    },
-    {
-      "campos": [
-        "social"
-      ],
-      "texto": "Influência, Compostura e Empatia em 1, 1 e 0 por não haver vida em grupo conhecida; se a pesquisa achar caça em bando, sobem"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

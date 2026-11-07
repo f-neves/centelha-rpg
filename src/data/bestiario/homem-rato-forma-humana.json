@@ -125,8 +125,7 @@
       "efeito": "vira a forma humana ou a de rato (Variantes), ou volta à híbrida; o que ele segura cai na forma de rato. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Mordida maldita",
@@ -172,8 +171,7 @@
       "efeito": "Os ratos comuns e gigantes o reconhecem como um dos seus, não o atacam e seguem ordens simples transmitidas por guinchos ou gestos: avançar, atacar, guardar um lugar, acompanhar ou fugir, até o fim da cena",
       "dano": "nenhum",
       "resistencia": "nenhuma; o comando dos ratos é inato",
-      "limiteDeUso": "um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Item 138. Antes: Empatia + Adestramento para impor ordens. Agora: comando inato descrito, por guinchos ou gestos, até o fim da cena. Conservados Velocidade 6, alcance audível e limite de um enxame ou 6 ratos gigantes."
+      "limiteDeUso": "um enxame ou até 6 ratos gigantes por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Golpe na brecha",
@@ -187,8 +185,7 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo",
-      "justificativa": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por ação, sem custo"
     },
     {
       "nome": "Resistência à arma comum",
@@ -204,8 +201,7 @@
       "efeito": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A prata supera a resistência da pele híbrida. A metade se aplica ao dano depois da Absorção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -379,94 +375,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "Antes: \"forma hibrida\" nas marcas das Manobras. Corrigido para \"forma híbrida\", igual ao nome declarado em Formas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Resistência à arma comum"
-      ],
-      "texto": "A prata supera a resistência da pele híbrida. A metade se aplica ao dano depois da Absorção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe na brecha"
-      ],
-      "texto": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Forma mutável"
-      ],
-      "texto": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Afinidade com ratos"
-      ],
-      "texto": "Item 138. Antes: Empatia + Adestramento para impor ordens. Agora: comando inato descrito, por guinchos ou gestos, até o fim da cena. Conservados Velocidade 6, alcance audível e limite de um enxame ou 6 ratos gigantes."
-    },
-    {
-      "campos": [
-        "Forma mutável"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce -> uma ação, Velocidade 8; na noite de lua cheia, à força, quando a lua nasce Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "forma principal"
-      ],
-      "texto": "a híbrida (D-201); o id segue `homem-rato-forma-humana` até a revisão final do autor"
-    },
-    {
-      "campos": [
-        "destreza"
-      ],
-      "texto": "5 na híbrida, 4 na humana (a do site) **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "3 na híbrida; o site tinha 4, que fica na humana **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 1 pela pele grossa **[provisório]**"
-    },
-    {
-      "campos": [
-        "forma mutável",
-        "mordida maldita",
-        "ataque furtivo",
-        "esquiva sobrenatural",
-        "afinidade com ratos"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [],
-      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Mordida maldita só na híbrida e na de rato, porque a humana não morde; o Ataque furtivo em todas, pela Espada curta ou pela Mordida; o ladrão da guilda em todas, porque a linha já conta as três; o faro e a visão em todas, como o site dizia; a Camuflagem e os Traços da humana e da de rato na linha delas em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
-    },
-    {
-      "campos": [
-        "forma de rato"
-      ],
-      "texto": "Referência antes implícita; escolhas físicas explícitas na Variante. A escolha da linha superior de PV precisa ser lida na forma, como na principal. **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.destreza",

@@ -133,8 +133,7 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "2d6 + Força, Impacto",
       "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
-      "limiteDeUso": "enquanto houver rocha por perto",
-      "justificativa": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "enquanto houver rocha por perto"
     },
     {
       "nome": "Punho esmagador",
@@ -149,8 +148,7 @@
       "efeito": "o alvo cai no chão",
       "dano": "o da Pancada",
       "resistencia": "corpo, contra a jogada da pancada; quem passa fica de pé",
-      "limiteDeUso": "um por golpe",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "um por golpe"
     },
     {
       "nome": "agarrar",
@@ -158,8 +156,7 @@
       "classe": "livro",
       "ataque": "Pancada descomunal",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     }
   ],
   "comoLuta": [
@@ -239,51 +236,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Punho esmagador"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Arremesso certeiro"
-      ],
-      "texto": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 4: +4 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "693 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 770 kg (D-187) **[conta]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "4, couro de pedra **[provisório]**"
-    },
-    {
-      "campos": [
-        "arremesso certeiro",
-        "punho esmagador"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

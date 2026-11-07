@@ -106,16 +106,14 @@
       "efeito": "Peçonha de aranha gigante (referência provisória do catálogo para Aranha das Fases). Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 2 doses e produção de 1 dose em 6 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Peçonha de aranha gigante é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "Salto etéreo",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
-      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "fio de teia",
@@ -143,8 +141,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. O trecho etéreo aguarda o lore dos planos",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar para o véu. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. O trecho etéreo aguarda o lore dos planos. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -221,110 +218,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Salto etéreo"
-      ],
-      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar para o véu"
-      ],
-      "texto": "Aplicação à capacidade arrastar para o véu. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. O trecho etéreo aguarda o lore dos planos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Salto etéreo"
-      ],
-      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Peçonha da aranha das fases"
-      ],
-      "texto": "R1. Estoque de 2 doses e produção de 1 dose em 6 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Peçonha de aranha gigante é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
-    },
-    {
-      "campos": [
-        "Salto etéreo"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 5 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "fio de teia"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "160 kg, a do site, entre a aranha-gigante escalada pelo corpo e pelas pernas do site (fator 0,8 sobre a média) **[conta]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "54 para 43. A tabela de PV pela massa dá 25 + 3 × 6 a 160 kg, fora da zona de transição **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +9 perfurante\", 6 Ticks, dano médio 16). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 16 antes; depois, mordida 12,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "salto etéreo"
-      ],
-      "texto": "poder natural com a base e os usos do site (Espírito 2, à vontade) e números da ficha (D-197); o alcance de 9 m é o do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "fio de teia"
-      ],
-      "texto": "Antes: sem regra e sem números."
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "só o nome (D-112); o efeito debilitante fica sem regra ainda"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 2 (D-205)"
-    },
-    {
-      "campos": [
-        "furtividade"
-      ],
-      "texto": "1 para 3, a \"emboscada etérea\" do site"
-    },
-    {
-      "campos": [
-        "defesa social"
-      ],
-      "texto": "Antes: 6."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Salto etéreo",

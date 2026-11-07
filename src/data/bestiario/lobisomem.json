@@ -130,8 +130,7 @@
       "efeito": "vira a forma humana ou a de lobo (Variantes), ou volta à híbrida; a roupa rasga e o que ele segura cai. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade fora da lua cheia. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Mordida que derruba e amaldiçoa",
@@ -149,8 +148,7 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. e quem sobrevive à mordida e não trata a ferida até o fim do dia vira lobisomem na próxima lua cheia",
       "dano": "o da Mordida",
       "resistencia": "corpo, contra a jogada da mordida; quem passa fica de pé, e a maldição só não pega se a ferida for tratada a tempo",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Firme contra o medo",
@@ -194,8 +192,7 @@
       "efeito": "Contra armas comuns, a parcela de Corte, Perfuração ou Impacto que passa pela Absorção cai à metade. A prata atravessa a resistência e ainda enfrenta a Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A prata supera a resistência da pele híbrida. A metade se aplica ao dano depois da Absorção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -390,113 +387,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "Antes: \"forma hibrida\" nas marcas das Manobras. Corrigido para \"forma híbrida\", igual ao nome declarado em Formas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Mordida que derruba e amaldiçoa"
-      ],
-      "texto": "1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Resistência à arma comum"
-      ],
-      "texto": "A prata supera a resistência da pele híbrida. A metade se aplica ao dano depois da Absorção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Forma mutável"
-      ],
-      "texto": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Forma mutável"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6; na noite de lua cheia, à força, quando a lua nasce -> uma ação, Velocidade 8; na noite de lua cheia, à força, quando a lua nasce Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "Mordida que derruba e amaldiçoa"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "forma principal"
-      ],
-      "texto": "a híbrida, pela decisão do autor de 22/10/2026 (D-201); as formas ficam na linha Formas da Identidade"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "6 na híbrida, 4 na humana; o site tinha 5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "5 na híbrida, 4 na humana (a do site) **[provisório]**"
-    },
-    {
-      "campos": [
-        "altura",
-        "massa"
-      ],
-      "texto": "2,1 m e 105 kg pelo corpo de base escalado, cintura fina **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "2 na híbrida; o site tinha 4, que fica na humana **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 1 pelo couro peludo **[provisório]**"
-    },
-    {
-      "campos": [
-        "forma de lobo"
-      ],
-      "texto": "o lobo do molde levado a 80 kg (× 1,133), área 0,51 m², Médio; Vigor 4, Couraça 0 e Aparência 6 **[provisório]**"
-    },
-    {
-      "campos": [
-        "faro",
-        "visão e audição"
-      ],
-      "texto": "só na híbrida e na de lobo, como no exemplo aprovado pelo autor (formato JSON de 24/10/2026); escrito pela marca das formas (D-230)"
-    },
-    {
-      "campos": [
-        "forma mutável",
-        "mordida",
-        "firme contra o medo",
-        "afinidade com lobos"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [],
-      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Mordida só na híbrida e na de lobo, que têm a mordida; a Firme contra o medo e a Afinidade com lobos em todas, porque vêm da maldição, e não do corpo; o \"como luta\" em duas linhas; a Camuflagem e os Traços da humana e da de lobo na linha delas em Variantes. As três formas têm as mesmas Aptidões (não, não, não) e nenhuma Arte **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

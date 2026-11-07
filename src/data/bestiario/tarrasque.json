@@ -136,8 +136,7 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. Quando sofre dano de fogo ou ácido, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
-      "justificativa": "Interrupção por 1 hora, pois a fonte interrompe o processo sobrenatural. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
+      "efeito": "origem sobrenatural. Quando sofre dano de fogo ou ácido, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
     },
     {
       "nome": "fogo e ácido atrasam a regeneração",
@@ -154,8 +153,7 @@
         "id": "imortalidade-tenue",
         "nivel": 6
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Bramido de pânico",
@@ -174,8 +172,7 @@
       "efeito": "quem falha fica Em pânico e foge sem escolher direção",
       "dano": "nenhum",
       "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune pela cena",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Carapaça que reflete magia",
@@ -203,8 +200,7 @@
       "efeito": "Soma +1d6 no teste de Vigor + Resistência contra veneno ou doença. Também resiste a influências mentais. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "088 e 090. +1d6 no teste de Vigor + Resistência representa a resistência extraordinária deste corpo. A resistência mental aguarda definição."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "investida destruidora",
@@ -225,8 +221,7 @@
       "efeito": "Golpeia nesta ordem: mordida, garra, cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "mordida, garra, cauda. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -295,99 +290,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Bramido de pânico"
-      ],
-      "texto": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imortalidade Tênue"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 40"
-      ],
-      "texto": "Interrupção por 1 hora, pois a fonte interrompe o processo sobrenatural. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "mordida, garra, cauda. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 12: +12 Corte, +12 Perfuração e +6 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.quase imune"
-      ],
-      "texto": "088 e 090. +1d6 no teste de Vigor + Resistência representa a resistência extraordinária deste corpo. A resistência mental aguarda definição."
-    },
-    {
-      "campos": [
-        "Bramido de pânico"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, um rugido -> uma ação, Velocidade 5, um rugido. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "450 t, a do site, pela altura erguida e o tiranossauro (fator 1,05). Nada muda: Faixa, PV e Tamanho ficam os do site **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Colossal na borda de 5% (96 m²), pela carapaça e pelos chifres **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"4d6 +26 perfurante\", 7 Ticks, dano médio 40). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 40 antes; depois, mordida 29,5, garras 29,5, cauda 49,0 **[provisório]**"
-    },
-    {
-      "campos": [
-        "bramido de pânico",
-        "carapaça que reflete magia"
-      ],
-      "texto": "números da ficha e do site (D-197); o Em pânico é a condição do livro para \"foge cego de pavor\" (site)"
-    },
-    {
-      "campos": [
-        "absorcao"
-      ],
-      "texto": "Corte e Perfuração 27 para 10, só a Centelha; o Impacto vai de 24 a 24"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 2 (D-205)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "2 para 4, o das notas do site"
-    },
-    {
-      "campos": [
-        "Regeneração 40"
-      ],
-      "texto": "Antes: 14 PV/6 Ticks passivos."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.massa",

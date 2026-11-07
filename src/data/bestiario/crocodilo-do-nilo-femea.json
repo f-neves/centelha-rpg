@@ -124,8 +124,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "rolamento (giro da morte)",
@@ -134,8 +133,7 @@
       "ataque": "Mordida",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "é a manutenção do agarrão, rolando na água",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "é a manutenção do agarrão, rolando na água"
     },
     {
       "nome": "arrastar para a água",
@@ -150,8 +148,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar para a água. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -215,92 +212,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.rolamento (giro da morte)"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar para a água"
-      ],
-      "texto": "Aplicação à capacidade arrastar para a água. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "area: 1,05 m², vista de cima: a da principal (1,50 m²) escalada pelo quadrado do fator linear à fêmea de 116 kg, (116 ÷ 198)^(2/3); a fonte não dá comprimento típico da fêmea, só a faixa de 2,2 a 3,8 m. Alvo Médio, 27% abaixo do corte de 1,45 m²; a principal é Grande."
-    },
-    {
-      "campos": [],
-      "texto": "pesquisa.caudaGrossa: sim (D-155)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 6 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela v2 (D-158), no topo das âncoras de 7 a 8; era 9. A mordida medida é de animal pequeno; se aparecer a de um adulto grande, a Força se revê."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 3 (robusto) pelo giro da morte e pelo arrasto; provisória, sem peso de presa medido."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 548,20 kg (em vigor na Etapa 2, 20/10/2026); antes: 779,59 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 116 kg e os Atributos da principal (F 8, M 3). Principal: 1.000,4 kg."
-    },
-    {
-      "campos": [],
-      "texto": "carga: 11,6 kg de Leve pela conta da D-122 com os 116 kg (sem carga medida). Principal: 19,8 kg."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). Terra 17 km/h contra 14 medidos (+21%); o 0,6 daria os 14 da pesquisa. Nado 16 km/h entre os 14 de um resumo de busca e os 30 a 35 da Wikipédia (fontes não lidas)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo normal da espécie; a apneia virou Especialidade natural (+3), e o tempo segue no campo \"Prende a respiração\"."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 5 (faixa 4 a 5) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 126 kg (em vigor na Etapa 2, 20/10/2026); antes: cerca de 116 kg **[medido]**, a média da fêmea (Cott 1961, Graham 1968, Hutton, via Wikipédia), 0,59 da principal (198 kg, o adulto típico). Faixa 3, PV 34, os mesmos da principal; Alvo Médio, um abaixo."
-    },
-    {
-      "campos": [],
-      "texto": "forca, vigor, musculatura: iguais aos da principal (8, 3, 3); a variante menor pode descer, a critério do autor."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): em terra, galope só em arrancada curta, até 14 km/h (Wikipédia), e \"fica exausto fácil em terra\" (SDZG, só na ficha); não se afasta mais de cerca de 50 m da margem para caçar, mas grupos andam centenas de metros até uma carcaça (Wikipédia, citando Pooley). Na água, até 30 minutos nadando submerso se ameaçado (Wikipédia) **[medido]**. Sem distância por dia nem tempo de nado na superfície."
-    },
-    {
-      "campos": [],
-      "texto": "influencia, compostura: descem de 3 para 1 por não ser espécie social (diretriz 1). A hierarquia por tamanho na carcaça e no sol é uso entre os seus; se o autor a contar como vida social, as duas voltam a ser lidas."
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: 3, candidata a 4 no levantamento, sem dado novo; a espera submersa entra como Especialidade (+1)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: as da principal (largura 0,62, altura 0,49, comprimento 3,74, sem cauda 1,96 m) escaladas pelo cubo da massa à fêmea (fator 0,837): 0,52, 0,41, 3,13 e 1,64 m. O comprimento cai dentro da faixa da fêmea (2,2 a 3,8 m)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

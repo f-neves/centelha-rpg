@@ -121,16 +121,14 @@
       "efeito": "Peçonha de aranha gigante. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "arrastar a presa até a toca",
@@ -144,8 +142,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar a presa até a toca. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "cerdas urticantes",
@@ -245,122 +242,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar a presa até a toca"
-      ],
-      "texto": "Aplicação à capacidade arrastar a presa até a toca. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Peçonha de aranha gigante"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "cerdas urticantes"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [
-        "teia"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
-    },
-    {
-      "campos": [],
-      "texto": "gigante: escalada da aranha-golias ao corpo de 0,6 m do site, k = 0,6 ÷ 0,11 = 5,45 no comprimento e k³ na massa, com as proporções da real; tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3). Era k = 10 (corpo de 1,10 m) na v3"
-    },
-    {
-      "campos": [],
-      "texto": "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; o corpo de 0,6 m do site passa no critério (a Theraphosa de base é Minúscula, cerca de 0,017 m² de cima, e a gigante é Média, três categorias acima) e fica; a área de 0,50 m² está 11% acima do corte do Pequeno e 66% abaixo do do Grande (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Médio pela área de cima com as oito pernas (0,50 m², a da v2 × (0,6 ÷ 1,10)²), 11% acima do corte do Pequeno, dentro do erro do método; a ficha de hoje, com as pernas fora (D-155), também dava Médio (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: artrópode, anatomia provisória (D-175), não calibrada em animal medido"
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 103,25 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com os 17,2 kg), provisório. Não tem Carga (não é quadrúpede)"
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); 26 km/h, sem velocidade real da aranha-golias para comparar"
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura e largura (0,06 e 0,05 m na real) estimadas sem fonte; o comprimento de 11 cm é o meio entre o medido (84 mm) e o máximo citado (13 cm)"
-    },
-    {
-      "campos": [],
-      "texto": "massa: 17,2 kg pela base típica estimada (106 g, o cubo do par de máximos 175 g e 13 cm, levado ao corpo de 11 cm) e o corpo de 0,6 m do site, [extrapolação]; era 106 kg com o corpo de 1,10 m da v3; 170 g é o recorde (Guinness), e não a média; a massa média de adulto e a massa por sexo não foram achadas (quinta e sexta rodadas). Se aparecer pesagem de adulto típico com o comprimento, a massa se refaz pelo cubo dela (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "forca: 3, reanalisada na sétima rodada com os 17,2 kg (referência 3,94), um abaixo por matar pelo veneno; era 6, escolhida com 106 kg. Sem força medida; o feito real (o sapo maior que ela) não escala, pelo quadrado e cubo (D-158, D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: o mínimo da D-176, um acima da Theraphosa de base (Vigor 3, presumido); cutícula fina, abdome mole e perna de pressão de sangue, ao lado da centopeia, do louva-a-deus e da vespa gigantes (4) e do carcaju (11,75 kg, 4). Era 5 (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 pela régua, [extrapolação]; falta o jejum da Theraphosa. Se aparecer jejum de meses (como nos escorpiões), pode ganhar Resistência (fome) natural (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "especialidades: Prontidão (vibração) +2 sem medida; se aparecer número de sensibilidade, pode subir ao teto de +3 (decisão 3)"
-    },
-    {
-      "campos": [],
-      "texto": "escalada: 0 na espécie de base; se o autor quiser a aranha do D&D, que escala, a Escalada entra na variante tecelã (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 (faixa 0 a 1) pela escala da quinta rodada, reanalisado na sétima com os 17,2 kg; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "influencia e compostura: 1 por não ser espécie social (diretriz 1); a exibição de ameaça fica no texto"
-    },
-    {
-      "campos": [],
-      "texto": "teia: a criatura mantém a teia de captura, pelo Preso da Rede; alcance e usos são os da Manobra atual."
-    },
-    {
-      "campos": [],
-      "texto": "veneno: `peconha-de-aranha-gigante` existe no catálogo; o veneno real da aranha-golias é fraco para gente (D-112)"
-    },
-    {
-      "campos": [],
-      "texto": "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

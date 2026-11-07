@@ -135,8 +135,7 @@
       "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "Base Círculo pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Defesa contra possessão",
@@ -150,8 +149,7 @@
       "efeito": "Contra uma possessão, o protegido usa sua Defesa Mental com a proteção do círculo e o Resistir do livro",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A proteção do círculo se aplica à resistência mental da criatura protegida quando houver tentativa de possessão. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Resistência à magia",
@@ -240,80 +238,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Círculo contra o mal"
-      ],
-      "texto": "Base Círculo pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Defesa contra possessão"
-      ],
-      "texto": "A proteção do círculo se aplica à resistência mental da criatura protegida quando houver tentativa de possessão. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Trombeta paralisante"
-      ],
-      "texto": "**[provisório]** R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Velocidade sugerida 6, pela referência de ativação com o corpo. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Trombeta e espada"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 25 da fonte passa a grau 2 (+4)."
-    },
-    {
-      "campos": [
-        "Briga"
-      ],
-      "texto": "5 -> 0."
-    },
-    {
-      "campos": [
-        "Sobrevivência"
-      ],
-      "texto": "2 -> 0."
-    },
-    {
-      "campos": [
-        "Sociabilidade"
-      ],
-      "texto": "2 -> 4; Defesa Social 26 -> 26."
-    },
-    {
-      "campos": [
-        "Ocultismo"
-      ],
-      "texto": "4 -> 0."
-    },
-    {
-      "campos": [
-        "Círculo contra o mal"
-      ],
-      "texto": "+2 nas Defesas -> +2 em Esquiva, Bloqueio e Defesa Mental; Defesa Social +2 -> +0."
-    },
-    {
-      "campos": [
-        "pericias"
-      ],
-      "texto": "evidência individual de Trumpet Archon; Religião amparada pelo conhecimento e conjuração publicados."
-    },
-    {
-      "campos": [
-        "Resistência à magia 25"
-      ],
-      "texto": "Antes: sem classificação numérica."
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.atividade",

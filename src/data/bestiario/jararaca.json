@@ -127,8 +127,7 @@
       "efeito": "Minúsculo: vista de cima, enrolada. Miúdo (0,032 m², esticada): esticada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Minúsculo (vista de cima, enrolada) e Miúdo (0,032 m², esticada) (esticada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Peçonha de víbora",
@@ -143,8 +142,7 @@
       "efeito": "Peçonha de víbora. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [],
@@ -212,96 +210,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Minúsculo (vista de cima, enrolada) e Miúdo (0,032 m², esticada) (esticada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Peçonha de víbora"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): o corpo não segura e a picada vale pelo veneno; o dano do Bote perde a parte da Força e fica 1d6 − 2 (D-115)"
-    },
-    {
-      "campos": [],
-      "texto": "pv: 2 (em vigor na Etapa 2, 20/10/2026); antes: faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 7 (decisão 21, delegada). Com 10 + metade do Vigor seriam 11. Era 17."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 1,72 kg pelo `calc6.mjs`, provisório (decisões 14 e 16); era 3,41 kg (a fêmea) e, antes, 52 g. O piso de 0,25 × massa não pesa aqui: quem dá o número é a curva da massa, que no bicho de 350 g passa do próprio peso. Como ela não agarra, o número quase não entra em jogo."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); 5 km/h pela fórmula de hoje, contra 3,7 medidos numa víbora de outra espécie."
-    },
-    {
-      "campos": [],
-      "texto": "area: 0,011 m², enrolada, e 0,030 m² esticada, escaladas pela massa (`calc6.mjs`) a partir da medição da fêmea na `tamanho-fichas-v2` (0,016 e 0,042 m²); antes, 0,04 m² (altura × comprimento). Decisão provisória: usar o número do `calc6.mjs`, que é o mesmo para as 92 fichas."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 2 (animal comum), provisória; víbora de bote."
-    },
-    {
-      "campos": [],
-      "texto": "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a imobilidade camuflada que a sustentava passou às duas Especialidades de Furtividade."
-    },
-    {
-      "campos": [],
-      "texto": "especialidades.furtividade: a camuflagem da cor ficou como natural (+1) e a espera imóvel como hábito (+1, dentro do limite do livro). Decisão provisória: separar o que é do corpo do que é hábito, como pede a decisão 3; somadas, dão o \"candidato a 4\" do levantamento só na situação certa."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 pela régua, sem dado **[extrapolação]**."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 0,38 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,3485 kg, a média simples da fêmea (576 g) e do macho (121 g) **[medido]**, mas em cativeiro (irmãos de 3 anos do Butantan, Furtado e colegas 2006); a massa do adulto selvagem falta (Sazima 1992 não foi aberto). Era 0,576 kg (a fêmea)."
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "o veneno ignora a Absorção (`acoes-resistir.md`:43); se a picada que não fura a bota injeta o veneno é do Mestre (D-087)"
-    },
-    {
-      "campos": [
-        "dimensoes.comprimento"
-      ],
-      "texto": "o bloco usa 1,01 m, o comprimento rostro-cloacal médio da fêmea (1,20 m) escalado pelo cubo da massa para o adulto típico, como comprimento total; o total máximo registrado é 1,60 m, e o típico não tem dado (D-174)"
-    },
-    {
-      "campos": [
-        "dimensoes.largura"
-      ],
-      "texto": "0,030 m, o diâmetro estimado pelo Arquiteto para a fêmea (0,035 m, cilindro de 0,576 kg em 1,2 m), escalado pelo cubo da massa, sem fonte"
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "a Prontidão (térmico) +4 virou Prontidão (calor) +3, Especialidade natural, pelo teto da decisão 3."
-    },
-    {
-      "campos": [
-        "sobrevivencia"
-      ],
-      "texto": "3, ainda sem a régua da Sobrevivência do animal (D-109)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

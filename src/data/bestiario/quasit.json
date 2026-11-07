@@ -126,8 +126,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "garras venenosas",
@@ -142,8 +141,7 @@
       "efeito": "o alvo fica Envenenado pelo veneno do quasit (Veneno e doença)",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "invisibilidade",
@@ -157,8 +155,7 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: inato com uso extra pago. R1: sobrenatural porque desaparece para caçar e escapar. 1 uso grátis por cena e 1 de Energia por uso extra. valor de molde, para a bancada. A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Susto",
@@ -177,8 +174,7 @@
       "efeito": "um terror súbito sem motivo; quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao susto até o fim da cena",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Pavor pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Adivinhação",
@@ -197,8 +193,7 @@
       "efeito": "vislumbra o futuro próximo",
       "dano": "nenhum; soma +1d6 na próxima jogada",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Oráculo pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Forma alternativa",
@@ -216,16 +211,14 @@
       "efeito": "vira morcego, centopeia gigante, lobo, gato, rato ou sapo; os números ficam os do quasit, menos o deslocamento, que é o do bicho (voo do morcego, a corrida do lobo); na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Regeneração 2",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: prata ou arma benta. valor de molde, para a bancada."
+      "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     }
   ],
   "comoLuta": [
@@ -309,142 +302,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.invisibilidade"
-      ],
-      "texto": "Antes: inato com uso extra pago. R1: sobrenatural porque desaparece para caçar e escapar. 1 uso grátis por cena e 1 de Energia por uso extra. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Forma alternativa"
-      ],
-      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Adivinhação"
-      ],
-      "texto": "Base Oráculo pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Susto"
-      ],
-      "texto": "Base Pavor pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 2"
-      ],
-      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: prata ou arma benta. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.invisibilidade"
-      ],
-      "texto": "A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.garras venenosas"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "garras venenosas"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "Susto"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Adivinhação"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Forma alternativa"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "altura"
-      ],
-      "texto": "0,6 m, e não os 30 cm do site, que não fecham com os 3,5 kg (o corpo de base a 30 cm daria 0,37 kg, na Faixa 1 e com PV = Vigor = 2). A outra saída era manter os 30 cm e baixar a massa; fica a altura, que é a do Pathfinder, e a massa do site **[provisório]**. É a exceção à regra de altura e massa do bestiário (a partir do lote 32: a altura do site manda, e a massa do site fica quando um fator de forma plausível a alcança; balor, glabrezu e marilith mantiveram a altura). Aqui o número errado do site era a própria altura: 30 cm fica longe da massa por um fator de quase dez, nenhum fator de forma plausível fecha a conta, e a altura contradiz a fonte (cerca de 60 cm no Pathfinder). Mantida a altura, o quasit teria 0,37 kg e PV 2; mantida a massa, fica com 3,5 kg, a altura da fonte e PV 6"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "**17 antes, 6 depois**. O site dava 17 (`inimigos.json`); a tabela de PV pela massa dá 5 + 2 ÷ 2 = 6. A massa (3,5 kg) está na zona de transição (3 a 5 kg) e a faixa de cima daria 12; fica a de baixo, porque o corpo de 3,5 kg não é robusto **[provisório]**"
-    },
-    {
-      "campos": [
-        "dano médio"
-      ],
-      "texto": "**7,5 antes, 5,5 depois** nas Garras. O site dava \"1d6 +4 corte\" (`inimigos.json`), 1 dado; as Garras Leves dão 1d6 − 2 + 2 + 2 = 5,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "vontade"
-      ],
-      "texto": "4, e não 7; `bravura` 2, e não 5; `conviccao` 2, e não 5: pelo texto do site (\"cruel e covarde\", \"obedece apenas enquanto teme o dono\", \"trai\") **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e mordida Leves, o gesto rápido de bicho pequeno, como os 5 Ticks do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "sem id no catálogo; os números são provisórios, abaixo da peçonha da aranha gigante (Potência 18) **[provisório]**"
-    },
-    {
-      "campos": [
-        "susto",
-        "adivinhação",
-        "forma alternativa"
-      ],
-      "texto": "números da ficha com as bases do site (D-197)"
-    },
-    {
-      "campos": [
-        "invisibilidade"
-      ],
-      "texto": "sem regra ainda, porque o site não dá Arte de base para ela"
-    },
-    {
-      "campos": [
-        "Regeneração 2"
-      ],
-      "texto": "Antes: 1 PV/6 Ticks passivos."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

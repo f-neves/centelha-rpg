@@ -127,8 +127,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "alcance dos tentáculos",
@@ -143,8 +142,7 @@
       "efeito": "A parte alcança até 9 m medidos da borda do corpo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "9 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade alcance dos tentáculos. A parte alcança até 9 m medidos da borda do corpo. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "arrastar para o fundo",
@@ -159,8 +157,7 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "jato de água",
@@ -181,8 +178,7 @@
       "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
       "dano": "nenhum",
       "resistencia": "sair da nuvem",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -253,106 +249,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.nuvem de tinta"
-      ],
-      "texto": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arrastar para o fundo"
-      ],
-      "texto": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.alcance dos tentáculos"
-      ],
-      "texto": "9 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade alcance dos tentáculos. A parte alcança até 9 m medidos da borda do corpo. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "nuvem de tinta"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [],
-      "texto": "gigante escalado (D-105): altura, largura e comprimentos são os da fêmea real de manto de 2,0 m × 2,2, e ficam (o tamanho da ficha fica, item 5 da tamanho-decisoes-5.md); a massa sai do adulto típico de 77 kg e manto de 1,274 m, × (4,4 ÷ 1,274)³ = 3.170 kg (era 2.130). Tudo [extrapolação]. A forma do corpo das duas bases não é a mesma: a fêmea de 81 kg e manto de 1,35 m, levada a 2,0 m pelo cubo, daria 263 kg, e não 200; por isso a massa sobe. A altura segue igual à largura, por estimativa (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o da v3 (manto de 4,4 m, 26,4 m com os tentáculos), Enorme, dois portes acima da Architeuthis típica (Média, 1,05 m² de lado). Os 13,7 m do site dariam Grande, a um porte só (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Enorme pela área de lado (12,54 m²) da tamanho-fichas-v2; era 16,46 m² pela conta de hoje, com o mesmo resultado. Provisório até os cortes fecharem (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.tentaculos: os dois tentáculos de captura ficam fora da área, como a cauda fina (D-155); os oito braços contam."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 335,67 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 408,66 kg pela fórmula das decisões 14 e 16 (calc6, 3.170 kg); cefalópode não tem `carga` (D-160, D-175). Era 459,11 kg com 2.130 kg, e antes 1.168,32 kg com a Força 11; cai com a Força 8 e a Musculatura 0 abaixo da referência da massa. Sem feito com massa para conferir."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8, topo das âncoras, contida pelo tecido de amônio; era 11. Sem feito com massa; [provisório] (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 0 (corpo que não é de força), pelo amônio no músculo; sem medida de força de músculo."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 3 pela luta de 4 h 13 min e pelo tentáculo perdido (Kubodera e Mori 2005), na real; é feito de aguentar ferida, e não de distância."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4, revisto na oitava rodada pelo corpo e pela massa, e fica: o mínimo da D-176 sobre a Architeuthis de base (3); a massa de 3,2 t pediria mais, e o corpo mole de amônio, sem esqueleto, a segura, ao lado do polvo-gigante (1.350,6 kg, 4) e um abaixo da lesma-gigante (3.518 kg, 5, pela cura de ferida medida). A luta presa à linha já está na Resistência (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "compostura: desce de 2 para 1 por não ser espécie social (diretriz 1); era [sem dado]."
-    },
-    {
-      "campos": [],
-      "texto": "especialidades: a visão no escuro desce de +4 para +3 pelo teto da decisão 3 e passa a natural."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): presa à isca, lutou 4 h 13 min e puxou o equipamento de 900 para 600 m (Kubodera e Mori 2005) **[medido, na real]**; nenhuma distância por dia nem velocidade achada."
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: cefalópode, anatomia provisória (D-175), não calibrada em animal medido."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); nenhuma velocidade real achada para comparar."
-    },
-    {
-      "campos": [],
-      "texto": "comportamento: social, atividade e reação a gente ficam [sem dado]; o solitário é escolha provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a base típica (77 kg) sai de Guerra, González e Rocha 2004, conferido no PDF; o manto da fêmea de 100 kg é pelo cubo da fêmea medida de 81 kg [comparação]. A fêmea de 200 kg (variante) continua pelo cubo de uma fêmea medida (148 kg, manto de 1,8 m); os máximos de 275 e 150 kg continuam só pela Wikipédia (D-174)."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.natacao",

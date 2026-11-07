@@ -155,8 +155,7 @@
       "efeito": "Imenso: de baixo, asas abertas. Enorme: de lado, asas fechadas, pousada. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Imenso (de baixo, asas abertas) e Enorme (de lado, asas fechadas, pousada). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "mergulho",
@@ -165,8 +164,7 @@
       "ataque": "Garras em mergulho",
       "categoria": "inato",
       "regra": "investida",
-      "texto": "só descendo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "só descendo"
     },
     {
       "nome": "Manto de chamas",
@@ -185,16 +183,14 @@
       "efeito": "as penas ardem; cada golpe dela queima também, e quem chega perto demais pega fogo",
       "dano": "+1d6 de fogo em cada golpe; quem começa a vez a até 1,5 m dela leva 1d6 de fogo",
       "resistencia": "esquiva, para quem chega perto; quem passa sai do alcance a tempo",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Regeneração 10",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem mágica. O dano de gelo ou mal só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: gelo ou mal. valor de molde, para a bancada."
+      "efeito": "origem mágica. O dano de gelo ou mal só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "frio e mal param a regeneração",
@@ -220,8 +216,7 @@
       "efeito": "ergue uma parede de fogo; quem a atravessa queima",
       "dano": "3d6 + Centelha, fogo, em quem atravessa",
       "resistencia": "esquiva; quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Muro pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Tempestade de fogo",
@@ -240,8 +235,7 @@
       "efeito": "chove fogo na área; quem está nela pega fogo",
       "dano": "3d6 + Centelha, fogo, na primeira vez, e fica Em chamas",
       "resistencia": "esquiva; quem passa leva metade e não fica Em chamas",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Chuva de Fogo pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Cura da fênix",
@@ -259,8 +253,7 @@
       "efeito": "fecha ferimentos graves, recompõe o que se perdeu e tira do corpo doença e veneno",
       "dano": "nenhum; cura 5d6 PV",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 6. Velocidade 7 pelo grau 5 da base. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia"
     },
     {
       "nome": "autorressurreição",
@@ -274,8 +267,7 @@
       "efeito": "Retorna com 1 PV após um dia, pelo vínculo com as próprias cinzas. Destruir a âncora ou resolver o vínculo impede o retorno",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ano, sem custo",
-      "justificativa": "Retorno com 1 PV após um dia, uma vez por ano. O vínculo é as próprias cinzas. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por ano, sem custo"
     },
     {
       "nome": "Resistência à magia",
@@ -303,8 +295,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -390,160 +381,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Cura da fênix"
-      ],
-      "texto": "Antes: Velocidade 6. Velocidade 7 pelo grau 5 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Tempestade de fogo"
-      ],
-      "texto": "Base Chuva de Fogo pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Muralha de chamas"
-      ],
-      "texto": "Base Muro pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Manto de chamas"
-      ],
-      "texto": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.mergulho"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.autorressurreição"
-      ],
-      "texto": "Retorno com 1 PV após um dia, uma vez por ano. O vínculo é as próprias cinzas. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 10"
-      ],
-      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: gelo ou mal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Imenso (de baixo, asas abertas) e Enorme (de lado, asas fechadas, pousada). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "Manto de chamas"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, acendendo as penas -> uma ação, Velocidade 5, acendendo as penas. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Muralha de chamas"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Tempestade de fogo"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Cura da fênix"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "autorressurreição"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 26 da fonte passa a grau 3 (+6)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "1.000 kg, a do site, com a envergadura do site (fator 0,52 sobre os 1.941 kg da águia-real escalada: metade do corpo é chama viva). Nada muda na Faixa nem no Tamanho **[provisório]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "85 para 66. A tabela de PV pela massa dá 30 + 4 × 9 a 1.000 kg, fora da zona de transição; o site usava outra conta **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +17 perfurante\", 7 Ticks, dano médio 27,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 27,5 antes; depois, garras 18,5, bico 20,5, garras em mergulho 35,0 (só descendo), cada um com mais 1d6 de fogo pelo Manto de chamas **[provisório]**"
-    },
-    {
-      "campos": [
-        "magias de cura e fogo"
-      ],
-      "texto": "o site diz \"comanda paredes e tempestades de fogo à vontade\"; a ficha as faz poderes naturais (Fogo 4, Fogo 5 e Cura 5) com números e limites da ficha (D-197), uma vez a cada 24 Ticks ou por cena, e não à vontade **[provisório]**"
-    },
-    {
-      "campos": [
-        "absorcao"
-      ],
-      "texto": "Corte e Perfuração 17 para 6, só a Centelha, a Absorção natural do livro; o Impacto fica 15"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 11 (D-205)"
-    },
-    {
-      "campos": [
-        "Regeneração 10"
-      ],
-      "texto": "Antes: 9 PV/6 Ticks passivos."
-    },
-    {
-      "campos": [
-        "Resistência à magia 26"
-      ],
-      "texto": "Antes: sem classificação numérica."
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: Só ao fim de um mergulho, com o corpo inteiro descendo sobre a presa (× 2, a exceção do roc e do grifo, manual 7.6). Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 35 para 24; Investida 35, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.massa",

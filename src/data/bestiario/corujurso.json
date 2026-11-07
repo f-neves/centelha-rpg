@@ -130,8 +130,7 @@
       "efeito": "Grande: silhueta de frente, de pé. Médio: de lado, de quatro, na corrida. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (silhueta de frente, de pé) e Médio (de lado, de quatro, na corrida). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Duas garras",
@@ -140,8 +139,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Abraço esmagador",
@@ -150,8 +148,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "o abraço só vem depois que as duas garras acertam o mesmo alvo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "o abraço só vem depois que as duas garras acertam o mesmo alvo"
     },
     {
       "nome": "Imobilizar",
@@ -161,8 +158,7 @@
         "id": "imobilizar",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Fúria descontrolada",
@@ -190,8 +186,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico contra a presa agarrada. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, bico contra a presa agarrada. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -265,80 +260,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Imobilizar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Abraço esmagador"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, bico contra a presa agarrada. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (silhueta de frente, de pé) e Médio (de lado, de quatro, na corrida). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "680 kg para 300 kg, pela regra do lote: os 2,4 m em pé do site são a altura do urso-pardo grande (237 kg), e o fator 1,27 do corpo maciço leva a 300 kg. A Faixa (4), o PV (54) e a Força (7) não mudam; o Tamanho principal fica Grande **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "em pé, Grande (1,53 m², 5,5% acima do corte); de quatro, Médio. O urso-pardo luta de quatro na ficha dele; o corujurso, pelo abraço do site, em pé **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 10,5 (duas pela Rajada), bico 10,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "fúria descontrolada"
-      ],
-      "texto": "o Enfurecido é a condição que o site descreve (\"ataca sem distinguir aliados\"); números da ficha (D-197)"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 2, pela beleza (D-205)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "2, entre o 1 das `pericias` e o 4 das notas do site, com +2 de faro e audição"
-    }
-  ],
   "revisao": [
     {
       "campo": "ataques.Bico.nivelPerfuracao",

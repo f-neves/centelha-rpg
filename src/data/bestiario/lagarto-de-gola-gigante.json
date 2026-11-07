@@ -143,8 +143,7 @@
       "efeito": "Grande: gola aberta. Pequeno: de lado, gola fechada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (gola aberta) e Pequeno (de lado, gola fechada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "investida intimidante",
@@ -229,103 +228,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (gola aberta) e Pequeno (de lado, gola fechada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [],
-      "texto": "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 4 m do site ficam: o lagarto-de-gola real é Minúsculo de lado (0,018 m²) e o gigante Pequeno (0,40 m²), 2 portes, o mínimo do critério; Pequeno, e não Médio, é um dos portes que o item 7 admite. Longe dos cortes: 0,40 m² fica 10% abaixo do corte do Médio (0,45), no limite da distância pedida, e 236% acima do do Pequeno (0,12). O segundo Alvo (gola aberta, 1,48 m²) fica só 2% acima do corte do Grande: com 3,95 m ou menos ele cai no Médio. Pela D-215 (24/10/2026), o principal passou a ser o da gola aberta (Grande), e o Pequeno de lado ficou como segundo."
-    },
-    {
-      "campos": [
-        "escala"
-      ],
-      "texto": "gigante da D-105, escala × 4,71 do adulto real típico (ADW), para dar os 4 m da ficha atual (decisão do Arquiteto, sexta rodada). Era × 10 do macho real. Tudo **[extrapolação]** (D-105, D-174)"
-    },
-    {
-      "campos": [
-        "dimensoes.comprimento"
-      ],
-      "texto": "4 m, o da ficha atual; a massa sai dele (66,2 kg) e não dos 900 kg da ficha atual, que pediriam cerca de 9,5 m. Era 8,5 m (D-105, D-174; sexta rodada, seção 3)"
-    },
-    {
-      "campos": [
-        "dimensoes.altura",
-        "dimensoes.largura"
-      ],
-      "texto": "estimadas no animal real (0,08 e 0,06 m), sem fonte, e escaladas (D-147, D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "area: 0,40 m², vista de lado: a silhueta da `tamanho-fichas-v2` (1,82 m² com 8,5 m) × (4 ÷ 8,5)². Era 1,82 m² e, antes, 2,32 m². O Alvo passou de Grande a Pequeno; pela D-215, o principal é o da gola aberta (1,48 m², Grande), e esta área fica no segundo."
-    },
-    {
-      "campos": [],
-      "texto": "segundoAlvo: Pequeno de lado, com a gola fechada (0,40 m²), desde a D-215, que pôs a gola aberta no principal; antes, Grande com a gola aberta (1,48 m², decisão 8), pouco acima do corte de 1,45; era Enorme (6,68 m²). O efeito em jogo é que a exibição o deixa mais fácil de acertar."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 3 (em vigor na Etapa 2, 20/10/2026); antes: 5 ◆, reanalisada na sétima rodada pela massa de 66,2 kg (referência 6) e pelo corpo de lagarto magro de árvore (D-158), com o varano (47,5 kg, 5), o javali (78,75 kg, 5), o lobo-terrível (60 kg, 4) e o cão-de-guarda (77 kg, 4); era 7 pelas âncoras da v2, escolhidas com 870 kg, e 9 na ficha de hoje. Sem feito medido. A base fica com Força 0 pelo item 8, e não pela D-167 automática"
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa, e fica: um acima da base (Vigor 3), o mínimo da D-176; réptil magro de sangue frio, de 66,2 kg, um acima do varano (47,5 kg, 3) só pelo mínimo. Era 5 na sexta rodada (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 2 (animal comum), provisória."
-    },
-    {
-      "campos": [],
-      "texto": "escalada: 2, nova linha; antes a escalada estava dentro do Atletismo 2. Decisão provisória: separar, como pede a lista de referência (diretriz 2)."
-    },
-    {
-      "campos": [],
-      "texto": "influencia, compostura: descem a 1 por não ser espécie social (diretriz 1); a exibição fica em texto."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 pela régua, com Resistência (calor) +1 pela temperatura do corpo perto de 40 °C no real **[comparação]**."
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: 2, candidata a 3 no levantamento; a espera no alto entra como Especialidade (+1). A camuflagem de casca não tem fonte."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 pela escala da quinta rodada, reanalisado na sétima com os 66,2 kg e mantido; a faixa passa de 1 a 2 para 0 a 1 (ao lado da jiboia e do cavalo, abaixo do varano, de osteodermos). O valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 66,2 kg **[extrapolação]** pelo cubo (k = 4,71) sobre o adulto real típico de 0,635 kg (média simples do macho de 0,87 e da fêmea de 0,40 kg, ADW) com 0,85 m; era 870 kg (k = 10 sobre o macho). O 0,87 kg é o \"pelo menos\" dos maiores machos na ADW; a média pesada do macho adulto real não foi achada."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): no real, deslocamento diário médio de 69 m nos machos e 23 m nas fêmeas, em área de 2,5 e 0,7 ha (Shine e Lambeck 1989, resumo lido) **[comparação]**. A corrida de duas patas é de arrancada curta, até a próxima árvore; sem tempo medido."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 175,83 kg (em vigor na Etapa 2, 20/10/2026); antes: 260,62 kg pelo `calc6.mjs` com a Força 5, provisório (decisões 14 e 16). Era 386,3 kg com a Força 7, 664,9 kg com 870 kg, e 760 kg pela fórmula de FAH."
-    },
-    {
-      "campos": [],
-      "texto": "carga: 6,62 kg de Leve pela D-122 (66,2 × 0,1 × 1, Faixa 3), sem carga medida; era 87 kg com 870 kg."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); 18 km/h pela fórmula de hoje, sem velocidade real nem do lagarto real."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

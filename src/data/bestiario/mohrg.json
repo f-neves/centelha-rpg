@@ -115,8 +115,7 @@
       "ataque": "Mãos ossudas",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "agarrar",
@@ -124,8 +123,7 @@
       "classe": "livro",
       "ataque": "Mãos ossudas",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Língua paralisante",
@@ -158,8 +156,7 @@
       "efeito": "a vítima se ergue na hora como um morto-vivo rápido sob o comando dele, e a explosão de energia negra o fecha e o acelera por um instante",
       "dano": "nenhum; ele recupera 1d6 + Centelha PV e fica Acelerado por 6 Ticks",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Servo de Ossos pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -244,74 +241,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Cria servos ao matar"
-      ],
-      "texto": "Base Servo de Ossos pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas mãos"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O cadáver é animado após a morte."
-    },
-    {
-      "campos": [
-        "fisiologia.recuperacao"
-      ],
-      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
-    },
-    {
-      "campos": [
-        "fisiologia.imunidadesMentais"
-      ],
-      "texto": "R22. A compulsão de matar leva o mohrg a avançar mesmo sob terror sobrenatural."
-    },
-    {
-      "campos": [
-        "Língua paralisante"
-      ],
-      "texto": "**[provisório]** R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Cria servos ao matar"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação um humanoide morre pelos golpes dele -> um humanoide morre pelos golpes dele, em ação de Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o \"Golpe\" do site ficou Mãos ossudas Médias, duas pela Rajada; a Língua entrou como ataque sem dano **[provisório]**"
-    },
-    {
-      "campos": [
-        "furtividade"
-      ],
-      "texto": "2, pelo caçador que isola a vítima **[provisório]**"
-    },
-    {
-      "campos": [
-        "cria servos ao matar"
-      ],
-      "texto": "bases e números sugeridos pela ficha; a ficha publicada não tinha `arte` nem `poderes` (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.furtividade",

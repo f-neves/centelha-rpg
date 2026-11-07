@@ -234,58 +234,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "Gemido sônico"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Pavor: 1 uso grátis por dia. Outros gemidos: 1 uso grátis por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Manipulação de sombras"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um efeito por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, só em penumbra ou escuridão -> uma ação, Velocidade 5, só em penumbra ou escuridão. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "5; o site tinha 7 **[provisório]**"
-    },
-    {
-      "campos": [
-        "comprimento"
-      ],
-      "texto": "1,8 m de corpo e cauda de 1,2 m, estimados; o site dá só a envergadura **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Mordida Média e Cauda Leve no lugar das \"Garras e presas\" **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "envolver",
-        "gemido sônico",
-        "manipulação de sombras"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "torpor do gemido"
-      ],
-      "texto": "Antes: um alvo Imobilizado por 12 Ticks."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

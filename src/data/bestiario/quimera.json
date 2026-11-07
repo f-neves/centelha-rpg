@@ -163,8 +163,7 @@
       "efeito": "Grande: silhueta vista de lado, asas fechadas, no chão. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (silhueta vista de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "derrubar",
@@ -172,8 +171,7 @@
       "classe": "livro",
       "ataque": "Chifrada de cabra",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "Sopro dracônico",
@@ -192,8 +190,7 @@
       "efeito": "a cabeça de dragão cospe um leque de fogo. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Multiataque",
@@ -207,8 +204,7 @@
       "efeito": "Golpeia nesta ordem: mordida de leão, chifrada de cabra, mordida de dragão. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "mordida de leão, chifrada de cabra, mordida de dragão. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -287,96 +283,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro dracônico"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro dracônico"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "mordida de leão, chifrada de cabra, mordida de dragão. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (silhueta vista de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "Sopro dracônico"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "600 kg, a do site: o leão escalado pelo comprimento do site, com a cernelha do site e o fator 1,23 das cabeças e das asas. Nada muda: Faixa e PV ficam os do site **[conta]**"
-    },
-    {
-      "campos": [
-        "força"
-      ],
-      "texto": "6 para 8, pelo teste de ordem com o tigre-dentes-de-sabre (8 com 320 kg) e o leão-das-cavernas (7 com 235 kg) **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +9 perfurante\", 6 Ticks, dano médio 16). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 16 antes; depois, cada cabeça 14,5 (uma por ação), sopro 10,0 **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro dracônico"
-      ],
-      "texto": "poder natural com números da ficha (D-197), base Fogo 3 (a Labareda, o leque de 2d6), que é o nível do cone; o site dava a Arte Fogo 2 e a base Fogo 2 ao sopro **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 2 (D-205)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "1 para 3, os \"sentidos triplos\" do site"
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

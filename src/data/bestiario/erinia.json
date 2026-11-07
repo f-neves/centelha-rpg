@@ -132,8 +132,7 @@
       "efeito": "Grande: voando, asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (voando, asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Lâmina em chamas",
@@ -167,8 +166,7 @@
       "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez",
-      "justificativa": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez"
     },
     {
       "nome": "Teleporte",
@@ -187,8 +185,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance 60 m, viajantes: a própria erínia. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Olho de alcance",
@@ -198,8 +195,7 @@
         "id": "olho-de-alcance",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Ver o invisível",
@@ -209,8 +205,7 @@
         "id": "visao-verdadeira",
         "nivel": 4
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
@@ -224,8 +219,7 @@
       "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -308,116 +302,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Arco longo"
-      ],
-      "texto": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ver o invisível"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Olho de alcance"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Teleporte"
-      ],
-      "texto": "Antes: Velocidade 8, alcance 60 m, viajantes: a própria erínia. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corda de comando"
-      ],
-      "texto": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "sentidos.visão verdadeira"
-      ],
-      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.visão verdadeira sempre ativa"
-      ],
-      "texto": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (voando, asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "Corda de comando"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, a corda lançada (Destreza + Arremesso dela) -> uma ação, Velocidade 5, a corda lançada (Destreza + Arremesso dela). O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Teleporte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "68 kg, a do site, com a altura do site (fator de forma 0,85 sobre os 80 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "**Médio antes, Grande depois** no principal. O site dava Médio, a silhueta de pé; ela luta voando (arco, combate aéreo), e com as asas abertas a silhueta é de 3,11 m². O Segundo Tamanho fica Médio, de pé. O humano passa a ter +3 no acerto contra ela no ar **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "**0 antes, 7 depois**, pelo \"anjo caído de beleza terrível\" do site (D-205) **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua **[provisório]**"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "4 pela nota do site, e não o 2 do campo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +11 corte\", dano médio 14,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as mãos ficam Leves; a espada é a do livro, em uma mão; o arco é o do livro, sem mudança (14,5). Dano médio: 14,5 antes; depois, 14,5 (a espada, mais 1d6 de fogo); as mãos ficam em 12,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "corda de comando",
-        "teleporte",
-        "lâmina em chamas"
-      ],
-      "texto": "números da ficha com as bases do site (D-197). O site dava o teleporte \"1x por cena\""
-    },
-    {
-      "campos": [],
-      "texto": "`armas` 4 e `arremesso` 3: pela espada e pela corda do texto, que o site não tinha na ficha; a corda vai por Destreza + Arremesso, o arremesso do livro **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

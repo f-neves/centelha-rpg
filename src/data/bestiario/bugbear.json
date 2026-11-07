@@ -102,8 +102,7 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo",
-      "justificativa": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -180,38 +179,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe na brecha"
-      ],
-      "texto": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "machado do livro, sem armadura **[provisório]**"
-    },
-    {
-      "campos": [
-        "armas"
-      ],
-      "texto": "3; o site gravava `briga` 2 para a arma **[provisório]**"
-    },
-    {
-      "campos": [
-        "furtividade"
-      ],
-      "texto": "Especialidade natural +2 pelo passo leve **[provisório]**"
-    },
-    {
-      "campos": [
-        "golpe surpresa"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

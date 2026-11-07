@@ -158,8 +158,7 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
-      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "Multiataque",
@@ -173,8 +172,7 @@
       "efeito": "Golpeia nesta ordem: casco esquerdo, casco direito, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "casco esquerdo, casco direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -250,92 +248,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Viagem entre planos"
-      ],
-      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Viagem entre planos"
-      ],
-      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "casco esquerdo, casco direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Fumaça sufocante"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "enjoo da fumaça"
-      ],
-      "texto": "**[provisório]** R13 e D-197. Dificuldade fixa sugerida 14 (10 + Centelha 4) para graduar a potência deste fedor."
-    },
-    {
-      "campos": [
-        "Viagem entre planos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, galopando pelo ar -> uma ação, Velocidade 7, galopando pelo ar. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "800 kg, a do site, com o comprimento do site (fator de forma 1,20 sobre os 669 kg do cavalo escalado). Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
-    },
-    {
-      "campos": [
-        "força"
-      ],
-      "texto": "6 para 7, pelo teste de ordem com o cavalo do molde (7 com 500 kg). O dano médio dos cascos vai de 17 a 18,0 (+1), e o peso erguido sobe com ela **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "os \"Cascos flamejantes\" do site (2 dados, 6 Ticks, `inimigos.json`: \"2d6 +10 impacto\", dano médio 17) ficam Pesados, como o coice do cavalo, e passam a 18,0 com a Força 7. A \"Mordida\" do site (1 dado, 5 Ticks, \"1d6 +10 perfurante\", 13,5) fica Leve, como a do cavalo: 12,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "cascos em chamas"
-      ],
-      "texto": "+1d6 de fogo por golpe, número da ficha (D-197) pela Arte do Fogo no nível 1 (\"fogo na lâmina por um golpe só\", 1d6); o site não dava o número **[provisório]**"
-    },
-    {
-      "campos": [
-        "fumaça sufocante"
-      ],
-      "texto": "números da ficha (D-197); o Cego é a condição que o site descreve; o enjoo ficou sem regra ainda"
-    },
-    {
-      "campos": [
-        "viagem entre planos"
-      ],
-      "texto": "poder natural com a base e os usos do site (Conjuração 5, três por dia) e números da ficha"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

@@ -92,8 +92,7 @@
       "classe": "livro",
       "ataque": "Pancada descomunal",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "Vigilância dupla",
@@ -107,8 +106,7 @@
       "efeito": "As duas cabeças vigiam lados opostos. Ignora o −2 de Flanqueado. A vigilância também impede que fique Surpreso. Tamanho continua valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "agarrar",
@@ -116,8 +114,7 @@
       "classe": "livro",
       "ataque": "Pancada descomunal",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     }
   ],
   "comoLuta": [
@@ -196,62 +193,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas cabeças, dois ataques"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Vigilância dupla"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "1.094 kg pelo cubo da altura, com os ombros 25% mais largos para os dois pescoços; o site dizia 1,8 t (D-187). Na proporção humana, 875 kg **[provisório]**"
-    },
-    {
-      "campos": [
-        "largura"
-      ],
-      "texto": "25% mais largo pelos dois pescoços, leitura da ficha **[provisório]**"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "3, a da nota do site; o campo dizia 1 **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "2, couro calejado **[provisório]**"
-    },
-    {
-      "campos": [
-        "vigilância dupla"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.largura",

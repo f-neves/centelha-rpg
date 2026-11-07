@@ -103,8 +103,7 @@
       "efeito": "Quem é atingido fica Preso pela Rede do livro. Pode romper o fio ou muco por 3 PV de Corte",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose",
-      "justificativa": "Antes: Ruptura pequena para o fio e maior para o muco espesso. Quem é atingido fica Preso pela Rede do livro. Pode romper o fio ou muco por 3 PV de Corte. valor de molde, para a bancada. 3 doses e 4 horas por dose limitam a secreção entre encontros. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose"
     },
     {
       "nome": "Puxão certeiro",
@@ -118,8 +117,7 @@
       "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Mente vazia",
@@ -191,56 +189,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Filamento pegajoso"
-      ],
-      "texto": "Antes: Ruptura pequena para o fio e maior para o muco espesso. Quem é atingido fica Preso pela Rede do livro. Pode romper o fio ou muco por 3 PV de Corte. valor de molde, para a bancada. 3 doses e 4 horas por dose limitam a secreção entre encontros. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Puxão certeiro"
-      ],
-      "texto": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 3: +3 Corte, +3 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Filamento pegajoso"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [
-        "corpo"
-      ],
-      "texto": "apoio outro explicitado na Anatomia e na Postura; esfera, hexápode ou planta não usam o apoio bípede nem quadrúpede. a conferir."
-    },
-    {
-      "campos": [
-        "Pinça"
-      ],
-      "texto": "Antes: ataque genérico 1d6 + 5, média 8,5; agora 1d6 − 2 + 5, média 6,5, Acerto 0 para +1."
-    },
-    {
-      "campos": [
-        "Mente vazia"
-      ],
-      "texto": "Antes: descrição de imunidade mental; conserva o poder sem regra, sem apagar a cognição animal de Inteligência 1."
-    },
-    {
-      "campos": [
-        "Virtudes"
-      ],
-      "texto": "Antes: Convicção 2 e Temperança 2."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

@@ -174,8 +174,7 @@
       "efeito": "Enorme: de baixo, asas abertas. Grande: de lado, asas fechadas, pousado. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, asas fechadas, pousado). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "agarrar",
@@ -183,8 +182,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "mergulho sobre a presa",
@@ -193,8 +191,7 @@
       "ataque": "Garras em mergulho",
       "categoria": "inato",
       "regra": "investida",
-      "texto": "só descendo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "só descendo"
     },
     {
       "nome": "derrubar",
@@ -202,8 +199,7 @@
       "classe": "livro",
       "ataque": "Garras em mergulho",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "Multiataque",
@@ -217,8 +213,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -304,94 +299,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.mergulho sobre a presa"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, asas fechadas, pousado). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "envergadura"
-      ],
-      "texto": "6,2 m pela proporção da águia-real, escolhida contra os 4,5 m do site pela D-187 (caso a caso, com justificativa na ficha): a asa de 4,5 m seria curta demais para a metade de águia. Com os 4,5 m a área seria cerca de 0,84 × 2,25² = 4,25 m², e o Tamanho em voo cairia para Grande; com os 7,6 m do 3.5, 12,1 m², Enorme. A física pediria 10 m ou mais (o quetzalcoatlo); o grifo voa por ser sobrenatural. A imagem do site parece mostrar a asa de 4,5 m: conferir no Visual"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "na zona de transição, desceu (voador). Subindo seria 50 **[provisório]**"
-    },
-    {
-      "campos": [
-        "segundo Tamanho"
-      ],
-      "texto": "Grande por escolha de borda (4,8% abaixo do corte); Médio seria a leitura estrita da área, como o leão **[provisório]**"
-    },
-    {
-      "campos": [
-        "carga"
-      ],
-      "texto": "10% do corpo, sem estrutura de carga, fator de porte 1 sem dado; um cavaleiro passa da Pesada. O texto do site diz que domar um adulto é \"tarefa de poucos\": montaria sim, com esse peso como limite **[provisório]**"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "5, um abaixo do site, pela comparação com o leão e a tendência das aves **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "7, como a águia e o leão; o site tinha 5"
-    },
-    {
-      "campos": [
-        "centelha"
-      ],
-      "texto": "1, a publicada, justificada pelo voo impossível para o corpo"
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: As \"garras de mergulho\" da ficha publicada: só ao fim de um mergulho, quando a massa do corpo inteiro desce sobre a presa (× 2, a exceção do roc, erro 7.6)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 20 para 14; Investida 20, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

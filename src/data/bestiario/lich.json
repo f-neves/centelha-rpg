@@ -148,8 +148,7 @@
       "efeito": "quem entra na área pela primeira vez na cena testa contra o medo; na falha, fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
-      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder",
-      "justificativa": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "Filactério",
@@ -284,50 +283,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Aura de medo"
-      ],
-      "texto": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O cadáver é animado após a morte."
-    },
-    {
-      "campos": [
-        "fisiologia.recuperacao"
-      ],
-      "texto": "R21. Recupera-se pela energia negativa ligada ao filactério. O meio acompanha o vínculo ou alimento já descrito na ficha."
-    },
-    {
-      "campos": [
-        "fisiologia.imunidadesMentais"
-      ],
-      "texto": "R22. O filactério ancora a vontade e guarda os segredos do arcanista."
-    },
-    {
-      "campos": [
-        "Toque paralisante"
-      ],
-      "texto": "**[provisório]** R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "30 kg, pelo corpo ressecado; os 40 kg do site estão na zona de transição (28 a 42 kg) e na faixa de cima. Com 40 kg, Faixa 3 e 40 PV. A escolha decide a Faixa de manobra (2 ou 3) e 10 PV de um chefe **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "vontade"
-      ],
-      "texto": "11, a do site; o capítulo do pacote não dá teto **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

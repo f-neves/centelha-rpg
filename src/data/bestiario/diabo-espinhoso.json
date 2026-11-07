@@ -105,8 +105,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Pavor pelo toque",
@@ -136,8 +135,7 @@
       "efeito": "crava as garras e os espinhos do peito ainda mais fundo",
       "dano": "o das Garras, mais 1d6, Perfuração",
       "resistencia": "nenhum; o alvo já está preso",
-      "limiteDeUso": "um por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "um por ação"
     },
     {
       "nome": "Defesa espinhosa",
@@ -165,8 +163,7 @@
       "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "proteção infernal",
@@ -262,70 +259,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Empalar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "comoLuta.poderes ígneos"
-      ],
-      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "poderes ígneos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "135 kg, a do site, com a altura do site (fator de forma 1,06 sobre os 127 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +12 corte\", dano médio 15,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as garras ficam Médias, de Perfuração pelos espinhos. Dano médio: 15,5 antes; depois, 15,5 (sem mudança) **[provisório]**"
-    },
-    {
-      "campos": [
-        "pavor pelo toque",
-        "empalar",
-        "defesa espinhosa"
-      ],
-      "texto": "números da ficha (D-197); o site não dá Arte de base"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "2, pelo couro de espinhos **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

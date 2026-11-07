@@ -139,8 +139,7 @@
       "ataque": "Chifre em investida",
       "categoria": "inato",
       "regra": "investida",
-      "texto": "só depois de correr ao menos 6 m em linha reta",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "só depois de correr ao menos 6 m em linha reta"
     },
     {
       "nome": "Toque curativo do chifre",
@@ -158,8 +157,7 @@
       "efeito": "fecha feridas e tira do corpo um veneno ou uma doença; ou desfaz uma condição de corpo (Envenenado, Doente, Sangrando)",
       "dano": "nenhum; cura 3d6 PV",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia"
     },
     {
       "nome": "Passo de luz",
@@ -178,8 +176,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance até 12 m, a um lugar que ele vê, viajantes: o próprio corpo. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Presença pura",
@@ -203,8 +200,7 @@
         "id": "imunidade",
         "nivel": 4
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "imune a veneno e encanto",
@@ -218,8 +214,7 @@
       "efeito": "Ignora veneno e domínio por encantamento. O ferimento do golpe continua. Dano físico de Arte e conversa comum seguem as regras normais",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R22. A proteção contra encanto cobre o comando imposto à vontade."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Multiataque",
@@ -233,8 +228,7 @@
       "efeito": "Golpeia nesta ordem: chifre, casco esquerdo, casco direito. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "chifre, casco esquerdo, casco direito. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -310,123 +304,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Imunidade"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Passo de luz"
-      ],
-      "texto": "Antes: Velocidade 8, alcance até 12 m, a um lugar que ele vê, viajantes: o próprio corpo. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Toque curativo do chifre"
-      ],
-      "texto": "Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.chifre perfurante"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "chifre, casco esquerdo, casco direito. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno e encanto"
-      ],
-      "texto": "R22. A proteção contra encanto cobre o comando imposto à vontade."
-    },
-    {
-      "campos": [
-        "Toque curativo do chifre"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Passo de luz"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "350 kg para 550 kg, pela regra do lote: a cernelha de 1,7 m do site, pelo cavalo do molde, dá 647 kg, e o fator 0,85 do corpo esguio leva a 550 kg. A Faixa (4) e o PV (54) não mudam; o Tamanho fica Grande **[conta]**"
-    },
-    {
-      "campos": [
-        "força"
-      ],
-      "texto": "6 para 7, pelo teste de ordem com o cavalo do molde (7 com 500 kg), como o pesadelo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +10 perfurante\", 6 Ticks, dano médio 17). O unicórnio não tem garra: a ficha usa o chifre, o coice e o chifre em investida do site. Dano médio: 17 antes; depois, chifre 14,5, coice 18,0, chifre em investida 25,0 (só depois de 6 m de corrida) **[provisório]**"
-    },
-    {
-      "campos": [
-        "absorcao"
-      ],
-      "texto": "Corte e Perfuração 9 para 4, só a Centelha, a Absorção natural do livro; o Impacto fica 10"
-    },
-    {
-      "campos": [
-        "passo de luz"
-      ],
-      "texto": "o \"teleporte\" do site, poder natural com base Conjuração 3 (Passo Brusco, o teletransporte curto do livro); o site dava a Arte Conjuração 2, que não teleporta **[provisório]**"
-    },
-    {
-      "campos": [
-        "toque curativo",
-        "presença pura"
-      ],
-      "texto": "números da ficha (D-197); a cura parte da Arte Cura 3 (Fechar Feridas, neutralizar um veneno comum), 3d6 PV"
-    },
-    {
-      "campos": [
-        "imune a veneno e encanto"
-      ],
-      "texto": "a Técnica imunidade do site cobre o veneno mundano; o resto fica sem regra ainda"
-    },
-    {
-      "campos": [
-        "virtudes"
-      ],
-      "texto": "Compaixão 3, a do site"
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: O \"chifre perfurante\" do site: só depois de 6 m de corrida, com o corpo inteiro atrás do chifre (× 2), como a investida do auroque. Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 25 para 18; Investida 25, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    },
-    {
-      "campos": [],
-      "texto": "`investida`, P20-b: sai o dado adicional; soma somente mais uma Força. Média da Investida citada no texto: 28,5 para 25,0. Golpe comum e números da tabela de Ataques preservados."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

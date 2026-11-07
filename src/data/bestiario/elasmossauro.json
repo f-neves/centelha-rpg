@@ -113,8 +113,7 @@
       "efeito": "A parte alcança até 3 m medidos da borda do corpo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "3 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade bote de pescoço longo. A parte alcança até 3 m medidos da borda do corpo. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],
@@ -173,80 +172,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.bote de pescoço longo"
-      ],
-      "texto": "3 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade bote de pescoço longo. A parte alcança até 3 m medidos da borda do corpo. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 831,56 kg (em vigor na Etapa 2, 20/10/2026); antes: 575,4 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar."
-    },
-    {
-      "campos": [],
-      "texto": "carga: não se aplica (nadador)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); sem velocidade do gênero; +8% contra o cruzeiro do grupo (Massare)."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 2.100 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.900 kg [comparação] pelo volume de um parente levado pelo cubo do Albertonectes (Zhao 2026); o Pathfinder dá 1,8 t. Pelo cubo do Styxosaurus seria 2,35 t, e do Hydrotherosaurus, 3,02 t. Sempre Faixa 5."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Enorme pela silhueta de cima (8,45 m²), com o pescoço; a ficha de hoje estava na borda (5,08) e o pescoço decidia. A questão do pescoço fino na área (D-155 fala de cauda, e a D-148 põe a píton de 7 m em Média) segue para o Arquiteto (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.altura, comprimentoSemCauda e largura: estimadas pela Bestiarista-5 [extrapolação, sem dado]."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 9 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela régua nova (D-158), na faixa das âncoras, abaixo do topo; a força não está na boca pequena. Era 9."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 7 (em vigor na Etapa 2, 20/10/2026); antes: 4, um acima do plesiossauro (3) pela massa quase quatro vezes maior (D-143); réptil, sem ferida curada na pesquisa [extrapolação]. Provisório (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua [comparação, do grupo]; a Resistência (Fôlego) +2 de hoje saiu, e o dado ficou na nota de pesquisa (jornada)."
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: 2, linha nova, pelas hipóteses de caça no fundo ou com o pescoço recolhido [extrapolação]."
-    },
-    {
-      "campos": [],
-      "texto": "compostura: 1 por não ser espécie social (diretriz 1); era 2."
-    },
-    {
-      "campos": [],
-      "texto": "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; o dado é do grupo [extrapolação]."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): sem dado do Elasmosaurus. Do grupo [extrapolação]: cruzeiro de 4 m/s se de sangue quente (Massare); 0,5 a 1,5 m/s recalculado (Motani 2002); sangue quente possível (Houssaye 2013) (todos via a pesquisa do plesiossauro). \"O tamanho grande compensa o arrasto alto das proporções extremas\" (Gutarra e colegas 2022, via Wikipédia)."
-    },
-    {
-      "campos": [],
-      "texto": "espaco: o retângulo de 1,2 × 10,3 m superestima o que o corpo ocupa; o pescoço fino é a maior parte (N22)."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

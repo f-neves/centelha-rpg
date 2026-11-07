@@ -154,8 +154,7 @@
       "efeito": "Na água e sem a lança, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "Duas garras em ordem, teto 2 na água sem lança, pela rotina aquática da ficha. valor de molde, para a bancada."
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -234,50 +233,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "Duas garras em ordem, teto 2 na água sem lança, pela rotina aquática da ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "lança no lugar do tridente **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 1 pelas escamas **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparência"
-      ],
-      "texto": "3 pela D-205; o site tinha 4 **[provisório]**"
-    },
-    {
-      "campos": [
-        "virtudes"
-      ],
-      "texto": "Compaixão 1 e Convicção 2; o site tinha 2 e 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "anfíbio"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "aparencia",

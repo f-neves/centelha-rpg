@@ -94,8 +94,7 @@
         "id": "pele-curtida",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Aguentar o Tranco",
@@ -105,8 +104,7 @@
         "id": "aguentar-o-tranco",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Tensionar",
@@ -116,16 +114,14 @@
         "id": "tensionar",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -192,56 +188,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Tensionar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Aguentar o Tranco"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Pele Curtida"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "montante"
-      ],
-      "texto": "2d6 + Força × 2, o do livro; o site dava 3 dados"
-    },
-    {
-      "campos": [
-        "absorcao"
-      ],
-      "texto": "a Pele Curtida (+2 contra Impacto) não entra no número da linha Absorção, que segue a conta do livro; fica nas Manobras"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "3; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "card e equipamento"
-      ],
-      "texto": "a placa está sempre vestida (D-188)"
-    }
-  ],
   "revisao": [
     {
       "campo": "ataques.Montante",

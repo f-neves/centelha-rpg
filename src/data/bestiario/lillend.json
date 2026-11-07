@@ -115,8 +115,7 @@
       "efeito": "Grande: cauda enrolada, torso erguido. Enorme: asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (cauda enrolada, torso erguido) e Enorme (asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Constrição",
@@ -125,8 +124,7 @@
       "ataque": "Cauda",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "envolve o adversário nas espiras",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "envolve o adversário nas espiras"
     },
     {
       "nome": "Canto encantado",
@@ -144,8 +142,7 @@
       "efeito": "Fascina quem ouve o canto e prende sua atenção enquanto a canção durar",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana",
-      "justificativa": "Grau 3 de fascinacao, alcance até onde ouve, duração enquanto mantém o canto, 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Conversar com animais e plantas",
@@ -166,8 +163,7 @@
       "efeito": "toxinas e transformações em pedra não a afetam. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -257,68 +253,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Constrição"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Canto encantado"
-      ],
-      "texto": "Grau 3 de fascinacao, alcance até onde ouve, duração enquanto mantém o canto, 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (cauda enrolada, torso erguido) e Enorme (asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imunidade a veneno e petrificação"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Canto encantado"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Tocar Instrumento"
-      ],
-      "texto": "Música 4 passa a Tocar Instrumento 4, Habilidade do catálogo que cobre a execução musical por instrumentos; nível conservado, pela D-231. a conferir."
-    },
-    {
-      "campos": [
-        "Artes"
-      ],
-      "texto": "Antes: ausentes, embora Magias da Musa descrevesse conjuração."
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Antes: golpe genérico; espada e cauda separados."
-    },
-    {
-      "campos": [
-        "Briga"
-      ],
-      "texto": "Antes: 5."
-    },
-    {
-      "campos": [
-        "Prontidão"
-      ],
-      "texto": "Antes: 2."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

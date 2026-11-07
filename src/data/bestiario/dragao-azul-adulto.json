@@ -186,8 +186,7 @@
       "efeito": "Enorme: de lado, pousado, asas fechadas. Imenso: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Enorme (de lado, pousado, asas fechadas) e Imenso (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Sopro elétrico",
@@ -206,8 +205,7 @@
       "efeito": "o relâmpago atravessa todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "9d6 + Centelha, raio",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
@@ -215,8 +213,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "cauda em sequência",
@@ -224,8 +221,7 @@
       "classe": "livro",
       "ataque": "Cauda",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
@@ -239,8 +235,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Presença",
@@ -277,8 +272,7 @@
       "efeito": "uma ilusão esconde onde ele está de verdade: para esse alvo, fica Invisível",
       "dano": "nenhum",
       "resistencia": "Influência 5 + Manha 4 + 2 × o menor entre Centelha 6 e Manha 4 (8) = 17 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Mana",
-      "justificativa": "Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Enterrar e emergir",
@@ -384,128 +378,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro elétrico"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Miragem no deserto"
-      ],
-      "texto": "Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.cauda em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.garras em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro elétrico"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "sentidos.sentidos do deserto"
-      ],
-      "texto": "Percebe vibrações no mesmo solo até 18 m. Quem voa fica fora desse sentido. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "sentidos.visão no escuro"
-      ],
-      "texto": "Distingue formas sem cor até 18 m no escuro, sem atravessar obstáculos. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 4 passa a Atirador 4. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Enorme (de lado, pousado, asas fechadas) e Imenso (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "Sopro elétrico"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "Miragem no deserto"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "envergadura"
-      ],
-      "texto": "19,8 m pela conta; o site dá 14 m **[conta]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 9 **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro"
-      ],
-      "texto": "9d6 + Centelha, linha de 18 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "multiataque"
-      ],
-      "texto": "sem regra ainda; garras e cauda pela Rajada"
-    },
-    {
-      "campos": [],
-      "texto": "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "Antes: Tamanho principal Imenso."
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Multiataque · sem regra ainda: garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

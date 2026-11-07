@@ -125,24 +125,21 @@
       "classe": "livro",
       "ataque": "Pisão (ou investida)",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Pisão (ou investida)\"."
+      "regra": "investida"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar",
-      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Pisão (ou investida)\"."
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [
@@ -199,100 +196,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Investida"
-      ],
-      "texto": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Pisão (ou investida)\"."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Atropelar"
-      ],
-      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Pisão (ou investida)\"."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 13 pela âncora do autor (12 a 14; decisão 9), proposta do Arquiteto. Era 18 e era a âncora dos seis gigantes comparados (D-163); a comparação se refaz com o 13. Sem força medida do mamute; o peso erguido (2.035 kg) fica dentro do arrasto do elefante de trabalho (1 a 3 t)."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 5.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 4.700 kg, a média simples do macho europeu (6 t, Larramendi 2016) e da fêmea (meio da faixa de 2,8 a 4 t, Wikipédia), fontes misturadas, **[comparação]**; era o macho de 6 t (sexta rodada, item 4)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 2.035 kg pelo `calc6.mjs` com a massa de 4.700 kg, provisório (decisões 14 e 16). Era 3.032 kg pela fórmula de FAH, e 2.399 kg com o macho de 6 t."
-    },
-    {
-      "campos": [],
-      "texto": "carga: Leve 705 a Máxima 2.820 kg, provisória; sai da massa, e não muda com a Força."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). A corrida de 24 km/h bate com o elefante-asiático (25 km/h, −4%); não há número do mamute."
-    },
-    {
-      "campos": [],
-      "texto": "area: 7,48 m², vista de lado: os 8,80 m² da medição da `tamanho-fichas-v2` (macho de 6 t) escalados pela massa, (4.700 ÷ 6.000)^(2/3); era 15,12 m² (retângulo cheio). O Alvo segue Enorme."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "especialidades: Resistência (frio) passou de Especialidade comum +2 a natural +3, pelo corpo medido (pelo, subpelo, gordura, orelha). Se o autor quiser separar o calor (o mamute devia sofrer no calor), cabe uma linha \"Resistência (calor)\" negativa como texto; não há dado."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2; o Fôlego +2 sai (não tinha dado próprio) e o forrageio fica na nota de pesquisa (jornada) (diretriz 2)."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): do próprio, forrageava talvez 20 horas por dia para os cerca de 180 kg de comida (cálculo das fontes da Wikipédia) **[extrapolação]**; passada adulta de cerca de 2 m numa pista de manada (Canadá, Wikipédia). Pelo parente vivo **[comparação]**: o elefante de trabalho marcha até 25 km por dia no plano, com no máximo 3 marchas pesadas seguidas (MTE, em FAO). Era a Resistência (Fôlego) +2."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 2 nova, **[extrapolação pelo elefante]**; a única evidência social do próprio mamute é a pista de pegadas da manada."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 3 (robusto) na escala nova; o 4 de hoje era da escala velha."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.largura e comprimento total: estimados pelo Arquiteto para o macho de 6 t [sem dado] e escalados, com a altura, pelo cubo da massa (fator 0,922); a altura escalada (2,90 m) cai entre o macho (2,99 a 3,31) e a fêmea (2,3 a 2,6); não decidem o Alvo, que vem do `calc.mjs`."
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: Era 2d6 + 36, média 43. 7 + 26. O corpo inteiro desce (seção 7, × 2) **[extrapolação]**. O melhor ataque. Opção, não golpe somado (D-097)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 33 para 20; Investida 33, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - sentidos: nada achado **[sem dado]**. Orelhas pequenas, de cerca de 38 cm de comprimento e 18 a 28 cm de largura (Wikipédia), adaptadas ao frio. O faro do elefante não passou ao mamute por falta de dado próprio."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: pelos de cobertura de 30 cm no dorso e até 90 cm nos flancos, subpelo de até 8 cm; gordura de até 10 cm sob a pele; pele de 1,25 a 2,5 cm; cauda curta, de 36 cm; orelhas pequenas (Wikipédia). Pelo de cerca de 3 kg/m² de pele na forma europeia (Larramendi 2016). Presas em espiral, com as pontas voltadas uma para a outra. Tromba que manipula **[extrapolação pelo elefante]**."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

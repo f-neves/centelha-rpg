@@ -141,8 +141,7 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "puxam a presa",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "puxam a presa"
     },
     {
       "nome": "prender com o peso do corpo",
@@ -151,8 +150,7 @@
       "ataque": "Garra em foice do pé",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "segura a presa no chão com o pé e come viva",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "segura a presa no chão com o pé e come viva"
     },
     {
       "nome": "investida saltada",
@@ -160,8 +158,7 @@
       "classe": "livro",
       "ataque": "Garra em foice do pé",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "investida"
     }
   ],
   "comoLuta": [],
@@ -219,74 +216,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.investida saltada"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.prender com o peso do corpo"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 265,52 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 97 kg. Era 238,85 kg (80 kg de trabalho) e, antes, 166,45 kg pela fórmula de FAH. Não é quadrúpede, então não tem `carga` (D-160)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). Sem velocidade real; a única pista é a caminhada de 10,1 km/h por pegadas (Kool 1981, só o resumo)."
-    },
-    {
-      "campos": [],
-      "texto": "area: 0,57 m², vista de lado, da medição da `tamanho-fichas-v2`; era 2,91 m² (altura × comprimento, um retângulo cheio). O Alvo segue Médio. Decisão provisória: usar o número do `calc.mjs`, que é o mesmo para as 92 fichas."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4 sem dado direto de ferida ou doença **[extrapolação]**; a razão é o corpo de sangue quente estimado e a presa de uma tonelada. Se o autor ler o dinossauro como réptil (decisão 10), cai para 3."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 2 (animal comum), provisória, sem medida de força do corpo."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua, sem dado de fome, frio, veneno ou ferida **[extrapolação]**. O levantamento a marca como candidata a 1 pelo índice de corredor, que fica na nota de pesquisa (jornada); fica em 2."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): índice de membros de corredor (CLP) de −2,2: não sustentava velocidade alta por muito tempo (Persons e Currie 2016, conferido); pé de corredor moderado, razão pé/canela 0,48 (Ostrom 1976). Caminhada de 10,1 km/h por pegadas de Irenichnites, talvez do Deinonychus (Kool 1981, só o resumo) **[extrapolação]**. Sem distância por dia."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 97 kg **[comparação]**, o MCZ 4371 pela circunferência do fêmur (Benson e colegas 2014, Dataset S1, com a correção de bípede da equação de Campione e Evans 2012), sem consenso entre os estudos (60 a 73 kg por volume, Paul; 70 a 100 kg, Brinkman 1998). Era 80 kg. Na sexta rodada a faixa, o PV e o peso erguido passaram aos 97 kg (faixa e PV não mudam); qualquer estimativa dá Faixa 3."
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: 2 **[extrapolação]**; o modo de caça é desconhecido."
-    },
-    {
-      "campos": [],
-      "texto": "compostura: desce de 2 para 1 por não ser espécie social (diretriz 1); o bando está em disputa, e se o autor ler a caça em grupo como certa, a espécie passa a social e a Compostura volta a 2."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois. As penas são por parentesco."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.largura: 0,40 m, estimada pelo Arquiteto, sem fonte; o comprimento sem a cauda (1,5 m) também é estimativa."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

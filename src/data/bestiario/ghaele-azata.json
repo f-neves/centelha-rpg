@@ -107,8 +107,7 @@
       "efeito": "soma +4 em Esquiva, Bloqueio e Defesa Mental",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Forma de globo de luz",
@@ -126,8 +125,7 @@
       "efeito": "vira o globo da Variante ou retorna à forma humanoide desta ficha; o equipamento só existe na forma humanoide",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Raio de luz",
@@ -148,8 +146,7 @@
       "efeito": "o raio fere se acertar e ofusca os olhos do atingido",
       "dano": "2d6 + Centelha, fenômeno",
       "resistencia": "corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana",
-      "justificativa": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Sem membros para bloquear",
@@ -181,8 +178,7 @@
       "efeito": "Na forma de globo, atravessa matéria. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada. R21. O tipo incorpóreo do globo fornece a resistência ao dano físico."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Detectar pensamentos e o mal",
@@ -253,8 +249,7 @@
       "efeito": "Fascina pela beleza quem pode ver sua forma e prende sua atenção",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana",
-      "justificativa": "Antes: Grau 3 de fascinacao, alcance 9 m, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada. Base Boa Impressão pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     },
     {
       "nome": "Ilusões feéricas",
@@ -273,8 +268,7 @@
       "efeito": "Cria uma imagem pelo efeito Ilusão. Quem duvida e testa pode perceber a mentira",
       "dano": "nenhum",
       "resistencia": "teste de quem duvida, pelo efeito Ilusão",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana",
-      "justificativa": "Antes: Grau 5 de fascinacao, alcance 9 m, duração uma cena, 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Escala sugerida para um efeito local e temporário. Resistência: teste de quem duvida, pelo efeito Ilusão. valor de molde, para a bancada. Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
     }
   ],
   "comoLuta": [
@@ -428,188 +422,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Ilusões feéricas"
-      ],
-      "texto": "Antes: Grau 5 de fascinacao, alcance 9 m, duração uma cena, 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Escala sugerida para um efeito local e temporário. Resistência: teste de quem duvida, pelo efeito Ilusão. valor de molde, para a bancada. Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Fascinar pela beleza"
-      ],
-      "texto": "Antes: Grau 3 de fascinacao, alcance 9 m, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada. Base Boa Impressão pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Raio de luz"
-      ],
-      "texto": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Forma de globo de luz"
-      ],
-      "texto": "Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Aura sagrada"
-      ],
-      "texto": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corpo de luz"
-      ],
-      "texto": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 4 passa a Atirador 4. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "formas.globo-de-luz"
-      ],
-      "texto": "R21. Só o globo luminoso tem corpo incorpóreo. A forma humanoide conserva o corpo publicado."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corpo de luz"
-      ],
-      "texto": "R21. O tipo incorpóreo do globo fornece a resistência ao dano físico."
-    },
-    {
-      "campos": [
-        "Raio de luz"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, o maior entre Vigor, Destreza e Percepção + Atirador -> uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Detectar pensamentos e o mal"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 25 da fonte passa a grau 2 (+4)."
-    },
-    {
-      "campos": [
-        "Fascinar pela beleza"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "Ilusões feéricas"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "globo de luz"
-      ],
-      "texto": "retirados Bloqueio 0 e Musculatura 0, pois as Habilidades são fixas entre formas; o Peso erguido não ergue exprime corpo.naoErgue e a proibição de bloquear fica na habilidade especial marcada da forma, sem alterar os níveis. a conferir."
-    },
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "principal globo -> humanoide; PV principal e globo 50 -> 40."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "principal sem massa/528,83 kg equivalentes -> 90 kg físicos; luz 0,089109 m³/90 kg equivalentes, Faixa 4 -> 3."
-    },
-    {
-      "campos": [
-        "dimensoes"
-      ],
-      "texto": "principal 1 × 1 × 1 m -> altura 1,8 m, largura 0,48 m e profundidade 0,26 m; área 0,79 -> 0,77 m². Globo 1 -> 0,5542 m; área 0,79 -> 0,2412 m²; Médio -> Pequeno."
-    },
-    {
-      "campos": [
-        "Força"
-      ],
-      "texto": "principal 0 -> 6; peso erguido nulo -> 254,99 kg; luz conserva Força 0 e não ergue."
-    },
-    {
-      "campos": [
-        "Bloqueio"
-      ],
-      "texto": "principal 0 -> 3; defesa básica 12 -> 24 (25 com espada); a luz conserva as Habilidades fixas, não ergue e não pode bloquear, pelas capacidades próprias dessa forma."
-    },
-    {
-      "campos": [
-        "Briga"
-      ],
-      "texto": "5 -> 0."
-    },
-    {
-      "campos": [
-        "Sobrevivência"
-      ],
-      "texto": "2 -> 0."
-    },
-    {
-      "campos": [
-        "Oratória"
-      ],
-      "texto": "4 -> 0; oposição Influência + Oratória da aura de beleza 11 -> 7."
-    },
-    {
-      "campos": [
-        "Ataques"
-      ],
-      "texto": "principal raio de média 13/Velocidade 7/Acerto +0 -> espada de média 15,5/Velocidade 6/Acerto +1; raio passa à Variante."
-    },
-    {
-      "campos": [
-        "Absorção luminosa"
-      ],
-      "texto": "bônus +4 -> sem regra ainda; luz 15/10/10 -> 11/6/6 de Absorção."
-    },
-    {
-      "campos": [
-        "Aura sagrada"
-      ],
-      "texto": "antes ausente; depois +4 em Esquiva, Bloqueio e Defesa Mental, ambas as formas, pela 37.1 e Holy Aura."
-    },
-    {
-      "campos": [
-        "Artes"
-      ],
-      "texto": "luz herdava cinco Artes 4/Mana 23 -> nenhuma Arte/sem Mana; humanoide conserva cinco Artes 4/Mana 23."
-    },
-    {
-      "campos": [
-        "pericias"
-      ],
-      "texto": "razões individuais em Ghaele; Empatia por Sense Motive, Ocultismo por Knowledge (planes), Sociabilidade por Diplomacy."
-    },
-    {
-      "campos": [
-        "Resistência à magia 25"
-      ],
-      "texto": "Antes: sem classificação numérica."
-    },
-    {
-      "campos": [
-        "Voo"
-      ],
-      "texto": "Antes: forma humanoide não voava."
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.atividade",

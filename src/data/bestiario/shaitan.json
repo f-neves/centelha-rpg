@@ -164,8 +164,7 @@
       "efeito": "transforma o metal em outro metal (o aço em chumbo, o ouro em cobre, o ferro em prata); a arma de aço que vira chumbo entorta no primeiro golpe",
       "dano": "nenhum",
       "resistencia": "corpo, Vigor + Resistência de quem segura o objeto, contra Dificuldade 14 (10 + Centelha 4); o objeto solto não resiste",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Transmutar pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -243,77 +242,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Metamorfose do metal"
-      ],
-      "texto": "Base Transmutar pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 2: +2 Corte, +2 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Maldição da pedra"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo selado por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação vencer o Empurrar do livro (`combate.md`) contra um alvo e levá-lo até uma parede de pedra -> vencer o Empurrar do livro (`combate.md`) contra um alvo e levá-lo até uma parede de pedra, em ação de Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Metamorfose do metal"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8, tocando o objeto -> uma ação, Velocidade 5, tocando o objeto. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "2.270 kg, a do site, com o corpo 25% mais largo: 3.411 kg/m³, entre o granito e a gema; o elemental da terra grande do lote 25 ficou no granito porque a massa do site dele dava 4.370 kg/m³ **[referência de jogo]**"
-    },
-    {
-      "campos": [
-        "largura"
-      ],
-      "texto": "25% mais largo, como o golem e os elementais da terra; sem isso, a massa do site daria 4.260 kg/m³ **[provisório]**"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "7, a do site; abaixo do rinoceronte e do elemental da terra grande, que são mais fortes pela descrição **[provisório]**"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "3, pelo corpo de pedra atarracado, robusto, como o golem de pedra e o elemental da terra grande (tamanho-decisoes-3, item 12) **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 2, pele dura que lembra pedra e metal **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**"
-    },
-    {
-      "campos": [
-        "domínio da pedra",
-        "deslizar pela rocha",
-        "maldição da pedra",
-        "metamorfose do metal"
-      ],
-      "texto": "números sugeridos pela ficha (D-197); o site não dá poderes naturais com base (\"Poderes a mapear\"), e as bases são sugestão da ficha"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

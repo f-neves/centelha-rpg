@@ -238,60 +238,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "Toque sangrento"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, a jogada de Briga para tocar -> uma ação, Velocidade 5, a jogada de Briga para tocar. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Canalizar energia negativa"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 2 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Toque do caos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, tocando o alvo -> uma ação, Velocidade 5, tocando o alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Bênçãos sombrias"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "raça parente"
-      ],
-      "texto": "Elfo (D-207); os números são os do site"
-    },
-    {
-      "campos": [
-        "aparência"
-      ],
-      "texto": "4, a do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "virtudes"
-      ],
-      "texto": "Compaixão 1 e Convicção 4; o site tinha 2 e 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "toque sangrento",
-        "canalizar energia negativa",
-        "toque do caos",
-        "bênçãos sombrias",
-        "sensibilidade à luz"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "aparencia",

@@ -146,8 +146,7 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "o do Tentáculo",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "dois alvos agarrados, um em cada tentáculo. Sem custo",
-      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+      "limiteDeUso": "dois alvos agarrados, um em cada tentáculo. Sem custo"
     },
     {
       "nome": "Esmagar",
@@ -191,8 +190,7 @@
       "efeito": "doença não pega nele. Pode carregar o agente e expor outros, a critério do Mestre",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -265,74 +263,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Tentáculos que agarram"
-      ],
-      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imune a doenças"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "1,87 m² com os tentáculos erguidos; as medidas das partes são estimadas, e sem os tentáculos ele seria Médio **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 2 pelo couro rugoso **[provisório]**"
-    },
-    {
-      "campos": [
-        "bloqueio"
-      ],
-      "texto": "1, pelos tentáculos; o site não gravava Bloqueio **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Mordida Pesada e Tentáculo Médio no lugar das \"Garras e presas\" de 2 dados e 6 Ticks **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "1; o site tinha 2. `compaixao`: 1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "febre do lixo"
-      ],
-      "texto": "Virulência 10, a da febre dos pântanos do livro; o site dizia que a febre \"drena Vigor\", e no livro a doença anda por estágios e Desgaste **[provisório]**"
-    },
-    {
-      "campos": [
-        "tentáculos que agarram",
-        "esmagar",
-        "mordida contaminada"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [],
-      "texto": "`tentáculos que agarram` (Fase 5, F5.34, D-263, 29/10/2026): o escape segue a D-081, \"o agarrado não age, não rola, e só se solta quando quem controla erra\". Antes: Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 6 + Briga 4 dele, com o Agarrão +2"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

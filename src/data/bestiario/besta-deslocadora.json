@@ -115,8 +115,7 @@
       "ataque": "Tentáculo",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "agarrar",
@@ -124,8 +123,7 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Imobilizar",
@@ -135,8 +133,7 @@
         "id": "imobilizar",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Deslocamento",
@@ -182,8 +179,7 @@
       "efeito": "Golpeia nesta ordem: tentáculo esquerdo, tentáculo direito, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "tentáculo esquerdo, tentáculo direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -256,87 +252,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Imobilizar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Tentáculos gêmeos"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "tentáculo esquerdo, tentáculo direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "230 kg, a do site, lendo os 2,7 m do site como o corpo sem a cauda (fator 0,93 sobre os 246 kg do leão escalado). Lendo como o total com a cauda, o leão escalado daria 126 kg, e o fator 1,8 não caberia; a leitura fica **[provisório]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Grande para Médio, pela área do leão escalado (1,32 m²). Em jogo: o humano perde os +3 de acerto que tinha contra ela **[provisório]**"
-    },
-    {
-      "campos": [
-        "força"
-      ],
-      "texto": "6 para 7, pelo teste de ordem com o tigre (7 com 192 kg) e o leão-das-cavernas (7 com 235 kg) **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +8 perfurante\", 6 Ticks, dano médio 15). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 15 antes; depois, tentáculo 12,5 (dois pela Rajada), mordida 12,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "deslocamento"
-      ],
-      "texto": "poder natural com a base do site (Fascinação 1) e o efeito que o site descreve (\"o primeiro ataque de cada oponente contra ela erra\"); o livro não tem regra de erro automático, e o efeito fica como regra da ficha (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 4 (D-205)"
-    },
-    {
-      "campos": [
-        "furtividade",
-        "prontidao"
-      ],
-      "texto": "1 para 3 e 1 para 2, o das habilidades e das notas do site"
-    },
-    {
-      "campos": [
-        "Resistência a ataques à distância"
-      ],
-      "texto": "Antes: Resistência à magia, sem regra ainda e sem número. A exceção da fonte (o toque à distância) não tem par exato no livro: a Arte mirada já se esquiva, e o +2 fica na Defesa Mental **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

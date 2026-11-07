@@ -104,8 +104,7 @@
         "id": "fogo",
         "nivel": 4
       },
-      "categoria": "magia",
-      "justificativa": "A ação reproduz a Arte indicada na ficha."
+      "categoria": "magia"
     },
     {
       "nome": "Raio de energia",
@@ -116,8 +115,7 @@
         "nivel": 1
       },
       "categoria": "magia",
-      "texto": "O raio ignora o bônus da cobertura parcial",
-      "justificativa": "Antes: Ignora apenas o bônus da cobertura parcial, pela trajetória do raio. valor de molde, para a bancada. A ação reproduz a Arte indicada na ficha."
+      "texto": "O raio ignora o bônus da cobertura parcial"
     },
     {
       "nome": "Labareda",
@@ -127,8 +125,7 @@
         "id": "fogo",
         "nivel": 3
       },
-      "categoria": "magia",
-      "justificativa": "A ação reproduz a Arte indicada na ficha."
+      "categoria": "magia"
     },
     {
       "nome": "Escudo de força",
@@ -138,16 +135,14 @@
         "id": "forcas",
         "nivel": 2
       },
-      "categoria": "magia",
-      "justificativa": "A ação reproduz a Arte indicada na ficha."
+      "categoria": "magia"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -217,62 +212,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Escudo de força"
-      ],
-      "texto": "A ação reproduz a Arte indicada na ficha."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Labareda"
-      ],
-      "texto": "A ação reproduz a Arte indicada na ficha."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Raio de energia"
-      ],
-      "texto": "Antes: Ignora apenas o bônus da cobertura parcial, pela trajetória do raio. valor de molde, para a bancada. A ação reproduz a Arte indicada na ficha."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Bola de fogo"
-      ],
-      "texto": "A ação reproduz a Arte indicada na ficha."
-    },
-    {
-      "campos": [
-        "artes"
-      ],
-      "texto": "Fogo 4, um acima do site, para a Bola de Fogo que o site já dava **[provisório]**"
-    },
-    {
-      "campos": [
-        "mana"
-      ],
-      "texto": "14 pela conta do livro; o site escrevia 12"
-    },
-    {
-      "campos": [
-        "raio de energia"
-      ],
-      "texto": "o \"ignora cobertura leve\" sai (perda anotada no relato)"
-    },
-    {
-      "campos": [
-        "virtudes"
-      ],
-      "texto": "Compaixão 1 e Temperança 3; o site tinha 2 e 2 **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "artes",

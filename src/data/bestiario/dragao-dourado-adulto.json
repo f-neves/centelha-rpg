@@ -171,8 +171,7 @@
       "efeito": "Imenso: de baixo, asas abertas. Enorme: de lado, pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Imenso (de baixo, asas abertas) e Enorme (de lado, pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Sopro de fogo",
@@ -193,8 +192,7 @@
       "efeito": "o fogo queima tudo no cone. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "9d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
@@ -204,8 +202,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
@@ -221,8 +218,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Presença",
@@ -262,8 +258,7 @@
       "efeito": "O gás tira temporariamente 1 ponto de Força de quem falha. Não recalcula PV nem Absorção. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "nenhum",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Mudar de forma",
@@ -281,8 +276,7 @@
       "efeito": "assume a forma humana ou de um animal pequeno (a Variante); a mente, as Artes e os números ficam os dele, com parte dos sentidos de dragão. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Firme contra o medo",
@@ -296,8 +290,7 @@
       "efeito": "Antes da presença que impõe medo, compare a Centelha. Se a da fonte for menor, a presença não o deixa Abalado. Centelha igual não basta. Golpe social ou corporal ainda pode deixá-lo Abalado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -426,140 +419,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro de fogo"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Mudar de forma"
-      ],
-      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro debilitante"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.garras em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro de fogo"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 4 passa a Atirador 4. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Imenso (de baixo, asas abertas) e Enorme (de lado, pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Firme contra o medo"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Sopro de fogo"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "Sopro debilitante"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. R18 e D-197. Sugestão de 1 ponto de Força, no lugar de Desgaste 1, pelo enfraquecimento corporal do gás. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "envergadura"
-      ],
-      "texto": "21,0 m pela conta; o site dá 15 m **[conta]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "4; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro debilitante"
-      ],
-      "texto": "Desgaste 1 no lugar do \"Enfraquecido\" do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 9 **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro"
-      ],
-      "texto": "9d6 + Centelha, cone de 12 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "multiataque"
-      ],
-      "texto": "sem regra ainda; garras pela Rajada"
-    },
-    {
-      "campos": [],
-      "texto": "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [],
-      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; os sopros, as garras, o Multiataque, a Presença e o Voo dominante só na forma verdadeira; o Mudar de forma, a Firme contra o medo e os Feitiços em todas (a mente e as Artes ficam as dele); a \"parte dos sentidos\" do site lida como a visão no escuro e a sabedoria dracônica em todas, e o faro só na forma verdadeira **[provisório]**; o \"como luta\" em duas linhas (o Voo dominante já era só da verdadeira); a Camuflagem e o fôlego da outra forma na linha dela em Variantes. As Artes não mudam, e as Aptidões ficam as da forma verdadeira"
-    },
-    {
-      "campos": [],
-      "texto": "`formas.corpo` (Fase 5, F5.2-b, D-265, 29/10/2026): o disfarce, que imitava uma forma de tamanho variável, ganha a forma fixa e típica, a humana: Médio, 1,78 m de altura, 0,48 m de largura, Área 0,64 m² (a do humano de base). O Mestre pode escolher outra forma. Antes, sem Área própria e com \"Tamanho: o da forma assumida\"."
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Multiataque · sem regra ainda: garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada. **[formas: forma verdadeira]**"
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Sopro debilitante · poder natural (base Fascinação 3) · regra da ficha: PROVISÓRIO. Ativação: uma ação, Velocidade 7, no lugar do Sopro de fogo (o mesmo limite de uso). Duração: até o fim da próxima ação do alvo. Alcance: 12 m à frente. Área: cone de 12 m. Efeito: gás sem dano que enfraquece: o alvo fica com Desgaste 1 (`condicoes.json`); o \"Enfraquecido\" do site não é condição do livro, e o Desgaste 1 é o mais perto. Dano: nenhum. Resistência: sair da área pela regra do livro (Combate, \"Contra área, a saída é sair\"); para evitar o gás sem dano, rola Destreza + Esquiva contra o dobro de (5 + 5 × os metros que faltam para ficar fora). Livre, sai no próprio Deslocamento ou Arranque; fora da vez, paga 1 Tick por metro, com pelo menos 1 metro e a penalidade da escada no teste. Limite de uso: dividido com o Sopro de fogo, uma vez a cada 24 Ticks. **[formas: forma verdadeira]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "sentidos.sabedoria dracônica",

@@ -121,16 +121,14 @@
       "efeito": "Ferrão de gigante. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "espinhos das patas de trás",
@@ -144,8 +142,7 @@
       "efeito": "+4 na Defesa contra ataques que vêm por trás e alcançam as patas espinhosas",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Antes: Aplicação à capacidade espinhos das patas de trás. +4 na Defesa contra ataques que vêm por trás e alcançam as patas espinhosas. valor de molde, para a bancada. Os espinhos fixos protegem as patas por contato, sem gastar secreção."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],
@@ -215,106 +212,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.espinhos das patas de trás"
-      ],
-      "texto": "Antes: Aplicação à capacidade espinhos das patas de trás. +4 na Defesa contra ataques que vêm por trás e alcançam as patas espinhosas. valor de molde, para a bancada. Os espinhos fixos protegem as patas por contato, sem gastar secreção."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ferrão de gigante"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "espinhos das patas de trás"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [],
-      "texto": "gigante: escalada da S. gigantea de 20 cm ao 1,8 m do site por k = 9 e k³ na massa; tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3). Era k = 16 (3,20 m) na v3. O site não diz a medida do 1,8 m; lido como o comprimento do corpo, como a base"
-    },
-    {
-      "campos": [],
-      "texto": "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; o 1,8 m do site passa no critério (a Scolopendra de base é Minúscula, cerca de 0,005 m² de cima, e a gigante é Pequena, duas categorias acima, o porte de cachorro que o item 7 admite) e fica; a área de 0,40 m² está 11% abaixo do corte do Médio e mais de três vezes o corte do Miúdo (0,12). O site e o d20 a dão como Média; se o Arquiteto quiser o Médio, o comprimento iria a cerca de 2,0 m, para ficar 10% acima do corte (1,8 × √(0,495 ÷ 0,4018) = 2,0 m; 0,024 × 10³ = 24 kg), e o Vigor ficaria em 4, porque não sai do porte (D-174; oitava rodada)"
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Pequeno pela área de cima (0,40 m², a da v2 × (1,8 ÷ 3,20)²), 11% abaixo do corte do Médio, dentro do erro do método; se a área subir, volta a Médio (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "massa: 17,5 kg, o exemplar de 20 cm e 24 g levado ao 1,8 m do site (era 98 kg com os 3,20 m da v3); os 24 g são conta pelo cubo, a partir da fêmea de 145 mm e 9 a 9,5 g (Molinari et al. 2005); massa de adulto grande não achada"
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura (12 mm) estimada sem fonte; largura (2 cm) com só a referência fraca do dimensions.com"
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: artrópode, provisória (D-175)"
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 126,73 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga"
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); 26 km/h, sem velocidade real (D-170)"
-    },
-    {
-      "campos": [],
-      "texto": "forca: 4, reanalisada na sétima rodada na referência dos 17,5 kg (3,97), pelo agarre documentado; era 5, escolhida com 98 kg (D-158, D-174); o feito do morcego de quase o dobro da massa não escala"
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 pela régua; o dado é de parada e de agarrar, e não de jejum, frio ou ferida (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "escalada: a Especialidade Atletismo (escalada) 2 de hoje virou Escalada 2 (secundária) mais Escalada (de cabeça para baixo) +2 natural, sem medida de aderência; decisão provisória (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: (no teto da caverna) 1 nova, pela caça de Molinari et al. 2005; o levantamento a dava como candidata a Furtividade 3, que fica para o autor (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "compostura: 1 por não ser espécie social (diretriz 1); a espera de horas fica na Furtividade"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 (faixa 1 a 2), reanalisado na sétima rodada com os 17,5 kg (era 2, posto com 98 kg); o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "veneno: sem id no catálogo; o efeito real está na pesquisa, e quase todo é de outra espécie ou por gênero (D-112)"
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4, revisto na oitava rodada pelo corpo e pela massa, e fica: +1 sobre o animal de base (Scolopendra gigantea, Vigor 3, presumido), o mínimo da D-176; placas dorsais na Couraça, juntas moles e traqueia, ao lado da aranha, do louva-a-deus e da vespa gigantes (4) e do carcaju (11,75 kg, 4). Era 5 na v3 (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

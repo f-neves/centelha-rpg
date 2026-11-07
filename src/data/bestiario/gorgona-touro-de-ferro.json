@@ -129,8 +129,7 @@
       "classe": "livro",
       "ataque": "Investida (marrada)",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "investida"
     },
     {
       "nome": "derrubar",
@@ -138,8 +137,7 @@
       "classe": "livro",
       "ataque": "Investida (marrada)",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "Sopro petrificante",
@@ -154,8 +152,7 @@
       "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
       "dano": "nenhum adicional",
       "resistencia": "Saída de área pelo livro. Quem ficar exposto testa Vigor + Resistência contra Dificuldade 20",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "corpo metálico",
@@ -169,8 +166,7 @@
       "efeito": "veneno e doença não pegam no corpo de metal. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -260,122 +256,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro petrificante"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "comoLuta.Atropelar"
-      ],
-      "texto": "O dano do trajeto vem da regra geral. O golpe próprio serve contra um alvo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro petrificante"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.investida de chifre"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.corpo metálico"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Sopro petrificante"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 7 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. P2. Dificuldade 20 sugerida porque o sopro de ameaça 5 expõe vários alvos próximos. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "1,8 t, a do site: o auroque escalado pela cernelha (1.077 kg) mais as placas de ferro (707 kg) **[conta]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "na zona de transição, ficou na faixa de baixo (62, o do site), porque o peso a mais é ferro; subindo seria 75 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +11 perfurante\", 6 Ticks, dano médio 18). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 18 antes; depois, chifrada 14,5, investida 26,0 (só na carga corrida) **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "9, e a resistência a Corte e Perfuração pela linha Elementos, como a pele do cão yeth. Quando a Couraça tiver regra, a resistência pode ficar dobrada com ela **[provisório]**"
-    },
-    {
-      "campos": [
-        "absorcao"
-      ],
-      "texto": "Corte e Perfuração 9 para 3, só a Centelha; o Impacto fica 11"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 3 (D-205)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "2 para 4, a \"guardiã atenta\" do site"
-    },
-    {
-      "campos": [
-        "artes"
-      ],
-      "texto": "a Arte Matéria 3 do site sai; nada além do sopro a usava. Vai à lista de perdas do relato"
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: A \"investida de chifre\" do site: a carga corrida, com o corpo inteiro (× 2), como a do auroque. Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 26 para 18; Investida 26, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    },
-    {
-      "campos": [],
-      "texto": "`investida`, P20-b: sai o dado adicional; soma somente mais uma Força. Média da Investida citada no texto: 29,5 para 26,0. Golpe comum e números da tabela de Ataques preservados."
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.social",

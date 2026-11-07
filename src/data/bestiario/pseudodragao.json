@@ -150,8 +150,7 @@
       "efeito": "Miúdo: de lado, pousado, asas fechadas. Médio: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Miúdo (de lado, pousado, asas fechadas) e Médio (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "garras em sequência",
@@ -159,8 +158,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "Ferrão sonífero",
@@ -175,8 +173,7 @@
       "efeito": "Cada pulso soma de 0 a 3 à sonolência, pela tabela de veneno. Quando a sonolência alcança o Vigor, a vítima fica Dormindo por 10 minutos. Qualquer dano a acorda. Um aliado também pode acordá-la com uma ação de Velocidade 5",
       "dano": "nenhum além do Ferrão",
       "resistencia": "corpo, Vigor + Resistência pela regra do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. R27. 10 minutos de sono é a duração sugerida para o efeito descrito em minutos. O limiar é o Vigor da vítima."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Telepatia",
@@ -218,8 +215,7 @@
       "efeito": "Ignora efeitos que paralisam ou fazem dormir. A imunidade não se estende aos demais efeitos da fonte",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -300,99 +296,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.garras em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "sentidos.sentido cego"
-      ],
-      "texto": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Miúdo (de lado, pousado, asas fechadas) e Médio (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ferrão sonífero"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. R27. 10 minutos de sono é a duração sugerida para o efeito descrito em minutos. O limiar é o Vigor da vítima."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imune a paralisia e sono"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Ferrão sonífero"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 12 da fonte passa a grau 1 (+2)."
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Médio de asas abertas, 3,8% acima do corte, pelo corpo, como a águia-real **[provisório]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "na zona de transição, desce **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 1 **[provisório]**"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "o do sono do drow **[provisório]**"
-    },
-    {
-      "campos": [
-        "telepatia",
-        "ferrão sonífero"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "Principal Médio para Miúdo; as duas áreas mantidas, mudando a postura principal (2e-1). **[provisório]**"
-    },
-    {
-      "campos": [
-        "Resistência à magia 12"
-      ],
-      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

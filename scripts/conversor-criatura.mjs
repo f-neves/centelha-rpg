@@ -846,9 +846,7 @@ function converter(texto, { site = null }, schema) {
   // as Notas de observação: "- `nome`, `nome`: texto", com a marca ou "a conferir", no campo que o nome diz
   const NOTA = { altura: 'corpo.altura', largura: 'corpo.largura', comprimento: 'corpo.comprimento', envergadura: 'corpo.envergadura',
     massa: corpo.semMassa ? 'corpo.volume' : 'corpo.massa', volume: 'corpo.volume', area: 'corpo.area', aparencia: 'aparencia', couraca: 'couraca', vontade: 'vontade' };
-  // F1 (D-357): toda nota chega ao JSON (`notas`), na ordem da ficha, com os nomes que ela cita e o texto como está;
-  // o card não a mostra (o layout decide depois). A que sai do molde "- `nome`: texto" entra com `campos` vazio.
-  const notas = [];
+  // As Notas de observação não vão ao JSON (D-219, D-222, D-224; F1a do autor, 06/11/2026): só a revisao as lê.
   // o nome com o prefixo do campo ("`ataques.Sopro de frio`", "`habilidadesEspeciais.Nevasca`"): até 06/11/2026 ele não
   // casava com campo nenhum e, sem marca de dúvida, a nota era pulada calada. Agora o prefixo diz onde procurar.
   const LISTAS_COM_NOME = new Set(['ataques', 'habilidadesEspeciais', 'comoLuta', 'sentidos']);
@@ -862,18 +860,14 @@ function converter(texto, { site = null }, schema) {
     if (CAMPOS_COM_CHAVE.has(pre)) { const k = [resto, slug(resto), slug(resto).replace(/-([a-z])/g, (_, x) => x.toUpperCase())].find((x) => aponta(c, `${pre}.${x}`)); return { pre, campo: k ? `${pre}.${k}` : null }; }
     return { pre, campo: null };
   };
-  const justPoder = new Map();
   for (const l of (S['Notas de observação'] || []).filter((x) => x.startsWith('- '))) {
     const marcada = MARCA.test(l) || /a conferir/.test(l);
     const m = l.match(/^- ((?:`[^`]+`(?:,\s*|\s+e\s+)?)+):\s*(.*)$/);
-    notas.push(m ? { campos: [...m[1].matchAll(/`([^`]+)`/g)].map((x) => x[1]), texto: m[2].trim() } : { campos: [], texto: l.slice(2).trim() });
     if (!m) continue;
     for (const nm of [...m[1].matchAll(/`([^`]+)`/g)].map((x) => x[1])) {
       const pf = comPrefixo(nm);
       if (pf) {
         if (!pf.campo) { avisos.push('Notas de observação: "' + nm + '" tem o prefixo de campo "' + pf.pre + '", e o resto não aponta para nada; a nota não entra na revisao'); continue; }
-        // a justificativa do poder é a nota que o nomeia com o prefixo (opção a da pergunta de 06/11/2026)
-        if (pf.pre === 'habilidadesEspeciais') { const nome = pf.campo.slice(pf.pre.length + 1); justPoder.set(nome, [justPoder.get(nome), semMarcas(m[2]).replace(/\*\*/g, '').trim()].filter(Boolean).join(' ')); }
         if (pf.pre === 'ataques' || marcada) revisao.push({ campo: pf.campo, motivo: semMarcas(m[2]).replace(/\*\*/g, '') });
         continue;
       }
@@ -892,8 +886,6 @@ function converter(texto, { site = null }, schema) {
       else avisos.push('Notas de observação: "' + nm + '" não nomeia um campo do formato; a nota não entra na revisao');
     }
   }
-  for (const h of c.habilidadesEspeciais) if (justPoder.get(h.nome)) h.justificativa = justPoder.get(h.nome);
-  if (notas.length) c.notas = notas;
   // uma entrada por campo; duas dúvidas no mesmo campo vão no mesmo motivo
   const rev = new Map();
   for (const x of revisao) rev.set(x.campo, rev.has(x.campo) ? `${rev.get(x.campo)}; ${x.motivo}` : x.motivo);

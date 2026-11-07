@@ -142,8 +142,7 @@
       "efeito": "Enorme: de lado, esticado ou com a frente erguida. Grande: enrolado. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Enorme (de lado, esticado ou com a frente erguida) e Grande (enrolado). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Peçonha de linnorm dos penhascos",
@@ -158,8 +157,7 @@
       "efeito": "A peçonha drena apenas o pool de Vigor. A imunidade ao elemento não protege contra a peçonha. Se o Vigor chegar a 0, a vítima morre",
       "dano": "pool de Vigor do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 12 horas. Cada uso gasta 1 dose",
-      "justificativa": "Antes: R1. Estoque de 2 doses e produção de 1 dose em 12 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. R29. Gelo, ácido ou fogo descrevem a sensação. O pool publicado de 4 de Vigor é a única perda pela peçonha. A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 12 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "Sopro de magma",
@@ -178,8 +176,7 @@
       "efeito": "a lava queima tudo na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "9d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "rastro de lava",
@@ -193,8 +190,7 @@
       "efeito": "A lava fere quem toca o rastro ainda quente",
       "dano": "1d6 de fogo",
       "resistencia": "saída de área pelo livro",
-      "limiteDeUso": "uma exposição por alvo por dose de sopro, sem custo adicional",
-      "justificativa": "1d6 de fogo uma única vez por exposição ao resíduo da dose, pois a ficha descreve o agente que permanece. valor de molde, para a bancada."
+      "limiteDeUso": "uma exposição por alvo por dose de sopro, sem custo adicional"
     },
     {
       "nome": "garras em sequência",
@@ -202,8 +198,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "Resistência à magia",
@@ -231,16 +226,14 @@
       "efeito": "Nada de fora o deixa Agarrado, Preso ou Imobilizado. Paredes barram a passagem. Paralisado e Atordoado continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Regeneração 10",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: ferro frio. valor de molde, para a bancada."
+      "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "Maldição da morte",
@@ -254,8 +247,7 @@
       "efeito": "quem o mata passa a arder por dentro e fica vulnerável ao fogo para sempre. Se falhar, a maldição só sai com Proteção 5 ou a cura apropriada",
       "dano": "nenhum",
       "resistencia": "Vigor + Resistência contra Dificuldade 15",
-      "limiteDeUso": "uma vez, na morte, sem custo",
-      "justificativa": "Dificuldade fixa 15, pela ameaça e pelo alcance duradouro da maldição do linnorm. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez, na morte, sem custo"
     },
     {
       "nome": "Imune a veneno, sono, paralisia e maldições comuns",
@@ -269,8 +261,7 @@
       "efeito": "Ignora veneno, sono, paralisia e efeitos que instalam maldição comum. Recebe dano comum e morre pela perda de Vida como de costume. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -356,164 +347,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro de magma"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "Antes: pelo padrão do \"Ferrão de gigante\" **[provisório]** O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Peçonha de linnorm dos penhascos"
-      ],
-      "texto": "Antes: R1. Estoque de 2 doses e produção de 1 dose em 12 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. R29. Gelo, ácido ou fogo descrevem a sensação. O pool publicado de 4 de Vigor é a única perda pela peçonha. A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.garras em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro de magma"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "sentidos.visão verdadeira"
-      ],
-      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Maldição da morte"
-      ],
-      "texto": "Dificuldade fixa 15, pela ameaça e pelo alcance duradouro da maldição do linnorm. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 10"
-      ],
-      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: ferro frio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.rastro de lava"
-      ],
-      "texto": "1d6 de fogo uma única vez por exposição ao resíduo da dose, pois a ficha descreve o agente que permanece. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 4 passa a Atirador 4. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Enorme (de lado, esticado ou com a frente erguida) e Grande (enrolado). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Liberdade de movimento"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imune a veneno, sono, paralisia e maldições comuns"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Sopro de magma"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 25 da fonte passa a grau 2 (+4)."
-    },
-    {
-      "campos": [
-        "Maldição da morte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "11, pelo teste de ordem; o site tinha 13 (o mesmo método do neothelid, pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Enorme esticado, Grande enrolado, pela área do corpo de serpente; o site dizia Imenso **[provisório]**"
-    },
-    {
-      "campos": [
-        "asas"
-      ],
-      "texto": "nenhuma, pela fonte **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 9 **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro"
-      ],
-      "texto": "9d6 + Centelha, linha de 18 m, pela escada de Centelha do lote 23 (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "Regeneração 10"
-      ],
-      "texto": "Antes: sem regra e sem nível. N 10 pela referência Crag Linnorm (Archives of Nethys). **[provisório]**"
-    },
-    {
-      "campos": [
-        "Resistência à magia 25"
-      ],
-      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Veneno: o da mordida, \"uma toxina ígnea que continua a arder por dentro da vítima, causando dano contínuo de fogo e corroendo seu Vigor até duas curas seguidas\" (site)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Veneno no jogo (provisório): Peçonha de linnorm dos penhascos · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Vigor) · Desgaste 1 · pela Mordida. Os números do \"Ferrão de gigante\" dos moldes, com o Vigor do site; o fogo que arde por dentro fica descrito, sem número (sem regra ainda)."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

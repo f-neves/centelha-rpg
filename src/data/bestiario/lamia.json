@@ -126,8 +126,7 @@
       "efeito": "Cada toque que pega tira 1 ponto temporário de Percepção e deixa o alvo Abalado (−2 nas jogadas, até Recompor ou até o fim da cena). A perda de Percepção não recalcula PV nem Absorção. Se a Percepção chegar a 0, a vítima fica Dominada enquanto estiver com Percepção 0. A lâmia pode ordenar em voz alta que ela a siga, proteja ou ataque um alvo indicado. A vítima precisa ouvir e compreender a ordem e pode recusá-la pagando 1 + Margem de Força de Vontade, até 4 por ordem",
       "dano": "nenhum além do golpe",
       "resistencia": "a jogada do toque da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 6. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ilusões",
@@ -146,8 +145,7 @@
       "efeito": "uma imagem falsa (um oásis, uma mulher bela, um caminho seguro) para atrair ou emboscar; quem desconfia e testa vê através",
       "dano": "nenhum",
       "resistencia": "Influência + Manha da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma ilusão por vez",
-      "justificativa": "Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma ilusão por vez"
     }
   ],
   "comoLuta": [
@@ -228,69 +226,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Ilusões"
-      ],
-      "texto": "Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Toque drenante"
-      ],
-      "texto": "Antes: Velocidade 6. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Toque drenante"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R18. A Sabedoria drenada equivale à Percepção nesta ficha. Perda proposta de 1 de Percepção por toque. R3. Ativação uma ação, Velocidade 5, a jogada de Briga para tocar, ou as Garras que ferem -> uma ação, Velocidade 6, a jogada de Briga para tocar, ou as Garras que ferem Pela referência corporal ou de deslocamento do poder. R16. A servidão termina quando a Percepção volta acima de 0. Ordens audíveis de escolta, proteção ou ataque dão limites ao controle. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Ilusões"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma ilusão por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Médio pela área de lado; o site tinha Grande **[conta]**"
-    },
-    {
-      "campos": [
-        "toque drenante"
-      ],
-      "texto": "a Sabedoria do site vira Percepção e Integridade **[provisório]**"
-    },
-    {
-      "campos": [
-        "sedução enganosa"
-      ],
-      "texto": "Manha +2, o limite do livro; o site dava +3d6 (perda anotada no relato)"
-    },
-    {
-      "campos": [
-        "compaixão"
-      ],
-      "texto": "1; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "toque drenante",
-        "ilusões"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

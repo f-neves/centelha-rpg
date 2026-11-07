@@ -126,24 +126,21 @@
       "classe": "livro",
       "ataque": "Investida",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte declara \"investida que derruba\" e o golpe \"Investida\"."
+      "regra": "investida"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "empurrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "empurrar"
     },
     {
       "nome": "arremessar com o chifre",
@@ -151,8 +148,7 @@
       "classe": "livro",
       "ataque": "Chifrada",
       "categoria": "inato",
-      "regra": "empurrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "empurrar"
     },
     {
       "nome": "investida que derruba",
@@ -160,16 +156,14 @@
       "classe": "livro",
       "ataque": "Investida",
       "categoria": "inato",
-      "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
-      "justificativa": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada"
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar",
-      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte declara \"investida que derruba\" e o golpe \"Investida\"."
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [
@@ -244,138 +238,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Investida"
-      ],
-      "texto": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte declara \"investida que derruba\" e o golpe \"Investida\"."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Atropelar"
-      ],
-      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte declara \"investida que derruba\" e o golpe \"Investida\"."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.investida que derruba"
-      ],
-      "texto": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arremessar com o chifre"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.empurrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 4: +4 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 2.250 kg (em vigor na Etapa 2, 20/10/2026); antes: 2.050 kg, a média simples do macho (2.300) e da fêmea (1.800) do Zoológico de San Diego, a mesma fonte; era o macho de 2.300 kg (sexta rodada, item 4)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 837 kg pela conta das decisões 14 e 16 com a massa de 2.050 kg, provisório. Com a Força 8 e a Musculatura 3 do boi e 2,6 vezes a massa, o rinoceronte ergue menos que o boi (997 kg) e pouco mais que o cavalo (698 kg): a Força de referência da massa de 2,05 t (9,84) passa da Força 8, e o expoente fica negativo. A ordem entre o rinoceronte e os bois sai invertida; fica como dado para a frente do peso erguido, sem mexer na Força, que é âncora do autor (D-162, D-169, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 8, a âncora do autor; a ficha de hoje tinha 12 pelo encaixe no buraco entre 11 e 15 da escala antiga (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 4 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 8 (em vigor na Etapa 2, 20/10/2026); antes: 5, abaixo do elefante (6); a vida de até 50 anos continua só pela Wikipédia e pela ADW (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "influencia: 1 pela diretriz 1 (não é espécie social); a ficha de hoje tinha 2 pela investida que faz gente recuar. A fêmea com filhote perdeu a Influência 2 da variante pela mesma razão (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 0 pela vida solitária do macho (ADW); provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 3 pela corcova e pela luta de empurrar, sem feito medido (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2; falta a distância por dia, o tempo sem água e o calor (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidade natural Prontidão (faro) +2: era Percepção (faro) +2; só o recorte mudou de lugar (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "especie: o branco, e não o negro, para a ficha cair onde a nota do lote a põe (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "carga: estrutura 0,1 (sem estrutura de carga), escolha da ficha de hoje; com 0,2 a Leve seria 307,5 kg. Provisória (D-122, D-169, D-172, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). A corrida dá 28 km/h contra 40 km/h de arrancada (ADW), −30%: a anatomia do quadrúpede pesado (1,0) é a do elefante, que não galopa (D-170)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.largura: 0,96 m, o 1,0 m estimado para o macho escalado pelo cubo da massa; não decide o Alvo (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura e comprimentos eram do macho e foram escalados pelo cubo da massa, (2.050 ÷ 2.300)^(1/3) = 0,962; a altura (1,73 m) e o corpo (3,66 m) caem entre o macho e a fêmea da Wikipédia."
-    },
-    {
-      "campos": [],
-      "texto": "ataque Investida: Perfuração, e não Impacto como o boi, porque a carga vem com o chifre à frente; leitura da ficha de hoje, mantida (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: Era 2d6 + 24, média 31. A carga inteira atrás do chifre (× 2). Perfuração, e não Impacto como a marrada do boi, porque o rinoceronte leva o chifre à frente. O melhor ataque. Opção (D-097)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 23 para 15; Investida 23, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: Prontidão (faro) +2, natural; \"apurado\" (ADW)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: \"apurada\" (ADW). Texto."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - visão: míope (ADW). Texto: o Mestre pode dificultar notar o que está parado a distância."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: dois chifres de queratina; pele de até 45 mm, mais grossa na corcova da nuca (até 49 mm); boca larga e chata de pastador (Plochocki 2017; Wikipédia)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

@@ -119,8 +119,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Fedor nauseante",
@@ -157,8 +156,7 @@
       "efeito": "um terror súbito sem motivo; quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao susto até o fim da cena",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Pavor pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "telepatia",
@@ -179,8 +177,7 @@
       "efeito": "o veneno não pega no corpo de demônio. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -277,80 +274,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Susto"
-      ],
-      "texto": "Base Pavor pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Fedor nauseante"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R13 e D-197. Dificuldade fixa sugerida 12 (10 + Centelha 2) para graduar a potência deste fedor. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "Susto"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "vontade"
-      ],
-      "texto": "4, e não 7; `bravura` 3, e não 5; `conviccao` 2, e não 5: pelo texto do site (\"covardes quando sozinhos\", \"sem lealdade nem hierarquia própria, só medo\") **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e mordida Leves, o gesto rápido de bicho pequeno, como os 5 Ticks do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "artes"
-      ],
-      "texto": "o site tinha Vento 2 (o fedor) e Fascinação 1 (o susto); viraram as bases dos dois poderes naturais (C-037)"
-    },
-    {
-      "campos": [
-        "fedor"
-      ],
-      "texto": "o \"Enjoado\" do site não é condição do livro; fica Abalado, como no ghast do lote 30 **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "1 **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "vontade",

@@ -148,8 +148,7 @@
       "efeito": "Grande: silhueta vista de lado, asas fechadas, no chão. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (silhueta vista de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Estoque de espinhos",
@@ -178,8 +177,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum. Em vez da rotina corporal, pode lançar primeiro, segundo e terceiro espinho da cauda, na ordem. Cada disparo gasta uma dose e recebe as mesmas penalidades",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada. Teto de 3 espinhos e uma dose por disparo, pois a saraivada usa projéteis separados. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -259,86 +257,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Espinhos de cauda"
-      ],
-      "texto": "R36: projétil dirigido a um alvo, com o maior entre Vigor, Destreza e Percepção + Atirador. Antes: o bônus de Centelha ainda citava Disparo. Corrigida a referência para Atirador."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada. Teto de 3 espinhos e uma dose por disparo, pois a saraivada usa projéteis separados. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (silhueta vista de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "Estoque de espinhos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Os 24 espinhos por dia publicados passam a um estoque de 24 com produção sugerida de 1 por hora, mantendo o total diário. valor de molde, para a bancada (Guarda 24 espinhos. Produz 1 espinho por hora)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "380 kg para 320 kg, pela regra do lote: o leão com os 3,5 m do site dá 275 kg, e o fator 1,165 das asas e da cauda leva a 320 kg. A Faixa (4), o PV (54) e o Tamanho (Grande) não mudam **[conta]**"
-    },
-    {
-      "campos": [
-        "segundo tamanho"
-      ],
-      "texto": "Enorme em voo, de asas abertas, com a envergadura estimada em duas vezes o corpo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 8,5, mordida 10,5; os espinhos de cauda ficam 10,5 (eram 10,5, sem mudança) **[provisório]**"
-    },
-    {
-      "campos": [
-        "estoque de espinhos"
-      ],
-      "texto": "números da ficha (D-197) com o estoque do site (24 espinhos, \"6 rajadas de 4\"); o alcance de 30 m é da ficha **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 3 (D-205)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "1 para 2, o da \"perseguição implacável\" e das notas do site"
-    },
-    {
-      "campos": [
-        "centelha"
-      ],
-      "texto": "0, a do site; o bloco guarda a nota \"Espinhos de cauda: Centelha 1\", mas vale o campo (decisoes-autor §17)"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.envergadura",

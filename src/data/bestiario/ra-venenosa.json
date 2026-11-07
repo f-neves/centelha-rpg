@@ -85,8 +85,7 @@
       "efeito": "Batracotoxina. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [],
@@ -145,110 +144,5 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "Antes: veneno sem id no catálogo (batracotoxina), pela pele, via ingerido e toque; a regra do toque do catálogo (−4 na potência) serve quando houver id (D-112) O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Batracotoxina"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "anatomia"
-      ],
-      "texto": "anfíbio saltador, anatomia provisória (D-175), não calibrada em animal medido"
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "Minúsculo no piso da escala (massa e área abaixo do começo do Minúsculo); igual ao de hoje (decisões 7 e 25)"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): sem arma de ataque, não fere nem segura um humano pela força; o perigo é o veneno da pele"
-    },
-    {
-      "campos": [],
-      "texto": "fonte: os 30 g da Wikipédia saíram (sem pesagem; procurado na ADW, na AmphibiaWeb, que não abriu, no Catalogue of American Amphibians and Reptiles, que não abriu, e na National Geographic Brasil). A massa nova é 7,87 g pelo cubo do comprimento típico sobre o cururu e a rã-golias **[comparação]**, por decisão do autor (\"uns 10 g, com a conta\"); não muda o Alvo (piso da escala), a Faixa 1 nem o PV (D-174)"
-    },
-    {
-      "campos": [
-        "dimensoes.comprimento"
-      ],
-      "texto": "0,04215 m, a média simples de machos e fêmeas (Myers e colegas 1978); era 0,047 pela ADW (13/10) e 0,06 pela Wikipédia; o Alvo não muda"
-    },
-    {
-      "campos": [
-        "dimensoes.altura",
-        "dimensoes.largura"
-      ],
-      "texto": "0,0224 m, estimadas sem fonte para 47 mm (0,025) e escaladas a 42,15 mm (D-147, D-174)"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "2, sem dado de frio, fome, ferida ou doença; o meio estreito (26 °C, 80 a 90% de umidade) é o que se sabe (D-174)"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "2, animal comum, sem feito de força nem salto medido; provisória (decisão 12, D-174). Era sem linha"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "2, o normal da espécie no próprio meio (diretriz 2). O levantamento a apontava como candidata a 1 pelo meio estreito; fica 2 porque a régua mede o quanto aguenta no meio, e o fora do meio é do Mestre (D-087, D-174)"
-    },
-    {
-      "campos": [
-        "especialidadesNaturais"
-      ],
-      "texto": "nenhuma; a tolerância da rã à própria batracotoxina não foi achada na pesquisa. Se a fonte aparecer, é a candidata a Resistência (batracotoxina) natural (decisão 3 da quarta rodada, D-174)"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "1 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela decisão 21 (5 + Vigor); a outra proposta do autor dá 11; era 17 (D-132, D-169)"
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "0,00 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,0029 kg pela decisão 14, provisório: é o valor da curva no piso da Força de referência 0 com 7,87 g, sem feito que o confirme; era 0,04 kg com 30 g, e cerca de 1 g antes (D-162)"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "`massa` (sexta rodada): 0,009 kg (em vigor na Etapa 2, 20/10/2026); antes: 7,87 g **[comparação]**, a média das contas pelo cubo de 42,15 mm sobre o cururu (7,43 g) e a rã-golias (8,32 g); a conta pelo parente da mesma família (D. tinctorius, 4,26 g) não foi usada porque os 3 g da ADW não se confirmaram como pesagem. Era 30 g da Wikipédia, sem pesagem achada. Falta abrir a descrição de 1978 (Bull. AMNH 161) ou achar uma pesagem de cativeiro"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada pela decisão 23, com o 0,4 do Miúdo no Minúsculo (D-170): 9 km/h, quase o dobro da jararaca (5 km/h); parece alta para uma rã de 4,2 cm, e não há velocidade real (D-170, D-175)"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "nenhum; a mordida venenosa da ficha atual sai, porque o veneno é da pele (D-174)"
-    }
-  ],
   "revisao": []
 }

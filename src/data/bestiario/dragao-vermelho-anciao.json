@@ -187,8 +187,7 @@
       "efeito": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Imenso (de lado, pousado, asas fechadas) e Colossal (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Sopro de fogo",
@@ -207,8 +206,7 @@
       "efeito": "o fogo queima tudo no cone. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "12d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "garras em sequência",
@@ -216,8 +214,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "cauda em sequência",
@@ -225,8 +222,7 @@
       "classe": "livro",
       "ataque": "Cauda",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "Multiataque",
@@ -240,8 +236,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Presença",
@@ -287,8 +282,7 @@
       "efeito": "Compare a Centelha antes de resolver medo ou domínio imposto por outra criatura. Ignora o efeito apenas se a Centelha da fonte for menor. Abalado de golpe social ou corporal continua valendo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Feitiço sem gastar a ação",
@@ -302,8 +296,7 @@
       "efeito": "Reduz a duração da conjuração em 2 Ticks, até o mínimo de 1 Tick",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por cena, sem custo",
-      "justificativa": "Antecipação de 2 Ticks de uma conjuração por cena até o mínimo de 1 Tick, aproveitando o comando ou a rapidez da magia. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por cena, sem custo"
     },
     {
       "nome": "paralisia da presença",
@@ -415,140 +408,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro de fogo"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.cauda em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.garras em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Feitiço sem gastar a ação"
-      ],
-      "texto": "Antecipação de 2 Ticks de uma conjuração por cena até o mínimo de 1 Tick, aproveitando o comando ou a rapidez da magia. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro de fogo"
-      ],
-      "texto": "Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 5 passa a Atirador 5. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 11: +11 Corte, +11 Perfuração e +6 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Imenso (de lado, pousado, asas fechadas) e Colossal (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Autoridade dracônica"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Sopro de fogo"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 30 da fonte passa a grau 3 (+6)."
-    },
-    {
-      "campos": [
-        "Feitiço sem gastar a ação"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "paralisia da presença"
-      ],
-      "texto": "**[provisório]** R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 11 **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro"
-      ],
-      "texto": "12d6 + Centelha, cone de 15 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "multiataque"
-      ],
-      "texto": "sem regra ainda; garras e cauda pela Rajada"
-    },
-    {
-      "campos": [],
-      "texto": "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "paralisia da presença"
-      ],
-      "texto": "Antes: falha por 3 deixava Imobilizado até a próxima ação."
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "Antes: Tamanho principal Colossal."
-    },
-    {
-      "campos": [
-        "Resistência à magia 30"
-      ],
-      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Multiataque · sem regra ainda: garra, garra, mordida e cauda no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada."
-    }
-  ],
   "revisao": [
     {
       "campo": "sentidos.sentidos onipresentes",

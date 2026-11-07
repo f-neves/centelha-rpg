@@ -154,8 +154,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "empurrar",
@@ -163,8 +162,7 @@
       "classe": "livro",
       "ataque": "Punhos",
       "categoria": "inato",
-      "regra": "empurrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "empurrar"
     },
     {
       "nome": "agarrar",
@@ -172,8 +170,7 @@
       "classe": "livro",
       "ataque": "Punhos",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "explora aberturas",
@@ -187,16 +184,14 @@
       "efeito": "Faz um contra-ataque físico com a arma empunhada contra quem abriu a guarda",
       "dano": "o da arma",
       "resistencia": "Defesa Física do atacante",
-      "limiteDeUso": "1 uso grátis por cena. Sem uso extra",
-      "justificativa": "Centelha 0 e ausência de Mana deixam apenas o uso grátis."
+      "limiteDeUso": "1 uso grátis por cena. Sem uso extra"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -268,99 +263,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "O treino com arco e besta usa Percepção mesmo sem arma de tiro equipada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.explora aberturas"
-      ],
-      "texto": "Centelha 0 e ausência de Mana deixam apenas o uso grátis."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.empurrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "143,31 kg pela R15 (D-184), E = (Força × 3 + Halterofilismo + Musculatura × 3) ÷ 4, com Halterofilismo 1; o `confere_etapa2.py` lê o Halterofilismo desde a nona atualização do pacote. Com Halterofilismo 0 o número seria 134,21"
-    },
-    {
-      "campos": [
-        "halterofilismo"
-      ],
-      "texto": "1 por julgamento (noções de quem carregou peso em campanha). Com 0 ou 2 o Peso erguido seria 134,21 ou 153,02 kg"
-    },
-    {
-      "campos": [
-        "deslocamento"
-      ],
-      "texto": "o do site, congelado (3 · 5 · 7), pela D-190. A fórmula do personagem daria 4 · 5 · 8; anotado, não corrigido (D-170)"
-    },
-    {
-      "campos": [
-        "estrategia"
-      ],
-      "texto": "o `tatica` do site não existe no livro; na tabela das Habilidades antigas (manual 3.5, D-190), `tatica` para Estratégia é provisório. Estratégia é conhecimento (planejar a campanha), e o que a ficha publicada descreve é ler a luta na hora, que já está em Raciocínio e Prontidão. Se o autor preferir, a linha sai e o 2 vira uma Especialidade de Prontidão **[provisório]**"
-    },
-    {
-      "campos": [
-        "raciocinio",
-        "compostura"
-      ],
-      "texto": "sobem de 2 para 3 pela descrição publicada. Se o autor quiser a ficha publicada intacta nos Atributos, voltam a 2 (a Defesa Social cai para 6, a Defesa Mental para 13, a Iniciativa para 1d6 + 5, a Energia para 6) **[provisório]**"
-    },
-    {
-      "campos": [
-        "largura"
-      ],
-      "texto": "0,48 m nos ombros, estimada, sem fonte"
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "0,64 m² por formas simples; não há silhueta medida"
-    },
-    {
-      "campos": [
-        "card e equipamento"
-      ],
-      "texto": "a cota de malha está sempre vestida (D-188). A ficha guarda nas linhas Esquiva, Bloqueio e Absorção os números sem ela, em negrito, e a frase \"Com a cota de malha: ...\" da linha Absorção dá os números com ela, que o card mostra (manual 5.2, item 7). O Bloqueio da frase é sem a espada; com ela, o card mostra 11"
-    },
-    {
-      "campos": [
-        "explora aberturas"
-      ],
-      "texto": "parece Proeza (Quase-Acerto que vira dano), mas com Centelha 0 não há Proeza; fica sem regra ainda"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.raciocinio",

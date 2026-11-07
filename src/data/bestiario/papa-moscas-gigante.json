@@ -93,8 +93,7 @@
       "ataque": "Mordida",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "fecha as fauces em volta da presa",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "fecha as fauces em volta da presa"
     },
     {
       "nome": "Fauces engolidoras",
@@ -108,8 +107,7 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "2d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
-      "justificativa": "2d6 de ácido por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Imunidades vegetais",
@@ -123,8 +121,7 @@
       "efeito": "não sofre doenças, venenos, sono ou paralisia. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -201,56 +198,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Fauces engolidoras"
-      ],
-      "texto": "2d6 de ácido por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil mole, nível 3: +2 Corte, +2 Perfuração e +3 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imunidades vegetais"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Vontade"
-      ],
-      "texto": "Antes: 5."
-    },
-    {
-      "campos": [
-        "Defesas"
-      ],
-      "texto": "Antes: sem aplicação explícita da imunidade de Inteligência 0."
-    },
-    {
-      "campos": [
-        "Compostura"
-      ],
-      "texto": "Antes: 2."
-    },
-    {
-      "campos": [
-        "Integridade"
-      ],
-      "texto": "Antes: 2."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

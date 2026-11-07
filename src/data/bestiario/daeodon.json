@@ -101,8 +101,7 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "pela perna",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "pela perna"
     },
     {
       "nome": "fúria selvagem",
@@ -116,8 +115,7 @@
       "efeito": "Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade fúria selvagem. Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -185,78 +183,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.fúria selvagem"
-      ],
-      "texto": "Aplicação à capacidade fúria selvagem. Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pelas âncoras do autor, igual ao boi e ao bisão de massa parecida; sem feito (fóssil). A ficha de hoje tinha 10 pelo encaixe com o boi de então (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "influencia: 1 pela diretriz 1 (não é espécie social); o 3 de hoje era extrapolação pelo tamanho, sem dado (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 0, sem dado social; provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 3 pelo crânio e pela mordida de quebrar osso, como o javali; sem feito (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2, o valor de quem não tem dado; as marcas de briga curadas continuam só pela Wikipédia, citando a tese de Foss 2001 (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois. O nível se sustenta pelo tamanho, e não por parentesco: o entelodonte não é porco (aviso do topo)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 1.002 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente. A carga sai da regra sem dado medido (75 kg) (D-160, D-162, D-169)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23), 52 km/h, sem velocidade real para conferir (D-170)."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: o comprimento (3 m, sem cauda 2,70) e a largura (0,80) continuam só pela divulgação e pela estimativa (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 750 kg é o topo da família no resumo de Joeckel 1990, sem método; falta abrir o artigo (e Peterson 1909) para saber como foi estimada, e não há estimativa por osso ou por volume achada (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "vigor, integridade, vontade, bloqueio: [extrapolação] pelo javali e pela briga entre machos de Foss 2001; o daeodon não é suíno, e o javali é vizinho de comportamento, não de parentesco (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "ataques.mordida: Pesada por ser \"mordida que agarra e torce\" de crânio de 90 cm; N0 sem força medida. Se aparecer força de mordida, a Perfuração se refaz (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "atletismo: 1 sem fonte, pelo corpo de corredor (D-174)."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

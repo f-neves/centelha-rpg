@@ -96,8 +96,7 @@
       "efeito": "Soma +1 na Defesa e ignora o −2 de Flanqueado apenas pelo lado coberto pelo aliado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "nenhum. Sem custo"
     }
   ],
   "comoLuta": [
@@ -173,39 +172,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Disciplina militar"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "espada longa do livro, sem armadura **[provisório]**"
-    },
-    {
-      "campos": [
-        "armas",
-        "bloqueio"
-      ],
-      "texto": "3 e 2; o site tinha só Briga 1 **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "3; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "disciplina militar"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

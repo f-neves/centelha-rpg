@@ -90,16 +90,14 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Guarda sob pressão",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Guarda sob pressão"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -165,38 +163,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Vulnerável ao cerco"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "martelo"
-      ],
-      "texto": "2d6 + Força × 2 (17 de média), o do livro; o site dava 3 dados"
-    },
-    {
-      "campos": [
-        "bravura"
-      ],
-      "texto": "4; o site tinha 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "card e equipamento"
-      ],
-      "texto": "o couro está sempre vestido (D-188)"
-    }
-  ],
   "revisao": [
     {
       "campo": "virtudes.bravura",

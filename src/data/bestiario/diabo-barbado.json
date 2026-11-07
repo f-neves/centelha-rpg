@@ -133,8 +133,7 @@
       "efeito": "o alvo adoece e vai perdendo força: fica Doente, e a cada dia sem tratamento soma um degrau de Desgaste",
       "dano": "nenhum além da mordida",
       "resistencia": "corpo, contra a jogada da mordida; quem passa não adoece daquele golpe",
-      "limiteDeUso": "um por golpe. Sem custo",
-      "justificativa": "Base Praga pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Barba viva",
@@ -148,8 +147,7 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "nenhum",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "A cada ativação descrita. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+      "limiteDeUso": "A cada ativação descrita. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Teleporte",
@@ -168,16 +166,14 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance 60 m, até um ponto que ele veja ou conheça, viajantes: o próprio diabo. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 3, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de arma benta ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma benta ou prata. valor de molde, para a bancada."
+      "efeito": "origem sobrenatural. O dano de arma benta ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
     },
     {
       "nome": "ferida que não fecha",
@@ -198,8 +194,7 @@
       "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -287,105 +282,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Teleporte"
-      ],
-      "texto": "Antes: Velocidade 8, alcance 60 m, até um ponto que ele veja ou conheça, viajantes: o próprio diabo. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 3, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Doença infernal"
-      ],
-      "texto": "Base Praga pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Barba viva"
-      ],
-      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Regeneração 5"
-      ],
-      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma benta ou prata. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Barba viva"
-      ],
-      "texto": "**[provisório]** R4. Retirada a espera entre ativações."
-    },
-    {
-      "campos": [
-        "Teleporte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Limite diário dos usos grátis: 3. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "90 kg, a do site, com a altura do site (fator de forma 0,71 sobre os 127 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "3 pela nota do site, e não o 1 do campo **[provisório]**"
-    },
-    {
-      "campos": [],
-      "texto": "`armas` 3: a nota do site; usa o item glaive-serrilhada do catálogo (36.1)."
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +8 corte\", dano médio 11,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a glaive é a Haste de Guerra do livro, de duas mãos (Força × 2), e a Mordida é Leve. Dano médio: 11,5 antes; depois, 17,5 (a glaive) **[provisório]**"
-    },
-    {
-      "campos": [
-        "trava a ferida",
-        "barba viva",
-        "teleporte",
-        "doença infernal"
-      ],
-      "texto": "números da ficha, com as bases do site quando havia (D-197). **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "1, pela pele escamosa **[provisório]**"
-    },
-    {
-      "campos": [
-        "Regeneração 5"
-      ],
-      "texto": "Antes: 4 de Energia e 5 PV/6 Ticks."
-    },
-    {
-      "campos": [
-        "Glaive serrilhada"
-      ],
-      "texto": "antes, Alabarda com serrilha manual; depois, item glaive-serrilhada, conforme 36.1. Acerto −1 e dano médio 17,5 preservados; removida a manobra redundante."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.prontidao",

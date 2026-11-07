@@ -142,8 +142,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "agarra no golpe forte",
@@ -157,8 +156,7 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "nenhum",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "fedor nauseante",
@@ -197,8 +195,7 @@
       "efeito": "Convoca um aliado com o perfil Dretch para lutar até o fim da cena. A origem planar aguarda o lore dos planos",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Um aliado com o perfil dretch, Centelha 2, até metade da Centelha 5 do convocador. Uma convocação grátis por cena para reforço temporário. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "teleporte",
@@ -217,8 +214,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato. Pode levar a criatura que estiver agarrando mesmo contra a vontade dela",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance 36 m, viajantes: o hezrou e uma criatura que ele esteja agarrando. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -320,100 +316,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.teleporte"
-      ],
-      "texto": "Antes: Velocidade 8, alcance 36 m, viajantes: o hezrou e uma criatura que ele esteja agarrando. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.convocar"
-      ],
-      "texto": "Antes: Um aliado com o perfil dretch, Centelha 2, até metade da Centelha 5 do convocador. Uma convocação grátis por cena para reforço temporário. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarra no golpe forte"
-      ],
-      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 4: +4 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fedor nauseante"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R13 e D-197. Dificuldade fixa sugerida 15 (10 + Centelha 5) para graduar a potência deste fedor. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "convocar"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "teleporte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "621 kg pelo corpo de base da D-192 (1,80 m, 80 kg, 0,079 m³) e pela densidade do manual, escolhida contra os 320 kg do site pela D-187 (caso a caso, com justificativa na ficha): o publicado fica fora de qualquer conta pelo volume. O alargamento (40% e 20%) é julgamento; com o corpo de proporção humana daria 369 kg. Com o corpo de base de 1,75 m (D-190) eram 633 kg, e no lote 1, pelo soldado, 653 kg. O Peso erguido passou de 1.239,10 para 1.240,89 kg; a largura e o Espaço, de 1,13 × 0,61 m (o soldado escalado) para 1,05 × 0,46 m (os ombros e o tronco do boneco, sem os braços). A área (2,80 m²), a Faixa, a linha de PV e o Tamanho não mudam **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "centelha"
-      ],
-      "texto": "5, a publicada; o texto põe o hezrou como músculo, abaixo de quem comanda. Se o autor rever, a Centelha mexe em todo o dano, nas Defesas e na Absorção **[provisório]**"
-    },
-    {
-      "campos": [
-        "artes"
-      ],
-      "texto": "o site tinha `arte: vento 2, espirito 4` e um poder natural \"fedor nauseante\" com base Vento 2. Pela C-037 a Arte com Mana é só da lista de conjuradores (dragões, Lich, Couatl, Ninfa, Planetar, Solar, Ghaele, Rakshasa, Naga); o resto vira poder natural, \"com base e nível mantidos como parâmetro\". A ficha não tem Mana e guarda Vento 2 (fedor) e Espírito 4 (convocar e teleporte, ao que parece) só como parâmetro aqui **[provisório]**"
-    },
-    {
-      "campos": [],
-      "texto": "`inteligencia` e sociais: descem pelo texto do site; o Pathfinder tem Int 14 e Car 18 **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "4, como o rinoceronte; a pele de demônio não tem referência na escala **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "0 é o piso da régua, e não \"abaixo de 0\"; a linha medonho foi acrescentada pela D-181, sem estar na ficha publicada (o LEIA-ME do lote pede o teste). O efeito em quem olha (repulsa e medo) é descrição, sem número **[provisório]**"
-    },
-    {
-      "campos": [
-        "fedor"
-      ],
-      "texto": "a resistência por Vigor + Resistência é a do livro para o que invade o corpo (`aparencia-virtudes-vontade.md`); o enjoo não tem condição no livro (`condicoes.json` não tem \"Enjoado\")"
-    },
-    {
-      "campos": [],
-      "texto": "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 14, Corte e Perfuração 5) passa sem mudança"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.inteligencia",

@@ -129,8 +129,7 @@
       "efeito": "Médio: quatro patas. Grande: erguido nas patas traseiras. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Médio (quatro patas) e Grande (erguido nas patas traseiras). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Agarrar",
@@ -139,8 +138,7 @@
       "ataque": "Garra",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "prende o alvo com as patas dianteiras",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "prende o alvo com as patas dianteiras"
     }
   ],
   "comoLuta": [
@@ -204,80 +202,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Médio (quatro patas) e Grande (erguido nas patas traseiras). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "Antes: 380 kg; agora 170 kg para o adulto típico, com exceção à conservação da medida publicada porque há pesquisa da subespécie."
-    },
-    {
-      "campos": [
-        "dimensoes"
-      ],
-      "texto": "Antes: comprimento 2,5 m de exemplar grande; agora 1,9 m, cernelha 1,09 m, escalados do urso-pardo de 200 kg."
-    },
-    {
-      "campos": [
-        "PV"
-      ],
-      "texto": "Antes: 54 pela massa 380 kg; agora 43 pela massa 170 kg e Vigor 6."
-    },
-    {
-      "campos": [
-        "Tamanho"
-      ],
-      "texto": "Antes: Grande; agora Médio de quatro e Grande erguido."
-    },
-    {
-      "campos": [
-        "Garra"
-      ],
-      "texto": "Antes: ataque genérico 2d6 + 7, média 14; agora 1d6 + 7, média 10,5, Corte."
-    },
-    {
-      "campos": [
-        "Vontade"
-      ],
-      "texto": "Antes: 5."
-    },
-    {
-      "campos": [
-        "Virtudes"
-      ],
-      "texto": "Antes: Bravura 2, Convicção 2 e Temperança 2."
-    },
-    {
-      "campos": [
-        "Briga"
-      ],
-      "texto": "Antes: 3."
-    },
-    {
-      "campos": [
-        "Prontidão"
-      ],
-      "texto": "Antes: 1."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

@@ -102,8 +102,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Resiliência mental do Elfo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Resiliência mental do Elfo"
     },
     {
       "nome": "Imune ao sono mágico",
@@ -117,8 +116,7 @@
       "efeito": "Ignora sono imposto por Arte ou poder. Sono por cansaço ou veneno segue sua regra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "Trevas",
@@ -137,8 +135,7 @@
       "efeito": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
-      "justificativa": "Antes: Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada. Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
     },
     {
       "nome": "Luzes dançantes",
@@ -156,8 +153,7 @@
       "efeito": "Cria luzes móveis para iluminar ou enganar",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
-      "justificativa": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
     },
     {
       "nome": "Fogo feérico",
@@ -175,8 +171,7 @@
       "efeito": "Contorna o alvo de luz e revela a sua posição enquanto durar",
       "dano": "nenhum",
       "resistencia": "esquiva, contra Influência + Manha dele",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
-      "justificativa": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
     }
   ],
   "comoLuta": [
@@ -247,88 +242,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "Antes: Veneno do sono entre os poderes, uma dose por lâmina. R28: consumível da espada curta. Proposta de 1 dose carregada, pela única lâmina equipada. Aplicar em Velocidade 5, com teste de Destreza contra 10 apenas sem Cura ou Ofício pertinente. R27: Tipo sono, duração 1 hora. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Trevas"
-      ],
-      "texto": "Antes: Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada. Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Resiliência mental"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Veneno do sono"
-      ],
-      "texto": "Antes: R27. 1 hora de sono já consta na ficha. O limiar é o Vigor da vítima. A ação aplica uma dose da peçonha indicada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Fogo feérico"
-      ],
-      "texto": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Luzes dançantes"
-      ],
-      "texto": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imune ao sono mágico"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Feitiçaria inata"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "raça parente"
-      ],
-      "texto": "Elfo (D-207); os números são os do site"
-    },
-    {
-      "campos": [
-        "veneno do sono"
-      ],
-      "texto": "Potência 13, pool 2, fora do catálogo **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparência"
-      ],
-      "texto": "4, a do site; a Aparência Universal do Elfo não passa ao drow **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixão"
-      ],
-      "texto": "1; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "feitiçaria inata",
-        "veneno do sono",
-        "sensibilidade à luz"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "aparencia",

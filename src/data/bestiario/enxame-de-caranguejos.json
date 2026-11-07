@@ -108,8 +108,7 @@
       "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos",
       "dano": "1d6 + 3 de Corte",
       "resistencia": "sem jogada de ataque; a Absorção conta",
-      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo",
-      "justificativa": "R33. Antes: resumo provisório com 1d6 + 3 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 3 de Corte, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
     },
     {
       "nome": "Corpo de enxame",
@@ -123,8 +122,7 @@
       "efeito": "Arma comum fere; cada golpe atinge um quadrado. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R32 e R34. Arma comum fere; cada golpe atinge um quadrado. Escolha: cada caranguejo tem cerca de 7 cm e 148 g, corpo que uma lâmina alcança. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [],
@@ -190,130 +188,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Pulso do enxame"
-      ],
-      "texto": "R33. Antes: resumo provisório com 1d6 + 3 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 3 de Corte, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Corpo de enxame"
-      ],
-      "texto": "R32 e R34. Arma comum fere; cada golpe atinge um quadrado. Escolha: cada caranguejo tem cerca de 7 cm e 148 g, corpo que uma lâmina alcança. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
-    },
-    {
-      "campos": [
-        "anatomia"
-      ],
-      "texto": "artrópode, anatomia provisória (D-175)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23). 9 km/h contra 0,37 km/h da migração medida, mais de vinte vezes; a corrida de fuga não foi achada (D-170)"
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "0,6 kg pela fórmula provisória (decisões 14 e 16), com 0,148 kg; era 1,7 kg com 0,3 kg; carga \"não (enxame)\" (D-162, D-169)"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "26 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 8 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo."
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "o Minúsculo é o do caranguejo; o enxame usa o tamanho que apresenta no acerto (D-077, D-166)"
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "0,148 kg **[extrapolação]** pelo cubo do maior de Green 1997 (500 g a 120 mm) para a carapaça de 80 mm, o meio da faixa adulta (40 a 120 mm), e não média; acima da média da população com jovens (95 a 112 g) e abaixo dos machos grandes de 400 a 570 g de Adamczewska e Morris 2001. Era 0,3 kg, a carapaça de 100 mm (D-174; sexta rodada)"
-    },
-    {
-      "campos": [
-        "dimensoes"
-      ],
-      "texto": "altura (0,04 m) e comprimento (0,067 m) estimados sem fonte para o caranguejo de 0,3 kg e escalados pelo cubo da massa; a largura (0,079 m) é a da carapaça, sem as patas (D-147, D-174)"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "3 pela pinça de caranguejo, sem força de pinça da própria espécie (só a do Birgus latro, Oka 2016) (D-174)"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "2; a migração (1.460 m num dia, 18 dias) fica na nota de pesquisa (jornada), e não sustenta a Resistência (decisão 5, D-174)"
-    },
-    {
-      "campos": [
-        "escalada"
-      ],
-      "texto": "0 **[sem dado]**; a pesquisa não diz se o caranguejo-vermelho escala (D-174)"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "pinça como Corte, leitura da Bestiarista; força da pinça da espécie não achada (D-174)"
-    },
-    {
-      "campos": [
-        "especie"
-      ],
-      "texto": "o caranguejo-vermelho, terrestre, foi escolhido pela Bestiarista; a ficha antiga e o Pathfinder tratam o enxame como aquático (D-174)"
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): migração de até 18 dias (ABC Science), com máximo de 1.460 m num dia e média de 680 m/dia em 1993 e 330 m/dia em 1995, por rádio-rastreamento (Adamczewska e Morris 2001) [medido]; velocidade média perto do limite aeróbico, sem entrar em anaerobiose; em laboratório andaram até 45 min (Adamczewska e Morris 1994) [medido]."
-    },
-    {
-      "campos": [
-        "bloqueio"
-      ],
-      "texto": "Pinça do enxame, sim sem número para não, pela decisão 10 e Bloqueio 0 já escrito na ficha; o enxame não apara. Sem mudança do JSON publicado."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - orientação: anda em linha reta e parece saber a distância do litoral; desviado mais de 200 m, se perde (Adamczewska e Morris 2001; ABC Science). Texto."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Enxame: sim, um grupo (decisão 10). Quadrado de 1 m: cheio com 20 caranguejos; com menos de 5 (um quarto) deixa de ser enxame e os caranguejos ficam soltos **[conta, sobre estimativa]**. Chão; uma maré que anda num rumo só, desordenada dentro dela. Só ataque em área: o caranguejo é menor que um rato (regra do autor, seção 10 de 19/10/2026, aplicada pela seção 17 de 20/10/2026; era \"arma normal\", caso de fronteira). Armadura: normal, só pega o pé e a canela expostos. Retirar: fácil, não se agarra. Dano automático contra quem está cercado, de Corte: **a definir** (as regras de enxame ficam para depois); metade com metade dos caranguejos. No acerto vale o tamanho que o enxame apresenta (D-077)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: carapaça que fura pneu de carro (Wikipédia, citando Parks Australia)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: **[sem dado]** de horário; ativo na estação chuvosa, recolhido na seca"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.massa",

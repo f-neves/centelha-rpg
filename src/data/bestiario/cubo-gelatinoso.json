@@ -125,8 +125,7 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "2d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
-      "justificativa": "2d6 de ácido por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Ácido corrosivo",
@@ -154,8 +153,7 @@
       "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "nenhum",
       "resistencia": "a resistência da peça contra a exposição",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -227,61 +225,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.corrói equipamento"
-      ],
-      "texto": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Engolfar"
-      ],
-      "texto": "2d6 de ácido por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Paralisia ao toque"
-      ],
-      "texto": "**[provisório]** R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Engolfar"
-      ],
-      "texto": "**[provisório]** R4. Retirada a espera entre ativações."
-    },
-    {
-      "campos": [
-        "Ácido corrosivo"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "27,3 t pelo cubo de 3 m; o site dava 14 t. Com 14 t, lado de 2,4 m, 5,76 m² (Grande pelo corte, ou Enorme pelos 5%) e 80 ou 85 PV **[provisório]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Enorme; o site dizia Grande **[conta]**"
-    },
-    {
-      "campos": [],
-      "texto": "`destreza`, `percepcao`, `raciocinio`, sociais: 1, e `vontade` 3 (D-106 b, D-186); o site tinha 0 e 6"
-    },
-    {
-      "campos": [
-        "engolfar",
-        "ácido corrosivo"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.massa",

@@ -129,8 +129,7 @@
       "efeito": "Médio: braços abertos. Miúdo: de cima, braços juntos. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Médio (braços abertos) e Miúdo (de cima, braços juntos). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Cefalotoxina",
@@ -145,16 +144,14 @@
       "efeito": "Cefalotoxina. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "nuvem de tinta",
@@ -168,8 +165,7 @@
       "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
       "dano": "nenhum",
       "resistencia": "sair da nuvem",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
-      "justificativa": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
     }
   ],
   "comoLuta": [
@@ -247,102 +243,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.nuvem de tinta"
-      ],
-      "texto": "Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Médio (braços abertos) e Miúdo (de cima, braços juntos). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Cefalotoxina"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "nuvem de tinta"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`): os braços puxam e prendem a mão de um humano; era 0 pela leitura automática da D-167. O bico sobe de 1,5 para 2,5 de média e o agarrão de 0 para 2 (D-115)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 23,14 kg (em vigor na Etapa 2, 20/10/2026); antes: provisório, 21,45 kg ◆ (17,62 com a Força 0) pela fórmula das decisões 14 e 16 (calc6, massa de 2 kg); cefalópode não tem `carga` (D-160, D-175). Os 40 N por braço (Margheri 2009, trecho de busca, não conferido) somam uns 32 kg-força nos oito, na mesma ordem: o conflito de feito contra regra da ficha de 12/10 (0,47 kg) se desfaz, mas o feito segue não conferido."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Miúdo pela área de cima com os braços juntos, 0,12 m² (0,1177), escalada pelo cubo da massa a partir dos 0,15 m² do polvo de 3 kg da tamanho-fichas-v2. Fica rente ao corte de 0,12: o de 3 kg é Pequeno. Segundo Alvo Médio com os braços abertos (0,61 m², decisão 8). Pela D-215 (24/10/2026), o principal passou a ser o de braços abertos (Médio, 0,65 m²), e o Miúdo ficou como segundo. Provisório até os cortes fecharem (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 7 (decisão 21, delegada). Com 10 + metade do Vigor seriam 11."
-    },
-    {
-      "campos": [],
-      "texto": "inteligencia: 2 pela lista fechada da diretriz 1; nota \"2 não é inteligência humana\"."
-    },
-    {
-      "campos": [],
-      "texto": "compostura: desce de 3 para 1 por não ser espécie social (diretriz 1); a camuflagem, que a sustentava, passou a Especialidade natural de Furtividade."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 2 sem dado de fome, frio, veneno ou ferida **[extrapolação]**, pela régua (2 é o normal no próprio meio)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 3 (robusto), sem medida do corpo inteiro; só a puxada do braço (trecho de busca)."
-    },
-    {
-      "campos": [],
-      "texto": "furtividade: 4, com o levantamento apontando candidato a 5; a camuflagem fica como Especialidade natural +3 (do corpo), e não como Especialidade do livro (que pela Furtividade 4 abriria só 2)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "anatomia: cefalópode, anatomia provisória (D-175), não calibrada em animal medido. Ela não tem terra: o rastejar no fundo (Huffard 2006, outra espécie: 7,3 cm/s) e a saída breve da água ficam em texto (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23), provisória pela fórmula de hoje (D-170); nenhuma velocidade medida da espécie."
-    },
-    {
-      "campos": [],
-      "texto": "veneno: veneno sem id no catálogo (D-112); o efeito real está na pesquisa e em Veneno e doença."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: os 40 N do braço continuam só pelo resumo de busca (Margheri e colegas, Scuola Sant'Anna; PubMed pediu cookies e o repositório IRIS deu 403) (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "massa: 2,2 kg (em vigor na Etapa 2, 20/10/2026); antes: 2 kg, o meio da faixa comum de 1 a 3 kg da FAO (sexta rodada, item 4 da tamanho-decisoes-5.md: o adulto típico); era 3 kg, o alto do comum. Meio de faixa, não média: a média por sexo não foi achada. Dimensões, área e segundo Alvo escalados pelo cubo da massa."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura e largura estimadas pela Bestiarista, sem fonte (D-174), agora escaladas pelo cubo (0,13 e 0,26 m)."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

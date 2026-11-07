@@ -104,8 +104,7 @@
       "efeito": "Pequeno: de pé, sem o vórtice. Médio: com o vórtice ativo. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita. A postura ativa não dispensa a ativação, a duração e os usos do poder correspondente",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Pequeno (de pé, sem o vórtice) e Médio (com o vórtice ativo). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Vórtice",
@@ -165,8 +164,7 @@
       "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -224,64 +222,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Pequeno (de pé, sem o vórtice) e Médio (com o vórtice ativo). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O corpo é constituído pelo próprio elemento."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.feito de água pura"
-      ],
-      "texto": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
-    },
-    {
-      "campos": [
-        "Vórtice"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, dentro da água ou sobre ela -> uma ação, Velocidade 5, dentro da água ou sobre ela. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "23,4 kg pelo volume do corpo de base escalado a 1,2 m, na densidade da água; o site dizia 15 kg **[conta]**"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "3 pelo teste de ordem; o site tinha 4. Com 4, o dano médio seria 6,5 e o peso erguido 118,62 kg **[provisório]**"
-    },
-    {
-      "campos": [
-        "vórtice"
-      ],
-      "texto": "poder natural de uma vez por cena, e não forma (linha Formas): o redemoinho é um modo de ataque com duração, sem corpo próprio a descrever **[provisório]**"
-    },
-    {
-      "campos": [
-        "segundo Tamanho"
-      ],
-      "texto": "Médio com o vórtice ativo, o funil de 0,90 m² com a largura do redemoinho do elemental do ar; se o funil fosse da largura da Área do Vórtice (1 m à volta, 2,3 m), seriam 1,56 m², Grande, 8% acima do corte (decisão do autor de 24/10/2026, D-213) **[provisório]**"
-    },
-    {
-      "campos": [
-        "vórtice",
-        "encharcar",
-        "domínio da água"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

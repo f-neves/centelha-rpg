@@ -133,8 +133,7 @@
       "efeito": "o cão cospe um leque de chamas. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     }
   ],
   "comoLuta": [
@@ -229,76 +228,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Sopro de fogo"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro de fogo"
-      ],
-      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Sopro de fogo"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [],
-      "texto": "`massa`, exceção à regra de altura e massa do lote: o site dá 1,2 a 1,5 m de cernelha e 54 kg. Pela altura, o lobo do molde daria cerca de 230 kg, e a Força 3 do site (For 13 do Pathfinder, a mesma do lobo) não caberia nesse corpo. Fica a massa: 54 kg, e a altura sai dela, 0,83 m. Antes, no site: Médio, Faixa 3, 37 PV. Depois: Pequeno, Faixa 3, 37 PV. O PV e a Faixa não mudam **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Médio para Pequeno, pela área do lobo de 54 kg (0,40 m²), como o lobo (55 kg) e o cachorro de guarda (85 kg). Em jogo: o atirador humano perde 3 contra ele, e ele ganha +3 no corpo a corpo contra o humano **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +5 corte\", dano médio 8,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo. Dano médio: 8,5 antes; depois, 8,5 (sem mudança) **[provisório]**"
-    },
-    {
-      "campos": [
-        "sopro de fogo"
-      ],
-      "texto": "poder natural com números da ficha (D-197), base Fogo 3 (o leque de 2d6 da Labareda); o site não dava os números **[provisório]**"
-    },
-    {
-      "campos": [
-        "imune a fogo, vulnerável a frio"
-      ],
-      "texto": "imunidade a Fogo e fraqueza a Gelo, pela linha Elementos"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

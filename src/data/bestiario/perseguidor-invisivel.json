@@ -116,8 +116,7 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Dois socos",
@@ -126,8 +125,7 @@
       "ataque": "Soco",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Rastreador implacável",
@@ -155,8 +153,7 @@
       "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -223,51 +220,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Dois socos"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Invisibilidade natural"
-      ],
-      "texto": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O corpo é constituído pelo próprio elemento."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.feito de ar"
-      ],
-      "texto": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "70 kg, a do site; ar denso, que anda no chão e bate como punho (D-187) **[referência de jogo]**"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "os dois socos pela Rajada **[provisório]**"
-    },
-    {
-      "campos": [
-        "invisibilidade natural",
-        "rastreador implacável"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.social",

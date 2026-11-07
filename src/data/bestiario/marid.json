@@ -124,8 +124,7 @@
       "efeito": "Grande: de pé, sem o vórtice. Enorme: com o vórtice ativo, debaixo d'água. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita. A postura ativa não dispensa a ativação, a duração e os usos do poder correspondente",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (de pé, sem o vórtice) e Enorme (com o vórtice ativo, debaixo d'água). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Domínio das águas",
@@ -158,8 +157,7 @@
       "efeito": "dispara um jato de água que fere e cega; o alvo que não passa fica Cego. Cego aplica −1d6 nas ações de visão. Se souber do ataque, Esquiva −4 e Bloqueio −8. Se não souber, Surpreso, com Defesas 0",
       "dano": "3d6 + Centelha, Impacto",
       "resistencia": "esquiva, contra Dificuldade 15 (10 + Centelha 5); quem passa não leva o dano nem fica Cego",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Onda pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Vórtice aquático",
@@ -195,8 +193,7 @@
       "efeito": "assume a forma de um elemental da água, de um humano ou de um gigante (a Variante \"disfarce\"), e muda de aparência à vontade; a mente e os números ficam os dele. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     }
   ],
   "comoLuta": [
@@ -288,93 +285,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Forma mutável"
-      ],
-      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Fúria das marés"
-      ],
-      "texto": "Base Onda pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (de pé, sem o vórtice) e Enorme (com o vórtice ativo, debaixo d'água). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "Fúria das marés"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Vórtice aquático"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, só debaixo d'água -> uma ação, Velocidade 6, só debaixo d'água. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Forma mutável"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "1.130 kg, a do site; o corpo de base escalado a 4,9 m daria 1.614 kg de carne ou 1.594 kg de água (D-187) **[referência de jogo]**"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "9; o site tinha 8, a mesma do efreeti, e o texto do site o faz o mais forte dos gênios. Com 8, o dano médio seria 20 e o peso erguido 525,77 kg **[provisório]**"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "0, pelo corpo de água e carne, como o djinn e o efreeti (tamanho-decisoes-3, item 12)"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de maré Pesada, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**"
-    },
-    {
-      "campos": [
-        "segundo Tamanho"
-      ],
-      "texto": "Enorme com o vórtice ativo, o funil de 15,01 m², pelo método do djinn e pela decisão do autor de 24/10/2026 (D-213) **[provisório]**"
-    },
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "forma verdadeira e disfarce (D-201), como na couatl; todas as Manobras e os Sentidos em todas as formas, porque a mente e os números ficam os dele; o \"como luta\" em duas linhas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte nas duas **[provisório]**"
-    },
-    {
-      "campos": [
-        "domínio das águas",
-        "fúria das marés",
-        "vórtice aquático",
-        "forma mutável"
-      ],
-      "texto": "números sugeridos pela ficha (D-197); o site não dá poderes naturais com base (\"Poderes a mapear\"), e as bases são sugestão da ficha"
-    },
-    {
-      "campos": [],
-      "texto": "`formas.corpo` (Fase 5, F5.2-b, D-265, 29/10/2026): o disfarce, que imitava uma forma de tamanho variável, ganha a forma fixa e típica, a humana: Médio, 1,78 m de altura, 0,48 m de largura, Área 0,64 m² (a do humano de base). O Mestre pode escolher outra forma. Antes, sem Área própria e com \"Tamanho: o da forma assumida\"."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

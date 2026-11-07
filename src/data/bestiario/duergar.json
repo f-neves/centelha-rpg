@@ -107,8 +107,7 @@
       "efeito": "o corpo e o que ele veste dobram de altura (Tamanho Grande); soma +1 na Força e perde 2 na Esquiva enquanto durar. Por grau, multiplique a área por 4 e a massa por 8. Recalcule Tamanho e alcance. Atributos e Couraça só mudam quando o poder expressamente os altera",
       "dano": "o dos golpes, com a Força maior",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Sumir",
-      "justificativa": "Um grau multiplica a área por 4 e a massa por 8, pela mudança de escala. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Sumir"
     },
     {
       "nome": "Sumir",
@@ -127,8 +126,7 @@
       "efeito": "fica Invisível. O efeito termina ao atacar ou desfazer. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Crescer",
-      "justificativa": "Antes: Revelação ao atacar e percepção por som, cheiro ou rastro, conforme o efeito de invisibilidade. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Crescer"
     },
     {
       "nome": "Sensibilidade à luz",
@@ -170,8 +168,7 @@
       "efeito": "veneno e paralisia não pegam nele (o Anão parente tem só +1d6 contra veneno; o duergar é imune). O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -238,71 +235,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sumir"
-      ],
-      "texto": "Antes: Revelação ao atacar e percepção por som, cheiro ou rastro, conforme o efeito de invisibilidade. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Crescer"
-      ],
-      "texto": "Um grau multiplica a área por 4 e a massa por 8, pela mudança de escala. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Imune a paralisia e venenos"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Crescer"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Sumir. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Sumir"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O uso grátis é compartilhado com o Crescer. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "raça parente"
-      ],
-      "texto": "Anão (D-207); os números são os do site"
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "machado do livro **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixão"
-      ],
-      "texto": "1; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "firme como pedra"
-      ],
-      "texto": "Especialidade natural +2 em Atletismo **[provisório]**"
-    },
-    {
-      "campos": [
-        "crescer",
-        "sumir",
-        "sensibilidade à luz",
-        "resiste a ilusões"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.social",

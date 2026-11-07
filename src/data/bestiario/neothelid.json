@@ -111,8 +111,7 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "agarrar",
@@ -120,8 +119,7 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Engole inteiro",
@@ -136,8 +134,7 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 15 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "3d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
-      "justificativa": "3d6 de ácido por 6 Ticks e ferida de 15 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Sopro ácido",
@@ -151,8 +148,7 @@
       "efeito": "o ácido corrói quem não escapa. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6, ácido, e mais 1d6 a cada 6 Ticks por dois ciclos",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada."
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Golpe mental",
@@ -248,8 +244,7 @@
       "efeito": "Contra ferro frio, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro frio. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Detectar magia",
@@ -263,8 +258,7 @@
       "efeito": "Percebe a presença e direção de magia. O rastro de um teleporte dura 6 Ticks e indica a direção, sem revelar o destino",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Velocidade 5 e 18 m para localizar magia. O traço de partida dura 6 Ticks. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -336,146 +330,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.línguas tentaculares"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Detectar magia"
-      ],
-      "texto": "Velocidade 5 e 18 m para localizar magia. O traço de partida dura 6 Ticks. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "sentidos.sentido cego"
-      ],
-      "texto": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Casca contra armas comuns"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro frio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro ácido"
-      ],
-      "texto": "Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Engole inteiro"
-      ],
-      "texto": "3d6 de ácido por 6 Ticks e ferida de 15 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil mole, nível 3: +2 Corte, +2 Perfuração e +3 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Sopro ácido"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
-    },
-    {
-      "campos": [
-        "Golpe mental"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Esmagamento da mente"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 26 da fonte passa a grau 3 (+6)."
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "11, pelo teste de ordem; o site tinha 12 (pedido do autor de 24/10/2026 (ponto de coerência 2, sem número no registro)) **[provisório]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Enorme pela área; o site dizia Imenso **[conta]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "voo"
-      ],
-      "texto": "pela Levitação; o site não grava voo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Tentáculo Pesado no lugar das \"Garras e presas\" **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "sopro ácido",
-        "golpe mental",
-        "esmagamento da mente",
-        "poderes mentais",
-        "levitação"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "Resistência à magia 26"
-      ],
-      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
-    },
-    {
-      "campos": [],
-      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Esmagamento da mente · poder natural (base Fascinação 5) · regra da ficha: PROVISÓRIO. Ativação: uma ação, Velocidade 8. Duração: até alguém o estabilizar. Alcance: 18 m. Área: um alvo que pense. Efeito: a mente do alvo desmorona: fica Inconsciente e Morrendo (`condicoes.json`). Dano: nenhum além do efeito. Resistência: mente, contra a mesma jogada do Golpe mental; quem passa fica Abalado até o fim da cena. Limite de uso: uma vez por cena."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

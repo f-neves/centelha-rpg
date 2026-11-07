@@ -119,16 +119,14 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     }
   ],
   "comoLuta": [],
@@ -199,91 +197,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "pesoErguido",
-        "carga"
-      ],
-      "texto": "247,09 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (7,7 kg de Leve com 77 kg, sem carga medida); o peso erguido sai de `calc6.mjs` (284,56 kg), e era 157,94 kg pela fórmula da D-162 (decisões 14 e 16)"
-    },
-    {
-      "campos": [
-        "velocidade"
-      ],
-      "texto": "congelada (decisão 23); 44 km/h contra cerca de 34 km/h do mastim mais rápido do Fast CAT, +28%, e saiu do fator do Médio, quando o Alvo agora é Pequeno"
-    },
-    {
-      "campos": [
-        "alvo"
-      ],
-      "texto": "0,37 m², Pequeno pela decisão 7; o mastim do extremo (Zorba, 145 kg) pode sair Médio"
-    },
-    {
-      "campos": [
-        "dimensoes"
-      ],
-      "texto": "o comprimento total (1,70 m), o sem cauda (1,20 m) e a largura (0,34 m) são estimativas da pesquisa, sem medida de mastim típico em centímetros (só o recordista Zorba)"
-    },
-    {
-      "campos": [
-        "aptidoes.montaria"
-      ],
-      "texto": "não. A ficha antiga era o \"Cão de Montaria\" do d20; o cão real leva 7,7 kg de Leve e 30,8 kg de Máxima (provisório), e um halfling de cerca de 30 kg é quase a Máxima inteira. Se um halfling monta um cão grande, é decisão do Mestre (D-087, D-174)"
-    },
-    {
-      "campos": [
-        "id"
-      ],
-      "texto": "o `mon-riding-dog` aponta para um cão de guarda real, e o nome muda de \"Cão de Montaria\" para \"Cão de guarda\"; a imagem atual mostra outro animal (D-102, D-174)"
-    },
-    {
-      "campos": [
-        "resistencia"
-      ],
-      "texto": "3 (em vigor na Etapa 2, 20/10/2026); antes: 2, **[comparação]**; o dado de fôlego (cão de carroça de 64 a 80 km por dia) é de blog e fica na nota de pesquisa (jornada)"
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): cão de carroça na Inglaterra do século XIX, 64 a 80 km por dia em estrada dura, Brighton a Portsmouth num dia (blog de historiador, fonte fraca) **[comparação]**; o cão de carga pesado \"não acompanha os rápidos em viagem longa\" (FM 25-6, §3a). Do mastim: **[sem dado]**."
-    },
-    {
-      "campos": [
-        "furtividade"
-      ],
-      "texto": "2, nova, pelo bullmastiff que seguia de noite quem caçava ilegalmente, raça vizinha e não o mastim inglês"
-    },
-    {
-      "campos": [
-        "empatia"
-      ],
-      "texto": "2, nova, **[extrapolação]** do temperamento do padrão FCI (família contra estranho)"
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "Prontidão (faro) desce de +4 para +3 pelo teto da decisão 3; Briga (derrubar e segurar no chão) 1, nova, pelo bullmastiff"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "3, robusto, sem carga medida do mastim (a carroça de 136 kg pela lei belga só aparece num blog, e não entra)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.empatia",

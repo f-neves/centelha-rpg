@@ -129,8 +129,7 @@
       "classe": "livro",
       "categoria": "inato",
       "ataque": "Garras",
-      "regra": "empunhadura-dupla",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "empunhadura-dupla"
     },
     {
       "nome": "Mudar de forma",
@@ -144,8 +143,7 @@
       "efeito": "vira um goblin ou um lobo enorme (as formas em Variantes), ou volta à forma verdadeira; a mente e os números ficam os dele. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "arma enfeitiçada fere inteira",
@@ -159,8 +157,7 @@
       "efeito": "Contra arma encantada, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção. A arma enfeitiçada também fere incorpóreo sem a resistência a dano físico",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: arma encantada. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "devorar almas",
@@ -174,8 +171,7 @@
       "efeito": "Cada alma elegível fornece uma carga uma única vez. Ao gastar uma carga, some +1d6 a uma jogada ou recupere 1d6 PV",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "até três cargas guardadas, sem custo de Energia",
-      "justificativa": "Uma carga por alma e teto de 3, pela capacidade de guardar a energia consumida. Cada carga vale +1d6 numa jogada ou 1d6 PV. valor de molde, para a bancada."
+      "limiteDeUso": "até três cargas guardadas, sem custo de Energia"
     },
     {
       "nome": "Multiataque",
@@ -191,8 +187,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -340,111 +335,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.devorar almas"
-      ],
-      "texto": "Uma carga por alma e teto de 3, pela capacidade de guardar a energia consumida. Cada carga vale +1d6 numa jogada ou 1d6 PV. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "comoLuta.truques sombrios"
-      ],
-      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.arma enfeitiçada fere inteira"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: arma encantada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Mudar de forma"
-      ],
-      "texto": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Mudar de forma"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "arma enfeitiçada fere inteira"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "truques sombrios"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "devorar almas"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "350 kg, a do site, com a altura do site (fator de forma 1,30 sobre os 270 kg do corpo de base escalado). Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +12 corte\", dano médio 19). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo, e as garras Leves, em par. Dano médio: 19 antes; depois, a mordida 15,5, as garras 13,5 cada **[provisório]**"
-    },
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "verdadeira, goblin e lobo (D-201), como no barghest; a forma de lobo, com 350 kg, fica Média por 5,5% **[provisório]**"
-    },
-    {
-      "campos": [
-        "pele curtida maior"
-      ],
-      "texto": "resistência a Corte, Perfuração e Impacto, e Couraça 2 pelo \"ainda mais\" **[provisório]**"
-    },
-    {
-      "campos": [
-        "truques sombrios",
-        "devorar almas"
-      ],
-      "texto": "sem regra ainda; o site não dava Arte de base"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

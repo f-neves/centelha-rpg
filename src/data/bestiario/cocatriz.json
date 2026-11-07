@@ -99,8 +99,7 @@
       "ataque": "Bicada",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Toque que petrifica",
@@ -114,8 +113,7 @@
       "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
       "dano": "nenhum adicional",
       "resistencia": "Vigor + Resistência contra Dificuldade 10",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "voo ágil",
@@ -129,8 +127,7 @@
       "efeito": "+4 na Defesa contra ataques durante as manobras evasivas em voo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade voo ágil. +4 na Defesa contra ataques durante as manobras evasivas em voo. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -197,66 +194,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Toque que petrifica"
-      ],
-      "texto": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Bicadas rápidas"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.voo ágil"
-      ],
-      "texto": "Aplicação à capacidade voo ágil. +4 na Defesa contra ataques durante as manobras evasivas em voo. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Toque que petrifica"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. P2. Dificuldade 10 sugerida porque a bicada exige contato e a ameaça é 3. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [],
-      "texto": "`massa`, exceção à regra de altura e massa do lote: fica a massa do site (11 kg), e as medidas saem dela pelo corvo. Antes, no site: 0,6 m de comprimento, 0,9 m de envergadura, Pequeno. Depois: 0,70 m de altura, 1,0 m de comprimento, 1,5 m de envergadura, Médio. Pelo comprimento do site seriam cerca de 3 kg, e o PV cairia para 6 **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Pequeno para Médio (0,51 m²). Em jogo: o humano perde os +3 de acerto de longe e os −3 que tinha de perto contra ela **[provisório]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "24 para 17. A tabela de PV pela massa dá 15 + 2 a 11 kg, fora da zona de transição **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\", a bicada (`inimigos.json`: \"1d6 +3 perfurante\", 5 Ticks, dano médio 6,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 6,5 antes; depois, bicada 4,5, duas pela Rajada **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 3 (D-205)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "1 para 2, os \"sentidos de ave\" do site"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.comprimento",

@@ -105,16 +105,14 @@
       "efeito": "à escolha dele, os subordinados somam +1 no ataque ou +1 na Defesa",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma ordem por ação dele",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "uma ordem por ação dele"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -180,50 +178,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Comando de tropa"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "escudo"
-      ],
-      "texto": "o heater do livro, sempre carregado, para o \"bônus adicional ao Bloqueio\" do site **[provisório]**"
-    },
-    {
-      "campos": [
-        "estrategia"
-      ],
-      "texto": "o `tatica` do site não existe no livro (manual 3.5, D-190) **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "3; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "comando de tropa"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "card e equipamento"
-      ],
-      "texto": "a placa e o escudo estão sempre com ele (D-188)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.estrategia",

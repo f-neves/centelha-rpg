@@ -214,57 +214,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O cadáver é animado após a morte."
-    },
-    {
-      "campos": [
-        "fisiologia.recuperacao"
-      ],
-      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
-    },
-    {
-      "campos": [
-        "fisiologia.imunidadesMentais"
-      ],
-      "texto": "R22. O olhar vazio e o ódio fixo não cedem ao pânico nem ao desnorteio."
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o \"Golpe\" de impacto do site virou Garras ressecadas Médias de Corte **[provisório]**"
-    },
-    {
-      "campos": [
-        "olhar mortal"
-      ],
-      "texto": "a \"falha grave\" do site ficou a falha por uma Margem (6 ou mais abaixo), a régua do livro (`acoes-resistir.md`) **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "1, a pele cinzenta e rachada **[provisório]**"
-    },
-    {
-      "campos": [
-        "olhar mortal",
-        "sol direto"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

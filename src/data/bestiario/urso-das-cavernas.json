@@ -132,8 +132,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     }
   ],
   "comoLuta": [],
@@ -197,76 +196,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar (o \"abraço\")"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 1.263,24 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.262,14 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 343,75 kg), provisório até a fórmula fechar (D-169, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "carga: 34,38 kg de Leve pela conta da D-122 (sem carga medida), provisória (D-169, D-172)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23); os números são os de 12/10. Sem velocidade real para conferir; sai 59 km/h, 2 acima do urso-pardo, só porque o Grande multiplicava 1,1 na fórmula de então (D-170)."
-    },
-    {
-      "campos": [],
-      "texto": "fonte (repesquisa de 13/10/2026): a massa tem a fonte primária (Christiansen 1999, lido no PDF), e o Vigor tem Marciszak 2024 (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: altura, comprimento e largura eram o urso-pardo da v3 de então (o macho de 230 kg) escalado pela raiz cúbica da massa até o macho grande de 450 kg (fator 1,25), com o corpo arredondado de 2,50 para 2,40 por causa dos \"até 2 m\" de Palmer; agora escalados de novo pelo cubo da massa até o adulto típico de 343,75 kg (fator 0,914); tudo [extrapolação]. O Alvo sai da silhueta de lado (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 8 por comparação, sem feito, igual ao urso-polar de mesma massa; a dieta de planta pediria até menos, e o 8 fica pela massa e pelo uso da pata de cavador (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 6, um acima do urso-pardo, pela massa e pelas lesões aguentadas; a mesma lesão sustenta a Resistência 3, e a hibernação vai só para a Especialidade natural (fome) +3 (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "habilidades.musculatura: 4 sem peso medido, pelo cavar (Wikipédia) e pelas fraturas da pata dianteira (Marciszak 2024); comparação com o urso-pardo, provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "habilidades.furtividade: 2 por comparação com o urso-pardo; do animal extinto nada se sabe da atividade (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "atletismo: 1, sem fonte, mantido pela velocidade congelada (D-174, decisão 23)."
-    },
-    {
-      "campos": [],
-      "texto": "sobrevivencia: 2 por depender de caverna e viver só na Europa; leitura da pesquisa, sem fonte de habitat detalhada (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidades.fome: +3 por comparação (o pardo fica até 8 meses na toca, e o das cavernas hibernava mais); a duração da hibernação dele não tem número (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "variantes.femea: com 237,5 kg, a área escalada (1,17 m²) dá Médio, um abaixo da principal; as dimensões são as do macho escaladas, e não medidas da fêmea (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.destreza",

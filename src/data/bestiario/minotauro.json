@@ -121,8 +121,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "investida"
     },
     {
       "nome": "Investida chifruda",
@@ -240,68 +239,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Investida"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Grande pelo corpo; sem os chifres, 1,47 m² passa o corte de 1,45 por 1,5% **[conta]**"
-    },
-    {
-      "campos": [
-        "faixa"
-      ],
-      "texto": "250 kg na zona de transição (187 a 253 kg); robusto, sobe. Na faixa de baixo seriam 40 PV"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "7; o site tinha 6 **[provisório]**"
-    },
-    {
-      "campos": [
-        "briga"
-      ],
-      "texto": "3, para a Chifrada; o site gravava 4, que era a Habilidade da arma **[provisório]**"
-    },
-    {
-      "campos": [
-        "virtudes"
-      ],
-      "texto": "Bravura 4 e Temperança 1; o site tinha 3 e 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "casco firme"
-      ],
-      "texto": "Especialidade natural +2 em Atletismo **[provisório]**"
-    },
-    {
-      "campos": [
-        "investida chifruda",
-        "fúria de touro",
-        "faro no labirinto"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [],
-      "texto": "`investida`, P20-b: sai o dado adicional; soma somente mais uma Força. Média da Investida citada no texto: 22,0 para 18,5. Golpe comum e números da tabela de Ataques preservados."
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

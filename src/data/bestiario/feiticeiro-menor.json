@@ -106,8 +106,7 @@
         "id": "fogo",
         "nivel": 1
       },
-      "categoria": "magia",
-      "justificativa": "A ação reproduz a Arte indicada na ficha."
+      "categoria": "magia"
     },
     {
       "nome": "chama que gruda",
@@ -117,8 +116,7 @@
         "id": "fogo",
         "nivel": 2
       },
-      "categoria": "magia",
-      "justificativa": "A ação reproduz a Arte indicada na ficha."
+      "categoria": "magia"
     },
     {
       "nome": "acende e apaga",
@@ -128,16 +126,14 @@
         "id": "fogo",
         "nivel": 1
       },
-      "categoria": "magia",
-      "justificativa": "A ação reproduz a Arte indicada na ficha."
+      "categoria": "magia"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -207,56 +203,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.acende e apaga"
-      ],
-      "texto": "A ação reproduz a Arte indicada na ficha."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.chama que gruda"
-      ],
-      "texto": "A ação reproduz a Arte indicada na ficha."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.dardo flamejante"
-      ],
-      "texto": "A ação reproduz a Arte indicada na ficha."
-    },
-    {
-      "campos": [
-        "artes"
-      ],
-      "texto": "Fogo 2 pela C-043. O teto Centelha + 2 é, pela C-043, só da bancada, e o conferidor o confere; aqui não pesa, porque 2 fica abaixo de 3"
-    },
-    {
-      "campos": [
-        "Artes"
-      ],
-      "texto": "fora da tabela de Ataques (D-196); a jogada da Arte depende do efeito e segue as regras das Artes do livro"
-    },
-    {
-      "campos": [
-        "integridade"
-      ],
-      "texto": "5, a do site, alta para um iniciante; fica como referência de jogo"
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "60 kg, a do site, um pouco abaixo do corpo de base escalado (65 kg), pelo \"franzino\""
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.social",

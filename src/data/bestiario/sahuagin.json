@@ -224,40 +224,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "lança no lugar do tridente **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 1 pelas escamas **[provisório]**"
-    },
-    {
-      "campos": [
-        "virtudes"
-      ],
-      "texto": "Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "fúria sanguinária",
-        "fala com tubarões",
-        "cegueira pela luz"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

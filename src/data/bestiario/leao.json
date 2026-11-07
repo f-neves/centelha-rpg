@@ -132,16 +132,14 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "bote",
@@ -149,8 +147,7 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "investida"
     }
   ],
   "comoLuta": [
@@ -223,83 +220,5 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.bote"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: 0,98 m² de lado pela área da `tamanho-fichas-v2.md` escalada para o típico de 157,5 kg (1,10 m² no macho), 33% abaixo do corte de 1,45 m² do Grande. A posição de 3,93 \"na borda\" da R2 de hoje não vale mais; pela área, o leão fica Médio com folga (decisões 7 e 25, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 636,37 kg (em vigor na Etapa 2, 20/10/2026); antes: 742,48 kg pela fórmula nova (`calc6.mjs`, com 157,5 kg), provisório; nenhum peso medido de presa arrastada (`leao-carga.md`) (D-169, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "carga: 15,75 kg de Leve pela conta da D-122, com 157,5 kg (sem carga medida), provisória; sai da massa e não muda com a Força (D-169, D-172)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). Os 57 km/h ficam dentro da arrancada de Schaller (48 a 59) e 23% abaixo do pico por GPS (74,1 km/h, um animal); não corrigido (D-170)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidadesNaturais: Resistência (doenças) +2 fixada em `valores.mjs`; o levantamento propunha 1. A FIV é um vírus só, e o 2 lê nela a resistência a doença em geral; provisório (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 1 pela caça em grupo e pela coalizão, sem fonte de leitura do humano; provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "equilibrio, escalada e natacao: 0 por falta de dado na pesquisa, e não por fato contrário; provisórios (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.largura: 0,50 m estimada pelo Arquiteto, sem fonte; não decide a área (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.altura: é a cernelha, e não o alto da cabeça (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "variantes.leoa: o Alvo sai Médio (126 kg, 0,84 m² pela área do típico escalada), com a largura estimada; a conferir quando houver largura medida (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): sem dado de distância por dia nem de tempo de perseguição. O que há: arrancada curta de 48 a 59 km/h, \"precisa chegar perto\" (Schaller 1972, via Wikipédia) **[medido]**; dorme até 20 horas por dia (ADW)."
-    },
-    {
-      "campos": [],
-      "texto": "variantes.machoGrande: o macho de 272 kg muda de faixa (4, PV 46), mas sem dimensões do recordista o Alvo fica [sem dado] (D-174)."
-    }
-  ],
   "revisao": []
 }

@@ -153,8 +153,7 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "agarrar",
@@ -162,8 +161,7 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Tentáculos constritores",
@@ -172,8 +170,7 @@
       "ataque": "Tentáculo",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "aperta a presa com o corpo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "aperta a presa com o corpo"
     },
     {
       "nome": "língua",
@@ -188,8 +185,7 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "nenhum",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "um alvo por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+      "limiteDeUso": "um alvo por vez. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "puxão",
@@ -204,8 +200,7 @@
       "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Engole inteiro",
@@ -220,8 +215,7 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
-      "justificativa": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Visão total",
@@ -235,8 +229,7 @@
       "efeito": "Os três olhos vigiam todas as direções. Ignora o −2 de Flanqueado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "nenhum. Sem custo"
     },
     {
       "nome": "Absorção contra choques",
@@ -329,93 +322,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Tentáculos constritores"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Tentáculos"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.puxão"
-      ],
-      "texto": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.língua"
-      ],
-      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Engole inteiro"
-      ],
-      "texto": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil mole, nível 2: +1 Corte, +1 Perfuração e +2 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Visão total"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "comprimento"
-      ],
-      "texto": "os 6,7 m do site lidos como comprimento total; as medidas saem da rã-gigante escalada pela massa **[conta]**"
-    },
-    {
-      "campos": [
-        "area"
-      ],
-      "texto": "8,60 m² com os tentáculos estimados; sem eles, 5,00 m², Grande **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataques"
-      ],
-      "texto": "Tentáculo Pesado, Língua Leve e Bocada Média no lugar dos \"Tentáculos e língua\" **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "1, o piso da régua; o site tinha 0"
-    },
-    {
-      "campos": [
-        "visão total",
-        "absorção contra choques"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

@@ -132,16 +132,14 @@
       "efeito": "Grande: de baixo, asas abertas. Médio: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (de baixo, asas abertas) e Médio (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "sangramento",
@@ -156,8 +154,7 @@
       "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
       "dano": "nenhum adicional",
       "resistencia": "nenhuma",
-      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo",
-      "justificativa": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
     }
   ],
   "comoLuta": [
@@ -230,121 +227,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.sangramento"
-      ],
-      "texto": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (de baixo, asas abertas) e Médio (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "ficha"
-      ],
-      "texto": "provisória; revista quando chegar a vez das versões atrozes (D-177)"
-    },
-    {
-      "campos": [
-        "anatomia"
-      ],
-      "texto": "morcego na anatomia ave, provisória (D-175)"
-    },
-    {
-      "campos": [
-        "gigante"
-      ],
-      "texto": "dimensões do vampiro × 15; massa de 27 kg pelo meio, em escala de log, das duas contas da decisão 13 (16,8 e 43,5 kg). Tudo é extrapolação (D-105, D-174)"
-    },
-    {
-      "campos": [
-        "massa",
-        "faixa"
-      ],
-      "texto": "118 kg passaram a 27 kg, e a Faixa 3 a 2; o PV cai de 37 para 28. As dimensões ficaram as do k = 15, o que faz um corpo de 1,2 m × 0,53 m pesar 27 kg: leve para o volume, como um morcego. Se o autor quiser corpo e massa coerentes, um dos dois muda (D-174)"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "3, provisória, abaixo da referência da massa (4,7) pela membrana, sem feito medido (D-158, D-177)"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "4, provisório: dois acima do vampiro (D-176, D-177)"
-    },
-    {
-      "campos": [
-        "pesoErguido"
-      ],
-      "texto": "84,94 kg pela fórmula nova (decisões 14 e 16), provisório: três vezes a massa (D-174)"
-    },
-    {
-      "campos": [
-        "furtividade"
-      ],
-      "texto": "2, um abaixo do vampiro (3). A régua do levantamento diz que o tamanho não entra; o levantamento marca o caso como estranho (porte). Fica o de hoje (D-174)"
-    },
-    {
-      "campos": [
-        "influencia"
-      ],
-      "texto": "2, a de hoje, com a razão de fazer gente recuar, que a v3 do roc recusou como Influência. Eu daria 1; o desvio vai no resumo (D-174)"
-    },
-    {
-      "campos": [
-        "empatia",
-        "escalada"
-      ],
-      "texto": "1, novas, provisórias, herdadas do vampiro (D-174)"
-    },
-    {
-      "campos": [
-        "especialidades"
-      ],
-      "texto": "Furtividade (sobre quem dorme) 1, provisória, herdada do vampiro (D-174)"
-    },
-    {
-      "campos": [
-        "fisica"
-      ],
-      "texto": "não voaria por músculo (Norberg e Norberg 2012). Não se corrige (D-105, D-174)"
-    },
-    {
-      "campos": [
-        "dimensoes.altura",
-        "dimensoes.largura"
-      ],
-      "texto": "escaladas de estimativas do vampiro, sem medida"
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): sem dado próprio (fantasia). Pela base: o vampiro forrageia a 5 a 8 km do abrigo (Nowak 1991) e voa a 13,6 km/h de média (Sánchez-Hernández et al. 2006); o maior morcego real, a raposa-voadora, voa até 50 km por noite (ADW) [comparação]."
-    },
-    {
-      "campos": [
-        "doenca"
-      ],
-      "texto": "raiva em texto, sem id (D-112)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

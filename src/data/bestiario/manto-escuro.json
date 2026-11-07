@@ -115,8 +115,7 @@
       "efeito": "Grande: tentáculos abertos. Médio: de cima, tentáculos juntos, pendurado. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Grande (tentáculos abertos) e Médio (de cima, tentáculos juntos, pendurado). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "constrição",
@@ -125,8 +124,7 @@
       "ataque": "Tentáculos",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "envolve a presa, de preferência pela cabeça, e aperta",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "envolve a presa, de preferência pela cabeça, e aperta"
     },
     {
       "nome": "Escuridão instintiva",
@@ -145,8 +143,7 @@
       "efeito": "trevas mágicas cobrem a área; quem depende de luz fica Na escuridão",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
     }
   ],
   "comoLuta": [
@@ -210,60 +207,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Escuridão instintiva"
-      ],
-      "texto": "Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.constrição"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Grande (tentáculos abertos) e Médio (de cima, tentáculos juntos, pendurado). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "Escuridão instintiva"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [],
-      "texto": "`massa`, exceção à regra de altura e massa do lote: fica a massa do site (18 kg), e as medidas saem dela pelo polvo. Antes, no site: envergadura de 1,5 m, Pequeno. Depois: 2,76 m, Grande de tentáculos abertos e Médio pendurado. Pela envergadura do site seriam cerca de 3 kg, e o PV cairia para 7 **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Pequeno para Grande, pela postura de ataque (D-215). Em jogo: o humano ganha +3 contra ele, e não −3 de longe **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"1d6 +3 perfurante\", 5 Ticks, dano médio 6,5). A ficha fica com os tentáculos, Leves, como o braço do polvo. Dano médio: 6,5 antes; depois, tentáculos 4,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "escuridão instintiva"
-      ],
-      "texto": "poder natural com números da ficha (D-197), base Sombra 4 (Escuridão Viva); o Na escuridão é a condição do livro para \"cegando a visão comum\" (site) **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 2 (D-205)"
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.social",

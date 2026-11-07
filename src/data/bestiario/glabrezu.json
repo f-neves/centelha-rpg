@@ -124,8 +124,7 @@
       "ataque": "Pinças",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "Duas garras",
@@ -134,8 +133,7 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "Até dois golpes por ação"
     },
     {
       "nome": "agarrar",
@@ -143,8 +141,7 @@
       "classe": "livro",
       "ataque": "Pinças",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Desejo traiçoeiro",
@@ -162,8 +159,7 @@
       "efeito": "realiza o pedido ao pé da letra, com uma cláusula escondida que prejudica quem pediu depois. O limite é uma Arte até nível 6 que o concedente possa descrever. Preço e alvo são declarados antes do acordo. O desejo não altera o passado, não cria outro desejo e só traz mortos até onde a Cura permite",
       "dano": "nenhum",
       "resistencia": "nenhum; quem aceita, aceita o preço",
-      "limiteDeUso": "uma vez por história. Limite fixo, sem uso extra nem ampliação",
-      "justificativa": "Teto de Arte 6 e condições do pacto preservadas, pelo alcance do milagre. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por história. Limite fixo, sem uso extra nem ampliação"
     },
     {
       "nome": "Confusão",
@@ -181,8 +177,7 @@
       "efeito": "embaralha a mente do alvo, que fica Confuso. Enquanto Confuso, declara a ação e rola 1d6. Com 1 a 3, faz o declarado. Com 4 ou 5, o Mestre escolhe ação e alvo. Com 6, perde a ação",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
-      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 6. Velocidade 7 pelo grau 5 da base. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia"
     },
     {
       "nome": "Imagem espelhada",
@@ -219,8 +214,7 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: Velocidade 8, alcance 300 m, viajantes: até seis aliados. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ver o invisível",
@@ -230,8 +224,7 @@
         "id": "visao-verdadeira",
         "nivel": 4
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "visão verdadeira sempre ativa",
@@ -245,8 +238,7 @@
       "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "telepatia",
@@ -267,8 +259,7 @@
       "efeito": "o veneno não pega no corpo de demônio. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
+      "limiteDeUso": "Contínuo, sem custo"
     },
     {
       "nome": "medonho",
@@ -289,8 +280,7 @@
       "efeito": "Golpeia nesta ordem: pinça esquerda, pinça direita, garra. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "pinça esquerda, pinça direita, garra. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -392,152 +382,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Ver o invisível"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.teleporte"
-      ],
-      "texto": "Antes: Velocidade 8, alcance 300 m, viajantes: até seis aliados. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Confusão"
-      ],
-      "texto": "Antes: Velocidade 6. Velocidade 7 pelo grau 5 da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas pinças"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "sentidos.visão verdadeira"
-      ],
-      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.visão verdadeira sempre ativa"
-      ],
-      "texto": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "comoLuta.feitiços de área"
-      ],
-      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Desejo traiçoeiro"
-      ],
-      "texto": "Teto de Arte 6 e condições do pacto preservadas, pelo alcance do milagre. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "pinça esquerda, pinça direita, garra. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 4: +4 Corte, +4 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune a veneno"
-      ],
-      "texto": "R23. O efeito conserva apenas a proteção nomeada."
-    },
-    {
-      "campos": [
-        "Confusão"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Imagem espelhada"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "feitiços de área"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "teleporte"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "1.556 kg pelo corpo de base alargado (60% e 40%), contra os 1,8 t do site, no corte das Faixas; a Faixa e o PV não mudam, só o Peso erguido **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Grande pela área; o site dava Enorme, pela régua antiga **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "4, e não 1, pelo texto do site; `compaixao` 0 sobe a 1, o piso da régua **[provisório]**"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "4 pela nota do site, e não o 3 do campo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 3 dados e 7 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as pinças ficam Médias e as garras dos braços menores, Leves; perde dano em relação ao site **[provisório]**"
-    },
-    {
-      "campos": [
-        "artes"
-      ],
-      "texto": "Fortuna 6 (desejo), Fascinação 5 (confusão) e Proteção 5 (imagem espelhada) viraram bases (C-037); Forças 6 ficou sem poder próprio, e o teleporte, sem Arte de base no site, ficou sem regra ainda **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "4, como o hezrou **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.prontidao",

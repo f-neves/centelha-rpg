@@ -120,8 +120,7 @@
       "efeito": "Médio: silhueta vista de lado, de pé. Grande: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Médio (silhueta vista de lado, de pé) e Grande (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Uivo apavorante",
@@ -178,8 +177,7 @@
       "efeito": "Este golpe ignora até 2 pontos de Absorção sobrenatural. A proteção de armadura vestida continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade mordida corrompida. Este golpe ignora até 2 pontos de Absorção sobrenatural. A proteção de armadura vestida continua. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "prata fere inteira",
@@ -193,8 +191,7 @@
       "efeito": "Contra prata, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: prata. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -289,75 +286,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.prata fere inteira"
-      ],
-      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: prata. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.mordida corrompida"
-      ],
-      "texto": "Aplicação à capacidade mordida corrompida. Este golpe ignora até 2 pontos de Absorção sobrenatural. A proteção de armadura vestida continua. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Médio (silhueta vista de lado, de pé) e Grande (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "paralisado de medo"
-      ],
-      "texto": "**[provisório]** R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "180 kg, a do site, com a cernelha do site (fator de forma 1,12 sobre os 160 kg do lobo escalado). Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +7 corte\", dano médio 10,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo. Dano médio: 10,5 antes; depois, 10,5 (sem mudança) **[provisório]**"
-    },
-    {
-      "campos": [
-        "segundo tamanho"
-      ],
-      "texto": "Grande de asas abertas, em voo, com a envergadura estimada em duas vezes o corpo **[provisório]**"
-    },
-    {
-      "campos": [
-        "uivo apavorante",
-        "mordida sinistra"
-      ],
-      "texto": "números da ficha (D-197); o Em pânico e o Abalado são as condições que o site nomeia"
-    },
-    {
-      "campos": [
-        "pele resistente"
-      ],
-      "texto": "resistência a Corte, Perfuração e Impacto, como a do súcubo e do kyton; a prata ficou sem regra ainda **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.envergadura",

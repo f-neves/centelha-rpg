@@ -144,8 +144,7 @@
       "efeito": "Enorme: de baixo, asas abertas. Grande: de lado, asas fechadas, no chão. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, asas fechadas, no chão). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "agarrar",
@@ -153,8 +152,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "investida em mergulho",
@@ -163,8 +161,7 @@
       "ataque": "Garras em mergulho",
       "categoria": "inato",
       "regra": "investida",
-      "texto": "só descendo",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "só descendo"
     },
     {
       "nome": "perseguição aérea",
@@ -178,8 +175,7 @@
       "efeito": "Na entrada da cena, recebe +2 na Iniciativa quando inicia a perseguição aérea. O avanço na ordem não concede ação extra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Sem custo. O uso ativo repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "Aplicação à capacidade perseguição aérea. Na entrada da cena, recebe +2 na Iniciativa quando inicia a perseguição aérea. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
+      "limiteDeUso": "Sem custo. O uso ativo repetido causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "Multiataque",
@@ -193,8 +189,7 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -270,92 +265,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.investida em mergulho"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.perseguição aérea"
-      ],
-      "texto": "Aplicação à capacidade perseguição aérea. Na entrada da cena, recebe +2 na Iniciativa quando inicia a perseguição aérea. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, asas fechadas, no chão). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "perseguição aérea"
-      ],
-      "texto": "**[provisório]** R6. A adaptação corporal vale +1d6 na jogada."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "450 kg, a do site, entre o grifo e o cavalo escalados pelo comprimento do site (fator 0,81 sobre a média dos dois). Nada muda: Faixa e PV ficam os do site **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Grande para Enorme em voo (6,35 m², 5,8% acima do corte); no chão, Grande. O método é o do grifo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 8,5, bico 10,5, garras em mergulho 20,0 (só descendo) **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 7, a do grifo (D-205)"
-    },
-    {
-      "campos": [
-        "prontidao"
-      ],
-      "texto": "1 para 2, o dos \"sentidos de predador\" e das notas do site"
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: A \"investida em mergulho\" do site: só descendo do ar contra alvo no chão, com o corpo inteiro (× 2, a exceção do roc e do grifo, manual 7.6). Jogada: Força 6 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 20 para 14; Investida 20, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    },
-    {
-      "campos": [],
-      "texto": "`investida`, P20-b: sai o dado adicional; soma somente mais uma Força. Média da Investida citada no texto: 23,5 para 20,0. Golpe comum e números da tabela de Ataques preservados."
-    }
-  ],
   "revisao": [
     {
       "campo": "comportamento.dieta",

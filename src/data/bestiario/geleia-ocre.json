@@ -113,8 +113,7 @@
       "efeito": "Médio: a bola. Grande: em repouso, de cima. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Médio (a bola) e Grande (em repouso, de cima). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "agarrar",
@@ -122,8 +121,7 @@
       "classe": "livro",
       "ataque": "Pseudópode",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Abraço constritor",
@@ -243,64 +241,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "sentidos.sentido cego"
-      ],
-      "texto": "Localiza corpos em contato com seu meio até 18 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Médio (a bola) e Grande (em repouso, de cima). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "Ácido que só dissolve carne"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Médio pela bola ativa, na borda de 5% do corte de 0,45 m²; Grande espalhada. O site dizia Grande **[conta]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "62 na zona de transição, pelo \"robusto sobe\"; com \"frágil desce\" seria 49"
-    },
-    {
-      "campos": [
-        "imunidades"
-      ],
-      "texto": "corte, perfuração e raio, pela Divisão; o site gravava `resistencias: corte, perfuracao` e não tinha raio no campo, só no texto. A perfuração está no texto do site e na fonte dele (Pathfinder); se o autor preferir a versão do 5e (corte e raio), a perfuração volta para resistência e sai da Divisão **[provisório]**"
-    },
-    {
-      "campos": [
-        "divisão",
-        "abraço constritor",
-        "ácido"
-      ],
-      "texto": "números sugeridos pela ficha (D-197). O piso de 10 PV para a Divisão é meu"
-    },
-    {
-      "campos": [
-        "briga"
-      ],
-      "texto": "4; o site tinha 5 **[provisório]**"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.briga",

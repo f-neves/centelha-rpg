@@ -102,8 +102,7 @@
       "efeito": "Pequeno: o núcleo, sem o redemoinho. Médio: com o redemoinho ativo. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita. A postura ativa não dispensa a ativação, a duração e os usos do poder correspondente",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Pequeno (o núcleo, sem o redemoinho) e Médio (com o redemoinho ativo). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Redemoinho",
@@ -122,8 +121,7 @@
       "efeito": "vira um pequeno tornado; quem ele atravessa é puxado para dentro e fica Agarrado, girando, até o redemoinho acabar ou até vencer a manobra para se soltar. Quem está duas faixas de massa ou mais acima dele não é puxado",
       "dano": "o da Pancada de vento a quem está dentro, a cada 6 Ticks",
       "resistencia": "esquiva, contra Destreza + Briga dele; quem passa não é puxado",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Tromba pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Domínio do ar",
@@ -151,8 +149,7 @@
       "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo",
-      "justificativa": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
+      "limiteDeUso": "Contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -221,70 +218,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Redemoinho"
-      ],
-      "texto": "Base Tromba pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Pequeno (o núcleo, sem o redemoinho) e Médio (com o redemoinho ativo). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O corpo é constituído pelo próprio elemento."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.feito de vento"
-      ],
-      "texto": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
-    },
-    {
-      "campos": [
-        "Redemoinho"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa",
-        "tamanho"
-      ],
-      "texto": "sem massa; o volume do núcleo (o corpo de base escalado a 1,2 m, 0,0234 m³) entra no PV e na faixa como 23,6 kg, e a área é a do núcleo. O redemoinho inteiro, um cilindro de 1,2 m de diâmetro e 1,2 m de altura, daria 1,36 m³ e uma silhueta de mais de 0,7 m², Médio, contra o Pequeno do site. Pergunta ao autor no lote 25 **[provisório]**"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "3, a do site; o vento empurra, por isso não desce como o fogo **[provisório]**"
-    },
-    {
-      "campos": [
-        "redemoinho"
-      ],
-      "texto": "poder natural de uma vez por cena, e não forma (linha Formas): é um modo de ataque com duração, sem corpo próprio a descrever **[provisório]**"
-    },
-    {
-      "campos": [
-        "segundo Tamanho"
-      ],
-      "texto": "Médio com o redemoinho ativo, o funil de 0,90 m², pela decisão do autor de 24/10/2026 (D-213); o Tamanho principal fica o do núcleo"
-    },
-    {
-      "campos": [
-        "redemoinho",
-        "domínio do ar"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

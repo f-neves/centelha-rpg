@@ -158,16 +158,14 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
-      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "passeio etéreo",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
-      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
     },
     {
       "nome": "Multiataque",
@@ -181,8 +179,7 @@
       "efeito": "Golpeia nesta ordem: casco esquerdo, casco direito, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
-      "justificativa": "casco esquerdo, casco direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
     }
   ],
   "comoLuta": [
@@ -257,116 +254,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.passeio etéreo"
-      ],
-      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Viagem entre planos"
-      ],
-      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.passeio etéreo"
-      ],
-      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Viagem entre planos"
-      ],
-      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Multiataque"
-      ],
-      "texto": "casco esquerdo, casco direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Fumaça sufocante"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "enjoo da fumaça"
-      ],
-      "texto": "**[provisório]** R13 e D-197. Dificuldade fixa sugerida 15 (10 + Centelha 5) para graduar a potência deste fedor."
-    },
-    {
-      "campos": [
-        "Viagem entre planos"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, galopando pelo ar -> uma ação, Velocidade 7, galopando pelo ar. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "passeio etéreo"
-      ],
-      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "1.600 kg no site; 2,18 t na ficha, pelo comprimento do site (4 m) e pelo cavalo do molde. Os 1.600 kg pediriam um fator de forma de 0,74. O fator plausível se mede pelo tipo de corpo: 0,74 cabe numa bípede alta e magra, como a bruxa noturna deste lote, mas não num cavalo, cujas raças mais leves ficam perto de 0,8 a 0,85 do cavalo do molde. O comprimento do molde é o mesmo do pesadelo, 2,45 m, do focinho à cauda; a outra medida que o cavalo do molde traz, 2,55 m sem a cauda, daria 1,93 t e fator 0,83, e mesmo assim o PV que o site dava (75) só fecha acima de 1,8 t. Antes: Faixa 4, e o PV pela massa seria 62. Depois: Faixa 5 e 75 PV, o mesmo PV que o site dava **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Enorme para Grande, pela silhueta do cavalo com 4 m (4,99 m², 17% abaixo do corte do Enorme). Com 1.600 kg seria Grande também. Em jogo: o humano ganha +3 no acerto contra ele, e não +6 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "os \"Cascos flamejantes\" do site (3 dados, 7 Ticks, `inimigos.json`: \"3d6 +16 impacto\", dano médio 26,5) ficam Pesados, 2 dados: 23,0. A \"Mordida\" do site (2 dados, 6 Ticks, \"2d6 +16 perfurante\", 23) fica Leve, como a do cavalo: 17,5. A D-241 levou a Pesado de 2 dados só o golpe de cinco planares, e aqui a classe sai do gesto **[provisório]**"
-    },
-    {
-      "campos": [
-        "cascos em chamas"
-      ],
-      "texto": "+1d6 de fogo por golpe, como no pesadelo, pela Arte do Fogo no nível 1; o site não dava o número **[provisório]**"
-    },
-    {
-      "campos": [
-        "fumaça sufocante"
-      ],
-      "texto": "a do pesadelo, numa esfera de 6 m (\"ainda mais tóxica\", no site); o enjoo ficou sem regra ainda"
-    },
-    {
-      "campos": [
-        "viagem entre planos"
-      ],
-      "texto": "a do pesadelo, com a base Conjuração 5 dele; o site não dava base para o cauchemar **[provisório]**"
-    },
-    {
-      "campos": [
-        "passeio etéreo"
-      ],
-      "texto": "sem regra ainda"
-    },
-    {
-      "campos": [
-        "compaixao"
-      ],
-      "texto": "o 0 do site sobe a 1, o piso da régua"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

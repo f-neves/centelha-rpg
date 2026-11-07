@@ -119,8 +119,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     }
   ],
   "comoLuta": [
@@ -206,84 +205,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil mole, nível 2: +1 Corte, +1 Perfuração e +2 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 1.018,93 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.056,36 kg pelo `calc6.mjs`, provisório (era 1.011,1 kg, a fêmea de 4 t). A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar."
-    },
-    {
-      "campos": [],
-      "texto": "carga: não se aplica (nadador)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23). O nado de 8,3 m/s fica 8% abaixo da conta pela velocidade relativa de Fish 1998, 38% abaixo dos 48 km/h do SeaWorld e 46% abaixo dos 15,5 m/s da Wikipédia, os dois sem método."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Enorme a 1% do corte de 6 m² (6,07 m²), dentro do erro do método; depende da altura e da largura, estimadas pela Bestiarista-5 (D-174). A fêmea típica (2.494,5 kg, 4,83 m²) seria Grande."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes.altura, comprimentoSemCauda e largura: estimadas pela Bestiarista-5 para a fêmea de 6 m [extrapolação, sem dado] e escaladas pelo cubo da massa (× 0,958) para o adulto típico."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a massa de 3.514,75 kg é a média simples dos meios das faixas da fêmea e do macho na ficha de fatos do SeaWorld, que não diz se são animais selvagens; média selvagem dos dois sexos numa só fonte não foi achada. Era 4.000 kg, só pela Wikipédia (\"3 a 4 t\" da fêmea) (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 10 pela comparação com o elefante da mesma massa e com o mamute (13), sem mordida medida (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "inteligencia: 2 pela quinta rodada: o encalhe intencional ensinado aos filhotes (López e López 1985; Guinet 1991; Guinet e Bouvier 1995, conferidos pela bibliografia de McInnes e colegas 2020); provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 2, linha nova, pela caça coordenada; sem medida de leitura de humano. Provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua; o levantamento propunha 4 pelo nado de 160 km por dia, que ficou na nota de pesquisa (jornada)."
-    },
-    {
-      "campos": [],
-      "texto": "especialidade Resistência (frio) +2: toma o lugar da Absorção extra de gordura (Corte 1, Impacto 1) de hoje."
-    },
-    {
-      "campos": [],
-      "texto": "especialidade Briga (caça em grupo) +1: provisória (D-174); vale com o grupo."
-    },
-    {
-      "campos": [],
-      "texto": "ataques: o tapa de cauda ficou em Manobras, como texto. Como ataque (cauda, × 2) daria 2d6 + 20 = 27; a evidência real é só atordoar peixe. Escolha da Bestiarista-5, para os nadadores ficarem iguais (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "ataques.mordida.nivel: N2 sem força de mordida medida [extrapolação], pelo mosassauro."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "jornada (nota de pesquisa, não é regra): nada até 160 km por dia (ADW) [medido, sem método na fonte]; caça baleias por exaustão (Wikipédia); cruzeiro ótimo de 2,6 a 3 m/s, média observada de 1,6 m/s (Williams e Noren 2009)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

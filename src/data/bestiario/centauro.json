@@ -119,24 +119,21 @@
       "efeito": "um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro). Quando combina arma empunhada e parte do corpo, usa o custo e as penalidades da empunhadura dupla",
       "dano": "o de cada golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "a cada ação",
-      "justificativa": "Antes: Arma e parte do corpo seguem os custos da empunhadura dupla. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "a cada ação"
     },
     {
       "nome": "Investida",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "investida",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "investida"
     },
     {
       "nome": "Armas de porte humano",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "usa as armas do livro feitas para gente, sem perda",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "texto": "usa as armas do livro feitas para gente, sem perda"
     }
   ],
   "comoLuta": [
@@ -212,57 +209,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Armas de porte humano"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Investida"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ataque duplo"
-      ],
-      "texto": "Antes: Arma e parte do corpo seguem os custos da empunhadura dupla. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "forca",
-        "vigor"
-      ],
-      "texto": "7 e 6, pelo cavalo do molde; o site tinha 5 e 5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "espada longa e azagaia do livro **[provisório]**"
-    },
-    {
-      "campos": [
-        "carga"
-      ],
-      "texto": "20% da massa, a fração do cavalo **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque duplo"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.forca",

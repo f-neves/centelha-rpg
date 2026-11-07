@@ -89,8 +89,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Ignora a penalidade da mão inábil. Paga os custos normais de empunhadura dupla",
-      "justificativa": "Antes: Só cai a penalidade da mão inábil, pela ambidestria. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Ignora a penalidade da mão inábil. Paga os custos normais de empunhadura dupla"
     },
     {
       "nome": "Explosão de chamas",
@@ -139,8 +138,7 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo",
-      "justificativa": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+      "limiteDeUso": "uma vez por ação, sem custo"
     }
   ],
   "comoLuta": [
@@ -208,46 +206,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Duas lâminas"
-      ],
-      "texto": "Antes: Só cai a penalidade da mão inábil, pela ambidestria. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Golpe na brecha"
-      ],
-      "texto": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "duas lâminas"
-      ],
-      "texto": "a empunhadura dupla do livro, com −1d6 nas duas mãos; o site dizia \"com igual destreza\" (perda anotada no relato)"
-    },
-    {
-      "campos": [
-        "bloqueio"
-      ],
-      "texto": "2; o site não gravava Bloqueio **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperanca"
-      ],
-      "texto": "3; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque furtivo",
-        "explosão de chamas",
-        "cegueira pela luz"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

@@ -96,8 +96,7 @@
         "id": "voz-de-lider",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Coordenar",
@@ -107,8 +106,7 @@
         "id": "coordenar",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Tom de Autoridade",
@@ -118,8 +116,7 @@
         "id": "tom-de-autoridade",
         "nivel": 1
       },
-      "categoria": "inato",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "categoria": "inato"
     },
     {
       "nome": "Estandarte de Comando",
@@ -133,8 +130,7 @@
       "efeito": "à escolha dele, os aliados somam +1 no ataque ou +1 na Defesa; com o Coordenar, um deles ainda age no melhor momento",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma ordem por ação dele",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "uma ordem por ação dele"
     },
     {
       "nome": "Quebra de moral",
@@ -148,8 +144,7 @@
       "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "uma vez por cena",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "uma vez por cena"
     },
     {
       "nome": "Ponto de colapso",
@@ -163,16 +158,14 @@
       "efeito": "cada um faz um teste de Bravura (a Virtude sozinha) contra Dificuldade 7; quem falha fica Abalado e tende a recuar. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Bravura, o teste de Virtude",
-      "limiteDeUso": "uma vez",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "limiteDeUso": "uma vez"
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
-      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
     }
   ],
   "comoLuta": [
@@ -239,82 +232,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Sem inimizades naturais"
-      ],
-      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ponto de colapso"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Quebra de moral"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Estandarte de Comando"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Tom de Autoridade"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Coordenar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Voz de Líder"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "Quebra de moral"
-      ],
-      "texto": "**[provisório]** R5 e D-197. Jogada sugerida de Influência + Intimidação para a imposição mental deste poder."
-    },
-    {
-      "campos": [
-        "estrategia"
-      ],
-      "texto": "o `tatica` do site não existe no livro (manual 3.5, D-190) **[provisório]**"
-    },
-    {
-      "campos": [
-        "escudo"
-      ],
-      "texto": "Variante, porque o site não o põe no equipamento"
-    },
-    {
-      "campos": [
-        "estandarte de comando",
-        "quebra de moral",
-        "ponto de colapso"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "card e equipamento"
-      ],
-      "texto": "a placa está sempre vestida (D-188)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.estrategia",

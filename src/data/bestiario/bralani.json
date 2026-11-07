@@ -133,8 +133,7 @@
       "efeito": "vira a forma élfica (Variante) ou volta ao redemoinho; só no redemoinho voa e lança a Rajada. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Rajada cortante",
@@ -155,8 +154,7 @@
       "efeito": "uma lâmina de ar corta todos na linha. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, Corte",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Antes: a ativação e a resistência ainda citavam a jogada de ataque. A fonte diz que fere todos numa linha. R36: apenas os alvos resolvem a defesa de área. Histórico anterior: Área resolvida pelos alvos. uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe.. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Ventos a serviço",
@@ -175,8 +173,7 @@
       "efeito": "à escolha: ofusca a visão de um inimigo (Ofuscado); uma rajada que empurra 3 m; uma ilusão passageira de vento e luz; ou fecha ferimentos graves de um aliado. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece",
       "dano": "nenhum; a cura devolve 2d6 + Centelha PV",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10, para o ofuscar e a rajada",
-      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis",
-      "justificativa": "Base Empurrão pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
     },
     {
       "nome": "Resistência à magia",
@@ -309,114 +306,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Rajada cortante"
-      ],
-      "texto": "Antes: a ativação e a resistência ainda citavam a jogada de ataque. A fonte diz que fere todos numa linha. R36: apenas os alvos resolvem a defesa de área. Histórico anterior: Área resolvida pelos alvos. uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe.. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "ataques.Rajada cortante"
-      ],
-      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
-    },
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "Antes: \"forma vento\" nas marcas das Manobras. Corrigido para \"forma de vento\", igual ao nome declarado em Formas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ventos a serviço"
-      ],
-      "texto": "Base Empurrão pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Forma de vento"
-      ],
-      "texto": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidades.atirador"
-      ],
-      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "Forma de vento"
-      ],
-      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
-    },
-    {
-      "campos": [
-        "Rajada cortante"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador) -> uma ação, Velocidade 5, a jogada da tabela (o maior entre Vigor, Destreza e Percepção + Atirador). O efeito sai no Tick do Golpe. Pela régua da Arte de base. R3 e D-197. P/G/R do ataque 3/1/3 -> 1/1/3 para o golpe sair na Velocidade 5 do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Ventos a serviço"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 17 da fonte passa a grau 2 (+4)."
-    },
-    {
-      "campos": [
-        "formas"
-      ],
-      "texto": "forma de vento principal e forma élfica (D-201) **[provisório]**"
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "80 kg também no redemoinho **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "pele ao vento"
-      ],
-      "texto": "resistência a Corte, Perfuração e Impacto **[provisório]**"
-    },
-    {
-      "campos": [
-        "temperança"
-      ],
-      "texto": "2; o site tinha 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "forma de vento",
-        "rajada cortante",
-        "ventos a serviço"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [],
-      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; a Rajada cortante só na forma de vento, como já dizia a Forma de vento; os Ventos a serviço, a resistência à magia sem regra e a Pele ao vento em todas (a forma élfica não muda os Elementos na Variante, e herda as resistências); o \"como luta\" em duas linhas; a Respiração, a Camuflagem e os Traços da forma élfica na linha dela em Variantes. Aptidões iguais e nenhuma Arte nas duas **[provisório]**"
-    },
-    {
-      "campos": [
-        "Resistência à magia 17"
-      ],
-      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
-    },
-    {
-      "campos": [],
-      "texto": "`formas.voo` (Fase 5, F5.1, D-263, 29/10/2026): na forma élfica, \"Voo: 0\" passa a \"Voo: não voa\", como na principal; no JSON, o nulo cancela o voo herdado (a cargo da Executora). Não ganha nem perde voo."
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

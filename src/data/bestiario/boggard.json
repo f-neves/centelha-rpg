@@ -212,28 +212,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "Grito aterrorizante"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "maça estrela do livro, sem armadura **[provisório]**"
-    },
-    {
-      "campos": [
-        "língua grudenta",
-        "grito aterrorizante",
-        "andar do pântano"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

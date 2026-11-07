@@ -164,8 +164,7 @@
       "classe": "livro",
       "categoria": "inato",
       "ataque": "Garras",
-      "regra": "empunhadura-dupla",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "empunhadura-dupla"
     },
     {
       "nome": "paralisia do olho maligno",
@@ -251,64 +250,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Garras"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "Olho maligno"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, encarando o alvo -> uma ação, Velocidade 5, encarando o alvo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Resistência à magia"
-      ],
-      "texto": "**[provisório]** R7. SR 15 da fonte passa a grau 1 (+2)."
-    },
-    {
-      "campos": [
-        "paralisia do olho maligno"
-      ],
-      "texto": "**[provisório]** R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "aparência"
-      ],
-      "texto": "1 pela D-205; o site tinha 4 **[provisório]**"
-    },
-    {
-      "campos": [
-        "compaixão"
-      ],
-      "texto": "1; o site tinha 2 **[provisório]**"
-    },
-    {
-      "campos": [
-        "olho maligno",
-        "aparência horrenda",
-        "anfíbia"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [
-        "paralisia do olho maligno"
-      ],
-      "texto": "Antes: paralisia por 12 Ticks."
-    },
-    {
-      "campos": [
-        "Resistência à magia 15"
-      ],
-      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
-    }
-  ],
   "revisao": [
     {
       "campo": "aparencia",

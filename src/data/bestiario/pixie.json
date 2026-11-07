@@ -125,8 +125,7 @@
       "efeito": "Miúdo: asas abertas. Minúsculo: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Miúdo (asas abertas) e Minúsculo (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Invisibilidade natural",
@@ -144,8 +143,7 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
-      "justificativa": "A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
     },
     {
       "nome": "Flecha do sono ou do esquecimento",
@@ -165,8 +163,7 @@
       "efeito": "à escolha da pixie antes de atirar: sono (o alvo fica Dormindo) ou esquecimento (o alvo perde as memórias da última hora). O sono leva a Dormindo, com Defesas 0. Qualquer dano acorda a vítima, assim como uma ação de Velocidade 5 de um aliado para sacudi-la",
       "dano": "o da Flecha",
       "resistencia": "a jogada da flecha da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa só leva o dano",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Base Esquecer pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Glamour distrativo",
@@ -287,85 +284,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "ataques.Flecha"
-      ],
-      "texto": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Flecha do sono ou do esquecimento"
-      ],
-      "texto": "Base Esquecer pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Invisibilidade natural"
-      ],
-      "texto": "A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Miúdo (asas abertas) e Minúsculo (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "Flecha do sono ou do esquecimento"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "Glamour distrativo"
-      ],
-      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "0,4 kg pela altura do site; os 3 kg do site ficam fora de um corpo de 30 cm (D-187) **[conta]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "2, pela tabela de PV com a massa calculada; com os 3 kg do site seriam 6"
-    },
-    {
-      "campos": [
-        "forca"
-      ],
-      "texto": "0, pelo critério da D-167; o site tinha 1"
-    },
-    {
-      "campos": [
-        "equipamento"
-      ],
-      "texto": "o arco curto do livro na escala dela **[provisório]**"
-    },
-    {
-      "campos": [
-        "atirador",
-        "briga"
-      ],
-      "texto": "4 e 2; o site tinha só Briga 4 **[provisório]**"
-    },
-    {
-      "campos": [
-        "invisibilidade",
-        "flecha do sono ou do esquecimento",
-        "glamour distrativo",
-        "fuga élfica",
-        "voo veloz"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidades.atirador",

@@ -91,8 +91,7 @@
       "classe": "livro",
       "ataque": "Punho de ferro",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "derrubar",
@@ -100,8 +99,7 @@
       "classe": "livro",
       "ataque": "Punho de ferro",
       "categoria": "inato",
-      "regra": "derrubar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "derrubar"
     },
     {
       "nome": "empurrar",
@@ -109,8 +107,7 @@
       "classe": "livro",
       "ataque": "Punho de ferro",
       "categoria": "inato",
-      "regra": "empurrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "empurrar"
     },
     {
       "nome": "Sopro de gás venenoso",
@@ -124,8 +121,7 @@
       "efeito": "exala uma nuvem de gás nocivo; quem a respira é envenenado (Veneno e doença). Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "o do veneno",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
-      "justificativa": "Área resolvida pelos alvos. uma ação, Velocidade 5. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada."
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
     },
     {
       "nome": "Lento pelo raio",
@@ -167,8 +163,7 @@
       "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Neste material, aplicam-se Lento pelo raio, Curado pelo fogo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     }
   ],
   "comoLuta": [
@@ -262,114 +257,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.empurrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.derrubar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "comoLuta.golpes poderosos"
-      ],
-      "texto": "O ferimento excepcional fica na descrição, como decidiu o autor."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.imune à magia"
-      ],
-      "texto": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sopro de gás venenoso"
-      ],
-      "texto": "Área resolvida pelos alvos. uma ação, Velocidade 5. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 10: +10 Corte, +10 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. Corpo fabricado ou animado; herda C-002."
-    },
-    {
-      "campos": [
-        "Sopro de gás venenoso"
-      ],
-      "texto": "**[provisório]** P3. Manifestação mágica do construto. Um uso grátis por cena permite o ataque de abertura. A Velocidade conserva a do sopro ou da Mordida. valor de molde, para a bancada (uso extra de 1 de Energia)."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "4.960 kg pelo ferro maciço (0,632 m³ × 7.850 kg/m³); o site dizia 2.270 kg, que daria 3.590 kg/m³, só numa casca oca. Com 2.270 kg, a Faixa e o PV seriam os mesmos, e o peso erguido, menor **[provisório]**"
-    },
-    {
-      "campos": [
-        "vigor"
-      ],
-      "texto": "7 por julgamento (ferro maciço, acima do granito); o site tinha 1 **[provisório]**"
-    },
-    {
-      "campos": [
-        "couracaNivel"
-      ],
-      "texto": "10, ferro maciço, um nível acima do granito **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o Punho Pesada pela \"força redobrada\", com o precedente do gigante da colina; os 2 dados do site ficam **[provisório]**"
-    },
-    {
-      "campos": [
-        "elementos"
-      ],
-      "texto": "imune a fogo pela habilidade publicada; a fraqueza a raio, a do campo"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "os números do gás, entre a peçonha de víbora e o hálito de basilisco do livro **[provisório]**"
-    },
-    {
-      "campos": [
-        "atributos sociais",
-        "vontade",
-        "virtudes"
-      ],
-      "texto": "decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
-    },
-    {
-      "campos": [
-        "sopro de gás venenoso",
-        "lento pelo raio",
-        "curado pelo fogo"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

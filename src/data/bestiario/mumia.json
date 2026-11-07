@@ -100,8 +100,7 @@
       "efeito": "a carne do alvo começa a apodrecer: ele fica Doente e não recupera PV por Arte nem por Técnica de cura enquanto a podridão durar; cada novo golpe que pega soma um degrau de Desgaste",
       "dano": "nenhum além do golpe",
       "resistencia": "corpo, contra a jogada do golpe; quem passa não pega a podridão daquele golpe",
-      "limiteDeUso": "um por golpe. Sem custo",
-      "justificativa": "Base Praga pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "um por golpe. Sem custo"
     },
     {
       "nome": "Aura de desespero",
@@ -120,8 +119,7 @@
       "efeito": "quem entra na área pela primeira vez na cena sente o peso da tumba; na falha, fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Influência + Briga da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune até o fim da cena",
-      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder",
-      "justificativa": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
     },
     {
       "nome": "ataduras",
@@ -225,75 +223,6 @@
     ],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Aura de desespero"
-      ],
-      "texto": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Podridão da múmia"
-      ],
-      "texto": "Base Praga pelo efeito descrito. A ficha conserva seus próprios números."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "fisiologia.tipoCorpo"
-      ],
-      "texto": "R21. O cadáver é animado após a morte."
-    },
-    {
-      "campos": [
-        "fisiologia.recuperacao"
-      ],
-      "texto": "R21. Recupera-se com o tempo em repouso na tumba. O meio acompanha o vínculo ou alimento já descrito na ficha."
-    },
-    {
-      "campos": [
-        "fisiologia.imunidadesMentais"
-      ],
-      "texto": "R22. O juramento de guardar a tumba prevalece sobre comandos alheios e terror."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "60 kg, e não os 85 kg do site, que passam do corpo vivo de base da mesma altura; a Faixa e o PV não mudam (D-187) **[extrapolação]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "1, as ataduras endurecidas **[provisório]**"
-    },
-    {
-      "campos": [
-        "musculatura"
-      ],
-      "texto": "1, músculo seco **[provisório]**"
-    },
-    {
-      "campos": [
-        "podridão"
-      ],
-      "texto": "Doente e sem cura mágica até um rito de nível 4 (Cura 4 tira doença no `artes.json`) **[provisório]**"
-    },
-    {
-      "campos": [
-        "podridão da múmia",
-        "aura de desespero"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    }
-  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

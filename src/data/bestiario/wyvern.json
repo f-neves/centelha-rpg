@@ -169,8 +169,7 @@
       "efeito": "Enorme: de baixo, asas abertas. Grande: de lado, pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "garras em sequência",
@@ -178,8 +177,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "rajada"
     },
     {
       "nome": "agarrar",
@@ -187,8 +185,7 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "voar com a presa",
@@ -202,8 +199,7 @@
       "efeito": "Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade voar com a presa. Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "Ferrão venenoso",
@@ -218,8 +214,7 @@
       "efeito": "inocula a Peçonha de wyvern (Veneno e doença)",
       "dano": "o do Ferrão",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
-      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
     },
     {
       "nome": "Voo em mergulho",
@@ -311,97 +306,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.agarrar"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.garras em sequência"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.voar com a presa"
-      ],
-      "texto": "Aplicação à capacidade voar com a presa. Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil rígida, nível 3: +3 Corte, +3 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Ferrão venenoso"
-      ],
-      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
-    },
-    {
-      "campos": [
-        "Ferrão venenoso"
-      ],
-      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
-    },
-    {
-      "campos": [
-        "centelha"
-      ],
-      "texto": "3, o campo; a nota da fonte dizia 2"
-    },
-    {
-      "campos": [
-        "segundoTamanho"
-      ],
-      "texto": "Grande pela silhueta de lado em formas simples, sem a cauda fina **[provisório]**"
-    },
-    {
-      "campos": [
-        "couraca"
-      ],
-      "texto": "nível 3 **[provisório]**"
-    },
-    {
-      "campos": [
-        "veneno"
-      ],
-      "texto": "Peçonha de wyvern pelo padrão do \"Ferrão de gigante\" **[provisório]**"
-    },
-    {
-      "campos": [
-        "ferrão",
-        "voo em mergulho"
-      ],
-      "texto": "números sugeridos pela ficha (D-197)"
-    },
-    {
-      "campos": [],
-      "texto": "`ataque`, justificativa anterior: A \"Investida em mergulho\" do site: só ao fim de um mergulho, quando a massa do corpo inteiro desce sobre a presa (× 2), como as Garras em mergulho do grifo. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
-    },
-    {
-      "campos": [],
-      "texto": "`dano`, D-266 e P20-b: golpe comum 22 para 16; Investida 22, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Veneno: o do ferrão, um \"veneno debilitante (penalidade cumulativa por rodada)\" (site), \"lento e cruel\" (lore)."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Veneno no jogo (provisório): Peçonha de wyvern · Potência 16 · 1 Tick (sangue) · a cada 1 minuto · pool 4 (Força) · Desgaste 1 · pelo Ferrão. Os números do \"Ferrão de gigante\" dos moldes (escorpião-gigante, formiga-gigante), com a Força do debilitante, como na peçonha de drider."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

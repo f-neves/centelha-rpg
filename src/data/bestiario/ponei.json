@@ -127,8 +127,7 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar",
-      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem atropelar ligado ao Coice. Não declara uma investida própria."
+      "texto": "Atropelar"
     }
   ],
   "comoLuta": [
@@ -206,76 +205,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.Atropelar"
-      ],
-      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem atropelar ligado ao Coice. Não declara uma investida própria."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [],
-      "texto": "alvo: Médio pela silhueta de lado (1,13 m², `calc.mjs`); a ficha de hoje tinha Médio por encaixe, com a conta antiga em 4,01. A nota de borda de hoje cai (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "massa (13/10/2026): 220 kg (em vigor na Etapa 2, 20/10/2026); antes: 210 kg com fonte (Bukhari 2021 dá aos pôneis de Matsuura 2016 de 192 a 227 kg). Comparação: o pônei de Taishu, de 216 a 265 kg, trotou com menos de 100 kg, 43% da massa (Matsuura 2013) (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "fonte: a cernelha de 1,22 m e as cargas de 10 a 70 kg continuam só pelo resumo de Matsuura 2016 (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "dimensoes: comprimentos e largura são o cavalo reduzido pela razão das cernelhas, sem fonte; a altura até a nuca é a proporção do cavalo (D-147, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "carga: Leve de 60 kg é a maior carga do teste abaixo dos 70 kg em que a marcha piorou; leitura minha do resumo. Provisória (D-122, D-169, D-172, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "pesoErguido: 681 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente. Pela mesma conta o cavalo ergue 698 kg, quase o mesmo com mais que o dobro da massa: a Musculatura 3 do pônei contra a 2 do cavalo compensa a massa. Se a outra frente achar que a Musculatura pesa demais na conta, o pônei é o primeiro caso a olhar (D-162, D-169, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "vigor: 4, um abaixo do cavalo, sem dado de frio, fome ou doença do pônei; provisório (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "musculatura: 3 pela carga proporcional (33% contra 20% do cavalo), que mede carga no lombo e não força de empurrar; provisório (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua, sem feito acima do normal; falta a distância por dia do pônei (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "empatia: 2 pelo cavalo, mesma espécie, sem número; provisória (D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "velocidade: congelada (decisão 23), pela fórmula de hoje com o Alvo Médio (D-170)."
-    },
-    {
-      "campos": [],
-      "texto": "forca: 6 por encaixe, um abaixo do cavalo; sem feito de arrasto medido (D-158, D-174)."
-    },
-    {
-      "campos": [],
-      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
-    },
-    {
-      "campos": [],
-      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: cernelha de 1,02 a 1,22 m na raça de Yonaguni (Porter 2016)."
-    }
-  ],
   "revisao": [
     {
       "campo": "corpo.altura",

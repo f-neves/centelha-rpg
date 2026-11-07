@@ -98,8 +98,7 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "engolir inteiro",
@@ -113,8 +112,7 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
-      "justificativa": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
     },
     {
       "nome": "capotar embarcações",
@@ -128,8 +126,7 @@
       "efeito": "Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "Aplicação à capacidade capotar embarcações. Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação. valor de molde, para a bancada."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "elusiva no mar",
@@ -219,74 +216,6 @@
       }
     ]
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.constrição"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.capotar embarcações"
-      ],
-      "texto": "Aplicação à capacidade capotar embarcações. Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.engolir inteiro"
-      ],
-      "texto": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "perfilCouraca"
-      ],
-      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "14,5 t pelo comprimento do site; o site dizia só \"dezenas de t\". O PV fica o do site (95, na zona de transição) **[conta]**"
-    },
-    {
-      "campos": [
-        "tamanho"
-      ],
-      "texto": "Imenso para Enorme (16,4 m²). Em jogo: o humano ganha +6, e não +9, contra ela **[provisório]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "na zona de transição, ficou na faixa de cima (robusta), a do site. Descendo seria 90 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +18 perfurante\", 7 Ticks, dano médio 28,5). A ficha fica com a mordida, Média, pelo gesto. Dano médio: 28,5 antes; depois, mordida 21,5 **[provisório]**"
-    },
-    {
-      "campos": [
-        "imune ao frio, resiste ao fogo"
-      ],
-      "texto": "imunidade a Gelo e resistência a Fogo, pela linha Elementos"
-    },
-    {
-      "campos": [
-        "absorcao"
-      ],
-      "texto": "Corte e Perfuração 17 para 5, só a Centelha; o Impacto vai de 16 a 16"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 4 (D-205)"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",

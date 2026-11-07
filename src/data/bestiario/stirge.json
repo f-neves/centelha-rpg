@@ -119,8 +119,7 @@
       "efeito": "Miúdo: de baixo, asas abertas. Minúsculo: asas fechadas, preso ao alvo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo",
-      "justificativa": "R31. Miúdo (de baixo, asas abertas) e Minúsculo (asas fechadas, preso ao alvo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+      "limiteDeUso": "contínuo, sem custo"
     },
     {
       "nome": "fixação",
@@ -128,8 +127,7 @@
       "classe": "livro",
       "ataque": "Probóscide",
       "categoria": "inato",
-      "regra": "agarrar",
-      "justificativa": "Manobra, treino ou traço próprio do corpo."
+      "regra": "agarrar"
     },
     {
       "nome": "Sugar sangue",
@@ -144,8 +142,7 @@
       "efeito": "Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção",
       "dano": "o do Sangrando",
       "resistencia": "nenhum; tirá-lo pelo Agarrar acaba o efeito",
-      "limiteDeUso": "até se saciar, depois de tirar 6 PV do alvo. Sem custo",
-      "justificativa": "Aplicação à capacidade Sugar sangue. Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção. valor de molde, para a bancada."
+      "limiteDeUso": "até se saciar, depois de tirar 6 PV do alvo. Sem custo"
     }
   ],
   "comoLuta": [
@@ -213,56 +210,6 @@
     "resistencias": [],
     "imunidades": []
   },
-  "notas": [
-    {
-      "campos": [
-        "habilidadesEspeciais.fixação"
-      ],
-      "texto": "Manobra, treino ou traço próprio do corpo."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Sugar sangue"
-      ],
-      "texto": "Aplicação à capacidade Sugar sangue. Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção. valor de molde, para a bancada."
-    },
-    {
-      "campos": [
-        "habilidadesEspeciais.Posturas de combate"
-      ],
-      "texto": "R31. Miúdo (de baixo, asas abertas) e Minúsculo (asas fechadas, preso ao alvo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
-    },
-    {
-      "campos": [
-        "massa"
-      ],
-      "texto": "100 g pela envergadura do site e o morcego (fator 1,5); o site dizia só \"menos de 1 kg\" **[conta]**"
-    },
-    {
-      "campos": [
-        "pv"
-      ],
-      "texto": "17 para 2. Com 100 g, na zona de transição, a tabela dá o Vigor; descendo seria 1 **[provisório]**"
-    },
-    {
-      "campos": [
-        "ataque"
-      ],
-      "texto": "o site gravava um ataque só, \"Garras e presas\", a probóscide (`inimigos.json`: \"1d6 +2 perfurante\", 5 Ticks, dano médio 5,5). A ficha fica com a probóscide, Leve. Dano médio: 5,5 antes; depois, probóscide 3,5, mais o Sangrando enquanto preso **[provisório]**"
-    },
-    {
-      "campos": [
-        "sugar sangue"
-      ],
-      "texto": "o Sangrando é a condição do livro que o site nomeia (\"Sangramento\"); o limite de 6 PV para se saciar é da ficha (D-197) **[provisório]**"
-    },
-    {
-      "campos": [
-        "aparencia"
-      ],
-      "texto": "5 para 2 (D-205)"
-    }
-  ],
   "revisao": [
     {
       "campo": "couraca",
