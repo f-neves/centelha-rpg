@@ -145,7 +145,7 @@ Não há `atrib`: o motor tira o Atributo da Habilidade. Disparo usa Vigor; Atir
 | `imagens` | lista de caminhos | sim | · | Visual, "Imagem atual"; o site |
 | `revisao` | lista de `{campo, motivo}` (D-222); só no JSON-fonte (D-224) | sim (pode ser vazia) | · | as Notas de observação e as marcas `[provisório]` e `[extrapolação]` (seção 7) |
 
-Nas Notas de observação, o nome com o prefixo do campo (`` `ataques.Sopro de frio` ``) aponta para o campo e entra na `revisao` como o nome solto; o que não aponta dá aviso, e não some calado (F1, 06/11/2026). As Notas não vão ao JSON fora da `revisao` (D-224; F1a do autor, 06/11/2026).
+Nas Notas de observação, o nome com o prefixo do campo (`` `ataques.Sopro de frio` ``) aponta para o campo e entra na `revisao` como o nome solto; o que não aponta dá aviso, e não some calado (F1, 06/11/2026). As Notas não vão ao JSON fora da `revisao` (D-219 e D-222; F1a do autor, 06/11/2026), e a `revisao` fica só no JSON-fonte, fora do JSON público (D-224).
 
 Cada item de `habilidadesEspeciais`:
 
