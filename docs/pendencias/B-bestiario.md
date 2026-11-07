@@ -436,7 +436,7 @@ limitações conhecidas, que são as três de baixo.
   - **07/11/2026:** Tridente, Florete e Forcado entraram no catálogo (F3, D-360); a Besta Média diz que "besta pesada" é o
     nome da fonte (G3, D-365); a arma de outro tamanho tem a régua do dado base no motor (G1, D-363). Falta a rocha arremessada,
     e as fichas que usam equivalência esperam o lote da Bestiarista (L18).
-- [ ] **B25 · [FAZER] Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366).** Registrado em 07/11/2026. A
-  regra por peso e Força para empunhar arma de outro tamanho depende do peso das armas no catálogo (D-366). Por ora o livro diz
-  "Quem empunha" (Cap. XIII): a arma fica um degrau mais leve para quem é uma categoria maior, e um mais pesada para quem é uma
-  menor; além da Pesada, e enquanto o catálogo não tiver o peso das armas, o Mestre julga.
+- [ ] **B25 · [FAZER] Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366).** Registrado em 07/11/2026.
+  A regra por peso e Força para empunhar arma de outro tamanho: a faixa de peso que cada Força consegue usar, sobre o peso que o
+  catálogo já tem (D-366). Por ora o livro diz "Quem empunha" (Cap. XIII): a arma fica um degrau mais leve para quem é uma
+  categoria maior, e um mais pesada para quem é uma menor; além da Pesada, o Mestre julga.
