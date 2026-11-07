@@ -1655,7 +1655,7 @@
         "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo recebe 2 × (nível da Arte) de penalidade. Não causa dano.",
+    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo recebe 2 × (nível da Arte) de penalidade. Não causa dano, e não é o Paralisado das Condições: o alvo se move e age, com a penalidade.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -4735,7 +4735,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Apaga toda a luz da área, mágica ou não: tocha, sol, feitiço. Ninguém enxerga nada lá dentro, exceto você e quem você escolher ao conjurar.",
+    "efeito": "Apaga toda a luz da área, mágica ou não: tocha, sol, feitiço. Ninguém enxerga nada lá dentro, exceto você e quem você escolher ao conjurar. Quem está dentro e não enxerga fica Cego.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",
@@ -5851,7 +5851,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado.",
+    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado. No escuro total, quem está dentro fica Cego; onde sobra penumbra, Ofuscado, a critério do Mestre.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",
@@ -6215,7 +6215,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "O alvo enfraquece: Força e Vigor contam um nível abaixo por nível investido, com tudo o que isso arrasta atrás (dano, carga e as jogadas), menos os PV e a Absorção. Não fere; só tira o que sustenta.",
+    "efeito": "O alvo enfraquece: Força e Vigor contam um nível abaixo por nível investido, com tudo o que isso arrasta atrás (dano, carga e as jogadas), menos os PV e a Absorção. Não fere; só tira o que sustenta. É o Atributo enfraquecido das Condições, pela duração da Arte.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",

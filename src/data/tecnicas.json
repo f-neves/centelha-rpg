@@ -293,7 +293,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Arremessa o alvo (empurrão) e o **atordoa** (perde Ticks) se ele falhar num teste de Vigor.",
+    "texto": "Arremessa o alvo (empurrão) e o **atordoa**: o alvo testa Vigor + Resistência contra 10 + 5 × Margem do golpe e, se falhar, fica Atordoado, com o atraso da tabela das Condições.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"

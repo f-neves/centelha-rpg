@@ -39,7 +39,7 @@ está na seção 3.
 
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
-| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 26 | 1 | 9 | 17 | 6 | 4 | 0 | 0 | 0 |
+| A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 25 | 1 | 10 | 17 | 5 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 25 | 18 | 0 | 7 | 7 | 10 | 0 | 0 | 0 | 1 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 19 | 14 | 0 | 5 | 7 | 1 | 0 | 0 | 0 | 6 |
@@ -52,7 +52,7 @@ está na seção 3.
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 22 | 22 | 0 | 0 | 0 | 22 | 0 | 0 | 0 | 0 |
-| | **Total** | | **392** | **283** | **4** | **105** | **107** | **69** | **8** | **10** | **81** | **12** |
+| | **Total** | | **392** | **282** | **4** | **106** | **107** | **68** | **8** | **10** | **81** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -346,9 +346,8 @@ Os itens abertos e parciais de cada tema, com a marca e o título; os fechados v
 | A32 | aberto | DECIDIR | O mortal conjura no livro, e o código ainda bloqueia. |
 | A33 | aberto | DECIDIR | O campo `custo.mana` dos níveis do catálogo das Artes. |
 | A34 | aberto | FAZER | Recalibração das Artes: ART-34, ART-5, ART-38 e ART-40 (D-061). |
-| A35 | aberto | FAZER | Artes e Técnica que usam o nome das condições com outro efeito (Depois-3 da Revisora, 04/11/2026). |
 
-Fechados (9): A12, A17, A18, A22, A23, A27, A21, A22, A20.
+Fechados (10): A12, A17, A18, A22, A23, A27, A21, A22, A20, A35.
 
 ### B · Bestiário
 
