@@ -45,7 +45,10 @@ const ataqueNatural = z.object({
   // F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa da linha de Ataques, que o card mostra
   justificativa: texto.trim().min(1).optional(),
 }).strict();
-const ataqueComArma = z.object({ nome: texto, arma: id, justificativa: texto.trim().min(1).optional() }).strict();
+const ataqueComArma = z.object({ nome: texto, arma: id, justificativa: texto.trim().min(1).optional(),
+  // D-360: a arma de gigante, no Tamanho da arma; o dado base muda pelo passo de `regras.json`
+  // `combate.escalaPorTamanho`, que espera o autor (o motor marca "a definir" enquanto ele for null)
+  tamanho: tamanho.optional() }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };
 const habilidadeEspecial = z.object({

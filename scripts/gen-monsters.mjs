@@ -134,7 +134,7 @@ function build(c, fonte, cruDaCriatura) {
       iniciativa: c.iniciativa,
       // As três velocidades vêm do modo de deslocamento declarado na fonte.
       deslocamento: (()=>{const d=f.deslocamentoDeclarado;if(!d)throw Error(f.id+': deslocamento ausente');return {batalha:d.batalha,arranque:d.arranque,corrida:d.corrida};})(),
-      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), forcaInvestida: a.forcaInvestida ?? 0, ...(a.semJogada ? { semJogada: true } : {}), ...(a.notas ? { notas: a.notas } : {}) })),
+      ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), forcaInvestida: a.forcaInvestida ?? 0, ...(a.semJogada ? { semJogada: true } : {}), ...(a.escalaPorTamanho ? { escalaPorTamanho: a.escalaPorTamanho } : {}), ...(a.notas ? { notas: a.notas } : {}) })),
     },
     // fora de `combate`, que vai inteiro para a mesa: a justificativa é prosa do card (F1)
     ...(Object.keys(just.ataques).length ? { justificativaDosAtaques: just.ataques } : {}),

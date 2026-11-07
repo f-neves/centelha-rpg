@@ -72,7 +72,32 @@ finos de ferramenta, e por isso fica na Haste média com dois passos abaixo dela
 | tags | alcance | alcance, arremessável | alcance | não se arremessa |
 | peso | 2 kg | 2 kg | 2 kg | o do Bordão |
 
-## Armas de gigante (item 014), rocha arremessada (item 016) e besta pesada (item 019)
+## Armas de gigante (item 014): a estrutura, com o passo vazio
 
-Ficam para a resposta do Arquiteto às perguntas de 06/11/2026: a escala das armas de gigante pelo Tamanho, a rocha
-contra a Tabela de forças e o nome da besta pesada contra as três bestas que o catálogo já tem.
+O autor respondeu em 06/11/2026 (D-360): "A arma de gigante não muda o multiplicador da Força; muda o dado de dano
+base da arma (o 1d6−2, o 1d6, o 2d6). A Força continua ×1 com uma mão e ×2 com duas, como no livro." O passo por
+categoria de Tamanho está com ele: "Não fixe a escala; prepare a entrada para receber um passo por categoria".
+
+Por isso a arma de gigante não é uma entrada nova do catálogo: é a arma comum, no Tamanho da arma.
+
+| Onde | O que entrou | Com o passo em null |
+|---|---|---|
+| `regras.json`, `combate.escalaPorTamanho` | `passo: null`, `base: "medio"`, `vale`: arma de gigante e rocha arremessada | nenhum número |
+| esquema da criatura | `tamanho` (opcional) no ataque com arma | nenhuma ficha o usa |
+| `motor.ts`, `escalaDaArmaPorTamanho` e `ataqueDaArma` | lê o `tamanho` da arma; em Tamanho diferente do Médio marca `escalaPorTamanho: "a definir"` | o dado, a Força e o multiplicador são os da arma comum; com um número no `passo` e sem a conta escrita, o motor para alto em vez de inventar o modo de aplicar |
+| card (`BestaCard.astro`, `FormaCriatura.astro`) | "escala por Tamanho: a definir" ao lado da Velocidade | só aparece em ataque com `tamanho` |
+| Cap. XIII, Classes de Arma | o parágrafo "Arma de gigante", com a regra do autor e o passo a definir | |
+
+Quem pode empunhar uma arma maior que o próprio corpo: "Não decida esses dois" (o autor). Não entrou regra.
+
+## Rocha arremessada (item 016): espera o passo e os números da rocha comum
+
+O autor: "arma de arremesso improvisada. O arremesso pode usar Força ou Destreza (não só Destreza + Arremesso), e a
+distância vem da fórmula de arremesso, pela massa", sem número fixo de massa nem de alcance, e "o dano depende do
+tamanho da rocha". O campo do passo (`combate.escalaPorTamanho`, `vale`) já a inclui. A entrada no catálogo não
+entrou: ela pediria a Velocidade, o Acerto e o dado da rocha de mão no Tamanho Médio, e a leitura de "Força ou Destreza"
+na jogada de arremesso, que o motor hoje faz só pela Destreza. Os três números não estão no livro nem na decisão.
+
+## Besta pesada (item 019)
+
+"Não decida esses dois" (o autor). Nada entrou.

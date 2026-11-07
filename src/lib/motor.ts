@@ -443,6 +443,8 @@ type Num = Record<string, number>;
 /** O ataque natural guarda tudo o que não é conta; o com arma do livro guarda só nome e id (D-220, D-258). */
 export interface AtaqueEntrada {
     nome: string;
+    /** D-360: o Tamanho da arma de gigante; o dado base espera o passo por categoria (`combate.escalaPorTamanho`) */
+    tamanho?: string;
     classe?: string;
     pgr?: [
         number,
@@ -592,10 +594,23 @@ export function danoMedio(dado: string | null, forca: number, multiplicadorForca
  * com as duas (a criatura de hoje a usa com uma, como as fichas escrevem), e a de tiro pelo `forcaMult` dela, com o
  * teto da arma (`forcaCap`), o do arco (D-075) e o requisito (`M-32`).
  */
-export function ataqueDaArma(id: string, forca: number, duasMaos = false) {
+// D-360 (06/11/2026): a arma de gigante e a rocha mudam o DADO BASE da arma por categoria de Tamanho, em Tamanho diferente do Médio, e a
+// Força continua x1 com uma mão e x2 com duas. O passo por categoria (`regras.json`, `combate.escalaPorTamanho.passo`) está
+// com o autor: com ele em null, a arma vale o dado da arma comum e a resposta marca `escalaPorTamanho: 'a definir'`.
+// Com um número ali e sem a conta escrita, para alto, em vez de inventar o modo de aplicar o passo.
+export function escalaDaArmaPorTamanho(tamanho?: string | null): 'a definir' | null {
+    if (!tamanho || tamanho === 'medio')
+        return null;
+    const passo = (regras as any).combate?.escalaPorTamanho?.passo ?? null;
+    if (passo !== null)
+        throw new Error('D-360: o passo do dado por Tamanho chegou (' + passo + '), e a conta ainda não foi escrita no motor');
+    return 'a definir';
+}
+export function ataqueDaArma(id: string, forca: number, duasMaos = false, tamanhoDaArma?: string | null) {
     const item = (ARMAS as any[]).find((a) => a.id === id);
     if (!item?.arma)
         return null;
+    const escala = escalaDaArmaPorTamanho(tamanhoDaArma);
     const w = comRequisitoDeForca(item.arma, forca);
     const fm = (regras as any).derivados.danoForca;
     const tags: string[] = item.tags || [];
@@ -607,6 +622,7 @@ export function ataqueDaArma(id: string, forca: number, duasMaos = false) {
     return {
         dado: `${w.dado}d6${bonus ? (bonus > 0 ? `+${bonus}` : `${bonus}`) : ''}`, forca: capF, multiplicadorForca: mult,
         acerto: w.acerto ?? 0, velocidade: w.pgr ? w.pgr[0] + w.pgr[1] + w.pgr[2] : w.ticks, habilidade: w.pericia,
+        ...(escala ? { escalaPorTamanho: escala } : {}),
     };
 }
 /**
@@ -696,7 +712,7 @@ export function criatura(e: EntradaCriatura) {
         mana: comArtes ? manaDe({ centelha: ce, vontade: e.vontade ?? 0 }) : null,
         absorcao,
         ataques: e.ataques.map((a) => {
-            const w = a.arma ? ataqueDaArma(a.arma, at.forca ?? 0) : null;
+            const w = a.arma ? ataqueDaArma(a.arma, at.forca ?? 0, false, a.tamanho) : null;
             const h = habilidadeDaJogada(a, e.habilidades, e.habilidadesSec);
             const hv = h ? habDe(e, h) : 0;
             const acerto = w ? w.acerto : (a.acerto ?? 0);
@@ -831,7 +847,7 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
         const atrib = h === 'disparo' ? 'vigor' : h === 'atirador' ? (natural ? atributoDoProjetilNatural(c.atributos) : 'percepcao') : h === 'arremesso' ? 'destreza' : (c.atributos.forca >= c.atributos.destreza ? 'forca' : 'destreza');
         const soma = h ? M.atributoDaJogada(h, c.atributos, natural) + hv : 0;
         const acerto = r.ataques[i].acerto + 2 * Math.min(c.centelha, hv);
-        const wd = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca) : null;
+        const wd = a.arma ? M.ataqueDaArma(a.arma, c.atributos.forca, false, a.tamanho) : null;
         const dado = wd?.dado ?? a.dado;
         const extra = dado === null ? 0 : r.ataques[i].danoMedio - (danoMedio(dado.replace(/[+-]\d+$/, ''), 0, 0, 0) ?? 0);
         const modo = w?.modos?.find((m: any) => m.tipo === w.fichaModo) ?? w?.modos?.find((m: any) => m.principal);
@@ -845,6 +861,8 @@ export function vistaPublicaCriatura(c: any, incluirFormas = true) {
             pool: Math.floor(soma / 2) + 'd6' + (soma % 2 ? '+2' : '') + (acerto ? (acerto > 0 ? ' +' : ' −') + Math.abs(acerto) : ''),
             // R36: o ataque de área não tem jogada de ataque (quem está na área se defende); o card diz isso no lugar do dado
             ...(!h && !a.arma && (a.classe === 'distancia' || a.classe === 'arremesso') ? { semJogada: true } : {}),
+            // D-360: a arma de gigante leva a marca até o card enquanto o passo por Tamanho espera o autor
+            ...(wd?.escalaPorTamanho ? { escalaPorTamanho: wd.escalaPorTamanho } : {}),
             dano: dado === null ? 'nenhum' : dado.replace(/[+-]\d+$/, '') + (extra > 0 ? ' +' + extra : extra < 0 ? ' −' + (-extra) : '') + ' ' + tipoExpr + (perf !== null ? ' · perf. ' + perf : ''), perfArma: perf, forcaInvestida
         };
     });

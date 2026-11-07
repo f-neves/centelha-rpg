@@ -48,6 +48,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 </div>
 
+**Arma de gigante.** A arma de gigante usa os números da arma comum, menos o dado de dano base (o 1d6−2, o 1d6, o 2d6), que muda por categoria de Tamanho, em Tamanho diferente do Médio. A Força continua ×1 com uma mão e ×2 com duas, como em qualquer arma. O passo por categoria ainda está a definir.
+
 ## Tags
 
 - **Alcance**: ataca a 1 m de distância (uma casa); **+2 no acerto** contra quem se aproxima, **−2** contra quem já está colado. É bônus de acerto de quem ataca, e não modificador de Defesa: não entra no teto de +6 dos bônus de Defesa.
