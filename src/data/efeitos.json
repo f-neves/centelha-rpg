@@ -5851,7 +5851,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado. Quem está dentro fica Ofuscado; onde não sobra luz nenhuma, Cego, a critério do Mestre.",
+    "efeito": "A sombra engole toda a luz que entrar na área: tocha apaga, feitiço de luz se desfaz, e o dia lá dentro vira crepúsculo. Só se enxerga o que estiver encostado. No escuro total, quem está dentro fica Cego; onde sobra penumbra, Ofuscado, a critério do Mestre.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",

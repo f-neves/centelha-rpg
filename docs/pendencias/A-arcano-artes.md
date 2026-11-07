@@ -305,8 +305,8 @@ Detalhe em `Arcano_revisao.md` §10. O que já está fechado está no site (`/ar
   - Fazer, no tema 05 (Artes): revisar o `grid.condicao` destes nove efeitos e o texto da Técnica.
   - **Feito em 06/11/2026 (D-359):** a Arte vale pelo próprio texto, e o texto agora diz o que cada uma é. Em `efeitos.json`: o
     Definhar é o Atributo enfraquecido das Condições, pela duração da Arte; a Paralisia não é o Paralisado (o alvo se move e
-    age, com a penalidade); Devorar a Luz (crepúsculo) deixa Ofuscado quem está dentro, e Cego onde não sobra luz nenhuma,
-    a critério do Mestre; a Noite (escuridão total) deixa Cego quem está dentro e não enxerga. Passo Lento, Bolha Temporal, Peso e Mordaça de Treva não citam condição no texto, e o texto deles já
+    age, com a penalidade); na Devorar a Luz, Cego ou Ofuscado em cada ponto da área fica a critério do Mestre, pelo "Só se enxerga
+    o que estiver encostado" (D-359); a Noite (escuridão total) deixa Cego quem está dentro e não enxerga. Passo Lento, Bolha Temporal, Peso e Mordaça de Treva não citam condição no texto, e o texto deles já
     basta. Em `tecnicas.json`, o Soco Trovejante atordoa pela R11 (Vigor + Resistência contra 10 + 5 × Margem do golpe, atraso
     pela tabela). O `grid.condicao` dos nove não muda agora: a lista do que muda em cada um está na N23 de
     `N-grid-pendencias.md`, para a passada única do Grid (D-054).
