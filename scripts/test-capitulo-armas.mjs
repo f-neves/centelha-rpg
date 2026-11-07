@@ -121,8 +121,9 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
     // toda arma de tiro e arremesso do catálogo que o capítulo lista tem de estar na tabela certa
     const nomes = new Set(tab.linhas.map((l) => l[I.Arma]));
     const esperadas = armas.filter((x) => x.arma && (comPeso ? x.arma.classe === 'arremesso' : x.arma.classe === 'distancia'))
-      // os bumerangues em Cortante são variantes: o capítulo os descreve no texto, sem linha própria
-      .filter((x) => !/Cortante/.test(x.nome));
+      // os bumerangues em Cortante são variantes: o capítulo os descreve no texto, sem linha própria; e a rocha arremessada
+      // (arma de criatura, G1, D-363) está no texto aprovado "Armas de outro tamanho", sem linha própria
+      .filter((x) => !/Cortante/.test(x.nome) && !x.soCriatura);
     for (const x of esperadas) if (!nomes.has(x.nome)) f.push(`${marcador}: "${x.nome}" está no catálogo e falta na tabela do capítulo`);
   }
 
@@ -187,7 +188,8 @@ function conferir(cap, armas, regras, comb = COMB, acoes = ACOES) {
       if (l[iA] !== ace) f.push(`Classes, ${rot}: Acerto "${l[iA]}" no capítulo, "${ace}" pelo catálogo`);
       if (num(l[iM]) !== maos || ws.some((x) => x.arma.maos !== maos)) f.push(`Classes, ${rot}: Mãos ${l[iM]} no capítulo, ${maos} esperado (catálogo ${[...new Set(ws.map((x) => x.arma.maos))]})`);
       // a faixa de Efetiva que o Estilo repete
-      const es = ef(ws);
+      // a rocha arremessada (G1, D-363) não tem Efetiva: a distância sai da massa que o ataque dá
+      const es = ef(ws.filter((x) => !x.arma.alcancePelaMassa));
       const txt = es.length === 1 ? `Efetiva de ${es[0]} m` : (rot === 'Besta' ? `Efetiva de ${es[0]}, ${es[1]} e ${es[2]} m` : (rot === 'Arco Longo e Composto' ? `Efetiva de ${es[0]} e de ${es[1]} m` : `Efetiva de ${es[0]} a ${es[es.length - 1]} m`));
       if (!l[iE].includes(txt)) f.push(`Classes, ${rot}: o Estilo não diz "${txt}" (Efetiva pelo catálogo)`);
     }
@@ -519,7 +521,7 @@ const LINHA_DA_ARMA = {
   'Punhos': ['desarmado'],
   'Arremesso leve': ['shuriken', 'mini-faca', 'kunai'],
   'Arremesso médio': ['adaga-de-arremesso', 'plumbata', 'bumerangue', 'bumerangue-de-retorno-cortante'],
-  'Arremesso pesado': ['bumerangue-de-caca', 'bumerangue-de-caca-cortante', 'machado-de-arremesso', 'azagaia', 'pilum', 'boleadeira', 'rede'],
+  'Arremesso pesado': ['bumerangue-de-caca', 'bumerangue-de-caca-cortante', 'machado-de-arremesso', 'azagaia', 'pilum', 'boleadeira', 'rede', 'rocha'], // a rocha: G1, D-363
   'Funda': ['funda'],
   'Arco Curto': ['arco-curto'],
   'Arco Longo e Composto': ['arco-longo', 'arco-composto'],
@@ -574,7 +576,7 @@ function conferirFicha(mostra, comb, armas) {
 }
 {
   const catalogo = ARMAS.filter((x) => x.arma);
-  if (catalogo.length !== 47) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 47 (acrescente a nova em LINHA_DA_ARMA)`);
+  if (catalogo.length !== 48) falhas.push(`ficha: o catálogo tem ${catalogo.length} armas, e o teste foi escrito para 48 (acrescente a nova em LINHA_DA_ARMA)`);
   const FP = await carregarTS('src/lib/ficha-pgr.ts');
   const CT = await carregarTS('src/lib/combate-tempo.ts');
   const dela = (R) => (w) => FP.anatomiaDaFicha(w, R);

@@ -6,7 +6,8 @@ import { getCollection } from 'astro:content';
 // esta página lê os campos no formato PLANO de sempre, então achata uma vez aqui,
 // como `achata()` faz em `equip.ts` (mesma regra, importação diferente).
 const achata = (item: any) => { const { arma, armadura, escudo, municao, ...raiz } = item; return { ...raiz, ...(arma ?? armadura ?? escudo ?? municao ?? {}), notas: raiz.descricao }; };
-const armas = (await getCollection('armas')).map((e) => achata(e.data));
+// G1 (D-363): a arma de criatura (`soCriatura`, a rocha arremessada) não vai à loja
+const armas = (await getCollection('armas')).filter((e) => !e.data.soCriatura).map((e) => achata(e.data));
 const armaduras = (await getCollection('armaduras')).map((e) => achata(e.data));
 const escudos = (await getCollection('escudos')).map((e) => achata(e.data));
 const habs = Object.fromEntries((await getCollection('habilidades')).map((h) => [h.id, h.data.nome]));

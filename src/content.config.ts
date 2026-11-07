@@ -212,6 +212,8 @@ const blocoArma = z.object({
   distMax: z.number().int().positive().optional(),
   // Distância Efetiva (D-072), em metros, para alvo Médio: sempre par. Só as de Distância e Arremesso têm.
   efetiva: z.number().int().positive().optional(),
+  // G1 (D-363): a rocha arremessada, sem distância fixa (a fórmula de arremesso, pela massa que o ataque dá)
+  alcancePelaMassa: z.literal(true).optional(),
   tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
   modos: z.array(z.object({
     tipo: z.enum(['corte', 'perfurante', 'impacto']),
@@ -247,7 +249,9 @@ const envelopeItem = z.object({
   id: z.string(), nome: z.string(),
   tipo: z.enum(['arma', 'armadura', 'escudo', 'municao', 'geral', 'comida', 'roupa', 'montaria', 'veiculo', 'servo']),
   preco,
-  peso: z.number().nonnegative(),
+  // G1 (D-363): só a arma de criatura (`soCriatura`, a rocha arremessada) pode não ter peso; a massa vem do ataque
+  peso: z.number().nonnegative().optional(),
+  soCriatura: z.literal(true).optional(),
   acesso: z.number().int().optional(),
   descricao: z.string(),
   tags: z.array(z.string()),

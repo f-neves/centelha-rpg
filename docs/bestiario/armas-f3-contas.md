@@ -99,13 +99,36 @@ Por isso a arma de gigante não é uma entrada nova do catálogo: é a arma comu
 
 Quem pode empunhar uma arma maior que o próprio corpo: "Não decida esses dois" (o autor). Não entrou regra.
 
-## Rocha arremessada (item 016): espera o passo e os números da rocha comum
+## Rocha arremessada (item 016)
 
-O autor: "arma de arremesso improvisada. O arremesso pode usar Força ou Destreza (não só Destreza + Arremesso), e a
-distância vem da fórmula de arremesso, pela massa", sem número fixo de massa nem de alcance, e "o dano depende do
-tamanho da rocha". O campo do passo (`combate.escalaPorTamanho`, `vale`) já a inclui. A entrada no catálogo não
-entrou: ela pediria a Velocidade, o Acerto e o dado da rocha de mão no Tamanho Médio, e a leitura de "Força ou Destreza"
-na jogada de arremesso, que o motor hoje faz só pela Destreza. Os três números não estão no livro nem na decisão.
+**07/11/2026 (G1, D-363; opção a do Arquiteto).** O texto aprovado: "A rocha arremessada segue a mesma régua pelo
+tamanho dela: a pedra de mão dá 1d6−4, a que um humano arremessa, 1d6, e cada categoria acima soma +1d6." A leitura é a
+literal: a rocha tem Tamanho próprio, como as outras armas "feitas para um corpo maior ou menor", e o Tamanho dela é o
+do corpo para o qual ela tem o tamanho certo. A pedra de mão é a **Miúda** (dois abaixo do Médio, 1d6 − 4, pelo −2 por
+categoria), a que um humano arremessa é a **Média** (1d6), e daí para cima +1d6 por categoria (Grande 2d6, Enorme 3d6).
+No livro não entra frase nova sobre a rocha além do texto aprovado: a leitura da categoria fica aqui e no catálogo.
+
+A entrada `rocha` do `armas.json` é a rocha Média, e o `tamanho` do ataque dá as outras (a mesma régua da arma de outro
+tamanho, no motor). A conta, por analogia com a classe Arremesso pesado do Cap. XIII:
+
+| Campo | Arremesso pesado (Cap. XIII, Classes) | Rocha | Por quê |
+|---|:---:|:---:|---|
+| classe | arremesso | arremesso | arma de arremesso improvisada (o autor) |
+| Velocidade | 6 | 6 | a da classe |
+| dado e bônus | 1d6 | 1d6 | a rocha Média, pelo texto aprovado |
+| Acerto | +0 a +1 | **+0** | improvisada: o menor da faixa |
+| Defesa da arma | · | 0 | arma de arremesso não guarda |
+| Mãos | 1 | 1 | a da classe |
+| modo | · | ★I(N0) | pedra bate, não fura |
+| distância | Efetiva de 4 a 16 m | **nenhuma fixa** | "a distância vem da fórmula de arremesso, pela massa" (o autor): `alcancePelaMassa: true`, sem `efetiva` nem `distMax` |
+| peso | · | **nenhum** | "sem número fixo de massa" (o autor): a massa vem do ataque (a ficha ou o Mestre a dá), e quem consegue arremessar sai da Força de Arremesso |
+
+A rocha é **arma de criatura** (`soCriatura: true`): fica fora da loja (`/equipamentos`) e da lista de armas da ficha do
+jogador (`equip.ts`), e só ela pode não ter peso (`validate-data`, `content.config.ts`). Para o jogador, a rocha já é
+coberta pela arma improvisada da ficha (o item custom editável), com o peso que ele mesmo dá. A jogada segue a regra de hoje, Destreza + Arremesso (o `atrib: "destreza"`, como as
+outras armas de arremesso); ela muda com a G2 (D-364: Força ou Destreza, à escolha de quem arremessa) quando o lote da
+Bestiarista chegar, porque o autor escolheu que o motor e o texto da G2 entram junto com ele. Ela entra na classe Arremesso pesado do `regras.json`
+(`combate.pgr.reforma.tiro`), e o capítulo não ganha linha para ela, como os bumerangues Cortantes.
 
 ## Besta pesada (item 019)
 

@@ -110,6 +110,8 @@ const blocoArmaEnvelope = z.object({
   distMax: z.number().int().positive().optional(), alcanceLivreFrac: z.number().min(0).max(1).optional(),
   // Distância Efetiva (D-072), em metros, para alvo Médio: sempre par. Toda arma de tiro e de arremesso tem.
   efetiva: z.number().int().positive().optional(),
+  // G1 (D-363): a rocha arremessada não tem distância fixa; ela sai da fórmula de arremesso, pela massa que o ataque dá
+  alcancePelaMassa: z.literal(true).optional(),
   tipoDano: z.enum(['corte', 'perfurante', 'impacto']), pen: z.number().int().min(0).max(5),
   fichaModo: z.enum(['corte', 'perfurante', 'impacto']).optional(),
   modos: z.array(z.object({ tipo: z.enum(['corte', 'perfurante', 'impacto']), perf: z.number().int().min(0).max(5).optional(), principal: z.boolean() })),
@@ -126,7 +128,9 @@ const blocoMunicaoEnvelope = z.object({ aceita: z.array(z.string()) }).nullable(
 const envelopeItem = z.object({
   id: z.string(), nome: z.string(),
   tipo: z.enum(['arma', 'armadura', 'escudo', 'municao', 'geral', 'comida', 'roupa', 'montaria', 'veiculo', 'servo']),
-  preco: precoEnvelope, peso: z.number().nonnegative(), acesso: z.number().int().optional(),
+  // G1 (D-363): `soCriatura` marca a arma que fica fora da loja e da ficha do jogador (a rocha arremessada, cuja massa
+  // vem do ataque); só ela pode não ter peso.
+  preco: precoEnvelope, peso: z.number().nonnegative().optional(), soCriatura: z.literal(true).optional(), acesso: z.number().int().optional(),
   descricao: z.string(), tags: z.array(z.string()),
   arma: blocoArmaEnvelope, armadura: blocoArmaduraEnvelope, escudo: blocoEscudoEnvelope, municao: blocoMunicaoEnvelope,
 });
@@ -182,6 +186,12 @@ for (const i of data.inimigos || []) {
   for (const t of i.tecnicas) if (!T.has(t)) fail(`inimigo "${i.id}": técnica inexistente "${t}"`);
   for (const a of i.artes) if (!ART.has(a.id)) fail(`inimigo "${i.id}": arte inexistente "${a.id}"`);
 }
+// G1 (D-363): o peso só falta na arma de criatura (`soCriatura`); todo outro item do catálogo tem peso, e a arma de
+// criatura é só arma
+for (const f of ['armas', 'armaduras', 'escudos', 'municao']) for (const it of JSON.parse(fs.readFileSync(path.join(DIR, f + '.json'), 'utf8'))) {
+  if (it.peso == null && !it.soCriatura) fail(`${f} "${it.id}": sem peso (só a arma de criatura pode não ter)`);
+  if (it.soCriatura && f !== 'armas') fail(`${f} "${it.id}": soCriatura só vale para arma`);
+}
 for (const w of data.armas || []) {
   if (!A.has(w.atrib)) fail(`arma "${w.id}": atributo inexistente "${w.atrib}"`);
   if (!H.has(w.pericia)) fail(`arma "${w.id}": perícia inexistente "${w.pericia}"`);
@@ -194,7 +204,7 @@ for (const w of data.armas || []) {
   // nova com dois principais reintroduziria o defeito do mesmo jeito, e é para
   // isso que esta conferência existe.
   // A Efetiva (D-072) é sempre par, e toda arma de tiro e de arremesso tem uma.
-  if ((w.classe === 'distancia' || w.classe === 'arremesso') && w.efetiva == null) fail(`arma "${w.id}": arma de ${w.classe} sem \`efetiva\``);
+  if ((w.classe === 'distancia' || w.classe === 'arremesso') && w.efetiva == null && !w.alcancePelaMassa) fail(`arma "${w.id}": arma de ${w.classe} sem \`efetiva\``);
   if (w.efetiva != null && w.efetiva % 2 !== 0) fail(`arma "${w.id}": \`efetiva\` ${w.efetiva} é ímpar (a Efetiva é sempre par)`);
   if (w.efetiva != null && w.classe !== 'distancia' && w.classe !== 'arremesso') fail(`arma "${w.id}": \`efetiva\` numa arma de corpo a corpo`);
   const principais = (w.modos || []).filter((m) => m.principal);

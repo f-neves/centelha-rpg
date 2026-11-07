@@ -43,7 +43,12 @@ console.log('· a folha da ação e o arremesso');
 ok(typeof AL.faixaNaFolha === 'function', 'existe a função que a folha chama (`faixaNaFolha`)');
 if (typeof AL.faixaNaFolha === 'function') {
   const armas = achataCatalogo(JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/armas.json'), 'utf8')));
-  const arremesso = armas.filter((a) => (a.arma?.classe ?? a.classe) === 'arremesso');
+  // a rocha arremessada (G1, D-363) é arma de criatura, sem Efetiva nem distância fixa: a distância sai da massa que o
+  // ataque dá. Ela fica fora desta conta e é conferida à parte abaixo.
+  const todas = armas.filter((a) => (a.arma?.classe ?? a.classe) === 'arremesso');
+  const arremesso = todas.filter((a) => !(a.arma?.alcancePelaMassa ?? a.alcancePelaMassa));
+  const pelaMassa = todas.filter((a) => (a.arma?.alcancePelaMassa ?? a.alcancePelaMassa));
+  ok(pelaMassa.length === 1 && pelaMassa[0].id === 'rocha' && pelaMassa[0].efetiva == null && pelaMassa[0].distMax == null && AL.faixaNaFolha('rocha', 30, 'arremesso') === null, 'a rocha é a única de arremesso pela massa, sem Efetiva nem máximo, e a folha cala nela');
   // Rodada 1 (D-076): os Dardos saíram e entraram 8 armas novas. As 7 que já existiam guardam o `distMax`
   // legado (a remoção dele é da passada do Grid, D-054); as novas só trazem `efetiva`. A folha cala em todas.
   const LEGADO = ['adaga-de-arremesso', 'machado-de-arremesso', 'azagaia', 'funda', 'bumerangue', 'rede', 'pilum'];

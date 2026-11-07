@@ -1471,6 +1471,40 @@
     "municao": null
   },
   {
+    "id": "rocha",
+    "nome": "Rocha arremessada",
+    "tipo": "arma",
+    "soCriatura": true,
+    "descricao": "Arma de arremesso improvisada, de criatura: o dano vem do tamanho da rocha, pela régua da arma de outro tamanho (a pedra de mão é Miúda, 1d6−4; a que um humano arremessa é Média, 1d6; cada categoria acima soma +1d6). A distância sai da fórmula de arremesso, pela massa que o ataque dá, e quem consegue arremessá-la sai da Força de Arremesso. Para o jogador, é a arma improvisada da ficha.",
+    "tags": [
+      "arremessável"
+    ],
+    "arma": {
+      "classe": "arremesso",
+      "atrib": "destreza",
+      "pericia": "arremesso",
+      "dado": 1,
+      "danoBonus": 0,
+      "acerto": 0,
+      "defesaArma": 0,
+      "maos": 1,
+      "ticks": 6,
+      "folego": 20,
+      "alcancePelaMassa": true,
+      "tipoDano": "impacto",
+      "pen": 0,
+      "modos": [
+        {
+          "tipo": "impacto",
+          "principal": true
+        }
+      ]
+    },
+    "armadura": null,
+    "escudo": null,
+    "municao": null
+  },
+  {
     "id": "machadinha",
     "nome": "Machadinha",
     "tipo": "arma",

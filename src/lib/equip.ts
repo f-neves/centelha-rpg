@@ -34,10 +34,13 @@ function achata(item: any): any {
   return { ...raiz, ...bloco, notas: raiz.descricao };
 }
 
-export const ARMAS = (ARMA_D as any[]).map(achata);
+// G1 (D-363): a arma de criatura (`soCriatura`, a rocha arremessada) fica fora da LISTA da ficha do jogador; o jogador a
+// tem pela arma improvisada da ficha. O índice por id (`ARMA`) e o motor do bestiário seguem com o armas.json inteiro.
+const TODAS_AS_ARMAS = (ARMA_D as any[]).map(achata);
+export const ARMAS = TODAS_AS_ARMAS.filter((w) => !w.soCriatura);
 export const ARMADURAS = (ARMADURA_D as any[]).map(achata);
 export const ESCUDOS = (ESCUDO_D as any[]).map(achata);
-export const ARMA: Record<string, any> = Object.fromEntries(ARMAS.map((w) => [w.id, w]));
+export const ARMA: Record<string, any> = Object.fromEntries(TODAS_AS_ARMAS.map((w) => [w.id, w]));
 export const ARMADURA: Record<string, any> = Object.fromEntries(ARMADURAS.map((a) => [a.id, a]));
 export const ESCUDO: Record<string, any> = Object.fromEntries(ESCUDOS.map((s) => [s.id, s]));
 const BRUTO: Record<TipoItem, Record<string, any>> = {

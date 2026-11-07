@@ -37,6 +37,17 @@ ok(M.ataqueDaArma('montante', 8, true, 'grande').multiplicadorForca === 2 && M.a
 let errou = false; try { M.ataqueDaArma('maca', 5, false, 'gigante'); } catch { errou = true; }
 ok(errou, 'um Tamanho fora da régua para alto');
 
+// a rocha arremessada (G1, D-363; opção a do Arquiteto): o Tamanho é o da própria rocha. "A pedra de mão dá 1d6−4, a que
+// um humano arremessa, 1d6, e cada categoria acima soma +1d6": a de mão é a Miúda, a do humano é a Média.
+for (const [tam, esperado] of [['miudo', '1d6-4'], ['medio', '1d6'], [undefined, '1d6'], ['grande', '2d6'], ['enorme', '3d6']]) {
+  const r = M.ataqueDaArma('rocha', 9, false, tam);
+  ok(r && r.dado === esperado && r.habilidade === 'arremesso' && r.velocidade === 6 && r.acerto === 0, `rocha ${tam ?? 'sem tamanho'}: ${r?.dado} (esperado ${esperado}), Arremesso, V6, Acerto +0`);
+}
+const ROCHA = JSON.parse(fs.readFileSync('src/data/armas.json', 'utf8')).find((x) => x.id === 'rocha');
+ok(ROCHA?.soCriatura === true && ROCHA.peso === undefined && ROCHA.arma.alcancePelaMassa === true && ROCHA.arma.efetiva === undefined && ROCHA.arma.distMax === undefined, 'a rocha é arma de criatura, sem peso, sem Efetiva e sem distância fixa (a massa vem do ataque)');
+const EQ = await carregarTS('src/lib/equip.ts');
+ok(!EQ.ARMAS.some((w) => w.id === 'rocha') && EQ.ARMAS.some((w) => w.id === 'azagaia'), 'a rocha fica fora da lista de armas da ficha do jogador');
+
 // a vista do bestiário: uma criatura publicada, com o ataque de arma trocado para Grande
 const base = JSON.parse(fs.readFileSync('src/data/bestiario/arconte-trombeta.json', 'utf8'));
 const i = base.ataques.findIndex((a) => a.arma);

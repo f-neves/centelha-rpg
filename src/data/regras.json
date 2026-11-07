@@ -2699,7 +2699,7 @@
         "tiro": [
           { "id": "arremesso-leve", "nome": "Arremesso leve", "velocidade": 4, "preparo": 2, "golpe": 1, "recuperacao": 1, "armas": ["shuriken", "mini-faca", "kunai"] },
           { "id": "arremesso-medio", "nome": "Arremesso médio", "velocidade": 5, "preparo": 3, "golpe": 1, "recuperacao": 1, "armas": ["adaga-de-arremesso", "plumbata", "bumerangue", "bumerangue-de-retorno-cortante"] },
-          { "id": "arremesso-pesado", "nome": "Arremesso pesado", "velocidade": 6, "preparo": 3, "golpe": 1, "recuperacao": 2, "armas": ["bumerangue-de-caca", "bumerangue-de-caca-cortante", "machado-de-arremesso", "azagaia", "pilum", "boleadeira", "rede"] },
+          { "id": "arremesso-pesado", "nome": "Arremesso pesado", "velocidade": 6, "preparo": 3, "golpe": 1, "recuperacao": 2, "armas": ["bumerangue-de-caca", "bumerangue-de-caca-cortante", "machado-de-arremesso", "azagaia", "pilum", "boleadeira", "rede", "rocha"] },
           { "id": "funda", "nome": "Funda", "velocidade": 6, "preparo": 4, "golpe": 1, "recuperacao": 1, "armas": ["funda"] },
           { "id": "arco-curto", "nome": "Arco Curto", "velocidade": 6, "preparo": 4, "golpe": 1, "recuperacao": 1, "armas": ["arco-curto"] },
           { "id": "arco-longo-composto", "nome": "Arco Longo e Composto", "velocidade": 7, "preparo": 4, "golpe": 1, "recuperacao": 2, "armas": ["arco-longo", "arco-composto"] },
