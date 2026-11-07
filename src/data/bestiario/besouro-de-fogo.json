@@ -96,7 +96,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 (média 1,5), com Força 0. Golpe de boca pequena, Força × 1 (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"). Mandíbula de inseto corta como pinça; mordida não medida"
     }
   ],
   "habilidadesEspeciais": [
@@ -112,7 +113,8 @@
       "efeito": "Pequeno: de cima, asas abertas. Miúdo: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Pequeno (de cima, asas abertas) e Miúdo (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     }
   ],
   "comoLuta": [
@@ -180,6 +182,130 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Pequeno (de cima, asas abertas) e Miúdo (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "gigante"
+      ],
+      "texto": "o besouro-de-fogo não está na lista dos 16 gigantes da D-105. A ficha o trata como gigante do cucujo (k = 15, 60 cm; era k = 7,5 e 30 cm, o da ficha antiga); a alternativa é o cucujo real, Minúsculo e de cerca de 1 g, que fica como variante (D-105, D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 30 cm davam Miúdo de asas abertas, uma categoria só acima do cucujo, e os 60 cm (os \"about 2 feet\" do D&D 3.5) dão Pequeno, a 47% do corte do Miúdo (D-174)"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "0,55 kg pela decisão 13 (meio em log de 576,3 g pela regra do roc e 533 g pela reta dos voadores reais), e não os 4,05 kg do cubo. A massa do cucujo (1,2 g) é estimada pela escala de elaterídeos (Bolmin et al. 2022) (D-174)"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "4 (em vigor na Etapa 2, 20/10/2026); antes: 9 pela decisão 21 (5 + Vigor); pela outra proposta do autor seria 12. Era 19 pela tabela antiga [provisório]"
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "Pequeno de asas abertas (0,176 m²) e Miúdo de asas fechadas (0,10 m², a 17% do corte do Pequeno), pela `tamanho-fichas-v2` (decisão 8)"
+    },
+    {
+      "campos": [
+        "dimensoes"
+      ],
+      "texto": "a largura vem da razão medida no Pyrophorus divergens (Costa 1971); a altura e a envergadura continuam só por estimativa (D-174)"
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "artrópode alado, provisória (D-175)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "4, +1 sobre o animal de base (cucujo real, Vigor 3), o mínimo da D-176; revisto na oitava rodada pelo corpo (élitro na Couraça, traqueia) e pela massa (0,55 kg, ao lado do rato, 4), e fica (D-174). O cucujo não tem ficha, então a D-176 vale por leitura do Arquiteto"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "1 pela mandíbula, acima do cucujo (0), pelo item 8 da `tamanho-decisoes-5.md` e pela D-176; era 0. Provisória (D-169). A força relativa dos besouros (100 a 1.141 vezes a massa) não entra"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "2, animal comum; era 0. O clique é mola do tórax, e não músculo de erguer (D-174)"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "3,90 kg (em vigor na Etapa 2, 20/10/2026); antes: 3,9 kg pela fórmula das decisões 14 e 16, provisório (era 0,27)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23). A corrida de 2,4 m/s quase alcança o besouro mais rápido medido (besouro-tigre, 2,5 m/s), o que parece alto para um elaterídeo; o voo de 31 km/h não tem real para conferir (D-170)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 (faixa 1 a 2) pela escala da quinta rodada, reanalisado na sétima (era 2): casca de cerca de 4 mm num corpo de 0,55 kg; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [
+        "bloqueio"
+      ],
+      "texto": "a D-100 deixa a carapaça bloquear como arma; ficou como a mão nua, porque o élitro do elaterídeo é fino em absoluto (D-100, D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "1, nova, pelo levantamento: a luz o mostra em voo; apagado no chão, some (D-174)"
+    },
+    {
+      "campos": [
+        "escalada"
+      ],
+      "texto": "1, nova, sem dado do cucujo [extrapolação]"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2 pela régua [extrapolação]; nada de jejum, água ou temperatura na pesquisa"
+    },
+    {
+      "campos": [
+        "elementos"
+      ],
+      "texto": "nenhum. A luz é fria (bioluminescência), e não fogo; a ficha antiga também não tinha elemento. O nome fica pela tradição do d20 (D-174)"
+    },
+    {
+      "campos": [
+        "luz"
+      ],
+      "texto": "sem raio em metros nem duração depois da morte, por falta de medida; o Pathfinder dá 10 pés e 1d6 dias, que não se copiam (D-158). Fica com o Mestre (D-087)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

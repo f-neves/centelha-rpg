@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 6, média 7,5. Golpe rápido de ponta. Ferrão de 7 a 12 mm na real (NPS; Wikipédia), de 47 a 80 cm na gigante (56 a 96 cm com os 3,6 m, × 3 ÷ 3,6) : fura couro e malha, como a lança. Veneno sem id no catálogo, paralisante"
     },
     {
       "nome": "Mandíbulas",
@@ -119,7 +120,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 6, média 7,5. Mordida de boca pequena para o corpo; segura a presa. Opção (D-097)"
     }
   ],
   "habilidadesEspeciais": [
@@ -135,14 +137,16 @@
       "efeito": "Enorme: de cima, asas abertas. Grande: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Enorme (de cima, asas abertas) e Grande (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "paralisar",
@@ -157,7 +161,8 @@
       "efeito": "o ferrão paralisa a presa. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
       "dano": "nenhum adicional",
       "resistencia": "pela regra do veneno da ficha",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "arrastar a presa até a toca",
@@ -171,7 +176,8 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arrastar a presa até a toca. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [],
@@ -236,6 +242,120 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.arrastar a presa até a toca"
+      ],
+      "texto": "Aplicação à capacidade arrastar a presa até a toca. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 2: +2 Corte, +2 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Enorme (de cima, asas abertas) e Grande (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.paralisar"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "paralisar"
+      ],
+      "texto": "**[provisório]** R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [],
+      "texto": "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (D-174); os 3 m do site ficam: de asas abertas a gigante está 5 portes acima da Pepsis (Minúsculo para Enorme) e pousada 4 (para Grande), e o critério pede 2. Acima do Médio porque a ficha atual do Centelha e o Pathfinder 1 a dão Grande. Longe dos cortes: 8,46 m² fica 41% acima do corte do Enorme (6) e 66% abaixo do do Imenso (25); pousada, 1,92 m² fica 32% acima do corte do Grande (1,45)"
+    },
+    {
+      "campos": [],
+      "texto": "gigante: escalada da Pepsis aos 3 m de comprimento da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site); contra o adulto típico de 36,74 mm, k = 81,65 (era 3,6 m, k = 97,98, e k = 80 sobre a fêmea de 45 mm); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3)"
+    },
+    {
+      "campos": [],
+      "texto": "massa: 23 kg pela decisão 13 (meio em log de 6,22 kg pela regra do roc, com a base típica dos dois sexos de 0,2721 g e 36,74 mm, e 85,59 kg pela reta dos voadores reais com a envergadura de 7,0 m), e não os 148,1 kg do cubo; era 36 kg com os 3,6 m. A massa da Pepsis não foi achada em fonte boa (as duas por sexo são do volume); se a real aparecer, a regra do roc se refaz (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Enorme de asas abertas (8,46 m²) e Grande pousada (1,92 m²), a silhueta da `tamanho-fichas-v2` na razão (3 ÷ 3,6)² (decisão 8). A ficha de hoje dava Grande nas duas posturas, pela R2. O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada)"
+    },
+    {
+      "campos": [],
+      "texto": "faixa: a massa nova põe a vespa na Faixa 2; PV de 40 para 30 na sexta rodada, 32 na sétima e 28 na oitava, com o Vigor 4 (50 na ficha de hoje). A fêmea (cerca de 31 kg) e o macho (cerca de 15 kg) ficam na mesma faixa"
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes: altura, largura e envergadura estimadas; a envergadura usa a razão do recorde da P. heros (2,34 vezes o corpo, Guinness)"
+    },
+    {
+      "campos": [],
+      "texto": "anatomia: artrópode alado, provisória (D-175); o voo usa o 1,43 da ave, sem calibração em inseto"
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 96,71 kg (em vigor na Etapa 2, 20/10/2026); antes: 143,35 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga"
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). O voo dá 37 km/h, −7% contra os 40 km/h da Vespa mandarinia, de fonte fraca e de outra espécie"
+    },
+    {
+      "campos": [],
+      "texto": "forca: 2 (em vigor na Etapa 2, 20/10/2026); antes: 4, abaixo da referência da massa (4,4), pelo corpo de voador que mata pelo veneno (D-158); reanalisada na sétima rodada pelos vizinhos de massa (centopeia-gigante 4 e louva-a-deus-gigante 4, iguais; aranha-gigante 3, rato-atroz 3 e cão 2, abaixo) e mantida. A Pepsis de base fica com Força 0 pelo item 8 (a força dela não fere nem segura um humano), e não pela D-167 automática"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada, reanalisado na sétima com a massa de 23 kg e mantido; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "furtividade: 0, nova, pela cor de aviso (levantamento)"
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: Briga (contra aranhas) 1, pelo encurtamento da caçada com a experiência (Punzo 1994); decisão provisória (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua; a caçada de horas e os voos de mais de 3 km ficam na nota de pesquisa (jornada)"
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): voos de forrageio que podem passar de 3 km; sequência de caça de 208 a 150 min, com arraste da presa até a toca; atividade mínima acima de 38 °C (Punzo 1994, P. thisbe, [medido], campo). Comparação: Vespa mandarinia, até 100 km num dia (Wikipédia, página de amador, fonte fraca) e raio de 1 a 2 km, máximo 8 (Matsuura e Sakagami 1973) [comparação]."
+    },
+    {
+      "campos": [],
+      "texto": "veneno: sem id no catálogo; o efeito real (paralisia da presa, dor de Schmidt 4, DL50 65 mg/kg) está na pesquisa. A paralisia da manobra é do Mestre até o veneno ter id (D-101, D-112)"
+    },
+    {
+      "campos": [],
+      "texto": "compostura: 1 por não ser espécie social (diretriz 1)"
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 3 (em vigor na Etapa 2, 20/10/2026); antes: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: o mínimo da D-176, um acima da Pepsis de base (Vigor 3, presumido); inseto de 23 kg, cutícula por fora, traqueia, músculo de voo, ao lado da centopeia, da aranha, do louva-a-deus e da sanguessuga gigantes (4) e acima do cão (20 kg, 3). Era 6 na sétima rodada e 5 na sexta (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

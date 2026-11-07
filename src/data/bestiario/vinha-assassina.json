@@ -88,7 +88,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (2 dados, 6 Ticks, impacto, \"acerto agarra e constringe\"): a vinha grossa chicoteia e enrola, Pesada pelo peso que leva. Golpe de membro: Força × 1. Alcance: 3 m (a metade da vinha que se ergue; a outra ancora) . Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -105,7 +106,8 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "o da Vinha",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "um alvo agarrado por vez. Sem custo"
+      "limiteDeUso": "um alvo agarrado por vez. Sem custo",
+      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
     },
     {
       "nome": "Constrição",
@@ -139,7 +141,8 @@
       "efeito": "as plantas do chão se agitam e prendem os pés; quem falha fica Imobilizado até gastar uma ação e passar Força + Atletismo, Dificuldade 15; quem passa anda pela metade do deslocamento dentro da área",
       "dano": "nenhum",
       "resistencia": "esquiva, contra Raciocínio + Briga da vinha",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Prisão pelo efeito descrito. A ficha conserva seus próprios números."
     }
   ],
   "comoLuta": [
@@ -224,6 +227,79 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Emaranhar"
+      ],
+      "texto": "Base Prisão pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Vinha que agarra"
+      ],
+      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Emaranhar"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "atributos sociais",
+        "vontade",
+        "virtudes",
+        "integridade"
+      ],
+      "texto": "pela exceção da Inteligência 0 (D-186)"
+    },
+    {
+      "campos": [
+        "altura",
+        "largura",
+        "area"
+      ],
+      "texto": "a moita erguida, estimada **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "alcance"
+      ],
+      "texto": "3 m na vinha **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 pelo caule lenhoso **[provisório]**"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "vinha que agarra",
+        "constrição",
+        "emaranhar"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`vinha que agarra` (Fase 5, F5.34, D-263, 29/10/2026): o escape segue a D-081, \"o agarrado não age, não rola, e só se solta quando quem controla erra\". Antes: Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 4 dela"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

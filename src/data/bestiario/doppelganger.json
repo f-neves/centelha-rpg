@@ -92,7 +92,8 @@
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). A Centelha soma inteira no dano (`centelha.md`). Jogada: Destreza 3 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -112,7 +113,8 @@
       "efeito": "assume o corpo, o rosto, a voz e o cheiro de qualquer humanoide de Tamanho perto do dele que já tenha visto; os números ficam os dele; só a magia ou a Manha de quem conviveu muito com o original percebe a troca. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Ler pensamentos",
@@ -130,7 +132,8 @@
       "efeito": "sempre ativo, ouve os pensamentos de superfície de quem está perto; na sondagem, quem falha revela um segredo ou uma intenção",
       "dano": "nenhum",
       "resistencia": "Percepção + Empatia da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não revela nada e sente a sondagem",
-      "limiteDeUso": "A escuta de superfície é contínua. Para a sondagem profunda: 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia"
+      "limiteDeUso": "A escuta de superfície é contínua. Para a sondagem profunda: 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia",
+      "justificativa": "Antes: Velocidade 6. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Mente protegida",
@@ -144,7 +147,8 @@
       "efeito": "Ignora leitura de mente e domínio por comandos simples. Dano físico de Arte e conversa comum seguem as regras normais",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R22. Sondagem e comando simples eram as duas proteções expressas."
     }
   ],
   "comoLuta": [
@@ -231,6 +235,79 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Ler pensamentos"
+      ],
+      "texto": "Antes: Velocidade 6. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mudar de forma"
+      ],
+      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mente protegida"
+      ],
+      "texto": "R22. Sondagem e comando simples eram as duas proteções expressas."
+    },
+    {
+      "campos": [
+        "Mudar de forma"
+      ],
+      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campos": [
+        "Ler pensamentos"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "formas"
+      ],
+      "texto": "forma verdadeira e disfarce (D-201); o disfarce é Variante que muda o corpo e o rosto, e os números são os dele **[provisório]**"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "a espada curta do livro no lugar da \"Arma\" de corte do site **[provisório]**"
+    },
+    {
+      "campos": [
+        "briga"
+      ],
+      "texto": "2; o site gravava 4, que era a Habilidade da arma **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Bravura 2 e Temperança 3; o site tinha 3 e 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "mímica perfeita"
+      ],
+      "texto": "Especialidade natural +3, no teto; o site dava +3d6"
+    },
+    {
+      "campos": [
+        "mudar de forma",
+        "ler pensamentos"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos, todas em todas, porque o disfarce muda o corpo e deixa os números; o rosto roubado já conta as duas formas; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.briga",

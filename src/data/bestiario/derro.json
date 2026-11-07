@@ -80,7 +80,8 @@
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Envenenada (Veneno e doença). A Centelha soma inteira. Jogada: Destreza 4 + Armas 4 + 2 × o menor entre Centelha 2 e Armas 4 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -124,14 +125,16 @@
       "efeito": "Ignora efeitos que instalam insanidade ou a condição Confuso. Outras famílias mentais, dano físico de Arte e conversa comum seguem suas regras",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Uso de veneno",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "a Peçonha de aranha gigante na espada (Veneno e doença); aplica sem risco de se envenenar"
+      "texto": "a Peçonha de aranha gigante na espada (Veneno e doença); aplica sem risco de se envenenar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "atordoamento dos poderes menores",
@@ -159,7 +162,8 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo"
+      "limiteDeUso": "uma vez por ação, sem custo",
+      "justificativa": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
     },
     {
       "nome": "Trevas",
@@ -178,7 +182,8 @@
       "efeito": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis",
+      "justificativa": "Antes: Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. valor de molde, para a bancada. Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Sons ilusórios",
@@ -196,7 +201,8 @@
       "efeito": "Imita sons para enganar quem os ouve",
       "dano": "nenhum",
       "resistencia": "quem duvida testa para perceber a ilusão",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis",
+      "justificativa": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. valor de molde, para a bancada."
     },
     {
       "nome": "Estrondo",
@@ -214,7 +220,8 @@
       "efeito": "Produz a vibração e aplica o Atordoado descrito no poder do derro",
       "dano": "1d6 + Centelha de Impacto",
       "resistencia": "saída de área do livro",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis",
+      "justificativa": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -285,6 +292,100 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Trevas"
+      ],
+      "texto": "Antes: Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. valor de molde, para a bancada. Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Uso de veneno"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Estrondo"
+      ],
+      "texto": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sons ilusórios"
+      ],
+      "texto": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Golpe na brecha"
+      ],
+      "texto": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Loucura inata"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Poderes menores"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 14 da fonte passa a grau 1 (+2)."
+    },
+    {
+      "campos": [
+        "atordoamento dos poderes menores"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 9 m para uma manifestação dirigida a curta distância. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "40, a linha de cima da zona de transição, pelo Vigor 5; na de baixo seriam 30"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "espada curta do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "poderes menores",
+        "vulnerabilidade ao sol",
+        "ataque furtivo"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "atordoamento dos poderes menores"
+      ],
+      "texto": "Antes: perdia a próxima ação."
+    },
+    {
+      "campos": [
+        "Resistência à magia 14"
+      ],
+      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

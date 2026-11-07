@@ -94,7 +94,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "7 + 12; era 2d6 + 16, média 23. Seção 7: a mordida que agarra e torce. Dezenas de dentes grandes e cortantes; comia por inércia, soltando e reabocanhando (Lingham-Soliar 2000, via Wikipédia). Força × 1 (boca). N2 : nenhuma força de mordida achada; o crânio rígido e os músculos enormes (Lingham-Soliar 1995) e as marcas de dente nas placas da tartaruga marinha gigante apontam para uma mordida maior que a do crocodilo (N1). O Nível do ataque é da arma, e não da Couraça."
     }
   ],
   "habilidadesEspeciais": [
@@ -103,7 +104,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -166,6 +168,72 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 2.967,37 kg (em vigor na Etapa 2, 20/10/2026); antes: 2.782,4 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar."
+    },
+    {
+      "campos": [],
+      "texto": "carga: não se aplica (nadador)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). O nado dá 25 km/h contra o bote de 14 a 18 km/h estimado (Formoso e colegas 2026, pela notícia): de 39 a 79% acima. Com o número de hoje o mosassauro nada mais rápido que o tubarão-branco (7 contra 6 m por Tick)."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Enorme pela silhueta (12,35 m², de cima), longe das bordas; altura e largura de 1,5 m continuam estimadas pelo Arquiteto [extrapolação, sem dado]."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 12 pela régua nova (D-158), um abaixo do mamute (13), igual ao tiranossauro. Era 16 com o mamute em 18. Se o mamute mudar, esta se refaz."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 7 pela ferida curada (Lingham-Soliar 1995) (D-164)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada e pelo habitat do tropical ao subpolar; o sangue quente provável é extrapolação e ficou na nota de pesquisa (jornada)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3 (robusto) pela cauda de nado e pelo ílio com esforço repetido; provisória, sem medida direta (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador."
+    },
+    {
+      "campos": [],
+      "texto": "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; é do corpo (órbitas e anéis escleróticos)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 2 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois. Os dados de escama são de parentes, e não do M. hoffmannii."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): cruzeiro e distância [sem dado]. Provável sangue quente (metabolismo de repouso entre o da tartaruga-de-couro e o de ictiossauros e plesiossauros, Houssaye e colegas 2013), o que daria fôlego para forragear longe [extrapolação] para o Mosasaurus."
+    },
+    {
+      "campos": [],
+      "texto": "ataques.mordida.nivel: N2 sem força de mordida medida [extrapolação], acima do crocodilo (N1)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.raciocinio",

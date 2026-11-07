@@ -91,7 +91,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O tentáculo que prende pelas ventosas e aperta, Leve, como o braço do polvo-gigante; alcança pelo comprimento (D-180, ponto 19). Jogada: Força 14 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
     },
     {
       "nome": "Bico",
@@ -107,7 +108,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O bico de cefalópode do tamanho de um bote, com o corpo atrás, Média; bico grande em N1 . Jogada: Força 14 + Briga 5 + 2 × o menor entre Centelha 7 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -117,7 +119,8 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "rajada"
+      "regra": "rajada",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "constrição",
@@ -125,7 +128,8 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Abraço do Titã",
@@ -135,7 +139,8 @@
         "id": "abraco-do-tita",
         "nivel": 6
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "afundar embarcações",
@@ -149,7 +154,8 @@
       "efeito": "Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade afundar embarcações. Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação. valor de molde, para a bancada."
     },
     {
       "nome": "Nuvem de tinta",
@@ -168,7 +174,8 @@
       "efeito": "A tinta impede ver através da nuvem. Quem olha de dentro fica Cego para o que tenta ver por ela",
       "dano": "nenhum",
       "resistencia": "sair da nuvem",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Antes: Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada. Base Neblina pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
     },
     {
       "nome": "agitar o mar",
@@ -194,7 +201,8 @@
       "efeito": "o céu escurece e três raios caem ao mesmo tempo",
       "dano": "3d6 + Centelha, raio, em cada alvo",
       "resistencia": "esquiva; quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Tempestade pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Dominar bestas do mar",
@@ -212,7 +220,8 @@
       "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Velocidade 6. Velocidade 7 pelo grau 5 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Multiataque",
@@ -226,7 +235,8 @@
       "efeito": "Golpeia nesta ordem: primeiro tentáculo, segundo tentáculo, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "primeiro tentáculo, segundo tentáculo, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -307,6 +317,128 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Dominar bestas do mar"
+      ],
+      "texto": "Antes: Velocidade 6. Velocidade 7 pelo grau 5 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Tempestade de raios"
+      ],
+      "texto": "Base Tempestade pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Nuvem de tinta"
+      ],
+      "texto": "Antes: Raio de 3 m e duração de 6 Ticks na água, pela dispersão da tinta. Estoque anterior mantido. valor de molde, para a bancada. Base Neblina pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Abraço do Titã"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.constrição"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Tentáculos múltiplos"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "comoLuta.feitiços arcanos"
+      ],
+      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.afundar embarcações"
+      ],
+      "texto": "Aplicação à capacidade afundar embarcações. Cada golpe atinge uma seção do barco, com PV e Absorção declarados pelo Mestre. Para virá-lo, role Força + Briga contra a resistência declarada para a embarcação. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "primeiro tentáculo, segundo tentáculo, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil mole, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Nuvem de tinta"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Tempestade de raios"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Dominar bestas do mar"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "feitiços arcanos"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "140 t, a do site: o polvo-gigante escalado pelo comprimento do site, com o fator 1,26 do manto. Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"4d6 +21 perfurante\", 7 Ticks, dano médio 35). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 35 antes; depois, tentáculo 22,5 (até três pela Rajada), bico 24,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "poderes"
+      ],
+      "texto": "nuvem de tinta (Água 4), tempestade de raios (Raio 4) e dominar bestas do mar (Fascinação 5), com as bases e os usos do site e números da ficha (D-197); o Cego e o Dominado são as condições que o site descreve (\"cegando\", \"domina a mente\") **[provisório]**"
+    },
+    {
+      "campos": [
+        "absorcao"
+      ],
+      "texto": "Corte e Perfuração 23 para 7, só a Centelha; o Impacto vai de 20 a 20"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 3 (D-205)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "3 para 5, o das notas do site e do 3.5"
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

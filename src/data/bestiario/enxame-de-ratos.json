@@ -120,7 +120,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Força de mordida de cerca de 13 N (Nies e Ro 2004, citado por Cox 2015): N0. Mordidas reais em gente: 61% perfurações, 14% lacerações de menos de 1 cm (Ordog 1985). Um ataque por ação (D-097)"
     }
   ],
   "habilidadesEspeciais": [
@@ -136,7 +137,8 @@
       "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos",
       "dano": "1d6 + 1 de Perfuração",
       "resistencia": "sem jogada de ataque; a Absorção conta",
-      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo",
+      "justificativa": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
     },
     {
       "nome": "Corpo de enxame",
@@ -150,7 +152,8 @@
       "efeito": "Arma comum fere; cada golpe atinge um quadrado. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R32 e R34. Arma comum fere; cada golpe atinge um quadrado. Escolha: cada rato oferece corpo suficiente ao golpe. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
     }
   ],
   "comoLuta": [],
@@ -235,6 +238,98 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Pulso do enxame"
+      ],
+      "texto": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo de enxame"
+      ],
+      "texto": "R32 e R34. Arma comum fere; cada golpe atinge um quadrado. Escolha: cada rato oferece corpo suficiente ao golpe. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a mordida de 13 N fura e solta. O feito do rato (sobe escada com 1 kg preso à cauda depois de 8 semanas de treino, 0,32 kg sem treino; Kwon 2025, `enxame-de-ratos-carga.md`) agora fica na ordem do peso erguido provisório (1,40 kg), um pouco abaixo dele (D-162)"
+    },
+    {
+      "campos": [
+        "pesoErguido",
+        "carga"
+      ],
+      "texto": "provisórios (decisões 14 e 16). A carga fica \"não (enxame)\", com a conta só de registro (D-162, D-169)"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "28 (em vigor na Etapa 2, 20/10/2026); antes: 9 na Faixa 1 pela decisão 21 (5 + Vigor); a outra proposta do autor daria 12. A vida é \"o maior problema\" e o autor vai voltar a ela (decisão 20) (D-174)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23). Não bate com o real: 23 km/h contra 9,7 do rato (Garland 1983, método desconhecido), +137% (D-170)"
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "0,01 m² de lado pela conta nova, contra 0,02 da ficha de hoje; o Alvo segue Minúsculo (decisões 7 e 25)"
+    },
+    {
+      "campos": [
+        "dimensoes.largura"
+      ],
+      "texto": "0,06 m, estimada pelo Arquiteto, sem fonte; a altura de 0,08 m também é estimativa"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "4 pela resistência geral do rato no esgoto e no lixo. A leptospirose saiu do Vigor e foi para Resistência (doenças) +2, como a D-157 pedia (D-157, D-174)"
+    },
+    {
+      "campos": [
+        "atributosSociais"
+      ],
+      "texto": "Perspicácia de 2 para 1 pela diretriz 1, que trata o rato do enxame como não social; a pesquisa dá grupos hierárquicos em tocas (Wikipédia), e o rato gigante e o rato atroz, do mesmo Rattus norvegicus, ficam sociais. Ver os desvios (D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "2, e não o 3 de que o levantamento o dá como candidato: a mordida em quem dorme é hábito estreito, e vai na Especialidade (sobre quem dorme) 1 (D-174)"
+    },
+    {
+      "campos": [
+        "natacao",
+        "escalada"
+      ],
+      "texto": "2 cada, pelo \"nada bem\" (Wikipédia) e pelo \"escala\" (UC IPM), sem número medido (D-174)"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): forrageia de 30 a 150 m do ninho toda noite (UC IPM, [medido]); em esteira de laboratório, chega à exaustão a 1,0 a 1,1 km/h (Dellavechia-De-Carvalho 2025, teste aeróbico de rato sedentário, e não fuga)."
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "o Minúsculo é o do rato; o enxame usa o tamanho que apresenta no acerto (D-077), e o +9 não vale para o enxame inteiro (`passada-30.md` §2.1). Se o limite de tamanho do Bloqueio (`combate.md`:333) também usa o tamanho apresentado fica para o Mestre (D-087)"
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

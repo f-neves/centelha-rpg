@@ -87,7 +87,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A prensa das mandíbulas com o corpo atrás, Média. O ácido vai nas Manobras. Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Cuspe ácido",
@@ -103,7 +104,8 @@
       "tipoDano": "acido",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância, como o sopro do cão infernal. Os números são da ficha, descritos na linha do cuspe nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -128,7 +130,8 @@
       "classe": "livro",
       "ataque": "Mandíbulas",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "arrastar para o túnel",
@@ -142,7 +145,8 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arrastar para o túnel. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
     },
     {
       "nome": "Cuspe ácido",
@@ -157,7 +161,8 @@
       "efeito": "um jato de ácido em linha reta. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, ácido",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -231,13 +236,98 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": [
+  "notas": [
     {
-      "campo": "habilidadesEspeciais.Mordida ácida",
-      "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
+      "campos": [
+        "ataques.Cuspe ácido"
+      ],
+      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
     },
     {
+      "campos": [
+        "habilidadesEspeciais.prensa"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Cuspe ácido"
+      ],
+      "texto": "Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.arrastar para o túnel"
+      ],
+      "texto": "Aplicação à capacidade arrastar para o túnel. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 3: +3 Corte, +3 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Mordida ácida"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Cuspe ácido"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "450 kg para 160 kg, pela regra do lote: o comprimento do site, pela formiga-gigante, dá 138 kg, e o fator 1,15 do corpo de escavador leva a 160 kg. A Faixa (3) e o Tamanho (Grande) ficam; a Força (6) também **[conta]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "54 para 43. A tabela de PV pela massa dá 25 + 3 × 6 a 160 kg, fora da zona de transição **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +8 perfurante\", 6 Ticks, dano médio 15). A ficha fica com as mandíbulas, Médias, e o ácido vai na Mordida ácida. Dano médio: 15 antes; depois, mandíbulas 11,5, mais 1d6 de ácido (média 3,5): 15 com o ácido, sem mudança; cuspe 9,0 **[provisório]**"
+    },
+    {
+      "campos": [
+        "cuspe ácido",
+        "mordida ácida"
+      ],
+      "texto": "números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 2 (D-205)"
+    },
+    {
+      "campos": [],
+      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
+    }
+  ],
+  "revisao": [
+    {
       "campo": "ataques.Cuspe ácido",
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área.; R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
+    },
+    {
+      "campo": "habilidadesEspeciais.Mordida ácida",
       "motivo": "R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas).; números da ficha (D-197); o site dava \"dano ácido considerável, metade com Vigor\", uma vez por cena"
     },
     {

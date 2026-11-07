@@ -85,7 +85,8 @@
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do \"Golpe planar\" do site (1 dado, corte, 5 Ticks): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). A Centelha soma inteira. A ponta em brasa vai nas Manobras. Jogada: Força 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     },
     {
       "nome": "Cauda",
@@ -101,7 +102,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O corpo de serpente que chicoteia: Média, e a massa do corpo inteiro empurra, Força × 2 (`regra-construcao.md` §7; erro 7.6). A Constrição vai nas Manobras. Jogada: Força 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -117,7 +119,8 @@
       "efeito": "Médio: erguida. Pequeno: enrolada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Médio (erguida) e Pequeno (enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
     },
     {
       "nome": "Calor corporal",
@@ -136,7 +139,8 @@
       "efeito": "a pele irradia calor o bastante para queimar",
       "dano": "1d6 + Centelha, fogo, a cada 6 Ticks a quem está no agarrão com ela, e uma vez a quem a toca com a pele nua",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Constrição de cauda",
@@ -145,7 +149,8 @@
       "ataque": "Cauda",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "aperta a presa com o corpo"
+      "texto": "aperta a presa com o corpo",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Imobilizar",
@@ -155,7 +160,8 @@
         "id": "imobilizar",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Lança em brasa",
@@ -254,6 +260,81 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Imobilizar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Constrição de cauda"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Calor corporal"
+      ],
+      "texto": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Médio (erguida) e Pequeno (enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Médio erguida, Pequeno enrolada, pelo método das nagas (D-213) **[conta]**"
+    },
+    {
+      "campos": [
+        "armas"
+      ],
+      "texto": "5, o `briga` do golpe de arma do site; a nota dizia \"Armas 2\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "a lança do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "elementos"
+      ],
+      "texto": "imunidade a fogo e fraqueza a gelo, pelas habilidades do site **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperança"
+      ],
+      "texto": "1; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "constrição de cauda"
+      ],
+      "texto": "as duas linhas do site numa só; a segunda, com o \"engolir 1 alvo por vez\", é linha duplicada do site, descartada, pela decisão do autor de 24/10/2026"
+    },
+    {
+      "campos": [
+        "calor corporal",
+        "lança em brasa"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

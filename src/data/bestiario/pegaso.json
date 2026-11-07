@@ -101,7 +101,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"coice poderoso\" do site: o coice com o corpo virado, Pesada, como o coice do cavalo do molde; Força × 1, golpe de membro (`regra-construcao.md` §7). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     },
     {
       "nome": "Mordida",
@@ -117,7 +118,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de cavalo, Leve, como a do cavalo do molde. Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 4 e Briga 4 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -133,7 +135,8 @@
       "efeito": "Grande: de lado, asas fechadas, no chão. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Sentir o bem e o mal",
@@ -165,7 +168,8 @@
       "efeito": "Ignora medo imposto por presença, Arte ou poder de criatura. O Abalado de golpe social ou corporal continua valendo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Multiataque",
@@ -179,7 +183,8 @@
       "efeito": "Golpeia nesta ordem: coice esquerdo, coice direito, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "coice esquerdo, coice direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -265,6 +270,74 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "coice esquerdo, coice direito, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.coração nobre"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "450 kg, a do site, com o corpo do site (fator 0,76 sobre os 594 kg do cavalo escalado: corcel de voo, de pernas finas). Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
+    },
+    {
+      "campos": [
+        "segundo tamanho"
+      ],
+      "texto": "Enorme em voo, de asas abertas (17,0 m²), pelo método do grifo **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +10 perfurante\", 6 Ticks, dano médio 17). O pégaso não tem garra: a ficha usa o coice do site, Pesado, e a mordida, Leve, como no cavalo do molde. Dano médio: 17 antes; depois, coice 17,0 (sem mudança), mordida 11,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "absorcao"
+      ],
+      "texto": "Corte e Perfuração 9 para 4, só a Centelha, a Absorção natural do livro; o Impacto fica 10"
+    },
+    {
+      "campos": [
+        "sentir o bem e o mal"
+      ],
+      "texto": "poder natural com a base do site (Adivinhação 1) e números da ficha (D-197)"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 9 (D-205)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "1 para 3, o das notas do site e do Pathfinder"
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.area",

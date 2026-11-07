@@ -86,7 +86,8 @@
   "ataques": [
     {
       "nome": "Martelo",
-      "arma": "martelo"
+      "arma": "martelo",
+      "justificativa": "A arma do livro (`armas.json`, `martelo`): Média, Velocidade 6, Acerto +1, Defesa +1, ★I. Jogada: Força 3 + Armas 2"
     },
     {
       "nome": "Garras",
@@ -102,7 +103,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Garras\" (site). Garra rápida de membro, Leve (regra-construcao §7). Jogada: Força 3 + Briga 2"
     }
   ],
   "habilidadesEspeciais": [
@@ -126,7 +128,8 @@
       "classe": "livro",
       "categoria": "inato",
       "ataque": "Garras",
-      "texto": "as Garras da tabela, no lugar do golpe de martelo (um ataque por ação)"
+      "texto": "as Garras da tabela, no lugar do golpe de martelo (um ataque por ação)",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -203,6 +206,50 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Garras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Fedor nauseante"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R13 e D-197. Dificuldade fixa sugerida 10 (10 + Centelha 0) para graduar a potência deste fedor. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "martelo do livro, sem armadura **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 2 pelo couro escamoso **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperanca"
+      ],
+      "texto": "1; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "fedor nauseante"
+      ],
+      "texto": "números sugeridos pela ficha (D-197); o site manda testar Vigor, e no livro o teste do corpo é Vigor + Resistência"
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

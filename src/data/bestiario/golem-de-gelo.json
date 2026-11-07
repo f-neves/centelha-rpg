@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Os \"Punhos gelados\" do site (1 dado, impacto, 5 Ticks): o punho de um corpo de 2,1 m, Média como o Punho de pedra do golem de pedra (`regra-construcao.md` §7), golpe de membro, Força × 1; a Velocidade passa de 5 a 6 com a classe. O frio vem pelo Frio cortante (Manobras). Jogada: Força 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -90,7 +91,8 @@
       "classe": "livro",
       "ataque": "Punho gelado",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "derrubar",
@@ -98,7 +100,8 @@
       "classe": "livro",
       "ataque": "Punho gelado",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Frio cortante",
@@ -131,7 +134,8 @@
       "efeito": "um sopro de frio brutal castiga todos à frente. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, gelo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 5. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Explosão final",
@@ -159,7 +163,8 @@
       "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Neste material, aplicam-se Frio cortante",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -236,6 +241,94 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sopro congelante"
+      ],
+      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 5. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.imune à magia"
+      ],
+      "texto": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 4: +4 Corte, +4 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. Corpo fabricado ou animado; herda C-002."
+    },
+    {
+      "campos": [
+        "Sopro congelante"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R4/C-002. Gelo do construto é efeito similar à magia de base Gelo 2, V5. O corpo construído não produz doses. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "115 kg pelo gelo (0,125 m³ × 917 kg/m³); o site dizia 225 kg, o dobro da densidade do gelo. Com 225 kg, Faixa 4 e PV 46 **[provisório]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "4 por julgamento (gelo que racha); o site tinha 0 **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "4, gelo duro e quebradiço **[provisório]**"
+    },
+    {
+      "campos": [
+        "elementos"
+      ],
+      "texto": "imune a gelo pela habilidade publicada; o campo dizia resistência"
+    },
+    {
+      "campos": [
+        "atributos sociais",
+        "vontade",
+        "virtudes"
+      ],
+      "texto": "decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
+    },
+    {
+      "campos": [
+        "frio cortante",
+        "sopro congelante",
+        "explosão final"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

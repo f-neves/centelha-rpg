@@ -94,7 +94,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de lagarto pequeno, Leve. A jogada vai pela Destreza, maior que a Força (D-208); o dano, pela Força (D-209). Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     },
     {
       "nome": "Choque",
@@ -111,7 +112,8 @@
       "tipoDano": "raio",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância. Os números são da ficha, descritos na linha do choque nas Manobras. Jogada: o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 2 e Atirador 2 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -131,7 +133,8 @@
       "efeito": "descarrega a eletricidade do corpo num alvo perto A descarga nunca reduz a vítima abaixo de 0 PV. Ao chegar a 0, fica Incapacitada e Inconsciente, sem risco de morte",
       "dano": "1d6 + Centelha, raio",
       "resistencia": "esquiva, contra a jogada do choque",
-      "limiteDeUso": "O corpo guarda 2 cargas e produz 1 carga a cada 1 hora. Cada uso gasta 1 carga. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 2 cargas e produz 1 carga a cada 1 hora. Cada uso gasta 1 carga. Nada acelera a produção",
+      "justificativa": "Antes: Limite de 0 PV para derrubar pelo choque. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
     },
     {
       "nome": "choque da colônia",
@@ -145,7 +148,8 @@
       "efeito": "A descarga nunca reduz a vítima abaixo de 0 PV. Ao chegar a 0, fica Incapacitada e Inconsciente, sem risco de morte",
       "dano": "o dano de um Choque elétrico",
       "resistencia": "saída de área do livro, apenas os alvos rolam",
-      "limiteDeUso": "cada participante gasta uma carga do próprio Choque elétrico"
+      "limiteDeUso": "cada participante gasta uma carga do próprio Choque elétrico",
+      "justificativa": "Três lagartos em contato cooperam, cada participante gasta uma carga própria. Raio de 3 m e dano do choque individual, para que a área seja a vantagem da cooperação. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -237,6 +241,84 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Choque"
+      ],
+      "texto": "R36: projétil dirigido a um alvo, com o maior entre Vigor, Destreza e Percepção + Atirador. Antes: o bônus de Centelha ainda citava Disparo. Corrigida a referência para Atirador."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Choque elétrico"
+      ],
+      "texto": "Antes: Limite de 0 PV para derrubar pelo choque. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 1 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.choque da colônia"
+      ],
+      "texto": "Três lagartos em contato cooperam, cada participante gasta uma carga própria. Raio de 3 m e dano do choque individual, para que a área seja a vantagem da cooperação. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "comoLuta.choque que não mata"
+      ],
+      "texto": "O limite de 0 PV vale tanto no choque individual como no coletivo."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Choque elétrico"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Duas descargas permitem reagir à aproximação. Sugestão de 2 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (2 cargas e produz 1 carga a cada 1 hora)."
+    },
+    {
+      "campos": [],
+      "texto": "`massa`, exceção à regra de altura e massa do lote: fica a massa do site (11 kg), e as medidas saem dela pela fêmea do varano. Antes, no site: 0,9 m. Depois: 1,34 m. Pelo comprimento do site seriam 3,3 kg, e o PV cairia para 6 **[conta]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "26 para 18. A tabela de PV pela massa dá 15 + 3 a 11 kg, fora da zona de transição **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\", a mordida (`inimigos.json`: \"1d6 +4 perfurante\", 5 Ticks, dano médio 7,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 7,5 antes; depois, mordida 5,5, choque 5,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "choque elétrico"
+      ],
+      "texto": "poder natural com números da ficha (D-197), base Raio 1 (o Estalo, 1d6); o site não dava base **[provisório]**"
+    },
+    {
+      "campos": [
+        "imune à eletricidade"
+      ],
+      "texto": "imunidade a Raio, pela linha Elementos"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 3 (D-205)"
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",
@@ -249,6 +331,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Choque",
+      "motivo": "R36: projétil dirigido a um alvo, com o maior entre Vigor, Destreza e Percepção + Atirador. Antes: o bônus de Centelha ainda citava Disparo. Corrigida a referência para Atirador."
     },
     {
       "campo": "habilidadesEspeciais.Choque elétrico",

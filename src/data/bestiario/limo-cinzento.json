@@ -94,7 +94,8 @@
       "tipoDano": "acido",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (1 dado, 5 Ticks): o braço de limo que salta da poça, Leve (`regra-construcao.md` §7). Tipo ácido: o que fere é o ácido (site: \"seu toque banha metal e matéria orgânica em ácido\"), como na geleia ocre. O site tinha tipo impacto. Jogada: Força 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -104,7 +105,8 @@
       "classe": "livro",
       "ataque": "Pseudópode",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Ácido corrosivo",
@@ -133,7 +135,8 @@
       "efeito": "A peça perde um grau de Integridade por exposição que vencer sua resistência: inteira, avariada, quebrada. O conserto recupera um grau por trabalho",
       "dano": "nenhum",
       "resistencia": "a resistência da peça contra a exposição",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -216,6 +219,54 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "sentidos.sentido cego"
+      ],
+      "texto": "Localiza corpos em contato com seu meio até 9 m, mesmo Cego. Paredes e rupturas do meio bloqueiam a percepção. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.corrói arma e armadura"
+      ],
+      "texto": "Um grau por exposição vencida, pela corrosão ou ruptura da peça. A falha da peça não a destrói automaticamente. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Ácido corrosivo"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [],
+      "texto": "`destreza`, `percepcao`, `raciocinio`, sociais: 1, e `vontade` 3 (D-106 b, D-186); o site tinha 0 e 6"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Pseudópode Leve de ácido; o site tinha tipo impacto **[provisório]**"
+    },
+    {
+      "campos": [
+        "ácido corrosivo"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

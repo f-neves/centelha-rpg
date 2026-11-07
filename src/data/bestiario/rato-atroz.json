@@ -116,7 +116,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje: a Força segue 3. Leve, como a do lobo (seção 7). Força × 1. Mordida de cerca de 210 N, a do rato escalada pelo quadrado do tamanho : N0"
     }
   ],
   "habilidadesEspeciais": [],
@@ -198,6 +199,102 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "ficha"
+      ],
+      "texto": "provisória; revista quando chegar a vez das versões atrozes (D-177)"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "20 kg por escolha da Bestiarista, para o atroz ser maior que o rato gigante; a ficha atual dá até 11 kg e 60 cm, e os mesmos números do gigante (D-105, D-174)"
+    },
+    {
+      "campos": [
+        "gigante"
+      ],
+      "texto": "gigante da D-105 escalado do rato de 0,3 kg pelo cubo (fator 4,05); todas as medidas são extrapolação (D-105)"
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "0,20 m² de lado pela conta nova, contra 0,28 da ficha de hoje; o Alvo segue Pequeno (decisões 7 e 25)"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "3, um acima do rato gigante e abaixo da Força de referência de 20 kg (4,2), sem feito medido (D-158, D-169, D-177)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "+1 sobre o animal de base (rato, Vigor 4) (D-176, D-177)"
+    },
+    {
+      "campos": [
+        "habilidades"
+      ],
+      "texto": "Briga 3, Integridade 2, a Especialidade Briga (defendendo o ninho) 1 e Vontade 4, acima do rato, são extrapolação do \"atroz\" mais feroz, sem dado real (D-174)"
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "1 pela colônia do rato e pelo bando do d20; nenhum dado de leitura do humano (D-174)"
+    },
+    {
+      "campos": [
+        "natacao",
+        "escalada"
+      ],
+      "texto": "2 cada, pelas do rato, sem número (D-174)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23); 55 km/h contra 9,7 km/h do rato real, +467% (D-170)"
+    },
+    {
+      "campos": [
+        "pesoErguido",
+        "carga"
+      ],
+      "texto": "provisórios (decisões 14 e 16); a carga é só registro (D-162, D-169)"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "30, igual ao do rato gigante: mesma faixa e mesmo Vigor; a D-135 não dá bônus sem justificativa (D-135, D-145)"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): sem dado do atroz. Do rato, [comparação]: esteira até a exaustão a 1,0 a 1,1 km/h (Dellavechia-De-Carvalho 2025, teste aeróbico de laboratório); forrageia de 30 a 150 m do ninho toda noite (UC IPM)."
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2 e Resistência (doenças) +2, os dois pelo rato, [comparação] (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a largura do rato de base (0,06 m), que a escala multiplica, continua só por estimativa do Arquiteto (D-174)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

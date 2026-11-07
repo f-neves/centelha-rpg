@@ -98,7 +98,8 @@
   "ataques": [
     {
       "nome": "Maça estrela",
-      "arma": "maca-estrela"
+      "arma": "maca-estrela",
+      "justificativa": "A arma do livro (`armas.json`, `maca-estrela`): Média, Velocidade 6, Acerto +1, Defesa +1, ★I · P(N1). Jogada: Força 3 + Armas 2"
     },
     {
       "nome": "Rabada",
@@ -114,7 +115,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Rabada\" (site). Golpe de cauda: Impacto, e a massa do corpo inteiro gira no golpe, Força × 2 (regra-construcao §7; erro 7.6). Média: cauda de réptil de 90 kg, sem a clava do anquilossauro. Jogada: Força 3 + Briga 2"
     }
   ],
   "habilidadesEspeciais": [
@@ -124,7 +126,8 @@
       "classe": "livro",
       "categoria": "inato",
       "ataque": "Rabada",
-      "texto": "a Rabada da tabela, no lugar do golpe de maça (um ataque por ação)"
+      "texto": "a Rabada da tabela, no lugar do golpe de maça (um ataque por ação)",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -196,6 +199,44 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Rabada"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "maça estrela do livro, sem armadura **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 2 pelas escamas **[provisório]**"
+    },
+    {
+      "campos": [
+        "rabada"
+      ],
+      "texto": "Média, Força × 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1 e Temperança 3; o site tinha 2 e 2 **[provisório]**"
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

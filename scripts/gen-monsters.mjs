@@ -72,8 +72,18 @@ function classeDoAtaque(id, nome, ticks) {
 
 const CATEGORIA_NOME = { animal:'Animal', aberracao:'Aberração', 'besta-magica':'Besta mágica', celestial:'Celestial', humanoide:'Humanoide', 'humanoide-monstruoso':'Humanoide monstruoso', 'morto-vivo':'Morto-vivo', corruptor:'Corruptor', planta:'Planta', construto:'Construto', gigante:'Gigante', limo:'Limo', elemental:'Elemental', dragao:'Dragão', fada:'Fada', outsider:'Extraplanar' };
 const idCategoria = v => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\s+/g,'-');
-function build(c, fonte) {
+// F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa dos ataques e a dos poderes vêm da fonte crua (a `edicao`, que é o JSON do
+// bestiário). A forma não tem `edicao` própria: lê a da criatura e, nela, a lista de ataques da forma, se houver.
+function justificativasDe(cru, formaId) {
+  if (!cru) return { ataques: {}, poderes: {} };
+  const forma = formaId ? (cru.formas || []).find((x) => x.id === formaId) : null;
+  const doNome = (lista) => Object.fromEntries((lista || []).filter((x) => x.justificativa).map((x) => [x.nome, x.justificativa]));
+  return { ataques: doNome(forma?.ataques ?? cru.ataques), poderes: doNome(cru.habilidadesEspeciais) };
+}
+function build(c, fonte, cruDaCriatura) {
   const f = fonte || FICHA[c.id];
+  const cru = f?.motor?.edicao ?? cruDaCriatura;
+  const just = justificativasDe(cru, f?.motor?.formaPrincipal && !f?.motor?.edicao ? f.motor.formaPrincipal.id : null);
   const categoria = idCategoria(f?.categoria || c.categoria);
   const categoriaNome = CATEGORIA_NOME[categoria] || categoria;
   const tags = [categoria, ...(c.centelha > 0 ? ['centelha'] : []), ...(c.artes?.some(a=>a.nivel > 0) ? ['mágico','arcano'] : [])];
@@ -126,11 +136,13 @@ function build(c, fonte) {
       deslocamento: (()=>{const d=f.deslocamentoDeclarado;if(!d)throw Error(f.id+': deslocamento ausente');return {batalha:d.batalha,arranque:d.arranque,corrida:d.corrida};})(),
       ataques: (c.ataques || []).map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, perfArma: a.perfArma ?? null, speed: a.ticks, classe: a.classe ?? classeDoAtaque(c.id, a.nome, a.ticks), forcaInvestida: a.forcaInvestida ?? 0, ...(a.semJogada ? { semJogada: true } : {}), ...(a.notas ? { notas: a.notas } : {}) })),
     },
-    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao || descricaoDaRef(x), ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}), ...(x.campos ? {texto:x.texto, campos:x.campos} : {}) })),
+    // fora de `combate`, que vai inteiro para a mesa: a justificativa é prosa do card (F1)
+    ...(Object.keys(just.ataques).length ? { justificativaDosAtaques: just.ataques } : {}),
+    habilidadesEspeciais: (f.habilidades || []).map((x) => ({ nome: x.nome, descricao: x.descricao || descricaoDaRef(x), ...(x.classe ? {classe:x.classe} : {}), ...(x.base ? {base:x.base} : {}), ...(x.regra ? {regra:x.regra} : {}), ...(x.campos ? {texto:x.texto, campos:x.campos} : {}), ...(just.poderes[x.nome] ? { justificativa: just.poderes[x.nome] } : {}) })),
     ...(f.motor?.enxame ? {enxame:f.motor.enxame} : {}),
     comoLuta: f.motor?.comoLuta || [], sentidos: f.motor?.sentidos || [], segundoTamanho: f.motor?.segundoTamanho || null,
     ...(f.motor?.formaPrincipal ? {formaPrincipal:f.motor.formaPrincipal} : {}),
-    formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,...(fo.outraForma?{outraForma:fo.outraForma}:{}),criatura:build(fo.ficha.motor.stat,fo.ficha)})),
+    formas: (f.motor?.formas || []).map(fo=>({id:fo.id,nome:fo.nome,...(fo.outraForma?{outraForma:fo.outraForma}:{}),criatura:build(fo.ficha.motor.stat,fo.ficha,cru)})),
     poderes: [],
     // Locomoção CRUA, por modo (B14 fase 4, item 5 do Adendo 3): o `deslocamento`
     // acima já é o passo único (m/Tick) que o Grid usa; isto é o detalhe por modo
@@ -257,6 +269,7 @@ const FORA_DA_MESA = {
   // CAMPOS_MESA); isto é só o detalhe por modo que o card mostra (B14 fase 4,
   // Adendo 3, item 5).
   locomocao: 'exibição do card; o Grid anda por combate.deslocamento, já derivado',
+  justificativaDosAtaques: 'prosa do card (F1, D-357): o porquê de cada ataque, que conta nenhuma usa',
 };
 
 const TEC_POR_ID = Object.fromEntries(read('tecnicas.json').map((t) => [t.id, t]));

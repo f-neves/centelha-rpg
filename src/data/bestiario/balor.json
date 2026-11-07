@@ -96,11 +96,13 @@
   "ataques": [
     {
       "nome": "Espada flamejante",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Uma mão, com o chicote na outra: Força × 1. O fogo da lâmina vai nas Manobras. Jogada: Força 11 + Armas 5 + 2 × o menor entre Centelha 9 e Armas 5 (10)"
     },
     {
       "nome": "Chicote de chamas",
-      "arma": "chicote"
+      "arma": "chicote",
+      "justificativa": "A arma do livro (`armas.json`, `chicote`), 33.2; uma mão, Destreza para o acerto e Força para o dano. Alcance e puxão nas Manobras."
     },
     {
       "nome": "Garras",
@@ -116,7 +118,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte), quando está sem as armas: o braço com o corpo atrás, Média. Jogada: Força 11 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -148,7 +151,8 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "o do chicote",
       "resistencia": "corpo, contra a jogada do golpe; quem passa leva o dano e fica onde está",
-      "limiteDeUso": "um por golpe"
+      "limiteDeUso": "um por golpe",
+      "justificativa": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Aura de fogo",
@@ -167,7 +171,8 @@
       "efeito": "o corpo arde o tempo todo; ficar perto, mesmo sem lutar, queima",
       "dano": "2d6 de fogo a cada 6 Ticks em quem estiver dentro",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Morte explosiva",
@@ -204,7 +209,8 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Velocidade 8, alcance qualquer lugar que ele conheça no mesmo plano, viajantes: o próprio balor. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Comandar legiões",
@@ -214,7 +220,8 @@
         "id": "coordenar",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "comandar a horda inteira",
@@ -228,7 +235,8 @@
       "efeito": "Antecipa a próxima ação dos aliados em 2 Ticks, sem dar ação extra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por cena, sem custo"
+      "limiteDeUso": "uma vez por cena, sem custo",
+      "justificativa": "Antecipação de 2 Ticks da próxima ação aliada, aproveitando o comando ou a rapidez da magia. valor de molde, para a bancada."
     },
     {
       "nome": "Ver o invisível",
@@ -238,7 +246,8 @@
         "id": "visao-verdadeira",
         "nivel": 4
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "visão verdadeira sempre ativa",
@@ -252,7 +261,8 @@
       "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
     },
     {
       "nome": "medonho",
@@ -273,7 +283,8 @@
       "efeito": "Golpeia nesta ordem: espada flamejante, chicote de chamas. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "espada flamejante, chicote de chamas. Teto 2. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -370,6 +381,143 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Ver o invisível"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Comandar legiões"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Teleporte"
+      ],
+      "texto": "Antes: Velocidade 8, alcance qualquer lugar que ele conheça no mesmo plano, viajantes: o próprio balor. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Aura de fogo"
+      ],
+      "texto": "Base Aura pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Chicote que puxa"
+      ],
+      "texto": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "sentidos.visão verdadeira"
+      ],
+      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.visão verdadeira sempre ativa"
+      ],
+      "texto": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.comandar a horda inteira"
+      ],
+      "texto": "Antecipação de 2 Ticks da próxima ação aliada, aproveitando o comando ou a rapidez da magia. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "espada flamejante, chicote de chamas. Teto 2. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 4: +4 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Teleporte"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "1.355 kg pelo corpo de base da D-192 alargado (50% e 30%), contra os 3,6 t do site, pela D-187. A Faixa desce de 5 para 4, o PV de 95 para 78 e o Peso erguido sobe de 1.553,04 para 2.017,70 kg (a referência de Força cresce com a massa). Com a proporção humana daria 693 kg; o alargamento é julgamento **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "0, e não o −2 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181) **[provisório]**"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "5 pela nota do site, e não o 3 do campo **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "o 0 do site sobe a 1, o piso da régua"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as Garras ficam Médias; a espada é a do livro e o chicote, Leve **[provisório]**"
+    },
+    {
+      "campos": [
+        "chicote"
+      ],
+      "texto": "o livro não tem chicote; ataque da ficha, Leve, com o puxão de 9 m como habilidade (D-197) **[provisório]**"
+    },
+    {
+      "campos": [
+        "aura de fogo",
+        "morte explosiva",
+        "teleporte",
+        "lâmina em chamas"
+      ],
+      "texto": "números da ficha com as bases do site (D-197)"
+    },
+    {
+      "campos": [
+        "comandar legiões"
+      ],
+      "texto": "a Técnica coordenar (estandarte, nível 1), pelo `proezaFutura` do site; dar ação a toda a horda ficou sem regra ainda"
+    },
+    {
+      "campos": [
+        "fraqueza a frio"
+      ],
+      "texto": "o site diz \"vulnerável a frio (sofre dano extra)\"; entrou como fraqueza a Gelo do vocabulário, que passa a Absorção **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "4, como o hezrou **[provisório]**"
+    },
+    {
+      "campos": [
+        "Chicote que puxa"
+      ],
+      "texto": "Acerto pela Destreza 8, em vez da Força 11; jogada 27 para 24, pela 33.2. **[provisório]**"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.prontidao",

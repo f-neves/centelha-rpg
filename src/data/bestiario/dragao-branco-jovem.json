@@ -114,7 +114,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida de predador grande (`regra-construcao.md` §7). Golpe de boca: Força × 1. N2 pela proposta da seção 3.10 (até 30.000 N): a mordida de um réptil de 700 kg fica acima da do crocodilo (N1 a N2) . Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Garras",
@@ -130,7 +131,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Patada de predador grande, Média (§7, \"patada do urso\"); garra Cortante. Bloqueia como a mão nua (D-100)"
     },
     {
       "nome": "Sopro de frio",
@@ -146,7 +148,8 @@
       "tipoDano": "gelo",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O sopro cobre um cone de 9 m à frente da criatura. Quem estiver na área se defende pela regra de área do livro. Os números são sugestão da ficha (D-197), descritos na linha do sopro nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -162,7 +165,8 @@
       "efeito": "Grande: de lado, pousado, asas fechadas. Enorme: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (de lado, pousado, asas fechadas) e Enorme (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Sopro de frio",
@@ -182,7 +186,8 @@
       "efeito": "o frio queima a pele e cobre o chão de gelo fino, e quem atravessa esse chão no Tick seguinte testa Equilíbrio para não cair. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "6d6 + Centelha, gelo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
     },
     {
       "nome": "garras em sequência",
@@ -190,7 +195,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada"
+      "regra": "rajada",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Multiataque",
@@ -204,7 +210,8 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     },
     {
       "nome": "Presença",
@@ -259,7 +266,8 @@
       "efeito": "neve fechada; quem está dentro tem −2 em Prontidão e nas jogadas de Percepção pela vista, e ele não sofre a penalidade",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana",
+      "justificativa": "Base Inverno pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Voo em mergulho",
@@ -375,6 +383,125 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Sopro de frio"
+      ],
+      "texto": "Antes: observação dizia que o sopro voava até o alvo. R36: texto corrigido para cone de 9 m e defesa de quem estiver na área, conforme as Manobras."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Nevasca"
+      ],
+      "texto": "Base Inverno pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.garras em sequência"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sopro de frio"
+      ],
+      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "sentidos.visão no escuro"
+      ],
+      "texto": "Distingue formas sem cor até 18 m no escuro, sem atravessar obstáculos. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 6: +6 Corte, +6 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (de lado, pousado, asas fechadas) e Enorme (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "Sopro de frio"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campos": [
+        "Nevasca"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "8 por comparação; o site tinha 7 **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "6, \"acima do crocodilo\", no começo da faixa, para deixar espaço às idades maiores **[provisório]**"
+    },
+    {
+      "campos": [
+        "sopro"
+      ],
+      "texto": "6d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197: \"A Bestiarista sugere tudo... o autor revisa no fim\"). Os números do site ficam, porque o sopro tem de ser a arma mais forte do dragão (média 25, contra 15,5 da mordida); a base Gelo 3 (Rajada Gélida, 2d6) daria 11, abaixo da mordida. O chão de gelo é a parte da Rajada Gélida que desacelera **[provisório]**"
+    },
+    {
+      "campos": [
+        "envergadura",
+        "área"
+      ],
+      "texto": "escaladas do grifo pela mesma carga por área de asa; o grifo é a única criatura voadora grande com Centelha já feita **[conta]**"
+    },
+    {
+      "campos": [
+        "multiataque"
+      ],
+      "texto": "sem regra ainda; garras pela Rajada (ajuste de 24/10/2026, no formato do lote 23)"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "700 kg, a do site, conferida pelo crocodilo de mesmo comprimento (de memória, a conferir)"
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "Antes: Tamanho principal Enorme."
+    },
+    {
+      "campos": [],
+      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Multiataque · sem regra ainda: garra, garra e mordida no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",
@@ -402,7 +529,7 @@
     },
     {
       "campo": "ataques.Sopro de frio",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+      "motivo": "Antes: observação dizia que o sopro voava até o alvo. R36: texto corrigido para cone de 9 m e defesa de quem estiver na área, conforme as Manobras.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
     },
     {
       "campo": "habilidadesEspeciais.Nevasca",

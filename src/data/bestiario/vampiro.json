@@ -94,7 +94,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Jogada: Força 5 e Destreza 5 (D-208): 5 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Mordida",
@@ -110,7 +111,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Mordida drenante\" (site): a boca humana com duas presas, gesto rápido de boca pequena, Leve (`regra-construcao.md` §7). Leva o Dreno de sangue (Manobras). Jogada igual à da Pancada"
     }
   ],
   "habilidadesEspeciais": [
@@ -119,7 +121,8 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de prata, fogo ou luz do sol só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "efeito": "origem sobrenatural. O dano de prata, fogo ou luz do sol só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
+      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: prata, fogo ou luz do sol. valor de molde, para a bancada."
     },
     {
       "nome": "prata, fogo e sol param a regeneração",
@@ -145,7 +148,8 @@
       "efeito": "bebe o sangue de quem morde e se fecha com ele",
       "dano": "nenhum além da mordida; ele recupera PV igual ao dano que a mordida fez depois da Absorção",
       "resistencia": "corpo, contra a jogada da mordida; quem passa leva o dano, mas ele não se cura",
-      "limiteDeUso": "um por golpe. Sem custo"
+      "limiteDeUso": "um por golpe. Sem custo",
+      "justificativa": "Base Dreno pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Olhar dominador",
@@ -164,7 +168,8 @@
       "efeito": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez",
+      "justificativa": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Forma gasosa",
@@ -182,7 +187,8 @@
       "efeito": "o corpo vira névoa: Impacto, Corte e Perfuração não o ferem, passa por frestas e flutua devagar; não ataca nem usa outro poder enquanto dura. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado. Em forma gasosa não ataca nem conjura",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "nenhum. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Filhos da noite",
@@ -214,7 +220,8 @@
       "efeito": "Enquanto estiver em água corrente ou tocado pela estaca, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Intervalo de 6 Ticks pela exposição em água corrente ou tocado pela estaca. valor de molde, para a bancada. Aplicação à capacidade água corrente e estaca. Enquanto estiver em água corrente ou tocado pela estaca, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -325,6 +332,120 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "elementos.fraquezas"
+      ],
+      "texto": "L8. Sol, prata e fogo já constavam como fraquezas. O dano dessas fontes ignora toda a Absorção e é agravado. Pela R47, a Regeneração 5 também não fecha o dano de prata."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Forma gasosa"
+      ],
+      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Olhar dominador"
+      ],
+      "texto": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Dreno de sangue"
+      ],
+      "texto": "Base Dreno pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "comoLuta.sem reflexo nem sombra"
+      ],
+      "texto": "Traço observável, sem jogada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.água corrente e estaca"
+      ],
+      "texto": "Intervalo de 6 Ticks pela exposição em água corrente ou tocado pela estaca. valor de molde, para a bancada. Aplicação à capacidade água corrente e estaca. Enquanto estiver em água corrente ou tocado pela estaca, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 5"
+      ],
+      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: prata, fogo ou luz do sol. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O cadáver é animado após a morte."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se bebendo sangue. O meio acompanha o vínculo ou alimento já descrito na ficha."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. O predador que subjuga suas presas resguarda a própria vontade e seus planos."
+    },
+    {
+      "campos": [
+        "Olhar dominador"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Forma gasosa"
+      ],
+      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campos": [
+        "Filhos da noite"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "9, a beleza do nobre que seduz; o site tinha 2 (D-205) **[provisório]**"
+    },
+    {
+      "campos": [
+        "atletismo",
+        "sociabilidade"
+      ],
+      "texto": "pela \"força sobre-humana\" e pela vida na nobreza do site **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"Golpe\" do site ficou Pancada Média, e a \"Mordida drenante\" entrou como Mordida Leve **[provisório]**"
+    },
+    {
+      "campos": [
+        "dreno de sangue",
+        "olhar dominador",
+        "forma gasosa",
+        "filhos da noite"
+      ],
+      "texto": "números sugeridos pela ficha, com as Artes do site como base (D-197)"
+    },
+    {
+      "campos": [
+        "Regeneração 5"
+      ],
+      "texto": "Antes: 8 PV/6 Ticks por 4 de Energia."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.atletismo",

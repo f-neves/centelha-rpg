@@ -82,7 +82,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). A Centelha soma inteira. O \"golpe duplo\" do site é a Rajada do livro (Manobras). Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     },
     {
       "nome": "Espada longa a duas mãos",
@@ -98,7 +99,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Versátil: com as duas mãos soma Força × 2 (`armas-e-armaduras.md`). Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -109,7 +111,8 @@
       "ataque": "Espada longa",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação"
+      "texto": "Até dois golpes por ação",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Golpe Pesado",
@@ -119,7 +122,8 @@
         "id": "golpe-pesado",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Quebrar Guarda",
@@ -129,7 +133,8 @@
         "id": "quebrar-guarda",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Soco Trovejante",
@@ -139,14 +144,16 @@
         "id": "soco-trovejante",
         "nivel": 3
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
+      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -213,6 +220,62 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sem inimizades naturais"
+      ],
+      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Soco Trovejante"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Quebrar Guarda"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Golpe Pesado"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Golpe duplo"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "energia"
+      ],
+      "texto": "14 pela fórmula do livro; o site escrevia \"Centelha × 3 + Virtudes + Vontade\""
+    },
+    {
+      "campos": [
+        "convicção"
+      ],
+      "texto": "4; o site tinha 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "escudo"
+      ],
+      "texto": "Variante, porque o site não o põe no equipamento"
+    },
+    {
+      "campos": [
+        "card e equipamento"
+      ],
+      "texto": "a malha está sempre vestida (D-188)"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

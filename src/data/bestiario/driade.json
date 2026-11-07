@@ -85,7 +85,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe rápido para se afastar do agressor; jogada 12 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -106,7 +107,8 @@
       "efeito": "o alvo baixa a guarda, trata a dríade com boa vontade e aceita pedidos pacíficos",
       "dano": "nenhum",
       "resistencia": "Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa não é afetado",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Fundir-se à árvore",
@@ -143,7 +145,8 @@
       "efeito": "Passa de uma árvore a outra num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Velocidade 8, alcance 36 m, viajantes: o próprio usuário. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Vínculo com a árvore-lar",
@@ -157,7 +160,8 @@
       "efeito": "Enquanto estiver afastada da árvore-lar, sofre Desgaste 1 a cada 1 dia. Aplicar por contato exige uma ação",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Intervalo de 1 dia pela exposição afastada da árvore-lar. valor de molde, para a bancada. Aplicação à capacidade Vínculo com a árvore-lar. Enquanto estiver afastada da árvore-lar, sofre Desgaste 1 a cada 1 dia. Aplicar por contato exige uma ação. valor de molde, para a bancada."
     },
     {
       "nome": "Furtividade natural",
@@ -245,6 +249,80 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Passo arbóreo"
+      ],
+      "texto": "Antes: Velocidade 8, alcance 36 m, viajantes: o próprio usuário. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Enfeitiçar"
+      ],
+      "texto": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Vínculo com a árvore-lar"
+      ],
+      "texto": "Intervalo de 1 dia pela exposição afastada da árvore-lar. valor de molde, para a bancada. Aplicação à capacidade Vínculo com a árvore-lar. Enquanto estiver afastada da árvore-lar, sofre Desgaste 1 a cada 1 dia. Aplicar por contato exige uma ação. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Enfeitiçar"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Fundir-se à árvore"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Passo arbóreo"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Artes"
+      ],
+      "texto": "Antes: Fascinação 2, Conjuração 2 e Matéria 2; agora bases de poderes naturais, sem Mana, porque não conjura como classe."
+    },
+    {
+      "campos": [
+        "Furtividade natural"
+      ],
+      "texto": "Antes: +2d em Furtividade dentro de florestas; agora +1d6."
+    },
+    {
+      "campos": [
+        "Golpe desarmado"
+      ],
+      "texto": "Antes: ataque genérico perfurante 1d6 + 2 + 4, média 9,5; agora Impacto 1d6 − 2 + 2 + 4, média 7,5, Acerto 0 para +1."
+    },
+    {
+      "campos": [
+        "Briga"
+      ],
+      "texto": "Antes: 4."
+    },
+    {
+      "campos": [
+        "Prontidão"
+      ],
+      "texto": "Antes: 2."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

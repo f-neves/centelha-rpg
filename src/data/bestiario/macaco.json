@@ -112,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena: Leve (seção 7). Caninos maiores no macho (ADW). Soma a Força 1 da sétima rodada (D-115: \"Força 4 bate como Força 4 em qualquer criatura\"); era 1d6 − 2, média 1,5. Força em N não achada: N0."
     }
   ],
   "habilidadesEspeciais": [],
@@ -174,6 +175,56 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [],
+      "texto": "fonte (repesquisa de 13/10/2026): a cauda vem do Primate Info Net (cauda do comprimento do corpo; corpo de 444 mm e massa de 3,65 kg no macho selvagem), que confirma o macho de 3,5 kg e 0,44 m de Liu 2016 (D-174). A ficha passou ao adulto típico de 2,8 kg, com as dimensões escaladas pelo cubo da massa."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes: a altura (0,23 m) e a largura (0,14 m) são a estimativa da Bestiarista-2 para o macho (0,25 e 0,15 m), sem fonte, escalada pelo cubo da massa. De pé, batendo a pedra, a silhueta de frente seguiria Miúdo (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especie: macaco-prego, escolhido pelo peso, pelo leitor brasileiro e pelo feito medido; a ficha genérica vira a espécie (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "forca e pesoErguido: Força 1 ◆ na sétima rodada (item 8 da `tamanho-decisoes-5.md`; era 0 pela leitura automática da D-167); a mordida sobe de 1,5 para 2,5 de média (D-115). Com a fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 2,8 kg), a Força 1 e a Musculatura 2, o peso erguido sobe de 0,57 para 22,89 kg (18,8 com a Força 0) e passa a cobrir o feito medido (pedras de 1,92 kg acima da cabeça e de 3,47 kg, Liu 2016). Provisório até a fórmula fechar (D-169, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela decisão 21 (5 + Vigor), e 11 pela outra proposta do autor (10 + metade do Vigor); era 18. A escolha entre as duas é do autor (decisões 20 e 21, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23), 7 km/h, a mais lenta do lote; sem real para conferir (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "variantes.machoAlfa: o alfa de cerca de 4,2 kg (o maior pesado, 4,28) passa do corte de 4 kg e cai na Faixa 2 (26 PV), mais que o triplo do adulto típico (8); o salto vem do corte da faixa, e não do corpo (decisão 21, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "inteligencia: 2 pela ferramenta de pedra, proposta do Arquiteto fora da lista do autor (diretriz 1), a decidir (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): **[medido]** anda até 2.000 m por dia (ADW). Sem tempo de corrida ou de fuga."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.equilibrio e especialidades.equilibrio: 1 mais a Especialidade natural (galhos) +2, sem medida de salto ou de queda; leitura do \"arborícola, salta e escala\" (ADW), provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.musculatura: 2, animal comum; o feito é de técnica, e o peso erguido novo já o cobre sem subir a Musculatura (decisão 12, D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

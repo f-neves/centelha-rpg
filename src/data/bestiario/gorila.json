@@ -113,7 +113,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de braço com o corpo atrás: Média. Mão com unha, não garra: Impacto (seção 7). A Força não muda: fica 1d6 + 7, média 10,5."
     },
     {
       "nome": "Mordida",
@@ -129,7 +130,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Caninos grandes no macho (ADW); força de mordida não achada: N0. Opção, não segundo golpe (D-097). Fica 1d6 + 7, média 10,5."
     }
   ],
   "habilidadesEspeciais": [
@@ -139,7 +141,8 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "a mão"
+      "texto": "a mão",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "arremessar",
@@ -154,7 +157,8 @@
       "efeito": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arremessar. Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -218,5 +222,81 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.arremessar"
+      ],
+      "texto": "Aplicação à capacidade arremessar. Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 1.007,57 kg (em vigor na Etapa 2, 20/10/2026); antes: 812,56 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 126 kg), provisório até a fórmula fechar; o teto de arremesso (um quarto dele, 203,1 kg) segue o mesmo número (D-169, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "carga: não se aplica; o gorila não é quadrúpede de carga (D-160)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23); os números são os de 12/10. Sem velocidade real medida para conferir; os 32 a 40 km/h de divulgação ficam fora, como antes (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura e dimensoes.comprimento: 0,83 m e 0,55 m (os 0,90 m e 0,60 m estimados pelo Arquiteto para o macho, sem fonte, escalados pelo cubo da massa); o Alvo sai da silhueta de frente, em pé (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.postura: tratado como ereto (área de frente e espaço em círculo), embora ande de quatro a maior parte do tempo; é a leitura do Arquiteto, mantida (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "inteligencia: 2 pela lista fechada da diretriz 1 (grande símio); a pesquisa do gorila não traz uso de ferramenta com fonte, e o 2 se apoia na comunicação do grupo e no parentesco (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.empatia: 1 pela comunicação do grupo (ADW), sem estudo de leitura do humano (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.escalada: 2 pelos 15 m de árvore (ADW), sem velocidade de escalada; a Especialidade natural (galhos) +1 é o exemplo do autor para o símio, com valor [extrapolação] (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades.frio: +1 pelo gorila-das-montanhas; o gorila-ocidental, da floresta de planície, não passa frio, e a Especialidade vale para a espécie inteira por simplicidade (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "variantes.femea: com 92 kg, a área escalada (0,73 m²) dá Médio; as dimensões são as do macho escaladas, e não medidas da fêmea (1,25 a 1,5 m de altura, sem largura medida) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): **[medido]** o gorila-ocidental anda em geral menos de 1,6 km por dia (Smithsonian); o gorila-das-montanhas passa cerca de 30% do dia se deslocando, 30% comendo e 40% descansando (ADW). Sem tempo de perseguição nem de investida."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - sentidos: Nada que passe do humano com número. Olhos pequenos (ADW); números de visão, audição e olfato não achados **[sem dado]**. Sem Especialidade natural de sentido."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: o \"tambor\" no peito do macho é sinal honesto de tamanho (o macho maior soa mais grave; Wright 2021); o macho estressado solta cheiro forte das axilas (ADW, gorila-das-montanhas); anda de quatro sobre os nós dos dedos e fica de pé com frequência (ADW); pelo mais longo no gorila-das-montanhas, o fato da Resistência (frio) +1 (ADW)."
+    }
+  ],
   "revisao": []
 }

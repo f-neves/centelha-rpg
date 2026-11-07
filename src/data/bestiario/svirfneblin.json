@@ -84,7 +84,8 @@
   "ataques": [
     {
       "nome": "Picareta de guerra",
-      "arma": "picareta-de-guerra"
+      "arma": "picareta-de-guerra",
+      "justificativa": "A arma do livro (`armas.json`, `picareta-de-guerra`): Média, Velocidade 6, Acerto +1, Defesa +1, ★P(N2) · I; o bico vence a placa de N2. A Centelha soma inteira. Jogada: Destreza 4 + Armas 3 + 2 × o menor entre Centelha 1 e Armas 3 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -193,6 +194,56 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "Disfarce e sombra"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 12 da fonte passa a grau 1 (+2)."
+    },
+    {
+      "campos": [
+        "raça parente"
+      ],
+      "texto": "Gnomo (D-207); os números são os do site"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "18 kg na borda de cima da zona de transição de 12 a 18 kg; na faixa de baixo seriam 19 PV"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "picareta de guerra do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperança"
+      ],
+      "texto": "3; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "disfarce e sombra"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "Resistência à magia 12"
+      ],
+      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

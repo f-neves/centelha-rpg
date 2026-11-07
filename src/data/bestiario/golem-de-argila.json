@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "A \"Arma\" do site (2 dados, corte, 6 Ticks) é o punho de barro: Média, como o Punho de pedra do golem de pedra (`regra-construcao.md` §7), golpe de membro, Força × 1; o segundo dado sai com a classe, e o tipo passa a Impacto, porque é punho, e não lâmina. Bloqueia como arma (D-066), Defesa +1 . Jogada: Força 8 + Briga 4 + 2 × o menor entre Centelha 3 e Briga 4 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -90,7 +91,8 @@
       "classe": "livro",
       "ataque": "Punho de argila",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "derrubar",
@@ -98,7 +100,8 @@
       "classe": "livro",
       "ataque": "Punho de argila",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "empurrar",
@@ -106,7 +109,8 @@
       "classe": "livro",
       "ataque": "Punho de argila",
       "categoria": "inato",
-      "regra": "empurrar"
+      "regra": "empurrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Fúria descontrolada",
@@ -163,7 +167,8 @@
       "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -237,6 +242,102 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.empurrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.imune à magia"
+      ],
+      "texto": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 6: +6 Corte, +6 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. Corpo fabricado ou animado; herda C-002."
+    },
+    {
+      "campos": [
+        "Ferida amaldiçoada"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "270 kg, a do site, que dá 1.442 kg/m³ no corpo de base escalado, a densidade da argila seca; com os ombros 25% mais largos do golem de pedra, daria 1.153 kg/m³, leve demais para o barro, e por isso a proporção humana **[referência de jogo]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Médio pela área (1,28 m²); o site dizia Grande **[conta]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "5 por julgamento (argila endurecida, abaixo do granito); o site tinha 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "2, pelo corpo de argila na proporção humana **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "6, argila endurecida **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "a \"Arma\" de 2 dados e corte vira o Punho de argila Média, de 1 dado e Impacto (perda de mecânica publicada, no relato) **[provisório]**"
+    },
+    {
+      "campos": [
+        "atributos sociais",
+        "vontade",
+        "virtudes"
+      ],
+      "texto": "decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
+    },
+    {
+      "campos": [
+        "fúria descontrolada",
+        "investida acelerada",
+        "ferida amaldiçoada"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

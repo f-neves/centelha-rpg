@@ -84,7 +84,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). A Centelha soma inteira. Jogada: Destreza 5 + Armas 3 + 2 × o menor entre Centelha 1 e Armas 3 (2)"
     },
     {
       "nome": "Bico",
@@ -100,7 +101,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Bico afiado\" (site): bicada rápida, Leve, como o bico de ave do molde (`regra-construcao.md` §7). Jogada: Destreza 5 + Armas 3 + 2 × o menor entre Centelha 1 e Armas 3 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -109,7 +111,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "o Bico da tabela, no lugar do golpe de espada (um ataque por ação)"
+      "texto": "o Bico da tabela, no lugar do golpe de espada (um ataque por ação)",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Golpe na brecha",
@@ -123,7 +126,8 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo"
+      "limiteDeUso": "uma vez por ação, sem custo",
+      "justificativa": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -196,6 +200,44 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Bico afiado"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "comoLuta.Dom para línguas"
+      ],
+      "texto": "A duração depende da convivência."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Golpe na brecha"
+      ],
+      "texto": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "espada longa do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "armas"
+      ],
+      "texto": "3, um acima da Briga 2 do site, pelo \"Talento com espadas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "golpe certeiro"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

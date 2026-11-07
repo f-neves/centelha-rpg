@@ -87,7 +87,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Todo o corpo participa do golpe; jogada 18 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -98,7 +99,8 @@
       "ataque": "Pseudópode",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "envolve a presa com a massa aderente"
+      "texto": "envolve a presa com a massa aderente",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Cacofonia enlouquecedora",
@@ -116,7 +118,8 @@
       "efeito": "Quem ouve e falha fica Confuso, pela condição do livro",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena"
+      "limiteDeUso": "1 uso grátis por cena",
+      "justificativa": "Grau 3 de fascinacao, alcance até onde ouve, duração 6 Ticks, 1 uso grátis por cena. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada."
     },
     {
       "nome": "Tragar múltiplo",
@@ -130,7 +133,8 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 15 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "3d6 de ácido uma vez a cada 6 Ticks. A armadura vestida não protege contra o ácido",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
+      "justificativa": "3d6 de ácido por 6 Ticks e ferida de 15 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
     },
     {
       "nome": "Visão total",
@@ -144,7 +148,8 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "Recompõe os ferimentos sem fraqueza específica. A taxa de Regeneração 10 segue sem regra ainda"
+      "efeito": "Recompõe os ferimentos sem fraqueza específica. A taxa de Regeneração 10 segue sem regra ainda",
+      "justificativa": "A ficha não indica fraqueza que interrompa a regeneração."
     },
     {
       "nome": "Resistência à magia",
@@ -172,7 +177,8 @@
       "efeito": "Ignora cegueira, surdez e domínio por encantamento. Dano físico de Arte e conversa comum seguem as regras normais",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R22. O encanto que toma o controle pertence à família domínio."
     }
   ],
   "comoLuta": [
@@ -271,6 +277,92 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 10"
+      ],
+      "texto": "A ficha não indica fraqueza que interrompa a regeneração."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Tragar múltiplo"
+      ],
+      "texto": "3d6 de ácido por 6 Ticks e ferida de 15 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Cacofonia enlouquecedora"
+      ],
+      "texto": "Grau 3 de fascinacao, alcance até onde ouve, duração 6 Ticks, 1 uso grátis por cena. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imunidades sensoriais"
+      ],
+      "texto": "R22. O encanto que toma o controle pertence à família domínio."
+    },
+    {
+      "campos": [
+        "Cacofonia enlouquecedora"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Somente os usos grátis estão disponíveis. Um uso de abertura até a definição do efeito."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 30 da fonte passa a grau 3 (+6)."
+    },
+    {
+      "campos": [
+        "Pseudópode"
+      ],
+      "texto": "Antes: 3d6 + Força, dano médio 23,5. Agora: 2d6 + Força, dano médio 20, pela classe Pesada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "Antes: várias toneladas, sem volume definido."
+    },
+    {
+      "campos": [
+        "Virtudes"
+      ],
+      "texto": "Antes: Compaixão 0."
+    },
+    {
+      "campos": [
+        "Regeneração"
+      ],
+      "texto": "Antes: sem classificação; fast healing 10 na fonte, registrado pelo caminho de 2b."
+    },
+    {
+      "campos": [
+        "Destreza"
+      ],
+      "texto": "Antes: 7."
+    },
+    {
+      "campos": [
+        "Percepção"
+      ],
+      "texto": "Antes: 7."
+    },
+    {
+      "campos": [
+        "Prontidão"
+      ],
+      "texto": "Antes: 3."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

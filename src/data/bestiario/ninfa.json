@@ -91,7 +91,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe rápido para se afastar do agressor; jogada 13 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -135,7 +136,8 @@
         "id": "beleza-inebriante",
         "nivel": 4
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Paralisia de espanto",
@@ -167,7 +169,8 @@
       "efeito": "Respira tanto ar quanto água, sem limite de tempo, pela regra de respiração",
       "dano": "nenhum adicional",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Antes: base nomeada Guelra, ausente no catálogo de Efeitos Especiais. L4: retirada essa denominação. A referência de potência continua Metamorfose 2 e a respiração é permanente em ar e água."
     }
   ],
   "comoLuta": [
@@ -246,6 +249,56 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Afinidade com água"
+      ],
+      "texto": "Antes: base nomeada Guelra, ausente no catálogo de Efeitos Especiais. L4: retirada essa denominação. A referência de potência continua Metamorfose 2 e a respiração é permanente em ar e água."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Fascínio"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "Paralisia de espanto"
+      ],
+      "texto": "**[provisório]** R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campos": [
+        "Graça sobrenatural"
+      ],
+      "texto": "Antes: +1d de Esquiva e Defesa; agora +5 em Esquiva, Bloqueio e Defesa Mental, pela Influência 5."
+    },
+    {
+      "campos": [
+        "Golpe desarmado"
+      ],
+      "texto": "Antes: ataque genérico perfurante 1d6 + 2 + 5, média 10,5; agora Impacto 1d6 − 2 + 2 + 5, média 8,5, Acerto 0 para +1."
+    },
+    {
+      "campos": [
+        "Beleza cegante"
+      ],
+      "texto": "Antes: sem duração definida; uma cena, sem paralisia numérica."
+    },
+    {
+      "campos": [
+        "Briga"
+      ],
+      "texto": "Antes: 5."
+    },
+    {
+      "campos": [
+        "Prontidão"
+      ],
+      "texto": "Antes: 2."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

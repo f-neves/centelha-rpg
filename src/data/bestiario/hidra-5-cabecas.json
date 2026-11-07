@@ -89,7 +89,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de cada cabeça, com o pescoço atrás: Média. As cinco cabeças são a mesma parte, e vão juntas pela Rajada. Jogada: Força 8 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -98,7 +99,8 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
+      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
     },
     {
       "nome": "fogo e ácido param a regeneração",
@@ -119,7 +121,8 @@
       "efeito": "A cabeça cortada rebrota em duas se o coto não for cauterizado em 6 Ticks. Mesmo com mais cabeças vivas, o Multiataque tem teto de 4 golpes",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade cabeças que rebrotam. A cabeça cortada rebrota em duas se o coto não for cauterizado em 6 Ticks. Mesmo com mais cabeças vivas, o Multiataque tem teto de 4 golpes. valor de molde, para a bancada."
     },
     {
       "nome": "corpo descomunal",
@@ -133,7 +136,8 @@
       "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade corpo descomunal. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
     },
     {
       "nome": "Multiataque",
@@ -147,7 +151,8 @@
       "efeito": "Golpeia nesta ordem: primeira cabeça, segunda cabeça, terceira cabeça, quarta cabeça. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 4 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 4 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "primeira cabeça, segunda cabeça, terceira cabeça, quarta cabeça. Teto 4. Quatro golpes porque quatro cabeças vivas podem morder independentemente. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -215,6 +220,68 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.corpo descomunal"
+      ],
+      "texto": "Aplicação à capacidade corpo descomunal. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.cabeças que rebrotam"
+      ],
+      "texto": "Aplicação à capacidade cabeças que rebrotam. A cabeça cortada rebrota em duas se o coto não for cauterizado em 6 Ticks. Mesmo com mais cabeças vivas, o Multiataque tem teto de 4 golpes. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 5"
+      ],
+      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "primeira cabeça, segunda cabeça, terceira cabeça, quarta cabeça. Teto 4. Quatro golpes porque quatro cabeças vivas podem morder independentemente. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "4 t, a do site, pelo crocodilo escalado com cinco pescoços no lugar da cauda. Nada muda: Faixa, PV e Tamanho ficam os do site **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +9 perfurante\", 7 Ticks, dano médio 19,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 19,5 antes; depois, mordida 12,5, até três pela Rajada **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 2 (D-205)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "1 para 3, os \"muitos olhos\" do site"
+    },
+    {
+      "campos": [
+        "Regeneração 5"
+      ],
+      "texto": "Antes: 8 PV/6 Ticks passivos."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.massa",

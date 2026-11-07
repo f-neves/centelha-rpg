@@ -89,7 +89,8 @@
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     },
     {
       "nome": "Mordida",
@@ -105,7 +106,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida rápida, Leve (`regra-construcao.md` §7). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     },
     {
       "nome": "Garras",
@@ -121,7 +123,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra rápida de membro, Leve, sem a lança; as duas mãos fazem par (Manobras). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -151,7 +154,8 @@
       "efeito": "Na água e sem a lança, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "Duas garras em ordem, teto 2 na água sem lança, pela rotina aquática da ficha. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -230,6 +234,50 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "Duas garras em ordem, teto 2 na água sem lança, pela rotina aquática da ficha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "lança no lugar do tridente **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 pelas escamas **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparência"
+      ],
+      "texto": "3 pela D-205; o site tinha 4 **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1 e Convicção 2; o site tinha 2 e 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "anfíbio"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "aparencia",

@@ -74,7 +74,8 @@
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1; uma em cada mão de cima, em par (Manobras). Uma mão: Força × 1. Jogada: Força 5 + Armas 5 + 2 × o menor entre Centelha 4 e Armas 5 (8)"
     },
     {
       "nome": "Garras",
@@ -90,7 +91,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "As garras dos braços de baixo, golpe rápido de membro, Leve (`regra-construcao.md` §7). Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Mordida",
@@ -106,7 +108,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte) e o \"Ferrão paralisante\" da mordida: as mandíbulas pequenas de inseto, Leve. O veneno vai em Veneno e doença. Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -116,7 +119,8 @@
       "classe": "livro",
       "ataque": "Espada curta",
       "categoria": "inato",
-      "regra": "empunhadura-dupla"
+      "regra": "empunhadura-dupla",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "ferrão paralisante",
@@ -130,7 +134,8 @@
       "efeito": "a mordida injeta um veneno que paralisa por horas quem falha num teste de Vigor. A vítima fica Paralisada. Defesas Físicas 0, mente livre",
       "dano": "nenhum adicional",
       "resistencia": "pela regra do veneno da ficha",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Curare é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
     },
     {
       "nome": "implante de ovos",
@@ -144,14 +149,16 @@
       "efeito": "Infestação das larvas de xill. Exposição: a xill implanta os ovos na carne de uma vítima indefesa. Incubação: 1 dia. Virulência 15. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
       "dano": "pela progressão da doença",
       "resistencia": "Vigor + Resistência contra Virulência 15",
-      "limiteDeUso": "por exposição"
+      "limiteDeUso": "por exposição",
+      "justificativa": "110. Incubação de 1 dia e Virulência 15 sugeridas porque os ovos precisam eclodir antes que as larvas comecem a comer a carne. Intervalo diário pelo relógio do livro."
     },
     {
       "nome": "passagem entre planos",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
+      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
     },
     {
       "nome": "Resistência à magia",
@@ -179,7 +186,8 @@
       "efeito": "Golpeia nesta ordem: espada curta, garra, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "espada curta, garra, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -255,6 +263,106 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.passagem entre planos"
+      ],
+      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Duas espadas"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.passagem entre planos"
+      ],
+      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "espada curta, garra, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.implante de ovos"
+      ],
+      "texto": "110. Incubação de 1 dia e Virulência 15 sugeridas porque os ovos precisam eclodir antes que as larvas comecem a comer a carne. Intervalo diário pelo relógio do livro."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.ferrão paralisante"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Curare é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
+    },
+    {
+      "campos": [
+        "ferrão paralisante"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "passagem entre planos"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 17 da fonte passa a grau 2 (+4)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "80 kg, a do site, o corpo de base na mesma altura (fator 1,0). Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +9 corte\", dano médio 12,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: as espadas curtas do livro e as garras e a mordida Leves. Dano médio: 12,5 antes; depois, as espadas 10,5 cada, as garras 10,5, a mordida 10,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "armas"
+      ],
+      "texto": "5, a Briga do site levada às espadas **[provisório]**"
+    },
+    {
+      "campos": [
+        "quatro braços",
+        "implante de ovos",
+        "passagem entre planos"
+      ],
+      "texto": "sem regra ainda"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "o 0 do site sobe a 1, o piso da régua"
+    },
+    {
+      "campos": [
+        "Resistência à magia 17"
+      ],
+      "texto": "Antes: sem classificação numérica."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

@@ -96,7 +96,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Com a Força 8: era 1d6 + 12, média 15,5. A rádula raspa com milhares de dentes minúsculos (cerca de 8.600 a 11.500 na Limax maximus, Wikipédia): Média, porque é o corpo que empurra a boca contra o alvo. Corte: raspa, não fura. N0. Força × 1 (boca). Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [
@@ -112,7 +113,8 @@
       "efeito": "Quem é atingido fica Preso pela Rede do livro. Pode romper o fio ou muco por 5 PV de Corte",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada aplicação gasta 1 dose",
+      "justificativa": "Antes: Ruptura pequena para o fio e maior para o muco espesso. Quem é atingido fica Preso pela Rede do livro. Pode romper o fio ou muco por 5 PV de Corte. valor de molde, para a bancada. 3 doses e 4 horas por dose limitam a secreção entre encontros. valor de molde, para a bancada."
     },
     {
       "nome": "cuspir ácido",
@@ -250,6 +252,120 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "comoLuta.Atropelar"
+      ],
+      "texto": "O dano do trajeto vem da regra geral. O golpe próprio serve contra um alvo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.muco"
+      ],
+      "texto": "Antes: Ruptura pequena para o fio e maior para o muco espesso. Quem é atingido fica Preso pela Rede do livro. Pode romper o fio ou muco por 5 PV de Corte. valor de molde, para a bancada. 3 doses e 4 horas por dose limitam a secreção entre encontros. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "muco"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campos": [
+        "cuspir ácido"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R3. Ativação uma ação, Velocidade 6, com o maior entre Vigor, Destreza e Percepção + Atirador -> uma ação, Velocidade 7, com o maior entre Vigor, Destreza e Percepção + Atirador Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "língua ácida"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [],
+      "texto": "gigante escalado (D-105): massa, largura e altura são extrapolação pelo cubo a partir da lesma-banana (25 cm, 75,4 g) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o de hoje (9 m), Enorme, cinco portes acima da lesma-banana de base (Minúscula, 0,0059 m²); a área fica 27% acima do corte do Grande (6 m²) e 69% abaixo do do Imenso (25 m²). Acima do Médio porque a ficha antiga e o Pathfinder pedem Enorme, como o `pedido-v7.md` (seção 2) exige (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Enorme pela área de cima (7,63 m²) da tamanho-fichas-v2; era 9,72 m² pela conta de hoje, com o mesmo resultado. Provisório até os cortes fecharem (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: provisório, 394,81 kg pela fórmula das decisões 14 e 16, com a Força 7 do autor; verme não tem `carga` (D-160, D-175). Caiu de 1.445,76 kg (480,67 com a Força 8) com a Força 7 e a Musculatura 1."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 7 (edição do autor, 19/10/2026), um abaixo do rinoceronte, pela falta de esqueleto; antes 8, e na ficha atual 12. Sem feito medido; [provisório] (D-158, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 1, entre o corpo de resistência e o comum; sem medida de força do pé."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 4 (edição do autor, 19/10/2026); antes 2 pela base, [comparação]; falta a duração da estivação e da hibernação."
+    },
+    {
+      "campos": [],
+      "texto": "furtividade: 2, nova, pela atividade noturna e pela fuga do sol (levantamento, [comparação])."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: o faro +2 passa a natural; o valor não muda."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "anatomia: verme, anatomia provisória (D-175), não calibrada em animal medido; sem nado."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). A Corrida de 0,86 m/s está muito acima da lesma real escalada (cerca de 0,1 m/s, +760%)."
+    },
+    {
+      "campos": [],
+      "texto": "escalada: [sem dado]; o que ela sobe com 3,5 t é do Mestre (D-087)."
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a largura (3 cm) e a altura (2 cm) da lesma-banana continuam por estimativa; o comprimento de 25 cm vem da ADW, sem par medido com o peso de 75,4 g (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "ataques: o ácido e a redução de dano voltam pela decisão de 20/10/2026 (manobras, resistências e texto); o dano do ácido e o valor da resistência ficam a definir até o valor da Couraça fechar."
+    },
+    {
+      "campos": [],
+      "texto": "mente: a imunidade a efeitos mentais do monstro publicado sai; mente simples, imune à influência social, vulnerável a medo e a magia mental (resposta do autor ao lote 1, 20/10/2026)."
+    },
+    {
+      "campos": [],
+      "texto": "comportamento: a ficha atual a põe devorando gado; a lesma real é herbívora e detritívora (ADW). Vale o real (D-101)."
+    },
+    {
+      "campos": [],
+      "texto": "sal: morre no sal por osmose (Wikipédia \"Slug\"); sem regra, texto do Mestre."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 6 ◆ (edição do autor, 19/10/2026; abaixo do elefante, 9, e do rinoceronte, 8, pela seção 14 das decisões); antes 5, revisto na oitava rodada pelo corpo e pela massa: dois acima da lesma-banana de base (Vigor 3), pela massa de 3,5 t (elefante 6, rinoceronte 5) e pela cura de ferida medida na base (Pearson, Pearson e Ralph 2006), abaixo do elefante pelo corpo mole sem esqueleto; um acima da lula-gigante e do polvo-gigante (4), moluscos sem dado de cura no Vigor. Era 6 (D-174)"
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Classe pelo gesto, sem usar Destreza no dano; jogada 7 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -96,7 +97,8 @@
       "efeito": "Podridão do fungo-violeta. Exposição: o tentáculo toca carne exposta. Incubação: 1 hora. Virulência 10. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
       "dano": "pela progressão da doença",
       "resistencia": "Vigor + Resistência contra Virulência 10",
-      "limiteDeUso": "por exposição"
+      "limiteDeUso": "por exposição",
+      "justificativa": "110. Incubação de 1 hora e Virulência 10 sugeridas porque o agente do tentáculo começa a decompor o tecido no local do contato. Intervalo diário pelo relógio do livro."
     },
     {
       "nome": "Imunidades fúngicas",
@@ -110,7 +112,8 @@
       "efeito": "venenos e aflições próprias de animais não o afetam. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -182,6 +185,56 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Apodrecimento"
+      ],
+      "texto": "110. Incubação de 1 hora e Virulência 10 sugeridas porque o agente do tentáculo começa a decompor o tecido no local do contato. Intervalo diário pelo relógio do livro."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imunidades fúngicas"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Vontade"
+      ],
+      "texto": "Antes: 5."
+    },
+    {
+      "campos": [
+        "Defesas"
+      ],
+      "texto": "Antes: sem aplicação explícita da imunidade de Inteligência 0."
+    },
+    {
+      "campos": [
+        "Influência"
+      ],
+      "texto": "Antes: 2."
+    },
+    {
+      "campos": [
+        "Perspicácia"
+      ],
+      "texto": "Antes: 2."
+    },
+    {
+      "campos": [
+        "Compostura"
+      ],
+      "texto": "Antes: 2."
+    },
+    {
+      "campos": [
+        "Integridade"
+      ],
+      "texto": "Antes: 2."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

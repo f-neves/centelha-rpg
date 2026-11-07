@@ -119,7 +119,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de pata com o ombro atrás (seção 7 da regra), garra curta e curva (Wikipédia). A Força não muda: o dano fica 1d6 + 6, média 9,5."
     },
     {
       "nome": "Mordida",
@@ -135,7 +136,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "541 N no canino num crânio de 105,2 kg (Wroe, McHenry e Thomason 2005), abaixo de 4.000 N: N0. Fica 1d6 + 6, média 9,5."
     }
   ],
   "habilidadesEspeciais": [
@@ -152,7 +154,8 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arrastar a presa para o mato. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -211,6 +214,60 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.arrastar a presa para o mato"
+      ],
+      "texto": "Aplicação à capacidade arrastar a presa para o mato. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 504,59 kg (em vigor na Etapa 2, 20/10/2026); antes: 480,47 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 97,5 kg), provisório até a fórmula fechar (D-169, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "carga: 9,75 kg de Leve pela conta da D-122 (sem carga medida), provisória pela mesma razão (D-169, D-172)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23); os números são os de 12/10, e batem com o real dentro da divergência das fontes (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 0,55 m (os 0,60 m estimados pelo Arquiteto para o macho, sem fonte, escalados pelo cubo da massa); o Alvo sai da silhueta de lado (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "variantes.machoGrande: a faixa (4) muda os PV, e não mais a Couraça; o Alvo do macho de até 409 kg não sai sem as dimensões dele (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.resistencia: 2, e não o 3 do levantamento, porque o fato que o sustentava (a hibernação) foi para a Especialidade natural (fome) +3; contar nos dois lugares seria contar duas vezes (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.escalada: 2, e a Especialidade natural (árvore) +1, sem velocidade de escalada medida; o valor é leitura do \"escala com habilidade\" (NPS), provisório (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.natacao: 0 por falta de dado; ursos nadam, mas a pesquisa não traz número do urso-negro (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades.sobrevivencia: a navegação \"extraordinária e pouco entendida\" (ADW) pode ser do corpo (sentido de direção) e não hábito; ficou como Especialidade do livro até a pesquisa dizer o mecanismo (D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

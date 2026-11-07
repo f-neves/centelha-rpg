@@ -102,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava \"Garras e presas\" de 2 dados e 6 Ticks, perfurante; o bote do corpo de 159 kg, Média (`regra-construcao.md` §7), com os 6 Ticks do site. Passa o veneno (Veneno e doença). Jogada: Força 7 (igual à Destreza 7) + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -118,7 +119,8 @@
       "efeito": "Médio: erguida. Pequeno: enrolada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Médio (erguida) e Pequeno (enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
     },
     {
       "nome": "Mordida venenosa",
@@ -126,7 +128,8 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "substancia",
-      "texto": "A Mordida inocula ao causar ao menos 1 PV depois da Absorção. O cuspe e a Mordida gastam a mesma reserva de peçonha"
+      "texto": "A Mordida inocula ao causar ao menos 1 PV depois da Absorção. O cuspe e a Mordida gastam a mesma reserva de peçonha",
+      "justificativa": "A ação aplica uma dose da peçonha indicada."
     },
     {
       "nome": "Cuspe à distância",
@@ -140,7 +143,8 @@
       "efeito": "o cuspe mira os olhos e a boca; mucosa exposta conta como sangue (`venenos.json`), e o veneno da linha Veneno e doença entra",
       "dano": "nenhum além do veneno",
       "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. A Mordida usa esta mesma reserva"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. A Mordida usa esta mesma reserva",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     }
   ],
   "comoLuta": [
@@ -211,6 +215,92 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "Antes: Potência 16, pool 4 de Vigor **[provisório]** O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mordida venenosa"
+      ],
+      "texto": "A ação aplica uma dose da peçonha indicada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Médio (erguida) e Pequeno (enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Cuspe à distância"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "Cuspe à distância"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R3. Ativação uma ação, Velocidade 6; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) -> uma ação, Velocidade 7; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Médio erguida, Pequeno enrolada; o site tinha Grande; a postura erguida pela D-213"
+    },
+    {
+      "campos": [
+        "artes"
+      ],
+      "texto": "Proteção 4, Cura 4 e Forças 3, escolhidas pelo texto; o site não grava Arte **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "6; o site tinha 1 (D-205) **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 2 e Convicção 4; o site tinha 0 e 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Mordida Média no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "cuspe à distância"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

@@ -79,7 +79,8 @@
   "ataques": [
     {
       "nome": "Adaga",
-      "arma": "adaga"
+      "arma": "adaga",
+      "justificativa": "A arma do livro (`armas.json`, `adaga`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★P(N0) · C. A Centelha soma inteira. Jogada: Destreza 5 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -130,7 +131,8 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo"
+      "limiteDeUso": "uma vez por ação, sem custo",
+      "justificativa": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -198,6 +200,40 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Golpe na brecha"
+      ],
+      "texto": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "28, a linha de baixo da zona de transição; na de cima seriam 37"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "adaga do livro; os trapos não contam como armadura **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperanca"
+      ],
+      "texto": "1; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque furtivo",
+        "explosão mortal",
+        "cegueira pela luz"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

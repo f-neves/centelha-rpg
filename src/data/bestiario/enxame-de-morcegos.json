@@ -104,7 +104,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena de insetívoro: Leve. Força 0: só o dado (D-115). Mordida não medida; N0. Um ataque por ação (D-097), como o enxame de ratos. A Força não muda: segue 1,5"
     }
   ],
   "habilidadesEspeciais": [
@@ -120,7 +121,8 @@
       "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos",
       "dano": "1d6 + 1 de Perfuração",
       "resistencia": "sem jogada de ataque; a Absorção conta",
-      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo",
+      "justificativa": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
     },
     {
       "nome": "Corpo de enxame",
@@ -134,7 +136,8 @@
       "efeito": "Arma comum fere; cada golpe atinge um quadrado. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R32 e R34. Arma comum fere; cada golpe atinge um quadrado. Escolha: cada morcego pode ser atingido no voo. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
     },
     {
       "nome": "Posturas de combate",
@@ -148,7 +151,8 @@
       "efeito": "Anatomia do indivíduo: Minúsculo: de baixo, asas abertas. Minúsculo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. O quadrado cheio é Médio para atacar e ser alvo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Minúsculo (de baixo, asas abertas) e Minúsculo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     }
   ],
   "comoLuta": [],
@@ -223,5 +227,121 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "corpo.area"
+      ],
+      "texto": "Antes: área omitida na linha Tamanho. Restaurado 0,01 m² para o indivíduo visto de baixo, com asas abertas, conforme a fonte. O quadrado cheio usa Médio no combate pela R34."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Pulso do enxame"
+      ],
+      "texto": "R33. Antes: resumo provisório com 1d6 + 1 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 1 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo de enxame"
+      ],
+      "texto": "R32 e R34. Arma comum fere; cada golpe atinge um quadrado. Escolha: cada morcego pode ser atingido no voo. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Minúsculo (de baixo, asas abertas) e Minúsculo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "morcego na anatomia ave, provisória (D-175)"
+    },
+    {
+      "campos": [
+        "especie"
+      ],
+      "texto": "o Tadarida, e não o vampiro da ficha `morcego`, porque é o morcego das colônias de milhões; o enxame de vampiros fica como variante (D-174)"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "34 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Média, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 8 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo."
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "0,0038 kg pela fórmula nova, arredondado a 0 pelo `calc.mjs`; carga \"não (enxame)\" (D-101, D-174)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "3, o da ficha de hoje, sem dado que o sustente depois que o voo saiu da conta (diretriz 1). Eu daria 2, como o vampiro (2) e o corvo (2); fica o 3 proposto, e o desvio vai no resumo (D-174)"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2, provisória. O levantamento propunha 3 (candidato a 4) pelos 54 a 160 km por noite; na v3 o voo fica na nota de pesquisa (jornada) (diretriz 2, D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): voa de 54 a 160 km acumulados por noite, a mais de 1 km de altura, com médias de 5,4 a 17 m/s (McCracken et al. 2016, rastreamento por avião, 7 fêmeas) [medido]; forrageia a 25 km do abrigo numa noite, com registros até 65 km (ADW); passa cerca de 60% do tempo ativo caçando no ar (Wikipédia)."
+    },
+    {
+      "campos": [
+        "perspicacia"
+      ],
+      "texto": "1 pela diretriz 1 (não é espécie social), apesar da colônia de milhões: dividir abrigo não é usar Atributos sociais entre os seus. Era 2 (D-174)"
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "0, provisória (D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "2, nova, do levantamento (D-174)"
+    },
+    {
+      "campos": [
+        "especialidadesNaturais"
+      ],
+      "texto": "o eco desceu de +4 para +3 (decisão 3)"
+    },
+    {
+      "campos": [
+        "porte"
+      ],
+      "texto": "o Minúsculo é o do morcego; o enxame usa o tamanho que apresenta no acerto (D-077), e o +9 não vale para o enxame inteiro (`passada-30.md` §2.1). Se o limite do Bloqueio também usa o tamanho apresentado fica para o Mestre (D-087)"
+    },
+    {
+      "campos": [
+        "comportamento"
+      ],
+      "texto": "o ataque em grupo é extrapolação de RPG; a pesquisa não achou caso real (D-101)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a altura e a largura continuam só por estimativa (D-174)"
+    },
+    {
+      "campos": [
+        "doenca"
+      ],
+      "texto": "histoplasmose e raiva como texto, sem id (D-112)"
+    }
+  ],
   "revisao": []
 }

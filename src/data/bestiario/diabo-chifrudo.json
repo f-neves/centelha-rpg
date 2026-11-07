@@ -87,7 +87,8 @@
   "ataques": [
     {
       "nome": "Corrente farpada",
-      "arma": "corrente-farpada"
+      "arma": "corrente-farpada",
+      "justificativa": "Corrente farpada do armas.json, duas mãos; Sangramento do item; 33.2, 26/10/2026"
     },
     {
       "nome": "Mordida",
@@ -103,7 +104,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida com a cabeça atrás, Média (`regra-construcao.md` §7). Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     },
     {
       "nome": "Cauda",
@@ -119,7 +121,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"O golpe de sua cauda abre feridas que sangram\" (site): a cauda chicoteada com o quadril atrás, Média. A ferida vai nas Manobras. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -167,7 +170,8 @@
         "id": "irradiar-temor",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "aura sempre ativa",
@@ -181,7 +185,8 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de arma ou Arte abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "efeito": "origem sobrenatural. O dano de arma ou Arte abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
+      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma ou Arte abençoada. valor de molde, para a bancada."
     },
     {
       "nome": "ferida que não fecha",
@@ -209,7 +214,8 @@
       "efeito": "Golpeia nesta ordem: corrente farpada, mordida, cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "corrente farpada, mordida, cauda. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -284,6 +290,100 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Aura de pavor"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "comoLuta.poderes infernais"
+      ],
+      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 5"
+      ],
+      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma ou Arte abençoada. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "corrente farpada, mordida, cauda. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "poderes infernais"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "315 kg, a do site, com a altura do site (fator de forma 1,17 sobre os 270 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181) **[provisório]**"
+    },
+    {
+      "campos": [],
+      "texto": "`compaixao` 1: a do site"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +16 corte\", dano médio 23). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a corrente é Haste de Guerra de duas mãos (Força × 2), e a mordida e a cauda ficam Médias. Dano médio: 23 antes; depois, 31,5 (a corrente; a mordida e a cauda ficam em 19,5) **[provisório]**"
+    },
+    {
+      "campos": [
+        "aura de pavor"
+      ],
+      "texto": "a Técnica irradiar-temor do livro; o site não dá Arte de base, e a aura constante ficou sem regra ainda"
+    },
+    {
+      "campos": [],
+      "texto": "`armas` 5, `bloqueio` 2, `liderança` 4: pelo texto do site, que não as tinha na ficha **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "3, pelas escamas **[provisório]**"
+    },
+    {
+      "campos": [
+        "Regeneração 5"
+      ],
+      "texto": "Antes: 4 de Energia e 10 PV/6 Ticks."
+    },
+    {
+      "campos": [
+        "Atordoar com a corrente"
+      ],
+      "texto": "Antes: perdia a próxima ação."
+    },
+    {
+      "campos": [
+        "Corrente farpada"
+      ],
+      "texto": "Antes: dano médio 31,5."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

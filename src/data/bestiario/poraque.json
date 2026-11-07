@@ -100,7 +100,8 @@
       "tipoDano": "eletricidade",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: não depende da Força. Medido: um poraquê de 40 cm, saltando sobre o braço de um humano, deu de 40 a 50 mA no pico e cerca de 3,9 W por descarga (Catania 2017); a extrapolação do autor para um de 1,8 m no tronco é de cerca de 0,24 A e 63 W. Fora da água a corrente não se perde, e o choque é mais forte quanto mais alto o salto (Catania 2016). O efeito (dor, queda, atordoar, parar o coração) fica ao Mestre (D-087). Opção, não segundo golpe (D-097)."
     },
     {
       "nome": "Mordida",
@@ -116,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: a Força segue 0 (era 1d6 − 2 + 0, média 1,5). Engole a presa; a mordida não tem dado (pesquisa)."
     }
   ],
   "habilidadesEspeciais": [
@@ -234,6 +236,80 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "choque na água"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Duas descargas permitem reagir à aproximação. Sugestão de 2 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 1 hora)."
+    },
+    {
+      "campos": [
+        "descarga elétrica"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Duas descargas permitem reagir à aproximação. Sugestão de 2 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 1 hora)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 18,47 kg (em vigor na Etapa 2, 20/10/2026); antes: 17,32 kg pelo `calc6.mjs`, provisório (decisões 14 e 16); era 41,39 kg (o de 20 kg). A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar. Carga continua não se aplicando."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Miúdo pela área de lado do adulto típico (0,108 m², a de 0,30 m² do de 2,5 m escalada pela massa); era Pequeno (0,30 m², e 0,38 m² pela conta de hoje). O resultado depende do comprimento típico escolhido (1,5 m): acima de 1,58 m volta a Pequeno. Provisório até os cortes fecharem (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 4,75 kg (em vigor na Etapa 2, 20/10/2026); antes: 4,32 kg **[extrapolação]**, a lei do cubo sobre o par dos máximos do FishBase (250 cm e 20 kg) com o comprimento típico escolhido de 1,5 m, porque não há média nem comprimento comum publicados. Era 20 kg, o máximo."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). Sem velocidade real achada; 3,4 m/s (12 km/h) parece alto para um peixe descrito como lento. Não corrigido."
+    },
+    {
+      "campos": [],
+      "texto": "ataques.descarga: vai como ataque com o efeito do Mestre. O dano não tem dado, o tipo (eletricidade) não é dos três do livro, e o Grid não lê ataque sem dado (N22). Os números medidos (Catania 2016 e 2017) são de animais jovens e de laboratório."
+    },
+    {
+      "campos": [],
+      "texto": "especie: a ficha é de E. electricus pelo tamanho; o choque de 860 V é de E. voltai, e a espécie dos poraquês de Catania não foi conferida."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 0 num bicho de 4,3 kg (era Pequeno de 20 kg), revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a força dele não fere nem segura nada que importe a um humano; o perigo é o choque (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 0 pelo corpo tomado pelos órgãos elétricos; sem medida da fração de músculo."
+    },
+    {
+      "campos": [],
+      "texto": "compostura: desce de 2 para 1 por não ser espécie social (diretriz 1)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 2 pela régua; a hipóxia fica na Especialidade natural +2, que era o \"Fôlego\" comum de hoje."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: a eletrorrecepção desce de +4 para +3 pelo teto da decisão 3 e passa a natural."
+    },
+    {
+      "campos": [],
+      "texto": "prendeRespiracao: os 2 min da ficha de hoje são o intervalo entre subidas, e não a apneia máxima, que não foi achada."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "elementos: a \"resistência a eletricidade\" da ficha atual e do PF não tem fonte na pesquisa; ficou fora."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes: altura (0,09 m) e largura (0,072 m) são as estimativas da Bestiarista-5 para o de 2,5 m (0,15 e 0,12 m) escaladas pelo cubo da massa; 20 kg e 2,5 m são os máximos do FishBase, e não um par medido no mesmo animal, e a massa típica sai desse par (D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.natacao",

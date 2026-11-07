@@ -89,7 +89,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "As garras, golpe rápido de membro, Leve (`regra-construcao.md` §7), como as da bruxa verde; as duas mãos fazem par (Manobras). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Mordida",
@@ -105,7 +106,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte) e a \"Mordida doentia\": a mordida com a cabeça atrás, Média. A febre vai nas Manobras. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -117,7 +119,8 @@
       "classe": "livro",
       "categoria": "inato",
       "ataque": "Garras",
-      "regra": "empunhadura-dupla"
+      "regra": "empunhadura-dupla",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Mordida doentia",
@@ -134,7 +137,8 @@
       "efeito": "quem falha pega a febre demoníaca e fica Doente; a cada dia sem cura, perde um nível de Vigor, até ser curado ou sucumbir. Se o Vigor chegar a 0, a vítima morre",
       "dano": "o do golpe",
       "resistencia": "corpo, Vigor + Resistência contra a jogada da mordida, de novo a cada dia; quem passa só leva o dano",
-      "limiteDeUso": "um por golpe. Sem custo"
+      "limiteDeUso": "um por golpe. Sem custo",
+      "justificativa": "A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0."
     },
     {
       "nome": "Mudar de forma",
@@ -148,7 +152,8 @@
       "efeito": "assume a forma de qualquer humanoide (o disfarce, em Variantes); a mente e os números ficam os dela. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
     },
     {
       "nome": "ferro frio e arma mágica ferem inteiros",
@@ -162,7 +167,8 @@
       "efeito": "Contra ferro frio ou arma mágica, aplique a Absorção inteira e cobre todo o dano restante. Contra as demais armas, reduza à metade o dano que passou pela Absorção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro frio ou arma mágica. valor de molde, para a bancada."
     },
     {
       "nome": "mente imune",
@@ -176,7 +182,8 @@
       "efeito": "Ignora domínio, sono e medo imposto por poderes ou Artes. Dano físico de Arte e conversa comum seguem as regras normais",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R22. O encanto que submete a vítima corresponde a domínio."
     },
     {
       "nome": "Resistência à magia",
@@ -204,7 +211,8 @@
       "efeito": "Domina o sonho da vítima e decide as imagens que a afligem enquanto ela dorme. Cada noite vencida causa Desgaste 1 e avança uma etapa. Na quarta noite prende a alma na gema. Tirar a gema interrompe o acesso",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Uma noite por etapa, Desgaste 1 e quatro noites para prender a alma. A gema mantém o acesso. valor de molde, para a bancada."
     },
     {
       "nome": "pedra do coração",
@@ -227,7 +235,8 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -329,6 +338,117 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Mordida doentia"
+      ],
+      "texto": "A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Garras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.assombrar sonhos"
+      ],
+      "texto": "Uma noite por etapa, Desgaste 1 e quatro noites para prender a alma. A gema mantém o acesso. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.ferro frio e arma mágica ferem inteiros"
+      ],
+      "texto": "A metade passa a incidir depois da Absorção. Exceção identificada na pele ou na proteção: ferro frio ou arma mágica. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mudar de forma"
+      ],
+      "texto": "Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.mente imune"
+      ],
+      "texto": "R22. O encanto que submete a vítima corresponde a domínio."
+    },
+    {
+      "campos": [
+        "Mudar de forma"
+      ],
+      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 24 da fonte passa a grau 2 (+4)."
+    },
+    {
+      "campos": [
+        "assombrar sonhos"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "70 kg, a do site, com o meio da faixa de altura do site (1,9 m) e um fator de forma de 0,74 sobre os 94 kg do corpo de base escalado: corpo alto e magro. Nada muda: Faixa, PV e Tamanho ficam os do site **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +11 corte\", dano médio 14,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média e as garras Leves, em par, como na bruxa verde. Dano médio: 14,5 antes; depois, a mordida 14,5, as garras 12,5 cada **[provisório]**"
+    },
+    {
+      "campos": [
+        "formas"
+      ],
+      "texto": "verdadeira e disfarce (D-201), como a bruxa verde **[provisório]**"
+    },
+    {
+      "campos": [
+        "mordida doentia"
+      ],
+      "texto": "números da ficha (D-197); o Doente é a condição do livro, e a doença vai só pelo nome **[provisório]**"
+    },
+    {
+      "campos": [
+        "pele curtida e mente imune"
+      ],
+      "texto": "resistência a Corte, Perfuração e Impacto e imunidade a Fogo e Gelo; ferro frio, arma mágica, encanto, medo, sono e resistência à magia sem regra ficaram sem regra ainda **[provisório]**"
+    },
+    {
+      "campos": [
+        "assombrar sonhos",
+        "pedra do coração"
+      ],
+      "texto": "sem regra ainda"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "o 0 do site sobe a 1, o piso da régua"
+    },
+    {
+      "campos": [
+        "Resistência à magia 24"
+      ],
+      "texto": "Antes: sem classificação numérica."
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Arco longo",
-      "arma": "arco-longo"
+      "arma": "arco-longo",
+      "justificativa": "A arma do livro (`armas.json`, `arco-longo`): Distância, duas mãos, Velocidade 7, Acerto +0, ★P(N1), efetiva 50 m, máximo 250 m; soma a Força inteira. Jogada de Percepção + Atirador: 3 + 4"
     },
     {
       "nome": "Punhos",
@@ -99,7 +100,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Luta desarmada do livro (Briga), quando o inimigo chega perto. Jogada: Destreza 4 + Briga 1"
     }
   ],
   "habilidadesEspeciais": [
@@ -108,14 +110,16 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Mirar"
+      "texto": "Mirar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
+      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -187,10 +191,46 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Arco longo"
+      ],
+      "texto": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sem inimizades naturais"
+      ],
+      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mira"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "o arco longo do livro no lugar do \"Arco\" de 2 dados e 6 Ticks; com o arco curto, Velocidade 6, Acerto +2 e dano 1d6 − 2 + Força **[provisório]**"
+    },
+    {
+      "campos": [
+        "card e equipamento"
+      ],
+      "texto": "o couro está sempre vestido (D-188); a frase da linha Absorção dá os números com ele"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",
       "motivo": "site"
+    },
+    {
+      "campo": "ataques.Arco longo",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "equipamento",

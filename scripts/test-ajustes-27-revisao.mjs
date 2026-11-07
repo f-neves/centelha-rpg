@@ -18,6 +18,8 @@ assert.ok(!r.avisos.some(x => x.includes('"corrente farpada"')));
 assert.ok(r.avisos.some(x => x.includes('"ataque inexistente"')), 'nome inexistente continua com aviso');
 assert.ok(!r.avisos.some(x => x.includes('outra nota sem marca')));
 assert.ok(!r.criatura.revisao.some(x => x.campo.includes('inexistente')));
-const semRevisao = x => { const {revisao, ...resto} = x; return resto; };
+// F1 (D-357): as Notas de observação chegam ao JSON (`notas`); elas não são dado de jogo, e as três plantadas estão lá
+const semRevisao = x => { const {revisao, notas, ...resto} = x; return resto; };
+assert.equal((r.criatura.notas?.length ?? 0) - (base.criatura.notas?.length ?? 0), 3, 'as três notas plantadas chegam a `notas`');
 assert.deepEqual(semRevisao(r.criatura), semRevisao(base.criatura), 'nota não altera os dados de jogo');
 console.log('Notas: ataque canônico reconhecido, campo existente e nomes inválidos recusados');

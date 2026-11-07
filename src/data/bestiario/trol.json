@@ -80,7 +80,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": -1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
     },
     {
       "nome": "Mordida",
@@ -96,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A do site (1 dado, perfurante, 5 Ticks): golpe de boca, Média, Força × 1 (`regra-construcao.md` §7). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -106,7 +108,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada"
+      "regra": "rajada",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Dilacerar",
@@ -136,14 +139,16 @@
       "efeito": "A garra alcança até 3 m medidos da borda do corpo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Alcance de 3 m pela extensão dos braços. valor de molde, para a bancada."
     },
     {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
+      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
     },
     {
       "nome": "fogo e ácido param a regeneração",
@@ -158,7 +163,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "garras que sangram",
@@ -166,7 +172,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "texto": "a tag Sangramento"
+      "texto": "a tag Sangramento",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Multiataque",
@@ -180,7 +187,8 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -269,6 +277,80 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.garras que sangram"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Duas garras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.braços longos"
+      ],
+      "texto": "Alcance de 3 m pela extensão dos braços. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 5"
+      ],
+      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: fogo ou ácido. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "369 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 200 kg (D-187) **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "as Garras de 2 dados ficam Pesadas, o caminho da D-241, e a Rajada da Pesada (2) dá as \"dois ataques de garra\" do site **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "1, pele grossa e borrachuda **[provisório]**"
+    },
+    {
+      "campos": [
+        "dilacerar"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "Regeneração 5"
+      ],
+      "texto": "Antes: 8 PV/6 Ticks passivos."
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

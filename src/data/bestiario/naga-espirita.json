@@ -118,7 +118,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava \"Garras e presas\" de 2 dados e 6 Ticks, perfurante; a naga morde com o bote do corpo de 320 kg, Média (`regra-construcao.md` §7), com os 6 Ticks do site. Passa o veneno (Veneno e doença). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -134,7 +135,8 @@
       "efeito": "Médio: enroscada. Grande: erguida ou esticada, de lado. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Médio (enroscada) e Grande (erguida ou esticada, de lado). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
     },
     {
       "nome": "Mordida venenosa",
@@ -142,7 +144,8 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "substancia",
-      "texto": "A Mordida inocula ao causar ao menos 1 PV depois da Absorção. O cuspe e a Mordida gastam a mesma reserva de peçonha"
+      "texto": "A Mordida inocula ao causar ao menos 1 PV depois da Absorção. O cuspe e a Mordida gastam a mesma reserva de peçonha",
+      "justificativa": "A ação aplica uma dose da peçonha indicada."
     },
     {
       "nome": "Cuspe venenoso",
@@ -156,7 +159,8 @@
       "efeito": "o cuspe mira os olhos e a boca; mucosa exposta conta como sangue (`venenos.json`), e o veneno da linha Veneno e doença entra",
       "dano": "nenhum além do veneno",
       "resistencia": "esquiva, contra o ataque; corpo, pela regra do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. A Mordida usa esta mesma reserva"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. A Mordida usa esta mesma reserva",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "Olhar encantador",
@@ -175,7 +179,8 @@
       "efeito": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar",
-      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana"
+      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana",
+      "justificativa": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Imune ao próprio veneno",
@@ -189,7 +194,8 @@
       "efeito": "Ignora apenas a própria secreção. Venenos de outras fontes exigem o teste normal. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -275,6 +281,99 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "Antes: Potência 16, pool 4 de Vigor, com Abalado **[provisório]** O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Olhar encantador"
+      ],
+      "texto": "Base Sugestão Plantada pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mordida venenosa"
+      ],
+      "texto": "A ação aplica uma dose da peçonha indicada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Médio (enroscada) e Grande (erguida ou esticada, de lado). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Cuspe venenoso"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imune ao próprio veneno"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Cuspe venenoso"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. R3. Ativação uma ação, Velocidade 6; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) -> uma ação, Velocidade 7; ataque a distância, o maior entre Vigor, Destreza e Percepção + Atirador (o maior entre Vigor, Destreza e Percepção + Atirador + 2 × o menor entre Centelha 5 e Disparo 3, 6) Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Olhar encantador"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, contra quem cruza o olhar com ela -> uma ação, Velocidade 6, contra quem cruza o olhar com ela Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Médio enroscada, Grande erguida ou esticada; o Tamanho principal é o da postura em que luta, enroscada sobre o tesouro (D-215, que ajusta a D-213)"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Mordida Média no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "1, o piso da régua; o site tinha 0"
+    },
+    {
+      "campos": [
+        "cuspe venenoso",
+        "olhar encantador"
+      ],
+      "texto": "números sugeridos pela ficha (D-197), com os usos do site"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

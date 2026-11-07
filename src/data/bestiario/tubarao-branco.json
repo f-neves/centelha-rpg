@@ -107,7 +107,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "7 + 8; era 2d6 + 11, média 18. Seção 7: a mordida que agarra e torce; dentes triangulares e serrilhados de até 7,5 cm, cerca de 300 em fileiras (Florida Museum; Wikipédia). Força × 1 (boca). N1 : 3.131 N atrás num exemplar de 2,5 m e 240 kg e 18.216 N escalado para 6,4 m (Wroe 2008); o adulto típico, de cerca de 1,15 t, fica entre os dois, na faixa de 4.000 a 15.000 N. O Nível do ataque é da arma, e não da Couraça."
     }
   ],
   "habilidadesEspeciais": [
@@ -117,7 +118,8 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [],
@@ -186,6 +188,76 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.bote vertical"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 931,00 kg (em vigor na Etapa 2, 20/10/2026); antes: 782,7 kg pelo `calc.mjs`, provisório. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar."
+    },
+    {
+      "campos": [],
+      "texto": "carga: não se aplica (nadador)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). O nado de 6,1 m/s bate com a arrancada filmada (6,7 m/s, −9%)."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Grande pela silhueta (3,92 m², de lado), longe das bordas; a largura de 1,0 m continua estimada pelo Arquiteto [sem dado]."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 9 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela régua nova (D-158), no topo das âncoras de 7 a 8; a mordida só tem modelo (Wroe 2008). Era 11 pela régua do mamute em 18."
+    },
+    {
+      "campos": [],
+      "texto": "massa e dimensoes: 1.145 kg, a média simples dos meios das faixas dos dois sexos maduros (Wikipédia); era 1.100 kg, a fêmea. As dimensões eram da fêmea de 4,7 m e foram escaladas pelo cubo da massa (× 1,013), como pede o pedido da sexta rodada; o meio das faixas de comprimento dos dois sexos (4,75 e 3,7 m) daria 4,2 m, porque a fêmea de 4,7 m com 1.100 kg já estava abaixo do meio da faixa de massa dela. Decisão do Arquiteto (`desvios`)."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 4, um acima de hoje, pelo corpo de 1,15 t, a termorregulação regional e a vida de 70 anos (NOAA); a pesquisa não tem ferida curada nem doença. Provisório (D-174); ver os desvios do resumo."
+    },
+    {
+      "campos": [],
+      "texto": "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador. O hábito de chegar por baixo foi para Furtividade (investida de baixo) +1. Provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidade Furtividade (investida de baixo) +1: nova, provisória (D-174); o levantamento dava a Furtividade como candidata a 3."
+    },
+    {
+      "campos": [],
+      "texto": "especialidade Prontidão (eletrorrecepção): desceu de +4 para +3 pelo teto da decisão 3."
+    },
+    {
+      "campos": [],
+      "texto": "especialidade Resistência (Fôlego) +2: saiu; o cruzeiro ficou na nota de pesquisa (jornada). A termorregulação regional poderia dar Resistência (frio) +1 [comparação]; ficou de fora (ver os desvios do resumo)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 2 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): cruzeiro por telemetria de 0,6 a 2,25 m/s: jovens com mediana de 0,6 m/s e trânsito de 0,98 m/s; 0,89 m/s num de 4,57 m (Carey 1982); 2,25 m/s em tubarões de 2,8 a 4,5 m (Semmens 2013) (Anderson et al. 2022) [medido]. Migração: [sem dado]."
+    },
+    {
+      "campos": [],
+      "texto": "ataques.mordida: 2d6 + 8 = 15; era 18. O Nível N1 fica (modelo de Wroe 2008)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

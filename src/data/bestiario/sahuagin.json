@@ -89,7 +89,8 @@
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     },
     {
       "nome": "Garras",
@@ -105,7 +106,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem a lança. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -222,6 +224,40 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "lança no lugar do tridente **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 pelas escamas **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "fúria sanguinária",
+        "fala com tubarões",
+        "cegueira pela luz"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

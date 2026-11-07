@@ -111,7 +111,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena: Leve. Incisivos e caninos afiados cortam um pedaço raso de pele, e o bicho lambe o sangue (pesquisa). Força 0: só o dado (D-115). A saliva anticoagulante faz a ferida sangrar por horas (revisão de 2023, PMC10258787): texto para o Mestre. A Força não muda: segue 1,5"
     }
   ],
   "habilidadesEspeciais": [
@@ -127,7 +128,8 @@
       "efeito": "Minúsculo: de baixo, asas abertas. Minúsculo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Minúsculo (de baixo, asas abertas) e Minúsculo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "sangramento",
@@ -142,7 +144,8 @@
       "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
       "dano": "nenhum adicional",
       "resistencia": "nenhuma",
-      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo",
+      "justificativa": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
     }
   ],
   "comoLuta": [
@@ -220,6 +223,98 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.sangramento"
+      ],
+      "texto": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Minúsculo (de baixo, asas abertas) e Minúsculo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "morcego na anatomia ave, provisória (D-175)"
+    },
+    {
+      "campos": [
+        "especie"
+      ],
+      "texto": "o vampiro-comum, e não um insetívoro, pela raiva, pela mordida em gente e pela corrida medida; o insetívoro fica como variante (D-174)"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): a mordida corta um pedaço raso de pele e não segura nada. O feito de decolar com 20 a 30% da massa a mais em sangue (7 a 10 g, via Wikipédia, Schutt et al. 1997) fica perto do peso erguido novo (0,03 kg) (D-162)"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "1 (em vigor na Etapa 2, 20/10/2026); antes: 7 pela decisão 21 (5 + Vigor), contra 11 pela outra proposta do autor. Caiu de 17 para 7 (D-174)"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "0,03 kg pela fórmula nova (decisões 14 e 16), provisório; com Musculatura 0 e Força 0, o E fica 1,5 abaixo do de referência (D-174)"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2, provisória. O levantamento o marca como frágil e candidato a 1 (morre em menos de três dias sem comer); fica no normal da espécie porque o jejum curto é o normal do hematófago, e a Resistência compara dentro da espécie (D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "3, a de hoje; o levantamento o marca como candidato a 4. A Especialidade (sobre quem dorme) 1 já cobre o caso de borda (D-174)"
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "1, nova, provisória: a partilha de sangue com quem voltou sem comer (D-174)"
+    },
+    {
+      "campos": [
+        "escalada"
+      ],
+      "texto": "1, nova, provisória: sem número de escalada; era texto (D-174)"
+    },
+    {
+      "campos": [
+        "especialidadesNaturais"
+      ],
+      "texto": "eco e calor desceram de +4 para +3 (decisão 3); o humano não tem nenhum dos dois sentidos"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a altura (0,05 m) e a largura (0,035 m) continuam só por estimativa; a envergadura de 0,36 m fica pela ADW (350 a 400 mm) contra os 18 cm da Wikipédia, talvez uma asa só, não conferido (D-174)"
+    },
+    {
+      "campos": [
+        "doenca"
+      ],
+      "texto": "a raiva vai como texto, sem id; não há catálogo de doenças (D-112)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): forrageia a 5 a 8 km do abrigo (Nowak 1991, via Wikipédia); no Peru, às vezes mais de 5 km, a maior parte do tempo abaixo de 5 km (GPS, 2026) [medido]; voo médio de 13,6 km/h num corredor que simula a passagem da caverna (Sánchez-Hernández et al. 2006) [medido]; tempo de voo por noite [sem dado]."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.voo",

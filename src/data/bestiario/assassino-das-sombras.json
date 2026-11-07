@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Adaga",
-      "arma": "adaga"
+      "arma": "adaga",
+      "justificativa": "A arma do livro (`armas.json`, `adaga`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★P(N0) · C; só fura pele, e contra armadura mira na fresta. A Centelha soma inteira. O site somava a Destreza no dano (\"Ágil\"); no livro o dano soma a Força, e \"Ágil\" é só descritiva. Jogada: Destreza 5 + Armas 4 + 2 × o menor entre Centelha 3 e Armas 4 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -95,7 +96,8 @@
         "id": "pisar-leve",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Esgueirar",
@@ -105,7 +107,8 @@
         "id": "esgueirar",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Manto de Sombras",
@@ -115,7 +118,8 @@
         "id": "manto-de-sombras",
         "nivel": 3
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Bote Silencioso",
@@ -125,14 +129,16 @@
         "id": "bote-silencioso",
         "nivel": 3
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
+      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -199,6 +205,56 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sem inimizades naturais"
+      ],
+      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Bote Silencioso"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Manto de Sombras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Esgueirar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Pisar Leve"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "dano da adaga"
+      ],
+      "texto": "soma a Força 3; o site somava a Destreza 5 (\"Ágil\"); perda anotada no relato"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1 e Temperança 3; o site tinha 2 e 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "card e equipamento"
+      ],
+      "texto": "o couro está sempre vestido (D-188)"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.atividade",

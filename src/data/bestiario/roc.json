@@ -107,7 +107,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Na escala do roc, o golpe da garra pede o corpo atrás: Média (seção 7). Garra do hálux da águia de 4,5 a 6,34 cm × 9: cerca de 50 cm; garra grande em N1 (seção 7) . Era 1d6 + 14, média 17,5"
     },
     {
       "nome": "Bico",
@@ -123,7 +124,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico em gancho, como a águia. Era 1d6 + 14, média 17,5"
     },
     {
       "nome": "Garras em mergulho",
@@ -139,7 +141,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [
@@ -155,7 +158,8 @@
       "efeito": "Imenso: de baixo, asas abertas. Imenso: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Imenso (de baixo, asas abertas) e Imenso (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "agarrar",
@@ -163,7 +167,8 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "talões"
+      "texto": "talões",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "mergulho sobre a presa",
@@ -172,7 +177,8 @@
       "ataque": "Garras em mergulho",
       "categoria": "inato",
       "regra": "investida",
-      "texto": "só descendo"
+      "texto": "só descendo",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "erguer e largar",
@@ -187,7 +193,8 @@
       "efeito": "Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade erguer e largar. Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha. valor de molde, para a bancada."
     },
     {
       "nome": "grito ensurdecedor",
@@ -205,7 +212,8 @@
       "efeito": "O grito deixa surdo quem falha na resistência",
       "dano": "nenhum",
       "resistencia": "Vigor + Resistência contra Dificuldade 10",
-      "limiteDeUso": "1 uso grátis por cena"
+      "limiteDeUso": "1 uso grátis por cena",
+      "justificativa": "Grau 3 de vento, alcance até onde ouve, duração 6 Ticks, 1 uso grátis por cena. Escala sugerida para um efeito local e temporário. Resistência: Vigor + Resistência contra Dificuldade 10. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [],
@@ -269,6 +277,144 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.mergulho sobre a presa"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.grito ensurdecedor"
+      ],
+      "texto": "Grau 3 de vento, alcance até onde ouve, duração 6 Ticks, 1 uso grátis por cena. Escala sugerida para um efeito local e temporário. Resistência: Vigor + Resistência contra Dificuldade 10. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.erguer e largar"
+      ],
+      "texto": "Aplicação à capacidade erguer e largar. Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Imenso (de baixo, asas abertas) e Imenso (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "grito ensurdecedor"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Somente os usos grátis estão disponíveis. Um uso de abertura até a definição do efeito."
+    },
+    {
+      "campos": [
+        "gigante"
+      ],
+      "texto": "escalado da águia-real por k = 9 nas medidas lineares e 750 kg de massa (decisão do autor, expoente 2,28 e não o cubo). Tudo é extrapolação (D-105, D-174)"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "750 kg, abaixo da 1,2 t da ficha atual e das 3,6 t do D&D. A variante de 5 t (k = 10, a ficha de 12/10) fica para o Mestre (D-174)"
+    },
+    {
+      "campos": [
+        "dimensoes"
+      ],
+      "texto": "altura, comprimento e largura refeitas × 9 (7,5, 6,9 e 2,7 m), arredondadas; a largura segue estimada (a da águia é do Arquiteto, sem fonte) (D-174)"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "7, fixada em `valores.mjs`, provisória (D-169)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "4, dois acima da águia v3 (2); o par segue coerente (D-176)"
+    },
+    {
+      "campos": [
+        "influencia"
+      ],
+      "texto": "desce de 3 para 1 pela diretriz 1 (não é espécie social). O efeito de \"faz gente recuar\" fica para o Mestre ou para uma Intimidação, se o livro a der a criatura (D-174)"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "823,34 kg, provisório. O mito diz que leva elefantes, acima disso; fica como texto (D-162, D-169)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23); o cruzeiro e o mergulho são os do roc de 5 t"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada e pelo item 6 da sexta; o valor em absorção fica para depois. Os ataques ficam com N1, que é da garra (seção 7), e não da pele"
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): sem dado do animal (fantasia). [comparação]: o Argentavis (70 kg) dependia de térmicas e vento de encosta, sem músculo para voo batido contínuo (Chatterjee et al. 2007); o condor bate a asa 1% do tempo de voo (PNAS 2020, via Wikipédia). Um roc de 750 kg não voaria por músculo: planeio, nunca voo batido longo."
+    },
+    {
+      "campos": [
+        "fisica"
+      ],
+      "texto": "o roc não voaria por músculo (Argentavis, Sato 2009). Não se corrige (D-105, D-174)"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "a garra e o bico em Média e a garra em mergulho Pesada × 2 ficam como na ficha de hoje, só com a Força nova; o N1 da garra é escolha da Bestiarista, sem medida (seção 7; D-174)"
+    },
+    {
+      "campos": [
+        "papel"
+      ],
+      "texto": "\"fera\", como todo animal (D-098). Se o Mestre quiser o roc como chefe, é escolha de encontro (D-087)"
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: Só ao fim de um mergulho: a massa do corpo inteiro empurra (seção 7, × 2). Era 2d6 + 28, média 35"
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 21 para 14; Investida 21, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - **visão**: Prontidão (visão) **+3** ◆ (Especialidade natural, era +4), com luz, herdado da águia **[extrapolação]**. Com pouca luz não vale."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: Veneno: nenhum. Doença: **[sem dado]**."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: corpo de águia na escala de 9 vezes. **Não voaria por músculo**: 750 kg é cerca de 10 vezes o Argentavis, que a 70 kg já não batia asa sem parar (Chatterjee et al. 2007), e cerca de 18 vezes o teto de 41 kg para planador de Sato et al. 2009. O voo do roc é dado de fantasia (D-105)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

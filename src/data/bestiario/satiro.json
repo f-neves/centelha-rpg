@@ -85,7 +85,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de pescoço com o corpo atrás; jogada 11 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -202,6 +203,56 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Flautas encantadas"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação tocando a flauta, Velocidade 6 -> uma ação tocando a flauta, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Passos ágeis"
+      ],
+      "texto": "Antes: +1d de Esquiva e sem penalidade em terreno difícil; agora +1 na Esquiva, com deslocamento no mato apenas descritivo."
+    },
+    {
+      "campos": [
+        "Cabeçada"
+      ],
+      "texto": "Antes: ataque genérico perfurante, Velocidade 5; agora Impacto, Velocidade 6, média 9,5 preservada."
+    },
+    {
+      "campos": [
+        "Flautas encantadas"
+      ],
+      "texto": "Antes: alcance e duração imprecisos; agora 18 m e uma cena."
+    },
+    {
+      "campos": [
+        "Furtividade"
+      ],
+      "texto": "Antes: 2 nas notas publicadas."
+    },
+    {
+      "campos": [
+        "Briga"
+      ],
+      "texto": "Antes: 4."
+    },
+    {
+      "campos": [
+        "Prontidão"
+      ],
+      "texto": "Antes: 2."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

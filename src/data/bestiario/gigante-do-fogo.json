@@ -96,7 +96,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho blindado de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
       "nome": "Rocha arremessada",
@@ -113,7 +114,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Arremessar rocha\" do site (2 dados, 6 Ticks): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -130,7 +132,8 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "2d6 + Força + Centelha, Impacto",
       "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
-      "limiteDeUso": "enquanto houver rocha por perto"
+      "limiteDeUso": "enquanto houver rocha por perto",
+      "justificativa": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Sangue de forja",
@@ -166,7 +169,8 @@
       "classe": "livro",
       "ataque": "Pancada descomunal",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -255,6 +259,76 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Arremesso de rocha"
+      ],
+      "texto": "Antes: 1 PV de ferimento abre a tentativa de Derrubar; a manobra mantém sua resistência. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "comoLuta.Placa do gigante"
+      ],
+      "texto": "Placa do catálogo com preço dobrado por faixa acima da humana, pela escala da peça. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Presença marcial"
+      ],
+      "texto": "+1d6 -> +2 na próxima jogada de ataque, pelo rótulo +1d sem origem, conforme 37.1; alcance e usos preservados."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "1.247 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 3,2 t. Com 3,2 t, Faixa 5 e PV 75 (D-187) **[conta]**"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "a placa de munição do livro, a que ele sempre veste (D-188); confirmada pela resposta 2a do autor de 26/10/2026, com a Penalidade −3"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "2, pele grossa de gigante **[provisório]**"
+    },
+    {
+      "campos": [
+        "elementos"
+      ],
+      "texto": "resistência a fogo, a do campo; a nota da fonte fala em imunidade, sem habilidade publicada que a diga"
+    },
+    {
+      "campos": [
+        "arremesso de rocha",
+        "sangue de forja",
+        "presença marcial"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "ajuste-piloto, resposta 2a: placa de munição confirmada, sem marca de dúvida. Antes e depois: Penalidade −3; Esquiva vestida 1; Bloqueio vestido 5; Absorção vestida Impacto 13, Corte 8, Perfuração 5, N2; ataque da Pancada com placa 14; PV 62; dano médio 18 nos dois ataques. Nenhum número muda."
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

@@ -108,7 +108,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Não muda: a Força fica 4. Morde, segura e quebra osso: Média (`regra-construcao.md` §7). N1: cerca de 4.500 N medidos com transdutor de força em hienas cativas (Binder e Van Valkenburgh 2000, número via San Diego Zoo) , acima dos 4.000 N do corte do N1. A estimativa pelo crânio seco dá 773 N no canino (Wroe et al. 2005); a medida no animal vivo manda. Ver as notas."
     }
   ],
   "habilidadesEspeciais": [
@@ -118,14 +119,16 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "na perna da presa em fuga"
+      "texto": "na perna da presa em fuga",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -199,6 +202,90 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "pesoErguido",
+        "carga"
+      ],
+      "texto": "239,55 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da massa e da faixa (5 kg de Leve com 50 kg, sem carga medida); o peso erguido sai de `calc6.mjs` (232,71 kg), e era 140,75 kg pela fórmula da D-162 (decisões 14 e 16)"
+    },
+    {
+      "campos": [
+        "velocidade",
+        "nado"
+      ],
+      "texto": "congelados (decisão 23); 61 km/h contra \"até 60 km/h\" da ADW, e saiu do fator do Médio, quando o Alvo agora é Pequeno"
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "0,44 m², logo abaixo do corte de cerca de 0,45 m² entre Pequeno e Médio; a decisão 7 a põe Pequena. A área não se escalou na sexta rodada (as dimensões são da espécie, sem sexo); se ela for lida como a da fêmea de 65 kg, o típico de 50 kg cairia para cerca de 0,37 m². Pela área de hoje, a fêmea de 55 kg passa do corte (0,47 m², Médio na borda) e a do sul da África (mais de 70 kg) mais ainda"
+    },
+    {
+      "campos": [
+        "referencia"
+      ],
+      "texto": "o adulto típico de 50 kg, a média simples da fêmea (55 kg) e do macho (45 kg) do Serengeti (Hofer e East, em Mills e Hofer 1998). Era a fêmea de 65 kg, acima das duas médias; o AnAge (63 kg) e Wroe et al. 2005 (69,1 kg) dão mais, sem sexo"
+    },
+    {
+      "campos": [
+        "dimensoes.largura"
+      ],
+      "texto": "0,33 m continua só pela estimativa"
+    },
+    {
+      "campos": [
+        "ataques.mordida"
+      ],
+      "texto": "N1 pelos 4.500 N medidos (Binder e Van Valkenburgh 2000), valor só pelo San Diego Zoo; se não se confirmar, a mordida volta a N0"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "3 pela semana sem comida (IUCN 1998), sem a corrida (diretriz 2); o levantamento dava 4 com as perseguições, que ficam na nota de pesquisa (jornada)"
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): perseguições de 500 a 2.500 m, às vezes mais de 20 minutos, e uma de 24 km atrás de um elande no Kalahari (Mills 1990); cerca de 27 km por noite, até 80 km (Hofer e East 1993); de 2.880 a 3.680 km por ano nas fêmeas que amamentam no Serengeti (IUCN 1998); cruzeiro de cerca de 10 km/h (Mills 1984) **[medido]**."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois. A pele grossa do pescoço segue **[sem dado]**."
+    },
+    {
+      "campos": [
+        "especialidades"
+      ],
+      "texto": "Resistência (doenças) passa de Especialidade comum 2 para natural +2, por ser do corpo; o +3 fica para quando houver taxa de morte por antraz. A Resistência (Fôlego) 2 sai"
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "2, nova, pela vida de clã com hierarquia; a pesquisa não mede leitura de humano"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "3, robusta, pelo pescoço \"highly muscular\" da IUCN, sem carga medida"
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",
@@ -215,6 +302,10 @@
     {
       "campo": "corpo.largura",
       "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,33 × 1,0323 = 0,341 . Antes: pesquisa: 30 a 35 cm no peito, por analogia com um cão grande de massa parecida; ancas mais estreitas"
+    },
+    {
+      "campo": "ataques.Mordida",
+      "motivo": "N1 pelos 4.500 N medidos (Binder e Van Valkenburgh 2000), valor só pelo San Diego Zoo; se não se confirmar, a mordida volta a N0"
     }
   ]
 }

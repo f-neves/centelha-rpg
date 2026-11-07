@@ -93,7 +93,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "3,5 + 7; era 1d6 + 8, média 11,5. Seção 7: a Média é a \"mordida de predador grande\", o bote de dentro da toca. Força × 1 (boca). N0 : nenhuma força de mordida achada, nem na real."
     }
   ],
   "habilidadesEspeciais": [
@@ -102,7 +103,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "mandíbulas da garganta",
@@ -111,7 +113,8 @@
       "ataque": "Mordida",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe"
+      "texto": "a segunda mandíbula puxa a presa agarrada para dentro; não é segundo golpe",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -180,6 +183,90 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.mandíbulas da garganta"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "gigante escalado (D-105): tudo o que é tamanho e massa é [extrapolação]. A moreia real típica (1,4 m, 5,69 kg) foi escalada 3,93 vezes no comprimento, na altura e na largura, e pelo cubo na massa (345 kg). Era 3,5 m e 47,6 kg (o tamanho do site, sobre o máximo da real), e antes 7 m e 381 kg."
+    },
+    {
+      "campos": [],
+      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 3,5 m do site davam Médio, uma categoria só acima da real típica (Pequeno), e os 5,5 m dão Grande, entre os 16 pés do Pathfinder e os 7 m da v3, a 38% do corte do Médio (21% com a altura de Dimensions.com) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Grande pela silhueta (2,005 m², de lado); era Médio. A real típica fica Pequena (0,130 m²), a 8% do corte do Miúdo: com a altura de Dimensions.com seria Miúda (cerca de 0,114 m²), e aí o Médio já bastaria ao gigante."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.altura e largura: as da real são estimadas (0,083 e 0,067 do comprimento, sem dado), e a escala as multiplica."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 7 pelos vizinhos de massa (hienodonte 7, urso-pardo 7, crocodilo 8), com a Força de referência de 6,9 em 345 kg; a da real típica é 2 [provisório] (D-158, D-169)."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 4, revisto na oitava rodada pelo corpo e pela massa, e fica: +1 sobre o animal de base (moreia real, Vigor 3), o mínimo da D-176; peixe de 345 kg, ao lado do golfinho (260 kg, 4) e do tubarão-branco (1,15 t, 4), abaixo do cavalo (470 kg, 5) (D-174, D-176)."
+    },
+    {
+      "campos": [],
+      "texto": "compostura: 1 por não ser espécie social (diretriz 1); era 3 pelo emboscador. O hábito da toca foi para Furtividade (na toca) +1. Provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidade Furtividade (na toca) +1: nova, pela real [comparação]; provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "variante real: agora o adulto típico (1,4 m, 5,69 kg), e não o máximo (3 m, 30 kg); Faixa 2, PV 26; o Alvo pela silhueta sai das dimensões estimadas, 0,130 m², Pequeno (sem linha própria na `tamanho-fichas-v2`); Força 2, revista pelo item 8."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 851,56 kg pelo `calc6.mjs`, provisório (era 413,49 com 47,6 kg). A ficha de hoje dizia \"não se aplica (nadador)\"; na água vale para puxar."
+    },
+    {
+      "campos": [],
+      "texto": "carga: não se aplica (nadador)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23); sem velocidade real achada."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "doenca: a ciguatera é de quem come a carne, e não ataque; sem id no catálogo de venenos, e não precisa (D-112)."
+    },
+    {
+      "campos": [],
+      "texto": "sentidos: nenhum achado com fonte; o faro e a visão da ficha atual ficaram fora, e não há Especialidade natural."
+    },
+    {
+      "campos": [],
+      "texto": "fonte: nenhuma mordida medida, nem na real; a Força 7 segue por comparação com o crocodilo-do-nilo (D-158, D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

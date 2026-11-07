@@ -90,7 +90,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [
@@ -99,7 +100,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "empurrar"
+      "regra": "empurrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "rabada",
@@ -113,7 +115,8 @@
       "efeito": "A parte alcança até 6 m medidos da borda do corpo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "6 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade rabada. A parte alcança até 6 m medidos da borda do corpo. valor de molde, para a bancada."
     },
     {
       "nome": "corpo colossal",
@@ -127,14 +130,16 @@
       "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade corpo colossal. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar"
+      "texto": "Atropelar",
+      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem Pisão e atropelar ligado ao Pisão. A menção à Investida na justificativa descreve a aplicação da regra, sem uma investida própria."
     }
   ],
   "comoLuta": [
@@ -192,6 +197,122 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Atropelar"
+      ],
+      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem Pisão e atropelar ligado ao Pisão. A menção à Investida na justificativa descreve a aplicação da regra, sem uma investida própria."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.empurrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.corpo colossal"
+      ],
+      "texto": "Aplicação à capacidade corpo colossal. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.rabada"
+      ],
+      "texto": "6 m de alcance útil pela extensão da parte descrita. valor de molde, para a bancada. Aplicação à capacidade rabada. A parte alcança até 6 m medidos da borda do corpo. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 14 pela comparação com o mamute (13), proposta do Arquiteto; é o teto do autor para o mamute, aqui usado pelo maior. Se o mamute mudar, esta se refaz."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 7.272,38 kg (em vigor na Etapa 2, 20/10/2026); antes: 6.903,5 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 28.700 kg. Era 8.638 kg (40.000 kg de trabalho) e, antes, 4.864 kg pela fórmula de FAH. Fica abaixo do piso de um quarto da massa (7.175 kg) porque a Força 14 está abaixo da Força de referência da massa (14,2)."
+    },
+    {
+      "campos": [],
+      "texto": "carga: Leve 3.214,4 a Máxima 12.857,6 kg, provisória (era Leve 4.480 pelos 40.000 kg); sai da massa (o fator 0,56 da Faixa 6 é extrapolação de um animal só, o elefante)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). A corrida de 22 km/h fica 175% acima dos cerca de 8 km/h de andar do Argentinosaurus. Não corrigido."
+    },
+    {
+      "campos": [],
+      "texto": "area: 36,37 m², vista de lado, da medição da `tamanho-fichas-v2`; era 220 m² (retângulo cheio com a cabeça erguida). O Alvo segue Imenso. Decisão provisória: usar o número do `calc.mjs`."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 31.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 28,7 t, a estimativa volumétrica do holótipo de *B. altithorax* (Taylor 2009, tabela 4, conferido que o número é do *Brachiosaurus* e não do *Giraffatitan*, que dá 23,3 t). Alternativas: 35 t (Paul 1988) e 56,3 t (Benson 2014, regressão com o úmero estimado). Era 40 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 28,7 t (faixa e PV não mudam)."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): sem dado do Brachiosaurus. De outro saurópode **[comparação]**: o Argentinosaurus de cerca de 80 t, em modelo musculoesquelético, anda a pouco mais de 2 m/s, cerca de 8 km/h (Sellers e colegas 2013, pelo ScienceDaily). Forrageio de 200 a 400 kg de planta por dia (Foster 2007) **[extrapolação]**, que é consumo, e não esforço. Era a Resistência (Fôlego) +2."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 10 é o número do autor (D-144, D-164); a pesquisa não traz ferida curada nem vida longa medida que o sustente por conta própria. A decisão 10 diz que répteis tendem a Vigor menor; o saurópode de sangue quente no crescimento (Sander 2010) não cai nessa regra com clareza."
+    },
+    {
+      "campos": [],
+      "texto": "influencia: 1 (não social); era 2 só pelo tamanho."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2 **[extrapolação]**, sem dado; o Fôlego +2 saiu (diretriz 2)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 2 (animal comum), provisória; sem medida de força."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 3,0 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: Era 2d6 + 40, média 47. 7 + 28. **[extrapolação]** da Bestiarista-1. A pesquisa não acha arma especializada; o pisão é o golpe do corpo inteiro da seção 7 (Pesada, × 2, Impacto). A cauda era proporcionalmente curta para um saurópode (Taylor 2009), por isso não entra como ataque."
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 35 para 21; Investida 35, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - A disputa de machos em duas patas é **[extrapolação, Hallett e Wedel 2016]**, e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011) · como luta: A disputa de machos em duas patas é **[extrapolação, Hallett e Wedel 2016]**, e a física diz que ele era mal adaptado para ficar de pé (Mallison 2011): texto, não manobra.."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Nada que passe do humano com número: **[sem dado]** para visão, faro e audição."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - sentidos: Narina na frente do focinho (Witmer 2001) ou no alto da cabeça (Hallett e Wedel 2016), **[extrapolação]** nas duas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Camuflagem: **[sem dado]** (pele não achada)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: ossos pneumáticos, com sacos aéreos, que reduzem o peso (Taylor 2009; Sander e colegas 2010); coração de cerca de 400 kg, com o dobro da pressão de uma girafa **[extrapolação]** (Fastovsky e Weishampel 2016); pescoço de postura debatida, quase vertical ou mais horizontal **[extrapolação]** (Rieppel e Brochu 1999; Stevens e Parrish 1999)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: Herbívoro de copa alta, raro, que se defende pelo tamanho. Provável sangue quente no crescimento (Sander e colegas 2010)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

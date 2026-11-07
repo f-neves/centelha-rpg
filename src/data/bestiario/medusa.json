@@ -80,11 +80,13 @@
   "ataques": [
     {
       "nome": "Arco curto",
-      "arma": "arco-curto"
+      "arma": "arco-curto",
+      "justificativa": "A arma do livro (`armas.json`, `arco-curto`): Distância, Velocidade 6, Acerto +2, ★P(N1), efetiva 30 m; soma a Força até +3. Atirar é sempre Percepção (`combate.md`). Jogada de Percepção + Atirador: 3 + 2 + 2 × o menor entre Centelha 3 e Atirador 2 (4)"
     },
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Jogada: Destreza 4 + Armas 3 + 2 × o menor entre Centelha 3 e Armas 3 (6)"
     },
     {
       "nome": "Serpentes",
@@ -100,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida rápida das serpentes do cabelo, Leve (`regra-construcao.md` §7). Envenena (Veneno e doença). Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 3 e Briga 3 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -116,7 +119,8 @@
       "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
       "dano": "nenhum adicional",
       "resistencia": "Vigor + Resistência contra Dificuldade 20 pela Petrificação",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
     },
     {
       "nome": "Cabelos-serpente",
@@ -131,7 +135,8 @@
       "efeito": "um golpe de espada e uma mordida de serpente na mesma ação, os dois a −1d6 (a conta da empunhadura dupla do livro); a mordida que fere envenena, e quem é envenenado fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. Quando combina arma empunhada e parte do corpo, usa o custo e as penalidades da empunhadura dupla",
       "dano": "o de cada golpe",
       "resistencia": "corpo, pela regra do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Arma e parte do corpo seguem os custos da empunhadura dupla. valor de molde, para a bancada. R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "Véu do olhar",
@@ -159,7 +164,8 @@
       "efeito": "Ignora a petrificação pelo próprio olhar, inclusive refletido, e o veneno das próprias serpentes. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -239,6 +245,100 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Arco curto"
+      ],
+      "texto": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
+    },
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Olhar petrificante"
+      ],
+      "texto": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Cabelos-serpente"
+      ],
+      "texto": "Arma e parte do corpo seguem os custos da empunhadura dupla. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Cabelos-serpente"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imune a petrificação e veneno"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Olhar petrificante"
+      ],
+      "texto": "**[provisório]** R12. Dificuldade sugerida 20 na régua de 5 para o olhar deliberado da medusa. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Cabelos-serpente"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Véu do olhar"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 3, cobrindo ou descobrindo o rosto -> uma ação, Velocidade 6, cobrindo ou descobrindo o rosto Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "arco curto e espada curta do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "armas",
+        "briga"
+      ],
+      "texto": "3 e 3, o 5 do site dividido entre a lâmina e as serpentes **[provisório]**"
+    },
+    {
+      "campos": [
+        "veneno das serpentes"
+      ],
+      "texto": "Potência 12, pool 2, fora do catálogo **[provisório]**"
+    },
+    {
+      "campos": [
+        "tiro traiçoeiro"
+      ],
+      "texto": "o \"ignora parte da Absorção\" sai (perda anotada no relato)"
+    },
+    {
+      "campos": [
+        "temperança"
+      ],
+      "texto": "3; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "cabelos-serpente",
+        "véu do olhar"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",
@@ -251,6 +351,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Arco curto",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "habilidadesEspeciais.Olhar petrificante",

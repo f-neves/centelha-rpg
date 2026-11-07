@@ -102,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 2,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 17, média 24. 7 + 12. Pesada: a mordida que arranca e quebra osso, com mordidas repetidas (Gignac e Erickson 2017). Força × 1 (boca, seção 7). N2 é o da própria mordida, e não do porte: os dentes de trás de 18.014 a 34.522 N (Gignac e Erickson 2017) ficam na faixa de 15.000 a 30.000 N; o meio do estudo conferido com sete adultos."
     }
   ],
   "habilidadesEspeciais": [
@@ -111,7 +112,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "engolir",
@@ -126,7 +128,8 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
+      "justificativa": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
     },
     {
       "nome": "ferida que sangra",
@@ -141,7 +144,8 @@
       "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
       "dano": "nenhum adicional",
       "resistencia": "nenhuma",
-      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo",
+      "justificativa": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
     }
   ],
   "comoLuta": [],
@@ -216,6 +220,90 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.ferida que sangra"
+      ],
+      "texto": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.engolir"
+      ],
+      "texto": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 2.187 kg pelo `calc.mjs`, provisório (decisões 14 e 16). Era 2.602 kg pela fórmula de FAH."
+    },
+    {
+      "campos": [],
+      "texto": "carga: não se aplica (bípede; D-160 dá Carga só ao quadrúpede)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). Feita com a Força limitada a 6 (D-151), não muda com a Força 12."
+    },
+    {
+      "campos": [],
+      "texto": "area: 11,29 m², vista de lado, da medição da `tamanho-fichas-v2`; era 47,5 m² (altura × comprimento, um retângulo cheio). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`, que é o mesmo para as 92 fichas."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 12 pela v2 (D-158), um abaixo do mamute 13. Se o mamute mudar, esta se refaz."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 2 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "furtividade: 2 **[extrapolação]**; o modo de caça é desconhecido."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida e doença com que a Sue viveu; o dado de caminhada fica na nota de pesquisa (jornada)."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): caminhante muito econômico em velocidade de caminhada (Dececchi e colegas 2020, modelo); andar preferido de 1,28 m/s, cerca de 4,6 km/h (van Bijlert e colegas 2021, modelo); pegadas a 1,5 a 2 m/s (Falkingham e colegas 2026). Sem distância por dia. **[extrapolação]** (modelos)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 7.500 kg (em vigor na Etapa 2, 20/10/2026); antes: 7.000 kg **[comparação]**, o meio da faixa de adulto que Hutchinson e colegas 2011 dão por volume (6.000 a 8.000 kg); a Sue (cerca de 9.500 kg) fica como variante."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3 (robusto) pela mordida de osso; provisória, sem medida direta de força do corpo."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 1,2 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.postura: \"bípede de corpo horizontal\" não está na lista do esquema (§2); a conta o trata como um retângulo deitado."
+    },
+    {
+      "campos": [
+        "especialidades"
+      ],
+      "texto": "a Prontidão (faro) desceu de +4 para +3 pelo teto da decisão 3."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

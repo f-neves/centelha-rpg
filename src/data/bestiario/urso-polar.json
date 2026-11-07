@@ -122,7 +122,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras curtas, grossas e em gancho (NABC; Wikipédia). Era 1d6 + 10, média 13,5."
     },
     {
       "nome": "Mordida",
@@ -138,7 +139,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mata a foca e o filhote de beluga mordendo a cabeça e o pescoço (Smith e Sjare 1990). Caninos mais longos e afiados que os do urso-pardo (Wikipédia). Força de mordida não achada. Opção, não segundo golpe. Era 1d6 + 10, média 13,5."
     }
   ],
   "habilidadesEspeciais": [
@@ -148,7 +150,8 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "segura a presa com a pata"
+      "texto": "segura a presa com a pata",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "arrastar para o gelo",
@@ -163,7 +166,8 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arrastar para o gelo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [],
@@ -218,6 +222,82 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.arrastar para o gelo"
+      ],
+      "texto": "Aplicação à capacidade arrastar para o gelo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 8, proposta do Arquiteto pela âncora dos ursos; o arrasto da beluga de cerca de 935 kg por 7 m (Freeman 1973) cabe no peso erguido de 1.036,81 kg. O feito é de uma fêmea de 130 a 180 kg, e a ficha é do adulto típico de 346,25 kg; a Força não se apoia no feito, só não o contradiz (D-158, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 5, e não o 4 da D-145; o 5 sai da gordura e do jejum do próprio polar, e não da comparação com o pardo. PV, Energia e Absorção de Impacto se refizeram com ele; o nado congelado não (decisões 10 e 23, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 1.037,61 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.036,81 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 346,25 kg), provisório até a fórmula fechar (D-169, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "carga: 34,63 kg de Leve pela conta da D-122 (sem carga medida), provisória pela mesma razão (D-169, D-172)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23); os números são os de 12/10. A terra (54 km/h) fica 35% acima da estimativa de 40 km/h, que não tem medição; o nado (6,5 km/h) fica 9% acima dos 6 km/h de Ellis 2009 (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.resistencia: 3 pelo jejum, com a perda de 22% da ursa do nado de 687 km ainda não conferida; os nados ficam na nota de pesquisa (jornada) e o frio para a Especialidade natural, para não contar duas vezes (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: a \"Resistência (Fôlego) 2\" de hoje saiu, porque o nado longo fica na nota de pesquisa (jornada) (diretriz 2; decisão 5)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): **[medido]** 50 nados longos de 20 ursas, de 53,7 a 687,1 km (média 154,2 km) e de 0,7 a 9,7 dias (média 3,4) na água, por colar GPS (Pagano 2012). Mais de 1.000 km numa estação seguindo o gelo (PBI; ADW). Cruzeiro em terra de cerca de 5,5 km/h (Stirling 2011, via Wikipédia)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades.equilibrio: +1 pela sola peluda e a pata larga, sem medida de tração; o valor é extrapolação (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.furtividade: 2, candidato a 3 pela espera no respiradouro, que é emboscada habitual; ficou no 2 do levantamento, com a Especialidade de Furtividade +1 no gelo (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "habilidades.natacao: 0 congelado, num animal que nada dias seguidos; a Natação baixa é efeito da fórmula de nado de hoje, que já dá acima do real (D-170, decisão 23)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 0,82 m (os 0,90 m estimados pelo Arquiteto para o macho, sem fonte, escalados pelo cubo da massa); o Alvo sai da silhueta de lado (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "variantes.femea: com 222,5 kg, a área escalada (1,20 m²) dá Médio, um abaixo da principal; as dimensões são as do macho escaladas pela massa, e não medidas da fêmea (o comprimento de 1,8 a 2 m da ADW cabe) (D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

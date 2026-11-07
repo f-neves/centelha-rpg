@@ -102,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava \"Garras e presas\" de 2 dados e 6 Ticks, perfurante, e o \"Ferrão peçonhento\" nas habilidades: a cauda chicoteia com o corpo atrás, Média (`regra-construcao.md` §7), com os 6 Ticks do site. Passa o veneno (Veneno e doença). Jogada: Destreza 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -118,7 +119,8 @@
       "efeito": "Médio: erguida. Pequeno: enrolada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Médio (erguida) e Pequeno (enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
     },
     {
       "nome": "Ferrão peçonhento",
@@ -133,7 +135,8 @@
       "efeito": "Peçonha de naga. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "Leitura de pensamentos",
@@ -179,7 +182,8 @@
       "efeito": "Ignora leitura de mente. Outras influências mentais encontram a Defesa Mental normal. Dano físico de Arte e conversa comum seguem as regras normais",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R22. A proteção descrita impede a sondagem de pensamentos."
     },
     {
       "nome": "Imune a veneno",
@@ -193,7 +197,8 @@
       "efeito": "nenhum veneno a afeta. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -259,6 +264,93 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "Antes: Potência 16, pool 4 de Vigor **[provisório]** O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Médio (erguida) e Pequeno (enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Ferrão peçonhento"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imune a leitura da mente"
+      ],
+      "texto": "R22. A proteção descrita impede a sondagem de pensamentos."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imune a veneno"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Médio erguida, Pequeno enrolada; o site tinha Grande; a postura erguida pela D-213"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "136 kg, o piso do \"mais de 136 kg\" do site"
+    },
+    {
+      "campos": [
+        "artes"
+      ],
+      "texto": "Raio 4, Forças 3 e Fascinação 3, escolhidas pelo texto; o site não grava Arte **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "4; o site tinha 1 (D-205) **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperanca"
+      ],
+      "texto": "1; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Ferrão Médio no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "leitura de pensamentos",
+        "mente blindada"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

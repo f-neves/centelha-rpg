@@ -94,7 +94,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, 6 Ticks, corte): a mordida de cão, que morde, segura e sacode, Média, como a do lobo e a do cachorro de guarda. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Sopro de fogo",
@@ -110,7 +111,8 @@
       "tipoDano": "fogo",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância, como o sopro do filhote de dragão vermelho. Os números são da ficha, descritos na linha do sopro nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -131,7 +133,8 @@
       "efeito": "o cão expele um cone de fogo devastador. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
     },
     {
       "nome": "couraça chamuscada",
@@ -145,7 +148,8 @@
       "efeito": "A peça usa os números da armadura equivalente do catálogo e só serve a esta anatomia. O preço dobra por faixa de massa acima da humana. Use a placa de metal ajustada para quadrúpede",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade couraça chamuscada. A peça usa os números da armadura equivalente do catálogo e só serve a esta anatomia. O preço dobra por faixa de massa acima da humana. Use a placa de metal ajustada para quadrúpede. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -239,6 +243,100 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Sopro de fogo"
+      ],
+      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sopro de fogo"
+      ],
+      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.couraça chamuscada"
+      ],
+      "texto": "Aplicação à capacidade couraça chamuscada. A peça usa os números da armadura equivalente do catálogo e só serve a esta anatomia. O preço dobra por faixa de massa acima da humana. Use a placa de metal ajustada para quadrúpede. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "comoLuta.mordida crítica"
+      ],
+      "texto": "O ferimento excepcional fica na descrição, como decidiu o autor."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Sopro de fogo"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "450 kg, a do site, com o comprimento do site (fator de forma 1,09 sobre os 413 kg do mastim escalado). Nada muda na Faixa nem no PV **[conta]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Grande para Médio, pela silhueta do mastim com 2,1 m de corpo (1,15 m², 21% abaixo do corte). Em jogo: o humano perde o +3 que tinha contra ele no corpo a corpo, e o atirador humano deixa de ganhar 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +14 corte\", dano médio 21). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Média, como a do lobo e a do cachorro de guarda. Dano médio: 21 antes; depois, 17,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "sopro de fogo"
+      ],
+      "texto": "poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraça chamuscada"
+      ],
+      "texto": "sem regra ainda; o caso da armadura em corpo de criatura é o do gigante do fogo, em aberto no `PERGUNTAS.md` (2a) **[provisório]**"
+    },
+    {
+      "campos": [
+        "imune a fogo, vulnerável a frio"
+      ],
+      "texto": "imunidade a Fogo e fraqueza a Gelo, pela linha Elementos"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "o 0 do site sobe a 1, o piso da régua"
+    },
+    {
+      "campos": [],
+      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - couraça chamuscada · sem regra ainda: veste uma couraça de metal enegrecido feita para o corpo de cão; o livro não tem armadura de criatura."
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",
@@ -250,7 +348,7 @@
     },
     {
       "campo": "ataques.Sopro de fogo",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números"
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; poder natural com números da ficha (D-197), base Fogo 4 (3d6, a Bola de Fogo); o site não dava os números"
     },
     {
       "campo": "corpo.area",

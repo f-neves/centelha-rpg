@@ -102,7 +102,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O site dava \"Garras e presas\" de 1 dado e 5 Ticks; o lore diz que \"as mãos terminam em foices quitinosas\". A foice no fim do braço corta com o braço inteiro atrás, Média (`regra-construcao.md` §7); quitina bloqueia como arma (D-100). Jogada: Destreza 5 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Mordida",
@@ -118,7 +119,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Garras e presas\" do site, com os 5 Ticks dele: quelíceras pequenas, bote rápido, Leve. Passa o veneno (Veneno e doença). Jogada: Destreza 5 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -149,7 +151,8 @@
       "efeito": "Peçonha de aranha gigante. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "Mestre de armadilhas",
@@ -163,7 +166,8 @@
       "efeito": "Antes de armar, marque a área e o gatilho de contato. A primeira criatura que toca os fios fica Presa pela Rede. Para achar ou desarmar a armadilha, supere o total da construção",
       "dano": "nenhum",
       "resistencia": "pela Rede do livro",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
+      "justificativa": "Dez minutos com a teia do corpo, área de 3 m para cobrir uma passagem. valor de molde, para a bancada."
     },
     {
       "nome": "Empatia com aranhas",
@@ -241,6 +245,76 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Mestre de armadilhas"
+      ],
+      "texto": "Dez minutos com a teia do corpo, área de 3 m para cobrir uma passagem. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mordida venenosa"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "teia"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "escalada do corpo de base pela massa **[conta]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "bloqueio"
+      ],
+      "texto": "1, pelas foices; o site não gravava Bloqueio **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Foices Média e Mordida Leve no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "disparo",
+        "adestramento",
+        "musculatura"
+      ],
+      "texto": "2, 2 e 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "1, o piso da régua; o site tinha 0"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

@@ -110,7 +110,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O golpe de cabeça de baixo para cima com o corpo atrás (seção 7 da regra). Caninos de cima de 5 a 10 cm (ADW) e de baixo com 10 a 12 cm expostos (Wikipédia): presa é Perfuração; sem força medida, N0. Fere sobretudo pernas e pés, e as mortes vêm da perda de sangue (Mayer 2013). A Força não muda: fica 1d6 + 5, média 8,5."
     },
     {
       "nome": "Investida",
@@ -126,7 +127,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [
@@ -136,7 +138,8 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "pelas pernas"
+      "texto": "pelas pernas",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "investida",
@@ -144,7 +147,8 @@
       "classe": "livro",
       "ataque": "Investida",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "presas que sangram",
@@ -158,7 +162,8 @@
       "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
       "dano": "nenhum adicional",
       "resistencia": "nenhuma",
-      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo",
+      "justificativa": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
     },
     {
       "nome": "teimosia",
@@ -172,7 +177,8 @@
       "efeito": "Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade teimosia. Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [],
@@ -244,6 +250,118 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.presas que sangram"
+      ],
+      "texto": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.investida"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.teimosia"
+      ],
+      "texto": "Aplicação à capacidade teimosia. Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "370,99 kg (em vigor na Etapa 2, 20/10/2026); antes: 350,9 kg pela fórmula das decisões 14 e 16 (`calc6.mjs`, com o adulto típico de 78,75 kg), provisório até a fórmula fechar; a carga (7,88 kg de Leve) sai da regra sem dado medido e fica como está (D-160, D-169, D-174)."
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23); 44 km/h contra 40 da Wikipédia (sem método), +10% (D-170)."
+    },
+    {
+      "campos": [
+        "dimensoes.largura"
+      ],
+      "texto": "0,40 m, estimada pelo Arquiteto, sem fonte; o Alvo sai da silhueta de lado (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 2 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois. O nível vem do escudo do ombro, que cobre só o ombro e o flanco do macho adulto e some no verão (3 mm) e no jovem; o Mestre desce ao nível 1 na fêmea, no jovem e no verão (Variantes)."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): nadou cerca de 11 km de mar, da França a Alderney, em 2013 (Wikipédia, sem tempo nem velocidade). Área de vida média de 1,1 a 3,9 km² (ADW). Sem distância por dia nem tempo de corrida."
+    },
+    {
+      "campos": [
+        "habilidades.resistencia"
+      ],
+      "texto": "3 pelo animal ferido que segue atacando (Mayer 2013). A Resistência (dor) 1 do levantamento ficou fora, porque o mesmo fato já sustenta o 3 e contá-lo nos dois lugares seria contar duas vezes (D-174)."
+    },
+    {
+      "campos": [
+        "habilidades.empatia"
+      ],
+      "texto": "0 no macho solitário da ficha, 1 na fêmea de vara; a espécie é social, mas a referência não vive em grupo (D-174)."
+    },
+    {
+      "campos": [
+        "habilidades.musculatura"
+      ],
+      "texto": "3 sem peso medido, pelo fuçar e pela investida (decisão 12, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: O corpo inteiro arremete (seção 7 da regra, × 2). O melhor ataque. Fica 2d6 + 10, média 17."
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 17 para 12; Investida 17, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: Prontidão (faro) +2 (Especialidade natural); alcance **[sem dado]**. Wikipédia."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: Prontidão (audição) +2 (Especialidade natural); alcance **[sem dado]**. Wikipédia."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - visão: fraca, sem visão de cores; não reconhece uma pessoa parada a 10 a 15 m (Wikipédia). Sem Especialidade."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: Veneno: nenhum. Doença (texto): triquinose (Trichinella spiralis e outras), pela carne mal cozida; o javali é fonte de risco importante em muitas regiões. Primeiro dor de barriga, náusea, diarreia, vômito, cansaço e febre; depois dor muscular forte, dor de cabeça, calafrio, tosse e inchaço em volta dos olhos; pode matar com dose alta (WOAH)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Prende a respiração: **[sem dado]**. Nada bem e longe (11 km de mar, Wikipédia)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: escudo do ombro nos machos (camada subcutânea grossa, caráter sexual secundário; é o nível 2 de Couraça, ver Absorção e Variantes); salto de 140 a 150 cm (Wikipédia, sem método)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: O macho grande e sozinho ataca gente sem provocação, mais no inverno e de dia, e fere sobretudo pernas e pés. A vítima típica é um homem adulto sozinho a pé (Mayer 2013)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

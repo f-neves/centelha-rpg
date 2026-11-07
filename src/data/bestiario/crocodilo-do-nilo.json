@@ -117,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 9, média 16. 7 + 8. Pesada é \"a mordida que agarra e torce\". Força × 1 (golpe de boca). Nível N1 : os 3.043 N medidos (N0) são de animais de 86 kg; o adulto típico de 198 kg morde mais, e os 22 kN de Brady Barr num adulto (Wikipédia, documentário de TV, não artigo) dariam N2. Fica no N1 (4.000 a 15.000 N), entre a medida pequena e a cifra de TV. Os 64 a 68 dentes (SDZG)."
     }
   ],
   "habilidadesEspeciais": [
@@ -126,7 +127,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "rolamento (giro da morte)",
@@ -135,7 +137,8 @@
       "ataque": "Mordida",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "é a manutenção do agarrão, rolando na água"
+      "texto": "é a manutenção do agarrão, rolando na água",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "arrastar para a água",
@@ -150,7 +153,8 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arrastar para a água. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -227,6 +231,108 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.rolamento (giro da morte)"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.arrastar para a água"
+      ],
+      "texto": "Aplicação à capacidade arrastar para a água. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "area: 1,50 m², vista de cima: a medição da `tamanho-fichas-v2` (1,89 m², o macho de 4,20 m) escalada pelo cubo da massa ao adulto típico de 198 kg, com a base no macho de 280 kg; era 2,94 m² (largura × comprimento, um retângulo cheio). O Alvo segue Grande, na borda (3,7% acima do corte). Com a base nos 400 kg de trabalho, daria 1,19 m², Médio."
+    },
+    {
+      "campos": [],
+      "texto": "pesquisa.caudaGrossa: sim (D-155)."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela v2 (D-158), no topo das âncoras de 7 a 8; era 9. A mordida medida é de animal pequeno; se aparecer a de um adulto grande, a Força se revê."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3 (robusto) pelo giro da morte e pelo arrasto; provisória, sem peso de presa medido."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 830,84 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.000,4 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 198 kg. Era 1.037 kg (400 kg de trabalho) e, antes, 687 kg pela fórmula de FAH."
+    },
+    {
+      "campos": [],
+      "texto": "carga: 19,8 kg de Leve pela conta da D-122 com os 198 kg (sem carga medida); era 40 kg pelos 400 kg."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). Terra 17 km/h contra 14 medidos (+21%); o 0,6 daria os 14 da pesquisa. Nado 16 km/h entre os 14 de um resumo de busca e os 30 a 35 da Wikipédia (fontes não lidas)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pelo normal da espécie; a apneia virou Especialidade natural (+3), e o tempo segue no campo \"Prende a respiração\"."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 5 (faixa 4 a 5) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 215 kg (em vigor na Etapa 2, 20/10/2026); antes: 198 kg **[medido]**, a média simples do macho (280 kg) e da fêmea (116 kg) (Cott 1961, Graham 1968, Hutton, via Wikipédia); era 400 kg, escolha dentro da faixa, e 280 kg (o macho) na quinta rodada. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 198 kg: Faixa 3, PV 34."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): em terra, galope só em arrancada curta, até 14 km/h (Wikipédia), e \"fica exausto fácil em terra\" (SDZG, só na ficha); não se afasta mais de cerca de 50 m da margem para caçar, mas grupos andam centenas de metros até uma carcaça (Wikipédia, citando Pooley). Na água, até 30 minutos nadando submerso se ameaçado (Wikipédia) **[medido]**. Sem distância por dia nem tempo de nado na superfície."
+    },
+    {
+      "campos": [],
+      "texto": "influencia, compostura: descem de 3 para 1 por não ser espécie social (diretriz 1). A hierarquia por tamanho na carcaça e no sol é uso entre os seus; se o autor a contar como vida social, as duas voltam a ser lidas."
+    },
+    {
+      "campos": [],
+      "texto": "furtividade: 3, candidata a 4 no levantamento, sem dado novo; a espera submersa entra como Especialidade (+1)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 0,62 m, a estimativa do Arquiteto para o macho (0,70 m, sem fonte) escalada pelo cubo da massa (fator 0,891)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.altura e dimensoes.comprimentoSemCauda: estimativas do Arquiteto para o macho (0,55 m e 2,20 m), sem fonte, escaladas da mesma forma (0,49 e 1,96 m)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - vibração: Prontidão (vibração na água) +2, Especialidade natural (notar presa pela pressão e vibração na água); alcance **[sem dado]**. Órgãos tegumentares (Wikipédia)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Prende a respiração: até 2 horas submerso em repouso total; mergulhos comuns de poucos minutos; até 30 minutos nadando submerso se ameaçado (Wikipédia). A Resistência (apneia) +3 não troca este campo."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Camuflagem: água (fica com o corpo quase todo submerso até a presa chegar perto, Wikipédia)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: dependência de água (não se afasta muito dela para caçar em terra: até cerca de 50 m da margem, Wikipédia); fôlego curto em terra (\"fica exausto fácil em terra\", SDZG); os músculos que abrem a boca são muito fracos (Wikipédia), o que fica para o Mestre."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

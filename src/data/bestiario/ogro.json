@@ -82,7 +82,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um brutamontes com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 7 + Briga 3"
     }
   ],
   "habilidadesEspeciais": [
@@ -107,7 +108,8 @@
       "classe": "livro",
       "ataque": "Pancada descomunal",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -182,6 +184,38 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "334 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 290 kg (D-187) **[conta]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "1, pele grossa e suja **[provisório]**"
+    },
+    {
+      "campos": [
+        "força de gigante"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

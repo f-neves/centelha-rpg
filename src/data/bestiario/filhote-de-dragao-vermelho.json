@@ -118,7 +118,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N1, um abaixo do branco jovem: mordida de filhote . Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Garras",
@@ -134,7 +135,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Patada de predador grande, Média (§7), como no branco jovem; garra Cortante. Bloqueia como a mão nua (D-100). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Sopro de fogo",
@@ -150,7 +152,8 @@
       "tipoDano": "fogo",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância (manual, Passo 10), como no branco jovem. \"Cone de 9 m; dano alto\" (site): metade do sopro do jovem (6d6). Os números são sugestão da ficha (D-197), descritos na linha do sopro nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -166,7 +169,8 @@
       "efeito": "Médio: de lado, pousado, asas fechadas. Grande: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Médio (de lado, pousado, asas fechadas) e Grande (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Sopro de fogo",
@@ -185,7 +189,8 @@
       "efeito": "o fogo queima tudo no cone. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "3d6 + Centelha, fogo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
     },
     {
       "nome": "garras em sequência",
@@ -193,7 +198,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada"
+      "regra": "rajada",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Multiataque",
@@ -207,7 +213,8 @@
       "efeito": "Golpeia nesta ordem: garra, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra, mordida. Teto 2. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     },
     {
       "nome": "Presença",
@@ -311,6 +318,110 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Sopro de fogo"
+      ],
+      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.garras em sequência"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sopro de fogo"
+      ],
+      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra, mordida. Teto 2. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Médio (de lado, pousado, asas fechadas) e Grande (de baixo, asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "Sopro de fogo"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campos": [
+        "medidas"
+      ],
+      "texto": "as proporções do branco jovem pelo comprimento do site; a área e a envergadura pela massa **[conta]**"
+    },
+    {
+      "campos": [
+        "sopro"
+      ],
+      "texto": "3d6, metade do jovem; o site diz \"dano alto\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Grande de asas abertas, Médio pousado, pelo método do branco jovem; os números do autor para o dragão de 10 m (55 m² parado, 134 m² em voo, `tamanho-regras.md` 4.1) dariam mais (pergunta 1 do lote 23) **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "sopro"
+      ],
+      "texto": "3d6 + Centelha, cone de 9 m, uma vez a cada 24 Ticks, pela sugestão da ficha (D-197) **[provisório]**"
+    },
+    {
+      "campos": [
+        "multiataque"
+      ],
+      "texto": "sem regra ainda; garras pela Rajada"
+    },
+    {
+      "campos": [],
+      "texto": "`presença` e os outros poderes: números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "Principal Grande para Médio; as duas áreas mantidas, mudando a postura principal (2e-1). **[provisório]**"
+    },
+    {
+      "campos": [],
+      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Multiataque · sem regra ainda: garras e mordida, \"dois ataques corpo a corpo\" no mesmo turno. A Rajada é de golpes com a mesma arma; partes diferentes na mesma ação pedem o Poder Especial, que A ficha ataca com uma parte por ação, ou pela Rajada."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",
@@ -338,7 +449,7 @@
     },
     {
       "campo": "ataques.Sopro de fogo",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
     },
     {
       "campo": "ataques",

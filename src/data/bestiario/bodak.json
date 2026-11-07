@@ -79,7 +79,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe\" do site (1 dado) e as \"garras ressecadas, ataque corpo a corpo padrão\" (site): golpe Médio, como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 4 e Destreza 4 (D-208): 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -213,6 +214,57 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O cadáver é animado após a morte."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. O olhar vazio e o ódio fixo não cedem ao pânico nem ao desnorteio."
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"Golpe\" de impacto do site virou Garras ressecadas Médias de Corte **[provisório]**"
+    },
+    {
+      "campos": [
+        "olhar mortal"
+      ],
+      "texto": "a \"falha grave\" do site ficou a falha por uma Margem (6 ou mais abaixo), a régua do livro (`acoes-resistir.md`) **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "1, a pele cinzenta e rachada **[provisório]**"
+    },
+    {
+      "campos": [
+        "olhar mortal",
+        "sol direto"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

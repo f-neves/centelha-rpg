@@ -94,7 +94,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava \"Garras e presas\" de 2 dados e 6 Ticks, perfurante; a aranha de 145 kg morde com o corpo atrás (Média), com os 6 Ticks do site. Presa, Perfuração. A Centelha soma inteira. Passa o veneno (Veneno e doença). Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -125,7 +126,8 @@
       "efeito": "Peçonha de drider. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "Resistência à magia",
@@ -153,7 +155,8 @@
       "efeito": "Ignora sono induzido por Arte, poder ou veneno. Os demais efeitos da mesma fonte continuam valendo. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Trevas",
@@ -172,7 +175,8 @@
       "efeito": "Apaga a luz comum na esfera. A criatura enxerga dentro dela",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
+      "justificativa": "Antes: Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada. Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Luzes dançantes",
@@ -190,7 +194,8 @@
       "efeito": "Cria luzes móveis para iluminar ou enganar",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
+      "justificativa": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
     },
     {
       "nome": "Fogo feérico",
@@ -208,7 +213,8 @@
       "efeito": "Contorna o alvo de luz e revela a sua posição enquanto durar",
       "dano": "nenhum",
       "resistencia": "esquiva, contra Influência + Ocultismo dela",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis",
+      "justificativa": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -279,6 +285,122 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Trevas"
+      ],
+      "texto": "Antes: Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada. Base Manto de Treva pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Fogo feérico"
+      ],
+      "texto": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Luzes dançantes"
+      ],
+      "texto": "Efeito separado do pacote conforme sua função; grau 1, alcance de 18 m e limite da ficha de origem. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 3 passa a Atirador 3. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mordida venenosa"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imune ao sono"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "teia"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 1 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 1 hora)."
+    },
+    {
+      "campos": [
+        "Feitiçaria residual"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Cada opção tem seu próprio uso grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 18 da fonte passa a grau 2 (+4)."
+    },
+    {
+      "campos": [
+        "altura"
+      ],
+      "texto": "1,5 m pelo corpo escalado; os \"3 metros\" do site lidos como a envergadura das patas **[conta]**"
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "escalada da aranha-gigante do molde **[conta]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "bloqueio"
+      ],
+      "texto": "1; o site não gravava Bloqueio **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Mordida Média no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "Potência 16, pool 4 de Força **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "1, o piso da régua; o site tinha 0"
+    },
+    {
+      "campos": [
+        "feitiçaria residual"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "Resistência à magia 18"
+      ],
+      "texto": "Antes: +2 na resistência contra Artes e na Defesa Mental."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

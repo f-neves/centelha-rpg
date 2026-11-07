@@ -91,7 +91,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Arma\" do site (3 dados, corte, 7 Ticks): a pata longa de um corpo de 3,6 t que desce como lâmina. Pesada pelo gesto e pelos 7 Ticks do site (`regra-construcao.md` §7), golpe de membro, Força × 1; o terceiro dado sai, porque a Pesada vai a 2 dados. Jogada: Força 9 + Briga 5"
     }
   ],
   "habilidadesEspeciais": [
@@ -112,7 +113,8 @@
       "efeito": "dispara dos olhos um raio de fogo; um raio por ação",
       "dano": "3d6, fogo",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis",
+      "justificativa": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Raio de frio",
@@ -131,7 +133,8 @@
       "efeito": "dispara dos olhos um raio de frio; um raio por ação",
       "dano": "3d6, gelo",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis",
+      "justificativa": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Raio elétrico",
@@ -150,7 +153,8 @@
       "efeito": "dispara dos olhos um raio de eletricidade; um raio por ação",
       "dano": "3d6, raio",
       "resistencia": "corpo, Vigor + Resistência contra Dificuldade 10; quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis",
+      "justificativa": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "raio de pedra",
@@ -164,7 +168,8 @@
       "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
       "dano": "nenhum adicional",
       "resistencia": "Vigor + Resistência contra Dificuldade 20",
-      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis"
+      "limiteDeUso": "Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis",
+      "justificativa": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
     },
     {
       "nome": "Escalada e travessia da água",
@@ -185,7 +190,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Sobrevivência, com a Especialidade natural (rastrear o alvo designado) +3"
+      "texto": "Sobrevivência, com a Especialidade natural (rastrear o alvo designado) +3",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "corpo de construto",
@@ -199,7 +205,8 @@
       "efeito": "Ignora domínio e confusão. Cumpre as ordens do senhor demoníaco mesmo sob tentativas de desviar sua vontade. Dano físico de Arte e conversa comum seguem as regras normais",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R22. Domínio e confusão desviariam o construto das ordens do senhor que o controla."
     }
   ],
   "comoLuta": [
@@ -282,6 +289,126 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.presa implacável"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.raio de pedra"
+      ],
+      "texto": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Raio elétrico"
+      ],
+      "texto": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Raio de frio"
+      ],
+      "texto": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Raio de fogo"
+      ],
+      "texto": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. Corpo fabricado ou animado; herda C-002."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.corpo de construto"
+      ],
+      "texto": "R22. Domínio e confusão desviariam o construto das ordens do senhor que o controla."
+    },
+    {
+      "campos": [
+        "Raio de fogo"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base."
+    },
+    {
+      "campos": [
+        "Raio de frio"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base."
+    },
+    {
+      "campos": [
+        "Raio elétrico"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base."
+    },
+    {
+      "campos": [
+        "raio de pedra"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Somente os usos grátis estão disponíveis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. R2 e D-197. Alcance sugerido de 18 m para o quarto raio, como nos outros três raios oculares. P2. Dificuldade 20 sugerida porque o raio de ameaça 5 escolhe um único alvo a 18 m."
+    },
+    {
+      "campos": [
+        "massa",
+        "corpo"
+      ],
+      "texto": "os do elefante do molde (3.600 kg, 6,65 m² de lado), pelo \"tamanho de um elefante\" e pela \"carne viva\" do site **[provisório]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "8 por julgamento (carne do porte do elefante); o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "a \"Arma\" de 3 dados vira as Patas-lâmina Pesadas, de 2 dados (perda de mecânica publicada, no relato) **[provisório]**"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "3, como o elefante **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "3, couro grosso como o do elefante **[provisório]**"
+    },
+    {
+      "campos": [
+        "raios oculares"
+      ],
+      "texto": "um poder natural por raio (fogo, frio e eletricidade), porque cada poder tem uma base só; o de pedra fica sem regra ainda"
+    },
+    {
+      "campos": [
+        "raio de fogo",
+        "raio de frio",
+        "raio elétrico",
+        "escalada e travessia da água"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

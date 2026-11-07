@@ -105,7 +105,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra de ave, Leve (`regra-construcao.md` §7); os dois pés fazem par (Manobras). A Centelha soma inteira. Jogada: Destreza 5 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -121,7 +122,8 @@
       "efeito": "Grande: asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Canção cativante",
@@ -139,7 +141,8 @@
       "efeito": "quem falha fica cativado: anda até ela pelo caminho mais curto, ignorando perigos (não entra em fogo nem em abismo sem testar de novo), e não age contra ela; quem é atacado se solta",
       "dano": "nenhum",
       "resistencia": "Influência + Canto da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune a esta canção até o fim da cena",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Velocidade 6. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Feitiçaria",
@@ -164,14 +167,16 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "empunhadura-dupla"
+      "regra": "empunhadura-dupla",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Voo rasante",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Voo; em baixa altura"
+      "texto": "Voo; em baixa altura",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -247,6 +252,63 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Voo rasante"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Garras aviformes"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Canção cativante"
+      ],
+      "texto": "Antes: Velocidade 6. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "Canção cativante"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Feitiçaria"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. A canção e a feitiçaria compartilham o uso grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação no lugar da canção, uma ação, Velocidade 6 -> no lugar da canção, uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Grande de asas abertas, Médio de pé **[extrapolação]** na largura da asa"
+    },
+    {
+      "campos": [
+        "compaixão"
+      ],
+      "texto": "1; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "canção cativante",
+        "feitiçaria"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.area",

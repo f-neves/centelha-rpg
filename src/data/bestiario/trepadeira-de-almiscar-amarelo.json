@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Classe pelo gesto, sem usar Destreza no dano; jogada 8 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -107,7 +108,8 @@
       "efeito": "Ergue o cadáver como zumbi de almíscar pelo poder equivalente a Morte 4",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena"
+      "limiteDeUso": "1 uso grátis por cena",
+      "justificativa": "Morte 4 é o mínimo para animar o cadáver. O poder de almíscar usa grau 4 pela criação de zumbi. valor de molde, para a bancada."
     },
     {
       "nome": "Imunidades vegetais",
@@ -121,7 +123,8 @@
       "efeito": "Ignora veneno, sono e domínio. O ferimento do golpe continua. Dano físico de Arte e conversa comum seguem as regras normais",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R22. A planta comanda servos pelo almíscar e mantém seu próprio impulso de caça."
     }
   ],
   "comoLuta": [
@@ -199,6 +202,92 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Criação de zumbi de almíscar"
+      ],
+      "texto": "Morte 4 é o mínimo para animar o cadáver. O poder de almíscar usa grau 4 pela criação de zumbi. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imunidades vegetais"
+      ],
+      "texto": "R22. A planta comanda servos pelo almíscar e mantém seu próprio impulso de caça."
+    },
+    {
+      "campos": [
+        "Névoa de pólen"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campos": [
+        "Criação de zumbi de almíscar"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Somente os usos grátis estão disponíveis. Um uso de abertura até a definição do efeito."
+    },
+    {
+      "campos": [
+        "corpo"
+      ],
+      "texto": "apoio outro explicitado na Anatomia e na Postura; esfera, hexápode ou planta não usam o apoio bípede nem quadrúpede. a conferir."
+    },
+    {
+      "campos": [
+        "Tamanho"
+      ],
+      "texto": "Antes: Médio."
+    },
+    {
+      "campos": [
+        "Tendrilho"
+      ],
+      "texto": "Antes: ataque genérico perfurante, Acerto 0; agora golpe de impacto, Acerto +1, pelo gesto."
+    },
+    {
+      "campos": [
+        "Vontade"
+      ],
+      "texto": "Antes: 5."
+    },
+    {
+      "campos": [
+        "Defesas"
+      ],
+      "texto": "Antes: sem aplicação explícita da imunidade de Inteligência 0."
+    },
+    {
+      "campos": [
+        "Influência"
+      ],
+      "texto": "Antes: 2."
+    },
+    {
+      "campos": [
+        "Perspicácia"
+      ],
+      "texto": "Antes: 2."
+    },
+    {
+      "campos": [
+        "Compostura"
+      ],
+      "texto": "Antes: 2."
+    },
+    {
+      "campos": [
+        "Integridade"
+      ],
+      "texto": "Antes: 2."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

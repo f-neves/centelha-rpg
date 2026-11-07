@@ -84,11 +84,13 @@
   "ataques": [
     {
       "nome": "Lança",
-      "arma": "lanca"
+      "arma": "lanca",
+      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     },
     {
       "nome": "Besta média",
-      "arma": "besta-media"
+      "arma": "besta-media",
+      "justificativa": "A arma do livro (`armas.json`, `besta-media`), a \"besta pesada\" do site: Distância, Velocidade 12, 1d6 + 4 sem Força, Acerto +1, ★P(N1), efetiva 60 m; recarga parado. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -111,7 +113,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)"
+      "texto": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -183,6 +186,50 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Besta média"
+      ],
+      "texto": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Guerreiro do mar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "lança no lugar do tridente e besta média no lugar da besta pesada **[provisório]**"
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "de lado, nadando; as medidas são estimadas **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "aparência"
+      ],
+      "texto": "4, a do site; o texto fala de beleza **[provisório]**"
+    },
+    {
+      "campos": [
+        "anfíbio"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "deslocamento"
+      ],
+      "texto": "antes, Batalha 0,5 m/Tick apenas em texto, Arranque e Corrida ausentes; depois, terra 0,5 / 0,75 / 1,0 m/Tick. Preserva o arrastar publicado e distingue esforço breve e máximo, ambos limitados pela cauda sem pernas (36.2) **[provisório]**."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",
@@ -211,6 +258,10 @@
     {
       "campo": "comportamento.caca",
       "motivo": ""
+    },
+    {
+      "campo": "ataques.Besta média",
+      "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
     },
     {
       "campo": "equipamento",

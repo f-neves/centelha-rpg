@@ -93,7 +93,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"mordida reptiliana\" do site, Média: a mandíbula de lagarto que fecha e segura. Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -109,7 +110,8 @@
       "efeito": "A primeira falha deixa a vítima Petrificando. A cada 6 Ticks, repita o teste. Cada nova falha petrifica uma região e tira 1 de Vigor temporário, sem recalcular PV nem Absorção. Comece pelas extremidades. Em corpos com muitas patas, avance pata por pata. Em serpentes, avance da cauda por segmentos. Se faltarem membros, avance por trechos sucessivos do corpo. Tronco e cabeça petrificam por último, quando o Vigor chega a 0. Com Vigor 1, a primeira falha no novo teste completa a estátua. Três sucessos acumulados interrompem a progressão",
       "dano": "nenhum adicional",
       "resistencia": "Vigor + Resistência contra Dificuldade 15 pela Petrificação",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
     },
     {
       "nome": "reflexo traidor",
@@ -188,6 +190,62 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Olhar petrificante"
+      ],
+      "texto": "A Dificuldade já está na resistência. A progressão conta o Vigor restante, inclusive além de quatro regiões, e termina em estátua."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 4: +4 Corte, +4 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Olhar petrificante"
+      ],
+      "texto": "**[provisório]** R12. Dificuldade sugerida 15 na régua de 5 para esta exposição à petrificação. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "135 kg para 36 kg, pela regra do lote: os 1,8 m do focinho à cauda do site, pelo varano, dão 27 kg, e o fator 1,35 do corpo de oito patas leva a 36 kg. A Força (5), o PV (37, na zona de transição) e a Faixa (3) não mudam **[conta]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Médio para Pequeno (0,30 m²). Em jogo: o atirador humano perde 3 contra ele, e ele ganha +3 no corpo a corpo contra o humano **[provisório]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "na zona de transição (28 a 42 kg), ficou na faixa de cima, a do site; descendo seria 28 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"1d6 +8 perfurante\", 5 Ticks, dano médio 11,5). A ficha fica com a mordida, Média. Dano médio: 11,5 antes; depois, mordida 11,5 (sem mudança) **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 2 (D-205)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "1 para 3, os \"sentidos aguçados\" do site"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Olhar petrificante",

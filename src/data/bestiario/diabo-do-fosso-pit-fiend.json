@@ -111,7 +111,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte): a garra com o braço e o corpo atrás, Média (`regra-construcao.md` §7). Duas por ação pela Rajada (Manobras). Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     },
     {
       "nome": "Mordida",
@@ -127,7 +128,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Mordida com doença infernal\" (site): a mordida com a cabeça atrás, Média. Leva a doença (Manobras). Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     },
     {
       "nome": "Cauda",
@@ -143,7 +145,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Ferrão de cauda venenoso\" (site): a cauda que pica com o quadril atrás, Média. Leva o veneno (Veneno e doença). Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -154,7 +157,8 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação"
+      "texto": "Até dois golpes por ação",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Ferrão venenoso",
@@ -169,7 +173,8 @@
       "efeito": "o alvo fica Envenenado pelo veneno do diabo do fosso (Veneno e doença)",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "Doença infernal",
@@ -188,7 +193,8 @@
       "efeito": "o alvo fica Doente e vai perdendo Vigor: a cada dia sem tratamento, um degrau de Desgaste. Se o Vigor chegar a 0, a vítima morre",
       "dano": "nenhum além da mordida",
       "resistencia": "corpo, contra a jogada da mordida; quem passa não adoece daquele golpe",
-      "limiteDeUso": "um por golpe. Sem custo"
+      "limiteDeUso": "um por golpe. Sem custo",
+      "justificativa": "A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0. Base Praga pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Aura de medo",
@@ -207,7 +213,8 @@
       "efeito": "puro terror; quem entra e falha fica Abalado só de estar perto. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune à aura até o fim da cena",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Labareda",
@@ -226,7 +233,8 @@
       "efeito": "arremessa uma bola de fogo que explode no ponto escolhido",
       "dano": "6d6 + Centelha, fogo",
       "resistencia": "esquiva; quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Convocar diabos",
@@ -245,7 +253,8 @@
       "efeito": "Convoca Diabrete (Imp) até o fim da cena. A origem aguarda o lore dos planos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Um aliado de perfil Diabrete (Imp) até metade da Centelha do convocador. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Invocar pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Feitiços supremos",
@@ -263,14 +272,16 @@
       "efeito": "reproduz o efeito de qualquer Arte, de qualquer nível, uma única vez",
       "dano": "o do efeito reproduzido",
       "resistencia": "a do efeito reproduzido",
-      "limiteDeUso": "uma vez por história. Limite fixo, sem uso extra nem ampliação"
+      "limiteDeUso": "uma vez por história. Limite fixo, sem uso extra nem ampliação",
+      "justificativa": "Antes: Velocidade 8. Velocidade 7 pelo grau 6 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Regeneração 5",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de arma sagrada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "efeito": "origem sobrenatural. O dano de arma sagrada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
+      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma sagrada ou prata. valor de molde, para a bancada."
     },
     {
       "nome": "ferida que não fecha",
@@ -287,7 +298,8 @@
         "id": "visao-verdadeira",
         "nivel": 4
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "visão verdadeira sempre ativa",
@@ -301,7 +313,8 @@
       "efeito": "Percebe disfarces, ilusões e seres invisíveis. Paredes bloqueiam a visão e a Furtividade comum continua válida",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
     },
     {
       "nome": "imune a veneno",
@@ -315,7 +328,8 @@
       "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "medonho",
@@ -336,7 +350,8 @@
       "efeito": "Golpeia nesta ordem: garra, mordida, ferrão da cauda. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra, mordida, ferrão da cauda. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -428,6 +443,180 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Ver o invisível"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Feitiços supremos"
+      ],
+      "texto": "Antes: Velocidade 8. Velocidade 7 pelo grau 6 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Convocar diabos"
+      ],
+      "texto": "Antes: Um aliado de perfil Diabrete (Imp) até metade da Centelha do convocador. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Invocar pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Labareda"
+      ],
+      "texto": "Base Projétil Conjurado pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Aura de medo"
+      ],
+      "texto": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Doença infernal"
+      ],
+      "texto": "A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0. Base Praga pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Duas garras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "sentidos.visão verdadeira"
+      ],
+      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.visão verdadeira sempre ativa"
+      ],
+      "texto": "Alcance 18 m para distinguir disfarces e ilusões dentro do campo visual. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 5"
+      ],
+      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: arma sagrada ou prata. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra, mordida, ferrão da cauda. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 4: +4 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Ferrão venenoso"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.imune a veneno"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Ferrão venenoso"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Aura de medo"
+      ],
+      "texto": "**[provisório]** R5 e D-197. Jogada sugerida de Influência + Ocultismo para a imposição mental deste poder."
+    },
+    {
+      "campos": [
+        "Labareda"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Convocar diabos"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Limite diário dos usos grátis: 1. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Feitiços supremos"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Proponho um pedido mortal, uma dívida de serviço nomeada e o preparo do selo com leitura do pacto. A dívida dá um preço concreto ao uso por história."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "360 kg, a do site, com a altura do site (fator de forma 1,33 sobre os 270 kg do corpo de base). Nada muda: Faixa, PV e Tamanho ficam os do site. A regra do lote: a altura manda, e a massa do site fica quando um fator de forma plausível a alcança **[conta]**"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "5 pela nota do site, e não o 4 do campo **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperanca"
+      ],
+      "texto": "4, e não 1, pelo texto do site (\"calculista e paciente\"); `compaixao` 0 sobe a 1, o piso da régua **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "0, e não o −1 do site, fora da régua; o efeito em quem olha foi para a linha medonho (D-181) **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte (`inimigos.json`: \"2d6 +21 corte\", dano médio 28). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras, mordida e cauda ficam Médias (o golpe com o corpo atrás). Dano médio: 28 antes; depois, 24,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "aura de medo",
+        "labareda",
+        "doença infernal",
+        "convocar diabos",
+        "feitiços supremos"
+      ],
+      "texto": "números da ficha com as bases do site (D-197); os feitiços supremos, uma vez por história, como o desejo do glabrezu do lote 31"
+    },
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "sem id no catálogo; os números são provisórios **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "4, como o balor **[provisório]**"
+    },
+    {
+      "campos": [
+        "Regeneração 5"
+      ],
+      "texto": "Antes: 11 PV/6 Ticks por 4 de Energia."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.prontidao",

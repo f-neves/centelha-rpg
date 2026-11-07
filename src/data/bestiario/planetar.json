@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Montante",
-      "arma": "montante"
+      "arma": "montante",
+      "justificativa": "Montante do catálogo com duas mãos; jogada 24 com Armas"
     }
   ],
   "habilidadesEspeciais": [
@@ -99,7 +100,8 @@
       "efeito": "Grande: de pé, asas recolhidas. Enorme: asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (de pé, asas recolhidas) e Enorme (asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Aura protetora",
@@ -118,14 +120,16 @@
       "efeito": "a criatura e seus aliados somam +4 em Esquiva, Bloqueio e Defesa Mental contra ataques e efeitos malignos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Regeneração 10",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "regeneração sobrenatural. Quando sofre dano de armas e efeitos malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
+      "efeito": "regeneração sobrenatural. Quando sofre dano de armas e efeitos malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
+      "justificativa": "Interrupção por 1 hora, pois a fonte interrompe o processo sobrenatural. Fraqueza: armas e efeitos malignos. valor de molde, para a bancada."
     },
     {
       "nome": "Resistência à magia",
@@ -153,7 +157,8 @@
       "efeito": "Compreende e fala qualquer idioma falado. Escrita, códigos e pensamentos exigem outros meios. Entender o pedido não obriga a obedecer",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Compreensão contínua de idiomas falados, pelo alcance da audição normal. valor de molde, para a bancada."
     },
     {
       "nome": "Imunidades celestes",
@@ -167,7 +172,8 @@
       "efeito": "não adoece, não é envenenado e resiste à transformação em pedra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Espada de luz cegante",
@@ -193,7 +199,8 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana",
+      "justificativa": "Antes: Velocidade 8, alcance 36 m, viajantes: o próprio usuário. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
     }
   ],
   "comoLuta": [
@@ -295,6 +302,104 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Teleporte instantâneo"
+      ],
+      "texto": "Antes: Velocidade 8, alcance 36 m, viajantes: o próprio usuário. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Aura protetora"
+      ],
+      "texto": "Base Barreira pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "sentidos.visão verdadeira · sem regra ainda"
+      ],
+      "texto": "Até 18 m, distingue disfarce, ilusão e invisibilidade. Paredes e Furtividade comum limitam a percepção. Sem custo. Alcance do sentido pela decisão e pela ficha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Verbo verdadeiro"
+      ],
+      "texto": "Compreensão contínua de idiomas falados, pelo alcance da audição normal. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 10"
+      ],
+      "texto": "Interrupção por 1 hora, pois a fonte interrompe o processo sobrenatural. Fraqueza: armas e efeitos malignos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (de pé, asas recolhidas) e Enorme (asas abertas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imunidades celestes"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 27 da fonte passa a grau 3 (+6)."
+    },
+    {
+      "campos": [
+        "Verbo verdadeiro"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campos": [
+        "Teleporte instantâneo"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campos": [
+        "Aura protetora"
+      ],
+      "texto": "Antes: +1d de Absorção e Defesa."
+    },
+    {
+      "campos": [
+        "Regeneração"
+      ],
+      "texto": "Antes: recuperava PV por rodada."
+    },
+    {
+      "campos": [
+        "Artes"
+      ],
+      "texto": "Antes: feitiço genérico por cena; níveis publicados preservados na conjuração."
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Antes: golpe planar genérico."
+    },
+    {
+      "campos": [
+        "Briga"
+      ],
+      "texto": "Antes: 5."
+    },
+    {
+      "campos": [
+        "Prontidão"
+      ],
+      "texto": "Antes: 4."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

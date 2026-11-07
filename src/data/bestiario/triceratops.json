@@ -90,7 +90,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Era 1d6 + 15, média 18,5. 3,5 + 11. Golpe de cabeça com o corpo atrás (seção 7). Chifre de ponta de cerca de 1 m: N1 é o do próprio chifre, pelo tamanho (seção 7), e não do porte; força em N não achada. O buraco curado no malar com o diâmetro da ponta de um chifre (Farlow e Dodson 1975) mostra que ele fura."
     },
     {
       "nome": "Investida de chifre",
@@ -106,7 +107,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [
@@ -116,21 +118,24 @@
       "classe": "livro",
       "ataque": "Investida de chifre",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Investida de chifre\"."
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "empurrar"
+      "regra": "empurrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "escudo de osso",
@@ -144,14 +149,16 @@
       "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "+4 pela base firme contra as duas manobras. valor de molde, para a bancada."
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar"
+      "texto": "Atropelar",
+      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Investida de chifre\"."
     }
   ],
   "comoLuta": [],
@@ -214,6 +221,128 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Investida"
+      ],
+      "texto": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Investida de chifre\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Atropelar"
+      ],
+      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Investida de chifre\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.empurrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.escudo de osso"
+      ],
+      "texto": "+4 pela base firme contra as duas manobras. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 3: +3 Corte, +3 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 1.965,73 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.864,92 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 7.400 kg. Era 1.966 kg (8.000 kg de trabalho) e, antes, 2.284 kg pela fórmula de FAH."
+    },
+    {
+      "campos": [],
+      "texto": "carga: Leve 1.110 a Máxima 4.440 kg, provisória (era Leve 1.200 pelos 8.000 kg); sai da massa."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). 21 km/h, sem número real para comparar."
+    },
+    {
+      "campos": [],
+      "texto": "area: 10,47 m², vista de lado, da medição da `tamanho-fichas-v2`; era 25,5 m² (retângulo cheio). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 3 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 8.000 kg (em vigor na Etapa 2, 20/10/2026); antes: 7,4 t, o *T. horridus* NSM PV 20379 pela circunferência do úmero e do fêmur (Campione e Evans 2012, tabela 6; 5,55 a 9,25 t), sem consenso entre os estudos. Para o mesmo esqueleto, os volumétricos vão de 3,9 t (Henderson 1999) a 8,5 t (Colbert 1962); o AMNH 5033, grande, dá 13,5 t pelo mesmo método (Benson 2014, Dataset S1). Paul 2010 segue sem leitura. Era 8 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 7,4 t (faixa e PV não mudam)."
+    },
+    {
+      "campos": [],
+      "texto": "social: tratado como não social (Influência e Perspicácia 1), embora haja leito de ossos com três jovens **[extrapolação]**; ver desvios."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 10 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela ferida curada (Happ 2008; Peterson e colegas 2013), pela gola que cicatriza rápido (Horner e Lamm 2011) e pela vida longa do \"Big John\" (reportagem) (D-164)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada; a cicatrização foi para o Vigor."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3 (robusto) pelo pescoço de chifrar, provisória; sem medida de força."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 2,0 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.altura: os 3,0 m do \"Big John\" não dizem onde se mede (ombro, quadril ou cabeça)."
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: Era 2d6 + 30, média 37. 7 + 22. \"Investida de chifre\" é a Pesada da seção 7; corpo inteiro, × 2. O melhor ataque. Opção, não segundo golpe (D-097: \"um ataque por ação (D-068), também para as criaturas\")."
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 29 para 18; Investida 29, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: fraco, sem Especialidade (Sakagami e Kawabe 2020)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: de baixa frequência (cóclea curta), sem Especialidade; texto (Sakagami e Kawabe 2020)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - sentidos: Nada que passe do humano com número. Cabeça mantida a cerca de 45 graus do chão (Sakagami e Kawabe 2020)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Doença: nenhuma. Lesões ósseas no crânio de causa discutida (combate, ou reabsorção e doença segundo Tanke e Farke 2006)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Camuflagem: **[sem dado]** (cor não conhecida)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: gola curta e maciça, sem janelas, de osso fibrolamelar que cicatriza rápido (Horner e Lamm 2011); placa óssea sobre o sacro, da fusão das espinhas vertebrais (Dodson e colegas 2004, via Wikipédia); conchas nasais respiratórias prováveis, para resfriar o sangue do cérebro e dos olhos (Tada e colegas 2026); côndilo occipital de até 106 mm, crânio muito pesado (Dodson e colegas 2004, via Wikipédia); escamas de base de até 90 mm, as maiores conhecidas em ceratopsianos (Bell e colegas 2022)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.perspicacia",

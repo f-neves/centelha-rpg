@@ -95,7 +95,8 @@
       "tipoDano": "fenomeno",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O toque gelado que atravessa a matéria. Gesto rápido de membro, Leve (`regra-construcao.md` §7). Força 0 não soma (D-167); a Centelha soma inteira (`centelha.md`). Tipo: o dano do incorpóreo \"é fenômeno (armadura não absorve, só a Centelha)\" (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -115,7 +116,8 @@
       "efeito": "voa e atravessa paredes, portas e obstáculos; não agarra nem empurra e não pode ser empurrado. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada. R21. A travessia de matéria e a interação com objetos continuam próprias deste poder."
     },
     {
       "nome": "Dreno de nível",
@@ -134,7 +136,8 @@
       "efeito": "Cada dreno que pega tira 1 ponto temporário de Vigor. A perda afeta as contas de Vigor, exceto PV e Absorção. Se o Vigor chegar a 0, a vítima morre",
       "dano": "nenhum além do toque",
       "resistencia": "corpo, contra a jogada do toque; quem passa não sofre o dreno daquele toque",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0. Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Regenera com o dreno",
@@ -289,6 +292,74 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Dreno de nível"
+      ],
+      "texto": "A perda de Vigor pela doença, peçonha ou dreno é letal ao chegar a 0. Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Voo e incorpóreo"
+      ],
+      "texto": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O morto-vivo atravessa matéria e mantém sua natureza de morto-vivo."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. O ódio que conserva a silhueta do espectro lhe dá um único propósito."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Voo e incorpóreo"
+      ],
+      "texto": "R21. A travessia de matéria e a interação com objetos continuam próprias deste poder."
+    },
+    {
+      "campos": [
+        "Dreno de nível"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R18 e D-197. O enfraquecimento da vitalidade passa a tirar 1 de Vigor por dreno, no lugar da penalidade geral acumulada até −4. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "sem massa; o volume do corpo de base (0,079 m³) entra no PV e nas faixas como 80 kg. Com qualquer volume humano (de 0,06 a 0,10 m³) o PV seria o mesmo (Faixa de 35 a 220 kg) **[conta]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "5, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"vs Def. Mental\" e a Influência do site saíram; a jogada é a comum. Se o autor quiser o toque contra a Defesa Mental, é regra nova"
+    },
+    {
+      "campos": [
+        "tipo do dano"
+      ],
+      "texto": "\"fenômeno\" não é um dos três tipos (Impacto, Corte, Perfuração); o card pode não saber ler. Ver o relato"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

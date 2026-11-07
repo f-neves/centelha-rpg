@@ -105,7 +105,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: a Força segue 2 (era 1d6 − 2 + 2, média 3,5). Boca de ventosa: Leve. Corte: as 3 mandíbulas com cerca de 100 bordas cortantes da Hirudo fazem incisão em Y (Wikipédia); a Haementeria usa probóscide de até 10 cm (Wikipédia). N0. Força × 1 (boca). O que pesa é ficar presa e sugar (Manobras). Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [
@@ -114,7 +115,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "sugar",
@@ -129,7 +131,8 @@
       "efeito": "Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção",
       "dano": "1 PV a cada 6 Ticks, ignorando a Absorção da armadura",
       "resistencia": "nenhuma",
-      "limiteDeUso": "enquanto mantiver o agarrão"
+      "limiteDeUso": "enquanto mantiver o agarrão",
+      "justificativa": "Aplicação à capacidade sugar. Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção. valor de molde, para a bancada."
     },
     {
       "nome": "sangramento",
@@ -144,7 +147,8 @@
       "efeito": "Aplica o Sangramento comum. A ferida não fecha sozinha. Para estancar, é preciso vencer um teste de Raciocínio + Cura. Estabilizar com o cuidado simples não basta",
       "dano": "nenhum adicional",
       "resistencia": "nenhuma",
-      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo"
+      "limiteDeUso": "a cada ferida que provoca Sangramento, sem custo",
+      "justificativa": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
     },
     {
       "nome": "sal",
@@ -158,7 +162,8 @@
       "efeito": "Enquanto estiver em contato com sal, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Intervalo de 6 Ticks pela exposição em contato com sal. valor de molde, para a bancada. Aplicação à capacidade sal. Enquanto estiver em contato com sal, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -238,6 +243,100 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.sangramento"
+      ],
+      "texto": "O anticoagulante muda o tratamento da ferida. O dano segue o Sangramento do livro."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.fixar = agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.sal"
+      ],
+      "texto": "Intervalo de 6 Ticks pela exposição em contato com sal. valor de molde, para a bancada. Aplicação à capacidade sal. Enquanto estiver em contato com sal, sofre Desgaste 1 a cada 6 Ticks. Aplicar por contato exige uma ação. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.sugar"
+      ],
+      "texto": "Aplicação à capacidade sugar. Só suga enquanto mantém o agarrão, retirando 1 PV a cada 6 Ticks. Ignora a Absorção da armadura. Soltar a presa encerra a sucção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o do site (3 m), que passa no item 7: Grande (1,58 m², de cima), quatro portes acima da Haementeria de base (Minúscula, 0,016 m² no mesmo modo). A área fica 9% acima do corte do Grande (1,45 m²) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: **passa de Médio a Grande** pela área de cima (1,58 m²) da tamanho-fichas-v2; na conta de hoje a massa de 23,7 kg (a de 15/10) puxava a média para Médio (3,18). O Alvo só pela área deixa um verme largo e leve no mesmo Alvo de um cavalo. Provisório até os cortes fecharem (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: provisório, 96,89 kg pela fórmula das decisões 14 e 16 (calc6, 23,1 kg); verme não tem `carga` (D-160, D-175). Era 97,96 kg com 23,7 kg, e antes 23,31 kg."
+    },
+    {
+      "campos": [],
+      "texto": "anatomia: verme, anatomia provisória (D-175), não calibrada em animal medido; `nado: true` porque a sanguessuga nada."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). Nado: 1,25 m/s contra 4,3 cm/s da Hirudo real (cerca de +2.800%) e contra 1,6 m/s da mesma proporção escalada (−22%)."
+    },
+    {
+      "campos": [],
+      "texto": "gigante escalado (D-105): massa, largura e espessura são extrapolação a partir da Haementeria; a massa típica da base (23,1 g) é a média dos seis adultos da tabela II de Sawyer e colegas 1981, entre refeições; o comprimento de 30 cm vem de outra fonte (Discover Wildlife), [comparação], e confere com o cubo do par máximo (29,7 cm) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: a ficha atual do bestiário diz 80 kg; a conta pelo cubo dá 23,1 kg (era 23,7 pela base de 80 g), Faixa 2, longe do corte de 35 kg (decisão 22). Os 80 g são a sanguessuga \"excepcionalmente grande\" de Sawyer 1981, e não animal cheio."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 2, [provisório]; a adesão da ventosa não entra na Força e fica em Manobras (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 2 (comum), sem medida de força além da ventosa."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 2 pela régua, [comparação] pela base; o jejum fica na Especialidade natural."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre a Haementeria de base (3), o mínimo da D-176; verme mole de 23,1 kg, sem esqueleto nem casca, ao lado da vespa, da aranha e da centopeia gigantes (4). Era 5 (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: a Fome +3 passa de comum a natural (é do metabolismo), e por isso fica +3, e não 1 como o levantamento pedia pelo limite do livro. Escolha provisória (D-174). O jejum de um ano não cabe na tabela da Fome (Severidade 5 + 1 por dia): falta de regra anotada no levantamento."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): só a velocidade de nado da Hirudo, 4,3 cm/s num animal de 8 cm (Taylor 1952), sem duração; logo depois de comer nada a 27% da velocidade de antes e recupera 50% em cerca de 1 h (Claflin et al., SICB 2009) **[medido, na Hirudo]**."
+    },
+    {
+      "campos": [],
+      "texto": "comportamento.sal: a ficha atual tem \"Fraqueza ao Sal\"; a pesquisa não achou fonte para sanguessuga. Se o autor quiser o sal, ele entra como texto do Mestre, como na lesma (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "sugar: o volume de sangue da gigante (mais de 4 L) é extrapolação pelo cubo; o dano por manutenção é do Mestre."
+    },
+    {
+      "campos": [],
+      "texto": "fonte: as massas da Haementeria agora têm fonte primária (Sawyer, Lepont, Stuart e Kramer 1981, Biological Bulletin 160:322-331, PDF em archive.org, biostor-9651); a largura de 10 cm continua sem fonte primária; a espessura de 0,06 m continua por estimativa (D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.largura",

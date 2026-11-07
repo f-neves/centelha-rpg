@@ -110,7 +110,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O site dava \"Garras e presas\" de 3 dados, perfurante, 7 Ticks; o aboleth não tem garras: são os tentáculos. O golpe de 7 Ticks, com o tentáculo de 3 m que gira, é o Pesado da tabela (regra-construcao §7); golpe de membro, Força × 1; tentáculo é Impacto. A Centelha soma inteira. Passa o muco (Manobras). Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -120,7 +121,8 @@
       "classe": "livro",
       "ataque": "Tentáculo",
       "categoria": "inato",
-      "regra": "rajada"
+      "regra": "rajada",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Muco transmutador",
@@ -176,7 +178,8 @@
       "efeito": "vista e som que não existem: um caminho seguro que é precipício, um aliado que é ele, um perigo falso; quem toca ou desconfia e testa vê através dela",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Telepatia",
@@ -284,6 +287,84 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Ilusões"
+      ],
+      "texto": "Base Imagem Viva pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Tentáculos múltiplos"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Muco transmutador"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Domínio psíquico"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7, olhando ou tocando o alvo -> uma ação, Velocidade 6, olhando ou tocando o alvo Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Ilusões"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 7. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "6,29 m², 4,8% acima do corte de Enorme; as medidas da cauda e dos tentáculos são estimadas **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 3 pela \"Absorção alta\" do site **[provisório]**"
+    },
+    {
+      "campos": [
+        "bloqueio"
+      ],
+      "texto": "1, pelos tentáculos; o site não gravava Bloqueio **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Tentáculo Pesado no lugar das \"Garras e presas\" de 3 dados; os quatro ataques viram a Rajada **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperanca"
+      ],
+      "texto": "4; o site tinha 2. `compaixao`: 1, o piso da régua; o site tinha 0 **[provisório]**"
+    },
+    {
+      "campos": [
+        "muco transmutador",
+        "domínio psíquico",
+        "ilusões",
+        "telepatia",
+        "preso à água"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

@@ -90,7 +90,8 @@
       "tipoDano": "fenomeno",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -110,7 +111,8 @@
       "efeito": "desliza sem ruído, atravessa paredes e portas fechadas e se achata para escoar por frestas mínimas; não agarra, não empurra e não pode ser agarrada nem empurrada; a arma comum ainda a fere, pela metade (Elementos). Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada."
     },
     {
       "nome": "Dreno de Força",
@@ -129,7 +131,8 @@
       "efeito": "suga a força de quem toca; a Força do alvo cai 1, o efeito se acumula a cada toque que pega, e a sombra se fecha com o que roubou. A Força reduzida vale nas contas que a usam, exceto PV e Absorção",
       "dano": "nenhum além do toque; −1 na Força do alvo, e ela recupera 1d6 PV",
       "resistencia": "corpo, contra a jogada do toque; quem passa não perde Força por aquele toque",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Cria sombras",
@@ -258,6 +261,82 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Dreno de Força"
+      ],
+      "texto": "Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Incorpórea"
+      ],
+      "texto": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O morto-vivo atravessa matéria e mantém sua natureza de morto-vivo."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. Restou fome, sem as lembranças ou pensamentos de quem morreu."
+    },
+    {
+      "campos": [
+        "Dreno de Força"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "sem massa; o volume do corpo de base (0,079 m³) entra no PV e nas faixas como 80 kg, como no espectro **[conta]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "4, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"vs Def. Mental\" e a Influência do site saíram; a jogada é a comum, como no espectro"
+    },
+    {
+      "campos": [
+        "dreno"
+      ],
+      "texto": "−1 de Força por toque, até um descanso completo; o \"Enfraquecido\" do site não é condição do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "reduzida à sombra"
+      ],
+      "texto": "a habilidade de escoar por frestas entrou no poder Incorpórea, e não em linha própria"
+    },
+    {
+      "campos": [
+        "dreno de força",
+        "cria sombras",
+        "deslize silencioso"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

@@ -98,7 +98,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Ferrão venenoso\" (site) e o \"Golpe planar\" de 1 dado e 5 Ticks: o ferrão de bicho pequeno, gesto rápido, Leve (`regra-construcao.md` §7). Leva o veneno (Veneno e doença). Jogada: Destreza 5 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -115,7 +116,8 @@
       "efeito": "o alvo fica Envenenado pelo veneno do diabrete (Veneno e doença), que tira força",
       "dano": "o do veneno",
       "resistencia": "corpo, pelo veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "invisibilidade",
@@ -129,7 +131,8 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: inato com uso extra pago. R1: sobrenatural porque desaparece para caçar e escapar. 1 uso grátis por cena e 1 de Energia por uso extra. valor de molde, para a bancada. A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
     },
     {
       "nome": "Adivinhação",
@@ -148,7 +151,8 @@
       "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Oráculo pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Forma alternativa",
@@ -166,14 +170,16 @@
       "efeito": "vira corvo, aranha pequena, rato ou gato preto; os números ficam os do diabrete, menos o deslocamento, que é o do bicho, e a Furtividade, que ganha +2 na forma de aranha ou de rato; na forma de bicho não fala. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Regeneração 2",
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
+      "justificativa": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: prata ou arma benta. valor de molde, para a bancada."
     },
     {
       "nome": "imune a veneno",
@@ -187,7 +193,8 @@
       "efeito": "o veneno não pega no corpo de diabo. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -285,6 +292,111 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.invisibilidade"
+      ],
+      "texto": "Antes: inato com uso extra pago. R1: sobrenatural porque desaparece para caçar e escapar. 1 uso grátis por cena e 1 de Energia por uso extra. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Forma alternativa"
+      ],
+      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Adivinhação"
+      ],
+      "texto": "Base Oráculo pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Regeneração 2"
+      ],
+      "texto": "Só o dano da fraqueza fica fora da recuperação natural, como a ferida descrita na ficha. Fraqueza: prata ou arma benta. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.invisibilidade"
+      ],
+      "texto": "A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Ferrão venenoso"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.imune a veneno"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Ferrão venenoso"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Adivinhação"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Forma alternativa"
+      ],
+      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 8 Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "3,6 kg, a do site, com a altura do site (fator de forma 1,21 sobre os 2,96 kg do corpo de base); a regra do lote (a altura manda) e a do quasit dão o mesmo corpo **[conta]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "**17 antes, 6 depois**. O site dava 17; a tabela de PV pela massa dá 5 + 2 ÷ 2 = 6. A massa está na zona de transição (3 a 5 kg) e a faixa de cima daria 12; fica a de baixo, como o quasit, porque o corpo de 3,6 kg não é robusto **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperanca"
+      ],
+      "texto": "4, e não 1, pelo texto do site (\"paciente\"); `compaixao` 0 sobe a 1, o piso da régua **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +4 corte\", dano médio 7,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: o ferrão fica Leve, o gesto rápido de bicho pequeno, como os 5 Ticks do site. Dano médio: 7,5 antes; depois, 5,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "sem id no catálogo; os números são provisórios, os do quasit com a Força **[provisório]**"
+    },
+    {
+      "campos": [
+        "adivinhação",
+        "forma alternativa"
+      ],
+      "texto": "números da ficha com as bases do site (D-197). A Fascinação 1 do site ficou sem poder próprio; a invisibilidade, sem base, ficou sem regra ainda, como no quasit"
+    },
+    {
+      "campos": [
+        "Regeneração 2"
+      ],
+      "texto": "Antes: 1 PV/6 Ticks passivos."
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.dieta",

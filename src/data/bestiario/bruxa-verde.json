@@ -112,7 +112,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7); as duas mãos fazem par (Manobras). A Centelha soma inteira. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -135,7 +136,8 @@
       "efeito": "quem falha fica com a Força um nível abaixo, com o dano e o peso que vêm dela; cada toque que pega desce mais um, até Força 1. A Força reduzida vale nas contas que a usam, exceto PV e Absorção",
       "dano": "nenhum além do golpe",
       "resistencia": "corpo, Vigor + Resistência contra a jogada do toque",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Disfarce ilusório",
@@ -154,7 +156,8 @@
       "efeito": "parece uma velha camponesa inofensiva ou uma donzela bela (a Variante \"disfarce\"); quem toca ou desconfia e testa vê através",
       "dano": "nenhum",
       "resistencia": "Influência + Manha da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Rosto Emprestado pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Feitiços de maldição",
@@ -196,7 +199,8 @@
       "classe": "livro",
       "categoria": "inato",
       "ataque": "Garras",
-      "regra": "empunhadura-dupla"
+      "regra": "empunhadura-dupla",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -286,6 +290,82 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Garras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Disfarce ilusório"
+      ],
+      "texto": "Base Rosto Emprestado pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Toque da fraqueza"
+      ],
+      "texto": "Base Definhar pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "Toque da fraqueza"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Disfarce ilusório"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Feitiços de maldição"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. As opções compartilham os usos grátis. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "formas"
+      ],
+      "texto": "forma verdadeira e disfarce (D-201) **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparência"
+      ],
+      "texto": "2 na forma verdadeira, 8 no disfarce; o site tinha 8 **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixão"
+      ],
+      "texto": "1; o site tinha 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "mímica de voz",
+        "sentidos do pântano"
+      ],
+      "texto": "Especialidades naturais no teto; o site dava +3d6 e +2d6"
+    },
+    {
+      "campos": [
+        "toque da fraqueza",
+        "disfarce ilusório",
+        "feitiços de maldição",
+        "fôlego anfíbio"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; o Toque da fraqueza e as Garras só na forma verdadeira, porque o disfarce acaba quando ela ataca; o resto em todas, porque o disfarce é ilusão sobre o mesmo corpo; a velha do brejo em todas, porque a linha já conta a troca; a Camuflagem do disfarce na linha dele em Variantes. Aptidões iguais e nenhuma Arte **[provisório]**"
+    }
+  ],
   "revisao": [
     {
       "campo": "aparencia",

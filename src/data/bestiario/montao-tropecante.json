@@ -93,7 +93,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (2 dados, 6 Ticks, impacto): os dois braços descem juntos, um golpe só por ação, Pesado pelo peso que levam. Golpe de membro: Força × 1. Centelha 0: nada a somar. Jogada: Força 7 + Briga 5"
     }
   ],
   "habilidadesEspeciais": [
@@ -124,7 +125,8 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro",
       "dano": "o das Duas pancadas",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "um alvo agarrado por vez. Sem custo"
+      "limiteDeUso": "um alvo agarrado por vez. Sem custo",
+      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
     },
     {
       "nome": "Constrição",
@@ -153,7 +155,8 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
+      "justificativa": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -235,6 +238,75 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Agarra no golpe"
+      ],
+      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Engolir"
+      ],
+      "texto": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "centelha"
+      ],
+      "texto": "0, a do campo (§17); a nota da fonte dizia 1 pelo Absorve raio"
+    },
+    {
+      "campos": [
+        "largura",
+        "profundidade"
+      ],
+      "texto": "1,6 × 1,1 m, tiradas da massa do site **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "7, abaixo da referência da massa (9,2), porque a massa não é músculo **[comparação]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 pela casca vegetal **[provisório]**"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "2, a da nota do site; o campo tinha 1"
+    },
+    {
+      "campos": [
+        "proezaFutura"
+      ],
+      "texto": "o site guarda `sangue-imune` e `agarrao-do-urso` para depois; a ficha não as usa"
+    },
+    {
+      "campos": [
+        "absorve raio",
+        "agarra no golpe",
+        "constrição"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`agarra no golpe` (Fase 5, F5.34, D-263, 29/10/2026): o escape segue a D-081, \"o agarrado não age, não rola, e só se solta quando quem controla erra\". Antes: Resistência: corpo, para escapar, pela jogada de Agarrar do livro contra a Força 7 + Briga 5 dele"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

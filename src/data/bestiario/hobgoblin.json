@@ -79,7 +79,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). Jogada: Destreza 4 + Armas 3"
     }
   ],
   "habilidadesEspeciais": [
@@ -95,7 +96,8 @@
       "efeito": "Soma +1 na Defesa e ignora o −2 de Flanqueado apenas pelo lado coberto pelo aliado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -171,6 +173,39 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Disciplina militar"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "espada longa do livro, sem armadura **[provisório]**"
+    },
+    {
+      "campos": [
+        "armas",
+        "bloqueio"
+      ],
+      "texto": "3 e 2; o site tinha só Briga 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "temperanca"
+      ],
+      "texto": "3; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "disciplina militar"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

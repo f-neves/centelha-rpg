@@ -83,7 +83,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Classe pelo gesto, sem usar Destreza no dano; jogada 22 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -206,6 +207,26 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Animar árvores"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "corpo"
+      ],
+      "texto": "Antes: só as medidas publicadas, sem silhueta calculada."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

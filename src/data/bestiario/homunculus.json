@@ -97,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Arma\" do site (1 dado, corte, 5 Ticks) é a mordida, que manifesta o sono mágico (P3, Ferrão sonífero): bote rápido, Leve (`regra-construcao.md` §7). O tipo passa a Perfuração, porque são presas. Jogada: Destreza 4 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -113,7 +114,8 @@
       "efeito": "Pequeno: asas abertas. Miúdo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Pequeno (asas abertas) e Miúdo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Ferrão sonífero",
@@ -128,7 +130,8 @@
       "efeito": "Depois do acerto físico, faça a jogada separada do poder de mente. Se ela vencer a Defesa Mental e o alvo não recusar pelo Resistir, ele fica Dormindo (Defesa Física 0) por 5 minutos. Qualquer dano o acorda. Um aliado também pode acordá-lo gastando uma ação de Velocidade 5 para sacudi-lo",
       "dano": "o da Mordida",
       "resistencia": "Influência + Ocultismo do homúnculo contra a Defesa Mental do alvo, com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Antes: Influência 1 + Briga 3 para o sono. Agora: Influência 1 + Ocultismo 3 contra Defesa Mental, com o Resistir (R19 e R5). Briga resolve apenas o acerto físico; o sono exige sua própria jogada mental depois dele, como no aboleth. A Mordida acerta fisicamente. Ocultismo resolve o sono contra a Defesa Mental. Dormindo zera a Defesa Física."
     },
     {
       "nome": "Vínculo telepático",
@@ -238,6 +241,64 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Ferrão sonífero"
+      ],
+      "texto": "Antes: Antes: Influência 1 + Briga 3 para o sono. Agora: Influência 1 + Ocultismo 3 contra Defesa Mental, com o Resistir (R19 e R5). Briga resolve apenas o acerto físico; o sono exige sua própria jogada mental depois dele, como no aboleth. A Mordida acerta fisicamente. Ocultismo resolve o sono contra a Defesa Mental. Dormindo zera a Defesa Física."
+    },
+    {
+      "campos": [
+        "habilidades.ocultismo"
+      ],
+      "texto": "Antes: não declarado. Agora: Ocultismo 3, proposto para a manifestação mágica do servo e para conservar a potência numérica enquanto se corrige a Habilidade; não usa Briga nem Integridade para atacar a mente."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Pequeno (asas abertas) e Miúdo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. Corpo fabricado ou animado; herda C-002."
+    },
+    {
+      "campos": [
+        "Ferrão sonífero"
+      ],
+      "texto": "**[provisório]** P3. Manifestação mágica do construto. Um uso grátis por cena permite o ataque de abertura. A Velocidade conserva a do sopro ou da Mordida. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "altura"
+      ],
+      "texto": "0,54 m, tirada dos 3 kg do site e da densidade da argila do golem de argila (1.442 kg/m³) **[conta]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Pequeno de asas abertas (0,14 m², pela proporção da asa do morcego) e Miúdo pousado; o site dizia Miúdo **[provisório]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "5, na zona de transição, pela faixa de baixo (corpinho de argila); pela de cima seria 11 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ferrão sonífero",
+        "vínculo telepático",
+        "eco de dano"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Ferrão sonífero",

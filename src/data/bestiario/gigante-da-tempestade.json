@@ -87,7 +87,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A do site (3 dados, impacto, 7 Ticks): o punho de um gigante de 7,5 m com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; o terceiro dado sai, porque a Pesada vai a 2 dados. O raio vem pela Fúria do raio (Manobras). Jogada: Força 13 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -108,7 +109,8 @@
       "efeito": "convoca ou dissipa uma tempestade: nuvens carregadas, ventania, raios caindo ao acaso, a critério do Mestre",
       "dano": "o dos raios ao acaso, a critério do Mestre",
       "resistencia": "nenhum",
-      "limiteDeUso": "uma vez por dia. Limite fixo, sem uso extra nem ampliação"
+      "limiteDeUso": "uma vez por dia. Limite fixo, sem uso extra nem ampliação",
+      "justificativa": "Base Tempestade pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Relâmpago em cadeia",
@@ -127,7 +129,8 @@
       "efeito": "um relâmpago sai das mãos dele e salta de um alvo para o próximo",
       "dano": "4d6 + Centelha, raio, no primeiro; 2d6 + Centelha, raio, em cada um dos outros",
       "resistencia": "esquiva, contra Dificuldade 14 (10 + Centelha 4); quem passa leva metade",
-      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Corrente pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Respirar água",
@@ -146,7 +149,8 @@
       "efeito": "respira água como quem respira ar, sem esforço nem limite de tempo, e nada sem penalidade (site, Anfíbio)",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Base Bolha de Ar pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Fúria do raio",
@@ -183,7 +187,8 @@
       "classe": "livro",
       "ataque": "Pancada descomunal",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -263,6 +268,102 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Respirar água"
+      ],
+      "texto": "Base Bolha de Ar pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Relâmpago em cadeia"
+      ],
+      "texto": "Base Corrente pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Comandar o clima"
+      ],
+      "texto": "Base Tempestade pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Comandar o clima"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Proponho um porta-voz da comunidade e o compromisso de dar abrigo. O preparo a céu aberto conserva os dez minutos de concentração da ficha."
+    },
+    {
+      "campos": [
+        "Relâmpago em cadeia"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "5.772 kg pelo cubo da altura do site, como o gigante da colina; o site dizia 11 t (D-187) **[conta]**"
+    },
+    {
+      "campos": [
+        "centelha"
+      ],
+      "texto": "4, o campo do site; a nota da fonte dizia 2 (§17)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "4, a da nota do site; o campo dizia 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "a Pancada de 3 dados vira Pesada de 2 dados (perda de mecânica publicada, no relato) **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "2, pele grossa de gigante **[provisório]**"
+    },
+    {
+      "campos": [
+        "elementos"
+      ],
+      "texto": "imune a raio pela habilidade publicada"
+    },
+    {
+      "campos": [
+        "traços"
+      ],
+      "texto": "a cor da pele e do cabelo é leitura da ficha; o site não a descreve **[provisório]**"
+    },
+    {
+      "campos": [
+        "comandar o clima",
+        "relâmpago em cadeia",
+        "respirar água",
+        "fúria do raio",
+        "presença régia"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",

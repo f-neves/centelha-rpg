@@ -92,7 +92,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mão nua de quem não sabe brigar (`regra-construcao.md` §7, a classe Leve). A Centelha soma inteira. Jogada: Destreza 3 + Briga 0. O \"Toque mórbido (Morte 1)\" do site é Arte e não entra nesta tabela (D-196): é o Dreno, nas Manobras"
     }
   ],
   "habilidadesEspeciais": [
@@ -104,7 +105,8 @@
         "id": "morte",
         "nivel": 1
       },
-      "categoria": "magia"
+      "categoria": "magia",
+      "justificativa": "A ação reproduz a Arte indicada na ficha."
     },
     {
       "nome": "Maldição do apodrecer",
@@ -114,7 +116,8 @@
         "id": "morte",
         "nivel": 2
       },
-      "categoria": "magia"
+      "categoria": "magia",
+      "justificativa": "A ação reproduz a Arte indicada na ficha."
     },
     {
       "nome": "Podridão",
@@ -124,7 +127,8 @@
         "id": "morte",
         "nivel": 1
       },
-      "categoria": "magia"
+      "categoria": "magia",
+      "justificativa": "A ação reproduz a Arte indicada na ficha."
     },
     {
       "nome": "Ritual da morte",
@@ -142,14 +146,16 @@
       "efeito": "Prepara o cadáver. Para erguê-lo é preciso Morte 4 ou poder de grau igual",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana",
+      "justificativa": "Morte 4 é o mínimo para animar o cadáver. O grau de Morte registrado determina se o ritual apenas prepara o cadáver. valor de molde, para a bancada."
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
+      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -216,6 +222,62 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sem inimizades naturais"
+      ],
+      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Podridão"
+      ],
+      "texto": "A ação reproduz a Arte indicada na ficha."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Maldição do apodrecer"
+      ],
+      "texto": "A ação reproduz a Arte indicada na ficha."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Drenar vida"
+      ],
+      "texto": "A ação reproduz a Arte indicada na ficha."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Ritual da morte"
+      ],
+      "texto": "Morte 4 é o mínimo para animar o cadáver. O grau de Morte registrado determina se o ritual apenas prepara o cadáver. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Ritual da morte"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1 e Convicção 4; o site tinha 2 e 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "maldição do apodrecer"
+      ],
+      "texto": "o Definhar do livro; o \"Abalado\" do site sai (perda anotada no relato)"
+    },
+    {
+      "campos": [
+        "ritual da morte"
+      ],
+      "texto": "sem regra ainda; o Servo de Ossos é Morte 4"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

@@ -93,7 +93,8 @@
       "efeito": "Toxina de anfíbio. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     }
   ],
   "comoLuta": [],
@@ -153,6 +154,120 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "Antes: veneno sem id no catálogo (bufotoxina), via ingerido ou mucosa; a regra do toque do catálogo serve quando houver id (D-112) O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Toxina de anfíbio"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "anfíbio saltador, anatomia provisória (D-175), não calibrada em animal medido"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): sem dente nem garra, não fere nem segura um humano pela força"
+    },
+    {
+      "campos": [
+        "dimensoes.comprimento"
+      ],
+      "texto": "12,5 cm (Wikipédia, 10 a 15 cm); a ADW dá 15 a 23,8 cm. Com 15 cm, a área continua abaixo do começo da escala e o Alvo não muda (D-174)"
+    },
+    {
+      "campos": [
+        "dimensoes.altura",
+        "dimensoes.largura"
+      ],
+      "texto": "estimadas sem fonte (D-147, D-174)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "3, pela resistência medida à seca e ao calor e pela vida longa; a seca vai também na Resistência (seca) +3 natural (decisão 10, D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a perda de 52,6% da água e a faixa de 10 a 42 °C, que sustentam o Vigor 3 e a Especialidade natural, continuam só pela Wikipédia; não houve cota de busca para a fonte primária (D-174)"
+    },
+    {
+      "campos": [
+        "atributos.compostura"
+      ],
+      "texto": "1 pela diretriz 1 (não social, solitário por comparação); era 2 pela espera parada. Se o autor quiser a espera do bicho de emboscada na Compostura de animal solitário, ela volta a 2, e a Defesa Social volta a 12 e a Energia a 5 (D-174)"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "2, animal comum, sem feito de força medido; provisória (decisão 12, D-174). Era sem linha"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2, o normal da espécie (diretriz 2); o levantamento propunha 3 com a seca dentro, e a seca está na Especialidade natural +3, que é o caso de \"uma coisa só\" (D-174)"
+    },
+    {
+      "campos": [
+        "especialidadesNaturais.seca"
+      ],
+      "texto": "+3 pela perda de 52,6% da água, medida; era \"desidratação +2\" no limite do livro. O levantamento a punha em Sede 1 pelo teto do livro; como natural, o teto é +3 (decisão 3 da quarta rodada, D-174)"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "3 (em vigor na Etapa 2, 20/10/2026); antes: 8 pela decisão 21 (5 + Vigor); a outra proposta do autor dá 11; era 18 (D-132, D-169)"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "0,33 kg (em vigor na Etapa 2, 20/10/2026); antes: 0,29 kg pela decisão 14, provisório: é o valor da curva no piso da Força de referência 0, quase três vezes o corpo de 106 g, sem feito que o confirme; era cerca de 5 g (D-162)"
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): a frente da invasão australiana avançava 40 km por ano em 1994 e cerca de 60 km por ano em 2014 na frente oeste, com os sapos da frente de pernas mais longas (Phillips e Shine 2006 e outros, pela Wikipédia) **[medido]**. É a dispersão da população, e não o quanto um sapo anda por dia; a distância diária de um sapo não foi achada."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "`massa` (quinta rodada): 0,115 kg (em vigor na Etapa 2, 20/10/2026); antes: 106 g da ADW, conferida com as amostras de campo da Austrália (de 70 a 135 g de média); o 500 a 800 g de Guinness e zoológicos fica de fora, sem amostra. Falta o artigo de Ishigaki aberto, com os gramas por sexo"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada pela decisão 23, com o 0,4 do Miúdo no Minúsculo: 8 km/h, sem velocidade real de um sapo; parece alta para quem anda em saltos curtos (D-170, D-175)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a massa de 106 g segue pela ADW; o comprimento de 12,5 cm continua só pela Wikipédia (10 a 15 cm), contra 15 a 23,8 da ADW; procurado na ADW e na Wikipédia (D-174)"
+    },
+    {
+      "campos": [
+        "comportamento.atividade",
+        "comportamento.social"
+      ],
+      "texto": "noturno e solitário por comparação, sem frase conferida; a Furtividade 2 e a Compostura 1 dependem deles (D-174)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.furtividade",

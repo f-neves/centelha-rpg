@@ -103,7 +103,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe rápido de membro, como o talão da águia-real e as garras do grifo: Leve (`regra-construcao.md` §7). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Bico",
@@ -119,7 +120,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico em gancho do tamanho de uma cabeça de cavalo, com o pescoço atrás: Média, como o bico do grifo e do roc; bico grande em N1 . Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Garras em mergulho",
@@ -135,7 +137,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -151,7 +154,8 @@
       "efeito": "Enorme: de baixo, asas abertas. Grande: de lado, asas fechadas, pousada. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, asas fechadas, pousada). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "agarrar",
@@ -159,7 +163,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "mergulho predatório",
@@ -168,7 +173,8 @@
       "ataque": "Garras em mergulho",
       "categoria": "inato",
       "regra": "investida",
-      "texto": "só descendo"
+      "texto": "só descendo",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "erguer e levar",
@@ -183,7 +189,8 @@
       "efeito": "Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade erguer e levar. Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha. valor de molde, para a bancada."
     },
     {
       "nome": "nobreza selvagem",
@@ -197,7 +204,8 @@
       "efeito": "Ignora medo imposto por criatura de Tamanho menor que o seu. Tamanho igual não basta. O Abalado de golpe social ou corporal continua valendo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Sentidos Apurados",
@@ -207,7 +215,8 @@
         "id": "sentidos-apurados",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Multiataque",
@@ -221,7 +230,8 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -297,6 +307,98 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sentidos Apurados"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.mergulho predatório"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.erguer e levar"
+      ],
+      "texto": "Aplicação à capacidade erguer e levar. Pode decolar com a presa agarrada até metade do peso que ergue. Com a presa, voa a metade da Batalha. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Enorme (de baixo, asas abertas) e Grande (de lado, asas fechadas, pousada). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.nobreza selvagem"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [],
+      "texto": "`massa`, exceção à regra de altura e massa do lote: fica a massa do site (180 kg), e as medidas saem dela pela águia-real. Antes, no site: 1,2 m de altura, 4,5 m de envergadura, Grande. Depois: 2,82 m pousada, 6,79 m de envergadura, Enorme em voo e Grande pousada. Pela altura do site seriam 14 kg, e a Força 6 do site e do Pathfinder não caberia **[conta]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Grande para Enorme em voo (9,68 m²), pelo método do grifo; em jogo, o humano ganha +6, e não +3, contra ela no ar **[provisório]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "50 para 40. A tabela de PV pela massa dá 25 + 3 × 5 a 180 kg, fora da zona de transição; o site tinha 50 **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +7 perfurante\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 14 antes; depois, garras 8,5, bico 10,5, garras em mergulho 20,0 (só descendo) **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 7, a da águia-real (D-205)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "2 para 3, o das notas do site e do Pathfinder"
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: O \"mergulho predatório\" do site: só ao fim de um mergulho, com a massa do corpo inteiro descendo sobre a presa (× 2, a exceção do roc e do grifo, manual 7.6). Jogada: Força 6 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 20 para 14; Investida 20, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [
+        "terra"
+      ],
+      "texto": "sem número para 1/2/3 m por Tick (Batalha/Arranque/Corrida), provisório, pelos saltos em terra. Voo preservado."
+    }
+  ],
   "revisao": [
     {
       "campo": "ataques.Bico.nivelPerfuracao",

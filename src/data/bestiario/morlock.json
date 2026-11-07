@@ -96,7 +96,8 @@
   "ataques": [
     {
       "nome": "Bastão",
-      "arma": "bastao"
+      "arma": "bastao",
+      "justificativa": "A arma do livro (`armas.json`, `bastao`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★I. A Centelha soma inteira. Jogada: Destreza 5 + Armas 2 + 2 × o menor entre Centelha 2 e Armas 2 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -154,7 +155,8 @@
       "efeito": "toxinas e pragas não o pegam. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Golpe na brecha",
@@ -168,7 +170,8 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo"
+      "limiteDeUso": "uma vez por ação, sem custo",
+      "justificativa": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -235,6 +238,47 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Golpe na brecha"
+      ],
+      "texto": "Bônus anterior +1d6 no dano do golpe passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imune a veneno e doença"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "raça parente"
+      ],
+      "texto": "Humano (D-207); o traço social do Humano não vale, pelo texto do site"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "bastão do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1 e Temperança 1; o site tinha 2 e 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque furtivo",
+        "salto certeiro",
+        "luta em enxame",
+        "cego pela luz"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

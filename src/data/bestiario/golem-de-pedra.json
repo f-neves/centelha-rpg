@@ -87,7 +87,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O soco que pede o corpo atrás: Média (`regra-construcao.md` §7), golpe de membro, Força × 1. A Centelha soma inteira no dano. A D-066 manda rever o ataque e a defesa dos golens com a regra das armas naturais: o punho de pedra bloqueia como arma. Jogada: Força 10 + Briga 4 + 2 × o menor entre Centelha 3 e Briga 4 = 6"
     }
   ],
   "habilidadesEspeciais": [
@@ -97,7 +98,8 @@
       "classe": "livro",
       "ataque": "Punho de pedra",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "derrubar",
@@ -105,7 +107,8 @@
       "classe": "livro",
       "ataque": "Punho de pedra",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "empurrar",
@@ -113,7 +116,8 @@
       "classe": "livro",
       "ataque": "Punho de pedra",
       "categoria": "inato",
-      "regra": "empurrar"
+      "regra": "empurrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "onda de lentidão",
@@ -132,7 +136,8 @@
       "efeito": "O alvo fica Retardado pelo efeito da onda",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Grau 1 de tempo, alcance 9 m, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada. Base Passo Lento pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "imune à magia",
@@ -146,7 +151,8 @@
       "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Uma Arte que molda pedra pode deixá-lo Retardado ou restaurar o corpo, conforme o efeito usado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -225,6 +231,110 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.onda de lentidão"
+      ],
+      "texto": "Antes: Grau 1 de tempo, alcance 9 m, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada. Base Passo Lento pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.empurrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.imune à magia"
+      ],
+      "texto": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. Corpo fabricado ou animado; herda C-002."
+    },
+    {
+      "campos": [
+        "onda de lentidão"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "900 kg, a publicada (D-187), o alto da faixa da conta pelo corpo de base da D-192 (1,80 m, 80 kg, 0,079 m³) e pelo granito de referência (720 a 900 kg). Com o corpo de base de 1,75 m (D-190) a faixa era de 734 a 917 kg, e no lote 1, pelo soldado, o meu número era 956 kg. A Faixa, a linha de PV e o Tamanho não mudam. A largura e o Espaço passaram de 0,91 × 0,46 m (o soldado escalado) para 0,84 × 0,35 m (os ombros e o tronco do boneco, sem os braços), e a área de 2,02 para 2,03 m²"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "6 por julgamento (pedra maciça); o site tinha 1. Com Vigor 1 o PV seria 34 e o Impacto 4 **[provisório]**"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "10, a do site, igual à do elefante **[provisório]**"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "3, julgada pelo material e pela forma (manual 3.5, décima atualização do pacote: \"O golem do lote 1 já fez assim e não muda\"). Com 4 o Peso erguido iria a 1.770,80 kg; com 2, a 1.194,69 kg"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "9, o primeiro nível sem referência na escala. O autor ainda não deu exemplo de criatura sobrenatural na escala **[provisório]**"
+    },
+    {
+      "campos": [
+        "atributos sociais",
+        "vontade",
+        "virtudes"
+      ],
+      "texto": "sociais em 1, Vontade 3 e Virtudes pelo método do animal, decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
+    },
+    {
+      "campos": [
+        "fraqueza do material"
+      ],
+      "texto": "a C-002 diz que o golem herda a fraqueza do material (`lib-materiais.mjs`, fora do pacote). O livro diz que pedra resiste a fogo (Elementos), e não dá fraqueza à pedra. A ficha não põe fraqueza"
+    },
+    {
+      "campos": [
+        "centelha"
+      ],
+      "texto": "3, a publicada. O manual não diz como medir a Centelha de um construto (a magia é do criador, e não dele) **[provisório]**"
+    },
+    {
+      "campos": [],
+      "texto": "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 9, Corte e Perfuração 3) passa sem mudança"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

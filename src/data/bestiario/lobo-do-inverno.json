@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de lobo: Média, como a do lobo atroz. O frio da mordida vai nas Manobras. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Sopro gélido",
@@ -119,7 +120,8 @@
       "tipoDano": "gelo",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância, como o sopro do cão infernal. Os números são da ficha, descritos na linha do sopro nas Manobras. Sem jogada de ataque."
     }
   ],
   "habilidadesEspeciais": [
@@ -144,7 +146,8 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Sopro gélido",
@@ -164,7 +167,8 @@
       "efeito": "um vento congelante que cobre o chão de geada. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, gelo",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -256,6 +260,90 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Sopro gélido"
+      ],
+      "texto": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sopro gélido"
+      ],
+      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Base Sopro do Norte pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 7. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Sopro gélido"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "200 kg, a do site, com a cernelha do site (fator 0,82 sobre os 244 kg do lobo atroz escalado). A Faixa (3) e o PV (54) ficam os do site **[conta]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Grande para Médio, pela área do lobo de 1,35 m de cernelha (1,13 m²). Em jogo: o humano perde os +3 de acerto que tinha contra ele **[provisório]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "na zona de transição, subiu (robusto). Descendo seria 43 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +11 perfurante\", 6 Ticks, dano médio 18). A ficha fica com a mordida, Média, a do lobo atroz, e o frio vai na Mordida congelante. Dano médio: 18 antes; depois, mordida 14,5, mais 1d6 de gelo (média 3,5): 18 com o frio, sem mudança **[provisório]**"
+    },
+    {
+      "campos": [
+        "sopro gélido"
+      ],
+      "texto": "poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "imune ao gelo, sensível ao fogo"
+      ],
+      "texto": "imunidade a Gelo e fraqueza a Fogo, pela linha Elementos"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 4 (D-205)"
+    },
+    {
+      "campos": [],
+      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
+    }
+  ],
   "revisao": [
     {
       "campo": "couraca",
@@ -263,7 +351,7 @@
     },
     {
       "campo": "ataques.Sopro gélido",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\""
+      "motivo": "Antes: jogada de ataque na tabela. R36: Sem jogada de ataque, pois o efeito ocupa a área descrita nas Manobras. Cada alvo resolve a defesa de área.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; poder natural com números da ficha (D-197), base Gelo 3 (a Rajada Gélida, cone de 2d6); o site dava \"dano de frio pesado, metade com um teste de Vigor\""
     },
     {
       "campo": "corpo.area",

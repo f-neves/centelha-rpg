@@ -93,7 +93,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O pseudópode bate com o peso do braço de carne, Médio (`regra-construcao.md` §7). Gruda em quem acerta (Manobras). Jogada: Força 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Mordida",
@@ -109,7 +110,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (\"Garras e presas\", 1 dado, 5 Ticks, perfurante): os dentes da boca que se abre onde seria a tampa, bote rápido, Leve. Jogada: Força 5 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -125,7 +127,8 @@
       "efeito": "parece um baú, uma porta ou um móvel comum da massa dele; quem olha precisa vencer a Furtividade dele, com a Especialidade natural (disfarçado de objeto) +3, com Prontidão para notar o engano. Use o perfil declarado da forma. O equipamento só acompanha quando o poder disser",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Velocidade 8 pela transformação. valor de molde, para a bancada."
     },
     {
       "nome": "Cola aderente",
@@ -140,7 +143,8 @@
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, resolve Agarrar normalmente, com as travas de massa e sem uma ação separada. Manutenção e saída seguem o agarrão do livro. A adesão de uma arma que toca o corpo segue a regra da cola",
       "dano": "nenhum",
       "resistencia": "pela manobra Agarrar",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
     },
     {
       "nome": "Golpe na brecha",
@@ -154,7 +158,8 @@
       "efeito": "Explora o ponto vital. Quem ignora dano extra de ponto vital ignora esse acréscimo",
       "dano": "+1d6 no dano do golpe",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por ação, sem custo"
+      "limiteDeUso": "uma vez por ação, sem custo",
+      "justificativa": "Bônus anterior +2d6 ao da Mordida passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -226,6 +231,86 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Assumir forma de objeto"
+      ],
+      "texto": "Velocidade 8 pela transformação. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Cola aderente"
+      ],
+      "texto": "O ferimento de pelo menos 1 PV permite tentar a manobra com sua defesa normal. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Golpe na brecha"
+      ],
+      "texto": "Bônus anterior +2d6 ao da Mordida passa a +1d6 no primeiro ferimento por ação, pela abertura na guarda. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil mole, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Assumir forma de objeto"
+      ],
+      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6, com uma hora de preparo para mudar de objeto -> uma ação, Velocidade 8, com uma hora de preparo para mudar de objeto Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campos": [
+        "Cola aderente"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "medidas"
+      ],
+      "texto": "os 1,2 m \"de altura\" do site lidos como comprimento do baú **[conta]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Pseudópode Médio e Mordida Leve no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "proezaFutura"
+      ],
+      "texto": "o site guarda o caminho \"camaleao\" para uma Proeza futura; fica como está"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "1, o piso da régua; o site tinha 0"
+    },
+    {
+      "campos": [
+        "assumir forma de objeto",
+        "cola aderente",
+        "mordida de emboscada"
+      ],
+      "texto": "números sugeridos pela ficha (D-197); a cola usa os 3 por cena e a recarga de 1 hora do site"
+    },
+    {
+      "campos": [],
+      "texto": "`cola aderente` (Fase 5, F5.34, D-263, 29/10/2026): o escape segue a D-081, \"o agarrado não age, não rola, e só se solta quando quem controla erra\". Antes: para se soltar, Força ou Atletismo contra a mesma jogada, uma tentativa por ação"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

@@ -89,7 +89,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A rã abocanha e engole inteira; dentes não achados nas fontes lidas, então Impacto, e não Perfuração (ver Notas). Leve: o bote rápido da boca (seção 7). Não muda: a Força continua 3 (3,5 − 2 + 3 = 4,5)."
     },
     {
       "nome": "Língua",
@@ -105,7 +106,8 @@
       "tipoDano": "nao-se-aplica",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
     }
   ],
   "habilidadesEspeciais": [
@@ -114,7 +116,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "língua",
@@ -144,7 +147,8 @@
       "efeito": "Se a presa couber no peso que arrasta, recolhe-a até metade da Batalha enquanto mantém a captura, sem novo teste de escape",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
     },
     {
       "nome": "engolir",
@@ -159,7 +163,8 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 5 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "1d6 de Impacto uma vez a cada 6 Ticks",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
+      "justificativa": "1d6 de Impacto por 6 Ticks e ferida de 5 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [],
@@ -223,6 +228,131 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.puxão"
+      ],
+      "texto": "Metade da Batalha e limite do peso arrastado para recolher a presa. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.engolir"
+      ],
+      "texto": "1d6 de Impacto por 6 Ticks e ferida de 5 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o 1,8 m de comprimento total do site, Pequeno (0,29 m²), dois portes acima da rã-golias de base (Minúscula, 0,023 m² no mesmo modo). A base está 23% abaixo do corte do Miúdo, pela largura estimada; se ela for Miúda, o gigante passa ao Médio (1,20 m de corpo, 159,5 kg) (D-174)"
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "anfíbio saltador, anatomia provisória (D-175), não calibrada em animal medido"
+    },
+    {
+      "campos": [
+        "escala"
+      ],
+      "texto": "gigante da D-105, escala × 3,56 da rã-golias típica (50,57 cm de comprimento total e 0,947 kg, os dois sexos de Camarões), até os 1,8 m do site lidos como comprimento total com as pernas esticadas. Era × 5,52 sobre o corpo, com o 1,20 m que os lotes antigos tinham escolhido para dar o porte Médio. Tudo **[extrapolação]** (D-105, D-174; `pedido-v6-site.md`)"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "42,7 kg, contra 90 da ficha antiga (1,8 m); na proporção do animal real, 90 kg dão cerca de 2,3 m de comprimento total, e 1,8 m de corpo dariam cerca de 540 kg. Era 159,5 kg, e antes 192 (D-105, D-174)"
+    },
+    {
+      "campos": [
+        "dimensoes.comprimento"
+      ],
+      "texto": "a razão entre o comprimento total e o rostro-cloacal sai da regressão da mesma amostra da base (comprimento total = 2,245 × rostro-cloacal + 1,791 cm, N = 139, Moumegni Monthe e colegas 2023), que não diz como o total foi medido; Colgan 1982 (pela Wikipédia) dá razão parecida nos maiores (pouco mais de 80 cm no total; 34,0 e 35,6 cm de corpo nos maiores verificados, exemplares diferentes: cerca de 2,2 a 2,4, [comparação])"
+    },
+    {
+      "campos": [
+        "dimensoes.altura",
+        "dimensoes.largura"
+      ],
+      "texto": "estimadas no animal real (0,12 e 0,15 m), sem fonte, e escaladas; a largura decide a área (D-147, D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a largura (0,15 m) e a altura (0,12 m) do animal real continuam só pela estimativa (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: o Vigor 2 da base continua sem dado de resistência; a ADW diz que a vida da rã-golias \"não é bem documentada\" (D-174)"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "3, fixada (v3). Na conta nova do peso erguido o feito do ninho (cerca de 26 kg no gigante de 42,7 kg) não separa a Força 2 (149,2 kg) da 3 (181,6 kg); a 3 fica pela D-176 e pela falta de arma além da boca. O artigo do feito não abriu, e o número vem do comunicado da editora (D-158, D-174)"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "3, robusta pelas pernas de salto e pelo feito do ninho (pedra de 2 kg com 3,3 kg de corpo), provisória (decisão 12, D-174). Era 0"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "181,64 kg pela decisão 14, provisório, com 42,7 kg; era 339,92 kg com 159,5 kg, 369,12 kg com 192 kg, e 143 antes (D-162). O salto vem da Musculatura, que entra no E (D-174)"
+    },
+    {
+      "campos": [
+        "atributos.compostura"
+      ],
+      "texto": "1 pela diretriz 1 (não social); era 2 pela espera parada. Se o autor quiser a espera do predador de emboscada na Compostura de animal solitário, ela volta a 2 (D-174)"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2, o normal da espécie, **[extrapolação]**; falta o tempo submerso do adulto e qualquer dado de fome ou de ferida (D-174)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "3, revisto na oitava rodada pelo corpo e pela massa, e fica: o mínimo da D-176 sobre a rã-golias de base (2); anfíbio de pele nua de 42,7 kg, ao lado do lobo (50 kg, 3) e do varano (47,5 kg, 3) (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "`massa` (sexta rodada, com o tamanho do site): base típica de 0,947 kg com 0,2173 m rostro-cloacais e 0,5057 m de comprimento total (machos 1.082,33 g e 22,35 cm, fêmeas 812,12 g e 21,11 cm; Moumegni Monthe e colegas 2023, 139 rãs de Moungo, Camarões) × (1,80 ÷ 0,5057)³ = 42,7 kg **[extrapolação]**. Antes, com o 1,20 m de corpo, 159,5 kg; na quinta rodada, a base de 3 kg da rã grande × 4³ = 192 kg. A faixa da base (0,6 a 3,25 kg) e os sexos da AmphibiaWeb (Sabater-Pi 1985) vieram de resumo de busca, porque a página pede verificação humana"
+    },
+    {
+      "campos": [
+        "velocidade.terra"
+      ],
+      "texto": "25 km/h, alto para uma rã; congelada pela decisão 23 (D-170)"
+    },
+    {
+      "campos": [
+        "velocidade.nado"
+      ],
+      "texto": "7 km/h pela anatomia provisória, sem real; congelada (D-170, D-175)"
+    },
+    {
+      "campos": [
+        "ataques.bocada"
+      ],
+      "texto": "Impacto, e não Perfuração, porque os dentes não foram achados nas fontes lidas (D-174)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",
@@ -255,6 +385,10 @@
     {
       "campo": "corpo",
       "motivo": "gigante da D-105, escala × 3,56 da rã-golias típica (50,57 cm de comprimento total e 0,947 kg, os dois sexos de Camarões), até os 1,8 m do site lidos como comprimento total com as pernas esticadas. Era × 5,52 sobre o corpo, com o 1,20 m que os lotes antigos tinham escolhido para dar o porte Médio. Tudo  (D-105, D-174; `pedido-v6-site.md`)"
+    },
+    {
+      "campo": "ataques.Bocada",
+      "motivo": "Impacto, e não Perfuração, porque os dentes não foram achados nas fontes lidas (D-174)"
     }
   ]
 }

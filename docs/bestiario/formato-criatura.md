@@ -118,6 +118,7 @@ Cada ataque natural guarda tudo o que não é conta (D-220, D-221):
 | `nivelPerfuracao` | inteiro ou null | `Nível de Perfuração` |
 | `acerto` | inteiro | `Acerto` |
 | `bloqueiaComoArma` | inteiro ou null | `Bloqueia como arma` ("sim (+1)" dá 1, "não" dá null) |
+| `justificativa` | texto, condicional (também no ataque com `arma`) | `Justificativa`, sem as marcas de trabalho; o card a mostra miúda (F1, D-357, 06/11/2026). O ataque da forma, que sai da Variante, não a herda |
 
 A coluna `Velocidade` da ficha não vai: é P + G + R, e o motor soma (D-221). O conversor confere a soma e para se ela não bater.
 
@@ -143,6 +144,7 @@ Não há `atrib`: o motor tira o Atributo da Habilidade. Disparo usa Vigor; Atir
 | `lore` | lista de `{titulo, texto}` | sim | · | **não vem da ficha**: é o lore do site, com as linhas `Ambientação:` trocando o parágrafo de mesmo título. Sai o "No jogo" (os números à mão, D-216) e a frase "Social: ..." que o conversor de hoje cola no "Comportamento", porque ela repete `comportamento.social` |
 | `imagens` | lista de caminhos | sim | · | Visual, "Imagem atual"; o site |
 | `revisao` | lista de `{campo, motivo}` (D-222); só no JSON-fonte (D-224) | sim (pode ser vazia) | · | as Notas de observação e as marcas `[provisório]` e `[extrapolação]` (seção 7) |
+| `notas` | lista de `{campos, texto}` | não | · | todas as linhas `- ` das Notas de observação, na ordem, com os nomes entre crases em `campos` e o texto como está; a linha fora do molde "`nome`: texto" entra com `campos` vazio. O card não as mostra; o layout decide (F1, D-357, 06/11/2026). O nome com o prefixo do campo (`` `ataques.Sopro de frio` ``) aponta para o campo; o que não aponta dá aviso, e não some calado |
 
 Cada item de `habilidadesEspeciais`:
 
@@ -156,6 +158,7 @@ Cada item de `habilidadesEspeciais`:
 | `arte` | classe `livro`, condicional | `{id, nivel}`, referência à Arte (D-253) |
 | `texto` | classe `livro`, condicional | Só o que a criatura acrescenta: detalhe próprio e limite de jogo, como "segura a presa no chão com o pé" e "só descendo". Não repete o livro, outra parte da ficha ou número calculado pelo motor (D-253). |
 | `ativacao`, `duracao`, `alcance`, `area`, `efeito`, `dano`, `resistencia`, `limiteDeUso` | classe `regra da ficha`; em `sem regra ainda`, só `efeito` | os oito campos da D-197 |
+| `justificativa` | condicional, em qualquer classe | a nota de observação que nomeia o poder com o prefixo (`` `habilidadesEspeciais.<nome>` ``); duas notas do mesmo poder se juntam. O card a mostra miúda (F1, D-357, 06/11/2026) |
 
 O "PROVISÓRIO" da linha não vira campo: a habilidade entra na `revisao` com o motivo (D-222).
 

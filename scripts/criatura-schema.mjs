@@ -42,8 +42,10 @@ const ataqueNatural = z.object({
   nome: texto, parte: id, habilidade: z.enum(['disparo', 'atirador', 'arremesso']).optional(), classe: z.enum(['leve','media','pesada','haste','haste-media','haste-guerra','distancia','arremesso']), pgr: z.tuple([naoNeg, z.literal(1), naoNeg]),
   dado: z.string().regex(/^\d+d6([+-]\d+)?$/).nullable(), multiplicadorForca: z.union([z.literal(0), z.literal(1), z.literal(2)]),
   tipoDano: z.enum([...elementosVocab.grupos.flatMap(g=>g.palavras),'fenomeno','eletricidade','nao-se-aplica']), nivelPerfuracao: naoNeg.nullable(), acerto: inteiro, bloqueiaComoArma: inteiro.nullable(),
+  // F1 (D-357; a forma no card o autor decide na revisão de layout): a Justificativa da linha de Ataques, que o card mostra
+  justificativa: texto.trim().min(1).optional(),
 }).strict();
-const ataqueComArma = z.object({ nome: texto, arma: id }).strict();
+const ataqueComArma = z.object({ nome: texto, arma: id, justificativa: texto.trim().min(1).optional() }).strict();
 const ataqueNovo = z.union([ataqueComArma, ataqueNatural]);
 const oitoCampos = { ativacao: texto, duracao: texto, alcance: texto, area: texto, efeito: texto, dano: texto, resistencia: texto, limiteDeUso: texto };
 const habilidadeEspecial = z.object({
@@ -52,6 +54,8 @@ const habilidadeEspecial = z.object({
   ataque: texto.optional(), base: z.object({ arte: id, nivel: naoNeg, efeito: z.enum(efeitosCatalogo.map(e => e.id)).optional() }).strict().optional(), regra: id.optional(),
   // P7, 26/10/2026: referências ao livro; texto só acrescenta detalhe ou limite próprio da criatura.
   tecnica: z.object({ id, nivel: naoNeg }).strict().optional(), arte: z.object({ id, nivel: naoNeg }).strict().optional(), texto: texto.optional(),
+  // F1 (D-357; a forma no card o autor decide na revisão de layout): a nota de observação que nomeia o poder com o prefixo (`habilidadesEspeciais.<nome>`); o card a mostra
+  justificativa: texto.trim().min(1).optional(),
   ...Object.fromEntries(Object.entries(oitoCampos).map(([k, v]) => [k, v.optional()])),
 }).strict().superRefine((h, ctx) => {
   const problema = (k, mensagem) => ctx.addIssue({code:'custom',path:[k],message:mensagem});
@@ -104,6 +108,8 @@ const estruturaCriatura = z.object({
   ecologia: z.object({ terreno: z.array(texto), clima: z.array(texto) }).strict(),
   descricao: texto.trim().min(1), lore: z.array(z.object({ titulo: texto, texto }).strict()), imagens: z.array(texto),
   revisao: z.array(z.object({ campo: texto, motivo: texto }).strict()),
+  // F1 (D-357; a forma no card o autor decide na revisão de layout): as Notas de observação da ficha, todas, na ordem; o card não as mostra (o layout decide)
+  notas: z.array(z.object({ campos: z.array(texto), texto }).strict()).optional(),
  }).strict();
 function conferirCriatura(c, ctx) {
   const erro=(path,message)=>ctx.addIssue({code:'custom',path,message});

@@ -92,7 +92,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte, 6 Ticks) é o braço de pedra de 3 m que bate com o corpo atrás: Pesada, Velocidade 7 (`regra-construcao.md` §7), golpe de membro, Força × 1, o mesmo caminho dos golens e dos gigantes (D-241); os 2 dados ficam. O tipo passa a Impacto, porque é pedra que bate, e não lâmina. Bloqueia como arma: corpo de pedra (D-066), Defesa +1 . Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -137,7 +138,8 @@
         "id": "pele-de-pedra",
         "nivel": 3
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "feito de pedra viva",
@@ -151,7 +153,8 @@
       "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal. Gás inalado não o atinge",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
     }
   ],
   "comoLuta": [
@@ -234,6 +237,69 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Pele de Pedra"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O corpo é constituído pelo próprio elemento."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.feito de pedra viva"
+      ],
+      "texto": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "1.234 kg pelo volume em granito; o site dizia 2 t, que daria a Faixa 5 (1,8 a 14 t) e PV 35 + 5 × 7 = 70, fora da zona de transição (1,62 a 1,98 t); com a conta, Faixa 4 e PV 58 **[conta]**"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "10 pelo teste de ordem; o site tinha 9. Com 9, o dano médio seria 19 e o peso erguido 1.137,73 kg **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"Golpe planar\" de 2 dados e corte vira a Pancada de pedra Pesada, de 2 dados (D-241), e de Impacto pelo gesto **[provisório]**"
+    },
+    {
+      "campos": [
+        "bloqueio"
+      ],
+      "texto": "2, como o golem de pedra; o site não gravava Bloqueio **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 9, pedra maciça, como o golem de pedra **[provisório]**"
+    },
+    {
+      "campos": [
+        "deslizar na pedra",
+        "empurrão"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

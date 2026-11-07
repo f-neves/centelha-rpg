@@ -95,7 +95,8 @@
       "tipoDano": "raio",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (\"corpo a corpo; dano alto ao alvo tocado\"; 1 dado, 5 Ticks): encostar e descarregar, gesto rápido, Leve (`regra-construcao.md` §7). Tipo raio: o dano é do choque; sem Absorção natural contra ele; a da armadura, a decidir (decisoes-autor §18). A Força 0 não soma; a Centelha soma inteira. Jogada: Destreza 9 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -116,7 +117,8 @@
       "efeito": "Fica Invisível. Som, cheiro e rastro continuam perceptíveis. Ao atacar, Furtividade contra Percepção Passiva determina se o alvo percebe o ataque",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Evasiva",
@@ -223,6 +225,67 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Invisibilidade natural"
+      ],
+      "texto": "Antes: A ação ofensiva revela o corpo. A ativação usa a Velocidade do grau da base. valor de molde, para a bancada. Base Ausência pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "fisiologia.tracos"
+      ],
+      "texto": "R21. O orbe é um corpo vivo que pode ser atingido. A ausência de respiração não implica travessia de matéria nem resistência a dano físico."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "sem massa; o volume da esfera de 0,30 m (0,0141 m³) entra no PV e na faixa como 14,3 kg. Com os 0,5 kg do site como massa real, o PV seria 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5; o site tinha 1 (D-205) **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Toque elétrico Leve, tipo raio, no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "1, o piso da régua; o site tinha 0"
+    },
+    {
+      "campos": [
+        "invisibilidade natural",
+        "evasiva"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`posturaDoTamanho`, P24: a medição antes sem postura declarada passa a vista de frente, flutuando. O orbe é esférico; área 0,07 m², Tamanho Miúdo, PV e dano preservados."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Invisibilidade natural · poder natural (base Ofuscação 3) · regra da ficha: PROVISÓRIO. Ativação: uma ação, Velocidade 5. Duração: até ele atacar ou desfazer. Alcance: o próprio corpo. Área: não se aplica. Efeito: fica Invisível; quem o procura vê, se tanto, uma luzinha fraca ao longe. Dano: nenhum. Resistência: nenhum. Limite de uso: à vontade. O \"+3d6 em Furtividade\" do site fica dentro da condição Invisível."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Difícil de acertar por Arte · sem regra ainda: Arte que mira um alvo raramente o alcança (\"feitiços de mira raramente o alcançam\", site)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Mente: inteligente, fria e paciente; vive do medo e da força vital das vítimas (site)."
+    }
+  ],
   "revisao": [
     {
       "campo": "aparencia",

@@ -95,7 +95,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe de braço com o corpo atrás, como o do gorila (seção 7). Mão com unha: Impacto. A Força não muda: fica 1d6 + 8, média 11,5."
     },
     {
       "nome": "Mordida",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Canino de cima de 21,1 mm no macho (Wikipédia); força de mordida não achada: N0. Opção, não segundo golpe (D-097). Fica 1d6 + 8, média 11,5."
     }
   ],
   "habilidadesEspeciais": [
@@ -121,7 +123,8 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "a mão"
+      "texto": "a mão",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -191,6 +194,72 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a massa tem o resumo de Zhang e Harrison 2017; as alturas publicadas (Willoughby 1,85; Hawley 2,3; Simons e Ettel 2,7; Pei 3,7) continuam só pela Wikipédia, e só a de Zhang 2024 (cerca de 3 m) tem fonte primária (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a Força, a Musculatura, o Vigor e as Habilidades saem só da comparação com o gorila; não há osso do corpo (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes: altura, largura e profundidade são o gorila da ficha escalado pela raiz cúbica da massa (fator 1,16), [extrapolação]; as alturas publicadas vão de 1,85 a 3 m (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Médio pela silhueta de frente (1,41 m²), a 0,04 m² do corte do Grande. Com os 3 m de Zhang 2024 a silhueta passa do corte e ele vira Grande. Fica a altura escalada do gorila, dentro do teto de 2,3 m de Hawley 2019; decisão provisória (decisão 7, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 300 kg (em vigor na Etapa 2, 20/10/2026); antes: 250 kg, meio da faixa de 200 a 300 kg de Zhang e Harrison 2017, pelos dentes e pela mandíbula; a faixa não diz o sexo, e a ficha a lê como a do macho (D-174; quinta rodada, item 3)."
+    },
+    {
+      "campos": [],
+      "texto": "inteligencia: 2 pela quinta rodada: grande símio da linha dos orangotangos (Welker e colegas 2019, Nature, proteoma do esmalte), e \"grandes símios\" está na lista do autor; do próprio animal só há dentes."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 7 (em vigor na Etapa 2, 20/10/2026); antes: 5 pela regra da versão maior (D-176), sem dado do corpo (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "esquiva, atletismo e escalada: abaixo do gorila pelo corpo mais pesado; leitura sem fonte, e o Atletismo fica pela velocidade congelada (D-174, decisão 23)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades.briga: +1 pela competição entre machos que o dimorfismo sugere (Zhang e Harrison 2017); é inferência dos dentes, provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido e arremesso: 1.245,83 kg e 311,5 kg pela fórmula das decisões 14 e 16 (`calc.mjs`), provisórios (D-169, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23), sem real para conferir (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.postura: tratado como ereto, a leitura do gorila (D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.destreza",

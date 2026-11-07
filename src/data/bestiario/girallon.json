@@ -95,7 +95,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": -1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras que dilaceram, com Sangramento pela 34.1; Acerto +0 para −1. O gesto, o dano e a jogada-base seguem a ficha"
     },
     {
       "nome": "Mordida",
@@ -111,7 +112,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de grande macaco: Média, como a do gorila. Jogada: Força 8 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -121,7 +123,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "rajada"
+      "regra": "rajada",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "garras que dilaceram",
@@ -129,7 +132,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "texto": "a tag Sangramento"
+      "texto": "a tag Sangramento",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "agarrar",
@@ -137,7 +141,8 @@
       "classe": "livro",
       "ataque": "Garras",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Multiataque",
@@ -151,7 +156,8 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -223,6 +229,62 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.garras que dilaceram"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Quatro braços ferozes"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "360 kg, a do site, na média do gorila e do gigantopiteco escalados pela altura do site. Nada muda: Faixa e PV ficam os do site **[conta]**"
+    },
+    {
+      "campos": [
+        "força"
+      ],
+      "texto": "6 para 8, pelo teste de ordem com o gorila (7 com 206 kg) e o gigantopiteco (9 com 300 kg) **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava \"Quatro garras e mordida\" (`inimigos.json`: \"2d6 +7 corte\", 6 Ticks, dano médio 14). A ficha separa os golpes pelo gesto: garras Médias, até três pela Rajada, e mordida. Dano médio: 14 antes; depois, 12,5 por garra (até três por ação) e 12,5 na mordida **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 3 (D-205)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

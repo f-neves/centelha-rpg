@@ -127,7 +127,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O bote da serpente, Leve (`regra-construcao.md` §7), os 5 Ticks do site. Envenena (Veneno e doença). A Centelha soma inteira. Jogada: Destreza 6 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -143,7 +144,8 @@
       "efeito": "Grande: asas abertas. Médio: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (asas abertas) e Médio (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Agarrar",
@@ -152,7 +154,8 @@
       ],
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Constrição venenosa",
@@ -169,7 +172,8 @@
       "efeito": "a cada 6 Ticks de agarrão, aperta sem nova jogada de ataque; o veneno da mordida age (Veneno e doença), e quem é envenenado fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "1d6 + Força, Impacto, a cada aperto",
       "resistencia": "corpo, pela regra do Agarrar para escapar e pela do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "Mudar de forma",
@@ -187,7 +191,8 @@
       "efeito": "assume a forma de um humanoide ou de um animal comum (a Variante \"disfarce\"); a mente, as Artes e os números ficam os dela. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Telepatia",
@@ -208,7 +213,8 @@
       "formas": "todas",
       "classe": "sem regra ainda",
       "categoria": "magia",
-      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia"
+      "efeito": "Aguarda o lore dos planos. Usos grátis: 1 por dia",
+      "justificativa": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada. Travessia depende da cosmologia, reservada à definição dos planos."
     }
   ],
   "comoLuta": [
@@ -320,6 +326,109 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Viagem planar"
+      ],
+      "texto": "Antes: viagem sem limite declarado. R1/R42: proposta de 1 uso grátis por dia, para uma travessia diária enquanto o lore dos planos está pendente. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Mudar de forma"
+      ],
+      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Viagem planar"
+      ],
+      "texto": "Travessia depende da cosmologia, reservada à definição dos planos."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (asas abertas) e Médio (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Constrição venenosa"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [
+        "Constrição venenosa"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Viagem planar"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Mana)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "270 kg pelo corpo; o site dizia \"cerca de 800 kg\" **[conta]**"
+    },
+    {
+      "campos": [
+        "envergadura"
+      ],
+      "texto": "4,6 m, estimada; o site não dá **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "6; o site tinha 4 **[provisório]**"
+    },
+    {
+      "campos": [
+        "formas"
+      ],
+      "texto": "forma verdadeira e disfarce (D-201) **[provisório]**"
+    },
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "Potência 14, pool 3 de Força, fora do catálogo **[provisório]**"
+    },
+    {
+      "campos": [
+        "constrição venenosa",
+        "mudar de forma",
+        "telepatia",
+        "viagem planar"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`formas` (D-230, ajuste de 24/10/2026): a marca das formas nas Manobras e nos Sentidos; o Agarrar e a Constrição só na forma verdadeira, com o corpo de serpente; a Telepatia, a Viagem planar e os Feitiços em todas (a mente e as Artes ficam as dela); os sentidos em todas, porque o disfarce não muda os números **[provisório]**; o \"como luta\" em duas linhas; a Camuflagem e o fôlego do disfarce na linha dele em Variantes. As Artes não mudam no disfarce, e as Aptidões ficam as da forma verdadeira"
+    },
+    {
+      "campos": [],
+      "texto": "`formas.corpo` (Fase 5, F5.2-b, D-265, 29/10/2026): o disfarce, que imitava uma forma de tamanho variável, ganha a forma fixa e típica, a humana: Médio, 1,78 m de altura, 0,48 m de largura, Área 0,64 m² (a do humano de base). O Mestre pode escolher outra forma. Antes, sem Área própria e com \"Tamanho: o da forma assumida\"."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

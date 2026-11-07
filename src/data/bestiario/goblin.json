@@ -84,7 +84,8 @@
   "ataques": [
     {
       "nome": "Espada curta",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Jogada: Destreza 4 + Armas 2"
     }
   ],
   "habilidadesEspeciais": [],
@@ -162,6 +163,26 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "18 kg na borda de cima da zona de transição de 12 a 18 kg; na faixa de baixo seriam 18 PV"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "espada curta do livro, sem armadura **[provisório]**"
+    },
+    {
+      "campos": [
+        "bravura"
+      ],
+      "texto": "2; o site tinha 3 **[provisório]**"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

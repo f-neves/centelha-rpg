@@ -105,7 +105,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote de boca pequena: Leve (seção 7). Força 0 tira a parte da Força do dano (D-115). Quem mata é o veneno (até 420 mg de veneno seco por picada, Thomas e Griessel 1999), sem id no catálogo (ver Veneno). Força de mordida não achada: N0. Um ataque por ação (D-097)."
     }
   ],
   "habilidadesEspeciais": [
@@ -121,7 +122,8 @@
       "efeito": "Miúdo: de lado, erguida de capuz aberto. Miúdo (0,046 m², vista de cima, enrolada): vista de cima, enrolada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Miúdo (de lado, erguida de capuz aberto) e Miúdo (0,046 m², vista de cima, enrolada) (vista de cima, enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
     },
     {
       "nome": "Neurotoxina de elapídeo",
@@ -136,7 +138,8 @@
       "efeito": "Neurotoxina de elapídeo. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "sem pernas",
@@ -150,7 +153,8 @@
       "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "+4 pela base firme contra as duas manobras. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -228,6 +232,101 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "Antes: veneno sem id no catálogo; neurotóxico de elapídeo, com os fatos na pesquisa. A `peconha-de-vibora` não serve (outro efeito) (D-112) O pool atinge Vigor. Aplica-se o desfecho letal do veneno."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.sem pernas"
+      ],
+      "texto": "+4 pela base firme contra as duas manobras. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Miúdo (de lado, erguida de capuz aberto) e Miúdo (0,046 m², vista de cima, enrolada) (vista de cima, enrolada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Neurotoxina de elapídeo"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [],
+      "texto": "area: 0,043 m² enrolada e 0,116 m² esticada, escaladas pela massa (`calc6.mjs`) a partir da medição do macho na `tamanho-fichas-v2` (0,052 e 0,14 m²); antes, 0,14 m² (largura × comprimento). O Alvo segue Miúdo, e o segundo Alvo cai de Pequeno a Miúdo por 0,004 m² abaixo do corte. Decisão provisória: usar o número do `calc6.mjs`, que é o mesmo para as 92 fichas."
+    },
+    {
+      "campos": [],
+      "texto": "pv: 6 (em vigor na Etapa 2, 20/10/2026); antes: Faixa 1 nas duas versões do autor; o PV total usa 5 + Vigor = 8 (decisão 21). Com 10 + metade do Vigor seriam 11. Era 26 (Faixa 2, o macho)."
+    },
+    {
+      "campos": [],
+      "texto": "`porte` (exibição): erguida, a naja tem altura de um homem; a área de quem a ataca muda. Desde a D-215, a ficha usa a postura em que luta, de capuz aberto (0,091 m², Miúdo), e a de repouso, enrolada, vai ao Segundo Tamanho; antes, usava a de repouso (decisão 8). O resto fica para o Mestre e para a N22 (D-054, D-087)"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "1 (em vigor na Etapa 2, 20/10/2026); antes: 0, revista na sétima rodada (item 8 da `tamanho-decisoes-5.md`): o corpo não segura nem aperta, e quem mata é o veneno; o dano do Bote fica 1d6 − 2 (D-115)"
+    },
+    {
+      "campos": [
+        "referencia"
+      ],
+      "texto": "3,375 kg, o adulto típico (sexta rodada): o macho de 4,5 kg medidos (média de 79 machos) e a fêmea de 2,25 kg pela razão dos máximos **[comparação]**; era o macho. Não os 6 kg sugeridos no plano; a população medida é O. kaalinga, depois da divisão de Das et al. 2024 (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 28,06 kg (em vigor na Etapa 2, 20/10/2026); antes: 21,58 kg pelo `calc6.mjs`, provisório (decisões 14 e 16). Era 26,4 kg (o macho) e, antes, 0,8 kg pela fórmula de FAH com o fator de corpo leve. Como ela não agarra, quase não entra em jogo."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23); 5 km/h pela fórmula de hoje, igual à jararaca, sem velocidade medida confiável."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 2 (animal comum), provisória."
+    },
+    {
+      "campos": [],
+      "texto": "influencia, compostura: descem a 1 por não ser espécie social (diretriz 1); a exibição fica em texto."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 2 pelo normal da espécie, com Resistência (fome) +1 pelos meses de jejum sem número. A imunidade ao veneno de víboras é só especulação (Fry, comunicação pessoal, em Bhaisare et al. 2010) e não entra."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades.briga: Briga (contra serpentes) +1 pela dieta ofiófaga medida. Decisão provisória: tratar a caça de serpentes como hábito, e não como corpo."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): o macho M1 foi seguido por mais de 100 km em nove meses; o M2 andou 35,6 km de 7 de junho a 22 de novembro, numa área de 6,3 km², saindo do abrigo por volta das 9 h e se recolhendo antes do pôr do sol (Bhaisare et al. 2010, artigo lido) **[medido]**. Sem distância por dia nem velocidade."
+    },
+    {
+      "campos": [
+        "dimensoes.largura",
+        "dimensoes.altura"
+      ],
+      "texto": "0,036 m, o diâmetro estimado para o macho (0,04 m, cilindro de 4,5 kg em 3,5 m) escalado pelo cubo da massa, sem fonte (D-147, D-174)"
+    },
+    {
+      "campos": [
+        "atletismo"
+      ],
+      "texto": "0 porque as fontes lidas não acham nado nem escalada; a ficha atual dava \"trepadora e nadadora\", sem fonte (D-174)"
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

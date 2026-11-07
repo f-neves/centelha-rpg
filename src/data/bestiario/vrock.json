@@ -99,7 +99,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (2 dados, corte): a garra que rasga com o braço e o corpo atrás, Média (`regra-construcao.md` §7). Duas por ação pela Rajada (Manobras). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
       "nome": "Bico",
@@ -115,7 +116,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Garras e bico\" (site): o bico curvo de abutre, com a cabeça e o pescoço atrás, Média. N1, bico córneo que fura couro . Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -126,7 +128,8 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação"
+      "texto": "Até dois golpes por ação",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Esporos",
@@ -144,7 +147,8 @@
       "efeito": "Esporose do vrock. Exposição: os esporos lançados alcançam a carne de quem falha na resistência à nuvem. Incubação: 10 minutos. Virulência 14. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão. A exposição conserva o Abalado da descarga inicial",
       "dano": "pela progressão da doença",
       "resistencia": "Vigor + Resistência contra Virulência 14",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Antes: 110. Incubação de 10 minutos e Virulência 14 sugeridas porque a germinação ocorre depois da descarga inicial. Intervalo diário pelo relógio do livro. Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Dança da ruína",
@@ -177,7 +181,8 @@
       "efeito": "Convoca Dretch até o fim da cena. A origem aguarda o lore dos planos",
       "dano": "o dos que chegam",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Um aliado de perfil Dretch até metade da Centelha do convocador. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Invocar pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Grito ensurdecedor",
@@ -191,7 +196,8 @@
       "efeito": "O grito deixa surdo quem falha na resistência",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Grau 3, alcance até onde ouve, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada."
     },
     {
       "nome": "Imagem espelhada",
@@ -240,7 +246,8 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, bico. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -323,6 +330,137 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Convocar demônios"
+      ],
+      "texto": "Antes: Um aliado de perfil Dretch até metade da Centelha do convocador. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 4, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Invocar pelo efeito descrito. A ficha conserva seus próprios números. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Esporos"
+      ],
+      "texto": "Antes: 110. Incubação de 10 minutos e Virulência 14 sugeridas porque a germinação ocorre depois da descarga inicial. Intervalo diário pelo relógio do livro. Antes: Velocidade 6. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Duas garras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Grito ensurdecedor"
+      ],
+      "texto": "Grau 3, alcance até onde ouve, duração 6 Ticks, 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Escala sugerida para um efeito local e temporário. Resistência: Influência + Ocultismo contra Defesa Mental com o Resistir do livro. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra esquerda, garra direita, bico. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "Esporos"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "Dança da ruína"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Convocar demônios"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, um grito -> uma ação, Velocidade 6, um grito. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Grito ensurdecedor"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Imagem espelhada"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "atordoamento do grito"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "4 pela nota do site, e não o 2 do campo **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "o 0 do site sobe a 1, o piso da régua"
+    },
+    {
+      "campos": [
+        "massa",
+        "pv"
+      ],
+      "texto": "230 kg, na zona de transição; robusto, fica na linha de 220 kg a 1,8 t (66 PV), e não na de baixo (52) **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 2 dados e 6 Ticks, de corte. A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: garras e bico Médios **[provisório]**"
+    },
+    {
+      "campos": [
+        "esporos"
+      ],
+      "texto": "o site trazia duas versões (explosão de 6 m ao ficar Agonizante, e esporos em quem está colado, uma vez por dia); a ficha juntou as duas numa linha, com o \"Agonizante\" lido como Morrendo e o \"Enfraquecido\" como Abalado **[provisório]**"
+    },
+    {
+      "campos": [
+        "dança da ruína"
+      ],
+      "texto": "o site dizia \"dois ou mais vrocks\" numa linha e \"exige 3 vrocks\" na outra; ficaram dois. O tipo raio é escolha da ficha, porque o site só diz \"dano alto\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "grito",
+        "imagem espelhada",
+        "convocar"
+      ],
+      "texto": "números da ficha (D-197) **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "atordoamento do grito"
+      ],
+      "texto": "Antes: perdia a próxima ação."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.prontidao",

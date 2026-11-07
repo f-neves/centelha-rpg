@@ -90,7 +90,8 @@
       "tipoDano": "fogo",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O braço de chama que bate e queima (site: 1 dado, 5 Ticks, \"cada acerto soma dano de fogo\"). Leve, gesto rápido de membro (`regra-construcao.md` §7). Tipo fogo: o dano é da chama, e não do peso. O fogo que gruda vai nas Manobras. Jogada: Destreza 3 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -135,7 +136,8 @@
       "efeito": "Não se cansa. Ignora veneno e doença. Demais efeitos que peçam teste de corpo usam o teste normal",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
     }
   ],
   "comoLuta": [
@@ -208,6 +210,46 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O corpo é constituído pelo próprio elemento."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.feito de chama pura"
+      ],
+      "texto": "R21. As imunidades a veneno e doença são exceções expressas deste elemental."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "sem massa; o volume do corpo de base escalado a 1,2 m (0,0234 m³) entra no PV e na faixa como 23,6 kg **[conta]**"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "1; o site tinha 2. Com 2 o dano médio seria 4,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "vontade",
+        "virtudes"
+      ],
+      "texto": "pela régua do livro, a única (decisão do autor de 22/10/2026, resposta à pergunta 2 do lote 3); a Temperança desce de 2 para 1 pelo texto do site"
+    },
+    {
+      "campos": [
+        "toque em chamas",
+        "incendeia"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

@@ -102,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Era 2d6 + 14, média 21. 7 + 10. Presa de até 2,4 m e 41 a 45 kg (Wikipédia): golpe da cabeça inteira, lento, Pesado; de cabeça, × 1. N1 é o da própria presa (\"chifre fica em N0 ou N1, pelo tamanho\"), e não do porte"
     },
     {
       "nome": "Pisão (ou investida)",
@@ -118,7 +119,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [
@@ -127,14 +129,16 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "empurrar"
+      "regra": "empurrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "arremessar o que agarrou",
@@ -148,7 +152,8 @@
       "efeito": "Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arremessar o que agarrou. Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez. valor de molde, para a bancada."
     },
     {
       "nome": "investida que empurra",
@@ -156,7 +161,8 @@
       "classe": "livro",
       "ataque": "Pisão (ou investida)",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte declara \"investida que empurra\" e o golpe \"Pisão (ou investida)\"."
     },
     {
       "nome": "corpo enorme",
@@ -170,14 +176,16 @@
       "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade corpo enorme. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar"
+      "texto": "Atropelar",
+      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte declara \"investida que empurra\" e o golpe \"Pisão (ou investida)\"."
     }
   ],
   "comoLuta": [
@@ -254,6 +262,138 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.investida que empurra"
+      ],
+      "texto": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte declara \"investida que empurra\" e o golpe \"Pisão (ou investida)\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Atropelar"
+      ],
+      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte declara \"investida que empurra\" e o golpe \"Pisão (ou investida)\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.empurrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.corpo enorme"
+      ],
+      "texto": "Aplicação à capacidade corpo enorme. A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.arremessar o que agarrou"
+      ],
+      "texto": "Aplicação à capacidade arremessar o que agarrou. Arremessa a presa agarrada como carga pela tabela de Arremesso. Resolva a queda ou colisão pelo livro, uma única vez. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 10 pela âncora do autor (9 a 10), proposta do Arquiteto. O feito de arrasto (1 a 3 t, Htun) fica acima do peso erguido novo (1.074 kg), que só alcança o piso dele. O topo da âncora (10) foi escolhido para o macho de 4 t; com o adulto típico de 3,35 t, o argumento do topo enfraquece, e a Força fica pela regra da sexta rodada (ver desvios). Decisão provisória: manter a âncora e deixar a diferença à fórmula de P ou a uma leitura do arrasto (tora no chão, com corrente, não é peso erguido inteiro) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 3.600 kg (em vigor na Etapa 2, 20/10/2026); antes: 3.350 kg, a média simples do macho (4 t) e da fêmea (2,7 t) da tabela 8 de Larramendi 2016; era o macho de 4 t (sexta rodada, item 4)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 1.074 kg pelo `calc6.mjs` com a massa de 3.350 kg, provisório (decisões 14 e 16). Era 2.050 kg pela fórmula de FAH, e 1.011 kg com o macho de 4 t."
+    },
+    {
+      "campos": [],
+      "texto": "carga: Leve 502,5 kg, os 15% da carga medida (Kongsawasdi 2021) sobre a massa de 3.350 kg; não sai da Força."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). O nado sai a 9 km/h contra 2,1 km/h do real (+330%); só anotado."
+    },
+    {
+      "campos": [],
+      "texto": "area: 6,34 m², vista de lado: os 7,13 m² da medição da `tamanho-fichas-v2` (macho de 4 t) escalados pela massa, (3.350 ÷ 4.000)^(2/3); era 12,93 m² (retângulo cheio). O Alvo segue Enorme, a 6% do corte; a fêmea (5,49 m²) cai no Grande."
+    },
+    {
+      "campos": [],
+      "texto": "inteligencia: 2 pela quinta rodada: reconhece-se no espelho (Plotnik, de Waal e Reiss 2006, PNAS 103: 17053-17057, elefante-asiático do zoológico do Bronx); usa ferramenta e tem memória longa."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2; a marcha, o arrasto e o nado ficam na nota de pesquisa (jornada) (diretriz 2)."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): marcha de até 25 km por dia no plano e 16 km em trilha de montanha ou lama, com no máximo 3 marchas pesadas seguidas (MTE, em FAO) **[medido]**; arrasto de tora de 4 a 8 h por dia, 5 dias por semana, de junho a fevereiro (FAO) **[medido]**; turismo de 2 a 3 h e 4 a 5 km por dia (Kongsawasdi 2021); nado de até 6 h a 2,1 km/h e travessia de 48 km (Wikipédia, elefantes em geral) **[comparação]**. Era a Resistência (Fôlego) +2."
+    },
+    {
+      "campos": [],
+      "texto": "empatia: 2 nova, sem número na fonte: leitura do grupo e do cornaca."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3 (robusto) na escala nova; o 4 de hoje era da escala velha."
+    },
+    {
+      "campos": [],
+      "texto": "natacao: 0 mantida; o elefante nada bem, mas a velocidade está congelada e a distância fica na nota de pesquisa (jornada). Se o autor quiser Natação 1 para quem nada horas, esta é candidata."
+    },
+    {
+      "campos": [],
+      "texto": "sentidos: faro +3 pela decisão 3 (era +4); a fonte (\"quatro vezes o de um cão de caça\") é divulgação, sem método."
+    },
+    {
+      "campos": [],
+      "texto": "presada: N1 mantido como Nível da própria presa (tamanho do \"chifre\"), e não do porte, que saiu da absorção."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes: altura, comprimentos e largura eram do macho de 4 t e foram escalados pelo cubo da massa (fator 0,943); comprimento sem cauda (4,43 m) e largura (1,41 m) só pela estimativa; não decidem o Alvo, que vem do `calc.mjs`."
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: Era 2d6 + 28, média 35. 7 + 20. O corpo inteiro desce (seção 7, × 2). O melhor ataque. Opção, não golpe somado (D-097)"
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 27 para 17; Investida 27, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: Prontidão (faro) +3, Especialidade natural. \"Talvez quatro vezes maior que o de um cão de caça\" (Wikipédia), sem método claro: nota."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: texto; ouve e se comunica por infrassom e pela vibração do chão a longa distância (Wikipédia). Números: não achados."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - visão: texto; enxerga bem na penumbra e mal na luz forte (Wikipédia)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: tromba sem osso, de até 150.000 feixes de músculo; presas só nos machos; pele de 18 a 30 mm; dorme 3 a 4 horas por dia; come até 150 kg de planta por dia (Wikipédia)."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.furtividade",

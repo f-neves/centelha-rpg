@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Classe pelo gesto, sem usar Destreza no dano; jogada 11 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -103,7 +104,8 @@
       "efeito": "Esporose do basidirond. Exposição: os esporos entram na ferida do golpe ou nos pulmões de quem os inala. Incubação: 1 hora. Virulência 12. Após a incubação, teste Vigor + Resistência uma vez por dia, com os estágios da doença do livro. Cura ou cirurgia adequada remove o agente e interrompe a progressão",
       "dano": "pela progressão da doença",
       "resistencia": "Vigor + Resistência contra Virulência 12",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose",
+      "justificativa": "110. Incubação de 1 hora e Virulência 12 sugeridas porque a germinação começa pouco depois do contato. Intervalo diário pelo relógio do livro."
     },
     {
       "nome": "Letargia pelo frio",
@@ -188,6 +190,62 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil mole, nível 2: +1 Corte, +1 Perfuração e +2 Impacto, com metades para cima, porque a cobertura flexível cede à pressão e amortece a pancada. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Esporos parasitas"
+      ],
+      "texto": "110. Incubação de 1 hora e Virulência 12 sugeridas porque a germinação começa pouco depois do contato. Intervalo diário pelo relógio do livro."
+    },
+    {
+      "campos": [
+        "Nuvem de alucinação"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campos": [
+        "Esporos parasitas"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Estoque sugerido de 2 doses e 6 horas por dose para permitir duas exposições próximas e recuperação fora da luta. O efeito pendente continua para o autor. valor de molde, para a bancada (2 doses e produz 1 dose em 6 horas)."
+    },
+    {
+      "campos": [
+        "Vontade"
+      ],
+      "texto": "Antes: 6."
+    },
+    {
+      "campos": [
+        "Defesas"
+      ],
+      "texto": "Antes: sem aplicação explícita da imunidade de Inteligência 0."
+    },
+    {
+      "campos": [
+        "Influência"
+      ],
+      "texto": "Antes: 0."
+    },
+    {
+      "campos": [
+        "Perspicácia"
+      ],
+      "texto": "Antes: 0."
+    },
+    {
+      "campos": [
+        "Integridade"
+      ],
+      "texto": "Antes: 2."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

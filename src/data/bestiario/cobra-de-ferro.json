@@ -80,7 +80,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Arma\" do site (1 dado, corte, 5 Ticks) é a picada da serpente: bote rápido, Leve (`regra-construcao.md` §7). O tipo passa a Perfuração, porque são presas, e não lâmina. O veneno vem pela Picada envenenada (Manobras). Jogada: Destreza 4 + Briga 2"
     }
   ],
   "habilidadesEspeciais": [
@@ -97,7 +98,8 @@
       "efeito": "a picada desencadeia magicamente o efeito de peçonha descrito em Veneno e doença",
       "dano": "o da Mordida e o do efeito de peçonha",
       "resistencia": "corpo, pelo perfil de peçonha em Veneno e doença",
-      "limiteDeUso": "Usos grátis: 3 por dia. Sem usos extras"
+      "limiteDeUso": "Usos grátis: 3 por dia. Sem usos extras",
+      "justificativa": "Antes: substância com reservatório de 3 doses e reposição externa. C-002/P3: magia, pois o constructo reproduz o efeito da peçonha. Proposta de 3 usos grátis por dia a partir das três picadas anteriores. Centelha 0 e ausência de Mana impedem uso extra. valor de molde, para a bancada."
     },
     {
       "nome": "Farejar alvo",
@@ -212,6 +214,83 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Picada envenenada"
+      ],
+      "texto": "Antes: substância com reservatório de 3 doses e reposição externa. C-002/P3: magia, pois o constructo reproduz o efeito da peçonha. Proposta de 3 usos grátis por dia a partir das três picadas anteriores. Centelha 0 e ausência de Mana impedem uso extra. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. Corpo fabricado ou animado; herda C-002."
+    },
+    {
+      "campos": [
+        "Resistência à magia"
+      ],
+      "texto": "**[provisório]** R7. SR 13 da fonte passa a grau 1 (+2)."
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Miúdo pela área (0,06 m²); o site dizia Pequeno **[conta]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "28, na zona de transição, pela faixa de cima (corpo de ferro); pela de baixo seria 19 **[provisório]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "4 por julgamento (placas de ferro num corpo pequeno); o site tinha 0 **[provisório]**"
+    },
+    {
+      "campos": [
+        "couracaNivel"
+      ],
+      "texto": "9, placas de ferro **[provisório]**"
+    },
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "os números da peçonha de víbora do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "atributos sociais",
+        "vontade",
+        "virtudes"
+      ],
+      "texto": "decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
+    },
+    {
+      "campos": [
+        "picada envenenada",
+        "farejar alvo"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [
+        "Resistência à magia 13"
+      ],
+      "texto": "Antes: +2 na resistência contra Artes."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

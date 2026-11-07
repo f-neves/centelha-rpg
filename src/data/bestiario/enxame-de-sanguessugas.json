@@ -121,7 +121,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Sem mudança: a Força segue 0, e o dano é só o dado (era 1d6 − 2, média 1,5; D-115). Três mandíbulas com cerca de 100 bordas cortantes (Wikipédia): Corte. A sanguessuga fica presa de 20 a 40 min e a ferida sangra por horas depois (hirudina): texto para o Mestre. Um ataque por ação (D-097)"
     }
   ],
   "habilidadesEspeciais": [
@@ -137,7 +138,8 @@
       "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos",
       "dano": "1d6 + 3 de Corte",
       "resistencia": "sem jogada de ataque; a Absorção conta",
-      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo",
+      "justificativa": "R33. Antes: resumo provisório com 1d6 + 3 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 3 de Corte, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
     },
     {
       "nome": "Corpo de enxame",
@@ -151,7 +153,8 @@
       "efeito": "Arma comum não fere este enxame. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R32 e R34. Arma comum não fere este enxame. Escolha: o conjunto de corpos pequenos submersos conserva a exigência de área da ficha. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
     }
   ],
   "comoLuta": [],
@@ -229,5 +232,131 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Pulso do enxame"
+      ],
+      "texto": "R33. Antes: resumo provisório com 1d6 + 3 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 3 de Corte, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo de enxame"
+      ],
+      "texto": "R32 e R34. Arma comum não fere este enxame. Escolha: o conjunto de corpos pequenos submersos conserva a exigência de área da ficha. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "verme, anatomia provisória (D-175), com `nado: true`."
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23). A terra arredonda para 0 m por Tick; o nado fica em 0,4 m por Tick (D-254). O nado dá 0,41 m/s contra 0,156 m/s medidos, +156%; o rastejar real não foi achado."
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "0,00 kg pelo `calc.mjs`, provisório (decisões 14 e 16); carga \"não (enxame)\"."
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "26 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 8 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo."
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "Minúsculo, área de cima de 0,0009 m² da tamanho-fichas-v2 (D-174)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "4 g, o meio da classe madura de Elliott 2008 (2,5 a 5 g), a que suga mamífero."
+    },
+    {
+      "campos": [
+        "compostura"
+      ],
+      "texto": "desce de 2 para 1 por não ser espécie social (diretriz 1)."
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2 pela régua; o jejum entra como Especialidade natural Resistência (fome) +3, que a ficha de hoje não tinha criado. O jejum de um ano não cabe na tabela da Fome (Severidade 5 + 1 por dia): falta de regra anotada no levantamento."
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "2, nova, com a Especialidade comum \"no lodo\" 1, pelo levantamento."
+    },
+    {
+      "campos": [
+        "sentidos"
+      ],
+      "texto": "a onda na água desce de +4 para +3 pelo teto da decisão 3 e passa a natural; o calor +2 passa a natural."
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "2 (comum), sem medida."
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 0 (faixa 0 a 0) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): só a velocidade de nado livre, 15,6 cm/s (Iwasaki 2014), sem duração; o passo de rastejar dura de 2 a 10 s (Stern-Tomlinson 1986)."
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a largura (1 cm) e a espessura (5 mm) continuam só por estimativa; o comprimento de 10 a 15 cm continua por Puhl e Mesce 2012 e pela Wikipédia (D-174)."
+    },
+    {
+      "campos": [
+        "doenca"
+      ],
+      "texto": "Aeromonas como texto, sem catálogo de doença (D-112)."
+    },
+    {
+      "campos": [
+        "nado"
+      ],
+      "texto": "0 para 0,4 m por Tick, preservando o deslocamento de 0,4 m/s com o decimal permitido pela D-254."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - onda na água: Especialidade natural Prontidão (ondas na água) +3, na água. Acha a fonte de ondas de superfície (adultas preferem 8 a 12 Hz; Harley, Cienfuegos e Wagenaar 2011)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - calor: Especialidade natural Prontidão (calor) +2; aquecer o lábio basta para disparar a ingestão (Lent 1985)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - química e luz: o sal e a arginina disparam a mordida (Elliott 1986); cinco pares de olhos e sensilas que reagem à sombra, mais com fome (ADW). Texto. Alcance em metros: **[sem dado]**."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Respiração: pela pele, na água. Sensível a ressecamento (ADW)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Enxame: sim, um grupo (decisão 10). Quadrado de 1 m: cheio com 400 sanguessugas; com menos de 100 (um quarto) deixa de ser enxame **[conta, sobre estimativa da ficha]**. Água e fundo de lagoa. Desordenado: cada uma acha o hospedeiro sozinha. Só ataque em área. Armadura: ignora, na água entram por baixo de tudo (a vedação de couro amarrada é do Mestre). Retirar: difícil, uma a uma. Dano automático contra quem está cercado, de Corte, mais o sangramento em texto: **a definir** (as regras de enxame ficam para depois); metade com metade das sanguessugas. No acerto vale o tamanho que o enxame apresenta (D-077)."
+    }
+  ],
   "revisao": []
 }

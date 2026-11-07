@@ -104,7 +104,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Era 1d6 + 9, média 12,5: a Força desce de 9 para 7 (D-115); a sétima rodada não a muda. Golpe que pede o corpo atrás (seção 7). A pinça esmaga, e não corta: fica Impacto, como a mordida que esmaga (ver as notas). Quebra concha de ostra e de caranguejo (fishconsult.org)"
     }
   ],
   "habilidadesEspeciais": [
@@ -113,7 +114,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "puxar para a água",
@@ -128,7 +130,8 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade puxar para a água. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [],
@@ -184,6 +187,152 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.puxar para a água"
+      ],
+      "texto": "Aplicação à capacidade puxar para a água. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "Tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md` (sétima rodada); fica o do site (largura de carapaça de 1,5 m), que passa no item 7: Grande (2,47 m², de cima com as patas), quatro portes acima da Scylla de base (Minúscula, 0,020 m² no mesmo modo). A área fica 70% acima do corte do Médio (1,45 m²) e 59% abaixo do do Enorme (6 m²) (D-174)"
+    },
+    {
+      "campos": [
+        "gigante"
+      ],
+      "texto": "escalado da Scylla serrata típica de Cochin (135,8 mm e 0,461 kg, os dois sexos) por k = 11,04 e k³ na massa; tudo do tamanho é [extrapolação]. A largura da ficha atual (1,5 m) fica e decide k. Era a de 25 cm e 2,5 kg por k = 6 (D-105, `pedido-lotes.md` §3)"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "202,5 kg (em vigor na Etapa 2, 20/10/2026); antes: 622 kg pelo cubo (621,6), mais de três vezes os 180 kg da ficha atual, que não fecham com 1,5 m; vale o tamanho (item 5); Faixa 4. Era 540 kg (D-174)"
+    },
+    {
+      "campos": [
+        "dimensoes"
+      ],
+      "texto": "o tamanho do site fica; altura em 0,4 vez a largura (estimativa da Bestiarista); o comprimento usa a razão 0,68 dos machos medidos (Widigdo 2017; 0,67 em Cochin) (D-174)"
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "Grande pela área de cima de 2,47 m², com as patas (decisões 7, 8 e 25); a ficha de hoje dava Médio pela R2, com 1,53 m² da carapaça (D-174)"
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "artrópode, provisória (D-175), sem nado. O caranguejo real nada e anda no fundo, e a ficha atual tinha natação 2: o nado fica como texto do Mestre, com Natação 2, até a anatomia ser revista (D-170, D-175)"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "5 (em vigor na Etapa 2, 20/10/2026); antes: 7, com o cavalo e o alce e abaixo do topo das âncoras de 500 a 800 kg (8), porque a força do caranguejo está na pinça e foi para a Musculatura 4; a pinça escalada (cerca de 62.000 N pela relação do caranguejo-dos-coqueiros, Oka et al. 2016, sobre a base típica de 0,461 kg e k = 11,04) é extrapolação e não decide a Força. Reanalisada na sétima rodada com 622 kg: fica (D-158, D-174)"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "4, e não 5 ou 6, porque a força da pinça da própria Scylla não foi achada; a comparação é com outra espécie (D-117, D-174)"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "678,65 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.019,12 kg pela fórmula provisória (decisões 14 e 16), com 622 kg; era 1.028,29 kg com 540 kg (D-162, D-169)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23), 22 km/h; sem velocidade máxima real (D-170)"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "a pinça entrou como Impacto (esmaga), e não como Corte; a seção 7 diz \"garra e unha: Cortante\", e a pinça não corta. Escolha da Bestiarista (D-174)"
+    },
+    {
+      "campos": [
+        "bloqueio"
+      ],
+      "texto": "a carapaça e a pinça bloqueiam como arma (+1), pela D-100; a pinça é coberta da mesma carapaça"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 5 (faixa 5 a 6) pela escala da quinta rodada; carapaça mineralizada de 622 kg, ao lado do crocodilo e abaixo da tartaruga; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "3 (em vigor na Etapa 2, 20/10/2026); antes: 2; a migração das fêmeas fica na nota de pesquisa (jornada) (decisão 5) (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): as fêmeas da *S. serrata* migram de 54 a 106 km (Golfo de Carpentária) e de 11 a 387 km (costa leste) em 30 a 60 dias, nadando (Stratford et al. 2026, marcas de satélite, [medido] na S. serrata); trabalhos anteriores citam de 219 a 910 m por dia de deslocamento (via Hewitt et al. 2023)."
+    },
+    {
+      "campos": [
+        "especialidades"
+      ],
+      "texto": "Resistência (fora da água) +3 pelo congênere S. paramamosain (120 h no ar); o tempo fora d'água da própria espécie não foi achado. O levantamento propunha nível 1; o +3 é pelos cinco dias medidos no congênere. O tempo fora da água é relógio de horas, e não cabe na conta do sufocamento (falta de regra) (D-174)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "5, revisto na oitava rodada pelo corpo e pela massa, e fica: +2 sobre o animal de base (Scylla serrata, Vigor 3, presumido), um acima do mínimo da D-176 pela massa de 622 kg, entre o cavalo (470 kg, 5), o bisão (570 kg, 6) e o boi (788 kg, 5); a carapaça está na Couraça e o ar na Especialidade natural, sem conta dupla. Era 4 na ficha de hoje (D-174)"
+    },
+    {
+      "campos": [
+        "base"
+      ],
+      "texto": "o animal de base não tem ficha; massa, Alvo (Minúsculo, 0,020 m²), Força 1 (item 8: a pinça que prende e esmaga um dedo), Vigor 3 e PV 8 da seção \"Comparação com o animal de base\" vêm da ficha e do pedido do Arquiteto, e o Vigor 3 é presumido"
+    },
+    {
+      "campos": [
+        "atributosSociais"
+      ],
+      "texto": "Influência de 2 para 1 pela diretriz 1; espécie solitária e canibal (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a base passou do adulto grande de 2,5 kg (meio da faixa do SeaLifeBase) ao adulto típico de Cochin, 0,461 kg com 135,8 mm, as médias dos dois sexos (Aneesa, Chaithanya e Varghese 2025, tabela 1); a relação largura-peso dos machos de Widigdo et al. 2017 não foi usada (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - sentidos: nada achado com número **[sem dado]**."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Prende a respiração: não se aplica (respira por brânquias); fora da água, a S. paramamosain aguenta 120 h (Cheng et al. 2019 e 2020), da própria espécie não achado."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: carapaça lisa, pinças enormes no macho; fica mole e vulnerável na muda, quando outros caranguejos o atacam (Wikipédia)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

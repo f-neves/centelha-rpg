@@ -99,7 +99,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A patada de felino, Leve, como a do leão; as \"garras devastadoras\" do site vão pela Rajada. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     }
   ],
   "habilidadesEspeciais": [
@@ -115,7 +116,8 @@
       "efeito": "Grande: silhueta vista de lado, asas fechadas, no chão. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (silhueta vista de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Garras devastadoras",
@@ -124,7 +126,8 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação"
+      "texto": "Até dois golpes por ação",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Enigma mortal",
@@ -161,7 +164,8 @@
       "efeito": "lembra algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém; o Mestre diz o quanto ela revela",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por dia. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por dia. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Oráculo pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Ver o invisível",
@@ -270,6 +274,100 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sabedoria ancestral"
+      ],
+      "texto": "Base Oráculo pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Garras devastadoras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "comoLuta.feitiços arcanos"
+      ],
+      "texto": "O conjunto genérico fica descritivo, pois não define os parâmetros de cada feitiço."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (silhueta vista de lado, asas fechadas, no chão) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "Enigma mortal"
+      ],
+      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6, propondo o enigma em voz alta -> uma ação, Velocidade 6, propondo o enigma em voz alta. A ginosfinge dirige o desafio a quem a ouve. Ela precisa formular e enunciar o enigma e dar ao desafiado a oportunidade de responder. Quem o enfrenta aceita a consequência do erro ou da recusa. Pela referência corporal ou de deslocamento do poder."
+    },
+    {
+      "campos": [
+        "Sabedoria ancestral"
+      ],
+      "texto": "**[provisório]** R3. Ativação uma ação, Velocidade 6, recordando -> uma ação, Velocidade 7, recordando. O efeito sai no Tick do Golpe. Pela régua da Arte de base. R1, aplicado em 04/11. Centelha 5 sustenta o uso extra depois da consulta diária. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "feitiços arcanos"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "230 kg, a do site, com o corpo do site (fator 0,68 sobre os 338 kg do leão escalado: leoa esguia). Nada muda: Faixa e PV ficam os do site **[conta]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Grande na borda de 5% (1,48 m², 2% acima do corte), pelas asas dobradas; Enorme em voo **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"2d6 +12 perfurante\", 6 Ticks, dano médio 19). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 19 antes; depois, garras 13,5, duas pela Rajada **[provisório]**"
+    },
+    {
+      "campos": [
+        "enigma mortal",
+        "sabedoria ancestral",
+        "ver o invisível"
+      ],
+      "texto": "poderes naturais com as bases e os usos do site e números da ficha (D-197); o Amedrontado é a condição do livro para o medo que o site nomeia, e o sono e a paralisia ficam sem regra ainda **[provisório]**"
+    },
+    {
+      "campos": [
+        "feitiços arcanos"
+      ],
+      "texto": "sem regra ainda; o site não dava Arte, e a esfinge não conjura como classe (C-037)"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 7 (D-205)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "2 para 4, o das notas do site e do 3.5"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.dieta",

@@ -81,7 +81,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe planar\" do site (1 dado, 5 Ticks, corte): a mordida de uma cabeça do tamanho da humana, boca pequena e gesto rápido, Leve (`regra-construcao.md` §7). O veneno vai em Veneno e doença. Jogada: Destreza 3 + Briga 3 + 2 × o menor entre Centelha 2 e Briga 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -98,7 +99,8 @@
       "efeito": "Peçonha de víbora (referência provisória do catálogo para Vargouille). Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose em 6 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 2 doses e produção de 1 dose em 6 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Peçonha de víbora é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
     },
     {
       "nome": "grito paralisante",
@@ -198,6 +200,50 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Peçonha do vargouille"
+      ],
+      "texto": "R1. Estoque de 2 doses e produção de 1 dose em 6 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. 112. Peçonha de víbora é a referência provisória pelo efeito na vítima; via sanguínea da mordida ou do ferrão."
+    },
+    {
+      "campos": [
+        "grito paralisante"
+      ],
+      "texto": "**[provisório]** R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação sem Velocidade escrita -> uma ação, Velocidade 6 Pela referência corporal ou de deslocamento do poder. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "2 kg no site; 11 kg na ficha, pela altura do site (a cabeça de 0,30 m, pela cabeça humana de 0,23 m e 5 kg). Os 2 kg pediriam um fator de forma de 0,18. Antes: Faixa 1 e, pela massa, 6 PV; o site dava 26. Depois: Faixa 2 e 18 PV (15 + 3). O PV desce 8 contra o site **[conta]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um \"Golpe planar\" de 1 dado e 5 Ticks, de corte (`inimigos.json`: \"1d6 +4 corte\", dano médio 7,5). A D-241 levou a Pesado só o golpe de cinco planares; aqui a classe sai do gesto: a mordida fica Leve, boca do tamanho da humana. Dano médio: 7,5 antes; depois, 5,5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "veneno persistente"
+      ],
+      "texto": "só o nome do veneno; a ferida que não fecha ficou sem regra ainda"
+    },
+    {
+      "campos": [
+        "beijo transformador"
+      ],
+      "texto": "sem regra ainda"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "o 0 do site sobe a 1, o piso da régua"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

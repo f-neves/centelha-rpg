@@ -117,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Morde a garganta ou a nuca e segura, e é com a boca que iça a presa: Média, como o leão. N0: 467 N nos caninos, estimados pelo crânio seco de um leopardo de 43,1 kg (Wroe et al. 2005), abaixo de 4.000 N. Não muda: a Força continua 5."
     },
     {
       "nome": "Patada",
@@ -133,7 +134,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garras retráteis, que seguram a presa e a árvore. Não muda. Opção, não segundo golpe (D-097)."
     }
   ],
   "habilidadesEspeciais": [
@@ -143,14 +145,16 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "na garganta ou na nuca"
+      "texto": "na garganta ou na nuca",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "investida retalhadora",
@@ -158,7 +162,8 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -235,6 +240,125 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.investida retalhadora"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "5 **[provisório]** por comparação, decisão do autor (D-178). O içar (a girafa jovem de quase 125 kg a 5,7 m, Hamilton 1976, lida só pela citação da Wikipédia; de 40% a 140% da própria massa em Sabi Sand, Balme et al. 2017) fica como contexto e não como base do número (D-159, D-118)"
+    },
+    {
+      "campos": [
+        "pesoErguido",
+        "carga"
+      ],
+      "texto": "287,60 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da conta (4,78 kg de Leve com 47,75 kg); o peso erguido sai do `calc6.mjs` (279,24 kg), e era 186,48 kg pela fórmula da D-162 (decisões 14 e 16)"
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "0,33 m² (a silhueta do macho de 60 kg, 0,38 m², escalada para 47,75 kg), 27% abaixo do corte de 0,45 m² entre Pequeno e Médio; a decisão 7 o põe Pequeno, como o lobo e a hiena (D-174)"
+    },
+    {
+      "campos": [
+        "atributos.influencia",
+        "compostura"
+      ],
+      "texto": "descem a 1 por não ser espécie social (diretriz 1); a Defesa Social cai de 14 para 10 e a Energia de 6 para 5 (D-174)"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "4 (em vigor na Etapa 2, 20/10/2026); antes: 2 **[extrapolação]**, o normal da espécie; a pesquisa não procurou resistência a fundo (D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "4, a de hoje; o levantamento a aponta como candidata a 5 (a aproximação mais curta do lote, 3 a 10 m), sem dado novo que a suba (D-174)"
+    },
+    {
+      "campos": [
+        "especialidadesNaturais"
+      ],
+      "texto": "Prontidão (penumbra) +2 por número de fonte institucional sem método (SANBI); Escalada (árvore) +2 sem número de altura além dos 15 m do San Diego Zoo; provisórias (D-174)"
+    },
+    {
+      "campos": [
+        "equilibrio",
+        "escalada"
+      ],
+      "texto": "2, novas, **[extrapolação]** do hábito de árvore; nenhum número de equilíbrio (D-174)"
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "0 por espécie solitária, sem dado contrário (D-174)"
+    },
+    {
+      "campos": [
+        "natacao"
+      ],
+      "texto": "0 por falta de dado, e não por fato contrário (D-174)"
+    },
+    {
+      "campos": [
+        "variantes.femea"
+      ],
+      "texto": "com a média de 37,5 kg (SANBI 2018) fica na Faixa 3, 2,5 kg acima do corte de 35 kg; com os 35 kg da ADW cairia na Faixa 2, no limite (D-174)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23); 67 km/h contra 58 a 60 km/h das fontes, de +12% a +16%, sem método (D-170)"
+    },
+    {
+      "campos": [
+        "dimensoes.largura"
+      ],
+      "texto": "0,28 m, estimada pela pesquisa, sem medida; não decide a área (D-147, D-174)"
+    },
+    {
+      "campos": [
+        "feitos"
+      ],
+      "texto": "o búfalo jovem de cerca de 166 kg içado (atribuído a Balme et al. 2017) continua só por resumo de busca; não fixa a Força (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a cernelha do macho (0,65 m, de onde sai a de 0,60 m do típico) continua só pela Wikipédia; os 63,1 kg, 1,41 m e 2,19 m de Bailey 1993 vieram só por resumo que cita fórum e não entram (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): sem distância por dia nem tempo de perseguição achados. O que há: arrancada de 58 a 60 km/h, sem método (San Diego Zoo; ADW; Sunquist e Sunquist 2002); área de vida de 13 a 35 km² (ADW)."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.resistencia",

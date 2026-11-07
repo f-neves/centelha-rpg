@@ -111,7 +111,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 + 7, média 10,5 (1d6 + 8 na ficha de hoje); segue a Força nova (D-115). Esmaga a presa (Wikipédia), golpe que pede o corpo atrás. Pinça real de 12,96 N (van der Meijden et al. 2013); cerca de 2.900 N na gigante"
     },
     {
       "nome": "Ferrão",
@@ -127,7 +128,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "era 1d6 − 2 + 7, média 8,5 (1d6 − 2 + 8 na ficha de hoje); segue a Força nova (D-115). Golpe rápido de ponta por cima do corpo; a ponta da gigante fura couro . Veneno sem id no catálogo. Opção (D-097)"
     }
   ],
   "habilidadesEspeciais": [
@@ -144,14 +146,16 @@
       "efeito": "Ferrão de gigante. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -234,6 +238,118 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 2: +2 Corte, +2 Perfuração e +1 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Ferrão de gigante"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta."
+    },
+    {
+      "campos": [],
+      "texto": "gigante: escalado do P. imperator de 20 cm e 30 g aos 3 m com a cauda da ficha atual do Centelha (correção da sexta rodada: vale o tamanho do site), k = 15 e k³ na massa: 101 kg (era 4,40 m, k = 22 e 320 kg); tudo do tamanho é [extrapolação] (D-105, `pedido-lotes.md` §3). A base é a fêmea, porque o macho não tem massa achada"
+    },
+    {
+      "campos": [],
+      "texto": "faixa: a massa nova põe o escorpião na Faixa 3; PV de 50 para 40, e 37 com o Vigor 4 da oitava rodada"
+    },
+    {
+      "campos": [],
+      "texto": "tamanho: decisão provisória do Arquiteto pelo item 7 da `tamanho-decisoes-5.md`; os 3 m do site passam no critério dos dois lados do corte (o Pandinus de base é Minúsculo, cerca de 0,0066 m² de cima; Grande são quatro categorias acima, Médio seriam três) e ficam. Acima do Médio porque a ficha antiga do Centelha e as duas fontes (D&D 3.5, Monstrous Scorpion, Large; Pathfinder 1, Giant Scorpion, Grande) o dão Grande. A área de 1,474 m² fica só 1,7% acima do corte do Médio, abaixo da folga de 10% que o Arquiteto pede ao tamanho escolhido; o tamanho do site passa no item 7 (quatro categorias acima da base) e fica, com a borda anotada (D-174). Do outro lado do corte, Médio: o humano perde os +3 de acerto contra ele, e o Vigor não muda, porque não sai do porte. Para ficar 10% longe do corte, seriam cerca de 3,12 m no Grande (1,595 m², 114 kg) ou 2,82 m no Médio (1,305 m², 84 kg), pelo quadrado e pelo cubo de 3 m (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Grande pela área de cima (1,47 m², a de 3,17 m² na razão (3 ÷ 4,40)², `tamanho-fichas-v2`), com a cauda grossa, 1,7% acima do corte do Médio; a área de hoje (3,87 m²) era altura × comprimento. A categoria não muda. O Alvo decide acerto e furtividade, e não o Vigor (oitava rodada)"
+    },
+    {
+      "campos": [],
+      "texto": "forca: 5 (em vigor na Etapa 2, 20/10/2026); antes: 6, reanalisada na sétima rodada na referência dos 101 kg (6,0); era 7, escolhida com os 320 kg (referência 6,8) (D-158, D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "caudaGrossa: o metassoma contou como cauda grossa (parte do corpo, com o tubo digestivo e o veneno), pela D-155 (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a altura (4 cm) e a largura (3,5 cm) da real continuam só por estimativa; a massa de 30 g só pela Wikipédia (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "habitat: a base é de floresta úmida, e a ficha antiga do bestiário é de deserto; o deserto ficou na variante (Hadrurus). Decisão provisória (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "anatomia: artrópode, provisória (D-175)"
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 402,11 kg (em vigor na Etapa 2, 20/10/2026); antes: 489,56 kg pela fórmula das decisões 14 e 16, provisório. Não tem Carga (não é quadrúpede)"
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23); 25 km/h, sem velocidade real (D-170)"
+    },
+    {
+      "campos": [],
+      "texto": "forca: 5 (edição do autor; em vigor na Etapa 2, 20/10/2026); antes: 6 (D-158), com a pinça na Musculatura 3; a pinça escalada (cerca de 2.900 N) é extrapolação"
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3, robusto pela pinça; se o autor quiser a pinça como força principal, ela é candidata a 4, como a do caranguejo (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 3 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela régua; o jejum longo vai na Especialidade natural (fome) +3, que é dado da ordem (Wikipédia, Scorpion), e não do Pandinus. Se aparecer o jejum medido do P. imperator, o nível se confere (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: Prontidão (vibração) +2 vem de escorpiões de areia (Brownell 1977), e não da espécie"
+    },
+    {
+      "campos": [],
+      "texto": "furtividade: (na toca) 1 pela emboscada do Hadrurus, outra espécie [comparação]"
+    },
+    {
+      "campos": [],
+      "texto": "atletismo: 1, novo, pela toca cavada, sem número (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "influencia e compostura: 1 por não ser espécie social (diretriz 1); as colônias de até 15 (ADW) não mostram comunicação entre eles. Se o autor ler a colônia como vida social, elas voltam a 2 (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 2 (faixa 2 a 3), reanalisado na sétima rodada com os 101 kg (era 3, posto com 320 kg); o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "bloqueio: as pinças bloqueiam como mão nua, e não como arma: a cutícula do escorpião é esclerotizada, e não a carapaça da D-100"
+    },
+    {
+      "campos": [],
+      "texto": "veneno: sem id no catálogo; o veneno real da base é fraco para gente, e o de importância médica (Tityus) está na pesquisa como comparação (D-112)"
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 4 ◆, revisto na oitava rodada pelo corpo e pela massa: +1 sobre o animal de base (Pandinus imperator, Vigor 3, presumido), o mínimo da D-176; corpo de artrópode de 101 kg (cutícula na Couraça, juntas moles, pulmão foliáceo), entre o javali (79 kg, 5) e o gorila (126 kg, 4), no lado de baixo pelo corpo; o jejum já está na Especialidade natural. Era 5 (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "base: o animal de base não tem ficha; Vigor 3 presumido; PV pela decisão 21 [provisório]"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

@@ -79,7 +79,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). A Centelha soma inteira. Jogada: Destreza 2 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -154,7 +155,8 @@
       "efeito": "ilumina como o dia; quem é sensível à luz fica Ofuscado na área. Ofuscado dá −2 nas ações de visão, inclusive ataques, sem alterar as Defesas. Cego prevalece",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Dia pelo efeito descrito. A ficha conserva seus próprios números."
     }
   ],
   "comoLuta": [
@@ -238,6 +240,59 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Luz do dia"
+      ],
+      "texto": "Base Dia pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "Canalizar luz"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Ampliação sugerida de +1d6 por 1 de Energia para aumentar a intensidade sem aumentar a área. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. Pode gastar 1 de Energia para ampliar em +1d6 a cura ou o dano deste uso. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 7 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Repúdio da morte"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 3 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, tocando um aliado moribundo -> uma ação, Velocidade 5, tocando um aliado moribundo. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Toque do bem"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5, tocando um aliado -> uma ação, Velocidade 5, tocando um aliado. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Luz do dia"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "raça parente"
+      ],
+      "texto": "Humano (D-207); os números são os do site"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "espada longa do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "canalizar luz",
+        "repúdio da morte",
+        "toque do bem",
+        "luz do dia"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesEspeciais.Canalizar luz",

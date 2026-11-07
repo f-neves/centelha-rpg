@@ -79,7 +79,8 @@
   "ataques": [
     {
       "nome": "Machado",
-      "arma": "machado"
+      "arma": "machado",
+      "justificativa": "A arma do livro (`armas.json`, `machado`): Média, Velocidade 6, Acerto +1, Defesa 0, ★C · I. Jogada: Força 5 + Armas 3"
     }
   ],
   "habilidadesEspeciais": [
@@ -88,7 +89,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Frenesi da raça Orc"
+      "texto": "Frenesi da raça Orc",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -165,6 +167,51 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Frenesi"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "110 kg, a média da raça; o site tinha 95 kg (ordem do autor: partir da raça)"
+    },
+    {
+      "campos": [
+        "sentidos"
+      ],
+      "texto": "visão noturna da raça; o site dava visão no escuro"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "machado do livro, sem armadura **[provisório]**"
+    },
+    {
+      "campos": [
+        "armas",
+        "briga"
+      ],
+      "texto": "3 e 2; o site tinha só Briga 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "bravura"
+      ],
+      "texto": "4; o site tinha 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 0; o \"couro grosso\" da raça é a Vitalidade **[provisório]**"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

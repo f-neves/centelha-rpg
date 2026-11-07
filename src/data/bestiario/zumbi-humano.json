@@ -86,7 +86,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"golpe pesado e lento\" da ficha publicada: o braço inteiro balançado, com o corpo atrás e sem técnica, é golpe Médio (`regra-construcao.md` §7), e não o Leve do site. Golpe de membro: Força × 1. A Centelha soma inteira no dano (`centelha.md`). Jogada: Força 4 + Briga 2 + 2 × o menor entre Centelha 1 e Briga 2 = 2"
     }
   ],
   "habilidadesEspeciais": [
@@ -96,7 +97,8 @@
       "classe": "livro",
       "ataque": "Pancada",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "sem dor",
@@ -110,7 +112,8 @@
       "efeito": "Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade sem dor. Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior. valor de molde, para a bancada."
     },
     {
       "nome": "últimos estertores",
@@ -124,7 +127,8 @@
       "efeito": "Fica com 1 PV e ganha Desgaste 1",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por cena, sem custo"
+      "limiteDeUso": "uma vez por cena, sem custo",
+      "justificativa": "Um uso por cena para ficar com 1 PV e ganhar Desgaste 1, pela última ação do morto-vivo. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -208,6 +212,98 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.últimos estertores"
+      ],
+      "texto": "Um uso por cena para ficar com 1 PV e ganhar Desgaste 1, pela última ação do morto-vivo. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.sem dor"
+      ],
+      "texto": "Aplicação à capacidade sem dor. Reduz em um degrau a penalidade de ferimento. Os PV seguem o dano recebido. Entre duas tolerâncias, use a maior. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "lore"
+      ],
+      "texto": "115. A carne em decomposição não identifica um agente e uma via de exposição."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O cadáver é animado após a morte."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
+    },
+    {
+      "campos": [
+        "atributos.inteligencia"
+      ],
+      "texto": "R22 e D-186. A Inteligência 0 publicada já dá imunidade aos ataques à Defesa Social ou Mental."
+    },
+    {
+      "campos": [
+        "centelha"
+      ],
+      "texto": "1, decidida pelo autor (D-185). O texto do site foi adaptado na linha \"Ambientação: No mundo de Centelha\""
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "4 por julgamento (o corpo comum sem freio de dor); o site tinha 5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "3 por julgamento; o site tinha 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "atributos sociais",
+        "vontade",
+        "virtudes"
+      ],
+      "texto": "sociais em 1, Vontade 3 e Virtudes pelo método do animal, decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "70 kg, a do vivo menos cerca de 7% de água; não há dado de zumbi, e a fonte de decomposição é de cadáver parado, não de corpo animado **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "deslocamento"
+      ],
+      "texto": "o do site, congelado; o \"lento\" do texto fica na Iniciativa e na Velocidade do golpe, e não na velocidade"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "0, pele humana podre; nada a comparar na escala além do humano"
+    },
+    {
+      "campos": [],
+      "texto": "conferidor: desde a oitava atualização do pacote (22/10/2026) o `confere_etapa2.py` confere Impacto = Vigor + Centelha e Corte e Perfuração = Centelha; a linha de Absorção (Impacto 4, Corte e Perfuração 1) passa sem mudança"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

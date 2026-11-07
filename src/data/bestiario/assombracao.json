@@ -92,7 +92,8 @@
       "tipoDano": "fenomeno",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo: o dano do incorpóreo é fenômeno (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -112,7 +113,8 @@
       "efeito": "voa sem ruído e atravessa paredes, portas e objetos; não agarra nem empurra e não pode ser empurrado. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada. R21. A travessia de matéria e a interação com objetos continuam próprias deste poder."
     },
     {
       "nome": "Dreno de vida",
@@ -131,7 +133,8 @@
       "efeito": "rouba a vida do alvo; o PV máximo dele cai, o efeito se acumula a cada toque que pega, e a assombração se fecha com o que roubou",
       "dano": "nenhum além do toque; o PV máximo do alvo cai 1d6, e ela recupera o mesmo tanto de PV",
       "resistencia": "corpo, contra a jogada do toque; quem passa não perde PV máximo por aquele toque",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Dreno pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Cria súditos",
@@ -277,6 +280,88 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Dreno de vida"
+      ],
+      "texto": "Base Dreno pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Voo e incorpóreo"
+      ],
+      "texto": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O morto-vivo atravessa matéria e mantém sua natureza de morto-vivo."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se da energia vital que rouba pelo Dreno de vida. O meio acompanha o vínculo ou alimento já descrito na ficha."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. A sombra caça os vivos e se alimenta do terror que provoca."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Voo e incorpóreo"
+      ],
+      "texto": "R21. A travessia de matéria e a interação com objetos continuam próprias deste poder."
+    },
+    {
+      "campos": [
+        "Dreno de vida"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "sem massa; o volume do corpo de base (0,079 m³) entra no PV e nas faixas como 80 kg, como no espectro **[conta]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "6, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"vs Def. Mental\" e a Influência do site saíram; a jogada é a comum, como no espectro"
+    },
+    {
+      "campos": [
+        "dreno"
+      ],
+      "texto": "tira PV máximo e cura, como a habilidade do site; o espectro tira jogadas **[provisório]**"
+    },
+    {
+      "campos": [
+        "intimidacao"
+      ],
+      "texto": "3, como no espectro, pela senhora da tumba **[provisório]**"
+    },
+    {
+      "campos": [
+        "dreno de vida",
+        "presença sepulcral",
+        "cria súditos"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

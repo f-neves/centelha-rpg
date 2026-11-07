@@ -90,7 +90,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Era 2d6 + 18, média 25. 7 + 13. Presas de até 3 m e mais de 200 mm de diâmetro (Wikipédia), mais retas que as do mamute: golpe da cabeça inteira, Pesado, × 1. N1 é o da própria presa (\"chifre fica em N0 ou N1, pelo tamanho\"), e não do porte"
     },
     {
       "nome": "Pisão (ou investida)",
@@ -106,7 +107,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [
@@ -116,21 +118,24 @@
       "classe": "livro",
       "ataque": "Pisão (ou investida)",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Pisão (ou investida)\"."
     },
     {
       "nome": "agarrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar"
+      "texto": "Atropelar",
+      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Pisão (ou investida)\"."
     }
   ],
   "comoLuta": [
@@ -192,6 +197,100 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Investida"
+      ],
+      "texto": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Pisão (ou investida)\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Atropelar"
+      ],
+      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Pisão (ou investida)\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 3: +3 Corte, +2 Perfuração e +2 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 13 igual ao mamute, proposta do Arquiteto. Alternativa: 14 pelo corpo mais pesado, que encostaria no braquiossauro (14, 28,7 t); fico no 13, e a massa maior entra só pelo peso erguido (2.585 kg contra 2.035 do mamute)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 7.200 kg (em vigor na Etapa 2, 20/10/2026); antes: 6.700 kg, o adulto típico, com a fêmea pela razão do elefante-asiático (2,7 ÷ 4,0) sobre o macho de 8 t de Larramendi 2016, **[comparação]**; era o macho de 8 t (sexta rodada, item 4)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 2.585 kg pelo `calc6.mjs` com a massa de 6.700 kg, provisório (decisões 14 e 16). Era 3.172 kg pela fórmula de FAH, e 2.914 kg com o macho de 8 t."
+    },
+    {
+      "campos": [],
+      "texto": "carga: Leve 1.005 a Máxima 4.020 kg, provisória; sai da massa, e não muda com a Força."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23); 24 km/h, −4% do elefante-asiático; sem número do mastodonte."
+    },
+    {
+      "campos": [],
+      "texto": "area: 7,17 m², vista de lado: os 8,07 m² da medição da `tamanho-fichas-v2` (macho de 8 t) escalados pela massa, (6.700 ÷ 8.000)^(2/3); era 13,92 m² (retângulo cheio). O Alvo segue Enorme."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 3 (faixa 2 a 3) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 sem dado próprio; o Fôlego +2 do elefante saiu (diretriz 2)."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): sem dado do mastodonte. Pelo elefante de trabalho, de outra família **[comparação]**: marcha de até 25 km por dia no plano, com no máximo 3 marchas pesadas seguidas (MTE, em FAO). Era a Resistência (Fôlego) +2."
+    },
+    {
+      "campos": [],
+      "texto": "empatia: 2 nova, **[extrapolação pelo elefante]**."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3 (robusto) na escala nova, como o mamute; sem dado próprio."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 11 (em vigor na Etapa 2, 20/10/2026); antes: 6 pela vida longa, extrapolada dos elefantes (D-164)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes: comprimentos e largura são extrapolação da Bestiarista-3 para o macho, escalados com a altura pelo cubo da massa (fator 0,943); não decidem o Alvo, que vem do `calc.mjs`."
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: Era 2d6 + 36, média 43. 7 + 26. O corpo inteiro (seção 7, × 2) **[extrapolação]**. O melhor ataque. Opção (D-097)"
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 33 para 20; Investida 33, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - sentidos: nada achado **[sem dado]**. O faro do elefante não foi passado ao mastodonte, que é de outra família."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: mais baixo que o mamute e mais maciço, de pelve muito larga; presas superiores longas e retas, as de baixo reduzidas ou ausentes; cauda relativamente longa; pelagem pouco conhecida (Larramendi; Wikipédia). Molares de cúspides em cone, para ramos e madeira (NPS)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

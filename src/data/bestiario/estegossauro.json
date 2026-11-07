@@ -90,7 +90,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 30, média 37. 7 + 22. Golpe de cauda do corpo inteiro: Pesada e × 2 (seção 7). Perfuração e não Impacto: são quatro espinhos de 60 a 90 cm que furam, e o dano achado é furo em osso (Carpenter 2005). N1 é o do próprio espinho (seção 7: \"garra e chifre ficam em N0 ou N1, pelo tamanho\"), e não do porte; força em N não achada."
     }
   ],
   "habilidadesEspeciais": [
@@ -99,14 +100,16 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar"
+      "texto": "Atropelar",
+      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte chama a manobra de atropelar e a adapta à antiga regra de Investida. Não declara uma investida própria."
     }
   ],
   "comoLuta": [],
@@ -160,6 +163,74 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Atropelar"
+      ],
+      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte chama a manobra de atropelar e a adapta à antiga regra de Investida. Não declara uma investida própria."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 4: +4 Corte, +4 Perfuração e +2 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 11 pela comparação com o mamute (13), proposta do Arquiteto; se o mamute mudar, esta se refaz."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 1.028,10 kg (em vigor na Etapa 2, 20/10/2026); antes: 1.028,32 kg pelo `calc6.mjs`, provisório (decisões 14 e 16), com os 3.800 kg. Era 1.011 kg (4.000 kg de trabalho) e, antes, 1.988 kg pela fórmula de FAH."
+    },
+    {
+      "campos": [],
+      "texto": "carga: Leve 570 a Máxima 2.280 kg, provisória (era Leve 600 pelos 4.000 kg); sai da massa; a fração de 20% não tem análogo vivo citado."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). A corrida de 21 km/h fica de 17 a 37% acima da estimativa (secundária). Não corrigido."
+    },
+    {
+      "campos": [],
+      "texto": "area: 8,28 m², vista de lado, da medição da `tamanho-fichas-v2`; era 20,3 m² (retângulo cheio, com as placas e a cauda). O Alvo segue Enorme. Decisão provisória: usar o número do `calc.mjs`."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 4 (faixa 3 a 4) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 4.100 kg (em vigor na Etapa 2, 20/10/2026); antes: 3,8 t do *S. ungulatus* de 7 m (Paul 2016, via Wikipédia; método não conferido), sem consenso entre os estudos. Alternativas: 3,5 t (*S. stenops*, Paul 2016); Sophie 1,56 t volumétrico, subadulta (Brassey 2015); grandes 5,0 a 5,3 t; 6,95 t para o YPM 1853 por regressão (Benson 2014, Dataset S1, que bate de perto com o 6,9 t da Wikipédia). Era 4 t. Na sexta rodada a faixa, o PV, o peso erguido e a Carga passaram aos 3,8 t (faixa e PV não mudam)."
+    },
+    {
+      "campos": [],
+      "texto": "social: tratado como não social (Influência e Perspicácia 1), embora haja pegadas de grupos de várias idades **[extrapolação]**; ver desvios."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2 pela ferida curada dos espinhos, sem duração nem frio (diretriz 2)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 2 (animal comum), provisória; sem medida de força."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.altura: 2,9 m (a Sophie), que pode incluir as placas; não decide o Alvo, que vem do `calc.mjs`."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 1,6 m estimada pelo Arquiteto [sem dado]; só serve ao espaço."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.percepcao",

@@ -81,7 +81,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Classe pelo gesto, sem usar Destreza no dano; jogada 6 com Briga"
     }
   ],
   "habilidadesEspeciais": [
@@ -97,7 +98,8 @@
       "efeito": "Ignora doença e veneno. Sem órgãos vitais animais, um golpe nessas partes não recebe dano extra por ponto vital. Surpresa e Tamanho continuam valendo. O ferimento do golpe continua. Pode carregar o agente e expor outros, a critério do Mestre",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Casca resistente",
@@ -180,6 +182,38 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 2: +2 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo vegetal"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Prontidão"
+      ],
+      "texto": "Antes: 1."
+    },
+    {
+      "campos": [
+        "Virtudes"
+      ],
+      "texto": "Antes: Compaixão 0."
+    },
+    {
+      "campos": [
+        "Garra"
+      ],
+      "texto": "Antes: ataque genérico perfurante, Acerto 0; agora Corte, Acerto +1, pelo gesto."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

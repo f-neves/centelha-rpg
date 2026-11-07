@@ -87,7 +87,8 @@
       "tipoDano": "fenomeno",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O toque gélido que atravessa a armadura (site), gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site gravava impacto. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -107,7 +108,8 @@
       "efeito": "voa sem ruído e atravessa paredes e portas; não agarra nem empurra e não pode ser empurrado. Na forma incorpórea atravessa matéria sem levar corpos materiais. Não pode agarrar nem empurrar",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada. R21. A travessia de matéria e a interação com objetos continuam próprias deste poder."
     },
     {
       "nome": "Toque corruptor",
@@ -144,7 +146,8 @@
       "efeito": "um gemido que gela o sangue; quem falha foge tomado de pavor",
       "dano": "nenhum",
       "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica Abalado até o fim da cena",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Possessão",
@@ -162,7 +165,8 @@
       "efeito": "Domina um hospedeiro indefeso. Usa o corpo e os sentidos dele com a própria mente, controlando suas ações. Dano dá nova resistência. A morte do hospedeiro expulsa o possuidor no local",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Alvo indefeso, uma nova resistência ao sofrer dano e expulsão na morte do hospedeiro, pela possessão corporal. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
     },
     {
       "nome": "o corpo do possuído",
@@ -176,7 +180,8 @@
       "efeito": "Domina um hospedeiro indefeso. Usa o corpo e os sentidos dele com a própria mente, controlando suas ações. Dano dá nova resistência. A morte do hospedeiro expulsa o possuidor no local",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo contra Defesa Mental com o Resistir do livro",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Alvo indefeso, uma nova resistência ao sofrer dano e expulsão na morte do hospedeiro, pela possessão corporal. valor de molde, para a bancada."
     },
     {
       "nome": "Telecinese",
@@ -195,7 +200,8 @@
       "efeito": "move objetos pela sala sem tocá-los, com a força de uma pessoa comum; arremessa o que move",
       "dano": "o do objeto arremessado, a critério do Mestre",
       "resistencia": "esquiva, contra o objeto arremessado",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Arremesso pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Renascer da fúria",
@@ -209,7 +215,8 @@
       "efeito": "Retorna com 1 PV após alguns dias, pelo vínculo com o lugar e a injustiça que o prendem. Destruir a âncora ou resolver o vínculo impede o retorno",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "uma vez por dia, sem custo"
+      "limiteDeUso": "uma vez por dia, sem custo",
+      "justificativa": "Retorno com 1 PV após alguns dias, uma vez por dia. O vínculo é o lugar e a injustiça que o prendem. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -306,6 +313,138 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Telecinese"
+      ],
+      "texto": "Base Arremesso pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Possessão"
+      ],
+      "texto": "Antes: Alvo indefeso, uma nova resistência ao sofrer dano e expulsão na morte do hospedeiro, pela possessão corporal. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Lamento aterrador"
+      ],
+      "texto": "Base Mortalha pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo incorpóreo"
+      ],
+      "texto": "Limites físicos da passagem incorpórea, restritos à própria forma. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Renascer da fúria"
+      ],
+      "texto": "Retorno com 1 PV após alguns dias, uma vez por dia. O vínculo é o lugar e a injustiça que o prendem. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.o corpo do possuído"
+      ],
+      "texto": "Alvo indefeso, uma nova resistência ao sofrer dano e expulsão na morte do hospedeiro, pela possessão corporal. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O morto-vivo atravessa matéria e mantém sua natureza de morto-vivo."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se com o tempo junto ao lugar da injustiça que o prende. O meio acompanha o vínculo ou alimento já descrito na ficha."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. O vínculo com a injustiça que o retém impede outra vontade de comandá-lo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo incorpóreo"
+      ],
+      "texto": "R21. A travessia de matéria e a interação com objetos continuam próprias deste poder."
+    },
+    {
+      "campos": [
+        "Toque corruptor"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Lamento aterrador"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 6. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Possessão"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6, entrando no corpo de um alvo ao alcance do toque -> uma ação, Velocidade 6, entrando no corpo de um alvo ao alcance do toque. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Telecinese"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Renascer da fúria"
+      ],
+      "texto": "**[provisório]** R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "sem massa; o volume do corpo de base escalado pela altura (0,0666 m³) entra no PV e nas faixas como 67 kg **[conta]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "6, o do site; para a alma sem corpo o Vigor mede o quanto ela aguenta antes de se desfazer **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o tipo impacto do site virou fenômeno (C-041) **[provisório]**"
+    },
+    {
+      "campos": [
+        "possessão"
+      ],
+      "texto": "o livro não tem regra de possessão (manual 4.3); a ficha a monta pela condição Dominado, com a base Fascinação 4 do site, e deixa o que acontece com o corpo possuído sem regra ainda **[provisório]**"
+    },
+    {
+      "campos": [
+        "intimidacao"
+      ],
+      "texto": "2, pelo lamento **[provisório]**"
+    },
+    {
+      "campos": [
+        "corpo incorpóreo",
+        "toque corruptor",
+        "lamento aterrador",
+        "possessão",
+        "telecinese"
+      ],
+      "texto": "números sugeridos pela ficha; as bases de Espírito, Morte e o lamento são sugestão da ficha, e as de Fascinação e Forças são do site (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

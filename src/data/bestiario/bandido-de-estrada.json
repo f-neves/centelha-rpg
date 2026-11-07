@@ -83,7 +83,8 @@
   "ataques": [
     {
       "nome": "Facão",
-      "arma": "espada-curta"
+      "arma": "espada-curta",
+      "justificativa": "A arma do livro (`armas.json`, `espada-curta`), com os números do \"Facão\" do site: Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Jogada: Destreza 3 + Armas 2"
     }
   ],
   "habilidadesEspeciais": [
@@ -92,7 +93,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
+      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -159,6 +161,26 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sem inimizades naturais"
+      ],
+      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "bravura"
+      ],
+      "texto": "2; o site tinha 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "card e equipamento"
+      ],
+      "texto": "o couro está sempre vestido (D-188); a frase da linha Absorção dá os números com ele"
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.social",

@@ -74,7 +74,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "Arma do catálogo, espada-longa; jogada maior entre Força e Destreza + Armas 4 + 2 × o menor entre Centelha 4 e Armas 4; um ataque por ação"
     }
   ],
   "habilidadesEspeciais": [
@@ -95,7 +96,8 @@
       "efeito": "quem falha fica Abalado. Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste",
       "dano": "nenhum",
       "resistencia": "Influência + Integridade da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa ignora a aura nesta cena",
-      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder"
+      "limiteDeUso": "Contínuo, sem custo. A imunidade individual segue a resistência deste poder",
+      "justificativa": "Base Pavor pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Teleporte",
@@ -114,7 +116,8 @@
       "efeito": "Reaparece num ponto que vê ou conhece bem no mesmo plano, levando o que carrega. Pode sair de um agarrão. Outros viajantes só seguem dentro do limite declarado, voluntários e em contato",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Antes: Velocidade 8, alcance 12 m visíveis, viajantes: o próprio arconte. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 3, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Farejar o mal",
@@ -150,7 +153,8 @@
       "efeito": "assume a forma canina da Variante ou retorna à forma de guardião. Use o perfil da forma. O restante é herdado. O equipamento só acompanha quando indicado",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo"
+      "limiteDeUso": "à vontade. Usar repetidamente causa esforço e pode levar ao cansaço. Sem custo",
+      "justificativa": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Círculo protetor",
@@ -169,7 +173,8 @@
       "efeito": "os protegidos somam +2 em Esquiva, Bloqueio e Defesa Mental contra ataques ou efeitos de criaturas malignas",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "Base Círculo pelo efeito descrito. A ficha conserva seus próprios números."
     }
   ],
   "comoLuta": [
@@ -284,6 +289,56 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Círculo protetor"
+      ],
+      "texto": "Base Círculo pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Forma canina"
+      ],
+      "texto": "Antes: Velocidade 8 para assumir o perfil da forma. Demais campos seguem a transformação declarada. valor de molde, para a bancada. Antes: Velocidade 8. Velocidade 5 pelo grau 3 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Teleporte"
+      ],
+      "texto": "Antes: Velocidade 8, alcance 12 m visíveis, viajantes: o próprio arconte. Conserva a rota descrita. Quando a distância faltava, 36 m permite reposicionamento na cena. 1 uso grátis por cena. Cada uso extra custa 1 de Energia. valor de molde, para a bancada. Base de Conjuração, grau 3, pelo deslocamento ou chamado. Velocidade 8. valor de molde, para a bancada. Base Fresta pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Aura de ameaça"
+      ],
+      "texto": "Base Pavor pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "Teleporte"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Sociabilidade"
+      ],
+      "texto": "2 -> 0; Defesa Social 6 -> 6."
+    },
+    {
+      "campos": [
+        "Círculo protetor"
+      ],
+      "texto": "Absorção +2 -> +0; Esquiva/Bloqueio/Defesa Mental +0 -> +2 contra o mal."
+    },
+    {
+      "campos": [
+        "pericias"
+      ],
+      "texto": "razões genéricas substituídas por evidência individual de Hound Archon."
+    }
+  ],
   "revisao": [
     {
       "campo": "comportamento.atividade",

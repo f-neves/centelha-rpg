@@ -103,7 +103,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O ataque do site (\"Garras e presas\", 1 dado, 5 Ticks, perfurante): as bocas que se lançam da massa, bote rápido, Leve (`regra-construcao.md` §7). A Centelha soma inteira. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -119,7 +120,8 @@
       "efeito": "Médio: amontoada. Grande: espalhada. Vale o Tamanho da postura atual. Cada troca entre essas posturas custa 1 Tick e vale até ser desfeita",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Médio (amontoada) e Grande (espalhada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
     },
     {
       "nome": "muitas bocas",
@@ -127,7 +129,8 @@
       "classe": "livro",
       "ataque": "Bocas",
       "categoria": "inato",
-      "regra": "rajada"
+      "regra": "rajada",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "agarrar",
@@ -135,7 +138,8 @@
       "classe": "livro",
       "ataque": "Bocas",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Sugar o sangue",
@@ -144,7 +148,8 @@
       "ataque": "Bocas",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "as bocas presas drenam o sangue"
+      "texto": "as bocas presas drenam o sangue",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Engolir em vida",
@@ -158,7 +163,8 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 10 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "2d6 de Impacto uma vez a cada 6 Ticks",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
+      "justificativa": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
     },
     {
       "nome": "Coro enlouquecedor",
@@ -195,7 +201,8 @@
       "efeito": "pedra e terra viram lama: Terreno difícil (`condicoes.json`) para todos, menos para ela",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Chão Traiçoeiro pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Olhos por todo lado",
@@ -209,7 +216,8 @@
       "efeito": "Ignora apenas o −2 de Flanqueado. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "nenhum. Sem custo"
+      "limiteDeUso": "nenhum. Sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "Massa amorfa",
@@ -223,7 +231,8 @@
       "efeito": "Um golpe dirigido a ponto vital causa apenas o dano comum. Surpresa e Tamanho continuam valendo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -290,6 +299,100 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Terreno lodoso"
+      ],
+      "texto": "Base Chão Traiçoeiro pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sugar o sangue"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.muitas bocas"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Engolir em vida"
+      ],
+      "texto": "2d6 de Impacto por 6 Ticks e ferida de 10 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Médio (amontoada) e Grande (espalhada). Troca: 1 Tick, pela mudança corporal distinta do voo; custo da regra, não estimativa."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Olhos por todo lado"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Massa amorfa"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Coro enlouquecedor"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 5 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "Terreno lodoso"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "medidas"
+      ],
+      "texto": "o diâmetro de 1,5 m do site é o da massa espalhada; amontoada, 0,8 m pela massa **[conta]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "0; o site tinha 1 (D-205) **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Bocas Leve no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "compaixao"
+      ],
+      "texto": "1, o piso da régua; o site tinha 0"
+    },
+    {
+      "campos": [
+        "coro enlouquecedor",
+        "terreno lodoso",
+        "olhos por todo lado"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "aparencia",

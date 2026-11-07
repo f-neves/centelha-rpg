@@ -79,7 +79,8 @@
   "ataques": [
     {
       "nome": "Bordão",
-      "arma": "bordao"
+      "arma": "bordao",
+      "justificativa": "A arma do livro (`armas.json`, `bordao`, \"também chamada Cajado\"): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, Impacto, alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). O site dava \"Forcado/Pancada\", 1 dado, duas mãos, Impacto. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
     }
   ],
   "habilidadesEspeciais": [
@@ -89,14 +90,16 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "horda",
-      "texto": "o camponês é capanga Comum"
+      "texto": "o camponês é capanga Comum",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Sem inimizades naturais",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo"
+      "texto": "Relação inicial do Humano: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, Neutro com os demais. A relação vale do Humano para o outro povo",
+      "justificativa": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -168,6 +171,38 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Sem inimizades naturais"
+      ],
+      "texto": "Antes: +1 com Elfo e Meio-Elfo, −1 com Orc e Meio-Orc, conforme as exceções assimétricas de Raças. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Horda"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "o bordão do livro no lugar do forcado do site **[provisório]**"
+    },
+    {
+      "campos": [
+        "armas"
+      ],
+      "texto": "1; o site gravava o ataque com Briga **[provisório]**"
+    },
+    {
+      "campos": [
+        "bravura"
+      ],
+      "texto": "1; o site tinha 3 **[provisório]**"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.armas",

@@ -102,7 +102,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Pica várias vezes, sem perder o ferrão (Wikipédia, Yellowjacket): isso é o ataque de cada ação, e não golpes somados (D-097)"
     }
   ],
   "habilidadesEspeciais": [
@@ -118,7 +119,8 @@
       "efeito": "O dano é automático, sem jogada de ataque; a Absorção conta. Sair do quadrado ocupado evita os próximos pulsos. O veneno só entra se o pulso causar ao menos 1 PV depois da Absorção, gastando uma dose da reserva declarada",
       "dano": "1d6 + 3 de Perfuração",
       "resistencia": "sem jogada de ataque; a Absorção conta",
-      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo"
+      "limiteDeUso": "no máximo um pulso por alvo a cada 6 Ticks, sem custo",
+      "justificativa": "R33. Antes: resumo provisório com 1d6 + 3 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 3 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
     },
     {
       "nome": "Corpo de enxame",
@@ -132,7 +134,8 @@
       "efeito": "Arma comum não fere este enxame. Ataque de área causa seu dano inteiro em cada quadrado coberto, sem dividir. O quadrado cheio é Médio para atacar e ser alvo. O Tamanho de cada indivíduo só descreve onde cabe e por onde passa. PV e dispersão seguem a quantidade de indivíduos de cada quadrado",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R32 e R34. Arma comum não fere este enxame. Escolha: são insetos pequenos em nuvem. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
     },
     {
       "nome": "Posturas de combate",
@@ -146,7 +149,8 @@
       "efeito": "Anatomia do indivíduo: Minúsculo: de cima, asas abertas, o indivíduo. Minúsculo: pousado, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. O quadrado cheio é Médio para atacar e ser alvo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Minúsculo (de cima, asas abertas, o indivíduo) e Minúsculo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Peçonha do enxame de vespas",
@@ -161,7 +165,8 @@
       "efeito": "Peçonha do enxame de vespas. Aplicar os parâmetros de Veneno e doença",
       "dano": "apenas o pool do veneno",
       "resistencia": "Vigor + Resistência pelo relógio do veneno",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose em 4 horas. Cada uso gasta 1 dose",
+      "justificativa": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Cada dose corresponde à ação coletiva do enxame. 112. Potência 6, início em 1 minuto, intervalo de 1 hora, pool 2 de PV e Desgaste 1 sugeridos para a irritação de várias picadas pequenas. R28 e R33. Antes: inoculação pelo ataque nomeado. Agora: pelo pulso com ao menos 1 PV depois da Absorção; doses, produção e perfil preservados."
     }
   ],
   "comoLuta": [],
@@ -220,5 +225,111 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Pulso do enxame"
+      ],
+      "texto": "R33. Antes: resumo provisório com 1d6 + 3 a cada 5 Ticks e teste para agir cercado. Agora: 1d6 + 3 de Perfuração, automático no começo da ação, no máximo uma vez por alvo a cada 6 Ticks, com Absorção e sem teste para agir. Dano preservado do resumo anterior para não recalibrar a criatura nesta rodada: valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo de enxame"
+      ],
+      "texto": "R32 e R34. Arma comum não fere este enxame. Escolha: são insetos pequenos em nuvem. Antes: Tamanho de combate dependia da área apresentada; agora: Médio por quadrado cheio. Tamanho equivalente de PV preservado, separado do Tamanho de combate."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Minúsculo (de cima, asas abertas, o indivíduo) e Minúsculo (pousado, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Peçonha do enxame de vespas"
+      ],
+      "texto": "R1. Estoque de 3 doses e produção de 1 dose em 4 h, valor de molde, para a bancada. A reserva limita as inoculações próximas e se recompõe fora da luta. Cada dose corresponde à ação coletiva do enxame. 112. Potência 6, início em 1 minuto, intervalo de 1 hora, pool 2 de PV e Desgaste 1 sugeridos para a irritação de várias picadas pequenas. R28 e R33. Antes: inoculação pelo ataque nomeado. Agora: pelo pulso com ao menos 1 PV depois da Absorção; doses, produção e perfil preservados."
+    },
+    {
+      "campos": [
+        "anatomia"
+      ],
+      "texto": "artrópode alado, anatomia provisória (D-175)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23). Voo de 37 km/h contra 20 km/h de fonte fraca sem método, +85%; Voo fica 0 porque só sobe (D-136, D-170)"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "0,00 kg pela fórmula provisória (decisões 14 e 16); carga \"não (enxame)\" (D-162, D-169)"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "24 por quadrado cheio (Etapa 2, 20/10/2026: o quadrado cheio conta como criatura Pequena, decisão de 20/10/2026; metade dos indivíduos, metade do PV); antes, 7 na Faixa 1 pela decisão 21 (5 + Vigor), o de um indivíduo."
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "Minúsculo de asas abertas e fechadas; o enxame usa o tamanho que apresenta no acerto (D-077, D-166)"
+    },
+    {
+      "campos": [
+        "dimensoes"
+      ],
+      "texto": "altura (5 mm) e largura (4 mm) estimadas pela Bestiarista, sem fonte; a envergadura (2 cm) vem de fonte fraca. A largura de 4 mm arredonda para 0,00 no espaço (D-147, D-174)"
+    },
+    {
+      "campos": [
+        "influencia"
+      ],
+      "texto": "de 2 para 1 pela diretriz 1, que trata a vespa como não social. A exibição de alarme é real e faz gente recuar pela picada (D-107); ver os desvios (D-174)"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "2 pelo levantamento; nenhum feito de frio, fome, veneno ou ferida (D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "0 pelo levantamento; o zumbido que entrega é texto da ficha de hoje, sem fonte (D-174)"
+    },
+    {
+      "campos": [
+        "especialidade"
+      ],
+      "texto": "Prontidão (à entrada do ninho) 1, escolha minha pelo alarme descrito na Wikipédia; a pesquisa não diz quantas operárias defendem (D-174)"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 0 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "veneno sem id no catálogo (D-112)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a massa de 84 mg continua só pela Wikipédia (Steinmetz e Schmolz 2005 foi localizado, mas o número não foi conferido nele); a altura (5 mm) e a largura (4 mm) continuam só por estimativa (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "fonte: a vida da operária de cerca de 2 semanas (Vigor 2) continua só pela Wikipédia, que cita Potter 1964 (D-174)"
+    }
+  ],
   "revisao": []
 }

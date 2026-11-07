@@ -112,7 +112,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 + 8, média 11,5. A arma principal contra predador e gente (ADF&G 2020): golpe de membro, × 1."
     },
     {
       "nome": "Pisão (ergue-se e pisoteia)",
@@ -128,7 +129,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     },
     {
       "nome": "Galhada (só macho)",
@@ -144,7 +146,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": 2
+      "bloqueiaComoArma": 2,
+      "justificativa": "Era 1d6 + 8, média 11,5. Chifrada de galhada como no Pathfinder; uso da galhada em luta . Opção, não golpe somado (D-097)."
     }
   ],
   "habilidadesEspeciais": [
@@ -153,7 +156,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -223,6 +227,128 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "comoLuta.Atropelar"
+      ],
+      "texto": "O dano do trajeto vem da regra geral. O golpe próprio serve contra um alvo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 7 pelas âncoras do autor, igual ao cavalo; sem força medida (D-158, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "influencia: 1 pela diretriz 1 (não é espécie social); a ficha de hoje tinha 2 pelo alce que fere mais gente que o urso no Alasca (ADF&G 2020). Se o autor quiser a Influência de quem faz gente recuar fora da espécie social, o alce é o caso a rever (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2, e não o 3 do levantamento: o nado de 20 km e a travessia de 10 km são distância, e não Resistência (diretriz 2); o dado fica na nota de pesquisa (jornada) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidade natural Resistência (frio) +1: nova, pelo inverno boreal, sem temperatura medida; provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: a Resistência (Fôlego) 2 saiu; o dado fica na nota de pesquisa (jornada) (quinta rodada, item 1; D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "empatia: 0 pela vida solitária (ADW); provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 2, o animal comum; a tração \"baixa demais\" de Pechora não tem número (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "nado: congelado em 2 m por Tick (decisão 23). Pela fórmula da D-124 com o Vigor 5, daria cerca de 2,6 m/s (9,3 km/h), perto dos 9,5 km/h reais; não refeito (D-170, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 440 kg (em vigor na Etapa 2, 20/10/2026); antes: 407,5 kg, a média simples dos meios de faixa do macho (480) e da fêmea (335), ADW; era o macho de 480 kg (sexta rodada, item 4). A área fica, porque as dimensões já eram as do adulto dos dois sexos."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 700 kg pela conta das decisões 14 e 16 com a massa de 407,5 kg, provisório; a fórmula está com outra frente (D-162, D-169)."
+    },
+    {
+      "campos": [],
+      "texto": "carga: 81,5 kg de Leve pela conta da D-122 (sem carga medida, estrutura de 20% por leitura do Arquiteto), provisória (D-169, D-172)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). A terra bate (+2%); o nado fica 20% abaixo do real (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): nado de até 20 km a até 9,5 km/h (ADW) **[medido]**; travessia de cerca de 10 km no estreito de Clarence (ADF&G) **[medido]**; corrida sustentada de 9,6 km/h (ADW) **[medido]**; trenó de mensageiros na Suécia, cerca de 370 km por dia (Jackson 2009, via Wikipédia), fonte secundária e sem peso."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 0,70 m estimada pelo Arquiteto, sem fonte (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.altura: é a cernelha; as fontes divergem de 1,8 a 2,3 m no topo da faixa (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "variantes.femea e variantes.machoAlasca: Alvo [sem dado] sem dimensões próprias; Grande provável pela massa (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: Era 2d6 + 16, média 23. \"Ergue-se nas patas de trás e pisoteia com força\" (ADF&G 2020): o corpo inteiro desce, × 2. O melhor ataque."
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 21 para 14; Investida 21, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [
+        "acerto"
+      ],
+      "texto": "células vazias do Pisão e da Galhada para +0, como o Coice e o JSON já publicado; sem mudança de poder."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: Prontidão (faro) +2, natural; alcance **[sem dado]**. Olfato \"excepcional\" (ADW)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: Prontidão (audição) +2, natural; alcance **[sem dado]**. Orelhas que giram de forma independente (ADW)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - visão: fraca (ADW), sem número."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Prende a respiração: até 50 s submerso, comendo plantas aquáticas (Franzmann e Schwartz 2007)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: galhada só nos machos, renovada todo ano, de até 35 kg e 2,048 m de envergadura (ADW); pelagem de dourado a quase preto, conforme a estação e a idade (ADF&G)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

@@ -108,7 +108,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "O site dava \"Garras e presas\" de 2 dados e 6 Ticks; o chuul ataca com as pinças, como o caranguejo-gigante do molde: golpe que pede o corpo atrás (Média), com os 6 Ticks do site; a pinça esmaga, Impacto; carapaça bloqueia como arma (D-100). A Centelha soma inteira. Prende quem acerta (Manobras). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Mandíbulas",
@@ -124,7 +125,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Boca pequena e rápida, Leve (regra-construcao §7). Só contra quem está preso nos tentáculos (Manobras). Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [
@@ -134,7 +136,8 @@
       "classe": "livro",
       "ataque": "Pinça",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Tentáculos paralisantes",
@@ -149,7 +152,8 @@
       "efeito": "passa a presa da Pinça para os tentáculos da boca, que a seguram (Agarrado) e deixam a Pinça livre; os tentáculos não ferem, mas o veneno deles entra pela pele (Veneno e doença) uma vez por dose. Após 6 Ticks, uma nova jogada de veneno exige uma nova ação de toque dos tentáculos e o gasto de outra dose da reserva. Permanecer preso não reaplica o Curare",
       "dano": "nenhum",
       "resistencia": "corpo, pela regra do veneno; para se soltar, a jogada de Agarrar do livro contra a Força 7 + Briga 5 dele, com o Agarrão +2",
-      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno"
+      "limiteDeUso": "O corpo guarda 3 doses e produz 1 dose a cada 4 horas. Cada uso gasta 1 dose. Nada acelera a produção. Uma aplicação usa a mesma dose para o contato e seu veneno",
+      "justificativa": "Antes: nova jogada de veneno a cada 6 Ticks preso. L16: uma rolagem por dose. Cada repetição exige novo toque e outra dose da reserva existente de 3, com produção de 1 em 4 horas."
     },
     {
       "nome": "Mandíbulas devoradoras",
@@ -178,7 +182,8 @@
       "efeito": "Ignora o efeito do veneno que o atingiria. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     },
     {
       "nome": "arrastar para o fundo",
@@ -193,7 +198,8 @@
       "efeito": "Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
     },
     {
       "nome": "paralisia dos tentáculos",
@@ -207,7 +213,8 @@
       "efeito": "cada dose tem uma única rolagem pela régua de resistir e tira de 0 a 3 de Destreza pela cena. Destreza 0 deixa Paralisado, com Defesas Físicas 0 e mente livre",
       "dano": "nenhum adicional",
       "resistencia": "pela regra do Curare em Veneno e doença",
-      "limiteDeUso": "usa a mesma dose aplicada pelos Tentáculos paralisantes. Outra rolagem exige novo toque e outra dose"
+      "limiteDeUso": "usa a mesma dose aplicada pelos Tentáculos paralisantes. Outra rolagem exige novo toque e outra dose",
+      "justificativa": "Antes: paralisia automática por 6 Ticks e uma referência histórica a Imobilizado ao perder 3 de Destreza. L16: perde de 0 a 3 de Destreza pela cena. Só a Destreza 0 deixa Paralisado."
     }
   ],
   "comoLuta": [
@@ -275,6 +282,93 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "veneno"
+      ],
+      "texto": "L16: Curare é efeito único por dose, com uma rolagem de 0 a 3 de Destreza pela cena. A passagem do tempo, sozinha, não aplica outra dose."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.paralisia dos tentáculos"
+      ],
+      "texto": "Antes: paralisia automática por 6 Ticks e uma referência histórica a Imobilizado ao perder 3 de Destreza. L16: perde de 0 a 3 de Destreza pela cena. Só a Destreza 0 deixa Paralisado."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Tentáculos paralisantes"
+      ],
+      "texto": "Antes: nova jogada de veneno a cada 6 Ticks preso. L16: uma rolagem por dose. Cada repetição exige novo toque e outra dose da reserva existente de 3, com produção de 1 em 4 horas."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.arrastar para o fundo"
+      ],
+      "texto": "Aplicação à capacidade arrastar para o fundo. Ao manter o agarrão, desloca-se com a presa a metade da Batalha, até o peso que arrasta. O movimento integra a manutenção. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 5: +5 Corte, +5 Perfuração e +3 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Imune a veneno"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "Tentáculos paralisantes"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Três doses preservam a reserva para mais de uma presa. Sugestão de 3 doses e 4 h por dose para repor fora da luta. valor de molde, para a bancada (3 doses e produz 1 dose a cada 4 horas)."
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "7; o site tinha 9 **[provisório]**"
+    },
+    {
+      "campos": [
+        "area"
+      ],
+      "texto": "1,90 m², de cima; medidas das partes estimadas **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 5, o do caranguejo-gigante **[provisório]**"
+    },
+    {
+      "campos": [
+        "bloqueio"
+      ],
+      "texto": "2, pelas pinças; o site não gravava Bloqueio **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataques"
+      ],
+      "texto": "Pinça Média e Mandíbulas Leve no lugar das \"Garras e presas\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "tentáculos paralisantes",
+        "mandíbulas devoradoras"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

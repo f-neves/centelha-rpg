@@ -95,7 +95,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "3,5 − 2 + 5. Era 1d6 − 2 + 6, média 7,5: a Força desce a 5 na sétima rodada (D-115). Seção 7 da regra: Leve é o gesto rápido de boca pequena. Cabeça pequena, 20 a 25 dentes por fileira de cima, cônicos, finos e apontando para a frente (Wikipédia). Força × 1. N0 : nenhuma força de mordida achada, e o dente é de pegar peixe."
     }
   ],
   "habilidadesEspeciais": [],
@@ -148,6 +149,66 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 5 ◆, reanalisada na sétima rodada pela massa de 130 kg (referência 6) e pelo corpo de nadador que pega peixe, com o golfinho (260 kg, 5) e o elasmossauro (1,9 t, 7); era 6, escolhida com 500 kg (D-158, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 393,26 kg (em vigor na Etapa 2, 20/10/2026); antes: 375,58 kg pelo `calc6.mjs`, provisório, com os 130 kg e a Força 5. Era 457,26 kg com a Força 6 e 571,9 kg pelos 500 kg de trabalho. A ficha de hoje dizia \"não se aplica (nadador)\"; o número entra pelo pedido v3 e vale, na água, como empurrar."
+    },
+    {
+      "campos": [],
+      "texto": "carga: não se aplica (nadador)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). O nado de 14 km/h bate com o cruzeiro de Massare (4 m/s, −1%) e fica muito acima do recalculado por Motani 2002."
+    },
+    {
+      "campos": [],
+      "texto": "alvo: Médio (Etapa 2, 20/10/2026), pelo corpo esguio, na beira do corte (resposta do autor, fim da seção 13); antes: **na borda.** Grande pela silhueta de cima (1,47 m²), só 1,2% acima do corte de 1,45 m²; os outros dois métodos da `tamanho-fichas-v2` davam Médio. A área depende da largura (0,8 m, sem dado), estimada pelo Arquiteto quando a massa de trabalho era 500 kg. Na sexta rodada a área ficou (`--area fixa`, extinto reestimado); um corpo de 130 kg com 3,2 m pode ser mais estreito que 0,8 m, e com menos de 1,2% de folga o Alvo cairia em Médio. Fica Grande pela conta, como hoje e como o Pathfinder (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 143 kg (em vigor na Etapa 2, 20/10/2026); antes: referência nova de cerca de 130 kg [comparação], pelo Seeleyosaurus de Zhao 2026 levado pelo cubo a 3,2 m; era 500 kg [sem dado], estimativa do Arquiteto pela tartaruga-de-couro. Na sexta rodada a faixa, o PV e o peso erguido passaram aos 130 kg: Faixa 3 (até 220 kg), era 4; PV 34, era 42."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.caudaGrossa: marcada \"sim\" na conta do Arquiteto; a D-155 nomeia o crocodilo, os dinossauros e o mosassauro, e não o plesiossauro. Provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 2 pela régua [extrapolação]; a Resistência (Fôlego) +2 de hoje saiu, e o cruzeiro de modelo ficou na nota de pesquisa (jornada)."
+    },
+    {
+      "campos": [],
+      "texto": "furtividade: 2, linha nova, pela tocaia que o estudo de hidrodinâmica de 2017 sugere; hipótese [extrapolação]."
+    },
+    {
+      "campos": [],
+      "texto": "compostura: 1 por não ser espécie social (diretriz 1); era 2."
+    },
+    {
+      "campos": [],
+      "texto": "especialidade Prontidão (visão) +2: passou de comum a natural, com o mesmo valor; o dado é do grupo [extrapolação]."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada, reanalisado na sétima com os 130 kg e mantido, na faixa 0 a 1 (ao lado do golfinho); o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): só modelos do grupo, e não do Plesiosaurus [extrapolação]: cruzeiro de 4 m/s se de sangue quente (Massare, via Wikipédia); recalculado, 1,5 m/s se de sangue quente e 0,5 m/s se de sangue frio (Motani 2002, via Wikipédia). Sangue quente possível (Houssaye 2013)."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

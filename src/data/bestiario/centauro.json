@@ -80,11 +80,13 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). A Centelha soma inteira. Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 2 e Armas 4 (4)"
     },
     {
       "nome": "Azagaia",
-      "arma": "azagaia"
+      "arma": "azagaia",
+      "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Arremesso é sempre Destreza (`combate.md`). Jogada: Destreza 4 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
     },
     {
       "nome": "Coice",
@@ -100,7 +102,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O coice do cavalo do molde: Pesado, preparado e lento, golpe de membro, Força × 1 (erro 7.6). Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 2 e Armas 4 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -116,21 +119,24 @@
       "efeito": "um golpe de espada e um Coice na mesma ação, os dois a −1d6, cada um com o próprio acerto e dano (a conta da empunhadura dupla do livro). Quando combina arma empunhada e parte do corpo, usa o custo e as penalidades da empunhadura dupla",
       "dano": "o de cada golpe",
       "resistencia": "nenhum",
-      "limiteDeUso": "a cada ação"
+      "limiteDeUso": "a cada ação",
+      "justificativa": "Antes: Arma e parte do corpo seguem os custos da empunhadura dupla. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Investida",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Armas de porte humano",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "usa as armas do livro feitas para gente, sem perda"
+      "texto": "usa as armas do livro feitas para gente, sem perda",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -206,6 +212,57 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Armas de porte humano"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Investida"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Ataque duplo"
+      ],
+      "texto": "Antes: Arma e parte do corpo seguem os custos da empunhadura dupla. valor de molde, para a bancada. Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "forca",
+        "vigor"
+      ],
+      "texto": "7 e 6, pelo cavalo do molde; o site tinha 5 e 5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "espada longa e azagaia do livro **[provisório]**"
+    },
+    {
+      "campos": [
+        "carga"
+      ],
+      "texto": "20% da massa, a fração do cavalo **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque duplo"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

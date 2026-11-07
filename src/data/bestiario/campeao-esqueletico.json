@@ -87,7 +87,8 @@
   "ataques": [
     {
       "nome": "Espada longa",
-      "arma": "espada-longa"
+      "arma": "espada-longa",
+      "justificativa": "A arma do livro (`armas.json`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Com o escudo, uma mão: Força × 1. A Centelha soma inteira no dano (`centelha.md`). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -215,6 +216,57 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O cadáver é animado após a morte."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. A disciplina militar persiste depois da morte."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "12 kg, 15% do corpo de base; a fração do esqueleto é de memória, a conferir **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "18 na zona de transição, pelo \"frágil desce\"; com \"robusto sobe\" seria 26"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "4; o site tinha 5 **[provisório]**"
+    },
+    {
+      "campos": [
+        "equipamento"
+      ],
+      "texto": "peitoral e heater, escolha da ficha; o site só diz \"arma e armadura\" e \"escudo\" **[provisório]**"
+    },
+    {
+      "campos": [
+        "resistência a rituais",
+        "comanda os mortos"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

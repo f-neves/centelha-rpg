@@ -104,7 +104,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7); as duas mãos fazem par (Manobras). A Centelha soma inteira. Jogada: Força 4 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     },
     {
       "nome": "Chifres",
@@ -120,7 +121,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Chifrada de cabeça, Média; chifre bloqueia como arma (D-100). N1 pela ponta de pedra. Jogada: Força 4 + Briga 4 + 2 × o menor entre Centelha 1 e Briga 4 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -136,14 +138,16 @@
       "efeito": "Grande: asas abertas. Médio: de pé, asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Garras e chifres",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "empunhadura-dupla"
+      "regra": "empunhadura-dupla",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Voo silencioso",
@@ -171,7 +175,8 @@
       "efeito": "não respira, não come nem dorme, e veneno não a pega. O ferimento do golpe continua",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "Contínuo, sem custo"
+      "limiteDeUso": "Contínuo, sem custo",
+      "justificativa": "R23. O efeito conserva apenas a proteção nomeada."
     }
   ],
   "comoLuta": [
@@ -248,6 +253,74 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Garras e chifres"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 9: +9 Corte, +9 Perfuração e +5 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (asas abertas) e Médio (de pé, asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "fisiologia.tracos"
+      ],
+      "texto": "R21. A anatomia de pedra é de uma criatura viva. A ausência de alimentação e respiração é própria da gárgula."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Corpo pétreo"
+      ],
+      "texto": "R23. O efeito conserva apenas a proteção nomeada."
+    },
+    {
+      "campos": [
+        "envergadura"
+      ],
+      "texto": "2,4 m, estimada; o site não dá **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Grande de asas abertas, Médio de pé **[extrapolação]** na largura da asa"
+    },
+    {
+      "campos": [
+        "couraca"
+      ],
+      "texto": "nível 9, como o golem de pedra **[provisório]**"
+    },
+    {
+      "campos": [
+        "bonus de absorcao"
+      ],
+      "texto": "o +3 do site fica com o valor da Couraça, a definir (perda provisória, anotada no relato)"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Compaixão 1, Convicção 4, Temperança 3; o site tinha 2, 3 e 2 **[provisório]**"
+    },
+    {
+      "campos": [
+        "voo silencioso"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.bloqueio",

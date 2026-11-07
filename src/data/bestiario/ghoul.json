@@ -79,7 +79,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe\" do site (1 dado) é a garra que paralisa (\"acerto de garra\", site). O braço que rasga com o corpo atrás é golpe Médio (`regra-construcao.md` §7), e o dado do site fica. Tipo Corte pela garra; o site gravava impacto. Duas por ação, pela Rajada, nas Manobras. Jogada: Força 3 e Destreza 4, a maior (D-208): Destreza 4 + Briga 3 + 2 × o menor entre Centelha 1 e Briga 3 (2)"
     },
     {
       "nome": "Mordida",
@@ -95,7 +96,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "\"Garras e mordida\" (site): a mordida que arranca carne, golpe de boca com a cabeça atrás, Média (`regra-construcao.md` §7). Jogada igual à das Garras"
     }
   ],
   "habilidadesEspeciais": [
@@ -106,7 +108,8 @@
       "ataque": "Garras",
       "categoria": "inato",
       "regra": "rajada",
-      "texto": "Até dois golpes por ação"
+      "texto": "Até dois golpes por ação",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Toque paralisante",
@@ -130,7 +133,8 @@
         "id": "faro",
         "nivel": 1
       },
-      "categoria": "inato"
+      "categoria": "inato",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Faro do carniçal",
@@ -158,7 +162,8 @@
       "efeito": "Golpeia nesta ordem: garra esquerda, garra direita, mordida. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
       "dano": "o de cada ataque que acertar",
       "resistencia": "a Defesa de cada golpe",
-      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "até 3 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+      "justificativa": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -253,6 +258,62 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Faro"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Duas garras"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Multiataque"
+      ],
+      "texto": "garra esquerda, garra direita, mordida. Teto 3. O limite respeita as partes que a rotina anterior combinava. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O cadáver é animado após a morte. R26. O sono sobrenatural não afeta o corpo morto-vivo."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
+    },
+    {
+      "campos": [
+        "Toque paralisante"
+      ],
+      "texto": "**[provisório]** R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"Golpe\" de impacto do site virou Garras Médias de Corte e uma Mordida Média; duas garras pela Rajada **[provisório]**"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "1, músculo seco abaixo do corpo comum **[provisório]**"
+    },
+    {
+      "campos": [
+        "faro do carniçal"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.musculatura",

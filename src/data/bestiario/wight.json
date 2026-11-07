@@ -79,7 +79,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "O \"Golpe\" do site (1 dado) é a garra (\"garras cortantes\", site), golpe Médio como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 3 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -100,7 +101,8 @@
       "efeito": "a vida do alvo escorre para o wight; o PV máximo do alvo cai, e o efeito se acumula a cada garra que pega",
       "dano": "nenhum além da garra; o PV máximo do alvo cai 1d6",
       "resistencia": "corpo, contra a jogada da garra; quem passa não perde PV máximo por aquela garra",
-      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "Base Dreno pelo efeito descrito. A ficha conserva seus próprios números."
     },
     {
       "nome": "Cria servos",
@@ -212,6 +214,63 @@
     ],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Dreno de vida"
+      ],
+      "texto": "Base Dreno pelo efeito descrito. A ficha conserva seus próprios números."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. O cadáver é animado após a morte."
+    },
+    {
+      "campos": [
+        "fisiologia.recuperacao"
+      ],
+      "texto": "R21. Recupera-se pela energia negativa. A energia que anima o morto recompõe seus ferimentos."
+    },
+    {
+      "campos": [
+        "fisiologia.imunidadesMentais"
+      ],
+      "texto": "R22. O ódio persistente dá direção à caçada e afasta o pânico."
+    },
+    {
+      "campos": [
+        "Dreno de vida"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o \"Golpe\" de impacto do site virou Garras Médias de Corte **[provisório]**"
+    },
+    {
+      "campos": [
+        "dreno"
+      ],
+      "texto": "tira PV máximo, como a habilidade do site; o espectro do lote 2 tira jogadas, e as duas fichas seguem o que o site dizia de cada uma **[provisório]**"
+    },
+    {
+      "campos": [
+        "intimidacao"
+      ],
+      "texto": "1, o comando dos servos **[provisório]**"
+    },
+    {
+      "campos": [
+        "dreno de vida",
+        "cria servos"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidadesSec.intimidacao",

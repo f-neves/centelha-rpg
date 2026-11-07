@@ -117,7 +117,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Não muda: a Força fica 3. Morde, segura e sacode: Média (`regra-construcao.md` §7). N0 porque a mordida no canino estimada é de 593 a 1.141 N (Wroe 2005; Różycka 2024, crânio seco), abaixo de 4.000 N."
     }
   ],
   "habilidadesEspeciais": [
@@ -127,7 +128,8 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "derrubar",
-      "texto": "na perna"
+      "texto": "na perna",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [
@@ -208,6 +210,67 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "pesoErguido",
+        "carga"
+      ],
+      "texto": "109,04 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga é o piso medido (castor de 13,6 kg); o peso erguido sai de `calc.mjs` (105,92 kg), e era 75,42 kg pela fórmula da D-162 (decisões 14 e 16)"
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23); 58 km/h, dentro dos 55 a 70 da ADW"
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "0,38 m², 15% abaixo do corte de 0,45 m² entre Pequeno e Médio, dentro do erro do método (15% a 30%, pela Veterana); a decisão 7 o põe Pequeno"
+    },
+    {
+      "campos": [
+        "dimensoes.largura"
+      ],
+      "texto": "0,30 m, estimada pelo Arquiteto, sem fonte"
+    },
+    {
+      "campos": [
+        "resistencia"
+      ],
+      "texto": "3 (em vigor na Etapa 2, 20/10/2026); antes: 2, sem a corrida (diretriz 2); o levantamento dava 4 só pelos 200 km por dia, que ficam na nota de pesquisa (jornada)"
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): até 200 km por dia, em cruzeiro de cerca de 8 km/h (ADW; NPS) **[medido]**; carne levada à toca por mais de 19 km (Murie 1944, estimativa do observador)."
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "2, nova, **[extrapolação]** da vida em matilha; a pesquisa não mede leitura de humano nem de outro lobo"
+    },
+    {
+      "campos": [
+        "especialidades"
+      ],
+      "texto": "Prontidão (faro) desce de +4 para +3 pelo teto da decisão 3, e deixa de ser \"bônus fixo de sentido\" da D-150; Resistência (frio) +1 sem temperatura medida"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "0, corpo de resistência; com Força 3 e Musculatura 0 o peso erguido fica abaixo da metade do típico de 50 kg (267 kg)"
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.empatia",

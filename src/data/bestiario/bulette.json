@@ -89,7 +89,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A mordida de boca larga com o pescoço atrás, Média. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
       "nome": "Salto de emboscada",
@@ -105,7 +106,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 1,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b). Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -116,7 +118,8 @@
       "ataque": "Salto de emboscada",
       "categoria": "inato",
       "regra": "investida",
-      "texto": "só ao sair da terra"
+      "texto": "só ao sair da terra",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "mordida trituradora",
@@ -124,7 +127,8 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "primeira rodada",
@@ -138,7 +142,8 @@
       "efeito": "Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade primeira rodada. Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
     },
     {
       "nome": "fúria voraz",
@@ -216,6 +221,74 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.mordida trituradora"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.salto de emboscada"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.primeira rodada"
+      ],
+      "texto": "Aplicação à capacidade primeira rodada. Na entrada da cena, recebe +2 na Iniciativa quando embosca a presa. O avanço na ordem não concede ação extra. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil rígida, nível 7: +7 Corte, +7 Perfuração e +4 Impacto, com metades para cima, porque a superfície de escama, placa, carapaça ou material compacto resiste à ponta e ao fio. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "1,4 t para 4,8 t, pela regra do lote: o rinoceronte com os 6 m do site pesa 4,8 t. A Faixa vai de 4 a 5; o PV (80), a Força (10) e o Tamanho (Enorme) ficam **[conta]**"
+    },
+    {
+      "campos": [
+        "tamanho"
+      ],
+      "texto": "Enorme na borda de 5% (5,84 m²), pela crista **[provisório]**"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "o site gravava um ataque só, \"Garras e presas\" (`inimigos.json`: \"3d6 +11 perfurante\", 7 Ticks, dano médio 21,5). A ficha separa os golpes pelo gesto, um por ação (D-097). Dano médio: 21,5 antes; depois, mordida 14,5; o salto de emboscada 28,0, só ao sair da terra **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "5 para 2 (D-205)"
+    },
+    {
+      "campos": [
+        "prontidao"
+      ],
+      "texto": "1 para 2, o das notas do site"
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: O \"salto de emboscada\" do site: emerge do solo e salta até 9 m sobre a presa, com o corpo inteiro atrás da boca (× 2), como as garras em mergulho do grifo. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 28 para 18; Investida 28, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`investida`, P20-b: sai o dado adicional; soma somente mais uma Força. Média da Investida citada no texto: 31,5 para 28,0. Golpe comum e números da tabela de Ataques preservados."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.area",

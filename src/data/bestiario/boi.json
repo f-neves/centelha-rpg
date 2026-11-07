@@ -97,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": 1
+      "bloqueiaComoArma": 1,
+      "justificativa": "Era 1d6 + 10, média 13,5. Golpe de cabeça com o corpo atrás. Chifre de ponta: Perfuração; sem força medida: N0. Dois chifres ocos (ADW)."
     },
     {
       "nome": "Investida (marrada)",
@@ -113,7 +114,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
     }
   ],
   "habilidadesEspeciais": [
@@ -123,21 +125,24 @@
       "classe": "livro",
       "ataque": "Investida (marrada)",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Investida (marrada)\"."
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "empurrar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "empurrar"
+      "regra": "empurrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "esmagar contra a cerca",
@@ -152,14 +157,16 @@
       "efeito": "Ao Empurrar contra um obstáculo que não cede, causa +1d6 de Impacto uma vez por ação. Para manter alguém prensado, deve manter o agarrão",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Aplicação à capacidade esmagar contra a cerca. Ao Empurrar contra um obstáculo que não cede, causa +1d6 de Impacto uma vez por ação. Para manter alguém prensado, deve manter o agarrão. valor de molde, para a bancada."
     },
     {
       "nome": "Atropelar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar"
+      "texto": "Atropelar",
+      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Investida (marrada)\"."
     }
   ],
   "comoLuta": [],
@@ -221,6 +228,120 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Investida"
+      ],
+      "texto": "L20: Investida em um alvo, vinculada ao golpe da fonte. A fonte tem o ataque \"Investida (marrada)\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Atropelar"
+      ],
+      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem o ataque \"Investida (marrada)\"."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.empurrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.esmagar contra a cerca"
+      ],
+      "texto": "Aplicação à capacidade esmagar contra a cerca. Ao Empurrar contra um obstáculo que não cede, causa +1d6 de Impacto uma vez por ação. Para manter alguém prensado, deve manter o agarrão. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 7 (em vigor na Etapa 2, 20/10/2026); antes: 8 pelas âncoras do autor (decisão 9), e não pelos 900 N do arado, que é trabalho e não máximo. A ficha de hoje tinha 10 pela faixa 9 a 12 do teste de ordem; a queda é da escala nova, e não de dado novo (D-158, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 997 kg pela conta das decisões 14 e 16 com a massa de 788 kg, provisório; a fórmula está com outra frente. A prova de arrasto da parelha (trenó de cerca de 300% da massa dela, Bondville Fair) daria cerca de 2,1 t por boi; arrastar trenó não é erguer nem virar, e o atrito não foi medido. Fica como dado para a outra frente (D-162, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "carga: Leve 157,6 a Máxima 630,5 kg, pela conta de hoje (massa de 788 kg e faixa), provisória (D-169, D-172)."
+    },
+    {
+      "campos": [],
+      "texto": "massa: 830 kg (em vigor na Etapa 2, 20/10/2026); antes: 788 kg é o adulto típico do bovino de tração (boi e vaca juntos), conta pelas quatro raças da Rural Heritage, **[extrapolação]**; o número depende das raças escolhidas (sem o Dexter, cerca de 915 kg). O boi castrado sozinho, pelas mesmas raças, dá 941 kg (sexta rodada, item 4)."
+    },
+    {
+      "campos": [],
+      "texto": "vigor: 6 (em vigor na Etapa 2, 20/10/2026); antes: 5, e não o 6 que a diretriz deixa aberto: nada de frio, fome ou ferida acima do normal na pesquisa. O 6 vai para o auroque e o bisão, selvagens (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "empatia: 1 é escolha minha, pela hierarquia da manada (ADW) e pelo faro do medo (Penn State), sem número; provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "musculatura: 3 pelo animal criado para puxar; a tração medida é de trabalho, e não de força máxima (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 4 (em vigor na Etapa 2, 20/10/2026); antes: 2; o dia de trabalho fica na nota de pesquisa (jornada) (diretriz 2; quinta rodada, item 1; D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 (faixa 1 a 2) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): tração de 10 a 12% da massa o dia todo (Tillers International) **[medido]**; parelha no arado a 1,03 m/s (3,7 km/h) com 900 N, em jornada de 4 h por dia no estudo (Nengomasha 1999) **[medido]**; o mestiço iaque x gado leva 75 kg por 30 km em 6 h (FAO, \"The Yak\") **[comparação]**."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23). A corrida de 41 km/h não tem número real para comparar (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes: altura de 1,56 m, comprimentos de 3,43 e 2,70 m e largura de 0,83 m são as estimativas do Arquiteto para o boi de 700 kg (1,5, 3,3, 2,6 e 0,8 m) escaladas pelo cubo da massa até 788 kg; o Alvo vem da silhueta de lado (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "`ataque`, justificativa anterior: Era 2d6 + 20, média 27. O corpo inteiro empurra (× 2). Impacto porque as mortes por gado são por trauma contuso no peito e na cabeça e por esmagamento contra porteira (CDC). O melhor ataque. Opção, não segundo golpe (D-097)."
+    },
+    {
+      "campos": [],
+      "texto": "`dano`, D-266 e P20-b: golpe comum 21 para 14; Investida 21, com mais uma Força e sem +1d6. As médias antigas nas notas anteriores são históricas."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - visão: campo de 300°, Prontidão (visão) +2, natural (notar o que vem pelo lado e por trás); ponto cego pequeno logo atrás (Penn State Extension)."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - audição: mais sensível que a humana a sons agudos; gritos e batida de porteira aumentam o batimento e a movimentação (Penn State Extension). Faixa em Hz: **[sem dado]** (Heffner e Heffner 1983 não conferido). Texto."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - faro: evita lugares e objetos marcados com urina de vaca estressada (Penn State Extension). Texto."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Camuflagem: nenhuma **[sem dado]**."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: dois chifres ocos; sem dentes da frente em cima (almofada dental), a mordida não é arma; pelo curto (ADW)."
+    }
+  ],
   "revisao": [
     {
       "campo": "habilidades.empatia",

@@ -80,7 +80,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "A \"Arma\" do site (2 dados, corte, 6 Ticks) é o punho de um corpo de 2,4 m: Média, como o Punho de pedra do golem de pedra (`regra-construcao.md` §7), golpe de membro, Força × 1; o segundo dado sai com a classe, e o tipo passa a Impacto, porque é punho, e não lâmina. Jogada: Força 7 + Briga 4 + 2 × o menor entre Centelha 3 e Briga 4 (6)"
     }
   ],
   "habilidadesEspeciais": [
@@ -90,7 +91,8 @@
       "classe": "livro",
       "ataque": "Punho",
       "categoria": "inato",
-      "regra": "agarrar"
+      "regra": "agarrar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "derrubar",
@@ -98,7 +100,8 @@
       "classe": "livro",
       "ataque": "Punho",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "Fúria descontrolada",
@@ -154,7 +157,8 @@
       "efeito": "Ignora Artes que alteram seu corpo ou sua mente, incluindo medo, sono, domínio, leitura de mente e confusão. O dano elemental passa pela resistência e pela Absorção do golem. As reações próprias do material descritas nesta ficha têm precedência. Neste material, aplicam-se Fraqueza ao frio e ao fogo",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -227,6 +231,90 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.imune à magia"
+      ],
+      "texto": "Artes mentais e de alteração corporal são ignoradas. O elemento usa a resistência e a Absorção do material. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "fisiologia.tipoCorpo"
+      ],
+      "texto": "R21. Corpo fabricado ou animado; herda C-002."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "225 kg, a do site, com o corpo 25% mais largo: 961 kg/m³, a carne com gordura; na proporção humana daria 1.201 kg/m³ **[referência de jogo]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "50, na zona de transição, pela faixa de cima (corpo robusto que não sente dor); pela de baixo seria 40 **[provisório]**"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "5 por julgamento (carne morta que não sente dor); o site tinha 1 **[provisório]**"
+    },
+    {
+      "campos": [
+        "aparencia"
+      ],
+      "texto": "2, o corpo de cadáveres costurados; o site tinha 4 **[provisório]**"
+    },
+    {
+      "campos": [
+        "elementos"
+      ],
+      "texto": "imune a raio pela habilidade publicada; a fraqueza ao frio e ao fogo é lentidão (Manobras), e não entra nas fraquezas"
+    },
+    {
+      "campos": [
+        "ataque"
+      ],
+      "texto": "a \"Arma\" de 2 dados e corte vira o Punho Média, de 1 dado e Impacto (perda de mecânica publicada, no relato) **[provisório]**"
+    },
+    {
+      "campos": [
+        "atributos sociais",
+        "vontade",
+        "virtudes"
+      ],
+      "texto": "decididos pelo autor para toda criatura de Inteligência 0 (D-186)"
+    },
+    {
+      "campos": [
+        "fúria descontrolada",
+        "fraqueza ao frio e ao fogo",
+        "vigor pela centelha elétrica"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.vigor",

@@ -100,7 +100,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7). A Centelha soma inteira. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     },
     {
       "nome": "Sopro elemental",
@@ -116,7 +117,8 @@
       "tipoDano": "fogo",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Ataque natural a distância, Classe Distância (manual, Passo 10); os números vão na linha do sopro nas Manobras (D-197). O sopro ocupa um cone de 3 m. Cada alvo resolve a saída de área pelo livro. Sem jogada de ataque"
     }
   ],
   "habilidadesEspeciais": [
@@ -132,7 +134,8 @@
       "efeito": "Médio: asas abertas. Pequeno: asas fechadas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Médio (asas abertas) e Pequeno (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "Sopro elemental",
@@ -151,7 +154,8 @@
       "efeito": "um jato do elemento dele queima todos no cone. Após a área, só há dano residual quando um efeito da ficha o declara",
       "dano": "2d6 + Centelha, fogo (na Variante, o tipo do elemento)",
       "resistencia": "sem jogada de ataque. Cada alvo resolve a saída de área pelo livro",
-      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção"
+      "limiteDeUso": "O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção",
+      "justificativa": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
     },
     {
       "nome": "Cura acelerada",
@@ -183,7 +187,8 @@
       "efeito": "Convoca um mephit do mesmo tipo até o fim da cena. A Centelha do auxiliar vai até a metade da Centelha de quem convoca, arredondada para baixo. Se o teto for 0, use a versão de Centelha 0. A origem aguarda o lore dos planos",
       "dano": "nenhum",
       "resistencia": "nenhum",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia"
+      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Energia",
+      "justificativa": "O perfil acompanha o tipo e a Centelha de quem convoca. Centelha 2 permite até 1. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -272,6 +277,92 @@
       }
     ]
   },
+  "notas": [
+    {
+      "campos": [
+        "ataques.Sopro elemental"
+      ],
+      "texto": "Antes: jogada de ataque com Atirador na tabela. R36: retirada porque o sopro é cone. Os alvos resolvem a saída de área."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Convocar semelhante"
+      ],
+      "texto": "O perfil acompanha o tipo e a Centelha de quem convoca. Centelha 2 permite até 1. Antes: Velocidade 8. Velocidade 6 pelo grau 4 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Sopro elemental"
+      ],
+      "texto": "Antes: Área resolvida pelos alvos. uma ação, Velocidade 7. O corpo guarda 2 doses e produz 1 dose a cada 12 horas. Cada uso gasta 1 dose. Nada acelera a produção. valor de molde, para a bancada. Antes: Velocidade 7. Velocidade 5 pelo grau 2 da base. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidades.atirador"
+      ],
+      "texto": "Disparo 2 passa a Atirador 2. Projétil dirigido usa o maior entre Vigor, Destreza e Percepção; área usa apenas a defesa dos alvos. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Médio (asas abertas) e Pequeno (asas fechadas). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "Sopro elemental"
+      ],
+      "texto": "**[provisório]** R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas)."
+    },
+    {
+      "campos": [
+        "Convocar semelhante"
+      ],
+      "texto": "**[provisório]** R1 e D-197. Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia. O limite preserva o primeiro uso e reserva repetição para esforço adicional. valor de molde, para a bancada (uso extra de 1 de Energia)."
+    },
+    {
+      "campos": [
+        "elemento"
+      ],
+      "texto": "o de fogo como principal; o site é genérico **[provisório]**"
+    },
+    {
+      "campos": [
+        "envergadura"
+      ],
+      "texto": "1,6 m, estimada; o site não dá **[extrapolação]**"
+    },
+    {
+      "campos": [
+        "pv"
+      ],
+      "texto": "18, a linha de baixo da zona de transição; na de cima seriam 26"
+    },
+    {
+      "campos": [
+        "corpo semi-etéreo"
+      ],
+      "texto": "resistência a Corte, Perfuração e Impacto **[provisório]**"
+    },
+    {
+      "campos": [
+        "virtudes"
+      ],
+      "texto": "Bravura 2 e Temperança 2; o site tinha 4 e 3 **[provisório]**"
+    },
+    {
+      "campos": [
+        "sopro elemental",
+        "cura acelerada",
+        "convocar semelhante"
+      ],
+      "texto": "números sugeridos pela ficha (D-197)"
+    },
+    {
+      "campos": [],
+      "texto": "`sopro`, D-268: substituída a resistência oposta pela saída de área do livro; dano e usos preservados."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.envergadura",
@@ -299,7 +390,7 @@
     },
     {
       "campo": "ataques.Sopro elemental",
-      "motivo": "R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; números sugeridos pela ficha (D-197)"
+      "motivo": "Antes: jogada de ataque com Atirador na tabela. R36: retirada porque o sopro é cone. Os alvos resolvem a saída de área.; R1/R4, D-197. Dois sopros prontos permitem alternar sopro e golpes. Sugestão de 2 doses e 12 h por dose para repor fora da luta. valor de molde, para a bancada (2 doses e produz 1 dose a cada 12 horas).; números sugeridos pela ficha (D-197)"
     },
     {
       "campo": "habilidadesEspeciais.Convocar semelhante",

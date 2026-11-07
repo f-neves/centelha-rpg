@@ -97,7 +97,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Como o leão: morde a garganta e segura, Média. N0: a mordida do leão-das-cavernas não foi achada; a leoa mede 1.593,8 N (`leao.md`) e o leão-americano de 347 kg teria 2.830 N (Wikipédia, autor do cálculo não identificado), os dois abaixo de 4.000 N. Era 1d6 + 9, média 12,5."
     },
     {
       "nome": "Patada",
@@ -113,7 +114,8 @@
       "tipoDano": "corte",
       "nivelPerfuracao": null,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Como o leão: agarra e derruba com a pata dianteira. Era 1d6 − 2 + 8, média 9,5 (oitava rodada). Opção (D-097)."
     }
   ],
   "habilidadesEspeciais": [
@@ -123,14 +125,16 @@
       "classe": "livro",
       "categoria": "inato",
       "regra": "agarrar",
-      "texto": "na garganta"
+      "texto": "na garganta",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "derrubar",
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "regra": "derrubar"
+      "regra": "derrubar",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     },
     {
       "nome": "investida avassaladora",
@@ -138,7 +142,8 @@
       "classe": "livro",
       "ataque": "Mordida",
       "categoria": "inato",
-      "regra": "investida"
+      "regra": "investida",
+      "justificativa": "Manobra, treino ou traço próprio do corpo."
     }
   ],
   "comoLuta": [],
@@ -183,6 +188,119 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.investida avassaladora"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.derrubar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.agarrar"
+      ],
+      "texto": "Manobra, treino ou traço próprio do corpo."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "massa"
+      ],
+      "texto": "88 kg (em vigor na Etapa 2, 20/10/2026); antes: 80 kg ◆, o meio da faixa de 70 a 90 kg das últimas populações, no fim da última glaciação (Marciszak e Gornig 2024, lido via Wikipédia; o artigo não abriu); sem sexo nem região na fonte lida. A principal (o adulto típico do Pleistoceno Superior) tem 205 kg (Marciszak et al. 2022) (D-174)"
+    },
+    {
+      "campos": [
+        "faixa"
+      ],
+      "texto": "80 kg fica na Faixa 3, a da principal, com 40 PV (D-141, D-174)"
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "0,40 m² ◆ de lado, a silhueta do macho de Siegsdorf (1,10 m²) reduzida pelo ombro (0,725 ÷ 1,20) e pelo corpo (1,25 ÷ 2,10) publicados; Pequeno, 11% abaixo do corte do Médio. Pelo cubo da massa a partir da principal daria 0,51 m², Médio: as dimensões e a massa publicadas não fecham entre si num corpo de proporção igual (decisões 7 e 25, D-174)"
+    },
+    {
+      "campos": [
+        "forca"
+      ],
+      "texto": "5 (em vigor na Etapa 2, 20/10/2026); antes: 8, igual à principal (topo das âncoras, um acima do leão, sem feito medido **[extrapolação]**); a variante de 80 kg pode descer, a critério do autor (D-158, D-174)"
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "5, igual à principal (era 4 na ficha de hoje), pela fratura de úmero que sarou (Ghezzo et al. 2026, só por resumo de busca) e pelas mordidas de luta nos crânios (Rothschild e Diedrich 2012, o resumo não diz se sararam); provisório (D-174)"
+    },
+    {
+      "campos": [
+        "social"
+      ],
+      "texto": "a espécie fica social (Influência 3, Compostura 2 como hoje) pelo painel de Chauvet e pelo pequeno grupo dos isótopos; a vida em grupo está em debate, e a Perspicácia fica em 1. Ver \"desvios\" no resumo do lote (D-174)"
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "1, nova, **[extrapolação]** do leão; sem fonte de leitura do outro (D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "3, a de hoje. Rothschild e Diedrich 2012 leem as lesões como de predador de perseguição, e não de emboscada; o levantamento a aponta como candidata a descer para 2 (D-174)"
+    },
+    {
+      "campos": [
+        "especialidadesNaturais"
+      ],
+      "texto": "Resistência (frio) +2 pelo subpelo dos filhotes congelados, sem temperatura medida; o levantamento propunha 1 (D-174)"
+    },
+    {
+      "campos": [
+        "pesoErguido",
+        "carga"
+      ],
+      "texto": "373,33 kg (em vigor na Etapa 2, 20/10/2026); antes: provisórios. A carga sai da conta (8 kg de Leve com 80 kg ◆); o peso erguido sai do `calc6.mjs` (431,02 kg ◆, com a Força 6 da oitava rodada) com a Força, a Musculatura e a massa desta variante (decisões 14 e 16)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): extinto, sem estimativa de velocidade, distância por dia ou perseguição; Rothschild e Diedrich 2012 o leem como predador de perseguição pelas lesões, interpretação sem número."
+    },
+    {
+      "campos": [
+        "velocidade"
+      ],
+      "texto": "congelada (decisão 23): 57 km/h, sem número real; dentro da arrancada do leão de Schaller (D-170)"
+    },
+    {
+      "campos": [
+        "dimensoes"
+      ],
+      "texto": "◆ a altura (0,725 m) e o corpo (1,25 m) são os meios das faixas publicadas para as últimas populações (ombro 70 a 75 cm, corpo 1,2 a 1,3 m; Marciszak e Gornig 2024, via Wikipédia); a cauda (0,51 m) e a largura (0,30 m) saem das estimativas da principal reduzidas na mesma proporção, sem fonte (D-147, D-174)"
+    },
+    {
+      "campos": [
+        "id"
+      ],
+      "texto": "o `mon-dire-lion-spotted-lion` aponta para o leão-das-cavernas real, e o nome muda de \"Leão Atroz\" para \"Leão-das-cavernas\"; a imagem atual mostra um leão com juba (D-102, D-174)"
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",

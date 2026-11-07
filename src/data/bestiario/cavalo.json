@@ -99,7 +99,8 @@
       "tipoDano": "impacto",
       "nivelPerfuracao": null,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 2d6 + 8, média 15. O cavalo vira o corpo e escoiceia com as duas traseiras: preparado e lento, por isso Pesada. Força × 1 porque é golpe de membro (`regra-construcao.md` §7). O medido chega a 8.722 N (von Wachenfelt 2011)."
     },
     {
       "nome": "Mordida",
@@ -115,7 +116,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 1,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Era 1d6 − 2 + 8, média 9,5. Opção, não segundo golpe (D-097: \"um ataque por ação (D-068), também para as criaturas\"). Sem medida de força: N0."
     }
   ],
   "habilidadesEspeciais": [
@@ -124,7 +126,8 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "Atropelar"
+      "texto": "Atropelar",
+      "justificativa": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem atropelar ligado ao Coice. Não declara uma investida própria."
     }
   ],
   "comoLuta": [
@@ -218,6 +221,68 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.Atropelar"
+      ],
+      "texto": "Antes: descrito em como luta. L20/R40: ação do livro em linha. A fonte tem atropelar ligado ao Coice. Não declara uma investida própria."
+    },
+    {
+      "campos": [
+        "perfilCouraca"
+      ],
+      "texto": "Perfil couro, nível 1: +1 Corte, +1 Perfuração e +1 Impacto, com metades para cima, porque a pele ou cobertura fibrosa e flexível protege mais contra o corte. valor de molde, para a bancada."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.comprimentoSemCauda: 2,50 m (ponto médio da espécie inteira, ADW) passa do comprimento total de 2,40 m (Wikipédia, \"Horse length\"); as duas fontes não se casam (`porte-area-forca.md` §1.2). A entrada não foi mudada, e o Alvo, que usa a silhueta de lado (1,79 m²), não depende dela (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.altura: 1,84 m até a nuca é a cernelha × 1,2 por uma proporção de 1843 cujo texto não foi conferido (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "dimensoes.largura: 0,60 m estimada pelo Arquiteto, sem fonte (D-147, D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "pesoErguido: 698 kg pela conta das decisões 14 e 16, provisório; a fórmula está com outra frente (D-162, D-169). O pônei, com menos da metade da massa, ergue 681 kg pela mesma conta, quase o mesmo: a Musculatura 3 do pônei contra a 2 do cavalo compensa a massa. A ordem fica certa (o cavalo ergue mais), mas por pouco (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "carga: medida (94 kg de Leve, Powell 2008), mas fica provisória com o peso erguido até a outra frente fechar (D-169, D-172)."
+    },
+    {
+      "campos": [],
+      "texto": "velocidade: congelada (decisão 23), pela fórmula de hoje (D-170)."
+    },
+    {
+      "campos": [],
+      "texto": "resistencia: 5 (em vigor na Etapa 2, 20/10/2026); antes: 2, e não o 3 do levantamento, porque a tração de 32 km por dia e o enduro de 160 km são distância por dia, e não Resistência (diretriz 2); o dado fica na nota de pesquisa (jornada) (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "especialidades: a Resistência (Fôlego) 2 saiu; o dado fica na nota de pesquisa (jornada) (quinta rodada, item 1; D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): tração sustentada de 1/10 a 1/8 da massa andando 32 km por dia (Iowa State, dinamômetro, pela Farm Collector) **[medido]**; enduro de 160 km num dia em árabes com até 30% da massa (Garlinghouse e Burrill 1999, citado por Kongsawasdi 2021; não conferido)."
+    },
+    {
+      "campos": [],
+      "texto": "empatia: 2 é escolha minha, pela leitura da linguagem do corpo e pelo reconhecimento dos do grupo (Rørvang 2020), sem número; provisória (D-174)."
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 1 pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [],
+      "texto": "forca: 7 fixada pela v2; o coice de 8.722 N (von Wachenfelt 2011) não mede a Força de empurrar e não a decide (D-158, D-174)."
+    }
+  ],
   "revisao": [
     {
       "campo": "corpo.altura",

@@ -96,7 +96,8 @@
       "tipoDano": "perfuracao",
       "nivelPerfuracao": 0,
       "acerto": 0,
-      "bloqueiaComoArma": null
+      "bloqueiaComoArma": null,
+      "justificativa": "Bico longo sem dentes, golpe dado com o pescoço inteiro atrás: Média. Ponta do bico não preservada; mordida em N não achada: N0. A Força não muda: segue 8,5"
     }
   ],
   "habilidadesEspeciais": [
@@ -112,7 +113,8 @@
       "efeito": "Grande: no chão, asas fechadas. Enorme: de baixo, asas abertas, em voo. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "contínuo, sem custo"
+      "limiteDeUso": "contínuo, sem custo",
+      "justificativa": "R31. Grande (no chão, asas fechadas) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
     },
     {
       "nome": "engolir presa pequena",
@@ -127,7 +129,8 @@
       "efeito": "Dentro, fica Imobilizada para o corpo, pode atacar com arma curta e sofre sufocamento pelo livro. Uma ferida interna de 5 PV abre a saída, por dentro ou com ajuda de fora. Também pode escapar pela garganta como no agarrão. Se a criatura morre, a vítima sai com uma ação",
       "dano": "1d6 de Impacto uma vez a cada 6 Ticks",
       "resistencia": "escape do agarrão pela garganta",
-      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço"
+      "limiteDeUso": "sem custo. Usar repetidamente causa esforço e pode levar ao cansaço",
+      "justificativa": "1d6 de Impacto por 6 Ticks e ferida de 5 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
     }
   ],
   "comoLuta": [
@@ -173,6 +176,89 @@
     "resistencias": [],
     "imunidades": []
   },
+  "notas": [
+    {
+      "campos": [
+        "habilidadesEspeciais.engolir presa pequena"
+      ],
+      "texto": "1d6 de Impacto por 6 Ticks e ferida de 5 PV pelo volume da cavidade e pela espessura de sua parede. valor de molde, para a bancada."
+    },
+    {
+      "campos": [
+        "habilidadesEspeciais.Posturas de combate"
+      ],
+      "texto": "R31. Grande (no chão, asas fechadas) e Enorme (de baixo, asas abertas, em voo). Troca junto do voo ou pouso: 0 Ticks adicionais, pela abertura das asas."
+    },
+    {
+      "campos": [
+        "alvo"
+      ],
+      "texto": "Grande de asas fechadas, no chão, onde caça (4,04 m²; D-215, 24/10/2026); Enorme pela silhueta de asas abertas da `tamanho-fichas-v2` (13,38 m²). A envergadura de Goto 2022 (9,64 m) diminui a silhueta; não foi refeita a conta (D-174)"
+    },
+    {
+      "campos": [
+        "pesoErguido"
+      ],
+      "texto": "463 kg pela fórmula nova (decisões 14 e 16), provisório: duas vezes a massa. O que ele leva em voo não tem regra e fica [sem dado] (D-162, D-169, D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "couraca: nível 0 (faixa 0 a 1) pela escala da quinta rodada; o valor em absorção fica para depois."
+    },
+    {
+      "campos": [
+        "vigor"
+      ],
+      "texto": "3, provisório: as aves tendem a menos e os grandes a mais; o voo em disputa saiu da conta (decisão 5, D-174)"
+    },
+    {
+      "campos": [
+        "musculatura"
+      ],
+      "texto": "2, provisória: o salto de decolagem pelos braços (Habib 2008) e o salto de 2,4 m pelas pernas de Padian e colegas 2021 (contestado por Witton) são modelo, e não medida (D-174)"
+    },
+    {
+      "campos": [
+        "influencia",
+        "compostura"
+      ],
+      "texto": "1 pela diretriz 1 (não é espécie social); eram 2 pelo tamanho e pela espreita (D-174)"
+    },
+    {
+      "campos": [
+        "furtividade"
+      ],
+      "texto": "2, nova, do levantamento, **[extrapolação]** pelo modelo do caçador terrestre (D-174)"
+    },
+    {
+      "campos": [
+        "empatia"
+      ],
+      "texto": "0, provisória (D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "jornada (nota de pesquisa, não é regra): três leituras que se contradizem: até 130 km/h por 7 a 10 dias a 4.600 m, alcance de 13.000 a 19.000 km (Habib, modelo em entrevista à NPR 2010) [extrapolação]; voo só raro e curto, como a abetarda-kori, sem planar em térmica de forma útil (Goto e colegas 2022) [extrapolação]; não voava, com 544 kg (Henderson 2010). Em terra, [sem dado]."
+    },
+    {
+      "campos": [
+        "dimensoes.largura"
+      ],
+      "texto": "1,0 m estimada pelo Arquiteto, sem fonte; `dimensoes.comprimento`: 5,0 m é extrapolação do Q. lawsoni na escala do northropi (D-147, D-174)"
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: **[sem dado]**: a pesquisa não achou estudo de sentidos com números. Pescoço e cabeça varrem um arco lateral de cerca de 180 graus (Padian 1983, via Wikipédia), sem Especialidade."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: Veneno: nenhum. Doença: **[sem dado]**."
+    },
+    {
+      "campos": [],
+      "texto": "`procedencia`, texto anterior transferido do jogo: - Traços: ossos ocos com trabéculas, muito finos (parede do esterno de 1,5 mm no Q. lawsoni, Hone e colegas 2023); com a cabeça erguida passa de 4 m, \"como uma girafa\" (Wikipédia); picnofibras: **[sem dado]**."
+    }
+  ],
   "revisao": [
     {
       "campo": "atributos.forca",
