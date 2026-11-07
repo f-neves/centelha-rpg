@@ -4409,7 +4409,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: o passo de `regras.json` (`combate.escalaPorTamanho`) deixa de ser null; a rocha entra no catálogo; as 6 fichas de gigante e as 6 de rocha vão à Bestiarista por lista (L18).
 - Muda: completa a D-360 (F3 e F3a); usa a mesma escala do Atropelar (R40c, D-319).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar em parte** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`): o passo no motor e o texto "Armas de outro tamanho"; a rocha no catálogo vem em branch própria.
 
 ### D-364 · G2: arremessar é com Força ou Destreza, à escolha de quem arremessa, normalmente o maior dos dois, para toda arma de arremesso [tags: arremesso, atirador, forca, destreza, g2, f3a, d-360, d-315]
 - Data: 2026-11-07
@@ -4420,7 +4420,8 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: o motor de arremesso passa a ler o maior entre Força e Destreza; a Jogada do projétil natural (D-315) é outra regra e não muda.
 - Muda: substitui em parte a D-208 (o pedaço "tiro e arremesso seguem o livro (combate.md:156: arco pela Percepção, arremesso pela Destreza)", para o arremesso; o tiro segue) e completa a D-360; corrige o texto do livro que dizia só Destreza para o arremesso. Fica como está o "Pegar o de retorno Cortante pede Destreza + Arremesso" da D-076, que é pegar o bumerangue de volta, e não atacar (achado da Revisora sobre `d4bb62ab`).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **espera o lote da Bestiarista** (escolha do autor em 07/11/2026); o commit `61832b57` fica parado na branch `g-armas-fraqueza`, sem merge, até o lote.
+- **Escolha do autor em 07/11/2026** (pergunta do Arquiteto, a partir do achado da Revisora): o card das 7 criaturas que mudam (o centauro e seis gigantes) se contradiria, porque a justificativa do ataque vem da ficha e diz a jogada antiga ("Jogada: Destreza 2 + Arremesso 3 ..."; no centauro, "Arremesso é sempre Destreza"). O autor escolheu "Esperar o lote", com o texto da opção: "O motor e o texto da G2 esperam o lote da Bestiarista. Ela reescreve as 7 jogadas e justificativas, e aí tudo muda junto. Até lá o livro continua dizendo só Destreza para o arremesso."
 
 ### D-365 · G3: a besta pesada não é arma nova; é o nome que a fonte dá à Besta Média [tags: armas, besta, besta-media, besta-pesada, merfolk, g3, d-360]
 - Data: 2026-11-07
@@ -4430,7 +4431,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: a descrição da Besta Média ganha o nome da fonte; a ficha do merfolk vai à Bestiarista por lista (L18).
 - Muda: completa a D-360 (item 019).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`); o merfolk vai à Bestiarista por lista (L18).
 
 ### D-366 · G4: quem empunha arma de outro tamanho: o dano é da arma, e uma categoria de diferença desloca a classe um degrau; além da Pesada, o Mestre julga [tags: armas, tamanho, classe, empunhar, forca, peso, g4, d-087, d-360]
 - Data: 2026-11-07
@@ -4443,7 +4444,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: a regra por peso e Força fica pendente (a faixa de peso por Força; ver a nota abaixo).
 - Muda: completa a D-360 ("quem pode empunhar uma arma maior que o próprio corpo").
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`), com o texto corrigido pelo autor; a faixa de peso por Força na B25.
 - **Texto corrigido pelo autor em 07/11/2026** (respostas às perguntas do Arquiteto, a partir do achado da Revisora sobre `d4bb62ab`): os exemplos do texto aprovado não batiam com o catálogo (a espada longa já é classe Média, e o ogro é Grande, uma categoria acima do humano; do ogro ao halfling são duas categorias); o autor escolheu "Trocar os exemplos". E o catálogo já tem o peso de cada arma (`armas.json`, campo `peso`); o autor escolheu "Cortar a cláusula" do peso. O texto que vai ao livro fica:
   > **Quem empunha.** O dano é da arma, não de quem a segura. O que muda com o corpo é a classe: para quem é uma categoria maior, a arma fica um degrau mais leve (a espada longa, Média, de um humano é uma arma Leve para um ogro); para quem é uma categoria menor, um degrau mais pesada (a adaga, Leve, de um ogro é uma arma Média para um humano). Além da Pesada, o Mestre julga se o personagem consegue usá-la.
 - A regra por peso e Força fica nas pendências do catálogo: a faixa de peso que cada Força consegue usar, sobre o peso que o catálogo já tem.
@@ -4457,7 +4458,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: o esquema do conversor ganha a lista; o tarrasque e as fichas com nome fora da lista vão à Bestiarista por lista (L18).
 - Muda: completa a D-326 (R47) e a D-362.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **a implementar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`): a lista no livro e o campo preparado no conversor; o tarrasque e os nomes fora da lista vão à Bestiarista por lista (L18).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
