@@ -64,6 +64,8 @@ const confere = (id, conta, vem, deve, tol = 0) => {
 // o maior entre Força e Destreza e a maior Habilidade entre Briga e Armas. As 11 frases da regra antiga (babau,
 // boggard, diabo-barbado, erínia, centauro, minotauro, sahuagin, salamandra, skum-ulat-kini duas vezes e tengu)
 // foram reescritas nas fichas no lote ajuste-pontas de 30/10/2026, e a lista de exceção ACEITAS_JOGADA saiu.
+// G2 (D-364, 07/11/2026): o arremesso vai pela Força ou pela Destreza, o maior dos dois. A tolerância das sete fichas
+// que ainda escreviam a jogada pela Destreza saiu com o lote r-listas-07-11 da Bestiarista, que as reescreveu.
 // o peso erguido da ficha vem com duas casas, e o conferidor confere a 1% (GUIA-FICHA.md, seção 7)
 const tolPeso = (p) => Math.max(0.02, Math.abs(p) * 0.01);
 
@@ -205,7 +207,7 @@ for (const arquivo of fs.readdirSync(path.join(ROOT,'src/data/bestiario'))) {
   confere('D-258', 'aasimar, cópia antiga Arremesso na espada não a faz de arremesso', jog(M, aasimar, 'Espada longa').jogada, 2 + 2 + 2 * 1 + 1);
   // e o tiro e o arremesso seguem a Habilidade de cada um
   const gigante = ler('gigante-da-colina');
-  confere('D-258', 'gigante, rocha arremessada (classe pesada) sai pela Destreza e Arremesso', jog(M, gigante, 'Rocha arremessada').jogada, 2 + 3 + 2 * 1 + 0);
+  confere('D-364', 'gigante, rocha arremessada (classe pesada) sai pelo Arremesso e pelo maior entre Força e Destreza (Força 9)', jog(M, gigante, 'Rocha arremessada').jogada, 9 + 3 + 2 * 1 + 0);
   confere('D-258', 'gigante, pancada pela Briga e Força', jog(M, gigante, 'Pancada descomunal').jogada, 9 + 5 + 2 * 1 + 0);
   const erinia = ler('erinia');
   confere('D-258', 'erínia, arco longo pela Percepção e Atirador do catálogo', jog(M, erinia, 'Arco longo').jogada, 5 + 4 + 2 * 4 + 0);

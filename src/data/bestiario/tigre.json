@@ -112,7 +112,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Mordida na garganta (estrangula) ou na nuca (Wikipédia), com caninos de 6,4 a 7,6 cm (Mazák 1981): o golpe pede o corpo atrás, Média. N0: 1.525 N nos caninos, estimados pelo crânio seco de um tigre de 186,9 kg (Wroe et al. 2005, tabela 1), abaixo de 4.000 N. Era 1d6 + 9, média 12,5."
+      "justificativa": "Crava os caninos na garganta ou na nuca."
     },
     {
       "nome": "Patada",
@@ -129,7 +129,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Garras retráteis de 7,5 a 10 cm (San Diego Zoo); derruba a presa com as patas dianteiras. Era 1d6 − 2 + 9, média 10,5. Opção, não segundo golpe (D-097)."
+      "justificativa": "As garras dianteiras rasgam a presa e ajudam a derrubá-la."
     }
   ],
   "habilidadesEspeciais": [
@@ -240,7 +240,7 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,38 × 1,0324 = 0,392 . Antes: escalado pelo cubo da massa: 0,40 × (174,5 ÷ 209)^(1/3) = 0,38 m; era 0,40 m, pelo perímetro do peito medido em Panna (média de 129 cm): 41 cm de diâmetro se fosse redondo, e o tórax é mais alto que largo"
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,38 × 1,0324 = 0,392 . Antes: escalado pelo cubo da massa: 0,40 × (174,5 ÷ 209)^(1/3) = 0,38 m; era 0,40 m, pelo perímetro do peito medido em Panna (média de 129 cm): 41 cm de diâmetro se fosse redondo, e o tórax é mais alto que largo; 0,39 m na ficha atual. Base da revisão anterior: 0,38 m, os 0,40 m do macho, estimados pelo perímetro do peito de Panna (129 cm); não decide a área (D-147, D-174)"
     }
   ]
 }

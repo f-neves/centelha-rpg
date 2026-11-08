@@ -96,7 +96,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "O toque gelado que atravessa a matéria. Gesto rápido de membro, Leve (`regra-construcao.md` §7). Força 0 não soma (D-167); a Centelha soma inteira (`centelha.md`). Tipo: o dano do incorpóreo \"é fenômeno (armadura não absorve, só a Centelha)\" (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

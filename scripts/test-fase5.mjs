@@ -271,15 +271,16 @@ for(const [n,s] of [['BestaCard',card],['FormaCriatura',forma]]){assert.match(s,
 assert.ok(!/k\+': '\+i\.combate\[k\]\.join/.test(forma)&&!/nomes\[k\]\+': '\+v/.test(forma),'a forma ainda escreve em linha corrida');assert.match(forma,/ELEM\[x\] \?\? x/);assert.match(forma,/class="atr-grid"/);
 const L=await carregarTS('src/lib/besta-card.ts');assert.equal(L.ELEM.perfuracao,'Perfuração');assert.equal(L.locoTxt({nome:'Natação',k:'natacao',v:4}),'Natação 4 m/Tick');
 });
-// P21 (do coordenador, 29/10/2026: "arremesso pela Destreza (combate.md:156)"): o texto do Arremesso e o da Força
-// deixam de oferecer a Força à jogada, como o M11 fez com o Atirador; o motor já jogava pela Destreza.
+// P21 (do coordenador, 29/10/2026: "arremesso pela Destreza (combate.md:156)"), SUBSTITUÍDA pela G2 (D-364, 07/11/2026):
+// "arremessar pode ser com Força ou Destreza", à escolha de quem arremessa, normalmente o maior dos dois, como no corpo a
+// corpo. O texto do Arremesso, o da Força, o do Combate e o motor passam a oferecer os dois.
 cases.set('P21', async () => {
-const H=JSON.parse(fs.readFileSync('src/data/habilidades.json','utf8'));const ar=H.find(h=>h.id==='arremesso');assert.deepEqual(ar.atributos,['destreza']);assert.match(ar.descricao,/vai sempre pela Destreza, e não pela Força/);
-const cap=fs.readFileSync('src/content/chapters/habilidades.md','utf8');const l=cap.split('\n').find(x=>x.startsWith('- **Arremesso** ·'));assert.ok(l.endsWith('*(Destreza)*'),'o capítulo gerado dá só a Destreza');
+const H=JSON.parse(fs.readFileSync('src/data/habilidades.json','utf8'));const ar=H.find(h=>h.id==='arremesso');assert.deepEqual(ar.atributos,['destreza','forca']);assert.match(ar.descricao,/vai pela Força ou pela Destreza, à escolha de quem arremessa/);assert.ok(!/sempre pela Destreza/.test(ar.descricao));
+const cap=fs.readFileSync('src/content/chapters/habilidades.md','utf8');const l=cap.split('\n').find(x=>x.startsWith('- **Arremesso** ·'));assert.ok(l.endsWith('*(Destreza · Força)*'),'o capítulo gerado dá a Destreza e a Força');
 const atr=fs.readFileSync('src/content/chapters/atributos.md','utf8');const fo=atr.split('**Força** ·')[1].split('\n\n')[0];const de=atr.split('**Destreza** ·')[1].split('\n\n')[0];
-assert.ok(!/Principais Habilidades:\*[^.\n]*Arremesso/.test(fo),'a Força ainda lista o Arremesso');assert.match(fo,/não a jogada, que vai pela Destreza/);assert.match(de,/Principais Habilidades:\*[^\n]*Arremesso/);
-assert.match(fs.readFileSync('src/content/chapters/combate.md','utf8'),/Para <strong>arremessos<\/strong>, sempre Destreza/);
-assert.equal(M.atributoDaJogada('arremesso',{forca:5,destreza:1}),1,'o motor joga o arremesso pela Destreza');
+assert.match(fo,/Principais Habilidades:\*[^.\n]*Arremesso/,'a Força lista o Arremesso');assert.match(fo,/pela Força ou pela Destreza, à escolha de quem arremessa/);assert.match(de,/Principais Habilidades:\*[^\n]*Arremesso/);
+assert.match(fs.readFileSync('src/content/chapters/combate.md','utf8'),/Para <strong>arremessos<\/strong>, também Destreza ou Força, à escolha de quem arremessa/);
+assert.equal(M.atributoDaJogada('arremesso',{forca:5,destreza:1}),5,'o motor joga o arremesso pelo maior (a Força)');assert.equal(M.atributoDaJogada('arremesso',{forca:1,destreza:4}),4,'e pela Destreza quando ela é a maior');
 });
 // L1 (D-270): o card separa "Poderes" (os poderes da criatura, o que se chamava "Habilidades") de "Habilidades" (as de
 // treino, com o nome do livro): no /bestiario, nas outras formas e no card da mesa.
@@ -327,10 +328,12 @@ for(const [id,[def,vest]] of Object.entries(esperado)){const c=JSON.parse(fs.rea
 const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));for(const [id,[def]] of Object.entries(esperado))assert.equal(mesa.find(m=>m.id===id).combate.defesa,def,id+' na mesa');
 // O chifre do minotauro bloqueia como arma (+1), e desde a P23 (30/10/2026) soma mesmo com o machado nas duas mãos.
 const mino=JSON.parse(fs.readFileSync('src/data/bestiario/minotauro.json','utf8'));assert.equal(mino.ataques.find(a=>a.nome==='Chifrada').bloqueiaComoArma,1);
-// E só as seis: nenhuma outra criatura empunha arma de duas mãos de corpo a corpo com Defesa da arma negativa.
+// E só estas: as seis, e desde o lote r-listas-07-11 (G1, D-363) os gigantes com a arma de duas mãos do catálogo no
+// Tamanho deles (ciclope, gigante-da-colina, gigante-do-fogo, gigante-do-gelo e ogro).
+const GIGANTES_G1=['ciclope','gigante-da-colina','gigante-do-fogo','gigante-do-gelo','ogro'];
 const A=JSON.parse(fs.readFileSync('src/data/armas.json','utf8'));const W=Object.fromEntries(A.map(w=>[w.id,w.arma]));
 const com=fs.readdirSync('src/data/bestiario').map(f=>JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8'))).filter(c=>[c.ataques,...(c.formas||[]).map(f=>f.ataques||[])].some(l=>l.some(a=>a.arma&&W[a.arma]?.maos===2&&W[a.arma]?.classe!=='distancia'&&W[a.arma].defesaArma<0))).map(c=>c.id).sort();
-assert.deepEqual(com,Object.keys(esperado).sort());
+assert.deepEqual(com,[...Object.keys(esperado),...GIGANTES_G1].sort());
 // O Bloqueio da linha "Com o equipamento" leva a arma das mãos, como a Defesa ao lado: o arconte não diz mais
 // "Bloqueio 20" ao lado de "Defesa 18"; e em todo card com equipamento a Defesa é o maior dos dois números à vista.
 const vest=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8')).filter(m=>m.combate.vestida);assert.equal(vest.length,14);
@@ -360,7 +363,7 @@ const vista=(id)=>{const c=JSON.parse(fs.readFileSync(`src/data/bestiario/${id}.
 const [rm,mi]=vista('minotauro');assert.equal(rm.bloqueio,8);assert.equal(mi.defesa,rm.bloqueio-2+1,'minotauro: Bloqueio 8, −2 do machado, +1 do chifre');assert.equal(mi.defesa,7);assert.equal(mi.defesaOutraArma,undefined,'o minotauro não tem outra arma do catálogo');
 const [rs,so]=vista('solar');assert.equal(rs.bloqueio,24);assert.equal(so.defesa,22,'solar com o montante');assert.deepEqual(so.defesaOutraArma,{arma:'Arco longo',armaPrincipal:'Montante',bloqueio:24,defesa:24},'solar de arco, sem o −2');
 for(const id of ['arconte-trombeta','planetar','cavaleiro-de-elite','bruto'])assert.equal(vista(id)[1].defesaOutraArma,undefined,id);
-const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const outras=mon.filter(m=>m.combate.defesaOutraArma).map(m=>m.id).sort();assert.deepEqual(outras,['merfolk','solar'],'as criaturas com duas Defesas por arma');
+const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const outras=mon.filter(m=>m.combate.defesaOutraArma).map(m=>m.id).sort();assert.deepEqual(outras,['ciclope','gigante-da-colina','gigante-do-fogo','gigante-do-gelo','merfolk','solar'],'as criaturas com duas Defesas por arma (os quatro gigantes de arma de duas mãos e rocha, G1, D-363)');
 const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));assert.equal(mesa.find(m=>m.id==='solar').combate.defesa,22,'a mesa usa a do primeiro ataque, o montante');assert.equal(mesa.find(m=>m.id==='minotauro').combate.defesa,7);
 for(const f of ['src/components/BestaCard.astro','src/components/FormaCriatura.astro'])assert.match(fs.readFileSync(f,'utf8'),/\{i\.combate\.defesaOutraArma && <><small> c\/ \{i\.combate\.defesaOutraArma\.armaPrincipal\}<\/small> · \{i\.combate\.defesaOutraArma\.defesa\}<small> c\/ \{i\.combate\.defesaOutraArma\.arma\}<\/small><\/>\}/,f);
 const MB=await carregarTS('src/lib/mesa-bestiario.ts');const h=MB.cardCriaturaHTML(mon.find(m=>m.id==='solar'));assert.match(h,/<dt>Defesa<\/dt><dd>22 <small>\(c\/ Montante; c\/ Arco longo: 24\)<\/small><\/dd>/);

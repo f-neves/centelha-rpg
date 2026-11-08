@@ -6503,7 +6503,7 @@
   "combate": {
    "pv": 31,
    "energia": 5,
-   "defesa": 6,
+   "defesa": 5,
    "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
@@ -6520,10 +6520,10 @@
    },
    "ataques": [
     {
-     "nome": "Bordão",
-     "pool": "1d6+2 +1",
-     "dano": "1d6 +4 (I)",
-     "perfArma": null,
+     "nome": "Forcado",
+     "pool": "1d6+2",
+     "dano": "1d6 +4 (P) · perf. 0",
+     "perfArma": 0,
      "speed": 6,
      "classe": "haste",
      "forcaInvestida": 2
@@ -8233,7 +8233,7 @@
     },
     {
      "nome": "Azagaia",
-     "pool": "3d6+2 +5",
+     "pool": "5d6 +5",
      "dano": "1d6 +9 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
@@ -8565,7 +8565,7 @@
   "combate": {
    "pv": 54,
    "energia": 10,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
@@ -8576,6 +8576,12 @@
    "resistenciaPerfuracao": 0,
    "couraca": 2,
    "perfilCouraca": "couro",
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Martelo de Guerra",
+    "bloqueio": 8,
+    "defesa": 8
+   },
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -8593,12 +8599,21 @@
      "forcaInvestida": 9
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +10 (I)",
+     "nome": "Martelo de Guerra",
+     "pool": "7d6 +2",
+     "dano": "3d6 +19 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 9
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6 +2",
+     "dano": "2d6 +10 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
@@ -14297,10 +14312,10 @@
    },
    "ataques": [
     {
-     "nome": "Lâmina leve",
+     "nome": "Florete",
      "pool": "5d6 +8",
-     "dano": "1d6 +4 (C)",
-     "perfArma": null,
+     "dano": "1d6 +4 (P) · perf. 1",
+     "perfArma": 1,
      "speed": 5,
      "classe": "leve",
      "forcaInvestida": 3
@@ -17551,7 +17566,7 @@
   "combate": {
    "pv": 50,
    "energia": 7,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 8,
    "defesaMental": 9,
    "absorcao": {
@@ -17576,6 +17591,15 @@
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 8
+    },
+    {
+     "nome": "Maça",
+     "pool": "6d6 +1",
+     "dano": "2d6 +8 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media",
      "forcaInvestida": 8
     }
    ]
@@ -19682,7 +19706,7 @@
   "combate": {
    "pv": 54,
    "energia": 10,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 10,
    "defesaMental": 12,
    "absorcao": {
@@ -19693,6 +19717,12 @@
    "resistenciaPerfuracao": 0,
    "couraca": 2,
    "perfilCouraca": "couro",
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Martelo de Guerra",
+    "bloqueio": 8,
+    "defesa": 8
+   },
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -19710,12 +19740,21 @@
      "forcaInvestida": 9
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +10 (I)",
+     "nome": "Martelo de Guerra",
+     "pool": "7d6 +2",
+     "dano": "3d6 +19 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 9
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6 +2",
+     "dano": "2d6 +10 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
@@ -19828,11 +19867,11 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "4d6",
+     "pool": "6d6+2",
      "dano": "2d6 +9 (I)",
      "perfArma": null,
-     "speed": 7,
-     "classe": "pesada",
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
@@ -20061,11 +20100,11 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "3d6 +4",
-     "dano": "2d6 +14 (I)",
+     "pool": "7d6+2 +4",
+     "dano": "3d6 +14 (I)",
      "perfArma": null,
-     "speed": 7,
-     "classe": "pesada",
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
@@ -20151,7 +20190,7 @@
   "combate": {
    "pv": 62,
    "energia": 12,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 14,
    "absorcao": {
@@ -20164,8 +20203,8 @@
    "perfilCouraca": "couro",
    "vestida": {
     "esquiva": 1,
-    "bloqueio": 5,
-    "defesa": 5,
+    "bloqueio": 3,
+    "defesa": 3,
     "contraTiro": 1,
     "absorcao": {
      "impacto": 14,
@@ -20174,6 +20213,13 @@
     },
     "nivel": 2,
     "penalidade": 3
+   },
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Montante",
+    "bloqueio": 8,
+    "defesa": 8,
+    "vestida": 5
    },
    "fraquezas": [
     "gelo"
@@ -20198,12 +20244,21 @@
      "forcaInvestida": 10
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +11 (I)",
+     "nome": "Montante",
+     "pool": "7d6+2 +2",
+     "dano": "3d6 +21 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 10
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6+2 +2",
+     "dano": "2d6 +11 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
@@ -20289,7 +20344,7 @@
   "combate": {
    "pv": 58,
    "energia": 11,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
@@ -20300,6 +20355,12 @@
    "resistenciaPerfuracao": 0,
    "couraca": 2,
    "perfilCouraca": "couro",
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Machado Pesado",
+    "bloqueio": 8,
+    "defesa": 8
+   },
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -20317,12 +20378,21 @@
      "forcaInvestida": 10
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +11 (I)",
+     "nome": "Machado Pesado",
+     "pool": "7d6+2 +2",
+     "dano": "3d6 +21 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 10
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6+2 +2",
+     "dano": "2d6 +11 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
@@ -29532,8 +29602,8 @@
    },
    "resistenciaPerfuracao": 0,
    "defesaOutraArma": {
-    "arma": "Besta média",
-    "armaPrincipal": "Lança",
+    "arma": "Besta Média",
+    "armaPrincipal": "Tridente",
     "bloqueio": 10,
     "defesa": 10
    },
@@ -29545,7 +29615,7 @@
    },
    "ataques": [
     {
-     "nome": "Lança",
+     "nome": "Tridente",
      "pool": "2d6+2 +3",
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
@@ -29554,7 +29624,7 @@
      "forcaInvestida": 3
     },
     {
-     "nome": "Besta média",
+     "nome": "Besta Média",
      "pool": "2d6 +3",
      "dano": "1d6 +5 (P) · perf. 1",
      "perfArma": 1,
@@ -32294,6 +32364,24 @@
      "nome": "Pancada descomunal",
      "pool": "5d6",
      "dano": "2d6 +7 (I)",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada",
+     "forcaInvestida": 7
+    },
+    {
+     "nome": "Martelo de Guerra",
+     "pool": "5d6",
+     "dano": "3d6 +14 (I)",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada",
+     "forcaInvestida": 7
+    },
+    {
+     "nome": "Machado Pesado",
+     "pool": "5d6",
+     "dano": "3d6 +14 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
@@ -36391,7 +36479,7 @@
    },
    "ataques": [
     {
-     "nome": "Lança",
+     "nome": "Tridente",
      "pool": "3d6+2 +5",
      "dano": "1d6 +10 (P) · perf. 1",
      "perfArma": 1,
@@ -37328,7 +37416,7 @@
    },
    "ataques": [
     {
-     "nome": "Lança",
+     "nome": "Tridente",
      "pool": "3d6+2 +5",
      "dano": "1d6 +10 (P) · perf. 1",
      "perfArma": 1,

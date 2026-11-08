@@ -78,9 +78,9 @@
   "artes": {},
   "ataques": [
     {
-      "nome": "Bordão",
-      "arma": "bordao",
-      "justificativa": "A arma do livro (`armas.json`, `bordao`, \"também chamada Cajado\"): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, Impacto, alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). O site dava \"Forcado/Pancada\", 1 dado, duas mãos, Impacto. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
+      "nome": "Forcado",
+      "arma": "forcado",
+      "justificativa": "Empurra as pontas do forcado com as duas mãos. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
     }
   ],
   "habilidadesEspeciais": [
@@ -109,7 +109,7 @@
     {
       "nome": "grita mais do que golpeia",
       "formas": "todas",
-      "texto": "segura o cajado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
+      "texto": "segura o forcado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
     }
   ],
   "sentidos": [
@@ -123,7 +123,7 @@
     "respiracao": "ar",
     "prendeRespiracao": "pela regra do personagem",
     "mente": "humana; teme tudo que vem de fora da aldeia",
-    "tracos": "roupa de roça remendada, mãos calejadas, cajado ou foice na mão, olhos arregalados"
+    "tracos": "roupa de roça remendada, mãos calejadas, forcado ou foice na mão, olhos arregalados"
   },
   "aptidoes": {
     "montaria": false,
@@ -146,7 +146,7 @@
       "temperado"
     ]
   },
-  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
+  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o forcado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -172,15 +172,11 @@
   "revisao": [
     {
       "campo": "habilidades.armas",
-      "motivo": "O cajado, sem treino (\"Sem treino\", site). O site gravava o ataque com Briga 1; a arma pede Armas (manual 3.5); 1; o site gravava o ataque com Briga"
+      "motivo": "O forcado, sem treino (\"Sem treino\", site). O site gravava o ataque com Briga 1; a arma pede Armas (manual 3.5); 1; o site gravava o ataque com Briga"
     },
     {
       "campo": "comportamento.atividade",
       "motivo": ""
-    },
-    {
-      "campo": "equipamento",
-      "motivo": "o bordão do livro no lugar do forcado do site"
     },
     {
       "campo": "virtudes.bravura",

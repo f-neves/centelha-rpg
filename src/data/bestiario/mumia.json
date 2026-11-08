@@ -79,7 +79,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço que esmaga com o corpo atrás, golpe Médio (`regra-construcao.md` §7), como a Pancada do zumbi. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O braço enfaixado esmaga com o peso do corpo. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

@@ -157,6 +157,18 @@
     {
       "campo": "habilidades.furtividade",
       "motivo": "O levantamento mantém o 2 de hoje: cor de terra e folhiço e hábito noturno, os dois sem fonte conferida . Régua: 2, usa a noite e a cobertura."
+    },
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "0,125 m na ficha atual. Base da revisão anterior: 12,5 cm (Wikipédia, 10 a 15 cm); a ADW dá 15 a 23,8 cm. Com 15 cm, a área continua abaixo do começo da escala e o Alvo não muda (D-174)"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "0,05 m na ficha atual. Base da revisão anterior: estimadas sem fonte (D-147, D-174)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,07 m na ficha atual. Base da revisão anterior: estimadas sem fonte (D-147, D-174)"
     }
   ]
 }

@@ -206,9 +206,15 @@
     {
       "nome": "Regeneração 10",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "fraqueza": {
+        "forma": "naoRegenera",
+        "tipos": [
+          "ferro frio"
+        ]
+      },
+      "texto": "Origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "Maldição da morte",

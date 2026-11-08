@@ -144,5 +144,18 @@
     "resistencias": [],
     "imunidades": []
   },
-  "revisao": []
+  "revisao": [
+    {
+      "campo": "corpo.comprimento",
+      "motivo": "0,042 m na ficha atual. Base da revisão anterior: 0,04215 m, a média simples de machos e fêmeas (Myers e colegas 1978); era 0,047 pela ADW (13/10) e 0,06 pela Wikipédia; o Alvo não muda"
+    },
+    {
+      "campo": "corpo.altura",
+      "motivo": "0,022 m na ficha atual. Base da revisão anterior: 0,0224 m, estimadas sem fonte para 47 mm (0,025) e escaladas a 42,15 mm (D-147, D-174)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,022 m na ficha atual. Base da revisão anterior: 0,0224 m, estimadas sem fonte para 47 mm (0,025) e escaladas a 42,15 mm (D-147, D-174)"
+    }
+  ]
 }

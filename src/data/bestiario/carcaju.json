@@ -119,7 +119,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda: a Força fica 2. Boca de predador pequeno: Leve (seção 7). 254 N no canino (Christiansen e Wroe 2007), abaixo de 4.000 N: N0. Arranca carne congelada com o molar virado (Wikipédia)."
+      "justificativa": "Os molares arrancam pedaços de carne congelada."
     },
     {
       "nome": "Garra",
@@ -136,7 +136,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda. Garras de grampo (Wikipédia)."
+      "justificativa": "As garras curvas prendem a presa."
     }
   ],
   "habilidadesEspeciais": [
@@ -243,6 +243,10 @@
     {
       "campo": "habilidadesEspeciais.fúria ao ferimento",
       "motivo": "R9. O ferimento dispara o Frenesi da criatura. O término segue o combate entre os dois lados. A ficha não concedia imunidade a penalidade de ferimento."
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,25 m na ficha atual. Base da revisão anterior: 0,25 m, estimada, sem fonte; não decide a área"
     }
   ]
 }

@@ -1979,7 +1979,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Golpe rápido de membro. Garra do hálux de 4,5 a 6,34 cm (Bortolotti, via Wikipédia). A Força não muda: segue 3,5"
+     "justificativa": "Prende a presa com os talões."
     },
     {
      "nome": "Bico",
@@ -1996,7 +1996,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Bico em gancho, que rasga a presa já presa. Segue 3,5"
+     "justificativa": "Rasga com o bico curvo a presa que já segurou."
     }
    ],
    "habilidadesEspeciais": [
@@ -2234,8 +2234,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Garras (talões)": "Golpe rápido de membro. Garra do hálux de 4,5 a 6,34 cm (Bortolotti, via Wikipédia). A Força não muda: segue 3,5",
-   "Bico": "Bico em gancho, que rasga a presa já presa. Segue 3,5"
+   "Garras (talões)": "Prende a presa com os talões.",
+   "Bico": "Rasga com o bico curvo a presa que já segurou."
   },
   "habilidadesEspeciais": [
    {
@@ -8013,7 +8013,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo: o dano do incorpóreo é fenômeno (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
+     "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
     }
    ],
    "habilidadesEspeciais": [
@@ -8316,7 +8316,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Toque dilacerante": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo: o dano do incorpóreo é fenômeno (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
+   "Toque dilacerante": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
   },
   "habilidadesEspeciais": [
    {
@@ -18168,7 +18168,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O \"Golpe\" do site (1 dado) e as \"garras ressecadas, ataque corpo a corpo padrão\" (site): golpe Médio, como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 4 e Destreza 4 (D-208): 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+     "justificativa": "As garras ressecadas cortam a carne. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
    ],
    "habilidadesEspeciais": [
@@ -18416,7 +18416,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Garras ressecadas": "O \"Golpe\" do site (1 dado) e as \"garras ressecadas, ataque corpo a corpo padrão\" (site): golpe Médio, como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 4 e Destreza 4 (D-208): 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+   "Garras ressecadas": "As garras ressecadas cortam a carne. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
   },
   "habilidadesEspeciais": [
    {
@@ -25791,7 +25791,7 @@
     {
      "nome": "Espada longa",
      "arma": "espada-longa",
-     "justificativa": "A arma do livro (`armas.json`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Com o escudo, uma mão: Força × 1. A Centelha soma inteira no dano (`centelha.md`). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+     "justificativa": "Empunha a espada com uma mão e mantém o escudo na outra. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
    ],
    "habilidadesEspeciais": [
@@ -26054,7 +26054,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Espada longa": "A arma do livro (`armas.json`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Com o escudo, uma mão: Força × 1. A Centelha soma inteira no dano (`centelha.md`). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+   "Espada longa": "Empunha a espada com uma mão e mantém o escudo na outra. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
   },
   "habilidadesEspeciais": [
    {
@@ -26250,9 +26250,9 @@
    "artes": {},
    "ataques": [
     {
-     "nome": "Bordão",
-     "arma": "bordao",
-     "justificativa": "A arma do livro (`armas.json`, `bordao`, \"também chamada Cajado\"): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, Impacto, alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). O site dava \"Forcado/Pancada\", 1 dado, duas mãos, Impacto. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
+     "nome": "Forcado",
+     "arma": "forcado",
+     "justificativa": "Empurra as pontas do forcado com as duas mãos. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
     }
    ],
    "habilidadesEspeciais": [
@@ -26281,7 +26281,7 @@
     {
      "nome": "grita mais do que golpeia",
      "formas": "todas",
-     "texto": "segura o cajado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
+     "texto": "segura o forcado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
     }
    ],
    "sentidos": [
@@ -26295,7 +26295,7 @@
     "respiracao": "ar",
     "prendeRespiracao": "pela regra do personagem",
     "mente": "humana; teme tudo que vem de fora da aldeia",
-    "tracos": "roupa de roça remendada, mãos calejadas, cajado ou foice na mão, olhos arregalados"
+    "tracos": "roupa de roça remendada, mãos calejadas, forcado ou foice na mão, olhos arregalados"
    },
    "aptidoes": {
     "montaria": false,
@@ -26318,7 +26318,7 @@
      "temperado"
     ]
    },
-   "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
+   "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o forcado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
    "lore": [
     {
      "titulo": "Comportamento",
@@ -26349,7 +26349,7 @@
   "categoriaNome": "Humanoide",
   "tipo": "capanga",
   "conceito": "Humanoide Médio",
-  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
+  "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o forcado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
   "tags": [
    "humanoide"
   ],
@@ -26423,7 +26423,7 @@
   "combate": {
    "pv": 31,
    "energia": 5,
-   "defesa": 6,
+   "defesa": 5,
    "defesaSocial": 6,
    "defesaMental": 10,
    "absorcao": {
@@ -26440,10 +26440,10 @@
    },
    "ataques": [
     {
-     "nome": "Bordão",
-     "pool": "1d6+2 +1",
-     "dano": "1d6 +4 (I)",
-     "perfArma": null,
+     "nome": "Forcado",
+     "pool": "1d6+2",
+     "dano": "1d6 +4 (P) · perf. 0",
+     "perfArma": 0,
      "speed": 6,
      "classe": "haste",
      "forcaInvestida": 2
@@ -26451,7 +26451,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Bordão": "A arma do livro (`armas.json`, `bordao`, \"também chamada Cajado\"): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, Impacto, alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). O site dava \"Forcado/Pancada\", 1 dado, duas mãos, Impacto. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
+   "Forcado": "Empurra as pontas do forcado com as duas mãos. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
   },
   "habilidadesEspeciais": [
    {
@@ -26473,7 +26473,7 @@
    },
    {
     "nome": "grita mais do que golpeia",
-    "texto": "segura o cajado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
+    "texto": "segura o forcado tremendo, fica atrás dos outros, golpeia quando alguém cai perto e corre ao primeiro sangue."
    }
   ],
   "sentidos": [
@@ -30287,7 +30287,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Não muda: a Força fica 2. Boca de predador pequeno: Leve (seção 7). 254 N no canino (Christiansen e Wroe 2007), abaixo de 4.000 N: N0. Arranca carne congelada com o molar virado (Wikipédia)."
+     "justificativa": "Os molares arrancam pedaços de carne congelada."
     },
     {
      "nome": "Garra",
@@ -30304,7 +30304,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Não muda. Garras de grampo (Wikipédia)."
+     "justificativa": "As garras curvas prendem a presa."
     }
    ],
    "habilidadesEspeciais": [
@@ -30529,8 +30529,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Não muda: a Força fica 2. Boca de predador pequeno: Leve (seção 7). 254 N no canino (Christiansen e Wroe 2007), abaixo de 4.000 N: N0. Arranca carne congelada com o molar virado (Wikipédia).",
-   "Garra": "Não muda. Garras de grampo (Wikipédia)."
+   "Mordida": "Os molares arrancam pedaços de carne congelada.",
+   "Garra": "As garras curvas prendem a presa."
   },
   "habilidadesEspeciais": [
    {
@@ -32540,7 +32540,7 @@
     {
      "nome": "Azagaia",
      "arma": "azagaia",
-     "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Arremesso é sempre Destreza (`combate.md`). Jogada: Destreza 4 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
+     "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Pode usar Força ou Destreza. Jogada: Força 7 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
     },
     {
      "nome": "Coice",
@@ -32775,7 +32775,7 @@
     },
     {
      "nome": "Azagaia",
-     "pool": "3d6+2 +5",
+     "pool": "5d6 +5",
      "dano": "1d6 +9 (P) · perf. 1",
      "perfArma": 1,
      "speed": 6,
@@ -32795,7 +32795,7 @@
   },
   "justificativaDosAtaques": {
    "Espada longa": "A arma do livro (`armas.json`, `espada-longa`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1, ★C · P(N1). A Centelha soma inteira. Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 2 e Armas 4 (4)",
-   "Azagaia": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Arremesso é sempre Destreza (`combate.md`). Jogada: Destreza 4 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)",
+   "Azagaia": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Pode usar Força ou Destreza. Jogada: Força 7 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)",
    "Coice": "O coice do cavalo do molde: Pesado, preparado e lento, golpe de membro, Força × 1 (erro 7.6). Jogada: Força 7 + Armas 4 + 2 × o menor entre Centelha 2 e Armas 4 (4)"
   },
   "habilidadesEspeciais": [
@@ -34066,22 +34066,16 @@
      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
+     "nome": "Martelo de Guerra",
+     "arma": "martelo-de-guerra",
+     "justificativa": "Tamanho Grande. Empunha a arma com as duas mãos.",
+     "tamanho": "grande"
+    },
+    {
      "nome": "Rocha arremessada",
-     "parte": "mao",
-     "habilidade": "arremesso",
-     "classe": "pesada",
-     "pgr": [
-      3,
-      1,
-      3
-     ],
-     "dado": "2d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": 0,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "\"Arremessa rochedos\" (site, Força ciclópica): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+     "arma": "rocha",
+     "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+     "tamanho": "grande"
     }
    ],
    "habilidadesEspeciais": [
@@ -34091,9 +34085,9 @@
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
      "categoria": "inato",
-     "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+     "ativacao": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)",
      "duracao": "instantânea",
-     "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+     "alcance": "pela fórmula de arremesso para uma rocha de 30 kg",
      "area": "um alvo",
      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
      "dano": "2d6 + Força + Centelha, Impacto",
@@ -34290,7 +34284,7 @@
   "combate": {
    "pv": 54,
    "energia": 10,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 4,
    "defesaMental": 12,
    "absorcao": {
@@ -34301,6 +34295,12 @@
    "resistenciaPerfuracao": 0,
    "couraca": 2,
    "perfilCouraca": "couro",
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Martelo de Guerra",
+    "bloqueio": 8,
+    "defesa": 8
+   },
    "iniciativa": "1d6 + 4",
    "deslocamento": {
     "batalha": 3,
@@ -34318,30 +34318,40 @@
      "forcaInvestida": 9
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +10 (I)",
+     "nome": "Martelo de Guerra",
+     "pool": "7d6 +2",
+     "dano": "3d6 +19 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 9
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6 +2",
+     "dano": "2d6 +10 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
   },
   "justificativaDosAtaques": {
    "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)",
-   "Rocha arremessada": "\"Arremessa rochedos\" (site, Força ciclópica): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+   "Martelo de Guerra": "Tamanho Grande. Empunha a arma com as duas mãos.",
+   "Rocha arremessada": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
   },
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
-    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: pela fórmula de arremesso para uma rocha de 30 kg. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
     "classe": "regra da ficha",
     "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)"
+      "valor": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)"
      },
      {
       "rotulo": "Duração",
@@ -34349,7 +34359,7 @@
      },
      {
       "rotulo": "Alcance",
-      "valor": "até 36 m; acima de 12 m, −2 na jogada"
+      "valor": "pela fórmula de arremesso para uma rocha de 30 kg"
      },
      {
       "rotulo": "Área",
@@ -43503,16 +43513,16 @@
     {
      "nome": "Regeneração 5",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de arma benta ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "ferida que não fecha",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o que arma benta ou de prata faz não se fecha pela regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "arma abençoada",
+       "prata"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "imune a veneno",
@@ -43905,13 +43915,8 @@
    },
    {
     "nome": "Regeneração 5",
-    "descricao": "origem sobrenatural. O dano de arma benta ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "ferida que não fecha",
-    "descricao": "o que arma benta ou de prata faz não se fecha pela regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "imune a veneno",
@@ -44170,16 +44175,15 @@
     {
      "nome": "Regeneração 5",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de arma ou Arte abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "ferida que não fecha",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o que arma ou Arte abençoada faz não se fecha pela regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "arma abençoada"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "medonho",
@@ -44506,13 +44510,8 @@
    },
    {
     "nome": "Regeneração 5",
-    "descricao": "origem sobrenatural. O dano de arma ou Arte abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "ferida que não fecha",
-    "descricao": "o que arma ou Arte abençoada faz não se fecha pela regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "medonho",
@@ -45746,16 +45745,16 @@
     {
      "nome": "Regeneração 5",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de arma sagrada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "ferida que não fecha",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o que arma sagrada ou de prata faz não se regenera pela regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "arma abençoada",
+       "prata"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Ver o invisível",
@@ -46303,13 +46302,8 @@
    },
    {
     "nome": "Regeneração 5",
-    "descricao": "origem sobrenatural. O dano de arma sagrada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "ferida que não fecha",
-    "descricao": "o que arma sagrada ou de prata faz não se regenera pela regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Ver o invisível",
@@ -47922,9 +47916,16 @@
     {
      "nome": "Regeneração 2",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "prata",
+       "arma abençoada"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de prata ou arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 2 PV por minuto, até o máximo de PV. Em combate, recupera 0,2 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "imune a veneno",
@@ -48318,8 +48319,8 @@
    },
    {
     "nome": "Regeneração 2",
-    "descricao": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de prata ou arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 2 PV por minuto, até o máximo de PV. Em combate, recupera 0,2 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "imune a veneno",
@@ -57292,7 +57293,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
+     "justificativa": "Os dentes serrilhados perfuram e rasgam a carne quando o varano puxa a cabeça."
     }
    ],
    "habilidadesEspeciais": [
@@ -57521,7 +57522,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida (morde e rasga)": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
+   "Mordida (morde e rasga)": "Os dentes serrilhados perfuram e rasgam a carne quando o varano puxa a cabeça."
   },
   "habilidadesEspeciais": [
    {
@@ -57725,7 +57726,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
+     "justificativa": "Os dentes serrilhados perfuram e rasgam a carne quando o varano puxa a cabeça."
     }
    ],
    "habilidadesEspeciais": [
@@ -57942,7 +57943,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida (morde e rasga)": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
+   "Mordida (morde e rasga)": "Os dentes serrilhados perfuram e rasgam a carne quando o varano puxa a cabeça."
   },
   "habilidadesEspeciais": [
    {
@@ -59996,7 +59997,7 @@
     {
      "nome": "Espada curta",
      "arma": "espada-curta",
-     "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Envenenada (Veneno e doença). A Centelha soma inteira. Jogada: Destreza 4 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
+     "justificativa": "A espada corta ou estoca. Se a lâmina estiver envenenada, a dose entra quando o golpe causa ao menos 1 PV depois da Absorção. Jogada: Destreza 4 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     }
    ],
    "habilidadesEspeciais": [
@@ -60267,7 +60268,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Espada curta": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Envenenada (Veneno e doença). A Centelha soma inteira. Jogada: Destreza 4 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
+   "Espada curta": "A espada corta ou estoca. Se a lâmina estiver envenenada, a dose entra quando o golpe causa ao menos 1 PV depois da Absorção. Jogada: Destreza 4 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
   },
   "habilidadesEspeciais": [
    {
@@ -60590,9 +60591,9 @@
    "artes": {},
    "ataques": [
     {
-     "nome": "Lâmina leve",
-     "arma": "espada-curta",
-     "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1), no lugar do \"Florete\" do site, que o livro não tem. A Centelha soma inteira. Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
+     "nome": "Florete",
+     "arma": "florete",
+     "justificativa": "Estoca com a ponta do florete. Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
     }
    ],
    "habilidadesEspeciais": [
@@ -60816,10 +60817,10 @@
    },
    "ataques": [
     {
-     "nome": "Lâmina leve",
+     "nome": "Florete",
      "pool": "5d6 +8",
-     "dano": "1d6 +4 (C)",
-     "perfArma": null,
+     "dano": "1d6 +4 (P) · perf. 1",
+     "perfArma": 1,
      "speed": 5,
      "classe": "leve",
      "forcaInvestida": 3
@@ -60827,7 +60828,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Lâmina leve": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1), no lugar do \"Florete\" do site, que o livro não tem. A Centelha soma inteira. Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
+   "Florete": "Estoca com a ponta do florete. Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
   },
   "habilidadesEspeciais": [
    {
@@ -68036,7 +68037,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Força de mordida de cerca de 13 N (Nies e Ro 2004, citado por Cox 2015): N0. Mordidas reais em gente: 61% perfurações, 14% lacerações de menos de 1 cm (Ordog 1985). Um ataque por ação (D-097)"
+     "justificativa": "Os ratos mordem quem está dentro do enxame. A Absorção conta contra o pulso."
     }
    ],
    "habilidadesEspeciais": [
@@ -68267,7 +68268,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida do enxame": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Força de mordida de cerca de 13 N (Nies e Ro 2004, citado por Cox 2015): N0. Mordidas reais em gente: 61% perfurações, 14% lacerações de menos de 1 cm (Ordog 1985). Um ataque por ação (D-097)"
+   "Mordida do enxame": "Os ratos mordem quem está dentro do enxame. A Absorção conta contra o pulso."
   },
   "habilidadesEspeciais": [
    {
@@ -71585,7 +71586,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "O toque gelado que atravessa a matéria. Gesto rápido de membro, Leve (`regra-construcao.md` §7). Força 0 não soma (D-167); a Centelha soma inteira (`centelha.md`). Tipo: o dano do incorpóreo \"é fenômeno (armadura não absorve, só a Centelha)\" (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+     "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
    ],
    "habilidadesEspeciais": [
@@ -71900,7 +71901,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Toque dilacerante": "O toque gelado que atravessa a matéria. Gesto rápido de membro, Leve (`regra-construcao.md` §7). Força 0 não soma (D-167); a Centelha soma inteira (`centelha.md`). Tipo: o dano do incorpóreo \"é fenômeno (armadura não absorve, só a Centelha)\" (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+   "Toque dilacerante": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
   },
   "habilidadesEspeciais": [
    {
@@ -74446,6 +74447,12 @@
      "acerto": 0,
      "bloqueiaComoArma": null,
      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 8 + Briga 4"
+    },
+    {
+     "nome": "Maça",
+     "arma": "maca",
+     "justificativa": "Tamanho Grande. Empunha uma maça em cada mão e usa empunhadura dupla.",
+     "tamanho": "grande"
     }
    ],
    "habilidadesEspeciais": [
@@ -74635,7 +74642,7 @@
   "combate": {
    "pv": 50,
    "energia": 7,
-   "defesa": 6,
+   "defesa": 7,
    "defesaSocial": 8,
    "defesaMental": 9,
    "absorcao": {
@@ -74661,11 +74668,21 @@
      "speed": 7,
      "classe": "pesada",
      "forcaInvestida": 8
+    },
+    {
+     "nome": "Maça",
+     "pool": "6d6 +1",
+     "dano": "2d6 +8 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "media",
+     "forcaInvestida": 8
     }
    ]
   },
   "justificativaDosAtaques": {
-   "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 8 + Briga 4"
+   "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 8 + Briga 4",
+   "Maça": "Tamanho Grande. Empunha uma maça em cada mão e usa empunhadura dupla."
   },
   "habilidadesEspeciais": [
    {
@@ -75299,7 +75316,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "O toque gélido que atravessa a armadura (site), gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site gravava impacto. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+     "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
    ],
    "habilidadesEspeciais": [
@@ -75638,7 +75655,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Toque corrupto": "O toque gélido que atravessa a armadura (site), gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site gravava impacto. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+   "Toque corrupto": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
   },
   "habilidadesEspeciais": [
    {
@@ -76534,16 +76551,16 @@
     {
      "nome": "Regeneração 10",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem mágica. O dano de gelo ou mal só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "frio e mal param a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de gelo ou o que vem do mal não se fecha pela Regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "água",
+       "maligno"
+      ]
+     },
+     "texto": "Origem mágica. O dano de água ou de origem maligna não se regenera. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Muralha de chamas",
@@ -76962,13 +76979,8 @@
    },
    {
     "nome": "Regeneração 10",
-    "descricao": "origem mágica. O dano de gelo ou mal só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "frio e mal param a regeneração",
-    "descricao": "o dano de gelo ou o que vem do mal não se fecha pela Regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem mágica. O dano de água ou de origem maligna não se regenera. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Muralha de chamas",
@@ -84166,22 +84178,16 @@
      "justificativa": "O punho de um gigante com o corpo girando atrás (site: 2 dados, 6 Ticks). Pesada pelo gesto (`regra-construcao.md` §7, \"o golpe do corpo inteiro, com carga ou rotação\"); golpe de membro, Força × 1, como o coice do cavalo. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
+     "nome": "Martelo de Guerra",
+     "arma": "martelo-de-guerra",
+     "justificativa": "Tamanho Grande. Empunha a arma com as duas mãos.",
+     "tamanho": "grande"
+    },
+    {
      "nome": "Rocha arremessada",
-     "parte": "mao",
-     "habilidade": "arremesso",
-     "classe": "pesada",
-     "pgr": [
-      3,
-      1,
-      3
-     ],
-     "dado": "2d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": 0,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "O \"Arremesso de rocha\" do site, \"dano de arma grande\", até 36 m. Pesada (rocha de 20 a 40 kg lançada com o corpo); a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+     "arma": "rocha",
+     "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+     "tamanho": "grande"
     }
    ],
    "habilidadesEspeciais": [
@@ -84191,9 +84197,9 @@
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
      "categoria": "inato",
-     "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+     "ativacao": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)",
      "duracao": "instantânea",
-     "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+     "alcance": "pela fórmula de arremesso para uma rocha de 30 kg",
      "area": "um alvo",
      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
      "dano": "2d6 + Força + Centelha, Impacto",
@@ -84396,7 +84402,7 @@
   "combate": {
    "pv": 54,
    "energia": 10,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 10,
    "defesaMental": 12,
    "absorcao": {
@@ -84407,6 +84413,12 @@
    "resistenciaPerfuracao": 0,
    "couraca": 2,
    "perfilCouraca": "couro",
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Martelo de Guerra",
+    "bloqueio": 8,
+    "defesa": 8
+   },
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -84424,30 +84436,40 @@
      "forcaInvestida": 9
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +10 (I)",
+     "nome": "Martelo de Guerra",
+     "pool": "7d6 +2",
+     "dano": "3d6 +19 (I)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 9
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6 +2",
+     "dano": "2d6 +10 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
   },
   "justificativaDosAtaques": {
    "Pancada descomunal": "O punho de um gigante com o corpo girando atrás (site: 2 dados, 6 Ticks). Pesada pelo gesto (`regra-construcao.md` §7, \"o golpe do corpo inteiro, com carga ou rotação\"); golpe de membro, Força × 1, como o coice do cavalo. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)",
-   "Rocha arremessada": "O \"Arremesso de rocha\" do site, \"dano de arma grande\", até 36 m. Pesada (rocha de 20 a 40 kg lançada com o corpo); a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+   "Martelo de Guerra": "Tamanho Grande. Empunha a arma com as duas mãos.",
+   "Rocha arremessada": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
   },
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
-    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: pela fórmula de arremesso para uma rocha de 30 kg. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
     "classe": "regra da ficha",
     "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)"
+      "valor": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)"
      },
      {
       "rotulo": "Duração",
@@ -84455,7 +84477,7 @@
      },
      {
       "rotulo": "Alcance",
-      "valor": "até 36 m; acima de 12 m, −2 na jogada"
+      "valor": "pela fórmula de arremesso para uma rocha de 30 kg"
      },
      {
       "rotulo": "Área",
@@ -84706,21 +84728,9 @@
     },
     {
      "nome": "Rocha arremessada",
-     "parte": "mao",
-     "habilidade": "arremesso",
-     "classe": "pesada",
-     "pgr": [
-      3,
-      1,
-      3
-     ],
-     "dado": "2d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": 0,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "\"Arremesso certeiro\" (site): a rocha arremessada do gigante da colina, até 45 m; a distância vai nas Manobras. Jogada: Destreza 4 + Arremesso 4"
+     "arma": "rocha",
+     "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 4",
+     "tamanho": "grande"
     }
    ],
    "habilidadesEspeciais": [
@@ -84730,9 +84740,9 @@
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
      "categoria": "inato",
-     "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+     "ativacao": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)",
      "duracao": "instantânea",
-     "alcance": "até 45 m; acima de 15 m, −2 na jogada",
+     "alcance": "pela fórmula de arremesso para uma rocha de 30 kg",
      "area": "um alvo",
      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
      "dano": "2d6 + Força, Impacto",
@@ -84809,7 +84819,7 @@
      "temperado"
     ]
    },
-   "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
+   "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas de 30 kg com precisão mortal e anda entre as rochas sem ser notado.",
    "lore": [
     {
      "titulo": "Comportamento",
@@ -84848,7 +84858,7 @@
   "categoriaNome": "Gigante",
   "tipo": "chefe",
   "conceito": "Gigante Grande",
-  "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
+  "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas de 30 kg com precisão mortal e anda entre as rochas sem ser notado.",
   "tags": [
    "gigante"
   ],
@@ -84948,29 +84958,29 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "4d6",
+     "pool": "6d6+2",
      "dano": "2d6 +9 (I)",
      "perfArma": null,
-     "speed": 7,
-     "classe": "pesada",
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
   },
   "justificativaDosAtaques": {
    "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 9 + Briga 5",
-   "Rocha arremessada": "\"Arremesso certeiro\" (site): a rocha arremessada do gigante da colina, até 45 m; a distância vai nas Manobras. Jogada: Destreza 4 + Arremesso 4"
+   "Rocha arremessada": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 4"
   },
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso certeiro",
-    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 45 m; acima de 15 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: pela fórmula de arremesso para uma rocha de 30 kg. Área: um alvo. Dano: 2d6 + Força, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
     "classe": "regra da ficha",
     "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)"
+      "valor": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)"
      },
      {
       "rotulo": "Duração",
@@ -84978,7 +84988,7 @@
      },
      {
       "rotulo": "Alcance",
-      "valor": "até 45 m; acima de 15 m, −2 na jogada"
+      "valor": "pela fórmula de arremesso para uma rocha de 30 kg"
      },
      {
       "rotulo": "Área",
@@ -85819,21 +85829,9 @@
     },
     {
      "nome": "Rocha arremessada",
-     "parte": "mao",
-     "habilidade": "arremesso",
-     "classe": "pesada",
-     "pgr": [
-      3,
-      1,
-      3
-     ],
-     "dado": "2d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": 0,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "O \"Arremessar rocha\" do site (3 dados, 7 Ticks): a rocha arremessada do gigante da colina; o terceiro dado sai com a classe, e a distância vai nas Manobras. Jogada: Destreza 3 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
+     "arma": "rocha",
+     "justificativa": "Rocha Enorme de 60 kg. O alcance depende da massa. Jogada: Força 12 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)",
+     "tamanho": "enorme"
     }
    ],
    "habilidadesEspeciais": [
@@ -85843,12 +85841,12 @@
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
      "categoria": "inato",
-     "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+     "ativacao": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)",
      "duracao": "instantânea",
-     "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+     "alcance": "pela fórmula de arremesso para uma rocha de 60 kg",
      "area": "um alvo",
      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
-     "dano": "2d6 + Força + Centelha, Impacto",
+     "dano": "3d6 + Força + Centelha, Impacto",
      "resistencia": "corpo, contra a jogada, só para não cair; o dano vem inteiro",
      "limiteDeUso": "enquanto houver rocha por perto"
     },
@@ -86113,29 +86111,29 @@
     },
     {
      "nome": "Rocha arremessada",
-     "pool": "3d6 +4",
-     "dano": "2d6 +14 (I)",
+     "pool": "7d6+2 +4",
+     "dano": "3d6 +14 (I)",
      "perfArma": null,
-     "speed": 7,
-     "classe": "pesada",
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
   },
   "justificativaDosAtaques": {
    "Pancada descomunal": "A do site (3 dados, impacto, 7 Ticks): o punho de um gigante de 7 m com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; o terceiro dado sai, porque a Pesada vai a 2 dados. Jogada: Força 12 + Briga 5 + 2 × o menor entre Centelha 2 e Briga 5 (4)",
-   "Rocha arremessada": "O \"Arremessar rocha\" do site (3 dados, 7 Ticks): a rocha arremessada do gigante da colina; o terceiro dado sai com a classe, e a distância vai nas Manobras. Jogada: Destreza 3 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
+   "Rocha arremessada": "Rocha Enorme de 60 kg. O alcance depende da massa. Jogada: Força 12 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
   },
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
-    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: pela fórmula de arremesso para uma rocha de 60 kg. Área: um alvo. Dano: 3d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
     "classe": "regra da ficha",
     "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)"
+      "valor": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)"
      },
      {
       "rotulo": "Duração",
@@ -86143,7 +86141,7 @@
      },
      {
       "rotulo": "Alcance",
-      "valor": "até 36 m; acima de 12 m, −2 na jogada"
+      "valor": "pela fórmula de arremesso para uma rocha de 60 kg"
      },
      {
       "rotulo": "Área",
@@ -86151,7 +86149,7 @@
      },
      {
       "rotulo": "Dano",
-      "valor": "2d6 + Força + Centelha, Impacto"
+      "valor": "3d6 + Força + Centelha, Impacto"
      },
      {
       "rotulo": "Resistência",
@@ -86473,22 +86471,16 @@
      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho blindado de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
+     "nome": "Montante",
+     "arma": "montante",
+     "justificativa": "Tamanho Grande. Depois do golpe com o montante, age por último na rodada seguinte.",
+     "tamanho": "grande"
+    },
+    {
      "nome": "Rocha arremessada",
-     "parte": "mao",
-     "habilidade": "arremesso",
-     "classe": "pesada",
-     "pgr": [
-      3,
-      1,
-      3
-     ],
-     "dado": "2d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": 0,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "O \"Arremessar rocha\" do site (2 dados, 6 Ticks): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+     "arma": "rocha",
+     "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 10 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+     "tamanho": "grande"
     }
    ],
    "habilidadesEspeciais": [
@@ -86498,9 +86490,9 @@
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
      "categoria": "inato",
-     "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+     "ativacao": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)",
      "duracao": "instantânea",
-     "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+     "alcance": "pela fórmula de arremesso para uma rocha de 30 kg",
      "area": "um alvo",
      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
      "dano": "2d6 + Força + Centelha, Impacto",
@@ -86712,7 +86704,7 @@
   "combate": {
    "pv": 62,
    "energia": 12,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 14,
    "absorcao": {
@@ -86725,8 +86717,8 @@
    "perfilCouraca": "couro",
    "vestida": {
     "esquiva": 1,
-    "bloqueio": 5,
-    "defesa": 5,
+    "bloqueio": 3,
+    "defesa": 3,
     "contraTiro": 1,
     "absorcao": {
      "impacto": 14,
@@ -86735,6 +86727,13 @@
     },
     "nivel": 2,
     "penalidade": 3
+   },
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Montante",
+    "bloqueio": 8,
+    "defesa": 8,
+    "vestida": 5
    },
    "fraquezas": [
     "gelo"
@@ -86759,30 +86758,40 @@
      "forcaInvestida": 10
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +11 (I)",
+     "nome": "Montante",
+     "pool": "7d6+2 +2",
+     "dano": "3d6 +21 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 10
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6+2 +2",
+     "dano": "2d6 +11 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
   },
   "justificativaDosAtaques": {
    "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho blindado de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)",
-   "Rocha arremessada": "O \"Arremessar rocha\" do site (2 dados, 6 Ticks): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+   "Montante": "Tamanho Grande. Depois do golpe com o montante, age por último na rodada seguinte.",
+   "Rocha arremessada": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 10 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
   },
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
-    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação). Duração: instantânea. Alcance: pela fórmula de arremesso para uma rocha de 30 kg. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha por perto",
     "classe": "regra da ficha",
     "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)"
+      "valor": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)"
      },
      {
       "rotulo": "Duração",
@@ -86790,7 +86799,7 @@
      },
      {
       "rotulo": "Alcance",
-      "valor": "até 36 m; acima de 12 m, −2 na jogada"
+      "valor": "pela fórmula de arremesso para uma rocha de 30 kg"
      },
      {
       "rotulo": "Área",
@@ -87042,22 +87051,16 @@
      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
     },
     {
+     "nome": "Machado Pesado",
+     "arma": "machado-pesado",
+     "justificativa": "Tamanho Grande. Empunha a arma com as duas mãos.",
+     "tamanho": "grande"
+    },
+    {
      "nome": "Rocha arremessada",
-     "parte": "mao",
-     "habilidade": "arremesso",
-     "classe": "pesada",
-     "pgr": [
-      3,
-      1,
-      3
-     ],
-     "dado": "2d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": 0,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "O \"Arremesso de rocha\" do site (\"até 36 m, dano alto\"): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+     "arma": "rocha",
+     "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 10 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+     "tamanho": "grande"
     }
    ],
    "habilidadesEspeciais": [
@@ -87067,9 +87070,9 @@
      "classe": "regra da ficha",
      "ataque": "Rocha arremessada",
      "categoria": "inato",
-     "ativacao": "uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação)",
+     "ativacao": "uma ação, Velocidade 6, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação)",
      "duracao": "instantânea",
-     "alcance": "até 36 m; acima de 12 m, −2 na jogada",
+     "alcance": "pela fórmula de arremesso para uma rocha de 30 kg",
      "area": "um alvo",
      "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
      "dano": "2d6 + Força + Centelha, Impacto",
@@ -87140,7 +87143,7 @@
      "frio"
     ]
    },
-   "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas a 36 m e corta com um machado descomunal. O frio não o fere.",
+   "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas de 30 kg e corta com um machado descomunal. O frio não o fere.",
    "lore": [
     {
      "titulo": "Comportamento",
@@ -87179,7 +87182,7 @@
   "categoriaNome": "Gigante",
   "tipo": "chefe",
   "conceito": "Gigante Grande",
-  "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas a 36 m e corta com um machado descomunal. O frio não o fere.",
+  "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas de 30 kg e corta com um machado descomunal. O frio não o fere.",
   "tags": [
    "gigante",
    "centelha"
@@ -87253,7 +87256,7 @@
   "combate": {
    "pv": 58,
    "energia": 11,
-   "defesa": 8,
+   "defesa": 6,
    "defesaSocial": 6,
    "defesaMental": 13,
    "absorcao": {
@@ -87264,6 +87267,12 @@
    "resistenciaPerfuracao": 0,
    "couraca": 2,
    "perfilCouraca": "couro",
+   "defesaOutraArma": {
+    "arma": "Rocha arremessada",
+    "armaPrincipal": "Machado Pesado",
+    "bloqueio": 8,
+    "defesa": 8
+   },
    "iniciativa": "1d6 + 3",
    "deslocamento": {
     "batalha": 4,
@@ -87281,30 +87290,40 @@
      "forcaInvestida": 10
     },
     {
-     "nome": "Rocha arremessada",
-     "pool": "2d6+2 +2",
-     "dano": "2d6 +11 (I)",
+     "nome": "Machado Pesado",
+     "pool": "7d6+2 +2",
+     "dano": "3d6 +21 (C)",
      "perfArma": null,
      "speed": 7,
      "classe": "pesada",
+     "forcaInvestida": 10
+    },
+    {
+     "nome": "Rocha arremessada",
+     "pool": "6d6+2 +2",
+     "dano": "2d6 +11 (I)",
+     "perfArma": null,
+     "speed": 6,
+     "classe": "arremesso",
      "forcaInvestida": 0
     }
    ]
   },
   "justificativaDosAtaques": {
    "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)",
-   "Rocha arremessada": "O \"Arremesso de rocha\" do site (\"até 36 m, dano alto\"): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+   "Machado Pesado": "Tamanho Grande. Empunha a arma com as duas mãos.",
+   "Rocha arremessada": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 10 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
   },
   "habilidadesEspeciais": [
    {
     "nome": "Arremesso de rocha",
-    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação). Duração: instantânea. Alcance: até 36 m; acima de 12 m, −2 na jogada. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha ou gelo por perto",
+    "descricao": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada. Ativação: uma ação, Velocidade 6, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação). Duração: instantânea. Alcance: pela fórmula de arremesso para uma rocha de 30 kg. Área: um alvo. Dano: 2d6 + Força + Centelha, Impacto. Resistência: corpo, contra a jogada, só para não cair; o dano vem inteiro. Limite de uso: enquanto houver rocha ou gelo por perto",
     "classe": "regra da ficha",
     "texto": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
     "campos": [
      {
       "rotulo": "Ativação",
-      "valor": "uma ação, Velocidade 7, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação)"
+      "valor": "uma ação, Velocidade 6, com uma rocha ou um bloco de gelo na mão (pegar um do chão gasta outra ação)"
      },
      {
       "rotulo": "Duração",
@@ -87312,7 +87331,7 @@
      },
      {
       "rotulo": "Alcance",
-      "valor": "até 36 m; acima de 12 m, −2 na jogada"
+      "valor": "pela fórmula de arremesso para uma rocha de 30 kg"
      },
      {
       "rotulo": "Área",
@@ -96023,7 +96042,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Caninos pequenos e cônicos (Wikipédia); agarra a garganta e estrangula (ADW). Leve: boca pequena (seção 7). N0: mordida absoluta não achada; o modelo de 2011 dá 689 N com crânio escalado (forma, não força real). Não muda: a Força continua 2."
+     "justificativa": "Fecha os caninos em torno da garganta da presa."
     },
     {
      "nome": "Patada com o ergot",
@@ -96040,7 +96059,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "A unha do \"polegar\" é grande, curva e afiada, e a pata derruba a presa em corrida (ADW). Não muda. Opção (D-097)."
+     "justificativa": "A unha curva do polegar ajuda a derrubar a presa em corrida."
     }
    ],
    "habilidadesEspeciais": [
@@ -96267,8 +96286,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Caninos pequenos e cônicos (Wikipédia); agarra a garganta e estrangula (ADW). Leve: boca pequena (seção 7). N0: mordida absoluta não achada; o modelo de 2011 dá 689 N com crânio escalado (forma, não força real). Não muda: a Força continua 2.",
-   "Patada com o ergot": "A unha do \"polegar\" é grande, curva e afiada, e a pata derruba a presa em corrida (ADW). Não muda. Opção (D-097)."
+   "Mordida": "Fecha os caninos em torno da garganta da presa.",
+   "Patada com o ergot": "A unha curva do polegar ajuda a derrubar a presa em corrida."
   },
   "habilidadesEspeciais": [
    {
@@ -97668,16 +97687,16 @@
     {
      "nome": "Regeneração 5",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "fogo e ácido param a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "fogo",
+       "ácido"
+      ]
+     },
+     "texto": "Origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "cabeças que rebrotam",
@@ -97906,13 +97925,8 @@
   "habilidadesEspeciais": [
    {
     "nome": "Regeneração 5",
-    "descricao": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "fogo e ácido param a regeneração",
-    "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "cabeças que rebrotam",
@@ -98171,7 +98185,7 @@
      "nivelPerfuracao": 1,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Não muda: a Força fica 4. Morde, segura e quebra osso: Média (`regra-construcao.md` §7). N1: cerca de 4.500 N medidos com transdutor de força em hienas cativas (Binder e Van Valkenburgh 2000, número via San Diego Zoo) , acima dos 4.000 N do corte do N1. A estimativa pelo crânio seco dá 773 N no canino (Wroe et al. 2005); a medida no animal vivo manda. Ver as notas."
+     "justificativa": "As mandíbulas seguram a presa e quebram ossos."
     }
    ],
    "habilidadesEspeciais": [
@@ -98375,7 +98389,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Não muda: a Força fica 4. Morde, segura e quebra osso: Média (`regra-construcao.md` §7). N1: cerca de 4.500 N medidos com transdutor de força em hienas cativas (Binder e Van Valkenburgh 2000, número via San Diego Zoo) , acima dos 4.000 N do corte do N1. A estimativa pelo crânio seco dá 773 N no canino (Wroe et al. 2005); a medida no animal vivo manda. Ver as notas."
+   "Mordida": "As mandíbulas seguram a presa e quebram ossos."
   },
   "habilidadesEspeciais": [
    {
@@ -102643,7 +102657,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote rápido de boca pequena: Leve (seção 7). Com Força 0, o dano perde a parte da Força (D-115). Quem mata é o veneno, `peconha-botropica`, que não depende do dano: \"Todo dano de veneno ignora a Absorção\" (`acoes-resistir.md`:43), e a picada é via sangue (`acoes-resistir.md`:58). N0: força de mordida \"não achado\", e a presa só fura pele. Um ataque por ação (D-097)."
+     "justificativa": "As presas inoculam a peçonha quando o bote causa ao menos 1 PV depois da Absorção."
     }
    ],
    "habilidadesEspeciais": [
@@ -102860,7 +102874,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Bote": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote rápido de boca pequena: Leve (seção 7). Com Força 0, o dano perde a parte da Força (D-115). Quem mata é o veneno, `peconha-botropica`, que não depende do dano: \"Todo dano de veneno ignora a Absorção\" (`acoes-resistir.md`:43), e a picada é via sangue (`acoes-resistir.md`:58). N0: força de mordida \"não achado\", e a presa só fura pele. Um ataque por ação (D-097)."
+   "Bote": "As presas inoculam a peçonha quando o bote causa ao menos 1 PV depois da Absorção."
   },
   "habilidadesEspeciais": [
    {
@@ -103084,7 +103098,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O golpe de cabeça de baixo para cima com o corpo atrás (seção 7 da regra). Caninos de cima de 5 a 10 cm (ADW) e de baixo com 10 a 12 cm expostos (Wikipédia): presa é Perfuração; sem força medida, N0. Fere sobretudo pernas e pés, e as mortes vêm da perda de sangue (Mayer 2013). A Força não muda: fica 1d6 + 5, média 8,5."
+     "justificativa": "Ergue a cabeça e crava as presas de baixo para cima."
     },
     {
      "nome": "Investida",
@@ -103101,7 +103115,7 @@
      "nivelPerfuracao": null,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
+     "justificativa": "Na ação de Investida, some a Força mais uma vez ao dano."
     }
    ],
    "habilidadesEspeciais": [
@@ -103342,8 +103356,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Presada (golpe de presa)": "O golpe de cabeça de baixo para cima com o corpo atrás (seção 7 da regra). Caninos de cima de 5 a 10 cm (ADW) e de baixo com 10 a 12 cm expostos (Wikipédia): presa é Perfuração; sem força medida, N0. Fere sobretudo pernas e pés, e as mortes vêm da perda de sangue (Mayer 2013). A Força não muda: fica 1d6 + 5, média 8,5.",
-   "Investida": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
+   "Presada (golpe de presa)": "Ergue a cabeça e crava as presas de baixo para cima.",
+   "Investida": "Na ação de Investida, some a Força mais uma vez ao dano."
   },
   "habilidadesEspeciais": [
    {
@@ -103583,7 +103597,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "1d6 − 2 + Força 3, média 4,5. Bote rápido de boca pequena (seção 7). Dentes que seguram e empurram a presa para a garganta (ADW). Dói mas não é perigosa a gente (ADW)."
+     "justificativa": "Os dentes curvos seguram a presa para a constrição."
     }
    ],
    "habilidadesEspeciais": [
@@ -103829,7 +103843,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida (bote para agarrar)": "1d6 − 2 + Força 3, média 4,5. Bote rápido de boca pequena (seção 7). Dentes que seguram e empurram a presa para a garganta (ADW). Dói mas não é perigosa a gente (ADW)."
+   "Mordida (bote para agarrar)": "Os dentes curvos seguram a presa para a constrição."
   },
   "habilidadesEspeciais": [
    {
@@ -105166,16 +105180,16 @@
     {
      "nome": "Regeneração 2",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "ferida que não fecha",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o que arma de prata ou do bem faz não se regenera pela regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "arma abençoada",
+       "prata"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 2 PV por minuto, até o máximo de PV. Em combate, recupera 0,2 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "arma de prata ou abençoada fere inteira",
@@ -105529,13 +105543,8 @@
    },
    {
     "nome": "Regeneração 2",
-    "descricao": "origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "ferida que não fecha",
-    "descricao": "o que arma de prata ou do bem faz não se regenera pela regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 2 PV por minuto, até o máximo de PV. Em combate, recupera 0,2 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "arma de prata ou abençoada fere inteira",
@@ -106869,7 +106878,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Era 1d6 + 7, média 10,5 (sexta rodada), e 1d6 + 9, média 12,5. 3,5 + 5, com a Força 5 (D-115). Média: a mordida de bicho grande (seção 7). Força de mordida não achada: N0."
+     "justificativa": "Fecha as mandíbulas sobre a presa."
     },
     {
      "nome": "Chicotada de cauda",
@@ -106886,7 +106895,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Era 1d6 − 2 + 7, média 8,5 (sexta rodada), e 1d6 − 2 + 9, média 10,5. 1,5 + 5, com a Força 5 (D-115). A cauda chicoteia na exibição (Wikipédia). Leve: a cauda é fina e rápida, e não uma clava (seção 7); Força × 1, porque não é o corpo inteiro que empurra."
+     "justificativa": "Chicoteia com a ponta fina da cauda."
     }
    ],
    "habilidadesEspeciais": [
@@ -107118,8 +107127,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Era 1d6 + 7, média 10,5 (sexta rodada), e 1d6 + 9, média 12,5. 3,5 + 5, com a Força 5 (D-115). Média: a mordida de bicho grande (seção 7). Força de mordida não achada: N0.",
-   "Chicotada de cauda": "Era 1d6 − 2 + 7, média 8,5 (sexta rodada), e 1d6 − 2 + 9, média 10,5. 1,5 + 5, com a Força 5 (D-115). A cauda chicoteia na exibição (Wikipédia). Leve: a cauda é fina e rápida, e não uma clava (seção 7); Força × 1, porque não é o corpo inteiro que empurra."
+   "Mordida": "Fecha as mandíbulas sobre a presa.",
+   "Chicotada de cauda": "Chicoteia com a ponta fina da cauda."
   },
   "habilidadesEspeciais": [
    {
@@ -108913,9 +108922,17 @@
     {
      "nome": "Regeneração 1",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de fogo, ácido ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "fogo",
+       "ácido",
+       "arma abençoada"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de fogo, ácido ou arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 1 PV por minuto, até o máximo de PV. Em combate, recupera 0,1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     }
    ],
    "comoLuta": [
@@ -109122,8 +109139,8 @@
    },
    {
     "nome": "Regeneração 1",
-    "descricao": "origem sobrenatural. O dano de fogo, ácido ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de fogo, ácido ou arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 1 PV por minuto, até o máximo de PV. Em combate, recupera 0,1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    }
   ],
   "comoLuta": [
@@ -109288,7 +109305,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Morde a garganta ou a nuca e segura, e é com a boca que iça a presa: Média, como o leão. N0: 467 N nos caninos, estimados pelo crânio seco de um leopardo de 43,1 kg (Wroe et al. 2005), abaixo de 4.000 N. Não muda: a Força continua 5."
+     "justificativa": "Segura a presa pela garganta ou pela nuca."
     },
     {
      "nome": "Patada",
@@ -109305,7 +109322,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Garras retráteis, que seguram a presa e a árvore. Não muda. Opção, não segundo golpe (D-097)."
+     "justificativa": "As garras retráteis rasgam a presa."
     }
    ],
    "habilidadesEspeciais": [
@@ -109531,8 +109548,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Morde a garganta ou a nuca e segura, e é com a boca que iça a presa: Média, como o leão. N0: 467 N nos caninos, estimados pelo crânio seco de um leopardo de 43,1 kg (Wroe et al. 2005), abaixo de 4.000 N. Não muda: a Força continua 5.",
-   "Patada": "Garras retráteis, que seguram a presa e a árvore. Não muda. Opção, não segundo golpe (D-097)."
+   "Mordida": "Segura a presa pela garganta ou pela nuca.",
+   "Patada": "As garras retráteis rasgam a presa."
   },
   "habilidadesEspeciais": [
    {
@@ -110239,7 +110256,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "O \"Golpe\" do site (1 dado, 5 Ticks): a mão de osso que leva o toque paralisante. Leve (`regra-construcao.md` §7). Jogada: Destreza 4 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+     "justificativa": "A mão de osso transmite o toque paralisante. Jogada: Destreza 4 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
     }
    ],
    "habilidadesEspeciais": [
@@ -110547,7 +110564,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Toque": "O \"Golpe\" do site (1 dado, 5 Ticks): a mão de osso que leva o toque paralisante. Leve (`regra-construcao.md` §7). Jogada: Destreza 4 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+   "Toque": "A mão de osso transmite o toque paralisante. Jogada: Destreza 4 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
   },
   "habilidadesEspeciais": [
    {
@@ -112060,9 +112077,15 @@
     {
      "nome": "Regeneração 10",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "ferro frio"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Maldição da morte",
@@ -112480,8 +112503,8 @@
    },
    {
     "nome": "Regeneração 10",
-    "descricao": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Maldição da morte",
@@ -112884,9 +112907,15 @@
     {
      "nome": "Regeneração 15",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "ferro frio"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 15 PV por minuto, até o máximo de PV. Em combate, recupera 1,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Maldição da morte",
@@ -113402,8 +113431,8 @@
    },
    {
     "nome": "Regeneração 15",
-    "descricao": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 15 PV por minuto, até o máximo de PV. Em combate, recupera 1,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Maldição da morte",
@@ -113797,9 +113826,15 @@
     {
      "nome": "Regeneração 10",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "ferro frio"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Maldição da morte",
@@ -114281,8 +114316,8 @@
    },
    {
     "nome": "Regeneração 10",
-    "descricao": "origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de ferro frio só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Maldição da morte",
@@ -115841,7 +115876,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Não muda: a Força fica 3. Morde, segura e sacode: Média (`regra-construcao.md` §7). N0 porque a mordida no canino estimada é de 593 a 1.141 N (Wroe 2005; Różycka 2024, crânio seco), abaixo de 4.000 N."
+     "justificativa": "Crava os dentes, segura e sacode a presa."
     }
    ],
    "habilidadesEspeciais": [
@@ -116048,7 +116083,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Não muda: a Força fica 3. Morde, segura e sacode: Média (`regra-construcao.md` §7). N0 porque a mordida no canino estimada é de 593 a 1.141 N (Wroe 2005; Różycka 2024, crânio seco), abaixo de 4.000 N."
+   "Mordida": "Crava os dentes, segura e sacode a presa."
   },
   "habilidadesEspeciais": [
    {
@@ -116212,7 +116247,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Não muda: a Força fica 4. Morde, segura e sacode: Média, como o lobo (seção 7 da regra). N0: 893 N no canino (Wroe 2005), abaixo de 4.000 N."
+     "justificativa": "Crava os dentes, segura e sacode a presa."
     }
    ],
    "habilidadesEspeciais": [
@@ -116417,7 +116452,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Não muda: a Força fica 4. Morde, segura e sacode: Média, como o lobo (seção 7 da regra). N0: 893 N no canino (Wroe 2005), abaixo de 4.000 N."
+   "Mordida": "Crava os dentes, segura e sacode a presa."
   },
   "habilidadesEspeciais": [
    {
@@ -122343,16 +122378,16 @@
     {
      "nome": "Regeneração 9",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de arma benta ou fogo só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "arma benta e fogo param a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de arma benta ou de fogo não se fecha pela Regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "arma abençoada",
+       "fogo"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de arma abençoada ou fogo só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 9 PV por minuto, até o máximo de PV. Em combate, recupera 0,9 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Presença aterradora",
@@ -122817,13 +122852,8 @@
    },
    {
     "nome": "Regeneração 9",
-    "descricao": "origem sobrenatural. O dano de arma benta ou fogo só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "arma benta e fogo param a regeneração",
-    "descricao": "o dano de arma benta ou de fogo não se fecha pela Regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de arma abençoada ou fogo só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 9 PV por minuto, até o máximo de PV. Em combate, recupera 0,9 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Presença aterradora",
@@ -125000,7 +125030,7 @@
    "especialidades": {
     "armas": [
      {
-      "foco": "lança, debaixo d'água",
+      "foco": "tridente, debaixo d'água",
       "valor": 1,
       "origem": "livro"
      }
@@ -125034,14 +125064,14 @@
    "artes": {},
    "ataques": [
     {
-     "nome": "Lança",
-     "arma": "lanca",
-     "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
+     "nome": "Tridente",
+     "arma": "tridente",
+     "justificativa": "Estoca com as três pontas do tridente. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     },
     {
-     "nome": "Besta média",
+     "nome": "Besta Média",
      "arma": "besta-media",
-     "justificativa": "A arma do livro (`armas.json`, `besta-media`), a \"besta pesada\" do site: Distância, Velocidade 12, 1d6 + 4 sem Força, Acerto +1, ★P(N1), efetiva 60 m; recarga parado. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
+     "justificativa": "O virote tem alcance efetivo de 60 m e máximo de 200 m. O atirador fica parado durante o preparo. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
     }
    ],
    "habilidadesEspeciais": [
@@ -125064,14 +125094,14 @@
      "formas": "todas",
      "classe": "livro",
      "categoria": "inato",
-     "texto": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)"
+     "texto": "o tridente e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)"
     }
    ],
    "comoLuta": [
     {
      "nome": "guarda do segredo",
      "formas": "todas",
-     "texto": "atira com a besta da água, chega perto com a lança só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
+     "texto": "atira com a besta da água, chega perto com o tridente só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
     }
    ],
    "sentidos": [
@@ -125090,7 +125120,7 @@
     "respiracao": "água e ar (Anfíbio)",
     "prendeRespiracao": "não precisa",
     "mente": "humanoide; desconfiada de forasteiros",
-    "tracos": "torso de gente, pele azulada ou esverdeada, cauda de peixe escamosa, cabelo longo, lança e besta"
+    "tracos": "torso de gente, pele azulada ou esverdeada, cauda de peixe escamosa, cabelo longo, tridente e besta"
    },
    "aptidoes": {
     "montaria": false,
@@ -125101,7 +125131,7 @@
     "social": "em grupo, típico 4 a 12",
     "atividade": "diurno, na água",
     "dieta": "peixe e frutos do mar",
-    "caca": "pesca com a lança",
+    "caca": "pesca com o tridente",
     "dianteDeGente": "evita forasteiros; às vezes ataca navegantes"
    },
    "ecologia": {
@@ -125113,7 +125143,7 @@
      "temperado"
     ]
    },
-   "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
+   "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com tridente e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
    "lore": [
     {
      "titulo": "Segredo nas Profundezas",
@@ -125144,7 +125174,7 @@
   "categoriaNome": "Humanoide",
   "tipo": "capanga",
   "conceito": "Humanoide Médio",
-  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
+  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com tridente e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
   "tags": [
    "humanoide",
    "centelha"
@@ -125229,8 +125259,8 @@
    },
    "resistenciaPerfuracao": 0,
    "defesaOutraArma": {
-    "arma": "Besta média",
-    "armaPrincipal": "Lança",
+    "arma": "Besta Média",
+    "armaPrincipal": "Tridente",
     "bloqueio": 10,
     "defesa": 10
    },
@@ -125242,7 +125272,7 @@
    },
    "ataques": [
     {
-     "nome": "Lança",
+     "nome": "Tridente",
      "pool": "2d6+2 +3",
      "dano": "1d6 +7 (P) · perf. 1",
      "perfArma": 1,
@@ -125251,7 +125281,7 @@
      "forcaInvestida": 3
     },
     {
-     "nome": "Besta média",
+     "nome": "Besta Média",
      "pool": "2d6 +3",
      "dano": "1d6 +5 (P) · perf. 1",
      "perfArma": 1,
@@ -125262,8 +125292,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Lança": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)",
-   "Besta média": "A arma do livro (`armas.json`, `besta-media`), a \"besta pesada\" do site: Distância, Velocidade 12, 1d6 + 4 sem Força, Acerto +1, ★P(N1), efetiva 60 m; recarga parado. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
+   "Tridente": "Estoca com as três pontas do tridente. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)",
+   "Besta Média": "O virote tem alcance efetivo de 60 m e máximo de 200 m. O atirador fica parado durante o preparo. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
   },
   "habilidadesEspeciais": [
    {
@@ -125304,14 +125334,14 @@
    },
    {
     "nome": "Guerreiro do mar",
-    "descricao": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)",
+    "descricao": "o tridente e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)",
     "classe": "livro"
    }
   ],
   "comoLuta": [
    {
     "nome": "guarda do segredo",
-    "texto": "atira com a besta da água, chega perto com a lança só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
+    "texto": "atira com a besta da água, chega perto com o tridente só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
    }
   ],
   "sentidos": [
@@ -127002,7 +127032,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço de osso que bate e agarra com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Duas por ação, pela Rajada (\"golpeia com as duas mãos\", site). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+     "justificativa": "Golpeia com as mãos ossudas e agarra a vítima. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
      "nome": "Língua",
@@ -127019,7 +127049,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "\"Um toque de sua língua apodrecida paralisa a vítima\" (site): gesto rápido de boca, Leve (`regra-construcao.md` §7); não fere, só leva a paralisia (Manobras). Jogada: Destreza 5 e Força 6, a maior (D-208): Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+     "justificativa": "O toque da língua transmite a paralisia sem causar dano. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
    ],
    "habilidadesEspeciais": [
@@ -127278,8 +127308,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mãos ossudas": "O \"Golpe\" do site (1 dado, impacto): o braço de osso que bate e agarra com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Duas por ação, pela Rajada (\"golpeia com as duas mãos\", site). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)",
-   "Língua": "\"Um toque de sua língua apodrecida paralisa a vítima\" (site): gesto rápido de boca, Leve (`regra-construcao.md` §7); não fere, só leva a paralisia (Manobras). Jogada: Destreza 5 e Força 6, a maior (D-208): Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+   "Mãos ossudas": "Golpeia com as mãos ossudas e agarra a vítima. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)",
+   "Língua": "O toque da língua transmite a paralisia sem causar dano. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
   },
   "habilidadesEspeciais": [
    {
@@ -128979,7 +129009,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "A mordida do vampiro na escala de 15: boca de predador grande, golpe com o corpo atrás. Força de mordida: sem dado; N0. A saliva anticoagulante, herdada: a ferida sangra (texto) . A Força não muda: segue 6,5"
+     "justificativa": "A saliva anticoagulante mantém a ferida sangrando. Estancar exige Raciocínio + Cura."
     }
    ],
    "habilidadesEspeciais": [
@@ -129209,7 +129239,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "A mordida do vampiro na escala de 15: boca de predador grande, golpe com o corpo atrás. Força de mordida: sem dado; N0. A saliva anticoagulante, herdada: a ferida sangra (texto) . A Força não muda: segue 6,5"
+   "Mordida": "A saliva anticoagulante mantém a ferida sangrando. Estancar exige Raciocínio + Cura."
   },
   "habilidadesEspeciais": [
    {
@@ -130660,7 +130690,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço que esmaga com o corpo atrás, golpe Médio (`regra-construcao.md` §7), como a Pancada do zumbi. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+     "justificativa": "O braço enfaixado esmaga com o peso do corpo. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
    ],
    "habilidadesEspeciais": [
@@ -130919,7 +130949,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Golpe esmagador": "O \"Golpe\" do site (1 dado, impacto): o braço que esmaga com o corpo atrás, golpe Médio (`regra-construcao.md` §7), como a Pancada do zumbi. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+   "Golpe esmagador": "O braço enfaixado esmaga com o peso do corpo. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
   },
   "habilidadesEspeciais": [
    {
@@ -133756,7 +133786,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote de boca pequena: Leve (seção 7). Força 0 tira a parte da Força do dano (D-115). Quem mata é o veneno (até 420 mg de veneno seco por picada, Thomas e Griessel 1999), sem id no catálogo (ver Veneno). Força de mordida não achada: N0. Um ataque por ação (D-097)."
+     "justificativa": "As presas inoculam o veneno quando o bote causa ao menos 1 PV depois da Absorção."
     }
    ],
    "habilidadesEspeciais": [
@@ -133997,7 +134027,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Bote": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote de boca pequena: Leve (seção 7). Força 0 tira a parte da Força do dano (D-115). Quem mata é o veneno (até 420 mg de veneno seco por picada, Thomas e Griessel 1999), sem id no catálogo (ver Veneno). Força de mordida não achada: N0. Um ataque por ação (D-097)."
+   "Bote": "As presas inoculam o veneno quando o bote causa ao menos 1 PV depois da Absorção."
   },
   "habilidadesEspeciais": [
    {
@@ -137407,6 +137437,18 @@
      "acerto": 0,
      "bloqueiaComoArma": null,
      "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um brutamontes com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 7 + Briga 3"
+    },
+    {
+     "nome": "Martelo de Guerra",
+     "arma": "martelo-de-guerra",
+     "justificativa": "Tamanho Grande. Escolhe o martelo ou o machado antes de lutar.",
+     "tamanho": "grande"
+    },
+    {
+     "nome": "Machado Pesado",
+     "arma": "machado-pesado",
+     "justificativa": "Tamanho Grande. Escolhe o martelo ou o machado antes de lutar.",
+     "tamanho": "grande"
     }
    ],
    "habilidadesEspeciais": [
@@ -137613,11 +137655,31 @@
      "speed": 7,
      "classe": "pesada",
      "forcaInvestida": 7
+    },
+    {
+     "nome": "Martelo de Guerra",
+     "pool": "5d6",
+     "dano": "3d6 +14 (I)",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada",
+     "forcaInvestida": 7
+    },
+    {
+     "nome": "Machado Pesado",
+     "pool": "5d6",
+     "dano": "3d6 +14 (C)",
+     "perfArma": null,
+     "speed": 7,
+     "classe": "pesada",
+     "forcaInvestida": 7
     }
    ]
   },
   "justificativaDosAtaques": {
-   "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho de um brutamontes com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 7 + Briga 3"
+   "Pancada descomunal": "A do site (2 dados, impacto, 6 Ticks): o punho de um brutamontes com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 7 + Briga 3",
+   "Martelo de Guerra": "Tamanho Grande. Escolhe o martelo ou o machado antes de lutar.",
+   "Machado Pesado": "Tamanho Grande. Escolhe o martelo ou o machado antes de lutar."
   },
   "habilidadesEspeciais": [
    {
@@ -137809,16 +137871,16 @@
     {
      "nome": "Regeneração 5",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "fogo e ácido param a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração. O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "fogo",
+       "ácido"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Forma gasosa",
@@ -138146,13 +138208,8 @@
   "habilidadesEspeciais": [
    {
     "nome": "Regeneração 5",
-    "descricao": "origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "fogo e ácido param a regeneração",
-    "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração. O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Forma gasosa",
@@ -138497,13 +138554,8 @@
      "habilidadesEspeciais": [
       {
        "nome": "Regeneração 5",
-       "descricao": "origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-       "classe": "sem regra ainda"
-      },
-      {
-       "nome": "fogo e ácido param a regeneração",
-       "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração. O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido",
-       "classe": "sem regra ainda"
+       "descricao": "Origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+       "classe": "livro"
       },
       {
        "nome": "Forma gasosa",
@@ -143449,9 +143501,16 @@
     {
      "nome": "Regeneração 10",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "regeneração sobrenatural. Quando sofre dano de armas e efeitos malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
+     "fraqueza": {
+      "forma": "interrompe",
+      "tipos": [
+       "maligno"
+      ],
+      "duracao": "6 Ticks"
+     },
+     "texto": "Origem sobrenatural. O dano de uma arma maligna ou de um efeito maligno interrompe toda a regeneração por 6 Ticks. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Resistência à magia",
@@ -143829,8 +143888,8 @@
    },
    {
     "nome": "Regeneração 10",
-    "descricao": "regeneração sobrenatural. Quando sofre dano de armas e efeitos malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de uma arma maligna ou de um efeito maligno interrompe toda a regeneração por 6 Ticks. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Resistência à magia",
@@ -147145,7 +147204,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Bico longo e sem dentes, de pegar peixe: golpe rápido de boca. Mordida em N: não achada, N0. A Força não muda: segue 3,5"
+     "justificativa": "O bico longo e sem dentes apanha peixes com um golpe rápido."
     }
    ],
    "habilidadesEspeciais": [
@@ -147329,7 +147388,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Bicada": "Bico longo e sem dentes, de pegar peixe: golpe rápido de boca. Mordida em N: não achada, N0. A Força não muda: segue 3,5"
+   "Bicada": "O bico longo e sem dentes apanha peixes com um golpe rápido."
   },
   "habilidadesEspeciais": [
    {
@@ -148118,9 +148177,16 @@
     {
      "nome": "Regeneração 2",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "prata",
+       "arma abençoada"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de prata ou arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 2 PV por minuto, até o máximo de PV. Em combate, recupera 0,2 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     }
    ],
    "comoLuta": [
@@ -148535,8 +148601,8 @@
    },
    {
     "nome": "Regeneração 2",
-    "descricao": "origem sobrenatural. O dano de prata ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de prata ou arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 2 PV por minuto, até o máximo de PV. Em combate, recupera 0,2 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    }
   ],
   "comoLuta": [
@@ -148683,7 +148749,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Bico longo sem dentes, golpe dado com o pescoço inteiro atrás: Média. Ponta do bico não preservada; mordida em N não achada: N0. A Força não muda: segue 8,5"
+     "justificativa": "Projeta o pescoço inteiro para golpear com o bico."
     }
    ],
    "habilidadesEspeciais": [
@@ -148881,7 +148947,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Bicada": "Bico longo sem dentes, golpe dado com o pescoço inteiro atrás: Média. Ponta do bico não preservada; mordida em N não achada: N0. A Força não muda: segue 8,5"
+   "Bicada": "Projeta o pescoço inteiro para golpear com o bico."
   },
   "habilidadesEspeciais": [
    {
@@ -149674,7 +149740,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "A rã abocanha e engole inteira; dentes não achados nas fontes lidas, então Impacto, e não Perfuração (ver Notas). Leve: o bote rápido da boca (seção 7). Não muda: a Força continua 3 (3,5 − 2 + 3 = 4,5)."
+     "justificativa": "Abocanha a presa para engoli-la inteira."
     },
     {
      "nome": "Língua",
@@ -149691,7 +149757,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
+     "justificativa": "Use Briga, com o triplo do alcance corpo a corpo. A língua agarra sem ferir. Se o golpe for bloqueado, agarra o que o bloqueou. A manutenção causa 6 de dano."
     }
    ],
    "habilidadesEspeciais": [
@@ -149931,8 +149997,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Bocada": "A rã abocanha e engole inteira; dentes não achados nas fontes lidas, então Impacto, e não Perfuração (ver Notas). Leve: o bote rápido da boca (seção 7). Não muda: a Força continua 3 (3,5 − 2 + 3 = 4,5).",
-   "Língua": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
+   "Bocada": "Abocanha a presa para engoli-la inteira.",
+   "Língua": "Use Briga, com o triplo do alcance corpo a corpo. A língua agarra sem ferir. Se o golpe for bloqueado, agarra o que o bloqueou. A manutenção causa 6 de dano."
   },
   "habilidadesEspeciais": [
    {
@@ -154256,7 +154322,7 @@
     ],
     "armas": [
      {
-      "foco": "lança, debaixo d'água",
+      "foco": "tridente, debaixo d'água",
       "valor": 1,
       "origem": "livro"
      }
@@ -154288,9 +154354,9 @@
    "artes": {},
    "ataques": [
     {
-     "nome": "Lança",
-     "arma": "lanca",
-     "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+     "nome": "Tridente",
+     "arma": "tridente",
+     "justificativa": "Estoca com as três pontas do tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     },
     {
      "nome": "Garras",
@@ -154307,7 +154373,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem a lança. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+     "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem o tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
    ],
    "habilidadesEspeciais": [
@@ -154358,7 +154424,7 @@
     {
      "nome": "incursão das ondas",
      "formas": "todas",
-     "texto": "chega com os tubarões, ataca o barco ou a vila da costa com a lança, entra em fúria quando ferido e volta para o fundo com os presos."
+     "texto": "chega com os tubarões, ataca o barco ou a vila da costa com o tridente, entra em fúria quando ferido e volta para o fundo com os presos."
     }
    ],
    "sentidos": [
@@ -154401,7 +154467,7 @@
      "tropical"
     ]
    },
-   "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com lanças e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
+   "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com tridentes e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
    "lore": [
     {
      "titulo": "Impérios sob as ondas",
@@ -154432,7 +154498,7 @@
   "categoriaNome": "Humanoide monstruoso",
   "tipo": "soldado",
   "conceito": "Humanoide monstruoso Médio",
-  "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com lanças e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
+  "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com tridentes e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
   "tags": [
    "humanoide-monstruoso",
    "centelha"
@@ -154525,7 +154591,7 @@
    },
    "ataques": [
     {
-     "nome": "Lança",
+     "nome": "Tridente",
      "pool": "3d6+2 +5",
      "dano": "1d6 +10 (P) · perf. 1",
      "perfArma": 1,
@@ -154545,8 +154611,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Lança": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)",
-   "Garras": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem a lança. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+   "Tridente": "Estoca com as três pontas do tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)",
+   "Garras": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem o tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
   },
   "habilidadesEspeciais": [
    {
@@ -154661,7 +154727,7 @@
   "comoLuta": [
    {
     "nome": "incursão das ondas",
-    "texto": "chega com os tubarões, ataca o barco ou a vila da costa com a lança, entra em fúria quando ferido e volta para o fundo com os presos."
+    "texto": "chega com os tubarões, ataca o barco ou a vila da costa com o tridente, entra em fúria quando ferido e volta para o fundo com os presos."
    }
   ],
   "sentidos": [
@@ -157725,9 +157791,9 @@
     {
      "nome": "Regeneração 10",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "Recompõe os ferimentos sem fraqueza específica. A taxa de Regeneração 10 segue sem regra ainda"
+     "texto": "Recompõe os ferimentos sem fraqueza específica. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Resistência à magia",
@@ -158065,8 +158131,8 @@
    },
    {
     "nome": "Regeneração 10",
-    "descricao": "Recompõe os ferimentos sem fraqueza específica. A taxa de Regeneração 10 segue sem regra ainda",
-    "classe": "sem regra ainda"
+    "descricao": "Recompõe os ferimentos sem fraqueza específica. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Resistência à magia",
@@ -158241,7 +158307,7 @@
     ],
     "armas": [
      {
-      "foco": "lança, debaixo d'água",
+      "foco": "tridente, debaixo d'água",
       "valor": 1,
       "origem": "livro"
      }
@@ -158273,9 +158339,9 @@
    "artes": {},
    "ataques": [
     {
-     "nome": "Lança",
-     "arma": "lanca",
-     "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+     "nome": "Tridente",
+     "arma": "tridente",
+     "justificativa": "Estoca com as três pontas do tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     },
     {
      "nome": "Mordida",
@@ -158309,7 +158375,7 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Garra rápida de membro, Leve, sem a lança; as duas mãos fazem par (Manobras). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+     "justificativa": "Garra rápida de membro, Leve, sem o tridente; as duas mãos fazem par (Manobras). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
    ],
    "habilidadesEspeciais": [
@@ -158336,7 +158402,7 @@
      "duracao": "uma ação",
      "alcance": "o de cada parte",
      "area": "os alvos da Rajada",
-     "efeito": "Na água e sem a lança, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+     "efeito": "Na água e sem o tridente, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
      "dano": "o de cada ataque que acertar",
      "resistencia": "a Defesa de cada golpe",
      "limiteDeUso": "até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço"
@@ -158346,7 +158412,7 @@
     {
      "nome": "servo das ruínas",
      "formas": "todas",
-     "texto": "ataca em grupo da água escura, com a lança, e arrasta para o fundo quem cai no mar."
+     "texto": "ataca em grupo da água escura, com o tridente, e arrasta para o fundo quem cai no mar."
     }
    ],
    "sentidos": [
@@ -158522,7 +158588,7 @@
    },
    "ataques": [
     {
-     "nome": "Lança",
+     "nome": "Tridente",
      "pool": "3d6+2 +5",
      "dano": "1d6 +10 (P) · perf. 1",
      "perfArma": 1,
@@ -158551,9 +158617,9 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Lança": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)",
+   "Tridente": "Estoca com as três pontas do tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)",
    "Mordida": "Mordida rápida, Leve (`regra-construcao.md` §7). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)",
-   "Garras": "Garra rápida de membro, Leve, sem a lança; as duas mãos fazem par (Manobras). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+   "Garras": "Garra rápida de membro, Leve, sem o tridente; as duas mãos fazem par (Manobras). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
   },
   "habilidadesEspeciais": [
    {
@@ -158594,9 +158660,9 @@
    },
    {
     "nome": "Multiataque",
-    "descricao": "Na água e sem a lança, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum. Ativação: uma ação de Rajada. Duração: uma ação. Alcance: o de cada parte. Área: os alvos da Rajada. Dano: o de cada ataque que acertar. Resistência: a Defesa de cada golpe. Limite de uso: até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
+    "descricao": "Na água e sem o tridente, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum. Ativação: uma ação de Rajada. Duração: uma ação. Alcance: o de cada parte. Área: os alvos da Rajada. Dano: o de cada ataque que acertar. Resistência: a Defesa de cada golpe. Limite de uso: até 2 golpes por ação, sem Energia. O uso repetido causa esforço e pode levar ao cansaço",
     "classe": "regra da ficha",
-    "texto": "Na água e sem a lança, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
+    "texto": "Na água e sem o tridente, golpeia com a garra esquerda e depois a direita. Cada golpe extra acumula −1d6 e conta para Guarda sob pressão. Não acumula com a Rajada comum",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -158632,7 +158698,7 @@
   "comoLuta": [
    {
     "nome": "servo das ruínas",
-    "texto": "ataca em grupo da água escura, com a lança, e arrasta para o fundo quem cai no mar."
+    "texto": "ataca em grupo da água escura, com o tridente, e arrasta para o fundo quem cai no mar."
    }
   ],
   "sentidos": [
@@ -158802,9 +158868,16 @@
     {
      "nome": "Regeneração 15",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "regeneração sobrenatural. Quando sofre dano de artefatos, efeitos e magias malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
+     "fraqueza": {
+      "forma": "interrompe",
+      "tipos": [
+       "maligno"
+      ],
+      "duracao": "6 Ticks"
+     },
+     "texto": "Origem sobrenatural. O dano de um artefato maligno, de um efeito maligno ou de uma magia maligna interrompe toda a regeneração por 6 Ticks. Recupera 15 PV por minuto, até o máximo de PV. Em combate, recupera 1,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Resistência à magia",
@@ -159230,8 +159303,8 @@
    },
    {
     "nome": "Regeneração 15",
-    "descricao": "regeneração sobrenatural. Quando sofre dano de artefatos, efeitos e magias malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de um artefato maligno, de um efeito maligno ou de uma magia maligna interrompe toda a regeneração por 6 Ticks. Recupera 15 PV por minuto, até o máximo de PV. Em combate, recupera 1,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Resistência à magia",
@@ -160121,7 +160194,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
+     "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
    ],
    "habilidadesEspeciais": [
@@ -160407,7 +160480,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Toque dilacerante": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
+   "Toque dilacerante": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
   },
   "habilidadesEspeciais": [
    {
@@ -162264,16 +162337,17 @@
     {
      "nome": "Regeneração 40",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. Quando sofre dano de fogo ou ácido, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
-    },
-    {
-     "nome": "fogo e ácido atrasam a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de fogo ou de ácido se fecha mais devagar"
+     "fraqueza": {
+      "forma": "interrompe",
+      "tipos": [
+       "fogo",
+       "ácido"
+      ],
+      "duracao": "6 Ticks"
+     },
+     "texto": "Origem sobrenatural. Quando sofre dano de fogo ou ácido, toda a regeneração para por 6 Ticks. Depois, todas as feridas voltam a fechar. Recupera 40 PV por minuto, até o máximo de PV. Em combate, recupera 4 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Imortalidade Tênue",
@@ -162562,13 +162636,8 @@
    },
    {
     "nome": "Regeneração 40",
-    "descricao": "origem sobrenatural. Quando sofre dano de fogo ou ácido, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "fogo e ácido atrasam a regeneração",
-    "descricao": "o dano de fogo ou de ácido se fecha mais devagar",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. Quando sofre dano de fogo ou ácido, toda a regeneração para por 6 Ticks. Depois, todas as feridas voltam a fechar. Recupera 40 PV por minuto, até o máximo de PV. Em combate, recupera 4 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Imortalidade Tênue",
@@ -164334,7 +164403,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "Mordida na garganta (estrangula) ou na nuca (Wikipédia), com caninos de 6,4 a 7,6 cm (Mazák 1981): o golpe pede o corpo atrás, Média. N0: 1.525 N nos caninos, estimados pelo crânio seco de um tigre de 186,9 kg (Wroe et al. 2005, tabela 1), abaixo de 4.000 N. Era 1d6 + 9, média 12,5."
+     "justificativa": "Crava os caninos na garganta ou na nuca."
     },
     {
      "nome": "Patada",
@@ -164351,7 +164420,7 @@
      "nivelPerfuracao": null,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "Garras retráteis de 7,5 a 10 cm (San Diego Zoo); derruba a presa com as patas dianteiras. Era 1d6 − 2 + 9, média 10,5. Opção, não segundo golpe (D-097)."
+     "justificativa": "As garras dianteiras rasgam a presa e ajudam a derrubá-la."
     }
    ],
    "habilidadesEspeciais": [
@@ -164576,8 +164645,8 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Mordida": "Mordida na garganta (estrangula) ou na nuca (Wikipédia), com caninos de 6,4 a 7,6 cm (Mazák 1981): o golpe pede o corpo atrás, Média. N0: 1.525 N nos caninos, estimados pelo crânio seco de um tigre de 186,9 kg (Wroe et al. 2005, tabela 1), abaixo de 4.000 N. Era 1d6 + 9, média 12,5.",
-   "Patada": "Garras retráteis de 7,5 a 10 cm (San Diego Zoo); derruba a presa com as patas dianteiras. Era 1d6 − 2 + 9, média 10,5. Opção, não segundo golpe (D-097)."
+   "Mordida": "Crava os caninos na garganta ou na nuca.",
+   "Patada": "As garras dianteiras rasgam a presa e ajudam a derrubá-la."
   },
   "habilidadesEspeciais": [
    {
@@ -167296,16 +167365,16 @@
     {
      "nome": "Regeneração 5",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "fogo e ácido param a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração, e a queimadura é o que o faz recuar. O livro não diz como um dano fica fora da cura nem por quanto tempo. O dano a mais do fogo e do ácido está em Elementos"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "fogo",
+       "ácido"
+      ]
+     },
+     "texto": "Origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano. A queimadura o faz recuar"
     },
     {
      "nome": "agarrar",
@@ -167630,13 +167699,8 @@
    },
    {
     "nome": "Regeneração 5",
-    "descricao": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "fogo e ácido param a regeneração",
-    "descricao": "o dano de fogo ou de ácido não se fecha pela Regeneração, e a queimadura é o que o faz recuar. O livro não diz como um dano fica fora da cura nem por quanto tempo. O dano a mais do fogo e do ácido está em Elementos",
-    "classe": "sem regra ainda"
+    "descricao": "Origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano. A queimadura o faz recuar",
+    "classe": "livro"
    },
    {
     "nome": "agarrar",
@@ -171343,7 +171407,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Jogada: Força 5 e Destreza 5 (D-208): 5 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+     "justificativa": "Golpeia com o peso do corpo atrás do punho. Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
     },
     {
      "nome": "Mordida",
@@ -171360,23 +171424,24 @@
      "nivelPerfuracao": 0,
      "acerto": 1,
      "bloqueiaComoArma": null,
-     "justificativa": "\"Mordida drenante\" (site): a boca humana com duas presas, gesto rápido de boca pequena, Leve (`regra-construcao.md` §7). Leva o Dreno de sangue (Manobras). Jogada igual à da Pancada"
+     "justificativa": "As presas abrem a ferida por onde o vampiro drena sangue. Jogada igual à da Pancada"
     }
    ],
    "habilidadesEspeciais": [
     {
      "nome": "Regeneração 5",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem sobrenatural. O dano de prata, fogo ou luz do sol só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "prata, fogo e sol param a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de prata, de fogo ou da luz do sol não se fecha pela Regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "prata",
+       "fogo",
+       "luz do sol"
+      ]
+     },
+     "texto": "Origem sobrenatural. O dano de prata, fogo ou luz do sol só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Dreno de sangue",
@@ -171704,19 +171769,14 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Pancada": "O \"Golpe\" do site (1 dado, impacto): o braço com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Jogada: Força 5 e Destreza 5 (D-208): 5 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)",
-   "Mordida": "\"Mordida drenante\" (site): a boca humana com duas presas, gesto rápido de boca pequena, Leve (`regra-construcao.md` §7). Leva o Dreno de sangue (Manobras). Jogada igual à da Pancada"
+   "Pancada": "Golpeia com o peso do corpo atrás do punho. Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)",
+   "Mordida": "As presas abrem a ferida por onde o vampiro drena sangue. Jogada igual à da Pancada"
   },
   "habilidadesEspeciais": [
    {
     "nome": "Regeneração 5",
-    "descricao": "origem sobrenatural. O dano de prata, fogo ou luz do sol só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "prata, fogo e sol param a regeneração",
-    "descricao": "o dano de prata, de fogo ou da luz do sol não se fecha pela Regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de prata, fogo ou luz do sol só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Dreno de sangue",
@@ -175263,7 +175323,7 @@
      "nivelPerfuracao": 0,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O \"Golpe\" do site (1 dado) é a garra (\"garras cortantes\", site), golpe Médio como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 3 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
+     "justificativa": "As garras cortam a vítima. Jogada: Força 3 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
     }
    ],
    "habilidadesEspeciais": [
@@ -175509,7 +175569,7 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Garras": "O \"Golpe\" do site (1 dado) é a garra (\"garras cortantes\", site), golpe Médio como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 3 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
+   "Garras": "As garras cortam a vítima. Jogada: Força 3 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
   },
   "habilidadesEspeciais": [
    {

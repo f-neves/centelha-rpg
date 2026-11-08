@@ -49,7 +49,7 @@
   "especialidades": {
     "armas": [
       {
-        "foco": "lança, debaixo d'água",
+        "foco": "tridente, debaixo d'água",
         "valor": 1,
         "origem": "livro"
       }
@@ -83,14 +83,14 @@
   "artes": {},
   "ataques": [
     {
-      "nome": "Lança",
-      "arma": "lanca",
-      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
+      "nome": "Tridente",
+      "arma": "tridente",
+      "justificativa": "Estoca com as três pontas do tridente. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
     },
     {
-      "nome": "Besta média",
+      "nome": "Besta Média",
       "arma": "besta-media",
-      "justificativa": "A arma do livro (`armas.json`, `besta-media`), a \"besta pesada\" do site: Distância, Velocidade 12, 1d6 + 4 sem Força, Acerto +1, ★P(N1), efetiva 60 m; recarga parado. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
+      "justificativa": "O virote tem alcance efetivo de 60 m e máximo de 200 m. O atirador fica parado durante o preparo. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
     }
   ],
   "habilidadesEspeciais": [
@@ -113,14 +113,14 @@
       "formas": "todas",
       "classe": "livro",
       "categoria": "inato",
-      "texto": "a lança e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)"
+      "texto": "o tridente e a besta do livro, que servem debaixo d'água e na superfície (o Mestre decide o alcance da besta debaixo d'água)"
     }
   ],
   "comoLuta": [
     {
       "nome": "guarda do segredo",
       "formas": "todas",
-      "texto": "atira com a besta da água, chega perto com a lança só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
+      "texto": "atira com a besta da água, chega perto com o tridente só contra quem caiu no mar; afasta navegantes dos seus domínios e não sai da água."
     }
   ],
   "sentidos": [
@@ -139,7 +139,7 @@
     "respiracao": "água e ar (Anfíbio)",
     "prendeRespiracao": "não precisa",
     "mente": "humanoide; desconfiada de forasteiros",
-    "tracos": "torso de gente, pele azulada ou esverdeada, cauda de peixe escamosa, cabelo longo, lança e besta"
+    "tracos": "torso de gente, pele azulada ou esverdeada, cauda de peixe escamosa, cabelo longo, tridente e besta"
   },
   "aptidoes": {
     "montaria": false,
@@ -150,7 +150,7 @@
     "social": "em grupo, típico 4 a 12",
     "atividade": "diurno, na água",
     "dieta": "peixe e frutos do mar",
-    "caca": "pesca com a lança",
+    "caca": "pesca com o tridente",
     "dianteDeGente": "evita forasteiros; às vezes ataca navegantes"
   },
   "ecologia": {
@@ -162,7 +162,7 @@
       "temperado"
     ]
   },
-  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
+  "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com tridente e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
   "lore": [
     {
       "titulo": "Segredo nas Profundezas",
@@ -215,12 +215,8 @@
       "motivo": ""
     },
     {
-      "campo": "ataques.Besta média",
+      "campo": "ataques.Besta Média",
       "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208."
-    },
-    {
-      "campo": "equipamento",
-      "motivo": "lança no lugar do tridente e besta média no lugar da besta pesada"
     },
     {
       "campo": "deslocamento",

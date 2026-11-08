@@ -143,9 +143,9 @@
     {
       "nome": "Regeneração 10",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "Recompõe os ferimentos sem fraqueza específica. A taxa de Regeneração 10 segue sem regra ainda"
+      "texto": "Recompõe os ferimentos sem fraqueza específica. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "Resistência à magia",

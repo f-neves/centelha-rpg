@@ -97,7 +97,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Bico longo e sem dentes, de pegar peixe: golpe rápido de boca. Mordida em N: não achada, N0. A Força não muda: segue 3,5"
+      "justificativa": "O bico longo e sem dentes apanha peixes com um golpe rápido."
     }
   ],
   "habilidadesEspeciais": [
@@ -230,6 +230,10 @@
     {
       "campo": "corpo",
       "motivo": "68,15 kg (em vigor na Etapa 2, 20/10/2026); antes: 65,98 kg pela fórmula nova (decisões 14 e 16), com os 23,605 kg, provisório: quase três vezes a massa, sem nenhum feito de carga para conferir. Era 69,77 kg pelos 27 kg de trabalho. Não é quadrúpede, então não tem `carga` (D-160, D-174)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,46 m na ficha atual. Base da revisão anterior: 0,46 m, a estimativa do Arquiteto para o macho (0,5 m, sem fonte) escalada pelo cubo da massa; a altura (no ombro) e o comprimento sem a cauda também são estimativa pela escala do USNM 50130, escalados da mesma forma (fator 0,919)"
     }
   ]
 }

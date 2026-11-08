@@ -102,21 +102,9 @@
     },
     {
       "nome": "Rocha arremessada",
-      "parte": "mao",
-      "habilidade": "arremesso",
-      "classe": "pesada",
-      "pgr": [
-        3,
-        1,
-        3
-      ],
-      "dado": "2d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "\"Arremesso certeiro\" (site): a rocha arremessada do gigante da colina, até 45 m; a distância vai nas Manobras. Jogada: Destreza 4 + Arremesso 4"
+      "arma": "rocha",
+      "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 4",
+      "tamanho": "grande"
     }
   ],
   "habilidadesEspeciais": [
@@ -126,9 +114,9 @@
       "classe": "regra da ficha",
       "ataque": "Rocha arremessada",
       "categoria": "inato",
-      "ativacao": "uma ação, Velocidade 7, com uma rocha na mão (pegar uma do chão gasta outra ação)",
+      "ativacao": "uma ação, Velocidade 6, com uma rocha na mão (pegar uma do chão gasta outra ação)",
       "duracao": "instantânea",
-      "alcance": "até 45 m; acima de 15 m, −2 na jogada",
+      "alcance": "pela fórmula de arremesso para uma rocha de 30 kg",
       "area": "um alvo",
       "efeito": "Se o golpe causar ao menos 1 PV depois da Absorção, pode resolver Derrubar contra a defesa normal, com as travas de massa e sem ação separada",
       "dano": "2d6 + Força, Impacto",
@@ -205,7 +193,7 @@
       "temperado"
     ]
   },
-  "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
+  "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas de 30 kg com precisão mortal e anda entre as rochas sem ser notado.",
   "lore": [
     {
       "titulo": "Comportamento",
@@ -252,6 +240,10 @@
     {
       "campo": "comportamento.caca",
       "motivo": "site"
+    },
+    {
+      "campo": "ataques.Rocha arremessada",
+      "motivo": "30 kg, ponto médio da faixa de 20 a 40 kg do gigante da colina. Tamanho Grande, 2d6 de base. Valor de molde, para a bancada."
     }
   ]
 }

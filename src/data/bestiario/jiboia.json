@@ -107,7 +107,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "1d6 − 2 + Força 3, média 4,5. Bote rápido de boca pequena (seção 7). Dentes que seguram e empurram a presa para a garganta (ADW). Dói mas não é perigosa a gente (ADW)."
+      "justificativa": "Os dentes curvos seguram a presa para a constrição."
     }
   ],
   "habilidadesEspeciais": [
@@ -246,7 +246,7 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa: 0,094 × 1,394 = 0,131 m . Antes: Era 0,10 m (a fêmea, estimativa do Arquiteto), escalado pelo cubo da massa: 0,10 × 0,940"
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa: 0,094 × 1,394 = 0,131 m . Antes: Era 0,10 m (a fêmea, estimativa do Arquiteto), escalado pelo cubo da massa: 0,10 × 0,940; 0,131 m na ficha atual. Base da revisão anterior: 0,094 m, a estimativa do Arquiteto para a fêmea (0,10 m), sem fonte, escalada pelo cubo da massa; a altura de 0,075 m (o diâmetro) também é estimativa, escalada do mesmo jeito"
     }
   ]
 }

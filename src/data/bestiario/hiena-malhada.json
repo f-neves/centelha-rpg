@@ -109,7 +109,7 @@
       "nivelPerfuracao": 1,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda: a Força fica 4. Morde, segura e quebra osso: Média (`regra-construcao.md` §7). N1: cerca de 4.500 N medidos com transdutor de força em hienas cativas (Binder e Van Valkenburgh 2000, número via San Diego Zoo) , acima dos 4.000 N do corte do N1. A estimativa pelo crânio seco dá 773 N no canino (Wroe et al. 2005); a medida no animal vivo manda. Ver as notas."
+      "justificativa": "As mandíbulas seguram a presa e quebram ossos."
     }
   ],
   "habilidadesEspeciais": [
@@ -215,7 +215,7 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,33 × 1,0323 = 0,341 . Antes: pesquisa: 30 a 35 cm no peito, por analogia com um cão grande de massa parecida; ancas mais estreitas"
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,33 × 1,0323 = 0,341 . Antes: pesquisa: 30 a 35 cm no peito, por analogia com um cão grande de massa parecida; ancas mais estreitas; 0,34 m na ficha atual. Base da revisão anterior: 0,33 m continua só pela estimativa"
     },
     {
       "campo": "ataques.Mordida",

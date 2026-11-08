@@ -100,16 +100,16 @@
     {
       "nome": "Regeneração 5",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-      "nome": "fogo e ácido param a regeneração",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "categoria": "inato",
-      "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração. O livro não diz como um dano fica fora da cura nem por quanto tempo. O site não dá fraqueza a fogo nem a ácido"
+      "fraqueza": {
+        "forma": "naoRegenera",
+        "tipos": [
+          "fogo",
+          "ácido"
+        ]
+      },
+      "texto": "Origem sobrenatural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "Forma gasosa",
