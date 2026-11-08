@@ -1,4 +1,7 @@
 import { pvJogador } from '../lib-criatura-motor.mjs';
+import { lerCriaturas } from '../lib-bestiario.mjs';
+import { dosesGuardadas, usosGratis } from '../regras-poder-criatura.mjs';
+import { carregarTS } from '../lib-ts.mjs';
 // desafio-bancada.mjs · a bancada de desafio da Fase 5 (B14).
 //
 // Roteiro PRÓPRIO da bancada (decisão do Arquiteto, 29/09/2026): não usa nem altera
@@ -57,6 +60,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import REGRAS from '../../src/data/regras.json' with { type: 'json' };
+// as funções da Regeneração N do motor de criaturas (D-362): a bancada não tem cópia própria do pulso
+const MOTOR = await carregarTS('src/lib/motor.ts');
 
 const RAIZ = path.join(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const BASE_PV = pvJogador(3);
@@ -184,35 +189,70 @@ function grupoCombatentes(centelha) {
 }
 
 // ============================================================== ficha da criatura
-function carregarCriatura(id) {
-  const ficha = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/bestiario', `${id}.json`), 'utf8'));
-  const bruto = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/monsters-mesa.json'), 'utf8'));
-  const MON = Array.isArray(bruto) ? bruto : (bruto.lista || Object.values(bruto).find(Array.isArray) || []);
-  const mesa = MON.find((m) => m.id === id);
-  if (!mesa) throw new Error(`${id} não está em monsters-mesa.json`);
+// CARGA PELO CAMINHO REAL (B14, frente 3 do autor, etapa 1, 08/11/2026). A ficha antiga (`attrs`, `skills`, `poderes`)
+// saiu do bestiário em 58db84be, e o carregador que a lia do `src/data/bestiario/<id>.json` quebrava em toda ficha de
+// hoje. A criatura agora vem de `lerCriaturas()` (scripts/lib-bestiario.mjs), que passa a fonte pelo motor
+// (`vistaPublicaCriatura`): a vista de compatibilidade (`attrs`, `skills`, `ataques` com `atrib`/`pericia`/`tipo`, `arte`)
+// e os números do motor (`motor.stat`: PV, Defesa, Absorção com a Couraça por perfil, cada ataque com a arma no Tamanho e
+// o arremesso pelo Atributo do motor). É o mesmo caminho do `gen-bestiario`/`gen-monsters`, e não uma cópia dos gerados.
+// Além do que o laço já usava, a carga traz, como dado: a lista inteira de ataques, o Tamanho de cada arma, a
+// regeneração (o N do poder e a fraqueza do campo próprio), o multiataque e os ataques sem jogada (os sopros).
+let CRIATURAS = null;
+function criaturaDoMotor(id) {
+  if (!CRIATURAS) CRIATURAS = new Map(lerCriaturas().map((f) => [f.id, f]));
+  const f = CRIATURAS.get(id);
+  if (!f || !f.motor) throw new Error(`${id} não está nas fontes unificadas (src/data/bestiario)`);
+  return f;
+}
+const TIPO_PARA_SOAK = { perfurante: 'perfuracao', perfuracao: 'perfuracao', corte: 'corte', impacto: 'impacto' };
+function carregarCriatura(id) { return cargaDaVista(criaturaDoMotor(id)); }
+// As doses do sopro (decisão do Arquiteto, 08/11/2026): LEITURA DE PROSA, pela mesma frase que o
+// regras-poder-criatura.mjs cobra ("guarda N doses", ou "Usos grátis: N por cena"), até a ficha ganhar um campo de
+// doses (sugestão de campo ao autor, L18). Todo ataque sem jogada com limite de uso tem de dar um número: se a frase
+// não casar, a carga para com o nome da criatura, sem valor padrão calado. Na luta, o robô gasta no máximo as doses
+// guardadas; a produção ("1 dose a cada 12 horas") não cabe numa luta.
+function poderDoAtaque(fonte, nome) {
+  const hs = fonte.habilidadesEspeciais || [];
+  // o poder ligado pelo campo `ataque` ou pelo nome; sem ligação, o poder cujo nome começa pelo do ataque (o "Sopro de
+  // vapor" da tartaruga-dragao é o poder "Sopro de vapor escaldante")
+  return hs.find((x) => x.ataque === nome || x.nome === nome) || hs.find((x) => (x.nome || '').startsWith(nome + ' '));
+}
+function cargaDaVista(ficha) {
+  const id = ficha.id, st = ficha.motor.stat, fonte = ficha.motor.edicao || {};
+  // o recorte que a mesa lê (`combate` do monsters-mesa, gen-monsters.mjs), montado do mesmo stat
+  const mesa = {
+    centelha: st.centelha, vontade: st.vontade ?? 5,
+    combate: {
+      pv: st.pv, defesa: st.defesa, absorcao: { impacto: st.soak.impacto, corte: st.soak.corte, perfuracao: st.soak.perfuracao },
+      ataques: st.ataques.map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, classe: a.classe, ...(a.semJogada ? { semJogada: true } : {}) })),
+      ...(ficha.fraquezas?.length ? { fraquezas: ficha.fraquezas } : {}),
+      ...(ficha.resistencias?.length ? { resistencias: ficha.resistencias } : {}),
+      ...(ficha.imunidades?.length ? { imunidades: ficha.imunidades } : {}),
+    },
+  };
   const elem = L0.elementosCombate(mesa);
-  const a0 = mesa.combate.ataques[0];
-  const caster = ehCaster(ficha);
+  // `a0` é o ataque do modo "primeiro" da escolha (o de 07/11/2026, tmp/bancada/carga.mjs); o modo "melhor", o
+  // padrão desde a decisão do Arquiteto de 08/11/2026, escolhe entre todos (escolherAcaoCriatura).
+  // A rã-venenosa e o sapo não têm ataque: carregam, com `ataque` e `dano` nulos, e o laço não os mede.
+  const a0 = mesa.combate.ataques[0] || { pool: null, dano: null, classe: null, speed: null };
+  const caster = ficha.categoria === 'Dragão' || ficha.categoria === 'dragao' || CASTERS_ID.has(ficha.id);
   const voadoraOuDistancia = !!(ficha.locomocao?.voo) || mesa.combate.ataques.some((a) => a.speed && /arco|sopro/i.test(a.nome || ''));
-  // CORRIGIDO em 30/09/2026: `tipoDaExpressao` só lê o sufixo "(C)/(I)/(P)" que as fichas
-  // de PC usam; o bestiário escreve o tipo por extenso ("perfurante") no próprio dano E
-  // no campo `tipo` do ataque-fonte (ataqueSchema). Ler do dano com `tipoDaExpressao`
-  // sempre caía no fallback 'impacto', trocando a Absorção usada contra toda criatura (achado
-  // conferindo o pedido do Arquiteto sobre dano/Absorção, 30/09/2026). A fonte certa é
-  // `ficha.ataques[0].tipo`, mapeado para o vocabulário de `soak` ('perfurante'→'perfuracao').
-  const TIPO_PARA_SOAK = { perfurante: 'perfuracao', corte: 'corte', impacto: 'impacto' };
-  const tipoDanoBasico = TIPO_PARA_SOAK[ficha.ataques?.[0]?.tipo] || tipoDaExpressao(a0.dano) || 'impacto';
+  const tipoDanoBasico = TIPO_PARA_SOAK[ficha.ataques?.[0]?.tipo] || (a0.dano ? tipoDaExpressao(a0.dano) : null) || 'impacto';
   // Componentes crus pra leitura alternativa da Guarda sob pressão (ver combatentePersona).
   const destrezaRaw = ficha.attrs.destreza;
   const esquivaRaw = ficha.skills.esquiva ?? 0;
   const penFisica = (destrezaRaw + esquivaRaw) * (REGRAS.derivados.defesa.mult ?? 2)
     + 2 * Math.min(Math.max(0, mesa.centelha), Math.max(0, esquivaRaw)) - mesa.combate.defesa;
+  // a regeneração: o N do nome do poder e a fraqueza do campo próprio (G5, D-367); nenhuma prosa é lida
+  const poderRegen = (fonte.habilidadesEspeciais || []).find((h) => /^Regeneração \d+$/.test(h.nome || ''));
+  const regeneracao = poderRegen ? { n: Number(poderRegen.nome.match(/\d+/)[0]), ...(poderRegen.fraqueza ? { fraqueza: poderRegen.fraqueza } : {}) } : null;
   return {
     id, nome: ficha.nome, tipo: 'criatura',
     pv: mesa.combate.pv, pvMax: mesa.combate.pv,
     defesaBase: mesa.combate.defesa,
     destrezaRaw, esquivaRaw, penFisica,
     soak: mesa.combate.absorcao,
+    perfilCouraca: ficha.motor.perfilCouraca ?? null, couraca: ficha.motor.couraca ?? 0,
     ataque: a0.pool, dano: a0.dano,
     tipoDano: tipoDanoBasico,
     qaArmaBonus: 0, qaArmaDano: 0, // simplificação (suposição 2): sem catálogo de arma natural
@@ -221,22 +261,33 @@ function carregarCriatura(id) {
     caster, arte: caster ? (ficha.arte || {}) : {},
     manaMax: caster ? L0.mana({ centelha: mesa.centelha, vontade: mesa.vontade }) : 0,
     manaRestante: caster ? L0.mana({ centelha: mesa.centelha, vontade: mesa.vontade }) : 0,
-    // "passivo" já fora (aura contínua, não é ação de turno). Dois achados rodando a
-    // matriz das 9 âncoras (30/09/2026):
-    //  1. `morte-explosiva` (Balor) tem `base` (entrava no pool de ataques ativos) mas o
-    //     `efeito` é um GATILHO DE MORTE ("ao cair a 0 PV..."), não algo que a criatura
-    //     escolhe usar. Sem exclusão, o Balor escolhia "morte-explosiva" todo turno
-    //     (nunca fica indisponível: `avontade` sem `quantidade` nem `recarga`) e NUNCA
-    //     atacava de verdade, travando a batalha em censura total.
-    //  2. Poder com `base` e `resiste: 'nenhum'` não é dano-e-projétil: é utilidade
-    //     (teleporte, convocar, reproduzir Arte, regenerar). Rolar Nd6 contra a Defesa
-    //     pra essas seria dano inventado onde a ficha não descreve dano nenhum. Afeta
-    //     Balor (teleporte-balor), Diabo do Fosso (convocar-diabos, feiticos-supremos),
-    //     Solar (convocar-anjos), Tarrasca (regeneracao-implacavel).
-    // Não modelo gatilho de morte nem essas utilidades (seria mecânica nova); só tiro as
-    // duas categorias do pool de ataque ativo.
-    poderes: (ficha.poderes || []).filter((p) => p.tipo === 'natural' && p.usos.periodo !== 'passivo'
-      && p.resiste !== 'nenhum' && !/ao cair a 0 ?PV/i.test(p.efeito || '')),
+    // O formato antigo de `poderes` (tipo, usos, resiste) não existe mais na ficha: o laço segue sem poder natural
+    // ofensivo, como na bancada de 07/11/2026. Os poderes de hoje vêm como dado em `habilidadesEspeciais`.
+    poderes: [],
+    // a lista inteira de ataques do motor, com o Tamanho da arma (G1, D-363), o Atributo do arremesso (G2, D-364) e a
+    // Defesa da criatura enquanto aquele ataque está em uso: a principal tem o −2 da arma de duas mãos, e com a outra arma
+    // do catálogo vale a `defesaOutraArma` do motor (D-262, D-273); os ataques sem jogada (os sopros, R36) com o poder
+    // ligado e as doses; o multiataque; a regeneração (D-362)
+    ataques: st.ataques.map((a) => {
+      const f = (fonte.ataques || []).find((x) => x.nome === a.nome);
+      const defesa = st.defesaOutraArma && a.nome === st.defesaOutraArma.arma ? st.defesaOutraArma.defesa : st.defesa;
+      return { nome: a.nome, pool: a.pool, dano: a.dano, velocidade: a.ticks, classe: a.classe, atrib: a.atrib, habilidade: a.pericia,
+        tipoDano: TIPO_PARA_SOAK[a.tipo] || 'impacto', defesa,
+        ...(a.semJogada ? { semJogada: true } : {}), ...(f?.arma ? { arma: f.arma } : {}), ...(f?.tamanho ? { tamanho: f.tamanho } : {}) };
+    }),
+    semJogada: st.ataques.filter((a) => a.semJogada).map((a) => {
+      const h = poderDoAtaque(fonte, a.nome);
+      let doses = null;
+      if (h?.limiteDeUso) {
+        doses = dosesGuardadas(h.limiteDeUso) ?? usosGratis(h.limiteDeUso);
+        if (doses == null) throw new Error(`${id}: o ataque sem jogada "${a.nome}" tem limite de uso sem número de doses legível ("${h.limiteDeUso}")`);
+      }
+      return { nome: a.nome, dano: a.dano, velocidade: a.ticks, tipo: a.tipo, doses, ...(h?.nome ? { poder: h.nome } : {}),
+        ...(h?.base ? { base: h.base } : {}), ...(h?.area ? { area: h.area } : {}), ...(h?.limiteDeUso ? { limiteDeUso: h.limiteDeUso } : {}) };
+    }),
+    multiataque: (fonte.habilidadesEspeciais || []).filter((h) => h.regra === 'rajada' || /multiataque/i.test(h.nome || ''))
+      .map((h) => ({ nome: h.nome, ...(h.regra ? { regra: h.regra } : {}), ...(h.ataque ? { ataque: h.ataque } : {}), ...(h.classe ? { classe: h.classe } : {}) })),
+    regeneracao,
     voadoraOuDistancia,
     classe: a0.classe || 'leve', velocidade: a0.speed || 5,
     poderState: {}, // id -> { usosRestantes, cooldownTurnos }
@@ -257,9 +308,10 @@ function carregarCriatura(id) {
  * em quase toda âncora, item 2b do relato anterior). Recomputa o pool do zero pela MESMA
  * fórmula do gerador (`rolagemAtaque`, `src/lib/bestia-editor.ts`), não uma aproximação:
  * dados = ⌊(Atrib+HabEfetiva)/2⌋, flat = acerto-base + 2×mín(Centelha,HabEfetiva).
+ * Desde 08/11/2026 lê a vista do motor (o mesmo caminho do `carregarCriatura`), e não a ficha antiga.
  */
 function criaturaA2(id, criaturaBase) {
-  const ficha = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/bestiario', `${id}.json`), 'utf8'));
+  const ficha = criaturaDoMotor(id);
   const a0 = ficha.ataques[0];
   const atrib = ficha.attrs[a0.atrib] || 0;
   const habReal = (ficha.skills && ficha.skills[a0.pericia]) ?? (ficha.skills2 && ficha.skills2[a0.pericia]) ?? 0;
@@ -478,10 +530,23 @@ function opcoesMultiGolpe(classe, velocidade, temDupla) {
   return opcoes;
 }
 
+// A ESCOLHA DO ATAQUE (decisão do Arquiteto, 08/11/2026): dois modos, por `opts.escolhaAtaque` em `rodarBatalha` (ou
+// pela variável de ambiente BANCADA_ESCOLHA, para os scripts que já existem). "primeiro": o `ataques[0]`, como na
+// bancada de 07/11/2026, e o laço é o de antes, número por número. "melhor" (o padrão): o ataque de maior dano
+// esperado POR TICK contra a persona, entre todos os ataques com jogada (golpe simples e Rajada de cada um), os sopros
+// enquanto houver dose e as Artes de quem conjura; a jogada vai contra a Defesa da persona, e a Defesa da própria
+// criatura passa a ser a do ataque em uso (a principal com o −2 da arma de duas mãos; com a outra arma, a
+// `defesaOutraArma` do motor, D-262 e D-273). O Tick de cada opção é a Velocidade dela, mais os Ticks extra da Rajada.
+// TOLERÂNCIA (escolha de medição): a Arte de quem conjura conta um turno (6 Ticks), porque a bancada não tem a
+// Velocidade da Arte. LEVANTA QUANDO: a bancada ganhar o tempo da Arte (regras.json, arcano.tempoDaArte).
+// Limite conhecido: o laço é por turno e não cobra a diferença de Velocidade entre ataques (só os Ticks extra da
+// Rajada); o "por Tick" decide a escolha, e não a frequência.
+const ESCOLHA_PADRAO = process.env.BANCADA_ESCOLHA || 'melhor';
 function escolherAcaoCriatura(c, turno, personas, engajadaId) {
   if (c.atrasoTicks > 0) return { tipo: 'esperar' }; // ainda pagando Ticks de Rajada
   if (turno === 1 && c.arte.protecao && !c.protecaoUsada) return { tipo: 'protecao' };
   if (c.pv / c.pvMax < 0.3 && !c.curaUsada && c.arte.cura) return { tipo: 'cura-si' };
+  if (c.escolhaAtaque === 'melhor') return escolherMelhor(c, turno, personas, engajadaId);
 
   const alvoUnico = [alvoDaCriatura(c, personas, engajadaId)].filter(Boolean);
   const alvosVivos = personas.filter((p) => !p.caido);
@@ -529,6 +594,107 @@ function escolherAcaoCriatura(c, turno, personas, engajadaId) {
   if (melhor.tipo === 'poder') { return { tipo: 'poder', poder: melhor.poder }; }
   if (melhor.tipo === 'arte') { return { tipo: 'arte', arteId: melhor.arteId, nivel: melhor.nivel }; }
   return { tipo: 'basico', manobra: melhor.manobra, penDados: melhor.penDados, cicloExtra: melhor.cicloExtra || 0 };
+}
+// O SOPRO (R36 e combate.md, "Contra área, a saída é sair", decisão do Arquiteto de 08/11/2026): sem jogada de ataque
+// e sem Defesa. Cada persona na área rola a saída, Destreza + Esquiva pela fórmula do pool (combate.md:156), contra
+// 5 + 5 × os metros que faltam para ficar fora (passou: sofre metade) e o dobro disso (passou: não sofre nada); quem não
+// passa leva o dano inteiro. A saída é a fora da vez (desvio de emergência): 1 Tick por metro, gasto passe ou não, que
+// empurra a próxima ação da persona. A metade é a do dano rolado, antes da Absorção. A Absorção é a do tipo físico do
+// sopro; no sopro de elemento, é a do tipo do dano da criatura, a mesma convenção que a bancada já usa no dano de Arte e
+// de poder, e o elemento passa pela fraqueza, resistência e imunidade da persona. O dano do sopro rola uma vez para todos.
+// Quem está na área: a regra de alcance da bancada (área de 10 m ou mais pega todas as vivas; menor, só o alvo da
+// criatura). Não entra a escada sobre os dados da saída fora da vez: a bancada não aplica escada nenhuma nas jogadas.
+// TOLERÂNCIA (política de robô, a única desta regra): os METROS QUE FALTAM, sem mapa. A conta, a mesma para todos:
+//   - linha: a ficha não dá a largura; a linha tem 1,5 m (um quadrado), e falta a metade, 0,75 m, arredondada para 1 m;
+//   - cone: a largura no ponto do alvo é a distância dele até a criatura (o cone em que a largura acompanha o alcance);
+//     o alvo da criatura está colado nela, a 1,5 m, e os outros a meio alcance; falta a metade da largura, arredondada
+//     para cima: 1 m para o alvo; num cone de 12 m, 3 m para os outros (6 m de largura);
+//   - raio, nuvem, esfera, círculo: o raio inteiro para o alvo (no centro) e a metade, para cima, para os outros;
+//   - mínimo de 1 m em todos; a área sem forma legível conta 1 m.
+// Na área com duas formas "à escolha" (o linnorm-dos-lagos), vale a primeira escrita.
+// LEVANTA QUANDO: a bancada tiver espaço (posição de cada persona e da criatura).
+const DISTANCIA_DO_ALVO_M = 1.5, LARGURA_DA_LINHA_M = 1.5;
+const TIPO_LETRA = { C: 'corte', P: 'perfuracao', I: 'impacto' };
+const semSufixo = (dano) => String(dano || '').replace(/\s*\([^)]*\)\s*$/, '');
+function formaDaArea(area) {
+  const m = String(area || '').match(/\b(cone|linha|raio|nuvem|esfera|c[íi]rculo)\b\D*?(\d+(?:[.,]\d+)?)\s*m\b/iu);
+  return m ? { forma: m[1].toLowerCase(), metros: Number(m[2].replace(',', '.')) } : null;
+}
+function metrosParaSair(area, ehOAlvo) {
+  const a = formaDaArea(area);
+  if (!a) return 1;
+  if (a.forma === 'linha') return Math.max(1, Math.ceil(LARGURA_DA_LINHA_M / 2));
+  if (a.forma === 'cone') return Math.max(1, Math.ceil((ehOAlvo ? DISTANCIA_DO_ALVO_M : a.metros / 2) / 2));
+  return Math.max(1, Math.ceil(ehOAlvo ? a.metros : a.metros / 2));
+}
+function alvosDoSopro(c, sp, personas, engajadaId) {
+  const alvo = alvoDaCriatura(c, personas, engajadaId);
+  const area = soNumero(sp.area);
+  return { alvo, alvos: (area != null && area >= 10) ? personas.filter((p) => !p.caido) : [alvo].filter(Boolean) };
+}
+function poolDaSaida(p) {
+  const hab = Math.max(0, p.esquivaRaw ?? 0), soma = (p.destrezaRaw ?? 0) + hab;
+  return { n: Math.floor(soma / 2), flat: (soma % 2 ? 2 : 0) + 2 * Math.min(Math.max(0, p.centelha || 0), hab) };
+}
+function liquidoDoSopro(L, sp, alvo, c, bruto) {
+  const fisico = TIPO_PARA_SOAK[sp.tipo] || TIPO_LETRA[sp.tipo];
+  const depois = Math.max(0, bruto - (alvo.soak[fisico || c.tipoDano] ?? 0));
+  return fisico ? depois : danoElementalNoAlvo(L, depois, sp.tipo, alvo).liquido;
+}
+function danoEsperadoSopro(sp, alvo, ehOAlvo, c) {
+  const dif = 5 + 5 * metrosParaSair(sp.area, ehOAlvo), pool = poolDaSaida(alvo);
+  let pTudo = 0, pMetade = 0;
+  for (const [soma, p] of pmfDadoCache(pool.n)) {
+    const t = soma + pool.flat;
+    if (t > 2 * dif) continue;
+    if (t > dif) pMetade += p; else pTudo += p;
+  }
+  const dn = parseExprSimples(semSufixo(sp.dano));
+  let tudo = 0, metade = 0;
+  for (const [soma, p] of pmfDadoCache(dn.n)) {
+    const bruto = Math.max(0, soma + dn.flat);
+    tudo += p * liquidoDoSopro(L0, sp, alvo, c, bruto);
+    metade += p * liquidoDoSopro(L0, sp, alvo, c, Math.floor(bruto / 2));
+  }
+  return pTudo * tudo + pMetade * metade;
+}
+function escolherMelhor(c, turno, personas, engajadaId) {
+  const alvoUnico = [alvoDaCriatura(c, personas, engajadaId)].filter(Boolean);
+  const alvosVivos = personas.filter((p) => !p.caido);
+  const qaCriatura = { qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha };
+  const opcoes = [];
+  for (const atk of (c.ataques || []).filter((a) => !a.semJogada && a.pool)) {
+    const d = danoEsperadoOpcao(atk.pool, atk.dano, qaCriatura, alvoUnico, atk.tipoDano);
+    opcoes.push({ tipo: 'basico', atk, manobra: 'simples', penDados: [0], cicloExtra: 0, dano: d, porTick: d / (atk.velocidade || TICKS_POR_TURNO) });
+    if (!alvoUnico[0]) continue;
+    for (const mg of opcoesMultiGolpe(atk.classe, atk.velocidade, true)) {
+      const dm = danoEsperadoManobra(atk.pool, atk.dano, qaCriatura, alvoUnico[0], atk.tipoDano, mg.penDados);
+      opcoes.push({ tipo: 'basico', atk, manobra: mg.manobra, golpes: mg.golpes, penDados: mg.penDados, cicloExtra: mg.cicloExtra, dano: dm,
+        porTick: dm / ((atk.velocidade || TICKS_POR_TURNO) + (mg.cicloExtra || 0)) });
+    }
+  }
+  for (const sp of (c.semJogada || [])) {
+    // sem limite de uso, o sopro não tem dose; sem dado de dano, não há o que esperar (o Sopro petrificante da
+    // gorgona-touro-de-ferro, dano "nenhum")
+    if (!/\d+d6/.test(sp.dano || '') || (sp.doses != null && !(c.dosesRestantes?.[sp.nome] > 0))) continue;
+    const { alvo, alvos } = alvosDoSopro(c, sp, personas, engajadaId);
+    const d = alvos.reduce((soma, a) => soma + danoEsperadoSopro(sp, a, a === alvo, c), 0);
+    opcoes.push({ tipo: 'sopro', sopro: sp, dano: d, porTick: d / (sp.velocidade || TICKS_POR_TURNO) });
+  }
+  if (c.caster && c.manaRestante > 0) {
+    for (const [arteId, nivel] of Object.entries(c.arte)) {
+      if (arteId === 'protecao' || arteId === 'cura' || nivel > c.manaRestante) continue;
+      const arte = L0.ARTE[arteId];
+      const dados = nivel * (arte?.grid?.dadoPorNivel || 1);
+      const d = danoEsperadoOpcao(`0d6 +${nivel * 4}`, `${dados}d6`, { ...qaCriatura, qaArmaBonus: 0, qaArmaDano: 0 }, alvoUnico, c.tipoDano);
+      opcoes.push({ tipo: 'arte', arteId, nivel, dano: d, porTick: d / TICKS_POR_TURNO });
+    }
+  }
+  if (!opcoes.length) return { tipo: 'esperar' };
+  const m = opcoes.reduce((x, o) => (o.porTick > x.porTick ? o : x), opcoes[0]);
+  if (m.tipo === 'arte') return { tipo: 'arte', arteId: m.arteId, nivel: m.nivel };
+  if (m.tipo === 'sopro') return { tipo: 'sopro', sopro: m.sopro };
+  return { tipo: 'basico', atk: m.atk, manobra: m.manobra, penDados: m.penDados, cicloExtra: m.cicloExtra || 0 };
 }
 
 function rolarContraDefesa(L, atacante, alvoStats, fonte) {
@@ -612,6 +778,17 @@ function resolverGolpeFisico(L, fonte, atacante, alvo, ajusteDados) {
 
 export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   const c = { ...structuredClone(criaturaBase), poderState: {} };
+  c.escolhaAtaque = opts.escolhaAtaque || ESCOLHA_PADRAO;
+  c.dosesRestantes = Object.fromEntries((c.semJogada || []).filter((s) => s.doses != null).map((s) => [s.nome, s.doses]));
+  // A REGENERAÇÃO (D-362), atrás de `opts.regeneracao`: N/10 PV a cada 6 Ticks, desde o Tick do primeiro dano, pelas
+  // funções do motor (regeneracaoInicial, danoNaRegeneracao, regenerarAte). O relógio liga no primeiro dano, como a
+  // D-362 e o livro dizem ("contados a partir do Tick em que ela sofreu o primeiro dano"); a cópia de 07/11/2026
+  // pulsava desde a entrada (docs/bestiario/bancada-carga.md). Cada turno são 6 Ticks: o dano que a
+  // criatura sofre no turno t conta no Tick 6t, e o pulso entra no começo do turno. A fraqueza (G5) não entra: as
+  // personas só causam corte, perfuração e impacto, então ela nunca dispararia nesta bancada (registrado, sem conserto).
+  let regen = opts.regeneracao && c.regeneracao?.n ? MOTOR.regeneracaoInicial(c.regeneracao.n, c.pvMax) : null;
+  let regenTotal = 0;
+  const soprosUsados = {};
   c.semGuarda = !!opts.semGuardaPressao;
   c.semPressaoFeita = !!opts.semPressaoFeita;
   const personas = grupoCombatentes(centelha);
@@ -657,6 +834,13 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
     // ---- turno da criatura ----
     // O relógio de Ticks passa pra todo mundo a cada turno (TICKS_POR_TURNO=6), e é
     // esse decaimento que consome o atraso que a Rajada acumulou.
+    if (regen && c.pv > 0) {
+      const tick = TICKS_POR_TURNO * (turno - 1);
+      if (c.pv < regen.pv) regen = MOTOR.danoNaRegeneracao(regen, tick, regen.pv - c.pv);
+      else if (c.pv > regen.pv) regen = { ...regen, pv: c.pv };
+      regen = MOTOR.regenerarAte(regen, tick);
+      regenTotal += regen.pv - c.pv; c.pv = regen.pv;
+    }
     c.atrasoTicks = Math.max(0, c.atrasoTicks - TICKS_POR_TURNO);
     const acao = escolherAcaoCriatura(c, turno, personas, engajadaId);
     if (acao.tipo === 'esperar') {
@@ -672,15 +856,33 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         c.curaUsada = true; c.manaRestante -= (c.arte.cura || 1) * 2;
       } else if (acao.tipo === 'basico') {
         c.atrasoTicks += acao.cicloExtra || 0;
+        // modo "melhor": o ataque escolhido, e a Defesa da criatura passa a ser a dele (D-262, D-273)
+        if (acao.atk) c.defesaBase = acao.atk.defesa;
         for (const pd of acao.penDados) {
           const alvo = alvoDaCriatura(c, personas, engajadaId);
           if (!alvo) break;
           resolverGolpeFisico(L, fonte, {
-            ataqueExpr: c.ataque, danoExpr: c.dano, ajusteFlat: 0, entidade: c,
-            qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha, tipoDano: c.tipoDano,
+            ataqueExpr: acao.atk ? acao.atk.pool : c.ataque, danoExpr: acao.atk ? acao.atk.dano : c.dano, ajusteFlat: 0, entidade: c,
+            qaArmaBonus: c.qaArmaBonus, qaArmaDano: c.qaArmaDano, centelha: c.centelha, tipoDano: acao.atk ? acao.atk.tipoDano : c.tipoDano,
           }, alvo, pd);
           if (alvo.pv <= 0 && !alvo.caido) { alvo.caido = true; if (alvo.id === engajadaId) promoverProximo(); }
           if (caidas() >= 2) break;
+        }
+      } else if (acao.tipo === 'sopro') {
+        // o sopro (R36): sem jogada de ataque nem Defesa; cada persona na área rola a saída fora da vez (escolherMelhor,
+        // o bloco "O SOPRO"); gasta uma dose
+        const sp = acao.sopro;
+        if (sp.doses != null) c.dosesRestantes[sp.nome] -= 1;
+        soprosUsados[sp.nome] = (soprosUsados[sp.nome] || 0) + 1;
+        const { alvo: alvoPrincipal, alvos } = alvosDoSopro(c, sp, personas, engajadaId);
+        const bruto = Math.max(0, fonte.rolar(semSufixo(sp.dano)).total);
+        for (const alvo of alvos) {
+          const metros = metrosParaSair(sp.area, alvo === alvoPrincipal), dif = 5 + 5 * metros, pool = poolDaSaida(alvo);
+          const saida = fonte.rolar(`${pool.n}d6`, 0, pool.flat).total;
+          alvo.atrasoTicks = (alvo.atrasoTicks || 0) + metros;
+          const sofre = saida > 2 * dif ? 0 : saida > dif ? Math.floor(bruto / 2) : bruto;
+          alvo.pv = Math.max(0, alvo.pv - liquidoDoSopro(L, sp, alvo, c, sofre));
+          if (alvo.pv <= 0 && !alvo.caido) { alvo.caido = true; if (alvo.id === engajadaId) promoverProximo(); }
         }
       } else {
         // poder/Arte ofensiva: "dano e projéteis" (regras.json → arcano.resistencia.tipos),
@@ -781,6 +983,8 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   return {
     fim, turnos: turno, venceuGrupo: fim === 'criatura-caiu', resolvida: fim !== 'censura',
     caidasNoFim: caidas(), pvCriaturaNoFim: c.pv,
+    ...(regen ? { regenTotal } : {}),
+    ...(c.escolhaAtaque === 'melhor' ? { soprosUsados } : {}),
   };
 }
 
@@ -967,4 +1171,4 @@ export function desafioDe(id, reps, semente) {
   return { curva, desafio: acha ? acha.centelha : null };
 }
 
-export { carregarCriatura, criaturaA2, grupoCombatentes, L0 };
+export { carregarCriatura, cargaDaVista, criaturaDoMotor, metrosParaSair, criaturaA2, grupoCombatentes, L0 };
