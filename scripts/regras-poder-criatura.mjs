@@ -2,6 +2,25 @@
 // As fichas escrevem os parâmetros nas frases de uso, em português.
 const quantidade = '(?:[1-9]\\d*|um|uma|dois|duas|três|quatro|cinco|seis)';
 const estoque = new RegExp('\\b(?:guarda|armazena|estoque de|reserva de|até) '+quantidade+' (?:doses?|cargas?|espinhos?)\\b','iu');
+// A bancada de desafio (scripts/sim/desafio-bancada.mjs, B14) lê o número de doses guardadas pela MESMA frase que esta
+// regra cobra (decisão do Arquiteto, 08/11/2026): é leitura de prosa até a ficha ganhar um campo de doses.
+const estoqueComNumero = new RegExp('\\b(?:guarda|armazena|estoque de|reserva de|até) ('+quantidade+') (?:doses?|cargas?|espinhos?)\\b','iu');
+const NUMERO_POR_EXTENSO = { um: 1, uma: 1, dois: 2, duas: 2, 'três': 3, quatro: 4, cinco: 5, seis: 6 };
+/** O número de doses (ou cargas) guardadas que a frase de uso escreve, ou null se ela não escreve. */
+export function dosesGuardadas(texto) {
+  const m = String(texto || '').match(estoqueComNumero);
+  if (!m) return null;
+  const q = m[1].toLowerCase();
+  return NUMERO_POR_EXTENSO[q] ?? Number(q);
+}
+const gratisComNumero = new RegExp('(?:usos? gr[áa]tis\\s*:\\s*('+quantidade+')|('+quantidade+') usos? gr[áa]tis) por (?:cena|dia)\\b','iu');
+/** Os usos grátis por cena (ou por dia) que a frase de uso escreve, ou null se ela não escreve. */
+export function usosGratis(texto) {
+  const m = String(texto || '').match(gratisComNumero);
+  if (!m) return null;
+  const q = (m[1] || m[2]).toLowerCase();
+  return NUMERO_POR_EXTENSO[q] ?? Number(q);
+}
 const producao = new RegExp('\\b(?:produz|recupera|repõe|regenera) (?:1|uma?|um) (?:nova? )?(?:dose|carga|espinho) (?:em|a cada|por) (?:(?:'+quantidade+') )?(?:horas?|dias?)\\b','iu');
 const gratis = new RegExp('(?:usos? gr[áa]tis\\s*:\\s*'+quantidade+'|'+quantidade+' usos? gr[áa]tis) por (?:cena|dia)\\b','iu');
 const fixo = new RegExp('\\b'+quantidade+' (?:vez(?:es)? |usos? )?por (?:história|semana|dia)\\b','iu');
