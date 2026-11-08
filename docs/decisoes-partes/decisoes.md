@@ -4395,7 +4395,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: a medição está em `../tmp/bancada/regeneracao-b1.md` (20 criaturas com regeneração; nenhuma luta mediana chega a 60 Ticks; a faixa de N 20 a 30 não tem criatura, e foi medida só no linnorm-dos-penhascos com o N trocado à mão). Nas fichas, a classe "sem regra ainda" dos 20 poderes "Regeneração N" e dos 7 "X param/atrasam a regeneração" é da Bestiarista: não se corrige por cima no gerador, e a troca para a regra do livro vai a ela por lista, pelo autor (L18); até lá o card mostra o rótulo antigo. A forma da fraqueza (R47) também não tem campo na ficha (só aparece na prosa): o motor a recebe de quem chama, e o campo vai na mesma lista. Achado da bancada: `scripts/sim/desafio-bancada.mjs` lê `attrs` desde `58db84be` e não carrega as fichas de hoje.
 - Muda: completa a D-325 (R46) e a D-361 (B1); a D-246 ("Regeneração N · sem regra ainda") deixa de valer no livro; a D-326 (R47, a fraqueza) segue.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026.
-- Estado: **no ar** desde 07/11/2026 (branch `regen-b2`, publicada em `a57dd53b`): o texto no livro e o pulso no motor de criaturas; a troca da classe nas fichas vai à Bestiarista por lista (L18); o Grid, na N23.
+- Estado: **no ar** desde 07/11/2026 (branch `regen-b2`, publicada em `a57dd53b`): o texto no livro e o pulso no motor de criaturas; a troca da classe nas fichas entrou com o lote `r-listas-07-11` da Bestiarista (branch `lote-listas`, publicada em `9455a024`, 08/11/2026); o Grid, na N23.
 - **Completada em 07/11/2026 pela D-367** (G5): o "atrasa a regeneração" do tarrasque é a primeira forma da R47, e os tipos de fraqueza viram lista fechada.
 
 ### D-363 · G1: a arma de outro tamanho muda o dado base, +1d6 por categoria acima de Médio e −2 por categoria abaixo; a rocha segue a mesma régua pelo tamanho dela [tags: armas, tamanho, gigante, rocha, arremesso, dano, g1, f3a, r40c, d-319, d-360]
@@ -4411,7 +4411,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
 - **Ajustada em 07/11/2026 pelo autor** (mensagem de 07/11/2026, item 2): "A rocha: o autor já disse que ela é 'arma de arremesso improvisada'. Fica fora da loja (não se compra), mas não é arma só de criatura: qualquer um pode arremessar uma, o jogador inclusive, pela régua da G1 (dano pelo tamanho) e da G2 (Força ou Destreza). Ajuste o texto e registre na D da G1." Desfaz a escolha do Arquiteto em `6c17d092` (rocha como arma só de criatura, `soCriatura`, fora da lista de armas da ficha do jogador): a rocha sai da loja e entra na ficha. A parte da G2 (Força ou Destreza) entra com a D-364, no lote da Bestiarista; até lá a jogada da rocha segue a regra de hoje do arremesso, como toda arma de arremesso.
 - **Corrigida no mesmo dia pela D-368** (G6): a rocha é "arma improvisada" de criatura e não entra no catálogo de armas, na loja nem na ficha de jogador. O ajuste acima fica desfeito, e volta a valer o que está no ar desde `6c17d092`: a rocha aparece só na ficha das criaturas que a arremessam. Em `armas.json` ela é só dado do motor para a ficha da criatura (`soCriatura`), sem linha na tabela do Cap. XIII, fora da loja e fora da lista de armas da ficha do jogador. O texto da G1 sobre a rocha fica no livro como régua de dano para a ficha da criatura.
-- Estado: **no ar em parte** desde 07/11/2026: o passo no motor e o texto "Armas de outro tamanho" (branch `g-armas-fraqueza`, publicada em `72287ef4`) e a rocha como arma de criatura (`6c17d092`, publicada em `585713cd`). As 6 fichas de gigante e as 6 de rocha entram com o lote da Bestiarista (`r-listas-07-11`).
+- Estado: **no ar** desde 07/11/2026: o passo no motor e o texto "Armas de outro tamanho" (branch `g-armas-fraqueza`, publicada em `72287ef4`), a rocha como arma de criatura (`6c17d092`, publicada em `585713cd`) e, com o lote `r-listas-07-11` da Bestiarista (branch `lote-listas`, publicada em `9455a024`, 08/11/2026), as fichas de gigante com as armas do catálogo no Tamanho e as 6 rochas como a rocha do catálogo; o conversor lê o Tamanho da arma.
 
 ### D-364 · G2: arremessar é com Força ou Destreza, à escolha de quem arremessa, normalmente o maior dos dois, para toda arma de arremesso [tags: arremesso, atirador, forca, destreza, g2, f3a, d-360, d-315]
 - Data: 2026-11-07
@@ -4422,7 +4422,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: o motor de arremesso passa a ler o maior entre Força e Destreza; a Jogada do projétil natural (D-315) é outra regra e não muda.
 - Muda: substitui em parte a D-208 (o pedaço "tiro e arremesso seguem o livro (combate.md:156: arco pela Percepção, arremesso pela Destreza)", para o arremesso; o tiro segue) e completa a D-360; corrige o texto do livro que dizia só Destreza para o arremesso. Fica como está o "Pegar o de retorno Cortante pede Destreza + Arremesso" da D-076, que é pegar o bumerangue de volta, e não atacar (achado da Revisora sobre `d4bb62ab`).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **espera o lote da Bestiarista** (escolha do autor em 07/11/2026); o commit `61832b57` fica parado na branch `g-armas-fraqueza`, sem merge, até o lote.
+- Estado: **no ar** desde 08/11/2026, com o lote `r-listas-07-11` da Bestiarista (branch `lote-listas`, publicada em `9455a024`, 08/11/2026): o motor de arremesso pelo maior entre Força e Destreza (cherry-pick do `61832b57`, sem o `e0837b71`), o texto do Arremesso e do Atirador e as 7 jogadas reescritas pela Bestiarista.
 - **Escolha do autor em 07/11/2026** (pergunta do Arquiteto, a partir do achado da Revisora): o card das 7 criaturas que mudam (o centauro e seis gigantes) se contradiria, porque a justificativa do ataque vem da ficha e diz a jogada antiga ("Jogada: Destreza 2 + Arremesso 3 ..."; no centauro, "Arremesso é sempre Destreza"). O autor escolheu "Esperar o lote", com o texto da opção: "O motor e o texto da G2 esperam o lote da Bestiarista. Ela reescreve as 7 jogadas e justificativas, e aí tudo muda junto. Até lá o livro continua dizendo só Destreza para o arremesso."
 
 ### D-365 · G3: a besta pesada não é arma nova; é o nome que a fonte dá à Besta Média [tags: armas, besta, besta-media, besta-pesada, merfolk, g3, d-360]
@@ -4433,7 +4433,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: a descrição da Besta Média ganha o nome da fonte; a ficha do merfolk vai à Bestiarista por lista (L18).
 - Muda: completa a D-360 (item 019).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`); o merfolk vai à Bestiarista por lista (L18).
+- Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`); o merfolk com Besta Média entrou com o lote `r-listas-07-11` da Bestiarista (branch `lote-listas`, publicada em `9455a024`, 08/11/2026).
 
 ### D-366 · G4: quem empunha arma de outro tamanho: o dano é da arma, e uma categoria de diferença desloca a classe um degrau; além da Pesada, o Mestre julga [tags: armas, tamanho, classe, empunhar, forca, peso, g4, d-087, d-360]
 - Data: 2026-11-07
@@ -4460,7 +4460,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: o esquema do conversor ganha a lista; o tarrasque e as fichas com nome fora da lista vão à Bestiarista por lista (L18).
 - Muda: completa a D-326 (R47) e a D-362.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
-- Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`): a lista no livro e o campo preparado no conversor; o tarrasque e os nomes fora da lista vão à Bestiarista por lista (L18).
+- Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`): a lista no livro e o campo preparado no conversor; o campo da fraqueza nas fichas e o tarrasque (fogo ou ácido interrompem por 6 Ticks) entraram com o lote `r-listas-07-11` da Bestiarista (branch `lote-listas`, publicada em `9455a024`, 08/11/2026). A lista mora em `regras.json` (`criatura.fraquezasDaRegeneracao`) e foi ampliada pela D-369.
 - **Completada em 07/11/2026 pela D-369** (G7): a lista fechada ganha "água" e "maligno" e passa a: prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, água, maligno. Não entra "gelo".
 
 ### D-368 · G6: a rocha é arma improvisada de criatura, fora do catálogo de armas, da loja e da ficha de jogador; a seção de armas improvisadas fica para depois [tags: armas, rocha, arremesso, improvisada, criatura, ficha, loja, g6, g1, d-363, b26]
@@ -4486,7 +4486,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: o esquema do conversor ganha os dois termos; o `g5-regras.jsonpatch` do lote `r-listas-07-11` (com os seis termos) não entra, e a Bestiarista o refaz só com "água" e "maligno"; a fênix, o planetar e o solar entram com o resto do lote.
 - Muda: completa a D-367 (G5).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Resposta do autor sobre o vocabulário das fraquezas (G7, em DECISOES-AUTOR.md)").
-- Estado: **a implementar** pela Executora, no lote `r-listas-07-11` (o livro junto da R47, o esquema do conversor e as três fichas quando a Bestiarista relatar), em branch, com merge depois do PROCEDE da Revisora (D-356).
+- Estado: **no ar** desde 08/11/2026, com o lote `r-listas-07-11` da Bestiarista (branch `lote-listas`, publicada em `9455a024`, 08/11/2026): a lista com "água" e "maligno" em `regras.json` e no livro, junto da R47; a fênix (água ou maligno não se regenera), o planetar e o solar (maligno interrompe por 6 Ticks).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
