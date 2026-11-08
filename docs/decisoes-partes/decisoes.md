@@ -4461,6 +4461,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-326 (R47) e a D-362.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
 - Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`): a lista no livro e o campo preparado no conversor; o tarrasque e os nomes fora da lista vão à Bestiarista por lista (L18).
+- **Completada em 07/11/2026 pela D-369** (G7): a lista fechada ganha "água" e "maligno" e passa a: prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, água, maligno. Não entra "gelo".
 
 ### D-368 · G6: a rocha é arma improvisada de criatura, fora do catálogo de armas, da loja e da ficha de jogador; a seção de armas improvisadas fica para depois [tags: armas, rocha, arremesso, improvisada, criatura, ficha, loja, g6, g1, d-363, b26]
 - Data: 2026-11-07
@@ -4473,6 +4474,19 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: corrige o ajuste da D-363 registrado em `3f8ea38c` (que abria a rocha para o jogador) e confirma a escolha do Arquiteto em `6c17d092`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Resposta do autor sobre a rocha (G6, em DECISOES-AUTOR.md), que corrige a minha mensagem anterior").
 - Estado: **no ar** desde `6c17d092` (nada a mudar no código); a seção de armas improvisadas **pendente** (B26).
+
+### D-369 · G7: a lista fechada das fraquezas da regeneração ganha "água" e "maligno" (arma, efeito, artefato ou magia de origem maligna, a ficha diz qual); não entra "gelo" [tags: regeneracao, fraqueza, r47, vocabulario, agua, maligno, gelo, fenix, planetar, solar, g5, g7, g7a, d-367]
+- Data: 2026-11-07
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "G7. Termos novos na lista de fraquezas (07/11/2026, DECIDIDA)":
+    - Resposta do autor: não entra fraqueza a gelo. O contrário de fogo é água: a fraqueza de regeneração da fênix passa a ser água (no lugar do "cold" da fonte). "Água" entra na lista fechada da G5.
+    - G7a (07/11/2026): o "mal" entra como um termo só, "maligno", que cobre arma, efeito, artefato ou magia de origem maligna; a ficha diz qual se aplica. A lista fechada da G5 passa a: prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, água, maligno.
+    - Fichas: fênix (água ou maligno não se regenera), planetar (maligno: arma ou efeito), solar (maligno: artefato, efeito ou magia).
+- Também do autor (mesma mensagem): "Não entram 'gelo' nem os seis termos da proposta anterior." E: "Quando ela relatar, as três fichas e o patch entram junto com o resto do lote. Atualize a lista no livro (junto da R47) e no esquema do conversor."
+- Fora do livro: o esquema do conversor ganha os dois termos; o `g5-regras.jsonpatch` do lote `r-listas-07-11` (com os seis termos) não entra, e a Bestiarista o refaz só com "água" e "maligno"; a fênix, o planetar e o solar entram com o resto do lote.
+- Muda: completa a D-367 (G5).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Resposta do autor sobre o vocabulário das fraquezas (G7, em DECISOES-AUTOR.md)").
+- Estado: **a implementar** pela Executora, no lote `r-listas-07-11` (o livro junto da R47, o esquema do conversor e as três fichas quando a Bestiarista relatar), em branch, com merge depois do PROCEDE da Revisora (D-356).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
