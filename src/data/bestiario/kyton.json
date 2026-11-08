@@ -134,16 +134,16 @@
     {
       "nome": "Regeneração 2",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-      "nome": "ferida que não fecha",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "categoria": "inato",
-      "efeito": "o que arma de prata ou do bem faz não se regenera pela regeneração"
+      "fraqueza": {
+        "forma": "naoRegenera",
+        "tipos": [
+          "arma abençoada",
+          "prata"
+        ]
+      },
+      "texto": "Origem sobrenatural. O dano de arma abençoada ou prata só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 2 PV por minuto, até o máximo de PV. Em combate, recupera 0,2 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "arma de prata ou abençoada fere inteira",

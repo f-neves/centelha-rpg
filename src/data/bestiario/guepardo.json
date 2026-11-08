@@ -98,7 +98,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Caninos pequenos e cônicos (Wikipédia); agarra a garganta e estrangula (ADW). Leve: boca pequena (seção 7). N0: mordida absoluta não achada; o modelo de 2011 dá 689 N com crânio escalado (forma, não força real). Não muda: a Força continua 2."
+      "justificativa": "Fecha os caninos em torno da garganta da presa."
     },
     {
       "nome": "Patada com o ergot",
@@ -115,7 +115,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "A unha do \"polegar\" é grande, curva e afiada, e a pata derruba a presa em corrida (ADW). Não muda. Opção (D-097)."
+      "justificativa": "A unha curva do polegar ajuda a derrubar a presa em corrida."
     }
   ],
   "habilidadesEspeciais": [
@@ -234,7 +234,7 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,30 × 1,0305 = 0,309 . Antes: estimativa do Arquiteto"
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,30 × 1,0305 = 0,309 . Antes: estimativa do Arquiteto; 0,31 m na ficha atual. Base da revisão anterior: 0,30 m, estimada pelo Arquiteto, sem fonte; o comprimento total de 1,99 m soma o corpo e o ponto médio da cauda (D-174)"
     }
   ]
 }

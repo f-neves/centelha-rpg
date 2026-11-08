@@ -118,7 +118,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Morde a garganta ou a nuca e segura, e é com a boca que iça a presa: Média, como o leão. N0: 467 N nos caninos, estimados pelo crânio seco de um leopardo de 43,1 kg (Wroe et al. 2005), abaixo de 4.000 N. Não muda: a Força continua 5."
+      "justificativa": "Segura a presa pela garganta ou pela nuca."
     },
     {
       "nome": "Patada",
@@ -135,7 +135,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Garras retráteis, que seguram a presa e a árvore. Não muda. Opção, não segundo golpe (D-097)."
+      "justificativa": "As garras retráteis rasgam a presa."
     }
   ],
   "habilidadesEspeciais": [

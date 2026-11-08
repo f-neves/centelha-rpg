@@ -90,7 +90,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "A rã abocanha e engole inteira; dentes não achados nas fontes lidas, então Impacto, e não Perfuração (ver Notas). Leve: o bote rápido da boca (seção 7). Não muda: a Força continua 3 (3,5 − 2 + 3 = 4,5)."
+      "justificativa": "Abocanha a presa para engoli-la inteira."
     },
     {
       "nome": "Língua",
@@ -107,7 +107,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
+      "justificativa": "Use Briga, com o triplo do alcance corpo a corpo. A língua agarra sem ferir. Se o golpe for bloqueado, agarra o que o bloqueou. A manutenção causa 6 de dano."
     }
   ],
   "habilidadesEspeciais": [
@@ -236,7 +236,7 @@
     },
     {
       "campo": "corpo.altura",
-      "motivo": "Era 0,48 m. Pela razão do site sobre a v3, na mesma medida (corpo com corpo): 0,773 ÷ 1,20 = 0,644; 0,48 × 0,644 = 0,31. É 0,4 vez o corpo, a proporção estimada no real (0,12 m numa rã de 0,30 m)"
+      "motivo": "Era 0,48 m. Pela razão do site sobre a v3, na mesma medida (corpo com corpo): 0,773 ÷ 1,20 = 0,644; 0,48 × 0,644 = 0,31. É 0,4 vez o corpo, a proporção estimada no real (0,12 m numa rã de 0,30 m); 0,31 m na ficha atual. Base da revisão anterior: estimadas no animal real (0,12 e 0,15 m), sem fonte, e escaladas; a largura decide a área (D-147, D-174)"
     },
     {
       "campo": "corpo.comprimento",
@@ -244,15 +244,11 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Era 0,60 m. 0,60 × 0,644 = 0,39: 0,5 vez o corpo, a proporção estimada no real (0,15 m numa rã de 0,30 m)"
+      "motivo": "Era 0,60 m. 0,60 × 0,644 = 0,39: 0,5 vez o corpo, a proporção estimada no real (0,15 m numa rã de 0,30 m); 0,39 m na ficha atual. Base da revisão anterior: estimadas no animal real (0,12 e 0,15 m), sem fonte, e escaladas; a largura decide a área (D-147, D-174)"
     },
     {
       "campo": "corpo.massa",
       "motivo": "Era 159,5 kg (antes, 192). Gigante pelo cubo, com o tamanho do site e a massa saindo dele (`pedido-v6-site.md`): massa típica da base × (L do gigante ÷ L da base)³, comprimento total com comprimento total = 0,947225 × (1,80 ÷ 0,5057)³ = 0,947225 × 45,08 = 42,70 kg; k = 3,56. Base típica : machos 1.082,33 ± 576,91 g com 22,35 ± 4,60 cm rostro-cloacais (n = 55) e fêmeas 812,12 ± 285,57 g com 21,11 ± 3,09 cm (n = 55), 139 rãs trazidas por pescadores em três sítios do departamento de Moungo, Camarões, de outubro de 2021 a novembro de 2022 (Moumegni Monthe, Tekounegning Tiogue, Ngoula e Tchoumboue 2023, International Journal of Aquaculture Research and Development 1(3), tabela 1); média simples das duas massas, 947,2 g, e dos dois comprimentos, 21,73 cm, da mesma fonte e da mesma população (os 29 jovens de sexo indefinido ficam fora). Era a rã-golias grande de 3 kg (no alto da amostra de 15 animais de 0,6 a 3,25 kg; Wikipédia e ADW) com k = 4. Faixa do adulto: até 2.529 g e 33,5 cm na mesma amostra; 0,6 a 3,25 kg na amostra de 15 (Wikipédia), com o mais pesado verificado de 3,305 kg; no gigante (× 45,08), de 27 a 147 kg para 0,6 a 3,25 kg. Sexos (o macho pesa 33% mais que a fêmea na média de Camarões): macho 1,082 kg na base, 48,8 kg no gigante; fêmea 0,812 kg na base, 36,6 kg no gigante. A Wikipédia (\"mínima\") e a ADW (\"sexos iguais\") dão diferença pequena; a AmphibiaWeb, pelo resumo de busca, dá machos de 1,5 a 2,7 kg e fêmeas de 0,6 a 3,3 kg (Sabater-Pi 1985). `calc6.mjs`; o corte de 35 kg (decisão 22) fica 7,7 kg abaixo"
-    },
-    {
-      "campo": "ataques.Língua",
-      "motivo": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
     },
     {
       "campo": "corpo",

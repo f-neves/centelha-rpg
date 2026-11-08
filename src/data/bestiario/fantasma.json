@@ -88,7 +88,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "O toque gélido que atravessa a armadura (site), gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site gravava impacto. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

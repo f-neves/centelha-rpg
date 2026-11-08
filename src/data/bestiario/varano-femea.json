@@ -101,7 +101,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
+      "justificativa": "Os dentes serrilhados perfuram e rasgam a carne quando o varano puxa a cabeça."
     }
   ],
   "habilidadesEspeciais": [
@@ -217,6 +217,10 @@
     {
       "campo": "corpo.largura",
       "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,23 × 1,0260 = 0,236 . Antes: Principal: 0,29 m, estimada (não achada). Escalada pelo cubo da massa: 0,29 × 0,807 = 0,23"
+    },
+    {
+      "campo": "ataques.Mordida (morde e rasga)",
+      "motivo": "Perfuração pela regra do dente; o serrilhado que rasga pode pedir Corte. N0 pela mordida de 39 N, que é de modelo do crânio e não de animal vivo (Fry 2009) (D-174)"
     }
   ]
 }

@@ -17,6 +17,7 @@ const M = await carregarTS('src/lib/motor.ts');
 const REGRAS = JSON.parse(fs.readFileSync('src/data/regras.json', 'utf8'));
 
 const falhas = [];
+const J = JSON.stringify;
 const ok = (c, m) => { if (!c) falhas.push(m); console.log((c ? '  ✓ ' : '  ✘ ') + m); };
 const E = REGRAS.combate?.escalaPorTamanho;
 ok(E?.dadosPorCategoriaAcima === 1 && E?.bonusPorCategoriaAbaixo === -2, 'regras.json: +1d6 por categoria acima e −2 por categoria abaixo do Médio');
@@ -61,8 +62,26 @@ ok(!criaturaParaLeituraSchema.safeParse(errado).success, 'o esquema recusa um Ta
 const va = M.vistaPublicaCriatura(base).motor.stat.ataques[i], vg = M.vistaPublicaCriatura(grande).motor.stat.ataques[i];
 ok(/^2d6/.test(va.dano) && /^3d6/.test(vg.dano) && va.pool === vg.pool, `vista: o Montante Grande dá ${vg.dano} contra ${va.dano}, com a mesma jogada (${va.pool})`);
 
-const usam = fs.readdirSync('src/data/bestiario').filter((f) => JSON.parse(fs.readFileSync('src/data/bestiario/' + f, 'utf8')).ataques.some((a) => a.tamanho));
-ok(usam.length === 0, `nenhuma ficha publicada usa o tamanho da arma (${usam.length})`);
+// Desde o lote r-listas-07-11, oito fichas usam o tamanho da arma, em 13 ataques (as Variantes de gigante e as rochas).
+const comTam = fs.readdirSync('src/data/bestiario').map((f) => JSON.parse(fs.readFileSync('src/data/bestiario/' + f, 'utf8'))).filter((c) => c.ataques.some((a) => a.tamanho));
+const nTam = comTam.reduce((n, c) => n + c.ataques.filter((a) => a.tamanho).length, 0);
+ok(J(comTam.map((c) => c.id).sort()) === J(['ciclope', 'ettin', 'gigante-da-colina', 'gigante-da-pedra', 'gigante-das-nuvens', 'gigante-do-fogo', 'gigante-do-gelo', 'ogro']) && nTam === 13, `as oito fichas do lote usam o tamanho da arma, em ${nTam} ataques`);
+
+// O conversor lê o Tamanho da arma na coluna Parte ("arma Grande", "rocha Enorme, 60 kg"); o Médio não grava nada.
+// A ficha de exemplo é a do ogro do lote r-listas-07-11 (scripts/fixtures/conversor/ogro-g1.md).
+{
+  const { converterFicha } = await import('./conversor-criatura.mjs');
+  const OGRO = fs.readFileSync('scripts/fixtures/conversor/ogro-g1.md', 'utf8');
+  const SITE = JSON.parse(fs.readFileSync('src/data/bestiario/ogro.json', 'utf8'));
+  const tam = (md) => converterFicha(md, { site: SITE }).criatura.ataques.filter((x) => x.arma).map((x) => x.tamanho ?? 'sem');
+  if (!/\| arma Grande \|/.test(OGRO)) throw new Error('a ficha de exemplo não tem mais "arma Grande" na Parte');
+  ok(J(tam(OGRO)) === J(['grande', 'grande']), `o conversor lê "arma Grande": ${J(tam(OGRO))}`);
+  for (const [w, esp] of [['Média', 'sem'], ['Pequena', 'pequeno'], ['Enorme', 'enorme'], ['Miúda', 'miudo']]) {
+    const v = tam(OGRO.replaceAll('| arma Grande |', `| arma ${w} |`));
+    ok(J(v) === J([esp, esp]), `"arma ${w}" dá ${J(v)} (esperado ${esp})`);
+  }
+  ok(J(tam(OGRO.replaceAll('| arma Grande |', '| arma |'))) === J(['sem', 'sem']), 'sem Tamanho na Parte, a arma é a comum');
+}
 
 if (falhas.length) { console.error(`✘ test-escala-tamanho: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('✓ test-escala-tamanho · a arma de outro tamanho muda só o dado base, +1d6 acima e −2 abaixo do Médio (G1, D-363)');

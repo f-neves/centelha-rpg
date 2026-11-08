@@ -106,7 +106,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote de boca pequena: Leve (seção 7). Força 0 tira a parte da Força do dano (D-115). Quem mata é o veneno (até 420 mg de veneno seco por picada, Thomas e Griessel 1999), sem id no catálogo (ver Veneno). Força de mordida não achada: N0. Um ataque por ação (D-097)."
+      "justificativa": "As presas inoculam o veneno quando o bote causa ao menos 1 PV depois da Absorção."
     }
   ],
   "habilidadesEspeciais": [
@@ -232,7 +232,7 @@
   "revisao": [
     {
       "campo": "corpo.altura",
-      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,04 × 1,0311 = 0,037 . Antes: Era 0,04 m, o diâmetro do macho (cilindro de 4,5 kg em 3,5 m, densidade 1.050 kg/m³, o método do Arquiteto na jararaca e na jiboia). Escalado pelo cubo da massa: 0,04 × (3,375 ÷ 4,5)^(1/3) = 0,04 × 0,909 = 0,036 m"
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,04 × 1,0311 = 0,037 . Antes: Era 0,04 m, o diâmetro do macho (cilindro de 4,5 kg em 3,5 m, densidade 1.050 kg/m³, o método do Arquiteto na jararaca e na jiboia). Escalado pelo cubo da massa: 0,04 × (3,375 ÷ 4,5)^(1/3) = 0,04 × 0,909 = 0,036 m; 0,04 m na ficha atual. Base da revisão anterior: 0,036 m, o diâmetro estimado para o macho (0,04 m, cilindro de 4,5 kg em 3,5 m) escalado pelo cubo da massa, sem fonte (D-147, D-174)"
     },
     {
       "campo": "corpo.comprimento",
@@ -240,7 +240,7 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,04 × 1,0311 = 0,037 . Antes: igual ao diâmetro; era 0,04 m (o macho), escalado pelo cubo da massa"
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,04 × 1,0311 = 0,037 . Antes: igual ao diâmetro; era 0,04 m (o macho), escalado pelo cubo da massa; 0,04 m na ficha atual. Base da revisão anterior: 0,036 m, o diâmetro estimado para o macho (0,04 m, cilindro de 4,5 kg em 3,5 m) escalado pelo cubo da massa, sem fonte (D-147, D-174)"
     },
     {
       "campo": "corpo.area",

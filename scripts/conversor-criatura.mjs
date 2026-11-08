@@ -414,7 +414,11 @@ function converter(texto, { site = null }, schema) {
       const w = ARMAS.find((x) => x.id === arma);
       const pgrCol = String(r['P/G/R'] ?? '').match(/(\d+)\/(\d+)\/(\d+)/), vel = inteiro(r['Velocidade']);
       if (pgrCol && vel !== undefined && +pgrCol[1] + +pgrCol[2] + +pgrCol[3] !== vel) avisos.push(`${onde}, ${nome}: a coluna P/G/R (${pgrCol.slice(1).join('/')}) não soma a Velocidade ${vel}; a arma do livro usa a do catálogo (${w.arma.ticks})`);
-      return comJust({ nome, arma });
+      // G1 (D-363): a arma de outro tamanho diz o Tamanho dela na coluna Parte ("arma Grande", "rocha Enorme, 60 kg"); o Médio
+      // é a arma comum e não grava nada. Fora disso, a arma do livro guarda só o nome, a arma e a Habilidade (D-220).
+      const mt = semMarcas(r['Parte'] ?? '').match(/\b(Minúscul[oa]|Miúd[oa]|Pequen[oa]|Médi[oa]|Grande|Enorme|Imens[oa]|Colossal)\b/);
+      const tam = mt ? slug(mt[1]).replace(/a$/, (x) => (/^(grande|enorme|colossal)$/.test(slug(mt[1])) ? x : 'o')) : null;
+      return { ...comJust({ nome, arma }), ...(tam && tam !== 'medio' ? { tamanho: tam } : {}) };
     }
     // a parte é o pedaço do corpo; o resto da célula diz como o golpe sai ("boca, à distância")
     const a = { nome, parte: slug(semMarcas(r['Parte'] ?? '').split(',')[0]) };

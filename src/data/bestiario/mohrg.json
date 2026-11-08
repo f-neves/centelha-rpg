@@ -87,7 +87,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço de osso que bate e agarra com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Duas por ação, pela Rajada (\"golpeia com as duas mãos\", site). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "Golpeia com as mãos ossudas e agarra a vítima. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Língua",
@@ -104,7 +104,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "\"Um toque de sua língua apodrecida paralisa a vítima\" (site): gesto rápido de boca, Leve (`regra-construcao.md` §7); não fere, só leva a paralisia (Manobras). Jogada: Destreza 5 e Força 6, a maior (D-208): Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O toque da língua transmite a paralisia sem causar dano. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     }
   ],
   "habilidadesEspeciais": [

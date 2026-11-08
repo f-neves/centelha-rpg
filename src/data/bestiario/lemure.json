@@ -98,9 +98,17 @@
     {
       "nome": "Regeneração 1",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de fogo, ácido ou arma benta só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
+      "fraqueza": {
+        "forma": "naoRegenera",
+        "tipos": [
+          "fogo",
+          "ácido",
+          "arma abençoada"
+        ]
+      },
+      "texto": "Origem sobrenatural. O dano de fogo, ácido ou arma abençoada só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 1 PV por minuto, até o máximo de PV. Em combate, recupera 0,1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     }
   ],
   "comoLuta": [

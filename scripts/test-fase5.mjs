@@ -328,10 +328,12 @@ for(const [id,[def,vest]] of Object.entries(esperado)){const c=JSON.parse(fs.rea
 const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));for(const [id,[def]] of Object.entries(esperado))assert.equal(mesa.find(m=>m.id===id).combate.defesa,def,id+' na mesa');
 // O chifre do minotauro bloqueia como arma (+1), e desde a P23 (30/10/2026) soma mesmo com o machado nas duas mãos.
 const mino=JSON.parse(fs.readFileSync('src/data/bestiario/minotauro.json','utf8'));assert.equal(mino.ataques.find(a=>a.nome==='Chifrada').bloqueiaComoArma,1);
-// E só as seis: nenhuma outra criatura empunha arma de duas mãos de corpo a corpo com Defesa da arma negativa.
+// E só estas: as seis, e desde o lote r-listas-07-11 (G1, D-363) os gigantes com a arma de duas mãos do catálogo no
+// Tamanho deles (ciclope, gigante-da-colina, gigante-do-fogo, gigante-do-gelo e ogro).
+const GIGANTES_G1=['ciclope','gigante-da-colina','gigante-do-fogo','gigante-do-gelo','ogro'];
 const A=JSON.parse(fs.readFileSync('src/data/armas.json','utf8'));const W=Object.fromEntries(A.map(w=>[w.id,w.arma]));
 const com=fs.readdirSync('src/data/bestiario').map(f=>JSON.parse(fs.readFileSync('src/data/bestiario/'+f,'utf8'))).filter(c=>[c.ataques,...(c.formas||[]).map(f=>f.ataques||[])].some(l=>l.some(a=>a.arma&&W[a.arma]?.maos===2&&W[a.arma]?.classe!=='distancia'&&W[a.arma].defesaArma<0))).map(c=>c.id).sort();
-assert.deepEqual(com,Object.keys(esperado).sort());
+assert.deepEqual(com,[...Object.keys(esperado),...GIGANTES_G1].sort());
 // O Bloqueio da linha "Com o equipamento" leva a arma das mãos, como a Defesa ao lado: o arconte não diz mais
 // "Bloqueio 20" ao lado de "Defesa 18"; e em todo card com equipamento a Defesa é o maior dos dois números à vista.
 const vest=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8')).filter(m=>m.combate.vestida);assert.equal(vest.length,14);
@@ -361,7 +363,7 @@ const vista=(id)=>{const c=JSON.parse(fs.readFileSync(`src/data/bestiario/${id}.
 const [rm,mi]=vista('minotauro');assert.equal(rm.bloqueio,8);assert.equal(mi.defesa,rm.bloqueio-2+1,'minotauro: Bloqueio 8, −2 do machado, +1 do chifre');assert.equal(mi.defesa,7);assert.equal(mi.defesaOutraArma,undefined,'o minotauro não tem outra arma do catálogo');
 const [rs,so]=vista('solar');assert.equal(rs.bloqueio,24);assert.equal(so.defesa,22,'solar com o montante');assert.deepEqual(so.defesaOutraArma,{arma:'Arco longo',armaPrincipal:'Montante',bloqueio:24,defesa:24},'solar de arco, sem o −2');
 for(const id of ['arconte-trombeta','planetar','cavaleiro-de-elite','bruto'])assert.equal(vista(id)[1].defesaOutraArma,undefined,id);
-const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const outras=mon.filter(m=>m.combate.defesaOutraArma).map(m=>m.id).sort();assert.deepEqual(outras,['merfolk','solar'],'as criaturas com duas Defesas por arma');
+const mon=JSON.parse(fs.readFileSync('src/data/monsters.json','utf8'));const outras=mon.filter(m=>m.combate.defesaOutraArma).map(m=>m.id).sort();assert.deepEqual(outras,['ciclope','gigante-da-colina','gigante-do-fogo','gigante-do-gelo','merfolk','solar'],'as criaturas com duas Defesas por arma (os quatro gigantes de arma de duas mãos e rocha, G1, D-363)');
 const mesa=JSON.parse(fs.readFileSync('src/data/monsters-mesa.json','utf8'));assert.equal(mesa.find(m=>m.id==='solar').combate.defesa,22,'a mesa usa a do primeiro ataque, o montante');assert.equal(mesa.find(m=>m.id==='minotauro').combate.defesa,7);
 for(const f of ['src/components/BestaCard.astro','src/components/FormaCriatura.astro'])assert.match(fs.readFileSync(f,'utf8'),/\{i\.combate\.defesaOutraArma && <><small> c\/ \{i\.combate\.defesaOutraArma\.armaPrincipal\}<\/small> · \{i\.combate\.defesaOutraArma\.defesa\}<small> c\/ \{i\.combate\.defesaOutraArma\.arma\}<\/small><\/>\}/,f);
 const MB=await carregarTS('src/lib/mesa-bestiario.ts');const h=MB.cardCriaturaHTML(mon.find(m=>m.id==='solar'));assert.match(h,/<dt>Defesa<\/dt><dd>22 <small>\(c\/ Montante; c\/ Arco longo: 24\)<\/small><\/dd>/);

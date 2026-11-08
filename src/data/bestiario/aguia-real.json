@@ -112,7 +112,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Golpe rápido de membro. Garra do hálux de 4,5 a 6,34 cm (Bortolotti, via Wikipédia). A Força não muda: segue 3,5"
+      "justificativa": "Prende a presa com os talões."
     },
     {
       "nome": "Bico",
@@ -129,7 +129,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Bico em gancho, que rasga a presa já presa. Segue 3,5"
+      "justificativa": "Rasga com o bico curvo a presa que já segurou."
     }
   ],
   "habilidadesEspeciais": [
@@ -240,6 +240,10 @@
     {
       "campo": "atributos.forca",
       "motivo": "Fixada em `valores.mjs` (D-158). A garra fere e segura presa do tamanho de uma raposa; leva até 3,6 kg em voo (ADW, 8 libras, sem método) e já matou um cervo-sika jovem de 40 a 45 kg, oito vezes a massa dela (Kerley e Slaght 2013, via reportagem). A Força de referência de 5 kg é 1,9 (a de 4,35 kg, 1,67 ): a águia fica nela. Abaixo do lobo (3)"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,3 m na ficha atual. Base da revisão anterior: 0,30 m, estimada pelo Arquiteto, sem fonte"
     }
   ]
 }

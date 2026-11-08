@@ -56,7 +56,7 @@
     ],
     "armas": [
       {
-        "foco": "lança, debaixo d'água",
+        "foco": "tridente, debaixo d'água",
         "valor": 1,
         "origem": "livro"
       }
@@ -88,9 +88,9 @@
   "artes": {},
   "ataques": [
     {
-      "nome": "Lança",
-      "arma": "lanca",
-      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+      "nome": "Tridente",
+      "arma": "tridente",
+      "justificativa": "Estoca com as três pontas do tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     },
     {
       "nome": "Garras",
@@ -107,7 +107,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem a lança. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem o tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
     }
   ],
   "habilidadesEspeciais": [
@@ -158,7 +158,7 @@
     {
       "nome": "incursão das ondas",
       "formas": "todas",
-      "texto": "chega com os tubarões, ataca o barco ou a vila da costa com a lança, entra em fúria quando ferido e volta para o fundo com os presos."
+      "texto": "chega com os tubarões, ataca o barco ou a vila da costa com o tridente, entra em fúria quando ferido e volta para o fundo com os presos."
     }
   ],
   "sentidos": [
@@ -201,7 +201,7 @@
       "tropical"
     ]
   },
-  "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com lanças e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
+  "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com tridentes e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
   "lore": [
     {
       "titulo": "Impérios sob as ondas",
@@ -240,10 +240,6 @@
     {
       "campo": "comportamento.dieta",
       "motivo": ""
-    },
-    {
-      "campo": "equipamento",
-      "motivo": "lança no lugar do tridente"
     },
     {
       "campo": "virtudes",

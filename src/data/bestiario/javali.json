@@ -111,7 +111,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O golpe de cabeça de baixo para cima com o corpo atrás (seção 7 da regra). Caninos de cima de 5 a 10 cm (ADW) e de baixo com 10 a 12 cm expostos (Wikipédia): presa é Perfuração; sem força medida, N0. Fere sobretudo pernas e pés, e as mortes vêm da perda de sangue (Mayer 2013). A Força não muda: fica 1d6 + 5, média 8,5."
+      "justificativa": "Ergue a cabeça e crava as presas de baixo para cima."
     },
     {
       "nome": "Investida",
@@ -128,7 +128,7 @@
       "nivelPerfuracao": null,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
+      "justificativa": "Na ação de Investida, some a Força mais uma vez ao dano."
     }
   ],
   "habilidadesEspeciais": [
@@ -261,7 +261,7 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,40 × 1,0338 = 0,414 . Antes: estimativa do Arquiteto, sem dizer de qual sexo; não se escala"
+      "motivo": "Recalculado na Etapa 2 (20/10/2026): Escalada pelo cubo da massa nova: 0,40 × 1,0338 = 0,414 . Antes: estimativa do Arquiteto, sem dizer de qual sexo; não se escala; 0,41 m na ficha atual. Base da revisão anterior: 0,40 m, estimada pelo Arquiteto, sem fonte; o Alvo sai da silhueta de lado (D-147, D-174)."
     }
   ]
 }

@@ -3629,12 +3629,12 @@
     "ameaca": 1,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o cajado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
+    "descricao": "Lavrador sem treino que não escolheu lutar: foi arrastado por um senhor, um bando ou a fome. Segura o forcado tremendo, grita mais do que golpeia e corre ao primeiro sangue.",
     "tags": [
       "humanoide"
     ],
     "pv": 31,
-    "defesa": 6,
+    "defesa": 5,
     "defesaMental": 10,
     "defesaSocial": 6,
     "vontade": 4,
@@ -3658,17 +3658,17 @@
     },
     "ataques": [
       {
-        "nome": "Bordão",
+        "nome": "Forcado",
         "atrib": "forca",
         "pericia": "armas",
         "dado": 1,
-        "tipo": "impacto",
+        "tipo": "perfurante",
         "classe": "haste",
         "ticks": 6,
-        "acerto": 1,
-        "pool": "1d6+2 +1",
-        "dano": "1d6 +4 (I)",
-        "perfArma": null,
+        "acerto": 0,
+        "pool": "1d6+2",
+        "dano": "1d6 +4 (P) · perf. 0",
+        "perfArma": 0,
         "forcaInvestida": 2
       }
     ],
@@ -4846,7 +4846,7 @@
       "gigante"
     ],
     "pv": 54,
-    "defesa": 8,
+    "defesa": 6,
     "defesaMental": 12,
     "defesaSocial": 4,
     "vontade": 6,
@@ -4884,13 +4884,27 @@
         "forcaInvestida": 9
       },
       {
+        "nome": "Martelo de Guerra",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 3,
+        "tipo": "impacto",
+        "classe": "pesada",
+        "ticks": 7,
+        "acerto": 0,
+        "pool": "7d6 +2",
+        "dano": "3d6 +19 (I)",
+        "perfArma": null,
+        "forcaInvestida": 9
+      },
+      {
         "nome": "Rocha arremessada",
         "atrib": "forca",
         "pericia": "arremesso",
         "dado": 2,
         "tipo": "impacto",
-        "classe": "pesada",
-        "ticks": 7,
+        "classe": "arremesso",
+        "ticks": 6,
         "acerto": 0,
         "pool": "6d6 +2",
         "dano": "2d6 +10 (I)",
@@ -4900,6 +4914,12 @@
     ],
     "tecnicas": [],
     "artes": [],
+    "defesaOutraArma": {
+      "arma": "Rocha arremessada",
+      "armaPrincipal": "Martelo de Guerra",
+      "bloqueio": 8,
+      "defesa": 8
+    },
     "pericias": {
       "prontidao": 2,
       "furtividade": 0,
@@ -8135,17 +8155,17 @@
     },
     "ataques": [
       {
-        "nome": "Lâmina leve",
+        "nome": "Florete",
         "atrib": "destreza",
         "pericia": "armas",
         "dado": 1,
-        "tipo": "corte",
+        "tipo": "perfurante",
         "classe": "leve",
         "ticks": 5,
         "acerto": 2,
         "pool": "5d6 +8",
-        "dano": "1d6 +4 (C)",
-        "perfArma": null,
+        "dano": "1d6 +4 (P) · perf. 1",
+        "perfArma": 1,
         "forcaInvestida": 3
       }
     ],
@@ -10173,7 +10193,7 @@
       "gigante"
     ],
     "pv": 50,
-    "defesa": 6,
+    "defesa": 7,
     "defesaMental": 9,
     "defesaSocial": 8,
     "vontade": 5,
@@ -10206,6 +10226,20 @@
         "ticks": 7,
         "acerto": 0,
         "pool": "6d6",
+        "dano": "2d6 +8 (I)",
+        "perfArma": null,
+        "forcaInvestida": 8
+      },
+      {
+        "nome": "Maça",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 2,
+        "tipo": "impacto",
+        "classe": "media",
+        "ticks": 6,
+        "acerto": 1,
+        "pool": "6d6 +1",
         "dano": "2d6 +8 (I)",
         "perfArma": null,
         "forcaInvestida": 8
@@ -11465,7 +11499,7 @@
       "gigante"
     ],
     "pv": 54,
-    "defesa": 8,
+    "defesa": 6,
     "defesaMental": 12,
     "defesaSocial": 10,
     "vontade": 6,
@@ -11503,13 +11537,27 @@
         "forcaInvestida": 9
       },
       {
+        "nome": "Martelo de Guerra",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 3,
+        "tipo": "impacto",
+        "classe": "pesada",
+        "ticks": 7,
+        "acerto": 0,
+        "pool": "7d6 +2",
+        "dano": "3d6 +19 (I)",
+        "perfArma": null,
+        "forcaInvestida": 9
+      },
+      {
         "nome": "Rocha arremessada",
         "atrib": "forca",
         "pericia": "arremesso",
         "dado": 2,
         "tipo": "impacto",
-        "classe": "pesada",
-        "ticks": 7,
+        "classe": "arremesso",
+        "ticks": 6,
         "acerto": 0,
         "pool": "6d6 +2",
         "dano": "2d6 +10 (I)",
@@ -11519,6 +11567,12 @@
     ],
     "tecnicas": [],
     "artes": [],
+    "defesaOutraArma": {
+      "arma": "Rocha arremessada",
+      "armaPrincipal": "Martelo de Guerra",
+      "bloqueio": 8,
+      "defesa": 8
+    },
     "pericias": {
       "prontidao": 1,
       "furtividade": 0,
@@ -11542,7 +11596,7 @@
     "ameaca": 5,
     "centelha": 0,
     "conceito": "",
-    "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas a até 45 m com precisão mortal e anda entre as rochas sem ser notado.",
+    "descricao": "Gigante recluso das montanhas, de pele da cor da pedra, que esculpe as próprias cavernas e medita por longos períodos. Pacífico até ser provocado; então arremessa rochas de 30 kg com precisão mortal e anda entre as rochas sem ser notado.",
     "tags": [
       "gigante"
     ],
@@ -11590,8 +11644,8 @@
         "pericia": "arremesso",
         "dado": 2,
         "tipo": "impacto",
-        "classe": "pesada",
-        "ticks": 7,
+        "classe": "arremesso",
+        "ticks": 6,
         "acerto": 0,
         "pool": "6d6+2",
         "dano": "2d6 +9 (I)",
@@ -11737,13 +11791,13 @@
         "nome": "Rocha arremessada",
         "atrib": "forca",
         "pericia": "arremesso",
-        "dado": 2,
+        "dado": 3,
         "tipo": "impacto",
-        "classe": "pesada",
-        "ticks": 7,
+        "classe": "arremesso",
+        "ticks": 6,
         "acerto": 0,
         "pool": "7d6+2 +4",
-        "dano": "2d6 +14 (I)",
+        "dano": "3d6 +14 (I)",
         "perfArma": null,
         "forcaInvestida": 0
       }
@@ -11778,7 +11832,7 @@
       "gigante"
     ],
     "pv": 62,
-    "defesa": 8,
+    "defesa": 6,
     "defesaMental": 14,
     "defesaSocial": 6,
     "vontade": 6,
@@ -11816,13 +11870,27 @@
         "forcaInvestida": 10
       },
       {
+        "nome": "Montante",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 3,
+        "tipo": "corte",
+        "classe": "pesada",
+        "ticks": 7,
+        "acerto": 0,
+        "pool": "7d6+2 +2",
+        "dano": "3d6 +21 (C)",
+        "perfArma": null,
+        "forcaInvestida": 10
+      },
+      {
         "nome": "Rocha arremessada",
         "atrib": "forca",
         "pericia": "arremesso",
         "dado": 2,
         "tipo": "impacto",
-        "classe": "pesada",
-        "ticks": 7,
+        "classe": "arremesso",
+        "ticks": 6,
         "acerto": 0,
         "pool": "6d6+2 +2",
         "dano": "2d6 +11 (I)",
@@ -11834,8 +11902,8 @@
     "artes": [],
     "vestida": {
       "esquiva": 1,
-      "bloqueio": 5,
-      "defesa": 5,
+      "bloqueio": 3,
+      "defesa": 3,
       "contraTiro": 1,
       "absorcao": {
         "impacto": 14,
@@ -11844,6 +11912,13 @@
       },
       "nivel": 2,
       "penalidade": 3
+    },
+    "defesaOutraArma": {
+      "arma": "Rocha arremessada",
+      "armaPrincipal": "Montante",
+      "bloqueio": 8,
+      "defesa": 8,
+      "vestida": 5
     },
     "pericias": {
       "prontidao": 2,
@@ -11868,12 +11943,12 @@
     "ameaca": 5,
     "centelha": 1,
     "conceito": "",
-    "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas a 36 m e corta com um machado descomunal. O frio não o fere.",
+    "descricao": "Gigante de 4,3 m, violento e orgulhoso, que vive em clãs sob um jarl e saqueia as montanhas geladas. Caça com lobos adestrados, some na neve, atira rochas de 30 kg e corta com um machado descomunal. O frio não o fere.",
     "tags": [
       "gigante"
     ],
     "pv": 58,
-    "defesa": 8,
+    "defesa": 6,
     "defesaMental": 13,
     "defesaSocial": 6,
     "vontade": 6,
@@ -11911,13 +11986,27 @@
         "forcaInvestida": 10
       },
       {
+        "nome": "Machado Pesado",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 3,
+        "tipo": "corte",
+        "classe": "pesada",
+        "ticks": 7,
+        "acerto": 0,
+        "pool": "7d6+2 +2",
+        "dano": "3d6 +21 (C)",
+        "perfArma": null,
+        "forcaInvestida": 10
+      },
+      {
         "nome": "Rocha arremessada",
         "atrib": "forca",
         "pericia": "arremesso",
         "dado": 2,
         "tipo": "impacto",
-        "classe": "pesada",
-        "ticks": 7,
+        "classe": "arremesso",
+        "ticks": 6,
         "acerto": 0,
         "pool": "6d6+2 +2",
         "dano": "2d6 +11 (I)",
@@ -11927,6 +12016,12 @@
     ],
     "tecnicas": [],
     "artes": [],
+    "defesaOutraArma": {
+      "arma": "Rocha arremessada",
+      "armaPrincipal": "Machado Pesado",
+      "bloqueio": 8,
+      "defesa": 8
+    },
     "pericias": {
       "prontidao": 1,
       "furtividade": 1,
@@ -17538,7 +17633,7 @@
     "ameaca": 1,
     "centelha": 1,
     "conceito": "",
-    "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com lança e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
+    "descricao": "Povo do mar de torso humano e cauda de peixe, rápido na água e quase parado em terra. Luta com tridente e besta, guarda um segredo nas profundezas e afasta navegantes dos seus domínios.",
     "tags": [
       "humanoide"
     ],
@@ -17567,7 +17662,7 @@
     },
     "ataques": [
       {
-        "nome": "Lança",
+        "nome": "Tridente",
         "atrib": "forca",
         "pericia": "armas",
         "dado": 1,
@@ -17581,7 +17676,7 @@
         "forcaInvestida": 3
       },
       {
-        "nome": "Besta média",
+        "nome": "Besta Média",
         "atrib": "percepcao",
         "pericia": "atirador",
         "dado": 1,
@@ -17598,8 +17693,8 @@
     "tecnicas": [],
     "artes": [],
     "defesaOutraArma": {
-      "arma": "Besta média",
-      "armaPrincipal": "Lança",
+      "arma": "Besta Média",
+      "armaPrincipal": "Tridente",
       "bloqueio": 10,
       "defesa": 10
     },
@@ -19256,6 +19351,34 @@
         "acerto": 0,
         "pool": "5d6",
         "dano": "2d6 +7 (I)",
+        "perfArma": null,
+        "forcaInvestida": 7
+      },
+      {
+        "nome": "Martelo de Guerra",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 3,
+        "tipo": "impacto",
+        "classe": "pesada",
+        "ticks": 7,
+        "acerto": 0,
+        "pool": "5d6",
+        "dano": "3d6 +14 (I)",
+        "perfArma": null,
+        "forcaInvestida": 7
+      },
+      {
+        "nome": "Machado Pesado",
+        "atrib": "forca",
+        "pericia": "briga",
+        "dado": 3,
+        "tipo": "corte",
+        "classe": "pesada",
+        "ticks": 7,
+        "acerto": 0,
+        "pool": "5d6",
+        "dano": "3d6 +14 (C)",
         "perfArma": null,
         "forcaInvestida": 7
       }
@@ -21704,7 +21827,7 @@
     "ameaca": 2,
     "centelha": 2,
     "conceito": "",
-    "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com lanças e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
+    "descricao": "Homem-peixe dos impérios das trincheiras oceânicas, que ataca a costa com tridentes e tubarões. Ferido, entra num frenesi de sangue, mais forte e descuidado com a própria defesa.",
     "tags": [
       "humanoide-monstruoso"
     ],
@@ -21733,7 +21856,7 @@
     },
     "ataques": [
       {
-        "nome": "Lança",
+        "nome": "Tridente",
         "atrib": "forca",
         "pericia": "armas",
         "dado": 1,
@@ -22372,7 +22495,7 @@
     },
     "ataques": [
       {
-        "nome": "Lança",
+        "nome": "Tridente",
         "atrib": "forca",
         "pericia": "armas",
         "dado": 1,

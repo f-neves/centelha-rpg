@@ -236,16 +236,16 @@
     {
       "nome": "Regeneração 9",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "origem sobrenatural. O dano de arma benta ou fogo só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-      "nome": "arma benta e fogo param a regeneração",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "categoria": "inato",
-      "efeito": "o dano de arma benta ou de fogo não se fecha pela Regeneração"
+      "fraqueza": {
+        "forma": "naoRegenera",
+        "tipos": [
+          "arma abençoada",
+          "fogo"
+        ]
+      },
+      "texto": "Origem sobrenatural. O dano de arma abençoada ou fogo só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 9 PV por minuto, até o máximo de PV. Em combate, recupera 0,9 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "Presença aterradora",

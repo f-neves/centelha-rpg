@@ -97,7 +97,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Bico longo sem dentes, golpe dado com o pescoço inteiro atrás: Média. Ponta do bico não preservada; mordida em N não achada: N0. A Força não muda: segue 8,5"
+      "justificativa": "Projeta o pescoço inteiro para golpear com o bico."
     }
   ],
   "habilidadesEspeciais": [
@@ -205,7 +205,7 @@
     },
     {
       "campo": "corpo.comprimento",
-      "motivo": "Do Arquiteto: o Q. lawsoni (3,5 m do bico à cauda, Paul 2022) na escala do northropi (envergadura de 4,5 para 10,5 m), arredondado para baixo. A cauda é curta e não se separa."
+      "motivo": "Do Arquiteto: o Q. lawsoni (3,5 m do bico à cauda, Paul 2022) na escala do northropi (envergadura de 4,5 para 10,5 m), arredondado para baixo. A cauda é curta e não se separa.; 5 m na ficha atual. Base da revisão anterior: 1,0 m estimada pelo Arquiteto, sem fonte; comprimento: 5,0 m é extrapolação do Q. lawsoni na escala do northropi (D-147, D-174)"
     },
     {
       "campo": "aparencia",
@@ -218,6 +218,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": "presa pequena no chão, como cegonhas e calaus-terrestres (Witton e Naish 2008); Paul 1987 compara com cegonhas que comem rãs e tartarugas"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "1 m na ficha atual. Base da revisão anterior: 1,0 m estimada pelo Arquiteto, sem fonte; comprimento: 5,0 m é extrapolação do Q. lawsoni na escala do northropi (D-147, D-174)"
     }
   ]
 }

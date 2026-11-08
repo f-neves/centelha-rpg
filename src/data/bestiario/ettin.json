@@ -83,6 +83,12 @@
       "acerto": 0,
       "bloqueiaComoArma": null,
       "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 8 + Briga 4"
+    },
+    {
+      "nome": "Maça",
+      "arma": "maca",
+      "justificativa": "Tamanho Grande. Empunha uma maça em cada mão e usa empunhadura dupla.",
+      "tamanho": "grande"
     }
   ],
   "habilidadesEspeciais": [
@@ -205,6 +211,10 @@
     {
       "campo": "comportamento.atividade",
       "motivo": "site (visão no escuro)"
+    },
+    {
+      "campo": "ataques.Maça",
+      "motivo": "Arma Grande de 1 mão: 2d6 de base pelo porte, Força × 1 pela empunhadura. Empunha uma maça em cada mão e usa empunhadura dupla."
     },
     {
       "campo": "corpo.massa",

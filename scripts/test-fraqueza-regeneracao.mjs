@@ -54,8 +54,16 @@ const sem = structuredClone(b.criatura);
 poder({ criatura: sem }, 'Regeneração 4').fraqueza = { forma: 'interrompe', tipos: ['fogo'] };
 ok(criaturaAnteriorR03Schema.safeParse(b.criatura).success && !criaturaAnteriorR03Schema.safeParse(sem).success, 'o esquema aceita o campo e recusa interrompe sem duração');
 
-const usam = fs.readdirSync('src/data/bestiario').filter((f) => JSON.parse(fs.readFileSync('src/data/bestiario/' + f, 'utf8')).habilidadesEspeciais.some((h) => h.fraqueza));
-ok(usam.length === 0, `nenhuma ficha publicada usa o campo ainda (${usam.length}): ele espera o lote da Bestiarista (L18)`);
+// Desde o lote r-listas-07-11 da Bestiarista, 16 fichas trazem o campo, e todos os nomes estão na lista fechada (sem
+// aviso). A fênix, o planetar e o solar ficam de fora até a resposta da Bestiarista ao autor.
+const LISTA = new Set(REGRAS.criatura.fraquezasDaRegeneracao.lista);
+const usam = fs.readdirSync('src/data/bestiario').map((f) => JSON.parse(fs.readFileSync('src/data/bestiario/' + f, 'utf8'))).filter((c) => c.habilidadesEspeciais.some((h) => h.fraqueza));
+const ESPERADAS = ['diabo-barbado', 'diabo-chifrudo', 'diabo-do-fosso-pit-fiend', 'diabrete-imp', 'hidra-5-cabecas', 'kyton', 'lemure', 'linnorm-do-gelo', 'linnorm-dos-lagos', 'linnorm-dos-penhascos', 'marilith', 'ogro-mago-oni', 'quasit', 'tarrasque', 'trol', 'vampiro'];
+ok(J(usam.map((c) => c.id).sort()) === J(ESPERADAS), `as 16 fichas do lote trazem o campo (${usam.length})`);
+ok(usam.every((c) => c.habilidadesEspeciais.filter((h) => h.fraqueza).every((h) => h.fraqueza.tipos.every((t) => LISTA.has(t)))), 'todos os tipos estão na lista fechada');
+const tarr = usam.find((c) => c.id === 'tarrasque')?.habilidadesEspeciais.find((h) => h.fraqueza)?.fraqueza;
+ok(J(tarr) === J({ forma: 'interrompe', tipos: ['fogo', 'ácido'], duracao: '6 Ticks' }), `o tarrasque: o atrasar é a primeira forma, com 6 Ticks (G5): ${J(tarr)}`);
+ok(['fenix', 'planetar', 'solar'].every((id) => JSON.parse(fs.readFileSync(`src/data/bestiario/${id}.json`, 'utf8')).habilidadesEspeciais.every((h) => !h.fraqueza)), 'fênix, planetar e solar seguem como estavam (segurados)');
 
 if (falhas.length) { console.error(`✘ test-fraqueza-regeneracao: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('✓ test-fraqueza-regeneracao · o campo da fraqueza nas duas formas da R47, com a lista fechada e o aviso (G5, D-367)');

@@ -97,16 +97,16 @@
     {
       "nome": "Regeneração 5",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-      "nome": "fogo e ácido param a regeneração",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "categoria": "inato",
-      "efeito": "o dano de fogo ou de ácido não se fecha pela Regeneração"
+      "fraqueza": {
+        "forma": "naoRegenera",
+        "tipos": [
+          "fogo",
+          "ácido"
+        ]
+      },
+      "texto": "Origem natural. O dano de fogo ou ácido só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente. Recupera 5 PV por minuto, até o máximo de PV. Em combate, recupera 0,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "cabeças que rebrotam",

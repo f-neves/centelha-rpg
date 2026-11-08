@@ -86,7 +86,7 @@
     {
       "nome": "Azagaia",
       "arma": "azagaia",
-      "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Arremesso é sempre Destreza (`combate.md`). Jogada: Destreza 4 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
+      "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Pode usar Força ou Destreza. Jogada: Força 7 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
     },
     {
       "nome": "Coice",

@@ -121,7 +121,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Força de mordida de cerca de 13 N (Nies e Ro 2004, citado por Cox 2015): N0. Mordidas reais em gente: 61% perfurações, 14% lacerações de menos de 1 cm (Ordog 1985). Um ataque por ação (D-097)"
+      "justificativa": "Os ratos mordem quem está dentro do enxame. A Absorção conta contra o pulso."
     }
   ],
   "habilidadesEspeciais": [
@@ -244,6 +244,10 @@
     {
       "campo": "comportamento.dieta",
       "motivo": "ficha antiga; ADW"
+    },
+    {
+      "campo": "corpo.largura",
+      "motivo": "0,06 m na ficha atual. Base da revisão anterior: 0,06 m, estimada pelo Arquiteto, sem fonte; a altura de 0,08 m também é estimativa"
     }
   ]
 }

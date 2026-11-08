@@ -110,7 +110,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Era 1d6 + 7, média 10,5 (sexta rodada), e 1d6 + 9, média 12,5. 3,5 + 5, com a Força 5 (D-115). Média: a mordida de bicho grande (seção 7). Força de mordida não achada: N0."
+      "justificativa": "Fecha as mandíbulas sobre a presa."
     },
     {
       "nome": "Chicotada de cauda",
@@ -127,7 +127,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Era 1d6 − 2 + 7, média 8,5 (sexta rodada), e 1d6 − 2 + 9, média 10,5. 1,5 + 5, com a Força 5 (D-115). A cauda chicoteia na exibição (Wikipédia). Leve: a cauda é fina e rápida, e não uma clava (seção 7); Força × 1, porque não é o corpo inteiro que empurra."
+      "justificativa": "Chicoteia com a ponta fina da cauda."
     }
   ],
   "habilidadesEspeciais": [
@@ -231,11 +231,11 @@
   "revisao": [
     {
       "campo": "corpo.altura",
-      "motivo": "Era 0,80 m. Escalada pela razão dos comprimentos: 0,80 × (4 ÷ 8,5) = 0,376 m (0,08 m estimados no real × 4,71)"
+      "motivo": "Era 0,80 m. Escalada pela razão dos comprimentos: 0,80 × (4 ÷ 8,5) = 0,376 m (0,08 m estimados no real × 4,71); 0,38 m na ficha atual. Base da revisão anterior: estimadas no animal real (0,08 e 0,06 m), sem fonte, e escaladas (D-147, D-174)"
     },
     {
       "campo": "corpo.comprimento",
-      "motivo": "Era 8,50 m. O comprimento da ficha atual do Centelha (decisão do Arquiteto); 0,85 m do real (ADW) × 4,71"
+      "motivo": "Era 8,50 m. O comprimento da ficha atual do Centelha (decisão do Arquiteto); 0,85 m do real (ADW) × 4,71; 4 m na ficha atual. Base da revisão anterior: 4 m, o da ficha atual; a massa sai dele (66,2 kg) e não dos 900 kg da ficha atual, que pediriam cerca de 9,5 m. Era 8,5 m (D-105, D-174; sexta rodada, seção 3)"
     },
     {
       "campo": "corpo.comprimentoSemCauda",
@@ -243,7 +243,7 @@
     },
     {
       "campo": "corpo.largura",
-      "motivo": "Era 0,60 m. 0,60 × (4 ÷ 8,5) = 0,282 m (0,06 m estimados no real × 4,71)"
+      "motivo": "Era 0,60 m. 0,60 × (4 ÷ 8,5) = 0,282 m (0,06 m estimados no real × 4,71); 0,28 m na ficha atual. Base da revisão anterior: estimadas no animal real (0,08 e 0,06 m), sem fonte, e escaladas (D-147, D-174)"
     },
     {
       "campo": "corpo.massa",

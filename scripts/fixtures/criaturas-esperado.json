@@ -1,7 +1,7 @@
 {
  "fonte": {
-  "pasta": "tmp/executora/h/fichas-misto",
-  "data": "2026-11-06",
+  "pasta": "tmp/executora/lote/fichas-misto",
+  "data": "2026-11-07",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
  },
@@ -342,7 +342,7 @@
    }
   },
   "aguia-real": {
-   "sha256": "f5abbc689230c3a3a37390a17fe8e66643a41a66828b59390a0966b676e388d5",
+   "sha256": "d2bb1cf5c8276a921d5b557ba8cfa1929e50459d1b8be27ce3fd5ea52b610303",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -418,7 +418,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Golpe rápido de membro. Garra do hálux de 4,5 a 6,34 cm (Bortolotti, via Wikipédia). A Força não muda: segue 3,5"
+      "justificativa": "Prende a presa com os talões."
      },
      {
       "nome": "Bico",
@@ -435,7 +435,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Bico em gancho, que rasga a presa já presa. Segue 3,5"
+      "justificativa": "Rasga com o bico curvo a presa que já segurou."
      }
     ]
    },
@@ -1561,7 +1561,7 @@
    }
   },
   "assombracao": {
-   "sha256": "35bc4239bb5e881c5f3d6db9c98403673d8141a049f3eb9c9df2e7a0a8fbda0e",
+   "sha256": "9912bf78fdcf89d4d2fe31fbfd8a7254ace29ea9e342aa3fac380847e53ae8b7",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 3,
@@ -1627,7 +1627,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo: o dano do incorpóreo é fenômeno (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
+      "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 3 e Briga 5 (6)"
      }
     ]
    },
@@ -3490,7 +3490,7 @@
    }
   },
   "bodak": {
-   "sha256": "1889a2240b75bbad70fb3e5ca10ba6a50cd2e0c55cd471096edb6fb146fc3ced",
+   "sha256": "7b8eced3414048e7dde1efcbdbcc61fbbc65c5bf44519888b2f523a30567dedb",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -3551,7 +3551,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado) e as \"garras ressecadas, ataque corpo a corpo padrão\" (site): golpe Médio, como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 4 e Destreza 4 (D-208): 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "As garras ressecadas cortam a carne. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
      }
     ]
    },
@@ -4927,7 +4927,7 @@
    }
   },
   "campeao-esqueletico": {
-   "sha256": "4b996c2423b8417bee09eaf3ed00fea846ae7b8fd5f1aa6dab359a5fb118a15f",
+   "sha256": "484c45575b2a19e2f4ef32089169034724d0441758f0c2a89f56824ff729da0d",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -4988,7 +4988,7 @@
      {
       "nome": "Espada longa",
       "arma": "espada-longa",
-      "justificativa": "A arma do livro (`armas.json`): Média, Versátil, Velocidade 6, Acerto +1, Defesa +1. Com o escudo, uma mão: Força × 1. A Centelha soma inteira no dano (`centelha.md`). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+      "justificativa": "Empunha a espada com uma mão e mantém o escudo na outra. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
      }
     ]
    },
@@ -5151,7 +5151,7 @@
    }
   },
   "campones-assustado": {
-   "sha256": "febc1188de13e4141208f92e9634c98a8ab18c26b12806ea4d9080fdf5883fab",
+   "sha256": "db0fb61a8f6437a01b7aac65d6dbd16bd2cfd9052e4a46498e5cdbbe573e4472",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 0,
@@ -5202,9 +5202,9 @@
     },
     "ataques": [
      {
-      "nome": "Bordão",
-      "arma": "bordao",
-      "justificativa": "A arma do livro (`armas.json`, `bordao`, \"também chamada Cajado\"): Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, Impacto, alcance. Duas mãos somam a Força dobrada (`armas-e-armaduras.md`). O site dava \"Forcado/Pancada\", 1 dado, duas mãos, Impacto. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
+      "nome": "Forcado",
+      "arma": "forcado",
+      "justificativa": "Empurra as pontas do forcado com as duas mãos. Jogada: Destreza 2 (igual à Força 2) + Armas 1"
      }
     ]
    },
@@ -5227,7 +5227,7 @@
     },
     "ataques": [
      {
-      "nome": "Bordão",
+      "nome": "Forcado",
       "velocidade": 6,
       "danoMedio": 7.5,
       "jogada": 3
@@ -6039,7 +6039,7 @@
    }
   },
   "carcaju": {
-   "sha256": "45901d7a25e2609d6ddefdd62ec00f38fe4950e50e3903b08cdea9650b537d28",
+   "sha256": "8a3fb3789e68a386ef0fcc05a0e3fca87d1d01da847f8a7fcab57a8d243c18a0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -6110,7 +6110,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda: a Força fica 2. Boca de predador pequeno: Leve (seção 7). 254 N no canino (Christiansen e Wroe 2007), abaixo de 4.000 N: N0. Arranca carne congelada com o molar virado (Wikipédia)."
+      "justificativa": "Os molares arrancam pedaços de carne congelada."
      },
      {
       "nome": "Garra",
@@ -6127,7 +6127,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda. Garras de grampo (Wikipédia)."
+      "justificativa": "As garras curvas prendem a presa."
      }
     ]
    },
@@ -6506,7 +6506,7 @@
    }
   },
   "centauro": {
-   "sha256": "1f572840935e514f3c58b44f869f12b01f5f1888394902aefe0422c90bacf4d8",
+   "sha256": "26181978adbfadde6263d628180b65d6fe2a153bb3f1bd05c8ab1baa142416eb",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -6565,7 +6565,7 @@
      {
       "nome": "Azagaia",
       "arma": "azagaia",
-      "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Arremesso é sempre Destreza (`combate.md`). Jogada: Destreza 4 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
+      "justificativa": "A arma do livro (`armas.json`, `azagaia`): Arremesso, Velocidade 6, Acerto +1, ★P(N1), efetiva 16 m, máximo 40 m. Pode usar Força ou Destreza. Jogada: Força 7 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
      },
      {
       "nome": "Coice",
@@ -6614,7 +6614,7 @@
       "nome": "Azagaia",
       "velocidade": 6,
       "danoMedio": 12.5,
-      "jogada": 11
+      "jogada": 14
      },
      {
       "nome": "Coice",
@@ -6846,7 +6846,7 @@
    }
   },
   "ciclope": {
-   "sha256": "6b83870a108f7c9870cf95bb61ff7bff49c25756eadebfab0cf6c13c088fe982",
+   "sha256": "004b413e4d555cb95f2bf430c6ec2a1b7bc04988f5f740744d3c0dec95a6897f",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -6915,22 +6915,16 @@
       "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
      },
      {
+      "nome": "Martelo de Guerra",
+      "arma": "martelo-de-guerra",
+      "justificativa": "Tamanho Grande. Empunha a arma com as duas mãos.",
+      "tamanho": "grande"
+     },
+     {
       "nome": "Rocha arremessada",
-      "parte": "mao",
-      "habilidade": "arremesso",
-      "classe": "pesada",
-      "pgr": [
-       3,
-       1,
-       3
-      ],
-      "dado": "2d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "\"Arremessa rochedos\" (site, Força ciclópica): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+      "arma": "rocha",
+      "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+      "tamanho": "grande"
      }
     ]
    },
@@ -6959,10 +6953,15 @@
       "jogada": 16
      },
      {
-      "nome": "Rocha arremessada",
+      "nome": "Martelo de Guerra",
       "velocidade": 7,
+      "danoMedio": 29.5
+     },
+     {
+      "nome": "Rocha arremessada",
+      "velocidade": 6,
       "danoMedio": 17,
-      "jogada": 7
+      "jogada": 14
      }
     ]
    }
@@ -8564,7 +8563,7 @@
    }
   },
   "diabo-barbado": {
-   "sha256": "ea33ec14380e60f3025fe8cb318c23a3122634df32401a45a5e936a823024e4f",
+   "sha256": "8d40b956132ee40295097323d85712db5f940e688c9aa205d13e5a97f2c18437",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -8673,7 +8672,7 @@
    }
   },
   "diabo-chifrudo": {
-   "sha256": "c062a735b95f0fa322efcb7f732b1bfceb7b62cf0ac88ef39ad37c320620e77d",
+   "sha256": "da46f04d002822b144b3340b19eea20370ae2e1cb721c3fe404a5bab67bff412",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 6,
@@ -8944,7 +8943,7 @@
    }
   },
   "diabo-do-fosso-pit-fiend": {
-   "sha256": "1a7489f7e68dd58cc6cfc628b9d2fbc8a210054b24116f5cee957d625a51eab1",
+   "sha256": "1c195dce86b4e8436620d4bc38d23a4e006fba170c898667b24bb4bb651b4df6",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 9,
@@ -9320,7 +9319,7 @@
    }
   },
   "diabrete-imp": {
-   "sha256": "fe8097df3358423c8b0b655ba3b40ef1d8abdc7cf5c73dd50ab8edd7010e94ef",
+   "sha256": "db40b22da3486b89d1c1ae988032f5d52f28e37f7e7787f3655f2b84382b1325",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -11368,7 +11367,7 @@
    }
   },
   "drow": {
-   "sha256": "f5252a912a1fa0dd5eaaf57046431721427573c7941b82ff7622fd08ab5843af",
+   "sha256": "d1a880692c0fe448ccc20d14e47fae8ccdc33247c51937dd47ee99fcb6dfa549",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -11420,7 +11419,7 @@
      {
       "nome": "Espada curta",
       "arma": "espada-curta",
-      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1). Envenenada (Veneno e doença). A Centelha soma inteira. Jogada: Destreza 4 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
+      "justificativa": "A espada corta ou estoca. Se a lâmina estiver envenenada, a dose entra quando o golpe causa ao menos 1 PV depois da Absorção. Jogada: Destreza 4 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
      }
     ]
    },
@@ -11452,7 +11451,7 @@
    }
   },
   "duelista": {
-   "sha256": "fdd09b1a66316043f58fa7401f8d51bd371916c8f61657135a01e41bb6500a49",
+   "sha256": "e281145f126486ef3a46a0599204affd20efd5938363bfa6c56e25f00df89005",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 3,
@@ -11505,9 +11504,9 @@
     },
     "ataques": [
      {
-      "nome": "Lâmina leve",
-      "arma": "espada-curta",
-      "justificativa": "A arma do livro (`armas.json`, `espada-curta`): Leve, Velocidade 5, Acerto +2, Defesa +1, ★C · P(N1), no lugar do \"Florete\" do site, que o livro não tem. A Centelha soma inteira. Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
+      "nome": "Florete",
+      "arma": "florete",
+      "justificativa": "Estoca com a ponta do florete. Jogada: Destreza 5 + Armas 5 + 2 × o menor entre Centelha 3 e Armas 5 (6)"
      }
     ]
    },
@@ -11539,7 +11538,7 @@
     },
     "ataques": [
      {
-      "nome": "Lâmina leve",
+      "nome": "Florete",
       "velocidade": 5,
       "danoMedio": 7.5,
       "jogada": 16
@@ -12978,7 +12977,7 @@
    }
   },
   "enxame-de-ratos": {
-   "sha256": "88b8625f5cd9c1273d8224fc934d92386be2bbe4926fe2daf033a884bd02208e",
+   "sha256": "5e59af83b6ee51c180d7af37f416f41c4cb0a59234e95b0aac05a814439e2e72",
    "entrada": {
     "enxame": {
      "individuosPorQuadrado": 40,
@@ -13053,7 +13052,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Igual à ficha de hoje: a Força segue 0, e o dano é só o dado (D-115). Força de mordida de cerca de 13 N (Nies e Ro 2004, citado por Cox 2015): N0. Mordidas reais em gente: 61% perfurações, 14% lacerações de menos de 1 cm (Ordog 1985). Um ataque por ação (D-097)"
+      "justificativa": "Os ratos mordem quem está dentro do enxame. A Absorção conta contra o pulso."
      }
     ]
    },
@@ -13747,7 +13746,7 @@
    }
   },
   "espectro": {
-   "sha256": "43cd6df7b42261ce08634adaddff3aa367d5320c424488ab3368c216817a5b79",
+   "sha256": "9f73edc62d8ded1c34c21cd2c20758435a2d15511cc2ff8e94829ef06502babb",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -13816,7 +13815,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "O toque gelado que atravessa a matéria. Gesto rápido de membro, Leve (`regra-construcao.md` §7). Força 0 não soma (D-167); a Centelha soma inteira (`centelha.md`). Tipo: o dano do incorpóreo \"é fenômeno (armadura não absorve, só a Centelha)\" (C-041, que o manual 3.8 estende aos incorpóreos). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum do golpe natural. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 5 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
      }
     ]
    },
@@ -14356,7 +14355,7 @@
    }
   },
   "ettin": {
-   "sha256": "4b9c884406b73bb3bfcab577500a571b1ace0ff01ee3441abeebf73b3b38acf1",
+   "sha256": "af23c871d70836864365da987cc0ebcb3cd5111cb1dd2b7b1c6a3cef9b13d20d",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -14420,6 +14419,12 @@
       "acerto": 0,
       "bloqueiaComoArma": null,
       "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 8 + Briga 4"
+     },
+     {
+      "nome": "Maça",
+      "arma": "maca",
+      "justificativa": "Tamanho Grande. Empunha uma maça em cada mão e usa empunhadura dupla.",
+      "tamanho": "grande"
      }
     ]
    },
@@ -14446,6 +14451,11 @@
       "velocidade": 7,
       "danoMedio": 15,
       "jogada": 12
+     },
+     {
+      "nome": "Maça",
+      "velocidade": 6,
+      "danoMedio": 15
      }
     ]
    }
@@ -14578,7 +14588,7 @@
    }
   },
   "fantasma": {
-   "sha256": "0ef01534046967c77d0167bde3621857acfc443aa091a172fb375bd8b529c520",
+   "sha256": "181fd3b3d50c73e43b75605ef606c1dc1d6cf156877939aba3620800e2403899",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -14642,7 +14652,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "O toque gélido que atravessa a armadura (site), gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site gravava impacto. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 3 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
      }
     ]
    },
@@ -16263,7 +16273,7 @@
    }
   },
   "gigante-da-colina": {
-   "sha256": "b91f909c8df4c07af04257f195c852389f65e16eee4396d0f4648e12e1f2ea43",
+   "sha256": "036438358b262a3bad48c219b8ed2206206db3a74c1d866684fee414d4ad74c5",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -16331,22 +16341,16 @@
       "justificativa": "O punho de um gigante com o corpo girando atrás (site: 2 dados, 6 Ticks). Pesada pelo gesto (`regra-construcao.md` §7, \"o golpe do corpo inteiro, com carga ou rotação\"); golpe de membro, Força × 1, como o coice do cavalo. Jogada: Força 9 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
      },
      {
+      "nome": "Martelo de Guerra",
+      "arma": "martelo-de-guerra",
+      "justificativa": "Tamanho Grande. Empunha a arma com as duas mãos.",
+      "tamanho": "grande"
+     },
+     {
       "nome": "Rocha arremessada",
-      "parte": "mao",
-      "habilidade": "arremesso",
-      "classe": "pesada",
-      "pgr": [
-       3,
-       1,
-       3
-      ],
-      "dado": "2d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "O \"Arremesso de rocha\" do site, \"dano de arma grande\", até 36 m. Pesada (rocha de 20 a 40 kg lançada com o corpo); a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+      "arma": "rocha",
+      "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+      "tamanho": "grande"
      }
     ]
    },
@@ -16375,16 +16379,21 @@
       "jogada": 16
      },
      {
-      "nome": "Rocha arremessada",
+      "nome": "Martelo de Guerra",
       "velocidade": 7,
+      "danoMedio": 29.5
+     },
+     {
+      "nome": "Rocha arremessada",
+      "velocidade": 6,
       "danoMedio": 17,
-      "jogada": 7
+      "jogada": 14
      }
     ]
    }
   },
   "gigante-da-pedra": {
-   "sha256": "c2cb0a0572cd0bf266eefdd6192d87d04d4860c312bf1e213786af956f86c1d8",
+   "sha256": "7228933b605009ba8089d8828837ae3b5f324d69330f2777571d54106f8bcda3",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -16452,21 +16461,9 @@
      },
      {
       "nome": "Rocha arremessada",
-      "parte": "mao",
-      "habilidade": "arremesso",
-      "classe": "pesada",
-      "pgr": [
-       3,
-       1,
-       3
-      ],
-      "dado": "2d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "\"Arremesso certeiro\" (site): a rocha arremessada do gigante da colina, até 45 m; a distância vai nas Manobras. Jogada: Destreza 4 + Arremesso 4"
+      "arma": "rocha",
+      "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 9 + Arremesso 4",
+      "tamanho": "grande"
      }
     ]
    },
@@ -16496,9 +16493,9 @@
      },
      {
       "nome": "Rocha arremessada",
-      "velocidade": 7,
+      "velocidade": 6,
       "danoMedio": 16,
-      "jogada": 8
+      "jogada": 13
      }
     ]
    }
@@ -16602,7 +16599,7 @@
    }
   },
   "gigante-das-nuvens": {
-   "sha256": "b436d508533fab810c2ff01599c2e4087dad4996e09f6799a5fde6d241601759",
+   "sha256": "f9beae0527c12b84b85618438f06363ed8831cca06d2dd97690bcebd3b8d3eae",
    "entrada": {
     "categoria": "gigante",
     "centelha": 2,
@@ -16671,21 +16668,9 @@
      },
      {
       "nome": "Rocha arremessada",
-      "parte": "mao",
-      "habilidade": "arremesso",
-      "classe": "pesada",
-      "pgr": [
-       3,
-       1,
-       3
-      ],
-      "dado": "2d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "O \"Arremessar rocha\" do site (3 dados, 7 Ticks): a rocha arremessada do gigante da colina; o terceiro dado sai com a classe, e a distância vai nas Manobras. Jogada: Destreza 3 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)"
+      "arma": "rocha",
+      "justificativa": "Rocha Enorme de 60 kg. O alcance depende da massa. Jogada: Força 12 + Arremesso 3 + 2 × o menor entre Centelha 2 e Arremesso 3 (4)",
+      "tamanho": "enorme"
      }
     ]
    },
@@ -16715,15 +16700,15 @@
      },
      {
       "nome": "Rocha arremessada",
-      "velocidade": 7,
-      "danoMedio": 21,
-      "jogada": 10
+      "velocidade": 6,
+      "danoMedio": 24.5,
+      "jogada": 19
      }
     ]
    }
   },
   "gigante-do-fogo": {
-   "sha256": "17ac617cc20140e0a253257e027f0c00cd15b7f1f8bfabb8c501be70808ba4d4",
+   "sha256": "33ba2ed2c66ee69446173b909daeb1f54d7bbaa3f0d5ee2dea8641d52fef2316",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -16796,22 +16781,16 @@
       "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho blindado de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
      },
      {
+      "nome": "Montante",
+      "arma": "montante",
+      "justificativa": "Tamanho Grande. Depois do golpe com o montante, age por último na rodada seguinte.",
+      "tamanho": "grande"
+     },
+     {
       "nome": "Rocha arremessada",
-      "parte": "mao",
-      "habilidade": "arremesso",
-      "classe": "pesada",
-      "pgr": [
-       3,
-       1,
-       3
-      ],
-      "dado": "2d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "O \"Arremessar rocha\" do site (2 dados, 6 Ticks): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+      "arma": "rocha",
+      "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 10 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+      "tamanho": "grande"
      }
     ]
    },
@@ -16849,16 +16828,21 @@
       "jogada": 17
      },
      {
-      "nome": "Rocha arremessada",
+      "nome": "Montante",
       "velocidade": 7,
+      "danoMedio": 31.5
+     },
+     {
+      "nome": "Rocha arremessada",
+      "velocidade": 6,
       "danoMedio": 18,
-      "jogada": 7
+      "jogada": 15
      }
     ]
    }
   },
   "gigante-do-gelo": {
-   "sha256": "2a724ec0c592ab93dc84b5af0a28119cc89dfe7ff2a34f25d393ce903aabbfa0",
+   "sha256": "385999f82ec4c1b7d20268761ce8ce55721a78dba04a7b34f46472ff86919901",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -16927,22 +16911,16 @@
       "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um gigante com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 10 + Briga 5 + 2 × o menor entre Centelha 1 e Briga 5 (2)"
      },
      {
+      "nome": "Machado Pesado",
+      "arma": "machado-pesado",
+      "justificativa": "Tamanho Grande. Empunha a arma com as duas mãos.",
+      "tamanho": "grande"
+     },
+     {
       "nome": "Rocha arremessada",
-      "parte": "mao",
-      "habilidade": "arremesso",
-      "classe": "pesada",
-      "pgr": [
-       3,
-       1,
-       3
-      ],
-      "dado": "2d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": 0,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "O \"Arremesso de rocha\" do site (\"até 36 m, dano alto\"): a rocha arremessada do gigante da colina; a distância vai nas Manobras. Jogada: Destreza 2 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)"
+      "arma": "rocha",
+      "justificativa": "Rocha Grande de 30 kg. O alcance depende da massa. Jogada: Força 10 + Arremesso 3 + 2 × o menor entre Centelha 1 e Arremesso 3 (2)",
+      "tamanho": "grande"
      }
     ]
    },
@@ -16971,10 +16949,15 @@
       "jogada": 17
      },
      {
-      "nome": "Rocha arremessada",
+      "nome": "Machado Pesado",
       "velocidade": 7,
+      "danoMedio": 31.5
+     },
+     {
+      "nome": "Rocha arremessada",
+      "velocidade": 6,
       "danoMedio": 18,
-      "jogada": 7
+      "jogada": 15
      }
     ]
    }
@@ -18873,7 +18856,7 @@
    }
   },
   "guepardo": {
-   "sha256": "95ad3b4c55ca3d3786171cad52e7ad1589060a7188ba11e3f783401e9601f35a",
+   "sha256": "2d0d77355918d0710f5373e6a0f9940291ff30a7b78cb83865ab82f101b4453e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -18944,7 +18927,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Caninos pequenos e cônicos (Wikipédia); agarra a garganta e estrangula (ADW). Leve: boca pequena (seção 7). N0: mordida absoluta não achada; o modelo de 2011 dá 689 N com crânio escalado (forma, não força real). Não muda: a Força continua 2."
+      "justificativa": "Fecha os caninos em torno da garganta da presa."
      },
      {
       "nome": "Patada com o ergot",
@@ -18961,7 +18944,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "A unha do \"polegar\" é grande, curva e afiada, e a pata derruba a presa em corrida (ADW). Não muda. Opção (D-097)."
+      "justificativa": "A unha curva do polegar ajuda a derrubar a presa em corrida."
      }
     ]
    },
@@ -19223,7 +19206,7 @@
    }
   },
   "hidra-5-cabecas": {
-   "sha256": "7ee5dfb93b4ed6c8bb7e9efea79fbd9007b650f24fc7a2783c04bb60dcaaa01d",
+   "sha256": "591ad5b577a2b15f3c1e418218312412520a124759331a3a114275896211a0d5",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 1,
@@ -19323,7 +19306,7 @@
    }
   },
   "hiena-malhada": {
-   "sha256": "4cfb99c543db84f8f86e9904566d00aa4495c4e319a35da77c164c4c421dfb4b",
+   "sha256": "9828080ed487d65bde4c0903ddadc10744292e2c9f685ed66da6f9a83b83b964",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -19395,7 +19378,7 @@
       "nivelPerfuracao": 1,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda: a Força fica 4. Morde, segura e quebra osso: Média (`regra-construcao.md` §7). N1: cerca de 4.500 N medidos com transdutor de força em hienas cativas (Binder e Van Valkenburgh 2000, número via San Diego Zoo) , acima dos 4.000 N do corte do N1. A estimativa pelo crânio seco dá 773 N no canino (Wroe et al. 2005); a medida no animal vivo manda. Ver as notas."
+      "justificativa": "As mandíbulas seguram a presa e quebram ossos."
      }
     ]
    },
@@ -20221,7 +20204,7 @@
    }
   },
   "jararaca": {
-   "sha256": "1327e5504e16ae4a8bfeb57f79579f8de409230d76f47468e93f62e747f48db8",
+   "sha256": "bd595ff88676d0924fd6b497d6ced028e2898d7a9f115f11461cd0801ef6db06",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20293,7 +20276,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote rápido de boca pequena: Leve (seção 7). Com Força 0, o dano perde a parte da Força (D-115). Quem mata é o veneno, `peconha-botropica`, que não depende do dano: \"Todo dano de veneno ignora a Absorção\" (`acoes-resistir.md`:43), e a picada é via sangue (`acoes-resistir.md`:58). N0: força de mordida \"não achado\", e a presa só fura pele. Um ataque por ação (D-097)."
+      "justificativa": "As presas inoculam a peçonha quando o bote causa ao menos 1 PV depois da Absorção."
      }
     ]
    },
@@ -20323,7 +20306,7 @@
    }
   },
   "javali": {
-   "sha256": "7f596acceb7826fc797df72b960442b09eb33414ffd6c8b81b59744315bafb05",
+   "sha256": "d148c61b3865d3230206884cd75ddc7398fe7607a3e70970c6867d21ae8c5505",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20395,7 +20378,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O golpe de cabeça de baixo para cima com o corpo atrás (seção 7 da regra). Caninos de cima de 5 a 10 cm (ADW) e de baixo com 10 a 12 cm expostos (Wikipédia): presa é Perfuração; sem força medida, N0. Fere sobretudo pernas e pés, e as mortes vêm da perda de sangue (Mayer 2013). A Força não muda: fica 1d6 + 5, média 8,5."
+      "justificativa": "Ergue a cabeça e crava as presas de baixo para cima."
      },
      {
       "nome": "Investida",
@@ -20412,7 +20395,7 @@
       "nivelPerfuracao": null,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Golpe Pesado, com Força × 1 no golpe comum (D-266); na ação de Investida, soma mais uma Força, sem +1d6 (P20-b)."
+      "justificativa": "Na ação de Investida, some a Força mais uma vez ao dano."
      }
     ]
    },
@@ -20448,7 +20431,7 @@
    }
   },
   "jiboia": {
-   "sha256": "115985ab4a37c9101bde4023e196fa02ef965034d585c39ef8343f63729107cd",
+   "sha256": "9078f2cb43b37a4ffd8161494e6cc280694c676871fdbe375811cd398ebe7b37",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -20521,7 +20504,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "1d6 − 2 + Força 3, média 4,5. Bote rápido de boca pequena (seção 7). Dentes que seguram e empurram a presa para a garganta (ADW). Dói mas não é perigosa a gente (ADW)."
+      "justificativa": "Os dentes curvos seguram a presa para a constrição."
      }
     ]
    },
@@ -20765,7 +20748,7 @@
    }
   },
   "kyton": {
-   "sha256": "0a85a943818e91a1964ad738105f6e1e1e9d9504dde83776d32905d384af9077",
+   "sha256": "c7bef76eb91c9e6cc7a0e37501b0be16cb117c78eb678d5b55557d921a6419e6",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
@@ -20963,7 +20946,7 @@
    }
   },
   "lagarto-de-gola-gigante": {
-   "sha256": "6b5d5ae852156f1b028f798c6bbfbfd5be8c54215018ac4fa677705c617b3e65",
+   "sha256": "6a268c3d7d45beb494a50e9d0de931fa8dd609a810413265cd24a6a2e6950605",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21039,7 +21022,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Era 1d6 + 7, média 10,5 (sexta rodada), e 1d6 + 9, média 12,5. 3,5 + 5, com a Força 5 (D-115). Média: a mordida de bicho grande (seção 7). Força de mordida não achada: N0."
+      "justificativa": "Fecha as mandíbulas sobre a presa."
      },
      {
       "nome": "Chicotada de cauda",
@@ -21056,7 +21039,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Era 1d6 − 2 + 7, média 8,5 (sexta rodada), e 1d6 − 2 + 9, média 10,5. 1,5 + 5, com a Força 5 (D-115). A cauda chicoteia na exibição (Wikipédia). Leve: a cauda é fina e rápida, e não uma clava (seção 7); Força × 1, porque não é o corpo inteiro que empurra."
+      "justificativa": "Chicoteia com a ponta fina da cauda."
      }
     ]
    },
@@ -21691,7 +21674,7 @@
    }
   },
   "lemure": {
-   "sha256": "b6a1b5e6ed41d7a8dc90f0e7d885810fb5c45dbfc92783f92e2657483d6e5c44",
+   "sha256": "a1cbc783e19208608db2ad243528436e42ec55a7f025167f42f66341b61c41f6",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 1,
@@ -21785,7 +21768,7 @@
    }
   },
   "leopardo": {
-   "sha256": "094c657a1494d007a0131d8b7010b30e69a4231bf410487a536557a5fae54920",
+   "sha256": "8741ca1cdbcb77cbb87901acadee885eea05aa2e442ad74c67460d7f97f895c6",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -21856,7 +21839,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Morde a garganta ou a nuca e segura, e é com a boca que iça a presa: Média, como o leão. N0: 467 N nos caninos, estimados pelo crânio seco de um leopardo de 43,1 kg (Wroe et al. 2005), abaixo de 4.000 N. Não muda: a Força continua 5."
+      "justificativa": "Segura a presa pela garganta ou pela nuca."
      },
      {
       "nome": "Patada",
@@ -21873,7 +21856,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Garras retráteis, que seguram a presa e a árvore. Não muda. Opção, não segundo golpe (D-097)."
+      "justificativa": "As garras retráteis rasgam a presa."
      }
     ]
    },
@@ -22006,7 +21989,7 @@
    }
   },
   "lich": {
-   "sha256": "903c6795a9f02e21d1b28434cf8b6319594a68f55ac30a61fce6e1b0aa14d502",
+   "sha256": "1db23d69ca1c66df8014e246e466fb6b6efe459ec9371316d32dbf9402e5b838",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 6,
@@ -22078,7 +22061,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado, 5 Ticks): a mão de osso que leva o toque paralisante. Leve (`regra-construcao.md` §7). Jogada: Destreza 4 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
+      "justificativa": "A mão de osso transmite o toque paralisante. Jogada: Destreza 4 + Briga 5 + 2 × o menor entre Centelha 6 e Briga 5 (10)"
      }
     ]
    },
@@ -22317,7 +22300,7 @@
    }
   },
   "linnorm-do-gelo": {
-   "sha256": "74f2e7d2570c7b29abebafd8522dffce521d244f88fd02dde54f346c063c6951",
+   "sha256": "1a47daaf8d993c3a86f8ed126f93a9b919f246a90d474c067b217c4dd29ebd61",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22460,7 +22443,7 @@
    }
   },
   "linnorm-dos-lagos": {
-   "sha256": "edece7671b778ed2521335344060ef31367087e5b5614c455f8fc8e807fb5500",
+   "sha256": "12b83b7567449afbbb53d0e43af7d996a4434a099f9e3a7d025ac30bd6218d43",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22623,7 +22606,7 @@
    }
   },
   "linnorm-dos-penhascos": {
-   "sha256": "96d6d020a0de49b9abc2657a52e9f2479dfc6281038a38759025d93e888ce0b5",
+   "sha256": "a6dd88ab832fae944ad9bd03b7e5aaa930d213881bff1d802d8e05eb1fc5d7a7",
    "entrada": {
     "categoria": "dragao",
     "centelha": 6,
@@ -22970,7 +22953,7 @@
    }
   },
   "lobo-atroz": {
-   "sha256": "b73da6cb5390ec06a53732cac329e1825d5dd8661f88cea249eca5c6711f5d9c",
+   "sha256": "2b4f38ebf48ce72cb236d55c3be14584d1f2bf0d461d3cae871c1982b513d97c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23042,7 +23025,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda: a Força fica 4. Morde, segura e sacode: Média, como o lobo (seção 7 da regra). N0: 893 N no canino (Wroe 2005), abaixo de 4.000 N."
+      "justificativa": "Crava os dentes, segura e sacode a presa."
      }
     ]
    },
@@ -23195,7 +23178,7 @@
    }
   },
   "lobo": {
-   "sha256": "1f8e7e7da8fdb5895753adb34964906f8ab7389a79461e76e1c7daf4327fad88",
+   "sha256": "fd88219c2564902fabc84582c197f0c06a822ad88a67790361ae1651c0ac0e6d",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -23267,7 +23250,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Não muda: a Força fica 3. Morde, segura e sacode: Média (`regra-construcao.md` §7). N0 porque a mordida no canino estimada é de 593 a 1.141 N (Wroe 2005; Różycka 2024, crânio seco), abaixo de 4.000 N."
+      "justificativa": "Crava os dentes, segura e sacode a presa."
      }
     ]
    },
@@ -24484,7 +24467,7 @@
    }
   },
   "marilith": {
-   "sha256": "e04d33a02ed7cf6362465c04bdca07f52f7c6d45d984d5ec24e1543cdac743c8",
+   "sha256": "06a4051e7a043a107b908b0b257174645cae17966a27c52bcd788ab334e0ce1b",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 7,
@@ -25071,7 +25054,7 @@
    }
   },
   "merfolk": {
-   "sha256": "f1f49570f5e177fcd0d4245a44b129e23bedddbd8ffa084f0a55edd217d1e6d5",
+   "sha256": "b03941bcbfb5f21d1d14c3c402f4af8fef389041f7a05ac2db17489bd826a07b",
    "entrada": {
     "categoria": "humanoide",
     "centelha": 1,
@@ -25122,14 +25105,14 @@
     },
     "ataques": [
      {
-      "nome": "Lança",
-      "arma": "lanca",
-      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1), alcance. Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
+      "nome": "Tridente",
+      "arma": "tridente",
+      "justificativa": "Estoca com as três pontas do tridente. Jogada: Destreza 3 + Armas 2 + 2 × o menor entre Centelha 1 e Armas 2 (2)"
      },
      {
-      "nome": "Besta média",
+      "nome": "Besta Média",
       "arma": "besta-media",
-      "justificativa": "A arma do livro (`armas.json`, `besta-media`), a \"besta pesada\" do site: Distância, Velocidade 12, 1d6 + 4 sem Força, Acerto +1, ★P(N1), efetiva 60 m; recarga parado. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
+      "justificativa": "O virote tem alcance efetivo de 60 m e máximo de 200 m. O atirador fica parado durante o preparo. Jogada de Percepção + Atirador: 2 + 2 + 2 × o menor entre Centelha 1 e Atirador 2 (2)"
      }
     ]
    },
@@ -25152,13 +25135,13 @@
     },
     "ataques": [
      {
-      "nome": "Lança",
+      "nome": "Tridente",
       "velocidade": 6,
       "danoMedio": 10.5,
       "jogada": 7
      },
      {
-      "nome": "Besta média",
+      "nome": "Besta Média",
       "velocidade": 12,
       "danoMedio": 8.5,
       "jogada": 6
@@ -25494,7 +25477,7 @@
    }
   },
   "mohrg": {
-   "sha256": "c2bcebe24c736b03e8793cced6143526ef0519084e5ea130ab9c56e5d1f1641f",
+   "sha256": "f32911f5cf5b5cc27c18bf4459b4ac73779f968d019e6e802630bec97599ca54",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -25554,7 +25537,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço de osso que bate e agarra com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Duas por ação, pela Rajada (\"golpeia com as duas mãos\", site). Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "Golpeia com as mãos ossudas e agarra a vítima. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
      },
      {
       "nome": "Língua",
@@ -25571,7 +25554,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "\"Um toque de sua língua apodrecida paralisa a vítima\" (site): gesto rápido de boca, Leve (`regra-construcao.md` §7); não fere, só leva a paralisia (Manobras). Jogada: Destreza 5 e Força 6, a maior (D-208): Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O toque da língua transmite a paralisia sem causar dano. Jogada: Força 6 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
      }
     ]
    },
@@ -25826,7 +25809,7 @@
    }
   },
   "morcego-atroz": {
-   "sha256": "fad995525b417b175a0de8e1aea7d9ba190faf24b954ff4f170c59b979855422",
+   "sha256": "7ea3199a99e201243349d249143929ea67baa44d05d0a50f79ffed0806991106",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -25900,7 +25883,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "A mordida do vampiro na escala de 15: boca de predador grande, golpe com o corpo atrás. Força de mordida: sem dado; N0. A saliva anticoagulante, herdada: a ferida sangra (texto) . A Força não muda: segue 6,5"
+      "justificativa": "A saliva anticoagulante mantém a ferida sangrando. Estancar exige Raciocínio + Cura."
      }
     ]
    },
@@ -26315,7 +26298,7 @@
    }
   },
   "mumia": {
-   "sha256": "abd4b9c3beee85930c5f03be8c79be9c0a45999ef94a6d86cff4fd905cccc23e",
+   "sha256": "09c56619bd3f9b3fd00889fa724514b4c0f8b7535b5b5c085fd33db3211c6229",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 4,
@@ -26375,7 +26358,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço que esmaga com o corpo atrás, golpe Médio (`regra-construcao.md` §7), como a Pancada do zumbi. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "justificativa": "O braço enfaixado esmaga com o peso do corpo. Jogada: Força 7 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
      }
     ]
    },
@@ -27369,7 +27352,7 @@
    }
   },
   "ogro-mago-oni": {
-   "sha256": "801a4458a8ae697532f248702b3e935317e45e7b35c2fd355d435bfe081ac48e",
+   "sha256": "7d5298ac19fcf5f2be0dcfa29215913a2ba0d5225c2885d797745427f6b1b02d",
    "entrada": {
     "categoria": "gigante",
     "centelha": 5,
@@ -27481,7 +27464,7 @@
    }
   },
   "ogro": {
-   "sha256": "638ece5f63e3527d9b257ff066645cf8404ad1804989d8683a5feb5a97ea4d49",
+   "sha256": "fc939912b9c1b745385a17e728f86b03bb9f3c0d81215b4463ceb948c1f74741",
    "entrada": {
     "categoria": "gigante",
     "centelha": 0,
@@ -27546,6 +27529,18 @@
       "acerto": 0,
       "bloqueiaComoArma": null,
       "justificativa": "A do site (2 dados, impacto, 6 Ticks): o punho de um brutamontes com o corpo girando atrás. Pesada pelo gesto (`regra-construcao.md` §7), golpe de membro, Força × 1, como a Pancada descomunal do gigante da colina; os 2 dados ficam. Jogada: Força 7 + Briga 3"
+     },
+     {
+      "nome": "Martelo de Guerra",
+      "arma": "martelo-de-guerra",
+      "justificativa": "Tamanho Grande. Escolhe o martelo ou o machado antes de lutar.",
+      "tamanho": "grande"
+     },
+     {
+      "nome": "Machado Pesado",
+      "arma": "machado-pesado",
+      "justificativa": "Tamanho Grande. Escolhe o martelo ou o machado antes de lutar.",
+      "tamanho": "grande"
      }
     ]
    },
@@ -27572,6 +27567,16 @@
       "velocidade": 7,
       "danoMedio": 14,
       "jogada": 10
+     },
+     {
+      "nome": "Martelo de Guerra",
+      "velocidade": 7,
+      "danoMedio": 24.5
+     },
+     {
+      "nome": "Machado Pesado",
+      "velocidade": 7,
+      "danoMedio": 24.5
      }
     ]
    }
@@ -29360,7 +29365,7 @@
    }
   },
   "pteranodonte": {
-   "sha256": "7b99f350b872005041e47446e51f4e9e777592898b4f543c474cf7bb615486da",
+   "sha256": "9919258b7197cb1eaf3abc24b3ac1a2758022420d486f0bbde7908951f68b716",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29435,7 +29440,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Bico longo e sem dentes, de pegar peixe: golpe rápido de boca. Mordida em N: não achada, N0. A Força não muda: segue 3,5"
+      "justificativa": "O bico longo e sem dentes apanha peixes com um golpe rápido."
      }
     ]
    },
@@ -29557,7 +29562,7 @@
    }
   },
   "quasit": {
-   "sha256": "a4b37a07d1819d73cdb9a4b53d09327157d2e2054daf41e27340e45cafe044ee",
+   "sha256": "ff2ec5535807586fefa7b582d1ae6dafd52edcc5412a32ab7b811906e2c3dc67",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 2,
@@ -29680,7 +29685,7 @@
    }
   },
   "quetzalcoatlo": {
-   "sha256": "c41d98b3a48d481ef5d29efc30c3343667ef1066c81ed3c4f6a69e99d6c898c5",
+   "sha256": "3ce911fe6640d9709f643e8810d514ac55dc62fa3a2ff748e268c222bdcaedd8",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -29756,7 +29761,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Bico longo sem dentes, golpe dado com o pescoço inteiro atrás: Média. Ponta do bico não preservada; mordida em N não achada: N0. A Força não muda: segue 8,5"
+      "justificativa": "Projeta o pescoço inteiro para golpear com o bico."
      }
     ]
    },
@@ -29961,7 +29966,7 @@
    }
   },
   "ra-gigante": {
-   "sha256": "f31e4e33a87f631f82aeac521db2e1e688d7bc89f910f8859fdffff8587594ee",
+   "sha256": "bf111a023d5d072c23c4face408793e0d696d8869c288bfa60c1eb1e489f540e",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30029,7 +30034,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "A rã abocanha e engole inteira; dentes não achados nas fontes lidas, então Impacto, e não Perfuração (ver Notas). Leve: o bote rápido da boca (seção 7). Não muda: a Força continua 3 (3,5 − 2 + 3 = 4,5)."
+      "justificativa": "Abocanha a presa para engoli-la inteira."
      },
      {
       "nome": "Língua",
@@ -30046,7 +30051,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Resposta do autor de 20/10/2026 (seção 14): a língua da rã-gigante não é Disparo; a língua não sai do corpo, ela estende o alcance. O ataque é feito com Briga, e a rã pode agarrar o que acertar, mesmo se o golpe for bloqueado. Alcance: três vezes o alcance normal do corpo a corpo (monstro publicado, Língua Longa). Jogada de Briga, como a bocada; sem dano (\"sem causar ferimento algum no golpe\"). Se acertar, agarra, mesmo se o golpe for bloqueado: fica agarrado o que bloqueou. O agarrão é o da regra do livro (2 × Força = 6 por manutenção), e o puxão está nas Manobras. Leve: o bote rápido da língua, com a linha P/G/R e a Velocidade da classe, como a bocada ."
+      "justificativa": "Use Briga, com o triplo do alcance corpo a corpo. A língua agarra sem ferir. Se o golpe for bloqueado, agarra o que o bloqueou. A manutenção causa 6 de dano."
      }
     ]
    },
@@ -30080,7 +30085,7 @@
    }
   },
   "ra-venenosa": {
-   "sha256": "abd8988eba400162f5e5041ea877e49decdd89b6d5450ac8c51aff4178595306",
+   "sha256": "62ae68ff96fcc1726fea34a3256b466450617308daebf02160cf05fb58db7a19",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -30916,7 +30921,7 @@
    }
   },
   "sahuagin": {
-   "sha256": "e5ccdc55782f95ac5a2f9cae556f3770c107d8e8e4e20959ef1fc33be2f94641",
+   "sha256": "4872f5bbce12a5b812adb93a9b329ad51ec57702b232fa0697df86907024dbfa",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -30967,9 +30972,9 @@
     },
     "ataques": [
      {
-      "nome": "Lança",
-      "arma": "lanca",
-      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. A Centelha soma inteira. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+      "nome": "Tridente",
+      "arma": "tridente",
+      "justificativa": "Estoca com as três pontas do tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
      },
      {
       "nome": "Garras",
@@ -30986,7 +30991,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem a lança. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+      "justificativa": "Garra rápida de membro, Leve (`regra-construcao.md` §7), sem o tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
      }
     ]
    },
@@ -31009,7 +31014,7 @@
     },
     "ataques": [
      {
-      "nome": "Lança",
+      "nome": "Tridente",
       "velocidade": 6,
       "danoMedio": 13.5,
       "jogada": 11
@@ -31237,7 +31242,7 @@
    }
   },
   "sapo": {
-   "sha256": "810eb1750e7253b8239d989e7c06bda5b4709d59f857805b92de5cae9df53cde",
+   "sha256": "31b8802a916ec81ede8e2b76aa7ca047b70929620c4d023e9cdeeb528928e9c0",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -31506,7 +31511,7 @@
    }
   },
   "serpente-venenosa": {
-   "sha256": "eac824bc33d6a6d72ac55da188a70cb58f638eff126c2eabd63bf33c28bbe9c6",
+   "sha256": "31dcce514d4339f79bd301d106e0c3a8f1910835e4d9761b1119bb348d66c886",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -31578,7 +31583,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "A Força não muda: o dano fica (era 1d6 − 2, média 1,5). Bote de boca pequena: Leve (seção 7). Força 0 tira a parte da Força do dano (D-115). Quem mata é o veneno (até 420 mg de veneno seco por picada, Thomas e Griessel 1999), sem id no catálogo (ver Veneno). Força de mordida não achada: N0. Um ataque por ação (D-097)."
+      "justificativa": "As presas inoculam o veneno quando o bote causa ao menos 1 PV depois da Absorção."
      }
     ]
    },
@@ -31706,7 +31711,7 @@
    }
   },
   "shoggoth": {
-   "sha256": "098e6a9daca80ff734fabcda9f9311754686491aa4238d50d099e17785285317",
+   "sha256": "5dfda9f3584eaaeca5cbe4fc74a605a66884187e8e382367f32883e16635132f",
    "entrada": {
     "categoria": "limo",
     "centelha": 0,
@@ -31800,7 +31805,7 @@
    }
   },
   "skum-ulat-kini": {
-   "sha256": "e0245d0ec0519bdd9ea231b236689fe7f56cedced1d3342dfe72a6d641df89e0",
+   "sha256": "0cb417f0ed744ff5f82bdb176482fde4be8e41c330f501573d35c4afc0ef4034",
    "entrada": {
     "categoria": "humanoide-monstruoso",
     "centelha": 2,
@@ -31851,9 +31856,9 @@
     },
     "ataques": [
      {
-      "nome": "Lança",
-      "arma": "lanca",
-      "justificativa": "A arma do livro (`armas.json`, `lanca`), no lugar do tridente: Haste média, duas mãos, Velocidade 6, Acerto +1, Defesa +2, ★P(N1). Duas mãos somam a Força dobrada. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+      "nome": "Tridente",
+      "arma": "tridente",
+      "justificativa": "Estoca com as três pontas do tridente. Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
      },
      {
       "nome": "Mordida",
@@ -31887,7 +31892,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Garra rápida de membro, Leve, sem a lança; as duas mãos fazem par (Manobras). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
+      "justificativa": "Garra rápida de membro, Leve, sem o tridente; as duas mãos fazem par (Manobras). Jogada: Força 4 + Armas 3 + 2 × o menor entre Centelha 2 e Armas 3 (4)"
      }
     ]
    },
@@ -31910,7 +31915,7 @@
     },
     "ataques": [
      {
-      "nome": "Lança",
+      "nome": "Tridente",
       "velocidade": 6,
       "danoMedio": 13.5,
       "jogada": 11
@@ -32187,7 +32192,7 @@
    }
   },
   "sombra": {
-   "sha256": "e692a9badaf556010ce4cf9a217005a29e7dd9ce34ac24cac308402fd0a97aab",
+   "sha256": "81309c3fed958a4e96df57d80b7eee6705fca7f54614d897b385888cbbfff7f3",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -32251,7 +32256,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "O toque gelado que atravessa a matéria, gesto rápido de membro, Leve (`regra-construcao.md` §7), como no espectro. Força 0 não soma (D-167); a Centelha soma inteira. Tipo fenômeno: \"Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)\" (C-041). O site dava `dado` 2, a jogada pela Influência e \"necrótico (vs Def. Mental)\": o ataque contra a Defesa Mental não tem regra no livro, e a ficha usa a jogada comum. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
+      "justificativa": "O toque gelado atravessa a matéria. Só a Centelha absorve o dano. Jogada: Destreza 4 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
      }
     ]
    },
@@ -32575,7 +32580,7 @@
    }
   },
   "tarrasque": {
-   "sha256": "a40c458ccb4b44c5d47b9ac14f7de5d2a81c9c6ffd1a5c671119bb3562beeb8a",
+   "sha256": "dad4e8d4434b75d28688779089026e6c8d2cc7ccbc8d0158ec5b12269acf84a0",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 10,
@@ -33178,7 +33183,7 @@
    }
   },
   "tigre": {
-   "sha256": "46210e7fd2dc2ea8d90a6322a0f481fa70a88d4a2cb01a9518a4d6628e3a1b84",
+   "sha256": "6413f3a8a560a25fe5a197be06352c6593aa78528d77bfe8760151c35f2e3270",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -33253,7 +33258,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "Mordida na garganta (estrangula) ou na nuca (Wikipédia), com caninos de 6,4 a 7,6 cm (Mazák 1981): o golpe pede o corpo atrás, Média. N0: 1.525 N nos caninos, estimados pelo crânio seco de um tigre de 186,9 kg (Wroe et al. 2005, tabela 1), abaixo de 4.000 N. Era 1d6 + 9, média 12,5."
+      "justificativa": "Crava os caninos na garganta ou na nuca."
      },
      {
       "nome": "Patada",
@@ -33270,7 +33275,7 @@
       "nivelPerfuracao": null,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "Garras retráteis de 7,5 a 10 cm (San Diego Zoo); derruba a presa com as patas dianteiras. Era 1d6 − 2 + 9, média 10,5. Opção, não segundo golpe (D-097)."
+      "justificativa": "As garras dianteiras rasgam a presa e ajudam a derrubá-la."
      }
     ]
    },
@@ -33830,7 +33835,7 @@
    }
   },
   "trol": {
-   "sha256": "4e57a67b4c95c23a299f05001b7c4faa132bfe9a36261dac8d146052437f5144",
+   "sha256": "dcbbf2155908a0bfbddb8d76421d99512e51c4047da39047d1da8ea6b60c5c85",
    "entrada": {
     "categoria": "gigante",
     "centelha": 1,
@@ -34943,7 +34948,7 @@
    }
   },
   "vampiro": {
-   "sha256": "7495ffaa78fa045d5e7db151a0e62e9d3c9c265d97a7a993c3e8cb81d021c307",
+   "sha256": "086e85bfede799ccc48b4ee0d00bc691224a212ba314dcedb3b42064aed0973a",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 5,
@@ -35008,7 +35013,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado, impacto): o braço com o corpo atrás, golpe Médio (`regra-construcao.md` §7). Jogada: Força 5 e Destreza 5 (D-208): 5 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
+      "justificativa": "Golpeia com o peso do corpo atrás do punho. Jogada: Força 5 + Briga 5 + 2 × o menor entre Centelha 5 e Briga 5 (10)"
      },
      {
       "nome": "Mordida",
@@ -35025,7 +35030,7 @@
       "nivelPerfuracao": 0,
       "acerto": 1,
       "bloqueiaComoArma": null,
-      "justificativa": "\"Mordida drenante\" (site): a boca humana com duas presas, gesto rápido de boca pequena, Leve (`regra-construcao.md` §7). Leva o Dreno de sangue (Manobras). Jogada igual à da Pancada"
+      "justificativa": "As presas abrem a ferida por onde o vampiro drena sangue. Jogada igual à da Pancada"
      }
     ]
    },
@@ -35063,7 +35068,7 @@
    }
   },
   "varano-femea": {
-   "sha256": "b43f120a7d211869c06abcc04c914c91dba167894387120de7140739a5bb5440",
+   "sha256": "d53487aae349580ba948e89848d9a0c25df85db077fb09ae416fb63d47dc4038",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -35135,7 +35140,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
+      "justificativa": "Os dentes serrilhados perfuram e rasgam a carne quando o varano puxa a cabeça."
      }
     ]
    },
@@ -35166,7 +35171,7 @@
    }
   },
   "varano": {
-   "sha256": "3420b9b90f8b02e1626053955cc0610060229c01d539983aa3fbbd617291d269",
+   "sha256": "b8a2507e5cfa7de0d5aaf3d2ad972a8add4ccb381d453fe34f2b7ec2c0982f4c",
    "entrada": {
     "categoria": "animal",
     "centelha": 0,
@@ -35238,7 +35243,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "A Força não muda: o dano fica (era 1d6 + 5, média 8,5). Média: \"a mordida de predador grande\" (seção 7). Cerca de 60 dentes serrilhados de até 2,5 cm, que rasgam puxando (Fry 2009; Wikipédia). Tipo Perfuração pela regra (dente); o corte do serrilhado fica para o Mestre (ver Notas). N0: a mordida é fraca (39 N no modelo de Fry 2009, abaixo de 4.000 N). Com veneno, sem id."
+      "justificativa": "Os dentes serrilhados perfuram e rasgam a carne quando o varano puxa a cabeça."
      }
     ]
    },
@@ -35927,7 +35932,7 @@
    }
   },
   "wight": {
-   "sha256": "e8f6fdaaa817e2d9f9491f9d609bfa5efec7b2cf4c8cfb3814f959ccf5243cc2",
+   "sha256": "1b9b4f3e32cd4c5359ce78227af33958fbc6d8a8d0fec484c9c6e198212c7a9a",
    "entrada": {
     "categoria": "morto-vivo",
     "centelha": 2,
@@ -35988,7 +35993,7 @@
       "nivelPerfuracao": 0,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O \"Golpe\" do site (1 dado) é a garra (\"garras cortantes\", site), golpe Médio como no ghoul (`regra-construcao.md` §7). Tipo Corte pela garra; o site gravava impacto. Jogada: Força 3 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
+      "justificativa": "As garras cortam a vítima. Jogada: Força 3 + Briga 4 + 2 × o menor entre Centelha 2 e Briga 4 (4)"
      }
     ]
    },
