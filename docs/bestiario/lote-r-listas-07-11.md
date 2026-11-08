@@ -104,6 +104,10 @@ A jogada era "Destreza 2 + Arremesso 3" = 5, ímpar: 2d6+2, com o mesmo +2 da Ce
 Atributo da jogada pela Força 9: 12, par, 6d6. No gigante-das-nuvens mudaram as duas: a jogada pela G2 e o dado pela
 G1 (a rocha Enorme dá 3d6, e a natural de antes dava 2d6).
 
+**Conferido com a conta da Revisora** (feita à parte, 08/11/2026): colina, rocha: 12 → 6d6, +2; dano 2d6 + 9 × 1 + 1 =
+2d6 +10. Colina, Martelo: Força 9 + Briga 5 = 14 → 7d6 +2; 3d6 + 9 × 2 + 1 = 3d6 +19. Nuvens, rocha Enorme: 15 →
+7d6+2 +4; 3d6 + 12 + 2 = 3d6 +14. As três batem com a tabela acima.
+
 ## A Defesa de 8 para 6
 
 Nos quatro gigantes de arma de duas mãos e rocha (ciclope, gigante-da-colina, gigante-do-fogo e gigante-do-gelo), a
@@ -117,7 +121,7 @@ Defesa cai de 8 para 6. No gigante-da-colina:
   (`armas-e-armaduras.md:85`), e diz que a "Def. (Defesa da Arma)" é "quanto a arma acrescenta ao seu Bloqueio". O
   Montante e o Machado Pesado têm a mesma Defesa −2 no catálogo.
 - A criatura acompanha o catálogo (D-262: "a ficha de criatura muda com a mudança do catálogo; continua guardando a arma
-  do livro pelo id"), e a arma de duas mãos ocupa as mãos (G4 nas criaturas, a mesma regra da ficha). Então
+  do livro pelo id"), e a arma de duas mãos ocupa as mãos (o parecer G4 da Veterana sobre a ficha, que a D-262 leva à criatura; não é a G4 do autor, D-366, "Quem empunha"). Então
   Bloqueio 8 − 2 = 6, e a Defesa é o maior entre Esquiva 4 e Bloqueio 6: **6**. Antes, sem a arma do catálogo, era 8.
 - Pela D-273 (P23: "o solar só leva o −2 com o montante em uso, não de arco"), o −2 só vale com a arma de duas mãos em
   uso: com a rocha na mão, a Defesa volta a **8**, e o card mostra as duas ("Defesa com a outra arma").
