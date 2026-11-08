@@ -130,9 +130,16 @@
     {
       "nome": "Regeneração 15",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "regeneração sobrenatural. Quando sofre dano de artefatos, efeitos e magias malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
+      "fraqueza": {
+        "forma": "interrompe",
+        "tipos": [
+          "maligno"
+        ],
+        "duracao": "6 Ticks"
+      },
+      "texto": "Origem sobrenatural. O dano de um artefato maligno, de um efeito maligno ou de uma magia maligna interrompe toda a regeneração por 6 Ticks. Recupera 15 PV por minuto, até o máximo de PV. Em combate, recupera 1,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "Resistência à magia",
@@ -349,6 +356,10 @@
     {
       "campo": "ataques.Arco longo",
       "motivo": "Tiro com arma equipada usa Percepção + Atirador pela D-208.; dano médio 22,5 -> 20,5; a D-075 limita a Força aplicada ao arco a 8. A Força da criatura continua 10. a conferir."
+    },
+    {
+      "campo": "habilidadesEspeciais.Regeneração 15",
+      "motivo": "Fraqueza da fonte: \"regeneration 15 (evil artifacts, effects, and spells)\" (Pathfinder RPG Bestiary, p. 12). Antes: 1 hora. Proponho 6 Ticks: a interrupção custa um pulso de 1,5 PV e permite que a regeneração volte durante a luta. Valor de molde, para a bancada.  [Archives of Nethys](https://www.aonprd.com/MonsterDisplay.aspx?ItemName=Solar)."
     },
     {
       "campo": "habilidadesEspeciais.Resistência à magia",

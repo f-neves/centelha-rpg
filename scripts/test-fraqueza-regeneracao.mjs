@@ -29,7 +29,9 @@ const planta = (...linhas) => converterFicha(LOBO.replace(ANCORA, linhas.join('\
 const poder = (r, nome) => r.criatura.habilidadesEspeciais.find((h) => h.nome === nome);
 const L = (nome, fr) => `- ${nome} · categoria: inato · fraqueza: ${fr} · sem regra ainda: fecha as feridas sozinho. **[formas: todas]**`;
 
-ok(J(REGRAS.criatura?.fraquezasDaRegeneracao?.lista) === J(['prata', 'ferro frio', 'arma abençoada', 'fogo', 'ácido', 'luz do sol']), 'regras.json: a lista fechada do autor, na ordem');
+// G5 (D-367) e G7 (D-369, que acrescenta água e maligno): a lista mora só em regras.json, e o conversor a lê de lá
+ok(J(REGRAS.criatura?.fraquezasDaRegeneracao?.lista) === J(['prata', 'ferro frio', 'arma abençoada', 'fogo', 'ácido', 'luz do sol', 'água', 'maligno']), 'regras.json: a lista fechada do autor, na ordem (G5 e G7)');
+ok(!/FRAQUEZAS_REGEN = new Set\(\[/.test(fs.readFileSync('scripts/conversor-criatura.mjs', 'utf8')), 'o conversor não guarda uma segunda cópia da lista');
 
 const base = converterFicha(LOBO, { site: SITE });
 ok(base.paradas.length === 0 && base.criatura.habilidadesEspeciais.every((h) => !h.fraqueza), 'a ficha sem as linhas plantadas não tem fraqueza (controle)');
@@ -54,16 +56,18 @@ const sem = structuredClone(b.criatura);
 poder({ criatura: sem }, 'Regeneração 4').fraqueza = { forma: 'interrompe', tipos: ['fogo'] };
 ok(criaturaAnteriorR03Schema.safeParse(b.criatura).success && !criaturaAnteriorR03Schema.safeParse(sem).success, 'o esquema aceita o campo e recusa interrompe sem duração');
 
-// Desde o lote r-listas-07-11 da Bestiarista, 16 fichas trazem o campo, e todos os nomes estão na lista fechada (sem
-// aviso). A fênix, o planetar e o solar ficam de fora até a resposta da Bestiarista ao autor.
+// Desde o lote r-listas-07-11 da Bestiarista, 19 fichas trazem o campo, e todos os nomes estão na lista fechada (sem
+// aviso). A fênix, o planetar e o solar entraram com a G7: água e maligno.
 const LISTA = new Set(REGRAS.criatura.fraquezasDaRegeneracao.lista);
 const usam = fs.readdirSync('src/data/bestiario').map((f) => JSON.parse(fs.readFileSync('src/data/bestiario/' + f, 'utf8'))).filter((c) => c.habilidadesEspeciais.some((h) => h.fraqueza));
-const ESPERADAS = ['diabo-barbado', 'diabo-chifrudo', 'diabo-do-fosso-pit-fiend', 'diabrete-imp', 'hidra-5-cabecas', 'kyton', 'lemure', 'linnorm-do-gelo', 'linnorm-dos-lagos', 'linnorm-dos-penhascos', 'marilith', 'ogro-mago-oni', 'quasit', 'tarrasque', 'trol', 'vampiro'];
-ok(J(usam.map((c) => c.id).sort()) === J(ESPERADAS), `as 16 fichas do lote trazem o campo (${usam.length})`);
+const ESPERADAS = ['diabo-barbado', 'diabo-chifrudo', 'diabo-do-fosso-pit-fiend', 'diabrete-imp', 'hidra-5-cabecas', 'kyton', 'lemure', 'linnorm-do-gelo', 'linnorm-dos-lagos', 'linnorm-dos-penhascos', 'marilith', 'ogro-mago-oni', 'quasit', 'tarrasque', 'trol', 'vampiro', 'fenix', 'planetar', 'solar'].sort();
+ok(J(usam.map((c) => c.id).sort()) === J(ESPERADAS), `as 19 fichas do lote trazem o campo (${usam.length})`);
 ok(usam.every((c) => c.habilidadesEspeciais.filter((h) => h.fraqueza).every((h) => h.fraqueza.tipos.every((t) => LISTA.has(t)))), 'todos os tipos estão na lista fechada');
 const tarr = usam.find((c) => c.id === 'tarrasque')?.habilidadesEspeciais.find((h) => h.fraqueza)?.fraqueza;
 ok(J(tarr) === J({ forma: 'interrompe', tipos: ['fogo', 'ácido'], duracao: '6 Ticks' }), `o tarrasque: o atrasar é a primeira forma, com 6 Ticks (G5): ${J(tarr)}`);
-ok(['fenix', 'planetar', 'solar'].every((id) => JSON.parse(fs.readFileSync(`src/data/bestiario/${id}.json`, 'utf8')).habilidadesEspeciais.every((h) => !h.fraqueza)), 'fênix, planetar e solar seguem como estavam (segurados)');
+const fr = (id) => usam.find((c) => c.id === id)?.habilidadesEspeciais.find((h) => h.fraqueza)?.fraqueza;
+ok(J(fr('fenix')) === J({ forma: 'naoRegenera', tipos: ['água', 'maligno'] }), `a fênix: água ou maligno não se regenera (G7): ${J(fr('fenix'))}`);
+ok(['planetar', 'solar'].every((id) => J(fr(id)) === J({ forma: 'interrompe', tipos: ['maligno'], duracao: '6 Ticks' })), `o planetar e o solar: maligno interrompe por 6 Ticks (G7): ${J(fr('planetar'))}, ${J(fr('solar'))}`);
 
 if (falhas.length) { console.error(`✘ test-fraqueza-regeneracao: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('✓ test-fraqueza-regeneracao · o campo da fraqueza nas duas formas da R47, com a lista fechada e o aviso (G5, D-367)');

@@ -2869,7 +2869,7 @@
   },
   "criatura": {
     "nota": "Os números das contas da criatura que o motor faz (src/lib/motor.ts; formato-criatura.md, seção 3; plano-conversao.md, A2). A Vida pela massa mora em derivados.pv.massa.conta. A fonte de cada um está na nota dele.",
-    "fraquezasDaRegeneracao": { "lista": ["prata", "ferro frio", "arma abençoada", "fogo", "ácido", "luz do sol"], "nota": "G5 (D-367, 07/11/2026): o vocabulário das fraquezas da Regeneração é lista fechada, e o Mestre pode acrescentar. O conversor aceita nome fora da lista com aviso, e não com erro. As formas são as duas da R47: interrompe (com o tempo escrito na ficha; o atrasar do tarrasque é esta) e não se regenera." },
+    "fraquezasDaRegeneracao": { "lista": ["prata", "ferro frio", "arma abençoada", "fogo", "ácido", "luz do sol", "água", "maligno"], "nota": "G5 (D-367, 07/11/2026): o vocabulário das fraquezas da Regeneração é lista fechada, e o Mestre pode acrescentar. A G7 (D-369) acrescenta água e maligno; o maligno cobre arma, efeito, artefato ou magia de origem maligna, e a ficha diz qual. O conversor aceita nome fora da lista com aviso, e não com erro. As formas são as duas da R47: interrompe (com o tempo escrito na ficha; o atrasar do tarrasque é esta) e não se regenera." },
     "tamanho": {
       "nota": "O Tamanho pela área da silhueta, na vista de maior área (D-155, D-183): até cada corte, em m², vale o id da mesma posição em porteAcerto.ordem; acima do último, Colossal. A menos de `folga` (5%) do corte, a ficha escolhe pelo corpo e justifica (decisoes-autor §13), e guarda a escolha em `corpo.tamanhoEscolhido` (D-216, D-225).",
       "cortesM2": [0.03, 0.12, 0.45, 1.45, 6, 25, 100],

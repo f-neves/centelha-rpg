@@ -76551,16 +76551,16 @@
     {
      "nome": "Regeneração 10",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "origem mágica. O dano de gelo ou mal só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-     "nome": "frio e mal param a regeneração",
-     "formas": "todas",
-     "classe": "sem regra ainda",
-     "categoria": "inato",
-     "efeito": "o dano de gelo ou o que vem do mal não se fecha pela Regeneração"
+     "fraqueza": {
+      "forma": "naoRegenera",
+      "tipos": [
+       "água",
+       "maligno"
+      ]
+     },
+     "texto": "Origem mágica. O dano de água ou de origem maligna não se regenera. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Muralha de chamas",
@@ -76979,13 +76979,8 @@
    },
    {
     "nome": "Regeneração 10",
-    "descricao": "origem mágica. O dano de gelo ou mal só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente",
-    "classe": "sem regra ainda"
-   },
-   {
-    "nome": "frio e mal param a regeneração",
-    "descricao": "o dano de gelo ou o que vem do mal não se fecha pela Regeneração",
-    "classe": "sem regra ainda"
+    "descricao": "Origem mágica. O dano de água ou de origem maligna não se regenera. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Muralha de chamas",
@@ -143506,9 +143501,16 @@
     {
      "nome": "Regeneração 10",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "regeneração sobrenatural. Quando sofre dano de armas e efeitos malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
+     "fraqueza": {
+      "forma": "interrompe",
+      "tipos": [
+       "maligno"
+      ],
+      "duracao": "6 Ticks"
+     },
+     "texto": "Origem sobrenatural. O dano de uma arma maligna ou de um efeito maligno interrompe toda a regeneração por 6 Ticks. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Resistência à magia",
@@ -143886,8 +143888,8 @@
    },
    {
     "nome": "Regeneração 10",
-    "descricao": "regeneração sobrenatural. Quando sofre dano de armas e efeitos malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de uma arma maligna ou de um efeito maligno interrompe toda a regeneração por 6 Ticks. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Resistência à magia",
@@ -158866,9 +158868,16 @@
     {
      "nome": "Regeneração 15",
      "formas": "todas",
-     "classe": "sem regra ainda",
+     "classe": "livro",
      "categoria": "inato",
-     "efeito": "regeneração sobrenatural. Quando sofre dano de artefatos, efeitos e magias malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar"
+     "fraqueza": {
+      "forma": "interrompe",
+      "tipos": [
+       "maligno"
+      ],
+      "duracao": "6 Ticks"
+     },
+     "texto": "Origem sobrenatural. O dano de um artefato maligno, de um efeito maligno ou de uma magia maligna interrompe toda a regeneração por 6 Ticks. Recupera 15 PV por minuto, até o máximo de PV. Em combate, recupera 1,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
      "nome": "Resistência à magia",
@@ -159294,8 +159303,8 @@
    },
    {
     "nome": "Regeneração 15",
-    "descricao": "regeneração sobrenatural. Quando sofre dano de artefatos, efeitos e magias malignos, toda a regeneração para por 1 hora. Depois, todas as feridas voltam a fechar",
-    "classe": "sem regra ainda"
+    "descricao": "Origem sobrenatural. O dano de um artefato maligno, de um efeito maligno ou de uma magia maligna interrompe toda a regeneração por 6 Ticks. Recupera 15 PV por minuto, até o máximo de PV. Em combate, recupera 1,5 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano",
+    "classe": "livro"
    },
    {
     "nome": "Resistência à magia",

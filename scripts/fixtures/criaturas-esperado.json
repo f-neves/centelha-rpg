@@ -1,7 +1,7 @@
 {
  "fonte": {
   "pasta": "tmp/executora/lote/fichas-misto",
-  "data": "2026-11-07",
+  "data": "2026-11-08",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
  },
@@ -14784,7 +14784,7 @@
    }
   },
   "fenix": {
-   "sha256": "a21d922598fda297b0bc0e94115dfddaf993ac5d4f00c421f54b5051faec1a2d",
+   "sha256": "d362cbcb6de265e7e2fb75daac6be4704e6316e2cd8ca160f727b8b1d47f67fa",
    "entrada": {
     "categoria": "besta-magica",
     "centelha": 6,
@@ -28543,7 +28543,7 @@
    }
   },
   "planetar": {
-   "sha256": "59079207cf931e4841a9e29774666cde54eed019967eb70b8e29b4fe9b352131",
+   "sha256": "3f3463e170cb0a88d0da2d285d23a7ddfcc6e49ba0e07cb12199dd7f208643a5",
    "entrada": {
     "categoria": "celestial",
     "centelha": 7,
@@ -31936,7 +31936,7 @@
    }
   },
   "solar": {
-   "sha256": "7d0623c9aea8e4133adf6345704a0cf5ab0752390f7271bf0108f61cc9a09d95",
+   "sha256": "b02ca357c5dde8cc518768618bfdcd960c96da01a20c36a56bd2a1fdad617342",
    "entrada": {
     "categoria": "celestial",
     "centelha": 9,

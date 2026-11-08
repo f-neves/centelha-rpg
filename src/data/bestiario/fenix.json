@@ -188,16 +188,16 @@
     {
       "nome": "Regeneração 10",
       "formas": "todas",
-      "classe": "sem regra ainda",
+      "classe": "livro",
       "categoria": "inato",
-      "efeito": "origem mágica. O dano de gelo ou mal só fecha com outras curas, como Arte, Cura ou descanso. As demais feridas se regeneram normalmente"
-    },
-    {
-      "nome": "frio e mal param a regeneração",
-      "formas": "todas",
-      "classe": "sem regra ainda",
-      "categoria": "inato",
-      "efeito": "o dano de gelo ou o que vem do mal não se fecha pela Regeneração"
+      "fraqueza": {
+        "forma": "naoRegenera",
+        "tipos": [
+          "água",
+          "maligno"
+        ]
+      },
+      "texto": "Origem mágica. O dano de água ou de origem maligna não se regenera. Recupera 10 PV por minuto, até o máximo de PV. Em combate, recupera 1 PV a cada 6 Ticks, contados a partir do Tick do primeiro dano"
     },
     {
       "nome": "Muralha de chamas",
