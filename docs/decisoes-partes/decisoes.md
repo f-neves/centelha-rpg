@@ -4507,7 +4507,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Fora do livro: a conta da bancada está em `../tmp/bancada/atropelar-prep.md` e `../tmp/bancada/atropelar-tabelaB.md` (conta de dado exata, sem desafio). As 13 fichas com Atropelar têm Centelha 0, então do lado de quem atropela nada muda hoje. O motor de criaturas e o Grid não modelam o Atropelar (Grid congelado, D-054); nada de código muda.
 - Muda: completa a D-319 (R40) no fator da Centelha, que era "a Centelha inteira por ora"; fecha a B23.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 08/11/2026.
-- Estado: a publicar (texto no livro; Revisora confere, merge com o PROCEDE).
+- Estado: **no ar** desde 08/11/2026 (`6e98fcad`, publicado em `0fc04bcd`): o texto no livro.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
