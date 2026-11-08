@@ -3738,6 +3738,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - **Dano mudado pela D-340** (R40c, 05/11/2026): sai "o golpe da ficha ou, para quem não tem, o do Encontrão", que era erro de redação de Claude; entra o dano próprio do atropelamento.
 - **Corrigida pela D-352** (06/11/2026): "do terceiro Tick em diante" foi erro de redação de Claude; o autor disse "depois do terceiro": os Ticks 1 a 3 são Preparação, e o primeiro Golpe é o quarto. Contra quem não se defende, a Margem é contra 0.
+- **Completada pela D-370** (A1, 08/11/2026): o fator da Centelha no Atropelar é 2 × Centelha nos dois lados (quem atropela e quem tenta Parar), exceção escrita à regra do Atributo puro; a pendência da bancada (B23) fecha.
 
 ### D-320 · R41: Depois da área: nada de dano que fica, a não ser que o efeito diga; o Mestre decide as consequências [tags: combate, area, sopro, mestre, d-087]
 - Data: 2026-11-05
@@ -4488,6 +4489,24 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-367 (G5).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Resposta do autor sobre o vocabulário das fraquezas (G7, em DECISOES-AUTOR.md)").
 - Estado: **no ar** desde 08/11/2026, com o lote `r-listas-07-11` da Bestiarista (branch `lote-listas`, publicada em `9455a024`, 08/11/2026): a lista com "água" e "maligno" em `regras.json` e no livro, junto da R47; a fênix (água ou maligno não se regenera), o planetar e o solar (maligno interrompe por 6 Ticks).
+
+### D-370 · A1: o Atropelar soma 2 × Centelha nos dois lados, quem atropela e quem tenta Parar (exceção escrita à regra do Atributo puro); fecha a pendência da R40 (B23) [tags: combate, atropelar, parar, centelha, atributo-puro, r40, d-319, b23, bancada, a1]
+- Data: 2026-11-08
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "A1. Fator da Centelha no Atropelar (08/11/2026, DECIDIDA; fecha a pendência da R40)":
+    - Resposta do autor: 2 × Centelha, nos dois lados (quem atropela e quem tenta Parar). Bancada: com Centelha inteira, nem C12 passa de 38% para um Médio parar um elefante; com 2 × Centelha, C8 dá 69%. Exceção escrita à regra do Atributo puro (centelha.md:46).
+
+    Texto (substitui, no Atropelar, "soma a Centelha inteira, como toda jogada de Atributo puro"):
+
+    > A jogada é de **Força pura**, sem Habilidade, e soma **2 × Centelha** (uma exceção à regra do Atributo puro), mais 3 por categoria de Tamanho que você tem acima do alvo. Quem tenta **Parar** também soma 2 × Centelha à Força pura.
+
+    - Prioridade do autor (08/11): primeiro o que depende mais das decisões dele e tem pouco código, para poupar tokens.
+- Também do autor (mensagem de 08/11/2026): "No Atropelar (combate.md:452-460), troque 'soma a Centelha inteira, como toda jogada de Atributo puro' pelo texto aprovado da A1, e registre fechando a pendência da R40 (B23). Revisora confere, merge com o PROCEDE."
+- No livro: o texto aprovado em `src/content/chapters/combate.md` (*Atropelar e Pisoteio*), no lugar da frase da jogada. O "(menos 3 por categoria abaixo)" da frase antiga fica depois de "acima do alvo": o texto aprovado não o repete, e ele é regra da D-319 que a A1 não tocou. O dano do atropelamento (D-340, "+ Centelha") não muda: a A1 trata da jogada.
+- Fora do livro: a conta da bancada está em `../tmp/bancada/atropelar-prep.md` e `../tmp/bancada/atropelar-tabelaB.md` (conta de dado exata, sem desafio). As 13 fichas com Atropelar têm Centelha 0, então do lado de quem atropela nada muda hoje. O motor de criaturas e o Grid não modelam o Atropelar (Grid congelado, D-054); nada de código muda.
+- Muda: completa a D-319 (R40) no fator da Centelha, que era "a Centelha inteira por ora"; fecha a B23.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 08/11/2026.
+- Estado: a publicar (texto no livro; Revisora confere, merge com o PROCEDE).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

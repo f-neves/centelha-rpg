@@ -425,9 +425,10 @@ limitações conhecidas, que são as três de baixo.
   Esperam o lore: passeio etéreo (cauchemar), passagem entre planos (bebilith, xill), estado etéreo (item 060) e a origem dos convocados
   (item 122). O livro não ganha o estado Etéreo agora.
 
-- [ ] **B23 · [FAZER] Atropelar: a Centelha inteira ou 2 × Centelha (R40, D-319).** Registrado em 05/11/2026. A bancada calcula se
+- [x] **B23 · [DECIDIDO em 08/11/2026, D-370] Atropelar: a Centelha inteira ou 2 × Centelha (R40, D-319).** Registrado em 05/11/2026. A bancada calcula se
   a Força pura do Atropelar soma a Centelha inteira (como está no livro) ou 2 × Centelha, para que uma criatura de Centelha alta consiga
   parar criaturas grandes. O autor confirmou que o fator é o mesmo nos dois lados (quem atropela e quem quer Parar).
+  - **08/11/2026, decidido pelo autor (A1, D-370):** 2 × Centelha, nos dois lados, como exceção escrita à regra do Atributo puro. A bancada mediu com conta de dado exata (`../tmp/bancada/atropelar-prep.md` e `atropelar-tabelaB.md`): com a Centelha inteira, nem C12 passa de 38% para um Médio de Força 6 parar um elefante; com 2 × Centelha, C8 dá 69%. O texto do livro foi trocado em `combate.md` (*Atropelar e Pisoteio*).
 
 - [ ] **B24 · [FAZER] Catálogo de armas: as que as fichas usam por equivalência (itens 014, 016, 017, 019, 020 e 021; D-344).**
   Registrado em 05/11/2026. Por ora as fichas usam a equivalência que já têm: tridente como Lança, florete como espada curta, forcado

@@ -451,7 +451,7 @@ Quanto maior o Preparo, mais longe e mais forte vai o golpe que investe, e a pes
 
 ### Atropelar e Pisoteio
 
-**Atropelar.** Um ataque diferente dos outros. São **3 Ticks de Preparação**; depois do terceiro Tick, cada Tick em que você segue correndo é um **Tick de Golpe** (o primeiro é o quarto, e cada um tem a mesma penalidade do Golpe), até você decidir parar ou ser parado; depois vêm **3 Ticks de Recuperação**. Quem estiver no caminho pode ser atropelado. A jogada é de **Força pura**, sem Habilidade (soma a Centelha inteira, como toda jogada de Atributo puro), **mais 3 por categoria de Tamanho que você tem acima do alvo** (menos 3 por categoria abaixo). Você rola uma vez, e o total vale contra cada alvo, com o ajuste de Tamanho de cada um.
+**Atropelar.** Um ataque diferente dos outros. São **3 Ticks de Preparação**; depois do terceiro Tick, cada Tick em que você segue correndo é um **Tick de Golpe** (o primeiro é o quarto, e cada um tem a mesma penalidade do Golpe), até você decidir parar ou ser parado; depois vêm **3 Ticks de Recuperação**. Quem estiver no caminho pode ser atropelado. A jogada é de **Força pura**, sem Habilidade, e soma **2 × Centelha** (uma exceção à regra do Atributo puro), mais 3 por categoria de Tamanho que você tem acima do alvo (menos 3 por categoria abaixo). Quem tenta **Parar** também soma 2 × Centelha à Força pura. Você rola uma vez, e o total vale contra cada alvo, com o ajuste de Tamanho de cada um.
 
 Cada alvo no caminho escolhe como se defender:
 - **Esquivar**, com Destreza + Esquiva (aqui a defesa é rolada, e não passiva): se igualar ou superar o seu total, sai do caminho sem dano, e você segue.
