@@ -1,6 +1,6 @@
 # Lote r-listas-07-11: os números de combate antes e depois
 
-Da Executora, 07/11/2026, branch `lote-listas`. Antes: `origin/main` 585713cd. Depois: a árvore com a G2 (cherry-pick de 61832b57), o conversor que lê o Tamanho da arma e as 64 fichas do lote (a fênix, o planetar e o solar ficam como estão no main, segurados). Gerado por `tmp/executora/lote/comparar.mjs` a partir do `inimigos.json` e do `monsters.json` de antes e de depois: PV, Defesas, Absorção, Iniciativa, a Defesa com a outra arma e com o equipamento, cada ataque (jogada, dano, Velocidade, Acerto e Atributo), os poderes de regeneração e a fraqueza.
+Da Executora, 07/11/2026, branch `lote-listas`. Antes: `origin/main` 585713cd (o 81497c74, base da branch, só acrescenta documento). Depois: a árvore com a G2 (cherry-pick de 61832b57), o conversor que lê o Tamanho da arma e as 64 fichas do lote (a fênix, o planetar e o solar ficam como estão no main, segurados). Gerado por `tmp/executora/lote/comparar.mjs` a partir do `inimigos.json` e do `monsters.json` de antes e de depois: PV, Defesas, Absorção, Iniciativa, a Defesa com a outra arma e com o equipamento, cada ataque (jogada, dano, Velocidade, Acerto e Atributo), os poderes de regeneração e a fraqueza.
 
 Diferenças: 60 linhas; sem causa: 0.
 
@@ -79,8 +79,8 @@ Diferenças: 60 linhas; sem causa: 0.
 
 - **A fênix, o planetar e o solar ficam como estão no main** (ordem do Arquiteto de 07/11/2026): a Bestiarista mudou a
   fraqueza de regeneração deles, e o autor está perguntando a ela por quê. Os três JSON do lote não entraram.
-- **O `g5-regras.jsonpatch` do lote não foi aplicado**: ele acrescenta à lista fechada da G5 seis nomes (gelo, mal,
-  arma maligna, efeito maligno, artefato maligno, magia maligna) que só servem às três fichas seguradas.
+- **`g5-regras.jsonpatch`: não aplicado, segurado** (opção a do Arquiteto, 07/11/2026). Ele acrescenta à lista fechada da G5 seis nomes (gelo, mal,
+  arma maligna, efeito maligno, artefato maligno, magia maligna) que só servem às três fichas seguradas, e segura junto com elas; a pergunta vai ao autor com a das três.
 
 ## Como foi conferido
 
