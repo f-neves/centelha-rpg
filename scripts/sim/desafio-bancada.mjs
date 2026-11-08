@@ -1,4 +1,5 @@
 import { pvJogador } from '../lib-criatura-motor.mjs';
+import { lerCriaturas } from '../lib-bestiario.mjs';
 // desafio-bancada.mjs · a bancada de desafio da Fase 5 (B14).
 //
 // Roteiro PRÓPRIO da bancada (decisão do Arquiteto, 29/09/2026): não usa nem altera
@@ -184,35 +185,59 @@ function grupoCombatentes(centelha) {
 }
 
 // ============================================================== ficha da criatura
+// CARGA PELO CAMINHO REAL (B14, frente 3 do autor, etapa 1, 08/11/2026). A ficha antiga (`attrs`, `skills`, `poderes`)
+// saiu do bestiário em 58db84be, e o carregador que a lia do `src/data/bestiario/<id>.json` quebrava em toda ficha de
+// hoje. A criatura agora vem de `lerCriaturas()` (scripts/lib-bestiario.mjs), que passa a fonte pelo motor
+// (`vistaPublicaCriatura`): a vista de compatibilidade (`attrs`, `skills`, `ataques` com `atrib`/`pericia`/`tipo`, `arte`)
+// e os números do motor (`motor.stat`: PV, Defesa, Absorção com a Couraça por perfil, cada ataque com a arma no Tamanho e
+// o arremesso pelo Atributo do motor). É o mesmo caminho do `gen-bestiario`/`gen-monsters`, e não uma cópia dos gerados.
+// Além do que o laço já usava, a carga traz, como dado: a lista inteira de ataques, o Tamanho de cada arma, a
+// regeneração (o N do poder e a fraqueza do campo próprio), o multiataque e os ataques sem jogada (os sopros).
+let CRIATURAS = null;
+function criaturaDoMotor(id) {
+  if (!CRIATURAS) CRIATURAS = new Map(lerCriaturas().map((f) => [f.id, f]));
+  const f = CRIATURAS.get(id);
+  if (!f || !f.motor) throw new Error(`${id} não está nas fontes unificadas (src/data/bestiario)`);
+  return f;
+}
+const TIPO_PARA_SOAK = { perfurante: 'perfuracao', perfuracao: 'perfuracao', corte: 'corte', impacto: 'impacto' };
 function carregarCriatura(id) {
-  const ficha = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/bestiario', `${id}.json`), 'utf8'));
-  const bruto = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/monsters-mesa.json'), 'utf8'));
-  const MON = Array.isArray(bruto) ? bruto : (bruto.lista || Object.values(bruto).find(Array.isArray) || []);
-  const mesa = MON.find((m) => m.id === id);
-  if (!mesa) throw new Error(`${id} não está em monsters-mesa.json`);
+  const ficha = criaturaDoMotor(id), st = ficha.motor.stat, fonte = ficha.motor.edicao || {};
+  // o recorte que a mesa lê (`combate` do monsters-mesa, gen-monsters.mjs), montado do mesmo stat
+  const mesa = {
+    centelha: st.centelha, vontade: st.vontade ?? 5,
+    combate: {
+      pv: st.pv, defesa: st.defesa, absorcao: { impacto: st.soak.impacto, corte: st.soak.corte, perfuracao: st.soak.perfuracao },
+      ataques: st.ataques.map((a) => ({ nome: a.nome, pool: a.pool, dano: a.dano, speed: a.ticks, classe: a.classe, ...(a.semJogada ? { semJogada: true } : {}) })),
+      ...(ficha.fraquezas?.length ? { fraquezas: ficha.fraquezas } : {}),
+      ...(ficha.resistencias?.length ? { resistencias: ficha.resistencias } : {}),
+      ...(ficha.imunidades?.length ? { imunidades: ficha.imunidades } : {}),
+    },
+  };
   const elem = L0.elementosCombate(mesa);
-  const a0 = mesa.combate.ataques[0];
-  const caster = ehCaster(ficha);
+  // O ataque que o robô usa é o primeiro da ficha, como na bancada de 07/11/2026 (tmp/bancada/carga.mjs), para os
+  // números da B14 seguirem comparáveis. TOLERÂNCIA (escolha de medição). LEVANTA QUANDO: o Arquiteto decidir outra
+  // regra de qual ataque o robô usa (pergunta de 08/11/2026).
+  // A rã-venenosa e o sapo não têm ataque: carregam, com `ataque` e `dano` nulos, e o laço não os mede.
+  const a0 = mesa.combate.ataques[0] || { pool: null, dano: null, classe: null, speed: null };
+  const caster = ficha.categoria === 'Dragão' || ficha.categoria === 'dragao' || CASTERS_ID.has(ficha.id);
   const voadoraOuDistancia = !!(ficha.locomocao?.voo) || mesa.combate.ataques.some((a) => a.speed && /arco|sopro/i.test(a.nome || ''));
-  // CORRIGIDO em 30/09/2026: `tipoDaExpressao` só lê o sufixo "(C)/(I)/(P)" que as fichas
-  // de PC usam; o bestiário escreve o tipo por extenso ("perfurante") no próprio dano E
-  // no campo `tipo` do ataque-fonte (ataqueSchema). Ler do dano com `tipoDaExpressao`
-  // sempre caía no fallback 'impacto', trocando a Absorção usada contra toda criatura (achado
-  // conferindo o pedido do Arquiteto sobre dano/Absorção, 30/09/2026). A fonte certa é
-  // `ficha.ataques[0].tipo`, mapeado para o vocabulário de `soak` ('perfurante'→'perfuracao').
-  const TIPO_PARA_SOAK = { perfurante: 'perfuracao', corte: 'corte', impacto: 'impacto' };
-  const tipoDanoBasico = TIPO_PARA_SOAK[ficha.ataques?.[0]?.tipo] || tipoDaExpressao(a0.dano) || 'impacto';
+  const tipoDanoBasico = TIPO_PARA_SOAK[ficha.ataques?.[0]?.tipo] || (a0.dano ? tipoDaExpressao(a0.dano) : null) || 'impacto';
   // Componentes crus pra leitura alternativa da Guarda sob pressão (ver combatentePersona).
   const destrezaRaw = ficha.attrs.destreza;
   const esquivaRaw = ficha.skills.esquiva ?? 0;
   const penFisica = (destrezaRaw + esquivaRaw) * (REGRAS.derivados.defesa.mult ?? 2)
     + 2 * Math.min(Math.max(0, mesa.centelha), Math.max(0, esquivaRaw)) - mesa.combate.defesa;
+  // a regeneração: o N do nome do poder e a fraqueza do campo próprio (G5, D-367); nenhuma prosa é lida
+  const poderRegen = (fonte.habilidadesEspeciais || []).find((h) => /^Regeneração \d+$/.test(h.nome || ''));
+  const regeneracao = poderRegen ? { n: Number(poderRegen.nome.match(/\d+/)[0]), ...(poderRegen.fraqueza ? { fraqueza: poderRegen.fraqueza } : {}) } : null;
   return {
     id, nome: ficha.nome, tipo: 'criatura',
     pv: mesa.combate.pv, pvMax: mesa.combate.pv,
     defesaBase: mesa.combate.defesa,
     destrezaRaw, esquivaRaw, penFisica,
     soak: mesa.combate.absorcao,
+    perfilCouraca: ficha.motor.perfilCouraca ?? null, couraca: ficha.motor.couraca ?? 0,
     ataque: a0.pool, dano: a0.dano,
     tipoDano: tipoDanoBasico,
     qaArmaBonus: 0, qaArmaDano: 0, // simplificação (suposição 2): sem catálogo de arma natural
@@ -221,22 +246,24 @@ function carregarCriatura(id) {
     caster, arte: caster ? (ficha.arte || {}) : {},
     manaMax: caster ? L0.mana({ centelha: mesa.centelha, vontade: mesa.vontade }) : 0,
     manaRestante: caster ? L0.mana({ centelha: mesa.centelha, vontade: mesa.vontade }) : 0,
-    // "passivo" já fora (aura contínua, não é ação de turno). Dois achados rodando a
-    // matriz das 9 âncoras (30/09/2026):
-    //  1. `morte-explosiva` (Balor) tem `base` (entrava no pool de ataques ativos) mas o
-    //     `efeito` é um GATILHO DE MORTE ("ao cair a 0 PV..."), não algo que a criatura
-    //     escolhe usar. Sem exclusão, o Balor escolhia "morte-explosiva" todo turno
-    //     (nunca fica indisponível: `avontade` sem `quantidade` nem `recarga`) e NUNCA
-    //     atacava de verdade, travando a batalha em censura total.
-    //  2. Poder com `base` e `resiste: 'nenhum'` não é dano-e-projétil: é utilidade
-    //     (teleporte, convocar, reproduzir Arte, regenerar). Rolar Nd6 contra a Defesa
-    //     pra essas seria dano inventado onde a ficha não descreve dano nenhum. Afeta
-    //     Balor (teleporte-balor), Diabo do Fosso (convocar-diabos, feiticos-supremos),
-    //     Solar (convocar-anjos), Tarrasca (regeneracao-implacavel).
-    // Não modelo gatilho de morte nem essas utilidades (seria mecânica nova); só tiro as
-    // duas categorias do pool de ataque ativo.
-    poderes: (ficha.poderes || []).filter((p) => p.tipo === 'natural' && p.usos.periodo !== 'passivo'
-      && p.resiste !== 'nenhum' && !/ao cair a 0 ?PV/i.test(p.efeito || '')),
+    // O formato antigo de `poderes` (tipo, usos, resiste) não existe mais na ficha: o laço segue sem poder natural
+    // ofensivo, como na bancada de 07/11/2026. Os poderes de hoje vêm como dado em `habilidadesEspeciais`.
+    poderes: [],
+    // dado carregado, que o laço ainda não usa (etapa seguinte): a lista inteira de ataques do motor, com o Tamanho da
+    // arma (G1, D-363) e o Atributo do arremesso (G2, D-364); os ataques sem jogada (os sopros, R36) com o poder ligado;
+    // o multiataque; a regeneração (D-362)
+    ataques: st.ataques.map((a) => {
+      const f = (fonte.ataques || []).find((x) => x.nome === a.nome);
+      return { nome: a.nome, pool: a.pool, dano: a.dano, velocidade: a.ticks, classe: a.classe, atrib: a.atrib, habilidade: a.pericia,
+        ...(a.semJogada ? { semJogada: true } : {}), ...(f?.arma ? { arma: f.arma } : {}), ...(f?.tamanho ? { tamanho: f.tamanho } : {}) };
+    }),
+    semJogada: st.ataques.filter((a) => a.semJogada).map((a) => {
+      const h = (fonte.habilidadesEspeciais || []).find((x) => x.ataque === a.nome || x.nome === a.nome);
+      return { nome: a.nome, dano: a.dano, velocidade: a.ticks, ...(h?.base ? { base: h.base } : {}), ...(h?.limiteDeUso ? { limiteDeUso: h.limiteDeUso } : {}) };
+    }),
+    multiataque: (fonte.habilidadesEspeciais || []).filter((h) => h.regra === 'rajada' || /multiataque/i.test(h.nome || ''))
+      .map((h) => ({ nome: h.nome, ...(h.regra ? { regra: h.regra } : {}), ...(h.ataque ? { ataque: h.ataque } : {}), ...(h.classe ? { classe: h.classe } : {}) })),
+    regeneracao,
     voadoraOuDistancia,
     classe: a0.classe || 'leve', velocidade: a0.speed || 5,
     poderState: {}, // id -> { usosRestantes, cooldownTurnos }
@@ -257,9 +284,10 @@ function carregarCriatura(id) {
  * em quase toda âncora, item 2b do relato anterior). Recomputa o pool do zero pela MESMA
  * fórmula do gerador (`rolagemAtaque`, `src/lib/bestia-editor.ts`), não uma aproximação:
  * dados = ⌊(Atrib+HabEfetiva)/2⌋, flat = acerto-base + 2×mín(Centelha,HabEfetiva).
+ * Desde 08/11/2026 lê a vista do motor (o mesmo caminho do `carregarCriatura`), e não a ficha antiga.
  */
 function criaturaA2(id, criaturaBase) {
-  const ficha = JSON.parse(fs.readFileSync(path.join(RAIZ, 'src/data/bestiario', `${id}.json`), 'utf8'));
+  const ficha = criaturaDoMotor(id);
   const a0 = ficha.ataques[0];
   const atrib = ficha.attrs[a0.atrib] || 0;
   const habReal = (ficha.skills && ficha.skills[a0.pericia]) ?? (ficha.skills2 && ficha.skills2[a0.pericia]) ?? 0;

@@ -152,6 +152,9 @@ limitações conhecidas, que são as três de baixo.
     `ficha.attrs` (o formato de antes de 58db84be, "Integra A5 e A5j ao motor com 155 fontes unificadas") e não
     carrega as fichas de hoje; `desafio-matriz.mjs`, `desafio-5b-bateria.mjs` e `desafio-diagnostico.mjs` importam
     dele. A recalibração da B14 precisa dele lendo as fontes unificadas antes de qualquer número.
+    **Consertado em 08/11/2026** (frente 3 do autor, etapa 1, branch `bancada-fichas`): o carregador lê `lerCriaturas()`, os
+    quatro scripts carregam, e o `test-bancada-carga.mjs` confere a carga contra o motor (`docs/bestiario/bancada-carga.md`).
+    O laço ainda não usa a regeneração, o sopro nem o multiataque: carrega-os como dado.
 - [x] **B15 · [CORRIGIDO em 28/09/2026, achado da própria rodada estava ERRADO] O bônus de
   Centelha NÃO sai 0 em toda criatura.** Registrado em 28/09/2026, Fase 1 da Reforma da
   Centelha, como "as 309 fichas do bestiário não têm bloco `pericias`, o bônus de Centelha em
