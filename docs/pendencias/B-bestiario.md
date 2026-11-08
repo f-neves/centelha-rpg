@@ -436,7 +436,12 @@ limitações conhecidas, que são as três de baixo.
   - **07/11/2026:** Tridente, Florete e Forcado entraram no catálogo (F3, D-360); a Besta Média diz que "besta pesada" é o
     nome da fonte (G3, D-365); a arma de outro tamanho tem a régua do dado base no motor (G1, D-363). Falta a rocha arremessada,
     e as fichas que usam equivalência esperam o lote da Bestiarista (L18).
+  - **07/11/2026:** a rocha arremessada entrou como arma de criatura (G1, D-363, `6c17d092`), fora da loja e da ficha de
+    jogador, como o autor confirmou na G6 (D-368).
 - [ ] **B25 · [FAZER] Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366).** Registrado em 07/11/2026.
   A regra por peso e Força para empunhar arma de outro tamanho: a faixa de peso que cada Força consegue usar, sobre o peso que o
   catálogo já tem (D-366). Por ora o livro diz "Quem empunha" (Cap. XIII): a arma fica um degrau mais leve para quem é uma
   categoria maior, e um mais pesada para quem é uma menor; além da Pesada, o Mestre julga.
+- [ ] **B26 · [FAZER] Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas (G6, D-368).**
+  Registrado em 07/11/2026. Cadeira, mesa, barril, rocha, carroça, árvore, parede. Por ora a rocha arremessada é arma de criatura e usa a
+  régua da G1 (dano pelo tamanho). Não escrever agora.

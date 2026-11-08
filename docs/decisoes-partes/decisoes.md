@@ -4410,7 +4410,8 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-360 (F3 e F3a); usa a mesma escala do Atropelar (R40c, D-319).
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
 - **Ajustada em 07/11/2026 pelo autor** (mensagem de 07/11/2026, item 2): "A rocha: o autor já disse que ela é 'arma de arremesso improvisada'. Fica fora da loja (não se compra), mas não é arma só de criatura: qualquer um pode arremessar uma, o jogador inclusive, pela régua da G1 (dano pelo tamanho) e da G2 (Força ou Destreza). Ajuste o texto e registre na D da G1." Desfaz a escolha do Arquiteto em `6c17d092` (rocha como arma só de criatura, `soCriatura`, fora da lista de armas da ficha do jogador): a rocha sai da loja e entra na ficha. A parte da G2 (Força ou Destreza) entra com a D-364, no lote da Bestiarista; até lá a jogada da rocha segue a regra de hoje do arremesso, como toda arma de arremesso.
-- Estado: **no ar em parte** desde 07/11/2026: o passo no motor e o texto "Armas de outro tamanho" (branch `g-armas-fraqueza`, publicada em `72287ef4`) e a rocha no catálogo como arma de criatura (`6c17d092`, publicada em `585713cd`). **A ajustar** pela Executora, em branch, com merge depois do PROCEDE da Revisora (D-356): a rocha deixa de ser só de criatura (o ajuste acima). As 6 fichas de gigante e as 6 de rocha entram com o lote da Bestiarista.
+- **Corrigida no mesmo dia pela D-368** (G6): a rocha é "arma improvisada" de criatura e não entra no catálogo de armas, na loja nem na ficha de jogador. O ajuste acima fica desfeito, e volta a valer o que está no ar desde `6c17d092`: a rocha aparece só na ficha das criaturas que a arremessam. Em `armas.json` ela é só dado do motor para a ficha da criatura (`soCriatura`), sem linha na tabela do Cap. XIII, fora da loja e fora da lista de armas da ficha do jogador. O texto da G1 sobre a rocha fica no livro como régua de dano para a ficha da criatura.
+- Estado: **no ar em parte** desde 07/11/2026: o passo no motor e o texto "Armas de outro tamanho" (branch `g-armas-fraqueza`, publicada em `72287ef4`) e a rocha como arma de criatura (`6c17d092`, publicada em `585713cd`). As 6 fichas de gigante e as 6 de rocha entram com o lote da Bestiarista (`r-listas-07-11`).
 
 ### D-364 · G2: arremessar é com Força ou Destreza, à escolha de quem arremessa, normalmente o maior dos dois, para toda arma de arremesso [tags: arremesso, atirador, forca, destreza, g2, f3a, d-360, d-315]
 - Data: 2026-11-07
@@ -4460,6 +4461,18 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: completa a D-326 (R47) e a D-362.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Respostas do autor às perguntas que ficaram abertas da F3 e da regeneração").
 - Estado: **no ar** desde 07/11/2026 (branch `g-armas-fraqueza`, publicada em `72287ef4`): a lista no livro e o campo preparado no conversor; o tarrasque e os nomes fora da lista vão à Bestiarista por lista (L18).
+
+### D-368 · G6: a rocha é arma improvisada de criatura, fora do catálogo de armas, da loja e da ficha de jogador; a seção de armas improvisadas fica para depois [tags: armas, rocha, arremesso, improvisada, criatura, ficha, loja, g6, g1, d-363, b26]
+- Data: 2026-11-07
+- Decisão (autor; seção de `DECISOES-AUTOR.md`, copiada como está):
+  - "G6. A rocha e as armas improvisadas (07/11/2026, DECIDIDA)":
+    - Resposta do autor: a rocha é "arma improvisada" de criatura, não é arma de verdade; aparece na ficha de uma criatura. Não entra no catálogo de armas, na loja nem na ficha de jogador. (Corrige a leitura de Claude, que tinha dito ao Arquiteto que o jogador também a usaria como arma do catálogo.) A frase "a rocha não se compra" não entra no livro.
+    - Pendência nova (para depois): uma seção de "armas improvisadas" no livro, que ensine o Mestre a calcular o dano de objetos que normalmente não são armas (cadeira, mesa, barril, rocha, carroça, árvore, parede).
+- Também do autor (mesma mensagem): "A sua escolha original (só arma de criatura) estava certa; desfaça o que abriu para o jogador por causa da minha mensagem (o ajuste 61a48025 da D-363, se for isso)." E: "Com a rocha fora da ficha de jogador, a pergunta do quarto número do card ("Defesa +0") deixa de existir para ela. Se o mesmo problema aparecer em outra arma de arremesso sem distância fixa, traga de novo."
+- Fora do livro: o `61a48025` (branch `rocha-jogador`) não vai ao main; a rocha fica como em `6c17d092`. A seção de armas improvisadas é a pendência B26.
+- Muda: corrige o ajuste da D-363 registrado em `3f8ea38c` (que abria a rocha para o jogador) e confirma a escolha do Arquiteto em `6c17d092`.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 07/11/2026 ("Resposta do autor sobre a rocha (G6, em DECISOES-AUTOR.md), que corrige a minha mensagem anterior").
+- Estado: **no ar** desde `6c17d092` (nada a mudar no código); a seção de armas improvisadas **pendente** (B26).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
