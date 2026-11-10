@@ -455,7 +455,7 @@ Quanto maior o Preparo, mais longe e mais forte vai o golpe que investe, e a pes
 
 Cada alvo no caminho escolhe como se defender:
 - **Esquivar**, com Destreza + Esquiva (aqui a defesa é rolada, e não passiva): se igualar ou superar o seu total, sai do caminho sem dano, e você segue.
-- **Parar**, com Força pura: precisa **superar** o seu total (empate não basta), e então o atropelamento para ali.
+- **Parar**, com Força pura + 2 × Centelha: precisa **superar** o seu total (empate não basta), e então o atropelamento para ali.
 
 **Dano do atropelamento:** 1d6 de Impacto no Médio, mais 1d6 por categoria de Tamanho acima do Médio (Grande 2d6, Enorme 3d6...), **+ Margem + 2 × Força + Centelha − Absorção**. O Pequeno atropela sem dado, só com 2 × Força + Centelha; quem é menor que isso não atropela. Quem não consegue se defender sofre esse dano, com a Margem contada contra 0, e fica Caído, e o atropelamento segue.
 
