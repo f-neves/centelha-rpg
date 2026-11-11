@@ -4510,6 +4510,19 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **no ar** desde 08/11/2026 (`6e98fcad`, publicado em `0fc04bcd`): o texto no livro.
 - **Redação do item Parar (10/11/2026, aprovada pelo autor):** na lista das defesas do Atropelar, "Parar, com Força pura: precisa superar o seu total" passa a "Parar, com Força pura + 2 × Centelha: precisa superar o seu total". Nas palavras do autor: "Só deixa explícito o que a A1 (D-370) já diz no parágrafo de cima; não muda regra."
 
+### D-371 · I1: cada arma do catálogo continua um item só e ganha sete estilos de imagem por raça, cada um com a imagem normal e a de Relíquia; a ficha guarda o estilo (só registro, a implementar depois da Curadora) [tags: armas, catalogo, imagens, estilo, raca, reliquia, ficha, curadora, i1]
+- Data: 2026-11-11
+- Decisão (autor; seção "Imagens no site, estilos por raça (11/11/2026)" de `DECISOES-AUTOR.md`, copiada como está):
+  - "I1. Versões por raça na lista de armas (DECIDIDA)":
+    - Resposta do autor: a recomendada. Cada arma continua um item só no catálogo, com os mesmos números, e ganha sete estilos (comum, élfico, anão, orc, halfling, humano, gnomo), cada um com a imagem normal e a de Relíquia. A lista pode mostrar cada estilo como uma linha ("Sabre élfico"), mas por baixo é o mesmo item; a ficha guarda o estilo que o personagem escolheu. Estilos: art déco = anões; art nouveau = elfos; cottage = halflings; gótico ou renascentista = humanos; rococó (steampunk_rococo) = gnomos; nórdico = orcs; armorium sem sufixo = comum. Em cada imagem do armorium, a peça da esquerda é a comum e a da direita é a Relíquia.
+    - Começa só pelas armas. A Curadora (tmp\curadora) faz o inventário e os recortes; quem implementa no site é o Arquiteto.
+- Também do autor (mensagem de 11/11/2026): "Cada arma do catálogo continua um item só, com os mesmos números, e ganha sete estilos de imagem: comum, élfico, anão, orc, halfling, humano e gnomo. Cada estilo tem a imagem normal e a de Relíquia. A lista pode mostrar cada estilo como uma linha ("Sabre élfico"), mas é o mesmo item. A ficha do personagem guarda o estilo escolhido. Começa só pelas armas." E: "Quem prepara as imagens é a Curadora, uma instância nova, fora da sua equipe (pasta C:\Users\Neves\ClaudeCode\centelha\tmp\curadora): inventário, ligação de cada imagem ao id do catálogo e recortes da peça normal e da de Relíquia. Ela entrega um mapeamento.json por id de arma. Quando estiver pronto e conferido pelo autor, a implementação vem para você."
+- No livro e no site: nada por ora. Os números das armas não mudam (o estilo é só a imagem).
+- Fora do livro: a Curadora prepara o inventário, a ligação imagem → id de `src/data/armas.json` e os recortes, em `../tmp/curadora/`, e entrega um `mapeamento.json` por id de arma. A implementação (o campo de estilo no catálogo, as imagens, a lista com uma linha por estilo e o estilo guardado na ficha) espera esse mapeamento conferido pelo autor. Pendência: G78.
+- Muda: nenhuma decisão anterior. Começa só pelas armas.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 11/11/2026.
+- Estado: **a implementar** (registro só; espera o `mapeamento.json` da Curadora, conferido pelo autor).
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
