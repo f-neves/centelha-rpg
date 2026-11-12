@@ -1,7 +1,7 @@
 # Prova da trava (controle negativo)
 
 Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-12, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD d760ef96). Cada caso muda UM arquivo, roda a trava só nele com um
+`centelha-executora` (ramo revisao-textos, HEAD 5812d7a8). Cada caso muda UM arquivo, roda a trava só nele com um
 contradicoes.md de teste e devolve o arquivo ao que era. Os avisos (linhas com ·) não derrubam a trava.
 
 ## A reescrita só de redação passa
@@ -188,7 +188,7 @@ Entrada: nenhuma
 
 ```
 ✓ src/content/chapters/combate.md
-    · termo comum (só aviso; resolver no estado.md): some nenhum; aparece milagre
+    - `src/content/chapters/combate.md` · "milagre" · 0 → 1 · termo comum aparece · resolução: 
 ✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
 ```
 
@@ -210,7 +210,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo
 ```
 ✓ src/content/chapters/combate.md
     · RT-900: a entrada ainda não está aplicada neste arquivo ("Preparação" segue 2 vez(es))
-    · termos com outra contagem (só aviso): preparo 52→50
+    - `src/content/chapters/combate.md` · "preparo" · 52 → 50 · termo, outra contagem · resolução: 
 ✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
 ```
 
@@ -224,7 +224,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo
 ```
 ✘ src/content/chapters/combate.md
     ✘ RT-900: o "antes" da entrada está 2 vez(es) no arquivo da base, e a entrada pede 3: "Preparação"
-    · termos com outra contagem (só aviso): preparo 50→52
+    - `src/content/chapters/combate.md` · "preparo" · 50 → 52 · termo, outra contagem · resolução: 
 ✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
 ```
 
@@ -263,8 +263,8 @@ A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages s
 ```
 trava · base d760ef96 · 449 arquivo(s) · 2 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md
     · RT-001: a entrada ainda não está aplicada neste arquivo ("Preparação" segue 2 vez(es))
-    · termos com outra contagem (só aviso): preparo 52→50
+    - `src/content/chapters/combate.md` · "preparo" · 52 → 50 · termo, outra contagem · resolução: 
     · RT-001: a entrada ainda não está aplicada neste arquivo ("Preparação" segue 1 vez(es))
-    · termos com outra contagem (só aviso): preparo 2→1
+    - `src/data/armas-extras.json` · "preparo" · 2 → 1 · termo, outra contagem · resolução: 
 ✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
 ```

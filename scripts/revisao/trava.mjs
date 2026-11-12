@@ -36,7 +36,9 @@
 //      quando somem ou aparecem; cada aviso se resolve no estado.md ("termo do jogo, intacto" ou "palavra comum").
 //    - TÍTULOS DE SEÇÃO: em .md, as linhas #, ##, ### (até ######) fora de bloco de código; em .astro, os <h1> a <h6> e os
 //      id="...". A lista tem de ficar igual, na ordem. Título só muda com entrada.
-// 6. Sai com código 1 se qualquer arquivo falha, e mostra o que sobrou; 0 se tudo casa. Os avisos não derrubam.
+// 6. Sai com código 1 se qualquer arquivo falha, e mostra o que sobrou; 0 se tudo casa. Os avisos não derrubam. Cada
+//    aviso de termo sai numa linha pronta para colar no estado.md: - `arquivo` · "termo" · antes → depois · motivo ·
+//    resolução: (e quem reescreve completa com "termo do jogo, intacto" ou "palavra comum").
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -207,9 +209,11 @@ function comparar(arq) {
   const ehComum = (k) => COMUNS.has(k.toLowerCase());
   if (sumiu.some((k) => !ehComum(k))) falhas.push(`termo protegido some do arquivo: ${sumiu.filter((k) => !ehComum(k)).join(', ')}`);
   if (novo.some((k) => !ehComum(k))) falhas.push(`termo protegido aparece novo no arquivo: ${novo.filter((k) => !ehComum(k)).join(', ')}`);
-  if (sumiu.some(ehComum) || novo.some(ehComum)) avisos.push(`termo comum (só aviso; resolver no estado.md): some ${sumiu.filter(ehComum).join(', ') || 'nenhum'}; aparece ${novo.filter(ehComum).join(', ') || 'nenhum'}`);
-  const mudou = [...tA.keys()].filter((k) => tD.has(k) && tD.get(k) !== tA.get(k)).map((k) => `${k} ${tA.get(k)}→${tD.get(k)}`);
-  if (mudou.length) avisos.push(`termos com outra contagem (só aviso): ${mudou.join(', ')}`);
+  // cada aviso de termo numa linha pronta para o estado.md (regra do autor: todo aviso se resolve lá, como "termo do
+  // jogo, intacto" ou "palavra comum"): arquivo, termo, contagem antes → depois, e o lugar da resolução
+  const avisoTermo = (k, motivo) => avisos.push(`- \`${arq}\` · "${k}" · ${tA.get(k) || 0} → ${tD.get(k) || 0} · ${motivo} · resolução: `);
+  for (const k of [...sumiu, ...novo].filter(ehComum)) avisoTermo(k, 'termo comum ' + (tA.has(k) ? 'some' : 'aparece'));
+  for (const k of [...tA.keys()].filter((x) => tD.has(x) && tD.get(x) !== tA.get(x))) avisoTermo(k, (ehComum(k) ? 'termo comum' : 'termo') + ', outra contagem');
   const hA = titulos(antes, ext), hD = titulos(depois, ext);
   if (JSON.stringify(hA) !== JSON.stringify(hD)) {
     const i = hA.findIndex((h, j) => h !== hD[j]);
@@ -226,7 +230,7 @@ for (const arq of arquivos) {
   if (falhas.length) caiu++;
   console.log(`${falhas.length ? '✘' : '✓'} ${arq}`);
   for (const f of falhas) console.log(`    ✘ ${f}`);
-  for (const a of avisos) console.log(`    · ${a}`);
+  for (const a of avisos) console.log(a.startsWith('- `') ? `    ${a}` : `    · ${a}`);
 }
 if (caiu) { console.error(`✘ trava: ${caiu} arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md`); process.exit(1); }
 console.log('✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md');
