@@ -337,10 +337,6 @@
     },
     {
       "campo": "ataques.Glaive serrilhada",
-      "motivo": "antes, Alabarda com serrilha manual; depois, item glaive-serrilhada, conforme 36.1. Acerto −1 e dano médio 17,5 preservados; removida a manobra redundante."
-    },
-    {
-      "campo": "ataques.Glaive serrilhada",
       "motivo": "12/11/2026, I2 do autor: o item do catálogo virou a Glaive lisa (sem Sangramento, Acerto +0), e a glaive serrilhada do diabo passa a ataque da própria ficha, com os mesmos números (Velocidade 7, 1d6 + 2, Acerto −1, duas mãos, Força × 2, alcance) e o Sangramento escrito na ficha. Dano médio 17,5 preservado."
     }
   ]

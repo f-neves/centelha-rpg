@@ -15,10 +15,6 @@
 //
 // O arquivo cresce a cada lote da Bestiarista: rode de novo depois de cada entrada (ESTADO.md, "Entradas automáticas").
 //   node scripts/gen-criaturas-esperado.mjs [pasta das fichas]
-//
-// 12/11/2026 (I2, D-372, B27): a entrada do diabo-barbado na fixture foi editada à mão (a glaive serrilhada como ataque
-// próprio), antes da ficha .md da Bestiarista; o sha256 dele é o da .md de antes. Regenerar antes do lote dela desfaz a I2
-// no diabo.
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';

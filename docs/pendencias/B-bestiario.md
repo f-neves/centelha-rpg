@@ -454,8 +454,15 @@ limitações conhecidas, que são as três de baixo.
 - [ ] **B26 · [FAZER] Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas (G6, D-368).**
   Registrado em 07/11/2026. Cadeira, mesa, barril, rocha, carroça, árvore, parede. Por ora a rocha arremessada é arma de criatura e usa a
   régua da G1 (dano pelo tamanho). Não escrever agora.
-- [ ] **B27 · [FAZER] A ficha .md do diabo barbado, depois da I2 (D-372): a glaive serrilhada como ataque da própria ficha.** Registrado em 12/11/2026.
+- [x] **B27 · [RESOLVIDO em 12/11/2026, D-372] A ficha .md do diabo barbado, depois da I2 (D-372): a glaive serrilhada como ataque da própria ficha.** Registrado em 12/11/2026.
   O JSON do diabo (`src/data/bestiario/diabo-barbado.json`) foi editado em 12/11 antes da ficha .md da Bestiarista, que ainda diz
   `armas: glaive-serrilhada`. Até o lote dela, reconverter o diabo para no conversor, e a fixture `criaturas-esperado.json` tem a
   entrada do diabo de 12/11 com o sha256 da .md de antes. A lista vai à Bestiarista pelo autor (L18):
   `../tmp/arquiteto/lista-bestiarista-glaive.md`. Fecha quando o lote entrar e a fixture for regenerada.
+  - **12/11/2026, resolvido:** a Bestiarista aplicou a lista em `rascunhos/r-listas-07-11/fichas/diabo-barbado.md`. A reconversão
+    passa sem parada, e o JSON reconvertido é igual ao publicado em todos os campos de jogo; a única diferença era a `revisao`,
+    que o conversor monta só da .md. O JSON do site passou a ser o reconvertido, e a nota antiga da `revisao` (a glaive como item
+    do catálogo) saiu; o registro fica na D-372 e nas notas da D-248, D-249 e D-262. A fixture foi regenerada com o sha256 da
+    .md nova (`../tmp/arquiteto/fichas-glaive`: as 324 fichas de `tmp/executora/lote/fichas-misto` com o diabo novo), e só
+    o sha do diabo e o cabeçalho mudaram. A cópia `tmp/executora/lote/fichas-misto/diabo-barbado.md` ainda é a de antes: o
+    próximo lote toma a ficha do diabo da pasta da Bestiarista, e não dessa cópia.

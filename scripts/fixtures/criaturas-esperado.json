@@ -1,7 +1,7 @@
 {
  "fonte": {
-  "pasta": "tmp/executora/lote/fichas-misto",
-  "data": "2026-11-08",
+  "pasta": "tmp/arquiteto/fichas-glaive",
+  "data": "2026-11-12",
   "fichas": 324,
   "gerador": "scripts/gen-criaturas-esperado.mjs"
  },
@@ -8563,7 +8563,7 @@
    }
   },
   "diabo-barbado": {
-   "sha256": "8d40b956132ee40295097323d85712db5f940e688c9aa205d13e5a97f2c18437",
+   "sha256": "fe86644fc1d6f92b1236c7e3bbf4af653d0343a631328e66f192ac00d64c4f42",
    "entrada": {
     "categoria": "corruptor",
     "centelha": 4,
