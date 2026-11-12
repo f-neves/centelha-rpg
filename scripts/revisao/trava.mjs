@@ -47,6 +47,13 @@
 //      . ! ? ; seguidos de espaço, em linha em branco, e antes de linha de lista, de tabela, de título ou de tag; a
 //      quebra de linha simples (o parágrafo quebrado no arquivo) não termina frase. Termo dentro de termo mais longo
 //      ("Defesa" em "Defesa Física") conta só o mais longo.
+//    - LINHAS DE TABELA, POR SEÇÃO (FALHA; CORRIGE da Revisora, 12/11/2026: "| Pesada | 7 | 2d6 | +0 | −2 | 2 |" com o
+//      Acerto e a Defesa trocados passava, porque todo número da linha se ligava ao rótulo). Em .md, a linha que começa
+//      com |; em .astro, cada <tr> com as suas <td>/<th>. A ASSINATURA de uma linha de dados é a sequência ORDENADA das
+//      células que têm número ou dado, cada célula reduzida aos números (com o sinal) e dados dela; a do cabeçalho (a
+//      linha seguida de |---|, ou a <tr> com <th>) é o texto inteiro das células. O multiconjunto de assinaturas da seção
+//      tem de ficar igual: reescrever a palavra de uma célula passa; trocar colunas, mudar número de célula ou reescrever
+//      o cabeçalho exige linha Trava.
 //    - TERMOS PROTEGIDOS, NO ARQUIVO: contagem por termo, com fronteira de palavra. FALHA quando o termo SOME de vez
 //      do arquivo ou APARECE novo nele; quando só a contagem muda, AVISA. Regra dos AMBÍGUOS: o termo do glossário com
 //      maiúscula que, nos capítulos da base, aparece em minúscula em metade ou mais das vezes é contado só na forma do
@@ -89,6 +96,15 @@ if (!arquivos.length && !SAIDA_CLASSES) arquivos = git('diff', '--name-only', BA
 // Na linha "- Trava:" (e nos itens logo abaixo dela), cada trecho `arquivo`: "antes" → "depois", com "(N×)" opcional
 // quando o mesmo trecho muda N vezes no arquivo; vários trechos na mesma linha, separados por ponto e vírgula. As
 // linhas de "Versões escritas" não têm a seta e não contam; o bloco de código do formato, no topo, também não.
+// O arquivo pode vir só pelo nome (`combate.md`, `condicoes.json`): ele vale quando há um só arquivo com esse nome em
+// src/ na base. Com mais de um, ou nenhum, fica como está, e o aviso do topo da saída diz qual.
+let PORNOME = null;
+function resolveArquivo(a) {
+  if (a.includes('/')) return a;
+  if (!PORNOME) { PORNOME = new Map(); for (const f of git('ls-tree', '-r', '--name-only', BASE, 'src').split('\n').filter(Boolean)) { const b = f.split('/').pop(); PORNOME.set(b, [...(PORNOME.get(b) || []), f]); } }
+  const c = PORNOME.get(a) || [];
+  return c.length === 1 ? c[0] : a;
+}
 function lerEntradas(md) {
   const out = [];
   let emCodigo = false, rt = null, naTrava = false;
@@ -99,8 +115,9 @@ function lerEntradas(md) {
     if (/^-\s*Trava:/.test(linha)) naTrava = true;
     else if (/^-\s/.test(linha) || !linha.trim()) naTrava = false;
     if (!naTrava) continue;
-    for (const m of linha.matchAll(/`([^`]+)`:\s*"(.*?)"\s*→\s*"(.*?)"(?:\s*\((\d+)×\))?(?=\s*(?:;|$|\())/g))
-      out.push({ rt, arquivo: m[1].replace(/\\/g, '/').replace(/:\d+$/, ''), antes: m[2], depois: m[3], vezes: Number(m[4] || 1) });
+    // a anotação entre o arquivo e os dois-pontos é aceita e ignorada: `condicoes.json` (doente.nota): "..." → "..."
+    for (const m of linha.matchAll(/`([^`]+)`(?:\s*\([^)]*\))?:\s*"(.*?)"\s*→\s*"(.*?)"(?:\s*\((\d+)×\))?(?=\s*(?:;|$|\())/g))
+      out.push({ rt, arquivo: resolveArquivo(m[1].replace(/\\/g, '/').replace(/:\d+$/, '')), antes: m[2], depois: m[3], vezes: Number(m[4] || 1) });
   }
   return out;
 }
@@ -279,6 +296,35 @@ function pares(t) {
   return conta(out);
 }
 
+// ---------------------------------------------------------------- as linhas de tabela (item 6 do cabeçalho)
+const limpaCelula = (c) => c.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+function assinaturaDados(celulas) {
+  const comNumero = celulas.map((c) => [...numerosPos(c).map((n) => n.valor), ...[...dados(c).keys()]].join(' ')).filter(Boolean);
+  return comNumero.length ? `linha: ${comNumero.join(' | ')}` : null;
+}
+function linhasTabela(t, ext) {
+  const out = [];
+  if (ext === '.astro') {
+    for (const m of t.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/g)) {
+      const celulas = [...m[1].matchAll(/<t([dh])\b[^>]*>([\s\S]*?)<\/t[dh]>/g)];
+      if (!celulas.length) continue;
+      if (celulas.some((c) => c[1] === 'h')) out.push(`cabeçalho: ${celulas.map((c) => limpaCelula(c[2])).join(' | ')}`);
+      else { const a = assinaturaDados(celulas.map((c) => limpaCelula(c[2]))); if (a) out.push(a); }
+    }
+    return conta(out);
+  }
+  if (ext === '.json') return conta(out);
+  const linhas = t.split('\n');
+  const separador = (l) => /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(l);
+  linhas.forEach((l, i) => {
+    if (!/^\s*\|/.test(l) || separador(l)) return;
+    const celulas = l.trim().replace(/^\|/, '').replace(/\|$/, '').split(/(?<!\\)\|/);
+    if (linhas[i + 1] !== undefined && separador(linhas[i + 1])) out.push(`cabeçalho: ${celulas.map(limpaCelula).join(' | ')}`);
+    else { const a = assinaturaDados(celulas); if (a) out.push(a); }
+  });
+  return conta(out);
+}
+
 // ---------------------------------------------------------------- a comparação
 function difMulti(a, b) { // o que sobra de cada lado
   const sai = [], entra = [];
@@ -356,6 +402,7 @@ function comparar(arq) {
       const dn = difMulti(numeros(a).fortes, numeros(d).fortes); if (temDif(dn)) falhas.push(`números sem entrada, ${onde}: ${mostra(dn)}`);
       const dd = difMulti(dados(a), dados(d)); if (temDif(dd)) falhas.push(`dado ou fórmula sem entrada, ${onde}: ${mostra(dd)}`);
       if (!temDif(dn)) { const dp = difMulti(pares(a), pares(d)); if (temDif(dp)) falhas.push(`par termo e número desfeito, ${onde}: ${mostra(dp)}`); }
+      const dl = difMulti(linhasTabela(a, ext), linhasTabela(d, ext)); if (temDif(dl)) falhas.push(`linha de tabela mudou (colunas trocadas, número de célula ou cabeçalho), ${onde}: ${mostra(dl)}`);
     });
   }
   return { falhas, avisos };
@@ -365,6 +412,9 @@ function comparar(arq) {
 let caiu = 0;
 if (arquivos.length || !SAIDA_CLASSES) {
   console.log(`trava · base ${BASE} · ${arquivos.length} arquivo(s) · ${ENTRADAS.length} entrada(s) de trava em ${path.relative(REPO, CONTRADICOES) || CONTRADICOES} · ${MOVIMENTOS.length} movimento(s) de seção em ${path.relative(REPO, ESTADO) || ESTADO}`);
+  // as entradas cujo arquivo não existe na base nunca se aplicam: aviso no topo, para quem escreveu o contradicoes.md
+  const orfas = [...new Set(ENTRADAS.filter((e) => naBase(e.arquivo) == null).map((e) => `${e.rt} (\`${e.arquivo}\`)`))];
+  if (orfas.length) console.log(`    · entrada(s) com arquivo que não existe na base (nome ambíguo ou caminho errado): ${orfas.join(', ')}`);
   for (const arq of arquivos) {
     const { falhas, avisos } = comparar(arq);
     if (falhas.length) caiu++;

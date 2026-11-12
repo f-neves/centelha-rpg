@@ -107,7 +107,7 @@ r.push(caso('a linha de trava da RT-001, como está no contradicoes.md, com as d
 r.push(caso('a linha de trava da RT-001 com o arquivo igual à base: passa, com aviso de entrada não aplicada', CAP, [], [RT1], 'passa'));
 r.push(caso('a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: falha (o "depois" não está)', CAP, [[R1, R1b]], [RT1], 'falha'));
 r.push(caso('a linha de trava da RT-001 com só uma das duas trocas do combate.md: falha', CAP, [RT1trocas[0]], [RT1], 'falha'));
-r.push(caso('a linha de trava da RT-001 no JSON das armas extras', 'src/data/armas-extras.json', [['+2 na Preparação', '+2 no Preparo']], [RT1], 'passa'));
+r.push(caso('a linha de trava da RT-001 no JSON das armas extras', 'src/data/armas-extras.json', [['aceito pelo +2 na Preparação', 'aceito pelo +2 no Preparo']], [RT1], 'passa'));
 console.log('## O sinal do número, os ambíguos em minúscula, a posição por seção e os pares termo e número\n');
 const S1 = 'penalidades da Preparação (Defesa −2', S1b = 'penalidades da Preparação (Defesa +2';
 r.push(caso('sinal trocado (Defesa −2 vira Defesa +2), sem entrada', CAP, [[S1, S1b]], [], 'falha'));
@@ -131,6 +131,25 @@ r.push(caso('burla 4: a troca do Cego na mesma frase ("Esquiva −4 e Bloqueio �
   [['(Esquiva −4 e Bloqueio −8 sabendo do ataque', '(Esquiva −8 e Bloqueio −4 sabendo do ataque']], [], 'falha'));
 r.push(caso('burla 4 no JSON: a mesma troca na nota do Cego em condicoes.json', 'src/data/condicoes.json',
   [['Esquiva −4 e Bloqueio −8 sabendo', 'Esquiva −8 e Bloqueio −4 sabendo']], [], 'falha'));
+console.log('## As linhas de tabela\n');
+const ARM = 'src/content/chapters/armas-e-armaduras.md';
+const PES = '| Pesada | 7 | 2d6 | +0 | −2 | 2 |', PESb = '| Pesada | 7 | 2d6 | −2 | +0 | 2 |';
+r.push(caso('burla 5: duas colunas trocadas na mesma linha de tabela (Acerto e Defesa da Pesada, Cap. XIII)', ARM, [[PES, PESb]], [], 'falha'));
+r.push(caso('as mesmas colunas trocadas, com entrada', ARM, [[PES, PESb]], [[PES, PESb]], 'passa'));
+r.push(caso('a palavra de uma célula reescrita, sem número (a última célula da Pesada)', ARM, [['dano que vence armadura, mas lenta e te expõe, com guarda baixa', 'dano que vence armadura; lenta, te expõe e baixa a guarda']], [], 'passa'));
+const capArm = fs.readFileSync(path.join(REPO, ARM), 'utf8').replace(/\r/g, '');
+const cab = capArm.split('\n')[capArm.split('\n').indexOf('|---|:---:|:---:|:---:|:---:|:---:|---|') - 1];
+r.push(caso('o cabeçalho da tabela reescrito, sem entrada', ARM, [[cab, cab.replace(/\| ([^|]+?) \|/, (m, c) => `| ${c} (classe) |`)]], [], 'falha'));
+// no .astro: a primeira <tr> escrita à mão com duas <td> de número (das 38 páginas e dos componentes, só a
+// configuracoes.astro tem; o resto das tabelas das páginas sai de JavaScript)
+const PAG2 = 'src/pages/configuracoes.astro';
+const pag2 = fs.readFileSync(path.join(REPO, PAG2), 'utf8');
+const tr = [...pag2.matchAll(/<tr\b[^>]*>[\s\S]*?<\/tr>/g)].find((m) => (m[0].match(/<td\b[^>]*>[^<{]*\d[^<{]*<\/td>/g) || []).length >= 2);
+if (tr) {
+  const tds = [...tr[0].matchAll(/<td\b[^>]*>([^<{]*\d[^<{]*)<\/td>/g)];
+  const trocado = tr[0].replace(tds[0][0], '\u0000').replace(tds[1][0], tds[0][0]).replace('\u0000', tds[1][0]);
+  r.push(caso(`burla 5 no .astro: duas <td> com número trocadas numa <tr> de ${PAG2}`, PAG2, [[tr[0], trocado]], [], 'falha'));
+} else console.log(`(sem <tr> com duas <td> de número escritas à mão em ${PAG2}: o caso .astro fica de fora)\n`);
 console.log('## A entrada que não casa falha\n');
 r.push(caso('entrada que pede (3×) num trecho que está 2 vezes', CAP, [[/Preparação/gu, 'Preparo']], ['- Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (3×)'], 'falha'));
 r.push(caso('entrada com "antes" que não está na base', CAP, [[N1, N1b]], [['(Força 7 e Destreza 2? use a Força)', N1b]], 'falha'));

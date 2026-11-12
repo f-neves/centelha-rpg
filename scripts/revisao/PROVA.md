@@ -1,7 +1,7 @@
 # Prova da trava (controle negativo)
 
 Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-12, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD 022e06f1). Cada caso muda UM arquivo, roda a trava só nele com um
+`centelha-executora` (ramo revisao-textos, HEAD dd92282a). Cada caso muda UM arquivo, roda a trava só nele com um
 contradicoes.md e um estado.md de teste e devolve o arquivo ao que era. Os avisos (linhas com · ou com "resolução:") não derrubam a trava.
 
 **"Próximo", a definição testável dos pares termo e número:** cada número da seção se liga a um termo protegido, o mais perto
@@ -202,7 +202,7 @@ Entrada: nenhuma
 ### ✓ a linha de trava da RT-001, como está no contradicoes.md, com as duas trocas do combate.md feitas (esperado: passa; exit 0)
 
 Troca: "Ticks de Preparação" → "Ticks de Preparo"; "penalidades da Preparação" → "penalidades do Preparo"
-Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
 
 ```
 ✓ src/content/chapters/combate.md
@@ -212,7 +212,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ### ✓ a linha de trava da RT-001 com o arquivo igual à base: passa, com aviso de entrada não aplicada (esperado: passa; exit 0)
 
 Troca: 
-Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
 
 ```
 ✓ src/content/chapters/combate.md
@@ -223,7 +223,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ### ✓ a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: falha (o "depois" não está) (esperado: falha; exit 1)
 
 Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
-Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
 
 ```
 ✘ src/content/chapters/combate.md
@@ -235,7 +235,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ### ✓ a linha de trava da RT-001 com só uma das duas trocas do combate.md: falha (esperado: falha; exit 1)
 
 Troca: "Ticks de Preparação" → "Ticks de Preparo"
-Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
 
 ```
 ✘ src/content/chapters/combate.md
@@ -245,8 +245,8 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 
 ### ✓ a linha de trava da RT-001 no JSON das armas extras (esperado: passa; exit 0)
 
-Troca: "+2 na Preparação" → "+2 no Preparo"
-Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+Troca: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
 
 ```
 ✓ src/data/armas-extras.json
@@ -393,6 +393,61 @@ Entrada: nenhuma
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
+## As linhas de tabela
+
+### ✓ burla 5: duas colunas trocadas na mesma linha de tabela (Acerto e Defesa da Pesada, Cap. XIII) (esperado: falha; exit 1)
+
+Troca: "| Pesada | 7 | 2d6 | +0 | −2 | 2 |" → "| Pesada | 7 | 2d6 | −2 | +0 | 2 |"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/armas-e-armaduras.md
+    ✘ linha de tabela mudou (colunas trocadas, número de célula ou cabeçalho), seção "Classes de Arma": saem linha: 7 | 2 6 2d6 | +0 | -2 | 2 (−1); entram linha: 7 | 2 6 2d6 | -2 | +0 | 2 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ as mesmas colunas trocadas, com entrada (esperado: passa; exit 0)
+
+Troca: "| Pesada | 7 | 2d6 | +0 | −2 | 2 |" → "| Pesada | 7 | 2d6 | −2 | +0 | 2 |"
+Entrada: "| Pesada | 7 | 2d6 | +0 | −2 | 2 |" → "| Pesada | 7 | 2d6 | −2 | +0 | 2 |"
+
+```
+✓ src/content/chapters/armas-e-armaduras.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ a palavra de uma célula reescrita, sem número (a última célula da Pesada) (esperado: passa; exit 0)
+
+Troca: "dano que vence armadura, mas lenta e te expõe, com guarda baixa" → "dano que vence armadura; lenta, te expõe e baixa a guarda"
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/armas-e-armaduras.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ o cabeçalho da tabela reescrito, sem entrada (esperado: falha; exit 1)
+
+Troca: "| Classe | Velocidade | Dano | Acerto | Def. | Mãos | Estilo |" → "| Classe (classe) | Velocidade | Dano | Acerto | Def. | Mãos | Estilo |"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/armas-e-armaduras.md
+    ✘ linha de tabela mudou (colunas trocadas, número de célula ou cabeçalho), seção "Classes de Arma": saem cabeçalho: Classe | Velocidade | Dano | Acerto | Def. | Mãos | Estilo (−1); entram cabeçalho: Classe (classe) | Velocidade | Dano | Acerto | Def. | Mãos | Estilo (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ burla 5 no .astro: duas <td> com número trocadas numa <tr> de src/pages/configuracoes.astro (esperado: falha; exit 1)
+
+Troca: "<tr><td>Espada longa</td><td>6</td><td>1d6</td><td>+1</td><td>+1</td><td>1</td></tr>" → "<tr><td>Espada longa</td><td>1d6</td><td>6</td><td>+1</td><td>+1</td><td>1</td></tr>"
+Entrada: nenhuma
+
+```
+✘ src/pages/configuracoes.astro
+    ✘ linha de tabela mudou (colunas trocadas, número de célula ou cabeçalho), seção "Largura máxima das tabelas": saem linha: 6 | 1 6 1d6 | +1 | +1 | 1 (−1); entram linha: 1 6 1d6 | 6 | +1 | +1 | 1 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
 ## A entrada que não casa falha
 
 ### ✓ entrada que pede (3×) num trecho que está 2 vezes (esperado: falha; exit 1)
@@ -433,22 +488,51 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ## Resultado
 
-37 de 37 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
+42 de 42 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
 
 ## Os 449 arquivos de hoje
 
-A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 449 passam, 0 falham. Como todos estão iguais à base, a trava não compara nada neles (o arquivo igual à base passa direto); este número só prova que nada quebra na leitura. Os únicos avisos são das entradas da RT-001, registrada e ainda não aplicada:
+A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 449 passam, 0 falham. Como todos estão iguais à base, a trava não compara nada neles (o arquivo igual à base passa direto); este número só prova que nada quebra na leitura. Os únicos avisos são de "igual à base": as entradas do contradicoes.md registradas e ainda não aplicadas (a RT-001 e as que a fase 1 consolidou):
 
 ```
-trava · base d760ef96 · 449 arquivo(s) · 3 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
+trava · base d760ef96 · 449 arquivo(s) · 86 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
+    · igual à base; entrada(s) ainda não aplicada(s): RT-058
+    · igual à base; entrada(s) ainda não aplicada(s): RT-022, RT-034, RT-035
+    · igual à base; entrada(s) ainda não aplicada(s): RT-027, RT-033
+    · igual à base; entrada(s) ainda não aplicada(s): RT-021
+    · igual à base; entrada(s) ainda não aplicada(s): RT-009, RT-088, RT-089
+    · igual à base; entrada(s) ainda não aplicada(s): RT-017, RT-039, RT-040
+    · igual à base; entrada(s) ainda não aplicada(s): RT-001, RT-017, RT-035, RT-046, RT-049, RT-060, RT-067
+    · igual à base; entrada(s) ainda não aplicada(s): RT-018
+    · igual à base; entrada(s) ainda não aplicada(s): RT-003, RT-004, RT-011
+    · igual à base; entrada(s) ainda não aplicada(s): RT-044, RT-046
+    · igual à base; entrada(s) ainda não aplicada(s): RT-019
+    · igual à base; entrada(s) ainda não aplicada(s): RT-084, RT-092, RT-097
+    · igual à base; entrada(s) ainda não aplicada(s): RT-026
+    · igual à base; entrada(s) ainda não aplicada(s): RT-085, RT-087
     · igual à base; entrada(s) ainda não aplicada(s): RT-001
-    · igual à base; entrada(s) ainda não aplicada(s): RT-001
+    · igual à base; entrada(s) ainda não aplicada(s): RT-062, RT-068
+    · igual à base; entrada(s) ainda não aplicada(s): RT-013
+    · igual à base; entrada(s) ainda não aplicada(s): RT-028, RT-029, RT-030, RT-065
+    · igual à base; entrada(s) ainda não aplicada(s): RT-094
+    · igual à base; entrada(s) ainda não aplicada(s): RT-064, RT-070, RT-071
+    · igual à base; entrada(s) ainda não aplicada(s): RT-014
+    · igual à base; entrada(s) ainda não aplicada(s): RT-017
+    · igual à base; entrada(s) ainda não aplicada(s): RT-006, RT-010, RT-023, RT-055, RT-057, RT-060, RT-061, RT-063, RT-077, RT-080
+    · igual à base; entrada(s) ainda não aplicada(s): RT-020, RT-072, RT-073
+    · igual à base; entrada(s) ainda não aplicada(s): RT-007
+    · igual à base; entrada(s) ainda não aplicada(s): RT-082
+    · igual à base; entrada(s) ainda não aplicada(s): RT-079, RT-081
+    · igual à base; entrada(s) ainda não aplicada(s): RT-036, RT-047
+    · igual à base; entrada(s) ainda não aplicada(s): RT-075
+    · igual à base; entrada(s) ainda não aplicada(s): RT-017
+    · igual à base; entrada(s) ainda não aplicada(s): RT-074
 ✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ## Falso positivo numa reescrita neutra (`node scripts/revisao/prova-reflow.mjs`)
 
-Os 28 capítulos com as linhas de cada parágrafo juntadas numa só, o que muda toda seção que tem parágrafo quebrado em várias linhas e faz a trava comparar essas seções: números, dados e pares termo-número, além dos termos e títulos do arquivo. É um teste de leitura (a frase, a seção, o par), e não de reescrita de verdade: o ruído real só aparece na primeira página reescrita. Com o contradicoes.md e o estado.md vazios:
+Os 28 capítulos com as linhas de cada parágrafo juntadas numa só, o que muda toda seção que tem parágrafo quebrado em várias linhas e faz a trava comparar essas seções: números, dados, pares termo-número e linhas de tabela, além dos termos e títulos do arquivo. É um teste de leitura (a frase, a seção, o par, a linha), e não de reescrita de verdade: o ruído real só aparece na primeira página reescrita. Com o contradicoes.md e o estado.md vazios:
 
 ```
 capítulos com linhas juntadas: 28 de 28; trava exit 0
