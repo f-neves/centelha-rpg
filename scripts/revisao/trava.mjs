@@ -3,45 +3,60 @@
 // O pedido do autor: "um script de trava (fora do build, em scripts\revisao\) que, para cada arquivo, compara antes e
 // depois: números, expressões de dado (1d6+2, 2 × Centelha etc.), termos protegidos e títulos de seção. Toda diferença
 // de número, dado ou termo tem de corresponder a uma entrada do contradicoes.md; senão, o script falha."
+// E a ordem seguinte do autor (12/11/2026): "Feche o buraco da posição [...] compare por seção: a. O conjunto de números,
+// dados e fórmulas de cada seção, antes e depois, tem de ser igual, salvo entrada no contradicoes.md. b. Pares termo e
+// número: em cada frase do original, registre os termos protegidos e os números da mesma frase. No texto novo, cada par
+// tem de continuar na mesma seção, com o mesmo termo e o mesmo número próximos. Uma frase pode virar duas; o par não pode
+// se separar de seção nem trocar de termo. c. Se a reescrita juntar ou mover trechos entre seções, isso exige entrada no
+// estado.md, e a Revisora confere à mão."
 //
 // Uso:
-//   node scripts/revisao/trava.mjs [--base <ref>] [--contradicoes <md>] [--glossario <json>] [--classes] [arquivos...]
+//   node scripts/revisao/trava.mjs [--base <ref>] [--contradicoes <md>] [--estado <md>] [--glossario <json>]
+//                                  [--classes [<saida.md>]] [arquivos...]
 // A base padrão é d760ef96 (o main de 12/11/2026, de onde saiu o ramo revisao-textos). Sem arquivos, a trava pega os que
 // mudaram desde a base (`git diff --name-only <base>`, o que já foi commitado no ramo e o que está só no disco), com texto:
-// src/content/**, src/pages/**, src/components/** e src/data/*.json.
+// src/content/**, src/pages/**, src/components/** e src/data/*.json. `--classes` imprime as classes de termo e, com um
+// caminho, grava a lista dos ambíguos em Markdown (a do ../tmp/revisao-textos/ambiguos-minuscula.md).
 //
 // COMO A COMPARAÇÃO FUNCIONA
-// 1. O ANTES é o arquivo na base (`git show <base>:<arquivo>`); o DEPOIS é o arquivo no disco.
-// 2. (O arquivo igual à base passa direto, com aviso das entradas dele ainda não aplicadas.) As entradas de trava do contradicoes.md para aquele arquivo (as linhas `arquivo`: "antes" → "depois") são APLICADAS
-//    no antes: cada "antes" tem de existir no antes, e cada "depois" tem de existir no depois, senão a entrada não casa e a
-//    trava falha. O antes corrigido pelas entradas é o que se compara com o depois. Assim a entrada cobre exatamente o
-//    trecho que ela diz, e uma diferença fora de entrada sobra.
+// 1. O ANTES é o arquivo na base (`git show <base>:<arquivo>`); o DEPOIS é o arquivo no disco. O arquivo igual à base
+//    passa direto, com aviso das entradas dele ainda não aplicadas.
+// 2. As entradas de trava do contradicoes.md para aquele arquivo (`arquivo`: "antes" → "depois", com "(N×)" opcional)
+//    são APLICADAS no antes: cada "antes" tem de existir no antes (N vezes), e cada "depois" tem de existir no depois,
+//    senão a entrada não casa e a trava falha. Depois, os MOVIMENTOS DE SEÇÃO do estado.md (seção "## Movimentos de
+//    seção": `arquivo`: "trecho" · de "Título A" → "Título B") tiram o trecho da seção A do antes e o põem no fim da
+//    seção B. O antes corrigido é o que se compara com o depois.
 // 3. Os blocos gerados (<!-- gen:x --> ... <!-- /gen:x -->) saem dos dois lados: eles mudam pela fonte.
 // 4. No src/data/*.json, só os campos de prosa (descricao, texto, definicao, efeito, nota, tracos, e o texto de niveis[])
-//    são comparados como texto; o resto do JSON tem de ficar IGUAL, campo por campo (senão falha: a revisão é de texto).
-// 5. O que se compara, nos dois lados:
-//    - NÚMEROS: contagem por valor (multiconjunto, não posição: a reescrita reordena frases), os escritos com algarismos
-//      (1, 12, 1,5, 3.000, e também os colados em letra, como o N0 da perfuração e os de 1d6) e os por extenso de dois
-//      a doze. "um" e "uma" só AVISAM: são o artigo indefinido, e uma reescrita troca artigo o tempo todo.
-//      O sinal colado na frente faz parte do número: "−4", "+4" e "4" são valores diferentes. Se o arquivo bate, mas o
-//      multiconjunto de uma seção (# ou ##) muda, AVISA "número mudou de seção".
-//    - DADO E FÓRMULA: NdM±K (1d6+2, 6d6+2 +8, d6), "N × Palavra" e "Palavra × N", frações (1/2), porcentagens (30%) e
-//      "÷ N", por multiconjunto, sem espaço.
-//    - TERMOS PROTEGIDOS (glossario-protegido.json): contagem por termo, com fronteira de palavra. FALHA quando o termo
-//      SOME de vez do arquivo ou APARECE novo nele; quando só a contagem muda, AVISA (a reescrita junta e separa frases).
-//      Regra dos termos AMBÍGUOS (a que fecha o falso positivo de "Média", "Golpe", "Nível", "Tempo"...): o termo do
-//      glossário com maiúscula que, no corpo dos capítulos na base, aparece em minúscula em metade ou mais das vezes é
-//      palavra comum ali ("média" de conta, "nível" de escada); para ele a contagem DIFERENCIA maiúsculas e conta só a
-//      forma do glossário. Os outros termos contam sem diferenciar maiúsculas. Termos com a mesma grafia em minúscula
-//      são um só. `--classes` imprime a lista dos ambíguos.
-//      Nos ambíguos, a contagem da forma minúscula que muda só AVISA ("ambíguo em minúscula").
-//      Os termos COMUNS (a seção do glossário que começa por "_comuns", regra do autor de 12/11/2026): só AVISAM, também
-//      quando somem ou aparecem; cada aviso se resolve no estado.md ("termo do jogo, intacto" ou "palavra comum").
-//    - TÍTULOS DE SEÇÃO: em .md, as linhas #, ##, ### (até ######) fora de bloco de código; em .astro, os <h1> a <h6> e os
+//    são comparados como texto, e cada campo é uma seção; o resto do JSON tem de ficar IGUAL, campo por campo.
+// 5. SEÇÃO: em .md, o trecho entre dois títulos de qualquer nível (# a ######), o mais fino; em .astro, o trecho entre
+//    dois <h1> a <h6>; no JSON, cada campo de prosa. Como os títulos são protegidos, a seção N do antes é a seção N do
+//    depois. Se os títulos mudaram, a trava já falha por isso, e compara números e dados no arquivo inteiro.
+// 6. O que se compara:
+//    - NÚMEROS, POR SEÇÃO (FALHA): multiconjunto por valor (a ordem dentro da seção não importa), os escritos com
+//      algarismos (1, 12, 1,5, 3.000, também os colados em letra, como o N0 da perfuração e os de 1d6) e os por extenso
+//      de dois a doze. O SINAL colado na frente faz parte do valor: "−4", "+4" e "4" diferem (+, −, – e - normalizados);
+//      o "-" de "D-362" e de "1-3" e o "+" de "1d6+2" não são sinal. "um" e "uma" só AVISAM (são artigo).
+//    - DADO E FÓRMULA, POR SEÇÃO (FALHA): NdM±K, "N × Palavra" e "Palavra × N", frações, porcentagens e "÷ N", sem espaço.
+//    - PARES TERMO E NÚMERO, POR SEÇÃO (FALHA). A definição testável de "próximo": cada número da seção se liga a UM
+//      termo protegido, o mais perto dele na mesma frase, medido em caracteres entre os dois (empate: o que vem antes).
+//      Se a frase não tem termo, o número se liga ao último termo da frase anterior, na mesma seção (é a frase que
+//      virou duas). Sem termo nas duas, o par é (nenhum, número). O multiconjunto de pares (termo, número) de cada seção
+//      tem de ser igual no antes e no depois. É isso que pega a troca do Cego ("Esquiva −4 e Bloqueio −8" virando
+//      "Esquiva −8 e Bloqueio −4"): os números e os termos da seção são os mesmos, e os pares não. Frase: termina em
+//      . ! ? ; seguidos de espaço, em linha em branco, e antes de linha de lista, de tabela, de título ou de tag; a
+//      quebra de linha simples (o parágrafo quebrado no arquivo) não termina frase. Termo dentro de termo mais longo
+//      ("Defesa" em "Defesa Física") conta só o mais longo.
+//    - TERMOS PROTEGIDOS, NO ARQUIVO: contagem por termo, com fronteira de palavra. FALHA quando o termo SOME de vez
+//      do arquivo ou APARECE novo nele; quando só a contagem muda, AVISA. Regra dos AMBÍGUOS: o termo do glossário com
+//      maiúscula que, nos capítulos da base, aparece em minúscula em metade ou mais das vezes é contado só na forma do
+//      glossário, diferenciando maiúsculas; a contagem da forma minúscula que muda só AVISA ("ambíguo em minúscula").
+//      Os outros termos contam sem diferenciar maiúsculas. Os termos COMUNS (a seção do glossário que começa por
+//      "_comuns", regra do autor) só AVISAM, também quando somem ou aparecem.
+//    - TÍTULOS DE SEÇÃO (FALHA): em .md, as linhas # a ###### fora de bloco de código; em .astro, os <h1> a <h6> e os
 //      id="...". A lista tem de ficar igual, na ordem. Título só muda com entrada.
-// 6. Sai com código 1 se qualquer arquivo falha, e mostra o que sobrou; 0 se tudo casa. Os avisos não derrubam. Cada
-//    aviso de termo sai numa linha pronta para colar no estado.md: - `arquivo` · "termo" · antes → depois · motivo ·
-//    resolução: (e quem reescreve completa com "termo do jogo, intacto" ou "palavra comum").
+// 7. Sai com código 1 se qualquer arquivo falha; 0 se tudo casa. Os avisos não derrubam. Cada aviso de termo sai numa
+//    linha pronta para colar no estado.md: - `arquivo` · "termo" · antes → depois · motivo · resolução:
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
@@ -53,11 +68,12 @@ const MISSAO = path.resolve(REPO, '../tmp/revisao-textos');
 // ---------------------------------------------------------------- argumentos
 const args = process.argv.slice(2);
 const opt = (nome, padrao) => { const i = args.indexOf(nome); if (i < 0) return padrao; const v = args[i + 1]; args.splice(i, 2); return v; };
-const flag = (nome) => { const i = args.indexOf(nome); if (i < 0) return false; args.splice(i, 1); return true; };
 const BASE = opt('--base', 'd760ef96');
 const CONTRADICOES = opt('--contradicoes', path.join(MISSAO, 'contradicoes.md'));
+const ESTADO = opt('--estado', path.join(MISSAO, 'estado.md'));
 const GLOSSARIO = opt('--glossario', path.join(MISSAO, 'glossario-protegido.json'));
-const MOSTRAR_CLASSES = flag('--classes');
+let MOSTRAR_CLASSES = false, SAIDA_CLASSES = null;
+{ const i = args.indexOf('--classes'); if (i >= 0) { MOSTRAR_CLASSES = true; if (args[i + 1] && args[i + 1].endsWith('.md')) { SAIDA_CLASSES = args[i + 1]; args.splice(i, 2); } else args.splice(i, 1); } }
 
 const git = (...a) => execFileSync('git', a, { cwd: REPO, encoding: 'utf8', maxBuffer: 1 << 28 });
 const naBase = (arq) => { try { return git('show', `${BASE}:${arq}`); } catch { return null; } };
@@ -67,9 +83,9 @@ const lf = (s) => (s == null ? s : s.replace(/\r\n?/g, '\n'));
 // ---------------------------------------------------------------- quais arquivos
 const TEM_TEXTO = (a) => /^src\/(content|pages|components)\//.test(a) || /^src\/data\/[^/]+\.json$/.test(a);
 let arquivos = args.map((a) => path.relative(REPO, path.resolve(a)).replace(/\\/g, '/'));
-if (!arquivos.length) arquivos = git('diff', '--name-only', BASE).split('\n').filter(Boolean).filter(TEM_TEXTO);
+if (!arquivos.length && !SAIDA_CLASSES) arquivos = git('diff', '--name-only', BASE).split('\n').filter(Boolean).filter(TEM_TEXTO);
 
-// ---------------------------------------------------------------- as entradas de trava
+// ---------------------------------------------------------------- as entradas de trava e os movimentos de seção
 // Na linha "- Trava:" (e nos itens logo abaixo dela), cada trecho `arquivo`: "antes" → "depois", com "(N×)" opcional
 // quando o mesmo trecho muda N vezes no arquivo; vários trechos na mesma linha, separados por ponto e vírgula. As
 // linhas de "Versões escritas" não têm a seta e não contam; o bloco de código do formato, no topo, também não.
@@ -89,43 +105,80 @@ function lerEntradas(md) {
   return out;
 }
 const ENTRADAS = fs.existsSync(CONTRADICOES) ? lerEntradas(fs.readFileSync(CONTRADICOES, 'utf8')) : [];
+// No estado.md, a seção "## Movimentos de seção", uma linha por trecho movido:
+//   - `arquivo`: "trecho" · de "Título A" → "Título B"
+// O título sem os # (o JSON usa o caminho do campo, como a trava o imprime).
+function lerMovimentos(md) {
+  const out = []; let dentro = false;
+  for (const linha of lf(md).split('\n')) {
+    if (/^##\s/.test(linha)) { dentro = /^##\s+Movimentos de seção/i.test(linha); continue; }
+    if (!dentro) continue;
+    const m = linha.match(/^\s*-\s*`([^`]+)`:\s*"(.*?)"\s*·\s*de\s*"(.*?)"\s*→\s*"(.*?)"/);
+    if (m) out.push({ arquivo: m[1].replace(/\\/g, '/'), trecho: m[2], de: m[3], para: m[4] });
+  }
+  return out;
+}
+const MOVIMENTOS = fs.existsSync(ESTADO) ? lerMovimentos(fs.readFileSync(ESTADO, 'utf8')) : [];
 
 // ---------------------------------------------------------------- o texto que se compara
 const semGerados = (s) => s.replace(/<!--\s*gen:([\w-]+)\s*-->[\s\S]*?<!--\s*\/gen:\1\s*-->/g, '');
 const CAMPOS_PROSA = new Set(['descricao', 'texto', 'definicao', 'efeito', 'nota', 'tracos']);
+const SEP_JSON = '\n␞\n'; // separa os campos de prosa no texto do JSON (o caractere não aparece em prosa)
 function prosaDoJson(txt) {
-  const prosa = [];
-  const pega = (v) => { if (typeof v === 'string') prosa.push(v); else if (Array.isArray(v)) v.forEach(pega); else if (v && typeof v === 'object') Object.values(v).forEach(pega); };
-  const esqueleto = (o) => {
-    if (Array.isArray(o)) return o.map(esqueleto);
+  const campos = [];
+  const pega = (v, cam) => { if (typeof v === 'string') campos.push({ titulo: cam, texto: v }); else if (Array.isArray(v)) v.forEach((x, i) => pega(x, `${cam}[${i}]`)); else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) pega(x, `${cam}.${k}`); };
+  const esqueleto = (o, cam) => {
+    if (Array.isArray(o)) return o.map((x, i) => esqueleto(x, `${cam}[${i}]`));
     if (!o || typeof o !== 'object') return o;
     const r = {};
     for (const [k, v] of Object.entries(o)) {
       // o `texto` de niveis[] cai aqui também: a recursão desce no array e acha a chave
-      if (CAMPOS_PROSA.has(k)) { pega(v); r[k] = '·prosa·'; }
-      else r[k] = esqueleto(v);
+      if (CAMPOS_PROSA.has(k)) { pega(v, `${cam}.${k}`); r[k] = '·prosa·'; }
+      else r[k] = esqueleto(v, `${cam}.${k}`);
     }
     return r;
   };
-  const sk = esqueleto(JSON.parse(txt));
-  return { texto: prosa.join('\n'), esqueleto: JSON.stringify(sk) };
+  const sk = esqueleto(JSON.parse(txt), '$');
+  return { campos, texto: campos.map((c) => c.texto).join(SEP_JSON), esqueleto: JSON.stringify(sk) };
+}
+// as seções de um texto (ver item 5 do cabeçalho); `titulo` sem os #
+function secoes(t, ext, titulosJson) {
+  if (ext === '.json') return t.split(SEP_JSON).map((texto, i) => ({ titulo: titulosJson?.[i] ?? `campo ${i + 1}`, texto }));
+  const out = [{ titulo: '(antes do primeiro título)', texto: '' }];
+  if (ext === '.astro') {
+    let ult = 0;
+    for (const m of t.matchAll(/<h[1-6]\b[^>]*>([\s\S]*?)<\/h[1-6]>/g)) {
+      out[out.length - 1].texto += t.slice(ult, m.index);
+      out.push({ titulo: m[1].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim(), texto: '' }); ult = m.index + m[0].length;
+    }
+    out[out.length - 1].texto += t.slice(ult);
+    return out;
+  }
+  let emCodigo = false;
+  for (const linha of t.split('\n')) {
+    if (/^\s*(```|~~~)/.test(linha)) emCodigo = !emCodigo;
+    if (!emCodigo && /^#{1,6}\s/.test(linha)) out.push({ titulo: linha.replace(/^#+\s*/, '').trim(), texto: '' });
+    else out[out.length - 1].texto += linha + '\n';
+  }
+  return out;
 }
 
 // ---------------------------------------------------------------- o que se conta
 const EXTENSO = { dois: '2', duas: '2', 'três': '3', quatro: '4', cinco: '5', seis: '6', sete: '7', oito: '8', nove: '9', dez: '10', onze: '11', doze: '12' };
-const ARTIGO = { um: '1', uma: '1' };
 const L = '\\p{L}\\p{N}';
 const conta = (lista) => { const m = new Map(); for (const x of lista) m.set(x, (m.get(x) || 0) + 1); return m; };
+const RE_NUM = /(?:(?<![\p{L}\p{N}])([+−–-]))?(?<![\p{N}])(?<![\p{N}][.,])\d+(?:[.,]\d+)*(?![\p{N}])/gu;
+const RE_EXTENSO = new RegExp(`(?<![${L}])(${Object.keys(EXTENSO).join('|')})(?![${L}])`, 'giu');
+// os números com a posição: o sinal colado na frente faz parte do valor (CORRIGE da Revisora)
+function numerosPos(t) {
+  const out = [];
+  for (const m of t.matchAll(RE_NUM)) out.push({ i: m.index, f: m.index + m[0].length, valor: m[1] ? (m[1] === '+' ? '+' : '-') + m[0].slice(1) : m[0] });
+  for (const m of t.matchAll(RE_EXTENSO)) { const w = m[1].toLowerCase(); out.push({ i: m.index, f: m.index + m[0].length, valor: `${w} (${EXTENSO[w]})` }); }
+  return out.sort((a, b) => a.i - b.i);
+}
 function numeros(t) {
-  // colado em letra também conta (o N0 da perfuração, o 1d6): só não parte um número ao meio. O SINAL colado na frente
-  // faz parte da chave (CORRIGE da Revisora, 12/11/2026: "Defesa −4" virando "Defesa +4" passava): "−4", "+4" e "4" são
-  // chaves diferentes, com +, −, – e - normalizados para + e -. Só é sinal o que não vem colado em letra ou algarismo
-  // (o "-" de "D-362" e de "1-3" não é sinal, nem o "+" de "1d6+2").
-  const fortes = [...t.matchAll(/(?:(?<![\p{L}\p{N}])([+−–-]))?(?<![\p{N}])(?<![\p{N}][.,])\d+(?:[.,]\d+)*(?![\p{N}])/gu)]
-    .map((m) => (m[1] ? (m[1] === '+' ? '+' : '-') + m[0].slice(1) : m[0]));
-  for (const m of t.matchAll(new RegExp(`(?<![${L}])(${Object.keys(EXTENSO).join('|')})(?![${L}])`, 'giu'))) fortes.push(`${m[1].toLowerCase()} (${EXTENSO[m[1].toLowerCase()]})`);
   const fracos = [...t.matchAll(new RegExp(`(?<![${L}])(um|uma)(?![${L}])`, 'giu'))].map((m) => m[1].toLowerCase());
-  return { fortes: conta(fortes), fracos: conta(fracos) };
+  return { fortes: conta(numerosPos(t).map((n) => n.valor)), fracos: conta(fracos) };
 }
 const tira = (s) => s.replace(/\s+/g, '').replace(/[−–]/g, '-');
 function dados(t) {
@@ -163,33 +216,67 @@ const corpoBase = capitulosBase.map((a) => semGerados(lf(naBase(a) || ''))).join
 const TERMOS = [];
 for (const [k, formas] of porChave) {
   const maiuscula = [...formas].find((f) => f !== f.toLowerCase());
-  let ambiguo = false;
+  let ambiguo = false, nMin = 0, nMai = 0;
   const comum = COMUNS.has(k);
   if (maiuscula && !comum) {
     const todas = [...corpoBase.matchAll(new RegExp(`(?<![${L}])${esc(k)}(?![${L}])`, 'giu'))];
-    const minusc = todas.filter((m) => m[0] === m[0].toLowerCase()).length;
-    ambiguo = todas.length > 0 && minusc * 2 >= todas.length;
+    nMin = todas.filter((m) => m[0] === m[0].toLowerCase()).length; nMai = todas.length - nMin;
+    ambiguo = todas.length > 0 && nMin * 2 >= todas.length;
   }
-  TERMOS.push({ termo: ambiguo ? maiuscula : k, ambiguo, comum, re: new RegExp(`(?<![${L}])${esc(ambiguo ? maiuscula : k)}(?![${L}])`, ambiguo ? 'gu' : 'giu'),
-    // a forma minúscula do ambíguo, só para o aviso (pedido da Revisora, 12/11/2026): ela não derruba a trava
+  TERMOS.push({ termo: ambiguo ? maiuscula : k, ambiguo, comum, nMin, nMai, re: new RegExp(`(?<![${L}])${esc(ambiguo ? maiuscula : k)}(?![${L}])`, ambiguo ? 'gu' : 'giu'),
+    // a forma minúscula do ambíguo, só para o aviso (pedido da Revisora): ela não derruba a trava
     ...(ambiguo ? { reMinuscula: new RegExp(`(?<![${L}])${esc(k)}(?![${L}])`, 'gu') } : {}) });
 }
 if (MOSTRAR_CLASSES) {
-  const amb = TERMOS.filter((t) => t.ambiguo).map((t) => t.termo);
-  console.log(`${TERMOS.length} termos (grafias iguais em minúscula juntas), ${amb.length} ambíguos (contados só na forma do glossário):\n${amb.join(', ')}`);
+  const amb = TERMOS.filter((t) => t.ambiguo);
+  console.log(`${TERMOS.length} termos (grafias iguais em minúscula juntas), ${amb.length} ambíguos (contados só na forma do glossário):\n${amb.map((t) => t.termo).join(', ')}`);
   console.log(`${COMUNS.size} comuns (só aviso): ${[...COMUNS].join(', ')}`);
+  if (SAIDA_CLASSES) {
+    const linhas = amb.sort((a, b) => b.nMin - a.nMin || a.termo.localeCompare(b.termo, 'pt')).map((t) => `| ${t.termo} | ${t.nMin} | ${t.nMai} |`);
+    fs.writeFileSync(SAIDA_CLASSES, [
+      '# Os termos ambíguos: a trava vigia só a forma com maiúscula',
+      '',
+      `Gerado por \`node scripts/revisao/trava.mjs --classes ../tmp/revisao-textos/${path.basename(SAIDA_CLASSES)}\` (base ${BASE}; glossário com ${Object.values(GLOS).flat().length} entradas em ${Object.keys(GLOS).length} seções, ${porChave.size} grafias distintas sem diferenciar maiúsculas).`,
+      'Regenerar quando o glossário mudar. Cada termo abaixo é do glossário com maiúscula e aparece em minúscula em metade ou',
+      'mais das vezes nos capítulos da base (sem os blocos gerados). A trava conta só a forma com maiúscula; o uso em',
+      'minúscula só gera aviso quando a contagem muda. **A Revisora lê com atenção o uso em minúscula destes termos.**',
+      '',
+      `${amb.length} termos, do mais usado em minúscula para o menos.`,
+      '',
+      '| Termo | Em minúscula | Com maiúscula |',
+      '|---|---|---|',
+      ...linhas, ''].join('\n'));
+    console.log(`gravado: ${SAIDA_CLASSES}`);
+  }
 }
 const termos = (t) => { const m = new Map(); for (const x of TERMOS) { const n = (t.match(x.re) || []).length; if (n) m.set(x.termo, n); } return m; };
 const minusculasAmbiguas = (t) => { const m = new Map(); for (const x of TERMOS) if (x.reMinuscula) { const n = (t.match(x.reMinuscula) || []).length; if (n) m.set(x.termo.toLowerCase(), n); } return m; };
-// as seções de nível # e ## de um .md, para o aviso de número que muda de seção
-function secoes(t) {
-  const out = [{ titulo: '(antes do primeiro título)', texto: '' }]; let emCodigo = false;
-  for (const linha of t.split('\n')) {
-    if (/^\s*(```|~~~)/.test(linha)) emCodigo = !emCodigo;
-    if (!emCodigo && /^#{1,2}\s/.test(linha)) out.push({ titulo: linha.trim(), texto: '' });
-    else out[out.length - 1].texto += linha + '\n';
+
+// ---------------------------------------------------------------- os pares termo e número (item 6 do cabeçalho)
+const RE_FIM_FRASE = /[.!?;](?=\s)|\n[ \t]*\n|\n(?=[ \t]*(?:[-*+]\s|\d+\.\s|\||#|<))/g;
+function pares(t) {
+  // os termos com posição; o contido num mais longo sai
+  const brutos = [];
+  for (const x of TERMOS) for (const m of t.matchAll(x.re)) brutos.push({ i: m.index, f: m.index + m[0].length, termo: x.termo });
+  brutos.sort((a, b) => a.i - b.i || b.f - a.f);
+  const ts = [];
+  for (const b of brutos) { const u = ts[ts.length - 1]; if (u && b.i < u.f) continue; ts.push(b); }
+  const fins = [...t.matchAll(RE_FIM_FRASE)].map((m) => m.index);
+  const frase = (p) => { let lo = 0, hi = fins.length; while (lo < hi) { const mid = (lo + hi) >> 1; if (fins[mid] < p) lo = mid + 1; else hi = mid; } return lo; };
+  for (const x of ts) x.frase = frase(x.i);
+  const out = [];
+  for (const n of numerosPos(t)) {
+    const fr = frase(n.i);
+    let melhor = null, dist = Infinity;
+    for (const x of ts) {
+      if (x.frase !== fr) continue;
+      const d = x.f <= n.i ? n.i - x.f : x.i - n.f;
+      if (d < dist || (d === dist && x.f <= n.i)) { melhor = x; dist = d; }
+    }
+    if (!melhor) melhor = ts.filter((x) => x.frase === fr - 1).pop() || null; // a frase que virou duas
+    out.push(`${melhor ? melhor.termo : '(nenhum)'} ↔ ${n.valor}`);
   }
-  return out;
+  return conta(out);
 }
 
 // ---------------------------------------------------------------- a comparação
@@ -198,22 +285,24 @@ function difMulti(a, b) { // o que sobra de cada lado
   for (const k of new Set([...a.keys(), ...b.keys()])) { const d = (b.get(k) || 0) - (a.get(k) || 0); if (d < 0) sai.push(`${k} (−${-d})`); if (d > 0) entra.push(`${k} (+${d})`); }
   return { sai, entra };
 }
+const temDif = (d) => d.sai.length || d.entra.length;
+const mostra = (d) => `saem ${d.sai.join(', ') || 'nenhum'}; entram ${d.entra.join(', ') || 'nenhum'}`;
 function comparar(arq) {
   const falhas = [], avisos = [];
   const ext = path.extname(arq);
   let antes = lf(naBase(arq)), depois = lf(noDisco(arq));
   if (antes == null) return { falhas: ['arquivo novo desde a base: a trava não tem com o que comparar'], avisos };
   if (depois == null) return { falhas: ['arquivo removido desde a base'], avisos };
-  // o arquivo igual à base não tem o que comparar; as entradas dele ficam como aviso, porque ainda não foram aplicadas
   if (antes === depois) {
     const pendentes = ENTRADAS.filter((x) => x.arquivo === arq).map((e) => e.rt);
     if (pendentes.length) avisos.push(`igual à base; entrada(s) ainda não aplicada(s): ${[...new Set(pendentes)].join(', ')}`);
     return { falhas, avisos };
   }
+  let titJsonA = null, titJsonD = null;
   if (ext === '.json') {
     const a = prosaDoJson(antes), d = prosaDoJson(depois);
     if (a.esqueleto !== d.esqueleto) falhas.push('o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)');
-    antes = a.texto; depois = d.texto;
+    antes = a.texto; depois = d.texto; titJsonA = a.campos.map((c) => c.titulo); titJsonD = d.campos.map((c) => c.titulo);
   } else { antes = semGerados(antes); depois = semGerados(depois); }
   // as entradas do contradicoes.md, aplicadas no antes
   for (const e of ENTRADAS.filter((x) => x.arquivo === arq)) {
@@ -223,14 +312,20 @@ function comparar(arq) {
     if (depois.split(e.antes).length - 1 > n - e.vezes) avisos.push(`${e.rt}: a entrada ainda não está aplicada neste arquivo ("${e.antes}" segue ${depois.split(e.antes).length - 1} vez(es))`);
     for (let i = 0; i < e.vezes; i++) antes = antes.replace(e.antes, e.depois);
   }
-  const nA = numeros(antes), nD = numeros(depois);
-  const dn = difMulti(nA.fortes, nD.fortes);
-  if (dn.sai.length || dn.entra.length) falhas.push(`números sem entrada: saem ${dn.sai.join(', ') || 'nenhum'}; entram ${dn.entra.join(', ') || 'nenhum'}`);
+  // os movimentos de seção do estado.md, aplicados nas seções do antes
+  const sA = secoes(antes, ext, titJsonA), sD = secoes(depois, ext, titJsonD);
+  for (const mv of MOVIMENTOS.filter((x) => x.arquivo === arq)) {
+    const de = sA.find((s) => s.titulo === mv.de && s.texto.includes(mv.trecho)), para = sA.find((s) => s.titulo === mv.para);
+    if (!de || !para) { falhas.push(`movimento de seção do estado.md não casa: "${mv.trecho}" de "${mv.de}" → "${mv.para}"`); continue; }
+    de.texto = de.texto.replace(mv.trecho, ''); para.texto += '\n' + mv.trecho + '\n';
+  }
+  // no arquivo inteiro vale o antes com as entradas (o movimento não muda contagem, e as seções não levam os títulos)
+  const antesMovido = antes;
+  // no arquivo: o artigo, os termos e os títulos
+  const nA = numeros(antesMovido), nD = numeros(depois);
   const df = difMulti(nA.fracos, nD.fracos);
-  if (df.sai.length || df.entra.length) avisos.push(`"um"/"uma" mudaram de contagem (artigo, só aviso): ${[...df.sai, ...df.entra].join(', ')}`);
-  const dd = difMulti(dados(antes), dados(depois));
-  if (dd.sai.length || dd.entra.length) falhas.push(`dado ou fórmula sem entrada: saem ${dd.sai.join(', ') || 'nenhum'}; entram ${dd.entra.join(', ') || 'nenhum'}`);
-  const tA = termos(antes), tD = termos(depois);
+  if (temDif(df)) avisos.push(`"um"/"uma" mudaram de contagem (artigo, só aviso): ${[...df.sai, ...df.entra].join(', ')}`);
+  const tA = termos(antesMovido), tD = termos(depois);
   const sumiu = [...tA.keys()].filter((k) => !tD.has(k)), novo = [...tD.keys()].filter((k) => !tA.has(k));
   const ehComum = (k) => COMUNS.has(k.toLowerCase());
   if (sumiu.some((k) => !ehComum(k))) falhas.push(`termo protegido some do arquivo: ${sumiu.filter((k) => !ehComum(k)).join(', ')}`);
@@ -240,34 +335,43 @@ function comparar(arq) {
   const avisoTermo = (k, motivo) => avisos.push(`- \`${arq}\` · "${k}" · ${tA.get(k) || 0} → ${tD.get(k) || 0} · ${motivo} · resolução: `);
   for (const k of [...sumiu, ...novo].filter(ehComum)) avisoTermo(k, 'termo comum ' + (tA.has(k) ? 'some' : 'aparece'));
   for (const k of [...tA.keys()].filter((x) => tD.has(x) && tD.get(x) !== tA.get(x))) avisoTermo(k, (ehComum(k) ? 'termo comum' : 'termo') + ', outra contagem');
-  const mA = minusculasAmbiguas(antes), mD = minusculasAmbiguas(depois);
+  const mA = minusculasAmbiguas(antesMovido), mD = minusculasAmbiguas(depois);
   for (const k of new Set([...mA.keys(), ...mD.keys()])) if ((mA.get(k) || 0) !== (mD.get(k) || 0))
     avisos.push(`- \`${arq}\` · "${k}" · ${mA.get(k) || 0} → ${mD.get(k) || 0} · ambíguo em minúscula · resolução: `);
-  // 3. número que muda de SEÇÃO (# e ##) com o arquivo batendo: só aviso (pedido da Revisora, adotado pelo Arquiteto)
-  if ((ext === '.md' || ext === '.mdx') && !dn.sai.length && !dn.entra.length) {
-    const sA = secoes(antes), sD = secoes(depois);
-    if (sA.length === sD.length) sA.forEach((sec, i) => {
-      const d = difMulti(numeros(sec.texto).fortes, numeros(sD[i].texto).fortes);
-      if (d.sai.length || d.entra.length) avisos.push(`- \`${arq}\` · número mudou de seção · ${sec.titulo} · saem ${d.sai.join(', ') || 'nenhum'}; entram ${d.entra.join(', ') || 'nenhum'} · resolução: `);
-    });
-  }
   const hA = titulos(antes, ext), hD = titulos(depois, ext);
+  const titulosIguais = JSON.stringify(hA) === JSON.stringify(hD) && sA.length === sD.length;
   if (JSON.stringify(hA) !== JSON.stringify(hD)) {
     const i = hA.findIndex((h, j) => h !== hD[j]);
     falhas.push(`títulos de seção mudaram (a partir do ${i < 0 ? hA.length + 1 : i + 1}º): antes ${JSON.stringify(hA.slice(Math.max(0, i), Math.max(0, i) + 3))}, agora ${JSON.stringify(hD.slice(Math.max(0, i), Math.max(0, i) + 3))}`);
+  }
+  // por seção: números, dados e pares termo-número (sem os títulos alinhados, os números e os dados no arquivo inteiro)
+  if (!titulosIguais) {
+    const dn = difMulti(nA.fortes, nD.fortes); if (temDif(dn)) falhas.push(`números sem entrada (arquivo inteiro): ${mostra(dn)}`);
+    const dd = difMulti(dados(antesMovido), dados(depois)); if (temDif(dd)) falhas.push(`dado ou fórmula sem entrada (arquivo inteiro): ${mostra(dd)}`);
+  } else {
+    sA.forEach((sec, i) => {
+      const a = sec.texto, d = sD[i].texto;
+      if (a === d) return;
+      const onde = `seção "${sec.titulo}"`;
+      const dn = difMulti(numeros(a).fortes, numeros(d).fortes); if (temDif(dn)) falhas.push(`números sem entrada, ${onde}: ${mostra(dn)}`);
+      const dd = difMulti(dados(a), dados(d)); if (temDif(dd)) falhas.push(`dado ou fórmula sem entrada, ${onde}: ${mostra(dd)}`);
+      if (!temDif(dn)) { const dp = difMulti(pares(a), pares(d)); if (temDif(dp)) falhas.push(`par termo e número desfeito, ${onde}: ${mostra(dp)}`); }
+    });
   }
   return { falhas, avisos };
 }
 
 // ---------------------------------------------------------------- saída
 let caiu = 0;
-console.log(`trava · base ${BASE} · ${arquivos.length} arquivo(s) · ${ENTRADAS.length} entrada(s) de trava em ${path.relative(REPO, CONTRADICOES) || CONTRADICOES}`);
-for (const arq of arquivos) {
-  const { falhas, avisos } = comparar(arq);
-  if (falhas.length) caiu++;
-  console.log(`${falhas.length ? '✘' : '✓'} ${arq}`);
-  for (const f of falhas) console.log(`    ✘ ${f}`);
-  for (const a of avisos) console.log(a.startsWith('- `') ? `    ${a}` : `    · ${a}`);
+if (arquivos.length || !SAIDA_CLASSES) {
+  console.log(`trava · base ${BASE} · ${arquivos.length} arquivo(s) · ${ENTRADAS.length} entrada(s) de trava em ${path.relative(REPO, CONTRADICOES) || CONTRADICOES} · ${MOVIMENTOS.length} movimento(s) de seção em ${path.relative(REPO, ESTADO) || ESTADO}`);
+  for (const arq of arquivos) {
+    const { falhas, avisos } = comparar(arq);
+    if (falhas.length) caiu++;
+    console.log(`${falhas.length ? '✘' : '✓'} ${arq}`);
+    for (const f of falhas) console.log(`    ✘ ${f}`);
+    for (const a of avisos) console.log(a.startsWith('- `') ? `    ${a}` : `    · ${a}`);
+  }
+  if (caiu) { console.error(`✘ trava: ${caiu} arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada`); process.exit(1); }
+  console.log('✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada');
 }
-if (caiu) { console.error(`✘ trava: ${caiu} arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md`); process.exit(1); }
-console.log('✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md');

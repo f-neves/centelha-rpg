@@ -1,8 +1,15 @@
 # Prova da trava (controle negativo)
 
 Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-12, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD 5c3dec25). Cada caso muda UM arquivo, roda a trava só nele com um
-contradicoes.md de teste e devolve o arquivo ao que era. Os avisos (linhas com ·) não derrubam a trava.
+`centelha-executora` (ramo revisao-textos, HEAD 022e06f1). Cada caso muda UM arquivo, roda a trava só nele com um
+contradicoes.md e um estado.md de teste e devolve o arquivo ao que era. Os avisos (linhas com · ou com "resolução:") não derrubam a trava.
+
+**"Próximo", a definição testável dos pares termo e número:** cada número da seção se liga a um termo protegido, o mais perto
+dele na mesma frase, medido em caracteres entre os dois (empate: o que vem antes). Se a frase não tem termo, ele se liga ao
+último termo da frase anterior, na mesma seção (a frase que virou duas). O multiconjunto dos pares de cada seção tem de ser
+igual antes e depois. Frase termina em . ! ? ; seguidos de espaço, em linha em branco e antes de linha de lista, tabela,
+título ou tag; a quebra de linha simples do parágrafo não termina frase. Seção é o trecho entre dois títulos de qualquer
+nível (no JSON, cada campo de prosa).
 
 ## A reescrita só de redação passa
 
@@ -13,7 +20,7 @@ Entrada: nenhuma
 
 ```
 ✓ src/content/chapters/combate.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ uma frase do JSON reescrita, só no campo de prosa (esperado: passa; exit 0)
@@ -23,7 +30,7 @@ Entrada: nenhuma
 
 ```
 ✓ src/data/armas.json
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ número mudado dentro de um bloco gerado (fica fora da comparação) (esperado: passa; exit 0)
@@ -33,7 +40,7 @@ Entrada: nenhuma
 
 ```
 ✓ src/content/chapters/acoes-corpo-e-movimento.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ## Sem entrada, falha
@@ -45,8 +52,8 @@ Entrada: nenhuma
 
 ```
 ✘ src/content/chapters/combate.md
-    ✘ números sem entrada: saem 5 (−1); entram 6 (+1)
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+    ✘ números sem entrada, seção "O ataque: acertar e a Margem": saem 5 (−1); entram 6 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ dado (esperado: falha; exit 1)
@@ -56,9 +63,9 @@ Entrada: nenhuma
 
 ```
 ✘ src/content/chapters/combate.md
-    ✘ números sem entrada: saem 6 (−1); entram 8 (+1)
-    ✘ dado ou fórmula sem entrada: saem d6 (−1); entram d8 (+1)
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+    ✘ números sem entrada, seção "O ataque: acertar e a Margem": saem 6 (−1); entram 8 (+1)
+    ✘ dado ou fórmula sem entrada, seção "O ataque: acertar e a Margem": saem d6 (−1); entram d8 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ termo protegido aparece novo (esperado: falha; exit 1)
@@ -69,7 +76,7 @@ Entrada: nenhuma
 ```
 ✘ src/content/chapters/combate.md
     ✘ termo protegido aparece novo no arquivo: halterofilismo
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ termo protegido some do arquivo (as três Plumbata, sem diferenciar maiúsculas) (esperado: falha; exit 1)
@@ -80,7 +87,7 @@ Entrada: nenhuma
 ```
 ✘ src/content/chapters/combate.md
     ✘ termo protegido some do arquivo: plumbata
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ título de seção (esperado: falha; exit 1)
@@ -91,7 +98,7 @@ Entrada: nenhuma
 ```
 ✘ src/content/chapters/combate.md
     ✘ títulos de seção mudaram (a partir do 7º): antes ["## O ataque: acertar e a Margem","### Rajada: golpes extras com a mesma arma","### Empunhadura dupla: um ataque por mão"], agora ["## O ataque: como acertar e a Margem","### Rajada: golpes extras com a mesma arma","### Empunhadura dupla: um ataque por mão"]
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ título de página .astro (<h2>) (esperado: falha; exit 1)
@@ -102,7 +109,7 @@ Entrada: nenhuma
 ```
 ✘ src/pages/index.astro
     ✘ títulos de seção mudaram (a partir do 2º): antes ["h2: Os Capítulos","h2: Ferramentas"], agora ["h2: Os Capítulos de novo","h2: Ferramentas"]
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ número na prosa do JSON (esperado: falha; exit 1)
@@ -112,8 +119,8 @@ Entrada: nenhuma
 
 ```
 ✘ src/data/armas.json
-    ✘ números sem entrada: saem 0 (−1); entram 1 (+1)
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+    ✘ números sem entrada, seção "$[0].descricao": saem 0 (−1); entram 1 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ campo fora da prosa no JSON (esperado: falha; exit 1)
@@ -124,7 +131,7 @@ Entrada: nenhuma
 ```
 ✘ src/data/armas.json
     ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ## Com a entrada, passa
@@ -136,7 +143,7 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ```
 ✓ src/content/chapters/combate.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ dado, com entrada (esperado: passa; exit 0)
@@ -146,7 +153,7 @@ Entrada: "Ataque = [(Atributo + Habilidade) ÷ 2]d6" → "Ataque = [(Atributo + 
 
 ```
 ✓ src/content/chapters/combate.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ termo novo, com entrada (esperado: passa; exit 0)
@@ -156,7 +163,7 @@ Entrada: "aplique Firulas e Técnicas, e role." → "aplique Firulas, Técnicas 
 
 ```
 ✓ src/content/chapters/combate.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ título, com entrada (esperado: passa; exit 0)
@@ -166,7 +173,7 @@ Entrada: "## O ataque: acertar e a Margem" → "## O ataque: como acertar e a Ma
 
 ```
 ✓ src/content/chapters/combate.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ número na prosa do JSON, com entrada (esperado: passa; exit 0)
@@ -176,7 +183,7 @@ Entrada: "Rápida e precisa; perfura pele (N0), mas para em couro duro. Contra a
 
 ```
 ✓ src/data/armas.json
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ## Os termos comuns só avisam, e a linha de trava com vários trechos e (N×)
@@ -189,7 +196,7 @@ Entrada: nenhuma
 ```
 ✓ src/content/chapters/combate.md
     - `src/content/chapters/combate.md` · "milagre" · 0 → 1 · termo comum aparece · resolução: 
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ a linha de trava da RT-001, como está no contradicoes.md, com as duas trocas do combate.md feitas (esperado: passa; exit 0)
@@ -199,7 +206,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 
 ```
 ✓ src/content/chapters/combate.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ a linha de trava da RT-001 com o arquivo igual à base: passa, com aviso de entrada não aplicada (esperado: passa; exit 0)
@@ -210,7 +217,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ```
 ✓ src/content/chapters/combate.md
     · igual à base; entrada(s) ainda não aplicada(s): RT-900
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: falha (o "depois" não está) (esperado: falha; exit 1)
@@ -222,7 +229,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ✘ src/content/chapters/combate.md
     ✘ RT-900: o "depois" da entrada não está no arquivo de agora: "Ticks de Preparo"
     ✘ RT-900: o "depois" da entrada não está no arquivo de agora: "penalidades do Preparo"
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ a linha de trava da RT-001 com só uma das duas trocas do combate.md: falha (esperado: falha; exit 1)
@@ -233,7 +240,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ```
 ✘ src/content/chapters/combate.md
     ✘ RT-900: o "depois" da entrada não está no arquivo de agora: "penalidades do Preparo"
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ a linha de trava da RT-001 no JSON das armas extras (esperado: passa; exit 0)
@@ -243,10 +250,10 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 
 ```
 ✓ src/data/armas-extras.json
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
-## O sinal do número, os ambíguos em minúscula e o número que muda de seção
+## O sinal do número, os ambíguos em minúscula, a posição por seção e os pares termo e número
 
 ### ✓ sinal trocado (Defesa −2 vira Defesa +2), sem entrada (esperado: falha; exit 1)
 
@@ -255,8 +262,8 @@ Entrada: nenhuma
 
 ```
 ✘ src/content/chapters/combate.md
-    ✘ números sem entrada: saem -2 (−1); entram +2 (+1)
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+    ✘ números sem entrada, seção "Manobras: agarrar, derrubar, empurrar": saem -2 (−1); entram +2 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ sinal trocado, com entrada (esperado: passa; exit 0)
@@ -266,7 +273,7 @@ Entrada: "penalidades da Preparação (Defesa −2" → "penalidades da Prepara�
 
 ```
 ✓ src/content/chapters/combate.md
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ### ✓ ambíguo em minúscula muda de contagem (o primeiro "tempo" fora de "linha do tempo" vira "momento"): só aviso (esperado: passa; exit 0)
@@ -277,10 +284,10 @@ Entrada: nenhuma
 ```
 ✓ src/content/chapters/combate.md
     - `src/content/chapters/combate.md` · "tempo" · 32 → 31 · ambíguo em minúscula · resolução: 
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
-### ✓ número muda de seção (o exemplo "Força 5 e Destreza 2" sai de "O ataque: acertar e a Margem" e vai para "Como uma luta acontece"): só aviso (esperado: passa; exit 0)
+### ✓ trecho muda de seção sem linha no estado.md (o exemplo "Força 5 e Destreza 2" sai de "O ataque: acertar e a Margem" e vai para "Como uma luta acontece") (esperado: falha; exit 1)
 
 Troca: "(Força 5 e Destreza 2? use a Força)" → "(use a maior)"; "## Como uma luta acontece" → "## Como uma luta acontece
 
@@ -288,11 +295,102 @@ Exemplo: Força 5 e Destreza 2."
 Entrada: nenhuma
 
 ```
+✘ src/content/chapters/combate.md
+    ✘ números sem entrada, seção "Como uma luta acontece": saem nenhum; entram 2 (+1), 5 (+1)
+    ✘ números sem entrada, seção "O ataque: acertar e a Margem": saem 2 (−1), 5 (−1); entram nenhum
+    - `src/content/chapters/combate.md` · "força" · 44 → 43 · termo, outra contagem · resolução: 
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ o mesmo trecho movido, com a linha em "Movimentos de seção" do estado.md (esperado: passa; exit 0)
+
+Troca: "(Força 5 e Destreza 2? use a Força)" → "(use a maior)"; "## Como uma luta acontece" → "## Como uma luta acontece
+
+Exemplo: Força 5 e Destreza 2."
+Entrada: nenhuma
+Movimento no estado.md: - `src/content/chapters/combate.md`: "(Força 5 e Destreza 2? use a Força)" · de "O ataque: acertar e a Margem" → "Como uma luta acontece"
+
+```
 ✓ src/content/chapters/combate.md
     - `src/content/chapters/combate.md` · "força" · 44 → 43 · termo, outra contagem · resolução: 
-    - `src/content/chapters/combate.md` · número mudou de seção · ## Como uma luta acontece · saem nenhum; entram 2 (+1), 5 (+1) · resolução: 
-    - `src/content/chapters/combate.md` · número mudou de seção · ## O ataque: acertar e a Margem · saem 2 (−1), 5 (−1); entram nenhum · resolução: 
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ a frase reordenada dentro dela mesma (no Cego, "Bloqueio −8 e Esquiva −4"): os pares ficam (esperado: passa; exit 0)
+
+Troca: "(Esquiva −4 e Bloqueio −8 sabendo do ataque" → "(Bloqueio −8 e Esquiva −4 sabendo do ataque"
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/condicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ a frase que vira duas (Força 5. E Destreza 2): os pares ficam (esperado: passa; exit 0)
+
+Troca: "(Força 5 e Destreza 2? use a Força)" → "(Força 5. E Destreza 2? use a Força)"
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/combate.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+## Os casos de burla: todos têm de falhar
+
+### ✓ burla 1: número por extenso ("Força 5" vira "Força cinco") (esperado: falha; exit 1)
+
+Troca: "(Força 5 e Destreza 2? use a Força)" → "(Força cinco e Destreza 2? use a Força)"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/combate.md
+    ✘ números sem entrada, seção "O ataque: acertar e a Margem": saem 5 (−1); entram cinco (5) (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ burla 2: "2 × menor(Centelha, Habilidade)" vira "menor(Centelha, Habilidade) × 2" (a primeira das duas) (esperado: falha; exit 1)
+
+Troca: "/2 × menor\(Centelha, Habilidade\)/u" → "menor(Centelha, Habilidade) × 2"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/combate.md
+    ✘ dado ou fórmula sem entrada, seção "O ataque: acertar e a Margem": saem 2×menor (−1); entram nenhum
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ burla 3: números trocados entre duas regras da mesma frase ("Defesa −2, e −4 no Tick do Golpe" vira "Defesa −4, e −2 no Tick do Golpe") (esperado: falha; exit 1)
+
+Troca: "(Defesa −2, e −4 no Tick do Golpe)" → "(Defesa −4, e −2 no Tick do Golpe)"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/combate.md
+    ✘ par termo e número desfeito, seção "Manobras: agarrar, derrubar, empurrar": saem defesa ↔ -2 (−1), tick do golpe ↔ -4 (−1); entram defesa ↔ -4 (+1), tick do golpe ↔ -2 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ burla 4: a troca do Cego na mesma frase ("Esquiva −4 e Bloqueio −8" vira "Esquiva −8 e Bloqueio −4") (esperado: falha; exit 1)
+
+Troca: "(Esquiva −4 e Bloqueio −8 sabendo do ataque" → "(Esquiva −8 e Bloqueio −4 sabendo do ataque"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/condicoes.md
+    ✘ par termo e número desfeito, seção "Os sentidos": saem esquiva ↔ -4 (−1), bloqueio ↔ -8 (−1); entram esquiva ↔ -8 (+1), bloqueio ↔ -4 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ burla 4 no JSON: a mesma troca na nota do Cego em condicoes.json (esperado: falha; exit 1)
+
+Troca: "Esquiva −4 e Bloqueio −8 sabendo" → "Esquiva −8 e Bloqueio −4 sabendo"
+Entrada: nenhuma
+
+```
+✘ src/data/condicoes.json
+    ✘ par termo e número desfeito, seção "$.lista[17].nota": saem esquiva ↔ -4 (−1), bloqueio ↔ -8 (−1); entram bloqueio ↔ -4 (+1), esquiva ↔ -8 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ## A entrada que não casa falha
@@ -306,7 +404,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo
 ✘ src/content/chapters/combate.md
     ✘ RT-900: o "antes" da entrada está 2 vez(es) no arquivo da base, e a entrada pede 3: "Preparação"
     - `src/content/chapters/combate.md` · "preparo" · 50 → 52 · termo, outra contagem · resolução: 
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ entrada com "antes" que não está na base (esperado: falha; exit 1)
@@ -317,8 +415,8 @@ Entrada: "(Força 7 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 ```
 ✘ src/content/chapters/combate.md
     ✘ RT-900: o "antes" da entrada está 0 vez(es) no arquivo da base, e a entrada pede 1: "(Força 7 e Destreza 2? use a Força)"
-    ✘ números sem entrada: saem 5 (−1); entram 6 (+1)
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+    ✘ números sem entrada, seção "O ataque: acertar e a Margem": saem 5 (−1); entram 6 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ entrada certa, mas com outra mudança fora dela (esperado: falha; exit 1)
@@ -328,22 +426,33 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ```
 ✘ src/content/chapters/combate.md
-    ✘ números sem entrada: saem 6 (−1); entram 8 (+1)
-    ✘ dado ou fórmula sem entrada: saem d6 (−1); entram d8 (+1)
-✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+    ✘ números sem entrada, seção "O ataque: acertar e a Margem": saem 6 (−1); entram 8 (+1)
+    ✘ dado ou fórmula sem entrada, seção "O ataque: acertar e a Margem": saem d6 (−1); entram d8 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ## Resultado
 
-29 de 29 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
+37 de 37 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
 
-## Sem falso positivo nos arquivos de hoje
+## Os 449 arquivos de hoje
 
-A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`), todos iguais à base: 449 passam, 0 falham, e nenhum aviso de sinal, de ambíguo em minúscula nem de número que muda de seção. Os únicos avisos são das entradas da RT-001, registrada e ainda não aplicada:
+A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 449 passam, 0 falham. Como todos estão iguais à base, a trava não compara nada neles (o arquivo igual à base passa direto); este número só prova que nada quebra na leitura. Os únicos avisos são das entradas da RT-001, registrada e ainda não aplicada:
 
 ```
-trava · base d760ef96 · 449 arquivo(s) · 3 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md
+trava · base d760ef96 · 449 arquivo(s) · 3 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
     · igual à base; entrada(s) ainda não aplicada(s): RT-001
     · igual à base; entrada(s) ainda não aplicada(s): RT-001
-✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+## Falso positivo numa reescrita neutra (`node scripts/revisao/prova-reflow.mjs`)
+
+Os 28 capítulos com as linhas de cada parágrafo juntadas numa só, o que muda toda seção que tem parágrafo quebrado em várias linhas e faz a trava comparar essas seções: números, dados e pares termo-número, além dos termos e títulos do arquivo. É um teste de leitura (a frase, a seção, o par), e não de reescrita de verdade: o ruído real só aparece na primeira página reescrita. Com o contradicoes.md e o estado.md vazios:
+
+```
+capítulos com linhas juntadas: 28 de 28; trava exit 0
+passam 28, falham 0, avisos 0
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+árvore depois: limpa
 ```

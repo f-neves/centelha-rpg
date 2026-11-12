@@ -19,7 +19,7 @@ const GEN = 'src/content/chapters/acoes-corpo-e-movimento.md';
 const PAGINA = 'src/pages/index.astro';
 const DADO = 'src/data/armas.json';
 
-function caso(nome, arq, trocas, entradas, esperado) {
+function caso(nome, arq, trocas, entradas, esperado, movimentos = []) {
   const p = path.join(REPO, arq), original = fs.readFileSync(p);
   let txt = original.toString('utf8');
   for (const [a, b] of trocas) {
@@ -29,13 +29,15 @@ function caso(nome, arq, trocas, entradas, esperado) {
   }
   const md = path.join(tmp, 'contradicoes.md');
   fs.writeFileSync(md, ['# teste', '', '## RT-900 · caso de teste', ...entradas.map((e) => (typeof e === 'string' ? e : `- Trava: \`${arq}\`: "${e[0]}" → "${e[1]}"`)), ''].join('\n'));
+  const est = path.join(tmp, 'estado.md');
+  fs.writeFileSync(est, ['# estado de teste', '', '## Movimentos de seção', '', ...movimentos, ''].join('\n'));
   fs.writeFileSync(p, txt);
   let r;
-  try { r = spawnSync('node', [TRAVA, '--contradicoes', md, arq], { cwd: REPO, encoding: 'utf8' }); }
+  try { r = spawnSync('node', [TRAVA, '--contradicoes', md, '--estado', est, arq], { cwd: REPO, encoding: 'utf8' }); }
   finally { fs.writeFileSync(p, original); }
   const ok = (r.status === 0) === (esperado === 'passa');
   console.log(`### ${ok ? '✓' : '✘ INESPERADO'} ${nome} (esperado: ${esperado}; exit ${r.status})\n`);
-  console.log('Troca: ' + trocas.map(([a, b]) => `"${a}" → "${b}"`).join('; ') + (entradas.length ? `\nEntrada: ${entradas.map((e) => (typeof e === 'string' ? e : `"${e[0]}" → "${e[1]}"`)).join('; ')}` : '\nEntrada: nenhuma') + '\n');
+  console.log('Troca: ' + trocas.map(([a, b]) => `"${a}" → "${b}"`).join('; ') + (entradas.length ? `\nEntrada: ${entradas.map((e) => (typeof e === 'string' ? e : `"${e[0]}" → "${e[1]}"`)).join('; ')}` : '\nEntrada: nenhuma') + (movimentos.length ? `\nMovimento no estado.md: ${movimentos.join(' ')}` : '') + '\n');
   console.log('```\n' + (r.stdout + r.stderr).trim().split('\n').filter((l) => !l.startsWith('trava · base')).join('\n') + '\n```\n');
   return ok;
 }
@@ -68,7 +70,13 @@ const E1 = 'Halterofilismo';
 
 console.log(`# Prova da trava (controle negativo)\n\nGerada por \`node scripts/revisao/prova-trava.mjs\` em ${new Date().toISOString().slice(0, 10)}, base d760ef96, na árvore`);
 console.log(`\`centelha-executora\` (ramo revisao-textos, HEAD ${git('rev-parse', '--short', 'HEAD').trim()}). Cada caso muda UM arquivo, roda a trava só nele com um`);
-console.log('contradicoes.md de teste e devolve o arquivo ao que era. Os avisos (linhas com ·) não derrubam a trava.\n');
+console.log('contradicoes.md e um estado.md de teste e devolve o arquivo ao que era. Os avisos (linhas com · ou com "resolução:") não derrubam a trava.\n');
+console.log('**"Próximo", a definição testável dos pares termo e número:** cada número da seção se liga a um termo protegido, o mais perto');
+console.log('dele na mesma frase, medido em caracteres entre os dois (empate: o que vem antes). Se a frase não tem termo, ele se liga ao');
+console.log('último termo da frase anterior, na mesma seção (a frase que virou duas). O multiconjunto dos pares de cada seção tem de ser');
+console.log('igual antes e depois. Frase termina em . ! ? ; seguidos de espaço, em linha em branco e antes de linha de lista, tabela,');
+console.log('título ou tag; a quebra de linha simples do parágrafo não termina frase. Seção é o trecho entre dois títulos de qualquer');
+console.log('nível (no JSON, cada campo de prosa).\n');
 const r = [];
 console.log('## A reescrita só de redação passa\n');
 r.push(caso('redação, sem número, dado, termo nem título', CAP, [[R1, R1b]], [], 'passa'));
@@ -100,15 +108,29 @@ r.push(caso('a linha de trava da RT-001 com o arquivo igual à base: passa, com 
 r.push(caso('a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: falha (o "depois" não está)', CAP, [[R1, R1b]], [RT1], 'falha'));
 r.push(caso('a linha de trava da RT-001 com só uma das duas trocas do combate.md: falha', CAP, [RT1trocas[0]], [RT1], 'falha'));
 r.push(caso('a linha de trava da RT-001 no JSON das armas extras', 'src/data/armas-extras.json', [['+2 na Preparação', '+2 no Preparo']], [RT1], 'passa'));
-console.log('## O sinal do número, os ambíguos em minúscula e o número que muda de seção\n');
+console.log('## O sinal do número, os ambíguos em minúscula, a posição por seção e os pares termo e número\n');
 const S1 = 'penalidades da Preparação (Defesa −2', S1b = 'penalidades da Preparação (Defesa +2';
 r.push(caso('sinal trocado (Defesa −2 vira Defesa +2), sem entrada', CAP, [[S1, S1b]], [], 'falha'));
 r.push(caso('sinal trocado, com entrada', CAP, [[S1, S1b]], [[S1, S1b]], 'passa'));
 r.push(caso('ambíguo em minúscula muda de contagem (o primeiro "tempo" fora de "linha do tempo" vira "momento"): só aviso', CAP, [[/(?<![\p{L}])(?<!do )tempo(?![\p{L}])/u, 'momento']], [], 'passa'));
 const capTxt = fs.readFileSync(path.join(REPO, CAP), 'utf8').replace(/\r/g, '');
 const outroTitulo = capTxt.split('\n').find((l) => /^## /.test(l) && l !== H1);
-r.push(caso(`número muda de seção (o exemplo "Força 5 e Destreza 2" sai de "${H1.slice(3)}" e vai para "${outroTitulo.slice(3)}"): só aviso`, CAP,
-  [[N1, '(use a maior)'], [outroTitulo, `${outroTitulo}\n\nExemplo: Força 5 e Destreza 2.`]], [], 'passa'));
+const mover = [[N1, '(use a maior)'], [outroTitulo, `${outroTitulo}\n\nExemplo: Força 5 e Destreza 2.`]];
+r.push(caso(`trecho muda de seção sem linha no estado.md (o exemplo "Força 5 e Destreza 2" sai de "${H1.slice(3)}" e vai para "${outroTitulo.slice(3)}")`, CAP, mover, [], 'falha'));
+r.push(caso('o mesmo trecho movido, com a linha em "Movimentos de seção" do estado.md', CAP, mover, [], 'passa',
+  [`- \`${CAP}\`: "${N1}" · de "${H1.slice(3)}" → "${outroTitulo.slice(3)}"`]));
+r.push(caso('a frase reordenada dentro dela mesma (no Cego, "Bloqueio −8 e Esquiva −4"): os pares ficam', 'src/content/chapters/condicoes.md',
+  [['(Esquiva −4 e Bloqueio −8 sabendo do ataque', '(Bloqueio −8 e Esquiva −4 sabendo do ataque']], [], 'passa'));
+r.push(caso('a frase que vira duas (Força 5. E Destreza 2): os pares ficam', CAP, [[N1, '(Força 5. E Destreza 2? use a Força)']], [], 'passa'));
+console.log('## Os casos de burla: todos têm de falhar\n');
+r.push(caso('burla 1: número por extenso ("Força 5" vira "Força cinco")', CAP, [[N1, '(Força cinco e Destreza 2? use a Força)']], [], 'falha'));
+r.push(caso('burla 2: "2 × menor(Centelha, Habilidade)" vira "menor(Centelha, Habilidade) × 2" (a primeira das duas)', CAP, [[/2 × menor\(Centelha, Habilidade\)/u, 'menor(Centelha, Habilidade) × 2']], [], 'falha'));
+r.push(caso('burla 3: números trocados entre duas regras da mesma frase ("Defesa −2, e −4 no Tick do Golpe" vira "Defesa −4, e −2 no Tick do Golpe")', CAP,
+  [['(Defesa −2, e −4 no Tick do Golpe)', '(Defesa −4, e −2 no Tick do Golpe)']], [], 'falha'));
+r.push(caso('burla 4: a troca do Cego na mesma frase ("Esquiva −4 e Bloqueio −8" vira "Esquiva −8 e Bloqueio −4")', 'src/content/chapters/condicoes.md',
+  [['(Esquiva −4 e Bloqueio −8 sabendo do ataque', '(Esquiva −8 e Bloqueio −4 sabendo do ataque']], [], 'falha'));
+r.push(caso('burla 4 no JSON: a mesma troca na nota do Cego em condicoes.json', 'src/data/condicoes.json',
+  [['Esquiva −4 e Bloqueio −8 sabendo', 'Esquiva −8 e Bloqueio −4 sabendo']], [], 'falha'));
 console.log('## A entrada que não casa falha\n');
 r.push(caso('entrada que pede (3×) num trecho que está 2 vezes', CAP, [[/Preparação/gu, 'Preparo']], ['- Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (3×)'], 'falha'));
 r.push(caso('entrada com "antes" que não está na base', CAP, [[N1, N1b]], [['(Força 7 e Destreza 2? use a Força)', N1b]], 'falha'));
