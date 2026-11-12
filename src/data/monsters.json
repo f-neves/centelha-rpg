@@ -43422,8 +43422,20 @@
    "ataques": [
     {
      "nome": "Glaive serrilhada",
-     "arma": "glaive-serrilhada",
-     "justificativa": "O item Glaive serrilhada do catálogo (`armas.json`, `glaive-serrilhada`): Velocidade 7, 1d6 + 2, Acerto −1, Defesa +0, duas mãos, alcance. Duas mãos: Força × 2 (`armas-e-armaduras.md`). A tag Sangramento pertence ao item. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+     "parte": "glaive",
+     "classe": "haste",
+     "pgr": [
+      3,
+      1,
+      3
+     ],
+     "dado": "1d6+2",
+     "multiplicadorForca": 2,
+     "tipoDano": "corte",
+     "nivelPerfuracao": null,
+     "acerto": -1,
+     "bloqueiaComoArma": null,
+     "justificativa": "A glaive serrilhada do diabo: haste de guerra de duas mãos, Velocidade 7, 1d6 + 2, Acerto −1, alcance. Duas mãos: Força × 2. A serrilha dá o Sangramento e cobra o −1 de Acerto. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
      "nome": "Mordida",
@@ -43444,6 +43456,14 @@
     }
    ],
    "habilidadesEspeciais": [
+    {
+     "nome": "lâmina serrilhada",
+     "formas": "todas",
+     "classe": "livro",
+     "ataque": "Glaive serrilhada",
+     "categoria": "inato",
+     "texto": "a tag Sangramento"
+    },
     {
      "nome": "Trava a ferida",
      "formas": "todas",
@@ -43755,10 +43775,15 @@
    ]
   },
   "justificativaDosAtaques": {
-   "Glaive serrilhada": "O item Glaive serrilhada do catálogo (`armas.json`, `glaive-serrilhada`): Velocidade 7, 1d6 + 2, Acerto −1, Defesa +0, duas mãos, alcance. Duas mãos: Força × 2 (`armas-e-armaduras.md`). A tag Sangramento pertence ao item. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)",
+   "Glaive serrilhada": "A glaive serrilhada do diabo: haste de guerra de duas mãos, Velocidade 7, 1d6 + 2, Acerto −1, alcance. Duas mãos: Força × 2. A serrilha dá o Sangramento e cobra o −1 de Acerto. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)",
    "Mordida": "\"Mordida com doença infernal\" (site): a mordida de boca humana, gesto rápido de boca pequena, Leve (`regra-construcao.md` §7). Leva a doença (Manobras). Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
   },
   "habilidadesEspeciais": [
+   {
+    "nome": "lâmina serrilhada",
+    "descricao": "a tag Sangramento",
+    "classe": "livro"
+   },
    {
     "nome": "Trava a ferida",
     "descricao": "a ferida aberta pelo diabo não fecha sozinha: o alvo não estabiliza o Sangrando sem ajuda e recupera só metade do que uma cura lhe daria. Ativação: nenhuma; vale para quem a glaive ou a barba feriu. Duração: até o fim da cena. Alcance: o alvo ferido. Área: um alvo. Dano: nenhum além do golpe. Resistência: nenhum. Limite de uso: nenhum. Sem custo",

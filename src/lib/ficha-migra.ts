@@ -8,9 +8,12 @@
 // A Plumbata ocupa o lugar dos Dardos (D-076, D-085): o id `dardos` saiu do catálogo na rodada 1 sem alias. O `mod` do slot
 // (dado, Acerto, dano ajustados pelo jogador) fica como está: é troca de id, não de números.
 //
+// A Glaive Serrilhada virou a Glaive (12/11/2026, I2 do autor): o id `glaive-serrilhada` passa a `glaive`. Aqui a troca
+// muda também os números do item (Acerto −1 para +0, sem a tag Sangramento), porque o item mudou, e não só o nome.
+//
 // LIMITE: isto roda quando a FICHA carrega. A mesa lê a ficha gravada direto do banco (`armaDoSlot`, congelado pela D-054),
 // então uma ficha antiga com `a:dardos` só é consertada na mesa depois de alguém abri-la e salvá-la na ficha (N22).
-export const RENOMES_ARMA: [string, string][] = [['dardos', 'plumbata']];
+export const RENOMES_ARMA: [string, string][] = [['dardos', 'plumbata'], ['glaive-serrilhada', 'glaive']];
 
 export function migrarRefsDeArma(S: any, tabela: [string, string][] = RENOMES_ARMA) {
   const mapa = new Map(tabela);

@@ -498,18 +498,17 @@
     "municao": null
   },
   {
-    "id": "glaive-serrilhada",
-    "nome": "Glaive Serrilhada",
+    "id": "glaive",
+    "nome": "Glaive",
     "tipo": "arma",
     "preco": {
       "pc": 280
     },
     "peso": 2.7,
-    "descricao": "Lâmina serrilhada de haste longa: alcança de longe e abre feridas que sangram.",
+    "descricao": "Lâmina longa de um gume na ponta de uma haste: alcança de longe e bate com o peso do cabo. Lenta.",
     "tags": [
       "alcance",
-      "pesada",
-      "sangramento"
+      "pesada"
     ],
     "arma": {
       "classe": "haste",
@@ -517,7 +516,7 @@
       "pericia": "armas",
       "dado": 1,
       "danoBonus": 2,
-      "acerto": -1,
+      "acerto": 0,
       "defesaArma": 0,
       "maos": 2,
       "ticks": 7,

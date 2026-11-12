@@ -568,3 +568,5 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   uma linha ("Sabre élfico") sobre o mesmo item, e a ficha do personagem guarda o estilo escolhido. Começa só pelas armas.
   Espera o `mapeamento.json` da Curadora (`../tmp/curadora/`, um por id de arma), conferido pelo autor; depois a implementação
   vem para o Arquiteto. Não implementar antes.
+  - **12/11/2026 (I2, D-372):** a imagem `glaive.png` do armorium, nos sete estilos, vira a imagem do item Glaive (`glaive`,
+    antes `glaive-serrilhada`). Entra junto com a G78.

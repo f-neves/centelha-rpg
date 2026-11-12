@@ -3049,6 +3049,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: perguntas 33.1 (a glaive do diabo barbado levava a regra da Espada Serrilhada) e 34.1 (a garra natural e a tag) de `../tmp/arquiteto/PERGUNTAS.md`; o livro, `vida-ferimentos-cura.md`, dá a tag a "lâminas serrilhadas, garras". As aspas internas do autor vão como «».
 - Estado: **a implementar** nas fichas, por lote de ajuste. O efeito do Sangramento é o do livro (igual à Margem, até 3).
 - Fase 4: **no ar em 29/10/2026** (merge `4cb057fb` no `main`, deploy verde; migração 41 rodada no banco no mesmo dia). O que dela estava nas 324 fichas e no código da branch foi publicado junto.
+- **Nota (12/11/2026, D-372):** a glaive do diabo barbado continua com o Sangramento e o −1 de Acerto, agora escritos na ficha dele, e não mais pelo item do catálogo.
 
 ### D-249 · Três armas novas no catálogo: corrente farpada, chicote e glaive serrilhada [tags: bestiario, criatura, armas, catalogo, corrente, chicote, glaive, sangramento, diabo, balor, b20]
 - Data: 2026-10-26
@@ -3056,6 +3057,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: perguntas 33.2 (os ataques de corrente do diabo chifrudo e do kyton e o chicote do balor) e 36.1 (a glaive do diabo barbado) de `../tmp/arquiteto/PERGUNTAS.md`. As aspas internas do autor vão como «».
 - Estado: **a implementar**: os três itens entram no `armas.json` pela Executora, na branch da Fase 3, e vão ao ar na publicação única. O uso de cada criatura (o balor com o chicote, os 9 m e o puxão como regra da ficha; o kyton com o ataque natural Médio, sem o item) é decisão de ficha e fica nas fichas.
 - Fase 4: **no ar em 29/10/2026** (merge `4cb057fb` no `main`, deploy verde; migração 41 rodada no banco no mesmo dia). O que dela estava nas 324 fichas e no código da branch foi publicado junto.
+- **Substituída em parte pela D-372 (12/11/2026):** a glaive serrilhada deixa de ser item do catálogo; o item passa a ser a Glaive lisa (`glaive`), e a glaive serrilhada fica como ataque da ficha do diabo barbado. A corrente farpada e o chicote não mudam.
 
 ### D-250 · Paralisia, atordoamento e petrificação ficam "sem regra ainda" em todas as fichas, até o livro decidir [tags: bestiario, criatura, condicoes, paralisia, atordoamento, petrificacao, imobilizado, sem-regra-ainda, lacunas-do-livro, b20]
 - Data: 2026-10-26
@@ -3157,6 +3159,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/arquiteto/PERGUNTAS.md`, A4.
 - Estado: **a implementar**. Confirma a D-220 para a criatura (e a diferença com o personagem, D-259). As armas próprias de criatura entram no `armas.json`, como a D-249 fez com a glaive serrilhada.
 - Fase 5: **no ar** (merge `6f67500e`, publicado em 30/10/2026).
+- **Nota (12/11/2026, D-372):** a glaive serrilhada não é mais o exemplo desta decisão: pela I2 do autor, ela passa a ataque da própria ficha do diabo barbado. A I2 só trata da glaive.
 
 ### D-263 · Fase 5: as 86 perguntas, e as 9 que ficam como estão nas fichas [tags: bestiario, criatura, fase5, regra-da-ficha, lacunas-do-livro, d-081, d-087, d-243]
 - Data: 2026-10-29
@@ -4522,6 +4525,25 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nenhuma decisão anterior. Começa só pelas armas.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` e a mensagem do autor de 11/11/2026.
 - Estado: **a implementar** (registro só; espera o `mapeamento.json` da Curadora, conferido pelo autor).
+
+### D-372 · I2: a Glaive Serrilhada do catálogo vira a Glaive lisa (id `glaive`), com os números da Haste de Guerra e sem Sangramento; a glaive serrilhada do diabo barbado passa a ataque da própria ficha [tags: armas, catalogo, glaive, haste-de-guerra, sangramento, diabo, bestiario, imagens, curadora, i2, d-249, d-262]
+- Data: 2026-11-12
+- Decisão (autor; seção "Imagens no site, estilos por raça" de `DECISOES-AUTOR.md`, copiada como está):
+  - "I2. A glaive (12/11/2026, DECIDIDA; pergunta C1 da Curadora)":
+    - As imagens do armorium (glaive.png, nos sete estilos) são de uma glaive de lâmina lisa. O item glaive-serrilhada do catálogo passa a se chamar **Glaive**.
+    - A Glaive perde a tag Sangramento e fica com os números da classe Haste de Guerra: Velocidade 7, 1d6+2, Acerto +0, Defesa +0, duas mãos, alcance (como a Alabarda). O livro já cita a Glaive como exemplo dessa classe.
+    - O diabo barbado mantém a glaive serrilhada como ataque da própria ficha, com o Sangramento escrito na ficha dele (não vem mais do item).
+    - Preço: fica para a revisão econômica (B24).
+    - A imagem glaive.png vira a imagem da Glaive.
+- Também do autor (mensagem de 12/11/2026), os seis pontos: (1) o item `glaive-serrilhada` passa a se chamar 'Glaive', perde a tag sangramento e fica com os números da classe Haste de Guerra, "Velocidade 7, 1d6+2, Acerto +0, Defesa +0, duas mãos, alcance, pesada (como a Alabarda)", e a descrição "deixa de falar em serrilha e em feridas que sangram"; (2) "troque glaive-serrilhada por glaive e atualize todas as referências (src/data, src/content, scripts de teste e fixtures)"; (3) "Preço: não mexa agora. Fica para a revisão econômica (B24). Na tabela de custo-qualidade-e-equipamento.md, só troque o nome."; (4) o ataque do diabo barbado "deixa de apontar para o item e vira ataque da própria ficha, com os números que tem hoje (Velocidade 7, 1d6 + 2, Acerto −1, duas mãos, alcance, Força × 2) e com o Sangramento escrito na ficha. Os números do diabo não mudam, então não precisa passar pela Bancada. Reescreva a justificativa sem citar o item do catálogo e sem nome de arquivo ou número de decisão."; (5) conferir que `vida-ferimentos-cura.md` continua certo; (6) "A imagem glaive.png do armorium vira a imagem do item Glaive. Isso entra junto com a G78, quando você implementar as imagens; por ora, só registre."
+- No catálogo: em `src/data/armas.json` o item passa a `glaive`, 'Glaive', Acerto 0, tags `alcance` e `pesada`, com o bloco `arma` igual ao da Alabarda e descrição nova sem serrilha nem sangue. O preço (280 pc) e o peso ficam. O id troca também em `regras.json` (a lista da Haste de Guerra) e no teste do capítulo de armas; a tabela de preços do Cap. XIV é gerada e só troca o nome.
+- Na ficha salva: `RENOMES_ARMA` (`src/lib/ficha-migra.ts`) ganha `glaive-serrilhada` → `glaive`, como os Dardos viraram Plumbata. O limite é o mesmo: a mesa lê a ficha gravada direto do banco, então uma ficha antiga com a glaive só se conserta na mesa depois de aberta e salva na ficha (N22). Ao migrar, o jogador fica com a Glaive nova (Acerto +0, sem Sangramento), porque o item mudou.
+- No diabo barbado: o ataque 'Glaive serrilhada' passa a ataque próprio (classe `haste`, Velocidade 7, 1d6+2, Força × 2, corte, Acerto −1), e o Sangramento entra como traço 'lâmina serrilhada' ("a tag Sangramento", ligado ao ataque), na forma das garras do girallon. Os números gerados (`inimigos.json`, `monsters-mesa.json`) não mudam um byte; a fixture `criaturas-esperado.json` segue a ficha.
+- No livro: `vida-ferimentos-cura.md` continua certo ("armas com a tag Sangramento: lâminas serrilhadas, garras"): a Espada Serrilhada e a Corrente Farpada seguem com a tag no catálogo. A Glaive já é exemplo da Haste de Guerra em `armas-e-armaduras.md` e `combate.md`.
+- Muda: substitui a D-249 na parte da glaive serrilhada (o item do catálogo); a corrente farpada e o chicote ficam. A D-262 perde a glaive como exemplo de "arma própria de criatura vira item do catálogo"; a I2 só fala da glaive, e a regra geral da D-262 fica como está. A D-248 continua valendo para a glaive do diabo, agora pela ficha e não pelo item.
+- A imagem: `glaive.png` do armorium vira a imagem da Glaive, com a G78 (D-371). Anotado na G78.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (I2, pergunta C1 da Curadora) e a mensagem do autor de 12/11/2026.
+- Estado: **aplicada** no commit desta decisão (o catálogo, a ficha do diabo e a migração da ficha salva); a imagem espera a G78.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

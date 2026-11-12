@@ -80,8 +80,20 @@
   "ataques": [
     {
       "nome": "Glaive serrilhada",
-      "arma": "glaive-serrilhada",
-      "justificativa": "O item Glaive serrilhada do catálogo (`armas.json`, `glaive-serrilhada`): Velocidade 7, 1d6 + 2, Acerto −1, Defesa +0, duas mãos, alcance. Duas mãos: Força × 2 (`armas-e-armaduras.md`). A tag Sangramento pertence ao item. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
+      "parte": "glaive",
+      "classe": "haste",
+      "pgr": [
+        3,
+        1,
+        3
+      ],
+      "dado": "1d6+2",
+      "multiplicadorForca": 2,
+      "tipoDano": "corte",
+      "nivelPerfuracao": null,
+      "acerto": -1,
+      "bloqueiaComoArma": null,
+      "justificativa": "A glaive serrilhada do diabo: haste de guerra de duas mãos, Velocidade 7, 1d6 + 2, Acerto −1, alcance. Duas mãos: Força × 2. A serrilha dá o Sangramento e cobra o −1 de Acerto. Jogada: Força 4 + Briga 5 + 2 × o menor entre Centelha 4 e Briga 5 (8)"
     },
     {
       "nome": "Mordida",
@@ -102,6 +114,14 @@
     }
   ],
   "habilidadesEspeciais": [
+    {
+      "nome": "lâmina serrilhada",
+      "formas": "todas",
+      "classe": "livro",
+      "ataque": "Glaive serrilhada",
+      "categoria": "inato",
+      "texto": "a tag Sangramento"
+    },
     {
       "nome": "Trava a ferida",
       "formas": "todas",
@@ -318,6 +338,10 @@
     {
       "campo": "ataques.Glaive serrilhada",
       "motivo": "antes, Alabarda com serrilha manual; depois, item glaive-serrilhada, conforme 36.1. Acerto −1 e dano médio 17,5 preservados; removida a manobra redundante."
+    },
+    {
+      "campo": "ataques.Glaive serrilhada",
+      "motivo": "12/11/2026, I2 do autor: o item do catálogo virou a Glaive lisa (sem Sangramento, Acerto +0), e a glaive serrilhada do diabo passa a ataque da própria ficha, com os mesmos números (Velocidade 7, 1d6 + 2, Acerto −1, duas mãos, Força × 2, alcance) e o Sangramento escrito na ficha. Dano médio 17,5 preservado."
     }
   ]
 }

@@ -445,6 +445,8 @@ limitações conhecidas, que são as três de baixo.
     jogador, como o autor confirmou na G6 (D-368).
   - **08/11/2026:** as fichas que usavam equivalência entraram com o lote `r-listas-07-11` da Bestiarista (`9455a024`): gigantes com as
     armas do catálogo no Tamanho, as 6 rochas, tridente, florete, forcado e a Besta Média do merfolk. Falta o preço, na revisão econômica.
+  - **12/11/2026 (I2, D-372):** a Glaive Serrilhada virou a Glaive (`glaive`), sem Sangramento; o preço fica o da Alabarda
+    (280 pc) até a revisão econômica.
 - [ ] **B25 · [FAZER] Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366).** Registrado em 07/11/2026.
   A regra por peso e Força para empunhar arma de outro tamanho: a faixa de peso que cada Força consegue usar, sobre o peso que o
   catálogo já tem (D-366). Por ora o livro diz "Quem empunha" (Cap. XIII): a arma fica um degrau mais leve para quem é uma

@@ -516,7 +516,7 @@ const LINHA_DA_ARMA = {
   'Leve': ['adaga', 'espada-curta', 'machadinha', 'bastao', 'sabre', 'chicote', 'florete'],
   'Média': ['espada-longa', 'machado', 'espada-serrilhada', 'maca', 'picareta-de-guerra', 'martelo', 'maca-estrela'],
   'Haste média': ['lanca', 'bordao', 'tridente', 'forcado'], // tridente, florete e forcado: F3, D-360 (06/11/2026)
-  'Haste de Guerra': ['alabarda', 'glaive-serrilhada', 'lanca-longa', 'corrente-farpada'],
+  'Haste de Guerra': ['alabarda', 'glaive', 'lanca-longa', 'corrente-farpada'],
   'Pesada': ['montante', 'martelo-de-guerra', 'machado-pesado'],
   'Punhos': ['desarmado'],
   'Arremesso leve': ['shuriken', 'mini-faca', 'kunai'],
