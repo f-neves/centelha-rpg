@@ -1,7 +1,7 @@
 # Prova da trava (controle negativo)
 
 Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-12, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD 5812d7a8). Cada caso muda UM arquivo, roda a trava só nele com um
+`centelha-executora` (ramo revisao-textos, HEAD 5c3dec25). Cada caso muda UM arquivo, roda a trava só nele com um
 contradicoes.md de teste e devolve o arquivo ao que era. Os avisos (linhas com ·) não derrubam a trava.
 
 ## A reescrita só de redação passa
@@ -192,25 +192,106 @@ Entrada: nenhuma
 ✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
 ```
 
-### ✓ a linha de trava da RT-001, no formato dela (dois trechos, com 2× e 1×) (esperado: passa; exit 0)
+### ✓ a linha de trava da RT-001, como está no contradicoes.md, com as duas trocas do combate.md feitas (esperado: passa; exit 0)
 
-Troca: "/Preparação/gu" → "Preparo"
-Entrada: - Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (2×); `src/data/armas-extras.json`: "Preparação" → "Preparo" (1×)
+Troca: "Ticks de Preparação" → "Ticks de Preparo"; "penalidades da Preparação" → "penalidades do Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
 
 ```
 ✓ src/content/chapters/combate.md
 ✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
 ```
 
-### ✓ a linha de trava da RT-001, sem a troca feita no arquivo: aviso de entrada não aplicada (esperado: passa; exit 0)
+### ✓ a linha de trava da RT-001 com o arquivo igual à base: passa, com aviso de entrada não aplicada (esperado: passa; exit 0)
 
 Troca: 
-Entrada: - Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (2×); `src/data/armas-extras.json`: "Preparação" → "Preparo" (1×)
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
 
 ```
 ✓ src/content/chapters/combate.md
-    · RT-900: a entrada ainda não está aplicada neste arquivo ("Preparação" segue 2 vez(es))
-    - `src/content/chapters/combate.md` · "preparo" · 52 → 50 · termo, outra contagem · resolução: 
+    · igual à base; entrada(s) ainda não aplicada(s): RT-900
+✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+```
+
+### ✓ a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: falha (o "depois" não está) (esperado: falha; exit 1)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+
+```
+✘ src/content/chapters/combate.md
+    ✘ RT-900: o "depois" da entrada não está no arquivo de agora: "Ticks de Preparo"
+    ✘ RT-900: o "depois" da entrada não está no arquivo de agora: "penalidades do Preparo"
+✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+```
+
+### ✓ a linha de trava da RT-001 com só uma das duas trocas do combate.md: falha (esperado: falha; exit 1)
+
+Troca: "Ticks de Preparação" → "Ticks de Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+
+```
+✘ src/content/chapters/combate.md
+    ✘ RT-900: o "depois" da entrada não está no arquivo de agora: "penalidades do Preparo"
+✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+```
+
+### ✓ a linha de trava da RT-001 no JSON das armas extras (esperado: passa; exit 0)
+
+Troca: "+2 na Preparação" → "+2 no Preparo"
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "+2 na Preparação" → "+2 no Preparo"
+
+```
+✓ src/data/armas-extras.json
+✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+```
+
+## O sinal do número, os ambíguos em minúscula e o número que muda de seção
+
+### ✓ sinal trocado (Defesa −2 vira Defesa +2), sem entrada (esperado: falha; exit 1)
+
+Troca: "penalidades da Preparação (Defesa −2" → "penalidades da Preparação (Defesa +2"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/combate.md
+    ✘ números sem entrada: saem -2 (−1); entram +2 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, termo ou título sem entrada no contradicoes.md
+```
+
+### ✓ sinal trocado, com entrada (esperado: passa; exit 0)
+
+Troca: "penalidades da Preparação (Defesa −2" → "penalidades da Preparação (Defesa +2"
+Entrada: "penalidades da Preparação (Defesa −2" → "penalidades da Preparação (Defesa +2"
+
+```
+✓ src/content/chapters/combate.md
+✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+```
+
+### ✓ ambíguo em minúscula muda de contagem (o primeiro "tempo" fora de "linha do tempo" vira "momento"): só aviso (esperado: passa; exit 0)
+
+Troca: "/(?<![\p{L}])(?<!do )tempo(?![\p{L}])/u" → "momento"
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/combate.md
+    - `src/content/chapters/combate.md` · "tempo" · 32 → 31 · ambíguo em minúscula · resolução: 
+✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
+```
+
+### ✓ número muda de seção (o exemplo "Força 5 e Destreza 2" sai de "O ataque: acertar e a Margem" e vai para "Como uma luta acontece"): só aviso (esperado: passa; exit 0)
+
+Troca: "(Força 5 e Destreza 2? use a Força)" → "(use a maior)"; "## Como uma luta acontece" → "## Como uma luta acontece
+
+Exemplo: Força 5 e Destreza 2."
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/combate.md
+    - `src/content/chapters/combate.md` · "força" · 44 → 43 · termo, outra contagem · resolução: 
+    - `src/content/chapters/combate.md` · número mudou de seção · ## Como uma luta acontece · saem nenhum; entram 2 (+1), 5 (+1) · resolução: 
+    - `src/content/chapters/combate.md` · número mudou de seção · ## O ataque: acertar e a Margem · saem 2 (−1), 5 (−1); entram nenhum · resolução: 
 ✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
 ```
 
@@ -254,17 +335,15 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ## Resultado
 
-22 de 22 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
+29 de 29 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
 
 ## Sem falso positivo nos arquivos de hoje
 
-A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`), todos iguais à base: 449 passam, 0 falham. Os únicos avisos são da RT-001, que está registrada e ainda não foi aplicada:
+A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`), todos iguais à base: 449 passam, 0 falham, e nenhum aviso de sinal, de ambíguo em minúscula nem de número que muda de seção. Os únicos avisos são das entradas da RT-001, registrada e ainda não aplicada:
 
 ```
-trava · base d760ef96 · 449 arquivo(s) · 2 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md
-    · RT-001: a entrada ainda não está aplicada neste arquivo ("Preparação" segue 2 vez(es))
-    - `src/content/chapters/combate.md` · "preparo" · 52 → 50 · termo, outra contagem · resolução: 
-    · RT-001: a entrada ainda não está aplicada neste arquivo ("Preparação" segue 1 vez(es))
-    - `src/data/armas-extras.json` · "preparo" · 2 → 1 · termo, outra contagem · resolução: 
+trava · base d760ef96 · 449 arquivo(s) · 3 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md
+    · igual à base; entrada(s) ainda não aplicada(s): RT-001
+    · igual à base; entrada(s) ainda não aplicada(s): RT-001
 ✓ trava: toda diferença de número, dado, termo e título tem entrada no contradicoes.md
 ```

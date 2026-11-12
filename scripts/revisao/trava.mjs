@@ -12,7 +12,7 @@
 //
 // COMO A COMPARAÇÃO FUNCIONA
 // 1. O ANTES é o arquivo na base (`git show <base>:<arquivo>`); o DEPOIS é o arquivo no disco.
-// 2. As entradas de trava do contradicoes.md para aquele arquivo (as linhas `arquivo`: "antes" → "depois") são APLICADAS
+// 2. (O arquivo igual à base passa direto, com aviso das entradas dele ainda não aplicadas.) As entradas de trava do contradicoes.md para aquele arquivo (as linhas `arquivo`: "antes" → "depois") são APLICADAS
 //    no antes: cada "antes" tem de existir no antes, e cada "depois" tem de existir no depois, senão a entrada não casa e a
 //    trava falha. O antes corrigido pelas entradas é o que se compara com o depois. Assim a entrada cobre exatamente o
 //    trecho que ela diz, e uma diferença fora de entrada sobra.
@@ -23,6 +23,8 @@
 //    - NÚMEROS: contagem por valor (multiconjunto, não posição: a reescrita reordena frases), os escritos com algarismos
 //      (1, 12, 1,5, 3.000, e também os colados em letra, como o N0 da perfuração e os de 1d6) e os por extenso de dois
 //      a doze. "um" e "uma" só AVISAM: são o artigo indefinido, e uma reescrita troca artigo o tempo todo.
+//      O sinal colado na frente faz parte do número: "−4", "+4" e "4" são valores diferentes. Se o arquivo bate, mas o
+//      multiconjunto de uma seção (# ou ##) muda, AVISA "número mudou de seção".
 //    - DADO E FÓRMULA: NdM±K (1d6+2, 6d6+2 +8, d6), "N × Palavra" e "Palavra × N", frações (1/2), porcentagens (30%) e
 //      "÷ N", por multiconjunto, sem espaço.
 //    - TERMOS PROTEGIDOS (glossario-protegido.json): contagem por termo, com fronteira de palavra. FALHA quando o termo
@@ -32,6 +34,7 @@
 //      palavra comum ali ("média" de conta, "nível" de escada); para ele a contagem DIFERENCIA maiúsculas e conta só a
 //      forma do glossário. Os outros termos contam sem diferenciar maiúsculas. Termos com a mesma grafia em minúscula
 //      são um só. `--classes` imprime a lista dos ambíguos.
+//      Nos ambíguos, a contagem da forma minúscula que muda só AVISA ("ambíguo em minúscula").
 //      Os termos COMUNS (a seção do glossário que começa por "_comuns", regra do autor de 12/11/2026): só AVISAM, também
 //      quando somem ou aparecem; cada aviso se resolve no estado.md ("termo do jogo, intacto" ou "palavra comum").
 //    - TÍTULOS DE SEÇÃO: em .md, as linhas #, ##, ### (até ######) fora de bloco de código; em .astro, os <h1> a <h6> e os
@@ -114,8 +117,12 @@ const ARTIGO = { um: '1', uma: '1' };
 const L = '\\p{L}\\p{N}';
 const conta = (lista) => { const m = new Map(); for (const x of lista) m.set(x, (m.get(x) || 0) + 1); return m; };
 function numeros(t) {
-  // colado em letra também conta (o N0 da perfuração, o 1d6): só não parte um número ao meio
-  const fortes = [...t.matchAll(/(?<![\p{N}])(?<![\p{N}][.,])\d+(?:[.,]\d+)*(?![\p{N}])/gu)].map((m) => m[0]);
+  // colado em letra também conta (o N0 da perfuração, o 1d6): só não parte um número ao meio. O SINAL colado na frente
+  // faz parte da chave (CORRIGE da Revisora, 12/11/2026: "Defesa −4" virando "Defesa +4" passava): "−4", "+4" e "4" são
+  // chaves diferentes, com +, −, – e - normalizados para + e -. Só é sinal o que não vem colado em letra ou algarismo
+  // (o "-" de "D-362" e de "1-3" não é sinal, nem o "+" de "1d6+2").
+  const fortes = [...t.matchAll(/(?:(?<![\p{L}\p{N}])([+−–-]))?(?<![\p{N}])(?<![\p{N}][.,])\d+(?:[.,]\d+)*(?![\p{N}])/gu)]
+    .map((m) => (m[1] ? (m[1] === '+' ? '+' : '-') + m[0].slice(1) : m[0]));
   for (const m of t.matchAll(new RegExp(`(?<![${L}])(${Object.keys(EXTENSO).join('|')})(?![${L}])`, 'giu'))) fortes.push(`${m[1].toLowerCase()} (${EXTENSO[m[1].toLowerCase()]})`);
   const fracos = [...t.matchAll(new RegExp(`(?<![${L}])(um|uma)(?![${L}])`, 'giu'))].map((m) => m[1].toLowerCase());
   return { fortes: conta(fortes), fracos: conta(fracos) };
@@ -163,7 +170,9 @@ for (const [k, formas] of porChave) {
     const minusc = todas.filter((m) => m[0] === m[0].toLowerCase()).length;
     ambiguo = todas.length > 0 && minusc * 2 >= todas.length;
   }
-  TERMOS.push({ termo: ambiguo ? maiuscula : k, ambiguo, comum, re: new RegExp(`(?<![${L}])${esc(ambiguo ? maiuscula : k)}(?![${L}])`, ambiguo ? 'gu' : 'giu') });
+  TERMOS.push({ termo: ambiguo ? maiuscula : k, ambiguo, comum, re: new RegExp(`(?<![${L}])${esc(ambiguo ? maiuscula : k)}(?![${L}])`, ambiguo ? 'gu' : 'giu'),
+    // a forma minúscula do ambíguo, só para o aviso (pedido da Revisora, 12/11/2026): ela não derruba a trava
+    ...(ambiguo ? { reMinuscula: new RegExp(`(?<![${L}])${esc(k)}(?![${L}])`, 'gu') } : {}) });
 }
 if (MOSTRAR_CLASSES) {
   const amb = TERMOS.filter((t) => t.ambiguo).map((t) => t.termo);
@@ -171,6 +180,17 @@ if (MOSTRAR_CLASSES) {
   console.log(`${COMUNS.size} comuns (só aviso): ${[...COMUNS].join(', ')}`);
 }
 const termos = (t) => { const m = new Map(); for (const x of TERMOS) { const n = (t.match(x.re) || []).length; if (n) m.set(x.termo, n); } return m; };
+const minusculasAmbiguas = (t) => { const m = new Map(); for (const x of TERMOS) if (x.reMinuscula) { const n = (t.match(x.reMinuscula) || []).length; if (n) m.set(x.termo.toLowerCase(), n); } return m; };
+// as seções de nível # e ## de um .md, para o aviso de número que muda de seção
+function secoes(t) {
+  const out = [{ titulo: '(antes do primeiro título)', texto: '' }]; let emCodigo = false;
+  for (const linha of t.split('\n')) {
+    if (/^\s*(```|~~~)/.test(linha)) emCodigo = !emCodigo;
+    if (!emCodigo && /^#{1,2}\s/.test(linha)) out.push({ titulo: linha.trim(), texto: '' });
+    else out[out.length - 1].texto += linha + '\n';
+  }
+  return out;
+}
 
 // ---------------------------------------------------------------- a comparação
 function difMulti(a, b) { // o que sobra de cada lado
@@ -184,6 +204,12 @@ function comparar(arq) {
   let antes = lf(naBase(arq)), depois = lf(noDisco(arq));
   if (antes == null) return { falhas: ['arquivo novo desde a base: a trava não tem com o que comparar'], avisos };
   if (depois == null) return { falhas: ['arquivo removido desde a base'], avisos };
+  // o arquivo igual à base não tem o que comparar; as entradas dele ficam como aviso, porque ainda não foram aplicadas
+  if (antes === depois) {
+    const pendentes = ENTRADAS.filter((x) => x.arquivo === arq).map((e) => e.rt);
+    if (pendentes.length) avisos.push(`igual à base; entrada(s) ainda não aplicada(s): ${[...new Set(pendentes)].join(', ')}`);
+    return { falhas, avisos };
+  }
   if (ext === '.json') {
     const a = prosaDoJson(antes), d = prosaDoJson(depois);
     if (a.esqueleto !== d.esqueleto) falhas.push('o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)');
@@ -214,6 +240,17 @@ function comparar(arq) {
   const avisoTermo = (k, motivo) => avisos.push(`- \`${arq}\` · "${k}" · ${tA.get(k) || 0} → ${tD.get(k) || 0} · ${motivo} · resolução: `);
   for (const k of [...sumiu, ...novo].filter(ehComum)) avisoTermo(k, 'termo comum ' + (tA.has(k) ? 'some' : 'aparece'));
   for (const k of [...tA.keys()].filter((x) => tD.has(x) && tD.get(x) !== tA.get(x))) avisoTermo(k, (ehComum(k) ? 'termo comum' : 'termo') + ', outra contagem');
+  const mA = minusculasAmbiguas(antes), mD = minusculasAmbiguas(depois);
+  for (const k of new Set([...mA.keys(), ...mD.keys()])) if ((mA.get(k) || 0) !== (mD.get(k) || 0))
+    avisos.push(`- \`${arq}\` · "${k}" · ${mA.get(k) || 0} → ${mD.get(k) || 0} · ambíguo em minúscula · resolução: `);
+  // 3. número que muda de SEÇÃO (# e ##) com o arquivo batendo: só aviso (pedido da Revisora, adotado pelo Arquiteto)
+  if ((ext === '.md' || ext === '.mdx') && !dn.sai.length && !dn.entra.length) {
+    const sA = secoes(antes), sD = secoes(depois);
+    if (sA.length === sD.length) sA.forEach((sec, i) => {
+      const d = difMulti(numeros(sec.texto).fortes, numeros(sD[i].texto).fortes);
+      if (d.sai.length || d.entra.length) avisos.push(`- \`${arq}\` · número mudou de seção · ${sec.titulo} · saem ${d.sai.join(', ') || 'nenhum'}; entram ${d.entra.join(', ') || 'nenhum'} · resolução: `);
+    });
+  }
   const hA = titulos(antes, ext), hD = titulos(depois, ext);
   if (JSON.stringify(hA) !== JSON.stringify(hD)) {
     const i = hA.findIndex((h, j) => h !== hD[j]);

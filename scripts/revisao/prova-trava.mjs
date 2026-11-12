@@ -91,9 +91,24 @@ r.push(caso('título, com entrada', CAP, [[H1, H1b]], [[H1, H1b]], 'passa'));
 r.push(caso('número na prosa do JSON, com entrada', DADO, [[jd, jdNum]], [[jd, jdNum]], 'passa'));
 console.log('## Os termos comuns só avisam, e a linha de trava com vários trechos e (N×)\n');
 r.push(caso('termo comum aparece novo (milagre, da lista _comuns, ausente do arquivo na base): só aviso', CAP, [[T1, 'aplique Firulas e Técnicas, e role, sem esperar milagre.']], [], 'passa'));
-const RT1 = '- Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (2×); `src/data/armas-extras.json`: "Preparação" → "Preparo" (1×)';
-r.push(caso('a linha de trava da RT-001, no formato dela (dois trechos, com 2× e 1×)', CAP, [[/Preparação/gu, 'Preparo']], [RT1], 'passa'));
-r.push(caso('a linha de trava da RT-001, sem a troca feita no arquivo: aviso de entrada não aplicada', CAP, [], [RT1], 'passa'));
+// a linha Trava da RT-001 lida do contradicoes.md da missão, como está lá (três trechos, dois arquivos)
+const CONTR = fs.readFileSync(path.resolve(REPO, '../tmp/revisao-textos/contradicoes.md'), 'utf8').replace(/\r/g, '');
+const RT1 = CONTR.slice(CONTR.indexOf('## RT-001')).split('\n').find((l) => l.startsWith('- Trava:'));
+const RT1trocas = [['Ticks de Preparação', 'Ticks de Preparo'], ['penalidades da Preparação', 'penalidades do Preparo']];
+r.push(caso('a linha de trava da RT-001, como está no contradicoes.md, com as duas trocas do combate.md feitas', CAP, RT1trocas, [RT1], 'passa'));
+r.push(caso('a linha de trava da RT-001 com o arquivo igual à base: passa, com aviso de entrada não aplicada', CAP, [], [RT1], 'passa'));
+r.push(caso('a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: falha (o "depois" não está)', CAP, [[R1, R1b]], [RT1], 'falha'));
+r.push(caso('a linha de trava da RT-001 com só uma das duas trocas do combate.md: falha', CAP, [RT1trocas[0]], [RT1], 'falha'));
+r.push(caso('a linha de trava da RT-001 no JSON das armas extras', 'src/data/armas-extras.json', [['+2 na Preparação', '+2 no Preparo']], [RT1], 'passa'));
+console.log('## O sinal do número, os ambíguos em minúscula e o número que muda de seção\n');
+const S1 = 'penalidades da Preparação (Defesa −2', S1b = 'penalidades da Preparação (Defesa +2';
+r.push(caso('sinal trocado (Defesa −2 vira Defesa +2), sem entrada', CAP, [[S1, S1b]], [], 'falha'));
+r.push(caso('sinal trocado, com entrada', CAP, [[S1, S1b]], [[S1, S1b]], 'passa'));
+r.push(caso('ambíguo em minúscula muda de contagem (o primeiro "tempo" fora de "linha do tempo" vira "momento"): só aviso', CAP, [[/(?<![\p{L}])(?<!do )tempo(?![\p{L}])/u, 'momento']], [], 'passa'));
+const capTxt = fs.readFileSync(path.join(REPO, CAP), 'utf8').replace(/\r/g, '');
+const outroTitulo = capTxt.split('\n').find((l) => /^## /.test(l) && l !== H1);
+r.push(caso(`número muda de seção (o exemplo "Força 5 e Destreza 2" sai de "${H1.slice(3)}" e vai para "${outroTitulo.slice(3)}"): só aviso`, CAP,
+  [[N1, '(use a maior)'], [outroTitulo, `${outroTitulo}\n\nExemplo: Força 5 e Destreza 2.`]], [], 'passa'));
 console.log('## A entrada que não casa falha\n');
 r.push(caso('entrada que pede (3×) num trecho que está 2 vezes', CAP, [[/Preparação/gu, 'Preparo']], ['- Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (3×)'], 'falha'));
 r.push(caso('entrada com "antes" que não está na base', CAP, [[N1, N1b]], [['(Força 7 e Destreza 2? use a Força)', N1b]], 'falha'));
