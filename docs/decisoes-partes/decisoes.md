@@ -4544,6 +4544,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - A imagem: `glaive.png` do armorium vira a imagem da Glaive, com a G78 (D-371). Anotado na G78.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (I2, pergunta C1 da Curadora) e a mensagem do autor de 12/11/2026.
 - Estado: **aplicada** no commit desta decisão (o catálogo, a ficha do diabo e a migração da ficha salva); a imagem espera a G78.
+- **A ficha .md do diabo fica para trás, à vista (12/11/2026, CORRIGE da Revisora):** o JSON do diabo barbado foi editado em 12/11 antes da ficha .md da Bestiarista, que ainda aponta para `glaive-serrilhada`. Até o lote dela, reconverter o diabo para no conversor ("a arma glaive-serrilhada não está no armas.json"), e a fixture `scripts/fixtures/criaturas-esperado.json` traz a entrada do diabo de 12/11 com o sha256 da .md de antes. A troca vai à Bestiarista por lista, pelo autor (`../tmp/arquiteto/lista-bestiarista-glaive.md`). Pendência: B27.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15

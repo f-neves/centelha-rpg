@@ -454,3 +454,8 @@ limitações conhecidas, que são as três de baixo.
 - [ ] **B26 · [FAZER] Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas (G6, D-368).**
   Registrado em 07/11/2026. Cadeira, mesa, barril, rocha, carroça, árvore, parede. Por ora a rocha arremessada é arma de criatura e usa a
   régua da G1 (dano pelo tamanho). Não escrever agora.
+- [ ] **B27 · [FAZER] A ficha .md do diabo barbado, depois da I2 (D-372): a glaive serrilhada como ataque da própria ficha.** Registrado em 12/11/2026.
+  O JSON do diabo (`src/data/bestiario/diabo-barbado.json`) foi editado em 12/11 antes da ficha .md da Bestiarista, que ainda diz
+  `armas: glaive-serrilhada`. Até o lote dela, reconverter o diabo para no conversor, e a fixture `criaturas-esperado.json` tem a
+  entrada do diabo de 12/11 com o sha256 da .md de antes. A lista vai à Bestiarista pelo autor (L18):
+  `../tmp/arquiteto/lista-bestiarista-glaive.md`. Fecha quando o lote entrar e a fixture for regenerada.
