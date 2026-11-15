@@ -5,7 +5,7 @@ titulo: "O Coração do Sistema"
 resumo: "Rolagens, dificuldade e margem: a soma simples que move tudo."
 ---
 
-Neste jogo, você interpreta um herói num mundo conduzido pelo **Mestre**, quem narra o mundo e aplica as regras. Na maior parte do tempo, o jogo é conversa: você diz o que seu personagem faz, e o Mestre descreve o que acontece.
+Neste jogo, você interpreta um herói num mundo conduzido pelo **Mestre**, que narra a história e aplica as regras. Na maior parte do tempo, o jogo é conversa: você diz o que seu personagem faz, e o Mestre descreve o que acontece.
 
 Os dados só entram quando o resultado é **incerto e importa**. Nessa hora, o Mestre define o quão difícil é a tarefa (a **Dificuldade**), você junta os dados certos e rola. Este capítulo ensina exatamente isso: como uma rolagem funciona.
 
@@ -33,9 +33,11 @@ O *pool* básico sai da soma de Atributo + Habilidade. A metade dessa soma, arre
 | 11 | 5d6 + 2 |
 | 12 | 6d6 |
 
-<p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá).</p>
+<p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá: as Proezas são as árvores de Técnicas que a Centelha destrava, e as Artes, as linhas de feitiço do Arcano).</p>
 
-<p class="muted">Soma <strong>1</strong> (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de <strong>2</strong> nunca supera a Dificuldade <strong>5</strong>. É de propósito, e não um defeito: quem não tem competência não alcança as dificuldades altas, nem as fáceis. A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, Habilidade e o bestiário inteiro). A saída é a <a href="/centelha-rpg/regras/habilidades#firulas--recompensa-à-ousadia"><strong>Firula</strong></a> <strong>de nível 2</strong> (+1d6: o bônus de um lance, por descrever a ação com criatividade e uso do cenário), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
+<p class="muted">Soma <strong>1</strong> (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de <strong>2</strong> nunca supera a Dificuldade <strong>5</strong>. É de propósito, e não um defeito: quem não tem competência não alcança as dificuldades altas, nem as fáceis.</p>
+
+<p class="muted">A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, Habilidade e o bestiário inteiro). A saída é a <a href="/centelha-rpg/regras/habilidades#firulas--recompensa-à-ousadia"><strong>Firula</strong></a> <strong>de nível 2</strong> (+1d6: o bônus de um lance, por descrever a ação com criatividade e uso do cenário), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
 
 ### Quem escolhe o par
 
@@ -80,7 +82,7 @@ Você tem **sucesso** quando o total **supera** o alvo. O alvo é a Defesa de um
 
 <p class="muted">No nível "à altura", tarefas fáceis e médias são um cara-ou-coroa; a maestria é que traz confiabilidade. Quem não tem competência não alcança as dificuldades altas.</p>
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Para subir de uma vez uma muralha de pedra lavrada de 4 m (Dificuldade 7 + 4 − 1 = 10, Direta), Kael soma <strong>Força 3 + Atletismo 3 = 6</strong> → rola <strong>3d6</strong>, mais a Centelha: com Centelha 3 e Atletismo 3, <strong>+6</strong>. Saem <strong>11</strong> nos dados, total <strong>17</strong>: supera 10, ele sobe, e com 7 acima do alvo ganha uma <strong>Margem</strong>: sobe mais rápido, ou alcança um peitoril mais alto.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Para subir de uma vez uma muralha de pedra lavrada de 4 m (Dificuldade 7 + 4 − 1 = 10, Direta), Kael, o personagem dos exemplos deste livro, soma <strong>Força 3 + Atletismo 3 = 6</strong> → rola <strong>3d6</strong>, mais a Centelha: com Centelha 3 e Atletismo 3, <strong>+6</strong>. Saem <strong>11</strong> nos dados, total <strong>17</strong>: supera 10, ele sobe, e com 7 acima do alvo ganha uma <strong>Margem</strong>: sobe mais rápido, ou alcança um peitoril mais alto. A conta da Dificuldade é a de escalar, em <a href="/centelha-rpg/regras/acoes-corpo-e-movimento">Corpo e Movimento</a>: a Dificuldade da superfície (a muralha de pedra lavrada), mais a altura em metros, menos o ajuste da subida Direta. <strong>Direta</strong> é a ação resolvida numa rolagem só (os modos de ação estão em <a href="/centelha-rpg/regras/acoes-e-sistema">Ações & Sistema</a>).</div>
 
 ## Margem: graus de sucesso
 
