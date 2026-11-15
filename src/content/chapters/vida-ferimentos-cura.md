@@ -65,7 +65,7 @@ A porcentagem é a Vida restante sobre o PV máximo, **arredondada para baixo**:
 
 <p class="muted">A tabela para em Crítico, e só uma coisa passa dele sem cair em Incapacitado: a <strong>ressaca do Frenesi</strong> dos orcs e meio-orcs. Cada estado de ressaca além de Crítico soma mais −1d6 na ação física e −4 na Defesa Física, e nunca leva a Incapacitado. O degrau não existe fora dela (ver <a href="/centelha-rpg/regras/racas#frenesi">Frenesi</a>).</p>
 
-**O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste (a penalidade da fome, do sono, do veneno e do cansaço, no capítulo Resistir): Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro. O piso vale para quem tinha dado: quem já rolava zero dados (soma 1, o 2 fixo) continua no 2 fixo, e a penalidade não inventa um dado que não existia.
+**O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste (a penalidade que se acumula com a fome, o sono, o veneno e as outras ameaças do capítulo Resistir): Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro. O piso vale para quem tinha dado: quem já rolava zero dados (soma 1, o 2 fixo) continua no 2 fixo, e a penalidade não inventa um dado que não existia.
 
 A única exceção é o teste para entrar no [Frenesi](/regras/racas#frenesi): ali a penalidade de ferimento e o ponto de Força de Vontade que o próprio orc aplica para ceder podem zerar a parada.
 
@@ -89,7 +89,7 @@ Essa margem é a razão de a cena existir. Um aliado que caiu não está morto: 
 
 Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. A cada **6 [Ticks](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa) desde o ferimento**, um Sangramento **N** causa **N de dano** (já passa direto pelo Absorção). O relógio é de cada um, e não da mesa: quem levou duas feridas em momentos diferentes sangra por dois contadores desalinhados.
 
-O Sangramento é lento de propósito: há tempo de reagir antes que mate.
+Esse relógio é lento de propósito: há tempo de reagir antes que mate.
 
 Há duas formas de começar a sangrar:
 

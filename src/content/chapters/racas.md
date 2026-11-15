@@ -5,9 +5,9 @@ titulo: "Raças"
 resumo: "O que cada povo é no mundo, e como sua herança move os tetos de Atributo e abre traços que nenhum humano tem."
 ---
 
-Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo, mente e tempo de vida. Em regra de jogo, ela **desloca os limites** de alguns Atributos e abre **traços** que ninguém mais tem.
+Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo, mente e tempo de vida. Em regra de jogo, ela **desloca os limites** de alguns Atributos e abre **traços** que ninguém mais tem. A raça é escolha do **personagem**: uma criatura do bestiário do mesmo povo traz o que tem na própria ficha, que já parte da raça.
 
-Escolher uma raça é pagar um custo em **XP** por essa herança; o **Humano** é a régua contra a qual todos os outros são descritos. A raça é escolha do **personagem**: uma criatura do bestiário do mesmo povo traz o que tem na própria ficha.
+Escolher uma raça é pagar um custo em **XP** por essa herança; o **Humano** é a régua contra a qual todos os outros são descritos.
 
 <div class="callout regra"><span class="lbl">Como ler um traço racial</span>O <strong><code>+1</code> racial faz duas coisas</strong>, e é preciso ler as duas. Ele <strong>levanta o teto</strong> daquele Atributo para <strong>7</strong>, um ponto acima do teto humano de 6, mesmo em quem tem Centelha 0, e já na criação: o Atributo com o <code>+1</code> pode ser comprado até 7 (Cap. XVIII). É o único ponto acima de 6 que a herança dá, e os seguintes só vêm da Centelha (Atributos e Centelha). Ele também <strong>levanta o piso</strong>: aquele Atributo <strong>começa em 2</strong> em vez de 1, e esse ponto <strong>vem de graça</strong>. O <strong><code>−1</code> racial</strong> é diferente: ele trava o Atributo em <strong>5</strong> e <strong>não mexe no piso</strong>, que continua sendo 1 como o de todo mundo. Fora o ponto de brinde, você compra cada nível com XP (Atributo = 5 + novo × 5).</div>
 
