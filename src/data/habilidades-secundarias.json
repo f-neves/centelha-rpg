@@ -218,7 +218,7 @@
     "id": "escapismo",
     "nome": "Escapismo",
     "grupo": "corpo",
-    "descricao": "Soltar-se do que prende: corda, algema, saco, corrente, rede e o que a Arte de prender fecha em volta. É virar o pulso, encolher a mão para fora do ferro, achar a ponta do nó e sair de dentro do que fechou em volta sem arrebentar nada. Serve a quem está Preso (rede, Arte de prender) e a quem está Imobilizado sem agarrão (amarrado, preso em gelo) e tenta se soltar sozinho. O Agarrado não rola nada, e o agarrão do corpo a corpo não é Escapismo: tem regra própria em Combate. Fica ao lado da Ginástica, que é passar por um vão: o Escapismo é a técnica de quem já está preso. Soltar-se de dentro é Escapismo; abrir o fecho com gazua é Abrir Mecanismos. A regra de escapar de cada estado (Preso, Agarrado, Imobilizado) está em Corpo e Movimento e em Combate."
+    "descricao": "Soltar-se do que prende: corda, algema, saco, corrente, rede e o que a Arte de prender fecha em volta. É virar o pulso, encolher a mão para fora do ferro, achar a ponta do nó e sair sem arrebentar nada. Serve a quem está Preso (rede, Arte de prender) e a quem está Imobilizado sem agarrão (amarrado, preso em gelo) e tenta se soltar sozinho. O Agarrado não rola nada, e o agarrão do corpo a corpo não é Escapismo: tem regra própria em Combate. Fica ao lado da Ginástica, que é passar por um vão: o Escapismo é a técnica de quem já está preso. Soltar-se de dentro é Escapismo; abrir o fecho com gazua é Abrir Mecanismos. A regra de escapar de cada estado (Preso, Agarrado, Imobilizado) está em Corpo e Movimento e em Combate."
   },
   {
     "id": "escalada",
@@ -1471,7 +1471,7 @@
     "id": "ferreiro",
     "nome": "Ferreiro",
     "grupo": "oficio",
-    "descricao": "O trabalho do metal na forja, do começo ao fim: aquecer, malhar, temperar, soldar, rebitar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina, de anel de malha a peça de placa. Cobre a arma, a armadura e a serralheria (fechadura, chave, dobradiça de segredo, mecanismo e engenho de ferro) junto com o resto: é todo trabalho em ferro, porque é a mesma bigorna e o mesmo par de mãos; o que muda de uma peça para a outra é a dificuldade e o tempo, não o ofício. É o ofício mais presente de qualquer vila, e o único que devolve a uma espada lascada a qualidade que ela tinha.",
+    "descricao": "O trabalho do metal na forja, do começo ao fim: aquecer, malhar, temperar, soldar, rebitar, consertar e fabricar de dobradiça a ferradura, de prego a lâmina, de anel de malha a peça de placa. Cobre a arma, a armadura e a serralheria (fechadura, chave, dobradiça de segredo, mecanismo e engenho de ferro) junto com o resto: é todo trabalho em ferro, porque é a mesma bigorna e o mesmo par de mãos. O que muda de uma peça para a outra é a dificuldade e o tempo, e não o ofício. É o ofício mais presente de qualquer vila, e o único que devolve a uma espada lascada a qualidade que ela tinha.",
     "niveis": [
       {
         "nivel": 0,
@@ -1514,7 +1514,7 @@
     "id": "carpintaria",
     "nome": "Carpintaria",
     "grupo": "oficio",
-    "descricao": "A madeira, da viga ao móvel: cortar, aparelhar, encaixar, montar e acabar. Cobre o que sustenta (telhado, assoalho, porta, escada, ponte de madeira, escoramento de mina, casco de barco e de navio) e o que se usa de perto (móvel, baú, cabo de arma, flecha, arco, besta, acabamento), porque é a mesma madeira, a mesma ferramenta e o mesmo par de mãos; o que muda de uma peça para a outra é a tolerância do encaixe, não o ofício. Arcos e construção naval são Carpintaria; não há ofício separado. É o ofício mais pedido de qualquer acampamento, porque quase tudo que quebra numa viagem é de madeira.",
+    "descricao": "A madeira, da viga ao móvel: cortar, aparelhar, encaixar, montar e acabar. Cobre o que sustenta (telhado, assoalho, porta, escada, ponte de madeira, escoramento de mina, casco de barco e de navio) e o que se usa de perto (móvel, baú, cabo de arma, flecha, arco, besta, acabamento), porque é a mesma madeira, a mesma ferramenta e o mesmo par de mãos. O que muda de uma peça para a outra é a tolerância do encaixe, e não o ofício. Arcos e construção naval são Carpintaria; não há ofício separado. É o ofício mais pedido de qualquer acampamento, porque quase tudo que quebra numa viagem é de madeira.",
     "niveis": [
       {
         "nivel": 0,
@@ -2503,7 +2503,7 @@
     "id": "ocultacao",
     "nome": "Ocultação",
     "grupo": "subterfugio",
-    "descricao": "Esconder e achar o escondido, dos dois lados: compartimento falso, fundo duplo, tijolo solto, forro de capa, o vão sob a tábua, a passagem atrás da estante, e a armadilha, tanto montar a sua quanto farejar a alheia antes do primeiro passo. Cobre também esconder o que não cabe no bolso, que é o contrabando (carga declarada por outro nome, rota alternativa, esconderijo que aguenta inspeção de verdade) e esconder a mentira dentro de um papel, que é a falsificação de assinatura, selo, salvo-conduto ou moeda, e o inverso, apontar onde um documento foi forjado. O princípio é sempre o mesmo: quem sabe esconder sabe onde procurar.",
+    "descricao": "Esconder e achar o escondido, dos dois lados: compartimento falso, fundo duplo, tijolo solto, forro de capa, o vão sob a tábua, a passagem atrás da estante, e a armadilha, tanto montar a sua quanto farejar a alheia antes do primeiro passo. Cobre também esconder o que não cabe no bolso, que é o contrabando (carga declarada por outro nome, rota alternativa, esconderijo que aguenta inspeção de verdade). E cobre esconder a mentira dentro de um papel, que é a falsificação de assinatura, selo, salvo-conduto ou moeda, e o inverso: apontar onde um documento foi forjado. O princípio é sempre o mesmo: quem sabe esconder sabe onde procurar.",
     "niveis": [
       {
         "nivel": 0,
@@ -2632,7 +2632,7 @@
     "id": "meditacao",
     "nome": "Meditação",
     "grupo": "interior",
-    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas. Quem medita recupera 1 de Mana por hora meditando, até o seu nível de Meditação por dia. Vale para todos, mortais ou não, e soma-se ao que a Mana já recupera (ver Regras das Artes, Quando o Mana volta). Recuperar Vontade é a ação Meditar do Cap. VIII.",
+    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas. Quem medita recupera 1 de Mana por hora meditando, até o seu nível de Meditação por dia. Vale para todos, mortais ou não, e soma-se ao que a Mana já recupera (ver Regras das Artes, Quando o Mana volta). A Vontade não volta por jogada: a noite passada em meditação conta como noite de sono para recuperá-la (Cap. III).",
     "niveis": [
       {
         "nivel": 0,
