@@ -5,7 +5,9 @@ titulo: "As Três Defesas"
 resumo: "As três muralhas de toda criatura: corpo, postura e mente. Qual delas um ataque testa, como decidir entre Social e Mental, e o número de cada uma."
 ---
 
-Toda criatura carrega **três muralhas**, uma para cada jeito de ser atingida: o **corpo**, a **postura** e a **mente**. Metade da regra é saber qual muralha um ataque testa; a outra metade é o número que ela vale. Este capítulo cobre as duas.
+Todo ser, personagem ou criatura, carrega **três muralhas**, uma para cada jeito de ser atingido: o **corpo**, a **postura** e a **mente**.
+
+Metade da regra é saber qual muralha um ataque testa; a outra metade é o número que ela vale. Este capítulo cobre as duas.
 
 As três Defesas são **valores passivos**: um número fixo que o atacante precisa **superar** com a rolagem dele. Você não rola para se defender; o seu número já está na ficha, esperando.
 
@@ -60,7 +62,9 @@ Medo é o caso que mais engana, então fica a régua fechada:
 
 ## As fórmulas
 
-A **[Centelha](/regras/centelha)** soma **2 × o menor entre ela e a Habilidade usada** naquela jogada (Habilidade 0 dá bônus 0) a cada uma das defesas e ao ataque: quem tem a fagulha acesa e não treinou ganha só o que o treino sustenta. Como os dois lados ganham igual e limitado do mesmo jeito, entre Centelhas iguais (com Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
+A **[Centelha](/regras/centelha)** soma **2 × o menor entre ela e a Habilidade usada** naquela jogada (Habilidade 0 dá bônus 0) a cada uma das defesas e ao ataque: quem tem a fagulha acesa e não treinou ganha só o que o treino sustenta.
+
+Como os dois lados ganham igual e limitado do mesmo jeito, entre Centelhas iguais (com Habilidade que alcance) o efeito se cancela e o duelo joga limpo; contra quem tem menos Centelha, a diferença vira vantagem de verdade.
 
 ### Defesa Física
 
@@ -75,7 +79,7 @@ Você tem duas maneiras de se defender e usa a que couber. Na ficha as duas apar
 
 - **Defesa Social** = ( Compostura + Sociabilidade ) × 2 + 2 × menor(Centelha, Sociabilidade) + Especialidade
 
-Em **feras** (bichos de instinto, Inteligência 1) troca-se **Sociabilidade por Sobrevivência**: um animal não tem trato social, mas sente o perigo.
+Nas **feras** (regra de criatura: bichos de instinto, Inteligência 1), troca-se **Sociabilidade por Sobrevivência**: um animal não tem trato social, mas sente o perigo.
 
 ### Defesa Mental
 
@@ -98,7 +102,9 @@ Regra do "quando": o foco é **estreito e declarado** (uma situação, nunca "to
 
 ## Queimar Força de Vontade
 
-Além do número passivo, a **Força de Vontade** tem dois usos contra influência e ataque, e nenhum deles é uma blindagem que dura. **Antes do teste:** 1 ponto soma **+4** à Defesa (Social ou Mental) contra aquele ataque, no máximo 1 ponto por ação ou jogada (Cap. III). **Depois que o ataque passou:** vale o Resistir, um pagamento de **1 + Margem** de Vontade (teto 4) que fica fora desse limite de 1 ponto (ver Resistir, em Relações Sociais).
+Além do número passivo, a **Força de Vontade** tem dois usos contra influência e ataque, e nenhum deles é uma blindagem que dura. **Antes do teste:** 1 ponto soma **+4** à Defesa (Social ou Mental) contra aquele ataque, no máximo 1 ponto por ação ou jogada (Cap. III).
+
+**Depois que o ataque passou:** vale o Resistir, um pagamento de **1 + Margem** de Vontade (teto 4) que fica fora desse limite de 1 ponto (ver Resistir, em Relações Sociais).
 
 | Contra o quê | Dá para gastar Vontade? |
 |---|---|
@@ -108,7 +114,7 @@ Além do número passivo, a **Força de Vontade** tem dois usos contra influênc
 
 ## Quem tem cada muralha
 
-Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da criatura:
+Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** de quem é atacado (na prática, uma regra de criatura, porque todo personagem tem a Inteligência das linhas de baixo):
 
 | Inteligência | Exemplos | Social | Mental |
 |---|---|:---:|:---:|
