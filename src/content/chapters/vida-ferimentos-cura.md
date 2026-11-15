@@ -7,7 +7,9 @@ resumo: "Pontos de Vida, limiares de ferimento, queda, morte e recuperação."
 
 Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada golpe, a não ser que a diferença de poder seja gritante. Os **Pontos de Vida** medem o quanto você suporta antes de cair.
 
-Quando você sofre dano (o que sobra do golpe depois da **Absorção**, o número que reduz cada dano antes de virar ferimento: a soma da armadura com a natural do corpo, detalhada em [Dano e Armadura](/regras/combate#dano-e-armadura)), você o **marca** na sua folha, e há um número só: **dano é dano, cura é cura**. Corte, perfuração, impacto, queimadura, queda ou veneno somam todos no mesmo lugar, e qualquer cura cura, seja ela descanso, Cura ou magia.
+Quando você sofre dano, você o **marca** na sua folha. O dano é o que sobra do golpe depois da **Absorção**, o número que reduz cada dano antes de virar ferimento: a soma da armadura com a natural do corpo, detalhada em [Dano e Armadura](/regras/combate#dano-e-armadura).
+
+Há um número só: **dano é dano, cura é cura**. Corte, perfuração, impacto, queimadura, queda ou veneno somam todos no mesmo lugar, e qualquer cura cura, seja ela descanso, Cura ou magia.
 
 O tipo do golpe importa, e importa **antes**: é ele que escolhe a Absorção com que a sua armadura resiste (a Placa Completa absorve 8 de Corte e 4 de Impacto, então o malho contra placa continua sendo a via que era). **O tipo pesa no golpe, não na cicatriz.**
 
@@ -15,7 +17,9 @@ O tipo do golpe importa, e importa **antes**: é ele que escolhe a Absorção co
 
 <p class="formula">PV = 25 + (Vigor × 3)</p>
 
-Essa é a Vida de quem pesa **de 35 a 220 kg**, como os humanoides. A Vida da **criatura** vem da **massa**, e não do tamanho: quem pesa mais aguenta mais, e quem pesa menos aguenta bem menos, mesmo com o mesmo Vigor. A base sobe com a massa, e o multiplicador do Vigor também, até × 5. Um urso de 400 kg com Vigor 5 tem 30 + 5 × 4 = 50 PV; um elfo de 55 kg com o mesmo Vigor tem 40.
+Essa é a Vida de quem pesa **de 35 a 220 kg**, como os humanoides.
+
+A Vida da **criatura** vem da **massa**, e não do tamanho: quem pesa mais aguenta mais, e quem pesa menos aguenta bem menos, mesmo com o mesmo Vigor. A base sobe com a massa, e o multiplicador do Vigor também, até × 5. Um urso de 400 kg com Vigor 5 tem 30 + 5 × 4 = 50 PV; um elfo de 55 kg com o mesmo Vigor tem 40.
 
 | Massa | PV | Com Vigor 3 | Zona de transição |
 |---|---|---|---|
@@ -31,17 +35,23 @@ Essa é a Vida de quem pesa **de 35 a 220 kg**, como os humanoides. A Vida da **
 | 14 a 110 t | 40 + (Vigor × 5) | 55 | 104,5 a 115,5 t |
 | acima de 110 t | 45 + (Vigor × 5) | 60 | |
 
-Na **zona de transição**, perto de um corte, a ficha da criatura escolhe a linha pelo corpo (o robusto sobe, o frágil desce) e diz por quê. Criaturas sem massa de verdade (um elemental, um fantasma, uma geleia) usam o volume no lugar da massa. Esta tabela é só da Vida: as Manobras e o Bloqueio usam sete faixas de massa (ver [Combate](/regras/combate#massa-nas-manobras)).
+Na **zona de transição**, perto de um corte, a ficha da criatura escolhe a linha pelo corpo (o robusto sobe, o frágil desce) e diz por quê. Criaturas sem massa de verdade (um elemental, um fantasma, uma geleia) usam o volume no lugar da massa.
 
-**O personagem é a exceção: a Vida dele sai do Tamanho da raça**, e não da massa. O gnomo e o halfling, que são Pequenos, usam a linha de 15 a 35 kg (20 + Vigor × 2); as outras raças, que são Médias, a de 35 a 220 kg (25 + Vigor × 3); o orc e o meio-orc somam a Vitalidade por cima. Vale qualquer que seja a massa que o jogador escreve na ficha: um elfo de 25 kg continua Médio, e um orc de 500 kg também. A massa padrão de cada raça cai nessa mesma linha (ver [Raças](/regras/racas)), então, na massa padrão, as duas contas dão o mesmo número.
+Esta tabela é só da Vida: as Manobras e o Bloqueio usam sete faixas de massa (ver [Combate](/regras/combate#massa-nas-manobras)).
 
-A sua **Vida restante** é o PV máximo menos o dano total marcado; é a porcentagem dela que diz em que estado você está, na tabela abaixo.
+**O personagem é a exceção: a Vida dele sai do Tamanho da raça**, e não da massa. O gnomo e o halfling, que são Pequenos, usam a linha de 15 a 35 kg (20 + Vigor × 2); as outras raças, que são Médias, a de 35 a 220 kg (25 + Vigor × 3); o orc e o meio-orc somam a Vitalidade por cima.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram tem <strong>PV 34</strong>. Numa briga feia, leva <strong>28</strong> de dano somado (malho, lâmina e uma queda): restam <strong>6 PV</strong> (18% → <strong>Grave</strong>). Está mal, mas ainda de pé, e o chão dele é longe: cai em <strong>0</strong> e só morre em <strong>−17</strong>, que é metade do seu PV máximo abaixo do zero.</div>
+Vale qualquer que seja a massa que o jogador escreve na ficha: um elfo de 25 kg continua Médio, e um orc de 500 kg também. A massa padrão de cada raça cai nessa mesma linha (ver [Raças](/regras/racas)), então, na massa padrão, as duas contas dão o mesmo número.
+
+A sua **Vida restante** é o PV máximo menos o dano total marcado. É a porcentagem dela que diz em que estado você está, na tabela abaixo.
+
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Bram, um dos personagens dos exemplos deste livro, tem <strong>PV 34</strong>. Numa briga feia, leva <strong>28</strong> de dano somado (malho, lâmina e uma queda): restam <strong>6 PV</strong> (17% → <strong>Grave</strong>). Está mal, mas ainda de pé, e o chão dele é longe: cai em <strong>0</strong> e só morre em <strong>−17</strong>, que é metade do seu PV máximo abaixo do zero.</div>
 
 ## Limiares de Ferimento
 
-Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (as que rolam Força, Destreza ou Vigor) e na **Defesa Física**. O **ataque à distância** também sofre, mesmo rolando Percepção: é a única rolagem de Percepção que a dor alcança, porque o arco e a besta pedem o corpo firme. Social e mental não sentem nenhum dos quatro graus abaixo: um personagem Crítico ainda pensa e convence direito, só não corre nem briga direito.
+Conforme a Vida restante cai, a dor cobra seu preço nas **ações físicas** (as que rolam Força, Destreza ou Vigor) e na **Defesa Física** (o valor fixo que um ataque precisa superar para acertar o corpo, no [Cap. XI](/regras/defesas)).
+
+O **ataque à distância** também sofre, mesmo rolando Percepção: é a única rolagem de Percepção que a dor alcança, porque o arco e a besta pedem o corpo firme. Social e mental não sentem nenhum dos quatro graus abaixo: um personagem Crítico ainda pensa e convence direito, só não corre nem briga direito.
 
 | Vida restante | Estado | Ações físicas | Defesa Física |
 |---|---|---|---|
@@ -55,13 +65,17 @@ A porcentagem é a Vida restante sobre o PV máximo, **arredondada para baixo**:
 
 <p class="muted">A tabela para em Crítico, e só uma coisa passa dele sem cair em Incapacitado: a <strong>ressaca do Frenesi</strong> dos orcs e meio-orcs. Cada estado de ressaca além de Crítico soma mais −1d6 na ação física e −4 na Defesa Física, e nunca leva a Incapacitado. O degrau não existe fora dela (ver <a href="/centelha-rpg/regras/racas#frenesi">Frenesi</a>).</p>
 
-**O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste: Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro. O piso vale para quem tinha dado: quem já rolava zero dados (soma 1, o 2 fixo) continua no 2 fixo, e a penalidade não inventa um dado que não existia. A única exceção é o teste para entrar no [Frenesi](/regras/racas#frenesi): ali a penalidade de ferimento e o ponto de Força de Vontade que o próprio orc aplica para ceder podem zerar a parada.
+**O pool nunca desce abaixo de 1d6**, mesma trava do Desgaste (a penalidade da fome, do sono, do veneno e do cansaço, no capítulo Resistir): Grave e Crítico tiram dado de verdade, mas nunca zeram a ação física por inteiro. O piso vale para quem tinha dado: quem já rolava zero dados (soma 1, o 2 fixo) continua no 2 fixo, e a penalidade não inventa um dado que não existia.
+
+A única exceção é o teste para entrar no [Frenesi](/regras/racas#frenesi): ali a penalidade de ferimento e o ponto de Força de Vontade que o próprio orc aplica para ceder podem zerar a parada.
 
 <div class="callout regra"><span class="lbl">As duas moedas, lado a lado no mesmo degrau</span>O jogo penaliza de dois jeitos: o <strong>ponto</strong> sai do <strong>total</strong> depois que os dados pararam de rolar, o <strong>dado</strong> sai do <strong>pool</strong>, antes de rolar. Nenhuma categoria converte um no outro, mas o Ferimento agora atravessa os dois: <strong>Machucado é ponto</strong> (−2 no total, sem tirar dado da mão), <strong>Grave e Crítico são dado</strong> (−1d6 e −2d6 do pool), a mesma moeda que até aqui era exclusiva do <strong>Desgaste</strong> (fome, sede, sono, veneno, exaustão, no capítulo <a href="/centelha-rpg/regras/acoes-resistir">Resistir</a>). Um personagem Grave ou Crítico <strong>e</strong> com Desgaste ao mesmo tempo (ferido e envenenado, por exemplo) tem as duas fontes cortando do <strong>mesmo</strong> pool, somando direto, com o piso comum em 1d6.</div>
 
 ## Queda e Morte
 
-Chegar a **0 PV ou menos** deixa você **Incapacitado**: fora da briga, e ainda vivo. Chegar a Incapacitado normalmente deixa **Inconsciente**, e esse desmaio não tem teste: nem a Resistência o evita. As exceções são as Proezas que mantêm de pé em 0 PV ou menos (Não Vou Cair, Último Suspiro, Não Sentir Dor) e o Mestre. A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
+Chegar a **0 PV ou menos** deixa você **Incapacitado**: fora da briga, e ainda vivo. Chegar a Incapacitado normalmente deixa **Inconsciente**, e esse desmaio não tem teste: nem a Resistência o evita. As exceções são as Proezas que mantêm de pé em 0 PV ou menos (Não Vou Cair, Último Suspiro, Não Sentir Dor) e o Mestre.
+
+A Vida não para no zero, ela continua descendo, e é abaixo do zero que mora a morte.
 
 <p class="formula">Morre em Vida ≤ −(PV máximo ÷ 2)</p>
 
@@ -73,7 +87,9 @@ Essa margem é a razão de a cena existir. Um aliado que caiu não está morto: 
 
 ## Sangramento e Estabilização
 
-Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. A cada **6 [Ticks](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa) desde o ferimento**, um Sangramento **N** causa **N de dano** (já passa direto pelo Absorção). O relógio é de cada um, e não da mesa: quem levou duas feridas em momentos diferentes sangra por dois contadores desalinhados. Ele é lento de propósito: há tempo de reagir antes que mate.
+Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. A cada **6 [Ticks](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa) desde o ferimento**, um Sangramento **N** causa **N de dano** (já passa direto pelo Absorção). O relógio é de cada um, e não da mesa: quem levou duas feridas em momentos diferentes sangra por dois contadores desalinhados.
+
+O Sangramento é lento de propósito: há tempo de reagir antes que mate.
 
 Há duas formas de começar a sangrar:
 
@@ -100,7 +116,9 @@ Quem está em 0 PV ou menos não se recupera sozinho. Enquanto o PV não chegar 
 
 Em 0 PV exato (X = 0) qualquer resultado supera, e o paciente recupera. Com **1 PV** o paciente acorda, em Crítico, e dali em diante vale a tabela de Recuperação.
 
-**Cura, a Habilidade.** Identificar o mal (a ferida, o veneno, a doença) é **Inteligência + Cura**, e o Mestre decide se é preciso rolar. O tratamento que exige mão (sutura, colocar osso, cirurgia, administração intravenosa) é **Raciocínio + Cura**: é o caso do Estabilizar, do Tratar e do tratamento de veneno e de doença no capítulo Resistir. Dar um remédio para beber não pede teste.
+**Cura, a Habilidade.** A Cura é uma Habilidade secundária (o saber de tratar o corpo). Identificar o mal (a ferida, o veneno, a doença) é **Inteligência + Cura**, e o Mestre decide se é preciso rolar.
+
+O tratamento que exige mão (sutura, colocar osso, cirurgia, administração intravenosa) é **Raciocínio + Cura**: é o caso do Estabilizar, do Tratar e do tratamento de veneno e de doença no capítulo Resistir. Dar um remédio para beber não pede teste.
 
 **A Arte no Tratar.** Quem cuida e conhece uma Arte de cura soma ao teste **+3 por nível da Arte de Cura**, ou **+1 por nível da Arte de Vida**. Os dois não se somam: vale o maior. Quem a usa escolhe o nível, até o que tem na Arte, e paga a **Mana desse nível**: 2 por nível, como toda cura, menos a Centelha (pode sair de graça). Um Efeito específico (Mão Firme, Campo de Alívio, Acelerar a Cura) vale o que o próprio Efeito disser.
 
@@ -112,7 +130,13 @@ Em 0 PV exato (X = 0) qualquer resultado supera, e o paciente recupera. Com **1 
 
 **Sem tratamento.** Se ninguém trata, e o paciente não sangra nem sofre de nada que piore a situação, o PV fica parado onde está. Não há regra para a morte por abandono: o Mestre decide o que acontece, e quando.
 
-Exemplo: Sora (PV 37, Vigor 4, Centelha 3) cai a −16; morre em −19. Kael cuida dela com Raciocínio 3 e Cura 1 (2d6, mais 2 de Centelha: 2d6+2). Dia 1: X é 16, Dificuldades 8 e 4; Kael tira 6, não supera 8 mas supera 4: **segura**, e nada muda. Dia 2: tira 10 e supera 8: **recupera**, e Sora sobe o Vigor, para −12. Dia 3: X é 12, Dificuldades 6 e 3, tira 9: −8. Dia 4: Dificuldades 4 e 2, tira 8: −4. Dia 5: Dificuldades 2 e 1, tira 7: 0. Dia 6: X é 0, e qualquer resultado supera: 1 PV, e Sora acorda em Crítico. Um companheiro sem a Habilidade Cura (Raciocínio 3: 1d6+2) nunca recuperaria Sora a −16 (o total máximo é 8, e a Dificuldade é 8), e cada dia com total 4 ou menos (rolar 1 ou 2) custaria a ela 1d6 PV. Se esse mesmo companheiro conhecer a Arte de Cura no nível 1 (+3, 2 de Mana, de graça para quem tem Centelha 2), ele rola 1d6+5 e recupera Sora na metade dos dias (total 9 ou mais), sem nunca piorá-la.
+Exemplo: Sora (PV 37, Vigor 4, Centelha 3) cai a −16; morre em −19. Kael cuida dela com Raciocínio 3 e Cura 1 (2d6, mais 2 de Centelha: 2d6+2).
+
+Dia 1: X é 16, Dificuldades 8 e 4; Kael tira 6, não supera 8 mas supera 4: **segura**, e nada muda. Dia 2: tira 10 e supera 8: **recupera**, e Sora sobe o Vigor, para −12. Dia 3: X é 12, Dificuldades 6 e 3, tira 9: −8. Dia 4: Dificuldades 4 e 2, tira 8: −4. Dia 5: Dificuldades 2 e 1, tira 7: 0. Dia 6: X é 0, e qualquer resultado supera: 1 PV, e Sora acorda em Crítico.
+
+Um companheiro sem a Habilidade Cura (Raciocínio 3: 1d6+2) nunca recuperaria Sora a −16 (o total máximo é 8, e a Dificuldade é 8), e cada dia com total 4 ou menos (rolar 1 ou 2) custaria a ela 1d6 PV.
+
+Se esse mesmo companheiro conhecer a Arte de Cura no nível 1 (+3, 2 de Mana, de graça para quem tem Centelha 2), ele rola 1d6+5 e recupera Sora na metade dos dias (total 9 ou mais), sem nunca piorá-la.
 
 ## Recuperação
 
@@ -126,4 +150,6 @@ Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lent
 | Crítico (1–10%) | por semana |
 | Incapacitado (0 PV ou menos) | por dia, pelo teste de Tratar, até 1 PV |
 
-<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida <strong>encurta o intervalo</strong> da tabela em <strong>10%</strong> (com Cura 3, o "a cada 5 dias" vira 3,5 dias), e os 50% exigem Cura 5. O encurtamento não vale na linha "por dia" (o dia é o menor intervalo da tabela) nem para quem está em 0 PV ou menos, que sobe pelo teste de Tratar. A magia também acelera (Acelerar a Cura, na Arte de Vida).</p>
+<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida <strong>encurta o intervalo</strong> da tabela em <strong>10%</strong> (com Cura 3, o "a cada 5 dias" vira 3,5 dias), e os 50% exigem Cura 5.</p>
+
+<p class="muted">O encurtamento não vale na linha "por dia" (o dia é o menor intervalo da tabela) nem para quem está em 0 PV ou menos, que sobe pelo teste de Tratar. A magia também acelera (Acelerar a Cura, na Arte de Vida).</p>
