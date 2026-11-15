@@ -33,7 +33,7 @@ O *pool* básico sai da soma de Atributo + Habilidade. A metade dessa soma, arre
 | 11 | 5d6 + 2 |
 | 12 | 6d6 |
 
-<p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá: as Proezas são as árvores de Técnicas que a Centelha destrava, e as Artes, as linhas de feitiço do Arcano).</p>
+<p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá: as Proezas são as árvores de Técnicas que a Centelha destrava, e as Artes, as linhas de feitiçaria do Arcano).</p>
 
 <p class="muted">Soma <strong>1</strong> (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de <strong>2</strong> nunca supera a Dificuldade <strong>5</strong>. É de propósito, e não um defeito: quem não tem competência não alcança as dificuldades altas, nem as fáceis.</p>
 
