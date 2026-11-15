@@ -19,7 +19,9 @@ Cinco coisas tentam derrubar um corpo ao longo do tempo: veneno, doença, ambien
 
 O pool **nunca desce abaixo de 1d6**, e o +2 da soma ímpar continua valendo: mesmo arrasado, o personagem ainda joga alguma coisa.
 
-**Os degraus de condições diferentes somam, e a soma para em 4.** (O teto é só do Desgaste; os estados de [Condições](/regras/condicoes), como o Enjoado, são outra régua e somam por fora.) O náufrago com frio, sede e sono não morre de aritmética. **O que mata é o relógio próprio de cada condição**, nunca o Desgaste: o sufocamento tem a asfixia, a doença tem o estágio Terminal, o veneno tem a dose letal. O Desgaste é o preço de estar aguentando, não a forma de morrer.
+**Os degraus de condições diferentes somam, e a soma para em 4.** (O teto é só do Desgaste; os estados de [Condições](/regras/condicoes), como o Enjoado, são outra régua e somam por fora.) O náufrago com frio, sede e sono não morre de aritmética.
+
+**O que mata é o relógio próprio de cada condição**, nunca o Desgaste: o sufocamento tem a asfixia, a doença tem o estágio Terminal, o veneno tem a dose letal. O Desgaste é o preço de estar aguentando, não a forma de morrer.
 
 **Recuperação padrão:** um degrau por noite de sono com abrigo, comida e água.
 
@@ -27,9 +29,13 @@ A Habilidade das três que rolam é **Resistência**, e ela é de Vigor puro.
 
 ## Veneno
 
-**Modo** · Direta repetida por intervalo. Cada veneno abre um **pool** de dano que drena aos poucos, não um efeito fixo repetido por dose: doses novas somam ao pool pendente e estendem a duração, não multiplicam o dano por intervalo.
+**Modo** · Direta repetida por intervalo.
 
-**Potência efetiva = Potência do veneno − Resistência do alvo, piso 0.** É o corpo aguentando a substância antes de qualquer jogada: um veneno fraco contra alguém resistente pode nem chegar a exigir teste. Com Potência efetiva 0, o veneno não faz efeito: nem pulso, nem penalidade.
+Cada veneno abre um **pool** de dano que drena aos poucos, não um efeito fixo repetido por dose: doses novas somam ao pool pendente e estendem a duração, não multiplicam o dano por intervalo.
+
+**Potência efetiva = Potência do veneno − Resistência do alvo, piso 0.** É o corpo aguentando a substância antes de qualquer jogada: um veneno fraco contra alguém resistente pode nem chegar a exigir teste.
+
+Com Potência efetiva 0, o veneno não faz efeito: nem pulso, nem penalidade.
 
 **A cada intervalo, Vigor + Resistência contra a Potência efetiva reduz o dano daquele pulso**, na régua de Margem:
 
@@ -40,7 +46,9 @@ A Habilidade das três que rolam é **Resistência**, e ela é de Vigor puro.
 | Falhou por menos de 6 | 2 |
 | Falhou por **6 ou mais** | 3 |
 
-Esse valor sai do **pool total**, na unidade que o **Tipo** do veneno declara (PV, ponto de Atributo ou, no veneno de sono, sonolência). **Todo dano de veneno ignora a Absorção**, natural e de armadura: peçonha não se para com aço. A armadura só decide se o veneno entra (ver *Quando o veneno entra*, abaixo).
+Esse valor sai do **pool total**, na unidade que o **Tipo** do veneno declara (PV, ponto de Atributo ou, no veneno de sono, sonolência). **Todo dano de veneno ignora a Absorção**, natural e de armadura: peçonha não se para com aço.
+
+A armadura só decide se o veneno entra (ver *Quando o veneno entra*, abaixo).
 
 **Dano e penalidade são duas trilhas separadas, e só o dano se reduz pela rolagem.** Enquanto o pool não zerar, o alvo carrega a **penalidade mínima** do veneno (Desgaste, nos seis catalogados), que **não** se reduz por resistir bem: é a substância ainda circulando, mesmo que o corpo esteja vencendo o dano dela. Só some quando o pool zera de vez.
 
@@ -55,25 +63,35 @@ A bebida forte é a exceção declarada: tem pool 0, nada a drenar, e o Desgaste
 | Peçonha de aranha gigante | 18 | Tick (sangue) | 1 minuto | 4 (Destreza) | atributo | Desgaste 1 |
 | Hálito de basilisco | 22 | minuto (inalado) | 1 minuto | 48 (PV) | pv | Desgaste 1 |
 
-**Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido). **Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo dá à dose dobrada ou direto no sangue (+4). **Se o ponto de contato tem ferimento aberto ou mucosa exposta, o abatimento não se aplica**: o toque passa a valer como via sangue.
+**Quatro vias de entrada: toque, sangue, inalado, ingerido.** Cada veneno tem a via em que costuma chegar (a coluna Início já reflete isso: picada ou lâmina é sangue, hálito é inalado, bebida é ingerido).
+
+**Toque em pele intacta abate 4 da Potência** antes de calcular a Potência efetiva, o mesmo peso que a Circunstância abaixo dá à dose dobrada ou direto no sangue (+4). **Se o ponto de contato tem ferimento aberto ou mucosa exposta, o abatimento não se aplica**: o toque passa a valer como via sangue.
 
 **Quando o veneno entra.** Picada, ferrão ou lâmina envenenada inoculam quando o golpe causa pelo menos 1 PV depois da Absorção. Se a armadura segurou tudo, o veneno não entrou.
 
 **Envenenar uma arma** é uma ação de Velocidade 5. Quem tem Cura ou um Ofício ligado a venenos faz isso sem risco; quem não tem testa **Destreza contra 10** e, se falhar, é exposto ao próprio veneno. A dose vale até o primeiro golpe que inocula, ou até o fim da cena.
 
-**Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. O Curare tem uma rolagem só: pela régua de resistir, tira de 0 a 3 de Destreza, de uma vez, pela cena (Destreza 0 deixa Paralisado). Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
+**Atributo drenado volta a um ponto por dia de descanso**, salvo o Curare, que se resolve pela duração declarada (uma cena) em vez de recuperação diária. O Curare tem uma rolagem só: pela régua de resistir, tira de 0 a 3 de Destreza, de uma vez, pela cena (Destreza 0 deixa Paralisado).
+
+Um Atributo em **zero** incapacita naquele eixo: Vigor 0 é o corpo desligando, Destreza 0 é paralisia, Inteligência 0 é delírio. É por aqui que o veneno mata, sem precisar de regra de morte própria.
 
 **Veneno de sono.** Em vez de PV ou Atributo, o pool deste veneno enche a **sonolência**. Cada pulso soma à sonolência o que tiraria do pool (0 a 3, pela tabela). Quando a sonolência alcança o **Vigor** da vítima, ela fica **Dormindo** pelo tempo que o veneno disser, e acorda como em todo [sono sobrenatural](/regras/condicoes#a-mente). Resistir, tratar e a penalidade mínima funcionam como nos outros venenos.
 
 **Peçonha com elemento.** Uma peçonha que queima, congela ou corrói por dentro continua sendo veneno: drena o seu pool e só. O elemento dá a imagem e pode sugerir o remédio, mas não causa dano a mais, e ser imune ao elemento não protege do veneno, a não ser que a ficha diga.
 
-**Reconhecer** o veneno é Inteligência + Cura, e o Mestre decide se é preciso rolar. **Tratar** é o que se faz com a mão (sangrar e limpar a ferida, administrar o antídoto na veia): **Raciocínio + Cura contra a Potência**, uma vez por intervalo pendente. Passando, reduz o pool restante pela régua de Margem da rolagem de resistir, lida ao contrário: passar raspando tira 1 do pool, uma Margem tira 2, duas ou mais tiram 3; antídoto específico em mãos dá **+4** à jogada. Dar um remédio ou um antídoto para beber não pede teste, e ele vale o que o próprio remédio disser.
+**Reconhecer** o veneno é Inteligência + Cura, e o Mestre decide se é preciso rolar.
+
+**Tratar** é o que se faz com a mão (sangrar e limpar a ferida, administrar o antídoto na veia): **Raciocínio + Cura contra a Potência**, uma vez por intervalo pendente. Passando, reduz o pool restante pela régua de Margem da rolagem de resistir, lida ao contrário: passar raspando tira 1 do pool, uma Margem tira 2, duas ou mais tiram 3; antídoto específico em mãos dá **+4** à jogada.
+
+Dar um remédio ou um antídoto para beber não pede teste, e ele vale o que o próprio remédio disser.
 
 **Circunstância** · sangrar a ferida no primeiro Tick **−2** na Potência efetiva · dose dobrada ou direto no sangue **+4**.
 
 ## Doença
 
-**Modo** · Direta repetida por intervalo. O que ela move não é Acúmulo, é **estágio**: uma doença não tem uma barra que enche, tem um estado em que o doente está hoje.
+**Modo** · Direta repetida por intervalo.
+
+O que ela move não é Acúmulo, é **estágio**: uma doença não tem uma barra que enche, tem um estado em que o doente está hoje.
 
 **Jogada** · Vigor + Resistência contra a **Virulência**, uma por intervalo.
 
@@ -113,7 +131,9 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 
 <div class="callout regra"><span class="lbl">Regra</span>É isso que faz "põe ele na cama" ser um ato mecânico e não um floreio. A febre dos pântanos que o camponês não vence de jeito nenhum vira Virulência 6 com cama e cuidado, e ele desce um estágio a cada três dias. <b>Doença não é vencida pela ficha do doente, é vencida por quem cuida dele.</b></div>
 
-**Ajuda** · reconhecer a doença é Inteligência + Cura, e o Mestre decide se é preciso rolar. O curandeiro que quiser mais do que a circunstância trata com a mão (cirurgia, administração intravenosa), rola **Raciocínio + Cura** contra a Virulência e apoia pela [tabela geral de apoio](/regras/acoes-e-sistema). Dar um remédio para beber não pede teste. O −2 do curandeiro vale para até três doentes, e some acima disso.
+**Ajuda** · reconhecer a doença é Inteligência + Cura, e o Mestre decide se é preciso rolar. O curandeiro que quiser mais do que a circunstância trata com a mão (cirurgia, administração intravenosa), rola **Raciocínio + Cura** contra metade da Virulência e apoia como [Ajudante](/regras/acoes-e-sistema#ajudante).
+
+Dar um remédio para beber não pede teste. O −2 do curandeiro vale para até três doentes, e some acima disso.
 
 **Parasita e esporo** · Cura ou cirurgia adequada retira o agente e para a progressão.
 
@@ -121,7 +141,11 @@ Estes números foram calibrados contra o **camponês** (Vigor 2, Resistência 1)
 
 ## Ambiente
 
-**Modo** · Direta repetida. **Jogada** · Vigor + Resistência contra a **Severidade**, uma por intervalo. Falhando, **+1 Desgaste**. Passando, nada. Passando por uma Margem, nada e **o intervalo seguinte não se rola**: o corpo achou o ritmo.
+**Modo** · Direta repetida.
+
+**Jogada** · Vigor + Resistência contra a **Severidade**, uma por intervalo.
+
+Falhando, **+1 Desgaste**. Passando, nada. Passando por uma Margem, nada e **o intervalo seguinte não se rola**: o corpo achou o ritmo.
 
 <p class="formula">Agasalho e abrigo não mudam a Severidade: sobem o <b>intervalo</b> um degrau (testa-se menos vezes: de hora em hora passa a uma vez por dia)</p>
 
@@ -171,7 +195,9 @@ Quando os Ticks acabam, **o personagem apaga na hora**. Não há queda gradual n
 
 <p class="formula">Janela de socorro = <b>Vigor × 20</b> Ticks, e depois disso morre</p>
 
-Vigor 3 dá um minuto para tirar da água, virar de lado e fazer voltar a respirar. Reanimar é Raciocínio + Cura contra Dificuldade 10, uma jogada por Tick, e cada jogada custa a ação de quem socorre. Quem volta acorda com **Desgaste 2**, que sai em duas noites, como todo Desgaste: quase se afogar cobra.
+Vigor 3 dá um minuto para tirar da água, virar de lado e fazer voltar a respirar.
+
+Reanimar é Raciocínio + Cura contra Dificuldade 10, uma jogada por Tick, e cada jogada custa a ação de quem socorre. Quem volta acorda com **Desgaste 2**, que sai em duas noites, como todo Desgaste: quase se afogar cobra.
 
 Vale igual para afogamento, estrangulamento, soterramento, fumaça e vácuo. A fumaça acrescenta o dano dela por Tick; o soterramento acrescenta o peso, que é [Feito de força](/regras/acoes-corpo-e-movimento).
 
@@ -191,7 +217,9 @@ Vale igual para afogamento, estrangulamento, soterramento, fumaça e vácuo. A f
 
 Em **Desgaste 4 por sono**, o personagem **apaga sozinho** assim que a adrenalina baixa. Não é uma jogada, não é uma escolha: acabou a cena de perigo, ele dorme onde estiver.
 
-**Recuperar** · uma noite completa tira **um** degrau, doze horas tiram **dois**. A dívida de cinco noites (Desgaste 4) custa quatro noites para pagar, ou duas de doze horas, e é isso que faz uma vigília longa ter preço depois que a crise passa. Cochilo não conta, e turnos de vigia também não: quem passou três horas de guarda dormiu, quem passou a noite inteira não dormiu.
+**Recuperar** · uma noite completa tira **um** degrau, doze horas tiram **dois**. A dívida de cinco noites (Desgaste 4) custa quatro noites para pagar, ou duas de doze horas, e é isso que faz uma vigília longa ter preço depois que a crise passa.
+
+Cochilo não conta, e turnos de vigia também não: quem passou três horas de guarda dormiu, quem passou a noite inteira não dormiu.
 
 **Não existe Centelha que compre noites.** Quem atravessa semanas sem dormir faz isso por Proeza ou Arte.
 
