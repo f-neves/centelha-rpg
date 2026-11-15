@@ -5,28 +5,20 @@ titulo: "Antecedentes"
 resumo: "O capital externo do personagem: dinheiro, aliados, fama, um mentor, um artefato, um segredo. O que ele tem no mundo, além do próprio corpo."
 ---
 
-Os Antecedentes são o **capital externo** do personagem: o que ele tem no mundo além do próprio
-corpo e da própria mente. Dinheiro, aliados, fama, um mentor, um artefato, um esconderijo, um
-segredo guardado. Atributos, Habilidades, Virtudes e Proezas descrevem **quem você é**; os
-Antecedentes descrevem **o que você tem** e **quem te conhece**. É a camada que enraíza o
-personagem numa história, e é dela que sai metade das tramas.
+Os Antecedentes são o **capital externo** do personagem: o que ele tem no mundo além do próprio corpo e da própria mente. Dinheiro, aliados, fama, um mentor, um artefato, um esconderijo, um segredo guardado.
 
-Sem eles, dois personagens só se distinguem por números internos. Com eles, um é o bastardo sem um
-tostão, com um mentor perigoso e uma dívida a cobrar; o outro é o herdeiro rico e famoso que todos
-reconhecem e ninguém teme. Os dois podem ter a mesma ficha de combate.
+Atributos, Habilidades, Virtudes e Proezas descrevem **quem você é**; os Antecedentes descrevem **o que você tem** e **quem te conhece**. É a camada que enraíza o personagem numa história, e é dela que sai metade das tramas.
+
+Sem eles, dois personagens só se distinguem por números internos. Com eles, um é o bastardo sem um tostão, com um mentor perigoso e uma dívida a cobrar; o outro é o herdeiro rico e famoso que todos reconhecem e ninguém teme. Os dois podem ter a mesma ficha de combate.
 
 ## A escala é 1 a 6
 
-Como tudo no Centelha, os Antecedentes vão de **1 a 6**. Seis é o teto do que um personagem
-carrega naquela frente, e não o teto do mundo: um Recursos 6 é uma fortuna de reino, não o tesouro
-de todos os reis; um Aliado 6 é um dos maiores poderes vivos, não um deus.
+Como tudo no Centelha, os Antecedentes vão de **1 a 6**. Seis é o teto do que um personagem carrega naquela frente, e não o teto do mundo: um Recursos 6 é uma fortuna de reino, não o tesouro de todos os reis; um Aliado 6 é um dos maiores poderes vivos, não um deus.
 
 ## Dois formatos: Único e Nomeado
 
-- **Único.** Você tem **um valor** dele, e pronto. "Recursos 3" é uma coisa só. São Únicos:
-  Recursos, Linhagem e Fé (esta, salvo quando o personagem serve a mais de um culto).
-- **Nomeado.** Você compra **instâncias separadas, cada uma com nome e com valor próprio de 1 a
-  6**, e pode ter várias no mesmo personagem. São os outros onze.
+- **Único.** Você tem **um valor** dele, e pronto. "Recursos 3" é uma coisa só. São Únicos: Recursos, Linhagem e Fé (esta, salvo quando o personagem serve a mais de um culto).
+- **Nomeado.** Você compra **instâncias separadas, cada uma com nome e com valor próprio de 1 a 6**, e pode ter várias no mesmo personagem. São os outros onze.
 
 O exemplo que resume o formato Nomeado:
 
@@ -34,57 +26,31 @@ O exemplo que resume o formato Nomeado:
 
 ## Custo · tudo por XP, a ×3 por ponto
 
-Antecedente se compra e se eleva com XP como o resto da ficha, a **×3 por ponto**: o próximo ponto
-custa o novo valor × 3, então sair de 2 para 3 custa 9 XP. O lugar dele na economia é deliberado: no nível 1 custa o mesmo que a Habilidade secundária (2 + o
-novo valor) e dali em diante custa mais; em relação à primária (4 + 2 × o novo valor), custa menos até
-o nível 3, o mesmo no 4 e mais nos níveis 5 e 6 (15 contra 14, 18 contra 16). É **poder de
-campanha, não poder de dado**, e não disputa de igual para igual com Atributo (5 + 5 × o novo valor);
-a Centelha nem custa XP, é concedida pelo Mestre. Na criação, sai do
-mesmo orçamento de XP do resto do personagem.
+Antecedente se compra e se eleva com XP como o resto da ficha, a **×3 por ponto**: o próximo ponto custa o novo valor × 3, então sair de 2 para 3 custa 9 XP.
 
-**E é volátil de propósito.** Diferente de um Atributo, um Antecedente **sobe e cai na ficção**: o
-mentor morre, a fortuna queima num naufrágio, a reputação de herói vira infâmia depois de um
-escândalo. Quando a história tira um Antecedente de você, o XP investido **volta como crédito**
-para recomprar outro, para ninguém sentir que perdeu pontos por uma decisão do Mestre. E ganhar
-Antecedentes novos em jogo (herdar uma fortuna, conquistar um título) é comum, e **não custa XP**
-quando a ficção os entrega.
+O lugar dele na economia é deliberado: no nível 1 custa o mesmo que a Habilidade secundária (2 + o novo valor) e dali em diante custa mais; em relação à primária (4 + 2 × o novo valor), custa menos até o nível 3, o mesmo no 4 e mais nos níveis 5 e 6 (15 contra 14, 18 contra 16).
+
+É **poder de campanha, não poder de dado**, e não disputa de igual para igual com Atributo (5 + 5 × o novo valor); a Centelha nem custa XP, é concedida pelo Mestre. Na criação, sai do mesmo orçamento de XP do resto do personagem.
+
+**E é volátil de propósito.** Diferente de um Atributo, um Antecedente **sobe e cai na ficção**: o mentor morre, a fortuna queima num naufrágio, a reputação de herói vira infâmia depois de um escândalo.
+
+Quando a história tira um Antecedente de você, o XP investido **volta como crédito** para recomprar outro, para ninguém sentir que perdeu pontos por uma decisão do Mestre. E ganhar Antecedentes novos em jogo (herdar uma fortuna, conquistar um título) é comum, e **não custa XP** quando a ficção os entrega.
 
 ## Tetos de bom senso
 
-**Recursos** e **Artefato** são os dois que mais facilmente quebram o jogo, porque dinheiro compra
-equipamento e artefato compra poder. Na criação, eles não têm teto próprio: quem os limita é o
-Mestre, pelas restrições da campanha.
+**Recursos** e **Artefato** são os dois que mais facilmente quebram o jogo, porque dinheiro compra equipamento e artefato compra poder. Na criação, eles não têm teto próprio: quem os limita é o Mestre, pelas restrições da campanha.
 
-Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem numa posição da
-[Régua de Relação](/regras/relacoes-sociais) e continuam sujeitos a ela: um aliado tratado como
-ferramenta esfria e desce a régua. O número compra a **capacidade e a lealdade inicial**, nunca a
-obediência eterna.
+Antecedentes que são **pessoas** (Aliados, Contatos, Mentor, Séquito) nascem numa posição da [Régua de Relação](/regras/relacoes-sociais) e continuam sujeitos a ela: um aliado tratado como ferramenta esfria e desce a régua. O número compra a **capacidade e a lealdade inicial**, e nunca a obediência eterna.
 
 ## Onde a régua já começa
 
-Um Antecedente **não soma a jogada nenhuma**: ele mexe em **onde a relação começa**. Quem soma a
-jogada é a [Aparência](/regras/aparencia-virtudes-vontade), o bônus social **geral** (entra em toda
-jogada social, incluindo o [Combate Social](/regras/relacoes-sociais), sempre que a aparência
-importe, para o bem ou para o mal), e a **Firula** ([Habilidades](/regras/habilidades)), que entra
-em **qualquer** jogada, social ou não, pela qualidade da descrição.
+Um Antecedente **não soma a jogada nenhuma**: ele mexe em **onde a relação começa**. Quem soma a jogada é a [Aparência](/regras/aparencia-virtudes-vontade), o bônus social **geral** (entra em toda jogada social, incluindo o [Combate Social](/regras/relacoes-sociais), sempre que a aparência importe, para o bem ou para o mal), e a **Firula** ([Habilidades](/regras/habilidades)), que entra em **qualquer** jogada, social ou não, pela qualidade da descrição.
 
 O Antecedente age antes de qualquer rolagem:
 
-> Uma Reputação em contexto, um Contato bem posto, uma Posição que pesa naquela sala **descontam
-> passos do Neutro**: a **metade do nível do traço**, arredondada para baixo, tira esse tanto dos
-> **três passos** que separam um estranho da primeira Simpatia na
-> [Régua de Relação](/regras/relacoes-sociais) (nível 1, nenhum passo; 2 e 3, um; 4 e 5, dois; 6,
-> os três, e a relação já começa em **+1 (Simpatia)**). O que muda de um traço para o outro é **com quem** ele
-> vale: a **Reputação** com quem já ouviu falar de você, o **Contato** com o círculo dele, a
-> **Posição** com quem se importa com o posto. Eles **não** turbinam um ataque no Combate Social
-> nem uma Habilidade solta. Vale a metade do **maior** traço que serve à situação, e o Mestre pode
-> somar o desconto de outros traços quando a situação pedir, sempre dentro dos três passos. Os
-> outros usos do traço (alcance da fama, do círculo, do posto) continuam valendo fora da régua.
+> Uma Reputação em contexto, um Contato bem posto, uma Posição que pesa naquela sala **descontam passos do Neutro**: a **metade do nível do traço**, arredondada para baixo, tira esse tanto dos **três passos** que separam um estranho da primeira Simpatia na [Régua de Relação](/regras/relacoes-sociais) (nível 1, nenhum passo; 2 e 3, um; 4 e 5, dois; 6, os três, e a relação já começa em **+1 (Simpatia)**). O que muda de um traço para o outro é **com quem** ele vale: a **Reputação** com quem já ouviu falar de você, o **Contato** com o círculo dele, a **Posição** com quem se importa com o posto. Eles **não** turbinam um ataque no Combate Social nem uma Habilidade solta. Vale a metade do **maior** traço que serve à situação, e o Mestre pode somar o desconto de outros traços quando a situação pedir, sempre dentro dos três passos. Os outros usos do traço (alcance da fama, do círculo, do posto) continuam valendo fora da régua.
 
-Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não ganha o duelo social
-do momento. E o desconto é mudo onde não há Neutro a romper: quem já nasce acima dele por outra
-amarra (os contatos em Simpatia, os aliados em Aliança ou Devoção) não desconta nada em cima
-disso.
+Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não ganha o duelo social do momento. E o desconto é mudo onde não há Neutro a romper: quem já nasce acima dele por outra amarra (os contatos em Simpatia, os aliados em Aliança ou Devoção) não desconta nada em cima disso.
 
 <p class="muted">A Régua de Relação e o Combate Social, citados acima, são o capítulo <a href="/centelha-rpg/regras/relacoes-sociais"><strong>Relações Sociais</strong></a>. Antecedentes vem antes dele no livro porque é matéria de ficha, e não de cena: você compra estes traços quando monta o personagem, junto dos Atributos e das Habilidades.</p>
 
@@ -102,8 +68,8 @@ disso.
 | **2** | **Confortável.** Artesão bem posto ou soldado veterano: boa arma, talvez um cavalo, alguma poupança. |
 | **3** | **Próspero.** Mercador estabelecido, cavaleiro com terras pequenas: criados, montaria, armadura de qualidade, crédito na cidade. |
 | **4** | **Rico.** Casa senhorial, vários empregados, luxo real; banca uma expedição, compra silêncio, empresta alto. |
-| **5** | **Fortuna de nobre.** Terras, títulos de crédito, uma pequena guarnição paga; move economias locais, financia guerras pequenas. |
-| **6** | **Fortuna de reino.** Frotas, domínios e tesouros que movem economias inteiras; financia exércitos e compra a lealdade de cidades. |
+| **5** | **Fortuna de nobre.** Casa senhorial, guarda própria e crédito com a coroa; pesa na economia de uma região. |
+| **6** | **Fortuna de reino.** Paço, domínio e uma guarnição; pesa na economia de um reino. |
 
 **Amarra com:** o custo dos itens e equipamentos; o "favor alugado" da Régua de Relação (suborno e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade, só serviço enquanto paga.
 
@@ -201,7 +167,7 @@ disso.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span><strong>Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável)</strong>. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de confiável ajuda em tudo que dependa de palavra.</div>
 
-**Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): a metade do nível do traço (para baixo) tira esse tanto dos três passos, vale com quem conhece aquela reputação, o Mestre pode somá-la ao desconto de outros traços até os três passos, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora.
+**Amarra com:** um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver "Onde a régua já começa"): a metade do nível do traço (para baixo) tira esse tanto dos três passos, vale com quem conhece aquela reputação, o Mestre pode somá-la ao desconto de outros traços até os três passos, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Semblante.
 
 ### Artefato
 
@@ -211,7 +177,7 @@ disso.
 |:---:|---|
 | **1** | Um toque de magia: uma lâmina que nunca cega, um amuleto que aquece, um bônus pequeno e confiável. |
 | **2** | Um item notável: uma arma que dá vantagem real, uma peça com uma propriedade útil por cena. |
-| **3** | Um artefato de nome: efeito forte, cobiçado, reconhecível. Teto do que se começa tendo. |
+| **3** | Um artefato de nome: efeito forte, cobiçado, reconhecível. |
 | **4** | Um artefato de lenda: rivaliza com uma Proeza de tier médio; gente mata por ele. |
 | **5** | Um tesouro do mundo: poder de semideus preso num objeto; a sua existência é um evento. |
 | **6** | Um artefato único e divino: rivaliza com uma Proeza de tier alto; nações guerreiam por ele. |
@@ -313,16 +279,9 @@ disso.
 ## Folha de referência
 
 - **Escala 1 a 6**, tudo por **XP a ×3 por ponto**, na criação e em jogo, do mesmo orçamento.
-- **Únicos:** Recursos, Linhagem, Fé. **Nomeados** (várias instâncias, cada uma de 1 a 6): os
-  outros onze.
+- **Únicos:** Recursos, Linhagem, Fé. **Nomeados** (várias instâncias, cada uma de 1 a 6): os outros onze.
 - **Sem teto na criação** para Recursos e Artefato: quem limita é o Mestre.
-- **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O
-  Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, o
-  metade do nível do traço, para baixo, por passo (só o 6 chega aos três), e o Mestre soma outros
-  traços quando a situação pedir, dentro dos três passos.
+- **Bônus:** Aparência é geral em toda jogada social; a Firula entra em qualquer jogada. O Antecedente não soma a jogada nenhuma: ele **desconta passos do Neutro** na Régua de Relação, a metade do nível do traço, para baixo, por passo (só o 6 chega aos três), e o Mestre soma outros traços quando a situação pedir, dentro dos três passos.
 - **Voláteis:** sobem e caem na ficção, e o XP perdido volta como crédito.
-- **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se
-  maltratadas. **Reputação** desconta passos do Neutro com quem a conhece, e não soma na jogada. **Segredo** e **Dívida** são meio
-  consumíveis. **Artefato** e **Aliado Animal** têm ficha própria por nível.
-- **A regra de ouro:** o número compra a **capacidade e a disposição inicial**, nunca a obediência
-  eterna. O mundo continua vivo por baixo do Antecedente.
+- **Pessoas** (Aliados, Contatos, Mentor, Séquito, Fé) vivem na Régua de Relação e esfriam se maltratadas. **Reputação** desconta passos do Neutro com quem a conhece, e não soma na jogada. **Segredo** e **Dívida** são meio consumíveis. **Artefato** e **Aliado Animal** têm ficha própria por nível.
+- **A regra de ouro:** o número compra a **capacidade e a disposição inicial**, nunca a obediência eterna. O mundo continua vivo por baixo do Antecedente.

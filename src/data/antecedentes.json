@@ -29,12 +29,12 @@
       {
         "nivel": 5,
         "rotulo": "Fortuna de nobre",
-        "texto": "Terras, títulos de crédito, uma pequena guarnição paga; move economias locais, financia guerras pequenas."
+        "texto": "Casa senhorial, guarda própria e crédito com a coroa; pesa na economia de uma região."
       },
       {
         "nivel": 6,
         "rotulo": "Fortuna de reino",
-        "texto": "Frotas, domínios e tesouros que movem economias inteiras; financia exércitos e compra a lealdade de cidades."
+        "texto": "Paço, domínio e uma guarnição; pesa na economia de um reino."
       }
     ],
     "amarra": "o custo dos itens e equipamentos; o \"favor alugado\" da Régua de Relação (suborno e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade, só serviço enquanto paga."
@@ -245,7 +245,7 @@
     ],
     "notaFormato": "Nomeado e Direcional",
     "exemplo": "**Reputação 2 (Guarda-costas) · Reputação 3 (Cantor lírico) · Reputação 1 (Confiável)**. A de guarda-costas ajuda a ser contratado e a intimidar, mas atrapalha a passar despercebido; a de cantor abre salões e atrapalha a ser levado a sério numa briga; a de confiável ajuda em tudo que dependa de palavra.",
-    "amarra": "um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver \"Onde a régua já começa\"): a metade do nível do traço (para baixo) tira esse tanto dos três passos, vale com quem conhece aquela reputação, o Mestre pode somá-la ao desconto de outros traços até os três passos, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Presença Aterradora."
+    "amarra": "um **desconto nos passos que separam do Neutro** na Régua de Relação, no contexto em que a fama pesa (ver \"Onde a régua já começa\"): a metade do nível do traço (para baixo) tira esse tanto dos três passos, vale com quem conhece aquela reputação, o Mestre pode somá-la ao desconto de outros traços até os três passos, e **não** buffa o Combate Social nem Habilidades soltas. Uma boa reputação **acelera romper o Neutro** com quem já ouviu falar bem de você; uma temível dá o mesmo desconto a quem quer coagir quem a conhece, e atrapalha a passar despercebido. Alimenta Proezas como Lenda Viva e Semblante."
   },
   {
     "id": "artefato",
@@ -264,7 +264,7 @@
       },
       {
         "nivel": 3,
-        "texto": "Um artefato de nome: efeito forte, cobiçado, reconhecível. Teto do que se começa tendo."
+        "texto": "Um artefato de nome: efeito forte, cobiçado, reconhecível."
       },
       {
         "nivel": 4,
