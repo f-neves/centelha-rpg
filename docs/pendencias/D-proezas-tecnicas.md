@@ -161,3 +161,11 @@ Detalhe em `Proezas_revisao.md`.
 
 - [ ] **D19 · [ADIADO] Orçamento de XP da criação (R54).** Registrado em 05/11/2026. O autor adiou: o orçamento vai ser
   recalculado depois. Nada muda no livro agora; os exemplos que não fecham (Lia: 630 gastos) ficam como estão até o recálculo.
+
+- [ ] **D20 · [DECIDIR] Recalibração das Proezas (D-358): as Técnicas de nível maior que repetem o bônus de uma de nível menor sem dizer se aumentam ou substituem (T2, D-374).** Registrado em 15/11/2026.
+  A T2 do autor manda que o texto da Técnica de nível maior diga se aumenta ou substitui a de nível menor (se não substitui, valem as
+  duas; se substitui, vale a de nível maior), e que "o custo das Técnicas que substituem entra na recalibração das Proezas". O
+  levantamento de `src/data/tecnicas.json` achou **89 pares em 46 Caminhos, com 64 Técnicas de nível maior a decidir**, e mais 23
+  casos duvidosos: `docs/calibracao/proezas-t2-aumenta-ou-substitui.md` (critério, método, cada par com os dois textos). Quem decide
+  cada uma é a recalibração, não a revisão de textos: o texto das Técnicas não muda antes dela. A D18 (Ambidestria) e o cansaço do
+  poder inato, que a D-358 já pôs na mesma recalibração, seguem nos itens deles.

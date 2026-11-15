@@ -1006,6 +1006,7 @@ uma decisao registrada, pare e pergunte ao autor.
 - Decisão: "opção B. Mantém o código e o JSON: a Técnica no nível N custa o preço do nível N no total (5 + 5 × nível), e subir paga a diferença. Nenhum total de ficha muda. Corrija criacao-de-personagem.md:58 ... com uma frase explicando que a Proeza não acumula como Atributo e Habilidade porque o personagem compra muitas Técnicas, e não sobe uma trilha só. A recomendação "mesma convenção das Habilidades" foi do assistente, sem os números; não vale. O Efeito Especial fica como está."
 - Origem: achados-duas-leituras-despacho.md:145 (Adendo 1), :11 (pedido original, item 1 superado), commit bd26f1b0
 - Estado: no ar (texto); a "mesma convenção" do pedido original ficou superada pelo Adendo 1
+- **Nota (15/11/2026, D-374, T2 do autor):** o "subir paga a diferença" sai; fica "a Técnica no nível N custa o preço do nível N no total". Cada Técnica é uma compra separada, e as de nível menor que o Requer exige continuam na ficha (C15a).
 
 ### C-055 · Onde a Centelha começa: o Mestre escolhe pela campanha [tags: centelha, criacao, campanha, mestre]
 - Data: 2026-10-02
@@ -1476,6 +1477,7 @@ Origem de todas: "conversa do autor, 03/10 e 04/10, veterana-1e" (numeração do
 - Data: 2026-10-04
 - Decisão (decisão 43 do 1e, corrigida pelo autor em 04/10): só entra Técnica SEM pré-requisito nenhum. "Se não houver equivalente, entra outra ou fica sem, e o XP é recalculado, seja qual for o total. Não some a Técnica de nível 1 que a nova pediria." Os totais "1075, 1333, 1874" que o despacho anterior citou foram erro de repasse, NÃO valem.
 - Estado: regra geral C15a no ar (bf8bf608); a troca das três Técnicas ficou com a D-059 (fichas só no fim da revisão, D-053). Era: só a troca das três Técnicas (Encontrão Relâmpago, Comando Inspirador, Investida Devastadora) e o recálculo do XP. Ver D-053: o resto das fichas de exemplo não entra em rodada.
+- **Nota (15/11/2026, D-374, T2 do autor):** a C15a fica como regra do preço ("Preço: fica a C15a"), e a frase que a contradizia sai do `xp.tecnica.nota`.
 
 ### D-048 · Manobra: as três leituras ficam [tags: manobra, agarrar, empate, derrubar]
 - Data: 2026-10-04
@@ -4562,6 +4564,20 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: desfaz a D-353 só na tabela de fases da Arte (a frase da D-346 deixa de valer para o personagem). A D-346 continua valendo para os poderes de criatura. A D-082 e a D-060 seguem.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T1) e a mensagem do autor de 15/11/2026; RT-060 de `../tmp/revisao-textos/contradicoes.md`.
 - Estado: **a implementar** no ramo `revisao-textos` (fase 2, RT-060); vai ao ar com o merge da revisão, depois que o autor ler o registro.
+
+### D-374 · T2: Técnica de nível maior que repete o bônus de uma menor diz se aumenta ou substitui; o preço fica a C15a e sai o "subir paga a diferença" da C-054 [tags: proeza, tecnica, preco, xp, c15a, c-054, d-047, criacao, recalibracao, rt-010, t2, rev-textos]
+- Data: 2026-11-15
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T2. Técnica de nível maior: aumenta ou substitui, e o preço (15/11/2026, DECIDIDA; RT-010 da revisão de textos)":
+    - Proeza é o Caminho (a árvore); Técnica é cada compra dentro dela, de nível 1 a 6.
+    - Quando uma Técnica de nível maior dá o mesmo bônus de uma de nível menor, o texto dela diz se aumenta ou substitui. Se não substitui, valem as duas. Se substitui, vale a de nível maior.
+    - Preço: fica a C15a. Cada Técnica custa o preço cheio do seu nível, e as de nível menor que o Requer exige continuam na ficha. A frase "Subir uma Proeza de nível paga só a diferença" (resto da C-054) sai.
+    - O custo das Técnicas que substituem entra na recalibração das Proezas, que já está pendente.
+- Pedido de aplicação (prompt 002 do coordenador das regras, 15/11/2026, pela ponte de arquivos): a RT-010 da revisão de textos sai de PENDENTE AUTOR e vira "registrada", com base na T2; a frase sai de `regras.json` (`xp.tecnica.nota`) e do comentário de `src/lib/motor.ts:393`, sem mudar número de preço; a regra do "aumenta ou substitui" entra em texto curto perto da regra do preço, no capítulo que explica a compra de Técnicas; e as Técnicas que repetem o bônus de uma menor sem dizer se aumentam ou substituem são levantadas e anexadas à pendência da recalibração das Proezas, sem mudar o texto delas agora.
+- Muda: completa a C-054 (sai o "subir paga a diferença"; o "nível N custa o preço total do nível N" fica) e confirma a C15a (Estado da D-047). O custo das Técnicas que substituem vai para a recalibração das Proezas (D-358).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T2) e `../tmp/ponte/para-arquiteto/lidas/002.md`; RT-010 de `../tmp/revisao-textos/contradicoes.md`.
+- Levantamento (15/11/2026): 89 pares em 46 Caminhos (64 Técnicas de nível maior) e 23 duvidosos, em `docs/calibracao/proezas-t2-aumenta-ou-substitui.md`, anexado à pendência D20 (recalibração das Proezas). O texto das Técnicas não muda antes dela.
+- Estado: **a implementar** no ramo `revisao-textos` (fase 2, RT-010); vai ao ar com o merge da revisão, depois que o autor ler o registro.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
