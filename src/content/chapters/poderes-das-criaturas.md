@@ -7,7 +7,11 @@ resumo: "As cinco categorias de poder que uma criatura tem além das Artes e das
 
 <p class="muted">Parte do capítulo <strong>Combate Físico</strong>. Vale para os poderes das criaturas do <a href="/centelha-rpg/bestiario">Bestiário</a>; cada ficha diz a categoria, os usos e os números do poder. Os estados que os poderes causam estão em <a href="/centelha-rpg/regras/condicoes">Condições</a>.</p>
 
-**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias abaixo. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
+**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. Esta página é toda de regra de **criatura**: o personagem não tem estes poderes.
+
+A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder.
+
+Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias abaixo. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
 
 ## As cinco categorias
 
@@ -74,7 +78,9 @@ Constructos, mortos-vivos, elementais e incorpóreos não dormem, e por isso o s
 - **Ao golpe certeiro e ao flanco:** a criatura perde só o dano extra de ponto vital (o que uma Proeza, uma Arte ou a ficha trouxer, como o Golpe na brecha de [Combate Físico](/regras/combate)), ou o −2 de Flanqueado, conforme a ficha nomeia. Surpresa e Tamanho valem normalmente: pega de surpresa, ela fica com as Defesas 0, mas não leva o dano extra.
 - **Liberdade de movimento:** nada de fora a deixa [Agarrada, Presa ou Imobilizada](/regras/combate#manobras-agarrar-derrubar-empurrar). Paredes, [Paralisado e Atordoado](/regras/condicoes) valem normalmente.
 
-**Veneno e doença.** A imunidade a veneno ou a doença também é estreita: cobre só o que a ficha nomeia, e a imunidade ao próprio veneno vale só para aquela secreção. O ferimento do golpe que trouxe o veneno continua. Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema#corpo-nas-jogadas).
+**Veneno e doença.** A imunidade a veneno ou a doença também é estreita: cobre só o que a ficha nomeia, e a imunidade ao próprio veneno vale só para aquela secreção. O ferimento do golpe que trouxe o veneno continua.
+
+Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema#corpo-nas-jogadas).
 
 **Resistência que depende da arma.** Algumas criaturas só se ferem de verdade com um material ou uma origem: prata, ferro frio, uma arma abençoada. Contra qualquer outra arma, o dano que passa da Absorção cai **à metade**. A arma certa não tira a Absorção; tira só essa metade.
 
