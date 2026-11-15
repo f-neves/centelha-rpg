@@ -23,7 +23,8 @@
 //    passa direto, com aviso das entradas dele ainda não aplicadas.
 // 2. As entradas de trava do contradicoes.md para aquele arquivo (`arquivo`: "antes" → "depois", com "(N×)" opcional)
 //    são APLICADAS no antes: cada "antes" tem de existir no antes (N vezes), e cada "depois" tem de existir no depois,
-//    senão a entrada não casa e a trava falha. Depois, os MOVIMENTOS DE SEÇÃO do estado.md (seção "## Movimentos de
+//    senão a entrada não casa e a trava falha. Exceção: a entrada ainda não aplicada (o "depois" ausente e o "antes"
+//    intacto) só avisa, para a página que aplica uma entrada não ficar barrada pelas outras do mesmo arquivo. Depois, os MOVIMENTOS DE SEÇÃO do estado.md (seção "## Movimentos de
 //    seção": `arquivo`: "trecho" · de "Título A" → "Título B") tiram o trecho da seção A do antes e o põem no fim da
 //    seção B. O antes corrigido é o que se compara com o depois.
 //    As linhas "Trava JSON" (`arquivo` @caminho: <antes> → <depois>, valores em JSON) fazem o mesmo num campo de fora
@@ -396,9 +397,13 @@ function comparar(arq) {
     const oA = JSON.parse(antes), oD = JSON.parse(depois);
     for (const e of ENTRADAS_JSON.filter((x) => x.arquivo === arq)) {
       const vA = valorEm(oA, e.caminho), vD = valorEm(oD, e.caminho);
-      if (!vA.existe || !igualJson(vA.v, e.antes)) { falhas.push(`${e.rt}: Trava JSON @${e.caminho}: o valor na base é ${vA.existe ? JSON.stringify(vA.v) : '(o caminho não existe)'}, e a linha diz ${JSON.stringify(e.antes)}`); continue; }
-      if (!vD.existe || !igualJson(vD.v, e.depois)) { falhas.push(`${e.rt}: Trava JSON @${e.caminho}: o valor de agora é ${vD.existe ? JSON.stringify(vD.v) : '(o caminho não existe)'}, e a linha diz ${JSON.stringify(e.depois)}`); continue; }
-      poeEm(oA, e.caminho, e.depois);
+      // a linha que não casa com a base e não foi aplicada só avisa: num arquivo de muitas entradas (o regras.json), uma
+      // entrada não aplicada ainda não pode travar a página que aplica outra; o valor mudado sem casar continua falhando
+      const naBaseOk = vA.existe && igualJson(vA.v, e.antes), aplicada = vD.existe && igualJson(vD.v, e.depois);
+      const intacta = vD.existe && vA.existe && igualJson(vD.v, vA.v);
+      if (aplicada && naBaseOk) { poeEm(oA, e.caminho, e.depois); continue; }
+      if (intacta) { avisos.push(`${e.rt}: Trava JSON @${e.caminho} ainda não aplicada${naBaseOk ? '' : ` (e a linha não casa com a base: ela diz ${JSON.stringify(e.antes)}, a base tem ${JSON.stringify(vA.v)})`}`); continue; }
+      falhas.push(`${e.rt}: Trava JSON @${e.caminho}: a base tem ${vA.existe ? JSON.stringify(vA.v) : '(o caminho não existe)'}, agora há ${vD.existe ? JSON.stringify(vD.v) : '(o caminho não existe)'}, e a linha diz ${JSON.stringify(e.antes)} → ${JSON.stringify(e.depois)}`);
     }
     const a = prosaDoJson(oA), d = prosaDoJson(oD);
     if (a.esqueleto !== d.esqueleto) falhas.push('o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)');
@@ -406,10 +411,24 @@ function comparar(arq) {
   } else { antes = semGerados(antes); depois = semGerados(depois); }
   // as entradas do contradicoes.md, aplicadas no antes
   for (const e of ENTRADAS.filter((x) => x.arquivo === arq)) {
-    const n = antes.split(e.antes).length - 1;
-    if (n < e.vezes) { falhas.push(`${e.rt}: o "antes" da entrada está ${n} vez(es) no arquivo da base, e a entrada pede ${e.vezes}: "${e.antes}"`); continue; }
-    if (!depois.includes(e.depois)) { falhas.push(`${e.rt}: o "depois" da entrada não está no arquivo de agora: "${e.depois}"`); continue; }
-    if (depois.split(e.antes).length - 1 > n - e.vezes) avisos.push(`${e.rt}: a entrada ainda não está aplicada neste arquivo ("${e.antes}" segue ${depois.split(e.antes).length - 1} vez(es))`);
+    // A entrada se aplica quando o "depois" está no arquivo de agora. Quando não está e o "antes" segue no arquivo tantas
+    // vezes quanto na base, ela só ainda não foi aplicada (aviso): num arquivo de muitas entradas, a página que aplica
+    // uma não fica barrada pelas outras. O "antes" que saiu sem o "depois" entrar falha. A entrada cujo "antes" não está na
+    // base só avisa enquanto não estiver aplicada; se o "depois" dela apareceu, falha.
+    const n = antes.split(e.antes).length - 1, nAgora = depois.split(e.antes).length - 1;
+    // a entrada que apaga ("depois" vazio) está aplicada quando o "antes" saiu do arquivo as vezes que ela pede
+    const temDepois = e.depois === '' ? nAgora <= n - e.vezes : depois.includes(e.depois);
+    if (n < e.vezes) {
+      if (temDepois) falhas.push(`${e.rt}: o "antes" da entrada está ${n} vez(es) no arquivo da base, e a entrada pede ${e.vezes}: "${e.antes}" (e o "depois" já está no arquivo)`);
+      else avisos.push(`${e.rt}: entrada que não casa com a base (o "antes" está ${n} vez(es), a entrada pede ${e.vezes}: "${e.antes}"), ainda não aplicada`);
+      continue;
+    }
+    if (!temDepois) {
+      if (nAgora >= n) avisos.push(`${e.rt}: a entrada ainda não está aplicada neste arquivo ("${e.antes}" segue ${nAgora} vez(es))`);
+      else falhas.push(`${e.rt}: o "antes" saiu do arquivo (${n} → ${nAgora} vez(es)), mas o "depois" da entrada não está nele: "${e.depois}"`);
+      continue;
+    }
+    if (nAgora > n - e.vezes) avisos.push(`${e.rt}: a entrada ainda não está aplicada neste arquivo ("${e.antes}" segue ${nAgora} vez(es))`);
     for (let i = 0; i < e.vezes; i++) antes = antes.replace(e.antes, e.depois);
   }
   // os movimentos de seção do estado.md, aplicados nas seções do antes

@@ -1,7 +1,8 @@
 // prova-reflow.mjs · teste de falso positivo da trava (rev-textos; Executora, 12/11/2026). FORA do validate.
 // Uma reescrita NEUTRA em todos os capítulos: junta as linhas quebradas de cada parágrafo numa linha só (o que uma
 // reescrita faz o tempo todo, e que mexe em toda frase e em toda distância entre termo e número da trava) e roda a
-// trava neles, com um contradicoes.md e um estado.md vazios. Tudo tem de passar. Depois devolve cada arquivo byte a
+// trava neles, com um contradicoes.md e um estado.md vazios. O texto juntado é o da base (d760ef96), para o teste não
+// depender do que o ramo já reescreveu. Tudo tem de passar. Depois devolve cada arquivo byte a
 // byte e confere a árvore limpa.
 //   node scripts/revisao/prova-reflow.mjs        (precisa da árvore limpa em src/content)
 import fs from 'node:fs';
@@ -32,7 +33,10 @@ let mudou = 0, r;
 try {
   for (const a of caps) {
     const p = path.join(REPO, a), o = fs.readFileSync(p); originais.set(p, o);
-    const n = junta(o.toString('utf8')); if (n !== o.toString('utf8')) mudou++;
+    // a reescrita neutra parte do capítulo NA BASE, e não do disco: os capítulos já reescritos no ramo mudam por entrada
+    // do contradicoes.md, e o teste é de leitura da trava, não da revisão
+    const base = git('show', `d760ef96:${a}`);
+    const n = junta(base); if (n !== base) mudou++;
     fs.writeFileSync(p, n);
   }
   r = spawnSync('node', ['scripts/revisao/trava.mjs', '--contradicoes', vazio, '--estado', vazio, ...caps], { cwd: REPO, encoding: 'utf8' });
