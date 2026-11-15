@@ -4113,6 +4113,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - P6 da Leitora (autor, 05/11/2026): o livro já põe a cobertura e a postura no teto de +6 dos bônus de Defesa (`combate.md`, a Defesa reflexiva de Proeza). A resistência à magia e a mental, quando somam numa Defesa, entram nesse mesmo teto; na jogada de resistir, valem sozinhas. Uma frase em *Os Poderes das Criaturas*, junto das duas resistências.
 - As três Artes que aplicam "Na escuridão" (Mordaça de Treva, Devorar a Luz, Noite) vão à pendência A35, para a revisão das Artes, sem número por agora (autor, 05/11/2026).
 - A frase "Na jogada de resistir, valem sozinhas" da nota P6 (redação de Claude) passa, pela D-349 (P4, 05/11/2026), a "Na jogada de resistir, não somam a cobertura nem a postura, mas continuam no teto de +6, também quando as duas valem juntas".
+- **Nota (15/11/2026, D-373, T1 do autor):** a frase "grau e nível de Arte são a mesma coisa (uniformizar)" vale só para os poderes de criatura. Para a Arte do personagem, a Velocidade conta o maior grau investido entre os Parâmetros do Efeito.
 
 ### D-347 · Releitura da Leitora: K5 a K9 (incorpóreo e o sono, o Abalado e a imunidade ao medo, a regra de somar no Combate, o Atordoado no Preparo só no P/G/R, o painel) [tags: condicoes, poderes, incorporeo, sono, abalado, medo, acumulo, atordoado, preparo, painel, sufocamento, leitora, d-304, d-300, d-345, d-294]
 - Data: 2026-11-05
@@ -4261,6 +4262,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/leitora/leitura-combate-resistir-armas.md` e `../tmp/arquiteto/triagem-leitura-combate-05-11.md`.
 - Estado: **no ar** desde 06/11/2026 (branch `regras-leitora-8`, publicada em `b9c616a9`, no merge do fim da L13).
 - As perguntas C-RES-1, C-RES-2, C-RES-4 e C-REG-2 foram respondidas pela D-354 (06/11/2026).
+- **Nota (15/11/2026, D-373, T1 do autor):** desfeita só na tabela de fases da Arte: os rótulos voltam a "maior grau" (0 a 3, 4, 5 ou 6), porque a frase da D-346 vale só para criatura. Aplicação no ramo `revisao-textos` (RT-060).
 
 ### D-354 · Respostas de 06/11 (00:53), L16, L17 e L18: Ferreiro, o veneno sem efeito, o Curare, o Tratar, o Teste Coletivo, o texto do Grid e a lista da Bestiarista [tags: oficios, ferreiro, conserto, resistir, veneno, curare, tratar, teste-coletivo, grid, d-054, bestiarista, leitora, d-352, d-353]
 - Data: 2026-11-06
@@ -4546,6 +4548,20 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **aplicada** no commit desta decisão (o catálogo, a ficha do diabo e a migração da ficha salva); a imagem espera a G78.
 - **A ficha .md do diabo fica para trás, à vista (12/11/2026, CORRIGE da Revisora):** o JSON do diabo barbado foi editado em 12/11 antes da ficha .md da Bestiarista, que ainda aponta para `glaive-serrilhada`. Até o lote dela, reconverter o diabo para no conversor ("a arma glaive-serrilhada não está no armas.json"), e a fixture `scripts/fixtures/criaturas-esperado.json` traz a entrada do diabo de 12/11 com o sha256 da .md de antes. A troca vai à Bestiarista por lista, pelo autor (`../tmp/arquiteto/lista-bestiarista-glaive.md`). Pendência: B27.
 - **A ficha .md alcançou o JSON (12/11/2026):** a Bestiarista aplicou a lista, a reconversão do diabo sai igual ao publicado nos campos de jogo, o JSON do site passou a ser o reconvertido (a `revisao` vem só da .md, e a nota antiga saiu) e a fixture foi regenerada com o sha256 novo. A B27 fecha.
+
+### D-373 · T1: a Velocidade da Arte do personagem conta o maior grau investido entre os Parâmetros do Efeito, e a frase "grau e nível são a mesma coisa" da D-346 vale só para criatura; a tabela de fases volta a falar em grau [tags: arte, velocidade, grau, nivel, parametros, pgr, criatura, personagem, d-346, d-353, d-082, d-060, rt-060, t1, rev-textos]
+- Data: 2026-11-15
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T1. Velocidade da Arte do personagem (15/11/2026, DECIDIDA; RT-060 da revisão de textos)":
+    - A Velocidade da Arte do personagem depende do maior grau investido entre os Parâmetros do Efeito conjurado, não do nível da Arte de quem conjura. O que se conta é o grau do maior Parâmetro do Efeito; o nome ("grau" ou "nível") importa menos do que deixar claro o que se conta.
+    - A frase da D-346 ("grau e nível de Arte são a mesma coisa (uniformizar)") vale só para os poderes de criatura.
+    - A tabela de fases do combate volta a falar em grau ("Arte, maior grau 0 a 3", "maior grau 4", "maior grau 5 ou 6"), desfazendo nessa tabela a troca da D-353. A D-082 e a D-060 seguem valendo.
+    - Diretriz do autor: o livro precisa diferenciar com clareza o que é regra de Personagem e o que é regra de Criatura.
+- Também do autor (mensagem de 15/11/2026): a tabela de fases volta aos rótulos "Arte, maior grau 0 a 3", "Arte, maior grau 4", "Arte, maior grau 5 ou 6", em `combate.md`, em `regras.json` (`combate.pgr.reforma.arte.graus`) e nos mutantes de `test-capitulo-armas.mjs`; e `arcano.feiticoTicks[0].nivel` passa de "1–3" a "0–3". "A D-082 e a D-060 seguem valendo; a D-353 fica desfeita só nessa tabela." A RT-060 da revisão de textos sai de PENDENTE AUTOR e vira "registrada", com base na T1, e se aplica na fase 2, no lugar normal da reescrita.
+- Diretriz que vale para toda a revisão de textos (mesma mensagem): "o livro precisa diferenciar com clareza o que é regra de Personagem e o que é regra de Criatura". Na fase 2, toda regra que valha só para um dos dois diz isso na própria frase ou no título da seção; e as decisões de poderes de criatura (R1 a R54 e as D-xxx ligadas) são varridas atrás de texto que foi parar em regra de jogador, cada caso numa entrada nova do `contradicoes.md` da revisão.
+- Muda: desfaz a D-353 só na tabela de fases da Arte (a frase da D-346 deixa de valer para o personagem). A D-346 continua valendo para os poderes de criatura. A D-082 e a D-060 seguem.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T1) e a mensagem do autor de 15/11/2026; RT-060 de `../tmp/revisao-textos/contradicoes.md`.
+- Estado: **a implementar** no ramo `revisao-textos` (fase 2, RT-060); vai ao ar com o merge da revisão, depois que o autor ler o registro.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
