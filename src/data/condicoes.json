@@ -12,7 +12,7 @@
     {
       "id": "caido", "nome": "Caído", "icone": "⤓", "grupo": "posicao", "cor": "alerta",
       "defesaCaC": -2, "defesaDist": 2,
-      "nota": "De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). As próprias jogadas não mudam (livro, Combate Físico). Levantar consome movimento.",
+      "nota": "De perto é alvo fácil (−2 na Defesa); de longe vira alvo menor (+2). As próprias jogadas não mudam (livro, Combate Físico). Levantar-se é uma ação de Velocidade 3.",
       "fonte": "combateTatico · alvo caído"
     },
     {
@@ -142,7 +142,7 @@
     {
       "id": "doente", "nome": "Doente", "icone": "🤒", "grupo": "corpo", "cor": "alerta",
       "dados": -1,
-      "nota": "Doença instalada: um degrau de Desgaste enquanto não for tratada."
+      "nota": "Doença instalada: Desgaste do estágio (Instalada 1, Grave 2, Terminal 3), até o estágio descer."
     },
     {
       "id": "desgaste-1", "nome": "Desgaste 1", "icone": "①", "grupo": "corpo", "cor": "alerta",
@@ -186,7 +186,7 @@
     {
       "id": "enjoado", "nome": "Enjoado", "icone": "🤢", "grupo": "corpo", "cor": "alerta",
       "acao": -2,
-      "nota": "−2 em todas as jogadas enquanto exposto, e por mais 6 Ticks depois de sair. Constructos não enjoam."
+      "nota": "−2 em todas as jogadas enquanto exposto, e por mais 6 Ticks depois de sair. Constructos e mortos-vivos não enjoam."
     },
     {
       "id": "inconsciente", "nome": "Inconsciente", "icone": "💤", "grupo": "corpo", "cor": "morte",
@@ -234,7 +234,7 @@
     {
       "id": "enfurecido", "nome": "Enfurecido", "icone": "💢", "grupo": "mente", "cor": "alerta",
       "ataque": 2, "ataqueDist": 0, "defesa": -2,
-      "nota": "A fúria do Frenesi: +2 nas ações físicas, menos o tiro (o Grid e a aba Combate ainda somam o +2 também no tiro, até lerem a marca `ataqueDist`); −2 em Esquiva e em Bloqueio; só ações físicas; não pode ser convencido a nada. A ficha diz o que faz entrar, quando sai e se ignora as penalidades de ferimento."
+      "nota": "A fúria do Frenesi: +2 nas ações físicas, menos o tiro (o Grid e a aba Combate ainda somam o +2 também no tiro, até lerem a marca `ataqueDist`); −2 em Esquiva e em Bloqueio; só ações físicas; não pode ser convencido a nada. A ficha diz o que faz entrar, quando sai e se ignora as penalidades de ferimento. O Frenesi do orc e do meio-orc e a Técnica Fúria do Caminho Sangue Fervente seguem a regra própria de cada um."
     },
     {
       "id": "abalado", "nome": "Abalado", "icone": "💔", "grupo": "mente", "cor": "alerta",
@@ -244,7 +244,7 @@
     {
       "id": "concentrando", "nome": "Concentrando", "icone": "◈", "grupo": "arcano", "cor": "arcano",
       "dados": -1,
-      "nota": "Feitiço guardado ou efeito sustentado: Raciocínio conta um nível abaixo e −1d6 em rolagens que o usem.",
+      "nota": "Feitiço guardado: Raciocínio conta um nível abaixo e −1d6 em rolagens que o usem.",
       "fonte": "artes · guardar um feitiço"
     },
 
