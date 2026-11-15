@@ -5,7 +5,9 @@ titulo: "Habilidades"
 resumo: "As 24 Habilidades primárias em quatro grupos, a régua de 0 a 6, a Especialidade e as Firulas."
 ---
 
-Se o [Atributo](/regras/atributos) é o que você é, a Habilidade é o que você aprendeu a fazer. Elas vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. **0 não é impedimento**, é falta de treino: você ainda rola o Atributo sozinho, e ainda pode dar certo, só que muito mais raramente. São 24, em quatro grupos de seis.
+Se o [Atributo](/regras/atributos) é o que você é, a Habilidade é o que você aprendeu a fazer. Elas vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. São 24, em quatro grupos de seis.
+
+**0 não é impedimento**, é falta de treino: você ainda rola o Atributo com a Habilidade zerada, e ainda pode dar certo, só que muito mais raramente. Essa jogada continua sendo de Atributo + Habilidade, e a Centelha não soma nada nela; a jogada só do Atributo, em que a Centelha soma inteira, é outra, e só o Mestre a pede ([Cap. V](/regras/centelha)).
 
 | Nível | Rótulo | O que significa |
 |:---:|---|---|
@@ -17,7 +19,9 @@ Se o [Atributo](/regras/atributos) é o que você é, a Habilidade é o que voc�
 | **5** | Mestre | Um dos melhores que existem. |
 | **6** | Lendário | O ápice absoluto do ofício. |
 
-Cada Habilidade **pareia com um ou mais Atributos** conforme o uso, e o parêntese ao fim de cada verbete lista quais: é a **inclinação** da Habilidade, o grupo de Atributos com que ela mais se relaciona. A mesma Investigação é *Percepção* para achar a pista no chão, *Raciocínio* para deduzir na hora e *Inteligência* para reconstituir o que houve. Quem escolhe o par é o Mestre, pela descrição da ação: você diz **como** está fazendo, e o **como** define o Atributo. A regra inteira está em [Quem escolhe o par](/regras/coracao-do-sistema#quem-escolhe-o-par).
+Cada Habilidade **pareia com um ou mais Atributos** conforme o uso, e o parêntese ao fim de cada verbete lista quais. Essa lista é a **inclinação** da Habilidade: o grupo de Atributos com que ela mais se relaciona. A mesma Investigação é *Percepção* para achar a pista no chão, *Raciocínio* para deduzir na hora e *Inteligência* para reconstituir o que houve.
+
+Quem escolhe o par é o Mestre, pela descrição da ação: você diz **como** está fazendo, e o **como** define o Atributo. A regra inteira está em [Quem escolhe o par](/regras/coracao-do-sistema#quem-escolhe-o-par).
 
 <!-- gen:primarias -->
 
@@ -25,10 +29,10 @@ Cada Habilidade **pareia com um ou mais Atributos** conforme o uso, e o parênte
 
 O que se rola quando alguém está tentando machucar alguém. Todo personagem que pretenda entrar numa briga precisa de pelo menos uma Habilidade de ataque e uma de defesa.
 
-- **Armas** · O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma Habilidade só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, não do lutador; o que separa o duelista do brutamontes é o Atributo que ele usa (Destreza ou Força, à escolha de quem ataca) e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a Habilidade mais rolada de qualquer personagem que entre em combate. *(Destreza · Força)*
-- **Arremesso** · Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador. A jogada de arremesso vai pela Força ou pela Destreza, à escolha de quem arremessa, normalmente o maior dos dois, como no corpo a corpo: a mão precisa põe o objeto no lugar certo, e o braço forte também acerta, além de jogar mais longe. *(Destreza · Força)*
+- **Armas** · O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma Habilidade só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, e não do lutador. O que separa o duelista do brutamontes é o Atributo que ele usa (Destreza ou Força, à escolha de quem ataca) e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a Habilidade mais rolada de qualquer personagem que entre em combate. *(Destreza · Força)*
+- **Arremesso** · Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador. A jogada de arremesso vai pela Força ou pela Destreza, à escolha de quem arremessa, normalmente o maior dos dois, como no corpo a corpo. A mão precisa põe o objeto no lugar certo; o braço forte também acerta, e ainda joga mais longe. *(Destreza · Força)*
 - **Atirador** · O tiro com arma de disparo: arco curto, arco longo, besta e o que mais se aponte e solte. É a Habilidade da paciência e da mira, de julgar a distância, o vento e o instante, e soltar quando o alvo está onde deveria estar. Rende o melhor do jogo quando você tem tempo e posição, e sofre muito quando o inimigo encosta. Lançar com o braço é Arremesso; a briga de perto é Armas ou Briga. O tiro de arco e de besta vai sempre pela Percepção, e não pela Destreza: acertar longe é antes de tudo enxergar direito. *(Percepção)*
-- **Bloqueio** · Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr, no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo hábil (cobre pelo menos 30% do corpo, do escudo redondo para cima), porque ninguém apara uma flecha com a espada nem com um broquel. *(Destreza · Força)*
+- **Bloqueio** · Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr: no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo hábil (cobre pelo menos 30% do corpo, do Hoplon para cima), porque ninguém apara uma flecha com a espada nem com um broquel. *(Destreza · Força)*
 - **Briga** · A luta sem arma e a luta agarrada: soco, joelhada, cotovelada, gravata, projeção, chave de braço e a rolação no chão da taverna. É também o que resolve tudo que envolve pôr as mãos em alguém sem querer matá-lo, como segurar quem foge, imobilizar, desarmar ou empurrar para fora do parapeito. Vale igualmente para as armas que são extensão do punho, como soqueira e manopla. Aparece toda vez que a cena não permite ou não pede uma lâmina: prisões, bebedeiras, guardas que precisam prender e não executar. *(Força · Destreza)*
 - **Esquiva** · Não estar onde o golpe chega: o passo para o lado, o corpo que gira, o mergulho para trás do muro. É uma das duas maneiras de não ser atingido, e a mais versátil, porque serve contra qualquer coisa, do soco à flecha, da armadilha ao desabamento. Em compensação exige espaço e pés livres: encurralado, em meio à multidão ou preso à formação, ela vale pouco. Sustenta a Defesa por Esquiva, e como toda defesa é usada em praticamente todo lance de combate. *(Destreza)*
 
@@ -39,9 +43,9 @@ O corpo fora do combate, e a firmeza que segura o personagem inteiro. São as Ha
 - **Atletismo** · O corpo em movimento e em esforço: correr, saltar, escalar, nadar, rolar, se pendurar e atravessar o que estiver no caminho. É a Habilidade que define o quanto você anda por Tick e a que distância consegue saltar, e a primeira a ser pedida em qualquer perseguição, fuga ou subida. O que ela mede é o desempenho do corpo inteiro; a mão fina fica com Prestidigitação e o fôlego longo da marcha, com Resistência. *(Força · Destreza · Vigor)*
 - **Furtividade** · Não ser notado: pisar sem barulho, usar sombra e cobertura, escolher a hora de atravessar o corredor e ficar imóvel quando o guarda vira a cabeça. Serve para se aproximar, para se esconder e para seguir alguém sem que perceba, e vale tanto para o batedor no mato quanto para o ladrão no telhado. Desanda com armadura pesada, luz na mão, companhia barulhenta e pressa. Esconder um objeto, e não a si mesmo, é Prestidigitação. *(Destreza)*
 - **Integridade** · A firmeza do que você é quando alguém tenta mudar isso: manipulação, chantagem, terror, tortura, sedução e a magia que mexe com a mente. É a Habilidade defensiva do social e do mental, e é ela que sustenta a Defesa Mental. Não é teimosia nem frieza: você sente o medo e a tentação como qualquer um, só não age por causa deles. Esconder o que sente é assunto de Compostura; Integridade é não ceder. *(Vigor · Inteligência · Raciocínio)*
-- **Prestidigitação** · A mão que engana o olho, e o ofício do furto em volta dela: escamotear, sacar sem que se veja, bater uma carteira, cortar uma bolsa, plantar uma prova, trocar um dado viciado, esconder a adaga sob a manga. É o faz-tudo de quem vive de pegar o que não é seu, e como todo faz-tudo cobre o serviço comum inteiro: escolher o alvo na multidão, a hora, o caminho de entrada que não é a porta e a saída antes que dê falta. O que importa aqui não é a velocidade, é a testemunha: sozinho num quarto trancado ninguém rola Prestidigitação. Esconder o corpo inteiro é Furtividade, e a tranca no meio do caminho é Abrir Mecanismos. *(Destreza)*
-- **Prontidão** · Estar de guarda: reparar no perigo antes que ele chegue e reagir a tempo quando chega. É a Habilidade mais pedida da ficha, porque o Mestre a rola contra emboscadas, perseguidores, armadilhas e qualquer coisa que se aproxime enquanto vocês conversam, muitas vezes sem avisar que rolou. Também é a metade treinada da Iniciativa, ou seja, de quem age primeiro quando a briga começa. Vasculhar uma cena com calma é Investigação; Prontidão é o que você percebe sem estar procurando. *(Percepção · Raciocínio)*
-- **Resistência** · Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a Habilidade da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar por outras causas que não o 0 PV (o desmaio em 0 PV não tem teste), para segurar o fôlego e para continuar de pé depois do que deveria ter derrubado você. *(Vigor)*
+- **Prestidigitação** · A mão que engana o olho, e o ofício do furto em volta dela: escamotear, sacar sem que se veja, bater uma carteira, cortar uma bolsa, plantar uma prova, trocar um dado viciado, esconder a adaga sob a manga. É o faz-tudo de quem vive de pegar o que não é seu, e cobre o serviço comum inteiro: escolher o alvo na multidão, a hora, o caminho de entrada que não é a porta e a saída antes que dê falta. O que importa aqui não é a velocidade, é a testemunha: sozinho num quarto trancado ninguém rola Prestidigitação. Esconder o corpo inteiro é Furtividade, e a tranca no meio do caminho é Abrir Mecanismos. *(Destreza)*
+- **Prontidão** · Estar de guarda: reparar no perigo antes que ele chegue e reagir a tempo quando chega. É a Habilidade mais pedida da ficha, porque o Mestre a rola contra emboscadas, perseguidores, armadilhas e qualquer coisa que se aproxime enquanto vocês conversam, muitas vezes sem avisar que rolou. Também é a metade treinada da Iniciativa, a conta de quem age primeiro quando a briga começa. Vasculhar uma cena com calma é Investigação; Prontidão é o que você percebe sem estar procurando. *(Percepção · Raciocínio)*
+- **Resistência** · Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a Habilidade da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar por outras causas que não o 0 PV (o desmaio em 0 PV não tem teste) e para continuar de pé depois do que deveria ter derrubado você. E é ela que mede quanto tempo você segura o fôlego, numa conta fixa, sem rolagem (Sufocamento, em Resistir). *(Vigor)*
 
 #### Sociais
 
@@ -62,7 +66,7 @@ O que o personagem sabe e o que ele consegue descobrir. São as Habilidades que 
 - **Conhecimentos Gerais** · A instrução ampla de quem estudou: história, geografia, povos, línguas, literatura, teoria, o nome das coisas e o contexto delas. É a Habilidade que responde à pergunta "o que eu sei sobre isso?" quando o assunto não cai num campo específico, e é ela que separa o letrado do camponês esperto. Quanto mais fundo o assunto, mais ela cede lugar às secundárias como História, Religião, Genealogia e Bestiário; Conhecimentos Gerais dá a resposta que qualquer erudito daria. *(Inteligência)*
 - **Investigação** · Procurar e concluir: vasculhar uma cena, achar o que foi escondido, reparar na peça que não encaixa, juntar os cacos e chegar ao que de fato aconteceu. Cobre a busca deliberada, as perguntas feitas com método (arrancar a resposta de quem não quer dar é a secundária Interrogatório, Cap. X) e a dedução feita depois, com a cabeça fria. Difere de Prontidão pelo tempo e pela intenção: Prontidão é o que salta aos olhos, Investigação é o que você foi atrás. *(Percepção · Raciocínio · Inteligência)*
 - **Ocultismo** · O saber do que está fora da ordem natural: espíritos, mortos que não descansam, maldições, presságios, sigilos, os nomes que não se dizem alto e a lógica por trás da feitiçaria. Serve para reconhecer o que se está enfrentando, ler uma inscrição, entender o que um ritual pretendia e saber o preço de mexer naquilo. Num mundo em que a magia existe e cobra caro, é uma das Habilidades mais úteis da ficha, inclusive para quem não conjura nada. *(Inteligência · Percepção)*
-- **Ofícios Gerais** · A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferreiro, Carpintaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade. *(Inteligência · Destreza)*
+- **Ofícios Gerais** · A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola. O serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferreiro, Carpintaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade. *(Inteligência · Destreza)*
 - **Sobrevivência** · Durar longe da estrada: achar água e comida, caçar, pescar, armar acampamento, ler o tempo, orientar-se sem mapa, rastrear e evitar ser rastreado. Vale para a armadilha de caça, para a linha e para a rede. Cobre também conhecer o bicho e a planta do lugar o bastante para não comer o que mata nem acampar onde não se deve. É a Habilidade que segura a viagem em pé, e numa campanha de estrada ou de ermo ela rola quase toda sessão. *(Percepção · Inteligência · Vigor)*
 
 <!-- /gen:primarias -->
@@ -75,7 +79,9 @@ O que o personagem sabe e o que ele consegue descobrir. São as Habilidades que 
 
 A Especialidade é **treino concentrado dentro de uma Habilidade**. Ela não eleva o teto da Habilidade nem entra em toda rolagem: torna seus resultados **mais confiáveis** só quando o **escopo específico** se aplica. Vale tanto numa primária quanto numa [secundária](/regras/habilidades-secundarias).
 
-Cada Especialidade aponta para **um recorte único e estreito** da Habilidade-mãe, e precisa ser **nomeada**. É essa a diferença para uma Secundária: a Secundária pode ser um campo inteiro; a Especialidade é **um foco só** dentro da Habilidade, nunca tão geral. *Armas* pode especializar "espada longa" ou "duelo", não "armas brancas" (amplo demais). *Furtividade* pode especializar "nas sombras" ou "em meio à multidão", não "ser furtivo" (que já é a Habilidade inteira).
+Cada Especialidade aponta para **um recorte único e estreito** da Habilidade-mãe, e precisa ser **nomeada**. É essa a diferença para uma Secundária: a Secundária pode ser um campo inteiro; a Especialidade é **um foco só** dentro da Habilidade, nunca tão geral.
+
+*Armas* pode especializar "espada longa" ou "duelo", não "armas brancas" (amplo demais). *Furtividade* pode especializar "nas sombras" ou "em meio à multidão", não "ser furtivo" (que já é a Habilidade inteira).
 
 ### Quantas, e até quanto
 
@@ -86,11 +92,15 @@ Cada **2 níveis** de Habilidade abrem **1 nível de Especialidade** naquela Hab
 - Habilidade 4 ou 5: 2 níveis.
 - Habilidade 6: 3 níveis.
 
-Cada nível é um **escopo nomeado**. Você distribui esses níveis como quiser: em **especialidades diferentes** (cada quadrado um foco, por exemplo "espadas", "escudos" e "machados") ou **concentrados** num só (repetindo o mesmo nome para aprofundá-lo, por exemplo dois níveis em "espada longa"). No painel, clique nos quadradinhos para definir quantos níveis e escreva o nome de cada um. Cada Especialidade pertence **àquela Habilidade**: a de Furtividade não ajuda em Atletismo.
+Cada nível é um **escopo nomeado**. Você distribui esses níveis como quiser: em **especialidades diferentes** (cada quadrado um foco, por exemplo "espadas", "escudos" e "machados") ou **concentrados** num só (repetindo o mesmo nome para aprofundá-lo, por exemplo dois níveis em "espada longa"). Cada Especialidade pertence **àquela Habilidade**: a de Furtividade não ajuda em Atletismo.
+
+Na ficha, clique nos quadradinhos do painel para definir quantos níveis e escreva o nome de cada um.
 
 ### Como funciona na mesa
 
-O bônus é **situacional**: o Mestre julga se o escopo nomeado se aplica à ação. Quando se aplica, para cada nível com aquele nome role **+1d6 e descarte o menor** dado do pool. Em valores fixos (como uma Defesa), cada nível vale **+1**; numa ação Longa, que usa a média e não rola, cada nível vale **+2**. Fora do escopo, a Especialidade não faz nada, e por isso a ficha **não a soma automaticamente** no rolador.
+O bônus é **situacional**: o Mestre julga se o escopo nomeado se aplica à ação. Quando se aplica, para cada nível com aquele nome role **+1d6 e descarte o menor** dado do pool. Em valores fixos (como uma Defesa), cada nível vale **+1**; numa ação Longa, que usa a média e não rola, cada nível vale **+2**.
+
+Fora do escopo, a Especialidade não faz nada, e por isso a ficha **não a soma automaticamente** no rolador.
 
 Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 20) e metade disso numa secundária (6 · 8 · 10), acumulando os níveis abaixo.
 
@@ -98,8 +108,7 @@ Cada nível custa **8 + (nível × 4)** numa Habilidade primária (12 · 16 · 2
 
 ## Firulas · recompensa à ousadia
 
-Descrever uma ação com criatividade e uso do cenário rende uma **Firula**: um bônus naquele lance,
-e mais um pouco de fôlego que fica, numa das reservas ([Energia, Mana ou Força de Vontade](/regras/criacao-de-personagem#traços-derivados)). O Mestre define o nível:
+Descrever uma ação com criatividade e uso do cenário rende uma **Firula**: um bônus naquele lance, e mais um pouco de fôlego que fica, numa das reservas ([Energia, Mana ou Força de Vontade](/regras/criacao-de-personagem#traços-derivados)). O Mestre define o nível:
 
 | Nível | Na jogada | E devolve |
 |:---:|---|---|
@@ -107,22 +116,14 @@ e mais um pouco de fôlego que fica, numa das reservas ([Energia, Mana ou Força
 | 2 | +1d6 | **2 de Energia**, ou **1 de Mana**, ou **1 de Força de Vontade** |
 | 3 | +2d6 | **5 de Energia**, ou **3 de Mana**, ou **3 de Força de Vontade**, e ainda **XP** |
 
-**A escolha da reserva é sua, uma por Firula, e elas não somam:** você pega uma das três, não as
-três. É a razão de a Firula valer duas vezes: o bônus vale naquele lance, e o que ela devolve fica.
+**A escolha da reserva é sua, uma por Firula, e elas não somam:** você pega uma das três, não as três. É a razão de a Firula valer duas vezes: o bônus vale naquele lance, e o que ela devolve fica.
 
-**Não há teto por cena.** Nem de quantas Firulas, nem de quanto se recupera, em nenhuma das três
-reservas. Uma cena inteira bem descrita devolve o que ela render.
+**Não há teto por cena.** Nem de quantas Firulas, nem de quanto se recupera, em nenhuma das três reservas. Uma cena inteira bem descrita devolve o que ela render.
 
-**E a Firula não é coisa de combate.** Ela vale para qualquer ação **relevante** e que seja um
-**desafio**: a escalada em que se joga o gancho na gárgula em vez de na cornija, a mentira que usa
-o brasão na parede, o conserto feito com a peça errada. Fora do combate quase toda rolagem é
-candidata, e é ali que ela mais aparece.
+**E a Firula não é coisa só de combate.** Ela vale para qualquer ação **relevante** e que seja um **desafio**: a escalada em que se joga o gancho na gárgula em vez de na cornija, a mentira que usa o brasão na parede, o conserto feito com a peça errada. Fora do combate, quase toda rolagem é candidata, e é ali que ela mais aparece.
 
-<p class="muted">Quanto XP o nível 3 devolve <strong>ainda não foi decidido</strong>, e é número, não
-redação: até a mesa fechar isso, vale o critério do Mestre.</p>
+<p class="muted">Quanto XP o nível 3 devolve <strong>ainda não foi decidido</strong>, e é número, não redação: até a mesa fechar isso, vale o critério do Mestre.</p>
 
-A Firula não se compra nem se aprende: ela não é uma [Técnica](/caminhos), não sai de
-catálogo nenhum e está aberta a qualquer personagem, do camponês ao semideus. O que ela cobra é
-atenção ao que está em volta · o lampião pendurado, a mesa entre vocês, o nome que o outro não
-quer ouvir em voz alta · e o preço de repeti-la é que a segunda vez impressiona menos que a
-primeira.
+A Firula não se compra nem se aprende: ela não é uma [Técnica](/caminhos), não sai de catálogo nenhum e está aberta a qualquer personagem, do camponês ao semideus. O que ela cobra é atenção ao que está em volta: o lampião pendurado, a mesa entre vocês, o nome que o outro não quer ouvir em voz alta.
+
+O preço de repeti-la é que a segunda vez impressiona menos que a primeira.
