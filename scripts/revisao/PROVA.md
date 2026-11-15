@@ -1,7 +1,7 @@
 # Prova da trava (controle negativo)
 
-Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-12, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD dd92282a). Cada caso muda UM arquivo, roda a trava só nele com um
+Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-15, base d760ef96, na árvore
+`centelha-executora` (ramo revisao-textos, HEAD ada72b48). Cada caso muda UM arquivo, roda a trava só nele com um
 contradicoes.md e um estado.md de teste e devolve o arquivo ao que era. Os avisos (linhas com · ou com "resolução:") não derrubam a trava.
 
 **"Próximo", a definição testável dos pares termo e número:** cada número da seção se liga a um termo protegido, o mais perto
@@ -448,6 +448,64 @@ Entrada: nenhuma
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
+## A Trava JSON (campo fora da prosa)
+
+### ✓ campo fora da prosa mudado (o peso da adaga, 0.3 → 0.4), sem entrada (esperado: falha; exit 1)
+
+Troca: "/"peso": 0\.3,/u" → ""peso": 0.4,"
+Entrada: nenhuma
+
+```
+✘ src/data/armas.json
+    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ o mesmo campo, com a linha Trava JSON @[0].peso: 0.3 → 0.4 (esperado: passa; exit 0)
+
+Troca: "/"peso": 0\.3,/u" → ""peso": 0.4,"
+Entrada: - Trava JSON: `src/data/armas.json` @[0].peso: 0.3 → 0.4
+
+```
+✓ src/data/armas.json
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ a linha Trava JSON com o valor de antes errado (0.5) (esperado: falha; exit 1)
+
+Troca: "/"peso": 0\.3,/u" → ""peso": 0.4,"
+Entrada: - Trava JSON: `armas.json` @[0].peso: 0.5 → 0.4
+
+```
+✘ src/data/armas.json
+    ✘ RT-900: Trava JSON @[0].peso: o valor na base é 0.3, e a linha diz 0.5
+    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ a linha Trava JSON certa, e outro campo fora da prosa mudado junto (o id) (esperado: falha; exit 1)
+
+Troca: "/"peso": 0\.3,/u" → ""peso": 0.4,"; ""id": "adaga"" → ""id": "adaga-x""
+Entrada: - Trava JSON: `armas.json` @[0].peso: 0.3 → 0.4
+
+```
+✘ src/data/armas.json
+    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ a linha Trava JSON com valor que não é JSON (esperado: falha; exit 1)
+
+Troca: "/"peso": 0\.3,/u" → ""peso": 0.4,"
+Entrada: - Trava JSON: `armas.json` @[0].peso: 0,3 → 0.4
+
+```
+    ✘ RT-900: a linha Trava JSON não tem valor JSON válido (Unexpected non-whitespace character after JSON at position 1 (line 1 column 2)): - Trava JSON: `armas.json` @[0].peso: 0,3 → 0.4
+✘ src/data/armas.json
+    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+✘ trava: 2 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
 ## A entrada que não casa falha
 
 ### ✓ entrada que pede (3×) num trecho que está 2 vezes (esperado: falha; exit 1)
@@ -488,14 +546,14 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ## Resultado
 
-42 de 42 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
+47 de 47 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
 
 ## Os 449 arquivos de hoje
 
 A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 449 passam, 0 falham. Como todos estão iguais à base, a trava não compara nada neles (o arquivo igual à base passa direto); este número só prova que nada quebra na leitura. Os únicos avisos são de "igual à base": as entradas do contradicoes.md registradas e ainda não aplicadas (a RT-001 e as que a fase 1 consolidou):
 
 ```
-trava · base d760ef96 · 449 arquivo(s) · 86 entrada(s) de trava em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
+trava · base d760ef96 · 449 arquivo(s) · 85 entrada(s) de trava e 0 Trava JSON em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
     · igual à base; entrada(s) ainda não aplicada(s): RT-058
     · igual à base; entrada(s) ainda não aplicada(s): RT-022, RT-034, RT-035
     · igual à base; entrada(s) ainda não aplicada(s): RT-027, RT-033
@@ -514,7 +572,6 @@ trava · base d760ef96 · 449 arquivo(s) · 86 entrada(s) de trava em ..\tmp\rev
     · igual à base; entrada(s) ainda não aplicada(s): RT-062, RT-068
     · igual à base; entrada(s) ainda não aplicada(s): RT-013
     · igual à base; entrada(s) ainda não aplicada(s): RT-028, RT-029, RT-030, RT-065
-    · igual à base; entrada(s) ainda não aplicada(s): RT-094
     · igual à base; entrada(s) ainda não aplicada(s): RT-064, RT-070, RT-071
     · igual à base; entrada(s) ainda não aplicada(s): RT-014
     · igual à base; entrada(s) ainda não aplicada(s): RT-017

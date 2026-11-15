@@ -26,6 +26,8 @@
 //    senão a entrada não casa e a trava falha. Depois, os MOVIMENTOS DE SEÇÃO do estado.md (seção "## Movimentos de
 //    seção": `arquivo`: "trecho" · de "Título A" → "Título B") tiram o trecho da seção A do antes e o põem no fim da
 //    seção B. O antes corrigido é o que se compara com o depois.
+//    As linhas "Trava JSON" (`arquivo` @caminho: <antes> → <depois>, valores em JSON) fazem o mesmo num campo de fora
+//    da prosa de um src/data/*.json: o valor da base tem de ser o "antes", o de agora o "depois".
 // 3. Os blocos gerados (<!-- gen:x --> ... <!-- /gen:x -->) saem dos dois lados: eles mudam pela fonte.
 // 4. No src/data/*.json, só os campos de prosa (descricao, texto, definicao, efeito, nota, tracos, e o texto de niveis[])
 //    são comparados como texto, e cada campo é uma seção; o resto do JSON tem de ficar IGUAL, campo por campo.
@@ -122,6 +124,30 @@ function lerEntradas(md) {
   return out;
 }
 const ENTRADAS = fs.existsSync(CONTRADICOES) ? lerEntradas(fs.readFileSync(CONTRADICOES, 'utf8')) : [];
+// A TRAVA JSON (decisão do Arquiteto, 12/11/2026), para a mudança de um campo FORA da prosa de um src/data/*.json:
+//   - Trava JSON: `src/data/regras.json` @caminho.do.campo: <valor antes, em JSON> → <valor depois, em JSON>
+// O caminho em pontos, com o índice de lista entre colchetes (@acoes.salto.saltoHorizontalCorrendo, @pacotes[3].itens[0].item,
+// @[0].peso). A trava aceita a mudança só naquele caminho, só se o valor da base for o "antes" e o de agora for o
+// "depois"; o resto fora da prosa continua tendo de ficar igual. Valor que não é JSON válido é erro da linha.
+const ERROS_ENTRADA = [];
+function lerEntradasJson(md) {
+  const out = []; let emCodigo = false, rt = null;
+  for (const linha of lf(md).split('\n')) {
+    if (/^\s*```/.test(linha)) { emCodigo = !emCodigo; continue; }
+    if (emCodigo) continue;
+    const h = linha.match(/^##\s+(RT-\d+)/); if (h) { rt = h[1]; continue; }
+    const m = linha.match(/^\s*-\s*Trava JSON:\s*`([^`]+)`\s*@(\S+?):\s*(.+?)\s*→\s*(.+?)\s*$/);
+    if (!m) continue;
+    try { out.push({ rt, arquivo: resolveArquivo(m[1].replace(/\\/g, '/')), caminho: m[2].replace(/^\$\.?/, ''), antes: JSON.parse(m[3]), depois: JSON.parse(m[4]) }); }
+    catch (e) { ERROS_ENTRADA.push(`${rt}: a linha Trava JSON não tem valor JSON válido (${e.message}): ${linha.trim()}`); }
+  }
+  return out;
+}
+const ENTRADAS_JSON = fs.existsSync(CONTRADICOES) ? lerEntradasJson(fs.readFileSync(CONTRADICOES, 'utf8')) : [];
+const passos = (cam) => [...cam.matchAll(/([^.[\]]+)|\[(\d+)\]/g)].map((m) => (m[2] != null ? Number(m[2]) : m[1]));
+function valorEm(o, cam) { let v = o; for (const k of passos(cam)) { if (v == null || typeof v !== 'object' || !(k in v)) return { existe: false }; v = v[k]; } return { existe: true, v }; }
+function poeEm(o, cam, valor) { const ps = passos(cam); let v = o; for (const k of ps.slice(0, -1)) v = v[k]; v[ps[ps.length - 1]] = valor; }
+const igualJson = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 // No estado.md, a seção "## Movimentos de seção", uma linha por trecho movido:
 //   - `arquivo`: "trecho" · de "Título A" → "Título B"
 // O título sem os # (o JSON usa o caminho do campo, como a trava o imprime).
@@ -143,6 +169,7 @@ const CAMPOS_PROSA = new Set(['descricao', 'texto', 'definicao', 'efeito', 'nota
 const SEP_JSON = '\n␞\n'; // separa os campos de prosa no texto do JSON (o caractere não aparece em prosa)
 function prosaDoJson(txt) {
   const campos = [];
+  const obj = typeof txt === 'string' ? JSON.parse(txt) : txt;
   const pega = (v, cam) => { if (typeof v === 'string') campos.push({ titulo: cam, texto: v }); else if (Array.isArray(v)) v.forEach((x, i) => pega(x, `${cam}[${i}]`)); else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) pega(x, `${cam}.${k}`); };
   const esqueleto = (o, cam) => {
     if (Array.isArray(o)) return o.map((x, i) => esqueleto(x, `${cam}[${i}]`));
@@ -155,7 +182,7 @@ function prosaDoJson(txt) {
     }
     return r;
   };
-  const sk = esqueleto(JSON.parse(txt), '$');
+  const sk = esqueleto(obj, '$');
   return { campos, texto: campos.map((c) => c.texto).join(SEP_JSON), esqueleto: JSON.stringify(sk) };
 }
 // as seções de um texto (ver item 5 do cabeçalho); `titulo` sem os #
@@ -340,13 +367,22 @@ function comparar(arq) {
   if (antes == null) return { falhas: ['arquivo novo desde a base: a trava não tem com o que comparar'], avisos };
   if (depois == null) return { falhas: ['arquivo removido desde a base'], avisos };
   if (antes === depois) {
-    const pendentes = ENTRADAS.filter((x) => x.arquivo === arq).map((e) => e.rt);
+    const pendentes = [...ENTRADAS, ...ENTRADAS_JSON].filter((x) => x.arquivo === arq).map((e) => e.rt);
     if (pendentes.length) avisos.push(`igual à base; entrada(s) ainda não aplicada(s): ${[...new Set(pendentes)].join(', ')}`);
     return { falhas, avisos };
   }
   let titJsonA = null, titJsonD = null;
   if (ext === '.json') {
-    const a = prosaDoJson(antes), d = prosaDoJson(depois);
+    // as linhas Trava JSON: o campo de fora da prosa muda no antes, se a base tiver o valor de antes e o arquivo de agora
+    // tiver o de depois
+    const oA = JSON.parse(antes), oD = JSON.parse(depois);
+    for (const e of ENTRADAS_JSON.filter((x) => x.arquivo === arq)) {
+      const vA = valorEm(oA, e.caminho), vD = valorEm(oD, e.caminho);
+      if (!vA.existe || !igualJson(vA.v, e.antes)) { falhas.push(`${e.rt}: Trava JSON @${e.caminho}: o valor na base é ${vA.existe ? JSON.stringify(vA.v) : '(o caminho não existe)'}, e a linha diz ${JSON.stringify(e.antes)}`); continue; }
+      if (!vD.existe || !igualJson(vD.v, e.depois)) { falhas.push(`${e.rt}: Trava JSON @${e.caminho}: o valor de agora é ${vD.existe ? JSON.stringify(vD.v) : '(o caminho não existe)'}, e a linha diz ${JSON.stringify(e.depois)}`); continue; }
+      poeEm(oA, e.caminho, e.depois);
+    }
+    const a = prosaDoJson(oA), d = prosaDoJson(oD);
     if (a.esqueleto !== d.esqueleto) falhas.push('o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)');
     antes = a.texto; depois = d.texto; titJsonA = a.campos.map((c) => c.titulo); titJsonD = d.campos.map((c) => c.titulo);
   } else { antes = semGerados(antes); depois = semGerados(depois); }
@@ -411,9 +447,11 @@ function comparar(arq) {
 // ---------------------------------------------------------------- saída
 let caiu = 0;
 if (arquivos.length || !SAIDA_CLASSES) {
-  console.log(`trava · base ${BASE} · ${arquivos.length} arquivo(s) · ${ENTRADAS.length} entrada(s) de trava em ${path.relative(REPO, CONTRADICOES) || CONTRADICOES} · ${MOVIMENTOS.length} movimento(s) de seção em ${path.relative(REPO, ESTADO) || ESTADO}`);
+  console.log(`trava · base ${BASE} · ${arquivos.length} arquivo(s) · ${ENTRADAS.length} entrada(s) de trava e ${ENTRADAS_JSON.length} Trava JSON em ${path.relative(REPO, CONTRADICOES) || CONTRADICOES} · ${MOVIMENTOS.length} movimento(s) de seção em ${path.relative(REPO, ESTADO) || ESTADO}`);
   // as entradas cujo arquivo não existe na base nunca se aplicam: aviso no topo, para quem escreveu o contradicoes.md
-  const orfas = [...new Set(ENTRADAS.filter((e) => naBase(e.arquivo) == null).map((e) => `${e.rt} (\`${e.arquivo}\`)`))];
+  for (const e of ERROS_ENTRADA) console.log(`    ✘ ${e}`);
+  if (ERROS_ENTRADA.length) caiu++;
+  const orfas = [...new Set([...ENTRADAS, ...ENTRADAS_JSON].filter((e) => naBase(e.arquivo) == null).map((e) => `${e.rt} (\`${e.arquivo}\`)`))];
   if (orfas.length) console.log(`    · entrada(s) com arquivo que não existe na base (nome ambíguo ou caminho errado): ${orfas.join(', ')}`);
   for (const arq of arquivos) {
     const { falhas, avisos } = comparar(arq);

@@ -150,6 +150,13 @@ if (tr) {
   const trocado = tr[0].replace(tds[0][0], '\u0000').replace(tds[1][0], tds[0][0]).replace('\u0000', tds[1][0]);
   r.push(caso(`burla 5 no .astro: duas <td> com número trocadas numa <tr> de ${PAG2}`, PAG2, [[tr[0], trocado]], [], 'falha'));
 } else console.log(`(sem <tr> com duas <td> de número escritas à mão em ${PAG2}: o caso .astro fica de fora)\n`);
+console.log('## A Trava JSON (campo fora da prosa)\n');
+const PESO = /"peso": 0\.3,/u, PESOb = '"peso": 0.4,';
+r.push(caso('campo fora da prosa mudado (o peso da adaga, 0.3 → 0.4), sem entrada', DADO, [[PESO, PESOb]], [], 'falha'));
+r.push(caso('o mesmo campo, com a linha Trava JSON @[0].peso: 0.3 → 0.4', DADO, [[PESO, PESOb]], ['- Trava JSON: `src/data/armas.json` @[0].peso: 0.3 → 0.4'], 'passa'));
+r.push(caso('a linha Trava JSON com o valor de antes errado (0.5)', DADO, [[PESO, PESOb]], ['- Trava JSON: `armas.json` @[0].peso: 0.5 → 0.4'], 'falha'));
+r.push(caso('a linha Trava JSON certa, e outro campo fora da prosa mudado junto (o id)', DADO, [[PESO, PESOb], ['"id": "adaga"', '"id": "adaga-x"']], ['- Trava JSON: `armas.json` @[0].peso: 0.3 → 0.4'], 'falha'));
+r.push(caso('a linha Trava JSON com valor que não é JSON', DADO, [[PESO, PESOb]], ['- Trava JSON: `armas.json` @[0].peso: 0,3 → 0.4'], 'falha'));
 console.log('## A entrada que não casa falha\n');
 r.push(caso('entrada que pede (3×) num trecho que está 2 vezes', CAP, [[/Preparação/gu, 'Preparo']], ['- Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (3×)'], 'falha'));
 r.push(caso('entrada com "antes" que não está na base', CAP, [[N1, N1b]], [['(Força 7 e Destreza 2? use a Força)', N1b]], 'falha'));
