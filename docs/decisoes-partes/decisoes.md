@@ -3902,6 +3902,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 04, combate e manobras).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - Ajustes de 05/11/2026: o 044 diz que o 1d6 de Impacto a mais passa pela Absorção, como todo dano (ordem do autor); o 047 se resolveu pela D-342 (P7).
+- **Nota (15/11/2026, D-375, T3 do autor):** no item 029, o +4 da anatomia firme sai da Defesa de agarrão e vai na Defesa comum do alvo (a melhor entre Esquiva e Bloqueio), só contra Derrubar e Empurrar. As sete fichas trocam a frase pela lista da Bestiarista.
 
 ### D-334 · Tema 09, itens aplicados: o molde do sopro, a tinta na água e a descarga coletiva [tags: criatura, sopro, area, substancia, r1, r3, r4]
 - Data: 2026-11-05
@@ -4578,6 +4579,19 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T2) e `../tmp/ponte/para-arquiteto/lidas/002.md`; RT-010 de `../tmp/revisao-textos/contradicoes.md`.
 - Levantamento (15/11/2026): 89 pares em 46 Caminhos (64 Técnicas de nível maior) e 23 duvidosos, em `docs/calibracao/proezas-t2-aumenta-ou-substitui.md`, anexado à pendência D20 (recalibração das Proezas). O texto das Técnicas não muda antes dela.
 - Estado: **a implementar** no ramo `revisao-textos` (fase 2, RT-010); vai ao ar com o merge da revisão, depois que o autor ler o registro.
+
+### D-375 · T3: o +4 da anatomia firme vai na Defesa comum do alvo, só contra Derrubar e Empurrar; a D-048 fica [tags: criatura, bestiario, anatomia-firme, derrubar, empurrar, defesa, agarrao, d-048, d-333, teto, rt-050, t3, rev-textos]
+- Data: 2026-11-15
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T3. Anatomia firme contra Derrubar e Empurrar (15/11/2026, DECIDIDA; RT-050 da revisão de textos)":
+    - O +4 da anatomia firme vai na Defesa comum do alvo (a melhor entre Esquiva e Bloqueio), só quando o golpe é Derrubar ou Empurrar.
+    - A D-048 fica como está: Derrubar e Empurrar atacam a Defesa comum; só o agarrão tem a Defesa de agarrão.
+    - As sete fichas (braquiossauro, carcaju, elefante, hidra-5-cabecas, jiboia, serpente-venenosa, triceratops) trocam "Defesa de agarrão só contra Derrubar e Empurrar" por "Defesa contra Derrubar e Empurrar", pela lista da Bestiarista.
+- Pedido de aplicação (prompt 003 do coordenador das regras, 15/11/2026, pela ponte de arquivos): a RT-050 da revisão de textos sai de PENDENTE AUTOR e vira "registrada", com base na T3; no livro nada muda (`combate.md:275`, "ou na Defesa contra derrubar e empurrar", já está de acordo), e a reescrita deixa claro que o +4 é poder de criatura (T1); as sete fichas vão por lista à Bestiarista, pelo autor.
+- O teto (conferido, sem regra nova): o +4 é bônus de Defesa e entra no teto de +6 dos bônus de Defesa, pela D-078 (Estado: "sem teto nas penalidades, +6 nos bônus"), o "teto comum de +6" que a R7 e a R24 citam, e pelo livro (`combate.md:515`: "os bônus de Defesa (...) somam no máximo +6").
+- Muda: corrige a D-333, item 029 (o +4 sai da Defesa de agarrão e vai na Defesa comum contra Derrubar e Empurrar). A D-048 fica.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T3) e `../tmp/ponte/para-arquiteto/lidas/003.md`; RT-050 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-anatomia-firme.md`.
+- Estado: **a implementar**: o texto do livro no ramo `revisao-textos` (fase 2, RT-050), que vai ao ar com o merge da revisão; as sete fichas pelo lote da Bestiarista (fase 4).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
