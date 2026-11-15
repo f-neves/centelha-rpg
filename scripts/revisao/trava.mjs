@@ -66,6 +66,11 @@
 //      "_comuns", regra do autor) só AVISAM, também quando somem ou aparecem.
 //    - TÍTULOS DE SEÇÃO (FALHA): em .md, as linhas # a ###### fora de bloco de código; em .astro, os <h1> a <h6> e os
 //      id="...". A lista tem de ficar igual, na ordem. Título só muda com entrada.
+//    - FRONTMATTER (FALHA): o cabeçalho --- ... --- do capítulo fica igual, salvo entrada.
+//    - TERMO ACRESCENTADO: o termo protegido novo passa quando há linha dele, com o arquivo, em "## Termos acrescentados"
+//      do estado.md. O endereço de link não conta como texto ao contar termo.
+//    - ENTRADA NÃO APLICADA numa página reescrita (src/content/chapters, src/pages) FALHA, salvo linha em "## Entradas
+//      adiadas" do estado.md; no src/data, aviso. "\n" no trecho de uma linha Trava é quebra de linha.
 // 7. Sai com código 1 se qualquer arquivo falha; 0 se tudo casa. Os avisos não derrubam. Cada aviso de termo sai numa
 //    linha pronta para colar no estado.md: - `arquivo` · "termo" · antes → depois · motivo · resolução:
 import fs from 'node:fs';
@@ -121,7 +126,8 @@ function lerEntradas(md) {
     if (!naTrava) continue;
     // a anotação entre o arquivo e os dois-pontos é aceita e ignorada: `condicoes.json` (doente.nota): "..." → "..."
     for (const m of linha.matchAll(/`([^`]+)`(?:\s*\([^)]*\))?:\s*"(.*?)"\s*→\s*"(.*?)"(?:\s*\((\d+)×\))?(?=\s*(?:;|$|\())/g))
-      out.push({ rt, arquivo: resolveArquivo(m[1].replace(/\\/g, '/').replace(/:\d+$/, '')), antes: m[2], depois: m[3], vezes: Number(m[4] || 1) });
+      // "\n" escrito no trecho é quebra de linha (a linha Trava fica numa linha só: a RT-034 traz linhas de tabela)
+      out.push({ rt, arquivo: resolveArquivo(m[1].replace(/\\/g, '/').replace(/:\d+$/, '')), antes: m[2].replace(/\\n/g, '\n'), depois: m[3].replace(/\\n/g, '\n'), vezes: Number(m[4] || 1) });
   }
   return out;
 }
@@ -181,10 +187,35 @@ function lerMovimentos(md) {
   return out;
 }
 const MOVIMENTOS = fs.existsSync(ESTADO) ? lerMovimentos(fs.readFileSync(ESTADO, 'utf8')) : [];
+// No estado.md, a seção "## Termos acrescentados" (aprovada pelo coordenador das regras, 15/11/2026): o termo protegido
+// novo numa página passa só com a linha dele, uma por termo:
+//   - `arquivo` · "termo" · original: "..." · novo: "..." · definido em: `arquivo` (seção)
+// e a seção "## Entradas adiadas": a entrada que, de propósito, fica adiada numa página já reescrita, uma por linha:
+//   - `arquivo` · RT-000 · motivo
+function lerSecaoEstado(md, titulo, re) {
+  const out = []; let dentro = false;
+  for (const linha of lf(md).split('\n')) {
+    if (/^##\s/.test(linha)) { dentro = new RegExp('^##\\s+' + titulo, 'i').test(linha); continue; }
+    if (!dentro) continue;
+    const m = linha.match(re);
+    if (m) out.push(m);
+  }
+  return out;
+}
+const TEXTO_ESTADO = fs.existsSync(ESTADO) ? fs.readFileSync(ESTADO, 'utf8') : '';
+const ACRESCENTADOS = lerSecaoEstado(TEXTO_ESTADO, 'Termos acrescentados', /^\s*-\s*`([^`]+)`\s*·\s*"([^"]+)"/)
+  .map((m) => ({ arquivo: resolveArquivo(m[1].replace(/\\/g, '/')), termo: m[2].toLowerCase() }));
+const ADIADAS = lerSecaoEstado(TEXTO_ESTADO, 'Entradas adiadas', /^\s*-\s*`([^`]+)`\s*·\s*(RT-\d+)/)
+  .map((m) => ({ arquivo: resolveArquivo(m[1].replace(/\\/g, '/')), rt: m[2] }));
 
 // ---------------------------------------------------------------- o texto que se compara
 const semGerados = (s) => s.replace(/<!--\s*gen:([\w-]+)\s*-->[\s\S]*?<!--\s*\/gen:\1\s*-->/g, '');
-const CAMPOS_PROSA = new Set(['descricao', 'texto', 'definicao', 'efeito', 'nota', 'tracos']);
+// Os campos de prosa: os que o site mostra como texto corrido. Ampliada em 15/11/2026 (decisão do Arquiteto) com amarra,
+// justificativa, limiteDeUso, conduta, serve, exemplo e os do mesmo tipo (notas, _nota, porque, resumo, detalhe, excecao,
+// centelhaNota). Ficam fora: id, nome, rótulos curtos que funcionam como nome (os de nível), chaves, todo campo cujo
+// valor é número ou enumeração, e o "valor", que é misto. Dentro da prosa, números, dados e termos continuam travados.
+const CAMPOS_PROSA = new Set(['descricao', 'texto', 'definicao', 'efeito', 'nota', 'tracos', 'amarra', 'justificativa', 'limiteDeUso',
+  'conduta', 'serve', 'exemplo', 'notas', '_nota', 'porque', 'resumo', 'detalhe', 'excecao', 'centelhaNota']);
 const SEP_JSON = '\n␞\n'; // separa os campos de prosa no texto do JSON (o caractere não aparece em prosa)
 function prosaDoJson(txt) {
   const campos = [];
@@ -312,15 +343,20 @@ if (MOSTRAR_CLASSES) {
     console.log(`gravado: ${SAIDA_CLASSES}`);
   }
 }
-const termos = (t) => { const m = new Map(); for (const x of TERMOS) { const n = (t.match(x.re) || []).length; if (n) m.set(x.termo, n); } return m; };
-const minusculasAmbiguas = (t) => { const m = new Map(); for (const x of TERMOS) if (x.reMinuscula) { const n = (t.match(x.reMinuscula) || []).length; if (n) m.set(x.termo.toLowerCase(), n); } return m; };
+// O endereço de um link (o "virtudes" de /regras/aparencia-virtudes-vontade) não é texto: as letras dele viram espaço,
+// do mesmo tamanho, antes de contar termo (a posição dos números fica a mesma)
+const semEnderecos = (t) => t.replace(/(\]\()([^)]*)(\))/g, (m, a, u, b) => a + ' '.repeat(u.length) + b)
+  .replace(/((?:href|src)=")([^"]*)(")/g, (m, a, u, b) => a + ' '.repeat(u.length) + b);
+const termos = (t) => { t = semEnderecos(t); const m = new Map(); for (const x of TERMOS) { const n = (t.match(x.re) || []).length; if (n) m.set(x.termo, n); } return m; };
+const minusculasAmbiguas = (t) => { t = semEnderecos(t); const m = new Map(); for (const x of TERMOS) if (x.reMinuscula) { const n = (t.match(x.reMinuscula) || []).length; if (n) m.set(x.termo.toLowerCase(), n); } return m; };
 
 // ---------------------------------------------------------------- os pares termo e número (item 6 do cabeçalho)
 const RE_FIM_FRASE = /[.!?;](?=\s)|\n[ \t]*\n|\n(?=[ \t]*(?:[-*+]\s|\d+\.\s|\||#|<))/g;
 function pares(t) {
   // os termos com posição; o contido num mais longo sai
   const brutos = [];
-  for (const x of TERMOS) for (const m of t.matchAll(x.re)) brutos.push({ i: m.index, f: m.index + m[0].length, termo: x.termo });
+  const tSemEnd = semEnderecos(t);
+  for (const x of TERMOS) for (const m of tSemEnd.matchAll(x.re)) brutos.push({ i: m.index, f: m.index + m[0].length, termo: x.termo });
   brutos.sort((a, b) => a.i - b.i || b.f - a.f);
   const ts = [];
   for (const b of brutos) { const u = ts[ts.length - 1]; if (u && b.i < u.f) continue; ts.push(b); }
@@ -336,7 +372,16 @@ function pares(t) {
       const d = x.f <= n.i ? n.i - x.f : x.i - n.f;
       if (d < dist || (d === dist && x.f <= n.i)) { melhor = x; dist = d; }
     }
-    if (!melhor) melhor = ts.filter((x) => x.frase === fr - 1).pop() || null; // a frase que virou duas
+    // a frase que virou duas: o último termo da frase anterior que tem texto (a linha em branco entre parágrafos é uma
+    // fronteira a mais, e a frase vazia entre as duas fronteiras é pulada)
+    if (!melhor) {
+      for (let k = fr - 1; k >= 0; k--) {
+        const ini = k === 0 ? 0 : fins[k - 1] + 1, fim = fins[k] ?? t.length;
+        if (!/[\p{L}\p{N}]/u.test(t.slice(ini, fim))) continue;
+        melhor = ts.filter((x) => x.frase === k).pop() || null;
+        break;
+      }
+    }
     out.push(`${melhor ? melhor.termo : '(nenhum)'} ↔ ${n.valor}`);
   }
   return conta(out);
@@ -390,6 +435,7 @@ function comparar(arq) {
     if (pendentes.length) avisos.push(`igual à base; entrada(s) ainda não aplicada(s): ${[...new Set(pendentes)].join(', ')}`);
     return { falhas, avisos };
   }
+  const ehPagina = /^src\/(content\/chapters|pages)\//.test(arq) && ext !== '.json';
   let titJsonA = null, titJsonD = null;
   if (ext === '.json') {
     // as linhas Trava JSON: o campo de fora da prosa muda no antes, se a base tiver o valor de antes e o arquivo de agora
@@ -406,7 +452,7 @@ function comparar(arq) {
       falhas.push(`${e.rt}: Trava JSON @${e.caminho}: a base tem ${vA.existe ? JSON.stringify(vA.v) : '(o caminho não existe)'}, agora há ${vD.existe ? JSON.stringify(vD.v) : '(o caminho não existe)'}, e a linha diz ${JSON.stringify(e.antes)} → ${JSON.stringify(e.depois)}`);
     }
     const a = prosaDoJson(oA), d = prosaDoJson(oD);
-    if (a.esqueleto !== d.esqueleto) falhas.push('o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)');
+    if (a.esqueleto !== d.esqueleto) falhas.push('o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)');
     antes = a.texto; depois = d.texto; titJsonA = a.campos.map((c) => c.titulo); titJsonD = d.campos.map((c) => c.titulo);
   } else { antes = semGerados(antes); depois = semGerados(depois); }
   // as entradas do contradicoes.md, aplicadas no antes
@@ -415,22 +461,34 @@ function comparar(arq) {
     // vezes quanto na base, ela só ainda não foi aplicada (aviso): num arquivo de muitas entradas, a página que aplica
     // uma não fica barrada pelas outras. O "antes" que saiu sem o "depois" entrar falha. A entrada cujo "antes" não está na
     // base só avisa enquanto não estiver aplicada; se o "depois" dela apareceu, falha.
+    // "Aplicada" (CORRIGE da Revisora no ca8040e4): o "antes" saiu as vezes pedidas e o "depois" está no arquivo; quando o
+    // "antes" está dentro do "depois" (o trecho que cresce), a contagem do "depois" subiu as vezes pedidas; a entrada que
+    // apaga ("depois" vazio) basta o "antes" ter saído. Não aplicada, com o "antes" intacto: numa PÁGINA reescrita
+    // (src/content/chapters, src/pages) FALHA, a não ser que esteja em "Entradas adiadas" no estado.md; no src/data
+    // continua aviso, porque um JSON de muitas entradas é tocado por várias páginas. O "antes" que saiu sem o "depois"
+    // entrar falha em todo arquivo.
     const n = antes.split(e.antes).length - 1, nAgora = depois.split(e.antes).length - 1;
-    // a entrada que apaga ("depois" vazio) está aplicada quando o "antes" saiu do arquivo as vezes que ela pede
-    const temDepois = e.depois === '' ? nAgora <= n - e.vezes : depois.includes(e.depois);
+    const dBase = e.depois === '' ? 0 : antes.split(e.depois).length - 1, dAgora = e.depois === '' ? 0 : depois.split(e.depois).length - 1;
+    const aplicada = e.depois === '' ? nAgora <= n - e.vezes
+      : e.depois.includes(e.antes) ? dAgora >= dBase + e.vezes
+      : nAgora <= n - e.vezes && dAgora >= 1;
+    const adiada = ADIADAS.some((x) => x.arquivo === arq && x.rt === e.rt);
+    const naoAplicada = (msg) => { if (ehPagina && !adiada) falhas.push(msg + ' (página reescrita: toda entrada do arquivo entra no commit dela)'); else avisos.push(msg); };
     if (n < e.vezes) {
-      if (temDepois) falhas.push(`${e.rt}: o "antes" da entrada está ${n} vez(es) no arquivo da base, e a entrada pede ${e.vezes}: "${e.antes}" (e o "depois" já está no arquivo)`);
-      else avisos.push(`${e.rt}: entrada que não casa com a base (o "antes" está ${n} vez(es), a entrada pede ${e.vezes}: "${e.antes}"), ainda não aplicada`);
+      if (dAgora > dBase && e.depois !== '') falhas.push(`${e.rt}: o "antes" da entrada está ${n} vez(es) no arquivo da base, e a entrada pede ${e.vezes}: "${e.antes}" (e o "depois" já está no arquivo)`);
+      else naoAplicada(`${e.rt}: entrada que não casa com a base (o "antes" está ${n} vez(es), a entrada pede ${e.vezes}: "${e.antes}"), ainda não aplicada`);
       continue;
     }
-    if (!temDepois) {
-      if (nAgora >= n) avisos.push(`${e.rt}: a entrada ainda não está aplicada neste arquivo ("${e.antes}" segue ${nAgora} vez(es))`);
+    if (!aplicada) {
+      if (nAgora >= n) naoAplicada(`${e.rt}: a entrada ainda não está aplicada neste arquivo ("${e.antes}" segue ${nAgora} vez(es))`);
       else falhas.push(`${e.rt}: o "antes" saiu do arquivo (${n} → ${nAgora} vez(es)), mas o "depois" da entrada não está nele: "${e.depois}"`);
       continue;
     }
-    if (nAgora > n - e.vezes) avisos.push(`${e.rt}: a entrada ainda não está aplicada neste arquivo ("${e.antes}" segue ${nAgora} vez(es))`);
     for (let i = 0; i < e.vezes; i++) antes = antes.replace(e.antes, e.depois);
   }
+  // o frontmatter (--- ... ---) fica igual, salvo entrada (decisão do Arquiteto, 15/11/2026)
+  const fm = (t) => (t.match(/^---\n[\s\S]*?\n---\n/) || [''])[0];
+  if (fm(antes) !== fm(depois)) falhas.push(`o frontmatter mudou: antes ${JSON.stringify(fm(antes).slice(0, 160))}, agora ${JSON.stringify(fm(depois).slice(0, 160))}`);
   // os movimentos de seção do estado.md, aplicados nas seções do antes
   const sA = secoes(antes, ext, titJsonA), sD = secoes(depois, ext, titJsonD);
   for (const mv of MOVIMENTOS.filter((x) => x.arquivo === arq)) {
@@ -448,7 +506,9 @@ function comparar(arq) {
   const sumiu = [...tA.keys()].filter((k) => !tD.has(k)), novo = [...tD.keys()].filter((k) => !tA.has(k));
   const ehComum = (k) => COMUNS.has(k.toLowerCase());
   if (sumiu.some((k) => !ehComum(k))) falhas.push(`termo protegido some do arquivo: ${sumiu.filter((k) => !ehComum(k)).join(', ')}`);
-  if (novo.some((k) => !ehComum(k))) falhas.push(`termo protegido aparece novo no arquivo: ${novo.filter((k) => !ehComum(k)).join(', ')}`);
+  const acrescentado = (k) => ACRESCENTADOS.some((x) => x.arquivo === arq && x.termo === k.toLowerCase());
+  if (novo.some((k) => !ehComum(k) && !acrescentado(k))) falhas.push(`termo protegido aparece novo no arquivo: ${novo.filter((k) => !ehComum(k) && !acrescentado(k)).join(', ')}`);
+  for (const k of novo.filter((x) => !ehComum(x) && acrescentado(x))) avisos.push(`termo acrescentado (linha em "Termos acrescentados" do estado.md): ${k}`);
   // cada aviso de termo numa linha pronta para o estado.md (regra do autor: todo aviso se resolve lá, como "termo do
   // jogo, intacto" ou "palavra comum"): arquivo, termo, contagem antes → depois, e o lugar da resolução
   const avisoTermo = (k, motivo) => avisos.push(`- \`${arq}\` · "${k}" · ${tA.get(k) || 0} → ${tD.get(k) || 0} · ${motivo} · resolução: `);

@@ -1,7 +1,7 @@
 # Prova da trava (controle negativo)
 
 Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-15, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD 92b2b170). Cada caso muda UM arquivo, roda a trava só nele com um
+`centelha-executora` (ramo revisao-textos, HEAD 6d517ca0). Cada caso muda UM arquivo, roda a trava só nele com um
 contradicoes.md e um estado.md de teste e devolve o arquivo ao que era. Os avisos (linhas com · ou com "resolução:") não derrubam a trava.
 
 **"Próximo", a definição testável dos pares termo e número:** cada número da seção se liga a um termo protegido, o mais perto
@@ -130,7 +130,7 @@ Entrada: nenhuma
 
 ```
 ✘ src/data/armas.json
-    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+    ✘ o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
@@ -220,27 +220,27 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
-### ✓ a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: passa, com aviso de entrada não aplicada (a página não fica barrada pela entrada que ainda não aplicou) (esperado: passa; exit 0)
+### ✓ a linha de trava da RT-001 com o arquivo reescrito em outro ponto e sem a troca: falha (página reescrita, entrada não aplicada; regra de 15/11/2026) (esperado: falha; exit 1)
 
 Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
 Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
 
 ```
-✓ src/content/chapters/combate.md
-    · RT-900: a entrada ainda não está aplicada neste arquivo ("Ticks de Preparação" segue 1 vez(es))
-    · RT-900: a entrada ainda não está aplicada neste arquivo ("penalidades da Preparação" segue 1 vez(es))
-✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+✘ src/content/chapters/combate.md
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("Ticks de Preparação" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("penalidades da Preparação" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
-### ✓ a linha de trava da RT-001 com só uma das duas trocas do combate.md: passa, com aviso da outra (esperado: passa; exit 0)
+### ✓ a linha de trava da RT-001 com só uma das duas trocas do combate.md: falha (a outra não aplicada, numa página reescrita) (esperado: falha; exit 1)
 
 Troca: "Ticks de Preparação" → "Ticks de Preparo"
 Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; `src/content/chapters/combate.md`: "penalidades da Preparação" → "penalidades do Preparo"; `src/data/armas-extras.json`: "aceito pelo +2 na Preparação" → "aceito pelo +2 no Preparo"
 
 ```
-✓ src/content/chapters/combate.md
-    · RT-900: a entrada ainda não está aplicada neste arquivo ("penalidades da Preparação" segue 1 vez(es))
-✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+✘ src/content/chapters/combate.md
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("penalidades da Preparação" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ o "antes" da entrada saiu do arquivo sem o "depois" entrar ("Ticks de Preparação" vira "Ticks de Espera"): falha (esperado: falha; exit 1)
@@ -251,7 +251,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ```
 ✘ src/content/chapters/combate.md
     ✘ RT-900: o "antes" saiu do arquivo (1 → 0 vez(es)), mas o "depois" da entrada não está nele: "Ticks de Preparo"
-    · RT-900: a entrada ainda não está aplicada neste arquivo ("penalidades da Preparação" segue 1 vez(es))
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("penalidades da Preparação" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
@@ -265,15 +265,15 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Para atacar, monte o pool 
 ✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
-### ✓ a mesma entrada que apaga, ainda não aplicada, com outra mudança coberta no arquivo: passa, com aviso (esperado: passa; exit 0)
+### ✓ a mesma entrada que apaga, ainda não aplicada, com outra mudança coberta no arquivo: falha (página reescrita) (esperado: falha; exit 1)
 
 Troca: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? use a Força)"
 Entrada: - Trava: `src/content/chapters/combate.md`: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role. " → ""; - Trava: `src/content/chapters/combate.md`: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? use a Força)"
 
 ```
-✓ src/content/chapters/combate.md
-    · RT-900: a entrada ainda não está aplicada neste arquivo ("Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role. " segue 1 vez(es))
-✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+✘ src/content/chapters/combate.md
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role. " segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ### ✓ a linha de trava da RT-001 no JSON das armas extras (esperado: passa; exit 0)
@@ -316,7 +316,7 @@ Entrada: nenhuma
 
 ```
 ✓ src/content/chapters/combate.md
-    - `src/content/chapters/combate.md` · "tempo" · 32 → 31 · ambíguo em minúscula · resolução: 
+    - `src/content/chapters/combate.md` · "tempo" · 31 → 30 · ambíguo em minúscula · resolução: 
 ✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
@@ -490,7 +490,7 @@ Entrada: nenhuma
 
 ```
 ✘ src/data/armas.json
-    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+    ✘ o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
@@ -512,7 +512,7 @@ Entrada: - Trava JSON: `armas.json` @[0].peso: 0.5 → 0.4
 ```
 ✘ src/data/armas.json
     ✘ RT-900: Trava JSON @[0].peso: a base tem 0.3, agora há 0.4, e a linha diz 0.5 → 0.4
-    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+    ✘ o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
@@ -523,7 +523,7 @@ Entrada: - Trava JSON: `armas.json` @[0].peso: 0.3 → 0.4
 
 ```
 ✘ src/data/armas.json
-    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+    ✘ o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
@@ -535,7 +535,7 @@ Entrada: - Trava JSON: `armas.json` @[0].peso: 0,3 → 0.4
 ```
     ✘ RT-900: a linha Trava JSON não tem valor JSON válido (Unexpected non-whitespace character after JSON at position 1 (line 1 column 2)): - Trava JSON: `armas.json` @[0].peso: 0,3 → 0.4
 ✘ src/data/armas.json
-    ✘ o JSON mudou fora dos campos de prosa (descricao, texto, definicao, efeito, nota, tracos, niveis[].texto)
+    ✘ o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)
 ✘ trava: 2 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
@@ -618,6 +618,199 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" →
 ✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
+## O pacote de 15/11/2026: página reescrita, trecho que encolhe, termos acrescentados, frase vazia, frontmatter, campos de prosa, quebra de linha no trecho e endereço de link
+
+### ✓ (a) página reescrita em outro ponto, com a entrada da RT-035 ainda não aplicada: falha (esperado: falha; exit 1)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: - Trava: `src/content/chapters/combate.md`: "**Caído** (prono)" → "**Caído**"
+
+```
+✘ src/content/chapters/combate.md
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("**Caído** (prono)" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (a) a mesma, com linha em "Entradas adiadas" do estado.md: passa, com aviso (esperado: passa; exit 0)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: - Trava: `src/content/chapters/combate.md`: "**Caído** (prono)" → "**Caído**"
+No estado.md: - `src/content/chapters/combate.md` · RT-900 · caso de teste
+
+```
+✓ src/content/chapters/combate.md
+    · RT-900: a entrada ainda não está aplicada neste arquivo ("**Caído** (prono)" segue 1 vez(es))
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (a) no src/data, a entrada não aplicada continua aviso (a prosa do JSON mudou em outro campo) (esperado: passa; exit 0)
+
+Troca: "Rápida e precisa; perfura pele (N0), mas para em couro duro. Contra armadura, mira na fresta." → "RÁPIDA e precisa; perfura pele (N0), mas para em couro duro. Contra armadura, mira na fresta."
+Entrada: - Trava: `src/data/armas.json`: "couro duro" → "couro mole"
+
+```
+✓ src/data/armas.json
+    · RT-900: a entrada ainda não está aplicada neste arquivo ("couro duro" segue 2 vez(es))
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (b) RT-035 aplicada ("**Caído** (prono)" vira "**Caído**"): passa (esperado: passa; exit 0)
+
+Troca: "**Caído** (prono)" → "**Caído**"
+Entrada: - Trava: `src/content/chapters/combate.md`: "**Caído** (prono)" → "**Caído**"
+
+```
+✓ src/content/chapters/combate.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (b) RT-035 com o "(prono)" ainda no arquivo, e a página reescrita: falha (antes passava, porque o "depois" está dentro do "antes") (esperado: falha; exit 1)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: - Trava: `src/content/chapters/combate.md`: "**Caído** (prono)" → "**Caído**"
+
+```
+✘ src/content/chapters/combate.md
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("**Caído** (prono)" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (c) termo protegido novo (Halterofilismo) com a linha em "Termos acrescentados": passa (esperado: passa; exit 0)
+
+Troca: "aplique Firulas e Técnicas, e role." → "aplique Firulas, Técnicas e Halterofilismo, e role."
+Entrada: nenhuma
+No estado.md: - `src/content/chapters/combate.md` · "Halterofilismo" · original: "aplique Firulas e Técnicas, e role." · novo: "aplique Firulas, Técnicas e Halterofilismo, e role." · definido em: `src/content/chapters/habilidades-secundarias.md` (Corpo)
+
+```
+✓ src/content/chapters/combate.md
+    · termo acrescentado (linha em "Termos acrescentados" do estado.md): halterofilismo
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (c) a linha com outro arquivo não vale: falha (esperado: falha; exit 1)
+
+Troca: "aplique Firulas e Técnicas, e role." → "aplique Firulas, Técnicas e Halterofilismo, e role."
+Entrada: nenhuma
+No estado.md: - `src/content/chapters/atributos.md` · "Halterofilismo" · original: "x" · novo: "y" · definido em: `x`
+
+```
+✘ src/content/chapters/combate.md
+    ✘ termo protegido aparece novo no arquivo: halterofilismo
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (d) a frase partida em parágrafos ("O terceiro é ... : 1 ponto"), que antes desfazia o par: passa (esperado: passa; exit 0)
+
+Troca: "entre as três reservas. O terceiro é" → "entre as três reservas.
+
+O terceiro é"
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/aparencia-virtudes-vontade.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (d) e o par trocado continua falhando (burla 4, de novo, depois do conserto) (esperado: falha; exit 1)
+
+Troca: "(Esquiva −4 e Bloqueio −8 sabendo do ataque" → "(Esquiva −8 e Bloqueio −4 sabendo do ataque"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/condicoes.md
+    ✘ par termo e número desfeito, seção "Os sentidos": saem esquiva ↔ -4 (−1), bloqueio ↔ -8 (−1); entram esquiva ↔ -8 (+1), bloqueio ↔ -4 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (e) frontmatter mudado (o resumo), sem entrada: falha (esperado: falha; exit 1)
+
+Troca: "resumo: "Como uma luta funciona:" → "resumo: "Como funciona uma luta:"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/combate.md
+    ✘ o frontmatter mudou: antes "---\nordem: 15\nnumeral: \"IX\"\ntitulo: \"Combate Físico\"\nresumo: \"Como uma luta funciona: a linha do tempo, o ataque, o dano, a defesa, o movimento, a vantagem táti", agora "---\nordem: 15\nnumeral: \"IX\"\ntitulo: \"Combate Físico\"\nresumo: \"Como funciona uma luta: a linha do tempo, o ataque, o dano, a defesa, o movimento, a vantagem táti"
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (e) o mesmo, com entrada: passa (esperado: passa; exit 0)
+
+Troca: "resumo: "Como uma luta funciona:" → "resumo: "Como funciona uma luta:"
+Entrada: "resumo: "Como uma luta funciona:" → "resumo: "Como funciona uma luta:"
+
+```
+✓ src/content/chapters/combate.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (f) o campo amarra reescrito sem número nem termo novo: passa (antes era estrutural e falhava) (esperado: passa; exit 0)
+
+Troca: "um **desconto nos passos que separam do " → "Um **desconto nos passos que separam do "
+Entrada: nenhuma
+
+```
+✓ src/data/antecedentes.json
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (f) e um número mudado dentro dele continua falhando (esperado: falha; exit 1)
+
+Troca: "/(Neutro\*\* na Régua de Relação, no contexto em que a fama pesa \(ver \\"Onde a régua já começa\\"\): a metade do nível do traço \(para baixo\))/u" → "$1 +1"
+Entrada: nenhuma
+
+```
+✘ src/data/antecedentes.json
+    ✘ números sem entrada, seção "$[6].amarra": saem nenhum; entram +1 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (g) duas linhas de tabela com "\n" no trecho da entrada: passa (esperado: passa; exit 0)
+
+Troca: "| 30 | Sobre-humano | 18 | Semideus |" → "| 30 | Sobre-humano | 18 | Semideus |
+| 35 | Lendário | 21 | além do teto do jogador |"
+Entrada: - Trava: `src/content/chapters/acoes-e-sistema.md`: "| 30 | Sobre-humano | 18 | Semideus |" → "| 30 | Sobre-humano | 18 | Semideus |\n| 35 | Lendário | 21 | além do teto do jogador |"
+
+```
+✓ src/content/chapters/acoes-e-sistema.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (g) as mesmas linhas sem entrada: falha (esperado: falha; exit 1)
+
+Troca: "| 30 | Sobre-humano | 18 | Semideus |" → "| 30 | Sobre-humano | 18 | Semideus |
+| 35 | Lendário | 21 | além do teto do jogador |"
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/acoes-e-sistema.md
+    ✘ números sem entrada, seção "De onde sai a Dificuldade": saem nenhum; entram 35 (+1), 21 (+1)
+    ✘ linha de tabela mudou (colunas trocadas, número de célula ou cabeçalho), seção "De onde sai a Dificuldade": saem nenhum; entram linha: 35 | 21 (+1)
+    - `src/content/chapters/acoes-e-sistema.md` · "teto" · 2 → 3 · termo comum, outra contagem · resolução: 
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (h) link novo para /regras/aparencia-virtudes-vontade (o "virtudes" do endereço não conta como termo): passa (esperado: passa; exit 0)
+
+Troca: "Comece pela régua; as outras duas são escaladas dela." → "Comece pela régua; as outras duas são escaladas dela ([Cap. III](/regras/aparencia-virtudes-vontade))."
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/relacoes-sociais.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (h) e o mesmo termo no texto do link falha (esperado: falha; exit 1)
+
+Troca: "Comece pela régua; as outras duas são escaladas dela." → "Comece pela régua; as outras duas são escaladas dela ([as Virtudes](/regras/x))."
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/relacoes-sociais.md
+    ✘ termo protegido aparece novo no arquivo: virtudes
+    ✘ par termo e número desfeito, seção "(antes do primeiro título)": saem (nenhum) ↔ duas (2) (−1); entram virtudes ↔ duas (2) (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
 ## A entrada que não casa falha
 
 ### ✓ entrada que pede (3×) num trecho que está 2 vezes (esperado: falha; exit 1)
@@ -658,72 +851,59 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ## Resultado
 
-57 de 57 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
+74 de 74 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
 
-## Os 449 arquivos de hoje
+## Os campos de prosa (CAMPOS_PROSA)
 
-A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 449 passam, 0 falham. Os arquivos iguais à base passam direto; os que o ramo já reescreveu passam pelas entradas do contradicoes.md e pelos movimentos do estado.md de hoje. Os avisos são de entradas do contradicoes.md ainda não aplicadas e dos termos das páginas já reescritas (resolvidos no estado.md):
+descricao, texto, definicao, efeito, nota, tracos (os de antes) e, desde 15/11/2026, amarra, justificativa, limiteDeUso,
+conduta, serve, exemplo, notas, _nota, porque, resumo, detalhe, excecao e centelhaNota. Ficam fora: id, nome, os rótulos
+curtos de nível, as chaves, todo campo de número ou enumeração, e o "valor" (misto). Nenhum dos campos novos guarda
+número, objeto ou enumeração nos src/data/*.json de hoje (contagem por campo: textos e outros tipos):
 
 ```
-trava · base d760ef96 · 449 arquivo(s) · 85 entrada(s) de trava e 5 Trava JSON em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
-    · entrada(s) PENDENTE AUTOR (não se aplicam nesta revisão): RT-003, RT-004, RT-005, RT-061, RT-083, RT-090, RT-091; com linha Trava, puladas: RT-003, RT-004, RT-061
-    · igual à base; entrada(s) ainda não aplicada(s): RT-058
-    · igual à base; entrada(s) ainda não aplicada(s): RT-022, RT-034, RT-035
-    · igual à base; entrada(s) ainda não aplicada(s): RT-027, RT-033
-    · igual à base; entrada(s) ainda não aplicada(s): RT-021
-    · igual à base; entrada(s) ainda não aplicada(s): RT-009, RT-088, RT-089
-    - `src/content/chapters/aparencia-virtudes-vontade.md` · "piso" · 4 → 5 · termo comum, outra contagem · resolução: 
-    · igual à base; entrada(s) ainda não aplicada(s): RT-017, RT-039, RT-040, RT-102
-    · "um"/"uma" mudaram de contagem (artigo, só aviso): um (+1)
-    - `src/content/chapters/atributos.md` · "centelha" · 5 → 6 · termo, outra contagem · resolução: 
-    - `src/content/chapters/atributos.md` · "golpe" · 4 → 5 · termo comum, outra contagem · resolução: 
-    - `src/content/chapters/atributos.md` · "humano" · 3 → 5 · ambíguo em minúscula · resolução: 
-    - `src/content/chapters/atributos.md` · "bestiário" · 0 → 2 · ambíguo em minúscula · resolução: 
-    - `src/content/chapters/atributos.md` · "natureza" · 0 → 1 · ambíguo em minúscula · resolução: 
-    · igual à base; entrada(s) ainda não aplicada(s): RT-001, RT-017, RT-035, RT-046, RT-049, RT-060, RT-067
-    · igual à base; entrada(s) ainda não aplicada(s): RT-098, RT-099, RT-101
-    · "um"/"uma" mudaram de contagem (artigo, só aviso): um (+2), uma (+1)
-    - `src/content/chapters/coracao-do-sistema.md` · "centelha" · 13 → 19 · termo, outra contagem · resolução: 
-    - `src/content/chapters/coracao-do-sistema.md` · "dificuldade" · 13 → 15 · termo, outra contagem · resolução: 
-    - `src/content/chapters/coracao-do-sistema.md` · "especialidade" · 4 → 5 · termo, outra contagem · resolução: 
-    - `src/content/chapters/coracao-do-sistema.md` · "direta" · 1 → 3 · termo comum, outra contagem · resolução: 
-    - `src/content/chapters/coracao-do-sistema.md` · "história" · 0 → 1 · ambíguo em minúscula · resolução: 
-    · igual à base; entrada(s) ainda não aplicada(s): RT-011
-    · igual à base; entrada(s) ainda não aplicada(s): RT-044, RT-046
-    - `src/content/chapters/habilidades.md` · "centelha" · 1 → 4 · termo, outra contagem · resolução: 
-    - `src/content/chapters/habilidades.md` · "inteira" · 3 → 4 · termo comum, outra contagem · resolução: 
-    · igual à base; entrada(s) ainda não aplicada(s): RT-100
-    · igual à base; entrada(s) ainda não aplicada(s): RT-019
-    · igual à base; entrada(s) ainda não aplicada(s): RT-084, RT-092, RT-097
-    · "um"/"uma" mudaram de contagem (artigo, só aviso): um (+2), uma (+1)
-    - `src/content/chapters/vida-ferimentos-cura.md` · "cura" · 31 → 32 · termo, outra contagem · resolução: 
-    - `src/content/chapters/vida-ferimentos-cura.md` · "sangramento" · 9 → 10 · termo, outra contagem · resolução: 
-    · igual à base; entrada(s) ainda não aplicada(s): RT-085, RT-087
-    · igual à base; entrada(s) ainda não aplicada(s): RT-001
-    · igual à base; entrada(s) ainda não aplicada(s): RT-062, RT-068
-    · igual à base; entrada(s) ainda não aplicada(s): RT-028, RT-029, RT-030, RT-065, RT-101
-    · igual à base; entrada(s) ainda não aplicada(s): RT-064, RT-070, RT-071
-    · igual à base; entrada(s) ainda não aplicada(s): RT-014
-    - `src/data/habilidades-secundarias.json` · "noite" · 6 → 8 · ambíguo em minúscula · resolução: 
-    - `src/data/habilidades-secundarias.json` · "meditação" · 0 → 1 · ambíguo em minúscula · resolução: 
-    - `src/data/habilidades.json` · "tempo" · 6 → 7 · ambíguo em minúscula · resolução: 
-    · igual à base; entrada(s) ainda não aplicada(s): RT-006, RT-010, RT-023, RT-055, RT-057, RT-063, RT-077, RT-080, RT-060
-    · igual à base; entrada(s) ainda não aplicada(s): RT-020, RT-072, RT-073
-    · igual à base; entrada(s) ainda não aplicada(s): RT-082
-    · igual à base; entrada(s) ainda não aplicada(s): RT-079, RT-081
-    · igual à base; entrada(s) ainda não aplicada(s): RT-036, RT-047
-    · igual à base; entrada(s) ainda não aplicada(s): RT-075
-    · igual à base; entrada(s) ainda não aplicada(s): RT-017
-    · igual à base; entrada(s) ainda não aplicada(s): RT-074
-✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+amarra: 14 texto, 0 outro
+justificativa: 527 texto, 0 outro
+limiteDeUso: 947 texto, 0 outro
+conduta: 24 texto, 0 outro
+serve: 13 texto, 0 outro
+exemplo: 25 texto, 0 outro
+notas: 12 texto, 0 outro
+_nota: 9 texto, 0 outro
+porque: 12 texto, 0 outro
+resumo: 12 texto, 0 outro
+detalhe: 4 texto, 0 outro
+excecao: 3 texto, 0 outro
+centelhaNota: 4 texto, 0 outro
+```
+
+## Os 449 arquivos com texto
+
+A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 443 passam, 6 falham. Os que falham são páginas já reescritas no ramo, e cada falha é uma entrada ainda não aplicada (a regra nova da página) ou um par que a regra nova da frase vazia passou a ler diferente; os consertos vêm nos commits de página seguintes.
+
+```
+trava · base d760ef96 · 449 arquivo(s) · 85 entrada(s) de trava e 8 Trava JSON em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
+✘ src/content/chapters/acoes-e-sistema.md
+    ✘ RT-034: a entrada ainda não está aplicada neste arquivo ("| 30 | Sobre-humano | 18 | Semideus |" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ src/content/chapters/acoes-sentidos-e-engano.md
+    ✘ RT-009: a entrada ainda não está aplicada neste arquivo ("Longa, Vontade + Religião" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+    ✘ RT-009: a entrada ainda não está aplicada neste arquivo ("Acumulada, Vontade + Ocultismo ou Religião" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ src/content/chapters/combate.md
+    ✘ RT-067: a entrada ainda não está aplicada neste arquivo ("Os níveis 5 e 6 ainda cobram Vontade (+1 e +2)" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ src/content/chapters/habilidades.md
+    ✘ termo protegido aparece novo no arquivo: centelha
+✘ src/content/chapters/racas.md
+    ✘ par termo e número desfeito, seção "(antes do primeiro título)": saem Humano ↔ +1 (−1), Humano ↔ duas (2) (−2); entram (nenhum) ↔ +1 (+1), (nenhum) ↔ duas (2) (+2)
+✘ src/content/chapters/vida-ferimentos-cura.md
+    ✘ par termo e número desfeito, seção "Sangramento e Estabilização": saem (nenhum) ↔ duas (2) (−1); entram sangramento ↔ duas (2) (+1)
+✘ trava: 6 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
 ## Falso positivo numa reescrita neutra (`node scripts/revisao/prova-reflow.mjs`)
 
-Os 28 capítulos com as linhas de cada parágrafo juntadas numa só, o que muda toda seção que tem parágrafo quebrado em várias linhas e faz a trava comparar essas seções: números, dados, pares termo-número e linhas de tabela, além dos termos e títulos do arquivo. É um teste de leitura (a frase, a seção, o par, a linha), e não de reescrita de verdade: o ruído real só aparece na primeira página reescrita. Com o contradicoes.md e o estado.md vazios:
+Os capítulos da BASE com as linhas de cada parágrafo juntadas numa só (o frontmatter não se junta), e a trava sobre eles com o contradicoes.md e o estado.md vazios:
 
 ```
-capítulos com linhas juntadas: 28 de 28; trava exit 0
+capítulos com linhas juntadas: 5 de 28; trava exit 0
 passam 28, falham 0, avisos 0
 ✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 árvore depois: limpa

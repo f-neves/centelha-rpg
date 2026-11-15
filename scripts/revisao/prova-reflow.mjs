@@ -36,7 +36,9 @@ try {
     // a reescrita neutra parte do capítulo NA BASE, e não do disco: os capítulos já reescritos no ramo mudam por entrada
     // do contradicoes.md, e o teste é de leitura da trava, não da revisão
     const base = git('show', `d760ef96:${a}`);
-    const n = junta(base); if (n !== base) mudou++;
+    // o frontmatter (--- ... ---) não se junta: a trava confere que ele fica igual
+    const fim = base.startsWith('---\n') ? base.indexOf('\n---\n', 4) + 5 : 0;
+    const n = base.slice(0, fim) + junta(base.slice(fim)); if (n !== base) mudou++;
     fs.writeFileSync(p, n);
   }
   r = spawnSync('node', ['scripts/revisao/trava.mjs', '--contradicoes', vazio, '--estado', vazio, ...caps], { cwd: REPO, encoding: 'utf8' });
