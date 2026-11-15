@@ -6,7 +6,9 @@ capitulo: "Ações & Sistema"
 resumo: "O motor que vale para toda ação fora do combate: de onde sai a Dificuldade, o que a Margem mede, os cinco modos de ação, a escada de intervalos e as regras de ajuda."
 ---
 
-Ação, aqui, é qualquer coisa que um personagem tenta e que pode não dar certo. Subir num muro, atravessar um rio, arrombar uma porta, não morrer de frio na estrada, forjar uma espada que preste. O capítulo de [Combate Físico](/regras/combate) cobre o que acontece quando duas pessoas resolvem se machucar; este cobre o resto, que é quase tudo.
+Ação, aqui, é qualquer coisa que um personagem tenta e que pode não dar certo. Subir num muro, atravessar um rio, arrombar uma porta, não morrer de frio na estrada, forjar uma espada que preste.
+
+O capítulo de [Combate Físico](/regras/combate) cobre o que acontece quando duas pessoas resolvem se machucar; este cobre o resto, que é quase tudo.
 
 Ele existe por um motivo prático: sem uma resposta comum para o "e agora?", cada mesa decide a sua na hora, e a mesma parede fica fácil numa sessão e impossível na seguinte. O que vem primeiro é a **régua comum**, que vale para todas as ações. Depois vêm as ações em si, família por família.
 
@@ -25,7 +27,9 @@ Da tarefa, e só dela. Uma muralha é tão difícil quanto ela é, independentem
 | 25 | Excepcional | 15 | Herói |
 | 30 | Sobre-humano | 18 | Semideus |
 
-Os somas andam de três em três porque a régua é essa, e a conta confere na probabilidade: soma 9 contra Dificuldade 15 passa em 56% das vezes, soma 12 contra 20 passa em 55%. Como o teto mortal de Atributo + Habilidade é **12**, tudo de 25 para cima já pede Centelha, Proeza ou Arte, e é por isso que os dois últimos degraus se chamam Herói e Semideus.
+As somas andam de três em três porque a régua é essa, e a conta confere na probabilidade: soma 9 contra Dificuldade 15 passa em 56% das vezes, soma 12 contra 20 passa em 55%.
+
+Como o teto mortal de Atributo + Habilidade é **12**, tudo de 25 para cima já pede Centelha, Proeza ou Arte, e é por isso que os dois últimos degraus se chamam Herói e Semideus.
 
 **Circunstância entra como ±2 ou ±4 na Dificuldade.** Ferramenta certa, apoio, terreno bom e tempo de sobra abaixam; pressa, distração, escuridão e condição ruim sobem. É por aqui que corda, gazua, lanterna e oficina entram no jogo, sem regra nova nenhuma.
 
@@ -35,7 +39,7 @@ Os somas andam de três em três porque a régua é essa, e a conta confere na p
 
 ## A Margem mede o que sobrou
 
-A cada **6 pontos acima do alvo**, uma **Margem**. Ela não escolhe a Dificuldade: ela mede **quantos níveis de expertise sobraram** depois de a tarefa estar resolvida. Um total de 22 contra Dificuldade 10 são doze acima, ou seja duas Margens.
+A cada **6 pontos acima do alvo**, uma **Margem** (o grau de sucesso, apresentado no [Coração do Sistema](/regras/coracao-do-sistema)). Ela não escolhe a Dificuldade: ela mede **quantos níveis de expertise sobraram** depois de a tarefa estar resolvida. Um total de 22 contra Dificuldade 10 são doze acima, ou seja duas Margens.
 
 <p class="formula">Margem = cada 6 pontos acima da Dificuldade</p>
 
@@ -81,7 +85,9 @@ A tarefa declara **dois** números: a **Dificuldade**, que é o quanto custa cad
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Subir uma muralha de dez metros: <b>Dificuldade 7, Acúmulo 10</b>. Quem tira 17 sobe de primeira, porque 17 menos 7 são os dez metros inteiros. Quem tira 12 sobe cinco e continua pendurado, tentando de novo no intervalo seguinte.</div>
 
-Na Acumulada, a **Margem é só a forma de ler o excedente**: os 10 de excedente do 17 contra 7 já são o progresso daquela jogada (e contêm uma Margem), e a Margem não soma progresso por cima deles. **O que mais a Margem compra dentro de uma Acumulada, o Mestre decide.** Dois exemplos do que ele pode fazer: no Esgueirar, uma Margem congela um intervalo, com o vigia olhando para o outro lado; no Ofício feito às pressas, uma Margem sobe a qualidade da peça um grau.
+Na Acumulada, a **Margem é só a forma de ler o excedente**: os 10 de excedente do 17 contra 7 já são o progresso daquela jogada (e contêm uma Margem), e a Margem não soma progresso por cima deles.
+
+**O que mais a Margem compra dentro de uma Acumulada, o Mestre decide.** Dois exemplos do que ele pode fazer: no Esgueirar, uma Margem congela um intervalo, com o vigia olhando para o outro lado; no Ofício feito às pressas, uma Margem sobe a qualidade da peça um grau.
 
 Quando a jogada fica **abaixo** da Dificuldade, vale a **banda morta de uma Margem**:
 
@@ -90,7 +96,9 @@ Quando a jogada fica **abaixo** da Dificuldade, vale a **banda morta de uma Marg
 | **menos de 6** | nada. Raspou: passou o tempo do intervalo e o progresso fica onde estava |
 | **6 ou mais** | **perde o que passou da faixa de 6**. Escorregou de verdade: errou por 8, perde 2; errou por exatamente 6, perde 0 |
 
-É a Margem valendo nos dois sentidos, como no [Quase-Acerto](/regras/quase-acerto): os primeiros 6 abaixo são a faixa que só custa tempo, e só o que passa dela cobra terreno. **Errar por pouco custa tempo; errar por muito custa progresso.** O progresso nunca fica abaixo de zero, e quem não tem pool para a Dificuldade oscila em torno do fundo sem avançar, que é a maneira certa de dizer "esta parede não é para você".
+É a Margem valendo nos dois sentidos, como no [Veneno](/regras/acoes-resistir#veneno) e na [Doença](/regras/acoes-resistir#doença): os primeiros 6 abaixo são a faixa que só custa tempo, e só o que passa dela cobra terreno. **Errar por pouco custa tempo; errar por muito custa progresso.**
+
+O progresso nunca fica abaixo de zero, e quem não tem pool para a Dificuldade oscila em torno do fundo sem avançar, que é a maneira certa de dizer "esta parede não é para você".
 
 Algumas ações declaram outro comportamento, quando o padrão não faz sentido: **nunca retrocede** (o que já foi decifrado não se desdecifra) ou **falha completa e recomeço** (a peça rachou no forno, o disfarce foi desmascarado).
 
@@ -111,9 +119,15 @@ A mesma dupla de números, e **nenhuma jogada**. Em vez de rolar, usa-se a **mé
 | 10 | 5d6 | 15 |
 | 12 | 6d6 | 18 |
 
-**A Centelha não entra na Longa.** Quem quebra a parede do trabalho longo são Proezas e Artes. Nada se rola na Longa, então o bônus vira número: cada +1d6 de bônus (de raça, de Arte ou de outra fonte) vale +3; um bônus fixo entra como o próprio valor; a Especialidade vale +2 por nível. A Firula não conta, porque é bônus de jogada. Uma Arte só conta na Longa se o Efeito durar o intervalo inteiro, ou se for relançado sem falha, pagando a Mana a cada vez. Nova rolagem e bônus atado a uma rolagem só não valem na Longa, porque ela não rola.
+**A Centelha não entra na Longa.** Quem quebra a parede do trabalho longo são Proezas e Artes.
 
-A Longa gera Margem como qualquer jogada: cada 6 pontos de média acima da Dificuldade são uma Margem por intervalo. Como na Acumulada, a Margem é só a forma de ler o excedente: o progresso já é a média menos a Dificuldade, e a Margem não soma progresso por cima. O que mais a Margem compra dentro de uma Longa, o Mestre decide, pela tabela de [O que a Margem compra fora do combate](#o-que-a-margem-compra-fora-do-combate).
+Nada se rola na Longa, então o bônus vira número: cada +1d6 de bônus (de raça, de Arte ou de outra fonte) vale +3; um bônus fixo entra como o próprio valor; a Especialidade vale +2 por nível. A Firula não conta, porque é bônus de jogada.
+
+Uma Arte só conta na Longa se o Efeito durar o intervalo inteiro, ou se for relançado sem falha, pagando a Mana a cada vez. Nova rolagem e bônus atado a uma rolagem só não valem na Longa, porque ela não rola.
+
+A Longa gera Margem como qualquer jogada: cada 6 pontos de média acima da Dificuldade são uma Margem por intervalo. Como na Acumulada, a Margem é só a forma de ler o excedente: o progresso já é a média menos a Dificuldade, e a Margem não soma progresso por cima.
+
+O que mais a Margem compra dentro de uma Longa, o Mestre decide, pela tabela de [O que a Margem compra fora do combate](#o-que-a-margem-compra-fora-do-combate).
 
 Penalidade de ferimento e Desgaste só entram na Longa se durarem o intervalo inteiro. Quando entram, um −1d6 tira 3 da média e um −2 tira 2. Se começam ou acabam no meio do intervalo, não entram.
 
@@ -150,7 +164,7 @@ Acumulada e Longa declaram um terceiro número: **em que ritmo o progresso acont
 | Intervalo | Grandeza | O que cabe nele |
 |---|---|---|
 | **Tick** | ~1 segundo | a muralha com a ronda virando a esquina, o corredor sob fogo |
-| **Minuto** | dezenas de segundos | arrombar a fechadura, estancar o sangramento |
+| **Minuto** | dezenas de segundos | arrombar a fechadura, fazer um curativo completo |
 | **Hora** | uma sentada | vasculhar a biblioteca, decifrar a página, costurar o ferimento |
 | **Dia** | uma jornada | marcha forçada, caçar e forragear, rastrear a caravana |
 | **Semana** (8 dias, em Uldun) | uma empreitada | forjar a espada, a viagem entre cidades, o treino |
@@ -182,13 +196,19 @@ Tarefas em que cada pessoa a mais é trabalho extra completo: cavar um buraco, c
 
 ### Ajudante
 
-Servir de auxiliar numa tarefa que **outra pessoa realiza**, em **apoio numa jogada única**, numa ação que não se divide: ajudar uma cirurgia, abrir uma fechadura, dar aula. O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a cada **6 pontos** acima disso, concede **+1** à jogada de quem está realizando a tarefa. Numa jogada estendida, pode-se usar a média do ajudante (3 por dado, como na Longa) em vez de rolar a cada intervalo. Há um limite de ajudantes por tarefa, a critério do Mestre.
+Servir de auxiliar numa tarefa que **outra pessoa realiza**, em **apoio numa jogada única**, numa ação que não se divide: ajudar uma cirurgia, abrir uma fechadura, dar aula. O ajudante rola contra **metade da Dificuldade** (arredondado para cima); a cada **6 pontos** acima disso, concede **+1** à jogada de quem está realizando a tarefa.
+
+Numa jogada estendida, pode-se usar a média do ajudante (3 por dado, como na Longa) em vez de rolar a cada intervalo. Há um limite de ajudantes por tarefa, a critério do Mestre.
 
 O trabalho **divisível**, uma Longa com Acúmulo, não usa esta regra: quem ajuda a fabricar uma peça trabalha sob **condução**, e quem ajuda numa obra trabalha sob **direção**, as duas em [Ofício e Mundo](/regras/acoes-oficio-e-mundo).
 
 ### Teste Coletivo
 
-Um grupo inteiro precisa passar numa tarefa que é **responsabilidade de todos**: uma caça em grupo, um deslocamento furtivo coletivo, uma apresentação de dança. Quem rola é a pessoa com a **menor parada de dados** (empate: menor Habilidade; empate de novo, qualquer uma). **A Dificuldade sobe +2 por participante**, contando **todos** os participantes, inclusive quem rola. Um líder pode ser eleito e faz uma jogada própria: a cada **6 pontos** acima da Dificuldade (a já somada com os +2 por participante), ele concede **+1d6** a quem tem a menor parada. A penalidade de cada participante entra na jogada final: um dançarino Machucado (−2) pesa −2 na jogada coletiva. Num deslocamento furtivo, a armadura de cada participante entra uma vez só, como Circunstância na Dificuldade (o dobro da Penalidade dela, como no [Esgueirar](/regras/acoes-sentidos-e-engano)), e não também na jogada.
+Um grupo inteiro precisa passar numa tarefa que é **responsabilidade de todos**: uma caça em grupo, um deslocamento furtivo coletivo, uma apresentação de dança. Quem rola é a pessoa com a **menor parada de dados** (empate: menor Habilidade; empate de novo, qualquer uma). **A Dificuldade sobe +2 por participante**, contando **todos** os participantes, inclusive quem rola.
+
+Um líder pode ser eleito e faz uma jogada própria: a cada **6 pontos** acima da Dificuldade (a já somada com os +2 por participante), ele concede **+1d6** a quem tem a menor parada.
+
+A penalidade de cada participante entra na jogada final: um dançarino Machucado (−2) pesa −2 na jogada coletiva. Num deslocamento furtivo, a armadura de cada participante entra uma vez só, como Circunstância na Dificuldade (o dobro da Penalidade dela, como no [Esgueirar](/regras/acoes-sentidos-e-engano)), e não também na jogada.
 
 <p class="formula">Ajudante, em apoio numa jogada única: rola contra Dificuldade ÷ 2 (arredondado para cima) · +1 por 6 pontos acima<br>Teste Coletivo: Dificuldade +2 por participante · líder dá +1d6 por 6 pontos acima</p>
 
