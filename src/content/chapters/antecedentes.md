@@ -68,8 +68,8 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 | **2** | **Confortável.** Artesão bem posto ou soldado veterano: boa arma, talvez um cavalo, alguma poupança. |
 | **3** | **Próspero.** Mercador estabelecido, cavaleiro com terras pequenas: criados, montaria, armadura de qualidade, crédito na cidade. |
 | **4** | **Rico.** Casa senhorial, vários empregados, luxo real; banca uma expedição, compra silêncio, empresta alto. |
-| **5** | **Fortuna de nobre.** Casa senhorial, guarda própria e crédito com a coroa; pesa na economia de uma região. |
-| **6** | **Fortuna de reino.** Paço, domínio e uma guarnição; pesa na economia de um reino. |
+| **5** | **Fortuna de nobre.** Casa senhorial, uma escolta armada e crédito com a coroa; pesa na economia de uma região. |
+| **6** | **Fortuna de reino.** Paço, domínio e uma guarda armada; pesa na economia de um reino. |
 
 **Amarra com:** o custo dos itens e equipamentos; o "favor alugado" da Régua de Relação (suborno e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade, só serviço enquanto paga.
 

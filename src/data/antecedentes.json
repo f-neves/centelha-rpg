@@ -29,12 +29,12 @@
       {
         "nivel": 5,
         "rotulo": "Fortuna de nobre",
-        "texto": "Casa senhorial, guarda própria e crédito com a coroa; pesa na economia de uma região."
+        "texto": "Casa senhorial, uma escolta armada e crédito com a coroa; pesa na economia de uma região."
       },
       {
         "nivel": 6,
         "rotulo": "Fortuna de reino",
-        "texto": "Paço, domínio e uma guarnição; pesa na economia de um reino."
+        "texto": "Paço, domínio e uma guarda armada; pesa na economia de um reino."
       }
     ],
     "amarra": "o custo dos itens e equipamentos; o \"favor alugado\" da Régua de Relação (suborno e mesada saem daqui, e param quando o dinheiro para). Recursos não compra lealdade de verdade, só serviço enquanto paga."
