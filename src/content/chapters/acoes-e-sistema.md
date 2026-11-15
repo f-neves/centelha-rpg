@@ -26,10 +26,13 @@ Da tarefa, e só dela. Uma muralha é tão difícil quanto ela é, independentem
 | 20 | Limite humano | 12 | Mestre |
 | 25 | Excepcional | 15 | Herói |
 | 30 | Sobre-humano | 18 | Semideus |
+| 35 | Lendário | 21 | além do teto do jogador |
+| 40 | Mítico | 24 | além do teto do jogador |
+| 45 | Semidivino | 27+ | além do teto do jogador |
 
 As somas andam de três em três porque a régua é essa, e a conta confere na probabilidade: soma 9 contra Dificuldade 15 passa em 56% das vezes, soma 12 contra 20 passa em 55%.
 
-Como o teto mortal de Atributo + Habilidade é **12**, tudo de 25 para cima já pede Centelha, Proeza ou Arte, e é por isso que os dois últimos degraus se chamam Herói e Semideus.
+Como o teto mortal de Atributo + Habilidade é **12**, tudo de 25 para cima já pede Centelha, Proeza ou Arte, e é por isso que esses dois degraus se chamam Herói e Semideus; os de cima ficam além do teto do jogador.
 
 **Circunstância entra como ±2 ou ±4 na Dificuldade.** Ferramenta certa, apoio, terreno bom e tempo de sobra abaixam; pressa, distração, escuridão e condição ruim sobem. É por aqui que corda, gazua, lanterna e oficina entram no jogo, sem regra nova nenhuma.
 
