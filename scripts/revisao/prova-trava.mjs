@@ -162,6 +162,9 @@ const PEND = '- Trava: `src/content/chapters/combate.md`: "Ticks de Preparação
 r.push(caso('entrada sem a troca feita, com o arquivo reescrito em outro ponto (controle: falha)', CAP, [[R1, R1b]], [PEND, '- Status: registrada'], 'falha'));
 r.push(caso('a mesma entrada com Status "PENDENTE AUTOR, D-053": pulada, o "antes" fica no arquivo e o "depois" não é cobrado', CAP, [[R1, R1b]], [PEND, '- Status: PENDENTE AUTOR, D-053'], 'passa'));
 r.push(caso('a pendente pulada não cobre mudança: o número muda com a linha dela, e falha', CAP, [[N1, N1b]], ['- Trava: `src/content/chapters/combate.md`: "' + N1 + '" → "' + N1b + '"', '- Status: PENDENTE AUTOR (decisão contra decisão)'], 'falha'));
+r.push(caso('Status "registrada (era PENDENTE AUTOR; resolvida pela T1)": a entrada NÃO é pulada, e cobra o "depois" (falha sem a troca)', CAP, [[R1, R1b]], [PEND, '- Status: registrada (era PENDENTE AUTOR; resolvida pela T1, 15/11/2026), a aplicar na fase 2'], 'falha'));
+r.push(caso('o mesmo Status, com a troca feita: passa', CAP, [['Ticks de Preparação', 'Ticks de Preparo']], [PEND, '- Status: registrada (era PENDENTE AUTOR; resolvida pela T1, 15/11/2026), a aplicar na fase 2'], 'passa'));
+r.push(caso('Status "**PENDENTE AUTOR**, D-053" (em negrito): pulada', CAP, [[R1, R1b]], [PEND, '- Status: **PENDENTE AUTOR**, D-053'], 'passa'));
 console.log('## A entrada que não casa falha\n');
 r.push(caso('entrada que pede (3×) num trecho que está 2 vezes', CAP, [[/Preparação/gu, 'Preparo']], ['- Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (3×)'], 'falha'));
 r.push(caso('entrada com "antes" que não está na base', CAP, [[N1, N1b]], [['(Força 7 e Destreza 2? use a Força)', N1b]], 'falha'));

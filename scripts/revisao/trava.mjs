@@ -28,7 +28,7 @@
 //    seção B. O antes corrigido é o que se compara com o depois.
 //    As linhas "Trava JSON" (`arquivo` @caminho: <antes> → <depois>, valores em JSON) fazem o mesmo num campo de fora
 //    da prosa de um src/data/*.json: o valor da base tem de ser o "antes", o de agora o "depois".
-//    As entradas com Status "PENDENTE AUTOR" são puladas (não se aplicam nesta revisão), e a saída lista quais.
+//    As entradas cujo Status COMEÇA por "PENDENTE AUTOR" são puladas (não se aplicam nesta revisão), e a saída lista quais.
 // 3. Os blocos gerados (<!-- gen:x --> ... <!-- /gen:x -->) saem dos dois lados: eles mudam pela fonte.
 // 4. No src/data/*.json, só os campos de prosa (descricao, texto, definicao, efeito, nota, tracos, e o texto de niveis[])
 //    são comparados como texto, e cada campo é uma seção; o resto do JSON tem de ficar IGUAL, campo por campo.
@@ -132,7 +132,8 @@ function pendentesDoAutor(md) {
     if (/^\s*```/.test(linha)) { emCodigo = !emCodigo; continue; }
     if (emCodigo) continue;
     const h = linha.match(/^##\s+(RT-\d+)/); if (h) { rt = h[1]; continue; }
-    if (rt && /^-\s*Status:.*PENDENTE AUTOR/i.test(linha)) out.add(rt);
+    // só quando o Status COMEÇA por PENDENTE AUTOR (CORRIGE da Revisora): "registrada (era PENDENTE AUTOR; ...)" se aplica
+    if (rt && /^-\s*Status:\s*\**\s*PENDENTE AUTOR/i.test(linha)) out.add(rt);
   }
   return out;
 }
