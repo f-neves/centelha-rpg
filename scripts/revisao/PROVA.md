@@ -1,7 +1,7 @@
 # Prova da trava (controle negativo)
 
 Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-15, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD ada72b48). Cada caso muda UM arquivo, roda a trava só nele com um
+`centelha-executora` (ramo revisao-textos, HEAD 00e79fd4). Cada caso muda UM arquivo, roda a trava só nele com um
 contradicoes.md e um estado.md de teste e devolve o arquivo ao que era. Os avisos (linhas com · ou com "resolução:") não derrubam a trava.
 
 **"Próximo", a definição testável dos pares termo e número:** cada número da seção se liga a um termo protegido, o mais perto
@@ -506,6 +506,42 @@ Entrada: - Trava JSON: `armas.json` @[0].peso: 0,3 → 0.4
 ✘ trava: 2 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
+## As entradas PENDENTE AUTOR são puladas
+
+### ✓ entrada sem a troca feita, com o arquivo reescrito em outro ponto (controle: falha) (esperado: falha; exit 1)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; - Status: registrada
+
+```
+✘ src/content/chapters/combate.md
+    ✘ RT-900: o "depois" da entrada não está no arquivo de agora: "Ticks de Preparo"
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ a mesma entrada com Status "PENDENTE AUTOR, D-053": pulada, o "antes" fica no arquivo e o "depois" não é cobrado (esperado: passa; exit 0)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: - Trava: `src/content/chapters/combate.md`: "Ticks de Preparação" → "Ticks de Preparo"; - Status: PENDENTE AUTOR, D-053
+
+```
+    · entrada(s) PENDENTE AUTOR (não se aplicam nesta revisão): RT-900; com linha Trava, puladas: RT-900
+✓ src/content/chapters/combate.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ a pendente pulada não cobre mudança: o número muda com a linha dela, e falha (esperado: falha; exit 1)
+
+Troca: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? use a Força)"
+Entrada: - Trava: `src/content/chapters/combate.md`: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? use a Força)"; - Status: PENDENTE AUTOR (decisão contra decisão)
+
+```
+    · entrada(s) PENDENTE AUTOR (não se aplicam nesta revisão): RT-900; com linha Trava, puladas: RT-900
+✘ src/content/chapters/combate.md
+    ✘ números sem entrada, seção "O ataque: acertar e a Margem": saem 5 (−1); entram 6 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
 ## A entrada que não casa falha
 
 ### ✓ entrada que pede (3×) num trecho que está 2 vezes (esperado: falha; exit 1)
@@ -546,23 +582,24 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ## Resultado
 
-47 de 47 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
+50 de 50 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
 
 ## Os 449 arquivos de hoje
 
 A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 449 passam, 0 falham. Como todos estão iguais à base, a trava não compara nada neles (o arquivo igual à base passa direto); este número só prova que nada quebra na leitura. Os únicos avisos são de "igual à base": as entradas do contradicoes.md registradas e ainda não aplicadas (a RT-001 e as que a fase 1 consolidou):
 
 ```
-trava · base d760ef96 · 449 arquivo(s) · 85 entrada(s) de trava e 0 Trava JSON em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
+trava · base d760ef96 · 449 arquivo(s) · 75 entrada(s) de trava e 0 Trava JSON em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
+    · entrada(s) PENDENTE AUTOR (não se aplicam nesta revisão): RT-003, RT-004, RT-005, RT-010, RT-050, RT-060, RT-061, RT-083, RT-090, RT-091; com linha Trava, puladas: RT-003, RT-004, RT-010, RT-060, RT-061
     · igual à base; entrada(s) ainda não aplicada(s): RT-058
     · igual à base; entrada(s) ainda não aplicada(s): RT-022, RT-034, RT-035
     · igual à base; entrada(s) ainda não aplicada(s): RT-027, RT-033
     · igual à base; entrada(s) ainda não aplicada(s): RT-021
     · igual à base; entrada(s) ainda não aplicada(s): RT-009, RT-088, RT-089
     · igual à base; entrada(s) ainda não aplicada(s): RT-017, RT-039, RT-040
-    · igual à base; entrada(s) ainda não aplicada(s): RT-001, RT-017, RT-035, RT-046, RT-049, RT-060, RT-067
+    · igual à base; entrada(s) ainda não aplicada(s): RT-001, RT-017, RT-035, RT-046, RT-049, RT-067
     · igual à base; entrada(s) ainda não aplicada(s): RT-018
-    · igual à base; entrada(s) ainda não aplicada(s): RT-003, RT-004, RT-011
+    · igual à base; entrada(s) ainda não aplicada(s): RT-011
     · igual à base; entrada(s) ainda não aplicada(s): RT-044, RT-046
     · igual à base; entrada(s) ainda não aplicada(s): RT-019
     · igual à base; entrada(s) ainda não aplicada(s): RT-084, RT-092, RT-097
@@ -575,7 +612,7 @@ trava · base d760ef96 · 449 arquivo(s) · 85 entrada(s) de trava e 0 Trava JSO
     · igual à base; entrada(s) ainda não aplicada(s): RT-064, RT-070, RT-071
     · igual à base; entrada(s) ainda não aplicada(s): RT-014
     · igual à base; entrada(s) ainda não aplicada(s): RT-017
-    · igual à base; entrada(s) ainda não aplicada(s): RT-006, RT-010, RT-023, RT-055, RT-057, RT-060, RT-061, RT-063, RT-077, RT-080
+    · igual à base; entrada(s) ainda não aplicada(s): RT-006, RT-023, RT-055, RT-057, RT-063, RT-077, RT-080
     · igual à base; entrada(s) ainda não aplicada(s): RT-020, RT-072, RT-073
     · igual à base; entrada(s) ainda não aplicada(s): RT-007
     · igual à base; entrada(s) ainda não aplicada(s): RT-082

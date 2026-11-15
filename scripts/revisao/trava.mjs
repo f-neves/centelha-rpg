@@ -28,6 +28,7 @@
 //    seção B. O antes corrigido é o que se compara com o depois.
 //    As linhas "Trava JSON" (`arquivo` @caminho: <antes> → <depois>, valores em JSON) fazem o mesmo num campo de fora
 //    da prosa de um src/data/*.json: o valor da base tem de ser o "antes", o de agora o "depois".
+//    As entradas com Status "PENDENTE AUTOR" são puladas (não se aplicam nesta revisão), e a saída lista quais.
 // 3. Os blocos gerados (<!-- gen:x --> ... <!-- /gen:x -->) saem dos dois lados: eles mudam pela fonte.
 // 4. No src/data/*.json, só os campos de prosa (descricao, texto, definicao, efeito, nota, tracos, e o texto de niveis[])
 //    são comparados como texto, e cada campo é uma seção; o resto do JSON tem de ficar IGUAL, campo por campo.
@@ -123,7 +124,23 @@ function lerEntradas(md) {
   }
   return out;
 }
-const ENTRADAS = fs.existsSync(CONTRADICOES) ? lerEntradas(fs.readFileSync(CONTRADICOES, 'utf8')) : [];
+// As entradas com Status "PENDENTE AUTOR" (D-053, congelado, decisão contra decisão) não se aplicam nesta revisão
+// (ordem do Arquiteto, 12/11/2026): a trava as pula, lendo o Status da própria entrada, e lista as puladas no topo.
+function pendentesDoAutor(md) {
+  const out = new Set(); let emCodigo = false, rt = null;
+  for (const linha of lf(md).split('\n')) {
+    if (/^\s*```/.test(linha)) { emCodigo = !emCodigo; continue; }
+    if (emCodigo) continue;
+    const h = linha.match(/^##\s+(RT-\d+)/); if (h) { rt = h[1]; continue; }
+    if (rt && /^-\s*Status:.*PENDENTE AUTOR/i.test(linha)) out.add(rt);
+  }
+  return out;
+}
+const TEXTO_CONTRADICOES = fs.existsSync(CONTRADICOES) ? fs.readFileSync(CONTRADICOES, 'utf8') : '';
+const PENDENTES = pendentesDoAutor(TEXTO_CONTRADICOES);
+const PULADAS = new Set();
+const semPendentes = (lista) => lista.filter((e) => { if (PENDENTES.has(e.rt)) { PULADAS.add(e.rt); return false; } return true; });
+const ENTRADAS = semPendentes(lerEntradas(TEXTO_CONTRADICOES));
 // A TRAVA JSON (decisão do Arquiteto, 12/11/2026), para a mudança de um campo FORA da prosa de um src/data/*.json:
 //   - Trava JSON: `src/data/regras.json` @caminho.do.campo: <valor antes, em JSON> → <valor depois, em JSON>
 // O caminho em pontos, com o índice de lista entre colchetes (@acoes.salto.saltoHorizontalCorrendo, @pacotes[3].itens[0].item,
@@ -143,7 +160,7 @@ function lerEntradasJson(md) {
   }
   return out;
 }
-const ENTRADAS_JSON = fs.existsSync(CONTRADICOES) ? lerEntradasJson(fs.readFileSync(CONTRADICOES, 'utf8')) : [];
+const ENTRADAS_JSON = semPendentes(lerEntradasJson(TEXTO_CONTRADICOES));
 const passos = (cam) => [...cam.matchAll(/([^.[\]]+)|\[(\d+)\]/g)].map((m) => (m[2] != null ? Number(m[2]) : m[1]));
 function valorEm(o, cam) { let v = o; for (const k of passos(cam)) { if (v == null || typeof v !== 'object' || !(k in v)) return { existe: false }; v = v[k]; } return { existe: true, v }; }
 function poeEm(o, cam, valor) { const ps = passos(cam); let v = o; for (const k of ps.slice(0, -1)) v = v[k]; v[ps[ps.length - 1]] = valor; }
@@ -449,6 +466,7 @@ let caiu = 0;
 if (arquivos.length || !SAIDA_CLASSES) {
   console.log(`trava · base ${BASE} · ${arquivos.length} arquivo(s) · ${ENTRADAS.length} entrada(s) de trava e ${ENTRADAS_JSON.length} Trava JSON em ${path.relative(REPO, CONTRADICOES) || CONTRADICOES} · ${MOVIMENTOS.length} movimento(s) de seção em ${path.relative(REPO, ESTADO) || ESTADO}`);
   // as entradas cujo arquivo não existe na base nunca se aplicam: aviso no topo, para quem escreveu o contradicoes.md
+  if (PENDENTES.size) console.log(`    · entrada(s) PENDENTE AUTOR (não se aplicam nesta revisão): ${[...PENDENTES].sort().join(', ')}; com linha Trava, puladas: ${[...PULADAS].sort().join(', ') || 'nenhuma'}`);
   for (const e of ERROS_ENTRADA) console.log(`    ✘ ${e}`);
   if (ERROS_ENTRADA.length) caiu++;
   const orfas = [...new Set([...ENTRADAS, ...ENTRADAS_JSON].filter((e) => naBase(e.arquivo) == null).map((e) => `${e.rt} (\`${e.arquivo}\`)`))];
