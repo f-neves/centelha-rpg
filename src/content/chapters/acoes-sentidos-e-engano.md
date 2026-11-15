@@ -123,9 +123,9 @@ O que fica de fora dele, e ainda espera ficha:
 
 Esta família inteira ainda espera regra, e depende da mecânica de poder divino, que é frente à parte.
 
-- **Rezar.** Atrair a atenção de um deus. Longa, Vontade + Religião, e o que se ganha é atenção, não milagre garantido.
+- **Rezar.** Atrair a atenção de um deus. Longa, Compostura + Religião, e o que se ganha é atenção, não milagre garantido.
 - **Ritual menor.** Bênção da colheita, praga, adivinhação. Longa, Inteligência + Ritualismo.
-- **Exorcizar.** O espírito na casa, a coisa que ficou. Acumulada, Vontade + Ocultismo ou Religião.
+- **Exorcizar.** O espírito na casa, a coisa que ficou. Acumulada, Influência + Ocultismo ou Religião.
 - **Reconhecer o sobrenatural.** Direta, Inteligência + Ocultismo.
 - **Meditar.** Recolher-se e aquietar o corpo e a cabeça. Longa, Compostura + Meditação. A Vontade não volta por esta jogada: a noite passada em meditação conta como noite de sono para recuperá-la (Cap. III). (A Mana que a hora de meditação devolve está no verbete Meditação, nas Habilidades Secundárias.)
 - **Interpretar presságio.** O sonho repetido, o voo dos pássaros. Direta, Perspicácia + Ocultismo.
