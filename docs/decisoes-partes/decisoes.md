@@ -4592,6 +4592,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: corrige a D-333, item 029 (o +4 sai da Defesa de agarrão e vai na Defesa comum contra Derrubar e Empurrar). A D-048 fica.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T3) e `../tmp/ponte/para-arquiteto/lidas/003.md`; RT-050 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-anatomia-firme.md`.
 - Estado: **a implementar**: o texto do livro no ramo `revisao-textos` (fase 2, RT-050), que vai ao ar com o merge da revisão; as sete fichas pelo lote da Bestiarista (fase 4).
+- **Lote da Bestiarista entregue (15/11/2026):** as sete fichas trocaram a frase (12 linhas). Reconvertidas pelo `conversor-criatura.mjs`: sete gravadas, nenhuma parada, e cada JSON difere do publicado só no `efeito` da capacidade da anatomia firme. Entram no ramo `revisao-textos` pela fase 4, com a fixture regenerada, e vão ao ar com o merge da revisão.
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
