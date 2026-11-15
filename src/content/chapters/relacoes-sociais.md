@@ -13,7 +13,9 @@ O lado social do jogo tem **três marchas**, da mais leve à mais pesada:
 
 Comece pela régua; as outras duas são escaladas dela.
 
-E há uma divisão que atravessa o capítulo inteiro, melhor dita de uma vez: **a cena com dados na mesa não move a régua.** Ela compra o que se consegue naquela cena, e nada além. Quem move a régua são os **atos** e o **cortejo com calma**; para baixo, mexem nela também, e só nos casos escritos mais adiante, cobrar favor, vencer feio (Ameaça e Chantagem) e o boato.
+E há uma divisão que atravessa o capítulo inteiro, melhor dita de uma vez: **a cena com dados na mesa não move a régua.** Ela compra o que se consegue naquela cena, e nada além.
+
+Quem move a régua são os **atos** e o **cortejo com calma**; para baixo, mexem nela também, e só nos casos escritos mais adiante, cobrar favor, vencer feio (Ameaça e Chantagem) e o boato.
 
 ## A régua
 
@@ -72,9 +74,13 @@ O que mais move uma relação são **feitos**, não conversa. Cada um empurra um
 | | | Uma traição grave | −4 |
 | | | O imperdoável (matar quem ele ama, arruiná-lo) | −5 |
 
-**Ter sido controlado e perceber** conta quando um efeito contra a Defesa Mental (uma ordem obedecida sem querer, uma emoção plantada; Cap. XI) é percebido pelo alvo: quando o efeito acaba e ele se lembra, ou quando alguém lhe conta, e o Mestre decide. Vale uma vez por controle, e vale para quem controlou, não para quem só convenceu: persuasão e sedução que passaram pelo juízo do alvo não contam, porque ali ele continuou dono da decisão. É ato: salta na hora, sem rolar, e atravessa o teto de vidro.
+**Ter sido controlado e perceber** conta quando um efeito contra a Defesa Mental (uma ordem obedecida sem querer, uma emoção plantada; Cap. XI) é percebido pelo alvo: quando o efeito acaba e ele se lembra, ou quando alguém lhe conta, e o Mestre decide.
 
-A fronteira entre **ato** e **gesto** é uma pergunta só: *"este feito muda como ela te vê, sozinho?"*. Se muda, é ato, e vale o salto da tabela, na hora, sem rolar nada. Se apenas **ajuda** a mudar, é gesto: um presente, um favor pequeno, uma cortesia, uma desfeita, uma grosseria. Gesto não salta, ele **acumula**, e o lugar onde ele acumula é o **cortejo com calma**, no fim deste capítulo.
+Vale uma vez por controle, e vale para quem controlou, não para quem só convenceu: persuasão e sedução que passaram pelo juízo do alvo não contam, porque ali ele continuou dono da decisão. É ato: salta na hora, sem rolar, e atravessa o teto de vidro.
+
+A fronteira entre **ato** e **gesto** é uma pergunta só: *"este feito muda como ela te vê, sozinho?"*. Se muda, é ato, e vale o salto da tabela, na hora, sem rolar nada. Se apenas **ajuda** a mudar, é gesto: um presente, um favor pequeno, uma cortesia, uma desfeita, uma grosseria.
+
+Gesto não salta, ele **acumula**, e o lugar onde ele acumula é o **cortejo com calma**, no fim deste capítulo.
 
 Presentinhos repetidos e baratos **valem cada vez menos**: não dá para comprar amizade com um saco de moedas. Isso é regra de gesto, e o freio dela é a trava de **um gesto por intervalo**, no cortejo.
 
@@ -86,9 +92,13 @@ Amanhã a régua está onde estava. Não é que a conversa não valha: é que el
 
 ### A história empurra o dado
 
-O nível da relação não é só o resultado da conversa, também entra nela. A regra é uma só: **remar contra o que a pessoa já sente soma à Defesa Social dela; remar a favor subtrai.** Quando o Ataque Social tenta **aquecer** a relação (aproximar, seduzir, persuadir a ajudar), um alvo já hostil resiste mais (a hostilidade rema contra você, então soma) e um alvo já favorável resiste menos (o carinho rema a favor, então subtrai). Quando o Ataque tenta **esfriar** (intimidar, ameaçar, romper, semear desconfiança), é o inverso: um alvo favorável resiste mais e um alvo já hostil resiste menos. Multiplicador **×1**, sem teto: o próprio ±6 da régua já é o limite natural.
+O nível da relação não é só o resultado da conversa, também entra nela. A regra é uma só: **remar contra o que a pessoa já sente soma à Defesa Social dela; remar a favor subtrai.** Quando o Ataque Social tenta **aquecer** a relação (aproximar, seduzir, persuadir a ajudar), um alvo já hostil resiste mais (a hostilidade rema contra você, então soma) e um alvo já favorável resiste menos (o carinho rema a favor, então subtrai). Quando o Ataque tenta **esfriar** (intimidar, ameaçar, romper, semear desconfiança), é o inverso: um alvo favorável resiste mais e um alvo já hostil resiste menos.
 
-Os quatro casos, para não deixar dúvida: aquecer um Nêmesis (−6) soma **+6** à Defesa dele; aquecer um Aliado (+3) subtrai **3**; esfriar um Consagrado (+6) soma **+6**; esfriar um Nêmesis (−6) subtrai **6**. No Neutro (nível 0) o termo vale zero, e a jogada sai limpa. E ele não tranca a porta sozinho: um alvo hostil ainda se move pelos **atos** (a tabela acima), que continuam de passo fixo e sem rolagem nenhuma. Dois "salvar a vida" (+3 cada) atravessam um Nêmesis até o Neutro sem depender de nenhuma jogada de influência.
+Multiplicador **×1**, sem teto: o próprio ±6 da régua já é o limite natural.
+
+Os quatro casos, para não deixar dúvida: aquecer um Nêmesis (−6) soma **+6** à Defesa dele; aquecer um Aliado (+3) subtrai **3**; esfriar um Consagrado (+6) soma **+6**; esfriar um Nêmesis (−6) subtrai **6**. No Neutro (nível 0) o termo vale zero, e a jogada sai limpa.
+
+E ele não tranca a porta sozinho: um alvo hostil ainda se move pelos **atos** (a tabela acima), que continuam de passo fixo e sem rolagem nenhuma. Dois "salvar a vida" (+3 cada) atravessam um Nêmesis até o Neutro sem depender de nenhuma jogada de influência.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>A Dama Vesna está em <strong>−6 (Nêmesis)</strong> com Lírio (Defesa Social base 18). Ele tenta reconquistá-la: remar contra a hostilidade soma, a Defesa dela sobe 6, para <strong>24</strong> nesse lance. Se em vez disso ele tentasse azedar ainda mais a relação (esfriar), remaria a favor do que ela já sente: a Defesa desceria 6, para <strong>12</strong>, porque ela já está predisposta a odiá-lo. Já o escudeiro Tobias, em <strong>+3 (Aliança)</strong> com Lírio (Defesa Social base 15), fica mais fácil de convencer a ajudar ainda mais: aquecer remaria a favor do carinho dele, e sua Defesa cairia 3, para <strong>12</strong>.</div>
 
@@ -102,7 +112,9 @@ Suborno, presentes caros e mesada são **gestos**, e dinheiro compra pressa no c
 
 ## Sair do Neutro é o mais difícil
 
-O meio da régua é **largo de propósito**: do centro até a primeira Simpatia (+1) são **três passos**. Enquanto você não os acumula, a pessoa continua Neutra. Depois de romper o Neutro, cada nível seguinte é só **um passo**. A ficha abre uma segunda porta: um Antecedente em contexto (Reputação, Contato, Posição, e o Refúgio em casa; [Cap. VII](/regras/antecedentes)) desconta passos desses três, pela metade do nível do traço (para baixo), e só o nível 6 desconta os três e já começa a relação em +1 (Simpatia). Dali para cima valem as regras de sempre: o teto de vidro de ±2 segura o que acumula, e só ato atravessa.
+O meio da régua é **largo de propósito**: do centro até a primeira Simpatia (+1) são **três passos**. Enquanto você não os acumula, a pessoa continua Neutra. Depois de romper o Neutro, cada nível seguinte é só **um passo**.
+
+A ficha abre uma segunda porta: um Antecedente em contexto (Reputação, Contato, Posição, e o Refúgio em casa; [Cap. VII](/regras/antecedentes)) desconta passos desses três, pela metade do nível do traço (para baixo), e só o nível 6 desconta os três e já começa a relação em +1 (Simpatia). Dali para cima valem as regras de sempre: o teto de vidro de ±2 segura o que acumula, e só ato atravessa.
 
 Isso modela uma verdade simples: **o difícil é deixar de ser um estranho.** Conversa nenhuma tira alguém do Neutro, por boa que seja, porque em cena a régua não anda. Um **ato** tira: um "serviço grande" (+2) já leva quase todo o caminho; "salvar a vida" (+3) rompe de uma vez. Sem ato, o caminho é o **cortejo com calma**, gesto sobre gesto, e ele leva o tempo que leva.
 
@@ -126,7 +138,9 @@ Um ato forte fura a baseline (um elfo que salva a vida de um anão vira, sim, um
 
 ## Quando a cena vira duelo: o Combate Social
 
-Na conversa comum, a influência compra o alcance do pedido e vai embora (a seção anterior). A cena vira **Combate Social** quando alguém **crava os pés**: recusa-se conscientemente a ser movido, com uma aposta real na mesa (dobrar um juiz, aguentar uma sedução decisiva, não entregar o segredo sob pressão). Aí a mesma jogada de influência ganha uma camada: para **não ceder**, o alvo **queima Força de Vontade**, e segurar a linha fica mais caro quanto mais forte vem o ataque. Quando a Vontade acaba, ou deixa de valer a pena, ele **cede**.
+Na conversa comum, a influência compra o alcance do pedido e vai embora (a seção anterior). A cena vira **Combate Social** quando alguém **crava os pés**: recusa-se conscientemente a ser movido, com uma aposta real na mesa (dobrar um juiz, aguentar uma sedução decisiva, não entregar o segredo sob pressão).
+
+Aí a mesma jogada de influência ganha uma camada: para **não ceder**, o alvo **queima Força de Vontade**, e segurar a linha fica mais caro quanto mais forte vem o ataque. Quando a Vontade acaba, ou deixa de valer a pena, ele **cede**.
 
 É o lado da **Defesa Social**: influência (te mover) e leitura (te ler). Ataque mágico à mente (controle, ordem, medo mágico) é [Defesa Mental](/regras/defesas), outro sistema, e o Resistir dele está em As Três Defesas, Queimar Força de Vontade. E **ceder é o ponto, não a alma**: perder aqui é conceder aquela discussão, sedução ou negociação, não virar fantoche.
 
@@ -136,18 +150,24 @@ Na conversa comum, a influência compra o alcance do pedido e vai embora (a seç
 
 Sem Centelha, sem Especialidade e sem penalidade, como a Iniciativa física ([Cap. V](/regras/centelha)).
 
-Quem lê melhor a sala toma a palavra primeiro: entra sozinho no **Tick 1**, e os demais entram um Tick depois por degrau de 6 pontos de atraso, arredondando para cima, pela mesma regra da [iniciativa física](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa). As abordagens vêm em três pesos, e o peso dá a **Velocidade** (Ticks até o próximo lance): **leve 5** (uma alfinetada, um elogio), **média 6** (um argumento, uma sedução), **pesada 7** (um discurso, um esquema). Rápido arranha; lento constrói.
+Quem lê melhor a sala toma a palavra primeiro: entra sozinho no **Tick 1**, e os demais entram um Tick depois por degrau de 6 pontos de atraso, arredondando para cima, pela mesma regra da [iniciativa física](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa).
+
+As abordagens vêm em três pesos, e o peso dá a **Velocidade** (Ticks até o próximo lance): **leve 5** (uma alfinetada, um elogio), **média 6** (um argumento, uma sedução), **pesada 7** (um discurso, um esquema). Rápido arranha; lento constrói.
 
 ### O ataque social
 
 <p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Acerto da Abordagem  + 2 × mín(Centelha, Habilidade)</p>
+
+<p class="muted">Quando a aparência importa, some o modificador da Aparência (Cap. III).</p>
 
 A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua, e a **Especialidade** entra aqui do mesmo jeito que entra lá: se o escopo nomeado dela se aplica (Persuasão *(na corte)* numa audiência), rende **+N dados descartando os N menores**, e não uma parcela somada. O **Acerto da Abordagem** (não confundir com o peso leve, média ou pesada, que só decide a Velocidade) é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo, que é o número passivo da ficha mais o termo da história, somado pela mesa na hora (logo abaixo):
 
 - **Acerta** se o Ataque **superar** a Defesa Social; empatar ou ficar abaixo, a influência ricocheteia.
 - **Margem = [ (Ataque − Defesa Social) ÷ 6 ]**: o quanto o golpe apertou.
 
-Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saída é trocar de abordagem, pegá-lo desprevenido ou preparar o terreno antes. Essa Defesa **recebe** o peso da história entre vocês: o número da ficha é um só, e a mesa soma em cima dele o termo de "A história empurra o dado" (na seção da régua), que é por relação e muda conforme quem fala. Reconquistar um Nêmesis é bater numa muralha reforçada, discutir com um aliado é bater numa enfraquecida.
+Bater num alvo de Defesa Social muito acima da sua é bater numa muralha; a saída é trocar de abordagem, pegá-lo desprevenido ou preparar o terreno antes.
+
+Essa Defesa **recebe** o peso da história entre vocês: o número da ficha é um só, e a mesa soma em cima dele o termo de "A história empurra o dado" (na seção da régua), que é por relação e muda conforme quem fala. Reconquistar um Nêmesis é bater numa muralha reforçada, discutir com um aliado é bater numa enfraquecida.
 
 ### Resistir: gastar Força de Vontade
 
@@ -162,7 +182,7 @@ Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gas
 
 **A régua não sobe em nenhuma linha desta tabela.** Ganhar o duelo estica o que se pode pedir naquela cena; não faz ninguém gostar de você.
 
-A Vontade é a mesma reserva das Proezas (a Mana das Artes é outra reserva, também no mortal: recuperar uma não recupera a outra) e **volta devagar**: 1 ponto por noite de sono, 1 ou 3 por [Firula](/regras/habilidades) conforme o nível, e 1 por agir fiel à própria régua moral. Então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. O Resistir **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**. O +4 na Defesa antes do teste vale também contra leitura (Cap. XI).
+A Vontade é a mesma que algumas Técnicas cobram (a Mana das Artes é outra reserva, também no mortal: recuperar uma não recupera a outra) e **volta devagar**: 1 ponto por noite de sono, 1 ou 3 por [Firula](/regras/habilidades) conforme o nível, e 1 por agir fiel à própria régua moral. Então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. O Resistir **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**. O +4 na Defesa antes do teste vale também contra leitura (Cap. XI).
 
 ### Ceder, e o alcance que a Margem compra
 
@@ -186,7 +206,7 @@ As três esfriam (ver A história empurra o dado) e são Ataque Social e Combate
 
 **Ameaça.** Intimidação: dobrar pelo medo.
 
-**Chantagem.** Manha ou Intimidação, e exige que quem ataca tenha um Segredo (Cap. VII) que atinja o alvo, no peso que o nível do Segredo descreve. O Segredo não soma na jogada (nenhum Antecedente soma): ele é o que permite a abordagem, e cobrá-lo a fundo o gasta (Cap. VII, Segredo). Sem Segredo, a mesma conversa é Ameaça. As Proezas da Teia (Alavanca, Chantagem) seguem o texto de cada uma.
+**Chantagem.** Manha ou Intimidação, e exige que quem ataca tenha um Segredo (Cap. VII) que atinja o alvo, no peso que o nível do Segredo descreve. O Segredo não soma na jogada (nenhum Antecedente soma): ele é o que permite a abordagem, e cobrá-lo a fundo o gasta (Cap. VII, Segredo). Sem Segredo, a mesma conversa é Ameaça. As Técnicas da Teia (Alavanca, Chantagem) seguem o texto de cada uma.
 
 **Ruptura.** Persuasão ou Manha: romper um vínculo, seja acabar uma aliança, uma amizade ou um namoro, seja semear desconfiança entre o alvo e alguém de quem ele gosta. Como toda cena com dados, ela só compra alcance do pedido (aqui, que o alvo aceite o fim ou duvide do outro); a régua só anda por ato, e o rompimento de fato é o ato que o Mestre escolhe na tabela de atos contra você.
 
@@ -282,8 +302,8 @@ Quantos intervalos a Vontade do alvo compra, com o pretendente empilhando um ges
 |---|---:|---:|---:|---:|
 | um guarda (3, 3) | 1 | 1 | 3 | 3 |
 | um vendedor (4, 4) | 2 | 2 | 4 | 4 |
-| Kael (5, 7) | 3 | 3 | 7 | 7 |
-| Sora (9, 8) | 8 | 8 | 8 | 8 |
+| Kael (2, 7) | 2 | 3 | 3 | 7 |
+| Sora (12, 8) | 8 | 8 | 8 | 8 |
 | a Dama Vesna (11, 8) | 8 | 8 | 8 | 8 |
 
 Leia a tabela de baixo para cima: contra alvo forte a resistência **empata em todas as colunas**, porque o excedente nunca chega a 6 e o custo nunca sai de 1. Quem resiste por muita Compostura já resistia pelo Tempo do passo; segurar com Vontade é o que salva quem era fácil.
@@ -302,7 +322,7 @@ O cortejo não concede pedido: o que ele faz é **andar a régua**, um passo por
 - **Move por:** atos (saltos fixos: +2 e +3 a seu favor, de −2 a −5 contra você) e gestos (só no cortejo, um por intervalo). Cobrar favor grande desce 1 passo. Sair do Neutro = 3 passos; **teto de vidro ±2** para tudo o que acumula, e só ato atravessa. Esfria 1 passo por estação.
 - **Cena com dado NÃO move a régua**, nem conversa nem duelo: rende **alcance do pedido**, +1 nível por 6 de folga, só naquela cena. Para baixo, só vencer feio (Ameaça e Chantagem) desce 1 passo.
 - **A história pesa:** remar contra o que o alvo já sente soma o nível à Defesa Social dele; remar a favor subtrai. ×1, sem teto (o próprio ±6 já é o limite). Zera no Neutro.
-- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + 2 × mín(Centelha, Habilidade), contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade, sem Centelha.
+- **Combate Social:** Ataque = [(Influência+Habilidade)/2]d6 (+2 ímpar) + Acerto da Abordagem + 2 × mín(Centelha, Habilidade), contra a Defesa Social (o número da ficha, mais o termo da história somado na hora, acima); quando a aparência importa, some o modificador da Aparência; **Margem** = [(atk−def)/6]. Iniciativa = 1d6 + Perspicácia + Sociabilidade, sem Centelha.
 - **Resistir:** para não ceder, gaste **1 + Margem** de Vontade no lance (**teto 4**; é um pagamento, fora do limite de 1 ponto por ação); se não pagar, cede o ponto e o pedido chega **Margem** níveis acima. Não vale contra leitura (o +4 antes do teste vale).
 - **Influência Estendida** (o modo devagar, sem dado): Ataque parado = Influência + Habilidade; Defesa parada = Compostura + Sociabilidade + 2 × mín(Centelha, Sociabilidade) + termo da régua; **Tempo do passo = máx(1, defesa − ataque − gestos)**, em intervalos de **8 dias ×½ ×1 ×2 ×4** pela longevidade de quem corteja. Gestos 0/+1/+2/+4, **um por intervalo**. Quem resiste paga **1 + [máx(0, ataque + gestos − defesa) ÷ 6]** de Vontade por intervalo (teto 4 por intervalo), e essa Vontade fica **presa** até o cortejo acabar. Leitura vs Defesa Social (a com dado) para saber quanto falta.
 - **Ameaça, Chantagem, Ruptura, Rumor:** Ataque Social ou Longa como os outros. A Chantagem exige um Segredo e o gasta; vencer feio e o boato descem 1 passo e param em −2.
