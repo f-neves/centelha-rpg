@@ -7,7 +7,7 @@ resumo: "As 24 Habilidades primárias em quatro grupos, a régua de 0 a 6, a Esp
 
 Se o [Atributo](/regras/atributos) é o que você é, a Habilidade é o que você aprendeu a fazer. Elas vão de **0 a 6** e cobrem o tronco do que um aventureiro faz. São 24, em quatro grupos de seis.
 
-**0 não é impedimento**, é falta de treino: você ainda rola o Atributo com a Habilidade zerada, e ainda pode dar certo, só que muito mais raramente. Essa jogada continua sendo de Atributo + Habilidade, e a Centelha não soma nada nela; a jogada só do Atributo, em que a Centelha soma inteira, é outra, e só o Mestre a pede ([Cap. V](/regras/centelha)).
+**0 não é impedimento**, é falta de treino: você ainda rola o Atributo com a Habilidade zerada, e ainda pode dar certo, só que muito mais raramente. Essa jogada continua sendo de Atributo + Habilidade, e a Centelha não soma nada nela; a jogada de **Atributo puro** (só o Atributo, sem Habilidade), em que a Centelha soma inteira, é outra, e só o Mestre a pede ([Cap. V](/regras/centelha)).
 
 | Nível | Rótulo | O que significa |
 |:---:|---|---|
