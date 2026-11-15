@@ -158,7 +158,7 @@ As abordagens vêm em três pesos, e o peso dá a **Velocidade** (Ticks até o p
 
 <p class="formula">Ataque = [ (Influência + Habilidade) ÷ 2 ] d6  ( +2 se a soma for ímpar )  + Acerto da Abordagem  + 2 × mín(Centelha, Habilidade)</p>
 
-<p class="muted">Quando a aparência importa, some o modificador da Aparência (Cap. III).</p>
+<p class="muted">Quando a aparência importa, some o modificador da Aparência (<a href="/centelha-rpg/regras/aparencia-virtudes-vontade">Cap. III</a>).</p>
 
 A **habilidade** é a da abordagem usada (Persuasão, Sedução, Intimidação, Manha…), como o golpe físico escolhe a sua, e a **Especialidade** entra aqui do mesmo jeito que entra lá: se o escopo nomeado dela se aplica (Persuasão *(na corte)* numa audiência), rende **+N dados descartando os N menores**, e não uma parcela somada. O **Acerto da Abordagem** (não confundir com o peso leve, média ou pesada, que só decide a Velocidade) é um bônus de **+0 a +3** que o Mestre concede conforme a abordagem é certeira: uma provocação ou um elogio acertam fácil e somam mais; um discurso longo pesa mais e soma menos. Compara-se com a **Defesa Social** do alvo, que é o número passivo da ficha mais o termo da história, somado pela mesa na hora (logo abaixo):
 
