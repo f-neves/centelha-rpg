@@ -31,7 +31,7 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 **Alcance.** Cada poder traz o seu alcance na ficha. Não há alcance padrão: um olhar chega até onde a criatura vê, um canto até onde se ouve, e o resto vem escrito em metros.
 
-**Velocidade.** O efeito similar à magia é ativado na Velocidade da Arte do mesmo nível da sua base e sai no Tick do Golpe, como uma Arte. Os outros poderes trazem a sua Velocidade na ficha.
+**Velocidade.** O efeito similar à magia é ativado na Velocidade que a tabela de fases ([Combate Físico](/regras/combate)) dá à Arte cujo maior grau é o nível da base: 5 até o nível 3, 6 no nível 4, 7 nos níveis 5 e 6. No poder de criatura, o nível da base e o grau são a mesma coisa. Sai no Tick do Golpe, como uma Arte. Os outros poderes trazem a sua Velocidade na ficha.
 
 ## Teleporte
 
