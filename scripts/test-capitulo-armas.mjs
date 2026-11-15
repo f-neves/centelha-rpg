@@ -1057,7 +1057,7 @@ function conferirFechamento(T) {
   // 4
   comeca(A, 'A mão nua bloqueia **qualquer ataque armado**', ['Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre'], 'Luta desarmada, frase do Mestre', 'sem ela, o dano passa.');
   // 9 e 10
-  comeca(C, 'A **Arte** tem a mesma forma', [], 'Combate, parágrafo da Arte', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *Passar do seu limite*, em As Artes.');
+  comeca(C, 'A **Arte** tem a mesma forma', [], 'Combate, parágrafo da Arte', 'Esticar a conjuração, que se decide a cada Tick de Golpe, está em *Passar do seu limite*, em As Artes.');
   comeca(R, 'Não é preciso anunciar de saída até onde vai.', ['(T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).'], 'regras.astro, esticar');
   comeca(R, '<div class="callout regra"><span class="lbl">Os dois modos</span>', ['Esses Ticks são a Velocidade da conjuração, e a Arte sai no'], 'regras.astro, Os dois modos');
   // 13: a tabelinha "Defesa zerada ou cego" e a ordem Esquiva, Bloqueio
@@ -1099,7 +1099,7 @@ function conferirFechamento(T) {
     '4: o começo da frase do Mestre': troca('cap', 'Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre', 'Os punhos barram o dano de arma: só com a aprovação do Mestre'),
     '4: o fim da frase do Mestre': troca('cap', 'sem ela, o dano passa.', 'sem ela, o dano não passa.'),
     '9: o "9 Ticks quando a ação passa a 10"': troca('astro', '(T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).', '(T é a Velocidade esticada).'),
-    '9: a frase final do parágrafo da Arte': troca('comb', 'Esticar a conjuração, que se decide a cada Tick do Golpe, está em *Passar do seu limite*, em As Artes.', 'Esticar a conjuração está em As Artes.'),
+    '9: a frase final do parágrafo da Arte': troca('comb', 'Esticar a conjuração, que se decide a cada Tick de Golpe, está em *Passar do seu limite*, em As Artes.', 'Esticar a conjuração está em As Artes.'),
     '10: "Esses Ticks são a Velocidade da conjuração"': troca('astro', 'Esses Ticks são a Velocidade da conjuração, e a Arte sai no', 'Esses Ticks são de preparo, e a Arte sai no'),
     '13: a tabela da mesa removida': troca('mesa', '<thead><tr><th>Defesa zerada ou cego</th><th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>', '<thead><tr><th>Defesa zerada ou cego</th></tr></thead>'),
     '13: as colunas da mesa trocadas': troca('mesa', '<th class="num">Esquiva</th><th class="num">Bloqueio</th></tr></thead>\n            <tbody>{ZERA', '<th class="num">Bloqueio</th><th class="num">Esquiva</th></tr></thead>\n            <tbody>{ZERA'),

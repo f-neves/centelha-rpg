@@ -97,7 +97,7 @@ Toda arma tem **ao menos 1 Tick de Preparo**, e a conta é **Preparo = Velocidad
 
 A **Haste** se divide em duas: a **média** (Lança, Bordão, Cajado, Tridente, Arpão) e a **de Guerra** (Foice Grande, Lança Longa, Alabarda, Glaive, Guisarme, Poleaxe), maior e mais lenta. No corpo a corpo o Golpe cai no Tick logo depois do Preparo, e sobram três Ticks de Recuperação. Nas armas de **tiro** (os arcos, as bestas, a Funda e o Arremesso) o Golpe cai no Tick **imediatamente antes da Recuperação**, que **toda arma de tiro tem**: quase toda a Velocidade é Preparo, e é por isso que a Besta Grande (Velocidade 15) passa **doze Ticks** armando, com a guarda aberta, um Tick de Golpe e dois de Recuperação. No sistema Normal, o padrão deste capítulo, o tiro já foi rolado na declaração (ver *Dois sistemas de tempo*); esses Ticks marcam quanto tempo a guarda fica aberta. Até o Arremesso leve tem um Tick de Recuperação depois do Golpe, o de voltar à postura.
 
-A **Arte** tem a mesma forma, com 1 Tick de Recuperação, e a Velocidade vem do maior grau investido na conjuração (5, 6 ou 7); ao esticar, a Velocidade que se multiplica é a do conjuro antes de esticar, pelo maior grau investido até o nível de Arte de quem conjura. Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último: na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5; na Velocidade 7, o Golpe é o Tick 6. Quem vê a Arte se juntar tem o Preparo mais o Golpe de aviso, de **4 a 6 Ticks**. A Recuperação da Arte cobra −2, como a de qualquer ataque. Esticar a conjuração, que se decide a cada Tick do Golpe, está em *Passar do seu limite*, em As Artes.
+A **Arte** tem a mesma forma, com 1 Tick de Recuperação, e a Velocidade vem do maior grau investido na conjuração (5, 6 ou 7); ao esticar, a Velocidade que se multiplica é a do conjuro antes de esticar, pelo maior grau investido até o nível de Arte de quem conjura. Ela sai no **Tick do Golpe, o penúltimo da Velocidade** (a Velocidade menos um), e não no último: na Velocidade 5 o Preparo ocupa os Ticks 1 a 3, o Golpe é o Tick 4 e a Recuperação é o 5; na Velocidade 7, o Golpe é o Tick 6. Quem vê a Arte se juntar tem o Preparo mais o Golpe de aviso, de **4 a 6 Ticks**. A Recuperação da Arte cobra −2, como a de qualquer ataque. Esticar a conjuração, que se decide a cada Tick de Golpe, está em *Passar do seu limite*, em As Artes.
 
 Cada fase custa Defesa, pela mesma moeda: estar comprometido com um gesto abre a guarda.
 
@@ -155,7 +155,7 @@ Uma ação, um golpe: essa é a régua padrão. Duas coisas rendem mais: lutar c
 
 **Nada dá ataque extra sem dizer que dá.** Ter várias armas, ou partes do corpo que servem de arma, é ter opções de ataque, e não ataques a mais: um gato pode atacar com qualquer das quatro patas ou com a mordida, e nem por isso ataca mais vezes. Os golpes a mais são os que uma regra dá pelo nome, como a Rajada e a empunhadura dupla, abaixo.
 
-A Rajada tem a forma **P → G → G → … → R**: um Preparo, os golpes em Ticks seguidos e uma Recuperação, declarada de uma vez e sem parar no meio. Cada golpe **além do primeiro** custa duas coisas: **−1d6 no acerto, acumulando** (o **1º golpe** sai **sem penalidade**, o **2º** a **−1d6** e o **3º** a **−2d6**) e **+1 Tick de Recuperação**, além do Tick de Golpe que ele próprio ocupa. Cada golpe extra soma, portanto, **+2 de Velocidade** ao ciclo inteiro (no Normal também).
+A Rajada tem a forma **P → G → G → … → R**: um Preparo, os golpes em Ticks seguidos e uma Recuperação, declarada de uma vez e sem parar no meio. Cada golpe **além do primeiro** custa duas coisas: **−1d6 no acerto, acumulando** (o **1º golpe** sai **sem penalidade**, o **2º** a **−1d6** e o **3º** a **−2d6**) e **+1 Tick de Recuperação**, além do Tick do Golpe que ele próprio ocupa. Cada golpe extra soma, portanto, **+2 de Velocidade** ao ciclo inteiro (no Normal também).
 
 Há um teto de golpes por Rajada, pela classe da arma, e o ciclo fica assim:
 
@@ -196,7 +196,7 @@ No sistema P/G/R a dupla ganha **um Tick de Golpe para cada mão**, as duas a �
 | Par de armas leves | 1 | 2 | 2 | 5 |
 | Arma média na mão hábil | 2 | 2 | 3 | 7 |
 
-No par de leves o segundo Golpe **come um Tick da Recuperação**, e o ciclo não muda; com arma média na mão hábil o ciclo **cresce 1**. Segurando a segunda arma (ou o escudo) **sem golpear com ela**, o Tick de Golpe fica a **−2** em vez de −4: a outra mão continua guardando. Os dois golpes contam, os dois, como ataques feitos para a Guarda sob pressão. O tempo é a identidade da dupla, e os dados são o preço dela.
+No par de leves o segundo Golpe **come um Tick de Recuperação**, e o ciclo não muda; com arma média na mão hábil o ciclo **cresce 1**. Segurando a segunda arma (ou o escudo) **sem golpear com ela**, o Tick do Golpe fica a **−2** em vez de −4: a outra mão continua guardando. Os dois golpes contam, os dois, como ataques feitos para a Guarda sob pressão. O tempo é a identidade da dupla, e os dados são o preço dela.
 
 **Dois Punhos contam como duas armas leves**, cada um com as estatísticas dos Punhos (1/1/3). Fazem par para a empunhadura dupla (a linha do par de leves), para a Rajada (teto de 3 golpes, o da classe leve), para o Bloqueio (+1 cada) e contam como **2 ataques** para a Guarda sob pressão. **Só as mãos fazem par**: os dois punhos e qualquer mão que conta como arma (a Mão de Ferro, por exemplo). Chute, mordida, cauda e patas de animal seguem a regra de que nada dá ataque extra sem dizer que dá: são opções de ataque, não um par.
 
@@ -388,7 +388,7 @@ Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um 
 
 <p class="muted">Quem tem <strong>perna curta</strong> (anão, gnomo, halfling) desliza <strong>dois terços</strong> disso, e a mesma fração vale para a Corrida e para os Saltos.</p>
 
-<p class="muted">A <strong>armadura</strong> também pesa no movimento: no Deslocamento, na Corrida e nos Saltos, ela tira metade da Penalidade dela (arredondada para baixo), em metros; no salto para o alto, a mesma metade em decímetros.</p>
+<p class="muted">A <strong>armadura</strong> também pesa no movimento: no Deslocamento, na Corrida e nos Saltos, ela tira metade da Penalidade dela (arredondada para baixo), em metros; no <strong>Salto Vertical</strong> (o da tabela do Salto, logo abaixo), a mesma metade em decímetros.</p>
 
 Para ir além, gaste a vez numa **ação de movimento**: Corrida ou Salto, ambas **Velocidade 3**.
 
@@ -610,7 +610,7 @@ Numa única ação você pode **empilhar várias Técnicas suplementares** sobre
 
 <p class="formula">Separado: golpe A com Téc. X (custo X) + golpe B com Téc. Y (custo Y) = X + Y, em duas ações.<br>Combo: um golpe com X e Y juntos = X + Y + 1, numa ação só.</p>
 
-Combinar é **mais caro em Energia**, mas economiza **Ticks** e concentra os efeitos: mais Margem, um único impacto demolidor em vez de dois mornos. O teto é o seu bolso: a Energia ((Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2) é que diz até onde o combo vai, e é por isso que a Centelha mais alta comba mais fundo. Os níveis 5 e 6 ainda cobram Vontade (+1 e +2), o que torna combos de elite raros e climáticos.
+Combinar é **mais caro em Energia**, mas economiza **Ticks** e concentra os efeitos: mais Margem, um único impacto demolidor em vez de dois mornos. O teto é o seu bolso: a Energia ((Vigor + Compostura + Raciocínio + Vontade) ÷ 2 + Centelha × 2) é que diz até onde o combo vai, e é por isso que a Centelha mais alta comba mais fundo. Os níveis 5 e 6 em regra cobram também Vontade (+1 e +2), o que torna combos de elite raros e climáticos.
 
 ### Posturas sustentadas
 

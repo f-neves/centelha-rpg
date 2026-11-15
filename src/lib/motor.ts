@@ -351,12 +351,15 @@ export function deslocamento(
   const calc = (c: Record<string, number>) =>
     Math.round(Object.entries(c).reduce(
       (s, [k, v]) => s + (k === 'base' ? v : ((traits as Record<string, number>)[k] ?? 0) * v), 0) * frac);
+  // O salto correndo parte da Corrida JÁ calculada e arredondada, como a ficha mostra ("Vel. de Corrida +
+  // Atletismo ÷ 2 + Centelha"); o JSON guarda só o que se soma a ela (RT-037, 15/11/2026).
+  const corrida = calc(d.corrida);
   return {
-    arranque: calc(d.arranque), corrida: calc(d.corrida), normal: calc(d.normal),
+    arranque: calc(d.arranque), corrida, normal: calc(d.normal),
     natacao: calc(d.natacao),
     saltoVertical: calc(d.saltoVertical),
     saltoHorizontalParado: calc(d.saltoHorizontalParado),
-    saltoHorizontalCorrendo: calc(d.saltoHorizontalCorrendo),
+    saltoHorizontalCorrendo: corrida + calc(d.saltoHorizontalCorrendo),
   };
 }
 

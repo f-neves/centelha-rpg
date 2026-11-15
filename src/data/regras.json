@@ -600,9 +600,11 @@
     }
   },
   "dadoArmaPorPeso": {
-    "leve": 1,
-    "media": 2,
-    "pesada": 3
+    "leve": "1d6-2",
+    "media": "1d6",
+    "pesada": "2d6",
+    "hasteMedia": "1d6",
+    "hasteGuerra": "1d6+2"
   },
   "dificuldade": [
     {
@@ -941,8 +943,7 @@
         "centelha": 0.5
       },
       "saltoHorizontalCorrendo": {
-        "destreza": 1.5,
-        "atletismo": 1.5,
+        "atletismo": 0.5,
         "centelha": 1
       }
     }
@@ -2599,7 +2600,7 @@
         "titulo": "Corrida",
         "defesa": -4,
         "ataque": 0,
-        "texto": "Vai 50 a 67% mais longe por Tick, e cobra a guarda: Defesa −4 enquanto corre e até a sua próxima ação começar, que é o mesmo −4 do Tick do Golpe. Correndo, apara e esquiva mal. O acerto não sofre: quem parou, parou."
+        "texto": "Vai 40 a 60% mais longe por Tick no Arranque e mais que o dobro na Corrida, e cobra a guarda: Defesa −4 enquanto corre e até a sua próxima ação começar, que é o mesmo −4 do Tick do Golpe. Correndo, apara e esquiva mal. O acerto não sofre: quem parou, parou."
       },
       "investida": {
         "titulo": "Investida",
@@ -2765,7 +2766,7 @@
       "nota": "Abortar o gesto que ainda não saiu. Só no Preparo: no Golpe não se aborta (não há como interromper o próprio braço no instante em que ele cai) e na Recuperação não há o que abortar, o golpe já foi. É o desvio de emergência da §5.5 do Arcano virado regra geral, e é o que dá saída ao arqueiro e ao feiticeiro, que têm Recuperação zero.",
       "fase": "preparo",
       "ticksPorMetro": 1,
-      "ticksPorMetroNota": "O mesmo preço do desvio de emergência contra área (§5.5). Mais barato que os 2 Ticks por metro da Recuperação, e a diferença é a regra inteira: no Preparo você ainda pode desistir, na Recuperação você já não pode, só pode pagar.",
+      "ticksPorMetroNota": "O mesmo preço do desvio de emergência contra área (§5.5) e o mesmo 1 Tick por metro da Recuperação. O que muda é o resto: no Preparo você ainda pode desistir, na Recuperação você já não pode, só pode pagar.",
       "para": [
         "mover",
         "desviar",
