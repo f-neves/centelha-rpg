@@ -9,13 +9,15 @@ Atributos e Habilidades dizem o que o corpo e a mente **conseguem fazer**. Este 
 
 ## A Aparência
 
-A **Aparência** não é um Atributo, é um traço próprio, de **0 a 12** (como a Força de Vontade), que mede o impacto físico que você causa nos outros. Importa porque entra **direto nas jogadas sociais**: some um modificador (a tabela abaixo) sempre que a aparência for relevante.
+A **Aparência** não é um Atributo. É um traço próprio, de **0 a 12** (como a Força de Vontade), que mede o impacto físico que você causa nos outros. Ela importa porque entra **direto nas jogadas sociais**: some um modificador (a tabela abaixo) sempre que a aparência for relevante.
 
 O **0 é o piso grátis**, e é onde o personagem nasce enquanto você não gastar XP nele. Não é o "normal": o normal é o **nível 6**, e chegar lá custa pontos como qualquer outra coisa. Deixar a Aparência no chão é uma escolha, com o preço que a tabela mostra.
 
-E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele: o belo tem **−** ao intimidar e o feio tem **+**, no mesmo tamanho da curva com o sinal trocado (a Aparência 0 dá −6 nas jogadas alinhadas e +6 ao intimidar); e quem é marcante demais sofre ao tentar passar despercebido.
+E ela é **direcional**: ajuda quando está alinhada ao seu objetivo (seduzir, impressionar, cativar) e **atrapalha** quando vai contra ele. O belo tem **−** ao intimidar e o feio tem **+**, no mesmo tamanho da curva com o sinal trocado (a Aparência 0 dá −6 nas jogadas alinhadas e +6 ao intimidar). E quem é marcante demais sofre ao tentar passar despercebido.
 
-A **Compostura** mascara os dois lados do modificador, para os dois lados: sob controle ativo, e não como escudo automático. Quem quer passar despercebido numa multidão apesar de muito belo ou muito feio rola **Compostura + Furtividade** (além de disfarce, maquiagem ou máscara física, que continuam valendo à parte); com sucesso, **cada ponto de Compostura mascara um ponto do módulo do modificador de Aparência**, positivo ou negativo, até o piso zero.
+A **Compostura** mascara os dois lados do modificador: esconde tanto a beleza quanto a feiura, nos dois lados da tabela, sob controle ativo, e não como escudo automático. Quem quer passar despercebido numa multidão apesar de muito belo ou muito feio rola **Compostura + Furtividade** (além de disfarce, maquiagem ou máscara física, que continuam valendo à parte).
+
+Com sucesso, **cada ponto de Compostura mascara um ponto do módulo do modificador de Aparência**, positivo ou negativo, até o piso zero.
 
 | Nível | | Modificador |
 |:---:|---|:---:|
@@ -46,17 +48,27 @@ Se o Atributo é o que o personagem **consegue** fazer e a Habilidade é o que e
 
 <p class="muted">A <strong>tortura</strong> pesa pelas duas metades: aguentar sem falar, sem ceder, sem trair é alma, e rola a Convicção sozinha no <a href="#o-teste-de-virtude">teste de Virtude</a>; aguentar a dor do ferro é corpo, e rola Vigor + Resistência, como qualquer outra dor do corpo. Uma cena pode pedir os dois testes, e o Mestre escolhe qual a situação pede.</p>
 
-**Nota importante antes de escolher os números:** aqui **não existe Virtude ruim**. A régua corta dos dois lados, e uma Virtude **baixa** é conduta esperada tanto quanto uma alta: a Bravura 1 que abandona o posto e salva a pele está sendo tão fiel a si mesma quanto a Bravura 5 que marcha sozinha contra o exército, e as duas rendem a mesma recompensa. Um personagem de Virtudes todas altas não é melhor, é só mais previsível.
+**Antes de escolher os números:** aqui **não existe Virtude ruim**. A régua corta dos dois lados, e uma Virtude **baixa** é conduta esperada tanto quanto uma alta: a Bravura 1 que abandona o posto e salva a pele está sendo tão fiel a si mesma quanto a Bravura 5 que marcha sozinha contra o exército, e as duas rendem a mesma recompensa.
+
+Um personagem de Virtudes todas altas não é melhor, é só mais previsível.
 
 ### Os verbetes
 
-**Compaixão** · O que você faz com a dor dos outros: o impulso de poupar, socorrer e cuidar, e o peso que sobra em quem escolhe não fazer nada. É a Virtude que mais decide cena fora do combate, porque quase toda escolha difícil de uma campanha passa por ela: matar o prisioneiro ou não, gastar a última bandagem em quem não é do grupo, entregar o refugiado para salvar a aldeia. Não confunda com Empatia: a Empatia entende o que o outro está sentindo, a Compaixão decide o que você faz com isso.
+**Compaixão** · O que você faz com a dor dos outros: o impulso de poupar, socorrer e cuidar, e o peso que sobra em quem escolhe não fazer nada.
 
-**Convicção** · A teimosia da alma: o que mantém você de pé quando já não há motivo visível para continuar. É a Virtude do propósito, e quem a testa não é o inimigo que argumenta, é o que dói e cansa: a marcha que não acaba, o cerco no terceiro mês, o ferro em brasa que quer arrancar uma confissão (a dor do ferro, em si, é do corpo), a notícia de que tudo foi em vão. Integridade é não ceder ao que os outros fazem com você; a Convicção é não ceder quando ninguém está fazendo nada, só o tempo e a dor.
+É a Virtude que mais decide cena fora do combate, porque quase toda escolha difícil de uma campanha passa por ela: matar o prisioneiro ou não, gastar a última bandagem em quem não é do grupo, entregar o refugiado para salvar a aldeia. Não confunda com Empatia: a Empatia entende o que o outro está sentindo, a Compaixão decide o que você faz com isso.
 
-**Temperança** · O domínio sobre o que vem de dentro: apetite, raiva, pressa, orgulho e a vontade de responder à provocação. É a Virtude do freio, e ela decide as cenas em que o erro não veio do inimigo, veio de você: o insulto que não devia ter sido respondido, a bolsa de ouro que não devia ter sido aceita, o gole a mais na véspera da batalha. Onde a Convicção aguenta o que vem de fora e dói, a Temperança aguenta o que vem de dentro e agrada.
+**Convicção** · A teimosia da alma: o que mantém você de pé quando já não há motivo visível para continuar.
 
-**Bravura** · A disposição de encarar o que assusta: ficar quando o corpo inteiro manda correr, avançar contra o que é maior, dizer não a quem tem poder de destruir você. É a Virtude que decide se a cena chega a acontecer, porque quase toda cena perigosa começa com alguém escolhendo não sair dali. Não é ausência de medo, é o medo não mandando: a Bravura decide se você fica, e a Temperança decide se você mantém a cabeça fria enquanto fica.
+É a Virtude do propósito, e quem a testa não é o inimigo que argumenta, é o que dói e cansa: a marcha que não acaba, o cerco no terceiro mês, o ferro em brasa que quer arrancar uma confissão (a dor do ferro, em si, é do corpo), a notícia de que tudo foi em vão. Integridade é não ceder ao que os outros fazem com você; a Convicção é não ceder quando ninguém está fazendo nada, só o tempo e a dor.
+
+**Temperança** · O domínio sobre o que vem de dentro: apetite, raiva, pressa, orgulho e a vontade de responder à provocação.
+
+É a Virtude do freio, e ela decide as cenas em que o erro não veio do inimigo, veio de você: o insulto que não devia ter sido respondido, a bolsa de ouro que não devia ter sido aceita, o gole a mais na véspera da batalha. Onde a Convicção aguenta o que vem de fora e dói, a Temperança aguenta o que vem de dentro e agrada.
+
+**Bravura** · A disposição de encarar o que assusta: ficar quando o corpo inteiro manda correr, avançar contra o que é maior, dizer não a quem tem poder de destruir você.
+
+É a Virtude que decide se a cena chega a acontecer, porque quase toda cena perigosa começa com alguém escolhendo não sair dali. Não é ausência de medo, é o medo não mandando: a Bravura decide se você fica, e a Temperança decide se você mantém a cabeça fria enquanto fica.
 
 <p class="muted">Cada Virtude tem os seis degraus escritos, com a <strong>conduta</strong> esperada em cada um, e a ficha mostra essa régua ao clicar no nome da Virtude.</p>
 
@@ -83,11 +95,13 @@ Quando a pressão é sobre a alma (o medo que manda correr, a provocação que p
 
 O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto da média e apaga a diferença entre uma Virtude e a vizinha, que é justamente o que o teste existe para mostrar. A **Centelha** também não entra no teste de Virtude: nem inteira, nem pelo 2 × mín.
 
-**Só a pressão da alma vai com a Virtude sozinha, e o corpo não testa Virtude nenhuma.** O que pesa no **corpo**, a dor física inclusive, não é teste de Virtude: a dor do ferro, os efeitos das [Artes](/artes/regras) que invadem o corpo e o próprio sangramento, quando a pessoa o estanca sozinha ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)), são **Vigor + Resistência**, a mesma Habilidade que já resolve veneno, doença e ambiente hostil no capítulo [Resistir](/regras/acoes-resistir); quem estanca o de outro rola **Raciocínio + Cura** ([Cap. IV](/regras/vida-ferimentos-cura)). Ali quem aguenta é a carne, e nenhuma Virtude entra na conta. Do mesmo jeito, as jogadas das Artes que forçam a alma de outra coisa a ceder (Banir, Círculo) resistem pela [Defesa Mental](/regras/defesas), um número passivo, não um teste: quem rola é quem conjura, Influência + Intimidação (ver [Regras das Artes](/artes/regras)).
+**Só a pressão da alma vai com a Virtude sozinha, e o corpo não testa Virtude nenhuma.** O que pesa no **corpo**, a dor física inclusive, não é teste de Virtude: a dor do ferro, os efeitos das [Artes](/artes/regras) que invadem o corpo e o próprio sangramento, quando a pessoa o estanca sozinha ([Estabilizar](/regras/vida-ferimentos-cura#sangramento-e-estabilização)), são **Vigor + Resistência**, a mesma Habilidade que já resolve veneno, doença e ambiente hostil no capítulo [Resistir](/regras/acoes-resistir). Quem estanca o de outro rola **Raciocínio + Cura** ([Cap. IV](/regras/vida-ferimentos-cura)). Ali quem aguenta é a carne, e nenhuma Virtude entra na conta.
+
+Do mesmo jeito, as jogadas das Artes que forçam a alma de outra coisa a ceder (Banir, Círculo) resistem pela [Defesa Mental](/regras/defesas), um número passivo, não um teste: quem rola é quem conjura, Influência + Intimidação (ver [Regras das Artes](/artes/regras)).
 
 **Fora do teste de Virtude sozinho, a única soma de Virtude com Atributo ou Habilidade no jogo é o Canalizar Virtude**, o callout logo abaixo: um bônus voluntário, não um teste, sem Dificuldade própria. Nenhuma outra regra do livro soma Virtude a Atributo ou Habilidade na mesma parada.
 
-**A Dificuldade vem de uma régua própria, de dois em dois**, e não da régua de 5 em 5 do resto do jogo. Aquela foi feita para paradas que crescem sem limite; a da Virtude para em 3d6, 18 no máximo, e contra ela a Dificuldade 20 e a 25 nunca passam e a 15 só passa Virtude 6, 5% das vezes. Os rótulos também são outros, para ninguém ler "Dura" e pensar em 15. Sucesso continua sendo total **maior** que a Dificuldade.
+**A Dificuldade vem de uma régua própria, de dois em dois**, e não da régua de 5 em 5 do resto do jogo. Aquela foi feita para paradas que crescem sem limite. A da Virtude para em 3d6, 18 no máximo, e contra ela a Dificuldade 20 e a 25 nunca passam e a 15 só passa Virtude 6, 5% das vezes. Os rótulos também são outros, para ninguém ler "Dura" e pensar em 15. Sucesso continua sendo total **maior** que a Dificuldade.
 
 | Dificuldade | Rótulo | V1 | V2 | V3 | V4 | V5 | V6 |
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -100,9 +114,13 @@ O Atributo fica de fora de propósito: somado, ele empurra todo mundo para perto
 
 <p class="muted">Chance de passar, em porcentagem, sem Firula. A escada não é lisa por causa do +2 do ímpar: da Tensa para a Séria a Virtude 3 cai de 50 para 17, e da Séria para a Dura a Virtude 4 cai de 42 para 17. É consequência da conversão, e não defeito.</p>
 
-A tabela é a régua de personalidade em números. A **Virtude 2** só segura a Branda, e cede na maior parte do cotidiano, que é o que ela descreve. A **Virtude 5** segura quase tudo até a Séria e começa a ceder na Dura: só cede se quiser, com uma margem de azar. Na Extrema só a **Virtude 5** e a **6** existem, e por pouco: 3% (um em trinta e seis) e 16%. E a **Virtude 1 não passa em nada**, nem na Branda: ela é quase um defeito de caráter, e o único jeito de passar é a Firula.
+A tabela é a régua de personalidade em números. A **Virtude 2** só segura a Branda, e cede na maior parte do cotidiano, que é o que ela descreve. A **Virtude 5** segura quase tudo até a Séria e começa a ceder na Dura: só cede se quiser, com uma margem de azar.
 
-**A Firula vale aqui como em qualquer teste** (+2 no nível 1, +1d6 no 2, +2d6 no 3, pela tabela de [Habilidades](/regras/habilidades)), e pesa mais do que em outros lugares, porque a parada da Virtude é curta. A Firula de nível 2 desloca a linha inteira duas casas: Virtude 2 com Firula 2 rola igual a Virtude 4 sem ela. A descrição pesa mais que a ficha, e é também o que tira a Virtude 1 do chão: com Firula 2, ela passa metade das vezes na Tensa. **A Firula também pode ser negativa**: se a descrição do jogador prejudica a ação, ela tira dados ou pontos em vez de somar, e quem julga é o Mestre. Essa Firula negativa é só do teste de Virtude (e do Frenesi, que é um teste de Virtude), e não devolve reserva nenhuma. Ela não é a **Firula Infeliz** das [Relações Sociais](/regras/relacoes-sociais), que é outra coisa: o gesto que desagrada, e que desce a régua de Relação.
+Na Extrema só a **Virtude 5** e a **6** existem, e por pouco: 3% (um em trinta e seis) e 16%. E a **Virtude 1 não passa em nada**, nem na Branda: ela é quase um defeito de caráter, e o único jeito de passar é a Firula.
+
+**A Firula vale aqui como em qualquer teste** (+2 no nível 1, +1d6 no 2, +2d6 no 3, pela tabela de [Habilidades](/regras/habilidades)), e pesa mais do que em outros lugares, porque a parada da Virtude é curta. A Firula de nível 2 desloca a linha inteira duas casas: Virtude 2 com Firula 2 rola igual a Virtude 4 sem ela. A descrição pesa mais que a ficha, e é também o que tira a Virtude 1 do chão: com Firula 2, ela passa metade das vezes na Tensa.
+
+**A Firula também pode ser negativa**: se a descrição do jogador prejudica a ação, ela tira dados ou pontos em vez de somar, e quem julga é o Mestre. Essa Firula negativa é só do teste de Virtude (e do Frenesi, que é um teste de Virtude), e não devolve reserva nenhuma. Ela não é a **Firula Infeliz** das [Relações Sociais](/regras/relacoes-sociais), que é outra coisa: o gesto que desagrada, e que desce a régua de Relação.
 
 <div class="callout regra"><span class="lbl">Canalizar Virtude</span>Uma vez por cena, por Virtude, numa ação coerente com ela, some o valor da Virtude à sua soma base: a rolagem passa a ser <strong>Atributo + Habilidade + Virtude</strong>. O herói que age movido por suas paixões transcende. (Sem risco nem contrapartida: aqui a Virtude é só impulso.)</div>
 
@@ -110,11 +128,15 @@ A tabela é a régua de personalidade em números. A **Virtude 2** só segura a 
 
 ## Força de Vontade
 
-A **Força de Vontade** é a reserva interior de determinação: o tanto de si que o personagem consegue **queimar para forçar o destino**. Vai de **0 a 12** e **começa em 0**, o piso grátis, que não é uma vontade fraca e sim reserva nenhuma, nada a queimar. O nível 1 já é comprado, e um herói típico leva a Vontade para 5 ou mais.
+A **Força de Vontade** é a reserva interior de determinação: o tanto de si que o personagem consegue **queimar para forçar o destino**. Vai de **0 a 12** e **começa em 0**, o piso grátis. Esse piso não é uma vontade fraca, e sim reserva nenhuma: nada a queimar. O nível 1 já é comprado, e um herói típico leva a Vontade para 5 ou mais.
 
-Você gasta Vontade para **turbinar uma ação importante** (cada ponto soma **+1d6** numa jogada ativa ou **+4** numa Defesa, no máximo **1 ponto por ação ou jogada**, inclusive cada golpe que se defende), **resistir** a medo e manipulação (resistir é um **pagamento à parte**, fora desse limite de 1 ponto: 1 + Margem, teto 4; ver [Resistir](/regras/relacoes-sociais#resistir-gastar-força-de-vontade), em Relações Sociais), **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas. O ponto de +1d6 ou de +4 se declara antes do teste (na Defesa, antes de quem ataca rolar) e não volta, acerte o golpe ou erre. O +4 vale também contra leitura social, porque a leitura bate no número da Defesa Social; o que não existe contra leitura é a recusa de depois (Resistir).
+Você gasta Vontade para **turbinar uma ação importante** (cada ponto soma **+1d6** numa jogada ativa ou **+4** numa Defesa, no máximo **1 ponto por ação ou jogada**, inclusive cada golpe que se defende), **resistir** a medo e manipulação (resistir é um **pagamento à parte**, fora desse limite de 1 ponto: 1 + Margem, teto 4; ver [Resistir](/regras/relacoes-sociais#resistir-gastar-força-de-vontade), em Relações Sociais), **ignorar penalidades** e **conjurar** as Técnicas e Artes mais poderosas.
 
-**Ela volta por três caminhos.** O primeiro é uma **noite de sono**: 1 ponto, em meditação, descanso completo ou sono profundo, o mesmo repouso que ajuda a Mana (que é outra reserva e volta pela conta dela, em Regras das Artes; a Energia volta a cada cena). O segundo é uma **[Firula](/regras/habilidades)**, e aqui o número depende do nível: a de nível 2 devolve **1** e a de nível 3 devolve **3**, se for a Vontade que você escolher entre as três reservas. O terceiro é **agir fiel à própria régua moral** num momento em que isso custa: 1 ponto, a critério do Mestre (o callout acima).
+O ponto de +1d6 ou de +4 se declara antes do teste (na Defesa, antes de quem ataca rolar) e não volta, acerte o golpe ou erre. O +4 vale também contra leitura social, porque a leitura bate no número da Defesa Social; o que não existe contra leitura é a recusa de depois (Resistir).
+
+**Ela volta por três caminhos.** O primeiro é uma **noite de sono**: 1 ponto, em meditação, descanso completo ou sono profundo, o mesmo repouso que ajuda a Mana (que é outra reserva e volta pela conta dela, em Regras das Artes; a Energia volta a cada cena).
+
+O segundo é uma **[Firula](/regras/habilidades)**, e aqui o número depende do nível: a de nível 2 devolve **1** e a de nível 3 devolve **3**, se for a Vontade que você escolher entre as três reservas. O terceiro é **agir fiel à própria régua moral** num momento em que isso custa: 1 ponto, a critério do Mestre (o callout acima).
 
 <p class="muted">Repare no relógio, porque ele é o que dá o peso: pela cama a Vontade volta <strong>1 por noite</strong>, e não há atalho. Uma Firula de nível 3 vale <strong>três noites de sono</strong> de uma vez, e é o número mais forte das três reservas. Não há teto por cena, e isso é decisão da mesa e não esquecimento: os números estão no ar para serem testados.</p>
 
@@ -122,7 +144,7 @@ Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na *
 
 ## Integridade & Defesa Mental
 
-**Integridade** é a habilidade de firmeza moral: o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
+**Integridade** é a Habilidade da firmeza moral: o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
 
 A **Defesa Mental** é o muro passivo que o medo imposto, a ordem, a leitura da mente e os outros poderes mentais precisam superar (convencer e intimidar numa conversa batem na Defesa Social; o medo da cena é da Bravura, pela [régua do medo](/regras/defesas)):
 
