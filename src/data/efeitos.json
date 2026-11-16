@@ -1398,9 +1398,14 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir.",
+    "efeito": "A sombra ganha corpo e prende. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é pego fica Preso: não se desloca, mas age, e se solta com Força + Atletismo contra a Dificuldade.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1415,7 +1420,7 @@
       "dissipa": false,
       "fere": true,
       "cura": false,
-      "teste": false
+      "teste": true
     }
   },
   {
@@ -6101,7 +6106,7 @@
       }
     ],
     "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Enquanto durar, cada nível da Arte encurta em 10% o intervalo da tabela de Recuperação, até no máximo 50% (o dobro da velocidade), que o nível 5 alcança. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: em quem está em 0 PV ou menos, a tabela de Recuperação não vale, e a Arte soma ao teste de Tratar de cada dia em que durar o que a Vida soma no Tratar, +1 por nível da Arte (Vida, Ferimentos & Cura). O que muda com o nível é o quanto, e não o que ela alcança.",
-    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos: em vez da régua dela, encurta o intervalo em 10% por nível da Arte, até 50% (o nível investido por quem conjura, o mesmo que a prosa chama de Vida 1, 2 ou 3). O encurtamento da Arte e o da Cura de quem cuida não se somam: vale o maior. Como o do Cap. IV, ele não vale na linha \"por dia\".",
+    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos: em vez da régua dela, encurta o intervalo em 10% por nível da Arte, até 50% (o nível da Arte de quem conjura, o que a prosa chama de Vida 1, 2 ou 3). O encurtamento da Arte e o da Cura de quem cuida não se somam: vale o maior. Como o do Cap. IV, ele não vale na linha \"por dia\".",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
