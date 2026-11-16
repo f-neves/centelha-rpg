@@ -79,7 +79,7 @@ Você tem duas maneiras de se defender e usa a que couber. Na ficha as duas apar
 
 - **Defesa Social** = ( Compostura + Sociabilidade ) × 2 + 2 × menor(Centelha, Sociabilidade) + Especialidade
 
-Nas **criaturas de Inteligência 1** (regra de criatura: feras, bichos de instinto e outras), troca-se **Sociabilidade por Sobrevivência**: um animal não tem trato social, mas sente o perigo.
+Nas **criaturas de Inteligência 1** (regra de criatura: feras, bichos de instinto e outras), troca-se **Sociabilidade por Sobrevivência**: uma criatura de instinto não tem trato social, mas sente o perigo.
 
 ### Defesa Mental
 
@@ -128,7 +128,7 @@ Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da cr
 
 - **Física · Esquiva** = (Des + Esquiva)×2 + 2×menor(Centelha, Esquiva) + Esp.
 - **Física · Bloqueio** = (Des + Bloqueio)×2 + 2×menor(Centelha, Bloqueio) + Esp + defesa da arma.
-- **Social** = (Compostura + Sociabilidade)×2 + 2×menor(Centelha, Sociabilidade) + Esp. Feras usam Sobrevivência.
+- **Social** = (Compostura + Sociabilidade)×2 + 2×menor(Centelha, Sociabilidade) + Esp. Criaturas de Inteligência 1 usam Sobrevivência.
 - **Mental** = Raciocínio + Integridade + Força de Vontade + 2×menor(Centelha, Integridade) + Esp (soma simples).
 - **Centelha** = 2 × mín(Centelha, Habilidade) em cada defesa e no ataque; Habilidade 0 dá 0. **Esp.** é a [Especialidade](#especialidade-o-foco-que-só-vale-às-vezes), que só vale na situação dela.
 - **Social** = te mover ou te ler. **Mental** = invadir/impor na sua mente. **Medo da cena** = Bravura.
