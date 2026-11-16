@@ -49,7 +49,7 @@
       {
         "nivel": 4,
         "nome": "Bola de Fogo",
-        "efeito": "explosão em área (3d6); parede de chamas",
+        "efeito": "Efeito em recalibração: explosão em área (3d6); parede de chamas",
         "custo": {
           "mana": 4
         },
