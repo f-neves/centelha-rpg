@@ -5396,7 +5396,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "pressente uma ameaça oculta nas redondezas.",
+    "texto": "Pressente uma ameaça oculta nas redondezas.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5414,7 +5414,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "nota o que está fora do lugar (armadilhas, espreita).",
+    "texto": "Nota o que está fora do lugar (armadilhas, espreita).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5430,7 +5430,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "age normalmente em emboscadas; não pode ser pego de surpresa.",
+    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5448,7 +5448,7 @@
       "olho-atento"
     ],
     "aliases": [],
-    "texto": "num relance, mapeia ameaças, saídas e vantagens.",
+    "texto": "Num relance, mapeia ameaças, saídas e vantagens.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5467,7 +5467,7 @@
       "sentir-perigo"
     ],
     "aliases": [],
-    "texto": "sente intenções hostis antes que ocorram; reage a ataques invisíveis.",
+    "texto": "Sente intenções hostis antes que ocorram; reage a ataques invisíveis.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5486,7 +5486,7 @@
       "sexto-sentido"
     ],
     "aliases": [],
-    "texto": "percebe tudo numa grande área ao mesmo tempo.",
+    "texto": "Percebe tudo numa grande área ao mesmo tempo.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5505,7 +5505,7 @@
       "olhos-por-toda-parte"
     ],
     "aliases": [],
-    "texto": "vigilância perfeita e constante; nada o pega desprevenido, nem o sobrenatural.",
+    "texto": "Uma vigilância perfeita e constante; nada o pega desprevenido, nem o sobrenatural.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5537,7 +5537,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "segue um cheiro ou trilha mesmo tênue.",
+    "texto": "Segue um cheiro ou trilha mesmo tênue.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5555,7 +5555,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "deduz o que houve por marcas (quantos, quando, para onde).",
+    "texto": "Deduz o que houve por marcas (quantos, quando, para onde).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5573,7 +5573,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "segue rastros antigos ou apagados.",
+    "texto": "Segue rastros antigos ou apagados.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5591,7 +5591,7 @@
       "faro"
     ],
     "aliases": [],
-    "texto": "aproxima-se da presa sem ser notado; conhece seus hábitos.",
+    "texto": "Aproxima-se da presa sem ser notado; conhece seus hábitos.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5610,7 +5610,7 @@
       "predador"
     ],
     "aliases": [],
-    "texto": "persegue um alvo por qualquer terreno, dias a fio.",
+    "texto": "Persegue um alvo por qualquer terreno, dias a fio.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5629,7 +5629,7 @@
       "caca-implacavel"
     ],
     "aliases": [],
-    "texto": "localiza uma presa específica à distância; sente sua presença.",
+    "texto": "Localiza uma presa específica à distância; sente sua presença.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5648,7 +5648,7 @@
       "sentidos-de-cacada"
     ],
     "aliases": [],
-    "texto": "nada que você caça escapa, onde quer que se esconda.",
+    "texto": "Nada que você caça escapa, onde quer que se esconda.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5680,7 +5680,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "sente quando alguém mente.",
+    "texto": "Sente quando alguém mente.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5698,7 +5698,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "nota disfarces e fingimentos malfeitos.",
+    "texto": "Nota disfarces e fingimentos malfeitos.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5716,7 +5716,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "percebe falsificações e segundas intenções.",
+    "texto": "Percebe falsificações e segundas intenções.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5734,7 +5734,7 @@
       "ver-atraves"
     ],
     "aliases": [],
-    "texto": "revela um disfarce ou mentira mundana (vs Camaleão/Máscara).",
+    "texto": "Revela um disfarce ou mentira mundana (contra o Camaleão ou a Máscara).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5753,7 +5753,7 @@
       "desmascarar"
     ],
     "aliases": [],
-    "texto": "vê através de ilusões e enganos, inclusive alguns mágicos.",
+    "texto": "Vê através de ilusões e enganos, inclusive alguns mágicos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5772,7 +5772,7 @@
       "verdade-nua"
     ],
     "aliases": [],
-    "texto": "nenhuma mentira ou disfarce o engana.",
+    "texto": "Mentira ou disfarce nenhum o engana.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5791,7 +5791,7 @@
       "olho-que-nao-erra"
     ],
     "aliases": [],
-    "texto": "percebe a verdade absoluta de uma pessoa ou situação.",
+    "texto": "Percebe a verdade absoluta de uma pessoa ou situação.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -8127,7 +8127,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (vs Defesa Social).",
+    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
