@@ -40,7 +40,7 @@
     "aliases": [
       "dif"
     ],
-    "definicao": "O alvo de uma tarefa, na mesma régua de Atributo + Habilidade (5 fácil, 10 média, 15 difícil, 20 limite humano, 25 excepcional, 30 sobre-humano)."
+    "definicao": "O alvo de uma tarefa, na mesma régua de Atributo + Habilidade (5 fácil, 10 média, 15 difícil, 20 limite humano, 25 excepcional, 30 sobre-humano; acima, 35 lendário, 40 mítico e 45 semidivino, além do teto do jogador)."
   },
   {
     "id": "soak",
@@ -155,7 +155,7 @@
     "id": "integridade",
     "termo": "Integridade",
     "aliases": [],
-    "definicao": "Habilidade de firmeza moral e compostura; resistir a manipulação e poderes mentais. Sustenta a Defesa Mental."
+    "definicao": "Habilidade de firmeza moral: não ceder a manipulação, terror, extorsão e poderes mentais. Sustenta a Defesa Mental."
   },
   {
     "id": "especialidade",
