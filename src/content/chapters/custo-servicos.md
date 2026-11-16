@@ -70,7 +70,7 @@ Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam 
 
 Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de capacidade, e não da bancada. Do desafio 4 em diante a tabela é provisória até a revisão do valor das recompensas. O desafio de cada criatura segue provisório até a revisão das criaturas. O topo da tabela depende de existir onde gastar tanto dinheiro. A tabela vai até o desafio 9: acima disso não há valor.
 
-**Trabalho de Habilidade** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Num trabalho de seguir alguém, o preço usa o **Valor Passivo inteiro do alvo** (a Percepção Passiva dele); na cena vale a regra do Esgueirar, em que a [Acumulada](/regras/acoes-e-sistema#acumulada) (o modo de ação em que cada jogada soma o que passou da Dificuldade, até um total) vai contra 70% dele.
+**Trabalho de Habilidade** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Num trabalho de seguir alguém, o preço usa o **Valor Passivo inteiro do alvo** (a Percepção Passiva dele); na cena vale a regra do Esgueirar, em que a [Acumulada](/regras/acoes-e-sistema#acumulada) vai contra 70% dele (a Acumulada é o modo de ação em que cada jogada soma o que passou da Dificuldade, até um total).
 
 Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22).
 
