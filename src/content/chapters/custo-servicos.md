@@ -39,7 +39,9 @@ Trabalhos pontuais, como abater uma colônia de aranhas, escoltar um mercador, p
 
 A bolsa é Livre: durante o trabalho, o custo de vida do personagem continua saindo dos Recursos dele. Contratar um profissional de fora, por diária, custa a renda dele, pela tabela de Serviços, e não a bolsa.
 
-Se um profissional faria o trabalho como serviço comum do ofício dele (o mensageiro leva a carta, o rastreador segue a trilha), o preço é o de Serviços, pela renda dele. A bolsa é para o trabalho pontual fora da rotina de um ofício: com sigilo, ilegal, perigoso, recusado pelos profissionais, ou quando não há profissional ao alcance. Acima de Dificuldade 20 nunca há: nenhum mortal passa esses testes, e a tabela de Serviços para no Mestre de ofício (soma 12). Por exemplo: consertar a ponte da aldeia isolada, a dias de qualquer carpinteiro: bolsa, e não Serviços.
+Se um profissional faria o trabalho como serviço comum do ofício dele (o mensageiro leva a carta, o rastreador segue a trilha), o preço é o de Serviços, pela renda dele.
+
+A bolsa é para o trabalho pontual fora da rotina de um ofício: com sigilo, ilegal, perigoso, recusado pelos profissionais, ou quando não há profissional ao alcance. Acima de Dificuldade 20 nunca há: nenhum mortal passa esses testes, e a tabela de Serviços para no Mestre de ofício (soma 12). Por exemplo: consertar a ponte da aldeia isolada, a dias de qualquer carpinteiro: bolsa, e não Serviços.
 
 <p class="formula">Bolsa = Valor por pessoa × Semanas × Tarefa × Risco × Pessoas</p>
 
@@ -47,7 +49,11 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 **Valor por pessoa**, por semana, por dois caminhos. Com as duas coisas no mesmo trabalho, vale o maior.
 
-**Trabalho de confronto** (caçar, proteger, escoltar com ameaça, recuperar à força): pela tabela de desafio, no **desafio do trabalho**, o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (semanas limpando uma infestação, por exemplo) entra em Semanas, e não no desafio. O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia. Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência. O meio degrau é a média geométrica dos dois vizinhos, arredondada.
+**Trabalho de confronto** (caçar, proteger, escoltar com ameaça, recuperar à força): pela tabela de desafio, no **desafio do trabalho**, o do **pior confronto que o grupo precisa vencer** para cumprir o trabalho. A duração (semanas limpando uma infestação, por exemplo) entra em Semanas, e não no desafio.
+
+O desafio do trabalho é absoluto: é o da ameaça, medido contra o grupo de referência (4 personagens de Centelha igual ao desafio), e não muda conforme o grupo que aceita o trabalho. Um grupo veterano que pega uma matilha de worgs recebe o mesmo que um grupo novato receberia.
+
+Animal comum não tem desafio próprio; a ficha traz uma nota de quantos formam um desafio 0 para um grupo de Centelha 0, como referência. O meio degrau é a média geométrica dos dois vizinhos, arredondada.
 
 <!-- gen:economia-recompensas -->
 
@@ -64,7 +70,11 @@ A conta inteira, passo a passo, está na [Calculadora de Recompensa](/recompensa
 
 Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de capacidade, e não da bancada. Do desafio 4 em diante a tabela é provisória até a revisão do valor das recompensas. O desafio de cada criatura segue provisório até a revisão das criaturas. O topo da tabela depende de existir onde gastar tanto dinheiro. A tabela vai até o desafio 9: acima disso não há valor.
 
-**Trabalho de Habilidade** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Num trabalho de seguir alguém, o preço usa o **Valor Passivo inteiro do alvo** (a Percepção Passiva dele); na cena vale a regra do Esgueirar, em que a Acumulada vai contra 70% dele. Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22). Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
+**Trabalho de Habilidade** (investigar, roubar, invadir, entregar): pela Dificuldade dos testes decisivos (a de [De onde sai a Dificuldade](/regras/acoes-e-sistema#de-onde-sai-a-dificuldade)). Num trabalho de seguir alguém, o preço usa o **Valor Passivo inteiro do alvo** (a Percepção Passiva dele); na cena vale a regra do Esgueirar, em que a [Acumulada](/regras/acoes-e-sistema) (o modo de ação que soma jogadas até um total) vai contra 70% dele.
+
+Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22).
+
+Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
 
 <!-- gen:economia-recompensas-pericia -->
 
@@ -100,9 +110,11 @@ Os outros fatores da conta:
 
 **O que a bolsa paga:** um trabalho, pago por alguém com um objetivo (livrar o lugar da ameaça, proteger o rebanho ou a gente), e não cabeças. Matar criaturas sem trabalho contratado não paga nada. Cumprir parte do trabalho não paga parte, a não ser que o Mestre decida. Pagamento por peça (um crânio, uma parte para poção) é outra coisa: entra pela Tarefa "trazer parte ou prova" ou pela venda de partes (em Despesas e partes, abaixo), e não divide a bolsa.
 
-**Estimar o desafio de um confronto com várias criaturas** (ajuda opcional, **provisória**: a bancada mediu bandos que sobem mais rápido, e a medida com a Regra de Horda ainda está por fazer): a criatura no desafio da mais forte conta 1, e cada desafio abaixo dela divide por 4, sem piso (um abaixo 1/4, dois 1/16, três 1/64); some esses equivalentes, com fração. O confronto fica no desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram, para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3). É só uma estimativa do desafio: não multiplica nem divide a bolsa, e o Mestre pode preferir um desafio medido ou conhecido.
+**Estimar o desafio de um confronto com várias criaturas** (ajuda opcional, **provisória**: a bancada mediu bandos que sobem mais rápido, e a medida com a Regra de Horda ainda está por fazer): a criatura no desafio da mais forte conta 1, e cada desafio abaixo dela divide por 4, sem piso (um abaixo 1/4, dois 1/16, três 1/64); some esses equivalentes, com fração. O confronto fica no desafio da mais forte + Magnitude ÷ 2: sobe 1/2 a cada vez que os equivalentes dobram, para baixo, nos mesmos degraus da Magnitude da [Regra de Horda](/regras/combate#regra-de-horda) (1: +0; 2 a 3: +1/2; 4 a 7: +1; 8 a 15: +1 1/2; 16 a 31: +2; 32 a 63: +2 1/2; 64 a 127: +3).
 
-**Exemplos de trabalho** (sem viagem, tom padrão; a bolsa sai arredondada):
+É só uma estimativa do desafio: não multiplica nem divide a bolsa, e o Mestre pode preferir um desafio medido ou conhecido.
+
+**Exemplos de trabalho** (sem viagem, tom padrão; a bolsa sai arredondada). Em cada conta, o primeiro número é o Valor por pessoa, lido na tabela de desafio ou na de Dificuldade; os outros seguem a ordem da fórmula: Semanas, Tarefa, Risco e Pessoas.
 
 - **Seguir em segredo quem não quer ser achado e descobrir onde mora** (investigar, Dificuldade 15, o Valor Passivo do alvo, 1 semana, descobrir um fato ×1, 1 pessoa): 40 × 1 × 1 × 1 × 1 = **40 pc**.
 - **Seguir um espião treinado sem ser notado e trazer prova do que ele faz** (investigar, Dificuldade 20, o Valor Passivo do espião, 2 semanas, com prova ×1,5, 1 pessoa): 65 × 2 × 1,5 × 1 × 1 = 195, arredondada: **200 pc**.
