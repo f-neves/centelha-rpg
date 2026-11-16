@@ -275,7 +275,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Golpes desarmados contam como arma (sem penalidade vs armados) e **atravessam o zero mesmo contra quem pararia o Impacto nele** (o Inquebrantável e o que vier depois dele).",
+    "texto": "Golpes desarmados contam como arma (sem penalidade contra armados) e **atravessam o zero mesmo contra quem pararia o Impacto nele** (o Inquebrantável e o que vier depois dele).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -401,7 +401,7 @@
       "punho-que-parte-pedra"
     ],
     "aliases": [],
-    "texto": "O soco projeta uma onda que atinge todos numa linha/área à frente.",
+    "texto": "O soco projeta uma onda que atinge todos numa linha ou numa área à frente.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -2527,7 +2527,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "carrega/ergue o dobro do normal sem penalidade.",
+    "texto": "Carrega ou ergue o dobro do normal sem penalidade.",
     "pendente": false,
     "nivel": 1,
     "efeito": "carga"
@@ -2545,7 +2545,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
+    "texto": "Ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2563,7 +2563,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "atira objetos pesados ou pessoas como arma (~×2 o normal).",
+    "texto": "Atira objetos pesados ou pessoas como arma (~×2 o normal).",
     "pendente": false,
     "nivel": 1,
     "efeito": "carga"
@@ -2579,7 +2579,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "sustenta pesos imensos por longos períodos (~×4 o normal).",
+    "texto": "Sustenta pesos imensos por longos períodos (~×4 o normal).",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2597,7 +2597,7 @@
       "levantamento-poderoso"
     ],
     "aliases": [],
-    "texto": "agarra e esmaga um objeto ou membro.",
+    "texto": "Agarra e esmaga um objeto ou membro.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2616,7 +2616,7 @@
       "arremesso"
     ],
     "aliases": [],
-    "texto": "arranca árvores, postes e portões para usar como arma.",
+    "texto": "Arranca árvores, postes e portões para usar como arma.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -2635,7 +2635,7 @@
       "arrancar"
     ],
     "aliases": [],
-    "texto": "ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
+    "texto": "Ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
     "pendente": false,
     "nivel": 5,
     "efeito": "carga"
@@ -2654,7 +2654,7 @@
       "forca-titanica"
     ],
     "aliases": [],
-    "texto": "sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
+    "texto": "Sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
     "pendente": false,
     "nivel": 6,
     "efeito": "carga"
@@ -2778,7 +2778,7 @@
       "esmaga-pedra"
     ],
     "aliases": [],
-    "texto": "bate o chão, abre fendas e derruba quem está perto.",
+    "texto": "Bate o chão, abre fendas e derruba quem está perto.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -2811,7 +2811,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+3 para agarrar e manter agarrões.",
+    "texto": "+3 para agarrar e para manter o agarrão.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2829,7 +2829,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "prende o agarrado: ele fica Imobilizado (não age, nem com Firula, e não grita se o tipo de imobilização disser). Só cobra a manutenção, a cada 6 Ticks, se o alvo estiver tentando se libertar.",
+    "texto": "Prende o agarrado: ele fica Imobilizado (não age, nem com Firula, e não grita se o tipo de imobilização disser). Só cobra a manutenção, a cada 6 Ticks, se o alvo estiver tentando se libertar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2847,7 +2847,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "arremessa um inimigo agarrado (dano + afasta).",
+    "texto": "Arremessa um inimigo agarrado (dano + afasta).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2865,7 +2865,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "dano contínuo a quem está agarrado.",
+    "texto": "Dano contínuo a quem está agarrado.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2883,7 +2883,7 @@
       "imobilizar"
     ],
     "aliases": [],
-    "texto": "usa o agarrado como escudo.",
+    "texto": "Usa o agarrado como escudo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2902,7 +2902,7 @@
       "imobilizar"
     ],
     "aliases": [],
-    "texto": "controla o corpo do oponente (sufoca, quebra membros).",
+    "texto": "Controla o corpo do oponente (sufoca, quebra membros).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -2921,7 +2921,7 @@
       "dominar"
     ],
     "aliases": [],
-    "texto": "esmaga ossos e armaduras no abraço; parte armas e escudos.",
+    "texto": "Esmaga ossos e armaduras no abraço; parte armas e escudos.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -2940,7 +2940,7 @@
       "aperto-esmagador"
     ],
     "aliases": [],
-    "texto": "agarra e esmaga criaturas de qualquer tamanho; nada escapa.",
+    "texto": "Agarra e esmaga criaturas de qualquer tamanho; nada escapa.",
     "pendente": false,
     "nivel": 6,
     "efeito": "tamanho"
