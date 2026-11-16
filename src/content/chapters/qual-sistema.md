@@ -64,7 +64,7 @@ flowchart TD
 
 ## Régua de Relação ou Combate Social?
 
-A Régua é o **default** do social. O Combate Social é a exceção, reservado às cenas grandes. Na dúvida, é Régua.
+A Régua é o **padrão** do social. O Combate Social é a exceção, reservado às cenas grandes. Na dúvida, é Régua.
 
 ```mermaid
 flowchart TD
@@ -113,7 +113,8 @@ flowchart TD
 - **Ação comum:** Atributo + Habilidade vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). O alvo é o **total dos dados somado**, não uma face que caiu; supera o alvo = sucesso; **cada 6 pontos** de folga acima dele = +1 Margem.
 - **Social x Mental:** passa pelo juízo = Social; contorna o juízo = Mental. (Ver [As Três Defesas](/regras/defesas).)
 - **Régua x Combate Social:** dia a dia = Régua, sem rolar dado; pedido acima do nível = jogada única, que compra **alcance** só naquela cena; cena grande e tensa = Combate Social (gastar Vontade para não ceder). Nenhuma das duas move a régua: isso é dos atos e do cortejo. (Ver [Relações Sociais](/regras/relacoes-sociais).)
-- **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura.
+- **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura (o teste da Virtude).
 - **Defesa física:** desviou = Esquiva; aparou = Bloqueio (usa a maior).
 - **Percepção x Perspicácia:** o mundo = Percepção; as pessoas = Perspicácia.
-- **Gastar Vontade:** antes do teste, 1 ponto dá +4 na Defesa (também contra leitura), no máximo 1 por ação; depois que o ataque passou, resistir custa 1 + Margem (teto 4), fora do limite de 1 por ação ([Cap. X](/regras/relacoes-sociais)). No efeito mental, com Margem 1 ou mais, dá para pagar só 1 e o efeito dura um grau a menos ([Cap. XI](/regras/defesas)). Contra leitura não dá para se recusar depois do teste: só o número da Defesa protege, e o +4 de antes entra nele.
+- **Gastar Vontade:** antes do teste, 1 ponto dá +4 na Defesa (também contra leitura), no máximo 1 por ação.
+- **Resistir com Vontade:** depois que o ataque passou, resistir custa 1 + Margem (teto 4), fora do limite de 1 por ação ([Cap. X](/regras/relacoes-sociais)). No efeito mental, com Margem 1 ou mais, dá para pagar só 1 e o efeito dura um grau a menos ([Cap. XI](/regras/defesas)). Contra leitura não dá para se recusar depois do teste: só o número da Defesa protege, e o +4 de antes entra nele.
