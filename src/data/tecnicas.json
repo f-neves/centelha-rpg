@@ -6963,7 +6963,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "concentra-se totalmente, ignorando ruído, dor e medo por uma ação.",
+    "texto": "Concentra-se totalmente, ignorando ruído, dor e medo por uma ação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6981,7 +6981,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "recupera a compostura após um susto.",
+    "texto": "Recupera a compostura após um susto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -7015,7 +7015,7 @@
       "centrar-se"
     ],
     "aliases": [],
-    "texto": "entra em meditação profunda (clareza, recuperação).",
+    "texto": "Entra em meditação profunda (clareza, recuperação).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -7034,7 +7034,7 @@
       "transe"
     ],
     "aliases": [],
-    "texto": "blindagem contra intrusões e domínios mentais (vs Fascinação/Marionete).",
+    "texto": "Blindagem contra intrusões e domínios mentais (contra a Fascinação ou a Marionete).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -7053,7 +7053,7 @@
       "fortaleza-mental"
     ],
     "aliases": [],
-    "texto": "mente intransponível; imune a quase toda influência mental e ilusão.",
+    "texto": "Mente intransponível; imune a quase toda influência mental e ilusão.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -7072,7 +7072,7 @@
       "vazio-sereno"
     ],
     "aliases": [],
-    "texto": "paz e clareza absolutas; nada perturba, engana ou domina a sua mente.",
+    "texto": "Paz e clareza absolutas; nada perturba, engana ou domina a sua mente.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -7090,7 +7090,7 @@
       "olhar-perspicaz"
     ],
     "aliases": [],
-    "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** vs a Defesa Social do alvo; o sucesso revela <em>que houve</em> mentira (não o conteúdo).",
+    "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** contra a Defesa Social do alvo; o sucesso revela <em>que houve</em> mentira (não o conteúdo).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -7201,7 +7201,7 @@
       "semblante-fechado"
     ],
     "aliases": [],
-    "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+6** para enganar sobre quem você é (soma à Compostura vs Perspicácia).",
+    "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+6** para enganar sobre quem você é (soma à Compostura contra Perspicácia).",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7281,7 +7281,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Sua face nada entrega: leituras sociais **casuais** falham automaticamente; ler você exige uma ação dedicada (vs sua Defesa Social).",
+    "texto": "Sua face nada entrega: leituras sociais **casuais** falham automaticamente; ler você exige uma ação dedicada (contra a sua Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
