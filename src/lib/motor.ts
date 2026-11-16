@@ -393,7 +393,7 @@ export function custoPontos(chave: XpChave, de = pisoXp(chave), ate = 0) {
   return c;
 }
 
-/** Proeza: preço do nível, sem acumular. Subir de nível paga só a diferença. */
+/** Proeza: preço do nível, sem acumular. */
 export const custoTecnica = (nivel: number) => custoPontos('tecnica', undefined, nivel);
 /** Arte: acumulativo, por Arte. */
 export const custoArte = (nivel: number) => custoPontos('arte', undefined, nivel);

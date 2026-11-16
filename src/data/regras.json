@@ -582,7 +582,7 @@
       "base": 5,
       "mult": 5,
       "piso": 0,
-      "nota": "Por Proeza, sem acumular: 10·15·20·25·30·35. Subir uma Proeza de nível paga só a diferença. O nível N exige Centelha ≥ N, e é esse portão que limita a profundidade. É de propósito: a Centelha é o eixo de história do sistema, concedida pelo Mestre num marco, e não se compra com XP: travar a profundidade de Técnica a ela é o desenho pretendido, não acidente."
+      "nota": "Por Proeza, sem acumular: 10·15·20·25·30·35. O nível N exige Centelha ≥ N, e é esse portão que limita a profundidade. É de propósito: a Centelha é o eixo de história do sistema, concedida pelo Mestre num marco, e não se compra com XP: travar a profundidade de Técnica a ela é o desenho pretendido, não acidente."
     },
     "arte": {
       "tipo": "acum",
