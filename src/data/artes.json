@@ -8,7 +8,7 @@
       {
         "nivel": 1,
         "nome": "Faísca",
-        "efeito": "acende/apaga fogo; dardo flamejante (1d6)",
+        "efeito": "acende ou apaga fogo; dardo flamejante (1d6)",
         "custo": {
           "mana": 1
         },
@@ -75,7 +75,7 @@
       {
         "nivel": 6,
         "nome": "Cataclismo",
-        "efeito": "mar de fogo; coluna/elemental de chamas",
+        "efeito": "mar de fogo; coluna ou elemental de chamas",
         "custo": {
           "mana": 6
         },
@@ -314,7 +314,7 @@
       {
         "nivel": 3,
         "nome": "Onda",
-        "efeito": "empurra/derruba; cria névoa",
+        "efeito": "empurra ou derruba; cria névoa",
         "custo": {
           "mana": 3
         },
@@ -473,7 +473,7 @@
       {
         "nivel": 1,
         "nome": "Moldar Terra",
-        "efeito": "molda terra/pedra; arremessa pedras (2d6)",
+        "efeito": "molda terra ou pedra; arremessa pedras (2d6)",
         "custo": {
           "mana": 1
         },
