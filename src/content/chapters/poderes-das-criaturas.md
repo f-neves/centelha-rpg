@@ -88,6 +88,8 @@ Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mes
 
 **Regeneração N.** A criatura recupera **N PV por minuto**, até o PV máximo, sempre ativa: na luta, isso vale **N/10 PV a cada 6 Ticks**, contados a partir do Tick em que ela sofreu o primeiro dano. A regeneração baixa quase não aparece numa luta rápida; a alta muda o combate.
 
+**A Regeneração da criatura não é a Técnica Regeneração.** O personagem tem uma [Técnica](/caminhos) com o mesmo nome, no Caminho Cerne Vital, com custo e regra próprios; o que vale para ele é o que a Técnica diz.
+
 **Fraqueza da criatura.** Algumas regenerações têm uma fraqueza nomeada na ficha (o fogo e o ácido do trol, a prata do lobisomem). A ficha diz qual das duas formas vale: ou o dano da fraqueza **interrompe toda a regeneração** por um tempo, e depois tudo volta a fechar; ou o dano da fraqueza **não se regenera**, e só fecha com outras curas (Artes, Cura, descanso), enquanto o resto se regenera normalmente. A fraqueza que só **atrasa** a regeneração é a primeira forma, com o tempo (curto) escrito na ficha.
 
 As fraquezas da regeneração saem de uma lista fechada: **prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, água e maligno**. O maligno cobre arma, efeito, artefato ou magia de origem maligna, e a ficha diz qual. O Mestre pode acrescentar outras.
