@@ -1536,7 +1536,7 @@
       "manifestacao": {
         "nota": "A geometria do IMPROVISO: o que a Arte crua faz sem nenhum Efeito comprado. Ela nasce no feiticeiro e sai em fatias; os moldes com nome são o que se compra com XP.",
         "regra": [
-          "O VOLUME compra uma BASE de n × n: n metros de frente somada e n metros de altura. Este é o único jeito de o improviso manifestar volume; qualquer outro é Efeito Especial.",
+          "O VOLUME compra uma BASE de n × n: frente somada vezes altura dá sempre n² (no modo da distância, n de frente somada e n de altura; no da altura, o padrão, cada fatia tem n de frente e n ÷ N de altura). Este é o único jeito de o improviso manifestar volume; qualquer outro é Efeito Especial.",
           "A manifestação sai do FEITICEIRO, em fatias que partem todas do mesmo ponto e são obrigatoriamente vizinhas: é o mesmo ataque se abrindo, e não vários ataques.",
           "A abertura de cada fatia é 60°, 90° ou 120°.",
           "Com a base travada, o ângulo e o alcance não são independentes: raio = (frente da fatia ÷ 2) ÷ sen(ângulo ÷ 2). A base é um arco, e a frente de cada fatia é a corda dele.",
@@ -1576,7 +1576,7 @@
               "fracao": "2 ÷ 3"
             }
           ],
-          "nota": "Medido no grau 6, com uma fatia só (base de 6 × 6 m; com uma fatia, os modos da altura e da distância dão o mesmo). Abrir custa, e isso é de propósito: o 120° fica com dois terços do volume e com pouco mais da metade do raio. Em troca ele cobre três vezes mais ângulo por fatia, e é o que serve ao feiticeiro de grau baixo, que não tem fatias sobrando para abrir de 60° em 60°."
+          "nota": "Medido no grau 6, com uma fatia só (base de 6 × 6 m; com uma fatia, os modos da altura e da distância dão o mesmo). Abrir custa, e isso é de propósito: o 120° fica com dois terços do volume e com pouco mais da metade do raio. Em troca ele cobre o dobro do ângulo por fatia, e é o que serve ao feiticeiro de grau baixo, que não tem fatias sobrando para abrir de 60° em 60°."
         },
         "travaFatias": {
           "regra": "O número de fatias não passa do nível da Arte: grau 3 abre até três, grau 6 até seis.",
@@ -1632,11 +1632,11 @@
         ],
         "escopo": "Escrito para as Artes elementais. Cura, Fascinação, Adivinhação, Conjuração e Metamorfose não manifestam elemento, e a fatia não quer dizer nada nelas: quando pedem chão, usam a régua de Área da tabela dos parâmetros.",
         "emAvaliacao": [
-          "O QUE A MATÉRIA DENTRO DA FATIA FAZ EM NÚMERO: a regra diz quanto elemento aparece e onde, e não diz o que 62 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de Terra aguenta antes de ceder."
+          "O QUE A MATÉRIA DENTRO DA FATIA FAZ EM NÚMERO: a regra diz quanto elemento aparece e onde, e não diz o que 75 m³ de chama fazem além do parâmetro de Dano, nem o que a espessura de uma fatia de Terra aguenta antes de ceder."
         ],
         "oParametro": "Quem compra a base é o VOLUME, na régua da manifestação, e não a Área: área é jurisdição, uma região onde uma regra passa a valer, e a fatia não é isso, é corpo de elemento ocupando o espaço. O improviso não escolhe entre as duas réguas como o Efeito escolhe, porque ele tem uma geometria só. A consequência fecha o escopo: QUALQUER OUTRA MANIFESTAÇÃO DE VOLUME É EFEITO ESPECIAL.",
         "numeros": {
-          "nota": "A geometria em número, para o tabuleiro não a reescrever. A base é n × n, sai em N fatias vizinhas com o mesmo ápice, e a distância cai com N e com a abertura: distancia = (n ÷ 2N) ÷ tan(θ÷2).",
+          "nota": "A geometria em número, para o tabuleiro não a reescrever. A base é n × n, sai em N fatias vizinhas com o mesmo ápice, e a base é um arco: no modo da distância, raio = (n ÷ 2N) ÷ sen(θ÷2); no da altura, o padrão, raio = (n ÷ 2) ÷ sen(θ÷2).",
           "aberturas": [
             60,
             90,
@@ -1975,7 +1975,7 @@
         "deslocamentoLivre": {
           "titulo": "Livre, com a vez na mão: o próprio deslocamento",
           "texto": "Quem ainda não agiu sai pelas próprias pernas: o Deslocamento de Batalha, 2 + (Destreza + Atletismo) ÷ 4 metros num Tick (3 m para o camponês, 4 para o aventureiro, 5 para o herói), ou o Arranque da Corrida, que rende mais. Esse Tick é GASTO: sair da área é o movimento, e não o passo de brinde que acompanha outra ação. E a jogada é a mesma de quem desvia fora da vez, porque a área pegou os dois. A vantagem de estar livre é dupla e é grande: um Tick só cobre vários metros, em vez de um metro por Tick, e a rolagem sai limpa, sem a escada de Preparo, Golpe ou Recuperação pesando no total. Depois do movimento você continua livre para agir.",
-          "semGabarito": "Como a mira e a forma só travam no Tick do Golpe, durante o Preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é a distância da fatia (no grau 6: 5,2 m a 60°, 3 m a 90°, 1,7 m a 120°), contra um Deslocamento de Batalha de 3 a 5 m: a 60° andando você não escapa, correndo sim (o Arranque chega a 7 m para quem tem Força, Destreza e Atletismo 5). Por isso a mesa não precisa de gabarito desenhado durante o Preparo: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
+          "semGabarito": "Como a mira e a forma só travam no Tick do Golpe, durante o Preparo o molde AINDA NÃO TEM LUGAR NO CHÃO. Não se sai de uma área que ainda não existe: o que se faz é ficar fora do alcance dela, e o alcance do improviso é o raio da fatia (no grau 6, com uma fatia: 6 m a 60°, 4,2 m a 90°, 3,5 m a 120°), contra um Deslocamento de Batalha de 3 a 5 m: a 60° andando você não escapa, correndo sim (o Arranque chega a 7 m para quem tem Força, Destreza e Atletismo 5). Por isso a mesa não precisa de gabarito desenhado durante o Preparo: o que está em jogo é distância do feiticeiro, não a borda de um desenho."
         },
         "desvio": {
           "titulo": "Fora da vez, no Tick em que a Arte sai: o desvio de emergência",
