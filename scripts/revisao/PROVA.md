@@ -1,7 +1,7 @@
 # Prova da trava (controle negativo)
 
 Gerada por `node scripts/revisao/prova-trava.mjs` em 2026-11-15, base d760ef96, na árvore
-`centelha-executora` (ramo revisao-textos, HEAD 6d517ca0). Cada caso muda UM arquivo, roda a trava só nele com um
+`centelha-executora` (ramo revisao-textos, HEAD 385fd933). Cada caso muda UM arquivo, roda a trava só nele com um
 contradicoes.md e um estado.md de teste e devolve o arquivo ao que era. Os avisos (linhas com · ou com "resolução:") não derrubam a trava.
 
 **"Próximo", a definição testável dos pares termo e número:** cada número da seção se liga a um termo protegido, o mais perto
@@ -638,6 +638,7 @@ Entrada: - Trava: `src/content/chapters/combate.md`: "**Caído** (prono)" → "*
 No estado.md: - `src/content/chapters/combate.md` · RT-900 · caso de teste
 
 ```
+    · entrada(s) adiada(s) no estado.md: RT-900 (`src/content/chapters/combate.md`: caso de teste)
 ✓ src/content/chapters/combate.md
     · RT-900: a entrada ainda não está aplicada neste arquivo ("**Caído** (prono)" segue 1 vez(es))
 ✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
@@ -811,6 +812,140 @@ Entrada: nenhuma
 ✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
 ```
 
+## O CORRIGE da Revisora no f003b69b: comando-barra, o trecho que cresce, as exceções, o par pela frase anterior e o número do endereço
+
+### ✓ o "exemplo" do comando-barra.json mudado sem número ("tirar" vira "retirar"): falha (é sintaxe da barra do Grid, fora da prosa) (esperado: falha; exit 1)
+
+Troca: ""exemplo": "tirar"" → ""exemplo": "retirar""
+Entrada: nenhuma
+
+```
+✘ src/data/comando-barra.json
+    ✘ o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ (b) RT-101 no condicoes.md, o trecho que cresce, aplicada: passa (esperado: passa; exit 0)
+
+Troca: "O Frenesi do orc e do meio-orc segue a regra própria." → "O Frenesi do orc e do meio-orc e a Técnica Fúria do Caminho Sangue Fervente seguem a regra própria de cada um."
+Entrada: - Trava: `src/content/chapters/condicoes.md`: "O Frenesi do orc e do meio-orc segue a regra própria." → "O Frenesi do orc e do meio-orc e a Técnica Fúria do Caminho Sangue Fervente seguem a regra própria de cada um."
+
+```
+✓ src/content/chapters/condicoes.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ (b) RT-101 não aplicada, com a página reescrita em outro ponto: falha (esperado: falha; exit 1)
+
+Troca: "diz o que a faz entrar" → "diz o que a faz começar"
+Entrada: - Trava: `src/content/chapters/condicoes.md`: "O Frenesi do orc e do meio-orc segue a regra própria." → "O Frenesi do orc e do meio-orc e a Técnica Fúria do Caminho Sangue Fervente seguem a regra própria de cada um."
+
+```
+✘ src/content/chapters/condicoes.md
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("O Frenesi do orc e do meio-orc segue a regra própria." segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ Entradas adiadas: a linha sem motivo não vale (a entrada segue não aplicada e a rodada cai) (esperado: falha; exit 1)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: - Trava: `src/content/chapters/combate.md`: "**Caído** (prono)" → "**Caído**"
+No estado.md: - `src/content/chapters/combate.md` · RT-900
+
+```
+    ✘ estado.md, Entradas adiadas: a linha da RT-900 em `src/content/chapters/combate.md` não tem motivo; ela não vale
+✘ src/content/chapters/combate.md
+    ✘ RT-900: a entrada ainda não está aplicada neste arquivo ("**Caído** (prono)" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
+✘ trava: 2 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ Entradas adiadas: a adiada cuja entrada já está aplicada passa, com aviso para tirar a linha (esperado: passa; exit 0)
+
+Troca: "**Caído** (prono)" → "**Caído**"
+Entrada: - Trava: `src/content/chapters/combate.md`: "**Caído** (prono)" → "**Caído**"
+No estado.md: - `src/content/chapters/combate.md` · RT-900 · caso de teste
+
+```
+    · entrada(s) adiada(s) no estado.md: RT-900 (`src/content/chapters/combate.md`: caso de teste)
+✓ src/content/chapters/combate.md
+    · RT-900: está em "Entradas adiadas" do estado.md, e a entrada já está aplicada neste arquivo (tire a linha)
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ Entradas adiadas: a adiada sem entrada no arquivo passa, com aviso (esperado: passa; exit 0)
+
+Troca: "Para atacar, monte o pool de **Atributo + Habilidade**, some o **Acerto da Arma**, aplique Firulas e Técnicas, e role." → "Na hora de atacar, junte o pool de **Atributo + Habilidade**, acrescente o **Acerto da Arma**, aplique Firulas e Técnicas e role."
+Entrada: nenhuma
+No estado.md: - `src/content/chapters/combate.md` · RT-901 · caso de teste
+
+```
+    · entrada(s) adiada(s) no estado.md: RT-901 (`src/content/chapters/combate.md`: caso de teste)
+✓ src/content/chapters/combate.md
+    · RT-901: está em "Entradas adiadas" do estado.md para este arquivo, mas não tem entrada nele
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ Termos acrescentados: a linha sem "definido em" não vale (falha) (esperado: falha; exit 1)
+
+Troca: "aplique Firulas e Técnicas, e role." → "aplique Firulas, Técnicas e Halterofilismo, e role."
+Entrada: nenhuma
+No estado.md: - `src/content/chapters/combate.md` · "Halterofilismo" · original: "aplique Firulas e Técnicas, e role." · novo: "aplique Firulas, Técnicas e Halterofilismo, e role."
+
+```
+    ✘ estado.md, Termos acrescentados: a linha do termo "Halterofilismo" em `src/content/chapters/combate.md` não diz onde ele é definido ("definido em:"); ela não vale
+✘ src/content/chapters/combate.md
+    ✘ termo protegido aparece novo no arquivo: halterofilismo
+✘ trava: 2 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ par que só troca "(nenhum)" pelo termo da frase anterior ("Ele é lento" vira "O Sangramento é lento", em parágrafo próprio): passa, com aviso (esperado: passa; exit 0)
+
+Troca: "desalinhados. Ele é lento de propósito:" → "desalinhados.
+
+O Sangramento é lento de propósito:"
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/vida-ferimentos-cura.md
+    - `src/content/chapters/vida-ferimentos-cura.md` · "sangramento" · 9 → 10 · termo, outra contagem · resolução: 
+    · par termo e número desfeito, seção "Sangramento e Estabilização": saem (nenhum) ↔ duas (2) (−1); entram sangramento ↔ duas (2) (+1) (só entre "(nenhum)" e o termo da frase anterior: a leitura da frase partida, e não par desfeito)
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ par achado pela frase anterior que passa do termo A ao termo B (o +1 do quadro sai do Humano e vai ao Elfo): falha (esperado: falha; exit 1)
+
+Troca: "o **Humano** é a régua contra a qual todos os outros são descritos." → "o **Elfo** é a régua contra a qual todos os outros são descritos."
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/racas.md
+    ✘ par termo e número desfeito, seção "(antes do primeiro título)": saem Humano ↔ +1 (−1), Humano ↔ duas (2) (−2); entram Elfo ↔ +1 (+1), Elfo ↔ duas (2) (+2)
+    - `src/content/chapters/racas.md` · "Humano" · 10 → 9 · termo, outra contagem · resolução: 
+    - `src/content/chapters/racas.md` · "Elfo" · 16 → 17 · termo, outra contagem · resolução: 
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
+### ✓ link novo com número no endereço (âncora "#parte-3"): passa (o endereço sai de toda contagem) (esperado: passa; exit 0)
+
+Troca: "Comece pela régua; as outras duas são escaladas dela." → "Comece pela régua; as outras duas são escaladas dela ([Cap. III](/regras/aparencia-virtudes-vontade#parte-3))."
+Entrada: nenhuma
+
+```
+✓ src/content/chapters/relacoes-sociais.md
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
+```
+
+### ✓ e o mesmo número no texto do link falha (esperado: falha; exit 1)
+
+Troca: "Comece pela régua; as outras duas são escaladas dela." → "Comece pela régua; as outras duas são escaladas dela ([parte 3](/regras/x))."
+Entrada: nenhuma
+
+```
+✘ src/content/chapters/relacoes-sociais.md
+    ✘ números sem entrada, seção "(antes do primeiro título)": saem nenhum; entram 3 (+1)
+✘ trava: 1 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+```
+
 ## A entrada que não casa falha
 
 ### ✓ entrada que pede (3×) num trecho que está 2 vezes (esperado: falha; exit 1)
@@ -851,12 +986,12 @@ Entrada: "(Força 5 e Destreza 2? use a Força)" → "(Força 6 e Destreza 2? us
 
 ## Resultado
 
-74 de 74 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
+85 de 85 casos deram o esperado. Árvore depois da prova: limpa em src/ (git status --porcelain -- src vazio).
 
 ## Os campos de prosa (CAMPOS_PROSA)
 
 descricao, texto, definicao, efeito, nota, tracos (os de antes) e, desde 15/11/2026, amarra, justificativa, limiteDeUso,
-conduta, serve, exemplo, notas, _nota, porque, resumo, detalhe, excecao e centelhaNota. Ficam fora: id, nome, os rótulos
+conduta, serve, exemplo, notas, _nota, porque, resumo, detalhe, excecao e centelhaNota (o "exemplo" do comando-barra.json fica fora: é a sintaxe da barra do Grid). Ficam fora: id, nome, os rótulos
 curtos de nível, as chaves, todo campo de número ou enumeração, e o "valor" (misto). Nenhum dos campos novos guarda
 número, objeto ou enumeração nos src/data/*.json de hoje (contagem por campo: textos e outros tipos):
 
@@ -878,24 +1013,12 @@ centelhaNota: 4 texto, 0 outro
 
 ## Os 449 arquivos com texto
 
-A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 443 passam, 6 falham. Os que falham são páginas já reescritas no ramo, e cada falha é uma entrada ainda não aplicada (a regra nova da página) ou um par que a regra nova da frase vazia passou a ler diferente; os consertos vêm nos commits de página seguintes.
+A trava rodada nos 449 arquivos com texto (`git ls-files src/content src/pages src/components 'src/data/*.json'`): 449 passam, 0 falham.
 
 ```
-trava · base d760ef96 · 449 arquivo(s) · 85 entrada(s) de trava e 8 Trava JSON em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
-✘ src/content/chapters/acoes-e-sistema.md
-    ✘ RT-034: a entrada ainda não está aplicada neste arquivo ("| 30 | Sobre-humano | 18 | Semideus |" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
-✘ src/content/chapters/acoes-sentidos-e-engano.md
-    ✘ RT-009: a entrada ainda não está aplicada neste arquivo ("Longa, Vontade + Religião" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
-    ✘ RT-009: a entrada ainda não está aplicada neste arquivo ("Acumulada, Vontade + Ocultismo ou Religião" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
-✘ src/content/chapters/combate.md
-    ✘ RT-067: a entrada ainda não está aplicada neste arquivo ("Os níveis 5 e 6 ainda cobram Vontade (+1 e +2)" segue 1 vez(es)) (página reescrita: toda entrada do arquivo entra no commit dela)
-✘ src/content/chapters/habilidades.md
-    ✘ termo protegido aparece novo no arquivo: centelha
-✘ src/content/chapters/racas.md
-    ✘ par termo e número desfeito, seção "(antes do primeiro título)": saem Humano ↔ +1 (−1), Humano ↔ duas (2) (−2); entram (nenhum) ↔ +1 (+1), (nenhum) ↔ duas (2) (+2)
-✘ src/content/chapters/vida-ferimentos-cura.md
-    ✘ par termo e número desfeito, seção "Sangramento e Estabilização": saem (nenhum) ↔ duas (2) (−1); entram sangramento ↔ duas (2) (+1)
-✘ trava: 6 arquivo(s) com diferença de número, dado, par termo-número, termo ou título sem entrada
+trava · base d760ef96 · 449 arquivo(s) · 82 entrada(s) de trava e 17 Trava JSON em ..\tmp\revisao-textos\contradicoes.md · 0 movimento(s) de seção em ..\tmp\revisao-textos\estado.md
+
+✓ trava: toda diferença de número, dado, par termo-número, termo e título tem entrada
 ```
 
 ## Falso positivo numa reescrita neutra (`node scripts/revisao/prova-reflow.mjs`)

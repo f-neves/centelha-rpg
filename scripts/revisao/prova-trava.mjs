@@ -213,6 +213,34 @@ r.push(caso('(h) link novo para /regras/aparencia-virtudes-vontade (o "virtudes"
   [['Comece pela régua; as outras duas são escaladas dela.', 'Comece pela régua; as outras duas são escaladas dela ([Cap. III](/regras/aparencia-virtudes-vontade)).']], [], 'passa'));
 r.push(caso('(h) e o mesmo termo no texto do link falha', REL,
   [['Comece pela régua; as outras duas são escaladas dela.', 'Comece pela régua; as outras duas são escaladas dela ([as Virtudes](/regras/x)).']], [], 'falha'));
+console.log('## O CORRIGE da Revisora no f003b69b: comando-barra, o trecho que cresce, as exceções, o par pela frase anterior e o número do endereço\n');
+// o comando-barra.json: o "exemplo" é sintaxe da barra, e não prosa
+r.push(caso('o "exemplo" do comando-barra.json mudado sem número ("tirar" vira "retirar"): falha (é sintaxe da barra do Grid, fora da prosa)', 'src/data/comando-barra.json', [['"exemplo": "tirar"', '"exemplo": "retirar"']], [], 'falha'));
+// (b) o trecho que cresce (o "antes" dentro do "depois"), numa página reescrita: a RT-101 do condicoes.md
+const CND = 'src/content/chapters/condicoes.md';
+const F_A = 'O Frenesi do orc e do meio-orc segue a regra própria.', F_D = 'O Frenesi do orc e do meio-orc e a Técnica Fúria do Caminho Sangue Fervente seguem a regra própria de cada um.';
+const RT101 = `- Trava: \`${CND}\`: "${F_A}" → "${F_D}"`;
+const CND_OUTRA = ['diz o que a faz entrar', 'diz o que a faz começar'];
+r.push(caso('(b) RT-101 no condicoes.md, o trecho que cresce, aplicada: passa', CND, [[F_A, F_D]], [RT101], 'passa'));
+r.push(caso('(b) RT-101 não aplicada, com a página reescrita em outro ponto: falha', CND, [CND_OUTRA], [RT101], 'falha'));
+// as exceções do estado.md
+r.push(caso('Entradas adiadas: a linha sem motivo não vale (a entrada segue não aplicada e a rodada cai)', CAP, [[R1, R1b]], [PRONO], 'falha', [], ['## Entradas adiadas', '', `- \`${CAP}\` · RT-900`]));
+r.push(caso('Entradas adiadas: a adiada cuja entrada já está aplicada passa, com aviso para tirar a linha', CAP, [['**Caído** (prono)', '**Caído**']], [PRONO], 'passa', [], ['## Entradas adiadas', '', `- \`${CAP}\` · RT-900 · caso de teste`]));
+r.push(caso('Entradas adiadas: a adiada sem entrada no arquivo passa, com aviso', CAP, [[R1, R1b]], [], 'passa', [], ['## Entradas adiadas', '', `- \`${CAP}\` · RT-901 · caso de teste`]));
+r.push(caso('Termos acrescentados: a linha sem "definido em" não vale (falha)', CAP, [[T1, T1b]], [], 'falha', [],
+  ['## Termos acrescentados', '', `- \`${CAP}\` · "Halterofilismo" · original: "${T1}" · novo: "${T1b}"`]));
+// o par pela frase anterior: "(nenhum)" contra o termo da frase anterior é aviso; termo A para termo B continua falha
+const VIDA = 'src/content/chapters/vida-ferimentos-cura.md';
+r.push(caso('par que só troca "(nenhum)" pelo termo da frase anterior ("Ele é lento" vira "O Sangramento é lento", em parágrafo próprio): passa, com aviso', VIDA,
+  [['desalinhados. Ele é lento de propósito:', 'desalinhados.\n\nO Sangramento é lento de propósito:']], [], 'passa'));
+const RAC = 'src/content/chapters/racas.md';
+r.push(caso('par achado pela frase anterior que passa do termo A ao termo B (o +1 do quadro sai do Humano e vai ao Elfo): falha', RAC,
+  [['o **Humano** é a régua contra a qual todos os outros são descritos.', 'o **Elfo** é a régua contra a qual todos os outros são descritos.']], [], 'falha'));
+// o número dentro do endereço de link
+r.push(caso('link novo com número no endereço (âncora "#parte-3"): passa (o endereço sai de toda contagem)', REL,
+  [['Comece pela régua; as outras duas são escaladas dela.', 'Comece pela régua; as outras duas são escaladas dela ([Cap. III](/regras/aparencia-virtudes-vontade#parte-3)).']], [], 'passa'));
+r.push(caso('e o mesmo número no texto do link falha', REL,
+  [['Comece pela régua; as outras duas são escaladas dela.', 'Comece pela régua; as outras duas são escaladas dela ([parte 3](/regras/x)).']], [], 'falha'));
 console.log('## A entrada que não casa falha\n');
 r.push(caso('entrada que pede (3×) num trecho que está 2 vezes', CAP, [[/Preparação/gu, 'Preparo']], ['- Trava: `src/content/chapters/combate.md`: "Preparação" → "Preparo" (3×)'], 'falha'));
 r.push(caso('entrada com "antes" que não está na base', CAP, [[N1, N1b]], [['(Força 7 e Destreza 2? use a Força)', N1b]], 'falha'));

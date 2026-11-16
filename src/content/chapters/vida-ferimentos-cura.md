@@ -89,7 +89,7 @@ Essa margem é a razão de a cena existir. Um aliado que caiu não está morto: 
 
 Nem todo ferimento para de doer quando o golpe termina. O **Sangramento** representa feridas abertas que continuam drenando vida. A cada **6 [Ticks](/regras/combate#a-linha-do-tempo-ticks-velocidade-e-iniciativa) desde o ferimento**, um Sangramento **N** causa **N de dano** (já passa direto pelo Absorção). O relógio é de cada um, e não da mesa: quem levou duas feridas em momentos diferentes sangra por dois contadores desalinhados.
 
-Esse relógio é lento de propósito: há tempo de reagir antes que mate.
+O Sangramento é lento de propósito: há tempo de reagir antes que mate.
 
 Há duas formas de começar a sangrar:
 

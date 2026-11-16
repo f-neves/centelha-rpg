@@ -70,7 +70,9 @@
 //    - TERMO ACRESCENTADO: o termo protegido novo passa quando há linha dele, com o arquivo, em "## Termos acrescentados"
 //      do estado.md. O endereço de link não conta como texto ao contar termo.
 //    - ENTRADA NÃO APLICADA numa página reescrita (src/content/chapters, src/pages) FALHA, salvo linha em "## Entradas
-//      adiadas" do estado.md; no src/data, aviso. "\n" no trecho de uma linha Trava é quebra de linha.
+//      adiadas" do estado.md (com motivo; a lista sai no topo); no src/data, aviso. "\n" no trecho de uma linha Trava é
+//      quebra de linha. O endereço de link não conta em nada (termo, número, par).
+//    - PAR PELA FRASE ANTERIOR: a diferença que só troca "(nenhum)" pelo termo achado na frase anterior é aviso.
 // 7. Sai com código 1 se qualquer arquivo falha; 0 se tudo casa. Os avisos não derrubam. Cada aviso de termo sai numa
 //    linha pronta para colar no estado.md: - `arquivo` · "termo" · antes → depois · motivo · resolução:
 import fs from 'node:fs';
@@ -203,10 +205,14 @@ function lerSecaoEstado(md, titulo, re) {
   return out;
 }
 const TEXTO_ESTADO = fs.existsSync(ESTADO) ? fs.readFileSync(ESTADO, 'utf8') : '';
-const ACRESCENTADOS = lerSecaoEstado(TEXTO_ESTADO, 'Termos acrescentados', /^\s*-\s*`([^`]+)`\s*·\s*"([^"]+)"/)
+// A linha sem "definido em" (Termos acrescentados) ou sem motivo (Entradas adiadas) não vale, e derruba a rodada
+// (CORRIGE da Revisora no f003b69b): a exceção sem a razão escrita é a porta que a trava existe para fechar.
+const ACRESCENTADOS = lerSecaoEstado(TEXTO_ESTADO, 'Termos acrescentados', /^\s*-\s*`([^`]+)`\s*·\s*"([^"]+)"(.*)$/)
+  .filter((m) => /definido em:\s*\S/.test(m[3]) || !ERROS_ENTRADA.push(`estado.md, Termos acrescentados: a linha do termo "${m[2]}" em \`${m[1]}\` não diz onde ele é definido ("definido em:"); ela não vale`))
   .map((m) => ({ arquivo: resolveArquivo(m[1].replace(/\\/g, '/')), termo: m[2].toLowerCase() }));
-const ADIADAS = lerSecaoEstado(TEXTO_ESTADO, 'Entradas adiadas', /^\s*-\s*`([^`]+)`\s*·\s*(RT-\d+)/)
-  .map((m) => ({ arquivo: resolveArquivo(m[1].replace(/\\/g, '/')), rt: m[2] }));
+const ADIADAS = lerSecaoEstado(TEXTO_ESTADO, 'Entradas adiadas', /^\s*-\s*`([^`]+)`\s*·\s*(RT-\d+)\s*(?:·\s*(.*?))?\s*$/)
+  .filter((m) => (m[3] || '').trim() || !ERROS_ENTRADA.push(`estado.md, Entradas adiadas: a linha da ${m[2]} em \`${m[1]}\` não tem motivo; ela não vale`))
+  .map((m) => ({ arquivo: resolveArquivo(m[1].replace(/\\/g, '/')), rt: m[2], motivo: m[3].trim() }));
 
 // ---------------------------------------------------------------- o texto que se compara
 const semGerados = (s) => s.replace(/<!--\s*gen:([\w-]+)\s*-->[\s\S]*?<!--\s*\/gen:\1\s*-->/g, '');
@@ -216,8 +222,12 @@ const semGerados = (s) => s.replace(/<!--\s*gen:([\w-]+)\s*-->[\s\S]*?<!--\s*\/g
 // valor é número ou enumeração, e o "valor", que é misto. Dentro da prosa, números, dados e termos continuam travados.
 const CAMPOS_PROSA = new Set(['descricao', 'texto', 'definicao', 'efeito', 'nota', 'tracos', 'amarra', 'justificativa', 'limiteDeUso',
   'conduta', 'serve', 'exemplo', 'notas', '_nota', 'porque', 'resumo', 'detalhe', 'excecao', 'centelhaNota']);
+// O campo que, num arquivo, não é prosa, embora tenha o nome de um campo de prosa: o "exemplo" do comando-barra.json é a
+// sintaxe literal da barra do Grid (comando-barra.ts lê e mostra o texto como comando), e não texto corrido.
+const PROSA_FORA = { 'src/data/comando-barra.json': new Set(['exemplo']) };
 const SEP_JSON = '\n␞\n'; // separa os campos de prosa no texto do JSON (o caractere não aparece em prosa)
-function prosaDoJson(txt) {
+function prosaDoJson(txt, arq = '') {
+  const ehProsa = (k) => CAMPOS_PROSA.has(k) && !PROSA_FORA[arq]?.has(k);
   const campos = [];
   const obj = typeof txt === 'string' ? JSON.parse(txt) : txt;
   const pega = (v, cam) => { if (typeof v === 'string') campos.push({ titulo: cam, texto: v }); else if (Array.isArray(v)) v.forEach((x, i) => pega(x, `${cam}[${i}]`)); else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) pega(x, `${cam}.${k}`); };
@@ -227,7 +237,7 @@ function prosaDoJson(txt) {
     const r = {};
     for (const [k, v] of Object.entries(o)) {
       // o `texto` de niveis[] cai aqui também: a recursão desce no array e acha a chave
-      if (CAMPOS_PROSA.has(k)) { pega(v, `${cam}.${k}`); r[k] = '·prosa·'; }
+      if (ehProsa(k)) { pega(v, `${cam}.${k}`); r[k] = '·prosa·'; }
       else r[k] = esqueleto(v, `${cam}.${k}`);
     }
     return r;
@@ -363,9 +373,10 @@ function pares(t) {
   const fins = [...t.matchAll(RE_FIM_FRASE)].map((m) => m.index);
   const frase = (p) => { let lo = 0, hi = fins.length; while (lo < hi) { const mid = (lo + hi) >> 1; if (fins[mid] < p) lo = mid + 1; else hi = mid; } return lo; };
   for (const x of ts) x.frase = frase(x.i);
-  const out = [];
+  const out = [], recurso = [];
   for (const n of numerosPos(t)) {
     const fr = frase(n.i);
+    let pelaAnterior = false;
     let melhor = null, dist = Infinity;
     for (const x of ts) {
       if (x.frase !== fr) continue;
@@ -379,12 +390,38 @@ function pares(t) {
         const ini = k === 0 ? 0 : fins[k - 1] + 1, fim = fins[k] ?? t.length;
         if (!/[\p{L}\p{N}]/u.test(t.slice(ini, fim))) continue;
         melhor = ts.filter((x) => x.frase === k).pop() || null;
+        pelaAnterior = !!melhor;
         break;
       }
     }
     out.push(`${melhor ? melhor.termo : '(nenhum)'} ↔ ${n.valor}`);
+    if (pelaAnterior) recurso.push(out[out.length - 1]);
   }
-  return conta(out);
+  const r = conta(out);
+  r.recurso = conta(recurso);
+  return r;
+}
+// O par que só muda entre "(nenhum)" e um termo achado pelo recurso da frase anterior não é par desfeito: é a heurística
+// que leu a frase partida (ou juntada) de outro jeito (CORRIGE da Revisora no f003b69b; racas.md e vida-ferimentos-cura.md
+// tinham PROCEDE). Cancela um "(nenhum) ↔ v" que entra contra um "T ↔ v" que sai e era da frase anterior, e o contrário;
+// sobra alguma diferença, é falha. O número trocado entre termos da mesma frase (a burla 4) e o par que passa do termo A
+// para o termo B não se cancelam.
+function sobraPares(pa, pd) {
+  const d = new Map();
+  for (const k of new Set([...pa.keys(), ...pd.keys()])) d.set(k, (pd.get(k) || 0) - (pa.get(k) || 0));
+  const valor = (k) => k.slice(k.indexOf(' ↔ ') + 3);
+  for (const [k, x] of d) {
+    if (!k.startsWith('(nenhum) ↔ ') || x === 0) continue;
+    let resto = x;
+    for (const [k2, x2] of d) {
+      if (!resto) break;
+      if (k2 === k || valor(k2) !== valor(k)) continue;
+      if (resto > 0 && x2 < 0) { const c = Math.min(resto, -x2, pa.recurso.get(k2) || 0); d.set(k2, x2 + c); resto -= c; }
+      else if (resto < 0 && x2 > 0) { const c = Math.min(-resto, x2, pd.recurso.get(k2) || 0); d.set(k2, x2 - c); resto += c; }
+    }
+    d.set(k, resto);
+  }
+  return [...d.values()].some((x) => x !== 0);
 }
 
 // ---------------------------------------------------------------- as linhas de tabela (item 6 do cabeçalho)
@@ -451,7 +488,7 @@ function comparar(arq) {
       if (intacta) { avisos.push(`${e.rt}: Trava JSON @${e.caminho} ainda não aplicada${naBaseOk ? '' : ` (e a linha não casa com a base: ela diz ${JSON.stringify(e.antes)}, a base tem ${JSON.stringify(vA.v)})`}`); continue; }
       falhas.push(`${e.rt}: Trava JSON @${e.caminho}: a base tem ${vA.existe ? JSON.stringify(vA.v) : '(o caminho não existe)'}, agora há ${vD.existe ? JSON.stringify(vD.v) : '(o caminho não existe)'}, e a linha diz ${JSON.stringify(e.antes)} → ${JSON.stringify(e.depois)}`);
     }
-    const a = prosaDoJson(oA), d = prosaDoJson(oD);
+    const a = prosaDoJson(oA, arq), d = prosaDoJson(oD, arq);
     if (a.esqueleto !== d.esqueleto) falhas.push('o JSON mudou fora dos campos de prosa (a lista CAMPOS_PROSA, no cabeçalho)');
     antes = a.texto; depois = d.texto; titJsonA = a.campos.map((c) => c.titulo); titJsonD = d.campos.map((c) => c.titulo);
   } else { antes = semGerados(antes); depois = semGerados(depois); }
@@ -471,7 +508,7 @@ function comparar(arq) {
     const dBase = e.depois === '' ? 0 : antes.split(e.depois).length - 1, dAgora = e.depois === '' ? 0 : depois.split(e.depois).length - 1;
     const aplicada = e.depois === '' ? nAgora <= n - e.vezes
       : e.depois.includes(e.antes) ? dAgora >= dBase + e.vezes
-      : nAgora <= n - e.vezes && dAgora >= 1;
+      : nAgora <= n - e.vezes && dAgora >= dBase + e.vezes * (1 - (e.antes.split(e.depois).length - 1));
     const adiada = ADIADAS.some((x) => x.arquivo === arq && x.rt === e.rt);
     const naoAplicada = (msg) => { if (ehPagina && !adiada) falhas.push(msg + ' (página reescrita: toda entrada do arquivo entra no commit dela)'); else avisos.push(msg); };
     if (n < e.vezes) {
@@ -484,11 +521,17 @@ function comparar(arq) {
       else falhas.push(`${e.rt}: o "antes" saiu do arquivo (${n} → ${nAgora} vez(es)), mas o "depois" da entrada não está nele: "${e.depois}"`);
       continue;
     }
+    if (adiada) avisos.push(`${e.rt}: está em "Entradas adiadas" do estado.md, e a entrada já está aplicada neste arquivo (tire a linha)`);
     for (let i = 0; i < e.vezes; i++) antes = antes.replace(e.antes, e.depois);
   }
+  for (const x of ADIADAS.filter((y) => y.arquivo === arq && !ENTRADAS.some((e) => e.arquivo === arq && e.rt === y.rt)))
+    avisos.push(`${x.rt}: está em "Entradas adiadas" do estado.md para este arquivo, mas não tem entrada nele`);
   // o frontmatter (--- ... ---) fica igual, salvo entrada (decisão do Arquiteto, 15/11/2026)
   const fm = (t) => (t.match(/^---\n[\s\S]*?\n---\n/) || [''])[0];
   if (fm(antes) !== fm(depois)) falhas.push(`o frontmatter mudou: antes ${JSON.stringify(fm(antes).slice(0, 160))}, agora ${JSON.stringify(fm(depois).slice(0, 160))}`);
+  // o endereço de link (o "3" da âncora #salto-velocidade-3) não é texto: sai de toda contagem daqui em diante (decisão do
+  // Arquiteto, 15/11/2026)
+  if (ext !== '.json') { antes = semEnderecos(antes); depois = semEnderecos(depois); }
   // os movimentos de seção do estado.md, aplicados nas seções do antes
   const sA = secoes(antes, ext, titJsonA), sD = secoes(depois, ext, titJsonD);
   for (const mv of MOVIMENTOS.filter((x) => x.arquivo === arq)) {
@@ -534,7 +577,10 @@ function comparar(arq) {
       const onde = `seção "${sec.titulo}"`;
       const dn = difMulti(numeros(a).fortes, numeros(d).fortes); if (temDif(dn)) falhas.push(`números sem entrada, ${onde}: ${mostra(dn)}`);
       const dd = difMulti(dados(a), dados(d)); if (temDif(dd)) falhas.push(`dado ou fórmula sem entrada, ${onde}: ${mostra(dd)}`);
-      if (!temDif(dn)) { const dp = difMulti(pares(a), pares(d)); if (temDif(dp)) falhas.push(`par termo e número desfeito, ${onde}: ${mostra(dp)}`); }
+      if (!temDif(dn)) {
+        const pa = pares(a), pd = pares(d), dp = difMulti(pa, pd);
+        if (temDif(dp)) (sobraPares(pa, pd) ? falhas : avisos).push(`par termo e número desfeito, ${onde}: ${mostra(dp)}${sobraPares(pa, pd) ? '' : ' (só entre "(nenhum)" e o termo da frase anterior: a leitura da frase partida, e não par desfeito)'}`);
+      }
       const dl = difMulti(linhasTabela(a, ext), linhasTabela(d, ext)); if (temDif(dl)) falhas.push(`linha de tabela mudou (colunas trocadas, número de célula ou cabeçalho), ${onde}: ${mostra(dl)}`);
     });
   }
@@ -547,6 +593,7 @@ if (arquivos.length || !SAIDA_CLASSES) {
   console.log(`trava · base ${BASE} · ${arquivos.length} arquivo(s) · ${ENTRADAS.length} entrada(s) de trava e ${ENTRADAS_JSON.length} Trava JSON em ${path.relative(REPO, CONTRADICOES) || CONTRADICOES} · ${MOVIMENTOS.length} movimento(s) de seção em ${path.relative(REPO, ESTADO) || ESTADO}`);
   // as entradas cujo arquivo não existe na base nunca se aplicam: aviso no topo, para quem escreveu o contradicoes.md
   if (PENDENTES.size) console.log(`    · entrada(s) PENDENTE AUTOR (não se aplicam nesta revisão): ${[...PENDENTES].sort().join(', ')}; com linha Trava, puladas: ${[...PULADAS].sort().join(', ') || 'nenhuma'}`);
+  if (ADIADAS.length) console.log(`    · entrada(s) adiada(s) no estado.md: ${ADIADAS.map((x) => `${x.rt} (\`${x.arquivo}\`: ${x.motivo})`).join('; ')}`);
   for (const e of ERROS_ENTRADA) console.log(`    ✘ ${e}`);
   if (ERROS_ENTRADA.length) caiu++;
   const orfas = [...new Set([...ENTRADAS, ...ENTRADAS_JSON].filter((e) => naBase(e.arquivo) == null).map((e) => `${e.rt} (\`${e.arquivo}\`)`))];
