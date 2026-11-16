@@ -453,7 +453,7 @@
       "tom-de-autoridade"
     ],
     "aliases": [],
-    "texto": "Manip+Intimidação vs Defesa Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
+    "texto": "Manip + Intimidação contra a Defesa Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -489,7 +489,7 @@
       "ordem-curta"
     ],
     "aliases": [],
-    "texto": "Comanda um pequeno grupo de uma vez (vs Defesa Mental); a ordem dura a cena se não contrariar a natureza dos alvos.",
+    "texto": "Comanda um pequeno grupo de uma vez (contra a Defesa Mental); a ordem dura a cena se não contrariar a natureza dos alvos.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -545,7 +545,7 @@
       "voz-de-comando"
     ],
     "aliases": [],
-    "texto": "Uma ordem (vs Defesa Mental) que o alvo deve gastar **Vontade a cada 6 Ticks** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
+    "texto": "Uma ordem (contra a Defesa Mental) que o alvo deve gastar **Vontade a cada 6 Ticks** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -563,7 +563,7 @@
       "submissao"
     ],
     "aliases": [],
-    "texto": "Instila terror sobrenatural (vs Defesa Mental); um grupo inteiro foge ou paralisa.",
+    "texto": "Instila terror sobrenatural (contra a Defesa Mental); um grupo inteiro foge ou paralisa.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -582,7 +582,7 @@
       "comando-irresistivel"
     ],
     "aliases": [],
-    "texto": "Implanta uma ordem permanente que dura um dia (vs Defesa Mental); o alvo racionaliza obedecer.",
+    "texto": "Implanta uma ordem permanente que dura um dia (contra a Defesa Mental); o alvo racionaliza obedecer.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -602,7 +602,7 @@
       "comando-irresistivel"
     ],
     "aliases": [],
-    "texto": "Estilhaça a vontade do alvo (vs Defesa Mental), deixando-o quebrado e dócil por um tempo.",
+    "texto": "Estilhaça a vontade do alvo (contra a Defesa Mental), deixando-o quebrado e dócil por um tempo.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -621,7 +621,7 @@
       "dominacao"
     ],
     "aliases": [],
-    "texto": "Sua ordem falada torna-se quase absoluta (vs Defesa Mental); multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
+    "texto": "Sua ordem falada torna-se quase absoluta (contra a Defesa Mental); multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3968,7 +3968,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "provoca raiva/paixão, empurrando à ação.",
+    "texto": "Provoca raiva ou paixão, empurrando à ação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3986,7 +3986,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "acende o ânimo de aliados (fervor temporário).",
+    "texto": "Acende o ânimo de aliados (fervor temporário).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4004,7 +4004,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "arrebata uma multidão para uma causa por uma cena.",
+    "texto": "Arrebata uma multidão para uma causa por uma cena.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4022,7 +4022,7 @@
       "incitar"
     ],
     "aliases": [],
-    "texto": "força um inimigo a agir por impulso.",
+    "texto": "Força um inimigo a agir por impulso.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4041,7 +4041,7 @@
       "provocacao"
     ],
     "aliases": [],
-    "texto": "inflama uma multidão à revolta ou ao fervor.",
+    "texto": "Inflama uma multidão à revolta ou ao fervor.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4060,7 +4060,7 @@
       "fogo-nos-coracoes"
     ],
     "aliases": [],
-    "texto": "incendeia paixões a ponto de mover cidades (motim, levante).",
+    "texto": "Incendeia paixões a ponto de mover cidades (motim, levante).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4079,7 +4079,7 @@
       "pavio-curto"
     ],
     "aliases": [],
-    "texto": "suas palavras espalham um fervor que consome reinos; uma fagulha vira revolução.",
+    "texto": "Suas palavras espalham um fervor que consome reinos; uma fagulha vira revolução.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4111,7 +4111,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "insinua uma ideia que o alvo crê ser sua.",
+    "texto": "Insinua uma ideia que o alvo crê ser sua.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4129,7 +4129,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "semeia desconfiança entre dois aliados.",
+    "texto": "Semeia desconfiança entre dois aliados.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4147,7 +4147,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "usa uma alavanca para dobrar a vontade de alguém.",
+    "texto": "Usa uma alavanca para dobrar a vontade de alguém.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4165,7 +4165,7 @@
       "plantar-ideia"
     ],
     "aliases": [],
-    "texto": "cultiva uma teia de contatos e dívidas.",
+    "texto": "Cultiva uma teia de contatos e dívidas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4184,7 +4184,7 @@
       "cunha"
     ],
     "aliases": [],
-    "texto": "vira facções e pessoas umas contra as outras numa cena.",
+    "texto": "Vira facções e pessoas umas contra as outras numa cena.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4203,7 +4203,7 @@
       "virar-o-jogo"
     ],
     "aliases": [],
-    "texto": "orquestra intrigas de longo alcance; manipula uma corte nos bastidores.",
+    "texto": "Orquestra intrigas de longo alcance; manipula uma corte nos bastidores.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4222,7 +4222,7 @@
       "mestre-dos-cordeis"
     ],
     "aliases": [],
-    "texto": "nada acontece numa região sem ser parte do seu plano; reis dançam sem saber.",
+    "texto": "Nada acontece numa região sem ser parte do seu plano; reis dançam sem saber.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4254,7 +4254,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "reinterpreta uma frase/acordo a seu favor.",
+    "texto": "Reinterpreta uma frase ou um acordo a seu favor.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4272,7 +4272,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "obtém condições muito melhores numa negociação.",
+    "texto": "Obtém condições muito melhores numa negociação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4290,7 +4290,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "fecha acordos com armadilhas que o alvo não percebe.",
+    "texto": "Fecha acordos com armadilhas que o alvo não percebe.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4308,7 +4308,7 @@
       "torcer"
     ],
     "aliases": [],
-    "texto": "emaranha o alvo em lógica até ele concordar.",
+    "texto": "Emaranha o alvo em lógica até ele concordar.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4327,7 +4327,7 @@
       "confundir"
     ],
     "aliases": [],
-    "texto": "convence alguém de quase qualquer coisa razoável (vs Defesa Social).",
+    "texto": "Convence alguém de quase qualquer coisa razoável (contra a Defesa Social).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4346,7 +4346,7 @@
       "palavras-de-veludo"
     ],
     "aliases": [],
-    "texto": "sela acordos que o alvo se sente compelido a cumprir.",
+    "texto": "Sela acordos que o alvo se sente compelido a cumprir.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4365,7 +4365,7 @@
       "pacto-inquebravel"
     ],
     "aliases": [],
-    "texto": "dobra até os céticos; faz o mal parecer bem e a mentira, verdade.",
+    "texto": "Dobra até os céticos; faz o mal parecer bem e a mentira, verdade.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -7617,7 +7617,7 @@
       "tom-de-autoridade"
     ],
     "aliases": [],
-    "texto": "Uma ordem curta que o alvo obedece por reflexo (vs Defesa Mental); resistir custa Força de Vontade.",
+    "texto": "Uma ordem curta que o alvo obedece por reflexo (contra a Defesa Mental); resistir custa Força de Vontade.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
