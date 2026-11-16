@@ -5805,7 +5805,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "pressente o sobrenatural próximo (magia, espíritos, lugares de poder).",
+    "texto": "Pressente o sobrenatural próximo (magia, espíritos, lugares de poder).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5823,7 +5823,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "percebe o estado/natureza de alguém como cores.",
+    "texto": "Percebe o estado ou natureza de alguém como cores.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5841,7 +5841,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "nota presenças invisíveis e ecos do passado num lugar.",
+    "texto": "Nota presenças invisíveis e ecos do passado num lugar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5859,7 +5859,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "vê espíritos, encantamentos ativos e marcas mágicas.",
+    "texto": "Vê espíritos, encantamentos ativos e marcas mágicas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5877,7 +5877,7 @@
       "sentir-o-veu"
     ],
     "aliases": [],
-    "texto": "percebe o que aconteceu num local.",
+    "texto": "Percebe o que aconteceu num local.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5896,7 +5896,7 @@
       "ler-o-lugar"
     ],
     "aliases": [],
-    "texto": "comunica-se com espíritos e percebe o mundo invisível.",
+    "texto": "Comunica-se com espíritos e percebe o mundo invisível.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5915,7 +5915,7 @@
       "comunhao"
     ],
     "aliases": [],
-    "texto": "enxerga planos sobrepostos ao mundo; lê a teia de essência.",
+    "texto": "Enxerga planos sobrepostos ao mundo; lê a teia de essência.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5934,7 +5934,7 @@
       "olhar-alem"
     ],
     "aliases": [],
-    "texto": "percebe a verdadeira natureza espiritual de tudo; nada do oculto lhe é velado.",
+    "texto": "Percebe a verdadeira natureza espiritual de tudo; nada do oculto lhe é velado.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5966,7 +5966,7 @@
       "vasto-saber"
     ],
     "aliases": [],
-    "texto": "recorda um fato relevante que estudou.",
+    "texto": "Recorda um fato relevante que estudou.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5982,7 +5982,7 @@
       "vasto-saber"
     ],
     "aliases": [],
-    "texto": "compreende e aprende idiomas com facilidade espantosa.",
+    "texto": "Compreende e aprende idiomas com facilidade espantosa.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6000,7 +6000,7 @@
       "vasto-saber"
     ],
     "aliases": [],
-    "texto": "conhecimento profundo em muitas áreas.",
+    "texto": "Conhecimento profundo em muitas áreas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6018,7 +6018,7 @@
       "poliglota"
     ],
     "aliases": [],
-    "texto": "lê escritas antigas, cifras e línguas mortas.",
+    "texto": "Lê escritas antigas, cifras e línguas mortas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6037,7 +6037,7 @@
       "decifrar"
     ],
     "aliases": [],
-    "texto": "domina saberes raros; conecta conhecimentos distantes.",
+    "texto": "Domina saberes raros; conecta conhecimentos distantes.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6056,7 +6056,7 @@
       "sabio"
     ],
     "aliases": [],
-    "texto": "sabe quase tudo que a civilização registrou.",
+    "texto": "Sabe quase tudo que a civilização registrou.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6075,7 +6075,7 @@
       "mente-universal"
     ],
     "aliases": [],
-    "texto": "qualquer saber humano está ao seu alcance; lê qualquer língua na hora.",
+    "texto": "Qualquer saber humano está ao seu alcance; lê qualquer língua na hora.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
