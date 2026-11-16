@@ -6677,7 +6677,7 @@
       "jeitinho"
     ],
     "aliases": [],
-    "texto": "transforma um elemento do ambiente em vantagem.",
+    "texto": "Transforma um elemento do ambiente em vantagem.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6695,7 +6695,7 @@
       "jeitinho"
     ],
     "aliases": [],
-    "texto": "inverte uma situação ruim com uma ideia inesperada.",
+    "texto": "Inverte uma situação ruim com uma ideia inesperada.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6713,7 +6713,7 @@
       "jeitinho"
     ],
     "aliases": [],
-    "texto": "resolve um problema de um jeito que ninguém esperava.",
+    "texto": "Resolve um problema de um jeito que ninguém esperava.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6731,7 +6731,7 @@
       "usar-o-cenario"
     ],
     "aliases": [],
-    "texto": "monta um dispositivo improvisado funcional na hora.",
+    "texto": "Monta um dispositivo improvisado funcional na hora.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6750,7 +6750,7 @@
       "macgyver"
     ],
     "aliases": [],
-    "texto": "encontra escapatória até nas situações mais fechadas.",
+    "texto": "Encontra escapatória até nas situações mais fechadas.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6769,7 +6769,7 @@
       "sempre-uma-saida"
     ],
     "aliases": [],
-    "texto": "vira qualquer cenário a seu favor com engenhosidade quase mágica.",
+    "texto": "Vira qualquer cenário a seu favor com engenhosidade quase mágica.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6788,7 +6788,7 @@
       "improviso-magistral"
     ],
     "aliases": [],
-    "texto": "o improvável dá certo nas suas mãos; transforma o caos em plano.",
+    "texto": "O improvável dá certo nas suas mãos; transforma o caos em plano.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6820,7 +6820,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "infere um fato sobre o alvo só de observá-lo.",
+    "texto": "Infere um fato sobre o alvo só de observá-lo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6838,7 +6838,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "percebe os sinais que denunciam o próximo ato do alvo.",
+    "texto": "Percebe os sinais que denunciam o próximo ato do alvo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6856,7 +6856,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "monta um perfil preciso após breve contato.",
+    "texto": "Monta um perfil preciso após breve contato.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6874,7 +6874,7 @@
       "ler-tells"
     ],
     "aliases": [],
-    "texto": "prevê como o alvo reagirá a uma situação.",
+    "texto": "Prevê como o alvo reagirá a uma situação.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6893,7 +6893,7 @@
       "antecipar-a-pessoa"
     ],
     "aliases": [],
-    "texto": "lê alguém tão bem que prevê escolhas e descobre segredos.",
+    "texto": "Lê alguém tão bem que prevê escolhas e descobre segredos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6912,7 +6912,7 @@
       "mente-aberta-como-livro"
     ],
     "aliases": [],
-    "texto": "num olhar, sabe quem é, o que quer e como agirá.",
+    "texto": "Num olhar, sabe quem é, o que quer e como agirá.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6931,7 +6931,7 @@
       "conhecer-de-relance"
     ],
     "aliases": [],
-    "texto": "compreende qualquer pessoa por completo num instante.",
+    "texto": "Compreende qualquer pessoa por completo num instante.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
