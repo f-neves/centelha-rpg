@@ -1291,9 +1291,9 @@
   "arcano": {
     "tetoNivelArte": {
       "porCentelha": [2, 3, 4, 5, 6, 6, 6],
-      "nota": "O nível máximo de cada Arte é Centelha + 2, com teto 6 (o índice é a Centelha, de 0 a 6): Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6. PROVISÓRIO, decisão do autor de 03/10/2026 (D-006). O teto de PROEZA continua sendo a Centelha (o nível N exige Centelha >= N); não há conflito."
+      "nota": "O nível máximo de cada Arte é Centelha + 2, com teto 6 (o índice é a Centelha, de 0 a 6): Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6. Decisão do autor de 03/10/2026 (D-006). O teto de PROEZA continua sendo a Centelha (o nível N exige Centelha >= N); não há conflito."
     },
-    "nota": "Detalhamento do uso das Artes: improviso por parâmetros, conjuração composta (espelha o combo) e Rituais. Mana = nível do efeito. Não existe rolagem geral de conjuração: a única jogada de magia é Percepção + Acerto Arcano, nos efeitos MIRADOS (o que sai da mão e voa até o alvo); o resto se resolve por tabela ou por Dificuldade fixa do Efeito.",
+    "nota": "Detalhamento do uso das Artes: improviso por parâmetros, conjuração composta (espelha o combo) e Rituais. Mana = soma dos níveis dos parâmetros escolhidos, menos a Centelha. Não existe rolagem geral de conjuração: os efeitos MIRADOS (o que sai da mão e voa até o alvo) rolam Percepção + Acerto Arcano, e os que tocam a mente sem projétil rolam Influência + a Habilidade social do Efeito; o resto se resolve por tabela ou por Dificuldade fixa do Efeito.",
     "feiticoTicks": [
       {
         "nivel": "0–3",
@@ -1309,7 +1309,7 @@
       }
     ],
     "resistencia": {
-      "rolagem": "Percepção + Acerto Arcano, e só nos efeitos MIRADOS. Não há rolagem de conjuração para o resto: o que não é mirado se resolve pela Dificuldade fixa do Efeito ((maior grau investido) × 5), pela Defesa passiva do alvo ou por tabela.",
+      "rolagem": "Percepção + Acerto Arcano nos efeitos MIRADOS; Influência + a Habilidade social do Efeito nos que tocam a mente sem projétil. Não há rolagem de conjuração para o resto: o que não é mirado se resolve pela Dificuldade fixa do Efeito ((maior grau investido) × 5), pela Defesa passiva do alvo ou por tabela.",
       "tipos": [
         {
           "efeito": "Dano e projéteis",
@@ -1323,7 +1323,7 @@
         },
         {
           "efeito": "Mente e alma",
-          "resiste": "Defesa Mental (passiva): a conjuração precisa superá-la; passando, o alvo ainda pode pagar Força de Vontade para recusar o efeito ou encurtá-lo (ver Defesas)",
+          "resiste": "Defesa Mental (passiva): a jogada de quem conjura (Influência + a Habilidade social do Efeito) precisa superá-la; passando, o alvo ainda pode pagar Força de Vontade para recusar o efeito ou encurtá-lo (ver Defesas)",
           "ex": "medo, fascínio, ilusão, domínio"
         },
         {
@@ -1408,7 +1408,7 @@
           "1 semana",
           "1 mês"
         ],
-        "notaDano": "Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano.",
+        "notaDano": "Terra dobra o dado: cada nível de dano dela vale 2d6. Ar e Sombra não têm parâmetro de dano no improviso; o dano deles fica nos Efeitos que o declaram.",
         "notaArea": "O nível compra um DIÂMETRO, e a área é a do círculo que ele desenha (grau 3 = 2 m de diâmetro = 3,1 m² de chão). Em círculo, o raio é sempre metade do diâmetro comprado. Esta régua é a dos Efeitos que ainda declaram Área. Ela está de saída: o chão de um Efeito passa a se comprar por MOLDE, com régua por forma, e passar os 46 Efeitos que hoje declaram Área para o molde que lhes cabe ainda está por fazer.",
         "notaAlcance": "O toque é o grau 0 e é grátis: nenhum efeito paga para acontecer na própria mão. Quem CRIA algo para ser arremessado (uma bola de neve) não paga Alcance: o objeto voa até acertar, e se o alvo estiver longe pode precisar de Duração. Já o projétil que sai da mão e voa sozinho paga Alcance, e a jogada é Percepção + Acerto Arcano.",
         "volume": [
@@ -1440,7 +1440,7 @@
           "8 m³"
         ],
         "notaVolume": "Esta é a régua da MATÉRIA, e ela vale para o Efeito Especial que cria elemento que fica. O Volume compra um LADO e o que se ganha é o cubo daquele lado, mas ele perdeu o direito de virar forma: a forma agora é o molde. Lido como massa ele está calibrado, e o que parecia pequeno era pergunta de chão feita a uma régua de massa: em pedra, o grau 3 são 169 kg, o grau 4 são 1,4 t e o grau 6 são 10,8 t; em gelo, com 10 cm de espessura e 2 m de altura, o grau 4 dá cinco metros de muro.",
-        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão, o Muro. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição. ESCOPO: este corte é dos EFEITOS ESPECIAIS. O improviso não escolhe entre Área e Volume, porque ele tem uma geometria só, que é a manifestação em fatias: lá o Volume compra o lado da base, e qualquer outra manifestação de volume é Efeito Especial.",
+        "notaAreaOuVolume": "Área e Volume são as DUAS RÉGUAS do mesmo parâmetro, como Duração breve e Duração longa: o efeito usa uma ou a outra, nunca as duas, e custam o mesmo em pontos. Não é escolha de otimização do jogador, é o que o efeito faz que decide. VOLUME mede o CORPO do elemento, quanta matéria ou quanto fenômeno saiu: as Lascas, a Onda, a Tromba, o Clarão Cegante. ÁREA mede a JURISDIÇÃO, a região onde a regra passa a valer, e ali não interessa quanto elemento existe, interessa quem está dentro: a Noite, o Santuário, a Barreira, o Círculo, a Praga, a Mordaça, a Bolha Temporal. Teste de mesa: o efeito é MATÉRIA ou é REGRA? Se a pergunta que ele responde é 'quanto elemento?', é Volume. Se é 'quem está dentro?', é Área. Uma mesma Arte usa as duas conforme o efeito: o Clarão de Luz é corpo, a Noite de Sombra é jurisdição. ESCOPO: este corte é dos EFEITOS ESPECIAIS. O improviso não escolhe entre Área e Volume, porque ele tem uma geometria só, que é a manifestação em fatias: lá o Volume compra o lado da base, e qualquer outra manifestação de volume é Efeito Especial.",
         "volumePorEstado": {
           "nota": "O Volume mede corpo, e um metro cúbico de pedra, de água, de chama e de névoa são quantidades de esforço muito diferentes. O multiplicador vale só para o VOLUME DA MATÉRIA, o dos Efeitos: a Área é jurisdição e não depende do material, e o improviso tem o fator de estado dele, que incide no LADO DA BASE (Terra metade do lado, Vento e névoa o dobro, o resto igual). As duas exceções do dano são as mesmas, em direções opostas: a Terra dobra o dado e divide o volume, o Vento não tem dano no improviso e multiplica o volume por oito.",
           "tabela": [
@@ -1539,8 +1539,8 @@
           "O VOLUME compra uma BASE de n × n: n metros de frente somada e n metros de altura. Este é o único jeito de o improviso manifestar volume; qualquer outro é Efeito Especial.",
           "A manifestação sai do FEITICEIRO, em fatias que partem todas do mesmo ponto e são obrigatoriamente vizinhas: é o mesmo ataque se abrindo, e não vários ataques.",
           "A abertura de cada fatia é 60°, 90° ou 120°.",
-          "Com a base travada, o ângulo e a distância não são independentes: distância = (aresta ÷ 2) ÷ tan(ângulo ÷ 2).",
-          "Cada fatia é uma PIRÂMIDE, ápice no feiticeiro e base de pé na ponta: volume = base × distância ÷ 3.",
+          "Com a base travada, o ângulo e o alcance não são independentes: raio = (frente da fatia ÷ 2) ÷ sen(ângulo ÷ 2). A base é um arco, e a frente de cada fatia é a corda dele.",
+          "Cada fatia é uma PIRÂMIDE de base curva, ápice no feiticeiro e base de pé no arco: no chão, ela é um setor de círculo.",
           "O número de fatias nunca passa do nível da Arte, nem do que fecha o círculo."
         ],
         "ladoBase": [
@@ -1552,41 +1552,38 @@
           "5 m",
           "6 m"
         ],
-        "formula": "aresta = n ÷ N · distância = (n ÷ 2N) ÷ tan(θ÷2) · volume = n³ ÷ (6 · N · tan(θ÷2))",
-        "formulaNota": "Chamando N o número de fatias e θ a abertura de cada uma. O que se compra é a SUPERFÍCIE, e ela não se mexe: a frente somada é sempre n e a altura é sempre n, então a base é n² em qualquer abertura e em qualquer número de fatias. Quem paga a abertura é a DISTÂNCIA, e o volume vai atrás dela.",
+        "formula": "altura (padrão): raio = (n ÷ 2) ÷ sen(θ÷2) · altura = n ÷ N · distância: raio = (n ÷ 2N) ÷ sen(θ÷2) · altura = n",
+        "formulaNota": "Chamando N o número de fatias e θ a abertura de cada uma. O que se compra é a SUPERFÍCIE, e ela não se mexe: frente somada × altura é sempre n², em qualquer abertura e em qualquer número de fatias. Quem paga a abertura é escolha do conjurador, a cada conjuração: no modo da altura, o padrão, o raio fica e a altura de cada fatia divide por N; no modo da distância, a altura fica e o raio encolhe com N, e o volume vai atrás dele.",
         "aberturas": {
           "porque": "60°, 90° e 120° são as três que fecham o círculo em número inteiro de fatias: seis, quatro e três. Qualquer outro ângulo deixa fenda ou sobrepõe, e um leque que não fecha obriga a inventar regra para o resto. Não é gosto, é a lista completa dos divisores úteis de 360° nessa faixa.",
           "tabela": [
             {
               "abertura": "60°",
-              "distancia": "5,196 m (3√3)",
-              "lado": "6,000 m",
-              "volume": "62,35 m³",
+              "raio": "6,000 m",
+              "volume": "75,40 m³ (24π)",
               "fracao": "1"
             },
             {
               "abertura": "90°",
-              "distancia": "3,000 m (metade da base)",
-              "lado": "4,243 m",
-              "volume": "36,00 m³",
-              "fracao": "1 ÷ √3 = 0,577"
+              "raio": "4,243 m (3√2)",
+              "volume": "56,55 m³ (18π)",
+              "fracao": "3 ÷ 4"
             },
             {
               "abertura": "120°",
-              "distancia": "1,732 m (um terço)",
-              "lado": "3,464 m (2√3)",
-              "volume": "20,78 m³",
-              "fracao": "1 ÷ 3"
+              "raio": "3,464 m (2√3)",
+              "volume": "50,27 m³ (16π)",
+              "fracao": "2 ÷ 3"
             }
           ],
-          "nota": "Medido no grau 6, com uma fatia só (base de 6 × 6 m). Abrir é uma escolha caríssima, e isso é de propósito: o 120° custa dois terços do volume e chega a um terço da distância. Em troca ele cobre três vezes mais ângulo por fatia, e é o que serve ao feiticeiro de grau baixo, que não tem fatias sobrando para abrir de 60° em 60°."
+          "nota": "Medido no grau 6, com uma fatia só (base de 6 × 6 m; com uma fatia, os modos da altura e da distância dão o mesmo). Abrir custa, e isso é de propósito: o 120° fica com dois terços do volume e com pouco mais da metade do raio. Em troca ele cobre três vezes mais ângulo por fatia, e é o que serve ao feiticeiro de grau baixo, que não tem fatias sobrando para abrir de 60° em 60°."
         },
         "travaFatias": {
           "regra": "O número de fatias não passa do nível da Arte: grau 3 abre até três, grau 6 até seis.",
           "consequencias": [
             "A cobertura cresce em todo grau, e nenhum grau é pior que o anterior.",
             "Em fatias de 60° só o grau 6 fecha o círculo. Em 90°, o grau 4 já fecha; em 120°, o grau 3.",
-            "Com aresta de 1 m (fatias iguais ao grau), o elemento nasce a 87 cm do peito em 60°, a 50 cm em 90° e a 29 cm em 120°; com mais fatias que o grau a aresta encolhe e ele nasce mais perto ainda."
+            "No modo da distância, com fatias iguais ao grau (frente de 1 m cada), o elemento nasce a 1 m do peito em 60°, a 71 cm em 90° e a 58 cm em 120°; com mais fatias que o grau a frente encolhe e ele nasce mais perto ainda. No modo da altura, o padrão, o raio não muda com as fatias: o que encolhe é a altura de cada uma."
           ]
         },
         "botoes": {
@@ -1595,20 +1592,20 @@
             {
               "botao": "Número de fatias",
               "sobe": "o ângulo coberto (N × θ)",
-              "desce": "a distância, a aresta de cada fatia, o volume e o chão"
+              "desce": "no modo da distância, o raio, a frente de cada fatia, o volume e o chão; no da altura, só a altura de cada fatia (o raio e o volume ficam, e o chão cresce)"
             },
             {
               "botao": "Abertura",
               "sobe": "o ângulo de cada fatia",
-              "desce": "a distância, o volume e o chão"
+              "desce": "o raio, o volume e o chão, nos dois modos"
             }
           ],
-          "cercarSe": "Como a pegada no chão é N × aresta × distância ÷ 2, e a distância cai com N, o chão também divide por N. Não é que abrir troque altura por chão: abrir troca ângulo por tudo o mais. No grau 6 em fatias de 60°, uma fatia cobre 15,6 m² de chão a 5,2 m de distância, e as seis fatias que fecham o círculo cobrem 2,6 m² a 87 cm. Cercar-se é caríssimo, e é o preço de não ter flanco."
+          "cercarSe": "No chão, cada fatia é um setor de círculo. No modo da distância o raio cai com N, e o chão cai junto: no grau 6 em fatias de 60°, uma fatia cobre 18,8 m² de chão com 6 m de raio, e as seis que fecham o círculo cobrem 3,1 m², um disco de 1 m de raio. Cercar-se assim é caríssimo, e é o preço de não ter flanco. No modo da altura, o padrão, o raio fica: as seis fatias fecham um disco de 6 m de raio (113 m²) com 1 m de altura."
         },
         "alturas": {
           "regra": "O feiticeiro escolhe DUAS alturas: a de onde a pirâmide começa (o ápice: no chão, na mão, acima da cabeça) e a de onde ela acaba (o pé da base). A amarra é uma só: o ápice tem de estar dentro da altura da base.",
           "exemplo": "Base de 5 m com o pé a 0,5 m ocupa de 0,5 a 5,5 m, então o ápice cabe em qualquer ponto desse intervalo e em nenhum de fora. O alcance do braço (cerca de 2,2 m) limita as duas, e daí sai de graça que a base não pode ser erguida longe do corpo: o ápice teria de acompanhá-la.",
-          "deGraca": "Deslizar o ápice não cobra nem rende: o volume da pirâmide sai da área da base e da distância perpendicular até o ápice, e não de onde o ápice está sobre ela. São os mesmos 62,35 m³ com o ápice a 0, a 0,7, a 1,5 e a 2,2 m. Com isso o desperdício no subsolo deixa de existir: basta pousar o pé da base no chão.",
+          "deGraca": "Deslizar o ápice não cobra nem rende: o volume da pirâmide sai da área da base e da distância perpendicular até o ápice, que no arco é o raio, e não de onde o ápice está sobre ela. São os mesmos 75,40 m³ com o ápice a 0, a 0,7, a 1,5 e a 2,2 m. Com isso o desperdício no subsolo deixa de existir: basta pousar o pé da base no chão.",
           "tabela": [
             {
               "apice": "0 m, agachado com a mão no piso",
@@ -1618,7 +1615,7 @@
             {
               "apice": "1,5 m, na mão",
               "faceDeBaixo": "uma rampa descendo",
-              "tocaOChao": "só a 5,2 m (no grau 6)"
+              "tocaOChao": "só a 6 m (no grau 6, em 60°)"
             }
           ],
           "consequencia": "Saindo da mão com o pé da base no chão, a fatia é uma rampa que passa por cima de quem está deitado até quase a ponta. Quem quiser varrer o chão desde o próprio pé precisa agachar e sair do piso. Não é regra escrita, é consequência da forma."
@@ -2155,7 +2152,7 @@
           "speed": "×4"
         }
       ],
-      "exemplo": "Centelha 2, Arte 2. Área 2 + Dano 2 + Duração 2 = 6 pontos, Velocidade 5. Puxando para Área 3, um acima: 3×2 + 2 + 2 = 10 pontos, Velocidade 10. Para Área 4, dois acima: 4×3 + 2 + 2 = 16 pontos, Velocidade 15.",
+      "exemplo": "Centelha 2, Arte 2. Volume 2 + Dano 2 + Duração 2 = 6 pontos, Velocidade 5. Puxando para Volume 3, um acima: 3×2 + 2 + 2 = 10 pontos, Velocidade 10. Para Volume 4, dois acima: 4×3 + 2 + 2 = 16 pontos, Velocidade 15.",
       "desconto": "a Centelha desconta do total, como em qualquer conjuração"
     },
     "guardar": {
@@ -2192,12 +2189,12 @@
     "efeitos": {
       "nota": "Efeito é o resultado específico comprado dentro de uma Arte (o Special Effect do Sorcerer). A Arte dá o elemento em estado bruto; o Efeito dá forma, nome e comportamento. Régua: se precisa de um substantivo próprio para ser descrito, é Efeito.",
       "xp": "4 × nível do Efeito (ver xp.efeito). Não acumula: comprar o Efeito de nível 2 não exige ter o de nível 1.",
-      "upgrade": "efeito escalonável paga só a diferença: 4 × novo − 4 × antigo",
+      "upgrade": "Em revisão (proposta, ainda não regra): efeito escalonável paga só a diferença: 4 × novo − 4 × antigo",
       "outraArte": "Efeito que você já sabe e que cabe em outra Arte sua não custa XP, só treino; mas é preciso ter cada Arte no nível do Efeito",
       "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
       "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele",
       "acaoLivre": "Um punhado de Efeitos não custa Velocidade nenhuma, porque o gesto de conjurar é o mesmo de puxar a arma da cintura ou de tirar a flecha da aljava: sai junto com a ação que o usa, e não no lugar dela. Continuam custando Mana como qualquer conjuração; o que não custam é tempo. São marcados com `acaoLivre` em efeitos.json, e o tabuleiro propõe Velocidade 0 para eles.",
-      "custo": "nível do Efeito + a soma dos parâmetros usados; a Centelha desconta do total, como em qualquer conjuração",
+      "custo": "a soma dos níveis dos parâmetros escolhidos; o nível do Efeito não entra, e a Centelha desconta do total, como em qualquer conjuração",
       "acimaDaArte": "Alguns Efeitos Especiais têm parâmetros acima do nível da Arte, normalmente por serem mais específicos (a Neblina começa um nível acima em Área, trocando m² por m³).",
       "exemplos": [
         "Neblina (Efeito 1) + Alcance 2 (5 m) + Volume 3 (4×4×4) + Duração 2 (12 Ticks) = 1 + 2 + 3 + 2 = 8 pontos.",
@@ -2207,7 +2204,7 @@
       "fronteira": "Efeito de FRONTEIRA é o que mora em duas Artes vizinhas e empresta os verbos de uma para a outra. É o mesmo mecanismo de \"o Efeito que você já sabe e que cabe em outra Arte sua não custa XP\", visto pelo outro lado: ele é a vantagem concreta que uma Escola entrega. A escola da Areia é a de Terra que faz fronteira com o Vento, e por isso alcança Efeitos que a Terra pura não alcançaria. Raio e Vento se tocam pela tempestade e pela velocidade; Gelo e Água pela mesma matéria em dois estados."
     },
     "composta": {
-      "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos Manas + sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior nível.",
+      "regra": "Espelha o combo das Técnicas: juntar K Artes numa conjuração custa a soma dos pontos, menos a Centelha uma vez, mais a sobretaxa progressiva +(k−1). Uma única rolagem (Arte condutora à escolha do feiticeiro); o nível efetivo para gating = o maior componente; os Ticks seguem a escada do maior grau investido.",
       "sobretaxaPorK": "(k−1)"
     },
     "ritual": {
