@@ -453,7 +453,7 @@
       "tom-de-autoridade"
     ],
     "aliases": [],
-    "texto": "Manip + Intimidação contra a Defesa Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
+    "texto": "Influência + Intimidação contra a Defesa Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -1746,7 +1746,7 @@
       "finta"
     ],
     "aliases": [],
-    "texto": "Tenta arrancar a arma do oponente (Destreza + Corte contra a Defesa).",
+    "texto": "Tenta arrancar a arma do oponente (Destreza + Armas contra a Defesa).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
