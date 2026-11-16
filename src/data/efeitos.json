@@ -1712,7 +1712,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada 6 Ticks enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Em quem está em 0 PV ou menos, cada PV recuperado soma ao PV negativo, e o alvo acorda ao chegar a 1 PV; enquanto a mão estiver nele, o teste de Tratar fica suspenso. Não é uma cura muito eficiente, mas impede que o alvo piore.",
+    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera 1 PV a cada 6 Ticks enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Em quem está em 0 PV ou menos, cada PV recuperado soma ao PV negativo, e o alvo acorda ao chegar a 1 PV; enquanto a mão estiver nele, o teste de Tratar fica suspenso. Não é uma cura muito eficiente, mas impede que o alvo piore.",
     "notas": "Serve no meio da luta, quando não há tempo de parar para curar direito.",
     "grid": {
       "forma": "alvo",
