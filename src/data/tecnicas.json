@@ -899,7 +899,7 @@
       "aguentar-o-tranco"
     ],
     "aliases": [],
-    "texto": "Golpe de Impacto te derruba e PARA em 0: só dano de outro tipo te leva abaixo do zero, na direção do limite.",
+    "texto": "Golpe de Impacto derruba você e PARA em 0: só dano de outro tipo leva você abaixo do zero, na direção do limite.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1568,7 +1568,7 @@
       "pisar-leve"
     ],
     "aliases": [],
-    "texto": "Furta ou planta objetos sem ser percebido (vs Percepção Passiva).",
+    "texto": "Furta ou planta objetos sem ser percebido (contra a Percepção Passiva).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -1746,7 +1746,7 @@
       "finta"
     ],
     "aliases": [],
-    "texto": "Tenta arrancar a arma do oponente (Destreza+Corte vs Defesa).",
+    "texto": "Tenta arrancar a arma do oponente (Destreza + Corte contra a Defesa).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
