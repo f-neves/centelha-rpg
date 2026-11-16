@@ -3313,7 +3313,7 @@
       "segundo-vento"
     ],
     "aliases": [],
-    "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (pesado→médio, médio→leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
+    "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (o pesado custa como médio, o médio como leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3400,7 +3400,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "raramente adoece.",
+    "texto": "Raramente adoece.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3418,7 +3418,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "adapta-se rápido a calor, frio e altitude.",
+    "texto": "Adapta-se rápido a calor, frio e altitude.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3436,7 +3436,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "neutraliza um veneno já no corpo; expele toxinas.",
+    "texto": "Neutraliza um veneno já no corpo; expele toxinas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3452,7 +3452,7 @@
       "aclimatacao"
     ],
     "aliases": [],
-    "texto": "suporta temperaturas e ambientes que matariam outros.",
+    "texto": "Suporta temperaturas e ambientes que matariam outros.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3471,7 +3471,7 @@
       "resistir-doenca"
     ],
     "aliases": [],
-    "texto": "imune a venenos e doenças mundanos.",
+    "texto": "Imune a venenos e doenças mundanos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3490,7 +3490,7 @@
       "imunidade"
     ],
     "aliases": [],
-    "texto": "sobrevive em ambientes mortais (sem ar, submerso, veneno no ar) por um tempo.",
+    "texto": "Sobrevive em ambientes mortais (sem ar, submerso, veneno no ar) por um tempo.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3509,7 +3509,7 @@
       "corpo-inospito"
     ],
     "aliases": [],
-    "texto": "imune a quase todo veneno, doença e ambiente; o corpo rejeita a corrupção.",
+    "texto": "Imune a quase todo veneno, doença e ambiente; o corpo rejeita a corrupção.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3523,7 +3523,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "ignora a penalidade do estado Machucado.",
+    "texto": "Ignora a penalidade do estado Machucado.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3541,7 +3541,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "ignora a penalidade de ferimento por uma ação crucial.",
+    "texto": "Ignora a penalidade de ferimento por uma ação crucial.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3559,7 +3559,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "levanta-se na hora ao ser derrubado, sem gastar a ação.",
+    "texto": "Levanta-se na hora ao ser derrubado, sem gastar a ação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3575,7 +3575,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "reduz todas as penalidades de ferimento em 1.",
+    "texto": "Reduz todas as penalidades de ferimento em 1.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3593,7 +3593,7 @@
       "cerrar-os-dentes"
     ],
     "aliases": [],
-    "texto": "ao chegar a 0 PV, fica de pé por mais 6 Ticks.",
+    "texto": "Ao chegar a 0 PV, fica de pé por mais 6 Ticks.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3612,7 +3612,7 @@
       "nao-vou-cair"
     ],
     "aliases": [],
-    "texto": "age normalmente mesmo gravemente ferido por uma cena.",
+    "texto": "Age normalmente mesmo gravemente ferido por uma cena.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3631,7 +3631,7 @@
       "vontade-de-viver"
     ],
     "aliases": [],
-    "texto": "na janela entre cair a 0 e cruzar o limite da morte, age uma vez, plenamente, apesar de estar incapacitado.",
+    "texto": "Na janela entre cair a 0 e cruzar o limite da morte, age uma vez, plenamente, apesar de estar incapacitado.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3650,7 +3650,7 @@
       "ultimo-suspiro"
     ],
     "aliases": [],
-    "texto": "adia a própria morte por pura vontade até terminar o que precisa.",
+    "texto": "Adia a própria morte por pura vontade até terminar o que precisa.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
