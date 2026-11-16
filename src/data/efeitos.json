@@ -2683,7 +2683,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Guarda uma rolagem de novo para soltar depois, sua ou de um aliado à vista, mesmo fora do seu lance. Vale o segundo resultado, bom ou ruim.",
+    "efeito": "Guarda o direito de rolar de novo para usar depois, seu ou de um aliado à vista, mesmo fora do seu lance. Vale o segundo resultado, bom ou ruim.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
