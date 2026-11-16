@@ -244,7 +244,7 @@
     {
       "id": "concentrando", "nome": "Concentrando", "icone": "◈", "grupo": "arcano", "cor": "arcano",
       "dados": -1,
-      "nota": "Feitiço guardado: Raciocínio conta um nível abaixo e −1d6 em rolagens que o usem.",
+      "nota": "Feitiço guardado: Raciocínio conta um nível abaixo e −1d6 em rolagens que o usem. Efeito sustentado: gasta a ação de cada janela de 6 Ticks, não sai do lugar, e ao sofrer dano testa Compostura + Concentração contra 10.",
       "fonte": "artes · guardar um feitiço"
     },
 
