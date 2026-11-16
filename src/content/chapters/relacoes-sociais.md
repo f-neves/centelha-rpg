@@ -182,7 +182,7 @@ Um golpe que supera a Defesa **moveria** o alvo. Para **segurar firme**, ele gas
 
 **A régua não sobe em nenhuma linha desta tabela.** Ganhar o duelo estica o que se pode pedir naquela cena; não faz ninguém gostar de você.
 
-A Vontade é a mesma que algumas Técnicas cobram (a Mana das Artes é outra reserva, também no mortal: recuperar uma não recupera a outra) e **volta devagar**: 1 ponto por noite de sono, 1 ou 3 por [Firula](/regras/habilidades) conforme o nível, e 1 por agir fiel à própria régua moral. Então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. O Resistir **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**. O +4 na Defesa antes do teste vale também contra leitura (Cap. XI).
+A Vontade é a mesma que algumas Técnicas cobram (a Mana das Artes e a Energia das Proezas são outras reservas, também no mortal: recuperar uma não recupera a outra) e **volta devagar**: 1 ponto por noite de sono, 1 ou 3 por [Firula](/regras/habilidades) conforme o nível, e 1 por agir fiel à própria régua moral. Então segurar-se num embate longo **custa caro**: vira uma queda de braço de recursos, em que ganha quem tem mais paciência e convicção. O Resistir **não** vale contra **leitura** (não dá para se recusar a ser lido); vale só contra os golpes que tentam te **mover**. O +4 na Defesa antes do teste vale também contra leitura (Cap. XI).
 
 ### Ceder, e o alcance que a Margem compra
 
