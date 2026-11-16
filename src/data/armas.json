@@ -723,7 +723,7 @@
       "pc": 550
     },
     "peso": 0.7,
-    "descricao": "Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
+    "descricao": "Laminado de chifre e tendão: só rende o dobro da Força, e o bônus de +2, com Força 4 ou mais; com menos, rende como um Arco Longo. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
     "tags": [
       "munição",
       "distância",
