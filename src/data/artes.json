@@ -1642,7 +1642,7 @@
       {
         "nivel": 3,
         "nome": "Pacto Menor",
-        "efeito": "invoca espírito/elemental menor",
+        "efeito": "invoca espírito ou elemental menor",
         "custo": {
           "mana": 3
         },
@@ -1704,7 +1704,7 @@
       {
         "nivel": 1,
         "nome": "Salvaguarda",
-        "efeito": "ward pessoal; dissipa magia fraca",
+        "efeito": "resguardo pessoal; dissipa magia fraca",
         "custo": {
           "mana": 1
         },
@@ -1749,7 +1749,7 @@
       {
         "nivel": 5,
         "nome": "Dissipar",
-        "efeito": "anula/enfraquece magias",
+        "efeito": "anula ou enfraquece magias",
         "custo": {
           "mana": 5
         },
@@ -1799,7 +1799,7 @@
       {
         "nivel": 2,
         "nome": "Máscara",
-        "efeito": "rosto, voz e roupas viram outros aos olhos de quem vê; o toque denuncia (vs Defesa Mental)",
+        "efeito": "rosto, voz e roupas viram outros aos olhos de quem vê; o toque denuncia (contra a Defesa Mental)",
         "custo": {
           "mana": 2
         },
