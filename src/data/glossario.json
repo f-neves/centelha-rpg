@@ -121,8 +121,7 @@
     "termo": "Centelha",
     "aliases": [
       "essência",
-      "spark",
-      "poder"
+      "spark"
     ],
     "definicao": "O nível de poder pessoal (0 a 6 para o jogador, até 12 no bestiário), do mortal ao semideus. Destrava os níveis das Proezas, limita o nível das Artes (Centelha + 2) e dimensiona Energia e Mana."
   },
@@ -236,6 +235,6 @@
     "aliases": [
       "categoria de tamanho"
     ],
-    "definicao": "Categoria de tamanho da criatura (Minúsculo, Miúdo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal). Na jogada de acerto de ataques físicos, cada categoria de diferença soma +3, sem teto, só no acerto. No corpo a corpo só o menor ganha (o maior ataca o menor sem penalidade); à distância é relativo nos dois sentidos (alvo maior +3 por categoria, alvo menor −3). O Tamanho não decide a Vida, a Couraça, as Manobras nem a trava do Bloqueio: a Vida, as Manobras e a trava vêm da massa, e a Couraça vem da pele."
+    "definicao": "Categoria de tamanho da criatura (Minúsculo, Miúdo, Pequeno, Médio, Grande, Enorme, Imenso, Colossal). Na jogada de acerto de ataques físicos, cada categoria de diferença soma +3, sem teto, só no acerto. No corpo a corpo só o menor ganha (o maior ataca o menor sem penalidade); à distância é relativo nos dois sentidos (alvo maior +3 por categoria, alvo menor −3). O Tamanho não decide a Couraça, as Manobras nem a trava do Bloqueio, nem a Vida da criatura: a Vida da criatura, as Manobras e a trava vêm da massa, e a Couraça vem da pele. A Vida do personagem sai do Tamanho da raça."
   }
 ]
