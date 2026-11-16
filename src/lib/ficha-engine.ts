@@ -697,7 +697,7 @@ export function montarFicha(opts: FichaOpts) {
       const nota = p.tipo === 'substitui'
         ? (p.nota ? `<small>${p.escala.join(' · ')}${p.unidade ? ` (${p.unidade})` : ''}</small>` : '')
         : (p.nota ? `<small>${p.nota}</small>` : '');
-      return `<div class="ef-pop-p"><b>${rotPar(p.nome)}:</b> ${valorPar(p)}${nota}</div>`;
+      return `<div class="ef-pop-p"><b>${rotPar(p.nome)}:</b> ${valorPar(p, artesDe(e).map((x: any) => idRef(x.id)))}${nota}</div>`;
     }).join('');
     const cab = `nível ${e.nivel} · ${custoEfeito(e.nivel)} XP${S.efeito[e.id] ? ' · comprado' : ''}`;
     return `<span class="ficha-pop-tit">${e.nome}<small>${cab}</small></span>

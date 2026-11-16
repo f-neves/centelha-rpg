@@ -70,7 +70,7 @@ const BLOCOS: [string, string, any[]][] = [
                 <li>
                   <span class="ef-p-n" data-formas={formaDe(p.nome)} tabindex={formaDe(p.nome) ? 0 : undefined}>{p.nome}:</span>
                   <span class="ef-p-v">
-                    {valorPar(p)}
+                    {valorPar(p, [arte.id])}
                     {p.tipo === 'substitui' && p.nota && <span class="ef-p-esc muted">{p.escala.join(' · ')}{p.unidade ? ` (${p.unidade})` : ''}</span>}
                     {p.tipo !== 'substitui' && p.nota && <span class="ef-p-esc muted">{p.nota}</span>}
                   </span>
