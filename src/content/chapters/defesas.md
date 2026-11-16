@@ -79,7 +79,7 @@ Você tem duas maneiras de se defender e usa a que couber. Na ficha as duas apar
 
 - **Defesa Social** = ( Compostura + Sociabilidade ) × 2 + 2 × menor(Centelha, Sociabilidade) + Especialidade
 
-Nas **feras** (regra de criatura: bichos de instinto, Inteligência 1), troca-se **Sociabilidade por Sobrevivência**: um animal não tem trato social, mas sente o perigo.
+Nas **criaturas de Inteligência 1** (regra de criatura: feras, bichos de instinto e outras), troca-se **Sociabilidade por Sobrevivência**: um animal não tem trato social, mas sente o perigo.
 
 ### Defesa Mental
 
@@ -114,12 +114,12 @@ Além do número passivo, a **Força de Vontade** tem dois usos contra influênc
 
 ## Quem tem cada muralha
 
-Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** de quem é atacado (na prática, uma regra de criatura, porque todo personagem tem a Inteligência das linhas de baixo):
+Uma defesa só existe se houver o que defender. Usa-se a **Inteligência** da criatura (regra de criatura; o personagem usa as fórmulas acima, com a Sociabilidade):
 
 | Inteligência | Exemplos | Social | Mental |
 |---|---|:---:|:---:|
 | **0** | objeto, planta, limo, constructo, morto-vivo sem mente | imune ("-") | imune ("-") |
-| **1** | feras e bichos | tem (Sobrevivência no lugar de Sociabilidade) | tem (sente medo, mágico ou não) |
+| **1** | criaturas de Inteligência 1 (feras, bichos e outras) | tem (Sobrevivência no lugar de Sociabilidade) | tem (sente medo, mágico ou não) |
 | **2+** | gente e seres pensantes | tem | tem |
 
 **Imune** quer dizer que o ataque **não funciona**, não que ele acerta de graça. Uma mente fraca tem um número baixo, nunca "-". (Exceção: certas magias de controle específicas conseguem mexer até com coisas sem mente, como animar um objeto.)
