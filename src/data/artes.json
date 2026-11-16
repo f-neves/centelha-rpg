@@ -473,7 +473,7 @@
       {
         "nivel": 1,
         "nome": "Moldar Terra",
-        "efeito": "molda terra/pedra; arremessa pedras (1d6)",
+        "efeito": "molda terra/pedra; arremessa pedras (2d6)",
         "custo": {
           "mana": 1
         },
@@ -486,7 +486,7 @@
       {
         "nivel": 2,
         "nome": "Punho de Pedra",
-        "efeito": "arremessa uma pedra maior (1d6) ou ergue um pequeno anteparo de terra",
+        "efeito": "arremessa uma pedra maior (2d6) ou ergue um pequeno anteparo de terra",
         "custo": {
           "mana": 2
         },
