@@ -8,7 +8,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "O 1º deslocamento da cena, ou sacar/empunhar uma arma, custa **−2 Ticks** (mín. 1).",
+    "texto": "O 1º deslocamento da cena, ou sacar ou empunhar uma arma, custa **−2 Ticks** (mín. 1).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -26,7 +26,7 @@
       "passo-veloz"
     ],
     "aliases": [],
-    "texto": "Quadruplica distância/altura de um salto; ignora terreno difícil; aterrissa de pé.",
+    "texto": "Quadruplica a distância ou a altura de um salto; ignora terreno difícil; aterrissa de pé.",
     "pendente": false,
     "nivel": 3,
     "efeito": "salto"
@@ -1853,7 +1853,7 @@
       "furia"
     ],
     "aliases": [],
-    "texto": "Rugido que abala inimigos próximos (vs Defesa Social).",
+    "texto": "Rugido que abala inimigos próximos (contra a Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2954,7 +2954,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "nunca cai de superfícies estreitas; +3 em Atletismo.",
+    "texto": "Nunca cai de superfícies estreitas; +3 em Atletismo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2972,7 +2972,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "reduz muito o dano de quedas (×2); cai de pé.",
+    "texto": "Reduz muito o dano de quedas (×2); cai de pé.",
     "pendente": false,
     "nivel": 1,
     "efeito": "salto"
@@ -2990,7 +2990,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "sobe superfícies difíceis em velocidade de corrida (×1,5).",
+    "texto": "Sobe superfícies difíceis em velocidade de corrida (×1,5).",
     "pendente": false,
     "nivel": 1,
     "efeito": "velocidade"
@@ -3008,7 +3008,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "passa por aberturas mínimas, escapa de amarras e grades.",
+    "texto": "Passa por aberturas mínimas, escapa de amarras e grades.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3026,7 +3026,7 @@
       "queda-de-gato"
     ],
     "aliases": [],
-    "texto": "piruetas que reposicionam e desviam.",
+    "texto": "Piruetas que reposicionam e desviam.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3045,7 +3045,7 @@
       "contorcao"
     ],
     "aliases": [],
-    "texto": "escala qualquer superfície, até de cabeça para baixo.",
+    "texto": "Escala qualquer superfície, até de cabeça para baixo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3064,7 +3064,7 @@
       "andar-de-aranha"
     ],
     "aliases": [],
-    "texto": "equilibra-se sobre cordas, lâminas e fios; pousa sem peso.",
+    "texto": "Equilibra-se sobre cordas, lâminas e fios; pousa sem peso.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3083,7 +3083,7 @@
       "imponderavel"
     ],
     "aliases": [],
-    "texto": "move-se por qualquer terreno como se a gravidade não o tocasse.",
+    "texto": "Move-se por qualquer terreno como se a gravidade não o tocasse.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3097,7 +3097,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+3 em prestidigitação, fechaduras e furto.",
+    "texto": "+3 em prestidigitação, em fechaduras e em furto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3115,7 +3115,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "some/planta/rouba objetos pequenos sem ser visto.",
+    "texto": "Some, planta ou rouba objetos pequenos sem ser visto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3133,7 +3133,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "tira um objeto/arma da mão do alvo num gesto.",
+    "texto": "Tira um objeto ou uma arma da mão do alvo num gesto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3151,7 +3151,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "manipula vários objetos rápido demais para acompanhar.",
+    "texto": "Manipula vários objetos rápido demais para acompanhar.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3169,7 +3169,7 @@
       "truque-de-mao"
     ],
     "aliases": [],
-    "texto": "desarma armadilhas e abre qualquer fechadura mundana num instante.",
+    "texto": "Desarma armadilhas e abre qualquer fechadura mundana num instante.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3188,7 +3188,7 @@
       "toque-preciso"
     ],
     "aliases": [],
-    "texto": "várias ações manuais finas numa única ação.",
+    "texto": "Várias ações manuais finas numa única ação.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3207,7 +3207,7 @@
       "mil-dedos"
     ],
     "aliases": [],
-    "texto": "proezas que desafiam a física (pegar flechas no ar, refazer um mecanismo num piscar).",
+    "texto": "Proezas que desafiam a física (pegar flechas no ar, refazer um mecanismo num piscar).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3226,7 +3226,7 @@
       "maos-impossiveis"
     ],
     "aliases": [],
-    "texto": "manipula tudo ao alcance das mãos com velocidade sobre-humana absoluta.",
+    "texto": "Manipula tudo ao alcance das mãos com velocidade sobre-humana absoluta.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
