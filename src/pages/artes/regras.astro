@@ -23,6 +23,8 @@ const LINHAS_GRAU: [string, string[], string][] = [
   ['Duração longa', G.duracaoLonga, ''],
 ];
 const GRAU_COLS = [0, 1, 2, 3, 4, 5, 6];
+// o cartão de formas não abre na régua da manifestação: ali o Volume é o lado da base das fatias, e não um molde (RT-058)
+const formaLinha = (nome: string) => (nome.includes('manifesta') ? undefined : formaDe(nome));
 const COMB = (regras as any).arcano.improviso.combinacoes;
 const MANI = (regras as any).arcano.improviso.manifestacao;
 const MOLDES = (regras as any).arcano.moldes;
@@ -107,7 +109,7 @@ const EX_CONTA: [string, string, number][] = [
           {LINHAS_GRAU.map(([nome, vals, escopo]) => (
             <tr>
               <td>
-                <strong data-formas={formaDe(nome)} tabindex={formaDe(nome) ? 0 : undefined}>{nome}</strong>
+                <strong data-formas={formaLinha(nome)} tabindex={formaLinha(nome) ? 0 : undefined}>{nome}</strong>
                 {escopo && <small class="p-escopo">{escopo}</small>}
               </td>
               {vals.map((v) => <td>{v}</td>)}
