@@ -6107,7 +6107,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "constrói uma ferramenta/solução com o que tem.",
+    "texto": "Constrói uma ferramenta ou solução com o que tem.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6125,7 +6125,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "avalia qualidade, função e fraqueza de um objeto.",
+    "texto": "Avalia qualidade, função e fraqueza de um objeto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6143,7 +6143,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "cria itens de qualidade excepcional.",
+    "texto": "Cria itens de qualidade excepcional.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6161,7 +6161,7 @@
       "improvisar"
     ],
     "aliases": [],
-    "texto": "conserta ou monta algo complexo numa fração do tempo.",
+    "texto": "Conserta ou monta algo complexo numa fração do tempo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6180,7 +6180,7 @@
       "reparo-veloz"
     ],
     "aliases": [],
-    "texto": "cria obras-primas que parecem impossíveis.",
+    "texto": "Cria obras-primas que parecem impossíveis.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6199,7 +6199,7 @@
       "mestre-artesao"
     ],
     "aliases": [],
-    "texto": "constrói máquinas e autômatos além da técnica de sua era.",
+    "texto": "Constrói máquinas e autômatos além da técnica de sua era.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6218,7 +6218,7 @@
       "engenho-sobre-humano"
     ],
     "aliases": [],
-    "texto": "cria artefatos lendários e maravilhas que desafiam o possível.",
+    "texto": "Cria artefatos lendários e maravilhas que desafiam o possível.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6250,7 +6250,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "prevê o próximo movimento de um oponente.",
+    "texto": "Prevê o próximo movimento de um oponente.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6268,7 +6268,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "traça um plano com etapas e contingências.",
+    "texto": "Traça um plano com etapas e contingências.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6286,7 +6286,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "identifica o ponto fraco de uma força e o momento de agir.",
+    "texto": "Identifica o ponto fraco de uma força e o momento de agir.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6304,7 +6304,7 @@
       "plano"
     ],
     "aliases": [],
-    "texto": "prepara armadilhas e posições de grande vantagem inicial.",
+    "texto": "Prepara armadilhas e posições de grande vantagem inicial.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6323,7 +6323,7 @@
       "emboscada"
     ],
     "aliases": [],
-    "texto": "orquestra uma batalha para virar o jogo.",
+    "texto": "Orquestra uma batalha para virar o jogo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6342,7 +6342,7 @@
       "grande-estrategista"
     ],
     "aliases": [],
-    "texto": "prevê e contrapõe os planos do inimigo passos à frente.",
+    "texto": "Prevê e contrapõe os planos do inimigo passos à frente.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6361,7 +6361,7 @@
       "xeque-mate"
     ],
     "aliases": [],
-    "texto": "conduz guerras como um jogo já vencido.",
+    "texto": "Conduz guerras como um jogo já vencido.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6393,7 +6393,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "identifica um indício relevante.",
+    "texto": "Identifica um indício relevante.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6411,7 +6411,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "liga dois fatos numa dedução.",
+    "texto": "Liga dois fatos numa dedução.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6429,7 +6429,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "reconstrói o que houve num local pelos vestígios.",
+    "texto": "Reconstrói o que houve num local pelos vestígios.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6447,7 +6447,7 @@
       "conectar"
     ],
     "aliases": [],
-    "texto": "extrai a verdade lendo reações e inconsistências.",
+    "texto": "Extrai a verdade lendo reações e inconsistências.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6466,7 +6466,7 @@
       "interrogar"
     ],
     "aliases": [],
-    "texto": "resolve um mistério complexo juntando as peças.",
+    "texto": "Resolve um mistério complexo juntando as peças.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6485,7 +6485,7 @@
       "detetive"
     ],
     "aliases": [],
-    "texto": "percebe o detalhe crucial que ninguém viu; desvenda conspirações.",
+    "texto": "Percebe o detalhe crucial que ninguém viu; desvenda conspirações.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6504,7 +6504,7 @@
       "nada-escapa"
     ],
     "aliases": [],
-    "texto": "de pistas mínimas, reconstrói a verdade completa de qualquer evento.",
+    "texto": "De pistas mínimas, reconstrói a verdade completa de qualquer evento.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6536,7 +6536,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "responde a um evento súbito sem ser pego de surpresa.",
+    "texto": "Responde a um evento súbito sem ser pego de surpresa.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6554,7 +6554,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "toma a melhor decisão num átimo.",
+    "texto": "Toma a melhor decisão num átimo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6570,7 +6570,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "age sempre entre os primeiros.",
+    "texto": "Age sempre entre os primeiros.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6588,7 +6588,7 @@
       "reacao"
     ],
     "aliases": [],
-    "texto": "realiza uma ação mental e uma física quase simultâneas.",
+    "texto": "Realiza uma ação mental e uma física quase simultâneas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6607,7 +6607,7 @@
       "decisao-instantanea"
     ],
     "aliases": [],
-    "texto": "o caos parece em câmera lenta; planeja no meio da ação.",
+    "texto": "O caos parece em câmera lenta; planeja no meio da ação.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6626,7 +6626,7 @@
       "tempo-de-sobra"
     ],
     "aliases": [],
-    "texto": "reage tão rápido que age várias vezes enquanto outros pensam.",
+    "texto": "Reage tão rápido que age várias vezes enquanto outros pensam.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6645,7 +6645,7 @@
       "mente-acelerada"
     ],
     "aliases": [],
-    "texto": "reage ao instantâneo; nada o pega despreparado.",
+    "texto": "Reage ao instantâneo; nada o pega despreparado.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
