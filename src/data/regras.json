@@ -495,7 +495,7 @@
     "arremessoQueda": 0.8,
     "levantamentoAcimaCabeca": 0.5,
     "cargaCorte": 0.75,
-    "notaCargaAgua": "Curva própria pra Vel. de Natação (mesmo formato da curva de Corrida, vel = 1 − (peso ÷ maxKg ÷ corte)^expoente), mais dura: corte 0,5 e expoente 2, contra 0,75/1,5 da Corrida. Metade da carga máxima já zera a velocidade de natação (a pessoa para de nadar e começa a afundar), e a queda é mais brusca antes disso. Vale só pra Vel. de Natação; os três testes de água brava usam a Circunstância fixa (armadura pesada +4, carga acima da Leve +2), sem essa curva.",
+    "notaCargaAgua": "Curva própria pra Vel. de Natação (mesmo formato da curva de Corrida, vel = 1 − (peso ÷ maxKg ÷ corte)^expoente), mais dura: corte 0,5 e expoente 2, contra 0,75/1,5 da Corrida. Metade da carga máxima já zera a velocidade de natação (a pessoa para de nadar e começa a afundar), e a queda é mais brusca antes disso. Vale só pra Vel. de Natação; os três testes de água brava usam a Circunstância fixa (armadura: o dobro da Penalidade dela, carga acima da Leve +2), sem essa curva.",
     "cargaCorteAgua": 0.5,
     "cargaExpoenteAgua": 2
   },
