@@ -1031,7 +1031,7 @@
       {
         "nivel": 2,
         "nome": "Simpatia",
-        "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (vs Defesa Social)",
+        "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (contra a Defesa Social)",
         "custo": {
           "mana": 2
         },
