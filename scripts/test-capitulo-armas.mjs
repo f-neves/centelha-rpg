@@ -1055,7 +1055,8 @@ function conferirFechamento(T) {
   comeca(C, '**Dois Punhos contam como duas armas leves**', ['e contam como **2 ataques** para a Guarda sob pressão.'], 'Dois Punhos');
   comeca(A, '<div class="callout exemplo"><span class="lbl">Exemplo</span>Bloqueio 14', ['Esquiva <strong>8</strong>. Um ataque armado chega com <strong>15</strong> de acerto.'], 'Luta desarmada, exemplo');
   // 4
-  comeca(A, 'A mão nua bloqueia **qualquer ataque armado**', ['Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre'], 'Luta desarmada, frase do Mestre', 'sem ela, o dano passa.');
+  // o parágrafo da mão nua se partiu na revisão de textos (régua (c)); a frase do Mestre fecha o parágrafo do "Arma" aqui
+  comeca(A, '"Arma" aqui é todo ataque que não seja desarmado', ['Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre'], 'Luta desarmada, frase do Mestre', 'sem ela, o dano passa.');
   // 9 e 10
   comeca(C, 'A **Arte** tem a mesma forma', [], 'Combate, parágrafo da Arte', 'Esticar a conjuração, que se decide a cada Tick de Golpe, está em *Passar do seu limite*, em As Artes.');
   comeca(R, 'Não é preciso anunciar de saída até onde vai.', ['(T é a Velocidade esticada: 9 Ticks quando a ação passa a 10).'], 'regras.astro, esticar');
@@ -1151,7 +1152,7 @@ function conferirOitoBis(T) {
   if (/só escapa quando quem o controla erra/.test(T.comb)) f.push('Manobras (5): sobrou "só escapa quando quem o controla erra"');
   // 7
   if (!A.some((x) => x.includes('| Em curva; se errar, volta à mão no mesmo número de Ticks da ida (0 até a Efetiva) |'))) f.push('Armas & Armaduras, tabela do Arremesso (7): a linha do Bumerangue de retorno devia dizer "se errar, volta à mão no mesmo número de Ticks da ida (0 até a Efetiva)"');
-  comeca(A, '- **Bumerangues.**', ['se errar, volta à mão no mesmo número de Ticks que levou para ir; até a Efetiva'], 'Armas & Armaduras, Bumerangues (7)', ['no fim da ação']);
+  comeca(A, '- **O bumerangue de retorno.**', ['se errar, volta à mão no mesmo número de Ticks que levou para ir; até a Efetiva'], 'Armas & Armaduras, Bumerangues (7)', ['no fim da ação']);
   if (/volta à mão no fim da ação/.test(T.armasJson) || /volta à mão no fim da ação/.test(T.cap)) f.push('Bumerangue (7): sobrou "volta à mão no fim da ação"');
   if (!T.armasJson.includes('e, se errar, volta à mão no mesmo número de Ticks da ida, sem gastar munição.')) f.push('armas.json, Bumerangue (7): falta "se errar, volta à mão no mesmo número de Ticks da ida"');
   // 8
@@ -1169,7 +1170,7 @@ function conferirOitoBis(T) {
   if (!C.includes('Mas **nem tudo se bloqueia ou se esquiva**: uma avalanche e uma onda de fogo cobram outra saída.')) f.push('Combate (11): a lista de "nem tudo se bloqueia ou se esquiva" devia ser só a avalanche e a onda de fogo (a Rede é ataque contra Defesa)');
   if (/rede bem lançada/.test(T.comb)) f.push('Combate (11): sobrou "rede bem lançada"');
   // 12
-  comeca(A, '<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Efetiva</strong>', ['Passada a Máxima, o projétil cai antes de chegar e não há jogada, no arco e na besta como no Arremesso.</p>'], 'Armas & Armaduras, Máxima (12)');
+  comeca(A, '<p class="muted">A <strong>Máxima</strong> é outra conta', ['Passada a Máxima, o projétil cai antes de chegar e não há jogada, no arco e na besta como no Arremesso.</p>'], 'Armas & Armaduras, Máxima (12)');
   // 13
   comeca(C, '- **Normal** (**o padrão desta mesa**, e o sistema deste capítulo)', ['em −4. A Velocidade é a soma do Preparo, do Golpe e da Recuperação', 'num custo total de **2 × Velocidade + 2** (em pontos de Defesa somados nos Ticks da ação), seja qual for'], 'Combate, custo do Normal (13)');
   // 14

@@ -13,8 +13,9 @@ Cada arma é uma **classe-base** recombinada com **tags**. O pilar é simples: a
 
 Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra no [Combate](/regras/combate):
 
-- **Velocidade**: quantos **Ticks** o ataque custa na linha do tempo (leve 5, média 6, haste 6 ou 7, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
-- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste média **1d6**, haste de Guerra **1d6+2**, arremesso **1d6−4 a 1d6**. **Arcos** somam a **Força no arco** (a menor entre a sua Força e a Força máxima do arco: o Curto tem Força máxima 3, o Longo e o Composto não têm, e o Composto soma ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
+- **Velocidade**: quantos **Ticks** (a unidade de tempo da luta) o ataque custa na linha do tempo (leve 5, média 6, haste 6 ou 7, pesada 7): a leve age mais vezes; a pesada bate mais forte, mas te expõe entre os golpes.
+- **Dano**: o **dado de dano** do golpe (com um bônus fixo por classe), ao qual se somam a **Força** (o dobro nas de duas mãos) e cada Margem (+1d6; a Margem está no [Combate](/regras/combate)). A régua por peso: leve **1d6−2**, média **1d6**, pesada **2d6**, haste média **1d6**, haste de Guerra **1d6+2**, arremesso **1d6−4 a 1d6**.
+- **Arcos e bestas**: os **arcos** somam a **Força no arco** (a menor entre a sua Força e a Força máxima do arco: o Curto tem Força máxima 3, o Longo e o Composto não têm, e o Composto soma ×2); **bestas** não usam Força e já vêm com o bônus embutido (**1d6+2 / +4 / +8**).
 - **Acerto**: um bônus que **soma no seu pool de ataque** (a leve mira melhor; a pesada, pior).
 - **Def. (Defesa da Arma)**: quanto a arma acrescenta ao seu **Bloqueio**.
 - **Mãos**: uma ou duas; algumas são *Versáteis* e servem nas duas formas.
@@ -48,7 +49,9 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 </div>
 
-**Armas de outro tamanho.** Uma arma feita para um corpo maior ou menor muda só o dado de dano base: **+1d6 por categoria de Tamanho acima de Médio**, e **−2 por categoria abaixo**. A espada pesada (2d6) feita para um Grande dá 3d6; para um Enorme, 4d6. A Força segue a regra de sempre: ×1 com uma mão, ×2 com duas. A rocha arremessada segue a mesma régua pelo tamanho dela: a pedra de mão dá 1d6−4, a que um humano arremessa, 1d6, e cada categoria acima soma +1d6.
+**Armas de outro tamanho.** Uma arma feita para um corpo maior ou menor muda só o dado de dano base: **+1d6 por categoria de Tamanho acima de Médio**, e **−2 por categoria abaixo**. A espada pesada (2d6) feita para um Grande dá 3d6; para um Enorme, 4d6. A Força segue a regra de sempre: ×1 com uma mão, ×2 com duas.
+
+A rocha que uma criatura arremessa (arma improvisada da ficha dela) segue a mesma régua pelo tamanho dela: a pedra de mão dá 1d6−4, a que um humano arremessa, 1d6, e cada categoria acima soma +1d6.
 
 **Quem empunha.** O dano é da arma, não de quem a segura. O que muda com o corpo é a classe: para quem é uma categoria maior, a arma fica um degrau mais leve (a espada longa, Média, de um humano é uma arma Leve para um ogro); para quem é uma categoria menor, um degrau mais pesada (a adaga, Leve, de um ogro é uma arma Média para um humano). Além da Pesada, o Mestre julga se o personagem consegue usá-la.
 
@@ -58,9 +61,10 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 - **Ágil**: só descritiva, sem efeito mecânico próprio; o jeito ágil da arma já está nos números dela (dano baixo, acerto alto).
 - **Versátil**, 1 ou 2 mãos: com uma mão soma Força no dano; com as duas, Força×2.
 - **Sangramento**, um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
-- **Arremessável · Munição · Pesada**: lançar; gastar munição; usar Força total.
+- **Arremessável · Munição · Pesada**: lançar; gastar munição; Pesada só descreve (arma lenta e volumosa).
+- **Projétil veloz**: é o projétil rápido do Combate: só Esquiva ou escudo hábil defendem (ver [Combate](/regras/combate), Projéteis rápidos).
 - **Bloqueável**: projétil rápido lançado à mão, que por isso também se bloqueia com a arma, além da Esquiva e do escudo hábil. Só a Plumbata.
-- **Prende**, não causa dano: um acerto deixa o alvo **Preso** (não se desloca, mas age; [Combate](/regras/combate), Manobras) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação.
+- **Prende**: um acerto deixa o alvo **Preso** (não se desloca, mas age; [Combate](/regras/combate), Manobras) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação. A Rede não causa dano; a Boleadeira causa o dano pequeno da tabela.
 
 ## Armas de Exemplo
 
@@ -88,7 +92,11 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 ### Armas à Distância
 
-<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Efetiva</strong>: a distância, em metros, até a qual você mira com tudo o que tem sem a distância atrapalhar. É um número da arma, para um alvo Médio, o mesmo para qualquer personagem (o treino entra no seu pool, e não na Efetiva). Além dela, cada <em>meia Efetiva</em> a mais custa <strong>−3</strong> no acerto, sem teto: com a Efetiva E e o alvo a uma distância d, são n = ⌈(d − E) ÷ (E ÷ 2)⌉ passos, e a penalidade é −3 × n. A Adaga de Arremesso (Efetiva 10 m) contra um alvo a 25 m dá n = 3 e −9; o Arco Longo (50 m) contra um alvo a 150 m dá n = 4 e −12. Alvo longe e em movimento é quase impossível de acertar sem magia, Proeza ou muitos dados, e é assim mesmo. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio. A <strong>Máxima</strong> é outra conta, o <em>tiro extremo</em>: nos arcos vem da <strong>Força no arco</strong> (tabela abaixo), nas bestas é fixa, e no <strong>Arremesso</strong> vem do seu <strong>FAA</strong> e do peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco <em>Peso, Arremesso e Corrida</em> da ficha fazem essa conta). A Efetiva pode passar da Máxima de um arremessador fraco: ele joga sempre sem penalidade. Passada a Máxima, o projétil cai antes de chegar e não há jogada, no arco e na besta como no Arremesso.</p>
+<p class="muted">Aqui a <strong>Defesa</strong> dá lugar à <strong>Efetiva</strong>: a distância, em metros, até a qual você mira com tudo o que tem sem a distância atrapalhar. É um número da arma, para um alvo Médio, o mesmo para qualquer personagem (o treino entra no seu pool, e não na Efetiva). Além dela, cada <em>meia Efetiva</em> a mais custa <strong>−3</strong> no acerto, sem teto.</p>
+
+<p class="muted">Com a Efetiva E e o alvo a uma distância d, são n = ⌈(d − E) ÷ (E ÷ 2)⌉ passos, e a penalidade é −3 × n. A Adaga de Arremesso (Efetiva 10 m) contra um alvo a 25 m dá n = 3 e −9; o Arco Longo (50 m) contra um alvo a 150 m dá n = 4 e −12. Alvo longe e em movimento é quase impossível de acertar sem magia, Proeza ou muitos dados, e é assim mesmo. Arma de projétil não guarda, então não acrescenta nada ao Bloqueio.</p>
+
+<p class="muted">A <strong>Máxima</strong> é outra conta, o <em>tiro extremo</em>: nos arcos vem da <strong>Força no arco</strong> (tabela abaixo), nas bestas é fixa, e no <strong>Arremesso</strong> vem do seu <strong>FAA</strong> e do peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco <em>Peso, Arremesso e Corrida</em> da ficha fazem essa conta). A Efetiva pode passar da Máxima de um arremessador fraco: ele joga sempre sem penalidade. Passada a Máxima, o projétil cai antes de chegar e não há jogada, no arco e na besta como no Arremesso.</p>
 
 #### Arremesso
 
@@ -114,7 +122,8 @@ Antes do catálogo, o que cada número de uma arma quer dizer, e onde ele entra 
 
 - **Projétil rápido.** A Shuriken, a Mini-faca, a Kunai e a Adaga de Arremesso contam como projétil rápido (só Esquiva ou escudo hábil defendem; veja *Escudos*, abaixo, e [Combate](/regras/combate)); o Mestre julga o que for diferente. A **Plumbata** também é projétil rápido, mas é lançada à mão, e por isso pode ser defendida **também com Bloqueio**, além da Esquiva e do escudo hábil.
 - **As três leves.** Shuriken, Mini-faca e Kunai são quase iguais, e o jogador escolhe pelo estilo: a Shuriken é fina e rasa, a Mini-faca é fácil de esconder, e a Kunai, mais pesada e com argola, serve também de ferramenta (o Mestre julga). As três só furam pele (N0).
-- **Bumerangues.** Os dois existem em **Impacto** (madeira, borda arredondada: a versão comum) ou **Cortante** (borda afiada ou de metal, mais cara). O **de retorno** voa em curva e, se errar, volta à mão no mesmo número de Ticks que levou para ir; até a Efetiva, a ida leva 0 Ticks e a volta também, porque a arma está na mão ao fim do Golpe. Pegar o de retorno **Cortante** de volta pede **Destreza + Arremesso, Dificuldade Média (10)**; se falhar, ele cai a 1 ou 2 m de você. O de retorno de Impacto volta à mão sem teste. O **de caça**, mais pesado, voa reto e baixo e não volta: troca alcance por dano.
+- **Bumerangues.** Os dois existem em **Impacto** (madeira, borda arredondada: a versão comum) ou **Cortante** (borda afiada ou de metal, mais cara). O **de caça**, mais pesado, voa reto e baixo e não volta: troca alcance por dano.
+- **O bumerangue de retorno.** Voa em curva e, se errar, volta à mão no mesmo número de Ticks que levou para ir; até a Efetiva, a ida leva 0 Ticks e a volta também, porque a arma está na mão ao fim do Golpe. Pegar o de retorno **Cortante** de volta pede **Destreza + Arremesso, Dificuldade Média (10)**; se falhar, ele cai a 1 ou 2 m de você. O de retorno de Impacto volta à mão sem teste.
 - **Boleadeira.** Pesos ligados por corda que enroscam nas pernas: um acerto deixa o alvo **Preso pelas pernas** (Esquiva −4; não se desloca, mas age). Para se soltar, **Força + Atletismo** contra o total do lançamento, e cada tentativa gasta a ação. O dano é pequeno (1d6−4), uma exceção à classe pesada.
 - **Rede.** **Não causa dano**: a coluna Dano não se aplica a ela, e o que ela faz é prender. Um acerto deixa o alvo **Preso pela Rede**: **−2 na Esquiva e −2 no Bloqueio**, e mais **−1 em cada** por grau de Margem do lançamento, sem teto. Para se soltar, **Força + Atletismo** contra o total do lançamento, e cada tentativa gasta a ação.
 - **Funda.** Uma pedra de 100 g. A Máxima dela é o **dobro** da que o FAA dá (calcula-se a Máxima normal e dobra-se). Impacto, com a Força inteira no dano.
@@ -161,11 +170,19 @@ A **Máxima** de um arco sai da **Força no arco**: o **menor valor entre a sua 
 
 ## Luta desarmada
 
-Sem arma, o corpo luta com o que tem, e os golpes dele são de Briga. Os **Punhos** são arma leve: Velocidade 5, Acerto +1, Defesa +1, dano 1d6−2 + Força, Impacto, e os dois Punhos contam como duas armas leves (par para a [empunhadura dupla](/regras/combate#empunhadura-dupla-um-ataque-por-mão), a Rajada, o Bloqueio e a Guarda sob pressão). O **chute** não é arma de equipamento: é um golpe médio, de Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força, Impacto. Ele pode ser dado mesmo com armas nas mãos, e gasta a própria ação, como qualquer golpe.
+Sem arma, o corpo luta com o que tem, e os golpes dele são de Briga. Os **Punhos** são arma leve: Velocidade 5, Acerto +1, Defesa +1, dano 1d6−2 + Força, Impacto, e os dois Punhos contam como duas armas leves (par para a [empunhadura dupla](/regras/combate#empunhadura-dupla-um-ataque-por-mão), a Rajada, o Bloqueio e a Guarda sob pressão).
 
-No Bloqueio, você usa o que tem nas mãos: as armas e os escudos que estiver empunhando somam a Defesa deles (dois escudos, os dois contam), como a arma da mão inábil já soma. O corpo só defende quando nada nas mãos é usado, e arma ou escudo não somam com ele. Das partes do corpo, só os dois punhos somam entre si: +1 cada, +2 com as duas mãos livres. As pernas não somam com eles: defender com as pernas (−1) é para quem não pode usar as mãos, como quem está amarrado. A ficha mostra o Bloqueio com a melhor combinação que você tem; quem muda a escolha é a situação, e o Mestre ajusta.
+O **chute** não é arma de equipamento: é um golpe médio, de Velocidade 6, Acerto +0, Defesa −1, dano 1d6 + Força, Impacto. Ele pode ser dado mesmo com armas nas mãos, e gasta a própria ação, como qualquer golpe.
 
-A mão nua bloqueia **qualquer ataque armado**, cortante, perfurante ou contundente. Este é o caso que foge da regra geral, em que o Bloqueio que supera o acerto faz o golpe errar: mesmo quando o Bloqueio com as mãos supera o acerto, o golpe **acerta**, o ataque **perde os dados de Margem** e você **toma o dano da arma normalmente** (a armadura funciona como sempre contra o dano que passa). A Esquiva não muda: você ainda pode sair da frente, pela regra da melhor das duas ([Combate](/regras/combate), Esquivar ou Bloquear). "Arma" aqui é todo ataque que não seja desarmado: garra, mordida e chifre contam; contra um soco, o Bloqueio com as mãos para tudo. Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre a mão nua barra também o dano da arma (um antebraço com braçadeira de aço contra uma clava, por exemplo); sem ela, o dano passa.
+No Bloqueio, você usa o que tem nas mãos: as armas e os escudos que estiver empunhando somam a Defesa deles (dois escudos, os dois contam), como a arma da mão inábil já soma. O corpo só defende quando nada nas mãos é usado, e arma ou escudo não somam com ele.
+
+Das partes do corpo, só os dois punhos somam entre si: +1 cada, +2 com as duas mãos livres. As pernas não somam com eles: defender com as pernas (−1) é para quem não pode usar as mãos, como quem está amarrado. A ficha mostra o Bloqueio com a melhor combinação que você tem; quem muda a escolha é a situação, e o Mestre ajusta.
+
+A mão nua bloqueia **qualquer ataque armado**, cortante, perfurante ou contundente. Este é o caso que foge da regra geral, em que o Bloqueio que supera o acerto faz o golpe errar: mesmo quando o Bloqueio com as mãos supera o acerto, o golpe **acerta**, o ataque **perde os dados de Margem** e você **toma o dano da arma normalmente** (a armadura funciona como sempre contra o dano que passa).
+
+A Esquiva não muda: você ainda pode sair da frente, pela regra da melhor das duas ([Combate](/regras/combate), Esquivar ou Bloquear).
+
+"Arma" aqui é todo ataque que não seja desarmado: garra, mordida e chifre contam; contra um soco, o Bloqueio com as mãos para tudo. Os punhos não barram o dano de arma nenhuma: só com a aprovação do Mestre a mão nua barra também o dano da arma (um antebraço com braçadeira de aço contra uma clava, por exemplo); sem ela, o dano passa.
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Bloqueio 14, mais 1 de cada punho: <strong>16</strong>. Esquiva <strong>8</strong>. Um ataque armado chega com <strong>15</strong> de acerto. Esquivando, o golpe passa por 7 pontos (uma Margem) e rende o dano da arma <strong>mais 1d6</strong>. Bloqueando com as mãos, o golpe não passa do Bloqueio, perde a Margem e rende <strong>só o dano da arma</strong>.</div>
 
@@ -175,7 +192,11 @@ Quando uma mão conta como arma (a Mão de Ferro, o Punho que Parte Pedra), ela 
 
 ## Armaduras
 
-A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). O dano **Perfurante** usa a **Absorção de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro. A **Perfuração** funciona ao contrário: é **difícil de furar**: cada armadura tem um **Nível** (Resistência à Perfuração, 0–3) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala**, mas, **quando furada, absorve pouco** (a Absorção de Perfuração é baixa de propósito). A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe: ver [Quase-Acerto](/regras/quase-acerto).
+A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impacto**, **Corte** e **Perfuração** (calibrados em pontos). O dano **Perfurante** usa a **Absorção de Perfuração**. Repare na lógica histórica: a **placa** quase zera o **corte** (ninguém corta bom aço), mas o **impacto** atravessa o aço e quebra o corpo dentro.
+
+A **Perfuração** funciona ao contrário: é **difícil de furar**: cada armadura tem um **Nível** (Resistência à Perfuração, 0–3) que o Nível de Perfuração da arma precisa alcançar, senão o golpe **resvala**, mas, **quando furada, absorve pouco** (a Absorção de Perfuração é baixa de propósito).
+
+A **Penalidade** incide nas ações físicas. O efeito da armadura no **Quase-Acerto** (bônus de margem + redução do raspão) é fixo pela classe: ver [Quase-Acerto](/regras/quase-acerto).
 
 <div class="table-wrap">
 
@@ -198,13 +219,15 @@ A armadura **absorve dano depois do acerto**, com **três Absorções**: **Impac
 
 </div>
 
-<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong>; para <strong>Furtividade e atividades delicadas, dobra</strong> (na Furtividade, esse dobro é a própria Circunstância da armadura na Dificuldade, +4 nas de −2 e +6 nas de −3, e é uma cobrança só: não se tira também do total). Na natação, a Circunstância da armadura (Cap. VIII, Nadar) também substitui a Penalidade. <strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.): vale o <strong>maior Absorção de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente, mas a Penalidade dela, sim.</p>
+<p class="muted"><strong>Penalidade:</strong> incide em qualquer ação física, incluindo <strong>Ataque, Esquiva, Bloqueio, Deslocamento e Salto</strong> (no Deslocamento, na Corrida e nos Saltos, só a metade dela, para baixo, em metros; no <a href="/centelha-rpg/regras/combate#salto-velocidade-3">Salto Vertical</a>, essa metade × 10 cm); para <strong>Furtividade e atividades delicadas, dobra</strong> (na Furtividade, esse dobro é a própria Circunstância da armadura na Dificuldade, +4 nas de −2 e +6 nas de −3, e é uma cobrança só: não se tira também do total). Na natação, a Circunstância da armadura (Cap. VIII, Nadar) também substitui a Penalidade.</p>
+
+<p class="muted"><strong>Empilhar:</strong> dá para vestir mais de uma peça (gambeson sob malha, p.ex.): vale a <strong>maior Absorção de cada categoria</strong>, o <strong>maior Nível</strong> (a Resistência à Perfuração NUNCA soma) e a <strong>soma das Penalidades</strong>. A placa te torna um tanque, mas mais fácil de acertar e furtivo péssimo. Armadura não reduz o Bloqueio diretamente, mas a Penalidade dela, sim.</p>
 
 ## Escudos
 
 O escudo não absorve: é **bônus de Defesa** (ajuda a *não* ser acertado), e só quando usado. Cada escudo tem **um valor de Defesa** que entra no seu **Bloqueio**, como a Defesa de uma arma. A **Penalidade** incide nas outras ações físicas (esquiva etc.), **nunca** no bloqueio do próprio escudo.
 
-Contra **projéteis rápidos** (flecha, virote, bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso), o escudo é a *única* forma de bloquear (a Plumbata, lançada à mão, é a exceção: também se bloqueia com a arma): veja *Projéteis rápidos: só Esquiva ou escudo* em [Combate](/regras/combate). Só bloqueia quem tem um escudo **hábil** (cobre ≥30% do corpo, do redondo para cima num usuário Médio) e está **apto** a manejá-lo; sem isso, resta a Esquiva. O broquel e o targe são pequenos demais para isso; o **pavês** é o extremo oposto, a parede portátil do besteiro.
+Contra **projéteis rápidos** (flecha, virote, bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso), o escudo é a *única* forma de bloquear (a Plumbata, lançada à mão, é a exceção: também se bloqueia com a arma): veja *Projéteis rápidos: só Esquiva ou escudo* em [Combate](/regras/combate). Só bloqueia quem tem um escudo **hábil** (cobre ≥30% do corpo, do Hoplon para cima num usuário Médio) e está **apto** a manejá-lo; sem isso, resta a Esquiva. O broquel e o targe são pequenos demais para isso; o **pavês** é o extremo oposto, a parede portátil do besteiro.
 
 <div class="table-wrap">
 
