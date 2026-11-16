@@ -23,7 +23,7 @@ Se você errou por **um valor menor ou igual à Margem**, é um raspão. O rasp�
 
 <p class="formula">Dano do raspão = Dano QA da arma − Redução QA da armadura + Centelha do atacante − Centelha do alvo (mínimo 0)</p>
 
-O dano do raspão **ignora a Absorção normal** (o desconto que a armadura e o corpo fazem no dano de um golpe; o raspão já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano nem dispara Sangramento por si só ([Combate](/regras/combate)): é só o arranhão.
+O dano do raspão **ignora a Absorção normal** (o desconto que a armadura e o corpo fazem no dano de um golpe; o raspão já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano ([Combate](/regras/combate)) nem dispara Sangramento ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)) por si só: é só o arranhão.
 
 A Centelha entra dos dois lados. Quem golpeia com a fagulha acesa arranha mais fundo mesmo num raspão; quem já Despertou ([Cap. V](/regras/centelha)) sente menos o arranhão, porque a Centelha do alvo desconta ponto a ponto (o Vigor não entra nessa conta).
 
