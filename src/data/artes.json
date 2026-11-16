@@ -578,7 +578,7 @@
       {
         "nivel": 2,
         "nome": "Ofuscar",
-        "efeito": "o feixe cega um alvo por 12 ou 24 Ticks; a luz denuncia quem se esconde por perto",
+        "efeito": "o feixe cega um alvo por 6 ou 12 Ticks; a luz denuncia quem se esconde por perto",
         "custo": {
           "mana": 2
         },
