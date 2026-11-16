@@ -1201,7 +1201,7 @@
       "carisma-magnetico"
     ],
     "aliases": [],
-    "texto": "Por uma cena, o alvo o vê como um amigo querido (vs Defesa Social; quebra se você o trair abertamente).",
+    "texto": "Por uma cena, o alvo o vê como um amigo querido (contra a Defesa Social; quebra se você o trair abertamente).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3664,7 +3664,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "aliados que o seguem ganham +3 de moral; ordens claras.",
+    "texto": "Os aliados que o seguem ganham +3 de moral; ordens claras.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3682,7 +3682,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "um aliado age no melhor momento (concede reação/reposiciona iniciativa).",
+    "texto": "Um aliado age no melhor momento (concede uma reação ou reposiciona a iniciativa).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3700,7 +3700,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "reagrupa aliados abalados, removendo medo leve.",
+    "texto": "Reagrupa aliados abalados, removendo medo leve.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3718,7 +3718,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "aliados coordenados ganham +6 de Defesa e de ataque juntos.",
+    "texto": "Aliados coordenados ganham +6 de Defesa e de ataque juntos.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -3736,7 +3736,7 @@
       "reunir"
     ],
     "aliases": [],
-    "texto": "inspira investida (+2d6 de dano num avanço).",
+    "texto": "Inspira investida (+2d6 de dano num avanço).",
     "pendente": false,
     "nivel": 3,
     "efeito": "dano"
@@ -3755,7 +3755,7 @@
       "coordenar"
     ],
     "aliases": [],
-    "texto": "comanda um grupo como uma unidade; concede ações coordenadas.",
+    "texto": "Comanda um grupo como uma unidade; concede ações coordenadas.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3774,7 +3774,7 @@
       "maestria-de-campo"
     ],
     "aliases": [],
-    "texto": "dirige uma tropa com eficiência sobre-humana; reverte uma derrota iminente.",
+    "texto": "Dirige uma tropa com eficiência sobre-humana; reverte uma derrota iminente.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3793,7 +3793,7 @@
       "general"
     ],
     "aliases": [],
-    "texto": "torna-se o símbolo da batalha; um exército luta como um só corpo enquanto você estiver de pé.",
+    "texto": "Torna-se o símbolo da batalha; um exército luta como um só corpo enquanto você estiver de pé.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3807,7 +3807,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+3 em performance; prende atenção.",
+    "texto": "+3 em performance; prende a atenção.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3825,7 +3825,7 @@
       "presenca-cenica"
     ],
     "aliases": [],
-    "texto": "a plateia sente uma emoção escolhida.",
+    "texto": "A plateia sente uma emoção escolhida.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3843,7 +3843,7 @@
       "presenca-cenica"
     ],
     "aliases": [],
-    "texto": "a apresentação desvia a atenção de todos por um momento.",
+    "texto": "A apresentação desvia a atenção de todos por um momento.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3861,7 +3861,7 @@
       "tocar-a-alma"
     ],
     "aliases": [],
-    "texto": "dá aos ouvintes um bônus duradouro (coragem/foco) por uma cena.",
+    "texto": "Dá aos ouvintes um bônus duradouro (coragem ou foco) por uma cena.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3879,7 +3879,7 @@
       "distrair"
     ],
     "aliases": [],
-    "texto": "a plateia fica absorta enquanto você se apresenta.",
+    "texto": "A plateia fica absorta enquanto você se apresenta.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3898,7 +3898,7 @@
       "encantar-a-multidao"
     ],
     "aliases": [],
-    "texto": "performance que comove e muda atitudes.",
+    "texto": "Uma performance que comove e muda atitudes.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3917,7 +3917,7 @@
       "obra-prima"
     ],
     "aliases": [],
-    "texto": "a arte restaura o espírito: remove trauma, medo, desespero.",
+    "texto": "A arte restaura o espírito: remove trauma, medo, desespero.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3936,7 +3936,7 @@
       "voz-que-cura"
     ],
     "aliases": [],
-    "texto": "move massas às lágrimas ou à fúria; ecoa e inspira por gerações.",
+    "texto": "Move massas às lágrimas ou à fúria; ecoa e inspira por gerações.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
