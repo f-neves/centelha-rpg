@@ -4826,7 +4826,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "um olhar faz um alvo hesitar ou recuar.",
+    "texto": "Um olhar faz um alvo hesitar ou recuar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4844,7 +4844,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "sua presença domina o ambiente; conversas silenciam quando você entra.",
+    "texto": "Sua presença domina o ambiente; conversas silenciam quando você entra.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4862,7 +4862,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "subordinados e fracos obedecem instintivamente sua presença.",
+    "texto": "Subordinados e fracos obedecem instintivamente sua presença.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4880,7 +4880,7 @@
       "olhar-severo"
     ],
     "aliases": [],
-    "texto": "seu semblante inspira medo real (vs Defesa Social).",
+    "texto": "Seu semblante inspira medo real (contra a Defesa Social).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4899,7 +4899,7 @@
       "encarar-a-morte"
     ],
     "aliases": [],
-    "texto": "inimigos comuns congelam ou fogem diante de você.",
+    "texto": "Inimigos comuns congelam ou fogem diante de você.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4918,7 +4918,7 @@
       "presenca-avassaladora"
     ],
     "aliases": [],
-    "texto": "irradia autoridade divina; multidões se ajoelham ou tremem.",
+    "texto": "Irradia autoridade divina; multidões se ajoelham ou tremem.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4937,7 +4937,7 @@
       "majestade"
     ],
     "aliases": [],
-    "texto": "sua mera presença impõe reverência ou terror absolutos.",
+    "texto": "Sua mera presença impõe reverência ou terror absolutos.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4969,7 +4969,7 @@
       "disfarce"
     ],
     "aliases": [],
-    "texto": "altera postura, expressão e voz para parecer outra pessoa.",
+    "texto": "Altera postura, expressão e voz para parecer outra pessoa.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4987,7 +4987,7 @@
       "disfarce"
     ],
     "aliases": [],
-    "texto": "passa por \"mais um da multidão\".",
+    "texto": "Passa por \"mais um da multidão\".",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5005,7 +5005,7 @@
       "disfarce"
     ],
     "aliases": [],
-    "texto": "muda a própria aparência física por uma cena, sem adereços.",
+    "texto": "Muda a própria aparência física por uma cena, sem adereços.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5023,7 +5023,7 @@
       "misturar-se"
     ],
     "aliases": [],
-    "texto": "torna-se esquecível; testemunhas não conseguem descrevê-lo.",
+    "texto": "Torna-se esquecível; testemunhas não conseguem descrevê-lo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5042,7 +5042,7 @@
       "rosto-comum"
     ],
     "aliases": [],
-    "texto": "imita a aparência de uma pessoa específica de forma convincente.",
+    "texto": "Imita a aparência de uma pessoa específica de forma convincente.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5061,7 +5061,7 @@
       "impostor"
     ],
     "aliases": [],
-    "texto": "altera o corpo livremente (altura, idade, feições) à vontade.",
+    "texto": "Altera o corpo livremente (altura, idade, feições) à vontade.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5080,7 +5080,7 @@
       "forma-fluida"
     ],
     "aliases": [],
-    "texto": "assume qualquer aparência humana perfeitamente; ninguém jamais o reconhece.",
+    "texto": "Assume qualquer aparência humana perfeitamente; ninguém jamais o reconhece.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5094,7 +5094,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "emana uma emoção tênue (conforto/desconforto) a quem está perto.",
+    "texto": "Emana uma emoção tênue (conforto ou desconforto) a quem está perto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5112,7 +5112,7 @@
       "aura-sutil"
     ],
     "aliases": [],
-    "texto": "acalma pessoas e animais ao redor.",
+    "texto": "Acalma pessoas e animais ao redor.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5130,7 +5130,7 @@
       "aura-sutil"
     ],
     "aliases": [],
-    "texto": "incute medo leve nos próximos.",
+    "texto": "Incute medo leve nos próximos.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5148,7 +5148,7 @@
       "aura-sutil"
     ],
     "aliases": [],
-    "texto": "impõe uma emoção a todos numa área por um tempo.",
+    "texto": "Impõe uma emoção a todos numa área por um tempo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5166,7 +5166,7 @@
       "irradiar-calma"
     ],
     "aliases": [],
-    "texto": "a aura afeta até os resistentes.",
+    "texto": "A aura afeta até os resistentes.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5185,7 +5185,7 @@
       "presenca-tangivel"
     ],
     "aliases": [],
-    "texto": "domina o clima emocional de uma multidão.",
+    "texto": "Domina o clima emocional de uma multidão.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5204,7 +5204,7 @@
       "mare-emocional"
     ],
     "aliases": [],
-    "texto": "a emoção irradiada torna-se quase irresistível numa grande área.",
+    "texto": "A emoção irradiada torna-se quase irresistível numa grande área.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5223,7 +5223,7 @@
       "aura-avassaladora"
     ],
     "aliases": [],
-    "texto": "sua presença banha uma região inteira na emoção que escolher.",
+    "texto": "Sua presença banha uma região inteira na emoção que escolher.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5237,7 +5237,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "suas emoções nunca transparecem; +3 em blefe.",
+    "texto": "Suas emoções nunca transparecem; +3 em blefe.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -5255,7 +5255,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "oculta uma emoção/reação no momento.",
+    "texto": "Oculta uma emoção ou reação no momento.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5273,7 +5273,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "mente sem nenhum sinal físico (vs Olho da Verdade).",
+    "texto": "Mente sem nenhum sinal físico (contra o Olho da Verdade).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5289,7 +5289,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "ninguém lê suas intenções; imune a leitura corporal mundana.",
+    "texto": "Ninguém lê suas intenções; imune a leitura corporal mundana.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5307,7 +5307,7 @@
       "esconder-sentir"
     ],
     "aliases": [],
-    "texto": "mantém compostura perfeita sob tortura, terror ou provocação.",
+    "texto": "Mantém compostura perfeita sob tortura, terror ou provocação.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5326,7 +5326,7 @@
       "calma-absoluta"
     ],
     "aliases": [],
-    "texto": "esconde pensamentos e intenções até de poderes que leem a mente.",
+    "texto": "Esconde pensamentos e intenções até de poderes que leem a mente.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5345,7 +5345,7 @@
       "veu-da-mente"
     ],
     "aliases": [],
-    "texto": "finge qualquer estado interior de forma indetectável, mesmo para semideuses.",
+    "texto": "Finge qualquer estado interior de forma indetectável, mesmo para semideuses.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5364,7 +5364,7 @@
       "mascara-perfeita"
     ],
     "aliases": [],
-    "texto": "torna-se ilegível e impenetrável; nem a magia mais sutil decifra o que você sente ou trama.",
+    "texto": "Torna-se ilegível e impenetrável; nem a magia mais sutil decifra o que você sente ou trama.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
