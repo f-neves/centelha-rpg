@@ -2438,7 +2438,7 @@
       "fingir"
     ],
     "aliases": [],
-    "texto": "Uma mentira que resiste a escrutínio (vs Defesa Social / Olho da Verdade).",
+    "texto": "Uma mentira que resiste a escrutínio (contra a Defesa Social ou o Olho da Verdade).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4397,7 +4397,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "faz o alvo duvidar de quem confiava.",
+    "texto": "Faz o alvo duvidar de quem confiava.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4415,7 +4415,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "deixa o alvo nervoso, com a sensação de ser observado.",
+    "texto": "Deixa o alvo nervoso, com a sensação de ser observado.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4433,7 +4433,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "instala suspeita corrosiva (vs Defesa Social).",
+    "texto": "Instala suspeita corrosiva (contra a Defesa Social).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4451,7 +4451,7 @@
       "semear-duvida"
     ],
     "aliases": [],
-    "texto": "espalha um rumor que mina reputações.",
+    "texto": "Espalha um rumor que mina reputações.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4470,7 +4470,7 @@
       "boato"
     ],
     "aliases": [],
-    "texto": "corrói a confiança e a sanidade de um alvo ao longo da cena.",
+    "texto": "Corrói a confiança e a sanidade de um alvo ao longo da cena.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4489,7 +4489,7 @@
       "veneno-na-mente"
     ],
     "aliases": [],
-    "texto": "assombra o alvo com medos e visões; quebra a compostura dele.",
+    "texto": "Assombra o alvo com medos e visões; quebra a compostura dele.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4508,7 +4508,7 @@
       "pesadelo-acordado"
     ],
     "aliases": [],
-    "texto": "semeia pânico e desconfiança numa multidão; vira aliados em inimigos.",
+    "texto": "Semeia pânico e desconfiança numa multidão; vira aliados em inimigos.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4524,7 +4524,7 @@
     },
     "prereq": [],
     "aliases": [],
-    "texto": "planta um impulso simples que o alvo tende a seguir (vs Defesa Social).",
+    "texto": "Planta um impulso simples que o alvo tende a seguir (contra a Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4540,7 +4540,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "percebe o que o alvo quer e teme.",
+    "texto": "Percebe o que o alvo quer e teme.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4558,7 +4558,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "inclina uma decisão indecisa na direção que você quer.",
+    "texto": "Inclina uma decisão indecisa na direção que você quer.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4576,7 +4576,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "impõe um desejo passageiro que o alvo racionaliza como seu (vs Defesa Mental).",
+    "texto": "Impõe um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4594,7 +4594,7 @@
       "ler-desejos"
     ],
     "aliases": [],
-    "texto": "guia o comportamento do alvo sutilmente por uma cena (vs Defesa Mental).",
+    "texto": "Guia o comportamento do alvo sutilmente por uma cena (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4613,7 +4613,7 @@
       "fios-invisiveis"
     ],
     "aliases": [],
-    "texto": "controla as ações do alvo por um curto tempo (vs Defesa Mental; resistível com Vontade).",
+    "texto": "Controla as ações do alvo por um curto tempo (contra a Defesa Mental; resistível com Vontade).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4632,7 +4632,7 @@
       "titereiro"
     ],
     "aliases": [],
-    "texto": "altera o que o alvo deseja de forma duradoura (vs Defesa Mental).",
+    "texto": "Altera o que o alvo deseja de forma duradoura (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4651,7 +4651,7 @@
       "reescrever-desejos"
     ],
     "aliases": [],
-    "texto": "domina um alvo por completo, corpo e vontade, como um fantoche (vs Defesa Mental).",
+    "texto": "Domina um alvo por completo, corpo e vontade, como um fantoche (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4683,7 +4683,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "desperta atração num alvo receptivo (vs Defesa Social).",
+    "texto": "Desperta atração num alvo receptivo (contra a Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4701,7 +4701,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "a beleza baixa a guarda do alvo.",
+    "texto": "A beleza baixa a guarda do alvo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4719,7 +4719,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "cativa uma sala inteira; todos querem sua atenção.",
+    "texto": "Cativa uma sala inteira; todos querem sua atenção.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4737,7 +4737,7 @@
       "seducao"
     ],
     "aliases": [],
-    "texto": "prende o alvo num momento de fascínio.",
+    "texto": "Prende o alvo num momento de fascínio.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4756,7 +4756,7 @@
       "olhar-cativante"
     ],
     "aliases": [],
-    "texto": "o alvo, encantado, cede a pedidos razoáveis.",
+    "texto": "O alvo, encantado, cede a pedidos razoáveis.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4775,7 +4775,7 @@
       "beleza-inebriante"
     ],
     "aliases": [],
-    "texto": "inspira devoção quase religiosa; multidões se rendem ao seu charme.",
+    "texto": "Inspira devoção quase religiosa; multidões se rendem ao seu charme.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4794,7 +4794,7 @@
       "visao-divina"
     ],
     "aliases": [],
-    "texto": "incomparável; quem o vê faria qualquer coisa por um sorriso seu.",
+    "texto": "Incomparável; quem o vê faria qualquer coisa por um sorriso seu.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -7669,7 +7669,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "Implanta um desejo passageiro que o alvo racionaliza como seu (vs Defesa Mental).",
+    "texto": "Implanta um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7723,7 +7723,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "Uma insinuação bem posta deixa o alvo desconfiado de alguém em quem confiava (vs Defesa Social).",
+    "texto": "Uma insinuação bem posta deixa o alvo desconfiado de alguém em quem confiava (contra a Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7795,7 +7795,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "Cativa um alvo receptivo: baixa a guarda dele e prende a atenção nele em você (vs Defesa Social).",
+    "texto": "Cativa um alvo receptivo: baixa a guarda dele e prende a atenção nele em você (contra a Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7831,7 +7831,7 @@
       "rosto-de-poquer"
     ],
     "aliases": [],
-    "texto": "Sustenta uma mentira que resiste a um escrutínio comum (vs Defesa Social / leitura).",
+    "texto": "Sustenta uma mentira que resiste a um escrutínio comum (contra a Defesa Social ou a leitura).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
