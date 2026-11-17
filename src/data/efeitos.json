@@ -202,7 +202,8 @@
       },
       {
         "nome": "Dano",
-        "tipo": "padrao"
+        "tipo": "padrao",
+        "nota": "só fere em Fogo, Água e Vento; em Terra e Gelo a barreira bloqueia, e em Luz e Sombra só tapa a visão"
       },
       {
         "nome": "Duração",
@@ -418,14 +419,14 @@
       {
         "nome": "Peso Erguido",
         "tipo": "fixo",
-        "valor": "(nível da Arte × 7) − 2",
-        "nota": "entra na escala de levantamento das Artes de força (a reserva FAH, Força × 3 + Halterofilismo, que o personagem usava antes do peso erguido pela massa) e diz o peso que a Arte move: Arte 1 = 60 kg, 2 = 195, 3 = 360, 4 = 550, 5 = 775 e Arte 6 = 1 tonelada"
+        "valor": "o peso que a Arte move: Arte 3 = 360 kg, 4 = 550, 5 = 775, 6 = 1 tonelada",
+        "nota": "entra no lugar do peso erguido do chão (P) de quem empurra, na página Corpo e Movimento (capítulo VIII, Ações & Sistema)"
       },
       {
         "nome": "Distância de Arremesso",
         "tipo": "fixo",
         "valor": "(nível da Arte) × 4",
-        "nota": "entra na tabela de arremesso (o FAA da ficha, capítulo de Corpo e Movimento) e diz a distância"
+        "nota": "entra no lugar do FAA na tabela de arremesso (página Corpo e Movimento, capítulo VIII, Ações & Sistema) e diz a distância"
       }
     ],
     "efeito": "Empurra ou arremessa o alvo, e o que decide é o PESO dele. A Arte entra no lugar dos músculos nas tabelas de Força: o que ela consegue erguer diz se o alvo sai do lugar, e o que ela consegue arremessar diz a que distância ele vai. Bater em obstáculo duro machuca como uma queda daquela distância.",
@@ -551,6 +552,7 @@
       }
     ],
     "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento.",
+    "notas": "Ataca-se com ela como com qualquer arma do mesmo formato: a jogada é a mundana, não a do Acerto Arcano.",
     "grid": {
       "forma": "alvo",
       "ancora": "objeto",
@@ -960,7 +962,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Flechas, virotes e dardos erram enquanto o vento durar. Não segura o que é pesado nem o corpo a corpo.",
+    "efeito": "Flechas, virotes e dardos erram enquanto o efeito durar. Não segura o que é pesado nem o corpo a corpo.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1078,7 +1080,7 @@
     "artes": [
       {
         "id": "terra",
-        "sabor": "o chão sacode e se abre"
+        "sabor": "o chão sacode e derruba"
       }
     ],
     "parametros": [
@@ -1256,7 +1258,7 @@
       {
         "nome": "Penalidade",
         "tipo": "fixo",
-        "valor": "(nível da Arte)"
+        "valor": "−(nível da Arte), em pontos"
       }
     ],
     "efeito": "Emite uma luz forte numa área. Quem estiver dentro dela e olhando na direção sofre a Penalidade enquanto durar.",
@@ -1454,7 +1456,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "A treva acompanha quem a veste e esconde. Não funciona sob luz forte, e um Facho Revelador a desfaz.",
+    "efeito": "Esconde quem o veste e vai junto com ele. Na Sombra é treva: não funciona sob luz forte, e um Facho Revelador a desfaz.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1541,7 +1543,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera.",
+    "efeito": "Some de um ponto e aparece em outro dentro do alcance, e chega sem saber o que o espera. Na Sombra, entra numa sombra e sai por outra, e precisa haver sombra dos dois lados.",
     "grid": {
       "forma": "movimento",
       "ancora": "alvo",
@@ -1652,7 +1654,7 @@
           "12 Ticks",
           "18 Ticks"
         ],
-        "nota": "6 Ticks a cada 2 graus de Duração"
+        "nota": "6 Ticks a cada 2 graus de Duração; nos graus 0 e 1, nada: a penalidade só dura a partir do grau 2"
       },
       {
         "nome": "Ataque",
@@ -1660,7 +1662,7 @@
         "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo recebe 2 × (nível da Arte) de penalidade. Não causa dano, e não é o Paralisado das Condições: o alvo se move e age, com a penalidade.",
+    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo sofre −2 × (nível da Arte), em pontos, de penalidade. Não causa dano, e não é o Paralisado das Condições: o alvo se move e age, com a penalidade.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -2405,7 +2407,7 @@
       {
         "nome": "Penalidade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) para quem aguentar e ficar"
+        "valor": "−(nível da Arte), em pontos, para quem aguentar e ficar"
       }
     ],
     "efeito": "Planta terror puro. Quem falha foge do jeito que der, e quem resiste ainda luta abalado. O medo é do lugar, não de você: quem correu não sabe dizer de que fugiu.",
@@ -2900,7 +2902,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Um objeto à vista salta para a sua mão, ou volta para ela depois de arremessado. Se estiver preso ou na mão de alguém, é disputa de Força contra o nível da Arte.",
+    "efeito": "Um objeto à vista salta para a sua mão, ou volta para ela depois de arremessado. Se estiver preso ou na mão de alguém, é disputa: quem o segura rola Força + Atletismo contra (maior grau investido) × 5, e o objeto só fica se a superar.",
     "grid": {
       "forma": "movimento",
       "ancora": "objeto",
@@ -3704,7 +3706,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Prende um espírito num objeto, que passa a fazer o que aquele espírito sabe fazer enquanto durar. É assim que se faz item encantado sem forja: por acordo, ou por captura.",
+    "efeito": "Prende um espírito num objeto, que passa a fazer o que aquele espírito sabe fazer enquanto durar. É assim que se faz item encantado sem forja: por acordo, ou por captura. A captura força o espírito a ceder: como no Banir, Influência + Intimidação contra a Defesa Mental dele. O acordo não rola.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -3795,7 +3797,7 @@
       {
         "nome": "Absorve",
         "tipo": "fixo",
-        "valor": "um efeito arcano de nível igual ou menor ao investido"
+        "valor": "um efeito arcano de maior grau igual ou menor ao maior grau investido"
       },
       {
         "nome": "Duração",
@@ -3803,7 +3805,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa uma marca de guarda no alvo que engole um efeito arcano de nível igual ou menor ao que você investiu e se gasta ao fazê-lo. Fica esperando até ser usada ou até a duração acabar.",
+    "efeito": "Deixa uma marca de guarda no alvo que engole um efeito arcano cujo maior grau investido seja igual ou menor que o maior grau que você investiu e se gasta ao fazê-lo. Fica esperando até ser usada ou até a duração acabar.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -4496,7 +4498,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Chama a tempestade. A cada 6 Ticks um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo.",
+    "efeito": "Chama a tempestade. A cada 6 Ticks um raio (no Vento, uma rajada) cai onde você apontar dentro da área, sem gastar a sua ação. No Raio, quem veste metal atrai o próximo.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4788,7 +4790,7 @@
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
-    "notas": "É a exceção que a Cura não tem: curar em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o maior grau investido por quem conjurou: 1 PV por grau. Em troca, curar a multidão custa o mesmo por alvo que curar uma pessoa só.",
+    "notas": "É a exceção à cura comum, que não tem Área: este Efeito cura em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o maior grau investido por quem conjurou: 1 PV por grau. Em troca, paga-se a cura de cada um: o custo de curar uma pessoa, uma vez por alvo dentro da área.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5297,7 +5299,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura dias, e cai se você mesmo quebrar a regra que estabeleceu.",
+    "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura o que a Duração comprou, e cai antes se você mesmo quebrar a regra que estabeleceu.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5598,7 +5600,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Chama um único raio do céu sobre o alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está.",
+    "efeito": "Chama do céu um raio sobre cada alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -5653,7 +5655,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e sufoca enquanto durar, mesmo em terra seca, pela regra de Sufocamento do capítulo Resistir (Janela de socorro = Vigor × 20 Ticks). Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
+    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e sufoca enquanto durar, mesmo em terra seca, pela regra de Sufocamento da página Resistir (capítulo VIII, Ações & Sistema; Janela de socorro = Vigor × 20 Ticks). Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -5899,7 +5901,7 @@
       {
         "nome": "Cura",
         "tipo": "fixo",
-        "valor": "1d6 por nível, até o máximo do membro recuperado"
+        "valor": "1d6 por nível, até o PV máximo do alvo"
       }
     ],
     "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa (quem está em 0 PV ou menos e ainda não cruzou o limite de morte está vivo).",
@@ -6106,7 +6108,7 @@
       }
     ],
     "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Enquanto durar, cada nível da Arte encurta em 10% o intervalo da tabela de Recuperação, até no máximo 50% (o dobro da velocidade), que o nível 5 alcança. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: em quem está em 0 PV ou menos, a tabela de Recuperação não vale, e a Arte soma ao teste de Tratar de cada dia em que durar o que a Vida soma no Tratar, +1 por nível da Arte (Vida, Ferimentos & Cura). O que muda com o nível é o quanto, e não o que ela alcança.",
-    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos: em vez da régua dela, encurta o intervalo em 10% por nível da Arte, até 50% (o nível da Arte de quem conjura, o que a prosa chama de Vida 1, 2 ou 3). O encurtamento da Arte e o da Cura de quem cuida não se somam: vale o maior. Como o do Cap. IV, ele não vale na linha \"por dia\".",
+    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos: em vez da régua dela, encurta o intervalo em 10% por nível da Arte, até 50% (o nível da Arte de quem conjura, de Vida 1 a Vida 5). O encurtamento da Arte e o da Cura de quem cuida não se somam: vale o maior. Como o do Cap. IV, ele não vale na linha \"por dia\" da tabela de Recuperação (a do Saudável, que já é o menor intervalo).",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -6372,7 +6374,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Abre um olho num lugar que você conhece e assiste ao que acontece lá agora, em tempo real. Não ouve, não toca e não é visto, mas quem tiver Ver o Fio percebe que está sendo observado.",
+    "efeito": "Abre um olho num lugar que você conhece e assiste ao que acontece lá agora, em tempo real. Não ouve, não toca e não é visto, mas quem estiver com Ver o Fio aceso ali percebe que está sendo observado.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -6761,7 +6763,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim.",
+    "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim. A Dificuldade sobe com o maior grau investido: chamar de mais longe ou pedir que ele fique mais tempo deixa o acordo mais difícil.",
     "grid": {
       "forma": "token",
       "ancora": "ponto",
