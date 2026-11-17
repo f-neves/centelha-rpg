@@ -9,9 +9,9 @@ Heróis aguentam o tranco. O combate não começa com a morte à espreita a cada
 
 Quando você sofre dano, você o **marca** na sua folha. O dano é o que sobra do golpe depois da **Absorção**, o número que reduz cada dano antes de virar ferimento: a soma da armadura com a natural do corpo, detalhada em [Dano e Armadura](/regras/combate#dano-e-armadura).
 
-Há um número só: **dano é dano, cura é cura**. Corte, perfuração, impacto, queimadura, queda ou veneno somam todos no mesmo lugar, e qualquer cura cura, seja ela descanso, Cura ou magia.
+Há um número só: **dano é dano, cura é cura**. Corte, perfuração, impacto, queimadura, queda ou veneno somam todos no mesmo lugar, e qualquer cura cura, seja ela descanso, Cura ou magia. A exceção é o dano **agravado**, o do golpe que acerta a Fraqueza de uma criatura: ele não fecha com descanso nem com a Habilidade Cura, só com tratamento específico ou com a Arte de Cura (ver [Fraqueza e resistência](/artes/regras)).
 
-O tipo do golpe importa, e importa **antes**: é ele que escolhe a Absorção com que a sua armadura resiste (a Placa Completa absorve 8 de Corte e 4 de Impacto, então o malho contra placa continua sendo a via que era). **O tipo pesa no golpe, não na cicatriz.**
+O tipo do golpe importa, e importa **antes**: é ele que escolhe a Absorção com que a sua armadura resiste (a Placa Completa absorve 8 de Corte e 4 de Impacto, então o malho contra placa continua sendo a via que era). **O tipo pesa no golpe, não na cicatriz**, fora a Fraqueza, acima.
 
 ## Pontos de Vida
 
@@ -150,6 +150,6 @@ Você recupera o equivalente ao seu Vigor em PV a cada intervalo, tão mais lent
 | Crítico (1–10%) | por semana |
 | Incapacitado (0 PV ou menos) | por dia, pelo teste de Tratar, até 1 PV |
 
-<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida <strong>encurta o intervalo</strong> da tabela em <strong>10%</strong> (com Cura 3, o "a cada 5 dias" vira 3,5 dias), e os 50% exigem Cura 5.</p>
+<p class="muted">Cura é cura: a tabela vale para qualquer dano, venha ele de malho, de lâmina ou de queda. Quem trata acelera a recuperação: <strong>cada nível de Cura</strong> de quem cuida <strong>encurta o intervalo</strong> da tabela em <strong>10%</strong> (com Cura 3, o "a cada 5 dias" vira 3,5 dias; com Cura 5, cai à metade).</p>
 
 <p class="muted">O encurtamento não vale na linha "por dia" (o dia é o menor intervalo da tabela) nem para quem está em 0 PV ou menos, que sobe pelo teste de Tratar. A magia também acelera (Acelerar a Cura, na Arte de Vida).</p>
