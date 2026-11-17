@@ -4594,6 +4594,15 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Estado: **a implementar**: o texto do livro no ramo `revisao-textos` (fase 2, RT-050), que vai ao ar com o merge da revisão; as sete fichas pelo lote da Bestiarista (fase 4).
 - **Lote da Bestiarista entregue (15/11/2026):** as sete fichas trocaram a frase (12 linhas). Reconvertidas pelo `conversor-criatura.mjs`: sete gravadas, nenhuma parada, e cada JSON difere do publicado só no `efeito` da capacidade da anatomia firme. Entram no ramo `revisao-textos` pela fase 4, com a fixture regenerada, e vão ao ar com o merge da revisão.
 
+### D-376 · Imagem do bestiário: proporção única 3:2; as novas em 1536x1024; o quadro do card em 3:2 [tags: bestiario, imagens, proporcao, card, site, d-102, d-179, b20]
+- Data: 2026-11-17
+- Decisão (autor, 17/11/2026, pelo prompt 010 do coordenador das regras): "Imagem do bestiário: proporção única 3:2; novas geradas em 1536x1024; quadro do card em 3:2. Tamanho no site segue o commit ac06dded (maior lado 600 px, webp). Decisão do autor, 17/11/2026."
+- Contexto: antes desta, nenhuma decisão fixava proporção (relatório do prompt 009, `../tmp/ponte/para-claude/lidas/008.md`). A D-102 decide de onde vêm as imagens novas e o guia de estilo; a D-179 (itens 11, 14 e 16), o webp e os nomes. O maior lado de 600 px, a qualidade 50 e o alfa 30 eram escolha do Arquiteto pelo peso (`ac06dded`); o tamanho passa a ser do autor por esta decisão.
+- Fora do escopo, pelo prompt: as imagens atuais não são convertidas nem cortadas (as 400x600 e 600x600 continuam inteiras no quadro, com sobra); os 31 PNG zerados de `imagens-padronizadas` esperam decisão do autor.
+- Muda: nada no registro (nenhuma decisão anterior tratava proporção). No código: `src/pages/bestiario.astro`, o quadro `.arte` do card passa de `aspect-ratio: 4 / 3` para `3 / 2`.
+- Origem: `../tmp/ponte/para-arquiteto/lidas/010.md`.
+- Estado: a implementar (o quadro do card no `bestiario.astro`; as imagens novas na geração do Codex).
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
