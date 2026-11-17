@@ -582,7 +582,7 @@
       "comando-irresistivel"
     ],
     "aliases": [],
-    "texto": "Implanta uma ordem permanente que dura um dia (contra a Defesa Mental); o alvo racionaliza obedecer.",
+    "texto": "Implanta uma ordem que dura um dia (contra a Defesa Mental); o alvo racionaliza obedecer.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -7795,7 +7795,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "Cativa um alvo receptivo: baixa a guarda dele e prende a atenção nele em você (contra a Defesa Social).",
+    "texto": "Cativa um alvo receptivo: baixa a guarda dele e prende a atenção dele em você (contra a Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
