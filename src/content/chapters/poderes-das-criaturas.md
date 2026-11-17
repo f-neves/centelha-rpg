@@ -82,11 +82,11 @@ Constructos, mortos-vivos, elementais e incorpóreos não dormem, e por isso o s
 
 Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema#corpo-nas-jogadas).
 
-**Resistência que depende da arma.** Algumas criaturas só se ferem de verdade com um material ou uma origem: prata, ferro frio, uma arma abençoada. Contra qualquer outra arma, o dano que passa da Absorção cai **à metade**. A arma certa não tira a Absorção; tira só essa metade.
+**Resistência que depende da arma.** Algumas criaturas só se ferem de verdade com um material ou uma origem: prata, ferro frio, uma arma abençoada. Contra qualquer outra arma, o dano que passa da Absorção cai **à metade**. A arma certa não tira a Absorção; tira só essa metade. Não é a resistência a um tipo de dano (o fogo, o corte do Incorpóreo), que corta a metade entre a armadura e a Absorção natural ([Fraqueza e resistência](/artes/regras)): aqui a metade vem depois da Absorção inteira.
 
 ## Regeneração
 
-**Regeneração N.** A criatura recupera **N PV por minuto**, até o PV máximo, sempre ativa: na luta, isso vale **N/10 PV a cada 6 Ticks**, contados a partir do Tick em que ela sofreu o primeiro dano. A regeneração baixa quase não aparece numa luta rápida; a alta muda o combate.
+**Regeneração N.** A criatura recupera **N PV por minuto**, até o PV máximo, sempre ativa: na luta, isso vale **N/10 PV a cada 6 Ticks**, contados a partir do Tick em que ela sofreu o primeiro dano, e a fração se acumula (Regeneração 5 cura 1 PV a cada 12 Ticks). A regeneração baixa quase não aparece numa luta rápida; a alta muda o combate.
 
 **A Regeneração da criatura não é a Técnica Regeneração.** O personagem tem uma [Técnica](/caminhos) com o mesmo nome, no Caminho Cerne Vital, com custo e regra próprios; o que vale para ele é o que a Técnica diz.
 
