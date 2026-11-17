@@ -92,14 +92,14 @@ A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um gu
 
 - **Esconder-se.** Sumir de vista e continuar sumido, que é coisa diferente de atravessar. Direta, Destreza + Furtividade, secundária Ocultação.
 - **Criar distração.** Uma pedra jogada longe, um barulho na hora certa. Direta, Raciocínio + Manha, e o efeito é rebaixar o estado do vigia por um intervalo.
-- **Roubar.** A bolsa no cinto, a chave no gancho. Direta, Destreza + Prestidigitação contra Prontidão.
+- **Roubar.** A bolsa no cinto, a chave no gancho. Direta, Destreza + Prestidigitação contra a Percepção Passiva da vítima.
 - **Arrombar fechadura.** Acumulada, Destreza + Prestidigitação, secundária Abrir Mecanismos, intervalo de minuto.
 - **Desarmar armadilha.** Direta, Destreza + Prestidigitação, secundária Abrir Mecanismos. **Achar** a armadilha antes de pisar nela é outra ação, com Ocultação.
 - **Disfarçar-se.** Passiva contra quem olha, Influência + Manha, secundária Disfarce. **Aparência alta atrapalha**: quem é memorável tem mais trabalho para não ser lembrado.
 - **Mentir** é ataque social, e vive em [Relações Sociais](/regras/relacoes-sociais).
 - **Falsificar.** Documento, selo, assinatura. Longa, Inteligência + Ocultação.
 - **Contrabandear.** Passiva, Destreza + Furtividade contra a revista, secundária Ocultação.
-- **Trapacear no jogo.** Carta na manga, dado viciado, sinal combinado. Direta, Destreza + Prestidigitação contra a Prontidão da mesa.
+- **Trapacear no jogo.** Carta na manga, dado viciado, sinal combinado. Direta, Destreza + Prestidigitação contra a Percepção Passiva de quem olha (na mesa, o Mestre diz quem).
 
 ---
 
