@@ -37,7 +37,7 @@ A renda é o que o contratante gasta com quem trabalha. Quando o personagem trab
 
 Trabalhos pontuais, como abater uma colônia de aranhas, escoltar um mercador, proteger uma aldeia, invadir uma torre, roubar, investigar ou entregar o que não pode cair em mãos erradas, pagam uma bolsa pelo trabalho, combinada antes. É esse o número do cartaz. **Esta seção é um guia para o Mestre: sugestão de preço, e não regra de mundo.**
 
-A bolsa é Livre: durante o trabalho, o custo de vida do personagem continua saindo dos Recursos dele. Contratar um profissional de fora, por diária, custa a renda dele, pela tabela de Serviços, e não a bolsa.
+A bolsa é Livre: durante o trabalho, o custo de vida do personagem continua saindo dos Recursos dele. Na prática, nada se desconta da bolsa nem se paga à parte ([Recursos durante a aventura](/regras/custo-de-servico-e-itens#recursos-durante-a-aventura)). Contratar um profissional de fora, por diária, custa a renda dele, pela tabela de Serviços, e não a bolsa.
 
 Se um profissional faria o trabalho como serviço comum do ofício dele (o mensageiro leva a carta, o rastreador segue a trilha), o preço é o de Serviços, pela renda dele.
 
@@ -74,7 +74,7 @@ Os desafios 0 a 3 da tabela de valor não são provisórios: vêm da escada de c
 
 Até Dificuldade 20 um mortal passa (Braçal, Oficial, Perito, Mestre de ofício), e o valor é o Livre do ofício à altura × 1,8, o mesmo prêmio de risco da caçada de desafio 0 (40 ÷ 22).
 
-Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o especialista de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
+Acima de 20 só a Centelha passa, e o valor é o da tabela de desafio: desafio = (Dificuldade − 19) ÷ 2, arredondado para cima (o mestre de soma 12 precisa de +1 de Centelha a cada 2 pontos de Dificuldade para passar com 55%).
 
 <!-- gen:economia-recompensas-pericia -->
 
