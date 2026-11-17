@@ -4620,8 +4620,15 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
     - O exemplo "anjo com o profano" sai do texto da Fraqueza das Artes.
 - Pedido de aplicação do complemento (prompt 014-regras): os termos não mudam de nome nesta revisão; a equivalência se diz no texto, nos dois lugares, com link de um para o outro; os exemplos da Fraqueza das Artes passam a ser só criaturas sem regeneração (ou tipos que não estejam na regeneração da criatura), conferidos na ficha publicada.
 - Consequência direta (Arquiteto, sem regra nova): na nota da Fraqueza das Artes, "vampiro com sol, prata e fogo; elemental de gelo com fogo; demônio com o sagrado; anjo com o profano" passa a "a múmia com o fogo, a luz e o sagrado; o vrock, um demônio, com a luz e o sagrado; o golem de gelo com o fogo", conferido nas fichas publicadas (nenhuma das três tem regeneração).
+- Complemento 2 (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T4b. Arma abençoada e sagrado (17/11/2026, DECIDIDA; complemento da T4 e da T4a; RT-118)":
+    - "Arma abençoada" (lista das fraquezas da regeneração) e "sagrado" (Elementos, Fraqueza das Artes) são tipos diferentes.
+    - A arma abençoada é propriedade da arma, como prata e ferro frio. O golpe dela não é dano sagrado, salvo se a arma ou a Arte disser. O sagrado é elemento de dano (Arte ou efeito).
+    - Nada muda nas sete fichas que têm os dois (diabo barbado, diabo chifrudo, diabo do fosso, diabrete, kyton, quasit, lêmure).
+    - A diferença para a T4a: o maligno cobre arma, efeito, artefato ou magia; a arma abençoada é só arma.
+- Pedido de aplicação do complemento 2 (prompt 015-regras): a RT-118 sai de PENDENTE AUTOR; uma frase curta perto da equivalência maligno/profano, na Regeneração e na Fraqueza das Artes, sem renomear termo.
 - Muda: completa a D-326 e a D-341 (nenhuma das duas fica substituída: a D-326 continua a regra da regeneração, e a D-341 continua mantendo a Fraqueza das Artes onde a regeneração não tem o mesmo tipo).
-- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T4 e T4a), `../tmp/ponte/para-arquiteto/lidas/012-regras.md` e `../tmp/ponte/para-arquiteto/lidas/014-regras.md`; RT-113 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-t4-regeneracao.md` (trol, vampiro, planetar e solar).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T4 e T4a), `../tmp/ponte/para-arquiteto/lidas/012-regras.md` e `../tmp/ponte/para-arquiteto/lidas/014-regras.md` e `../tmp/ponte/para-arquiteto/lidas/015-regras.md`; RT-118; RT-113 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-t4-regeneracao.md` (trol, vampiro, planetar e solar).
 - Estado: **a implementar**: o texto do livro e o `regras.json` no ramo `revisao-textos` (fase 3), que vão ao ar com o merge da revisão; as fichas pelo lote da Bestiarista (fase 4).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
