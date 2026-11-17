@@ -207,11 +207,11 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Muralha, ponte de pedra | Engenharia | 4 | 11 | 3 | 20 | 2 |
 | Navio de guerra, catedral | Carpintaria, Alvenaria | 5 | 11 | 4 | 40 | 4 |
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Uma muralha tocada por um mestre de obras (média 14, três pontos por estação contra a Dificuldade 11) e dez braçais (média 6, dois cada contra a Dificuldade 4 da direção) avança <b>23 por estação</b>. Um trecho de Acúmulo 23 sai numa estação de trabalho, e sai da obra na segunda, que é o piso.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Uma muralha tocada por um perito como mestre de obras (média 14, três pontos por estação contra a Dificuldade 11) e dez braçais (média 6, dois cada contra a Dificuldade 4 da direção) avança <b>23 por estação</b>. Um trecho de Acúmulo 23 sai numa estação de trabalho, e sai da obra na segunda, que é o piso.</div>
 
 ## Reparar, melhorar, improvisar, desmontar
 
-**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado.
+**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado. Armas, armaduras e escudos têm régua própria, a [Integridade](/regras/armas-e-armaduras#integridade-do-equipamento).
 
 **Dano leve:** sem Montagem e um quarto da Peça; dá para fazer no campo, sem oficina, com Ofícios Gerais ou o ofício. **Dano pesado:** metade da Montagem e metade da Peça, e precisa de oficina. **Arruinada**, com material aproveitável: Montagem e Peça inteiras.
 
@@ -219,7 +219,7 @@ Por encomenda, o reparo custa cerca de **1/10 do preço** da peça no dano leve,
 
 <p class="formula">Ofícios Gerais devolve a peça ao <b>uso</b> · só o ofício devolve a <b>qualidade</b></p>
 
-Uma Espada Longa Ótima remendada no acampamento volta a cortar como uma espada Comum. Os graus voltam quando um ferreiro de verdade puser a mão nela.
+Uma sela Ótima remendada no acampamento volta a servir como uma sela Comum. Os graus voltam quando um coureiro de verdade puser a mão nela.
 
 **Melhorar.** Um grau de cada vez, com o Requisito, a Dificuldade e o intervalo do grau pretendido, e o Acúmulo de **metade** do que aquele grau custaria de novo. Uma espada Comum vira Boa por 17 em vez de 33. É por aqui que uma espada de saque vira a espada do personagem.
 
