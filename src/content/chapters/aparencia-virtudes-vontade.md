@@ -144,7 +144,7 @@ Mais que isso, a Vontade é a **espinha dos seus traços derivados**: entra na *
 
 ## Integridade & Defesa Mental
 
-**Integridade** é a Habilidade da firmeza moral: o quanto você se mantém inteiro sob pressão e resiste a manipulação e poderes mentais.
+**Integridade** é a Habilidade da firmeza moral: o quanto você se mantém inteiro sob pressão e resiste ao medo imposto, à ordem e aos outros poderes mentais.
 
 A **Defesa Mental** é o muro passivo que o medo imposto, a ordem, a leitura da mente e os outros poderes mentais precisam superar (convencer e intimidar numa conversa batem na Defesa Social; o medo da cena é da Bravura, pela [régua do medo](/regras/defesas)):
 
