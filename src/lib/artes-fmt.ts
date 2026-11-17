@@ -37,6 +37,6 @@ export const valorPar = (p: any, artes: string[] = []) => {
   if (p.regua) return p.regua === 'longa' ? 'Longa' : 'Breve';
   // a Cura tem régua e preço próprios (2 de Mana por nível), então não segue o dano
   if (p.nome.toLowerCase().startsWith('cura')) return '2 · 1d6 · 1d6+2 · 2d6 · 2d6+2 · 3d6 (2 de Mana por nível)';
-  if (p.nome.toLowerCase().startsWith('dano')) return artes.includes('terra') ? '1d6 por nível (Terra: 2d6)' : '1d6 por nível';
+  if (p.nome.toLowerCase().startsWith('dano')) return artes.includes('terra') ? '1d6 por nível (Terra: 2d6 por nível)' : '1d6 por nível';
   return 'normal';
 };
