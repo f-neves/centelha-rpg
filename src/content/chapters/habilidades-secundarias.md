@@ -18,6 +18,8 @@ Uma Secundária pode ser tão ampla quanto um campo inteiro (Herbologia, Direito
 
 O catálogo abaixo é uma **sugestão organizada**, e não uma lista fechada: é o que a ficha já traz pronto. Se a sua mesa precisa de "Falcoaria" ou "Dialeto das Ilhas", crie e pronto.
 
+As Secundárias não trazem o parêntese da inclinação: o Atributo sai da descrição da ação, como em [Quem escolhe o par](/regras/coracao-do-sistema#quem-escolhe-o-par). O Acerto Arcano é a exceção, com par fixo: rola Percepção + Acerto Arcano nos efeitos mirados.
+
 <!-- gen:secundarias -->
 
 #### Corpo
