@@ -32,9 +32,9 @@ Condições diferentes, de origens diferentes, somam todas: quem está com medo,
 
 **Amedrontado.** O medo tomou conta. −2 em todas as jogadas (não nas Defesas), e você não avança em direção à fonte do medo. Enquanto ela estiver à vista, Recompor não encerra o estado. Quem **falha no teste de Bravura** diante do medo da cena fica Amedrontado. O estado dura até o fim da cena, ou até a fonte do medo sair da vista e você fazer um Recompor. O Amedrontado que vem de um poder dura o que o poder disser.
 
-**Enfurecido.** A criatura está em fúria. Vale o que a fúria dá e o que ela tira, como no [Frenesi](/regras/racas#frenesi) (Raças): +2 nas ações físicas, menos o tiro; −2 em Esquiva e em Bloqueio; só ações físicas; não pode ser convencida a nada. 
+**Enfurecido.** A criatura está em fúria. Vale o que a fúria dá e o que ela tira, como no [Frenesi](/regras/racas#frenesi) (Raças): +2 no resultado dos testes de ação física, menos o tiro; −2 em Esquiva e em Bloqueio; só ações físicas; não pode ser convencida a nada. 
 
-Do bloco *O que a fúria dá e o que ela tira* valem também o +1 na soma dos cálculos de ação física e o Intimidar como ação Reflexiva; se alguém consegue acalmá-la, o Mestre decide. A ficha diz o que a faz entrar, quando ela sai e se ignora as penalidades de ferimento. O Frenesi do orc e do meio-orc e a Técnica Fúria do Caminho Sangue Fervente seguem a regra própria de cada um.
+Do bloco *O que a fúria dá e o que ela tira* valem também o +1 na soma dos cálculos de ação física (distância de salto, deslocamento, capacidade de carga), que não é o mesmo +2: um vale no teste, o outro no número calculado e o Intimidar como ação Reflexiva; se alguém consegue acalmá-la, o Mestre decide. A ficha diz o que a faz entrar, quando ela sai e se ignora as penalidades de ferimento. O Frenesi do orc e do meio-orc e a Técnica Fúria do Caminho Sangue Fervente seguem a regra própria de cada um.
 
 ## O corpo
 
@@ -79,7 +79,7 @@ Os membros de pedra e o Vigor perdido só voltam com uma Arte de Matéria ou de 
 
 ### Enjoo e Atributo enfraquecido
 
-**Enjoado.** Um fedor, um esporo ou um veneno revirou o estômago. −2 em todas as jogadas enquanto você estiver exposto, e por mais 6 Ticks depois de sair; o que vem de um veneno dura o que a regra do veneno der ([Resistir](/regras/acoes-resistir#veneno)), enquanto o pool não zera; o Desgaste do mesmo veneno é outra régua e soma com ele. Resiste-se com **Vigor + Resistência** contra a Dificuldade escrita no poder; quem passa fica imune àquela fonte pelo resto da cena, se o poder disser. Constructos e mortos-vivos não enjoam.
+**Enjoado.** Um fedor, um esporo ou um veneno revirou o estômago. −2 em todas as jogadas enquanto você estiver exposto, e por mais 6 Ticks depois de sair; o que vem de um veneno dura enquanto o pool do veneno não zerar ([Resistir](/regras/acoes-resistir#veneno)): zerou o pool, acaba o Enjoado; o Desgaste do mesmo veneno é outra régua e soma com ele. Resiste-se com **Vigor + Resistência** contra a Dificuldade escrita no poder; quem passa fica imune àquela fonte pelo resto da cena, se o poder disser. Constructos e mortos-vivos não enjoam.
 
 **Atributo enfraquecido.** Alguns venenos, toques e maldições tiram pontos temporários de um Atributo. O efeito diz qual ou quais: normalmente os do corpo ou os da mente, mas pode haver efeito que alcance qualquer um dos nove. O ponto perdido vale em tudo o que usa o Atributo (dano, jogadas, Defesas: a Compostura enfraquecida baixa a Defesa Social), menos nos PV e na Absorção. Volta 1 ponto por dia de descanso, a não ser que o efeito diga outra coisa.
 
@@ -97,7 +97,9 @@ No corpo a corpo, você pode golpear onde acha que o alvo está, com o mesmo −
 
 **Confuso.** A mente gira e as intenções se embaralham. A cada ação, declare o que vai fazer e role 1d6: de **1 a 3**, faz o que declarou; com **4 ou 5**, o Mestre escolhe a ação e o alvo, que pode ser um aliado; com **6**, a ação se perde e o tempo dela (a Velocidade da ação declarada) passa sem nada. Dura o que o poder disser.
 
-**Dominado.** Outra vontade comanda a sua. O que o controlador pode mandar, como e por quanto tempo está no poder que dominou você. Mesmo dominada, a vítima pode recusar uma ordem pagando Força de Vontade, como no Resistir contra os ataques mentais ([Defesas](/regras/defesas), *Queimar Força de Vontade*): 1 + Margem, até 4, a cada ordem que recusar, e a Margem é a do poder que dominou. Com Margem 1 ou mais, pode pagar só 1: a ordem pega, mas dura um grau a menos na régua de Duração do próprio efeito (a da Arte ou a da Proeza, como em [Defesas](/regras/defesas)). No domínio por um **poder de criatura** ([Os Poderes das Criaturas](/regras/poderes-das-criaturas)), vale outra leitura. O grau a menos é do **domínio**, não da ordem: conta na régua de Duração da Arte da base do poder (sem base, o Mestre decide). Uma ordem instantânea paga com 1 é cumprida; o que encurta é o tempo em que o controlador continua mandando.
+**Dominado.** Outra vontade comanda a sua. O que o controlador pode mandar, como e por quanto tempo está no poder que dominou você. Mesmo dominada, a vítima pode recusar uma ordem pagando Força de Vontade, como no Resistir contra os ataques mentais ([Defesas](/regras/defesas), *Queimar Força de Vontade*): 1 + Margem, até 4, a cada ordem que recusar, e a Margem é a do poder que dominou. Com Margem 1 ou mais, pode pagar só 1: a ordem pega, mas dura um grau a menos na régua de Duração do próprio efeito (a da Arte ou a da Proeza, como em [Defesas](/regras/defesas)).
+
+No domínio por um **poder de criatura** ([Os Poderes das Criaturas](/regras/poderes-das-criaturas)), vale outra leitura. O grau a menos é do **domínio**, não da ordem: conta na régua de Duração da Arte da base do poder (sem base, o Mestre decide). Uma ordem instantânea paga com 1 é cumprida; o que encurta é o tempo em que o controlador continua mandando.
 
 **Sono sobrenatural.** Um poder ou um veneno pode fazer dormir na hora, sem o cansaço do Desgaste. A vítima fica **Dormindo** pelo tempo que o poder ou o veneno disser. Dormindo zera as **Defesas Físicas** (Esquiva e Bloqueio). A mente continua se defendendo: um poder de mente contra quem dorme ainda enfrenta a **Defesa Mental**. 
 
