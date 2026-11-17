@@ -1962,7 +1962,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, agarra quem estiver em cima e fere. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão.",
+    "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, prende quem estiver em cima e fere: quem é pego fica Preso e se solta com Força + Atletismo contra a Dificuldade. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4830,7 +4830,7 @@
         "nome": "Dano",
         "tipo": "fixo",
         "valor": "1d6 por nível",
-        "nota": "em quem a mata agarrar no lance"
+        "nota": "em quem a mata prender no lance"
       },
       {
         "nome": "Duração",
@@ -4841,7 +4841,7 @@
         "nome": "Jogada",
         "tipo": "fixo",
         "valor": "Força + Atletismo",
-        "nota": "para se soltar do que agarrou"
+        "nota": "para se soltar do que prendeu"
       },
       {
         "nome": "Dificuldade",
@@ -4849,7 +4849,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "O lugar vira mata viva e do seu lado: raiz que agarra o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar.",
+    "efeito": "O lugar vira mata viva e do seu lado: raiz que prende o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5386,7 +5386,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A região se volta contra quem você apontar: bicho ataca, cipó agarra, o caminho se fecha, o rio muda de humor. Não é comando, é a mata concordando com você.",
+    "efeito": "A região se volta contra quem você apontar: bicho ataca, cipó prende, o caminho se fecha, o rio muda de humor. Não é comando, é a mata concordando com você.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",
