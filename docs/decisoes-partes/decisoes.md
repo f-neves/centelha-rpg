@@ -4613,9 +4613,15 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
     - A Fraqueza das Artes (ignora a Absorção e agrava) não vale para esses tipos no trol.
     - Regra geral que sai daí: quando a criatura tem o mesmo tipo como fraqueza da regeneração e como Fraqueza das Artes, vale a regeneração para esse tipo. As fichas com esse caso vão por lista à Bestiarista.
 - Pedido de aplicação (prompt 012-regras do coordenador das regras, 17/11/2026, pela ponte de arquivos): a RT-113 sai de PENDENTE AUTOR; a regra geral entra na Regeneração (Cap. IX, Os Poderes das Criaturas) e na Fraqueza das Artes (`regras.json`, `arcano.fraquezas`), cada uma remetendo à outra; a frase da RT-111 no Cap. IV ganha a ressalva; as fichas vão por lista à Bestiarista.
-- Consequência direta (Arquiteto, sem regra nova): o exemplo da nota da Fraqueza das Artes, "vampiro com sol, prata e fogo", passa a "vampiro com a luz e o sagrado", porque sol, prata e fogo são fraqueza da regeneração do vampiro.
+- Complemento (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T4a. Maligno e profano (17/11/2026, DECIDIDA; complemento da T4)":
+    - "Maligno" (lista das fraquezas da regeneração, G7) e "profano" (Elementos, Fraqueza das Artes) são o mesmo tipo de dano.
+    - Pela T4, no planetar e no solar vale só a regeneração: o dano maligno interrompe a regeneração por 6 Ticks; o profano sai das fraquezas de Elementos dos dois.
+    - O exemplo "anjo com o profano" sai do texto da Fraqueza das Artes.
+- Pedido de aplicação do complemento (prompt 014-regras): os termos não mudam de nome nesta revisão; a equivalência se diz no texto, nos dois lugares, com link de um para o outro; os exemplos da Fraqueza das Artes passam a ser só criaturas sem regeneração (ou tipos que não estejam na regeneração da criatura), conferidos na ficha publicada.
+- Consequência direta (Arquiteto, sem regra nova): na nota da Fraqueza das Artes, "vampiro com sol, prata e fogo; elemental de gelo com fogo; demônio com o sagrado; anjo com o profano" passa a "a múmia com o fogo, a luz e o sagrado; o vrock, um demônio, com a luz e o sagrado; o golem de gelo com o fogo", conferido nas fichas publicadas (nenhuma das três tem regeneração).
 - Muda: completa a D-326 e a D-341 (nenhuma das duas fica substituída: a D-326 continua a regra da regeneração, e a D-341 continua mantendo a Fraqueza das Artes onde a regeneração não tem o mesmo tipo).
-- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T4) e `../tmp/ponte/para-arquiteto/lidas/012-regras.md`; RT-113 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-t4-regeneracao.md` (trol e vampiro com certeza; planetar e solar se o autor ler "maligno" e "profano" como o mesmo tipo).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T4 e T4a), `../tmp/ponte/para-arquiteto/lidas/012-regras.md` e `../tmp/ponte/para-arquiteto/lidas/014-regras.md`; RT-113 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-t4-regeneracao.md` (trol, vampiro, planetar e solar).
 - Estado: **a implementar**: o texto do livro e o `regras.json` no ramo `revisao-textos` (fase 3), que vão ao ar com o merge da revisão; as fichas pelo lote da Bestiarista (fase 4).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
