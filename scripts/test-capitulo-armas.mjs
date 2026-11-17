@@ -788,7 +788,7 @@ function conferirDefesa(comb, cap, sent, R, mesa = '', ref = '') {
   if (L.some((x) => /rede nas pernas|enrolado na rede/i.test(x) && x.startsWith('|'))) f.push('Combate, restrição: "rede nas pernas" e "enrolado na rede" saem da tabela (a Rede tem regra própria)');
   comeca(L, 'No Total, as Defesas zeradas são a Esquiva e o Bloqueio', ['e **não** a Defesa de agarrão.', 'o escudo **perde o bônus**: ele não está *apto*', '**Alguns estados se substituem em vez de se somar**', 'quem está Caído'], 'Combate, restrição');
   // o teto: bônus +6, penalidade sem teto, piso 0
-  comeca(L, '<p class="muted">A <strong>postura agressiva</strong>', ['**se somam todos na mesma Defesa**', '**Os bônus têm teto, as penalidades não:**', 'somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>.', 'O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>'], 'Combate, teto');
+  comeca(L, '<p class="muted">A <strong>postura agressiva</strong>', ['<strong>se somam todos na mesma Defesa</strong>', '<strong>Os bônus têm teto, as penalidades não:</strong>', 'somam no máximo <strong>+6</strong>, e as penalidades <strong>não têm teto nenhum</strong>.', 'O piso é um só: a Defesa <strong>nunca fica abaixo de 0</strong>.</p>'], 'Combate, teto');
   if (L.some((x) => /limitado a <strong>±6/.test(x))) f.push('Combate: sobrou o empilhamento "limitado a ±6"');
   comeca(L, 'A Defesa é um valor **fixo** e **passivo**', ['e ela **nunca fica abaixo de 0**.', 'fica com a Defesa correspondente **zerada** (ver *Vantagem tática*).'], 'Combate, A Defesa é um valor fixo');
   comeca(L, 'Acertar não é tudo ou nada:', ['Contra uma Defesa zerada a Margem **não tem teto**'], 'Combate, Margem');
@@ -1006,7 +1006,7 @@ function conferirManobras(comb) {
     for (const fr of frases) if (!l.includes(fr)) f.push(`${onde}: a linha "${ini.slice(0, 30)}" não tem "${fr.slice(0, 90)}"`);
   };
   comeca('**O agarrado.**', ['Contra quem ataca de fora, a Esquiva dele leva −8 e o Bloqueio −4, mais as penalidades da situação (por exemplo, no chão), sem dobro', 'Entre os dois envolvidos não há penalidade de ataque nem de Defesa', 'Não age e não rola nada: quando quem o controla erra, os papéis se invertem, e o agarrado passa a controlar, podendo continuar ou soltar.'], 'Manobras, O agarrado');
-  comeca('* **Preso:**', ['Vem da boleadeira, da Rede e da Arte de prender, e tem dois perfis.', '**Pela tabela de restrição** (a boleadeira e a Arte de prender, parcial nas pernas): Esquiva −4.', '**Pela Rede**, que tem regra própria ([Armas & Armaduras](/regras/armas-e-armaduras)): −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento, sem teto.', 'Força + Atletismo contra o total do lançamento, uma tentativa por ação', 'contra a Dificuldade do Efeito'], 'Manobras, Preso');
+  comeca('* **Preso:**', ['Vem da boleadeira, da Rede e da Arte de prender, e tem dois perfis.', '**Pela tabela de restrição** (a boleadeira e a Arte de prender, parcial nas pernas): Esquiva −4.', '**Pela Rede**, que tem regra própria ([Armas & Armaduras](/regras/armas-e-armaduras)): −2 na Esquiva e −2 no Bloqueio, e mais −1 em cada por grau de Margem do lançamento, sem teto.', 'Força + Atletismo (secundária Escapismo, pela regra da primária e da secundária, em [Ações & Sistema](/regras/acoes-e-sistema)) contra o total do lançamento, uma tentativa por ação', 'contra a Dificuldade do Efeito'], 'Manobras, Preso');
   comeca('* **Agarrado:**', ['O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.'], 'Manobras, Agarrado');
   comeca('* **Imobilizado:**', ['A Esquiva e o Bloqueio dele ficam **zerados** (não a Defesa de agarrão)', 'Nenhum movimento, não age (nem com Firula)'], 'Manobras, Imobilizado');
   if (/a Defesa dele leva −2|A Defesa dele cai −4/.test(comb)) f.push('Manobras: sobrou "a Defesa dele leva −2 mais as penalidades" ou "A Defesa dele cai −4"');
@@ -1025,7 +1025,7 @@ function conferirManobras(comb) {
     'o Preso pela tabela a −2': (c) => c.replace('parcial nas pernas): Esquiva −4.', 'parcial nas pernas): Esquiva −2.'),
     'a Rede com teto de Margem': (c) => c.replace('por grau de Margem do lançamento, sem teto.', 'por grau de Margem do lançamento, até −3.'),
     'o agarrão que prende': (c) => c.replace('O agarrão comum só gera Agarrado: não prende (Preso) nem imobiliza.', 'O agarrão comum também prende.'),
-    'a fuga sem a Força + Atletismo': (c) => c.replace('Força + Atletismo contra o total do lançamento, uma tentativa por ação', 'a jogada de quem prendeu'),
+    'a fuga sem a Força + Atletismo': (c) => c.replace('Força + Atletismo (secundária Escapismo, pela regra da primária e da secundária, em [Ações & Sistema](/regras/acoes-e-sistema)) contra o total do lançamento, uma tentativa por ação', 'a jogada de quem prendeu'),
   };
   for (const [nome, estraga] of Object.entries(mutM)) {
     const c = estraga(COMB);
@@ -1084,7 +1084,7 @@ function conferirFechamento(T) {
   if (!F.some((x) => x.trim() === '.ref-duas > * { min-width: 0; }')) f.push('referencia.astro: falta ".ref-duas > * { min-width: 0; }" (sem ela a página rola na horizontal a 390 px)');
   // 17 e 18
   comeca(C, '**O agarrado.**', ['sem dobro (a linha *Corpo, grave* da tabela de restrição é esta mesma penalidade, contada uma vez).', 'Quem controla sofre as penalidades do Preparo (Defesa −2, e −4 no Tick do Golpe) e da situação, mas não a do agarrado, porque pode largar o agarrão para se defender.'], 'Manobras, O agarrado');
-  comeca(C, '* **Imobilizado:**', ['Quem está imobilizado sem agarrão (amarrado, preso em gelo) pode tentar se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir.'], 'Manobras, Imobilizado');
+  comeca(C, '* **Imobilizado:**', ['Quem está imobilizado sem agarrão (amarrado, preso em gelo) pode tentar se soltar sozinho (das amarras, pela jogada de *Escapar de amarras* em [Corpo e Movimento](/regras/acoes-corpo-e-movimento)), e essa tentativa sofre a penalidade para agir que o tipo de imobilização der'], 'Manobras, Imobilizado');
   return f;
 }
 {
@@ -1111,7 +1111,7 @@ function conferirFechamento(T) {
     '17: o parêntese do sem dobro removido': troca('comb', ' (a linha *Corpo, grave* da tabela de restrição é esta mesma penalidade, contada uma vez)', ''),
     '17: o parêntese do sem dobro invertido': troca('comb', 'é esta mesma penalidade, contada uma vez', 'é outra penalidade, contada em dobro'),
     '18: as penalidades do Preparo de quem controla': troca('comb', 'Quem controla sofre as penalidades do Preparo (Defesa −2, e −4 no Tick do Golpe) e da situação, mas não a do agarrado', 'Quem controla não sofre penalidade'),
-    '18: o imobilizado que se solta sozinho': troca('comb', 'pode tentar se soltar sozinho, e essa tentativa sofre uma penalidade grande para agir.', 'não pode se soltar.'),
+    '18: o imobilizado que se solta sozinho': troca('comb', 'pode tentar se soltar sozinho (das amarras, pela jogada de *Escapar de amarras* em [Corpo e Movimento](/regras/acoes-corpo-e-movimento)), e essa tentativa sofre a penalidade para agir que o tipo de imobilização der', 'não pode se soltar'),
   };
   for (const [nome, estraga] of Object.entries(mutF)) {
     const T = estraga(T0);
