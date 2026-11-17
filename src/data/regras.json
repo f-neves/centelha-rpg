@@ -1488,7 +1488,7 @@
       },
       "combinacoes": {
         "nota": "A Arte crua não desenha: ela MANIFESTA o elemento. Fogo sai como labareda, Terra sai como pedra, estilhaço e estalactite. Quem dá forma é o Efeito Especial. Por isso os parâmetros não se combinam todos: a forma do improviso sai de quais foram pagos, e não de uma escolha do jogador.",
-        "definicoes": "Alcance é ONDE o efeito começa. Volume é O TAMANHO do que ele ocupa, lido na régua da manifestação: o lado da base de n × n. Na labareda o efeito começa na mão (Alcance 0, o toque, que é grátis) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço: é a Massa lançada, um corpo do elemento que corre em linha reta e bate no primeiro obstáculo. A bola de fogo, que explode num ponto escolhido, é Efeito Especial.",
+        "definicoes": "Alcance é ONDE o efeito começa. Volume é O TAMANHO do que ele ocupa, lido na régua da manifestação: o lado da base de n × n. Na labareda o efeito começa na mão (Alcance 0, o toque, que é grátis) e ocupa um leque; no dardo ele começa longe e ocupa um alvo só. Pagar os dois ao mesmo tempo é pedir que o efeito comece longe E ocupe espaço: é a Massa lançada, um corpo do elemento que corre em linha reta e bate no primeiro obstáculo. A bola de fogo, que explode num ponto escolhido, é Efeito Especial (o Efeito Bola de Fogo está em recalibração).",
         "areaNuncaColocada": "Área nunca é posta num ponto escolhido do mapa. Ou ela nasce no corpo do conjurador, ou ela viaja em linha reta a partir dele. Escolher um ponto a X metros e pôr uma área lá é Efeito Especial.",
         "duracaoPedeConcentracao": "Duração improvisada se paga com CONCENTRAÇÃO. Duração que fica de pé sozinha, sem o conjurador sustentando, é Efeito Especial.",
         "teto": "No máximo TRÊS parâmetros acima do grau 0. O parâmetro Alvos nunca entra no improviso elemental: escolher várias vítimas a dedo é precisão, e precisão se compra.",
@@ -1686,7 +1686,7 @@
     },
     "moldes": {
       "nota": "O parâmetro de chão de um Efeito Especial não é uma medida solta: é um MOLDE com nome, e cada molde tem a sua régua. O jogador escolhe a forma; a forma decide as dimensões.",
-      "porque": "Com uma régua métrica única e liberdade de moldar, o jogador lava matéria em alcance: 1 m³ (grau 4) esticado vira 127 m de cilindro de 5 cm de raio, 95 m de cone ou um anel de 41 m de vão, contra 1,24 m de esfera. A alavanca não é o cuboide, é a esbeltez, e qualquer molde com duas medidas livres a tem. O dano ao desenho é concreto: a laje improvisada vence o Efeito comprado com XP a partir do grau 5 (17 m contra os 12 m do Muro).",
+      "porque": "Com uma régua métrica única e liberdade de moldar, o jogador lava matéria em alcance: 1 m³ (grau 4) esticado vira 127 m de cilindro de 5 cm de raio, 95 m de cone ou um anel de 41 m de vão, contra 1,24 m de esfera. A alavanca não é o cuboide, é a esbeltez, e qualquer molde com duas medidas livres a tem. O dano ao desenho seria concreto: sem os moldes, a laje improvisada venceria o Efeito comprado com XP a partir do grau 5 (17 m contra os 12 m do Muro).",
       "fronteira": {
         "nota": "Os cinco moldes são dos EFEITOS. O improviso tem geometria própria, que é a manifestação.",
         "improviso": "a Arte crua, sem XP: fatias de 60°, 90° ou 120° saindo do feiticeiro.",
