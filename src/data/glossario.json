@@ -106,7 +106,7 @@
     "aliases": [
       "resistência mental"
     ],
-    "definicao": "Muro passivo contra manipulação e poderes mentais: Integridade + Raciocínio + Vontade (Vontade máxima) + 2 × mín(Centelha, Integridade), mais a Especialidade quando o escopo nomeado dela se aplicar."
+    "definicao": "Muro passivo contra o medo imposto, a ordem, a leitura da mente e os outros poderes mentais: Integridade + Raciocínio + Vontade (Vontade máxima) + 2 × mín(Centelha, Integridade), mais a Especialidade quando o escopo nomeado dela se aplicar."
   },
   {
     "id": "defesa-social",
@@ -154,7 +154,7 @@
     "id": "integridade",
     "termo": "Integridade",
     "aliases": [],
-    "definicao": "Habilidade de firmeza moral: não ceder a manipulação, terror, extorsão e poderes mentais. Sustenta a Defesa Mental."
+    "definicao": "Habilidade de firmeza moral: não ceder ao medo imposto, à ordem e aos outros poderes mentais. Sustenta a Defesa Mental."
   },
   {
     "id": "especialidade",
