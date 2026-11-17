@@ -272,11 +272,11 @@
       },
       {
         "nivel": 5,
-        "texto": "Um tesouro do mundo: poder de semideus preso num objeto; a sua existência é um evento."
+        "texto": "Um tesouro do mundo: rivaliza com uma Proeza de tier alto; a sua existência é um evento."
       },
       {
         "nivel": 6,
-        "texto": "Um artefato único e divino: rivaliza com uma Proeza de tier alto; nações guerreiam por ele."
+        "texto": "Um artefato único e divino: poder de semideus preso num objeto; nações guerreiam por ele."
       }
     ],
     "amarra": "equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde."

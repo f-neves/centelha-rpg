@@ -179,8 +179,8 @@ Dito de outro jeito: um Antecedente **encurta o caminho até a relação**, não
 | **2** | Um item notável: uma arma que dá vantagem real, uma peça com uma propriedade útil por cena. |
 | **3** | Um artefato de nome: efeito forte, cobiçado, reconhecível. |
 | **4** | Um artefato de lenda: rivaliza com uma Proeza de tier médio; gente mata por ele. |
-| **5** | Um tesouro do mundo: poder de semideus preso num objeto; a sua existência é um evento. |
-| **6** | Um artefato único e divino: rivaliza com uma Proeza de tier alto; nações guerreiam por ele. |
+| **5** | Um tesouro do mundo: rivaliza com uma Proeza de tier alto; a sua existência é um evento. |
+| **6** | Um artefato único e divino: poder de semideus preso num objeto; nações guerreiam por ele. |
 
 **Amarra com:** equipamento e Arcano. Um Artefato pode conceder uma Arte ou uma Proeza que o portador não teria, dentro do nível. **Pode ser roubado ou quebrado** (é volátil por natureza): por isso o XP volta como crédito se ele se perde.
 
