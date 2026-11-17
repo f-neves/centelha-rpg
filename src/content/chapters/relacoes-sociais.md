@@ -236,7 +236,7 @@ Sem dado, os dois lados entram somados, sem multiplicador:
 
 O **Tempo do passo** é quantos intervalos aquele passo da régua leva, e o `máx(1, …)` é o freio: por mais gesto que se empilhe, **nenhum passo sai em menos de um intervalo**. Não há teto de bônus decretado em lugar nenhum; o limite aparece sozinho aqui.
 
-A soma entra **sem o ×2** da Defesa Social porque não há dado: o ×2 existe para casar com a média de um punhado de dados rolados, e um ataque parado vale a própria soma. É a mesma calibragem, não outro número. E repare que a **Centelha só entra de um lado**, o de quem resiste, pela mesma razão que ela não entra no modo Longa do capítulo de [Ações & Sistema](/regras/acoes-e-sistema): quem atravessa parede pelo trabalho longo é ofício, não fagulha.
+Compostura + Sociabilidade entram **sem o ×2** da Defesa Social (o 2 × mín(Centelha, Sociabilidade) entra inteiro, como lá) porque não há dado: o ×2 existe para casar com a média de um punhado de dados rolados, e um ataque parado vale a própria soma. É a mesma calibragem, não outro número. E repare que a **Centelha só entra de um lado**, o de quem resiste, pela mesma razão que ela não entra no modo Longa do capítulo de [Ações & Sistema](/regras/acoes-e-sistema): quem atravessa parede pelo trabalho longo é ofício, não fagulha.
 
 O **termo da régua** é o mesmo de "A história empurra o dado", lá atrás: aquecer um vínculo hostil soma à Defesa parada, aquecer um vínculo favorável subtrai, e no Neutro ele vale zero.
 
