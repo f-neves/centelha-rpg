@@ -34,7 +34,7 @@ A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técn
 
 Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Por isso a Centelha inicial também não se compra: na criação, o Mestre e o grupo a combinam pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica, com referência 1), e dali em diante ela sobe em jogo. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
 
-> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**, no lugar do antigo *nível × custo*. A diferença prática: a escada dos níveis altos ficou muito mais suave, então o topo da régua passou a ser alcançável em jogo. **Vontade e Aparência descem para o piso 0** (você compra o nível 1) e a **Centelha deixa de custar XP**. Duas trilhas não acumulam, a Técnica de Proeza e o Efeito Especial: paga-se só o preço do nível da Técnica ou do Efeito comprado.
+> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**. A escada dos níveis altos é suave, e o topo da régua é alcançável em jogo. **Vontade e Aparência têm piso 0** (você compra o nível 1) e a **Centelha não custa XP**. Duas trilhas não acumulam, a Técnica de Proeza e o Efeito Especial: paga-se só o preço do nível da Técnica ou do Efeito comprado.
 >
 > **Pendente.** Os orçamentos de 1500 / 2000 / 2600 foram calibrados na economia antiga, quando as Proezas comiam cerca de 40% do bolo. Com a curva nova elas se acumulam ao longo da campanha em vez de saírem da criação, e um personagem inicial típico fecha perto de **1050 XP**. Os três exemplos abaixo estão **recusteados pela função de custo real**, mas os orçamentos ainda serão reajustados.
 
