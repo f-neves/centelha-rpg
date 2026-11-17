@@ -3815,6 +3815,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, decisões do autor de 04 e 05/11/2026 (tema 12, regeneração).
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
 - **Completada em 07/11/2026 pela D-367** (G5): o "atrasar" é a primeira forma (interrompe por um tempo, escrito na ficha); a lista fechada dos tipos de fraqueza vai ao livro junto desta regra.
+- **Completada em 17/11/2026 pela D-377** (T4): o tipo que a regeneração lista vale só como fraqueza da regeneração, mesmo que a criatura o tenha também como Fraqueza das Artes (o fogo e o ácido do trol).
 
 ### D-327 · R48: Engolir: o passo seguinte do agarrão, Velocidade 7 [tags: combate, engolir, agarrao, imobilizado, sufocamento, acido]
 - Data: 2026-11-05
@@ -4022,6 +4023,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído: a fraqueza das Artes continua. Fecha o item 069 de `99-sem-decisao.md`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
+- **Completada em 17/11/2026 pela D-377** (T4): quando a criatura tem o mesmo tipo como fraqueza da regeneração e como Fraqueza das Artes, vale a regeneração para esse tipo (o trol, como o lobisomem aqui); a Fraqueza das Artes continua valendo para os outros tipos.
 
 ### D-342 · P7: o Encontrão Relâmpago rola Força + Atletismo contra a Defesa [tags: tecnica, encontrao-relampago, atletismo, d-333]
 - Data: 2026-11-05
@@ -4602,6 +4604,19 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada no registro (nenhuma decisão anterior tratava proporção). No código: `src/pages/bestiario.astro`, o quadro `.arte` do card passa de `aspect-ratio: 4 / 3` para `3 / 2`.
 - Origem: o primeiro prompt 010 da ponte, da conversa das imagens (cópia em `../tmp/ponte/para-arquiteto/lidas/010-card-3x2-sobrescrito.md`; o arquivo `010.md` foi sobrescrito pelo 010 da fase 3 da revisão de textos); confirmação no prompt `011-regras.md`; I3 em `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`.
 - Estado: em parte: o quadro do card em 3:2 (`bb75bdb1`, `bestiario.astro`); as imagens novas na geração do Codex.
+
+### D-377 · T4: o fogo no trol: quando o mesmo tipo é fraqueza da regeneração e Fraqueza das Artes, vale a regeneração [tags: bestiario, criatura, regeneracao, fraqueza, artes, agravado, trol, vampiro, d-326, d-341, rt-113, t4, rev-textos]
+- Data: 2026-11-17
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T4. O fogo no trol (17/11/2026, DECIDIDA; RT-113 da revisão de textos)":
+    - Faz-se com o trol o mesmo que a D-341 fez com o lobisomem: fogo e ácido valem só como fraqueza da regeneração (R47, D-326). O dano desses tipos não se regenera e fecha com outras curas (Arte, Cura, descanso).
+    - A Fraqueza das Artes (ignora a Absorção e agrava) não vale para esses tipos no trol.
+    - Regra geral que sai daí: quando a criatura tem o mesmo tipo como fraqueza da regeneração e como Fraqueza das Artes, vale a regeneração para esse tipo. As fichas com esse caso vão por lista à Bestiarista.
+- Pedido de aplicação (prompt 012-regras do coordenador das regras, 17/11/2026, pela ponte de arquivos): a RT-113 sai de PENDENTE AUTOR; a regra geral entra na Regeneração (Cap. IX, Os Poderes das Criaturas) e na Fraqueza das Artes (`regras.json`, `arcano.fraquezas`), cada uma remetendo à outra; a frase da RT-111 no Cap. IV ganha a ressalva; as fichas vão por lista à Bestiarista.
+- Consequência direta (Arquiteto, sem regra nova): o exemplo da nota da Fraqueza das Artes, "vampiro com sol, prata e fogo", passa a "vampiro com a luz e o sagrado", porque sol, prata e fogo são fraqueza da regeneração do vampiro.
+- Muda: completa a D-326 e a D-341 (nenhuma das duas fica substituída: a D-326 continua a regra da regeneração, e a D-341 continua mantendo a Fraqueza das Artes onde a regeneração não tem o mesmo tipo).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T4) e `../tmp/ponte/para-arquiteto/lidas/012-regras.md`; RT-113 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-t4-regeneracao.md` (trol e vampiro com certeza; planetar e solar se o autor ler "maligno" e "profano" como o mesmo tipo).
+- Estado: **a implementar**: o texto do livro e o `regras.json` no ramo `revisao-textos` (fase 3), que vão ao ar com o merge da revisão; as fichas pelo lote da Bestiarista (fase 4).
 
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
