@@ -150,7 +150,7 @@ Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples 
 
 O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6, Habilidade 3, média 9), para uma unidade, sem ajuda, em qualidade Comum. O perito é soma 9 (média 14) e o mestre é soma 12 (média 18).
 
-"Fechada ao oficial" quer dizer que ele não faz a peça: ou o Requisito passa da Habilidade dele, ou a média dele não passa da Dificuldade, como na Lamelar.
+"Fechada ao oficial" quer dizer que ele não faz a peça: ou o Requisito passa da Habilidade dele, ou a média dele não passa da Dificuldade, como na Lamelar. Na coluna Ofício, "Gerais" só lembra as peças típicas do faz-tudo. Quem decide se Ofícios Gerais faz uma peça é a regra do território, e ela vale para toda linha, com a palavra ou sem ela: Ofícios Gerais 4 faz também o escudo e o gambeson, de Dificuldade 4. Os tempos são o Acúmulo dividido pelo que a média passa da Dificuldade, arredondados: à meia unidade nas escalas de horas e de dias, e à unidade inteira na de semanas.
 
 **A jornada é do ofício.** O "dia" destas tabelas é uma **jornada** daquele ofício: **6 horas** no ofício leve (escrivão, acadêmico), **8** no artesão, **10** no braçal e no trabalho pesado. A linha em escala de horas converte pela jornada do próprio ofício, e **meia jornada é meio intervalo**.
 
