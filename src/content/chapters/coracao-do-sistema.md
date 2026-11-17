@@ -35,7 +35,7 @@ O *pool* básico sai da soma de Atributo + Habilidade. A metade dessa soma, arre
 
 <p class="muted">A tabela para em 12 porque é onde o mortal comum termina, mas a régua não tem teto: soma 14 rola 7d6, soma 16 rola 8d6, e assim por diante, na mesma proporção (Centelha, Proezas e Artes é que levam gente até lá: as Proezas são as árvores de Técnicas que a Centelha destrava, e as Artes, as linhas de feitiçaria do Arcano).</p>
 
-<p class="muted">Soma <strong>1</strong> (Atributo 1 e Habilidade não treinada, o caso mais comum de personagem recém-criado) não rola dado nenhum: o total fixo de <strong>2</strong> nunca supera a Dificuldade <strong>5</strong>. É de propósito, e não um defeito: quem não tem competência não alcança as dificuldades altas, nem as fáceis.</p>
+<p class="muted">Soma <strong>1</strong> (Atributo 1, comum a todo personagem no início da criação, e Habilidade não treinada) não rola dado nenhum: o total fixo de <strong>2</strong> nunca supera a Dificuldade <strong>5</strong>. É de propósito, e não um defeito: quem não tem competência não alcança as dificuldades altas, nem as fáceis.</p>
 
 <p class="muted">A saída não é mexer nesta fórmula (ela sustenta ataque, Defesa, Habilidade e o bestiário inteiro). A saída é a <a href="/centelha-rpg/regras/habilidades#firulas--recompensa-à-ousadia"><strong>Firula</strong></a> <strong>de nível 2</strong> (+1d6: o bônus de um lance, por descrever a ação com criatividade e uso do cenário), que devolve o dado e torna a Dificuldade 5 possível com 4 ou mais.</p>
 
@@ -119,7 +119,7 @@ Quando os dois agem de fato (uma queda de braço, uma corrida), ambos rolam, e o
 Tarefas longas (forjar uma lâmina, decifrar um tomo) são os modos **Acumulada** e **Longa** de [Ações & Sistema](/regras/acoes-e-sistema). Elas usam três valores: uma **Dificuldade**, um **Intervalo** de tempo e um **Acúmulo** a atingir.
 
 - Na **Acumulada**, a cada intervalo você rola, e o quanto o total passar da Dificuldade soma ao Acúmulo.
-- Na **Longa**, não se rola: a cada intervalo soma-se a média do pool (3 por dado, mais 2 se a soma for ímpar) menos a Dificuldade.
+- Na **Longa**, não se rola: a cada intervalo soma-se a média do pool (3 por dado, mais 2 se a soma for ímpar) menos a Dificuldade; a Centelha não entra na Longa.
 
 Ao alcançar o Acúmulo, a obra está pronta.
 
