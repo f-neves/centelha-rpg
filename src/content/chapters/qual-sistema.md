@@ -90,7 +90,7 @@ flowchart TD
   DB --> N
 ```
 
-**Esp.** é a [Especialidade](/regras/defesas#especialidade-o-foco-que-só-vale-às-vezes), que só soma quando o golpe cai na situação dela.
+**Esp.** é a [Especialidade](/regras/defesas#especialidade-o-foco-que-só-vale-às-vezes), que só soma quando o golpe cai na situação dela. Vale a maior das duas que cabem contra aquele golpe: contra um [projétil rápido](/regras/combate#projéteis-rápidos-só-esquiva-ou-escudo), ninguém apara com a arma, e só a Esquiva ou o escudo hábil defendem.
 
 ---
 
@@ -110,11 +110,11 @@ flowchart TD
 ## Folha de bolso (sem diagrama)
 
 - **Rola dado?** Só com oposição ou risco. Trivial, não. Pedido dentro do nível da relação, não.
-- **Ação comum:** Atributo + Habilidade vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). O alvo é o **total dos dados somado**, não uma face que caiu; supera o alvo = sucesso; **cada 6 pontos** de folga acima dele = +1 Margem.
+- **Ação comum:** o pool de Atributo + Habilidade (metade da soma em dados, +2 se a soma for ímpar; ver [Montando o Pool](/regras/coracao-do-sistema#montando-o-pool)) vs Dificuldade (5 fácil / 10 média / 15 difícil / 20 limite humano). O alvo é o **total dos dados somado**, não uma face que caiu; supera o alvo = sucesso; **cada 6 pontos** de folga acima dele = +1 Margem.
 - **Social x Mental:** passa pelo juízo = Social; contorna o juízo = Mental. (Ver [As Três Defesas](/regras/defesas).)
 - **Régua x Combate Social:** dia a dia = Régua, sem rolar dado; pedido acima do nível = jogada única, que compra **alcance** só naquela cena; cena grande e tensa = Combate Social (gastar Vontade para não ceder). Nenhuma das duas move a régua: isso é dos atos e do cortejo. (Ver [Relações Sociais](/regras/relacoes-sociais).)
 - **Três medos:** intimidação = Social; medo mágico = Mental; medo da cena = Bravura (o teste da Virtude).
-- **Defesa física:** desviou = Esquiva; aparou = Bloqueio (usa a maior).
+- **Defesa física:** desviou = Esquiva; aparou = Bloqueio; vale a maior das que cabem (contra projétil rápido, só Esquiva ou escudo hábil).
 - **Percepção x Perspicácia:** o mundo = Percepção; as pessoas = Perspicácia.
 - **Gastar Vontade:** antes do teste, 1 ponto dá +4 na Defesa (também contra leitura), no máximo 1 por ação.
 - **Resistir com Vontade:** depois que o ataque passou, resistir custa 1 + Margem (teto 4), fora do limite de 1 por ação ([Cap. X](/regras/relacoes-sociais)). No efeito mental, com Margem 1 ou mais, dá para pagar só 1 e o efeito dura um grau a menos ([Cap. XI](/regras/defesas)). Contra leitura não dá para se recusar depois do teste: só o número da Defesa protege, e o +4 de antes entra nele.
