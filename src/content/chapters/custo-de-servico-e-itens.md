@@ -73,7 +73,7 @@ Uma **semana de trabalho** vale 6 dos 8 dias da semana de Uldun. Na guerra e na 
 ### Recursos durante a aventura
 
 1. O personagem nunca paga o custo de vida à parte. Ele recebe Livre, de uma ou mais fontes, e é só isso que anota.
-2. A bolsa é o Livre do trabalho inteiro. Ela ocupa as semanas estimadas no contrato.
+2. A [bolsa](/regras/custo-servicos#trabalhos-e-recompensas) é o Livre do trabalho inteiro. Ela ocupa as semanas estimadas no contrato.
 3. Recursos 1 a 3 é trabalho próprio: nas semanas do contrato, não rende. O personagem recebe só a bolsa.
 4. Recursos 4 a 6 é renda de propriedade, que rende sem o dono presente: o Livre de Recursos continua entrando, somado à bolsa.
 
@@ -125,4 +125,4 @@ O **Custo** da tabela de Renda é o de uma casa inteira (três adultos-equivalen
 
 <!-- /gen:economia-pacote-familia -->
 
-<p class="muted">Cada parcela do pacote sai arredondada ao pc, uma a uma, e por isso a soma delas pode não bater com o pacote básico exato.</p>
+<p class="muted">Cada parcela do pacote sai arredondada ao pc, uma a uma, e por isso a soma delas pode não bater com o pacote básico exato. Toda parcela é semanal: a roupa e os livros "por ano" entram pela parte de uma semana.</p>
