@@ -2163,7 +2163,7 @@
       "aRevisar": "se a penalidade acumula por feitiço guardado, e se há teto de quantos dá para carregar"
     },
     "fraquezas": {
-      "nota": "Fraqueza e resistência não são comuns: a maioria das criaturas não tem nenhuma. Aparecem no sobrenatural (vampiro com sol, prata e fogo; elemental de gelo com fogo; demônio com o sagrado; anjo com o profano) e no material de que a criatura é feita (folha, madeira, palha e gelo temem fogo; criatura de fogo ou de terra teme água; metal e pedra resistem ao fogo).",
+      "nota": "Fraqueza e resistência não são comuns: a maioria das criaturas não tem nenhuma. Aparecem no sobrenatural (vampiro com a luz e o sagrado; elemental de gelo com fogo; demônio com o sagrado; anjo com o profano) e no material de que a criatura é feita (folha, madeira, palha e gelo temem fogo; criatura de fogo ou de terra teme água; metal e pedra resistem ao fogo). Quando o mesmo tipo é também a fraqueza da Regeneração da criatura (o fogo e o ácido do trol), vale a regeneração para esse tipo: o dano não ignora a Absorção nem é agravado, só não se regenera e fecha com as outras curas (Os Poderes das Criaturas, Regeneração).",
       "fraqueza": [
         "o dano ignora TODA a Absorção, natural e de armadura",
         "o dano é agravado: não fecha com descanso nem com a Habilidade Cura, só com tratamento específico ou a Arte de Cura",
