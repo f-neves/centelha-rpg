@@ -4023,7 +4023,7 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Muda: nada substituído: a fraqueza das Artes continua. Fecha o item 069 de `99-sem-decisao.md`.
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md`, respostas do autor de 05/11/2026 às perguntas do Arquiteto na rodada R35 a R54.
 - Estado: **no ar** desde 05/11/2026 (branch `regras-r35-r54`, publicada em `442e6188`).
-- **Completada em 17/11/2026 pela D-377** (T4): quando a criatura tem o mesmo tipo como fraqueza da regeneração e como Fraqueza das Artes, vale a regeneração para esse tipo (o trol, como o lobisomem aqui); a Fraqueza das Artes continua valendo para os outros tipos.
+- **Completada em 17/11/2026 pela D-377** (T4): quando a criatura tem o mesmo tipo como fraqueza da regeneração e como Fraqueza das Artes, vale a regeneração para esse tipo (o trol, que a T4 manda tratar como esta decisão tratou o lobisomem); a Fraqueza das Artes continua valendo para os outros tipos. A ficha do lobisomem ainda não tem Regeneração e mantém a prata em Elementos (RT-038, ponta da Bestiarista), então ela não é caso da D-377 hoje.
 
 ### D-342 · P7: o Encontrão Relâmpago rola Força + Atletismo contra a Defesa [tags: tecnica, encontrao-relampago, atletismo, d-333]
 - Data: 2026-11-05
