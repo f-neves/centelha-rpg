@@ -148,7 +148,7 @@
     "aliases": [
       "reserva mágica"
     ],
-    "definicao": "Combustível do Arcano: (Centelha × 2) + Vontade (Vontade máxima), em reserva própria que não se mistura com a Força de Vontade. Conjurar custa Mana = soma dos níveis dos parâmetros escolhidos, menos a Centelha."
+    "definicao": "Combustível do Arcano: (Centelha × 2) + Vontade (Vontade máxima), em reserva própria que não se mistura com a Força de Vontade. Conjurar custa Mana = nível do Efeito mais a soma dos níveis dos parâmetros escolhidos, menos a Centelha."
   },
   {
     "id": "integridade",
