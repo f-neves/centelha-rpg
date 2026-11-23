@@ -112,7 +112,7 @@ Suborno, presentes caros e mesada são **gestos**, e dinheiro compra pressa no c
 
 ## Sair do Neutro é o mais difícil
 
-O meio da régua é **largo de propósito**: do centro até a primeira Simpatia (+1) são **três passos**. Enquanto você não os acumula, a pessoa continua Neutra. Depois de romper o Neutro, cada nível seguinte é só **um passo**.
+O meio da régua é **largo de propósito**: do centro até a primeira Simpatia (+1) são **três passos**. Enquanto você não os acumula, a pessoa continua Neutra. Depois de romper o Neutro, cada nível seguinte é só **um passo**. O Neutro é desigual: são três passos para subir do centro à Simpatia e um só para cair na Antipatia (−1). E a posição fica guardada: quem desce um passo a partir de +1 (Simpatia) fica Neutro, a um passo de voltar à Simpatia, sem recomeçar os três.
 
 A ficha abre uma segunda porta: um Antecedente em contexto (Reputação, Contato, Posição, e o Refúgio em casa; [Cap. VII](/regras/antecedentes)) desconta passos desses três, pela metade do nível do traço (para baixo), e só o nível 6 desconta os três e já começa a relação em +1 (Simpatia). Dali para cima valem as regras de sempre: o teto de vidro de ±2 segura o que acumula, e só ato atravessa.
 
