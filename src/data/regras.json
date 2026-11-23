@@ -1293,7 +1293,7 @@
       "porCentelha": [2, 3, 4, 5, 6, 6, 6],
       "nota": "O nível máximo de cada Arte é Centelha + 2, com teto 6 (o índice é a Centelha, de 0 a 6): Centelha 0 → 2; 1 → 3; 2 → 4; 3 → 5; 4, 5 ou 6 → 6. Decisão do autor de 03/10/2026 (D-006). O teto de PROEZA continua sendo a Centelha (o nível N exige Centelha >= N); não há conflito."
     },
-    "nota": "Detalhamento do uso das Artes: improviso por parâmetros, conjuração composta (espelha o combo) e Rituais. Mana = soma dos níveis dos parâmetros escolhidos, menos a Centelha. Não existe rolagem geral de conjuração: os efeitos MIRADOS (o que sai da mão e voa até o alvo) rolam Percepção + Acerto Arcano, e os que tocam a mente sem projétil rolam Influência + a Habilidade social do Efeito; o resto se resolve por tabela ou por Dificuldade fixa do Efeito.",
+    "nota": "Detalhamento do uso das Artes: improviso por parâmetros, conjuração composta (espelha o combo) e Rituais. Mana = nível do Efeito mais a soma dos níveis dos parâmetros escolhidos, menos a Centelha. Não existe rolagem geral de conjuração: os efeitos MIRADOS (o que sai da mão e voa até o alvo) rolam Percepção + Acerto Arcano, e os que tocam a mente sem projétil rolam Influência + a Habilidade social do Efeito; o resto se resolve por tabela ou por Dificuldade fixa do Efeito.",
     "feiticoTicks": [
       {
         "nivel": "0–3",
@@ -2194,12 +2194,12 @@
       "compra": "só até o nível que você tem na Arte; sem teto de quantidade",
       "ticks": "4 + nível do Efeito + 1 por grau que qualquer parâmetro passe do nível dele",
       "acaoLivre": "Um punhado de Efeitos não custa Velocidade nenhuma, porque o gesto de conjurar é o mesmo de puxar a arma da cintura ou de tirar a flecha da aljava: sai junto com a ação que o usa, e não no lugar dela. Continuam custando Mana como qualquer conjuração; o que não custam é tempo. São marcados com `acaoLivre` em efeitos.json, e o tabuleiro propõe Velocidade 0 para eles.",
-      "custo": "a soma dos níveis dos parâmetros escolhidos; o nível do Efeito não entra, e a Centelha desconta do total, como em qualquer conjuração",
+      "custo": "nível do Efeito + a soma dos parâmetros usados; a Centelha desconta do total, como em qualquer conjuração",
       "acimaDaArte": "Alguns Efeitos Especiais têm parâmetros acima do nível da Arte, normalmente por serem mais específicos (a Neblina começa um nível acima em Área, trocando m² por m³).",
       "exemplos": [
-        "Neblina (Efeito 1) + Alcance 2 (2 m) + Volume 3 (0,5×0,5×0,5) + Duração 2 (12 Ticks): 2 + 3 + 2 = 7 pontos, menos a Centelha (o nível do Efeito não entra na conta).",
-        "Neblina (Efeito 1) + Alcance 1 (1 m) + Volume 2 (0,25×0,25×0,25) + Duração 1 (6 Ticks): 1 + 2 + 1 = 4 pontos, menos a Centelha (o nível do Efeito não entra na conta).",
-        "Terremoto (Efeito 2) + Alcance 1 (1 m) + Área 3 (2 m de diâmetro): 1 + 3 = 4 pontos, menos a Centelha (o nível do Efeito não entra na conta)."
+        "Neblina (Efeito 1) + Alcance 2 (2 m) + Volume 3 (0,5×0,5×0,5) + Duração 2 (12 Ticks): 1 + 2 + 3 + 2 = 8 pontos, menos a Centelha.",
+        "Neblina (Efeito 1) + Alcance 1 (1 m) + Volume 2 (0,25×0,25×0,25) + Duração 1 (6 Ticks): 1 + 1 + 2 + 1 = 5 pontos, menos a Centelha.",
+        "Terremoto (Efeito 2) + Área 3 (2 m de diâmetro): 2 + 3 = 5 pontos, menos a Centelha."
       ],
       "fronteira": "Efeito de FRONTEIRA é o que mora em duas Artes vizinhas e empresta os verbos de uma para a outra. É o mesmo mecanismo de \"o Efeito que você já sabe e que cabe em outra Arte sua não custa XP\", visto pelo outro lado: ele é a vantagem concreta que uma Escola entrega. A escola da Areia é a de Terra que faz fronteira com o Vento, e por isso alcança Efeitos que a Terra pura não alcançaria. Raio e Vento se tocam pela tempestade e pela velocidade; Gelo e Água pela mesma matéria em dois estados."
     },
