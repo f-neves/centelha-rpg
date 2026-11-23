@@ -22,7 +22,7 @@
     "atributo": "forca",
     "habilidade_ancora": "Armas",
     "descricao": "destruir estruturas e defesas",
-    "nota": "Aqui objeto e estrutura se resolvem pelo **Romper** (Força + Atletismo, Cap. VIII, Feito de força): não têm PV nem Absorção, cedem ou não cedem. Cada Técnica ativa abaixo soma um bônus ao Romper de um golpe, e só uma entra por jogada; a passiva Demolidor soma por cima."
+    "nota": "Aqui objeto e estrutura se resolvem pelo **Romper** (Força + Atletismo, Cap. VIII, Feito de força): não têm PV nem Absorção, cedem ou não cedem. Pancada Destrutiva, Abrir Brecha, Esmaga-Pedra e Quebra-Muralhas somam um bônus ao Romper de um golpe, e só uma delas entra por jogada; a passiva Demolidor soma por cima."
   },
   {
     "id": "agarrao-do-urso",
