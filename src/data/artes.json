@@ -591,7 +591,7 @@
       {
         "nivel": 3,
         "nome": "Feixe Ardente",
-        "efeito": "raio que queima o que teme a luz; revela o oculto e o disfarçado ao redor",
+        "efeito": "raio que queima, inteiro em quem teme a luz e pela metade nos outros; revela o oculto e o disfarçado ao redor",
         "custo": {
           "mana": 3
         },
@@ -617,7 +617,7 @@
       {
         "nivel": 5,
         "nome": "Luz Inclemente",
-        "efeito": "nenhuma ocultação funciona na cena, e o que teme a luz queima enquanto ela durar",
+        "efeito": "nenhuma ocultação funciona na cena, e a luz queima enquanto durar, inteira em quem a teme e pela metade nos outros",
         "custo": {
           "mana": 5
         },
