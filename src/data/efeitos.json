@@ -91,7 +91,7 @@
       },
       {
         "id": "luz",
-        "sabor": "a lâmina brilha e fere o que teme a luz"
+        "sabor": "a lâmina brilha e fere a todos, e quem teme a luz leva o dano inteiro"
       }
     ],
     "parametros": [
@@ -249,7 +249,7 @@
       },
       {
         "id": "luz",
-        "sabor": "brilho que fere o que teme a luz"
+        "sabor": "brilho que fere a todos, e quem teme a luz leva o dano inteiro"
       },
       {
         "id": "sombra",
@@ -1354,7 +1354,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar.",
+    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar, enquanto durar. Fere a todos; quem teme a luz leva o dano inteiro, e os outros, a metade.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5813,7 +5813,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, mas fere pouco.",
+    "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, e o dano de Luz vale a metade.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
