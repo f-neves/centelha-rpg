@@ -88,7 +88,12 @@ const args = process.argv.slice(2);
 const opt = (nome, padrao) => { const i = args.indexOf(nome); if (i < 0) return padrao; const v = args[i + 1]; args.splice(i, 2); return v; };
 const BASE = opt('--base', 'd760ef96');
 const CONTRADICOES = opt('--contradicoes', path.join(MISSAO, 'contradicoes.md'));
-const ESTADO = opt('--estado', path.join(MISSAO, 'estado.md'));
+const ESTADO_FLAG = opt('--estado', null);
+const ESTADO = ESTADO_FLAG || path.join(MISSAO, 'estado.md');
+// Sem a flag, "Termos acrescentados" e "Movimentos de seção" são lidos no estado.md E no estado-historico.md (a divisão
+// do estado.md moveu essas seções para o histórico); com a flag, só o arquivo dado, como antes. Falta de um não falha.
+const ESTADOS_SECOES = ESTADO_FLAG ? [ESTADO] : [ESTADO, path.join(MISSAO, 'estado-historico.md')];
+const lerEstados = () => ESTADOS_SECOES.filter((f) => fs.existsSync(f)).map((f) => fs.readFileSync(f, 'utf8')).join('\n');
 const GLOSSARIO = opt('--glossario', path.join(MISSAO, 'glossario-protegido.json'));
 let MOSTRAR_CLASSES = false, SAIDA_CLASSES = null;
 { const i = args.indexOf('--classes'); if (i >= 0) { MOSTRAR_CLASSES = true; if (args[i + 1] && args[i + 1].endsWith('.md')) { SAIDA_CLASSES = args[i + 1]; args.splice(i, 2); } else args.splice(i, 1); } }
@@ -188,7 +193,7 @@ function lerMovimentos(md) {
   }
   return out;
 }
-const MOVIMENTOS = fs.existsSync(ESTADO) ? lerMovimentos(fs.readFileSync(ESTADO, 'utf8')) : [];
+const MOVIMENTOS = lerMovimentos(lerEstados());
 // No estado.md, a seção "## Termos acrescentados" (aprovada pelo coordenador das regras, 15/11/2026): o termo protegido
 // novo numa página passa só com a linha dele, uma por termo:
 //   - `arquivo` · "termo" · original: "..." · novo: "..." · definido em: `arquivo` (seção)
@@ -207,7 +212,7 @@ function lerSecaoEstado(md, titulo, re) {
 const TEXTO_ESTADO = fs.existsSync(ESTADO) ? fs.readFileSync(ESTADO, 'utf8') : '';
 // A linha sem "definido em" (Termos acrescentados) ou sem motivo (Entradas adiadas) não vale, e derruba a rodada
 // (CORRIGE da Revisora no f003b69b): a exceção sem a razão escrita é a porta que a trava existe para fechar.
-const ACRESCENTADOS = lerSecaoEstado(TEXTO_ESTADO, 'Termos acrescentados', /^\s*-\s*`([^`]+)`\s*·\s*"([^"]+)"(.*)$/)
+const ACRESCENTADOS = lerSecaoEstado(lerEstados(), 'Termos acrescentados', /^\s*-\s*`([^`]+)`\s*·\s*"([^"]+)"(.*)$/)
   .filter((m) => /definido em:\s*\S/.test(m[3]) || !ERROS_ENTRADA.push(`estado.md, Termos acrescentados: a linha do termo "${m[2]}" em \`${m[1]}\` não diz onde ele é definido ("definido em:"); ela não vale`))
   .map((m) => ({ arquivo: resolveArquivo(m[1].replace(/\\/g, '/')), termo: m[2].toLowerCase() }));
 const ADIADAS = lerSecaoEstado(TEXTO_ESTADO, 'Entradas adiadas', /^\s*-\s*`([^`]+)`\s*·\s*(RT-\d+)\s*(?:·\s*(.*?))?\s*$/)
