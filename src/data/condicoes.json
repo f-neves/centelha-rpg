@@ -172,7 +172,7 @@
     {
       "id": "paralisado", "nome": "Paralisado", "icone": "⏹", "grupo": "corpo", "cor": "perigo",
       "defesa": -4, "zeraDefesa": true,
-      "nota": "O corpo travou, a mente segue livre: não se move nem faz ação física; Defesas Físicas 0 (o Grid e a aba Combate ainda aplicam −4, até lerem a marca). Percebe, gasta Vontade e faz ações só mentais. Dura o que o poder ou o veneno disser; nova aplicação renova, sem somar."
+      "nota": "O corpo travou, a mente segue livre: não se move nem faz ação física; Defesas Físicas 0 (o Grid e a aba Combate ainda aplicam −4, até lerem a marca). Percebe, gasta Força de Vontade e faz ações só mentais. Dura o que o poder ou o veneno disser; nova aplicação renova, sem somar."
     },
     {
       "id": "atordoado", "nome": "Atordoado", "icone": "✶", "grupo": "corpo", "cor": "perigo",
