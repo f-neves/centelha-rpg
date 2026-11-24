@@ -38,7 +38,7 @@ Do bloco *O que a fúria dá e o que ela tira* valem também o +1 na soma dos c�
 
 ## O corpo
 
-**Paralisado.** O corpo travou, mas a mente segue livre. Você não se move nem faz ação física, e as suas Defesas Físicas ficam em 0. Ainda percebe o que acontece, gasta Vontade e faz ações só mentais.
+**Paralisado.** O corpo travou, mas a mente segue livre. Você não se move nem faz ação física, e as suas Defesas Físicas ficam em 0. Ainda percebe o que acontece, gasta Força de Vontade e faz ações só mentais.
 
 Não fala, porque a fala é do corpo, e só usa uma Arte que não peça gesto nem fala; o Mestre julga, Arte por Arte, se ela pede. A Defesa de agarrão também vai a 0. Não há amarra de que escapar: o estado dura o que o poder ou o veneno disser, e uma nova aplicação renova essa duração, sem somar. Destreza 0 também deixa Paralisado, e esse dura até o ponto voltar.
 
