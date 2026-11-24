@@ -2193,9 +2193,9 @@
       "custo": "nível do Efeito + a soma dos parâmetros usados; a Centelha desconta do total, como em qualquer conjuração",
       "acimaDaArte": "Alguns Efeitos Especiais têm parâmetros acima do nível da Arte, normalmente por serem mais específicos (a Neblina começa um nível acima em Área, trocando m² por m³).",
       "exemplos": [
-        "Neblina (Efeito 1) + Alcance 2 (2 m) + Volume 3 (0,5×0,5×0,5) + Duração 2 (12 Ticks): 1 + 2 + 3 + 2 = 8 pontos, menos a Centelha.",
-        "Neblina (Efeito 1) + Alcance 1 (1 m) + Volume 2 (0,25×0,25×0,25) + Duração 1 (6 Ticks): 1 + 1 + 2 + 1 = 5 pontos, menos a Centelha.",
-        "Terremoto (Efeito 2) + Área 3 (2 m de diâmetro): 2 + 3 = 5 pontos, menos a Centelha."
+        "Neblina (Efeito 1) + Alcance 2 (2 m) + Volume 3 (2×2×2 m) + Duração 2 (12 Ticks): 1 + 2 + 3 + 2 = 8 pontos, menos a Centelha.",
+        "Neblina (Efeito 1) + Alcance 1 (1 m) + Volume 2 (1,5×1,5×1,5 m) + Duração 1 (6 Ticks): 1 + 1 + 2 + 1 = 5 pontos, menos a Centelha.",
+        "Terremoto (Efeito 2) + Área 3 (2×2 m): 2 + 3 = 5 pontos, menos a Centelha."
       ],
       "fronteira": "Efeito de FRONTEIRA é o que mora em duas Artes vizinhas e empresta os verbos de uma para a outra. É o mesmo mecanismo de \"o Efeito que você já sabe e que cabe em outra Arte sua não custa XP\", visto pelo outro lado: ele é a vantagem concreta que uma Escola entrega. A escola da Areia é a de Terra que faz fronteira com o Vento, e por isso alcança Efeitos que a Terra pura não alcançaria. Raio e Vento se tocam pela tempestade e pela velocidade; Gelo e Água pela mesma matéria em dois estados."
     },
