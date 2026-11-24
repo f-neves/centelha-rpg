@@ -85,7 +85,7 @@ Nas **criaturas de Inteligência 1** (regra de criatura: feras, bichos de instin
 
 - **Defesa Mental** = Raciocínio + Integridade + Força de Vontade + 2 × menor(Centelha, Integridade) + Especialidade (a Força de Vontade é a máxima: gastar pontos para resistir não baixa a Defesa Mental)
 
-A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais a Centelha, aqui limitada pela **Integridade** (é ela que segura a mente firme, não o Raciocínio nem a Vontade).
+A Mental é uma **soma simples** (sem o ×2 das outras): a mente se defende com os três pilares (a rapidez do **Raciocínio**, a firmeza da **Integridade** e a reserva da **Força de Vontade**), mais a Centelha, aqui limitada pela **Integridade** (é ela que segura a mente firme, não o Raciocínio nem a Força de Vontade).
 
 <div class="callout exemplo"><span class="lbl">Exemplo</span>Kael tem Destreza 4, Esquiva 3, Compostura 2, Raciocínio 3, Força de Vontade 7 e Centelha 3, e nenhum ponto em Sociabilidade nem em Integridade. Sua <strong>Esquiva</strong> é (4+3)×2 + 2×menor(3,3) = <strong>20</strong>; sua <strong>Defesa Social</strong> é (2+0)×2 + 2×menor(3,0) = <strong>4</strong> (a Centelha não passa do que a Sociabilidade sustenta, que aqui é zero); sua <strong>Defesa Mental</strong> é 3+0+7 + 2×menor(3,0) = <strong>10</strong>, pelo mesmo motivo na Integridade. Cada ataque compara o próprio total com a muralha certa.</div>
 
@@ -104,13 +104,13 @@ Regra do "quando": o foco é **estreito e declarado** (uma situação, nunca "to
 
 Além do número passivo, a **Força de Vontade** tem dois usos contra influência e ataque, e nenhum deles é uma blindagem que dura. **Antes do teste:** 1 ponto soma **+4** à Defesa (Social ou Mental) contra aquele ataque, no máximo 1 ponto por ação ou jogada (Cap. III).
 
-**Depois que o ataque passou:** vale o Resistir, um pagamento de **1 + Margem** de Vontade (teto 4) que fica fora desse limite de 1 ponto (ver Resistir, em Relações Sociais).
+**Depois que o ataque passou:** vale o Resistir, um pagamento de **1 + Margem** de Força de Vontade (teto 4) que fica fora desse limite de 1 ponto (ver Resistir, em Relações Sociais).
 
 | Contra o quê | Dá para gastar Vontade? |
 |---|---|
-| **Influência social** (te convencer, seduzir, coagir) | **Sim**: **+4 antes do teste.** Depois que o ataque passou, você recusa friamente, mesmo que o teste tenha passado, pagando **1 + Margem** de Vontade (teto 4; é um pagamento, fora do limite de 1 ponto por ação; ver Resistir, em Relações Sociais). |
+| **Influência social** (te convencer, seduzir, coagir) | **Sim**: **+4 antes do teste.** Depois que o ataque passou, você recusa friamente, mesmo que o teste tenha passado, pagando **1 + Margem** de Força de Vontade (teto 4; é um pagamento, fora do limite de 1 ponto por ação; ver Resistir, em Relações Sociais). |
 | **Leitura social** (te ler, farejar sua mentira) | **+4 antes do teste, sim. Depois, não**: não dá para "se recusar" a ser lido; só o número da Defesa Social protege. |
-| **Ataques e influências mentais** | **Sim**: **+4 antes do teste.** Depois que o ataque passou, pagar **1 + Margem** de Vontade (teto 4) recusa o efeito. Com Margem 1 ou mais, você pode pagar só 1: o efeito pega, mas dura **um grau a menos na régua de Duração do próprio efeito** (a da Arte, Breve ou Longa, ou a da Proeza, em Centelha, Os seis níveis das Proezas); se ele já está no menor grau dessa régua, pagar 1 o anula. Resistir é um pagamento, fora do limite de 1 ponto por ação. Não existe blindagem por cena ou por dia: cada ataque pede o seu pagamento. |
+| **Ataques e influências mentais** | **Sim**: **+4 antes do teste.** Depois que o ataque passou, pagar **1 + Margem** de Força de Vontade (teto 4) recusa o efeito. Com Margem 1 ou mais, você pode pagar só 1: o efeito pega, mas dura **um grau a menos na régua de Duração do próprio efeito** (a da Arte, Breve ou Longa, ou a da Proeza, em Centelha, Os seis níveis das Proezas); se ele já está no menor grau dessa régua, pagar 1 o anula. Resistir é um pagamento, fora do limite de 1 ponto por ação. Não existe blindagem por cena ou por dia: cada ataque pede o seu pagamento. |
 
 ## Quem tem cada muralha
 
