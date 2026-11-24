@@ -360,7 +360,9 @@ if (MOSTRAR_CLASSES) {
 }
 // O endereço de um link (o "virtudes" de /regras/aparencia-virtudes-vontade) não é texto: as letras dele viram espaço,
 // do mesmo tamanho, antes de contar termo (a posição dos números fica a mesma)
-const semEnderecos = (t) => t.replace(/(\]\()([^)]*)(\))/g, (m, a, u, b) => a + ' '.repeat(u.length) + b)
+// RT-032 (T11, 24/11/2026): "Força de Vontade" é o nome do livro e "Vontade" a forma curta, o MESMO termo. Para a trava, os dois
+// valem "Vontade" (nos dois lados da comparação), senão cada troca de nome mudaria o par termo-número e o termo "Força".
+const semEnderecos = (t) => t.replace(/Força de Vontade/gi, 'Vontade').replace(/(\]\()([^)]*)(\))/g, (m, a, u, b) => a + ' '.repeat(u.length) + b)
   .replace(/((?:href|src)=")([^"]*)(")/g, (m, a, u, b) => a + ' '.repeat(u.length) + b);
 const termos = (t) => { t = semEnderecos(t); const m = new Map(); for (const x of TERMOS) { const n = (t.match(x.re) || []).length; if (n) m.set(x.termo, n); } return m; };
 const minusculasAmbiguas = (t) => { t = semEnderecos(t); const m = new Map(); for (const x of TERMOS) if (x.reMinuscula) { const n = (t.match(x.reMinuscula) || []).length; if (n) m.set(x.termo.toLowerCase(), n); } return m; };
@@ -370,7 +372,8 @@ const RE_FIM_FRASE = /[.!?;](?=\s)|\n[ \t]*\n|\n(?=[ \t]*(?:[-*+]\s|\d+\.\s|\||#
 function pares(t) {
   // os termos com posição; o contido num mais longo sai
   const brutos = [];
-  const tSemEnd = semEnderecos(t);
+  t = semEnderecos(t); // (a troca Força de Vontade → Vontade muda o tamanho: termos e números medem sobre o mesmo texto)
+  const tSemEnd = t;
   for (const x of TERMOS) for (const m of tSemEnd.matchAll(x.re)) brutos.push({ i: m.index, f: m.index + m[0].length, termo: x.termo });
   brutos.sort((a, b) => a.i - b.i || b.f - a.f);
   const ts = [];
