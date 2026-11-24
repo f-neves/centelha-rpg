@@ -1586,7 +1586,7 @@
           "mana": 5
         },
         "exemplos": [
-          "parar a cena por alguns segundos"
+          "voltar um instante que já passou"
         ]
       },
       {
@@ -1597,7 +1597,7 @@
           "mana": 6
         },
         "exemplos": [
-          "voltar um instante que já passou"
+          "parar a cena por alguns segundos"
         ]
       }
     ],
