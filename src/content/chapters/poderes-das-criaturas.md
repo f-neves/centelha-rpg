@@ -9,7 +9,7 @@ resumo: "As cinco categorias de poder que uma criatura tem além das Artes e das
 
 **Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. Esta página é toda de regra de **criatura**: o personagem não tem estes poderes.
 
-A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder.
+A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. O limite de compra, só até o nível que você tem na Arte, é regra de personagem: o poder inato de uma criatura pode imitar um Efeito de nível acima do que a criatura tem na Arte.
 
 Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias abaixo. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
 
