@@ -21,7 +21,7 @@ export const NAV = [
       { slug: 'regras/habilidades-secundarias', titulo: 'Secundárias' },
     ],
   },
-  { slug: 'regras/aparencia-virtudes-vontade', titulo: 'Aparência, Virtudes & Vontade', numeral: 'III' },
+  { slug: 'regras/aparencia-virtudes-vontade', titulo: 'Aparência, Virtudes & Força de Vontade', numeral: 'III' },
   { slug: 'regras/vida-ferimentos-cura', titulo: 'Vida, Ferimentos & Cura', numeral: 'IV' },
   { slug: 'regras/centelha', titulo: 'Centelha', numeral: 'V' },
   { slug: 'regras/racas', titulo: 'Raças', numeral: 'VI' },
