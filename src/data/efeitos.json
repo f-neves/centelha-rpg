@@ -1752,11 +1752,10 @@
       },
       {
         "nome": "Cura",
-        "tipo": "fixo",
-        "valor": "transfere 3 de dano por nível"
+        "tipo": "padrao"
       }
     ],
-    "efeito": "O ferimento sai do alvo e entra em você, do jeito que estava. Não é cura: é mudança de dono. Você não pode transferir para um terceiro, e o que chegou em você cura pelas vias normais.",
+    "efeito": "O ferimento sai do alvo e entra em você, do jeito que estava. Passa de dono o tanto de dano que a régua da Cura dá ao grau comprado. Não é cura: é mudança de dono. Você não pode transferir para um terceiro, e o que chegou em você cura pelas vias normais.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1844,8 +1843,7 @@
       },
       {
         "nome": "Cura",
-        "tipo": "fixo",
-        "valor": "1 PV por ponto"
+        "tipo": "padrao"
       },
       {
         "nome": "Duração",
@@ -1853,7 +1851,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa a cura presa no alvo, dormindo, sem gastar a sua ação depois e sem exigir que você esteja perto. Ela tem dois disparos: o alvo pode soltá-la quando quiser, e ela sai sozinha se ele chegar a 0 PV ou menos, e, se o levar a 1 PV ou mais, ele acorda na hora. Um alvo carrega uma cura guardada por vez.",
+    "efeito": "Deixa presa no alvo, dormindo, a cura que o parâmetro Cura comprou (a régua da Cura, 2 de Mana por grau), sem gastar a sua ação depois e sem exigir que você esteja perto. Ela tem dois disparos: o alvo pode soltá-la quando quiser, e ela sai sozinha se ele chegar a 0 PV ou menos, e, se o levar a 1 PV ou mais, ele acorda na hora. Um alvo carrega uma cura guardada por vez.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -2544,7 +2542,7 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "em você"
+        "valor": "em você e em quem estiver ao seu lado"
       },
       {
         "nome": "Alvos",
@@ -3471,14 +3469,14 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "em você"
+        "valor": "em você e em quem estiver ao seu lado"
       },
       {
         "nome": "Alvos",
         "tipo": "padrao"
       }
     ],
-    "efeito": "Uma ação a mais, agora, para você ou para quem estiver ao alcance. Repetir na mesma cena cobra o dobro de Mana a cada vez, e o corpo cobra depois: quem abusa termina a cena exausto.",
+    "efeito": "Uma ação a mais, agora, para você ou para quem estiver ao seu lado. Repetir na mesma cena cobra o dobro de Mana a cada vez, contado sobre o total, antes do desconto da Centelha, e o corpo cobra depois: quem abusa termina a cena exausto.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -4984,9 +4982,15 @@
         "nome": "Alcance",
         "tipo": "fixo",
         "valor": "em você"
+      },
+      {
+        "nome": "Distância no tempo",
+        "tipo": "padrao",
+        "regua": "longa",
+        "nota": "até onde, no passado ou no futuro, a pergunta alcança"
       }
     ],
-    "efeito": "Uma pergunta sobre o passado ou o futuro, respondida com o que existe de mais próximo da verdade. O futuro vem como tendência, não como certeza, e a resposta é curta, literal e às vezes cruel.",
+    "efeito": "Uma pergunta sobre o passado ou o futuro, respondida com o que existe de mais próximo da verdade. A pergunta alcança até a Distância no tempo comprada, para trás ou para a frente, pela régua da Duração longa (de 10 minutos no grau 1 a 1 mês no grau 6). O futuro vem como tendência, não como certeza, e a resposta é curta, literal e às vezes cruel.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -5205,12 +5209,28 @@
         "valor": "em você"
       },
       {
+        "nome": "Área",
+        "tipo": "substitui",
+        "substitui": "area",
+        "unidade": "m de diâmetro",
+        "escala": [
+          "0,5 m",
+          "1 m",
+          "2 m",
+          "3,5 m",
+          "5 m",
+          "6,5 m",
+          "8 m"
+        ],
+        "nota": "molde Explosão, nascida onde você está ao conjurar e parada ali"
+      },
+      {
         "nome": "Duração",
-        "tipo": "fixo",
-        "valor": "alguns Ticks"
+        "tipo": "padrao",
+        "regua": "breve"
       }
     ],
-    "efeito": "O tempo para para todo mundo menos você, por alguns Ticks. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro.",
+    "efeito": "O tempo para para todo mundo dentro da área, menos você, enquanto durar: a Duração vai até o grau 3 (24 Ticks). A área nasce onde você está ao conjurar e fica parada ali. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro.",
     "grid": {
       "forma": "alvo",
       "ancora": "conjurador",
@@ -5895,16 +5915,14 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1"
+        "tipo": "padrao"
       },
       {
         "nome": "Cura",
-        "tipo": "fixo",
-        "valor": "1d6 por nível, até o PV máximo do alvo"
+        "tipo": "padrao"
       }
     ],
-    "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa (quem está em 0 PV ou menos e ainda não cruzou o limite de morte está vivo).",
+    "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa (quem está em 0 PV ou menos e ainda não cruzou o limite de morte está vivo). Cura PV pela régua da Cura, até o PV máximo do alvo.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -6509,8 +6527,11 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 objeto"
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Volume",
+        "tipo": "padrao"
       },
       {
         "nome": "Jogada",
@@ -6524,7 +6545,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Traz para a sua mão um objeto que é seu, ou que você já teve nas mãos e conhece bem, esteja onde estiver. Se alguém o estiver segurando, é disputa. Não funciona com criatura viva.",
+    "efeito": "Traz para a sua mão objetos que são seus, ou que você já teve nas mãos e conhece bem, esteja onde estiver: tantos quantos os Alvos comprados, cada um até o Volume comprado. Se alguém estiver segurando um deles, é disputa. Não funciona com criatura viva.",
     "grid": {
       "forma": "movimento",
       "ancora": "objeto",
