@@ -70731,8 +70731,7 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "adivinhacao",
-      "nivel": 5,
-      "efeito": "oraculo"
+      "nivel": 5
      },
      "categoria": "magia",
      "ativacao": "uma ação, Velocidade 7, recordando. O efeito sai no Tick do Golpe",
@@ -71066,8 +71065,7 @@
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
-     "nivel": 5,
-     "efeito": "oraculo"
+     "nivel": 5
     },
     "texto": "lembra algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém; o Mestre diz o quanto ela revela",
     "campos": [
