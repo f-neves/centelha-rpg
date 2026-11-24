@@ -19,7 +19,7 @@ Se é a sua primeira vez, siga esta ordem: os detalhes de cada passo estão nas 
 4. **Atributos.** Suba do piso 1. Na criação não há teto próprio: vale o máximo normal da ficha, **6**, e depois o ajuste da raça (o Atributo com `+1` racial vai até **7**, e o com `−1` não passa de **5**).
 5. **Habilidades e Especialidades.** Vale o máximo normal da ficha, **6**. Secundárias são mais baratas e cobrem nichos; cada Especialidade afia um escopo estreito de uma Habilidade.
 6. **Virtudes.** As quatro, de 1 a 6.
-7. **Força de Vontade e Aparência.** Suba a Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
+7. **Força de Vontade e Aparência.** Suba a Força de Vontade do piso 0 (um herói costuma levá-la a 5+); escolha a Aparência (0–12, normal no nível 6).
 8. **Centelha.** Ela **não custa XP**: o tier (o degrau da Centelha) é definido com o Mestre e define o que você alcança. O Mestre e o grupo combinam pela campanha: **Centelha 0** numa campanha mortal; de **1 a 3** numa campanha heroica (3 é o Herói, para quem quer um herói de saga).
 9. **Proezas, Técnicas e Artes.** Gaste o restante em poder: as Técnicas que a Centelha destrava e, se for feiticeiro, os níveis de Arte (até Centelha + 2) e os Efeitos Especiais.
 10. **Derivados.** PV, Defesas, Energia/Mana (as reservas das Técnicas e das Artes) e Iniciativa saem de fórmulas: confira na tabela mais abaixo, ou deixe a Ficha calcular.
@@ -34,7 +34,7 @@ A **Centelha 0** é o mortal comum, cerca de 95% das pessoas, sem acesso a Técn
 
 Alcançar **Centelha 1** é o que torna alguém especial, e isso se conquista na história, não na planilha. Por isso a Centelha inicial também não se compra: na criação, o Mestre e o grupo a combinam pela campanha (0 numa campanha mortal; de 1 a 3 numa heroica, com referência 1), e dali em diante ela sobe em jogo. Orçamento inicial padrão: **1500 XP** (iniciante), **2000** (veterano) ou **2600** (especialista).
 
-> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**. A escada dos níveis altos é suave, e o topo da régua é alcançável em jogo. **Vontade e Aparência têm piso 0** (você compra o nível 1) e a **Centelha não custa XP**. Duas trilhas não acumulam, a Técnica de Proeza e o Efeito Especial: paga-se só o preço do nível da Técnica ou do Efeito comprado.
+> **Modelo de custo (fechado).** O preço de um nível é **base + (multiplicador × nível)**. A escada dos níveis altos é suave, e o topo da régua é alcançável em jogo. **Força de Vontade e Aparência têm piso 0** (você compra o nível 1) e a **Centelha não custa XP**. Duas trilhas não acumulam, a Técnica de Proeza e o Efeito Especial: paga-se só o preço do nível da Técnica ou do Efeito comprado.
 >
 > **Pendente.** Os orçamentos de 1500 / 2000 / 2600 foram calibrados na economia antiga, quando as Proezas comiam cerca de 40% do bolo. Com a curva nova elas se acumulam ao longo da campanha em vez de saírem da criação, e um personagem inicial típico fecha perto de **1050 XP**. Os três exemplos abaixo estão **recusteados pela função de custo real**, mas os orçamentos ainda serão reajustados.
 
@@ -156,7 +156,7 @@ Olhos sobre-humanos e passos que não fazem som; bate o terreno à frente do gru
 
 ## O mortal-tocado: magia como estudo, não como tier
 
-Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte **não é preciso Centelha**: o mortal conjura com a Mana, uma reserva separada da Vontade e do mesmo valor dela, e a Centelha engorda essa reserva e segura o nível de cada Arte (o teto é Centelha + 2: Centelha 0 chega ao nível 2, Centelha 1 ao 3).
+Os três acima sobem a Centelha junto com a magia, como manda a intuição. Mas a regra de Arcano **separa as duas coisas**: para aprender e conjurar uma Arte **não é preciso Centelha**: o mortal conjura com a Mana, uma reserva separada da Força de Vontade e do mesmo valor dela, e a Centelha engorda essa reserva e segura o nível de cada Arte (o teto é Centelha + 2: Centelha 0 chega ao nível 2, Centelha 1 ao 3).
 
 Isso abre um arquétipo que os exemplos anteriores escondem: o feiticeiro **mortal-tocado**, que se destaca pela **amplitude** (muitas Artes, rituais, preparo para cada ocasião), e não pela profundidade.
 
