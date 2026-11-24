@@ -105,7 +105,7 @@
       "duracao": "instantânea",
       "alcance": "18 m",
       "area": "um alvo",
-      "efeito": "atinge com luz concentrada",
+      "efeito": "atinge com luz concentrada; fere a todos: quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
       "dano": "2d6 + Centelha, fenômeno",
       "resistencia": "esquiva, contra a jogada do raio; quem passa evita o feixe",
       "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"

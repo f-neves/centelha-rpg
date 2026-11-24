@@ -143,7 +143,7 @@
       "duracao": "instantânea; a cegueira dura 12 Ticks",
       "alcance": "9 m",
       "area": "um alvo",
-      "efeito": "o raio fere se acertar e ofusca os olhos do atingido",
+      "efeito": "o raio fere se acertar e ofusca os olhos do atingido; quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
       "dano": "2d6 + Centelha, fenômeno",
       "resistencia": "corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto",
       "limiteDeUso": "Usos grátis: 1 por cena. O uso extra não custa Mana"

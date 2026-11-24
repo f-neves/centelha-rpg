@@ -146,7 +146,7 @@
       "duracao": "instantânea",
       "alcance": "um alvo ou uma cena à vista",
       "area": "não se aplica",
-      "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
+      "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta; a pergunta alcança até 10 minutos, para trás ou para a frente (Distância no tempo 1 do Oráculo)",
       "dano": "nenhum",
       "resistencia": "nenhum",
       "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"

@@ -5825,7 +5825,7 @@
      "duracao": "instantânea",
      "alcance": "18 m",
      "area": "um alvo",
-     "efeito": "atinge com luz concentrada",
+     "efeito": "atinge com luz concentrada; fere a todos: quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
      "dano": "2d6 + Centelha, fenômeno",
      "resistencia": "esquiva, contra a jogada do raio; quem passa evita o feixe",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
@@ -6156,14 +6156,14 @@
   "habilidadesEspeciais": [
    {
     "nome": "Raio de luz",
-    "descricao": "atinge com luz concentrada. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: 18 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: esquiva, contra a jogada do raio; quem passa evita o feixe. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "descricao": "atinge com luz concentrada; fere a todos: quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: 18 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: esquiva, contra a jogada do raio; quem passa evita o feixe. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "luz",
      "nivel": 3,
      "efeito": "projetil-conjurado"
     },
-    "texto": "atinge com luz concentrada",
+    "texto": "atinge com luz concentrada; fere a todos: quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -47915,7 +47915,7 @@
      "duracao": "instantânea",
      "alcance": "um alvo ou uma cena à vista",
      "area": "não se aplica",
-     "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
+     "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta; a pergunta alcança até 10 minutos, para trás ou para a frente (Distância no tempo 1 do Oráculo)",
      "dano": "nenhum",
      "resistencia": "nenhum",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
@@ -48263,14 +48263,14 @@
    },
    {
     "nome": "Adivinhação",
-    "descricao": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: um alvo ou uma cena à vista. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "descricao": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta; a pergunta alcança até 10 minutos, para trás ou para a frente (Distância no tempo 1 do Oráculo). Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: um alvo ou uma cena à vista. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
      "nivel": 1,
      "efeito": "oraculo"
     },
-    "texto": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
+    "texto": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta; a pergunta alcança até 10 minutos, para trás ou para a frente (Distância no tempo 1 do Oráculo)",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -81696,7 +81696,7 @@
      "duracao": "instantânea; a cegueira dura 12 Ticks",
      "alcance": "9 m",
      "area": "um alvo",
-     "efeito": "o raio fere se acertar e ofusca os olhos do atingido",
+     "efeito": "o raio fere se acertar e ofusca os olhos do atingido; quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
      "dano": "2d6 + Centelha, fenômeno",
      "resistencia": "corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto",
      "limiteDeUso": "Usos grátis: 1 por cena. O uso extra não custa Mana"
@@ -82606,14 +82606,14 @@
       },
       {
        "nome": "Raio de luz",
-       "descricao": "o raio fere se acertar e ofusca os olhos do atingido. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea; a cegueira dura 12 Ticks. Alcance: 9 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. Limite de uso: Usos grátis: 1 por cena. O uso extra não custa Mana",
+       "descricao": "o raio fere se acertar e ofusca os olhos do atingido; quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea; a cegueira dura 12 Ticks. Alcance: 9 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. Limite de uso: Usos grátis: 1 por cena. O uso extra não custa Mana",
        "classe": "regra da ficha",
        "base": {
         "arte": "luz",
         "nivel": 3,
         "efeito": "projetil-conjurado"
        },
-       "texto": "o raio fere se acertar e ofusca os olhos do atingido",
+       "texto": "o raio fere se acertar e ofusca os olhos do atingido; quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
        "campos": [
         {
          "rotulo": "Ativação",
@@ -148176,7 +148176,7 @@
      "duracao": "até a próxima jogada dele, ou o fim da cena",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "vislumbra o futuro próximo",
+     "efeito": "vislumbra o futuro próximo, até 10 minutos à frente (Distância no tempo 1 do Oráculo)",
      "dano": "nenhum; soma +1d6 na próxima jogada",
      "resistencia": "nenhum",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
@@ -148545,14 +148545,14 @@
    },
    {
     "nome": "Adivinhação",
-    "descricao": "vislumbra o futuro próximo. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: até a próxima jogada dele, ou o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum; soma +1d6 na próxima jogada. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "descricao": "vislumbra o futuro próximo, até 10 minutos à frente (Distância no tempo 1 do Oráculo). Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: até a próxima jogada dele, ou o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum; soma +1d6 na próxima jogada. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
      "nivel": 1,
      "efeito": "oraculo"
     },
-    "texto": "vislumbra o futuro próximo",
+    "texto": "vislumbra o futuro próximo, até 10 minutos à frente (Distância no tempo 1 do Oráculo)",
     "campos": [
      {
       "rotulo": "Ativação",
