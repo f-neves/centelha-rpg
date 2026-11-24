@@ -294,7 +294,7 @@ A Efetiva pode passar da Máxima: com FAA 2 e um pilum de 2 kg a Máxima é de u
 
 ## O que o motor já responde
 
-Três ações desta família não têm jogada nenhuma: o número sai direto da ficha.
+Três ações desta família não têm jogada de rotina: o número sai direto da ficha (o Saltar tem uma ressalva, abaixo).
 
 - **Correr.** A distância por Tick vem do Deslocamento, com Arranque nos três primeiros Ticks e Corrida depois.
 - **Saltar.** Três distâncias calculadas na ficha: vertical, horizontal parado e horizontal com corrida. Em situação difícil ou de perigo, o Mestre pode pedir uma jogada, com o Atributo e a Habilidade que a descrição indicar: saltar um vão sobre lava, com o chão cedendo, por exemplo.
