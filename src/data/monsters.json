@@ -20513,7 +20513,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -20745,9 +20745,9 @@
    },
    {
     "nome": "corpo colossal",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -30331,7 +30331,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -30571,9 +30571,9 @@
    },
    {
     "nome": "corpo firme",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -62633,7 +62633,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -62905,9 +62905,9 @@
    },
    {
     "nome": "corpo enorme",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -97746,7 +97746,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -97991,9 +97991,9 @@
    },
    {
     "nome": "corpo descomunal",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -103671,7 +103671,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -103951,9 +103951,9 @@
    },
    {
     "nome": "sem pernas",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -133853,7 +133853,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -134129,9 +134129,9 @@
    },
    {
     "nome": "sem pernas",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -166532,7 +166532,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -166754,9 +166754,9 @@
    },
    {
     "nome": "escudo de osso",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
     "campos": [
      {
       "rotulo": "Ativação",
