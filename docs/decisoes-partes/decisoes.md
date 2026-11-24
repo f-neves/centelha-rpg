@@ -4631,6 +4631,143 @@ As D-198 a D-202 são as decisões 49 a 53 do autor, na mensagem de 22/10/2026 q
 - Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T4 e T4a), `../tmp/ponte/para-arquiteto/lidas/012-regras.md` e `../tmp/ponte/para-arquiteto/lidas/014-regras.md` e `../tmp/ponte/para-arquiteto/lidas/015-regras.md`; RT-118; RT-113 de `../tmp/revisao-textos/contradicoes.md`; a lista das fichas em `../tmp/revisao-textos/bestiario/lista-bestiarista-t4-regeneracao.md` (trol, vampiro, planetar e solar).
 - Estado: **a implementar**: o texto do livro e o `regras.json` no ramo `revisao-textos` (fase 3), que vão ao ar com o merge da revisão; as fichas pelo lote da Bestiarista (fase 4).
 
+### D-378 · T5: descer a partir da Simpatia na Régua de Relação: o Neutro é uma trilha de três passos e a posição fica guardada [tags: relacoes-sociais, regua, neutro, simpatia, antipatia, e3, e4, a-004, d-027, rt-121, t5, rev-textos]
+- Data: 2026-11-19
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T5. Descer a partir da Simpatia na Régua de Relação (19/11/2026, DECIDIDA; RT-121 da revisão de textos; toca as pendências E3 e E4)":
+    - O Neutro é uma trilha de três passos, e a posição fica guardada. Quem desce um passo a partir de +1 (Simpatia) fica Neutro, mas a um passo de voltar à Simpatia.
+    - Abaixo do centro, cada nível é um passo, como o exemplo do Nêmesis já publicou. O Neutro é desigual de propósito: três passos para subir, um para cair na Antipatia.
+    - Nenhum número muda; entra uma frase no Cap. X (Relações Sociais, perto do "meio largo").
+    - Não fecha a E3 (faixa neutra de 5 ou 3 posições, e para onde a relação decai).
+- Pedido de aplicação (RT-121 de `../tmp/revisao-textos/contradicoes.md`, opção 1 da Leitora-novata): uma frase em `src/content/chapters/relacoes-sociais.md`, depois de "Depois de romper o Neutro, cada nível seguinte é só um passo", dizendo que o Neutro é desigual (três passos para subir do centro à Simpatia, um só para cair na Antipatia) e que a posição fica guardada.
+- Toca:
+  - A-004 (2026-09-20, no ar): "Nível N tira N dos 3 passos que separam do Neutro; com 3 ou mais, rompe de cara em +1 Simpatia." A T5 só complementa: confirma os três passos na subida e diz o que acontece na descida. Nenhum número da A-004 muda.
+  - D-027 (2026-10-03, no ar): os traços do Antecedente descontam na régua pela metade, para baixo; "só o nível 6 chega a 3 passos". Trata só da subida; a T5 complementa e não mexe nele.
+  - A-006 (2026-09-20, sem decisão do autor): lista "os três passos do Neutro (E3)" entre as perguntas que ficaram na mesa do humano. A T5 responde só a descida (a metade E4) e diz expressamente que não fecha a E3 (5 ou 3 posições, e o decaimento). A A-006 continua valendo como "E3 em aberto". Não é caso de "substituída".
+  - Sem entrada própria no registro: a oração "abaixo do Neutro cada nível é um passo" (a rodada 85 a publicou e o `contradicoes.md` diz que "ninguém decidiu explicitamente"); a T5 é a primeira decisão do autor que a confirma.
+  - Nota: a RT-121 cita a leitura simétrica da Veterana (`veterana-1c.md`, "+1 (Simpatia) → 0 (Neutro)"). A T5 escolhe a opção 1 e descarta a opção 3 (Neutro simétrico); nenhum registro tinha adotado a leitura simétrica, então nada fica "substituída".
+- Muda: nada substituído. Complementa A-004, D-027 e A-006 (a E4 sai da mesa; a E3 fica).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T5); RT-121 de `../tmp/revisao-textos/contradicoes.md`; `docs/pendencias/E-social-mental-antecedentes.md` (E3, E4).
+- Estado: aplicada no ramo `revisao-textos` (`5cbca68e`, RT-121, PROCEDE da Revisora); no ar após o merge do ramo.
+
+### D-379 · T6: contra quem vale o dano de Luz: a metade contra quem não tem fraqueza a luz, o inteiro mais a Fraqueza das Artes contra quem tem [tags: artes, luz, dano, fraqueza, fraqueza-das-artes, metade, julgamento, aura, aurora, arma-elemental, d-329, d-341, d-377, rt-123, t6, rev-textos]
+- Data: 2026-11-19
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T6. Contra quem vale o dano de Luz (19/11/2026, DECIDIDA; RT-123 da revisão de textos)":
+    - Contra quem não tem fraqueza a luz, o dano de Luz vale a metade.
+    - Contra quem tem fraqueza a luz, vale o dano inteiro, mais o efeito da fraqueza (Fraqueza das Artes), salvo quando a regeneração manda (T4).
+    - As descrições ("fere o que teme a luz") passam a dizer isso; o "fere pouco" do Julgamento passa a ser essa metade.
+    - Ordem e arredondamento: seguir o que o livro já usa para cortar dano à metade (resistência que depende da arma, R50: metade do dano que passa da Absorção). Se o livro não disser como arredondar, volta como pergunta.
+- Pedido de aplicação (RT-123 de `../tmp/revisao-textos/contradicoes.md`): as descrições "fere o que teme a luz" do sabor da Luz (Arma Elemental, Aura, Aurora e as que o levantamento achar) passam a dizer que a Luz fere todos e que só quem a teme leva o dano inteiro; o "fere pouco" do Julgamento vira essa metade; a linha de dano da ficha não muda; a regra geral entra nas Regras das Artes (`regras.json`), junto da frase "O dano de Fogo, Raio, Luz e Sombra só a Centelha de quem recebe absorve".
+- Toca:
+  - D-329 (R50, 2026-11-05, no ar): "A resistência corta o dano à metade, depois da Absorção". É o molde que a T6 manda seguir para a ordem e o arredondamento. A T6 complementa e não substitui.
+  - D-341 (P6, 2026-11-05, no ar): "a fraqueza das Artes (ignora a Absorção e agrava) continua existindo". A T6 usa essa fraqueza como o "efeito da fraqueza" do dano inteiro. Complementa.
+  - D-377 (T4, 2026-11-17): quando o mesmo tipo é fraqueza da regeneração e Fraqueza das Artes, vale a regeneração. A T6 cita a T4 na ressalva ("salvo quando a regeneração manda"). Complementa.
+  - C-008 (2026-09-26, no ar não conferido): incorpóreos, "Fraquezas a luz e sagrado continuam". A T6 não mexe; só define o que "fraqueza a luz" faz diante do dano de Luz. Complementa.
+  - C-041 (2026-09-28): "Fantasma e Sombra: o dano é fenômeno (armadura não absorve, só a Centelha)". Respondido pelo autor na D-383 (T9, RT-134.1): a metade da Luz vem ANTES da Absorção natural (a Centelha), pela ordem de toda resistência (`regras.json`, `arcano.fraquezas.resistencia`); o "R50: metade do dano que passa da Absorção" da T6 falava da Absorção da armadura.
+  - D-324 (R45, 2026-11-05): golens, "o dano de elemento segue a resistência e a Absorção". Respondido pelo autor na D-383 (T9, RT-134.2): a metade da Luz se soma a uma resistência à Luz (leva um quarto); vale só para a Luz.
+  - D-367 e D-369 (G5, G7): a "luz do sol" é tipo da lista fechada de fraquezas da REGENERAÇÃO (vampiro). A fraqueza `luz` da T6 é a de Elementos (`elementos.fraquezas`). Nota: são dois termos de dois campos, e a T6 fala só do segundo. A D-377 já usa "a luz" como exemplo da múmia, em Elementos.
+- Muda: nada substituído. Complementa D-329, D-341, D-377 e C-008; a ordem da metade, a soma com resistência à Luz e o Projétil Conjurado de Luz são complementados pela D-383. Fecha a RT-123 (sai de PENDENTE AUTOR).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T6); RT-123 de `../tmp/revisao-textos/contradicoes.md`.
+- Estado: aplicada no ramo `revisao-textos` (`87da2bc8`, `2df60bf4`, `85d6304d`, `aadbd187`, `0c072c23`, `f199ce2a`; RT-123, PROCEDE da Revisora); a ordem, a soma e o Projétil da D-383 também (shas na D-383); no ar após o merge do ramo.
+
+### D-380 · T7: Efeitos de custo 0: o defeito é de parâmetro, não de fórmula; o nível do Efeito entra no custo (leitura do coordenador do "manter o custo na soma de Mana"); os seis Efeitos recebem parâmetros e os outros 26 vão para a lista de recalibração (T7a e os seis, por delegação de 23/11) [tags: artes, efeitos, custo, mana, nivel-do-efeito, parametros, parar, oraculo, convocar, refazer-o-corpo, instante, transferir-dor, recalibracao, rt-124, rt-056, t7, t7a, rev-textos]
+- Data: 2026-11-19 (a decisão e o custo); 2026-11-23 (o resto, por delegação)
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T7. Efeitos de custo 0: o defeito é de parâmetro, não de fórmula (19/11/2026, DECIDIDA; o resto por delegação em 23/11/2026; RT-124 e RT-056 da revisão de textos)":
+    - Resposta do autor: "esses Efeitos Especiais estão sem um ou mais Parâmetros corretos. Parar, por exemplo, está com duração 'alguns ticks', isso não é um Parâmetro. Mesma coisa com Oráculo, etc. O certo é entender o Efeito e colocar parâmetros condizentes."
+    - Não entra piso. O que se corrige é o Efeito, com parâmetros que meçam o que ele faz.
+    - Custo (autor, 19/11/2026, 14:49): "Vamos manter o custo do efeito na soma de Mana para conjurar o efeito." (Leitura do coordenador, não palavra do autor:) o nível do Efeito entra na soma, como o motor do Grid já faz (custo = nível do Efeito + soma dos parâmetros, menos a Centelha). Fecha a RT-056 contra a escolha do Arquiteto: saem do livro as frases "o nível do Efeito não entra" (regras.json arcano.efeitos.custo e os três exemplos, efeitos.astro, verbete Mana do glossário).
+    - Diretriz para o Parar (exemplo do autor, julgamento caso a caso, não regra fixa): uma Duração, uma Área e um modificador de desaceleração, que diz o quanto desaceleram as criaturas dentro da área, menos quem conjura.
+    - Correção dos seis da RT-124 (Oráculo, Parar, Convocar, Refazer o Corpo, Instante, Transferir Dor): depois das 18h de 19/11/2026, a pedido do autor.
+    - Lista dos 26 Efeitos com parâmetro do catálogo fixo e não pago: mostrada ao autor em 19/11/2026; o que fazer com eles (T7a) segue em aberto.
+    - Delegação (autor, 23/11/2026, 18:26): "faça tudo de maneira recomendada". O que segue é a recomendada do coordenador; o autor lê no registro, no fim.
+    - T7-1, Parar (opção 1): só para, sem modificador de desaceleração. Área pelo molde Explosão, nascida onde quem conjura está e parada ali; Duração na régua breve até o grau 3 (24 Ticks); quem conjura fica fora do tempo; o texto do toque e "o corpo cobra depois" ficam. O meio-termo continua sendo da Bolha Temporal.
+    - T7a (opção 1): agora, só os seis. Os outros 26 vão para uma lista própria de recalibração dos Efeitos, separando defeito de escolha de desenho, para depois das regras soltas, como a das Proezas.
+    - Oráculo: ganha "Distância no tempo", pela régua da Duração longa (grau 1 = 10 minutos ... grau 6 = 1 mês); o texto diz até onde a pergunta alcança.
+    - Instante: RT-127 opção 1 (Alcance fixo "em você e em quem estiver ao seu lado", como o Manto Alheio; Alvos conta quantos). O dobro da repetição vale sobre o total, antes do desconto da Centelha.
+    - Convocar: Alvos vira escolhível (quantos objetos) e ganha Volume escolhível pela régua da matéria (até que tamanho). "Qualquer distância" fica fixo: é o que o nível 5 paga.
+    - Refazer o Corpo e Transferir Dor: a Cura vira escolhível pela régua da Cura (arcano.cura.graus), a 2 de Mana por grau, como a RT-126 faz com a Cura Guardada. Refazer o Corpo: Alvos escolhível. O que só eles fazem (recompor membro; o dano passar para quem conjura) é o que o nível paga.
+- Pedido de aplicação (RT-124 e RT-056 de `../tmp/revisao-textos/contradicoes.md`): (1) o custo: `src/pages/artes/efeitos.astro` e o verbete Mana de `src/data/glossario.json` passam a "nível do Efeito mais a soma dos níveis dos parâmetros escolhidos, com o desconto da Centelha por cima"; `regras.json` (`arcano.efeitos.custo`, `arcano.nota` e os três exemplos) volta ao nível do Efeito na soma e as contas se refazem; nada no Grid. (2) os seis Efeitos em `efeitos.json` ganham os parâmetros acima. (3) a lista de recalibração dos 26 se abre em arquivo próprio.
+- Toca:
+  - Nenhuma decisão do registro tratava do custo de conjurar: a RT-056 era "SEM DECISÃO ANTERIOR", escolha do Arquiteto em 15/11/2026 ("sem o nível do Efeito"), que a T7 reverte. Essa escolha nunca foi entrada de `decisoes.md` (buscado "nível do Efeito", "custo de conjurar", "soma de Mana", "Mana para conjurar", "custo do efeito"), então nenhuma D-xxx fica "substituída". O que a T7 desfaz são os commits `72cf0dfc` e `afa072d1`, que aplicaram a escolha do Arquiteto.
+  - D-054 (2026-10-04, em vigor): o Grid fica congelado; o livro manda; divergências vão para `docs/pendencias/N-grid-pendencias.md`. O custo da T7 é o que o motor do Grid já calcula (`custoDe`, `base = efeito.nivel`), então a regra de custo não mexe no Grid. Conferido em 24/11/2026: `f199ce2a` registra a N24 (os parâmetros novos dos seis Efeitos) nas pendências do Grid; `gen-grid-artes --check` passa e o bloco `grid` não mudou.
+  - D-373 (T1, 2026-11-15): a Velocidade da Arte do personagem conta o maior grau investido entre os Parâmetros do Efeito. Respondido pelo autor na D-383 (T9, RT-134.4): a Distância no tempo do Oráculo conta para a Velocidade como qualquer parâmetro, sem exceção. Complementa, sem contradição.
+  - D-359 (A35, 2026-11-06): Bolha Temporal e Passo Lento valem pelo próprio texto. A T7-1 diz que "o meio-termo continua sendo da Bolha Temporal". Complementa.
+  - D-061 (2026-10-04, em vigor): a Bola de Fogo e outros Efeitos "ficam para a recalibração das Artes". A T7a abre uma lista própria de recalibração dos Efeitos para os 26; complementa a D-061 (mesma ideia, escopo novo) e segue o mesmo molde da D-358 (a recalibração das Proezas entra depois das regras soltas).
+  - D-358 (F2, 2026-11-06, adiada): a recalibração das Proezas entra depois das regras soltas. A T7a pede o mesmo tempo para os 26 Efeitos ("como a das Proezas"). Complementa.
+  - D-014, D-018 e D-046 (régua de Duração): as réguas citadas pela T7 existem em `regras.json`: `arcano.improviso.graus.duracaoBreve` (grau 3 = 24 Ticks), `duracaoLonga` (grau 1 = 10 minutos, grau 6 = 1 mês) e `arcano.cura.graus` (`custoPorNivel` = 2). Conferido em 23/11/2026; nada a corrigir.
+  - Instante e Convocar: a RT-127 (Alcance do Instante) entra por esta decisão e pela D-381 (T8). O dobro do Instante "antes do desconto da Centelha" é número novo desta entrada.
+- Muda: nada substituído. Reverte a escolha do Arquiteto da RT-056 (que não era entrada do registro). Complementa D-054, D-061, D-358, D-359 e D-373. O custo dos oito Efeitos redesenhados na Centelha mínima e o molde "cada uso extra custa 1 de Mana" das 20 fichas ficam decididos na D-383.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T7 e T7a); RT-124 e RT-056 de `../tmp/revisao-textos/contradicoes.md`; mensagens do autor de 19/11/2026 (14:49 e depois das 18h) e de 23/11/2026 (18:26).
+- Estado: aplicada no ramo `revisao-textos` (`7216d33a`, `9711b3f4`, `2bfa7dd0` para o custo; `f9371e82` para os seis Efeitos, com a RT-126 e a RT-127; `f199ce2a` para as pendências do Grid; RT-056 e RT-124, PROCEDE da Revisora); no ar após o merge do ramo.
+
+### D-381 · T8: a fila de perguntas da revisão pela recomendada: Arma Conjurada da Metamorfose, Cura Guardada, Instante e Aviso, Técnica ativa "contra a Defesa" e Sustentar (por delegação de 23/11) [tags: artes, metamorfose, arma-conjurada, cura-guardada, instante, aviso, tecnica, ativa, defesa, sustentar, acumulada, direta, d-069, d-358, d-342, rt-125, rt-126, rt-127, rt-128, rt-103, t8, rev-textos]
+- Data: 2026-11-23 (por delegação do autor, 18:26: "faça tudo de maneira recomendada")
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T8. Fila de perguntas da revisão, pela recomendada (23/11/2026, DECIDIDA por delegação)":
+    - Autor, 23/11/2026, 18:26: "faça tudo de maneira recomendada". Vale para o resto da fila; o autor lê no registro, no fim.
+    - RT-125 (Arma Conjurada da Metamorfose), opção 1: uma frase só para a Metamorfose, "Na Metamorfose a arma é o seu corpo: não se entrega a outro e some quando a duração acaba".
+    - RT-126 (Cura Guardada), opção 1: a Cura vira parâmetro escolhível pela régua da Cura, a 2 de Mana por grau, e a Cura Guardada só guarda.
+    - RT-127 (Instante e Aviso), opção 1: Alcance fixo "em você e em quem estiver ao seu lado"; com o dobro do Instante antes do desconto (T7).
+    - RT-128 (Técnica ativa "contra a Defesa"), opção (a), a da Veterana D2: Atributo do Caminho + Habilidade-âncora contra a Defesa escrita; a que não diz "contra" é estado ou capacidade, sai ao pagar a Energia, e em disputa vale o nível.
+    - RT-103 (Sustentar), opção (a): vira Direta repetida a cada Tick, Vigor + Resistência contra a Dificuldade da fração de P; falhou, solta.
+- Pedido de aplicação (RT-125, RT-126, RT-127, RT-128 e RT-103 de `../tmp/revisao-textos/contradicoes.md`, cada uma com a "Solução decidida (T8)" e a linha Trava): a frase da Metamorfose no Efeito Arma Conjurada; a Cura como parâmetro (régua `arcano.cura.graus`, 2 de Mana por grau) na Cura Guardada; o Alcance fixo no Instante e no Aviso; uma frase no "Como ler" de `src/pages/caminhos/index.astro` para a Técnica ativa; o Sustentar em `acoes-corpo-e-movimento.md` (Direta a cada Tick) e a frase de `acoes-e-sistema.md` que dava a ele dois números.
+- Toca:
+  - D-069 (2026-10-05, no ar): "o Efeito Arma Conjurada (efeitos.json:519) não muda" e as garras da Metamorfose contam como arma natural enquanto durarem. A RT-125 diz "D-069 fica". A T8 não muda o Efeito: acrescenta uma frase só para a Metamorfose. Complementa. Conferido em 24/11/2026: a D-069 diz que o Efeito "não muda", e não mudou. A frase entrou no `sabor` da Metamorfose dentro do Efeito Arma Conjurada (`979c00a0`); o texto comum do Efeito não mudou.
+  - D-342 (P7, 2026-11-05, no ar): "Força + Atletismo contra a Defesa" para o Encontrão Relâmpago. A T8 (RT-128) generaliza o molde: Atributo do Caminho + Habilidade-âncora contra a Defesa escrita. Complementa; o Encontrão segue com a parada que já escreve.
+  - D-358 (F2, adiada): a opção (c) da RT-128 era "fica para a recalibração (D-358)". O autor escolheu a (a), então a regra geral entra agora e a D-358 segue adiando só os números de cada Técnica. Complementa.
+  - D-374 (T2, 2026-11-15): preço e leitura de Técnicas de nível maior. Nada a ver com a parada; sem choque.
+  - D-380 (T7): a Cura de Refazer o Corpo e de Transferir Dor e o Instante usam as mesmas decisões da RT-126 e da RT-127. A D-380 e esta entrada se remetem uma à outra.
+  - D-009 (+3 por nível da Arte de Cura) e D-062 (+1 por nível da Vida no Tratar): a T8 trata a Cura Guardada, outro Efeito. Sem choque, só vizinhança.
+  - Sustentar (RT-103): nenhuma decisão do registro (buscado "Sustentar", "Acumulada", "Acúmulo"). D-012 (Arte dentro da Longa) e D-021 (Sustentado de Duração 1) tratam de Artes, não da ação Sustentar de Vigor + Resistência. Sem choque.
+  - Conferido em 24/11/2026: `acoes-corpo-e-movimento.md:250` dá os dois números que a Direta pede (Vigor + Resistência contra a Dificuldade da fração de P; metade de P é Difícil).
+- Muda: nada substituído. Complementa D-069, D-342 e D-358; remete à D-380. Fecha as RT-125, RT-126, RT-127, RT-128 e RT-103 (saem de PENDENTE AUTOR).
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T8); RT-125, RT-126, RT-127, RT-128 e RT-103 de `../tmp/revisao-textos/contradicoes.md`; mensagem do autor de 23/11/2026 (18:26).
+- Estado: aplicada no ramo `revisao-textos` (RT-125 em `979c00a0`; RT-126 e RT-127 em `f9371e82`; RT-103 em `731757fc`; RT-128 em `cce1d2bf`; a cláusula "salvo a Técnica que escreve a própria jogada" no "Como ler" em `ac1f65b6` (24/11, prompt 022); PROCEDE da Revisora em cada um); no ar após o merge do ramo.
+
+### D-382 · O corpo do grande wyrm vermelho: corpo de wyrm (sem asas, duas patas dianteiras, voa por magia), e a W1 tira o golpe de asas [tags: bestiario, criatura, dragao, wyrm, grande-wyrm-vermelho, asas, corpo, w1, imagens, rev-textos]
+- Data: 2026-11-24
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "Corpo do grande wyrm vermelho (24/11/2026, DECIDIDA pelo autor na conversa das imagens; prompt 020-imagens)":
+    - Tipos de corpo dracônico no Centelha: dragão, quatro patas e duas asas; wyvern, duas patas traseiras e duas asas (as asas são os membros dianteiros); wyrm, corpo longo de serpente como o dragão chinês, duas patas dianteiras e sem asas; drake, quatro patas e sem asas.
+    - O grande wyrm vermelho (idade mais velha do dragão vermelho) tem corpo de WYRM: sem asas, duas patas dianteiras, e continua voando por magia, serpenteando no ar. Filhote, jovem, adulto e ancião do dragão vermelho seguem com quatro patas e asas.
+    - Em aberto, para o autor: a linha Asas dos Ataques (o "golpe de asas" do multiataque do site) e "garras e asas de 28,5" em No jogo dependem de asas.
+  - (Nota do Arquiteto, fora da citação: o ponto "em aberto" acima foi respondido pela W1, a seguir.)
+  - "W1. O golpe de asas do grande wyrm vermelho (24/11/2026, DECIDIDA; complemento do "Corpo do grande wyrm vermelho")":
+    - Resposta do autor: "Recomendada" (pergunta do relatório do 020-imagens, trazida pelo coordenador).
+    - Sai o golpe de asas: a linha Asas dos Ataques e o "e asas" do No jogo. O multiataque fica garra, garra, mordida e cauda.
+    - A linha da Cauda deixa a "cauda grossa que varre com o peso" e passa a falar do corpo de serpente que fustiga; o número não muda.
+    - Conferir se o desafio da ficha continua na faixa dela sem o golpe. Se cair abaixo, vale a opção 2 em vez desta: golpe de corpo (a serpente fustiga com o corpo), Média, com a mesma jogada do golpe de asas.
+- Aplicação (Arquiteto, 24/11/2026): na ficha do editor (`tmp\arquiteto\bestiario\fichas-v3\grande-wyrm-vermelho.md`, `editor\fichas-dados.json` e `editor\fichas-editor.html`), pelo método do corpo de serpente do linnorm do gelo (diâmetro pela massa, área = comprimento × diâmetro × 0,75, enrolado × 0,36). A ficha não tem campo de desafio, e o dragão vermelho ancião, abaixo dele, também não tem golpe de asas na tabela; o wyrm segue acima dele em Força (16 contra 14), PV (110 contra 95) e sopro (61,5 contra 49,0), então vale a opção 1 da W1 e a opção 2 (golpe de corpo) não entrou. A cópia da Bestiarista recebe o corpo novo e esta decisão no próximo lote dela. A imagem com asas fica para a conversa das imagens.
+- Toca: nenhuma decisão do registro tratava do corpo do wyrm (buscado "wyrm", "wyvern", "asas"; conferir de novo na hora do commit). A fonte dos tipos de corpo dracônico é só esta decisão.
+- Muda: nada substituído. A D-054 (Grid) não é tocada: o corpo e a ficha são do bestiário, não do Grid.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (seções "Corpo do grande wyrm vermelho" e W1); relatório do 020-imagens e prompt 021 do coordenador.
+- Estado: aplicada na ficha do editor do Arquiteto (24/11/2026), fora do ramo `revisao-textos` e fora do site; a cópia da Bestiarista no próximo lote dela.
+
+### D-383 · T9: as seis respostas da RT-134: a metade da Luz antes da Absorção, a soma com resistência à Luz, o Projétil de Luz que fere, a Distância no tempo que conta, o custo dos oito Efeitos mantido, o uso extra calculado [tags: artes, luz, dano, resistencia, absorcao, projetil-conjurado, oraculo, velocidade, custo, mana, uso-extra, bestiario, d-373, d-329, d-324, rt-134, rt-123, rt-124, t9, rev-textos]
+- Data: 2026-11-24
+- Decisão (autor; `DECISOES-AUTOR.md`, copiada como está):
+  - "T9. RT-134, as perguntas que a aplicação de T5 a T8 deixou (24/11/2026, DECIDIDA)":
+    - RT-134.5, custo dos Efeitos redesenhados na Centelha mínima: "Manter como está". Os custos dos oito (Parar, Oráculo, Instante, Convocar, Refazer o Corpo, Cura Guardada, Transferir Dor, Aviso) ficam como estão, por desenho. A recomendada também levava o caso da Centelha 0 (Mana máxima igual à Vontade) à recalibração; o autor respondeu "manter como está", então nada vai à recalibração por esta pergunta.
+    - RT-134.1, ordem da metade da Luz: "Recomendado". A metade da Luz é uma resistência como as outras e segue a ordem do livro (regras.json arcano.fraquezas.resistencia): primeiro a armadura (que não absorve Luz), depois a metade, e só então a Absorção natural, que para a Luz é a Centelha. Com dano 10 e Centelha 2: 10 ÷ 2 = 5, menos 2 = 3. Corrige a referência da T6 ("R50: metade do dano que passa da Absorção"), em que a Absorção era a da armadura. Nenhuma outra resistência muda.
+    - RT-134.2, a metade da Luz e uma resistência à Luz: "Soma" (contra a recomendada, que era não somar). Quem tem resistência à Luz leva um quarto: as duas metades se somam (armadura, depois as duas metades, depois a Centelha; com arredondamento para cima, dá o mesmo que um quarto arredondado para cima). Hoje nenhuma das 324 criaturas tem resistência à Luz, então nenhuma ficha muda.
+    - RT-134.3, Projétil Conjurado de Luz: "Recomendado". O projétil de Luz fere como toda Luz (T6): metade em quem não a teme; dano inteiro mais a Fraqueza em quem teme. Quem quer só marcar compra o projétil com Dano no grau 0 ("nenhum dano"). A Sombra continua "não fere"; a nota do Dano passa a falar só da Sombra, e o sabor da Luz deixa o "atravessa sem ferir".
+    - RT-134.4, Distância no tempo do Oráculo na Velocidade: "Recomendada". Conta como qualquer parâmetro, pela D-373 (o maior grau investido entre os Parâmetros do Efeito); nenhuma exceção.
+    - RT-134.6, o "cada uso extra custa 1 de Mana" das 20 fichas de criatura: "Opção 2" (contra a recomendada, que era manter o molde). O custo do uso extra passa a ser calculado pela regra da T7 (nível do Efeito + parâmetros, menos a Centelha da criatura), em lote próprio da Bestiarista. Aviso dado ao autor antes da escolha: nas criaturas de Centelha alta o uso extra pode sair de graça.
+    - RT-134 fechada: as seis respondidas em 24/11/2026.
+- Pedido de aplicação (prompts 023 a 028 do coordenador, 24/11/2026): o custo dos oito Efeitos não muda (023); a ordem e a soma da Luz entram no `regras.json` e nas Regras das Artes, uma frase só para a Luz, sem regra geral de soma (024 e 025); o Projétil Conjurado de Luz em `efeitos.json` (026); a Distância no tempo do Oráculo conta sem frase nova, salvo se o texto der a entender o contrário (027); o método e a lista do uso extra calculado vão à Bestiarista, em lote próprio (028).
+- Toca:
+  - D-329 (R50, 2026-11-05): "A resistência corta o dano à metade, depois da Absorção". A T9 diz que a "Absorção" ali é a da armadura e que a metade da Luz segue a ordem do livro; a D-329 e a D-379 (T6) ficam complementadas, não substituídas.
+  - D-379 (T6): a ordem e o arredondamento, a metade contra quem não tem fraqueza, o inteiro mais a Fraqueza das Artes contra quem tem (inalterado). Complementa.
+  - D-373 (T1): a Distância no tempo do Oráculo é um Parâmetro como os outros. Complementa a D-380.
+  - D-380 (T7): custo dos oito Efeitos mantido por desenho; nada vai à recalibração por esta pergunta; os 26 Efeitos de parâmetro fixo seguem na lista (T7a).
+  - D-324 (R45): golens; a soma vale só para a Luz, e a ficha do golem não muda.
+  - D-054: o Grid segue congelado; se o Grid precisar de ajuste para a ordem da Luz ou para o Projétil de Luz, vai para `docs/pendencias/N-grid-pendencias.md`.
+- Muda: nada substituído. Complementa D-329, D-373, D-379 e D-380. Fecha a RT-134 e responde as seis perguntas que a D-379 e a D-380 deixavam a conferir.
+- Origem: `../tmp/bestiarista-fichas/estudo-regras/DECISOES-AUTOR.md` (T9); RT-134, RT-123 e RT-128 de `../tmp/revisao-textos/contradicoes.md`.
+- Estado: aplicada no ramo `revisao-textos` nos itens que mexem no livro (ordem e soma da Luz, Projétil, cláusula do "Como ler"); ordem e soma da Luz em `eb931a6f` (regras.json), `78b4ce72` (Regras das Artes) e `612a549d` (N25 do Grid, só texto); Projétil Conjurado de Luz em `7f81388a` (efeitos.json) e `b8c0f052` (N25, só texto); a cláusula do "Como ler" (RT-128) em `ac1f65b6`; a trava lê os dois arquivos de estado em `07012b2b`; Oráculo conferido, nada a mudar; o item 6 é lote da Bestiarista; no ar após o merge do ramo.
+
 ### M-32 · Sem a Força, o Arco Composto rende como um Arco Longo (registro retroativo, achado na revisão 147) [tags: arco-composto, forca, forcaMin, calc, ficha]
 - Data: 2026-09-15
 - Decisão (texto completo em `docs/simulacao/caixa/jogador-novo-decisoes.md`, seção "M-32"): abaixo de Força 4, o Arco Composto soma `Força×1` e parte de `+0`, os números do Arco Longo; a arma não fica proibida, fica "um arco comum caro". O campo é `forcaMin: 4` em `armas.json`, lido por `calc.ts` (`comRequisitoDeForca`), `ficha-engine.ts` e `combate-resumo.ts`.
