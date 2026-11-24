@@ -1275,10 +1275,6 @@
     "posturas": {
       "regra": "Postura sustentada: paga a Energia uma vez e dura a cena. Mantém até Centelha posturas ao mesmo tempo; abandonar é livre.",
       "simultaneasMax": "Centelha"
-    },
-    "vontade": {
-      "nivel5": 1,
-      "nivel6": 2
     }
   },
   "empilhamentoProezas": {
