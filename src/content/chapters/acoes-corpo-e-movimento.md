@@ -247,7 +247,7 @@ Isso não é convenção de mesa: é o que os recordes mostram. O maior levantam
 
 Erguer o peso máximo não se rola, mas três coisas em volta dele se rolam:
 
-**Segurar por mais que um instante.** O peso máximo é para uma vez, um instante, sem sair do lugar. Sustentar é outra coisa: **Acumulada**, Vigor + Resistência, com o intervalo em Ticks e a Dificuldade saindo da fração de P que está nos braços. Metade de P é Difícil; o P inteiro é quase impossível passar de dois Ticks.
+**Segurar por mais que um instante.** O peso máximo é para uma vez, um instante, sem sair do lugar. Sustentar é outra coisa: **Direta, repetida a cada Tick**, Vigor + Resistência contra a Dificuldade que sai da fração de P que está nos braços; falhou, solta. Metade de P é Difícil; o P inteiro é quase impossível passar de dois Ticks.
 
 **Andar com o peso.** Aí vale a tabela de carga, que é outra régua, com **cinco faixas**:
 
