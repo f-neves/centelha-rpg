@@ -93,7 +93,7 @@ Nas fórmulas, a Força de Vontade é sempre a **máxima**, e não a que sobrou:
 
 Os três personagens abaixo mostram o que cada patamar entrega: **Kael** no iniciante, **Sora** no veterano e **Veil** no especialista. Repare onde o XP vai: boa parte do bolo se converte em **largura** (mais Proezas, Técnicas, Habilidades e Especialidades). É essa caixa de ferramentas que carrega a profundidade.
 
-<p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −6 a +6) estão detalhados no capítulo <a href="/centelha-rpg/regras/aparencia-virtudes-vontade">Aparência, Virtudes &amp; Vontade</a>.</p>
+<p class="muted">As quatro Virtudes das fichas abaixo (Bravura, Convicção, Temperança, Compaixão) e o modificador entre parênteses da Aparência (a régua de −6 a +6) estão detalhados no capítulo <a href="/centelha-rpg/regras/aparencia-virtudes-vontade">Aparência, Virtudes &amp; Força de Vontade</a>.</p>
 
 ### Kael, o Batedor · Iniciante (Centelha 3)
 
