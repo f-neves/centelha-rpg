@@ -81699,7 +81699,7 @@
      "efeito": "o raio fere se acertar e ofusca os olhos do atingido",
      "dano": "2d6 + Centelha, fenômeno",
      "resistencia": "corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto",
-     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
+     "limiteDeUso": "Usos grátis: 1 por cena. O uso extra não custa Mana"
     },
     {
      "nome": "Sem membros para bloquear",
@@ -82606,7 +82606,7 @@
       },
       {
        "nome": "Raio de luz",
-       "descricao": "o raio fere se acertar e ofusca os olhos do atingido. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea; a cegueira dura 12 Ticks. Alcance: 9 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana",
+       "descricao": "o raio fere se acertar e ofusca os olhos do atingido. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea; a cegueira dura 12 Ticks. Alcance: 9 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. Limite de uso: Usos grátis: 1 por cena. O uso extra não custa Mana",
        "classe": "regra da ficha",
        "base": {
         "arte": "luz",
@@ -82641,7 +82641,7 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
+         "valor": "Usos grátis: 1 por cena. O uso extra não custa Mana"
         }
        ]
       },
@@ -158962,7 +158962,7 @@
      "efeito": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites",
      "dano": "nenhum",
      "resistencia": "nenhuma",
-     "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
+     "limiteDeUso": "1 uso grátis por cena. O uso extra não custa Mana"
     },
     {
      "nome": "Convocar anjos",
@@ -159441,7 +159441,7 @@
    },
    {
     "nome": "Ressurreição",
-    "descricao": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: toque. Área: um alvo. Dano: nenhum. Resistência: nenhuma. Limite de uso: 1 uso grátis por cena. Cada uso extra custa 1 de Mana",
+    "descricao": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: toque. Área: um alvo. Dano: nenhum. Resistência: nenhuma. Limite de uso: 1 uso grátis por cena. O uso extra não custa Mana",
     "classe": "regra da ficha",
     "base": {
      "arte": "cura",
@@ -159475,7 +159475,7 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
+      "valor": "1 uso grátis por cena. O uso extra não custa Mana"
      }
     ]
    },

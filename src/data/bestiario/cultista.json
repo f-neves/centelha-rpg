@@ -228,7 +228,7 @@
     },
     {
       "campo": "habilidadesEspeciais.Ritual da morte",
-      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana). Uso extra: falta grau de Duração (piso 0 pela T7, RT-134.6)."
     },
     {
       "campo": "virtudes",
