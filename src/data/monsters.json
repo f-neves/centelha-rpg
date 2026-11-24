@@ -718,7 +718,7 @@
      "duracao": "para Abalado, até o fim da cena ou até Recompor",
      "alcance": "18 m",
      "area": "um alvo",
-     "efeito": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
@@ -1013,13 +1013,13 @@
    },
    {
     "nome": "Domínio psíquico",
-    "descricao": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 6, olhando ou tocando o alvo. Duração: para Abalado, até o fim da cena ou até Recompor. Alcance: 18 m. Área: um alvo. Dano: nenhum. Resistência: Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
+    "descricao": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 6, olhando ou tocando o alvo. Duração: para Abalado, até o fim da cena ou até Recompor. Alcance: 18 m. Área: um alvo. Dano: nenhum. Resistência: Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 4
     },
-    "texto": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -69582,7 +69582,7 @@
      "duracao": "até o alvo escapar ou ela soltar; a ordem, uma ação",
      "alcance": "9 m",
      "area": "um alvo",
-     "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez"
@@ -69942,14 +69942,14 @@
    },
    {
     "nome": "Corda de comando",
-    "descricao": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 5, a corda lançada (Destreza + Arremesso dela). O efeito sai no Tick do Golpe. Duração: até o alvo escapar ou ela soltar; a ordem, uma ação. Alcance: 9 m. Área: um alvo. Dano: nenhum. Resistência: esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez",
+    "descricao": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 5, a corda lançada (Destreza + Arremesso dela). O efeito sai no Tick do Golpe. Duração: até o alvo escapar ou ela soltar; a ordem, uma ação. Alcance: 9 m. Área: um alvo. Dano: nenhum. Resistência: esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 2,
      "efeito": "sugestao-plantada"
     },
-    "texto": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -104542,7 +104542,7 @@
      "duracao": "até o fim da cena",
      "alcance": "90 m",
      "area": "um animal do mar, ou um cardume",
-     "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
@@ -104910,13 +104910,13 @@
    },
    {
     "nome": "Dominar bestas do mar",
-    "descricao": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 7. Duração: até o fim da cena. Alcance: 90 m. Área: um animal do mar, ou um cardume. Dano: nenhum. Resistência: Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
+    "descricao": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 7. Duração: até o fim da cena. Alcance: 90 m. Área: um animal do mar, ou um cardume. Dano: nenhum. Resistência: Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 5
     },
-    "texto": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -132096,7 +132096,7 @@
      "duracao": "até o fim da cena",
      "alcance": "9 m, à vista",
      "area": "um alvo",
-     "efeito": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar",
      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana"
@@ -132403,14 +132403,14 @@
    },
    {
     "nome": "Olhar encantador",
-    "descricao": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 5, contra quem cruza o olhar com ela. Duração: até o fim da cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar. Limite de uso: 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana",
+    "descricao": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 5, contra quem cruza o olhar com ela. Duração: até o fim da cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar. Limite de uso: 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 3,
      "efeito": "sugestao-plantada"
     },
-    "texto": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -171468,7 +171468,7 @@
      "duracao": "uma cena",
      "alcance": "9 m, à vista",
      "area": "um alvo",
-     "efeito": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez"
@@ -171813,14 +171813,14 @@
    },
    {
     "nome": "Olhar dominador",
-    "descricao": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 5, olho no olho a até 9 m. Duração: uma cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez",
+    "descricao": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 5, olho no olho a até 9 m. Duração: uma cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 3,
      "efeito": "sugestao-plantada"
     },
-    "texto": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
