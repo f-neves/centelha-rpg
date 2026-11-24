@@ -297,7 +297,7 @@ A Efetiva pode passar da Máxima: com FAA 2 e um pilum de 2 kg a Máxima é de u
 Três ações desta família não têm jogada nenhuma: o número sai direto da ficha.
 
 - **Correr.** A distância por Tick vem do Deslocamento, com Arranque nos três primeiros Ticks e Corrida depois.
-- **Saltar.** Três distâncias calculadas na ficha: vertical, horizontal parado e horizontal com corrida.
+- **Saltar.** Três distâncias calculadas na ficha: vertical, horizontal parado e horizontal com corrida. Em situação difícil ou de perigo, o Mestre pode pedir uma jogada, com o Atributo e a Habilidade que a descrição indicar: saltar um vão sobre lava, com o chão cedendo, por exemplo.
 - **Carregar peso.** Cinco faixas de carga, cada uma com a sua velocidade: Mínima, Leve, Média, Pesada e Máxima.
 
 **Arremessar** é o caso híbrido, e vale entender a divisão: **até onde o objeto chega** sai de tabela (a de Arremessar: o FAA, acima), sem jogada, e o gráfico na ficha mostra a curva, em escala normal ou logarítmica. **Se acerta o que mirou** é ataque, e vive no capítulo de Combate.
