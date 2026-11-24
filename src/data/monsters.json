@@ -76141,7 +76141,7 @@
     {
      "nome": "mantém distância",
      "formas": "todas",
-     "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de quatro a oito vezes por cena."
+     "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de duas a oito vezes por cena."
     },
     {
      "nome": "frágil no corpo a corpo",
@@ -76343,7 +76343,7 @@
   "comoLuta": [
    {
     "nome": "mantém distância",
-    "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de quatro a oito vezes por cena."
+    "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de duas a oito vezes por cena."
    },
    {
     "nome": "frágil no corpo a corpo",
