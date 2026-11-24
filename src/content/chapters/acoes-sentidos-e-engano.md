@@ -127,7 +127,7 @@ Esta família inteira ainda espera regra, e depende da mecânica de poder divino
 - **Ritual menor.** Bênção da colheita, praga, adivinhação. Longa, Inteligência + Ritualismo.
 - **Exorcizar.** O espírito na casa, a coisa que ficou. Acumulada, Influência + Ocultismo ou Religião. A descrição troca o Atributo, como no Rezar: Vigor para um exorcismo de resistência física e jejum, Inteligência para um ritual de símbolos. A Firula, se houver, soma o bônus por cima.
 - **Reconhecer o sobrenatural.** Direta, Inteligência + Ocultismo.
-- **Meditar.** Recolher-se e aquietar o corpo e a cabeça. Longa, Compostura + Meditação. A Vontade não volta por esta jogada: a noite passada em meditação conta como noite de sono para recuperá-la (Cap. III). (A Mana que a hora de meditação devolve está no verbete Meditação, nas Habilidades Secundárias.)
+- **Meditar.** Recolher-se e aquietar o corpo e a cabeça. Longa, Compostura + Meditação. A Força de Vontade não volta por esta jogada: a noite passada em meditação conta como noite de sono para recuperá-la (Cap. III). (A Mana que a hora de meditação devolve está no verbete Meditação, nas Habilidades Secundárias.)
 - **Interpretar presságio.** O sonho repetido, o voo dos pássaros. Direta, Perspicácia + Ocultismo.
 
 ---
