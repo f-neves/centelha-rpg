@@ -2632,7 +2632,7 @@
     "id": "meditacao",
     "nome": "Meditação",
     "grupo": "interior",
-    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas. Quem medita recupera 1 de Mana por hora meditando, até o seu nível de Meditação por dia. Vale para todos, mortais ou não, e soma-se ao que a Mana já recupera (ver Regras das Artes, Quando o Mana volta). A Vontade não volta por jogada: a noite passada em meditação conta como noite de sono para recuperá-la (Cap. III).",
+    "descricao": "Aquietar-se de propósito: acalmar o corpo, esvaziar a cabeça, recuperar-se do desgaste e alcançar o estado em que se enxerga o que a agitação estava escondendo. É prática de tempo parado, e por isso costuma render entre as cenas, e não dentro delas. Quem medita recupera 1 de Mana por hora meditando, até o seu nível de Meditação por dia. Vale para todos, mortais ou não, e soma-se ao que a Mana já recupera (ver Regras das Artes, Quando o Mana volta). A Força de Vontade não volta por jogada: a noite passada em meditação conta como noite de sono para recuperá-la (Cap. III).",
     "niveis": [
       {
         "nivel": 0,
