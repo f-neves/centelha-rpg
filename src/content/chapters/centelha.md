@@ -5,7 +5,7 @@ titulo: "Centelha"
 resumo: "A fagulha de poder que separa o mortal do herói: o eixo de tudo que é extraordinário, do tocado ao semideus."
 ---
 
-O que separa um mestre-de-armas mortal de um herói de lenda é a **Centelha**, o nível de poder pessoal. As [Virtudes e a Vontade](/regras/aparencia-virtudes-vontade) movem a alma de qualquer um; a Centelha é o que faz a alma poder o **impossível**.
+O que separa um mestre-de-armas mortal de um herói de lenda é a **Centelha**, o nível de poder pessoal. As [Virtudes e a Força de Vontade](/regras/aparencia-virtudes-vontade) movem a alma de qualquer um; a Centelha é o que faz a alma poder o **impossível**.
 
 ## A Centelha, o coração do sistema
 
