@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 18 | 15 | 0 | 3 | 6 | 4 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 22 | 22 | 0 | 0 | 0 | 22 | 0 | 0 | 0 | 0 |
-| | **Total** | | **396** | **284** | **4** | **108** | **107** | **70** | **8** | **10** | **81** | **12** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 24 | 24 | 0 | 0 | 0 | 24 | 0 | 0 | 0 | 0 |
+| | **Total** | | **398** | **286** | **4** | **108** | **107** | **72** | **8** | **10** | **81** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -692,6 +692,8 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N21 | aberto | FAZER | Religar o `test-grid` no começo da passada única do Grid (D-071). |
 | N22 | aberto | FAZER | O catálogo de Arremesso e tiro da rodada 1 (D-072 a D-076, D-082): o que o Grid herda e o que ele ainda não … |
 | N23 | aberto | FAZER | As condições das decisões R8 a R20 (D-281 a D-294, 03/11/2026): o que o painel já tem e o que o Grid e a aba … |
+| N24 | aberto | FAZER | Os Efeitos que ganharam parâmetro na revisão de textos (RT-124, RT-126 e RT-127, decisões T7 e T8 do autor, … |
+| N25 | aberto | FAZER | O dano de Luz fere todos, pela metade contra quem não tem fraqueza a luz (RT-123, decisão T6 do autor, … |
 
 Fechados (0): nenhum.
 
