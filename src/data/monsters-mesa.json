@@ -22105,15 +22105,6 @@
      "forcaInvestida": 16
     },
     {
-     "nome": "Asas",
-     "pool": "10d6+2 +10",
-     "dano": "1d6 +25 (I)",
-     "perfArma": null,
-     "speed": 6,
-     "classe": "media",
-     "forcaInvestida": 16
-    },
-    {
      "nome": "Sopro cataclísmico",
      "pool": "0d6",
      "dano": "15d6 +9 (fogo)",
@@ -22137,27 +22128,24 @@
    ]
   },
   "corpo": {
-   "postura": "quatro patas; voador",
-   "apoio": "quadrupede",
-   "altura": 6.51,
-   "largura": 4.51,
+   "postura": "serpentino, duas patas dianteiras; voa por magia, sem asas",
+   "apoio": "outro",
+   "altura": 3.04,
+   "largura": 3.04,
    "profundidade": null,
    "comprimento": 20,
-   "comprimentoSemCauda": 11.52,
-   "caudaGrossa": true,
-   "envergadura": 45,
    "massa": 88000,
-   "area": 63.74,
-   "posturaDoTamanho": "de lado, pousado, asas fechadas",
+   "area": 45.6,
+   "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
    "segundoTamanho": {
-    "area": 425.3,
-    "posturaDoTamanho": "de baixo, asas abertas"
+    "area": 16.4,
+    "posturaDoTamanho": "enrolado"
    },
-   "medida": "6.51 m de altura, 20 m de comprimento",
+   "medida": "3.04 m de altura, 20 m de comprimento",
    "peso": "88000 kg"
   },
   "formas": [],
-  "segundoTamanho": "Colossal"
+  "segundoTamanho": "Enorme"
  },
  {
   "id": "grifo",

@@ -93991,21 +93991,18 @@
    "ameaca": 6,
    "centelha": 9,
    "corpo": {
-    "postura": "quatro patas; voador",
-    "apoio": "quadrupede",
-    "altura": 6.51,
-    "largura": 4.51,
+    "postura": "serpentino, duas patas dianteiras; voa por magia, sem asas",
+    "apoio": "outro",
+    "altura": 3.04,
+    "largura": 3.04,
     "profundidade": null,
     "comprimento": 20,
-    "comprimentoSemCauda": 11.52,
-    "caudaGrossa": true,
-    "envergadura": 45,
     "massa": 88000,
-    "area": 63.74,
-    "posturaDoTamanho": "de lado, pousado, asas fechadas",
+    "area": 45.6,
+    "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
     "segundoTamanho": {
-     "area": 425.3,
-     "posturaDoTamanho": "de baixo, asas abertas"
+     "area": 16.4,
+     "posturaDoTamanho": "enrolado"
     }
    },
    "couraca": 12,
@@ -94137,24 +94134,7 @@
      "nivelPerfuracao": null,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O golpe de cauda do multiataque do site: a cauda grossa varre com o peso, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
-    },
-    {
-     "nome": "Asas",
-     "parte": "asa",
-     "classe": "media",
-     "pgr": [
-      2,
-      1,
-      3
-     ],
-     "dado": "1d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": null,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "O \"golpe de asas\" do multiataque do site: a asa bate com o braço inteiro, Média (§7). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
+     "justificativa": "O golpe de cauda do multiataque do site: o corpo de serpente fustiga com a cauda, com o peso do corpo inteiro, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     },
     {
      "nome": "Sopro cataclísmico",
@@ -94184,7 +94164,7 @@
      "duracao": "permanente",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+     "efeito": "Imenso: de lado, esticado ou com a frente erguida. Enorme: enrolado. Vale o Tamanho da postura atual. Enrolar-se ou esticar-se faz parte do movimento, sem custo adicional",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -94349,7 +94329,7 @@
     "respiracao": "ar",
     "prendeRespiracao": "a de um bicho grande; quanto tempo, o Mestre decide",
     "mente": "inteligente, antiga, orgulhosa e gananciosa",
-    "tracos": "escamas vermelhas como brasa, chifres longos, asas de couro imensas; o ar em volta tremula de calor"
+    "tracos": "escamas vermelhas como brasa, chifres longos, corpo de serpente longo e duas patas dianteiras, sem asas; o ar em volta tremula de calor"
    },
    "aptidoes": {
     "montaria": false,
@@ -94424,23 +94404,20 @@
   "centelha": 9,
   "tamanho": "Imenso",
   "corpo": {
-   "postura": "quatro patas; voador",
-   "apoio": "quadrupede",
-   "altura": 6.51,
-   "largura": 4.51,
+   "postura": "serpentino, duas patas dianteiras; voa por magia, sem asas",
+   "apoio": "outro",
+   "altura": 3.04,
+   "largura": 3.04,
    "profundidade": null,
    "comprimento": 20,
-   "comprimentoSemCauda": 11.52,
-   "caudaGrossa": true,
-   "envergadura": 45,
    "massa": 88000,
-   "area": 63.74,
-   "posturaDoTamanho": "de lado, pousado, asas fechadas",
+   "area": 45.6,
+   "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
    "segundoTamanho": {
-    "area": 425.3,
-    "posturaDoTamanho": "de baixo, asas abertas"
+    "area": 16.4,
+    "posturaDoTamanho": "enrolado"
    },
-   "medida": "6.51 m de altura, 20 m de comprimento",
+   "medida": "3.04 m de altura, 20 m de comprimento",
    "peso": "88000 kg"
   },
   "ecologia": {
@@ -94550,15 +94527,6 @@
      "forcaInvestida": 16
     },
     {
-     "nome": "Asas",
-     "pool": "10d6+2 +10",
-     "dano": "1d6 +25 (I)",
-     "perfArma": null,
-     "speed": 6,
-     "classe": "media",
-     "forcaInvestida": 16
-    },
-    {
      "nome": "Sopro cataclísmico",
      "pool": "0d6",
      "dano": "15d6 +9 (fogo)",
@@ -94573,16 +94541,15 @@
   "justificativaDosAtaques": {
    "Mordida": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
    "Garras": "Patada de predador grande, Média (§7), como no branco jovem; garra Cortante. Bloqueia como a mão nua (D-100). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
-   "Cauda": "O golpe de cauda do multiataque do site: a cauda grossa varre com o peso, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
-   "Asas": "O \"golpe de asas\" do multiataque do site: a asa bate com o braço inteiro, Média (§7). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
+   "Cauda": "O golpe de cauda do multiataque do site: o corpo de serpente fustiga com a cauda, com o peso do corpo inteiro, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
    "Sopro cataclísmico": "Ataque natural a distância, Classe Distância (manual, Passo 10), como no branco jovem. \"Cone de 18 m; 15d6 de dano\" (site). Os números são sugestão da ficha (D-197), descritos na linha do sopro nas Manobras. Sem jogada de ataque."
   },
   "habilidadesEspeciais": [
    {
     "nome": "Posturas de combate",
-    "descricao": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "Imenso: de lado, esticado ou com a frente erguida. Enorme: enrolado. Vale o Tamanho da postura atual. Enrolar-se ou esticar-se faz parte do movimento, sem custo adicional. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+    "texto": "Imenso: de lado, esticado ou com a frente erguida. Enorme: enrolado. Vale o Tamanho da postura atual. Enrolar-se ou esticar-se faz parte do movimento, sem custo adicional",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -94889,7 +94856,7 @@
     "classe": "sem regra ainda"
    }
   ],
-  "segundoTamanho": "Colossal",
+  "segundoTamanho": "Enorme",
   "formas": [],
   "poderes": [],
   "locomocao": {

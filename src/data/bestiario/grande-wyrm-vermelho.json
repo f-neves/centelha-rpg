@@ -8,21 +8,18 @@
   "ameaca": 6,
   "centelha": 9,
   "corpo": {
-    "postura": "quatro patas; voador",
-    "apoio": "quadrupede",
-    "altura": 6.51,
-    "largura": 4.51,
+    "postura": "serpentino, duas patas dianteiras; voa por magia, sem asas",
+    "apoio": "outro",
+    "altura": 3.04,
+    "largura": 3.04,
     "profundidade": null,
     "comprimento": 20,
-    "comprimentoSemCauda": 11.52,
-    "caudaGrossa": true,
-    "envergadura": 45,
     "massa": 88000,
-    "area": 63.74,
-    "posturaDoTamanho": "de lado, pousado, asas fechadas",
+    "area": 45.6,
+    "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
     "segundoTamanho": {
-      "area": 425.3,
-      "posturaDoTamanho": "de baixo, asas abertas"
+      "area": 16.4,
+      "posturaDoTamanho": "enrolado"
     }
   },
   "couraca": 12,
@@ -154,24 +151,7 @@
       "nivelPerfuracao": null,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O golpe de cauda do multiataque do site: a cauda grossa varre com o peso, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
-    },
-    {
-      "nome": "Asas",
-      "parte": "asa",
-      "classe": "media",
-      "pgr": [
-        2,
-        1,
-        3
-      ],
-      "dado": "1d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": null,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "O \"golpe de asas\" do multiataque do site: a asa bate com o braço inteiro, Média (§7). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
+      "justificativa": "O golpe de cauda do multiataque do site: o corpo de serpente fustiga com a cauda, com o peso do corpo inteiro, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     },
     {
       "nome": "Sopro cataclísmico",
@@ -201,7 +181,7 @@
       "duracao": "permanente",
       "alcance": "o próprio corpo",
       "area": "a criatura",
-      "efeito": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+      "efeito": "Imenso: de lado, esticado ou com a frente erguida. Enorme: enrolado. Vale o Tamanho da postura atual. Enrolar-se ou esticar-se faz parte do movimento, sem custo adicional",
       "dano": "nenhum",
       "resistencia": "nenhuma",
       "limiteDeUso": "contínuo, sem custo"
@@ -366,7 +346,7 @@
     "respiracao": "ar",
     "prendeRespiracao": "a de um bicho grande; quanto tempo, o Mestre decide",
     "mente": "inteligente, antiga, orgulhosa e gananciosa",
-    "tracos": "escamas vermelhas como brasa, chifres longos, asas de couro imensas; o ar em volta tremula de calor"
+    "tracos": "escamas vermelhas como brasa, chifres longos, corpo de serpente longo e duas patas dianteiras, sem asas; o ar em volta tremula de calor"
   },
   "aptidoes": {
     "montaria": false,
@@ -437,15 +417,15 @@
     },
     {
       "campo": "corpo.altura",
-      "motivo": "A do dragão branco jovem (1,3 m, 700 kg) escalada pela massa: × (massa ÷ 700)^(1/3) = × 5,010"
-    },
-    {
-      "campo": "corpo.comprimentoSemCauda",
-      "motivo": "2,3 m do branco jovem × 5,010; a cauda tem o resto do comprimento do site, 8,48 m"
+      "motivo": "O diâmetro que dá a massa da ficha: cilindro de 20 m que afina para a cauda (0,6), com 3,0405 m, dá 88,0 t. Erguendo a frente, a cabeça chega a 4,0 m (um quinto do corpo, como no linnorm do gelo). Antes: 6,51 m na cernelha, pelo corpo de quatro patas (decisão do autor, 24/11/2026)."
     },
     {
       "campo": "corpo.largura",
-      "motivo": "0,9 m do branco jovem × 5,010"
+      "motivo": "Igual ao diâmetro; as patas dianteiras são curtas. Antes: 4,51 m, o corpo sem as asas (decisão do autor, 24/11/2026)."
+    },
+    {
+      "campo": "corpo",
+      "motivo": "Decisão do autor, 24/11/2026: corpo de wyrm, sem asas, duas patas dianteiras, voa por magia. Área 45,6 m² (20 m × 3,0405 m × 0,75, como na naga e no linnorm), Imenso como antes; Segundo Tamanho Enorme, 16,4 m², enrolado (0,36 da jiboia), no lugar do Colossal de asas abertas (425,3 m²). Não mudaram a massa de 88 t, a Faixa, os PV, a Força nem o voo (Batalha 20)."
     },
     {
       "campo": "couraca",
@@ -458,6 +438,10 @@
     {
       "campo": "ataques.Mordida.nivelPerfuracao",
       "motivo": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
+    },
+    {
+      "campo": "ataques.Cauda",
+      "motivo": "W1, decidida pelo autor em 24/11/2026 (\"Recomendada\"): sai a linha Asas dos Ataques; o multiataque fica garra, garra, mordida e cauda; a Cauda fala do corpo de serpente que fustiga, sem mudar número (2d6 + Força × 2 + Centelha, 48,0)."
     },
     {
       "campo": "ataques.Sopro cataclísmico",
