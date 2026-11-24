@@ -103,4 +103,4 @@ A faixa **1 a 6 é a régua mortal**, e o **6** é o ápice que um ser humano j�
 
 ## A Aparência
 
-A **Aparência** não é um Atributo. É um traço próprio, de **0 a 12**, que mede o impacto físico que você causa nos outros. Ela pesa de forma direcional nas jogadas sociais: ajuda quando você quer agradar e atrapalha quando você quer passar despercebido. Ela tem capítulo próprio, [Aparência, Virtudes & Vontade](/regras/aparencia-virtudes-vontade).
+A **Aparência** não é um Atributo. É um traço próprio, de **0 a 12**, que mede o impacto físico que você causa nos outros. Ela pesa de forma direcional nas jogadas sociais: ajuda quando você quer agradar e atrapalha quando você quer passar despercebido. Ela tem capítulo próprio, [Aparência, Virtudes & Força de Vontade](/regras/aparencia-virtudes-vontade).
