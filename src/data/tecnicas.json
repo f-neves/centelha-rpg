@@ -3008,7 +3008,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "Passa por aberturas mínimas, escapa de amarras e grades.",
+    "texto": "Passa por aberturas mínimas, escapa de amarras e grades. Substitui a Técnica Corpo de Gato no que as duas fazem igual (passar por aberturas mínimas e escapar de amarras); o cair de pé da Corpo de Gato continua.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
