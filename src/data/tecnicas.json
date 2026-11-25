@@ -3574,7 +3574,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "Aliados coordenados ganham +6 de Defesa e de ataque juntos.",
+    "texto": "Aliados coordenados ganham +6 de Defesa e de ataque juntos. Substitui a Técnica Formar Fileira na Defesa dos aliados (o +6 toma o lugar do +2); a coordenação da Formar Fileira continua.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
