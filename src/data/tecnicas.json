@@ -330,7 +330,7 @@
       "salto-do-grilo"
     ],
     "aliases": [],
-    "texto": "Avança e desfere um golpe que derruba e empurra; some a distância percorrida ao impacto.",
+    "texto": "+1 de dano a cada 2 m percorridos na investida, até +7 (a média de 2d6, o valor da trilha de dano no nível 3). O mesmo golpe derruba e empurra pelas regras de Derrubar e Empurrar (D-048), com a mesma jogada de ataque contra a Defesa, sem segunda jogada. É uma Investida: a Força mais uma vez da Investida comum continua valendo, e o +1 a cada 2 m vem por cima.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"

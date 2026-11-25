@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 29 | 29 | 0 | 0 | 0 | 29 | 0 | 0 | 0 | 0 |
-| | **Total** | | **408** | **295** | **4** | **109** | **107** | **79** | **8** | **11** | **82** | **12** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 30 | 30 | 0 | 0 | 0 | 30 | 0 | 0 | 0 | 0 |
+| | **Total** | | **409** | **296** | **4** | **109** | **107** | **80** | **8** | **11** | **82** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -404,7 +404,7 @@ Fechados (0): nenhum.
 | D17 | aberto | DECIDIR | Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema. |
 | D19 | aberto, ADIADO |  | Orçamento de XP da criação (R54). |
 | D20 | aberto | DECIDIR | Recalibração das Proezas (D-358): as Técnicas de nível maior que repetem o bônus de uma de nível menor sem … |
-| D21 | aberto | FAZER | A ficha não calcula a Rajada com Técnica: o Frenesi (C20) vale só como texto (25/11/2026). |
+| D21 | aberto | FAZER | A ficha não calcula a Rajada nem a Investida com Técnica: o Frenesi (C20) e a Investida Devastadora (C21) … |
 
 Fechados (6): D1, D2, D4, D7, D12, D18.
 
@@ -703,6 +703,7 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N28 | aberto | FAZER | O campo `projetilVeloz` de `scripts/lib-tempo.mjs` agora lê a tag "projétil rápido" e pode ser renomeado na … |
 | N29 | aberto | FAZER | A Ambidestria (D18, 25/11/2026) alivia a Defesa no Tick do Golpe de −4 para −2 também golpeando com as duas … |
 | N30 | aberto | FAZER | O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica. |
+| N31 | aberto | FAZER | A Investida Devastadora (C21, 25/11/2026) soma +1 de dano a cada 2 m percorridos, até +7, e derruba e empurra … |
 
 Fechados (0): nenhum.
 
