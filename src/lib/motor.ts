@@ -1117,7 +1117,7 @@ export function combatePersonagem(S: any): ResumoCombate {
     const dano = w.dado + 'd6' + (ap ? ' ' + sig(ap) : '') + (tipo ? ' ' + tipo : '');
     const at = S.attrs || {}, hab = S.skills || {}, sec = S.skills2 || {};
     const dz = deslocamento({ forca: at.forca || 0, destreza: at.destreza || 0, atletismo: hab.atletismo || sec.atletismo || 0, centelha: S.centelha || 0 }, RACA[S.raca]?.deslocamentoFrac ?? 1);
-    const pen = Math.floor((a.armorPen + a.penSum) / 2), passo = { batalha: Math.max(0, dz.normal - pen), arranque: Math.max(0, dz.arranque - pen), corrida: Math.max(0, dz.corrida - pen) };
+    const pen = a.armorPen + a.penSum, passo = { batalha: Math.max(0, dz.normal - pen), arranque: Math.max(0, dz.arranque - pen), corrida: Math.max(0, dz.corrida - pen) };
     return {
         arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.origem ? '' : (w.id || w.nome), w.origem && Number(w.dado) > 0 ? exprDaArma(w) : dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }, velocidade: Number.isFinite(Number(w.ticks)) ? Number(w.ticks) : null, classe: w.classe ?? null, forcaInvestida: a.forcaInvestida
     };
