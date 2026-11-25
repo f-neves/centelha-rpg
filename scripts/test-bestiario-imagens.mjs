@@ -8,6 +8,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
+import sharp from 'sharp';
 import { carregarTS } from './lib-ts.mjs';
 
 const M = await carregarTS('src/lib/bestiario-imagens.ts');
@@ -72,17 +73,26 @@ s = sync('--gravar');
 ok(s.status === 0 && /gravado: 26/.test(s.stdout), '--gravar escreve as 26');
 ok(fs.readdirSync(d.webp).filter((f) => f.endsWith('.webp')).length === 26 && fs.existsSync(d.indice), 'os 26 webp e o índice estão no destino');
 const grande = fs.statSync(path.join(d.webp, 'aasimar_01.webp')).size;
-ok(grande > 0, 'a grande foi reexportada');
+ok(fs.readFileSync(path.join(d.webp, 'aasimar_01.webp')).equals(fs.readFileSync(path.join(FIX, 'aasimar_01.webp'))), 'a grande que já cabe no tamanho (a da fixture é 150x100) é copiada sem tocar, byte a byte');
+ok(!/reexportadas para caber/.test(s.stdout), 'e o saldo não conta reexportada nenhuma');
 const mtime = fs.statSync(path.join(d.webp, 'aasimar_01.webp')).mtimeMs;
 s = sync('--gravar');
 ok(/0 novas, 0 trocadas, 13 iguais/.test(s.stdout) && /gravado: 0 arquivo/.test(s.stdout), 'repetir sem mudança não grava nada');
 ok(fs.statSync(path.join(d.webp, 'aasimar_01.webp')).mtimeMs === mtime, 'e não mexe nos arquivos (comparação por conteúdo)');
 s = sync('--gravar', '--qualidade', '50');
-ok(/13 trocadas/.test(s.stdout), 'mudar o parâmetro de reexportação regrava as grandes');
+ok(/13 iguais/.test(s.stdout), 'mudar a qualidade não regrava o que só foi copiado (nada foi reexportado)');
+s = sync('--gravar', '--largura', '120', '--altura', '80');
+ok(/13 trocadas/.test(s.stdout) && /13 reexportadas/.test(s.stdout), 'tamanho aprovado menor que a origem: a grande é reexportada');
+const meta = await sharp(fs.readFileSync(path.join(d.webp, 'aasimar_01.webp'))).metadata();
+ok(meta.width === 120 && meta.height === 80, 'e sai 120x80 (cabe no tamanho, proporção mantida)');
+s = sync('--gravar', '--largura', '120', '--altura', '80');
+ok(/13 iguais/.test(s.stdout), 'repetir com o mesmo tamanho não regrava');
+s = sync('--gravar', '--largura', '120', '--altura', '80', '--qualidade', '50');
+ok(/13 trocadas/.test(s.stdout), 'mudar a qualidade regrava o que foi reexportado');
 fs.writeFileSync(path.join(d.webp, 'orfa_01.webp'), 'x');
 s = sync();
 ok(/órfãos a apagar: 1 \(orfa_01.webp\)/.test(s.stdout) && fs.existsSync(path.join(d.webp, 'orfa_01.webp')), 'o dry-run lista o órfão sem apagar');
-s = sync('--gravar', '--qualidade', '50');
+s = sync('--gravar');
 ok(!fs.existsSync(path.join(d.webp, 'orfa_01.webp')), 'gravar apaga o órfão');
 
 // origem incompleta: o índice cita arquivo que não existe, e o script aborta sem escrever

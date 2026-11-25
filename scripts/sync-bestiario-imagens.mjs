@@ -14,8 +14,10 @@
 // O que faz:
 //  1. lê e VALIDA o índice (formato, nomes de arquivo, estilo, n); uma imagem do índice cujo arquivo (grande ou
 //     mini) falta na origem ABORTA o script, sem escrever nada;
-//  2. reexporta cada imagem grande para largura x altura em webp de qualidade q (a origem tem 1536x1024, uns
-//     426 KB; a 1200x800 q75 ficam uns 215 KB), e copia as miniaturas como estão;
+//  2. REDUZ, e só reduz: a imagem grande que chega MAIOR que largura x altura é reexportada para caber nelas (webp
+//     de qualidade q, proporção mantida; a origem de 1536x1024, uns 426 KB, vira uns 215 KB a 1200x800 q75); a que
+//     chega no tamanho ou menor é COPIADA SEM TOCAR (nada de reexportar duas vezes: cada passada perderia
+//     qualidade). As miniaturas são copiadas como estão;
 //  3. COMPARA POR CONTEÚDO: um sidecar (`scripts/bestiario-imagens.sync.json`) guarda o sha256 da origem e os parâmetros de cada
 //     grande; só reexporta se a origem ou os parâmetros mudaram. A mini é comparada por sha256 do arquivo;
 //  4. apaga do destino o webp que o índice não cita mais (órfão);
@@ -83,12 +85,14 @@ const tarefas = [];
 let pesoNovo = 0;
 for (const e of entradas) {
   const origG = fs.readFileSync(path.join(ORIGEM, e.arquivo));
-  const hG = sha(origG) + ':' + params;
+  const meta = await sharp(origG).metadata();
+  const reduz = (meta.width || 0) > LARGURA || (meta.height || 0) > ALTURA;
+  const hG = sha(origG) + ':' + (reduz ? params : 'copia');
   const dG = path.join(DEST_WEBP, e.arquivo);
   const existeG = fs.existsSync(dG);
   novoManifesto[e.arquivo] = hG;
   if (existeG && manifesto[e.arquivo] === hG) saldo.grandes.iguais++;
-  else { (existeG ? saldo.grandes.trocadas++ : saldo.grandes.novas++); tarefas.push({ tipo: 'grande', origG, dG, e }); }
+  else { (existeG ? saldo.grandes.trocadas++ : saldo.grandes.novas++); tarefas.push({ tipo: 'grande', origG, dG, e, reduz }); if (!reduz) pesoNovo += origG.length; saldo.grandes.reduzidas = (saldo.grandes.reduzidas || 0) + (reduz ? 1 : 0); }
   const origM = fs.readFileSync(path.join(ORIGEM, e.mini));
   const dM = path.join(DEST_WEBP, e.mini);
   if (fs.existsSync(dM) && sha(fs.readFileSync(dM)) === sha(origM)) saldo.minis.iguais++;
@@ -102,7 +106,7 @@ const textoIndice = JSON.stringify(indice, null, 1) + '\n';
 const indiceMudou = !fs.existsSync(DEST_INDICE) || fs.readFileSync(DEST_INDICE, 'utf8') !== textoIndice;
 
 // ---------------------------------------------------------------- 6. saldo
-const linha = (nome, s) => `  ${nome}: ${s.novas} novas, ${s.trocadas} trocadas, ${s.iguais} iguais`;
+const linha = (nome, s) => `  ${nome}: ${s.novas} novas, ${s.trocadas} trocadas, ${s.iguais} iguais${s.reduzidas ? ` (${s.reduzidas} reexportadas para caber em ${LARGURA}x${ALTURA}; o resto, copiado sem tocar)` : ''}`;
 console.log(`parâmetros das grandes: ${LARGURA}x${ALTURA} webp q${QUALIDADE}`);
 console.log(linha('grandes', saldo.grandes));
 console.log(linha('minis  ', saldo.minis));
@@ -116,7 +120,8 @@ if (!GRAVAR) { console.log('\nDRY-RUN: nada foi escrito. Rode com --gravar para 
 fs.mkdirSync(DEST_WEBP, { recursive: true });
 for (const t of tarefas) {
   if (t.tipo === 'grande') {
-    const buf = await sharp(t.origG).resize(LARGURA, ALTURA, { fit: 'fill' }).webp({ quality: QUALIDADE, effort: 5 }).toBuffer();
+    if (!t.reduz) { fs.writeFileSync(t.dG, t.origG); continue; }
+    const buf = await sharp(t.origG).resize(LARGURA, ALTURA, { fit: 'inside', withoutEnlargement: true }).webp({ quality: QUALIDADE, effort: 5 }).toBuffer();
     fs.writeFileSync(t.dG, buf); pesoNovo += buf.length;
   } else fs.writeFileSync(t.dM, t.origM);
 }
