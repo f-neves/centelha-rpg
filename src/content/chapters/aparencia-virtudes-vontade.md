@@ -138,7 +138,7 @@ O ponto de +1d6 ou de +4 se declara antes do teste (na Defesa, antes de quem ata
 
 O segundo é uma **[Firula](/regras/habilidades)**, e aqui o número depende do nível: a de nível 2 devolve **1** e a de nível 3 devolve **3**, se for a Força de Vontade que você escolher entre as três reservas. O terceiro é **agir fiel à própria régua moral** num momento em que isso custa: 1 ponto, a critério do Mestre (o callout acima).
 
-<p class="muted">Repare no relógio, porque ele é o que dá o peso: pela cama a Força de Vontade volta <strong>1 por noite</strong>, e não há atalho. Uma Firula de nível 3 vale <strong>três noites de sono</strong> de uma vez, e é o número mais forte das três reservas. Não há teto por cena, e isso é decisão da mesa e não esquecimento: os números estão no ar para serem testados.</p>
+<p class="muted">Repare no relógio, porque ele é o que dá o peso: pela cama a Força de Vontade volta <strong>1 por noite</strong>. Uma Firula de nível 3 vale <strong>três noites de sono</strong> de uma vez, e é o número mais forte das três reservas. Não há teto por cena, e isso é decisão da mesa e não esquecimento: os números estão no ar para serem testados.</p>
 
 Mais que isso, a Força de Vontade é a **espinha dos seus traços derivados**: entra na **Mana** (Centelha×2 + Vontade), na **Energia** e na **Defesa Mental**. Nas fórmulas, a Força de Vontade é sempre a **máxima**, e não a que sobrou: gastar pontos não baixa a Defesa Mental, a Energia nem a Mana. Uma vontade fraca não só cede sob pressão: encolhe tudo o que o personagem tem de reserva.
 
