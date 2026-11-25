@@ -7209,7 +7209,7 @@
       "demolidor"
     ],
     "aliases": [],
-    "texto": "O baque atravessa a guarda: Penetração 3, amassa o elmo e racha o escudo de madeira.",
+    "texto": "O baque atravessa a guarda: Penetração 3 (Absorção ignorada), amassa o elmo e racha o escudo de madeira.",
     "pendente": false,
     "nivel": 2,
     "efeito": "penetracao"
