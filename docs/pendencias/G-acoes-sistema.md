@@ -570,3 +570,5 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   vem para o Arquiteto. Não implementar antes.
   - **12/11/2026 (I2, D-372):** a imagem `glaive.png` do armorium, nos sete estilos, vira a imagem do item Glaive (`glaive`,
     antes `glaive-serrilhada`). Entra junto com a G78.
+- [ ] **G79 · [PLAYTEST] A Penalidade da armadura vale inteira no Deslocamento, na Corrida e nos Saltos (RT-041, T13, 25/11/2026).** Decisão provisória do autor: "Vamos com a penalidade inteira, mas anote que vamos fazer testes. Se ficar muito mudamos para metade da penalidade".
+  A Penalidade da armadura tira 1 m por ponto nas medidas horizontais e 10 cm por ponto no Salto Vertical (mínimo 0). Se pesar nos testes de mesa, volta à metade (`840a60e9` muda livro, dado e ficha; a velocidade de natação não leva Penalidade, `e230b93f`).
