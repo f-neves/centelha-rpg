@@ -570,5 +570,15 @@ texto do livro, do JSON ou do `Acoes_Sistema.md`); G61 a G70 são as decisões n
   vem para o Arquiteto. Não implementar antes.
   - **12/11/2026 (I2, D-372):** a imagem `glaive.png` do armorium, nos sete estilos, vira a imagem do item Glaive (`glaive`,
     antes `glaive-serrilhada`). Entra junto com a G78.
-- [ ] **G79 · [PLAYTEST] A Penalidade da armadura vale inteira no Deslocamento, na Corrida e nos Saltos (RT-041, T13, 25/11/2026).** Decisão provisória do autor: "Vamos com a penalidade inteira, mas anote que vamos fazer testes. Se ficar muito mudamos para metade da penalidade".
+- [x] **G79 · [FECHADA em 25/11/2026: o autor voltou à metade, T15] A Penalidade da armadura vale inteira no Deslocamento, na Corrida e nos Saltos (RT-041, T13, 25/11/2026).** Decisão provisória do autor: "Vamos com a penalidade inteira, mas anote que vamos fazer testes. Se ficar muito mudamos para metade da penalidade".
   A Penalidade da armadura tira 1 m por ponto nas medidas horizontais e 10 cm por ponto no Salto Vertical (mínimo 0). Se pesar nos testes de mesa, volta à metade (`840a60e9` muda livro, dado e ficha; a velocidade de natação não leva Penalidade, `e230b93f`).
+  - **Resultado (25/11/2026, consulta 016, T15):** pesou. O autor respondeu "Vamos com a recomendada" e a armadura voltou a tirar METADE da Penalidade (arredondada para baixo) no Deslocamento, na Corrida e nos Saltos, no ramo `penalidade-metade` (dado, `ficha-engine.ts`, `motor.ts` e os três textos, que conservam a unidade escrita: um metro a cada dois pontos nas medidas horizontais e dez centímetros a cada dois pontos no Salto Vertical, mínimo 0). A natação não mudou (`e230b93f` e `34a1c582`).
+  - **O achado que decidiu** (`test-espelho`, cenário `2x2-longa`: escudeiro e montanteiro, 42 hex, alcance 1 = 41 hex a cruzar, teto de 30 Ticks; bissecção: `2e481774` verde, `840a60e9` vermelho):
+
+    | Combatente (Penalidade 3) | Passo batalha / arranque / corrida, antes (metade) | Com a Penalidade inteira | Ticks para cruzar 41 hex em batalha, antes e com a inteira |
+    |---|---|---|---|
+    | Escudeiro (malha + escudo heater) | 2 / 4 / 7 | 0 / 2 / 5 (o laço usa o piso de 0,5 hex por Tick) | uns 21 contra uns 82 |
+    | Montanteiro (placa completa) | 3 / 5 / 7 | 1 / 3 / 5 | uns 14 contra 41 (1 hex por Tick) |
+
+    O primeiro golpe (o do montanteiro, o primeiro a chegar) saiu no Tick 16 antes e no Tick 43 com a inteira (nas duas sementes, 20260903 e 771107), acima do teto de 30. Os outros cenários do `test-espelho` com a inteira: `1v1-cacada` de 7 e 8 para 4 lances; `4x4-media` e `4x4-aberto` de 27 e 31 para 19; o `2x2-longa` ficou sem golpe.
+  - **Prova depois da volta à metade:** `test-espelho` verde, com os lances de antes do `840a60e9` (`2x2-longa` 8 e 7, `1v1-cacada` 7 e 8, `4x4-media` e `4x4-aberto` 27 e 31, as duas sementes, mesa e laço iguais); o passo do escudeiro volta a 2 / 4 / 7 e o do montanteiro a 3 / 5 / 7; Kael e Sora de malha: Batalha 3, Arranque 5 / 6, Corrida 8 / 9 (a metade de 2 é 1). O CI vermelho do `test-espelho` tinha essa causa, e fecha com o merge.
