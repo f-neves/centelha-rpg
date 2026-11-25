@@ -1021,7 +1021,7 @@
       "mira-firme"
     ],
     "aliases": [],
-    "texto": "+4 de Penetração e +1d6 de dano num disparo cuidadoso. Substitui a Técnica Tiro Certeiro: o +1d6 e a Penetração não somam; valem os desta.",
+    "texto": "+4 de Penetração (Absorção ignorada) e +1d6 de dano num disparo cuidadoso. Substitui a Técnica Tiro Certeiro: o +1d6 e a Penetração não somam; valem os desta.",
     "pendente": false,
     "nivel": 3,
     "efeito": "penetracao"
@@ -1058,7 +1058,7 @@
       "tiro-perfurante"
     ],
     "aliases": [],
-    "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora a penalidade de cobertura do alvo).",
+    "texto": "Acerta a distâncias extremas, contorna cobertura parcial e mira pontos vitais (ignora a penalidade de cobertura do alvo). Soma com a Técnica Olho de Alcance (o alcance dobrado dela continua valendo).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -7384,7 +7384,7 @@
       "mira-firme"
     ],
     "aliases": [],
-    "texto": "Mira num ponto fraco antes de soltar: +1d6 de dano e +1 de Penetração no disparo.",
+    "texto": "Mira num ponto fraco antes de soltar: +1d6 de dano e +1 de Penetração (Absorção ignorada) no disparo.",
     "pendente": false,
     "nivel": 2,
     "efeito": "dano"
