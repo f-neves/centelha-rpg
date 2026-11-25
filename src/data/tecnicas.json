@@ -3735,7 +3735,7 @@
       "distrair"
     ],
     "aliases": [],
-    "texto": "A plateia fica absorta enquanto você se apresenta.",
+    "texto": "A plateia fica absorta enquanto você se apresenta. Substitui a Técnica Prender a Plateia.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
