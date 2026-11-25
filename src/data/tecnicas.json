@@ -2438,7 +2438,7 @@
       "fingir"
     ],
     "aliases": [],
-    "texto": "Uma mentira que resiste a escrutínio (contra a Defesa Social ou o Olho da Verdade).",
+    "texto": "Uma mentira que resiste a escrutínio (contra a Defesa Social ou o Olho da Verdade). Substitui a Técnica Mentira Sólida.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
