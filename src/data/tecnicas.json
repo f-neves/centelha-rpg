@@ -152,7 +152,7 @@
       "esquiva-impossivel"
     ],
     "aliases": [],
-    "texto": "Vira um borrão: **−9** a disparos contra você; pode cruzar um campo de batalha num único Tick.",
+    "texto": "Vira um borrão: **−9** a disparos contra você; pode cruzar um campo de batalha num único Tick. Contra disparos, substitui as Técnicas Reflexos de Vento, Esquiva de Vento e Esquiva Impossível (os −9 já fazem o papel dos +3, +4 e +6, e como são do atacante ficam fora do teto de +6 dos bônus de Defesa); contra o resto, elas continuam valendo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "bonus"
