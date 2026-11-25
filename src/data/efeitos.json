@@ -1710,8 +1710,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "alvos",
+        "escala": [
+          "—",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "nota": "1 alvo por grau de Alvos (a régua de Alvos da Cura, de 1 a 6)"
       },
       {
         "nome": "Cura",
@@ -2224,8 +2235,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 cadáver por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "cadáveres",
+        "escala": [
+          "—",
+          "1 cadáver",
+          "2 cadáveres",
+          "3 cadáveres",
+          "4 cadáveres",
+          "5 cadáveres",
+          "6 cadáveres"
+        ],
+        "nota": "1 cadáver por grau de Alvos"
       },
       {
         "nome": "Duração",
@@ -3684,8 +3706,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 espírito por 2 níveis"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "espíritos",
+        "escala": [
+          "—",
+          "—",
+          "1 espírito",
+          "1 espírito",
+          "2 espíritos",
+          "2 espíritos",
+          "3 espíritos"
+        ],
+        "nota": "1 espírito a cada 2 graus de Alvos; no grau 1, nada: o primeiro espírito vem no grau 2"
       },
       {
         "nome": "Duração",
@@ -4929,8 +4962,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "todos os cadáveres da área, até 3 por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "cadáveres",
+        "escala": [
+          "—",
+          "até 3 cadáveres",
+          "até 6 cadáveres",
+          "até 9 cadáveres",
+          "até 12 cadáveres",
+          "até 15 cadáveres",
+          "até 18 cadáveres"
+        ],
+        "nota": "todos os cadáveres da área, até 3 por grau de Alvos"
       },
       {
         "nome": "Duração",
@@ -7037,8 +7081,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 bando ou 1 bicho grande por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "bandos ou bichos grandes",
+        "escala": [
+          "—",
+          "1 bando ou 1 bicho grande",
+          "2 bandos ou 2 bichos grandes",
+          "3 bandos ou 3 bichos grandes",
+          "4 bandos ou 4 bichos grandes",
+          "5 bandos ou 5 bichos grandes",
+          "6 bandos ou 6 bichos grandes"
+        ],
+        "nota": "1 bando ou 1 bicho grande por grau de Alvos"
       },
       {
         "nome": "Duração",
