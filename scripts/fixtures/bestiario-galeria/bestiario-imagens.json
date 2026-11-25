@@ -1,0 +1,145 @@
+{
+ "aasimar": [
+  {
+   "n": 1,
+   "arquivo": "aasimar_01.webp",
+   "mini": "aasimar_01_mini.webp",
+   "sexo": "mulher",
+   "legenda": "Aasimar, mulher",
+   "estilo": "padrao",
+   "original": "teste_aasimar_1.png"
+  },
+  {
+   "n": 2,
+   "arquivo": "aasimar_02.webp",
+   "mini": "aasimar_02_mini.webp",
+   "sexo": "homem",
+   "legenda": "Aasimar, homem",
+   "estilo": "padrao",
+   "original": "teste_aasimar_2.png"
+  },
+  {
+   "n": 3,
+   "arquivo": "aasimar_03.webp",
+   "mini": "aasimar_03_mini.webp",
+   "sexo": null,
+   "legenda": "Aasimar em voo",
+   "estilo": "padrao",
+   "original": "teste_aasimar_3.png"
+  }
+ ],
+ "ninfa": [
+  {
+   "n": 1,
+   "arquivo": "ninfa_01.webp",
+   "mini": "ninfa_01_mini.webp",
+   "sexo": "mulher",
+   "legenda": "Ninfa, pose 1",
+   "estilo": "padrao",
+   "original": "teste_ninfa_1.png"
+  },
+  {
+   "n": 2,
+   "arquivo": "ninfa_02.webp",
+   "mini": "ninfa_02_mini.webp",
+   "sexo": "homem",
+   "legenda": "Ninfa, pose 2",
+   "estilo": "padrao",
+   "original": "teste_ninfa_2.png"
+  },
+  {
+   "n": 3,
+   "arquivo": "ninfa_03.webp",
+   "mini": "ninfa_03_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 3",
+   "estilo": "padrao",
+   "original": "teste_ninfa_3.png"
+  },
+  {
+   "n": 4,
+   "arquivo": "ninfa_04.webp",
+   "mini": "ninfa_04_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 4",
+   "estilo": "padrao",
+   "original": "teste_ninfa_4.png"
+  },
+  {
+   "n": 5,
+   "arquivo": "ninfa_05.webp",
+   "mini": "ninfa_05_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 5",
+   "estilo": "padrao",
+   "original": "teste_ninfa_5.png"
+  },
+  {
+   "n": 6,
+   "arquivo": "ninfa_06.webp",
+   "mini": "ninfa_06_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 6",
+   "estilo": "padrao",
+   "original": "teste_ninfa_6.png"
+  },
+  {
+   "n": 7,
+   "arquivo": "ninfa_07.webp",
+   "mini": "ninfa_07_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 7",
+   "estilo": "padrao",
+   "original": "teste_ninfa_7.png"
+  },
+  {
+   "n": 8,
+   "arquivo": "ninfa_08.webp",
+   "mini": "ninfa_08_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 8",
+   "estilo": "padrao",
+   "original": "teste_ninfa_8.png"
+  },
+  {
+   "n": 9,
+   "arquivo": "ninfa_09.webp",
+   "mini": "ninfa_09_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 9",
+   "estilo": "padrao",
+   "original": "teste_ninfa_9.png"
+  },
+  {
+   "n": 10,
+   "arquivo": "ninfa_10.webp",
+   "mini": "ninfa_10_mini.webp",
+   "sexo": null,
+   "legenda": "Ninfa, pose 10",
+   "estilo": "padrao",
+   "original": "teste_ninfa_10.png"
+  }
+ ],
+ "alce": [
+  {
+   "n": 1,
+   "arquivo": "alce_01.webp",
+   "mini": "alce_01_mini.webp",
+   "sexo": null,
+   "legenda": "Alce, imagem única de teste",
+   "estilo": "padrao",
+   "original": "teste_alce_1.png"
+  }
+ ],
+ "retrato": [
+  {
+   "n": 1,
+   "arquivo": "retrato_01.webp",
+   "mini": "retrato_01_mini.webp",
+   "sexo": null,
+   "legenda": "Retrato (em pé, 2:3), RECUSADA: fora de 3:2",
+   "estilo": "padrao",
+   "original": "teste_retrato_1.png"
+  }
+ ]
+}

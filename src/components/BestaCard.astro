@@ -15,6 +15,7 @@
 import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
+import { galeriaDe, principalDe, NOME_PASTA_GALERIA } from '../lib/bestiario-galeria';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt, justTxt } from '../lib/besta-card';
 import { linhaPVNaZona, massaDaConta } from '../lib/motor';
@@ -23,6 +24,19 @@ import SEC from '../data/habilidades-secundarias.json';
 
 interface Props { i: any }
 const { i } = Astro.props;
+// As imagens do carrossel (prompt 056-imagens): só a criatura com duas ou mais no índice tem. A lista mostra a `_01`
+// do índice como principal (a de `imagens[0]` só vale para a criatura que não está no índice); o carrossel abre ao clicar nela.
+const gal = galeriaDe(i.id);
+// A imagem da lista: a principal do índice (a `_01`), com a mini de 384 px e a grande de 1200 px num `srcset` (o navegador
+// escolhe pela largura do card e pela densidade da tela); sem índice, ou sem essa criatura nele, a de sempre (`i.imagens[0]`).
+const prin = principalDe(i.id);
+const pastaGal = url(NOME_PASTA_GALERIA + '/');
+const arte0 = prin ? pastaGal + prin.arquivo : i.imagens?.[0] ? url(i.imagens[0]) : '';
+const atributosArte: Record<string, string> = {};
+if (prin) Object.assign(atributosArte, { srcset: `${pastaGal}${prin.mini} 384w, ${pastaGal}${prin.arquivo} 1200w`, sizes: '(max-width: 700px) calc(100vw - 2rem), 28rem', 'data-legenda': prin.legenda });
+const galJson = gal ? JSON.stringify({ base: url(NOME_PASTA_GALERIA + '/'), total: gal.total, itens: gal.todas.map((x) => [x.arquivo, x.mini, x.legenda, x.sexo]) }) : '';
+if (gal) Object.assign(atributosArte, { 'data-galeria': galJson, title: `Clique para ver as ${gal.total} imagens` });
+else if (!prin && i.imagens?.[1]) Object.assign(atributosArte, { 'data-imagens': JSON.stringify(i.imagens.map(url)), title: 'Clique para ver a outra imagem' });
 const d = await loadData();
 
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
@@ -60,20 +74,24 @@ const caminhosDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => 
 const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.tipo === 'feiticaria' && p.arte).map((p: any) => p.arte))];
 ---
 <article class="besta" id={i.id} data-permalink data-categoria={i.categoria || 'Outro'}
-        data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem ? '1' : ''} data-porte={i.tamanho || ''}
+        data-tipo={i.categoria || ''} data-terreno={(i.ecologia?.terreno || []).join(' ')} data-clima={(i.ecologia?.clima || []).join(' ')} data-semimg={i.semImagem && !prin ? '1' : ''} data-porte={i.tamanho || ''}
         data-caminhos={caminhosDe(i).join(' ')} data-artes={artesDe(i).join(' ')}
         data-nome={i.nome} data-en={i.nomeIngles || i.nome} data-pv={i.combate.pv} data-defesa={i.combate.defesa} data-centelha={i.centelha} data-ameaca={i.ameaca}
         data-txt={(i.nome + ' ' + (i.nomeIngles || '') + ' ' + i.conceito + ' ' + (i.categoria || '') + ' ' + i.tags.join(' ') + ' ' + (i.habilidadesEspeciais || []).map((h: any) => h.nome + ' ' + h.descricao).join(' ') + ' ' + (i.poderes || []).map((p: any) => p.id ? (p.nome + ' ' + p.efeito) : (p.efeito + ' ' + p.alvo)).join(' ')).toLowerCase()}
         data-besta={JSON.stringify({id:i.id})}>
-        <figure class={`arte${i.imagens?.[0] ? '' : ' sem-arte'}`} data-cent={i.centelha}>
-          {i.imagens?.[0]
-            ? <img src={url(i.imagens?.[0])} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
-                   data-full={url(i.imagens?.[0])} data-nome={i.nome}
-                   {...(i.imagens?.[1] ? { 'data-imagens': JSON.stringify(i.imagens.map(url)), title: 'Clique para ver a outra imagem' } : {})} />
+        <figure class={`arte${arte0 ? '' : ' sem-arte'}`} data-cent={i.centelha}>
+          {arte0
+            ? <img src={arte0} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
+                   data-full={arte0} data-nome={i.nome}
+                   {...atributosArte} />
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
           {/* Duas imagens (D-179, item 16): o clique na arte troca, a lupa abre a lightbox e o
               selo diz qual está à vista. A escolha mora em src/lib/imagem-escolhida.ts. */}
-          {i.imagens?.[1] && (<>
+          {gal && (<>
+            <span class="arte-selo" aria-hidden="true">{gal.total} imagens</span>
+            <button class="arte-lupa" type="button" title="Ver as imagens" aria-label={`Ver as ${gal.total} imagens`}>⌕</button>
+          </>)}
+          {!gal && !prin && i.imagens?.[1] && (<>
             <span class="arte-selo" aria-hidden="true">1/2</span>
             <button class="arte-lupa" type="button" title="Ampliar" aria-label="Ampliar a imagem">⌕</button>
           </>)}
@@ -98,7 +116,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             {i.categoria && <span class="badge cat">{i.categoriaNome || i.categoria}</span>}
             {(i.ecologia?.terreno || []).map((t: string) => <span class="badge terr">{ECO_TERR[t] || t}</span>)}
             {(i.ecologia?.clima || []).map((c: string) => <span class="badge clima">{ECO_CLIMA[c] || c}</span>)}
-            {i.semImagem && <span class="badge sem-img" title="Arte ainda não adicionada">Sem imagem</span>}
+            {i.semImagem && !prin && <span class="badge sem-img" title="Arte ainda não adicionada">Sem imagem</span>}
           </div>
           {i.tamanho && (
             <p class="besta-porte"><span class="pt-lbl">Tamanho</span><span class="pt-cat">{i.tamanho}</span><span class="pt-sep">·</span>{i.corpo.medida}<span class="pt-sep">·</span>{i.corpo.peso}</p>
