@@ -96,7 +96,7 @@
       "reflexos-de-vento"
     ],
     "aliases": [],
-    "texto": "Ao ver um ataque que te visa, +6 na Defesa contra ele: o corpo já saiu do caminho quando o golpe chega.",
+    "texto": "Ao ver um ataque que te visa, +6 na Defesa contra ele: o corpo já saiu do caminho quando o golpe chega. Substitui as Técnicas Reflexos de Vento e Esquiva de Vento: o +6 não soma com os outros bônus de Defesa.",
     "pendente": true,
     "nivel": 3,
     "efeito": "bonus"
@@ -7420,7 +7420,7 @@
       "passo-veloz"
     ],
     "aliases": [],
-    "texto": "Ao ver um ataque que te visa, +4 na Defesa contra ele: um passo lateral que confunde a mira.",
+    "texto": "Ao ver um ataque que te visa, +4 na Defesa contra ele: um passo lateral que confunde a mira. Substitui a Técnica Reflexos de Vento: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
