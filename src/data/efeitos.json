@@ -2894,7 +2894,7 @@
       {
         "nome": "Força",
         "tipo": "fixo",
-        "valor": "conta como Força 1 por nível, só para empurrar, puxar e segurar"
+        "valor": "conta como Força 1 por nível da Arte, só para empurrar, puxar e segurar"
       },
       {
         "nome": "Duração",
@@ -3380,7 +3380,7 @@
       {
         "nome": "Penalidade",
         "tipo": "fixo",
-        "valor": "−1 de Absorção ou de dano por nível"
+        "valor": "−1 de Absorção ou de dano por nível da Arte"
       },
       {
         "nome": "Duração",
