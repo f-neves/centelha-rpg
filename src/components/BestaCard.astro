@@ -15,6 +15,7 @@
 import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
+import { galeriaDe } from '../lib/bestiario-galeria';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt, justTxt } from '../lib/besta-card';
 import { linhaPVNaZona, massaDaConta } from '../lib/motor';
@@ -23,6 +24,10 @@ import SEC from '../data/habilidades-secundarias.json';
 
 interface Props { i: any }
 const { i } = Astro.props;
+// As imagens do carrossel (prompt 056-imagens): só a criatura com duas ou mais no índice tem. A lista do
+// bestiário segue com a imagem principal de sempre; o carrossel abre ao clicar nela.
+const gal = galeriaDe(i.id);
+const galJson = gal ? JSON.stringify({ base: url('bestiario-galeria/'), total: gal.total, itens: gal.todas.map((x) => [x.arquivo, x.mini, x.legenda, x.sexo]) }) : '';
 const d = await loadData();
 
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
@@ -69,11 +74,16 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           {i.imagens?.[0]
             ? <img src={url(i.imagens?.[0])} alt={`Ilustração de ${i.nome}`} loading="lazy" decoding="async"
                    data-full={url(i.imagens?.[0])} data-nome={i.nome}
-                   {...(i.imagens?.[1] ? { 'data-imagens': JSON.stringify(i.imagens.map(url)), title: 'Clique para ver a outra imagem' } : {})} />
+                   {...(gal ? { 'data-galeria': galJson, title: `Clique para ver as ${gal.total} imagens` }
+                     : i.imagens?.[1] ? { 'data-imagens': JSON.stringify(i.imagens.map(url)), title: 'Clique para ver a outra imagem' } : {})} />
             : <span class="capitular cinzel" aria-hidden="true">{i.nome.trim()[0]}</span>}
           {/* Duas imagens (D-179, item 16): o clique na arte troca, a lupa abre a lightbox e o
               selo diz qual está à vista. A escolha mora em src/lib/imagem-escolhida.ts. */}
-          {i.imagens?.[1] && (<>
+          {gal && (<>
+            <span class="arte-selo" aria-hidden="true">{gal.total} imagens</span>
+            <button class="arte-lupa" type="button" title="Ver as imagens" aria-label={`Ver as ${gal.total} imagens`}>⌕</button>
+          </>)}
+          {!gal && i.imagens?.[1] && (<>
             <span class="arte-selo" aria-hidden="true">1/2</span>
             <button class="arte-lupa" type="button" title="Ampliar" aria-label="Ampliar a imagem">⌕</button>
           </>)}

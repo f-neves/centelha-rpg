@@ -160,6 +160,31 @@ const opcoesEditor = {
     <figure><span class="lb-moldura"><img id="lb-img" src="" alt="" /></span><figcaption id="lb-cap" class="cinzel"></figcaption></figure>
   </div>
 
+  {/* O carrossel das imagens da criatura (prompt 056-imagens). Vazio até alguém abrir: o script de
+      `src/lib/galeria-criatura.ts` o preenche a partir do `data-galeria` do card. */}
+  <div class="galeria" id="galeria" hidden role="dialog" aria-modal="true" aria-labelledby="gal-nome">
+    <div class="gal-caixa">
+      <header class="gal-topo">
+        <h2 class="cinzel" id="gal-nome"></h2>
+        <button class="gal-voltar" id="gal-voltar" type="button" hidden>← Voltar ao carrossel</button>
+        <button class="gal-fechar" id="gal-fechar" type="button" aria-label="Fechar">✕</button>
+      </header>
+      <div class="gal-corpo" id="gal-corpo">
+        <div class="gal-palco">
+          <figure class="gal-quadro" id="gal-quadro">
+            <img id="gal-img" alt="" decoding="async" />
+            <button class="gal-seta gal-ant" id="gal-ant" type="button" aria-label="Imagem anterior">‹</button>
+            <button class="gal-seta gal-prox" id="gal-prox" type="button" aria-label="Próxima imagem">›</button>
+          </figure>
+          <p class="gal-meta"><span class="gal-leg" id="gal-leg"></span><span class="gal-cont" id="gal-cont"></span></p>
+        </div>
+        <div class="gal-minis" id="gal-minis"></div>
+      </div>
+      <p class="gal-todas-wrap"><button class="gal-todas" id="gal-todas" type="button" hidden></button></p>
+      <div class="gal-grade" id="gal-grade" hidden></div>
+    </div>
+  </div>
+
   <button id="ao-topo" class="ao-topo" aria-label="Voltar ao topo" title="Voltar ao topo" hidden>↑</button>
 
   <div class="infobox" id="infobox" hidden role="dialog" aria-modal="true" aria-labelledby="ib-nome">
@@ -464,6 +489,39 @@ const opcoesEditor = {
   .ao-topo[hidden] { display: none; }
 
   @media (prefers-reduced-motion: reduce) { .besta, .arte img, .lightbox, .ao-topo { transition: none; animation: none; } .besta:hover { transform: none; } .besta:hover .arte img { transform: none; } }
+
+  /* --- Carrossel das imagens da criatura (prompt 056-imagens) --- */
+  .galeria { position: fixed; inset: 0; z-index: 85; display: flex; align-items: center; justify-content: center; padding: 1rem; background: color-mix(in srgb, #1a120a 82%, transparent); }
+  .galeria[hidden] { display: none; }
+  .gal-caixa { width: min(980px, 100%); max-height: calc(100vh - 2rem); overflow: auto; background: var(--panel); border: 1px solid var(--panel-border); border-radius: var(--r-lg); padding: .8rem 1rem 1rem; box-shadow: 0 18px 50px rgba(0,0,0,.5); }
+  .gal-topo { display: flex; align-items: center; gap: .8rem; margin-bottom: .6rem; }
+  .gal-topo h2 { margin: 0; flex: 1 1 auto; font-size: var(--fs-h3); }
+  .gal-fechar, .gal-voltar { border: 1px solid var(--panel-border); background: var(--bg); color: var(--ink); border-radius: var(--r-sm); cursor: pointer; padding: .3rem .7rem; }
+  .gal-fechar { width: 2.2rem; height: 2.2rem; padding: 0; border-radius: 50%; }
+  .gal-corpo { display: grid; grid-template-columns: minmax(0, 1fr) 7.5rem; gap: .8rem; align-items: start; }
+  .gal-corpo[hidden], .gal-grade[hidden], .gal-voltar[hidden], .gal-todas[hidden], .gal-leg[hidden] { display: none; }
+  .gal-quadro { position: relative; margin: 0; aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: var(--r-md);
+    background: radial-gradient(120% 90% at 50% 15%, #fbf6e7 0%, #efe4c9 62%, #e4d5b2 100%); }
+  .gal-quadro img { width: 100%; height: 100%; object-fit: contain; mix-blend-mode: multiply; cursor: zoom-in; }
+  .gal-seta { position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 2.4rem; height: 2.4rem; border: none; border-radius: 50%; cursor: pointer; font-size: 1.5rem; line-height: 1; color: #f3e8cf; background: color-mix(in srgb, #1a120a 55%, transparent); }
+  .gal-seta:hover { background: color-mix(in srgb, #1a120a 75%, transparent); }
+  .gal-ant { left: .5rem; } .gal-prox { right: .5rem; }
+  .gal-meta { display: flex; justify-content: space-between; gap: 1rem; margin: .4rem 0 0; font-size: var(--fs-aux); color: var(--ink-soft); }
+  .gal-minis { display: flex; flex-direction: column; gap: .4rem; max-height: 30rem; overflow-y: auto; padding: 2px; }
+  .gal-mini { flex: 0 0 auto; padding: 0; aspect-ratio: 3 / 2; overflow: hidden; cursor: pointer; border: 2px solid transparent; border-radius: var(--r-sm); background: #efe4c9; }
+  .gal-mini img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .gal-mini.atual { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
+  .gal-todas-wrap { margin: .7rem 0 0; text-align: center; }
+  .gal-todas { border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: var(--r-sm); cursor: pointer; padding: .35rem .9rem; font-family: 'Cinzel'; }
+  .gal-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: .5rem; }
+  .gal-celula { padding: 0; aspect-ratio: 3 / 2; overflow: hidden; cursor: zoom-in; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: #efe4c9; }
+  .gal-celula img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 700px) {
+    .gal-corpo { grid-template-columns: minmax(0, 1fr); }
+    .gal-minis { flex-direction: row; max-height: none; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; padding-bottom: .4rem; }
+    .gal-mini { width: 5.5rem; scroll-snap-align: center; }
+  }
+  @media (prefers-reduced-motion: reduce) { .galeria * { transition: none; animation: none; } }
 </style>
 
 <style is:global>
@@ -696,7 +754,7 @@ const opcoesEditor = {
   const lbImg = document.getElementById('lb-img') as HTMLImageElement;
   const lbCap = document.getElementById('lb-cap') as HTMLElement;
   function abrir(src: string, nome: string) { lbImg.src = src; lbImg.alt = `Ilustração de ${nome}`; lbCap.textContent = nome; lb.hidden = false; document.body.style.overflow = 'hidden'; }
-  function fechar() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = ''; }
+  function fechar() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = galeria.aberta() ? 'hidden' : ''; }
   // Delegado na lista, e não um addEventListener por imagem: as fichas além das
   // 40 iniciais nascem dentro de <template> e só entram no DOM aos poucos
   // (montarAosPoucos, depois deste bloco rodar), então ligar o clique uma vez só
@@ -706,6 +764,8 @@ const opcoesEditor = {
     if (im) cliqueNaArte(im);
   });
   lb.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('lb-fechar')) fechar(); });
+  // O carrossel das imagens da criatura (a caixa fica em src/lib/galeria-criatura.ts); a tela cheia é o #lightbox de cima.
+  const galeria = criarGaleria({ telaCheia: abrir, telaCheiaAberta: () => !lb.hidden });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) fechar(); });
 
   // Card flutuante de informações (lore)
@@ -910,6 +970,8 @@ const opcoesEditor = {
   function cliqueNaArte(alvo: HTMLElement) {
     const img = alvo.closest('.arte')?.querySelector<HTMLImageElement>('img[data-full]');
     if (!img) return;
+    // Criatura com duas ou mais imagens no índice: abre o carrossel (a troca por clique é só das que não estão no índice).
+    if (img.dataset.galeria) { galeria.abrir(img.dataset.galeria, img.dataset.nome || '', alvo); return; }
     if (alvo.classList.contains('arte-lupa') || !img.dataset.imagens) { abrir(img.dataset.full!, img.dataset.nome || ''); return; }
     const card = img.closest<HTMLElement>('.besta')!;
     alternarImagem({ id: card.id, imagens: JSON.parse(img.dataset.imagens!) });
@@ -926,4 +988,5 @@ const opcoesEditor = {
       const selo = card.querySelector('.arte-selo'); if (selo) selo.textContent = `${n}/2`;
     }));
   import { escolhaDe, alternarImagem } from '../lib/imagem-escolhida';
+  import { criarGaleria } from '../lib/galeria-criatura';
 </script>
