@@ -1585,8 +1585,19 @@
       },
       {
         "nome": "Profundidade",
-        "tipo": "fixo",
-        "valor": "1 metro por grau de Profundidade"
+        "tipo": "substitui",
+        "substitui": "profundidade",
+        "unidade": "m de profundidade",
+        "escala": [
+          "—",
+          "1 m",
+          "2 m",
+          "3 m",
+          "4 m",
+          "5 m",
+          "6 m"
+        ],
+        "nota": "1 metro por grau de Profundidade"
       },
       {
         "nome": "Duração",
