@@ -106,7 +106,7 @@
         "substitui": "dano",
         "unidade": "pontos somados ao dano da arma",
         "escala": [
-          "—",
+          "0",
           "+2",
           "+4",
           "+6",
@@ -1589,7 +1589,7 @@
         "substitui": "profundidade",
         "unidade": "m de profundidade",
         "escala": [
-          "—",
+          "0",
           "1 m",
           "2 m",
           "3 m",
@@ -1657,8 +1657,8 @@
         "substitui": "duracao",
         "unidade": "Ticks",
         "escala": [
-          "—",
-          "—",
+          "0 Ticks",
+          "0 Ticks",
           "6 Ticks",
           "6 Ticks",
           "12 Ticks",
@@ -1714,7 +1714,7 @@
         "substitui": "alvos",
         "unidade": "alvos",
         "escala": [
-          "—",
+          "0",
           "1",
           "2",
           "3",
@@ -2239,7 +2239,7 @@
         "substitui": "alvos",
         "unidade": "cadáveres",
         "escala": [
-          "—",
+          "nenhum",
           "1 cadáver",
           "2 cadáveres",
           "3 cadáveres",
@@ -2311,7 +2311,7 @@
         "substitui": "bonus",
         "unidade": "d6 somados nas rolagens sociais com o alvo",
         "escala": [
-          "—",
+          "0",
           "+1d6",
           "+2d6",
           "+3d6",
@@ -3074,7 +3074,7 @@
         "substitui": "absorcao",
         "unidade": "pontos de Absorção",
         "escala": [
-          "—",
+          "0",
           "+1",
           "+2",
           "+3",
@@ -3472,7 +3472,7 @@
         "substitui": "penalidade",
         "unidade": "Ticks a mais por ação",
         "escala": [
-          "—",
+          "0 Ticks",
           "+2 Ticks",
           "+4 Ticks",
           "+6 Ticks",
@@ -3721,8 +3721,8 @@
         "substitui": "alvos",
         "unidade": "espíritos",
         "escala": [
-          "—",
-          "—",
+          "nenhum",
+          "nenhum",
           "1 espírito",
           "1 espírito",
           "2 espíritos",
@@ -4324,7 +4324,7 @@
         "substitui": "bonus",
         "unidade": "d6 somados nas rolagens daquele sentido",
         "escala": [
-          "—",
+          "0",
           "+1d6",
           "+2d6",
           "+3d6",
@@ -4977,7 +4977,7 @@
         "substitui": "alvos",
         "unidade": "cadáveres",
         "escala": [
-          "—",
+          "nenhum",
           "até 3 cadáveres",
           "até 6 cadáveres",
           "até 9 cadáveres",
@@ -6102,7 +6102,7 @@
         "substitui": "ganho",
         "unidade": "Ticks tirados de um e dados a outro",
         "escala": [
-          "—",
+          "0 Ticks",
           "−2 Ticks para um, +2 para o outro",
           "−4 Ticks para um, +4 para o outro",
           "−6 Ticks para um, +6 para o outro",
@@ -6452,7 +6452,7 @@
         "substitui": "visao",
         "unidade": "futuros prováveis",
         "escala": [
-          "—",
+          "nenhum",
           "1 futuro provável",
           "2 futuros prováveis",
           "3 futuros prováveis",
@@ -6607,7 +6607,7 @@
         "substitui": "bonus",
         "unidade": "d6 somados na rolagem que o alvo escolher",
         "escala": [
-          "—",
+          "0",
           "+1d6",
           "+2d6",
           "+3d6",
@@ -6807,7 +6807,7 @@
         "substitui": "quantidade",
         "unidade": "barris de matéria",
         "escala": [
-          "—",
+          "nenhum",
           "1 barril",
           "2 barris",
           "3 barris",
@@ -6867,7 +6867,7 @@
         "substitui": "ganho",
         "unidade": "Ticks a menos",
         "escala": [
-          "—",
+          "0 Ticks",
           "−2 Ticks",
           "−4 Ticks",
           "−6 Ticks",
@@ -6978,7 +6978,7 @@
         "substitui": "absorcao",
         "unidade": "pontos de Absorção",
         "escala": [
-          "—",
+          "0",
           "+2",
           "+4",
           "+6",
@@ -7140,7 +7140,7 @@
         "substitui": "alvos",
         "unidade": "bandos ou bichos grandes",
         "escala": [
-          "—",
+          "nenhum",
           "1 bando ou 1 bicho grande",
           "2 bandos ou 2 bichos grandes",
           "3 bandos ou 3 bichos grandes",
