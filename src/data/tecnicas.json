@@ -7722,7 +7722,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "Um olhar que faz o alvo hesitar ou recuar e impõe silêncio numa roda barulhenta.",
+    "texto": "Um olhar que faz o alvo hesitar ou recuar e impõe silêncio numa roda barulhenta. Substitui a Técnica Olhar Severo.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
