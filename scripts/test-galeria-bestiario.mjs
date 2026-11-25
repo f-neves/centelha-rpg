@@ -142,6 +142,9 @@ try {
       s2 = await troca(120); check(/aasimar_02\.webp$/.test(s2), 'arrastar para a direita volta (3 para 2)');
     }
 
+    // a tela cheia aberta pela LISTA (criatura com uma só imagem no índice) também usa a legenda do índice (data-legenda)
+    const capLista = await p.evaluate(() => { document.querySelector('#alce .arte img').click(); const c = document.getElementById('lb-cap').textContent; document.querySelector('.lb-fechar').click(); return c; });
+    check(capLista === 'Alce, imagem única de teste', 'a tela cheia aberta pela lista usa a legenda do índice (' + capLista + ')');
     // tela cheia pelo clique na imagem grande (o #lightbox que já existia), e o Esc
     await esperar(500); // passada a janela em que o clique logo após um arrasto é ignorado
     await p.click('#gal-img'); await esperar(200);

@@ -24,8 +24,8 @@ import SEC from '../data/habilidades-secundarias.json';
 
 interface Props { i: any }
 const { i } = Astro.props;
-// As imagens do carrossel (prompt 056-imagens): só a criatura com duas ou mais no índice tem. A lista do
-// bestiário segue com a imagem principal de sempre; o carrossel abre ao clicar nela.
+// As imagens do carrossel (prompt 056-imagens): só a criatura com duas ou mais no índice tem. A lista mostra a `_01`
+// do índice como principal (a de `imagens[0]` só vale para a criatura que não está no índice); o carrossel abre ao clicar nela.
 const gal = galeriaDe(i.id);
 // A imagem da lista: a principal do índice (a `_01`), com a mini de 384 px e a grande de 1200 px num `srcset` (o navegador
 // escolhe pela largura do card e pela densidade da tela); sem índice, ou sem essa criatura nele, a de sempre (`i.imagens[0]`).
@@ -91,7 +91,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
             <span class="arte-selo" aria-hidden="true">{gal.total} imagens</span>
             <button class="arte-lupa" type="button" title="Ver as imagens" aria-label={`Ver as ${gal.total} imagens`}>⌕</button>
           </>)}
-          {!gal && i.imagens?.[1] && (<>
+          {!gal && !prin && i.imagens?.[1] && (<>
             <span class="arte-selo" aria-hidden="true">1/2</span>
             <button class="arte-lupa" type="button" title="Ampliar" aria-label="Ampliar a imagem">⌕</button>
           </>)}
