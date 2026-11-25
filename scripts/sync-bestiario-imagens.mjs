@@ -12,6 +12,7 @@
 //   --largura 1200 --altura 800 --qualidade 75   a reexportação das imagens GRANDES
 //
 // O que faz:
+//  0. NUNCA CORTA imagem (T16): a que não é 3:2 (tolerância de 2%) é RECUSADA, listada e não copiada (ver abaixo);
 //  1. lê e VALIDA o índice (formato, nomes de arquivo, estilo, n); uma imagem do índice cujo arquivo (grande ou
 //     mini) falta na origem ABORTA o script, sem escrever nada;
 //  2. REDUZ, e só reduz: a imagem grande que chega MAIOR que largura x altura é reexportada para caber nelas (webp
@@ -75,12 +76,37 @@ for (const [id, lista] of Object.entries(bruto)) {
   });
   if (ok.length) indice[id] = ok;
 }
-const entradas = Object.values(indice).flat();
+let entradas = Object.values(indice).flat();
 const faltam = [];
 for (const e of entradas) for (const f of [e.arquivo, e.mini]) if (!fs.existsSync(path.join(ORIGEM, f))) faltam.push(f);
 console.log(`índice: ${Object.keys(indice).length} criaturas, ${entradas.length} imagens (${erros.length} entradas inválidas ignoradas)`);
 for (const e of erros.slice(0, 10)) console.log('  · ' + e);
 if (faltam.length) { for (const f of faltam.slice(0, 10)) console.error('  faltando na origem: ' + f); falha(`${faltam.length} arquivo(s) do índice não existem em ${ORIGEM}; nada foi escrito`); }
+
+// REGRA PERMANENTE DO AUTOR (T16, 25/11/2026): nunca cortar imagem, e as do bestiário seguem todas a mesma proporção, 3:2
+// (D-376). Imagem fora de 3:2 (tolerância de 2%) é RECUSADA: o sync a lista e não a copia, sem cortar e sem redimensionar para
+// caber; ela sai também do índice gravado. Vale para a grande e para a mini. Se já estava no destino, vira órfã e é apagada.
+const RAZAO = 3 / 2, TOLERANCIA = 0.02;
+const recusadas = [];
+for (const id of Object.keys(indice)) {
+  const boas = [];
+  for (const e of indice[id]) {
+    let motivo = '';
+    for (const f of [e.arquivo, e.mini]) {
+      const m = await sharp(path.join(ORIGEM, f)).metadata();
+      const r = (m.width || 0) / (m.height || 1);
+      if (Math.abs(r - RAZAO) / RAZAO > TOLERANCIA) { motivo = `${f} tem ${m.width}x${m.height}`; break; }
+    }
+    if (motivo) recusadas.push({ id, arquivo: e.arquivo, motivo }); else boas.push(e);
+  }
+  if (boas.length) indice[id] = boas; else delete indice[id];
+}
+entradas = Object.values(indice).flat();
+if (recusadas.length) {
+  console.log(`\n✘ RECUSADAS (${recusadas.length}): fora de 3:2 (tolerância de 2%); o sync não corta nem redimensiona, não copia e as tira do índice:`);
+  for (const r of recusadas) console.log(`  · ${r.id}: ${r.motivo}`);
+  console.log('');
+}
 
 // ---------------------------------------------------------------- 2 e 3. o que entra, muda e fica
 const params = `${LARGURA}x${ALTURA}q${QUALIDADE}`;
@@ -93,7 +119,6 @@ let pesoNovo = 0;
 for (const e of entradas) {
   const origG = fs.readFileSync(path.join(ORIGEM, e.arquivo));
   const meta = await sharp(origG).metadata();
-  { const r = (meta.width || 0) / (meta.height || 1); if (Math.abs(r - 1.5) > 0.01) falha(`${e.arquivo} tem ${meta.width}x${meta.height}, que não é 3:2 (o carrossel e o quadro são 3:2); nada foi escrito`); }
   const reduz = (meta.width || 0) > LARGURA || (meta.height || 0) > ALTURA;
   const hG = sha(origG) + ':' + (reduz ? params : 'copia');
   const dG = path.join(DEST_WEBP, e.arquivo);

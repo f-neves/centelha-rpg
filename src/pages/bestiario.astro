@@ -296,7 +296,7 @@ const opcoesEditor = {
     mix-blend-mode: multiply; filter: saturate(1.02);
     transition: transform .35s ease;
   }
-  .besta:hover .arte img { transform: scale(1.045); }
+  /* sem zoom no :hover: a moldura corta a borda da imagem que cresce, e nenhuma imagem do bestiário pode ficar com parte escondida (T16) */
   .arte.sem-arte { cursor: default; }
   .capitular {
     font-size: 4.6rem; line-height: 1; color: color-mix(in srgb, var(--accent) 62%, #8a6a2f);
@@ -510,13 +510,13 @@ const opcoesEditor = {
   .gal-meta { display: flex; justify-content: space-between; gap: 1rem; margin: .4rem 0 0; font-size: var(--fs-aux); color: var(--ink-soft); }
   .gal-minis { display: flex; flex-direction: column; gap: .4rem; max-height: 30rem; overflow-y: auto; padding: 2px; }
   .gal-mini { flex: 0 0 auto; padding: 0; aspect-ratio: 3 / 2; overflow: hidden; cursor: pointer; border: 2px solid transparent; border-radius: var(--r-sm); background: #efe4c9; }
-  .gal-mini img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .gal-mini img { display: block; width: 100%; height: 100%; object-fit: contain; }
   .gal-mini.atual { border-color: var(--accent); box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 35%, transparent); }
   .gal-todas-wrap { margin: .7rem 0 0; text-align: center; }
   .gal-todas { border: 1px solid var(--accent); background: transparent; color: var(--accent); border-radius: var(--r-sm); cursor: pointer; padding: .35rem .9rem; font-family: 'Cinzel'; }
   .gal-grade { display: grid; grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr)); gap: .5rem; }
   .gal-celula { padding: 0; aspect-ratio: 3 / 2; overflow: hidden; cursor: zoom-in; border: 1px solid var(--panel-border); border-radius: var(--r-sm); background: #efe4c9; }
-  .gal-celula img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .gal-celula img { display: block; width: 100%; height: 100%; object-fit: contain; }
   @media (max-width: 700px) {
     .gal-corpo { grid-template-columns: minmax(0, 1fr); }
     .gal-minis { flex-direction: row; max-height: none; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; padding-bottom: .4rem; }

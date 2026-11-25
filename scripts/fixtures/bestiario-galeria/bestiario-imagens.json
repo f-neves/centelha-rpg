@@ -130,5 +130,16 @@
    "estilo": "padrao",
    "original": "teste_alce_1.png"
   }
+ ],
+ "retrato": [
+  {
+   "n": 1,
+   "arquivo": "retrato_01.webp",
+   "mini": "retrato_01_mini.webp",
+   "sexo": null,
+   "legenda": "Retrato (em pé, 2:3), RECUSADA: fora de 3:2",
+   "estilo": "padrao",
+   "original": "teste_retrato_1.png"
+  }
  ]
 }

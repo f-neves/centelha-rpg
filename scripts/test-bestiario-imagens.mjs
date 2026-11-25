@@ -69,8 +69,10 @@ let s = sync();
 ok(s.status === 0 && /DRY-RUN/.test(s.stdout), 'sem --gravar é dry-run');
 ok(!fs.existsSync(d.webp) && !fs.existsSync(d.indice) && !fs.existsSync(d.manifesto), 'o dry-run não escreve nada');
 ok(/grandes: 14 novas/.test(s.stdout) && /minis  : 14 novas/.test(s.stdout), 'o saldo conta as 14 grandes e as 14 minis da fixture');
+ok(/RECUSADAS \(1\)/.test(s.stdout) && /retrato: retrato_01\.webp tem 100x150/.test(s.stdout), 'a imagem em pé da fixture (retrato, 100x150) é RECUSADA e listada');
 s = sync('--gravar');
 ok(s.status === 0 && /gravado: 28/.test(s.stdout), '--gravar escreve as 28');
+ok(!fs.existsSync(path.join(d.webp, 'retrato_01.webp')) && !fs.existsSync(path.join(d.webp, 'retrato_01_mini.webp')) && !/retrato/.test(fs.readFileSync(d.indice, 'utf8')), 'a recusada não foi copiada, nem a mini, e não está no índice gravado');
 ok(fs.readdirSync(d.webp).filter((f) => f.endsWith('.webp')).length === 28 && fs.existsSync(d.indice), 'os 28 webp e o índice estão no destino');
 const grande = fs.statSync(path.join(d.webp, 'aasimar_01.webp')).size;
 ok(fs.readFileSync(path.join(d.webp, 'aasimar_01.webp')).equals(fs.readFileSync(path.join(FIX, 'aasimar_01.webp'))), 'a grande que já cabe no tamanho (a da fixture é 150x100) é copiada sem tocar, byte a byte');
@@ -132,7 +134,13 @@ for (const [larg, alt] of [[1200, 800], [1024, 683], [600, 400]]) {
 }
 {
   const x = await sintetica('2x1', 1800, 900);
-  ok(x.r.status === 1 && /não é 3:2/.test(x.r.stderr) && !fs.existsSync(x.w), '1800x900 (2:1): aborta com exit 1, sem escrever nada');
+  ok(x.r.status === 0 && /RECUSADAS \(1\)/.test(x.r.stdout) && /x_01\.webp tem 1800x900/.test(x.r.stdout) && !x.existe, '1800x900 (2:1): RECUSADA e listada, não copiada, sem cortar nem redimensionar');
+  const indGravado = path.join(tmp, 'si-2x1.json');
+  ok(fs.existsSync(indGravado) && !/x_01\.webp/.test(fs.readFileSync(indGravado, 'utf8')), 'e fora do índice gravado');
+}
+for (const [larg, alt, quer] of [[600, 900, false], [1200, 700, false], [1200, 815, true], [1200, 785, true], [1200, 830, false]]) {
+  const x = await sintetica(`r${larg}x${alt}`, larg, alt);
+  ok(x.existe === quer, `${larg}x${alt}: ${quer ? 'dentro da tolerância de 2% de 3:2, copiada' : 'fora de 3:2, recusada'}`);
 }
 // destino e órfãos: só o formato <id>_NN.webp, só em destino de galeria
 {
