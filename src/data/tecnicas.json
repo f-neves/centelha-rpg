@@ -4432,7 +4432,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "Impõe um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental).",
+    "texto": "Impõe um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental). Substitui a Técnica Impulso Plantado.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
