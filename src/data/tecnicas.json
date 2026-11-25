@@ -7966,7 +7966,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social).",
+    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social). Substitui a Técnica Farejar Mentira.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
