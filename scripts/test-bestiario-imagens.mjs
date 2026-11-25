@@ -107,6 +107,62 @@ ok(!fs.existsSync(destino2), 'e nada é escrito');
 fs.writeFileSync(path.join(origem2, 'bestiario-imagens.json'), '{ quebrado');
 s = spawnSync('node', ['scripts/sync-bestiario-imagens.mjs', '--origem', origem2, '--webp', destino2, '--indice', path.join(tmp, 'i2.json'), '--manifesto', path.join(tmp, 'm2.json')], { encoding: 'utf8' });
 ok(s.status === 1 && /malformado/.test(s.stderr), 'índice malformado aborta com mensagem');
+
+// ---- origens sintéticas: o que o sync faz com cada tamanho que chega
+async function sintetica(nome, larg, alt, ...extra) {
+  const o = path.join(tmp, 'sint-' + nome), w = path.join(tmp, 'sw-' + nome);
+  fs.mkdirSync(o, { recursive: true });
+  const img = (lg, at) => sharp({ create: { width: lg, height: at, channels: 3, background: { r: 120, g: 160, b: 90 } } }).webp({ quality: 80 }).toBuffer();
+  fs.writeFileSync(path.join(o, 'x_01.webp'), await img(larg, alt));
+  fs.writeFileSync(path.join(o, 'x_01_mini.webp'), await img(48, 32));
+  fs.writeFileSync(path.join(o, 'bestiario-imagens.json'), JSON.stringify({ x: [{ n: 1, arquivo: 'x_01.webp', mini: 'x_01_mini.webp', legenda: 'x' }] }));
+  const r = spawnSync('node', ['scripts/sync-bestiario-imagens.mjs', '--origem', o, '--webp', w, '--indice', path.join(tmp, 'si-' + nome + '.json'), '--manifesto', path.join(tmp, 'sm-' + nome + '.json'), '--gravar', ...extra], { encoding: 'utf8' });
+  const dest = path.join(w, 'x_01.webp');
+  return { r, o, w, dest, existe: fs.existsSync(dest) };
+}
+for (const [larg, alt] of [[1200, 800], [1024, 683], [600, 400]]) {
+  const x = await sintetica(`${larg}`, larg, alt);
+  ok(x.r.status === 0 && x.existe, `${larg}x${alt}: aceita`);
+  ok(fs.readFileSync(x.dest).equals(fs.readFileSync(path.join(x.o, 'x_01.webp'))), `${larg}x${alt}: já cabe, copiada byte a byte (nem ampliada nem reencodada)`);
+}
+{
+  const x = await sintetica('1800', 1800, 1200);
+  const m = await sharp(fs.readFileSync(x.dest)).metadata();
+  ok(x.r.status === 0 && m.width === 1200 && m.height === 800, '1800x1200 (3:2 maior): reduzida para 1200x800');
+}
+{
+  const x = await sintetica('2x1', 1800, 900);
+  ok(x.r.status === 1 && /não é 3:2/.test(x.r.stderr) && !fs.existsSync(x.w), '1800x900 (2:1): aborta com exit 1, sem escrever nada');
+}
+// destino e órfãos: só o formato <id>_NN.webp, só em destino de galeria
+{
+  const w = path.join(tmp, 'sw-1200');
+  fs.writeFileSync(path.join(w, 'arte-antiga.webp'), 'x');
+  fs.writeFileSync(path.join(w, 'sobra_07.webp'), 'x');
+  fs.writeFileSync(path.join(w, 'sobra_07_mini.webp'), 'x');
+  const r = spawnSync('node', ['scripts/sync-bestiario-imagens.mjs', '--origem', path.join(tmp, 'sint-1200'), '--webp', w, '--indice', path.join(tmp, 'si-1200.json'), '--manifesto', path.join(tmp, 'sm-1200.json'), '--gravar'], { encoding: 'utf8' });
+  ok(r.status === 0 && !fs.existsSync(path.join(w, 'sobra_07.webp')) && !fs.existsSync(path.join(w, 'sobra_07_mini.webp')), 'apaga o órfão no formato <id>_NN e <id>_NN_mini');
+  ok(fs.existsSync(path.join(w, 'arte-antiga.webp')), 'e não apaga webp fora desse formato (arte antiga)');
+  const r2 = spawnSync('node', ['scripts/sync-bestiario-imagens.mjs', '--origem', path.join(tmp, 'sint-1200'), '--webp', path.join(os.homedir(), 'sync-bestiario-destino-recusado'), '--indice', path.join(tmp, 'si-1200.json'), '--manifesto', path.join(tmp, 'sm-1200.json')], { encoding: 'utf8' });
+  ok(r2.status === 1 && /destino recusado/.test(r2.stderr), 'destino que não é de galeria nem de teste (aqui, uma pasta da home; no repositório, public/bestiario) é recusado, mesmo no dry-run');
+}
+
+// ---- a lib de disco (src/lib/bestiario-galeria.ts): índice ausente, com JSON inválido e válido, pelos ganchos de ambiente
+{
+  const base = path.join(tmp, 'gal-lib'); fs.mkdirSync(path.join(base, 'pub'), { recursive: true });
+  const um = (i) => ({ n: i, arquivo: `k_0${i}.webp`, mini: `k_0${i}_mini.webp`, legenda: 'k' });
+  const rotulos = { ausente: path.join(base, 'nao-existe.json'), invalido: path.join(base, 'ruim.json'), valido: path.join(base, 'bom.json') };
+  fs.writeFileSync(rotulos.invalido, '{ quebrado');
+  fs.writeFileSync(rotulos.valido, JSON.stringify({ k: [um(1), um(2)] }));
+  const antes = [process.env.BESTIARIO_GALERIA_DIR, process.env.BESTIARIO_GALERIA_INDICE, process.cwd()];
+  for (const f of ['k_01.webp', 'k_01_mini.webp', 'k_02.webp', 'k_02_mini.webp']) { fs.mkdirSync(path.join(base, 'public', 'gal-teste'), { recursive: true }); fs.writeFileSync(path.join(base, 'public', 'gal-teste', f), 'x'); }
+  const lerComo = async (arq) => { process.env.BESTIARIO_GALERIA_DIR = 'gal-teste'; process.env.BESTIARIO_GALERIA_INDICE = arq; process.chdir(base); try { return await carregarTS('src/lib/bestiario-galeria.ts'); } finally { process.chdir(antes[2]); } };
+  const G0 = await lerComo(rotulos.ausente), G1 = await lerComo(rotulos.invalido), G2 = await lerComo(rotulos.valido);
+  ok(G0.galeriaDe('k') === null && G1.galeriaDe('k') === null, 'índice ausente ou com JSON inválido: sem carrossel, sem derrubar (lido com try/catch, não por import)');
+  ok(G2.galeriaDe('k')?.total === 2 && G2.NOME_PASTA_GALERIA === 'gal-teste', 'índice válido na pasta indicada pelos ganchos: a criatura tem carrossel');
+  if (antes[0] === undefined) delete process.env.BESTIARIO_GALERIA_DIR; else process.env.BESTIARIO_GALERIA_DIR = antes[0];
+  if (antes[1] === undefined) delete process.env.BESTIARIO_GALERIA_INDICE; else process.env.BESTIARIO_GALERIA_INDICE = antes[1];
+}
 fs.rmSync(tmp, { recursive: true, force: true });
 
 console.log(`✓ test-bestiario-imagens: ${n} conferências (índice, estilo, ordem, máximo, arquivo faltando e o script de cópia)`);

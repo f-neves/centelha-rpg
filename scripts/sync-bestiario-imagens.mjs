@@ -29,6 +29,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
+import os from 'node:os';
 import sharp from 'sharp';
 
 const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
@@ -41,9 +42,15 @@ const DEST_INDICE = path.resolve(opt('--indice', path.join(RAIZ, 'src', 'data', 
 const LARGURA = Number(opt('--largura', 1200)), ALTURA = Number(opt('--altura', 800)), QUALIDADE = Number(opt('--qualidade', 75));
 const SIDECAR = path.resolve(opt('--manifesto', path.join(RAIZ, 'scripts', 'bestiario-imagens.sync.json')));
 const NOME_OK = /^[A-Za-z0-9][A-Za-z0-9._-]*\.webp$/;
+const NOME_DE_GALERIA = /^[A-Za-z0-9][A-Za-z0-9-]*_\d+(_mini)?\.webp$/; // <id>_NN.webp e <id>_NN_mini.webp: só estes o sync apaga
+const PASTA_PADRAO = path.join(RAIZ, 'public', 'bestiario-galeria');
 const sha = (buf) => crypto.createHash('sha256').update(buf).digest('hex');
 const mb = (n) => (n / 1e6).toFixed(1) + ' MB';
 const falha = (msg) => { console.error('✘ ' + msg); process.exit(1); };
+// O destino dos webp é exclusivo do sync: a pasta padrão, uma pasta `bestiario-galeria*` ou uma pasta dentro do diretório
+// de arquivos de sistema do SO (os.tmpdir(), usado pelos testes). Qualquer outra (por exemplo `public/bestiario`, com a arte antiga das criaturas) é recusada.
+const dentro = (pai, filho) => { const r = path.relative(pai, filho); return !!r && !r.startsWith('..') && !path.isAbsolute(r); };
+if (DEST_WEBP !== PASTA_PADRAO && !/^bestiario-galeria/.test(path.basename(DEST_WEBP)) && !dentro(os.tmpdir(), DEST_WEBP)) falha(`destino recusado: ${DEST_WEBP} (só a pasta public/bestiario-galeria, uma pasta bestiario-galeria* ou uma pasta de teste em ${os.tmpdir()})`);
 
 // ---------------------------------------------------------------- 1. ler e validar o índice
 const arqIndice = path.join(ORIGEM, 'bestiario-imagens.json');
@@ -86,6 +93,7 @@ let pesoNovo = 0;
 for (const e of entradas) {
   const origG = fs.readFileSync(path.join(ORIGEM, e.arquivo));
   const meta = await sharp(origG).metadata();
+  { const r = (meta.width || 0) / (meta.height || 1); if (Math.abs(r - 1.5) > 0.01) falha(`${e.arquivo} tem ${meta.width}x${meta.height}, que não é 3:2 (o carrossel e o quadro são 3:2); nada foi escrito`); }
   const reduz = (meta.width || 0) > LARGURA || (meta.height || 0) > ALTURA;
   const hG = sha(origG) + ':' + (reduz ? params : 'copia');
   const dG = path.join(DEST_WEBP, e.arquivo);
@@ -100,7 +108,7 @@ for (const e of entradas) {
 }
 // ---------------------------------------------------------------- 4. órfãos
 const citados = new Set(entradas.flatMap((e) => [e.arquivo, e.mini]));
-if (fs.existsSync(DEST_WEBP)) for (const f of fs.readdirSync(DEST_WEBP)) if (f.endsWith('.webp') && !citados.has(f)) saldo.orfaos.push(f);
+if (fs.existsSync(DEST_WEBP)) for (const f of fs.readdirSync(DEST_WEBP)) if (NOME_DE_GALERIA.test(f) && !citados.has(f)) saldo.orfaos.push(f);
 // ---------------------------------------------------------------- 5. índice
 const textoIndice = JSON.stringify(indice, null, 1) + '\n';
 const indiceMudou = !fs.existsSync(DEST_INDICE) || fs.readFileSync(DEST_INDICE, 'utf8') !== textoIndice;

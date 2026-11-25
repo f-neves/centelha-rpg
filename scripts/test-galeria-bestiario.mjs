@@ -2,10 +2,13 @@
 //
 //   node scripts/test-galeria-bestiario.mjs
 //
-// Copia a fixture (scripts/fixtures/bestiario-galeria: aasimar com 3 imagens, ninfa com 10) para `public/bestiario-galeria/` e
-// `src/data/bestiario-imagens.json` pelo próprio sync-bestiario-imagens.mjs, sobe o site, confere o carrossel no computador
-// (1280 px) e no celular (375 px) e APAGA o que copiou (mesmo se falhar). Recusa rodar se esses destinos já existirem, para
-// nunca pisar nas imagens de verdade.
+// Copia a fixture (scripts/fixtures/bestiario-galeria: aasimar com 3 imagens, ninfa com 10) pelo próprio
+// sync-bestiario-imagens.mjs para uma pasta e um índice DE TESTE (`public/bestiario-galeria-teste/` e um arquivo em
+// os.tmpdir()), que o site lê pelos ganchos BESTIARIO_GALERIA_DIR e BESTIARIO_GALERIA_INDICE (src/lib/bestiario-galeria.ts).
+// Assim o teste roda igual com o conjunto real presente em `public/bestiario-galeria/`, que ele nunca toca. Sobe o site,
+// confere o carrossel no computador (1280 px) e no celular (375 px) e APAGA o que criou (mesmo se falhar). Recusa rodar só
+// se a própria pasta de teste já existir. Obs.: se já houver um dev server do Astro de outra sessão, subirDev o reaproveita
+// sem estes ganchos; pare-o antes.
 import puppeteer from 'puppeteer-core';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -18,11 +21,14 @@ const RAIZ = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^
 // Acha o navegador pela política de `scripts/navegador.mjs`: sem navegador, pula com código 0 (no CI, `SMOKE_EXIGE_NAVEGADOR=1` o torna falha).
 const EDGE = navegadorOuSair('carrossel de imagens do bestiário');
 const SHOTS = path.join(RAIZ, '_shots');
-const DEST_WEBP = path.join(RAIZ, 'public', 'bestiario-galeria');
-const DEST_INDICE = path.join(RAIZ, 'src', 'data', 'bestiario-imagens.json');
+const NOME_TESTE = 'bestiario-galeria-teste';
+const DEST_WEBP = path.join(RAIZ, 'public', NOME_TESTE);
+const DEST_INDICE = path.join(os.tmpdir(), `test-galeria-bestiario-indice-${process.pid}.json`);
+process.env.BESTIARIO_GALERIA_DIR = NOME_TESTE;
+process.env.BESTIARIO_GALERIA_INDICE = DEST_INDICE;
 const MANIFESTO = path.join(os.tmpdir(), `test-galeria-bestiario-${process.pid}.json`);
-if (fs.existsSync(DEST_WEBP) || fs.existsSync(DEST_INDICE)) {
-  console.error('✘ public/bestiario-galeria ou src/data/bestiario-imagens.json já existe: o smoke não os sobrescreve (apague-os se forem só de teste).');
+if (fs.existsSync(DEST_WEBP)) {
+  console.error('✘ public/bestiario-galeria-teste já existe (sobra de um teste interrompido): apague-a e rode de novo.');
   process.exit(2);
 }
 fs.mkdirSync(SHOTS, { recursive: true });
@@ -39,7 +45,7 @@ function limpar() {
 process.on('exit', limpar);
 
 try {
-  const s = spawnSync('node', ['scripts/sync-bestiario-imagens.mjs', '--origem', 'scripts/fixtures/bestiario-galeria', '--manifesto', MANIFESTO, '--gravar'], { cwd: RAIZ, encoding: 'utf8' });
+  const s = spawnSync('node', ['scripts/sync-bestiario-imagens.mjs', '--origem', 'scripts/fixtures/bestiario-galeria', '--webp', DEST_WEBP, '--indice', DEST_INDICE, '--manifesto', MANIFESTO, '--gravar'], { cwd: RAIZ, encoding: 'utf8' });
   if (s.status !== 0) { console.error(s.stdout + s.stderr); throw new Error('o sync da fixture falhou'); }
   console.log('• fixture copiada pelo sync; subindo o site…');
   dev = await subirDev();
@@ -53,7 +59,7 @@ try {
     p.on('pageerror', (e) => { console.log('  ! erro na página: ' + e.message); });
     p.on('response', (r) => { if (r.status() >= 400) console.log('  ! ' + r.status() + ' ' + r.url()); });
     p.on('console', (m) => { if (m.type() === 'error' && !/Failed to load resource/.test(m.text())) console.log('  ! console.error: ' + m.text().slice(0, 200)); });
-    p.on('request', (r) => { if (/bestiario-galeria\//.test(r.url())) pedidos.push(r.url().split('/').pop()); });
+    p.on('request', (r) => { if (/bestiario-galeria-teste\//.test(r.url())) pedidos.push(r.url().split('/').pop()); });
     await p.goto(dev.url + '/bestiario', { waitUntil: 'networkidle0', timeout: 90000 });
 
     // a lista: a imagem principal de hoje, o selo e a lupa; a criatura fora do índice segue sem carrossel

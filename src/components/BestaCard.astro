@@ -15,7 +15,7 @@
 import CentelhaSpark from './CentelhaSpark.astro';
 import FormaCriatura from './FormaCriatura.astro';
 import { url } from '../lib/site';
-import { galeriaDe } from '../lib/bestiario-galeria';
+import { galeriaDe, NOME_PASTA_GALERIA } from '../lib/bestiario-galeria';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt, justTxt } from '../lib/besta-card';
 import { linhaPVNaZona, massaDaConta } from '../lib/motor';
@@ -27,7 +27,7 @@ const { i } = Astro.props;
 // As imagens do carrossel (prompt 056-imagens): só a criatura com duas ou mais no índice tem. A lista do
 // bestiário segue com a imagem principal de sempre; o carrossel abre ao clicar nela.
 const gal = galeriaDe(i.id);
-const galJson = gal ? JSON.stringify({ base: url('bestiario-galeria/'), total: gal.total, itens: gal.todas.map((x) => [x.arquivo, x.mini, x.legenda, x.sexo]) }) : '';
+const galJson = gal ? JSON.stringify({ base: url(NOME_PASTA_GALERIA + '/'), total: gal.total, itens: gal.todas.map((x) => [x.arquivo, x.mini, x.legenda, x.sexo]) }) : '';
 const d = await loadData();
 
 const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', Forest: 'Floresta', Jungle: 'Selva', Mountain: 'Montanha', Plains: 'Planície', Swamp: 'Pântano', Underground: 'Subterrâneo', Urban: 'Urbano', Water: 'Aquático', Coast: 'Litoral', Sky: 'Céu', Ruins: 'Ruínas', Any: 'Qualquer' };
