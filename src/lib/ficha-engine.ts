@@ -1543,10 +1543,10 @@ export function montarFicha(opts: FichaOpts) {
         const notaR = fracR !== 1 ? ` × ⅔ · baixa estatura` : '';
         const natSk = S.skills2['natacao'] || 0;
         const dz = deslocamento({ forca: A('forca'), destreza: dex, atletismo: SK('atletismo'), centelha: C, vigor: vig, natacao: natSk }, fracR);
-        const penMov = penFisica;
+        const penMov = Math.floor(penFisica / 2);
         const mp = (v: number) => Math.max(0, v - penMov);
         const cmp = (v: number) => Math.max(0, v - penMov * 10);
-        const ps = penMov ? ` − penalidade (${penMov})` : '';
+        const ps = penMov ? ` − ½ penalidade (${penMov})` : '';
         return r('Desloc. de Batalha', `${mp(dz.normal)} m/Tick`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${notaR}${ps} = ${mp(dz.normal)} m por Tick · o PRIMEIRO Tick é grátis durante outra ação (atacar, conjurar); daí em diante custa 1 Tick por Tick de movimento. Como o Tick é ~1 segundo, o número também é a sua velocidade em m/s: andar são 1,5 e correr passa de 5`, true) +
           r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `2 + Força ${A('forca')} ÷ 4 + Atletismo ${SK('atletismo')} ÷ 4 + Destreza ${dex} ÷ 2 · Ticks 1–3${notaR}${ps}`, true) +
           r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `4 + Destreza ${dex} × ¾ + Atletismo ${SK('atletismo')} ÷ 2 · Tick 4+${notaR}${ps}`, true) +
@@ -1656,8 +1656,8 @@ export function montarFicha(opts: FichaOpts) {
     // Em metros por segundo a base é a MESMA Vel. de Corrida que os derivados mostram, com a
     // mesma penalidade de armadura: dois pontos da ficha anunciando velocidades diferentes
     // para o mesmo personagem seriam um erro visível de longe.
-    const penMov = (empilharArmaduras(pecasArmadura()).penalidade || 0)
-      + (calcConj(conjAtivo()).penSum || 0);
+    const penMov = Math.floor(((empilharArmaduras(pecasArmadura()).penalidade || 0)
+      + (calcConj(conjAtivo()).penSum || 0)) / 2);
     const dzFrac = (RACA[S.raca] as any)?.deslocamentoFrac ?? 1;
     const vBase = Math.max(0, deslocamento({
       forca, destreza: A('destreza'), atletismo: atl, centelha: S.centelha,

@@ -1000,7 +1000,7 @@
       "media": 2,
       "pesada": 3,
       "furtividadeDobra": true,
-      "movimento": "No Deslocamento e nos Saltos usa-se a Penalidade INTEIRA: −[penalidade] metros nas medidas horizontais (Livre, Arranque, Corrida, Salto Horizontal) e −[penalidade]×10 cm no Salto Vertical (mínimo 0)."
+      "movimento": "No Deslocamento e nos Saltos usa-se METADE da Penalidade (arredondada para baixo): −[penalidade/2] metros nas medidas horizontais (Livre, Arranque, Corrida, Salto Horizontal) e −[penalidade/2]×10 cm no Salto Vertical (mínimo 0)."
     },
     "armaduraMult": 1.5,
     "perfuracaoSoakNota": "A Absorção de Perfuração da armadura é baixa (arredonda p/ baixo): ao penetrar (gate aberto), a perfuração encontra pouca proteção. O Nível (R.Perf) é que mede a dificuldade de furar."
