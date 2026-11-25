@@ -1183,7 +1183,7 @@
       "palavra-calmante"
     ],
     "aliases": [],
-    "texto": "Convence alguém a baixar a guarda ou a arma; suspende a hostilidade do momento.",
+    "texto": "Convence alguém a baixar a guarda ou a arma; suspende a hostilidade do momento. Substitui a Técnica Palavra que Acalma.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
