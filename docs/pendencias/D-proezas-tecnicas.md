@@ -99,8 +99,8 @@ Detalhe em `Proezas_revisao.md`.
   despacho dos achados de duas leituras (item 17): sem botão de jogada de Atributo puro na ficha nem
   no Grid por enquanto. O Mestre faz a conta à mão (a Centelha inteira, pela D12).
   `centelhaSoAtributo` (`src/lib/calc.ts`) segue sem chamador.
-- [ ] **D16 · [DECIDIR] O que sobrou do Fôlego: as nove Técnicas da Coração Incansável e o campo
-  `folego` das armas.** Registrado em 03/10/2026 (D-016, rodada de pendências, Bloco C). O Fôlego saiu
+- [x] **D16 · [FECHADA em 25/11/2026, decidida pelo coordenador por delegação do autor (consulta 014)] O que sobrou do Fôlego: as nove Técnicas da Coração Incansável e o campo
+  `folego` das armas, removidos dos dados, do código e dos testes.** Prova antes de remover (`test-ficha-item-inteiro.mjs`, navegador): a ficha salva com `folego-profundo`, `incansavel` e `coracao-eterno` em `proezas` e uma arma com `folego: 15` abria sem erro e sem NaN; as três ids ocultas ainda cobravam 65 XP (Restam 851 XP sem elas, 786 com elas). Depois de remover: abre igual, as ids continuam na ficha (nada é apagado calado), o `folego` da arma some ao regravar (`semFolego`, `equip.ts`) e o XP volta a 851 (quem ainda guardava uma das ids recebe o XP de volta). O Caminho `coracao-incansavel` ficou SEM nenhuma Técnica e segue em `caminhos.json` (já não aparecia em lugar nenhum: a ficha e as páginas só mostram Caminho com Técnica); não foi criada Técnica nova. Saíram também `src/lib/modulos.ts` (`tecnicaDisponivel`, agora sem uso), o campo `modulo` das Técnicas e dos esquemas, o `folego` dos esquemas das armas (`content.config.ts`, `validate-data.mjs`), o `scripts/add-folego.mjs` e a coluna Fôlego da lista de equipamentos gerada. Registrado em 03/10/2026 (D-016, rodada de pendências, Bloco C). Registrado em 03/10/2026 (D-016, rodada de pendências, Bloco C). O Fôlego saiu
   do sistema (capítulo, reserva, ficha, mesa, condição "Sem fôlego"), mas, por decisão do autor, ficam
   nos dados, ocultos e inertes:
   - as nove Técnicas com `modulo: "folego"` da Proeza `coracao-incansavel` (`folego-profundo`,

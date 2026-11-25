@@ -1,6 +1,5 @@
 import { getCollection } from 'astro:content';
 import regras from '../data/regras.json';
-import { tecnicaDisponivel } from './modulos';
 
 /** Nome do tier por nível (1 a 6). */
 export const TIER_NOME = ['Tocado', 'Desperto', 'Herói', 'Campeão', 'Lendário', 'Semideus'];
@@ -32,7 +31,7 @@ export async function loadData() {
     getCollection('efeitos'), getCollection('glossario'),
   ]);
 
-  const tecnicas = tecnicasTodas.filter((t) => tecnicaDisponivel(t.data));
+  const tecnicas = tecnicasTodas;
   const caminhosAtivos = new Set(tecnicas.map((t) => t.data.caminho.id));
   const caminhos = caminhosTodos.filter((c) => caminhosAtivos.has(c.id));
 

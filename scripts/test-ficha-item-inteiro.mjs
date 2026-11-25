@@ -65,6 +65,26 @@ try {
   await p.waitForFunction(() => /Ataque/.test(document.getElementById('combate')?.textContent || ''), { timeout: 60000 });
   const cmb = await p.$eval('#combate', (e) => e.textContent.replace(/\s+/g, ' '));
   ok(/Ataque: Punhos, nenhum dado, total fixo 2 \+1/.test(cmb) && !/0d6/.test(cmb), 'ficha vazia: o ataque sem dado diz "nenhum dado, total fixo 2" (' + (cmb.match(/Ataque:[^·]*/) || [''])[0] + ')');
+  // D16 (25/11/2026, consulta 014): as nove Técnicas da Coração Incansável e o campo `folego` das armas saíram dos dados.
+  // A ficha salva que ainda guarda uma dessas ids, ou uma arma com `folego`, abre sem quebrar, e regrava sem o `folego`.
+  const antiga = structuredClone(salva);
+  antiga.proezas = [...(antiga.proezas || []), 'folego-profundo', 'incansavel', 'coracao-eterno'];
+  const itemAntigo = antiga.equipamento.conjuntos.find((c) => c.ativo).maoHabil.item; itemAntigo.arma.folego = 15;
+  const xpDe = () => p.evaluate(() => (document.body.innerText.match(/[^\n]*XP[^\n]*/g) || []).join(' | ').replace(/\s+/g, ' '));
+  await p.evaluate((f) => localStorage.setItem('centelha:ficha', JSON.stringify(f)), salva);
+  await p.reload({ waitUntil: 'domcontentloaded' });
+  await p.waitForFunction(() => /Ataque/.test(document.getElementById('combate')?.textContent || ''), { timeout: 60000 });
+  const xpBase = await xpDe();
+  await p.evaluate((f) => localStorage.setItem('centelha:ficha', JSON.stringify(f)), antiga);
+  await p.reload({ waitUntil: 'domcontentloaded' });
+  await p.waitForFunction(() => /Ataque/.test(document.getElementById('combate')?.textContent || ''), { timeout: 60000 });
+  const xpAntiga = await xpDe(), textoAntiga = await p.evaluate(() => document.body.innerText);
+  ok(!/NaN|undefined/.test(textoAntiga), 'ficha salva com ids de Técnica removidas e arma com folego: abre, sem NaN nem undefined na página');
+  ok(xpAntiga === xpBase, 'e as Técnicas removidas não contam XP (a mesma conta da ficha sem elas): ' + xpBase.slice(0, 120) + ' / ' + xpAntiga.slice(0, 120));
+  await p.$eval('[data-eqm]', (e) => { e.dispatchEvent(new Event('input', { bubbles: true })); });
+  const regravada = await p.evaluate(() => JSON.parse(localStorage.getItem('centelha:ficha')));
+  ok(!/"folego"\s*:/.test(JSON.stringify(regravada)), 'regravada: a arma salva com folego perde o campo');
+  ok((regravada.proezas || []).includes('folego-profundo'), 'regravada: a id da Técnica removida continua na ficha (nada é apagado calado)');
   ok(erros.length === 0, 'nenhum erro de página: ' + erros.join('; '));
 } finally { await browser.close(); await dev.parar(); }
 if (falhas.length) process.exitCode = 1; else { carimbar('test-ficha-item-inteiro'); console.log('✓ ficha: item inteiro OK'); }

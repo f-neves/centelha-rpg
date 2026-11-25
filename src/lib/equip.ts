@@ -198,8 +198,8 @@ export function tipoDaPeca(p: any): TipoDaPeca | null {
 
 /**
  * O envelope do catálogo, copiado: `origem` no lugar do `id`, sem os blocos vazios.
- * D-261: o Fôlego sai da ficha do personagem. O campo `folego` das armas fica no
- * catálogo, oculto e inerte (D-016), mas não entra na cópia que a ficha guarda.
+ * D-261 e D-016: o Fôlego saiu do sistema e o campo `folego` saiu do catálogo (D16, 25/11/2026);
+ * a cópia ainda o tira por garantia, e `semFolego` limpa o item que uma ficha antiga guardou.
  */
 export function copiaDoCatalogo(tipo: TipoItem, origem: string): any | null {
   const bruto = BRUTO[tipo][origem];

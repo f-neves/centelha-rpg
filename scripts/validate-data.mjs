@@ -100,7 +100,7 @@ const precoEnvelope = z.object({ pc: z.number().int().nonnegative() }).optional(
 const blocoArmaEnvelope = z.object({
   classe: z.enum(['leve', 'media', 'pesada', 'haste', 'distancia', 'arremesso']),
   atrib: z.string(), pericia: z.string(), dado: z.number().int().min(1).max(3), danoBonus: z.number().int().optional(), acerto: z.number().int(),
-  defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(), folego: z.number().int().min(0).optional(),
+  defesaArma: z.number().int(), maos: z.number().int().min(1).max(2), ticks: z.number().int(),
   // Preparo, Golpe e Recuperação (formato-criatura.md, seção 6); a soma tem de ser a Velocidade, conferida abaixo.
   pgr: z.tuple([z.number().int().min(1), z.literal(1), z.number().int().min(1)]).optional(),
   forcaMult: z.number().optional(), forcaCap: z.number().int().optional(), forcaMin: z.number().int().optional(),
