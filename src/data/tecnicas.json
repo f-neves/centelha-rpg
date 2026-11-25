@@ -2740,7 +2740,7 @@
       "pancada-destrutiva"
     ],
     "aliases": [],
-    "texto": "Um golpe de Romper com +6 (trilha de Bônus, nível 3) contra parede: derruba uma parede fraca (taipa, adobe ou tábuas) num golpe.",
+    "texto": "Um golpe de Romper com +6 (trilha de Bônus, nível 3) contra parede: derruba uma parede fraca (taipa, adobe ou tábuas) num golpe. Substitui a Técnica Pancada Destrutiva: só um bônus de Romper entra por golpe; o Demolidor soma por cima.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -2759,7 +2759,7 @@
       "abrir-brecha"
     ],
     "aliases": [],
-    "texto": "Um golpe de Romper com +9 (trilha de Bônus, nível 4) contra pedra e portão reforçado.",
+    "texto": "Um golpe de Romper com +9 (trilha de Bônus, nível 4) contra pedra e portão reforçado. Substitui as Técnicas Pancada Destrutiva e Abrir Brecha: só um bônus de Romper entra por golpe; o Demolidor soma por cima.",
     "pendente": false,
     "nivel": 4,
     "efeito": "bonus"
@@ -2797,7 +2797,7 @@
       "terremoto"
     ],
     "aliases": [],
-    "texto": "Um golpe de Romper com +15 (trilha de Bônus, nível 6) contra muralha ou torre.",
+    "texto": "Um golpe de Romper com +15 (trilha de Bônus, nível 6) contra muralha ou torre. Substitui as Técnicas Pancada Destrutiva, Abrir Brecha e Esmaga-Pedra: só um bônus de Romper entra por golpe; o Demolidor soma por cima.",
     "pendente": false,
     "nivel": 6,
     "efeito": "bonus"
