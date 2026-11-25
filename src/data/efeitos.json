@@ -6448,8 +6448,19 @@
       },
       {
         "nome": "Visão",
-        "tipo": "fixo",
-        "valor": "1 futuro provável por nível"
+        "tipo": "substitui",
+        "substitui": "visao",
+        "unidade": "futuros prováveis",
+        "escala": [
+          "—",
+          "1 futuro provável",
+          "2 futuros prováveis",
+          "3 futuros prováveis",
+          "4 futuros prováveis",
+          "5 futuros prováveis",
+          "6 futuros prováveis"
+        ],
+        "nota": "1 futuro provável por grau de Visão"
       }
     ],
     "efeito": "Você põe uma decisão na mesa e vê para onde cada caminho tende. Não são cenas fechadas: são inclinações, e mudam se alguém agir sabendo delas. Ver o próprio futuro cansa, e repetir na mesma cena não mostra nada de novo.",
@@ -6792,8 +6803,19 @@
       },
       {
         "nome": "Quantidade",
-        "tipo": "fixo",
-        "valor": "o que caberia num barril, por nível"
+        "tipo": "substitui",
+        "substitui": "quantidade",
+        "unidade": "barris de matéria",
+        "escala": [
+          "—",
+          "1 barril",
+          "2 barris",
+          "3 barris",
+          "4 barris",
+          "5 barris",
+          "6 barris"
+        ],
+        "nota": "o que caberia num barril, por grau de Quantidade"
       },
       {
         "nome": "Duração",
