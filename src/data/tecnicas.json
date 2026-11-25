@@ -7738,7 +7738,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "+4 em qualquer ofício ou reparo; enxerga a solução técnica que trava os outros.",
+    "texto": "+4 em qualquer ofício ou reparo; enxerga a solução técnica que trava os outros. Substitui a Técnica Mãos Hábeis: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
