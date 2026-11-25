@@ -348,7 +348,7 @@
       "soco-trovejante"
     ],
     "aliases": [],
-    "texto": "**+3d6** de dano num único golpe colossal.",
+    "texto": "**+3d6** de dano num único golpe colossal. Substitui as Técnicas Golpe Pesado e Pancada Atordoante no dano desse golpe (os bônus de dano não somam).",
     "pendente": false,
     "nivel": 4,
     "efeito": "dano"
@@ -364,7 +364,7 @@
       "esmagar"
     ],
     "aliases": [],
-    "texto": "Suas mãos quebram pedra e metal; ataques ignoram 6 de Absorção de armaduras mundanas (não a Absorção natural do alvo).",
+    "texto": "Suas mãos quebram pedra e metal; ataques ignoram 6 de Absorção de armaduras mundanas (não a Absorção natural do alvo). Substitui a Técnica Esmagar: os 6 de Absorção ignorados não somam com os 4.",
     "pendente": false,
     "nivel": 4,
     "efeito": "penetracao"
@@ -7191,7 +7191,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Concentra o golpe num só ponto: +1d6 de dano e o alvo cambaleia, agindo com −2 na ação seguinte.",
+    "texto": "Concentra o golpe num só ponto: +1d6 de dano e o alvo cambaleia, agindo com −2 na ação seguinte. Substitui a Técnica Golpe Pesado no dano do golpe (os dois +1d6 não somam); o cambalear vem por cima.",
     "pendente": false,
     "nivel": 2,
     "efeito": "dano"
