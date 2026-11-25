@@ -2545,7 +2545,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "Ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
+    "texto": "Ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra). Substitui as Técnicas Força de Carga e Erguer o Enorme: o ×4 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2579,7 +2579,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "Sustenta pesos imensos por longos períodos (~×4 o normal).",
+    "texto": "Sustenta pesos imensos por longos períodos (~×4 o normal). Substitui as Técnicas Força de Carga e Erguer o Enorme: o ×4 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2635,7 +2635,7 @@
       "arrancar"
     ],
     "aliases": [],
-    "texto": "Ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
+    "texto": "Ergue carroças, estátuas e pedras de tonelada (~×30 o normal). Substitui as Técnicas Força de Carga, Erguer o Enorme e Levantamento Poderoso: o ×30 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 5,
     "efeito": "carga"
@@ -2654,7 +2654,7 @@
       "forca-titanica"
     ],
     "aliases": [],
-    "texto": "Sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
+    "texto": "Sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco). Substitui as Técnicas Força de Carga, Erguer o Enorme, Levantamento Poderoso, Carregar o Mundo, Força Titânica e Arremesso: o ×100 não soma com os outros multiplicadores.",
     "pendente": false,
     "nivel": 6,
     "efeito": "carga"
@@ -7173,7 +7173,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "Levanta acima da cabeça, por um instante, o que precisaria de duas pessoas; capacidade de carga ×3.",
+    "texto": "Levanta acima da cabeça, por um instante, o que precisaria de duas pessoas; capacidade de carga ×3. Substitui a Técnica Força de Carga: o ×3 não soma com o ×2.",
     "pendente": false,
     "nivel": 2,
     "efeito": "carga"
