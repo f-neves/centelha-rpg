@@ -2285,8 +2285,19 @@
       },
       {
         "nome": "Bônus",
-        "tipo": "fixo",
-        "valor": "+1d6 por nível nas rolagens sociais com o alvo"
+        "tipo": "substitui",
+        "substitui": "bonus",
+        "unidade": "d6 somados nas rolagens sociais com o alvo",
+        "escala": [
+          "—",
+          "+1d6",
+          "+2d6",
+          "+3d6",
+          "+4d6",
+          "+5d6",
+          "+6d6"
+        ],
+        "nota": "+1d6 por grau de Bônus nas rolagens sociais com o alvo"
       },
       {
         "nome": "Conjurar",
@@ -4254,8 +4265,19 @@
       },
       {
         "nome": "Bônus",
-        "tipo": "fixo",
-        "valor": "+1d6 por nível nas rolagens daquele sentido"
+        "tipo": "substitui",
+        "substitui": "bonus",
+        "unidade": "d6 somados nas rolagens daquele sentido",
+        "escala": [
+          "—",
+          "+1d6",
+          "+2d6",
+          "+3d6",
+          "+4d6",
+          "+5d6",
+          "+6d6"
+        ],
+        "nota": "+1d6 por grau de Bônus nas rolagens daquele sentido"
       },
       {
         "nome": "Duração",
@@ -6493,8 +6515,19 @@
       },
       {
         "nome": "Bônus",
-        "tipo": "fixo",
-        "valor": "+1d6 por nível, uma vez a cada 6 Ticks, na rolagem que o alvo escolher"
+        "tipo": "substitui",
+        "substitui": "bonus",
+        "unidade": "d6 somados na rolagem que o alvo escolher",
+        "escala": [
+          "—",
+          "+1d6",
+          "+2d6",
+          "+3d6",
+          "+4d6",
+          "+5d6",
+          "+6d6"
+        ],
+        "nota": "+1d6 por grau de Bônus, uma vez a cada 6 Ticks, na rolagem que o alvo escolher"
       }
     ],
     "efeito": "A sorte fica do lado de quem você marcou enquanto durar: a corda aparece, o guarda olha para o outro lado, o dado vira. Não é bônus constante, é uma coincidência a cada 6 Ticks.",
