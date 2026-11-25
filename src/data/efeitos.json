@@ -1902,8 +1902,7 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível",
+        "tipo": "padrao",
         "nota": "só em quem atravessa, uma vez a cada 6 Ticks"
       },
       {
@@ -1952,8 +1951,7 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível"
+        "tipo": "padrao"
       },
       {
         "nome": "Duração",
@@ -2071,8 +2069,7 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível",
+        "tipo": "padrao",
         "nota": "só contra objeto de matéria morta"
       },
       {
@@ -4839,8 +4836,7 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível",
+        "tipo": "padrao",
         "nota": "em quem a mata prender no lance"
       },
       {
@@ -6291,8 +6287,8 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível, uma vez por dia"
+        "tipo": "padrao",
+        "nota": "uma vez por dia"
       },
       {
         "nome": "Duração",
