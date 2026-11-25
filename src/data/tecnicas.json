@@ -6964,7 +6964,7 @@
       "olhar-perspicaz"
     ],
     "aliases": [],
-    "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+6** nas jogadas sociais que explorem o que captou.",
+    "texto": "Uma ação para mapear tensões, alianças e o humor de um **grupo inteiro**; ganha **+6** nas jogadas sociais que explorem o que captou. Soma com a Técnica Tomar o Pulso.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7021,7 +7021,7 @@
       "antecipar-o-gesto"
     ],
     "aliases": [],
-    "texto": "Por uma cena, lê intenções como livro aberto: nenhuma mentira ou disfarce social passa sem que você role para perceber, e sente as **motivações reais** de quem o encara.",
+    "texto": "Por uma cena, lê intenções como livro aberto: toda mentira ou disfarce social dá a você a jogada do Farejar a Mentira, mesmo sem desconfiar, e você sente sem rolar as **motivações reais** de quem o encara.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
