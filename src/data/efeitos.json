@@ -3048,8 +3048,19 @@
       },
       {
         "nome": "Absorção",
-        "tipo": "fixo",
-        "valor": "+1 por nível, contra tudo o que vem de fora"
+        "tipo": "substitui",
+        "substitui": "absorcao",
+        "unidade": "pontos de Absorção",
+        "escala": [
+          "—",
+          "+1",
+          "+2",
+          "+3",
+          "+4",
+          "+5",
+          "+6"
+        ],
+        "nota": "+1 por grau de Absorção, contra tudo o que vem de fora"
       },
       {
         "nome": "Duração",
@@ -6864,8 +6875,19 @@
       },
       {
         "nome": "Absorção",
-        "tipo": "fixo",
-        "valor": "+2 por nível contra tudo o que vier de fora"
+        "tipo": "substitui",
+        "substitui": "absorcao",
+        "unidade": "pontos de Absorção",
+        "escala": [
+          "—",
+          "+2",
+          "+4",
+          "+6",
+          "+8",
+          "+10",
+          "+12"
+        ],
+        "nota": "+2 por grau de Absorção, contra tudo o que vier de fora"
       },
       {
         "nome": "Duração",
