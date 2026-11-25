@@ -4003,7 +4003,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "Usa uma alavanca para dobrar a vontade de alguém.",
+    "texto": "Usa uma alavanca para dobrar a vontade de alguém. Substitui a Técnica Alavanca.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
