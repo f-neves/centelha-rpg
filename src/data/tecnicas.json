@@ -7493,7 +7493,7 @@
       "duas lâminas",
       "mão trocada"
     ],
-    "texto": "Suas duas mãos golpeiam como uma só. Efeito em recalibração: na empunhadura dupla as duas mãos já atacam a −1d6, sem penalidade extra na inábil, e o que esta Proeza dará de novo será decidido na recalibração das Proezas.",
+    "texto": "Suas duas mãos golpeiam como uma só. Golpeando com as duas armas, a Defesa no Tick do Golpe fica em −2, e não em −4: o mesmo alívio que quem golpeia com uma só já tem.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"

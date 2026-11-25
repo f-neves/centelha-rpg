@@ -1225,7 +1225,9 @@ function conferirNove(T) {
   const f = [];
   const L = T.comb.split('\n');
   if (!L.includes('- **as duas mãos atacam a −1d6** (coordenar dois gumes tira precisão, e tira igual das duas);')) f.push('Combate, empunhadura dupla (B2): a linha "as duas mãos atacam a −1d6 (...);" devia ser inteira e sem a Ambidestria');
-  if (/Ambidestria|apaga esse dado extra/.test(T.comb)) f.push('Combate (B2): sobrou a Ambidestria ou "apaga esse dado extra"');
+  // D18 (25/11/2026): a Ambidestria volta ao Combate numa única frase, o alívio da Defesa no Tick do Golpe; o dado extra segue sem ela
+  if (/apaga esse dado extra/.test(T.comb) || T.comb.split('Ambidestria').length !== 2) f.push('Combate (B2/D18): sobrou "apaga esse dado extra" ou a Ambidestria não aparece exatamente uma vez (a frase do alívio da Defesa)');
+  if (!T.comb.includes('Quem tem a Técnica **Ambidestria** tem o mesmo alívio golpeando com as duas.')) f.push('Combate (D18): falta a frase do alívio da Defesa da Ambidestria');
   // a ficha: a mão inábil a −1d6 e sem ler a Técnica
   const FL = T.ficha.split('\n');
   if (!FL.some((x) => /^\s*inabilPen: 1,$/.test(x))) f.push('motor.ts (B2): falta a linha "inabilPen: 1," (sem penalidade extra na inábil, D-091)');
@@ -1234,7 +1236,7 @@ function conferirNove(T) {
   const amb = (T.tecnicas || []).find((x) => x.id === 'ambidestria');
   if (!amb) f.push('tecnicas.json (B2): a Ambidestria saiu da lista (o id tem de ficar, por causa da ficha salva)');
   else {
-    if (amb.texto !== 'Suas duas mãos golpeiam como uma só. Efeito em recalibração: na empunhadura dupla as duas mãos já atacam a −1d6, sem penalidade extra na inábil, e o que esta Proeza dará de novo será decidido na recalibração das Proezas.') f.push('tecnicas.json, Ambidestria (B2): o texto devia ser a descrição com "Efeito em recalibração"');
+    if (amb.texto !== 'Suas duas mãos golpeiam como uma só. Golpeando com as duas armas, a Defesa no Tick do Golpe fica em −2, e não em −4: o mesmo alívio que quem golpeia com uma só já tem.') f.push('tecnicas.json, Ambidestria (D18): o texto devia ser o da decisão de 25/11/2026 (Defesa −2 no Tick do Golpe golpeando com as duas)');
     if (/−2d6|−4 pelos próximos 6 Ticks/.test(amb.texto)) f.push('tecnicas.json, Ambidestria (B2): sobrou o "−2d6" ou o "−4 pelos próximos 6 Ticks"');
   }
   // B4, B5, B6, B8

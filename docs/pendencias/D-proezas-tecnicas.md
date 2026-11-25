@@ -150,14 +150,14 @@ Detalhe em `Proezas_revisao.md`.
     de Arte Centelha + 2 como TOLERÂNCIA ("ainda não é definitivo", LEVANTA QUANDO o autor fechar o
     teto do mortal), e o comentário de `:177` diz "provisório". O teto foi fechado pela D-006 e saiu do
     livro como "provisório" na rodada 8. O código não foi tocado (rodada 12, ordem do Arquiteto).
-- [ ] **D18 · [DECIDIR] O efeito novo da Técnica Ambidestria.** Registrado em 10/10/2026, vindo da K18
+- [x] **D18 · [FECHADA em 25/11/2026, decidida pelo coordenador por delegação do autor (consulta 008)] O efeito novo da Técnica Ambidestria: "Golpeando com as duas armas, a Defesa no Tick do Golpe fica em −2, e não em −4."** O mesmo alívio que o livro já dá a quem golpeia com uma só (`combate.md`, a régua das fases). Livro e dado (`tecnicas.json`); a ficha não mostra a Defesa por fase, então só o texto; o Grid não muda (D-054, N29). Registrado em 10/10/2026, vindo da K18
   (`K-combate-linha-do-tempo.md`), fechada pela D-091: a mão inábil não tem penalidade extra, então o que a
   Ambidestria fazia (tirar o −2d6 da inábil) sumiu. Na rodada 9 do plano das armas a Técnica fica na lista, com
   a descrição e "efeito em recalibração" (para não quebrar ficha salva), e a ficha deixa de lê-la.
   - **Candidata já levantada:** o "alívio de defesa", golpear com as duas e ficar a −2 em vez de −4 no Tick do
     Golpe (`Combate_Tempo.md` l.1234-1236). A outra candidata de lá, tratar par com média como par leve, foi
     medida (67,7%) e descartada.
-  - Decidir junto com a recalibração das Proezas.
+  - Decidir junto com a recalibração das Proezas (decidido: a candidata do alívio de defesa, em 25/11/2026).
 
 - [ ] **D19 · [ADIADO] Orçamento de XP da criação (R54).** Registrado em 05/11/2026. O autor adiou: o orçamento vai ser
   recalculado depois. Nada muda no livro agora; os exemplos que não fecham (Lia: 630 gastos) ficam como estão até o recálculo.
