@@ -5286,7 +5286,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa.",
+    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa. Substitui a Técnica Sempre Alerta.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
