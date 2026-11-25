@@ -1550,7 +1550,7 @@ export function montarFicha(opts: FichaOpts) {
         return r('Desloc. de Batalha', `${mp(dz.normal)} m/Tick`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${notaR}${ps} = ${mp(dz.normal)} m por Tick · o PRIMEIRO Tick é grátis durante outra ação (atacar, conjurar); daí em diante custa 1 Tick por Tick de movimento. Como o Tick é ~1 segundo, o número também é a sua velocidade em m/s: andar são 1,5 e correr passa de 5`, true) +
           r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `2 + Força ${A('forca')} ÷ 4 + Atletismo ${SK('atletismo')} ÷ 4 + Destreza ${dex} ÷ 2 · Ticks 1–3${notaR}${ps}`, true) +
           r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `4 + Destreza ${dex} × ¾ + Atletismo ${SK('atletismo')} ÷ 2 · Tick 4+${notaR}${ps}`, true) +
-          r('Vel. de Natação', `${mp(dz.natacao)} m/s`, `1 + Vigor ${vig} × ¾ + (Atletismo ${SK('atletismo')} + Natação ${natSk}) ÷ 2${notaR}${ps} · água calma, sem rolar; água brava continua teste (cap. Corpo e Movimento)`, true) +
+          r('Vel. de Natação', `${dz.natacao} m/s`, `1 + Vigor ${vig} × ¾ + (Atletismo ${SK('atletismo')} + Natação ${natSk}) ÷ 2${notaR} · água calma, sem rolar; água brava continua teste (cap. Corpo e Movimento)`, true) +
           r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50${notaR}`, true) +
           r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')} + Centelha ${C}) ÷ 2${notaR}${ps}`, true) +
           r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ${SK('atletismo')} ÷ 2 + Centelha ${C}${notaR}${ps}`, true); })();
