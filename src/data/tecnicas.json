@@ -2011,7 +2011,7 @@
       "inspirar"
     ],
     "aliases": [],
-    "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo.",
+    "texto": "Enquanto visível, aliados resistem melhor a medo e desânimo. Substitui a Técnica Farol de Coragem.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
