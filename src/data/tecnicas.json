@@ -7348,7 +7348,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "Passa por vãos mínimos, escapa de amarras e cai de pé de qualquer altura mundana, sem se ferir.",
+    "texto": "Passa por vãos mínimos, escapa de amarras e cai de pé de qualquer altura mundana, sem se ferir. Substitui a Técnica Queda de Gato na queda de altura mundana; fora do mundano, a Queda de Gato continua valendo.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
