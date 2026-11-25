@@ -883,7 +883,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "+4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1.",
+    "texto": "+4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1. Enquanto ativa, substitui as Técnicas Pele Curtida, Tensionar e Couro Endurecido: a Absorção não soma.",
     "pendente": false,
     "nivel": 3,
     "efeito": "soak"
@@ -7277,7 +7277,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "A pele curte-se: +3 de Absorção contra Impacto e +2 contra Corte, sem pesar no movimento.",
+    "texto": "A pele curte-se: +3 de Absorção contra Impacto e +2 contra Corte, sem pesar no movimento. Substitui as Técnicas Pele Curtida e Tensionar: a Absorção contra Impacto não soma.",
     "pendente": false,
     "nivel": 2,
     "efeito": "soak"
