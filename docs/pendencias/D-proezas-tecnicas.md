@@ -167,5 +167,5 @@ Detalhe em `Proezas_revisao.md`.
   duas; se substitui, vale a de nível maior), e que "o custo das Técnicas que substituem entra na recalibração das Proezas". O
   levantamento de `src/data/tecnicas.json` achou **89 pares em 46 Caminhos, com 64 Técnicas de nível maior a decidir**, e mais 23
   casos duvidosos: `docs/calibracao/proezas-t2-aumenta-ou-substitui.md` (critério, método, cada par com os dois textos). Quem decide
-  cada uma é a recalibração, não a revisão de textos: o texto das Técnicas não muda antes dela. A D18 (Ambidestria) e o cansaço do
-  poder inato, que a D-358 já pôs na mesma recalibração, seguem nos itens deles.
+  cada uma é a recalibração, não a revisão de textos: o texto das Técnicas não muda antes dela. A D18 (Ambidestria, fechada em 25/11/2026) e o cansaço do
+  poder inato (fechado em 25/11/2026: frase para o Mestre em `poderes-das-criaturas.md`, consulta 009, com exemplo, D-087), que a D-358 já pôs na mesma recalibração, seguem nos itens deles.

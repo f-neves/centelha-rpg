@@ -17,7 +17,7 @@ Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a fi
 
 **Substâncias produzidas.** Veneno, tinta, ácido, teia, sopro: o que o corpo fabrica. A ficha diz quantas doses o corpo guarda e quanto tempo leva para produzir cada nova dose. A criatura só usa o que já foi produzido, gasta apenas a substância, e nada acelera a produção.
 
-**Poderes inatos.** O que é da natureza da criatura: sentidos, auras, corpo incorpóreo, mudar de forma, atravessar a pedra. Não gastam nada e, em geral, não têm limite de uso ou estão sempre ativos. Usar muito um poder inato ativo causa esforço e pode levar ao cansaço (a mecânica do esforço e do cansaço ainda está pendente); uma aura passiva não cansa quem a tem.
+**Poderes inatos.** O que é da natureza da criatura: sentidos, auras, corpo incorpóreo, mudar de forma, atravessar a pedra. Não gastam nada e, em geral, não têm limite de uso ou estão sempre ativos. O Mestre pode cobrar um degrau de Desgaste de quem usa um poder inato ativo sem parar (por exemplo, mudar de forma várias vezes na mesma cena); a aura passiva não cansa.
 
 **Ações sobrenaturais.** O que a criatura faz para caçar, atacar ou se defender: o canto que atrai, o olhar que domina. A ficha diz quantos usos grátis a criatura tem por cena ou por dia; fora das substâncias, nenhum uso volta por hora. Os usos seguintes custam Energia ou Mana, como a ficha indicar.
 
