@@ -7774,7 +7774,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "Antevê o próximo movimento do inimigo: +4 para reagir ou reposicionar um aliado a tempo.",
+    "texto": "Antevê o próximo movimento do inimigo: +4 para reagir ou reposicionar um aliado a tempo. Soma com a Técnica Antecipar.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
