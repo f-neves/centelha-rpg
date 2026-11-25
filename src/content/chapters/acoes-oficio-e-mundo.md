@@ -28,9 +28,13 @@ Fabricar é **Longa** por padrão. Vira **Acumulada** só quando há pressa real
 
 <p class="formula">Acúmulo total = Montagem + (Peça × unidades)</p>
 
-Requisito e Dificuldade parecem a mesma coisa dita duas vezes, e não são. **O Requisito é conhecimento e a Dificuldade é execução**, e as duas se separam nos extremos da bancada: uma **cota de malha** é Requisito 2 com Acúmulo enorme, porque qualquer ferreiro sabe abrir, passar e rebitar um anel, e são milhares deles; uma **fechadura de segredo** é Requisito 5 com Acúmulo pequeno, porque são poucos dias de trabalho que quase ninguém sabe fazer.
+Requisito e Dificuldade parecem a mesma coisa dita duas vezes, e não são.
 
-Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não substitui não saber. As exceções são duas, as duas mais abaixo: na fabricação, quem ajuda sob a condução de alguém que cumpre o Requisito da peça não precisa cumpri-lo, mas trabalha contra a Dificuldade da peça (Ajuda); na obra, o ajudante sob direção de quem tem o ofício não tem Requisito nenhum e trabalha contra a Dificuldade 4 (Direção de obra). Nos dois casos, quem sabe é quem conduz.
+**O Requisito é conhecimento e a Dificuldade é execução**, e as duas se separam nos extremos da bancada: uma **cota de malha** é Requisito 2 com Acúmulo enorme, porque qualquer ferreiro sabe abrir, passar e rebitar um anel, e são milhares deles; uma **fechadura de segredo** é Requisito 5 com Acúmulo pequeno, porque são poucos dias de trabalho que quase ninguém sabe fazer.
+
+Só a **Habilidade** conta para o Requisito, nunca a soma com o Atributo: destreza de mão não substitui não saber.
+
+As exceções são duas, as duas mais abaixo: na fabricação, quem ajuda sob a condução de alguém que cumpre o Requisito da peça não precisa cumpri-lo, mas trabalha contra a Dificuldade da peça (Ajuda); na obra, o ajudante sob direção de quem tem o ofício não tem Requisito nenhum e trabalha contra a Dificuldade 4 (Direção de obra). Nos dois casos, quem sabe é quem conduz.
 
 O **Piso** existe porque há serviço que não é técnica, é mão. Uma cota de malha são milhares de anéis rebitados um a um, e nenhuma Habilidade do mundo cria dedos extras: o mestre ferreiro faz uma cota **melhor** que o oficial, não uma cota em três dias.
 
@@ -46,7 +50,9 @@ Fora do território, a regra é uma só:
 
 <p class="formula">Sem o ofício específico, a Dificuldade sobe <b>+4</b> · e Ofícios Gerais vale <b>metade</b> ao conferir o Requisito</p>
 
-O primeiro é um degrau, não uma parede: um faz-tudo excepcional bate uma espada simples, e leva cinco dias e meio nela. O segundo é a parede de verdade, e é o que fecha a fechadura de segredo, a placa completa sob medida, a peça de joalheria e o casco de navio a quem não tem o ofício.
+O primeiro é um degrau, e não uma parede: um faz-tudo excepcional bate uma espada simples, e leva cinco dias e meio nela.
+
+O segundo é a parede de verdade, e é o que fecha a fechadura de segredo, a placa completa sob medida, a peça de joalheria e o casco de navio a quem não tem o ofício.
 
 Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**, ilimitadas e mais baratas: Ferreiro, Carpintaria, Alvenaria, Engenharia, Couraria, Costura, Joalheria, Gastronomia, Artesanato, Navegação, e o que mais a história pedir (Olaria, Vidraria). O Atributo é **Destreza** para trabalho de mão e **Inteligência** para projeto, traçado e cálculo.
 
@@ -63,7 +69,9 @@ Os ofícios são **[Habilidades Secundárias](/regras/habilidades-secundarias)**
 | 5 | 62 | 31,0 | 6,2 |
 | 8 | 92 | 46,0 | 5,8 |
 
-O ganho é grande e satura, que é como funciona de verdade. O limite do lote é físico, não numérico: quantas peças cabem no fogo, na bancada, no tear. Na falta de um número melhor, **oito** para peça de mão e **três** para peça grande. O lote exige unidades **iguais**: cinco espadas do mesmo modelo são um lote, mas uma espada, um elmo e uma panela são três montagens.
+O ganho é grande e satura, que é como funciona de verdade.
+
+O limite do lote é físico, não numérico: quantas peças cabem no fogo, na bancada, no tear. Na falta de um número melhor, **oito** para peça de mão e **três** para peça grande. O lote exige unidades **iguais**: cinco espadas do mesmo modelo são um lote, mas uma espada, um elmo e uma panela são três montagens.
 
 ## A qualidade move os cinco números de uma vez
 
@@ -95,7 +103,9 @@ A espada serve de gabarito da régua inteira:
 | Ótima | 5 | 13 | 50 | **semana** | mestre (soma 12), 10 semanas |
 | Excelente | 6 | 16 | 74 | semana | mestre em oficina de mestre, ~12 semanas |
 
-A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da peça de tropa. E a última linha mostra o teto do sistema funcionando: a soma máxima de um humano é 12, o que dá média 18 e dois pontos por semana contra a Dificuldade 16, ou seja 37 semanas. Na oficina de mestre a Dificuldade cai para 12, e são seis pontos por semana, cerca de 12 semanas. **Uma espada Excelente não sai numa forja de vila**: exige a soma máxima humana (12) e a oficina de mestre da régua abaixo, não um bônus à parte somado por cima.
+A subida do intervalo na Ótima é o que impede a peça fina de sair no ritmo da peça de tropa.
+
+E a última linha mostra o teto do sistema funcionando: a soma máxima de um humano é 12, o que dá média 18 e dois pontos por semana contra a Dificuldade 16, ou seja 37 semanas. Na oficina de mestre a Dificuldade cai para 12, e são seis pontos por semana, cerca de 12 semanas. **Uma espada Excelente não sai numa forja de vila**: exige a soma máxima humana (12) e a oficina de mestre da régua abaixo, não um bônus à parte somado por cima.
 
 Para baixo a régua serve à mesa tanto quanto para cima: é o que o bando forja no acampamento, o que o exército distribui à tropa, e o que o mercador tenta empurrar como Comum.
 
@@ -110,7 +120,9 @@ São os ±2 e ±4 de circunstância, e no ofício eles são o principal caminho 
 | **Oficina** | de mestre, completa | bem equipada | oficina comum | ferramenta de campo | improviso, sem bancada |
 | **Material** | excepcional, raro | selecionado | corrente | de segunda, remendado | sucata |
 
-O material precisa **alcançar o grau pretendido**: não sai peça Excelente de aço corrente, por melhor que seja o ferreiro. Como regra de bolso, o material custa cerca de **um terço** do preço da peça pronta, e metade ou mais em alvenaria e construção naval, onde a pedra e a madeira é que pesam.
+O material precisa **alcançar o grau pretendido**: não sai peça Excelente de aço corrente, por melhor que seja o ferreiro.
+
+Como regra de bolso, o material custa cerca de **um terço** do preço da peça pronta, e metade ou mais em alvenaria e construção naval, onde a pedra e a madeira é que pesam.
 
 **Ajuda.** Ofício é quase sempre tarefa divisível, então os **Acúmulos somam**: cinco carpinteiros levantam a casa em um quinto do tempo. Mas a qualidade é da mão que conduz.
 
@@ -122,7 +134,11 @@ A condução **herda os modificadores**. Oficina e material são circunstâncias
 
 **O braçal, que não tem o ofício, não soma na espada em nenhuma oficina**: na de mestre, a Dificuldade dele é 7 − 4 + 4 = 7, e a média 6 não passa dela. Os aprendizes, de Habilidade 1 ou 2, somam numa oficina de mestre; numa bem equipada, só os de soma 4 ou mais.
 
-**Direção de obra.** Esta regra é de **obra**, e não de fabricação. Obra é **construção fixa no lugar** (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da **escala de estações**; todo o resto é fabricação, qualquer que seja o ofício da linha. A carroça e o barco de pesca são fabricação; o navio de guerra é obra. O braçal tem média 6, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
+**Direção de obra.** Esta regra é de **obra**, e não de fabricação.
+
+Obra é **construção fixa no lugar** (casa, celeiro, forja, moinho, muralha, ponte, catedral) ou peça da **escala de estações**; todo o resto é fabricação, qualquer que seja o ofício da linha. A carroça e o barco de pesca são fabricação; o navio de guerra é obra.
+
+O braçal tem média 6, e numa obra de Dificuldade 11 ele contribuiria com um número negativo: pela regra crua, carregar pedra atrapalharia. O que falta é a figura do mestre de obras.
 
 <p class="formula">Numa obra, sob direção de quem tem o ofício, o ajudante sem ofício trabalha contra <b>Dificuldade 4</b></p>
 
@@ -132,7 +148,9 @@ Quem pensa é o mestre; o ajudante executa serviço simples, e serviço simples 
 
 ## As tabelas de referência
 
-O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6, Habilidade 3, média 9), para uma unidade, sem ajuda, em qualidade Comum. O perito é soma 9 (média 14) e o mestre é soma 12 (média 18). "Fechada ao oficial" quer dizer que ele não faz a peça: ou o Requisito passa da Habilidade dele, ou a média dele não passa da Dificuldade, como na Lamelar.
+O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6, Habilidade 3, média 9), para uma unidade, sem ajuda, em qualidade Comum. O perito é soma 9 (média 14) e o mestre é soma 12 (média 18).
+
+"Fechada ao oficial" quer dizer que ele não faz a peça: ou o Requisito passa da Habilidade dele, ou a média dele não passa da Dificuldade, como na Lamelar. Na coluna Ofício, "Gerais" só lembra as peças típicas do faz-tudo. Quem decide se Ofícios Gerais faz uma peça é a regra do território, e ela vale para toda linha, com a palavra ou sem ela: Ofícios Gerais 4 faz também o escudo e o gambeson, de Dificuldade 4. Os tempos são o Acúmulo dividido pelo que a média passa da Dificuldade, arredondados: à meia unidade nas escalas de horas e de dias, e à unidade inteira na de semanas.
 
 **A jornada é do ofício.** O "dia" destas tabelas é uma **jornada** daquele ofício: **6 horas** no ofício leve (escrivão, acadêmico), **8** no artesão, **10** no braçal e no trabalho pesado. A linha em escala de horas converte pela jornada do próprio ofício, e **meia jornada é meio intervalo**.
 
@@ -189,15 +207,19 @@ O tempo da última coluna é o do **oficial**, o artesão comum de vila (soma 6,
 | Muralha, ponte de pedra | Engenharia | 4 | 11 | 3 | 20 | 2 |
 | Navio de guerra, catedral | Carpintaria, Alvenaria | 5 | 11 | 4 | 40 | 4 |
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Uma muralha tocada por um mestre de obras (média 14, três pontos por estação contra a Dificuldade 11) e dez braçais (média 6, dois cada contra a Dificuldade 4 da direção) avança <b>23 por estação</b>. Um trecho de Acúmulo 23 sai numa estação de trabalho, e sai da obra na segunda, que é o piso.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Uma muralha tocada por um perito como mestre de obras (média 14, três pontos por estação contra a Dificuldade 11) e dez braçais (média 6, dois cada contra a Dificuldade 4 da direção) avança <b>23 por estação</b>. Um trecho de Acúmulo 23 sai numa estação de trabalho, e sai da obra na segunda, que é o piso.</div>
 
 ## Reparar, melhorar, improvisar, desmontar
 
-**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado. **Dano leve:** sem Montagem e um quarto da Peça; dá para fazer no campo, sem oficina, com Ofícios Gerais ou o ofício. **Dano pesado:** metade da Montagem e metade da Peça, e precisa de oficina. **Arruinada**, com material aproveitável: Montagem e Peça inteiras. Por encomenda, o reparo custa cerca de **1/10 do preço** da peça no dano leve, **1/3** no pesado e **2/3 mais o material que faltar** na arruinada. E há uma distinção que vale a pena:
+**Reparar.** Mesma Dificuldade e mesmo intervalo da peça, com o Acúmulo cortado. Armas, armaduras e escudos têm régua própria, a [Integridade](/regras/armas-e-armaduras#integridade-do-equipamento).
+
+**Dano leve:** sem Montagem e um quarto da Peça; dá para fazer no campo, sem oficina, com Ofícios Gerais ou o ofício. **Dano pesado:** metade da Montagem e metade da Peça, e precisa de oficina. **Arruinada**, com material aproveitável: Montagem e Peça inteiras.
+
+Por encomenda, o reparo custa cerca de **1/10 do preço** da peça no dano leve, **1/3** no pesado e **2/3 mais o material que faltar** na arruinada. E há uma distinção que vale a pena:
 
 <p class="formula">Ofícios Gerais devolve a peça ao <b>uso</b> · só o ofício devolve a <b>qualidade</b></p>
 
-Uma Espada Longa Ótima remendada no acampamento volta a cortar como uma espada Comum. Os graus voltam quando um ferreiro de verdade puser a mão nela.
+Uma sela Ótima remendada no acampamento volta a servir como uma sela Comum. Os graus voltam quando um coureiro de verdade puser a mão nela.
 
 **Melhorar.** Um grau de cada vez, com o Requisito, a Dificuldade e o intervalo do grau pretendido, e o Acúmulo de **metade** do que aquele grau custaria de novo. Uma espada Comum vira Boa por 17 em vez de 33. É por aqui que uma espada de saque vira a espada do personagem.
 

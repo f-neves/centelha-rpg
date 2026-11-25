@@ -71,7 +71,8 @@ const linhaDados = (a: any) => ({
 
   <section data-bloco>
   <h2>Armas à Distância</h2>
-  <p class="muted">No lugar da Defesa entra a <strong>Efetiva</strong>, a distância até a qual se acerta sem a distância atrapalhar (alvo Médio, a mesma para qualquer personagem): arma de projétil não guarda, então não acrescenta nada ao Bloqueio. Além dela a mira custa −3 por meia Efetiva, sem teto. A distância <em>máxima</em> é outra conta: nos arcos vem da Força, nas bestas é fixa, e no <strong>Arremesso</strong> vem do seu <strong>FAA</strong> e do peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco Peso, Arremesso e Corrida da ficha fazem essa conta).</p>
+  <p class="muted">No lugar da Defesa entra a <strong>Efetiva</strong>, a distância até a qual se acerta sem a distância atrapalhar (alvo Médio, a mesma para qualquer personagem): arma de projétil não guarda, então não acrescenta nada ao Bloqueio.</p>
+  <p class="muted">Além dela a mira custa −3 por meia Efetiva, sem teto. A distância <em>máxima</em> é outra conta: nos arcos vem da Força, nas bestas é fixa, e no <strong>Arremesso</strong> vem do seu <strong>FAA</strong> e do peso (a tabela de Arremessar, em Corpo e Movimento, e o bloco Peso, Arremesso e Corrida da ficha fazem essa conta).</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Arma</th><th>Classe</th><th class="c">Dano</th><th class="c">Acerto</th><th class="c">Efetiva</th><th class="c">Mãos</th><th class="c">Velocidade</th><th>Modos</th><th>Habilidade</th><th>Tags</th></tr></thead>
@@ -100,8 +101,9 @@ const linhaDados = (a: any) => ({
   <h2>Armaduras</h2>
   {/* TOLERÂNCIA: cinco armaduras ainda com números de simulação (K2b do veterana-1e). */}
   {/* LEVANTA QUANDO: o balanceamento final das armaduras fechar os números delas. */}
-  <p class="muted">Peitoral, Camisa de malha, Peitoral reforçado, Placa articulada e Malha completa: valores provisórios, sujeitos a balanceamento final, exceto o preço.</p>
-  <p class="muted">Três Absorções: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (o dano Perfurante usa o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala, e ele <em>não soma</em> ao empilhar (vale o maior). A <strong>Penalidade</strong> incide em qualquer ação física (Ataque, Esquiva, Bloqueio, Deslocamento, Salto) e <strong>dobra</strong> para Furtividade e atividades delicadas (na Furtividade, esse dobro é a Circunstância da armadura na Dificuldade, e é uma cobrança só; na natação, a Circunstância da armadura substitui a Penalidade). Empilhar vale o maior Absorção de cada categoria; as penalidades somam.</p>
+  <p class="muted">Peitoral, Camisa de malha, Peitoral reforçado, Placa articulada e Malha completa: valores provisórios, sujeitos a balanceamento final.</p>
+  <p class="muted">Três Absorções: <strong>Impacto</strong>, <strong>Corte</strong> e <strong>Perfuração</strong> (o dano Perfurante usa o de Perfuração). O <strong>Nível</strong> entre parênteses é a Resistência à Perfuração: a Perfuração da arma precisa ser ≥ ele, senão resvala, e ele <em>não soma</em> ao empilhar (vale o maior).</p>
+  <p class="muted">A <strong>Penalidade</strong> incide em qualquer ação física (Ataque, Esquiva, Bloqueio, Deslocamento, Salto; no Deslocamento, na Corrida e nos Saltos, ela inteira: −1 m por ponto nas medidas horizontais, e no <a href={url('regras/combate#salto-velocidade-3')}>Salto Vertical</a> −10 cm por ponto, até o mínimo de 0) e <strong>dobra</strong> para Furtividade e atividades delicadas (na Furtividade, esse dobro é a Circunstância da armadura na Dificuldade, e é uma cobrança só; na natação, a Circunstância da armadura substitui a Penalidade). Empilhar vale a maior Absorção de cada categoria; as penalidades somam.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Armadura</th><th class="c">Classe</th><th class="c">Impacto</th><th class="c">Corte</th><th class="c">Perfuração (Nível)</th><th class="c">Penalidade</th><th>Notas</th></tr></thead>
@@ -114,7 +116,9 @@ const linhaDados = (a: any) => ({
   </div>
 
   <h2>Escudos</h2>
-  <p class="muted">Escudo é <strong>bônus de Defesa</strong> (ajuda a não ser acertado), não absorção: some ao seu <strong>Bloqueio</strong>, como a Defesa de uma arma. Contra <strong>projéteis rápidos</strong> (flecha, virote, bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso) ele é a <em>única</em> forma de bloquear: só quem tem um escudo <strong>hábil</strong> (cobre ≥30% do corpo, do redondo para cima num usuário Médio) e está <strong>apto</strong> a manejá-lo bloqueia; sem isso, resta a Esquiva. A <strong>Penalidade</strong> incide nas outras ações físicas (esquiva etc.), nunca no bloqueio do próprio escudo.</p>
+  <p class="muted">Escudo é <strong>bônus de Defesa</strong> (ajuda a não ser acertado), não absorção: some ao seu <strong>Bloqueio</strong>, como a Defesa de uma arma.</p>
+  <p class="muted">Contra <strong>projéteis rápidos</strong> (flecha, virote, bala de funda, Shuriken, Mini-faca, Kunai, Adaga de Arremesso) ele é a <em>única</em> forma de bloquear: só quem tem um escudo <strong>hábil</strong> (cobre ≥30% do corpo, do Hoplon para cima num usuário Médio) e está <strong>apto</strong> a manejá-lo bloqueia; sem isso, resta a Esquiva.</p>
+  <p class="muted">A <strong>Penalidade</strong> incide nas outras ações físicas (esquiva etc.), nunca no bloqueio do próprio escudo.</p>
   <div class="table-wrap">
     <table>
       <thead><tr><th>Escudo</th><th class="c">Defesa</th><th class="c">vs Projétil rápido</th><th class="c">Penalidade</th><th>Estilo</th></tr></thead>

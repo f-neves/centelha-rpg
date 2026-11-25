@@ -211,7 +211,7 @@
       "duracao": "até o fim da cena",
       "alcance": "90 m",
       "area": "um animal do mar, ou um cardume",
-      "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+      "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
       "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"

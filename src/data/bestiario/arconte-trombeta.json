@@ -245,11 +245,11 @@
     },
     {
       "campo": "habilidadesEspeciais.Trombeta paralisante",
-      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Velocidade sugerida 6, pela referência de ativação com o corpo. valor de molde, para a bancada (uso extra de 1 de Mana)."
+      "motivo": "R10 e D-197. Dificuldade sugerida 15 para resistir à imobilidade imposta pelo poder. R10 e D-197. Duração sugerida de 6 Ticks para abrir uma janela de combate com o corpo paralisado. R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Velocidade sugerida 6, pela referência de ativação com o corpo. valor de molde, para a bancada (uso extra de 1 de Mana). Uso extra: sem Efeito na base (poder da ficha sem base; a conta da T7 não parte de nada)."
     },
     {
       "campo": "habilidadesEspeciais.Trombeta e espada",
-      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 6 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana). Uso extra: falta grau de Alcance e Duração (piso 0 pela T7, RT-134.6)."
     },
     {
       "campo": "habilidadesEspeciais.Resistência à magia",

@@ -638,7 +638,7 @@
     "tags": [
       "munição",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -683,7 +683,7 @@
     "tags": [
       "munição",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -723,11 +723,11 @@
       "pc": 550
     },
     "peso": 0.7,
-    "descricao": "Laminado de chifre e tendão: exige Força 4 para armar, e soma Força×2 ao dano. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
+    "descricao": "Laminado de chifre e tendão: só rende o dobro da Força, e o bônus de +2, com Força 4 ou mais; com menos, rende como um Arco Longo. Grande, alcance longo, arma cara. Perfura couro e malha (N1), resvala na placa.",
     "tags": [
       "munição",
       "distância",
-      "projétil veloz",
+      "projétil rápido",
       "caro"
     ],
     "arma": {
@@ -774,7 +774,7 @@
       "munição",
       "recarga",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -814,12 +814,12 @@
       "pc": 550
     },
     "peso": 4.5,
-    "descricao": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta (12 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo. A resposta de longe contra tropa e cavalo. Besta pesada é o nome que a fonte (D&D e Pathfinder) dá a ela.",
+    "descricao": "O virote (N1) fura couro e malha e resvala na placa; recarga lenta (12 Ticks) e PARADO: o Preparo dela não admite deslocamento, nem o primeiro Tick de graça. Alcance longo. A resposta de longe contra tropa e cavalo.",
     "tags": [
       "munição",
       "recarga",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -864,7 +864,7 @@
       "munição",
       "recarga",
       "distância",
-      "projétil veloz",
+      "projétil rápido",
       "pesada"
     ],
     "arma": {
@@ -910,7 +910,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1032,7 +1032,7 @@
     "tags": [
       "munição",
       "arremessável",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1072,7 +1072,7 @@
     "tags": [
       "munição",
       "arremessável",
-      "projétil veloz",
+      "projétil rápido",
       "bloqueável"
     ],
     "arma": {
@@ -1228,7 +1228,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1266,7 +1266,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1304,7 +1304,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",

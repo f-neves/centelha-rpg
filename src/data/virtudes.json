@@ -46,8 +46,8 @@
   {
     "id": "conviccao",
     "nome": "Convicção",
-    "resiste": "à dor, à tortura e ao desânimo",
-    "descricao": "A teimosia da alma: o que mantém você de pé quando já não há motivo visível para continuar. É a Virtude do propósito, e quem a testa não é o inimigo que argumenta, é o que dói e cansa: a marcha que não acaba, o cerco no terceiro mês, o ferro em brasa, a notícia de que tudo foi em vão. Integridade é não ceder ao que os outros fazem com você; a Convicção é não ceder quando ninguém está fazendo nada, só o tempo e a dor.",
+    "resiste": "à tortura (na parte da alma) e ao desânimo",
+    "descricao": "A teimosia da alma: o que mantém você de pé quando já não há motivo visível para continuar. É a Virtude do propósito, e quem a testa não é o inimigo que argumenta, é o que dói e cansa: a marcha que não acaba, o cerco no terceiro mês, o ferro em brasa (a dor do ferro, em si, é do corpo), a notícia de que tudo foi em vão. Integridade é não ceder ao que os outros fazem com você; a Convicção é não ceder quando ninguém está fazendo nada, só o tempo e a dor.",
     "niveis": [
       {
         "nivel": 1,

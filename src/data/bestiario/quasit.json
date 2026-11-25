@@ -190,7 +190,7 @@
       "duracao": "até a próxima jogada dele, ou o fim da cena",
       "alcance": "o próprio corpo",
       "area": "não se aplica",
-      "efeito": "vislumbra o futuro próximo",
+      "efeito": "vislumbra o futuro próximo, até 10 minutos à frente (Distância no tempo 1 do Oráculo)",
       "dano": "nenhum; soma +1d6 na próxima jogada",
       "resistencia": "nenhum",
       "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"

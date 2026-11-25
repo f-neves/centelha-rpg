@@ -91,7 +91,7 @@
       },
       {
         "id": "luz",
-        "sabor": "a lâmina brilha e fere o que teme a luz"
+        "sabor": "a lâmina brilha e fere a todos, e quem teme a luz leva o dano inteiro"
       }
     ],
     "parametros": [
@@ -106,7 +106,7 @@
         "substitui": "dano",
         "unidade": "pontos somados ao dano da arma",
         "escala": [
-          "—",
+          "0",
           "+2",
           "+4",
           "+6",
@@ -202,7 +202,8 @@
       },
       {
         "nome": "Dano",
-        "tipo": "padrao"
+        "tipo": "padrao",
+        "nota": "só fere em Fogo, Água e Vento; em Terra e Gelo a barreira bloqueia, e em Luz e Sombra só tapa a visão"
       },
       {
         "nome": "Duração",
@@ -248,7 +249,7 @@
       },
       {
         "id": "luz",
-        "sabor": "brilho que fere o que teme a luz"
+        "sabor": "brilho que fere a todos, e quem teme a luz leva o dano inteiro"
       },
       {
         "id": "sombra",
@@ -418,14 +419,14 @@
       {
         "nome": "Peso Erguido",
         "tipo": "fixo",
-        "valor": "(nível da Arte × 7) − 2",
-        "nota": "entra na escala de levantamento das Artes de força (a reserva FAH, Força × 3 + Halterofilismo, que o personagem usava antes do peso erguido pela massa) e diz o peso que a Arte move: Arte 1 = 60 kg, 2 = 195, 3 = 360, 4 = 550, 5 = 775 e Arte 6 = 1 tonelada"
+        "valor": "o peso que a Arte move: Arte 3 = 360 kg, 4 = 550, 5 = 775, 6 = 1 tonelada",
+        "nota": "entra no lugar do peso erguido do chão (P) de quem empurra, na página Corpo e Movimento (capítulo VIII, Ações & Sistema)"
       },
       {
         "nome": "Distância de Arremesso",
         "tipo": "fixo",
         "valor": "(nível da Arte) × 4",
-        "nota": "entra na tabela de arremesso (o FAA da ficha, capítulo de Corpo e Movimento) e diz a distância"
+        "nota": "entra no lugar do FAA na tabela de arremesso (página Corpo e Movimento, capítulo VIII, Ações & Sistema) e diz a distância"
       }
     ],
     "efeito": "Empurra ou arremessa o alvo, e o que decide é o PESO dele. A Arte entra no lugar dos músculos nas tabelas de Força: o que ela consegue erguer diz se o alvo sai do lugar, e o que ela consegue arremessar diz a que distância ele vai. Bater em obstáculo duro machuca como uma queda daquela distância.",
@@ -531,7 +532,7 @@
       },
       {
         "id": "metamorfose",
-        "sabor": "a mão vira garra, a boca ganha presa"
+        "sabor": "a mão vira garra, a boca ganha presa. Na Metamorfose a arma é o seu corpo: não se entrega a outro e some quando a duração acaba"
       }
     ],
     "parametros": [
@@ -551,6 +552,7 @@
       }
     ],
     "efeito": "Cria uma arma de verdade, que se pega, se entrega a outro e continua existindo depois do golpe. Por ser matéria, a armadura absorve normalmente, no modo do formato, e ela abre efeitos secundários como sangramento.",
+    "notas": "Ataca-se com ela como com qualquer arma do mesmo formato: a jogada é a mundana, não a do Acerto Arcano.",
     "grid": {
       "forma": "alvo",
       "ancora": "objeto",
@@ -596,7 +598,7 @@
       },
       {
         "id": "luz",
-        "sabor": "agulha de luz, que atravessa sem ferir e deixa o alvo aceso"
+        "sabor": "agulha de luz, que fere e deixa o alvo aceso"
       },
       {
         "id": "sombra",
@@ -612,7 +614,7 @@
       {
         "nome": "Dano",
         "tipo": "padrao",
-        "nota": "em Luz e Sombra o projétil sai sem corpo e não fere: voa, marca e apaga, mas não abre ferimento"
+        "nota": "em Sombra o projétil sai sem corpo e não fere: voa, marca e apaga, mas não abre ferimento; o de Luz fere como toda Luz, e com o Dano no grau 0 (nenhum dano) só marca e acende, sem ferir"
       },
       {
         "nome": "Duração",
@@ -620,7 +622,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. O dano é do ELEMENTO, e não da ponta: a flecha de chama não é uma flecha em chamas, é chama com formato de flecha. De Fogo e de Raio, a armadura não o segura: só a Centelha de quem recebe e a resistência ao elemento o aparam. De Gelo, Água e Terra ele é matéria de verdade, e a armadura absorve normalmente, no modo do formato. Em Luz e Sombra o projétil não tem corpo: acerta, ilumina ou apaga, e não fere.",
+    "efeito": "Cria na mão um único projétil do elemento, do tamanho de uma flecha, de um virote, de um dardo ou de uma adaga de arremesso. Ele se arremessa como qualquer arma de arremesso, ou se encaixa num arco ou numa besta já empunhada, e se gasta no golpe. O dano é do ELEMENTO, e não da ponta: a flecha de chama não é uma flecha em chamas, é chama com formato de flecha. De Fogo e de Raio, a armadura não o segura: só a Centelha de quem recebe e a resistência ao elemento o aparam. De Gelo, Água e Terra ele é matéria de verdade, e a armadura absorve normalmente, no modo do formato. Em Sombra o projétil não tem corpo: acerta e apaga, e não fere. O de Luz fere como toda Luz: contra quem tem fraqueza a luz o dano é inteiro e agravado, ignorando a Absorção, e contra o resto vale a metade; com o Dano no grau 0 (nenhum dano), só marca e acende, sem ferir.",
     "notas": "Conjurar não pede ação própria: é o mesmo gesto de puxar uma arma da cintura ou tirar uma flecha da aljava, e sai junto com o ataque que usa o projétil. Também não paga Alcance, pela nota do livro sobre quem cria algo para ser arremessado: o objeto voa até acertar, e a jogada é a mundana (Força ou Destreza + Arremesso para arremessar, Percepção + Atirador para atirar), não a do Acerto Arcano. A Duração é só quanto tempo ele existe na mão antes de ser usado.",
     "acaoLivre": true,
     "grid": {
@@ -960,7 +962,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Flechas, virotes e dardos erram enquanto o vento durar. Não segura o que é pesado nem o corpo a corpo.",
+    "efeito": "Flechas, virotes e dardos erram enquanto o efeito durar. Não segura o que é pesado nem o corpo a corpo.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1078,7 +1080,7 @@
     "artes": [
       {
         "id": "terra",
-        "sabor": "o chão sacode e se abre"
+        "sabor": "o chão sacode e derruba"
       }
     ],
     "parametros": [
@@ -1256,7 +1258,7 @@
       {
         "nome": "Penalidade",
         "tipo": "fixo",
-        "valor": "(nível da Arte)"
+        "valor": "−(nível da Arte), em pontos"
       }
     ],
     "efeito": "Emite uma luz forte numa área. Quem estiver dentro dela e olhando na direção sofre a Penalidade enquanto durar.",
@@ -1352,7 +1354,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar o que teme a luz, enquanto durar.",
+    "efeito": "Luz que não deixa sombra na área: cega, revela e queima sem parar, enquanto durar. Fere a todos; quem teme a luz leva o dano inteiro, e os outros, a metade.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -1398,9 +1400,14 @@
         "nome": "Duração",
         "tipo": "padrao",
         "regua": "breve"
+      },
+      {
+        "nome": "Dificuldade",
+        "tipo": "fixo",
+        "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "A sombra ganha corpo e agarra. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é agarrado precisa se soltar antes de agir.",
+    "efeito": "A sombra ganha corpo e prende. O dano é de Impacto e ignora armadura, porque a treva entra pelas frestas. Quem é pego fica Preso: não se desloca, mas age, e se solta com Força + Atletismo contra a Dificuldade.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1415,7 +1422,7 @@
       "dissipa": false,
       "fere": true,
       "cura": false,
-      "teste": false
+      "teste": true
     }
   },
   {
@@ -1449,7 +1456,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "A treva acompanha quem a veste e esconde. Não funciona sob luz forte, e um Facho Revelador a desfaz.",
+    "efeito": "Esconde quem o veste e vai junto com ele. Na Sombra é treva: não funciona sob luz forte, e um Facho Revelador a desfaz.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1536,7 +1543,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Entra numa sombra e sai por outra dentro do alcance. Precisa haver sombra dos dois lados, e você chega sem saber o que o espera.",
+    "efeito": "Some de um ponto e aparece em outro dentro do alcance, e chega sem saber o que o espera. Na Sombra, entra numa sombra e sai por outra, e precisa haver sombra dos dois lados.",
     "grid": {
       "forma": "movimento",
       "ancora": "alvo",
@@ -1578,8 +1585,19 @@
       },
       {
         "nome": "Profundidade",
-        "tipo": "fixo",
-        "valor": "1 metro por grau de Profundidade"
+        "tipo": "substitui",
+        "substitui": "profundidade",
+        "unidade": "m de profundidade",
+        "escala": [
+          "0",
+          "1 m",
+          "2 m",
+          "3 m",
+          "4 m",
+          "5 m",
+          "6 m"
+        ],
+        "nota": "1 metro por grau de Profundidade"
       },
       {
         "nome": "Duração",
@@ -1639,15 +1657,15 @@
         "substitui": "duracao",
         "unidade": "Ticks",
         "escala": [
-          "—",
-          "—",
+          "0 Ticks",
+          "0 Ticks",
           "6 Ticks",
           "6 Ticks",
           "12 Ticks",
           "12 Ticks",
           "18 Ticks"
         ],
-        "nota": "6 Ticks a cada 2 graus de Duração"
+        "nota": "6 Ticks a cada 2 graus de Duração; nos graus 0 e 1, nada: a penalidade só dura a partir do grau 2"
       },
       {
         "nome": "Ataque",
@@ -1655,7 +1673,7 @@
         "valor": "Percepção + Acerto Arcano"
       }
     ],
-    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo recebe 2 × (nível da Arte) de penalidade. Não causa dano, e não é o Paralisado das Condições: o alvo se move e age, com a penalidade.",
+    "efeito": "Envia um ataque de choque que atravessa o alvo e tranca os músculos. O ataque é imbloqueável, mas pode ser esquivado. Enquanto o efeito durar, o alvo sofre −2 × (nível da Arte), em pontos, de penalidade. Não causa dano, e não é o Paralisado das Condições: o alvo se move e age, com a penalidade.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1692,8 +1710,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "alvos",
+        "escala": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "nota": "1 alvo por grau de Alvos (a régua de Alvos da Cura, de 1 a 6)"
       },
       {
         "nome": "Cura",
@@ -1707,7 +1736,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera a Cura escolhida a cada 6 Ticks enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Em quem está em 0 PV ou menos, cada PV recuperado soma ao PV negativo, e o alvo acorda ao chegar a 1 PV; enquanto a mão estiver nele, o teste de Tratar fica suspenso. Não é uma cura muito eficiente, mas impede que o alvo piore.",
+    "efeito": "Em vez de fechar tudo de uma vez, a cura fica trabalhando: o alvo recupera 1 PV a cada 6 Ticks enquanto durar, e não morre de sangramento enquanto a sua mão estiver nele. Em quem está em 0 PV ou menos, cada PV recuperado soma ao PV negativo, e o alvo acorda ao chegar a 1 PV; enquanto a mão estiver nele, o teste de Tratar fica suspenso. Não é uma cura muito eficiente, mas impede que o alvo piore.",
     "notas": "Serve no meio da luta, quando não há tempo de parar para curar direito.",
     "grid": {
       "forma": "alvo",
@@ -1745,11 +1774,10 @@
       },
       {
         "nome": "Cura",
-        "tipo": "fixo",
-        "valor": "transfere 3 de dano por nível"
+        "tipo": "padrao"
       }
     ],
-    "efeito": "O ferimento sai do alvo e entra em você, do jeito que estava. Não é cura: é mudança de dono. Você não pode transferir para um terceiro, e o que chegou em você cura pelas vias normais.",
+    "efeito": "O ferimento sai do alvo e entra em você, do jeito que estava. Passa de dono o tanto de dano que a régua da Cura dá ao grau comprado. Não é cura: é mudança de dono. Você não pode transferir para um terceiro, e o que chegou em você cura pelas vias normais.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1837,8 +1865,7 @@
       },
       {
         "nome": "Cura",
-        "tipo": "fixo",
-        "valor": "1 PV por ponto"
+        "tipo": "padrao"
       },
       {
         "nome": "Duração",
@@ -1846,7 +1873,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa a cura presa no alvo, dormindo, sem gastar a sua ação depois e sem exigir que você esteja perto. Ela tem dois disparos: o alvo pode soltá-la quando quiser, e ela sai sozinha se ele chegar a 0 PV ou menos, e, se o levar a 1 PV ou mais, ele acorda na hora. Um alvo carrega uma cura guardada por vez.",
+    "efeito": "Deixa presa no alvo, dormindo, a cura que o parâmetro Cura comprou (a régua da Cura, 2 de Mana por grau), sem gastar a sua ação depois e sem exigir que você esteja perto. Ela tem dois disparos: o alvo pode soltá-la quando quiser, e ela sai sozinha se ele chegar a 0 PV ou menos, e, se o levar a 1 PV ou mais, ele acorda na hora. Um alvo carrega uma cura guardada por vez.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -1886,8 +1913,7 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível",
+        "tipo": "padrao",
         "nota": "só em quem atravessa, uma vez a cada 6 Ticks"
       },
       {
@@ -1936,8 +1962,7 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível"
+        "tipo": "padrao"
       },
       {
         "nome": "Duração",
@@ -1957,7 +1982,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, agarra quem estiver em cima e fere. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão.",
+    "efeito": "Planta o efeito num ponto e ele dorme até alguém pisar, tocar, ou até a hora combinada. Cresce de uma vez, prende quem estiver em cima e fere: quem é pego fica Preso e se solta com Força + Atletismo contra a Dificuldade. É a armadilha do jardineiro: enquanto espera, é só uma semente no chão.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -2055,8 +2080,7 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível",
+        "tipo": "padrao",
         "nota": "só contra objeto de matéria morta"
       },
       {
@@ -2211,8 +2235,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 cadáver por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "cadáveres",
+        "escala": [
+          "nenhum",
+          "1 cadáver",
+          "2 cadáveres",
+          "3 cadáveres",
+          "4 cadáveres",
+          "5 cadáveres",
+          "6 cadáveres"
+        ],
+        "nota": "1 cadáver por grau de Alvos"
       },
       {
         "nome": "Duração",
@@ -2272,8 +2307,19 @@
       },
       {
         "nome": "Bônus",
-        "tipo": "fixo",
-        "valor": "+1d6 por nível nas rolagens sociais com o alvo"
+        "tipo": "substitui",
+        "substitui": "bonus",
+        "unidade": "d6 somados nas rolagens sociais com o alvo",
+        "escala": [
+          "0",
+          "+1d6",
+          "+2d6",
+          "+3d6",
+          "+4d6",
+          "+5d6",
+          "+6d6"
+        ],
+        "nota": "+1d6 por grau de Bônus nas rolagens sociais com o alvo"
       },
       {
         "nome": "Conjurar",
@@ -2400,7 +2446,7 @@
       {
         "nome": "Penalidade",
         "tipo": "fixo",
-        "valor": "(nível da Arte) para quem aguentar e ficar"
+        "valor": "−(nível da Arte), em pontos, para quem aguentar e ficar"
       }
     ],
     "efeito": "Planta terror puro. Quem falha foge do jeito que der, e quem resiste ainda luta abalado. O medo é do lugar, não de você: quem correu não sabe dizer de que fugiu.",
@@ -2537,7 +2583,7 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "em você"
+        "valor": "em você e em quem estiver ao seu lado"
       },
       {
         "nome": "Alvos",
@@ -2678,7 +2724,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Guarda uma re-rolagem e a solta depois, sua ou de um aliado à vista, mesmo fora do seu lance. Vale o segundo resultado, bom ou ruim.",
+    "efeito": "Guarda o direito de rolar de novo para usar depois, seu ou de um aliado à vista, mesmo fora do seu lance. Vale o segundo resultado, bom ou ruim.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -2848,7 +2894,7 @@
       {
         "nome": "Força",
         "tipo": "fixo",
-        "valor": "conta como Força 1 por nível, só para empurrar, puxar e segurar"
+        "valor": "conta como Força 1 por nível da Arte, só para empurrar, puxar e segurar"
       },
       {
         "nome": "Duração",
@@ -2895,7 +2941,7 @@
         "tipo": "padrao"
       }
     ],
-    "efeito": "Um objeto à vista salta para a sua mão, ou volta para ela depois de arremessado. Se estiver preso ou na mão de alguém, é disputa de Força contra o nível da Arte.",
+    "efeito": "Um objeto à vista salta para a sua mão, ou volta para ela depois de arremessado. Se estiver preso ou na mão de alguém, é disputa: quem o segura rola Força + Atletismo contra (maior grau investido) × 5, e o objeto só fica se a superar.",
     "grid": {
       "forma": "movimento",
       "ancora": "objeto",
@@ -3024,8 +3070,19 @@
       },
       {
         "nome": "Absorção",
-        "tipo": "fixo",
-        "valor": "+1 por nível, contra tudo o que vem de fora"
+        "tipo": "substitui",
+        "substitui": "absorcao",
+        "unidade": "pontos de Absorção",
+        "escala": [
+          "0",
+          "+1",
+          "+2",
+          "+3",
+          "+4",
+          "+5",
+          "+6"
+        ],
+        "nota": "+1 por grau de Absorção, contra tudo o que vem de fora"
       },
       {
         "nome": "Duração",
@@ -3323,7 +3380,7 @@
       {
         "nome": "Penalidade",
         "tipo": "fixo",
-        "valor": "−1 de Absorção ou de dano por nível"
+        "valor": "−1 de Absorção ou de dano por nível da Arte"
       },
       {
         "nome": "Duração",
@@ -3411,8 +3468,19 @@
       },
       {
         "nome": "Penalidade",
-        "tipo": "fixo",
-        "valor": "+2 Ticks por nível em cada ação do alvo"
+        "tipo": "substitui",
+        "substitui": "penalidade",
+        "unidade": "Ticks a mais por ação",
+        "escala": [
+          "0 Ticks",
+          "+2 Ticks",
+          "+4 Ticks",
+          "+6 Ticks",
+          "+8 Ticks",
+          "+10 Ticks",
+          "+12 Ticks"
+        ],
+        "nota": "+2 Ticks por grau de Penalidade em cada ação do alvo"
       },
       {
         "nome": "Duração",
@@ -3464,14 +3532,14 @@
       {
         "nome": "Alcance",
         "tipo": "fixo",
-        "valor": "em você"
+        "valor": "em você e em quem estiver ao seu lado"
       },
       {
         "nome": "Alvos",
         "tipo": "padrao"
       }
     ],
-    "efeito": "Uma ação a mais, agora, para você ou para quem estiver ao alcance. Repetir na mesma cena cobra o dobro de Mana a cada vez, e o corpo cobra depois: quem abusa termina a cena exausto.",
+    "efeito": "Uma ação a mais, agora, para você ou para quem estiver ao seu lado. Repetir na mesma cena cobra o dobro de Mana a cada vez, contado sobre o total, antes do desconto da Centelha, e o corpo cobra depois: quem abusa termina a cena exausto.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -3649,8 +3717,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 espírito por 2 níveis"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "espíritos",
+        "escala": [
+          "nenhum",
+          "nenhum",
+          "1 espírito",
+          "1 espírito",
+          "2 espíritos",
+          "2 espíritos",
+          "3 espíritos"
+        ],
+        "nota": "1 espírito a cada 2 graus de Alvos; no grau 1, nada: o primeiro espírito vem no grau 2"
       },
       {
         "nome": "Duração",
@@ -3699,7 +3778,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Prende um espírito num objeto, que passa a fazer o que aquele espírito sabe fazer enquanto durar. É assim que se faz item encantado sem forja: por acordo, ou por captura.",
+    "efeito": "Prende um espírito num objeto, que passa a fazer o que aquele espírito sabe fazer enquanto durar. É assim que se faz item encantado sem forja: por acordo, ou por captura. A captura força o espírito a ceder: como no Banir, Influência + Intimidação contra a Defesa Mental dele. O acordo não rola.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -3790,7 +3869,7 @@
       {
         "nome": "Absorve",
         "tipo": "fixo",
-        "valor": "um efeito arcano de nível igual ou menor ao investido"
+        "valor": "um efeito arcano de maior grau igual ou menor ao maior grau investido"
       },
       {
         "nome": "Duração",
@@ -3798,7 +3877,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Deixa uma marca de guarda no alvo que engole um efeito arcano de nível igual ou menor ao que você investiu e se gasta ao fazê-lo. Fica esperando até ser usada ou até a duração acabar.",
+    "efeito": "Deixa uma marca de guarda no alvo que engole um efeito arcano cujo maior grau investido seja igual ou menor que o maior grau que você investiu e se gasta ao fazê-lo. Fica esperando até ser usada ou até a duração acabar.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -4241,8 +4320,19 @@
       },
       {
         "nome": "Bônus",
-        "tipo": "fixo",
-        "valor": "+1d6 por nível nas rolagens daquele sentido"
+        "tipo": "substitui",
+        "substitui": "bonus",
+        "unidade": "d6 somados nas rolagens daquele sentido",
+        "escala": [
+          "0",
+          "+1d6",
+          "+2d6",
+          "+3d6",
+          "+4d6",
+          "+5d6",
+          "+6d6"
+        ],
+        "nota": "+1d6 por grau de Bônus nas rolagens daquele sentido"
       },
       {
         "nome": "Duração",
@@ -4491,7 +4581,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Chama a tempestade. A cada 6 Ticks um raio cai onde você apontar dentro da área, sem gastar a sua ação, e quem veste metal atrai o próximo.",
+    "efeito": "Chama a tempestade. A cada 6 Ticks um raio (no Vento, uma rajada) cai onde você apontar dentro da área, sem gastar a sua ação. No Raio, quem veste metal atrai o próximo.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4783,7 +4873,7 @@
       }
     ],
     "efeito": "Cura de uma vez todo mundo que estiver na área, aliado ou não, amigo ou inimigo. Não dá para separar: quem está dentro sara.",
-    "notas": "É a exceção que a Cura não tem: curar em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o maior grau investido por quem conjurou: 1 PV por grau. Em troca, curar a multidão custa o mesmo por alvo que curar uma pessoa só.",
+    "notas": "É a exceção à cura comum, que não tem Área: este Efeito cura em Área. O valor NÃO é dividido: cada um que estiver dentro recebe a cura inteira, e o nível é o maior grau investido por quem conjurou: 1 PV por grau. Em troca, paga-se a cura de cada um: o custo de curar uma pessoa, uma vez por alvo dentro da área.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4823,9 +4913,8 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível",
-        "nota": "em quem a mata agarrar no lance"
+        "tipo": "padrao",
+        "nota": "em quem a mata prender no lance"
       },
       {
         "nome": "Duração",
@@ -4836,7 +4925,7 @@
         "nome": "Jogada",
         "tipo": "fixo",
         "valor": "Força + Atletismo",
-        "nota": "para se soltar do que agarrou"
+        "nota": "para se soltar do que prendeu"
       },
       {
         "nome": "Dificuldade",
@@ -4844,7 +4933,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "O lugar vira mata viva e do seu lado: raiz que agarra o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar.",
+    "efeito": "O lugar vira mata viva e do seu lado: raiz que prende o pé, galho que bate, tronco que fecha o caminho. Enquanto durar, o terreno luta com você e contra quem você apontar.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -4884,8 +4973,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "todos os cadáveres da área, até 3 por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "cadáveres",
+        "escala": [
+          "nenhum",
+          "até 3 cadáveres",
+          "até 6 cadáveres",
+          "até 9 cadáveres",
+          "até 12 cadáveres",
+          "até 15 cadáveres",
+          "até 18 cadáveres"
+        ],
+        "nota": "todos os cadáveres da área, até 3 por grau de Alvos"
       },
       {
         "nome": "Duração",
@@ -4977,9 +5077,15 @@
         "nome": "Alcance",
         "tipo": "fixo",
         "valor": "em você"
+      },
+      {
+        "nome": "Distância no tempo",
+        "tipo": "padrao",
+        "regua": "longa",
+        "nota": "até onde, no passado ou no futuro, a pergunta alcança"
       }
     ],
-    "efeito": "Uma pergunta sobre o passado ou o futuro, respondida com o que existe de mais próximo da verdade. O futuro vem como tendência, não como certeza, e a resposta é curta, literal e às vezes cruel.",
+    "efeito": "Uma pergunta sobre o passado ou o futuro, respondida com o que existe de mais próximo da verdade. A pergunta alcança até a Distância no tempo comprada, para trás ou para a frente, pela régua da Duração longa (de 10 minutos no grau 1 a 1 mês no grau 6). O futuro vem como tendência, não como certeza, e a resposta é curta, literal e às vezes cruel.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -5198,12 +5304,28 @@
         "valor": "em você"
       },
       {
+        "nome": "Área",
+        "tipo": "substitui",
+        "substitui": "area",
+        "unidade": "m de diâmetro",
+        "escala": [
+          "0,5 m",
+          "1 m",
+          "2 m",
+          "3,5 m",
+          "5 m",
+          "6,5 m",
+          "8 m"
+        ],
+        "nota": "molde Explosão, nascida onde você está ao conjurar e parada ali"
+      },
+      {
         "nome": "Duração",
-        "tipo": "fixo",
-        "valor": "alguns Ticks"
+        "tipo": "padrao",
+        "regua": "breve"
       }
     ],
-    "efeito": "O tempo para para todo mundo menos você, por alguns Ticks. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro.",
+    "efeito": "O tempo para para todo mundo dentro da área, menos você, enquanto durar: a Duração vai até o grau 3 (24 Ticks). A área nasce onde você está ao conjurar e fica parada ali. Você anda, tira, coloca e sai; o que você tocar volta a andar junto com o resto. O corpo cobra depois, e cobra caro.",
     "grid": {
       "forma": "alvo",
       "ancora": "conjurador",
@@ -5292,7 +5414,7 @@
         "regua": "longa"
       }
     ],
-    "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura dias, e cai se você mesmo quebrar a regra que estabeleceu.",
+    "efeito": "Consagra um lugar. Nada entra sem permissão, magia alheia se desfaz na borda e quem for expulso não acha o caminho de volta. Dura o que a Duração comprou, e cai antes se você mesmo quebrar a regra que estabeleceu.",
     "grid": {
       "forma": "zona",
       "ancora": "ponto",
@@ -5381,7 +5503,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "A região se volta contra quem você apontar: bicho ataca, cipó agarra, o caminho se fecha, o rio muda de humor. Não é comando, é a mata concordando com você.",
+    "efeito": "A região se volta contra quem você apontar: bicho ataca, cipó prende, o caminho se fecha, o rio muda de humor. Não é comando, é a mata concordando com você.",
     "grid": {
       "forma": "aura",
       "ancora": "conjurador",
@@ -5593,7 +5715,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Chama um único raio do céu sobre o alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está.",
+    "efeito": "Chama do céu um raio sobre cada alvo. É o maior dano concentrado que a Arte alcança, precisa de céu por cima e avisa a todo mundo, pelo som e pela luz, exatamente onde você está.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -5648,7 +5770,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e sufoca enquanto durar, mesmo em terra seca, pela regra de Sufocamento do capítulo Resistir (Janela de socorro = Vigor × 20 Ticks). Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
+    "efeito": "A água entra pela boca e pelo nariz do alvo e fica lá. Ele não fala, não conjura e sufoca enquanto durar, mesmo em terra seca, pela regra de Sufocamento da página Resistir (capítulo VIII, Ações & Sistema; Janela de socorro = Vigor × 20 Ticks). Quem estiver ao lado pode gastar uma ação para virá-lo e drenar.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -5806,7 +5928,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, mas fere pouco.",
+    "efeito": "Uma coluna de luz cai sobre o alvo. Contra quem tem fraqueza a luz ou ao sagrado o dano é agravado e ignora toda a Absorção; contra o resto, cega e derruba, e o dano de Luz vale a metade.",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -5888,16 +6010,14 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1"
+        "tipo": "padrao"
       },
       {
         "nome": "Cura",
-        "tipo": "fixo",
-        "valor": "1d6 por nível, até o máximo do membro recuperado"
+        "tipo": "padrao"
       }
     ],
-    "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa (quem está em 0 PV ou menos e ainda não cruzou o limite de morte está vivo).",
+    "efeito": "Recompõe o que estava perdido: membro decepado, olho furado, doença que já tinha vencido. Leva minutos, não um instante, e o alvo precisa estar vivo quando você começa (quem está em 0 PV ou menos e ainda não cruzou o limite de morte está vivo). Cura PV pela régua da Cura, até o PV máximo do alvo.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -5978,8 +6098,19 @@
       },
       {
         "nome": "Ganho",
-        "tipo": "fixo",
-        "valor": "−2 Ticks por nível para um, +2 por nível para o outro"
+        "tipo": "substitui",
+        "substitui": "ganho",
+        "unidade": "Ticks tirados de um e dados a outro",
+        "escala": [
+          "0 Ticks",
+          "−2 Ticks para um, +2 para o outro",
+          "−4 Ticks para um, +4 para o outro",
+          "−6 Ticks para um, +6 para o outro",
+          "−8 Ticks para um, +8 para o outro",
+          "−10 Ticks para um, +10 para o outro",
+          "−12 Ticks para um, +12 para o outro"
+        ],
+        "nota": "−2 Ticks por grau de Ganho para um, +2 por grau para o outro"
       },
       {
         "nome": "Duração",
@@ -6101,7 +6232,7 @@
       }
     ],
     "efeito": "A Vida não fecha o ferimento: ela apressa o corpo a fechá-lo sozinho, até o dobro da velocidade natural. Enquanto durar, cada nível da Arte encurta em 10% o intervalo da tabela de Recuperação, até no máximo 50% (o dobro da velocidade), que o nível 5 alcança. Ela acelera em qualquer nível e em qualquer profundidade, inclusive abaixo do zero: em quem está em 0 PV ou menos, a tabela de Recuperação não vale, e a Arte soma ao teste de Tratar de cada dia em que durar o que a Vida soma no Tratar, +1 por nível da Arte (Vida, Ferimentos & Cura). O que muda com o nível é o quanto, e não o que ela alcança.",
-    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos: em vez da régua dela, encurta o intervalo em 10% por nível da Arte, até 50% (o nível investido por quem conjura, o mesmo que a prosa chama de Vida 1, 2 ou 3). O encurtamento da Arte e o da Cura de quem cuida não se somam: vale o maior. Como o do Cap. IV, ele não vale na linha \"por dia\".",
+    "notas": "Cura é sempre mais cara: 2 de Mana por nível, como na Arte de Cura. E aqui rende menos: em vez da régua dela, encurta o intervalo em 10% por nível da Arte, até 50% (o nível da Arte de quem conjura, de Vida 1 a Vida 5). O encurtamento da Arte e o da Cura de quem cuida não se somam: vale o maior. Como o do Cap. IV, ele não vale na linha \"por dia\" da tabela de Recuperação (a do Saudável, que já é o menor intervalo).",
     "grid": {
       "forma": "alvo",
       "ancora": "alvo",
@@ -6255,8 +6386,8 @@
       },
       {
         "nome": "Dano",
-        "tipo": "fixo",
-        "valor": "1d6 por nível, uma vez por dia"
+        "tipo": "padrao",
+        "nota": "uma vez por dia"
       },
       {
         "nome": "Duração",
@@ -6317,8 +6448,19 @@
       },
       {
         "nome": "Visão",
-        "tipo": "fixo",
-        "valor": "1 futuro provável por nível"
+        "tipo": "substitui",
+        "substitui": "visao",
+        "unidade": "futuros prováveis",
+        "escala": [
+          "nenhum",
+          "1 futuro provável",
+          "2 futuros prováveis",
+          "3 futuros prováveis",
+          "4 futuros prováveis",
+          "5 futuros prováveis",
+          "6 futuros prováveis"
+        ],
+        "nota": "1 futuro provável por grau de Visão"
       }
     ],
     "efeito": "Você põe uma decisão na mesa e vê para onde cada caminho tende. Não são cenas fechadas: são inclinações, e mudam se alguém agir sabendo delas. Ver o próprio futuro cansa, e repetir na mesma cena não mostra nada de novo.",
@@ -6367,7 +6509,7 @@
         "regua": "breve"
       }
     ],
-    "efeito": "Abre um olho num lugar que você conhece e assiste ao que acontece lá agora, em tempo real. Não ouve, não toca e não é visto, mas quem tiver Ver o Fio percebe que está sendo observado.",
+    "efeito": "Abre um olho num lugar que você conhece e assiste ao que acontece lá agora, em tempo real. Não ouve, não toca e não é visto, mas quem estiver com Ver o Fio aceso ali percebe que está sendo observado.",
     "grid": {
       "forma": "nenhuma",
       "ancora": "nenhuma",
@@ -6461,8 +6603,19 @@
       },
       {
         "nome": "Bônus",
-        "tipo": "fixo",
-        "valor": "+1d6 por nível, uma vez a cada 6 Ticks, na rolagem que o alvo escolher"
+        "tipo": "substitui",
+        "substitui": "bonus",
+        "unidade": "d6 somados na rolagem que o alvo escolher",
+        "escala": [
+          "0",
+          "+1d6",
+          "+2d6",
+          "+3d6",
+          "+4d6",
+          "+5d6",
+          "+6d6"
+        ],
+        "nota": "+1d6 por grau de Bônus, uma vez a cada 6 Ticks, na rolagem que o alvo escolher"
       }
     ],
     "efeito": "A sorte fica do lado de quem você marcou enquanto durar: a corda aparece, o guarda olha para o outro lado, o dado vira. Não é bônus constante, é uma coincidência a cada 6 Ticks.",
@@ -6502,8 +6655,11 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 objeto"
+        "tipo": "padrao"
+      },
+      {
+        "nome": "Volume",
+        "tipo": "padrao"
       },
       {
         "nome": "Jogada",
@@ -6517,7 +6673,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Traz para a sua mão um objeto que é seu, ou que você já teve nas mãos e conhece bem, esteja onde estiver. Se alguém o estiver segurando, é disputa. Não funciona com criatura viva.",
+    "efeito": "Traz para a sua mão objetos que são seus, ou que você já teve nas mãos e conhece bem, esteja onde estiver: tantos quantos os Alvos comprados, cada um até o Volume comprado. Se alguém estiver segurando um deles, é disputa. Não funciona com criatura viva.",
     "grid": {
       "forma": "movimento",
       "ancora": "objeto",
@@ -6647,8 +6803,19 @@
       },
       {
         "nome": "Quantidade",
-        "tipo": "fixo",
-        "valor": "o que caberia num barril, por nível"
+        "tipo": "substitui",
+        "substitui": "quantidade",
+        "unidade": "barris de matéria",
+        "escala": [
+          "nenhum",
+          "1 barril",
+          "2 barris",
+          "3 barris",
+          "4 barris",
+          "5 barris",
+          "6 barris"
+        ],
+        "nota": "o que caberia num barril, por grau de Quantidade"
       },
       {
         "nome": "Duração",
@@ -6696,8 +6863,19 @@
       },
       {
         "nome": "Ganho",
-        "tipo": "fixo",
-        "valor": "−2 Ticks por nível na próxima ação do alvo"
+        "tipo": "substitui",
+        "substitui": "ganho",
+        "unidade": "Ticks a menos",
+        "escala": [
+          "0 Ticks",
+          "−2 Ticks",
+          "−4 Ticks",
+          "−6 Ticks",
+          "−8 Ticks",
+          "−10 Ticks",
+          "−12 Ticks"
+        ],
+        "nota": "−2 Ticks por grau de Ganho na próxima ação do alvo"
       }
     ],
     "efeito": "Apressa um aliado por um instante: a próxima ação dele sai mais cedo. Não dá ação extra, só adianta a que já vinha.",
@@ -6756,7 +6934,7 @@
         "valor": "(maior grau investido) × 5"
       }
     ],
-    "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim.",
+    "efeito": "Chama um espírito poderoso como aliado, não como servo. Ele vem, escuta e negocia: quer nome, oferenda ou promessa. Quebrar o combinado com um desses é o começo de uma história ruim. A Dificuldade sobe com o maior grau investido: chamar de mais longe ou pedir que ele fique mais tempo deixa o acordo mais difícil.",
     "grid": {
       "forma": "token",
       "ancora": "ponto",
@@ -6796,8 +6974,19 @@
       },
       {
         "nome": "Absorção",
-        "tipo": "fixo",
-        "valor": "+2 por nível contra tudo o que vier de fora"
+        "tipo": "substitui",
+        "substitui": "absorcao",
+        "unidade": "pontos de Absorção",
+        "escala": [
+          "0",
+          "+2",
+          "+4",
+          "+6",
+          "+8",
+          "+10",
+          "+12"
+        ],
+        "nota": "+2 por grau de Absorção, contra tudo o que vier de fora"
       },
       {
         "nome": "Duração",
@@ -6947,8 +7136,19 @@
       },
       {
         "nome": "Alvos",
-        "tipo": "fixo",
-        "valor": "1 bando ou 1 bicho grande por nível"
+        "tipo": "substitui",
+        "substitui": "alvos",
+        "unidade": "bandos ou bichos grandes",
+        "escala": [
+          "nenhum",
+          "1 bando ou 1 bicho grande",
+          "2 bandos ou 2 bichos grandes",
+          "3 bandos ou 3 bichos grandes",
+          "4 bandos ou 4 bichos grandes",
+          "5 bandos ou 5 bichos grandes",
+          "6 bandos ou 6 bichos grandes"
+        ],
+        "nota": "1 bando ou 1 bicho grande por grau de Alvos"
       },
       {
         "nome": "Duração",

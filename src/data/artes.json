@@ -8,7 +8,7 @@
       {
         "nivel": 1,
         "nome": "Faísca",
-        "efeito": "acende/apaga fogo; dardo flamejante (1d6)",
+        "efeito": "acende ou apaga fogo; dardo flamejante (1d6)",
         "custo": {
           "mana": 1
         },
@@ -49,7 +49,7 @@
       {
         "nivel": 4,
         "nome": "Bola de Fogo",
-        "efeito": "explosão em área (3d6); parede de chamas",
+        "efeito": "Efeito em recalibração: explosão em área (3d6); parede de chamas",
         "custo": {
           "mana": 4
         },
@@ -75,7 +75,7 @@
       {
         "nivel": 6,
         "nome": "Cataclismo",
-        "efeito": "mar de fogo; coluna/elemental de chamas",
+        "efeito": "mar de fogo; coluna ou elemental de chamas",
         "custo": {
           "mana": 6
         },
@@ -314,7 +314,7 @@
       {
         "nivel": 3,
         "nome": "Onda",
-        "efeito": "empurra/derruba; cria névoa",
+        "efeito": "empurra ou derruba; cria névoa",
         "custo": {
           "mana": 3
         },
@@ -473,7 +473,7 @@
       {
         "nivel": 1,
         "nome": "Moldar Terra",
-        "efeito": "molda terra/pedra; arremessa pedras (1d6)",
+        "efeito": "molda terra ou pedra; arremessa pedras (2d6)",
         "custo": {
           "mana": 1
         },
@@ -486,7 +486,7 @@
       {
         "nivel": 2,
         "nome": "Punho de Pedra",
-        "efeito": "arremessa uma pedra maior (1d6) ou ergue um pequeno anteparo de terra",
+        "efeito": "arremessa uma pedra maior (2d6) ou ergue um pequeno anteparo de terra",
         "custo": {
           "mana": 2
         },
@@ -578,7 +578,7 @@
       {
         "nivel": 2,
         "nome": "Ofuscar",
-        "efeito": "o feixe cega um alvo por 12 ou 24 Ticks; a luz denuncia quem se esconde por perto",
+        "efeito": "o feixe cega um alvo por 6 ou 12 Ticks; a luz denuncia quem se esconde por perto",
         "custo": {
           "mana": 2
         },
@@ -591,7 +591,7 @@
       {
         "nivel": 3,
         "nome": "Feixe Ardente",
-        "efeito": "raio que queima o que teme a luz; revela o oculto e o disfarçado ao redor",
+        "efeito": "raio que queima, inteiro em quem teme a luz e pela metade nos outros; revela o oculto e o disfarçado ao redor",
         "custo": {
           "mana": 3
         },
@@ -617,7 +617,7 @@
       {
         "nivel": 5,
         "nome": "Luz Inclemente",
-        "efeito": "nenhuma ocultação funciona na cena, e o que teme a luz queima enquanto ela durar",
+        "efeito": "nenhuma ocultação funciona na cena, e a luz queima enquanto durar, inteira em quem a teme e pela metade nos outros",
         "custo": {
           "mana": 5
         },
@@ -1031,7 +1031,7 @@
       {
         "nivel": 2,
         "nome": "Simpatia",
-        "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (vs Defesa Social)",
+        "efeito": "o alvo baixa a guarda e o trata com boa vontade por um tempo (contra a Defesa Social)",
         "custo": {
           "mana": 2
         },
@@ -1060,7 +1060,7 @@
           "mana": 4
         },
         "exemplos": [
-          "uma ordem que só a Defesa Mental e a Vontade seguram",
+          "uma ordem que só a Defesa Mental e a Força de Vontade seguram",
           "calar uma multidão"
         ]
       },
@@ -1195,7 +1195,7 @@
       {
         "nivel": 1,
         "nome": "Empurrãozinho",
-        "efeito": "re-role um dado ou imponha −1",
+        "efeito": "role de novo um dado ou imponha −1",
         "custo": {
           "mana": 1
         },
@@ -1206,7 +1206,7 @@
       {
         "nivel": 2,
         "nome": "Mão do Destino",
-        "efeito": "re-role um dado seu, ou force o inimigo a re-rolar um bom resultado",
+        "efeito": "role de novo um dado seu, ou force o inimigo a rolar de novo um bom resultado",
         "custo": {
           "mana": 2
         },
@@ -1363,7 +1363,7 @@
       {
         "nivel": 1,
         "nome": "Empurrão de Força",
-        "efeito": "empurra/segura; escudo breve",
+        "efeito": "empurra ou segura; escudo breve",
         "custo": {
           "mana": 1
         },
@@ -1411,7 +1411,7 @@
       {
         "nivel": 5,
         "nome": "Esmagar",
-        "efeito": "comprime alvo/objeto",
+        "efeito": "comprime alvo ou objeto",
         "custo": {
           "mana": 5
         },
@@ -1569,7 +1569,7 @@
       {
         "nivel": 4,
         "nome": "Bolha Temporal",
-        "efeito": "acelera/retarda área pequena",
+        "efeito": "acelera ou retarda área pequena",
         "custo": {
           "mana": 4
         },
@@ -1586,7 +1586,7 @@
           "mana": 5
         },
         "exemplos": [
-          "parar a cena por alguns segundos"
+          "voltar um instante que já passou"
         ]
       },
       {
@@ -1597,7 +1597,7 @@
           "mana": 6
         },
         "exemplos": [
-          "voltar um instante que já passou"
+          "parar a cena por alguns segundos"
         ]
       }
     ],
@@ -1642,7 +1642,7 @@
       {
         "nivel": 3,
         "nome": "Pacto Menor",
-        "efeito": "invoca espírito/elemental menor",
+        "efeito": "invoca espírito ou elemental menor",
         "custo": {
           "mana": 3
         },
@@ -1704,7 +1704,7 @@
       {
         "nivel": 1,
         "nome": "Salvaguarda",
-        "efeito": "ward pessoal; dissipa magia fraca",
+        "efeito": "resguardo pessoal; dissipa magia fraca",
         "custo": {
           "mana": 1
         },
@@ -1749,7 +1749,7 @@
       {
         "nivel": 5,
         "nome": "Dissipar",
-        "efeito": "anula/enfraquece magias",
+        "efeito": "anula ou enfraquece magias",
         "custo": {
           "mana": 5
         },
@@ -1799,7 +1799,7 @@
       {
         "nivel": 2,
         "nome": "Máscara",
-        "efeito": "rosto, voz e roupas viram outros aos olhos de quem vê; o toque denuncia (vs Defesa Mental)",
+        "efeito": "rosto, voz e roupas viram outros aos olhos de quem vê; o toque denuncia (contra a Defesa Mental)",
         "custo": {
           "mana": 2
         },

@@ -697,7 +697,7 @@ export function montarFicha(opts: FichaOpts) {
       const nota = p.tipo === 'substitui'
         ? (p.nota ? `<small>${p.escala.join(' · ')}${p.unidade ? ` (${p.unidade})` : ''}</small>` : '')
         : (p.nota ? `<small>${p.nota}</small>` : '');
-      return `<div class="ef-pop-p"><b>${rotPar(p.nome)}:</b> ${valorPar(p)}${nota}</div>`;
+      return `<div class="ef-pop-p"><b>${rotPar(p.nome)}:</b> ${valorPar(p, artesDe(e).map((x: any) => idRef(x.id)))}${nota}</div>`;
     }).join('');
     const cab = `nível ${e.nivel} · ${custoEfeito(e.nivel)} XP${S.efeito[e.id] ? ' · comprado' : ''}`;
     return `<span class="ficha-pop-tit">${e.nome}<small>${cab}</small></span>
@@ -1543,14 +1543,14 @@ export function montarFicha(opts: FichaOpts) {
         const notaR = fracR !== 1 ? ` × ⅔ · baixa estatura` : '';
         const natSk = S.skills2['natacao'] || 0;
         const dz = deslocamento({ forca: A('forca'), destreza: dex, atletismo: SK('atletismo'), centelha: C, vigor: vig, natacao: natSk }, fracR);
-        const penMov = Math.floor(penFisica / 2);
+        const penMov = penFisica;
         const mp = (v: number) => Math.max(0, v - penMov);
         const cmp = (v: number) => Math.max(0, v - penMov * 10);
-        const ps = penMov ? ` − ½ penalidade (${penMov})` : '';
+        const ps = penMov ? ` − penalidade (${penMov})` : '';
         return r('Desloc. de Batalha', `${mp(dz.normal)} m/Tick`, `2 + (Destreza ${dex} + Atletismo ${SK('atletismo')}) ÷ 4${notaR}${ps} = ${mp(dz.normal)} m por Tick · o PRIMEIRO Tick é grátis durante outra ação (atacar, conjurar); daí em diante custa 1 Tick por Tick de movimento. Como o Tick é ~1 segundo, o número também é a sua velocidade em m/s: andar são 1,5 e correr passa de 5`, true) +
           r('Vel. de Arranque', `${mp(dz.arranque)} m/s`, `2 + Força ${A('forca')} ÷ 4 + Atletismo ${SK('atletismo')} ÷ 4 + Destreza ${dex} ÷ 2 · Ticks 1–3${notaR}${ps}`, true) +
           r('Vel. de Corrida', `${mp(dz.corrida)} m/s`, `4 + Destreza ${dex} × ¾ + Atletismo ${SK('atletismo')} ÷ 2 · Tick 4+${notaR}${ps}`, true) +
-          r('Vel. de Natação', `${mp(dz.natacao)} m/s`, `1 + Vigor ${vig} × ¾ + (Atletismo ${SK('atletismo')} + Natação ${natSk}) ÷ 2${notaR}${ps} · água calma, sem rolar; água brava continua teste (cap. Corpo e Movimento)`, true) +
+          r('Vel. de Natação', `${dz.natacao} m/s`, `1 + Vigor ${vig} × ¾ + (Atletismo ${SK('atletismo')} + Natação ${natSk}) ÷ 2${notaR} · água calma, sem rolar; água brava continua teste (cap. Corpo e Movimento)`, true) +
           r('Salto Vertical', `${cmp(dz.saltoVertical)} cm`, `Força ${A('forca')}×20 + Atletismo ${SK('atletismo')}×10 + Destreza ${dex}×4 + Centelha ${C}×50${notaR}`, true) +
           r('Salto Horiz. Parado', `${mp(dz.saltoHorizontalParado)} m`, `(Força ${A('forca')} + Atletismo ${SK('atletismo')} + Centelha ${C}) ÷ 2${notaR}${ps}`, true) +
           r('Salto Horiz. Correndo', `${mp(dz.saltoHorizontalCorrendo)} m`, `Vel. de Corrida + Atletismo ${SK('atletismo')} ÷ 2 + Centelha ${C}${notaR}${ps}`, true); })();
@@ -1656,8 +1656,8 @@ export function montarFicha(opts: FichaOpts) {
     // Em metros por segundo a base é a MESMA Vel. de Corrida que os derivados mostram, com a
     // mesma penalidade de armadura: dois pontos da ficha anunciando velocidades diferentes
     // para o mesmo personagem seriam um erro visível de longe.
-    const penMov = Math.floor(((empilharArmaduras(pecasArmadura()).penalidade || 0)
-      + (calcConj(conjAtivo()).penSum || 0)) / 2);
+    const penMov = (empilharArmaduras(pecasArmadura()).penalidade || 0)
+      + (calcConj(conjAtivo()).penSum || 0);
     const dzFrac = (RACA[S.raca] as any)?.deslocamentoFrac ?? 1;
     const vBase = Math.max(0, deslocamento({
       forca, destreza: A('destreza'), atletismo: atl, centelha: S.centelha,
@@ -1670,7 +1670,7 @@ export function montarFicha(opts: FichaOpts) {
     const velFracAgua = (w: number) => Math.max(0, 1 - Math.pow(w / maxKg / corteAgua, F.cargaExpoenteAgua));
     const vBaseNatacao = Math.max(0, deslocamento({
       vigor: A('vigor'), atletismo: atl, natacao: S.skills2['natacao'] || 0,
-    }, dzFrac).natacao - penMov);
+    }, dzFrac).natacao);
     const velNatacao = (w: number) => vBaseNatacao * velFracAgua(w);
     const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2, cPesada = maxKg * corte;
     const bandas = [

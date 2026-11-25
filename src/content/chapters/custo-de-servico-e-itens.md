@@ -5,7 +5,9 @@ titulo: "Moeda, Renda e Custo de Vida"
 resumo: "O que se ganha e o que se gasta: as moedas, a renda por faixa de Recursos, os imprevistos, as semanas de aventura e o custo de vida."
 ---
 
-O dinheiro mede tempo e trabalho. Este capítulo reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura, do raspão de cobre do servo ao lavor de joias da relíquia nobre, em cinco páginas: esta, com a moeda, a renda e o custo de vida; <a href="/centelha-rpg/regras/custo-servicos">Serviços e Contratação</a>; <a href="/centelha-rpg/regras/custo-mercadorias">Mercadorias</a>; <a href="/centelha-rpg/regras/custo-qualidade-e-equipamento">Qualidade e Equipamento</a>; e <a href="/centelha-rpg/regras/custo-montarias-e-viagens">Montarias, Veículos e Viagens</a>. Os preços são do mundo **mundano**: sem Centelha, Proeza ou Arte. O que o sobre-humano custa, e a diferença de preço entre regiões, ficam para depois.
+O dinheiro mede tempo e trabalho. Este capítulo reúne **o que se ganha**, **o que se gasta** e **como a qualidade muda o preço** de uma arma ou armadura, do raspão de cobre do servo ao lavor de joias da relíquia nobre, em cinco páginas: esta, com a moeda, a renda e o custo de vida; <a href="/centelha-rpg/regras/custo-servicos">Serviços e Contratação</a>; <a href="/centelha-rpg/regras/custo-mercadorias">Mercadorias</a>; <a href="/centelha-rpg/regras/custo-qualidade-e-equipamento">Qualidade e Equipamento</a>; e <a href="/centelha-rpg/regras/custo-montarias-e-viagens">Montarias, Veículos e Viagens</a>. 
+
+Os preços são do mundo **mundano**: sem Centelha, Proeza ou Arte. O que o sobre-humano custa, e a diferença de preço entre regiões, ficam para depois.
 
 ## Moedas & Conversão
 
@@ -30,7 +32,9 @@ O dinheiro mede tempo e trabalho. Este capítulo reúne **o que se ganha**, **o 
 
 ## Renda
 
-O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que entra; **Custo** é o custo de vida da faixa, com o estilo de vida que ela obriga; **Livre** é o que sobra: o que dá para juntar. Quem trabalha embolsa só a Renda Livre, o que sobra do bruto depois do custo de vida. É uma simplificação, decisão do Mestre, para poupar a conta de gastos: numa cena em que o custo de vida importa, o Mestre pode trocá-la pela conta de gastos, nunca pelas duas ao mesmo tempo.
+O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que entra; **Custo** é o custo de vida da faixa, com o estilo de vida que ela obriga; **Livre** é o que sobra: o que dá para juntar.
+
+Quem trabalha embolsa só a Renda Livre, o que sobra do bruto depois do custo de vida. É uma simplificação, decisão do Mestre, para poupar a conta de gastos: numa cena em que o custo de vida importa, o Mestre pode trocá-la pela conta de gastos, nunca pelas duas ao mesmo tempo.
 
 **Recursos 0.** Sem renda contínua. Vive do que ganha em trabalhos e recompensas.
 
@@ -54,26 +58,30 @@ O nível de **Recursos** é a faixa social do trabalho. **Renda** é o bruto que
 
 <!-- /gen:economia-renda -->
 
-**Imprevistos.** A cada estação (12 semanas), o personagem perde o Livre de tantas semanas quanto o seu Recursos. Na conta do ano: Livre/Ano = Livre/Sem × (48 − 4 × Recursos). Em jogo, o Mestre pode, no lugar do desconto, narrar o imprevisto (doença, multa, telhado, presente obrigatório) e cobrar o valor. Use um ou outro, nunca os dois.
+**Imprevistos.** A cada estação (12 semanas), o personagem perde o Livre de tantas semanas quanto o seu Recursos. Na conta do ano: Livre/Ano = Livre/Sem × (48 − 4 × Recursos).
+
+Em jogo, o Mestre pode, no lugar do desconto, narrar o imprevisto (doença, multa, telhado, presente obrigatório) e cobrar o valor. Use um ou outro, nunca os dois.
 
 <p class="muted">O Livre vai de 12% da renda no braçal a 2% na nobreza. O mês tem 4 semanas e o ano de Uldun, 48.</p>
 
-<p class="muted">Economizar por pouco tempo é fácil, em prazos longos é normal gastar parte do que juntou. Proporcionalmente Nobres e Aristocratas têm mais dificuldade de poupar, precisam investir muito em aparências para manter o status. Pessoas com Temperança e Convicção baixas também costumam gastar ao invés de poupar</p>
+<p class="muted">Economizar por pouco tempo é fácil; em prazos longos, é normal gastar parte do que juntou. Proporcionalmente, Nobres e Aristocratas têm mais dificuldade de poupar: precisam investir muito em aparências para manter o status. Pessoas com Temperança e Convicção baixas (<a href="/centelha-rpg/regras/aparencia-virtudes-vontade">Virtudes</a>) também costumam gastar em vez de poupar.</p>
 
 ### Dias de trabalho
 
-Uma **semana de trabalho** vale 6 dos 8 dias da semana de Uldun. Na guerra e na colheita trabalha-se 7 ou 8; fora de estação, conforme o ofício, pode cair para 5. A renda da semana é proporcional aos dias trabalhados: **(renda da faixa ÷ 6) × dias**. O custo de vida **não cai**: uma família de braçal numa semana de 5 dias ganha 50 pc e gasta 53 pc, e come a poupança. É por isso que o inverno é tempo de dívida.
+Uma **semana de trabalho** vale 6 dos 8 dias da semana de Uldun. Na guerra e na colheita trabalha-se 7 ou 8; fora de estação, conforme o ofício, pode cair para 5. A renda da semana é proporcional aos dias trabalhados: **(renda da faixa ÷ 6) × dias**. O custo de vida **não cai**: uma família de braçal numa semana de 5 dias ganha 50 pc (a conta acima, com a Renda/Sem do Braçal na tabela de Renda) e gasta 53 pc (o Custo/Sem da mesma linha), e come a poupança. É por isso que o inverno é tempo de dívida.
 
 ### Recursos durante a aventura
 
 1. O personagem nunca paga o custo de vida à parte. Ele recebe Livre, de uma ou mais fontes, e é só isso que anota.
-2. A bolsa é o Livre do trabalho inteiro. Ela ocupa as semanas estimadas no contrato.
+2. A [bolsa](/regras/custo-servicos#trabalhos-e-recompensas) é o Livre do trabalho inteiro. Ela ocupa as semanas estimadas no contrato.
 3. Recursos 1 a 3 é trabalho próprio: nas semanas do contrato, não rende. O personagem recebe só a bolsa.
 4. Recursos 4 a 6 é renda de propriedade, que rende sem o dono presente: o Livre de Recursos continua entrando, somado à bolsa.
 
 ## Custo de Vida
 
 Por pessoa e por semana (a semana de Uldun, de 8 dias). Criança conta como meio adulto.
+
+Os nomes de alguns níveis (Abastado, Rico, Aristocrata) são os mesmos de faixas da tabela de Renda, mas aqui medem o gasto de uma pessoa; o custo da casa, logo abaixo, mede a casa inteira da faixa. São escalas diferentes com os mesmos nomes, e o mesmo nome não dá o mesmo valor.
 
 <!-- gen:economia-custo-de-vida -->
 
@@ -95,7 +103,7 @@ Por pessoa e por semana (a semana de Uldun, de 8 dias). Criança conta como meio
 
 ### O custo da casa, por faixa
 
-O **Custo** da tabela de Renda é o de uma casa inteira (três adultos-equivalentes). O **pacote básico** é o que a faixa não pode deixar de pagar; o **estilo de vida** é o resto, o que ela gasta para parecer o que é.
+O **Custo** da tabela de Renda é o de uma casa inteira (três adultos-equivalentes). O **pacote básico** é o que a faixa não pode deixar de pagar; o **estilo de vida** é o resto, o que ela gasta para parecer o que é. A "cesta modesta" de um pacote é o nome do item da faixa, e não o nível de vida Modesto.
 
 <!-- gen:economia-pacote-familia -->
 
@@ -116,3 +124,5 @@ O **Custo** da tabela de Renda é o de uma casa inteira (três adultos-equivalen
 </div>
 
 <!-- /gen:economia-pacote-familia -->
+
+<p class="muted">Cada parcela do pacote sai arredondada ao pc, uma a uma, e por isso a soma delas pode não bater com o pacote básico exato. Toda parcela é semanal: a roupa e os livros "por ano" entram pela parte de uma semana.</p>

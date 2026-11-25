@@ -409,7 +409,7 @@
     },
     {
       "campo": "habilidadesEspeciais.Nevasca",
-      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana)."
+      "motivo": "R1 e D-197. Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana. O limite preserva o primeiro uso e reserva repetição para esforço adicional. R3. Ativação uma ação, Velocidade 8 -> uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Pela régua da Arte de base. valor de molde, para a bancada (uso extra de 1 de Mana). Uso extra: falta grau de Alcance, Área e Duração (piso 2 pela T7, RT-134.6)."
     },
     {
       "campo": "atributos.forca",

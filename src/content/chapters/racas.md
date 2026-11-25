@@ -5,9 +5,11 @@ titulo: "Raças"
 resumo: "O que cada povo é no mundo, e como sua herança move os tetos de Atributo e abre traços que nenhum humano tem."
 ---
 
-Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo, mente e tempo de vida, e que, em regra de jogo, **desloca os limites** de alguns Atributos e abre **traços** que ninguém mais tem. Escolher uma raça é pagar um custo em **XP** por essa herança; o **Humano** é a régua contra a qual todos os outros são descritos.
+Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo, mente e tempo de vida. Em regra de jogo, ela **desloca os limites** de alguns Atributos e abre **traços** que ninguém mais tem. A raça é escolha do **personagem**: uma criatura do bestiário do mesmo povo traz o que tem na própria ficha, que já parte da raça.
 
-<div class="callout regra"><span class="lbl">Como ler um traço racial</span>O <strong><code>+1</code> racial faz duas coisas</strong>, e é preciso ler as duas. Ele <strong>levanta o teto</strong> daquele Atributo para <strong>7</strong>, um ponto acima do teto humano de 6, mesmo em quem tem Centelha 0, e já na criação: o Atributo com o <code>+1</code> pode ser comprado até 7 (Cap. XVIII). É o único ponto acima de 6 que a herança dá, e os seguintes só vêm da Centelha (Atributos e Centelha), <strong>e levanta o piso</strong>: aquele Atributo <strong>começa em 2</strong> em vez de 1, e esse ponto <strong>vem de graça</strong>. O <strong><code>−1</code> racial</strong> é diferente: ele trava o Atributo em <strong>5</strong> e <strong>não mexe no piso</strong>, que continua sendo 1 como o de todo mundo. Fora o ponto de brinde, você compra cada nível com XP (Atributo = 5 + novo × 5).</div>
+Escolher uma raça é pagar um custo em **XP** por essa herança; o **Humano** é a régua contra a qual todos os outros são descritos.
+
+<div class="callout regra"><span class="lbl">Como ler um traço racial</span>O <strong><code>+1</code> racial faz duas coisas</strong>, e é preciso ler as duas. Ele <strong>levanta o teto</strong> daquele Atributo para <strong>7</strong>, um ponto acima do teto humano de 6, mesmo em quem tem Centelha 0, e já na criação: o Atributo com o <code>+1</code> pode ser comprado até 7 (Cap. XVIII). É o único ponto acima de 6 que a herança dá, e os seguintes só vêm da Centelha (Atributos e Centelha). Ele também <strong>levanta o piso</strong>: aquele Atributo <strong>começa em 2</strong> em vez de 1, e esse ponto <strong>vem de graça</strong>. O <strong><code>−1</code> racial</strong> é diferente: ele trava o Atributo em <strong>5</strong> e <strong>não mexe no piso</strong>, que continua sendo 1 como o de todo mundo. Fora o ponto de brinde, você compra cada nível com XP (Atributo = 5 + novo × 5).</div>
 
 <div class="callout regra"><span class="lbl">Vida, Tamanho e massa</span>A <strong>Vida</strong> do personagem sai do <strong>Tamanho da raça</strong>, e não da massa: o gnomo e o halfling são Pequenos, as outras raças são Médias, mesmo com a massa fora da faixa normal (um elfo de 25 kg continua Médio). A <strong>massa padrão</strong> de cada raça, o meio da faixa normal dela, cai na mesma linha da tabela de Vida pela massa (<a href="/centelha-rpg/regras/vida-ferimentos-cura">Vida, Ferimentos &amp; Cura</a>), então as duas contas dão o mesmo número. A massa que o jogador escreve muda o peso erguido, e não a Vida.</div>
 
@@ -17,7 +19,11 @@ Nem todo herói nasce humano. Cada povo carrega uma **herança** que molda corpo
 
 A faixa normal de massa é de 60 a 80 kg.
 
-O **Humano** é o povo padrão: o mais numeroso, o mais espalhado e o mais inquieto. Não vive tanto quanto um elfo nem é tão resistente quanto um anão, mas compensa na **ambição** e na **adaptabilidade**: ergue cidades onde as outras raças apenas habitam, mistura culturas, inventa, conquista e reconstrói numa única geração curta. É a vara de medir: quando se diz que um anão é "mais forte" ou um elfo "mais ágil", é do humano que se está falando. Atinge a idade adulta aos **16 anos**, a maturidade plena por volta dos **30**, e vive em média **80 anos**.
+O **Humano** é o povo padrão: o mais numeroso, o mais espalhado e o mais inquieto. Não vive tanto quanto um elfo nem é tão resistente quanto um anão, mas compensa na **ambição** e na **adaptabilidade**: ergue cidades onde as outras raças apenas habitam, mistura culturas, inventa, conquista e reconstrói numa única geração curta.
+
+É a vara de medir: quando se diz que um anão é "mais forte" ou um elfo "mais ágil", é do humano que se está falando.
+
+Atinge a idade adulta aos **16 anos**, a maturidade plena por volta dos **30**, e vive em média **80 anos**.
 
 Em regra, o humano é o **baseline neutro**:
 
@@ -25,7 +31,9 @@ Em regra, o humano é o **baseline neutro**:
 - **Atributos:** todos os nove respeitam o teto comum (**6**, na criação e no jogo). Nenhum sobe a 7, nenhum trava em 5.
 - **Sem traços raciais:** nenhuma visão no escuro, nenhuma resistência inata. Em troca, **nada o limita**: o humano não tem um único Atributo rebaixado, e só o meio-elfo divide isso com ele.
 
-Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutro** com a maioria dos povos, e por isso transita e negocia onde outros não conseguem. Três exceções, e nenhuma recíproca: olha o **Elfo** (e o **Meio-Elfo**, que puxa a ele) com **+1 (Simpatia)**, fascinado pela beleza élfica, o **Orc** com **−1 (Antipatia)**, pela aparência bruta, e o **Meio-Orc** também com **−1 (Antipatia)**, a reserva que todos os povos guardam do sangue partido.
+Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutro** com a maioria dos povos, e por isso transita e negocia onde outros não conseguem.
+
+Três exceções, e nenhuma recíproca: olha o **Elfo** (e o **Meio-Elfo**, que puxa a ele) com **+1 (Simpatia)**, fascinado pela beleza élfica, o **Orc** com **−1 (Antipatia)**, pela aparência bruta, e o **Meio-Orc** também com **−1 (Antipatia)**, a reserva que todos os povos guardam do sangue partido.
 
 <p class="muted">O preço da versatilidade é não ter um pico de herança: onde o orc nasce forte e o elfo nasce ágil, o humano precisa <strong>construir</strong> cada vantagem com XP. É também o mais barato de jogar: todo o orçamento vai para o personagem, nada para a raça.</p>
 
@@ -48,7 +56,9 @@ Em Relações Sociais, o humano não tem inimizades naturais: começa em **Neutr
 
 ### Anão
 
-Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros. Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a idade adulta aos **20 anos**, a maturidade plena por volta dos **100**, e podem viver mais de **300 anos**.
+Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e colinas, muitas vezes **dentro** delas. Têm pele de tons mais morenos e raramente cabelos ou olhos claros.
+
+Medem de **1,20 a 1,50 m** e pesam **70–100 kg**. Atingem a idade adulta aos **20 anos**, a maturidade plena por volta dos **100**, e podem viver mais de **300 anos**.
 
 - **Custo de XP:** 30
 - **Vida pelo Tamanho Médio**: a Vida é 25 + Vigor × 3, pelo Tamanho da raça, qualquer que seja a massa. A baixa estatura já está paga no deslocamento, e não muda o tamanho.
@@ -62,7 +72,9 @@ Humanóides de baixa estatura, mas muito corpulentos. Vivem nas montanhas e coli
 
 ### Elfo
 
-Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana. Pesam **42–65 kg** e medem **1,40–1,70 m**. Atingem a idade adulta aos **25 anos**, a maturidade plena por volta dos **150**, e podem viver mais de **600 anos**.
+Seres ligados ao mundo natural. Esguios, de aparência mais frágil que a das outras raças, com **orelhas pontudas** e faces alongadas e angulares. A variação de cores de cabelo, pele e olhos é maior que a humana.
+
+Pesam **42–65 kg** e medem **1,40–1,70 m**. Atingem a idade adulta aos **25 anos**, a maturidade plena por volta dos **150**, e podem viver mais de **600 anos**.
 
 - **Custo de XP:** 50
 - **`+1` de Destreza**: começa em **2** e vai até **7**. Graça sobre-humana.
@@ -100,7 +112,9 @@ Povo pequeno e ágil. Medem de **80 cm a 1,20 m** e pesam **20–28 kg**. Atinge
 
 ### Meio-Elfo
 
-Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se parece mais com um elfo do que com um humano, sem, contudo, herdar tudo. Altura e peso puxam ao elfo: **1,60–1,90 m** e **50–90 kg**. Têm poucos pelos, como os elfos, e vivem mais que humanos: até **200 anos**. Por serem híbridos, são **inférteis**.
+Filhos de pais humanos com mães elfas. A concepção é rara, e o resultado se parece mais com um elfo do que com um humano, sem, contudo, herdar tudo.
+
+Altura e peso puxam ao elfo: **1,60–1,90 m** e **50–90 kg**. Têm poucos pelos, como os elfos, e vivem mais que humanos: até **200 anos**. Por serem híbridos, são **inférteis**.
 
 - **Custo de XP:** 20
 - **Vida pelo Tamanho Médio**: a Vida é 25 + Vigor × 3.
@@ -129,7 +143,9 @@ Filhos de humano e orc: a força e o porte da herança orc temperados pelo sangu
 
 ### Orc
 
-Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos. Medem **1,80–2,30 m** e pesam **80–140 kg**. Idade adulta por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
+Humanóides de herança metamorfa, com constituição física superior a qualquer outra raça mediana. Pele e pelos variam do marrom ao verde; olhos e cabelos costumam ser pretos.
+
+Medem **1,80–2,30 m** e pesam **80–140 kg**. Idade adulta por volta dos 14 anos; vivem pouco mais de **60 anos**. São mais bestiais que os meio-orcs, e pagam por isso em juízo e trato.
 
 - **Custo de XP:** 40
 - **Vida pelo Tamanho Médio**: a Vida é 25 + Vigor × 3, e a Vitalidade soma +Vigor por cima.
@@ -168,7 +184,9 @@ O +2 no teste e o +1 na soma não são a mesma vantagem: o +1 na soma vale cerca
 
 ### Entrar em fúria
 
-Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-de-virtude), a Virtude sozinha, e **entrar em fúria é FALHAR nele**: tirar a Dificuldade ou menos. O personagem está literalmente perdendo o autocontrole. O teste é o mesmo seja ele forçado, seja por vontade própria; o que muda é o que o orc faz com a própria parada, conforme queira resistir ou ceder:
+Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-de-virtude), a Virtude sozinha, e **entrar em fúria é FALHAR nele**: tirar a Dificuldade ou menos. O personagem está literalmente perdendo o autocontrole.
+
+O teste é o mesmo seja ele forçado, seja por vontade própria; o que muda é o que o orc faz com a própria parada, conforme queira resistir ou ceder:
 
 - **a penalidade de ferimento é opcional.** Ela entra só se o personagem quiser ceder, na moeda de sempre (Machucado −2 pontos, Grave −1 dado, Crítico −2 dados), e **neste teste ela pode zerar a parada**: parada zerada entra em fúria sem rolar. Quem quer resistir não é obrigado a usá-la, e mesmo em Grave ou Crítico rola a Temperança inteira;
 - **1 ponto de Força de Vontade soma OU tira 1d6 da parada**, conforme ele queira resistir ou ceder. **Um ponto por teste, no máximo**, e tirar também pode zerar a parada;
@@ -177,7 +195,7 @@ Entrar é um [teste de Temperança](/regras/aparencia-virtudes-vontade#o-teste-d
 **O teste só é forçado em dois casos.** Fora deles, o orc só rola se quiser entrar, e a provocação de cotidiano (um insulto, um golpe que raspou, o cheiro de sangue) não obriga a nada.
 
 1. **Dano grande: um único golpe que tire 20% ou mais da Vida máxima**, arredondado para cima (orc de 41 PV: 9 de dano). Conta o dano que passou, depois da Absorção. **Dano acumulado não dispara**: o Frenesi é pela pancada, não pelo desgaste, e dez golpes pequenos levam o orc a Crítico sem teste nenhum.
-2. **Provocação importante.** O que conta como importante decide o Mestre, pela história e pelas relações do personagem. Quem provoca rola **Influência** com a Habilidade que a forma da provocação pedir (Manha para zombaria e deboche, Intimidação para ameaça, Empatia para achar a ferida certa, Oratória para humilhar em público), com uma descrição que combine com ela, contra **Força de Vontade máxima do orc × 2 + 2 × mín(Centelha, Integridade) dele**, como na Defesa Mental. Passando, o orc é obrigado ao teste de Frenesi. Aqui a Força de Vontade protege o orc.
+2. **Provocação importante.** O que conta como importante decide o Mestre, pela história e pelas relações do personagem. Quem provoca rola **Influência** com a Habilidade que a forma da provocação pedir (Manha para zombaria e deboche, Intimidação para ameaça, Empatia para achar a ferida certa, Oratória para humilhar em público), com uma descrição que combine com ela, contra **Força de Vontade máxima do orc × 2 + 2 × mín(Centelha, Integridade) dele** (o termo da Centelha é o mesmo da Defesa Mental; o resto não é a Defesa Mental dele). Passando, o orc é obrigado ao teste de Frenesi. Aqui a Força de Vontade protege o orc.
 
 **A Dificuldade vem da situação** em que o orc está no momento do teste, e o Mestre a escolhe nesta escala:
 
@@ -220,23 +238,35 @@ A fúria dura **pela cena**, enquanto for alimentada. Não há relógio fixo nem
 
 A janela é sempre pela Força de Vontade **máxima**, não pela atual: gastar pontos para entrar ou sair não encurta a fúria. Sem nenhum inimigo ao alcance, o orc não ataca, e a janela do primeiro item corre sozinha.
 
-O teste de manutenção é **Vigor + Resistência**, pela conversão normal (não é teste de Virtude): o desgaste físico de sustentar o estado. A Dificuldade **sobe uma banda a cada renovação**, pela régua de 5 em 5 do jogo: 5, depois 10, 15, 20. **Falhar encerra a fúria**, e traz a ressaca. Fechar a janela não encerra nada sozinho: só obriga ao teste. A fúria tem fim garantido sem ninguém escrever limite, e o teto sobe com a ficha.
+O teste de manutenção é **Vigor + Resistência**, pela conversão normal (não é teste de Virtude): o desgaste físico de sustentar o estado. A Dificuldade **sobe uma banda a cada renovação**, pela régua de 5 em 5 do jogo: 5, depois 10, 15, 20. **Falhar encerra a fúria**, e traz a ressaca.
+
+Fechar a janela não encerra nada sozinho: só obriga ao teste. A fúria tem fim garantido sem ninguém escrever limite, e o teto sobe com a ficha.
 
 ### Sair da fúria
 
-**Por vontade própria**, a saída espelha a entrada. Custa **1 ponto de Força de Vontade**, que soma **+1d6** à parada, e exige **sucesso num teste de Temperança** (total maior que a Dificuldade), com Firula se houver. A Temperança é rolada limpa, porque o orc em fúria já ignora a penalidade de ferimento. **A Dificuldade é a mesma da situação atual para entrar**, na escala acima: se o momento pede tirar mais de 8 para se segurar, sair também pede tirar mais de 8. E a situação muda durante a luta: quem entrou contra 5 pode precisar de 10 para sair depois de tomar dano e ser provocado. A fúria fica mais difícil de largar conforme a briga piora, e isso é desejado. **Crítico não bloqueia a saída.**
+**Por vontade própria**, a saída espelha a entrada. Custa **1 ponto de Força de Vontade**, que soma **+1d6** à parada, e exige **sucesso num teste de Temperança** (total maior que a Dificuldade), com Firula se houver. A Temperança é rolada limpa, porque o orc em fúria já ignora a penalidade de ferimento.
+
+**A Dificuldade é a mesma da situação atual para entrar**, na escala acima: se o momento pede tirar mais de 8 para se segurar, sair também pede tirar mais de 8. E a situação muda durante a luta: quem entrou contra 5 pode precisar de 10 para sair depois de tomar dano e ser provocado.
+
+A fúria fica mais difícil de largar conforme a briga piora, e isso é desejado. **Crítico não bloqueia a saída.**
 
 <p class="muted">Isto pede que o Mestre mantenha a Dificuldade corrente da situação à vista durante a cena, como um número na mesa, e não de memória.</p>
 
-**Por um aliado.** Um aliado pode tentar acalmar o orc, normalmente com **Influência + Persuasão**, pela régua de 5 em 5; a jogada exata o Mestre decide conforme o argumento. A Dificuldade é o **dobro da Força de Vontade máxima do orc**. Pode tentar mais de uma vez, mas cada tentativa nova soma **+2** à Dificuldade e **não pode repetir o argumento** anterior (quem julga se o argumento é novo é o Mestre). Cada tentativa leva alguns segundos, e o orc em fúria age nesse intervalo.
+**Por um aliado.** Um aliado pode tentar acalmar o orc, normalmente com **Influência + Persuasão**, pela régua de 5 em 5; a jogada exata o Mestre decide conforme o argumento. A Dificuldade é o **dobro da Força de Vontade máxima do orc**.
+
+Pode tentar mais de uma vez, mas cada tentativa nova soma **+2** à Dificuldade e **não pode repetir o argumento** anterior (quem julga se o argumento é novo é o Mestre). Cada tentativa leva alguns segundos, e o orc em fúria age nesse intervalo.
 
 Se o aliado passa, o orc é **obrigado** ao teste de Temperança para sair, queira ou não, e sem gastar Força de Vontade nele (sem o +1d6, portanto). Passando, sai; falhando, **permanece** em fúria. O aliado não decide nada: ele força a rolagem.
 
 ### Ressaca e o teto por cena
 
-**Metade do Vigor, arredondado para baixo, é o número de fúrias por cena.** Vigor 4 dá duas, Vigor 6 dá três, Vigor 3 dá uma, e Vigor 1 não entra em fúria. Passar do teto é possível, por deliberação do Mestre, e com um preço que doa fora da luta: **estourar o teto é o que produz a exaustão de dias**, o único ponto em que a fúria cobra do tempo de descanso, e não da cena.
+**Metade do Vigor, arredondado para baixo, é o número de fúrias por cena.** Vigor 4 dá duas, Vigor 6 dá três, Vigor 3 dá uma, e Vigor 1 não entra em fúria.
 
-**A ressaca.** Ao sair da fúria, por qualquer motivo, o personagem **conta como um estado de ferimento pior do que está**, por **metade dos Ticks que passou em fúria**, somado a qualquer penalidade de ferimento real que já tivesse. **A ressaca acumula e nunca zera**: entrar em fúria de novo **suspende** a conta, não a apaga, e a segunda fúria esconde a primeira até a conta chegar inteira no fim. Segunda fúria na mesma cena, dois estados piores.
+Passar do teto é possível, por deliberação do Mestre, e com um preço que doa fora da luta: **estourar o teto é o que produz a exaustão de dias**, o único ponto em que a fúria cobra do tempo de descanso, e não da cena.
+
+**A ressaca.** Ao sair da fúria, por qualquer motivo, o personagem **conta como um estado de ferimento pior do que está**, por **metade dos Ticks que passou em fúria**, somado a qualquer penalidade de ferimento real que já tivesse.
+
+**A ressaca acumula e nunca zera**: entrar em fúria de novo **suspende** a conta, não a apaga, e a segunda fúria esconde a primeira até a conta chegar inteira no fim. Segunda fúria na mesma cena, dois estados piores.
 
 **A ressaca nunca leva a Incapacitado.** Cada estado de ressaca que passaria de Crítico vira mais **−1d6 na ação física e −4 na Defesa Física**, o mesmo degrau que separa Grave de Crítico: Crítico com um estado de ressaca fica em −3d6 e −12; com dois, −4d6 e −16. Esse degrau abaixo de Crítico só existe para a ressaca (ver a tabela de [Limiares de Ferimento](/regras/vida-ferimentos-cura)).
 

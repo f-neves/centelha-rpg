@@ -124,7 +124,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
           {(i.combate.fraquezas?.length || i.combate.resistencias?.length || i.combate.imunidades?.length) && (
             <div class="besta-elem">
               {i.combate.fraquezas?.length && (
-                <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a Habilidade Cura.">
+                <span class="el-linha" title="Dano deste tipo não é absorvido por nada (nem armadura, nem Absorção natural, nem Centelha) e é agravado: não fecha com descanso nem com a Habilidade Cura (salvo quando o tipo é a fraqueza da Regeneração da criatura: aí vale a regeneração).">
                   <span class="el-lbl">Fraqueza</span>
                   {i.combate.fraquezas.map((k: string) => <span class="el el-fra">{ELEM[k] ?? k}</span>)}
                 </span>
@@ -228,7 +228,7 @@ const artesDe = (x: any) => [...new Set((x.poderes || []).filter((p: any) => p.t
                     <h4>Técnicas &amp; Artes</h4>
                     {i.tecnicas.length > 0 && (<p class="ib-ref"><b>Técnicas:</b> {i.tecnicas.map((t: any, n: number) => (<>{n > 0 && ' · '}<a href={tecLink(t)}>{d.T[t]?.nome ?? t}</a></>))}</p>)}
                     {i.mana != null && (<p class="ib-ref"><b>Mana:</b> {i.mana}</p>)}
-                    {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('arcano') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
+                    {i.artes.length > 0 && (<p class="ib-ref"><b>Artes:</b> {i.artes.map((a: any, n: number) => (<>{n > 0 && ' · '}<a href={url('artes/catalogo') + '#' + a.id}>{arteNome[a.id] ?? a.id}</a> {a.nivel}</>))}</p>)}
                   </>)}
                 </template>
               )}

@@ -169,7 +169,7 @@
       "duracao": "enquanto a condição se aplica",
       "alcance": "o próprio corpo",
       "area": "a criatura",
-      "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+      "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
       "dano": "nenhum",
       "resistencia": "nenhuma",
       "limiteDeUso": "contínuo, sem custo"

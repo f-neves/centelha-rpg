@@ -68,13 +68,10 @@ const degraus = regras.dificuldade.map((d, i) => ({
 
 // Exemplos: tarefas físicas e de perícia
 const exFisicas = [
-  ['Pular um muro na cintura', 'Atletismo', 3, 'Só sob pressão/perseguição', ''],
-  ['Pular um muro no ombro (~1,4 m)', 'Atletismo', 8, 'Com impulso', ''],
-  ['Pular um muro alto (~2 m)', 'Atletismo', 13, 'Precisa de corrida e boa forma', ''],
   ['Escalar parede rústica (muitos apoios)', 'Atletismo', 8, '', '5 m'],
   ['Escalar parede de pedra comum', 'Atletismo', 12, 'Juntas e saliências', '6 m'],
   ['Escalar muralha bem-feita', 'Atletismo', 18, 'Poucas fendas', '8 m'],
-  ['Escalar superfície lisa/molhada', 'Atletismo', 24, 'Quase sem apoio; feito de perito', '11 m'],
+  ['Escalar superfície lisa/molhada', 'Atletismo', 24, 'Quase sem apoio; a superfície é de perito (14), e os 11 m de uma vez são para Herói', '11 m'],
   ['Cavalgar tranquilo numa estrada', 'Cavalgar', 5, 'Normalmente sem rolagem', ''],
   ['Galopar em terreno difícil / saltar obstáculo', 'Cavalgar', 10, '', ''],
   ['Cavalgar em combate / montaria assustada', 'Cavalgar', 15, '', ''],
@@ -169,7 +166,7 @@ const exSociais = [
       </tbody>
     </table>
   </div>
-  <p class="muted">Cada <b>+3</b> na Dificuldade corta ~1 tier de quem consegue; cada <b>+5</b>, ~1 tier e meio. Circunstâncias entram como <b>±2/±4</b> na Dificuldade (ferramenta certa, apoio, terreno e tempo abaixam; pressa, distração e condições ruins sobem).</p>
+  <p class="muted">Cada <b>+5</b> na Dificuldade sobe um degrau inteiro da tabela abaixo (3 de Soma); cada <b>+3</b>, pouco mais de meio degrau. Circunstâncias entram como <b>±2/±4</b> na Dificuldade (ferramenta certa, apoio, terreno e tempo abaixam; pressa, distração e condições ruins sobem).</p>
 
   <h3 class="sub">Os degraus, em palavras</h3>
   <div class="tab-wrap">
@@ -196,6 +193,7 @@ const exSociais = [
     </table>
   </div>
   <p class="muted">Escalar na Direta: Dificuldade da superfície (Cap. VIII) + altura em metros − 1. Para outra altura, refaça a conta.</p>
+  <p class="muted">Pular um muro comum não tem jogada nem Dificuldade: confira o Salto Vertical da ficha contra a altura do muro (o muro de 1,4 m pede 140 cm), como em <a href={url('regras/acoes-corpo-e-movimento')}>Corpo e Movimento</a>. Em situação difícil ou de perigo, o Mestre pode pedir uma jogada.</p>
 
   <h3 class="sub">Situações sociais comuns</h3>
   <div class="tab-wrap">
@@ -208,7 +206,9 @@ const exSociais = [
       </tbody>
     </table>
   </div>
-  <p class="muted">As Dificuldades sociais são o <b>atalho rápido</b> (uma jogada resolve). Para vínculos que <b>persistem</b> (virar aliado, apaixonar, quebrar um inimigo), roteie pela <a href={url('regras/relacoes-sociais')}>Régua de Relação / Combate Social</a>: a Dif vira a Defesa Social do alvo e o resultado compra <b>alcance</b> do pedido, só naquela cena. Quem move a régua são os atos e o cortejo com calma. A <b>Aparência</b> modifica seduzir/impressionar/intimidar, e cada <b>Margem</b> (6 acima do alvo) melhora o efeito. Veja também <a href={url('regras/coracao-do-sistema')}>O Coração do Sistema</a>. A Dificuldade fixa da tabela vale para o NPC sem ficha. Quando o alvo tem Defesa Social (o guarda do Cap. X tem 6), usa-se o número da ficha mais o termo da história; as duas escalas não se somam nem se convertem.</p>
+  <p class="muted">As Dificuldades sociais são o <b>atalho rápido</b> (uma jogada resolve). Para vínculos que <b>persistem</b> (virar aliado, apaixonar, quebrar um inimigo), roteie pela <a href={url('regras/relacoes-sociais')}>Régua de Relação / Combate Social</a>: a Dif vira a Defesa Social do alvo e o resultado compra <b>alcance</b> do pedido, só naquela cena. Quem move a régua são os atos e o cortejo com calma.</p>
+  <p class="muted">A <b>Aparência</b> modifica seduzir/impressionar/intimidar, e cada <b>Margem</b> (6 acima do alvo) melhora o efeito. Veja também <a href={url('regras/coracao-do-sistema')}>O Coração do Sistema</a>.</p>
+  <p class="muted">A Dificuldade fixa da tabela vale para o NPC sem ficha. Quando o alvo tem Defesa Social (o guarda do Cap. X tem 6), usa-se o número da ficha mais o termo da história; as duas escalas não se somam nem se convertem.</p>
 </Base>
 
 <style>

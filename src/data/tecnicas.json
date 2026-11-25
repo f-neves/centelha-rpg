@@ -8,7 +8,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "O 1º deslocamento da cena, ou sacar/empunhar uma arma, custa **−2 Ticks** (mín. 1).",
+    "texto": "O 1º deslocamento da cena, ou sacar ou empunhar uma arma, custa **−2 Ticks** (mín. 1).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -26,7 +26,7 @@
       "passo-veloz"
     ],
     "aliases": [],
-    "texto": "Quadruplica distância/altura de um salto; ignora terreno difícil; aterrissa de pé.",
+    "texto": "Quadruplica a distância ou a altura de um salto; ignora terreno difícil; aterrissa de pé.",
     "pendente": false,
     "nivel": 3,
     "efeito": "salto"
@@ -275,7 +275,7 @@
       "golpe-pesado"
     ],
     "aliases": [],
-    "texto": "Golpes desarmados contam como arma (sem penalidade vs armados) e **atravessam o zero mesmo contra quem pararia o Impacto nele** (o Inquebrantável e o que vier depois dele).",
+    "texto": "Golpes desarmados contam como arma (sem penalidade contra armados) e **atravessam o zero mesmo contra quem pararia o Impacto nele** (o Inquebrantável e o que vier depois dele).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -401,7 +401,7 @@
       "punho-que-parte-pedra"
     ],
     "aliases": [],
-    "texto": "O soco projeta uma onda que atinge todos numa linha/área à frente.",
+    "texto": "O soco projeta uma onda que atinge todos numa linha ou numa área à frente.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -453,7 +453,7 @@
       "tom-de-autoridade"
     ],
     "aliases": [],
-    "texto": "Manip+Intimidação vs Defesa Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
+    "texto": "Influência + Intimidação contra a Defesa Mental: o alvo obedece uma ordem simples e não-autodestrutiva por uma ação (\"pare\", \"largue\", \"ajoelhe\").",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -489,7 +489,7 @@
       "ordem-curta"
     ],
     "aliases": [],
-    "texto": "Comanda um pequeno grupo de uma vez (vs Defesa Mental); a ordem dura a cena se não contrariar a natureza dos alvos.",
+    "texto": "Comanda um pequeno grupo de uma vez (contra a Defesa Mental); a ordem dura a cena se não contrariar a natureza dos alvos.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -545,7 +545,7 @@
       "voz-de-comando"
     ],
     "aliases": [],
-    "texto": "Uma ordem (vs Defesa Mental) que o alvo deve gastar **Vontade a cada 6 Ticks** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
+    "texto": "Uma ordem (contra a Defesa Mental) que o alvo deve gastar **Vontade a cada 6 Ticks** para resistir; pode compelir atos perigosos (não diretamente suicidas).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -563,7 +563,7 @@
       "submissao"
     ],
     "aliases": [],
-    "texto": "Instila terror sobrenatural (vs Defesa Mental); um grupo inteiro foge ou paralisa.",
+    "texto": "Instila terror sobrenatural (contra a Defesa Mental); um grupo inteiro foge ou paralisa.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -582,7 +582,7 @@
       "comando-irresistivel"
     ],
     "aliases": [],
-    "texto": "Implanta uma ordem permanente que dura um dia (vs Defesa Mental); o alvo racionaliza obedecer.",
+    "texto": "Implanta uma ordem que dura um dia (contra a Defesa Mental); o alvo racionaliza obedecer.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -602,7 +602,7 @@
       "comando-irresistivel"
     ],
     "aliases": [],
-    "texto": "Estilhaça a vontade do alvo (vs Defesa Mental), deixando-o quebrado e dócil por um tempo.",
+    "texto": "Estilhaça a vontade do alvo (contra a Defesa Mental), deixando-o quebrado e dócil por um tempo.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -621,7 +621,7 @@
       "dominacao"
     ],
     "aliases": [],
-    "texto": "Sua ordem falada torna-se quase absoluta (vs Defesa Mental); multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
+    "texto": "Sua ordem falada torna-se quase absoluta (contra a Defesa Mental); multidões e exércitos obedecem um decreto divino. Resistir custa vários pontos de Vontade.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -847,7 +847,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "Ignora a penalidade do estado Machucado (−1).",
+    "texto": "Ignora a penalidade do estado Machucado (−2).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -899,7 +899,7 @@
       "aguentar-o-tranco"
     ],
     "aliases": [],
-    "texto": "Golpe de Impacto te derruba e PARA em 0: só dano de outro tipo te leva abaixo do zero, na direção do limite.",
+    "texto": "Golpe de Impacto derruba você e PARA em 0: só dano de outro tipo leva você abaixo do zero, na direção do limite.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1201,7 +1201,7 @@
       "carisma-magnetico"
     ],
     "aliases": [],
-    "texto": "Por uma cena, o alvo o vê como um amigo querido (vs Defesa Social; quebra se você o trair abertamente).",
+    "texto": "Por uma cena, o alvo o vê como um amigo querido (contra a Defesa Social; quebra se você o trair abertamente).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -1568,7 +1568,7 @@
       "pisar-leve"
     ],
     "aliases": [],
-    "texto": "Furta ou planta objetos sem ser percebido (vs Percepção Passiva).",
+    "texto": "Furta ou planta objetos sem ser percebido (contra a Percepção Passiva).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -1746,7 +1746,7 @@
       "finta"
     ],
     "aliases": [],
-    "texto": "Tenta arrancar a arma do oponente (Destreza+Corte vs Defesa).",
+    "texto": "Tenta arrancar a arma do oponente (Destreza + Armas contra a Defesa).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -1853,7 +1853,7 @@
       "furia"
     ],
     "aliases": [],
-    "texto": "Rugido que abala inimigos próximos (vs Defesa Social).",
+    "texto": "Rugido que abala inimigos próximos (contra a Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2438,7 +2438,7 @@
       "fingir"
     ],
     "aliases": [],
-    "texto": "Uma mentira que resiste a escrutínio (vs Defesa Social / Olho da Verdade).",
+    "texto": "Uma mentira que resiste a escrutínio (contra a Defesa Social ou o Olho da Verdade).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2527,7 +2527,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "carrega/ergue o dobro do normal sem penalidade.",
+    "texto": "Carrega ou ergue o dobro do normal sem penalidade.",
     "pendente": false,
     "nivel": 1,
     "efeito": "carga"
@@ -2545,7 +2545,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
+    "texto": "Ergue por um instante algo muito além do humano (~×4 o normal; viga, portão, pedra).",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2563,7 +2563,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "atira objetos pesados ou pessoas como arma (~×2 o normal).",
+    "texto": "Atira objetos pesados ou pessoas como arma (~×2 o normal).",
     "pendente": false,
     "nivel": 1,
     "efeito": "carga"
@@ -2579,7 +2579,7 @@
       "forca-de-carga"
     ],
     "aliases": [],
-    "texto": "sustenta pesos imensos por longos períodos (~×4 o normal).",
+    "texto": "Sustenta pesos imensos por longos períodos (~×4 o normal).",
     "pendente": false,
     "nivel": 3,
     "efeito": "carga"
@@ -2597,7 +2597,7 @@
       "levantamento-poderoso"
     ],
     "aliases": [],
-    "texto": "agarra e esmaga um objeto ou membro.",
+    "texto": "Agarra e esmaga um objeto ou membro.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2616,7 +2616,7 @@
       "arremesso"
     ],
     "aliases": [],
-    "texto": "arranca árvores, postes e portões para usar como arma.",
+    "texto": "Arranca árvores, postes e portões para usar como arma.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -2635,7 +2635,7 @@
       "arrancar"
     ],
     "aliases": [],
-    "texto": "ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
+    "texto": "Ergue carroças, estátuas e pedras de tonelada (~×30 o normal).",
     "pendente": false,
     "nivel": 5,
     "efeito": "carga"
@@ -2654,7 +2654,7 @@
       "forca-titanica"
     ],
     "aliases": [],
-    "texto": "sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
+    "texto": "Sustenta ou arremessa coisas de escala absurda (~×100 o normal; uma muralha, um barco).",
     "pendente": false,
     "nivel": 6,
     "efeito": "carga"
@@ -2778,7 +2778,7 @@
       "esmaga-pedra"
     ],
     "aliases": [],
-    "texto": "bate o chão, abre fendas e derruba quem está perto.",
+    "texto": "Bate o chão, abre fendas e derruba quem está perto.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -2811,7 +2811,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+3 para agarrar e manter agarrões.",
+    "texto": "+3 para agarrar e para manter o agarrão.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2829,7 +2829,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "prende o agarrado: ele fica Imobilizado (não age, nem com Firula, e não grita se o tipo de imobilização disser). Só cobra a manutenção, a cada 6 Ticks, se o alvo estiver tentando se libertar.",
+    "texto": "Prende o agarrado: ele fica Imobilizado (não age, nem com Firula, e não grita se o tipo de imobilização disser). Só cobra a manutenção, a cada 6 Ticks, se o alvo estiver tentando se libertar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2847,7 +2847,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "arremessa um inimigo agarrado (dano + afasta).",
+    "texto": "Arremessa um inimigo agarrado (dano + afasta).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -2865,7 +2865,7 @@
       "pegada-de-ferro"
     ],
     "aliases": [],
-    "texto": "dano contínuo a quem está agarrado.",
+    "texto": "Dano contínuo a quem está agarrado.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2883,7 +2883,7 @@
       "imobilizar"
     ],
     "aliases": [],
-    "texto": "usa o agarrado como escudo.",
+    "texto": "Usa o agarrado como escudo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -2902,7 +2902,7 @@
       "imobilizar"
     ],
     "aliases": [],
-    "texto": "controla o corpo do oponente (sufoca, quebra membros).",
+    "texto": "Controla o corpo do oponente (sufoca, quebra membros).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -2921,7 +2921,7 @@
       "dominar"
     ],
     "aliases": [],
-    "texto": "esmaga ossos e armaduras no abraço; parte armas e escudos.",
+    "texto": "Esmaga ossos e armaduras no abraço; parte armas e escudos.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -2940,7 +2940,7 @@
       "aperto-esmagador"
     ],
     "aliases": [],
-    "texto": "agarra e esmaga criaturas de qualquer tamanho; nada escapa.",
+    "texto": "Agarra e esmaga criaturas de qualquer tamanho; nada escapa.",
     "pendente": false,
     "nivel": 6,
     "efeito": "tamanho"
@@ -2954,7 +2954,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "nunca cai de superfícies estreitas; +3 em Atletismo.",
+    "texto": "Nunca cai de superfícies estreitas; +3 em Atletismo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -2972,7 +2972,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "reduz muito o dano de quedas (×2); cai de pé.",
+    "texto": "Reduz muito o dano de quedas (×2); cai de pé.",
     "pendente": false,
     "nivel": 1,
     "efeito": "salto"
@@ -2990,7 +2990,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "sobe superfícies difíceis em velocidade de corrida (×1,5).",
+    "texto": "Sobe superfícies difíceis em velocidade de corrida (×1,5).",
     "pendente": false,
     "nivel": 1,
     "efeito": "velocidade"
@@ -3008,7 +3008,7 @@
       "equilibrio-felino"
     ],
     "aliases": [],
-    "texto": "passa por aberturas mínimas, escapa de amarras e grades.",
+    "texto": "Passa por aberturas mínimas, escapa de amarras e grades.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3026,7 +3026,7 @@
       "queda-de-gato"
     ],
     "aliases": [],
-    "texto": "piruetas que reposicionam e desviam.",
+    "texto": "Piruetas que reposicionam e desviam.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3045,7 +3045,7 @@
       "contorcao"
     ],
     "aliases": [],
-    "texto": "escala qualquer superfície, até de cabeça para baixo.",
+    "texto": "Escala qualquer superfície, até de cabeça para baixo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3064,7 +3064,7 @@
       "andar-de-aranha"
     ],
     "aliases": [],
-    "texto": "equilibra-se sobre cordas, lâminas e fios; pousa sem peso.",
+    "texto": "Equilibra-se sobre cordas, lâminas e fios; pousa sem peso.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3083,7 +3083,7 @@
       "imponderavel"
     ],
     "aliases": [],
-    "texto": "move-se por qualquer terreno como se a gravidade não o tocasse.",
+    "texto": "Move-se por qualquer terreno como se a gravidade não o tocasse.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3097,7 +3097,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+3 em prestidigitação, fechaduras e furto.",
+    "texto": "+3 em prestidigitação, em fechaduras e em furto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3115,7 +3115,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "some/planta/rouba objetos pequenos sem ser visto.",
+    "texto": "Some, planta ou rouba objetos pequenos sem ser visto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3133,7 +3133,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "tira um objeto/arma da mão do alvo num gesto.",
+    "texto": "Tira um objeto ou uma arma da mão do alvo num gesto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3151,7 +3151,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "manipula vários objetos rápido demais para acompanhar.",
+    "texto": "Manipula vários objetos rápido demais para acompanhar.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3169,7 +3169,7 @@
       "truque-de-mao"
     ],
     "aliases": [],
-    "texto": "desarma armadilhas e abre qualquer fechadura mundana num instante.",
+    "texto": "Desarma armadilhas e abre qualquer fechadura mundana num instante.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3188,7 +3188,7 @@
       "toque-preciso"
     ],
     "aliases": [],
-    "texto": "várias ações manuais finas numa única ação.",
+    "texto": "Várias ações manuais finas numa única ação.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3207,7 +3207,7 @@
       "mil-dedos"
     ],
     "aliases": [],
-    "texto": "proezas que desafiam a física (pegar flechas no ar, refazer um mecanismo num piscar).",
+    "texto": "Proezas que desafiam a física (pegar flechas no ar, refazer um mecanismo num piscar).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3226,7 +3226,7 @@
       "maos-impossiveis"
     ],
     "aliases": [],
-    "texto": "manipula tudo ao alcance das mãos com velocidade sobre-humana absoluta.",
+    "texto": "Manipula tudo ao alcance das mãos com velocidade sobre-humana absoluta.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3313,7 +3313,7 @@
       "segundo-vento"
     ],
     "aliases": [],
-    "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (pesado→médio, médio→leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
+    "texto": "**Postura:** enquanto sustentada, cada golpe custa o Fôlego de **uma classe mais leve** (o pesado custa como médio, o médio como leve). Também prende a respiração por minutos: resiste a fumaça e gases.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3400,7 +3400,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "raramente adoece.",
+    "texto": "Raramente adoece.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3418,7 +3418,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "adapta-se rápido a calor, frio e altitude.",
+    "texto": "Adapta-se rápido a calor, frio e altitude.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3436,7 +3436,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "neutraliza um veneno já no corpo; expele toxinas.",
+    "texto": "Neutraliza um veneno já no corpo; expele toxinas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3452,7 +3452,7 @@
       "aclimatacao"
     ],
     "aliases": [],
-    "texto": "suporta temperaturas e ambientes que matariam outros.",
+    "texto": "Suporta temperaturas e ambientes que matariam outros.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3471,7 +3471,7 @@
       "resistir-doenca"
     ],
     "aliases": [],
-    "texto": "imune a venenos e doenças mundanos.",
+    "texto": "Imune a venenos e doenças mundanos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3490,7 +3490,7 @@
       "imunidade"
     ],
     "aliases": [],
-    "texto": "sobrevive em ambientes mortais (sem ar, submerso, veneno no ar) por um tempo.",
+    "texto": "Sobrevive em ambientes mortais (sem ar, submerso, veneno no ar) por um tempo.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3509,7 +3509,7 @@
       "corpo-inospito"
     ],
     "aliases": [],
-    "texto": "imune a quase todo veneno, doença e ambiente; o corpo rejeita a corrupção.",
+    "texto": "Imune a quase todo veneno, doença e ambiente; o corpo rejeita a corrupção.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3523,7 +3523,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "ignora a penalidade do estado Machucado.",
+    "texto": "Ignora a penalidade do estado Machucado.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3541,7 +3541,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "ignora a penalidade de ferimento por uma ação crucial.",
+    "texto": "Ignora a penalidade de ferimento por uma ação crucial.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3559,7 +3559,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "levanta-se na hora ao ser derrubado, sem gastar a ação.",
+    "texto": "Levanta-se na hora ao ser derrubado, sem gastar a ação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3575,7 +3575,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "reduz todas as penalidades de ferimento em 1.",
+    "texto": "Reduz todas as penalidades de ferimento em 1.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3593,7 +3593,7 @@
       "cerrar-os-dentes"
     ],
     "aliases": [],
-    "texto": "ao chegar a 0 PV, fica de pé por mais 6 Ticks.",
+    "texto": "Ao chegar a 0 PV, fica de pé por mais 6 Ticks.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3612,7 +3612,7 @@
       "nao-vou-cair"
     ],
     "aliases": [],
-    "texto": "age normalmente mesmo gravemente ferido por uma cena.",
+    "texto": "Age normalmente mesmo gravemente ferido por uma cena.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3631,7 +3631,7 @@
       "vontade-de-viver"
     ],
     "aliases": [],
-    "texto": "na janela entre cair a 0 e cruzar o limite da morte, age uma vez, plenamente, apesar de estar incapacitado.",
+    "texto": "Na janela entre cair a 0 e cruzar o limite da morte, age uma vez, plenamente, apesar de estar incapacitado.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3650,7 +3650,7 @@
       "ultimo-suspiro"
     ],
     "aliases": [],
-    "texto": "adia a própria morte por pura vontade até terminar o que precisa.",
+    "texto": "Adia a própria morte por pura vontade até terminar o que precisa.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3664,7 +3664,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "aliados que o seguem ganham +3 de moral; ordens claras.",
+    "texto": "Os aliados que o seguem ganham +3 de moral; ordens claras.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3682,7 +3682,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "um aliado age no melhor momento (concede reação/reposiciona iniciativa).",
+    "texto": "Um aliado age no melhor momento (concede uma reação ou reposiciona a iniciativa).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3700,7 +3700,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "reagrupa aliados abalados, removendo medo leve.",
+    "texto": "Reagrupa aliados abalados, removendo medo leve.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3718,7 +3718,7 @@
       "voz-de-lider"
     ],
     "aliases": [],
-    "texto": "aliados coordenados ganham +6 de Defesa e de ataque juntos.",
+    "texto": "Aliados coordenados ganham +6 de Defesa e de ataque juntos.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -3736,7 +3736,7 @@
       "reunir"
     ],
     "aliases": [],
-    "texto": "inspira investida (+2d6 de dano num avanço).",
+    "texto": "Inspira investida (+2d6 de dano num avanço).",
     "pendente": false,
     "nivel": 3,
     "efeito": "dano"
@@ -3755,7 +3755,7 @@
       "coordenar"
     ],
     "aliases": [],
-    "texto": "comanda um grupo como uma unidade; concede ações coordenadas.",
+    "texto": "Comanda um grupo como uma unidade; concede ações coordenadas.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3774,7 +3774,7 @@
       "maestria-de-campo"
     ],
     "aliases": [],
-    "texto": "dirige uma tropa com eficiência sobre-humana; reverte uma derrota iminente.",
+    "texto": "Dirige uma tropa com eficiência sobre-humana; reverte uma derrota iminente.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3793,7 +3793,7 @@
       "general"
     ],
     "aliases": [],
-    "texto": "torna-se o símbolo da batalha; um exército luta como um só corpo enquanto você estiver de pé.",
+    "texto": "Torna-se o símbolo da batalha; um exército luta como um só corpo enquanto você estiver de pé.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3807,7 +3807,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "+3 em performance; prende atenção.",
+    "texto": "+3 em performance; prende a atenção.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -3825,7 +3825,7 @@
       "presenca-cenica"
     ],
     "aliases": [],
-    "texto": "a plateia sente uma emoção escolhida.",
+    "texto": "A plateia sente uma emoção escolhida.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3843,7 +3843,7 @@
       "presenca-cenica"
     ],
     "aliases": [],
-    "texto": "a apresentação desvia a atenção de todos por um momento.",
+    "texto": "A apresentação desvia a atenção de todos por um momento.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3861,7 +3861,7 @@
       "tocar-a-alma"
     ],
     "aliases": [],
-    "texto": "dá aos ouvintes um bônus duradouro (coragem/foco) por uma cena.",
+    "texto": "Dá aos ouvintes um bônus duradouro (coragem ou foco) por uma cena.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3879,7 +3879,7 @@
       "distrair"
     ],
     "aliases": [],
-    "texto": "a plateia fica absorta enquanto você se apresenta.",
+    "texto": "A plateia fica absorta enquanto você se apresenta.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3898,7 +3898,7 @@
       "encantar-a-multidao"
     ],
     "aliases": [],
-    "texto": "performance que comove e muda atitudes.",
+    "texto": "Uma performance que comove e muda atitudes.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -3917,7 +3917,7 @@
       "obra-prima"
     ],
     "aliases": [],
-    "texto": "a arte restaura o espírito: remove trauma, medo, desespero.",
+    "texto": "A arte restaura o espírito: remove trauma, medo, desespero.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -3936,7 +3936,7 @@
       "voz-que-cura"
     ],
     "aliases": [],
-    "texto": "move massas às lágrimas ou à fúria; ecoa e inspira por gerações.",
+    "texto": "Move massas às lágrimas ou à fúria; ecoa e inspira por gerações.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -3968,7 +3968,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "provoca raiva/paixão, empurrando à ação.",
+    "texto": "Provoca raiva ou paixão, empurrando à ação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -3986,7 +3986,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "acende o ânimo de aliados (fervor temporário).",
+    "texto": "Acende o ânimo de aliados (fervor temporário).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4004,7 +4004,7 @@
       "centelha"
     ],
     "aliases": [],
-    "texto": "arrebata uma multidão para uma causa por uma cena.",
+    "texto": "Arrebata uma multidão para uma causa por uma cena.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4022,7 +4022,7 @@
       "incitar"
     ],
     "aliases": [],
-    "texto": "força um inimigo a agir por impulso.",
+    "texto": "Força um inimigo a agir por impulso.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4041,7 +4041,7 @@
       "provocacao"
     ],
     "aliases": [],
-    "texto": "inflama uma multidão à revolta ou ao fervor.",
+    "texto": "Inflama uma multidão à revolta ou ao fervor.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4060,7 +4060,7 @@
       "fogo-nos-coracoes"
     ],
     "aliases": [],
-    "texto": "incendeia paixões a ponto de mover cidades (motim, levante).",
+    "texto": "Incendeia paixões a ponto de mover cidades (motim, levante).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4079,7 +4079,7 @@
       "pavio-curto"
     ],
     "aliases": [],
-    "texto": "suas palavras espalham um fervor que consome reinos; uma fagulha vira revolução.",
+    "texto": "Suas palavras espalham um fervor que consome reinos; uma fagulha vira revolução.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4111,7 +4111,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "insinua uma ideia que o alvo crê ser sua.",
+    "texto": "Insinua uma ideia que o alvo crê ser sua.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4129,7 +4129,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "semeia desconfiança entre dois aliados.",
+    "texto": "Semeia desconfiança entre dois aliados.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4147,7 +4147,7 @@
       "trama"
     ],
     "aliases": [],
-    "texto": "usa uma alavanca para dobrar a vontade de alguém.",
+    "texto": "Usa uma alavanca para dobrar a vontade de alguém.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4165,7 +4165,7 @@
       "plantar-ideia"
     ],
     "aliases": [],
-    "texto": "cultiva uma teia de contatos e dívidas.",
+    "texto": "Cultiva uma teia de contatos e dívidas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4184,7 +4184,7 @@
       "cunha"
     ],
     "aliases": [],
-    "texto": "vira facções e pessoas umas contra as outras numa cena.",
+    "texto": "Vira facções e pessoas umas contra as outras numa cena.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4203,7 +4203,7 @@
       "virar-o-jogo"
     ],
     "aliases": [],
-    "texto": "orquestra intrigas de longo alcance; manipula uma corte nos bastidores.",
+    "texto": "Orquestra intrigas de longo alcance; manipula uma corte nos bastidores.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4222,7 +4222,7 @@
       "mestre-dos-cordeis"
     ],
     "aliases": [],
-    "texto": "nada acontece numa região sem ser parte do seu plano; reis dançam sem saber.",
+    "texto": "Nada acontece numa região sem ser parte do seu plano; reis dançam sem saber.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4254,7 +4254,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "reinterpreta uma frase/acordo a seu favor.",
+    "texto": "Reinterpreta uma frase ou um acordo a seu favor.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4272,7 +4272,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "obtém condições muito melhores numa negociação.",
+    "texto": "Obtém condições muito melhores numa negociação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4290,7 +4290,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "fecha acordos com armadilhas que o alvo não percebe.",
+    "texto": "Fecha acordos com armadilhas que o alvo não percebe.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4308,7 +4308,7 @@
       "torcer"
     ],
     "aliases": [],
-    "texto": "emaranha o alvo em lógica até ele concordar.",
+    "texto": "Emaranha o alvo em lógica até ele concordar.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4327,7 +4327,7 @@
       "confundir"
     ],
     "aliases": [],
-    "texto": "convence alguém de quase qualquer coisa razoável (vs Defesa Social).",
+    "texto": "Convence alguém de quase qualquer coisa razoável (contra a Defesa Social).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4346,7 +4346,7 @@
       "palavras-de-veludo"
     ],
     "aliases": [],
-    "texto": "sela acordos que o alvo se sente compelido a cumprir.",
+    "texto": "Sela acordos que o alvo se sente compelido a cumprir.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4365,7 +4365,7 @@
       "pacto-inquebravel"
     ],
     "aliases": [],
-    "texto": "dobra até os céticos; faz o mal parecer bem e a mentira, verdade.",
+    "texto": "Dobra até os céticos; faz o mal parecer bem e a mentira, verdade.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4397,7 +4397,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "faz o alvo duvidar de quem confiava.",
+    "texto": "Faz o alvo duvidar de quem confiava.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4415,7 +4415,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "deixa o alvo nervoso, com a sensação de ser observado.",
+    "texto": "Deixa o alvo nervoso, com a sensação de ser observado.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4433,7 +4433,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "instala suspeita corrosiva (vs Defesa Social).",
+    "texto": "Instala suspeita corrosiva (contra a Defesa Social).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4451,7 +4451,7 @@
       "semear-duvida"
     ],
     "aliases": [],
-    "texto": "espalha um rumor que mina reputações.",
+    "texto": "Espalha um rumor que mina reputações.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4470,7 +4470,7 @@
       "boato"
     ],
     "aliases": [],
-    "texto": "corrói a confiança e a sanidade de um alvo ao longo da cena.",
+    "texto": "Corrói a confiança e a sanidade de um alvo ao longo da cena.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4489,7 +4489,7 @@
       "veneno-na-mente"
     ],
     "aliases": [],
-    "texto": "assombra o alvo com medos e visões; quebra a compostura dele.",
+    "texto": "Assombra o alvo com medos e visões; quebra a compostura dele.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4508,7 +4508,7 @@
       "pesadelo-acordado"
     ],
     "aliases": [],
-    "texto": "semeia pânico e desconfiança numa multidão; vira aliados em inimigos.",
+    "texto": "Semeia pânico e desconfiança numa multidão; vira aliados em inimigos.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4524,7 +4524,7 @@
     },
     "prereq": [],
     "aliases": [],
-    "texto": "planta um impulso simples que o alvo tende a seguir (vs Defesa Social).",
+    "texto": "Planta um impulso simples que o alvo tende a seguir (contra a Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4540,7 +4540,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "percebe o que o alvo quer e teme.",
+    "texto": "Percebe o que o alvo quer e teme.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4558,7 +4558,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "inclina uma decisão indecisa na direção que você quer.",
+    "texto": "Inclina uma decisão indecisa na direção que você quer.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4576,7 +4576,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "impõe um desejo passageiro que o alvo racionaliza como seu (vs Defesa Mental).",
+    "texto": "Impõe um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4594,7 +4594,7 @@
       "ler-desejos"
     ],
     "aliases": [],
-    "texto": "guia o comportamento do alvo sutilmente por uma cena (vs Defesa Mental).",
+    "texto": "Guia o comportamento do alvo sutilmente por uma cena (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4613,7 +4613,7 @@
       "fios-invisiveis"
     ],
     "aliases": [],
-    "texto": "controla as ações do alvo por um curto tempo (vs Defesa Mental; resistível com Vontade).",
+    "texto": "Controla as ações do alvo por um curto tempo (contra a Defesa Mental; resistível com Vontade).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4632,7 +4632,7 @@
       "titereiro"
     ],
     "aliases": [],
-    "texto": "altera o que o alvo deseja de forma duradoura (vs Defesa Mental).",
+    "texto": "Altera o que o alvo deseja de forma duradoura (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4651,7 +4651,7 @@
       "reescrever-desejos"
     ],
     "aliases": [],
-    "texto": "domina um alvo por completo, corpo e vontade, como um fantoche (vs Defesa Mental).",
+    "texto": "Domina um alvo por completo, corpo e vontade, como um fantoche (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4683,7 +4683,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "desperta atração num alvo receptivo (vs Defesa Social).",
+    "texto": "Desperta atração num alvo receptivo (contra a Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4701,7 +4701,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "a beleza baixa a guarda do alvo.",
+    "texto": "A beleza baixa a guarda do alvo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4719,7 +4719,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "cativa uma sala inteira; todos querem sua atenção.",
+    "texto": "Cativa uma sala inteira; todos querem sua atenção.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4737,7 +4737,7 @@
       "seducao"
     ],
     "aliases": [],
-    "texto": "prende o alvo num momento de fascínio.",
+    "texto": "Prende o alvo num momento de fascínio.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4756,7 +4756,7 @@
       "olhar-cativante"
     ],
     "aliases": [],
-    "texto": "o alvo, encantado, cede a pedidos razoáveis.",
+    "texto": "O alvo, encantado, cede a pedidos razoáveis.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4775,7 +4775,7 @@
       "beleza-inebriante"
     ],
     "aliases": [],
-    "texto": "inspira devoção quase religiosa; multidões se rendem ao seu charme.",
+    "texto": "Inspira devoção quase religiosa; multidões se rendem ao seu charme.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4794,7 +4794,7 @@
       "visao-divina"
     ],
     "aliases": [],
-    "texto": "incomparável; quem o vê faria qualquer coisa por um sorriso seu.",
+    "texto": "Incomparável; quem o vê faria qualquer coisa por um sorriso seu.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4826,7 +4826,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "um olhar faz um alvo hesitar ou recuar.",
+    "texto": "Um olhar faz um alvo hesitar ou recuar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4844,7 +4844,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "sua presença domina o ambiente; conversas silenciam quando você entra.",
+    "texto": "Sua presença domina o ambiente; conversas silenciam quando você entra.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4862,7 +4862,7 @@
       "porte"
     ],
     "aliases": [],
-    "texto": "subordinados e fracos obedecem instintivamente sua presença.",
+    "texto": "Subordinados e fracos obedecem instintivamente sua presença.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4880,7 +4880,7 @@
       "olhar-severo"
     ],
     "aliases": [],
-    "texto": "seu semblante inspira medo real (vs Defesa Social).",
+    "texto": "Seu semblante inspira medo real (contra a Defesa Social).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -4899,7 +4899,7 @@
       "encarar-a-morte"
     ],
     "aliases": [],
-    "texto": "inimigos comuns congelam ou fogem diante de você.",
+    "texto": "Inimigos comuns congelam ou fogem diante de você.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -4918,7 +4918,7 @@
       "presenca-avassaladora"
     ],
     "aliases": [],
-    "texto": "irradia autoridade divina; multidões se ajoelham ou tremem.",
+    "texto": "Irradia autoridade divina; multidões se ajoelham ou tremem.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -4937,7 +4937,7 @@
       "majestade"
     ],
     "aliases": [],
-    "texto": "sua mera presença impõe reverência ou terror absolutos.",
+    "texto": "Sua mera presença impõe reverência ou terror absolutos.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -4969,7 +4969,7 @@
       "disfarce"
     ],
     "aliases": [],
-    "texto": "altera postura, expressão e voz para parecer outra pessoa.",
+    "texto": "Altera postura, expressão e voz para parecer outra pessoa.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -4987,7 +4987,7 @@
       "disfarce"
     ],
     "aliases": [],
-    "texto": "passa por \"mais um da multidão\".",
+    "texto": "Passa por \"mais um da multidão\".",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5005,7 +5005,7 @@
       "disfarce"
     ],
     "aliases": [],
-    "texto": "muda a própria aparência física por uma cena, sem adereços.",
+    "texto": "Muda a própria aparência física por uma cena, sem adereços.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5023,7 +5023,7 @@
       "misturar-se"
     ],
     "aliases": [],
-    "texto": "torna-se esquecível; testemunhas não conseguem descrevê-lo.",
+    "texto": "Torna-se esquecível; testemunhas não conseguem descrevê-lo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5042,7 +5042,7 @@
       "rosto-comum"
     ],
     "aliases": [],
-    "texto": "imita a aparência de uma pessoa específica de forma convincente.",
+    "texto": "Imita a aparência de uma pessoa específica de forma convincente.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5061,7 +5061,7 @@
       "impostor"
     ],
     "aliases": [],
-    "texto": "altera o corpo livremente (altura, idade, feições) à vontade.",
+    "texto": "Altera o corpo livremente (altura, idade, feições) à vontade.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5080,7 +5080,7 @@
       "forma-fluida"
     ],
     "aliases": [],
-    "texto": "assume qualquer aparência humana perfeitamente; ninguém jamais o reconhece.",
+    "texto": "Assume qualquer aparência humana perfeitamente; ninguém jamais o reconhece.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5094,7 +5094,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "emana uma emoção tênue (conforto/desconforto) a quem está perto.",
+    "texto": "Emana uma emoção tênue (conforto ou desconforto) a quem está perto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5112,7 +5112,7 @@
       "aura-sutil"
     ],
     "aliases": [],
-    "texto": "acalma pessoas e animais ao redor.",
+    "texto": "Acalma pessoas e animais ao redor.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5130,7 +5130,7 @@
       "aura-sutil"
     ],
     "aliases": [],
-    "texto": "incute medo leve nos próximos.",
+    "texto": "Incute medo leve nos próximos.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5148,7 +5148,7 @@
       "aura-sutil"
     ],
     "aliases": [],
-    "texto": "impõe uma emoção a todos numa área por um tempo.",
+    "texto": "Impõe uma emoção a todos numa área por um tempo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5166,7 +5166,7 @@
       "irradiar-calma"
     ],
     "aliases": [],
-    "texto": "a aura afeta até os resistentes.",
+    "texto": "A aura afeta até os resistentes.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5185,7 +5185,7 @@
       "presenca-tangivel"
     ],
     "aliases": [],
-    "texto": "domina o clima emocional de uma multidão.",
+    "texto": "Domina o clima emocional de uma multidão.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5204,7 +5204,7 @@
       "mare-emocional"
     ],
     "aliases": [],
-    "texto": "a emoção irradiada torna-se quase irresistível numa grande área.",
+    "texto": "A emoção irradiada torna-se quase irresistível numa grande área.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5223,7 +5223,7 @@
       "aura-avassaladora"
     ],
     "aliases": [],
-    "texto": "sua presença banha uma região inteira na emoção que escolher.",
+    "texto": "Sua presença banha uma região inteira na emoção que escolher.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5237,7 +5237,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "suas emoções nunca transparecem; +3 em blefe.",
+    "texto": "Suas emoções nunca transparecem; +3 em blefe.",
     "pendente": false,
     "nivel": 1,
     "efeito": "bonus"
@@ -5255,7 +5255,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "oculta uma emoção/reação no momento.",
+    "texto": "Oculta uma emoção ou reação no momento.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5273,7 +5273,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "mente sem nenhum sinal físico (vs Olho da Verdade).",
+    "texto": "Mente sem nenhum sinal físico (contra o Olho da Verdade).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5289,7 +5289,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "ninguém lê suas intenções; imune a leitura corporal mundana.",
+    "texto": "Ninguém lê suas intenções; imune a leitura corporal mundana.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5307,7 +5307,7 @@
       "esconder-sentir"
     ],
     "aliases": [],
-    "texto": "mantém compostura perfeita sob tortura, terror ou provocação.",
+    "texto": "Mantém compostura perfeita sob tortura, terror ou provocação.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5326,7 +5326,7 @@
       "calma-absoluta"
     ],
     "aliases": [],
-    "texto": "esconde pensamentos e intenções até de poderes que leem a mente.",
+    "texto": "Esconde pensamentos e intenções até de poderes que leem a mente.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5345,7 +5345,7 @@
       "veu-da-mente"
     ],
     "aliases": [],
-    "texto": "finge qualquer estado interior de forma indetectável, mesmo para semideuses.",
+    "texto": "Finge qualquer estado interior de forma indetectável, mesmo para semideuses.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5364,7 +5364,7 @@
       "mascara-perfeita"
     ],
     "aliases": [],
-    "texto": "torna-se ilegível e impenetrável; nem a magia mais sutil decifra o que você sente ou trama.",
+    "texto": "Torna-se ilegível e impenetrável; nem a magia mais sutil decifra o que você sente ou trama.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5396,7 +5396,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "pressente uma ameaça oculta nas redondezas.",
+    "texto": "Pressente uma ameaça oculta nas redondezas.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5414,7 +5414,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "nota o que está fora do lugar (armadilhas, espreita).",
+    "texto": "Nota o que está fora do lugar (armadilhas, espreita).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5430,7 +5430,7 @@
       "vigilancia"
     ],
     "aliases": [],
-    "texto": "age normalmente em emboscadas; não pode ser pego de surpresa.",
+    "texto": "Age normalmente em emboscadas; não pode ser pego de surpresa.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5448,7 +5448,7 @@
       "olho-atento"
     ],
     "aliases": [],
-    "texto": "num relance, mapeia ameaças, saídas e vantagens.",
+    "texto": "Num relance, mapeia ameaças, saídas e vantagens.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5467,7 +5467,7 @@
       "sentir-perigo"
     ],
     "aliases": [],
-    "texto": "sente intenções hostis antes que ocorram; reage a ataques invisíveis.",
+    "texto": "Sente intenções hostis antes que ocorram; reage a ataques invisíveis.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5486,7 +5486,7 @@
       "sexto-sentido"
     ],
     "aliases": [],
-    "texto": "percebe tudo numa grande área ao mesmo tempo.",
+    "texto": "Percebe tudo numa grande área ao mesmo tempo.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5505,7 +5505,7 @@
       "olhos-por-toda-parte"
     ],
     "aliases": [],
-    "texto": "vigilância perfeita e constante; nada o pega desprevenido, nem o sobrenatural.",
+    "texto": "Uma vigilância perfeita e constante; nada o pega desprevenido, nem o sobrenatural.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5537,7 +5537,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "segue um cheiro ou trilha mesmo tênue.",
+    "texto": "Segue um cheiro ou trilha mesmo tênue.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5555,7 +5555,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "deduz o que houve por marcas (quantos, quando, para onde).",
+    "texto": "Deduz o que houve por marcas (quantos, quando, para onde).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5573,7 +5573,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "segue rastros antigos ou apagados.",
+    "texto": "Segue rastros antigos ou apagados.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5591,7 +5591,7 @@
       "faro"
     ],
     "aliases": [],
-    "texto": "aproxima-se da presa sem ser notado; conhece seus hábitos.",
+    "texto": "Aproxima-se da presa sem ser notado; conhece seus hábitos.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5610,7 +5610,7 @@
       "predador"
     ],
     "aliases": [],
-    "texto": "persegue um alvo por qualquer terreno, dias a fio.",
+    "texto": "Persegue um alvo por qualquer terreno, dias a fio.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5629,7 +5629,7 @@
       "caca-implacavel"
     ],
     "aliases": [],
-    "texto": "localiza uma presa específica à distância; sente sua presença.",
+    "texto": "Localiza uma presa específica à distância; sente sua presença.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5648,7 +5648,7 @@
       "sentidos-de-cacada"
     ],
     "aliases": [],
-    "texto": "nada que você caça escapa, onde quer que se esconda.",
+    "texto": "Nada que você caça escapa, onde quer que se esconda.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5680,7 +5680,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "sente quando alguém mente.",
+    "texto": "Sente quando alguém mente.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5698,7 +5698,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "nota disfarces e fingimentos malfeitos.",
+    "texto": "Nota disfarces e fingimentos malfeitos.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5716,7 +5716,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "percebe falsificações e segundas intenções.",
+    "texto": "Percebe falsificações e segundas intenções.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5734,7 +5734,7 @@
       "ver-atraves"
     ],
     "aliases": [],
-    "texto": "revela um disfarce ou mentira mundana (vs Camaleão/Máscara).",
+    "texto": "Revela um disfarce ou mentira mundana (contra o Camaleão ou a Máscara).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5753,7 +5753,7 @@
       "desmascarar"
     ],
     "aliases": [],
-    "texto": "vê através de ilusões e enganos, inclusive alguns mágicos.",
+    "texto": "Vê através de ilusões e enganos, inclusive alguns mágicos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5772,7 +5772,7 @@
       "verdade-nua"
     ],
     "aliases": [],
-    "texto": "nenhuma mentira ou disfarce o engana.",
+    "texto": "Mentira ou disfarce nenhum o engana.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5791,7 +5791,7 @@
       "olho-que-nao-erra"
     ],
     "aliases": [],
-    "texto": "percebe a verdade absoluta de uma pessoa ou situação.",
+    "texto": "Percebe a verdade absoluta de uma pessoa ou situação.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5805,7 +5805,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "pressente o sobrenatural próximo (magia, espíritos, lugares de poder).",
+    "texto": "Pressente o sobrenatural próximo (magia, espíritos, lugares de poder).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5823,7 +5823,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "percebe o estado/natureza de alguém como cores.",
+    "texto": "Percebe o estado ou natureza de alguém como cores.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5841,7 +5841,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "nota presenças invisíveis e ecos do passado num lugar.",
+    "texto": "Nota presenças invisíveis e ecos do passado num lugar.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5859,7 +5859,7 @@
       "sensivel"
     ],
     "aliases": [],
-    "texto": "vê espíritos, encantamentos ativos e marcas mágicas.",
+    "texto": "Vê espíritos, encantamentos ativos e marcas mágicas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5877,7 +5877,7 @@
       "sentir-o-veu"
     ],
     "aliases": [],
-    "texto": "percebe o que aconteceu num local.",
+    "texto": "Percebe o que aconteceu num local.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -5896,7 +5896,7 @@
       "ler-o-lugar"
     ],
     "aliases": [],
-    "texto": "comunica-se com espíritos e percebe o mundo invisível.",
+    "texto": "Comunica-se com espíritos e percebe o mundo invisível.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -5915,7 +5915,7 @@
       "comunhao"
     ],
     "aliases": [],
-    "texto": "enxerga planos sobrepostos ao mundo; lê a teia de essência.",
+    "texto": "Enxerga planos sobrepostos ao mundo; lê a teia de essência.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -5934,7 +5934,7 @@
       "olhar-alem"
     ],
     "aliases": [],
-    "texto": "percebe a verdadeira natureza espiritual de tudo; nada do oculto lhe é velado.",
+    "texto": "Percebe a verdadeira natureza espiritual de tudo; nada do oculto lhe é velado.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -5966,7 +5966,7 @@
       "vasto-saber"
     ],
     "aliases": [],
-    "texto": "recorda um fato relevante que estudou.",
+    "texto": "Recorda um fato relevante que estudou.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -5982,7 +5982,7 @@
       "vasto-saber"
     ],
     "aliases": [],
-    "texto": "compreende e aprende idiomas com facilidade espantosa.",
+    "texto": "Compreende e aprende idiomas com facilidade espantosa.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6000,7 +6000,7 @@
       "vasto-saber"
     ],
     "aliases": [],
-    "texto": "conhecimento profundo em muitas áreas.",
+    "texto": "Conhecimento profundo em muitas áreas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6018,7 +6018,7 @@
       "poliglota"
     ],
     "aliases": [],
-    "texto": "lê escritas antigas, cifras e línguas mortas.",
+    "texto": "Lê escritas antigas, cifras e línguas mortas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6037,7 +6037,7 @@
       "decifrar"
     ],
     "aliases": [],
-    "texto": "domina saberes raros; conecta conhecimentos distantes.",
+    "texto": "Domina saberes raros; conecta conhecimentos distantes.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6056,7 +6056,7 @@
       "sabio"
     ],
     "aliases": [],
-    "texto": "sabe quase tudo que a civilização registrou.",
+    "texto": "Sabe quase tudo que a civilização registrou.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6075,7 +6075,7 @@
       "mente-universal"
     ],
     "aliases": [],
-    "texto": "qualquer saber humano está ao seu alcance; lê qualquer língua na hora.",
+    "texto": "Qualquer saber humano está ao seu alcance; lê qualquer língua na hora.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6107,7 +6107,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "constrói uma ferramenta/solução com o que tem.",
+    "texto": "Constrói uma ferramenta ou solução com o que tem.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6125,7 +6125,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "avalia qualidade, função e fraqueza de um objeto.",
+    "texto": "Avalia qualidade, função e fraqueza de um objeto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6143,7 +6143,7 @@
       "maos-habeis"
     ],
     "aliases": [],
-    "texto": "cria itens de qualidade excepcional.",
+    "texto": "Cria itens de qualidade excepcional.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6161,7 +6161,7 @@
       "improvisar"
     ],
     "aliases": [],
-    "texto": "conserta ou monta algo complexo numa fração do tempo.",
+    "texto": "Conserta ou monta algo complexo numa fração do tempo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6180,7 +6180,7 @@
       "reparo-veloz"
     ],
     "aliases": [],
-    "texto": "cria obras-primas que parecem impossíveis.",
+    "texto": "Cria obras-primas que parecem impossíveis.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6199,7 +6199,7 @@
       "mestre-artesao"
     ],
     "aliases": [],
-    "texto": "constrói máquinas e autômatos além da técnica de sua era.",
+    "texto": "Constrói máquinas e autômatos além da técnica de sua era.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6218,7 +6218,7 @@
       "engenho-sobre-humano"
     ],
     "aliases": [],
-    "texto": "cria artefatos lendários e maravilhas que desafiam o possível.",
+    "texto": "Cria artefatos lendários e maravilhas que desafiam o possível.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6250,7 +6250,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "prevê o próximo movimento de um oponente.",
+    "texto": "Prevê o próximo movimento de um oponente.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6268,7 +6268,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "traça um plano com etapas e contingências.",
+    "texto": "Traça um plano com etapas e contingências.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6286,7 +6286,7 @@
       "mente-tatica"
     ],
     "aliases": [],
-    "texto": "identifica o ponto fraco de uma força e o momento de agir.",
+    "texto": "Identifica o ponto fraco de uma força e o momento de agir.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6304,7 +6304,7 @@
       "plano"
     ],
     "aliases": [],
-    "texto": "prepara armadilhas e posições de grande vantagem inicial.",
+    "texto": "Prepara armadilhas e posições de grande vantagem inicial.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6323,7 +6323,7 @@
       "emboscada"
     ],
     "aliases": [],
-    "texto": "orquestra uma batalha para virar o jogo.",
+    "texto": "Orquestra uma batalha para virar o jogo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6342,7 +6342,7 @@
       "grande-estrategista"
     ],
     "aliases": [],
-    "texto": "prevê e contrapõe os planos do inimigo passos à frente.",
+    "texto": "Prevê e contrapõe os planos do inimigo passos à frente.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6361,7 +6361,7 @@
       "xeque-mate"
     ],
     "aliases": [],
-    "texto": "conduz guerras como um jogo já vencido.",
+    "texto": "Conduz guerras como um jogo já vencido.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6393,7 +6393,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "identifica um indício relevante.",
+    "texto": "Identifica um indício relevante.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6411,7 +6411,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "liga dois fatos numa dedução.",
+    "texto": "Liga dois fatos numa dedução.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6429,7 +6429,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "reconstrói o que houve num local pelos vestígios.",
+    "texto": "Reconstrói o que houve num local pelos vestígios.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6447,7 +6447,7 @@
       "conectar"
     ],
     "aliases": [],
-    "texto": "extrai a verdade lendo reações e inconsistências.",
+    "texto": "Extrai a verdade lendo reações e inconsistências.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6466,7 +6466,7 @@
       "interrogar"
     ],
     "aliases": [],
-    "texto": "resolve um mistério complexo juntando as peças.",
+    "texto": "Resolve um mistério complexo juntando as peças.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6485,7 +6485,7 @@
       "detetive"
     ],
     "aliases": [],
-    "texto": "percebe o detalhe crucial que ninguém viu; desvenda conspirações.",
+    "texto": "Percebe o detalhe crucial que ninguém viu; desvenda conspirações.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6504,7 +6504,7 @@
       "nada-escapa"
     ],
     "aliases": [],
-    "texto": "de pistas mínimas, reconstrói a verdade completa de qualquer evento.",
+    "texto": "De pistas mínimas, reconstrói a verdade completa de qualquer evento.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6536,7 +6536,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "responde a um evento súbito sem ser pego de surpresa.",
+    "texto": "Responde a um evento súbito sem ser pego de surpresa.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6554,7 +6554,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "toma a melhor decisão num átimo.",
+    "texto": "Toma a melhor decisão num átimo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6570,7 +6570,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "age sempre entre os primeiros.",
+    "texto": "Age sempre entre os primeiros.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6588,7 +6588,7 @@
       "reacao"
     ],
     "aliases": [],
-    "texto": "realiza uma ação mental e uma física quase simultâneas.",
+    "texto": "Realiza uma ação mental e uma física quase simultâneas.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6607,7 +6607,7 @@
       "decisao-instantanea"
     ],
     "aliases": [],
-    "texto": "o caos parece em câmera lenta; planeja no meio da ação.",
+    "texto": "O caos parece em câmera lenta; planeja no meio da ação.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6626,7 +6626,7 @@
       "tempo-de-sobra"
     ],
     "aliases": [],
-    "texto": "reage tão rápido que age várias vezes enquanto outros pensam.",
+    "texto": "Reage tão rápido que age várias vezes enquanto outros pensam.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6645,7 +6645,7 @@
       "mente-acelerada"
     ],
     "aliases": [],
-    "texto": "reage ao instantâneo; nada o pega despreparado.",
+    "texto": "Reage ao instantâneo; nada o pega despreparado.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6677,7 +6677,7 @@
       "jeitinho"
     ],
     "aliases": [],
-    "texto": "transforma um elemento do ambiente em vantagem.",
+    "texto": "Transforma um elemento do ambiente em vantagem.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6695,7 +6695,7 @@
       "jeitinho"
     ],
     "aliases": [],
-    "texto": "inverte uma situação ruim com uma ideia inesperada.",
+    "texto": "Inverte uma situação ruim com uma ideia inesperada.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6713,7 +6713,7 @@
       "jeitinho"
     ],
     "aliases": [],
-    "texto": "resolve um problema de um jeito que ninguém esperava.",
+    "texto": "Resolve um problema de um jeito que ninguém esperava.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6731,7 +6731,7 @@
       "usar-o-cenario"
     ],
     "aliases": [],
-    "texto": "monta um dispositivo improvisado funcional na hora.",
+    "texto": "Monta um dispositivo improvisado funcional na hora.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6750,7 +6750,7 @@
       "macgyver"
     ],
     "aliases": [],
-    "texto": "encontra escapatória até nas situações mais fechadas.",
+    "texto": "Encontra escapatória até nas situações mais fechadas.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6769,7 +6769,7 @@
       "sempre-uma-saida"
     ],
     "aliases": [],
-    "texto": "vira qualquer cenário a seu favor com engenhosidade quase mágica.",
+    "texto": "Vira qualquer cenário a seu favor com engenhosidade quase mágica.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6788,7 +6788,7 @@
       "improviso-magistral"
     ],
     "aliases": [],
-    "texto": "o improvável dá certo nas suas mãos; transforma o caos em plano.",
+    "texto": "O improvável dá certo nas suas mãos; transforma o caos em plano.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6820,7 +6820,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "infere um fato sobre o alvo só de observá-lo.",
+    "texto": "Infere um fato sobre o alvo só de observá-lo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6838,7 +6838,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "percebe os sinais que denunciam o próximo ato do alvo.",
+    "texto": "Percebe os sinais que denunciam o próximo ato do alvo.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6856,7 +6856,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "monta um perfil preciso após breve contato.",
+    "texto": "Monta um perfil preciso após breve contato.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6874,7 +6874,7 @@
       "ler-tells"
     ],
     "aliases": [],
-    "texto": "prevê como o alvo reagirá a uma situação.",
+    "texto": "Prevê como o alvo reagirá a uma situação.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -6893,7 +6893,7 @@
       "antecipar-a-pessoa"
     ],
     "aliases": [],
-    "texto": "lê alguém tão bem que prevê escolhas e descobre segredos.",
+    "texto": "Lê alguém tão bem que prevê escolhas e descobre segredos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -6912,7 +6912,7 @@
       "mente-aberta-como-livro"
     ],
     "aliases": [],
-    "texto": "num olhar, sabe quem é, o que quer e como agirá.",
+    "texto": "Num olhar, sabe quem é, o que quer e como agirá.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -6931,7 +6931,7 @@
       "conhecer-de-relance"
     ],
     "aliases": [],
-    "texto": "compreende qualquer pessoa por completo num instante.",
+    "texto": "Compreende qualquer pessoa por completo num instante.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -6963,7 +6963,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "concentra-se totalmente, ignorando ruído, dor e medo por uma ação.",
+    "texto": "Concentra-se totalmente, ignorando ruído, dor e medo por uma ação.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -6981,7 +6981,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "recupera a compostura após um susto.",
+    "texto": "Recupera a compostura após um susto.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -7015,7 +7015,7 @@
       "centrar-se"
     ],
     "aliases": [],
-    "texto": "entra em meditação profunda (clareza, recuperação).",
+    "texto": "Entra em meditação profunda (clareza, recuperação).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -7034,7 +7034,7 @@
       "transe"
     ],
     "aliases": [],
-    "texto": "blindagem contra intrusões e domínios mentais (vs Fascinação/Marionete).",
+    "texto": "Blindagem contra intrusões e domínios mentais (contra a Fascinação ou a Marionete).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -7053,7 +7053,7 @@
       "fortaleza-mental"
     ],
     "aliases": [],
-    "texto": "mente intransponível; imune a quase toda influência mental e ilusão.",
+    "texto": "Mente intransponível; imune a quase toda influência mental e ilusão.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
@@ -7072,7 +7072,7 @@
       "vazio-sereno"
     ],
     "aliases": [],
-    "texto": "paz e clareza absolutas; nada perturba, engana ou domina a sua mente.",
+    "texto": "Paz e clareza absolutas; nada perturba, engana ou domina a sua mente.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
@@ -7090,7 +7090,7 @@
       "olhar-perspicaz"
     ],
     "aliases": [],
-    "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** vs a Defesa Social do alvo; o sucesso revela <em>que houve</em> mentira (não o conteúdo).",
+    "texto": "Quando alguém lhe mente, role **Perspicácia + Empatia** contra a Defesa Social do alvo; o sucesso revela <em>que houve</em> mentira (não o conteúdo).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -7126,7 +7126,7 @@
       "farejar-a-mentira"
     ],
     "aliases": [],
-    "texto": "Lê o que o alvo mais teme ou deseja; a próxima jogada de **Influência** alinhada a isso ganha **+3 graus de Margem** (ou +6 na soma).",
+    "texto": "Lê o que o alvo mais teme ou deseja; a próxima jogada de **Influência** alinhada a isso ganha **+6**.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7201,7 +7201,7 @@
       "semblante-fechado"
     ],
     "aliases": [],
-    "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+6** para enganar sobre quem você é (soma à Compostura vs Perspicácia).",
+    "texto": "Assume uma persona (humor, status aparente) e a sustenta pela cena; **+6** para enganar sobre quem você é (soma à Compostura contra Perspicácia).",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7281,7 +7281,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Sua face nada entrega: leituras sociais **casuais** falham automaticamente; ler você exige uma ação dedicada (vs sua Defesa Social).",
+    "texto": "Sua face nada entrega: leituras sociais **casuais** falham automaticamente; ler você exige uma ação dedicada (contra a sua Defesa Social).",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -7496,7 +7496,7 @@
     "texto": "Suas duas mãos golpeiam como uma só. Efeito em recalibração: na empunhadura dupla as duas mãos já atacam a −1d6, sem penalidade extra na inábil, e o que esta Proeza dará de novo será decidido na recalibração das Proezas.",
     "pendente": false,
     "nivel": 2,
-    "efeito": "bonus"
+    "efeito": "estado"
   },
   {
     "id": "corpo-de-gato",
@@ -7617,7 +7617,7 @@
       "tom-de-autoridade"
     ],
     "aliases": [],
-    "texto": "Uma ordem curta que o alvo obedece por reflexo (vs Defesa Mental); resistir custa Força de Vontade.",
+    "texto": "Uma ordem curta que o alvo obedece por reflexo (contra a Defesa Mental); resistir custa Força de Vontade.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7669,7 +7669,7 @@
       "sugestao"
     ],
     "aliases": [],
-    "texto": "Implanta um desejo passageiro que o alvo racionaliza como seu (vs Defesa Mental).",
+    "texto": "Implanta um desejo passageiro que o alvo racionaliza como seu (contra a Defesa Mental).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7723,7 +7723,7 @@
       "sussurro"
     ],
     "aliases": [],
-    "texto": "Uma insinuação bem posta deixa o alvo desconfiado de alguém em quem confiava (vs Defesa Social).",
+    "texto": "Uma insinuação bem posta deixa o alvo desconfiado de alguém em quem confiava (contra a Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7795,7 +7795,7 @@
       "magnetismo"
     ],
     "aliases": [],
-    "texto": "Cativa um alvo receptivo: baixa a guarda dele e prende a atenção nele em você (vs Defesa Social).",
+    "texto": "Cativa um alvo receptivo: baixa a guarda dele e prende a atenção dele em você (contra a Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -7831,7 +7831,7 @@
       "rosto-de-poquer"
     ],
     "aliases": [],
-    "texto": "Sustenta uma mentira que resiste a um escrutínio comum (vs Defesa Social / leitura).",
+    "texto": "Sustenta uma mentira que resiste a um escrutínio comum (contra a Defesa Social ou a leitura).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
@@ -8127,7 +8127,7 @@
       "ler-pessoas"
     ],
     "aliases": [],
-    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (vs Defesa Social).",
+    "texto": "Sente quando alguém mente ou disfarça, e para onde a atenção dele foge (contra a Defesa Social).",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"

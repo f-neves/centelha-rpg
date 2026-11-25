@@ -54,7 +54,7 @@
       "destreza",
       "forca"
     ],
-    "descricao": "O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma Habilidade só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, não do lutador; o que separa o duelista do brutamontes é o Atributo que ele usa (Destreza ou Força, à escolha de quem ataca) e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a Habilidade mais rolada de qualquer personagem que entre em combate.",
+    "descricao": "O treino de lutar com uma arma na mão, qualquer arma branca: adaga, espada, machado, maça, lança, martelo, montante, de uma ou de duas mãos. É uma Habilidade só para todas porque o que muda de uma arma para a outra (peso, alcance, tipo de dano, número de mãos) é propriedade da arma, e não do lutador. O que separa o duelista do brutamontes é o Atributo que ele usa (Destreza ou Força, à escolha de quem ataca) e a Especialidade em que treinou. Cobre atacar, aparar com a própria lâmina e brigar em formação. Não cobre lutar de mãos vazias, que é Briga, nem lançar a arma, que é Arremesso. Junto com a sua defesa preferida, é a Habilidade mais rolada de qualquer personagem que entre em combate.",
     "niveis": [
       {
         "nivel": 0,
@@ -101,7 +101,7 @@
       "destreza",
       "forca"
     ],
-    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador. A jogada de arremesso vai pela Força ou pela Destreza, à escolha de quem arremessa, normalmente o maior dos dois, como no corpo a corpo: a mão precisa põe o objeto no lugar certo, e o braço forte também acerta, além de jogar mais longe.",
+    "descricao": "Fazer um objeto chegar longe e no lugar certo: adaga, azagaia, machado de arremesso, plumbata, funda, e também a pedra, a tocha, o frasco e o banco que estavam ali por perto. Governa a mira e o alcance ao mesmo tempo, porque quem tem braço joga mais longe. É a Habilidade dos improvisos, e por isso rende tanto fora do combate quanto dentro dele: acertar a corda, jogar a chave para o outro lado da grade, apagar a lamparina do vigia. Arco e besta não entram aqui, isso é Atirador. A jogada de arremesso vai pela Força ou pela Destreza, à escolha de quem arremessa, normalmente o maior dos dois, como no corpo a corpo. A mão precisa põe o objeto no lugar certo; o braço forte também acerta, e ainda joga mais longe.",
     "niveis": [
       {
         "nivel": 0,
@@ -240,7 +240,7 @@
       "destreza",
       "forca"
     ],
-    "descricao": "Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr, no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo hábil (cobre pelo menos 30% do corpo, do escudo redondo para cima), porque ninguém apara uma flecha com a espada nem com um broquel.",
+    "descricao": "Interceptar o golpe em vez de sair da frente dele: aparar com o escudo, encostar a lâmina para desviar a do outro, receber no antebraço, na manopla ou no que estiver na mão. É a outra maneira de não ser atingido, e a que funciona quando não há para onde correr: no corredor estreito, na parede de escudos, no cerco. Sustenta a Defesa por Bloqueio e vale seja lá o que você esteja empunhando. Contra o projétil rápido só serve com escudo hábil (cobre pelo menos 30% do corpo, do Hoplon para cima), porque ninguém apara uma flecha com a espada nem com um broquel.",
     "niveis": [
       {
         "nivel": 0,
@@ -381,7 +381,7 @@
       "percepcao",
       "raciocinio"
     ],
-    "descricao": "Estar de guarda: reparar no perigo antes que ele chegue e reagir a tempo quando chega. É a Habilidade mais pedida da ficha, porque o Mestre a rola contra emboscadas, perseguidores, armadilhas e qualquer coisa que se aproxime enquanto vocês conversam, muitas vezes sem avisar que rolou. Também é a metade treinada da Iniciativa, ou seja, de quem age primeiro quando a briga começa. Vasculhar uma cena com calma é Investigação; Prontidão é o que você percebe sem estar procurando.",
+    "descricao": "Estar de guarda: reparar no perigo antes que ele chegue e reagir a tempo quando chega. É a Habilidade mais pedida da ficha, porque o Mestre a rola contra emboscadas, perseguidores, armadilhas e qualquer coisa que se aproxime enquanto vocês conversam, muitas vezes sem avisar que rolou. Também é a metade treinada da Iniciativa, a conta de quem age primeiro quando a briga começa. Vasculhar uma cena com calma é Investigação; Prontidão é o que você percebe sem estar procurando.",
     "niveis": [
       {
         "nivel": 0,
@@ -427,7 +427,7 @@
     "atributos": [
       "vigor"
     ],
-    "descricao": "Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a Habilidade da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar por outras causas que não o 0 PV (o desmaio em 0 PV não tem teste), para segurar o fôlego e para continuar de pé depois do que deveria ter derrubado você.",
+    "descricao": "Aguentar: a marcha que não acaba, a noite sem dormir, o frio, a sede, a dor, o veneno e a bebida na mesa do senhor local. É a Habilidade da duração, e por isso raramente decide uma cena sozinha, mas decide em que estado você chega na cena seguinte. Também é ela que se rola para não desmaiar por outras causas que não o 0 PV (o desmaio em 0 PV não tem teste) e para continuar de pé depois do que deveria ter derrubado você. E é ela que mede quanto tempo você segura o fôlego, numa conta fixa, sem rolagem (Sufocamento, em Resistir).",
     "niveis": [
       {
         "nivel": 0,
@@ -475,7 +475,7 @@
       "inteligencia",
       "raciocinio"
     ],
-    "descricao": "A firmeza do que você é quando alguém tenta mudar isso: manipulação, chantagem, terror, tortura, sedução e a magia que mexe com a mente. É a Habilidade defensiva do social e do mental, e é ela que sustenta a Defesa Mental. Não é teimosia nem frieza: você sente o medo e a tentação como qualquer um, só não age por causa deles. Esconder o que sente é assunto de Compostura; Integridade é não ceder.",
+    "descricao": "A firmeza do que você é quando alguém tenta mudar isso: o medo imposto, a ordem, a leitura da mente e o resto da magia que mexe com a mente. É ela que sustenta a Defesa Mental (convencer, seduzir e chantagear numa conversa batem na Defesa Social). Não é teimosia nem frieza: você sente o medo e a tentação como qualquer um, só não age por causa deles. Esconder o que sente é assunto de Compostura; Integridade é não ceder.",
     "niveis": [
       {
         "nivel": 0,
@@ -521,7 +521,7 @@
     "atributos": [
       "destreza"
     ],
-    "descricao": "A mão que engana o olho, e o ofício do furto em volta dela: escamotear, sacar sem que se veja, bater uma carteira, cortar uma bolsa, plantar uma prova, trocar um dado viciado, esconder a adaga sob a manga. É o faz-tudo de quem vive de pegar o que não é seu, e como todo faz-tudo cobre o serviço comum inteiro: escolher o alvo na multidão, a hora, o caminho de entrada que não é a porta e a saída antes que dê falta. O que importa aqui não é a velocidade, é a testemunha: sozinho num quarto trancado ninguém rola Prestidigitação. Esconder o corpo inteiro é Furtividade, e a tranca no meio do caminho é Abrir Mecanismos.",
+    "descricao": "A mão que engana o olho, e o ofício do furto em volta dela: escamotear, sacar sem que se veja, bater uma carteira, cortar uma bolsa, plantar uma prova, trocar um dado viciado, esconder a adaga sob a manga. É o faz-tudo de quem vive de pegar o que não é seu, e cobre o serviço comum inteiro: escolher o alvo na multidão, a hora, o caminho de entrada que não é a porta e a saída antes que dê falta. O que importa aqui não é a velocidade, é a testemunha: sozinho num quarto trancado ninguém rola Prestidigitação. Esconder o corpo inteiro é Furtividade, e a tranca no meio do caminho é Abrir Mecanismos.",
     "niveis": [
       {
         "nivel": 0,
@@ -1087,7 +1087,7 @@
       "inteligencia",
       "destreza"
     ],
-    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola; o serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferreiro, Carpintaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade.",
+    "descricao": "A mão prática que resolve: consertar, escorar, remendar, improvisar uma peça, entender como uma coisa foi feita e refazê-la mal e porcamente quando não há alternativa. É o faz-tudo, e dá conta sozinho de qualquer trabalho manual que não exija escola. O serviço fino ainda sai, só que muito mais difícil, porque falta o ofício. Cada ofício de verdade (Ferreiro, Carpintaria, Costura, Alvenaria) é uma Habilidade secundária: Ofícios Gerais é o que você usa quando não tem nenhuma delas, e o que devolve um objeto quebrado ao uso, ainda que sem devolver a qualidade.",
     "niveis": [
       {
         "nivel": 0,

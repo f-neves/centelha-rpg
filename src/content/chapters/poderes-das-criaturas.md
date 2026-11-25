@@ -7,7 +7,11 @@ resumo: "As cinco categorias de poder que uma criatura tem além das Artes e das
 
 <p class="muted">Parte do capítulo <strong>Combate Físico</strong>. Vale para os poderes das criaturas do <a href="/centelha-rpg/bestiario">Bestiário</a>; cada ficha diz a categoria, os usos e os números do poder. Os estados que os poderes causam estão em <a href="/centelha-rpg/regras/condicoes">Condições</a>.</p>
 
-**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias abaixo. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
+**Os poderes das criaturas.** Além das Artes e das Proezas que possa ter, uma criatura pode ter poderes próprios do seu corpo ou da sua natureza. Esta página é toda de regra de **criatura**: o personagem não tem estes poderes.
+
+A **base** de um poder é um Efeito Especial de Arte num nível ("base: Vento 3"): o poder funciona como um efeito daquele tipo e daquela força. Não é conjuração, não gasta Mana e não dá a Arte a quem tem o poder. O limite de compra, só até o nível que você tem na Arte, é regra de personagem: o poder inato de uma criatura pode imitar um Efeito de nível acima do que a criatura tem na Arte.
+
+Isso é a ativação: o uso grátis não custa nada; os usos extras, quando a ficha diz, custam Energia ou Mana, como nas categorias abaixo. Os números do poder são os da ficha, que pode fugir um pouco do efeito; o nível da base serve de referência de potência e dá a Velocidade. Todo poder pertence a uma de cinco categorias.
 
 ## As cinco categorias
 
@@ -31,7 +35,7 @@ Só quem tem Centelha pode pagar com Energia, e só quem tem Mana pode pagar com
 
 **Alcance.** Cada poder traz o seu alcance na ficha. Não há alcance padrão: um olhar chega até onde a criatura vê, um canto até onde se ouve, e o resto vem escrito em metros.
 
-**Velocidade.** O efeito similar à magia é ativado na Velocidade da Arte do mesmo nível da sua base e sai no Tick do Golpe, como uma Arte. Os outros poderes trazem a sua Velocidade na ficha.
+**Velocidade.** O efeito similar à magia é ativado na Velocidade que a tabela de fases ([Combate Físico](/regras/combate)) dá à Arte cujo maior grau é o nível da base: 5 até o nível 3, 6 no nível 4, 7 nos níveis 5 e 6. No poder de criatura, o nível da base e o grau são a mesma coisa. Sai no Tick do Golpe, como uma Arte. Os outros poderes trazem a sua Velocidade na ficha.
 
 ## Teleporte
 
@@ -74,14 +78,18 @@ Constructos, mortos-vivos, elementais e incorpóreos não dormem, e por isso o s
 - **Ao golpe certeiro e ao flanco:** a criatura perde só o dano extra de ponto vital (o que uma Proeza, uma Arte ou a ficha trouxer, como o Golpe na brecha de [Combate Físico](/regras/combate)), ou o −2 de Flanqueado, conforme a ficha nomeia. Surpresa e Tamanho valem normalmente: pega de surpresa, ela fica com as Defesas 0, mas não leva o dano extra.
 - **Liberdade de movimento:** nada de fora a deixa [Agarrada, Presa ou Imobilizada](/regras/combate#manobras-agarrar-derrubar-empurrar). Paredes, [Paralisado e Atordoado](/regras/condicoes) valem normalmente.
 
-**Veneno e doença.** A imunidade a veneno ou a doença também é estreita: cobre só o que a ficha nomeia, e a imunidade ao próprio veneno vale só para aquela secreção. O ferimento do golpe que trouxe o veneno continua. Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema#corpo-nas-jogadas).
+**Veneno e doença.** A imunidade a veneno ou a doença também é estreita: cobre só o que a ficha nomeia, e a imunidade ao próprio veneno vale só para aquela secreção. O ferimento do golpe que trouxe o veneno continua.
 
-**Resistência que depende da arma.** Algumas criaturas só se ferem de verdade com um material ou uma origem: prata, ferro frio, uma arma abençoada. Contra qualquer outra arma, o dano que passa da Absorção cai **à metade**. A arma certa não tira a Absorção; tira só essa metade.
+Quem é imune a uma doença ainda pode carregar o agente e expor outros, e o Mestre julga quando. A resistência extraordinária, sem imunidade, é uma vantagem de anatomia: +1d6 no teste de **Vigor + Resistência** contra o veneno ou a doença, como no [corpo nas jogadas que não são de ataque](/regras/acoes-e-sistema#corpo-nas-jogadas).
+
+**Resistência que depende da arma.** Algumas criaturas só se ferem de verdade com um material ou uma origem: prata, ferro frio, uma arma abençoada. Contra qualquer outra arma, o dano que passa da Absorção cai **à metade**. A arma certa não tira a Absorção; tira só essa metade. Não é a resistência a um tipo de dano (o fogo, o corte do Incorpóreo), que corta a metade entre a armadura e a Absorção natural ([Fraqueza e resistência](/artes/regras)): aqui a metade vem depois da Absorção inteira.
 
 ## Regeneração
 
-**Regeneração N.** A criatura recupera **N PV por minuto**, até o PV máximo, sempre ativa: na luta, isso vale **N/10 PV a cada 6 Ticks**, contados a partir do Tick em que ela sofreu o primeiro dano. A regeneração baixa quase não aparece numa luta rápida; a alta muda o combate.
+**Regeneração N.** A criatura recupera **N PV por minuto**, até o PV máximo, sempre ativa: na luta, isso vale **N/10 PV a cada 6 Ticks**, contados a partir do Tick em que ela sofreu o primeiro dano, e a fração se acumula (Regeneração 5 cura 1 PV a cada 12 Ticks). A regeneração baixa quase não aparece numa luta rápida; a alta muda o combate.
 
-**Fraqueza da criatura.** Algumas regenerações têm uma fraqueza nomeada na ficha (o fogo e o ácido do trol, a prata do lobisomem). A ficha diz qual das duas formas vale: ou o dano da fraqueza **interrompe toda a regeneração** por um tempo, e depois tudo volta a fechar; ou o dano da fraqueza **não se regenera**, e só fecha com outras curas (Artes, Cura, descanso), enquanto o resto se regenera normalmente. A fraqueza que só **atrasa** a regeneração é a primeira forma, com o tempo (curto) escrito na ficha.
+**A Regeneração da criatura não é a Técnica Regeneração.** O personagem tem uma [Técnica](/caminhos) com o mesmo nome, no Caminho Cerne Vital, com custo e regra próprios; o que vale para ele é o que a Técnica diz.
 
-As fraquezas da regeneração saem de uma lista fechada: **prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, água e maligno**. O maligno cobre arma, efeito, artefato ou magia de origem maligna, e a ficha diz qual. O Mestre pode acrescentar outras.
+**Fraqueza da criatura.** Algumas regenerações têm uma fraqueza nomeada na ficha (o fogo e o ácido do trol, a prata do lobisomem). A ficha diz qual das duas formas vale: ou o dano da fraqueza **interrompe toda a regeneração** por um tempo, e depois tudo volta a fechar; ou o dano da fraqueza **não se regenera**, e só fecha com outras curas (Artes, Cura, descanso), enquanto o resto se regenera normalmente. A fraqueza que só **atrasa** a regeneração é a primeira forma, com o tempo (curto) escrito na ficha. **Quando o mesmo tipo é também Fraqueza das Artes** da criatura (o fogo e o ácido do trol; o fogo, a prata e a luz do sol do vampiro; o maligno do planetar e do solar), vale a regeneração para esse tipo, na forma que a ficha der: o dano não ignora a Absorção nem é agravado ([Fraqueza e resistência](/artes/regras)).
+
+As fraquezas da regeneração saem de uma lista fechada: **prata, ferro frio, arma abençoada, fogo, ácido, luz do sol, água e maligno**. O maligno cobre arma, efeito, artefato ou magia de origem maligna, e a ficha diz qual. O maligno é o mesmo tipo que o profano da [Fraqueza das Artes](/artes/regras). A arma abençoada não: ela é propriedade da arma, como a prata e o ferro frio, e o golpe dela não é dano sagrado, salvo se a arma ou a Arte disser; o maligno cobre arma, efeito, artefato ou magia, e a arma abençoada é só arma. O Mestre pode acrescentar outras.

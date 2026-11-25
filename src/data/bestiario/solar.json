@@ -199,7 +199,7 @@
       "efeito": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites",
       "dano": "nenhum",
       "resistencia": "nenhuma",
-      "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
+      "limiteDeUso": "1 uso grátis por cena. O uso extra não custa Mana"
     },
     {
       "nome": "Convocar anjos",
@@ -371,7 +371,7 @@
     },
     {
       "campo": "habilidadesEspeciais.Ressurreição",
-      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. valor de molde, para a bancada (uso extra de 1 de Mana)."
+      "motivo": "R1 e D-197. 1 uso grátis por cena. Cada uso extra custa 1 de Mana. Um uso de abertura até a definição do efeito. uso extra calculado pela regra de custo (T7, RT-134.6): improviso, Alcance 0 + Alvos 1 + Dano 0 + Duração 0 = 1, menos Centelha 9, no piso 0; o uso extra não custa Mana."
     },
     {
       "campo": "habilidadesEspeciais.Convocar anjos",

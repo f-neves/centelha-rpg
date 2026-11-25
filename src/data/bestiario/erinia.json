@@ -163,7 +163,7 @@
       "duracao": "até o alvo escapar ou ela soltar; a ordem, uma ação",
       "alcance": "9 m",
       "area": "um alvo",
-      "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+      "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado",
       "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez"

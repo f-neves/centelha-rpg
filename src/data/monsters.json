@@ -718,7 +718,7 @@
      "duracao": "para Abalado, até o fim da cena ou até Recompor",
      "alcance": "18 m",
      "area": "um alvo",
-     "efeito": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
      "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"
@@ -1013,13 +1013,13 @@
    },
    {
     "nome": "Domínio psíquico",
-    "descricao": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 6, olhando ou tocando o alvo. Duração: para Abalado, até o fim da cena ou até Recompor. Alcance: 18 m. Área: um alvo. Dano: nenhum. Resistência: Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
+    "descricao": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 6, olhando ou tocando o alvo. Duração: para Abalado, até o fim da cena ou até Recompor. Alcance: 18 m. Área: um alvo. Dano: nenhum. Resistência: Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 4
     },
-    "texto": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -5825,7 +5825,7 @@
      "duracao": "instantânea",
      "alcance": "18 m",
      "area": "um alvo",
-     "efeito": "atinge com luz concentrada",
+     "efeito": "atinge com luz concentrada; fere a todos: quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
      "dano": "2d6 + Centelha, fenômeno",
      "resistencia": "esquiva, contra a jogada do raio; quem passa evita o feixe",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
@@ -6156,14 +6156,14 @@
   "habilidadesEspeciais": [
    {
     "nome": "Raio de luz",
-    "descricao": "atinge com luz concentrada. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: 18 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: esquiva, contra a jogada do raio; quem passa evita o feixe. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "descricao": "atinge com luz concentrada; fere a todos: quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: 18 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: esquiva, contra a jogada do raio; quem passa evita o feixe. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "luz",
      "nivel": 3,
      "efeito": "projetil-conjurado"
     },
-    "texto": "atinge com luz concentrada",
+    "texto": "atinge com luz concentrada; fere a todos: quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -20513,7 +20513,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -20745,9 +20745,9 @@
    },
    {
     "nome": "corpo colossal",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -30331,7 +30331,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -30571,9 +30571,9 @@
    },
    {
     "nome": "corpo firme",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -47915,7 +47915,7 @@
      "duracao": "instantânea",
      "alcance": "um alvo ou uma cena à vista",
      "area": "não se aplica",
-     "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
+     "efeito": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta; a pergunta alcança até 10 minutos, para trás ou para a frente (Distância no tempo 1 do Oráculo)",
      "dano": "nenhum",
      "resistencia": "nenhum",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
@@ -48263,14 +48263,14 @@
    },
    {
     "nome": "Adivinhação",
-    "descricao": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: um alvo ou uma cena à vista. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "descricao": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta; a pergunta alcança até 10 minutos, para trás ou para a frente (Distância no tempo 1 do Oráculo). Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: instantânea. Alcance: um alvo ou uma cena à vista. Área: não se aplica. Dano: nenhum. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
      "nivel": 1,
      "efeito": "oraculo"
     },
-    "texto": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta",
+    "texto": "revela ao diabrete uma informação oculta sobre o alvo ou a cena; o Mestre responde a uma pergunta; a pergunta alcança até 10 minutos, para trás ou para a frente (Distância no tempo 1 do Oráculo)",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -62633,7 +62633,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -62905,9 +62905,9 @@
    },
    {
     "nome": "corpo enorme",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -69582,7 +69582,7 @@
      "duracao": "até o alvo escapar ou ela soltar; a ordem, uma ação",
      "alcance": "9 m",
      "area": "um alvo",
-     "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez"
@@ -69942,14 +69942,14 @@
    },
    {
     "nome": "Corda de comando",
-    "descricao": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 5, a corda lançada (Destreza + Arremesso dela). O efeito sai no Tick do Golpe. Duração: até o alvo escapar ou ela soltar; a ordem, uma ação. Alcance: 9 m. Área: um alvo. Dano: nenhum. Resistência: esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez",
+    "descricao": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 5, a corda lançada (Destreza + Arremesso dela). O efeito sai no Tick do Golpe. Duração: até o alvo escapar ou ela soltar; a ordem, uma ação. Alcance: 9 m. Área: um alvo. Dano: nenhum. Resistência: esquiva contra a corda; depois, mente contra Influência + Persuasão dela; quem passa na esquiva não é preso, quem passa na mente fica só Agarrado. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. uma corda por vez",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 2,
      "efeito": "sugestao-plantada"
     },
-    "texto": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "a corda se enrola sozinha no alvo, que fica Agarrado; preso, se falhar de novo, fica Dominado o bastante para cumprir uma ordem simples dela. O controlador dá uma ordem simples em voz alta à vítima da corda durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -70731,8 +70731,7 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "adivinhacao",
-      "nivel": 5,
-      "efeito": "oraculo"
+      "nivel": 5
      },
      "categoria": "magia",
      "ativacao": "uma ação, Velocidade 7, recordando. O efeito sai no Tick do Golpe",
@@ -71066,8 +71065,7 @@
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
-     "nivel": 5,
-     "efeito": "oraculo"
+     "nivel": 5
     },
     "texto": "lembra algo que ninguém vivo deveria saber: um fato de história, o paradeiro de algo perdido, o nome verdadeiro de alguém; o Mestre diz o quanto ela revela",
     "campos": [
@@ -76141,7 +76139,7 @@
     {
      "nome": "mantém distância",
      "formas": "todas",
-     "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de quatro a oito vezes por cena."
+     "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de duas a oito vezes por cena."
     },
     {
      "nome": "frágil no corpo a corpo",
@@ -76343,7 +76341,7 @@
   "comoLuta": [
    {
     "nome": "mantém distância",
-    "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de quatro a oito vezes por cena."
+    "texto": "abre distância antes de conjurar e se reposiciona fora do alcance do inimigo; com 8 de Mana, conjura de duas a oito vezes por cena."
    },
    {
     "nome": "frágil no corpo a corpo",
@@ -81696,10 +81694,10 @@
      "duracao": "instantânea; a cegueira dura 12 Ticks",
      "alcance": "9 m",
      "area": "um alvo",
-     "efeito": "o raio fere se acertar e ofusca os olhos do atingido",
+     "efeito": "o raio fere se acertar e ofusca os olhos do atingido; quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
      "dano": "2d6 + Centelha, fenômeno",
      "resistencia": "corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto",
-     "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
+     "limiteDeUso": "Usos grátis: 1 por cena. O uso extra não custa Mana"
     },
     {
      "nome": "Sem membros para bloquear",
@@ -82606,14 +82604,14 @@
       },
       {
        "nome": "Raio de luz",
-       "descricao": "o raio fere se acertar e ofusca os olhos do atingido. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea; a cegueira dura 12 Ticks. Alcance: 9 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana",
+       "descricao": "o raio fere se acertar e ofusca os olhos do atingido; quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha. Ativação: uma ação, Velocidade 5, o maior entre Vigor, Destreza e Percepção + Atirador. O efeito sai no Tick do Golpe. Duração: instantânea; a cegueira dura 12 Ticks. Alcance: 9 m. Área: um alvo. Dano: 2d6 + Centelha, fenômeno. Resistência: corpo, Vigor + Resistência contra a jogada do raio; quem passa evita a cegueira, mas recebe o dano do acerto. Limite de uso: Usos grátis: 1 por cena. O uso extra não custa Mana",
        "classe": "regra da ficha",
        "base": {
         "arte": "luz",
         "nivel": 3,
         "efeito": "projetil-conjurado"
        },
-       "texto": "o raio fere se acertar e ofusca os olhos do atingido",
+       "texto": "o raio fere se acertar e ofusca os olhos do atingido; quem teme a luz leva o dano inteiro, e quem não a teme leva a metade, arredondada para cima, antes da Absorção da Centelha",
        "campos": [
         {
          "rotulo": "Ativação",
@@ -82641,7 +82639,7 @@
         },
         {
          "rotulo": "Limite de uso",
-         "valor": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Mana"
+         "valor": "Usos grátis: 1 por cena. O uso extra não custa Mana"
         }
        ]
       },
@@ -93991,21 +93989,18 @@
    "ameaca": 6,
    "centelha": 9,
    "corpo": {
-    "postura": "quatro patas; voador",
-    "apoio": "quadrupede",
-    "altura": 6.51,
-    "largura": 4.51,
+    "postura": "serpentino, duas patas dianteiras; voa por magia, sem asas",
+    "apoio": "outro",
+    "altura": 3.04,
+    "largura": 3.04,
     "profundidade": null,
     "comprimento": 20,
-    "comprimentoSemCauda": 11.52,
-    "caudaGrossa": true,
-    "envergadura": 45,
     "massa": 88000,
-    "area": 63.74,
-    "posturaDoTamanho": "de lado, pousado, asas fechadas",
+    "area": 45.6,
+    "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
     "segundoTamanho": {
-     "area": 425.3,
-     "posturaDoTamanho": "de baixo, asas abertas"
+     "area": 16.4,
+     "posturaDoTamanho": "enrolado"
     }
    },
    "couraca": 12,
@@ -94137,24 +94132,7 @@
      "nivelPerfuracao": null,
      "acerto": 0,
      "bloqueiaComoArma": null,
-     "justificativa": "O golpe de cauda do multiataque do site: a cauda grossa varre com o peso, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
-    },
-    {
-     "nome": "Asas",
-     "parte": "asa",
-     "classe": "media",
-     "pgr": [
-      2,
-      1,
-      3
-     ],
-     "dado": "1d6",
-     "multiplicadorForca": 1,
-     "tipoDano": "impacto",
-     "nivelPerfuracao": null,
-     "acerto": 0,
-     "bloqueiaComoArma": null,
-     "justificativa": "O \"golpe de asas\" do multiataque do site: a asa bate com o braço inteiro, Média (§7). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
+     "justificativa": "O golpe de cauda do multiataque do site: o corpo de serpente fustiga com a cauda, com o peso do corpo inteiro, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
     },
     {
      "nome": "Sopro cataclísmico",
@@ -94184,7 +94162,7 @@
      "duracao": "permanente",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+     "efeito": "Imenso: de lado, esticado ou com a frente erguida. Enorme: enrolado. Vale o Tamanho da postura atual. Enrolar-se ou esticar-se faz parte do movimento, sem custo adicional",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -94349,7 +94327,7 @@
     "respiracao": "ar",
     "prendeRespiracao": "a de um bicho grande; quanto tempo, o Mestre decide",
     "mente": "inteligente, antiga, orgulhosa e gananciosa",
-    "tracos": "escamas vermelhas como brasa, chifres longos, asas de couro imensas; o ar em volta tremula de calor"
+    "tracos": "escamas vermelhas como brasa, chifres longos, corpo de serpente longo e duas patas dianteiras, sem asas; o ar em volta tremula de calor"
    },
    "aptidoes": {
     "montaria": false,
@@ -94424,23 +94402,20 @@
   "centelha": 9,
   "tamanho": "Imenso",
   "corpo": {
-   "postura": "quatro patas; voador",
-   "apoio": "quadrupede",
-   "altura": 6.51,
-   "largura": 4.51,
+   "postura": "serpentino, duas patas dianteiras; voa por magia, sem asas",
+   "apoio": "outro",
+   "altura": 3.04,
+   "largura": 3.04,
    "profundidade": null,
    "comprimento": 20,
-   "comprimentoSemCauda": 11.52,
-   "caudaGrossa": true,
-   "envergadura": 45,
    "massa": 88000,
-   "area": 63.74,
-   "posturaDoTamanho": "de lado, pousado, asas fechadas",
+   "area": 45.6,
+   "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
    "segundoTamanho": {
-    "area": 425.3,
-    "posturaDoTamanho": "de baixo, asas abertas"
+    "area": 16.4,
+    "posturaDoTamanho": "enrolado"
    },
-   "medida": "6.51 m de altura, 20 m de comprimento",
+   "medida": "3.04 m de altura, 20 m de comprimento",
    "peso": "88000 kg"
   },
   "ecologia": {
@@ -94550,15 +94525,6 @@
      "forcaInvestida": 16
     },
     {
-     "nome": "Asas",
-     "pool": "10d6+2 +10",
-     "dano": "1d6 +25 (I)",
-     "perfArma": null,
-     "speed": 6,
-     "classe": "media",
-     "forcaInvestida": 16
-    },
-    {
      "nome": "Sopro cataclísmico",
      "pool": "0d6",
      "dano": "15d6 +9 (fogo)",
@@ -94573,16 +94539,15 @@
   "justificativaDosAtaques": {
    "Mordida": "Mordida de predador grande (`regra-construcao.md` §7), como no branco jovem. Golpe de boca: Força × 1. N3, um acima do branco jovem (N2), para a mordida dos adultos e anciões . Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
    "Garras": "Patada de predador grande, Média (§7), como no branco jovem; garra Cortante. Bloqueia como a mão nua (D-100). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
-   "Cauda": "O golpe de cauda do multiataque do site: a cauda grossa varre com o peso, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
-   "Asas": "O \"golpe de asas\" do multiataque do site: a asa bate com o braço inteiro, Média (§7). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
+   "Cauda": "O golpe de cauda do multiataque do site: o corpo de serpente fustiga com a cauda, com o peso do corpo inteiro, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)",
    "Sopro cataclísmico": "Ataque natural a distância, Classe Distância (manual, Passo 10), como no branco jovem. \"Cone de 18 m; 15d6 de dano\" (site). Os números são sugestão da ficha (D-197), descritos na linha do sopro nas Manobras. Sem jogada de ataque."
   },
   "habilidadesEspeciais": [
    {
     "nome": "Posturas de combate",
-    "descricao": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "Imenso: de lado, esticado ou com a frente erguida. Enorme: enrolado. Vale o Tamanho da postura atual. Enrolar-se ou esticar-se faz parte do movimento, sem custo adicional. Ativação: contínua. Duração: permanente. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "Imenso: de lado, pousado, asas fechadas. Colossal: de baixo, asas abertas. Vale o Tamanho da postura atual. Abrir as asas ao voar e fechá-las ao pousar faz parte do movimento, sem custo adicional",
+    "texto": "Imenso: de lado, esticado ou com a frente erguida. Enorme: enrolado. Vale o Tamanho da postura atual. Enrolar-se ou esticar-se faz parte do movimento, sem custo adicional",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -94889,7 +94854,7 @@
     "classe": "sem regra ainda"
    }
   ],
-  "segundoTamanho": "Colossal",
+  "segundoTamanho": "Enorme",
   "formas": [],
   "poderes": [],
   "locomocao": {
@@ -97746,7 +97711,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -97991,9 +97956,9 @@
    },
    {
     "nome": "corpo descomunal",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -103671,7 +103636,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -103951,9 +103916,9 @@
    },
    {
     "nome": "sem pernas",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão apenas contra Derrubar e Empurrar. Aplicam-se as travas de massa",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. Aplicam-se as travas de massa",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -104575,7 +104540,7 @@
      "duracao": "até o fim da cena",
      "alcance": "90 m",
      "area": "um animal do mar, ou um cardume",
-     "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
      "limiteDeUso": "Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia"
@@ -104943,13 +104908,13 @@
    },
    {
     "nome": "Dominar bestas do mar",
-    "descricao": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 7. Duração: até o fim da cena. Alcance: 90 m. Área: um animal do mar, ou um cardume. Dano: nenhum. Resistência: Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
+    "descricao": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 7. Duração: até o fim da cena. Alcance: 90 m. Área: um animal do mar, ou um cardume. Dano: nenhum. Resistência: Influência + Intimidação da criatura contra a Defesa Mental do alvo, com o Resistir do livro. Limite de uso: Usos grátis: 1 por dia. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 5
     },
-    "texto": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "quem falha fica Dominado e o obedece; não pega em criatura que pensa. O controlador dirige os movimentos e ataques das bestas marinhas pela mente durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -132129,7 +132094,7 @@
      "duracao": "até o fim da cena",
      "alcance": "9 m, à vista",
      "area": "um alvo",
-     "efeito": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar",
      "limiteDeUso": "1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana"
@@ -132436,14 +132401,14 @@
    },
    {
     "nome": "Olhar encantador",
-    "descricao": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 5, contra quem cruza o olhar com ela. Duração: até o fim da cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar. Limite de uso: 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana",
+    "descricao": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 5, contra quem cruza o olhar com ela. Duração: até o fim da cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência 5 + Persuasão 3 + 2 × o menor entre Centelha 5 e Persuasão 3 (6) = 14 mais a rolagem da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem desvia o rosto não é tocado, mas ataca a −4 enquanto não olhar. Limite de uso: 1 uso grátis por cena, sem repetir o alvo. Repetir o alvo ou fazer outro uso custa 1 de Mana",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 3,
      "efeito": "sugestao-plantada"
     },
-    "texto": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "o alvo fica Dominado e obedece a ela. O controlador dá ordens de movimento ou ação pela voz a quem cruzou seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -133853,7 +133818,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -134129,9 +134094,9 @@
    },
    {
     "nome": "sem pernas",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -148176,7 +148141,7 @@
      "duracao": "até a próxima jogada dele, ou o fim da cena",
      "alcance": "o próprio corpo",
      "area": "não se aplica",
-     "efeito": "vislumbra o futuro próximo",
+     "efeito": "vislumbra o futuro próximo, até 10 minutos à frente (Distância no tempo 1 do Oráculo)",
      "dano": "nenhum; soma +1d6 na próxima jogada",
      "resistencia": "nenhum",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia"
@@ -148545,14 +148510,14 @@
    },
    {
     "nome": "Adivinhação",
-    "descricao": "vislumbra o futuro próximo. Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: até a próxima jogada dele, ou o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum; soma +1d6 na próxima jogada. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
+    "descricao": "vislumbra o futuro próximo, até 10 minutos à frente (Distância no tempo 1 do Oráculo). Ativação: uma ação, Velocidade 5. O efeito sai no Tick do Golpe. Duração: até a próxima jogada dele, ou o fim da cena. Alcance: o próprio corpo. Área: não se aplica. Dano: nenhum; soma +1d6 na próxima jogada. Resistência: nenhum. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia",
     "classe": "regra da ficha",
     "base": {
      "arte": "adivinhacao",
      "nivel": 1,
      "efeito": "oraculo"
     },
-    "texto": "vislumbra o futuro próximo",
+    "texto": "vislumbra o futuro próximo, até 10 minutos à frente (Distância no tempo 1 do Oráculo)",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -158962,7 +158927,7 @@
      "efeito": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites",
      "dano": "nenhum",
      "resistencia": "nenhuma",
-     "limiteDeUso": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
+     "limiteDeUso": "1 uso grátis por cena. O uso extra não custa Mana"
     },
     {
      "nome": "Convocar anjos",
@@ -159441,7 +159406,7 @@
    },
    {
     "nome": "Ressurreição",
-    "descricao": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: toque. Área: um alvo. Dano: nenhum. Resistência: nenhuma. Limite de uso: 1 uso grátis por cena. Cada uso extra custa 1 de Mana",
+    "descricao": "Devolve o aliado morto à vida pela Cura 6 do livro, com seus requisitos e limites. Ativação: uma ação, Velocidade 7. Duração: instantânea. Alcance: toque. Área: um alvo. Dano: nenhum. Resistência: nenhuma. Limite de uso: 1 uso grátis por cena. O uso extra não custa Mana",
     "classe": "regra da ficha",
     "base": {
      "arte": "cura",
@@ -159475,7 +159440,7 @@
      },
      {
       "rotulo": "Limite de uso",
-      "valor": "1 uso grátis por cena. Cada uso extra custa 1 de Mana"
+      "valor": "1 uso grátis por cena. O uso extra não custa Mana"
      }
     ]
    },
@@ -166532,7 +166497,7 @@
      "duracao": "enquanto a condição se aplica",
      "alcance": "o próprio corpo",
      "area": "a criatura",
-     "efeito": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+     "efeito": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
      "dano": "nenhum",
      "resistencia": "nenhuma",
      "limiteDeUso": "contínuo, sem custo"
@@ -166754,9 +166719,9 @@
    },
    {
     "nome": "escudo de osso",
-    "descricao": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
+    "descricao": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam. Ativação: contínua. Duração: enquanto a condição se aplica. Alcance: o próprio corpo. Área: a criatura. Dano: nenhum. Resistência: nenhuma. Limite de uso: contínuo, sem custo",
     "classe": "regra da ficha",
-    "texto": "A anatomia firme soma +4 à Defesa de agarrão só contra Derrubar e Empurrar. As travas de massa continuam",
+    "texto": "A anatomia firme soma +4 à Defesa contra Derrubar e Empurrar. As travas de massa continuam",
     "campos": [
      {
       "rotulo": "Ativação",
@@ -171501,7 +171466,7 @@
      "duracao": "uma cena",
      "alcance": "9 m, à vista",
      "area": "um alvo",
-     "efeito": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+     "efeito": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
      "dano": "nenhum",
      "resistencia": "Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena",
      "limiteDeUso": "Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez"
@@ -171846,14 +171811,14 @@
    },
    {
     "nome": "Olhar dominador",
-    "descricao": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4. Ativação: uma ação, Velocidade 5, olho no olho a até 9 m. Duração: uma cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez",
+    "descricao": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4. Ativação: uma ação, Velocidade 5, olho no olho a até 9 m. Duração: uma cena. Alcance: 9 m, à vista. Área: um alvo. Dano: nenhum. Resistência: Influência + Persuasão da criatura contra a Defesa Mental do alvo, com o Resistir do livro. quem passa fica imune ao olhar até o fim da cena. Limite de uso: Usos grátis: 1 por cena. Cada uso extra custa 1 de Energia. um alvo Dominado por vez",
     "classe": "regra da ficha",
     "base": {
      "arte": "fascinacao",
      "nivel": 3,
      "efeito": "sugestao-plantada"
     },
-    "texto": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+    "texto": "o alvo fica Dominado e obedece a ordens simples. O controlador dá ordens simples em voz alta à vítima de seu olhar durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
     "campos": [
      {
       "rotulo": "Ativação",

@@ -45,14 +45,14 @@ está na seção 3.
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 20 | 15 | 0 | 5 | 8 | 1 | 0 | 0 | 0 | 6 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 11 | 7 | 0 | 4 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
-| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 80 | 55 | 0 | 25 | 31 | 4 | 0 | 5 | 15 | 0 |
+| G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 81 | 56 | 0 | 25 | 31 | 4 | 0 | 5 | 16 | 0 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
-| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 18 | 15 | 0 | 3 | 6 | 4 | 0 | 2 | 1 | 2 |
+| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 22 | 22 | 0 | 0 | 0 | 22 | 0 | 0 | 0 | 0 |
-| | **Total** | | **397** | **285** | **4** | **108** | **108** | **70** | **8** | **10** | **81** | **12** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 27 | 27 | 0 | 0 | 0 | 27 | 0 | 0 | 0 | 0 |
+| | **Total** | | **405** | **293** | **4** | **108** | **108** | **76** | **8** | **11** | **82** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -497,6 +497,7 @@ Fechados (1): F9.
 | G76 | aberto | DECIDIR | Itens mágicos: poções, pergaminhos, itens mágicos, armas e armaduras encantadas, artefatos. |
 | G77 | aberto | FAZER | Longa a 3 por dado (D-034): Ofício (lote, espada gabarito, Especialidade na Longa, tabela … |
 | G78 | aberto | FAZER | Catálogo de armas: o campo de estilo e as imagens por raça (I1, D-371). |
+| G79 | aberto | PLAYTEST | A Penalidade da armadura vale inteira no Deslocamento, na Corrida e nos Saltos (RT-041, T13, 25/11/2026). |
 
 Fechados (25): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G7, G8, G9, G10, G18, G19, G20, G29, G52, G54, G55, G56, G57, G58, G59, G62, G65, G70, G75.
 
@@ -550,6 +551,8 @@ Fechados (2): I7, I13.
 | J15 | aberto | DECIDIR | "nível" no sentido da Arte: 202 links, fora da conta da J12. |
 | J16 | aberto | DECIDIR | "Nível" é o nome do próprio verbete, usado como palavra comum em todo o sistema: 125 links errados, fora da … |
 | J17 | aberto | FAZER | Busca do site: o componente não tem teste de navegador no CI, e a premissa dos `locations` só tem o guarda de … |
+| J18 | aberto | FAZER | O seed `supabase/migracao-42.sql` ainda grava a tag "projétil veloz" nas armas (RT-045, T13, 25/11/2026). |
+| J19 | aberto | CONSERTAR | O filtro de Tag de `/equipamentos` não casa tag de duas palavras (projétil rápido). |
 | J10 | aberto, ADIADO | DECIDIR | Os 23 travessões do `regras.json`, e seis deles NÃO são travessão. |
 
 Fechados (3): J1, J4, J5.
@@ -693,6 +696,11 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N21 | aberto | FAZER | Religar o `test-grid` no começo da passada única do Grid (D-071). |
 | N22 | aberto | FAZER | O catálogo de Arremesso e tiro da rodada 1 (D-072 a D-076, D-082): o que o Grid herda e o que ele ainda não … |
 | N23 | aberto | FAZER | As condições das decisões R8 a R20 (D-281 a D-294, 03/11/2026): o que o painel já tem e o que o Grid e a aba … |
+| N24 | aberto | FAZER | Os Efeitos que ganharam parâmetro na revisão de textos (RT-124, RT-126 e RT-127, decisões T7 e T8 do autor, … |
+| N25 | aberto | FAZER | O dano de Luz fere todos, pela metade contra quem não tem fraqueza a luz (RT-123, decisão T6 do autor, … |
+| N26 | aberto | FAZER | O Projétil Conjurado tem `materia: null` nas sete Artes, e o texto do Efeito diz que em Gelo, Água e Terra a … |
+| N27 | aberto | FAZER | Os parâmetros que a RT-071 (T13, 25/11/2026) passou de fixos a comprados: o Grid só lê o Dano, a Área e o … |
+| N28 | aberto | FAZER | O campo `projetilVeloz` de `scripts/lib-tempo.mjs` agora lê a tag "projétil rápido" e pode ser renomeado na … |
 
 Fechados (0): nenhum.
 

@@ -155,7 +155,7 @@
       "duracao": "para Abalado, até o fim da cena ou até Recompor",
       "alcance": "18 m",
       "area": "um alvo",
-      "efeito": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Vontade, até 4",
+      "efeito": "o alvo fica Dominado e obedece a ordens simples; quem falha fica também Abalado pelo contato com a mente alienígena (\"Presença alienígena\", site). Abalado dá −2 nas jogadas até o fim da cena ou até Recompor, ação de Velocidade 5 sem teste. O controlador transmite ordens simples pela mente enquanto mantém contato durante a duração indicada. A vítima pode recusar cada ordem pagando 1 + Margem de Força de Vontade, até 4",
       "dano": "nenhum",
       "resistencia": "Influência + Ocultismo da criatura contra a Defesa Mental do alvo, com o Resistir do livro",
       "limiteDeUso": "Usos grátis: 3 por dia. Cada uso extra custa 1 de Energia"

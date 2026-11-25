@@ -351,12 +351,15 @@ export function deslocamento(
   const calc = (c: Record<string, number>) =>
     Math.round(Object.entries(c).reduce(
       (s, [k, v]) => s + (k === 'base' ? v : ((traits as Record<string, number>)[k] ?? 0) * v), 0) * frac);
+  // O salto correndo parte da Corrida JÁ calculada e arredondada, como a ficha mostra ("Vel. de Corrida +
+  // Atletismo ÷ 2 + Centelha"); o JSON guarda só o que se soma a ela (RT-037, 15/11/2026).
+  const corrida = calc(d.corrida);
   return {
-    arranque: calc(d.arranque), corrida: calc(d.corrida), normal: calc(d.normal),
+    arranque: calc(d.arranque), corrida, normal: calc(d.normal),
     natacao: calc(d.natacao),
     saltoVertical: calc(d.saltoVertical),
     saltoHorizontalParado: calc(d.saltoHorizontalParado),
-    saltoHorizontalCorrendo: calc(d.saltoHorizontalCorrendo),
+    saltoHorizontalCorrendo: corrida + calc(d.saltoHorizontalCorrendo),
   };
 }
 
@@ -390,7 +393,7 @@ export function custoPontos(chave: XpChave, de = pisoXp(chave), ate = 0) {
   return c;
 }
 
-/** Proeza: preço do nível, sem acumular. Subir de nível paga só a diferença. */
+/** Proeza: preço do nível, sem acumular. */
 export const custoTecnica = (nivel: number) => custoPontos('tecnica', undefined, nivel);
 /** Arte: acumulativo, por Arte. */
 export const custoArte = (nivel: number) => custoPontos('arte', undefined, nivel);
@@ -1114,7 +1117,7 @@ export function combatePersonagem(S: any): ResumoCombate {
     const dano = w.dado + 'd6' + (ap ? ' ' + sig(ap) : '') + (tipo ? ' ' + tipo : '');
     const at = S.attrs || {}, hab = S.skills || {}, sec = S.skills2 || {};
     const dz = deslocamento({ forca: at.forca || 0, destreza: at.destreza || 0, atletismo: hab.atletismo || sec.atletismo || 0, centelha: S.centelha || 0 }, RACA[S.raca]?.deslocamentoFrac ?? 1);
-    const pen = Math.floor((a.armorPen + a.penSum) / 2), passo = { batalha: Math.max(0, dz.normal - pen), arranque: Math.max(0, dz.arranque - pen), corrida: Math.max(0, dz.corrida - pen) };
+    const pen = a.armorPen + a.penSum, passo = { batalha: Math.max(0, dz.normal - pen), arranque: Math.max(0, dz.arranque - pen), corrida: Math.max(0, dz.corrida - pen) };
     return {
         arma: w.nome, ataque, dano, defesa: n.esquiva, defesaMental: n.defesaMental, soak: n.absorcao, resistPerf: n.arm.resistPerf || 0, perfArma: principal?.tipo === 'perfurante' ? (principal.perf ?? 0) : null, qa: qaDaPeca(w.origem ? '' : (w.id || w.nome), w.origem && Number(w.dado) > 0 ? exprDaArma(w) : dano, armadurasDe(S)), passo, atributos: at, pericias: { ...sec, ...hab }, velocidade: Number.isFinite(Number(w.ticks)) ? Number(w.ticks) : null, classe: w.classe ?? null, forcaInvestida: a.forcaInvestida
     };

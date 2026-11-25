@@ -55,7 +55,7 @@
     },
     "peso": 5,
     "acesso": 8,
-    "descricao": "Kit barato; mais para defesas de membro. Para a adaga (N0), mas pouco além disso.",
+    "descricao": "Barato, mais usado nas peças dos braços e das pernas. Detém a adaga (N0), mas pouco além disso.",
     "tags": [],
     "arma": null,
     "armadura": {
@@ -205,7 +205,7 @@
     },
     "peso": 25,
     "acesso": 1,
-    "descricao": "A prova de arma comum: nenhuma flecha, besta ou picareta (N0–N2) a vence: resvalam (Nível 3). Um golpe bom ainda arranha (o aço não é intransponível), mas quem realmente entra é o Impacto (a placa mal segura a pancada), a perfuração nível 3+ (cerco, aríete, magia, armas épicas), a Proeza ou a feitiçaria; e quando furada, absorve pouco (Soak de Perfuração baixo).",
+    "descricao": "À prova de arma comum: nenhuma flecha, besta ou picareta (N0–N2) a vence: resvalam (Nível 3). Um golpe bom ainda arranha (o aço não é intransponível), mas quem realmente entra é o Impacto (a placa mal segura a pancada), a perfuração nível 3+ (cerco, aríete, magia, armas épicas), a Proeza ou a feitiçaria; e quando furada, absorve pouco (Absorção de Perfuração baixa).",
     "tags": [],
     "arma": null,
     "armadura": {

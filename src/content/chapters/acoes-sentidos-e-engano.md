@@ -7,7 +7,9 @@ resumo: "O que se percebe, o que se esconde, o que se negocia e o que se pede ao
 
 <p class="muted">Parte do capítulo <strong>Ações & Sistema</strong>. Os cinco modos de ação, de onde sai a Dificuldade, o que a Margem mede e as regras de ajuda estão em <a href="/centelha-rpg/regras/acoes-e-sistema">A Régua Comum</a>, e valem para tudo o que vem aqui.</p>
 
-Quatro famílias reunidas aqui, e elas têm em comum mais do que o tema: são as que ainda esperam regra fechada. **Esgueirar-se** é a única com ficha. Nas outras, o texto diz o que a ação é e qual jogada usar como ponto de partida, e a régua comum completa o resto.
+Quatro famílias reunidas aqui, e elas têm em comum mais do que o tema: são as que ainda esperam regra fechada.
+
+**Esgueirar-se** é a única com ficha. Nas outras, o texto diz o que a ação é e qual jogada usar como ponto de partida, e a régua comum completa o resto.
 
 ## Sentidos e mente
 
@@ -60,7 +62,9 @@ Num **trabalho de seguir alguém**, na cena vale a regra do Esgueirar, com o alv
 
 Havendo mais de um vigia, vale o **maior** Valor Passivo, e cada vigia a mais soma +1, porque cobrem ângulos diferentes.
 
-**O Valor Passivo não é um alarme ligado o tempo todo.** Ficar abaixo dele não significa, por si só, que o vigia notou alguma coisa: significa que você não passou limpo. Na Acumulada, quem avança abaixo do Passivo progride e deixa rastro ao mesmo tempo: o progresso se conta contra a Dificuldade (os 70%), e a suspeita contra o Passivo inteiro. Um guarda de portão tem Passivo 10 e Dificuldade 7; uma jogada de 8 avança 1 e fica 2 abaixo do Passivo, na coluna "abaixo por menos de 6" da tabela abaixo. O que acontece depois depende do **estado** dele.
+**O Valor Passivo não é um alarme ligado o tempo todo.** Ficar abaixo dele não significa, por si só, que o vigia notou alguma coisa: significa que você não passou limpo.
+
+Na Acumulada, quem avança abaixo do Passivo progride e deixa rastro ao mesmo tempo: o progresso se conta contra a Dificuldade (os 70%), e a suspeita contra o Passivo inteiro. Um guarda de portão tem Passivo 10 e Dificuldade 7; uma jogada de 8 avança 1 e fica 2 abaixo do Passivo, na coluna "abaixo por menos de 6" da tabela abaixo. O que acontece depois depende do **estado** dele.
 
 | Estado do vigia | Abaixo por menos de 6 | Abaixo por 6 ou mais |
 |---|---|---|
@@ -88,30 +92,30 @@ A leitura é simples: **o estado de alerta é o que apaga a banda morta**. Um gu
 
 - **Esconder-se.** Sumir de vista e continuar sumido, que é coisa diferente de atravessar. Direta, Destreza + Furtividade, secundária Ocultação.
 - **Criar distração.** Uma pedra jogada longe, um barulho na hora certa. Direta, Raciocínio + Manha, e o efeito é rebaixar o estado do vigia por um intervalo.
-- **Roubar.** A bolsa no cinto, a chave no gancho. Direta, Destreza + Prestidigitação contra Prontidão.
+- **Roubar.** A bolsa no cinto, a chave no gancho. Direta, Destreza + Prestidigitação contra a Percepção Passiva da vítima.
 - **Arrombar fechadura.** Acumulada, Destreza + Prestidigitação, secundária Abrir Mecanismos, intervalo de minuto.
 - **Desarmar armadilha.** Direta, Destreza + Prestidigitação, secundária Abrir Mecanismos. **Achar** a armadilha antes de pisar nela é outra ação, com Ocultação.
 - **Disfarçar-se.** Passiva contra quem olha, Influência + Manha, secundária Disfarce. **Aparência alta atrapalha**: quem é memorável tem mais trabalho para não ser lembrado.
 - **Mentir** é ataque social, e vive em [Relações Sociais](/regras/relacoes-sociais).
 - **Falsificar.** Documento, selo, assinatura. Longa, Inteligência + Ocultação.
 - **Contrabandear.** Passiva, Destreza + Furtividade contra a revista, secundária Ocultação.
-- **Trapacear no jogo.** Carta na manga, dado viciado, sinal combinado. Direta, Destreza + Prestidigitação contra a Prontidão da mesa.
+- **Trapacear no jogo.** Carta na manga, dado viciado, sinal combinado. Direta, Destreza + Prestidigitação contra a Percepção Passiva de quem olha (na mesa, o Mestre diz quem).
 
 ---
 
 ## Social
 
-Quase tudo o que é troca social prolongada vive em [Relações Sociais](/regras/relacoes-sociais), e aquele capítulo tem régua própria: o **cortejo com calma** (a Influência Estendida) é um modo só, não rola dado para avançar, e mede o tempo em intervalos de 8 dias ajustados pela longevidade de quem corteja, e não nos degraus da escada deste capítulo.
+Quase tudo o que é troca social prolongada vive em [Relações Sociais](/regras/relacoes-sociais). Aquele capítulo tem régua própria: o **cortejo com calma** (a Influência Estendida) é um modo só, não rola dado para avançar, e mede o tempo em intervalos de 8 dias ajustados pela longevidade de quem corteja, e não nos degraus da escada deste capítulo.
 
 O que fica de fora dele, e ainda espera ficha:
 
-- **Barganhar.** Chegar num preço. Acumulada, Influência + Sociabilidade, secundária Comerciante.
+- **Barganhar.** Chegar num preço. Acumulada, Influência + Sociabilidade, secundária Negociação.
 - **Apostar.** Dado, carta, briga de galo, e a mesa em volta deles. O que se descobre sentado ali costuma valer mais que o dinheiro. Direta, Perspicácia + Manha, secundária Submundo quando a mesa é do ramo. Trapacear é outra ação, na família de Furtividade.
 - **Etiqueta.** Não dar vexame onde as regras não estão escritas. Passiva, Compostura + Sociabilidade.
 - **Interrogar.** Arrancar informação de quem não quer dar. É interação social, e vive em [Relações Sociais](/regras/relacoes-sociais): Ataque Social, Influência + Interrogatório, contra a Defesa Social de quem responde.
 - **Colher boato** e **plantar boato.** Longa, Influência + Manha, intervalo de dia. Um boato bem posto trabalha sozinho.
 - **Lidar com animal.** Direta, Influência + Adestramento.
-- **Reputação** não é ação, é estado, e modifica quase toda ação social.
+- **Reputação** não é ação, é estado: desconta passos do Neutro na Régua de Relação com quem a conhece (Cap. VII), e não soma na jogada.
 
 ---
 
@@ -119,11 +123,11 @@ O que fica de fora dele, e ainda espera ficha:
 
 Esta família inteira ainda espera regra, e depende da mecânica de poder divino, que é frente à parte.
 
-- **Rezar.** Atrair a atenção de um deus. Longa, Vontade + Religião, e o que se ganha é atenção, não milagre garantido.
+- **Rezar.** Atrair a atenção de um deus. Longa, Compostura + Religião, e o que se ganha é atenção, não milagre garantido. A descrição da reza troca o Atributo ([regra geral](/regras/coracao-do-sistema#quem-escolhe-o-par)): Vigor para provação, sacrifício ou autopunição; Influência para pedir algo a uma entidade específica, quase uma negociação; Inteligência para uma reza feita por símbolos complexos. Conforme a entidade, a situação e a cena, o Mestre pode pedir outra jogada, com outra Habilidade. A Firula, se houver, soma o bônus por cima.
 - **Ritual menor.** Bênção da colheita, praga, adivinhação. Longa, Inteligência + Ritualismo.
-- **Exorcizar.** O espírito na casa, a coisa que ficou. Acumulada, Vontade + Ocultismo ou Religião.
+- **Exorcizar.** O espírito na casa, a coisa que ficou. Acumulada, Influência + Ocultismo ou Religião. A descrição troca o Atributo, como no Rezar: Vigor para um exorcismo de resistência física e jejum, Inteligência para um ritual de símbolos. A Firula, se houver, soma o bônus por cima.
 - **Reconhecer o sobrenatural.** Direta, Inteligência + Ocultismo.
-- **Meditar.** Recolher-se e recuperar Vontade. Longa, Compostura + Meditação. (A Mana que a hora de meditação devolve está no verbete Meditação, nas Habilidades Secundárias.)
+- **Meditar.** Recolher-se e aquietar o corpo e a cabeça. Longa, Compostura + Meditação. A Força de Vontade não volta por esta jogada: a noite passada em meditação conta como noite de sono para recuperá-la (Cap. III). (A Mana que a hora de meditação devolve está no verbete Meditação, nas Habilidades Secundárias.)
 - **Interpretar presságio.** O sonho repetido, o voo dos pássaros. Direta, Perspicácia + Ocultismo.
 
 ---

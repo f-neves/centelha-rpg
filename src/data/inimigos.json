@@ -13115,20 +13115,6 @@
         "forcaInvestida": 16
       },
       {
-        "nome": "Asas",
-        "atrib": "forca",
-        "pericia": "briga",
-        "dado": 1,
-        "tipo": "impacto",
-        "classe": "media",
-        "ticks": 6,
-        "acerto": 0,
-        "pool": "10d6+2 +10",
-        "dano": "1d6 +25 (I)",
-        "perfArma": null,
-        "forcaInvestida": 16
-      },
-      {
         "nome": "Sopro cataclísmico",
         "atrib": "forca",
         "pericia": null,

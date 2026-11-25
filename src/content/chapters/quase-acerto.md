@@ -5,7 +5,9 @@ titulo: "Quase-Acerto"
 resumo: "Errar por pouco ainda raspa: a válvula de dano que mantém o combate vivo mesmo contra guardas altas."
 ---
 
-No [Combate](/regras/combate), um ataque acerta quando a soma supera a Defesa. Mas **errar por pouco não é errar de tudo**: a lâmina ainda roça, a flecha ainda risca o couro. O **Quase-Acerto** é essa válvula: um pingo de dano garantido que impede que duelos entre guardas altas (ou contra placa pesada) virem horas de zeros. É também o que dá identidade tátil a cada arma: a leve *nica* o tempo todo, de raspão; a pesada nica raramente, mas fundo.
+No [Combate](/regras/combate), um ataque acerta quando a soma supera a Defesa. Mas **errar por pouco não é errar de tudo**: a lâmina ainda roça, a flecha ainda risca o couro.
+
+O **Quase-Acerto** é essa válvula: um pingo de dano garantido que impede que duelos entre guardas altas (ou contra placa pesada) virem horas de zeros. É também o que dá identidade tátil a cada arma: a leve *nica* o tempo todo, de raspão; a pesada nica raramente, mas fundo.
 
 ## Como funciona
 
@@ -21,15 +23,19 @@ Se você errou por **um valor menor ou igual à Margem**, é um raspão. O rasp�
 
 <p class="formula">Dano do raspão = Dano QA da arma − Redução QA da armadura + Centelha do atacante − Centelha do alvo (mínimo 0)</p>
 
-O dano do raspão **ignora a Absorção normal** (já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano, não dispara Sangramento por si só: é só o arranhão. A Centelha entra dos dois lados: quem golpeia com a fagulha acesa arranha mais fundo mesmo num raspão, e quem já Despertou sente menos o arranhão, a Centelha desconta ponto a ponto (o Vigor não entra nessa conta).
+O dano do raspão **ignora a Absorção normal** (o desconto que a armadura e o corpo fazem no dano de um golpe; o raspão já é o que sobra de um golpe que quase não conectou) e **não rola dados**: é um valor fixo. Não abre Margem de dano ([Combate](/regras/combate)) nem dispara Sangramento ([Vida, Ferimentos & Cura](/regras/vida-ferimentos-cura)) por si só: é só o arranhão.
+
+A Centelha entra dos dois lados. Quem golpeia com a fagulha acesa arranha mais fundo mesmo num raspão; quem já Despertou ([Cap. V](/regras/centelha)) sente menos o arranhão, porque a Centelha do alvo desconta ponto a ponto (o Vigor não entra nessa conta).
 
 Um golpe de verdade nunca dói **menos** que o raspão do mesmo ataque: se a Absorção comeu o dano do acerto até menos que o raspão teria causado, vale o raspão.
 
-<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora (Centelha 3) ataca um cavaleiro de <strong>placa</strong> com a <strong>espada longa</strong> (dano médio 3,5, arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong>: precisava de 17, então errou por <strong>4</strong>. A Margem é <strong>2 (arma média) + 3 (placa) = 5</strong>. Como 4 ≤ 5, raspa. O dano é <strong>4 (arma média) − 5 (redução da placa) + 3 (Centelha de Sora) = 2</strong>: um risco no verniz, não faíscas no nada. Contra um alvo de <strong>couro</strong> (leve, redução 1) e Centelha 0, a mesma arma faria <strong>4 − 1 + 3 − 0 = 6</strong> de raspão, e o couro quase não muda a Margem, então o mesmo 13 contra Defesa 16 <em>não</em> raspa nele: margem 2 + 1 = 3, e 4 &gt; 3.</div>
+<div class="callout exemplo"><span class="lbl">Exemplo</span>Sora (Centelha 3) ataca um cavaleiro de <strong>placa</strong>, sem Centelha, com a <strong>espada longa</strong> (dano médio 3,5, arma média) e rola <strong>13</strong> contra Defesa <strong>16</strong>: precisava de 17, então errou por <strong>4</strong>. A Margem, que soma os Bônus de QA da arma e da armadura (tabelas abaixo), é <strong>2 (arma média) + 3 (placa) = 5</strong>. Como 4 ≤ 5, raspa. O dano é <strong>4 (o raspão da arma média) − 5 (a redução da placa) + 3 (a Centelha de Sora) = 2</strong>: um risco no verniz, não faíscas no nada. Contra um alvo de <strong>couro</strong> (armadura leve, redução 1) e Centelha 0, a mesma arma faria <strong>4 − 1 + 3 − 0 = 6</strong> de raspão, só que o couro quase não alarga a Margem, e o mesmo 13 contra Defesa 16 <em>não</em> raspa nele: margem 2 + 1 = 3, e 4 &gt; 3.</div>
 
 ## A lógica das classes
 
-Os valores são **fixos por classe**: nada de campo por arma. A classe da arma vem do **dano médio** dela: `dado × 3,5 + bônus de dano`. Até **2** é leve, de **2,5 a 5,5** é média, **6 ou mais** é pesada. É o dano da ARMA, e não o do personagem: a Força de quem empunha não muda a classe, senão o mesmo aço raspava diferente em duas mãos.
+Os valores são **fixos por classe**: nada de campo por arma. A classe da arma vem do **dano médio** dela, `dado × 3,5 + bônus de dano`, com o dado e o bônus de dano do catálogo: até **2** é leve, de **2,5 a 5,5** é média, **6 ou mais** é pesada.
+
+É o dano da ARMA, e não o do personagem: a Força de quem empunha não muda a classe, senão o mesmo aço raspava diferente em duas mãos.
 
 <p class="muted">Esta classe é uma régua PRÓPRIA do Quase-Acerto, e não a mesma classe de <a href="/centelha-rpg/regras/armas-e-armaduras">Armas &amp; Armaduras</a> (leve/média/pesada/haste/distância/arremesso, que decide Preparo e Velocidade). As duas concordam na maioria das armas comuns, mas nascem de contas diferentes: uma lê o dano médio, a outra lê o catálogo.</p>
 
@@ -38,14 +44,16 @@ Os valores são **fixos por classe**: nada de campo por arma. A classe da arma v
 | Arma | Dano médio | Classe de QA |
 |---|:---:|:---:|
 | Adaga, Espada Curta, Punhos | 1,5 | Leve |
-| Espada Longa, Machado, Maça, Arco Longo | 3,5 | Média |
-| Lança, Alabarda, Besta Pequena, Pilum | 5,5 | Média |
+| Espada Longa, Machado, Maça, Arco Longo, Lança, Pilum | 3,5 | Média |
+| Alabarda, Glaive, Lança Longa, Besta Pequena | 5,5 | Média |
 | Montante, Martelo de Guerra | 7,0 | Pesada |
 | Besta Média, Besta Grande | 7,5 · 11,5 | Pesada |
 
 </div>
 
-<p class="muted">A régua não é o <strong>número de dados</strong> da arma: hoje 30 das 33 armas têm um dado só e nenhuma tem três, e ao pé da letra a espada longa viraria leve e a categoria pesada deixaria de existir. É o <strong>dano médio</strong> (quanto a arma pesa no golpe) que decide a classe, medido por um número que varia por arma. Arma fora do catálogo (criatura, item improvisado) tem o dano médio lido da própria expressão de dano: ali a expressão <em>é</em> a arma.</p>
+<p class="muted">A régua não é o <strong>número de dados</strong> da arma: hoje 45 das 48 armas têm um dado só e nenhuma tem três, e ao pé da letra a espada longa viraria leve e a categoria pesada deixaria de existir. É o <strong>dano médio</strong> (quanto a arma pesa no golpe) que decide a classe, medido por um número que varia por arma.</p>
+
+<p class="muted">Arma fora do catálogo (criatura, item improvisado) tem o dano médio lido da própria expressão de dano: ali a expressão <em>é</em> a arma.</p>
 
 ### Armas
 
@@ -74,9 +82,11 @@ A arma **leve** raspa muito (Margem larga) mas raso; a **pesada** raspa pouco ma
 
 </div>
 
-Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante: um alvo encouraçado é maior, mais lento e mais fácil de roçar. Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase o tempo todo, mas a maioria desses nicks bate em **0**. A armadura leve quase não muda a Margem e reduz **pouco**: protege pelo Absorção, não pela Redução do raspão.
+Repare na contramão: quanto **mais pesada** a armadura, **mais** ela aumenta a Margem do atacante: um alvo encouraçado é maior, mais lento e mais fácil de roçar.
 
-<div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, <strong>some</strong> os Bônus de Quase-Acerto. A Redução do Raspão não é somada, use apenas a <strong>maior</strong> Redução entre elas.</div>
+Em troca, a **Redução** come o dano do raspão. Resultado: o cavaleiro de placa é nicado quase o tempo todo, mas a maioria desses raspões bate em **0**. A armadura leve quase não muda a Margem e reduz **pouco**: protege pela Absorção, não pela Redução do raspão.
+
+<div class="callout"><span class="lbl">Empilhar</span>Ao usar mais de uma peça de armadura, <strong>some</strong> os Bônus de Quase-Acerto. A Redução do raspão não se soma: use só a <strong>maior</strong> Redução entre elas.</div>
 
 ## Modificadores
 
@@ -84,7 +94,7 @@ A Margem e o dano do raspão são o ponto de partida; várias coisas os ajustam:
 
 - **Situacionais**: as mesmas circunstâncias que mexem na Defesa (cobertura, alvo caído, flanco, postura) também afetam o quanto você quase-acerta. Um alvo difícil de acertar é difícil de raspar; um alvo exposto, fácil. Use o bom senso na mesma escala dos [modificadores de combate](/regras/combate).
 - **Encantamentos**: armas e armaduras mágicas podem trazer Bônus de QA, Dano de raspão ou Redução próprios, somados aos da classe (uma lâmina élfica que "sempre tira sangue", uma cota que "ignora arranhões").
-- **Proezas**: Técnicas podem ampliar a Margem, transformar raspões em golpes de verdade, fazer o raspão sangrar, ou (na defesa) anular o Quase-Acerto contra o portador. São o caminho herói para tornar a válvula uma arma.
+- **Proezas**: Técnicas podem ampliar a Margem, transformar raspões em golpes de verdade, fazer o raspão sangrar, ou (na defesa) anular o Quase-Acerto contra o portador. São o caminho do herói para fazer da válvula uma arma.
 - **Magia (Feitiçaria)**: feitiços podem conceder os mesmos efeitos por uma cena (afiar, amaldiçoar a guarda do alvo, blindar contra raspões) ou criar raspões a partir de efeitos que normalmente nem rolam para acertar.
 
 <p class="muted">Em todos os casos, o raspão continua <strong>ignorando a Absorção normal</strong> e sendo um valor fixo: os modificadores mexem na Margem, no Dano do raspão ou na Redução, não na natureza do Quase-Acerto.</p>

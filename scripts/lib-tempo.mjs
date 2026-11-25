@@ -202,7 +202,7 @@ export function montarArma(w) {
     modo: principal.tipo, perf: principal.perf || 0,
     pen: w.pen || 0,
     distancia: (w.tags || []).includes('distância'),
-    projetilVeloz: (w.tags || []).includes('projétil veloz'),
+    projetilVeloz: (w.tags || []).includes('projétil rápido'),
   };
 }
 
