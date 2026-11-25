@@ -390,7 +390,7 @@ Ele é, na prática, **um Tick de movimento**: como um Tick é mais ou menos um 
 
 <p class="muted">Quem tem <strong>perna curta</strong> (anão, gnomo, halfling) desliza <strong>dois terços</strong> disso, e a mesma fração vale para a Corrida e para os Saltos.</p>
 
-<p class="muted">A <strong>armadura</strong> também pesa no movimento: no Deslocamento, na Corrida e nos Saltos, ela tira a Penalidade dela inteira: um metro por ponto nas medidas horizontais; no <a href="/centelha-rpg/regras/combate#salto-velocidade-3">Salto Vertical</a>, dez centímetros por ponto, sem passar de zero.</p>
+<p class="muted">A <strong>armadura</strong> também pesa no movimento: no Deslocamento, na Corrida e nos Saltos, ela tira metade da Penalidade dela, arredondada para baixo: um metro a cada dois pontos nas medidas horizontais; no <a href="/centelha-rpg/regras/combate#salto-velocidade-3">Salto Vertical</a>, dez centímetros a cada dois pontos, sem passar de zero.</p>
 
 Para ir além, gaste a vez numa **ação de movimento**: Corrida ou Salto, ambas **Velocidade 3**.
 
