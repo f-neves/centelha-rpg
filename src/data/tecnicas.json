@@ -3292,7 +3292,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "Neutraliza um veneno já no corpo; expele toxinas.",
+    "texto": "Neutraliza um veneno já no corpo; expele toxinas. Substitui a Técnica Purgar o Veneno no que as duas fazem igual (neutralizar o veneno já no corpo); o aguentar o ambiente hostil da Purgar o Veneno continua.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
