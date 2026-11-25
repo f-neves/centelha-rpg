@@ -6285,7 +6285,7 @@
       "olhar-investigativo"
     ],
     "aliases": [],
-    "texto": "Reconstrói o que houve num local pelos vestígios.",
+    "texto": "Reconstrói o que houve num local pelos vestígios. Substitui a Técnica Reconstituir a Cena.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
