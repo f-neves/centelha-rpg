@@ -43,7 +43,7 @@ Detalhe em `Proezas_revisao.md`.
   `tecnicas.json:6076` dá "+3 em Ofícios" (a régua de nível 1 da trilha Bônus); `Proezas_revisao.md:606`
   dá "+2". O caso é o mesmo do D2 (o doc ficou na régua velha), mas a Técnica pesa direto no
   ganho por ofício e pede confirmação antes de mexer.
-- [ ] **D9 · [ADIADO] [FAZER] Esquiva Impossível: marcar `pendente: true`.** Decisão do autor
+- [x] **D9 · [FECHADA em 25/11/2026: a régua fechou na Etapa 3 e a Técnica foi marcada `pendente: true`] Esquiva Impossível: marcar `pendente: true`.** Decisão do autor
   (26/09/2026, análise externa via ChatGPT desktop, `docs/calibracao/discussao/
   decisoes-entendimento.md`, item 3a): `esquiva-impossivel` (`tecnicas.json`) fica sem efeito
   determinável (não inventar a partir do nome, nível ou custo), e a Técnica deve virar

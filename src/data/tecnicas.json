@@ -97,7 +97,7 @@
     ],
     "aliases": [],
     "texto": "Ao ver um ataque que te visa, +6 na Defesa contra ele: o corpo já saiu do caminho quando o golpe chega.",
-    "pendente": false,
+    "pendente": true,
     "nivel": 3,
     "efeito": "bonus"
   },
