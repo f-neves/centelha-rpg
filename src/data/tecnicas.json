@@ -1021,7 +1021,7 @@
       "mira-firme"
     ],
     "aliases": [],
-    "texto": "+4 de Penetração e +1d6 de dano num disparo cuidadoso.",
+    "texto": "+4 de Penetração e +1d6 de dano num disparo cuidadoso. Substitui a Técnica Tiro Certeiro: o +1d6 e a Penetração não somam; valem os desta.",
     "pendente": false,
     "nivel": 3,
     "efeito": "penetracao"
@@ -1077,7 +1077,7 @@
       "tiro-impossivel"
     ],
     "aliases": [],
-    "texto": "O disparo curva e persegue o alvo, ignorando cobertura.",
+    "texto": "O disparo curva e persegue o alvo, ignorando cobertura. Substitui a Técnica Tiro Impossível no que as duas fazem igual (ignorar a cobertura); o resto da Tiro Impossível continua.",
     "pendente": false,
     "nivel": 5,
     "efeito": "estado"
