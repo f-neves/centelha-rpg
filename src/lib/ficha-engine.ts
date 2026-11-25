@@ -1670,7 +1670,7 @@ export function montarFicha(opts: FichaOpts) {
     const velFracAgua = (w: number) => Math.max(0, 1 - Math.pow(w / maxKg / corteAgua, F.cargaExpoenteAgua));
     const vBaseNatacao = Math.max(0, deslocamento({
       vigor: A('vigor'), atletismo: atl, natacao: S.skills2['natacao'] || 0,
-    }, dzFrac).natacao - penMov);
+    }, dzFrac).natacao);
     const velNatacao = (w: number) => vBaseNatacao * velFracAgua(w);
     const cMin = maxKg / 8, cLeve = maxKg / 4, cMedia = maxKg / 2, cPesada = maxKg * corte;
     const bandas = [
