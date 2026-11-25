@@ -3468,8 +3468,19 @@
       },
       {
         "nome": "Penalidade",
-        "tipo": "fixo",
-        "valor": "+2 Ticks por nível em cada ação do alvo"
+        "tipo": "substitui",
+        "substitui": "penalidade",
+        "unidade": "Ticks a mais por ação",
+        "escala": [
+          "—",
+          "+2 Ticks",
+          "+4 Ticks",
+          "+6 Ticks",
+          "+8 Ticks",
+          "+10 Ticks",
+          "+12 Ticks"
+        ],
+        "nota": "+2 Ticks por grau de Penalidade em cada ação do alvo"
       },
       {
         "nome": "Duração",
@@ -6087,8 +6098,19 @@
       },
       {
         "nome": "Ganho",
-        "tipo": "fixo",
-        "valor": "−2 Ticks por nível para um, +2 por nível para o outro"
+        "tipo": "substitui",
+        "substitui": "ganho",
+        "unidade": "Ticks tirados de um e dados a outro",
+        "escala": [
+          "—",
+          "−2 Ticks para um, +2 para o outro",
+          "−4 Ticks para um, +4 para o outro",
+          "−6 Ticks para um, +6 para o outro",
+          "−8 Ticks para um, +8 para o outro",
+          "−10 Ticks para um, +10 para o outro",
+          "−12 Ticks para um, +12 para o outro"
+        ],
+        "nota": "−2 Ticks por grau de Ganho para um, +2 por grau para o outro"
       },
       {
         "nome": "Duração",
@@ -6819,8 +6841,19 @@
       },
       {
         "nome": "Ganho",
-        "tipo": "fixo",
-        "valor": "−2 Ticks por nível na próxima ação do alvo"
+        "tipo": "substitui",
+        "substitui": "ganho",
+        "unidade": "Ticks a menos",
+        "escala": [
+          "—",
+          "−2 Ticks",
+          "−4 Ticks",
+          "−6 Ticks",
+          "−8 Ticks",
+          "−10 Ticks",
+          "−12 Ticks"
+        ],
+        "nota": "−2 Ticks por grau de Ganho na próxima ação do alvo"
       }
     ],
     "efeito": "Apressa um aliado por um instante: a próxima ação dele sai mais cedo. Não dá ação extra, só adianta a que já vinha.",
