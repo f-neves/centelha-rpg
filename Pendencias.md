@@ -40,7 +40,7 @@ está na seção 3.
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 25 | 1 | 10 | 17 | 5 | 4 | 0 | 0 | 0 |
-| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 28 | 19 | 0 | 9 | 7 | 11 | 0 | 0 | 0 | 1 |
+| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 29 | 20 | 0 | 9 | 8 | 11 | 0 | 0 | 0 | 1 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 12 | 0 | 9 | 5 | 2 | 0 | 0 | 0 | 5 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 11 | 7 | 0 | 4 | 5 | 1 | 0 | 1 | 0 | 0 |
@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 30 | 30 | 0 | 0 | 0 | 30 | 0 | 0 | 0 | 0 |
-| | **Total** | | **409** | **293** | **4** | **112** | **105** | **80** | **8** | **11** | **82** | **11** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 31 | 31 | 0 | 0 | 0 | 31 | 0 | 0 | 0 | 0 |
+| | **Total** | | **411** | **295** | **4** | **112** | **106** | **81** | **8** | **11** | **82** | **11** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -372,6 +372,7 @@ Fechados (10): A12, A17, A18, A22, A23, A27, A21, A22, A20, A35.
 | B24 | aberto | FAZER | Catálogo de armas: as que as fichas usam por equivalência (itens 014, 016, 017, 019, 020 e 021; D-344). |
 | B25 | aberto | FAZER | Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366). |
 | B26 | aberto | FAZER | Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas … |
+| B30 | aberto | DECIDIR | Os losangos de Ameaça têm contraste baixo sobre a aquarela (conjunto real das imagens do bestiário). |
 
 Fechados (9): B12, B1, B1b, B10, B13, B15, B19, B23, B27.
 
@@ -701,6 +702,7 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N29 | aberto | FAZER | A Ambidestria (D18, 25/11/2026) alivia a Defesa no Tick do Golpe de −4 para −2 também golpeando com as duas … |
 | N30 | aberto | FAZER | O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica. |
 | N31 | aberto | FAZER | A Investida Devastadora (C21, 25/11/2026) soma +1 de dano a cada 2 m percorridos, até +7, e derruba e empurra … |
+| N32 | aberto | FAZER | O card "Ver a ficha por dentro" da mesa mostra o chip cru de uma Técnica removida (achado da Revisora no D16, … |
 
 Fechados (0): nenhum.
 

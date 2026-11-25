@@ -466,3 +466,6 @@ limitações conhecidas, que são as três de baixo.
     .md nova (`../tmp/arquiteto/fichas-glaive`: as 324 fichas de `tmp/executora/lote/fichas-misto` com o diabo novo), e só
     o sha do diabo e o cabeçalho mudaram. A cópia `tmp/executora/lote/fichas-misto/diabo-barbado.md` ainda é a de antes: o
     próximo lote toma a ficha do diabo da pasta da Bestiarista, e não dessa cópia.
+- [ ] **B30 · [DECIDIR] Os losangos de Ameaça têm contraste baixo sobre a aquarela (conjunto real das imagens do bestiário).**
+  - O livro (a lista de `/bestiario`) diz: a imagem principal é a `_01` do índice, aquarela com fundo; o card põe os losangos de Ameaça (◆◇) sobre ela.
+  - O site faz: os losangos mantêm o desenho de hoje, pensado para o recorte transparente; sobre a aquarela o contraste é baixo. O autor decide quando as imagens do conjunto real entrarem (sem elas, o problema não aparece). Numeração: o main tem B28 e B29 do carrossel; esta é a B30.

@@ -115,7 +115,7 @@ const REGRAS_TEXTO = [
     porque a outra lamina ainda apara.
     <p class="nota">Com os &minus;1d6/&minus;2d6 do capitulo IX a dupla mede 26% contra 54% de uma arma
     so: a penalidade de dado so e suportavel quando as Defesas sao baixas. Com &minus;1d6/&minus;1d6 ela
-    mede 51%. Consequencia: a Tecnica <b>Ambidestria</b> fica sem funcao e precisa de outra.</p>`,
+    mede 51%. Consequencia (medida de 20/08): a Tecnica <b>Ambidestria</b> ficava sem funcao e precisava de outra; depois da D18 (25/11/2026) ela alivia a Defesa no Tick do Golpe para &minus;2.</p>`,
   },
   {
     id: 'cadeia', titulo: 'A cadeia de ataques', estado: 'desenhado',
