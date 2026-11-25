@@ -4146,7 +4146,7 @@
       "lingua-de-prata"
     ],
     "aliases": [],
-    "texto": "Fecha acordos com armadilhas que o alvo não percebe.",
+    "texto": "Fecha acordos com armadilhas que o alvo não percebe. Substitui a Técnica Torcer o Acordo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
