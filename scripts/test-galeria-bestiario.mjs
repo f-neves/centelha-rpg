@@ -152,7 +152,9 @@ try {
     for (let k = 0; k < 25 && !achou; k++) { achou = await p.evaluate(() => !!document.getElementById('ninfa')); if (!achou) { await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight)); await esperar(300); } }
     check(achou, 'a ninfa (10 imagens) está na página');
     await p.evaluate(() => document.getElementById('ninfa').scrollIntoView({ block: 'center' })); await esperar(300);
-    await p.evaluate(() => document.querySelector('#ninfa .arte .arte-lupa').click()); // a lupa da ninfa await p.waitForSelector('#galeria:not([hidden])', { timeout: 5000 }); await esperar(300);
+    await p.evaluate(() => document.querySelector('#ninfa .arte .arte-lupa').click()); // a lupa da ninfa
+    await p.waitForSelector('#galeria:not([hidden])', { timeout: 5000 });
+    await esperar(300);
     const serie = await p.evaluate(() => ({ minis: document.querySelectorAll('#gal-minis .gal-mini').length, cont: document.getElementById('gal-cont').textContent,
       todas: document.getElementById('gal-todas').hidden ? '' : document.getElementById('gal-todas').textContent, rolagem: document.getElementById('gal-minis').scrollWidth > document.getElementById('gal-minis').clientWidth || document.getElementById('gal-minis').scrollHeight > document.getElementById('gal-minis').clientHeight }));
     check(serie.minis === 8 && serie.cont === '1 de 8', 'a ninfa mostra só as 8 primeiras no carrossel');

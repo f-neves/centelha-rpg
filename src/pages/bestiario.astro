@@ -154,9 +154,10 @@ const opcoesEditor = {
 
   <div class="lightbox" id="lightbox" hidden>
     <button class="lb-fechar" aria-label="Fechar">✕</button>
-    {/* A arte precisa da moldura de pergaminho por baixo: as fontes vêm com fundo
-        branco chapado, e é o multiply contra o pergaminho que faz esse branco
-        sumir. Por isso o gradiente fica aqui e não na img. */}
+    {/* A arte precisa da moldura de pergaminho por baixo: o multiply contra o pergaminho
+        une a imagem à moldura (as artes de hoje são recortes RGBA transparentes, e as
+        aquarelas novas do carrossel, com fundo de papel creme, também assentam nele).
+        Por isso o gradiente fica aqui e não na img. */}
     <figure><span class="lb-moldura"><img id="lb-img" src="" alt="" /></span><figcaption id="lb-cap" class="cinzel"></figcaption></figure>
   </div>
 
