@@ -1,0 +1,1 @@
+Fixture de teste do carrossel do bestiário (prompt 056-imagens): duas criaturas (aasimar com 3 imagens, ninfa com 10, para a galeria), imagens minúsculas geradas só para o teste. NUNCA vai para public/: o scripts/test-galeria-bestiario.mjs a copia pelo sync-bestiario-imagens.mjs e apaga depois.

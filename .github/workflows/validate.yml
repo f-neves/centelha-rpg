@@ -114,6 +114,7 @@ jobs:
           - test-editor-bestiario
           - test-ficha-item-inteiro
           - test-luas
+          - test-galeria-bestiario
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
