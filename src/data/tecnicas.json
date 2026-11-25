@@ -3308,7 +3308,7 @@
       "aclimatacao"
     ],
     "aliases": [],
-    "texto": "Suporta temperaturas e ambientes que matariam outros.",
+    "texto": "Suporta temperaturas e ambientes que matariam outros. Substitui a Técnica Aclimatação (a mesma adaptação, em grau maior); soma com a Técnica Purgar o Veneno.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3327,7 +3327,7 @@
       "resistir-doenca"
     ],
     "aliases": [],
-    "texto": "Imune a venenos e doenças mundanos.",
+    "texto": "Imune a venenos e doenças mundanos. Substitui as Técnicas Estômago de Ferro e Resistir Doença contra veneno e doença mundanos; contra o sobrenatural, elas continuam valendo.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
@@ -7295,7 +7295,7 @@
       "estomago-de-ferro"
     ],
     "aliases": [],
-    "texto": "Neutraliza um veneno ou toxina já no corpo e aguenta um ambiente hostil (frio, calor, ar rarefeito) por um tempo.",
+    "texto": "Neutraliza um veneno ou toxina já no corpo e aguenta um ambiente hostil (frio, calor, ar rarefeito) por um tempo. Soma com a Técnica Aclimatação.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
