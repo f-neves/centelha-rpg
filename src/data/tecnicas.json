@@ -6444,7 +6444,7 @@
       "reacao"
     ],
     "aliases": [],
-    "texto": "Realiza uma ação mental e uma física quase simultâneas.",
+    "texto": "Realiza uma ação mental e uma física quase simultâneas. Substitui a Técnica Duplo Tempo.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
