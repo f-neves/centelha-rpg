@@ -3169,7 +3169,7 @@
       "truque-de-mao"
     ],
     "aliases": [],
-    "texto": "Desarma armadilhas e abre qualquer fechadura mundana num instante.",
+    "texto": "Desarma armadilhas e abre qualquer fechadura mundana num instante. Soma com a Técnica Dedos Ágeis (o +3 ainda vale na fechadura que não seja mundana).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3188,7 +3188,7 @@
       "toque-preciso"
     ],
     "aliases": [],
-    "texto": "Várias ações manuais finas numa única ação.",
+    "texto": "Várias ações manuais finas numa única ação. Substitui as Técnicas Mãos Borradas e Mãos Rápidas Demais no que se repete (várias ações manuais finas numa ação).",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
