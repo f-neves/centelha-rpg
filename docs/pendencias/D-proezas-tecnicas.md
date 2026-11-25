@@ -39,7 +39,7 @@ Detalhe em `Proezas_revisao.md`.
   `lance.ts`, `grid.astro`, `motor.mjs`, `lib-bestiario.mjs` e os capítulos `centelha.md`,
   `combate.md`, `defesas.md` foram alinhados nessa rodada (commit `adfbb5d7` e o commit desta Fase
   2). Ver **D12** para a jogada só-de-Atributo, que ainda usa a regra antiga.
-- [ ] **D8 · [DECIDIR] Mãos Hábeis: +3 ou +2 em Ofícios?** Levantado em 24/09/2026.
+- [x] **D8 · [FECHADA em 25/11/2026, decidida pelo coordenador por delegação do autor: +3] Mãos Hábeis: +3 ou +2 em Ofícios?** `tecnicas.json` já dizia "+3 em Ofícios" (a régua de nível 1 da trilha Bônus); nada mudou no dado. O "+2" era do `Proezas_revisao.md`, na régua velha. Levantado em 24/09/2026.
   `tecnicas.json:6076` dá "+3 em Ofícios" (a régua de nível 1 da trilha Bônus); `Proezas_revisao.md:606`
   dá "+2". O caso é o mesmo do D2 (o doc ficou na régua velha), mas a Técnica pesa direto no
   ganho por ofício e pede confirmação antes de mexer.
