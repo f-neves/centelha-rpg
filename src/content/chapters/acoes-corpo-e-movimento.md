@@ -245,9 +245,21 @@ Isso não é convenção de mesa: é o que os recordes mostram. O maior levantam
 
 ### Quando a mesa rola alguma coisa
 
-Erguer o peso máximo não se rola, mas três coisas em volta dele se rolam:
+Erguer o peso máximo não se rola, e por quanto tempo se segura também não; em volta dele há três coisas:
 
-**Segurar por mais que um instante.** O peso máximo é para uma vez, um instante, sem sair do lugar. Sustentar é outra coisa: **Direta, repetida a cada Tick**, Vigor + Resistência contra a Dificuldade que sai da fração de P que está nos braços; falhou, solta. Metade de P é Difícil; o P inteiro é quase impossível passar de dois Ticks.
+**Segurar por mais que um instante.** O peso máximo é para uma vez, um instante, sem sair do lugar. Por quanto tempo se segura um peso não se rola: sai de uma tabela, como o salto, pela fração de P nos braços e pelo Vigor.
+
+**Ticks que se segura = Vigor × multiplicador da faixa**, arredondado para cima, com mínimo de 1.
+
+| Faixa (fração de P nos braços) | Multiplicador | Com Vigor 3 |
+|---|:--:|:--:|
+| **Mínima** (até P/8) | sem limite | sem limite |
+| **Leve** (até P/4) | × 125 | 375 Ticks (6 minutos) |
+| **Média** (até P/2) | × 25 | 75 Ticks (1 minuto e 15 segundos) |
+| **Pesada** (até 3P/4) | × 5 | 15 Ticks |
+| **Máxima** (até P) | × ½ | 2 Ticks |
+
+A Mínima não cansa: é carregar, e vale a tabela de carga. Com Vigor 3, quem segura metade de P aguenta pouco mais de um minuto, e quem segura o P inteiro, dois Ticks. Em situação difícil ou de perigo (chuva, tremor, alguém empurrando), o Mestre pode pedir uma jogada de Vigor + Resistência.
 
 **Andar com o peso.** Aí vale a tabela de carga, que é outra régua, com **cinco faixas**:
 
