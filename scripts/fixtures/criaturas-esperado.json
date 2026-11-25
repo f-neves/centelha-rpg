@@ -18437,25 +18437,21 @@
     },
     "vontade": 12,
     "corpo": {
-     "postura": "quatro patas; voador",
-     "apoio": "quadrupede",
-     "altura": 6.51,
-     "largura": 4.51,
+     "postura": "serpentino, duas patas dianteiras; voa por magia, sem asas",
+     "apoio": "outro",
+     "altura": 3.04,
+     "largura": 3.04,
      "profundidade": null,
      "comprimento": 20,
-     "comprimentoSemCauda": 11.52,
-     "caudaGrossa": true,
-     "envergadura": 45,
      "massa": 88000,
-     "area": 63.74,
-     "posturaDoTamanho": "de lado, pousado, asas fechadas",
+     "area": 45.6,
+     "posturaDoTamanho": "de lado, esticado ou com a frente erguida",
      "segundoTamanho": {
-      "area": 425.3,
-      "posturaDoTamanho": "de baixo, asas abertas"
+      "area": 16.4,
+      "posturaDoTamanho": "enrolado"
      }
     },
     "couraca": 12,
-    "perfilCouraca": "rigida",
     "artes": {
      "tempo": 6,
      "protecao": 6,
@@ -18517,24 +18513,7 @@
       "nivelPerfuracao": null,
       "acerto": 0,
       "bloqueiaComoArma": null,
-      "justificativa": "O golpe de cauda do multiataque do site: a cauda grossa varre com o peso, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
-     },
-     {
-      "nome": "Asas",
-      "parte": "asa",
-      "classe": "media",
-      "pgr": [
-       2,
-       1,
-       3
-      ],
-      "dado": "1d6",
-      "multiplicadorForca": 1,
-      "tipoDano": "impacto",
-      "nivelPerfuracao": null,
-      "acerto": 0,
-      "bloqueiaComoArma": null,
-      "justificativa": "O \"golpe de asas\" do multiataque do site: a asa bate com o braço inteiro, Média (§7). Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
+      "justificativa": "O golpe de cauda do multiataque do site: o corpo de serpente fustiga com a cauda, com o peso do corpo inteiro, Pesada (§7). Força × 2: a massa do corpo inteiro empurra a cauda (manual, seção 3: \"× 2 quando a massa do corpo inteiro empurra (investida, pisão, cauda)\"), como nas caudas do estegossauro e do anquilossauro. Jogada: Força 16 + Briga 5 + 2 × o menor entre Centelha 9 e Briga 5 (10)"
      },
      {
       "nome": "Sopro cataclísmico",
@@ -18553,14 +18532,15 @@
       "bloqueiaComoArma": null,
       "justificativa": "Ataque natural a distância, Classe Distância (manual, Passo 10), como no branco jovem. \"Cone de 18 m; 15d6 de dano\" (site). Os números são sugestão da ficha (D-197), descritos na linha do sopro nas Manobras. Sem jogada de ataque."
      }
-    ]
+    ],
+    "perfilCouraca": "rigida"
    },
    "esperado": {
     "pv": 110,
     "pesoErguido": 32320.78,
     "faixa": 6,
     "tamanho": "Imenso",
-    "segundoTamanho": "Colossal",
+    "segundoTamanho": "Enorme",
     "esquiva": 4,
     "bloqueio": 4,
     "energia": 38,
@@ -18590,12 +18570,6 @@
       "nome": "Cauda",
       "velocidade": 7,
       "danoMedio": 48,
-      "jogada": 31
-     },
-     {
-      "nome": "Asas",
-      "velocidade": 6,
-      "danoMedio": 28.5,
       "jogada": 31
      },
      {

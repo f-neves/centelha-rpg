@@ -28,7 +28,8 @@ import { pathToFileURL } from 'node:url';
 import { build } from 'esbuild';
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
-const FIX = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts/fixtures/criaturas-esperado.json'), 'utf8'));
+// BESTIARIO_FIXTURE: o teste de fonte (test-fonte-criaturas.mjs) manda um fixture com a entrada do site, para o motor conferir o esperado
+const FIX = JSON.parse(fs.readFileSync(process.env.BESTIARIO_FIXTURE || path.join(ROOT, 'scripts/fixtures/criaturas-esperado.json'), 'utf8'));
 const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
 
 // As fichas corrigidas de P3/P4 são conferidas sem exceção numérica.
