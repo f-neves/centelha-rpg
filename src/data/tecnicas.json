@@ -6712,7 +6712,7 @@
       "ler-o-outro"
     ],
     "aliases": [],
-    "texto": "Monta um perfil preciso após breve contato.",
+    "texto": "Monta um perfil preciso após breve contato. Substitui a Técnica Traçar o Perfil.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
