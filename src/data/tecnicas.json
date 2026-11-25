@@ -7704,7 +7704,7 @@
       "voz-calma"
     ],
     "aliases": [],
-    "texto": "Contra intimidação ou provocação, +4 na Defesa Social e você não demonstra o menor abalo.",
+    "texto": "Contra intimidação ou provocação, +4 na Defesa Social e você não demonstra o menor abalo. Substitui a Técnica Voz Calma: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
