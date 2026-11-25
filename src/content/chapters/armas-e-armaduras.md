@@ -61,7 +61,7 @@ A rocha que uma criatura arremessa (arma improvisada da ficha dela) segue a mesm
 - **Ágil**: só descritiva, sem efeito mecânico próprio; o jeito ágil da arma já está nos números dela (dano baixo, acerto alto).
 - **Versátil**, 1 ou 2 mãos: com uma mão soma Força no dano; com as duas, Força×2.
 - **Sangramento**, um golpe que abre Margem deixa uma ferida que continua drenando: **Sangramento igual à Margem** (máx 3). Ver *Sangramento e Estabilização* em Vida & Ferimentos.
-- **Arremessável · Munição · Pesada**: lançar; gastar munição; Pesada só descreve (arma lenta e volumosa).
+- **Arremessável · Munição · Pesada**: lançar; gastar munição; Pesada só descreve: em geral são armas de duas mãos e de Preparo mais lento.
 - **Projétil veloz**: é o projétil rápido do Combate: só Esquiva ou escudo hábil defendem (ver [Combate](/regras/combate), Projéteis rápidos).
 - **Bloqueável**: projétil rápido lançado à mão, que por isso também se bloqueia com a arma, além da Esquiva e do escudo hábil. Só a Plumbata.
 - **Prende**: um acerto deixa o alvo **Preso** (não se desloca, mas age; [Combate](/regras/combate), Manobras) até escapar: Força + Atletismo contra o total do lançamento, e cada tentativa gasta a ação. A Rede não causa dano; a Boleadeira causa o dano pequeno da tabela.
