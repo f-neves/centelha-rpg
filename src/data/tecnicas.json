@@ -3151,7 +3151,7 @@
       "dedos-ageis"
     ],
     "aliases": [],
-    "texto": "Manipula vários objetos rápido demais para acompanhar.",
+    "texto": "Manipula vários objetos rápido demais para acompanhar. Substitui a Técnica Mãos Rápidas Demais.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
