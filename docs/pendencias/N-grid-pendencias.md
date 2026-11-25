@@ -259,3 +259,6 @@ Nada desta lista se conserta antes da passada do Grid. Quem achar uma divergênc
 - [ ] **N29 · [FAZER] A Ambidestria (D18, 25/11/2026) alivia a Defesa no Tick do Golpe de −4 para −2 também golpeando com as duas armas; o Grid não lê a Técnica.**
   - O livro diz (`combate.md`, a régua das fases; `tecnicas.json`, `ambidestria`): golpear com uma só arma e empunhar duas alivia o −4 para −2; quem tem a Técnica Ambidestria tem o mesmo alívio golpeando com as duas.
   - O Grid faz: a dupla (`segura`, as duas armas de mão que golpeiam no mesmo lance) deixa a Defesa em −4 no Tick do Golpe, sem ler a Técnica. Ao fazer a passada, ler a Ambidestria no combatente e tratar a dupla com ela como `segura` (−2). Não mexido agora por D-054; a ficha não mostra a Defesa por fase.
+- [ ] **N30 · [FAZER] O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica.**
+  - O livro diz (`tecnicas.json`, `frenesi`): "por 6 Ticks, suas Rajadas saem sem o −1d6 acumulado por golpe; o teto de golpes é o da arma. A Recuperação e a Guarda sob pressão continuam."
+  - O Grid faz: a Rajada acumula o −1d6 por golpe (`resolverGolpe`, `combate-tempo.ts`) sem ler a Técnica nem a janela de 6 Ticks. Ao fazer a passada, ler o estado do Frenesi e zerar o acúmulo nos golpes da Rajada dentro da janela. Não mexido agora por D-054.

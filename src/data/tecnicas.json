@@ -1905,7 +1905,7 @@
       "sede-de-sangue"
     ],
     "aliases": [],
-    "texto": "Ataca repetidamente sem as penalidades de múltiplos ataques por 6 Ticks.",
+    "texto": "Por 6 Ticks, suas Rajadas saem sem o −1d6 acumulado por golpe; o teto de golpes é o da arma. A Recuperação e a Guarda sob pressão continuam.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"

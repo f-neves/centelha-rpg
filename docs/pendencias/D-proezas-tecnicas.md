@@ -169,3 +169,7 @@ Detalhe em `Proezas_revisao.md`.
   casos duvidosos: `docs/calibracao/proezas-t2-aumenta-ou-substitui.md` (critério, método, cada par com os dois textos). Quem decide
   cada uma é a recalibração, não a revisão de textos: o texto das Técnicas não muda antes dela. A D18 (Ambidestria, fechada em 25/11/2026) e o cansaço do
   poder inato (fechado em 25/11/2026: frase para o Mestre em `poderes-das-criaturas.md`, consulta 009, com exemplo, D-087), que a D-358 já pôs na mesma recalibração, seguem nos itens deles.
+
+- [ ] **D21 · [FAZER] A ficha não calcula a Rajada com Técnica: o Frenesi (C20) vale só como texto (25/11/2026).** Decidido pelo coordenador por delegação do autor (consulta 010); texto no livro e em `tecnicas.json`.
+  - O livro diz: Frenesi, "por 6 Ticks, suas Rajadas saem sem o −1d6 acumulado por golpe; o teto de golpes é o da arma".
+  - A ficha faz: a Rajada da ficha (`ficha-pgr.ts`, `ficha-engine.ts`) não lê Técnica nenhuma; quem usa o Frenesi aplica o texto à mão. Se o autor quiser a conta na ficha, é uma passada própria (código; consulta).

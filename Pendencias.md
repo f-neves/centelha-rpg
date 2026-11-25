@@ -42,7 +42,7 @@ está na seção 3.
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 25 | 1 | 10 | 17 | 5 | 4 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 28 | 19 | 0 | 9 | 7 | 11 | 0 | 0 | 0 | 1 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
-| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 20 | 14 | 0 | 6 | 7 | 1 | 0 | 0 | 0 | 6 |
+| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 15 | 0 | 6 | 7 | 2 | 0 | 0 | 0 | 6 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 11 | 7 | 0 | 4 | 5 | 1 | 0 | 1 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 9 | 0 | 1 | 6 | 0 | 3 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 81 | 56 | 0 | 25 | 31 | 4 | 0 | 5 | 16 | 0 |
@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 28 | 28 | 0 | 0 | 0 | 28 | 0 | 0 | 0 | 0 |
-| | **Total** | | **406** | **293** | **4** | **109** | **107** | **77** | **8** | **11** | **82** | **12** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 29 | 29 | 0 | 0 | 0 | 29 | 0 | 0 | 0 | 0 |
+| | **Total** | | **408** | **295** | **4** | **109** | **107** | **79** | **8** | **11** | **82** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -404,6 +404,7 @@ Fechados (0): nenhum.
 | D17 | aberto | DECIDIR | Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema. |
 | D19 | aberto, ADIADO |  | Orçamento de XP da criação (R54). |
 | D20 | aberto | DECIDIR | Recalibração das Proezas (D-358): as Técnicas de nível maior que repetem o bônus de uma de nível menor sem … |
+| D21 | aberto | FAZER | A ficha não calcula a Rajada com Técnica: o Frenesi (C20) vale só como texto (25/11/2026). |
 
 Fechados (6): D1, D2, D4, D7, D12, D18.
 
@@ -701,6 +702,7 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N27 | aberto | FAZER | Os parâmetros que a RT-071 (T13, 25/11/2026) passou de fixos a comprados: o Grid só lê o Dano, a Área e o … |
 | N28 | aberto | FAZER | O campo `projetilVeloz` de `scripts/lib-tempo.mjs` agora lê a tag "projétil rápido" e pode ser renomeado na … |
 | N29 | aberto | FAZER | A Ambidestria (D18, 25/11/2026) alivia a Defesa no Tick do Golpe de −4 para −2 também golpeando com as duas … |
+| N30 | aberto | FAZER | O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica. |
 
 Fechados (0): nenhum.
 
