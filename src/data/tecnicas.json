@@ -1604,7 +1604,7 @@
       "esgueirar"
     ],
     "aliases": [],
-    "texto": "Ataque furtivo contra alvo desavisado: +2d6 de dano (o alvo desavisado já sofre a penalidade de Defesa por surpresa).",
+    "texto": "Ataque furtivo contra alvo desavisado: +2d6 de dano (o alvo desavisado já sofre a penalidade de Defesa por surpresa). Substitui a Técnica Bote da Sombra no dano (os +2d6 não somam com o +1d6).",
     "pendente": false,
     "nivel": 3,
     "efeito": "dano"
