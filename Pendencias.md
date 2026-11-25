@@ -51,8 +51,8 @@ está na seção 3.
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 18 | 15 | 0 | 3 | 6 | 4 | 0 | 2 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
-| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 26 | 26 | 0 | 0 | 0 | 26 | 0 | 0 | 0 | 0 |
-| | **Total** | | **400** | **288** | **4** | **108** | **107** | **74** | **8** | **10** | **81** | **12** |
+| N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 27 | 27 | 0 | 0 | 0 | 27 | 0 | 0 | 0 | 0 |
+| | **Total** | | **401** | **289** | **4** | **108** | **107** | **75** | **8** | **10** | **81** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -696,6 +696,7 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N25 | aberto | FAZER | O dano de Luz fere todos, pela metade contra quem não tem fraqueza a luz (RT-123, decisão T6 do autor, … |
 | N26 | aberto | FAZER | O Projétil Conjurado tem `materia: null` nas sete Artes, e o texto do Efeito diz que em Gelo, Água e Terra a … |
 | N27 | aberto | FAZER | Os parâmetros que a RT-071 (T13, 25/11/2026) passou de fixos a comprados: o Grid só lê o Dano, a Área e o … |
+| N28 | aberto | FAZER | O campo `projetilVeloz` de `scripts/lib-tempo.mjs` agora lê a tag "projétil rápido" e pode ser renomeado na … |
 
 Fechados (0): nenhum.
 

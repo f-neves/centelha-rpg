@@ -120,7 +120,7 @@ function conferir(armas, regras, extras) {
   for (const id of ['arco-longo', 'arco-composto']) if (por[id]?.arma.forcaCap != null) f.push(`${id}: Força máxima definida por padrão (D-075 não dá)`);
   // A Plumbata: projétil rápido, mas Bloqueável (D-076, adendo 5)
   const tp = por.plumbata?.tags || [];
-  if (!tp.includes('projétil veloz') || !tp.includes('bloqueável')) f.push('Plumbata sem as tags de projétil rápido e bloqueável');
+  if (!tp.includes('projétil rápido') || !tp.includes('bloqueável')) f.push('Plumbata sem as tags de projétil rápido e bloqueável');
   // Bumerangues: um só id antigo vira o de retorno em Impacto
   if (por.bumerangue?.nome !== 'Bumerangue de retorno') f.push('o id `bumerangue` não é o Bumerangue de retorno');
   // regras.json combate.pgr.reforma (P/G/R do tiro, D-082): a tabela da decisao, e cada arma na sua classe

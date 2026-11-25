@@ -638,7 +638,7 @@
     "tags": [
       "munição",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -683,7 +683,7 @@
     "tags": [
       "munição",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -727,7 +727,7 @@
     "tags": [
       "munição",
       "distância",
-      "projétil veloz",
+      "projétil rápido",
       "caro"
     ],
     "arma": {
@@ -774,7 +774,7 @@
       "munição",
       "recarga",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -819,7 +819,7 @@
       "munição",
       "recarga",
       "distância",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "distancia",
@@ -864,7 +864,7 @@
       "munição",
       "recarga",
       "distância",
-      "projétil veloz",
+      "projétil rápido",
       "pesada"
     ],
     "arma": {
@@ -910,7 +910,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1032,7 +1032,7 @@
     "tags": [
       "munição",
       "arremessável",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1072,7 +1072,7 @@
     "tags": [
       "munição",
       "arremessável",
-      "projétil veloz",
+      "projétil rápido",
       "bloqueável"
     ],
     "arma": {
@@ -1228,7 +1228,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1266,7 +1266,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
@@ -1304,7 +1304,7 @@
       "ágil",
       "arremessável",
       "munição",
-      "projétil veloz"
+      "projétil rápido"
     ],
     "arma": {
       "classe": "arremesso",
