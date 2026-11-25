@@ -1728,7 +1728,7 @@
       "aparar"
     ],
     "aliases": [],
-    "texto": "Ao aparar com sucesso, contra-ataca imediatamente.",
+    "texto": "Ao aparar com sucesso, contra-ataca imediatamente. Substitui a Técnica Aparar e Responder.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
