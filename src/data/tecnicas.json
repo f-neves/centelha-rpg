@@ -883,7 +883,7 @@
       "pele-curtida"
     ],
     "aliases": [],
-    "texto": "+4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1. Enquanto ativa, substitui as Técnicas Pele Curtida, Tensionar e Couro Endurecido: a Absorção não soma.",
+    "texto": "+4 de Absorção (todos os tipos) e reduz as penalidades de ferimento em 1. Enquanto ativa, substitui as Técnicas Pele Curtida, Tensionar e Couro Endurecido: a Absorção não soma. Soma com a Técnica Aguentar o Tranco: o Tranco zera o Machucado, e esta tira 1 dos estados piores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "soak"
@@ -955,7 +955,7 @@
       "fortaleza-viva"
     ],
     "aliases": [],
-    "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes mortais.",
+    "texto": "Quase indestrutível: reduz drasticamente todo dano e ignora ambientes mortais. Soma com as Técnicas Pele de Pedra, Couro Endurecido e Pele Curtida.",
     "pendente": false,
     "nivel": 6,
     "efeito": "estado"
