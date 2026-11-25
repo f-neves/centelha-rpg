@@ -6853,7 +6853,7 @@
       "calma"
     ],
     "aliases": [],
-    "texto": "+6 para resistir a manipulação, medo e efeitos mentais.",
+    "texto": "+6 para resistir a manipulação, medo e efeitos mentais. Substitui a Técnica Calma no que as duas cobrem (resistir a efeito mental e a provocação); os +6 não somam com o +3.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
