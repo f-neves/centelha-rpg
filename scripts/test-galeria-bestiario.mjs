@@ -66,13 +66,21 @@ try {
     const lista = await p.evaluate(() => {
       const c = document.getElementById('aasimar');
       const im = c?.querySelector('.arte img');
-      return { temGaleria: !!im?.dataset.galeria, src: im?.getAttribute('src') || '', selo: c?.querySelector('.arte-selo')?.textContent, lupa: !!c?.querySelector('.arte-lupa'),
-        abolethGaleria: !!document.querySelector('#aboleth .arte img[data-galeria]'), abolethLupa: !!document.querySelector('#aboleth .arte-lupa') };
+      return { temGaleria: !!im?.dataset.galeria, src: im?.getAttribute('src') || '', srcset: im?.getAttribute('srcset') || '', sizes: im?.getAttribute('sizes') || '', largura: im ? im.getBoundingClientRect().width : 0, atual: im?.currentSrc || '', selo: c?.querySelector('.arte-selo')?.textContent, lupa: !!c?.querySelector('.arte-lupa'),
+        abolethGaleria: !!document.querySelector('#aboleth .arte img[data-galeria]'), abolethLupa: !!document.querySelector('#aboleth .arte-lupa'),
+        abolethSrc: document.querySelector('#aboleth .arte img')?.getAttribute('src') || '', abolethSrcset: document.querySelector('#aboleth .arte img')?.hasAttribute('srcset') || false,
+        alceSrc: document.querySelector('#alce .arte img')?.getAttribute('src') || '', alceSrcset: document.querySelector('#alce .arte img')?.getAttribute('srcset') || '',
+        alceSelo: !!document.querySelector('#alce .arte-selo'), alceLupa: !!document.querySelector('#alce .arte-lupa'), alceGal: !!document.querySelector('#alce .arte img[data-galeria]'), alceTroca: !!document.querySelector('#alce .arte img[data-imagens]') };
     });
-    check(lista.temGaleria && /bestiario\/aasimar_criatura\.webp$/.test(lista.src), 'a lista mostra a imagem principal de sempre (bestiario/aasimar_criatura.webp), com os dados da galeria no card');
+    check(lista.temGaleria && /bestiario-galeria-teste\/aasimar_01\.webp$/.test(lista.src), 'a lista mostra a _01 do índice como principal (bestiario-galeria-teste/aasimar_01.webp), com os dados da galeria no card');
+    check(/aasimar_01_mini\.webp 384w, .*aasimar_01\.webp 1200w$/.test(lista.srcset) && /max-width: 700px/.test(lista.sizes) && /28rem/.test(lista.sizes), 'a imagem da lista traz srcset com a mini (384w) e a grande (1200w) e um sizes de card');
+    console.log(`  · card com ${Math.round(lista.largura)} px de largura (sizes diz 28rem no computador e 100vw - 2rem no celular; a grade faz o card medir de 320 a uns 640 px); o navegador escolheu ${lista.atual.split('/').pop() || '(ainda sem escolha)'}`);
+    check(!/aasimar_criatura/.test(lista.src + lista.srcset), 'a imagem antiga (aasimar_criatura.webp) não aparece mais na lista');
+    check(lista.alceSrc.endsWith('bestiario-galeria-teste/alce_01.webp') && /alce_01_mini\.webp 384w/.test(lista.alceSrcset), 'criatura com UMA imagem no índice (alce): a lista mostra a _01, com srcset');
+    check(!lista.alceSelo && !lista.alceLupa && !lista.alceGal && !lista.alceTroca, 'e sem selo, sem lupa, sem carrossel e sem a troca da D-179 (uma imagem só)');
     check(lista.selo === '3 imagens' && lista.lupa, 'o card tem o selo "3 imagens" e a lupa');
-    check(!lista.abolethGaleria && !lista.abolethLupa, 'criatura fora do índice (aboleth) fica como era: sem carrossel nem lupa');
-    check(!pedidos.some((f) => /^aasimar_|^ninfa_/.test(f)), 'ao carregar a lista, nenhuma imagem do carrossel é pedida');
+    check(!lista.abolethGaleria && !lista.abolethLupa && /bestiario\/aboleth_criatura\.webp$/.test(lista.abolethSrc) && !lista.abolethSrcset, 'criatura fora do índice (aboleth) fica como era: a imagem antiga, sem srcset, sem carrossel nem lupa');
+    check(!pedidos.some((f) => /^(aasimar|ninfa)_(0[2-9]|1\d)/.test(f)), 'ao carregar a lista, só a principal (_01) de cada criatura é pedida, nenhuma das outras do carrossel');
 
     // abrir o carrossel pelo clique na arte
     await p.evaluate(() => document.getElementById('aasimar').scrollIntoView({ block: 'center' }));
@@ -137,8 +145,9 @@ try {
     // tela cheia pelo clique na imagem grande (o #lightbox que já existia), e o Esc
     await esperar(500); // passada a janela em que o clique logo após um arrasto é ignorado
     await p.click('#gal-img'); await esperar(200);
-    const tc = await p.evaluate(() => ({ lb: !document.getElementById('lightbox').hidden, src: document.getElementById('lb-img').getAttribute('src') }));
+    const tc = await p.evaluate(() => ({ lb: !document.getElementById('lightbox').hidden, src: document.getElementById('lb-img').getAttribute('src'), cap: document.getElementById('lb-cap').textContent }));
     check(tc.lb && /aasimar_02\.webp$/.test(tc.src), 'clicar na imagem grande abre a tela cheia (#lightbox) com a imagem atual');
+    check(tc.cap === 'Aasimar, homem', 'a tela cheia usa a legenda do índice, a mesma do carrossel (' + tc.cap + ')');
     await p.keyboard.press('Escape'); await esperar(150);
     const aposEsc = await p.evaluate(() => ({ lb: !document.getElementById('lightbox').hidden, gal: !document.getElementById('galeria').hidden, ov: document.body.style.overflow }));
     check(!aposEsc.lb && aposEsc.gal && aposEsc.ov === 'hidden', 'o primeiro Esc fecha só a tela cheia: o carrossel continua aberto e a página, travada');

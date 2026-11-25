@@ -30,6 +30,13 @@ const INDICE = lerIndice(lerArquivoIndice());
 export const PASTA_GALERIA = path.join(process.cwd(), 'public', NOME_PASTA_GALERIA);
 const existe = (arquivo: string) => fs.existsSync(path.join(PASTA_GALERIA, arquivo));
 
+/** A imagem principal da criatura no índice (a `_01`, a de menor `n`), ou `null` se ela não tem nenhuma. A LISTA do bestiário a
+ *  mostra no lugar da imagem antiga (resposta 067 do coordenador); o campo `imagens` do dado não muda (mesa e Grid, D-054). */
+export function principalDe(id: string): { arquivo: string; mini: string; legenda: string } | null {
+  const p = imagensDe(INDICE, id, { existe }).todas[0];
+  return p ? { arquivo: p.arquivo, mini: p.mini, legenda: p.legenda } : null;
+}
+
 /** As imagens do carrossel da criatura, ou `null` quando ela não tem duas (carrossel só com 2 ou mais). */
 export function galeriaDe(id: string): ImagensDaCriatura | null {
   const g = imagensDe(INDICE, id, { existe });

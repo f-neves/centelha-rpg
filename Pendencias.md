@@ -40,7 +40,7 @@ está na seção 3.
 | Letra | Tema | Arquivo | Itens | Abertos | Parciais | Fechados | DECIDIR | FAZER | AUTOR | CONSERTAR | Outra marca | Adiados |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 25 | 1 | 10 | 17 | 5 | 4 | 0 | 0 | 0 |
-| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 29 | 20 | 0 | 9 | 7 | 12 | 0 | 0 | 0 | 1 |
+| B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 30 | 21 | 0 | 9 | 7 | 13 | 0 | 0 | 0 | 1 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 4 | 0 | 0 | 2 | 1 | 0 | 0 | 0 | 1 |
 | D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 20 | 15 | 0 | 5 | 8 | 1 | 0 | 0 | 0 | 6 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 11 | 7 | 0 | 4 | 5 | 1 | 0 | 1 | 0 | 0 |
@@ -52,7 +52,7 @@ está na seção 3.
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 27 | 27 | 0 | 0 | 0 | 27 | 0 | 0 | 0 | 0 |
-| | **Total** | | **406** | **294** | **4** | **108** | **108** | **77** | **8** | **11** | **82** | **12** |
+| | **Total** | | **407** | **295** | **4** | **108** | **108** | **78** | **8** | **11** | **82** | **12** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -373,6 +373,7 @@ Fechados (10): A12, A17, A18, A22, A23, A27, A21, A22, A20, A35.
 | B25 | aberto | FAZER | Quem empunha arma de outro tamanho: a regra por peso e Força (G4, D-366). |
 | B26 | aberto | FAZER | Armas improvisadas: uma seção no livro que ensine o Mestre a calcular o dano de objetos que não são armas … |
 | B28 | aberto | FAZER | Carrossel de imagens do bestiário: o código está pronto; as imagens reais ainda não entraram no repositório … |
+| B29 | aberto | FAZER | A Mesa e o Grid seguem com a imagem antiga do bestiário (resposta 067, 25/11/2026). |
 
 Fechados (9): B12, B1, B1b, B10, B13, B15, B19, B23, B27.
 

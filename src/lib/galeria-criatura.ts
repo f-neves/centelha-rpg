@@ -21,7 +21,7 @@ export interface DadosGaleria { base: string; total: number; itens: ItemCard[]; 
 
 export interface DepsGaleria {
   /** Abre a imagem em tela cheia (o #lightbox da página). */
-  telaCheia: (src: string, nome: string) => void;
+  telaCheia: (src: string, nome: string, legenda?: string) => void;
   /** Diz se a tela cheia está aberta (então o teclado é dela, e não da galeria). */
   telaCheiaAberta: () => boolean;
 }
@@ -110,7 +110,7 @@ export function criarGaleria(deps: DepsGaleria) {
       m.loading = 'lazy';
       m.decoding = 'async';
       b.appendChild(m);
-      b.addEventListener('click', () => deps.telaCheia(src(k), nome));
+      b.addEventListener('click', () => deps.telaCheia(src(k), nome, dados!.itens[k][2] || undefined));
       grade.appendChild(b);
     });
   }
@@ -180,7 +180,7 @@ export function criarGaleria(deps: DepsGaleria) {
   }, { passive: true });
 
   // Clique na imagem grande: tela cheia.
-  img.addEventListener('click', () => { if (Date.now() - arrastouEm < 400) return; if (dados) deps.telaCheia(src(idx), nome); });
+  img.addEventListener('click', () => { if (Date.now() - arrastouEm < 400) return; if (dados) deps.telaCheia(src(idx), nome, dados.itens[idx][2] || undefined); });
 
   return { abrir, aberta: () => aberta, fechar };
 }

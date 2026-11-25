@@ -121,6 +121,7 @@ console.log(linha('minis  ', saldo.minis));
 console.log(`  órfãos a apagar: ${saldo.orfaos.length}${saldo.orfaos.length ? ' (' + saldo.orfaos.slice(0, 5).join(', ') + (saldo.orfaos.length > 5 ? ', ...' : '') + ')' : ''}`);
 console.log(`  índice: ${indiceMudou ? 'muda' : 'igual'}`);
 const aGravar = saldo.grandes.novas + saldo.grandes.trocadas + saldo.minis.novas + saldo.minis.trocadas;
+if (saldo.grandes.reduzidas) console.log(`  AVISO: ${saldo.grandes.reduzidas} imagem(ns) grande(s) vai/vão ser REEXPORTADA(S) pelo sync (rede de segurança; cada reexportação perde um pouco de qualidade). O normal é a Curadora exportar já em ${LARGURA}x${ALTURA} q${QUALIDADE}: aí o sync só copia, byte a byte.`);
 if (aGravar) console.log(`  AVISO: ${aGravar} arquivo(s) novos ou trocados entram no histórico do git para sempre.`);
 
 if (!GRAVAR) { console.log('\nDRY-RUN: nada foi escrito. Rode com --gravar para gravar.'); process.exit(0); }

@@ -119,5 +119,16 @@
    "estilo": "padrao",
    "original": "teste_ninfa_10.png"
   }
+ ],
+ "alce": [
+  {
+   "n": 1,
+   "arquivo": "alce_01.webp",
+   "mini": "alce_01_mini.webp",
+   "sexo": null,
+   "legenda": "Alce, imagem única de teste",
+   "estilo": "padrao",
+   "original": "teste_alce_1.png"
+  }
  ]
 }

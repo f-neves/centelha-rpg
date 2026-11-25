@@ -754,7 +754,7 @@ const opcoesEditor = {
   const lb = document.getElementById('lightbox') as HTMLElement;
   const lbImg = document.getElementById('lb-img') as HTMLImageElement;
   const lbCap = document.getElementById('lb-cap') as HTMLElement;
-  function abrir(src: string, nome: string) { lbImg.src = src; lbImg.alt = `Ilustração de ${nome}`; lbCap.textContent = nome; lb.hidden = false; document.body.style.overflow = 'hidden'; }
+  function abrir(src: string, nome: string, legenda?: string) { lbImg.src = src; lbImg.alt = `Ilustração de ${nome}`; lbCap.textContent = legenda || nome; lb.hidden = false; document.body.style.overflow = 'hidden'; }
   function fechar() { lb.hidden = true; lbImg.src = ''; document.body.style.overflow = galeria.aberta() ? 'hidden' : ''; }
   // Delegado na lista, e não um addEventListener por imagem: as fichas além das
   // 40 iniciais nascem dentro de <template> e só entram no DOM aos poucos
@@ -973,7 +973,7 @@ const opcoesEditor = {
     if (!img) return;
     // Criatura com duas ou mais imagens no índice: abre o carrossel (a troca por clique é só das que não estão no índice).
     if (img.dataset.galeria) { galeria.abrir(img.dataset.galeria, img.dataset.nome || '', alvo); return; }
-    if (alvo.classList.contains('arte-lupa') || !img.dataset.imagens) { abrir(img.dataset.full!, img.dataset.nome || ''); return; }
+    if (alvo.classList.contains('arte-lupa') || !img.dataset.imagens) { abrir(img.dataset.full!, img.dataset.nome || '', img.dataset.legenda || undefined); return; }
     const card = img.closest<HTMLElement>('.besta')!;
     alternarImagem({ id: card.id, imagens: JSON.parse(img.dataset.imagens!) });
     mostrarEscolha(img);
