@@ -7948,7 +7948,7 @@
       "sentidos-apurados"
     ],
     "aliases": [],
-    "texto": "+4 em Percepção: capta o quase-imperceptível, um som fraco, um cheiro, um detalhe fora do lugar.",
+    "texto": "+4 em Percepção: capta o quase-imperceptível, um som fraco, um cheiro, um detalhe fora do lugar. Substitui a Técnica Sentidos Apurados: os +4 não somam com o +3; o nunca ser pego totalmente de surpresa da Sentidos Apurados continua.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
