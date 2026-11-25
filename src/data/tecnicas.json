@@ -5145,7 +5145,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "Ninguém lê suas intenções; imune a leitura corporal mundana.",
+    "texto": "Ninguém lê suas intenções; imune a leitura corporal mundana. Soma com a Técnica Face Neutra.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -7686,7 +7686,7 @@
       "face-neutra"
     ],
     "aliases": [],
-    "texto": "Nada do que sente vaza: leituras da sua emoção ou intenção falham por padrão contra você.",
+    "texto": "Nada do que sente vaza: leituras da sua emoção ou intenção falham por padrão contra você. Soma com a Técnica Face Neutra.",
     "pendente": false,
     "nivel": 2,
     "efeito": "estado"
