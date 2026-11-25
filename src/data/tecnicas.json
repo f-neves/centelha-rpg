@@ -1887,7 +1887,7 @@
       "brado-de-guerra"
     ],
     "aliases": [],
-    "texto": "Avança e ataca com +2d6 de dano por empurrão.",
+    "texto": "Avança e ataca com +2d6 de dano por empurrão. Substitui a Técnica Fúria no dano da investida (os +2d6 não somam com o +1d6).",
     "pendente": false,
     "nivel": 3,
     "efeito": "dano"
