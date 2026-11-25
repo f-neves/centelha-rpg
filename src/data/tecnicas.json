@@ -7914,7 +7914,7 @@
       "rastreador"
     ],
     "aliases": [],
-    "texto": "+4 para rastrear e seguir; lê num relance a idade de um rastro e a pressa de quem o deixou.",
+    "texto": "+4 para rastrear e seguir; lê num relance a idade de um rastro e a pressa de quem o deixou. Substitui a Técnica Rastreador: os +4 não somam com o +3.",
     "pendente": false,
     "nivel": 2,
     "efeito": "bonus"
