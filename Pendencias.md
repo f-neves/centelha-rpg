@@ -7,10 +7,11 @@ detalhe: cada item aponta para o arquivo onde mora, por nome e sigla.
 **Como está montado.** Duas camadas, e só uma é escrita à mão:
 
 - **A direção (seções 1 a 6), escrita à mão.** Frentes, o que está pronto, o que está com o
-  humano, os bloqueios, a revisão e a ordem proposta em três trilhas. Revista em **23/09/2026**
-  (rodadas 94 a 96).
+  autor, os bloqueios, a varredura e a ordem de trabalho. Reescrita em **26/11/2026**, na Fase 2 da
+  varredura de pendências (relatório do coordenador 097 a 101); antes, revista em 23/09/2026.
 - **A contagem (seção 0) e a lista dos itens (seção 7), geradas.** Saem de
-  `scripts/gen-pendencias.mjs`, a partir de `docs/pendencias/A` a `L`, e o `npm run validate` fica
+  `scripts/gen-pendencias.mjs`, a partir de `docs/pendencias/A` a `L` e `N` (o `M` é levantamento, sem
+  itens com caixa, e fica fora da contagem), e o `npm run validate` fica
   vermelho se divergirem dos arquivos de tema, ou se um tema tiver linha com cara de caixa que o
   gerador não lê. **Não edite entre os marcadores:** mude a caixa ou a marca no tema e rode
   `node scripts/gen-pendencias.mjs`.
@@ -19,7 +20,14 @@ detalhe: cada item aponta para o arquivo onde mora, por nome e sigla.
 lugar nem de número. **[DECIDIR]** = precisa da palavra do humano. **[FAZER]** = já decidido, é
 execução. **[AUTOR]** = frente de escrita do humano. **[CONSERTAR]** = defeito conhecido, com o
 conserto claro. **[ADIADO]**, junto da outra marca (em qualquer ordem), tira o item da fila de trabalho, com o
-motivo escrito no tema; ele continua contado como aberto.
+motivo escrito no tema (desde a varredura de 26/11/2026, `[ADIADO: motivo, com a frase do autor ou a
+D-/T- citada]`); ele continua contado como aberto. As marcas que a varredura acrescentou entram na
+coluna "Outra marca" quando vêm sozinhas, e o tipo (DECIDIR, FAZER, AUTOR) vale pelo primeiro
+colchete: **[AUTOR-REGRA]** e **[AUTOR-ESCRITA]** = só o autor decide (regra ou escrita), e contam como
+AUTOR; **[MESTRE: frase proposta]** = caso de borda que o bom senso do Mestre resolve (D-087), a
+frase espera a conferência do coordenador; **[ESPERA: o que espera, quem move]** = depende de outro
+item ou frente; **[LIVRO-NO-GRID]** = regra do livro que hoje só aparece no Grid ou na mesa;
+**[GRID-CÓDIGO]** = só código do Grid ou da mesa; **[INCERTO: o que falta]** = a prova não bastou.
 
 **Quando o humano pedir "traga as pendências"**, a resposta é mostrar a contagem (seção 0), as
 frentes (seção 1) e as trilhas (seção 6) para ele escolher, e não abrir todos os arquivos nem
@@ -71,16 +79,31 @@ está na seção 3.
 
 ## 1 · As frentes, uma linha de estado cada
 
-| Frente | Estado em 23/09/2026 | Quem decide o próximo passo | Onde mora |
+**Estado em 26/11/2026**, depois da Fase 2 da varredura. Três coisas valem para tudo o que segue:
+
+- **O Grid é a última frente.** O autor, em 26/11 às 11:29: "Grid vai ser a última coisa, só quando
+  terminarmos e fecharmos todas as outras por completo." Tudo o que mexe no que o Grid faz ou mostra
+  fica como pendência, sem análise além do registro (T21); os itens são etiquetados `[GRID-CÓDIGO]`
+  ou `[LIVRO-NO-GRID]` e esperam o Grid refeito.
+- **As decisões do autor estão no `autor.md` da varredura de 26/11/2026**, um arquivo de trabalho
+  fora do repositório: cada pergunta com o texto como está hoje, três soluções e a recomendada. Este
+  arquivo não repete a lista.
+- **A ordem de trabalho** é o lote do bestiário (o refator do bando, o campo `desafio`, as 324
+  fichas, as fichas da T4 e D-377 e os desvios de Velocidade das D-334 e D-335), e depois as decisões
+  dele, uma por vez (seção 6).
+
+| Frente | Estado em 26/11/2026 | Quem decide o próximo passo | Onde mora |
 |---|---|---|---|
-| **Frenesi e teste de Virtude** | Regras decididas e no livro: o livro na rodada 90, com ajustes na 91 e na 92, e o "ficar parado" do Grid na 91 e na 92 (as três com PROCEDE). O teste de Frenesi não existe no motor. As três perguntas da Revisora foram decididas em 23/09 (§17) e **não estão implementadas**. | Execução | `FRENESI.md`; `leitura-de-novato-decisoes.md` §16 e §17 |
-| **Jogador novo** | 47 perguntas `M`: 32 feitas, 7 decididas e esperando mão de obra, 6 abertas ou adiadas, 2 decididas sem nada a fazer. 104 consertos `C`: 90 fechados, 4 abertos, 3 parciais, 3 marcados como feitos que não estão, 2 recusados pela Executora e 2 fechados sem ação. Contagem remedida em 23/09 (a de 18 e 78 é de 16/09). | Execução, para as 7 decididas; humano, para as abertas | `jogador-novo-decisoes.md`, `jogador-novo-consertos.md`, `jogador-novo-consertos-2.md`, `jogador-novo-bestiario.md`, todos em `docs/simulacao/caixa/` |
-| **Relações Sociais** | Rodadas 85 a 89 fechadas com PROCEDE. O item 9 (`acoes.longevidadeFirula` no `regras.json`) está **feito** (`6509801`, veredito `a6e7e41`). | Humano: a fronteira entre o dia a dia e o Combate Social, e os E4 a E8 | `ritmo-da-regua.md`; tema E |
-| **O Grid** | Simulação encerrada (06/09). Fases 2 e 2.5 fechadas. Fase 3 congelada até a mesa reavaliar o plano. Fase 4 bloqueada por uma batalha de verdade. | Humano (fila do `PLANO.md` §8, itens 3 e 4) | `PLANO.md` §8 e §9; `ESTADO.md`; tema L |
-| **Voz** | Barra de comando, desfazer e captura de áudio fechados (rodadas 30 a 33). Parada de propósito até o humano usar a barra numa batalha. | Humano (a batalha); depois execução | `VOZ.md` §8; L62, L71, L74 |
-| **Mapa de Uldun** | Frente do Cartógrafo, em `lore/mapas/`. Empreitada autônoma na noite de 23/09, com o que é decisão marcado como recomendação dele, esperando o usuário testar. | Humano, pelo que o `RELATORIO-FINAL.md` lista | `lore/mapas/CARTOGRAFO.md`, `lore/mapas/RELATORIO-FINAL.md` |
-| **Economia** | Um catálogo unificado de preços e um pedido de revisão para outra IA, em `lore/economia/`, **não versionados**. O modelo de economia foi decidido em 26/11/2026 (D-386, Forma 1: o pacote da Veterana só em Ganhar a vida, Serviços congelado); o TETO em Livre e a Forma 2 seguem em aberto (G80). | Humano | `lore/economia/catalogo-unificado.md`, `lore/economia/prompt-revisao-economica.md` |
-| **Os temas A a L** | 249 itens; a contagem está na seção 0 e a lista na seção 7. | Por item (a marca diz) | `docs/pendencias/` |
+| **Bestiário e a bancada de criaturas** | A fonte única das fichas é `src/data/bestiario` (B3). A bancada (B14) tem o laço corrigido (multiataque e dupla só pela ficha, regeneração ligada) e o piloto das oito criaturas rodado, com o desafio de 7 a 12 pela C-044. Faltam o refator do bando, o campo `desafio` (0 a 12, meio degrau) e as fichas da T4. | Execução; o autor, para o campo `desafio` | tema B (B14, B32 a B35); `docs/bestiario/` |
+| **Frenesi e teste de Virtude** | Decidido e no livro. A §17 está feita (`vida-ferimentos-cura.md:52`, `aparencia-virtudes-vontade.md:49` e `:123`, `FRENESI.md:116-117`). O teste de Frenesi não existe no motor, e nenhuma tela o rola. | Nada a executar | `FRENESI.md`; `leitura-de-novato-decisoes.md` §16 e §17 |
+| **Jogador novo** | 47 perguntas `M` e 104 consertos `C`, recontados em 26/11/2026: 5 M abertas e 3 C abertos (2 por confirmar). M-05, M-07, M-15, M-24, M-27, M-33, M-41 e M-42 estão feitas ou superadas; ficam M-01 e o L102 (M-18) a executar, M-22 adiada, M-43 e M-46 do autor. | Execução, para M-01 e L102; o autor, para as abertas | `jogador-novo-decisoes.md`, `jogador-novo-consertos.md`, `jogador-novo-consertos-2.md`, `jogador-novo-bestiario.md`, em `docs/simulacao/caixa/` |
+| **Relações Sociais** | Rodadas 85 a 89 fechadas, e o item 9 (`acoes.longevidadeFirula`) feito (`6509801`). A fronteira entre o dia a dia e o Combate Social está escrita (`relacoes-sociais.md:11` e `:141`). Ficam os itens E3 a E8 do tema E. | O autor (E3); execução (E4, E7) | tema E; `ritmo-da-regua.md` |
+| **O Grid** | Simulação encerrada (06/09). Fases 2 e 2.5 fechadas; fase 3 congelada; fase 4 bloqueada por uma batalha de verdade. É a última frente, e o que o toca está parado (T21; N33 e N34 no tema N). | O autor, no fim | `PLANO.md` §8 e §9; `ESTADO.md`; temas K, L e N |
+| **Voz** | Barra de comando, desfazer e captura de áudio fechados (rodadas 30 a 33). O L71 está decidido (D-389: o prazo fica, a troca do Worker não se faz); o L62 e o L74 estão `[ADIADO]` até o autor usar a barra numa batalha. | O autor (a batalha); depois execução | `VOZ.md` §8; L62, L71, L74 |
+| **Mapa de Uldun** | Frente do Cartógrafo, em `lore/mapas/`, parada desde 24/09: dez decisões do Cartógrafo esperam o autor olhar o render e dizer. | O autor | `lore/mapas/CARTOGRAFO.md`, `lore/mapas/DECISOES-A-REVISAR.md` |
+| **Economia** | O modelo foi decidido e aplicado em 26/11/2026 (D-386, Forma 1: o pacote da Veterana só em Ganhar a vida, Serviços congelado numa tabela publicada fixa). O TETO em Livre, a Forma 2 e a tabela `custo_qualidade` do lore seguem abertos (G80). Dos arquivos de `lore/economia`, só `catalogo-unificado.md` e `prompt-revisao-economica.md` ficam fora do git. | O autor | `lore/economia/v2/`; tema G (G71 a G80) |
+| **Antecedentes** | Não custam XP, nenhum dos 14 (D-385, T24). Restam os documentos de trabalho que ainda dizem o custo antigo (E12). | Nada a decidir | tema E (E12) |
+| **Os temas A a L e N** | A contagem está na seção 0 e a lista na seção 7. O tema M (`docs/pendencias/M-virtude-somada.md`) é um levantamento sem itens com caixa e não entra na tabela: a varredura só acrescentou a ele uma seção com as 13 linhas conferidas. | Por item (a marca diz) | `docs/pendencias/` |
 
 ---
 
@@ -88,73 +111,67 @@ está na seção 3.
 
 ### O que a §16 e a §17 deixaram
 
-- **§16 (Frenesi e teste de Virtude): nada a executar.** O livro entrou na rodada 90, com ajustes
-  na 91 e na 92, e o "ficar parado" do Grid passou à Virtude sozinha na 91 (a comparação foi para o
-  motor na 92). A 93 foi outra coisa, o `reapontar.mjs`. O motor não tem caminho que role o teste
-  de Frenesi (conferido na rodada 90), então a exceção do piso de 1d6 não tem onde entrar.
-- **§17, três mudanças, todas de texto e dado:**
-  1. **A Força entra na definição de ação física:** "as que rolam Força, Destreza ou Vigor", em
-     `vida-ferimentos-cura.md` e `racas.md`, no `FRENESI.md` §5 e na própria §16. Muda para todo
-     mundo: a penalidade de ferimento passa a valer no golpe das armas que rolam Força.
-  2. **A tortura se divide em corpo e alma:** a dor do ferro é Vigor + Convicção; aguentar sem
-     falar é a Convicção sozinha. Na tabela das Virtudes e no item Resistir de
-     `aparencia-virtudes-vontade.md`. É a palavra "tortura" que a rodada 91 segurou.
-  3. **A Firula negativa vale só no teste de Virtude e no Frenesi, e não devolve nada.**
+**Nada a executar.** A §16 e a §17 estão no livro: a Força entra na definição de ação física ("as que
+rolam Força, Destreza ou Vigor", `vida-ferimentos-cura.md:52` e `racas.md:173`); a tortura se divide
+em corpo e alma (`aparencia-virtudes-vontade.md:45`, `:49` e `:79`); a Firula negativa vale só no
+teste de Virtude e no Frenesi e não devolve reserva (`aparencia-virtudes-vontade.md:123`). O motor não
+tem caminho que role o teste de Frenesi, então a exceção do piso de 1d6 não tem onde entrar.
 
-### As decisões M que esperam mão de obra
+### As decisões M
 
-Remedidas em 23/09. **Duas das seis que o `CONTEXTO.md` lista já estão feitas**, fora das rodadas
-numeradas: a **M-05** (`7db14f1`, 17/09) e a **M-42** (`2520b5d`, 18/09, veredito `21304e2`).
+Das seis que esperavam mão de obra, **M-05** (`7db14f1`), **M-07**, **M-24**, **M-33** e **M-42**
+estão feitas ou superadas por decisões do autor, e a **M-06 / M-19** fechou com a §17. O que falta
+fazer:
 
-| Decisão | O que falta | Onde a decisão mora |
+| Decisão | O que falta | Onde mora |
 |---|---|---|
-| **M-01** · a ficha avisa os limites da criação, sem travar | nada no código lê os limites de criação | `jogador-novo-decisoes.md`, seção M-01 |
-| **M-07** · os três números dos verbetes | a Esquiva encurralada e a segunda Firula continuam sem número; a armadura na Furtividade tira ponto, e a decisão diz dado | seção M-07 |
-| **M-24** · a Investida é Corrida que termina em ataque | o `regras.json` (`combate.movimento.investida`), o capítulo de Combate e o Grid seguem no modelo velho | seção M-24 |
-| **M-33** · Imobilizado são quatro prisões | `armas.json` ainda cita "Acrobacias"; o capítulo de armas ainda diz "vs o lançamento"; a condição não tem tipo; o `regras.json` não tem as quatro saídas | seção M-33 |
-| **M-18** · Canalizar Virtude com carga binária | decidida em 16/09, texto antigo no livro; o registro de autoria é o **L102** | seção M-18 |
-| **M-06 / M-19** · Virtude e Vontade não se somam | parcial: o que falta é a §17 acima | seções M-06 e M-19 |
+| **M-01** · a ficha avisa os limites da criação, sem travar | `limitesCriacao` existe em `regras.json` e nada em `src` o lê | `jogador-novo-decisoes.md`, seção M-01 |
+| **M-18** · Canalizar Virtude com carga binária | decidida em 16/09, com texto antigo no livro; o registro de autoria é o **L102** | tema L (L102) |
+
+M-43 e o custo da M-46 são do autor (AUTOR-REGRA), e a M-22 está adiada.
 
 ### Os consertos C que continuam abertos
 
-- **Abertos:** nenhum. C-22, C-23, C-39, C-61, C-102, C-103 e C-104 fechados na rodada 99
-  (`bed1e91`). Os três que estavam marcados como feitos sem estar (C-22, C-39, C-61) nunca tinham
-  sido consertados: `git log -S` mostra cada frase só no commit que a criou.
-- **Parciais:** C-12 (falta decisão: as cinco linhas do Bram ficaram por escolha registrada na
-  M-02), C-47 (falta execução: os três números da M-07), C-85 (falta execução: o link do ☆ em
-  `/artes/catalogo` e em `/caminhos/<proeza>`).
-- **Recusados pela Executora, sem decisão de mesa:** C-72, C-87.
+- **Abertos ou parciais:** **C-12** (falta decisão do autor: as cinco linhas do Bram ficaram por
+  escolha registrada na M-02), **C-47** (falta execução) e **C-85** (falta execução: o link do ☆ em
+  `/artes/catalogo` e em `/caminhos/<proeza>`). Os fechados na rodada 99 (`bed1e91`) foram C-22, C-23,
+  C-39, C-61 e C-102 a C-104, e a frase "nenhum aberto" vale só para essa lista.
+- **Recusados pela Executora, sem decisão de mesa:** **C-72**, decidido como editorial na D-390 (a
+  regra "o como define o Atributo" fica escrita uma vez, com link, em `habilidades.md:24`), e
+  **C-87**, que segue `[INCERTO]`.
 
 ### Nos temas
 
-Os itens marcados **[FAZER]** e **[CONSERTAR]** da seção 7 são execução. Os que já têm prova de
-feito estão na seção 5, e não entram aqui.
+Os itens marcados **[FAZER]** e **[CONSERTAR]** da seção 7 são execução, e a coluna FAZER da seção 0
+os soma. Os que já têm prova de feito estão fechados no tema, com a data e a prova na linha de
+fechamento.
 
 ---
 
-## 3 · Com o humano
+## 3 · Com o autor
 
-- **Da `PASSAGEM.md` §7:** a conversa do modo site (por que a mesa rola o dado na mão, L26, e quem
-  digita o total, L29 item 1); testar a barra de comando na mesa; jogar uma batalha de verdade.
-  **A migração 33 que a §7 ainda lista como esperando ele já rodou** (13 a 14/09, `CONTEXTO.md`,
-  seção "As migrações").
-- **Do `PLANO.md` §8:** o item 3 (gravar o par régua contra botão do veredito numa mesa de verdade)
-  e o item 4 (a decisão "fase 2.5 ou fase 4", que o próprio plano diz para não abrir sem ele pedir).
-- **Relações Sociais:** onde termina o dia a dia e começa o Combate Social; e os **E4 a E8**
-  (tema E), dos quais o E4 é regra de jogo que ninguém decidiu.
-- **Jogador novo, as abertas:** M-15 (o que a Energia Espiritual faz, com direção provável),
-  M-22 (adiada), M-27 (suspensa com o módulo de Fôlego), M-41 (adiada até a revisão das Proezas),
-  M-43 e o custo da M-46 (esperam a fila fechar).
-- **O dossiê publicado** (`https://claude.ai/artifact/2H8aDMgNmU7A6hP5wo26s4`), lido em 23/09/2026
-  às 20:22: **nenhuma marca gravada** (o estado da página é vazio). As 19 perguntas dele foram
-  quase todas decididas depois por outro caminho; ele não é mais a fila.
-- **Toda pergunta de regra aberta nos temas:** os itens da seção 7 com **DECIDIR** na coluna
-  Marcação (no tema L a marca é livre, e as perguntas de regra aparecem como "DECISÃO DE MESA",
-  "PEDIDO" e "PERGUNTADO"), mais o item sem sigla do tema J (a linha de fechamento do `test-grid`).
-  A lista não é repetida aqui de propósito: seria uma segunda lista para divergir da gerada; a
-  soma está na coluna DECIDIR da seção 0. As cinco que mais destravam estão no topo da trilha de
-  decisão (seção 6). Uma nota: **o K4 dizia que não podia ser decidido antes do K13, e o K13 está
-  consertado desde 19/08**.
+**Fica com ele** tudo o que está no `autor.md` da varredura de 26/11/2026, que é a fila de decisões
+dele (os itens `[AUTOR-REGRA]` e `[AUTOR-ESCRITA]` dos temas e as confirmações "fica como está?").
+Do que a versão de 23/09/2026 deste arquivo listava aqui, o que já se resolveu:
+
+- **A conversa do modo site (L26)** está respondida em 12/09/2026 (D-388): o dado é rolado na mão
+  pelos jogadores e pelo mestre, e o que chega ao Grid é o total. Resta a pergunta "quem digita o
+  total", que vai com a experiência do jogador (L29).
+- **A migração 33** rodou em 13 a 14/09, e a `PASSAGEM.md` §7 ainda diz que espera (documento a
+  reescrever, seção 5).
+- **Relações Sociais:** a fronteira entre o dia a dia e o Combate Social está escrita (`relacoes-sociais.md:11`
+  e `:141`; A-001, 20/09). O E4 não é mais "regra que ninguém decidiu": a D-378 e `relacoes-sociais.md:115`
+  e `:315` decidem a descida; os itens E3 a E8 estão etiquetados no tema E.
+- **Jogador novo:** M-15 (a Energia Espiritual fica como está, D-049), M-27 e M-41 estão fechadas; M-22
+  segue adiada; M-43 e o custo da M-46 são do autor.
+- **O dossiê publicado** (o artefato do claude.ai) não tem nenhuma marca gravada, e as 19 perguntas
+  dele têm resposta em `jogador-novo-decisoes.md:2999-3283`: ele deixou de ser a fila.
+- **O K4** está fechado (D-082).
+
+**Ainda é dele e espera o Grid:** jogar uma batalha de verdade (pré-requisito da fase 4, da voz e do
+N22), testar a barra de comando (L62 e L74, adiados) e os itens 3 e 4 do `PLANO.md` §8 (o par régua
+contra botão numa mesa de verdade, e a escolha "fase 4 ou não", já que a fase 2.5 fechou). Como o
+Grid é a última frente, esses itens estão como `[ESPERA]` e `[GRID-CÓDIGO]` nos temas.
 
 ---
 
@@ -162,146 +179,86 @@ feito estão na seção 5, e não entram aqui.
 
 | O que | Estado | O que destrava |
 |---|---|---|
-| **Migrações (L42)** | Todas as escritas estão aplicadas, de 1 a 40, a 40 rodada em 28/09/2026 (via Management API com token do autor, `pg_get_functiondef` e a linha em `public.migracoes` conferidas depois de rodar). A 34 não existe como arquivo. A `migracoes_fronteira` devolve nulo desde a 33, e o instrumento está certo. | Decidir o que fazer com a linha da 35 (registrado no L86b); a 40 deixou em aberto a escolha entre coluna `centelha` em `combatentes` ou parâmetro extra em `jogador_dano` (ver cabeçalho de `supabase/migracao-40.sql`, opções a/b) |
-| **A barra de comando sem teste (L62)** | Sem teste automatizado commitado; `mover` contra casa ocupada falha em silêncio (herdado de `porNoMapa`). | Um teste; o primeiro achado continua aberto por decisão do humano |
-| **O modelo de voz que trava (L71)** | Um modelo presente mas corrompido trava para sempre, sem prazo. Escalado pela Revisora; decisão tomada, e o teste do prazo existe desde a rodada 39. | Conferir se o L71 fecha (seção 5) |
-| **O gatilho `armadilha` (L86b)** | Família de quatro Efeitos (`brasa-retardada`, `semente-adormecida`, `salvaguarda`, `cura-guardada`) que disparam por condições diferentes, nenhuma decidida. O chão da `cura-guardada` existe (migração 39) sem consumidor. | Desenho de regra, do humano |
-| **A batalha de verdade** | Pré-requisito da fase 4 e da voz, e o que confirma tudo o que nunca passou por mesa. | O humano sentar e jogar, com a barra aberta |
+| **Migrações (L42)** | Todas as escritas estão aplicadas, **de 1 a 42**: a 40 rodou em 28/09/2026, a 41 em 29/10 e a 42 em 30/10 (carimbo `c5b845f7aa03a935`, 42 de 42 batem). A 34 não existe como arquivo. | Nada; fica a escolha da migração 40 (coluna `centelha` em `combatentes` ou parâmetro extra em `jogador_dano`, `supabase/migracao-40.sql`, opções a e b), que é do Grid |
+| **A barra de comando sem teste (L62)** | Sem teste automatizado commitado; `mover` contra casa ocupada falha em silêncio (herdado de `porNoMapa`). `[ADIADO]` pelo autor | Um teste, depois de ele usar a barra numa batalha |
+| **O modelo de voz que trava (L71)** | Decidido em 11/09/2026 (D-389): o prazo fica (`comando-voz.ts`, `prazoMs ?? 20_000`) e o Worker não se troca. Fechado quanto à decisão | Nada, salvo se aparecer na bancada dele (o caminho é a troca do Worker) |
+| **O gatilho `armadilha` (L86b)** | Família de quatro Efeitos (`brasa-retardada`, `semente-adormecida`, `salvaguarda`, `cura-guardada`) que disparam por condições diferentes, nenhuma decidida. O chão da `cura-guardada` existe (migração 39) sem consumidor. `[GRID-CÓDIGO]` | Desenho de regra do autor, no fim, com o Grid |
+| **A batalha de verdade** | Pré-requisito da fase 4 e da voz, e o que confirma tudo o que nunca passou por mesa. `[ESPERA]` | O autor sentar e jogar, com a barra aberta, quando o Grid chegar |
 
 ---
 
-## 5 · A revisão de 23/09/2026: o que fechou com prova e o que é suspeito
+## 5 · A varredura de 26/11/2026: o que fechou com prova e o que ficou aberto
 
-**Caixa só muda com prova** (um sha, ou uma entrada de decisão), citada ao lado no próprio tema.
-Sem prova, o item fica aberto e aparece aqui como suspeito.
+**Caixa só muda com prova**, e a prova vai ao lado, na linha de fechamento do próprio tema ("Fechado em
+26/11/2026 (varredura): ..."). A varredura leu as pendências dos temas A a N, os documentos de
+direção e o registro de decisões, e a Revisora conferiu 556 das 573 linhas FECHADO, DUPLICADO e MESTRE.
+O resultado da Fase 2: fecharam-se os FECHADO e os DUPLICADO conferidos; os que o bom senso do Mestre
+resolve ganharam `[MESTRE: frase proposta]` e **não** fecham até o coordenador conferir; o que depende
+de outro item ou frente ganhou `[ESPERA]`; o que o autor adiou, `[ADIADO: motivo]`; e o resto foi
+dividido em `[FAZER]`, `[AUTOR-REGRA]`, `[AUTOR-ESCRITA]`, `[LIVRO-NO-GRID]` e `[GRID-CÓDIGO]`.
 
-### Fechados nesta revisão, com prova no tema
+### Os suspeitos de fechado da revisão de 23/09, resolvidos
 
-**Rodada 94:** A22 (a entrada de antes da decisão; a decisão é a outra A22), B13 (`888a196`), D1
-(`971b6f4`), E9 (`b903a26`), E10 (`fb9310c`), K12 (§14 e §16 de `leitura-de-novato-decisoes.md`, e
-`c5dd390`), K13 (`b6af150`). **Rodada 96:** J4, o mesmo defeito do B12, consertado em `20daeea`
-(conferido: nenhum leitor de fraqueza ou resistência no topo da criatura sobra em `src/`).
-
-Todos são a forma "fechar a frente sem fechar o documento" (`CATALOGO.md`): o trabalho estava
-pronto, e a caixa ficou aberta.
-
-### Suspeitos de fechado, nos temas A a K
-
-| Item | A evidência | O que falta para fechar |
-|---|---|---|
-| **C3**, **C4** | a M-10 decidiu que a Tradição é requisito de ficção e que Trilha não é palavra do Arcano | o C3 perde o sentido (e está `[ADIADO]` desde a rodada 96); o C4 ainda pede revisar o mortal-tocado (o Bram) |
-| **K28** | o próprio item diz "fecha inteiro", e mantém aberto pela falta de zona de controle | registrar que a ausência é decisão |
-| **K20** | o deslocamento na Recuperação foi decidido no K28; o −1d6 está no código | escrever que o ataque normal não cabe, e listar as ações livres |
-| **K27** | a decisão que faltava ("o atacante acompanha com o próprio passo") está no K28 | a fatia 2 no código e a prova de mesa |
-| **K5** | a fase 4 andou (`77516b7`) e o K12, um dos bloqueios, fechou | K17, o lado do jogador e a Pressão da Arte mirada |
-| **G12** | a §4b diz que ferimento e Desgaste cortam do mesmo pool | se o teto 4 vale para a soma, e a prosa do capítulo |
-| **G13** | só o preço da peça pronta andou (`a492010`, `484c33f`) | os outros seis assuntos |
-| **E3** | a M-36 decidiu "a banda é 3", numa unidade que pode não ser a do E3 | confirmar se é a mesma pergunta; o decaimento não foi decidido |
-
-### Suspeitos de fechado, no tema L
-
-O próprio texto destes itens diz que alguma coisa foi feita ou fechada, e a caixa continua aberta.
-A maioria fecha em parte; **nenhum foi reconferido** (estão fora da zona das rodadas 75 a 93):
-
-- **Dizem fechado por inteiro, com sha:** L80 (`3c5201d`, revisado `d6a6e19`), L81 (`e99049c`,
-  revisado `4453963`), L84 (rodada 50, `529e21c` e `cb21dbd`), L87 (`454a1d8`, `71a0228`), L88
-  (`8d7b450`, `697fc29`), L93 (`75bcb32`, `fcf778e`), L89 (consertado no mesmo dia), L70 ("fecha sem
-  CORRIGE"), L76 (resolvido pela fórmula do L77), L71 (fechado quanto à decisão, e o teste do prazo
-  existe).
-- **Dizem fechado em parte:** L8, L33 (falta rodar a 33, que já rodou), L35 (um bloco feito; a
-  decisão da furtividade por porte e categoria está no `CONTEXTO.md` e o L35 não foi marcado), L42,
-  L43, L45, L48, L52, L62, L86 (o L86a fechou).
-- **Duplicatas:** L6 e L9 têm uma entrada `[x]` e outra `[ ]` riscada, e a riscada conta como aberta.
+Dos itens que a versão anterior desta seção chamava de suspeitos: o C3 e o C4 viraram duplicados do C1
+(o livro já diz "Não há mapa de qual Arte sai de qual Tradição", e a D-035 já revisou o mortal-tocado);
+o K28, o K20, o K27 e o K5 foram classificados (AUTOR-REGRA, LIVRO-NO-GRID, GRID-CÓDIGO); o G12 e o
+G13 ficaram com a marca certa; o E3 segue do autor (a M-36 decidiu "a banda é 3"); no tema L, dos dez
+que se diziam fechados por inteiro, sete fecham (L81, L88, L93, L89, L70, L71 e o L76, duplicado do
+L77), e o L80, o L84 e o L87 seguem abertos com a marca certa; e as duplicatas **L6 e L9** (uma
+entrada `[x]` e outra `[ ]` riscada) fecharam como duplicadas.
 
 ### O que a contagem esconde
 
-Siglas repetidas (A22, L6, L9), item aberto riscado e item sem sigla: o gerador as lista na seção
-0, sem consertar. **O I5 eram dois itens diferentes com a mesma sigla**; na rodada 96 o editor de
-cenário ficou com ela (é o citado de fora) e o anel de Vida remoto virou **I14**, com a
-renumeração registrada no tema.
+O gerador acusa, na seção 0, o que não consegue consertar: a sigla **A22** aparece duas vezes (a
+entrada de antes da decisão e a decisão, ambas fechadas), o **K36** aparece duas vezes (o "Agarrar não
+tem regra", fechado, e o dano fenômeno, aberto como `[GRID-CÓDIGO]`; renumerar o segundo é um conserto
+de tema), as duplicatas **L6** e **L9** (a riscada fechou) e dois itens sem sigla (um no G, fechado, e
+um no J, a linha de fechamento do `test-grid`). **O I5 eram dois itens diferentes com a mesma
+sigla**, e o anel de Vida remoto virou **I14** na rodada 96.
 
-### Documentos de direção que envelheceram
+### Documentos de direção que ainda estão velhos
 
-- **`CONTEXTO.md`:** lista M-05 e M-42 como esperando mão de obra (estão feitas); diz que o item 9
-  de Relações Sociais não foi executado (foi); diz "rodada 85 em revisão" (fechou); a contagem
-  18 e 78 é de 16/09.
-- **`PASSAGEM.md` §7:** diz que a migração 33 espera o humano (rodou em 13 a 14/09).
-- **`PLANO.md` §8:** o quadro de 20/09 aponta Relações Sociais como próximo passo, e o item 9 que
-  ele espera já foi feito.
-- **`FRENESI.md` §5 e a §16:** "Vigor ou Destreza", que a §17 muda.
-- **O `Pendencias.md` de antes desta revisão:** a "Ordem sugerida" de agosto listava A21 e A22 como
-  abertas (fecharam em 19/08), e a prosa somava os E4 a E10 e o J9 e J10 por cima de uma tabela que
-  já os contava.
+- **`CONTEXTO.md` (linhas 194 a 231):** é de 16/09 (rodada 81), com "46 M / 18 abertas" e "99 C / 78
+  abertos", e lista M-05, M-42, M-07, M-24 e M-33 como esperando mão de obra (todas feitas).
+- **`PASSAGEM.md` §7 (linhas 220 a 225 e a mesma frase em `:193`):** diz "Ninguém perguntou ainda"
+  (o L26 foi respondido em 12/09) e "rodar a migração 33" (rodou em 13 a 14/09).
+- **`PLANO.md` §8 (linhas 322 a 339):** "Em 23/09 a frente corrente é o Frenesi", "rodada 85 em
+  revisão" e "Depois do veredito vem o item 9" (o item 9 e as rodadas 85 a 89 estão feitos).
+- O que a versão anterior listava de `FRENESI.md` §5 e da §16 ("Vigor ou Destreza") **já foi
+  consertado** (`FRENESI.md:116-117`), e a "Ordem sugerida" de agosto do `Pendencias.md` não existe mais.
+
+Reescrever os três primeiros é execução barata, e cada um aberto é uma pergunta que a próxima instância
+refaz.
 
 ---
 
-## 6 · As três trilhas · PROPOSTA DO ARQUITETO, e não decisão
+## 6 · A ordem de trabalho · proposta do Arquiteto, e não decisão
 
-*Redigida pela Executora nas rodadas 94 e 96, para o Arquiteto revisar antes de o humano ver. Nada
-aqui foi decidido.*
+*Substitui as três trilhas de 23/09/2026. Nada aqui foi decidido pelo autor; o que ele já decidiu está
+no `autor.md` da varredura e no registro de decisões.*
 
-Não é uma fila só. São três trilhas que não disputam o mesmo recurso, e por isso correm ao mesmo
-tempo: uma gasta o tempo do humano, outra gasta token, a terceira gasta o tempo criativo dele.
+Duas coisas não competem pelo mesmo recurso: a execução gasta token e a decisão gasta o tempo do
+autor. A ordem é:
 
-### Trilha de DECISÃO · custa tempo do humano, e zero token
+1. **O lote do bestiário**, que é execução e não espera decisão: o refator do bando (a mesma função de
+   turno do 1 contra 1, indivíduos até 7 e Horda a partir de 8), o campo `desafio` (0 a 12, meio
+   degrau) nas 324 fichas e no esquema, as fichas da T4 e D-377 (trol, vampiro, planetar e solar:
+   B32) e os desvios de Velocidade das D-334 e D-335. O campo `desafio` no /bestiario mostra o número
+   com a Centelha ao lado; os leitores da mesa ficam como pendência (T21).
+2. **As decisões do autor, uma por vez**, na ordem do `autor.md` da varredura: cada uma com o texto de
+   hoje, três soluções e a recomendada. Destravam mais: o **F7** (travar o panteão, que trava o F5 e o
+   F6) e o **C1** (a camada de Tradição, que trava o C2, o C3, o C4 e metade do A11; o **F3**, a
+   mecânica de clérigo, paladino e monge, é duplicado dele, e trava o B4).
+3. **Os `[FAZER]` e `[CONSERTAR]` dos temas**, que são execução pura sobre decisão já tomada (a coluna
+   FAZER da seção 0), e a limpeza dos documentos de direção velhos (seção 5).
+4. **O Grid, por último**, e só depois de fechar todas as outras frentes por completo: os itens
+   `[GRID-CÓDIGO]` e `[LIVRO-NO-GRID]` esperam o Grid refeito, e a batalha de verdade (jogar com a barra
+   aberta) é a primeira coisa que ele pede.
 
-**No topo, as cinco decisões-raiz, ordenadas por quanto destravam, e não por urgência.** Elas são do
-humano, e ele responde em bloco:
-
-1. **F7 · travar o panteão.** Trava a F5 e a F6: uma decisão libera dois itens de autoria.
-2. **F3 · a mecânica de clérigo, paladino e monge.** Trava a B4. Enquanto não sair, **47 das 309
-   criaturas** têm fraqueza a sagrado que nada no jogo dispara (conferido em 23/09 nos dois lugares
-   em que o dado mora, `monsters.json` e `elementos-bestiario.json`).
-3. **A camada de Tradição.** Trava a C1, a C2, metade da A11, e por consequência a C3 e a C4. É o
-   bloqueio mais antigo do mapa.
-4. **G12 · o teto 4 da soma de Desgaste e ferimento.** Os dois já cortam do mesmo pool, somando
-   direto e com o piso comum em 1d6 (`vida-ferimentos-cura.md`, desde `2b08d7a`, 22/09/2026). O que
-   continua aberto é só se o teto 4 do Desgaste vale para a soma dos dois.
-5. **E4 com E8 · a régua de Relação.** O capítulo publicado depende delas. O E8 tem o dente medido:
-   15 pontos saem em 3 intervalos, e 14 saem em 6.
-
-**Depois delas, na mesma lista única** (a regra da casa: pergunta de regra vem em lista, não item a
-item): o **K4**, destravado desde que o K13 caiu; as perguntas M abertas e os E5 a E7 (seção 3); a
-conversa do modo site e os itens 3 e 4 do `PLANO.md` §8; a fronteira entre o dia a dia e o Combate
-Social; e o resto da coluna DECIDIR da seção 0.
-
-### Trilha de EXECUÇÃO · custa token, e zero tempo do humano
-
-Só o que já tem decisão:
-
-1. **A §17 inteira, numa rodada.** Foi decidida em 23/09, é pequena (texto e dado), e fecha a frente
-   do Frenesi e do teste de Virtude **no livro**. O motor continua sem o teste de Frenesi, porque
-   nenhuma tela o rola. Deixar a §17 para depois é deixar o livro dizendo "Vigor ou Destreza" com a
-   regra já trocada.
-2. **As M decididas e não feitas (M-01, M-07, M-24, M-33, e o texto da M-18), mais os C parciais
-   que são execução (C-47, C-85).** Os três C que estavam marcados como feitos sem estar (C-22, C-39,
-   C-61) e os C abertos fecharam na rodada 99 (`bed1e91`). É execução pura sobre
-   decisão que o humano já pagou. A M-24 e a M-33 mexem em combate e no Grid, então pedem revisão
-   com cuidado.
-3. **Registro:** fechar com prova o que a seção 5 lista como suspeito, e reescrever o `CONTEXTO.md` e
-   o §7 da `PASSAGEM.md`. É barato, e cada suspeito aberto é uma pergunta que a próxima instância
-   refaz. O L tem dez itens que se declaram fechados por inteiro.
-4. **Os [FAZER] e [CONSERTAR] dos temas** (as colunas FAZER e CONSERTAR da seção 0).
-
-A fila do Grid (`PLANO.md` §8) está nesta trilha, e está parada: o que ela espera é a batalha de
-verdade, abaixo.
-
-### Trilha de AUTORIA · custa o tempo criativo do humano, e não trava nada técnico
-
-Os itens [AUTOR] dos temas (a coluna AUTOR da seção 0). Dois deles, a F5 e a F6, esperam a F7 da
-trilha de decisão. Nenhum item de autoria segura código.
-
-### O que não cabe em trilha: a batalha de verdade
-
-É tempo do humano, mas não é decisão: é jogar. Destrava de uma vez a fase 4, a voz e o L62, e nenhuma
-rodada substitui o que ela revela (`PLANO.md` §9).
-
-### O que saiu das trilhas: os adiados
-
-Sete itens foram marcados `[ADIADO]` na rodada 96, por proposta do humano, com o motivo escrito no
-tema: o catálogo das Artes (C3), os travessões em dado publicado (J0 e J10), o ponteiro ao vivo (I8)
-e três refinamentos que ninguém sentiu falta em mesa (H4, D3 e D6). Eles continuam contados como
-abertos, na coluna Adiados da seção 0, e fora das somas de trabalho.
+**O que saiu da fila: os adiados.** Os itens `[ADIADO: motivo]` (coluna Adiados da seção 0) foram
+adiados pelo autor, com a frase dele ou a D-/T- citada no motivo (entre eles o C3, o H4, o D3, o D6, o
+D19, o G71, o G73, o G74, o L62, o L74 e o L82). Continuam contados como abertos e fora das somas de
+trabalho.
 
 ---
 
