@@ -53,7 +53,7 @@ Medido: 1,1 s do dedo sair do mouse até a peça aparecer na outra tela, uma con
   **fica** (vira névoa leve, que mostra o chão e esconde quem está nele), e o alcance é um **raio da
   cena**, igual para todos. Migrações 23 e 25; o corte é na view `token_visao`, e não na tela. O
   quadro completo e os seis limites que sobraram estão em `Grid_melhorias.md`.
-- [ ] **I8 · [ADIADO] [DECIDIR] [GRID-CÓDIGO] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
+- [ ] **I8 · [ADIADO: o autor, rodada 96 (23/09/2026), por proposta do humano: o próprio item pergunta se o ponteiro ao vivo vale a pena] [DECIDIR] [GRID-CÓDIGO] Ponteiro ao vivo.** Hoje há o ping (dois cliques acendem uma casa para todo
   mundo, assinada). O passo seguinte é o cursor de cada um deslizando pelo mapa, que é o que as
   mesas virtuais grandes fazem. Custa uma mensagem a cada ~50 ms por pessoa que estiver mexendo o
   mouse, e é a única coisa desta lista que pesa de verdade: vale a pena?

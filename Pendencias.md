@@ -50,7 +50,7 @@ está na seção 3.
 | A | Arcano · As Artes | [`A-arcano-artes.md`](docs/pendencias/A-arcano-artes.md) | 36 | 21 | 0 | 15 | 8 | 6 | 7 | 0 | 0 | 0 |
 | B | Bestiário | [`B-bestiario.md`](docs/pendencias/B-bestiario.md) | 36 | 21 | 0 | 15 | 4 | 12 | 3 | 0 | 0 | 2 |
 | C | Trilhas de Feitiçaria | [`C-trilhas-feiticaria.md`](docs/pendencias/C-trilhas-feiticaria.md) | 4 | 2 | 0 | 2 | 0 | 0 | 1 | 0 | 0 | 1 |
-| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 11 | 0 | 10 | 0 | 0 | 5 | 0 | 0 | 6 |
+| D | Proezas e Técnicas | [`D-proezas-tecnicas.md`](docs/pendencias/D-proezas-tecnicas.md) | 21 | 11 | 0 | 10 | 1 | 0 | 5 | 0 | 0 | 5 |
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 12 | 8 | 0 | 4 | 0 | 4 | 4 | 0 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 8 | 0 | 2 | 0 | 0 | 8 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 82 | 37 | 0 | 45 | 2 | 23 | 9 | 0 | 0 | 3 |
@@ -60,7 +60,7 @@ está na seção 3.
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 19 | 1 | 19 | 9 | 5 | 5 | 0 | 0 | 1 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 49 | 0 | 58 | 0 | 12 | 2 | 0 | 29 | 6 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 29 | 0 | 5 | 2 | 26 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **235** | **3** | **185** | **30** | **104** | **50** | **2** | **30** | **22** |
+| | **Total** | | **423** | **235** | **3** | **185** | **31** | **104** | **50** | **2** | **30** | **21** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -96,7 +96,7 @@ está na seção 3.
 |---|---|---|---|
 | **Bestiário e a bancada de criaturas** | A fonte única das fichas é `src/data/bestiario` (B3). A bancada (B14) tem o laço corrigido (multiataque e dupla só pela ficha, regeneração ligada) e o piloto das oito criaturas rodado, com o desafio de 7 a 12 pela C-044. Faltam o refator do bando, o campo `desafio` (0 a 12, meio degrau) e as fichas da T4. | Execução; o autor, para o campo `desafio` | tema B (B14, B32 a B35); `docs/bestiario/` |
 | **Frenesi e teste de Virtude** | Decidido e no livro. A §17 está feita (`vida-ferimentos-cura.md:52`, `aparencia-virtudes-vontade.md:49` e `:123`, `FRENESI.md:116-117`). O teste de Frenesi não existe no motor, e nenhuma tela o rola. | Nada a executar | `FRENESI.md`; `leitura-de-novato-decisoes.md` §16 e §17 |
-| **Jogador novo** | 47 perguntas `M` e 104 consertos `C`, recontados em 26/11/2026: 5 M abertas e 3 C abertos (2 por confirmar). M-05, M-07, M-15, M-24, M-27, M-33, M-41 e M-42 estão feitas ou superadas; ficam M-01 e o L102 (M-18) a executar, M-22 adiada, M-43 e M-46 do autor. | Execução, para M-01 e L102; o autor, para as abertas | `jogador-novo-decisoes.md`, `jogador-novo-consertos.md`, `jogador-novo-consertos-2.md`, `jogador-novo-bestiario.md`, em `docs/simulacao/caixa/` |
+| **Jogador novo** | As perguntas `M` (M-01 a M-46, mais a M-08b) e os consertos `C` (C-1 a C-104). M-05, M-07, M-15, M-24, M-27, M-33, M-41 e M-42 estão feitas ou superadas; ficam M-01 e o L102 (M-18) a executar, M-22 adiada, M-43 e M-46 do autor; dos consertos, C-12, C-47, C-85, C-72 e C-87 (seção 2). | Execução, para M-01 e L102; o autor, para as abertas | `jogador-novo-decisoes.md`, `jogador-novo-consertos.md`, `jogador-novo-consertos-2.md`, `jogador-novo-bestiario.md`, em `docs/simulacao/caixa/` |
 | **Relações Sociais** | Rodadas 85 a 89 fechadas, e o item 9 (`acoes.longevidadeFirula`) feito (`6509801`). A fronteira entre o dia a dia e o Combate Social está escrita (`relacoes-sociais.md:11` e `:141`). Ficam os itens E3 a E8 do tema E. | O autor (E3); execução (E4, E7) | tema E; `ritmo-da-regua.md` |
 | **O Grid** | Simulação encerrada (06/09). Fases 2 e 2.5 fechadas; fase 3 congelada; fase 4 bloqueada por uma batalha de verdade. É a última frente, e o que o toca está parado (T21; N33 e N34 no tema N). | O autor, no fim | `PLANO.md` §8 e §9; `ESTADO.md`; temas K, L e N |
 | **Voz** | Barra de comando, desfazer e captura de áudio fechados (rodadas 30 a 33). O L71 está decidido (D-389: o prazo fica, a troca do Worker não se faz); o L62 e o L74 estão `[ADIADO]` até o autor usar a barra numa batalha. | O autor (a batalha); depois execução | `VOZ.md` §8; L62, L71, L74 |
@@ -138,7 +138,7 @@ M-43 e o custo da M-46 são do autor (AUTOR-REGRA), e a M-22 está adiada.
   C-39, C-61 e C-102 a C-104, e a frase "nenhum aberto" vale só para essa lista.
 - **Recusados pela Executora, sem decisão de mesa:** **C-72**, decidido como editorial na D-390 (a
   regra "o como define o Atributo" fica escrita uma vez, com link, em `habilidades.md:24`), e
-  **C-87**, que segue `[INCERTO]`.
+  **C-87** (a tabela de arremesso desaba nos últimos 20% até o teto de Força: é intencional e só está no comentário de `ficha-engine.ts:1625`), que é **FAZER**: escrever no livro a frase "Perto do teto de Força a distância desaba...".
 
 ### Nos temas
 
@@ -179,7 +179,7 @@ Grid é a última frente, esses itens estão como `[ESPERA]` e `[GRID-CÓDIGO]` 
 
 | O que | Estado | O que destrava |
 |---|---|---|
-| **Migrações (L42)** | Todas as escritas estão aplicadas, **de 1 a 42**: a 40 rodou em 28/09/2026, a 41 em 29/10 e a 42 em 30/10 (carimbo `c5b845f7aa03a935`, 42 de 42 batem). A 34 não existe como arquivo. | Nada; fica a escolha da migração 40 (coluna `centelha` em `combatentes` ou parâmetro extra em `jogador_dano`, `supabase/migracao-40.sql`, opções a e b), que é do Grid |
+| **Migrações (L42)** | Todas as escritas estão aplicadas, **de 1 a 42**: a 40 rodou em 28/09/2026, a 41 em 29/10 e a 42 em 30/10 (carimbo `c5b845f7aa03a935`, 42 de 42 batem). A 34 não existe como arquivo. | Nada a rodar. Falta uma escolha do autor, deixada em aberto dentro da 40 que já rodou, para o arredondamento exato do dano relativo por Centelha (M-21c): (a) coluna `centelha` em `combatentes`, ou (b) a Centelha como parâmetro extra de `jogador_dano`, com o problema de privacidade de o jogador passar a saber a Centelha do inimigo (`supabase/migracao-40.sql`). Sem ela, a Centelha desconhecida cai no lado mais generoso. É do Grid |
 | **A barra de comando sem teste (L62)** | Sem teste automatizado commitado; `mover` contra casa ocupada falha em silêncio (herdado de `porNoMapa`). `[ADIADO]` pelo autor | Um teste, depois de ele usar a barra numa batalha |
 | **O modelo de voz que trava (L71)** | Decidido em 11/09/2026 (D-389): o prazo fica (`comando-voz.ts`, `prazoMs ?? 20_000`) e o Worker não se troca. Fechado quanto à decisão | Nada, salvo se aparecer na bancada dele (o caminho é a troca do Worker) |
 | **O gatilho `armadilha` (L86b)** | Família de quatro Efeitos (`brasa-retardada`, `semente-adormecida`, `salvaguarda`, `cura-guardada`) que disparam por condições diferentes, nenhuma decidida. O chão da `cura-guardada` existe (migração 39) sem consumidor. `[GRID-CÓDIGO]` | Desenho de regra do autor, no fim, com o Grid |
@@ -191,7 +191,7 @@ Grid é a última frente, esses itens estão como `[ESPERA]` e `[GRID-CÓDIGO]` 
 
 **Caixa só muda com prova**, e a prova vai ao lado, na linha de fechamento do próprio tema ("Fechado em
 26/11/2026 (varredura): ..."). A varredura leu as pendências dos temas A a N, os documentos de
-direção e o registro de decisões, e a Revisora conferiu 556 das 573 linhas FECHADO, DUPLICADO e MESTRE.
+direção e o registro de decisões, e a Revisora viu as 573 linhas FECHADO, DUPLICADO e MESTRE: 556 conferem, 8 foram corrigidas e 9 ficaram em pergunta.
 O resultado da Fase 2: fecharam-se os FECHADO e os DUPLICADO conferidos; os que o bom senso do Mestre
 resolve ganharam `[MESTRE: frase proposta]` e **não** fecham até o coordenador conferir; o que depende
 de outro item ou frente ganhou `[ESPERA]`; o que o autor adiou, `[ADIADO: motivo]`; e o resto foi
@@ -345,7 +345,7 @@ Fechados (2): C2, C4.
 | D6 | aberto, ADIADO | DECIDIR | Custo de Técnica e de Arte em ×10. |
 | D11 | aberto | AUTOR-REGRA | Proeza de Quase-acerto, com duas alavancas. |
 | D13 | aberto | AUTOR-REGRA | Proeza "punho como arma média". |
-| D14 | aberto, ADIADO | DECIDIR | Custo de Habilidades a revisar depois da Parte B. |
+| D14 | aberto | DECIDIR | Custo de Habilidades a revisar depois da Parte B. |
 | D15 | aberto, ADIADO |  | Botão de Atributo puro. |
 | D17 | aberto, ADIADO | DECIDIR | Revisar as fichas de exemplo (Kael, Sora, Veil, Bram) ao fim da revisão do sistema. |
 | D19 | aberto, ADIADO |  | Orçamento de XP da criação (R54). |

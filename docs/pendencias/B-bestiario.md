@@ -441,7 +441,7 @@ limitações conhecidas, que são as três de baixo.
   partir do qual pesa na luta, e leva ao autor. Até lá a D-246 segue ("Regeneração N · sem regra ainda"); a R47 (D-326) já está no livro.
   Fechado em 26/11/2026 (varredura): D-361 (B1): "Regeneração N = N PV por minuto, sempre ativa, até o PV máximo"; D-362: "N/10 PV a cada 6 Ticks a partir do Tick do primeiro dano"; `poderes-das-criaturas.md:89` e `:93-95`. A D-246 ("sem regra ainda") deixou de valer
 
-- [ ] **B22 · [ADIADO] [ESPERA: o lore dos planos (F3, D-321); quem move: o autor] Os planos: aguarda o lore (R42, D-321).** Registrado em 05/11/2026. Existem outros planos, ainda não fechados.
+- [ ] **B22 · [ADIADO: D-321 (autor, 05/11/2026): "o autor acerta os planos depois", ligado ao lore F] [ESPERA: o lore dos planos (F3, D-321); quem move: o autor] Os planos: aguarda o lore (R42, D-321).** Registrado em 05/11/2026. Existem outros planos, ainda não fechados.
   Esperam o lore: passeio etéreo (cauchemar), passagem entre planos (bebilith, xill), estado etéreo (item 060) e a origem dos convocados
   (item 122). O livro não ganha o estado Etéreo agora.
 

@@ -88,7 +88,7 @@ Detalhe em `Proezas_revisao.md`.
   **média** (Briga séria, estilo de combate desarmado avançado) foi cogitada e não implementada:
   decidir se existe, o que ela muda exatamente (classe de QA? dado de dano? as duas?) e o custo.
 
-- [ ] **D14 · [ADIADO] [DECIDIR] [ESPERA: a D19 (o orçamento de XP; o custo de Habilidades anda com ele, T14); quem move: o autor] Custo de Habilidades a revisar depois da Parte B.** Registrado
+- [ ] **D14 · [DECIDIR] [ESPERA: a D19 (o orçamento de XP; o custo de Habilidades anda com ele, T14); quem move: o autor] Custo de Habilidades a revisar depois da Parte B.** Registrado
   em 28/09/2026, no despacho da Reforma da Centelha ("Pendências a registrar"): a regra nova
   (2×menor(Centelha,Habilidade) em toda jogada/Defesa, sem teto no dano) valoriza a Habilidade
   alta mais do que a régua antiga (+1×Centelha flat), porque agora é ela quem decide o teto do

@@ -2725,7 +2725,7 @@ o eixo E2 da bateria vai medir mais. Medido em 02/09, `02` §0.8.6.
   `test-procedencia.mjs` que cheque **estado** do que é citado, não só a citação de linha; (4)
   conferir se todo achado de `Auditoria_Tecnica.md` §8.2 em diante tem linha correspondente aqui
   (só o das fraquezas foi conferido, achado como B12). Registrado sem julgar mérito nem prioridade.
-  Fechado em 26/11/2026 (varredura): recomendação de processo do Arquiteto, "sem julgar mérito nem prioridade"; nenhuma decisão do autor nem classe que a encaixe. Ver INCERTO
+  Fechado em 26/11/2026 (varredura). Decisão do Arquiteto (26/11): (1) e (2) já são rotina; (3) variante do `test-procedencia.mjs` que cheque estado: não vale agora; (4) conferir todos os achados de `Auditoria_Tecnica.md` §8.2: não vale agora.
 
 - [x] **L61 · [FECHADO em 10/09/2026, achados da revisão do aviso 27] Quatro achados menores da
   Revisora sobre `docs/simulacao/caixa/27-executora.md`, nenhum bloqueando o veredito (SEGUE).**

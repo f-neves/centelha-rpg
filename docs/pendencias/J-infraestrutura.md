@@ -176,7 +176,7 @@
 
 - [ ] **J18 · [FAZER] [ESPERA: uma próxima migração que mexa em personagens.ficha (a 42 já rodou, D-259); quem move: o Arquiteto] O seed `supabase/migracao-42.sql` ainda grava a tag "projétil veloz" nas armas (RT-045, T13, 25/11/2026).** O nome único passou a "projétil rápido" em `armas.json`; alinhar o nome na próxima migração. Ficha salva antes da troca guarda a cópia do item com a tag antiga: só a etiqueta mostrada diverge, nenhum cálculo lê a tag.
 - [ ] **J19 · [FAZER] O filtro de Tag de `/equipamentos` não casa tag de duas palavras (projétil rápido).** `data-tags` junta as tags por espaço e o script separa por espaço; separar por outro caractere. Já era assim com "projétil veloz". Achado na RT-045 (T13, 25/11/2026); é lógica da página, e não foi mexida.
-- [x] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
+- [x] **J10 · [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão
   automático para `src/content/**`, por decisão do humano. A separação é o que decide o gesto:
