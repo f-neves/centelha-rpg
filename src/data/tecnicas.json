@@ -7073,7 +7073,7 @@
       "voz-calma"
     ],
     "aliases": [],
-    "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−6**.",
+    "texto": "Suas mentiras não disparam tells e suas intenções seguem opacas sob pressão: quem tenta lê-lo sofre **−6**. Soma com a Técnica Semblante Fechado.",
     "pendente": false,
     "nivel": 3,
     "efeito": "bonus"
@@ -7109,7 +7109,7 @@
       "inabalavel"
     ],
     "aliases": [],
-    "texto": "Você é fundamentalmente ilegível: leitura social e adivinhação mundana sobre suas intenções falham salvo Margem alta, e mantém quantas personas quiser sem esforço.",
+    "texto": "Você é fundamentalmente ilegível: leitura social e adivinhação mundana sobre suas intenções falham salvo Margem alta, e mantém quantas personas quiser sem esforço. Soma com as Técnicas Águas Profundas e Semblante Fechado: o −6 das Águas Profundas e a Margem alta daqui valem juntos.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
