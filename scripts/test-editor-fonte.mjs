@@ -14,6 +14,7 @@ import { pathToFileURL } from 'node:url';
 import { navegadorOuSair, abrirNavegador } from './navegador.mjs';
 import { montarHtml } from './bestiario-editor/gera-editor.mjs';
 import { planejar } from './bestiario-editor/aplica-alteracoes.mjs';
+import { carregarTS } from './lib-ts.mjs';
 
 const EDGE = navegadorOuSair('editor de criaturas da fonte única');
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'editor-fonte-'));
@@ -112,6 +113,41 @@ try {
   ok(await p.$('#itens li[data-id="lobo-teste"]') !== null, 'a criatura nova sobrevive ao recarregar (memória do navegador)');
   await p.click('#bLimpar');
   ok(await p.$('#itens li[data-id="lobo-teste"]') === null && /0 campo\(s\) alterado\(s\) em 0 criatura\(s\)$/.test(await p.$eval('#resumo', (e) => e.textContent)), 'descartar tudo tira a criatura nova da lista e zera o resumo');
+  // ACEITE DO PLANO 2.1 ("o editor abre com os dados do site: três criaturas mudadas na revisão, o wyrm sem asas entre elas"):
+  // o wyrm (corpo e ataques mudaram), a esfinge (o Oráculo saiu da base de um poder) e o triceratops (a anatomia firme passou a somar +4 contra
+  // Derrubar e Empurrar): o formulário mostra o JSON DO SITE, e os números ao vivo são os do motor aplicado a esse JSON
+  const MOTOR = await carregarTS('src/lib/motor.ts');
+  const siteJson = (id) => JSON.parse(fs.readFileSync(new URL(`../src/data/bestiario/${id}.json`, import.meta.url), 'utf8'));
+  const valorDoCampo = (caminho) => p.evaluate((rot) => { const l = [...document.querySelectorAll('#campos .campo label')].find((x) => x.title === rot); const i = l && l.parentElement.querySelector('input, textarea'); return i ? (i.type === 'checkbox' ? i.checked : i.value) : null; }, caminho);
+  const pvDoEditor = () => p.$$eval('#nums tr', (r) => { const x = r.find((y) => y.children[0].textContent === 'pv'); return x ? x.children[2].textContent : null; });
+  for (const id of ['grande-wyrm-vermelho', 'esfinge-ginosfinge', 'triceratops']) {
+    const j = siteJson(id), r = MOTOR.criatura(j);
+    await p.click('#bLimpar').catch(() => {});
+    await p.evaluate(() => { document.getElementById('busca').value = ''; document.getElementById('busca').dispatchEvent(new Event('input')); });
+    await p.click(`#itens li[data-id="${id}"]`);
+    ok(/./.test(await p.$eval('#tit', (e) => e.textContent)) && await valorDoCampo('nome') === j.nome, `${id}: o formulário abre com o JSON do site (nome "${j.nome}")`);
+    ok(await valorDoCampo('atributos.vigor') === String(j.atributos.vigor), `${id}: atributos.vigor do formulário = ${j.atributos.vigor}, o do JSON do site`);
+    ok(await pvDoEditor() === String(r.pv), `${id}: o PV ao vivo do editor (${await pvDoEditor()}) é o do motor aplicado ao JSON do site (${r.pv})`);
+    if (id === 'grande-wyrm-vermelho') {
+      ok(!j.ataques.some((a) => a.nome === 'Asas') && !(await p.$$eval('#campos input', (l) => l.some((i) => i.value === 'Asas'))), 'wyrm: sem o ataque Asas no JSON do site e no formulário');
+      ok(await valorDoCampo('corpo.segundoTamanho.posturaDoTamanho') === 'enrolado' && Number(await valorDoCampo('corpo.segundoTamanho.area')) === j.corpo.segundoTamanho.area, 'wyrm: o segundo Tamanho do formulário é o enrolado do JSON (' + j.corpo.segundoTamanho.area + ' m²)');
+      ok(r.segundoTamanho === 'enorme', 'wyrm: o motor, aplicado ao JSON do site, dá o segundo Tamanho Enorme (era Colossal com as asas abertas)');
+    }
+    if (id === 'esfinge-ginosfinge') {
+      ok(!('efeito' in j.habilidadesEspeciais[3].base) && await valorDoCampo('habilidadesEspeciais.3.base.efeito') === null && await valorDoCampo('habilidadesEspeciais.3.base.arte') === j.habilidadesEspeciais[3].base.arte, 'esfinge: a base do poder 3 não tem mais o Oráculo (sem o campo efeito no JSON nem no formulário), e a Arte é a do JSON');
+    }
+    if (id === 'triceratops') {
+      const txt = j.habilidadesEspeciais[3].efeito;
+      ok(/\+4 à Defesa contra Derrubar e Empurrar/.test(txt) && await valorDoCampo('habilidadesEspeciais.3.efeito') === txt, 'triceratops: a anatomia firme "+4 à Defesa contra Derrubar e Empurrar" do formulário é o texto do JSON do site');
+    }
+    // o aplicador (dry-run, no site de verdade) aceita um número alterado nela, vindo do editor
+    const campoVigor = await p.evaluateHandle(() => [...document.querySelectorAll('#campos .campo label')].find((l) => l.title === 'atributos.vigor').parentElement.querySelector('input'));
+    await campoVigor.evaluate((e, v) => { e.value = String(v); e.dispatchEvent(new Event('input', { bubbles: true })); }, j.atributos.vigor + 1);
+    await p.click('#bExportar');
+    const expN = await p.evaluate(() => window.__ULTIMA_EXPORTACAO);
+    const planoN = await planejar(expN);
+    ok(expN.alteracoes.length === 1 && expN.alteracoes[0].id === id && expN.alteracoes[0].antes === j.atributos.vigor && planoN.erros.length === 0 && planoN.conflitos.length === 0 && planoN.criaturas.length === 1 && planoN.numeros.some((n) => n.id === id && n.caminho === 'atributos.vigor'), `${id}: o aplicador (dry-run) aceita o Vigor ${j.atributos.vigor} para ${j.atributos.vigor + 1} vindo do editor e o lista como mudança de número: ` + JSON.stringify(planoN.erros).slice(0, 200));
+  }
   ok(erros.length === 0, 'nenhum erro de página: ' + erros.join('; ').slice(0, 300));
 } finally { await br.close(); fs.rmSync(tmp, { recursive: true, force: true }); }
 if (falhas.length) { console.error(`✘ ${falhas.length} falha(s)`); process.exit(1); }
