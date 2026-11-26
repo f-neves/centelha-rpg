@@ -18,7 +18,7 @@ import { url } from '../lib/site';
 import { galeriaDe, principalDe, NOME_PASTA_GALERIA } from '../lib/bestiario-galeria';
 import { loadData } from '../lib/data'; import { poolComPenalidade } from '../lib/defesa-vestida';
 import { ELEM, ATR, locoDe, locoTxt, fmtPool, fmtDano, habilidadesDeTreino, treinoTxt, BASE_NOTA, baseTxt, linhaPVTxt, justTxt } from '../lib/besta-card';
-import { linhaPVNaZona, massaDaConta } from '../lib/motor';
+import { linhaPVNaZona, massaDaConta, aparenciaMod } from '../lib/motor';
 import HAB from '../data/habilidades.json';
 import SEC from '../data/habilidades-secundarias.json';
 
@@ -43,9 +43,9 @@ const ECO_TERR: Record<string, string> = { Cold: 'Gélido', Desert: 'Deserto', F
 const ECO_CLIMA: Record<string, string> = { Cold: 'Frio', Temperate: 'Temperado', Tropical: 'Tropical', Extraplanar: 'Extraplanar' };
 // Os rótulos (elementos, atributos, locomoção) e os formatos do ataque e do dano moram em src/lib/besta-card.ts, para
 // as outras formas (FormaCriatura.astro) terem o mesmo desenho (parecer da Veterana, M9).
-// Modificador social da Aparência (curva do sistema, extrapolada além de 1–10 para criaturas extremas).
-const AP_CURVA: Record<number, number> = { 1: -4, 2: -2, 3: -1, 4: 0, 5: 0, 6: 0, 7: 1, 8: 2, 9: 3, 10: 4 };
-const apMod = (n: number) => (n > 10 ? 4 + (n - 10) : n < 1 ? -5 - (0 - n) : AP_CURVA[n]);
+// Modificador social da Aparência: a curva do sistema (regras.json, aparencia.curva, 0 a 12, um ponto por nível), a mesma que
+// o motor lê; nenhuma tabela própria aqui.
+const apMod = (n: number) => aparenciaMod(n);
 const arteNome: Record<string, string> = Object.fromEntries(d.artes.map((a) => [a.id, a.nome]));
 // As Habilidades de treino (D-270): o painel "Habilidades" do card, com o nome do livro.
 const NOMES_HAB: Record<string, string> = Object.fromEntries([...(HAB as any[]), ...(SEC as any[])].map((h) => [h.id, h.nome]));
