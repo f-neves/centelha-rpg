@@ -52005,8 +52005,7 @@
      "classe": "regra da ficha",
      "base": {
       "arte": "gelo",
-      "nivel": 2,
-      "efeito": "lascas"
+      "nivel": 2
      },
      "categoria": "magia",
      "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
@@ -52491,8 +52490,7 @@
     "classe": "regra da ficha",
     "base": {
      "arte": "gelo",
-     "nivel": 2,
-     "efeito": "lascas"
+     "nivel": 2
     },
     "texto": "neve fechada; quem está dentro tem −2 em Prontidão e nas jogadas de Percepção pela vista, e ele não sofre a penalidade",
     "campos": [

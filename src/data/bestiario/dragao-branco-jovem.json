@@ -251,8 +251,7 @@
       "classe": "regra da ficha",
       "base": {
         "arte": "gelo",
-        "nivel": 2,
-        "efeito": "lascas"
+        "nivel": 2
       },
       "categoria": "magia",
       "ativacao": "uma ação, Velocidade 5. O efeito sai no Tick do Golpe",
