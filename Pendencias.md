@@ -138,7 +138,7 @@ M-43 e o custo da M-46 são do autor (AUTOR-REGRA), e a M-22 está adiada.
   C-39, C-61 e C-102 a C-104, e a frase "nenhum aberto" vale só para essa lista.
 - **Recusados pela Executora, sem decisão de mesa:** **C-72**, decidido como editorial na D-390 (a
   regra "o como define o Atributo" fica escrita uma vez, com link, em `habilidades.md:24`), e
-  **C-87** (a tabela de arremesso desaba nos últimos 20% até o teto de Força: é intencional e só está no comentário de `ficha-engine.ts:1625`), que é **FAZER**: escrever no livro a frase "Perto do teto de Força a distância desaba...".
+  **C-87** (a tabela de arremesso desaba nos últimos 20% até o teto de Força: é intencional e só está no comentário de `ficha-engine.ts:1705`), que é **FAZER**: escrever no livro a frase "Perto do teto de Força a distância desaba...".
 
 ### Nos temas
 
