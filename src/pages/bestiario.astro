@@ -927,13 +927,15 @@ const opcoesEditor = {
     dlg.showModal();
   }
 
-  document.querySelectorAll<HTMLButtonElement>('.besta-mesa').forEach((b) => {
-    b.addEventListener('click', () => {
-      const card = b.closest('.besta') as HTMLElement | null;
-      if (!card) return;
-      const nome = card.querySelector('.besta-nome')?.childNodes[0]?.textContent?.trim() || 'Criatura';
-      abrirMesas(card.id, nome);
-    });
+  // Delegado na lista, como o lightbox, o infobox e o fixar: as fichas além das 40 iniciais nascem dentro de <template> e só
+  // entram no DOM depois deste bloco rodar, então ligar o clique em cada botão que existe agora deixava o "Adicionar à mesa" delas morto.
+  list.addEventListener('click', (e) => {
+    const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.besta-mesa');
+    if (!b) return;
+    const card = b.closest('.besta') as HTMLElement | null;
+    if (!card) return;
+    const nome = card.querySelector('.besta-nome')?.childNodes[0]?.textContent?.trim() || 'Criatura';
+    abrirMesas(card.id, nome);
   });
 
   // O ENDEREÇO VELHO (`#mon-lobo`) AINDA ACHA O CARD (D-179, item 10). Os ids do
