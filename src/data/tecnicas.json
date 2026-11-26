@@ -1392,7 +1392,7 @@
     "custo": {},
     "prereq": [],
     "aliases": [],
-    "texto": "Cura o dobro do normal e estabiliza sozinho ao cair.",
+    "texto": "Cura o dobro do normal (da cura que recebe de outra fonte; não dobra a própria Regeneração) e estabiliza sozinho ao cair.",
     "pendente": false,
     "nivel": 1,
     "efeito": "estado"
@@ -1480,7 +1480,7 @@
       "fechar-feridas"
     ],
     "aliases": [],
-    "texto": "Recupera PV igual ao seu Vigor a cada 6 Ticks.",
+    "texto": "Recupera PV igual ao seu Vigor a cada 6 Ticks. Soma com as Técnicas Recuperação Acelerada, Segundo Fôlego e Fechar Feridas.",
     "pendente": false,
     "nivel": 4,
     "efeito": "estado"
