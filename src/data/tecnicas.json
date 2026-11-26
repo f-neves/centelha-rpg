@@ -3431,7 +3431,7 @@
       "aguentar-firme"
     ],
     "aliases": [],
-    "texto": "Reduz todas as penalidades de ferimento em 1.",
+    "texto": "Reduz todas as penalidades de ferimento em 1. Soma com a Técnica Aguentar Firme: a Aguentar Firme zera o Machucado, e esta tira 1 dos estados piores.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
@@ -3449,7 +3449,7 @@
       "cerrar-os-dentes"
     ],
     "aliases": [],
-    "texto": "Ao chegar a 0 PV, fica de pé por mais 6 Ticks.",
+    "texto": "Ao chegar a 0 PV, fica de pé por mais 6 Ticks. Soma com a Técnica Segurar o Baque.",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
