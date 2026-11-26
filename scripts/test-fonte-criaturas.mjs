@@ -31,9 +31,9 @@ const motorSobre = (fixture, nome) => {
 // ---- o site de verdade
 const site = lerSite();
 const cmp = compararComFixture(site, fix);
-ok(Object.keys(site).length === Object.keys(fix.criaturas).length, `o site e o fixture têm as mesmas criaturas (${Object.keys(site).length})`);
 ok(cmp.semEsperado.length === 0, 'toda criatura do site tem entrada no fixture: ' + cmp.semEsperado.join(', '));
 ok(cmp.semSite.length === 0, 'toda criatura do fixture tem JSON no site: ' + cmp.semSite.join(', '));
+ok(Object.keys(site).length === Object.keys(fix.criaturas).length, `o site e o fixture têm as mesmas criaturas (${Object.keys(site).length})`);
 ok(cmp.diferencas.length === 0, 'a entrada do fixture é a do site em toda criatura; diferem: ' + cmp.diferencas.slice(0, 5).map((d) => `${d.id} ${d.caminho}`).join('; ') + ' (rode node scripts/mostra-esperado-fonte.mjs)');
 const real = motorSobre(fixtureComSite(site, fix), 'real');
 ok(real.status === 0, 'o motor, sobre a entrada do SITE, dá o esperado do fixture em toda criatura:\n' + (real.stdout + real.stderr).slice(-600));

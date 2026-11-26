@@ -10,8 +10,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export const RAIZ = path.resolve(path.dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1')), '..');
-export const PASTA_SITE = path.join(RAIZ, 'src', 'data', 'bestiario');
-export const ARQ_FIXTURE = path.join(RAIZ, 'scripts', 'fixtures', 'criaturas-esperado.json');
+// BESTIARIO_SITE e BESTIARIO_FIXTURE trocam a pasta e o fixture (os testes usam, numa cópia em os.tmpdir(); o padrão é o do repositório)
+export const PASTA_SITE = process.env.BESTIARIO_SITE ? path.resolve(process.env.BESTIARIO_SITE) : path.join(RAIZ, 'src', 'data', 'bestiario');
+export const ARQ_FIXTURE = process.env.BESTIARIO_FIXTURE ? path.resolve(process.env.BESTIARIO_FIXTURE) : path.join(RAIZ, 'scripts', 'fixtures', 'criaturas-esperado.json');
 
 export const lerFixture = (arq = ARQ_FIXTURE) => JSON.parse(fs.readFileSync(arq, 'utf8'));
 export const textoFixture = (fix) => JSON.stringify(fix, null, 1) + '\n';

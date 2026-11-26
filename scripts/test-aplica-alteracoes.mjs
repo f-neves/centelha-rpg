@@ -139,5 +139,48 @@ for (const [id, caminho, de, para, rot] of [
 ok(numerosDe('devolve 1d6 PV') === numerosDe('1d6 PV devolvidos') && numerosDe('1,5 m') === numerosDe('1.5 m') && numerosDe('6 Ticks') !== numerosDe('7 Ticks'), 'numerosDe compara os números do texto, e não a string');
 ok(ehNumero({ cam: ['ataques', 0, 'dado'], antes: '1d6', depois: '2d6' }) && ehNumero({ cam: ['deslocamento', 'terra', 'batalha'], antes: 4, depois: 5 }) && !ehNumero({ cam: ['imagens', 0], antes: 'a2.webp', depois: 'b3.webp' }), 'ehNumero: dado e deslocamento entram; imagem não');
 
+// ---- criatura NOVA a partir de outra (corte 2): o JSON inteiro com id novo
+const base = lerC(pasta, 'lobo');
+const nova = (id, muda = (c) => c) => { const c = structuredClone(base); c.id = id; c.nome = 'Lobo de teste'; c.nomeIngles = 'Test wolf'; delete c.idAntigo; c.imagens = []; return { id, base: 'lobo', criatura: muda(c) }; };
+const arqNovas = (nome, novas) => arquivoDeMudancas(nome, [], { novas });
+let pvNova = null;
+{
+  const r = await planejar(JSON.parse(fs.readFileSync(arqNovas('nova-ok', [nova('lobo-teste')]), 'utf8')), pasta);
+  ok(r.erros.length === 0 && r.criaturas.length === 1 && r.criaturas[0].nova === true, 'criatura nova: aceita (schema e motor): ' + JSON.stringify(r.erros).slice(0, 300));
+  ok(r.numeros.some((x) => x.id === 'lobo-teste' && /^\(criatura nova\) pv: \d+/.test(x.derivado)), 'criatura nova: os números do motor dela entram na lista à parte');
+  pvNova = Number(r.numeros.find((x) => x.id === 'lobo-teste' && /pv: \d+/.test(x.derivado)).derivado.match(/pv: (\d+)/)[1]);
+  const p4 = copiaSite('nova');
+  const bk4 = path.join(tmp, 'bk4');
+  const a4 = cli(arqNovas('nova-ok2', [nova('lobo-teste')]), '--site', p4, '--aplicar', '--sem-geradores', '--backup', bk4);
+  ok(a4.status === 0 && /NOVA criatura lobo-teste \(a partir de lobo\)/.test(a4.stdout), 'criatura nova: --aplicar grava e diz "NOVA criatura": ' + a4.stderr.slice(-200));
+  ok(fs.readFileSync(path.join(p4, 'lobo-teste.json'), 'utf8') === textoJson(JSON.parse(fs.readFileSync(path.join(p4, 'lobo-teste.json'), 'utf8'))) && lerC(p4, 'lobo-teste').id === 'lobo-teste', 'criatura nova: o arquivo é o JSON.stringify(indent 2), com o id novo');
+  ok(!fs.existsSync(path.join(bk4, 'lobo-teste.json')) && /criatura nova sem entrada no fixture/.test(a4.stdout) && /--adiciona lobo-teste/.test(a4.stdout), 'criatura nova: não há "antes" a guardar, e o aviso manda pôr a criatura no fixture com --adiciona');
+}
+const recusa = async (nome, novas, re) => { const r = await planejar(JSON.parse(fs.readFileSync(arqNovas(nome, novas), 'utf8')), pasta); ok(r.erros.length === 1 && re.test(r.erros[0]) && r.criaturas.length === 0, `criatura nova recusada (${nome}): ` + JSON.stringify(r.erros).slice(0, 200)); };
+await recusa('nova-existe', [nova('lobo')], /já existe um JSON/);
+await recusa('nova-id', [nova('Lobo Teste')], /id inválido/);
+await recusa('nova-schema', [nova('lobo-quebrado', (c) => { c.atributos.forca = 'muito forte'; return c; })], /não passa/);
+await recusa('nova-id-dentro', [{ ...nova('lobo-a'), criatura: { ...nova('lobo-b').criatura } }], /não passa/);
+{
+  // um lote com uma criatura nova boa e uma ruim: o lote inteiro cai
+  const r = await planejar(JSON.parse(fs.readFileSync(arqNovas('nova-lote', [nova('lobo-bom'), nova('lobo-ruim', (c) => { c.atributos.forca = 'x'; return c; })]), 'utf8')), pasta);
+  ok(r.erros.length === 1 && r.criaturas.length === 0, 'criatura nova: uma ruim derruba o lote inteiro');
+}
+// o --adiciona do mostra-esperado põe a criatura nova no fixture (numa cópia), e o teste de fonte passa a aceitá-la
+{
+  const pSite = copiaSite('adiciona'), pFix = path.join(tmp, 'fixture-adiciona.json');
+  fs.copyFileSync(path.join(RAIZ, 'scripts', 'fixtures', 'criaturas-esperado.json'), pFix);
+  fs.writeFileSync(path.join(pSite, 'lobo-teste.json'), textoJson(nova('lobo-teste').criatura));
+  const env = { ...process.env, BESTIARIO_SITE: pSite, BESTIARIO_FIXTURE: pFix };
+  const sem = spawnSync('node', ['scripts/test-fonte-criaturas.mjs'], { cwd: RAIZ, encoding: 'utf8', env });
+  ok(sem.status !== 0 && /lobo-teste/.test(sem.stdout + sem.stderr), 'criatura nova sem entrada no fixture: o test-fonte-criaturas FALHA e nomeia a criatura');
+  const add = spawnSync('node', ['scripts/mostra-esperado-fonte.mjs', '--adiciona', 'lobo-teste'], { cwd: RAIZ, encoding: 'utf8', env });
+  ok(add.status === 0 && /\+ lobo-teste: entrada do site e esperado do motor/.test(add.stdout), 'mostra-esperado --adiciona: põe a criatura nova no fixture: ' + add.stderr.slice(-200));
+  const fx = JSON.parse(fs.readFileSync(pFix, 'utf8')).criaturas['lobo-teste'];
+  ok(fx && fx.entrada.categoria === base.categoria && fx.esperado.pv === pvNova && Array.isArray(fx.esperado.ataques) && fx.esperado.ataques.length === base.ataques.length, 'a entrada do fixture é a do site e o esperado traz o PV que o motor calcula para a criatura nova (' + pvNova + ') e os ataques: ' + JSON.stringify(fx && fx.esperado.pv));
+  const com = spawnSync('node', ['scripts/test-fonte-criaturas.mjs'], { cwd: RAIZ, encoding: 'utf8', env });
+  ok(com.status === 0, 'depois do --adiciona o test-fonte-criaturas aceita a criatura nova: ' + (com.stdout + com.stderr).slice(-400));
+}
+
 fs.rmSync(tmp, { recursive: true, force: true });
 console.log(`✓ test-aplica-alteracoes: dry-run não grava, aplicar preserva formato e ordem (diff de uma linha) e guarda o antes, conflito deixa a criatura de fora, schema derruba o lote, número vai à parte (${n} conferências)`);

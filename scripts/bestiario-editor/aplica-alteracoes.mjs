@@ -145,6 +145,28 @@ export async function planejar(arquivo, pasta = PASTA_PADRAO) {
     const dif = diferencasDerivadas(derivados(M, antes), derivados(M, depois));
     for (const d of dif) numeros.push({ id, derivado: d });
   }
+  // criaturas NOVAS ("a partir de outra"): o JSON inteiro, com id novo; entram na mesma lista, sem "antes"
+  const idsNovos = new Set();
+  for (const n of arquivo.novas || []) {
+    const id = n && n.id;
+    if (typeof id !== 'string' || !/^[a-z0-9][a-z0-9-]*$/.test(id)) { erros.push(`criatura nova com id inválido: ${curto(id)} (minúsculas, números e hífens)`); continue; }
+    if (idsNovos.has(id)) { erros.push(`${id}: criatura nova repetida no arquivo`); continue; }
+    idsNovos.add(id);
+    const arq = path.join(pasta, id + '.json');
+    if (fs.existsSync(arq)) { erros.push(`${id}: já existe um JSON com esse id (criatura nova não sobrescreve)`); continue; }
+    if (porId.has(id)) { erros.push(`${id}: o arquivo traz criatura nova e alterações com o mesmo id`); continue; }
+    const depois = n.criatura;
+    try {
+      if (!depois || depois.id !== id) throw new Error('o id de dentro do JSON tem de ser o mesmo');
+      criaturaParaLeituraSchema.parse(depois);
+      M.vistaPublicaCriatura(depois);
+    } catch (e) {
+      erros.push(`${id}: a criatura nova não passa (${String(e.errors ? JSON.stringify(e.errors.slice(0, 3).map((x) => `${x.path.join('.')}: ${x.message}`)) : e.message).slice(0, 400)})`);
+      continue;
+    }
+    criaturas.push({ id, arq, antes: null, depois, alteracoes: [], nova: true, base: n.base });
+    for (const [k, v] of Object.entries(derivados(M, depois))) numeros.push({ id, derivado: `(criatura nova) ${k}: ${curto(v)}` });
+  }
   if (erros.length) criaturas.length = 0;
   return { criaturas, conflitos, erros, numeros };
 }
@@ -158,6 +180,7 @@ export function relatorio(plano, aplicar) {
   }
   if (!plano.erros.length) {
     L.push(`${aplicar ? 'APLICADO' : 'DRY-RUN'}: ${plano.criaturas.length} criatura(s) com mudança`);
+    for (const c of plano.criaturas) if (c.nova) L.push(`  NOVA criatura ${c.id}${c.base ? ' (a partir de ' + c.base + ')' : ''}: ${path.basename(c.arq)}`);
     for (const c of plano.criaturas) for (const a of c.alteracoes) L.push(`  ${c.id} ${rotulo(a.cam)}: ${curto(a.temAntes ? a.antes : undefined)} -> ${curto(a.temDepois ? a.depois : undefined)}`);
   }
   if (plano.numeros.length) {
@@ -180,7 +203,7 @@ export function gravar(plano, backup) {
   fs.mkdirSync(backup, { recursive: true });
   const arquivos = [];
   for (const c of plano.criaturas) {
-    fs.copyFileSync(c.arq, path.join(backup, path.basename(c.arq)));
+    if (!c.nova) fs.copyFileSync(c.arq, path.join(backup, path.basename(c.arq)));
     fs.writeFileSync(c.arq, textoJson(c.depois), 'utf8');
     arquivos.push(c.arq);
   }
@@ -209,6 +232,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     if (plano.criaturas.some((c) => c.alteracoes.some((a) => String(a.cam[0]) === 'fonte'))) roda('node', 'scripts/gen-fontes-criaturas.mjs');
     roda('npm', 'run', 'validate');
   }
+  const novasIds = plano.criaturas.filter((c) => c.nova).map((c) => c.id);
+  if (novasIds.length) console.log(`\nATENÇÃO: criatura nova sem entrada no fixture do motor deixa o test-fonte-criaturas vermelho. Rode: node scripts/mostra-esperado-fonte.mjs --adiciona ${novasIds.join(' ')}  (o esperado sai do motor e a Revisora o confere: o commit diz "esperado conferido por").`);
   console.log('\nArquivos para o commit (por pathspec): ' + arquivos.map((f) => path.relative(RAIZ, f).replaceAll(path.sep, '/')).join(' '));
   console.log('Os gerados (src/data/inimigos.json, src/data/monsters*.json, ...) entram no mesmo commit se mudaram: git status --short.');
 }

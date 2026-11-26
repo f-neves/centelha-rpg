@@ -4,6 +4,8 @@
 //                                                               diz do ESPERADO (para a Revisora conferir à mão)
 //   node scripts/mostra-esperado-fonte.mjs <id>                 só essa criatura
 //   node scripts/mostra-esperado-fonte.mjs --grava <id>...      põe no fixture a entrada do site dessas criaturas (o esperado NÃO muda)
+//   node scripts/mostra-esperado-fonte.mjs --adiciona <id>...   põe no fixture a criatura NOVA do site (criada pelo editor): a entrada é a do site e o esperado
+//                                                               é o que o motor calcula, A CONFERIR pela Revisora (commit: "esperado conferido por").
 //   node scripts/mostra-esperado-fonte.mjs --atualiza-esperado <id>...   põe no fixture o esperado que o motor calcula para a entrada
 //                                                               do site. SÓ DEPOIS da conferência da Revisora: o commit diz "esperado conferido por".
 import fs from 'node:fs';
@@ -11,14 +13,34 @@ import { carregarTS } from './lib-ts.mjs';
 import { ARQ_FIXTURE, lerFixture, lerSite, textoFixture, compararComFixture, entradaDoSite, chavesDaEntrada } from './lib-fonte-criaturas.mjs';
 
 const args = process.argv.slice(2);
-const grava = args.includes('--grava'), atualiza = args.includes('--atualiza-esperado');
+const grava = args.includes('--grava'), atualiza = args.includes('--atualiza-esperado'), adiciona = args.includes('--adiciona');
 const ids = args.filter((a) => !a.startsWith('--'));
 const fix = lerFixture(), site = lerSite();
 const M = await carregarTS('src/lib/motor.ts');
 const slug = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().replace(/[^a-z0-9]+/g, '-');
 const cmp = compararComFixture(site, fix);
-const alvo = ids.length ? ids : [...new Set(cmp.diferencas.map((d) => d.id))];
 const chaves = chavesDaEntrada(fix);
+if (adiciona) {
+  const cap = (s) => String(s).replace(/^./, (m) => m.toUpperCase());
+  for (const id of ids) {
+    if (!site[id]) { console.log(`✘ ${id}: sem JSON no site`); continue; }
+    if (fix.criaturas[id]) { console.log(`✘ ${id}: já tem entrada no fixture (use --atualiza-esperado)`); continue; }
+    const entrada = entradaDoSite(site[id], chaves), r = M.criatura(entrada);
+    const esperado = {};
+    for (const k of ['pv', 'pesoErguido', 'faixa']) esperado[k] = r[k];
+    esperado.tamanho = cap(r.tamanho);
+    if (r.segundoTamanho) esperado.segundoTamanho = cap(r.segundoTamanho);
+    for (const k of ['esquiva', 'bloqueio', 'energia', 'defesaMental', 'defesaSocial', 'iniciativa', 'mana']) esperado[k] = r[k];
+    esperado.absorcao = r.absorcao;
+    esperado.ataques = r.ataques.map((a) => ({ nome: a.nome, velocidade: a.velocidade, danoMedio: a.danoMedio, ...(a.jogada == null ? {} : { jogada: a.jogada - (a.acerto || 0) }) }));
+    fix.criaturas[id] = { sha256: null, entrada, esperado };
+    console.log(`+ ${id}: entrada do site e esperado do motor (CONFIRA à mão): pv ${r.pv}, faixa ${r.faixa}, tamanho ${r.tamanho}, Esquiva ${r.esquiva}, ${r.ataques.length} ataque(s)`);
+  }
+  fix.fonte.fichas = Object.keys(fix.criaturas).length;
+  fs.writeFileSync(ARQ_FIXTURE, textoFixture(fix)); console.log('\nfixture gravado.');
+  process.exit(0);
+}
+const alvo = ids.length ? ids : [...new Set(cmp.diferencas.map((d) => d.id))];
 const curto = (v) => (JSON.stringify(v) ?? 'ausente').slice(0, 150);
 
 for (const id of alvo) {

@@ -34,7 +34,7 @@
 </style>
 </head>
 <body>
-<div id="topo"><b>Editor de criaturas</b><span id="resumo"></span><button class="p" id="bExportar">Exportar alterações</button><button id="bLimpar">Descartar tudo</button></div>
+<div id="topo"><b>Editor de criaturas</b><span id="resumo"></span><button id="bNova" title="Cria uma criatura nova copiando a que está aberta (o id e o nome mudam)">Nova criatura a partir desta…</button><button class="p" id="bExportar">Exportar alterações</button><button id="bLimpar">Descartar tudo</button></div>
 <div id="aviso"><b>A ficha final é a do site.</b> O card abaixo é o de HOJE, estático, do último build; os números ao lado são ao vivo, calculados pelo mesmo motor do site. O editor grava só um arquivo de alterações: ele é aplicado nos JSON por <code>aplica-alteracoes.mjs</code>.</div>
 <div id="grade">
   <section id="lista"><input id="busca" placeholder="Buscar criatura…" aria-label="Buscar criatura"><ul id="itens"></ul></section>
@@ -51,6 +51,8 @@ const CARTOES = JSON.parse(document.getElementById('cartoes').textContent);
 const POR_ID = Object.fromEntries(DADOS.map((x) => [x.id, x]));
 const CHAVE = 'fichas-editor-fonte-v2';
 let edicoes = {};          // id -> { chaveDoCaminho: { cam, antes (undefined = não existia), depois } }
+let novas = {};            // id da criatura NOVA -> { base, criatura (o JSON como nasceu, copiado da base) }
+const CHAVE_NOVAS = 'fichas-editor-fonte-v2-novas';
 let atual = null;          // id da criatura aberta
 let copia = null;          // a criatura aberta, com as edições
 const $ = (id) => document.getElementById(id);
@@ -58,10 +60,13 @@ const el = (tag, attrs = {}, ...filhos) => { const e = document.createElement(ta
 const igual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 const clone = (v) => (v === undefined ? undefined : JSON.parse(JSON.stringify(v)));
 let memoriaOk = true;
-function carregar() { try { const s = localStorage.getItem(CHAVE); if (s) edicoes = JSON.parse(s); } catch (e) { memoriaOk = false; } }
-function salvar() { if (!memoriaOk) return; try { localStorage.setItem(CHAVE, JSON.stringify(edicoes)); } catch (e) { memoriaOk = false; } }
-const nEdicoes = () => Object.values(edicoes).reduce((s, m) => s + Object.keys(m).length, 0);
-function resumo() { $('resumo').textContent = `${nEdicoes()} campo(s) alterado(s) em ${Object.keys(edicoes).filter((i) => Object.keys(edicoes[i]).length).length} criatura(s)${memoriaOk ? '' : ' (sem memória do navegador: exporte antes de sair)'}`; }
+function registrarNova(id, base, criatura) { novas[id] = { base, criatura }; POR_ID[id] = { id, titulo: criatura.nome + ' (nova)', criatura: clone(criatura) }; DADOS.push(POR_ID[id]); }
+function carregar() {
+  try { const s = localStorage.getItem(CHAVE); if (s) edicoes = JSON.parse(s); const n = localStorage.getItem(CHAVE_NOVAS); if (n) for (const [id, v] of Object.entries(JSON.parse(n))) registrarNova(id, v.base, v.criatura); } catch (e) { memoriaOk = false; }
+}
+function salvar() { if (!memoriaOk) return; try { localStorage.setItem(CHAVE, JSON.stringify(edicoes)); localStorage.setItem(CHAVE_NOVAS, JSON.stringify(novas)); } catch (e) { memoriaOk = false; } }
+const nEdicoes = () => Object.values(edicoes).reduce((s, m) => s + Object.keys(m).length, 0) + Object.keys(novas).length;
+function resumo() { $('resumo').textContent = `${nEdicoes() - Object.keys(novas).length} campo(s) alterado(s) em ${Object.keys(edicoes).filter((i) => Object.keys(edicoes[i]).length).length} criatura(s)${Object.keys(novas).length ? ' e ' + Object.keys(novas).length + ' criatura(s) nova(s)' : ''}${memoriaOk ? '' : ' (sem memória do navegador: exporte antes de sair)'}`; }
 
 function pegar(obj, cam) { let v = obj; for (const k of cam) { if (v === null || typeof v !== 'object' || !(k in v)) return undefined; v = v[k]; } return v; }
 function por(obj, cam, valor) { let v = obj; for (const k of cam.slice(0, -1)) v = v[k]; if (valor === undefined) delete v[cam[cam.length - 1]]; else v[cam[cam.length - 1]] = valor; }
@@ -162,15 +167,24 @@ function numeros() {
 
 function listar() {
   const q = $('busca').value.trim().toLowerCase(), ul = $('itens'); ul.textContent = '';
-  for (const x of DADOS) { if (q && !(x.titulo.toLowerCase().includes(q) || x.id.includes(q))) continue; const li = el('li', { 'data-id': x.id }, x.titulo); li.addEventListener('click', () => abrir(x.id)); if (x.id === atual) li.classList.add('sel'); if (edicoes[x.id]) li.classList.add('mud'); ul.append(li); }
+  for (const x of DADOS) { if (q && !(x.titulo.toLowerCase().includes(q) || x.id.includes(q))) continue; const li = el('li', { 'data-id': x.id }, x.titulo); li.addEventListener('click', () => abrir(x.id)); if (x.id === atual) li.classList.add('sel'); if (edicoes[x.id] || novas[x.id]) li.classList.add('mud'); ul.append(li); }
 }
-function marcarLista() { document.querySelectorAll('#itens li').forEach((li) => li.classList.toggle('mud', !!edicoes[li.dataset.id])); }
+function marcarLista() { document.querySelectorAll('#itens li').forEach((li) => li.classList.toggle('mud', !!edicoes[li.dataset.id] || !!novas[li.dataset.id])); }
 
+function novaCriatura() {
+  if (!atual) { alert('Abra primeiro a criatura que serve de modelo.'); return; }
+  const id = (prompt('id da criatura nova (minúsculas, números e hífens), copiada de "' + POR_ID[atual].titulo + '":') || '').trim();
+  if (!id) return;
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(id) || POR_ID[id]) { alert(POR_ID[id] ? 'Esse id já existe.' : 'id inválido: use minúsculas, números e hífens.'); return; }
+  const c = aplicarEdicoes(atual);
+  c.id = id; c.nome = id.split('-').map((p, i) => (i ? p : p.charAt(0).toUpperCase() + p.slice(1))).join(' '); c.nomeIngles = c.nome; delete c.idAntigo; c.imagens = [];
+  registrarNova(id, atual, c); salvar(); resumo(); listar(); abrir(id);
+}
 function exportar() {
   const alteracoes = [];
-  for (const [id, m] of Object.entries(edicoes)) for (const e of Object.values(m)) { const a = { id, caminho: e.cam }; if (e.antes !== undefined) a.antes = e.antes; if (e.depois !== undefined) a.depois = e.depois; alteracoes.push(a); }
+  for (const [id, m] of Object.entries(edicoes)) if (!novas[id]) for (const e of Object.values(m)) { const a = { id, caminho: e.cam }; if (e.antes !== undefined) a.antes = e.antes; if (e.depois !== undefined) a.depois = e.depois; alteracoes.push(a); }
   const agora = new Date(), carimbo = agora.toISOString().slice(0, 16).replace(/[:T]/g, '-');
-  const json = { formato: 'fichas-editor-alteracoes', versao: 2, exportado: agora.toISOString(), alteracoes };
+  const json = { formato: 'fichas-editor-alteracoes', versao: 2, exportado: agora.toISOString(), alteracoes, novas: Object.entries(novas).map(([id, n]) => ({ id, base: n.base, criatura: aplicarEdicoes(id) })) };
   const url = URL.createObjectURL(new Blob([JSON.stringify(json, null, 1)], { type: 'application/json' }));
   const a = el('a', { href: url, download: `alteracoes-fichas-${carimbo}.json` }); document.body.append(a); a.click(); a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 2000);
@@ -179,7 +193,8 @@ function exportar() {
 
 $('busca').addEventListener('input', listar);
 $('bExportar').addEventListener('click', exportar);
-$('bLimpar').addEventListener('click', () => { if (!nEdicoes() || confirm('Descartar todas as alterações não exportadas?')) { edicoes = {}; salvar(); resumo(); listar(); if (atual) abrir(atual); } });
+$('bNova').addEventListener('click', novaCriatura);
+$('bLimpar').addEventListener('click', () => { if (!nEdicoes() || confirm('Descartar todas as alterações não exportadas?')) { for (const id of Object.keys(novas)) { delete POR_ID[id]; const k = DADOS.findIndex((x) => x.id === id); if (k >= 0) DADOS.splice(k, 1); if (atual === id) atual = null; } edicoes = {}; novas = {}; salvar(); resumo(); listar(); if (atual) abrir(atual); } });
 carregar(); resumo(); listar();
 </script>
 </body>

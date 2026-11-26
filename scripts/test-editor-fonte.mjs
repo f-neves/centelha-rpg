@@ -30,7 +30,7 @@ try {
   const p = await br.newPage();
   const erros = [];
   p.on('pageerror', (e) => erros.push(String(e)));
-  p.on('dialog', (d) => d.accept());
+  p.on('dialog', (d) => (d.type() === 'prompt' ? d.accept('lobo-teste') : d.accept()));
   await p.setViewport({ width: 1500, height: 900 });
   await p.goto(pathToFileURL(arq).href, { waitUntil: 'load', timeout: 60000 });
   ok(await p.$$eval('#itens li', (l) => l.length) === criaturas, `a lista mostra as ${criaturas} criaturas`);
@@ -96,6 +96,22 @@ try {
   ok(plano2.numeros.some((n) => n.id === 'lobo' && n.caminho === `ataques.${totalAntes}`), 'e o ataque novo entra na lista de mudanças de número');
   await p.evaluate(() => [...document.querySelectorAll('#campos button.peq')].find((b) => /tirar este item novo/.test(b.textContent)).click());
   ok(/0 campo\(s\) alterado\(s\)/.test(await p.$eval('#resumo', (e) => e.textContent)), '"tirar este item novo" desfaz a linha nova');
+  // corte 2: CRIATURA NOVA a partir da aberta
+  await p.click('#itens li[data-id="lobo"]');
+  await p.click('#bNova');
+  ok(/Lobo teste \(nova\)/.test(await p.$eval('#tit', (e) => e.textContent)) && await p.$('#itens li[data-id="lobo-teste"].mud') !== null, '"Nova criatura a partir desta" abre a criatura nova (id lobo-teste, nome "Lobo teste") e a marca na lista');
+  ok(/1 criatura\(s\) nova\(s\)/.test(await p.$eval('#resumo', (e) => e.textContent)), 'o resumo conta a criatura nova');
+  const vigorN = await p.evaluateHandle(() => [...document.querySelectorAll('#campos .campo label')].find((l) => l.title === 'atributos.vigor').parentElement.querySelector('input'));
+  await vigorN.evaluate((e) => { e.value = '5'; e.dispatchEvent(new Event('input', { bubbles: true })); });
+  await p.click('#bExportar');
+  const exp3 = await p.evaluate(() => window.__ULTIMA_EXPORTACAO);
+  ok(exp3.alteracoes.length === 0 && exp3.novas.length === 1 && exp3.novas[0].id === 'lobo-teste' && exp3.novas[0].base === 'lobo' && exp3.novas[0].criatura.id === 'lobo-teste' && exp3.novas[0].criatura.atributos.vigor === 5, 'o Exportar traz a criatura nova inteira em `novas` (id, base, JSON com o Vigor editado), e nenhuma alteração solta');
+  const plano3 = await planejar(exp3);
+  ok(plano3.erros.length === 0 && plano3.criaturas.length === 1 && plano3.criaturas[0].nova && plano3.numeros.some((n) => n.id === 'lobo-teste' && /criatura nova\) pv/.test(n.derivado || '')), 'o aplicador aceita a criatura nova (dry-run no site de verdade) e lista os números do motor dela: ' + JSON.stringify(plano3.erros).slice(0, 200));
+  await p.reload({ waitUntil: 'load' });
+  ok(await p.$('#itens li[data-id="lobo-teste"]') !== null, 'a criatura nova sobrevive ao recarregar (memória do navegador)');
+  await p.click('#bLimpar');
+  ok(await p.$('#itens li[data-id="lobo-teste"]') === null && /0 campo\(s\) alterado\(s\) em 0 criatura\(s\)$/.test(await p.$eval('#resumo', (e) => e.textContent)), 'descartar tudo tira a criatura nova da lista e zera o resumo');
   ok(erros.length === 0, 'nenhum erro de página: ' + erros.join('; ').slice(0, 300));
 } finally { await br.close(); fs.rmSync(tmp, { recursive: true, force: true }); }
 if (falhas.length) { console.error(`✘ ${falhas.length} falha(s)`); process.exit(1); }
