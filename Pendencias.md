@@ -705,7 +705,7 @@ Fechados (33): L5, L6, L9, L11, L12, L13, L14, L15, L17, L18, L19, L21, L22, L34
 | N30 | aberto | FAZER | O Frenesi (C20, 25/11/2026) tira o −1d6 acumulado por golpe das Rajadas por 6 Ticks; o Grid não lê a Técnica. |
 | N31 | aberto | FAZER | A Investida Devastadora (C21, 25/11/2026) soma +1 de dano a cada 2 m percorridos, até +7, e derruba e empurra … |
 | N32 | aberto | FAZER | O card "Ver a ficha por dentro" da mesa mostra o chip cru de uma Técnica removida (achado da Revisora no D16, … |
-| N33 | aberto | DECIDIR | O livro diz Área grau 3 = 2 m e o Grid desenha os 28 Efeitos de zona e aura pela Explosão no mesmo grau (3,5 … |
+| N33 | aberto | DECIDIR | O livro diz Área grau 3 = 2 m e o Grid desenha ao menos 28 Efeitos de zona e aura pela régua do molde no … |
 | N34 | aberto | DECIDIR | Os sete Efeitos de forma fora da tabela: trocar ou tirar a Área muda o que a caixa do Grid lê (RT-069, T21 do … |
 
 Fechados (0): nenhum.
