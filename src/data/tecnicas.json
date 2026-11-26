@@ -3243,7 +3243,7 @@
     "texto": "Respira fundo: +3 em Vigor + Resistência contra o Ambiente e na conta dos Ticks de ar (30 Ticks a mais).",
     "pendente": false,
     "nivel": 1,
-    "efeito": "estado"
+    "efeito": "bonus"
   },
   {
     "id": "marcha-forcada",
