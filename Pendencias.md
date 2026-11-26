@@ -46,13 +46,13 @@ está na seção 3.
 | E | Social, Mental e Antecedentes | [`E-social-mental-antecedentes.md`](docs/pendencias/E-social-mental-antecedentes.md) | 12 | 8 | 0 | 4 | 0 | 4 | 4 | 0 | 0 | 0 |
 | F | Lore | [`F-lore.md`](docs/pendencias/F-lore.md) | 10 | 8 | 0 | 2 | 0 | 0 | 8 | 0 | 0 | 0 |
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 82 | 37 | 0 | 45 | 2 | 23 | 9 | 0 | 0 | 3 |
-| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 5 | 0 | 2 | 2 | 0 | 0 | 2 | 0 | 1 |
+| H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 4 | 0 | 3 | 1 | 1 | 1 | 0 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
 | J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **273** | **3** | **147** | **48** | **102** | **38** | **6** | **66** | **16** |
+| | **Total** | | **423** | **272** | **3** | **148** | **47** | **103** | **39** | **4** | **66** | **16** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -477,13 +477,12 @@ Fechados (45): G1, G3, G4, "As cinco físicas de toda sessão.", G5, G5b, G6, G7
 
 | Sigla | Estado | Marcação | Título |
 |---|---|---|---|
-| H3 | aberto | DECIDIR | Os quatro assuntos que a proposta levanta e não fecha |
+| H3 | aberto | AUTOR-REGRA | Os quatro assuntos que a proposta levanta e não fecha |
 | H4 | aberto, ADIADO | DECIDIR | O degrau de baixo do fator de forma: ÷2 ou ÷3? |
-| H5 | aberto | CONSERTAR | O Arco de Guerra não existe no catálogo. |
-| H6 | aberto | CONSERTAR | O teto de Força do Arco Curto diverge. |
+| H5 | aberto | FAZER | O Arco de Guerra não existe no catálogo. |
 | H7 | aberto | DECIDIR | A bancada de calibração não modela alcance. |
 
-Fechados (2): H1, H2.
+Fechados (3): H1, H2, H6.
 
 ### I · Mesa virtual · tempo real
 

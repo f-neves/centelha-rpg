@@ -15,7 +15,7 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   consciente**, e então apagar a nota de "proposta" e deixar só o valor final.
 - [x] **H2 · [FEITO] Portado.** Os campos antigos (`arremessoMassaBraco`, `arremessoParedeExp`,
   `arremessoR0`) não existem mais em `regras.json` (conferido em 08/09): só sobrou a régua nova.
-- [ ] **H3 · [DECIDIR] Os quatro assuntos que a proposta levanta e não fecha** (§7). **Funda e
+- [ ] **H3 · [AUTOR-REGRA] Os quatro assuntos que a proposta levanta e não fecha** (§7). **Funda e
   ferramentas que estendem o braço**: medido +30% a +70% na funda, +58% na correia grega, +81% no
   cabo do martelo, e a funda existe como arma do jogo sem número próprio (proposta: ×1,5, ao lado
   do fator de forma). **A energia que chega**: uma pedrinha de 2 g voa 94 m e entrega 2 J, que não
@@ -30,11 +30,11 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   mesmo e o baralho chega a **22% do alcance**, não aos 50% que o ÷2 promete. Fica em ÷2 por
   simplicidade; se incomodar em mesa, o conserto é uma tecla.
   **Adiado na rodada 96 (23/09/2026), por proposta do humano:** refinamento que ninguém sentiu falta em mesa; o próprio item diz que o conserto é uma tecla, se incomodar.
-- [ ] **H5 · [CONSERTAR] O Arco de Guerra não existe no catálogo.** Levantado em 24/09/2026, na
+- [ ] **H5 · [FAZER] O Arco de Guerra não existe no catálogo.** Levantado em 24/09/2026, na
   revisão econômica (achado do Comerciante). A tabela de Força e alcance dos arcos em
   `Arremesso.md:251-256` tem a linha "Arco de Guerra" (Força 6, livre 100 m), e o `armas.json` não
   tem essa arma. Decidir se ela entra no catálogo ou sai do texto.
-- [ ] **H6 · [CONSERTAR] O teto de Força do Arco Curto diverge.** Levantado em 24/09/2026, na
+- [x] **H6 · [CONSERTAR] O teto de Força do Arco Curto diverge.** Levantado em 24/09/2026, na
   revisão econômica (achado do Comerciante). `Arremesso.md:253` dá ao Arco Curto Força 2; o
   `armas.json` (`arco-curto`) dá `forcaCap` 3 (`armas.json:470`) e a descrição diz "Soma Força até +3"
   (`armas.json:452`). A mesma linha da tabela dá o alcance livre (40 m), então a correção tem de dizer
@@ -42,7 +42,8 @@ está no ar, e `Arremesso_Regra.md` é a **proposta nova**, em três regimes. A 
   - **Nota de 10/10/2026: respondida pela D-075.** Só o Arco Curto tem Força máxima padrão, e ela é 3 (como o
     `armas.json`); a Efetiva do Curto passa a ser 30 m, por arma (D-072), e a Máxima sai da tabela por Força no
     arco. O H5 (Arco de Guerra) segue aberto.
-- [ ] **H7 · [DECIDIR] A bancada de calibração não modela alcance.** Achado pela Executora em
+  Fechado em 26/11/2026 (varredura): D-075 "Só o Arco Curto tem Força máxima padrão (3)"; `armas.json:638` `forcaCap: 3`; `armas-e-armaduras.md:18,138` "Soma Força até 3"; Efetiva do Curto 30 m (`:46`). A linha velha (Força 2, 40 m) está em `Arremesso.md:253`, que o H5 já manda marcar
+- [ ] **H7 · [DECIDIR] [GRID-CÓDIGO] A bancada de calibração não modela alcance.** Achado pela Executora em
   27/09/2026, ao decidir NÃO rodar a alavanca "Arremesso contra Atirador" do item 6c do despacho
   da Regra do Quase-Acerto. `scripts/sim/motor.mjs`/`cena.mjs` (o harness) e `decisaoAutomatica`
   não modelam alcance nem posição além da distância inicial fixa da cena (as peças sempre nascem
