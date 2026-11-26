@@ -139,7 +139,7 @@ function fichaPers3(bloco, somaBase) {
 // dupla disponível: só Rajada, quando a arma permitir.
 const ARMA_POR_PERSONA = { pers1: 'espada-longa', pers2: 'arco-longo', pers4: 'adaga' };
 
-function combatentePersona(persona, bloco, somaPers12) {
+function combatentePersona(persona, bloco, somaPers12, copia = 1) {
   const ficha = persona === 'pers1' ? fichaPers1(bloco)
     : persona === 'pers2' ? fichaPers2(bloco)
     : persona === 'pers4' ? fichaPers4(bloco)
@@ -158,7 +158,7 @@ function combatentePersona(persona, bloco, somaPers12) {
   const penFisica = (destrezaRaw + esquivaRaw) * (REGRAS.derivados.defesa.mult ?? 2)
     + 2 * Math.min(Math.max(0, centelha), Math.max(0, esquivaRaw)) - r.defesa;
   return {
-    id: persona, nome: persona, tipo: 'persona',
+    id: copia > 1 ? `${persona}#${copia}` : persona, nome: persona, tipo: 'persona',
     pv: BASE_PV, pvMax: BASE_PV,
     defesaBase: r.defesa + (bloco.proezas?.defesa || 0),
     proezasDefesaAplicada: bloco.proezas?.defesa || 0,
@@ -182,11 +182,20 @@ function combatentePersona(persona, bloco, somaPers12) {
   };
 }
 
-function grupoCombatentes(centelha) {
+/**
+ * O grupo de referência: 4 personagens de uma Centelha (o de sempre), ou 4 × m (B14, 086, item 4: o desafio de 7 a 12 pela C-044,
+ * grupos de 4 × m personagens de Centelha 6, com as mesmas somas de ataque da Centelha 6 repetidas nas quatro funções). A cópia j
+ * de uma função leva o id `persN#j`; com m = 1 o grupo é byte a byte o de antes.
+ */
+function grupoCombatentes(centelha, m = 1) {
   const blocos = grupoDeReferencia(centelha);
   const somaPers12 = blocos.find((b) => b.persona === 'pers1').atributo + blocos.find((b) => b.persona === 'pers1').habilidade;
-  return blocos.map((b) => combatentePersona(b.persona, b, somaPers12));
+  const grupo = [];
+  for (let j = 1; j <= m; j++) for (const b of blocos) grupo.push(combatentePersona(b.persona, b, somaPers12, j));
+  return grupo;
 }
+/** A função de uma persona (`pers1` a `pers4`), sem o `#cópia`. */
+const papelDe = (p) => String(p.id).split('#')[0];
 
 // ============================================================== ficha da criatura
 // CARGA PELO CAMINHO REAL (B14, frente 3 do autor, etapa 1, 08/11/2026). A ficha antiga (`attrs`, `skills`, `poderes`)
@@ -889,7 +898,8 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   const soprosUsados = {};
   c.semGuarda = !!opts.semGuardaPressao;
   c.semPressaoFeita = !!opts.semPressaoFeita;
-  const personas = grupoCombatentes(centelha);
+  const grupoM = Math.max(1, opts.m || 1);
+  const personas = grupoCombatentes(centelha, grupoM);
   if (opts.semGuardaPressao) for (const p of personas) p.semGuarda = true;
   if (opts.semPressaoFeita) for (const p of personas) p.semPressaoFeita = true;
   // VARIANTE B2 da FASE 5 (30/09/2026, agora só de referência histórica): Pers.1 sem
@@ -909,7 +919,8 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
   const fonte = L.fonteRolada;
   let engajadaId = personas.find((p) => p.ataca)?.id; // pers1
   if (engajadaId) personas.find((p) => p.id === engajadaId).engajado = true;
-  const ordemPromocao = ['pers4', 'pers2', 'pers3'];
+  // com m > 1, as cópias do tanque (pers1) assumem a frente na ordem, e depois as da reserva, do arco e do suporte
+  const ordemPromocao = ['pers1', 'pers4', 'pers2', 'pers3'].flatMap((r) => personas.filter((p) => papelDe(p) === r).map((p) => p.id));
 
   const caidas = () => personas.filter((p) => p.caido).length;
   const promoverProximo = () => {
@@ -1023,7 +1034,7 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
     // ---- turno das personas ----
     for (const p of personas) {
       if (p.caido) continue;
-      if (p.id === 'pers3') {
+      if (papelDe(p) === 'pers3') {
         // Pers.3 também "age" todo turno (Cura/Estabilizar/Cobrir): zera e reexpõe,
         // igual a quem ataca (a pressão zera ao agir, qualquer ação, não só ataque).
         p.pressaoRecebida = 0; p.pressaoFeita = 0;
@@ -1035,13 +1046,14 @@ export function rodarBatalha(L, criaturaBase, centelha, seed, opts = {}) {
         } else if (personas.some((x) => x.caido)) {
           // Estabilizar (suposição 6): registrado, sem efeito numérico.
         } else {
-          const pers2 = personas.find((x) => x.id === 'pers2');
-          if (pers2 && !pers2.coberto) { pers2.defesaBase += 2; pers2.coberto = true; }
+          const pers2 = personas.find((x) => papelDe(x) === 'pers2' && !x.coberto);
+          if (pers2) { pers2.defesaBase += 2; pers2.coberto = true; }
         }
         continue;
       }
       p.atrasoTicks = Math.max(0, p.atrasoTicks - TICKS_POR_TURNO);
-      const atacaAgora = p.id === 'pers2' || p.id === engajadaId;
+      // com m > 1, todas as cópias do tanque também atacam (o grupo inteiro cerca a criatura); com m = 1 é só o engajado, como antes
+      const atacaAgora = papelDe(p) === 'pers2' || p.id === engajadaId || (grupoM > 1 && papelDe(p) === 'pers1');
       if (!atacaAgora || p.atrasoTicks > 0) continue;
       p.pressaoRecebida = 0; p.pressaoFeita = 0; // zera ao agir
       // Política 4: se Grave, reserva a Vontade pra Defesa (gasta de verdade em

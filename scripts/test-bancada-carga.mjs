@@ -211,5 +211,25 @@ if (temLaco) {
   ok(J(lutas(g, 200, { escolhaAtaque: 'melhor' }, 1)) !== J(lutas(comMulti, 200, { escolhaAtaque: 'melhor' }, 1)), 'controle: com teto 3 e dupla plantados, a luta do gigante muda (o laço lê a ficha)');
 }
 
+// 11. o grupo de 4 × m (086, item 4: o desafio de 7 a 12 pela C-044, grupos de 4 × m personagens de Centelha 6): com m = 1 o grupo e a luta
+// são os de antes, byte a byte (o resumo de 200 lutas por célula, calculado com o código de antes da generalização, b16402e1); com m > 1 mudam.
+if (temLaco) {
+  const crypto = await import('node:crypto');
+  const resumo = (id, k, opts) => {
+    const c = carrega(id), t = [];
+    for (let i = 0; i < 200; i++) { const r = B.rodarBatalha(B.L0, c, k, 20260930 + i * 7919, { regeneracao: true, ...opts }); t.push([r.fim, r.turnos, r.venceuGrupo ? 1 : 0, r.caidasNoFim]); }
+    return crypto.createHash('sha256').update(J(t)).digest('hex').slice(0, 16);
+  };
+  const ANTES = { 'trol@C0': '884967b00a0dc284', 'marilith@C6': '6627d8253bad634a', 'dragao-vermelho-adulto@C6': 'd928f346516ae5ff' };
+  for (const [cel, h] of Object.entries(ANTES)) {
+    const [id, c] = cel.split('@C');
+    ok(resumo(id, Number(c), {}) === h && resumo(id, Number(c), { m: 1 }) === h, `${cel}: com m = 1 as 200 lutas são as de antes, byte a byte (${h})`);
+  }
+  // CONTROLE NEGATIVO: com m = 2 a luta muda (o teste vê a diferença), e o grupo tem 8 personagens de ids únicos
+  ok(resumo('trol', 0, { m: 2 }) !== ANTES['trol@C0'], 'controle negativo: com m = 2 as 200 lutas do trol no C0 não são as de m = 1');
+  const g1 = B.grupoCombatentes(6, 1), g2 = B.grupoCombatentes(6, 2), g4 = B.grupoCombatentes(6, 4);
+  ok(g1.length === 4 && g2.length === 8 && g4.length === 16 && new Set(g4.map((p) => p.id)).size === 16 && J(g2.slice(0, 4).map((p) => p.id)) === J(g1.map((p) => p.id)), `o grupo tem 4, 8 e 16 personagens (4 × m), de ids únicos; as quatro primeiras funções são as de m = 1 (${g2.map((p) => p.id).join(' ')})`);
+}
+
 if (falhas.length) { console.error(`✘ test-bancada-carga: ${falhas.length} falha(s)`); process.exit(1); }
 console.log('✓ test-bancada-carga · a bancada carrega pelo caminho real (Couraça por perfil, multiataque, sopro sem jogada, regeneração, arma no Tamanho, arremesso pela Força) e luta com elas (doses, saída de área, escolha "melhor", Defesa da arma em uso, regeneração atrás da opção)');
