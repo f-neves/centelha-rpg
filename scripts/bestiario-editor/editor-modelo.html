@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="classico">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editor de criaturas · fonte única</title>
+<style>/*@CSS_SITE@*/</style>
+<style>
+  :root { --ed-bg: #f4ecd8; --ed-ink: #2b2118; --ed-line: #cdbd97; --ed-acc: #1d6b63; --ed-mud: #fff3c4; }
+  html, body { margin: 0; height: 100%; background: var(--ed-bg); color: var(--ed-ink); font: 15px/1.4 Georgia, 'EB Garamond', serif; }
+  #topo { background: #2b2118; color: #f3e8cf; padding: .55rem 1rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  #topo b { font-family: 'Cinzel', Georgia, serif; letter-spacing: .04em; }
+  #aviso { background: #fff3c4; border-bottom: 1px solid var(--ed-line); padding: .35rem 1rem; font-size: .88rem; }
+  #grade { display: grid; grid-template-columns: 17rem minmax(22rem, 1fr) minmax(22rem, 30rem); height: calc(100% - 5.4rem); }
+  #grade > section { overflow: auto; padding: .6rem .8rem; border-right: 1px solid var(--ed-line); }
+  #lista input { width: 100%; box-sizing: border-box; padding: .35rem; }
+  #lista ul { list-style: none; margin: .4rem 0 0; padding: 0; }
+  #lista li { padding: .22rem .35rem; cursor: pointer; border-radius: 4px; }
+  #lista li:hover { background: #e8dcbc; } #lista li.sel { background: var(--ed-acc); color: #fff; } #lista li.mud::after { content: ' ●'; color: #c0392b; }
+  h2 { font-size: 1.05rem; margin: .2rem 0 .5rem; } h3 { font-size: .95rem; margin: .8rem 0 .3rem; }
+  .campo { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr; gap: .4rem; align-items: start; margin: .15rem 0; }
+  .campo label { font-size: .78rem; color: #6b5a3c; word-break: break-all; padding-top: .25rem; }
+  .campo input[type=text], .campo input[type=number], .campo textarea { width: 100%; box-sizing: border-box; font: inherit; padding: .22rem .3rem; border: 1px solid var(--ed-line); background: #fffdf6; }
+  .campo textarea { min-height: 3.2rem; resize: vertical; }
+  .campo.mud input, .campo.mud textarea { background: var(--ed-mud); border-color: #d1a900; }
+  details { margin: .2rem 0 .2rem .4rem; } summary { cursor: pointer; font-size: .86rem; color: #4a3b22; }
+  table.nums { border-collapse: collapse; width: 100%; font-size: .86rem; } table.nums td, table.nums th { border-bottom: 1px solid var(--ed-line); padding: .15rem .3rem; text-align: left; }
+  .muda { background: var(--ed-mud); font-weight: bold; }
+  button { font: inherit; padding: .3rem .7rem; cursor: pointer; } button.p { background: var(--ed-acc); color: #fff; border: 0; border-radius: 4px; }
+  #cartao { zoom: .82; } #cartao .besta { max-width: 26rem; }
+  .nota { font-size: .8rem; color: #6b5a3c; }
+  button.peq { font-size: .8rem; padding: .15rem .5rem; margin: .2rem 0 .2rem .4rem; }
+  details.novo > summary { color: #1d6b63; font-weight: bold; }
+</style>
+</head>
+<body>
+<div id="topo"><b>Editor de criaturas</b><span id="resumo"></span><button id="bNova" title="Cria uma criatura nova copiando a que está aberta (o id e o nome mudam)">Nova criatura a partir desta…</button><button class="p" id="bExportar">Exportar alterações</button><button id="bLimpar">Descartar tudo</button></div>
+<div id="aviso"><b>A ficha final é a do site.</b> O card abaixo é o de HOJE, estático, do último build; os números ao lado são ao vivo, calculados pelo mesmo motor do site. O editor grava só um arquivo de alterações: ele é aplicado nos JSON por <code>aplica-alteracoes.mjs</code>.</div>
+<div id="grade">
+  <section id="lista"><input id="busca" placeholder="Buscar criatura…" aria-label="Buscar criatura"><ul id="itens"></ul></section>
+  <section id="forma"><h2 id="tit">Escolha uma criatura</h2><div id="campos"></div></section>
+  <section id="lado"><h3>Números (antes, depois)</h3><div id="nums" class="nota">Escolha uma criatura.</div><h3>Card de hoje</h3><div class="nota">Como está no site agora (estático).</div><div id="cartao"></div></section>
+</div>
+<script>/*@MOTOR@*/</script>
+<script type="application/json" id="dados">/*@DADOS@*/</script>
+<script type="application/json" id="cartoes">/*@CARTOES@*/</script>
+<script>
+"use strict";
+const DADOS = JSON.parse(document.getElementById('dados').textContent);
+const CARTOES = JSON.parse(document.getElementById('cartoes').textContent);
+const POR_ID = Object.fromEntries(DADOS.map((x) => [x.id, x]));
+const CHAVE = 'fichas-editor-fonte-v2';
+let edicoes = {};          // id -> { chaveDoCaminho: { cam, antes (undefined = não existia), depois } }
+let novas = {};            // id da criatura NOVA -> { base, criatura (o JSON como nasceu, copiado da base) }
+const CHAVE_NOVAS = 'fichas-editor-fonte-v2-novas';
+let atual = null;          // id da criatura aberta
+let copia = null;          // a criatura aberta, com as edições
+const $ = (id) => document.getElementById(id);
+const el = (tag, attrs = {}, ...filhos) => { const e = document.createElement(tag); for (const [k, v] of Object.entries(attrs)) { if (k === 'class') e.className = v; else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v); } for (const f of filhos) e.append(f); return e; };
+const igual = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+const clone = (v) => (v === undefined ? undefined : JSON.parse(JSON.stringify(v)));
+let memoriaOk = true;
+function registrarNova(id, base, criatura) { novas[id] = { base, criatura }; POR_ID[id] = { id, titulo: criatura.nome + ' (nova)', criatura: clone(criatura) }; DADOS.push(POR_ID[id]); }
+function carregar() {
+  try { const s = localStorage.getItem(CHAVE); if (s) edicoes = JSON.parse(s); const n = localStorage.getItem(CHAVE_NOVAS); if (n) for (const [id, v] of Object.entries(JSON.parse(n))) registrarNova(id, v.base, v.criatura); } catch (e) { memoriaOk = false; }
+}
+function salvar() { if (!memoriaOk) return; try { localStorage.setItem(CHAVE, JSON.stringify(edicoes)); localStorage.setItem(CHAVE_NOVAS, JSON.stringify(novas)); } catch (e) { memoriaOk = false; } }
+const nEdicoes = () => Object.values(edicoes).reduce((s, m) => s + Object.keys(m).length, 0) + Object.keys(novas).length;
+function resumo() { $('resumo').textContent = `${nEdicoes() - Object.keys(novas).length} campo(s) alterado(s) em ${Object.keys(edicoes).filter((i) => Object.keys(edicoes[i]).length).length} criatura(s)${Object.keys(novas).length ? ' e ' + Object.keys(novas).length + ' criatura(s) nova(s)' : ''}${memoriaOk ? '' : ' (sem memória do navegador: exporte antes de sair)'}`; }
+
+function pegar(obj, cam) { let v = obj; for (const k of cam) { if (v === null || typeof v !== 'object' || !(k in v)) return undefined; v = v[k]; } return v; }
+function por(obj, cam, valor) { let v = obj; for (const k of cam.slice(0, -1)) v = v[k]; if (valor === undefined) delete v[cam[cam.length - 1]]; else v[cam[cam.length - 1]] = valor; }
+
+function aplicarEdicoes(id) { const c = clone(POR_ID[id].criatura); for (const e of Object.values(edicoes[id] || {})) por(c, e.cam, clone(e.depois)); return c; }
+
+const dentroDeNovo = (cam) => Object.values(edicoes[atual] || {}).find((e) => e.novo && cam.length > e.cam.length && e.cam.every((k, i) => k === cam[i]));
+function mudou(cam, novo) {
+  const orig = POR_ID[atual].criatura, antes = pegar(orig, cam), chave = JSON.stringify(cam);
+  const pai = dentroDeNovo(cam);
+  if (pai) { por(pai.depois, cam.slice(pai.cam.length), clone(novo)); por(copia, cam, clone(novo)); salvar(); resumo(); numeros(); marcarLista(); return; }
+  edicoes[atual] ??= {};
+  if (igual(antes, novo)) delete edicoes[atual][chave]; else edicoes[atual][chave] = { cam, antes: clone(antes), depois: clone(novo) };
+  if (!Object.keys(edicoes[atual]).length) delete edicoes[atual];
+  por(copia, cam, clone(novo));
+  salvar(); resumo(); numeros(); marcarLista();
+}
+
+function folha(cam, valor) {
+  const rotulo = cam.join('.'), chave = JSON.stringify(cam);
+  const antes = pegar(POR_ID[atual].criatura, cam);
+  const div = el('div', { class: 'campo' + (edicoes[atual]?.[chave] || dentroDeNovo(cam) ? ' mud' : '') }, el('label', { title: rotulo }, String(cam[cam.length - 1])));
+  let ent;
+  const marca = () => div.classList.toggle('mud', !!edicoes[atual]?.[chave] || !!dentroDeNovo(cam));
+  if (typeof valor === 'number') {
+    ent = el('input', { type: 'number', step: 'any', value: String(valor) });
+    ent.addEventListener('input', () => { if (ent.value !== '' && !Number.isNaN(Number(ent.value))) { mudou(cam, Number(ent.value)); marca(); } });
+  } else if (typeof valor === 'boolean') {
+    ent = el('input', { type: 'checkbox' }); ent.checked = valor;
+    ent.addEventListener('change', () => { mudou(cam, ent.checked); marca(); });
+  } else if (valor === null) {
+    ent = el('input', { type: 'text', placeholder: 'null (vazio)', value: '' });
+    ent.addEventListener('input', () => { mudou(cam, ent.value === '' ? null : ent.value); marca(); });
+  } else {
+    const longo = String(valor).length > 70 || String(valor).includes('\n');
+    ent = longo ? el('textarea', {}, String(valor)) : el('input', { type: 'text', value: String(valor) });
+    ent.addEventListener('input', () => { mudou(cam, ent.value); marca(); });
+  }
+  div.append(ent);
+  return div;
+}
+const abertos = new Set();
+function adicionarItem(cam) {
+  const lista = pegar(copia, cam);
+  if (!Array.isArray(lista) || !lista.length) { alert('Lista vazia: não há item para usar de modelo.'); return; }
+  const camNovo = [...cam, lista.length];
+  edicoes[atual] ??= {};
+  edicoes[atual][JSON.stringify(camNovo)] = { cam: camNovo, depois: clone(lista[lista.length - 1]), novo: true };
+  abertos.add(JSON.stringify(cam)); abertos.add(JSON.stringify(camNovo));
+  salvar(); resumo(); abrir(atual);
+}
+function removerItemNovo(camNovo) {
+  delete edicoes[atual][JSON.stringify(camNovo)];
+  if (!Object.keys(edicoes[atual]).length) delete edicoes[atual];
+  salvar(); resumo(); abrir(atual);
+}
+function arvore(cam, valor, aberto) {
+  if (valor === null || typeof valor !== 'object') return folha(cam, valor);
+  const chaves = Array.isArray(valor) ? valor.map((_, i) => i) : Object.keys(valor);
+  const chave = JSON.stringify(cam), novo = edicoes[atual]?.[chave]?.novo;
+  const sum = el('summary', {}, (cam.length ? String(cam[cam.length - 1]) + (Array.isArray(valor) ? ` [${valor.length}]` : '') : 'criatura') + (novo ? ' (item novo)' : ''));
+  const d = el('details', novo ? { class: 'novo' } : {}, sum);
+  if (aberto || abertos.has(chave)) d.open = true;
+  d.addEventListener('toggle', () => { if (d.open) abertos.add(chave); else abertos.delete(chave); });
+  for (const k of chaves) d.append(arvore([...cam, k], valor[k], false));
+  if (Array.isArray(valor) && cam.length) d.append(el('button', { type: 'button', class: 'peq', onclick: () => adicionarItem(cam) }, '+ item (copia o último como modelo)'));
+  if (novo && cam[cam.length - 1] === pegar(copia, cam.slice(0, -1)).length - 1) d.append(el('button', { type: 'button', class: 'peq', onclick: () => removerItemNovo(cam) }, 'tirar este item novo'));
+  return d;
+}
+function abrir(id) {
+  atual = id; copia = aplicarEdicoes(id);
+  const x = POR_ID[id];
+  $('tit').textContent = x.titulo;
+  const alvo = $('campos'); alvo.textContent = '';
+  for (const k of Object.keys(copia)) { if (k === 'id') { alvo.append(el('div', { class: 'campo' }, el('label', {}, 'id'), el('input', { type: 'text', value: copia.id, disabled: 'disabled' }))); continue; } alvo.append(arvore([k], copia[k], ['nome', 'categoria', 'atributos', 'ataques'].includes(k))); }
+  const c = $('cartao'); c.innerHTML = CARTOES[id] || '<p class="nota">Sem o card de hoje (gere o editor depois de um build do site: npx astro build).</p>';
+  numeros(); marcarLista();
+  document.querySelectorAll('#itens li').forEach((li) => li.classList.toggle('sel', li.dataset.id === id));
+}
+
+const DER = ['pv', 'pesoErguido', 'faixa', 'tamanho', 'esquiva', 'bloqueio', 'defesaMental', 'defesaSocial', 'iniciativa', 'energia', 'mana'];
+function derivados(c) {
+  const r = MotorSite.criatura(c); const d = {};
+  for (const k of DER) d[k] = r[k];
+  for (const [k, v] of Object.entries(r.absorcao || {})) d['absorção ' + k] = v;
+  for (const a of r.ataques || []) { d[a.nome + ': velocidade'] = a.velocidade; d[a.nome + ': dano médio'] = a.danoMedio; d[a.nome + ': jogada'] = a.jogada; }
+  return d;
+}
+function numeros() {
+  const alvo = $('nums');
+  try {
+    const a = derivados(POR_ID[atual].criatura), b = derivados(copia);
+    const t = el('table', { class: 'nums' }, el('tr', {}, el('th', {}, 'conta'), el('th', {}, 'antes'), el('th', {}, 'depois')));
+    for (const k of [...new Set([...Object.keys(a), ...Object.keys(b)])]) { const m = !igual(a[k], b[k]); t.append(el('tr', m ? { class: 'muda' } : {}, el('td', {}, k), el('td', {}, a[k] === undefined ? '' : String(a[k])), el('td', {}, b[k] === undefined ? '' : String(b[k])))); }
+    alvo.textContent = ''; alvo.append(t);
+  } catch (e) { alvo.textContent = 'O motor não aceita a criatura como está: ' + e.message; }
+}
+
+function listar() {
+  const q = $('busca').value.trim().toLowerCase(), ul = $('itens'); ul.textContent = '';
+  for (const x of DADOS) { if (q && !(x.titulo.toLowerCase().includes(q) || x.id.includes(q))) continue; const li = el('li', { 'data-id': x.id }, x.titulo); li.addEventListener('click', () => abrir(x.id)); if (x.id === atual) li.classList.add('sel'); if (edicoes[x.id] || novas[x.id]) li.classList.add('mud'); ul.append(li); }
+}
+function marcarLista() { document.querySelectorAll('#itens li').forEach((li) => li.classList.toggle('mud', !!edicoes[li.dataset.id] || !!novas[li.dataset.id])); }
+
+function novaCriatura() {
+  if (!atual) { alert('Abra primeiro a criatura que serve de modelo.'); return; }
+  const id = (prompt('id da criatura nova (minúsculas, números e hífens), copiada de "' + POR_ID[atual].titulo + '":') || '').trim();
+  if (!id) return;
+  if (!/^[a-z0-9][a-z0-9-]*$/.test(id) || POR_ID[id]) { alert(POR_ID[id] ? 'Esse id já existe.' : 'id inválido: use minúsculas, números e hífens.'); return; }
+  const c = aplicarEdicoes(atual);
+  c.id = id; c.nome = id.split('-').map((p, i) => (i ? p : p.charAt(0).toUpperCase() + p.slice(1))).join(' '); c.nomeIngles = c.nome; delete c.idAntigo; c.imagens = [];
+  registrarNova(id, atual, c); salvar(); resumo(); listar(); abrir(id);
+}
+function exportar() {
+  const alteracoes = [];
+  for (const [id, m] of Object.entries(edicoes)) if (!novas[id]) for (const e of Object.values(m)) { const a = { id, caminho: e.cam }; if (e.antes !== undefined) a.antes = e.antes; if (e.depois !== undefined) a.depois = e.depois; alteracoes.push(a); }
+  const agora = new Date(), carimbo = agora.toISOString().slice(0, 16).replace(/[:T]/g, '-');
+  const json = { formato: 'fichas-editor-alteracoes', versao: 2, exportado: agora.toISOString(), alteracoes, novas: Object.entries(novas).map(([id, n]) => ({ id, base: n.base, criatura: aplicarEdicoes(id) })) };
+  const url = URL.createObjectURL(new Blob([JSON.stringify(json, null, 1)], { type: 'application/json' }));
+  const a = el('a', { href: url, download: `alteracoes-fichas-${carimbo}.json` }); document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+  window.__ULTIMA_EXPORTACAO = json;
+}
+
+$('busca').addEventListener('input', listar);
+$('bExportar').addEventListener('click', exportar);
+$('bNova').addEventListener('click', novaCriatura);
+$('bLimpar').addEventListener('click', () => { if (!nEdicoes() || confirm('Descartar todas as alterações não exportadas?')) { for (const id of Object.keys(novas)) { delete POR_ID[id]; const k = DADOS.findIndex((x) => x.id === id); if (k >= 0) DADOS.splice(k, 1); if (atual === id) atual = null; } edicoes = {}; novas = {}; salvar(); resumo(); listar(); if (atual) abrir(atual); } });
+carregar(); resumo(); listar();
+</script>
+</body>
+</html>
