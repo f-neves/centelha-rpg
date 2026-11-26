@@ -186,7 +186,7 @@ limitações conhecidas, que são as três de baixo.
   `bestia-editor.ts`) que usa a melhor perícia social presente (Oratória/Manha/Persuasão/
   Liderança/Política) em vez de zerar, então Defesa Social também não sai capada por omissão na
   maioria dos casos. Não há lacuna de dado a preencher aqui; fechado.
-- [ ] **B16 · [FAZER] Tipos de dano fora do vocabulário fechado (ácido, e possivelmente
+- [ ] **B16 · [FAZER] [MESTRE: frase proposta em varredura-26-11/mestre.md; só a primeira, a da adamantina; a segunda, "imunidade a magia é a Resistência", vai proposta para corte] Tipos de dano fora do vocabulário fechado (ácido, e possivelmente
   outros).** Registrado em 29/09/2026, B14 Fase 4, processando o Pudim Negro: a nota dos
   graves diz "dano principal passa a ser ácido", e "ácido" não está no vocabulário de
   `fraquezas`/`resistencias`/`imunidades` (`elementos-vocab.json`) nem é um dos três tipos
