@@ -6426,7 +6426,7 @@
       "mente-rapida"
     ],
     "aliases": [],
-    "texto": "Age sempre entre os primeiros.",
+    "texto": "Age sempre entre os primeiros. Substitui a Técnica Mente Rápida na Iniciativa (agir entre os primeiros já inclui o +3).",
     "pendente": false,
     "nivel": 3,
     "efeito": "estado"
