@@ -18,26 +18,26 @@
   a conta de novo na próxima mudança. **O que decidiu foi a portabilidade:** cada mudança de
   origem apaga as 7 chaves de `localStorage` dos leitores, ficha de personagem inclusa,
   então a conta se paga por endereço, não por hospedeiro.
-- [ ] **J1b · [FAZER, depois de J1] SMTP próprio no Supabase.** Achado ao medir as diferenças
+- [ ] **J1b · [FAZER, depois de J1] [ESPERA: o J1 executado (compra do domínio); quem move: o autor, depois o Arquiteto] SMTP próprio no Supabase.** Achado ao medir as diferenças
   técnicas entre domínios: o cadastro (`signUp`) e a recuperação de senha saem hoje pelo SMTP
   embutido do Supabase, **limitado a 2 e-mails por hora em todos os planos, o pago inclusive**.
   Três cadastros na mesma hora e o terceiro fica sem confirmar a conta. A saída é SMTP próprio
   (Resend/Brevo têm faixa grátis), que **exige domínio próprio** para publicar SPF, DKIM e
   DMARC. Detalhe em `Dominio.md` seção 12.1. É o único ganho técnico da compra que se paga
   sozinho, e conserta um defeito que já existe hoje.
-- [ ] **J2 · [DECIDIR] Qual hospedeiro.** `Migracao_Astro7.md` seção 4 e `Migracao_Dominio.md`
+- [ ] **J2 · [AUTOR-REGRA] Qual hospedeiro.** `Migracao_Astro7.md` seção 4 e `Migracao_Dominio.md`
   seção 2.1. Com J1 decidido, a sugestão é **Cloudflare Pages com a zona na Cloudflare**
   (`centelha.rec.br` é ápice, e ápice não aceita CNAME · a Cloudflare resolve com *flattening*;
   o domínio segue comprado no Registro.br, só o DNS muda de casa). Netlify serve com a zona
   no próprio Registro.br, via registro A do ápice. **O plano grátis do Vercel proíbe uso
   comercial**, então ele só serve se o Centelha nunca gerar receita.
-- [ ] **J3 · [FAZER, depois de J2] Sair do GitHub Pages, e só então subir para o Astro 7.**
+- [ ] **J3 · [FAZER, depois de J2] [ESPERA: o J2 (hospedeiro) e a compra do J1; quem move: o autor, depois a Executora] Sair do GitHub Pages, e só então subir para o Astro 7.**
   A mudança de endereço tem roteiro próprio em **`Migracao_Dominio.md`** (seis fases, com
   portão e volta atrás); a subida de versão fica em `Migracao_Astro7.md`. **As duas não se
   misturam**: superfícies e riscos de natureza diferente, e juntas ninguém sabe qual quebrou
   o quê. Os dois bloqueios técnicos da subida já saíram em 14/08 (o dev server centralizado
   e a aposentadoria do `@vite-pwa/astro`), e o `rehypeBaseLinks` sai na fase B do endereço.
-- [ ] **J6 · [CONSERTAR] `/mesa/referencia` rola de lado no telefone, e a culpa é da classe
+- [ ] **J6 · [CONSERTAR] [GRID-CÓDIGO] `/mesa/referencia` rola de lado no telefone, e a culpa é da classe
   do embrulho.** Medido em 15/09/2026 (rodada 75, `M-08`) a 390px: a página tem `scrollWidth`
   494 contra 390 de tela, e quem passa é uma `table.tab-mesa` de 449px. **`global.css` dá
   `overflow-x: auto` à `.table-wrap`, mas não à `.tab-wrap`**, que é a que as tabelas da mesa
@@ -46,7 +46,7 @@
   mesmo `scrollWidth` de 494. Achado de passagem e congelado, porque mexer em `global.css` é
   o lugar onde as duas frentes se encostam.
 
-- [ ] **J9 · [CONSERTAR] `gen-mermaid.mjs` redesenha os seis diagramas a cada execução, e o
+- [ ] **J9 · [FAZER] `gen-mermaid.mjs` redesenha os seis diagramas a cada execução, e o
   `--check` não enxerga isso.** Medido pela Executora na rodada 86, com controle negativo: rodar
   `node scripts/gen-mermaid.mjs` **sem mudar fonte nenhuma** reescreveu as **6 de 6** entradas de
   `src/data/diagramas.json` com bytes diferentes e **texto idêntico** nas seis (rótulos extraídos e
@@ -71,7 +71,7 @@
   arquivo, e todo bloco novo tem de lembrar de se registrar. A segunda é instrumento novo e passa
   pelo `CATALOGO` antes de ser construída.
 
-- [ ] **J11 · [FAZER] O link automático de "Perfuração" leva ao gate quando o texto fala do modo de dano, e nenhum portão confere link automático.**
+- [x] **J11 · [FAZER] O link automático de "Perfuração" leva ao gate quando o texto fala do modo de dano, e nenhum portão confere link automático.**
   A rodada 102 trocou o termo do verbete do gate de "Penetração" para "Perfuração" (`glossario.json`,
   id `perfuracao`, com `autolink`). A Revisora mediu no navegador as 107 páginas, com build limpo
   (`docs/simulacao/caixa/102-revisora.md`, `5b51454`): **50 links para o gate, 24 no sentido do modo
@@ -86,8 +86,9 @@
   termo? O autolink roda no navegador (`Referencias.astro`, `autolink()`), e nem o `validate` nem o
   build o executam; a medição da Revisora foi um script de scratchpad, fora do repositório. Se não
   existe, esta família volta na próxima renomeação.
+  Fechado em 26/11/2026 (varredura): A-029 (24/09/2026): "o termo do verbete `perfuracao` passa a 'Nível de Perfuração' e a palavra solta 'Perfuração' deixa de casar o autolink". `dist\ref-index.json` (26/11, 11:00): `perfuracao` com termo "nível de perfuração". Resta a pergunta "existe portão para link automático?": não existe (`test-links-base.mjs` só confere prefixo de base). Melhoria opcional, vira parte do J12
 
-- [ ] **J12 · [DECIDIR] Os apelidos ambíguos do glossário: 99 links errados em oito linhas, depois
+- [ ] **J12 · [AUTOR-REGRA] Os apelidos ambíguos do glossário: 99 links errados em oito linhas, depois
   do conserto da Compostura e do "alvo", depois de tirar o "Nível" (J16), e depois da correção da
   página `artes` (109).** Levantado em 25/09/2026, na rodada 108, recontado em 25/09/2026 (o
   "Nível" saiu para a J16) e de novo na rodada 109: a Revisora achou que `dist/artes/index.html` é
@@ -117,7 +118,7 @@
   (4 errados) e o resto sem forma comum (99 − 53 = 46) para outra frente. **O humano decide se
   aplica a regra a `poder`/`esquiva`, o que fica com `bloqueio` e o resto, e se isso é rodada,
   frente, ou fica.**
-- [ ] **J13 · [DECIDIR] O bestiário recebe link automático só nas fichas montadas quando o índice
+- [ ] **J13 · [FAZER] O bestiário recebe link automático só nas fichas montadas quando o índice
   chega.** Levantado em 25/09/2026, na rodada 108 (`108-revisora.md` §4), tamanho medido na 109
   (`109-executora.md` §1, conferido em `109-revisora.md` §3). A página nasce com as primeiras
   fichas e monta o resto em fatias (`bestiario.astro:142`, `:557-563`); o autolink roda uma vez, no
@@ -137,7 +138,7 @@
   cheia; ela percorre o `main` inteiro de novo, só evita duplicata). Decidir se e onde chamar essa
   2ª passada semeada (candidato: fim de `montarAosPoucos`, quando `restam` chega a zero).
 
-- [ ] **J14 · [DECIDIR] "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de
+- [ ] **J14 · [AUTOR-REGRA] "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de
   Quase-Acerto.** Levantado em 25/09/2026, na medição da J12 (`108-revisora.md` §6). Dos 20 links
   errados da linha Margem ← "Margem", 15 são "Margem de Quase-Acerto" (`regras/quase-acerto`,
   `mesa/referencia`, `armas-e-armaduras`: "Margem de QA = Bônus QA da arma + Bônus QA da
@@ -145,7 +146,7 @@
   108), não entra na conta da J12**: essa família (palavra com dois donos no GLOSSÁRIO) não cobre o
   caso de uma palavra que nomeia duas grandezas do SISTEMA. Decidir se a Margem de Quase-Acerto
   ganha entidade própria no glossário, ou outra saída.
-- [ ] **J15 · [DECIDIR] "nível" no sentido da Arte: 202 links, fora da conta da J12.** Levantado em
+- [ ] **J15 · [AUTOR-REGRA] "nível" no sentido da Arte: 202 links, fora da conta da J12.** Levantado em
   25/09/2026, na medição da J12 (`108-revisora.md` §6, "à parte"), recontado na 109 (227 → 202,
   mesma correção da página `artes` contada duas vezes desde a 104, `109-revisora.md` §2). O verbete
   Nível descreve a Técnica ("faixa de poder de uma Técnica, 1 a 6, o nível N exige Centelha ≥ N"); a
@@ -154,7 +155,7 @@
   de personagem. Pelo texto de hoje do verbete, estão fora do que ele cobre; o caso é "misto", como
   na 104, e quem decide se o verbete deve passar a cobrir a Arte também é o humano. **Por decisão do
   humano (rodada 108), fica fora de toda soma da J12** até essa decisão.
-- [ ] **J16 · [DECIDIR] "Nível" é o nome do próprio verbete, usado como palavra comum em todo o
+- [ ] **J16 · [AUTOR-REGRA] "Nível" é o nome do próprio verbete, usado como palavra comum em todo o
   sistema: 125 links errados, fora da conta da J12.** Levantado em 25/09/2026, na medição da J12
   (`108-revisora.md` §6), reclassificado a pedido do humano na mesma sessão. **Diferença para a J14
   e a J15:** a Margem de QA e o "nível" da Arte são cada um UMA grandeza específica que rivaliza
@@ -173,9 +174,9 @@
 
 - [ ] **J17 · [FAZER] Busca do site: o componente não tem teste de navegador no CI, e a premissa dos `locations` só tem o guarda de `filtrarCaixa`.** Achado nas rodadas 143 e 144 (08/10/2026). A regra de casamento (`src/lib/busca.ts`) tem `scripts/test-busca.mjs` no `validate`. O que o componente faz no navegador (`src/components/Busca.astro`: botão "Mostrar mais" oculto durante a busca nova, lista limpa sem termo, foco no campo) foi provado só por bateria fora do repositório, e o autor escolheu o teste da lógica. A premissa de que `result.data().locations` indexa `content.split(' ')` vale hoje (as 110 páginas conferem) e, se o pagefind a mudar, o Aa degrada para neutro (passa, sem destaque) e não avisa. Um passo depois do `pagefind --site dist` que confira `word_count == split(' ').length` em todas as páginas fecharia a segunda metade; um smoke de navegador sobre o `dist/` fecharia a primeira.
 
-- [ ] **J18 · [FAZER] O seed `supabase/migracao-42.sql` ainda grava a tag "projétil veloz" nas armas (RT-045, T13, 25/11/2026).** O nome único passou a "projétil rápido" em `armas.json`; alinhar o nome na próxima migração. Ficha salva antes da troca guarda a cópia do item com a tag antiga: só a etiqueta mostrada diverge, nenhum cálculo lê a tag.
-- [ ] **J19 · [CONSERTAR] O filtro de Tag de `/equipamentos` não casa tag de duas palavras (projétil rápido).** `data-tags` junta as tags por espaço e o script separa por espaço; separar por outro caractere. Já era assim com "projétil veloz". Achado na RT-045 (T13, 25/11/2026); é lógica da página, e não foi mexida.
-- [ ] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
+- [ ] **J18 · [FAZER] [ESPERA: uma próxima migração que mexa em personagens.ficha (a 42 já rodou, D-259); quem move: o Arquiteto] O seed `supabase/migracao-42.sql` ainda grava a tag "projétil veloz" nas armas (RT-045, T13, 25/11/2026).** O nome único passou a "projétil rápido" em `armas.json`; alinhar o nome na próxima migração. Ficha salva antes da troca guarda a cópia do item com a tag antiga: só a etiqueta mostrada diverge, nenhum cálculo lê a tag.
+- [ ] **J19 · [FAZER] O filtro de Tag de `/equipamentos` não casa tag de duas palavras (projétil rápido).** `data-tags` junta as tags por espaço e o script separa por espaço; separar por outro caractere. Já era assim com "projétil veloz". Achado na RT-045 (T13, 25/11/2026); é lógica da página, e não foi mexida.
+- [x] **J10 · [ADIADO] [DECIDIR] Os 23 travessões do `regras.json`, e seis deles NÃO são travessão.**
   Contados pela Executora na rodada 86, ocorrência a ocorrência, com Python e não por `git diff`:
   são **23 U+2014** no arquivo, e a régua da casa (sem travessão em texto nenhum) só tem portão
   automático para `src/content/**`, por decisão do humano. A separação é o que decide o gesto:
@@ -191,6 +192,7 @@
   Não foi consertado na rodada 86 de propósito: é edição em dado publicado, e quem decide o que
   vai para produção é o humano. Quando entrar, entra num lote só, com a palavra dele e com os seis
   de cima intocados.
+  Fechado em 26/11/2026 (varredura): contagem hoje: 6 em `regras.json`, linhas 248 a 253, que são exatamente os seis semânticos que o item manda ficar. Os 17 de prosa já saíram
 
 - [x] **J4 · [DECIDIR] Fraquezas e resistências do bestiário não chegam ao dano.** Achado na
   auditoria e **não corrigido de propósito**, porque mexe em número de mesa: o código lê

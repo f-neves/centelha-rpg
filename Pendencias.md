@@ -48,11 +48,11 @@ está na seção 3.
 | G | Ações & Sistema | [`G-acoes-sistema.md`](docs/pendencias/G-acoes-sistema.md) | 82 | 37 | 0 | 45 | 2 | 23 | 9 | 0 | 0 | 3 |
 | H | Arremesso | [`H-arremesso.md`](docs/pendencias/H-arremesso.md) | 7 | 4 | 0 | 3 | 1 | 1 | 1 | 0 | 0 | 1 |
 | I | Mesa virtual · tempo real | [`I-mesa-tempo-real.md`](docs/pendencias/I-mesa-tempo-real.md) | 15 | 11 | 2 | 2 | 4 | 8 | 0 | 0 | 0 | 1 |
-| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 17 | 0 | 3 | 6 | 5 | 0 | 3 | 1 | 2 |
+| J | Infraestrutura · endereço, hospedagem e versão | [`J-infraestrutura.md`](docs/pendencias/J-infraestrutura.md) | 20 | 15 | 0 | 5 | 0 | 7 | 5 | 1 | 1 | 1 |
 | K | Combate · a linha do tempo | [`K-combate-linha-do-tempo.md`](docs/pendencias/K-combate-linha-do-tempo.md) | 39 | 24 | 1 | 14 | 20 | 5 | 0 | 0 | 0 | 0 |
 | L | Simulação em massa e as oito regras novas do Simultâneo | [`L-simulacao-simultaneo.md`](docs/pendencias/L-simulacao-simultaneo.md) | 107 | 74 | 0 | 33 | 0 | 8 | 1 | 0 | 65 | 0 |
 | N | Grid e mesa · o que o livro diz e o tabuleiro ainda não faz | [`N-grid-pendencias.md`](docs/pendencias/N-grid-pendencias.md) | 34 | 34 | 0 | 0 | 2 | 31 | 0 | 1 | 0 | 0 |
-| | **Total** | | **423** | **272** | **3** | **148** | **47** | **103** | **39** | **4** | **66** | **16** |
+| | **Total** | | **423** | **270** | **3** | **150** | **41** | **105** | **44** | **2** | **66** | **15** |
 
 *Contado pelas caixas de cada arquivo de tema: `- [ ]` aberto, `- [~]` parcial, `- [x]` fechado. As colunas de tipo contam os abertos e parciais que NÃO estão adiados, pela primeira palavra da casa na marcação (`FAZER/DECIDIR` conta como FAZER); "Outra marca" é o resto, quase todo do tema L, onde a etiqueta é texto livre. Adiados são os que têm `[ADIADO]` depois da sigla. Gerado por `scripts/gen-pendencias.mjs`; não edite à mão.*
 
@@ -510,23 +510,21 @@ Fechados (2): I7, I13.
 |---|---|---|---|
 | J0 | aberto, ADIADO |  | 41 travessões sobreviveram dentro de `src/data/*.json` |
 | J1b | aberto | FAZER | SMTP próprio no Supabase. |
-| J2 | aberto | DECIDIR | Qual hospedeiro. |
+| J2 | aberto | AUTOR-REGRA | Qual hospedeiro. |
 | J3 | aberto | FAZER | Sair do GitHub Pages, e só então subir para o Astro 7. |
 | J6 | aberto | CONSERTAR | `/mesa/referencia` rola de lado no telefone, e a culpa é da classe do embrulho. |
-| J9 | aberto | CONSERTAR | `gen-mermaid.mjs` redesenha os seis diagramas a cada execução, e o `--check` não enxerga isso. |
+| J9 | aberto | FAZER | `gen-mermaid.mjs` redesenha os seis diagramas a cada execução, e o `--check` não enxerga isso. |
 | (sem sigla) | aberto |  | A linha de fechamento do `test-grid` é texto fixo · [DECIDIR] |
-| J11 | aberto | FAZER | O link automático de "Perfuração" leva ao gate quando o texto fala do modo de dano, e nenhum portão confere … |
-| J12 | aberto | DECIDIR | Os apelidos ambíguos do glossário: 99 links errados em oito linhas, depois do conserto da Compostura e do … |
-| J13 | aberto | DECIDIR | O bestiário recebe link automático só nas fichas montadas quando o índice chega. |
-| J14 | aberto | DECIDIR | "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de Quase-Acerto. |
-| J15 | aberto | DECIDIR | "nível" no sentido da Arte: 202 links, fora da conta da J12. |
-| J16 | aberto | DECIDIR | "Nível" é o nome do próprio verbete, usado como palavra comum em todo o sistema: 125 links errados, fora da … |
+| J12 | aberto | AUTOR-REGRA | Os apelidos ambíguos do glossário: 99 links errados em oito linhas, depois do conserto da Compostura e do … |
+| J13 | aberto | FAZER | O bestiário recebe link automático só nas fichas montadas quando o índice chega. |
+| J14 | aberto | AUTOR-REGRA | "Margem" nomeia duas grandezas: a Margem do verbete e a Margem de Quase-Acerto. |
+| J15 | aberto | AUTOR-REGRA | "nível" no sentido da Arte: 202 links, fora da conta da J12. |
+| J16 | aberto | AUTOR-REGRA | "Nível" é o nome do próprio verbete, usado como palavra comum em todo o sistema: 125 links errados, fora da … |
 | J17 | aberto | FAZER | Busca do site: o componente não tem teste de navegador no CI, e a premissa dos `locations` só tem o guarda de … |
 | J18 | aberto | FAZER | O seed `supabase/migracao-42.sql` ainda grava a tag "projétil veloz" nas armas (RT-045, T13, 25/11/2026). |
-| J19 | aberto | CONSERTAR | O filtro de Tag de `/equipamentos` não casa tag de duas palavras (projétil rápido). |
-| J10 | aberto, ADIADO | DECIDIR | Os 23 travessões do `regras.json`, e seis deles NÃO são travessão. |
+| J19 | aberto | FAZER | O filtro de Tag de `/equipamentos` não casa tag de duas palavras (projétil rápido). |
 
-Fechados (3): J1, J4, J5.
+Fechados (5): J1, J11, J10, J4, J5.
 
 ### K · Combate · a linha do tempo
 
